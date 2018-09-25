@@ -1,4 +1,4 @@
-# PolymerElement Button Element
+# lrn-button Element
 
 ## Dependencies
 
