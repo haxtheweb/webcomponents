@@ -1,21 +1,16 @@
 {
-  "name": "@lrnwebcomponents/lrn-button",
+  "name": "Twig component",
+  "description": "Process twig on the fly",
   "wcfactory": {
-    "className": "LrnButton",
-    "customElementClass": "PolymerElement",
-    "elementName": "lrn-button",
-    "generator-rhelement-version": "0.0.8"
+    "customElementClass": "HTMLElement",
+    "templateReturnFunctionPart": "getTemplate() {\n    return ",
+    "propertyBinding": {
+      "prefix": "{{ ",
+      "suffix": " }}"
+    }
   },
-  "version": "3.0.0",
-  "description": "Button element for PolymerElement",
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "main": "lrn-button.umd.js",
-  "module": "lrn-button.es5.js",
-  "es2015": "lrn-button.js",
-  "amd": "lrn-button.amd.js",
+  "main": "TwigComponent/TwigComponent.js",
+  "version": "0.0.1",
   "scripts": {
     "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
     "dev": "open ./src && concurrently --kill-others 'npm run watch' 'npm run serve'",
@@ -24,12 +19,8 @@
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@rhelements/<%= elementName %>/test/",
     "lighthouse": "../../node_modules/.bin/gulp lighthouse"
   },
-  "author": {
-    "name": "btopro"
-  },
-  "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/polymer": "^3.0.5"
+    "twig": "^1.12.0"
   },
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.0.1",

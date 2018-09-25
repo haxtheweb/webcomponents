@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../lrn-button.js"></script>
+  </head>
+  <body>
+
+    <lrn-button>
+      This is the element content.
+    </lrn-button>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <lrn-button></lrn-button>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <lrn-button title="${title}"; ></lrn-button>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<lrn-button>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('lrn-button'), customElements.get("lrn-button", 'lrn-button should be an instance of lrnButton'));
+    });
+
+    /*test('instantiating the element with default properties works', () => {
+      const element = fixture('BasicTestFixture');
+      assert.equal(element.prop1, '<lrn-button>');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello <lrn-button>!');
+    });*/
+
+    /*test('setting a property on the element works', () => {
+      // Create a test fixture
+      const element = fixture('ChangedPropertyTestFixture');
+      assert.equal(element.prop1, 'new-prop1');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
+    });*/
+  });
+    </script>
+  </body>
+</html>

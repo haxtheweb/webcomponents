@@ -1,0 +1,13 @@
+{
+  "@wcfactory/generator-wcfactory": {
+    "promptValues": {
+      "customElementClass": "PolymerElement",
+      "author": "btopro",
+      "copyrightOwner": "The Pennsylvania State University",
+      "license": "Apache-2.0",
+      "useSass": false,
+      "addProps": true,
+      "useHAX": false
+    }
+  }
+}
