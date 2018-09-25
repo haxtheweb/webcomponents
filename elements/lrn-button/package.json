@@ -45,5 +45,8 @@
     "wct-browser-legacy": "^1.0.1"
   },
   "private": false,
-  "gitHead": "f7b8418d8d347467c219905ab516724e510339e4"
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "03f341ab86fcfd16bdca9db944e3704ce80592ff"
 }
