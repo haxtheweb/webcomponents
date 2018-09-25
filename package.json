@@ -90,9 +90,10 @@
       "git add"
     ]
   },
+  "flat": true,
   "private": true,
   "workspaces": [
     "elements/*",
-    "themes/*"    
+    "themes/*"
   ]
 }
