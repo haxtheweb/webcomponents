@@ -6,5 +6,7 @@
   "main": "materializecss-styles.js",
   "dependencies": {
     "@polymer/polymer": "^3.0.5"
-  }
+  },
+  "private": false,
+  "gitHead": "f7b8418d8d347467c219905ab516724e510339e4"
 }
