@@ -1,14 +1,14 @@
-# RHElements
+# LRNWebComponents
 
-Welcome to the RHElements project! Let's get started.
+Welcome to the LRN Web Components project! Let's get started.
 
 ## Quick-start
 
 *Notice: You will need to use [Node](https://nodejs.org/en/) v.7 or higher. These components are written in [ES6](http://es6-features.org/).*
 
 ```
-$ git clone git@github.com:RHElements/rhelements.git
-$ cd rhelements
+$ git clone git@github.com:elmsln/lrnwebcomponents.git
+$ cd lrnwebcomponents
 $ npm install # this will take a while due to lerna bootstrap
 $ npm rebuild node-sass  # this may be necessary
 $ npm start
@@ -21,11 +21,11 @@ $ npm start
 - `$ npm run new`
     -  Create a new component.
 - `$ npm test`
-    -  Run tests on ALL RHElements.
+    -  Run tests on ALL LRNWebComponents.
 - `$ npm run build`
-    -  Run build on ALL RHElements.
+    -  Run build on ALL LRNWebComponents.
 - `$ npm run bootstrap`
-    - Update ALL rhelements' dependencies and interlink them with [lerna bootstrap][lerna-bs].
+    - Update ALL lrnwebcomponents' dependencies and interlink them with [lerna bootstrap][lerna-bs].
 - `$ npm run storybook`
     - Run storybook
 - `$ npm run build-storybook`
@@ -43,12 +43,12 @@ While still running `npm start` in one terminal window (which runs the local ser
 ### Example development on a component
 
 ```
-$ cd /Sites/rhelement
+$ cd /Sites/lrnwebcomponents
 $ npm start
 
 # SHIFT + CTRL + T to open a new tab in Terminal
 
-$ cd elements/rh-card  # or any other component
+$ cd elements/lrn-button  # or any other component
 $ npm run dev
 ```
 
@@ -56,10 +56,10 @@ Make a change to the component and save. The gulpfile will handle transpiling th
 
 ## Test
 
-To test all RHElements, run `npm test` from the root of the repo. If you only want to test the component you're working on:
+To test all LRNWebComponents, run `npm test` from the root of the repo. If you only want to test the component you're working on:
 
 ```
-$ cd elements/rh-card
+$ cd elements/lrn-button
 $ npm test
 ```
 
@@ -69,11 +69,11 @@ Also, if your tests are failing and you want access to a live browser to investi
 $ npm test -- -p
 ```
 
-Then open the URL that will be printed in the terminal. It looks something like this: `http://localhost:8081/components/@rhelements/rhelements/generated-index.html?cli_browser_id=0`.
+Then open the URL that will be printed in the terminal. It looks something like this: `http://localhost:8081/components/@lrnwebcomponents/lrnwebcomponents/generated-index.html?cli_browser_id=0`.
 
 ## Storybook
 
-We've added [Storybook](https://storybook.js.org/) to RHElements as a way to preview our components as they are being developed. We'll also use Storybook to export a static site that will be the demo site for RHElements.
+We've added [Storybook](https://storybook.js.org/) to LRNWebComponents as a way to preview our components as they are being developed. We'll also use Storybook to export a static site that will be the demo site for LRNWebComponents.
 
 To run storybook
 
@@ -98,7 +98,7 @@ For any component that has a third-party dependency you will need to update the 
 For example:
 
 ```
-"../../whatwg-fetch/fetch.js": path.join( // this is the third-party dependency in the rhelement
+"../../whatwg-fetch/fetch.js": path.join( // this is the third-party dependency in the lrnwebcomponents
   __dirname,
   "../node_modules/whatwg-fetch/fetch.js" // this is where it lives in node_modules
 )
