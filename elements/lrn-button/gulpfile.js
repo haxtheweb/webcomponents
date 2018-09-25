@@ -75,6 +75,18 @@ gulp.task("build", () => {
     console.log("child process exited with code " + code);
   });
 });
+// run polymer analyze to generate documentation
+gulp.task("analyze", () => {
+  const spawn = require("child_process").spawn;
+  const out = fs.openSync('./analysis.json', 'a');
+  const err = fs.openSync('./analysis-error.json', 'a');
+  let child = spawn("polymer", ["analyze --i " + packageJson.wcfactory.elementName], {
+    stdio: ['ignore', out, err]
+  });
+  return child.on("close", function (code) {
+    console.log("child process exited with code " + code);
+  });
+});
 // copy from the built locations pulling them together
 gulp.task("compile", () => {
   // copy outputs
@@ -127,6 +139,6 @@ gulp.task("sourcemaps", () => {
     .pipe(sourcemaps.write("./"));
 });
 
-gulp.task("dev", gulp.series("merge", "watch"));
+gulp.task("dev", gulp.series("merge", "analyze", "watch"));
 
-gulp.task("default", gulp.series("merge", "build", "compile", "sourcemaps"));
+gulp.task("default", gulp.series("merge", "analyze", "build", "compile", "sourcemaps"));

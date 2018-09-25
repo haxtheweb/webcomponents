@@ -1,47 +1,18 @@
 <!doctype html>
-<html lang="en">
+<html>
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-  <title>LrnButton: lrn-button Demo</title>
+  <title>lrn-button documentation</title>
+
   <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-  <script type="module">
-    import '@polymer/iron-demo-helpers/demo-snippet.js';
-    import './lrn-button.js';
-  </script>
-  <style is="custom-style" include="demo-pages-shared-styles"></style>
+  <script type="module" src="node_modules/@polymer/iron-component-page/iron-component-page.js"></script>
 </head>
+
 <body>
-  <div class="vertical-section-container centered">
-    <h3>Basic lrn-button demo</h3>
-    <demo-snippet>
-      <template>
-        <lrn-button label="Stuff" href="https://google.com/" color="light-blue" icon-class="pink-text" hover-class="green-text blue darken-4"
-          icon="check"></lrn-button>
-      </template>
-    </demo-snippet>
-  </div>
-  <div class="vertical-section-container centered">
-    <h3>Basic lrn-button demo center</h3>
-    <demo-snippet>
-      <template>
-        <lrn-button label="Stuff" href="https://google.com/" color="light-blue" icon-class="pink-text" hover-class="green-text blue darken-4"
-          icon="check" class="center"></lrn-button>
-      </template>
-    </demo-snippet>
-  </div>
-  <div class="vertical-section-container centered">
-    <h3>Basic lrn-button demo center</h3>
-    <demo-snippet>
-      <template>
-        <lrn-button label="Stuff" href="https://google.com/" color="light-blue" icon-class="pink-text" hover-class="green-text blue darken-4"
-          icon="check" class="center" alt="some text you see here"></lrn-button>
-      </template>
-    </demo-snippet>
-  </div>
+  <iron-component-page></iron-component-page>
 </body>
 
 </html>
-
