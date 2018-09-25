@@ -1,0 +1,54 @@
+{
+    "href": {
+      "type": "String",
+      "value": "#"
+  },
+    "showHref": {
+      "type": "String",
+      "value": false
+  },
+    "raised": {
+      "type": "Boolean"
+  },
+    "label": {
+      "type": "String",
+      "value": ""
+  },
+    "target": {
+      "type": "String",
+      "value": ""
+  },
+    "icon": {
+      "type": "String",
+      "value": false
+  },
+    "hoverClass": {
+      "type": "String"
+  },
+    "iconClass": {
+      "type": "String"
+  },
+    "innerClass": {
+      "type": "String"
+  },
+    "color": {
+      "type": "String"
+  },
+    "textColor": {
+      "type": "String"
+  },
+    "prefetch": {
+      "type": "String"
+  },
+    "alt": {
+      "type": "String"
+  },
+    "disabled": {
+      "type": "Boolean",
+      "value": false
+  },
+    "focusState": {
+      "type": "Boolean",
+      "value": false
+  }
+}

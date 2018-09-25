@@ -1,5 +1,5 @@
-import './colors.js';
-import './shapes.js';
+import './lib/colors.js';
+import './lib/shapes.js';
 const $_documentContainer = document.createElement('div');
 $_documentContainer.setAttribute('style', 'display: none;');
 
