@@ -88,13 +88,6 @@ gulp.task("analyze", () => {
 gulp.task("compile", () => {
   // copy outputs
   gulp.src("./build/es6/" + packageJson.wcfactory.elementName + ".js").pipe(gulp.dest("./"));
-  gulp.src("./build/es5/" + packageJson.wcfactory.elementName + ".js")
-    .pipe(
-      rename({
-        suffix: ".es5"
-      })
-    )
-    .pipe(gulp.dest("./"));
   gulp.src("./build/es5-amd/" + packageJson.wcfactory.elementName + ".js")
     .pipe(
       rename({
