@@ -1,5 +1,5 @@
 {
-  "entrypoint": "index.html",
+  "entrypoint": "demo/index.html",
   "extraDependencies": [
     "node_modules/@webcomponents/webcomponentsjs/*.js",
     "!node_modules/@webcomponents/webcomponentsjs/gulpfile.js",

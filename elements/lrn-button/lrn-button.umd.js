@@ -101,57 +101,96 @@ class LrnButton extends PolymerElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-    "href": {
-      "type": "String",
-      "value": "#"
+  /**
+    * Standard href pass down
+    */
+  href: {
+    type: String,
+    value: '#',
   },
-    "showHref": {
-      "type": "String",
-      "value": false
+  showHref: {
+    type: String,
+    value: false,
   },
-    "raised": {
-      "type": "Boolean"
+  /**
+    * If the button should be visually lifted off the UI.
+    */
+  raised: {
+    type: Boolean,
   },
-    "label": {
-      "type": "String",
-      "value": ""
+  /**
+    * Label to place in the text area
+    */
+  label: {
+    type: String,
+    value: '',
   },
-    "target": {
-      "type": "String",
-      "value": ""
+  target: {
+    type: String,
+    value: '',
   },
-    "icon": {
-      "type": "String",
-      "value": false
+  /**
+    * iron-icon to use (with iconset if needed)
+    */
+  icon: {
+    type: String,
+    value: false,
   },
-    "hoverClass": {
-      "type": "String"
+  /**
+    * Classes to add / subtract based on the item being hovered.
+    */
+  hoverClass: {
+    type: String,
   },
-    "iconClass": {
-      "type": "String"
+  /**
+    * Icon class in the event you want it to look different from the text.
+    */
+  iconClass: {
+    type: String,
   },
-    "innerClass": {
-      "type": "String"
+  /**
+    * Inner container classes.
+    */
+  innerClass: {
+    type: String,
   },
-    "color": {
-      "type": "String"
+  /**
+    * materializeCSS color class
+    */
+  color: {
+    type: String,
   },
-    "textColor": {
-      "type": "String"
+  /**
+    * materializeCSS color class for text
+    */
+  textColor: {
+    type: String,
   },
-    "prefetch": {
-      "type": "String"
+  /**
+    * Allow for prefetch data on hover
+    */
+  prefetch: {
+    type: String,
   },
-    "alt": {
-      "type": "String"
+  /**
+    * Alt via tooltip.
+    */
+  alt: {
+    type: String,
   },
-    "disabled": {
-      "type": "Boolean",
-      "value": false
+  /**
+    * Disabled state.
+    */
+  disabled: {
+    type: Boolean,
+    value: false,
   },
-    "focusState": {
-      "type": "Boolean",
-      "value": false
+  /**
+    * Tracks if focus state is applied
+    */
+  focusState: {
+    type: Boolean,
+    value: false,
   }
 };
   }
