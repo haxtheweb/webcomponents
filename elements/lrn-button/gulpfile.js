@@ -76,14 +76,9 @@ gulp.task("build", () => {
 });
 // run polymer analyze to generate documentation
 gulp.task("analyze", () => {
-  //polymer analyze --input demo/index.html > analysis.json
-  var exec = require('child_process').exec,
-    child;
-
+  var exec = require('child_process').exec;
   return exec('polymer analyze --input demo/index.html > analysis.json',
     function (error, stdout, stderr) {
-      console.log('stdout: ' + stdout);
-      console.log('stderr: ' + stderr);
       if (error !== null) {
         console.log('exec error: ' + error);
       }
