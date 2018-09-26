@@ -611,11 +611,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 168,
+              "line": 207,
               "column": 2
             },
             "end": {
-              "line": 170,
+              "line": 209,
               "column": 3
             }
           },
@@ -632,11 +632,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 175,
+              "line": 214,
               "column": 2
             },
             "end": {
-              "line": 177,
+              "line": 216,
               "column": 3
             }
           },
@@ -653,11 +653,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 182,
+              "line": 221,
               "column": 2
             },
             "end": {
-              "line": 184,
+              "line": 223,
               "column": 3
             }
           },
@@ -674,11 +674,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 189,
+              "line": 228,
               "column": 2
             },
             "end": {
-              "line": 191,
+              "line": 230,
               "column": 3
             }
           },
@@ -690,53 +690,35 @@
         },
         {
           "name": "href",
-          "type": "?",
-          "description": "",
+          "type": "string | null | undefined",
+          "description": "Standard href pass down",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 103,
-              "column": 4
+              "line": 106,
+              "column": 2
             },
             "end": {
-              "line": 106,
+              "line": 109,
               "column": 3
             }
           },
           "metadata": {
-            "polymer": {}
+            "polymer": {
+              "attributeType": "String"
+            }
           },
           "defaultValue": "\"#\""
         },
         {
           "name": "showHref",
-          "type": "?",
+          "type": "string | null | undefined",
           "description": "",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 107,
-              "column": 4
-            },
-            "end": {
               "line": 110,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "raised",
-          "type": "?",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 111,
-              "column": 4
+              "column": 2
             },
             "end": {
               "line": 113,
@@ -744,135 +726,86 @@
             }
           },
           "metadata": {
-            "polymer": {}
-          }
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "false"
         },
         {
-          "name": "label",
-          "type": "?",
-          "description": "",
+          "name": "raised",
+          "type": "boolean | null | undefined",
+          "description": "If the button should be visually lifted off the UI.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 114,
-              "column": 4
+              "line": 117,
+              "column": 2
             },
             "end": {
-              "line": 117,
+              "line": 119,
               "column": 3
             }
           },
           "metadata": {
-            "polymer": {}
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          }
+        },
+        {
+          "name": "label",
+          "type": "string | null | undefined",
+          "description": "Label to place in the text area",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 123,
+              "column": 2
+            },
+            "end": {
+              "line": 126,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
           },
           "defaultValue": "\"\""
         },
         {
           "name": "target",
-          "type": "?",
+          "type": "string | null | undefined",
           "description": "",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 118,
-              "column": 4
+              "line": 127,
+              "column": 2
             },
             "end": {
-              "line": 121,
+              "line": 130,
               "column": 3
             }
           },
           "metadata": {
-            "polymer": {}
+            "polymer": {
+              "attributeType": "String"
+            }
           },
           "defaultValue": "\"\""
         },
         {
           "name": "icon",
-          "type": "?",
-          "description": "",
+          "type": "string | null | undefined",
+          "description": "iron-icon to use (with iconset if needed)",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 122,
-              "column": 4
-            },
-            "end": {
-              "line": 125,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "hoverClass",
-          "type": "?",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 126,
-              "column": 4
-            },
-            "end": {
-              "line": 128,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          }
-        },
-        {
-          "name": "iconClass",
-          "type": "?",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 129,
-              "column": 4
-            },
-            "end": {
-              "line": 131,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          }
-        },
-        {
-          "name": "innerClass",
-          "type": "?",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 132,
-              "column": 4
-            },
-            "end": {
               "line": 134,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {}
-          }
-        },
-        {
-          "name": "color",
-          "type": "?",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 135,
-              "column": 4
+              "column": 2
             },
             "end": {
               "line": 137,
@@ -880,37 +813,21 @@
             }
           },
           "metadata": {
-            "polymer": {}
-          }
-        },
-        {
-          "name": "textColor",
-          "type": "?",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 138,
-              "column": 4
-            },
-            "end": {
-              "line": 140,
-              "column": 3
+            "polymer": {
+              "attributeType": "String"
             }
           },
-          "metadata": {
-            "polymer": {}
-          }
+          "defaultValue": "false"
         },
         {
-          "name": "prefetch",
-          "type": "?",
-          "description": "",
+          "name": "hoverClass",
+          "type": "string | null | undefined",
+          "description": "Classes to add / subtract based on the item being hovered.",
           "privacy": "public",
           "sourceRange": {
             "start": {
               "line": 141,
-              "column": 4
+              "column": 2
             },
             "end": {
               "line": 143,
@@ -918,65 +835,178 @@
             }
           },
           "metadata": {
-            "polymer": {}
-          }
-        },
-        {
-          "name": "alt",
-          "type": "?",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 144,
-              "column": 4
-            },
-            "end": {
-              "line": 146,
-              "column": 3
+            "polymer": {
+              "attributeType": "String"
             }
-          },
-          "metadata": {
-            "polymer": {}
           }
         },
         {
-          "name": "disabled",
-          "type": "?",
-          "description": "",
+          "name": "iconClass",
+          "type": "string | null | undefined",
+          "description": "Icon class in the event you want it to look different from the text.",
           "privacy": "public",
           "sourceRange": {
             "start": {
               "line": 147,
-              "column": 4
+              "column": 2
             },
             "end": {
-              "line": 150,
+              "line": 149,
               "column": 3
             }
           },
           "metadata": {
-            "polymer": {}
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "innerClass",
+          "type": "string | null | undefined",
+          "description": "Inner container classes.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 153,
+              "column": 2
+            },
+            "end": {
+              "line": 155,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "color",
+          "type": "string | null | undefined",
+          "description": "materializeCSS color class",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 159,
+              "column": 2
+            },
+            "end": {
+              "line": 161,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "textColor",
+          "type": "string | null | undefined",
+          "description": "materializeCSS color class for text",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 165,
+              "column": 2
+            },
+            "end": {
+              "line": 167,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "prefetch",
+          "type": "string | null | undefined",
+          "description": "Allow for prefetch data on hover",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 171,
+              "column": 2
+            },
+            "end": {
+              "line": 173,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "alt",
+          "type": "string | null | undefined",
+          "description": "Alt via tooltip.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 177,
+              "column": 2
+            },
+            "end": {
+              "line": 179,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "disabled",
+          "type": "boolean | null | undefined",
+          "description": "Disabled state.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 183,
+              "column": 2
+            },
+            "end": {
+              "line": 186,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
           },
           "defaultValue": "false"
         },
         {
           "name": "focusState",
-          "type": "?",
-          "description": "",
+          "type": "boolean | null | undefined",
+          "description": "Tracks if focus state is applied",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 151,
-              "column": 4
+              "line": 190,
+              "column": 2
             },
             "end": {
-              "line": 154,
+              "line": 193,
               "column": 3
             }
           },
           "metadata": {
-            "polymer": {}
+            "polymer": {
+              "attributeType": "Boolean"
+            }
           },
           "defaultValue": "false"
         }
@@ -1231,11 +1261,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 214,
+              "line": 253,
               "column": 2
             },
             "end": {
-              "line": 220,
+              "line": 259,
               "column": 3
             }
           },
@@ -3028,11 +3058,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 195,
+              "line": 234,
               "column": 2
             },
             "end": {
-              "line": 200,
+              "line": 239,
               "column": 3
             }
           },
@@ -3048,11 +3078,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 204,
+              "line": 243,
               "column": 2
             },
             "end": {
-              "line": 210,
+              "line": 249,
               "column": 3
             }
           },
@@ -3159,11 +3189,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 225,
+              "line": 264,
               "column": 2
             },
             "end": {
-              "line": 240,
+              "line": 279,
               "column": 3
             }
           },
@@ -3183,11 +3213,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 245,
+              "line": 284,
               "column": 2
             },
             "end": {
-              "line": 260,
+              "line": 299,
               "column": 3
             }
           },
@@ -3207,11 +3237,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 265,
+              "line": 304,
               "column": 2
             },
             "end": {
-              "line": 291,
+              "line": 330,
               "column": 3
             }
           },
@@ -4174,7 +4204,7 @@
           "column": 0
         },
         "end": {
-          "line": 292,
+          "line": 331,
           "column": 1
         }
       },
@@ -4184,228 +4214,243 @@
       "attributes": [
         {
           "name": "href",
-          "description": "",
+          "description": "Standard href pass down",
           "sourceRange": {
             "start": {
-              "line": 103,
-              "column": 4
+              "line": 106,
+              "column": 2
             },
             "end": {
-              "line": 106,
+              "line": 109,
               "column": 3
             }
           },
-          "metadata": {}
+          "metadata": {},
+          "type": "string | null | undefined"
         },
         {
           "name": "show-href",
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 107,
-              "column": 4
-            },
-            "end": {
               "line": 110,
-              "column": 3
-            }
-          },
-          "metadata": {}
-        },
-        {
-          "name": "raised",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 111,
-              "column": 4
+              "column": 2
             },
             "end": {
               "line": 113,
               "column": 3
             }
           },
-          "metadata": {}
+          "metadata": {},
+          "type": "string | null | undefined"
         },
         {
-          "name": "label",
-          "description": "",
+          "name": "raised",
+          "description": "If the button should be visually lifted off the UI.",
           "sourceRange": {
             "start": {
-              "line": 114,
-              "column": 4
+              "line": 117,
+              "column": 2
             },
             "end": {
-              "line": 117,
+              "line": 119,
               "column": 3
             }
           },
-          "metadata": {}
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "label",
+          "description": "Label to place in the text area",
+          "sourceRange": {
+            "start": {
+              "line": 123,
+              "column": 2
+            },
+            "end": {
+              "line": 126,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
         },
         {
           "name": "target",
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 118,
-              "column": 4
+              "line": 127,
+              "column": 2
             },
             "end": {
-              "line": 121,
+              "line": 130,
               "column": 3
             }
           },
-          "metadata": {}
+          "metadata": {},
+          "type": "string | null | undefined"
         },
         {
           "name": "icon",
-          "description": "",
+          "description": "iron-icon to use (with iconset if needed)",
           "sourceRange": {
             "start": {
-              "line": 122,
-              "column": 4
-            },
-            "end": {
-              "line": 125,
-              "column": 3
-            }
-          },
-          "metadata": {}
-        },
-        {
-          "name": "hover-class",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 126,
-              "column": 4
-            },
-            "end": {
-              "line": 128,
-              "column": 3
-            }
-          },
-          "metadata": {}
-        },
-        {
-          "name": "icon-class",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 129,
-              "column": 4
-            },
-            "end": {
-              "line": 131,
-              "column": 3
-            }
-          },
-          "metadata": {}
-        },
-        {
-          "name": "inner-class",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 132,
-              "column": 4
-            },
-            "end": {
               "line": 134,
-              "column": 3
-            }
-          },
-          "metadata": {}
-        },
-        {
-          "name": "color",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 135,
-              "column": 4
+              "column": 2
             },
             "end": {
               "line": 137,
               "column": 3
             }
           },
-          "metadata": {}
+          "metadata": {},
+          "type": "string | null | undefined"
         },
         {
-          "name": "text-color",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 138,
-              "column": 4
-            },
-            "end": {
-              "line": 140,
-              "column": 3
-            }
-          },
-          "metadata": {}
-        },
-        {
-          "name": "prefetch",
-          "description": "",
+          "name": "hover-class",
+          "description": "Classes to add / subtract based on the item being hovered.",
           "sourceRange": {
             "start": {
               "line": 141,
-              "column": 4
+              "column": 2
             },
             "end": {
               "line": 143,
               "column": 3
             }
           },
-          "metadata": {}
+          "metadata": {},
+          "type": "string | null | undefined"
         },
         {
-          "name": "alt",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 144,
-              "column": 4
-            },
-            "end": {
-              "line": 146,
-              "column": 3
-            }
-          },
-          "metadata": {}
-        },
-        {
-          "name": "disabled",
-          "description": "",
+          "name": "icon-class",
+          "description": "Icon class in the event you want it to look different from the text.",
           "sourceRange": {
             "start": {
               "line": 147,
-              "column": 4
+              "column": 2
             },
             "end": {
-              "line": 150,
+              "line": 149,
               "column": 3
             }
           },
-          "metadata": {}
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "inner-class",
+          "description": "Inner container classes.",
+          "sourceRange": {
+            "start": {
+              "line": 153,
+              "column": 2
+            },
+            "end": {
+              "line": 155,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "color",
+          "description": "materializeCSS color class",
+          "sourceRange": {
+            "start": {
+              "line": 159,
+              "column": 2
+            },
+            "end": {
+              "line": 161,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "text-color",
+          "description": "materializeCSS color class for text",
+          "sourceRange": {
+            "start": {
+              "line": 165,
+              "column": 2
+            },
+            "end": {
+              "line": 167,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "prefetch",
+          "description": "Allow for prefetch data on hover",
+          "sourceRange": {
+            "start": {
+              "line": 171,
+              "column": 2
+            },
+            "end": {
+              "line": 173,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "alt",
+          "description": "Alt via tooltip.",
+          "sourceRange": {
+            "start": {
+              "line": 177,
+              "column": 2
+            },
+            "end": {
+              "line": 179,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "disabled",
+          "description": "Disabled state.",
+          "sourceRange": {
+            "start": {
+              "line": 183,
+              "column": 2
+            },
+            "end": {
+              "line": 186,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
         },
         {
           "name": "focus-state",
-          "description": "",
+          "description": "Tracks if focus state is applied",
           "sourceRange": {
             "start": {
-              "line": 151,
-              "column": 4
+              "line": 190,
+              "column": 2
             },
             "end": {
-              "line": 154,
+              "line": 193,
               "column": 3
             }
           },
-          "metadata": {}
+          "metadata": {},
+          "type": "boolean | null | undefined"
         }
       ],
       "events": [],
@@ -4417,62 +4462,3 @@
     }
   ]
 }
-[33mwarn[39m: [cli.main]    'analyze --i lrn-button' is not an available command.
-
-
-   [34m/\˜˜/[39m   [35m/\˜˜/[39m[34m\[39m
-  [34m/__\/[39m   [35m/__\/[39m[34m__\[39m    [1m[4mPolymer-CLI[24m[22m
- [34m/\  /[39m   [35m/\  /[39m[34m\  /\[39m
-[34m/__\/[39m   [35m/__\/[39m  [34m\/__\[39m  The multi-tool for Polymer projects
-[34m\  /\[39m  [35m/\  /[39m   [34m/\  /[39m
- [34m\/__\[39m[35m/__\/[39m   [34m/__\/[39m   Usage: `polymer <command> [options ...]`
-  [34m\[39m  [35m/\  /[39m   [34m/\  /[39m
-   [34m\[39m[35m/__\/[39m   [34m/__\/[39m
-
-
-[4m[1mAvailable Commands[22m[24m
-
-  analyze   Writes analysis metadata in JSON format to standard out             
-  build     Builds an application-style project                                 
-  help      Shows this help message, or help for a specific command             
-  init      Initializes a Polymer project                                       
-  install   Installs project dependencies from npm or Bower (optionally         
-            installing "variants").                                             
-  lint      Identifies potential errors in your code.                           
-  serve     Runs the polyserve development server                               
-  test      Runs web-component-tester                                           
-
-[4m[1mGlobal Options[22m[24m
-
-  [1m--env[22m [4mtype[24m                      The environment to use to specialize certain  
-                                  commands, like build                          
-  [1m--entrypoint[22m                    The main HTML file that will be requested for 
-                                  all routes.                                   
-  [1m--shell[22m [4mstring[24m                  The app shell HTML import                     
-  [1m--fragment[22m [4mstring[][24m             HTML imports that are loaded on-demand.       
-  [1m--root[22m [4mstring[24m                   The root directory of your project. Defaults  
-                                  to the current working directory.             
-  [1m--sources[22m [4mstring[][24m              Glob(s) that match your project source files. 
-                                  Defaults to `src/**/*`.                       
-  [1m--extra-dependencies[22m [4mstring[][24m   Glob(s) that match any additional             
-                                  dependencies not caught by the analyzer to    
-                                  include with your build.                      
-  [1m--npm[22m                           Sets npm mode: dependencies are installed     
-                                  from npm, component directory is              
-                                  "node_modules" and the package name is read   
-                                  from package.json                             
-  [1m--module-resolution[22m [4mstring[24m      Algorithm to use for resolving module         
-                                  specifiers in import and export statements    
-                                  when rewriting them to be web-compatible.     
-                                  Valid values are "none" and "node". "none"    
-                                  disables module specifier rewriting. "node"   
-                                  uses Node.js resolution to find modules.      
-  [1m--component-dir[22m [4mstring[24m          The component directory to use. Defaults to   
-                                  reading from the Bower config (usually        
-                                  bower_components/).                           
-  [1m-v[22m, [1m--verbose[22m                   turn on debugging output                      
-  [1m-h[22m, [1m--help[22m                      print out helpful usage information           
-  [1m-q[22m, [1m--quiet[22m                     silence output                                
-
-Run `polymer help <command>` for help with a specific command.
-

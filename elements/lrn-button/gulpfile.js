@@ -40,7 +40,6 @@ gulp.task("merge", () => {
           oneLineFile
         );
         props = fs.readFileSync(path.join("./src", propertiesUrl));
-        props = stripCssComments(props).trim();
         // pull together styles from url
         const [
           ,
@@ -77,15 +76,18 @@ gulp.task("build", () => {
 });
 // run polymer analyze to generate documentation
 gulp.task("analyze", () => {
-  const spawn = require("child_process").spawn;
-  const out = fs.openSync('./analysis.json', 'a');
-  const err = fs.openSync('./analysis-error.json', 'a');
-  let child = spawn("polymer", ["analyze --i " + packageJson.wcfactory.elementName], {
-    stdio: ['ignore', out, err]
-  });
-  return child.on("close", function (code) {
-    console.log("child process exited with code " + code);
-  });
+  //polymer analyze --input demo/index.html > analysis.json
+  var exec = require('child_process').exec,
+    child;
+
+  return exec('polymer analyze --input demo/index.html > analysis.json',
+    function (error, stdout, stderr) {
+      console.log('stdout: ' + stdout);
+      console.log('stderr: ' + stderr);
+      if (error !== null) {
+        console.log('exec error: ' + error);
+      }
+    });
 });
 // copy from the built locations pulling them together
 gulp.task("compile", () => {
@@ -123,7 +125,7 @@ gulp.task("compile", () => {
 gulp.task("watch", () => {
   return gulp.watch(
     "./src/*",
-    gulp.series("merge")
+    gulp.series("merge", "analyze")
   );
 });
 
