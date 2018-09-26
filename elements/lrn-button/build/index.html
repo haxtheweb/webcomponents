@@ -19,17 +19,14 @@
     if (window.nomodules) {
       define(["es5-amd/lrn-button.js"], function () { "use strict" });
     }
-    // edge can handle ESM but not ALL of es5
-    else if (isEdge) {
-      var s = document.createElement('script');
-      s.src = "es5/lrn-button.js"
-      s.type = "module";
-      document.head.appendChild(s);
-    }
-    // these support full ES6 and ESM workflows
     else {
+      var compile = 'es6';
+      // edge can handle ESM but not ALL of es6 spec
+      if (isEdge) {
+        compile = 'es5';
+      }
       var s = document.createElement('script');
-      s.src = "es6/lrn-button.js"
+      s.src = compile + "/lrn-button.js"
       s.type = "module";
       document.head.appendChild(s);
     }
