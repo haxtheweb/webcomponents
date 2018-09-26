@@ -6,6 +6,9 @@
     type: String,
     value: '#',
   },
+  /**
+   * What to display for the resource
+   */
   showHref: {
     type: String,
     value: false,
