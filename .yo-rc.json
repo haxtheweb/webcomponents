@@ -1,8 +1,0 @@
-{
-  "@wcfactory/generator-wcfactory": {
-    "promptValues": {
-      "orgNpm": "@lrnwebcomponents",
-      "orgGit": "elmsln"
-    }
-  }
-}
