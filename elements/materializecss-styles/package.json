@@ -1,7 +1,7 @@
 {
   "name": "@lrnwebcomponents/materializecss-styles",
   "flat": true,
-  "version": "0.0.6-alpha.0",
+  "version": "0.0.7",
   "description": "Some styling helpers from the materializecss project",
   "main": "materializecss-styles.js",
   "dependencies": {

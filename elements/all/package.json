@@ -9,5 +9,6 @@
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "file:elements/hax-body-behaviors",
     "@lrnwebcomponents/lrn-button": "file:elements/lrn-button"
-  }
+  },
+  "version": "0.0.7"
 }
