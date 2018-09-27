@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../hax-body-behaviors.js"></script>
+  </head>
+  <body>
+
+    <hax-body-behaviors>
+      This is the element content.
+    </hax-body-behaviors>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <hax-body-behaviors></hax-body-behaviors>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <hax-body-behaviors ></hax-body-behaviors>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<hax-body-behaviors>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('hax-body-behaviors'), customElements.get("hax-body-behaviors", 'hax-body-behaviors should be an instance of haxBodyBehaviors'));
+    });
+
+    /*test('instantiating the element with default properties works', () => {
+      const element = fixture('BasicTestFixture');
+      assert.equal(element.prop1, '<hax-body-behaviors>');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello <hax-body-behaviors>!');
+    });*/
+
+    /*test('setting a property on the element works', () => {
+      // Create a test fixture
+      const element = fixture('ChangedPropertyTestFixture');
+      assert.equal(element.prop1, 'new-prop1');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
+    });*/
+  });
+    </script>
+  </body>
+</html>
