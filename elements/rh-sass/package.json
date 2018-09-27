@@ -4,6 +4,7 @@
     "className": "RhSass",
     "elementName": "rh-sass"
   },
+  "private": true,
   "version": "0.0.7",
   "description": "Sass variables and mixins for rh-elements",
   "contributors": [
