@@ -1,18 +1,40 @@
 {
   "name": "@lrnwebcomponents/lrnwebcomponents",
+  "description": "A WCFactory managed, sustainable web component library.",
+  "wcfactory": {
+    "askSASS": true,
+    "askProps": true,
+    "askHAX": true,
+    "monorepo": "lrnwebcomponents",
+    "orgNpm": "@lrnwebcomponents",
+    "orgGit": "elmsln",
+    "gitRepo": "git@github.com:elmsln/lrnwebcomponents.git",
+    "sass": {
+      "name": "rh-sass",
+      "pkg": "@rhelements/rh-sass",
+      "path": "rh-sass/rh-sass"
+    }
+  },
+  "author": {
+    "name": "elmsln",
+    "url": ""
+  },
+  "license": "Apache-2.0",
+  "repository": "git@github.com:elmsln/lrnwebcomponents.git",
   "scripts": {
     "start": "spandx",
     "lerna": "lerna",
     "init": "lerna init",
-    "test": "npm run build && wct --configFile wct.conf.json test/index.html",
+    "test": "yarn run build && wct --configFile wct.conf.json test/index.html",
     "build": "lerna run build",
     "bootstrap": "lerna bootstrap --hoist",
-    "postinstall": "npm run bootstrap",
-    "precommit": "npm run test-suite-inject > /dev/null && lint-staged",
+    "postinstall": "yarn run bootstrap",
+    "precommit": "yarn run test-suite-inject > /dev/null && lint-staged",
     "test-suite-inject": "node scripts/test-suite-inject.js",
     "storybook": "start-storybook -c .storybook -p 9001 -s ./elements",
     "build-storybook": "build-storybook -c .storybook -o .storybook_out",
-    "new": "./node_modules/.bin/gulp && cd elements && wcfactory new && npm run test-suite-inject && npm run bootstrap"
+    "rebuild-wcfcache": "./node_modules/.bin/gulp",
+    "new": "yarn run rebuild-wcfcache && wcfactory new && yarn run test-suite-inject && yarn run bootstrap"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -27,7 +49,6 @@
     "@storybook/addon-viewport": "^3.4.8",
     "@storybook/cli": "^3.4.11",
     "@storybook/polymer": "^3.4.8",
-    "@wcfactory/generator-wcfactory": "^0.0.7",
     "@webcomponents/webcomponentsjs": "^2.0.3",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
@@ -85,15 +106,32 @@
     "slim-js": "^3.3.4"
   },
   "lint-staged": {
-    "*.{js,json}": [
-      "prettier --write",
-      "git add"
+    "linters": {
+      "*.{js,json}": [
+        "prettier --write",
+        "git add"
+      ]
+    },
+    "ignore": [
+      "elements/**/*.*.js",
+      "wcfLibraries/**/*.js",
+      "wcfBuildTargets/**/*.js"
     ]
   },
-  "flat": true,
+  "keywords": [
+    "yeoman-generator",
+    "custom-elements",
+    "web-components",
+    "webcomponents",
+    "polymer",
+    "lit-element",
+    "skate-js",
+    "slim-js",
+    "twig",
+    "lit-html",
+    "vanillajs"
+  ],
   "private": true,
-  "workspaces": [
-    "elements/*",
-    "themes/*"
-  ]
+  "npmClient": "yarn",
+  "useWorkspaces": true
 }

@@ -27,7 +27,7 @@ function testPathRel(prefix) {
     return path.join(
       prefix,
       "node_modules",
-      "@rhelements",
+      "@lrnwebcomponents",
       element,
       "test",
       "index.html"
@@ -71,7 +71,7 @@ const packagePath = "../elements/all/package.json";
 const allPackage = require(packagePath);
 allPackage.dependencies = withTests
   .keyBy()
-  .mapKeys(e => `@rhelements/${e}`)
+  .mapKeys(e => `@lrnwebcomponents/${e}`)
   .mapValues(e => `file:elements/${e}`)
   .value();
 

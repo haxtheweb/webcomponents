@@ -2,7 +2,7 @@
  * Copyright <%= year %> <%= copyrightOwner %>
  * @license <%= license %>, see License.md for full text.
  */
-import { LitElement, html, property } from '@polymer/lit-element';
+import { LitElement, html } from '@polymer/lit-element';
 <%- includesString %>
 /**
  * `<%= elementName %>`

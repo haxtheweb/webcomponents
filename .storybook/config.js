@@ -3,8 +3,7 @@ import { setOptions } from "@storybook/addon-options";
 const req = require.context("../elements", true, /\.story\.js$/);
 
 setOptions({
-  name: "RHElements",
-  addonPanelInRight: true
+  name: "lrnwebcomponents"
 });
 
 function loadStories() {

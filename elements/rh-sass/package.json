@@ -1,0 +1,22 @@
+{
+  "name": "@rhelements/rh-sass",
+  "rhelement": {
+    "className": "RhSass",
+    "elementName": "rh-sass"
+  },
+  "version": "0.0.2",
+  "description": "Sass variables and mixins for rh-elements",
+  "contributors": [
+    {
+      "name": "Kyle Buchanan",
+      "email": "kylebuch8@gmail.com",
+      "url": "https://github.com/kylebuch8"
+    },
+    {
+      "name": "Mark Caron",
+      "email": "mark@redhat.com",
+      "url": "https://github.com/markcaron"
+    }
+  ],
+  "license": "MIT"
+}

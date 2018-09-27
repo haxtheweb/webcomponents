@@ -1,0 +1,5 @@
+name = <%= themeName %>
+description = <%= themeDescription %>
+package = Web components
+version = VERSION
+core = 7.x

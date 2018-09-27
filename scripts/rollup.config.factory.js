@@ -17,7 +17,12 @@ function umdConfig({ elementName, className } = {}) {
       resolve(),
       commonjs(),
       babel({
-        presets: ["@babel/env"]
+        presets: [
+          "@babel/preset-env",
+          {
+            useBuiltIns: "usage"
+          }
+        ]
       }),
       uglify()
     ],
@@ -26,7 +31,5 @@ function umdConfig({ elementName, className } = {}) {
 }
 
 export default function factory({ elementName, className } = {}) {
-  return [
-    umdConfig({ elementName, className }),
-  ];
+  return [umdConfig({ elementName, className })];
 }
