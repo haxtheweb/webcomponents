@@ -37,7 +37,7 @@
     "new": "yarn run rebuild-wcfcache && wcfactory new && yarn run test-suite-inject && yarn run bootstrap"
   },
   "devDependencies": {
-    "@babel/core": "7.1.0",
+    "@babel/core": "7.1.2",
     "@babel/preset-env": "7.1.0",
     "@storybook/addon-a11y": "3.4.11",
     "@storybook/addon-actions": "3.4.11",
