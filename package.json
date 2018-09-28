@@ -83,7 +83,7 @@
     "polymer-webpack-loader": "2.0.3",
     "prettier": "1.14.3",
     "requirejs": "2.3.6",
-    "rollup": "0.64.1",
+    "rollup": "0.66.2",
     "rollup-plugin-babel": "4.0.3",
     "rollup-plugin-commonjs": "9.1.8",
     "rollup-plugin-node-resolve": "3.4.0",
