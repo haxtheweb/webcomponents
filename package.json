@@ -61,7 +61,7 @@
     "dialog-polyfill": "0.4.10",
     "global": "4.3.2",
     "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-babel": "7.0.1",
+    "gulp-babel": "8.0.0",
     "gulp-clean-css": "3.10.0",
     "gulp-concat-util": "0.5.5",
     "gulp-rename": "1.4.0",
