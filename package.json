@@ -87,7 +87,7 @@
     "rollup-plugin-babel": "4.0.3",
     "rollup-plugin-commonjs": "9.1.8",
     "rollup-plugin-node-resolve": "3.4.0",
-    "rollup-plugin-uglify": "4.0.0",
+    "rollup-plugin-uglify": "6.0.0",
     "spandx": "1.0.3",
     "strip-css-comments": "3.0.0",
     "trim": "0.0.1",
