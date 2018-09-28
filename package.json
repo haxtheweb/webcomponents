@@ -100,7 +100,7 @@
     "@polymer/lit-element": "0.6.1",
     "@polymer/polymer": "3.0.5",
     "babel-plugin-transform-custom-element-classes": "0.1.0",
-    "gulp-copy": "1.1.0",
+    "gulp-copy": "4.0.0",
     "inquirer-recursive": "0.0.5",
     "jest": "23.6.0",
     "slim-js": "3.3.4"
