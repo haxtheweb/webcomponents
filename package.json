@@ -94,7 +94,7 @@
     "wct-browser-legacy": "1.0.1",
     "web-component-tester": "6.8.0",
     "whatwg-fetch": "2.0.4",
-    "yo": "1.8.5"
+    "yo": "2.0.5"
   },
   "dependencies": {
     "@polymer/lit-element": "0.6.1",
