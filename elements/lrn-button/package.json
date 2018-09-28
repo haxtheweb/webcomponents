@@ -50,7 +50,6 @@
     "wct-browser-legacy": "^1.0.1"
   },
   "private": false,
-  "flat": true,
   "publishConfig": {
     "access": "public"
   },

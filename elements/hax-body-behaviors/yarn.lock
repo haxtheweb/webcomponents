@@ -3442,10 +3442,6 @@ for-own@^0.1.4:
   dependencies:
     for-in "^1.0.1"
 
-foreachasync@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/foreachasync/-/foreachasync-3.0.0.tgz#5502987dc8714be3392097f32e0071c9dee07cf6"
-
 forever-agent@~0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/forever-agent/-/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
@@ -4690,10 +4686,6 @@ locate-path@^3.0.0:
     p-locate "^3.0.0"
     path-exists "^3.0.0"
 
-locutus@^2.0.5:
-  version "2.0.10"
-  resolved "https://registry.yarnpkg.com/locutus/-/locutus-2.0.10.tgz#f903619466a98a4ab76e8b87a5854b55a743b917"
-
 lodash._baseassign@^3.0.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/lodash._baseassign/-/lodash._baseassign-3.2.0.tgz#8c38a099500f215ad09e59f1722fd0c52bfe0a4e"
@@ -5078,7 +5070,7 @@ minimatch-all@^1.1.0:
   dependencies:
     minimatch "^3.0.2"
 
-"minimatch@2 || 3", minimatch@3.0.x, minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4:
+"minimatch@2 || 3", minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   dependencies:
@@ -7347,14 +7339,6 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
 
-twig@^1.12.0:
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/twig/-/twig-1.12.0.tgz#04450bf18ee05532ff70098f10b07227f956b8cf"
-  dependencies:
-    locutus "^2.0.5"
-    minimatch "3.0.x"
-    walk "2.3.x"
-
 type-detect@0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/type-detect/-/type-detect-0.1.1.tgz#0ba5ec2a885640e470ea4e8505971900dac58822"
@@ -7484,7 +7468,7 @@ unzip-response@^2.0.1:
 
 update-notifier@^1.0.0:
   version "1.0.3"
-  resolved "https://registry.yarnpkg.com/update-notifier/-/update-notifier-1.0.3.tgz#8f92c515482bd6831b7c93013e70f87552c7cf5a"
+  resolved "http://registry.npmjs.org/update-notifier/-/update-notifier-1.0.3.tgz#8f92c515482bd6831b7c93013e70f87552c7cf5a"
   dependencies:
     boxen "^0.6.0"
     chalk "^1.0.0"
@@ -7658,12 +7642,6 @@ vlq@^0.2.2:
 vscode-uri@^1.0.1:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/vscode-uri/-/vscode-uri-1.0.6.tgz#6b8f141b0bbc44ad7b07e94f82f168ac7608ad4d"
-
-walk@2.3.x:
-  version "2.3.14"
-  resolved "https://registry.yarnpkg.com/walk/-/walk-2.3.14.tgz#60ec8631cfd23276ae1e7363ce11d626452e1ef3"
-  dependencies:
-    foreachasync "^3.0.0"
 
 wbuf@^1.1.0, wbuf@^1.7.2:
   version "1.7.3"

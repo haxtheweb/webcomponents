@@ -8,3 +8,5 @@ test/.wct-kludge
 .sass-cache
 
 .yo-rc.json
+
+yarn-error.log
