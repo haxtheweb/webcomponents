@@ -20,7 +20,7 @@
     "lighthouse": "../../node_modules/.bin/gulp lighthouse"
   },
   "dependencies": {
-    "slim-js": "^3.3.4"
+    "slim-js": "^4.0.0"
   },
   "devDependencies": {
     "@polymer/iron-demo-helpers": "3.0.2",

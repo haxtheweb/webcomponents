@@ -103,7 +103,7 @@
     "gulp-copy": "1.1.0",
     "inquirer-recursive": "0.0.5",
     "jest": "23.6.0",
-    "slim-js": "3.3.4"
+    "slim-js": "4.0.1"
   },
   "lint-staged": {
     "linters": {
