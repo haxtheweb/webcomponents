@@ -15,12 +15,7 @@ function umdConfig({ elementName, className } = {}) {
     plugins: [
       commonjs(),
       babel({
-        presets: [
-          "@babel/preset-env",
-          {
-            useBuiltIns: "usage"
-          }
-        ]
+        presets: ["@babel/preset-env"]
       }),
       terser()
     ],

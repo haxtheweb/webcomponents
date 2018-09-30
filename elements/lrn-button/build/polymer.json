@@ -1,9 +1,7 @@
 {
   "entrypoint": "demo/index.html",
   "fragments": [],
-  "sources": [
-    "demo/index.html"
-  ],
+  "sources": ["demo/index.html"],
   "extraDependencies": [
     "bower_components/webcomponentsjs/*.js",
     "node_modules/@webcomponents/webcomponentsjs/*.js",
@@ -13,30 +11,9 @@
   "builds": [
     {
       "name": "es6",
-      "browserCapabilities": [
-        "es2015",
-        "modules"
-      ],
+      "browserCapabilities": ["es2015", "modules"],
       "js": {
         "minify": true
-      },
-      "css": {
-        "minify": true
-      },
-      "html": {
-        "minify": true
-      },
-      "bundle": false,
-      "addServiceWorker": false
-    },
-    {
-      "name": "es5",
-      "browserCapabilities": [
-        "modules"
-      ],
-      "js": {
-        "minify": true,
-        "compile": true
       },
       "css": {
         "minify": true
@@ -65,9 +42,7 @@
     }
   ],
   "lint": {
-    "rules": [
-      "polymer-3"
-    ]
+    "rules": ["polymer-3"]
   },
   "npm": true,
   "componentDir": "node_modules/",

@@ -2,12 +2,12 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
-import '@polymer/paper-button/paper-button.js';
-import '@polymer/iron-icons/iron-icons.js';
-import '@polymer/iron-icon/iron-icon.js';
-import '@lrnwebcomponents/materializecss-styles';
-import '@polymer/paper-tooltip/paper-tooltip.js';
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/materializecss-styles";
+import "@polymer/paper-tooltip/paper-tooltip.js";
 /**
  * `lrn-button`
  * `Simple button wrapper with a few options`
@@ -60,19 +60,19 @@ class LrnButton extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener('mousedown', this.tapEventOn);
-    this.addEventListener('mouseover', this.tapEventOn);
-    this.addEventListener('mouseout', this.tapEventOff);
+    this.addEventListener("mousedown", this.tapEventOn);
+    this.addEventListener("mouseover", this.tapEventOn);
+    this.addEventListener("mouseout", this.tapEventOff);
   }
   /**
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.removeEventListener('mousedown', this.tapEventOn);
-    this.removeEventListener('mouseover', this.tapEventOn);
-    this.removeEventListener('mouseout', this.tapEventOff);
-    this.$.button.removeEventListener('focused-changed', this.focusToggle);
+    this.removeEventListener("mousedown", this.tapEventOn);
+    this.removeEventListener("mouseover", this.tapEventOn);
+    this.removeEventListener("mouseout", this.tapEventOff);
+    this.$.button.removeEventListener("focused-changed", this.focusToggle);
   }
   /**
    * Go to the href if the button isn't disabled
@@ -82,20 +82,20 @@ class LrnButton extends PolymerElement {
     if (!this.disabled) {
       this.showHref = this.href;
     }
-    this.$.button.addEventListener('focused-changed', this.focusToggle);
+    this.$.button.addEventListener("focused-changed", this.focusToggle);
   }
 
   /**
    * Class processing on un-tap / hover
    */
-  tapEventOn (e) {
+  tapEventOn(e) {
     let root = this;
     if (typeof root.hoverClass !== typeof undefined && !root.disabled) {
       // break class into array
-      var classes = root.hoverClass.split(' ');
+      var classes = root.hoverClass.split(" ");
       // run through each and add or remove classes
-      classes.forEach(function (item, index) {
-        if (item != '') {
+      classes.forEach(function(item, index) {
+        if (item != "") {
           root.$.button.classList.add(item);
           if (item.indexOf("-") != -1) {
             root.$.icon.classList.add(item);
@@ -112,10 +112,10 @@ class LrnButton extends PolymerElement {
     let root = this;
     if (typeof root.hoverClass !== typeof undefined && !root.disabled) {
       // break class into array
-      var classes = root.hoverClass.split(' ');
+      var classes = root.hoverClass.split(" ");
       // run through each and add or remove classes
-      classes.forEach(function (item, index) {
-        if (item != '') {
+      classes.forEach(function(item, index) {
+        if (item != "") {
           root.$.button.classList.remove(item);
           if (item.indexOf("-") != -1) {
             root.$.icon.classList.remove(item);
@@ -130,21 +130,26 @@ class LrnButton extends PolymerElement {
    */
   focusToggle(e) {
     let root = this;
-    this.dispatchEvent(new CustomEvent('focus-changed', { bubbles: true, composed: true, detail: { focus: root.focusState } }));
+    this.dispatchEvent(
+      new CustomEvent("focus-changed", {
+        bubbles: true,
+        composed: true,
+        detail: { focus: root.focusState }
+      })
+    );
     // see if it has hover classes
     if (typeof root.hoverClass !== typeof undefined && !root.disabled) {
       // break class into array
-      var classes = root.hoverClass.split(' ');
+      var classes = root.hoverClass.split(" ");
       // run through each and add or remove classes
-      classes.forEach(function (item, index) {
-        if (item != '') {
+      classes.forEach(function(item, index) {
+        if (item != "") {
           if (root.focusState) {
             root.$.button.classList.add(item);
             if (item.indexOf("-") != -1) {
               root.$.icon.classList.add(item);
             }
-          }
-          else {
+          } else {
             root.$.button.classList.remove(item);
             if (item.indexOf("-") != -1) {
               root.$.icon.classList.remove(item);

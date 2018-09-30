@@ -1,9 +1,9 @@
-import { html, Polymer } from '@polymer/polymer/polymer-legacy.js';
-import '@polymer/paper-button/paper-button.js';
-import '@polymer/iron-icons/iron-icons.js';
-import '@polymer/iron-icon/iron-icon.js';
-import '@lrnwebcomponents/materializecss-styles';
-import '@polymer/paper-tooltip/paper-tooltip.js';
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/materializecss-styles";
+import "@polymer/paper-tooltip/paper-tooltip.js";
 /**
 `lrnsys-button`
 A LRN element
@@ -78,16 +78,16 @@ Polymer({
     <paper-tooltip for="lrnsys-button-link" animation-delay="0">[[alt]]</paper-tooltip>
 `,
 
-  is: 'lrn-button',
+  is: "lrn-button",
 
   /**
    * Detect when hovering on our off the element and provide color switching
    */
   listeners: {
-    'mousedown': 'tapEventOn',
-    'mouseover': 'tapEventOn',
-    'mouseout': 'tapEventOff',
-    'button.focused-changed': 'focusToggle',
+    mousedown: "tapEventOn",
+    mouseover: "tapEventOn",
+    mouseout: "tapEventOff",
+    "button.focused-changed": "focusToggle"
   },
 
   properties: {
@@ -96,91 +96,91 @@ Polymer({
      */
     href: {
       type: String,
-      value: '#',
+      value: "#"
     },
     showHref: {
       type: String,
-      value: false,
+      value: false
     },
     /**
      * If the button should be visually lifted off the UI.
      */
     raised: {
-      type: Boolean,
+      type: Boolean
     },
     /**
      * Label to place in the text area
      */
     label: {
       type: String,
-      value: '',
+      value: ""
     },
     target: {
       type: String,
-      value: '',
+      value: ""
     },
     /**
      * iron-icon to use (with iconset if needed)
      */
     icon: {
       type: String,
-      value: false,
+      value: false
     },
     /**
      * Classes to add / subtract based on the item being hovered.
      */
     hoverClass: {
-      type: String,
+      type: String
     },
     /**
      * Icon class in the event you want it to look different from the text.
      */
     iconClass: {
-      type: String,
+      type: String
     },
     /**
      * Inner container classes.
      */
     innerClass: {
-      type: String,
+      type: String
     },
     /**
      * materializeCSS color class
      */
     color: {
-      type: String,
+      type: String
     },
     /**
      * materializeCSS color class for text
      */
     textColor: {
-      type: String,
+      type: String
     },
     /**
      * Allow for prefetch data on hover
      */
     prefetch: {
-      type: String,
+      type: String
     },
     /**
      * Alt via tooltip.
      */
     alt: {
-      type: String,
+      type: String
     },
     /**
      * Disabled state.
      */
     disabled: {
       type: Boolean,
-      value: false,
+      value: false
     },
     /**
      * Tracks if focus state is applied
      */
     focusState: {
       type: Boolean,
-      value: false,
+      value: false
     }
   },
 
@@ -200,14 +200,14 @@ Polymer({
     let root = this;
     if (typeof root.hoverClass !== typeof undefined && !root.disabled) {
       // break class into array
-      var classes = root.hoverClass.split(' ');
+      var classes = root.hoverClass.split(" ");
       // run through each and add or remove classes
       classes.forEach(function(item, index) {
-        if (item != '') {
+        if (item != "") {
           root.$.button.classList.add(item);
           if (item.indexOf("-") != -1) {
-          root.$.icon.classList.add(item);
-        }
+            root.$.icon.classList.add(item);
+          }
         }
       });
     }
@@ -220,14 +220,14 @@ Polymer({
     let root = this;
     if (typeof root.hoverClass !== typeof undefined && !root.disabled) {
       // break class into array
-      var classes = root.hoverClass.split(' ');
+      var classes = root.hoverClass.split(" ");
       // run through each and add or remove classes
       classes.forEach(function(item, index) {
-        if (item != '') {
+        if (item != "") {
           root.$.button.classList.remove(item);
           if (item.indexOf("-") != -1) {
-          root.$.icon.classList.remove(item);
-        }
+            root.$.icon.classList.remove(item);
+          }
         }
       });
     }
@@ -238,25 +238,24 @@ Polymer({
    */
   focusToggle: function(e) {
     let root = this;
-    this.fire('focus-changed', {focus: root.focusState});
+    this.fire("focus-changed", { focus: root.focusState });
     // see if it has hover classes
     if (typeof root.hoverClass !== typeof undefined && !root.disabled) {
       // break class into array
-      var classes = root.hoverClass.split(' ');
+      var classes = root.hoverClass.split(" ");
       // run through each and add or remove classes
       classes.forEach(function(item, index) {
-        if (item != '') {
+        if (item != "") {
           if (root.focusState) {
             root.$.button.classList.add(item);
             if (item.indexOf("-") != -1) {
-            root.$.icon.classList.add(item);
-          }
-          }
-          else {
+              root.$.icon.classList.add(item);
+            }
+          } else {
             root.$.button.classList.remove(item);
             if (item.indexOf("-") != -1) {
-            root.$.icon.classList.remove(item);
-          }
+              root.$.icon.classList.remove(item);
+            }
           }
         }
       });
