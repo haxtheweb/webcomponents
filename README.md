@@ -1,15 +1,17 @@
-# lrnwebcomponents
+# LRN Web components
 [![Published on npm](https://img.shields.io/npm/v/@lrnwebcomponents/lrnwebcomponents.svg?style=flat)](https://www.npmjs.com/package/@lrnwebcomponents/lrnwebcomponents)
 [![Build Status](https://travis-ci.org/elmsln/lrnwebcomponents.svg?branch=master)](https://travis-ci.org/elmsln/lrnwebcomponents)
 [![Dependency Status](https://img.shields.io/david/elmsln/lrnwebcomponents.svg?style=flat)](https://david-dm.org/elmsln/lrnwebcomponents)
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/author/elmsln)
-Welcome to the lrnwebcomponents project! Let's work with web components!
+Welcome to the LRN Web components project!
+Web components by the ELMS:LN team
 ## Quick-start
 
-*Notice: You will need to use [Node](https://nodejs.org/en/) v.6 or higher. These web components are written in [ES6](http://es6-features.org/) and build routines compile to es5 to encompass more browsers.*
+*Notice: You will need to use [Node](https://nodejs.org/en/) version 6.0 or higher. Verify that you have yarn enabled — if not [install yarn globally](https://yarnpkg.com/lang/en/docs/install/). These web components are written in [ES6](http://es6-features.org/) and build routines compile to es5 to encompass more browsers.*
+### Install
 
 ```bash
-$ git clone git@github.com:elmsln/lrnwebcomponents.git
+$ git clone git@github.com/elmsln/lrnwebcomponents.git
 $ cd lrnwebcomponents
 $ yarn install # this will take a while due to lerna bootstrap
 $ yarn rebuild node-sass  # this may be necessary
@@ -22,6 +24,8 @@ $ yarn start
     - Launch a demo server. This should be continuously running as you develop.
 - `$ yarn run new`
     -  Create a new component.
+- `$ yarn run rebuild-wcfcache`
+    - Rebuild caches as to what web component libraries can be used
 - `$ yarn test`
     -  Run tests on ALL lrnwebcomponents.
 - `$ yarn run build`

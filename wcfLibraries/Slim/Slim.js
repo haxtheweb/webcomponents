@@ -69,7 +69,12 @@ Slim.tag(
       let obj = <%= elementClassName %>.properties;
       for (let p in obj) {
         if (obj.hasOwnProperty(p)) {
-          this[p] = obj[p].value;
+          if (this.hasAttribute(p)) {
+            this[p] = this.getAttribute(p);
+          }
+          else {
+	         this[p] = obj[p].value;
+          }
         }
       }
     }
@@ -79,15 +84,10 @@ Slim.tag(
     static get observedAttributes() {
       return Object.keys(<%= elementClassName %>.properties);
     }
-    // bind attributes to properties
-    // when 'who' attribute changed - it is reflected to the property, and the component alters the relevant text node.
-    get autoBoundAttributes() {
-      return Object.keys(<%= elementClassName %>.properties);
-    }
     /**
      * life cycle, element is afixed to the DOM
      */
-    get onRender() {
+    onRender() {
       <%- connectedString %>
     }
     <%- additionalFunctionsString %>

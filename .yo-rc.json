@@ -1,0 +1,18 @@
+{
+  "@wcfactory/generator-wcfactory": {
+    "promptValues": {
+      "orgNpm": "@lrnwebcomponents",
+      "orgGit": "elmsln",
+      "customElementClass": "HTMLElement",
+      "author": "btopro",
+      "copyrightOwner": "The Pennsylvania State University",
+      "license": "Apache-2.0",
+      "useSass": false,
+      "addProps": false,
+      "useHAX": true,
+      "customElementClassArrayPosition": 0,
+      "humanName": "LRN Web components",
+      "description": "Web components by the ELMS:LN team"
+    }
+  }
+}
