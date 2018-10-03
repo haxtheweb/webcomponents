@@ -1,39 +1,18 @@
-/**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
 import "../lib/colors.js";
 import "../lib/shapes.js";
-
-/**
- * `materializecss-styles`
- * `MaterializeCSSBehaviors.ColorBehaviors` some basic but annoying transforms to go
- * from a color code to the materializeCSS color name or the reverse, to go from
- * a css class name back to a color value. These are especially useful when needing
- * to modify one color code relative to the class value of a parent / related tag.
- *
- * @polymerBehavior MaterializeCSSBehaviors.ColorBehaviors
- * @demo demo/index.html
- */
 const $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
-
 $_documentContainer.innerHTML = `<dom-module id="materializecss-styles">
   <template>
     <style include="materializecss-styles-colors"></style>
     <style include="materializecss-styles-shapes"></style>
   </template>
 </dom-module>`;
-
 document.head.appendChild($_documentContainer);
 window.MaterializeCSSBehaviors = window.MaterializeCSSBehaviors || {};
 window.MaterializeCSSBehaviors.ColorBehaviors = {
-  /**
-   * Get the Materialize color classes mapping based on defined parts
-   * Example: getColorClasses('text')
-   */
   getColorClasses: function(parta = "", partb = "") {
-    var colorClasses = {
+    return {
       "#ffffff": "white",
       "#000000": "black",
       "#ffebee": "red" + parta + " " + partb + "lighten-5",
@@ -291,25 +270,14 @@ window.MaterializeCSSBehaviors.ColorBehaviors = {
       "#37474f": "blue-grey" + parta + " " + partb + "darken-3",
       "#263238": "blue-grey" + parta + " " + partb + "darken-4"
     };
-    return colorClasses;
   },
-
-  /**
-   * Transform a color value into it's associated color class
-   */
   _colorTransform: function(item, parta, partb) {
     const colorClasses = this.getColorClasses(parta, partb);
-    if (typeof colorClasses[item] !== "undefined") {
+    if ("undefined" !== typeof colorClasses[item]) {
       return colorClasses[item];
     }
     return null;
   },
-
-  /**
-   * Transform a color class into its associated color class
-   * @param {string} color Color class
-   * @return {string} hex value
-   */
   _colorTransformFromClass: function(color) {
     const colorClasses = this.getColorClasses();
     let hexColor = null;

@@ -9,6 +9,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "file:../hax-body-behaviors",
-    "@lrnwebcomponents/lrn-button": "file:../lrn-button"
+    "@lrnwebcomponents/lrn-button": "file:../lrn-button",
+    "@lrnwebcomponents/materializecss-styles": "file:../materializecss-styles"
   }
 }

@@ -10,13 +10,13 @@ import {
   date,
   select
 } from "@storybook/addon-knobs/polymer";
-import "./hax-body-behaviors";
-const stories = storiesOf("Body", module);
+import "./materializecss-styles";
+const stories = storiesOf("Styles", module);
 stories.addDecorator(withKnobs);
-stories.add("hax-body-behaviors", () => {
+stories.add("materializecss-styles", () => {
   return `
-  <hax-body-behaviors >
-    Body
-  </hax-body-behaviors>
+  <materializecss-styles >
+    Styles
+  </materializecss-styles>
   `;
 });

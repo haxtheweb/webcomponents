@@ -1,6 +1,5 @@
 const $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
-
 $_documentContainer.innerHTML = `<dom-module id="materializecss-styles-shapes">
   <template>
     <custom-style>
@@ -12,12 +11,4 @@ $_documentContainer.innerHTML = `<dom-module id="materializecss-styles-shapes">
     </custom-style>
   </template>
 </dom-module>`;
-
 document.head.appendChild($_documentContainer);
-
-/**
-`materializecss-styles`
-Some styling helpers from the materializecss project
-
-@demo demo/index.html
-*/
