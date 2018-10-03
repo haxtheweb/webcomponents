@@ -6,7 +6,7 @@
     "elementName": "hax-body-behaviors",
     "generator-wcfactory-version": ""
   },
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Wire any element up to HAX",
   "repository": {
     "type": "git",
