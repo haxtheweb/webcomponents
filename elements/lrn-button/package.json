@@ -12,9 +12,9 @@
     "type": "git",
     "url": ""
   },
-  "main": "lrn-button.umd.js",
-  "module": "lrn-button.es5.js",
-  "es2015": "lrn-button.js",
+  "main": "lrn-button.js",
+  "module": "lrn-button.es6.js",
+  "umd": "lrn-button.umd.js",
   "amd": "lrn-button.amd.js",
   "scripts": {
     "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
