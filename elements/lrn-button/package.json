@@ -6,7 +6,7 @@
     "elementName": "lrn-button",
     "generator-rhelement-version": "0.0.8"
   },
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Button element for PolymerElement",
   "repository": {
     "type": "git",
