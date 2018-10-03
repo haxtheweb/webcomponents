@@ -6,7 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
-import "@lrnwebcomponents/materializecss-styles";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 /**
  * `lrn-button`
