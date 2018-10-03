@@ -1,6 +1,6 @@
 {
   "packages": ["elements/*", "themes/*"],
-  "version": "0.0.0",
+  "version": "0.0.9",
   "npmClient": "yarn",
   "useWorkspaces": true,
   "workspaces": ["elements/*", "themes/*"]
