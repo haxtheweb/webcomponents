@@ -2,8 +2,8 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import "../lib/colors.js";
-import "../lib/shapes.js";
+import "./lib/colors.js";
+import "./lib/shapes.js";
 
 /**
  * `materializecss-styles`

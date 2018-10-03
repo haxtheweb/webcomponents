@@ -1,4 +1,4 @@
-define(["../lib/colors.js", "../lib/shapes.js"], function() {
+define(["./lib/colors.js", "./lib/shapes.js"], function() {
   "use strict";
   var $_documentContainer = document.createElement("div");
   $_documentContainer.setAttribute("style", "display: none;");
