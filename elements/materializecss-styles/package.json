@@ -1,6 +1,6 @@
 {
   "name": "@lrnwebcomponents/materializecss-styles",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Some styling helpers from the materializecss project",
   "main": "materializecss-styles.js",
   "dependencies": {
