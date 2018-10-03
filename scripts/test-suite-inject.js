@@ -72,7 +72,7 @@ const allPackage = require(packagePath);
 allPackage.dependencies = withTests
   .keyBy()
   .mapKeys(e => `@lrnwebcomponents/${e}`)
-  .mapValues(e => `file:elements/${e}`)
+  .mapValues(e => `file:../${e}`)
   .value();
 
 fs.writeFileSync(

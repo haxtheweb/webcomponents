@@ -1,5 +1,6 @@
 test
 *.umd.js
+*.amd.js
 *.min.js
 package.json
 package-lock.json

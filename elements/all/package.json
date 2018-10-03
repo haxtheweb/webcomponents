@@ -4,10 +4,11 @@
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json elements/all/test/"
   },
+  "version": "0.0.2",
   "private": true,
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "file:elements/hax-body-behaviors",
-    "@lrnwebcomponents/lrn-button": "file:elements/lrn-button"
+    "@lrnwebcomponents/hax-body-behaviors": "file:../hax-body-behaviors",
+    "@lrnwebcomponents/lrn-button": "file:../lrn-button"
   }
 }

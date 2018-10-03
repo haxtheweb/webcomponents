@@ -1,9 +1,9 @@
-# LRN Web components
+# lrnwebcomponents
 [![Published on npm](https://img.shields.io/npm/v/@lrnwebcomponents/lrnwebcomponents.svg?style=flat)](https://www.npmjs.com/package/@lrnwebcomponents/lrnwebcomponents)
 [![Build Status](https://travis-ci.org/elmsln/lrnwebcomponents.svg?branch=master)](https://travis-ci.org/elmsln/lrnwebcomponents)
 [![Dependency Status](https://img.shields.io/david/elmsln/lrnwebcomponents.svg?style=flat)](https://david-dm.org/elmsln/lrnwebcomponents)
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/author/elmsln)
-Welcome to the LRN Web components project!
+Welcome to the lrnwebcomponents project!
 Web components by the ELMS:LN team
 ## Quick-start
 
