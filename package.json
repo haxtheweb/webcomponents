@@ -22,7 +22,7 @@
   "license": "Apache-2.0",
   "repository": "git@github.com/elmsln/lrnwebcomponents.git",
   "scripts": {
-    "start": "spandx",
+    "start": "polymer serve --module-resolution=node --npm --open",
     "lerna": "lerna",
     "init": "lerna init",
     "test": "yarn run build && wct --configFile wct.conf.json test/index.html",
@@ -85,7 +85,6 @@
     "rollup-plugin-babel": "4.0.3",
     "rollup-plugin-commonjs": "9.1.8",
     "rollup-plugin-terser": "3.0.0",
-    "spandx": "1.0.3",
     "strip-css-comments": "3.0.0",
     "trim": "0.0.1",
     "wct-browser-legacy": "1.0.1",
