@@ -8,3 +8,4 @@ npm-debug.log
 test/.wct-kludge
 .sass-cache
 .yo-rc.json
+analysis-error.json

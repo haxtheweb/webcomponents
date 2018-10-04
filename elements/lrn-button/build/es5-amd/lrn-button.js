@@ -7,11 +7,11 @@ define([
   "./node_modules/@polymer/paper-tooltip/paper-tooltip.js"
 ], function(_polymerElement) {
   "use strict";
-  function _templateObject_e95e0a70c72211e89bb16bbea63030ae() {
+  function _templateObject_f8385fd0c7f111e8aa0f0973794752a9() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n<style>\n:host {\n    display: block;\n    @apply --paper-font-common-base;\n    @apply --paper-button;\n    --lrnsys-button-height: 3em;\n  }\n\n  :host.center {\n    text-align: center;\n  }\n\n  a {\n    text-decoration: none;\n    display: block;\n    color: #000000;\n  }\n\n  paper-button {\n    transition: .3s;\n    margin: 0;\n    max-width: 50%;\n    height: inherit;\n    -webkit-justify-content: flex-start;\n    justify-content: flex-start;\n    align-items: center;\n    border-radius: unset;\n  }\n\n  paper-button iron-icon {\n    height: var(--lrnsys-button-height);\n    margin: 0 .75em;\n  }\n\n  paper-button div.inner {\n    height: var(--lrnsys-button-height);\n    line-height: var(--lrnsys-button-height);\n    padding: 0 .75em;\n  }\n\n  paper-button span.label {\n    height: var(--lrnsys-button-height);\n    line-height: var(--lrnsys-button-height);\n  }\n\n  .no-margin {\n    margin: 0 !important;\n  }\n\n  .no-right-padding {\n    padding-right: 0 !important;\n  }\n\n  .no-left-padding {\n    padding-left: 0 !important;\n  }\n\n  .center {\n    text-align: center;\n    margin: 0 auto;\n  }\n</style>\n<style include="materializecss-styles-colors"></style>\n<a tabindex="-1" id="lrnsys-button-link" href$="[[showHref]]" data-prefetch-hover$="[[prefetch]]" target$="[[target]]">\n  <paper-button id="button" raised="[[raised]]" class$="[[class]] [[color]] [[textColor]]" disabled$="[[disabled]]">\n    <div class$="inner [[innerClass]]">\n      <iron-icon icon$="[[icon]]" id="icon" class$="[[iconClass]]" hidden$="[[!icon]]"></iron-icon>\n      <span class="label" hidden$="[[!label]]">\n        [[label]]\n      </span>\n      <slot></slot>\n    </div>\n  </paper-button>\n</a>\n<paper-tooltip for="lrnsys-button-link" animation-delay="0">[[alt]]</paper-tooltip>'
     ]);
-    _templateObject_e95e0a70c72211e89bb16bbea63030ae = function() {
+    _templateObject_f8385fd0c7f111e8aa0f0973794752a9 = function() {
       return data;
     };
     return data;
@@ -189,7 +189,7 @@ define([
           key: "template",
           get: function get() {
             return (0, _polymerElement.html)(
-              _templateObject_e95e0a70c72211e89bb16bbea63030ae()
+              _templateObject_f8385fd0c7f111e8aa0f0973794752a9()
             );
           }
         },

@@ -5,3 +5,4 @@ test
 *.min.js
 package.json
 package-lock.json
+analysis-error.json
