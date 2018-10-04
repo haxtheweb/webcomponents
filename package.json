@@ -28,7 +28,7 @@
     "postinstall": "lerna link",
     "test": "yarn run build && wct --configFile wct.conf.json test/index.html",
     "build": "lerna run build",
-    "publish": "git add -A && git commit -m 'publishing a new release' && git push origin master && lerna publish",
+    "publish": "lerna publish",
     "test-suite-inject": "node scripts/test-suite-inject.js",
     "storybook": "start-storybook -c .storybook -p 9001 -s ./elements",
     "build-storybook": "build-storybook -c .storybook -o ../../storybooks/lrnwebcomponents",
