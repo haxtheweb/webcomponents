@@ -8,15 +8,20 @@ Web components by the ELMS:LN team
 ## Quick-start
 
 *Notice: You will need to use [Node](https://nodejs.org/en/) version 6.0 or higher. Verify that you have yarn enabled — if not [install yarn globally](https://yarnpkg.com/lang/en/docs/install/). These web components are written in [ES6](http://es6-features.org/) and build routines compile to es5 to encompass more browsers.*
+
 ### Install
 
 ```bash
 $ git clone git@github.com/elmsln/lrnwebcomponents.git
 $ cd lrnwebcomponents
-$ yarn install # this will take a while due to lerna bootstrap
-$ yarn rebuild node-sass  # this may be necessary
+$ yarn install
 $ yarn start
 ```
+
+### Working on elements (new-element)
+Run `yarn run new` to make a new element. Go to the new element `cd elements/new-element` and run `yarn start` to do development on the element. If you are pulling in another element to use, run `yarn add reponame --save`.
+
+*Special Note:* If you are referencing your own elements from inside the repo (like element-a is used in element-b) then make sure when you do the install for it you issue `yarn add @myrepo/element-a@latest --save` to ensure that it's pegged to latest. This helps with development consistency.
 
 ## Scripts
 
@@ -30,15 +35,13 @@ $ yarn start
     -  Run tests on ALL lrnwebcomponents.
 - `$ yarn run build`
     -  Run build on ALL lrnwebcomponents.
-- `$ yarn run bootstrap`
-    - Update ALL lrnwebcomponents' dependencies and interlink them with [lerna bootstrap][lerna-bs].
 - `$ yarn run storybook`
     - Run storybook
 - `$ yarn run build-storybook`
     - Build storybook for deployment
+- `$ yarn run publish`
+    - Publish ALL lrnwebcomponents' elements to npmjs.com
 
-[lerna]: https://github.com/lerna/lerna
-[lerna-bs]: https://github.com/lerna/lerna#bootstrap
 
 ## Web Component development
 

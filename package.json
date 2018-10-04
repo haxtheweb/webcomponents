@@ -22,16 +22,17 @@
   "license": "Apache-2.0",
   "repository": "git@github.com/elmsln/lrnwebcomponents.git",
   "scripts": {
-    "start": "polymer serve --module-resolution=node --npm --open",
+    "start": "yarn run storybook",
     "lerna": "lerna",
     "init": "lerna init",
+    "postinstall": "lerna link",
     "test": "yarn run build && wct --configFile wct.conf.json test/index.html",
-    "build": "lerna run build",
+    "build": "git add -A && git commit -m 'publishing a new release' && git push origin master && lerna build",
     "test-suite-inject": "node scripts/test-suite-inject.js",
     "storybook": "start-storybook -c .storybook -p 9001 -s ./elements",
-    "build-storybook": "build-storybook -c .storybook -o .storybook_out",
+    "build-storybook": "build-storybook -c .storybook -o ../../storybooks/lrnwebcomponents",
     "rebuild-wcfcache": "./node_modules/.bin/gulp",
-    "new": "yarn run rebuild-wcfcache && wcfactory new && yarn run test-suite-inject && yarn install --link-duplicates"
+    "new": "yarn run rebuild-wcfcache && wcf new && yarn run test-suite-inject && yarn install --link-duplicates"
   },
   "devDependencies": {
     "@babel/core": "7.1.2",
@@ -76,7 +77,7 @@
     "lodash.clonedeep": "4.5.0",
     "node-sass": "4.9.3",
     "polymer-build": "3.0.4",
-    "polymer-webpack-loader": "2.0.3",
+    "polymer-webpack-loader": "^2.0.3",
     "prettier": "1.14.3",
     "react": "*",
     "react-dom": "*",
@@ -111,8 +112,8 @@
     },
     "ignore": [
       "elements/**/*.*.js",
-      "wcfLibraries/**/*.js",
-      "wcfBuildTargets/**/*.js"
+      "themes/**/*.*.js",
+      "libraries/**/*.js"
     ]
   },
   "keywords": [
@@ -140,7 +141,15 @@
       "**/@polymer",
       "**/@polymer/**",
       "**/@webcomponents",
-      "**/@webcomponents/**"
+      "**/@webcomponents/**",
+      "**/@rhelements",
+      "**/@rhelements/**",
+      "**/@skatejs",
+      "**/@skatejs/**",
+      "**/slim-js",
+      "**/slim-js/**",
+      "**/lit-html",
+      "**/lit-html/**"
     ]
   },
   "husky": {

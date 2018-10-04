@@ -1,4 +1,5 @@
 {
+  "lerna": "3.4.0",
   "packages": ["elements/*", "themes/*"],
   "version": "0.0.19",
   "npmClient": "yarn",
