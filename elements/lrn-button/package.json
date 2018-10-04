@@ -30,7 +30,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.10",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.18",
     "@lrnwebcomponents/materializecss-styles": "^0.0.18",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
