@@ -8,8 +8,8 @@
   "private": true,
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "file:../hax-body-behaviors",
-    "@lrnwebcomponents/lrn-button": "file:../lrn-button",
-    "@lrnwebcomponents/materializecss-styles": "file:../materializecss-styles"
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.20",
+    "@lrnwebcomponents/lrn-button": "^0.0.20",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.20"
   }
 }

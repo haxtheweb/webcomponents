@@ -8,4 +8,8 @@ npm-debug.log
 test/.wct-kludge
 .sass-cache
 .yo-rc.json
-analysis-error.json
+yarn.lock
+
+package-lock.json
+
+yarn-error.log

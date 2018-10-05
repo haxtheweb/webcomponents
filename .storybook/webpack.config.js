@@ -1,6 +1,6 @@
 const path = require("path");
-
 module.exports = (baseConfig, env, defaultConfig) => {
+  // Make whatever fine-grained changes you need
   defaultConfig.resolve.alias = {
     "../../whatwg-fetch/fetch.js": path.join(
       __dirname,

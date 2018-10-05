@@ -1,6 +1,6 @@
 {
   "name": "@lrnwebcomponents/lrnwebcomponents",
-  "description": "Web components by the ELMS:LN team",
+  "description": "ELMS:LN produced web components for any project",
   "wcfactory": {
     "askSASS": true,
     "askProps": true,
@@ -33,7 +33,7 @@
     "storybook": "start-storybook -c .storybook -p 9001 -s ./elements",
     "build-storybook": "build-storybook -c .storybook -o ../../storybooks/lrnwebcomponents",
     "rebuild-wcfcache": "./node_modules/.bin/gulp",
-    "new": "yarn run rebuild-wcfcache && wcfactory new && yarn run test-suite-inject && yarn install --link-duplicates"
+    "new": "yarn run rebuild-wcfcache && wcf element && yarn run test-suite-inject && yarn install --link-duplicates"
   },
   "devDependencies": {
     "@babel/core": "7.1.2",
@@ -50,6 +50,7 @@
     "@storybook/polymer": "3.4.11",
     "@webcomponents/webcomponentsjs": "2.1.3",
     "babel-plugin-external-helpers": "6.22.0",
+    "babel-plugin-transform-custom-element-classes": "0.1.0",
     "babel-plugin-transform-es2015-modules-umd": "6.24.1",
     "babel-preset-env": "1.7.0",
     "browser-sync": "2.24.7",
@@ -63,6 +64,7 @@
     "gulp-babel": "8.0.0",
     "gulp-clean-css": "3.10.0",
     "gulp-concat-util": "0.5.5",
+    "gulp-copy": "4.0.0",
     "gulp-rename": "1.4.0",
     "gulp-replace": "1.0.0",
     "gulp-sass": "4.0.1",
@@ -72,18 +74,21 @@
     "gulp-svg-sprite": "1.5.0",
     "gulp-trim": "1.0.2",
     "husky": "1.1.0",
-    "lerna": "^3.4.0",
+    "inquirer-recursive": "0.0.5",
+    "jest": "23.6.0",
+    "lerna": "^3.4.1",
     "lint-staged": "7.3.0",
     "lodash": "4.17.11",
     "lodash.clonedeep": "4.5.0",
     "node-sass": "4.9.3",
     "polymer-build": "3.0.4",
-    "polymer-webpack-loader": "^2.0.3",
+    "polymer-webpack-loader": "2.0.3",
     "prettier": "1.14.3",
+    "raw-loader": "0.5.1",
     "react": "*",
     "react-dom": "*",
     "requirejs": "2.3.6",
-    "rollup": "0.66.3",
+    "rollup": "0.66.4",
     "rollup-plugin-babel": "4.0.3",
     "rollup-plugin-commonjs": "9.1.8",
     "rollup-plugin-terser": "3.0.0",
@@ -98,10 +103,6 @@
   "dependencies": {
     "@polymer/lit-element": "0.6.1",
     "@polymer/polymer": "3.0.5",
-    "babel-plugin-transform-custom-element-classes": "0.1.0",
-    "gulp-copy": "4.0.0",
-    "inquirer-recursive": "0.0.5",
-    "jest": "23.6.0",
     "slim-js": "4.0.1"
   },
   "lint-staged": {
@@ -140,18 +141,19 @@
       "themes/*"
     ],
     "nohoist": [
+      "**/@lrnwebcomponents/hax-body-behaviors",
       "**/@polymer",
       "**/@polymer/**",
-      "**/@webcomponents",
-      "**/@webcomponents/**",
-      "**/@rhelements",
-      "**/@rhelements/**",
+      "**/@rhelements/rhelement",
       "**/@skatejs",
       "**/@skatejs/**",
-      "**/slim-js",
-      "**/slim-js/**",
+      "**/skatejs",
+      "**/@webcomponents",
+      "**/@webcomponents/**",
       "**/lit-html",
-      "**/lit-html/**"
+      "**/lit-html/**",
+      "**/slim-js",
+      "**/slim-js/**"
     ]
   },
   "husky": {

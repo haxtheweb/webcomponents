@@ -4,7 +4,7 @@
 [![Dependency Status](https://img.shields.io/david/elmsln/lrnwebcomponents.svg?style=flat)](https://david-dm.org/elmsln/lrnwebcomponents)
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/author/elmsln)
 Welcome to the lrnwebcomponents project!
-Web components by the ELMS:LN team
+ELMS:LN produced web components for any project
 ## Quick-start
 
 *Notice: You will need to use [Node](https://nodejs.org/en/) version 6.0 or higher. Verify that you have yarn enabled — if not [install yarn globally](https://yarnpkg.com/lang/en/docs/install/). These web components are written in [ES6](http://es6-features.org/) and build routines compile to es5 to encompass more browsers.*
@@ -17,11 +17,6 @@ $ cd lrnwebcomponents
 $ yarn install
 $ yarn start
 ```
-
-### Working on elements (new-element)
-Run `yarn run new` to make a new element. Go to the new element `cd elements/new-element` and run `yarn start` to do development on the element. If you are pulling in another element to use, run `yarn add reponame --save`.
-
-*Special Note:* If you are referencing your own elements from inside the repo (like element-a is used in element-b) then make sure when you do the install for it you issue `yarn add @myrepo/element-a@latest --save` to ensure that it's pegged to latest. This helps with development consistency.
 
 ## Scripts
 
@@ -39,7 +34,7 @@ Run `yarn run new` to make a new element. Go to the new element `cd elements/new
     - Run storybook
 - `$ yarn run build-storybook`
     - Build storybook for deployment
-- `$ yarn run publish`
+- `$ lerna publish`
     - Publish ALL lrnwebcomponents' elements to npmjs.com
 
 
@@ -48,6 +43,34 @@ Run `yarn run new` to make a new element. Go to the new element `cd elements/new
 Because this is a monorepo, each web component will need to be independently built in order to actively work on and preview the changes. Every web component has its own Gulp file and Yarn/NPM script.
 
 While still running `yarn start` in one terminal window (which runs the local server), you will need to open another terminal window, drill into the directory of the web component you'd like to work on, and execute the `yarn run dev` command. This command will use gulp tasks to watch the files within that web component directory and will automatically re-run the build command and refresh the browser when you make changes to the web component.
+
+### Working on elements (new-element)
+Run `yarn run new` to make a new element. Go to the new element `cd elements/new-element` and run `yarn start` to do development on the element. If you are pulling in another element to use, run `yarn add reponame --save`.
+
+*Special Note:* If you are referencing elements from another repo you may need to update the mono-repo's package.json to ensure that this dependency is pulled up to the local element node_modules correctly. Example of what would need modified:
+
+```
+"workspaces": {
+    "packages": [
+      "elements/*",
+      "themes/*"
+    ],
+    "nohoist": [
+      "**/@polymer",
+      "**/@polymer/**",
+      "**/@webcomponents",
+      "**/@webcomponents/**",
+      "**/@rhelements",
+      "**/@rhelements/**",
+      "**/@skatejs",
+      "**/@skatejs/**",
+      "**/slim-js",
+      "**/slim-js/**",
+      "**/lit-html",
+      "**/lit-html/**"
+    ]
+  },
+```
 
 ### Example development on a web component
 
