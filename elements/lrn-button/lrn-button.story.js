@@ -3,9 +3,11 @@ import * as storybookBridge from "@storybook/addon-knobs/polymer";
 import { LrnButton } from "./lrn-button.js";
 import "@polymer/iron-demo-helpers/demo-snippet.js";
 
+// need to account for polymer goofiness when webpack rolls this up
 var template = require("raw-loader!./demo/index.html");
 let pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im;
 var array_matches = pattern.exec(template);
+// now template is just the body contents
 template = array_matches[1];
 const stories = storiesOf("Atoms", module);
 stories.addDecorator(storybookBridge.withKnobs);
