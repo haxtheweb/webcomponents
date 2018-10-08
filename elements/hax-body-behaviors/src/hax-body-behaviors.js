@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { HAXWiring } from "./lib/HAXWiring.js";
+export { HaxBodyBehaviors };
 /**
  * `hax-body-behaviors`
  * `HAX Body Behaviors to utilize in any element`

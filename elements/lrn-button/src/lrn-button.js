@@ -8,6 +8,7 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
+export { LrnButton };
 /**
  * `lrn-button`
  * `Simple button wrapper with a few options`
