@@ -6,11 +6,11 @@ define([
   "use strict";
   Object.defineProperty(_exports, "__esModule", { value: !0 });
   _exports.HaxBody = void 0;
-  function _templateObject_6b646740cbc811e8a0bd89fd969155a9() {
+  function _templateObject_a66402b0cbc811e8b0f82b40ed9ef237() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
     ]);
-    _templateObject_6b646740cbc811e8a0bd89fd969155a9 = function() {
+    _templateObject_a66402b0cbc811e8b0f82b40ed9ef237 = function() {
       return data;
     };
     return data;
@@ -55,7 +55,7 @@ define([
           key: "template",
           get: function get() {
             return (0, _polymerElement.html)(
-              _templateObject_6b646740cbc811e8a0bd89fd969155a9()
+              _templateObject_a66402b0cbc811e8b0f82b40ed9ef237()
             );
           }
         },
