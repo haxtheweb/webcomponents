@@ -1,1 +1,18 @@
-{}
+{
+  /**
+   * Archive
+   */
+  "archive": {
+    "type": Object,
+    "notify": true
+  },
+  /**
+   * datUrl
+   */
+  "datUrl": {
+    "type": String,
+    "value": "window.location.host",
+    "observer": "_datUrlChanged",
+    "notify": true
+  }
+}
