@@ -8,6 +8,8 @@
   "private": true,
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/beaker-broker": "^0.0.20",
+    "@lrnwebcomponents/hax-body": "^0.0.20",
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.20",
     "@lrnwebcomponents/lrn-button": "^0.0.20",
     "@lrnwebcomponents/materializecss-styles": "^0.0.20"

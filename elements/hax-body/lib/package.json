@@ -1,0 +1,33 @@
+{
+  "name": "@lrnwebcomponents/hax-body",
+  "flat": true,
+  "version": "0.0.1",
+  "description": "A LRN element",
+  "main": "hax-body.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/paper-listbox": "^3.0.0-pre.1",
+    "@polymer/paper-item": "^3.0.0-pre.1",
+    "@polymer/paper-menu": "^3.0.0-pre.1",
+    "@polymer/neon-animation": "^3.0.0-pre.1",
+    "@polymer/paper-menu-button": "^3.0.0-pre.1",
+    "@polymer/paper-icon-button": "^3.0.0-pre.1",
+    "@polymer/paper-input": "^3.0.0-pre.1",
+    "@polymer/paper-slider": "^3.0.0-pre.1",
+    "@polymer/paper-checkbox": "^3.0.0-pre.1",
+    "@polymer/paper-toggle-button": "^3.0.0-pre.1",
+    "@polymer/iron-list": "^3.0.0-pre.1",
+    "@polymer/paper-card": "^3.0.0-pre.1",
+    "@polymer/paper-tabs": "^3.0.0-pre.1",
+    "@polymer/iron-a11y-keys": "^3.0.0-pre.1",
+    "@polymer/iron-image": "^3.0.0-pre.1",
+    "@polymer/paper-toast": "^3.0.0-pre.1",
+    "@polymer/paper-dialog-scrollable": "^3.0.0-pre.1",
+    "@polymer/iron-flex-layout": "^3.0.0-pre.1",
+    "@polymer/paper-dropdown-menu": "^3.0.0-pre.1",
+    "@polymer/paper-styles": "^3.0.0-pre.1",
+    "@polymer/iron-menu-behavior": "^3.0.0-pre.1",
+    "@polymer/iron-dropdown": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
