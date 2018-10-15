@@ -6,7 +6,7 @@
     "elementName": "hax-body-behaviors",
     "generator-wcfactory-version": ""
   },
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "Wire any element up to HAX",
   "repository": {
     "type": "git",
@@ -30,15 +30,15 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@polymer/iron-demo-helpers": "3.0.2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.1.3",
     "concurrently": "4.0.1",
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.4",
     "lodash": "4.17.11",
-    "polymer-cli": "1.8.0",
     "polymer-build": "3.0.4",
+    "polymer-cli": "1.8.0",
     "wct-browser-legacy": "1.0.1"
   },
   "private": false,
