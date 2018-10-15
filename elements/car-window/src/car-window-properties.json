@@ -1,0 +1,23 @@
+{
+  "tint": {
+    "name": "tint",
+    "type": "String",
+    "value": "clear",
+    "reflectToAttribute": false,
+    "observer": false
+  },
+  "size": {
+    "name": "size",
+    "type": "Number",
+    "value": "1000",
+    "reflectToAttribute": false,
+    "observer": false
+  },
+  "manufacture": {
+    "name": "manufacture",
+    "type": "Boolean",
+    "value": "",
+    "reflectToAttribute": false,
+    "observer": false
+  }
+}

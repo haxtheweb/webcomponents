@@ -1,0 +1,16 @@
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+.tint-green {
+  background-color: green;
+}
+
+.tint-clear {
+  opacity: .7;
+  background-color: grey;
+}

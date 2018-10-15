@@ -1,0 +1,233 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "`car-window`\n`Describe how a car window works`",
+      "summary": "",
+      "path": "car-window.js",
+      "properties": [
+        {
+          "name": "tint",
+          "type": "?",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 54,
+              "column": 2
+            },
+            "end": {
+              "line": 60,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "false"
+            }
+          },
+          "defaultValue": "\"clear\""
+        },
+        {
+          "name": "size",
+          "type": "?",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 61,
+              "column": 2
+            },
+            "end": {
+              "line": 67,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "false"
+            }
+          },
+          "defaultValue": "\"1000\""
+        },
+        {
+          "name": "manufacture",
+          "type": "?",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 68,
+              "column": 2
+            },
+            "end": {
+              "line": 74,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "false"
+            }
+          },
+          "defaultValue": "\"\""
+        }
+      ],
+      "methods": [
+        {
+          "name": "render",
+          "description": "render function",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 26,
+              "column": 2
+            },
+            "end": {
+              "line": 49,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "tag",
+          "description": "Store the tag name to make it easier to obtain directly.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 83,
+              "column": 2
+            },
+            "end": {
+              "line": 85,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "connected",
+          "description": "life cycle, element is afixed to the DOM",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 125,
+              "column": 2
+            },
+            "end": {
+              "line": 125,
+              "column": 16
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 23,
+          "column": 0
+        },
+        "end": {
+          "line": 126,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "SkateJS",
+      "name": "CarWindow",
+      "attributes": [
+        {
+          "name": "tint",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 54,
+              "column": 2
+            },
+            "end": {
+              "line": 60,
+              "column": 3
+            }
+          },
+          "metadata": {}
+        },
+        {
+          "name": "size",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 61,
+              "column": 2
+            },
+            "end": {
+              "line": 67,
+              "column": 3
+            }
+          },
+          "metadata": {}
+        },
+        {
+          "name": "manufacture",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 68,
+              "column": 2
+            },
+            "end": {
+              "line": 74,
+              "column": 3
+            }
+          },
+          "metadata": {}
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "car-window"
+    }
+  ],
+  "classes": [
+    {
+      "description": "extend into class name matching library for consistency",
+      "summary": "",
+      "path": "car-window.js",
+      "properties": [],
+      "methods": [],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 10,
+          "column": 0
+        },
+        "end": {
+          "line": 10,
+          "column": 53
+        }
+      },
+      "privacy": "public",
+      "name": "SkateJS"
+    }
+  ]
+}
