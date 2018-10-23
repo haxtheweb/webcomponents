@@ -1,0 +1,32 @@
+<template is="dom-bind">
+  <style>
+    #hax-layout-[[model.layout]] .clearfix {
+      clear: both;
+    }
+    #hax-layout-[[model.layout]] #area1 {
+      display: block;
+      width: 25%;
+      padding: 0;
+      margin: 0;
+    }
+    #hax-layout-[[model.layout]] #area2 {
+      display: block;
+      width: 75%;
+      padding: 0;
+      margin: 0;
+    }
+    #hax-layout-[[model.layout]] .layout-wrapper {
+      width: 100%;
+      padding: 5em;
+    }
+  </style>
+  <div class="layout-wrapper">
+    <div id="area1">
+      <slot name="area1"></slot>
+    </div>
+    <div id="area2">
+      <slot name="area2"></slot>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</template>

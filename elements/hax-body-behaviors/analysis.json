@@ -1,0 +1,281 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "`hax-body-behaviors`\n`HAX Body Behaviors to utilize in any element`",
+      "summary": "",
+      "path": "hax-body-behaviors.js",
+      "properties": [
+        {
+          "name": "templateUrl",
+          "type": "?",
+          "description": "A file that contains the HTML template for the element.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 38,
+              "column": 2
+            },
+            "end": {
+              "line": 40,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true
+            }
+          }
+        },
+        {
+          "name": "propertiesUrl",
+          "type": "?",
+          "description": "A file that contains the properties that will be wired into this element.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 45,
+              "column": 2
+            },
+            "end": {
+              "line": 47,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true
+            }
+          }
+        },
+        {
+          "name": "styleUrl",
+          "type": "?",
+          "description": "A file that contains the css for this element to be mixed into the html block.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 52,
+              "column": 2
+            },
+            "end": {
+              "line": 54,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true
+            }
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "getTemplate",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 16,
+              "column": 2
+            },
+            "end": {
+              "line": 22,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "connectedCallback",
+          "description": "life cycle, element is afixed to the DOM",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 87,
+              "column": 2
+            },
+            "end": {
+              "line": 95,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_copyAttribute",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 97,
+              "column": 2
+            },
+            "end": {
+              "line": 104,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "name"
+            },
+            {
+              "name": "to"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_queueAction",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 106,
+              "column": 2
+            },
+            "end": {
+              "line": 108,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "action"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_processQueue",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 110,
+              "column": 2
+            },
+            "end": {
+              "line": 116,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_setProperty",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 118,
+              "column": 2
+            },
+            "end": {
+              "line": 120,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "{\n  name,\n  value\n}"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "render",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 122,
+              "column": 2
+            },
+            "end": {
+              "line": 130,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 15,
+          "column": 0
+        },
+        "end": {
+          "line": 137,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "HaxBodyBehaviors",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    }
+  ],
+  "classes": [
+    {
+      "description": "Object to validate HAX",
+      "summary": "",
+      "path": "lib/HAXWiring.js",
+      "properties": [],
+      "methods": [],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 8,
+          "column": 7
+        },
+        "end": {
+          "line": 816,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "name": "HAXWiring"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+<template is="dom-bind">
+  <style>
+    #hax-layout-[[model.layout]] .clearfix {
+      clear: both;
+    }
+    @media (min-width:[[model.breakpoint]]) {
+        #hax-layout-[[model.layout]] .cols-33-33-33 {
+            padding: 0 -15px;
+        }
+        #hax-layout-[[model.layout]] .cols-33-33-33 .cols-33 {
+            width: 33.33333333%;
+            min-height: 15px;
+            padding: 0 15px;
+            float: left;
+            position: relative;
+        }
+    }
+  </style>
+  <div class="cols-33-33-33">
+    <div id="area1" class="cols-33">
+      <slot name="area1"></slot>
+    </div>
+    <div id="area2" class="cols-33">
+      <slot name="area2"></slot>
+    </div>
+    <div id="area3" class="cols-33">
+      <slot name="area3"></slot>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</template>
