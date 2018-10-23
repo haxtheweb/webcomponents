@@ -1,0 +1,67 @@
+<script type="module" src="@polymer/polymer/polymer.js"></script>
+
+<!--
+`haxcms-editor-builder`
+Figure out what our context is and setup based on that
+
+@demo demo/index.html
+
+@microcopy - the mental model for this element
+- something called us asking to provide an authoring solution
+- we need to decide based on environment if this supports php, beaker or none
+
+-->
+
+<dom-module id="haxcms-editor-builder">
+  <script type="module">
+import '@polymer/polymer/polymer.js';
+Polymer.cmsSiteEditor = Polymer({
+  is: 'haxcms-editor-builder',
+  /**
+   * created life cycle
+   */
+  ready: function() {
+    this.getContext();
+  },
+  /**
+   * Try to get context of what backend is powering this
+   */
+  getContext: function () {
+    let context = '';
+    Polymer.cmsSiteEditor.tag = 'haxcms-jwt';
+    // figure out if we need to load the PHP or beaker
+    if (typeof DatArchive !== typeof undefined) {
+      context = this.importHref(this.resolveUrl('haxcms-beaker.html'), (e) => {
+        Polymer.cmsSiteEditor.tag = 'haxcms-beaker';
+      });
+    }
+    else {
+      context = this.importHref(this.resolveUrl('haxcms-jwt.php'), (e) => {
+        Polymer.cmsSiteEditor.tag = 'haxcms-jwt';
+      });
+    }
+    return context;
+  }
+});
+// store reference to the instance as a global
+Polymer.cmsSiteEditor.instance = null;
+// self append if anyone calls us into action
+Polymer.cmsSiteEditor.requestAvailability = function (element = this, location = document.body) {
+  if (!Polymer.cmsSiteEditor.instance) {
+    Polymer.cmsSiteEditor.instance = document.createElement(Polymer.cmsSiteEditor.tag);
+    Polymer.cmsSiteEditor.instance.appElement = element;
+    Polymer.cmsSiteEditor.instance.appendTarget = location;
+    // self append the reference to.. well.. us.
+    document.body.appendChild(Polymer.cmsSiteEditor.instance);
+  }
+  else {
+    // already exists, just alter some references
+    Polymer.cmsSiteEditor.instance.appElement = element;
+    Polymer.cmsSiteEditor.instance.appendTarget = location;
+    if (typeof Polymer.cmsSiteEditor.instance.haxCmsSiteEditorElement !== typeof undefined) {
+      Polymer.cmsSiteEditor.instance.appendTarget.appendChild(Polymer.cmsSiteEditor.instance.haxCmsSiteEditorElement);
+    }
+  }
+};
+</script>
+</dom-module>

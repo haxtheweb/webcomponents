@@ -1,0 +1,152 @@
+<script type="module" src="@polymer/polymer/polymer.js"></script>
+<link rel="import" href="../haxcms-elements/haxcms-theme-behavior.html">
+<script type="module" src="schema-behaviors/schema-behaviors.js"></script>
+<link rel="import" href="../simple-colors/simple-colors.html">
+<link rel="import" href="../paper-card/paper-card.html">
+<script type="module" src="@polymer/paper-button/paper-button.js"></script>
+<script type="module" src="@polymer/iron-icons/iron-icons.js"></script>
+
+<!--
+`haxcms-dev-theme`
+A theme intended as the starting point to fork from and build new themes for HAXCMS
+which allows you to build things that just work using JSON Outline Schema as it's "backend"
+and then IF hax is around it'll show up :)
+
+@demo demo/index.html
+
+-->
+<dom-module id="haxcms-dev-theme">
+  <template>
+    <style is="custom-style" include="simple-colors">
+      :host {
+        display: block;
+        /* theme color which is dictated by the manifest */
+        background-color: var(--haxcms-color, black);
+      }
+      iron-list {
+        padding: 16px;
+        margin: 0 auto;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      paper-card {
+        width: 200px;
+        color: black;
+        background-color: white;
+        padding: 8px;
+        font-size: 10px;
+      }
+      /**
+       * Hide the slotted content during edit mode. This must be here to work.
+       */
+      :host[edit-mode] #slot {
+        display: none;
+      }
+      .manifest,.activeitem {
+        width: 48%;
+        margin: 0;
+        padding: 0;
+        display:inline-block;
+        vertical-align: text-top;
+      }
+    </style>
+    <h1 style="margin:0;">HAXCMS DEVELOPMENT THEME</h1>
+    <iron-list id="list" items="[[manifest.items]]" grid>
+      <template>
+        <div style="padding:16px;">
+        <paper-card heading="[[item.title]]" image="[[item.metadata.image]]" elevation="1" animated-shadow="false">
+          <div class="card-content">
+            <div>description: [[item.description]]</div>
+            <div>location: [[item.location]]</div>
+            <div>changed: [[item.metadata.updated]]</div>
+          </div>
+          <div class="card-actions">
+            <paper-button data-id$="[[item.id]]">Click to set activeItem</paper-button>
+          </div>
+        </paper-card>
+        </div>
+      </template>
+    </iron-list>
+    <div class="manifest">
+    <h2>title: [[manifest.title]]</h2>
+    <div>description: [[manifest.description]]</div>
+    <div>icon: <iron-icon icon="[[manifest.metadata.icon]]"></iron-icon></div>
+    <div>image: <img src$="[[manifest.metadata.image]]" height="200px" width="200px" /></div>
+    </div>
+    <div class="activeitem">
+    <paper-button id="unset">Unset activeItem</paper-button>
+    <h2>ACTIVE ITEM</h2>
+    <div>[[activeItem.title]]</div>
+    <div id="contentcontainer">
+      <div id="slot">
+        <slot></slot>
+      </div>
+    </div>
+    </div>
+  </template>
+  <script type="module">
+import '@polymer/polymer/polymer.js';
+import 'schema-behaviors/schema-behaviors.js';
+import '@polymer/paper-button/paper-button.js';
+import '@polymer/iron-icons/iron-icons.js';
+Polymer({
+  is: 'haxcms-dev-theme',
+  listeners: {
+    'list.tap': '_itemTapped',
+    'unset.tap': '_unsetTapped',
+  },
+  behaviors: [
+    SchemaBehaviors.Schema,
+    window.simpleColorsBehaviors,
+    HAXCMSBehaviors.Theme,
+  ],
+  properties: {
+    // The behavior gives you editMode, activeItem and manifest
+    // You can add whatever else you need here
+  },
+  /**
+   * Ready life cycle
+   */
+  ready: function () {
+    // required so that HAX is injected when available
+    this.setupHAXTheme();
+  },
+  /**
+   * Detatched life cycle
+   */
+  detached: function () {
+    // this helps with cleaning things up if the theme is changed
+    this.setupHAXTheme(false);
+  },
+  /**
+   * Item tapped, let's set it as active by searching the manifest array
+   * Your theme is in charge of ensuring that when activeItem needs changed
+   * that it ensures that happens
+   */
+  _itemTapped: function (e) {
+    var normalizedEvent = Polymer.dom(e);
+    var local = normalizedEvent.localTarget;
+    var activeId = local.getAttribute('data-id');
+    if (local.tagName === 'PAPER-BUTTON' && typeof activeId !== typeof undefined) {
+      const item = this.manifest.items.filter((d, i) => {
+        if (activeId === d.id) {
+          return d;
+        }
+      }).pop();
+      this.fire('json-outline-schema-active-item-changed', item);
+      // console log these so you can debug easily as you build out
+      console.log(this.manifest);
+      console.log(item);
+    }
+  },
+  /**
+   * Settings activeItem to nothing will ensure that state goes back to nothing active
+   * and then other options appear
+   */
+  _unsetTapped: function (e) {
+    this.fire('json-outline-schema-active-item-changed', {});
+  },
+});
+</script>
+</dom-module>

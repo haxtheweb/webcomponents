@@ -1,0 +1,597 @@
+<script type="module" src="@polymer/polymer/polymer.js"></script>
+<link rel="import" href="../map-menu/map-menu.html">
+<link rel="import" href="../jwt-login/jwt-login.html">
+<link rel="import" href="../simple-colors/simple-colors.html">
+<link rel="import" href="../simple-colors/simple-colors-picker.html">
+<script type="module" src="@polymer/paper-icon-button/paper-icon-button.js"></script>
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../magazine-cover/magazine-cover.html">
+<link rel="import" href="../paper-toast/paper-toast.html">
+<link rel="import" href="../dropdown-select/dropdown-select.html">
+<link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../paper-dialog/paper-dialog.html">
+<link rel="import" href="../paper-icon-picker/paper-icon-picker.html">
+<link rel="import" href="../paper-dialog-scrollable/paper-dialog-scrollable.html">
+<link rel="import" href="../paper-tooltip/paper-tooltip.html">
+<link rel="import" href="../app-layout/app-header/app-header.html">
+<link rel="import" href="../app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../app-layout/app-drawer/app-drawer.html">
+<script type="module" src="@polymer/iron-icons/iron-icons.js"></script>
+<script type="module" src="@polymer/iron-icons/editor-icons.js"></script>
+<script type="module" src="@polymer/iron-icons/notification-icons.js"></script>
+<script type="module" src="@polymer/iron-icons/av-icons.js"></script>
+<script type="module" src="@polymer/iron-icons/device-icons.js"></script>
+<script type="module" src="@polymer/iron-icons/image-icons.js"></script>
+<link rel="import" href="../sites-listing/sites-listing.html">
+<!--
+`haxcms-site-listing`
+A LRN element
+
+@demo demo/index.html
+
+@microcopy - the mental model for this element
+ -
+ -
+
+-->
+
+<dom-module id="haxcms-site-listing">
+  <template>
+    <style>
+      app-toolbar {
+        background-color: #3a0063;
+        color: #ffffff;
+      }
+      paper-icon-button {
+        --paper-icon-button-ink-color: #ffffff;
+      }
+      paper-icon-button+[main-title] {
+        margin-left: 24px;
+      }
+      app-header {
+        @apply --layout-fixed-top;
+        color: #ffffff;
+        --app-header-background-rear-layer: {
+          background-color: #ef6c00;
+        }
+      }
+      app-drawer {
+        --app-drawer-scrim-background: rgba(0, 0, 0, 0.6);
+        --app-drawer-content-container: {
+          background-color: rgba(93, 0, 159, .8);
+          overflow: scroll;
+          color: #ffffff;
+          padding-left: 8px;
+          padding-right: 8px;
+        }
+      }
+      sites-listing {
+        display: block;
+        margin: 100px 16px 0px 16px;
+      }
+      paper-dialog {
+        width: 60%;
+        min-height: 50%;
+        top: 10%;
+        border-radius: 16px;
+      }
+      paper-input {
+        --paper-input-container-focus-color: #3a0063;
+      }
+      #closedrawer {
+        float: left;
+        margin: 12px -20px 0 8px;
+      }
+      #add {
+        float: right;
+        margin: 12px 8px 0 -20px;
+      }
+      #newsitecolor {
+        padding: 4px;
+        margin: 0;
+        display: inline-flex;
+        vertical-align: middle;
+      }
+      #newsitecolor > * {
+        display: inline-flex;
+        align-self: center;
+        margin-right: 0.5em;
+        --simple-colors-picker-preview-size: 1.25em;
+      }
+    </style>
+    <jwt-login id="jwt" url="[[basePath]]system/login.php"  logout-url="[[basePath]]system/logout.php" jwt="{{jwt}}"></jwt-login>
+    <iron-ajax
+      id="createrequest"
+      method="POST"
+      body="[[createParams]]"
+      headers='{"Authorization": "Bearer [[jwt]]"}'
+      content-type="application/json"
+      url="[[basePath]]system/createNewSite.php"
+      handle-as="json"
+      on-response="handleCreateResponse"></iron-ajax>
+    <iron-ajax
+      id="downloadrequest"
+      method="POST"
+      body="[[downloadParams]]"
+      headers='{"Authorization": "Bearer [[jwt]]"}'
+      content-type="application/json"
+      url="[[basePath]]system/downloadSite.php"
+      handle-as="json"
+      on-response="handleDownloadResponse"></iron-ajax>
+    <sites-listing id="siteslisting" sites-response="{{__sitesResponse}}" sites="{{__sites}}" data-source="[[dataSource]]" edit-mode="[[editMode]]"></sites-listing>
+    <app-header reveals>
+      <app-toolbar>
+        <paper-icon-button icon="menu" onclick="drawer.toggle()"></paper-icon-button>
+        <div main-title>[[title]]</div>
+        <paper-icon-button id="edit" icon="[[__editIcon]]" hidden$="[[!loggedIn]]"></paper-icon-button>
+        <paper-icon-button id="login" icon="[[__loginIcon]]"></paper-icon-button>
+        <paper-tooltip for="login" position="bottom" offset="12" animation-delay="200">[[__loginText]]</paper-tooltip>
+      </app-toolbar>
+    </app-header>
+    <app-drawer id="drawer" swipe-open>
+      <paper-icon-button id="closedrawer" icon="icons:close" onclick="drawer.toggle()"></paper-icon-button>
+      <paper-tooltip for="closedrawer" position="bottom" offset="12" animation-delay="200">Close</paper-tooltip>
+      <paper-icon-button id="add" icon="icons:add"></paper-icon-button>
+      <paper-tooltip for="add" position="bottom" offset="12" animation-delay="200">Add site</paper-tooltip>
+      <h3 style="margin: 18px; padding: 6px; border-bottom: 1px solid #ffffff; text-align: center; font-weight: normal;">Site list</h3>
+      <map-menu id="mapmenu" items="{{outline}}" data="[[__sites]]" selected="{{activeItemID}}"></map-menu>
+    </app-drawer>
+    <paper-dialog id="newdialog" with-backdrop>
+      <h3>Create new site</h3>
+      <paper-dialog-scrollable>
+        <paper-input id="newsitetitle" label="Title" required autofocus value="{{siteTitle}}"></paper-input>
+        <paper-input id="domain" label="Domain" required value="[[domainName]]"></paper-input>
+        <paper-input id="newsitedescription" label="Description"></paper-input>
+        <paper-input id="newsiteimage" label="Image" value="[[activeItem.metadata.image]]"></paper-input>
+        <label for="newsitecolor">Select a color:</label>
+        <simple-colors-picker id="newsitecolor"></simple-colors-picker>
+        <dropdown-select id="newsitetheme" label="Theme" value="simple-blog">
+          <paper-item value="simple-blog">Simple blog</paper-item>
+          <paper-item value="outline-player">Basic outline</paper-item>
+          <paper-item value="haxcms-dev-theme">DEVELOPER THEME</paper-item>
+          <paper-item value="infinite-scroll">Infinite scroll</paper-item>
+        </dropdown-select>
+        <label for="newsiteicon">Select an icon:</label>
+        <paper-icon-picker id="newsiteicon" icon="[[activeItem.metadata.icon]]"></paper-icon-picker>
+      </paper-dialog-scrollable>
+      <div class="buttons">
+        <paper-button dialog-confirm id="create" raised>Let's go!</paper-button>
+        <paper-button dialog-dismiss>cancel</paper-button>
+      </div>
+    </paper-dialog>
+    <paper-dialog id="itemdialog" with-backdrop>
+      <paper-dialog-scrollable>
+      <magazine-cover
+       image="[[activeItem.metadata.image]]"
+       header="[[activeItem.title]]" subheader="[[activeItem.description]]"
+      action="Access site" icon="[[activeItem.metadata.icon]]" event-data="[[activeItem]]" event-name="haxcms-load-site">
+      </magazine-cover>
+      </paper-dialog-scrollable>
+      <div class="buttons">
+        <iron-icon icon="editor:format-color-fill" style$="color:[[activeItem.metadata.hexCode]]"></iron-icon>[[activeItem.metadata.hexCode]]
+        <iron-icon icon="av:web"></iron-icon>Theme: [[activeItem.metadata.theme]]
+        <paper-icon-button id="editsite" icon="icons:settings" style="color:black"></paper-icon-button>
+        <paper-tooltip for="edit" position="bottom" offset="12" animation-delay="200">change details</paper-tooltip>
+        <paper-icon-button id="archivesite" icon="icons:archive" dialog-dismiss style="color:grey"></paper-icon-button>
+        <paper-tooltip for="archivesite" position="top" offset="12" animation-delay="200">archive site</paper-tooltip>
+        <paper-icon-button id="download" icon="icons:file-download" style="color:black"></paper-icon-button>
+        <paper-tooltip for="download" position="top" offset="12" animation-delay="200">Download zip</paper-tooltip>
+
+      </div>
+    </paper-dialog>
+    <paper-toast id="toast"></paper-toast>
+  </template>
+  <script type="module">
+import '@polymer/polymer/polymer.js';
+import '@polymer/paper-icon-button/paper-icon-button.js';
+import '@polymer/iron-icons/iron-icons.js';
+import '@polymer/iron-icons/editor-icons.js';
+import '@polymer/iron-icons/notification-icons.js';
+import '@polymer/iron-icons/av-icons.js';
+import '@polymer/iron-icons/device-icons.js';
+import '@polymer/iron-icons/image-icons.js';
+Polymer({
+  is: 'haxcms-site-listing',
+  listeners: {
+    'create.tap': '_createSite',
+    'download.tap': '_downloadSite',
+    'add.tap': '_addTap',
+    'edit.tap': '_editTap',
+    'mapmenu.selected': '_mapMenuSelection',
+    'newsitetheme.change': '_themeChanged',
+    'newsitecolor.change': '_colorChanged',
+    'login.tap': '_loginUserRoutine',
+    'jwt.jwt-logged-in': '_loginStateChange',
+    'siteslisting.item-overlay-option-selected': '_itemOptionSelected',
+    'siteslisting.item-overlay-op-changed': '_itemOpChanged',
+  },
+  behaviors: [
+    window.simpleColorsBehaviors,
+  ],
+  properties: {
+    /**
+     * Title
+     */
+    title: {
+      type: String,
+      value: 'Site list'
+    },
+    /**
+     * Site title
+     */
+    siteTitle: {
+      type: String,
+    },
+    /**
+     * Domain name
+     */
+    domainName: {
+      type: String,
+      computed: '_computeDomainName(siteTitle)',
+    },
+    /**
+     * Sites response change
+     */
+    __sitesResponse: {
+      type: String,
+      observer: '__sitesResponseChanged',
+    },
+    /**
+     * Base path of where this is located.
+     */
+    basePath: {
+      type: String,
+    },
+    /**
+     * Data Source to power the loading of sites in JSON Outline Schema format.
+     */
+    dataSource: {
+      type: String,
+    },
+    /**
+     * JSON Web token
+     */
+    jwt: {
+      type: String,
+      observer: '_jwtChanged',
+    },
+    /**
+     * Request params for creating a new site
+     */
+    createParams: {
+      type: Object,
+      value: {},
+    },
+    /**
+     * Request params for downloading a new site
+     */
+    downloadParams: {
+      type: Object,
+      value: {},
+    },
+    /**
+     * Active item that's being reviewed / has bubbled up.
+     */
+    activeItem: {
+      type: Object,
+      notify: true,
+      observer: '_activeItemChanged',
+    },
+    /**
+     * Logged in state
+     */
+    loggedIn: {
+      type: Boolean,
+      notify: true,
+      reflectToAttribute: true,
+      observer: '_loginStateChanged',
+    },
+    /**
+     * Edit mode
+     */
+    editMode: {
+      type: Boolean,
+      notify: true,
+      reflectToAttribute: true,
+      value: false,
+      observer: '_editModeChanged',
+    },
+  },
+  /**
+   * Generate domain from title
+   */
+  _computeDomainName: function (title) {
+    return 'https://' + title.replace(/[^a-zA-Z0-9]/g, '').toLowerCase() + '.surge.sh';
+  },
+  /**
+   * Site response has changed.
+   */
+  __sitesResponseChanged: function (newValue, oldValue) {
+    if (newValue) {
+      this.title = newValue.title;
+      setTimeout(() => {
+        if (this.jwt) {
+          this.$.siteslisting.$.list.querySelector('[data-site-id="item-new"]').hidden = false;
+          this.$.mapmenu.$.builder.$$('#item-new').hidden = false;
+          this.$.add.hidden = false;
+        }
+        else {
+          this.$.siteslisting.$.list.querySelector('[data-site-id="item-new"]').hidden = true;
+          this.$.mapmenu.$.builder.$$('#item-new').hidden = true;
+          this.$.add.hidden = true;
+        }
+      }, 100);
+    }
+  },
+  /**
+   * Request a user login if we need one or log out
+   */
+  _loginStateChange: function(e) {
+    if (e.detail) {
+      this.loggedIn = true;
+    }
+    else {
+      this.loggedIn = false;
+    }
+  },
+  /**
+   * Request a user login if we need one or log out
+   */
+  _editModeChanged: function(newValue, oldValue) {
+    if (newValue) {
+      this.__editIcon = 'icons:check';
+    }
+    else {
+      this.__editIcon = 'icons:create';
+    }
+  },
+  /**
+   * Login state changed
+   */
+  _loginStateChanged: function (newValue, oldValue) {
+    if (newValue) {
+      this.__loginText = 'Log out';
+      this.__loginIcon = 'icons:account-circle';
+      this.$.toast.show('Welcome, log in successful!');
+      this.$.add.hidden = false;
+      this.$.siteslisting.$.list.querySelector('[data-site-id="item-new"]').hidden = false;
+      this.$.mapmenu.$.builder.$$('#item-new').hidden = false;
+    }
+    else {
+      this.__loginText = 'Log in';
+      this.__loginIcon = 'icons:power-settings-new';
+      this.$.toast.show('You logged out');
+      this.$.add.hidden = true;
+      this.$.siteslisting.$.list.querySelector('[data-site-id="item-new"]').hidden = true;
+      this.$.mapmenu.$.builder.$$('#item-new').hidden = true;
+    }
+  },
+  /**
+   * Request a user login if we need one or log out
+   */
+  _jwtChanged: function (newValue, oldValue) {
+    if (newValue) {
+      this.__loginText = 'Log out';
+      this.__loginIcon = 'icons:account-circle';
+    }
+    else {
+      this.__loginText = 'Log in';
+      this.__loginIcon = 'icons:power-settings-new';
+    }
+  },
+  /**
+   * Request a user login if we need one or log out
+   */
+  _loginUserRoutine: function (e) {
+    this.$.jwt.toggleLogin();
+  },
+  /**
+   * Use events for real value in theme.
+   */
+  _themeChanged: function (e) {
+    this.set('activeItem.metadata.theme', e.detail.value);
+  },
+  /**
+   * Use events for real value in color area.
+   */
+  _colorChanged: function (e) {
+    this.set('activeItem.metadata.cssVariable', e.detail.cssVariable);
+    this.set('activeItem.metadata.hexCode', e.detail.hexCode);
+  },
+  /**
+   * Add button clicked, trick DOM into clicking the add new site item.
+   */
+  _addTap: function (e) {
+    this.$.siteslisting.$.list.querySelector('[data-site-id="item-new"]').click();
+  },
+  /**
+   * Toggle edit state
+   */
+  _editTap: function (e) {
+    this.editMode = !this.editMode;
+  },
+  /**
+   * User clicked on the flyout menu, set that item to active.
+   */
+  _mapMenuSelection: function (e) {
+    // run through available sites and find the matching ID
+    let findSite = this.__sites.filter(site => {
+      if (site.id !== e.detail) {
+        return false;
+      }
+      return true;
+    });
+    // if we found one, make it the top level item
+    if (findSite.length > 0) {
+      this.set('activeItem', {});
+      this.set('activeItem', findSite.pop());
+    }
+  },
+  /**
+   * Selected item has changed
+   */
+  _activeItemChanged: function (newValue, oldvalue) {
+    if (typeof newValue !== typeof undefined && typeof newValue.id !== typeof undefined) {
+      // for new items we need the new item form
+      if (newValue.id === 'item-new') {
+        this.$.newdialog.opened = true;
+        this.$.itemdialog.opened = false;
+      }
+      else {
+        this.$.newdialog.opened = false;
+        this.$.itemdialog.opened = true;
+      }
+    }
+    // it's possible to have NO item in scope, ensure everything closes :)
+    else if (typeof newValue !== typeof undefined && typeof newValue.id !== typeof undefined) {
+      this.$.newdialog.opened = false;
+      this.$.itemdialog.opened = false;
+      this.$.drawer.opened = false;
+    }
+  },
+  /**
+   * Attached life cycle
+   */
+  attached: function () {
+    // @todo support state routing for loadActiveSite
+    document.body.addEventListener('sites-listing-item-selected', this._itemSelected.bind(this));
+    document.body.addEventListener('haxcms-load-site', this.loadActiveSite.bind(this));
+  },
+  /**
+   * Ready life cycle
+   */
+  ready: function () {
+    // set jwt from local storage bin
+    this.jwt = localStorage.getItem('jwt');
+  },
+  /**
+   * Simple method of loading whatever's been dictated as active.
+   */
+  loadActiveSite: function (e) {
+    let findSite = this.__sites.filter(site => {
+      if (site.id !== e.detail.id) {
+        return false;
+      }
+      return true;
+    });
+    let item = findSite.pop();
+    // if location isn't there, push out to it
+    if (item.location) {
+      window.open(item.location);
+    }
+    else {
+      window.open('/_sites/' + item.metadata.siteName + '/index.html');
+    }
+  },
+  /**
+   * New button clicked, open modal
+   */
+  _itemSelected: function (e) {
+    this.set('activeItem', {});
+    this.set('activeItem', e.detail);
+  },
+  /**
+   * Create a new site button was clicked
+   */
+  _createSite: function (e) {
+    // ship off a new call
+    this.set('createParams.domain', this.$.domain.value);
+    this.set('createParams.siteName', this.$.newsitetitle.value);
+    this.set('createParams.description', this.$.newsitedescription.value);
+    // need to pull this from the active item bc of data binding silly
+    this.set('createParams.theme', this.activeItem.metadata.theme);
+    this.set('createParams.hexCode', this.activeItem.metadata.hexCode);
+    this.set('createParams.cssVariable', this.activeItem.metadata.cssVariable);
+    this.set('createParams.image', this.$.newsiteimage.value);
+    this.set('createParams.icon', this.$.newsiteicon.icon);
+    // pass along the jwt for user "session" purposes
+    this.set('createParams.jwt', this.jwt);
+    this.$.newsitetitle.value = '';
+    this.$.newsitedescription.value = null;
+    this.$.createrequest.generateRequest();
+  },
+  /**
+   * Download a new site button was clicked
+   */
+  _downloadSite: function (e) {
+    // ship off a new call
+    this.set('downloadParams.siteName', this.activeItem.metadata.siteName);
+    // pass along the jwt for user "session" purposes
+    this.set('downloadParams.jwt', this.jwt);
+    this.$.downloadrequest.generateRequest();
+  },
+  /**
+   * Create a new site button was clicked
+   */
+  handleCreateResponse: function (e) {
+    // update the listing data
+    this.fire('update-sites-listing-data', e.detail.response);
+    this.$.toast.show(e.detail.response.title + ' created successfully!');
+  },
+  /**
+   * Download a site
+   */
+  handleDownloadResponse: function (e) {
+    // fire incase anyone cares
+    this.fire('download-site-listing', e.detail.response);
+    var element = document.createElement('a');
+    element.setAttribute('href', e.detail.response.link);
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+    this.$.toast.show(this.activeItem.title + ' downloaded successfully!');
+  },
+  /**
+   * Option selected in an operation in context
+   */
+  _itemOptionSelected: function (e) {
+    var element = e.detail.element;
+    switch (e.detail.operation) {
+      case 'remove':
+        if (e.detail.option === 'option1') {
+          this.$.toast.show('Deleting this');
+          // @todo send call out the door to delete callback
+        }
+      break;
+      case 'duplicate':
+        if (e.detail.option === 'option1') {
+          this.$.toast.show('Duplicating this');
+          // @todo send call out the door to duplicate callback
+        }
+        break;
+      case 'move':
+          if (e.detail.option === 'option1') {
+            this.$.toast.show('Move this item left');
+          }
+          else {
+            this.$.toast.show('Move this item right');
+          }
+          // @todo send call out the door to commit the move callback          
+      break;
+    }
+  },
+  /**
+   * Selected operation changed; we use this for edit mode detection
+   */
+  _itemOpChanged: function (e) {
+    var element = e.detail.element;
+    if (e.detail.operation === 'edit') {
+      let findSite = this.__sites.filter(site => {
+        if (site.id !== element.getAttribute('data-site-id')) {
+          return false;
+        }
+        return true;
+      });
+      // if we found one, make it the top level item
+      if (findSite.length > 0) {
+        this.set('activeItem', {});
+        this.set('activeItem', findSite.pop());
+        // simulate clicking on the edit button that's in this tab
+        this.$.edit.click();
+      }
+    }
+  },
+  });
+</script>
+</dom-module>
