@@ -1,0 +1,12 @@
+{
+  "name": "@lrnwebcomponents/lrn-icons/",
+  "flat": true,
+  "version": "0.0.22",
+  "main": "lrn-icons.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/iron-icon": "^3.0.0-pre.1",
+    "@polymer/iron-iconset-svg": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
