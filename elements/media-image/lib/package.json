@@ -1,0 +1,12 @@
+{
+  "name": "@lrnwebcomponents/media-image/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A LRN element",
+  "main": "media-image.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/iron-image": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}

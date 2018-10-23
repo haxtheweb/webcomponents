@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+  <title>media-image demo</title>
+
+  <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+
+  <script type="module" src="@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+  <script type="module" src="@polymer/iron-demo-helpers/demo-snippet.js"></script>
+  <script type="module" src="../media-image.js"></script>
+
+  <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+$_documentContainer.setAttribute('style', 'display: none;');
+
+$_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
+
+  </style>`;
+
+document.head.appendChild($_documentContainer);
+</script>
+</head>
+
+<body>
+  <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container">
+    <h3>Basic media-image demo (default)</h3>
+    <demo-snippet>
+      <template>
+        <media-image source="http://unsplash.it/200">
+          <div slot="citation">
+            This is my citation.
+          </div>
+          <div slot="caption">
+            Curabitur aliquet quam id dui posuere blandit. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum
+            ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet
+            aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus.
+            Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Donec sollicitudin molestie malesuada.
+            Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum
+            sed sit amet dui. Vivamus suscipit tortor eget felis porttitor volutpat.
+          </div>
+        </media-image>
+      </template>
+    </demo-snippet>
+  </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+  <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container">
+    <h3>Basic media-image demo (size="small")</h3>
+    <demo-snippet>
+      <template>
+        <media-image source="http://unsplash.it/200" size="small">
+          <div slot="citation">
+            This is my citation.
+          </div>
+          <div slot="caption">
+            Curabitur aliquet quam id dui posuere blandit. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum
+            ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet
+            aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus.
+            Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Donec sollicitudin molestie malesuada.
+            Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum
+            sed sit amet dui. Vivamus suscipit tortor eget felis porttitor volutpat.
+          </div>
+        </media-image>
+      </template>
+    </demo-snippet>
+  </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+  <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container">
+    <h3>Basic media-image demo (size="small" round="true")</h3>
+    <demo-snippet>
+      <template>
+        <media-image source="http://unsplash.it/200" size="small" round="true">
+          <div slot="citation">
+            This is my citation.
+          </div>
+          <div slot="caption">
+            Curabitur aliquet quam id dui posuere blandit. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum
+            ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet
+            aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus.
+            Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Donec sollicitudin molestie malesuada.
+            Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum
+            sed sit amet dui. Vivamus suscipit tortor eget felis porttitor volutpat.
+          </div>
+        </media-image>
+      </template>
+    </demo-snippet>
+  </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+  <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container">
+    <h3>Basic media-image demo with card-styling (size="small" round="true" card="true")</h3>
+    <demo-snippet>
+      <template>
+        <media-image source="http://unsplash.it/200" size="small" round="true" card="true">
+          <div slot="citation">
+            This is my citation.
+          </div>
+          <div slot="caption">
+            Curabitur aliquet quam id dui posuere blandit. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum
+            ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet
+            aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus.
+            Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Donec sollicitudin molestie malesuada.
+            Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum
+            sed sit amet dui. Vivamus suscipit tortor eget felis porttitor volutpat.
+          </div>
+        </media-image>
+      </template>
+    </demo-snippet>
+  </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+  <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container">
+    <h3>Basic media-image demo with box-styling (size="small" box="true")</h3>
+    <demo-snippet>
+      <template>
+        <media-image source="http://unsplash.it/200" size="small" box="true">
+          <div slot="citation">
+            This is my citation.
+          </div>
+          <div slot="caption">
+            Curabitur aliquet quam id dui posuere blandit. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum
+            ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit neque, auctor sit amet
+            aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus.
+            Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Donec sollicitudin molestie malesuada.
+            Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum
+            sed sit amet dui. Vivamus suscipit tortor eget felis porttitor volutpat.
+          </div>
+        </media-image>
+      </template>
+    </demo-snippet>
+  </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+</body>
+
+</html>
