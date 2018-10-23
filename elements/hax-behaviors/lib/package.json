@@ -1,0 +1,11 @@
+{
+  "name": "@lrnwebcomponents/hax-behaviors/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A series of core behaviors for hax components",
+  "main": "hax-behaviors.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
