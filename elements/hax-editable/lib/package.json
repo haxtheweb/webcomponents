@@ -1,0 +1,11 @@
+{
+  "name": "@lrnwebcomponents/hax-editable/",
+  "flat": true,
+  "version": "0.0.22",
+  "main": "hax-editable.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/iron-component-page": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
