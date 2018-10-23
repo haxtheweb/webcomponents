@@ -1,0 +1,12 @@
+{
+  "name": "@lrnwebcomponents/pie-menu/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A LRN element",
+  "main": "pie-menu.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/iron-icons": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
