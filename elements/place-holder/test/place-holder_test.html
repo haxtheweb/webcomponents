@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../place-holder.js"></script>
+  </head>
+  <body>
+
+    <place-holder>
+      This is the element content.
+    </place-holder>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <place-holder></place-holder>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <place-holder></place-holder>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<place-holder>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('place-holder'), customElements.get("place-holder", 'place-holder should be an instance of placeHolder'));
+    });
+
+    /*test('setting a property on the element works', () => {
+      const element = fixture('AdvancedTestFixture');
+      element.title = 'my title';
+      assert.equal(element.title, 'my title');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello my title!');
+    });*/
+  });
+    </script>
+  </body>
+</html>
