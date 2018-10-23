@@ -1,0 +1,164 @@
+<script type="module" src="@polymer/polymer/polymer.js"></script>
+<script type="module" src="hax-body/hax-store.js"></script>
+<script type="module" src="hax-body/hax-autoloader.js"></script>
+<script type="module" src="hax-body/hax-source.js"></script>
+<script type="module" src="hax-body/hax-manager.js"></script>
+<script type="module" src="hax-body/hax-panel.js"></script>
+<script type="module" src="hax-body/hax-body.js"></script>
+<script type="module" src="hax-body/hax-export-dialog.js"></script>
+
+<!--
+`hax-app`
+An example HAX app
+
+-->
+
+<dom-module id="hax-app">
+  <template>
+    <style>
+      :host {
+        display:block;
+      }
+      hax-panel {
+        font-size: .8rem;
+      }
+      hax-panel {
+      --app-drawer-content-container: {
+          background-color: #fafafa;
+          padding: 0;
+          border-right: 1px solid #c8c8c8;
+          border-bottom: 1px solid #c8c8c8;
+          width: 100px !important;
+          box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
+          height: 100vh;
+          position: fixed;
+        }
+      }
+      lrnsys-collapselist-item .label {
+        text-align: center;
+      }
+    </style>
+    <hax-store></hax-store>
+    <hax-autoloader>
+      <video-player></video-player>
+      <wikipedia-query></wikipedia-query>
+      <pdf-element></pdf-element>
+      <lrn-table></lrn-table>
+      <media-image></media-image>
+    </hax-autoloader>
+    <hax-export-dialog></hax-export-dialog>
+    <hax-manager>
+      <hax-source
+        details='{
+        "title":"Youtube",
+        "icon":"av:play-arrow",
+        "color":"red",
+        "author": "Google, Youtube LLC",
+        "teaser": "Popular public video solution",
+        "description": "Remember that anything you place here though will be out in the open. Great for OER.",
+        "status": "available"
+        }'
+        request-end-point="https://www.googleapis.com/youtube/v3/search"
+        request-params="[[__youtubeParams]]"
+        query-param="q"
+        response-map='{
+          "root": "items",
+          "gizmoType": "video",
+          "url": "https://www.youtube.com/watch?v=",
+          "id": "id.videoId",
+          "title": "snippet.title",
+          "description": "snippet.description",
+          "image": "snippet.thumbnails.high.url"}'></hax-source>
+      <hax-source
+        details='{
+        "title":"Vimeo",
+        "icon":"av:play-circle-filled",
+        "color":"blue",
+        "author": "Vimeo Inc.",
+        "teaser": "Popular video community",
+        "description": "Vimeo is a great place for artists and higher quality video. There is also the ability to have more control over the storage and delivery of media as needed.",
+        "status": "available"
+        }'
+        request-end-point="https://api.vimeo.com/videos"
+        request-params="[[__vimeoParams]]"
+        query-param="query"
+        response-map='{
+          "root": "data",
+          "gizmoType": "video",
+          "url": "",
+          "id": "link",
+          "title": "name",
+          "description": "description",
+          "image": "pictures.sizes.1.link"}'></hax-source>
+    </hax-manager>
+    <hax-body context-offset-left="[[contextOffsetLeft]]">
+      <slot></slot>
+    </hax-body>
+    <hax-panel></hax-panel>
+  </template>
+
+  <script type="module">
+import '@polymer/polymer/polymer.js';
+import 'hax-body/hax-store.js';
+import 'hax-body/hax-autoloader.js';
+import 'hax-body/hax-source.js';
+import 'hax-body/hax-manager.js';
+import 'hax-body/hax-panel.js';
+import 'hax-body/hax-body.js';
+import 'hax-body/hax-export-dialog.js';
+Polymer({
+  is: 'hax-app',
+  properties: {
+    /**
+     * Youtube API key
+     */
+    youtubeKey: {
+      type: String,
+      observer: '_youtubeKeyChanged',
+    },
+    /**
+     * Vimeo API token
+     */
+    vimeoKey: {
+      type: String,
+      observer: '_vimeoKeyChanged',
+    },
+    /**
+     * Offset value passed down into the body.
+     */
+    contextOffsetLeft: {
+      type: Number,
+    },
+  },
+  /**
+   * Build params when key changes.
+   */
+  _youtubeKeyChanged : function(newValue, oldValue) {
+    if (typeof newValue !== typeof undefined) {
+      this.__youtubeParams = {
+        "part":"snippet",
+        "q":"",
+        "key": newValue,
+        "type": "video",
+        "maxResults":"12"
+      };
+    }
+  },
+  /**
+   * Build params when key changes.
+   */
+  _vimeoKeyChanged : function(newValue, oldValue) {
+    if (typeof newValue !== typeof undefined) {
+      this.__vimeoParams = {
+        "access_token": newValue,
+        "query": "",
+        "direction": "asc",
+        "sort": "alphabetical",
+        "filter": "CC",
+        "per_page":"12"
+      };
+    }
+  }
+});
+</script>
+</dom-module>
