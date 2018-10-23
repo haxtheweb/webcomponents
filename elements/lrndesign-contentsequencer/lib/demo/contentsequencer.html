@@ -1,0 +1,97 @@
+<!--
+Copyright (c) 2015 Google Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not
+use this file except in compliance with the License. You may obtain a copy of
+the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+License for the specific language governing permissions and limitations under
+the License.
+-->
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>codelab demo</title>
+  <script src="@webcomponents/webcomponentsjs/webcomponents-lite.min.js" async=""></script>
+  <script>
+    window.Polymer = {
+      dom: 'shadow',
+      lazyRegister: 'max',
+      useNativeCSSProperties: true
+    };
+  </script>
+  <link rel="stylesheet"
+        href="//fonts.googleapis.com/css?family=Roboto:300,400,400italic,500,500italic,700,700italic|Roboto+Mono:400,700">
+  <script type="module" src="@polymer/iron-icons/iron-icons.js"></script>
+  <script type="module" src="@polymer/paper-button/paper-button.js"></script>
+  <link rel="import" href="../../lrndesign-contentsequencer/lrndesign-contentsequencer-elements.html">
+  <style is="custom-style">
+    body {
+      font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial;
+      background: var(--lrndesign-contentsequencer-background, --paper-grey-300);
+    }
+  </style>
+</head>
+<body>
+  <lrndesign-contentsequencer title="ELMS Learning Network: Concepts" done-link="https://www.elmsln.org/">
+    <lrndesign-contentsequencer-step label="Courses" duration="5">
+    <p>
+      In ELMS:LN, courses are a distributed concept spanning several systems.
+      A course. </p>
+    </lrndesign-contentsequencer-step>
+    <lrndesign-contentsequencer-step label="This page is long!" duration="25">
+      <div class="vertical-section-container centered">
+        <h3>Shown relative to other paragraphs</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget leo nunc, nec tempus mi? Curabitur id nisl mi, ut vulputate urna. Quisque porta facilisis tortor, vitae bibendum velit fringilla vitae! ut vulputate urna. Quisque porta facilisis tortor, vitae bibendum velit fringilla vitae!
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget leo nunc, nec tempus mi? Curabitur id nisl mi, ut vulputate urna. Quisque porta facilisis tortor, vitae bibendum velit fringilla vitae! ut vulputate urna. Quisque porta facilisis tortor, vitae bibendum velit fringilla vitae!
+        </p>
+        <div class="vertical-section-container centered">
+        <h3>Shown relative to other paragraphs</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget leo nunc, nec tempus mi? Curabitur id nisl mi, ut vulputate urna. Quisque porta facilisis tortor, vitae bibendum velit fringilla vitae! ut vulputate urna. Quisque porta facilisis tortor, vitae bibendum velit fringilla vitae!
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget leo nunc, nec tempus mi? Curabitur id nisl mi, ut vulputate urna. Quisque porta facilisis tortor, vitae bibendum velit fringilla vitae! ut vulputate urna. Quisque porta facilisis tortor, vitae bibendum velit fringilla vitae!
+        </p>
+      </div>
+      <div class="vertical-section-container centered">
+        <h3>Shown relative to other paragraphs</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget leo nunc, nec tempus mi? Curabitur id nisl mi, ut vulputate urna. Quisque porta facilisis tortor, vitae bibendum velit fringilla vitae! ut vulputate urna. Quisque porta facilisis tortor, vitae bibendum velit fringilla vitae!
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget leo nunc, nec tempus mi? Curabitur id nisl mi, ut vulputate urna. Quisque porta facilisis tortor, vitae bibendum velit fringilla vitae! ut vulputate urna. Quisque porta facilisis tortor, vitae bibendum velit fringilla vitae!
+        </p>
+      </div>
+      </div>
+    </lrndesign-contentsequencer-step>
+    <lrndesign-contentsequencer-step label="Another title" duration="5">
+      <div class="vertical-section-container centered">
+        <h3>Shown relative to other paragraphs</h3>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget leo nunc, nec tempus mi? Curabitur id nisl mi, ut vulputate urna. Quisque porta facilisis tortor, vitae bibendum velit fringilla vitae! ut vulputate urna. Quisque porta facilisis tortor, vitae bibendum velit fringilla vitae!
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget leo nunc, nec tempus mi? Curabitur id nisl mi, ut vulputate urna. Quisque porta facilisis tortor, vitae bibendum velit fringilla vitae! ut vulputate urna. Quisque porta facilisis tortor, vitae bibendum velit fringilla vitae!
+        </p>
+      </div>
+    </lrndesign-contentsequencer-step>
+    <lrndesign-contentsequencer-step label="More content" duration="25">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/k1eR_3KqJms" frameborder="0" allowfullscreen></iframe>
+    </lrndesign-contentsequencer-step>
+
+  </lrndesign-contentsequencer>
+
+</body>
+</html>

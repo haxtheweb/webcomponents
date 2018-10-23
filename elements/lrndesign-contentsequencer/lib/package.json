@@ -1,0 +1,25 @@
+{
+  "name": "@lrnwebcomponents/lrndesign-contentsequencer/",
+  "flat": true,
+  "version": "0.0.22",
+  "main": "lrndesign-contentsequencer.html",
+  "license": "Apache2",
+  "dependencies": {
+    "@polymer/app-layout": "^3.0.0-pre.1",
+    "@polymer/iron-a11y-keys-behavior": "^3.0.0-pre.1",
+    "@polymer/iron-flex-layout": "^3.0.0-pre.1",
+    "@polymer/iron-icons": "^3.0.0-pre.1",
+    "@polymer/iron-localstorage": "^3.0.0-pre.1",
+    "@polymer/neon-animation": "^3.0.0-pre.1",
+    "@polymer/paper-button": "^3.0.0-pre.1",
+    "@polymer/paper-dialog": "^3.0.0-pre.1",
+    "@polymer/paper-fab": "^3.0.0-pre.1",
+    "@polymer/paper-icon-button": "^3.0.0-pre.1",
+    "@polymer/paper-item": "^3.0.0-pre.1",
+    "@polymer/paper-menu": "^3.0.0-pre.1",
+    "@polymer/paper-radio-button": "^3.0.0-pre.1",
+    "@polymer/paper-radio-group": "^3.0.0-pre.1",
+    "@polymer/paper-styles": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
