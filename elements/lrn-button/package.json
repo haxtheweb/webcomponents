@@ -10,7 +10,7 @@
   "description": "Button element for PolymerElement",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elmsln/lrnwebcomponents/tree/master/elements/lrn-button"
+    "url": "git@github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrn-button.js",
   "module": "lrn-button.es6.js",
