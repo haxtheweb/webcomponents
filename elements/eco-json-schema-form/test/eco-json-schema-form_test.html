@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../eco-json-schema-form.js"></script>
+  </head>
+  <body>
+
+    <eco-json-schema-form>
+      This is the element content.
+    </eco-json-schema-form>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <eco-json-schema-form></eco-json-schema-form>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <eco-json-schema-form></eco-json-schema-form>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<eco-json-schema-form>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('eco-json-schema-form'), customElements.get("eco-json-schema-form", 'eco-json-schema-form should be an instance of ecoJsonSchemaForm'));
+    });
+
+    /*test('setting a property on the element works', () => {
+      const element = fixture('AdvancedTestFixture');
+      element.title = 'my title';
+      assert.equal(element.title, 'my title');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello my title!');
+    });*/
+  });
+    </script>
+  </body>
+</html>
