@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../lrndesign-course-banner.js"></script>
+  </head>
+  <body>
+
+    <lrndesign-course-banner>
+      This is the element content.
+    </lrndesign-course-banner>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <lrndesign-course-banner></lrndesign-course-banner>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <lrndesign-course-banner></lrndesign-course-banner>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<lrndesign-course-banner>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('lrndesign-course-banner'), customElements.get("lrndesign-course-banner", 'lrndesign-course-banner should be an instance of lrndesignCourseBanner'));
+    });
+
+    /*test('setting a property on the element works', () => {
+      const element = fixture('AdvancedTestFixture');
+      element.title = 'my title';
+      assert.equal(element.title, 'my title');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello my title!');
+    });*/
+  });
+    </script>
+  </body>
+</html>
