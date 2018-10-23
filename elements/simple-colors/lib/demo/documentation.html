@@ -1,0 +1,1099 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>simple-colors demo</title>
+
+    <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script type="module" src="@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+    <script type="module" src="./simple-colors-demo.js"></script>
+    <script type="module" src="./simple-colors-contrast.js"></script>
+    <style>
+      table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 15px;
+      }
+      table th, table td, table caption {
+        border: 1px solid black;
+      }
+      table caption {
+        border-bottom: none;
+        font-size: 120%;
+      }
+      table td {
+        padding: 0.25em 1em;
+      }
+      
+      #simple-color-table td:nth-child(1) {
+        color: var(--simple-colors-background1);
+        background-color: var(--simple-colors-accent-foreground1);
+      }
+      #simple-color-table td:nth-child(2) {
+        color: var(--simple-colors-background1);
+        background-color: var(--simple-colors-accent-foreground2);
+      }
+      #simple-color-table td:nth-child(3) {
+        color: var(--simple-colors-background1);
+        background-color: var(--simple-colors-accent-foreground3);
+      }
+      #simple-color-table td:nth-child(4) {
+        color: var(--simple-colors-background1);
+        background-color: var(--simple-colors-accent-foreground4);
+      }
+      #simple-color-table td:nth-child(5) {
+        color: var(--simple-colors-background1);
+        background-color: var(--simple-colors-accent-foreground5);
+      }
+      #simple-color-table td:nth-child(6) {
+        color: var(--simple-colors-foreground1);
+        background-color: var(--simple-colors-accent-background1);
+      }
+      #simple-color-table td:nth-child(7) {
+        color: var(--simple-colors-foreground1);
+        background-color: var(--simple-colors-accent-background2);
+      }
+      #simple-color-table td:nth-child(8) {
+        color: var(--simple-colors-foreground1);
+        background-color: var(--simple-colors-accent-background3);
+      }
+      #simple-color-table td:nth-child(9) {
+        color: var(--simple-colors-foreground1);
+        background-color: var(--simple-colors-accent-background4);
+      }
+      #simple-color-table td:nth-child(10) {
+        color: var(--simple-colors-foreground1);
+        background-color: var(--simple-colors-accent-background5);
+      }
+      #light-color-table td:nth-child(1) {
+        color: var(--simple-colors-light-theme-background1);
+        background-color: var(--simple-colors-light-theme-accent-foreground1);
+      }
+      #light-color-table td:nth-child(2) {
+        color: var(--simple-colors-light-theme-background1);
+        background-color: var(--simple-colors-light-theme-accent-foreground2);
+      }
+      #light-color-table td:nth-child(3) {
+        color: var(--simple-colors-light-theme-background1);
+        background-color: var(--simple-colors-light-theme-accent-foreground3);
+      }
+      #light-color-table td:nth-child(4) {
+        color: var(--simple-colors-light-theme-background1);
+        background-color: var(--simple-colors-light-theme-accent-foreground4);
+      }
+      #light-color-table td:nth-child(5) {
+        color: var(--simple-colors-light-theme-background1);
+        background-color: var(--simple-colors-light-theme-accent-foreground5);
+      }
+      #light-color-table td:nth-child(6) {
+        color: var(--simple-colors-light-theme-foreground1);
+        background-color: var(--simple-colors-light-theme-accent-background1);
+      }
+      #light-color-table td:nth-child(7) {
+        color: var(--simple-colors-light-theme-foreground1);
+        background-color: var(--simple-colors-light-theme-accent-background2);
+      }
+      #light-color-table td:nth-child(8) {
+        color: var(--simple-colors-light-theme-foreground1);
+        background-color: var(--simple-colors-light-theme-accent-background3);
+      }
+      #light-color-table td:nth-child(9) {
+        color: var(--simple-colors-light-theme-foreground1);
+        background-color: var(--simple-colors-light-theme-accent-background4);
+      }
+      #light-color-table td:nth-child(10) {
+        color: var(--simple-colors-light-theme-foreground1);
+        background-color: var(--simple-colors-light-theme-accent-background5);
+      }
+      #dark-color-table td:nth-child(1) {
+        color: var(--simple-colors-dark-theme-background1);
+        background-color: var(--simple-colors-dark-theme-accent-foreground1);
+      }
+      #dark-color-table td:nth-child(2) {
+        color: var(--simple-colors-dark-theme-background1);
+        background-color: var(--simple-colors-dark-theme-accent-foreground2);
+      }
+      #dark-color-table td:nth-child(3) {
+        color: var(--simple-colors-dark-theme-background1);
+        background-color: var(--simple-colors-dark-theme-accent-foreground3);
+      }
+      #dark-color-table td:nth-child(4) {
+        color: var(--simple-colors-dark-theme-background1);
+        background-color: var(--simple-colors-dark-theme-accent-foreground4);
+      }
+      #dark-color-table td:nth-child(5) {
+        color: var(--simple-colors-dark-theme-background1);
+        background-color: var(--simple-colors-dark-theme-accent-foreground5);
+      }
+      #dark-color-table td:nth-child(6) {
+        color: var(--simple-colors-dark-theme-foreground1);
+        background-color: var(--simple-colors-dark-theme-accent-background1);
+      }
+      #dark-color-table td:nth-child(7) {
+        color: var(--simple-colors-dark-theme-foreground1);
+        background-color: var(--simple-colors-dark-theme-accent-background2);
+      }
+      #dark-color-table td:nth-child(8) {
+        color: var(--simple-colors-dark-theme-foreground1);
+        background-color: var(--simple-colors-dark-theme-accent-background3);
+      }
+      #dark-color-table td:nth-child(9) {
+        color: var(--simple-colors-dark-theme-foreground1);
+        background-color: var(--simple-colors-dark-theme-accent-background4);
+      }
+      #dark-color-table td:nth-child(10) {
+        color: var(--simple-colors-dark-theme-foreground1);
+        background-color: var(--simple-colors-dark-theme-accent-background5);
+      }
+      table {
+        max-width: 100%;
+        overflow-x: scroll;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>simple-colors documentation</h1>
+      <demo-snippet>
+        <simple-colors-demo>
+          <div slot="preselector">
+            To use simple-colors in a component:
+            <ol>
+              <li><tt>bower install --save LRNWebComponents/simple-colors</tt></li>
+              <li>Include <tt>&lt;link rel="import" href="<em>path/to/</em>simple-colors/simple-colors.html"&gt;</tt></li>
+              <li>To allow an element to inherit the variables, add the behavior: <tt>simpleColorsBehaviors, </tt></li>
+              <li>When the element ready, request the color variables: <tt>Polymer.SimpleColorsUtility.requestAvailability();</tt></li>
+              <li>Add custom styles to your element using the <a href="#naming">simple colors variables</a>. For example:
+                <br><tt>&lt;style is="custom-style" import="simple-colors"&gt;
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;<em>:host { 
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: --simple-colors-accent-foreground1; 
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--paper-listbox-background-color: --simple-colors-accent-background2;
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border-color: 1px solid var(--my-component-border-color, --simple-colors-red-background3); 
+                <br>&nbsp;&nbsp;&nbsp;&nbsp;}</em>
+                <br>&lt;/style&gt;</tt>
+              </li>
+              <li>
+                &hellip;Or use the simple-colors text, background and border color classes. For example:
+                <br><div class="simple-colors-light-blue-foreground1-text simple-colors-light-blue-background5-border simple-colors-lime-background1" style="border: 4px solid; padding: 1em 2em; margin-top: 0.5em;"><tt>class="<em>simple-colors-light-blue-foreground1-text simple-colors-light-blue-background5-border simple-colors-lime-background1</em>"</tt></div>
+              </li>
+            </ol>
+            <div id="naming">
+              <p>
+                The naming convention for simple-colors CSS variables is: 
+                <tt>--simple-colors-<em><a href="#thamename">(theme name)</em></a>-<em><a href="#color">(color)</a></em>-<em><a href="#contrast">foreground or background with level</a></em></tt>. 
+                For example, <tt>--simple-colors-light-theme-red-background1</tt> 
+                would be a highest-contrast background color for UI element with 
+                a lighter theme. (See <a href="#tables">color reference</a> below.)
+              </p>
+              <p>
+                  There are also CSS classes. The convention for simple-colors CSS classes is:
+                  <ul>
+                    <li>
+                        <strong>Background color:</strong> <tt>simple-colors-<em><a href="#color">(color)</a></em>-<em><a href="#contrast">foreground or background with level</a></em></tt>
+                    </li>
+                    <li>
+                        <strong>Text color:</strong> <tt>simple-colors-<em><a href="#color">(color)</a></em>-<em><a href="#contrast">foreground or background with level</a></em>-text</tt>
+                    </li>
+                    <li>
+                        <strong>Border color:</strong> <tt>simple-colors-<em><a href="#color">(color)</a></em>-<em><a href="#contrast">foreground or background with level</a></em>-border</tt>
+                    </li>
+                  </ul>
+                  Note that the classes do not allow you to specify a theme. 
+                  For example, <tt>&lt;div class="simple-colors-foreground1-text simple-colors-red-background3-border simple-colors-red-background1"/&gt;</tt> 
+                  would be a highest-contrast text color, highest-contrast background color, 
+                  and a mid-condrast border-color. 
+                  (See <a href="#tables">color reference</a> below.)
+              </p>
+              <h2 id="thamename"><em>theme name</em></h2>
+              <p>
+                The <em>theme name</em>, is optional. It can be <tt>light-theme</tt> 
+                or <tt>dark-theme</tt>. 
+              </p>  
+              <p>
+                The <tt>--simple-colors-<em>light-theme</em></tt> 
+                prefixed colors are based on a light foreground with a 
+                dark background. The <tt>--simple-colors-<em>dark-theme</em></tt> 
+                prefixed colors are based on a dark foreground with a 
+                light background. These colors will not change based on an 
+                element (or parent's) <tt>dark</tt>.
+              </p>  
+              <p>
+                If the <em>theme name</em> is omitted, 
+                the theme will be applied based on whether or not the element 
+                or its ancestor has a <tt>dark</tt> attribute. This allows you to 
+                specify only one set of CSS color variables and allow a single 
+                attribute to switch between light and dark. In other words, you 
+                can change <tt>--simple-colors-foreground4</tt>, 
+                <tt>--simple-colors-red-foreground1</tt>,  
+                <tt>--simple-colors-background4</tt>, and
+                <tt>--simple-colors-red-foreground1</tt> just by changing an 
+                element's <tt>dark</tt> attribute.
+              </p>
+              <h2 id="color"><em>color</em></h2>
+              <p>
+                The <em>color</em>, is optional. If omitted, the color will be in 
+                greyscale. Simple colors using the naming and similar shares of 
+                <a href="https://materializecss.com/color.html">Materialize</a>. 
+                However, colors have been adapted to support WCAG 2.0 AA contrast 
+                ratios. The colors availble are: <tt>red</tt>, <tt>pink</tt>, 
+                <tt>purple</tt>, <tt>deep-purple</tt>, <tt>indigo</tt>, 
+                <tt>blue</tt>, <tt>light-blue</tt>, <tt>cyan</tt>, <tt>teal</tt>, 
+                <tt>green</tt>, <tt>light-green</tt>, <tt>lime</tt>, 
+                <tt>yellow</tt>, <tt>amber</tt>, <tt>orange</tt>, 
+                <tt>deep-orange</tt>, <tt>brown</tt>, and <tt>blue-grey</tt>. 
+              </p>
+              <p>
+                There is also an <tt>accent</tt> color that changes based on an 
+                the <tt>accent-color</tt> attribute of an element or its ancestor.
+                For example, if <tt>accent-color="indigo"</tt>, then 
+                <tt>--simple-colors-accent-foreground2</tt> will be set to 
+                <tt>--simple-colors-indigo-foreground2</tt>. If your accent 
+                color is indigo, but you want to use red for a delete button, 
+                you can either, set the button to <tt>accent-color="red"</tt> 
+                to override the parent's color, or you can use CSS to change 
+                its color to <tt>--simple-colors-red-background1</tt>.
+              </p>
+              <h2 id="contrast"><em>foreground or background with level</em></h2>
+              <p>
+                For each theme there are 5 foreground and 5 background 
+                greyscale values, as well as 3 foreground and 
+                3 background color values. The lower the number, the higher 
+                the contrast.
+              </p> 
+              <p>
+                Most often you will want to use the highest-contrast foreground
+                with the highest-contrast background to ensure readability. 
+                For short sections of text, such as callouts or UI buttons, 
+                you may reduce the contrast. 
+              </p>
+              <h3>Small Text</h3>
+              <p>
+                Small text requires the highest contrast ratio for WCAG 2.0 AA compliance. 
+                Small text is any content that is <strong>NOT</strong>:
+              </p>
+              <ul>
+                <li>bold text that is 14 point or higher,</li>
+                <li>text that is 18 point or higher,</li>
+                <li>a decorative elements that has no semantic meaning, such as a border, or</li>
+                <li>a disabled UI element</li>
+              </ul>
+              <h3>Large Text</h3>
+              <p>
+                WCAG 2.0 AA requires higher contrast for small text than for large
+                text and for UI elements that have no text. Large text is defined as:
+              </p>
+              <ul>
+                <li>bold text that is 14 point or higher, or</li>
+                <li>text that is 18 point or higher</li>
+              </ul>
+              
+              <h3>Other UI Elements</h3>
+              <p>WCAG 2.0 AA allows the following exceptions for contrast:
+              </p>  
+              <ul>
+                <li>decorative elements that have no semantic meaning, such as borders</li>
+                <li>disabled UI elements</li>
+              </ul>
+              <simple-colors-contrast></simple-colors-contrast>
+            </div> 
+            <br/><br/>
+          </div>
+          <div id="tables">
+            <div id="simple">
+              <h2><tt>--simple-colors</tt></h2>
+              <table id="simple-color-table">
+                <caption>Default Simple Colors</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Highest Contrast Foreground</th>
+                    <th scope="col">Higher Contrast Foreground</th>
+                    <th scope="col">High Foreground</th>
+                    <th scope="col">Low Contrast Foreground</th>
+                    <th scope="col">Lowest Contrast Foreground</th>
+                    <th scope="col">Highest Contrast Background</th>
+                    <th scope="col">Higher Contrast Background</th>
+                    <th scope="col">High Background</th>
+                    <th scope="col">Low Contrast Background</th>
+                    <th scope="col">Lowest Contrast Background</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr accent-color="none">
+                    <td>--simple-colors-foreground1</td>
+                    <td>--simple-colors-foreground2</td>
+                    <td>--simple-colors-foreground3</td>
+                    <td>--simple-colors-foreground4</td>
+                    <td>--simple-colors-foreground5</td>
+                    <td>--simple-colors-background1</td>
+                    <td>--simple-colors-background2</td>
+                    <td>--simple-colors-background3</td>
+                    <td>--simple-colors-background4</td>
+                    <td>--simple-colors-background5</td>
+                  </tr>
+                  <tr>
+                    <td>--simple-colors-accent-foreground1</td>
+                    <td>--simple-colors-accent-foreground2</td>
+                    <td>--simple-colors-accent-foreground3</td>
+                    <td>--simple-colors-accent-foreground4</td>
+                    <td>--simple-colors-accent-foreground5</td>
+                    <td>--simple-colors-accent-background1</td>
+                    <td>--simple-colors-accent-background2</td>
+                    <td>--simple-colors-accent-background3</td>
+                    <td>--simple-colors-accent-background4</td>
+                    <td>--simple-colors-accent-background5</td>
+                  </tr>
+                  <tr accent-color="red">
+                    <td>--simple-colors-red-foreground1</td>
+                    <td>--simple-colors-red-foreground2</td>
+                    <td>--simple-colors-red-foreground3</td>
+                    <td>--simple-colors-red-foreground4</td>
+                    <td>--simple-colors-red-foreground5</td>
+                    <td>--simple-colors-red-background1</td>
+                    <td>--simple-colors-red-background2</td>
+                    <td>--simple-colors-red-background3</td>
+                    <td>--simple-colors-red-background4</td>
+                    <td>--simple-colors-red-background5</td>
+                  </tr>
+                  <tr accent-color="pink">
+                    <td>--simple-colors-pink-foreground1</td>
+                    <td>--simple-colors-pink-foreground2</td>
+                    <td>--simple-colors-pink-foreground3</td>
+                    <td>--simple-colors-pink-foreground4</td>
+                    <td>--simple-colors-pink-foreground5</td>
+                    <td>--simple-colors-pink-background1</td>
+                    <td>--simple-colors-pink-background2</td>
+                    <td>--simple-colors-pink-background3</td>
+                    <td>--simple-colors-pink-background4</td>
+                    <td>--simple-colors-pink-background5</td>
+                  </tr>
+                  <tr accent-color="purple">
+                    <td>--simple-colors-purple-foreground1</td>
+                    <td>--simple-colors-purple-foreground2</td>
+                    <td>--simple-colors-purple-foreground3</td>
+                    <td>--simple-colors-purple-foreground4</td>
+                    <td>--simple-colors-purple-foreground5</td>
+                    <td>--simple-colors-purple-background1</td>
+                    <td>--simple-colors-purple-background2</td>
+                    <td>--simple-colors-purple-background3</td>
+                    <td>--simple-colors-purple-background4</td>
+                    <td>--simple-colors-purple-background5</td>
+                  </tr>
+                  <tr accent-color="deep-purple">
+                    <td>--simple-colors-deep-purple-foreground1</td>
+                    <td>--simple-colors-deep-purple-foreground2</td>
+                    <td>--simple-colors-deep-purple-foreground3</td>
+                    <td>--simple-colors-deep-purple-foreground4</td>
+                    <td>--simple-colors-deep-purple-foreground5</td>
+                    <td>--simple-colors-deep-purple-background1</td>
+                    <td>--simple-colors-deep-purple-background2</td>
+                    <td>--simple-colors-deep-purple-background3</td>
+                    <td>--simple-colors-deep-purple-background4</td>
+                    <td>--simple-colors-deep-purple-background5</td>
+                  </tr>
+                  <tr accent-color="indigo">
+                    <td>--simple-colors-indigo-foreground1</td>
+                    <td>--simple-colors-indigo-foreground2</td>
+                    <td>--simple-colors-indigo-foreground3</td>
+                    <td>--simple-colors-indigo-foreground4</td>
+                    <td>--simple-colors-indigo-foreground5</td>
+                    <td>--simple-colors-indigo-background1</td>
+                    <td>--simple-colors-indigo-background2</td>
+                    <td>--simple-colors-indigo-background3</td>
+                    <td>--simple-colors-indigo-background4</td>
+                    <td>--simple-colors-indigo-background5</td>
+                  </tr>
+                  <tr accent-color="blue">
+                    <td>--simple-colors-blue-foreground1</td>
+                    <td>--simple-colors-blue-foreground2</td>
+                    <td>--simple-colors-blue-foreground3</td>
+                    <td>--simple-colors-blue-foreground4</td>
+                    <td>--simple-colors-blue-foreground5</td>
+                    <td>--simple-colors-blue-background1</td>
+                    <td>--simple-colors-blue-background2</td>
+                    <td>--simple-colors-blue-background3</td>
+                    <td>--simple-colors-blue-background4</td>
+                    <td>--simple-colors-blue-background5</td>
+                  </tr>
+                  <tr accent-color="light-blue">
+                    <td>--simple-colors-light-blue-foreground1</td>
+                    <td>--simple-colors-light-blue-foreground2</td>
+                    <td>--simple-colors-light-blue-foreground3</td>
+                    <td>--simple-colors-light-blue-foreground4</td>
+                    <td>--simple-colors-light-blue-foreground5</td>
+                    <td>--simple-colors-light-blue-background1</td>
+                    <td>--simple-colors-light-blue-background2</td>
+                    <td>--simple-colors-light-blue-background3</td>
+                    <td>--simple-colors-light-blue-background4</td>
+                    <td>--simple-colors-light-blue-background5</td>
+                  </tr>
+                  <tr accent-color="cyan">
+                    <td>--simple-colors-cyan-foreground1</td>
+                    <td>--simple-colors-cyan-foreground2</td>
+                    <td>--simple-colors-cyan-foreground3</td>
+                    <td>--simple-colors-cyan-foreground4</td>
+                    <td>--simple-colors-cyan-foreground5</td>
+                    <td>--simple-colors-cyan-background1</td>
+                    <td>--simple-colors-cyan-background2</td>
+                    <td>--simple-colors-cyan-background3</td>
+                    <td>--simple-colors-cyan-background4</td>
+                    <td>--simple-colors-cyan-background5</td>
+                  </tr>
+                  <tr accent-color="teal">
+                    <td>--simple-colors-teal-foreground1</td>
+                    <td>--simple-colors-teal-foreground2</td>
+                    <td>--simple-colors-teal-foreground3</td>
+                    <td>--simple-colors-teal-foreground4</td>
+                    <td>--simple-colors-teal-foreground5</td>
+                    <td>--simple-colors-teal-background1</td>
+                    <td>--simple-colors-teal-background2</td>
+                    <td>--simple-colors-teal-background3</td>
+                    <td>--simple-colors-teal-background4</td>
+                    <td>--simple-colors-teal-background5</td>
+                  </tr>
+                  <tr accent-color="green">
+                    <td>--simple-colors-green-foreground1</td>
+                    <td>--simple-colors-green-foreground2</td>
+                    <td>--simple-colors-green-foreground3</td>
+                    <td>--simple-colors-green-foreground4</td>
+                    <td>--simple-colors-green-foreground5</td>
+                    <td>--simple-colors-green-background1</td>
+                    <td>--simple-colors-green-background2</td>
+                    <td>--simple-colors-green-background3</td>
+                    <td>--simple-colors-green-background4</td>
+                    <td>--simple-colors-green-background5</td>
+                  </tr>
+                  <tr accent-color="light-green">
+                    <td>--simple-colors-light-green-foreground1</td>
+                    <td>--simple-colors-light-green-foreground2</td>
+                    <td>--simple-colors-light-green-foreground3</td>
+                    <td>--simple-colors-light-green-foreground4</td>
+                    <td>--simple-colors-light-green-foreground5</td>
+                    <td>--simple-colors-light-green-background1</td>
+                    <td>--simple-colors-light-green-background2</td>
+                    <td>--simple-colors-light-green-background3</td>
+                    <td>--simple-colors-light-green-background4</td>
+                    <td>--simple-colors-light-green-background5</td>
+                  </tr>
+                  <tr accent-color="lime">
+                    <td>--simple-colors-lime-foreground1</td>
+                    <td>--simple-colors-lime-foreground2</td>
+                    <td>--simple-colors-lime-foreground3</td>
+                    <td>--simple-colors-lime-foreground4</td>
+                    <td>--simple-colors-lime-foreground5</td>
+                    <td>--simple-colors-lime-background1</td>
+                    <td>--simple-colors-lime-background2</td>
+                    <td>--simple-colors-lime-background3</td>
+                    <td>--simple-colors-lime-background4</td>
+                    <td>--simple-colors-lime-background5</td>
+                  </tr>
+                  <tr accent-color="yellow">
+                    <td>--simple-colors-yellow-foreground1</td>
+                    <td>--simple-colors-yellow-foreground2</td>
+                    <td>--simple-colors-yellow-foreground3</td>
+                    <td>--simple-colors-yellow-foreground4</td>
+                    <td>--simple-colors-yellow-foreground5</td>
+                    <td>--simple-colors-yellow-background1</td>
+                    <td>--simple-colors-yellow-background2</td>
+                    <td>--simple-colors-yellow-background3</td>
+                    <td>--simple-colors-yellow-background4</td>
+                    <td>--simple-colors-yellow-background4</td>
+                  </tr>
+                  <tr accent-color="amber">
+                    <td>--simple-colors-amber-foreground1</td>
+                    <td>--simple-colors-amber-foreground2</td>
+                    <td>--simple-colors-amber-foreground3</td>
+                    <td>--simple-colors-amber-foreground4</td>
+                    <td>--simple-colors-amber-foreground5</td>
+                    <td>--simple-colors-amber-background1</td>
+                    <td>--simple-colors-amber-background2</td>
+                    <td>--simple-colors-amber-background3</td>
+                    <td>--simple-colors-amber-background4</td>
+                    <td>--simple-colors-amber-background5</td>
+                  </tr>
+                  <tr accent-color="orange">
+                    <td>--simple-colors-orange-foreground1</td>
+                    <td>--simple-colors-orange-foreground2</td>
+                    <td>--simple-colors-orange-foreground3</td>
+                    <td>--simple-colors-orange-foreground4</td>
+                    <td>--simple-colors-orange-foreground5</td>
+                    <td>--simple-colors-orange-background1</td>
+                    <td>--simple-colors-orange-background2</td>
+                    <td>--simple-colors-orange-background3</td>
+                    <td>--simple-colors-orange-background4</td>
+                    <td>--simple-colors-orange-background5</td>
+                  </tr>
+                  <tr accent-color="deep-orange">
+                    <td>--simple-colors-deep-orange-foreground1</td>
+                    <td>--simple-colors-deep-orange-foreground2</td>
+                    <td>--simple-colors-deep-orange-foreground3</td>
+                    <td>--simple-colors-deep-orange-foreground4</td>
+                    <td>--simple-colors-deep-orange-foreground5</td>
+                    <td>--simple-colors-deep-orange-background1</td>
+                    <td>--simple-colors-deep-orange-background2</td>
+                    <td>--simple-colors-deep-orange-background3</td>
+                    <td>--simple-colors-deep-orange-background4</td>
+                    <td>--simple-colors-deep-orange-background5</td>
+                  </tr>
+                  <tr accent-color="brown">
+                    <td>--simple-colors-brown-foreground1</td>
+                    <td>--simple-colors-brown-foreground2</td>
+                    <td>--simple-colors-brown-foreground3</td>
+                    <td>--simple-colors-brown-foreground4</td>
+                    <td>--simple-colors-brown-foreground5</td>
+                    <td>--simple-colors-brown-background1</td>
+                    <td>--simple-colors-brown-background2</td>
+                    <td>--simple-colors-brown-background3</td>
+                    <td>--simple-colors-brown-background4</td>
+                    <td>--simple-colors-brown-background5</td>
+                  </tr>
+                  <tr accent-color="blue-grey">
+                    <td>--simple-colors-blue-grey-foreground1</td>
+                    <td>--simple-colors-blue-grey-foreground2</td>
+                    <td>--simple-colors-blue-grey-foreground3</td>
+                    <td>--simple-colors-blue-grey-foreground4</td>
+                    <td>--simple-colors-blue-grey-foreground5</td>
+                    <td>--simple-colors-blue-grey-background1</td>
+                    <td>--simple-colors-blue-grey-background2</td>
+                    <td>--simple-colors-blue-grey-background3</td>
+                    <td>--simple-colors-blue-grey-background4</td>
+                    <td>--simple-colors-blue-grey-background5</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="light">
+              <h2><tt>--simple-colors-light-theme</tt></h2>
+              <p>Use these variables only if you wish to override the current theme with a light theme.</p>
+              <table id="light-color-table">
+                <caption>Light Theme Colors</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Highest Contrast Foreground</th>
+                    <th scope="col">Higher Contrast Foreground</th>
+                    <th scope="col">High Contrast Foreground</th>
+                    <th scope="col">Low Contrast Foreground</th>
+                    <th scope="col">Lowest Contrast Foreground</th>
+                    <th scope="col">Highest Contrast Background</th>
+                    <th scope="col">Higher Contrast Background</th>
+                    <th scope="col">High Contrast Background</th>
+                    <th scope="col">Low Contrast Background</th>
+                    <th scope="col">Lowest Contrast Background</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr accent-color="none">
+                    <td>--simple-colors-light-theme-foreground1</td>
+                    <td>--simple-colors-light-theme-foreground2</td>
+                    <td>--simple-colors-light-theme-foreground3</td>
+                    <td>--simple-colors-light-theme-foreground4</td>
+                    <td>--simple-colors-light-theme-foreground5</td>
+                    <td>--simple-colors-light-theme-background1</td>
+                    <td>--simple-colors-light-theme-background2</td>
+                    <td>--simple-colors-light-theme-background3</td>
+                    <td>--simple-colors-light-theme-background4</td>
+                    <td>--simple-colors-light-theme-background5</td>
+                  </tr>
+                  <tr>
+                    <td>--simple-colors-light-theme-accent-foreground1</td>
+                    <td>--simple-colors-light-theme-accent-foreground2</td>
+                    <td>--simple-colors-light-theme-accent-foreground3</td>
+                    <td>--simple-colors-light-theme-accent-foreground4</td>
+                    <td>--simple-colors-light-theme-accent-foreground5</td>
+                    <td>--simple-colors-light-theme-accent-background1</td>
+                    <td>--simple-colors-light-theme-accent-background2</td>
+                    <td>--simple-colors-light-theme-accent-background3</td>
+                    <td>--simple-colors-light-theme-accent-background4</td>
+                    <td>--simple-colors-light-theme-accent-background5</td>
+                  </tr>
+                  <tr accent-color="red">
+                    <td>--simple-colors-light-theme-red-foreground1</td>
+                    <td>--simple-colors-light-theme-red-foreground2</td>
+                    <td>--simple-colors-light-theme-red-foreground3</td>
+                    <td>--simple-colors-light-theme-red-foreground4</td>
+                    <td>--simple-colors-light-theme-red-foreground5</td>
+                    <td>--simple-colors-light-theme-red-background1</td>
+                    <td>--simple-colors-light-theme-red-background2</td>
+                    <td>--simple-colors-light-theme-red-background3</td>
+                    <td>--simple-colors-light-theme-red-background4</td>
+                    <td>--simple-colors-light-theme-red-background5</td>
+                  </tr>
+                  <tr accent-color="pink">
+                    <td>--simple-colors-light-theme-pink-foreground1</td>
+                    <td>--simple-colors-light-theme-pink-foreground2</td>
+                    <td>--simple-colors-light-theme-pink-foreground3</td>
+                    <td>--simple-colors-light-theme-pink-foreground4</td>
+                    <td>--simple-colors-light-theme-pink-foreground5</td>
+                    <td>--simple-colors-light-theme-pink-background1</td>
+                    <td>--simple-colors-light-theme-pink-background2</td>
+                    <td>--simple-colors-light-theme-pink-background3</td>
+                    <td>--simple-colors-light-theme-pink-background4</td>
+                    <td>--simple-colors-light-theme-pink-background5</td>
+                  </tr>
+                  <tr accent-color="purple">
+                    <td>--simple-colors-light-theme-purple-foreground1</td>
+                    <td>--simple-colors-light-theme-purple-foreground2</td>
+                    <td>--simple-colors-light-theme-purple-foreground3</td>
+                    <td>--simple-colors-light-theme-purple-foreground4</td>
+                    <td>--simple-colors-light-theme-purple-foreground5</td>
+                    <td>--simple-colors-light-theme-purple-background1</td>
+                    <td>--simple-colors-light-theme-purple-background2</td>
+                    <td>--simple-colors-light-theme-purple-background3</td>
+                    <td>--simple-colors-light-theme-purple-background4</td>
+                    <td>--simple-colors-light-theme-purple-background5</td>
+                  </tr>
+                  <tr accent-color="deep-purple">
+                    <td>--simple-colors-light-theme-deep-purple-foreground1</td>
+                    <td>--simple-colors-light-theme-deep-purple-foreground2</td>
+                    <td>--simple-colors-light-theme-deep-purple-foreground3</td>
+                    <td>--simple-colors-light-theme-deep-purple-foreground4</td>
+                    <td>--simple-colors-light-theme-deep-purple-foreground5</td>
+                    <td>--simple-colors-light-theme-deep-purple-background1</td>
+                    <td>--simple-colors-light-theme-deep-purple-background2</td>
+                    <td>--simple-colors-light-theme-deep-purple-background3</td>
+                    <td>--simple-colors-light-theme-deep-purple-background4</td>
+                    <td>--simple-colors-light-theme-deep-purple-background5</td>
+                  </tr>
+                  <tr accent-color="indigo">
+                    <td>--simple-colors-light-theme-indigo-foreground1</td>
+                    <td>--simple-colors-light-theme-indigo-foreground2</td>
+                    <td>--simple-colors-light-theme-indigo-foreground3</td>
+                    <td>--simple-colors-light-theme-indigo-foreground4</td>
+                    <td>--simple-colors-light-theme-indigo-foreground5</td>
+                    <td>--simple-colors-light-theme-indigo-background1</td>
+                    <td>--simple-colors-light-theme-indigo-background2</td>
+                    <td>--simple-colors-light-theme-indigo-background3</td>
+                    <td>--simple-colors-light-theme-indigo-background4</td>
+                    <td>--simple-colors-light-theme-indigo-background5</td>
+                  </tr>
+                  <tr accent-color="blue">
+                    <td>--simple-colors-light-theme-blue-foreground1</td>
+                    <td>--simple-colors-light-theme-blue-foreground2</td>
+                    <td>--simple-colors-light-theme-blue-foreground3</td>
+                    <td>--simple-colors-light-theme-blue-foreground4</td>
+                    <td>--simple-colors-light-theme-blue-foreground5</td>
+                    <td>--simple-colors-light-theme-blue-background1</td>
+                    <td>--simple-colors-light-theme-blue-background2</td>
+                    <td>--simple-colors-light-theme-blue-background3</td>
+                    <td>--simple-colors-light-theme-blue-background4</td>
+                    <td>--simple-colors-light-theme-blue-background5</td>
+                  </tr>
+                  <tr accent-color="light-blue">
+                    <td>--simple-colors-light-theme-light-blue-foreground1</td>
+                    <td>--simple-colors-light-theme-light-blue-foreground2</td>
+                    <td>--simple-colors-light-theme-light-blue-foreground3</td>
+                    <td>--simple-colors-light-theme-light-blue-foreground4</td>
+                    <td>--simple-colors-light-theme-light-blue-foreground5</td>
+                    <td>--simple-colors-light-theme-light-blue-background1</td>
+                    <td>--simple-colors-light-theme-light-blue-background2</td>
+                    <td>--simple-colors-light-theme-light-blue-background3</td>
+                    <td>--simple-colors-light-theme-light-blue-background4</td>
+                    <td>--simple-colors-light-theme-light-blue-background5</td>
+                  </tr>
+                  <tr accent-color="cyan">
+                    <td>--simple-colors-light-theme-cyan-foreground1</td>
+                    <td>--simple-colors-light-theme-cyan-foreground2</td>
+                    <td>--simple-colors-light-theme-cyan-foreground3</td>
+                    <td>--simple-colors-light-theme-cyan-foreground4</td>
+                    <td>--simple-colors-light-theme-cyan-foreground5</td>
+                    <td>--simple-colors-light-theme-cyan-background1</td>
+                    <td>--simple-colors-light-theme-cyan-background2</td>
+                    <td>--simple-colors-light-theme-cyan-background3</td>
+                    <td>--simple-colors-light-theme-cyan-background4</td>
+                    <td>--simple-colors-light-theme-cyan-background5</td>
+                  </tr>
+                  <tr accent-color="teal">
+                    <td>--simple-colors-light-theme-teal-foreground1</td>
+                    <td>--simple-colors-light-theme-teal-foreground2</td>
+                    <td>--simple-colors-light-theme-teal-foreground3</td>
+                    <td>--simple-colors-light-theme-teal-foreground4</td>
+                    <td>--simple-colors-light-theme-teal-foreground5</td>
+                    <td>--simple-colors-light-theme-teal-background1</td>
+                    <td>--simple-colors-light-theme-teal-background2</td>
+                    <td>--simple-colors-light-theme-teal-background3</td>
+                    <td>--simple-colors-light-theme-teal-background4</td>
+                    <td>--simple-colors-light-theme-teal-background5</td>
+                  </tr>
+                  <tr accent-color="green">
+                    <td>--simple-colors-light-theme-green-foreground1</td>
+                    <td>--simple-colors-light-theme-green-foreground2</td>
+                    <td>--simple-colors-light-theme-green-foreground3</td>
+                    <td>--simple-colors-light-theme-green-foreground4</td>
+                    <td>--simple-colors-light-theme-green-foreground5</td>
+                    <td>--simple-colors-light-theme-green-background1</td>
+                    <td>--simple-colors-light-theme-green-background2</td>
+                    <td>--simple-colors-light-theme-green-background3</td>
+                    <td>--simple-colors-light-theme-green-background4</td>
+                    <td>--simple-colors-light-theme-green-background5</td>
+                  </tr>
+                  <tr accent-color="light-green">
+                    <td>--simple-colors-light-theme-light-green-foreground1</td>
+                    <td>--simple-colors-light-theme-light-green-foreground2</td>
+                    <td>--simple-colors-light-theme-light-green-foreground3</td>
+                    <td>--simple-colors-light-theme-light-green-foreground4</td>
+                    <td>--simple-colors-light-theme-light-green-foreground5</td>
+                    <td>--simple-colors-light-theme-light-green-background1</td>
+                    <td>--simple-colors-light-theme-light-green-background2</td>
+                    <td>--simple-colors-light-theme-light-green-background3</td>
+                    <td>--simple-colors-light-theme-light-green-background4</td>
+                    <td>--simple-colors-light-theme-light-green-background5</td>
+                  </tr>
+                  <tr accent-color="lime">
+                    <td>--simple-colors-light-theme-lime-foreground1</td>
+                    <td>--simple-colors-light-theme-lime-foreground2</td>
+                    <td>--simple-colors-light-theme-lime-foreground3</td>
+                    <td>--simple-colors-light-theme-lime-foreground4</td>
+                    <td>--simple-colors-light-theme-lime-foreground5</td>
+                    <td>--simple-colors-light-theme-lime-background1</td>
+                    <td>--simple-colors-light-theme-lime-background2</td>
+                    <td>--simple-colors-light-theme-lime-background3</td>
+                    <td>--simple-colors-light-theme-lime-background4</td>
+                    <td>--simple-colors-light-theme-lime-background5</td>
+                  </tr>
+                  <tr accent-color="yellow">
+                    <td>--simple-colors-light-theme-yellow-foreground1</td>
+                    <td>--simple-colors-light-theme-yellow-foreground2</td>
+                    <td>--simple-colors-light-theme-yellow-foreground3</td>
+                    <td>--simple-colors-light-theme-yellow-foreground4</td>
+                    <td>--simple-colors-light-theme-yellow-foreground5</td>
+                    <td>--simple-colors-light-theme-yellow-background1</td>
+                    <td>--simple-colors-light-theme-yellow-background2</td>
+                    <td>--simple-colors-light-theme-yellow-background3</td>
+                    <td>--simple-colors-light-theme-yellow-background4</td>
+                    <td>--simple-colors-light-theme-yellow-background4</td>
+                  </tr>
+                  <tr accent-color="amber">
+                    <td>--simple-colors-light-theme-amber-foreground1</td>
+                    <td>--simple-colors-light-theme-amber-foreground2</td>
+                    <td>--simple-colors-light-theme-amber-foreground3</td>
+                    <td>--simple-colors-light-theme-amber-foreground4</td>
+                    <td>--simple-colors-light-theme-amber-foreground5</td>
+                    <td>--simple-colors-light-theme-amber-background1</td>
+                    <td>--simple-colors-light-theme-amber-background2</td>
+                    <td>--simple-colors-light-theme-amber-background3</td>
+                    <td>--simple-colors-light-theme-amber-background4</td>
+                    <td>--simple-colors-light-theme-amber-background5</td>
+                  </tr>
+                  <tr accent-color="orange">
+                    <td>--simple-colors-light-theme-orange-foreground1</td>
+                    <td>--simple-colors-light-theme-orange-foreground2</td>
+                    <td>--simple-colors-light-theme-orange-foreground3</td>
+                    <td>--simple-colors-light-theme-orange-foreground4</td>
+                    <td>--simple-colors-light-theme-orange-foreground5</td>
+                    <td>--simple-colors-light-theme-orange-background1</td>
+                    <td>--simple-colors-light-theme-orange-background2</td>
+                    <td>--simple-colors-light-theme-orange-background3</td>
+                    <td>--simple-colors-light-theme-orange-background4</td>
+                    <td>--simple-colors-light-theme-orange-background5</td>
+                  </tr>
+                  <tr accent-color="deep-orange">
+                    <td>--simple-colors-light-theme-deep-orange-foreground1</td>
+                    <td>--simple-colors-light-theme-deep-orange-foreground2</td>
+                    <td>--simple-colors-light-theme-deep-orange-foreground3</td>
+                    <td>--simple-colors-light-theme-deep-orange-foreground4</td>
+                    <td>--simple-colors-light-theme-deep-orange-foreground5</td>
+                    <td>--simple-colors-light-theme-deep-orange-background1</td>
+                    <td>--simple-colors-light-theme-deep-orange-background2</td>
+                    <td>--simple-colors-light-theme-deep-orange-background3</td>
+                    <td>--simple-colors-light-theme-deep-orange-background4</td>
+                    <td>--simple-colors-light-theme-deep-orange-background5</td>
+                  </tr>
+                  <tr accent-color="brown">
+                    <td>--simple-colors-light-theme-brown-foreground1</td>
+                    <td>--simple-colors-light-theme-brown-foreground2</td>
+                    <td>--simple-colors-light-theme-brown-foreground3</td>
+                    <td>--simple-colors-light-theme-brown-foreground4</td>
+                    <td>--simple-colors-light-theme-brown-foreground5</td>
+                    <td>--simple-colors-light-theme-brown-background1</td>
+                    <td>--simple-colors-light-theme-brown-background2</td>
+                    <td>--simple-colors-light-theme-brown-background3</td>
+                    <td>--simple-colors-light-theme-brown-background4</td>
+                    <td>--simple-colors-light-theme-brown-background5</td>
+                  </tr>
+                  <tr accent-color="blue-grey">
+                    <td>--simple-colors-light-theme-blue-grey-foreground1</td>
+                    <td>--simple-colors-light-theme-blue-grey-foreground2</td>
+                    <td>--simple-colors-light-theme-blue-grey-foreground3</td>
+                    <td>--simple-colors-light-theme-blue-grey-foreground4</td>
+                    <td>--simple-colors-light-theme-blue-grey-foreground5</td>
+                    <td>--simple-colors-light-theme-blue-grey-background1</td>
+                    <td>--simple-colors-light-theme-blue-grey-background2</td>
+                    <td>--simple-colors-light-theme-blue-grey-background3</td>
+                    <td>--simple-colors-light-theme-blue-grey-background4</td>
+                    <td>--simple-colors-light-theme-blue-grey-background5</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="dark">
+              <h2><tt>--simple-colors-dark-theme</tt></h2>
+              <p>Use these variables only if you wish to override the current theme with a dark theme.</p>
+              <table id="dark-color-table">
+                <caption>Dark Theme Colors</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Highest Contrast Foreground</th>
+                    <th scope="col">Higher Contrast Foreground</th>
+                    <th scope="col">High Foreground</th>
+                    <th scope="col">Low Contrast Foreground</th>
+                    <th scope="col">Lowest Contrast Foreground</th>
+                    <th scope="col">Highest Contrast Background</th>
+                    <th scope="col">Higher Contrast Background</th>
+                    <th scope="col">High Background</th>
+                    <th scope="col">Low Contrast Background</th>
+                    <th scope="col">Lowest Contrast Background</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr accent-color="none">
+                    <td>--simple-colors-dark-theme-foreground1</td>
+                    <td>--simple-colors-dark-theme-foreground2</td>
+                    <td>--simple-colors-dark-theme-foreground3</td>
+                    <td>--simple-colors-dark-theme-foreground4</td>
+                    <td>--simple-colors-dark-theme-foreground5</td>
+                    <td>--simple-colors-dark-theme-background1</td>
+                    <td>--simple-colors-dark-theme-background2</td>
+                    <td>--simple-colors-dark-theme-background3</td>
+                    <td>--simple-colors-dark-theme-background4</td>
+                    <td>--simple-colors-dark-theme-background5</td>
+                  </tr>>
+                  <tr>
+                    <td>--simple-colors-dark-theme-accent-foreground1</td>
+                    <td>--simple-colors-dark-theme-accent-foreground2</td>
+                    <td>--simple-colors-dark-theme-accent-foreground3</td>
+                    <td>--simple-colors-dark-theme-accent-foreground4</td>
+                    <td>--simple-colors-dark-theme-accent-foreground5</td>
+                    <td>--simple-colors-dark-theme-accent-background1</td>
+                    <td>--simple-colors-dark-theme-accent-background2</td>
+                    <td>--simple-colors-dark-theme-accent-background3</td>
+                    <td>--simple-colors-dark-theme-accent-background4</td>
+                    <td>--simple-colors-dark-theme-accent-background5</td>
+                  </tr>
+                  <tr accent-color="red">
+                    <td>--simple-colors-dark-theme-red-foreground1</td>
+                    <td>--simple-colors-dark-theme-red-foreground2</td>
+                    <td>--simple-colors-dark-theme-red-foreground3</td>
+                    <td>--simple-colors-dark-theme-red-foreground4</td>
+                    <td>--simple-colors-dark-theme-red-foreground5</td>
+                    <td>--simple-colors-dark-theme-red-background1</td>
+                    <td>--simple-colors-dark-theme-red-background2</td>
+                    <td>--simple-colors-dark-theme-red-background3</td>
+                    <td>--simple-colors-dark-theme-red-background4</td>
+                    <td>--simple-colors-dark-theme-red-background5</td>
+                  </tr>
+                  <tr accent-color="pink">
+                    <td>--simple-colors-dark-theme-pink-foreground1</td>
+                    <td>--simple-colors-dark-theme-pink-foreground2</td>
+                    <td>--simple-colors-dark-theme-pink-foreground3</td>
+                    <td>--simple-colors-dark-theme-pink-foreground4</td>
+                    <td>--simple-colors-dark-theme-pink-foreground5</td>
+                    <td>--simple-colors-dark-theme-pink-background1</td>
+                    <td>--simple-colors-dark-theme-pink-background2</td>
+                    <td>--simple-colors-dark-theme-pink-background3</td>
+                    <td>--simple-colors-dark-theme-pink-background4</td>
+                    <td>--simple-colors-dark-theme-pink-background5</td>
+                  </tr>
+                  <tr accent-color="purple">
+                    <td>--simple-colors-dark-theme-purple-foreground1</td>
+                    <td>--simple-colors-dark-theme-purple-foreground2</td>
+                    <td>--simple-colors-dark-theme-purple-foreground3</td>
+                    <td>--simple-colors-dark-theme-purple-foreground4</td>
+                    <td>--simple-colors-dark-theme-purple-foreground5</td>
+                    <td>--simple-colors-dark-theme-purple-background1</td>
+                    <td>--simple-colors-dark-theme-purple-background2</td>
+                    <td>--simple-colors-dark-theme-purple-background3</td>
+                    <td>--simple-colors-dark-theme-purple-background4</td>
+                    <td>--simple-colors-dark-theme-purple-background5</td>
+                  </tr>
+                  <tr accent-color="deep-purple">
+                    <td>--simple-colors-dark-theme-deep-purple-foreground1</td>
+                    <td>--simple-colors-dark-theme-deep-purple-foreground2</td>
+                    <td>--simple-colors-dark-theme-deep-purple-foreground3</td>
+                    <td>--simple-colors-dark-theme-deep-purple-foreground4</td>
+                    <td>--simple-colors-dark-theme-deep-purple-foreground5</td>
+                    <td>--simple-colors-dark-theme-deep-purple-background1</td>
+                    <td>--simple-colors-dark-theme-deep-purple-background2</td>
+                    <td>--simple-colors-dark-theme-deep-purple-background3</td>
+                    <td>--simple-colors-dark-theme-deep-purple-background4</td>
+                    <td>--simple-colors-dark-theme-deep-purple-background5</td>
+                  </tr>
+                  <tr accent-color="indigo">
+                    <td>--simple-colors-dark-theme-indigo-foreground1</td>
+                    <td>--simple-colors-dark-theme-indigo-foreground2</td>
+                    <td>--simple-colors-dark-theme-indigo-foreground3</td>
+                    <td>--simple-colors-dark-theme-indigo-foreground4</td>
+                    <td>--simple-colors-dark-theme-indigo-foreground5</td>
+                    <td>--simple-colors-dark-theme-indigo-background1</td>
+                    <td>--simple-colors-dark-theme-indigo-background2</td>
+                    <td>--simple-colors-dark-theme-indigo-background3</td>
+                    <td>--simple-colors-dark-theme-indigo-background4</td>
+                    <td>--simple-colors-dark-theme-indigo-background5</td>
+                  </tr>
+                  <tr accent-color="blue">
+                    <td>--simple-colors-dark-theme-blue-foreground1</td>
+                    <td>--simple-colors-dark-theme-blue-foreground2</td>
+                    <td>--simple-colors-dark-theme-blue-foreground3</td>
+                    <td>--simple-colors-dark-theme-blue-foreground4</td>
+                    <td>--simple-colors-dark-theme-blue-foreground5</td>
+                    <td>--simple-colors-dark-theme-blue-background1</td>
+                    <td>--simple-colors-dark-theme-blue-background2</td>
+                    <td>--simple-colors-dark-theme-blue-background3</td>
+                    <td>--simple-colors-dark-theme-blue-background4</td>
+                    <td>--simple-colors-dark-theme-blue-background5</td>
+                  </tr>
+                  <tr accent-color="light-blue">
+                    <td>--simple-colors-dark-theme-light-blue-foreground1</td>
+                    <td>--simple-colors-dark-theme-light-blue-foreground2</td>
+                    <td>--simple-colors-dark-theme-light-blue-foreground3</td>
+                    <td>--simple-colors-dark-theme-light-blue-foreground4</td>
+                    <td>--simple-colors-dark-theme-light-blue-foreground5</td>
+                    <td>--simple-colors-dark-theme-light-blue-background1</td>
+                    <td>--simple-colors-dark-theme-light-blue-background2</td>
+                    <td>--simple-colors-dark-theme-light-blue-background3</td>
+                    <td>--simple-colors-dark-theme-light-blue-background4</td>
+                    <td>--simple-colors-dark-theme-light-blue-background5</td>
+                  </tr>
+                  <tr accent-color="cyan">
+                    <td>--simple-colors-dark-theme-cyan-foreground1</td>
+                    <td>--simple-colors-dark-theme-cyan-foreground2</td>
+                    <td>--simple-colors-dark-theme-cyan-foreground3</td>
+                    <td>--simple-colors-dark-theme-cyan-foreground4</td>
+                    <td>--simple-colors-dark-theme-cyan-foreground5</td>
+                    <td>--simple-colors-dark-theme-cyan-background1</td>
+                    <td>--simple-colors-dark-theme-cyan-background2</td>
+                    <td>--simple-colors-dark-theme-cyan-background3</td>
+                    <td>--simple-colors-dark-theme-cyan-background4</td>
+                    <td>--simple-colors-dark-theme-cyan-background5</td>
+                  </tr>
+                  <tr accent-color="teal">
+                    <td>--simple-colors-dark-theme-teal-foreground1</td>
+                    <td>--simple-colors-dark-theme-teal-foreground2</td>
+                    <td>--simple-colors-dark-theme-teal-foreground3</td>
+                    <td>--simple-colors-dark-theme-teal-foreground4</td>
+                    <td>--simple-colors-dark-theme-teal-foreground5</td>
+                    <td>--simple-colors-dark-theme-teal-background1</td>
+                    <td>--simple-colors-dark-theme-teal-background2</td>
+                    <td>--simple-colors-dark-theme-teal-background3</td>
+                    <td>--simple-colors-dark-theme-teal-background4</td>
+                    <td>--simple-colors-dark-theme-teal-background5</td>
+                  </tr>
+                  <tr accent-color="green">
+                    <td>--simple-colors-dark-theme-green-foreground1</td>
+                    <td>--simple-colors-dark-theme-green-foreground2</td>
+                    <td>--simple-colors-dark-theme-green-foreground3</td>
+                    <td>--simple-colors-dark-theme-green-foreground4</td>
+                    <td>--simple-colors-dark-theme-green-foreground5</td>
+                    <td>--simple-colors-dark-theme-green-background1</td>
+                    <td>--simple-colors-dark-theme-green-background2</td>
+                    <td>--simple-colors-dark-theme-green-background3</td>
+                    <td>--simple-colors-dark-theme-green-background4</td>
+                    <td>--simple-colors-dark-theme-green-background5</td>
+                  </tr>
+                  <tr accent-color="light-green">
+                    <td>--simple-colors-dark-theme-light-green-foreground1</td>
+                    <td>--simple-colors-dark-theme-light-green-foreground2</td>
+                    <td>--simple-colors-dark-theme-light-green-foreground3</td>
+                    <td>--simple-colors-dark-theme-light-green-foreground4</td>
+                    <td>--simple-colors-dark-theme-light-green-foreground5</td>
+                    <td>--simple-colors-dark-theme-light-green-background1</td>
+                    <td>--simple-colors-dark-theme-light-green-background2</td>
+                    <td>--simple-colors-dark-theme-light-green-background3</td>
+                    <td>--simple-colors-dark-theme-light-green-background4</td>
+                    <td>--simple-colors-dark-theme-light-green-background5</td>
+                  </tr>
+                  <tr accent-color="lime">
+                    <td>--simple-colors-dark-theme-lime-foreground1</td>
+                    <td>--simple-colors-dark-theme-lime-foreground2</td>
+                    <td>--simple-colors-dark-theme-lime-foreground3</td>
+                    <td>--simple-colors-dark-theme-lime-foreground4</td>
+                    <td>--simple-colors-dark-theme-lime-foreground5</td>
+                    <td>--simple-colors-dark-theme-lime-background1</td>
+                    <td>--simple-colors-dark-theme-lime-background2</td>
+                    <td>--simple-colors-dark-theme-lime-background3</td>
+                    <td>--simple-colors-dark-theme-lime-background4</td>
+                    <td>--simple-colors-dark-theme-lime-background5</td>
+                  </tr>
+                  <tr accent-color="yellow">
+                    <td>--simple-colors-dark-theme-yellow-foreground1</td>
+                    <td>--simple-colors-dark-theme-yellow-foreground2</td>
+                    <td>--simple-colors-dark-theme-yellow-foreground3</td>
+                    <td>--simple-colors-dark-theme-yellow-foreground4</td>
+                    <td>--simple-colors-dark-theme-yellow-foreground5</td>
+                    <td>--simple-colors-dark-theme-yellow-background1</td>
+                    <td>--simple-colors-dark-theme-yellow-background2</td>
+                    <td>--simple-colors-dark-theme-yellow-background3</td>
+                    <td>--simple-colors-dark-theme-yellow-background4</td>
+                    <td>--simple-colors-dark-theme-yellow-background4</td>
+                  </tr>
+                  <tr accent-color="amber">
+                    <td>--simple-colors-dark-theme-amber-foreground1</td>
+                    <td>--simple-colors-dark-theme-amber-foreground2</td>
+                    <td>--simple-colors-dark-theme-amber-foreground3</td>
+                    <td>--simple-colors-dark-theme-amber-foreground4</td>
+                    <td>--simple-colors-dark-theme-amber-foreground5</td>
+                    <td>--simple-colors-dark-theme-amber-background1</td>
+                    <td>--simple-colors-dark-theme-amber-background2</td>
+                    <td>--simple-colors-dark-theme-amber-background3</td>
+                    <td>--simple-colors-dark-theme-amber-background4</td>
+                    <td>--simple-colors-dark-theme-amber-background5</td>
+                  </tr>
+                  <tr accent-color="orange">
+                    <td>--simple-colors-dark-theme-orange-foreground1</td>
+                    <td>--simple-colors-dark-theme-orange-foreground2</td>
+                    <td>--simple-colors-dark-theme-orange-foreground3</td>
+                    <td>--simple-colors-dark-theme-orange-foreground4</td>
+                    <td>--simple-colors-dark-theme-orange-foreground5</td>
+                    <td>--simple-colors-dark-theme-orange-background1</td>
+                    <td>--simple-colors-dark-theme-orange-background2</td>
+                    <td>--simple-colors-dark-theme-orange-background3</td>
+                    <td>--simple-colors-dark-theme-orange-background4</td>
+                    <td>--simple-colors-dark-theme-orange-background5</td>
+                  </tr>
+                  <tr accent-color="deep-orange">
+                    <td>--simple-colors-dark-theme-deep-orange-foreground1</td>
+                    <td>--simple-colors-dark-theme-deep-orange-foreground2</td>
+                    <td>--simple-colors-dark-theme-deep-orange-foreground3</td>
+                    <td>--simple-colors-dark-theme-deep-orange-foreground4</td>
+                    <td>--simple-colors-dark-theme-deep-orange-foreground5</td>
+                    <td>--simple-colors-dark-theme-deep-orange-background1</td>
+                    <td>--simple-colors-dark-theme-deep-orange-background2</td>
+                    <td>--simple-colors-dark-theme-deep-orange-background3</td>
+                    <td>--simple-colors-dark-theme-deep-orange-background4</td>
+                    <td>--simple-colors-dark-theme-deep-orange-background5</td>
+                  </tr>
+                  <tr accent-color="brown">
+                    <td>--simple-colors-dark-theme-brown-foreground1</td>
+                    <td>--simple-colors-dark-theme-brown-foreground2</td>
+                    <td>--simple-colors-dark-theme-brown-foreground3</td>
+                    <td>--simple-colors-dark-theme-brown-foreground4</td>
+                    <td>--simple-colors-dark-theme-brown-foreground5</td>
+                    <td>--simple-colors-dark-theme-brown-background1</td>
+                    <td>--simple-colors-dark-theme-brown-background2</td>
+                    <td>--simple-colors-dark-theme-brown-background3</td>
+                    <td>--simple-colors-dark-theme-brown-background4</td>
+                    <td>--simple-colors-dark-theme-brown-background5</td>
+                  </tr>
+                  <tr accent-color="blue-grey">
+                    <td>--simple-colors-dark-theme-blue-grey-foreground1</td>
+                    <td>--simple-colors-dark-theme-blue-grey-foreground2</td>
+                    <td>--simple-colors-dark-theme-blue-grey-foreground3</td>
+                    <td>--simple-colors-dark-theme-blue-grey-foreground4</td>
+                    <td>--simple-colors-dark-theme-blue-grey-foreground5</td>
+                    <td>--simple-colors-dark-theme-blue-grey-background1</td>
+                    <td>--simple-colors-dark-theme-blue-grey-background2</td>
+                    <td>--simple-colors-dark-theme-blue-grey-background3</td>
+                    <td>--simple-colors-dark-theme-blue-grey-background4</td>
+                    <td>--simple-colors-dark-theme-blue-grey-background5</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div> 
+          </div> 
+        </simple-colors-demo>
+      </demo-snippet> 
+    </div>
+  </body>
+</html>

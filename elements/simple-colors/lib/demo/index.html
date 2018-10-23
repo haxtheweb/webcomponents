@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>simple-colors demo</title>
+
+    <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script type="module" src="@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+    <script type="module" src="@polymer/iron-demo-helpers/demo-snippet.js"></script>
+    <script type="module" src="../simple-colors-picker.js"></script>
+    <script type="module" src="./simple-colors-demo.js"></script>
+    <style>
+      element-with-simple-colors-behaviors { display: none; }
+      my-text {
+          display: block;
+          padding: 20px;
+          color: var(--simple-colors-foreground1);
+          background-color: var(--simple-colors-background1);
+        }
+      my-text button {
+          display: inline-block;
+          padding: 0.25em 0.5em;
+          margin: 0 0.25em;
+          border-radius: 0.2em;
+          font-size: 14pt;
+        }
+      my-text button:focus, 
+      my-text button:hover {
+          cursor: pointer;
+        }
+      my-text button[disabled]:focus,
+      my-text button[disabled]:hover {
+          cursor: no-drop;
+        }
+      my-text my-progress-bar,
+      my-text my-progress {
+          display: inline-block;
+          width: 200px;
+          height: 10px;
+          border-radius: 0.5em;
+          position: relative;
+        }
+      my-text my-progress-bar {
+          border: 1px solid var(--simple-colors-accent-foreground5);
+        }
+      my-text my-progress {
+          height: 10px;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 167px;
+          border-radius: 0.4em 0 0 0.4em;
+          border: none;
+          background-color: var(--simple-colors-accent-foreground4);
+        }
+      my-text my-feature-box {
+          padding: 20px;
+          display: block;
+          border-radius: 0 0 0.4em 0.4em;
+          margin: 0 0 15px;
+        }
+      my-text a:link {
+          color: var(--simple-colors-blue-foreground4);
+        }
+      my-text a:visited {
+          color: var(--simple-colors-purple-foreground4);
+        }
+      my-text my-feature-box {
+          border: 1px solid var(--simple-colors-foreground1);
+          border-top: 4px solid var(--simple-colors-accent-foreground4);
+          color: var(--simple-colors-foreground1);
+          background-color: var(--simple-colors-background2);
+        }
+      my-text button {
+          color: var(--simple-colors-foreground1);
+          background-color: var(--simple-colors-background1);
+          border: 1px solid var(--simple-colors-foreground3);
+        }
+      my-text button:not([disabled]):focus, 
+      my-text button:not([disabled]):hover {
+          background-color: var(--simple-colors-background2);
+          border-color: var(--simple-colors-background3);
+        }
+      my-text button.accent {
+          color: var(--simple-colors-accent-foreground4);
+          border-color: var(--simple-colors-accent-foreground4);
+        }
+      my-text button.action {
+          color: var(--simple-colors-background1);
+          background-color: var(--simple-colors-accent-foreground4);
+          border-color: var(--simple-colors-accent-foreground4);
+        }
+      my-text button.action:not([disabled]):focus, 
+      my-text button.action:not([disabled]):hover {
+          background-color: var(--simple-colors-accent-foreground5);
+        }
+      my-text button.save {
+          color: var(--simple-colors-background1);
+          background-color: var(--simple-colors-blue-foreground4);
+          border-color: var(--simple-colors-blue-foreground4);
+        }
+      my-text button.save:not([disabled]):focus, 
+      my-text button.save:not([disabled]):hover {
+          background-color: var(--simple-colors-blue-foreground5);
+        }
+      my-text button.delete {
+          color: var(--simple-colors-background1);
+          background-color: var(--simple-colors-red-foreground4);
+          border-color: var(--simple-colors-red-foreground4);
+        }
+      my-text button.delete:not([disabled]):focus, 
+      my-text button.delete:not([disabled]):hover {
+          background-color: var(--simple-colors-red-foreground5);
+        }
+      my-text button[disabled] {
+        color: var(--simple-colors-foreground5);
+        background-color: var(--simple-colors-background2);
+        border-color: var(--simple-colors-background3);
+      }
+      .picker {
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 5px;
+        padding: 20px;
+      }
+      .picker > * {
+        display: inline-flex;
+        align-self: center;
+        margin-right: 0.5em;
+        --simple-colors-picker-preview-size: 1.25em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>simple-colors color picker</h3>
+      <demo-snippet id="picker">
+        <template>
+          <div class="picker">
+            <label for="contrast">Simple Colors Picker: </label>
+            <simple-colors-picker id="picker-element"></simple-colors-picker>
+          </div>
+          <script type="module">
+import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+import '@polymer/iron-demo-helpers/demo-snippet.js';
+import '../simple-colors-picker.js';
+import './simple-colors-demo.js';
+document.getElementById('picker-element').addEventListener('change', function(e){
+  alert('You selected: \n'+JSON.stringify(e.detail).replace('{','{\n\t').replace(/","/g,'",\n\t"').replace(/":"/g,'": "').replace('}','\n}'));
+});
+</script>
+        </template>
+      </demo-snippet> 
+
+      <h3>simple-colors classes</h3>
+      <demo-snippet id="classes">
+        <simple-colors-demo target="classes">
+          <div class="box large simple-colors-red-foreground2-text simple-colors-red-background3-border simple-colors-background1">
+            This box has red text and border-color. (See <a class="simple-colors-blue-foreground4-text" href="documentation.html">documentation</a> for more information.)
+          </div>
+          <div class="box simple-colors-foreground1-text simple-colors-accent-background5-border simple-colors-accent-background1">
+            This box has an accent color border and background color.
+          </div>
+        </simple-colors-demo>
+        <template>
+          <element-with-simple-colors-behaviors>
+            <div id="classes" class="simple-colors-foreground1-text simple-colors-accent-background5-border simple-colors-accent-background1">
+              This box uses classes instead of variables.
+            </div>
+          </element-with-simple-colors-behaviors>
+          <style>
+            div.box {
+              padding: 20px;
+              border: 1px solid;
+              margin: 0 0 15px;
+            }
+            div.box.large {
+              font-size: 14px;
+            }
+          </style>
+        </template>
+      </demo-snippet> 
+
+      <h3>simple-colors CSS variables</h3>
+      <demo-snippet id="variables">
+        <simple-colors-demo target="variables">
+          <my-text>
+            <p>Features and callouts:</p>
+            <my-feature-box>
+              <p>
+                Simple colors lets you centralize your colors accross components, 
+                and dyamically easily a color scheme with a single attribute.
+                (See <a href="documentation.html">documentation</a> for more information.)
+              </p>
+            </my-feature-box>
+      
+            <p>Buttons:
+              <button class="accent">Accent Button</button>
+              <button class="action">Action Button</button>
+              <button class="save">Save Button</button>
+              <button class="delete">Delete Button</button>
+              <button>Cancel Button</button>
+              <button disabled>Disabled Button</button>
+            </p>
+      
+            <p>Other:
+              <my-progress-bar>
+                <my-progress></my-progress>
+              </my-progress-bar>
+            </p>
+          </my-text>
+        </simple-colors-demo>
+        <template>
+          <element-with-simple-colors-behaviors>
+            <button class="accent">Accent Button</button>
+            <button class="action">Action Button</button>
+            <button class="save">Save Button</button>
+            <button class="delete">Delete Button</button>
+            <button>Cancel Button</button>
+            <button disabled>Disabled Button</button>
+          </element-with-simple-colors-behaviors>
+
+          <style is="custom-style">
+            button {
+              color: var(--simple-colors-foreground1);
+              background-color: var(--simple-colors-background1);
+              border: 1px solid var(--simple-colors-foreground3);
+            }
+            button:not([disabled]):focus, 
+            button:not([disabled]):hover {
+              background-color: var(--simple-colors-background2);
+              border-color: var(--simple-colors-background3);
+            }
+            button.accent {
+              color: var(--simple-colors-accent-foreground2);
+              border-color: var(--simple-colors-accent-foreground2);
+            }
+            button.action {
+              color: var(--simple-colors-background1);
+              background-color: var(--simple-colors-accent-foreground2);
+              border-color: var(--simple-colors-accent-foreground2);
+            }
+            button.action:not([disabled]):focus, 
+            button.action:not([disabled]):hover {
+              background-color: var(--simple-colors-accent-foreground3);
+              border-color: var(--simple-colors-accent-foreground2);
+            }
+            button.save {
+              color: var(--simple-colors-background1);
+              background-color: var(--simple-colors-blue-foreground2);
+              border-color: var(--simple-colors-blue-foreground2);
+            }
+            button.save:not([disabled]):focus, 
+            button.save:not([disabled]):hover {
+              background-color: var(--simple-colors-blue-foreground3);
+              border-color: var(--simple-colors-blue-foreground2);
+            }
+            button.delete {
+              color: var(--simple-colors-background1);
+              background-color: var(--simple-colors-red-foreground2);
+              border-color: var(--simple-colors-red-foreground2);
+            }
+            button.delete:not([disabled]):focus, 
+            button.delete:not([disabled]):hover {
+              background-color: var(--simple-colors-red-foreground3);
+              border-color: var(--simple-colors-red-foreground2);
+            }
+            button[disabled] {
+              color: var(--simple-colors-foreground5);
+              background-color: var(--simple-colors-background2);
+              border-color: var(--simple-colors-background3);
+            }
+          </style>
+        </template>
+      </demo-snippet> 
+    </div>
+  </body>
+</html>
