@@ -1,0 +1,25 @@
+{
+  "name": "@lrnwebcomponents/iron-a11y-announcer/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A singleton element that simplifies announcing text to screen readers.",
+  "contributors": [
+    "The Polymer Authors"
+  ],
+  "keywords": [
+    "web-components",
+    "polymer",
+    "a11y",
+    "live"
+  ],
+  "main": "iron-a11y-announcer.html",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PolymerElements/iron-a11y-announcer.git"
+  },
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
