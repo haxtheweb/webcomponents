@@ -1,0 +1,11 @@
+{
+  "name": "@lrnwebcomponents/schema-behaviors/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A LRN element",
+  "main": "schema-behaviors.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
