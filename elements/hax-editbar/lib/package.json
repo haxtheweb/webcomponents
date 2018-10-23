@@ -1,0 +1,10 @@
+{
+  "name": "@lrnwebcomponents/hax-editbar/",
+  "flat": true,
+  "version": "0.0.22",
+  "main": "hax-editbar.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
