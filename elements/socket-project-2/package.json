@@ -1,0 +1,51 @@
+{
+  "name": "@lrnwebcomponents/socket-project-2",
+  "wcfactory": {
+    "className": "SocketProject2",
+    "customElementClass": "PolymerElement",
+    "elementName": "socket-project-2",
+    "generator-wcfactory-version": "0.3.2",
+    "useHAX": true,
+    "useSass": false,
+    "files": {
+      "css": "src/socket-project-2.css",
+      "scss": "src/socket-project-2.scss",
+      "html": "src/socket-project-2.html",
+      "js": "src/socket-project-2.js",
+      "properties": "src/socket-project-2-properties.json",
+      "hax": "src/socket-project-2-hax.json"
+    }
+  },
+  "version": "0.0.20",
+  "description": "Automated conversion of socket-project2/",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "socket-project-2.js",
+  "module": "socket-project-2.es6.js",
+  "umd": "socket-project-2.umd.js",
+  "amd": "socket-project-2.amd.js",
+  "scripts": {
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/socket-project-2/test/",
+    "start":"yarn run dev","build":"../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'","dev":"open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'","watch":"../../node_modules/.bin/gulp dev","serve":"polymer serve --npm --module-resolution=node --open","lighthouse":"../../node_modules/.bin/gulp lighthouse"
+  },
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@lrnwebcomponents/hax-body-behaviors":"^0.0.20","@polymer/polymer":"^3.0.5"
+  },
+  "devDependencies": {
+    "@polymer/iron-demo-helpers":"3.0.2","@polymer/iron-component-page":"github:PolymerElements/iron-component-page","@webcomponents/webcomponentsjs":"2.1.3","concurrently":"4.0.1","gulp-babel":"8.0.0","gulp-sourcemaps":"2.6.4","lodash":"4.17.11","polymer-cli":"1.8.0","polymer-build":"3.0.4","wct-browser-legacy":"1.0.1"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}

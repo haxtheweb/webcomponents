@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../socket-project-2.js"></script>
+  </head>
+  <body>
+
+    <socket-project-2>
+      This is the element content.
+    </socket-project-2>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <socket-project-2></socket-project-2>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <socket-project-2></socket-project-2>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<socket-project-2>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('socket-project-2'), customElements.get("socket-project-2", 'socket-project-2 should be an instance of socketProject2'));
+    });
+
+    /*test('setting a property on the element works', () => {
+      const element = fixture('AdvancedTestFixture');
+      element.title = 'my title';
+      assert.equal(element.title, 'my title');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello my title!');
+    });*/
+  });
+    </script>
+  </body>
+</html>
