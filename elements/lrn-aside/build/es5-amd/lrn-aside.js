@@ -1,0 +1,103 @@
+define([
+  "exports",
+  "./node_modules/@polymer/polymer/polymer-element.js",
+  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
+], function(_exports, _polymerElement, _HAXWiring) {
+  "use strict";
+  Object.defineProperty(_exports, "__esModule", { value: !0 });
+  _exports.LrnAside = void 0;
+  function _templateObject_44d11430d6f311e8829517f49980bda0() {
+    var data = babelHelpers.taggedTemplateLiteral([
+      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
+    ]);
+    _templateObject_44d11430d6f311e8829517f49980bda0 = function() {
+      return data;
+    };
+    return data;
+  }
+  var LrnAside = (function(_PolymerElement) {
+    babelHelpers.inherits(LrnAside, _PolymerElement);
+    function LrnAside() {
+      babelHelpers.classCallCheck(this, LrnAside);
+      return babelHelpers.possibleConstructorReturn(
+        this,
+        (LrnAside.__proto__ || Object.getPrototypeOf(LrnAside)).apply(
+          this,
+          arguments
+        )
+      );
+    }
+    babelHelpers.createClass(
+      LrnAside,
+      [
+        {
+          key: "connectedCallback",
+          value: function connectedCallback() {
+            babelHelpers
+              .get(
+                LrnAside.prototype.__proto__ ||
+                  Object.getPrototypeOf(LrnAside.prototype),
+                "connectedCallback",
+                this
+              )
+              .call(this);
+            this.HAXWiring = new _HAXWiring.HAXWiring();
+            this.HAXWiring.setHaxProperties(
+              LrnAside.haxProperties,
+              LrnAside.tag,
+              this
+            );
+          }
+        }
+      ],
+      [
+        {
+          key: "template",
+          get: function get() {
+            return (0, _polymerElement.html)(
+              _templateObject_44d11430d6f311e8829517f49980bda0()
+            );
+          }
+        },
+        {
+          key: "haxProperties",
+          get: function get() {
+            return {
+              canScale: !0,
+              canPosition: !0,
+              canEditSource: !1,
+              gizmo: {
+                title: "Lrn aside",
+                description: "Automated conversion of lrn-aside/",
+                icon: "icons:android",
+                color: "green",
+                groups: ["Aside"],
+                handles: [{ type: "todo:read-the-docs-for-usage" }],
+                meta: {
+                  author: "btopro",
+                  owner: "The Pennsylvania State University"
+                }
+              },
+              settings: { quick: [], configure: [], advanced: [] }
+            };
+          }
+        },
+        {
+          key: "properties",
+          get: function get() {
+            return {};
+          }
+        },
+        {
+          key: "tag",
+          get: function get() {
+            return "lrn-aside";
+          }
+        }
+      ]
+    );
+    return LrnAside;
+  })(_polymerElement.PolymerElement);
+  _exports.LrnAside = LrnAside;
+  window.customElements.define(LrnAside.tag, LrnAside);
+});
