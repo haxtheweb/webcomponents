@@ -1,0 +1,15 @@
+{
+  "name": "@lrnwebcomponents/dropdown-select/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A LRN element",
+  "main": "dropdown-select.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/paper-dropdown-menu": "^3.0.0-pre.1",
+    "@polymer/paper-listbox": "^3.0.0-pre.1",
+    "@polymer/paper-item": "^3.0.0-pre.1",
+    "@polymer/neon-animation": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
