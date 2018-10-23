@@ -1,0 +1,15 @@
+{
+  "name": "@lrnwebcomponents/paper-input-flagged/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A LRN element",
+  "main": "paper-input-flagged.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/paper-input": "^3.0.0-pre.1",
+    "@polymer/iron-icons": "^3.0.0-pre.1",
+    "@polymer/iron-icon": "^3.0.0-pre.1",
+    "@polymer/paper-tooltip": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}

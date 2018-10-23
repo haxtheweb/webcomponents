@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../paper-input-flagged.js"></script>
+  </head>
+  <body>
+
+    <paper-input-flagged>
+      This is the element content.
+    </paper-input-flagged>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <paper-input-flagged></paper-input-flagged>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <paper-input-flagged></paper-input-flagged>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<paper-input-flagged>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('paper-input-flagged'), customElements.get("paper-input-flagged", 'paper-input-flagged should be an instance of paperInputFlagged'));
+    });
+
+    /*test('setting a property on the element works', () => {
+      const element = fixture('AdvancedTestFixture');
+      element.title = 'my title';
+      assert.equal(element.title, 'my title');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello my title!');
+    });*/
+  });
+    </script>
+  </body>
+</html>
