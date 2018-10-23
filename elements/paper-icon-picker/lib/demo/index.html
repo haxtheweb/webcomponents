@@ -1,0 +1,96 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+  <head>
+    <title>paper-icon-picker demo</title>
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script type="module" src="@polymer/iron-demo-helpers/demo-snippet.js"></script>
+    <script type="module" src="@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+    <script type="module" src="../paper-icon-picker.js"></script>
+    <script type="module" src="@polymer/iron-icons/iron-icons.js"></script>
+    <script type="module" src="@polymer/iron-icons/av-icons.js"></script>
+    <script type="module" src="@polymer/iron-icons/communication-icons.js"></script>
+    <script type="module" src="@polymer/iron-icons/device-icons.js"></script>
+    <script type="module" src="@polymer/iron-icons/editor-icons.js"></script>
+    <script type="module" src="@polymer/iron-icons/hardware-icons.js"></script>
+    <script type="module" src="@polymer/iron-icons/image-icons.js"></script>
+    <script type="module" src="@polymer/iron-icons/maps-icons.js"></script>
+    <script type="module" src="@polymer/iron-icons/notification-icons.js"></script>
+    <script type="module" src="@polymer/iron-icons/social-icons.js"></script>
+    <script type="module" src="@polymer/iron-icons/places-icons.js"></script>
+
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+$_documentContainer.setAttribute('style', 'display: none;');
+
+$_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
+      paper-icon-picker {
+        margin: 0 10px;
+      }
+    </style>`;
+
+document.head.appendChild($_documentContainer);
+</script>
+  </head>
+  <body unresolved>
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+      <h3>A icon picker of all the Material Design icons</h3>
+      <demo-snippet class="centered-demo">
+        <template>
+          <paper-icon-picker></paper-icon-picker>
+          <paper-icon-picker icon="icons:extension"></paper-icon-picker>
+          <!-- Disable the ripple on the color picker button -->
+          <paper-icon-picker icon="icons:grade" noink=""></paper-icon-picker>
+        </template>
+      </demo-snippet>
+
+      <h3>The palette used by the icon picker can be configured</h3>
+      <demo-snippet class="centered-demo">
+        <template>
+          <paper-icon-picker column-count="5" icon-list="[&quot;icons:cloud&quot;, &quot;icons:face&quot;, &quot;icons:work&quot;, &quot;icons:pets&quot;, &quot;icons:perm-contact-calendar&quot;, &quot;icons:redo&quot;, &quot;icons:refresh&quot;, &quot;icons:subdirectory-arrow-left&quot;, &quot;icons:subdirectory-arrow-right&quot;, &quot;icons:swap-vert&quot;]"></paper-icon-picker>
+        </template>
+      </demo-snippet>
+
+      <h3>The picker can be styled using custom properties</h3>
+      <demo-snippet class="centered-demo">
+        <template>
+          <style is="custom-style">
+            paper-icon-picker.fancy {
+              --paper-icon-picker-icon-size: 40px;
+              --paper-icon-picker-size: 40px;
+            }
+          </style>
+          <paper-icon-picker class="fancy"></paper-icon-picker>
+        </template>
+      </demo-snippet>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+  </body>
+</html>

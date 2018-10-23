@@ -1,0 +1,69 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>paper-icon-picker basic tests</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="web-component-tester/browser.js"></script>
+  <script src="@polymer/iron-test-helpers/mock-interactions.js"></script>
+  <script src="@polymer/iron-test-helpers/test-helpers.js"></script>
+
+  <script type="module" src="../paper-icon-picker.js"></script>
+</head>
+<body>
+  <style is="custom-style">
+    paper-icon-picker.custom {
+      --paper-icon-picker-icon-size: 60px;
+    }
+  </style>
+
+  <test-fixture id="basic">
+    <template>
+      <paper-icon-picker></paper-icon-picker>
+    </template>
+  </test-fixture>
+
+  <script type="module">
+import '../paper-icon-picker.js';
+suite('basic', function() {
+  var picker, container;
+
+  setup(function() {
+    picker = fixture('basic');
+    container = picker.$.container;
+  });
+
+  test('clicking the button opens a rendered menu', function(done) {
+    Polymer.dom.flush();
+
+    // No icon is selected.
+    assert.equal(picker.icon, undefined);
+    MockInteractions.tap(picker.$.iconButton);
+
+    Polymer.Base.async(function() {
+      // There are 18 default columns, and each column is 20px wide.
+      assert.equal(container.style.width, 18 * 26 +'px');
+      // There are 10 default rows, and each row is 20px wide.
+      // assert.equal(container.style.height, 10 * 26 +'px');
+
+      // The icons have been filled in. The first box is icons:extension.
+      // var box = container.querySelector('.icon').querySelector('iron-icon').icon;
+      // assert.equal('#ffebee', picker._rgbToHex(box.style.color));
+      done();
+    }, 1);
+  });
+});
+</script>
+</body>
+</html>
