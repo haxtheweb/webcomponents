@@ -1,0 +1,12 @@
+{
+  "name": "@lrnwebcomponents/wysiwyg-hax/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A LRN element that goes for wysiwyg style integration with HTML blob fields",
+  "main": "wysiwyg-hax.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/iron-dropdown": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
