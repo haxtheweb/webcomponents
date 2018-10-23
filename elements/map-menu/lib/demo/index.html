@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+  <title>map-menu demo</title>
+
+  <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+
+  <script type="module" src="@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+  <script type="module" src="@polymer/iron-demo-helpers/demo-snippet.js"></script>
+  <script type="module" src="../map-menu.js"></script>
+
+  <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+$_documentContainer.setAttribute('style', 'display: none;');
+
+$_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
+    #menu {
+      max-height: 200px;
+    }
+  </style>`;
+
+document.head.appendChild($_documentContainer);
+</script>
+  <script type="module">
+import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+import '@polymer/iron-demo-helpers/demo-snippet.js';
+import '../map-menu.js';
+window.onload = function () {
+  const menus = ['menu', 'menu2']
+  menus.forEach(selector => {
+    document.getElementById(selector).setData([
+      {
+        id: 'unique-id-001',
+        title: 'The Transcendentalists',
+        parent: null,
+        order: 0,
+        url: '#',
+      }, {
+        id: 'unique-id-002',
+        title: 'Ralph Waldo Emerson',
+        parent: 'unique-id-001',
+        order: 0,
+        url: '#',
+      }, {
+        id: 'unique-id-003',
+        title: 'Overview',
+        parent: 'unique-id-002',
+        order: 0,
+        url: '#',
+      }, {
+        id: 'unique-id-004',
+        title: 'Readings',
+        parent: 'unique-id-002',
+        order: 1,
+        url: '#',
+      }, {
+        id: 'unique-id-005',
+        title: 'Self-Reliance',
+        parent: 'unique-id-004',
+        order: 0,
+        url: '#',
+      }, {
+        id: 'unique-id-006',
+        title: 'Nature',
+        parent: 'unique-id-004',
+        order: 1,
+        url: '#',
+      }, {
+        id: 'unique-id-007',
+        title: 'Summary',
+        parent: 'unique-id-002',
+        order: 2,
+        url: '#',
+      }, {
+        id: 'unique-id-008',
+        title: 'Henry David Thoreau',
+        parent: 'unique-id-001',
+        order: 2,
+        url: '#',
+      }, {
+        id: 'unique-id-009',
+        title: 'Overview',
+        parent: 'unique-id-008',
+        order: 0,
+        url: '#',
+      }, {
+        id: 'unique-id-010',
+        title: 'Readings',
+        parent: 'unique-id-008',
+        order: 1,
+        url: '#',
+      }, {
+        id: 'unique-id-011',
+        title: 'Civil Disobedience',
+        parent: 'unique-id-010',
+        order: 0,
+        url: '#',
+      }, {
+        id: 'unique-id-012',
+        title: 'Walden',
+        parent: 'unique-id-010',
+        order: 1,
+        url: '#',
+      }, {
+        id: 'unique-id-013',
+        title: 'Summary',
+        parent: 'unique-id-008',
+        order: 2,
+        url: '#',
+      }, {
+        id: 'unique-id-014',
+        title: 'The Anti-Transcendentalists',
+        parent: null,
+        order: 1,
+        url: '#',
+      }, {
+        id: 'unique-id-015',
+        title: 'Herman Melville',
+        parent: 'unique-id-014',
+        order: 0,
+        url: '#',
+      }, {
+        id: 'unique-id-016',
+        title: 'Overview',
+        parent: 'unique-id-015',
+        order: 0,
+        url: '#',
+      }, {
+        id: 'unique-id-017',
+        title: 'Readings',
+        parent: 'unique-id-015',
+        order: 1,
+        url: '#',
+      }, {
+        id: 'unique-id-018',
+        title: 'Bartleby the Scrivener',
+        parent: 'unique-id-017',
+        order: 0,
+        url: '#',
+      }, {
+        id: 'unique-id-019',
+        title: 'Moby Dick',
+        parent: 'unique-id-017',
+        order: 1,
+        url: '#',
+      }, {
+        id: 'unique-id-020',
+        title: 'Summary',
+        parent: 'unique-id-015',
+        order: 2,
+        url: '#',
+      }, {
+        id: 'unique-id-021',
+        title: 'Nathaniel Hawthorne',
+        parent: 'unique-id-014',
+        order: 1,
+        url: '#',
+      }, {
+        id: 'unique-id-022',
+        title: 'Overview',
+        parent: 'unique-id-021',
+        order: 0,
+        url: '#',
+      }, {
+        id: 'unique-id-023',
+        title: 'Readings',
+        parent: 'unique-id-021',
+        order: 1,
+        url: '#',
+      }, {
+        id: 'unique-id-024',
+        title: 'The Scarlet Letter',
+        parent: 'unique-id-023',
+        order: 0,
+        url: '#',
+      }, {
+        id: 'unique-id-025',
+        title: 'Rappaccini\'s Daughter',
+        parent: 'unique-id-023',
+        order: 1,
+        url: '#',
+      }, {
+        id: 'unique-id-026',
+        title: 'Summary',
+        parent: 'unique-id-021',
+        order: 2,
+        url: '#',
+      }
+    ]);
+  })
+};
+</script>
+</head>
+
+<body>
+  <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+    <h3>map-menu demo with data</h3>
+    <demo-snippet>
+      <template>
+        <map-menu id="menu" selected="unique-id-016"></map-menu>
+      </template>
+    </demo-snippet>
+    <h3>map-menu demo with data animated</h3>
+    <demo-snippet>
+      <template>
+        <map-menu id="menu2" selected="unique-id-016" auto-scroll="" active-indicator=""></map-menu>
+      </template>
+    </demo-snippet>
+    <h3>Vanilla map-menu demo</h3>
+    <demo-snippet>
+      <template>
+        <map-menu-container>
+          <map-menu-submenu title="Web Components" label="Level 1" avatar-label="1" opened="" collapsable="" expand-children="">
+            <map-menu-submenu title="Shadow Dom">
+              <map-menu-item title="1.1" url="http://elmsln.org" icon="code" active=""></map-menu-item>
+              <map-menu-item title="1.2" url="http://elmsln.org" icon="3d-rotation"></map-menu-item>
+              <map-menu-item title="1.3" url="http://elmsln.org" icon="settings-voice"></map-menu-item>
+              <map-menu-item title="1.4" url="http://elmsln.org" icon="code"></map-menu-item>
+            </map-menu-submenu>
+            <map-menu-submenu title="Shadow Dom">
+              <map-menu-item title="1.1" url="http://elmsln.org" icon="code"></map-menu-item>
+              <map-menu-item title="1.2" url="http://elmsln.org" icon="3d-rotation"></map-menu-item>
+              <map-menu-item title="1.3" url="http://elmsln.org" icon="settings-voice"></map-menu-item>
+              <map-menu-item title="1.4" url="http://elmsln.org" icon="code"></map-menu-item>
+            </map-menu-submenu>
+            <map-menu-submenu title="Properties">
+              <map-menu-item title="1.1" url="http://elmsln.org" icon="code"></map-menu-item>
+              <map-menu-item title="1.2" url="http://elmsln.org" icon="3d-rotation"></map-menu-item>
+              <map-menu-item title="1.3" url="http://elmsln.org" icon="settings-voice"></map-menu-item>
+              <map-menu-item title="1.4" url="http://elmsln.org" icon="code"></map-menu-item>
+            </map-menu-submenu>
+          </map-menu-submenu>
+          <map-menu-submenu title="HTTP" label="Level 2" avatar-label="2" collapsable="" expand-children="">
+            <map-menu-item title="2.1" url="http://elmsln.org" icon="code"></map-menu-item>
+            <map-menu-item title="2.2" url="http://elmsln.org" icon="code"></map-menu-item>
+            <map-menu-item title="2.3" url="http://elmsln.org" icon="code"></map-menu-item>
+            <map-menu-item title="2.4" url="http://elmsln.org" icon="code"></map-menu-item>
+            <map-menu-item title="2.5" url="http://elmsln.org" icon="code"></map-menu-item>
+          </map-menu-submenu>
+          <map-menu-submenu title="Accessibility" label="Level 3" avatar-label="3" collapsable="" expand-children="">
+            <map-menu-item title="3.1" url="http://elmsln.org" icon="code"></map-menu-item>
+            <map-menu-item title="3.2" url="http://elmsln.org" icon="code"></map-menu-item>
+            <map-menu-item title="3.3" url="http://elmsln.org" icon="code"></map-menu-item>
+            <map-menu-item title="3.4" url="http://elmsln.org" icon="code"></map-menu-item>
+            <map-menu-item title="3.5" url="http://elmsln.org" icon="code"></map-menu-item>
+          </map-menu-submenu>
+        </map-menu-container>
+
+      </template>
+    </demo-snippet>
+  </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+</body>
+
+</html>

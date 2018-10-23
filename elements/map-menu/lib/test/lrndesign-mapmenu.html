@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>map-menu test</title>
+
+    <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="web-component-tester/browser.js"></script>
+
+    <script type="module" src="../map-menu.js"></script>
+  </head>
+  <body>
+    <test-fixture id="basic">
+      <template>
+        <map-menu></map-menu>
+      </template>
+    </test-fixture>
+
+    <script type="module">
+import '../map-menu.js';
+suite('map-menu', function() {
+  test('instantiating the element works', function() {
+    var element = fixture('basic');
+    assert.equal(element.is, 'map-menu');
+  });
+});
+</script>
+  </body>
+</html>
