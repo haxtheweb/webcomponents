@@ -1,0 +1,104 @@
+<!doctype html>
+
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>paper-fab-morph tests</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="web-component-tester/browser.js"></script>
+  <script src="@polymer/test-fixture/test-fixture-mocha.js"></script>
+  <script src="@polymer/iron-test-helpers/mock-interactions.js"></script>
+
+  <script type="module" src="@polymer/paper-fab/paper-fab.js"></script>
+  <script type="module" src="@polymer/paper-dialog/paper-dialog.js"></script>
+  <script type="module" src="../paper-fab-morph.js"></script>
+  <script type="module" src="@polymer/test-fixture/test-fixture.js"></script>
+
+</head>
+<body>
+
+  <test-fixture id="DropdownWrapped">
+    <template>
+      <paper-fab-morph>
+        <paper-fab class="dropdown-trigger"></paper-fab>
+        <div class="dropdown-content">content</div>
+      </paper-fab-morph>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="OriginalOverlay">
+    <template>
+      <paper-fab-morph is-overlay-content>
+        <paper-fab class="dropdown-trigger"></paper-fab>
+        <paper-dialog class="dropdown-content">dialog</paper-dialog>
+      </paper-fab-morph>
+    </template>
+  </test-fixture>
+
+  <script type="module">
+import '@polymer/paper-fab/paper-fab.js';
+import '@polymer/paper-dialog/paper-dialog.js';
+import '../paper-fab-morph.js';
+import '@polymer/test-fixture/test-fixture.js';
+
+suite('<paper-fab-morph>', function() {
+
+  suite('dropdown wrapped', function() {
+
+    var trigger;
+    var dropdown;
+
+    setup(function() {
+      var morph = fixture('DropdownWrapped');
+      trigger = Polymer.dom(morph).querySelector('.dropdown-trigger');
+      dropdown = morph.querySelector('iron-dropdown');
+    });
+
+    test('dropdown is initially closed', function() {
+      expect(dropdown.opened).to.be.equal(false);
+    });
+
+    test('tapping the trigger opens the dropdown', function(done) {
+      MockInteractions.downAndUp(trigger, function() {
+        Polymer.Base.async(function() {
+          expect(dropdown.opened).to.be.equal(true);
+          done();
+        }, 100);
+      });
+    });
+
+  });
+
+  suite('original overlay', function() {
+
+    var trigger;
+    var overlay;
+
+    setup(function() {
+      var morph = fixture('OriginalOverlay');
+      trigger = Polymer.dom(morph).querySelector('.dropdown-trigger');
+      overlay = Polymer.dom(morph).querySelector('.dropdown-content');
+    });
+
+    test('overlay is initially closed', function() {
+      expect(overlay.opened).to.be.equal(false);
+    });
+
+    test('tapping the trigger opens the overlay', function(done) {
+      MockInteractions.downAndUp(trigger, function() {
+        Polymer.Base.async(function() {
+          expect(overlay.opened).to.be.equal(true);
+          done();
+        }, 100);
+      });
+    });
+
+  });
+
+});
+</script>
+
+</body>
+</html>
