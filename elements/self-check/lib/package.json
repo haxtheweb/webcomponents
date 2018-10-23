@@ -1,0 +1,13 @@
+{
+  "name": "@lrnwebcomponents/self-check/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A LRN element",
+  "main": "self-check.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/paper-card": "^3.0.0-pre.1",
+    "@polymer/paper-tooltip": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
