@@ -4,10 +4,10 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { HaxDemo };
+export { HaxDesktopApp };
 /**
- * `hax-demo`
- * `Automated conversion of hax-demo/`
+ * `hax-desktop-app`
+ * `Automated conversion of hax-desktop-app/`
  *
  * @microcopy - language worth noting:
  *  -
@@ -16,7 +16,7 @@ export { HaxDemo };
  * @polymer
  * @demo demo/index.html
  */
-class HaxDemo extends PolymerElement {
+class HaxDesktopApp extends PolymerElement {
   // render function
   static get template() {
     return html`
@@ -38,11 +38,11 @@ class HaxDemo extends PolymerElement {
       canPosition: true,
       canEditSource: false,
       gizmo: {
-        title: "Hax demo",
-        description: "Automated conversion of hax-demo/",
+        title: "Hax desktop-app",
+        description: "Automated conversion of hax-desktop-app/",
         icon: "icons:android",
         color: "green",
-        groups: ["Demo"],
+        groups: ["Desktop"],
         handles: [
           {
             type: "todo:read-the-docs-for-usage"
@@ -70,7 +70,7 @@ class HaxDemo extends PolymerElement {
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "hax-demo";
+    return "hax-desktop-app";
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -78,11 +78,15 @@ class HaxDemo extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(HaxDemo.haxProperties, HaxDemo.tag, this);
+    this.HAXWiring.setHaxProperties(
+      HaxDesktopApp.haxProperties,
+      HaxDesktopApp.tag,
+      this
+    );
   }
   /**
    * life cycle, element is removed from the DOM
    */
   //disconnectedCallback() {}
 }
-window.customElements.define(HaxDemo.tag, HaxDemo);
+window.customElements.define(HaxDesktopApp.tag, HaxDesktopApp);

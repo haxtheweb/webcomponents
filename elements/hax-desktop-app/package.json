@@ -1,33 +1,33 @@
 {
-  "name": "@lrnwebcomponents/hax-demo",
+  "name": "@lrnwebcomponents/hax-desktop-app",
   "wcfactory": {
-    "className": "HaxDemo",
+    "className": "HaxDesktopApp",
     "customElementClass": "PolymerElement",
-    "elementName": "hax-demo",
+    "elementName": "hax-desktop-app",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,
     "useSass": false,
     "files": {
-      "css": "src/hax-demo.css",
-      "scss": "src/hax-demo.scss",
-      "html": "src/hax-demo.html",
-      "js": "src/hax-demo.js",
-      "properties": "src/hax-demo-properties.json",
-      "hax": "src/hax-demo-hax.json"
+      "css": "src/hax-desktop-app.css",
+      "scss": "src/hax-desktop-app.scss",
+      "html": "src/hax-desktop-app.html",
+      "js": "src/hax-desktop-app.js",
+      "properties": "src/hax-desktop-app-properties.json",
+      "hax": "src/hax-desktop-app-hax.json"
     }
   },
   "version": "0.0.20",
-  "description": "Automated conversion of hax-demo/",
+  "description": "Automated conversion of hax-desktop-app/",
   "repository": {
     "type": "git",
     "url": "git@github.com/elmsln/lrnwebcomponents.git"
   },
-  "main": "hax-demo.js",
-  "module": "hax-demo.es6.js",
-  "umd": "hax-demo.umd.js",
-  "amd": "hax-demo.amd.js",
+  "main": "hax-desktop-app.js",
+  "module": "hax-desktop-app.es6.js",
+  "umd": "hax-desktop-app.umd.js",
+  "amd": "hax-desktop-app.amd.js",
   "scripts": {
-    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/hax-demo/test/",
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/hax-desktop-app/test/",
     "start":"yarn run dev","build":"../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'","dev":"open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'","watch":"../../node_modules/.bin/gulp dev","serve":"polymer serve --npm --module-resolution=node --open","lighthouse":"../../node_modules/.bin/gulp lighthouse"
   },
   "author": {

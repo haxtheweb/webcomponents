@@ -3,11 +3,11 @@
   "canPosition": true,
   "canEditSource": false,
   "gizmo": {
-    "title": "Hax demo",
-    "description": "Automated conversion of hax-demo/",
+    "title": "Hax desktop-app",
+    "description": "Automated conversion of hax-desktop-app/",
     "icon": "icons:android",
     "color": "green",
-    "groups": ["Demo"],
+    "groups": ["Desktop"],
     "handles": [
       {
         "type": "todo:read-the-docs-for-usage"

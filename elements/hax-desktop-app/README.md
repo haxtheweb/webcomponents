@@ -1,21 +1,21 @@
-# &lt;hax-demo&gt;
+# &lt;hax-desktop-app&gt;
 
-Demo
-> Automated conversion of hax-demo/
+Desktop
+> Automated conversion of hax-desktop-app/
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/hax-demo.js';
+import '@lrnwebcomponents/hax-desktop-app.js';
 /* At top of an application */
-<script type="module" src="hax-demo.js"></script>
+<script type="module" src="hax-desktop-app.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/hax-demo.js';
+  import '@lrnwebcomponents/hax-desktop-app.js';
 
-  import {HaxDemo} from '@lrnwebcomponents/hax-demo';
+  import {HaxDesktopApp} from '@lrnwebcomponents/hax-desktop-app';
 </script>
 ```
 
@@ -48,7 +48,7 @@ $ yarn run build
 
 ## Code style
 
-Demo (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
+Desktop (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
 
 [prettier]: https://github.com/prettier/prettier/
 [prettier-ed]: https://github.com/prettier/prettier/#editor-integration
