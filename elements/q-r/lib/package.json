@@ -1,0 +1,11 @@
+{
+  "name": "@lrnwebcomponents/q-r/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A LRN element",
+  "main": "q-r.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
