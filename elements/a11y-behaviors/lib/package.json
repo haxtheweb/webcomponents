@@ -1,0 +1,11 @@
+{
+  "name": "@lrnwebcomponents/a11y-behaviors/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "Accessibility behaviors",
+  "main": "a11y-behaviors.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
