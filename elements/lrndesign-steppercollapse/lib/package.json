@@ -1,0 +1,14 @@
+{
+  "name": "@lrnwebcomponents/lrndesign-steppercollapse/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A LRN element",
+  "main": "lrndesign-steppercollapse.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/paper-spinner": "^3.0.0-pre.1",
+    "@polymer/paper-tooltip": "^3.0.0-pre.1",
+    "@polymer/iron-collapse": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
