@@ -1,0 +1,10 @@
+{
+  "name": "@lrnwebcomponents/hack-psu-logo/",
+  "flat": true,
+  "version": "0.0.22",
+  "main": "hack-psu-logo.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
