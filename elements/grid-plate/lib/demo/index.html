@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>grid-plate demo</title>
+
+    <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script type="module" src="@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+    <script type="module" src="@polymer/iron-demo-helpers/demo-snippet.js"></script>
+    <script type="module" src="video-player/video-player.js"></script>
+    <script type="module" src="license-element/license-element.js"></script>
+    <script type="module" src="wikipedia-query/wikipedia-query.js"></script>
+    <script type="module" src="../grid-plate.js"></script>
+
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+$_documentContainer.setAttribute('style', 'display: none;');
+
+$_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
+    </style>`;
+
+document.head.appendChild($_documentContainer);
+</script>
+  </head>
+  <body>
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container">
+      <h3>Basic grid-plate demo</h3>
+      <demo-snippet>
+        <template>
+          <grid-plate layout="5/2/2/3" colors="blue/orange/purple/green" edit-mode="">
+            <video-player slot="col-1" resource="#d158b908-dc44-6db2-8537" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " responsive="" source="https://www.youtube.com/watch?v=pKLPQ4ufo64" src="https://www.youtube-nocookie.com/embed/pKLPQ4ufo64?showinfo=0&amp;controls=1&amp;rel=0" iframed="" width="560" height="315" caption="What is ELMS:LN? Why is it fundamentally different from any other educational technology that's ever existed? What is sustainable innovation? Why is this so ..." secondary-color="#fff8e1" text-color="#000000" secondary-color-class="amber lighten-5" text-color-class="black-text" yt-nocookie="" yt-controls="" video-color="FF031D"></video-player>
+
+            <wikipedia-query slot="col-2" resource="#950ec72d-6c38-0ce5-41ed" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " show-title="" search="Drupal" render-as="content" search-response="[object Object]"></wikipedia-query>
+
+            <p slot="col-3">This is a whole bunch of paragraphs of text</p>
+            <p slot="col-3">This is a whole bunch of paragraphs of text</p>
+            <p slot="col-4">This is a whole bunch of paragraphs of text</p>
+          </grid-plate>
+        </template>
+      </demo-snippet>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+  <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<grid-plate areas="2">
+            <video-player slot="area1" resource="#d158b908-dc44-6db2-8537" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " responsive="" style="width: 100%;" source="https://www.youtube.com/watch?v=pKLPQ4ufo64" src="https://www.youtube-nocookie.com/embed/pKLPQ4ufo64?showinfo=0&amp;controls=1&amp;rel=0" iframed="" width="560" height="315" caption="What is ELMS:LN? Why is it fundamentally different from any other educational technology that's ever existed? What is sustainable innovation? Why is this so ..." secondary-color="#fff8e1" text-color="#000000" secondary-color-class="amber lighten-5" text-color-class="black-text" yt-nocookie="" yt-controls="" video-color="FF031D"></video-player>
+
+            <wikipedia-query slot="area2" resource="#950ec72d-6c38-0ce5-41ed" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " show-title="" search="Drupal" render-as="content" search-response="[object Object]"></wikipedia-query>
+
+            <p slot="area3">This is a whole bunch of paragraphs of text</p>
+          </grid-plate>`;
+
+document.body.appendChild($_documentContainer);
+</script>      <script type="module">
+const $_documentContainer = document.createElement('div');
+$_documentContainer.innerHTML = `<video-player slot="area1" resource="#d158b908-dc44-6db2-8537" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " responsive="" style="width: 100%;" source="https://www.youtube.com/watch?v=pKLPQ4ufo64" src="https://www.youtube-nocookie.com/embed/pKLPQ4ufo64?showinfo=0&amp;controls=1&amp;rel=0" iframed="" width="560" height="315" caption="What is ELMS:LN? Why is it fundamentally different from any other educational technology that's ever existed? What is sustainable innovation? Why is this so ..." secondary-color="#fff8e1" text-color="#000000" secondary-color-class="amber lighten-5" text-color-class="black-text" yt-nocookie="" yt-controls="" video-color="FF031D"></video-player>`;
+document.body.appendChild($_documentContainer);
+</script>
+
+      <script type="module">
+const $_documentContainer = document.createElement('div');
+$_documentContainer.innerHTML = `<wikipedia-query slot="area2" resource="#950ec72d-6c38-0ce5-41ed" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " show-title="" search="Drupal" render-as="content" search-response="[object Object]"></wikipedia-query>`;
+document.body.appendChild($_documentContainer);
+</script>
+
+      <script type="module">
+const $_documentContainer = document.createElement('div');
+$_documentContainer.innerHTML = `<p slot="area3">This is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of textThis is a whole bunch of paragraphs of text</p>`;
+document.body.appendChild($_documentContainer);
+</script>
+          </grid-plate>
+
+          <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<grid-plate areas="1">
+            <video-player slot="area1" resource="#d158b908-dc44-6db2-8537" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " responsive="" style="width: 100%;" source="https://www.youtube.com/watch?v=pKLPQ4ufo64" src="https://www.youtube-nocookie.com/embed/pKLPQ4ufo64?showinfo=0&amp;controls=1&amp;rel=0" iframed="" width="560" height="315" caption="What is ELMS:LN? Why is it fundamentally different from any other educational technology that's ever existed? What is sustainable innovation? Why is this so ..." secondary-color="#fff8e1" text-color="#000000" secondary-color-class="amber lighten-5" text-color-class="black-text" yt-nocookie="" yt-controls="" video-color="FF031D"></video-player>
+
+            <wikipedia-query slot="area2" resource="#950ec72d-6c38-0ce5-41ed" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " show-title="" search="Drupal" render-as="content" search-response="[object Object]"></wikipedia-query>
+
+            <p slot="area3">This is a whole bunch of paragraphs of text</p>
+          </grid-plate>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+  </body>
+</html>
