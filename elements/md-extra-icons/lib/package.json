@@ -1,0 +1,13 @@
+{
+  "name": "@lrnwebcomponents/md-extra-icons/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A LRN element",
+  "main": "md-extra-icons.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/iron-icon": "^3.0.0-pre.1",
+    "@polymer/iron-iconset-svg": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
