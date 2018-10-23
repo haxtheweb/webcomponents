@@ -1,0 +1,15 @@
+{
+  "name": "@lrnwebcomponents/page-scroll-position/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A Vanilla web component to bind to document scroll position.",
+  "contributors": [
+    "btopro"
+  ],
+  "keywords": [
+    "web-component"
+  ],
+  "main": "page-scroll-position.html",
+  "dependencies": {},
+  "devDependencies": {}
+}
