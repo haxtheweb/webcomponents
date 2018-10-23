@@ -3,11 +3,11 @@
   "canPosition": true,
   "canEditSource": false,
   "gizmo": {
-    "title": "Lrndeveloper",
-    "description": "Automated conversion of lrndeveloper/",
+    "title": "Lrnservice gitbook",
+    "description": "Automated conversion of lrnservice-gitbook/",
     "icon": "icons:android",
     "color": "green",
-    "groups": [""],
+    "groups": ["Gitbook"],
     "handles": [
       {
         "type": "todo:read-the-docs-for-usage"

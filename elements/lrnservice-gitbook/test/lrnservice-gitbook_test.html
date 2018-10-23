@@ -5,29 +5,29 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
     <script src="../node_modules/wct-browser-legacy/browser.js"></script>
-    <script type="module" src="../lrndeveloper.js"></script>
+    <script type="module" src="../lrnservice-gitbook.js"></script>
   </head>
   <body>
 
-    <lrndeveloper>
+    <lrnservice-gitbook>
       This is the element content.
-    </lrndeveloper>
+    </lrnservice-gitbook>
 <test-fixture id="BasicTestFixture">
   <template>
-    <lrndeveloper></lrndeveloper>
+    <lrnservice-gitbook></lrnservice-gitbook>
   </template>
 </test-fixture>
 
 <test-fixture id="ChangedPropertyTestFixture">
   <template>
-    <lrndeveloper></lrndeveloper>
+    <lrnservice-gitbook></lrnservice-gitbook>
   </template>
 </test-fixture>
 
 <script type="module">
-  suite('<lrndeveloper>', () => {
+  suite('<lrnservice-gitbook>', () => {
     test('it should upgrade', () => {
-      assert.instanceOf(document.querySelector('lrndeveloper'), customElements.get("lrndeveloper", 'lrndeveloper should be an instance of lrndeveloper'));
+      assert.instanceOf(document.querySelector('lrnservice-gitbook'), customElements.get("lrnservice-gitbook", 'lrnservice-gitbook should be an instance of lrnserviceGitbook'));
     });
 
     /*test('setting a property on the element works', () => {

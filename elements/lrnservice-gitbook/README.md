@@ -1,21 +1,21 @@
-# &lt;lrndeveloper&gt;
+# &lt;lrnservice-gitbook&gt;
 
-
-> Automated conversion of lrndeveloper/
+Gitbook
+> Automated conversion of lrnservice-gitbook/
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/lrndeveloper.js';
+import '@lrnwebcomponents/lrnservice-gitbook.js';
 /* At top of an application */
-<script type="module" src="lrndeveloper.js"></script>
+<script type="module" src="lrnservice-gitbook.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/lrndeveloper.js';
+  import '@lrnwebcomponents/lrnservice-gitbook.js';
 
-  import {Lrndeveloper} from '@lrnwebcomponents/lrndeveloper';
+  import {LrnserviceGitbook} from '@lrnwebcomponents/lrnservice-gitbook';
 </script>
 ```
 
@@ -48,7 +48,7 @@ $ yarn run build
 
 ## Code style
 
- (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
+Gitbook (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
 
 [prettier]: https://github.com/prettier/prettier/
 [prettier-ed]: https://github.com/prettier/prettier/#editor-integration

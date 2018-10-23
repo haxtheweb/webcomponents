@@ -4,10 +4,10 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { Lrndeveloper };
+export { LrnserviceGitbook };
 /**
- * `lrndeveloper`
- * `Automated conversion of lrndeveloper/`
+ * `lrnservice-gitbook`
+ * `Automated conversion of lrnservice-gitbook/`
  *
  * @microcopy - language worth noting:
  *  -
@@ -16,7 +16,7 @@ export { Lrndeveloper };
  * @polymer
  * @demo demo/index.html
  */
-class Lrndeveloper extends PolymerElement {
+class LrnserviceGitbook extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -24,7 +24,7 @@ class Lrndeveloper extends PolymerElement {
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "lrndeveloper";
+    return "lrnservice-gitbook";
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -33,8 +33,8 @@ class Lrndeveloper extends PolymerElement {
     super.connectedCallback();
     this.HAXWiring = new HAXWiring();
     this.HAXWiring.setHaxProperties(
-      Lrndeveloper.haxProperties,
-      Lrndeveloper.tag,
+      LrnserviceGitbook.haxProperties,
+      LrnserviceGitbook.tag,
       this
     );
   }
@@ -43,4 +43,4 @@ class Lrndeveloper extends PolymerElement {
    */
   //disconnectedCallback() {}
 }
-window.customElements.define(Lrndeveloper.tag, Lrndeveloper);
+window.customElements.define(LrnserviceGitbook.tag, LrnserviceGitbook);

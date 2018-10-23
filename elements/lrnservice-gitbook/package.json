@@ -1,33 +1,33 @@
 {
-  "name": "@lrnwebcomponents/lrndeveloper",
+  "name": "@lrnwebcomponents/lrnservice-gitbook",
   "wcfactory": {
-    "className": "Lrndeveloper",
+    "className": "LrnserviceGitbook",
     "customElementClass": "PolymerElement",
-    "elementName": "lrndeveloper",
+    "elementName": "lrnservice-gitbook",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,
     "useSass": false,
     "files": {
-      "css": "src/lrndeveloper.css",
-      "scss": "src/lrndeveloper.scss",
-      "html": "src/lrndeveloper.html",
-      "js": "src/lrndeveloper.js",
-      "properties": "src/lrndeveloper-properties.json",
-      "hax": "src/lrndeveloper-hax.json"
+      "css": "src/lrnservice-gitbook.css",
+      "scss": "src/lrnservice-gitbook.scss",
+      "html": "src/lrnservice-gitbook.html",
+      "js": "src/lrnservice-gitbook.js",
+      "properties": "src/lrnservice-gitbook-properties.json",
+      "hax": "src/lrnservice-gitbook-hax.json"
     }
   },
   "version": "0.0.20",
-  "description": "Automated conversion of lrndeveloper/",
+  "description": "Automated conversion of lrnservice-gitbook/",
   "repository": {
     "type": "git",
     "url": "git@github.com/elmsln/lrnwebcomponents.git"
   },
-  "main": "lrndeveloper.js",
-  "module": "lrndeveloper.es6.js",
-  "umd": "lrndeveloper.umd.js",
-  "amd": "lrndeveloper.amd.js",
+  "main": "lrnservice-gitbook.js",
+  "module": "lrnservice-gitbook.es6.js",
+  "umd": "lrnservice-gitbook.umd.js",
+  "amd": "lrnservice-gitbook.amd.js",
   "scripts": {
-    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndeveloper/test/",
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrnservice-gitbook/test/",
     "start":"yarn run dev","build":"../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'","dev":"open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'","watch":"../../node_modules/.bin/gulp dev","serve":"polymer serve --npm --module-resolution=node --open","lighthouse":"../../node_modules/.bin/gulp lighthouse"
   },
   "author": {
