@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../item-overlay-ops.js"></script>
+  </head>
+  <body>
+
+    <item-overlay-ops>
+      This is the element content.
+    </item-overlay-ops>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <item-overlay-ops></item-overlay-ops>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <item-overlay-ops></item-overlay-ops>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<item-overlay-ops>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('item-overlay-ops'), customElements.get("item-overlay-ops", 'item-overlay-ops should be an instance of itemOverlayOps'));
+    });
+
+    /*test('setting a property on the element works', () => {
+      const element = fixture('AdvancedTestFixture');
+      element.title = 'my title';
+      assert.equal(element.title, 'my title');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello my title!');
+    });*/
+  });
+    </script>
+  </body>
+</html>
