@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>lrnsys-outline demo</title>
+
+    <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script type="module" src="@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+    <script type="module" src="@polymer/iron-demo-helpers/demo-snippet.js"></script>
+    <script type="module" src="../lrnsys-outline.js"></script>
+
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+$_documentContainer.setAttribute('style', 'display: none;');
+
+$_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
+      kbd {
+        display: inline-block;
+        background: #333;
+        color: white;
+        border-radius: 0.25em;
+        margin: 0.25em 0.25em 0.25em 0;
+        padding: 0.5em;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size:85%;
+      }
+    </style>`;
+
+document.head.appendChild($_documentContainer);
+</script>
+    <script type="module">
+import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+import '@polymer/iron-demo-helpers/demo-snippet.js';
+import '../lrnsys-outline.js';
+window.onload = function(){
+  document.getElementById('data').setData([
+    {
+      "id": "unique-id-001",
+      "title": "The Transcendentalists",
+      "parent": null,
+      "order": 0
+    },{
+      "id": "unique-id-002",
+      "title": "Ralph Waldo Emerson",
+      "parent": "unique-id-001",
+      "order": 0
+    },{
+      "id": "unique-id-003",
+      "title": "Overview",
+      "parent": "unique-id-002",
+      "order": 0
+    },{
+      "id": "unique-id-004",
+      "title": "Readings",
+      "parent": "unique-id-002",
+      "order": 1
+    },{
+      "id": "unique-id-005",
+      "title": "Self-Reliance",
+      "parent": "unique-id-004",
+      "order": 0
+    },{
+      "id": "unique-id-006",
+      "title": "Nature",
+      "parent": "unique-id-004",
+      "order": 1
+    },{
+      "id": "unique-id-007",
+      "title": "Summary",
+      "parent": "unique-id-002",
+      "order": 2
+    },{
+      "id": "unique-id-008",
+      "title": "Henry David Thoreau",
+      "parent": "unique-id-001",
+      "order": 2
+    },{
+      "id": "unique-id-009",
+      "title": "Overview",
+      "parent": "unique-id-008",
+      "order": 0
+    },{
+      "id": "unique-id-010",
+      "title": "Readings",
+      "parent": "unique-id-008",
+      "order": 1
+    },{
+      "id": "unique-id-011",
+      "title": "Civil Disobedience",
+      "parent": "unique-id-010",
+      "order": 0
+    },{
+      "id": "unique-id-012",
+      "title": "Walden",
+      "parent": "unique-id-010",
+      "order": 1
+    },{
+      "id": "unique-id-013",
+      "title": "Summary",
+      "parent": "unique-id-008",
+      "order": 2
+    },{
+      "id": "unique-id-014",
+      "title": "The Anti-Transcendentalists",
+      "parent": null,
+      "order": 1
+    },{
+      "id": "unique-id-015",
+      "title": "Herman Melville",
+      "parent": "unique-id-014",
+      "order": 0
+    },{
+      "id": "unique-id-016",
+      "title": "Overview",
+      "parent": "unique-id-015",
+      "order": 0
+    },{
+      "id": "unique-id-017",
+      "title": "Readings",
+      "parent": "unique-id-015",
+      "order": 1
+    },{
+      "id": "unique-id-018",
+      "title": "Bartleby the Scrivener",
+      "parent": "unique-id-017",
+      "order": 0
+    },{
+      "id": "unique-id-019",
+      "title": "Moby Dick",
+      "parent": "unique-id-017",
+      "order": 1
+    },{
+      "id": "unique-id-020",
+      "title": "Summary",
+      "parent": "unique-id-015",
+      "order": 2
+    },{
+      "id": "unique-id-021",
+      "title": "Nathaniel Hawthorne",
+      "parent": "unique-id-014",
+      "order": 1
+    },{
+      "id": "unique-id-022",
+      "title": "Overview",
+      "parent": "unique-id-021",
+      "order": 0
+    },{
+      "id": "unique-id-023",
+      "title": "Readings",
+      "parent": "unique-id-021",
+      "order": 1
+    },{
+      "id": "unique-id-024",
+      "title": "The Scarlet Letter",
+      "parent": "unique-id-023",
+      "order": 0
+    },{
+      "id": "unique-id-025",
+      "title": "Rappaccini\'s Daughter",
+      "parent": "unique-id-023",
+      "order": 1
+    },{
+      "id": "unique-id-026",
+      "title": "Summary",
+      "parent": "unique-id-021",
+      "order": 2
+    }
+  ]);
+};
+function savedata(){
+  alert(JSON.stringify(document.getElementById('data').getData()));
+}
+function savedata2(){
+  alert(JSON.stringify(document.getElementById('no-data').getData()));
+}
+</script>
+  </head>
+  <body>
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container">
+      <h3>Basic lrnsys-outline demo</h3>
+      <demo-snippet>
+        <template>
+          <lrnsys-outline id="data" title="Outline with Data Loaded"></lrnsys-outline>
+          <button onclick="savedata()">Save</button>
+          <script>
+            window.onload = function(){
+              document.getElementById('data').setData([
+                {
+                  "id": "unique-id-001",
+                  "title": "The Transcendentalists",
+                  "parent": null,
+                  "order": 0
+                },{
+                  "id": "unique-id-002",
+                  "title": "Ralph Waldo Emerson",
+                  "parent": "unique-id-001",
+                  "order": 0
+                },{
+                  "id": "unique-id-003",
+                  "title": "Overview",
+                  "parent": "unique-id-002",
+                  "order": 0
+                },{
+                  "id": "unique-id-004",
+                  "title": "Readings",
+                  "parent": "unique-id-002",
+                  "order": 1
+                },{
+                  "id": "unique-id-005",
+                  "title": "Self-Reliance",
+                  "parent": "unique-id-004",
+                  "order": 0
+                },{
+                  "id": "unique-id-006",
+                  "title": "Nature",
+                  "parent": "unique-id-004",
+                  "order": 1
+                },{
+                  "id": "unique-id-007",
+                  "title": "Summary",
+                  "parent": "unique-id-002",
+                  "order": 2
+                },{
+                  "id": "unique-id-008",
+                  "title": "Henry David Thoreau",
+                  "parent": "unique-id-001",
+                  "order": 2
+                },{
+                  "id": "unique-id-009",
+                  "title": "Overview",
+                  "parent": "unique-id-008",
+                  "order": 0
+                },{
+                  "id": "unique-id-010",
+                  "title": "Readings",
+                  "parent": "unique-id-008",
+                  "order": 1
+                },{
+                  "id": "unique-id-011",
+                  "title": "Civil Disobedience",
+                  "parent": "unique-id-010",
+                  "order": 0
+                },{
+                  "id": "unique-id-012",
+                  "title": "Walden",
+                  "parent": "unique-id-010",
+                  "order": 1
+                },{
+                  "id": "unique-id-013",
+                  "title": "Summary",
+                  "parent": "unique-id-008",
+                  "order": 2
+                },{
+                  "id": "unique-id-014",
+                  "title": "The Anti-Transcendentalists",
+                  "parent": null,
+                  "order": 1
+                },{
+                  "id": "unique-id-015",
+                  "title": "Herman Melville",
+                  "parent": "unique-id-014",
+                  "order": 0
+                },{
+                  "id": "unique-id-016",
+                  "title": "Overview",
+                  "parent": "unique-id-015",
+                  "order": 0
+                },{
+                  "id": "unique-id-017",
+                  "title": "Readings",
+                  "parent": "unique-id-015",
+                  "order": 1
+                },{
+                  "id": "unique-id-018",
+                  "title": "Bartleby the Scrivener",
+                  "parent": "unique-id-017",
+                  "order": 0
+                },{
+                  "id": "unique-id-019",
+                  "title": "Moby Dick",
+                  "parent": "unique-id-017",
+                  "order": 1
+                },{
+                  "id": "unique-id-020",
+                  "title": "Summary",
+                  "parent": "unique-id-015",
+                  "order": 2
+                },{
+                  "id": "unique-id-021",
+                  "title": "Nathaniel Hawthorne",
+                  "parent": "unique-id-014",
+                  "order": 1
+                },{
+                  "id": "unique-id-022",
+                  "title": "Overview",
+                  "parent": "unique-id-021",
+                  "order": 0
+                },{
+                  "id": "unique-id-023",
+                  "title": "Readings",
+                  "parent": "unique-id-021",
+                  "order": 1
+                },{
+                  "id": "unique-id-024",
+                  "title": "The Scarlet Letter",
+                  "parent": "unique-id-023",
+                  "order": 0
+                },{
+                  "id": "unique-id-025",
+                  "title": "Rappaccini\\'s Daughter",
+                  "parent": "unique-id-023",
+                  "order": 1
+                },{
+                  "id": "unique-id-026",
+                  "title": "Summary",
+                  "parent": "unique-id-021",
+                  "order": 2
+                }
+              ]);
+            };
+            function savedata(){
+              alert(JSON.stringify(document.getElementById('data').getData()));
+            }
+          &lt;/script>
+        </template>
+      </demo-snippet>
+      <demo-snippet>
+        <template>
+          <lrnsys-outline id="no-data" title="Outline with No Data"></lrnsys-outline>
+          <button onclick="savedata2()">Save</button>
+          <script>
+            function savedata2(){
+              alert(JSON.stringify(document.getElementById('no-data').getData()));
+            }
+          &lt;/script>
+        </template>
+      </demo-snippet>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
