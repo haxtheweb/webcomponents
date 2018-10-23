@@ -1,0 +1,11 @@
+{
+  "name": "@lrnwebcomponents/lrn-page/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A simple oer-schema page wrapper",
+  "main": "lrn-page.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
