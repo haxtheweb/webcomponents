@@ -1,0 +1,19 @@
+{
+  "name": "@lrnwebcomponents/lrnapp-studio/",
+  "flat": true,
+  "version": "0.0.22",
+  "main": "index.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/app-route": "^3.0.0-pre.1",
+    "@polymer/paper-card": "^3.0.0-pre.1",
+    "@polymer/paper-button": "^3.0.0-pre.1",
+    "@polymer/iron-flex-layout": "^3.0.0-pre.1",
+    "@polymer/paper-header-panel": "^3.0.0-pre.1",
+    "@polymer/iron-media-query": "^3.0.0-pre.1",
+    "@polymer/paper-material": "^3.0.0-pre.1",
+    "@polymer/paper-dialog": "^3.0.0-pre.1",
+    "@polymer/iron-iconset": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
