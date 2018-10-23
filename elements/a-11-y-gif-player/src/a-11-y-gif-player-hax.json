@@ -1,0 +1,26 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "A 11-y-gif-player",
+    "description": "Automated conversion of a11y-gif-player/",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["11"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "btopro",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [],
+    "advanced": []
+  }
+}
