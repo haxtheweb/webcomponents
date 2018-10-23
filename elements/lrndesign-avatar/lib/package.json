@@ -1,0 +1,11 @@
+{
+  "name": "@lrnwebcomponents/lrndesign-avatar/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A basic wrapper and reparenting of paper-avatar",
+  "main": "lrndesign-avatar.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
