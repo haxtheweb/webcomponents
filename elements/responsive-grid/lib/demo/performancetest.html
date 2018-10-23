@@ -1,0 +1,1374 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>responsive-grid demo</title>
+
+    <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script type="module" src="@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+    <script type="module" src="@polymer/iron-demo-helpers/demo-snippet.js"></script>
+    <script type="module" src="../responsive-grid-row.js"></script>
+
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+$_documentContainer.setAttribute('style', 'display: none;');
+
+$_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
+        .vertical-section-container.centered {
+          max-width: 1024px;
+        }
+        .demo1 responsive-grid-col {
+          outline: 1px solid white;
+          color: white;
+          background-color: #666;
+        }
+        .demo1 .column-demo {
+          padding: 20px; 
+        }
+    </style>`;
+
+document.head.appendChild($_documentContainer);
+</script>
+  </head>
+  <body>
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+      <h3>Basic responsive-grid demo</h3>
+      <h4>Simple Responsive Grid</h4>
+      <demo-snippet>
+      <template>
+          <responsive-grid-row class="demo11" gutter="5" sm="200" md="400" lg="600" xl="800">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column 1
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column 2
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <responsive-grid-row class="demo11" gutter="5">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+        </template>
+      </demo-snippet>
+      <h4>Responsive grid with inner-padding</h4>
+      <demo-snippet>
+        <template>
+          <responsive-grid-row class="demo2">
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+          <style>
+            .demo2 .column-demo {
+              margin-bottom: 30px;
+              padding: 20px; 
+              border: 1px solid black;
+            }
+          </style>
+        </template>
+      </demo-snippet>
+      <h4>Responsive grid with hidden columns and clear floats</h4>
+      <demo-snippet>
+        <template>
+          <responsive-grid-row class="demo1">
+            <responsive-grid-col xl="6" lg="6" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column (50% wide on large and extra-large screens)
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="0" md="4" sm="6" xs="12">
+              <div class="column-demo">
+                Responsive column hidden on large screens
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12" print-only="">
+              <div class="column-demo">
+                Responsive column print-only
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-clear sm=""></responsive-grid-clear>
+            <responsive-grid-col xl="2" lg="3" md="4" sm="6" xs="12" screen-only="">
+              <div class="column-demo">
+                Responsive column screen-only
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="0" lg="0" md="0" sm="0" xs="12">
+              <div class="column-demo">
+                  Visible on an extra-small screen.
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="0" lg="0" md="0" sm="6" xs="0">
+              <div class="column-demo">
+                  Visible on an small screen.
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-clear md=""></responsive-grid-clear>
+            <responsive-grid-col xl="0" lg="0" md="4" sm="0" xs="0">
+              <div class="column-demo">
+                  Visible on an medium screen.
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="0" lg="3" md="0" sm="0" xs="0">
+              <div class="column-demo">
+                  Visible on an large screen.
+              </div>
+            </responsive-grid-col>
+            <responsive-grid-col xl="2" lg="0" md="0" sm="0" xs="0">
+              <div class="column-demo">
+                  Visible on an extra large screen.
+              </div>
+            </responsive-grid-col>
+          </responsive-grid-row>
+        </template>
+      </demo-snippet>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+  </body>
+</html>
