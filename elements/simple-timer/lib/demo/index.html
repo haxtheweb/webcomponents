@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <title>simple-timer demo</title>
+  <script src="@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script type="module">
+    import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
+    import '@polymer/iron-demo-helpers/demo-snippet';
+    import '@polymer/polymer/lib/elements/dom-bind.js';
+    import '@polymer/paper-button/paper-button.js';
+    import '../simple-timer.js';
+  </script>
+  <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<custom-style>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </custom-style>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+</head>
+<body>
+  <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+    <h3>Basic simple-timer demo</h3>
+    <dom-bind>
+      <template>
+        <simple-timer id="timer"></simple-timer>
+        <paper-button on-tap="start">Start</paper-button>
+      </template>
+    </dom-bind>
+  </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+  <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+    <h3>Basic simple-timer demo</h3>
+    <dom-bind>
+      <template>
+        <simple-timer id="timer" start-time="5"></simple-timer>
+        <paper-button on-tap="start">Start</paper-button>
+      </template>
+    </dom-bind>
+  </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+  <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+    <h3>Basic count up simple-timer demo</h3>
+      <dom-bind>
+      <template>
+        <simple-timer id="timer" start-time="5" count-up="true"></simple-timer>
+        <paper-button on-tap="start">Start</paper-button>
+      </template>
+      </dom-bind>
+      <demo-snippet>
+        <template is="dom-bind">
+          <simple-timer id="timer" start-time="5" count-up="true"></simple-timer>
+          <paper-button on-tap="start">Start</paper-button>
+        </template>
+      </demo-snippet>
+  </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+  <script type="module">
+    var scopes = document.querySelectorAll('dom-bind');
+    scopes.forEach(function(scope) {
+      scope.start = function() {
+        this.$.timer.start();
+      };
+    });
+  </script>
+  </body>
+</html>

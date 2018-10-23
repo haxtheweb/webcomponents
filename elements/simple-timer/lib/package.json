@@ -1,0 +1,17 @@
+{
+  "name": "@lrnwebcomponents/simple-timer/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "Simple timer.",
+  "keywords": [
+    "web-components",
+    "polymer",
+    "simple",
+    "timer"
+  ],
+  "main": "simple-timer.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
