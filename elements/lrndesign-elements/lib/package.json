@@ -1,0 +1,14 @@
+{
+  "name": "@lrnwebcomponents/lrndesign-elements/",
+  "flat": true,
+  "version": "0.0.22",
+  "contributors": [
+    "ELMSLN development team"
+  ],
+  "keywords": [
+    "element-collection"
+  ],
+  "license": "https://raw.githubusercontent.com/LRNWebComponents/lrndesign-elements/master/LICENSE.md",
+  "dependencies": {},
+  "devDependencies": {}
+}
