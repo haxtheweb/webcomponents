@@ -1,0 +1,19 @@
+{
+  "name": "@lrnwebcomponents/lrn-markdown-editor/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A LRN element",
+  "main": "lrn-markdown-editor.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/paper-tabs": "^3.0.0-pre.1",
+    "@polymer/iron-pages": "^3.0.0-pre.1",
+    "@polymer/marked-element": "^3.0.0-pre.1",
+    "@polymer/iron-icons": "^3.0.0-pre.1",
+    "@polymer/iron-icon": "^3.0.0-pre.1",
+    "@polymer/paper-icon-button": "^3.0.0-pre.1",
+    "@polymer/paper-input": "^3.0.0-pre.1",
+    "@polymer/paper-card": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
