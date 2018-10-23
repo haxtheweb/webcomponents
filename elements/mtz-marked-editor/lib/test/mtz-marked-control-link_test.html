@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>mtz-marked-control-generic-wrap test</title>
+
+    <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="web-component-tester/browser.js"></script>
+
+    <script type="module" src="../controls/mtz-marked-control-link.js"></script>
+    <script type="module" src="../mtz-marked-editor.js"></script>
+  </head>
+  <body>
+    <test-fixture id="basic">
+      <template>
+        <mtz-marked-control-link></mtz-marked-control-link>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="example">
+      <template>
+        <mtz-marked-editor>
+          <div slot="controls">
+            <mtz-marked-control-link
+              id="control"
+            ></mtz-marked-control-link>
+          </div>
+          <textarea slot="textarea"></textarea>
+        </mtz-marked-editor>
+      </template>
+    </test-fixture>
+
+    <script type="module">
+import '../controls/mtz-marked-control-link.js';
+import '../mtz-marked-editor.js';
+describe('mtz-marked-control-link', () => {
+  let element, parent;
+
+  beforeEach((done) => {
+    element = fixture('basic');
+    parent = element.parentNode;
+    window.prompt = sinon.stub();
+    window.alert = sinon.stub();
+    flush(done);
+  });
+
+  /* Sanity Check */
+  it('instantiating the element works', () => {
+    expect(element.is).to.equal('mtz-marked-control-link');
+  });
+
+  /* Lifecycle Events */
+  describe('attached', () => {
+    const spy = sinon.spy();
+
+    beforeEach((done) => {
+      parent.removeChild(element);
+      parent.addEventListener('register-control', spy);
+      parent.appendChild(element);
+      flush(done);
+    });
+
+    it('should fire a register-control event', () => {
+      expect(spy).to.have.been.called;
+      const args = spy.firstCall.args[0];
+      expect(args.bubbles).to.be.ok;
+      expect(args.composed).to.be.ok;
+    });
+  });
+
+  /* Protected Methods */
+  describe('_handleCommand', () => {
+    let evt;
+    let msg;
+    let text;
+    let link;
+
+    beforeEach(() => {
+      parent = fixture('example');
+      element = parent.parentNode.querySelector('#control');
+      text = 'LINK TEXT';
+      link = 'https://link.com/';
+      msg = text;
+      parent.setContent(msg);
+
+      evt = new MouseEvent('click', {
+        button: 0,
+      });
+      sinon.spy(evt, 'preventDefault');
+      sinon.spy(evt, 'stopPropagation');
+    });
+
+    it('should prevent default functionality', () => {
+      element._handleCommand(evt);
+      expect(evt.preventDefault).to.have.been.called;
+    });
+    it('should stop propagation', () => {
+      element._handleCommand(evt);
+      expect(evt.stopPropagation).to.have.been.called;
+    });
+
+    describe('When syntax is already applied', () => {
+      it('should remove the syntax and leave the link when both are present', () => {
+        msg = `[${text}](${link})`;
+        parent.setContent(msg);
+        parent.setSelection(0, msg.length);
+        element._handleCommand(evt);
+        expect(parent.getContent()).to.equal(link);
+        expect(parent.getSelection().text).to.equal(link);
+      });
+      it('should remove the syntax and leave the text when only text is present', () => {
+        msg = `[${text}]()`;
+        parent.setContent(msg);
+        parent.setSelection(0, msg.length);
+        element._handleCommand(evt);
+        expect(parent.getContent()).to.equal(text);
+        expect(parent.getSelection().text).to.equal(text);
+      });
+      it('should remove the syntax and leave the text when only link is present', () => {
+        msg = `[](${link})`;
+        parent.setContent(msg);
+        parent.setSelection(0, msg.length);
+        element._handleCommand(evt);
+        expect(parent.getContent()).to.equal(link);
+        expect(parent.getSelection().text).to.equal(link);
+      });
+    });
+    describe('When syntax is not applied', () => {
+      it('should prompt for a link if not a URL', () => {
+        parent.setContent(text);
+        parent.setSelection(0, text.length);
+        element._handleCommand(evt);
+        expect(window.prompt).to.have.been.calledWith('What link would you like to use?');
+      });
+      it('should prompt for text if a URL', () => {
+        parent.setContent(link);
+        parent.setSelection(0, link.length);
+        element._handleCommand(evt);
+        expect(window.prompt).to.have.been.calledWith('What text would you like to display?');
+      });
+      it('should handle if no text or cancel was entered', () => {
+        parent.setContent(link);
+        parent.setSelection(0, link.length);
+        element._handleCommand(evt);
+        expect(window.alert).not.to.have.been.called;
+        expect(parent.getContent()).to.equal(link);
+      });
+      it('should handle if no link or cancel was entered', () => {
+        parent.setContent(text);
+        parent.setSelection(0, text.length);
+        element._handleCommand(evt);
+        expect(window.alert).not.to.have.been.called;
+        expect(parent.getContent()).to.equal(text);
+      });
+      it('should set apply the syntax with the entered text', () => {
+        parent.setContent(link);
+        parent.setSelection(0, link.length);
+        window.prompt.returns(text);
+        element._handleCommand(evt);
+        expect(window.alert).not.to.have.been.called;
+        msg = `[${text}](${link})`;
+        expect(parent.getContent()).to.equal(msg);
+        expect(parent.getSelection().text).to.equal(msg);
+      });
+      it('should set apply the syntax with the entered link', () => {
+        parent.setContent(text);
+        parent.setSelection(0, text.length);
+        window.prompt.returns(link);
+        element._handleCommand(evt);
+        expect(window.alert).not.to.have.been.called;
+        msg = `[${text}](${link})`;
+        expect(parent.getContent()).to.equal(msg);
+        expect(parent.getSelection().text).to.equal(msg);
+      });
+      it('should alert if link was not https://', () => {
+        parent.setContent(text);
+        parent.setSelection(0, text.length);
+        window.prompt.returns('http://insecurelink.com');
+        element._handleCommand(evt);
+        expect(window.alert).to.have.been.calledWith('Links must be https://');
+        expect(parent.getContent()).to.equal(text);
+      });
+    });
+  });
+  describe('_isLink(selection)', () => {
+    it('should return true if selection startsWith https://', () => {
+      expect(element._isLink({text: 'https://'})).to.be.true;
+    });
+    it('should return false if selection doesn\'t start with https://', () => {
+      expect(element._isLink({text: 'badlink.com?redirect=https://'})).to.be.false;
+      expect(element._isLink({text: 'http://'})).to.be.false;
+    });
+  });
+});
+</script>
+  </body>
+</html>

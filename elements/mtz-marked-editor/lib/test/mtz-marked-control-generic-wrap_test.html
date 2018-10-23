@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>mtz-marked-control-generic-wrap test</title>
+
+    <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="web-component-tester/browser.js"></script>
+
+    <script type="module" src="../mtz-marked-control-generic-wrap.js"></script>
+    <script type="module" src="../mtz-marked-editor.js"></script>
+  </head>
+  <body>
+    <test-fixture id="basic">
+      <template>
+        <mtz-marked-control-generic-wrap></mtz-marked-control-generic-wrap>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="example">
+      <template>
+        <mtz-marked-editor>
+          <div slot="controls">
+            <mtz-marked-control-generic-wrap
+              id="control"
+              syntax-prefix="**"
+              syntax-suffix="**"
+            ></mtz-marked-control-generic-wrap>
+          </div>
+          <textarea slot="textarea"></textarea>
+        </mtz-marked-editor>
+      </template>
+    </test-fixture>
+
+    <script type="module">
+import '../mtz-marked-control-generic-wrap.js';
+import '../mtz-marked-editor.js';
+describe('mtz-marked-control-generic-wrap', () => {
+  let element, parent;
+
+  beforeEach((done) => {
+    element = fixture('basic');
+    parent = element.parentNode;
+    flush(done);
+  });
+
+  /* Sanity Check */
+  it('instantiating the element works', () => {
+    expect(element.is).to.equal('mtz-marked-control-generic-wrap');
+  });
+
+  /* Lifecycle Events */
+  describe('attached', () => {
+    const spy = sinon.spy();
+
+    beforeEach((done) => {
+      parent.removeChild(element);
+      parent.addEventListener('register-control', spy);
+      parent.appendChild(element);
+      flush(done);
+    });
+
+    it('should fire a register-control event', () => {
+      expect(spy).to.have.been.called;
+      const args = spy.firstCall.args[0];
+      expect(args.bubbles).to.be.ok;
+      expect(args.composed).to.be.ok;
+    });
+  });
+
+  /* Protected Methods */
+  describe('_handleCommand', () => {
+    let evt, baseMsg, assertMsg;
+    beforeEach(() => {
+      parent = fixture('example');
+      element = parent.parentNode.querySelector('#control');
+      baseMsg = 'The quick brown fox jumps over the lazy dog';
+      parent.setContent(baseMsg);
+
+      evt = new MouseEvent('click', {
+        button: 0,
+      });
+      sinon.spy(evt, 'preventDefault');
+      sinon.spy(evt, 'stopPropagation');
+    });
+
+    it('should prevent default functionality', () => {
+      element._handleCommand(evt);
+      expect(evt.preventDefault).to.have.been.called;
+    });
+    it('should stop propagation', () => {
+      element._handleCommand(evt);
+      expect(evt.stopPropagation).to.have.been.called;
+    });
+
+    describe('When syntax is already applied', () => {
+      beforeEach(() => {
+        assertMsg = baseMsg;
+      });
+
+      describe('and a selection is made', () => {
+        beforeEach(() => {
+          baseMsg = 'The quick **brown fox** jumps over the lazy dog';
+          parent.setContent(baseMsg);
+          parent.setSelection(12, 21);
+          parent.getTextarea().focus = sinon.spy();
+          element._handleCommand(evt);
+        });
+        it('should remove the syntax', () => {
+          expect(parent.getContent()).to.equal(assertMsg);
+        });
+        it('should have the previous text still selected', () => {
+          expect(parent.getSelection().text).to.equal('brown fox');
+        });
+        it('should focus the editor', () => {
+          expect(parent.getTextarea().focus).to.have.been.called;
+        });
+      });
+      describe('and no selection is made (cursor)', () => {
+        beforeEach(() => {
+          baseMsg = 'The quick ****brown fox jumps over the lazy dog';
+          parent.setContent(baseMsg);
+          parent.setSelection(12, 12);
+          parent.getTextarea().focus = sinon.spy();
+          element._handleCommand(evt);
+        });
+        it('should remove the syntax', () => {
+          expect(parent.getContent()).to.equal(assertMsg);
+        });
+        it('should put the cursor where it was previously', () => {
+          expect(parent.getSelection()).to.deep.equal({
+            start: 10,
+            end: 10,
+            length: 0,
+            text: ''
+          });
+        });
+        it('should focus the editor', () => {
+          expect(parent.getTextarea().focus).to.have.been.called;
+        });
+      });
+    });
+    describe('When syntax is not applied already', () => {
+      describe('and a selection is made', () => {
+        beforeEach(() => {
+          assertMsg = 'The quick **brown fox** jumps over the lazy dog';
+          parent.setSelection(10, 19);
+          parent.getTextarea().focus = sinon.spy();
+          element._handleCommand(evt);
+        });
+        it('should add the syntax wrapping the selected text', () => {
+          expect(parent.getContent()).to.equal(assertMsg);
+        });
+        it('should have the previously selected text still selected', () => {
+          expect(parent.getSelection().text).to.equal('brown fox');
+        });
+        it('should focus the editor', () => {
+          expect(parent.getTextarea().focus).to.have.been.called;
+        });
+      });
+      describe('and no selection is made (cursor)', () => {
+        beforeEach(() => {
+          assertMsg = 'The quick ****brown fox jumps over the lazy dog';
+          parent.setSelection(10, 10);
+          parent.getTextarea().focus = sinon.spy();
+          element._handleCommand(evt);
+        });
+        it('should add the syntax at the cursor', () => {
+          expect(parent.getContent()).to.equal(assertMsg);
+        });
+        it('should put the cursor between the syntax prefix and suffix', () => {
+          expect(parent.getSelection().text).to.equal('');
+        });
+        it('should focus the editor', () => {
+          expect(parent.getTextarea().focus).to.have.been.called;
+        });
+      });
+    });
+  });
+});
+</script>
+  </body>
+</html>
