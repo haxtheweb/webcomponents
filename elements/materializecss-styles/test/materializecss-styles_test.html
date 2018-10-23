@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../materializecss-styles.js"></script>
+  </head>
+  <body>
+
+    <materializecss-styles>
+      This is the element content.
+    </materializecss-styles>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <materializecss-styles></materializecss-styles>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <materializecss-styles ></materializecss-styles>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<materializecss-styles>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('materializecss-styles'), customElements.get("materializecss-styles", 'materializecss-styles should be an instance of materializecssStyles'));
+    });
+
+    /*test('instantiating the element with default properties works', () => {
+      const element = fixture('BasicTestFixture');
+      assert.equal(element.prop1, '<materializecss-styles>');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello <materializecss-styles>!');
+    });*/
+
+    /*test('setting a property on the element works', () => {
+      // Create a test fixture
+      const element = fixture('ChangedPropertyTestFixture');
+      assert.equal(element.prop1, 'new-prop1');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
+    });*/
+  });
+    </script>
+  </body>
+</html>
