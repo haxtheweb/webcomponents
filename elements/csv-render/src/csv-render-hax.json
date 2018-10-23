@@ -1,0 +1,26 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Csv render",
+    "description": "Automated conversion of csv-render/",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Render"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "btopro",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [],
+    "advanced": []
+  }
+}
