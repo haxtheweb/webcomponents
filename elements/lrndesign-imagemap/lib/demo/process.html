@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>lrndesign-imagemap demo</title>
+
+    <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script type="module" src="@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+    <script type="module" src="@polymer/iron-demo-helpers/demo-snippet.js"></script>
+    <script type="module" src="../lrndesign-imagemap.js"></script>
+
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+        #demo2 .hotspot > * {
+          opacity: 0.8;
+        }
+        #demo2 .hotspot:active > *,
+        #demo2 .hotspot:focus > *,
+        #demo2 .hotspot:hover > *,
+        #demo2 .hotspot.selected > *,
+        #demo2 .hotspot text,
+        #demo2 .hotspot text > * {
+          opacity: 1;
+          cursor: pointer;
+        }
+        @media print {
+          #demo2 .hotspot:not(.selected) * {
+            opacity: 1;
+            fill: #ddd;
+          }
+          #demo2 .hotspot:not(.selected) text,
+          #demo2 .hotspot:not(.selected) text > * {
+            fill: black;
+          }
+          :host .screen-only {
+            display: none;
+          }
+        }
+      </style>
+    </custom-style>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+  </head>
+  <body>
+      <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<lrndesign-imagemap id="demo2" src="images/designprocess.svg" label="Course Design Process">
+        <div slot="desc">
+          <p>
+            A diagram of the 5-step course design process.
+            <span class="screen-only">Click on the hotspots to learn more.</span>
+          </p>
+        </div>
+        <lrndesign-imagemap-hotspot hotspot-id="plan" label="Design Plan">
+          During the <strong>Design Plan</strong>, collaborators work 
+          together to identify the Course Goals and an Assessment 
+          Strategy. The project plan is laid out, the timeline is 
+          confirmed, and any other specific requirements for the course 
+          are identified. 
+        </lrndesign-imagemap-hotspot>
+        <lrndesign-imagemap-hotspot hotspot-id="outline" label="Course Outline">
+          Then the <strong>Course Outline</strong> is created, fleshing 
+          out the topics, sub-topics, lesson objectives, instructional 
+          sequence, weekly activities and the relevant content and 
+          media types.
+        </lrndesign-imagemap-hotspot>
+        <lrndesign-imagemap-hotspot hotspot-id="proto" label="Prototype">
+          Next, the <strong>Prototype</strong> phase, a singular lesson 
+          template is created which includes content, assessments, and 
+          represents the overall the layout design.
+        </lrndesign-imagemap-hotspot>
+        <lrndesign-imagemap-hotspot hotspot-id="prod" label="Production">
+          During <strong>Production</strong>, content is developed and 
+          assessments are created in eLearning Management System (ELMS) 
+          and Canvas.
+        </lrndesign-imagemap-hotspot>
+        <lrndesign-imagemap-hotspot hotspot-id="qr" label="Quality Review">
+          Finally, during the <strong>Quality Review</strong> phase, the 
+          course is checked for quality standards, adherence to Penn 
+          State copyright requirements and compliance with ADA criterions.
+        </lrndesign-imagemap-hotspot>
+      </lrndesign-imagemap>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+  </body>
+</html>
