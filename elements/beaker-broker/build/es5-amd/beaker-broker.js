@@ -6,11 +6,11 @@ define([
   "use strict";
   Object.defineProperty(_exports, "__esModule", { value: !0 });
   _exports.BeakerBroker = void 0;
-  function _templateObject_cfb06530d6ec11e88811d5d06ab49a0b() {
+  function _templateObject_d3da0010cbc711e8bb5eb9c99afa7b8f() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
     ]);
-    _templateObject_cfb06530d6ec11e88811d5d06ab49a0b = function() {
+    _templateObject_d3da0010cbc711e8bb5eb9c99afa7b8f = function() {
       return data;
     };
     return data;
@@ -55,7 +55,7 @@ define([
           key: "template",
           get: function get() {
             return (0, _polymerElement.html)(
-              _templateObject_cfb06530d6ec11e88811d5d06ab49a0b()
+              _templateObject_d3da0010cbc711e8bb5eb9c99afa7b8f()
             );
           }
         },
@@ -68,7 +68,7 @@ define([
               canEditSource: !1,
               gizmo: {
                 title: "Beaker broker",
-                description: "Automated conversion of beaker-broker/",
+                description: "Automated conversion of beaker-broker",
                 icon: "icons:android",
                 color: "green",
                 groups: ["Broker"],

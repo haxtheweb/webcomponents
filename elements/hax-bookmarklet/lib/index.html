@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>hax-bookmarklet</title>
+    <meta name="description" content="hax-bookmarklet description">
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+    <script>
+      /* this script must run before Polymer is imported */
+      window.Polymer = {
+        dom: 'shady',
+        lazyRegister: true
+      };
+    </script>
+    <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script type="module" src="./hax-bookmarklet.js"></script>
+    <style>
+      body {
+        margin: 10em;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+    <hax-bookmarklet>
+      <h1>A whole bunch of content in here</h1>
+      <p>and some more here now</p>
+    </hax-bookmarklet>
+  </div>
+  </body>
+</html>
