@@ -1,0 +1,14 @@
+{
+  "name": "@lrnwebcomponents/a11y-gif-player/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A LRN element",
+  "main": "a11y-gif-player.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/paper-button": "^3.0.0-pre.1",
+    "@polymer/iron-a11y-keys": "^3.0.0-pre.1",
+    "@polymer/iron-image": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
