@@ -1,0 +1,140 @@
+import "@polymer/polymer/polymer.js";
+import "@polymer/iron-list/iron-list.js";
+import "@polymer/iron-scroll-threshold/iron-scroll-threshold.js";
+import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
+import "@polymer/iron-validatable-behavior/iron-validatable-behavior.js";
+import "@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
+import "@polymer/neon-animation/animations/scale-up-animation.js";
+import "@polymer/neon-animation/animations/fade-out-animation.js";
+import "@polymer/neon-animation/web-animations.js";
+import "@polymer/paper-menu-button/paper-menu-button.js";
+import "@polymer/paper-toast/paper-toast.js";
+import "@polymer/paper-tabs/paper-tabs.js";
+import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
+import "@polymer/paper-input/paper-textarea.js";
+import "@polymer/paper-checkbox/paper-checkbox.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/paper-toggle-button/paper-toggle-button.js";
+import "@polymer/paper-input/paper-input.js";
+import "@polymer/paper-badge/paper-badge.js";
+import "@polymer/paper-slider/paper-slider.js";
+import "@polymer/paper-spinner/paper-spinner.js";
+import "@polymer/paper-swatch-picker/paper-swatch-picker.js";
+import "lrnsys-layout/lrnsys-drawer.js";
+import "lrnsys-layout/lrnsys-collapselist.js";
+import "lrnsys-layout/lrnsys-dialog.js";
+import "lrnsys-button/lrnsys-button.js";
+import "lrnsys-render-html/lrnsys-render-html.js";
+import "lrndesign-drawer/lrndesign-drawer.js";
+import "lrndesign-panelcard/lrndesign-panelcard.js";
+import "lrndesign-blockquote/lrndesign-blockquote.js";
+import "lrndesign-avatar/lrndesign-avatar.js";
+import "lrndesign-abbreviation/lrndesign-abbreviation.js";
+import "lrndesign-paperstack/lrndesign-paperstack.js";
+import "lrnapp-fab-menu/lrnapp-fab-menu.js";
+import "lrn-icons/lrn-icons.js";
+import "lrn-icon/lrn-icon.js";
+import "dropdown-select/dropdown-select.js";
+import "lrn-page/lrn-page.js";
+import "lrn-content/lrn-content.js";
+import "elmsln-loading/elmsln-loading.js";
+import "@polymer/iron-icons/av-icons.js";
+import "@polymer/iron-icons/communication-icons.js";
+import "@polymer/iron-icons/device-icons.js";
+import "@polymer/iron-icons/editor-icons.js";
+import "@polymer/iron-icons/hardware-icons.js";
+import "@polymer/iron-icons/image-icons.js";
+import "@polymer/iron-icons/maps-icons.js";
+import "@polymer/iron-icons/notification-icons.js";
+import "@polymer/iron-icons/social-icons.js";
+import "@polymer/iron-icons/places-icons.js";
+import "md-extra-icons/md-extra-icons.js";
+import "@polymer/app-layout/app-scroll-effects/app-scroll-effects.js";
+import "@polymer/app-layout/app-toolbar/app-toolbar.js";
+import "@polymer/app-layout/app-header/app-header.js";
+import "@polymer/app-route/app-route.js";
+import "@polymer/app-route/app-location.js";
+import "@polymer/iron-selector/iron-selector.js";
+import "@polymer/iron-pages/iron-pages.js";
+import "vaadin-upload/vaadin-upload.js";
+import "media-video/media-video.js";
+import "lrndesign-chart/lrndesign-bar.js";
+import "lrndesign-chart/lrndesign-line.js";
+import "lrndesign-chart/lrndesign-pie.js";
+import "hax-body/hax-store.js";
+import "cms-hax/cms-hax.js";
+import "hax-body/hax-body.js";
+import "hax-body/hax-autoloader.js";
+import "hax-body/hax-manager.js";
+import "hax-body/hax-panel.js";
+import "hax-body/hax-app-picker.js";
+import "hax-body/hax-export-dialog.js";
+import "@polymer/iron-ajax/iron-ajax.js";
+import "@polymer/paper-toast/paper-toast.js";
+import "simple-concept-network/simple-concept-network.js";
+import "license-element/license-element.js";
+import "grid-plate/grid-plate.js";
+import "q-r/q-r.js";
+import "self-check/self-check.js";
+import "tab-list/tab-list.js";
+import "multiple-choice/multiple-choice.js";
+import "oer-schema/oer-schema.js";
+import "hero-banner/hero-banner.js";
+import "magazine-cover/magazine-cover.js";
+import "task-list/task-list.js";
+import "video-player/video-player.js";
+import "lrn-table/lrn-table.js";
+import "media-image/media-image.js";
+import "lrndesign-blockquote/lrndesign-blockquote.js";
+import "meme-maker/meme-maker.js";
+import "a11y-gif-player/a11y-gif-player.js";
+import "paper-audio-player/paper-audio-player.js";
+import "wikipedia-query/wikipedia-query.js";
+import "wave-player/wave-player.js";
+import "lrn-vocab/lrn-vocab.js";
+import "lrn-math/lrn-math.js";
+import "person-testimonial/person-testimonial.js";
+import "citation-element/citation-element.js";
+import "place-holder/place-holder.js";
+import "stop-note/stop-note.js";
+import "parallax-effect/parallax-effect.js";
+import "image-compare-slider/image-compare-slider.js";
+import "word-count/word-count.js";
+import "wysiwyg-hax/wysiwyg-hax.js";
+import "paper-chip/paper-chip.js";
+import "secure-request/secure-request.js";
+import "lrn-markdown-editor/lrn-markdown-editor.js";
+import "image-inspector/image-inspector.js";
+import "@polymer/marked-element/marked-element.js";
+import "lrndesign-contentblock/lrndesign-contentblock.js";
+import "lrndesign-gallerycard/lrndesign-gallerycard.js";
+import "lrndesign-course-banner/lrndesign-course-banner.js";
+import "lrnsys-comment/lrnsys-comment.js";
+import "lrnsys-comment/lrnsys-comment-list.js";
+import "@polymer/app-route/app-location.js";
+import "@polymer/app-route/app-route.js";
+import "vaadin-grid/vaadin-grid.js";
+import "vaadin-grid/vaadin-grid.js";
+import "vaadin-grid/vaadin-grid-column-group.js";
+import "vaadin-grid/vaadin-grid-filter.js";
+import "vaadin-grid/vaadin-grid-sorter.js";
+import "vaadin-grid/vaadin-grid-selection-column.js";
+import "lrn-button/lrn-button.js";
+import "lrn-assignment/lrn-assignment.js";
+import "lrn-vocab/lrn-vocab.js";
+import "lrn-aside/lrn-aside.js";
+import "lrn-table/lrn-table.js";
+import "document-register-element/build/document-register-element.js";
+
+/* everything requires polymer to operate */
+/* iron elements, worker elements and nuts and bolts sorta stuff */
+/* neon elements, lower level elements that provide animations and exciting stuff but still nuts & bolts */
+/* paper elements, well designed elements modeled after material design specification from Google */
+/* lrnsys-layout for layout elements */
+/* lrndesign elements, which express well designed elements that can be used in education / elsewhere */
+/* LRN core stuff */
+/* rest of the available iron-icons */
+/* app creation */
+/* additional elements we support because they are awesome */
+/* ELMSMedia external video Display modes */
+/* lrn interface elements, remove these for edit-build */
