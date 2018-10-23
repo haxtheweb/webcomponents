@@ -1,0 +1,96 @@
+{
+  /**
+   * Standard href pass down
+   */
+  "href": {
+    "type": String,
+    "value": "#"
+  },
+  /**
+   * What to display for the resource
+   */
+  "showHref": {
+    "type": String,
+    "value": false
+  },
+  /**
+   * If the button should be visually lifted off the UI.
+   */
+  "raised": {
+    "type": Boolean
+  },
+  /**
+   * Label to place in the text area
+   */
+  "label": {
+    "type": String,
+    "value": ""
+  },
+  "target": {
+    "type": String,
+    "value": ""
+  },
+  /**
+   * iron-icon to use (with iconset if needed)
+   */
+  "icon": {
+    "type": String,
+    "value": false
+  },
+  /**
+   * Classes to add / subtract based on the item being hovered.
+   */
+  "hoverClass": {
+    "type": String
+  },
+  /**
+   * Icon class in the event you want it to look different from the text.
+   */
+  "iconClass": {
+    "type": String
+  },
+  /**
+   * Inner container classes.
+   */
+  "innerClass": {
+    "type": String
+  },
+  /**
+   * materializeCSS color class
+   */
+  "color": {
+    "type": String
+  },
+  /**
+   * materializeCSS color class for text
+   */
+  "textColor": {
+    "type": String
+  },
+  /**
+   * Allow for prefetch data on hover
+   */
+  "prefetch": {
+    "type": String
+  },
+  /**
+   * Alt via tooltip.
+   */
+  "alt": {
+    "type": String
+  },
+  /**
+   * Disabled state.
+   */
+  "disabled": {
+    "type": Boolean,
+    "value": false
+  },
+  /**
+   * Tracks if focus state is applied
+   */
+  "focusState": {
+    "type": Boolean,
+    "value": false
+  }
+}
