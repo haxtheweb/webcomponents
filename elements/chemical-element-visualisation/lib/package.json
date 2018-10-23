@@ -1,0 +1,22 @@
+{
+  "name": "@lrnwebcomponents/chemical-element-visualisation/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A Web Component for visualizing an chemical element",
+  "contributors": [
+    "Florian Fechner"
+  ],
+  "keywords": [
+    "web-components",
+    "chemistry",
+    "periodic-table"
+  ],
+  "main": "chemical-element-visualisation.html",
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/paper-tooltip": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}

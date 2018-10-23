@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+  <title>Chemical Element Visualisation demo</title>
+
+
+  <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+
+  <script type="module" src="@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+  <script type="module" src="@polymer/iron-demo-helpers/demo-snippet.js"></script>
+  <script type="module" src="@polymer/paper-input/paper-input.js"></script>
+
+  <script type="module" src="../chemical-element-visualisation.js"></script>
+
+  <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+$_documentContainer.setAttribute('style', 'display: none;');
+
+$_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
+  </style>`;
+
+document.head.appendChild($_documentContainer);
+</script>
+</head>
+
+<body unresolved>
+
+  <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<style>
+
+  body
+  {
+    font-family: sans-serif;
+  }
+
+  </style>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+
+  <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+    <h3>Basic Demo</h3>
+    <demo-snippet>
+      <template>
+        <style>
+
+          .container
+          {
+            display: flex;
+          }
+
+          .item
+          {
+            flex: 1;
+          }
+
+        </style>
+
+        <div class="container">
+          <div class="item">
+            <h4>Hydrogen</h4>
+            <chemical-element-visualisation symbol="h"></chemical-element-visualisation>
+          </div>
+          <div class="item">
+            <h4>Helium</h4>
+            <chemical-element-visualisation symbol="he"></chemical-element-visualisation>
+          </div>
+          <div class="item">
+            <h4>Magnesium</h4>
+            <chemical-element-visualisation symbol="mg"></chemical-element-visualisation>
+          </div>
+        </div>
+      </template>
+    </demo-snippet>
+
+    <h3>Change Element Type Colors</h3>
+    <demo-snippet>
+      <template>
+        <custom-style>
+          <style>
+
+            .container
+            {
+              display: flex;
+            }
+
+            .item
+            {
+              flex: 1;
+            }
+
+            .element-type-color-changed
+            {
+              --alkali-metal-primary-color: #000;
+              --alkaline-earth-metal-primary-color: #f00;
+              --transition-metal-primary-color: #0f0;
+              --post-transition-metal-primary-color: #ff0;
+              --metalloid-primary-color: #00f;
+              --other-nonmetal-primary-color: #f0f;
+              --halogen-primary-color: #0ff;
+              --noble-gas-primary-color: #800;
+              --lanthanide-primary-color: #080;
+              --actinide-primary-color: #008;
+            }
+
+          </style>
+        </custom-style>
+
+        <div class="container">
+          <div class="item">
+            <h4>Hydrogen</h4>
+            <chemical-element-visualisation class="element-type-color-changed" symbol="h"></chemical-element-visualisation>
+          </div>
+          <div class="item">
+            <h4>Helium</h4>
+            <chemical-element-visualisation class="element-type-color-changed" symbol="he"></chemical-element-visualisation>
+          </div>
+          <div class="item">
+            <h4>Magnesium</h4>
+            <chemical-element-visualisation class="element-type-color-changed" symbol="mg"></chemical-element-visualisation>
+          </div>
+        </div>
+      </template>
+    </demo-snippet>
+
+    <h3>Change Electron Group Colors</h3>
+    <demo-snippet>
+      <template>
+        <custom-style>
+          <style>
+
+            .container
+            {
+              display: flex;
+            }
+
+            .item
+            {
+              flex: 1;
+            }
+
+            .electron-group-color-changed
+            {
+              --s-group-electron-color: #f00;
+              --p-group-electron-color: #0ff;
+              --d-group-electron-color: #f0f;
+              --f-group-electron-color: #ff0;
+            }
+
+          </style>
+        </custom-style>
+
+        <div class="container">
+          <div class="item">
+            <h4>Hydrogen</h4>
+            <chemical-element-visualisation class="electron-group-color-changed" symbol="h"></chemical-element-visualisation>
+          </div>
+          <div class="item">
+            <h4>Helium</h4>
+            <chemical-element-visualisation class="electron-group-color-changed" symbol="he"></chemical-element-visualisation>
+          </div>
+          <div class="item">
+            <h4>Magnesium</h4>
+            <chemical-element-visualisation class="electron-group-color-changed" symbol="mg"></chemical-element-visualisation>
+          </div>
+        </div>
+      </template>
+    </demo-snippet>
+
+    <h3>Change Symbol</h3>
+    <demo-snippet>
+      <template>
+        <custom-style>
+          <style>
+
+            .container
+            {
+              display: flex;
+            }
+
+            .item
+            {
+              flex: 1;
+            }
+
+          </style>
+        </custom-style>
+
+        <dom-bind>
+          <template>
+
+            <div class="container">
+              <div class="item">
+                <paper-input label="Element Symbol" value="{{symbol}}"></paper-input>
+              </div>
+              <div class="item">
+                <chemical-element-visualisation symbol="[[symbol]]"></chemical-element-visualisation>
+              </div>
+            </div>
+
+          </template>
+        </dom-bind>
+
+      </template>
+    </demo-snippet>
+
+  </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+</body>
+
+</html>
