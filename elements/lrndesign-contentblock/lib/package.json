@@ -1,0 +1,11 @@
+{
+  "name": "@lrnwebcomponents/lrndesign-contentblock/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "An incredibly simple content block",
+  "main": "lrndesign-contentblock.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
