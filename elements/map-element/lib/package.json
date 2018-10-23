@@ -1,0 +1,11 @@
+{
+  "name": "@lrnwebcomponents/map-element/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A LRN element",
+  "main": "map-element.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
