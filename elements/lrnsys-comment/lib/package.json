@@ -1,0 +1,28 @@
+{
+  "name": "@lrnwebcomponents/lrnsys-comment/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A LRN element",
+  "main": "lrnsys-comment.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/paper-listbox": "^3.0.0-pre.1",
+    "@polymer/paper-item": "^3.0.0-pre.1",
+    "@polymer/paper-dropdown-menu": "^3.0.0-pre.1",
+    "@polymer/iron-demo-helpers": "^3.0.0-pre.1",
+    "@polymer/paper-toast": "^3.0.0-pre.1",
+    "@polymer/paper-dialog": "^3.0.0-pre.1",
+    "@polymer/paper-button": "^3.0.0-pre.1",
+    "@polymer/iron-list": "^3.0.0-pre.1",
+    "@polymer/app-layout": "^3.0.0-pre.1",
+    "@polymer/iron-ajax": "^3.0.0-pre.1",
+    "@polymer/iron-form-element-behavior": "^3.0.0-pre.1",
+    "@polymer/iron-icons": "^3.0.0-pre.1",
+    "@polymer/marked-element": "^3.0.0-pre.1",
+    "@polymer/paper-badge": "^3.0.0-pre.1",
+    "@polymer/paper-card": "^3.0.0-pre.1",
+    "@polymer/paper-tooltip": "^3.0.0-pre.1",
+    "@polymer/neon-animation": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
