@@ -1,0 +1,17 @@
+{
+  "name": "@lrnwebcomponents/lrndesign-contactcard/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A basic contact card element",
+  "main": "lrndesign-contactcard.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/paper-tooltip": "^3.0.0-pre.1",
+    "@polymer/paper-icon-button": "^3.0.0-pre.1",
+    "@polymer/paper-button": "^3.0.0-pre.1",
+    "@polymer/iron-icon": "^3.0.0-pre.1",
+    "@polymer/iron-icons": "^3.0.0-pre.1",
+    "@polymer/paper-card": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
