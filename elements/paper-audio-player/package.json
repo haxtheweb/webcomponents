@@ -1,33 +1,33 @@
 {
-  "name": "@lrnwebcomponents/ontology",
+  "name": "@lrnwebcomponents/paper-audio-player",
   "wcfactory": {
-    "className": "Ontology",
+    "className": "PaperAudioPlayer",
     "customElementClass": "PolymerElement",
-    "elementName": "ontology",
+    "elementName": "paper-audio-player",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,
     "useSass": false,
     "files": {
-      "css": "src/ontology.css",
-      "scss": "src/ontology.scss",
-      "html": "src/ontology.html",
-      "js": "src/ontology.js",
-      "properties": "src/ontology-properties.json",
-      "hax": "src/ontology-hax.json"
+      "css": "src/paper-audio-player.css",
+      "scss": "src/paper-audio-player.scss",
+      "html": "src/paper-audio-player.html",
+      "js": "src/paper-audio-player.js",
+      "properties": "src/paper-audio-player-properties.json",
+      "hax": "src/paper-audio-player-hax.json"
     }
   },
   "version": "0.0.20",
-  "description": "Automated conversion of ontology/",
+  "description": "Automated conversion of paper-audio-player/",
   "repository": {
     "type": "git",
     "url": "git@github.com/elmsln/lrnwebcomponents.git"
   },
-  "main": "ontology.js",
-  "module": "ontology.es6.js",
-  "umd": "ontology.umd.js",
-  "amd": "ontology.amd.js",
+  "main": "paper-audio-player.js",
+  "module": "paper-audio-player.es6.js",
+  "umd": "paper-audio-player.umd.js",
+  "amd": "paper-audio-player.amd.js",
   "scripts": {
-    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/ontology/test/",
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/paper-audio-player/test/",
     "start":"yarn run dev","build":"../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'","dev":"open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'","watch":"../../node_modules/.bin/gulp dev","serve":"polymer serve --npm --module-resolution=node --open","lighthouse":"../../node_modules/.bin/gulp lighthouse"
   },
   "author": {

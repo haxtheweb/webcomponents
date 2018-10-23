@@ -5,29 +5,29 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
     <script src="../node_modules/wct-browser-legacy/browser.js"></script>
-    <script type="module" src="../ontology.js"></script>
+    <script type="module" src="../paper-audio-player.js"></script>
   </head>
   <body>
 
-    <ontology>
+    <paper-audio-player>
       This is the element content.
-    </ontology>
+    </paper-audio-player>
 <test-fixture id="BasicTestFixture">
   <template>
-    <ontology></ontology>
+    <paper-audio-player></paper-audio-player>
   </template>
 </test-fixture>
 
 <test-fixture id="ChangedPropertyTestFixture">
   <template>
-    <ontology></ontology>
+    <paper-audio-player></paper-audio-player>
   </template>
 </test-fixture>
 
 <script type="module">
-  suite('<ontology>', () => {
+  suite('<paper-audio-player>', () => {
     test('it should upgrade', () => {
-      assert.instanceOf(document.querySelector('ontology'), customElements.get("ontology", 'ontology should be an instance of ontology'));
+      assert.instanceOf(document.querySelector('paper-audio-player'), customElements.get("paper-audio-player", 'paper-audio-player should be an instance of paperAudioPlayer'));
     });
 
     /*test('setting a property on the element works', () => {

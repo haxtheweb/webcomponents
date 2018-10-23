@@ -4,10 +4,10 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { Ontology };
+export { PaperAudioPlayer };
 /**
- * `ontology`
- * `Automated conversion of ontology/`
+ * `paper-audio-player`
+ * `Automated conversion of paper-audio-player/`
  *
  * @microcopy - language worth noting:
  *  -
@@ -16,7 +16,7 @@ export { Ontology };
  * @polymer
  * @demo demo/index.html
  */
-class Ontology extends PolymerElement {
+class PaperAudioPlayer extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -24,7 +24,7 @@ class Ontology extends PolymerElement {
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "ontology";
+    return "paper-audio-player";
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -32,11 +32,15 @@ class Ontology extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(Ontology.haxProperties, Ontology.tag, this);
+    this.HAXWiring.setHaxProperties(
+      PaperAudioPlayer.haxProperties,
+      PaperAudioPlayer.tag,
+      this
+    );
   }
   /**
    * life cycle, element is removed from the DOM
    */
   //disconnectedCallback() {}
 }
-window.customElements.define(Ontology.tag, Ontology);
+window.customElements.define(PaperAudioPlayer.tag, PaperAudioPlayer);

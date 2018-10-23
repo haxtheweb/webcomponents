@@ -1,21 +1,21 @@
-# &lt;ontology&gt;
+# &lt;paper-audio-player&gt;
 
-
-> Automated conversion of ontology/
+Audio
+> Automated conversion of paper-audio-player/
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/ontology.js';
+import '@lrnwebcomponents/paper-audio-player.js';
 /* At top of an application */
-<script type="module" src="ontology.js"></script>
+<script type="module" src="paper-audio-player.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/ontology.js';
+  import '@lrnwebcomponents/paper-audio-player.js';
 
-  import {Ontology} from '@lrnwebcomponents/ontology';
+  import {PaperAudioPlayer} from '@lrnwebcomponents/paper-audio-player';
 </script>
 ```
 
@@ -48,7 +48,7 @@ $ yarn run build
 
 ## Code style
 
- (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
+Audio (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
 
 [prettier]: https://github.com/prettier/prettier/
 [prettier-ed]: https://github.com/prettier/prettier/#editor-integration

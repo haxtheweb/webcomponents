@@ -3,11 +3,11 @@
   "canPosition": true,
   "canEditSource": false,
   "gizmo": {
-    "title": "Ontology",
-    "description": "Automated conversion of ontology/",
+    "title": "Paper audio-player",
+    "description": "Automated conversion of paper-audio-player/",
     "icon": "icons:android",
     "color": "green",
-    "groups": [""],
+    "groups": ["Audio"],
     "handles": [
       {
         "type": "todo:read-the-docs-for-usage"
