@@ -1,0 +1,24 @@
+{
+  "name": "@lrnwebcomponents/pdf-element/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "PDF viewer element for Polymer 1.0",
+  "contributors": [
+    "Pavel Makhov <streetturtle@gmail.com>"
+  ],
+  "keywords": [
+    "web-components",
+    "web-component",
+    "polymer",
+    "pdf"
+  ],
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/iron-image": "^3.0.0-pre.1",
+    "@polymer/iron-input": "^3.0.0-pre.1",
+    "@polymer/paper-card": "^3.0.0-pre.1",
+    "@polymer/paper-input": "^3.0.0-pre.1",
+    "@polymer/paper-spinner": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}

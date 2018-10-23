@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>pdf-element demo</title>
+
+    <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script type="module" src="@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+    <script type="module" src="@polymer/iron-demo-helpers/demo-snippet.js"></script>
+    <script type="module" src="@polymer/paper-button/paper-button.js"></script>
+    <script type="module" src="@polymer/iron-ajax/iron-ajax.js"></script>
+    <script type="module" src="@polymer/iron-image/iron-image.js"></script>
+    <script type="module" src="@polymer/paper-styles/demo-pages.js"></script>
+    <script type="module" src="../pdf-element.js"></script>
+
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+$_documentContainer.setAttribute('style', 'display: none;');
+
+$_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        max-width: 900px;
+      } 
+
+      paper-button {
+        margin: 10px;
+      }
+    </style>`;
+
+document.head.appendChild($_documentContainer);
+</script>
+  </head>
+  <body>
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container">
+      <h3>Basic pdf-element demo</h3>
+      <demo-snippet>
+        <template>
+          <pdf-element src="./example.pdf" elevation="5" downloadable="" height="900" width="700" show-file-name="" enable-text-selection=""></pdf-element>
+                       
+        </template>
+      </demo-snippet>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container">
+      <h3>Dynamically change PDF source</h3>
+      <demo-snippet class="centered-demo">
+        <template>
+          <paper-button raised="" id="one">PDF One</paper-button>
+          <paper-button raised="" id="another">PDF Two</paper-button>
+          <pdf-element id="pdf" height="700" width="500" show-spinner=""></pdf-element>
+          <script>
+            document.querySelector("#one").addEventListener("click", function () {
+              document.getElementById("pdf").setAttribute("src", "./pdf.pdf");
+            });
+            document.querySelector("#another").addEventListener("click", function () {
+              document.getElementById("pdf").setAttribute("src", "./example.pdf");
+            });
+          &lt;/script>
+        </template>
+
+      </demo-snippet>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>"pdf").setAttribute("src", "./pdf.pdf");
+});
+document.querySelector("#another").addEventListener("click", function () {
+  document.getElementById("pdf").setAttribute("src", "./example.pdf");
+});
+</script>
+        </template>
+
+      </demo-snippet>
+    </div>
+  </body>
+</html>
