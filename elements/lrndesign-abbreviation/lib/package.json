@@ -1,0 +1,12 @@
+{
+  "name": "@lrnwebcomponents/lrndesign-abbreviation/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A wrapper to make a cleaner abbreviation deign element",
+  "main": "lrndesign-abbreviation.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/paper-tooltip": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
