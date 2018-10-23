@@ -1,11 +1,38 @@
-import { HAXWiring } from "./lib/HAXWiring.js";
-class HaxBodyBehaviors extends HTMLElement {
-  getTemplate() {
-    return `
-<style>
+import {
+  html,
+  PolymerElement
+} from "./node_modules/@polymer/polymer/polymer-element.js";
+import { HAXWiring } from "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+export { HaxBodyBehaviors };
+class HaxBodyBehaviors extends PolymerElement {
+  static get template() {
+    return html`
+<style>:host {
+  display: block;
+}
 
+:host([hidden]) {
+  display: none;
+}
 </style>
-`;
+<slot></slot>`;
+  }
+  static get haxProperties() {
+    return {
+      canScale: !0,
+      canPosition: !0,
+      canEditSource: !1,
+      gizmo: {
+        title: "Hax body-behaviors",
+        description: "Automated conversion of hax-body-behaviors/",
+        icon: "icons:android",
+        color: "green",
+        groups: ["Body"],
+        handles: [{ type: "todo:read-the-docs-for-usage" }],
+        meta: { author: "btopro", owner: "The Pennsylvania State University" }
+      },
+      settings: { quick: [], configure: [], advanced: [] }
+    };
   }
   static get properties() {
     return {};
@@ -13,67 +40,14 @@ class HaxBodyBehaviors extends HTMLElement {
   static get tag() {
     return "hax-body-behaviors";
   }
-  get templateUrl() {
-    return "hax-body-behaviors.html";
-  }
-  get propertiesUrl() {
-    return "hax-body-behaviors-properties.json";
-  }
-  get styleUrl() {
-    return "hax-body-behaviors.css";
-  }
-  constructor(delayRender = !1) {
-    super();
-    this.tag = HaxBodyBehaviors.tag;
-    this.HAXWiring = new HAXWiring();
-    let obj = HaxBodyBehaviors.properties;
-    for (let p in obj) {
-      if (obj.hasOwnProperty(p)) {
-        this[p] = obj[p].value;
-      }
-    }
-    this._queue = [];
-    this.template = document.createElement("template");
-    this.attachShadow({ mode: "open" });
-    if (!delayRender) {
-      this.render();
-    }
-  }
   connectedCallback() {
-    if (window.ShadyCSS) {
-      window.ShadyCSS.styleElement(this);
-    }
-    if (this._queue.length) {
-      this._processQueue();
-    }
-  }
-  _copyAttribute(name, to) {
-    const recipients = this.shadowRoot.querySelectorAll(to),
-      value = this.getAttribute(name),
-      fname = null == value ? "removeAttribute" : "setAttribute";
-    for (const node of recipients) {
-      node[fname](name, value);
-    }
-  }
-  _queueAction(action) {
-    this._queue.push(action);
-  }
-  _processQueue() {
-    this._queue.forEach(action => {
-      this[`_${action.type}`](action.data);
-    });
-    this._queue = [];
-  }
-  _setProperty({ name, value }) {
-    this[name] = value;
-  }
-  render() {
-    this.shadowRoot.innerHTML = null;
-    this.template.innerHTML = this.html;
-    if (window.ShadyCSS) {
-      window.ShadyCSS.prepareTemplate(this.template, this.tag);
-    }
-    this.shadowRoot.appendChild(this.template.content.cloneNode(!0));
+    super.connectedCallback();
+    this.HAXWiring = new HAXWiring();
+    this.HAXWiring.setHaxProperties(
+      HaxBodyBehaviors.haxProperties,
+      HaxBodyBehaviors.tag,
+      this
+    );
   }
 }
 window.customElements.define(HaxBodyBehaviors.tag, HaxBodyBehaviors);

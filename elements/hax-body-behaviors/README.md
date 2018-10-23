@@ -1,7 +1,7 @@
 # &lt;hax-body-behaviors&gt;
 
 Body
-> Wire any element up to HAX
+> Automated conversion of hax-body-behaviors/
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
@@ -19,10 +19,10 @@ import '@lrnwebcomponents/hax-body-behaviors.js';
 </script>
 ```
 
-## Develop
-
+## Develop / Demo
+Run `yarn start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
 ```bash
-$ yarn run dev
+$ yarn start
 ```
 
 ## Test
@@ -30,6 +30,7 @@ $ yarn run dev
 ```bash
 $ yarn run test
 ```
+
 ## Build
 Builds ensure that wcfactory can correctly compile your web component project to
 work on the maximum number of browsers possible.
@@ -37,13 +38,9 @@ work on the maximum number of browsers possible.
 $ yarn run build
 ```
 
-## Demo
-
-Run `yarn start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
-
 ## Contributing
 
-1. Fork it! `git clone git@github.com:elmsln/lrnwebcomponents.git`
+1. Fork it! `git clone git@github.com/elmsln/lrnwebcomponents.git`
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`

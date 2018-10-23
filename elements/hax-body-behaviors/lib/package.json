@@ -1,0 +1,11 @@
+{
+  "name": "@lrnwebcomponents/hax-body-behaviors/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A behavior for mixing-in structure for elements to communicate effectively with the hax-body element which manages elements.",
+  "main": "hax-body-behaviors.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}

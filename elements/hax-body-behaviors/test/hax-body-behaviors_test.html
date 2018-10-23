@@ -20,7 +20,7 @@
 
 <test-fixture id="ChangedPropertyTestFixture">
   <template>
-    <hax-body-behaviors ></hax-body-behaviors>
+    <hax-body-behaviors></hax-body-behaviors>
   </template>
 </test-fixture>
 
@@ -30,21 +30,13 @@
       assert.instanceOf(document.querySelector('hax-body-behaviors'), customElements.get("hax-body-behaviors", 'hax-body-behaviors should be an instance of haxBodyBehaviors'));
     });
 
-    /*test('instantiating the element with default properties works', () => {
-      const element = fixture('BasicTestFixture');
-      assert.equal(element.prop1, '<hax-body-behaviors>');
-      const elementShadowRoot = element.shadowRoot;
-      const elementHeader = elementShadowRoot.querySelector('h2');
-      assert.equal(elementHeader.innerHTML, 'Hello <hax-body-behaviors>!');
-    });*/
-
     /*test('setting a property on the element works', () => {
-      // Create a test fixture
-      const element = fixture('ChangedPropertyTestFixture');
-      assert.equal(element.prop1, 'new-prop1');
+      const element = fixture('AdvancedTestFixture');
+      element.title = 'my title';
+      assert.equal(element.title, 'my title');
       const elementShadowRoot = element.shadowRoot;
       const elementHeader = elementShadowRoot.querySelector('h2');
-      assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
+      assert.equal(elementHeader.innerHTML, 'Hello my title!');
     });*/
   });
     </script>
