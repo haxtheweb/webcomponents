@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>magazine-cover demo</title>
+
+    <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script type="module" src="@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+    <script type="module" src="@polymer/iron-demo-helpers/demo-snippet.js"></script>
+    <script type="module" src="../magazine-cover.js"></script>
+
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+$_documentContainer.setAttribute('style', 'display: none;');
+
+$_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
+    .vertical-section-container {
+      max-width: 90%;
+    }
+    </style>`;
+
+document.head.appendChild($_documentContainer);
+</script>
+  </head>
+  <body>
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+      <h3>Basic magazine-cover demo</h3>
+      <demo-snippet>
+        <template>
+          <magazine-cover image="picture1.jpg" header="Devil horns" subheader="40s propaganda was very convincing" action="Touch to learn more" link="https://www.elmsln.org/">
+            In the early 1940s, the US had not yet entered world war 2. After entering though, propaganda went into hyperdrive.
+          </magazine-cover>
+        </template>
+      </demo-snippet>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+      <h3>Basic magazine-cover demo with event binding in the link</h3>
+      <demo-snippet>
+        <template>
+          <magazine-cover image="picture2.jpg" header="Sunset" action="Click, Breath, Relax" event-name="magazine-cover" event-data="{&quot;sunset&quot;: true}">
+            A simple time, a simple life. America may be fast paced and brutal on health but in Canada, people enjoy sitting and watching the sunset. Learn how Canadians manage stress.
+          </magazine-cover>
+        </template>
+      </demo-snippet>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+      <h3>Basic magazine-cover demo with link but event beats it</h3>
+      <demo-snippet>
+        <template>
+          <magazine-cover image="picture3.jpg" header="Polution" subheader="We are not in a sustainable situation, ICC 1890 report" action="Buy more Amazon products" text="We enjoy talking about Climate change, but no one seems to be taking the steps  in their own lives to actually prevent it from happening. Simple belief matters not if it is without action. What actions do we need to take to prevent possible futures from not coming true?" event-name="magazine-cover" event-data="{&quot;amazon&quot;: &quot;controls the world&quot;}" link="https://www.amazon.com/"></magazine-cover>
+        </template>
+      </demo-snippet>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+  </body>
+</html>

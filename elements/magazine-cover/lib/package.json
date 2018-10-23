@@ -1,0 +1,15 @@
+{
+  "name": "@lrnwebcomponents/magazine-cover/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A magazine cover.",
+  "main": "magazine-cover.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/iron-image": "^3.0.0-pre.1",
+    "@polymer/iron-icons": "^3.0.0-pre.1",
+    "@polymer/paper-button": "^3.0.0-pre.1",
+    "@polymer/paper-styles": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
