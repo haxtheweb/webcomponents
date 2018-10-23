@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>lrnapp-fab-menu test</title>
+
+    <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="web-component-tester/browser.js"></script>
+
+    <script type="module" src="../lrnapp-fab-menu.js"></script>
+  </head>
+  <body>
+    <test-fixture id="basic">
+      <template>
+        <lrnapp-fab-menu></lrnapp-fab-menu>
+      </template>
+    </test-fixture>
+
+    <script type="module">
+import '../lrnapp-fab-menu.js';
+suite('lrnapp-fab-menu', function() {
+  test('instantiating the element works', function() {
+    var element = fixture('basic');
+    assert.equal(element.is, 'lrnapp-fab-menu');
+  });
+});
+</script>
+  </body>
+</html>
