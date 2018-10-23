@@ -6,11 +6,11 @@ define([
   "use strict";
   Object.defineProperty(_exports, "__esModule", { value: !0 });
   _exports.HaxBody = void 0;
-  function _templateObject_a66402b0cbc811e8b0f82b40ed9ef237() {
+  function _templateObject_a2918120d6f011e890d11162942b590f() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
     ]);
-    _templateObject_a66402b0cbc811e8b0f82b40ed9ef237 = function() {
+    _templateObject_a2918120d6f011e890d11162942b590f = function() {
       return data;
     };
     return data;
@@ -55,7 +55,7 @@ define([
           key: "template",
           get: function get() {
             return (0, _polymerElement.html)(
-              _templateObject_a66402b0cbc811e8b0f82b40ed9ef237()
+              _templateObject_a2918120d6f011e890d11162942b590f()
             );
           }
         },
@@ -68,7 +68,7 @@ define([
               canEditSource: !1,
               gizmo: {
                 title: "Hax body",
-                description: "Automated conversion of hax-body",
+                description: "Automated conversion of hax-body/",
                 icon: "icons:android",
                 color: "green",
                 groups: ["Body"],

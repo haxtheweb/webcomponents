@@ -66,9 +66,6 @@ Polymer({
         </div>
       </paper-button>
     </paper-card>
-    <paper-tooltip for="button" position="bottom" offset="14">
-      [[teaser]]
-    </paper-tooltip>
 `,
 
   is: "hax-stax-browser-item",
@@ -105,12 +102,6 @@ Polymer({
      * Author related to this gizmo
      */
     author: {
-      type: String
-    },
-    /**
-     * Teaser / headline.
-     */
-    teaser: {
       type: String
     },
     /**

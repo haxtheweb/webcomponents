@@ -11,7 +11,6 @@ import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/places-icons.js";
 import "@polymer/iron-icons/maps-icons.js";
 import "@polymer/iron-image/iron-image.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
 import "materializecss-styles/colors.js";
 /**
 `hax-app-browser-item`
@@ -77,9 +76,6 @@ Polymer({
         </div>
       </paper-button>
     </paper-card>
-    <paper-tooltip for="button" position="bottom" offset="14">
-      [[teaser]]
-    </paper-tooltip>
 `,
 
   is: "hax-app-browser-item",
@@ -129,12 +125,6 @@ Polymer({
      * Author related to this app
      */
     author: {
-      type: String
-    },
-    /**
-     * Teaser / headline.
-     */
-    teaser: {
       type: String
     },
     /**

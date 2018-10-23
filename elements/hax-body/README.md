@@ -1,7 +1,7 @@
 # &lt;hax-body&gt;
 
 Body
-> Automated conversion of hax-body
+> Automated conversion of hax-body/
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.

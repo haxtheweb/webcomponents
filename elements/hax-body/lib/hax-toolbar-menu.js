@@ -11,6 +11,7 @@ import "@polymer/iron-icons/maps-icons.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
+import "./hax-toolbar-item.js";
 Polymer({
   _template: `
     <style>
@@ -71,7 +72,7 @@ Polymer({
       }
     </style>
     <paper-menu-button>
-      <hax-toolbar-item id="button" slot="dropdown-trigger" icon="[[icon]]" hidden\$="[[!icon]]" class\$="[[iconClass]]" tooltip="[[tooltip]]"></hax-toolbar-item>
+      <hax-toolbar-item corner="[[corner]]" id="button" slot="dropdown-trigger" icon="[[icon]]" hidden\$="[[!icon]]" class\$="[[iconClass]]" tooltip="[[tooltip]]"></hax-toolbar-item>
       <paper-listbox id="listbox" slot="dropdown-content" selected="{{selected}}">
         <slot></slot>
       </paper-listbox>
@@ -85,6 +86,14 @@ Polymer({
   },
 
   properties: {
+    /**
+     * corner
+     */
+    corner: {
+      type: String,
+      reflectToAttribute: true,
+      value: ""
+    },
     /**
      * Should we reset the selection after it is made
      */

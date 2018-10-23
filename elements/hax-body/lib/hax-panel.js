@@ -128,6 +128,8 @@ Polymer({
 
   observers: ["_globalPreferencesChanged(globalPreferences.*)"],
 
+  behaviors: [simpleColorsBehaviors],
+
   properties: {
     /**
      * Display to the right corner instead of the left (default)

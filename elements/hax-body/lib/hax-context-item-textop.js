@@ -38,7 +38,7 @@ Polymer({
       }
     </style>
     <iron-a11y-keys id="a11y" target="[[target]]" keys="enter" on-keys-pressed="_fireEvent"></iron-a11y-keys>
-    <hax-toolbar-item id="button" icon="[[icon]]" hidden\$="[[!icon]]" tooltip-direction="[[direction]]" tooltip="[[label]]" class\$="[[iconClass]]" on-mousedown="_fireEvent" icon-class="[[iconClass]]" mini="[[mini]]" menu="[[menu]]" light="[[light]]">
+    <hax-toolbar-item corner="[[corner]]" id="button" icon="[[icon]]" hidden\$="[[!icon]]" tooltip-direction="[[direction]]" tooltip="[[label]]" class\$="[[iconClass]]" on-mousedown="_fireEvent" icon-class="[[iconClass]]" mini="[[mini]]" menu="[[menu]]" light="[[light]]">
       <slot></slot>
     </hax-toolbar-item>
 `,
@@ -46,6 +46,13 @@ Polymer({
   is: "hax-context-item-textop",
 
   properties: {
+    /**
+     * corner
+     */
+    corner: {
+      type: String,
+      value: ""
+    },
     /**
      * target for the iron-a11y-keys element.
      */

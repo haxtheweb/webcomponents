@@ -1,4 +1,5 @@
 import "@polymer/polymer/polymer.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
 import "eco-json-schema-form/eco-json-schema-wizard.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "simple-colors/simple-colors.js";
@@ -20,6 +21,15 @@ Polymer({
       #dialog {
         z-index: 1000;
         margin-top: 64px;
+      }
+      paper-icon-button#closedialog {
+        float: right;
+        top: 135px;
+        right: 0;
+        position: absolute;
+        padding: 4px;
+        margin: 0;
+        color: var(--simple-colors-light-green-background1);
       }
       .title {
         margin-top: 32px;
@@ -69,12 +79,15 @@ Polymer({
       <div style="height: 100%; overflow: auto;" class="pref-container">
         <eco-json-schema-object schema="[[schema]]" value="{{preferences}}"></eco-json-schema-object>
       </div>
+      <paper-icon-button id="closedialog" on-tap="close" icon="icons:cancel" title="Close dialog"></paper-icon-button>
     </app-drawer>
 `,
 
   is: "hax-preferences-dialog",
 
   observers: ["_preferencesChanged(preferences.*)"],
+
+  behaviors: [simpleColorsBehaviors],
 
   properties: {
     /**

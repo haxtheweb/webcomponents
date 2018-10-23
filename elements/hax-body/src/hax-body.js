@@ -7,7 +7,7 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js
 export { HaxBody };
 /**
  * `hax-body`
- * `Automated conversion of hax-body`
+ * `Automated conversion of hax-body/`
  *
  * @microcopy - language worth noting:
  *  -

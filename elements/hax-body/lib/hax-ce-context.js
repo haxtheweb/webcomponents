@@ -22,26 +22,57 @@ Polymer({
     <style>
       :host {
         display: block;
-        height: 40px;
+        height: 32px;
+        background-color: white;
       }
       hax-context-item {
         margin: 0;
-        height: 40px;
+        height: 32px;
       }
       .human-name {
         font-size: 16px;
-        margin: -36px 0px 0 38px;
+        border-top-left-radius: 25%;
+        border-top-right-radius: 25%;
         line-height: 16px;
+        font-family: sans-serif;
+        width: -webkit-fit-content;
+        width: -moz-max-content;
+        width: fit-content;
+        background-color: white;
+      }
+      .human-name-inner {
+        font-size: 16px;
+        border-top-left-radius: 25%;
+        border-top-right-radius: 25%;
+        margin: -32px 0px 0 34px;
+        line-height: 16px;
+        padding: 8px 16px 8px 8px;
+        font-family: sans-serif;
+        width: -webkit-fit-content;
+        width: -moz-max-content;
+        width: fit-content;
         background-color: black;
         color: white;
-        padding: 10px;
-        font-family: serif;
-        width: -webkit-fit-content;
-        width:  -moz-max-content;
-        width: fit-content;
+        opacity: .4;
+        transition: .6s all ease;
+      }
+      :host:hover .human-name-inner {
+        opacity: 1;
+      }
+      :host.hax-context-pin-top hax-toolbar {
+        position: fixed;
+        top: 64px;
+        opacity: .95;
+      }
+      :host.hax-context-pin-bottom hax-toolbar {
+        position: fixed;
+        bottom: 0;
+        opacity: .95;
       }
     </style>
-    <div class="human-name">[[humanName]]</div>
+    <div class="human-name">
+      <div class="human-name-inner">[[humanName]]</div>
+    </div>
     <hax-toolbar hax-properties="[[haxProperties]]" size="{{ceSize}}">
       <slot></slot>
       <hax-context-item slot="primary" icon="icons:settings" label="Settings" event-name="hax-manager-configure" hidden\$="[[!__hasSettingsForm]]"></hax-context-item>

@@ -2,6 +2,7 @@ import "@polymer/polymer/polymer.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-button/paper-button.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "simple-colors/simple-colors.js";
@@ -37,11 +38,21 @@ Polymer({
       #dialog {
         color: #FFFFFF;
         z-index: 10000;
+        padding: 56px 0;
         margin-top: 64px;
         --app-drawer-width: 400px;
         --app-drawer-content-container: {
           background-color: rgba(0, 0, 0, 0.7);
         };
+      }
+      paper-icon-button#closedialog {
+        float: right;
+        top: 135px;
+        right: 0;
+        position: absolute;
+        padding: 4px;
+        margin: 0;
+        color: var(--simple-colors-light-green-background1);
       }
       :host[active-page="0"] #dialog {
         --app-drawer-width: 400px;
@@ -67,7 +78,7 @@ Polymer({
         font-weight: bold;
         font-family: sans-serif;
         text-transform: uppercase;
-        color: #a0ff52;
+        color: var(--simple-colors-light-green-background1);
       }
       #activepage {
       }
@@ -146,7 +157,7 @@ Polymer({
         width: 100%;
         margin: 0;
         padding: 16px;
-        background-color: #a0ff52;
+        background-color: var(--simple-colors-light-green-background1);
         color: #000000;
       }
       paper-input {
@@ -202,6 +213,7 @@ Polymer({
             <hax-preview id="preview" element="{{activeHaxElement}}"></hax-preview>
           </div>
         </iron-pages>
+        <paper-icon-button id="closedialog" icon="icons:cancel" title="Close dialog"></paper-icon-button>
       </div>
     </app-drawer>
 `,
@@ -211,10 +223,13 @@ Polymer({
   listeners: {
     "dialog.iron-overlay-canceled": "close",
     "dialog.iron-overlay-closed": "close",
+    "closedialog.tap": "close",
     "newassetconfigure.tap": "newAssetConfigure",
     "fileupload.upload-before": "_fileAboutToUpload",
     "fileupload.upload-response": "_fileUploadResponse"
   },
+
+  behaviors: [simpleColorsBehaviors],
 
   properties: {
     /**
@@ -321,14 +336,18 @@ Polymer({
   /**
    * Created life cycle.
    */
-  ready: function() {
-    document.body.appendChild(this);
+  created: function() {
+    this.__attached = false;
   },
 
   /**
    * Attached to the DOM, now fire that we exist.
    */
   attached: function() {
+    if (!this.__attached) {
+      this.__attached = true;
+      document.body.appendChild(this);
+    }
     // fire an event that this is the manager
     this.fire("hax-register-manager", this);
     document.body.addEventListener(
@@ -637,7 +656,11 @@ Polymer({
   close: function(e) {
     var normalizedEvent = Polymer.dom(e);
     var local = normalizedEvent.localTarget;
-    if (typeof e === typeof undefined || local === this.$.dialog) {
+    if (
+      typeof e === typeof undefined ||
+      local === this.$.dialog ||
+      local === this.$.closedialog
+    ) {
       // reset the active element which will force this to reset the manager
       Polymer.HaxStore.write("activeHaxElement", {}, this);
       this.opened = false;

@@ -202,6 +202,8 @@ Polymer({
 
   is: "hax-preview",
 
+  behaviors: [simpleColorsBehaviors],
+
   observers: ["_valueChanged(value.*, formKey)"],
 
   listeners: {

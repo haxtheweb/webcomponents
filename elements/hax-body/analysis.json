@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`hax-body`\n`Automated conversion of hax-body`",
+      "description": "`hax-body`\n`Automated conversion of hax-body/`",
       "summary": "",
       "path": "hax-body.js",
       "properties": [

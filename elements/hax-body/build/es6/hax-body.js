@@ -24,7 +24,7 @@ class HaxBody extends PolymerElement {
       canEditSource: !1,
       gizmo: {
         title: "Hax body",
-        description: "Automated conversion of hax-body",
+        description: "Automated conversion of hax-body/",
         icon: "icons:android",
         color: "green",
         groups: ["Body"],

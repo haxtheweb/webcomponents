@@ -394,7 +394,9 @@ Polymer.HaxStore = Polymer({
           // see if anything coming across claims to be a backend for adding items
           // and then enable the upload button
           if (typeof apps[i].connection.operations.add !== typeof undefined) {
-            Polymer.HaxStore.write("canSupportUploads", true, this);
+            this.async(() => {
+              Polymer.HaxStore.write("canSupportUploads", true, this);
+            });
           }
           Polymer.HaxStore.instance.appendChild(app);
         }
@@ -521,6 +523,33 @@ Polymer.HaxStore = Polymer({
         return "Are you sure you want to leave? Your work will not be saved!";
       }
     };
+    window.addEventListener("paste", e => {
+      // only perform this on a text element that is active
+      if (
+        this.isTextElement(Polymer.HaxStore.instance.activeNode) &&
+        !this.haxManager.opened
+      ) {
+        e.preventDefault();
+        let text = "";
+        // intercept paste event
+        if (e.clipboardData || e.originalEvent.clipboardData) {
+          text = (e.originalEvent || e).clipboardData.getData("text/plain");
+        } else if (window.clipboardData) {
+          text = window.clipboardData.getData("Text");
+        }
+        let sel, range, html;
+        if (window.getSelection) {
+          sel = window.getSelection();
+          if (sel.getRangeAt && sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            range.deleteContents();
+            range.insertNode(document.createTextNode(text));
+          }
+        } else if (document.selection && document.selection.createRange) {
+          document.selection.createRange().text = text;
+        }
+      }
+    });
     // capture events and intercept them globally
     window.addEventListener("keypress", event => {
       const keyName = event.key;
@@ -649,6 +678,7 @@ Polymer.HaxStore = Polymer({
    * Created life-cycle to ensure a single global store.
    */
   created: function() {
+    window.__startedSelection = false;
     // claim the instance spot. This way we can easily
     // be referenced globally
     if (!Polymer.HaxStore.instance) {
@@ -736,6 +766,7 @@ Polymer.HaxStore = Polymer({
       "hax-insert-content",
       this._haxStoreInsertContent.bind(this)
     );
+
     document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
   },
 
@@ -939,10 +970,6 @@ Polymer.HaxStore = Polymer({
             source: "href",
             title: "innerText",
             alt: "title"
-          },
-          {
-            type: "inline",
-            text: "innerText"
           }
         ],
         meta: {
@@ -1182,20 +1209,13 @@ Polymer.HaxStore = Polymer({
           e.detail.content,
           properties
         );
-        // inserts where it needs to go!!!!!
-        Polymer.HaxStore.instance.activeHaxBody.$.inlinetracker.insertAdjacentElement(
-          "beforebegin",
-          node
-        );
-        // removes the selection even if the user lost focus
-        // which will appear to wipe the old text and replace it with the new
+        // replace what WAS the active selection w/ this new node
         if (this.activePlaceHolder !== null) {
-          this.activePlaceHolder.extractContents();
+          this.activePlaceHolder.deleteContents();
+          this.activePlaceHolder.insertNode(node);
         }
         // set it to nothing
         this.activePlaceHolder = null;
-        // hide the inline context menu
-        Polymer.HaxStore.instance.activeHaxBody.$.inlinecontextmenu.opened = false;
       } else {
         this.activeHaxBody.haxInsert(
           e.detail.tag,
@@ -1766,17 +1786,10 @@ Polymer.HaxStore.haxNodeToContent = node => {
           ) {
             content += Polymer.HaxStore.haxNodeToContent(slotnodes[j]);
           } else {
-            // possible copy and paste glitch, ignore this at all costs
-            if (
-              slotnodes[j].tagName === "SPAN" &&
-              slotnodes[j].id === "inlinetracker"
-            ) {
-            } else {
-              slotnodes[j].setAttribute("data-editable", false);
-              slotnodes[j].removeAttribute("data-hax-ray");
-              slotnodes[j].contentEditable = false;
-              content += slotnodes[j].outerHTML;
-            }
+            slotnodes[j].setAttribute("data-editable", false);
+            slotnodes[j].removeAttribute("data-hax-ray");
+            slotnodes[j].contentEditable = false;
+            content += slotnodes[j].outerHTML;
           }
         }
         // keep comments with a special case since they need wrapped
@@ -2000,6 +2013,27 @@ Polymer.HaxStore.wipeSlot = (element, slot = "") => {
       }
     }
   }
+};
+/**
+ * HTML encapsulation of a string on script and style tags
+ */
+Polymer.HaxStore.encapScript = html => {
+  html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
+  html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
+  html = html.replace(/<style[\s\S]*?>/gi, "&lt;style&gt;");
+  html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
+  // special case, it's inside a template tag
+  html = html.replace(
+    /<template[\s\S]*?>[\s\S]*?&lt;script[\s\S]*?&gt;[\s\S]*?&lt;\/script&gt;/gi,
+    function(match, contents, offset, input_string) {
+      match = match.replace("&lt;script&gt;", "<script>");
+      match = match.replace("&lt;/script&gt;", "</script>");
+      match = match.replace("&lt;style&gt;", "<style>");
+      match = match.replace("&lt;/style&gt;", "</style>");
+      return match;
+    }
+  );
+  return html;
 };
 /**
  * Global toast

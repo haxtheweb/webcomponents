@@ -4,7 +4,7 @@
   "canEditSource": false,
   "gizmo": {
     "title": "Hax body",
-    "description": "Automated conversion of hax-body",
+    "description": "Automated conversion of hax-body/",
     "icon": "icons:android",
     "color": "green",
     "groups": ["Body"],

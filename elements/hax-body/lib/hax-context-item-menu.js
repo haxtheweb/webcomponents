@@ -19,14 +19,17 @@ Polymer({
     <style>
       :host {
         display: inline-flex;
-        height: 40px;
+        height: 32px;
         box-sizing: border-box;
       }
       :host ::slotted(*):hover {
         background-color: #cccccc;
       };
+      :host ::slotted(*) {
+        height: 32px;
+      };
     </style>
-    <hax-toolbar-menu id="menu" icon="[[icon]]" tooltip="[[label]]" tooltip-direction="[[direction]]" selected="{{selectedValue}}" reset-on-select="[[resetOnSelect]]">
+    <hax-toolbar-menu corner="[[corner]]" id="menu" icon="[[icon]]" tooltip="[[label]]" tooltip-direction="[[direction]]" selected="{{selectedValue}}" reset-on-select="[[resetOnSelect]]">
       <slot id="items"></slot>
     </hax-toolbar-menu>
 `,
@@ -34,6 +37,13 @@ Polymer({
   is: "hax-context-item-menu",
 
   properties: {
+    /**
+     * corner
+     */
+    corner: {
+      type: String,
+      value: ""
+    },
     /**
      * Internal flag to allow blocking the event firing if machine selects tag.
      */

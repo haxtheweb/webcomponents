@@ -1,8 +1,10 @@
 import "@polymer/polymer/polymer.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-button/paper-button.js";
 import "mtz-file-download-behavior/mtz-file-download-behavior.js";
+import "simple-colors/simple-colors.js";
 /**
 `hax-export-dialog`
 Export dialog with all export options and settings provided.
@@ -23,6 +25,15 @@ Polymer({
         z-index: 1000;
         margin-top: 64px;
       }
+      paper-icon-button#closedialog {
+        float: right;
+        top: 135px;
+        right: 0;
+        position: absolute;
+        padding: 4px;
+        margin: 0;
+        color: var(--simple-colors-light-green-background1);
+      }
       .title {
         margin-top: 32px;
         text-align: center;
@@ -33,7 +44,7 @@ Polymer({
         font-weight: bold;
         font-family: sans-serif;
         text-transform: uppercase;
-        color: #a0ff52;
+        color: var(--simple-colors-light-green-background1);
       }
       .pref-container {
         text-align: left;
@@ -55,6 +66,12 @@ Polymer({
         border-style: solid;
         border-width: 1px;
         min-width: unset;
+      }
+      paper-button:focus,
+      paper-button:hover {
+        background-color: var(--simple-colors-light-green-background1);
+        border-color: var(--simple-colors-light-green-background1);
+        outline: 2px solid var(--simple-colors-light-green-background1);
       }
       .buttons paper-button {
         color: black;
@@ -88,6 +105,7 @@ Polymer({
           <paper-button id="close" raised="">Close dialog</paper-button>
         </div>
       </div>
+      <paper-icon-button id="closedialog" on-tap="close" icon="icons:cancel" title="Close dialog"></paper-icon-button>
     </app-drawer>
 `,
 
@@ -102,7 +120,7 @@ Polymer({
     "elementexport.tap": "htmlToHaxElements"
   },
 
-  behaviors: [mtz.FileDownloadBehavior],
+  behaviors: [mtz.FileDownloadBehavior, simpleColorsBehaviors],
 
   properties: {
     /**

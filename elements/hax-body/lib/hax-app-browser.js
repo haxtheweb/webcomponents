@@ -99,6 +99,8 @@ Polymer({
 
   is: "hax-app-browser",
 
+  behaviors: [simpleColorsBehaviors],
+
   properties: {
     /**
      * Search term

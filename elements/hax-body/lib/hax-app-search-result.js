@@ -2,6 +2,7 @@ import "@polymer/polymer/polymer.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-styles/paper-styles.js";
+import "simple-colors/simple-colors.js";
 /**
 `hax-source`
  An element that brokers the visual display of a listing of material from an end point. The goal is to normalize data from some location which is media centric. This expects to get at least enough data in order to form a grid of items which are selectable. It's also generically implemented so that anything can be hooked up as a potential source for input (example: youtube API or custom in-house solution). The goal is to return enough info via fired event so that hax-manager can tell hax-body that the user selected a tag, properties, slot combination so that hax-body can turn the selection into a custom element / element injected into the hax-body slot.
@@ -36,7 +37,7 @@ Polymer({
       paper-button:hover,
       paper-button:focus,
       paper-button:active {
-        border: 2px solid #a0ff52;
+        border: 2px solid var(--simple-colors-light-green-background1);
         background-color:rgba(0, 0, 0, .7);
       }
       .detail-wrapper {
@@ -90,7 +91,7 @@ Polymer({
     </style>
 
     <paper-button on-tap="_itemSelected" class="button">
-      <iron-image class="image" src="[[resultData.image]]" preload="" fade="" sizing="cover"></iron-image>
+      <iron-image alt="" class="image" src="[[resultData.image]]" preload="" fade="" sizing="cover"></iron-image>
       <div class="detail-wrapper">
         <div class="title">[[resultData.title]]</div>
         <div class="details">[[resultData.details]]</div>
@@ -99,6 +100,8 @@ Polymer({
 `,
 
   is: "hax-app-search-result",
+
+  behaviors: [simpleColorsBehaviors],
 
   properties: {
     /**

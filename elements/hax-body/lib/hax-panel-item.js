@@ -105,7 +105,7 @@ Polymer({
         }
       }
     </style>
-    <paper-button disabled="[[disabled]]" on-tap="_fireEvent" data-voicecommand\$="[[voiceCommand]]">
+    <paper-button disabled="[[disabled]]" data-voicecommand\$="[[voiceCommand]]">
       <div class="button-inner">
         <iron-icon icon="[[icon]]" class\$="[[iconClass]]"></iron-icon>
         <div class="label">[[label]]</div>
@@ -114,6 +114,10 @@ Polymer({
 `,
 
   is: "hax-panel-item",
+
+  listeners: {
+    tap: "_fireEvent"
+  },
 
   properties: {
     /**

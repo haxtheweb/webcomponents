@@ -1,4 +1,5 @@
 import "@polymer/polymer/polymer.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "./hax-stax-browser.js";
 /**
@@ -25,6 +26,15 @@ Polymer({
         margin-top: 64px;
         @apply --hax-stax-picker-dialog;
       }
+      paper-icon-button#closedialog {
+        float: right;
+        top: 135px;
+        right: 0;
+        position: absolute;
+        padding: 4px;
+        margin: 0;
+        color: var(--simple-colors-light-green-background1);
+      }
       .title {
         margin-top: 32px;
         text-align: center;
@@ -35,7 +45,7 @@ Polymer({
         font-weight: bold;
         font-family: sans-serif;
         text-transform: uppercase;
-        color: #a0ff52;
+        color: var(--simple-colors-light-green-background1);
       }
       app-drawer {
         --app-drawer-content-container: {
@@ -53,10 +63,13 @@ Polymer({
       <div style="height: 100%; overflow: auto;" class="pref-container">
         <hax-stax-browser id="staxbrowser"></hax-stax-browser>
       </div>
+      <paper-icon-button id="closedialog" on-tap="close" icon="icons:cancel" title="Close dialog"></paper-icon-button>
     </app-drawer>
 `,
 
   is: "hax-stax-picker",
+
+  behaviors: [simpleColorsBehaviors],
 
   properties: {
     /**
