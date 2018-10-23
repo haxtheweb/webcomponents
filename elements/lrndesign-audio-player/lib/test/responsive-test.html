@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+  <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="web-component-tester/browser.js"></script>
+  <script src="@polymer/test-fixture/test-fixture-mocha.js"></script>
+  <script src="@polymer/iron-test-helpers/mock-interactions.js"></script>
+
+
+  <!-- Import the lrndesign-audio-player element -->
+  <script type="module" src="@polymer/test-fixture/test-fixture.js"></script>
+  <script type="module" src="../lrndesign-audio-player.js"></script>
+</head>
+<body>
+
+<!-- Resizing player -->
+<test-fixture id="resizing">
+  <template>
+    <lrndesign-audio-player src="./pink-shades-o-pnr.mp3" time-offset="2"></lrndesign-audio-player>
+  </template>
+</test-fixture>
+
+<script type="module">
+import '@polymer/test-fixture/test-fixture.js';
+import '../lrndesign-audio-player.js';
+
+suite('<lrndesign-audio-player>', function() {
+  var resizingPlayer,
+      title,
+      title2,
+      onePercentDelta;
+
+  setup(function() {
+    resizingPlayer = fixture('resizing');
+  });
+
+  test('on window resize both titles have the same width', function() {
+    resizingPlayer._updateVisualProgress(1);
+
+    title = resizingPlayer.$.title.getBoundingClientRect();
+    title2 = resizingPlayer.$.title2.getBoundingClientRect();
+    onePercentDelta = title.width/100;
+    // here we use 'closeTo' with 1% delta
+    // because calculated widths are not always strictly equal
+    assert.closeTo(title2.width, title.width, onePercentDelta/2, 'width should be within 1%');
+
+    // resize document
+    document.body.style.width = window.innerWidth - 200 + "px";
+
+    title = resizingPlayer.$.title.getBoundingClientRect();
+    title2 = resizingPlayer.$.title2.getBoundingClientRect();
+    assert.closeTo(title2.width, title.width, onePercentDelta/2, 'width should be within 1%');
+  });
+
+});
+</script>
+
+</body>
+</html>
