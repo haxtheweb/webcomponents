@@ -1,0 +1,12 @@
+{
+  "name": "@lrnwebcomponents/tab-list/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A LRN element",
+  "main": "tab-list.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/paper-tabs": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
