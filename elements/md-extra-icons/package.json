@@ -4,7 +4,7 @@
     "className": "MdExtraIcons",
     "customElementClass": "PolymerElement",
     "elementName": "md-extra-icons",
-    "generator-wcfactory-version": "0.3.1",
+    "generator-wcfactory-version": "0.3.2",
     "useHAX": true,
     "useSass": false,
     "files": {

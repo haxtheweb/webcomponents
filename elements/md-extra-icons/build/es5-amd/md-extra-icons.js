@@ -6,11 +6,11 @@ define([
   "use strict";
   Object.defineProperty(_exports, "__esModule", { value: !0 });
   _exports.MdExtraIcons = void 0;
-  function _templateObject_1ff29930d6fe11e89c206160e911b420() {
+  function _templateObject_f29023d0d6fe11e8bb87ad9f96caf05e() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
     ]);
-    _templateObject_1ff29930d6fe11e89c206160e911b420 = function() {
+    _templateObject_f29023d0d6fe11e8bb87ad9f96caf05e = function() {
       return data;
     };
     return data;
@@ -55,7 +55,7 @@ define([
           key: "template",
           get: function get() {
             return (0, _polymerElement.html)(
-              _templateObject_1ff29930d6fe11e89c206160e911b420()
+              _templateObject_f29023d0d6fe11e8bb87ad9f96caf05e()
             );
           }
         },
