@@ -1,0 +1,12 @@
+{
+  "name": "@lrnwebcomponents/lrndesign-paperstack/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A LRN element",
+  "main": "lrndesign-paperstack.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/iron-icon": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
