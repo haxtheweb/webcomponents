@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>cms-hax</title>
+    <meta name="description" content="cms-hax description">
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script type="module" src="./cms-hax.js"></script>
+    <style>
+      cms-hax {
+        margin: 10em;
+      }
+    </style>
+  </head>
+  <body>
+    <cms-hax align="left" open-default app-store-connection='{"url":"demo/sample-store.json"}'>
+      <template>
+        <p>A whole bunch of text in P 1</p>
+        <p>Something else in P2 here</p>
+        <p>This is a whole bunch of stuff to be here at this point</p>
+      </template>
+    </cms-hax>
+  </body>
+</html>
