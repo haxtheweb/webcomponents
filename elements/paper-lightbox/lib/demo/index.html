@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Paper-carousel demo</title>
+    <script type="module" src="../paper-lightbox.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,600,400,400italic,800" rel="stylesheet" type="text/css">
+    <style>
+	 	body[unresolved] { opacity: 0; }
+	</style>
+  </head>
+  <body unresolved>
+    <div class="content">
+      <!-- COMPONENT -->
+      <paper-lightbox class="pepito-lightbox" src="content.html" type="ajax" closing='1'>launch ajax popup</paper-lightbox>
+
+      <!-- COMPONENT -->
+      <paper-lightbox src="https://placehold.it/3000x4000" type="image">launch image popup</paper-lightbox>
+
+      <!-- COMPONENT -->
+      <paper-lightbox src=".inline-content" type="inline">launch inline popup</paper-lightbox>
+
+      <!-- COMPONENT -->
+      <paper-lightbox src="https://www.youtube.com/watch?v=assSM3rlvZ8" type="iframe">launch iframe popup</paper-lightbox>
+    </div>
+    <div style="display: none;">
+      <div class="inline-content">inline content example</div>
+    </div>
+    <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+  </body>
+</html>
