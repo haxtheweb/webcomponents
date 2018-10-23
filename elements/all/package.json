@@ -4,15 +4,15 @@
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json elements/all/test/"
   },
-  "version": "0.0.21",
+  "version": "0.0.22",
   "private": true,
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/beaker-broker": "^0.0.21",
-    "@lrnwebcomponents/car-window": "^0.0.21",
-    "@lrnwebcomponents/hax-body": "^0.0.21",
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.21",
-    "@lrnwebcomponents/lrn-button": "^0.0.21",
-    "@lrnwebcomponents/materializecss-styles": "^0.0.21"
+    "@lrnwebcomponents/beaker-broker": "^0.0.22",
+    "@lrnwebcomponents/car-window": "^0.0.22",
+    "@lrnwebcomponents/hax-body": "^0.0.22",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.22",
+    "@lrnwebcomponents/lrn-button": "^0.0.22",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.22"
   }
 }
