@@ -1,0 +1,16 @@
+{
+  "name": "@lrnwebcomponents/lrndesign-biocard/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A LRN element",
+  "main": "lrndesign-biocard.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/paper-spinner": "^3.0.0-pre.1",
+    "@polymer/paper-tooltip": "^3.0.0-pre.1",
+    "@polymer/paper-card": "^3.0.0-pre.1",
+    "@polymer/paper-button": "^3.0.0-pre.1",
+    "@polymer/iron-icons": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}

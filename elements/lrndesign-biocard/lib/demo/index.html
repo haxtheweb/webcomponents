@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>lrndesign-biocard demo</title>
+
+    <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script type="module" src="@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+    <script type="module" src="@polymer/iron-demo-helpers/demo-snippet.js"></script>
+    <script type="module" src="../lrndesign-biocard.js"></script>
+
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+$_documentContainer.setAttribute('style', 'display: none;');
+
+$_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
+    </style>`;
+
+document.head.appendChild($_documentContainer);
+</script>
+  </head>
+  <body>
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+      <h3>Basic lrndesign-biocard demo</h3>
+      <demo-snippet>
+        <template>
+          <lrndesign-biocard instructor-name="Albert Einstein" image="albert-einstein.jpg" address="Office Address Here" phone="contact phone number" email="email address" office-hours="office hours here" linkedin="Linkedin URL" twitter="twitter handle" video-conf="Video Conference Link">
+          Instructor Bio goes here. Intelligentsia celiac retro pickled culpa thundercats. Tote bag eu lomo dolore, crucifix chillwave taxidermy mlkshk fixie. Eu cardigan kinfolk migas snackwave semiotics intelligentsia letterpress health goth drinking vinegar. Butcher cliche jianbing vinyl anim et. Dolor sartorial fanny pack knausgaard chillwave skateboard organic laboris godard mustache irure hot chicken.
+          </lrndesign-biocard>
+        </template>
+      </demo-snippet>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+  </body>
+</html>

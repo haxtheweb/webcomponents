@@ -1,0 +1,26 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Lrndesign biocard",
+    "description": "Automated conversion of lrndesign-biocard/",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Biocard"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "btopro",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [],
+    "advanced": []
+  }
+}
