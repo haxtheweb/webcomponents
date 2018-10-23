@@ -1,0 +1,24 @@
+{
+  "name": "@lrnwebcomponents/meme-maker/",
+  "flat": true,
+  "version": "0.0.22",
+  "author": [
+    "Ire Aderinokun <iaderinokun@gmail.com>",
+    "Bryan Ollendyke <btopro@gmail.com>"
+  ],
+  "keywords": [
+    "web-components",
+    "polymer",
+    "meme"
+  ],
+  "main": "meme-maker.html",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/btopro/meme-maker"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
