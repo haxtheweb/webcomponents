@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>simple-concept-network demo</title>
+
+    <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script type="module" src="@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+    <script type="module" src="@polymer/iron-demo-helpers/demo-snippet.js"></script>
+    <script type="module" src="../simple-concept-network.js"></script>
+
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+$_documentContainer.setAttribute('style', 'display: none;');
+
+$_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
+    </style>`;
+
+document.head.appendChild($_documentContainer);
+</script>
+  </head>
+  <body>
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container">
+      <h3>simple-concept-network 3d</h3>
+      <demo-snippet>
+        <template>
+          <simple-concept-network visualization="3d" nodes="[{&quot;src&quot;:&quot;http://online.elmsln.local&quot;,&quot;icon&quot;:&quot;lrn:online&quot;,&quot;label&quot;:&quot;Course Information System&quot;},{&quot;src&quot;:&quot;http://courses.elmsln.local/sing100&quot;,&quot;icon&quot;:&quot;lrn:courses&quot;,&quot;label&quot;:&quot;Course content&quot;},{&quot;src&quot;:&quot;http://media.elmsln.local&quot;,&quot;icon&quot;:&quot;lrn:media&quot;,&quot;label&quot;:&quot;Media management&quot;},{&quot;src&quot;:&quot;http://blog.elmsln.local/sing100&quot;,&quot;icon&quot;:&quot;lrn:blogs&quot;,&quot;label&quot;:&quot;Blogs&quot;},{&quot;src&quot;:&quot;http://inbox.elmsln.local/&quot;,&quot;icon&quot;:&quot;lrn:calendar&quot;,&quot;label&quot;:&quot;Calendar&quot;},{&quot;src&quot;:&quot;http://studio.elmsln.local/sing100&quot;,&quot;icon&quot;:&quot;lrn:studio&quot;,&quot;label&quot;:&quot;Open studio&quot;},{&quot;src&quot;:&quot;http://discuss.elmsln.local/sing100&quot;,&quot;icon&quot;:&quot;lrn:editorial&quot;,&quot;label&quot;:&quot;Discussions&quot;},{&quot;src&quot;:&quot;http://online.elmsln.local&quot;,&quot;icon&quot;:&quot;lrn:online&quot;,&quot;label&quot;:&quot;Course Information System&quot;},{&quot;src&quot;:&quot;http://courses.elmsln.local/sing100&quot;,&quot;icon&quot;:&quot;lrn:courses&quot;,&quot;label&quot;:&quot;Course content&quot;},{&quot;src&quot;:&quot;http://media.elmsln.local&quot;,&quot;icon&quot;:&quot;lrn:media&quot;,&quot;label&quot;:&quot;Media management&quot;},{&quot;src&quot;:&quot;http://blog.elmsln.local/sing100&quot;,&quot;icon&quot;:&quot;lrn:blogs&quot;,&quot;label&quot;:&quot;Blogs&quot;},{&quot;src&quot;:&quot;http://inbox.elmsln.local/&quot;,&quot;icon&quot;:&quot;lrn:calendar&quot;,&quot;label&quot;:&quot;Calendar&quot;},{&quot;src&quot;:&quot;http://studio.elmsln.local/sing100&quot;,&quot;icon&quot;:&quot;lrn:studio&quot;,&quot;label&quot;:&quot;Open studio&quot;},{&quot;src&quot;:&quot;http://discuss.elmsln.local/sing100&quot;,&quot;icon&quot;:&quot;lrn:editorial&quot;,&quot;label&quot;:&quot;Discussions&quot;},{&quot;src&quot;:&quot;http://online.elmsln.local&quot;,&quot;icon&quot;:&quot;lrn:online&quot;,&quot;label&quot;:&quot;Course Information System&quot;},{&quot;src&quot;:&quot;http://courses.elmsln.local/sing100&quot;,&quot;icon&quot;:&quot;lrn:courses&quot;,&quot;label&quot;:&quot;Course content&quot;},{&quot;src&quot;:&quot;http://media.elmsln.local&quot;,&quot;icon&quot;:&quot;lrn:media&quot;,&quot;label&quot;:&quot;Media management&quot;},{&quot;src&quot;:&quot;http://blog.elmsln.local/sing100&quot;,&quot;icon&quot;:&quot;lrn:blogs&quot;,&quot;label&quot;:&quot;Blogs&quot;},{&quot;src&quot;:&quot;http://inbox.elmsln.local/&quot;,&quot;icon&quot;:&quot;lrn:calendar&quot;,&quot;label&quot;:&quot;Calendar&quot;},{&quot;src&quot;:&quot;http://studio.elmsln.local/sing100&quot;,&quot;icon&quot;:&quot;lrn:studio&quot;,&quot;label&quot;:&quot;Open studio&quot;},{&quot;src&quot;:&quot;http://discuss.elmsln.local/sing100&quot;,&quot;icon&quot;:&quot;lrn:editorial&quot;,&quot;label&quot;:&quot;Discussions&quot;}]"></simple-concept-network>
+        </template>
+      </demo-snippet>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container">
+      <h3>simple-concept-network network</h3>
+      <demo-snippet>
+        <template>
+          <simple-concept-network visualization="network" nodes="[{&quot;src&quot;:&quot;http://online.elmsln.local&quot;,&quot;icon&quot;:&quot;lrn:online&quot;,&quot;label&quot;:&quot;Course Information System&quot;},{&quot;src&quot;:&quot;http://courses.elmsln.local/sing100&quot;,&quot;icon&quot;:&quot;lrn:courses&quot;,&quot;label&quot;:&quot;Course content&quot;},{&quot;src&quot;:&quot;http://media.elmsln.local&quot;,&quot;icon&quot;:&quot;lrn:media&quot;,&quot;label&quot;:&quot;Media management&quot;},{&quot;src&quot;:&quot;http://blog.elmsln.local/sing100&quot;,&quot;icon&quot;:&quot;lrn:blogs&quot;,&quot;label&quot;:&quot;Blogs&quot;},{&quot;src&quot;:&quot;http://inbox.elmsln.local/&quot;,&quot;icon&quot;:&quot;lrn:calendar&quot;,&quot;label&quot;:&quot;Calendar&quot;},{&quot;src&quot;:&quot;http://studio.elmsln.local/sing100&quot;,&quot;icon&quot;:&quot;lrn:studio&quot;,&quot;label&quot;:&quot;Open studio&quot;},{&quot;src&quot;:&quot;http://discuss.elmsln.local/sing100&quot;,&quot;icon&quot;:&quot;lrn:editorial&quot;,&quot;label&quot;:&quot;Discussions&quot;}]"></simple-concept-network>
+        </template>
+      </demo-snippet>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container">
+      <h3>simple-concept-network-node single node</h3>
+      <demo-snippet>
+        <template>
+        <simple-concept-network-node src="https://google.com/" icon="save" label="Stuff"></simple-concept-network-node>
+          <simple-concept-network-node visualization="network" src="https://google.com/" icon="save" label="Stuff" color="blue" icon-color="green" image="http://csshexagon.com/img/meow.jpg"></simple-concept-network-node>
+        </template>
+      </demo-snippet>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+  </body>
+</html>
