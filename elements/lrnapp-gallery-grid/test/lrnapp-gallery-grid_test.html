@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../lrnapp-gallery-grid.js"></script>
+  </head>
+  <body>
+
+    <lrnapp-gallery-grid>
+      This is the element content.
+    </lrnapp-gallery-grid>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <lrnapp-gallery-grid></lrnapp-gallery-grid>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <lrnapp-gallery-grid></lrnapp-gallery-grid>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<lrnapp-gallery-grid>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('lrnapp-gallery-grid'), customElements.get("lrnapp-gallery-grid", 'lrnapp-gallery-grid should be an instance of lrnappGalleryGrid'));
+    });
+
+    /*test('setting a property on the element works', () => {
+      const element = fixture('AdvancedTestFixture');
+      element.title = 'my title';
+      assert.equal(element.title, 'my title');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello my title!');
+    });*/
+  });
+    </script>
+  </body>
+</html>
