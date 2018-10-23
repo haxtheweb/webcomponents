@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>a11y-media-player demo</title>
+
+    <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <script type="module" src="@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+    <script type="module" src="@polymer/iron-demo-helpers/demo-snippet.js"></script>
+    <script type="module" src="../a11y-media-player.js"></script>
+
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+$_documentContainer.setAttribute('style', 'display: none;');
+
+$_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container.centered > * {
+        --demo-snippet-demo: {
+          padding: 0;
+        };
+      }
+      .vertical-section-container.centered {
+        width: 100%;
+        max-width: unset !important;
+      }
+      .smaller-examples {
+        max-width: 75%;
+        min-width: 400px;
+        margin: 0 auto;
+      }
+      @media print {
+        demo-snippet {
+          height: unset;
+          overflow: visible;
+        }
+      }
+    </style>`;
+
+document.head.appendChild($_documentContainer);
+</script>
+  </head>
+  <body>
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+      <h1>a11y-media-player Audio Demo</h1>
+      <p>See <a href="../">documentation</a> and main <a href="../demo">demo</a> for more information.</p>
+      
+      <h2>Audio example</h2>
+      <demo-snippet>
+        <template>
+          <a11y-media-player accent-color="indigo" audio-only="">
+            <source src="samples/bueller.mp3" type="audio/mp3">
+            <track label="English" kind="subtitles" srclang="en" src="samples/bueller.vtt" default="">
+          </a11y-media-player>
+        </template>
+      </demo-snippet>
+      
+      <div class="smaller-examples"> 
+        <h2>Audio example, standalone with thumbnail image and width set</h2>
+        <demo-snippet>
+          <template>
+            <a11y-media-player accent-color="lime" audio-only="" dark="" stand-alone="" thumbnail-src="https://media2.s-nbcnews.com/j/streams/2013/April/130417/1C6963224-ss-110805-teachers-beuller.fit-760w.jpg" width="400px">
+              <source src="samples/bueller.mp3" type="audio/mp3">
+              <track label="English" kind="subtitles" srclang="en" src="samples/bueller.vtt" default="">
+            </a11y-media-player>
+          </template>
+        </demo-snippet>
+      </div>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+  </body>
+</html>

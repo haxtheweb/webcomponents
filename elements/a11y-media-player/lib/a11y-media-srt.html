@@ -1,0 +1,89 @@
+<script type="module" src="@polymer/polymer/polymer.js"></script>
+<script type="module" src="./a11y-media-behaviors.js"></script>
+
+<!--
+`a11y-media-srt`
+Converts an SRT to a VTT
+
+@demo demo/index.html
+
+@microcopy - the mental model for this element
+  <a11y-media-srt 
+    default 
+    kind="subtitles" 
+    label="English" 
+    src="samples/stclair.srt"
+    srclang="en">
+  </a11y-media-srt>
+
+
+-->
+
+<dom-module id="a11y-media-srt">
+  <template>
+    <track 
+    default$="[[default]]"
+    kind="subtitles" 
+    label$="[[label]]" 
+    src$="[[src]]"  
+    srclang$="[[srclang]]">
+  </template>
+
+  <script type="module">
+import '@polymer/polymer/polymer.js';
+import './a11y-media-behaviors.js';
+Polymer({
+
+  is: 'a11y-media-srt',
+  
+  behaviors: [a11yMediaBehaviors.PlayerBehaviors],
+
+  listeners: {
+    'button.tap': '_buttonTap'
+  },
+
+  properties: {
+    /**
+     * Is it the default track?
+     */
+     default: {
+      type: Boolean,
+      value: false
+    },
+    /**
+     * Track label
+     */
+     label: {
+      type: String,
+      value: 'English',
+    },
+    /**
+     * Track source
+     */
+     src: {
+      type: String,
+      value: null,
+    },
+    /**
+     * Track language
+     */
+     srclang: {
+      type: String,
+      value: 'en',
+    },
+  },
+  /**
+    * get label based on whether or not the video is playing
+    */
+  _getLabel: function(playing){
+    return playing ? 'pause' : 'play';
+  },
+  /**
+    * handle button tap
+    */
+  _buttonTap: function(){
+    this.fire('controls-change',this);
+  },
+});
+</script>
+</dom-module>
