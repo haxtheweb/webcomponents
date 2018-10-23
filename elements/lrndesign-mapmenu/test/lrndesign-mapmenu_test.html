@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../lrndesign-mapmenu.js"></script>
+  </head>
+  <body>
+
+    <lrndesign-mapmenu>
+      This is the element content.
+    </lrndesign-mapmenu>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <lrndesign-mapmenu></lrndesign-mapmenu>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <lrndesign-mapmenu></lrndesign-mapmenu>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<lrndesign-mapmenu>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('lrndesign-mapmenu'), customElements.get("lrndesign-mapmenu", 'lrndesign-mapmenu should be an instance of lrndesignMapmenu'));
+    });
+
+    /*test('setting a property on the element works', () => {
+      const element = fixture('AdvancedTestFixture');
+      element.title = 'my title';
+      assert.equal(element.title, 'my title');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello my title!');
+    });*/
+  });
+    </script>
+  </body>
+</html>

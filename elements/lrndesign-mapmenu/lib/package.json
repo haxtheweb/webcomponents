@@ -1,0 +1,12 @@
+{
+  "name": "@lrnwebcomponents/lrndesign-mapmenu/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A LRN element",
+  "main": "lrndesign-mapmenu.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/iron-collapse": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
