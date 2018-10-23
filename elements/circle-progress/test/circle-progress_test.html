@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../circle-progress.js"></script>
+  </head>
+  <body>
+
+    <circle-progress>
+      This is the element content.
+    </circle-progress>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <circle-progress></circle-progress>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <circle-progress></circle-progress>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<circle-progress>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('circle-progress'), customElements.get("circle-progress", 'circle-progress should be an instance of circleProgress'));
+    });
+
+    /*test('setting a property on the element works', () => {
+      const element = fixture('AdvancedTestFixture');
+      element.title = 'my title';
+      assert.equal(element.title, 'my title');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello my title!');
+    });*/
+  });
+    </script>
+  </body>
+</html>

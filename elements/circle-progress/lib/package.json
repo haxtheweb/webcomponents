@@ -1,0 +1,28 @@
+{
+  "name": "@lrnwebcomponents/circle-progress/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "Polymer-based web component displaying a circular progress bar.",
+  "contributors": [
+    "The Shah-Parth Project Authors"
+  ],
+  "keywords": [
+    "web-components",
+    "polymer",
+    "circle",
+    "progress"
+  ],
+  "main": "circle-progress.html",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shah-Parth/circle-progress.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@polymer/iron-flex-layout": "^3.0.0-pre.1",
+    "@polymer/iron-resizable-behavior": "^3.0.0-pre.1",
+    "@polymer/paper-styles": "^3.0.0-pre.1",
+    "@polymer/polymer": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
