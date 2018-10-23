@@ -1,0 +1,9 @@
+{
+  "name": "@lrnwebcomponents/lrnsys-redux/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "A LRN element",
+  "main": "lrnsys-redux.html",
+  "dependencies": {},
+  "devDependencies": {}
+}
