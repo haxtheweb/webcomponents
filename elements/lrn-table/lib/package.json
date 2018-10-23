@@ -1,0 +1,13 @@
+{
+  "name": "@lrnwebcomponents/lrn-table/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "Accessibly render a HTML table from a csv file",
+  "main": "lrn-table.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/paper-spinner": "^3.0.0-pre.1",
+    "@polymer/paper-tooltip": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}
