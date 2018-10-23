@@ -24,7 +24,7 @@ class BeakerBroker extends PolymerElement {
       canEditSource: !1,
       gizmo: {
         title: "Beaker broker",
-        description: "Automated conversion of beaker-broker",
+        description: "Automated conversion of beaker-broker/",
         icon: "icons:android",
         color: "green",
         groups: ["Broker"],

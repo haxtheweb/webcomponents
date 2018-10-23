@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`beaker-broker`\n`An element to help check for and broker calls to read and write beaker browser dat sites.\nThis allows for data binding and figuring out if we're in an environment that we can even use this.`",
+      "description": "`beaker-broker`\n`Automated conversion of beaker-broker/`",
       "summary": "",
       "path": "beaker-broker.js",
       "properties": [
@@ -603,51 +603,6 @@
             }
           },
           "inheritedFrom": "ElementMixin"
-        },
-        {
-          "name": "archive",
-          "type": "Object | null | undefined",
-          "description": "Archive",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 45,
-              "column": 2
-            },
-            "end": {
-              "line": 48,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "notify": true,
-              "attributeType": "Object"
-            }
-          }
-        },
-        {
-          "name": "datUrl",
-          "type": "string | null | undefined",
-          "description": "datUrl",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 52,
-              "column": 2
-            },
-            "end": {
-              "line": 57,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "notify": true,
-              "observer": "\"_datUrlChanged\"",
-              "attributeType": "String"
-            }
-          }
         }
       ],
       "methods": [
@@ -2699,11 +2654,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 72,
+              "line": 80,
               "column": 2
             },
             "end": {
-              "line": 77,
+              "line": 84,
               "column": 3
             }
           },
@@ -2825,78 +2780,6 @@
             "desc": "Rewritten URL relative to base"
           },
           "inheritedFrom": "ElementMixin"
-        },
-        {
-          "name": "_datUrlChanged",
-          "description": "notice dat address has changed, build the object for it",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 81,
-              "column": 2
-            },
-            "end": {
-              "line": 86,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "newValue"
-            },
-            {
-              "name": "oldValue"
-            }
-          ]
-        },
-        {
-          "name": "write",
-          "description": "Write to file",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 92,
-              "column": 2
-            },
-            "end": {
-              "line": 95,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "path"
-            },
-            {
-              "name": "data"
-            }
-          ]
-        },
-        {
-          "name": "read",
-          "description": "Read to file",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 104,
-              "column": 2
-            },
-            "end": {
-              "line": 132,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "path"
-            },
-            {
-              "name": "type"
-            }
-          ]
         }
       ],
       "staticMethods": [
@@ -3843,65 +3726,19 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 19,
+          "line": 18,
           "column": 0
         },
         "end": {
-          "line": 138,
+          "line": 90,
           "column": 1
         }
       },
       "privacy": "public",
       "superclass": "PolymerElement",
       "name": "BeakerBroker",
-      "attributes": [
-        {
-          "name": "archive",
-          "description": "Archive",
-          "sourceRange": {
-            "start": {
-              "line": 45,
-              "column": 2
-            },
-            "end": {
-              "line": 48,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "type": "Object | null | undefined"
-        },
-        {
-          "name": "dat-url",
-          "description": "datUrl",
-          "sourceRange": {
-            "start": {
-              "line": 52,
-              "column": 2
-            },
-            "end": {
-              "line": 57,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        }
-      ],
-      "events": [
-        {
-          "type": "CustomEvent",
-          "name": "archive-changed",
-          "description": "Fired when the `archive` property changes.",
-          "metadata": {}
-        },
-        {
-          "type": "CustomEvent",
-          "name": "dat-url-changed",
-          "description": "Fired when the `datUrl` property changes.",
-          "metadata": {}
-        }
-      ],
+      "attributes": [],
+      "events": [],
       "styling": {
         "cssVariables": [],
         "selectors": []
