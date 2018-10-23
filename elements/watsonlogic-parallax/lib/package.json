@@ -1,0 +1,12 @@
+{
+  "name": "@lrnwebcomponents/watsonlogic-parallax/",
+  "flat": true,
+  "version": "0.0.22",
+  "description": "Parallax scrolling effect web component for Polymer 2.0.",
+  "main": "watsonlogic-parallax.html",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}

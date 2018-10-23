@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>watsonlogic-parallax test</title>
+
+    <script src="@webcomponents/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="web-component-tester/browser.js"></script>
+
+    <script type="module" src="../watsonlogic-parallax.js"></script>
+  </head>
+  <body>
+
+    <test-fixture id="BasicTestFixture">
+      <template>
+        <watsonlogic-parallax></watsonlogic-parallax>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="ChangedImagePropertyTestFixture">
+      <template>
+        <watsonlogic-parallax
+          parallax-image-height="300"
+          parallax-image="m-parallax-image">
+        </watsonlogic-parallax>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="ChangedAllPropertiesTestFixture">
+      <template>
+        <watsonlogic-parallax
+          parallax-image-height="200"
+          parallax-text="new-parallax-text"
+          parallax-image="new-parallax-image">
+        </watsonlogic-parallax>
+      </template>
+    </test-fixture>
+
+    <script type="module">
+import '../watsonlogic-parallax.js';
+suite('watsonlogic-parallax', function() {
+
+  test('instantiating the element with default properties works', function() {
+    var element = fixture('BasicTestFixture');
+    assert.equal(element.parallaxText, undefined);
+    assert.equal(element.parallaxImageHeight, undefined);
+    var elementShadowRoot = element.shadowRoot;
+    var elementHeader = elementShadowRoot.querySelector('#slogan');
+    assert.equal(elementHeader.innerHTML, ' ');
+  });
+
+  test('setting a property on the element works', function() {
+    // Create a test fixture
+    var element = fixture('ChangedImagePropertyTestFixture');
+    assert.equal(element.parallaxImage, 'm-parallax-image');
+    assert.equal(element.parallaxImageHeight, '300');
+    var elementShadowRoot = element.shadowRoot;
+    var elementHeader = elementShadowRoot.querySelector('#slogan');
+    assert.equal(elementHeader.innerHTML, ' ');
+  });
+
+  test('setting a property on the element works', function() {
+    // Create a test fixture
+    var element = fixture('ChangedAllPropertiesTestFixture');
+    assert.equal(element.parallaxText, 'new-parallax-text');
+    assert.equal(element.parallaxImage, 'new-parallax-image');
+    assert.equal(element.parallaxImageHeight, '200');
+    var elementShadowRoot = element.shadowRoot;
+    var elementHeader = elementShadowRoot.querySelector('#slogan');
+    assert.equal(elementHeader.innerHTML, 'new-parallax-text');
+  });
+});
+</script>
+
+  </body>
+</html>
