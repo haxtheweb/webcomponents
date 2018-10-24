@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-button/paper-button.js";
-import "lrn-icons/lrn-icons.js";
+import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
 Polymer({
   _template: html`
     <style>

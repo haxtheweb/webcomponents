@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-button/paper-button.js";
-import "lrn-icons/lrn-icons.js";
+import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/maps-icons.js";
 import "@polymer/iron-icons/hardware-icons.js";

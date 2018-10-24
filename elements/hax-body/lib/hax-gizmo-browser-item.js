@@ -11,7 +11,7 @@ import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/maps-icons.js";
 import "@polymer/iron-icons/places-icons.js";
 import "@polymer/iron-image/iron-image.js";
-import "materializecss-styles/colors.js";
+import "@lrnwebcomponents/materializecss-styles/colors.js";
 /**
 `hax-gizmo-browser-item`
 A button on the hax-gizmo-browser app display

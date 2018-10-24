@@ -2,7 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-icon/iron-icon.js";
-import "materializecss-styles/colors.js";
+import "@lrnwebcomponents/materializecss-styles/colors.js";
 /**
 `hax-blox-browser-item`
 A button on the hax-gizmo-browser app display

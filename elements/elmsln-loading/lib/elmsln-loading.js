@@ -1,15 +1,24 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "lrn-icons/lrn-icons.js";
-import "@polymer/iron-icon/iron-icon.js";
-import "materializecss-styles/colors.js";
 /**
-`elmsln-loading`
-A spinner to tell the user that something is loading. This is just the spinner though
-and doesn't provide any text or anything else to indicate that it's loading, just the
-visual.
-
-@demo demo/index.html
-*/
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/materializecss-styles/colors.js";
+/**
+ * `elmsln-loading`
+ * A spinner to tell the user that something is loading.
+ * This is just the spinner though and doesn't provide any text or anything else.
+ *
+ * @microcopy - language worth noting:
+ *  - elmsln - an open source NGDLE to save education
+ *
+ * @customElement
+ * @polymer
+ * @polymerLegacy
+ * @demo demo/index.html
+ */
 Polymer({
   _template: html`
     <style include="materializecss-styles-colors">

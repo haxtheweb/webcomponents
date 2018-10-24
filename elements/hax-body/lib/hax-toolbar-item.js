@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
-import "materializecss-styles/colors.js";
+import "@lrnwebcomponents/materializecss-styles/colors.js";
 Polymer({
   _template: html`
     <style include="materializecss-styles-colors">

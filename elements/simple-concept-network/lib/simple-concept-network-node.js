@@ -2,7 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "lrn-icons/lrn-icons.js";
+import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 /**
 `simple-concept-network-node`

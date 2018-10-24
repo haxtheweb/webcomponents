@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "paper-avatar/paper-avatar.js";
-import "lrn-icons/lrn-icons.js";
+import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
 `lrnsys-button-inner`
