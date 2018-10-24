@@ -16,7 +16,7 @@
       "hax": "src/lrnsys-comment-hax.json"
     }
   },
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "Automated conversion of lrnsys-comment/",
   "repository": {
     "type": "git",

@@ -16,7 +16,7 @@
       "hax": "src/paper-icon-picker-hax.json"
     }
   },
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "Automated conversion of paper-icon-picker/",
   "repository": {
     "type": "git",

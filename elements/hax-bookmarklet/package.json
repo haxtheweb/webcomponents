@@ -16,7 +16,7 @@
       "hax": "src/hax-bookmarklet-hax.json"
     }
   },
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "Automated conversion of hax-bookmarklet/",
   "repository": {
     "type": "git",

@@ -16,7 +16,7 @@
       "hax": "src/simple-blog-hax.json"
     }
   },
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "Automated conversion of simple-blog/",
   "repository": {
     "type": "git",

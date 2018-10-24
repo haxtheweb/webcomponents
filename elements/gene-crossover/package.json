@@ -16,7 +16,7 @@
       "hax": "src/gene-crossover-hax.json"
     }
   },
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "Automated conversion of gene-crossover/",
   "repository": {
     "type": "git",
