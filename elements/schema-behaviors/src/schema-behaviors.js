@@ -1,14 +1,24 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 // ensure SchemaBehaviors exists
 window.SchemaBehaviors = window.SchemaBehaviors || {};
 /**
- * `SchemaBehaviors.Schema` makes it easier to wire custom elements for
+ * `SchemaBehaviors`
+ *
+ * makes it easier to wire custom elements for
  * schematic metadata by allowing prefixes to be defined in an object
  * structure. This makes it easier to add and remove them then working
  * against the attribute directly. It also helps with generating
  * resource IDs automatically if they don't already exist on the element.
  *
+ * @microcopy - language worth noting:
+ *  -
+ *
+ * @polymer
  * @polymerBehavior SchemaBehaviors.Schema
- **/
+ */
 window.SchemaBehaviors.Schema = {
   properties: {
     /**

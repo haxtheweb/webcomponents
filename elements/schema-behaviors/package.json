@@ -5,19 +5,14 @@
     "customElementClass": "PolymerElement",
     "elementName": "schema-behaviors",
     "generator-wcfactory-version": "0.3.2",
-    "useHAX": true,
+    "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/schema-behaviors.css",
-      "scss": "src/schema-behaviors.scss",
-      "html": "src/schema-behaviors.html",
-      "js": "src/schema-behaviors.js",
-      "properties": "src/schema-behaviors-properties.json",
-      "hax": "src/schema-behaviors-hax.json"
+      "js": "src/schema-behaviors.js"
     }
   },
   "version": "0.0.24",
-  "description": "Automated conversion of schema-behaviors/",
+  "description": "Apply schema helper behaviors to existing Polymer (Legacy) based elements",
   "repository": {
     "type": "git",
     "url": "git@github.com/elmsln/lrnwebcomponents.git"
@@ -40,7 +35,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.20",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
