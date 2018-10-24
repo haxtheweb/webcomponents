@@ -16,7 +16,7 @@
       "hax": "src/simple-image-hax.json"
     }
   },
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "Automated conversion of simple-image/",
   "repository": {
     "type": "git",

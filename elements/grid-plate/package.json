@@ -16,7 +16,7 @@
       "hax": "src/grid-plate-hax.json"
     }
   },
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "Automated conversion of grid-plate/",
   "repository": {
     "type": "git",

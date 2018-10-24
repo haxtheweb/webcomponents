@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-audio-player-hax.json"
     }
   },
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "Automated conversion of lrndesign-audio-player/",
   "repository": {
     "type": "git",

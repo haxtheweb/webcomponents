@@ -16,7 +16,7 @@
       "hax": "src/paper-input-flagged-hax.json"
     }
   },
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "Automated conversion of paper-input-flagged/",
   "repository": {
     "type": "git",

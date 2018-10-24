@@ -16,7 +16,7 @@
       "hax": "src/wysiwyg-hax-hax.json"
     }
   },
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "Automated conversion of wysiwyg-hax/",
   "repository": {
     "type": "git",

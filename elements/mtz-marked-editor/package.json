@@ -16,7 +16,7 @@
       "hax": "src/mtz-marked-editor-hax.json"
     }
   },
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "Automated conversion of mtz-marked-editor/",
   "repository": {
     "type": "git",
