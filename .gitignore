@@ -9,7 +9,7 @@ test/.wct-kludge
 .sass-cache
 .yo-rc.json
 yarn.lock
-
+*-*.tgz
 package-lock.json
 
 yarn-error.log
