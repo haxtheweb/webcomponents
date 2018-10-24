@@ -5,7 +5,7 @@ import "@polymer/paper-item/paper-item.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@lrnwebcomponents/materializecss-styles/colors.js";
 import "@polymer/iron-icons/editor-icons.js";
-import "simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-toolbar-item.js";
 import "./hax-toolbar-menu.js";
 import "./hax-context-item.js";

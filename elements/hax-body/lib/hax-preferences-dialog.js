@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "eco-json-schema-form/eco-json-schema-wizard.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
-import "simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
 `hax-export-dialog`
 Export dialog with all export options and settings provided.

@@ -5,7 +5,7 @@ import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
-import "dropdown-select/dropdown-select.js";
+import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
 import "./a11y-media-behaviors.js";
 import "./a11y-media-button.js";
 /**

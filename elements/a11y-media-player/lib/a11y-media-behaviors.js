@@ -1,4 +1,4 @@
-import "responsive-utility/responsive-utility.js";
+import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 /**
 `a11y-media-behaviors`
 A set of behaviors for a11y-media components.

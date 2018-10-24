@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "haxcms-elements/haxcms-theme-behavior.js";

@@ -8,7 +8,7 @@ import "@polymer/iron-icons/communication-icons.js";
 import "@polymer/iron-icons/social-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/maps-icons.js";
-import "simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/materializecss-styles/colors.js";
 /**
 `hax-panel-item`

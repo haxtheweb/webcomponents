@@ -8,7 +8,7 @@ import "@polymer/neon-animation/neon-animation.js";
 import "@polymer/neon-animation/animations/scale-up-animation.js";
 import "@polymer/neon-animation/animations/scale-down-animation.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-import "simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  `hax-app-picker`
  A picker for selecting an item from a list of apps / hax gizmos which require

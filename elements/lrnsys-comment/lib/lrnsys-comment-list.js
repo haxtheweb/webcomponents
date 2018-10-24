@@ -9,7 +9,7 @@ import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-button/paper-button.js";
 import "grafitto-filter/grafitto-filter.js";
-import "dropdown-select/dropdown-select.js";
+import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
 import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-listbox/paper-listbox.js";

@@ -4,7 +4,7 @@ import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/neon-animation/web-animations.js";
 import "@polymer/neon-animation/neon-animations.js";
-import "simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./lrnsys-dialog-toolbar.js";
 import "./lrnsys-button-inner.js";
 /**

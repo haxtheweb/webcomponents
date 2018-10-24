@@ -3,7 +3,7 @@ import "@polymer/app-layout/app-layout.js";
 import "@polymer/neon-animation/web-animations.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "./lrnsys-button-inner.js";
-import "simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
 `lrnsys-drawer-modal`
 

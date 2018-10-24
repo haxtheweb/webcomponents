@@ -5,7 +5,7 @@ import "@polymer/paper-styles/paper-styles.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "elmsln-loading/elmsln-loading.js";
-import "simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-app-search-inputs.js";
 import "./hax-app-search-result.js";
 /*<link rel="import" href="hax-app-pagination.html">*/

@@ -9,7 +9,7 @@ import "app-datepicker/app-datepicker.js";
 import "paper-icon-picker/paper-icon-picker.js";
 import "paper-input-flagged/paper-input-flagged.js";
 import "vaadin-split-layout/vaadin-split-layout.js";
-import "simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
 `hax-preview`
 An element that can generate a form

@@ -7,7 +7,7 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/neon-animation/web-animations.js";
 import "@polymer/neon-animation/neon-animations.js";
-import "simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./lrnsys-dialog-modal.js";
 import "./lrnsys-button-inner.js";

@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "simple-search/simple-search.js";
-import "simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-search/simple-search.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./a11y-media-behaviors.js";
 import "./a11y-media-button.js";
 /**

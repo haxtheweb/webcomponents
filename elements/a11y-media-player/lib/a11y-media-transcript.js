@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "responsive-utility/responsive-utility.js";
-import "simple-colors/simple-colors.js";
+import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./a11y-media-behaviors.js";
 import "./a11y-media-transcript-cue.js";
 /**

@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "simple-search/simple-search-content.js";
-import "simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
 `a11y-media-transcript-cue`
 A single cue in a11y-media-transcriptas static text or as an button that controls media

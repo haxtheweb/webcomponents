@@ -1,9 +1,9 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "web-animations-js/web-animations-next-lite.min.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
-import "dropdown-select/dropdown-select.js";
+import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
 import "@polymer/iron-autogrow-textarea/iron-autogrow-textarea.js";
-import "simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "responsive-utility/responsive-utility-behaviors.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "a11y-collapse/a11y-collapse.js";

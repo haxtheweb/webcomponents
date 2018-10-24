@@ -5,19 +5,14 @@
     "customElementClass": "PolymerElement",
     "elementName": "a11y-media-player",
     "generator-wcfactory-version": "0.3.1",
-    "useHAX": true,
+    "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/a11y-media-player.css",
-      "scss": "src/a11y-media-player.scss",
-      "html": "src/a11y-media-player.html",
-      "js": "src/a11y-media-player.js",
-      "properties": "src/a11y-media-player-properties.json",
-      "hax": "src/a11y-media-player-hax.json"
+      "js": "src/a11y-media-player.js"
     }
   },
   "version": "0.0.28",
-  "description": "Automated conversion of a11y-media-player/",
+  "description": "A feature rich, highly accessible video player",
   "repository": {
     "type": "git",
     "url": "git@github.com/elmsln/lrnwebcomponents.git"
@@ -36,11 +31,24 @@
     "lighthouse": "../../node_modules/.bin/gulp lighthouse"
   },
   "author": {
-    "name": "btopro"
+    "name": "nikkimk"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
+    "@lrnwebcomponents/responsive-utility": "^0.0.28",
+    "@lrnwebcomponents/dropdown-select": "^0.0.28",
+    "@lrnwebcomponents/simple-colors": "^0.0.28",
+    "@polymer/iron-icons": "^3.0.0",
+    "@polymer/paper-slider": "^3.0.0",
+    "@polymer/paper-input": "^3.0.0",
+    "@polymer/paper-tooltip": "^3.0.0",
+    "@polymer/paper-menu-button": "^3.0.0",
+    "@polymer/neon-animation": "^3.0.0",
+    "@polymer/paper-listbox": "^3.0.0",
+    "@polymer/paper-item": "^3.0.0",
+    "@polymer/paper-toggle-button": "^3.0.0",
+    "@polymer/iron-a11y-keys": "^3.0.0",
+    "@polymer/iron-ajax": "^3.0.0",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {

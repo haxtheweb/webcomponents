@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "responsive-utility/responsive-utility.js";
+import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "./responsive-grid-col.js";
 import "./responsive-grid-clear.js";
 /**   

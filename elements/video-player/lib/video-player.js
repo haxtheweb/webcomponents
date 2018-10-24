@@ -4,7 +4,7 @@ import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "a11y-behaviors/a11y-behaviors.js";
 import "media-behaviors/media-behaviors.js";
-import "simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "a11y-media-player/a11y-media-player.js";
 /**
 `video-player`

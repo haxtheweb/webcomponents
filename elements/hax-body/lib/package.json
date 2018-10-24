@@ -25,7 +25,7 @@
     "@polymer/paper-dialog-scrollable": "^3.0.5",
     "@polymer/iron-flex-layout": "^3.0.5",
     "@polymer/paper-dropdown-menu": "^3.0.5",
-    "@polymer/paper-styles": "^3.0.5",
+    "@polymer/paper-styles": "^3.0.0",
     "@polymer/iron-menu-behavior": "^3.0.5",
     "@polymer/iron-dropdown": "^3.0.5"
   },

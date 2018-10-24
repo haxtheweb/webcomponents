@@ -5,7 +5,7 @@ import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
 `per-spec-tive`
 Giving learners a new perspective on education.
