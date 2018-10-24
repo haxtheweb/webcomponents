@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0.0",
+  "metadata": {
+    "polymer": {
+      "behaviors": [
+        {
+          "description": "`A11yBehaviors.A11y` provides some helper functions to improve accessibility\nof elements. It has a color contrast detector which can be used to indicate\nif the background color is such that we need to change the text to light or\ndark. It also has a helper for setting a property relative to this change.",
+          "summary": "",
+          "path": "a11y-behaviors.js",
+          "properties": [],
+          "methods": [
+            {
+              "name": "getTextContrastColor",
+              "description": "Get a a11y safe text color based on background color",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 16,
+                  "column": 2
+                },
+                "end": {
+                  "line": 37,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "bgColor"
+                }
+              ],
+              "return": {
+                "type": "string",
+                "desc": "hexadecimal value for the color"
+              }
+            },
+            {
+              "name": "computeTextPropContrast",
+              "description": "Validate and modify the text contrast to ensure the correct contrast",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 42,
+                  "column": 2
+                },
+                "end": {
+                  "line": 49,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "textprop"
+                },
+                {
+                  "name": "bgprop"
+                }
+              ],
+              "return": {
+                "type": "void"
+              }
+            }
+          ],
+          "staticMethods": [],
+          "demos": [],
+          "metadata": {},
+          "sourceRange": {
+            "start": {
+              "line": 10,
+              "column": 0
+            },
+            "end": {
+              "line": 50,
+              "column": 2
+            }
+          },
+          "privacy": "public",
+          "name": "A11yBehaviors.A11y",
+          "attributes": [],
+          "events": [],
+          "styling": {
+            "cssVariables": [],
+            "selectors": []
+          },
+          "slots": []
+        }
+      ]
+    }
+  }
+}
