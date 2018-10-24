@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-styles/typography.js";
 import { PaperInputAddonBehavior } from "./paper-input-addon-behavior.js";
 import { Polymer } from "@polymer/polymer/lib/legacy/polymer-fn.js";
@@ -29,7 +29,7 @@ Custom property | Description | Default
 `--paper-input-char-counter` | Mixin applied to the element | `{}`
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: inline-block;

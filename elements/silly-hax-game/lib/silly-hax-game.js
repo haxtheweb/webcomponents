@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "simple-timer/simple-timer.js";
 import "lrnsys-layout/lrnsys-dialog-modal.js";
 import "to-do/to-do.js";
@@ -12,7 +12,7 @@ An example web component of gamifying HAX to make it more fun and challenging.
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

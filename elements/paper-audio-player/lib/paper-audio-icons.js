@@ -1,6 +1,6 @@
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
-const $_documentContainer = document.createElement("div");
+var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<iron-iconset-svg name="paper-audio-icons" size="24">

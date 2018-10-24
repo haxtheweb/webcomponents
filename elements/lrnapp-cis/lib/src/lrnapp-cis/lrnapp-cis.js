@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/iron-list/iron-list.js";
@@ -27,7 +27,7 @@ A learning application for visualizing course information and listing.
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles"></style>
     <style>
       :host {

@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { Polymer } from "@polymer/polymer/lib/legacy/polymer-fn.js";
 import "./lib/jdenticon-1.4.0.min.js";
 import "./lib/md5.min.js";

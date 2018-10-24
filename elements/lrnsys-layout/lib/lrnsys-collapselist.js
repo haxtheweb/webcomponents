@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-layout/app-layout.js";
 import "paper-avatar/paper-avatar.js";
 import "lrn-icons/lrn-icons.js";
@@ -13,7 +13,7 @@ import "@polymer/iron-collapse/iron-collapse.js";
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style">
       :host {
         display: block;

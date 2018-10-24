@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 
 Polymer.A11yMediaUtility = Polymer({

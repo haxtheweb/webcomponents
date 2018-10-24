@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 /**
 `lrnsys-render-html`
 A legacy element which just directly renders HTML.
@@ -12,7 +12,7 @@ your users.
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

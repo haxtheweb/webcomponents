@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-listbox/paper-listbox.js";
@@ -15,7 +15,7 @@ import "@webcomponents/webcomponentsjs/webcomponents-lite.js";
  */
 /*link rel="import" href="../neon-animation/web-animations.html"*/
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style" include="demo-pages-shared-styles">
       paper-dropdown-menu, paper-listbox {
         width: 250px;

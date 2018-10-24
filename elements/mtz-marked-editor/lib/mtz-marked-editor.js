@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-form-element-behavior/iron-form-element-behavior.js";
 import "@polymer/iron-validatable-behavior/iron-validatable-behavior.js";
 import { Polymer } from "@polymer/polymer/lib/legacy/polymer-fn.js";
@@ -10,7 +10,7 @@ Creates a textarea with common editor logic and can be controlled by UI elements
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

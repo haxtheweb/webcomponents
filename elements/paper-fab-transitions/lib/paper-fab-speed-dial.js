@@ -38,7 +38,7 @@ Custom property | Description | Default
 */
 (function(Polymer) {
   Polymer({
-    _template: `
+    _template: html`
     <style>
       :host .vertical ::content .dropdown-content {
         @apply(--layout-vertical);

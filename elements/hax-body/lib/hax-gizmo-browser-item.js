@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -22,7 +22,7 @@ A button on the hax-gizmo-browser app display
  - 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles-colors">
       :host {
         display: inline-flex;

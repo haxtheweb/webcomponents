@@ -21,7 +21,7 @@
         See: https://github.com/Polymer/polymer-modulizer/issues/154
         -->
     <script type="module">
-const $_documentContainer = document.createElement('div');
+var $_documentContainer = document.createElement('div');
 $_documentContainer.setAttribute('style', 'display: none;');
 
 $_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
@@ -32,7 +32,7 @@ document.head.appendChild($_documentContainer);
   </head>
   <body>
     <script type="module">
-const $_documentContainer = document.createElement('div');
+var $_documentContainer = document.createElement('div');
 
 $_documentContainer.innerHTML = `<div class="vertical-section-container">
       <h3>Basic hero-banner demo</h3>
@@ -46,7 +46,7 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container">
 document.body.appendChild($_documentContainer);
 </script>
     <script type="module">
-const $_documentContainer = document.createElement('div');
+var $_documentContainer = document.createElement('div');
 $_documentContainer.innerHTML = `<hero-banner image="https://lrnwebcomponents.github.io/hax-body/components/hax-body/stock.jpg" title="Alaska" details="So peaceful, so perfect, so... COLD. OMG IS IT COLD" button-text="Find out how cold" button-link="https://weather.com/weather/today/l/USAK0012:1:US" button-color="#ffebee"></hero-banner>`;
 document.body.appendChild($_documentContainer);
 </script>

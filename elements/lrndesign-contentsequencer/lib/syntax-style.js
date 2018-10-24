@@ -1,5 +1,5 @@
 import "./font-source-code-pro.js";
-const $_documentContainer = document.createElement("div");
+var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<dom-module id="syntax-style">

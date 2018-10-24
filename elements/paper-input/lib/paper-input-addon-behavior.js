@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { flush } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 
 export const PaperInputAddonBehavior = {

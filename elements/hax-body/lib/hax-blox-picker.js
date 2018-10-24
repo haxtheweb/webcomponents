@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "./hax-blox-browser.js";
 /**
@@ -14,7 +14,7 @@ import "./hax-blox-browser.js";
  - data - this is the app data model for an element which expresses itself to hax
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

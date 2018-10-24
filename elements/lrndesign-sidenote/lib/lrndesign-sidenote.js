@@ -1,6 +1,6 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "a11y-behaviors/a11y-behaviors.js";
-import "materializecss-styles/materializecss-styles.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 /**
 `lrndesign-sidenote`
 A basic side note
@@ -8,7 +8,7 @@ A basic side note
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { IronFormElementBehavior } from "@polymer/iron-form-element-behavior/iron-form-element-behavior.js";
 import "@polymer/iron-input/iron-input.js";
 import { PaperInputBehavior } from "./paper-input-behavior.js";
@@ -8,7 +8,7 @@ import "./paper-input-error.js";
 import { Polymer } from "@polymer/polymer/lib/legacy/polymer-fn.js";
 import { DomModule } from "@polymer/polymer/lib/elements/dom-module.js";
 import { Element } from "@polymer/polymer/polymer-element.js";
-const $_documentContainer = document.createElement("div");
+var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<dom-module id="paper-input">

@@ -2,7 +2,7 @@ import "../simple-colors.js";
 import "../simple-colors-picker.js";
 /* This is strictly to demo the other tools */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style">
       .theme-selector {
         border: 1px solid;

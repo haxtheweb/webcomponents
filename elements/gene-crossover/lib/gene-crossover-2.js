@@ -1,7 +1,7 @@
 import "lrndesign-animationctrl/lrndesign-animationctrl.js";
 import "greensock-cdn/greensock-cdn.js";
 Polymer({
-  _template: `
+  _template: html`
         <style>
              :host {
                 display: block;

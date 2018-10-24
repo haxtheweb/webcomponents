@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-button/paper-button.js";
@@ -13,7 +13,7 @@ import "./lrnsys-button-inner.js";
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style" include="simple-colors">
       :host {
         display: inline-block;

@@ -1,8 +1,8 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 
 Polymer.ResponsiveUtility = Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: inline;

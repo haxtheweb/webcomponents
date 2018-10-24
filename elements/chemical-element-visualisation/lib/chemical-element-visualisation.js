@@ -1,8 +1,8 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/neon-animation/web-animations.js";
 import "./chemical-element-visualisation.js";
-const $_documentContainer = document.createElement("div");
+var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<dom-module id="chemical-element-visualisation">

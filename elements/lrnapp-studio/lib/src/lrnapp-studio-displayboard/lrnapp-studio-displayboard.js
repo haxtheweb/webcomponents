@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-material/paper-material.js";
 import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
@@ -8,9 +8,9 @@ import "@polymer/iron-icons/maps-icons.js";
 import "@polymer/iron-icons/social-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "../lrnapp-studio-submissions-list/lrnapp-studio-submissions-list.js";
-import "materializecss-styles/materializecss-styles.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles"></style>
     <style>
       :host {

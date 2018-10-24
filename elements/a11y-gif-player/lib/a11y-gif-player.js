@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/iron-image/iron-image.js";
 import "hax-body-behaviors/hax-body-behaviors.js";
@@ -14,7 +14,7 @@ import "schema-behaviors/schema-behaviors.js";
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

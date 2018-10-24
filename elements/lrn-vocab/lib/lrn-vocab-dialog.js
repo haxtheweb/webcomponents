@@ -2,7 +2,7 @@ import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 Polymer({
-  _template: `
+  _template: html`
         <style>
           :host {
             display: block;

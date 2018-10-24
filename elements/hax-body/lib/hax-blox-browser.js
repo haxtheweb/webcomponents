@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-list/iron-list.js";
 import "./hax-blox-browser-item.js";
 import "./hax-icons.js";
@@ -12,7 +12,7 @@ List of layout blox to select from
  - blox - silly name for the general public when talking about custom elements and what it provides in the end.
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

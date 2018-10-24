@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
@@ -11,7 +11,7 @@ import "./eco-json-schema-enum.js";
 import "./eco-json-schema-input.js";
 import "./eco-json-schema-object.js";
 import "./eco-json-schema-file.js";
-const $_documentContainer = document.createElement("div");
+var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-array">

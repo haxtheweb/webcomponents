@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/hardware-icons.js";
 import "@polymer/iron-ajax/iron-ajax.js";
@@ -14,7 +14,7 @@ import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/app-layout/app-scroll-effects/app-scroll-effects.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
-import "materializecss-styles/materializecss-styles.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "lrndesign-stepper/lrndesign-stepper.js";
 import "lrnsys-progress/lrnsys-progress.js";
 import "elmsln-loading/elmsln-loading.js";

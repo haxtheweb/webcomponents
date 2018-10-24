@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "relative-heading/relative-heading.js";
 /**
@@ -10,7 +10,7 @@ import "relative-heading/relative-heading.js";
  * @demo demo/index.html
  */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: none;

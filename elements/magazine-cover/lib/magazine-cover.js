@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
@@ -18,7 +18,7 @@ Example:
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

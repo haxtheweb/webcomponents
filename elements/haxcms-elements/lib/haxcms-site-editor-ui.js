@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-icons/editor-icons.js";
 /**
 `haxcms-site-editor-ui`
@@ -10,7 +10,7 @@ haxcms editor element buttons that you see
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style">
       :host {
         display: block;

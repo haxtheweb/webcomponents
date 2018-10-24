@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "./date-format-lib.js";
 /**
 `simple-datetime`
@@ -12,7 +12,7 @@ A simple datetime element that takes in unix timestamp and outputs a date.
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

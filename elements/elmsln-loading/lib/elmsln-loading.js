@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "lrn-icons/lrn-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "materializecss-styles/colors.js";
@@ -11,7 +11,7 @@ visual.
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles-colors">
       :host {
         display: block;

@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 import "@polymer/paper-styles/default-theme.js";
@@ -10,7 +10,7 @@ Polymer-based web component displaying a circular progress bar.
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
         <style>
 
             :host {

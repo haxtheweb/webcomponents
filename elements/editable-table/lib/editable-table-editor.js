@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "web-animations-js/web-animations-next-lite.min.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "dropdown-select/dropdown-select.js";
@@ -53,7 +53,7 @@ An editor interface for editable-table (editable-table.html).
 </editable-table-editor>
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style" include="editable-table-styles">
       :host {
         --a11y-collapse-border: 1px solid #ddd;

@@ -1,10 +1,10 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-ripple/paper-ripple.js";
 import "@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
-import "materializecss-styles/materializecss-styles.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "hax-body-behaviors/hax-body-behaviors.js";
 import "schema-behaviors/schema-behaviors.js";
 import "./paper-audio-icons.js";
@@ -43,7 +43,7 @@ Custom property                             | Description                       
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
 
       :host {

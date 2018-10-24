@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 /**
  * `watsonlogic-parallax`
  * Parallax scrolling effect web component for Polymer 2.0.
@@ -8,7 +8,7 @@ import "@polymer/polymer/polymer.js";
  * @demo demo/index.html
  */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

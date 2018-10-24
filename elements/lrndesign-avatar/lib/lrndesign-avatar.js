@@ -1,6 +1,6 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "paper-avatar/paper-avatar.js";
-import "materializecss-styles/materializecss-styles.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 /**
 `lrndesign-avatar`
 Visualize a user account eitehr with an image, a label, or as abstract art.
@@ -8,7 +8,7 @@ Visualize a user account eitehr with an image, a label, or as abstract art.
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles"></style>
     <style>
       :host {

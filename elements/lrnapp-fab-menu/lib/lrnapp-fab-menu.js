@@ -1,6 +1,6 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "paper-fab-speed-dial/paper-fab-speed-dial.js";
-import "materializecss-styles/materializecss-styles.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 /**
 `lrnapp-fab-menu`
 floating action button with menu
@@ -8,7 +8,7 @@ floating action button with menu
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles-colors"></style>
     <style>
       .open,.overlay {

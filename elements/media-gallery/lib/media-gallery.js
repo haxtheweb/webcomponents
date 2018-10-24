@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "hax-body-behaviors/hax-body-behaviors.js";
 import "schema-behaviors/schema-behaviors.js";
 import "lrndesign-gallery/lrndesign-gallery.js";
@@ -14,7 +14,7 @@ Connects lrndesign-gallery to HAX
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

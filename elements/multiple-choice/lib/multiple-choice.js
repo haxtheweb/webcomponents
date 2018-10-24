@@ -1,9 +1,9 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-checkbox/paper-checkbox.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-toast/paper-toast.js";
-import "materializecss-styles/materializecss-styles.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "hax-body-behaviors/hax-body-behaviors.js";
 import "schema-behaviors/schema-behaviors.js";
 /**
@@ -17,7 +17,7 @@ Ask the user a question from a set of possible answers.
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles">
       :host {
         display: block;

@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
@@ -24,7 +24,7 @@ A single button in the hax context menu for consistency.
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: inline-flex;

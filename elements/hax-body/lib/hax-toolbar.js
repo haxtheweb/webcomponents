@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-slider/paper-slider.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-item/paper-item.js";
@@ -11,7 +11,7 @@ import "./hax-toolbar-menu.js";
 import "./hax-context-item.js";
 import "./hax-context-item-menu.js";
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style" include="materializecss-styles-colors">
       :host {
         display: flex;

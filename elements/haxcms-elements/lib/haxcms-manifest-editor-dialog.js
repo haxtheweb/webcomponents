@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
@@ -16,7 +16,7 @@ Dialog for presenting an editable manifest of core settings
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style">
       :host {
         display: block;

@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-button/paper-button.js";
 /**
 `simple-blog-footer`
@@ -12,7 +12,7 @@ A simple blog and associated elements
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style">
       :host {
         display: block;

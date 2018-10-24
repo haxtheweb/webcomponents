@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "simple-search/simple-search-content.js";
 import "simple-colors/simple-colors.js";
@@ -34,7 +34,7 @@ A single cue in a11y-media-transcriptas static text or as an button that control
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style">
       :host {
         cursor: default;

@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-slider/paper-slider.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/paper-item/paper-item.js";
@@ -43,7 +43,7 @@ The controls bar for the a11y-media-player.
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style">
       :host {
         display: block;

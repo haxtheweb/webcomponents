@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/neon-animation/web-animations.js";
@@ -15,7 +15,7 @@ An icon / button that has support for multiple options via drop down.
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: inline-flex;

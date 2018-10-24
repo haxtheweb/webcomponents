@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "./a11y-media-behaviors.js";
 /*link rel="import" href="dashjs-lib.html"*/
 /**
@@ -28,7 +28,7 @@ A LRN element
   </a11y-media-video-loader>
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       #video {
         width: 100%;

@@ -1,10 +1,10 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import "../lrnapp-studio-projectboard/lrnapp-studio-projectboard.js";
 import "../lrnapp-studio-displayboard/lrnapp-studio-displayboard.js";
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

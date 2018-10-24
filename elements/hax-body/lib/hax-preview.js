@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "eco-json-schema-form/eco-json-schema-wizard.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/paper-card/paper-card.js";
@@ -22,7 +22,7 @@ An element that can generate a form
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style" include="simple-colors">
       :host {
         display: block;

@@ -5,19 +5,14 @@
     "customElementClass": "PolymerElement",
     "elementName": "csv-render",
     "generator-wcfactory-version": "0.3.1",
-    "useHAX": true,
+    "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/csv-render.css",
-      "scss": "src/csv-render.scss",
-      "html": "src/csv-render.html",
-      "js": "src/csv-render.js",
-      "properties": "src/csv-render-properties.json",
-      "hax": "src/csv-render-hax.json"
+      "js": "src/csv-render.js"
     }
   },
   "version": "0.0.24",
-  "description": "Automated conversion of csv-render/",
+  "description": "Remote render a CSV file in place as an accessible table.",
   "repository": {
     "type": "git",
     "url": "git@github.com/elmsln/lrnwebcomponents.git"
@@ -40,7 +35,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.20",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.24",
+    "@polymer/iron-ajax": "^3.0.1",
+    "@polymer/iron-icons": "^3.0.1",
+    "@polymer/paper-icon-button": "^3.0.1",
+    "@polymer/paper-spinner": "^3.0.1",
+    "@polymer/paper-tooltip": "^3.0.1",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {

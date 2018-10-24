@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "hax-body-behaviors/hax-body-behaviors.js";
 import "simple-colors/simple-colors.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
@@ -16,7 +16,7 @@ A grid plate based on a layout that manipulates it.
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

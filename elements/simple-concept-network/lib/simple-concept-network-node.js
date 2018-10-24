@@ -1,9 +1,9 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "lrn-icons/lrn-icons.js";
-import "materializecss-styles/materializecss-styles.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 /**
 `simple-concept-network-node`
 A small but effective little data visualizer for topics surrounding
@@ -16,7 +16,7 @@ a central concept, much like the ELMS:LN snowflake icon.
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles">
       :host {
         display: inline-flex;

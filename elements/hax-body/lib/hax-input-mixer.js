@@ -19,7 +19,7 @@ required for populating input.
  - context menu - this is a menu of custom-element based buttons and events for use in a larger solution.
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

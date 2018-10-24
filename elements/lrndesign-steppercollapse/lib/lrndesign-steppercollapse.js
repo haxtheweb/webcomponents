@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-collapse/iron-collapse.js";
 import "lrndesign-stepper/lrndesign-stepper.js";
 /**
@@ -8,7 +8,7 @@ A LRN element
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

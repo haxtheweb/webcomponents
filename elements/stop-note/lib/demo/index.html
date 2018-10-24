@@ -22,7 +22,7 @@
         See: https://github.com/Polymer/polymer-modulizer/issues/154
         -->
     <script type="module">
-const $_documentContainer = document.createElement('div');
+var $_documentContainer = document.createElement('div');
 $_documentContainer.setAttribute('style', 'display: none;');
 
 $_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
@@ -34,7 +34,7 @@ document.head.appendChild($_documentContainer);
 
 <body>
   <script type="module">
-const $_documentContainer = document.createElement('div');
+var $_documentContainer = document.createElement('div');
 
 $_documentContainer.innerHTML = `<div class="vertical-section-container">
     <h3>Basic stop-note demo: Default</h3>
@@ -50,7 +50,7 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container">
 document.body.appendChild($_documentContainer);
 </script>
   <script type="module">
-const $_documentContainer = document.createElement('div');
+var $_documentContainer = document.createElement('div');
 
 $_documentContainer.innerHTML = `<div class="vertical-section-container">
     <h3>Basic stop-note demo: URL</h3>
@@ -66,7 +66,7 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container">
 document.body.appendChild($_documentContainer);
 </script>
   <script type="module">
-const $_documentContainer = document.createElement('div');
+var $_documentContainer = document.createElement('div');
 
 $_documentContainer.innerHTML = `<div class="vertical-section-container">
     <h3>Basic stop-note demo: Warning</h3>
@@ -82,7 +82,7 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container">
 document.body.appendChild($_documentContainer);
 </script>
   <script type="module">
-const $_documentContainer = document.createElement('div');
+var $_documentContainer = document.createElement('div');
 
 $_documentContainer.innerHTML = `<div class="vertical-section-container">
     <h3>Basic stop-note demo: Confirm</h3>
@@ -98,7 +98,7 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container">
 document.body.appendChild($_documentContainer);
 </script>
   <script type="module">
-const $_documentContainer = document.createElement('div');
+var $_documentContainer = document.createElement('div');
 
 $_documentContainer.innerHTML = `<div class="vertical-section-container">
       <h3>Basic stop-note demo: Read</h3>

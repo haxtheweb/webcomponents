@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-input/paper-input.js";
 import "grafitto-filter/grafitto-filter.js";
@@ -15,7 +15,7 @@ Browse a list of gizmos. This provides a listing of custom elements for people t
  - gizmo - silly name for the general public when talking about custom elements and what it provides in the end.
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style">
       :host {
         display: block;

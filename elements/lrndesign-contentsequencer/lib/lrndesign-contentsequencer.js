@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-localstorage/iron-localstorage.js";
@@ -18,7 +18,7 @@ import "@polymer/paper-menu/paper-menu.js";
 import "@polymer/paper-item/paper-item.js";
 import "./layout-style.js";
 import "./contentsequencer-style.js";
-const $_documentContainer = document.createElement("div");
+var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<dom-module id="lrndesign-contentsequencer">

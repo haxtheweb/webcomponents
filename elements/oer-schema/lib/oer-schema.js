@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "schema-behaviors/schema-behaviors.js";
 import "hax-body-behaviors/hax-body-behaviors.js";
 /**
@@ -8,7 +8,7 @@ A LRN element to wrap an oer schema prefix onto materials.
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: inline-block;

@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-item/paper-item.js";
 import "./hax-context-item-menu.js";
 import "./hax-context-item.js";
@@ -13,7 +13,7 @@ A context menu that provides common grid plate based authoring options.
  - grid plate - the container / full HTML tag which can have operations applied to it.
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

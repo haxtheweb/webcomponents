@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-slider/paper-slider.js";
 import "simple-colors/simple-colors.js";
 import "./screenfull-lib.js";
@@ -109,7 +109,7 @@ Advanced styles for sliders:
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style">
       :host {  
         width: 100%;

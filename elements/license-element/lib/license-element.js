@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "hax-body-behaviors/hax-body-behaviors.js";
 import "schema-behaviors/schema-behaviors.js";
 /**
@@ -11,7 +11,7 @@ A simple way of applying a semantically accurate license to work.
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

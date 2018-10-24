@@ -1,5 +1,5 @@
-import "@polymer/polymer/polymer.js";
-import "materializecss-styles/materializecss-styles.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "hax-body-behaviors/hax-body-behaviors.js";
 import "a11y-behaviors/a11y-behaviors.js";
 import "./simple-concept-network-node.js";
@@ -15,7 +15,7 @@ a central concept, much like the ELMS:LN snowflake icon.
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles">
       :host {
         display: block;

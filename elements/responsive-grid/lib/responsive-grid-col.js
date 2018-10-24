@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 /**    
 `responsive-grid-col`
 A column for the responsive grid
@@ -17,7 +17,7 @@ A column for the responsive grid
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         position: relative;

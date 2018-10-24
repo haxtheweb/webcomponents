@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "./libraries/gitgraph.js/src/gitgraph.js";
 /**
 `lrn-gitgraph`
@@ -12,7 +12,7 @@ git log [branch_name] --format='{"refs": "%d", "commit": "%h", "tree": "%t", "pa
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

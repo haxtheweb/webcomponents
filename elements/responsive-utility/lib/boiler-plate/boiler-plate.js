@@ -11,7 +11,7 @@ A LRN element
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

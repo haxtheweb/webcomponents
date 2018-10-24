@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-ripple/paper-ripple.js";
 import "@polymer/paper-toast/paper-toast.js";
@@ -7,7 +7,7 @@ import "@polymer/neon-animation/web-animations.js";
 import "@polymer/neon-animation/neon-animation.js";
 import "@polymer/neon-animation/animations/scale-up-animation.js";
 import "@polymer/neon-animation/animations/scale-down-animation.js";
-import "materializecss-styles/materializecss-styles.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "simple-colors/simple-colors.js";
 /**
  `hax-app-picker`
@@ -22,7 +22,7 @@ import "simple-colors/simple-colors.js";
  - data - this is the app data model for an element which expresses itself to hax
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style" include="materializecss-styles">
       :host {
         display: block;

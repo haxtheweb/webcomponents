@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
@@ -26,7 +26,7 @@ A single button in the hax context menus for consistency. This one uses the mous
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles-colors">
       :host {
         display: inline-flex;

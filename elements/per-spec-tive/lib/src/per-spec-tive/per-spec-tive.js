@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-list/iron-list.js";
@@ -16,7 +16,7 @@ Giving learners a new perspective on education.
  - perspective - a change in viewpoint, angle of seeing something
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

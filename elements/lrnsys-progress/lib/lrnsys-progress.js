@@ -13,7 +13,7 @@ A LRN element
   bar - the underlayed bar that's tracking overall progression
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

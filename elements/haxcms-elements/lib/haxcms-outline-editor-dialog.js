@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-button/paper-button.js";
 /**
 `haxcms-outline-editor-dialog`
@@ -10,7 +10,7 @@ Dialog for presenting an editable outline
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

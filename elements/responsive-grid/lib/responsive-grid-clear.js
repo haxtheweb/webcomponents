@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 /**  
 `responsive-grid-clear`
 A clearumn for the responsive grid
@@ -14,7 +14,7 @@ A clearumn for the responsive grid
     lg/>  //clears the floated columns on a large-width screen
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: none;

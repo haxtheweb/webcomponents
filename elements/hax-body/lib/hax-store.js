@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "media-behaviors/media-behaviors.js";
 import "hax-body-behaviors/hax-body-behaviors.js";
@@ -10,7 +10,7 @@ import "./hax-blox.js";
 import "./hax-blox-browser.js";
 
 Polymer.HaxStore = Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: none;

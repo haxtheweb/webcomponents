@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 /**
 `code-pen-button`
 A LRN element to do a post of data to codepen
@@ -11,7 +11,7 @@ A LRN element to do a post of data to codepen
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

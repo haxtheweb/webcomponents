@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-button/paper-button.js";
 import "hax-body-behaviors/hax-body-behaviors.js";
 import "schema-behaviors/schema-behaviors.js";
@@ -10,7 +10,7 @@ Vocabulary term with visual treatment and semantic meaning.
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: inline-flex;

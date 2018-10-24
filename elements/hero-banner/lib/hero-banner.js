@@ -1,5 +1,5 @@
-import "@polymer/polymer/polymer.js";
-import "materializecss-styles/materializecss-styles.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-image/iron-image.js";
 import "a11y-behaviors/a11y-behaviors.js";
@@ -16,7 +16,7 @@ That thing no one wants to make over and over again yet always does...
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles">
       :host {
         display: block;

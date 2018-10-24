@@ -21,7 +21,7 @@
         See: https://github.com/Polymer/polymer-modulizer/issues/154
         -->
     <script type="module">
-const $_documentContainer = document.createElement('div');
+var $_documentContainer = document.createElement('div');
 
 $_documentContainer.innerHTML = `<custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
@@ -58,7 +58,7 @@ document.body.appendChild($_documentContainer);
   </head>
   <body>
       <script type="module">
-const $_documentContainer = document.createElement('div');
+var $_documentContainer = document.createElement('div');
 
 $_documentContainer.innerHTML = `<lrndesign-imagemap id="demo2" src="images/designprocess.svg" label="Course Design Process">
         <div slot="desc">

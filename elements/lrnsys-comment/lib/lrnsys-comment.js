@@ -19,7 +19,7 @@ A well styled comment for a user with markdown support.
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles-colors">
       :host {
         display: block;

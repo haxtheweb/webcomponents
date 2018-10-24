@@ -58,7 +58,7 @@ Custom property | Description | Default
 */
 (function(Polymer) {
   Polymer({
-    _template: `
+    _template: html`
     <style>
       iron-dropdown {
         @apply(--paper-morph-dropdown);

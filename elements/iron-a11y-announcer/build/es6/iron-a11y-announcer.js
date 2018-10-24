@@ -1,7 +1,7 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { Polymer as Polymer$0 } from "./node_modules/@polymer/polymer/lib/legacy/polymer-fn.js";
 export const IronA11yAnnouncer = Polymer$0({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: inline-block;

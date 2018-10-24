@@ -1,7 +1,7 @@
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

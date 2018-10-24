@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 import "@polymer/paper-styles/default-theme.js";
 import "@polymer/paper-styles/typography.js";
@@ -115,7 +115,7 @@ This element is `display:block` by default, but you can set the `inline` attribu
 `display:inline-block`.
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

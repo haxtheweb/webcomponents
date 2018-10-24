@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 /**
 `hax-autoloader`
 Automatically load elements based on the most logical location with future fallback support for CDNs.
@@ -9,7 +9,7 @@ Automatically load elements based on the most logical location with future fallb
  - hax-autoloader - autoloading of custom element imports which can then emmit events as needed
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: none;

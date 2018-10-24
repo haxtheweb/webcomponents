@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-button/paper-button.js";
 import "./simple-blog-overview.js";
@@ -14,7 +14,7 @@ A simple blog and associated elements
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-layout/app-layout.js";
 import "img-pan-zoom/img-pan-zoom.js";
 import "lrnsys-button/lrnsys-button.js";
@@ -12,7 +12,7 @@ Zoom, Rotate, Mirror, Download, and View image
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles-colors">
        :host {
         display: block;

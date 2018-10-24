@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-meta/iron-meta.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 
@@ -82,7 +82,7 @@ Custom property | Description | Default
 @homepage polymer.github.io
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         @apply(--layout-inline);

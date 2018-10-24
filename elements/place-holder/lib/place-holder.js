@@ -1,11 +1,11 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/notification-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/device-icons.js";
 import "@polymer/iron-icons/image-icons.js";
-import "materializecss-styles/materializecss-styles.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "hax-body-behaviors/hax-body-behaviors.js";
 /**
 `place-holder`
@@ -19,7 +19,7 @@ A LRN element
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles-colors">
       :host {
         display: block;

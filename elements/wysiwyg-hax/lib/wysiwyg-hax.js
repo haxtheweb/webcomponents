@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "cms-hax/cms-hax.js";
 /*
 `wysiwyg-hax`
@@ -6,7 +6,7 @@ Integration of wysiwyg edit form for a page with HAX.
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

@@ -1,7 +1,7 @@
 import "../simple-colors.js";
 /* This is strictly to demo the other tools */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style">
       .theme-selector {
         border: 1px solid #ddd;

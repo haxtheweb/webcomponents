@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "jarallax/dist/jarallax.min.js";
 import "jarallax/dist/jarallax-video.min.js";
 import "jarallax/dist/jarallax-element.min.js";
@@ -11,7 +11,7 @@ import "jarallax/dist/jarallax-element.min.js";
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

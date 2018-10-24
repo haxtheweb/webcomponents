@@ -815,3 +815,7 @@ export class HAXWiring {
     };
   }
 }
+
+// ensure HAXPropertiesBehaviors exists
+window.HAXBehaviors = window.HAXBehaviors || {};
+window.HAXBehaviors.PropertiesBehaviors = new HAXWiring();

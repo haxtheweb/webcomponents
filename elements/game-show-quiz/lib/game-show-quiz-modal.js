@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-button/paper-button.js";
@@ -13,7 +13,7 @@ Modal for the quiz show
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

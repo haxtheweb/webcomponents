@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -19,7 +19,7 @@ Displays a cell in the editable-table-display mode
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style">
       :host paper-button {
         padding: 0;

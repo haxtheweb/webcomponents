@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "hax-body/hax-store.js";
 import "hax-body/hax-body.js";
 import "hax-body/hax-autoloader.js";
@@ -22,7 +22,7 @@ is no edit state and that it is always editing effectively.
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

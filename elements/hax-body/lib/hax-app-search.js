@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-styles/paper-styles.js";
@@ -21,7 +21,7 @@ import "./hax-app-search-result.js";
  - hax-body - the text are ultimately we are trying to insert this item into
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style">
       :host {
         display: block;

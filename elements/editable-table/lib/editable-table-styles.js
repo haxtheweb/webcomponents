@@ -1,5 +1,5 @@
-import "@polymer/polymer/polymer.js";
-const $_documentContainer = document.createElement("div");
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<dom-module id="editable-table-styles">

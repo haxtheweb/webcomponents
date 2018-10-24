@@ -1,8 +1,8 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "../lrn-icons.js";
 Polymer({
-  _template: `
+  _template: html`
   <ul>
   <template is="dom-repeat" items="[[iconList]]">
     <li>

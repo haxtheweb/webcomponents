@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "oer-schema/oer-schema.js";
 /**
 `lrn-page`
@@ -8,7 +8,7 @@ so that all content produced has a baseline level of being identified as OER.
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

@@ -3,7 +3,7 @@ import "@polymer/marked-element/marked-element.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "./lrn-markdown-editor-editor.js";
 Polymer({
-  _template: `
+  _template: html`
     <style>
        :host {
         display: block;

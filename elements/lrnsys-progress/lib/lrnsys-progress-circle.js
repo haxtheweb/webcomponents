@@ -5,7 +5,7 @@ import "@polymer/paper-spinner/paper-spinner.js";
 import "@polymer/neon-animation/web-animations.js";
 import "@polymer/iron-icons/iron-icons.js";
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         --paper-button-ink-color: var(--lrnsys-progress-color, --paper-green-500);

@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 /**
 `lrndesign-contentblock`
 An incredibly basic content block
@@ -6,7 +6,7 @@ An incredibly basic content block
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
   <style>
       :host {
         display: inline-block;

@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 /**
 `simple-outline-theme`
 A LRN polymer app
@@ -12,7 +12,7 @@ A LRN polymer app
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

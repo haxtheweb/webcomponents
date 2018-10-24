@@ -15,7 +15,7 @@ import "./lib/shapes.js";
  * @polymerBehavior MaterializeCSSBehaviors.ColorBehaviors
  * @demo demo/index.html
  */
-const $_documentContainer = document.createElement("div");
+var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<dom-module id="materializecss-styles">

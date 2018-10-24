@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-input/iron-input.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 import "./ssn-validator.js";
@@ -6,7 +6,7 @@ import { Polymer } from "@polymer/polymer/lib/legacy/polymer-fn.js";
 import { IronValidatableBehavior } from "@polymer/iron-validatable-behavior/iron-validatable-behavior.js";
 import { DomModule } from "@polymer/polymer/lib/elements/dom-module.js";
 import { Element } from "@polymer/polymer/polymer-element.js";
-const $_documentContainer = document.createElement("div");
+var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<dom-module id="ssn-input">

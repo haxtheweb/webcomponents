@@ -1,11 +1,11 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import "@polymer/paper-material/paper-material.js";
 import "../eco-json-schema-wizard.js";
 import "ace-builds/src/ace.js";
 import "jsoneditor/dist/jsoneditor.min.js";
 import "./schema.js";
-const $_documentContainer = document.createElement("div");
+var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-form-live-schema-demo">

@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import "@polymer/app-localize-behavior/app-localize-behavior.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -10,7 +10,7 @@ import "@polymer/paper-styles/typography.js";
 import "geo-location/geo-location.js";
 import "google-map/google-map.js";
 import "google-map/google-map-marker.js";
-const $_documentContainer = document.createElement("div");
+var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-geolocation">

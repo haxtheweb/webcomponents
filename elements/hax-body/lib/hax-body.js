@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-menu/paper-menu.js";
 import "@polymer/paper-item/paper-item.js";
 import "grid-plate/grid-plate.js";
@@ -8,7 +8,7 @@ import "./hax-inline-context.js";
 import "./hax-ce-context.js";
 import "./hax-plate-context.js";
 import "./hax-input-mixer.js";
-const $_documentContainer = document.createElement("div");
+var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<dom-module id="hax-body">

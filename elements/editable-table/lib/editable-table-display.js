@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "dropdown-select/dropdown-select.js";
 import "@polymer/paper-item/paper-item.js";
 import "simple-colors/simple-colors.js";
@@ -41,7 +41,7 @@ for more information.)
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style" include="editable-table-styles">
       :host[dark] .caption {
         padding: 0.25em 0.25em 0;

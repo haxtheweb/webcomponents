@@ -1,9 +1,9 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "smooth-scroll/smooth-scroll.js";
 import "./map-menu-container.js";
 import "./map-menu-builder.js";
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         --map-menu-active-color: rgba(0,0,0, .1);

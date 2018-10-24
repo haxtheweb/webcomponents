@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "./chartist-lib.js";
 /**
 `chartist-render`
@@ -13,7 +13,7 @@ A LRN element
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

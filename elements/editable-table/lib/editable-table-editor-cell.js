@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "web-animations-js/web-animations-next-lite.min.js";
 import "@polymer/iron-autogrow-textarea/iron-autogrow-textarea.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
@@ -23,7 +23,7 @@ An editable cell in the editable-table-editor
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style">
       :host {
         padding: 0;

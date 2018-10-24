@@ -1,7 +1,7 @@
 import "./map-menu-submenu.js";
 import "./map-menu-item.js";
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
 `jwt-login`
@@ -11,7 +11,7 @@ a simple element to check for and fetch JWTs
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         visibility: hidden;

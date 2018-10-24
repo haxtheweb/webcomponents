@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "./editable-table-behaviors.js";
@@ -47,7 +47,7 @@ edit mode (editable-table-editor.html).
 </editable-table>
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

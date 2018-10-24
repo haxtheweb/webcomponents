@@ -2,7 +2,7 @@ import "./lrndesign-mapmenu-item.js";
 import "./lrndesign-mapmenu-header.js";
 import "@polymer/paper-button/paper-button.js";
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

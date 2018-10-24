@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-layout/app-layout.js";
 import "@polymer/neon-animation/web-animations.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
@@ -11,7 +11,7 @@ import "simple-colors/simple-colors.js";
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style" include="simple-colors">
       :host {
         display: block;

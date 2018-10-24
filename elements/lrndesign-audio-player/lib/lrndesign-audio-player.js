@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
@@ -40,7 +40,7 @@ Custom property                             | Description                       
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
 
       :host {

@@ -2,7 +2,7 @@ import "/node_modules/google-webfont-loader/google-webfont-loader.js";
 import "/src/lrnapp-studio-app/lrnapp-studio-app.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import "@webcomponents/webcomponentsjs/webcomponents-lite.js";
-const $_documentContainer = document.createElement("div");
+var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<title>lrnapp-studio-app</title><google-webfont-loader fonts="Roboto,Droid Sans,Droid Serif"></google-webfont-loader><style is="custom-style" include="iron-flex iron-flex-alignment"></style><style>

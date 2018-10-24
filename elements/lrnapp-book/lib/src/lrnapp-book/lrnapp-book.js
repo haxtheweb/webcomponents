@@ -15,7 +15,7 @@ A LRN element
   author mode - authoring mode
 */
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles"></style>
     <style>
       :host {

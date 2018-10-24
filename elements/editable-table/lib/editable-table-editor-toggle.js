@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "web-animations-js/web-animations-next-lite.min.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
@@ -24,7 +24,7 @@ interface (editable-table.html).
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

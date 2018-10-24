@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-toolbar/paper-toolbar.js";
 import "@polymer/paper-input/paper-input.js";
@@ -40,7 +40,7 @@ Another awesome feature is dynamically load PDF file. So you can change the `src
 @hero hero.svg
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

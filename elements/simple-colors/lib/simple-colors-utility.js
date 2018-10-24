@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 
 Polymer.SimpleColorsUtility = Polymer({
   is: "simple-colors-utility"

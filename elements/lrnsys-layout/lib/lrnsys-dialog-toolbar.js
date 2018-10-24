@@ -1,8 +1,8 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "./lrnsys-dialog-toolbar-button.js";
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style">
      :host {
         display: block;

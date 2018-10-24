@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-list/iron-list.js";
 import "./hax-stax-browser-item.js";
 /**
@@ -11,7 +11,7 @@ Select a stack / template to insert
  - stax - silly name for the general public when talking about custom elements and what it provides in the end.
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

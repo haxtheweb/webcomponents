@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -20,7 +20,7 @@ as the events being bubbled up include HTML nodes to inject into something
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

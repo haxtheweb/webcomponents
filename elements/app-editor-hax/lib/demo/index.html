@@ -22,7 +22,7 @@
         See: https://github.com/Polymer/polymer-modulizer/issues/154
         -->
     <script type="module">
-const $_documentContainer = document.createElement('div');
+var $_documentContainer = document.createElement('div');
 $_documentContainer.setAttribute('style', 'display: none;');
 
 $_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles">
@@ -33,7 +33,7 @@ document.head.appendChild($_documentContainer);
   </head>
   <body>
     <script type="module">
-const $_documentContainer = document.createElement('div');
+var $_documentContainer = document.createElement('div');
 
 $_documentContainer.innerHTML = `<div style="bottom: 10px; right: 10px; position: fixed; z-index: 10000">
       <paper-button onclick="importdata()">Import</paper-button>
@@ -119,7 +119,7 @@ document.body.addEventListener('app-editor-hax-save', function(e) {
 });
 </script>
     <script type="module">
-const $_documentContainer = document.createElement('div');
+var $_documentContainer = document.createElement('div');
 
 $_documentContainer.innerHTML = `<div style="margin: 4em auto;width:80%;">
       <h1>Basic app-editor-hax demo</h1>

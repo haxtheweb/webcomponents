@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "schema-behaviors/schema-behaviors.js";
 import "simple-colors/simple-colors.js";
 import "@polymer/iron-pages/iron-pages.js";
@@ -20,7 +20,7 @@ A simple blog and associated elements
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style">
       :host {
         display: block;

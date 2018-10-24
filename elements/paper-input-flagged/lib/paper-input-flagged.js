@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-input/paper-input-behavior.js";
@@ -14,7 +14,7 @@ A LRN element
  - flagged - a piece of content with a status message indicating there's an issue with the input by the user. This isn't formal validation but more of feedback or suggestions about what they are entering. The default is feedback for alt metadata, useful for images.
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "mtz-marked-editor/mtz-marked-editor.js";
 import "mtz-marked-editor/mtz-marked-control-generic-wrap.js";
 import "mtz-marked-editor/mtz-marked-control-generic-line.js";
@@ -9,7 +9,7 @@ import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-input/paper-textarea.js";
 import "@polymer/paper-input/paper-input.js";
 Polymer({
-  _template: `
+  _template: html`
     <style>
        :host {
         display: block;

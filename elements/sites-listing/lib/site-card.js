@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-card/paper-card.js";
 /**
 `site-card`
@@ -7,7 +7,7 @@ A simple card for representing a site
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: inline-flex;

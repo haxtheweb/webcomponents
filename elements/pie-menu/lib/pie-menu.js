@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
 `pie-menu`
@@ -15,7 +15,7 @@ SVG Menu based on the excellent resource at : https://sarasoueidan.com/tools/cir
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host, 
       :host > div {

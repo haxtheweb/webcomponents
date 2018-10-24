@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-button/paper-button.js";
 /**
 `editable-table-editor-insdel`
@@ -20,7 +20,7 @@ deletes a row or column .
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

@@ -2,7 +2,7 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-button/paper-button.js";
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

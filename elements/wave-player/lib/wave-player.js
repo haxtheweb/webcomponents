@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-material/paper-material.js";
 import "@polymer/paper-fab/paper-fab.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
@@ -8,7 +8,7 @@ import "hax-body-behaviors/hax-body-behaviors.js";
 import "schema-behaviors/schema-behaviors.js";
 import "./wavesurferimport.js";
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         min-width: 480px;

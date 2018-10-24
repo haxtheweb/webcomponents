@@ -1,6 +1,6 @@
 import "build/build/default/build.js";
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles"></style>
     <style>
       :host {

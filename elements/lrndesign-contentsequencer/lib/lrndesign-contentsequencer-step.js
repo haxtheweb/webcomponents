@@ -1,9 +1,9 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "./shared-style.js";
 import "./step-style.js";
 import "./syntax-style.js";
 import "google-prettify/src/prettify.js";
-const $_documentContainer = document.createElement("div");
+var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<dom-module id="lrndesign-contentsequencer-step">

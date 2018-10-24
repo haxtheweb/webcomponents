@@ -3,7 +3,7 @@ import "@polymer/iron-icons/image-icons.js";
 import "./simple-colors.js";
 import "./simple-colors-picker-swatch.js";
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style">
         :host {
           display: inline-block;

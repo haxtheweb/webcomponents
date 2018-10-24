@@ -1,5 +1,5 @@
-import "@polymer/polymer/polymer.js";
-import "materializecss-styles/materializecss-styles.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "hax-body-behaviors/hax-body-behaviors.js";
 import "schema-behaviors/schema-behaviors.js";
 import "@polymer/iron-image/iron-image.js";
@@ -16,7 +16,7 @@ Layers images over each other with a slider interface to compare them
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

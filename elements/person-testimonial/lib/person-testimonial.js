@@ -1,9 +1,9 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "hax-body-behaviors/hax-body-behaviors.js";
-import "materializecss-styles/materializecss-styles.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./person-testimonial-icon.js";
 /**
 `person-testimonial`
@@ -12,7 +12,7 @@ import "./person-testimonial-icon.js";
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles">
       :host {
         display: block;

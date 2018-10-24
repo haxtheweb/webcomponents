@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
@@ -16,7 +16,7 @@ A button used in a11y-media-controls
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         margin: 0;

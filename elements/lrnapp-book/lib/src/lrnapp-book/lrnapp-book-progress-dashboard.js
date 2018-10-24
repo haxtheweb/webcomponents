@@ -12,7 +12,7 @@ A LRN element
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles"></style>
     <style>
       :host {

@@ -1,6 +1,6 @@
 import "./simple-colors.js";
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style">
       :host {
         padding: 0;

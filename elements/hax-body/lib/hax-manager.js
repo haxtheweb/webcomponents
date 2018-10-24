@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-button/paper-button.js";
@@ -6,7 +6,7 @@ import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "simple-colors/simple-colors.js";
 import "vaadin-upload/vaadin-upload.js";
-import "materializecss-styles/materializecss-styles.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./hax-preview.js";
 import "./hax-app-browser.js";
 import "./hax-gizmo-browser.js";
@@ -25,7 +25,7 @@ A LRN element for brokering the UI for api endpoints both in querying and upload
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style" include="materializecss-styles">
       :host {
         display: block;

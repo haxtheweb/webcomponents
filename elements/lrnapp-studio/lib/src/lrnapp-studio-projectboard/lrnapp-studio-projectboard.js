@@ -1,11 +1,11 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
 import "scary-gallery/scary-gallery.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "../lrnapp-studio-displayboard/lrnapp-studio-displayboard.js";
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

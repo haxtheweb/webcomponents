@@ -1,5 +1,5 @@
-import "@polymer/polymer/polymer.js";
-import "materializecss-styles/materializecss-styles.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "schema-behaviors/schema-behaviors.js";
 import "map-menu/map-menu.js";
 import "@polymer/iron-ajax/iron-ajax.js";
@@ -19,7 +19,7 @@ A LRN element
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles">
       :host {
         display: block;

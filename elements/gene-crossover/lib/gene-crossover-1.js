@@ -1,6 +1,6 @@
 import "lrndesign-animationctrl/lrndesign-animationctrl.js";
 Polymer({
-  _template: `
+  _template: html`
         <style>
              :host {
                 display: block;

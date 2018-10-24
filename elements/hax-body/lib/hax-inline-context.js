@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "md-extra-icons/md-extra-icons.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/paper-item/paper-item.js";
@@ -19,7 +19,7 @@ A context menu that provides common text based authoring options.
  - context menu - this is a menu of text based buttons and events for use in a larger solution.
 */
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles-colors">
       :host {
         height: 40px;

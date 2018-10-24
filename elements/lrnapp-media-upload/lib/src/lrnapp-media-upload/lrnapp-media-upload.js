@@ -1,7 +1,7 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "vaadin-upload/vaadin-upload.js";
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

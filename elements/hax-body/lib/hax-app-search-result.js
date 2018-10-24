@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-styles/paper-styles.js";
@@ -12,7 +12,7 @@ import "@polymer/paper-styles/paper-styles.js";
  - hax-app
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: inline-flex;

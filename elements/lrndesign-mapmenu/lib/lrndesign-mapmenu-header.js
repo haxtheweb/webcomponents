@@ -3,7 +3,7 @@ import "@polymer/iron-collapse/iron-collapse.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-behaviors/iron-button-state.js";
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

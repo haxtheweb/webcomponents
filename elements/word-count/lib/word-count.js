@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 /**
 `word-count`
 Count the words on whatever this wraps
@@ -7,7 +7,7 @@ Count the words on whatever this wraps
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

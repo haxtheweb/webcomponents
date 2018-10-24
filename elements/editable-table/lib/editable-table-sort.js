@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./editable-table-iconset.js";
@@ -22,7 +22,7 @@ table-editor-display mode (table-editor-display.html).
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style">
       :host paper-button {
         padding: 0;

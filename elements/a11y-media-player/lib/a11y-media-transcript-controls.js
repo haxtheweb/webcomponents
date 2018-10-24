@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "simple-search/simple-search.js";
 import "simple-colors/simple-colors.js";
 import "./a11y-media-behaviors.js";
@@ -25,7 +25,7 @@ A controls for the transcript element
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style is="custom-style">
         :host { 
           background-color: var(--a11y-media-transcript-bg-color);

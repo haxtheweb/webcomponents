@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "./a11y-media-behaviors.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 /**
@@ -19,7 +19,7 @@ Custom styles:
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

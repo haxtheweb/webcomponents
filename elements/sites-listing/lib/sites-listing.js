@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-button/paper-button.js";
@@ -16,7 +16,7 @@ A LRN element
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         height: 100vh;

@@ -1,10 +1,10 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "./mtz-marked-control-wrapper-behavior.js";
 import { Polymer } from "@polymer/polymer/lib/legacy/polymer-fn.js";
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: inline-block;

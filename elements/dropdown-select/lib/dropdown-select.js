@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-listbox/paper-listbox.js";
@@ -28,7 +28,7 @@ An easy to use, works as expected dropdown menu. Add slotted items like follows:
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

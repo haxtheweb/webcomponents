@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "hax-body/hax-store.js";
 import "hax-body/hax-body.js";
 import "hax-body/hax-autoloader.js";
@@ -24,7 +24,7 @@ A LRN polymer app
 
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;

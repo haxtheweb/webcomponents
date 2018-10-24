@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/neon-animation/web-animations.js";
 import "@polymer/neon-animation/neon-animation-behavior.js";
 /**

@@ -1,4 +1,4 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-autogrow-textarea/iron-autogrow-textarea.js";
 import { IronFormElementBehavior } from "@polymer/iron-form-element-behavior/iron-form-element-behavior.js";
 import { PaperInputBehavior } from "./paper-input-behavior.js";
@@ -32,7 +32,7 @@ See `Polymer.PaperInputContainer` for a list of custom properties used to
 style this element.
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;
