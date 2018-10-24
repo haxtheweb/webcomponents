@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-stepper-hax.json"
     }
   },
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "Automated conversion of lrndesign-stepper/",
   "repository": {
     "type": "git",

@@ -16,7 +16,7 @@
       "hax": "src/polymer-training-hax.json"
     }
   },
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "Automated conversion of polymer-training/",
   "repository": {
     "type": "git",

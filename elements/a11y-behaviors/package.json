@@ -11,7 +11,7 @@
       "js": "src/a11y-behaviors.js"
     }
   },
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "Automated conversion of a11y-behaviors",
   "repository": {
     "type": "git",

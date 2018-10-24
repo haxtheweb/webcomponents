@@ -11,7 +11,7 @@
       "js": "src/a11y-gif-player.js"
     }
   },
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "Play gifs in an accessible way by having the user click to play their animation",
   "repository": {
     "type": "git",

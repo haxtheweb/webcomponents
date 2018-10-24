@@ -16,7 +16,7 @@
       "hax": "src/lrnapp-media-upload-hax.json"
     }
   },
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "Automated conversion of lrnapp-media-upload/",
   "repository": {
     "type": "git",

@@ -11,7 +11,7 @@
       "js": "src/iron-a11y-announcer.js"
     }
   },
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "Automated conversion of iron-a11y-announcer/",
   "repository": {
     "type": "git",

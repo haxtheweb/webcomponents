@@ -11,7 +11,7 @@
       "js": "src/lrn-table.js"
     }
   },
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "Accessibly render a HTML table from a csv file",
   "repository": {
     "type": "git",

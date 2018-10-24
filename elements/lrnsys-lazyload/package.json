@@ -16,7 +16,7 @@
       "hax": "src/lrnsys-lazyload-hax.json"
     }
   },
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "Automated conversion of lrnsys-lazyload/",
   "repository": {
     "type": "git",

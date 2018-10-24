@@ -16,7 +16,7 @@
       "hax": "src/media-video-hax.json"
     }
   },
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "Automated conversion of media-video/",
   "repository": {
     "type": "git",

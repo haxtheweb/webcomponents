@@ -16,7 +16,7 @@
       "hax": "src/chemical-element-visualisation-hax.json"
     }
   },
-  "version": "0.0.27",
+  "version": "0.0.28",
   "description": "Automated conversion of chemical-element-visualisation/",
   "repository": {
     "type": "git",
