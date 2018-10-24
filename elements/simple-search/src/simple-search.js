@@ -1,8 +1,8 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
-import "./simple-search-content.js";
+import "./lib/simple-search-content.js";
 /**
 `simple-search`
 A button used in simple-search
@@ -80,7 +80,8 @@ A button used in simple-search
   @apply --simple-search-button-disabled;
 */
 Polymer({
-  _template: `
+  _template: html`
+  <custom-style>
     <style is="custom-style">
       :host {
         display: flex;
@@ -129,6 +130,7 @@ Polymer({
         display: none;
       }
     </style>
+    </custom-style>
     <paper-input id="input" always-float-label\$="[[alwaysFloatLabel]]" label="[[searchInputLabel]]" no-label-float\$="[[noLabelFloat]]">
       <iron-icon icon="[[searchInputIcon]]" slot="prefix"></iron-icon>
     </paper-input>
