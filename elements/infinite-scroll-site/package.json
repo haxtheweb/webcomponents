@@ -16,7 +16,7 @@
       "hax": "src/infinite-scroll-site-hax.json"
     }
   },
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "Automated conversion of infinite-scroll-site/",
   "repository": {
     "type": "git",

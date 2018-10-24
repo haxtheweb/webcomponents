@@ -16,7 +16,7 @@
       "hax": "src/cms-hax-hax.json"
     }
   },
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "Automated conversion of cms-hax/",
   "repository": {
     "type": "git",

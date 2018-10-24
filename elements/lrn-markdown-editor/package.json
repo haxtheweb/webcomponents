@@ -16,7 +16,7 @@
       "hax": "src/lrn-markdown-editor-hax.json"
     }
   },
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "Automated conversion of lrn-markdown-editor/",
   "repository": {
     "type": "git",

@@ -16,7 +16,7 @@
       "hax": "src/responsive-grid-hax.json"
     }
   },
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "Automated conversion of responsive-grid/",
   "repository": {
     "type": "git",
