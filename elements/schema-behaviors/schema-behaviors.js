@@ -2,91 +2,95 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { SchemaBehaviors };
+// ensure SchemaBehaviors exists
+window.SchemaBehaviors = window.SchemaBehaviors || {};
 /**
- * `schema-behaviors`
- * `Automated conversion of schema-behaviors/`
+ * `SchemaBehaviors`
+ *
+ * makes it easier to wire custom elements for
+ * schematic metadata by allowing prefixes to be defined in an object
+ * structure. This makes it easier to add and remove them then working
+ * against the attribute directly. It also helps with generating
+ * resource IDs automatically if they don't already exist on the element.
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
  * @polymer
- * @demo demo/index.html
+ * @polymerBehavior SchemaBehaviors.Schema
  */
-class SchemaBehaviors extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
-
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Schema behaviors",
-        description: "Automated conversion of schema-behaviors/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Behaviors"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
+window.SchemaBehaviors.Schema = {
+  properties: {
+    /**
+     * Unique Resource ID, generated when schemaMap processes.
+     */
+    schemaResourceID: {
+      type: String,
+      value: ""
+    },
+    /**
+     * Schema Map for this element.
+     */
+    schemaMap: {
+      type: Object,
+      value: {
+        prefix: {
+          oer: "http://oerschema.org/",
+          schema: "http://schema.org/",
+          dc: "http://purl.org/dc/terms/",
+          foaf: "http://xmlns.com/foaf/0.1/",
+          cc: "http://creativecommons.org/ns#",
+          bib: "http://bib.schema.org"
         }
       },
-      settings: {
-        quick: [],
-        configure: [],
-        advanced: []
-      }
-    };
-  }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
-
+      observer: "_schemaMapChanged"
+    }
+  },
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * Generate a uinque ID
    */
-  static get tag() {
-    return "schema-behaviors";
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      SchemaBehaviors.haxProperties,
-      SchemaBehaviors.tag,
-      this
+  generateResourceID: function() {
+    function idPart() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+    return (
+      "#" +
+      idPart() +
+      idPart() +
+      "-" +
+      idPart() +
+      "-" +
+      idPart() +
+      "-" +
+      idPart()
     );
-  }
+  },
   /**
-   * life cycle, element is removed from the DOM
+   * Notice the schema map has changed, reprocess attributes.
    */
-  //disconnectedCallback() {}
-}
-window.customElements.define(SchemaBehaviors.tag, SchemaBehaviors);
+  _schemaMapChanged: function(newValue, oldValue) {
+    if (typeof newValue !== typeof undefined) {
+      // use this to tie into schemaResourceID build
+      this.schemaResourceID = this.getAttribute("resource");
+      // if it still doesn't have one then we have to check
+      if (this.schemaResourceID == "" || this.schemaResourceID == null) {
+        this.schemaResourceID = this.generateResourceID();
+        this.setAttribute("resource", this.schemaResourceID);
+      }
+      let prefixes = newValue.prefix;
+      let prefix = "";
+      // build prefix string
+      for (var property in prefixes) {
+        if (prefixes.hasOwnProperty(property)) {
+          prefix += property + ":" + prefixes[property] + " ";
+        }
+      }
+      // set prefix on the main element itself
+      if (prefix != "") {
+        this.setAttribute("prefix", prefix);
+      }
+    }
+  }
+};

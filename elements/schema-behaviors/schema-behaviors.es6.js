@@ -1,10 +1,1 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";export{SchemaBehaviors};class SchemaBehaviors extends PolymerElement{static get template(){return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Schema behaviors",description:"Automated conversion of schema-behaviors/",icon:"icons:android",color:"green",groups:["Behaviors"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[],advanced:[]}}}static get properties(){return{}}static get tag(){return"schema-behaviors"}connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setHaxProperties(SchemaBehaviors.haxProperties,SchemaBehaviors.tag,this)}}window.customElements.define(SchemaBehaviors.tag,SchemaBehaviors);
+window.SchemaBehaviors=window.SchemaBehaviors||{};window.SchemaBehaviors.Schema={properties:{schemaResourceID:{type:String,value:""},schemaMap:{type:Object,value:{prefix:{oer:"http://oerschema.org/",schema:"http://schema.org/",dc:"http://purl.org/dc/terms/",foaf:"http://xmlns.com/foaf/0.1/",cc:"http://creativecommons.org/ns#",bib:"http://bib.schema.org"}},observer:"_schemaMapChanged"}},generateResourceID:function(){function idPart(){return Math.floor(65536*(1+Math.random())).toString(16).substring(1)}return"#"+idPart()+idPart()+"-"+idPart()+"-"+idPart()+"-"+idPart()},_schemaMapChanged:function(newValue){if(typeof newValue!==typeof void 0){this.schemaResourceID=this.getAttribute("resource");if(""==this.schemaResourceID||null==this.schemaResourceID){this.schemaResourceID=this.generateResourceID();this.setAttribute("resource",this.schemaResourceID)}let prefixes=newValue.prefix,prefix="";for(var property in prefixes){if(prefixes.hasOwnProperty(property)){prefix+=property+":"+prefixes[property]+" "}}if(""!=prefix){this.setAttribute("prefix",prefix)}}}};
