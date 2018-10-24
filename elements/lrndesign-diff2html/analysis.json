@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrndesign-diff-2-html`\n`Automated conversion of lrndesign-diff2html/`",
+      "description": "`lrndesign-diff2html`\n`Automated conversion of lrndesign-diff2html/`",
       "summary": "",
-      "path": "lrndesign-diff-2-html.js",
+      "path": "lrndesign-diff2html.js",
       "properties": [
         {
           "name": "__dataClientsReady",

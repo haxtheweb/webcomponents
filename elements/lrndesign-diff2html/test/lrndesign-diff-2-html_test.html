@@ -5,29 +5,29 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
     <script src="../node_modules/wct-browser-legacy/browser.js"></script>
-    <script type="module" src="../lrndesign-diff-2-html.js"></script>
+    <script type="module" src="../lrndesign-diff2html.js"></script>
   </head>
   <body>
 
-    <lrndesign-diff-2-html>
+    <lrndesign-diff2html>
       This is the element content.
-    </lrndesign-diff-2-html>
+    </lrndesign-diff2html>
 <test-fixture id="BasicTestFixture">
   <template>
-    <lrndesign-diff-2-html></lrndesign-diff-2-html>
+    <lrndesign-diff2html></lrndesign-diff2html>
   </template>
 </test-fixture>
 
 <test-fixture id="ChangedPropertyTestFixture">
   <template>
-    <lrndesign-diff-2-html></lrndesign-diff-2-html>
+    <lrndesign-diff2html></lrndesign-diff2html>
   </template>
 </test-fixture>
 
 <script type="module">
-  suite('<lrndesign-diff-2-html>', () => {
+  suite('<lrndesign-diff2html>', () => {
     test('it should upgrade', () => {
-      assert.instanceOf(document.querySelector('lrndesign-diff-2-html'), customElements.get("lrndesign-diff-2-html", 'lrndesign-diff-2-html should be an instance of lrndesignDiff2Html'));
+      assert.instanceOf(document.querySelector('lrndesign-diff2html'), customElements.get("lrndesign-diff2html", 'lrndesign-diff2html should be an instance of lrndesignDiff2Html'));
     });
 
     /*test('setting a property on the element works', () => {

@@ -1,4 +1,4 @@
-# &lt;lrndesign-diff-2-html&gt;
+# &lt;lrndesign-diff2html&gt;
 
 Diff
 > Automated conversion of lrndesign-diff2html/
@@ -8,14 +8,14 @@ To use this web component in your project you can utilize one of the following s
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/lrndesign-diff-2-html.js';
+import '@lrnwebcomponents/lrndesign-diff2html.js';
 /* At top of an application */
-<script type="module" src="lrndesign-diff-2-html.js"></script>
+<script type="module" src="lrndesign-diff2html.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/lrndesign-diff-2-html.js';
+  import '@lrnwebcomponents/lrndesign-diff2html.js';
 
-  import {LrndesignDiff2Html} from '@lrnwebcomponents/lrndesign-diff-2-html';
+  import {LrndesignDiff2Html} from '@lrnwebcomponents/lrndesign-diff2html';
 </script>
 ```
 

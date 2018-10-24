@@ -91,7 +91,7 @@ define([
         {
           key: "tag",
           get: function get() {
-            return "lrndesign-diff-2-html";
+            return "lrndesign-diff2html";
           }
         }
       ]

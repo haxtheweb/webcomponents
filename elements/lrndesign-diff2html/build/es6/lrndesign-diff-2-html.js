@@ -38,7 +38,7 @@ class LrndesignDiff2Html extends PolymerElement {
     return {};
   }
   static get tag() {
-    return "lrndesign-diff-2-html";
+    return "lrndesign-diff2html";
   }
   connectedCallback() {
     super.connectedCallback();

@@ -1,19 +1,19 @@
 {
-  "name": "@lrnwebcomponents/lrndesign-diff-2-html",
+  "name": "@lrnwebcomponents/lrndesign-diff2html",
   "wcfactory": {
     "className": "LrndesignDiff2Html",
     "customElementClass": "PolymerElement",
-    "elementName": "lrndesign-diff-2-html",
+    "elementName": "lrndesign-diff2html",
     "generator-wcfactory-version": "0.3.1",
     "useHAX": true,
     "useSass": false,
     "files": {
-      "css": "src/lrndesign-diff-2-html.css",
-      "scss": "src/lrndesign-diff-2-html.scss",
-      "html": "src/lrndesign-diff-2-html.html",
-      "js": "src/lrndesign-diff-2-html.js",
-      "properties": "src/lrndesign-diff-2-html-properties.json",
-      "hax": "src/lrndesign-diff-2-html-hax.json"
+      "css": "src/lrndesign-diff2html.css",
+      "scss": "src/lrndesign-diff2html.scss",
+      "html": "src/lrndesign-diff2html.html",
+      "js": "src/lrndesign-diff2html.js",
+      "properties": "src/lrndesign-diff2html-properties.json",
+      "hax": "src/lrndesign-diff2html-hax.json"
     }
   },
   "version": "0.0.23",
@@ -22,12 +22,12 @@
     "type": "git",
     "url": "git@github.com/elmsln/lrnwebcomponents.git"
   },
-  "main": "lrndesign-diff-2-html.js",
-  "module": "lrndesign-diff-2-html.es6.js",
-  "umd": "lrndesign-diff-2-html.umd.js",
-  "amd": "lrndesign-diff-2-html.amd.js",
+  "main": "lrndesign-diff2html.js",
+  "module": "lrndesign-diff2html.es6.js",
+  "umd": "lrndesign-diff2html.umd.js",
+  "amd": "lrndesign-diff2html.amd.js",
   "scripts": {
-    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndesign-diff-2-html/test/",
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndesign-diff2html/test/",
     "start": "yarn run dev",
     "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
     "dev": "open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'",
@@ -62,5 +62,6 @@
   "keywords": [
     "web-components",
     "html"
-  ]
+  ],
+  "gitHead": "3ade59481a98bfef47458c043ec0f147f4b77639"
 }
