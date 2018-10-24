@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "hax-body-behaviors/hax-body-behaviors.js";
-import "schema-behaviors/schema-behaviors.js";
+import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  `citation-element`
  An element dedicated to presenting and managing a correct citation on the web

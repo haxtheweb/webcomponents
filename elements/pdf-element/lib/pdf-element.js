@@ -6,7 +6,7 @@ import "@polymer/iron-input/iron-input.js";
 import "@polymer/paper-spinner/paper-spinner.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "hax-body-behaviors/hax-body-behaviors.js";
-import "schema-behaviors/schema-behaviors.js";
+import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "pdfjs-dist/web/compatibility.js";
 import "pdfjs-dist/build/pdf.js";
 import "pdfjs-dist/build/pdf.worker.js";

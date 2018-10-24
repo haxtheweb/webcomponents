@@ -2,7 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/iron-image/iron-image.js";
 import "hax-body-behaviors/hax-body-behaviors.js";
-import "schema-behaviors/schema-behaviors.js";
+import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
  `a11y-gif-player`
  Play gifs in an accessible way by having the user click to play their animation.

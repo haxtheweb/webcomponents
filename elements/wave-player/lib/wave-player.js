@@ -5,7 +5,7 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "hax-body-behaviors/hax-body-behaviors.js";
-import "schema-behaviors/schema-behaviors.js";
+import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "./wavesurferimport.js";
 Polymer({
   _template: html`

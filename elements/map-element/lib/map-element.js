@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "hax-body-behaviors/hax-body-behaviors.js";
-import "schema-behaviors/schema-behaviors.js";
+import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "web-map/web-map.js";
 Polymer({
   _template: html`

@@ -6,7 +6,7 @@ import "@polymer/paper-ripple/paper-ripple.js";
 import "@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "hax-body-behaviors/hax-body-behaviors.js";
-import "schema-behaviors/schema-behaviors.js";
+import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "./paper-audio-icons.js";
 /**
 A custom audio player with material paper style and clean design.

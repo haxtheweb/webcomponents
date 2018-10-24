@@ -8,16 +8,11 @@
     "useHAX": true,
     "useSass": false,
     "files": {
-      "css": "src/lrn-table.css",
-      "scss": "src/lrn-table.scss",
-      "html": "src/lrn-table.html",
-      "js": "src/lrn-table.js",
-      "properties": "src/lrn-table-properties.json",
-      "hax": "src/lrn-table-hax.json"
+      "js": "src/lrn-table.js"
     }
   },
   "version": "0.0.24",
-  "description": "Automated conversion of lrn-table/",
+  "description": "Accessibly render a HTML table from a csv file",
   "repository": {
     "type": "git",
     "url": "git@github.com/elmsln/lrnwebcomponents.git"
@@ -41,7 +36,9 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.20",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.0.5",
+    "@polymer/paper-spinner": "^3.0.1",
+    "@polymer/paper-tooltip": "^3.0.1"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

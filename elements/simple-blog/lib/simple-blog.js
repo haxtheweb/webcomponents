@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "schema-behaviors/schema-behaviors.js";
+import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "simple-colors/simple-colors.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
