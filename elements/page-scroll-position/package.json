@@ -16,7 +16,7 @@
       "hax": "src/page-scroll-position-hax.json"
     }
   },
-  "version": "0.0.24",
+  "version": "0.0.25",
   "description": "Automated conversion of page-scroll-position/",
   "repository": {
     "type": "git",

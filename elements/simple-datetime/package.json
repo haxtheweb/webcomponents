@@ -16,7 +16,7 @@
       "hax": "src/simple-datetime-hax.json"
     }
   },
-  "version": "0.0.24",
+  "version": "0.0.25",
   "description": "Automated conversion of simple-datetime/",
   "repository": {
     "type": "git",

@@ -16,7 +16,7 @@
       "hax": "src/lrnsys-redux-hax.json"
     }
   },
-  "version": "0.0.24",
+  "version": "0.0.25",
   "description": "Automated conversion of lrnsys-redux/",
   "repository": {
     "type": "git",

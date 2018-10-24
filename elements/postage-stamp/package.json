@@ -16,7 +16,7 @@
       "hax": "src/postage-stamp-hax.json"
     }
   },
-  "version": "0.0.24",
+  "version": "0.0.25",
   "description": "Automated conversion of postage-stamp/",
   "repository": {
     "type": "git",

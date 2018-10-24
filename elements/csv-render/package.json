@@ -11,7 +11,7 @@
       "js": "src/csv-render.js"
     }
   },
-  "version": "0.0.24",
+  "version": "0.0.25",
   "description": "Remote render a CSV file in place as an accessible table.",
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/materializecss-styles": "^0.0.24",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.25",
     "@polymer/iron-ajax": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.1",

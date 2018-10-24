@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-course-banner-hax.json"
     }
   },
-  "version": "0.0.24",
+  "version": "0.0.25",
   "description": "Automated conversion of lrndesign-course-banner/",
   "repository": {
     "type": "git",
