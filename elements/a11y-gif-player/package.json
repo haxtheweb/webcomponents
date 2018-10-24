@@ -35,10 +35,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.20",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
+    "@lrnwebcomponents/schema-behaviors": "^0.0.28",
     "@polymer/iron-a11y-keys": "^3.0.0",
     "@polymer/iron-image": "^3.0.0",
-    "@polymer/paper-button": "^3.0.0",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
