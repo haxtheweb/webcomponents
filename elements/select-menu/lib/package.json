@@ -5,11 +5,11 @@
   "description": "accepts an array of values and human-readable text and creates a paper-dropdown-menu, provides the value fo the selected item",
   "main": "select-menu.html",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0-pre.1",
-    "@polymer/paper-dropdown-menu": "^3.0.0-pre.1",
-    "@polymer/paper-item": "^3.0.0-pre.1",
-    "@polymer/paper-listbox": "^3.0.0-pre.1",
-    "@polymer/neon-animation": "^3.0.0-pre.1"
+    "@polymer/polymer": "^3.0.0",
+    "@polymer/paper-dropdown-menu": "^3.0.0",
+    "@polymer/paper-item": "^3.0.0",
+    "@polymer/paper-listbox": "^3.0.0",
+    "@polymer/neon-animation": "^3.0.0"
   },
   "devDependencies": {}
 }

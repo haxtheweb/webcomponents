@@ -5,11 +5,11 @@
   "description": "A LRN element",
   "main": "multiple-choice.html",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0-pre.1",
-    "@polymer/paper-radio-button": "^3.0.0-pre.1",
-    "@polymer/paper-button": "^3.0.0-pre.1",
-    "@polymer/paper-toast": "^3.0.0-pre.1",
-    "@polymer/paper-checkbox": "^3.0.0-pre.1"
+    "@polymer/polymer": "^3.0.0",
+    "@polymer/paper-radio-button": "^3.0.0",
+    "@polymer/paper-button": "^3.0.0",
+    "@polymer/paper-toast": "^3.0.0",
+    "@polymer/paper-checkbox": "^3.0.0"
   },
   "devDependencies": {}
 }

@@ -5,8 +5,8 @@
   "description": "A LRN element",
   "main": "grid-plate.html",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0-pre.1",
-    "@polymer/iron-a11y-keys": "^3.0.0-pre.1"
+    "@polymer/polymer": "^3.0.0",
+    "@polymer/iron-a11y-keys": "^3.0.0"
   },
   "devDependencies": {}
 }

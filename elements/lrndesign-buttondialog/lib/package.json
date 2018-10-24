@@ -5,9 +5,9 @@
   "description": "A LRN element",
   "main": "lrndesign-buttondialog.html",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0-pre.1",
-    "@polymer/paper-dialog-behavior": "^3.0.0-pre.1",
-    "@polymer/paper-button": "^3.0.0-pre.1"
+    "@polymer/polymer": "^3.0.0",
+    "@polymer/paper-dialog-behavior": "^3.0.0",
+    "@polymer/paper-button": "^3.0.0"
   },
   "devDependencies": {}
 }

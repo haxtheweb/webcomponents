@@ -1,5 +1,5 @@
 import "moment-element/moment-element.js";
-import "@lrnwebcomponents/materializecss-styles/colors.js";
+import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/marked-element/marked-element.js";
 import "mtz-marked-editor/mtz-marked-editor.js";

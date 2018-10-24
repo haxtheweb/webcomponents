@@ -5,8 +5,8 @@
   "description": "A structured blockquote element",
   "main": "lrndesign-blockquote.html",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0-pre.1",
-    "@polymer/paper-styles": "^3.0.0-pre.1"
+    "@polymer/polymer": "^3.0.0",
+    "@polymer/paper-styles": "^3.0.0"
   },
   "devDependencies": {}
 }

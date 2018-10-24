@@ -18,7 +18,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0-pre.1"
+    "@polymer/polymer": "^3.0.0"
   },
   "devDependencies": {}
 }

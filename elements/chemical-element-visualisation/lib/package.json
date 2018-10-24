@@ -15,8 +15,8 @@
   "license": "MIT",
   "homepage": "",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0-pre.1",
-    "@polymer/paper-tooltip": "^3.0.0-pre.1"
+    "@polymer/polymer": "^3.0.0",
+    "@polymer/paper-tooltip": "^3.0.0"
   },
   "devDependencies": {}
 }

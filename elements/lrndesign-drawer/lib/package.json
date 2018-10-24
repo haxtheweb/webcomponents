@@ -4,9 +4,9 @@
   "version": "0.0.22",
   "main": "lrndesign-drawer.html",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0-pre.1",
-    "@polymer/app-layout": "^3.0.0-pre.1",
-    "@polymer/paper-tooltip": "^3.0.0-pre.1"
+    "@polymer/polymer": "^3.0.0",
+    "@polymer/app-layout": "^3.0.0",
+    "@polymer/paper-tooltip": "^3.0.0"
   },
   "devDependencies": {}
 }

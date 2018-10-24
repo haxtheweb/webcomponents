@@ -6,9 +6,9 @@
   "main": "team-member.html",
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0-pre.1",
-    "@polymer/iron-icons": "^3.0.0-pre.1",
-    "@polymer/iron-image": "^3.0.0-pre.1"
+    "@polymer/polymer": "^3.0.0",
+    "@polymer/iron-icons": "^3.0.0",
+    "@polymer/iron-image": "^3.0.0"
   },
   "devDependencies": {}
 }

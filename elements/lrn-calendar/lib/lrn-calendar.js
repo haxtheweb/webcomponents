@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "@lrnwebcomponents/materializecss-styles/colors.js";
+import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@polymer/paper-card/paper-card.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/iron-ajax/iron-ajax.js";

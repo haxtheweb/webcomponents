@@ -5,19 +5,14 @@
     "customElementClass": "PolymerElement",
     "elementName": "silly-hax-game",
     "generator-wcfactory-version": "0.3.2",
-    "useHAX": true,
+    "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/silly-hax-game.css",
-      "scss": "src/silly-hax-game.scss",
-      "html": "src/silly-hax-game.html",
-      "js": "src/silly-hax-game.js",
-      "properties": "src/silly-hax-game-properties.json",
-      "hax": "src/silly-hax-game-hax.json"
+      "js": "src/silly-hax-game.js"
     }
   },
   "version": "0.0.28",
-  "description": "Automated conversion of silly-hax-game/",
+  "description": "Automated conversion of silly-hax-game",
   "repository": {
     "type": "git",
     "url": "git@github.com/elmsln/lrnwebcomponents.git"
@@ -40,7 +35,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {

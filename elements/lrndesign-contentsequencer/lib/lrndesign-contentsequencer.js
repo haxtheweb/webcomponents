@@ -14,7 +14,8 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-fab/paper-fab.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/paper-menu/paper-menu.js";
+import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
+import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/paper-item/paper-item.js";
 import "./layout-style.js";
 import "./contentsequencer-style.js";
@@ -39,13 +40,15 @@ $_documentContainer.innerHTML = `<dom-module id="lrndesign-contentsequencer">
               <iron-icon icon="schedule"></iron-icon> <span>[[remaining]]</span>
             </div>
 
-            <paper-menu id="toc" class="flex" selected="{{selected}}" on-iron-select="_allowcontentsequencerComplete">
+            <paper-dropdown-menu id="toc" class="flex" on-iron-select="_allowcontentsequencerComplete">
+              <paper-listbox slot="dropdown-content" selected="{{selected}}">
               <template is="dom-repeat" items="{{steps}}" strip-whitespace="">
                 <paper-item class\$="{{_tocItemClass(selected, index)}}">
                   <i>{{item.step}}</i><span>{{item.label}}</span>
                 </paper-item>
               </template>
-            </paper-menu>
+              </paper-listbox>
+            </paper-dropdown-menu>
           </div>
 
         </div>

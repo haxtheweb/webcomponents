@@ -2,7 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "md-extra-icons/md-extra-icons.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/paper-item/paper-item.js";
-import "@lrnwebcomponents/materializecss-styles/colors.js";
+import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./hax-context-item-menu.js";
 import "./hax-context-item.js";

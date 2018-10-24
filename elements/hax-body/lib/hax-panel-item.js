@@ -9,7 +9,7 @@ import "@polymer/iron-icons/social-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/maps-icons.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/materializecss-styles/colors.js";
+import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 /**
 `hax-panel-item`
 A single button in the hax panel for consistency.

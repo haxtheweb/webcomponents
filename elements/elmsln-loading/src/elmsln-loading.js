@@ -5,7 +5,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
-import "@lrnwebcomponents/materializecss-styles/colors.js";
+import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 /**
  * `elmsln-loading`
  * A spinner to tell the user that something is loading.

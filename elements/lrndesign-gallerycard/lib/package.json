@@ -5,10 +5,10 @@
   "description": "A LRN element",
   "main": "lrndesign-gallerycard.html",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0-pre.1",
-    "@polymer/paper-card": "^3.0.0-pre.1",
-    "@polymer/iron-icons": "^3.0.0-pre.1",
-    "@polymer/iron-image": "^3.0.0-pre.1"
+    "@polymer/polymer": "^3.0.0",
+    "@polymer/paper-card": "^3.0.0",
+    "@polymer/iron-icons": "^3.0.0",
+    "@polymer/iron-image": "^3.0.0"
   },
   "devDependencies": {}
 }

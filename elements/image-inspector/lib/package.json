@@ -4,9 +4,9 @@
   "version": "0.0.22",
   "main": "image-inspector.html",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0-pre.1",
-    "@polymer/iron-icons": "^3.0.0-pre.1",
-    "@polymer/app-layout": "^3.0.0-pre.1"
+    "@polymer/polymer": "^3.0.0",
+    "@polymer/iron-icons": "^3.0.0",
+    "@polymer/app-layout": "^3.0.0"
   },
   "devDependencies": {}
 }

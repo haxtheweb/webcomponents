@@ -5,10 +5,10 @@
   "description": "A LRN element",
   "main": "lrndesign-image.html",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0-pre.1",
-    "@polymer/paper-spinner": "^3.0.0-pre.1",
-    "@polymer/paper-tooltip": "^3.0.0-pre.1",
-    "@polymer/iron-image": "^3.0.0-pre.1"
+    "@polymer/polymer": "^3.0.0",
+    "@polymer/paper-spinner": "^3.0.0",
+    "@polymer/paper-tooltip": "^3.0.0",
+    "@polymer/iron-image": "^3.0.0"
   },
   "devDependencies": {}
 }

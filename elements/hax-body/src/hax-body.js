@@ -1,5 +1,4 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@polymer/paper-menu/paper-menu.js";
 import "@polymer/paper-item/paper-item.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";

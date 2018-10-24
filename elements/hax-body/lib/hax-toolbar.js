@@ -3,7 +3,7 @@ import "@polymer/paper-slider/paper-slider.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "@lrnwebcomponents/materializecss-styles/colors.js";
+import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-toolbar-item.js";

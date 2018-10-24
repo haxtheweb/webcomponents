@@ -5,8 +5,8 @@
   "description": "A LRN element",
   "main": "responsive-grid.html",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0-pre.1",
-    "@polymer/iron-resizable-behavior": "^3.0.0-pre.1"
+    "@polymer/polymer": "^3.0.0",
+    "@polymer/iron-resizable-behavior": "^3.0.0"
   },
   "devDependencies": {}
 }

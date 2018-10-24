@@ -8,12 +8,7 @@
     "useHAX": true,
     "useSass": false,
     "files": {
-      "css": "src/grid-plate.css",
-      "scss": "src/grid-plate.scss",
-      "html": "src/grid-plate.html",
-      "js": "src/grid-plate.js",
-      "properties": "src/grid-plate-properties.json",
-      "hax": "src/grid-plate-hax.json"
+      "js": "src/grid-plate.js"
     }
   },
   "version": "0.0.28",

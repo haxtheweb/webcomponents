@@ -1,8 +1,8 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
-import "@polymer/paper-menu/paper-menu.js";
 import "@polymer/paper-item/paper-item.js";
+import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/iron-validatable-behavior/iron-validatable-behavior.js";
 var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
@@ -39,11 +39,13 @@ $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-enum">
     </style>
 
     <paper-dropdown-menu id="dropdown" class="layout horizontal vertical" value="{{value}}" required="">
-      <paper-menu class="dropdown-content">
+      <paper-dropdown-menu class="dropdown-content">
+        <paper-listbox slot="dropdown-content" selected="0">
         <template is="dom-repeat" items="[[_items]]">
           <paper-item class="flex" label="[[item]]">[[item]]</paper-item>
         </template>
-      </paper-menu>
+        </paper-listbox>
+      </paper-dropdown-menu>
     </paper-dropdown-menu>
 
   </template>

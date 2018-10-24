@@ -5,17 +5,17 @@
   "description": "A LRN element",
   "main": "lrnsys-layout.html",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0-pre.1",
-    "@polymer/app-layout": "^3.0.0-pre.1",
-    "@polymer/paper-tooltip": "^3.0.0-pre.1",
-    "@polymer/iron-collapse": "^3.0.0-pre.1",
-    "@polymer/paper-drawer-panel": "^3.0.0-pre.1",
-    "@polymer/paper-dialog": "^3.0.0-pre.1",
-    "@polymer/paper-dialog-scrollable": "^3.0.0-pre.1",
-    "@polymer/iron-image": "^3.0.0-pre.1",
-    "@polymer/paper-button": "^3.0.0-pre.1",
-    "@polymer/neon-animation": "^3.0.0-pre.1",
-    "@polymer/paper-input": "^3.0.0-pre.1"
+    "@polymer/polymer": "^3.0.0",
+    "@polymer/app-layout": "^3.0.0",
+    "@polymer/paper-tooltip": "^3.0.0",
+    "@polymer/iron-collapse": "^3.0.0",
+    "@polymer/paper-drawer-panel": "^3.0.0",
+    "@polymer/paper-dialog": "^3.0.0",
+    "@polymer/paper-dialog-scrollable": "^3.0.0",
+    "@polymer/iron-image": "^3.0.0",
+    "@polymer/paper-button": "^3.0.0",
+    "@polymer/neon-animation": "^3.0.0",
+    "@polymer/paper-input": "^3.0.0"
   },
   "devDependencies": {}
 }

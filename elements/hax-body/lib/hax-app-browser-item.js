@@ -12,7 +12,7 @@ import "@polymer/iron-icons/places-icons.js";
 import "@polymer/iron-icons/maps-icons.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
-import "@lrnwebcomponents/materializecss-styles/colors.js";
+import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 /**
 `hax-app-browser-item`
 A button on the hax-app-browser display
