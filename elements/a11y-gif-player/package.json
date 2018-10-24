@@ -8,16 +8,11 @@
     "useHAX": true,
     "useSass": false,
     "files": {
-      "css": "src/a11y-gif-player.css",
-      "scss": "src/a11y-gif-player.scss",
-      "html": "src/a11y-gif-player.html",
-      "js": "src/a11y-gif-player.js",
-      "properties": "src/a11y-gif-player-properties.json",
-      "hax": "src/a11y-gif-player-hax.json"
+      "js": "src/a11y-gif-player.js"
     }
   },
   "version": "0.0.25",
-  "description": "Automated conversion of a11y-gif-player/",
+  "description": "Play gifs in an accessible way by having the user click to play their animation",
   "repository": {
     "type": "git",
     "url": "git@github.com/elmsln/lrnwebcomponents.git"
@@ -41,7 +36,10 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.20",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.0.5",
+    "@polymer/paper-button": "^3.0.0",
+    "@polymer/iron-a11y-keys": "^3.0.0",
+    "@polymer/iron-image": "^3.0.0"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

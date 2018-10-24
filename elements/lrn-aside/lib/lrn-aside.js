@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "lrndesign-panelcard/lrndesign-panelcard.js";
-import "hax-body-behaviors/hax-body-behaviors.js";
+import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
 `lrn-aside`
 an aside as a panel

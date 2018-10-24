@@ -2,7 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/iron-icon/iron-icon.js";
-import "hax-body-behaviors/hax-body-behaviors.js";
+import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./person-testimonial-icon.js";
 /**

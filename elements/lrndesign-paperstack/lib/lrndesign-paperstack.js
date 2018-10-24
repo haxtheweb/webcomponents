@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-import "hax-body-behaviors/hax-body-behaviors.js";
+import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "a11y-behaviors/a11y-behaviors.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "lrn-icons/lrn-icons.js";

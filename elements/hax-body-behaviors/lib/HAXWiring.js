@@ -208,7 +208,7 @@ export class HAXWiring {
         }
         // only set these when tag hasn't been force fed
         if (tag === "") {
-          this.setHaxProperties(props);
+          this.haxProperties = props;
         }
       } else {
         // especially useful during development if we implement our own API

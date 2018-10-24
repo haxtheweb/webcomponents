@@ -6,7 +6,7 @@ import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/device-icons.js";
 import "@polymer/iron-icons/image-icons.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-import "hax-body-behaviors/hax-body-behaviors.js";
+import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
 `place-holder`
 A LRN element

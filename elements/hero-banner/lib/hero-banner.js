@@ -3,7 +3,7 @@ import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-image/iron-image.js";
 import "a11y-behaviors/a11y-behaviors.js";
-import "hax-body-behaviors/hax-body-behaviors.js";
+import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
 `hero-banner`
 That thing no one wants to make over and over again yet always does...

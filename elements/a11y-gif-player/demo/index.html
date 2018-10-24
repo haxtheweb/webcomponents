@@ -16,9 +16,21 @@
       <h3>Basic a11y-gif-player demo</h3>
       <demo-snippet>
         <template>
-          <a11y-gif-player>
-            This is a11y-gif-player
+          <a11y-gif-player width="100%" alt="Diaminopimelic acid" src="images/Diaminopimelic_acid.gif"
+            src-without-animation="images/Diaminopimelic_acid_without_animation.gif"></a11y-gif-player>
+          <p>Source: <a href="https://commons.wikimedia.org/wiki/File:Diaminopimelic_acid.gif">Wikimedia Commons</a></p>
+        </template>
+      </demo-snippet>
+    </div>
+    <div class="vertical-section-container centered">
+      <h3>Remote loading media a11y-gif-player demo</h3>
+      <demo-snippet>
+        <template>
+          <a11y-gif-player resource="#24d61d2f-a4e0-a118-4e39" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org "
+            src="https://media3.giphy.com/media/5GoVLqeAOo6PK/giphy.gif" src-without-animation="https://media3.giphy.com/media/5GoVLqeAOo6PK/480w_s.jpg"
+            alt="Happy Jonah hill because he just discovered Web components." style="margin: 0px auto; width: 50%;">
           </a11y-gif-player>
+          <p>Source: <a href="https://giphy.com">Giphy API</a></p>
         </template>
       </demo-snippet>
     </div>

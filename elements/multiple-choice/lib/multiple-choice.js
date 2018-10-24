@@ -4,7 +4,7 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-import "hax-body-behaviors/hax-body-behaviors.js";
+import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
 `multiple-choice`

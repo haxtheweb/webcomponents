@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "media-behaviors/media-behaviors.js";
-import "hax-body-behaviors/hax-body-behaviors.js";
+import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "./hax-app.js";
 import "./hax-stax.js";
