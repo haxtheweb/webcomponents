@@ -2,7 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "@lrnwebcomponents/simple-colors/simple-colors-picker.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
 import "./hax-panel-item.js";
 import "./hax-preferences-dialog.js";
 import "./hax-stax-picker.js";

@@ -4,7 +4,7 @@ import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/paper-input/paper-textarea.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-checkbox/paper-checkbox.js";
-import "@lrnwebcomponents/simple-colors/simple-colors-picker.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
 import "@polymer/paper-slider/paper-slider.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "./hax-context-item-menu.js";

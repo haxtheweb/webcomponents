@@ -1,11 +1,11 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { flush } from "@polymer/polymer/lib/utils/flush.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/paper-item/paper-item.js";
-import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
+import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "./lib/hax-text-context.js";
-import "./lib/hax-inline-context.js";
 import "./lib/hax-ce-context.js";
 import "./lib/hax-plate-context.js";
 import "./lib/hax-input-mixer.js";
@@ -24,7 +24,7 @@ $_documentContainer.innerHTML = `<dom-module id="hax-body">
       :host #bodycontainer ::slotted(.hax-context-menu) {
         padding: 0;
         margin: 0;
-        position: relative;
+        position: absolute;
         visibility: hidden;
         opacity: 0;
         transition: all .3s ease;
@@ -152,18 +152,11 @@ $_documentContainer.innerHTML = `<dom-module id="hax-body">
         float: left;
         line-height: 2;
       }
-      /*#inlinetracker {
-        border: 1px solid green;
-        width: 10px;
-        height: 10px;
-      }*/
     </style>
     <div id="bodycontainer" class="ignore-activation">
       <slot id="body"></slot>
     </div>
     <div id="contextcontainer">
-      <span id="inlinetracker" style="pointer-events: none; visibility: hidden; opacity: 0; width:0;height:0;" class="ignore-activation hax-inline-tracker-element" contenteditable="false"></span>
-      <hax-inline-context id="inlinecontextmenu" class="hax-context-menu ignore-activation"></hax-inline-context>
       <hax-text-context id="textcontextmenu" class="hax-context-menu ignore-activation"></hax-text-context>
       <hax-ce-context id="cecontextmenu" class="hax-context-menu ignore-activation"></hax-ce-context>
       <hax-plate-context id="platecontextmenu" class="hax-context-menu ignore-activation"></hax-plate-context>
@@ -203,6 +196,7 @@ Polymer({
     "hax-input-mixer-update": "_haxInputMixerOperation",
     "place-holder-replace": "replacePlaceholder"
   },
+  behaviors: [simpleColorsBehaviors],
   properties: {
     /**
      * State of if we are editing or not.
@@ -256,7 +250,7 @@ Polymer({
     // mutation observer that ensures state of hax applied correctly
     this._observer = dom(this).observeNodes(function(info) {
       // MAKE SURE WE KNOW WHAT JUST GOT ADDED HERE
-      flush();
+      dom.flush();
       // if we've got new nodes, we have to react to that
       if (info.addedNodes.length > 0) {
         info.addedNodes.map(node => {
@@ -296,6 +290,15 @@ Polymer({
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
     );
+    document.body.addEventListener(
+      "selectstart",
+      this._selectionChange.bind(this)
+    );
+    document.body.addEventListener(
+      "mouseup",
+      this._selectionMouseUp.bind(this)
+    );
+    window.addEventListener("scroll", this._keepContextVisible.bind(this));
   },
   /**
    * Detached life cycle
@@ -305,6 +308,88 @@ Polymer({
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
     );
+    document.body.removeEventListener(
+      "selectstart",
+      this._selectionChange.bind(this)
+    );
+    document.body.removeEventListener(
+      "mouseup",
+      this._selectionMouseUp.bind(this)
+    );
+    window.removeEventListener("scroll", this._keepContextVisible.bind(this));
+  },
+  /**
+   * Keep the context menu visible if needed
+   */
+  _keepContextVisible: function(e) {
+    // see if the text context menu is visible
+    let el = false;
+    if (this.$.textcontextmenu.classList.contains("hax-context-visible")) {
+      el = this.$.textcontextmenu;
+    } else if (this.$.cecontextmenu.classList.contains("hax-context-visible")) {
+      el = this.$.cecontextmenu;
+    }
+    // if we see it, ensure we don't have the pin
+    if (el) {
+      if (this.elementInViewport(el)) {
+        el.classList.remove("hax-context-pin-bottom");
+        el.classList.remove("hax-context-pin-top");
+      } else {
+        if (this.__OffBottom) {
+          el.classList.add("hax-context-pin-top");
+        } else {
+          el.classList.add("hax-context-pin-bottom");
+        }
+      }
+    }
+  },
+  /**
+   * Check if part of the passed element is int he viewport
+   */
+  elementInViewport: function(el) {
+    let top =
+      el.offsetTop -
+      32 -
+      window.HaxStore.instance.haxPanel.$.drawer.offsetHeight;
+    let left = el.offsetLeft;
+    let width = el.offsetWidth;
+    let height = el.offsetHeight;
+    while (el.offsetParent) {
+      el = el.offsetParent;
+      top += el.offsetTop;
+      left += el.offsetLeft;
+    }
+    this.__OffBottom = top < window.pageYOffset + window.innerHeight;
+    return (
+      top < window.pageYOffset + window.innerHeight &&
+      left < window.pageXOffset + window.innerWidth &&
+      top + height > window.pageYOffset &&
+      left + width > window.pageXOffset
+    );
+  },
+  /**
+   * Selection changed
+   */
+  _selectionChange: function(e) {
+    window.__startedSelection = true;
+  },
+  _selectionMouseUp: function(e) {
+    if (window.__startedSelection && this.editMode) {
+      try {
+        let selection = window.getSelection();
+        let range = selection.getRangeAt(0);
+        let newRange = range.cloneRange();
+        window.__startedSelection = false;
+        if (
+          newRange.startContainer.parentNode.parentNode.parentElement
+            .tagName === "HAX-BODY" ||
+          newRange.startContainer.parentNode.parentElement.tagName ===
+            "HAX-BODY"
+        ) {
+          window.HaxStore.write("activePlaceHolder", newRange, this);
+        }
+      } catch (err) {}
+    }
   },
   /**
    * Replace place holder after an event has called for it in the element itself
@@ -390,17 +475,22 @@ Polymer({
     // see if we got anything
     if (haxElements.length > 0) {
       // hand off to hax-app-picker to deal with the rest of this
+      let tag = this.activeNode.tagName.toLowerCase();
+      let humanName = tag.replace("-", " ");
+      if (
+        typeof window.HaxStore.instance.elementList[tag] !== typeof undefined &&
+        window.HaxStore.instance.elementList[tag].gizmo !== false
+      ) {
+        humanName = window.HaxStore.instance.elementList[tag].gizmo.title;
+      }
       window.HaxStore.instance.haxAppPicker.presentOptions(
         haxElements,
         "__convert",
-        "What do you want to convert this gizmo to",
+        `Transform ${humanName} to..`,
         "gizmo"
       );
     } else {
-      window.HaxStore.toast(
-        "Sorry, this can't be converted to anything automatically!",
-        5000
-      );
+      window.HaxStore.toast("Sorry, this can not be transformed!", 5000);
     }
   },
   /**
@@ -522,7 +612,7 @@ Polymer({
         // send this into the root, which should filter it back down into the slot
         dom(this).appendChild(newNode);
       }
-      this.$.inlinecontextmenu.opened = false;
+      this.$.textcontextmenu.highlightOps = false;
       // wait so that the DOM can have the node to then attach to
       setTimeout(() => {
         window.HaxStore.write("activeContainerNode", newNode, this);
@@ -595,11 +685,6 @@ Polymer({
     content = content.replace(/\sdata-draggable/g, "");
     // clean up stray hax-ray leftovers
     content = content.replace(/\sdata-hax-ray=\".*?\"/g, "");
-    // remove copy and paste glitch
-    content = content.replace(
-      /<span id=\"inlinetracker\" class=\"ignore-activation hax-inline-tracker-element style-scope hax-body\" style=\"font-size: 19.2px; pointer-events: none; opacity: 0; width: 0px; height: 0px;\"><\/span>/g,
-      ""
-    );
     // remove HAX specific classes / scoping classes
     let parentTag = this.parentNode.tagName.toLowerCase();
     let string = "style-scope " + parentTag + " x-scope";
@@ -635,6 +720,8 @@ Polymer({
     // set active again
     window.HaxStore.write("activeNode", __active, this);
     window.HaxStore.write("activeContainerNode", __active, this);
+    // oh one last thing. escape all script/style tags
+    content = window.HaxStore.encapScript(content);
     if (this.globalPreferences.haxDeveloperMode) {
       console.log(content);
     }
@@ -673,17 +760,14 @@ Polymer({
    * Hide all context menus.
    */
   hideContextMenus: function() {
-    // tracking pixel highest priority to move
-    this._hideContextMenu(this.$.inlinetracker);
     // primary context menus
     this._hideContextMenu(this.$.textcontextmenu);
     this._hideContextMenu(this.$.cecontextmenu);
     // secondary menus and clean up areas
-    this._hideContextMenu(this.$.inlinecontextmenu);
     this._hideContextMenu(this.$.platecontextmenu);
     this._hideContextMenu(this.$.haxinputmixer);
     // force context menu state to closed
-    this.$.inlinecontextmenu.opened = false;
+    this.$.textcontextmenu.highlightOps = false;
   },
   /**
    * Reposition context menus to match an element.
@@ -699,8 +783,8 @@ Polymer({
       document.documentElement.clientWidth,
       window.innerWidth || 0
     );
-    let offsetmenu = -44;
-    let offsetplate = -36;
+    let offsetmenu = -39;
+    let offsetplate = -31;
     // if we go below 800 break point, change menu positioning
     if (w < 800) {
       offsetmenu = 0;
@@ -717,25 +801,18 @@ Polymer({
       // currently been set. it's by no means perfect but it'll
       // be a really good start
       this.__activeContextType = this.$.textcontextmenu;
-      this._positionContextMenu(
-        this.$.inlinecontextmenu,
-        container,
-        offsetmenu,
-        -54,
-        false
-      );
     }
     this._positionContextMenu(
       this.__activeContextType,
       container,
       offsetmenu,
-      -54
+      -37
     );
     this._positionContextMenu(
       this.$.platecontextmenu,
       container,
       offsetplate,
-      -8,
+      0,
       false
     );
     // special case for node not matching container
@@ -884,6 +961,7 @@ Polymer({
     }
     // pause quickly to ensure wipe goes through successfully
     setTimeout(() => {
+      html = window.HaxStore.encapScript(html);
       const validTags = window.HaxStore.instance.validTagList;
       let fragment = document.createElement("div");
       fragment.insertAdjacentHTML("beforeend", html);
@@ -982,10 +1060,19 @@ Polymer({
             title: "No"
           }
         ];
+        let tag = this.activeNode.tagName.toLowerCase();
+        let humanName = tag.replace("-", " ");
+        if (
+          typeof window.HaxStore.instance.elementList[tag] !==
+            typeof undefined &&
+          window.HaxStore.instance.elementList[tag].gizmo !== false
+        ) {
+          humanName = window.HaxStore.instance.elementList[tag].gizmo.title;
+        }
         window.HaxStore.instance.haxAppPicker.presentOptions(
           options,
           "",
-          "Are you sure you want to delete this element?",
+          `Remove this \`${humanName}\`?`,
           "delete"
         );
         break;
@@ -1087,7 +1174,9 @@ Polymer({
         break;
       case "hax-size-change":
         this.activeNode.style.width = detail.value + "%";
-        this.positionContextMenus(this.activeNode, this.activeContainerNode);
+        setTimeout(() => {
+          this.positionContextMenus(this.activeNode, this.activeContainerNode);
+        }, 1000);
         break;
       // settings button selected from hax-ce-context bar
       // which means we should skip to the settings page after
@@ -1173,7 +1262,6 @@ Polymer({
       var local = normalizedEvent.localTarget;
       var tags = window.HaxStore.instance.validTagList;
       let containerNode = local;
-      console.log(containerNode);
       let activeNode = null;
       // ensure this is valid
       if (
@@ -1416,7 +1504,14 @@ Polymer({
     // account for the target using these layout busters
     if (matchStyle) {
       menu.style.width = target.style.width;
-      menu.style.float = target.style.float;
+    }
+    // make it account for the offset if it's floated over to one side
+    // or inside of something that's over that way
+    let style = target.currentStyle || window.getComputedStyle(target);
+    if (parseInt(style.marginLeft) != 0) {
+      xoffset = xoffset + parseInt(style.marginLeft);
+    } else {
+      xoffset = xoffset + parseInt(target.offsetLeft) - this.offsetLeft;
     }
     if (xoffset != null) {
       menu.style["margin-left"] = xoffset + "px";
@@ -1425,12 +1520,15 @@ Polymer({
       menu.style["margin-top"] = yoffset + "px";
     }
     menu.classList.add("hax-context-visible");
+    async.microTask.run(this._keepContextVisible());
   },
   /**
    * Simple hide / reset of whatever menu it's handed.
    */
   _hideContextMenu: function(menu) {
     menu.classList.remove("hax-context-visible");
+    menu.classList.remove("hax-context-pin-top");
+    menu.classList.remove("hax-context-pin-bottom");
     dom(this.$.contextcontainer).appendChild(menu);
   },
   /**
@@ -1441,8 +1539,8 @@ Polymer({
       e.preventDefault();
       e.stopPropagation();
       // support 1st press only closing the inline context menu
-      if (this.$.inlinecontextmenu.opened) {
-        this.$.inlinecontextmenu.opened = false;
+      if (this.$.textcontextmenu.highlightOps) {
+        this.$.textcontextmenu.highlightOps = false;
         // ensure these are the same
         window.HaxStore.write("activeNode", this.activeContainerNode, this);
         this.activeContainerNode.focus();
