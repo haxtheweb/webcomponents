@@ -145,6 +145,8 @@
       "**/@lrnwebcomponents/hax-body-behaviors",
       "**/@polymer",
       "**/@polymer/**",
+      "**/@vaadin",
+      "**/@vaadin/**",
       "**/@rhelements/rhelement",
       "**/@skatejs",
       "**/@skatejs/**",
