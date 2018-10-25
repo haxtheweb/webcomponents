@@ -10,8 +10,8 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-badge/paper-badge.js";
 import "word-count/word-count.js";
-import "lrnsys-button/lrnsys-button.js";
-import "lrndesign-avatar/lrndesign-avatar.js";
+import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
+import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 /**
 `lrnsys-comment`
 A well styled comment for a user with markdown support.

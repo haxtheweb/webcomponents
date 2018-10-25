@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "simple-timer/simple-timer.js";
-import "lrnsys-layout/lrnsys-dialog-modal.js";
-import "to-do/to-do.js";
+import "@lrnwebcomponents/simple-timer/simple-timer.js";
+import "@lrnwebcomponents/lrnsys-layout/lrnsys-dialog-modal.js";
+import "@lrnwebcomponents/to-do/to-do.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-button/paper-button.js";
 /**

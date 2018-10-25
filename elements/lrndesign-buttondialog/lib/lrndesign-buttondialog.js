@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-button/paper-button.js";
-import "lrndesign-dialog/lrndesign-dialog.js";
+import "@lrnwebcomponents/lrndesign-dialog/lrndesign-dialog.js";
 /**
 `lrndesign-dialog`
 A LRN element

@@ -1,4 +1,4 @@
-import "lrndesign-animationctrl/lrndesign-animationctrl.js";
+import "@lrnwebcomponents/lrndesign-animationctrl/lrndesign-animationctrl.js";
 import "greensock-cdn/greensock-cdn.js";
 Polymer({
   _template: html`

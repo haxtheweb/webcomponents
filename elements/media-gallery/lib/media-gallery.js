@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "lrndesign-gallery/lrndesign-gallery.js";
+import "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js";
 /**
 `media-gallery`
 Connects lrndesign-gallery to HAX

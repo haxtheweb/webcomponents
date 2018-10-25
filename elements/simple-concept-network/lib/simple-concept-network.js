@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "a11y-behaviors/a11y-behaviors.js";
+import "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 import "./simple-concept-network-node.js";
 /**
 `simple-concept-network`

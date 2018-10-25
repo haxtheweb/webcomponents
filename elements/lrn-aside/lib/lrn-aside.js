@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "lrndesign-panelcard/lrndesign-panelcard.js";
+import "@lrnwebcomponents/lrndesign-panelcard/lrndesign-panelcard.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
 `lrn-aside`

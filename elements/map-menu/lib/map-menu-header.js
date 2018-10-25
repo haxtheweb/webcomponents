@@ -1,4 +1,4 @@
-import "lrndesign-avatar/lrndesign-avatar.js";
+import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import "@polymer/iron-collapse/iron-collapse.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-behaviors/iron-button-state.js";

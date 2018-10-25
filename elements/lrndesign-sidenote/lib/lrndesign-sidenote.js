@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "a11y-behaviors/a11y-behaviors.js";
+import "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 /**
 `lrndesign-sidenote`

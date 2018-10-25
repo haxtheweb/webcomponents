@@ -15,12 +15,12 @@ import "@polymer/app-layout/app-scroll-effects/app-scroll-effects.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-import "lrndesign-stepper/lrndesign-stepper.js";
-import "lrnsys-progress/lrnsys-progress.js";
+import "@lrnwebcomponents/lrndesign-stepper/lrndesign-stepper.js";
+import "@lrnwebcomponents/lrnsys-progress/lrnsys-progress.js";
 import "elmsln-loading/elmsln-loading.js";
 import "page-scroll-position/page-scroll-position.js";
 import "hax-body/hax-body.js";
 import "material-progress/material-progress.js";
-import "lrndesign-mapmenu/lrndesign-mapmenu.js";
+import "@lrnwebcomponents/lrndesign-mapmenu/lrndesign-mapmenu.js";
 
 /* HAX */

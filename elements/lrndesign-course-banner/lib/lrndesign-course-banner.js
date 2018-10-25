@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@polymer/iron-image/iron-image.js";
-import "lrndesign-avatar/lrndesign-avatar.js";
+import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 /**
 `lrndesign-course-banner`
 A LRN element

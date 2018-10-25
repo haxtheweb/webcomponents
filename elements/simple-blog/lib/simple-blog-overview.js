@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-card/paper-card.js";
-import "simple-datetime/simple-datetime.js";
+import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
 /**
 `simple-blog-overview`
 Overview / preview of the text of the post with title

@@ -6,7 +6,7 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-import "a11y-behaviors/a11y-behaviors.js";
+import "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 /**
 `self-check`
 A LRN element

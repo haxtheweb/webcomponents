@@ -3,8 +3,8 @@ import "@polymer/iron-image/iron-image.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
-import "lrnsys-behaviors/lrnsys-behaviors.js";
-import "lrnsys-layout/lrnsys-dialog.js";
+import "@lrnwebcomponents/lrnsys-behaviors/lrnsys-behaviors.js";
+import "@lrnwebcomponents/lrnsys-layout/lrnsys-dialog.js";
 import "freezeframe.js/src/js/vendor/imagesloaded.pkgd.js";
 import "freezeframe.js/build/js/freezeframe.js";
 /**

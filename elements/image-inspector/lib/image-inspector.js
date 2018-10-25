@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-layout/app-layout.js";
 import "img-pan-zoom/img-pan-zoom.js";
-import "lrnsys-button/lrnsys-button.js";
+import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/image-icons.js";
 import "@lrnwebcomponents/materializecss-styles/lib/colors.js";

@@ -11,7 +11,7 @@ import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/app-route/app-route.js";
 import "@polymer/app-route/app-location.js";
-import "lrnsys-button/lrnsys-button.js";
+import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "elmsln-loading/elmsln-loading.js";
 import "./lrnapp-cis-course-card.js";
 /**

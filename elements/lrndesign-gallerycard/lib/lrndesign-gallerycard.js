@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "lrndesign-avatar/lrndesign-avatar.js";
+import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-icon/iron-icon.js";

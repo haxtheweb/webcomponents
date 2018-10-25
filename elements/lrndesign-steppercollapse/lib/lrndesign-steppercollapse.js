@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-collapse/iron-collapse.js";
-import "lrndesign-stepper/lrndesign-stepper.js";
+import "@lrnwebcomponents/lrndesign-stepper/lrndesign-stepper.js";
 /**
 `lrndesign-steppercollapse`
 A LRN element
