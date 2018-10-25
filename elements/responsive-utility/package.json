@@ -5,15 +5,10 @@
     "customElementClass": "PolymerElement",
     "elementName": "responsive-utility",
     "generator-wcfactory-version": "0.3.2",
-    "useHAX": true,
+    "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/responsive-utility.css",
-      "scss": "src/responsive-utility.scss",
-      "html": "src/responsive-utility.html",
-      "js": "src/responsive-utility.js",
-      "properties": "src/responsive-utility-properties.json",
-      "hax": "src/responsive-utility-hax.json"
+      "js": "src/responsive-utility.js"
     }
   },
   "version": "0.0.28",
@@ -40,7 +35,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {

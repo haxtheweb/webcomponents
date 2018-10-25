@@ -1,3 +1,4 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/image-icons.js";
 import "../simple-colors.js";

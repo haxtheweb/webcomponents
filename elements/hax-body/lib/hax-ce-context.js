@@ -1,3 +1,4 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/paper-input/paper-textarea.js";
 import "@polymer/paper-input/paper-input.js";

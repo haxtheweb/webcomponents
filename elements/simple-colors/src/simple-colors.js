@@ -1,3 +1,4 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "./lib/simple-colors-utility.js";
 // @polymerBehavior
 /**

@@ -5,15 +5,10 @@
     "customElementClass": "PolymerElement",
     "elementName": "media-behaviors",
     "generator-wcfactory-version": "0.3.2",
-    "useHAX": true,
+    "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/media-behaviors.css",
-      "scss": "src/media-behaviors.scss",
-      "html": "src/media-behaviors.html",
-      "js": "src/media-behaviors.js",
-      "properties": "src/media-behaviors-properties.json",
-      "hax": "src/media-behaviors-hax.json"
+      "js": "src/media-behaviors.js"
     }
   },
   "version": "0.0.28",
@@ -40,7 +35,6 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {

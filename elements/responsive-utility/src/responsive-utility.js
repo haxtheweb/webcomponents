@@ -1,46 +1,170 @@
-/**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { ResponsiveUtility };
-/**
- * `responsive-utility`
- * `Automated conversion of responsive-utility/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class ResponsiveUtility extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
+
+Polymer.ResponsiveUtility = Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: inline;
+      }
+    </style>
+    <slot></slot>
+`,
+
+  is: "responsive-utility",
+
+  behaviors: [Polymer.IronResizableBehavior],
+
+  listeners: {
+    "iron-resize": "_onIronResize"
+  },
+
+  properties: {
+    /**
+     * Stores
+     */
+    targets: {
+      type: Array,
+      value: []
+    }
+  },
 
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * An array of objects. Each object is contains data about an element
+   * that will be updated with responsive values.
+   *
+   * To add an element to this array, fire a 'responsive-element' event
+   * with the following data:
+   *
+   * {
+   *   "element": (the element itself),
+   *   "attribute": (the attribute that will be set with the size),
+   *   "relativeToParent": (true for @element query instead of @media query),
+   *   "sm": (optional custom sm breakpoint, default is 600),
+   *   "md": (optional custom md breakpoint, default is 900),
+   *   "lg": (optional custom lg breakpoint, default is 1200),
+   *   "xl": (optional custom xl breakpoint, default is 1500),
+   * }
+   *
    */
-  static get tag() {
-    return "responsive-utility";
-  }
+  attached: function() {
+    this.async(this.notifyResize, 1);
+    this._onIronResize();
+  },
+
   /**
-   * life cycle, element is afixed to the DOM
+   * Makes sure there is a utility ready and listening for elements.
    */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      ResponsiveUtility.haxProperties,
-      ResponsiveUtility.tag,
-      this
+  created: function() {
+    let root = this;
+    if (!Polymer.ResponsiveUtility.instance) {
+      Polymer.ResponsiveUtility.instance = root;
+    }
+    /* handle element registration */
+    document.body.addEventListener("responsive-element", function(e) {
+      let relative =
+        e.detail.relativeToParent !== undefined &&
+        e.detail.relativeToParent !== null
+          ? e.detail.relativeToParent
+          : true;
+      if ("ResizeObserver" in window && relative.relativeToParent === true) {
+        let parent = e.detail.element.parentNode,
+          resize = new ResizeObserver(function() {
+            Polymer.ResponsiveUtility.setSize(e.detail);
+          });
+        if (parent.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
+          parent = parent.host;
+        }
+        resize.observe(parent);
+      }
+      root.push("targets", e.detail);
+      Polymer.ResponsiveUtility.setSize(e.detail);
+    });
+    /* handle element deregistration */
+    document.body.addEventListener("delete-responsive-element", function(e) {
+      for (let i = 0; i < this.targets.length; i++) {
+        if (e.detail === target[i]) root.splice("targets", i, 1);
+      }
+    });
+  },
+
+  /**
+   * On resize, sets sizes of any target element that has changed.
+   */
+  _onIronResize: function() {
+    for (let i = 0; i < this.targets.length; i++) {
+      Polymer.ResponsiveUtility.setSize(this.targets[i]);
+    }
+  }
+});
+
+Polymer.ResponsiveUtility.instance = null;
+
+/**
+ * Checks to see if there is an instance available, and if not appends one
+ */
+Polymer.ResponsiveUtility.requestAvailability = function() {
+  if (!Polymer.ResponsiveUtility.instance) {
+    Polymer.ResponsiveUtility.instance = document.createElement(
+      "responsive-utility"
     );
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(ResponsiveUtility.tag, ResponsiveUtility);
+
+  document.body.appendChild(Polymer.ResponsiveUtility.instance);
+};
+/**
+ * Sets responsive size of target.
+ */
+Polymer.ResponsiveUtility.setSize = function(target) {
+  let element = target.element;
+  let attribute =
+    target.attribute !== undefined && target.attribute !== null
+      ? target.attribute
+      : "responsive-size";
+  let size = Polymer.ResponsiveUtility.getSize(target);
+  if (
+    element.getAttribute(attribute) === undefined ||
+    size !== element.getAttribute(attribute)
+  ) {
+    element.setAttribute(attribute, size);
+  }
+};
+/**
+ * Returns responsive size of target.
+ */
+Polymer.ResponsiveUtility.getSize = function(target) {
+  let relative =
+    target.relativeToParent !== undefined && target.relativeToParent !== null
+      ? target.relativeToParent
+      : true;
+  let getWidth = function() {
+      if (target.element.parentNode !== null && relative === true) {
+        if (
+          target.element.parentNode.nodeType === Node.DOCUMENT_FRAGMENT_NODE
+        ) {
+          return target.element.parentNode.host.offsetWidth;
+        }
+        return target.element.parentNode.offsetWidth;
+      }
+      return window.outerWidth;
+    },
+    testBreakpoint = function(width, breakpoint, def) {
+      let val =
+        breakpoint !== undefined && breakpoint !== null ? breakpoint : def;
+      return width < val;
+    },
+    size,
+    width = getWidth();
+  if (testBreakpoint(width, target.sm, 600)) {
+    size = "xs";
+  } else if (testBreakpoint(width, target.md, 900)) {
+    size = "sm";
+  } else if (testBreakpoint(width, target.lg, 1200)) {
+    size = "md";
+  } else if (testBreakpoint(width, target.xl, 1200)) {
+    size = "lg";
+  } else {
+    size = "xl";
+  }
+  return size;
+};
