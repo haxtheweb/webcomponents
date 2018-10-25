@@ -52,10 +52,10 @@ suite('<paper-fab-speed-dial>', function() {
 
     test('tapping the trigger opens the dropdown', function(done) {
       MockInteractions.downAndUp(trigger, function() {
-        Polymer.Base.async(function() {
+        async.microTask.run(() => {
           expect(dropdown.opened).to.be.equal(true);
           done();
-        }, 100);
+        });
       });
     });
 

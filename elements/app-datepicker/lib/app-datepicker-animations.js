@@ -1,8 +1,10 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { NeonAnimationBehavior } from "@polymer/neon-animation/neon-animation-behavior.js";
+
 Polymer({
   is: "datepicker-slide-from-left-animation",
 
-  behaviors: [Polymer.NeonAnimationBehavior],
+  behaviors: [NeonAnimationBehavior],
 
   configure: function(config) {
     var node = config.node;
@@ -27,7 +29,7 @@ Polymer({
 
 Polymer({
   is: "datepicker-slide-from-right-animation",
-  behaviors: [Polymer.NeonAnimationBehavior],
+  behaviors: [NeonAnimationBehavior],
   configure: function(config) {
     var node = config.node;
     if (config.transformOrigin) {

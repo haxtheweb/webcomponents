@@ -64,7 +64,7 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
         <li>Use a script to call the utility:<br>
           <tt>
             &lt;script&gt;<br>
-            &nbsp;&nbsp;Polymer.ResponsiveUtility.requestAvailability();<br>
+            &nbsp;&nbsp;window.ResponsiveUtility.requestAvailability();<br>
             &nbsp;&nbsp;var <em>el</em> = document.getElementById('<em>element-id-here</em>');<br>
             &nbsp;&nbsp;<em>el</em>.fire('responsive-element',{<br>
             &nbsp;&nbsp;&nbsp;&nbsp;"element": <em>el</em>,<br>
@@ -127,7 +127,7 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
             }
           </style>
           <script>
-            Polymer.ResponsiveUtility.requestAvailability();
+            window.ResponsiveUtility.requestAvailability();
             var container1 = document.getElementById('container1');
             container1.fire('responsive-element',{
               "element": container1,
@@ -172,7 +172,7 @@ $_documentContainer.innerHTML = `<div class="vertical-section-container centered
             }
           </style>
           <script>
-            Polymer.ResponsiveUtility.requestAvailability();
+            window.ResponsiveUtility.requestAvailability();
             var container2 = document.getElementById('container2');
             container2.fire('responsive-element',{
               "element": container2,

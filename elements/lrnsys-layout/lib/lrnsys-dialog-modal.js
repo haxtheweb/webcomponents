@@ -190,8 +190,8 @@ Polymer({
    * Ready lifecyce
    */
   ready: function() {
-    const dialog = this.$$("paper-dialog");
-    const toolbar = this.$$("lrnsys-dialog-toolbar");
+    const dialog = this.shadowRoot.querySelector("paper-dialog");
+    const toolbar = this.shadowRoot.querySelector("lrnsys-dialog-toolbar");
     dialog.addEventListener("mouseover", e => {
       toolbar.setAttribute("secondary-visible", true);
     });

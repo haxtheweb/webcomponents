@@ -166,10 +166,12 @@ Polymer({
     console.log(root.activeAssignment);
     console.log(local.id);
     if (root.activeAssignment != null && root.activeAssignment != local.id) {
-      root
-        .$$("#" + root.activeAssignment)
+      root.shadowRoot
+        .querySelector("#" + root.activeAssignment)
         .nextElementSibling.classList.remove("show");
-      root.$$("#" + root.activeAssignment).classList.remove("active");
+      root.shadowRoot
+        .querySelector("#" + root.activeAssignment)
+        .classList.remove("active");
     }
     root.activeAssignment = local.id;
     local.nextElementSibling.classList.add("show");

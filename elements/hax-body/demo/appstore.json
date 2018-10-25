@@ -890,6 +890,7 @@
     {
       "details": {
         "title": "Example Lesson",
+        "image": "",
         "author": "ELMS:LN",
         "description": "An example of what HAX can do",
         "status": "available",

@@ -1,3 +1,6 @@
+import { Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { NeonAnimationBehavior } from "@polymer/neon-animation/neon-animation-behavior.js";
+
 /*
 `<datepicker-slide-from-top-animation>` animates the transform of an element from
 `translateX(-100%)` to `none` and animates opacity from 0 to 1.
@@ -14,7 +17,7 @@ Configuration:
 */
 Polymer({
   is: "datepicker-slide-from-top-animation",
-  behaviors: [Polymer.NeonAnimationBehavior],
+  behaviors: [NeonAnimationBehavior],
   configure: function(config) {
     var node = config.node;
 

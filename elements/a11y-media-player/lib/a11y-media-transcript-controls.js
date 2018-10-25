@@ -120,7 +120,7 @@ Polymer({
    */
   attached: function() {
     let root = this;
-    Polymer.SimpleColorsUtility.requestAvailability();
+    window.SimpleColorsUtility.requestAvailability();
     root.search = root.$.search;
     root.fire("searchbar-added", root.$.search);
     root.$.scroll.addEventListener("button-clicked", function(e) {

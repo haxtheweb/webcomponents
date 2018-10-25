@@ -18,7 +18,7 @@ Polymer({
     <lrndesign-dialog id="dialog">
       <h2>{{title}}</h2>
       <div>
-        <content></content>
+        <slot></slot>
       </div>
     </lrndesign-dialog>
 `,

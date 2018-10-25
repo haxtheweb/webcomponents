@@ -168,10 +168,10 @@ Polymer({
       // The caret position is selection length
       caret = sel.text.length;
     } else if (
-      this.$.cell.$$("textarea").selectionStart ||
-      this.$.cell.$$("textarea").selectionStart == "0"
+      this.$.cell.shadowRoot.querySelector("textarea").selectionStart ||
+      this.$.cell.shadowRoot.querySelector("textarea").selectionStart == "0"
     ) {
-      caret = this.$.cell.$$("textarea").selectionStart;
+      caret = this.$.cell.shadowRoot.querySelector("textarea").selectionStart;
     }
     return caret;
   },
@@ -180,7 +180,7 @@ Polymer({
    * make sure caret is in the correct position
    */
   setCaretPosition: function(start, end) {
-    let textarea = this.$.cell.$$("textarea");
+    let textarea = this.$.cell.shadowRoot.querySelector("textarea");
     textarea.focus();
     if (textarea.createTextRange) {
       let range = textarea.createTextRange();
@@ -199,7 +199,7 @@ Polymer({
    * set focus to textarea
    */
   setFocus: function(start, end) {
-    this.$.cell.$$("textarea").focus();
+    this.$.cell.shadowRoot.querySelector("textarea").focus();
     if (start !== undefined && end !== undefined) {
       this.setCaretPosition(start, end);
     } else if (start !== undefined) {

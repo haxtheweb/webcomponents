@@ -166,9 +166,9 @@ Polymer({
   ready: function() {
     var root = this;
     var tl = new TimelineMax();
-    var playButton = this.$$("#play-button");
-    var replayButton = this.$$("#replay-button");
-    var svg = this.$$("#chromosomes");
+    var playButton = this.shadowRoot.querySelector("#play-button");
+    var replayButton = this.shadowRoot.querySelector("#replay-button");
+    var svg = this.shadowRoot.querySelector("#chromosomes");
 
     // Right
     var settworightfive = svg.getElementById("settworightfive");

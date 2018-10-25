@@ -52,7 +52,7 @@ Polymer({
 
   ready: function() {
     const SideComments = require("side-comments");
-    const target = this.$$("#commentable-area");
+    const target = this.shadowRoot.querySelector("#commentable-area");
     const currentUser = {
       id: 1,
       avatarUrl: "http://f.cl.ly/items/0s1a0q1y2Z2k2I193k1y/default-user.png",

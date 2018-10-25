@@ -27,7 +27,7 @@ Polymer({
     <paper-contact-phone>[[phone]]</paper-contact-phone>
     <paper-contact-mobile>[[phone]]</paper-contact-mobile>
 </paper-contact-list>
-    </p><p><content></content></p>
+    </p><p><slot></slot></p>
       <p><iron-icon icon="icons:query-builder"></iron-icon> Office Hours: </p>
       [[officeHours]]
       <p><a href="mailto:[[email]]">

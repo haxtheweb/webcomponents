@@ -15,8 +15,8 @@ Polymer({
     </style>
 
     <div class="buttons">
-      <content id="stepper-children">
-      </content>
+      <slot id="stepper-children">
+      </slot>
     </div>
 `,
 

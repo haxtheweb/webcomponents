@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "./shared-style.js";
 import "./step-style.js";
 import "./syntax-style.js";
@@ -16,7 +17,7 @@ $_documentContainer.innerHTML = `<dom-module id="lrndesign-contentsequencer-step
     <div class="instructions">
       <div class="inner">
         <h2 id="title"><span>{{step}}</span>. <span>{{label}}</span></h2>
-        <content></content>
+        <slot></slot>
       </div>
     </div>
   </template>
@@ -96,7 +97,7 @@ Polymer({
 
     if (this.active && !this._isHighlighted) {
       // Minimize jank by waiting one click to do syntax highlighting.
-      this.async(function() {
+      async.microTask.run(() => {
         var blocks = dom(this).querySelectorAll("pre > code");
         blocks.forEach(
           function(block) {

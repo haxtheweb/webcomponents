@@ -27,7 +27,7 @@ export const IronA11yAnnouncer = Polymer$0({
   },
   announce: function(text) {
     this._text = "";
-    this.async(function() {
+    async.microTask.run(() => {
       this._text = text;
     }, 100);
   },

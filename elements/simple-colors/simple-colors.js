@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
 import "./lib/simple-colors-utility.js";
 // @polymerBehavior
 /**
@@ -56,7 +57,7 @@ window.simpleColorsBehaviors = {
    * Set color variables. Set variables for element and for slotted content.
    */
   created: function() {
-    Polymer.SimpleColorsUtility.requestAvailability();
+    window.SimpleColorsUtility.requestAvailability();
     this.__wcagaa = {
       /* a given color's highest level of WCAG 2.00 AA contrasting color by level 
           based on text size and level of color, for example: 
@@ -75,7 +76,7 @@ window.simpleColorsBehaviors = {
     };
   },
   ready: function() {
-    this.__hexCodes = Polymer.SimpleColorsUtility.hexCodes;
+    this.__hexCodes = window.SimpleColorsUtility.hexCodes;
   },
 
   setTheme: function(accentColor, dark, hexCodes) {
@@ -108,19 +109,19 @@ window.simpleColorsBehaviors = {
       .replace("-grey", "")
       .replace(/([a-z])([A-Z])/g, "$1-$2")
       .toLowerCase();
+    var customStyle = {};
     for (let i = 0; i < colors.length; i++) {
       let half = colors.length / 2,
         suffix =
           i < half
             ? "-foreground" + (i + 1)
             : "-background" + (colors.length - i);
-      if (
-        this.customStyle !== null &&
-        this.customStyle[prefix + suffix] !== null
-      )
-        this.customStyle[prefix + suffix] = colors[i];
+      // @todo may need to check shadydom / shadow value
+      if (customStyle !== null && customStyle[prefix + suffix] !== null) {
+        customStyle[prefix + suffix] = colors[i];
+      }
     }
-    this.updateStyles();
+    this.updateStyles(customStyle);
   },
   _setThemeProps: function(themePrefix, theme) {
     for (var property in theme) {

@@ -1,6 +1,6 @@
 Polymer({
   is: "datepicker-slide-from-left-animation",
-  behaviors: [Polymer.NeonAnimationBehavior],
+  behaviors: [NeonAnimationBehavior],
   configure: function configure(config) {
     var node = config.node;
     if (config.transformOrigin) {
@@ -23,7 +23,7 @@ Polymer({
 });
 Polymer({
   is: "datepicker-slide-from-right-animation",
-  behaviors: [Polymer.NeonAnimationBehavior],
+  behaviors: [NeonAnimationBehavior],
   configure: function configure(config) {
     var node = config.node;
     if (config.transformOrigin) {

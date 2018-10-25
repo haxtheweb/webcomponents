@@ -3,7 +3,7 @@ import "@polymer/paper-progress/paper-progress.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-ripple/paper-ripple.js";
-import "@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
+import { IronA11yKeysBehavior } from "@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
@@ -257,7 +257,7 @@ Polymer({
   //
   // Component behaviors
   behaviors: [
-    Polymer.IronA11yKeysBehavior,
+    IronA11yKeysBehavior,
     HAXBehaviors.PropertiesBehaviors,
     MaterializeCSSBehaviors.ColorBehaviors,
     SchemaBehaviors.Schema

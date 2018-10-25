@@ -45,13 +45,13 @@ suite('basic', function() {
   });
 
   test('clicking the button opens a rendered menu', function(done) {
-    Polymer.dom.flush();
+    flush();
 
     // No icon is selected.
     assert.equal(picker.icon, undefined);
     MockInteractions.tap(picker.$.iconButton);
 
-    Polymer.Base.async(function() {
+    async.microTask.run(() => {
       // There are 18 default columns, and each column is 20px wide.
       assert.equal(container.style.width, 18 * 26 +'px');
       // There are 10 default rows, and each row is 20px wide.
@@ -61,7 +61,7 @@ suite('basic', function() {
       // var box = container.querySelector('.icon').querySelector('iron-icon').icon;
       // assert.equal('#ffebee', picker._rgbToHex(box.style.color));
       done();
-    }, 1);
+    });
   });
 });
 </script>

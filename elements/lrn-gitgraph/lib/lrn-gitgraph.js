@@ -115,7 +115,7 @@ Polymer({
       template: root.template, // could be: "blackarrow" or "metro" or `myTemplate` (custom Template object)
       reverseArrow: false, // to make arrows point to ancestors, if displayed
       orientation: root.orientation,
-      element: root.$$("#gitGraph")
+      element: root.shadowRoot.querySelector("#gitGraph")
     };
     if (root.mode !== "") {
       config.mode = root.mode;

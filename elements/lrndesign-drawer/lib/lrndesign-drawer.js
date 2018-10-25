@@ -76,8 +76,10 @@ Polymer({
   ready: function() {
     let root = this;
     let opened = this.opened;
-    this.$$("paper-icon-button").addEventListener("click", function(e) {
-      root.opened = !root.opened;
-    });
+    this.shadowRoot
+      .querySelector("paper-icon-button")
+      .addEventListener("click", function(e) {
+        root.opened = !root.opened;
+      });
   }
 });

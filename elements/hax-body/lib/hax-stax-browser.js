@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-list/iron-list.js";
 import "./hax-stax-browser-item.js";
 /**
@@ -42,6 +43,7 @@ Polymer({
      */
     staxList: {
       type: Array,
+      value: [],
       observer: "_staxListChanged"
     }
   },
@@ -98,7 +100,10 @@ Polymer({
    * Notice staxList changing.
    */
   _staxListChanged: function(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined) {
+    if (
+      typeof newValue !== typeof undefined &&
+      typeof oldValue !== typeof undefined
+    ) {
       this.set("__staxList", newValue);
     }
   },
@@ -107,9 +112,11 @@ Polymer({
    * Reset this browser.
    */
   resetBrowser: function() {
-    setTimeout(() => {
-      this.$.ironlist.fire("iron-resize");
-      window.dispatchEvent(new Event("resize"));
-    }, 100);
+    async.microTask.run(() => {
+      setTimeout(() => {
+        this.$.ironlist.fire("iron-resize");
+        window.dispatchEvent(new Event("resize"));
+      }, 100);
+    });
   }
 });

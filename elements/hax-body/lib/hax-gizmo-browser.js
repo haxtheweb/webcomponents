@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-input/paper-input.js";
 import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
@@ -114,14 +115,18 @@ Polymer({
    */
   attached: function() {
     this.resetBrowser();
-    this.$$("#inputfilter").addEventListener("value-changed", e => {
-      this.$$("#filter").like = e.target.value;
-    });
-    this.$$("#filtertype").addEventListener("change", e => {
-      this.$$("#inputfilter").value = "";
-      this.$$("#filter").where = e.detail.value;
-      this.$$("#filter").like = "";
-    });
+    this.shadowRoot
+      .querySelector("#inputfilter")
+      .addEventListener("value-changed", e => {
+        this.shadowRoot.querySelector("#filter").like = e.target.value;
+      });
+    this.shadowRoot
+      .querySelector("#filtertype")
+      .addEventListener("change", e => {
+        this.shadowRoot.querySelector("#inputfilter").value = "";
+        this.shadowRoot.querySelector("#filter").where = e.detail.value;
+        this.shadowRoot.querySelector("#filter").like = "";
+      });
     document.body.addEventListener(
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
@@ -155,17 +160,27 @@ Polymer({
    * Reset this browser.
    */
   resetBrowser: function() {
-    this.set("__gizmoList", window.HaxStore.instance.gizmoList);
-    this.$.filter.$$("#ironlist").filtered = this.__gizmoList;
-    this.$.inputfilter.value = "";
-    this.$.filtertype.value = "title";
-    this.$.filter.value = "";
-    this.$.filter.filter();
-    this.$.filter.where = "title";
-    this.$.filter.like = "";
-    setTimeout(() => {
-      this.$.filter.$$("#ironlist").fire("iron-resize");
-      window.dispatchEvent(new Event("resize"));
-    }, 100);
+    async.microTask.run(() => {
+      this.set("__gizmoList", window.HaxStore.instance.gizmoList);
+      if (this.$.filter.shadowRoot.querySelector("#ironlist")) {
+        this.$.filter.shadowRoot.querySelector(
+          "#ironlist"
+        ).filtered = this.__gizmoList;
+      }
+      this.$.inputfilter.value = "";
+      this.$.filtertype.value = "title";
+      this.$.filter.value = "";
+      this.$.filter.filter();
+      this.$.filter.where = "title";
+      this.$.filter.like = "";
+      setTimeout(() => {
+        if (this.$.filter.shadowRoot.querySelector("#ironlist")) {
+          this.$.filter.shadowRoot
+            .querySelector("#ironlist")
+            .fire("iron-resize");
+          window.dispatchEvent(new Event("resize"));
+        }
+      }, 100);
+    });
   }
 });

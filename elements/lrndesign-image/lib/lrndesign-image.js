@@ -152,8 +152,8 @@ Polymer({
       });
     } else if (root.display == "gif") {
       var animatedgif = new freezeframe("#image").freeze();
-      root
-        .$$("#start")
+      root.shadowRoot
+        .querySelector("#start")
         .$(".start")
         .click(function(e) {
           animatedgif.trigger();

@@ -9,7 +9,21 @@ import "./hax-stax.js";
 import "./hax-stax-browser.js";
 import "./hax-blox.js";
 import "./hax-blox-browser.js";
+
+/**
+ * Trick to write the store to the DOM if it wasn't there already.
+ * This is not used yet but could be if you wanted to dynamically
+ * load the store based on something else calling for it. Like
+ * store lazy loading but it isn't tested.
+ */
 window.HaxStore = {};
+window.HaxStore.instance = null;
+window.HaxStore.requestAvailability = function() {
+  if (!window.HaxStore.instance) {
+    window.HaxStore.instance = document.createElement("hax-store");
+  }
+  document.body.appendChild(window.HaxStore.instance);
+};
 
 Polymer({
   _template: html`
@@ -653,7 +667,7 @@ Polymer({
   created: function() {
     // claim the instance spot. This way we can easily
     // be referenced globally
-    if (!window.HaxStore.instance) {
+    if (window.HaxStore.instance == null) {
       window.HaxStore.instance = this;
     }
     // notice hax property definitions coming from anywhere
@@ -2009,17 +2023,4 @@ window.HaxStore.wipeSlot = (element, slot = "") => {
 window.HaxStore.toast = (message, duration = 3000) => {
   window.HaxStore.instance.haxToast.duration = duration;
   window.HaxStore.instance.haxToast.show(message);
-};
-/**
- * Trick to write the store to the DOM if it wasn't there already.
- * This is not used yet but could be if you wanted to dynamically
- * load the store based on something else calling for it. Like
- * store lazy loading but it isn't tested.
- */
-window.HaxStore.instance = null;
-window.HaxStore.requestAvailability = function() {
-  if (!window.HaxStore.instance) {
-    window.HaxStore.instance = document.createElement("hax-store");
-  }
-  document.body.appendChild(window.HaxStore.instance);
 };

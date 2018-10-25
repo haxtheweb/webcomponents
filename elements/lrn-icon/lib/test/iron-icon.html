@@ -135,7 +135,7 @@ suite('<lrn-icon>', function() {
 
       expect(children.length).to.be.eql(0);
       dom(document.body).appendChild(icon);
-      Polymer.dom.flush();
+      flush();
       children = dom(icon.root).querySelectorAll('img,svg');
       expect(children.length).to.be.eql(1);
     });

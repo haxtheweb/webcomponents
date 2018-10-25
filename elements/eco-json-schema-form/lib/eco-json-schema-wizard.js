@@ -9,7 +9,7 @@ import "@polymer/paper-toolbar/paper-toolbar.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-ripple/paper-ripple.js";
-import "@polymer/app-localize-behavior/app-localize-behavior.js";
+import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
 import "./eco-json-schema-object.js";
 import "./eco-json-schema-array.js";
 import "./eco-json-schema-boolean.js";
@@ -365,7 +365,7 @@ el.error = {
 */
 Polymer({
   is: "eco-json-schema-wizard",
-  behaviors: [Polymer.AppLocalizeBehavior],
+  behaviors: [AppLocalizeBehavior],
 
   properties: {
     language: {
@@ -558,7 +558,7 @@ Polymer({
   },
   _buildForm: function() {
     var ctx = this;
-    this._schemaProperties.forEach(function(property) {
+    this._schemaProperties.forEach(property => {
       var el = ctx.create(property.component.name, {
         label: property.label,
         schema: property.schema,

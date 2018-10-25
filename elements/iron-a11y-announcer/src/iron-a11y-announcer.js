@@ -1,7 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import { Polymer as Polymer$0 } from "@polymer/polymer/lib/legacy/polymer-fn.js";
-
-export const IronA11yAnnouncer = Polymer$0({
+import * as async from "@polymer/polymer/lib/utils/async.js";
+export const IronA11yAnnouncer = Polymer({
   _template: html`
     <style>
       :host {
@@ -50,9 +49,9 @@ export const IronA11yAnnouncer = Polymer$0({
    */
   announce: function(text) {
     this._text = "";
-    this.async(function() {
+    async.microTask.run(() => {
       this._text = text;
-    }, 100);
+    });
   },
 
   _onIronAnnounce: function(event) {

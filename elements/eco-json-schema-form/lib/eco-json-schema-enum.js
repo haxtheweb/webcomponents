@@ -3,7 +3,7 @@ import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-listbox/paper-listbox.js";
-import "@polymer/iron-validatable-behavior/iron-validatable-behavior.js";
+import { IronValidatableBehavior } from "@polymer/iron-validatable-behavior/iron-validatable-behavior.js";
 var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
@@ -57,7 +57,7 @@ $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-enum">
 document.head.appendChild($_documentContainer);
 Polymer({
   is: "eco-json-schema-enum",
-  behaviors: [Polymer.IronValidatableBehavior],
+  behaviors: [IronValidatableBehavior],
   properties: {
     schema: {
       type: Object,

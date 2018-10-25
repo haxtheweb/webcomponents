@@ -274,7 +274,7 @@ Polymer({
     this.opened = true;
     // try to focus on option 0
     setTimeout(() => {
-      this.$$("#picker-item-0").focus();
+      this.shadowRoot.querySelector("#picker-item-0").focus();
     }, 100);
   },
 

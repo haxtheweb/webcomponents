@@ -241,11 +241,6 @@ Polymer({
         }
         </style>
         <script>
-        /* this script must run before Polymer is imported */
-        window.Polymer = {
-          dom: 'shady',
-          lazyRegister: true
-        };
       `;
       content += "</";
       content += "script>";

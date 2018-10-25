@@ -1,4 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
+import { PaperDialogBehavior } from "@polymer/paper-dialog-behavior/paper-dialog-behavior.js";
+import { NeonAnimationRunnerBehavior } from "@polymer/neon-animation/neon-animation-runner-behavior.js";
 import "../app-datepicker.js";
 var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
@@ -73,7 +76,7 @@ Polymer({
     _readOnlyInvalidDate: String
   },
 
-  behaviors: [Polymer.PaperDialogBehavior, Polymer.NeonAnimationRunnerBehavior],
+  behaviors: [PaperDialogBehavior, NeonAnimationRunnerBehavior],
   listeners: {
     "neon-animation-finish": "_onNeonAnimationFinish",
     "iron-overlay-closed": "_alwaysResetSelectedDate"
@@ -81,12 +84,9 @@ Polymer({
 
   _alwaysResetSelectedDate: function() {
     if (this.alwaysResetSelectedDateOnDialogClose) {
-      this.async(
-        function() {
-          this.$.datePicker.resetDate();
-        }.bind(this),
-        1
-      );
+      async.microTask.run(() => {
+        this.$.datePicker.resetDate();
+      });
     }
   },
 
@@ -125,6 +125,6 @@ Polymer({
   },
   // Resize dialog to re-center the dialog when view is changed.
   _updateDatepickerView: function() {
-    this.notifyResize();
+    window.dispatchEvent(new Event("resize"));
   }
 });

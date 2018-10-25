@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-list/iron-list.js";
 import "./hax-blox-browser-item.js";
 import "./hax-icons.js";
@@ -105,9 +106,11 @@ Polymer({
    * Reset this browser.
    */
   resetBrowser: function() {
-    setTimeout(() => {
-      this.$.ironlist.fire("iron-resize");
-      window.dispatchEvent(new Event("resize"));
-    }, 100);
+    async.microTask.run(() => {
+      setTimeout(() => {
+        this.$.ironlist.fire("iron-resize");
+        window.dispatchEvent(new Event("resize"));
+      }, 100);
+    });
   }
 });

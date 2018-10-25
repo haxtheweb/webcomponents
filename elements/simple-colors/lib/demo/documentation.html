@@ -166,7 +166,7 @@
               <li><tt>bower install --save LRNWebComponents/simple-colors</tt></li>
               <li>Include <tt>&lt;link rel="import" href="<em>path/to/</em>simple-colors/simple-colors.html"&gt;</tt></li>
               <li>To allow an element to inherit the variables, add the behavior: <tt>simpleColorsBehaviors, </tt></li>
-              <li>When the element ready, request the color variables: <tt>Polymer.SimpleColorsUtility.requestAvailability();</tt></li>
+              <li>When the element ready, request the color variables: <tt>window.SimpleColorsUtility.requestAvailability();</tt></li>
               <li>Add custom styles to your element using the <a href="#naming">simple colors variables</a>. For example:
                 <br><tt>&lt;style is="custom-style" import="simple-colors"&gt;
                 <br>&nbsp;&nbsp;&nbsp;&nbsp;<em>:host { 

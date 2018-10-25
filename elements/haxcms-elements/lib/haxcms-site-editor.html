@@ -290,11 +290,11 @@ Polymer({
       this.$.body.importContent(this.__body);
     }
     // allow for initial setting since this editor gets injected basically
-    if (typeof Polymer.cmsSiteEditor.jsonOutlineSchema !== typeof undefined) {
-      this.set('manifest', Polymer.cmsSiteEditor.jsonOutlineSchema);
+    if (typeof window.cmsSiteEditor.jsonOutlineSchema !== typeof undefined) {
+      this.set('manifest', window.cmsSiteEditor.jsonOutlineSchema);
     }
-    if (typeof Polymer.cmsSiteEditor.initialActiveItem !== typeof undefined) {
-      this.set('activeItem', Polymer.cmsSiteEditor.initialActiveItem);
+    if (typeof window.cmsSiteEditor.initialActiveItem !== typeof undefined) {
+      this.set('activeItem', window.cmsSiteEditor.initialActiveItem);
     }
     this.updateStyles();
   },

@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
-
-Polymer.A11yMediaUtility = Polymer({
+window.A11yMediaUtility = {};
+Polymer({
   is: "a11y-media-utility",
 
   properties: {
@@ -31,8 +31,8 @@ Polymer.A11yMediaUtility = Polymer({
     };
 
     // sets the instance to the current instance
-    if (!Polymer.A11yMediaUtility.instance) {
-      Polymer.A11yMediaUtility.instance = this;
+    if (!window.A11yMediaUtility.instance) {
+      window.A11yMediaUtility.instance = this;
 
       // listen for a players added to the page
       document.body.addEventListener("a11y-player", root.__playerLoader);
@@ -167,18 +167,18 @@ Polymer.A11yMediaUtility = Polymer({
   }
 });
 
-Polymer.A11yMediaUtility.instance = null;
+window.A11yMediaUtility.instance = null;
 
 /**
  * Checks to see if there is an instance available, and if not appends one
  */
-Polymer.A11yMediaUtility.requestAvailability = function() {
+window.A11yMediaUtility.requestAvailability = function() {
   //only create an instance if there isn't one
-  if (!Polymer.A11yMediaUtility.instance) {
-    Polymer.A11yMediaUtility.instance = document.createElement(
+  if (!window.A11yMediaUtility.instance) {
+    window.A11yMediaUtility.instance = document.createElement(
       "a11y-media-utility"
     );
   }
 
-  document.body.appendChild(Polymer.A11yMediaUtility.instance);
+  document.body.appendChild(window.A11yMediaUtility.instance);
 };

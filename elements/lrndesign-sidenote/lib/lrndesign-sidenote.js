@@ -131,13 +131,10 @@ Polymer({
 
   __updateStyles: function(bgColor, outset, outsetMeasurementType) {
     const bgColorHex = this._colorTransformFromClass(bgColor) || bgColor;
-    this.customStyle["--container-text-color"] = this.getTextContrastColor(
-      bgColorHex
-    );
-    this.customStyle["--container-bg-color"] = bgColorHex;
-    this.customStyle["--container-outset"] = `${Number(
-      outset
-    )}${outsetMeasurementType}`;
-    this.updateStyles();
+    this.updateStyles({
+      "--container-text-color": this.getTextContrastColor(bgColorHex),
+      "--container-bg-color": bgColorHex,
+      "--container-outset": `${Number(outset)}${outsetMeasurementType}`
+    });
   }
 });

@@ -1,39 +1,41 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 
-Polymer.A11yMediaYoutubeUtility = Polymer({
+window.A11yMediaYoutubeUtility = {};
+
+Polymer({
   is: "a11y-media-youtube-utility"
 });
 
-Polymer.A11yMediaYoutubeUtility.instance = null;
+window.A11yMediaYoutubeUtility.instance = null;
 
-Polymer.A11yMediaYoutubeUtility.counter = 0;
+window.A11yMediaYoutubeUtility.counter = 0;
 
-Polymer.A11yMediaYoutubeUtility.apiReady = window.YT !== undefined;
+window.A11yMediaYoutubeUtility.apiReady = window.YT !== undefined;
 
-Polymer.A11yMediaYoutubeUtility.players = [];
+window.A11yMediaYoutubeUtility.players = [];
 
 /**
  * Checks to see if there is an instance available, and if not appends one
  */
-Polymer.A11yMediaYoutubeUtility.requestAvailability = function() {
-  if (!Polymer.A11yMediaYoutubeUtility.instance) {
-    Polymer.A11yMediaYoutubeUtility.instance = document.createElement(
+window.A11yMediaYoutubeUtility.requestAvailability = function() {
+  if (!window.A11yMediaYoutubeUtility.instance) {
+    window.A11yMediaYoutubeUtility.instance = document.createElement(
       "a11y-media-youtube-utility"
     );
-    document.body.appendChild(Polymer.A11yMediaYoutubeUtility.instance);
+    document.body.appendChild(window.A11yMediaYoutubeUtility.instance);
     let api = document.createElement("script");
     api.setAttribute("src", "https://www.youtube.com/iframe_api");
     api.setAttribute("type", "text/javascript");
     document.body.appendChild(api);
     window.onYouTubeIframeAPIReady = function() {
-      Polymer.A11yMediaYoutubeUtility.apiReady = true;
+      window.A11yMediaYoutubeUtility.apiReady = true;
       var event = new CustomEvent("youtube-api-ready");
       document.dispatchEvent(event);
     };
   }
 };
 
-Polymer.A11yMediaYoutubeUtility.initYoutubePlayer = function(
+window.A11yMediaYoutubeUtility.initYoutubePlayer = function(
   elem,
   options,
   attached

@@ -25,7 +25,7 @@ define([
     },
     announce: function announce(text) {
       this._text = "";
-      this.async(function() {
+      async.microTask.run(() => {
         this._text = text;
       }, 100);
     },

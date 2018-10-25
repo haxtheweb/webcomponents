@@ -3,7 +3,7 @@ import "@polymer/paper-progress/paper-progress.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-ripple/paper-ripple.js";
-import "@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
+import { IronA11yKeysBehavior } from "@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
 import "./lrndesign-audio-player-icons.js";
 /**
 A custom audio player with material paper style and clean design.
@@ -249,7 +249,7 @@ Polymer({
 
   //
   // Component behaviors
-  behaviors: [Polymer.IronA11yKeysBehavior],
+  behaviors: [IronA11yKeysBehavior],
 
   //
   // Define component default attributes

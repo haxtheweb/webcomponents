@@ -339,7 +339,7 @@ Polymer({
   },
 
   _initializeReader: function() {
-    this.instance = new Polymer.Reader(this);
+    this.instance = new Reader(this);
     if (this.src != null) this.fileName = this.src.split("/").pop();
     this.currentPage = 1;
   },

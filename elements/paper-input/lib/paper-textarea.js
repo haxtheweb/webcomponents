@@ -20,7 +20,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <paper-textarea label="Textarea label"></paper-textarea>
 
-See `Polymer.PaperInputBehavior` for more API docs.
+See `PaperInputBehavior` for more API docs.
 
 ### Validation
 
@@ -28,7 +28,7 @@ Currently only `required` and `maxlength` validation is supported.
 
 ### Styling
 
-See `Polymer.PaperInputContainer` for a list of custom properties used to
+See `PaperInputContainer` for a list of custom properties used to
 style this element.
 */
 Polymer({

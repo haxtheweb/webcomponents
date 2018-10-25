@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
 `haxcms-site-builder`
@@ -201,8 +202,8 @@ Polymer({
       // if we found one, make it the active page
       if (find.length > 0) {
         let found = find.pop();
-        if (typeof Polymer.cmsSiteEditor !== typeof undefined) {
-          Polymer.cmsSiteEditor.initialActiveItem = found;
+        if (typeof window.cmsSiteEditor !== typeof undefined) {
+          window.cmsSiteEditor.initialActiveItem = found;
         }
         // @todo figure out why this is required in order for all timing to line up
         setTimeout(() => {
@@ -229,7 +230,7 @@ Polymer({
       if (newValue !== null) {
         this.wipeSlot(this.themeElement, "*");
         newValue = this.encapScript(newValue);
-        this.async(() => {
+        async.microTask.run(() => {
           let frag = document.createRange().createContextualFragment(newValue);
           dom(this.themeElement).appendChild(frag);
         });
@@ -273,7 +274,7 @@ Polymer({
       typeof newValue.id === typeof undefined &&
       typeof oldValue.id !== typeof undefined
     ) {
-      this.async(() => {
+      async.microTask.run(() => {
         this.wipeSlot(this.themeElement, "*");
       });
       // fire event w/ nothing, this is because there is no content
@@ -318,8 +319,8 @@ Polymer({
     ) {
       this.themeElementName = newValue.metadata.theme;
       // account for editor not being there
-      if (typeof Polymer.cmsSiteEditor !== typeof undefined) {
-        Polymer.cmsSiteEditor.jsonOutlineSchema = newValue;
+      if (typeof window.cmsSiteEditor !== typeof undefined) {
+        window.cmsSiteEditor.jsonOutlineSchema = newValue;
       }
       this.fire("json-outline-schema-changed", newValue);
     }
@@ -331,11 +332,11 @@ Polymer({
   _themeNameChanged: function(newValue, oldValue) {
     if (newValue && oldValue) {
       if (
-        typeof Polymer.cmsSiteEditor.instance.haxCmsSiteEditorElement !==
+        typeof window.cmsSiteEditor.instance.haxCmsSiteEditorElement !==
         typeof undefined
       ) {
-        Polymer.cmsSiteEditor.instance.appendChild(
-          Polymer.cmsSiteEditor.instance.haxCmsSiteEditorElement
+        window.cmsSiteEditor.instance.appendChild(
+          window.cmsSiteEditor.instance.haxCmsSiteEditorElement
         );
       }
     }

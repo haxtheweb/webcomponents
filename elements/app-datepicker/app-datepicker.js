@@ -1,5 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { NeonAnimationRunnerBehavior } from "@polymer/neon-animation/neon-animation-runner-behavior.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "./lib/app-datepicker-icons.js";
 import "./lib/app-datepicker-animations.js";
 var $_documentContainer = document.createElement("div");
@@ -701,7 +703,7 @@ Custom property | Description | Default
 Polymer({
   is: "app-datepicker",
 
-  behaviors: [Polymer.NeonAnimationRunnerBehavior],
+  behaviors: [NeonAnimationRunnerBehavior],
 
   properties: {
     /**
@@ -1403,15 +1405,15 @@ Polymer({
     if (_target && _target.toPage.tagName === "IRON-LIST") {
       var _focusableItem = this._updateListScroller(_target.toPage);
       // Automatically focus selected list of year at year view.
-      this.async(function() {
+      async.microTask.run(() => {
         _target.toPage._focusPhysicalItem(_focusableItem);
-      }, 1);
+      });
     } else {
       // When user navigate to calendar view from list view,
       // re-focus showSelectedYear.
-      this.async(function() {
+      async.microTask.run(() => {
         this.$.showSelectedYear.focus();
-      }, 1);
+      });
     }
   },
   _updateListScroller: function(_list) {
@@ -1432,11 +1434,11 @@ Polymer({
     }
 
     // Scroll to selected year.
-    this.async(function() {
+    async.microTask.run(() => {
       _list.scroll(0, _sli);
       // Select initial item for the list.
       _list.selectItem(this._activeYear - 1900);
-    }, 17); // wait for at least 17ms to update the scroller position.
+    }); // wait for at least 17ms to update the scroller position.
 
     // Return index of item that should be focused on the list.
     return this._activeYear - 1900;
@@ -1450,7 +1452,9 @@ Polymer({
       } else {
         // When noAnimation is truthy, this will update the list scroller.
         if (this.noAnimation) {
-          this._updateListScroller(this.$$("#listOfYears"));
+          this._updateListScroller(
+            this.shadowRoot.querySelector("#listOfYears")
+          );
         }
       }
     }
@@ -1458,9 +1462,9 @@ Polymer({
   _onListRendered: function(ev) {
     // When noAnimation is truthy, this will update the list scroller.
     if (ev.target.if && this.noAnimation) {
-      this.async(function() {
-        this._updateListScroller(this.$$("#listOfYears"));
-      }, 1);
+      async.microTask.run(() => {
+        this._updateListScroller(this.shadowRoot.querySelector("#listOfYears"));
+      });
     }
   },
   _goCalendar: function(ev) {
@@ -1474,7 +1478,9 @@ Polymer({
     this.set("_activeYear", _selectedYear);
     this.set("_selectedYear", _selectedYear);
     // Update selected item in iron-list.
-    this.$$("#listOfYears").selectItem(_selectedYear - 1900);
+    this.shadowRoot
+      .querySelector("#listOfYears")
+      .selectItem(_selectedYear - 1900);
 
     // Go back to calendar page.
     this.set("_activeView", "calendar");

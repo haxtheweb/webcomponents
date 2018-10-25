@@ -40,6 +40,8 @@ Polymer({
    */
   reload: function(e) {
     let root = this;
-    root.$$("#image-list").innerHTML = root.$$("#image-list").innerHTML;
+    root.shadowRoot.querySelector(
+      "#image-list"
+    ).innerHTML = root.shadowRoot.querySelector("#image-list").innerHTML;
   }
 });

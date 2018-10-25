@@ -1,7 +1,7 @@
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import "@polymer/iron-collapse/iron-collapse.js";
 import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-behaviors/iron-button-state.js";
+import { IronButtonState } from "@polymer/iron-behaviors/iron-button-state.js";
 Polymer({
   _template: html`
     <style>
@@ -59,7 +59,7 @@ Polymer({
 `,
 
   is: "lrndesign-mapmenu-header",
-  behaviors: [Polymer.IronButtonState],
+  behaviors: [IronButtonState],
 
   properties: {
     title: {

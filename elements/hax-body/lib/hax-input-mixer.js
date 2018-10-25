@@ -234,10 +234,13 @@ Polymer({
         }
         // try and force cursor to focus on this element
         setTimeout(() => {
-          if (typeof this.$$("#input").hideMenu === "function") {
-            this.$$("#input").hideMenu();
+          if (
+            typeof this.shadowRoot.querySelector("#input").hideMenu ===
+            "function"
+          ) {
+            this.shadowRoot.querySelector("#input").hideMenu();
           }
-          this.$$("#input").focus();
+          this.shadowRoot.querySelector("#input").focus();
         }, 200);
       }
     }

@@ -152,7 +152,7 @@ Polymer({
    * fires an event to let the page know there is a transcript container
    */
   attached: function() {
-    Polymer.SimpleColorsUtility.requestAvailability();
+    window.SimpleColorsUtility.requestAvailability();
     this.fire("transcript-ready", this);
   },
 
@@ -187,7 +187,7 @@ Polymer({
    */
   print: function(mediaTitle) {
     let root = this,
-      track = root.$$("#inner[active]"),
+      track = root.shadowRoot.querySelector("#inner[active]"),
       css =
         "a11y-media-transcript-cue{display:table-row;background-color:#fff;color:#000}a11y-media-transcript-cue[hide-timestamps],a11y-media-transcript-cue[hide-timestamps] #text{display:inline}a11y-media-transcript-cue #text{display:table-cell;line-height:200%}a11y-media-transcript-cue #time{display:table-cell;font-size:80%;padding:0 1em;white-space:nowrap;font-family:monospace}a11y-media-transcript-cue[hide-timestamps] #time{display:none}a11y-media-transcript-cue [matched]{background-color:#fff;color:#eee;padding:.1em .25em;border-radius:.1em}";
     mediaTitle = mediaTitle !== undefined ? mediaTitle : "Transcript";
@@ -230,10 +230,13 @@ Polymer({
     //console.log('setActiveCues',cues);
     let root = this,
       offset =
-        root.$$("#inner") !== null && root.$$("#inner") !== undefined
-          ? root.$$("#inner").offsetTop
+        root.shadowRoot.querySelector("#inner") !== null &&
+        root.shadowRoot.querySelector("#inner") !== undefined
+          ? root.shadowRoot.querySelector("#inner").offsetTop
           : 0,
-      cue = root.$$("#inner a11y-media-transcript-cue[active]");
+      cue = root.shadowRoot.querySelector(
+        "#inner a11y-media-transcript-cue[active]"
+      );
     root.set("activeCues", cues.slice(0));
     if (!root.disableScroll && (cue !== null) & (cue !== undefined)) {
       //javascript scrolling from:  https://stackoverflow.com/questions/8917921/cross-browser-javascript-not-jquery-scroll-to-top-animation#answer-8918062

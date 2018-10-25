@@ -130,11 +130,8 @@ Polymer({
       type: String
     },
 
-    /**
-     * @type {!Polymer.IronMeta}
-     */
     _meta: {
-      value: Polymer.Base.create("iron-meta", { type: "iconset" })
+      value: document.createElement("iron-meta", { type: "iconset" })
     }
   },
 
@@ -172,9 +169,7 @@ Polymer({
           this._iconset.removeIcon(this);
         }
       } else if (this._iconsetName && this._meta) {
-        this._iconset = /** @type {?Polymer.Iconset} */ (this._meta.byKey(
-          this._iconsetName
-        ));
+        this._iconset = this._meta.byKey(this._iconsetName);
         if (this._iconset) {
           this._iconset.applyIcon(this, this._iconName, this.theme);
           this.unlisten(window, "lrn-iconset-added", "_updateIcon");

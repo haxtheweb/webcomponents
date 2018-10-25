@@ -161,7 +161,7 @@ additional informational text.
         placeholder="search for cats" autosave="test" results="5">
     </paper-input>
 
-See `Polymer.PaperInputBehavior` for more API docs.
+See `PaperInputBehavior` for more API docs.
 
 ### Focus
 
@@ -170,7 +170,7 @@ paper input has a tab index. Similarly, `blur()` will blur the element.
 
 ### Styling
 
-See `Polymer.PaperInputContainer` for a list of custom properties used to
+See `PaperInputContainer` for a list of custom properties used to
 style this element.
 
 @group Paper Elements

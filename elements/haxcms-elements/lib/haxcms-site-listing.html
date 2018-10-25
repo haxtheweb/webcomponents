@@ -312,12 +312,12 @@ Polymer({
       setTimeout(() => {
         if (this.jwt) {
           this.$.siteslisting.$.list.querySelector('[data-site-id="item-new"]').hidden = false;
-          this.$.mapmenu.$.builder.$$('#item-new').hidden = false;
+          this.$.mapmenu.$.builder.shadowRoot.querySelector('#item-new').hidden = false;
           this.$.add.hidden = false;
         }
         else {
           this.$.siteslisting.$.list.querySelector('[data-site-id="item-new"]').hidden = true;
-          this.$.mapmenu.$.builder.$$('#item-new').hidden = true;
+          this.$.mapmenu.$.builder.shadowRoot.querySelector('#item-new').hidden = true;
           this.$.add.hidden = true;
         }
       }, 100);
@@ -355,7 +355,7 @@ Polymer({
       this.$.toast.show('Welcome, log in successful!');
       this.$.add.hidden = false;
       this.$.siteslisting.$.list.querySelector('[data-site-id="item-new"]').hidden = false;
-      this.$.mapmenu.$.builder.$$('#item-new').hidden = false;
+      this.$.mapmenu.$.builder.shadowRoot.querySelector('#item-new').hidden = false;
     }
     else {
       this.__loginText = 'Log in';
@@ -363,7 +363,7 @@ Polymer({
       this.$.toast.show('You logged out');
       this.$.add.hidden = true;
       this.$.siteslisting.$.list.querySelector('[data-site-id="item-new"]').hidden = true;
-      this.$.mapmenu.$.builder.$$('#item-new').hidden = true;
+      this.$.mapmenu.$.builder.shadowRoot.querySelector('#item-new').hidden = true;
     }
   },
   /**

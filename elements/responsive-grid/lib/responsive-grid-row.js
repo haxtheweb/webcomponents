@@ -247,7 +247,7 @@ Polymer({
 
   attached: function() {
     let root = this;
-    Polymer.ResponsiveUtility.requestAvailability();
+    window.ResponsiveUtility.requestAvailability();
     root.fire("responsive-element", {
       element: root,
       attribute: "screen",

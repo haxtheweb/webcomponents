@@ -66,7 +66,7 @@ Polymer({
       this._manifestChanged.bind(this)
     );
     // state issue but it can miss in timing othewise on first event
-    this.set("items", Polymer.cmsSiteEditor.jsonOutlineSchema.items);
+    this.set("items", window.cmsSiteEditor.jsonOutlineSchema.items);
   },
 
   /**

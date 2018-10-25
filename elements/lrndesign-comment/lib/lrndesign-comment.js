@@ -32,7 +32,7 @@ Polymer({
           </relative-time>
         </div>
         <div class="row-2">
-          <content></content>
+          <slot></slot>
         </div>
         <div class="row-3">
           {{links}}

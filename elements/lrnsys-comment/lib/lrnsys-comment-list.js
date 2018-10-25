@@ -151,18 +151,24 @@ Polymer({
    */
   ready: function(e) {
     let root = this;
-    root
-      .$$("#filtered-comments")
-      .$$("#comment-list")
+    root.shadowRoot
+      .querySelector("#filtered-comments")
+      .shadowRoot.querySelector("#comment-list")
       .fire("iron-resize");
-    root.$$("#filter-comments").addEventListener("value-changed", function(e) {
-      root.$$("#filtered-comments").like = e.target.value;
-    });
-    root.$$("#filter-type").addEventListener("change", function(e) {
-      root.$$("#filter-comments").value = "";
-      root.$$("#filtered-comments").where = e.detail.value;
-      root.$$("#filtered-comments").like = "";
-    });
+    root.shadowRoot
+      .querySelector("#filter-comments")
+      .addEventListener("value-changed", function(e) {
+        root.shadowRoot.querySelector("#filtered-comments").like =
+          e.target.value;
+      });
+    root.shadowRoot
+      .querySelector("#filter-type")
+      .addEventListener("change", function(e) {
+        root.shadowRoot.querySelector("#filter-comments").value = "";
+        root.shadowRoot.querySelector("#filtered-comments").where =
+          e.detail.value;
+        root.shadowRoot.querySelector("#filtered-comments").like = "";
+      });
   },
 
   /**

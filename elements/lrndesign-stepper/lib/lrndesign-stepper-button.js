@@ -152,7 +152,7 @@ Polymer({
       </paper-button>
       <iron-collapse>
       <div>
-        <content></content>
+        <slot></slot>
       </div>
       </iron-collapse>
     </template>
@@ -171,7 +171,7 @@ Polymer({
         </div>
       </paper-button>
       </a>
-      <content></content>
+      <slot></slot>
     </template>
 `,
 
@@ -230,7 +230,7 @@ Polymer({
   ready: function() {
     var root = this;
     setTimeout(function() {
-      var target = root.$$("iron-collapse");
+      var target = root.shadowRoot.querySelector("iron-collapse");
       if (root.opened) {
         console.log("opening in stepper");
         target.show();

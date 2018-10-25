@@ -302,7 +302,7 @@ Polymer({
    */
   _onOpen: function(e) {
     setTimeout(() => {
-      this.$$("paper-item").focus();
+      this.shadowRoot.querySelector("paper-item").focus();
     }, 500);
   },
 
@@ -357,7 +357,7 @@ Polymer({
    */
   attached: function() {
     // need to access iconset imperatively now
-    const iconSets = new Polymer.IronMeta({ type: "iconset" });
+    const iconSets = document.createElement("iron-meta", { type: "iconset" });
     if (this.iconList.length === 0 && iconSets.list && iconSets.list.length) {
       var iconList = [];
       var index = 0;
@@ -375,9 +375,17 @@ Polymer({
     // Fit the icon boxes in columns. We first need to get the width of
     // a icon box (which is customizable), and then change the box's
     // width to fit all the columns.
-    var sizeOfAIconDiv = this.getComputedStyleValue(
-      "--paper-icon-picker-icon-size"
-    );
+    var sizeOfAIconDiv;
+    if (window.ShadyCSS) {
+      sizeOfAIconDiv = ShadyCSS.getComputedStyleValue(
+        this,
+        "--paper-icon-picker-icon-size"
+      );
+    } else {
+      sizeOfAIconDiv = getComputedStyle(this).getPropertyValue(
+        "--paper-icon-picker-icon-size"
+      );
+    }
     if (!sizeOfAIconDiv || sizeOfAIconDiv == "") {
       // Default value case
       sizeOfAIconDiv = 26;

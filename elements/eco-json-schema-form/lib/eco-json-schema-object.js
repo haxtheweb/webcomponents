@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
-import "@polymer/app-localize-behavior/app-localize-behavior.js";
+import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
 import "./eco-json-schema-array.js";
 import "./eco-json-schema-boolean.js";
 import "./eco-json-schema-enum.js";
@@ -323,7 +323,7 @@ el.error = {
 */
 Polymer({
   is: "eco-json-schema-object",
-  behaviors: [Polymer.AppLocalizeBehavior],
+  behaviors: [AppLocalizeBehavior],
   properties: {
     language: {
       value: "en"
@@ -505,7 +505,7 @@ Polymer({
   },
   _buildForm: function() {
     var ctx = this;
-    this._schemaProperties.forEach(function(property) {
+    this._schemaProperties.forEach(property => {
       var el = ctx.create(property.component.name, {
         label: property.label,
         schema: property.schema,

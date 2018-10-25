@@ -178,8 +178,7 @@ Polymer({
   },
 
   __updateStyles: function(imageBg) {
-    this.customStyle["--parallax-image-background"] = `url(${imageBg})`;
-    this.updateStyles();
+    this.updateStyles({ "--parallax-image-background": `url(${imageBg})` });
   },
 
   ready: function() {

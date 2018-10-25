@@ -99,15 +99,15 @@ Polymer({
     this.activeItem = e.detail;
     // make sure this location exists
     await this.$.beaker.write(this.activeItem.location, window.HaxStore.instance.activeHaxBody.haxToContent());
-    Polymer.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show('Page updated!');
-    Polymer.cmsSiteEditor.instance.haxCmsSiteEditorElement.fire('haxcms-trigger-update-page', true);
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show('Page updated!');
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.fire('haxcms-trigger-update-page', true);
   },
   /**
    * Outline save event.
    */
   saveOutline: async function (e) {
     // snag global to be sure we have it set first
-    this.manifest = Polymer.cmsSiteEditor.instance.haxCmsSiteEditorElement.manifest;
+    this.manifest = window.cmsSiteEditor.instance.haxCmsSiteEditorElement.manifest;
     // set items specifically since it's just an outline update
     this.manifest.items = e.detail;
     // loop through and match the data our backend generates
@@ -132,8 +132,8 @@ Polymer({
     });
     this.$.beaker.write('site.json', JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    Polymer.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show('Outline saved!');
-    Polymer.cmsSiteEditor.instance.haxCmsSiteEditorElement.fire('haxcms-trigger-update', true);
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show('Outline saved!');
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.fire('haxcms-trigger-update', true);
     this.fire('json-outline-schema-changed', this.manifest);
   },
   /**
@@ -143,8 +143,8 @@ Polymer({
     this.manifest = e.detail;
     await this.$.beaker.write('site.json', JSON.stringify(this.manifest, null, 2));
     // simulate save events since they wont fire
-    Polymer.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show('Site details saved!');
-    Polymer.cmsSiteEditor.instance.haxCmsSiteEditorElement.fire('haxcms-trigger-update', true);
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show('Site details saved!');
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.fire('haxcms-trigger-update', true);
     this.fire('json-outline-schema-changed', this.manifest);
   },
   /**
@@ -198,8 +198,8 @@ Polymer({
           if (typeof this.__body !== typeof undefined) {
             haxCmsSiteEditorElement.__body = this.__body;
           }
-          Polymer.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
-          Polymer.cmsSiteEditor.instance.appendTarget.appendChild(haxCmsSiteEditorElement);
+          window.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
+          window.cmsSiteEditor.instance.appendTarget.appendChild(haxCmsSiteEditorElement);
         }, (e) => {
           //import failed
         });
@@ -208,6 +208,29 @@ Polymer({
         // error in the event this is a double registration
       }
     }
+  },
+  /**
+   * Hack to replace importHref from Polymer 1 that TYPICALLY will work in ESM
+   */
+  importHref: function (url) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      const tempGlobal = "__tempModuleLoadingVariable" +
+          Math.random().toString(32).substring(2);
+      script.type = "module";
+      script.textContent = `import * as m from "${url}"; window.${tempGlobal} = m;`;
+      script.onload = () => {
+        resolve(window[tempGlobal]);
+        delete window[tempGlobal];
+        script.remove();
+      };
+      script.onerror = () => {
+        reject(new Error("Failed to load module script with URL " + url));
+        delete window[tempGlobal];
+        script.remove();
+      };
+      document.documentElement.appendChild(script);
+    });
   },
 });
 </script>

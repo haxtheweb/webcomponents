@@ -304,7 +304,9 @@ Polymer({
       if (target.id == "reply") {
         root.fire("comment-reply", { comment: root.comment });
       } else if (target.id == "like") {
-        root.$$("#like").classList.toggle("like-icon-color");
+        root.shadowRoot
+          .querySelector("#like")
+          .classList.toggle("like-icon-color");
         root.fire("comment-like", { comment: root.comment });
       } else if (target.id == "edit") {
         // toggle edit, allow edit state handle itself via observer
@@ -324,14 +326,17 @@ Polymer({
     if (typeof root.comment !== typeof undefined && root.comment.actions.edit) {
       root.async(function() {
         // show / hide the edit vs display area
-        root.$$("#rendered-comment").hidden = root.editform;
-        root.$$("#comment-editor").hidden = !root.editform;
+        root.shadowRoot.querySelector("#rendered-comment").hidden =
+          root.editform;
+        root.shadowRoot.querySelector(
+          "#comment-editor"
+        ).hidden = !root.editform;
         // simple icon toggle
         if (root.editform) {
-          root.$$("#edit").icon = "save";
-          root.$$("#edit").alt = "Save";
-          root.$$("#reply").disabled = true;
-          root.$$("#edit-comment").focus();
+          root.shadowRoot.querySelector("#edit").icon = "save";
+          root.shadowRoot.querySelector("#edit").alt = "Save";
+          root.shadowRoot.querySelector("#reply").disabled = true;
+          root.shadowRoot.querySelector("#edit-comment").focus();
           root.fire("comment-editing", { comment: root.comment });
           root.blockFirstState = false;
         } else {
@@ -340,9 +345,9 @@ Polymer({
           } else {
             root.blockFirstState = false;
           }
-          root.$$("#edit").icon = "create";
-          root.$$("#edit").alt = "Edit";
-          root.$$("#reply").disabled = false;
+          root.shadowRoot.querySelector("#edit").icon = "create";
+          root.shadowRoot.querySelector("#edit").alt = "Edit";
+          root.shadowRoot.querySelector("#reply").disabled = false;
         }
         document.querySelector("iron-list").fire("iron-resize");
         // access sibling or parent elements here

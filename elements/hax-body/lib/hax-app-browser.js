@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/iron-pages/iron-pages.js";
@@ -210,18 +211,28 @@ Polymer({
    * Reset this browser.
    */
   resetBrowser: function() {
-    this.searching = false;
-    this.set("__appList", window.HaxStore.instance.appList);
-    this.$.filter.$$("#ironlist").filtered = this.__appList;
-    this.$.inputfilter.value = "";
-    this.$.filtertype.value = "details.title";
-    this.$.filter.value = "";
-    this.$.filter.filter();
-    this.$.filter.where = "details.title";
-    this.$.filter.like = "";
-    setTimeout(() => {
-      this.$.filter.$$("#ironlist").fire("iron-resize");
-      window.dispatchEvent(new Event("resize"));
-    }, 100);
+    async.microTask.run(() => {
+      this.searching = false;
+      this.set("__appList", window.HaxStore.instance.appList);
+      if (this.$.filter.shadowRoot.querySelector("#ironlist")) {
+        this.$.filter.shadowRoot.querySelector(
+          "#ironlist"
+        ).filtered = this.__appList;
+      }
+      this.$.inputfilter.value = "";
+      this.$.filtertype.value = "details.title";
+      this.$.filter.value = "";
+      this.$.filter.filter();
+      this.$.filter.where = "details.title";
+      this.$.filter.like = "";
+      setTimeout(() => {
+        if (this.$.filter.shadowRoot.querySelector("#ironlist")) {
+          this.$.filter.shadowRoot
+            .querySelector("#ironlist")
+            .fire("iron-resize");
+          window.dispatchEvent(new Event("resize"));
+        }
+      }, 100);
+    });
   }
 });

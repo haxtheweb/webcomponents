@@ -161,7 +161,7 @@ window.a11yMediaBehaviors.GeneralFunctions = {
               attribute: "responsive-size",
               relativeToParent: true
             };
-    Polymer.ResponsiveUtility.requestAvailability();
+    window.ResponsiveUtility.requestAvailability();
     root.fire("responsive-element", data2);
   },
   /**

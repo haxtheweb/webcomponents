@@ -67,7 +67,7 @@ Polymer({
 
   ready: function() {
     var root = this;
-    var ironPages = root.$$("iron-pages");
+    var ironPages = root.shadowRoot.querySelector("iron-pages");
     if (ironPages.children) {
       if (ironPages.children.length) {
         root.count = ironPages.children.length;

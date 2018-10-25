@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-spinner/paper-spinner.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
@@ -196,7 +197,7 @@ Polymer({
       // wipe our own slot here
       this.wipeSlot(dom(this));
       // now inject the content we got
-      this.async(() => {
+      async.microTask.run(() => {
         let template = document.createElement("template");
         template.innerHTML = newValue.content;
         dom(this).appendChild(document.importNode(template.content, true));
@@ -231,7 +232,7 @@ Polymer({
       }
       if (this.tokenEndPoint) {
         this.loading = true;
-        this.async(() => {
+        async.microTask.run(() => {
           this.$.tokenrequest.generateRequest();
         });
       }
@@ -295,7 +296,7 @@ Polymer({
         }
         if (this.tokenEndPoint) {
           this.loading = true;
-          this.async(() => {
+          async.microTask.run(() => {
             this.$.tokenrequest.generateRequest();
           });
         }

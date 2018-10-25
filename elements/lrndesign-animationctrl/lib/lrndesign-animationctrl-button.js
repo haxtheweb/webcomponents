@@ -41,9 +41,11 @@ Polymer({
      * @event lrndesign-animationctrl-click
      * @param {string} button Name of the button that was clicked.
      */
-    root.$$("paper-button").addEventListener("click", function(e) {
-      e.preventDefault();
-      root.fire("lrndesign-animationctrl-click", { button: root.name });
-    });
+    root.shadowRoot
+      .querySelector("paper-button")
+      .addEventListener("click", function(e) {
+        e.preventDefault();
+        root.fire("lrndesign-animationctrl-click", { button: root.name });
+      });
   }
 });

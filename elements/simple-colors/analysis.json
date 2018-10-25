@@ -22,7 +22,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
-      "name": "Polymer.SimpleColorsUtility",
+      "name": "window.SimpleColorsUtility",
       "attributes": [],
       "events": [],
       "styling": {

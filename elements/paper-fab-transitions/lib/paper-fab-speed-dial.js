@@ -53,9 +53,9 @@ Custom property | Description | Default
         @apply(--paper-fab-speed-dial-option);
       }
     </style>
-    <content id="fabContainer" select=".dropdown-trigger"></content>
+    <slot id="fabContainer" select=".dropdown-trigger"></slot>
     <iron-dropdown id="dropdown" open-animation-config="[[openAnimationConfig]]" close-animation-config="[[closeAnimationConfig]]">
-      <content id="contentContainer" select=".dropdown-content"></content>
+      <slot id="contentContainer" select=".dropdown-content"></slot>
     </iron-dropdown>
 `,
 

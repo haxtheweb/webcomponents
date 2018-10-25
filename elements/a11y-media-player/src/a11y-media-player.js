@@ -476,12 +476,12 @@ Polymer({
    */
   attached: function() {
     this.__playerAttached = true;
-    Polymer.SimpleColorsUtility.requestAvailability();
-    Polymer.A11yMediaUtility.requestAvailability();
+    window.SimpleColorsUtility.requestAvailability();
+    window.A11yMediaUtility.requestAvailability();
     this._addResponsiveUtility();
     this.fire("a11y-player", this);
     if (this.isYoutube) {
-      Polymer.A11yMediaYoutubeUtility.requestAvailability();
+      window.A11yMediaYoutubeUtility.requestAvailability();
       this._youTubeRequest();
     }
   },
@@ -494,7 +494,7 @@ Polymer({
       tracks = new Array();
     root.__playerReady = true;
     root.__interactive = !root.disableInteractive;
-    root.target = root.$$("#transcript");
+    root.target = root.shadowRoot.querySelector("#transcript");
     root.__status = root.loadingLabel;
     root.__slider = root.$.slider;
     root.__volume = root.muted ? 0 : Math.max(this.volume, 10);
@@ -594,7 +594,7 @@ Polymer({
           videoId: root.youtubeId
         },
         ytInit = function() {
-          root.__media = Polymer.A11yMediaYoutubeUtility.initYoutubePlayer(
+          root.__media = window.A11yMediaYoutubeUtility.initYoutubePlayer(
             root.$.youtube,
             options
           );
@@ -615,12 +615,12 @@ Polymer({
           }, 100);
         },
         checkApi = function(e) {
-          if (Polymer.A11yMediaYoutubeUtility.apiReady) {
+          if (window.A11yMediaYoutubeUtility.apiReady) {
             document.removeEventListener("youtube-api-ready", checkApi);
             ytInit();
           }
         };
-      if (Polymer.A11yMediaYoutubeUtility.apiReady) {
+      if (window.A11yMediaYoutubeUtility.apiReady) {
         ytInit();
       } else {
         document.addEventListener("youtube-api-ready", checkApi);

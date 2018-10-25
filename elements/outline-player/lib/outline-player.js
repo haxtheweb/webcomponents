@@ -1,5 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
+import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
@@ -383,11 +385,12 @@ Polymer({
     // now get where the arrows should be, and subtract 20 pixels to
     // account for the height of the button
     const arrowMargin = minHeight / 2 - 20;
+    let styleChanges = {};
     if (this.fillRemaining) {
-      this.customStyle["--outline-player-min-height"] = minHeight + "px";
+      styleChanges["--outline-player-min-height"] = minHeight + "px";
     }
-    this.customStyle["--outline-player-arrow-margin-top"] = arrowMargin + "px";
-    this.updateStyles();
+    styleChanges["--outline-player-arrow-margin-top"] = arrowMargin + "px";
+    this.updateStyles(styleChanges);
   },
 
   /**
@@ -400,11 +403,11 @@ Polymer({
     // kind of silly it doesn't just work this way but
     // app-panel doesn't make any assumptions about how
     // to handle the layout when it closes
-    this.async(function() {
+    async.microTask.run(() => {
       // trick browser into thinking we just reized
       window.dispatchEvent(new Event("resize"));
       // forcibly update styles via css variables
-      Polymer.updateStyles();
+      updateStyles();
     });
   },
 

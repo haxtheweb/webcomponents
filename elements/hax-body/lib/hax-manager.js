@@ -27,6 +27,7 @@ A LRN element for brokering the UI for api endpoints both in querying and upload
 */
 Polymer({
   _template: html`
+  <custom-style>
     <style is="custom-style" include="materializecss-styles">
       :host {
         display: block;
@@ -171,6 +172,7 @@ Polymer({
         }
       }
     </style>
+  </custom-style>
     <app-drawer id="dialog" opened="{{opened}}" disable-swipe="">
       <div class="dialog-contents" id="dialogcontent" style="height: 100%; overflow: auto;">
         <iron-pages id="steppages" selected="{{activeStep}}" fallback-selection="select" role="main">
@@ -216,7 +218,7 @@ Polymer({
     "fileupload.upload-before": "_fileAboutToUpload",
     "fileupload.upload-response": "_fileUploadResponse"
   },
-
+  behaviors: [simpleColorsBehaviors],
   properties: {
     /**
      * Track visibility status.

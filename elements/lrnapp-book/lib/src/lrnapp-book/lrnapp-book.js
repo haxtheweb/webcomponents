@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
 import "./imports.js";
 import "./lrnapp-book-progress-dashboard.js";
 /**
@@ -831,7 +832,7 @@ Polymer({
    * When element is told to be full width it'll close things.
    */
   _fullWidthChanged: function(newValue, oldValue) {
-    Polymer.updateStyles();
+    updateStyles();
   },
 
   /**

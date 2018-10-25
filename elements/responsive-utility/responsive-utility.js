@@ -1,7 +1,10 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
+import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 
-Polymer.ResponsiveUtility = Polymer({
+window.ResponsiveUtility = {};
+window.ResponsiveUtility.instance = null;
+Polymer({
   _template: html`
     <style>
       :host {
@@ -13,7 +16,7 @@ Polymer.ResponsiveUtility = Polymer({
 
   is: "responsive-utility",
 
-  behaviors: [Polymer.IronResizableBehavior],
+  behaviors: [IronResizableBehavior],
 
   listeners: {
     "iron-resize": "_onIronResize"
@@ -47,18 +50,13 @@ Polymer.ResponsiveUtility = Polymer({
    * }
    *
    */
-  attached: function() {
-    this.async(this.notifyResize, 1);
-    this._onIronResize();
-  },
-
   /**
    * Makes sure there is a utility ready and listening for elements.
    */
   created: function() {
     let root = this;
-    if (!Polymer.ResponsiveUtility.instance) {
-      Polymer.ResponsiveUtility.instance = root;
+    if (window.ResponsiveUtility.instance == null) {
+      window.ResponsiveUtility.instance = root;
     }
     /* handle element registration */
     document.body.addEventListener("responsive-element", function(e) {
@@ -70,7 +68,7 @@ Polymer.ResponsiveUtility = Polymer({
       if ("ResizeObserver" in window && relative.relativeToParent === true) {
         let parent = e.detail.element.parentNode,
           resize = new ResizeObserver(function() {
-            Polymer.ResponsiveUtility.setSize(e.detail);
+            window.ResponsiveUtility.setSize(e.detail);
           });
         if (parent.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
           parent = parent.host;
@@ -78,7 +76,7 @@ Polymer.ResponsiveUtility = Polymer({
         resize.observe(parent);
       }
       root.push("targets", e.detail);
-      Polymer.ResponsiveUtility.setSize(e.detail);
+      window.ResponsiveUtility.setSize(e.detail);
     });
     /* handle element deregistration */
     document.body.addEventListener("delete-responsive-element", function(e) {
@@ -91,37 +89,34 @@ Polymer.ResponsiveUtility = Polymer({
   /**
    * On resize, sets sizes of any target element that has changed.
    */
-  _onIronResize: function() {
+  _onIronResize: function(e) {
     for (let i = 0; i < this.targets.length; i++) {
-      Polymer.ResponsiveUtility.setSize(this.targets[i]);
+      window.ResponsiveUtility.setSize(this.targets[i]);
     }
   }
 });
 
-Polymer.ResponsiveUtility.instance = null;
-
 /**
  * Checks to see if there is an instance available, and if not appends one
  */
-Polymer.ResponsiveUtility.requestAvailability = function() {
-  if (!Polymer.ResponsiveUtility.instance) {
-    Polymer.ResponsiveUtility.instance = document.createElement(
+window.ResponsiveUtility.requestAvailability = function() {
+  if (window.ResponsiveUtility.instance == null) {
+    window.ResponsiveUtility.instance = document.createElement(
       "responsive-utility"
     );
   }
-
-  document.body.appendChild(Polymer.ResponsiveUtility.instance);
+  document.body.appendChild(window.ResponsiveUtility.instance);
 };
 /**
  * Sets responsive size of target.
  */
-Polymer.ResponsiveUtility.setSize = function(target) {
+window.ResponsiveUtility.setSize = function(target) {
   let element = target.element;
   let attribute =
     target.attribute !== undefined && target.attribute !== null
       ? target.attribute
       : "responsive-size";
-  let size = Polymer.ResponsiveUtility.getSize(target);
+  let size = window.ResponsiveUtility.getSize(target);
   if (
     element.getAttribute(attribute) === undefined ||
     size !== element.getAttribute(attribute)
@@ -132,7 +127,7 @@ Polymer.ResponsiveUtility.setSize = function(target) {
 /**
  * Returns responsive size of target.
  */
-Polymer.ResponsiveUtility.getSize = function(target) {
+window.ResponsiveUtility.getSize = function(target) {
   let relative =
     target.relativeToParent !== undefined && target.relativeToParent !== null
       ? target.relativeToParent

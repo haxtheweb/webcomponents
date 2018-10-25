@@ -15,7 +15,8 @@ Figure out what our context is and setup based on that
 <dom-module id="haxcms-editor-builder">
   <script type="module">
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-Polymer.cmsSiteEditor = Polymer({
+window.cmsSiteEditor = {};
+Polymer({
   is: 'haxcms-editor-builder',
   /**
    * created life cycle
@@ -28,38 +29,60 @@ Polymer.cmsSiteEditor = Polymer({
    */
   getContext: function () {
     let context = '';
-    Polymer.cmsSiteEditor.tag = 'haxcms-jwt';
+    window.cmsSiteEditor.tag = 'haxcms-jwt';
+    // @todo add support for a demo mode tag
     // figure out if we need to load the PHP or beaker
     if (typeof DatArchive !== typeof undefined) {
-      context = this.importHref(this.resolveUrl('haxcms-beaker.html'), (e) => {
-        Polymer.cmsSiteEditor.tag = 'haxcms-beaker';
-      });
+      this.importHref(this.resolveUrl('haxcms-beaker.html'));
+      window.cmsSiteEditor.tag = 'haxcms-beaker';
     }
     else {
-      context = this.importHref(this.resolveUrl('haxcms-jwt.php'), (e) => {
-        Polymer.cmsSiteEditor.tag = 'haxcms-jwt';
-      });
+      this.importHref(this.resolveUrl('haxcms-jwt.php'));
+      window.cmsSiteEditor.tag = 'haxcms-jwt';
     }
     return context;
-  }
+  },
+  /**
+   * Hack to replace importHref from Polymer 1 that TYPICALLY will work in ESM
+   */
+  importHref: function (url) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      const tempGlobal = "__tempModuleLoadingVariable" +
+          Math.random().toString(32).substring(2);
+      script.type = "module";
+      script.textContent = `import * as m from "${url}"; window.${tempGlobal} = m;`;
+      script.onload = () => {
+        resolve(window[tempGlobal]);
+        delete window[tempGlobal];
+        script.remove();
+      };
+      script.onerror = () => {
+        reject(new Error("Failed to load module script with URL " + url));
+        delete window[tempGlobal];
+        script.remove();
+      };
+      document.documentElement.appendChild(script);
+    });
+  },
 });
 // store reference to the instance as a global
-Polymer.cmsSiteEditor.instance = null;
+window.cmsSiteEditor.instance = null;
 // self append if anyone calls us into action
-Polymer.cmsSiteEditor.requestAvailability = function (element = this, location = document.body) {
-  if (!Polymer.cmsSiteEditor.instance) {
-    Polymer.cmsSiteEditor.instance = document.createElement(Polymer.cmsSiteEditor.tag);
-    Polymer.cmsSiteEditor.instance.appElement = element;
-    Polymer.cmsSiteEditor.instance.appendTarget = location;
+window.cmsSiteEditor.requestAvailability = function (element = this, location = document.body) {
+  if (!window.cmsSiteEditor.instance) {
+    window.cmsSiteEditor.instance = document.createElement(window.cmsSiteEditor.tag);
+    window.cmsSiteEditor.instance.appElement = element;
+    window.cmsSiteEditor.instance.appendTarget = location;
     // self append the reference to.. well.. us.
-    document.body.appendChild(Polymer.cmsSiteEditor.instance);
+    document.body.appendChild(window.cmsSiteEditor.instance);
   }
   else {
     // already exists, just alter some references
-    Polymer.cmsSiteEditor.instance.appElement = element;
-    Polymer.cmsSiteEditor.instance.appendTarget = location;
-    if (typeof Polymer.cmsSiteEditor.instance.haxCmsSiteEditorElement !== typeof undefined) {
-      Polymer.cmsSiteEditor.instance.appendTarget.appendChild(Polymer.cmsSiteEditor.instance.haxCmsSiteEditorElement);
+    window.cmsSiteEditor.instance.appElement = element;
+    window.cmsSiteEditor.instance.appendTarget = location;
+    if (typeof window.cmsSiteEditor.instance.haxCmsSiteEditorElement !== typeof undefined) {
+      window.cmsSiteEditor.instance.appendTarget.appendChild(window.cmsSiteEditor.instance.haxCmsSiteEditorElement);
     }
   }
 };

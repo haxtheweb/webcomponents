@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
+import { IronA11yKeysBehavior } from "@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-localstorage/iron-localstorage.js";
 import "@polymer/neon-animation/neon-animated-pages.js";
@@ -69,7 +70,7 @@ $_documentContainer.innerHTML = `<dom-module id="lrndesign-contentsequencer">
         <div id="main-content">
 
           <neon-animated-pages id="pages" selected="{{selected}}" on-iron-deselect="_onStepLeave" on-iron-items-changed="_onStepsChanged">
-            <content select="lrndesign-contentsequencer-step"></content>
+            <slot select="lrndesign-contentsequencer-step"></slot>
           </neon-animated-pages>
 
           <footer id="controls" hidden\$="[[noArrows]]" narrow\$="[[_narrow]]">
@@ -169,7 +170,7 @@ Polymer({
    * @event lrndesign-contentsequencer-complete
    */
 
-  behaviors: [Polymer.IronA11yKeysBehavior],
+  behaviors: [IronA11yKeysBehavior],
 
   properties: {
     /**
@@ -431,7 +432,7 @@ Polymer({
     // allow everything render and initialize,
     // especially this.steps which runs at the same init level
     // as iron-localstorage (on attached).
-    this.async(function() {
+    async.microTask.run(() => {
       this._storedStep = this.steps[this.state.stepIndex];
       // resume dialog is shown only when all 3 conditions hold:
       // 1. user has already visited the contentsequencer in the past
@@ -440,7 +441,7 @@ Polymer({
       if (this.selected === 0 && this.state.stepIndex > 0) {
         this.$.resumeDialog.open();
       }
-    }, 500);
+    });
   },
 
   _updateStepIndexFromUrl: function() {

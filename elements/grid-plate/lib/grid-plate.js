@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
@@ -93,22 +94,22 @@ Polymer({
       <paper-icon-button title="move item left" icon="icons:arrow-back" id="left"></paper-icon-button>
     </div>
     <responsive-grid-row gutter="0">
-      <template is="dom-if" if="[[!hideCol1]]">
+      <template is="dom-if" if="[[!hideCol1]]" strip-whitespace>
         <responsive-grid-col id="col1" style\$="background-color:[[__col1Color]];" xl\$="[[col1_xl]]" lg\$="[[col1_lg]]" md\$="[[col1_md]]" sm\$="[[col1_sm]]" xs\$="[[col1_xs]]">
           <slot name="col-1"></slot>
         </responsive-grid-col>
       </template>
-      <template is="dom-if" if="[[!hideCol2]]">
+      <template is="dom-if" if="[[!hideCol2]]" strip-whitespace>
         <responsive-grid-col id="col2" style\$="background-color:[[__col2Color]];" xl\$="[[col2_xl]]" lg\$="[[col2_lg]]" md\$="[[col2_md]]" sm\$="[[col2_sm]]" xs\$="[[col2_xs]]">
           <slot name="col-2"></slot>
         </responsive-grid-col>
       </template>
-      <template is="dom-if" if="[[!hideCol3]]">
+      <template is="dom-if" if="[[!hideCol3]]" strip-whitespace>
         <responsive-grid-col id="col3" style\$="background-color:[[__col3Color]];" xl\$="[[col3_xl]]" lg\$="[[col3_lg]]" md\$="[[col3_md]]" sm\$="[[col3_sm]]" xs\$="[[col3_xs]]">
           <slot name="col-3"></slot>
         </responsive-grid-col>
       </template>
-      <template is="dom-if" if="[[!hideCol4]]">
+      <template is="dom-if" if="[[!hideCol4]]" strip-whitespace>
         <responsive-grid-col id="col4" style\$="background-color:[[__col4Color]];" xl\$="[[col4_xl]]" lg\$="[[col4_lg]]" md\$="[[col4_md]]" sm\$="[[col4_sm]]" xs\$="[[col4_xs]]">
           <slot name="col-4"></slot>
         </responsive-grid-col>
@@ -372,85 +373,96 @@ Polymer({
    */
   _editModeChanged: function(newValue, oldValue) {
     // flipping from false to true
-    if (newValue && !oldValue) {
-      let children = dom(this).children;
-      // walk the children and apply the draggable state needed
-      for (var i in children) {
-        children[i].addEventListener("drop", this.dropEvent.bind(this));
-        children[i].addEventListener("dragstart", this.dragStart.bind(this));
-        children[i].addEventListener("dragend", this.dragEnd.bind(this));
-        children[i].addEventListener("dragover", function(e) {
-          e.preventDefault();
-        });
-        children[i].setAttribute("draggable", true);
-        children[i].setAttribute("data-draggable", true);
-        // ensure they can be focused
-        children[i].setAttribute("tabindex", 0);
-      }
-      this.async(() => {
-        let cols = [1, 2, 3, 4];
-        for (var j in cols) {
-          if (!this["hideCol" + cols[j]]) {
-            this.$$("#col" + cols[j]).addEventListener(
-              "drop",
-              this.dropEvent.bind(this)
-            );
-            this.$$("#col" + cols[j]).addEventListener(
+    let children = dom(this).getEffectiveChildNodes();
+    if (typeof children === "object") {
+      if (newValue && !oldValue) {
+        // walk the children and apply the draggable state needed
+        for (var i in children) {
+          if (typeof children[i].tagName !== typeof undefined) {
+            children[i].addEventListener("drop", this.dropEvent.bind(this));
+            children[i].addEventListener(
               "dragstart",
               this.dragStart.bind(this)
             );
-            this.$$("#col" + cols[j]).addEventListener(
-              "dragend",
-              this.dragEnd.bind(this)
-            );
-            this.$$("#col" + cols[j]).addEventListener("dragover", function(e) {
+            children[i].addEventListener("dragend", this.dragEnd.bind(this));
+            children[i].addEventListener("dragover", function(e) {
               e.preventDefault();
             });
-            this.$$("#col" + cols[j]).setAttribute("data-draggable", true);
+            children[i].setAttribute("draggable", true);
+            children[i].setAttribute("data-draggable", true);
+            // ensure they can be focused
+            children[i].setAttribute("tabindex", 0);
           }
         }
-      });
-    }
-    // flipping from true to false
-    else if (!newValue && oldValue) {
-      let children = dom(this).children;
-      // walk the children and apply the draggable state needed
-      for (var i in children) {
-        children[i].removeEventListener("drop", this.dropEvent.bind(this));
-        children[i].removeEventListener("dragstart", this.dragStart.bind(this));
-        children[i].removeEventListener("dragend", this.dragEnd.bind(this));
-        children[i].removeEventListener("dragover", function(e) {
-          e.preventDefault();
+        async.microTask.run(() => {
+          let cols = [1, 2, 3, 4];
+          for (var j in cols) {
+            if (!this["hideCol" + cols[j]]) {
+              this.shadowRoot
+                .querySelector("#col" + cols[j])
+                .addEventListener("drop", this.dropEvent.bind(this));
+              this.shadowRoot
+                .querySelector("#col" + cols[j])
+                .addEventListener("dragstart", this.dragStart.bind(this));
+              this.shadowRoot
+                .querySelector("#col" + cols[j])
+                .addEventListener("dragend", this.dragEnd.bind(this));
+              this.shadowRoot
+                .querySelector("#col" + cols[j])
+                .addEventListener("dragover", function(e) {
+                  e.preventDefault();
+                });
+              this.shadowRoot
+                .querySelector("#col" + cols[j])
+                .setAttribute("data-draggable", true);
+            }
+          }
         });
-        children[i].removeAttribute("draggable");
-        children[i].removeAttribute("data-draggable");
-        children[i].removeAttribute("tabindex");
       }
-      this.async(() => {
-        let cols = [1, 2, 3, 4];
-        for (var j in cols) {
-          if (!this["hideCol" + cols[j]]) {
-            this.$$("#col" + cols[j]).removeEventListener(
-              "drop",
-              this.dropEvent.bind(this)
-            );
-            this.$$("#col" + cols[j]).removeEventListener(
+      // flipping from true to false
+      else if (!newValue && oldValue) {
+        // walk the children and apply the draggable state needed
+        for (var i in children) {
+          if (typeof children[i].tagName !== typeof undefined) {
+            children[i].removeEventListener("drop", this.dropEvent.bind(this));
+            children[i].removeEventListener(
               "dragstart",
               this.dragStart.bind(this)
             );
-            this.$$("#col" + cols[j]).removeEventListener(
-              "dragend",
-              this.dragEnd.bind(this)
-            );
-            this.$$("#col" + cols[j]).removeEventListener("dragover", function(
-              e
-            ) {
+            children[i].removeEventListener("dragend", this.dragEnd.bind(this));
+            children[i].removeEventListener("dragover", function(e) {
               e.preventDefault();
             });
-            this.$$("#col" + cols[j]).removeAttribute("data-draggable");
+            children[i].removeAttribute("draggable");
+            children[i].removeAttribute("data-draggable");
+            children[i].removeAttribute("tabindex");
           }
         }
-      });
+        async.microTask.run(() => {
+          let cols = [1, 2, 3, 4];
+          for (var j in cols) {
+            if (!this["hideCol" + cols[j]]) {
+              this.shadowRoot
+                .querySelector("#col" + cols[j])
+                .removeEventListener("drop", this.dropEvent.bind(this));
+              this.shadowRoot
+                .querySelector("#col" + cols[j])
+                .removeEventListener("dragstart", this.dragStart.bind(this));
+              this.shadowRoot
+                .querySelector("#col" + cols[j])
+                .removeEventListener("dragend", this.dragEnd.bind(this));
+              this.shadowRoot
+                .querySelector("#col" + cols[j])
+                .removeEventListener("dragover", function(e) {
+                  e.preventDefault();
+                });
+              this.shadowRoot
+                .querySelector("#col" + cols[j])
+                .removeAttribute("data-draggable");
+            }
+          }
+        });
+      }
     }
   },
 
@@ -492,7 +504,9 @@ Polymer({
     let cols = [1, 2, 3, 4];
     for (var j in cols) {
       if (!this["hideCol" + cols[j]]) {
-        this.$$("#col" + cols[j]).classList.remove("mover");
+        this.shadowRoot
+          .querySelector("#col" + cols[j])
+          .classList.remove("mover");
       }
     }
     // position arrows / set focus in case the DOM got updated above
@@ -529,7 +543,7 @@ Polymer({
     let cols = [1, 2, 3, 4];
     for (var j in cols) {
       if (!this["hideCol" + cols[j]]) {
-        this.$$("#col" + cols[j]).classList.add("mover");
+        this.shadowRoot.querySelector("#col" + cols[j]).classList.add("mover");
       }
     }
   },
@@ -546,7 +560,9 @@ Polymer({
     let cols = [1, 2, 3, 4];
     for (var j in cols) {
       if (!this["hideCol" + cols[j]]) {
-        this.$$("#col" + cols[j]).classList.remove("mover");
+        this.shadowRoot
+          .querySelector("#col" + cols[j])
+          .classList.remove("mover");
       }
     }
   },

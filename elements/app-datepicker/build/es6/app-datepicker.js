@@ -605,7 +605,7 @@ $_documentContainer.innerHTML = `<dom-module id="app-datepicker">
 document.head.appendChild($_documentContainer);
 Polymer({
   is: "app-datepicker",
-  behaviors: [Polymer.NeonAnimationRunnerBehavior],
+  behaviors: [NeonAnimationRunnerBehavior],
   properties: {
     locale: {
       type: String,
@@ -1084,11 +1084,11 @@ Polymer({
     var _target = ev.detail;
     if (_target && "IRON-LIST" === _target.toPage.tagName) {
       var _focusableItem = this._updateListScroller(_target.toPage);
-      this.async(function() {
+      async.microTask.run(() => {
         _target.toPage._focusPhysicalItem(_focusableItem);
       }, 1);
     } else {
-      this.async(function() {
+      async.microTask.run(() => {
         this.$.showSelectedYear.focus();
       }, 1);
     }
@@ -1108,7 +1108,7 @@ Polymer({
         _Mathfloor((_slh / (2100 - 1900 + 1)) * (this._activeYear - 1900 - 1)) +
         1;
     }
-    this.async(function() {
+    async.microTask.run(() => {
       _list.scroll(0, _sli);
       _list.selectItem(this._activeYear - 1900);
     }, 17);
@@ -1121,15 +1121,17 @@ Polymer({
         this.set("_isListRendered", !0);
       } else {
         if (this.noAnimation) {
-          this._updateListScroller(this.$$("#listOfYears"));
+          this._updateListScroller(
+            this.shadowRoot.querySelector("#listOfYears")
+          );
         }
       }
     }
   },
   _onListRendered: function(ev) {
     if (ev.target.if && this.noAnimation) {
-      this.async(function() {
-        this._updateListScroller(this.$$("#listOfYears"));
+      async.microTask.run(() => {
+        this._updateListScroller(this.shadowRoot.querySelector("#listOfYears"));
       }, 1);
     }
   },
@@ -1140,7 +1142,9 @@ Polymer({
     var _selectedYear = ev.model.item.year;
     this.set("_activeYear", _selectedYear);
     this.set("_selectedYear", _selectedYear);
-    this.$$("#listOfYears").selectItem(_selectedYear - 1900);
+    this.shadowRoot
+      .querySelector("#listOfYears")
+      .selectItem(_selectedYear - 1900);
     this.set("_activeView", "calendar");
   },
   _computeSeparateFormat: function(_format) {

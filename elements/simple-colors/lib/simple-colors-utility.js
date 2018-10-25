@@ -1,11 +1,11 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 
-Polymer.SimpleColorsUtility = Polymer({
+window.SimpleColorsUtility = Polymer({
   is: "simple-colors-utility"
 });
 
-Polymer.SimpleColorsUtility.instance = null;
-Polymer.SimpleColorsUtility.hexCodes = {
+window.SimpleColorsUtility.instance = null;
+window.SimpleColorsUtility.hexCodes = {
   colorLevels: [
     "foreground1",
     "foreground2",
@@ -259,7 +259,7 @@ Polymer.SimpleColorsUtility.hexCodes = {
     "#b1c5ce"
   ]
 };
-Polymer.SimpleColorsUtility.addStyles = function() {
+window.SimpleColorsUtility.addStyles = function() {
   let root = this,
     css = "",
     addProp = function(prop, val) {
@@ -404,12 +404,12 @@ Polymer.SimpleColorsUtility.addStyles = function() {
 /**
  * Checks to see if there is an instance available, and if not appends one
  */
-Polymer.SimpleColorsUtility.requestAvailability = function() {
-  if (!Polymer.SimpleColorsUtility.instance) {
-    Polymer.SimpleColorsUtility.instance = document.createElement(
+window.SimpleColorsUtility.requestAvailability = function() {
+  if (!window.SimpleColorsUtility.instance) {
+    window.SimpleColorsUtility.instance = document.createElement(
       "simple-colors"
     );
-    Polymer.SimpleColorsUtility.addStyles();
+    window.SimpleColorsUtility.addStyles();
   }
-  document.body.appendChild(Polymer.SimpleColorsUtility.instance);
+  document.body.appendChild(window.SimpleColorsUtility.instance);
 };

@@ -75,8 +75,8 @@
         document.body.addEventListener('haxcms-active-item-changed', this._activeItemUpdate.bind(this));
         document.body.addEventListener('haxcms-trigger-update', this._triggerUpdate.bind(this));
         // this implies there's the possibility of an authoring experience
-        if (typeof Polymer.cmsSiteEditor !== typeof undefined) {
-          Polymer.cmsSiteEditor.requestAvailability(this, injector);
+        if (typeof window.cmsSiteEditor !== typeof undefined) {
+          window.cmsSiteEditor.requestAvailability(this, injector);
         }
       }
       else {
@@ -119,9 +119,14 @@
           this.accentColor = color;
         }
         // set this directly instead of messing w/ accentColor
-        this.customStyle['--haxcms-color'] = this.customStyle[this.manifest.metadata.cssVariable];
-        document.body.style.setProperty('--haxcms-color', this.customStyle[this.manifest.metadata.cssVariable]);
-        this.updateStyles();
+        let haxcmscolor = '';
+        if (window.ShadyCSS) {
+          haxcmscolor = ShadyCSS.getComputedStyleValue(this, this.manifest.metadata.cssVariable);
+        } else {
+          haxcmscolor = getComputedStyle(this).getPropertyValue(this.manifest.metadata.cssVariable);
+        }
+        document.body.style.setProperty('--haxcms-color', haxcmscolor);
+        this.updateStyles({'--haxcms-color': haxcmscolor});
       }
     },
   };

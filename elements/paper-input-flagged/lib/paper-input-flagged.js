@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
-import "@polymer/paper-input/paper-input-behavior.js";
+import { PaperInputBehavior } from "@polymer/paper-input/paper-input-behavior.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 /**
@@ -55,7 +55,7 @@ Polymer({
 `,
 
   is: "paper-input-flagged",
-  behaviors: [Polymer.PaperInputBehavior],
+  behaviors: [PaperInputBehavior],
 
   properties: {
     /**

@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 /**
 `simple-blog`
 A simple blog and associated elements
@@ -180,9 +181,10 @@ Polymer({
       if (top < 0 || top > 1500) {
         return;
       }
-      this.$$("#image").style.transform =
+      this.shadowRoot.querySelector("#image").style.transform =
         "translate3d(0px, " + top / 3 + "px, 0px)";
-      this.$$("#image").style.opacity = 1 - Math.max(top / 700, 0);
+      this.shadowRoot.querySelector("#image").style.opacity =
+        1 - Math.max(top / 700, 0);
     }
   },
 
@@ -191,8 +193,10 @@ Polymer({
    */
   _hasImageChanged: function(newValue, oldValue) {
     if (newValue) {
-      this.async(() => {
-        let rect = this.$$("#image").getBoundingClientRect();
+      async.microTask.run(() => {
+        let rect = this.shadowRoot
+          .querySelector("#image")
+          .getBoundingClientRect();
         this.$.contentcontainer.style.paddingTop = rect.height + "px";
       });
     } else {

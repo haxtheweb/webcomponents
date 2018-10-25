@@ -72,19 +72,37 @@ Polymer({
           this.processedList[name] = name;
           // @todo support CDN failover or a flag of some kind to ensure
           // this delivers locally or from remote
-          this.importHref(
-            this.resolveUrl(`../${name}/${name}.html`),
-            e => {
-              //e.target.import
-            },
-            e => {
-              //import failed
-            }
-          );
+          this.importHref(this.resolveUrl(`../../${name}/${name}.js`));
         } catch (err) {
           // error in the event this is a double registration
         }
       }
     }
+  },
+  /**
+   * Hack to replace importHref from Polymer 1 that TYPICALLY will work in ESM
+   */
+  importHref: function(url) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      const tempGlobal =
+        "__tempModuleLoadingVariable" +
+        Math.random()
+          .toString(32)
+          .substring(2);
+      script.type = "module";
+      script.textContent = `import * as m from "${url}"; window.${tempGlobal} = m;`;
+      script.onload = () => {
+        resolve(window[tempGlobal]);
+        delete window[tempGlobal];
+        script.remove();
+      };
+      script.onerror = () => {
+        reject(new Error("Failed to load module script with URL " + url));
+        delete window[tempGlobal];
+        script.remove();
+      };
+      document.documentElement.appendChild(script);
+    });
   }
 });

@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
-import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
+import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 import "@polymer/paper-styles/default-theme.js";
 
 /**
@@ -52,11 +52,11 @@ Polymer({
             <circle class="circle-foreground" r\$="[[_radius]]" cx\$="[[_cx]]" cy\$="[[_cy]]" fill="transparent" stroke-width\$="[[strokeWidth]]" stroke-dasharray\$="[[_dasharray]]" stroke-dashoffset\$="[[_dashoffset]]" transform\$="[[_transform]]"></circle>
         </svg>
 
-        <content></content>
+        <slot></slot>
 `,
 
   is: "circle-progress",
-  behaviors: [Polymer.IronResizableBehavior],
+  behaviors: [IronResizableBehavior],
 
   properties: {
     /**

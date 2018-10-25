@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
-import "@polymer/app-localize-behavior/app-localize-behavior.js";
+import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/communication-icons.js";
 import "@polymer/paper-input/paper-input.js";
@@ -104,7 +104,7 @@ Please see the `eco-json-schema-object` documentation for further information.
 */
 Polymer({
   is: "eco-json-schema-geolocation",
-  behaviors: [Polymer.AppLocalizeBehavior],
+  behaviors: [AppLocalizeBehavior],
 
   properties: {
     language: {

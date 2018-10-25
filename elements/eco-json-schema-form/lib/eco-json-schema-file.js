@@ -1,6 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
-import "@polymer/app-localize-behavior/app-localize-behavior.js";
+import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/iron-icon/iron-icon.js";
@@ -153,7 +154,7 @@ Please see the `eco-json-schema-object` documentation for further information.
 */
 Polymer({
   is: "eco-json-schema-file",
-  behaviors: [Polymer.AppLocalizeBehavior],
+  behaviors: [AppLocalizeBehavior],
 
   properties: {
     language: {
@@ -492,9 +493,9 @@ Polymer({
     e.model.set("item.progress", 0);
     // The async helps give visual feedback of a retry occurring, even though it's less efficient.
     var self = this;
-    this.async(function() {
+    async.microTask.run(() => {
       self.uploadFile(e.model.__data__.item);
-    }, 50);
+    });
   },
 
   /**

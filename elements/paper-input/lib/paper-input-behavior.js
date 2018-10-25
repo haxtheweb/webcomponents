@@ -2,6 +2,7 @@ import { IronA11yKeysBehavior } from "@polymer/iron-a11y-keys-behavior/iron-a11y
 import { IronControlState } from "@polymer/iron-behaviors/iron-control-state.js";
 import { Element } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 export const PaperInputHelper = {};
 PaperInputHelper.NextLabelID = 1;
 PaperInputHelper.NextAddonID = 1;
@@ -448,10 +449,10 @@ export const PaperInputBehaviorImpl = {
     var oldTabIndex = this.getAttribute("tabindex");
     this._shiftTabPressed = true;
     this.setAttribute("tabindex", "-1");
-    this.async(function() {
+    async.microTask.run(() => {
       this.setAttribute("tabindex", oldTabIndex);
       this._shiftTabPressed = false;
-    }, 1);
+    });
   },
 
   /**

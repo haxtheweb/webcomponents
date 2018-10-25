@@ -250,9 +250,9 @@ Polymer({
     var tl = new TimelineMax();
     var tlleft = new TimelineMax();
     var tlright = new TimelineMax();
-    var playButton = this.$$("#play-button");
-    var replayButton = this.$$("#replay-button");
-    var svg = this.$$("#chromosomes");
+    var playButton = this.shadowRoot.querySelector("#play-button");
+    var replayButton = this.shadowRoot.querySelector("#replay-button");
+    var svg = this.shadowRoot.querySelector("#chromosomes");
 
     // Text
     var paternalrecombinanttext = svg.getElementById("paternalrecombinanttext");

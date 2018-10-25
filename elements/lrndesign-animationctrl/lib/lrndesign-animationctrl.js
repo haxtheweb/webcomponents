@@ -27,7 +27,7 @@ Polymer({
       }
     </style>
     <div class="buttons">
-      <content></content>
+      <slot></slot>
     </div>
 `,
 

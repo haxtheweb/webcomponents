@@ -1,5 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { Templatizer } from "@polymer/polymer/lib/legacy/templatizer-behavior.js";
+
 /**
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
@@ -176,12 +178,12 @@ by the regular expression engine.
 Polymer({
   _template: html`
         <div id="dom">
-          <content id="template" select="template"></content>
+          <slot id="template" name="template"></slot>
         </div>
 `,
 
   is: "grafitto-filter",
-
+  behaviors: [Templatizer],
   properties: {
     /**
      * These are the items to be filtered
@@ -238,8 +240,6 @@ Polymer({
 
   observers: ["_populateUserTemplate(filtered)"],
 
-  behaviors: [Polymer.Templatizer],
-
   /**
    * Filters the items using the f function provided. Recommended when f function is provided
    */
@@ -279,7 +279,7 @@ Polymer({
           //Decompose where incase it is represented in . notation for complex objects
           var decomposed = decompose(where, item);
           //Check if the items specified are defined
-          if (typeof decomposed == "undefined") {
+          if (typeof decomposed == "undefined" && where != "") {
             //Do what I know best
             console.warn(
               "grafitto-filter was unable to find a property in '" + where + "'"
@@ -313,10 +313,6 @@ Polymer({
       clone[this.as] = filtered;
       dom(this.$.dom).innerHTML = "";
       dom(this.$.dom).appendChild(clone.root);
-    } else {
-      console.warn(
-        "grafitto-filter requires a template to be provided in light-dom"
-      );
     }
   },
 

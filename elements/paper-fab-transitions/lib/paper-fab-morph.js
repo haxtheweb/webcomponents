@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-dropdown/iron-dropdown.js";
 /**
 `paper-fab-morph` can be used to wrap a floating action button and another
@@ -254,10 +255,10 @@ Custom property | Description | Default
       ms.height = contentRect.height + "px";
       ms.borderRadius = "";
 
-      this.async(function() {
+      async.microTask.run(() => {
         morpher.style.display = "none";
         content.style.visibility = "visible";
-      }, this.duration);
+      });
     },
 
     _morphClose: function() {
@@ -270,7 +271,7 @@ Custom property | Description | Default
 
       morpher.style.display = "block";
 
-      this.async(function() {
+      async.microTask.run(() => {
         var fabRect = fab.getBoundingClientRect();
         ms.top = fabRect.top + "px";
         ms.left = fabRect.left + "px";
@@ -278,10 +279,10 @@ Custom property | Description | Default
         ms.height = fabRect.height + "px";
         ms.borderRadius = "50%";
 
-        this.async(function() {
+        async.microTask.run(() => {
           morpher.style.display = "none";
           fab.style.visibility = "visible";
-        }, this.duration);
+        });
       });
     }
   });

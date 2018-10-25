@@ -44,7 +44,7 @@ the attribute it listens to with the `attr-for-value` attribute.
 You can use a custom input element in a `<paper-input-container>`, for example to implement a
 compound input field like a social security number input. The custom input element should have the
 `paper-input-input` class, have a `notify:true` value property and optionally implements
-`Polymer.IronValidatableBehavior` if it is validatable.
+`IronValidatableBehavior` if it is validatable.
 
     <paper-input-container attr-for-value="ssn-value">
       <label slot="label">Social security number</label>
@@ -64,7 +64,7 @@ the container styling when the input value changes.
 ### Add-ons
 
 Add-ons are child elements of a `<paper-input-container>` with the `add-on` attribute and
-implements the `Polymer.PaperInputAddonBehavior` behavior. They are notified when the input value
+implements the `PaperInputAddonBehavior` behavior. They are notified when the input value
 or validity changes, and may implement functionality such as error messages or character counters.
 They appear at the bottom of the input.
 

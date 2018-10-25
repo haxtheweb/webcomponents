@@ -45,9 +45,11 @@ THIS IS SUPPOSED TO BE THE STUDIO. CLICK ON ONE
   },
 
   ready: function() {
-    this.$$(".projectboard-item").addEventListener("click", function(e) {
-      // you find the id of the project board item here
-      window.location.href = "/projectboard/1";
-    });
+    this.shadowRoot
+      .querySelector(".projectboard-item")
+      .addEventListener("click", function(e) {
+        // you find the id of the project board item here
+        window.location.href = "/projectboard/1";
+      });
   }
 });

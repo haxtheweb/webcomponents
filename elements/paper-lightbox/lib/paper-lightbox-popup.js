@@ -1,7 +1,8 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
+import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 (function() {
   Polymer({
     _template: html`
@@ -9,11 +10,11 @@ import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
     <template is="dom-if" if="{{ _isAjax(type) }}">
       <iron-ajax auto="auto" url="{{ src }}" handle-as="text" on-response="_ajaxResponse"></iron-ajax>
     </template>
-    <content></content>
+    <slot></slot>
 `,
 
     is: "paper-lightbox-popup",
-    behaviors: [Polymer.IronResizableBehavior],
+    behaviors: [IronResizableBehavior],
     listeners: { "iron-resize": "_onResize" },
     _createPopup: function() {
       var e, t, n, o;
@@ -308,10 +309,10 @@ import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
       var e;
       return (
         (e = this),
-        this.async(function() {
+        async.microTask.run(() => {
           return setTimeout(function() {
             return e._defineCustomEvents(), e._onLoad();
-          }, 0);
+          });
         })
       );
     },

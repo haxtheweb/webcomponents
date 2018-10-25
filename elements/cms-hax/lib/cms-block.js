@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/paper-spinner/paper-spinner.js";
@@ -153,7 +154,7 @@ Polymer({
       // wipe our own slot here
       this.wipeSlot(dom(this));
       // now inject the content we got
-      this.async(() => {
+      async.microTask.run(() => {
         let frag = document.createElement("span");
         frag.innerHTML = newValue.content;
         let newNode = frag.cloneNode(true);
@@ -191,7 +192,7 @@ Polymer({
       }
       if (this.blockEndPoint) {
         this.loading = true;
-        this.async(() => {
+        async.microTask.run(() => {
           this.$.blockrequest.generateRequest();
         });
       }
@@ -220,7 +221,7 @@ Polymer({
         }
         if (this.blockEndPoint) {
           this.loading = true;
-          this.async(() => {
+          async.microTask.run(() => {
             this.$.blockrequest.generateRequest();
           });
         }

@@ -367,7 +367,7 @@ Polymer({
    * navigate swatch cursor to left
    */
   _onPreviousSwatch: function(e) {
-    let target = this.$$(
+    let target = this.shadowRoot.querySelector(
       'simple-colors-picker-swatch[order="' +
         (e.detail.order - 1) +
         '"][level="' +
@@ -381,7 +381,7 @@ Polymer({
    * navigate swatch cursor to right
    */
   _onNextSwatch: function(e) {
-    let target = this.$$(
+    let target = this.shadowRoot.querySelector(
       'simple-colors-picker-swatch[order="' +
         (e.detail.order + 1) +
         '"][level="' +
@@ -395,7 +395,7 @@ Polymer({
    * navigate swatch cursor down
    */
   _onPreviousLevel: function(e) {
-    let target = this.$$(
+    let target = this.shadowRoot.querySelector(
       'simple-colors-picker-swatch[order="' +
         e.detail.order +
         '"][level="' +
@@ -409,7 +409,7 @@ Polymer({
    * navigate swatch cursor up
    */
   _onNextLevel: function(e) {
-    let target = this.$$(
+    let target = this.shadowRoot.querySelector(
       'simple-colors-picker-swatch[order="' +
         e.detail.order +
         '"][level="' +
