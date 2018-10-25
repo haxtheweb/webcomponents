@@ -5,15 +5,10 @@
     "customElementClass": "PolymerElement",
     "elementName": "circle-progress",
     "generator-wcfactory-version": "0.3.1",
-    "useHAX": true,
+    "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/circle-progress.css",
-      "scss": "src/circle-progress.scss",
-      "html": "src/circle-progress.html",
-      "js": "src/circle-progress.js",
-      "properties": "src/circle-progress-properties.json",
-      "hax": "src/circle-progress-hax.json"
+      "js": "src/circle-progress.js"
     }
   },
   "version": "0.0.28",
@@ -36,12 +31,14 @@
     "lighthouse": "../../node_modules/.bin/gulp lighthouse"
   },
   "author": {
-    "name": "btopro"
+    "name": "nikkimk"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.0.5",
+    "@polymer/iron-flex-layout": "^3.0.0",
+    "@polymer/iron-resizable-behavior": "^3.0.0",
+    "@polymer/paper-styles": "^3.0.0"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

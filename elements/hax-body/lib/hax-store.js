@@ -376,10 +376,7 @@ Polymer({
    */
   _appStoreChanged: function(newValue, oldValue) {
     // if we have an endpoint defined, pull it
-    if (
-      typeof newValue !== typeof undefined &&
-      typeof oldValue !== typeof undefined
-    ) {
+    if (typeof newValue !== typeof undefined) {
       // support having the request or remote loading
       // depending on the integration type
       if (typeof newValue.apps === typeof undefined) {

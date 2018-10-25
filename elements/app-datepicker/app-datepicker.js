@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import { NeonAnimationRunnerBehavior } from "@polymer/neon-animation/neon-animation-runner-behavior.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
+import { NeonAnimationRunnerBehavior } from "@polymer/neon-animation/neon-animation-runner-behavior.js";
 import "./lib/app-datepicker-icons.js";
 import "./lib/app-datepicker-animations.js";
 var $_documentContainer = document.createElement("div");

@@ -5,15 +5,10 @@
     "customElementClass": "PolymerElement",
     "elementName": "chartist-render",
     "generator-wcfactory-version": "0.3.1",
-    "useHAX": true,
+    "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/chartist-render.css",
-      "scss": "src/chartist-render.scss",
-      "html": "src/chartist-render.html",
-      "js": "src/chartist-render.js",
-      "properties": "src/chartist-render-properties.json",
-      "hax": "src/chartist-render-hax.json"
+      "js": "src/chartist-render.js"
     }
   },
   "version": "0.0.28",
@@ -41,7 +36,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.0.5",
+    "chartist": "^0.11.0"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

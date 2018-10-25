@@ -5,15 +5,10 @@
     "customElementClass": "PolymerElement",
     "elementName": "chemical-element-visualisation",
     "generator-wcfactory-version": "0.3.1",
-    "useHAX": true,
+    "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/chemical-element-visualisation.css",
-      "scss": "src/chemical-element-visualisation.scss",
-      "html": "src/chemical-element-visualisation.html",
-      "js": "src/chemical-element-visualisation.js",
-      "properties": "src/chemical-element-visualisation-properties.json",
-      "hax": "src/chemical-element-visualisation-hax.json"
+      "js": "src/chemical-element-visualisation.js"
     }
   },
   "version": "0.0.28",
@@ -36,12 +31,13 @@
     "lighthouse": "../../node_modules/.bin/gulp lighthouse"
   },
   "author": {
-    "name": "btopro"
+    "name": "heymp"
   },
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.0.5",
+    "@polymer/paper-tooltip": "^3.0.0"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

@@ -5,15 +5,10 @@
     "customElementClass": "PolymerElement",
     "elementName": "cms-hax",
     "generator-wcfactory-version": "0.3.1",
-    "useHAX": true,
+    "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/cms-hax.css",
-      "scss": "src/cms-hax.scss",
-      "html": "src/cms-hax.html",
-      "js": "src/cms-hax.js",
-      "properties": "src/cms-hax-properties.json",
-      "hax": "src/cms-hax-hax.json"
+      "js": "src/cms-hax.js"
     }
   },
   "version": "0.0.28",
@@ -40,8 +35,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.0.5",
+    "@polymer/iron-resizable-behavior": "^3.0.0",
+    "@polymer/iron-selector": "^3.0.0",
+    "@polymer/paper-spinner": "^3.0.0"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

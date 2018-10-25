@@ -72,7 +72,8 @@
     "@polymer/polymer": "^3.0.5",
     "@vaadin/vaadin-split-layout": "^4.1.0",
     "@vaadin/vaadin-upload": "^4.2.1",
-    "paper-collapse-item": "^4.0.4"
+    "paper-collapse-item": "^4.0.4",
+    "web-animations-js": "^2.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/silly-hax-game": "^0.0.28",
