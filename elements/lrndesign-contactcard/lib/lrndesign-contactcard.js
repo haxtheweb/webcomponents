@@ -6,7 +6,7 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/maps-icons.js";
 import "@polymer/iron-icons/hardware-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
-import "social-media-icons/social-media-icons.js";
+import "@lrnwebcomponents/social-media-icons/social-media-icons.js";
 /**
 `lrndesign-contactcard`
 lrndesign-contactcard

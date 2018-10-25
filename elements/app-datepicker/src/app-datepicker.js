@@ -1,3 +1,4 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "./lib/app-datepicker-icons.js";
 import "./lib/app-datepicker-animations.js";
 var $_documentContainer = document.createElement("div");

@@ -1,10 +1,10 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "drawing-icons/drawing-icons.js";
+import "@lrnwebcomponents/drawing-icons/drawing-icons.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "swipe-action/swipe-action.js";
+import "@lrnwebcomponents/swipe-action/swipe-action.js";
 /**
 `lrnsys-outline-item`
 A LRN element

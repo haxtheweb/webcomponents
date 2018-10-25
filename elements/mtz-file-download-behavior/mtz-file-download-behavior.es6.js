@@ -1,10 +1,1 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";export{MtzFileDownloadBehavior};class MtzFileDownloadBehavior extends PolymerElement{static get template(){return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Mtz file-download-behavior",description:"Start of mtz-file-download-behavior fork",icon:"icons:android",color:"green",groups:["File"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[],advanced:[]}}}static get properties(){return{}}static get tag(){return"mtz-file-download-behavior"}connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setHaxProperties(MtzFileDownloadBehavior.haxProperties,MtzFileDownloadBehavior.tag,this)}}window.customElements.define(MtzFileDownloadBehavior.tag,MtzFileDownloadBehavior);
+window.mtz=window.mtz||{};mtz.FileDownloadBehavior={properties:{fileTypes:{type:Object,value(){return{CSV:"text/csv",JSON:"text/json",PDF:"application/pdf",TXT:"text/plain"}}}},downloadFromData(data,type,name="download",newTab=!0){const mimeType=this.fileTypes[type.toUpperCase()],blob=new Blob([decodeURIComponent(encodeURI(data))],{type:mimeType}),filename=name+"."+type.toLowerCase();if(window.navigator&&window.navigator.msSaveOrOpenBlob){window.navigator.msSaveOrOpenBlob(blob,filename)}else{const link=document.createElement("a");link.href=(window.URL||window.webkitURL).createObjectURL(blob);link.download=filename;link.target=newTab?"_blank":"_self";Polymer.dom(this.root).appendChild(link);link.click();Polymer.dom(this.root).removeChild(link)}},downloadFromURI(uri,newTab=!0){window.open(uri,newTab?"_blank":"_self");return!0}};

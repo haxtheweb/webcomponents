@@ -18,9 +18,9 @@ import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/lrndesign-stepper/lrndesign-stepper.js";
 import "@lrnwebcomponents/lrnsys-progress/lrnsys-progress.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
-import "page-scroll-position/page-scroll-position.js";
-import "hax-body/hax-body.js";
-import "material-progress/material-progress.js";
+import "@lrnwebcomponents/page-scroll-position/page-scroll-position.js";
+import "@lrnwebcomponents/hax-body/hax-body.js";
+import "@lrnwebcomponents/material-progress/material-progress.js";
 import "@lrnwebcomponents/lrndesign-mapmenu/lrndesign-mapmenu.js";
 
 /* HAX */

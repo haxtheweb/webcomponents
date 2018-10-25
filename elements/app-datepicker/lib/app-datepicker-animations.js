@@ -1,3 +1,4 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 Polymer({
   is: "datepicker-slide-from-left-animation",
 

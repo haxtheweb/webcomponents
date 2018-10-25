@@ -1,95 +1,67 @@
+window.mtz = window.mtz || {};
+
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { MtzFileDownloadBehavior };
-/**
- * `mtz-file-download-behavior`
- * `Start of mtz-file-download-behavior fork`
+ * A behavior for downloading streamed files or creating files based on available data.
  *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
+ * @polymerBehavior
  * @demo demo/index.html
  */
-class MtzFileDownloadBehavior extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
-
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Mtz file-download-behavior",
-        description: "Start of mtz-file-download-behavior fork",
-        icon: "icons:android",
-        color: "green",
-        groups: ["File"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [],
-        advanced: []
+mtz.FileDownloadBehavior = {
+  properties: {
+    /* MIME type lookup for file extensions */
+    fileTypes: {
+      type: Object,
+      value() {
+        return {
+          CSV: "text/csv",
+          JSON: "text/json",
+          PDF: "application/pdf",
+          TXT: "text/plain"
+        };
       }
-    };
-  }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
+    }
+  },
 
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * Converts the data to a blob then uses navigator to save blob if it’s available, otherwise
+   * creates an <a> with [download] attribute then simulates a click.
+   * @param {String} data - data to encode.
+   * @param {String} type - type of file to generate (i.e, JSON or CSV).
+   * @param {String} [name = 'download'] - file name to save data under.
+   * @param {Boolean} [newTab = true] - If false, downloads uri in existing tab. Otherwise,
+   * downloads in new tab.
    */
-  static get tag() {
-    return "mtz-file-download-behavior";
-  }
+  downloadFromData(data, type, name = "download", newTab = true) {
+    const mimeType = this.fileTypes[type.toUpperCase()];
+    const blob = new Blob([decodeURIComponent(encodeURI(data))], {
+      type: mimeType
+    });
+    const filename = name + "." + type.toLowerCase();
+    if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+      window.navigator.msSaveOrOpenBlob(blob, filename);
+    } else {
+      // Link elements have a download attribute which provides cross-platform
+      // download behavior supporting all but IE 11. This creates new link and then
+      // clicks it to initiate download.
+      const link = document.createElement("a");
+      link.href = (window.URL || window.webkitURL).createObjectURL(blob);
+      link.download = filename;
+      link.target = newTab ? "_blank" : "_self";
+      Polymer.dom(this.root).appendChild(link);
+      link.click();
+      Polymer.dom(this.root).removeChild(link);
+    }
+  },
+
   /**
-   * life cycle, element is afixed to the DOM
+   * Opens a new tab at the URI so that download can be initiated from the page.
+   * @param {String} uri - The uri to open.
+   * @param {Boolean} [newTab = true] - If false, downloads uri in existing tab. Otherwise,
+   * downloads in new tab.
+   * @return {Boolean} Returns true.
    */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      MtzFileDownloadBehavior.haxProperties,
-      MtzFileDownloadBehavior.tag,
-      this
-    );
+  downloadFromURI(uri, newTab = true) {
+    window.open(uri, newTab ? "_blank" : "_self");
+    return true; // NOTE: Returning true to prevent error in some browsers during download.
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(
-  MtzFileDownloadBehavior.tag,
-  MtzFileDownloadBehavior
-);
+};

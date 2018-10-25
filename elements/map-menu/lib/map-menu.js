@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "smooth-scroll/smooth-scroll.js";
+import "@lrnwebcomponents/smooth-scroll/smooth-scroll.js";
 import "./map-menu-container.js";
 import "./map-menu-builder.js";
 Polymer({

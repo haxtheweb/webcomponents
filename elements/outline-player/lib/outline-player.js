@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "map-menu/map-menu.js";
+import "@lrnwebcomponents/map-menu/map-menu.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";

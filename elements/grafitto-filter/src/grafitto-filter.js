@@ -173,7 +173,7 @@ by the regular expression engine.
 @demo demo/index.html
 */
 Polymer({
-  _template: `
+  _template: html`
         <div id="dom">
           <content id="template" select="template"></content>
         </div>

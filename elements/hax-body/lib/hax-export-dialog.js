@@ -2,7 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-button/paper-button.js";
-import "mtz-file-download-behavior/mtz-file-download-behavior.js";
+import "@lrnwebcomponents/mtz-file-download-behavior/mtz-file-download-behavior.js";
 /**
 `hax-export-dialog`
 Export dialog with all export options and settings provided.

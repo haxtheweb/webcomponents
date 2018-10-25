@@ -1,4 +1,5 @@
-import "./app-datepicker.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "../app-datepicker.js";
 var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
