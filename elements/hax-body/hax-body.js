@@ -250,7 +250,7 @@ Polymer({
     // mutation observer that ensures state of hax applied correctly
     this._observer = dom(this).observeNodes(function(info) {
       // MAKE SURE WE KNOW WHAT JUST GOT ADDED HERE
-      dom.flush();
+      flush();
       // if we've got new nodes, we have to react to that
       if (info.addedNodes.length > 0) {
         info.addedNodes.map(node => {

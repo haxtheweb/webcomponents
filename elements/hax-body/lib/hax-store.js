@@ -9,9 +9,20 @@ import "./hax-stax.js";
 import "./hax-stax-browser.js";
 import "./hax-blox.js";
 import "./hax-blox-browser.js";
-
+/**
+ * Trick to write the store to the DOM if it wasn't there already.
+ * This is not used yet but could be if you wanted to dynamically
+ * load the store based on something else calling for it. Like
+ * store lazy loading but it isn't tested.
+ */
 window.HaxStore = {};
-
+window.HaxStore.instance = null;
+window.HaxStore.requestAvailability = function() {
+  if (!window.HaxStore.instance) {
+    window.HaxStore.instance = document.createElement("hax-store");
+  }
+  document.body.appendChild(window.HaxStore.instance);
+};
 Polymer({
   _template: html`
     <style>
@@ -365,7 +376,10 @@ Polymer({
    */
   _appStoreChanged: function(newValue, oldValue) {
     // if we have an endpoint defined, pull it
-    if (typeof newValue !== typeof undefined) {
+    if (
+      typeof newValue !== typeof undefined &&
+      typeof oldValue !== typeof undefined
+    ) {
       // support having the request or remote loading
       // depending on the integration type
       if (typeof newValue.apps === typeof undefined) {
@@ -684,7 +698,7 @@ Polymer({
     window.__startedSelection = false;
     // claim the instance spot. This way we can easily
     // be referenced globally
-    if (!window.HaxStore.instance) {
+    if (window.HaxStore.instance == null) {
       window.HaxStore.instance = this;
     }
     // notice hax property definitions coming from anywhere
@@ -2044,17 +2058,4 @@ window.HaxStore.encapScript = html => {
 window.HaxStore.toast = (message, duration = 3000) => {
   window.HaxStore.instance.haxToast.duration = duration;
   window.HaxStore.instance.haxToast.show(message);
-};
-/**
- * Trick to write the store to the DOM if it wasn't there already.
- * This is not used yet but could be if you wanted to dynamically
- * load the store based on something else calling for it. Like
- * store lazy loading but it isn't tested.
- */
-window.HaxStore.instance = null;
-window.HaxStore.requestAvailability = function() {
-  if (!window.HaxStore.instance) {
-    window.HaxStore.instance = document.createElement("hax-store");
-  }
-  document.body.appendChild(window.HaxStore.instance);
 };

@@ -122,7 +122,10 @@ Polymer({
    * ce size changed.
    */
   _ceSizeChanged: function(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined) {
+    if (
+      typeof newValue !== typeof undefined &&
+      typeof oldValue !== typeof undefined
+    ) {
       this.fire("hax-context-item-selected", {
         eventName: "hax-size-change",
         value: newValue
