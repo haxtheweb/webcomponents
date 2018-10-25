@@ -4,7 +4,7 @@ import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-styles/paper-styles.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "elmsln-loading/elmsln-loading.js";
+import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-app-search-inputs.js";
 import "./hax-app-search-result.js";

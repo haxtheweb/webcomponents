@@ -12,7 +12,7 @@ import "@polymer/paper-item/paper-item.js";
 import "@polymer/app-route/app-route.js";
 import "@polymer/app-route/app-location.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-import "elmsln-loading/elmsln-loading.js";
+import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "./lrnapp-cis-course-card.js";
 /**
 `lrnapp-cis`

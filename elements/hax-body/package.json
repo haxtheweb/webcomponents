@@ -8,12 +8,7 @@
     "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/hax-body.css",
-      "scss": "src/hax-body.scss",
-      "html": "src/hax-body.html",
-      "js": "src/hax-body.js",
-      "properties": "src/hax-body-properties.json",
-      "hax": "src/hax-body-hax.json"
+      "js": "src/hax-body.js"
     }
   },
   "version": "0.0.28",
@@ -58,6 +53,7 @@
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-card": "^3.0.0",
     "@polymer/paper-checkbox": "^3.0.0",
+    "@polymer/paper-dialog": "^3.0.1",
     "@polymer/paper-dialog-scrollable": "^3.0.0",
     "@polymer/paper-dropdown-menu": "^3.0.0",
     "@polymer/paper-icon-button": "^3.0.0",

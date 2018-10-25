@@ -2,7 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-button/paper-button.js";
-import "elmsln-loading/elmsln-loading.js";
+import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "./site-card.js";
 /**
 `sites-listing`

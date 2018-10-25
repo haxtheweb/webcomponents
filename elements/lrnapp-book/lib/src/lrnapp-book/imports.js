@@ -17,7 +17,7 @@ import "@polymer/app-route/app-route.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/lrndesign-stepper/lrndesign-stepper.js";
 import "@lrnwebcomponents/lrnsys-progress/lrnsys-progress.js";
-import "elmsln-loading/elmsln-loading.js";
+import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "page-scroll-position/page-scroll-position.js";
 import "hax-body/hax-body.js";
 import "material-progress/material-progress.js";

@@ -1,15 +1,15 @@
 import "moment-element/moment-element.js";
-import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/marked-element/marked-element.js";
-import "mtz-marked-editor/mtz-marked-editor.js";
-import "mtz-marked-editor/mtz-marked-control-generic-line.js";
-import "mtz-marked-editor/mtz-marked-control-generic-wrap.js";
-import "mtz-marked-editor/controls/mtz-marked-control-link.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-badge/paper-badge.js";
-import "word-count/word-count.js";
+import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+import "@lrnwebcomponents/mtz-marked-editor/mtz-marked-editor.js";
+import "@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-line.js";
+import "@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-wrap.js";
+import "@lrnwebcomponents/mtz-marked-editor/lib/controls/mtz-marked-control-link.js";
+import "@lrnwebcomponents/word-count/word-count.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 /**
