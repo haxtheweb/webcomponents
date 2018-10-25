@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "eco-json-schema-form/eco-json-schema-wizard.js";
+import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**

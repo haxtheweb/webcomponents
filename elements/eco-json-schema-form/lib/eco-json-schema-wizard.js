@@ -4,31 +4,21 @@ import "@polymer/iron-icons/image-icons.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-pages/iron-pages.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-toolbar/paper-toolbar.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-ripple/paper-ripple.js";
-import "@polymer/paper-toolbar/paper-toolbar.js";
 import "@polymer/app-localize-behavior/app-localize-behavior.js";
 import "./eco-json-schema-object.js";
 import "./eco-json-schema-array.js";
 import "./eco-json-schema-boolean.js";
 import "./eco-json-schema-enum.js";
 import "./eco-json-schema-file.js";
-import "./eco-json-schema-geolocation.js";
 import "./eco-json-schema-input.js";
 var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-wizard">
-  
-  
-  
-  
-  
-  
-  
   <template>
     <style is="custom-style" include="iron-flex iron-flex-alignment">
        :host {

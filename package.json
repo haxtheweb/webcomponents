@@ -155,6 +155,8 @@
       "**/@webcomponents/**",
       "**/lit-html",
       "**/lit-html/**",
+      "**/paper-collapse-item",
+      "**/paper-collapse-item/**",
       "**/slim-js",
       "**/slim-js/**"
     ]

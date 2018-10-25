@@ -1,14 +1,14 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "eco-json-schema-form/eco-json-schema-wizard.js";
+import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-input/paper-textarea.js";
-import "code-editor/code-editor.js";
+import "@lrnwebcomponents/code-editor/code-editor.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "app-datepicker/app-datepicker.js";
-import "paper-icon-picker/paper-icon-picker.js";
-import "paper-input-flagged/paper-input-flagged.js";
-import "vaadin-split-layout/vaadin-split-layout.js";
+import "@lrnwebcomponents/app-datepicker/app-datepicker.js";
+import "@lrnwebcomponents/paper-icon-picker/paper-icon-picker.js";
+import "@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js";
+import "@vaadin/vaadin-split-layout/vaadin-split-layout.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
 `hax-preview`

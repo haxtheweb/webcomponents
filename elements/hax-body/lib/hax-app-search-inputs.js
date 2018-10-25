@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-item/paper-item.js";
-import "eco-json-schema-form/eco-json-schema-wizard.js";
+import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
 `hax-app-search-inputs`

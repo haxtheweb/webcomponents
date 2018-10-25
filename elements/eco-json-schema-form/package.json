@@ -35,9 +35,20 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
+    "@polymer/iron-flex-layout": "^3.0.0",
+    "@polymer/iron-icons": "^3.0.0",
+    "@polymer/paper-checkbox": "^3.0.0",
+    "@polymer/paper-dropdown-menu": "^3.0.0",
+    "@polymer/paper-icon-button": "^3.0.0",
+    "@polymer/paper-input": "^3.0.0",
+    "@polymer/paper-item": "^3.0.0",
+    "@polymer/paper-listbox": "^3.0.0",
+    "@polymer/app-localize-behavior": "^3.0.0",
     "@polymer/iron-pages": "^3.0.0",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/iron-validator-behavior": "^3.0.0",
+    "@polymer/paper-tooltip": "^3.0.0",
+    "@polymer/polymer": "^3.0.5",
+    "paper-collapse-item": "^4.0.4"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

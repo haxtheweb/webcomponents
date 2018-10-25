@@ -5,7 +5,6 @@ import "./eco-json-schema-array.js";
 import "./eco-json-schema-boolean.js";
 import "./eco-json-schema-enum.js";
 import "./eco-json-schema-file.js";
-import "./eco-json-schema-geolocation.js";
 import "./eco-json-schema-input.js";
 var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
@@ -386,17 +385,6 @@ Polymer({
             schema.value = "";
           }
           property.value = schema.value;
-        } else if (ctx._isSchemaGeo(schema.type)) {
-          property.component.name =
-            property.component.name || "eco-json-schema-geolocation";
-          if (typeof schema.value === typeof undefined) {
-            schema.value = {};
-          }
-          property.value = schema.value;
-          property.map = true;
-          if (schema.zoom !== undefined) {
-            property.zoom = schema.zoom;
-          }
         } else if (ctx._isSchemaBoolean(schema.type)) {
           property.component.name =
             property.component.name || "eco-json-schema-boolean";
@@ -629,9 +617,6 @@ Polymer({
     } else {
       return type === "string";
     }
-  },
-  _isSchemaGeo: function(type) {
-    return type === "geolocation";
   },
   _isSchemaObject: function(type) {
     return type === "object";

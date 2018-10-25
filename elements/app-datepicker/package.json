@@ -1,0 +1,53 @@
+{
+  "name": "@lrnwebcomponents/app-datepicker",
+  "wcfactory": {
+    "className": "AppDatepicker",
+    "customElementClass": "PolymerElement",
+    "elementName": "app-datepicker",
+    "generator-wcfactory-version": "0.3.2",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "js": "src/app-datepicker.js"
+    }
+  },
+  "version": "0.0.28",
+  "description": "Start of app-datepicker fork",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "app-datepicker.js",
+  "module": "app-datepicker.es6.js",
+  "umd": "app-datepicker.umd.js",
+  "amd": "app-datepicker.amd.js",
+  "scripts": {
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/app-datepicker/test/",
+    "start":"yarn run dev","build":"../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'","dev":"open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'","watch":"../../node_modules/.bin/gulp dev","serve":"polymer serve --npm --module-resolution=node --open","lighthouse":"../../node_modules/.bin/gulp lighthouse"
+  },
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@polymer/polymer":"^3.0.5",
+    "@polymer/iron-iconset-svg": "^3.0.0",
+    "@polymer/iron-list": "^3.0.0",
+    "@polymer/iron-selector": "^3.0.0",
+    "@polymer/neon-animation": "^3.0.0",
+    "@polymer/paper-dialog-behavior": "^3.0.0",
+    "@polymer/paper-icon-button": "^3.0.0",
+    "@polymer/paper-button": "^3.0.0"
+  },
+  "devDependencies": {
+    "@polymer/iron-demo-helpers":"3.0.2","@polymer/iron-component-page":"github:PolymerElements/iron-component-page","@webcomponents/webcomponentsjs":"2.1.3","concurrently":"4.0.1","gulp-babel":"8.0.0","gulp-sourcemaps":"2.6.4","lodash":"4.17.11","polymer-cli":"1.8.0","polymer-build":"3.0.4","wct-browser-legacy":"1.0.1"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}
