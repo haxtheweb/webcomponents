@@ -10,7 +10,7 @@ import "@polymer/iron-icons/social-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/image-icons.js";
 import "@polymer/iron-icons/maps-icons.js";
-import "@polymer/neon-animation/web-animations.js";
+import "@polymer/neon-animation/neon-animation.js";
 import "./hax-toolbar-item.js";
 /**
 `hax-context-item`

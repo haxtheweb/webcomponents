@@ -5,7 +5,7 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "vaadin-upload/vaadin-upload.js";
+import "@vaadin/vaadin-upload/vaadin-upload.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./hax-preview.js";
 import "./hax-app-browser.js";

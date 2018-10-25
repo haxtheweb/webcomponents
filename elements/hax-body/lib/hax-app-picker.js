@@ -3,7 +3,7 @@ import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-ripple/paper-ripple.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/neon-animation/web-animations.js";
+import "@polymer/neon-animation/neon-animation.js";
 import "@polymer/neon-animation/neon-animation.js";
 import "@polymer/neon-animation/animations/scale-up-animation.js";
 import "@polymer/neon-animation/animations/scale-down-animation.js";

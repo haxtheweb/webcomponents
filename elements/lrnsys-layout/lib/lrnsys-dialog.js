@@ -5,7 +5,7 @@ import "paper-avatar/paper-avatar.js";
 import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/neon-animation/web-animations.js";
+import "@polymer/neon-animation/neon-animation.js";
 import "@polymer/neon-animation/neon-animations.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-icons/iron-icons.js";

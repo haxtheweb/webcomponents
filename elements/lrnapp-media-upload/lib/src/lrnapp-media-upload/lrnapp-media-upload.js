@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "vaadin-upload/vaadin-upload.js";
+import "@vaadin/vaadin-upload/vaadin-upload.js";
 Polymer({
   _template: html`
     <style>

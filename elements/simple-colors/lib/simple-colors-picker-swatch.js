@@ -1,4 +1,4 @@
-import "./simple-colors.js";
+import "../simple-colors.js";
 Polymer({
   _template: html`
     <style is="custom-style">

@@ -5,15 +5,10 @@
     "customElementClass": "PolymerElement",
     "elementName": "eco-json-schema-form",
     "generator-wcfactory-version": "0.3.1",
-    "useHAX": true,
+    "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/eco-json-schema-form.css",
-      "scss": "src/eco-json-schema-form.scss",
-      "html": "src/eco-json-schema-form.html",
-      "js": "src/eco-json-schema-form.js",
-      "properties": "src/eco-json-schema-form-properties.json",
-      "hax": "src/eco-json-schema-form-hax.json"
+      "js": "src/eco-json-schema-form.js"
     }
   },
   "version": "0.0.28",
@@ -41,6 +36,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
+    "@polymer/iron-pages": "^3.0.0",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {

@@ -5,15 +5,10 @@
     "customElementClass": "PolymerElement",
     "elementName": "game-show-quiz",
     "generator-wcfactory-version": "0.3.1",
-    "useHAX": true,
+    "useHAX": false,
     "useSass": false,
     "files": {
-      "css": "src/game-show-quiz.css",
-      "scss": "src/game-show-quiz.scss",
-      "html": "src/game-show-quiz.html",
-      "js": "src/game-show-quiz.js",
-      "properties": "src/game-show-quiz-properties.json",
-      "hax": "src/game-show-quiz-hax.json"
+      "js": "src/game-show-quiz.js"
     }
   },
   "version": "0.0.28",
@@ -40,7 +35,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
+    "@polymer/paper-button": "^3.0.0",
+    "@polymer/paper-dialog": "^3.0.0",
+    "@polymer/paper-icon-button": "^3.0.0",
+    "@polymer/app-layout": "^3.0.0",
+    "@polymer/paper-dialog-scrollable": "^3.0.0",
+    "@polymer/iron-ajax": "^3.0.0",
+    "@polymer/paper-toast": "^3.0.0",
+    "@polymer/iron-image": "^3.0.0",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {

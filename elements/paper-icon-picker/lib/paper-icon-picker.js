@@ -7,7 +7,7 @@ import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-meta/iron-meta.js";
-import "@polymer/neon-animation/web-animations.js";
+import "@polymer/neon-animation/neon-animation.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "./paper-icon-picker-icon.js";

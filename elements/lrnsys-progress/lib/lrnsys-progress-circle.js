@@ -2,7 +2,7 @@ import "circle-progress/circle-progress.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-spinner/paper-spinner.js";
-import "@polymer/neon-animation/web-animations.js";
+import "@polymer/neon-animation/neon-animation.js";
 import "@polymer/iron-icons/iron-icons.js";
 Polymer({
   _template: html`

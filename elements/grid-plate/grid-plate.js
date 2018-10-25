@@ -3,8 +3,8 @@ import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "responsive-grid/responsive-grid-row.js";
-import "responsive-grid/responsive-grid-col.js";
+import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
+import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
 /**
 `grid-plate`
 A grid plate based on a layout that manipulates it.

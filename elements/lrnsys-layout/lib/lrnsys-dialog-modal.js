@@ -2,7 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/neon-animation/web-animations.js";
+import "@polymer/neon-animation/neon-animation.js";
 import "@polymer/neon-animation/neon-animations.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./lrnsys-dialog-toolbar.js";

@@ -1,6 +1,6 @@
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/image-icons.js";
-import "./simple-colors.js";
+import "../simple-colors.js";
 import "./simple-colors-picker-swatch.js";
 Polymer({
   _template: html`

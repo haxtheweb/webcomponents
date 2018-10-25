@@ -12,12 +12,18 @@
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
-    <div class="vertical-section-container centered">
+    <div class="vertical-section-container" style="width:50%;margin:0 auto;">
       <h3>Basic game-show-quiz demo</h3>
       <demo-snippet>
         <template>
-          <game-show-quiz>
-            This is game-show-quiz
+          <game-show-quiz game-data="example.json" title="Art History Jeopardy" directions-title="Jeopardy Directions">
+            <div slot="directions" style="padding:16px;">
+              <strong>Important:</strong> Please read <strong>all</strong> of the following directions before starting the
+              quiz. <strong>Continue taking Jeopardy until you have attempted all 30 points and all open bonus questions.</strong>
+              <ul>
+                <li>Questions come in four categories...</li>
+              </ul>
+            </div>
           </game-show-quiz>
         </template>
       </demo-snippet>

@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@polymer/neon-animation/web-animations.js";
+import "@polymer/neon-animation/neon-animation.js";
 import "@polymer/neon-animation/neon-animation-behavior.js";
 /**
 `<paper-square-grow-animation>` increases the element's width and height from an initial

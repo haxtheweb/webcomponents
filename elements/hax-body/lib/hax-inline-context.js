@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "md-extra-icons/md-extra-icons.js";
+import "@lrnwebcomponents/md-extra-icons/md-extra-icons.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/paper-item/paper-item.js";
 import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
