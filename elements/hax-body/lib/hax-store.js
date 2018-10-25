@@ -1,29 +1,16 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
+import "@polymer/iron-ajax/iron-ajax.js";
 import "./hax-app.js";
 import "./hax-stax.js";
 import "./hax-stax-browser.js";
 import "./hax-blox.js";
 import "./hax-blox-browser.js";
 
-/**
- * Trick to write the store to the DOM if it wasn't there already.
- * This is not used yet but could be if you wanted to dynamically
- * load the store based on something else calling for it. Like
- * store lazy loading but it isn't tested.
- */
 window.HaxStore = {};
-window.HaxStore.instance = null;
-window.HaxStore.requestAvailability = function() {
-  if (!window.HaxStore.instance) {
-    window.HaxStore.instance = document.createElement("hax-store");
-  }
-  document.body.appendChild(window.HaxStore.instance);
-};
 
 Polymer({
   _template: html`
@@ -410,7 +397,9 @@ Polymer({
           // see if anything coming across claims to be a backend for adding items
           // and then enable the upload button
           if (typeof apps[i].connection.operations.add !== typeof undefined) {
-            window.HaxStore.write("canSupportUploads", true, this);
+            async.microTask.run(() => {
+              window.HaxStore.write("canSupportUploads", true, this);
+            });
           }
           window.HaxStore.instance.appendChild(app);
         }
@@ -537,6 +526,33 @@ Polymer({
         return "Are you sure you want to leave? Your work will not be saved!";
       }
     };
+    window.addEventListener("paste", e => {
+      // only perform this on a text element that is active
+      if (
+        this.isTextElement(window.HaxStore.instance.activeNode) &&
+        !this.haxManager.opened
+      ) {
+        e.preventDefault();
+        let text = "";
+        // intercept paste event
+        if (e.clipboardData || e.originalEvent.clipboardData) {
+          text = (e.originalEvent || e).clipboardData.getData("text/plain");
+        } else if (window.clipboardData) {
+          text = window.clipboardData.getData("Text");
+        }
+        let sel, range, html;
+        if (window.getSelection) {
+          sel = window.getSelection();
+          if (sel.getRangeAt && sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            range.deleteContents();
+            range.insertNode(document.createTextNode(text));
+          }
+        } else if (document.selection && document.selection.createRange) {
+          document.selection.createRange().text = text;
+        }
+      }
+    });
     // capture events and intercept them globally
     window.addEventListener("keypress", event => {
       const keyName = event.key;
@@ -665,9 +681,10 @@ Polymer({
    * Created life-cycle to ensure a single global store.
    */
   created: function() {
+    window.__startedSelection = false;
     // claim the instance spot. This way we can easily
     // be referenced globally
-    if (window.HaxStore.instance == null) {
+    if (!window.HaxStore.instance) {
       window.HaxStore.instance = this;
     }
     // notice hax property definitions coming from anywhere
@@ -752,6 +769,7 @@ Polymer({
       "hax-insert-content",
       this._haxStoreInsertContent.bind(this)
     );
+
     document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
   },
 
@@ -955,10 +973,6 @@ Polymer({
             source: "href",
             title: "innerText",
             alt: "title"
-          },
-          {
-            type: "inline",
-            text: "innerText"
           }
         ],
         meta: {
@@ -1198,20 +1212,13 @@ Polymer({
           e.detail.content,
           properties
         );
-        // inserts where it needs to go!!!!!
-        window.HaxStore.instance.activeHaxBody.$.inlinetracker.insertAdjacentElement(
-          "beforebegin",
-          node
-        );
-        // removes the selection even if the user lost focus
-        // which will appear to wipe the old text and replace it with the new
+        // replace what WAS the active selection w/ this new node
         if (this.activePlaceHolder !== null) {
-          this.activePlaceHolder.extractContents();
+          this.activePlaceHolder.deleteContents();
+          this.activePlaceHolder.insertNode(node);
         }
         // set it to nothing
         this.activePlaceHolder = null;
-        // hide the inline context menu
-        window.HaxStore.instance.activeHaxBody.$.inlinecontextmenu.opened = false;
       } else {
         this.activeHaxBody.haxInsert(
           e.detail.tag,
@@ -1782,17 +1789,10 @@ window.HaxStore.haxNodeToContent = node => {
           ) {
             content += window.HaxStore.haxNodeToContent(slotnodes[j]);
           } else {
-            // possible copy and paste glitch, ignore this at all costs
-            if (
-              slotnodes[j].tagName === "SPAN" &&
-              slotnodes[j].id === "inlinetracker"
-            ) {
-            } else {
-              slotnodes[j].setAttribute("data-editable", false);
-              slotnodes[j].removeAttribute("data-hax-ray");
-              slotnodes[j].contentEditable = false;
-              content += slotnodes[j].outerHTML;
-            }
+            slotnodes[j].setAttribute("data-editable", false);
+            slotnodes[j].removeAttribute("data-hax-ray");
+            slotnodes[j].contentEditable = false;
+            content += slotnodes[j].outerHTML;
           }
         }
         // keep comments with a special case since they need wrapped
@@ -2018,9 +2018,43 @@ window.HaxStore.wipeSlot = (element, slot = "") => {
   }
 };
 /**
+ * HTML encapsulation of a string on script and style tags
+ */
+window.HaxStore.encapScript = html => {
+  html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
+  html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
+  html = html.replace(/<style[\s\S]*?>/gi, "&lt;style&gt;");
+  html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
+  // special case, it's inside a template tag
+  html = html.replace(
+    /<template[\s\S]*?>[\s\S]*?&lt;script[\s\S]*?&gt;[\s\S]*?&lt;\/script&gt;/gi,
+    function(match, contents, offset, input_string) {
+      match = match.replace("&lt;script&gt;", "<script>");
+      match = match.replace("&lt;/script&gt;", "</script>");
+      match = match.replace("&lt;style&gt;", "<style>");
+      match = match.replace("&lt;/style&gt;", "</style>");
+      return match;
+    }
+  );
+  return html;
+};
+/**
  * Global toast
  */
 window.HaxStore.toast = (message, duration = 3000) => {
   window.HaxStore.instance.haxToast.duration = duration;
   window.HaxStore.instance.haxToast.show(message);
+};
+/**
+ * Trick to write the store to the DOM if it wasn't there already.
+ * This is not used yet but could be if you wanted to dynamically
+ * load the store based on something else calling for it. Like
+ * store lazy loading but it isn't tested.
+ */
+window.HaxStore.instance = null;
+window.HaxStore.requestAvailability = function() {
+  if (!window.HaxStore.instance) {
+    window.HaxStore.instance = document.createElement("hax-store");
+  }
+  document.body.appendChild(window.HaxStore.instance);
 };

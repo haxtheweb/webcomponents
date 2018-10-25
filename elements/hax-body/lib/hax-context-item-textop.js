@@ -12,7 +12,7 @@ import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/image-icons.js";
 import "@polymer/iron-icons/maps-icons.js";
 import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
-import "@polymer/neon-animation/neon-animation.js";
+import "@polymer/neon-animation/web-animations.js";
 import "./hax-toolbar-item.js";
 /**
 `hax-context-item-textop`
@@ -38,7 +38,7 @@ Polymer({
       }
     </style>
     <iron-a11y-keys id="a11y" target="[[target]]" keys="enter" on-keys-pressed="_fireEvent"></iron-a11y-keys>
-    <hax-toolbar-item id="button" icon="[[icon]]" hidden\$="[[!icon]]" tooltip-direction="[[direction]]" tooltip="[[label]]" class\$="[[iconClass]]" on-mousedown="_fireEvent" icon-class="[[iconClass]]" mini="[[mini]]" menu="[[menu]]" light="[[light]]">
+    <hax-toolbar-item corner="[[corner]]" id="button" icon="[[icon]]" hidden\$="[[!icon]]" tooltip-direction="[[direction]]" tooltip="[[label]]" class\$="[[iconClass]]" on-mousedown="_fireEvent" icon-class="[[iconClass]]" mini="[[mini]]" menu="[[menu]]" light="[[light]]">
       <slot></slot>
     </hax-toolbar-item>
 `,
@@ -46,6 +46,13 @@ Polymer({
   is: "hax-context-item-textop",
 
   properties: {
+    /**
+     * corner
+     */
+    corner: {
+      type: String,
+      value: ""
+    },
     /**
      * target for the iron-a11y-keys element.
      */

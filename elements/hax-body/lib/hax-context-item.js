@@ -99,7 +99,7 @@ Polymer({
      */
     label: {
       type: String,
-      value: "editor:text-fields",
+      value: "",
       reflectToAttribute: true
     },
     /**

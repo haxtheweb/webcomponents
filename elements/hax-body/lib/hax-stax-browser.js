@@ -43,7 +43,6 @@ Polymer({
      */
     staxList: {
       type: Array,
-      value: [],
       observer: "_staxListChanged"
     }
   },
@@ -100,10 +99,7 @@ Polymer({
    * Notice staxList changing.
    */
   _staxListChanged: function(newValue, oldValue) {
-    if (
-      typeof newValue !== typeof undefined &&
-      typeof oldValue !== typeof undefined
-    ) {
+    if (typeof newValue !== typeof undefined) {
       this.set("__staxList", newValue);
     }
   },

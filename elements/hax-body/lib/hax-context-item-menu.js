@@ -2,7 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-item/paper-item.js";
-import "@polymer/neon-animation/neon-animation.js";
+import "@polymer/neon-animation/web-animations.js";
 import "./hax-toolbar-menu.js";
 /**
 `hax-context-item-menu`
@@ -20,14 +20,17 @@ Polymer({
     <style>
       :host {
         display: inline-flex;
-        height: 40px;
+        height: 32px;
         box-sizing: border-box;
       }
       :host ::slotted(*):hover {
         background-color: #cccccc;
       };
+      :host ::slotted(*) {
+        height: 32px;
+      };
     </style>
-    <hax-toolbar-menu id="menu" icon="[[icon]]" tooltip="[[label]]" tooltip-direction="[[direction]]" selected="{{selectedValue}}" reset-on-select="[[resetOnSelect]]">
+    <hax-toolbar-menu corner="[[corner]]" id="menu" icon="[[icon]]" tooltip="[[label]]" tooltip-direction="[[direction]]" selected="{{selectedValue}}" reset-on-select="[[resetOnSelect]]">
       <slot id="items"></slot>
     </hax-toolbar-menu>
 `,
@@ -35,6 +38,13 @@ Polymer({
   is: "hax-context-item-menu",
 
   properties: {
+    /**
+     * corner
+     */
+    corner: {
+      type: String,
+      value: ""
+    },
     /**
      * Internal flag to allow blocking the event firing if machine selects tag.
      */

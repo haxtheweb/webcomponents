@@ -1,15 +1,17 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-dialog/paper-dialog.js";
+import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-ripple/paper-ripple.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/neon-animation/neon-animation.js";
 import "@polymer/neon-animation/neon-animation.js";
 import "@polymer/neon-animation/animations/scale-up-animation.js";
 import "@polymer/neon-animation/animations/scale-down-animation.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "./hax-app-picker-item.js";
 /**
  `hax-app-picker`
  A picker for selecting an item from a list of apps / hax gizmos which require
@@ -29,13 +31,35 @@ Polymer({
         display: block;
         --hax-app-picker-dialog-background-color: var(--simple-colors-light-green-background1);
       };
+      hax-app-picker-item {
+        -webkit-transition: .3s all linear;
+        transition: .3s all linear;
+        display: inline-flex;
+      }
+      paper-icon-button.close {
+        float: right;
+        top: 0;
+        right: 0;
+        position: absolute;
+        padding: 4px;
+        margin: 0;
+        color: var(--simple-colors-light-green-background1);
+      }
+      #ironlist {
+        width: 100%;
+        height: 30vh;
+      }
       #dialog {
-        min-width: 25vw;
-        min-height: 25vh;
+        min-width: 30vw;
+        min-height: 30vh;
+        height: 30vw;
+        width: 30vh;
+        padding: 8px;
+        overflow: hidden;
         background-color: rgba(0,0,0,.9);
         border-radius: 16px;
         z-index: 1000000;
-        border: 4px solid var(--simple-colors-light-green-background1);
+        border: 2px solid var(--simple-colors-light-green-background1);
         @apply --hax-app-picker-dialog;
       }
       #title, .element-button > div {
@@ -43,37 +67,38 @@ Polymer({
       }
       #title {
         padding: 16px;
+        border-bottom: 2px solid var(--simple-colors-light-green-background1);
         margin: 0;
+        width: calc(100% - 32px);
         color: var(--hax-app-picker-dialog-text-color, #FFFFFF);
         @apply --paper-font-title;
         @apply --hax-app-picker-dialog-title;
       }
       #buttonlist {
-        border-top: 1px solid var(--simple-colors-light-green-background1);
         display: block;
-        text-align: center;
+        text-align: left;
         margin: auto;
         padding: 8px;
         overflow-x: hidden;
         overflow-y: auto;
         --paper-dialog-scrollable: {
-          padding: 0;
+          padding: 0 0 78px 0;
         }
       }
       @media (orientation: landscape) {
-        #buttonlist {
-          max-height: 50vh;
-        }
+        #buttonlist,
+        #ironlist,
         #dialog {
-          max-width: 30vw;
+          width: 40vw;
+          height: 50vh;
         }
       }
       @media (orientation: portrait) {
-        #buttonlist {
-          max-height: 60vh;
-        }
+        #buttonlist,
+        #ironlist,
         #dialog {
-          max-width: 40vw;
+          width: 50vw;
+          height: 60vh;
         }
       }
       .element-button {
@@ -82,46 +107,12 @@ Polymer({
         margin: 8px 4px;
         text-align: center;
       }
-      .element-button > div {
-        @apply --paper-font-caption;
-        margin-top: 8px;
-        color: #FFFFFF;
-        width: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        @apply --hax-app-picker-hax-element-text;
-      }
-      .icon {
-        cursor: pointer;
-        width: 64px;
-        height: 64px;
-        padding: 16px;
-        color: white;
-        border-radius: 50%;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-        -webkit-transition: box-shadow .2s;
-        -moz-transition: box-shadow .2s;
-        -ms-transition: box-shadow .2s;
-        -o-transition: box-shadow .2s;
-        transition: box-shadow .2s;
-        @apply --hax-app-picker-hax-element--icon;
-      }
-      .icon:hover, .icon:focus {
-        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.14), 0 2px 10px 0 rgba(0, 0, 0, 0.12), 0 6px 2px -4px rgba(0, 0, 0, 0.2);
-      }
-      .icon:active {
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-      }
       @media screen and (max-width: 550px) {
+        #buttonlist,
+        #ironlist,
         #dialog {
           max-width: 80%;
           overflow: auto;
-        }
-        .icon {
-          width: 32px;
-          height: 32px;
-          padding: 8px;
         }
         .element-button {
           width: 54px;
@@ -129,16 +120,17 @@ Polymer({
         }
       }
     </style>
-    <paper-dialog id="dialog">
+    <paper-dialog id="dialog" with-backdrop="" always-on-top="">
       <h3 id="title">[[title]]</h3>
       <paper-dialog-scrollable id="buttonlist">
-      <template is="dom-repeat" items="[[selectionList]]" as="element">
-        <div class="element-button" on-tap="_selected" data-selected\$="[[index]]" title="[[element.title]]">
-          <paper-icon-button id\$="picker-item-[[index]]" on-tap="_selected" data-selected\$="[[index]]" class\$="icon [[element.color]]" icon="[[element.icon]]"></paper-icon-button>
-          <div>[[element.title]]</div>
-        </div>
-      </template>
+        <iron-list id="ironlist" items="[[selectionList]]" as="element" grid="">
+          <template>
+            <div>
+            <hax-app-picker-item id\$="picker-item-[[index]]" class="element-button" on-tap="_selected" data-selected\$="[[index]]" label="[[element.title]]" icon="[[element.icon]]" color="[[element.color]]"></hax-app-picker-item></div>
+          </template>
+        </iron-list>
       </paper-dialog-scrollable>
+      <paper-icon-button dialog-dismiss="" icon="icons:cancel" class="close" title="Close dialog"></paper-icon-button>
     </paper-dialog>
 `,
 
@@ -148,6 +140,8 @@ Polymer({
     "dialog.iron-overlay-canceled": "close",
     "dialog.iron-overlay-closed": "close"
   },
+
+  behaviors: [simpleColorsBehaviors],
 
   properties: {
     /**
@@ -216,6 +210,10 @@ Polymer({
     if (typeof newValue !== typeof undefined) {
       if (newValue) {
         this.$.dialog.open();
+        setTimeout(() => {
+          this.$.ironlist.fire("iron-resize");
+          window.dispatchEvent(new Event("resize"));
+        }, 100);
         // lock the background
         document.body.style.overflow = "hidden";
       } else {

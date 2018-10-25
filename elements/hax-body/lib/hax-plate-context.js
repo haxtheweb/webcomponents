@@ -30,7 +30,7 @@ Polymer({
       .area {
         width: 32px;
         float: left;
-        opacity: .3;
+        opacity: .5;
         visibility: visible;
         transition: .8s all ease;
       }
@@ -39,10 +39,8 @@ Polymer({
       }
     </style>
     <div class="area">
-      <hax-context-item light="" mini="" icon="editor:vertical-align-top" label="Move first" event-name="grid-plate-first" direction="left"></hax-context-item>
       <hax-context-item light="" mini="" icon="arrow-upward" label="Move up" event-name="grid-plate-up" direction="left"></hax-context-item>
       <hax-context-item light="" mini="" icon="arrow-downward" label="Move down" event-name="grid-plate-down" direction="left"></hax-context-item>
-      <hax-context-item light="" mini="" icon="editor:vertical-align-bottom" label="Move last" event-name="grid-plate-last" direction="left"></hax-context-item>
     </div>
 `,
 

@@ -10,6 +10,8 @@ $_documentContainer.innerHTML = `<dom-module id="hax-stax">
     }
   </style>
   </template>
+
+  
 </dom-module>`;
 
 document.head.appendChild($_documentContainer);

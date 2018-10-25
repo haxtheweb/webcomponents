@@ -1,6 +1,8 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "./hax-blox-browser.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
  `hax-blox-picker`
  A picker for selecting an item from a list of apps / hax blox which require
@@ -25,6 +27,15 @@ Polymer({
         margin-top: 64px;
         @apply --hax-blox-picker-dialog;
       }
+      paper-icon-button#closedialog {
+        float: right;
+        top: 135px;
+        right: 0;
+        position: absolute;
+        padding: 4px;
+        margin: 0;
+        color: var(--simple-colors-light-green-background1);
+      }
       .title {
         margin-top: 32px;
         text-align: center;
@@ -35,7 +46,7 @@ Polymer({
         font-weight: bold;
         font-family: sans-serif;
         text-transform: uppercase;
-        color: #a0ff52;
+        color: var(--simple-colors-light-green-background1);
       }
       app-drawer {
         --app-drawer-content-container: {
@@ -53,10 +64,13 @@ Polymer({
       <div style="height: 100%; overflow: auto;" class="pref-container">
         <hax-blox-browser id="bloxbrowser"></hax-blox-browser>
       </div>
+      <paper-icon-button id="closedialog" on-tap="close" icon="icons:cancel" title="Close dialog"></paper-icon-button>
     </app-drawer>
 `,
 
   is: "hax-blox-picker",
+
+  behaviors: [simpleColorsBehaviors],
 
   properties: {
     /**

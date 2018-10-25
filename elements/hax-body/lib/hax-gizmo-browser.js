@@ -36,7 +36,7 @@ Polymer({
         margin: 0 64px 0 0;
         font-size: 32px;
         font-weight: bold;
-        color:var(--simple-colors-light-green-background1);
+        color: var(--simple-colors-light-green-background1);
         font-family: sans-serif;
         text-transform: uppercase;
         display: inline-flex;
@@ -93,6 +93,8 @@ Polymer({
 `,
 
   is: "hax-gizmo-browser",
+
+  behaviors: [simpleColorsBehaviors],
 
   properties: {
     /**

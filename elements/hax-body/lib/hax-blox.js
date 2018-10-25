@@ -3,13 +3,16 @@ var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<dom-module id="hax-stax">
+
   <template>
     <style>
-      :host {
-        display:none;
-      }
-    </style>
+    :host {
+      display:none;
+    }
+  </style>
   </template>
+
+  
 </dom-module>`;
 
 document.head.appendChild($_documentContainer);

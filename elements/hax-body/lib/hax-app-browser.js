@@ -3,8 +3,8 @@ import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/iron-pages/iron-pages.js";
-import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
 import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
+import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-app-browser-item.js";
 import "./hax-app-search.js";
@@ -99,6 +99,8 @@ Polymer({
 `,
 
   is: "hax-app-browser",
+
+  behaviors: [simpleColorsBehaviors],
 
   properties: {
     /**

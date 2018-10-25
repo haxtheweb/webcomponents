@@ -1,8 +1,10 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/mtz-file-download-behavior/mtz-file-download-behavior.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
 `hax-export-dialog`
 Export dialog with all export options and settings provided.
@@ -23,6 +25,15 @@ Polymer({
         z-index: 1000;
         margin-top: 64px;
       }
+      paper-icon-button#closedialog {
+        float: right;
+        top: 135px;
+        right: 0;
+        position: absolute;
+        padding: 4px;
+        margin: 0;
+        color: var(--simple-colors-light-green-background1);
+      }
       .title {
         margin-top: 32px;
         text-align: center;
@@ -33,7 +44,7 @@ Polymer({
         font-weight: bold;
         font-family: sans-serif;
         text-transform: uppercase;
-        color: #a0ff52;
+        color: var(--simple-colors-light-green-background1);
       }
       .pref-container {
         text-align: left;
@@ -55,6 +66,12 @@ Polymer({
         border-style: solid;
         border-width: 1px;
         min-width: unset;
+      }
+      paper-button:focus,
+      paper-button:hover {
+        background-color: var(--simple-colors-light-green-background1);
+        border-color: var(--simple-colors-light-green-background1);
+        outline: 2px solid var(--simple-colors-light-green-background1);
       }
       .buttons paper-button {
         color: black;
@@ -88,6 +105,7 @@ Polymer({
           <paper-button id="close" raised="">Close dialog</paper-button>
         </div>
       </div>
+      <paper-icon-button id="closedialog" on-tap="close" icon="icons:cancel" title="Close dialog"></paper-icon-button>
     </app-drawer>
 `,
 
@@ -102,7 +120,7 @@ Polymer({
     "elementexport.tap": "htmlToHaxElements"
   },
 
-  behaviors: [mtz.FileDownloadBehavior],
+  behaviors: [mtz.FileDownloadBehavior, simpleColorsBehaviors],
 
   properties: {
     /**
@@ -231,30 +249,24 @@ Polymer({
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
           <title>hax-body demo</title>
-        <script src="${url}/webcomponentsjs/webcomponents-lite.js">`;
-      content += "</";
-      content += "script>";
-      content += `
-        <style>
-        body {
-          padding: 32px;
-        }
-        </style>
-        <script>
+          <script src="${url}/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+          <style>
+          body {
+            padding: 32px;
+          }
+          </style>
       `;
-      content += "</";
-      content += "script>";
       var ignoreList = ["iframe", "a", "img", "hr", "p"];
       for (var index in elementList) {
         if (ignoreList.indexOf(index) === -1) {
           content +=
-            '<link rel="import" href="' +
+            '<script type="module" src="' +
             url +
             "/" +
             index +
             "/" +
             index +
-            '.html" />' +
+            '.js" />' +
             "\n";
         }
       }

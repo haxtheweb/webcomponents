@@ -6,7 +6,6 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "./hax-store.js";
 import "./hax-toolbar-item.js";
 import "./hax-toolbar-menu.js";
 import "./hax-context-item.js";
@@ -18,40 +17,29 @@ Polymer({
         display: flex;
         font-family: "Roboto", sans-serif;
         justify-content: flex-start;
-        opacity: .9;
+        opacity: .4;
         visibility: visible;
         transition: .6s all ease;
         box-sizing: border-box;
-        height: 40px;
+        height: 32px;
         pointer-events: none;
       }
       :host ::slotted(*) {
         font-family: "Roboto", sans-serif;
         pointer-events: all;
       }
-      :host:hover {
+      :host:hover,
+      :host[selected] {
         opacity: 1;
       }
-      .hax-arrowclip {
-        position: absolute;
-        bottom: -10px;
-        left: 48px;
-        clip: rect(10px 20px 20px 0);
-      }
-      .hax-arrowclip .hax-arrow {
-        display: block;
-        width: 20px;
-        height: 20px;
-        background-color: #2e2e2e;
-        -webkit-transform: rotate(45deg) scale(.5);
-        transform: rotate(45deg) scale(.5);
-      }
-      :host[inline] .hax-arrowclip {
-        left: calc(50% - 10px);
-      }
       .close-cap {
-        margin: 10px;
+        margin: 8px;
         padding: 0;
+      }
+      paper-item {
+        height: 32px;
+        min-height: 32px;
+        padding: 0 8px;
       }
       paper-item:hover {
         background-color: #d3d3d3;
@@ -60,19 +48,18 @@ Polymer({
       paper-slider {
         background-color: #3e3e3e;
         color: #000000;
-        height: 40px;
+        height: 32px;
         min-width: 100px;
         --paper-slider-font-color: #000000;
         --paper-slider-active-color: var(--simple-colors-light-green-background1);
         --paper-slider-knob-color: var(--simple-colors-light-green-background1);
         --paper-slider-pin-color: var(--simple-colors-light-green-background1);
       }
-      .duplicate-button {
-        border-bottom: 1px solid #d3d3d3;
+      .convert-button {
+        border-top: 1px solid #d3d3d3;
       }
     </style>
-    <hax-context-item hidden\$="[[inline]]" mini="" icon="close" label="Close menu" event-name="close-menu" class="close-cap" direction="left"></hax-context-item>
-    <hax-context-item hidden\$="[[!inline]]" mini="" icon="close" label="Close" event-name="close-inline-context" class="close-cap" direction="left"></hax-context-item>
+    <hax-context-item hidden\$="[[inline]]" mini="" light="" icon="close" label="Close" event-name="close-menu" class="close-cap" direction="left"></hax-context-item>
     <hax-context-item-menu hidden\$="[[!haxProperties.canPosition]]" selected-value="{{justifyValue}}" id="justify" icon="[[justifyIcon]]" label="Alignment">
       <paper-item value="hax-align-left">
         <iron-icon icon="editor:format-align-left"></iron-icon>
@@ -89,14 +76,13 @@ Polymer({
       Resize
     </paper-tooltip>
     <slot name="primary"></slot>
-    <hax-context-item hidden\$="[[inline]]" icon="delete" icon-class="red-text text-darken-1" label="Delete" event-name="grid-plate-delete"></hax-context-item>
-    <hax-context-item-menu hidden\$="[[hideMore]]" icon="more-vert" label="More" id="moremenu" event-name="grid-plate-op" reset-on-select="">
+    <hax-context-item hidden\$="[[inline]]" icon="delete" icon-class="red-text text-darken-1" label="Remove" event-name="grid-plate-delete"></hax-context-item>
+    <hax-context-item-menu corner="right" hidden\$="[[hideMore]]" icon="more-vert" label="More" id="moremenu" event-name="grid-plate-op" reset-on-select="">
       <paper-item value="" hidden=""></paper-item>
-      <paper-item value="grid-plate-convert" hidden\$="[[inline]]"><iron-icon icon="image:transform" class="orange-text"></iron-icon>Convert gizmo</paper-item>
-      <paper-item value="grid-plate-duplicate" class="duplicate-button" hidden\$="[[inline]]"><iron-icon icon="icons:content-copy" class="green-text"></iron-icon>Duplicate</paper-item>
       <slot name="more"></slot>
+      <hax-context-item menu="" slot="more" icon="icons:content-copy" icon-class="green-text" event-name="grid-plate-duplicate">Duplicate</hax-context-item>
+      <hax-context-item hidden\$="[[hideTransform]]" menu="" slot="more" icon="image:transform" class="convert-button" icon-class="orange-text" event-name="grid-plate-convert">Transform to..</hax-context-item>
     </hax-context-item-menu>
-    <div class="hax-arrowclip"><span class="hax-arrow"></span></div>
 `,
 
   is: "hax-toolbar",
@@ -105,7 +91,24 @@ Polymer({
     "hax-context-item-selected": "_haxContextOperation"
   },
 
+  behaviors: [simpleColorsBehaviors],
+
   properties: {
+    /**
+     * Hide the transform button as its not supported
+     */
+    hideTransform: {
+      type: Boolean,
+      value: false
+    },
+    /**
+     * See what's selected
+     */
+    selected: {
+      type: Boolean,
+      value: false,
+      reflectToAttritue: true
+    },
     /**
      * Selected value to match ce direction currently.
      */

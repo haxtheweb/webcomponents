@@ -24,6 +24,7 @@ An element that can generate a form
 */
 Polymer({
   _template: html`
+  <custom-style>
     <style is="custom-style" include="simple-colors">
       :host {
         display: block;
@@ -178,6 +179,7 @@ Polymer({
         background-color: var(--simple-colors-light-green-background1);
       }
     </style>
+  </custom-style>
     <vaadin-split-layout class="panel-wrapper">
       <!-- critique panel -->
       <div class="vaadin-split-layout-panel">
@@ -202,6 +204,8 @@ Polymer({
 `,
 
   is: "hax-preview",
+
+  behaviors: [simpleColorsBehaviors],
 
   observers: ["_valueChanged(value.*, formKey)"],
 
