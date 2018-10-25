@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
@@ -10,6 +10,7 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-image/iron-image.js";
+import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/multiple-choice/multiple-choice.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
@@ -289,17 +290,17 @@ Polymer({
     // logically
     if (
       typeof this.__activeTap !== typeof undefined &&
-      Polymer.dom(this.__activeTap).parentNode.nextElementSibling
-        .firstElementChild != null
+      dom(this.__activeTap).parentNode.nextElementSibling.firstElementChild !=
+        null
     ) {
-      Polymer.dom(
+      dom(
         this.__activeTap
       ).parentNode.nextElementSibling.firstElementChild.firstElementChild.focus();
       delete this.__activeTap;
     } else if (
       typeof this.__activeTap !== typeof undefined &&
-      Polymer.dom(this.__activeTap).parentNode.nextElementSibling
-        .firstElementChild == null
+      dom(this.__activeTap).parentNode.nextElementSibling.firstElementChild ==
+        null
     ) {
       this.__activeTap.focus();
       delete this.__activeTap;
@@ -378,14 +379,14 @@ Polymer({
     ).toFixed(1);
     this.set("points.total.percent", total);
     // append child via polymer so we can style it correctly in shadow dom
-    Polymer.dom(this.__activeTap).appendChild(icon);
+    dom(this.__activeTap).appendChild(icon);
   },
 
   /**
    * Notice that something was tapped, resolve what it was.
    */
   _gameBoardTap: function(e) {
-    var normalizedEvent = Polymer.dom(e);
+    var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     if (local.getAttribute("data-question-data") != null) {
       this.__submitDisabled = true;

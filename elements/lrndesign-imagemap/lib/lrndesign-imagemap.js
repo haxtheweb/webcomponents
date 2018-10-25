@@ -1,8 +1,9 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/paper-dialog/paper-dialog.js";
-import "relative-heading/relative-heading.js";
+import "@lrnwebcomponents/relative-heading/relative-heading.js";
 import "./lrndesign-imagemap-hotspot.js";
 /**
  * `lrndesign-imagemap`
@@ -180,7 +181,7 @@ Polymer({
     temp.innerHTML = e.detail.response;
     let svg = temp.querySelector("svg"),
       svgid = getID(svg, "svg-" + Date.now()),
-      hdata = Polymer.dom(root).querySelectorAll("lrndesign-imagemap-hotspot");
+      hdata = dom(root).querySelectorAll("lrndesign-imagemap-hotspot");
     setAriaLabelledBy(root, svg, svgid);
     this.$.svg.appendChild(svg);
 
@@ -232,7 +233,7 @@ Polymer({
    */
   openHotspot: function(hotspot, details) {
     let root = this,
-      node = Polymer.dom(root).querySelector(
+      node = dom(root).querySelector(
         'lrndesign-imagemap-hotspot[hotspot-id="' +
           hotspot.getAttribute("id") +
           '"]'

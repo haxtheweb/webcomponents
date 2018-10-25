@@ -159,9 +159,9 @@ Polymer({
    */
   _haxPropertiesChanged: function(newValue, oldValue) {
     // value doesn't matter, just look at what's active
-    if (typeof Polymer.HaxStore.instance.activeNode !== typeof undefined) {
-      if (Polymer.HaxStore.instance.activeNode.style.width != "") {
-        this.size = Polymer.HaxStore.instance.activeNode.style.width.replace(
+    if (typeof window.HaxStore.instance.activeNode !== typeof undefined) {
+      if (window.HaxStore.instance.activeNode.style.width != "") {
+        this.size = window.HaxStore.instance.activeNode.style.width.replace(
           "%",
           ""
         );
@@ -169,12 +169,12 @@ Polymer({
         this.size = 100;
       }
 
-      if (Polymer.HaxStore.instance.activeNode.style.float == "right") {
+      if (window.HaxStore.instance.activeNode.style.float == "right") {
         this.justifyValue = "hax-align-right";
         this.justifyIcon = "editor:format-align-right";
       } else if (
-        Polymer.HaxStore.instance.activeNode.style.margin == "0px auto" &&
-        Polymer.HaxStore.instance.activeNode.style.display == "block"
+        window.HaxStore.instance.activeNode.style.margin == "0px auto" &&
+        window.HaxStore.instance.activeNode.style.display == "block"
       ) {
         this.justifyValue = "hax-align-center";
         this.justifyIcon = "editor:format-align-center";

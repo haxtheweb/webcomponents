@@ -42,6 +42,7 @@
     "@lrnwebcomponents/responsive-grid": "^0.0.28",
     "@lrnwebcomponents/schema-behaviors": "^0.0.28",
     "@lrnwebcomponents/simple-colors": "^0.0.28",
+    "@polymer/app-localize-behavior": "^3.0.1",
     "@polymer/iron-a11y-keys": "^3.0.0",
     "@polymer/iron-dropdown": "^3.0.0",
     "@polymer/iron-flex-layout": "^3.0.0",

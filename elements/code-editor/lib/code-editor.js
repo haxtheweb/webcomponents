@@ -1,9 +1,10 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "juicy-ace-editor/juicy-ace-editor.js";
-import "./code-pen-button.js";
+import "./lib/code-pen-button.js";
 /**
 `code-editor`
 A LRN element
@@ -184,7 +185,7 @@ Polymer({
    */
   ready: function() {
     // mutation observer that ensures state of hax applied correctly
-    this._observer = Polymer.dom(this).observeNodes(function(info) {
+    this._observer = dom(this).observeNodes(function(info) {
       // if we've got new nodes, we have to react to that
       if (info.addedNodes.length > 0) {
         info.addedNodes.map(node => {

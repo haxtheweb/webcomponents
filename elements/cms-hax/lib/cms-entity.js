@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/paper-spinner/paper-spinner.js";
@@ -158,13 +159,13 @@ Polymer({
           newValue.editText;
       }
       // wipe our own slot here
-      this.wipeSlot(Polymer.dom(this));
+      this.wipeSlot(dom(this));
       // now inject the content we got
       this.async(() => {
         let frag = document.createElement("span");
         frag.innerHTML = newValue.content;
         let newNode = frag.cloneNode(true);
-        Polymer.dom(this).appendChild(newNode);
+        dom(this).appendChild(newNode);
         setTimeout(() => {
           this.loading = false;
         }, 600);
@@ -213,7 +214,7 @@ Polymer({
       this.entity !== null &&
       this.entity !== ""
     ) {
-      let slot = Polymer.dom(this).getEffectiveChildNodes();
+      let slot = dom(this).getEffectiveChildNodes();
       // only kick off request if there's nothing in it
       // if it has something in it that means we did some
       // remote rendering ahead of time

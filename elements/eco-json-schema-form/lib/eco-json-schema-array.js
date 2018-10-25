@@ -245,15 +245,15 @@ Polymer({
           buttonEl.classList.add("array-remove-element");
           componentEl.classList.add("flex", "horizontal", "layout");
 
-          Polymer.dom(containerEl).appendChild(componentEl);
-          Polymer.dom(containerEl).appendChild(buttonEl);
+          dom(containerEl).appendChild(componentEl);
+          dom(containerEl).appendChild(buttonEl);
 
           var beforeEl = ctx.$.form.children[i];
 
           if (beforeEl) {
-            Polymer.dom(ctx.$.form).insertBefore(containerEl, beforeEl);
+            dom(ctx.$.form).insertBefore(containerEl, beforeEl);
           } else {
-            Polymer.dom(ctx.$.form).appendChild(containerEl);
+            dom(ctx.$.form).appendChild(containerEl);
           }
 
           ctx.listen(
@@ -307,7 +307,7 @@ Polymer({
     }
   },
   _removeArrayEl: function(el) {
-    var polyEl = Polymer.dom(el);
+    var polyEl = dom(el);
     if (typeof polyEl.childNodes[0] !== typeof undefined) {
       this.unlisten(
         polyEl.childNodes[0],
@@ -321,10 +321,10 @@ Polymer({
       }
     }
     el.schemaArrayItem = null;
-    Polymer.dom(this.$.form).removeChild(el);
+    dom(this.$.form).removeChild(el);
   },
   _clearForm: function() {
-    var formEl = Polymer.dom(this.$.form);
+    var formEl = dom(this.$.form);
     while (formEl.firstChild) {
       this._removeArrayEl(formEl.firstChild);
     }
@@ -336,11 +336,11 @@ Polymer({
   },
   _errorChanged: function() {
     var ctx = this;
-    Polymer.dom(this.$.form).childNodes.forEach(function(rowEl, idx) {
+    dom(this.$.form).childNodes.forEach(function(rowEl, idx) {
       if (ctx.error && ctx.error[idx]) {
-        Polymer.dom(rowEl).childNodes[0].error = ctx.error[idx];
+        dom(rowEl).childNodes[0].error = ctx.error[idx];
       } else {
-        Polymer.dom(rowEl).childNodes[0].error = null;
+        dom(rowEl).childNodes[0].error = null;
       }
     });
   },
@@ -398,15 +398,15 @@ Polymer({
     buttonEl.classList.add("array-remove-element");
     componentEl.classList.add("flex", "horizontal", "layout");
 
-    Polymer.dom(containerEl).appendChild(componentEl);
-    Polymer.dom(containerEl).appendChild(buttonEl);
+    dom(containerEl).appendChild(componentEl);
+    dom(containerEl).appendChild(buttonEl);
 
     var beforeEl = ctx.$.form.children[i];
 
     if (beforeEl) {
-      Polymer.dom(ctx.$.form).insertBefore(containerEl, beforeEl);
+      dom(ctx.$.form).insertBefore(containerEl, beforeEl);
     } else {
-      Polymer.dom(ctx.$.form).appendChild(containerEl);
+      dom(ctx.$.form).appendChild(containerEl);
     }
     ctx.listen(
       componentEl,
@@ -449,7 +449,7 @@ Polymer({
     this.push("_schemaArrayItems", item);
   },
   _onRemoveItem: function(e) {
-    var item = Polymer.dom(e).localTarget.previousSibling.schemaArrayItem;
+    var item = dom(e).localTarget.previousSibling.schemaArrayItem;
     var index = this._schemaArrayItems.indexOf(item);
     this.splice("_schemaArrayItems", index, 1);
   },

@@ -1,10 +1,8 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 import "@polymer/paper-styles/default-theme.js";
 import "@polymer/paper-styles/typography.js";
-import { Polymer } from "@polymer/polymer/lib/legacy/polymer-fn.js";
-import { dashToCamelCase } from "@polymer/polymer/lib/utils/case-map.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 /**
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.

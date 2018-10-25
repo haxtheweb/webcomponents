@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/paper-input/paper-textarea.js";
 import "@polymer/paper-input/paper-input.js";
@@ -107,7 +108,7 @@ Polymer({
       typeof newValue.settings !== typeof undefined
     ) {
       // clear current slot for the tag
-      let slot = Polymer.dom(this);
+      let slot = dom(this);
       while (slot.firstChild !== null) {
         slot.removeChild(slot.firstChild);
       }
@@ -128,11 +129,11 @@ Polymer({
       this.__hasParentSettingsForm = false;
       // test for parent being different from child
       if (
-        Polymer.HaxStore.instance.activeContainerNode !==
-        Polymer.HaxStore.instance.activeNode
+        window.HaxStore.instance.activeContainerNode !==
+        window.HaxStore.instance.activeNode
       ) {
         this.__hasParentSettingsForm = true;
-        switch (Polymer.HaxStore.instance.activeContainerNode.tagName) {
+        switch (window.HaxStore.instance.activeContainerNode.tagName) {
           case "P":
           case "UL":
           case "OL":
@@ -143,7 +144,7 @@ Polymer({
             this.__parentName = "Layout settings";
             break;
           default:
-            this.__parentName = Polymer.HaxStore.instance.activeContainerNode.tagName
+            this.__parentName = window.HaxStore.instance.activeContainerNode.tagName
               .replace("-", " ")
               .toLowerCase();
             +" settings";
@@ -152,7 +153,7 @@ Polymer({
       }
       // generate a human name for this
       if (typeof newValue.gizmo.title === typeof undefined) {
-        this.humanName = Polymer.HaxStore.instance.activeNode.tagName
+        this.humanName = window.HaxStore.instance.activeNode.tagName
           .replace("-", " ")
           .toLowerCase();
       } else {

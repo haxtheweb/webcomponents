@@ -1,14 +1,15 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-input/paper-textarea.js";
-import "@lrnwebcomponents/code-editor/code-editor.js";
 import "@polymer/iron-icons/iron-icons.js";
+import "@vaadin/vaadin-split-layout/vaadin-split-layout.js";
+import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
+import "@lrnwebcomponents/code-editor/code-editor.js";
 import "@lrnwebcomponents/app-datepicker/app-datepicker.js";
 import "@lrnwebcomponents/paper-icon-picker/paper-icon-picker.js";
 import "@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js";
-import "@vaadin/vaadin-split-layout/vaadin-split-layout.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
 `hax-preview`
@@ -300,14 +301,14 @@ Polymer({
    * Trigger cancel on manager as it is the parent here.
    */
   cancel: function(e) {
-    Polymer.HaxStore.instance.haxManager.cancel(e);
+    window.HaxStore.instance.haxManager.cancel(e);
   },
 
   /**
    * Trigger insert on manager as it is the parent here.
    */
   insert: function(e) {
-    Polymer.HaxStore.instance.haxManager.insertHaxElement(e);
+    window.HaxStore.instance.haxManager.insertHaxElement(e);
   },
 
   /**
@@ -328,11 +329,11 @@ Polymer({
     if (typeof newValue !== typeof undefined) {
       if (
         typeof this.previewNode.tagName !== typeof undefined &&
-        Polymer.HaxStore.instance.elementList[
+        window.HaxStore.instance.elementList[
           this.previewNode.tagName.toLowerCase()
         ]
       ) {
-        return Polymer.HaxStore.instance.elementList[
+        return window.HaxStore.instance.elementList[
           this.previewNode.tagName.toLowerCase()
         ].canEditSource;
       }
@@ -363,23 +364,23 @@ Polymer({
       if (
         typeof this.previewNode !== typeof undefined &&
         typeof this.previewNode.tagName !== typeof undefined &&
-        typeof Polymer.HaxStore.instance.elementList[
+        typeof window.HaxStore.instance.elementList[
           this.previewNode.tagName.toLowerCase()
         ] !== typeof undefined
       ) {
         let element = this.element;
         let props =
-          Polymer.HaxStore.instance.elementList[
+          window.HaxStore.instance.elementList[
             this.previewNode.tagName.toLowerCase()
           ];
         if (typeof this.previewNode.getHaxJSONSchemaType === "function") {
-          schema = Polymer.HaxStore.instance.getHaxJSONSchema(
+          schema = window.HaxStore.instance.getHaxJSONSchema(
             newValue,
             props,
             this.previewNode
           );
         } else {
-          schema = Polymer.HaxStore.instance.getHaxJSONSchema(newValue, props);
+          schema = window.HaxStore.instance.getHaxJSONSchema(newValue, props);
         }
         for (var property in element.properties) {
           if (element.properties.hasOwnProperty(property)) {
@@ -415,29 +416,27 @@ Polymer({
             typeof props.settings[this.formKey][prop].slot !== typeof undefined
           ) {
             // walk through the slots looking for the value of it
-            for (var i in Polymer.dom(previewNode).getEffectiveChildNodes()) {
+            for (var i in dom(previewNode).getEffectiveChildNodes()) {
               // test for element nodes to be safe
               if (
-                typeof Polymer.dom(previewNode).getEffectiveChildNodes()[i] !==
+                typeof dom(previewNode).getEffectiveChildNodes()[i] !==
                   typeof undefined &&
-                Polymer.dom(previewNode).getEffectiveChildNodes()[i]
-                  .nodeType === 1 &&
-                Polymer.dom(previewNode).getEffectiveChildNodes()[i].slot ===
+                dom(previewNode).getEffectiveChildNodes()[i].nodeType === 1 &&
+                dom(previewNode).getEffectiveChildNodes()[i].slot ===
                   props.settings[this.formKey][prop].slot
               ) {
                 if (
-                  typeof Polymer.dom(previewNode).getEffectiveChildNodes()[i]
+                  typeof dom(previewNode).getEffectiveChildNodes()[i]
                     .innerHTML !== typeof undefined
                 ) {
                   schema.properties[
                     props.settings[this.formKey][prop].slot
-                  ].value = Polymer.dom(previewNode).getEffectiveChildNodes()[
+                  ].value = dom(previewNode).getEffectiveChildNodes()[
                     i
                   ].innerHTML;
                   this.set(
                     "value." + props.settings[this.formKey][prop].slot,
-                    Polymer.dom(previewNode).getEffectiveChildNodes()[i]
-                      .innerHTML
+                    dom(previewNode).getEffectiveChildNodes()[i].innerHTML
                   );
                 }
               }
@@ -459,22 +458,22 @@ Polymer({
       // see if we can get schema off of this.
       if (
         typeof newValue.tagName !== typeof undefined &&
-        typeof Polymer.HaxStore.instance.elementList[
+        typeof window.HaxStore.instance.elementList[
           newValue.tagName.toLowerCase()
         ] !== typeof undefined
       ) {
         let element = this.element;
         let props =
-          Polymer.HaxStore.instance.elementList[newValue.tagName.toLowerCase()];
+          window.HaxStore.instance.elementList[newValue.tagName.toLowerCase()];
         let schema = {};
         if (typeof newValue.getHaxJSONSchemaType === "function") {
-          schema = Polymer.HaxStore.instance.getHaxJSONSchema(
+          schema = window.HaxStore.instance.getHaxJSONSchema(
             this.formKey,
             props,
             newValue
           );
         } else {
-          schema = Polymer.HaxStore.instance.getHaxJSONSchema(
+          schema = window.HaxStore.instance.getHaxJSONSchema(
             this.formKey,
             props
           );
@@ -539,28 +538,25 @@ Polymer({
             typeof props.settings[this.formKey][prop].slot !== typeof undefined
           ) {
             // walk through the slots looking for the value of it
-            for (var i in Polymer.dom(newValue).getEffectiveChildNodes()) {
+            for (var i in dom(newValue).getEffectiveChildNodes()) {
               // test for element nodes to be safe
               if (
-                typeof Polymer.dom(newValue).getEffectiveChildNodes()[i] !==
+                typeof dom(newValue).getEffectiveChildNodes()[i] !==
                   typeof undefined &&
-                Polymer.dom(newValue).getEffectiveChildNodes()[i].nodeType ===
-                  1 &&
-                Polymer.dom(newValue).getEffectiveChildNodes()[i].slot ===
+                dom(newValue).getEffectiveChildNodes()[i].nodeType === 1 &&
+                dom(newValue).getEffectiveChildNodes()[i].slot ===
                   props.settings[this.formKey][prop].slot
               ) {
                 if (
-                  typeof Polymer.dom(newValue).getEffectiveChildNodes()[i]
-                    .innerHTML !== typeof undefined
+                  typeof dom(newValue).getEffectiveChildNodes()[i].innerHTML !==
+                  typeof undefined
                 ) {
                   schema.properties[
                     props.settings[this.formKey][prop].slot
-                  ].value = Polymer.dom(newValue).getEffectiveChildNodes()[
-                    i
-                  ].innerHTML;
+                  ].value = dom(newValue).getEffectiveChildNodes()[i].innerHTML;
                   this.set(
                     "value." + props.settings[this.formKey][prop].slot,
-                    Polymer.dom(newValue).getEffectiveChildNodes()[i].innerHTML
+                    dom(newValue).getEffectiveChildNodes()[i].innerHTML
                   );
                 }
               }
@@ -583,7 +579,7 @@ Polymer({
     ) {
       // wipe the preview area and assocaited node
       let preview = this.$.preview;
-      Polymer.HaxStore.wipeSlot(preview, "*");
+      window.HaxStore.wipeSlot(preview, "*");
       this.set("previewNode", {});
       this.modeTab = "configure";
       // if we have something, generate the new element inside it
@@ -613,12 +609,12 @@ Polymer({
     // sanity check and then get props and mesh with form value response
     if (
       typeof node.tagName !== typeof undefined &&
-      typeof Polymer.HaxStore.instance.elementList[
+      typeof window.HaxStore.instance.elementList[
         node.tagName.toLowerCase()
       ] !== typeof undefined
     ) {
       let props =
-        Polymer.HaxStore.instance.elementList[node.tagName.toLowerCase()];
+        window.HaxStore.instance.elementList[node.tagName.toLowerCase()];
       // loop through the properties for the form
       for (var value in props.settings[this.formKey]) {
         // support property binding
@@ -648,7 +644,7 @@ Polymer({
             ) {
               node.set(
                 props.settings[this.formKey][value].property,
-                Polymer.HaxStore.toArray(
+                window.HaxStore.toArray(
                   this.value[props.settings[this.formKey][value].property]
                 )
               );
@@ -682,7 +678,7 @@ Polymer({
           typeof this.value[props.settings[this.formKey][value].attribute] !==
             typeof undefined
         ) {
-          let attributeName = Polymer.HaxStore.camelToDash(
+          let attributeName = window.HaxStore.camelToDash(
             props.settings[this.formKey][value].attribute
           );
           // special supporting for boolean because html is weird :p
@@ -749,12 +745,12 @@ Polymer({
             props.settings[this.formKey][value].slot
           ];
           // wipe just the slot in question
-          Polymer.HaxStore.wipeSlot(
+          window.HaxStore.wipeSlot(
             node,
             props.settings[this.formKey][value].slot
           );
           // inject the slotted content
-          Polymer.dom(node).appendChild(tmpel);
+          dom(node).appendChild(tmpel);
           this.set(
             "element.content",
             "<template>" + tmpel.innerHTML + "</template>"

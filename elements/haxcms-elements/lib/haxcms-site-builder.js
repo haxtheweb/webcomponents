@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
 `haxcms-site-builder`
@@ -230,7 +231,7 @@ Polymer({
         newValue = this.encapScript(newValue);
         this.async(() => {
           let frag = document.createRange().createContextualFragment(newValue);
-          Polymer.dom(this.themeElement).appendChild(frag);
+          dom(this.themeElement).appendChild(frag);
         });
       }
       this.fire("json-outline-schema-active-body-changed", newValue);
@@ -358,21 +359,21 @@ Polymer({
       // weird but definition already here so we should be able
       // to just use this without an import, it's possible..
       if (typeof this.__imported[themeName] !== typeof undefined) {
-        Polymer.dom(this).appendChild(this.themeElement);
+        dom(this).appendChild(this.themeElement);
         this.themeLoaded = true;
       } else {
         // import the reference to the item dynamically, if we can
         try {
           this.importHref(this.resolveUrl(this.themeData[themeName]), e => {
             // add it into ourselves so it unpacks and we kick this off!
-            Polymer.dom(this).appendChild(this.themeElement);
+            dom(this).appendChild(this.themeElement);
             this.__imported[themeName] = themeName;
             this.themeLoaded = true;
           });
         } catch (err) {
           // error in the event this is a double registration
           // also strange to be able to reach this but technically possible
-          Polymer.dom(this).appendChild(this.themeElement);
+          dom(this).appendChild(this.themeElement);
           this.themeLoaded = true;
         }
       }
@@ -387,17 +388,17 @@ Polymer({
   wipeSlot: function(element, slot = "*") {
     // 100% clean slate
     if (slot === "*") {
-      while (Polymer.dom(element).firstChild !== null) {
-        Polymer.dom(element).removeChild(Polymer.dom(element).firstChild);
+      while (dom(element).firstChild !== null) {
+        dom(element).removeChild(dom(element).firstChild);
       }
     } else {
-      for (var i in Polymer.dom(element).childNodes) {
+      for (var i in dom(element).childNodes) {
         // test for element nodes to be safe
         if (
-          typeof Polymer.dom(element).childNodes[i] !== typeof undefined &&
-          Polymer.dom(element).childNodes[i].slot === slot
+          typeof dom(element).childNodes[i] !== typeof undefined &&
+          dom(element).childNodes[i].slot === slot
         ) {
-          Polymer.dom(element).removeChild(Polymer.dom(element).childNodes[i]);
+          dom(element).removeChild(dom(element).childNodes[i]);
         }
       }
     }

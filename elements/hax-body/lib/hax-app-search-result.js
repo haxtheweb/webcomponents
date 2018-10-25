@@ -120,18 +120,18 @@ Polymer({
       (gizmoType === null || gizmoType === "") &&
       typeof map.source !== typeof undefined
     ) {
-      gizmoType = Polymer.HaxStore.guessGizmoType(map.source);
+      gizmoType = window.HaxStore.guessGizmoType(map.source);
     }
-    let haxElements = Polymer.HaxStore.guessGizmo(gizmoType, map);
+    let haxElements = window.HaxStore.guessGizmo(gizmoType, map);
     // see if we got anything
     if (haxElements.length > 0) {
       if (haxElements.length === 1) {
         if (typeof haxElements[0].tag !== typeof undefined) {
-          Polymer.HaxStore.write("activeHaxElement", haxElements[0], this);
+          window.HaxStore.write("activeHaxElement", haxElements[0], this);
         }
       } else {
         // hand off to hax-app-picker to deal with the rest of this
-        Polymer.HaxStore.instance.haxAppPicker.presentOptions(
+        window.HaxStore.instance.haxAppPicker.presentOptions(
           haxElements,
           gizmoType,
           "How would you like to display this " + gizmoType + "?",
@@ -139,9 +139,7 @@ Polymer({
         );
       }
     } else {
-      Polymer.HaxStore.toast(
-        "Sorry, I don't know how to handle that link yet."
-      );
+      window.HaxStore.toast("Sorry, I don't know how to handle that link yet.");
     }
   }
 });

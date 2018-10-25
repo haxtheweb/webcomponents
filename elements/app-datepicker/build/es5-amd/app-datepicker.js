@@ -523,7 +523,7 @@ define([
     },
     _updateListScroller: function _updateListScroller(_list) {
       var _Mathfloor = Math.floor,
-        _sl = Polymer.dom(_list.root).querySelector("#items"),
+        _sl = dom(_list.root).querySelector("#items"),
         _slh = _sl.getBoundingClientRect().height || 12863.994140625,
         _sli =
           _Mathfloor(
@@ -865,9 +865,7 @@ define([
     _updateThemeColor: function _updateThemeColor(_theme) {
       var _themes = ["dark-theme", "light-theme", "goog-theme"],
         _themeIdx = _themes.indexOf(_theme),
-        _distributedButtons = Polymer.dom(this).querySelectorAll(
-          "paper-button"
-        ),
+        _distributedButtons = dom(this).querySelectorAll("paper-button"),
         _distributedButtonsLen = _distributedButtons.length,
         _colorCode = ["#bcbcbc", "#737373", "#616161"][_themeIdx];
       if (0 <= _themeIdx) {

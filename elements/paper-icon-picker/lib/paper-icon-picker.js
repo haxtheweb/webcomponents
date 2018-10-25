@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-item/paper-item.js";
@@ -402,7 +403,7 @@ Polymer({
   },
 
   _onIconTap: function(e) {
-    var normalizedEvent = Polymer.dom(e);
+    var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     this.icon = local.value;
     this.fire("icon-picker-selected", { icon: this.icon });

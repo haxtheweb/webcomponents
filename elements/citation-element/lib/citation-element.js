@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
@@ -123,43 +124,35 @@ Polymer({
    */
   _scopeChanged: function(newValue, oldValue) {
     // make sure we actually have a sibling first
-    if (
-      newValue === "sibling" &&
-      Polymer.dom(this).previousElementSibling !== null
-    ) {
+    if (newValue === "sibling" && dom(this).previousElementSibling !== null) {
       // find the sibling element in the DOM and associate to it's resource ID
       // also generate a resource ID if it doesn't have one
-      if (Polymer.dom(this).previousElementSibling.getAttribute("resource")) {
-        this.relatedResource = Polymer.dom(
-          this
-        ).previousElementSibling.getAttribute("resource");
+      if (dom(this).previousElementSibling.getAttribute("resource")) {
+        this.relatedResource = dom(this).previousElementSibling.getAttribute(
+          "resource"
+        );
       } else {
         let uuid = this.generateResourceID();
         this.relatedResource = uuid;
-        Polymer.dom(this).previousElementSibling.setAttribute("resource", uuid);
+        dom(this).previousElementSibling.setAttribute("resource", uuid);
       }
       // set prefix on the main element itself
-      Polymer.dom(this).previousElementSibling.setAttribute(
+      dom(this).previousElementSibling.setAttribute(
         "prefix",
         this.getAttribute("prefix")
       );
     } else if (newValue === "parent") {
       // find the parent and associate to it's resource ID, if it doesn't have one
       // then let's make one dynamically
-      if (Polymer.dom(this).parentNode.getAttribute("resource")) {
-        this.relatedResource = Polymer.dom(this).parentNode.getAttribute(
-          "resource"
-        );
+      if (dom(this).parentNode.getAttribute("resource")) {
+        this.relatedResource = dom(this).parentNode.getAttribute("resource");
       } else {
         let uuid = this.generateResourceID();
         this.relatedResource = uuid;
-        Polymer.dom(this).parentNode.setAttribute("resource", uuid);
+        dom(this).parentNode.setAttribute("resource", uuid);
       }
       // set prefix on the main element itself
-      Polymer.dom(this).parentNode.setAttribute(
-        "prefix",
-        this.getAttribute("prefix")
-      );
+      dom(this).parentNode.setAttribute("prefix", this.getAttribute("prefix"));
     }
   },
 

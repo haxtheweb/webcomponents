@@ -62,7 +62,7 @@ Polymer({
    */
   save: function() {
     // convert the body area to content
-    let content = Polymer.HaxStore.instance.activeHaxBody.haxToContent();
+    let content = window.HaxStore.instance.activeHaxBody.haxToContent();
     // fire event so apps can react correctly
     this.fire("app-editor-hax-save", content);
   },
@@ -72,7 +72,7 @@ Polymer({
    */
   import: function(html) {
     // import the HTML blob to get going
-    Polymer.HaxStore.instance.activeHaxBody.importContent(html);
+    window.HaxStore.instance.activeHaxBody.importContent(html);
     // fire event just letting things know this happened
     this.fire("app-editor-hax-import", true);
   }

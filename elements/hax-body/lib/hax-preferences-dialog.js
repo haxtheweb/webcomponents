@@ -192,7 +192,7 @@ Polymer({
    * Notice preferences have changed.
    */
   _preferencesChanged: function(prop) {
-    Polymer.HaxStore.write("globalPreferences", this.preferences, this);
+    window.HaxStore.write("globalPreferences", this.preferences, this);
   },
 
   /**
@@ -202,7 +202,7 @@ Polymer({
     if (this.$.dialog.opened) {
       this.close();
     } else {
-      Polymer.HaxStore.instance.closeAllDrawers(this);
+      window.HaxStore.instance.closeAllDrawers(this);
     }
   },
 

@@ -1,3 +1,5 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "./lib/app-datepicker-icons.js";
 import "./lib/app-datepicker-animations.js";
 var $_documentContainer = document.createElement("div");
@@ -1413,7 +1415,7 @@ Polymer({
     }
   },
   _updateListScroller: function(_list) {
-    var _sl = Polymer.dom(_list.root).querySelector("#items");
+    var _sl = dom(_list.root).querySelector("#items");
     var _slh = _sl.getBoundingClientRect().height || 12863.994140625;
     var _sli =
       Math.floor((_slh / (2100 - 1900 + 1)) * (this._activeYear - 1900 - 2)) +
@@ -1837,9 +1839,7 @@ Polymer({
   _updateThemeColor: function(_theme) {
     var _themes = ["dark-theme", "light-theme", "goog-theme"];
     var _themeIdx = _themes.indexOf(_theme);
-    var _distributedButtons = Polymer.dom(this).querySelectorAll(
-      "paper-button"
-    );
+    var _distributedButtons = dom(this).querySelectorAll("paper-button");
     var _distributedButtonsLen = _distributedButtons.length;
     var _colorCode = ["#bcbcbc", "#737373", "#616161"][_themeIdx];
 

@@ -52,7 +52,7 @@ suite('<paper-fab-morph>', function() {
 
     setup(function() {
       var morph = fixture('DropdownWrapped');
-      trigger = Polymer.dom(morph).querySelector('.dropdown-trigger');
+      trigger = dom(morph).querySelector('.dropdown-trigger');
       dropdown = morph.querySelector('iron-dropdown');
     });
 
@@ -78,8 +78,8 @@ suite('<paper-fab-morph>', function() {
 
     setup(function() {
       var morph = fixture('OriginalOverlay');
-      trigger = Polymer.dom(morph).querySelector('.dropdown-trigger');
-      overlay = Polymer.dom(morph).querySelector('.dropdown-content');
+      trigger = dom(morph).querySelector('.dropdown-trigger');
+      overlay = dom(morph).querySelector('.dropdown-content');
     });
 
     test('overlay is initially closed', function() {

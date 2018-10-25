@@ -1,4 +1,3 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { IronA11yKeysBehavior } from "@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
 import { IronControlState } from "@polymer/iron-behaviors/iron-control-state.js";
 import { Element } from "@polymer/polymer/polymer-element.js";

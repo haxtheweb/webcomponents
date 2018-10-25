@@ -2,6 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 
 /**
  * Object to validate HAX
@@ -170,11 +171,11 @@ export class HAXWiring {
         } else if (
           tag !== "" &&
           typeof Polymer !== typeof undefined &&
-          typeof Polymer.HaxStore !== typeof undefined &&
-          typeof Polymer.HaxStore.instance !== typeof undefined &&
-          Polymer.HaxStore.instance != null &&
-          typeof Polymer.HaxStore.instance.elementList !== typeof undefined &&
-          typeof Polymer.HaxStore.instance.elementList[tag.toLowerCase()] ===
+          typeof window.HaxStore !== typeof undefined &&
+          typeof window.HaxStore.instance !== typeof undefined &&
+          window.HaxStore.instance != null &&
+          typeof window.HaxStore.instance.elementList !== typeof undefined &&
+          typeof window.HaxStore.instance.elementList[tag.toLowerCase()] ===
             typeof undefined
         ) {
           let evt = new CustomEvent("hax-register-properties", {
@@ -188,11 +189,11 @@ export class HAXWiring {
           context.dispatchEvent(evt);
         } else if (
           typeof Polymer !== typeof undefined &&
-          typeof Polymer.HaxStore !== typeof undefined &&
-          typeof Polymer.HaxStore.instance !== typeof undefined &&
-          Polymer.HaxStore.instance != null &&
-          typeof Polymer.HaxStore.instance.elementList !== typeof undefined &&
-          typeof Polymer.HaxStore.instance.elementList[
+          typeof window.HaxStore !== typeof undefined &&
+          typeof window.HaxStore.instance !== typeof undefined &&
+          window.HaxStore.instance != null &&
+          typeof window.HaxStore.instance.elementList !== typeof undefined &&
+          typeof window.HaxStore.instance.elementList[
             this.tagName.toLowerCase()
           ] === typeof undefined
         ) {
@@ -627,22 +628,18 @@ export class HAXWiring {
             };
             let slot = "";
             // test for slotted content values names is tricky
-            if (typeof Polymer !== typeof undefined) {
-              for (var i in Polymer.dom(target).childNodes) {
-                // this is crazy... you know that right
-                if (
-                  typeof Polymer.dom(target).childNodes[i] !== typeof undefined
+            for (var i in dom(target).childNodes) {
+              // this is crazy... you know that right
+              if (typeof dom(target).childNodes[i] !== typeof undefined) {
+                if (dom(target).childNodes[i].nodeType === 1) {
+                  slot += dom(target).childNodes[i].innerHTML;
+                } else if (
+                  dom(target).childNodes[i].nodeType !== 1 &&
+                  typeof dom(target).childNodes[i].textContent !==
+                    typeof undefined &&
+                  dom(target).childNodes[i].textContent !== ""
                 ) {
-                  if (Polymer.dom(target).childNodes[i].nodeType === 1) {
-                    slot += Polymer.dom(target).childNodes[i].innerHTML;
-                  } else if (
-                    Polymer.dom(target).childNodes[i].nodeType !== 1 &&
-                    typeof Polymer.dom(target).childNodes[i].textContent !==
-                      typeof undefined &&
-                    Polymer.dom(target).childNodes[i].textContent !== ""
-                  ) {
-                    slot += Polymer.dom(target).childNodes[i].textContent;
-                  }
+                  slot += dom(target).childNodes[i].textContent;
                 }
               }
             }

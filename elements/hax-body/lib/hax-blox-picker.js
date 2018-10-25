@@ -104,7 +104,7 @@ Polymer({
     if (this.$.dialog.opened) {
       this.close();
     } else {
-      Polymer.HaxStore.instance.closeAllDrawers(this);
+      window.HaxStore.instance.closeAllDrawers(this);
     }
   }
 });

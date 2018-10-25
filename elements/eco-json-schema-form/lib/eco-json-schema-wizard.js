@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import "@polymer/iron-icons/image-icons.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -577,7 +578,7 @@ Polymer({
           .toLowerCase() + "-changed",
         "_schemaPropertyChanged"
       );
-      Polymer.dom(ctx.$.form).appendChild(el);
+      dom(ctx.$.form).appendChild(el);
     });
   },
   _removePropertyEl: function(el) {
@@ -591,10 +592,10 @@ Polymer({
       );
     }
     el.schemaProperty = null;
-    Polymer.dom(this.$.form).removeChild(el);
+    dom(this.$.form).removeChild(el);
   },
   _clearForm: function() {
-    var formEl = Polymer.dom(this.$.form);
+    var formEl = dom(this.$.form);
     while (formEl.firstChild) {
       this._removePropertyEl(formEl.firstChild);
     }
@@ -653,7 +654,7 @@ Polymer({
   },
   _errorChanged: function() {
     var ctx = this;
-    Polymer.dom(this.$.form).childNodes.forEach(function(el) {
+    dom(this.$.form).childNodes.forEach(function(el) {
       var name = el.getAttribute("name");
       if (ctx.error && ctx.error[name]) {
         el.error = ctx.error[name];

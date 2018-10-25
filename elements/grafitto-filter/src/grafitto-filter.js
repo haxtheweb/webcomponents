@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 /**
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
@@ -305,13 +306,13 @@ Polymer({
    *@param {array} filtered the filtered array to be displayed
    */
   _populateUserTemplate: function(filtered) {
-    this._userTemplate = Polymer.dom(this.$.template).getDistributedNodes()[0];
+    this._userTemplate = dom(this.$.template).getDistributedNodes()[0];
     if (this._userTemplate) {
       this.templatize(this._userTemplate);
       var clone = this.stamp();
       clone[this.as] = filtered;
-      Polymer.dom(this.$.dom).innerHTML = "";
-      Polymer.dom(this.$.dom).appendChild(clone.root);
+      dom(this.$.dom).innerHTML = "";
+      dom(this.$.dom).appendChild(clone.root);
     } else {
       console.warn(
         "grafitto-filter requires a template to be provided in light-dom"

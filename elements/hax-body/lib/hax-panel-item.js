@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
@@ -188,7 +189,7 @@ Polymer({
    * Fire an event that includes the eventName of what was just pressed.
    */
   _fireEvent: function(e) {
-    var normalizedEvent = Polymer.dom(e);
+    var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     this.fire("hax-item-selected", {
       target: local,

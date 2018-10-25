@@ -188,7 +188,7 @@ Polymer({
   importContent: function(e) {
     // import contents of this text area into the activeHaxBody
     const htmlBody = this.$.textarea.value;
-    return Polymer.HaxStore.instance.activeHaxBody.importContent(htmlBody);
+    return window.HaxStore.instance.activeHaxBody.importContent(htmlBody);
   },
 
   /**
@@ -204,7 +204,7 @@ Polymer({
    * HTML to HAX Elements
    */
   htmlToHaxElements: function(e) {
-    let elements = Polymer.HaxStore.htmlToHaxElements(this.$.textarea.value);
+    let elements = window.HaxStore.htmlToHaxElements(this.$.textarea.value);
     var str = JSON.stringify(elements, null, 2);
     let val = this.$.textarea.value;
     this.$.textarea.value = str;
@@ -221,7 +221,7 @@ Polymer({
     var content = "";
     // if you want full HTML headers or not
     if (full) {
-      let elementList = Polymer.HaxStore.instance.elementList;
+      let elementList = window.HaxStore.instance.elementList;
       // @todo obviously not sustainable
       let url = "https://lrnwebcomponents.github.io/hax-body/components";
       content = `
@@ -264,10 +264,10 @@ Polymer({
         }
       }
       content += "</head><body>";
-      content += Polymer.HaxStore.instance.activeHaxBody.haxToContent();
+      content += window.HaxStore.instance.activeHaxBody.haxToContent();
       content += "</body></html>";
     } else {
-      content = Polymer.HaxStore.instance.activeHaxBody.haxToContent();
+      content = window.HaxStore.instance.activeHaxBody.haxToContent();
     }
     return content;
   },
@@ -280,7 +280,7 @@ Polymer({
       this.close();
     } else {
       this.$.textarea.value = this.contentToFile(false);
-      Polymer.HaxStore.instance.closeAllDrawers(this);
+      window.HaxStore.instance.closeAllDrawers(this);
     }
   },
 

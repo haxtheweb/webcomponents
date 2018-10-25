@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
@@ -6,6 +7,7 @@ import "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
+
 /**
 `video-player`
 A simple responsive video player with ridiculously powerful backing
@@ -573,7 +575,7 @@ Polymer({
    */
   _getSourceData: function(source, sources, tracks) {
     let root = this,
-      slotted = Polymer.dom(root).querySelector("track");
+      slotted = dom(root).querySelector("track");
     let temp = sources.slice();
     for (let i = 0; i < temp.length; i++) {
       temp[i].type =
@@ -649,7 +651,7 @@ Polymer({
    */
   _computeSourceType: function(sourceData) {
     let root = this,
-      slotted = Polymer.dom(root).querySelector("source");
+      slotted = dom(root).querySelector("source");
     if (
       sourceData.length > 0 &&
       sourceData[0] !== undefined &&

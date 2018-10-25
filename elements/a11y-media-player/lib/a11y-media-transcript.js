@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./a11y-media-behaviors.js";
@@ -197,7 +198,7 @@ Polymer({
           "",
           "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status =0"
         ),
-        node = Polymer.dom(root).node;
+        node = dom(root).node;
       print.document.write(
         "<style>" +
           css +

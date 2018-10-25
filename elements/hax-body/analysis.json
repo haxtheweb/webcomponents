@@ -3019,7 +3019,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
-      "name": "Polymer.HaxStore",
+      "name": "window.HaxStore",
       "attributes": [
         {
           "name": "hax-app-picker",

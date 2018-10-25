@@ -99,7 +99,7 @@ Polymer({
    * Ready, figure out polyfill
    */
   ready: function() {
-    this.polyfillSafe = Polymer.HaxStore.instance.computePolyfillSafe();
+    this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
   },
 
   /**

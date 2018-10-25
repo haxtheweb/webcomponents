@@ -1,3 +1,4 @@
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 window.mtz = window.mtz || {};
 
 /**
@@ -47,9 +48,9 @@ mtz.FileDownloadBehavior = {
       link.href = (window.URL || window.webkitURL).createObjectURL(blob);
       link.download = filename;
       link.target = newTab ? "_blank" : "_self";
-      Polymer.dom(this.root).appendChild(link);
+      dom(this.root).appendChild(link);
       link.click();
-      Polymer.dom(this.root).removeChild(link);
+      dom(this.root).removeChild(link);
     }
   },
 

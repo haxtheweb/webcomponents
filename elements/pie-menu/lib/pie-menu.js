@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
 `pie-menu`
@@ -268,7 +269,7 @@ Polymer({
    * Simple trap for bubbling up a tap / click event.
    */
   _itemTapped: function(e) {
-    var normalizedEvent = Polymer.dom(e);
+    var normalizedEvent = dom(e);
     var localLink = normalizedEvent.localTarget;
     // make sure we normalize tap vs click vs keyboard
     if (

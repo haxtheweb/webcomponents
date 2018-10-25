@@ -1,12 +1,13 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@polymer/paper-card/paper-card.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
+import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/lrnsys-layout/lrnsys-layout.js";
 import "@lrnwebcomponents/lrnsys-layout/lrnsys-drawer.js";
 import "@lrnwebcomponents/lrnsys-layout/lrnsys-dialog.js";
@@ -395,7 +396,7 @@ Polymer({
     var pastDate = 0;
 
     //Remove past calendar blocks ************************************
-    var elem = Polymer.dom(this.$.calView).node;
+    var elem = dom(this.$.calView).node;
     var elemChildren = elem.childNodes;
 
     while (elemChildren[1]) {
@@ -602,7 +603,7 @@ Polymer({
     dynamicEl.events = sendEvent;
 
     dynamicEl.valid = true;
-    Polymer.dom(this.calendarView).appendChild(dynamicEl);
+    dom(this.calendarView).appendChild(dynamicEl);
 
     var firstWeekCount = 1;
     while (days < this.totalDays) {
@@ -663,7 +664,7 @@ Polymer({
       firstWeekCount = firstWeekCount + 1;
       dynamicEl.valid = true;
 
-      Polymer.dom(this.calendarView).appendChild(dynamicEl);
+      dom(this.calendarView).appendChild(dynamicEl);
 
       days = days + 1;
       if (days == this.totalDays && this.newDay.getDay() != 6) {

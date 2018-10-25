@@ -1,8 +1,9 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
 /**
@@ -205,7 +206,7 @@ Polymer({
    * Move the active element based on which button got pressed.
    */
   moveActiveElement: function(e) {
-    var normalizedEvent = Polymer.dom(e);
+    var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     let col = this.__activeItem.getAttribute("slot").split("-");
     let max = 1;
@@ -221,7 +222,7 @@ Polymer({
       case "up":
         // ensure we can go up
         if (this.__activeItem.previousElementSibling !== null) {
-          Polymer.dom(this).insertBefore(
+          dom(this).insertBefore(
             this.__activeItem,
             this.__activeItem.previousElementSibling
           );
@@ -229,7 +230,7 @@ Polymer({
         break;
       case "down":
         if (this.__activeItem.nextElementSibling !== null) {
-          Polymer.dom(this).insertBefore(
+          dom(this).insertBefore(
             this.__activeItem.nextElementSibling,
             this.__activeItem
           );
@@ -241,7 +242,7 @@ Polymer({
             "slot",
             "col-" + (parseInt(col[1]) - 1)
           );
-          Polymer.dom(this).appendChild(this.__activeItem);
+          dom(this).appendChild(this.__activeItem);
         }
         break;
       case "right":
@@ -250,7 +251,7 @@ Polymer({
             "slot",
             "col-" + (parseInt(col[1]) + 1)
           );
-          Polymer.dom(this).appendChild(this.__activeItem);
+          dom(this).appendChild(this.__activeItem);
         }
         break;
     }
@@ -283,7 +284,7 @@ Polymer({
    * Set the target element to active
    */
   setActiveElement: function(e) {
-    var normalizedEvent = Polymer.dom(e);
+    var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     this.$.up.focus();
     e.preventDefault();
@@ -295,10 +296,10 @@ Polymer({
    */
   _focusIn: function(e) {
     if (this.editMode) {
-      var normalizedEvent = Polymer.dom(e);
+      var normalizedEvent = dom(e);
       var local = normalizedEvent.localTarget;
       // only activate if we touch something that's in the slot of the grid plate
-      if (Polymer.dom(local).parentNode === this) {
+      if (dom(local).parentNode === this) {
         this.__activeItem = local;
       }
     }
@@ -372,7 +373,7 @@ Polymer({
   _editModeChanged: function(newValue, oldValue) {
     // flipping from false to true
     if (newValue && !oldValue) {
-      let children = Polymer.dom(this).children;
+      let children = dom(this).children;
       // walk the children and apply the draggable state needed
       for (var i in children) {
         children[i].addEventListener("drop", this.dropEvent.bind(this));
@@ -412,7 +413,7 @@ Polymer({
     }
     // flipping from true to false
     else if (!newValue && oldValue) {
-      let children = Polymer.dom(this).children;
+      let children = dom(this).children;
       // walk the children and apply the draggable state needed
       for (var i in children) {
         children[i].removeEventListener("drop", this.dropEvent.bind(this));
@@ -457,7 +458,7 @@ Polymer({
    * Drop an item onto another
    */
   dropEvent: function(e) {
-    var normalizedEvent = Polymer.dom(e);
+    var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     // if we have a slot on what we dropped into then we need to mirror that item
     // and place ourselves below it in the DOM
@@ -468,7 +469,7 @@ Polymer({
       this.__activeItem !== local
     ) {
       this.__activeItem.setAttribute("slot", local.getAttribute("slot"));
-      Polymer.dom(this).insertBefore(this.__activeItem, local);
+      dom(this).insertBefore(this.__activeItem, local);
       // ensure that if we caught this event we process it
       e.preventDefault();
       e.stopPropagation();
@@ -478,12 +479,12 @@ Polymer({
     else if (local.tagName === "RESPONSIVE-GRID-COL") {
       var col = local.id.replace("col", "");
       this.__activeItem.setAttribute("slot", "col-" + col);
-      Polymer.dom(this).appendChild(this.__activeItem);
+      dom(this).appendChild(this.__activeItem);
       // ensure that if we caught this event we process it
       e.preventDefault();
       e.stopPropagation();
     }
-    let children = Polymer.dom(this).children;
+    let children = dom(this).children;
     // walk the children and apply the draggable state needed
     for (var i in children) {
       children[i].classList.remove("mover");
@@ -520,7 +521,7 @@ Polymer({
    * Start a drag event, this is an element being dragged
    */
   dragStart: function(e) {
-    let children = Polymer.dom(this).children;
+    let children = dom(this).children;
     // walk the children and apply the draggable state needed
     for (var i in children) {
       children[i].classList.add("mover");
@@ -537,7 +538,7 @@ Polymer({
    * When we end dragging ensure we remove the mover class.
    */
   dragEnd: function(e) {
-    let children = Polymer.dom(this).children;
+    let children = dom(this).children;
     // walk the children and apply the draggable state needed
     for (var i in children) {
       children[i].classList.remove("mover");
@@ -702,7 +703,7 @@ Polymer({
    */
   haxInsertContent: function(e) {
     // see if WE are the thing that's active when insert was fired
-    if (this === Polymer.HaxStore.instance.activeContainerNode) {
+    if (this === window.HaxStore.instance.activeContainerNode) {
       // trick events into rebinding since this event is only possible
       // when we are in an edit state
       this.editMode = false;

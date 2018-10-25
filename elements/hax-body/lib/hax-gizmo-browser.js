@@ -155,7 +155,7 @@ Polymer({
    * Reset this browser.
    */
   resetBrowser: function() {
-    this.set("__gizmoList", Polymer.HaxStore.instance.gizmoList);
+    this.set("__gizmoList", window.HaxStore.instance.gizmoList);
     this.$.filter.$$("#ironlist").filtered = this.__gizmoList;
     this.$.inputfilter.value = "";
     this.$.filtertype.value = "title";

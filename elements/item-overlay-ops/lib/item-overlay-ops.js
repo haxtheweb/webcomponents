@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -247,7 +248,7 @@ Polymer({
    * Support tapping the buttons in the top
    */
   _opTap: function(e) {
-    let normalizedEvent = Polymer.dom(e);
+    let normalizedEvent = dom(e);
     let local = normalizedEvent.localTarget;
     this.activeTitle = local.getAttribute("id");
     this.activeOp = local.getAttribute("id");
@@ -304,7 +305,7 @@ Polymer({
    * fire event because an option was selected.
    */
   _optionSelected: function(e) {
-    let normalizedEvent = Polymer.dom(e);
+    let normalizedEvent = dom(e);
     let local = normalizedEvent.localTarget;
     // fire that an option was selected and about what operation
     let ops = {

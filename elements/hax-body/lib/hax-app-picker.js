@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-ripple/paper-ripple.js";
 import "@polymer/paper-toast/paper-toast.js";
@@ -281,36 +282,36 @@ Polymer({
    * Handle the user selecting an app.
    */
   _selected: function(e) {
-    var normalizedEvent = Polymer.dom(e);
+    var normalizedEvent = dom(e);
     let key = normalizedEvent.localTarget.getAttribute("data-selected");
     e.preventDefault();
     e.stopPropagation();
     if (typeof this._elements[key] !== typeof undefined) {
       // haxElement is a unique case
       if (this.pickerType == "gizmo") {
-        Polymer.HaxStore.write("activeHaxElement", this._elements[key], this);
+        window.HaxStore.write("activeHaxElement", this._elements[key], this);
         if (this._elements[key].__type === "__convert") {
-          Polymer.HaxStore.instance.haxManager.editExistingNode = true;
+          window.HaxStore.instance.haxManager.editExistingNode = true;
         }
         // ensure this is open even though it should be
-        Polymer.HaxStore.instance.haxManager.selectStep("configure");
-        Polymer.HaxStore.instance.haxManager.open();
+        window.HaxStore.instance.haxManager.selectStep("configure");
+        window.HaxStore.instance.haxManager.open();
       } else if (this.pickerType == "delete") {
         if (this._elements[key]["title"] === "Yes") {
           if (
-            Polymer.HaxStore.instance.activeHaxBody.activeNode !==
-            Polymer.HaxStore.instance.activeHaxBody.activeContainerNode
+            window.HaxStore.instance.activeHaxBody.activeNode !==
+            window.HaxStore.instance.activeHaxBody.activeContainerNode
           ) {
-            Polymer.HaxStore.instance.activeHaxBody.haxDeleteNode(
-              Polymer.HaxStore.instance.activeHaxBody.activeNode,
-              Polymer.HaxStore.instance.activeHaxBody.activeContainerNode
+            window.HaxStore.instance.activeHaxBody.haxDeleteNode(
+              window.HaxStore.instance.activeHaxBody.activeNode,
+              window.HaxStore.instance.activeHaxBody.activeContainerNode
             );
           } else {
-            Polymer.HaxStore.instance.activeHaxBody.haxDeleteNode(
-              Polymer.HaxStore.instance.activeHaxBody.activeNode
+            window.HaxStore.instance.activeHaxBody.haxDeleteNode(
+              window.HaxStore.instance.activeHaxBody.activeNode
             );
           }
-          Polymer.HaxStore.toast("Element deleted", 2000);
+          window.HaxStore.toast("Element deleted", 2000);
         }
       } else {
         // bubble this up

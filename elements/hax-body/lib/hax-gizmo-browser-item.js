@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -187,12 +188,12 @@ Polymer({
    * Fire an event that includes the eventName of what was just pressed.
    */
   _fireEvent: function(e) {
-    var normalizedEvent = Polymer.dom(e);
+    var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     let gizmo = {
       tag: this.tag
     };
-    let element = Polymer.HaxStore.haxElementPrototype(gizmo);
-    Polymer.HaxStore.write("activeHaxElement", element, this);
+    let element = window.HaxStore.haxElementPrototype(gizmo);
+    window.HaxStore.write("activeHaxElement", element, this);
   }
 });

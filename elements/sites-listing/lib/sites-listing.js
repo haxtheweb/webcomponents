@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-button/paper-button.js";
@@ -101,7 +102,7 @@ Polymer({
    */
   _siteClicked: function(e) {
     let root = this;
-    var normalizedEvent = Polymer.dom(e);
+    var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     // this will have the id of the current course
     var active = local.getAttribute("data-site-id");

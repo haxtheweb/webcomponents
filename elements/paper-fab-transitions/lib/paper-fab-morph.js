@@ -1,3 +1,5 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-dropdown/iron-dropdown.js";
 /**
 `paper-fab-morph` can be used to wrap a floating action button and another
@@ -160,8 +162,8 @@ Custom property | Description | Default
       } else {
         var dropdown = document.createElement("iron-dropdown");
 
-        Polymer.dom(dropdown).appendChild(this._content);
-        Polymer.dom(this.root).appendChild(dropdown);
+        dom(dropdown).appendChild(this._content);
+        dom(this.root).appendChild(dropdown);
 
         this._overlay = dropdown;
         this._dropdown = dropdown;

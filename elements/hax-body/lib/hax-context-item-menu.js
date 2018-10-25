@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/neon-animation/neon-animation.js";
@@ -110,7 +111,7 @@ Polymer({
       typeof oldValue !== typeof undefined &&
       typeof oldValue !== typeof null
     ) {
-      let children = Polymer.dom(this.$.items).getDistributedNodes();
+      let children = dom(this.$.items).getDistributedNodes();
       var item = new Object();
       var j = 0;
       // check for tag match since we have to filter out text nodes

@@ -1,3 +1,5 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 import "@polymer/iron-dropdown/iron-dropdown.js";
 import "@polymer/neon-animation/neon-animations.js";
@@ -124,7 +126,7 @@ Custom property | Description | Default
     observers: ["_updateDropdown(direction, offset)"],
 
     ready: function() {
-      var fab = Polymer.dom(this.$.fabContainer).getDistributedNodes()[0];
+      var fab = dom(this.$.fabContainer).getDistributedNodes()[0];
       fab.addEventListener(
         "tap",
         function() {
@@ -132,9 +134,7 @@ Custom property | Description | Default
         }.bind(this)
       );
 
-      var content = Polymer.dom(
-        this.$.contentContainer
-      ).getDistributedNodes()[0];
+      var content = dom(this.$.contentContainer).getDistributedNodes()[0];
       content.addEventListener(
         "tap",
         function() {

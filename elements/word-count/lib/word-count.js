@@ -1,11 +1,11 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 /**
-`word-count`
-Count the words on whatever this wraps
-
-@demo demo/index.html
-
-*/
+ * `word-count`
+ * `Count the words on whatever this wraps`
+ *
+ * @demo demo/index.html
+ */
 Polymer({
   _template: html`
     <style>
@@ -83,7 +83,7 @@ Polymer({
    */
   ready: function() {
     // mutation observer that ensures state of hax applied correctly
-    this._observer = Polymer.dom(this).observeNodes(function(info) {
+    this._observer = dom(this).observeNodes(function(info) {
       if (info.addedNodes.length > 0 || info.removedNodes.length > 0) {
         this._updateWords();
       }
@@ -94,10 +94,8 @@ Polymer({
    * Update words based on data in the slot.
    */
   _updateWords: function() {
-    if (Polymer.dom(this).textContent !== "") {
-      this.words = parseInt(
-        Polymer.dom(this).textContent.split(/\s+/g).length - 1
-      );
+    if (dom(this).textContent !== "") {
+      this.words = parseInt(dom(this).textContent.split(/\s+/g).length - 1);
     } else {
       this.words = 0;
     }

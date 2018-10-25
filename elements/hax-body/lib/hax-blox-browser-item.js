@@ -174,12 +174,12 @@ Polymer({
   _fireEvent: function(e) {
     let content = "";
     for (var i = 0; i < this.blox.length; i++) {
-      let node = Polymer.HaxStore.haxElementToNode(
+      let node = window.HaxStore.haxElementToNode(
         this.blox[i].tag,
         this.blox[i].content,
         this.blox[i].properties
       );
-      content += Polymer.HaxStore.haxNodeToContent(node);
+      content += window.HaxStore.haxNodeToContent(node);
     }
     // generate a hax element
     let blox = {
@@ -190,6 +190,6 @@ Polymer({
       content: content
     };
     this.fire("hax-insert-content", blox);
-    Polymer.HaxStore.instance.haxBloxPicker.close();
+    window.HaxStore.instance.haxBloxPicker.close();
   }
 });

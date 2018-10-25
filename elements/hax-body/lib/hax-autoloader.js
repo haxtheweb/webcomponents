@@ -1,4 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+
 /**
 `hax-autoloader`
 Automatically load elements based on the most logical location with future fallback support for CDNs.
@@ -43,7 +45,7 @@ Polymer({
    */
   ready: function() {
     // notice elements when they update
-    this._observer = Polymer.dom(this).observeNodes(function(info) {
+    this._observer = dom(this).observeNodes(function(info) {
       // if we've got new nodes, we have to react to that
       if (info.addedNodes.length > 0) {
         this.processNewElements(info.addedNodes);
@@ -56,7 +58,7 @@ Polymer({
    */
   processNewElements: function(e) {
     // when new nodes show up in the slots then fire the needed pieces
-    var effectiveChildren = Polymer.dom(this).getEffectiveChildNodes();
+    var effectiveChildren = dom(this).getEffectiveChildNodes();
     for (var i = 0; i < effectiveChildren.length; i++) {
       // strip invalid tags / textnodes
       if (

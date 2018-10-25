@@ -121,10 +121,10 @@ Polymer({
         newValue.importContent(children.innerHTML);
         // need to dot his because of juggling unfortunately
         this.editMode = false;
-        Polymer.HaxStore.write("editMode", this.editMode, this);
+        window.HaxStore.write("editMode", this.editMode, this);
         setTimeout(() => {
           this.editMode = true;
-          Polymer.HaxStore.write("editMode", this.editMode, this);
+          window.HaxStore.write("editMode", this.editMode, this);
         }, 200);
       }
     }
@@ -176,6 +176,6 @@ Polymer({
    * Set the bubbled up event to the body value that just got changed
    */
   _bodyContentUpdated: function(e) {
-    this.bodyValue = Polymer.HaxStore.instance.activeHaxBody.haxToContent();
+    this.bodyValue = window.HaxStore.instance.activeHaxBody.haxToContent();
   }
 });

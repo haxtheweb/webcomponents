@@ -1,7 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "@lrnwebcomponents/map-menu/map-menu.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
@@ -10,6 +8,9 @@ import "@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";
 import "@polymer/app-layout/app-header-layout/app-header-layout.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "@polymer/iron-media-query/iron-media-query.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import "@lrnwebcomponents/map-menu/map-menu.js";
 import "./outline-player-arrow.js";
 /**
 `outline-player`
@@ -449,17 +450,17 @@ Polymer({
   wipeSlot: function(element, slot = "*") {
     // 100% clean slate
     if (slot === "*") {
-      while (Polymer.dom(element).firstChild !== null) {
-        Polymer.dom(element).removeChild(Polymer.dom(element).firstChild);
+      while (dom(element).firstChild !== null) {
+        dom(element).removeChild(dom(element).firstChild);
       }
     } else {
-      for (var i in Polymer.dom(element).childNodes) {
+      for (var i in dom(element).childNodes) {
         // test for element nodes to be safe
         if (
-          typeof Polymer.dom(element).childNodes[i] !== typeof undefined &&
-          Polymer.dom(element).childNodes[i].slot === slot
+          typeof dom(element).childNodes[i] !== typeof undefined &&
+          dom(element).childNodes[i].slot === slot
         ) {
-          Polymer.dom(element).removeChild(Polymer.dom(element).childNodes[i]);
+          dom(element).removeChild(dom(element).childNodes[i]);
         }
       }
     }
@@ -473,7 +474,7 @@ Polymer({
       this.wipeSlot(this, "*");
       if (newValue !== null) {
         let frag = document.createRange().createContextualFragment(newValue);
-        Polymer.dom(this).appendChild(frag);
+        dom(this).appendChild(frag);
       }
     }
   },

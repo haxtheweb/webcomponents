@@ -120,11 +120,11 @@ export class HAXWiring {
         } else if (
           "" !== tag &&
           typeof Polymer !== typeof void 0 &&
-          typeof Polymer.HaxStore !== typeof void 0 &&
-          typeof Polymer.HaxStore.instance !== typeof void 0 &&
-          null != Polymer.HaxStore.instance &&
-          typeof Polymer.HaxStore.instance.elementList !== typeof void 0 &&
-          typeof Polymer.HaxStore.instance.elementList[tag.toLowerCase()] ===
+          typeof window.HaxStore !== typeof void 0 &&
+          typeof window.HaxStore.instance !== typeof void 0 &&
+          null != window.HaxStore.instance &&
+          typeof window.HaxStore.instance.elementList !== typeof void 0 &&
+          typeof window.HaxStore.instance.elementList[tag.toLowerCase()] ===
             typeof void 0
         ) {
           let evt = new CustomEvent("hax-register-properties", {
@@ -135,11 +135,11 @@ export class HAXWiring {
           context.dispatchEvent(evt);
         } else if (
           typeof Polymer !== typeof void 0 &&
-          typeof Polymer.HaxStore !== typeof void 0 &&
-          typeof Polymer.HaxStore.instance !== typeof void 0 &&
-          null != Polymer.HaxStore.instance &&
-          typeof Polymer.HaxStore.instance.elementList !== typeof void 0 &&
-          typeof Polymer.HaxStore.instance.elementList[
+          typeof window.HaxStore !== typeof void 0 &&
+          typeof window.HaxStore.instance !== typeof void 0 &&
+          null != window.HaxStore.instance &&
+          typeof window.HaxStore.instance.elementList !== typeof void 0 &&
+          typeof window.HaxStore.instance.elementList[
             this.tagName.toLowerCase()
           ] === typeof void 0
         ) {
@@ -487,19 +487,17 @@ export class HAXWiring {
             };
             let slot = "";
             if (typeof Polymer !== typeof void 0) {
-              for (var i in Polymer.dom(target).childNodes) {
-                if (
-                  typeof Polymer.dom(target).childNodes[i] !== typeof void 0
-                ) {
-                  if (1 === Polymer.dom(target).childNodes[i].nodeType) {
-                    slot += Polymer.dom(target).childNodes[i].innerHTML;
+              for (var i in dom(target).childNodes) {
+                if (typeof dom(target).childNodes[i] !== typeof void 0) {
+                  if (1 === dom(target).childNodes[i].nodeType) {
+                    slot += dom(target).childNodes[i].innerHTML;
                   } else if (
-                    1 !== Polymer.dom(target).childNodes[i].nodeType &&
-                    typeof Polymer.dom(target).childNodes[i].textContent !==
+                    1 !== dom(target).childNodes[i].nodeType &&
+                    typeof dom(target).childNodes[i].textContent !==
                       typeof void 0 &&
-                    "" !== Polymer.dom(target).childNodes[i].textContent
+                    "" !== dom(target).childNodes[i].textContent
                   ) {
-                    slot += Polymer.dom(target).childNodes[i].textContent;
+                    slot += dom(target).childNodes[i].textContent;
                   }
                 }
               }

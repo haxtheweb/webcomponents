@@ -1,3 +1,5 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "moment-element/moment-element.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/marked-element/marked-element.js";
@@ -292,7 +294,7 @@ Polymer({
   actionHandler: function(e) {
     let root = this;
     // convert click handler into local dom object
-    var normalizedEvent = Polymer.dom(e);
+    var normalizedEvent = dom(e);
     var target = normalizedEvent.localTarget;
     var comment = null;
     // ensure we have a comment ID to operate against

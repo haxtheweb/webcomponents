@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/paper-input/paper-textarea.js";
 import "@polymer/paper-input/paper-input.js";
@@ -217,7 +218,7 @@ Polymer({
         this["__input" + method] = true;
         // hide the menu if it was open previously
         // need to paint into the slot so clean it out and repaint
-        let slot = Polymer.dom(this);
+        let slot = dom(this);
         while (slot.firstChild !== null) {
           slot.removeChild(slot.firstChild);
         }

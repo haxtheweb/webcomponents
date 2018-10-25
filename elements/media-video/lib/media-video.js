@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 Polymer({
   _template: html`
     <style>
@@ -18,7 +19,7 @@ Polymer({
     const videoSrc = this.querySelector("*[data-mediavideo-src]");
     this.addEventListener("click", e => {
       e.stopPropagation();
-      const target = Polymer.dom(e).localTarget;
+      const target = dom(e).localTarget;
       const videoContainer = this.querySelector(".mediavideo");
       const videoPoster = this.querySelector(".mediavideo-button-container");
       const videoSrc = this.querySelector("*[data-mediavideo-src]");

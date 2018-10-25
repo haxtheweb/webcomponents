@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-item/paper-item.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
@@ -250,9 +251,9 @@ Polymer({
    * Ready state to tee everything up.
    */
   ready: function() {
-    this.polyfillSafe = Polymer.HaxStore.instance.computePolyfillSafe();
+    this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
     // mutation observer that ensures state of hax applied correctly
-    this._observer = Polymer.dom(this).observeNodes(function(info) {
+    this._observer = dom(this).observeNodes(function(info) {
       // MAKE SURE WE KNOW WHAT JUST GOT ADDED HERE
       Polymer.dom.flush();
       // if we've got new nodes, we have to react to that
@@ -312,15 +313,11 @@ Polymer({
     if (e.detail === "text") {
       // make sure text just escalates to a paragraph tag
       let p = document.createElement("p");
-      this.haxReplaceNode(
-        this.activeNode,
-        p,
-        Polymer.dom(this.activeNode).parentNode
-      );
+      this.haxReplaceNode(this.activeNode, p, dom(this.activeNode).parentNode);
       // allow swap out to happen
       setTimeout(() => {
         // set active to this p tag
-        Polymer.HaxStore.write("activeNode", p, this);
+        window.HaxStore.write("activeNode", p, this);
         // focus on it
         p.focus();
       }, 100);
@@ -334,7 +331,7 @@ Polymer({
    * invoke whether it's a "convert" event or a "replace placeholder" event
    */
   replaceElementWorkflow: function() {
-    let element = Polymer.HaxStore.nodeToHaxElement(this.activeNode, null);
+    let element = window.HaxStore.nodeToHaxElement(this.activeNode, null);
     let type = "*";
     let skipPropMatch = false;
     // special support for place holder which defines exactly
@@ -350,16 +347,15 @@ Polymer({
     // see if we have a gizmo as it's not a requirement to registration
     // as well as having handlers since mapping is not required either
     if (
-      typeof Polymer.HaxStore.instance.elementList[element.tag] !==
+      typeof window.HaxStore.instance.elementList[element.tag] !==
         typeof undefined &&
-      Polymer.HaxStore.instance.elementList[element.tag].gizmo !== false &&
-      typeof Polymer.HaxStore.instance.elementList[element.tag].gizmo
-        .handles !== typeof undefined &&
-      Polymer.HaxStore.instance.elementList[element.tag].gizmo.handles.length >
-        0
+      window.HaxStore.instance.elementList[element.tag].gizmo !== false &&
+      typeof window.HaxStore.instance.elementList[element.tag].gizmo.handles !==
+        typeof undefined &&
+      window.HaxStore.instance.elementList[element.tag].gizmo.handles.length > 0
     ) {
       // get the haxProperties for this item
-      let gizmo = Polymer.HaxStore.instance.elementList[element.tag].gizmo;
+      let gizmo = window.HaxStore.instance.elementList[element.tag].gizmo;
       // walk through each handler
       for (var i = 0; i < gizmo.handles.length; i++) {
         // walk the properties defined as they would be to the
@@ -389,18 +385,18 @@ Polymer({
         }
       }
     }
-    let haxElements = Polymer.HaxStore.guessGizmo(type, props, skipPropMatch);
+    let haxElements = window.HaxStore.guessGizmo(type, props, skipPropMatch);
     // see if we got anything
     if (haxElements.length > 0) {
       // hand off to hax-app-picker to deal with the rest of this
-      Polymer.HaxStore.instance.haxAppPicker.presentOptions(
+      window.HaxStore.instance.haxAppPicker.presentOptions(
         haxElements,
         "__convert",
         "What do you want to convert this gizmo to",
         "gizmo"
       );
     } else {
-      Polymer.HaxStore.toast(
+      window.HaxStore.toast(
         "Sorry, this can't be converted to anything automatically!",
         5000
       );
@@ -440,14 +436,14 @@ Polymer({
     }
     // ensure they said yes
     if (status) {
-      Polymer.HaxStore.wipeSlot(this);
+      window.HaxStore.wipeSlot(this);
     }
   },
   /**
    * Insert new tag + content into the local DOM as a node.
    */
   haxInsert: function(tag, content, properties = {}) {
-    var tags = Polymer.HaxStore.instance.validTagList;
+    var tags = window.HaxStore.instance.validTagList;
     // verify this tag is a valid one
     if (tags.includes(tag)) {
       // create a new element fragment w/ content in it
@@ -458,7 +454,7 @@ Polymer({
       var newNode = frag.cloneNode(true);
       // support for properties if they exist
       for (var property in properties) {
-        let attributeName = Polymer.HaxStore.camelToDash(property);
+        let attributeName = window.HaxStore.camelToDash(property);
         if (properties.hasOwnProperty(property)) {
           // special supporting for boolean because html is weird :p
           if (properties[property] === true) {
@@ -485,25 +481,25 @@ Polymer({
       // special support for a drag and drop into a place-holder tag
       // as this is a more aggressive operation then the others
       if (
-        Polymer.HaxStore.instance.activePlaceHolder !== null &&
-        typeof Polymer.HaxStore.instance.activePlaceHolder.style !==
+        window.HaxStore.instance.activePlaceHolder !== null &&
+        typeof window.HaxStore.instance.activePlaceHolder.style !==
           typeof undefined
       ) {
         // replicate styles so that it doesn't jar the UI
         newNode.style.width =
-          Polymer.HaxStore.instance.activePlaceHolder.style.width;
+          window.HaxStore.instance.activePlaceHolder.style.width;
         newNode.style.float =
-          Polymer.HaxStore.instance.activePlaceHolder.style.float;
+          window.HaxStore.instance.activePlaceHolder.style.float;
         newNode.style.margin =
-          Polymer.HaxStore.instance.activePlaceHolder.style.margin;
+          window.HaxStore.instance.activePlaceHolder.style.margin;
         newNode.style.display =
-          Polymer.HaxStore.instance.activePlaceHolder.style.display;
+          window.HaxStore.instance.activePlaceHolder.style.display;
         this.haxReplaceNode(
-          Polymer.HaxStore.instance.activePlaceHolder,
+          window.HaxStore.instance.activePlaceHolder,
           newNode,
-          Polymer.dom(Polymer.HaxStore.instance.activePlaceHolder).parentNode
+          dom(window.HaxStore.instance.activePlaceHolder).parentNode
         );
-        Polymer.HaxStore.instance.activePlaceHolder = null;
+        window.HaxStore.instance.activePlaceHolder = null;
       }
       // insert at active insert point if we have one
       else if (this.activeContainerNode !== null) {
@@ -514,25 +510,22 @@ Polymer({
           this.activeContainerNode !== this.activeNode
         ) {
           newNode.setAttribute("slot", this.activeNode.getAttribute("slot"));
-          Polymer.dom(this.activeContainerNode).insertBefore(
-            newNode,
-            this.activeNode
-          );
+          dom(this.activeContainerNode).insertBefore(newNode, this.activeNode);
         } else {
-          Polymer.dom(this).insertBefore(
+          dom(this).insertBefore(
             newNode,
             this.activeContainerNode.nextElementSibling
           );
         }
       } else {
         // send this into the root, which should filter it back down into the slot
-        Polymer.dom(this).appendChild(newNode);
+        dom(this).appendChild(newNode);
       }
       this.$.inlinecontextmenu.opened = false;
       // wait so that the DOM can have the node to then attach to
       setTimeout(() => {
-        Polymer.HaxStore.write("activeContainerNode", newNode, this);
-        Polymer.HaxStore.write("activeNode", newNode, this);
+        window.HaxStore.write("activeContainerNode", newNode, this);
+        window.HaxStore.write("activeNode", newNode, this);
         // attempt to focus on the new node, may not always work
         newNode.focus();
         // scroll to it
@@ -555,9 +548,9 @@ Polymer({
     this.hideContextMenus();
     var __active = this.activeNode;
     // null this to drop hax based classes
-    Polymer.HaxStore.write("activeNode", null, this);
-    Polymer.HaxStore.write("activeContainerNode", null, this);
-    let children = Polymer.dom(this.$.body).getDistributedNodes();
+    window.HaxStore.write("activeNode", null, this);
+    window.HaxStore.write("activeContainerNode", null, this);
+    let children = dom(this.$.body).getDistributedNodes();
     if (this.globalPreferences.haxDeveloperMode) {
       console.log(children);
     }
@@ -569,7 +562,7 @@ Polymer({
         children[i].removeAttribute("data-editable");
         children[i].removeAttribute("data-hax-ray");
         children[i].contentEditable = false;
-        content += Polymer.HaxStore.haxNodeToContent(children[i]);
+        content += window.HaxStore.haxNodeToContent(children[i]);
         if (children[i].tagName.toLowerCase() === "grid-plate") {
           this._applyContentEditable(this.editMode, children[i]);
         }
@@ -620,7 +613,7 @@ Polymer({
     re = new RegExp(string, "g");
     content = content.replace(re, "");
     // now all tags we have defined as valid
-    let tags = Polymer.HaxStore.instance.validTagList;
+    let tags = window.HaxStore.instance.validTagList;
     tags.push("hax-preview");
     for (var i in tags) {
       string = "style-scope " + tags[i];
@@ -639,8 +632,8 @@ Polymer({
     // re-apply contenteditable if needed
     this._applyContentEditable(this.editMode);
     // set active again
-    Polymer.HaxStore.write("activeNode", __active, this);
-    Polymer.HaxStore.write("activeContainerNode", __active, this);
+    window.HaxStore.write("activeNode", __active, this);
+    window.HaxStore.write("activeContainerNode", __active, this);
     if (this.globalPreferences.haxDeveloperMode) {
       console.log(content);
     }
@@ -652,29 +645,26 @@ Polymer({
   haxDuplicateNode: function(node, parent = this) {
     // move the context menu before duplicating!!!!
     this.hideContextMenus();
-    var nodeClone = Polymer.dom(node).cloneNode(true);
+    var nodeClone = dom(node).cloneNode(true);
     if (
       nodeClone.tagName.toLowerCase() === "webview" &&
-      Polymer.HaxStore.instance._isSandboxed &&
+      window.HaxStore.instance._isSandboxed &&
       typeof nodeClone.guestinstance !== typeof undefined
     ) {
       delete nodeClone.guestinstance;
     }
     // shouldn't be possible but might as well check
     if (node !== null) {
-      Polymer.dom(parent).insertBefore(
-        nodeClone,
-        Polymer.dom(node).nextSibling
-      );
+      dom(parent).insertBefore(nodeClone, dom(node).nextSibling);
     } else {
-      Polymer.dom(parent).appendChild(nodeClone);
+      dom(parent).appendChild(nodeClone);
     }
     setTimeout(() => {
       // test for a grid plate clone
       if (parent === this) {
-        Polymer.HaxStore.write("activeContainerNode", nodeClone, this);
+        window.HaxStore.write("activeContainerNode", nodeClone, this);
       }
-      Polymer.HaxStore.write("activeNode", nodeClone, this);
+      window.HaxStore.write("activeNode", nodeClone, this);
     }, 100);
     return true;
   },
@@ -699,10 +689,10 @@ Polymer({
    */
   positionContextMenus: function(node, container) {
     let tag = node.tagName.toLowerCase();
-    if (Polymer.HaxStore.instance._isSandboxed && tag === "webview") {
+    if (window.HaxStore.instance._isSandboxed && tag === "webview") {
       tag = "iframe";
     }
-    let props = Polymer.HaxStore.instance.elementList[tag];
+    let props = window.HaxStore.instance.elementList[tag];
     // get width from window size and do very minor responsive inline support
     let w = Math.max(
       document.documentElement.clientWidth,
@@ -765,32 +755,23 @@ Polymer({
       case "first":
         // ensure we can go up, first being a mode of up
         if (container.previousElementSibling !== null) {
-          Polymer.dom(this).insertBefore(
-            container,
-            Polymer.dom(this).firstChild
-          );
+          dom(this).insertBefore(container, dom(this).firstChild);
         }
         break;
       case "up":
         // ensure we can go up
         if (container.previousElementSibling !== null) {
-          Polymer.dom(this).insertBefore(
-            container,
-            container.previousElementSibling
-          );
+          dom(this).insertBefore(container, container.previousElementSibling);
         }
         break;
       case "down":
         if (container.nextElementSibling !== null) {
-          Polymer.dom(this).insertBefore(
-            container.nextElementSibling,
-            container
-          );
+          dom(this).insertBefore(container.nextElementSibling, container);
         }
         break;
       case "last":
         if (container.nextElementSibling !== null) {
-          Polymer.dom(this).appendChild(container);
+          dom(this).appendChild(container);
         }
         break;
       // @todo support other directions for when inside of an element
@@ -817,7 +798,7 @@ Polymer({
       if (node.getAttribute("slot") != null) {
         replacement.setAttribute("slot", node.getAttribute("slot"));
       }
-      Polymer.dom(parent).replaceChild(replacement, node);
+      dom(parent).replaceChild(replacement, node);
     } catch (e) {
       console.log(e);
     }
@@ -840,7 +821,7 @@ Polymer({
     // Persist contents
     replacement.innerHTML = node.innerHTML;
     // Switch!
-    Polymer.dom(this).replaceChild(replacement, node);
+    dom(this).replaceChild(replacement, node);
     return replacement;
   },
   /**
@@ -858,8 +839,8 @@ Polymer({
       // cursor at the END of the element assuming not empty
       if (
         this.activeContainerNode != null &&
-        Polymer.HaxStore.instance.isTextElement(this.activeContainerNode) &&
-        Polymer.dom(this.activeContainerNode).textContent !== ""
+        window.HaxStore.instance.isTextElement(this.activeContainerNode) &&
+        dom(this.activeContainerNode).textContent !== ""
       ) {
         try {
           var range = document.createRange();
@@ -879,12 +860,12 @@ Polymer({
     ) {
       this.activeContainerNode.nextElementSibling.focus();
     } else {
-      Polymer.HaxStore.write("activeContainerNode", null, this);
-      Polymer.HaxStore.write("activeNode", null, this);
+      window.HaxStore.write("activeContainerNode", null, this);
+      window.HaxStore.write("activeNode", null, this);
     }
     // @todo figure out why this is complaining
     try {
-      return Polymer.dom(parent).removeChild(node);
+      return dom(parent).removeChild(node);
     } catch (e) {
       console.log(e);
     }
@@ -898,11 +879,11 @@ Polymer({
   importContent: function(html, clear = true) {
     // kill the slot of the active body, all of it
     if (clear) {
-      Polymer.HaxStore.wipeSlot(this, "*");
+      window.HaxStore.wipeSlot(this, "*");
     }
     // pause quickly to ensure wipe goes through successfully
     setTimeout(() => {
-      const validTags = Polymer.HaxStore.instance.validTagList;
+      const validTags = window.HaxStore.instance.validTagList;
       let fragment = document.createElement("div");
       fragment.insertAdjacentHTML("beforeend", html);
       while (fragment.firstChild !== null) {
@@ -912,7 +893,7 @@ Polymer({
         ) {
           // ensure import doesn't import non-sandbox safe things!
           if (
-            Polymer.HaxStore.instance._isSandboxed &&
+            window.HaxStore.instance._isSandboxed &&
             fragment.firstChild.tagName.toLowerCase() === "iframe"
           ) {
             // Create a replacement tag of the desired type
@@ -930,9 +911,9 @@ Polymer({
               }
               replacement.setAttribute(nodeName, value);
             }
-            Polymer.dom(this).appendChild(replacement);
+            dom(this).appendChild(replacement);
           } else {
-            Polymer.dom(this).appendChild(fragment.firstChild);
+            dom(this).appendChild(fragment.firstChild);
           }
         } else {
           // this tag didn't pass the test, get rid of it
@@ -960,7 +941,7 @@ Polymer({
       case "blockquote":
         // trigger the default selected value in context menu to match
         this.$.textcontextmenu.selectedValue = detail.eventName;
-        Polymer.HaxStore.write(
+        window.HaxStore.write(
           "activeContainerNode",
           this.haxChangeTagName(this.activeContainerNode, detail.eventName),
           this
@@ -1000,7 +981,7 @@ Polymer({
             title: "No"
           }
         ];
-        Polymer.HaxStore.instance.haxAppPicker.presentOptions(
+        window.HaxStore.instance.haxAppPicker.presentOptions(
           options,
           "",
           "Are you sure you want to delete this element?",
@@ -1018,11 +999,11 @@ Polymer({
         this.haxMoveGridPlate("up", this.activeNode, this.activeContainerNode);
         break;
       case "hax-manager-open":
-        Polymer.HaxStore.write("activeHaxElement", {}, this);
-        Polymer.HaxStore.instance.haxManager.resetManager(
+        window.HaxStore.write("activeHaxElement", {}, this);
+        window.HaxStore.instance.haxManager.resetManager(
           parseInt(detail.value)
         );
-        Polymer.HaxStore.instance.haxManager.toggleDialog();
+        window.HaxStore.instance.haxManager.toggleDialog();
         break;
       case "grid-plate-down":
         this.haxMoveGridPlate(
@@ -1040,8 +1021,8 @@ Polymer({
         break;
       case "close-menu":
         // this is the equivalent of hiding menus and resetting the board
-        Polymer.HaxStore.write("activeContainerNode", null, this);
-        Polymer.HaxStore.write("activeNode", null, this);
+        window.HaxStore.write("activeContainerNode", null, this);
+        window.HaxStore.write("activeNode", null, this);
         break;
       case "hax-edit-property":
         let haxInputMixer = this.$.haxinputmixer;
@@ -1115,44 +1096,44 @@ Polymer({
         // make sure input mixer is closed
         this._hideContextMenu(this.$.haxinputmixer);
         // reset the manager
-        Polymer.HaxStore.instance.haxManager.resetManager();
+        window.HaxStore.instance.haxManager.resetManager();
         // write activeElement updated so it'll go into the preview
-        haxElement = Polymer.HaxStore.nodeToHaxElement(
-          Polymer.HaxStore.instance.activeNode
+        haxElement = window.HaxStore.nodeToHaxElement(
+          window.HaxStore.instance.activeNode
         );
-        Polymer.HaxStore.write("activeHaxElement", haxElement, this);
+        window.HaxStore.write("activeHaxElement", haxElement, this);
         // clean up the manager before opening
-        Polymer.HaxStore.instance.haxManager.editExistingNode = true;
-        Polymer.HaxStore.instance.haxManager.selectStep("configure");
-        Polymer.HaxStore.instance.haxManager.toggleDialog();
+        window.HaxStore.instance.haxManager.editExistingNode = true;
+        window.HaxStore.instance.haxManager.selectStep("configure");
+        window.HaxStore.instance.haxManager.toggleDialog();
         // accessibility enhancement to keyboard focus configure button
         setTimeout(() => {
-          Polymer.HaxStore.instance.haxManager.$.preview.$.configurebutton.focus();
+          window.HaxStore.instance.haxManager.$.preview.$.configurebutton.focus();
         }, 100);
         break;
       // container / layout settings button has been activated
       case "hax-manager-configure-container":
-        Polymer.HaxStore.write(
+        window.HaxStore.write(
           "activeNode",
-          Polymer.HaxStore.instance.activeContainerNode,
+          window.HaxStore.instance.activeContainerNode,
           this
         );
         // make sure input mixer is closed
         this._hideContextMenu(this.$.haxinputmixer);
         // reset the manager
-        Polymer.HaxStore.instance.haxManager.resetManager();
+        window.HaxStore.instance.haxManager.resetManager();
         // write activeElement updated so it'll go into the preview
-        haxElement = Polymer.HaxStore.nodeToHaxElement(
-          Polymer.HaxStore.instance.activeNode
+        haxElement = window.HaxStore.nodeToHaxElement(
+          window.HaxStore.instance.activeNode
         );
-        Polymer.HaxStore.write("activeHaxElement", haxElement, this);
+        window.HaxStore.write("activeHaxElement", haxElement, this);
         // clean up the manager before opening
-        Polymer.HaxStore.instance.haxManager.editExistingNode = true;
-        Polymer.HaxStore.instance.haxManager.selectStep("configure");
-        Polymer.HaxStore.instance.haxManager.toggleDialog();
+        window.HaxStore.instance.haxManager.editExistingNode = true;
+        window.HaxStore.instance.haxManager.selectStep("configure");
+        window.HaxStore.instance.haxManager.toggleDialog();
         // accessibility enhancement to keyboard focus configure button
         setTimeout(() => {
-          Polymer.HaxStore.instance.haxManager.$.preview.$.configurebutton.focus();
+          window.HaxStore.instance.haxManager.$.preview.$.configurebutton.focus();
         }, 100);
         break;
     }
@@ -1187,9 +1168,9 @@ Polymer({
   _focusIn: function(e) {
     // only worry about these when we are in edit mode
     if (this.editMode && !this.__tabTrap) {
-      var normalizedEvent = Polymer.dom(e);
+      var normalizedEvent = dom(e);
       var local = normalizedEvent.localTarget;
-      var tags = Polymer.HaxStore.instance.validTagList;
+      var tags = window.HaxStore.instance.validTagList;
       let containerNode = local;
       let activeNode = null;
       // ensure this is valid
@@ -1221,7 +1202,7 @@ Polymer({
         }
         // we only allow disconnected node from container when
         // the container is a grid plate
-        else if (!Polymer.HaxStore.instance.isGridPlateElement(containerNode)) {
+        else if (!window.HaxStore.instance.isGridPlateElement(containerNode)) {
           activeNode = containerNode;
         }
         // won't deal with lists inside of p tags
@@ -1240,7 +1221,7 @@ Polymer({
           tags.includes(containerNode.tagName.toLowerCase()) &&
           !containerNode.classList.contains("ignore-activation")
         ) {
-          Polymer.HaxStore.write("activeContainerNode", containerNode, this);
+          window.HaxStore.write("activeContainerNode", containerNode, this);
           e.stopPropagation();
         } else if (containerNode.classList.contains("ignore-activation")) {
           e.stopPropagation();
@@ -1252,7 +1233,7 @@ Polymer({
           !activeNode.classList.contains("ignore-activation")
         ) {
           setTimeout(() => {
-            Polymer.HaxStore.write("activeNode", activeNode, this);
+            window.HaxStore.write("activeNode", activeNode, this);
           }, 50);
           e.stopPropagation();
         }
@@ -1285,12 +1266,12 @@ Polymer({
    * Test if this is a HAX element or not
    */
   _haxResolvePreviousElement: function(node) {
-    node = Polymer.dom(node).previousElementSibling;
+    node = dom(node).previousElementSibling;
     while (
       typeof node.tagName !== typeof undefined &&
       node.tagName.substring(0, 4) === "HAX-"
     ) {
-      node = Polymer.dom(node).previousElementSibling;
+      node = dom(node).previousElementSibling;
     }
     return node;
   },
@@ -1322,10 +1303,10 @@ Polymer({
    * Walk everything we find and either enable or disable editable state.
    */
   _applyContentEditable: function(status, target = this.$.body) {
-    let children = Polymer.dom(target).getDistributedNodes();
+    let children = dom(target).getDistributedNodes();
     // fallback for content nodes if not polymer managed nodes above
     if (children.length === 0) {
-      children = Polymer.dom(target).getEffectiveChildNodes();
+      children = dom(target).getEffectiveChildNodes();
     }
     for (var i = 0, len = children.length; i < len; i++) {
       // we have to tell the browser that primatives are editable
@@ -1386,7 +1367,7 @@ Polymer({
       setTimeout(() => {
         this.positionContextMenus(
           newValue,
-          Polymer.HaxStore.instance.activeContainerNode
+          window.HaxStore.instance.activeContainerNode
         );
       }, 25);
       if (newValue.style.textAlign == "right") {
@@ -1424,10 +1405,10 @@ Polymer({
     matchStyle = true
   ) {
     try {
-      Polymer.dom(this).insertBefore(menu, target);
+      dom(this).insertBefore(menu, target);
     } catch (err) {
       try {
-        Polymer.dom(target.parentNode).insertBefore(menu, target);
+        dom(target.parentNode).insertBefore(menu, target);
       } catch (err2) {}
     }
     // account for the target using these layout busters
@@ -1448,7 +1429,7 @@ Polymer({
    */
   _hideContextMenu: function(menu) {
     menu.classList.remove("hax-context-visible");
-    Polymer.dom(this.$.contextcontainer).appendChild(menu);
+    dom(this.$.contextcontainer).appendChild(menu);
   },
   /**
    * When the user hits escape key, let's deselect what we have now
@@ -1461,14 +1442,14 @@ Polymer({
       if (this.$.inlinecontextmenu.opened) {
         this.$.inlinecontextmenu.opened = false;
         // ensure these are the same
-        Polymer.HaxStore.write("activeNode", this.activeContainerNode, this);
+        window.HaxStore.write("activeNode", this.activeContainerNode, this);
         this.activeContainerNode.focus();
       } else if (this.activeNode === this.activeContainerNode) {
-        Polymer.HaxStore.write("activeContainerNode", null, this);
-        Polymer.HaxStore.write("activeNode", null, this);
+        window.HaxStore.write("activeContainerNode", null, this);
+        window.HaxStore.write("activeNode", null, this);
         document.body.focus();
       } else {
-        Polymer.HaxStore.write("activeNode", this.activeContainerNode, this);
+        window.HaxStore.write("activeNode", this.activeContainerNode, this);
         this.activeContainerNode.focus();
       }
     }
@@ -1480,14 +1461,13 @@ Polymer({
    */
   _delKeyPressed: function(e) {
     if (this.editMode) {
-      const activeNodeTextContent = Polymer.dom(this.activeContainerNode)
-        .textContent;
+      const activeNodeTextContent = dom(this.activeContainerNode).textContent;
       if (activeNodeTextContent === "") {
         e.preventDefault();
         e.stopPropagation();
         this.haxDeleteNode(this.activeContainerNode);
       } else if (
-        Polymer.HaxStore.instance.isTextElement(
+        window.HaxStore.instance.isTextElement(
           this._haxResolvePreviousElement(this.activeContainerNode)
         )
       ) {
@@ -1524,10 +1504,7 @@ Polymer({
    * Move between things pressing up and down if empty
    */
   _upKeyPressed: function(e) {
-    if (
-      this.editMode &&
-      Polymer.dom(this.activeContainerNode).textContent === ""
-    ) {
+    if (this.editMode && dom(this.activeContainerNode).textContent === "") {
       let node = this._haxResolvePreviousElement(this.activeContainerNode);
       // see if we can focus it otherwise we were at the top
       try {
@@ -1541,11 +1518,8 @@ Polymer({
    * Move between things pressing up and down if empty
    */
   _downKeyPressed: function(e) {
-    if (
-      this.editMode &&
-      Polymer.dom(this.activeContainerNode).textContent === ""
-    ) {
-      let node = Polymer.dom(this.activeContainerNode);
+    if (this.editMode && dom(this.activeContainerNode).textContent === "") {
+      let node = dom(this.activeContainerNode);
       // try and focus on the next thing
       try {
         node.nextElementSibling.focus();
@@ -1584,13 +1558,13 @@ Polymer({
         } else {
           while (!focus) {
             // do nothing
-            if (Polymer.dom(node).nextSibling == null) {
+            if (dom(node).nextSibling == null) {
               focus = true;
-            } else if (Polymer.dom(node).nextSibling.focus === "function") {
-              Polymer.dom(node).nextSibling.focus();
+            } else if (dom(node).nextSibling.focus === "function") {
+              dom(node).nextSibling.focus();
               focus = true;
             } else {
-              node = Polymer.dom(node).nextSibling;
+              node = dom(node).nextSibling;
             }
           }
         }
@@ -1605,7 +1579,7 @@ Polymer({
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
-      let node = Polymer.dom(this.activeContainerNode).previousSibling;
+      let node = dom(this.activeContainerNode).previousSibling;
       const activeNodeTagName = this.activeContainerNode.tagName;
       var selection = window.getSelection();
       try {
@@ -1624,7 +1598,7 @@ Polymer({
           if (node != null) {
             // step back ignoring hax- prefixed elements
             while (node != null && !this._haxElementTest(node)) {
-              node = Polymer.dom(node).previousSibling;
+              node = dom(node).previousSibling;
             }
           }
           if (node != null) {

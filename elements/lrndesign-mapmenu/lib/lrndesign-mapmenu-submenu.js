@@ -1,6 +1,8 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@polymer/paper-button/paper-button.js";
 import "./lrndesign-mapmenu-item.js";
 import "./lrndesign-mapmenu-header.js";
-import "@polymer/paper-button/paper-button.js";
 Polymer({
   _template: html`
     <style>
@@ -65,7 +67,7 @@ Polymer({
   },
 
   ready: function() {
-    this._observer = Polymer.dom(this.$.slot).observeNodes(info => {
+    this._observer = dom(this.$.slot).observeNodes(info => {
       var submenus = info.addedNodes.filter(
         item => item.nodeName === "LRNDESIGN-MAPMENU-SUBMENU"
       );

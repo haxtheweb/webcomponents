@@ -183,7 +183,7 @@ Polymer({
       this.__editText = "edit page";
     }
     this.fire("haxcms-edit-mode-changed", newValue);
-    Polymer.HaxStore.write("editMode", newValue, this);
+    window.HaxStore.write("editMode", newValue, this);
   },
 
   /**

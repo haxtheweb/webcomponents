@@ -1095,7 +1095,7 @@ Polymer({
   },
   _updateListScroller: function(_list) {
     var _Mathfloor = Math.floor,
-      _sl = Polymer.dom(_list.root).querySelector("#items"),
+      _sl = dom(_list.root).querySelector("#items"),
       _slh = _sl.getBoundingClientRect().height || 12863.994140625,
       _sli =
         _Mathfloor((_slh / (2100 - 1900 + 1)) * (this._activeYear - 1900 - 2)) +
@@ -1423,7 +1423,7 @@ Polymer({
   _updateThemeColor: function(_theme) {
     var _themes = ["dark-theme", "light-theme", "goog-theme"],
       _themeIdx = _themes.indexOf(_theme),
-      _distributedButtons = Polymer.dom(this).querySelectorAll("paper-button"),
+      _distributedButtons = dom(this).querySelectorAll("paper-button"),
       _distributedButtonsLen = _distributedButtons.length,
       _colorCode = ["#bcbcbc", "#737373", "#616161"][_themeIdx];
     if (0 <= _themeIdx) {

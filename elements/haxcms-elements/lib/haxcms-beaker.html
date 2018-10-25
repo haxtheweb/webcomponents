@@ -73,12 +73,12 @@ Polymer({
       e.stopPropagation();
       let reader = new FileReader();
       reader.onload = (event) => {
-        let fileLocation = 'files/' + Polymer.HaxStore.instance.haxManager.$.fileupload.files[0].name;
+        let fileLocation = 'files/' + window.HaxStore.instance.haxManager.$.fileupload.files[0].name;
         this.$.beaker.write(fileLocation, event.target.result);
-        Polymer.HaxStore.instance.haxManager.$.url.value = fileLocation;
-        Polymer.HaxStore.instance.haxManager.newAssetConfigure();
+        window.HaxStore.instance.haxManager.$.url.value = fileLocation;
+        window.HaxStore.instance.haxManager.newAssetConfigure();
       };
-      reader.readAsArrayBuffer(Polymer.HaxStore.instance.haxManager.$.fileupload.files[0])
+      reader.readAsArrayBuffer(window.HaxStore.instance.haxManager.$.fileupload.files[0])
     }
   },
   initialItem: function (e) {
@@ -98,7 +98,7 @@ Polymer({
   savePage: async function (e) {
     this.activeItem = e.detail;
     // make sure this location exists
-    await this.$.beaker.write(this.activeItem.location, Polymer.HaxStore.instance.activeHaxBody.haxToContent());
+    await this.$.beaker.write(this.activeItem.location, window.HaxStore.instance.activeHaxBody.haxToContent());
     Polymer.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show('Page updated!');
     Polymer.cmsSiteEditor.instance.haxCmsSiteEditorElement.fire('haxcms-trigger-update-page', true);
   },

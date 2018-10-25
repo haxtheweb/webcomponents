@@ -378,7 +378,7 @@ Polymer({
       parts.pop();
       let site = parts.pop();
       this.set('updatePageData.siteName', site);
-      this.set('updatePageData.body', Polymer.HaxStore.instance.activeHaxBody.haxToContent());
+      this.set('updatePageData.body', window.HaxStore.instance.activeHaxBody.haxToContent());
       this.set('updatePageData.page', this.activeItem.id);
       this.set('updatePageData.jwt', this.jwt);
       // send the request
@@ -457,7 +457,7 @@ Polymer({
    * Notice body of content has changed and import into HAX
    */
   _bodyChanged: function (e) {
-    Polymer.HaxStore.instance.activeHaxBody.importContent(e.detail);
+    window.HaxStore.instance.activeHaxBody.importContent(e.detail);
   },
 });
 </script>

@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-meta/iron-meta.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 
@@ -164,7 +165,7 @@ Polymer({
   _updateIcon: function() {
     if (this._usesIconset()) {
       if (this._img && this._img.parentNode) {
-        Polymer.dom(this.root).removeChild(this._img);
+        dom(this.root).removeChild(this._img);
       }
       if (this._iconName === "") {
         if (this._iconset) {
@@ -192,7 +193,7 @@ Polymer({
         this._img.draggable = false;
       }
       this._img.src = this.src;
-      Polymer.dom(this.root).appendChild(this._img);
+      dom(this.root).appendChild(this._img);
     }
   }
 });

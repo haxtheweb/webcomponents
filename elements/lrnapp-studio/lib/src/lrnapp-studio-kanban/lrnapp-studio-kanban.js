@@ -1,3 +1,5 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "build/build/default/build.js";
 Polymer({
   _template: html`
@@ -159,7 +161,7 @@ Polymer({
    */
   assignmentFocusIn: function(e) {
     let root = this;
-    var normalizedEvent = Polymer.dom(e);
+    var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     console.log(root.activeAssignment);
     console.log(local.id);

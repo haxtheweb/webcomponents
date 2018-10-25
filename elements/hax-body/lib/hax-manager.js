@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-button/paper-button.js";
@@ -396,7 +397,7 @@ Polymer({
     this.open();
     // reference the active place holder element since place holders are
     // the only things possible for seeing these
-    Polymer.HaxStore.instance.activePlaceHolder = e.detail.placeHolderElement;
+    window.HaxStore.instance.activePlaceHolder = e.detail.placeHolderElement;
     // ! I can't believe this actually works. This takes the event
     // ! that was a drop event else where on the page and then repoints
     // ! it to simulate the drop event using the same event structure that
@@ -418,19 +419,19 @@ Polymer({
         type: e.detail.file.type
       };
       // we have no clue what this is.. let's try and guess..
-      var type = Polymer.HaxStore.guessGizmoType(values);
+      var type = window.HaxStore.guessGizmoType(values);
       // find targets that support this type
-      let targets = Polymer.HaxStore.getHaxAppStoreTargets(type);
+      let targets = window.HaxStore.getHaxAppStoreTargets(type);
       // make sure we have targets
       if (targets.length != 0) {
-        Polymer.HaxStore.instance.haxAppPicker.presentOptions(
+        window.HaxStore.instance.haxAppPicker.presentOptions(
           targets,
           type,
           "Where would you like to upload this " + type + "?",
           "app"
         );
       } else {
-        Polymer.HaxStore.toast(
+        window.HaxStore.toast(
           "Sorry, you don't have a storage location that can handle " +
             type +
             " uploads!",
@@ -577,7 +578,7 @@ Polymer({
   insertHaxElement: function(e) {
     // bubble up the inject event / element to the body
     let previewNode = this.$.preview.previewNode;
-    let element = Polymer.HaxStore.nodeToHaxElement(previewNode);
+    let element = window.HaxStore.nodeToHaxElement(previewNode);
     element.replace = this.editExistingNode;
     if (typeof this.activeHaxElement.__type !== typeof undefined) {
       element.__type = this.activeHaxElement.__type;
@@ -588,7 +589,7 @@ Polymer({
     if (this.editExistingNode) {
       toast = "Element updated!";
     }
-    Polymer.HaxStore.toast(toast, 2000);
+    window.HaxStore.toast(toast, 2000);
     // close window
     this.close();
   },
@@ -600,9 +601,9 @@ Polymer({
     this.selectStep("select");
     this.activePage = activePage;
     document.body.style.overflow = null;
-    this.appList = Polymer.HaxStore.instance.appList;
+    this.appList = window.HaxStore.instance.appList;
     this.searching = false;
-    Polymer.HaxStore.write("activeApp", null, this);
+    window.HaxStore.write("activeApp", null, this);
     window.dispatchEvent(new Event("resize"));
     this.editExistingNode = false;
     this.$.url.value = "";
@@ -635,11 +636,11 @@ Polymer({
    * Respond to the modal closing
    */
   close: function(e) {
-    var normalizedEvent = Polymer.dom(e);
+    var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     if (typeof e === typeof undefined || local === this.$.dialog) {
       // reset the active element which will force this to reset the manager
-      Polymer.HaxStore.write("activeHaxElement", {}, this);
+      window.HaxStore.write("activeHaxElement", {}, this);
       this.opened = false;
       this.resetManager();
     }
@@ -660,17 +661,17 @@ Polymer({
       source: this.$.url.value
     };
     // we have no clue what this is.. let's try and guess..
-    var type = Polymer.HaxStore.guessGizmoType(values);
-    let haxElements = Polymer.HaxStore.guessGizmo(type, values);
+    var type = window.HaxStore.guessGizmoType(values);
+    let haxElements = window.HaxStore.guessGizmo(type, values);
     // see if we got anything
     if (haxElements.length > 0) {
       if (haxElements.length === 1) {
         if (typeof haxElements[0].tag !== typeof undefined) {
-          Polymer.HaxStore.write("activeHaxElement", haxElements[0], this);
+          window.HaxStore.write("activeHaxElement", haxElements[0], this);
         }
       } else {
         // hand off to hax-app-picker to deal with the rest of this
-        Polymer.HaxStore.instance.haxAppPicker.presentOptions(
+        window.HaxStore.instance.haxAppPicker.presentOptions(
           haxElements,
           type,
           "Pick how to present the " + type,
@@ -678,7 +679,7 @@ Polymer({
         );
       }
     } else {
-      Polymer.HaxStore.toast(
+      window.HaxStore.toast(
         "Sorry, HAX doesn't know how to handle that type of link yet."
       );
     }
@@ -691,7 +692,7 @@ Polymer({
     if (this.opened && toggle) {
       this.close();
     } else {
-      Polymer.HaxStore.instance.closeAllDrawers(this);
+      window.HaxStore.instance.closeAllDrawers(this);
     }
   },
 

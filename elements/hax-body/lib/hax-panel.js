@@ -299,8 +299,8 @@ Polymer({
         detail.tag = "img";
         detail.content = "";
         detail.properties = {
-          src: this.resolveUrl(Polymer.HaxStore.instance.defaults.image.src),
-          alt: Polymer.HaxStore.instance.defaults.image.alt,
+          src: this.resolveUrl(window.HaxStore.instance.defaults.image.src),
+          alt: window.HaxStore.instance.defaults.image.alt,
           style: "width:100%;"
         };
         this.fire("hax-insert-content", detail);
@@ -309,7 +309,7 @@ Polymer({
         detail.tag = "iframe";
         detail.content = "";
         detail.properties = {
-          src: Polymer.HaxStore.instance.defaults.iframe.src,
+          src: window.HaxStore.instance.defaults.iframe.src,
           height: "400px",
           width: "100%",
           style: "width:100%;"
@@ -322,17 +322,17 @@ Polymer({
         this.fire("hax-insert-content", detail);
         break;
       case "hax-manager-open":
-        Polymer.HaxStore.write("activeHaxElement", {}, this);
-        Polymer.HaxStore.instance.haxManager.resetManager(
+        window.HaxStore.write("activeHaxElement", {}, this);
+        window.HaxStore.instance.haxManager.resetManager(
           parseInt(detail.value)
         );
-        Polymer.HaxStore.instance.haxManager.toggleDialog(false);
+        window.HaxStore.instance.haxManager.toggleDialog(false);
         break;
       case "hax-stax-picker-open":
-        Polymer.HaxStore.instance.haxStaxPicker.toggleDialog();
+        window.HaxStore.instance.haxStaxPicker.toggleDialog();
         break;
       case "hax-blox-picker-open":
-        Polymer.HaxStore.instance.haxBloxPicker.toggleDialog();
+        window.HaxStore.instance.haxBloxPicker.toggleDialog();
         break;
       case "undo":
         document.execCommand("undo");
@@ -378,24 +378,24 @@ Polymer({
    * HTML Export trigger.
    */
   _htmlExportDialog: function(e) {
-    Polymer.HaxStore.instance.haxExport.toggleDialog();
+    window.HaxStore.instance.haxExport.toggleDialog();
   },
 
   /**
    * Preferences trigger.
    */
   _preferencesDialog: function(e) {
-    Polymer.HaxStore.instance.haxPreferences.toggleDialog();
+    window.HaxStore.instance.haxPreferences.toggleDialog();
   },
 
   /**
    * Toggle the panel.
    */
   toggle: function(e) {
-    Polymer.HaxStore.write("editMode", !this.editMode, this);
+    window.HaxStore.write("editMode", !this.editMode, this);
     this.$.drawer.opened = this.editMode;
     if (!this.$.drawer.opened) {
-      Polymer.HaxStore.instance.closeAllDrawers();
+      window.HaxStore.instance.closeAllDrawers();
     }
   }
 });

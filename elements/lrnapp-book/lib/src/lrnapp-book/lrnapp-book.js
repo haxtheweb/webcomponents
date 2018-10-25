@@ -1,3 +1,5 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "./imports.js";
 import "./lrnapp-book-progress-dashboard.js";
 /**
@@ -964,7 +966,7 @@ Polymer({
    * Change the activeOutline
    */
   _bookOutlineTap: function(e) {
-    var normalizedEvent = Polymer.dom(e);
+    var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     // support switching if the thing clicked has a book index associated
     if (typeof local.getAttribute("data-book-parent") !== typeof undefined) {
@@ -1298,7 +1300,7 @@ Polymer({
       this.set("currentTitle", newValue.title);
       // when updating data we need to clear the slot's content
       // while maintaining the data model correctly
-      let slot = Polymer.dom(this.$.haxbody);
+      let slot = dom(this.$.haxbody);
       while (slot.firstChild !== null) {
         slot.removeChild(slot.firstChild);
       }
@@ -1323,7 +1325,7 @@ Polymer({
       // same as above but in reverse; now take stuf from what
       // came across and correctly add it into the slot
       while (tmp.firstChild) {
-        Polymer.dom(this.$.haxbody).appendChild(tmp.firstChild);
+        dom(this.$.haxbody).appendChild(tmp.firstChild);
       }
       // reset scroll position back to top of this content
       this._resetScroll();

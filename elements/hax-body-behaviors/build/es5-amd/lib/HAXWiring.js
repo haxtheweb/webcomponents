@@ -137,13 +137,13 @@ define(["exports"], function(_exports) {
           ("undefined" === typeof Polymer
             ? "undefined"
             : babelHelpers.typeof(Polymer)) !== "undefined" &&
-          babelHelpers.typeof(Polymer.HaxStore) !== "undefined" &&
-          babelHelpers.typeof(Polymer.HaxStore.instance) !== "undefined" &&
-          null != Polymer.HaxStore.instance &&
-          babelHelpers.typeof(Polymer.HaxStore.instance.elementList) !==
+          babelHelpers.typeof(window.HaxStore) !== "undefined" &&
+          babelHelpers.typeof(window.HaxStore.instance) !== "undefined" &&
+          null != window.HaxStore.instance &&
+          babelHelpers.typeof(window.HaxStore.instance.elementList) !==
             "undefined" &&
           babelHelpers.typeof(
-            Polymer.HaxStore.instance.elementList[tag.toLowerCase()]
+            window.HaxStore.instance.elementList[tag.toLowerCase()]
           ) === "undefined"
         ) {
           var _evt = new CustomEvent("hax-register-properties", {
@@ -156,13 +156,13 @@ define(["exports"], function(_exports) {
           ("undefined" === typeof Polymer
             ? "undefined"
             : babelHelpers.typeof(Polymer)) !== "undefined" &&
-          babelHelpers.typeof(Polymer.HaxStore) !== "undefined" &&
-          babelHelpers.typeof(Polymer.HaxStore.instance) !== "undefined" &&
-          null != Polymer.HaxStore.instance &&
-          babelHelpers.typeof(Polymer.HaxStore.instance.elementList) !==
+          babelHelpers.typeof(window.HaxStore) !== "undefined" &&
+          babelHelpers.typeof(window.HaxStore.instance) !== "undefined" &&
+          null != window.HaxStore.instance &&
+          babelHelpers.typeof(window.HaxStore.instance.elementList) !==
             "undefined" &&
           babelHelpers.typeof(
-            Polymer.HaxStore.instance.elementList[_this.tagName.toLowerCase()]
+            window.HaxStore.instance.elementList[_this.tagName.toLowerCase()]
           ) === "undefined"
         ) {
           var _evt2 = new CustomEvent("hax-register-properties", {
@@ -525,21 +525,20 @@ define(["exports"], function(_exports) {
                 ? "undefined"
                 : babelHelpers.typeof(Polymer)) !== "undefined"
             ) {
-              for (var i in Polymer.dom(target).childNodes) {
+              for (var i in dom(target).childNodes) {
                 if (
-                  babelHelpers.typeof(Polymer.dom(target).childNodes[i]) !==
-                  "undefined"
+                  babelHelpers.typeof(dom(target).childNodes[i]) !== "undefined"
                 ) {
-                  if (1 === Polymer.dom(target).childNodes[i].nodeType) {
-                    _slot += Polymer.dom(target).childNodes[i].innerHTML;
+                  if (1 === dom(target).childNodes[i].nodeType) {
+                    _slot += dom(target).childNodes[i].innerHTML;
                   } else if (
-                    1 !== Polymer.dom(target).childNodes[i].nodeType &&
+                    1 !== dom(target).childNodes[i].nodeType &&
                     babelHelpers.typeof(
-                      Polymer.dom(target).childNodes[i].textContent
+                      dom(target).childNodes[i].textContent
                     ) !== "undefined" &&
-                    "" !== Polymer.dom(target).childNodes[i].textContent
+                    "" !== dom(target).childNodes[i].textContent
                   ) {
-                    _slot += Polymer.dom(target).childNodes[i].textContent;
+                    _slot += dom(target).childNodes[i].textContent;
                   }
                 }
               }

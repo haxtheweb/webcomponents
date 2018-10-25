@@ -168,6 +168,6 @@ Polymer({
     for (var i = 0; i < this.stax.length; i++) {
       this.fire("hax-insert-content", this.stax[i]);
     }
-    Polymer.HaxStore.instance.haxStaxPicker.close();
+    window.HaxStore.instance.haxStaxPicker.close();
   }
 });

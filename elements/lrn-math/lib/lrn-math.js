@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
 `lrn-math`
@@ -73,11 +74,11 @@ Polymer({
    */
   _mathChanged: function(newValue, oldValue) {
     if (newValue !== oldValue) {
-      while (Polymer.dom(this).firstChild !== null) {
-        Polymer.dom(this).removeChild(Polymer.dom(this).firstChild);
+      while (dom(this).firstChild !== null) {
+        dom(this).removeChild(dom(this).firstChild);
       }
       let frag = document.createTextNode(newValue);
-      Polymer.dom(this).appendChild(frag);
+      dom(this).appendChild(frag);
     }
   },
 
@@ -154,7 +155,7 @@ Polymer({
       document.body.appendChild(mathjaxCDN);
       window.__mathJaxLoaded = true;
     }
-    this._observer = Polymer.dom(this.$.content).observeNodes(info => {
+    this._observer = dom(this.$.content).observeNodes(info => {
       this.math = info.addedNodes.map(node => node.textContent).toString();
       setTimeout(function() {
         MathJax.Hub.Queue(["Typeset", MathJax.Hub]);

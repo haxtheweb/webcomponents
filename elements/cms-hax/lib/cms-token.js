@@ -1,7 +1,8 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/paper-spinner/paper-spinner.js";
+import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
@@ -193,14 +194,12 @@ Polymer({
           .addEventListener("click", this.__tokenClicked.bind(this));
       }
       // wipe our own slot here
-      this.wipeSlot(Polymer.dom(this));
+      this.wipeSlot(dom(this));
       // now inject the content we got
       this.async(() => {
         let template = document.createElement("template");
         template.innerHTML = newValue.content;
-        Polymer.dom(this).appendChild(
-          document.importNode(template.content, true)
-        );
+        dom(this).appendChild(document.importNode(template.content, true));
         this.loading = false;
       });
     }
@@ -282,7 +281,7 @@ Polymer({
       this.token !== null &&
       this.token !== ""
     ) {
-      let slot = Polymer.dom(this).getEffectiveChildNodes();
+      let slot = dom(this).getEffectiveChildNodes();
       // only kick off request if there's nothing in it
       // if it has something in it that means we did some
       // remote rendering ahead of time

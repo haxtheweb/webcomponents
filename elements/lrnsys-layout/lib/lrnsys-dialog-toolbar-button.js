@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 Polymer({
@@ -46,7 +47,7 @@ Polymer({
    * Button has been tapped.
    */
   _onTap: function(e) {
-    var normalizedEvent = Polymer.dom(e);
+    var normalizedEvent = dom(e);
     var localTarget = normalizedEvent.localTarget;
     var id = localTarget.getAttribute("id");
     this.fire("dialog-toolbar-button-tapped", { id: id });

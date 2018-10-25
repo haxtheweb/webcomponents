@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "./shared-style.js";
 import "./step-style.js";
 import "./syntax-style.js";
@@ -83,7 +84,7 @@ Polymer({
   _isHighlighted: false,
 
   _activeChanged: function() {
-    var contentsequencer = Polymer.dom(this).parentNode;
+    var contentsequencer = dom(this).parentNode;
 
     // Don't syntax highlight code if lrndesign-contentsequencer requests it.
     if (
@@ -96,11 +97,11 @@ Polymer({
     if (this.active && !this._isHighlighted) {
       // Minimize jank by waiting one click to do syntax highlighting.
       this.async(function() {
-        var blocks = Polymer.dom(this).querySelectorAll("pre > code");
+        var blocks = dom(this).querySelectorAll("pre > code");
         blocks.forEach(
           function(block) {
             // TODO: consider pre-escaping markup on server.
-            Polymer.dom(block).innerHTML = prettyPrintOne(
+            dom(block).innerHTML = prettyPrintOne(
               encodeHTMLEntities_(block.textContent)
             );
 

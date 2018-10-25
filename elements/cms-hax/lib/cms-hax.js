@@ -1,17 +1,18 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "hax-body/hax-store.js";
-import "hax-body/hax-body.js";
-import "hax-body/hax-autoloader.js";
-import "hax-body/hax-manager.js";
-import "hax-body/hax-panel.js";
-import "hax-body/hax-app-picker.js";
-import "hax-body/hax-export-dialog.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-toast/paper-toast.js";
-import "./cms-token.js";
-import "./cms-block.js";
-import "./cms-views.js";
-import "./cms-entity.js";
+import "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import "@lrnwebcomponents/hax-body/hax-body.js";
+import "@lrnwebcomponents/hax-body/lib/hax-autoloader.js";
+import "@lrnwebcomponents/hax-body/lib/hax-manager.js";
+import "@lrnwebcomponents/hax-body/lib/hax-panel.js";
+import "@lrnwebcomponents/hax-body/lib/hax-app-picker.js";
+import "@lrnwebcomponents/hax-body/lib/hax-export-dialog.js";
+import "./lib/cms-token.js";
+import "./lib/cms-block.js";
+import "./lib/cms-views.js";
+import "./lib/cms-entity.js";
 /**
 `cms-hax`
 A LRN polymer app
@@ -228,16 +229,16 @@ Polymer({
     document.body.addEventListener("hax-save", this._saveFired.bind(this));
     // open things by default and set state for edit mode
     if (this.openDefault) {
-      Polymer.HaxStore.write("editMode", true, this);
+      window.HaxStore.write("editMode", true, this);
     }
     // notice ANY change to body and bubble up, only when we are attached though
     if (this.syncBody) {
-      Polymer.dom(this.$.body).observeNodes(function(info) {
+      dom(this.$.body).observeNodes(function(info) {
         if (!this.__lock) {
           this.__lock = true;
           this.fire(
             "hax-body-content-changed",
-            Polymer.HaxStore.instance.activeHaxBody.haxToContent()
+            window.HaxStore.instance.activeHaxBody.haxToContent()
           );
           setTimeout(() => {
             this.__lock = false;
@@ -268,7 +269,7 @@ Polymer({
    */
   _saveFired: function(e) {
     // generate sanitized content
-    this.updatePageData = Polymer.HaxStore.instance.activeHaxBody.haxToContent();
+    this.updatePageData = window.HaxStore.instance.activeHaxBody.haxToContent();
     // send the request
     this.$.pageupdateajax.generateRequest();
   },

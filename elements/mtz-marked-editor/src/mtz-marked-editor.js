@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-form-element-behavior/iron-form-element-behavior.js";
 import "@polymer/iron-validatable-behavior/iron-validatable-behavior.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 /**
 `mtz-marked-editor`
 Creates a textarea with common editor logic and can be controlled by UI elements
@@ -137,7 +137,7 @@ Polymer({
   __bindControlToEditor(event) {
     event.stopPropagation();
     // TODO: Update this in 2.0 to use updated API.
-    // Polymer.dom(event).rootTarget => event.composedPath()[0]
+    // dom(event).rootTarget => event.composedPath()[0]
     dom(event).rootTarget.__editor = this;
   }
 });

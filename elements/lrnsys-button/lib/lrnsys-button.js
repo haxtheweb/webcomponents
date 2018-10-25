@@ -1,8 +1,9 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 /**
 `lrnsys-button`
 A LRN element
@@ -253,7 +254,7 @@ Polymer({
    */
   focusToggle: function(e) {
     // weird but reality... focus event is the button inside of here
-    let root = Polymer.dom(this).parentNode.parentNode;
+    let root = dom(this).parentNode.parentNode;
     if (typeof root.hoverClass !== typeof undefined && !root.disabled) {
       // break class into array
       var classes = root.hoverClass.split(" ");

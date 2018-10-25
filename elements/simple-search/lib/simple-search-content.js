@@ -1,4 +1,5 @@
-import "@polymer/polymer/polymer.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
@@ -65,7 +66,7 @@ Polymer({
   enableSearch: function(searchObject) {
     let root = this,
       content = [{ matched: false, text: root.content }];
-    if (content[0].text === null) content[0].text = Polymer.dom(root).innerHTML;
+    if (content[0].text === null) content[0].text = dom(root).innerHTML;
     // set rendered content to default unsearched content
     root.setContent(content);
     // listen for changes to search

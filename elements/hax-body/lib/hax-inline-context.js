@@ -98,19 +98,19 @@ Polymer({
       // make sure we are in an edit mode
       if (
         window.__selectionLock &&
-        Polymer.HaxStore.instance.editMode &&
-        typeof Polymer.HaxStore.instance.activeNode !== typeof undefined &&
-        Polymer.HaxStore.instance.activeNode !== null &&
-        typeof Polymer.HaxStore.instance.activeNode.tagName !==
+        window.HaxStore.instance.editMode &&
+        typeof window.HaxStore.instance.activeNode !== typeof undefined &&
+        window.HaxStore.instance.activeNode !== null &&
+        typeof window.HaxStore.instance.activeNode.tagName !==
           typeof undefined &&
-        Polymer.HaxStore.instance.isTextElement(
-          Polymer.HaxStore.instance.activeNode
+        window.HaxStore.instance.isTextElement(
+          window.HaxStore.instance.activeNode
         ) &&
-        !Polymer.HaxStore.instance.haxManager.opened
+        !window.HaxStore.instance.haxManager.opened
       ) {
         window.__selectionLock = false;
         try {
-          Polymer.HaxStore.instance.activeHaxBody.$.inlinecontextmenu.opened = false;
+          window.HaxStore.instance.activeHaxBody.$.inlinecontextmenu.opened = false;
           let selection = window.getSelection();
           let range = selection.getRangeAt(0).cloneRange();
           // if we have no offset (caret is positioned but no selection) then
@@ -122,11 +122,11 @@ Polymer({
               range.setStart(selection.focusNode, range.startOffset);
               // inject the tracking element directly in front of this clone of a range
               range.insertNode(
-                Polymer.HaxStore.instance.activeHaxBody.$.inlinetracker
+                window.HaxStore.instance.activeHaxBody.$.inlinetracker
               );
               setTimeout(() => {
                 // now position the menu appropriately
-                Polymer.HaxStore.instance.activeHaxBody.$.inlinecontextmenu.opened = true;
+                window.HaxStore.instance.activeHaxBody.$.inlinecontextmenu.opened = true;
               }, 100);
             } catch (e) {}
           }
@@ -143,21 +143,19 @@ Polymer({
   _openedChanged: function(newValue, oldValue) {
     // set to close now
     if (oldValue && !newValue) {
-      Polymer.HaxStore.instance.activeHaxBody._hideContextMenu(
-        Polymer.HaxStore.instance.activeHaxBody.$.inlinetracker
+      window.HaxStore.instance.activeHaxBody._hideContextMenu(
+        window.HaxStore.instance.activeHaxBody.$.inlinetracker
       );
       // unset the active placeholder to avoid conflicts as the object
-      Polymer.HaxStore.instance.activePlaceHolder = null;
+      window.HaxStore.instance.activePlaceHolder = null;
     } else if (newValue && !oldValue) {
-      Polymer.HaxStore.instance.activeHaxBody.$.inlinecontextmenu.style.left =
-        Polymer.HaxStore.instance.activeHaxBody.$.inlinetracker.offsetLeft -
-        Polymer.HaxStore.instance.activeHaxBody.$.inlinecontextmenu
-          .offsetWidth /
+      window.HaxStore.instance.activeHaxBody.$.inlinecontextmenu.style.left =
+        window.HaxStore.instance.activeHaxBody.$.inlinetracker.offsetLeft -
+        window.HaxStore.instance.activeHaxBody.$.inlinecontextmenu.offsetWidth /
           4 +
         "px";
-      Polymer.HaxStore.instance.activeHaxBody.$.inlinecontextmenu.style.top =
-        Polymer.HaxStore.instance.activeHaxBody.$.inlinetracker.offsetTop +
-        "px";
+      window.HaxStore.instance.activeHaxBody.$.inlinecontextmenu.style.top =
+        window.HaxStore.instance.activeHaxBody.$.inlinetracker.offsetTop + "px";
     }
   },
 
@@ -179,24 +177,24 @@ Polymer({
         // all this in order to replace it with something new.
         // The web is stupid at times.
         newRange.setStartAfter(
-          Polymer.HaxStore.instance.activeHaxBody.$.inlinetracker
+          window.HaxStore.instance.activeHaxBody.$.inlinetracker
         );
         // store placeholder because if this all goes through we'll want
         // to kill the originating text
-        Polymer.HaxStore.write(
+        window.HaxStore.write(
           "activePlaceHolder",
           newRange,
-          Polymer.HaxStore.instance.activeHaxBody.$.inlinecontextmenu
+          window.HaxStore.instance.activeHaxBody.$.inlinecontextmenu
         );
         let values = {
           text: newRange.toString()
         };
         let type = "inline";
-        let haxElements = Polymer.HaxStore.guessGizmo(type, values);
+        let haxElements = window.HaxStore.guessGizmo(type, values);
         // see if we got anything
         if (haxElements.length > 0) {
           // hand off to hax-app-picker to deal with the rest of this
-          Polymer.HaxStore.instance.haxAppPicker.presentOptions(
+          window.HaxStore.instance.haxAppPicker.presentOptions(
             haxElements,
             type,
             "Pick how to present this inline gizmo",

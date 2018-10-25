@@ -176,7 +176,7 @@ Polymer({
     if (typeof e.detail !== typeof undefined) {
       this.set("__activeApp", e.detail);
       this.searching = true;
-      Polymer.HaxStore.write("activeApp", this.__appList[e.detail], this);
+      window.HaxStore.write("activeApp", this.__appList[e.detail], this);
     }
   },
 
@@ -185,9 +185,9 @@ Polymer({
    */
   _activeAppChanged: function(newValue, oldValue) {
     if (typeof oldValue !== typeof undefined && newValue != null) {
-      Polymer.HaxStore.instance.haxManager.searching = true;
+      window.HaxStore.instance.haxManager.searching = true;
       setTimeout(() => {
-        Polymer.HaxStore.instance.haxManager.updateStyles();
+        window.HaxStore.instance.haxManager.updateStyles();
         window.dispatchEvent(new Event("resize"));
       }, 100);
     }
@@ -211,7 +211,7 @@ Polymer({
    */
   resetBrowser: function() {
     this.searching = false;
-    this.set("__appList", Polymer.HaxStore.instance.appList);
+    this.set("__appList", window.HaxStore.instance.appList);
     this.$.filter.$$("#ironlist").filtered = this.__appList;
     this.$.inputfilter.value = "";
     this.$.filtertype.value = "details.title";

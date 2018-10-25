@@ -189,7 +189,7 @@ Polymer({
   },
   ready: function () {
     this.$.container.addEventListener('click', (e) => {
-      let target = Polymer.dom(e).localTarget;
+      let target = dom(e).localTarget;
       const eventName = target.getAttribute('data-event');
       // check to see if we have an event name to work with
       if (eventName) {

@@ -125,7 +125,7 @@ Polymer({
    * that it ensures that happens
    */
   _itemTapped: function (e) {
-    var normalizedEvent = Polymer.dom(e);
+    var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     var activeId = local.getAttribute('data-id');
     if (local.tagName === 'PAPER-BUTTON' && typeof activeId !== typeof undefined) {
