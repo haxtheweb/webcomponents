@@ -2,7 +2,6 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-styles/default-theme.js";
 import "@polymer/paper-styles/typography.js";
 import { PaperInputAddonBehavior } from "./paper-input-addon-behavior.js";
-import { Polymer } from "@polymer/polymer/lib/legacy/polymer-fn.js";
 /**
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.

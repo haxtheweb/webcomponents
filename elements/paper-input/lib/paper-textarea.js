@@ -5,7 +5,6 @@ import { PaperInputBehavior } from "./paper-input-behavior.js";
 import "./paper-input-char-counter.js";
 import "./paper-input-container.js";
 import "./paper-input-error.js";
-import { Polymer } from "@polymer/polymer/lib/legacy/polymer-fn.js";
 /**
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
