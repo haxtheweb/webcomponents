@@ -5,29 +5,29 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
     <script src="../node_modules/wct-browser-legacy/browser.js"></script>
-    <script type="module" src="../a-11-y-collapse.js"></script>
+    <script type="module" src="../a11y-collapse.js"></script>
   </head>
   <body>
 
-    <a-11-y-collapse>
+    <a11y-collapse>
       This is the element content.
-    </a-11-y-collapse>
+    </a11y-collapse>
 <test-fixture id="BasicTestFixture">
   <template>
-    <a-11-y-collapse></a-11-y-collapse>
+    <a11y-collapse></a11y-collapse>
   </template>
 </test-fixture>
 
 <test-fixture id="ChangedPropertyTestFixture">
   <template>
-    <a-11-y-collapse></a-11-y-collapse>
+    <a11y-collapse></a11y-collapse>
   </template>
 </test-fixture>
 
 <script type="module">
-  suite('<a-11-y-collapse>', () => {
+  suite('<a11y-collapse>', () => {
     test('it should upgrade', () => {
-      assert.instanceOf(document.querySelector('a-11-y-collapse'), customElements.get("a-11-y-collapse", 'a-11-y-collapse should be an instance of a11YCollapse'));
+      assert.instanceOf(document.querySelector('a11y-collapse'), customElements.get("a11y-collapse", 'a11y-collapse should be an instance of a11YCollapse'));
     });
 
     /*test('setting a property on the element works', () => {

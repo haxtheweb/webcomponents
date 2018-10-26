@@ -6,7 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 export { A11YCollapse };
 /**
- * `a-11-y-collapse`
+ * `a11y-collapse`
  * `Start of a11y-collapse`
  *
  * @microcopy - language worth noting:
@@ -70,7 +70,7 @@ class A11YCollapse extends PolymerElement {
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "a-11-y-collapse";
+    return "a11y-collapse";
   }
   /**
    * life cycle, element is afixed to the DOM

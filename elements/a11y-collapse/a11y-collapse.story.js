@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/polymer";
 import * as storybookBridge from "@storybook/addon-knobs/polymer";
-import { A11YCollapse } from "./a-11-y-collapse.js";
+import { A11YCollapse } from "./a11y-collapse.js";
 
 // need to account for polymer goofiness when webpack rolls this up
 var template = require("raw-loader!./demo/index.html");
@@ -10,10 +10,10 @@ var array_matches = pattern.exec(template);
 template = array_matches[1];
 const stories = storiesOf("11", module);
 stories.addDecorator(storybookBridge.withKnobs);
-stories.add("a-11-y-collapse", () => {
+stories.add("a11y-collapse", () => {
   var binding = {};
   // start of tag for demo
-  let elementDemo = `<a-11-y-collapse`;
+  let elementDemo = `<a11y-collapse`;
   // mix in properties defined on the class
   for (var key in A11YCollapse.properties) {
     // skip prototype
@@ -42,7 +42,7 @@ stories.add("a-11-y-collapse", () => {
     }
   }
   const innerText = storybookBridge.text("Inner contents", "11");
-  elementDemo += `> ${ innerText }</a-11-y-collapse>`
+  elementDemo += `> ${ innerText }</a11y-collapse>`
   return `
   <h1>Live demo</h1>
   ${elementDemo}
