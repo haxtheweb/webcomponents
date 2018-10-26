@@ -1,46 +1,78 @@
-/**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrnappFabMenu };
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/paper-fab-speed-dial/paper-fab-speed-dial.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 /**
  * `lrnapp-fab-menu`
- * `Automated conversion of lrnapp-fab-menu/`
+ * `floating action button with menu`
  *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
  * @demo demo/index.html
  */
-class LrnappFabMenu extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+Polymer({
+  _template: html`
+  <custom-style>
+    <style include="materializecss-styles-colors"></style>
+    <style>
+      .open,.overlay {
+        position: fixed;
+        bottom: var(--paper-fab-speed-dial-bottom, 16px);
+        right: var(--paper-fab-speed-dial-right, 16px);
+      }
+      .open {
+        --paper-fab-background: var(--paper-fab-speed-dial-background);
+        --paper-fab-keyboard-focus-background: var(--paper-fab-speed-dial-keyboard-focus-background);
+      }
+      .close {
+        --paper-fab-background: var(--paper-grey-500);
+        --paper-fab-keyboard-focus-background: var(--paper-grey-500);
+        margin-top: 20px;
+        display: inline-block;
+      }
+      .overlay {
+        text-align: right;
+      }
+    </style>
+  </custom-style>
+    <paper-fab icon="[[icon]]" class="open blue" on-tap="open" hidden\$="[[opened]]" disabled="[[disabled]]"></paper-fab>
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrnapp-fab-menu";
+    <paper-fab-speed-dial-overlay class="overlay" opened="{{opened}}" with-backdrop="">
+      <slot></slot>
+      <paper-fab icon="close" class="close" on-tap="close"></paper-fab>
+    </paper-fab-speed-dial-overlay>
+`,
+
+  is: "lrnapp-fab-menu",
+
+  properties: {
+    icon: {
+      type: String,
+      value: "add"
+    },
+    opened: {
+      type: Boolean,
+      notify: true
+    },
+    disabled: {
+      type: Boolean,
+      value: false
+    }
+  },
+
+  // Public methods
+  open: function(e) {
+    // Required for mobile Safari to avoid passing the tap event to an element below the FAB
+    if (e) {
+      e.preventDefault();
+    }
+
+    this.opened = true;
+  },
+
+  close: function(e) {
+    // Required for mobile Safari to avoid passing the tap event to an element below the FAB
+    if (e) {
+      e.preventDefault();
+    }
+
+    this.opened = false;
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrnappFabMenu.haxProperties,
-      LrnappFabMenu.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrnappFabMenu.tag, LrnappFabMenu);
+});

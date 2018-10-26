@@ -1,46 +1,134 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/paper-card/paper-card.js";
+import "@polymer/paper-button/paper-button.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrnAssignment };
-/**
- * `lrn-assignment`
- * `Automated conversion of lrn-assignment/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrnAssignment extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+`lrn-assignment`
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrn-assignment";
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: flex;
+        width: 100%;
+      }
+      paper-card {
+        width: 100%;
+      }
+    </style>
+    <paper-card heading="[[title]]" image="[[image]]" elevation="1" animated-shadow="false">
+      <div class="card-content">
+        [[details]]
+        <slot></slot>
+      </div>
+      <div class="card-actions">
+        <template is="dom-repeat" items="[[actions]]">
+          <a href\$="[[item.url]]"><paper-button raised="">[[item.label]]</paper-button></a>
+        </template>
+      </div>
+    </paper-card>
+`,
+
+  is: "lrn-assignment",
+
+  properties: {
+    /**
+     * Title
+     */
+    title: {
+      type: String
+    },
+    /**
+     * Image url
+     */
+    image: {
+      type: String
+    },
+    /**
+     * Details of the assignment
+     */
+    details: {
+      type: String
+    },
+    /**
+     * url
+     */
+    url: {
+      type: String
+    },
+    open: {
+      type: Boolean,
+      value: false
+    },
+    complete: {
+      type: Boolean,
+      value: false
+    },
+    actions: {
+      type: Object
+    }
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrnAssignment.haxProperties,
-      LrnAssignment.tag,
-      this
-    );
+});
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      :host lrn-assignment {
+        margin: 1em;
+      }
+      :host[layout="wide"] lrn-assignment {
+        width: calc(100% - 2em);
+      }
+      :host[layout="medium"] lrn-assignment {
+        width: calc(50% - 2em);
+      }
+      :host[layout="tight"] lrn-assignment {
+        width: calc(25% - 2em);
+      }
+    </style>
+    <template is="dom-repeat" items="[[assignments]]">
+      <lrn-assignment title="[[item.title]]" actions="[[item.actions]]"></lrn-assignment>
+    </template>
+
+    <template is="dom-if" if="[[url]]">
+      <iron-ajax auto="" url="[[url]]" handle-as="json" on-response="handleResponse"></iron-ajax>
+    </template>
+`,
+
+  is: "lrn-assignments",
+
+  properties: {
+    assignments: {
+      type: Object,
+      reflectToAttribute: true,
+      observer: "assignmentsChanged"
+    },
+    layout: {
+      type: String,
+      reflectToAttribute: true
+    },
+    url: {
+      type: String
+    }
+  },
+
+  assignmentsChanged: function(assignments) {
+    if (assignments.length <= 1) {
+      this.layout = "wide";
+    } else if (assignments.length <= 4) {
+      this.layout = "medium";
+    } else if (assignments.length <= 6) {
+      this.layout = "tight";
+    }
+  },
+
+  rowItemsChanged: function(items) {},
+
+  handleResponse: function(data) {
+    this.assignments = data.response;
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrnAssignment.tag, LrnAssignment);
+});

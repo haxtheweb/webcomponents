@@ -1,46 +1,33 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrnContent };
-/**
- * `lrn-content`
- * `Automated conversion of lrn-content/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrnContent extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+`lrn-content`
+  A LRN element for presenting content with a simple heading.
+  This is to improve accessibility, consistency, and tag things
+  with OER schema.
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrn-content";
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <div typeof="oer:SupportingMaterial">
+      <h2 property="oer:name">[[title]]</h2>
+      <div property="oer:description">
+        <slot></slot>
+      </div>
+    </div>
+`,
+
+  is: "lrn-content",
+
+  properties: {
+    title: {
+      type: String,
+      value: ""
+    }
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrnContent.haxProperties,
-      LrnContent.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrnContent.tag, LrnContent);
+});

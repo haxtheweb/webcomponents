@@ -1,46 +1,59 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrndesignAvatar };
-/**
- * `lrndesign-avatar`
- * `Automated conversion of lrndesign-avatar/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrndesignAvatar extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+`lrndesign-avatar`
+Visualize a user account eitehr with an image, a label, or as abstract art.
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrndesign-avatar";
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style include="materializecss-styles"></style>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <paper-avatar label="[[label]]" src="[[src]]" two-chars="[[twoChars]]" class\$="[[color]]" jdenticon="[[jdenticon]]"></paper-avatar>
+`,
+
+  is: "lrndesign-avatar",
+
+  properties: {
+    /**
+     * text to use for avatar
+     */
+    label: {
+      type: String,
+      value: "lrndesign-avatar"
+    },
+    /**
+     * link to an image, optional
+     */
+    src: {
+      type: String
+    },
+    /**
+     * Mode for presenting 1st two letters
+     */
+    twoChars: {
+      type: Boolean,
+      value: false
+    },
+    /**
+     * Materialize CSS color class names
+     */
+    color: {
+      type: String,
+      reflectToAttribute: true
+    },
+    /**
+     * Form abstract art from hash of label
+     */
+    jdenticon: {
+      type: Boolean,
+      value: false
+    }
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrndesignAvatar.haxProperties,
-      LrndesignAvatar.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrndesignAvatar.tag, LrndesignAvatar);
+});

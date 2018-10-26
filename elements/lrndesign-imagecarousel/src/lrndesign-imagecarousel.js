@@ -1,49 +1,32 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/fancy-carousel/fancy-carousel.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrndesignImagecarousel };
-/**
- * `lrndesign-imagecarousel`
- * `Automated conversion of lrndesign-imagecarousel/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrndesignImagecarousel extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+`lrndesign-imagecarousel`
+A LRN element
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrndesign-imagecarousel";
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <fancy-carousel>
+  <img src="https://app-layout-assets.appspot.com/assets/bg1.jpg">
+  <img src="https://app-layout-assets.appspot.com/assets/bg2.jpg">
+  <img src="https://app-layout-assets.appspot.com/assets/bg3.jpg">
+  <img src="https://app-layout-assets.appspot.com/assets/bg4.jpg">
+</fancy-carousel>
+`,
+
+  is: "lrndesign-imagecarousel",
+
+  properties: {
+    title: {
+      type: String,
+      value: "lrndesign-imagecarousel"
+    }
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrndesignImagecarousel.haxProperties,
-      LrndesignImagecarousel.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(
-  LrndesignImagecarousel.tag,
-  LrndesignImagecarousel
-);
+});

@@ -29,6 +29,9 @@
     "name": "btopro"
   },
   "license": "Apache-2.0",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0"
+  },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",

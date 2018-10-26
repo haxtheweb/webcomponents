@@ -1,4 +1,5 @@
-import "circle-progress/circle-progress.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/circle-progress/circle-progress.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-spinner/paper-spinner.js";

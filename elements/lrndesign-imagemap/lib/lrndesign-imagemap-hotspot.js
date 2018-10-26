@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "relative-heading/relative-heading.js";
+import "@lrnwebcomponents/relative-heading/relative-heading.js";
 /**
  * `lrndesign-imagemap-hotspot`
  * creates an accessible image map

@@ -1,46 +1,14 @@
-/**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrndesignDialog };
-/**
- * `lrndesign-dialog`
- * `Automated conversion of lrndesign-dialog/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrndesignDialog extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { PaperDialogBehavior } from "@polymer/paper-dialog-behavior/paper-dialog-behavior.js";
+import "@polymer/paper-dialog-behavior/paper-dialog-shared-styles.js";
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrndesign-dialog";
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrndesignDialog.haxProperties,
-      LrndesignDialog.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrndesignDialog.tag, LrndesignDialog);
+Polymer({
+  _template: html`
+    <style include="paper-dialog-shared-styles"></style>
+    <slot></slot>
+`,
+
+  is: "lrndesign-dialog",
+
+  behaviors: [PaperDialogBehavior]
+});

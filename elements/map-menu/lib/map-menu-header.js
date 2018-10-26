@@ -1,3 +1,4 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import "@polymer/iron-collapse/iron-collapse.js";
 import "@polymer/iron-icon/iron-icon.js";

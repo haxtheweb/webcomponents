@@ -1,49 +1,45 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "./lib/lrndesign-animationctrl-button.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrndesignAnimationctrl };
-/**
- * `lrndesign-animationctrl`
- * `Automated conversion of lrndesign-animationctrl/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrndesignAnimationctrl extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+`lrndesign-animationctrl`
+A LRN element
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrndesign-animationctrl";
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrndesignAnimationctrl.haxProperties,
-      LrndesignAnimationctrl.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(
-  LrndesignAnimationctrl.tag,
-  LrndesignAnimationctrl
-);
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
+        background: var(--animationctrl-bg-color);
+        --animationctrl-bg-color: #f5f5f5;
+      }
+      .buttons {
+        padding: 1em;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        @apply --animationctrl-buttons;
+      }
+      :host ::shadow lrndesign-animationctrl-button {
+        display: flex;
+      }
+    </style>
+    <div class="buttons">
+      <slot></slot>
+    </div>
+`,
+
+  is: "lrndesign-animationctrl",
+
+  properties: {},
+
+  listeners: {
+    "lrndesign-animationctrl-button-click": "_buttonClicked"
+  },
+
+  _buttonClicked: function(e) {},
+
+  ready: function() {}
+});

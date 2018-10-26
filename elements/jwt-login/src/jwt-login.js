@@ -1,42 +1,86 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/iron-ajax/iron-ajax.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { JwtLogin };
-/**
- * `jwt-login`
- * `Automated conversion of jwt-login/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class JwtLogin extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+`jwt-login`
+a simple element to check for and fetch JWTs
+
+@demo demo/index.html
+
+@microcopy - the mental model for this element
+- jwt - a json web token which is an encrypted security token to talk
+
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        visibility: hidden;
+      }
+    </style>
+    <iron-ajax id="loginrequest" method="GET" url="[[url]]" handle-as="json" on-response="loginResponse">
+    </iron-ajax>
+`,
+
+  is: "jwt-login",
+
+  properties: {
+    /**
+     * url
+     */
+    url: {
+      type: String
+    },
+    /**
+     * Key that contains the token in local storage
+     */
+    key: {
+      type: String,
+      value: "jwt"
+    },
+    /**
+     * JSON Web token to securely pass around
+     */
+    jwt: {
+      type: String,
+      notify: true
+    }
+  },
 
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * Ready life cycle
    */
-  static get tag() {
-    return "jwt-login";
-  }
+  ready: function() {
+    // set jwt from local storage bin
+    this.jwt = localStorage.getItem(this.key);
+    this.fire("jwt-token", this.jwt);
+  },
+
   /**
-   * life cycle, element is afixed to the DOM
+   * Request a user login if we need one or log out
    */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(JwtLogin.haxProperties, JwtLogin.tag, this);
-  }
+  toggleLogin: function() {
+    // null is default, if we don't have anything go get one
+    if (this.jwt == null) {
+      this.$.loginrequest.generateRequest();
+    } else {
+      localStorage.removeItem(this.key);
+      this.jwt = null;
+      this.fire("jwt-logged-in", false);
+    }
+  },
+
   /**
-   * life cycle, element is removed from the DOM
+   * Login bridge to get a JWT and hang onto it
    */
-  //disconnectedCallback() {}
-}
-window.customElements.define(JwtLogin.tag, JwtLogin);
+  loginResponse: function(e) {
+    this.jwt = e.detail.response;
+    if (this.jwt == null || this.jwt == "") {
+      this.fire("jwt-logged-in", false);
+    } else {
+      // set the jwt into local storage so we can reference later
+      localStorage.setItem(this.key, this.jwt);
+      this.fire("jwt-token", this.jwt);
+      this.fire("jwt-logged-in", true);
+    }
+  }
+});

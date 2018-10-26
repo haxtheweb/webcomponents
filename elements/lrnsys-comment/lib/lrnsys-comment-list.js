@@ -1,4 +1,5 @@
-import "./lrnsys-comment.js";
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "../lrnsys-comment.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-form-element-behavior/iron-form-element-behavior.js";

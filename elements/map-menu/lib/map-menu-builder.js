@@ -1,3 +1,4 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "./map-menu-submenu.js";
 import "./map-menu-item.js";
 Polymer({

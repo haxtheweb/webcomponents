@@ -1,49 +1,26 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrndesignProgressSpinner };
-/**
- * `lrndesign-progress-spinner`
- * `Automated conversion of lrndesign-progress-spinner/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrndesignProgressSpinner extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+`lrndesign-progress-spinner`
+A LRN element
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrndesign-progress-spinner";
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>[[title]]</h2>
+`,
+
+  is: "lrndesign-progress-spinner",
+
+  properties: {
+    title: {
+      type: String,
+      value: "lrndesign-progress-spinner"
+    }
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrndesignProgressSpinner.haxProperties,
-      LrndesignProgressSpinner.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(
-  LrndesignProgressSpinner.tag,
-  LrndesignProgressSpinner
-);
+});

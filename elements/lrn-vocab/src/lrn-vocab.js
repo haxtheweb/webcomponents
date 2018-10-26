@@ -1,42 +1,145 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/paper-button/paper-button.js";
+import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import "./lib/lrn-vocab-dialog.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrnVocab };
-/**
- * `lrn-vocab`
- * `Automated conversion of lrn-vocab/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrnVocab extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+`lrn-vocab`
+Vocabulary term with visual treatment and semantic meaning.
+
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: inline-flex;
+        --lrn-vocab-border: 1px dashed gray;
+      }
+      paper-button {
+        text-transform: none;
+        padding: 0;
+        margin: 0;
+        border-bottom: var(--lrn-vocab-border);
+        position: relative;
+        top: 3px;
+      }
+    </style>
+
+    <div>
+      <paper-button id="button" noink="">[[term]]</paper-button>
+    </div>
+    <lrn-vocab-dialog id="dialog" opened="{{opened}}">
+      <slot></slot>
+    </lrn-vocab-dialog>
+`,
+
+  is: "lrn-vocab",
+
+  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
+
+  properties: {
+    /**
+     * Term to highlight / display
+     */
+    term: {
+      type: String,
+      reflectToAttribute: true
+    },
+    /**
+     * Tracking the state of the dialog
+     */
+    opened: {
+      type: Boolean,
+      value: false
+    }
+  },
 
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * Ready life cycle
    */
-  static get tag() {
-    return "lrn-vocab";
-  }
+  ready: function() {
+    this.$.button.addEventListener("click", e => {
+      this.opened = !this.opened;
+    });
+    // track this specific element to later match
+    this.__modal = this.$.dialog;
+  },
+
   /**
-   * life cycle, element is afixed to the DOM
+   * Attached life cycle
    */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(LrnVocab.haxProperties, LrnVocab.tag, this);
-  }
+  attached: function() {
+    document.body.addEventListener(
+      "lrn-vocab-dialog-closed",
+      this._accessibleFocus.bind(this)
+    );
+    // Establish hax properties if they exist
+    let props = {
+      canScale: false,
+      canPosition: false,
+      canEditSource: false,
+      gizmo: {
+        title: "Vocab",
+        description: "Vocabulary term",
+        icon: "image:details",
+        color: "red",
+        groups: ["Vocab"],
+        handles: [
+          {
+            type: "inline",
+            text: "term"
+          }
+        ],
+        meta: {
+          author: "LRNWebComponents"
+        }
+      },
+      settings: {
+        quick: [
+          {
+            property: "term",
+            title: "Term",
+            description: "The word or words to make clickable for more detail.",
+            inputMethod: "textfield",
+            icon: "editor:title",
+            required: true
+          }
+        ],
+        configure: [
+          {
+            property: "term",
+            title: "Term",
+            description: "The word or words to make clickable for more detail.",
+            inputMethod: "textfield",
+            icon: "editor:title",
+            required: true
+          },
+          {
+            slot: "",
+            title: "Contents",
+            description: "Contents to display in the pop up.",
+            inputMethod: "code-editor",
+            required: true
+          }
+        ],
+        advanced: []
+      }
+    };
+    this.setHaxProperties(props);
+  },
+
   /**
-   * life cycle, element is removed from the DOM
+   * Set ourselves as having focus after the modal closes.
    */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrnVocab.tag, LrnVocab);
+  _accessibleFocus: function(e) {
+    // this is OUR modal, we found her, oh modal, We've missed
+    // you so much. thank you for coming home. We're so, so, so
+    // sorry that we appended you to the body. We'll never do it
+    // again (until the next time you open).
+    if (e.detail === this.__modal) {
+      // focus on our dialog triggering button
+      this.$.button.focus();
+    }
+  }
+});

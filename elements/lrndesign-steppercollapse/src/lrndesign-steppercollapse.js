@@ -1,49 +1,48 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/iron-collapse/iron-collapse.js";
+import "@lrnwebcomponents/lrndesign-stepper/lrndesign-stepper.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrndesignSteppercollapse };
-/**
- * `lrndesign-steppercollapse`
- * `Automated conversion of lrndesign-steppercollapse/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrndesignSteppercollapse extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+`lrndesign-steppercollapse`
+A LRN element
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrndesign-steppercollapse";
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>[[title]]</h2>
+
+<lrn-objective title="Text" task="assignment">
+dokokadskoadsokds
+ads
+ad
+s
+ads
+asd
+</lrn-objective>
+<lrndesign-stepper>
+  <lrndesign-stepper-button title="Step 1: Text" icon="book" url="#">
+  </lrndesign-stepper-button>
+  <lrndesign-stepper-button title="Step 2: Video" icon="av:play-circle-filled" collapsible="">
+    Things and stuff
+  </lrndesign-stepper-button>
+  <lrndesign-stepper-button title="Step 3: Quiz" icon="assignment-turned-in" url="#"></lrndesign-stepper-button>
+  <lrndesign-stepper-button title="Step 4: Discuss" icon="social:people" collapsible="">
+    Fourth step content goes here...
+  </lrndesign-stepper-button>
+</lrndesign-stepper>
+`,
+
+  is: "lrndesign-steppercollapse",
+
+  properties: {
+    title: {
+      type: String,
+      value: "lrndesign-steppercollapse"
+    }
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrndesignSteppercollapse.haxProperties,
-      LrndesignSteppercollapse.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(
-  LrndesignSteppercollapse.tag,
-  LrndesignSteppercollapse
-);
+});

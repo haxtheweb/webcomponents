@@ -1,42 +1,194 @@
-/**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrnIcon };
-/**
- * `lrn-icon`
- * `Automated conversion of lrn-icon/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrnIcon extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@polymer/iron-meta/iron-meta.js";
+import "@polymer/iron-flex-layout/iron-flex-layout.js";
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrn-icon";
+/**
+This is a fork of https://github.com/PolymerElements/lrn-icon
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+/**
+
+The `lrn-icon` element displays an icon. By default an icon renders as a 24px square.
+
+Example using src:
+
+    <lrn-icon src="star.png"></lrn-icon>
+
+Example setting size to 32px x 32px:
+
+    <lrn-icon class="big" src="big_star.png"></lrn-icon>
+
+    <style is="custom-style">
+      .big {
+        --lrn-icon-height: 32px;
+        --lrn-icon-width: 32px;
+      }
+    </style>
+
+The iron elements include several sets of icons.
+To use the default set of icons, import `lrn-icons.html` and use the `icon` attribute to specify an icon:
+
+    <link rel="import" href="/components/lrn-icons/lrn-icons.html">
+
+    <lrn-icon icon="menu"></lrn-icon>
+
+To use a different built-in set of icons, import the specific `lrn-icons/<iconset>-icons.html`, and
+specify the icon as `<iconset>:<icon>`. For example, to use a communication icon, you would
+use:
+
+    <link rel="import" href="/components/lrn-icons/communication-icons.html">
+
+    <lrn-icon icon="communication:email"></lrn-icon>
+
+You can also create custom icon sets of bitmap or SVG icons.
+
+Example of using an icon named `cherry` from a custom iconset with the ID `fruit`:
+
+    <lrn-icon icon="fruit:cherry"></lrn-icon>
+
+See [lrn-iconset](lrn-iconset) and [lrn-iconset-svg](lrn-iconset-svg) for more information about
+how to create a custom iconset.
+
+See the [lrn-icons demo](lrn-icons?view=demo:demo/index.html) to see the icons available
+in the various iconsets.
+
+To load a subset of icons from one of the default `lrn-icons` sets, you can
+use the [poly-icon](https://poly-icon.appspot.com/) tool. It allows you
+to select individual icons, and creates an iconset from them that you can
+use directly in your elements.
+
+### Styling
+
+The following custom properties are available for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--lrn-icon` | Mixin applied to the icon | {}
+`--lrn-icon-width` | Width of the icon | `24px`
+`--lrn-icon-height` | Height of the icon | `24px`
+`--lrn-icon-fill-color` | Fill color of the svg icon | `currentcolor`
+`--lrn-icon-stroke-color` | Stroke color of the svg icon | none
+
+@group Iron Elements
+@element lrn-icon
+@demo demo/index.html
+@hero hero.svg
+@homepage polymer.github.io
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        @apply(--layout-inline);
+        @apply(--layout-center-center);
+        position: relative;
+
+        vertical-align: middle;
+
+        fill: var(--lrn-icon-fill-color, currentcolor);
+        stroke: var(--lrn-icon-stroke-color, none);
+
+        width: var(--lrn-icon-width, 24px);
+        height: var(--lrn-icon-height, 24px);
+        @apply(--lrn-icon);
+      }
+    </style>
+`,
+
+  is: "lrn-icon",
+
+  properties: {
+    /**
+     * The name of the icon to use. The name should be of the form:
+     * `iconset_name:icon_name`.
+     */
+    icon: {
+      type: String
+    },
+
+    /**
+     * The name of the theme to used, if one is specified by the
+     * iconset.
+     */
+    theme: {
+      type: String
+    },
+
+    /**
+     * If using lrn-icon without an iconset, you can set the src to be
+     * the URL of an individual icon image file. Note that this will take
+     * precedence over a given icon attribute.
+     */
+    src: {
+      type: String
+    },
+
+    _meta: {
+      value: document.createElement("iron-meta", { type: "iconset" })
+    }
+  },
+
+  observers: [
+    "_updateIcon(_meta, isAttached)",
+    "_updateIcon(theme, isAttached)",
+    "_srcChanged(src, isAttached)",
+    "_iconChanged(icon, isAttached)"
+  ],
+
+  _DEFAULT_ICONSET: "lrn",
+
+  _iconChanged: function(icon) {
+    this._iconName = icon;
+    this._iconsetName = this._DEFAULT_ICONSET;
+    this._updateIcon();
+  },
+
+  _srcChanged: function(src) {
+    this._updateIcon();
+  },
+
+  _usesIconset: function() {
+    return this.icon || !this.src;
+  },
+
+  /** @suppress {visibility} */
+  _updateIcon: function() {
+    if (this._usesIconset()) {
+      if (this._img && this._img.parentNode) {
+        dom(this.root).removeChild(this._img);
+      }
+      if (this._iconName === "") {
+        if (this._iconset) {
+          this._iconset.removeIcon(this);
+        }
+      } else if (this._iconsetName && this._meta) {
+        this._iconset = this._meta.byKey(this._iconsetName);
+        if (this._iconset) {
+          this._iconset.applyIcon(this, this._iconName, this.theme);
+          this.unlisten(window, "lrn-iconset-added", "_updateIcon");
+        } else {
+          this.listen(window, "lrn-iconset-added", "_updateIcon");
+        }
+      }
+    } else {
+      if (this._iconset) {
+        this._iconset.removeIcon(this);
+      }
+      if (!this._img) {
+        this._img = document.createElement("img");
+        this._img.style.width = "100%";
+        this._img.style.height = "100%";
+        this._img.draggable = false;
+      }
+      this._img.src = this.src;
+      dom(this.root).appendChild(this._img);
+    }
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(LrnIcon.haxProperties, LrnIcon.tag, this);
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrnIcon.tag, LrnIcon);
+});

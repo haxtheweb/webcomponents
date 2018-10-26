@@ -15,33 +15,14 @@ export { HaxBodyBehaviors };
  * @demo demo/index.html
  */
 class HaxBodyBehaviors extends HTMLElement {
+  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
     return "hax-body-behaviors";
-  }
-  /**
-   * A file that contains the HTML template for the element.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  get templateUrl() {
-    return "hax-body-behaviors.html";
-  }
-  /**
-   * A file that contains the properties that will be wired into this element.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  get propertiesUrl() {
-    return "hax-body-behaviors-properties.json";
-  }
-  /**
-   * A file that contains the css for this element to be mixed into the html block.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  get styleUrl() {
-    return "hax-body-behaviors.css";
   }
 
   /**

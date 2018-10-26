@@ -1,42 +1,23 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "oer-schema/oer-schema.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrnPage };
-/**
- * `lrn-page`
- * `Automated conversion of lrn-page/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrnPage extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+`lrn-page`
+A LRN element for a "page" of material. This ensures there's an OERSchema wrapper
+so that all content produced has a baseline level of being identified as OER.
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrn-page";
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(LrnPage.haxProperties, LrnPage.tag, this);
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrnPage.tag, LrnPage);
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <oer-schema>
+      <slot></slot>
+    </oer-schema>
+`,
+
+  is: "lrn-page"
+});

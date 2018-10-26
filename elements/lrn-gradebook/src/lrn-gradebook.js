@@ -1,46 +1,42 @@
-/**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrnGradebook };
-/**
- * `lrn-gradebook`
- * `Automated conversion of lrn-gradebook/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrnGradebook extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "iron-data-table/iron-data-table.js";
+import "@polymer/iron-ajax/iron-ajax.js";
+var $_documentContainer = document.createElement("div");
+$_documentContainer.setAttribute("style", "display: none;");
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrn-gradebook";
+$_documentContainer.innerHTML = `<dom-module id="lrn-gradebook">
+<style>
+  data-table-row {
+    border: 10px solid black;
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrnGradebook.haxProperties,
-      LrnGradebook.tag,
-      this
-    );
+</style>
+  <template>
+    <iron-ajax url="demo/data.json" last-response="{{data}}" auto=""></iron-ajax>
+		  <iron-data-table items="[[data]]">
+		    <data-table-column name="First Name">
+		      <template>[[item.name.first]]</template>
+		    </data-table-column>
+		    <data-table-column name="Last Name">
+		      <template>[[item.name.last]]</template>
+		    </data-table-column>
+		  </iron-data-table>
+  </template>
+
+  
+</dom-module>`;
+
+document.head.appendChild($_documentContainer);
+/**
+`lrn-gradebook`
+A LRN element
+
+@demo demo/index.html 
+*/
+Polymer({
+  is: "lrn-gradebook",
+  properties: {
+    data: {
+      type: Object
+    }
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrnGradebook.tag, LrnGradebook);
+});

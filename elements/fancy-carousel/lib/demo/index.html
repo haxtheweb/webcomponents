@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+  <head>
+    <title>fancy-carousel demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+
+    <script type="module" src="../fancy-carousel.js"></script>
+
+    <!-- FIXME(polymer-modulizer):
+        These imperative modules that innerHTML your HTML are
+        a hacky way to be sure that any mixins in included style
+        modules are ready before any elements that reference them are
+        instantiated, otherwise the CSS @apply mixin polyfill won't be
+        able to expand the underlying CSS custom properties.
+        See: https://github.com/Polymer/polymer-modulizer/issues/154
+        -->
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+$_documentContainer.setAttribute('style', 'display: none;');
+$_documentContainer.innerHTML = `<style is="custom-style" include="demo-pages-shared-styles"></style>`;
+document.head.appendChild($_documentContainer);
+</script>
+  </head>
+  <body>
+
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+      <h3>Basic fancy-carousel</h3>
+      <demo-snippet>
+        <template>
+          <fancy-carousel>
+            <img src="https://app-layout-assets.appspot.com/assets/bg1.jpg">
+            <img src="https://app-layout-assets.appspot.com/assets/bg2.jpg">
+            <img src="https://app-layout-assets.appspot.com/assets/bg3.jpg">
+            <img src="https://app-layout-assets.appspot.com/assets/bg4.jpg">
+          </fancy-carousel>
+        </template>
+      </demo-snippet>
+
+      <h3>Dynamic Search fancy-carousel Demo</h3>
+      <demo-snippet>
+        <template>
+          <fancy-carousel image-topic="hackathon" search-engine-cx="005645967951861236861%3A6j9jxysxo4o" api-key="AIzaSyAUpCrlr9RO1EWzbu0DYqBzAQ1yCi2HVrw">
+            <img src="https://app-layout-assets.appspot.com/assets/bg1.jpg">
+            <img src="https://app-layout-assets.appspot.com/assets/bg2.jpg">
+          </fancy-carousel>
+        </template>
+      </demo-snippet>
+
+      <h3>fancy-carousel with no controls and 3 second timer</h3>
+      <demo-snippet>
+        <template>
+          <fancy-carousel id="my-carousel" no-controls="" transition-timer="3">
+            <img src="https://app-layout-assets.appspot.com/assets/bg1.jpg">
+            <img src="https://app-layout-assets.appspot.com/assets/bg2.jpg">
+            <img src="https://app-layout-assets.appspot.com/assets/bg3.jpg">
+            <img src="https://app-layout-assets.appspot.com/assets/bg4.jpg">
+          </fancy-carousel>
+        </template>
+      </demo-snippet>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+      <h3>fancy-carousel with spread animation</h3>
+      <demo-snippet>
+        <template>
+          <fancy-carousel transition-type="spread">
+            <img src="https://app-layout-assets.appspot.com/assets/bg1.jpg">
+            <img src="https://app-layout-assets.appspot.com/assets/bg2.jpg">
+            <img src="https://app-layout-assets.appspot.com/assets/bg3.jpg">
+            <img src="https://app-layout-assets.appspot.com/assets/bg4.jpg">
+          </fancy-carousel>
+        </template>
+      </demo-snippet>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+      <h3>fancy-carousel with paint animation</h3>
+      <demo-snippet>
+        <template>
+          <fancy-carousel transition-type="paint">
+            <img src="https://app-layout-assets.appspot.com/assets/bg1.jpg">
+            <img src="https://app-layout-assets.appspot.com/assets/bg2.jpg">
+            <img src="https://app-layout-assets.appspot.com/assets/bg3.jpg">
+            <img src="https://app-layout-assets.appspot.com/assets/bg4.jpg">
+          </fancy-carousel>
+        </template>
+      </demo-snippet>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+      <h3>fancy-carousel with shift animation</h3>
+      <demo-snippet>
+        <template>
+          <fancy-carousel transition-type="shift">
+            <img src="https://app-layout-assets.appspot.com/assets/bg1.jpg">
+            <img src="https://app-layout-assets.appspot.com/assets/bg2.jpg">
+            <img src="https://app-layout-assets.appspot.com/assets/bg3.jpg">
+            <img src="https://app-layout-assets.appspot.com/assets/bg4.jpg">
+          </fancy-carousel>
+        </template>
+      </demo-snippet>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+
+    <script type="module">
+const $_documentContainer = document.createElement('div');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
+      <h3>fancy-carousel with collapse animation</h3>
+      <demo-snippet>
+        <template>
+          <fancy-carousel transition-type="collapse">
+            <img src="https://app-layout-assets.appspot.com/assets/bg1.jpg">
+            <img src="https://app-layout-assets.appspot.com/assets/bg2.jpg">
+            <img src="https://app-layout-assets.appspot.com/assets/bg3.jpg">
+            <img src="https://app-layout-assets.appspot.com/assets/bg4.jpg">
+          </fancy-carousel>
+        </template>
+      </demo-snippet>
+    </div>`;
+
+document.body.appendChild($_documentContainer);
+</script>
+
+  </body>
+</html>

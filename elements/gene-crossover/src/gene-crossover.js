@@ -1,46 +1,77 @@
-/**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { GeneCrossover };
-/**
- * `gene-crossover`
- * `Automated conversion of gene-crossover/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class GeneCrossover extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/app-route/app-route.js";
+import "@polymer/app-route/app-location.js";
+import "@polymer/iron-pages/iron-pages.js";
+import "paper-stepper/paper-stepper.js";
+import "./lib/gene-crossover-1.js";
+import "./lib/gene-crossover-2.js";
+import "./lib/gene-crossover-3.js";
+import "./lib/gene-crossover-4.js";
+import "./lib/gene-crossover-5.js";
+import "animation-shared-styles/animation-shared-styles.js";
+Polymer({
+  _template: html`
+    <style is="custom-style" include="animation-shared-styles">
+       :host {
+        display: block;
+      }
+    </style>
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "gene-crossover";
+    <!--Pages-->
+    <iron-pages selected="[[activePage]]">
+      <gene-crossover-1 selected="[[_isActive(activePage, 0)]]"></gene-crossover-1>
+      <gene-crossover-2 selected="[[_isActive(activePage, 1)]]"></gene-crossover-2>
+      <gene-crossover-3 selected="[[_isActive(activePage, 2)]]"></gene-crossover-3>
+      <gene-crossover-4 selected="[[_isActive(activePage, 3)]]"></gene-crossover-4>
+      <!-- <gene-crossover-5 selected="[[_isActive(activePage, 4)]]"></gene-crossover-5> -->
+    </iron-pages>
+
+
+    <!--Counter-->
+    <template is="dom-if" if="[[count]]">
+      <paper-stepper selected="{{activePage}}" progress-bar="">
+        <template is="dom-repeat" items="[[_countToArray(count)]]">
+          <paper-step></paper-step>
+        </template>
+      </paper-stepper>
+    </template>
+`,
+
+  is: "gene-crossover",
+
+  properties: {
+    activePage: {
+      type: String,
+      value: 0
+    },
+    count: {
+      type: Number,
+      value: 0
+    }
+  },
+
+  _isActive: function(activePage, index) {
+    return activePage === index;
+  },
+
+  _countToArray: function(count) {
+    var array = [];
+    if (count) {
+      for (i = 0; i < count; i++) {
+        array.push(i);
+      }
+    }
+    console.log(array);
+    return array;
+  },
+
+  ready: function() {
+    var root = this;
+    var ironPages = root.shadowRoot.querySelector("iron-pages");
+    if (ironPages.children) {
+      if (ironPages.children.length) {
+        root.count = ironPages.children.length;
+      }
+    }
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      GeneCrossover.haxProperties,
-      GeneCrossover.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(GeneCrossover.tag, GeneCrossover);
+});

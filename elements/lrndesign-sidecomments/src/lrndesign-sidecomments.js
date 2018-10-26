@@ -1,46 +1,93 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "./lib/side-comments.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrndesignSidecomments };
-/**
- * `lrndesign-sidecomments`
- * `Automated conversion of lrndesign-sidecomments/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrndesignSidecomments extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+`lrndesign-sidecomments`
+A LRN element
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrndesign-sidecomments";
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+       :host {
+        display: block;
+      }
+    </style>
+    <div id="commentable-area">
+      <p data-section-id="1" class="commentable-section">
+        This is a section that can be commented on.
+        This is a section that can be commented on.
+        This is a section that can be commented on.
+        This is a section that can be commented on.
+        This is a section that can be commented on.
+        This is a section that can be commented on.
+      </p>
+      <p data-section-id="2" class="commentable-section">
+        This is a another section that can be commented on.
+        This is a another section that can be commented on.
+        This is a another section that can be commented on.
+        This is a another section that can be commented on.
+        This is a another section that can be commented on.
+        This is a another section that can be commented on.
+        This is a another section that can be commented on.
+      </p>
+      <p data-section-id="3" class="commentable-section">
+        This is yet another section that can be commented on.
+        This is yet another section that can be commented on.
+        This is yet another section that can be commented on.
+        This is yet another section that can be commented on.
+        This is yet another section that can be commented on.
+      </p>
+    </div>
+`,
+
+  is: "lrndesign-sidecomments",
+
+  properties: {
+    title: {
+      type: String,
+      value: "lrndesign-sidecomments"
+    }
+  },
+
+  ready: function() {
+    const SideComments = require("side-comments");
+    const target = this.shadowRoot.querySelector("#commentable-area");
+    const currentUser = {
+      id: 1,
+      avatarUrl: "http://f.cl.ly/items/0s1a0q1y2Z2k2I193k1y/default-user.png",
+      name: "You"
+    };
+    const existingComments = [
+      {
+        sectionId: "1",
+        comments: [
+          {
+            authorAvatarUrl:
+              "http://f.cl.ly/items/1W303Y360b260u3v1P0T/jon_snow_small.png",
+            authorName: "Jon Sno",
+            comment: "I'm Ned Stark's bastard. Related: I know nothing."
+          },
+          {
+            authorAvatarUrl:
+              "http://f.cl.ly/items/2o1a3d2f051L0V0q1p19/donald_draper.png",
+            authorName: "Donald Draper",
+            comment: "I need a scotch."
+          }
+        ]
+      },
+      {
+        sectionId: "3",
+        comments: [
+          {
+            authorAvatarUrl:
+              "http://f.cl.ly/items/0l1j230k080S0N1P0M3e/clay-davis.png",
+            authorName: "Senator Clay Davis",
+            comment: "These Side Comments are incredible. Sssshhhiiiiieeeee."
+          }
+        ]
+      }
+    ];
+    sideComments = new SideComments(target, currentUser, existingComments);
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrndesignSidecomments.haxProperties,
-      LrndesignSidecomments.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrndesignSidecomments.tag, LrndesignSidecomments);
+});

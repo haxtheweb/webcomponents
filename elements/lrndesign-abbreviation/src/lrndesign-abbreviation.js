@@ -1,46 +1,40 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrndesignAbbreviation };
-/**
- * `lrndesign-abbreviation`
- * `Automated conversion of lrndesign-abbreviation/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrndesignAbbreviation extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+`lrndesign-abbreviation`
+A wrapper to make a cleaner abbreviation deign element
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrndesign-abbreviation";
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <abbr title="{{phrase}}" id="abbr">{{abbr}}</abbr>
+    <paper-tooltip for="abbr">{{phrase}}</paper-tooltip>
+`,
+
+  is: "lrndesign-abbreviation",
+
+  properties: {
+    /**
+     * Abbreviation text.
+     */
+    abbr: {
+      type: String,
+      reflectToAttribute: true,
+      notify: true
+    },
+    /**
+     * The thing the abbreviation represents.
+     */
+    phrase: {
+      type: String,
+      reflectToAttribute: true,
+      notify: true
+    }
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrndesignAbbreviation.haxProperties,
-      LrndesignAbbreviation.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrndesignAbbreviation.tag, LrndesignAbbreviation);
+});

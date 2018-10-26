@@ -1,46 +1,91 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/paper-card/paper-card.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "paper-contact/paper-contact.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrndesignBiocard };
-/**
- * `lrndesign-biocard`
- * `Automated conversion of lrndesign-biocard/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrndesignBiocard extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+`lrndesign-biocard`
+A LRN element
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrndesign-biocard";
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <paper-card image="[[image]]">
+  <div class="card-content">
+    <div class="cafe-header">[[instructorName]]
+    </div>
+    <p>Contact Me:<br>
+ <paper-contact-list>    
+    <paper-contact-address latitude="51.5287718" longitude="-0.2416798">[[address]]</paper-contact-address>
+    <paper-contact-email>[[email]]</paper-contact-email>
+    <paper-contact-phone>[[phone]]</paper-contact-phone>
+    <paper-contact-mobile>[[phone]]</paper-contact-mobile>
+</paper-contact-list>
+    </p><p><slot></slot></p>
+      <p><iron-icon icon="icons:query-builder"></iron-icon> Office Hours: </p>
+      [[officeHours]]
+      <p><a href="mailto:[[email]]">
+  <paper-button raised=""><iron-icon icon="icons:today"></iron-icon> Schedule Appointment</paper-button>
+</a></p>
+<p>Social
+<paper-contact-list style="width: 300px;">
+    <paper-contact-linkedin>[[linkedin]]</paper-contact-linkedin>
+    <paper-contact-twitter>[[twitter]]</paper-contact-twitter>
+    <paper-contact-skype>[[videoConf]]</paper-contact-skype>
+</paper-contact-list>
+</p>
+</div>
+</paper-card>
+`,
+
+  is: "lrndesign-biocard",
+
+  properties: {
+    title: {
+      type: String,
+      value: "lrndesign-biocard"
+    },
+    image: {
+      type: String,
+      value: ""
+    },
+    instructorName: {
+      type: String,
+      value: ""
+    },
+    address: {
+      type: String,
+      value: ""
+    },
+    phone: {
+      type: String,
+      value: ""
+    },
+    email: {
+      type: String,
+      value: ""
+    },
+    officeHours: {
+      type: String,
+      value: ""
+    },
+    linkedin: {
+      type: String,
+      value: ""
+    },
+    twitter: {
+      type: String,
+      value: ""
+    },
+    videoConf: {
+      type: String,
+      value: ""
+    }
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrndesignBiocard.haxProperties,
-      LrndesignBiocard.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrndesignBiocard.tag, LrndesignBiocard);
+});

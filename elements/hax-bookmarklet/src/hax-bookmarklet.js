@@ -1,46 +1,40 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "cms-hax/cms-hax.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { HaxBookmarklet };
-/**
- * `hax-bookmarklet`
- * `Automated conversion of hax-bookmarklet/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class HaxBookmarklet extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+`hax-bookmarklet`
+Pure, Evil.
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "hax-bookmarklet";
+@demo ../../demo/index.html
+
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
+        font-size: 1em;
+      }
+    </style>
+    <cms-hax open-default="" app-store-connection="[[storeData]]" body-offset-left="">
+    <template><slot></slot></template>
+    </cms-hax>
+`,
+
+  is: "hax-bookmarklet",
+
+  properties: {
+    /**
+     * Store data with path resolved.
+     */
+    storeData: {
+      type: Object
+    }
+  },
+
+  ready: function() {
+    let json = {
+      url: this.resolveUrl("appstore.json")
+    };
+    this.storeData = json;
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      HaxBookmarklet.haxProperties,
-      HaxBookmarklet.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(HaxBookmarklet.tag, HaxBookmarklet);
+});

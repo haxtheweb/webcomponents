@@ -5,7 +5,7 @@
     "customElementClass": "PolymerElement",
     "elementName": "editable-table",
     "generator-wcfactory-version": "0.3.1",
-    "useHAX": true,
+    "useHAX": false,
     "useSass": false,
     "files": {
       "css": "src/editable-table.css",
@@ -40,8 +40,22 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.0.0",
+    "@polymer/iron-ajax": "^3.0.0",
+    "@polymer/paper-input": "^3.0.0",
+    "@polymer/iron-autogrow-textarea": "^3.0.0",
+    "@polymer/paper-dropdown-menu": "^3.0.0",
+    "@polymer/paper-listbox": "^3.0.0",
+    "@polymer/paper-item": "^3.0.0",
+    "@polymer/neon-animation": "^3.0.0",
+    "@polymer/paper-menu-button": "^3.0.0",
+    "@polymer/paper-button": "^3.0.0",
+    "@polymer/paper-toggle-button": "^3.0.0",
+    "@polymer/paper-tooltip": "^3.0.0",
+    "@polymer/iron-a11y-keys": "^3.0.0",
+    "@polymer/paper-slider": "^3.0.0",
+    "@polymer/iron-collapse": "^3.0.0",
+    "@polymer/paper-icon-button": "^3.0.0"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
