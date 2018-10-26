@@ -140,6 +140,25 @@
     "packages": [
       "elements/*",
       "themes/*"
+    ],
+    "nohoist": [
+      "**/@lrnwebcomponents/hax-body-behaviors",
+      "**/@polymer",
+      "**/@polymer/**",
+      "**/@vaadin",
+      "**/@vaadin/**",
+      "**/@rhelements/rhelement",
+      "**/@skatejs",
+      "**/@skatejs/**",
+      "**/skatejs",
+      "**/@webcomponents",
+      "**/@webcomponents/**",
+      "**/lit-html",
+      "**/lit-html/**",
+      "**/paper-collapse-item",
+      "**/paper-collapse-item/**",
+      "**/slim-js",
+      "**/slim-js/**"
     ]
   },
   "husky": {

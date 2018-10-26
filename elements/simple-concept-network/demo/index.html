@@ -12,13 +12,13 @@
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic simple-concept-network demo</h3>
+    <div class="vertical-section-container">
+      <h3>simple-concept-network-node single node</h3>
       <demo-snippet>
         <template>
-          <simple-concept-network>
-            This is simple-concept-network
-          </simple-concept-network>
+          <simple-concept-network-node src="https://google.com/" icon="save" label="Stuff"></simple-concept-network-node>
+          <simple-concept-network-node visualization="network" src="https://google.com/" icon="save" label="Stuff" color="blue"
+            icon-color="green" image="http://csshexagon.com/img/meow.jpg"></simple-concept-network-node>
         </template>
       </demo-snippet>
     </div>

@@ -10,14 +10,24 @@
       import '../select-menu.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <script>
+      window.onload = function () {
+        document.getElementById('example').addEventListener('change', function (e) {
+          alert('You picked ' + e.detail.value + '.');
+        });
+      }
+    </script>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic select-menu demo</h3>
       <demo-snippet>
         <template>
-          <select-menu>
-            This is select-menu
+          <select-menu id="example" value="cat">
+            <paper-item value="bird">Bird</paper-item>
+            <paper-item value="cat">Cat</paper-item>
+            <paper-item value="dog">Dog</paper-item>
+            <paper-item value="fish">Fish</paper-item>
           </select-menu>
         </template>
       </demo-snippet>

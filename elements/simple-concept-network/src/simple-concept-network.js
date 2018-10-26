@@ -1,46 +1,228 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
+import "./lib/simple-concept-network-node.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { SimpleConceptNetwork };
-/**
- * `simple-concept-network`
- * `Automated conversion of simple-concept-network/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class SimpleConceptNetwork extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+`simple-concept-network`
+A small but effective little data visualizer for topics surrounding
+a central concept, much like the ELMS:LN snowflake icon.
+
+@demo demo/index.html
+
+@microcopy - the mental model for this element
+ - ELMS:LN - The ELMS: Learning Network "snowflake" is a network diagram
+
+*/
+Polymer({
+  _template: html`
+    <style include="materializecss-styles">
+      :host {
+        display: block;
+      }
+      :host[visualization="network"] simple-concept-network-node {
+        position: relative;
+      }
+      :host[visualization="network"] simple-concept-network-node:nth-child(1) {
+        top: 150px;
+        left: 176px;
+      }
+      :host[visualization="network"] simple-concept-network-node:nth-child(2) {
+        top: 0px;
+        left: 60px;
+      }
+      :host[visualization="network"] simple-concept-network-node:nth-child(3) {
+        top: 75px;
+        left: 60px;
+      }
+      :host[visualization="network"] simple-concept-network-node:nth-child(4) {
+        top: 230px;
+        left: -56px;
+      }
+      :host[visualization="network"] simple-concept-network-node:nth-child(5) {
+        top: 300px;
+        left: -282px;
+      }
+      :host[visualization="network"] simple-concept-network-node:nth-child(6) {
+        top: 230px;
+        left: -515px;
+      }
+      :host[visualization="network"] simple-concept-network-node:nth-child(7) {
+        top: 75px;
+        left: -630px;
+      }
+      :host[visualization="network"] {
+        display: block;
+        min-height: 450px;
+      }
+    </style>
+    <template is="dom-repeat" items="[[nodes]]" as="node">
+      <simple-concept-network-node visualization="[[visualization]]" src="[[node.src]]" icon="[[node.icon]]" icon-color="[[node.iconColor]]" image="[[node.image]]" label="[[node.label]]" color="[[node.color]]" disabled="[[node.disabled]]"></simple-concept-network-node>
+    </template>
+`,
+
+  is: "simple-concept-network",
+
+  behaviors: [
+    HAXBehaviors.PropertiesBehaviors,
+    MaterializeCSSBehaviors.ColorBehaviors,
+    A11yBehaviors.A11y
+  ],
+
+  observers: ["_valueChanged(nodes.*)"],
+
+  properties: {
+    /**
+     * Primary color to use as the background
+     */
+    color: {
+      type: String
+    },
+    /**
+     * Type of visualization
+     */
+    visualization: {
+      type: String,
+      reflectToAttribute: true,
+      value: "3d"
+    },
+    /**
+     * List of nodes to template stamp out
+     */
+    nodes: {
+      type: Array,
+      value: [],
+      notify: true
+    }
+  },
 
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * Notice an answer has changed and update the DOM.
    */
-  static get tag() {
-    return "simple-concept-network";
-  }
+  _valueChanged: function(e) {
+    for (var i in e.base) {
+      for (var j in e.base[i]) {
+        this.notifyPath("nodes." + i + "." + j);
+      }
+    }
+  },
+
   /**
-   * life cycle, element is afixed to the DOM
+   * Attached.
    */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      SimpleConceptNetwork.haxProperties,
-      SimpleConceptNetwork.tag,
-      this
-    );
+  attached: function() {
+    // Establish hax properties if they exist
+    let props = {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Concept Network",
+        description:
+          "A simple way of visualizing data in a small network style configuration.",
+        icon: "lrn:network",
+        color: "blue",
+        groups: ["Image", "Visualization"],
+        handles: [
+          {
+            type: "image",
+            source: "nodes.source",
+            title: "nodes.label",
+            link: "nodes.src",
+            description: "nodes.description"
+          }
+        ],
+        meta: {
+          author: "LRNWebComponents"
+        }
+      },
+      settings: {
+        quick: [
+          {
+            property: "color",
+            title: "Color",
+            description: "Primary / background color",
+            inputMethod: "colorpicker",
+            icon: "editor:format-color-fill"
+          }
+        ],
+        configure: [
+          {
+            property: "color",
+            title: "Color",
+            description: "Default background color",
+            inputMethod: "colorpicker",
+            icon: "editor:format-color-fill"
+          },
+          {
+            property: "visualization",
+            title: "Visualization",
+            description: "How to visualize the concept",
+            inputMethod: "select",
+            options: {
+              "3d": "3d plain",
+              network: "network",
+              flat: "flat"
+            }
+          },
+          {
+            property: "nodes",
+            title: "Node list",
+            description: "List of the items to present in the visual",
+            inputMethod: "array",
+            properties: [
+              {
+                property: "icon",
+                title: "Icon",
+                description: "icon to display in the middle",
+                inputMethod: "iconpicker",
+                options: []
+              },
+              {
+                property: "iconColor",
+                title: "Icon Color",
+                description: "Color for this icon",
+                inputMethod: "colorpicker"
+              },
+              {
+                property: "label",
+                title: "Label",
+                description: "Label",
+                inputMethod: "textfield"
+              },
+              {
+                property: "image",
+                title: "Image",
+                description: "Image for the background",
+                inputMethod: "textfield",
+                validationType: "url"
+              },
+              {
+                property: "description",
+                title: "Description",
+                description:
+                  "A longer description that can be used as part of a modal presentation",
+                inputMethod: "textfield"
+              },
+              {
+                property: "color",
+                title: "Color",
+                description: "Color for this node",
+                inputMethod: "colorpicker"
+              },
+              {
+                property: "src",
+                title: "Link",
+                description: "Label",
+                inputMethod: "textfield",
+                validationType: "url"
+              }
+            ]
+          }
+        ],
+        advanced: []
+      }
+    };
+    this.setHaxProperties(props);
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(SimpleConceptNetwork.tag, SimpleConceptNetwork);
+});

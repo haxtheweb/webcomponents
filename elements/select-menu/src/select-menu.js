@@ -1,46 +1,96 @@
-/**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { SelectMenu };
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
+import "@polymer/paper-item/paper-item.js";
+import "@polymer/paper-listbox/paper-listbox.js";
+import "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
 /**
  * `select-menu`
- * `Automated conversion of select-menu/`
- *
- * @microcopy - language worth noting:
- *  -
+ * accepts an array of values and human-readable text and creates a paper-dropdown-menu, provides the value fo the selected item
  *
  * @customElement
  * @polymer
+ * @polymerLegacy
  * @demo demo/index.html
  */
-class SelectMenu extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+Polymer({
+  _template: html`
+  <custom-style>
+    <style is="custom-style">
+      paper-dropdown-menu, paper-listbox {
+        width: 250px;
+      }
+      paper-dropdown-menu {
+        height: 200px;
+        margin: auto;
+        display: block;
+      }
+    </style>
+  </custom-style>
+  <paper-dropdown-menu id="menu" label\$="[[label]]" on-selected-item-changed="_setSelectedValue">
+    <paper-listbox id="listbox" slot="dropdown-content" selected="{{selectedIndex}}">
+      <slot></slot>
+    </paper-listbox>
+  </paper-dropdown-menu>
+`,
+
+  is: "select-menu",
+
+  listeners: {
+    "menubutton.tap": "_menubuttonTap"
+  },
+
+  properties: {
+    /**
+     * The label of the select menu
+     */
+    label: {
+      type: String,
+      value: "Select an option."
+    },
+    /**
+     * The default value
+     */
+    value: {
+      type: String,
+      value: null
+    },
+    /**
+     * The index of the selected item
+     */
+    selectedIndex: {
+      type: Number,
+      reflectToAttribute: true,
+      notify: true,
+      computed: "_getSelectedIndex()"
+    }
+  },
 
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * Get the value of the selected item.
    */
-  static get tag() {
-    return "select-menu";
-  }
+  _setSelectedValue: function(e) {
+    if (e.detail.value !== null) {
+      let val = e.detail.value.getAttribute("value");
+      this.setAttribute("value", val);
+      this.fire("change", { value: val });
+    }
+  },
+
   /**
-   * life cycle, element is afixed to the DOM
+   * Get the index of the default value.
    */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      SelectMenu.haxProperties,
-      SelectMenu.tag,
-      this
-    );
+  _getSelectedIndex: function() {
+    this.__items = this.getElementsByTagName("paper-item");
+    for (var i = 0; i < this.__items.length; i++) {
+      console.log(
+        this.value,
+        this.__items[i],
+        this.__items[i].getAttribute("value")
+      );
+      if (this.value == this.__items[i].getAttribute("value")) {
+        return i;
+      }
+    }
+    return null;
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(SelectMenu.tag, SelectMenu);
+});
