@@ -1,1 +1,56 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=yes"><title>WatsonlogicParallax: watsonlogic-parallax Demo</title><script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script><script type="module">import"../node_modules/@polymer/iron-demo-helpers/demo-snippet.js";import"../watsonlogic-parallax.js";</script><style is="custom-style" include="demo-pages-shared-styles"></style></head><body><div class="vertical-section-container centered"><h3>Basic watsonlogic-parallax demo</h3><demo-snippet><template><watsonlogic-parallax>This is watsonlogic-parallax</watsonlogic-parallax></template></demo-snippet></div></body></html>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=yes"><title>watsonlogic-parallax demo</title><script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script><script type="module">import"../node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js";import"../node_modules/@polymer/iron-demo-helpers/demo-snippet.js";import"../watsonlogic-parallax.js";</script><script type="module">var $_documentContainer=document.createElement("div");$_documentContainer.innerHTML=`<custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        max-height: 300px;
+        font-weight: 300;
+        font-size: 1.3em;
+      }
+      h2{
+        font-weight: 100;
+      }
+      watsonlogic-parallax{
+        color: white;
+        margin-left: -20px;
+        margin-right: -20px;
+      }
+      blockquote footer{
+        text-align:right;
+      }
+      </style>
+    </custom-style>`;document.body.appendChild($_documentContainer);</script></head><body><script type="module">var $_documentContainer=document.createElement("div");$_documentContainer.innerHTML=`<div class="vertical-section-container centered">
+      <h3>Basic watsonlogic-parallax demo</h3>
+      <demo-snippet>
+        <template>
+          <h2>Welcome to WatsonLogic Parallax</h2>
+
+          <p>We deliberately placed more content in the demo so that you will scroll to view the parallax effect</p>
+          <watsonlogic-parallax parallax-image-height="200" parallax-text="You can pass text content into the <watsonlogic-parallax> component." parallax-image="https://static.pexels.com/photos/316874/pexels-photo-316874.jpeg">
+          </watsonlogic-parallax>
+          <blockquote>
+            Smile in the mirror. Do that every morning and you'll start to see
+            a big difference in your life.
+            <footer>— Yoko Ono</footer>
+          </blockquote>
+
+          <watsonlogic-parallax parallax-image-height="300" parallax-text="You can pass text content into the <watsonlogic-parallax> component." parallax-image="https://static.pexels.com/photos/26750/pexels-photo-26750.jpg">
+          </watsonlogic-parallax>
+          <blockquote>
+            Learn to enjoy every minute of your life. Be happy now. Don't wait
+            for something outside of yourself to make you happy in the future.
+            Think how really previous is the time you have to spend, whether
+            it's at work or with your family. Every minute should be enjoyed and
+            savored.
+            <footer>— Earl Nightingale</footer>
+          </blockquote>
+
+          <watsonlogic-parallax parallax-image-height="300" parallax-image="https://static.pexels.com/photos/26171/pexels-photo.jpg">
+          </watsonlogic-parallax>
+          <blockquote>
+            My mission in life is not merely to survive, but to thrive; and to
+            do so with some passion, some compassion, some humor, and some
+            style.
+            <footer>— Maya Angelou</footer>
+          </blockquote>
+        </template>
+      </demo-snippet>
+    </div>`;document.body.appendChild($_documentContainer);</script></body></html>

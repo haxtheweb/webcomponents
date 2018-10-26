@@ -1,0 +1,23 @@
+{
+  "name": "@lrnwebcomponents/freezeframe",
+  "version": "0.0.28",
+  "description": "Ported over from freezeframe.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "build/js/freezeframe.js",
+  "author": {
+    "name": "Christopher Antonellis"
+  },
+  "license": "MIT",
+  "dependencies": {
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "html"
+  ]
+}

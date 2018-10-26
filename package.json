@@ -159,10 +159,16 @@
       "**/paper-collapse-item/**",
       "**/slim-js",
       "**/slim-js/**",
-      "**/jsoneditor/",
+      "**/jsoneditor",
       "**/jsoneditor/**",
-      "**/ace-builds/",
-      "**/ace-builds/**"
+      "**/ace-builds",
+      "**/ace-builds/**",
+      "**/jarallax",
+      "**/jarallax/**",
+      "**/screenfull",
+      "**/screenfull/**",
+      "**/chartist",
+      "**/chartist/**"
     ]
   },
   "husky": {

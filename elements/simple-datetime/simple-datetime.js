@@ -1,92 +1,69 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "./lib/date.format.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { SimpleDatetime };
-/**
- * `simple-datetime`
- * `Automated conversion of simple-datetime/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class SimpleDatetime extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
+`simple-datetime`
+A simple datetime element that takes in unix timestamp and outputs a date.
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
+@demo demo/index.html
 
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Simple datetime",
-        description: "Automated conversion of simple-datetime/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Datetime"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [],
-        advanced: []
+@microcopy - the mental model for this element
+ - passing in a timestamp from unix and having it be php based date formatting to render is super helpful
+ -
+
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
+        font-size: 14px;
+        color: #b3b3b1;
+        line-height: 30px;
       }
-    };
-  }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
+    </style>
+    <time datetime\$="[[date]]">[[date]]</time>
+`,
+
+  is: "simple-datetime",
+
+  properties: {
+    /**
+     * Javascript timestamp
+     */
+    timestamp: {
+      type: Number
+    },
+    /**
+     * Format to output, see https://github.com/jacwright/date.format#supported-identifiers
+     */
+    format: {
+      type: String,
+      value: "M jS, Y"
+    },
+    /**
+     * Date, generated from timestamp + format
+     */
+    date: {
+      type: String,
+      computed: "formatDate(timestamp, format, unix)"
+    },
+    /**
+     * Support for UNIX timestamp conversion on the fly
+     */
+    unix: {
+      type: Boolean,
+      value: false
+    }
+  },
 
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * Figure out the date
    */
-  static get tag() {
-    return "simple-datetime";
+  formatDate: function(timestamp, format, unix) {
+    // unix timestamp is seconds, JS is milliseconds
+    if (unix) {
+      timestamp = timestamp * 1000;
+    }
+    return new Date(timestamp).format(format);
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      SimpleDatetime.haxProperties,
-      SimpleDatetime.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(SimpleDatetime.tag, SimpleDatetime);
+});

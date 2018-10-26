@@ -1,10 +1,35 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";export{WatsonlogicParallax};class WatsonlogicParallax extends PolymerElement{static get template(){return html`
-<style>:host {
-  display: block;
-}
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";Polymer({_template:html`
+    <style>
+      :host {
+        display: block;
+        --parallax-background-height: 300px;
+        --parallax-slogan-top: 150px;
+        --parallax-background-image: url('https://static.pexels.com/photos/2324/skyline-buildings-new-york-skyscrapers.jpg');
+      }
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Watsonlogic parallax",description:"Automated conversion of watsonlogic-parallax/",icon:"icons:android",color:"green",groups:["Parallax"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[],advanced:[]}}}static get properties(){return{}}static get tag(){return"watsonlogic-parallax"}connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setHaxProperties(WatsonlogicParallax.haxProperties,WatsonlogicParallax.tag,this)}}window.customElements.define(WatsonlogicParallax.tag,WatsonlogicParallax);
+      .parallax-background {
+        background: var(--parallax-background-image);
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: var(--parallax-background-height);
+        position:relative;
+      }
+
+      .slogan {
+        bottom: 0;
+        left: 0;
+        opacity: 1;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        top: var(--parallax-slogan-top);
+        transform-origin: center top !important;
+      }
+    </style>
+
+    <div class="parallax-background">
+      <div id="slogan" class="slogan">[[parallaxText]]</div>
+    </div>
+`,is:"watsonlogic-parallax",properties:{parallaxText:{type:String},parallaxImage:{type:String,notify:!0,reflectToAttribute:!0},parallaxImageHeight:{type:String,notify:!0,reflectToAttribute:!0}},ready:function(){let self=this;self.parallaxImage=self.parallaxImage||"https://static.pexels.com/photos/2324/skyline-buildings-new-york-skyscrapers.jpg";Number.isNaN(parseInt(self.parallaxImageHeight))?"300":parseInt(self.parallaxImageHeight);this.updateStyles({"--parallax-background-image":"url("+self.parallaxImage+")","--parallax-background-height":self.parallaxImageHeight+"px","--parallax-slogan-top":parseInt(self.parallaxImageHeight)/2+"px"})}});

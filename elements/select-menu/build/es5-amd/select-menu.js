@@ -1,103 +1,61 @@
 define([
-  "exports",
-  "./node_modules/@polymer/polymer/polymer-element.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_exports, _polymerElement, _HAXWiring) {
+  "./node_modules/@polymer/polymer/polymer-legacy.js",
+  "./node_modules/@polymer/paper-dropdown-menu/paper-dropdown-menu.js",
+  "./node_modules/@polymer/paper-item/paper-item.js",
+  "./node_modules/@polymer/paper-listbox/paper-listbox.js",
+  "./node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"
+], function(_polymerLegacy) {
   "use strict";
-  Object.defineProperty(_exports, "__esModule", { value: !0 });
-  _exports.SelectMenu = void 0;
-  function _templateObject_cbccd580d70411e8b543d79b4d1c1cdb() {
-    var data = babelHelpers.taggedTemplateLiteral([
-      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
-    ]);
-    _templateObject_cbccd580d70411e8b543d79b4d1c1cdb = function() {
+  function _templateObject_c7fc8e40d96211e88a77739bf74f692f() {
+    var data = babelHelpers.taggedTemplateLiteral(
+      [
+        '\n  <custom-style>\n    <style is="custom-style">\n      paper-dropdown-menu, paper-listbox {\n        width: 250px;\n      }\n      paper-dropdown-menu {\n        height: 200px;\n        margin: auto;\n        display: block;\n      }\n    </style>\n  </custom-style>\n  <paper-dropdown-menu id="menu" label$="[[label]]" on-selected-item-changed="_setSelectedValue">\n    <paper-listbox id="listbox" slot="dropdown-content" selected="{{selectedIndex}}">\n      <slot></slot>\n    </paper-listbox>\n  </paper-dropdown-menu>\n'
+      ],
+      [
+        '\n  <custom-style>\n    <style is="custom-style">\n      paper-dropdown-menu, paper-listbox {\n        width: 250px;\n      }\n      paper-dropdown-menu {\n        height: 200px;\n        margin: auto;\n        display: block;\n      }\n    </style>\n  </custom-style>\n  <paper-dropdown-menu id="menu" label\\$="[[label]]" on-selected-item-changed="_setSelectedValue">\n    <paper-listbox id="listbox" slot="dropdown-content" selected="{{selectedIndex}}">\n      <slot></slot>\n    </paper-listbox>\n  </paper-dropdown-menu>\n'
+      ]
+    );
+    _templateObject_c7fc8e40d96211e88a77739bf74f692f = function() {
       return data;
     };
     return data;
   }
-  var SelectMenu = (function(_PolymerElement) {
-    babelHelpers.inherits(SelectMenu, _PolymerElement);
-    function SelectMenu() {
-      babelHelpers.classCallCheck(this, SelectMenu);
-      return babelHelpers.possibleConstructorReturn(
-        this,
-        (SelectMenu.__proto__ || Object.getPrototypeOf(SelectMenu)).apply(
-          this,
-          arguments
-        )
-      );
+  (0, _polymerLegacy.Polymer)({
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_c7fc8e40d96211e88a77739bf74f692f()
+    ),
+    is: "select-menu",
+    listeners: { "menubutton.tap": "_menubuttonTap" },
+    properties: {
+      label: { type: String, value: "Select an option." },
+      value: { type: String, value: null },
+      selectedIndex: {
+        type: Number,
+        reflectToAttribute: !0,
+        notify: !0,
+        computed: "_getSelectedIndex()"
+      }
+    },
+    _setSelectedValue: function _setSelectedValue(e) {
+      if (null !== e.detail.value) {
+        var val = e.detail.value.getAttribute("value");
+        this.setAttribute("value", val);
+        this.fire("change", { value: val });
+      }
+    },
+    _getSelectedIndex: function _getSelectedIndex() {
+      this.__items = this.getElementsByTagName("paper-item");
+      for (var i = 0; i < this.__items.length; i++) {
+        console.log(
+          this.value,
+          this.__items[i],
+          this.__items[i].getAttribute("value")
+        );
+        if (this.value == this.__items[i].getAttribute("value")) {
+          return i;
+        }
+      }
+      return null;
     }
-    babelHelpers.createClass(
-      SelectMenu,
-      [
-        {
-          key: "connectedCallback",
-          value: function connectedCallback() {
-            babelHelpers
-              .get(
-                SelectMenu.prototype.__proto__ ||
-                  Object.getPrototypeOf(SelectMenu.prototype),
-                "connectedCallback",
-                this
-              )
-              .call(this);
-            this.HAXWiring = new _HAXWiring.HAXWiring();
-            this.HAXWiring.setHaxProperties(
-              SelectMenu.haxProperties,
-              SelectMenu.tag,
-              this
-            );
-          }
-        }
-      ],
-      [
-        {
-          key: "template",
-          get: function get() {
-            return (0, _polymerElement.html)(
-              _templateObject_cbccd580d70411e8b543d79b4d1c1cdb()
-            );
-          }
-        },
-        {
-          key: "haxProperties",
-          get: function get() {
-            return {
-              canScale: !0,
-              canPosition: !0,
-              canEditSource: !1,
-              gizmo: {
-                title: "Select menu",
-                description: "Automated conversion of select-menu/",
-                icon: "icons:android",
-                color: "green",
-                groups: ["Menu"],
-                handles: [{ type: "todo:read-the-docs-for-usage" }],
-                meta: {
-                  author: "btopro",
-                  owner: "The Pennsylvania State University"
-                }
-              },
-              settings: { quick: [], configure: [], advanced: [] }
-            };
-          }
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {};
-          }
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "select-menu";
-          }
-        }
-      ]
-    );
-    return SelectMenu;
-  })(_polymerElement.PolymerElement);
-  _exports.SelectMenu = SelectMenu;
-  window.customElements.define(SelectMenu.tag, SelectMenu);
+  });
 });

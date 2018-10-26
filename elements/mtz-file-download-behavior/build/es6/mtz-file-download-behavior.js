@@ -1,4 +1,4 @@
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { dom } from "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
 window.mtz = window.mtz || {};
 mtz.FileDownloadBehavior = {
   properties: {

@@ -611,11 +611,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 45,
+              "line": 46,
               "column": 2
             },
             "end": {
-              "line": 48,
+              "line": 49,
               "column": 3
             }
           },
@@ -633,11 +633,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 52,
+              "line": 53,
               "column": 2
             },
             "end": {
-              "line": 57,
+              "line": 58,
               "column": 3
             }
           },
@@ -647,7 +647,8 @@
               "observer": "\"_datUrlChanged\"",
               "attributeType": "String"
             }
-          }
+          },
+          "defaultValue": "\"window.location.host\""
         }
       ],
       "methods": [
@@ -2699,11 +2700,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 72,
+              "line": 73,
               "column": 2
             },
             "end": {
-              "line": 77,
+              "line": 78,
               "column": 3
             }
           },
@@ -2832,11 +2833,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 81,
+              "line": 82,
               "column": 2
             },
             "end": {
-              "line": 86,
+              "line": 87,
               "column": 3
             }
           },
@@ -2856,11 +2857,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 92,
+              "line": 93,
               "column": 2
             },
             "end": {
-              "line": 95,
+              "line": 96,
               "column": 3
             }
           },
@@ -2880,11 +2881,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 104,
+              "line": 105,
               "column": 2
             },
             "end": {
-              "line": 132,
+              "line": 133,
               "column": 3
             }
           },
@@ -3847,7 +3848,7 @@
           "column": 0
         },
         "end": {
-          "line": 138,
+          "line": 139,
           "column": 1
         }
       },
@@ -3860,11 +3861,11 @@
           "description": "Archive",
           "sourceRange": {
             "start": {
-              "line": 45,
+              "line": 46,
               "column": 2
             },
             "end": {
-              "line": 48,
+              "line": 49,
               "column": 3
             }
           },
@@ -3876,11 +3877,11 @@
           "description": "datUrl",
           "sourceRange": {
             "start": {
-              "line": 52,
+              "line": 53,
               "column": 2
             },
             "end": {
-              "line": 57,
+              "line": 58,
               "column": 3
             }
           },

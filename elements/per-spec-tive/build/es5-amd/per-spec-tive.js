@@ -1,103 +1,48 @@
 define([
-  "exports",
-  "./node_modules/@polymer/polymer/polymer-element.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_exports, _polymerElement, _HAXWiring) {
+  "./node_modules/@polymer/polymer/polymer-legacy.js",
+  "./node_modules/@polymer/paper-button/paper-button.js",
+  "./node_modules/@polymer/paper-card/paper-card.js",
+  "./node_modules/@polymer/iron-list/iron-list.js",
+  "./node_modules/@polymer/iron-ajax/iron-ajax.js",
+  "./node_modules/@polymer/iron-icons/iron-icons.js",
+  "./node_modules/@polymer/paper-icon-button/paper-icon-button.js",
+  "../../node_modules/@lrnwebcomponents/simple-colors/simple-colors.js"
+], function(_polymerLegacy) {
   "use strict";
-  Object.defineProperty(_exports, "__esModule", { value: !0 });
-  _exports.PerSpecTive = void 0;
-  function _templateObject_dbbf1680d70211e89da4999c63094187() {
+  function _templateObject_36e89d00d95211e88b84774256aac0ee() {
     var data = babelHelpers.taggedTemplateLiteral([
-      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
+      '\n    <style>\n      :host {\n        display: block;\n        transition: .6s all linear;\n        background-color: transparent;\n        opacity: 1;\n      }\n      :host[outline-loading] {\n        opacity: .6;\n        background-color: #999999;\n      }\n      paper-card {\n        width: 250px;\n        height: 250px;\n      }\n      #list {\n        min-height: 50vh;\n        width: 100%;\n      }\n    </style>\n    <iron-ajax auto="" id="endpoint" url="[[endPoint]]" loading="{{outlineLoading}}" handle-as="json" last-response="{{_outlineData}}" debounce-duration="300"></iron-ajax>\n    <iron-list grid="" id="list" items="[[outline]]">\n      <template>\n        <paper-card heading="[[item.title]]" image="" elevation="1" animated-shadow="true">\n          <div class="card-content">\n            A card\n          </div>\n          <div class="card-actions">\n            <paper-icon-button icon="add"></paper-icon-button>\n            <paper-icon-button icon="delete"></paper-icon-button>\n          </div>\n        </paper-card>\n      </template>\n    </iron-list>\n'
     ]);
-    _templateObject_dbbf1680d70211e89da4999c63094187 = function() {
+    _templateObject_36e89d00d95211e88b84774256aac0ee = function() {
       return data;
     };
     return data;
   }
-  var PerSpecTive = (function(_PolymerElement) {
-    babelHelpers.inherits(PerSpecTive, _PolymerElement);
-    function PerSpecTive() {
-      babelHelpers.classCallCheck(this, PerSpecTive);
-      return babelHelpers.possibleConstructorReturn(
-        this,
-        (PerSpecTive.__proto__ || Object.getPrototypeOf(PerSpecTive)).apply(
-          this,
-          arguments
-        )
-      );
+  (0, _polymerLegacy.Polymer)({
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_36e89d00d95211e88b84774256aac0ee()
+    ),
+    is: "per-spec-tive",
+    properties: {
+      outlineLoading: { type: Boolean, reflectToAttribute: !0 },
+      endPoint: { type: String },
+      _outlineData: { type: Object, observer: "_outlineRawDataChanged" },
+      outline: { type: Array, observer: "_outlineChanged" }
+    },
+    _outlineRawDataChanged: function _outlineRawDataChanged(newValue) {
+      if (
+        null != newValue &&
+        babelHelpers.typeof(newValue.items) !== "undefined"
+      ) {
+        this.set("outline", []);
+        this.set("outline", newValue.items);
+      }
+    },
+    _outlineChanged: function _outlineChanged() {},
+    _toArray: function _toArray(obj) {
+      return Object.keys(obj).map(function(key) {
+        return obj[key];
+      });
     }
-    babelHelpers.createClass(
-      PerSpecTive,
-      [
-        {
-          key: "connectedCallback",
-          value: function connectedCallback() {
-            babelHelpers
-              .get(
-                PerSpecTive.prototype.__proto__ ||
-                  Object.getPrototypeOf(PerSpecTive.prototype),
-                "connectedCallback",
-                this
-              )
-              .call(this);
-            this.HAXWiring = new _HAXWiring.HAXWiring();
-            this.HAXWiring.setHaxProperties(
-              PerSpecTive.haxProperties,
-              PerSpecTive.tag,
-              this
-            );
-          }
-        }
-      ],
-      [
-        {
-          key: "template",
-          get: function get() {
-            return (0, _polymerElement.html)(
-              _templateObject_dbbf1680d70211e89da4999c63094187()
-            );
-          }
-        },
-        {
-          key: "haxProperties",
-          get: function get() {
-            return {
-              canScale: !0,
-              canPosition: !0,
-              canEditSource: !1,
-              gizmo: {
-                title: "Per spec-tive",
-                description: "Automated conversion of per-spec-tive/",
-                icon: "icons:android",
-                color: "green",
-                groups: ["Spec"],
-                handles: [{ type: "todo:read-the-docs-for-usage" }],
-                meta: {
-                  author: "btopro",
-                  owner: "The Pennsylvania State University"
-                }
-              },
-              settings: { quick: [], configure: [], advanced: [] }
-            };
-          }
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {};
-          }
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "per-spec-tive";
-          }
-        }
-      ]
-    );
-    return PerSpecTive;
-  })(_polymerElement.PolymerElement);
-  _exports.PerSpecTive = PerSpecTive;
-  window.customElements.define(PerSpecTive.tag, PerSpecTive);
+  });
 });

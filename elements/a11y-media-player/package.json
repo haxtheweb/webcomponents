@@ -38,6 +38,7 @@
     "@lrnwebcomponents/responsive-utility": "^0.0.28",
     "@lrnwebcomponents/dropdown-select": "^0.0.28",
     "@lrnwebcomponents/simple-colors": "^0.0.28",
+    "@lrnwebcomponents/simple-search": "^0.0.28",
     "@polymer/iron-icons": "^3.0.0",
     "@polymer/paper-slider": "^3.0.0",
     "@polymer/paper-input": "^3.0.0",
@@ -49,7 +50,8 @@
     "@polymer/paper-toggle-button": "^3.0.0",
     "@polymer/iron-a11y-keys": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.0.5",
+    "screenfull": "^3.3.3"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

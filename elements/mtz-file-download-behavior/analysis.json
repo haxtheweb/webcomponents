@@ -15,11 +15,11 @@
               "privacy": "public",
               "sourceRange": {
                 "start": {
-                  "line": 11,
+                  "line": 12,
                   "column": 4
                 },
                 "end": {
-                  "line": 21,
+                  "line": 22,
                   "column": 5
                 }
               },
@@ -37,11 +37,11 @@
               "privacy": "public",
               "sourceRange": {
                 "start": {
-                  "line": 33,
+                  "line": 34,
                   "column": 2
                 },
                 "end": {
-                  "line": 53,
+                  "line": 54,
                   "column": 3
                 }
               },
@@ -76,11 +76,11 @@
               "privacy": "public",
               "sourceRange": {
                 "start": {
-                  "line": 62,
+                  "line": 63,
                   "column": 2
                 },
                 "end": {
-                  "line": 65,
+                  "line": 66,
                   "column": 3
                 }
               },
@@ -112,11 +112,11 @@
           "metadata": {},
           "sourceRange": {
             "start": {
-              "line": 8,
+              "line": 9,
               "column": 0
             },
             "end": {
-              "line": 66,
+              "line": 67,
               "column": 2
             }
           },
@@ -128,11 +128,11 @@
               "description": "MIME type lookup for file extensions",
               "sourceRange": {
                 "start": {
-                  "line": 11,
+                  "line": 12,
                   "column": 4
                 },
                 "end": {
-                  "line": 21,
+                  "line": 22,
                   "column": 5
                 }
               },

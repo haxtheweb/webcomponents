@@ -1,5 +1,6 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/lrndesign-animationctrl/lrndesign-animationctrl.js";
-import "greensock-cdn/greensock-cdn.js";
+import "./TweenMax.min.js";
 Polymer({
   _template: html`
         <style>

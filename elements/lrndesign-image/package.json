@@ -43,7 +43,11 @@
     "@polymer/polymer": "^3.0.0",
     "@polymer/paper-spinner": "^3.0.0",
     "@polymer/paper-tooltip": "^3.0.0",
-    "@polymer/iron-image": "^3.0.0"
+    "@polymer/iron-image": "^3.0.0",
+    "@polymer/paper-button": "^3.0.1",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.28",
+    "@lrnwebcomponents/lrnsys-layout": "^0.0.28",
+    "@lrnwebcomponents/freezeframe": "^0.0.28"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

@@ -1,53 +1,47 @@
-import {
-  html,
-  PolymerElement
-} from "./node_modules/@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { SecureRequest };
-class SecureRequest extends PolymerElement {
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
+window.SecureRequest = window.SecureRequest || {};
+window.SecureRequest.xhr = {
+  setCookies: function(endPoint, csrfToken) {
+    this._eraseCookie("securerequest-endpoint");
+    this._eraseCookie("securerequest-csrftoken");
+    this._createCookie("securerequest-endpoint", endPoint, 30, endPoint);
+    this._createCookie("securerequest-csrftoken", csrfToken, 30, endPoint);
+  },
+  generateUrl: function(url) {
+    const endPoint = this.getEndPoint(),
+      csrfToken = this.getCsrfToken();
+    if (endPoint && csrfToken) {
+      return endPoint + url + "?token=" + csrfToken;
+    }
+    return null;
+  },
+  getEndPoint: function() {
+    return this._readCookie("securerequest-endpoint");
+  },
+  getCsrfToken: function() {
+    return this._readCookie("securerequest-csrftoken");
+  },
+  _createCookie: function(name, value, days, path) {
+    var expires = "";
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + 1e3 * (60 * (60 * (24 * days))));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + value + expires + "; path=" + path;
+  },
+  _readCookie: function(name) {
+    for (
+      var nameEQ = name + "=", ca = document.cookie.split(";"), i = 0, c;
+      i < ca.length;
+      i++
+    ) {
+      c = ca[i];
+      while (" " == c.charAt(0)) c = c.substring(1, c.length);
+      if (0 == c.indexOf(nameEQ)) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  },
+  _eraseCookie: function(name) {
+    this._createCookie(name, "", -1);
   }
-  static get haxProperties() {
-    return {
-      canScale: !0,
-      canPosition: !0,
-      canEditSource: !1,
-      gizmo: {
-        title: "Secure request",
-        description: "Automated conversion of secure-request/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Request"],
-        handles: [{ type: "todo:read-the-docs-for-usage" }],
-        meta: { author: "btopro", owner: "The Pennsylvania State University" }
-      },
-      settings: { quick: [], configure: [], advanced: [] }
-    };
-  }
-  static get properties() {
-    return {};
-  }
-  static get tag() {
-    return "secure-request";
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      SecureRequest.haxProperties,
-      SecureRequest.tag,
-      this
-    );
-  }
-}
-window.customElements.define(SecureRequest.tag, SecureRequest);
+};

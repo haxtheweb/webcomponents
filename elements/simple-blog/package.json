@@ -40,6 +40,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/schema-behaviors": "^0.0.28",
+    "@lrnwebcomponents/simple-colors": "^0.0.28",
+    "@lrnwebcomponents/haxcms-elements": "^0.0.28",
+    "@lrnwebcomponents/simple-datetime": "^0.0.28",
     "@polymer/polymer": "^3.0.0",
     "@polymer/iron-icons": "^3.0.0",
     "@polymer/iron-list": "^3.0.0",

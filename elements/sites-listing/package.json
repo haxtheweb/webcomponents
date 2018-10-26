@@ -40,6 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/elmsln-loading": "^0.0.28",
     "@polymer/polymer": "^3.0.0",
     "@polymer/iron-list": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",

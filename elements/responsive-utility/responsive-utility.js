@@ -89,7 +89,7 @@ Polymer({
   /**
    * On resize, sets sizes of any target element that has changed.
    */
-  _onIronResize: function(e) {
+  _onIronResize: function() {
     for (let i = 0; i < this.targets.length; i++) {
       window.ResponsiveUtility.setSize(this.targets[i]);
     }

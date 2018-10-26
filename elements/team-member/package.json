@@ -40,6 +40,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/schema-behaviors": "^0.0.28",
+    "@lrnwebcomponents/mdi-iconset-svg":"^0.0.28",
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
     "@polymer/polymer": "^3.0.5",
     "@polymer/iron-icons": "^3.0.0",

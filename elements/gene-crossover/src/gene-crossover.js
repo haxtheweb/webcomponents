@@ -2,18 +2,34 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-route/app-route.js";
 import "@polymer/app-route/app-location.js";
 import "@polymer/iron-pages/iron-pages.js";
-import "paper-stepper/paper-stepper.js";
+import "@lrnwebcomponents/paper-stepper/paper-stepper.js";
 import "./lib/gene-crossover-1.js";
 import "./lib/gene-crossover-2.js";
 import "./lib/gene-crossover-3.js";
 import "./lib/gene-crossover-4.js";
 import "./lib/gene-crossover-5.js";
-import "animation-shared-styles/animation-shared-styles.js";
 Polymer({
   _template: html`
     <style is="custom-style" include="animation-shared-styles">
        :host {
         display: block;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: 'Open Sans', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #6D6E71;
+        text-align: center;
+        font-size: 1.2em;
+      }
+
+      p {
+        font-family: 'Open Sans', sans-serif;
       }
     </style>
 
@@ -61,7 +77,6 @@ Polymer({
         array.push(i);
       }
     }
-    console.log(array);
     return array;
   },
 

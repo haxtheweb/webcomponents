@@ -2,30 +2,126 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`simple-search`\n`Automated conversion of simple-search`",
+      "description": "`simple-search-content`\nAn inline element that can be searched with the seimple-search element",
       "summary": "",
-      "path": "simple-search.js",
-      "properties": [],
-      "methods": [
+      "path": "lib/simple-search-content.js",
+      "properties": [
         {
-          "name": "connectedCallback",
-          "description": "life cycle, element is afixed to the DOM",
+          "name": "content",
+          "type": "string | null | undefined",
+          "description": "Original content. For example: \"The quick brown fox jumps over the lazy dog.\"",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 80,
+              "line": 57,
+              "column": 4
+            },
+            "end": {
+              "line": 60,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "null"
+        }
+      ],
+      "methods": [
+        {
+          "name": "enableSearch",
+          "description": "associates simple-search-content with a simple-search",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 65,
               "column": 2
             },
             "end": {
-              "line": 84,
+              "line": 83,
               "column": 3
             }
           },
           "metadata": {},
-          "params": [],
+          "params": [
+            {
+              "name": "searchObject"
+            }
+          ],
           "return": {
             "type": "void"
           }
+        },
+        {
+          "name": "setContent",
+          "description": "sets array of content to be rendered",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 87,
+              "column": 2
+            },
+            "end": {
+              "line": 89,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newContent"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "focus",
+          "description": "sets focus on a matched result based on match number",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 93,
+              "column": 2
+            },
+            "end": {
+              "line": 98,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "matchNumber"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_getTabIndex",
+          "description": "gets tab index based on whether item is a match that can be focused on",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 102,
+              "column": 2
+            },
+            "end": {
+              "line": 104,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "matchNumber"
+            }
+          ]
         }
       ],
       "staticMethods": [],
@@ -38,24 +134,989 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 18,
-          "column": 0
+          "line": 50,
+          "column": 8
         },
         "end": {
-          "line": 90,
+          "line": 105,
           "column": 1
         }
       },
       "privacy": "public",
-      "superclass": "PolymerElement",
-      "name": "SimpleSearch",
-      "attributes": [],
+      "superclass": "HTMLElement",
+      "attributes": [
+        {
+          "name": "content",
+          "description": "Original content. For example: \"The quick brown fox jumps over the lazy dog.\"",
+          "sourceRange": {
+            "start": {
+              "line": 57,
+              "column": 4
+            },
+            "end": {
+              "line": 60,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        }
+      ],
       "events": [],
       "styling": {
         "cssVariables": [],
         "selectors": []
       },
-      "slots": []
+      "slots": [],
+      "tagname": "simple-search-content"
+    },
+    {
+      "description": "`simple-search`\nA button used in simple-search",
+      "summary": "",
+      "path": "simple-search.js",
+      "properties": [
+        {
+          "name": "alwaysFloatLabel",
+          "type": "boolean | null | undefined",
+          "description": "always float the label",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 155,
+              "column": 4
+            },
+            "end": {
+              "line": 158,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "caseSensitive",
+          "type": "boolean | null | undefined",
+          "description": "Is the search case-sensitive",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 162,
+              "column": 4
+            },
+            "end": {
+              "line": 165,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "null"
+        },
+        {
+          "name": "controls",
+          "type": "string | null | undefined",
+          "description": "The id of the container element that the navigation buttons control",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 169,
+              "column": 4
+            },
+            "end": {
+              "line": 172,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "null"
+        },
+        {
+          "name": "nextButtonDisabled",
+          "type": "boolean | null | undefined",
+          "description": "is the previous next button disabled",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 176,
+              "column": 4
+            },
+            "end": {
+              "line": 179,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "Boolean"
+            }
+          }
+        },
+        {
+          "name": "nextButtonIcon",
+          "type": "string | null | undefined",
+          "description": "label for next result icon",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 183,
+              "column": 4
+            },
+            "end": {
+              "line": 186,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"arrow-forward\""
+        },
+        {
+          "name": "nextButtonLabel",
+          "type": "string | null | undefined",
+          "description": "label for next result button",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 190,
+              "column": 4
+            },
+            "end": {
+              "line": 193,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"next result\""
+        },
+        {
+          "name": "noLabelFloat",
+          "type": "boolean | null | undefined",
+          "description": "never float the label",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 197,
+              "column": 4
+            },
+            "end": {
+              "line": 200,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "noResults",
+          "type": "boolean | null | undefined",
+          "description": "are there any results to navigate?",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 204,
+              "column": 4
+            },
+            "end": {
+              "line": 207,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "Boolean"
+            }
+          }
+        },
+        {
+          "name": "noSearch",
+          "type": "boolean | null | undefined",
+          "description": "is there an active search?",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 211,
+              "column": 4
+            },
+            "end": {
+              "line": 214,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "Boolean"
+            }
+          }
+        },
+        {
+          "name": "prevButtonDisabled",
+          "type": "boolean | null | undefined",
+          "description": "is the previous result button disabled",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 218,
+              "column": 4
+            },
+            "end": {
+              "line": 221,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "Boolean"
+            }
+          }
+        },
+        {
+          "name": "prevButtonIcon",
+          "type": "string | null | undefined",
+          "description": "label for previous result icon",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 225,
+              "column": 4
+            },
+            "end": {
+              "line": 228,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"arrow-back\""
+        },
+        {
+          "name": "prevButtonLabel",
+          "type": "string | null | undefined",
+          "description": "label for previous result button",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 232,
+              "column": 4
+            },
+            "end": {
+              "line": 235,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"previous result\""
+        },
+        {
+          "name": "resultCount",
+          "type": "number | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 240,
+              "column": 4
+            },
+            "end": {
+              "line": 243,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          },
+          "defaultValue": "0"
+        },
+        {
+          "name": "resultPointer",
+          "type": "number | null | undefined",
+          "description": "Which result are we currently on?",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 247,
+              "column": 4
+            },
+            "end": {
+              "line": 250,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          },
+          "defaultValue": "0"
+        },
+        {
+          "name": "resultsSpan",
+          "type": "string | null | undefined",
+          "description": "Number of results.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 254,
+              "column": 4
+            },
+            "end": {
+              "line": 257,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "searchInputIcon",
+          "type": "string | null | undefined",
+          "description": "label for search icon",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 261,
+              "column": 4
+            },
+            "end": {
+              "line": 264,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"search\""
+        },
+        {
+          "name": "searchInputLabel",
+          "type": "string | null | undefined",
+          "description": "label for search input",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 268,
+              "column": 4
+            },
+            "end": {
+              "line": 271,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"search\""
+        },
+        {
+          "name": "searchTerms",
+          "type": "Array | null | undefined",
+          "description": "an array of search terms",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 275,
+              "column": 4
+            },
+            "end": {
+              "line": 278,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Array"
+            }
+          },
+          "defaultValue": "[]"
+        },
+        {
+          "name": "target",
+          "type": "Object | null | undefined",
+          "description": "The container element that the navigation buttons control",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 282,
+              "column": 4
+            },
+            "end": {
+              "line": 285,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "null"
+        }
+      ],
+      "methods": [
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 288,
+              "column": 2
+            },
+            "end": {
+              "line": 304,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_hasNoResults",
+          "description": "are there any results to navigate?",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 309,
+              "column": 2
+            },
+            "end": {
+              "line": 311,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "resultCount"
+            }
+          ]
+        },
+        {
+          "name": "_hasNoSearch",
+          "description": "are there any results to navigate?",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 316,
+              "column": 2
+            },
+            "end": {
+              "line": 318,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "searchTerms"
+            }
+          ]
+        },
+        {
+          "name": "_getResultsSpan",
+          "description": "get results span text",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 323,
+              "column": 2
+            },
+            "end": {
+              "line": 332,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "noSearch"
+            },
+            {
+              "name": "resultPointer"
+            },
+            {
+              "name": "resultCount"
+            }
+          ]
+        },
+        {
+          "name": "_navigateResults",
+          "description": "navigate results",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 337,
+              "column": 2
+            },
+            "end": {
+              "line": 345,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "increment"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_isNavButtonDisabled",
+          "description": "navigate results",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 350,
+              "column": 2
+            },
+            "end": {
+              "line": 361,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "resultPointer"
+            },
+            {
+              "name": "resultCount"
+            },
+            {
+              "name": "resultsSpan"
+            },
+            {
+              "name": "increment"
+            }
+          ]
+        },
+        {
+          "name": "_getSearchText",
+          "description": "gets the tab-index of cues based on whether or not interactive cues are disabled",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 366,
+              "column": 2
+            },
+            "end": {
+              "line": 376,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "find"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "findMatches",
+          "description": "search a string of content for any terms and return an array of results.\nFor example if I searched for the with\nfindMatches(\"The quick brown fox jumps over the lazy dog.\"),\nthe array would be:\n[\n  {\n    \"matched\": true,\n    \"matchNumber\": 1,\n    \"text\": \"The\",\n    \"searchObject\": root\n  },{\n    \"matched\": false,\n    \"text\": \" quick brown fox jumps over \",\n    \"searchObject\": root\n  },{\n    \"matched\": true,\n    \"matchNumber\": 2,\n    \"text\": \"the\",\n    \"searchObject\": root\n  },{\n    \"matched\": false,\n    \"text\": \" lazy dog.\",\n    \"searchObject\": root\n  }\n]\n\nor findMatches(\"The quick brown fox jumps over the lazy dog.\",true),\nthe array would be:\n[\n  {\n    \"matched\": false,\n    \"text\": \"The quick brown fox jumps over \",\n    \"searchObject\": root\n  },{\n    \"matched\": true,\n    \"matchNumber\": 1,\n    \"text\": \"the\",\n    \"searchObject\": root\n  },{\n    \"matched\": false,\n    \"text\": \" lazy dog.\",\n    \"searchObject\": root\n  }\n]",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 424,
+              "column": 2
+            },
+            "end": {
+              "line": 470,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "content"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 81,
+          "column": 8
+        },
+        "end": {
+          "line": 471,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "attributes": [
+        {
+          "name": "always-float-label",
+          "description": "always float the label",
+          "sourceRange": {
+            "start": {
+              "line": 155,
+              "column": 4
+            },
+            "end": {
+              "line": 158,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "case-sensitive",
+          "description": "Is the search case-sensitive",
+          "sourceRange": {
+            "start": {
+              "line": 162,
+              "column": 4
+            },
+            "end": {
+              "line": 165,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "controls",
+          "description": "The id of the container element that the navigation buttons control",
+          "sourceRange": {
+            "start": {
+              "line": 169,
+              "column": 4
+            },
+            "end": {
+              "line": 172,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "next-button-disabled",
+          "description": "is the previous next button disabled",
+          "sourceRange": {
+            "start": {
+              "line": 176,
+              "column": 4
+            },
+            "end": {
+              "line": 179,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "next-button-icon",
+          "description": "label for next result icon",
+          "sourceRange": {
+            "start": {
+              "line": 183,
+              "column": 4
+            },
+            "end": {
+              "line": 186,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "next-button-label",
+          "description": "label for next result button",
+          "sourceRange": {
+            "start": {
+              "line": 190,
+              "column": 4
+            },
+            "end": {
+              "line": 193,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "no-label-float",
+          "description": "never float the label",
+          "sourceRange": {
+            "start": {
+              "line": 197,
+              "column": 4
+            },
+            "end": {
+              "line": 200,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "no-results",
+          "description": "are there any results to navigate?",
+          "sourceRange": {
+            "start": {
+              "line": 204,
+              "column": 4
+            },
+            "end": {
+              "line": 207,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "no-search",
+          "description": "is there an active search?",
+          "sourceRange": {
+            "start": {
+              "line": 211,
+              "column": 4
+            },
+            "end": {
+              "line": 214,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "prev-button-disabled",
+          "description": "is the previous result button disabled",
+          "sourceRange": {
+            "start": {
+              "line": 218,
+              "column": 4
+            },
+            "end": {
+              "line": 221,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "prev-button-icon",
+          "description": "label for previous result icon",
+          "sourceRange": {
+            "start": {
+              "line": 225,
+              "column": 4
+            },
+            "end": {
+              "line": 228,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "prev-button-label",
+          "description": "label for previous result button",
+          "sourceRange": {
+            "start": {
+              "line": 232,
+              "column": 4
+            },
+            "end": {
+              "line": 235,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "result-count",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 240,
+              "column": 4
+            },
+            "end": {
+              "line": 243,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        },
+        {
+          "name": "result-pointer",
+          "description": "Which result are we currently on?",
+          "sourceRange": {
+            "start": {
+              "line": 247,
+              "column": 4
+            },
+            "end": {
+              "line": 250,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        },
+        {
+          "name": "results-span",
+          "description": "Number of results.",
+          "sourceRange": {
+            "start": {
+              "line": 254,
+              "column": 4
+            },
+            "end": {
+              "line": 257,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "search-input-icon",
+          "description": "label for search icon",
+          "sourceRange": {
+            "start": {
+              "line": 261,
+              "column": 4
+            },
+            "end": {
+              "line": 264,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "search-input-label",
+          "description": "label for search input",
+          "sourceRange": {
+            "start": {
+              "line": 268,
+              "column": 4
+            },
+            "end": {
+              "line": 271,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "search-terms",
+          "description": "an array of search terms",
+          "sourceRange": {
+            "start": {
+              "line": 275,
+              "column": 4
+            },
+            "end": {
+              "line": 278,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Array | null | undefined"
+        },
+        {
+          "name": "target",
+          "description": "The container element that the navigation buttons control",
+          "sourceRange": {
+            "start": {
+              "line": 282,
+              "column": 4
+            },
+            "end": {
+              "line": 285,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "simple-search"
     }
   ]
 }

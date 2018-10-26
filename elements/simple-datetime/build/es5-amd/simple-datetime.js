@@ -1,102 +1,38 @@
 define([
-  "exports",
-  "./node_modules/@polymer/polymer/polymer-element.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_exports, _polymerElement, _HAXWiring) {
+  "./node_modules/@polymer/polymer/polymer-legacy.js",
+  "./lib/date.format.js"
+], function(_polymerLegacy) {
   "use strict";
-  Object.defineProperty(_exports, "__esModule", { value: !0 });
-  _exports.SimpleDatetime = void 0;
-  function _templateObject_fbe72d00d70511e88d41d7a001847683() {
-    var data = babelHelpers.taggedTemplateLiteral([
-      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
-    ]);
-    _templateObject_fbe72d00d70511e88d41d7a001847683 = function() {
+  function _templateObject_cc8e7270d96211e899db1d5fc4fbc502() {
+    var data = babelHelpers.taggedTemplateLiteral(
+      [
+        '\n    <style>\n      :host {\n        display: block;\n        font-size: 14px;\n        color: #b3b3b1;\n        line-height: 30px;\n      }\n    </style>\n    <time datetime$="[[date]]">[[date]]</time>\n'
+      ],
+      [
+        '\n    <style>\n      :host {\n        display: block;\n        font-size: 14px;\n        color: #b3b3b1;\n        line-height: 30px;\n      }\n    </style>\n    <time datetime\\$="[[date]]">[[date]]</time>\n'
+      ]
+    );
+    _templateObject_cc8e7270d96211e899db1d5fc4fbc502 = function() {
       return data;
     };
     return data;
   }
-  var SimpleDatetime = (function(_PolymerElement) {
-    babelHelpers.inherits(SimpleDatetime, _PolymerElement);
-    function SimpleDatetime() {
-      babelHelpers.classCallCheck(this, SimpleDatetime);
-      return babelHelpers.possibleConstructorReturn(
-        this,
-        (
-          SimpleDatetime.__proto__ || Object.getPrototypeOf(SimpleDatetime)
-        ).apply(this, arguments)
-      );
+  (0, _polymerLegacy.Polymer)({
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_cc8e7270d96211e899db1d5fc4fbc502()
+    ),
+    is: "simple-datetime",
+    properties: {
+      timestamp: { type: Number },
+      format: { type: String, value: "M jS, Y" },
+      date: { type: String, computed: "formatDate(timestamp, format, unix)" },
+      unix: { type: Boolean, value: !1 }
+    },
+    formatDate: function formatDate(timestamp, format, unix) {
+      if (unix) {
+        timestamp = 1e3 * timestamp;
+      }
+      return new Date(timestamp).format(format);
     }
-    babelHelpers.createClass(
-      SimpleDatetime,
-      [
-        {
-          key: "connectedCallback",
-          value: function connectedCallback() {
-            babelHelpers
-              .get(
-                SimpleDatetime.prototype.__proto__ ||
-                  Object.getPrototypeOf(SimpleDatetime.prototype),
-                "connectedCallback",
-                this
-              )
-              .call(this);
-            this.HAXWiring = new _HAXWiring.HAXWiring();
-            this.HAXWiring.setHaxProperties(
-              SimpleDatetime.haxProperties,
-              SimpleDatetime.tag,
-              this
-            );
-          }
-        }
-      ],
-      [
-        {
-          key: "template",
-          get: function get() {
-            return (0, _polymerElement.html)(
-              _templateObject_fbe72d00d70511e88d41d7a001847683()
-            );
-          }
-        },
-        {
-          key: "haxProperties",
-          get: function get() {
-            return {
-              canScale: !0,
-              canPosition: !0,
-              canEditSource: !1,
-              gizmo: {
-                title: "Simple datetime",
-                description: "Automated conversion of simple-datetime/",
-                icon: "icons:android",
-                color: "green",
-                groups: ["Datetime"],
-                handles: [{ type: "todo:read-the-docs-for-usage" }],
-                meta: {
-                  author: "btopro",
-                  owner: "The Pennsylvania State University"
-                }
-              },
-              settings: { quick: [], configure: [], advanced: [] }
-            };
-          }
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {};
-          }
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "simple-datetime";
-          }
-        }
-      ]
-    );
-    return SimpleDatetime;
-  })(_polymerElement.PolymerElement);
-  _exports.SimpleDatetime = SimpleDatetime;
-  window.customElements.define(SimpleDatetime.tag, SimpleDatetime);
+  });
 });

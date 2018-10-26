@@ -1,3 +1,4 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/lrndesign-animationctrl/lrndesign-animationctrl.js";
 Polymer({
   _template: html`

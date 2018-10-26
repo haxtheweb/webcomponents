@@ -1,92 +1,82 @@
-/**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { WatsonlogicParallax };
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 /**
  * `watsonlogic-parallax`
- * `Automated conversion of watsonlogic-parallax/`
- *
- * @microcopy - language worth noting:
- *  -
+ * `Parallax scrolling effect web component for Polymer 2.0.`
  *
  * @customElement
  * @polymer
+ * @polymerLegacy
  * @demo demo/index.html
  */
-class WatsonlogicParallax extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
-
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Watsonlogic parallax",
-        description: "Automated conversion of watsonlogic-parallax/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Parallax"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [],
-        advanced: []
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
+        --parallax-background-height: 300px;
+        --parallax-slogan-top: 150px;
+        --parallax-background-image: url('https://static.pexels.com/photos/2324/skyline-buildings-new-york-skyscrapers.jpg');
       }
-    };
-  }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "watsonlogic-parallax";
+      .parallax-background {
+        background: var(--parallax-background-image);
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: var(--parallax-background-height);
+        position:relative;
+      }
+
+      .slogan {
+        bottom: 0;
+        left: 0;
+        opacity: 1;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        top: var(--parallax-slogan-top);
+        transform-origin: center top !important;
+      }
+    </style>
+
+    <div class="parallax-background">
+      <div id="slogan" class="slogan">[[parallaxText]]</div>
+    </div>
+`,
+
+  is: "watsonlogic-parallax",
+
+  properties: {
+    parallaxText: {
+      type: String
+    },
+    parallaxImage: {
+      type: String,
+      notify: true,
+      reflectToAttribute: true
+    },
+    parallaxImageHeight: {
+      type: String,
+      notify: true,
+      reflectToAttribute: true
+    }
+  },
+
+  ready: function() {
+    let self = this;
+
+    self.parallaxImage =
+      self.parallaxImage ||
+      "https://static.pexels.com/photos/2324/skyline-buildings-new-york-skyscrapers.jpg";
+    Number.isNaN(parseInt(self.parallaxImageHeight))
+      ? "300"
+      : parseInt(self.parallaxImageHeight);
+
+    this.updateStyles({
+      "--parallax-background-image": "url(" + self.parallaxImage + ")",
+      "--parallax-background-height": self.parallaxImageHeight + "px",
+      "--parallax-slogan-top": parseInt(self.parallaxImageHeight) / 2 + "px"
+    });
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      WatsonlogicParallax.haxProperties,
-      WatsonlogicParallax.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(WatsonlogicParallax.tag, WatsonlogicParallax);
+});

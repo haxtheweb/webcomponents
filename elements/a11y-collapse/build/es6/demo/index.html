@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=yes"><title>a11y-collapse demo</title><script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script><script type="module" src="../node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script><script type="module" src="../node_modules/@polymer/iron-demo-helpers/demo-snippet.js"></script><script type="module" src="../a11y-collapse.js"></script><script type="module" src="../lib/a11y-collapse-group.js"></script><script type="module">var $_documentContainer=document.createElement("div");$_documentContainer.setAttribute("style","display: none;");$_documentContainer.innerHTML=`<style is="custom-style" include="demo-pages-shared-styles">
+    </style>`;document.head.appendChild($_documentContainer);</script></head><body><script type="module">var $_documentContainer=document.createElement("div");$_documentContainer.innerHTML=`<div class="vertical-section-container centered">
+      <h3>a11y-collapse demo</h3>
+      <p>By default, the clicking the icon button triggers expand/collapse.</p>
+      <demo-snippet>
+        <template>
+          <a11y-collapse>
+            <p slot="heading">What rhymes with orange?</p>
+            <div>Nothing rhmyes with orange.</div>
+          </a11y-collapse>
+        </template>
+      </demo-snippet>
+
+      <h3>a11y-collapse demo, with accordion attribute</h3>
+      <p>With the <tt>accordion</tt> attribute, the clicking anywhere on the heading triggers expand/collapse.</p>
+      <demo-snippet>
+        <template>
+          <a11y-collapse accordion="" icon="arrow-drop-down" label="toggle info" tooltip="toggle more information">
+            <p slot="heading">What rhymes with orange?</p>
+            <div slot="content">Nothing rhmyes with orange.</div>
+          </a11y-collapse>
+        </template>
+      </demo-snippet>
+
+      <h3>a11y-collapse-group, with <tt>radio</tt> attribute</h3>
+      <p>With the <tt>radio</tt> attribute, only one item can be expanded at a time.</p>
+      <demo-snippet>
+        <template>
+          <a11y-collapse-group radio="">
+            <h2 slot="heading">Colors List</h2>
+            <a11y-collapse accordion="">
+              <p slot="heading">Purple</p>
+              <div slot="content">Blue and red make purple.</div>
+            </a11y-collapse>
+            <a11y-collapse accordion="" disabled="">
+              <p slot="heading">Green</p>
+              <div slot="content">Blue and yellow make purple.</div>
+            </a11y-collapse>
+            <a11y-collapse accordion="">
+              <p slot="heading">Orange</p>
+              <div slot="content">Yellow and red make purple.</div>
+            </a11y-collapse>
+          </a11y-collapse-group>
+        </template>
+      </demo-snippet>
+      
+      <h3>a11y-collapse-groups demo with global options</h3>
+      <p>
+        The following options can be set in the <tt>global-options</tt> attribute to apply to all a11y-collapse items in a group:
+        icon, icon-expanded, label, label-expanded, tooltip, tooltip-expanded.
+      </p>
+      <demo-snippet>
+        <template>
+          <a11y-collapse-group radio="" global-options="{&quot;icon&quot;: &quot;arrow-drop-down&quot;, &quot;tooltip&quot;: &quot;show more info&quot;, &quot;tooltipExpanded&quot;: &quot;show less info&quot;}">
+            <h2 slot="heading">Colors List</h2>
+            <a11y-collapse>
+              <p slot="heading">Purple</p>
+              <div slot="content">Blue and red make purple.</div>
+            </a11y-collapse>
+            <a11y-collapse disabled="">
+              <p slot="heading">Green</p>
+              <div slot="content">Blue and yellow make purple.</div>
+            </a11y-collapse>
+            <a11y-collapse>
+              <p slot="heading">Orange</p>
+              <div slot="content">Yellow and red make purple.</div>
+            </a11y-collapse>
+          </a11y-collapse-group>
+        </template>
+      </demo-snippet>
+    </div>`;document.body.appendChild($_documentContainer);</script></body></html>

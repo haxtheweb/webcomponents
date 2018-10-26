@@ -35,7 +35,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/polymer": "^3.0.5"
+    "@lrnwebcomponents/simple-timer": "^0.0.28",
+    "@lrnwebcomponents/lrnsys-layout": "^0.0.28",
+    "@lrnwebcomponents/to-do": "^0.0.28",
+    "@polymer/polymer": "^3.0.5",
+    "@polymer/paper-card": "^3.0.1",
+    "@polymer/paper-button": "^3.0.1"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

@@ -1,92 +1,110 @@
-/**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { WordCount };
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 /**
  * `word-count`
- * `Automated conversion of word-count/`
+ * `Count the words on whatever this wraps`
  *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
  * @demo demo/index.html
  */
-class WordCount extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
-
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Word count",
-        description: "Automated conversion of word-count/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Count"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [],
-        advanced: []
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
+        --word-count-color: #888888;
+        --word-count-color-hover: #000000;
       }
-    };
-  }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
+      :host::after{
+        content: attr(words-text);
+        font-size: 10px;
+        position: relative;
+        transition: .3s font-size,color ease;
+        display: flex;
+        line-height: 16px;
+        flex-direction: row-reverse;
+        margin: 12px;
+        color: var(--word-count-color);
+        @apply(--word-count-text);
+      }
+      :host:hover::after {
+        font-size: 12px;
+        font-weight: bold;
+        color: var(--word-count-color-hover);
+        @apply(--word-count-text-hover);
+      }
+      :host:focus::after {
+        font-size: 12px;
+        font-weight: bold;
+        color: var(--word-count-color-hover);
+        @apply(--word-count-text-hover);
+      }
+      :host:active::after {
+        font-size: 12px;
+        font-weight: bold;
+        color: var(--word-count-color-hover);
+        @apply(--word-count-text-hover);
+      }
+    </style>
+    <slot></slot>
+`,
+
+  is: "word-count",
+
+  hostAttributes: {
+    tabindex: "0"
+  },
+
+  properties: {
+    /**
+     * Words
+     */
+    words: {
+      type: Number
+    },
+    /**
+     * Prefix text.
+     */
+    wordsPrefix: {
+      type: String,
+      value: "Words:"
+    },
+    /**
+     * Text to output
+     */
+    wordsText: {
+      type: String,
+      computed: "_computeWordsText(words, wordsPrefix)",
+      reflectToAttribute: true
+    }
+  },
 
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * Ready life cycle
    */
-  static get tag() {
-    return "word-count";
-  }
+  ready: function() {
+    // mutation observer that ensures state of hax applied correctly
+    this._observer = dom(this).observeNodes(function(info) {
+      if (info.addedNodes.length > 0 || info.removedNodes.length > 0) {
+        this._updateWords();
+      }
+    });
+  },
+
   /**
-   * life cycle, element is afixed to the DOM
+   * Update words based on data in the slot.
    */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      WordCount.haxProperties,
-      WordCount.tag,
-      this
-    );
-  }
+  _updateWords: function() {
+    if (dom(this).textContent !== "") {
+      this.words = parseInt(dom(this).textContent.split(/\s+/g).length - 1);
+    } else {
+      this.words = 0;
+    }
+  },
+
   /**
-   * life cycle, element is removed from the DOM
+   * Computer the text to output for words
    */
-  //disconnectedCallback() {}
-}
-window.customElements.define(WordCount.tag, WordCount);
+  _computeWordsText: function(words, prefix) {
+    return prefix + " " + words;
+  }
+});

@@ -1,5 +1,4 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
 import "./lib/simple-colors-utility.js";
 // @polymerBehavior
 /**

@@ -1,103 +1,70 @@
 define([
-  "exports",
-  "./node_modules/@polymer/polymer/polymer-element.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_exports, _polymerElement, _HAXWiring) {
+  "./lib/mdi-account-iconset-svg.js",
+  "./lib/mdi-action-iconset-svg.js",
+  "./lib/mdi-agriculture-iconset-svg.js",
+  "./lib/mdi-alert-iconset-svg.js",
+  "./lib/mdi-arrange-iconset-svg.js",
+  "./lib/mdi-arrow-iconset-svg.js",
+  "./lib/mdi-audio-iconset-svg.js",
+  "./lib/mdi-auth-iconset-svg.js",
+  "./lib/mdi-av-iconset-svg.js",
+  "./lib/mdi-battery-iconset-svg.js",
+  "./lib/mdi-bell-iconset-svg.js",
+  "./lib/mdi-border-iconset-svg.js",
+  "./lib/mdi-box-iconset-svg.js",
+  "./lib/mdi-camera-iconset-svg.js",
+  "./lib/mdi-cart-iconset-svg.js",
+  "./lib/mdi-circle-iconset-svg.js",
+  "./lib/mdi-clothing-iconset-svg.js",
+  "./lib/mdi-cloud-iconset-svg.js",
+  "./lib/mdi-color-iconset-svg.js",
+  "./lib/mdi-comment-isonset-svg.js",
+  "./lib/mdi-currency-iconset-svg.js",
+  "./lib/mdi-debug-iconset-svg.js",
+  "./lib/mdi-drawing-iconset-svg.js",
+  "./lib/mdi-edit-iconset-svg.js",
+  "./lib/mdi-error-iconset-svg.js",
+  "./lib/mdi-file-iconset-svg.js",
+  "./lib/mdi-filter-iconset-svg.js",
+  "./lib/mdi-folder-iconset-svg.js",
+  "./lib/mdi-form-iconset-svg.js",
+  "./lib/mdi-format-iconset-svg.js",
+  "./lib/mdi-hardware-iconset-svg.js",
+  "./lib/mdi-helper-iconset-svg.js",
+  "./lib/mdi-holiday-iconset-svg.js",
+  "./lib/mdi-image-iconset-svg.js",
+  "./lib/mdi-local-iconset-svg.js",
+  "./lib/mdi-lock-iconset-svg.js",
+  "./lib/mdi-logo-iconset-svg.js",
+  "./lib/mdi-map-iconset-svg.js",
+  "./lib/mdi-markdown-iconset-svg.js",
+  "./lib/mdi-medical-iconset-svg.js",
+  "./lib/mdi-microphone-iconset-svg.js",
+  "./lib/mdi-minus-iconset-svg.js",
+  "./lib/mdi-movie-iconset-svg.js",
+  "./lib/mdi-octagon-iconset-svg.js",
+  "./lib/mdi-off-iconset-svg.js",
+  "./lib/mdi-os-iconset-svg.js",
+  "./lib/mdi-outline-iconset-svg.js",
+  "./lib/mdi-phone-iconset-svg.js",
+  "./lib/mdi-pin-iconset-svg.js",
+  "./lib/mdi-plus-iconset-svg.js",
+  "./lib/mdi-settings-iconset-svg.js",
+  "./lib/mdi-shape-iconset-svg.js",
+  "./lib/mdi-social-iconset-svg.js",
+  "./lib/mdi-square-iconset-svg.js",
+  "./lib/mdi-store-iconset-svg.js",
+  "./lib/mdi-text-iconset-svg.js",
+  "./lib/mdi-time-iconset-svg.js",
+  "./lib/mdi-tooltip-iconset-svg.js",
+  "./lib/mdi-transform-iconset-svg.js",
+  "./lib/mdi-transportation-iconset-svg.js",
+  "./lib/mdi-user-iconset-svg.js",
+  "./lib/mdi-vector-iconset-svg.js",
+  "./lib/mdi-video-iconset-svg.js",
+  "./lib/mdi-view-iconset-svg.js",
+  "./lib/mdi-vote-iconset-svg.js",
+  "./lib/mdi-weather-iconset-svg.js"
+], function() {
   "use strict";
-  Object.defineProperty(_exports, "__esModule", { value: !0 });
-  _exports.MdiIconsetSvg = void 0;
-  function _templateObject_1ee2ffc0d93411e895f1edd6fc243716() {
-    var data = babelHelpers.taggedTemplateLiteral([
-      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
-    ]);
-    _templateObject_1ee2ffc0d93411e895f1edd6fc243716 = function() {
-      return data;
-    };
-    return data;
-  }
-  var MdiIconsetSvg = (function(_PolymerElement) {
-    babelHelpers.inherits(MdiIconsetSvg, _PolymerElement);
-    function MdiIconsetSvg() {
-      babelHelpers.classCallCheck(this, MdiIconsetSvg);
-      return babelHelpers.possibleConstructorReturn(
-        this,
-        (MdiIconsetSvg.__proto__ || Object.getPrototypeOf(MdiIconsetSvg)).apply(
-          this,
-          arguments
-        )
-      );
-    }
-    babelHelpers.createClass(
-      MdiIconsetSvg,
-      [
-        {
-          key: "connectedCallback",
-          value: function connectedCallback() {
-            babelHelpers
-              .get(
-                MdiIconsetSvg.prototype.__proto__ ||
-                  Object.getPrototypeOf(MdiIconsetSvg.prototype),
-                "connectedCallback",
-                this
-              )
-              .call(this);
-            this.HAXWiring = new _HAXWiring.HAXWiring();
-            this.HAXWiring.setHaxProperties(
-              MdiIconsetSvg.haxProperties,
-              MdiIconsetSvg.tag,
-              this
-            );
-          }
-        }
-      ],
-      [
-        {
-          key: "template",
-          get: function get() {
-            return (0, _polymerElement.html)(
-              _templateObject_1ee2ffc0d93411e895f1edd6fc243716()
-            );
-          }
-        },
-        {
-          key: "haxProperties",
-          get: function get() {
-            return {
-              canScale: !0,
-              canPosition: !0,
-              canEditSource: !1,
-              gizmo: {
-                title: "Mdi iconset-svg",
-                description: "Start of mdi-iconset-svg fork",
-                icon: "icons:android",
-                color: "green",
-                groups: ["Iconset"],
-                handles: [{ type: "todo:read-the-docs-for-usage" }],
-                meta: {
-                  author: "btopro",
-                  owner: "The Pennsylvania State University"
-                }
-              },
-              settings: { quick: [], configure: [], advanced: [] }
-            };
-          }
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {};
-          }
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "mdi-iconset-svg";
-          }
-        }
-      ]
-    );
-    return MdiIconsetSvg;
-  })(_polymerElement.PolymerElement);
-  _exports.MdiIconsetSvg = MdiIconsetSvg;
-  window.customElements.define(MdiIconsetSvg.tag, MdiIconsetSvg);
 });

@@ -1,0 +1,564 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "`chartist-render`\nA LRN element",
+      "summary": "",
+      "path": "chartist-render.js",
+      "properties": [
+        {
+          "name": "id",
+          "type": "string | null | undefined",
+          "description": "The unique identifier of the chart.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 35,
+              "column": 4
+            },
+            "end": {
+              "line": 38,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"chart\""
+        },
+        {
+          "name": "type",
+          "type": "string | null | undefined",
+          "description": "The type of chart:bar, line, or pie",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 42,
+              "column": 4
+            },
+            "end": {
+              "line": 45,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"bar\""
+        },
+        {
+          "name": "scale",
+          "type": "string | null | undefined",
+          "description": "The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 49,
+              "column": 4
+            },
+            "end": {
+              "line": 52,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"makeChart\"",
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "chartTitle",
+          "type": "string | null | undefined",
+          "description": "The chart title used for accessibility.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 56,
+              "column": 4
+            },
+            "end": {
+              "line": 60,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"makeChart\"",
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "null"
+        },
+        {
+          "name": "chartDesc",
+          "type": "string | null | undefined",
+          "description": "The chart description used for accessibility.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 64,
+              "column": 4
+            },
+            "end": {
+              "line": 68,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"makeChart\"",
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "data",
+          "type": "Object | null | undefined",
+          "description": "The chart data.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 72,
+              "column": 4
+            },
+            "end": {
+              "line": 76,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"makeChart\"",
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "null"
+        },
+        {
+          "name": "options",
+          "type": "Object | null | undefined",
+          "description": "The options available at  https://gionkunz.github.io/chartist-js/api-documentation.html.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 80,
+              "column": 4
+            },
+            "end": {
+              "line": 84,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"makeChart\"",
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "null"
+        },
+        {
+          "name": "responsiveOptions",
+          "type": "Array | null | undefined",
+          "description": "The responsive options. (See https://gionkunz.github.io/chartist-js/api-documentation.html.)",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 88,
+              "column": 4
+            },
+            "end": {
+              "line": 92,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"makeChart\"",
+              "attributeType": "Array"
+            }
+          },
+          "defaultValue": "[]"
+        },
+        {
+          "name": "showTable",
+          "type": "boolean | null | undefined",
+          "description": "The show data in table form as well? Default is false.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 96,
+              "column": 4
+            },
+            "end": {
+              "line": 100,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"makeChart\"",
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        }
+      ],
+      "methods": [
+        {
+          "name": "attached",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 103,
+              "column": 2
+            },
+            "end": {
+              "line": 107,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_checkReady",
+          "description": "Makes chart and returns the chart object.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 112,
+              "column": 2
+            },
+            "end": {
+              "line": 115,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_chartReady",
+          "description": "Makes chart and returns the chart object.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 120,
+              "column": 2
+            },
+            "end": {
+              "line": 129,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "makeChart",
+          "description": "Makes chart and returns the chart object.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 134,
+              "column": 2
+            },
+            "end": {
+              "line": 172,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "addA11yFeatures",
+          "description": "Add accessibility features.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 177,
+              "column": 2
+            },
+            "end": {
+              "line": 188,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "svg"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "makeA11yTable",
+          "description": "Add accessibility features.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 193,
+              "column": 2
+            },
+            "end": {
+              "line": 214,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "svg"
+            }
+          ]
+        },
+        {
+          "name": "_addA11yFeature",
+          "description": "For inserting chart title and description.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 219,
+              "column": 2
+            },
+            "end": {
+              "line": 225,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "svg"
+            },
+            {
+              "name": "tag"
+            },
+            {
+              "name": "html"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_getUniqueId",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 230,
+              "column": 2
+            },
+            "end": {
+              "line": 236,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "prefix"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 14,
+          "column": 8
+        },
+        "end": {
+          "line": 237,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "attributes": [
+        {
+          "name": "id",
+          "description": "The unique identifier of the chart.",
+          "sourceRange": {
+            "start": {
+              "line": 35,
+              "column": 4
+            },
+            "end": {
+              "line": 38,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "type",
+          "description": "The type of chart:bar, line, or pie",
+          "sourceRange": {
+            "start": {
+              "line": 42,
+              "column": 4
+            },
+            "end": {
+              "line": 45,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "scale",
+          "description": "The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)",
+          "sourceRange": {
+            "start": {
+              "line": 49,
+              "column": 4
+            },
+            "end": {
+              "line": 52,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "chart-title",
+          "description": "The chart title used for accessibility.",
+          "sourceRange": {
+            "start": {
+              "line": 56,
+              "column": 4
+            },
+            "end": {
+              "line": 60,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "chart-desc",
+          "description": "The chart description used for accessibility.",
+          "sourceRange": {
+            "start": {
+              "line": 64,
+              "column": 4
+            },
+            "end": {
+              "line": 68,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "data",
+          "description": "The chart data.",
+          "sourceRange": {
+            "start": {
+              "line": 72,
+              "column": 4
+            },
+            "end": {
+              "line": 76,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "options",
+          "description": "The options available at  https://gionkunz.github.io/chartist-js/api-documentation.html.",
+          "sourceRange": {
+            "start": {
+              "line": 80,
+              "column": 4
+            },
+            "end": {
+              "line": 84,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "responsive-options",
+          "description": "The responsive options. (See https://gionkunz.github.io/chartist-js/api-documentation.html.)",
+          "sourceRange": {
+            "start": {
+              "line": 88,
+              "column": 4
+            },
+            "end": {
+              "line": 92,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Array | null | undefined"
+        },
+        {
+          "name": "show-table",
+          "description": "The show data in table form as well? Default is false.",
+          "sourceRange": {
+            "start": {
+              "line": 96,
+              "column": 4
+            },
+            "end": {
+              "line": 100,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "chartist-render"
+    }
+  ]
+}

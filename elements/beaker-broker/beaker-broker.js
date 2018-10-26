@@ -51,7 +51,7 @@ class BeakerBroker extends PolymerElement {
        */
       datUrl: {
         type: String,
-        value: window.location.host,
+        value: "window.location.host",
         observer: "_datUrlChanged",
         notify: true
       }

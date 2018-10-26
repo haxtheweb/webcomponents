@@ -1,103 +1,50 @@
 define([
-  "exports",
-  "./node_modules/@polymer/polymer/polymer-element.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_exports, _polymerElement, _HAXWiring) {
+  "./node_modules/@polymer/polymer/polymer-legacy.js",
+  "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js"
+], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  Object.defineProperty(_exports, "__esModule", { value: !0 });
-  _exports.WordCount = void 0;
-  function _templateObject_3be15550d70d11e89dbb9119295de7f9() {
+  function _templateObject_dbb5b060d96211e88da7bb3cf8acb4e5() {
     var data = babelHelpers.taggedTemplateLiteral([
-      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
+      "\n    <style>\n      :host {\n        display: block;\n        --word-count-color: #888888;\n        --word-count-color-hover: #000000;\n      }\n      :host::after{\n        content: attr(words-text);\n        font-size: 10px;\n        position: relative;\n        transition: .3s font-size,color ease;\n        display: flex;\n        line-height: 16px;\n        flex-direction: row-reverse;\n        margin: 12px;\n        color: var(--word-count-color);\n        @apply(--word-count-text);\n      }\n      :host:hover::after {\n        font-size: 12px;\n        font-weight: bold;\n        color: var(--word-count-color-hover);\n        @apply(--word-count-text-hover);\n      }\n      :host:focus::after {\n        font-size: 12px;\n        font-weight: bold;\n        color: var(--word-count-color-hover);\n        @apply(--word-count-text-hover);\n      }\n      :host:active::after {\n        font-size: 12px;\n        font-weight: bold;\n        color: var(--word-count-color-hover);\n        @apply(--word-count-text-hover);\n      }\n    </style>\n    <slot></slot>\n"
     ]);
-    _templateObject_3be15550d70d11e89dbb9119295de7f9 = function() {
+    _templateObject_dbb5b060d96211e88da7bb3cf8acb4e5 = function() {
       return data;
     };
     return data;
   }
-  var WordCount = (function(_PolymerElement) {
-    babelHelpers.inherits(WordCount, _PolymerElement);
-    function WordCount() {
-      babelHelpers.classCallCheck(this, WordCount);
-      return babelHelpers.possibleConstructorReturn(
-        this,
-        (WordCount.__proto__ || Object.getPrototypeOf(WordCount)).apply(
-          this,
-          arguments
-        )
-      );
+  (0, _polymerLegacy.Polymer)({
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_dbb5b060d96211e88da7bb3cf8acb4e5()
+    ),
+    is: "word-count",
+    hostAttributes: { tabindex: "0" },
+    properties: {
+      words: { type: Number },
+      wordsPrefix: { type: String, value: "Words:" },
+      wordsText: {
+        type: String,
+        computed: "_computeWordsText(words, wordsPrefix)",
+        reflectToAttribute: !0
+      }
+    },
+    ready: function ready() {
+      this._observer = (0, _polymerDom.dom)(this).observeNodes(function(info) {
+        if (0 < info.addedNodes.length || 0 < info.removedNodes.length) {
+          this._updateWords();
+        }
+      });
+    },
+    _updateWords: function _updateWords() {
+      if ("" !== (0, _polymerDom.dom)(this).textContent) {
+        this.words = parseInt(
+          (0, _polymerDom.dom)(this).textContent.split(/\s+/g).length - 1
+        );
+      } else {
+        this.words = 0;
+      }
+    },
+    _computeWordsText: function _computeWordsText(words, prefix) {
+      return prefix + " " + words;
     }
-    babelHelpers.createClass(
-      WordCount,
-      [
-        {
-          key: "connectedCallback",
-          value: function connectedCallback() {
-            babelHelpers
-              .get(
-                WordCount.prototype.__proto__ ||
-                  Object.getPrototypeOf(WordCount.prototype),
-                "connectedCallback",
-                this
-              )
-              .call(this);
-            this.HAXWiring = new _HAXWiring.HAXWiring();
-            this.HAXWiring.setHaxProperties(
-              WordCount.haxProperties,
-              WordCount.tag,
-              this
-            );
-          }
-        }
-      ],
-      [
-        {
-          key: "template",
-          get: function get() {
-            return (0, _polymerElement.html)(
-              _templateObject_3be15550d70d11e89dbb9119295de7f9()
-            );
-          }
-        },
-        {
-          key: "haxProperties",
-          get: function get() {
-            return {
-              canScale: !0,
-              canPosition: !0,
-              canEditSource: !1,
-              gizmo: {
-                title: "Word count",
-                description: "Automated conversion of word-count/",
-                icon: "icons:android",
-                color: "green",
-                groups: ["Count"],
-                handles: [{ type: "todo:read-the-docs-for-usage" }],
-                meta: {
-                  author: "btopro",
-                  owner: "The Pennsylvania State University"
-                }
-              },
-              settings: { quick: [], configure: [], advanced: [] }
-            };
-          }
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {};
-          }
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "word-count";
-          }
-        }
-      ]
-    );
-    return WordCount;
-  })(_polymerElement.PolymerElement);
-  _exports.WordCount = WordCount;
-  window.customElements.define(WordCount.tag, WordCount);
+  });
 });

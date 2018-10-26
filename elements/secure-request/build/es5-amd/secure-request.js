@@ -1,103 +1,49 @@
-define([
-  "exports",
-  "./node_modules/@polymer/polymer/polymer-element.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_exports, _polymerElement, _HAXWiring) {
-  "use strict";
-  Object.defineProperty(_exports, "__esModule", { value: !0 });
-  _exports.SecureRequest = void 0;
-  function _templateObject_99f03f20d70411e8a905cb5f0fe2ea4f() {
-    var data = babelHelpers.taggedTemplateLiteral([
-      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
-    ]);
-    _templateObject_99f03f20d70411e8a905cb5f0fe2ea4f = function() {
-      return data;
-    };
-    return data;
-  }
-  var SecureRequest = (function(_PolymerElement) {
-    babelHelpers.inherits(SecureRequest, _PolymerElement);
-    function SecureRequest() {
-      babelHelpers.classCallCheck(this, SecureRequest);
-      return babelHelpers.possibleConstructorReturn(
-        this,
-        (SecureRequest.__proto__ || Object.getPrototypeOf(SecureRequest)).apply(
-          this,
-          arguments
-        )
-      );
+window.SecureRequest = window.SecureRequest || {};
+window.SecureRequest.xhr = {
+  setCookies: function setCookies(endPoint, csrfToken) {
+    this._eraseCookie("securerequest-endpoint");
+    this._eraseCookie("securerequest-csrftoken");
+    this._createCookie("securerequest-endpoint", endPoint, 30, endPoint);
+    this._createCookie("securerequest-csrftoken", csrfToken, 30, endPoint);
+  },
+  generateUrl: function generateUrl(url) {
+    var endPoint = this.getEndPoint(),
+      csrfToken = this.getCsrfToken();
+    if (endPoint && csrfToken) {
+      return endPoint + url + "?token=" + csrfToken;
     }
-    babelHelpers.createClass(
-      SecureRequest,
-      [
-        {
-          key: "connectedCallback",
-          value: function connectedCallback() {
-            babelHelpers
-              .get(
-                SecureRequest.prototype.__proto__ ||
-                  Object.getPrototypeOf(SecureRequest.prototype),
-                "connectedCallback",
-                this
-              )
-              .call(this);
-            this.HAXWiring = new _HAXWiring.HAXWiring();
-            this.HAXWiring.setHaxProperties(
-              SecureRequest.haxProperties,
-              SecureRequest.tag,
-              this
-            );
-          }
-        }
-      ],
-      [
-        {
-          key: "template",
-          get: function get() {
-            return (0, _polymerElement.html)(
-              _templateObject_99f03f20d70411e8a905cb5f0fe2ea4f()
-            );
-          }
-        },
-        {
-          key: "haxProperties",
-          get: function get() {
-            return {
-              canScale: !0,
-              canPosition: !0,
-              canEditSource: !1,
-              gizmo: {
-                title: "Secure request",
-                description: "Automated conversion of secure-request/",
-                icon: "icons:android",
-                color: "green",
-                groups: ["Request"],
-                handles: [{ type: "todo:read-the-docs-for-usage" }],
-                meta: {
-                  author: "btopro",
-                  owner: "The Pennsylvania State University"
-                }
-              },
-              settings: { quick: [], configure: [], advanced: [] }
-            };
-          }
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {};
-          }
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "secure-request";
-          }
-        }
-      ]
-    );
-    return SecureRequest;
-  })(_polymerElement.PolymerElement);
-  _exports.SecureRequest = SecureRequest;
-  window.customElements.define(SecureRequest.tag, SecureRequest);
-});
+    return null;
+  },
+  getEndPoint: function getEndPoint() {
+    return this._readCookie("securerequest-endpoint");
+  },
+  getCsrfToken: function getCsrfToken() {
+    return this._readCookie("securerequest-csrftoken");
+  },
+  _createCookie: function _createCookie(name, value, days, path) {
+    var expires = "";
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + 1e3 * (60 * (60 * (24 * days))));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + value + expires + "; path=" + path;
+  },
+  _readCookie: function _readCookie(name) {
+    for (
+      var nameEQ = name + "=", ca = document.cookie.split(";"), i = 0, c;
+      i < ca.length;
+      i++
+    ) {
+      c = ca[i];
+      while (" " == c.charAt(0)) {
+        c = c.substring(1, c.length);
+      }
+      if (0 == c.indexOf(nameEQ)) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  },
+  _eraseCookie: function _eraseCookie(name) {
+    this._createCookie(name, "", -1);
+  }
+};

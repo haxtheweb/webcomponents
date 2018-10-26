@@ -1,4 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "./a11y-collapse-button-styles.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";

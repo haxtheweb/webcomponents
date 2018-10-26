@@ -1,15 +1,13 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "jarallax/dist/jarallax.min.js";
-import "jarallax/dist/jarallax-video.min.js";
-import "jarallax/dist/jarallax-element.min.js";
-/* Jarallax Github: https://github.com/nk-o/jarallax#b-javascript-way */
-/* Jarallax */
-/* Include it if you want to use Video parallax */
-/* Include it if you want to parallax any element */
+import "jarallax/src/jarallax.esm.js";
+import "jarallax/src/jarallax-video.esm.js";
+import "jarallax/src/jarallax-element.esm.js";
 /**
-`parallax-effect`
-@demo demo/index.html
-*/
+ * `parallax-effect`
+ * `Apply a scroll by effect`
+ *
+ * @demo demo/index.html
+ */
 Polymer({
   _template: html`
     <style>
@@ -131,7 +129,7 @@ Polymer({
     const targets = this.querySelectorAll(".jarallax");
     const options = {
       speed: 0.2,
-      videoStartTime: 06,
+      videoStartTime: 6,
       videoEndTime: 23
       // disableParallax: /iPad|iPhone|iPod|Android/,
     };
@@ -150,7 +148,7 @@ Polymer({
         break;
     }
 
-    jarallax(targets, options);
+    new Jarallax(targets, options);
   },
 
   /**
