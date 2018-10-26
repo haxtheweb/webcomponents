@@ -7,7 +7,7 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js
 export { WysiwygHax };
 /**
  * `wysiwyg-hax`
- * `Automated conversion of wysiwyg-hax/`
+ * `Start of wysiwyg-hax fork`
  *
  * @microcopy - language worth noting:
  *  -
@@ -39,7 +39,7 @@ class WysiwygHax extends PolymerElement {
       canEditSource: false,
       gizmo: {
         title: "Wysiwyg hax",
-        description: "Automated conversion of wysiwyg-hax/",
+        description: "Start of wysiwyg-hax fork",
         icon: "icons:android",
         color: "green",
         groups: ["Hax"],

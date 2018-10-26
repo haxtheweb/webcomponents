@@ -41,6 +41,12 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.28",
+    "@lrnwebcomponents/schema-behaviors": "^0.0.28",
+    "@lrnwebcomponents/a11y-behaviors": "^0.0.28",
+    "@lrnwebcomponents/media-behaviors": "^0.0.28",
+    "@lrnwebcomponents/simple-colors": "^0.0.28",
+    "@lrnwebcomponents/a11y-media-player": "^0.0.28",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {

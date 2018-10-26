@@ -1,7 +1,7 @@
 # &lt;wysiwyg-hax&gt;
 
 Hax
-> Automated conversion of wysiwyg-hax/
+> Start of wysiwyg-hax fork
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.

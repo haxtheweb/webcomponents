@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "cms-hax/cms-hax.js";
+import "@lrnwebcomponents/cms-hax/cms-hax.js";
 /**
 `hax-bookmarklet`
 Pure, Evil.
