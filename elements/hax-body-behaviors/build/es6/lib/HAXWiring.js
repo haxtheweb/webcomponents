@@ -1,3 +1,4 @@
+import { dom } from "../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
 export class HAXWiring {
   constructor() {
     this.haxProperties = {
@@ -151,7 +152,7 @@ export class HAXWiring {
           context.dispatchEvent(evt);
         }
         if ("" === tag) {
-          this.setHaxProperties(props);
+          this.haxProperties = props;
         }
       } else {
         console.log(
@@ -486,19 +487,17 @@ export class HAXWiring {
               }
             };
             let slot = "";
-            if (typeof Polymer !== typeof void 0) {
-              for (var i in dom(target).childNodes) {
-                if (typeof dom(target).childNodes[i] !== typeof void 0) {
-                  if (1 === dom(target).childNodes[i].nodeType) {
-                    slot += dom(target).childNodes[i].innerHTML;
-                  } else if (
-                    1 !== dom(target).childNodes[i].nodeType &&
-                    typeof dom(target).childNodes[i].textContent !==
-                      typeof void 0 &&
-                    "" !== dom(target).childNodes[i].textContent
-                  ) {
-                    slot += dom(target).childNodes[i].textContent;
-                  }
+            for (var i in dom(target).childNodes) {
+              if (typeof dom(target).childNodes[i] !== typeof void 0) {
+                if (1 === dom(target).childNodes[i].nodeType) {
+                  slot += dom(target).childNodes[i].innerHTML;
+                } else if (
+                  1 !== dom(target).childNodes[i].nodeType &&
+                  typeof dom(target).childNodes[i].textContent !==
+                    typeof void 0 &&
+                  "" !== dom(target).childNodes[i].textContent
+                ) {
+                  slot += dom(target).childNodes[i].textContent;
                 }
               }
             }
@@ -652,3 +651,5 @@ export class HAXWiring {
     };
   }
 }
+window.HAXBehaviors = window.HAXBehaviors || {};
+window.HAXBehaviors.PropertiesBehaviors = new HAXWiring();

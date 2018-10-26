@@ -4,7 +4,12 @@
     "className": "HaxBodyBehaviors",
     "customElementClass": "HTMLElement",
     "elementName": "hax-body-behaviors",
-    "generator-wcfactory-version": ""
+    "generator-wcfactory-version": "0.3.1",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "js": "src/hax-body-behaviors.js"
+    }
   },
   "version": "0.0.28",
   "description": "Wire any element up to HAX",

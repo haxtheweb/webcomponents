@@ -1,8 +1,11 @@
-define(["exports"], function(_exports) {
+define([
+  "exports",
+  "../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js"
+], function(_exports, _polymerDom) {
   "use strict";
   Object.defineProperty(_exports, "__esModule", { value: !0 });
   _exports.HAXWiring = void 0;
-  _exports.HAXWiring = function HAXWiring() {
+  var HAXWiring = function HAXWiring() {
     var _this = this;
     babelHelpers.classCallCheck(this, HAXWiring);
     this.haxProperties = {
@@ -173,7 +176,7 @@ define(["exports"], function(_exports) {
           context.dispatchEvent(_evt2);
         }
         if ("" === tag) {
-          _this.setHaxProperties(props);
+          _this.haxProperties = props;
         }
       } else {
         console.log(
@@ -520,26 +523,23 @@ define(["exports"], function(_exports) {
               }
             };
             var _slot = "";
-            if (
-              ("undefined" === typeof Polymer
-                ? "undefined"
-                : babelHelpers.typeof(Polymer)) !== "undefined"
-            ) {
-              for (var i in dom(target).childNodes) {
-                if (
-                  babelHelpers.typeof(dom(target).childNodes[i]) !== "undefined"
+            for (var i in (0, _polymerDom.dom)(target).childNodes) {
+              if (
+                babelHelpers.typeof(
+                  (0, _polymerDom.dom)(target).childNodes[i]
+                ) !== "undefined"
+              ) {
+                if (1 === (0, _polymerDom.dom)(target).childNodes[i].nodeType) {
+                  _slot += (0, _polymerDom.dom)(target).childNodes[i].innerHTML;
+                } else if (
+                  1 !== (0, _polymerDom.dom)(target).childNodes[i].nodeType &&
+                  babelHelpers.typeof(
+                    (0, _polymerDom.dom)(target).childNodes[i].textContent
+                  ) !== "undefined" &&
+                  "" !== (0, _polymerDom.dom)(target).childNodes[i].textContent
                 ) {
-                  if (1 === dom(target).childNodes[i].nodeType) {
-                    _slot += dom(target).childNodes[i].innerHTML;
-                  } else if (
-                    1 !== dom(target).childNodes[i].nodeType &&
-                    babelHelpers.typeof(
-                      dom(target).childNodes[i].textContent
-                    ) !== "undefined" &&
-                    "" !== dom(target).childNodes[i].textContent
-                  ) {
-                    _slot += dom(target).childNodes[i].textContent;
-                  }
+                  _slot += (0, _polymerDom.dom)(target).childNodes[i]
+                    .textContent;
                 }
               }
             }
@@ -692,4 +692,7 @@ define(["exports"], function(_exports) {
       };
     };
   };
+  _exports.HAXWiring = HAXWiring;
+  window.HAXBehaviors = window.HAXBehaviors || {};
+  window.HAXBehaviors.PropertiesBehaviors = new HAXWiring();
 });
