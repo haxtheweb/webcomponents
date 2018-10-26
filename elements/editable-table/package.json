@@ -40,6 +40,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/dropdown-select": "^0.0.28",
+    "@lrnwebcomponents/simple-colors": "^0.0.28",
+    "@lrnwebcomponents/responsive-utility": "^0.0.28",
+    "@lrnwebcomponents/a11y-collapse": "^0.0.28",
     "@polymer/polymer": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/paper-input": "^3.0.0",

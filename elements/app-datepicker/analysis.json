@@ -5,8 +5,159 @@
       "description": "",
       "summary": "",
       "path": "lib/app-datepicker-animations.js",
-      "properties": [],
+      "properties": [
+        {
+          "name": "animationTiming",
+          "type": "Object | null | undefined",
+          "description": "Defines the animation timing.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
+            "start": {
+              "line": 23,
+              "column": 4
+            },
+            "end": {
+              "line": 30,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{\"duration\":500,\"easing\":\"cubic-bezier(0.4, 0, 0.2, 1)\",\"fill\":\"both\"}",
+          "inheritedFrom": "NeonAnimationBehavior"
+        },
+        {
+          "name": "isNeonAnimation",
+          "type": "boolean",
+          "description": "Can be used to determine that elements implement this behavior.\n   ",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
+            "start": {
+              "line": 37,
+              "column": 2
+            },
+            "end": {
+              "line": 37,
+              "column": 23
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          },
+          "inheritedFrom": "NeonAnimationBehavior"
+        }
+      ],
       "methods": [
+        {
+          "name": "created",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
+            "start": {
+              "line": 45,
+              "column": 2
+            },
+            "end": {
+              "line": 51,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "NeonAnimationBehavior"
+        },
+        {
+          "name": "timingFromConfig",
+          "description": "Returns the animation timing by mixing in properties from `config` to the\ndefaults defined by the animation.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
+            "start": {
+              "line": 57,
+              "column": 2
+            },
+            "end": {
+              "line": 64,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "config"
+            }
+          ],
+          "inheritedFrom": "NeonAnimationBehavior"
+        },
+        {
+          "name": "setPrefixedProperty",
+          "description": "Sets `transform` and `transformOrigin` properties along with the prefixed\nversions.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
+            "start": {
+              "line": 70,
+              "column": 2
+            },
+            "end": {
+              "line": 80,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "node"
+            },
+            {
+              "name": "property"
+            },
+            {
+              "name": "value"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "NeonAnimationBehavior"
+        },
+        {
+          "name": "complete",
+          "description": "Called when the animation finishes.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
+            "start": {
+              "line": 85,
+              "column": 2
+            },
+            "end": {
+              "line": 85,
+              "column": 31
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "config"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "NeonAnimationBehavior"
+        },
         {
           "name": "configure",
           "description": "",
@@ -44,7 +195,26 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "animation-timing",
+          "description": "Defines the animation timing.",
+          "sourceRange": {
+            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
+            "start": {
+              "line": 23,
+              "column": 4
+            },
+            "end": {
+              "line": 30,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined",
+          "inheritedFrom": "NeonAnimationBehavior"
+        }
+      ],
       "events": [],
       "styling": {
         "cssVariables": [],
@@ -57,8 +227,159 @@
       "description": "",
       "summary": "",
       "path": "lib/app-datepicker-animations.js",
-      "properties": [],
+      "properties": [
+        {
+          "name": "animationTiming",
+          "type": "Object | null | undefined",
+          "description": "Defines the animation timing.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
+            "start": {
+              "line": 23,
+              "column": 4
+            },
+            "end": {
+              "line": 30,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{\"duration\":500,\"easing\":\"cubic-bezier(0.4, 0, 0.2, 1)\",\"fill\":\"both\"}",
+          "inheritedFrom": "NeonAnimationBehavior"
+        },
+        {
+          "name": "isNeonAnimation",
+          "type": "boolean",
+          "description": "Can be used to determine that elements implement this behavior.\n   ",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
+            "start": {
+              "line": 37,
+              "column": 2
+            },
+            "end": {
+              "line": 37,
+              "column": 23
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          },
+          "inheritedFrom": "NeonAnimationBehavior"
+        }
+      ],
       "methods": [
+        {
+          "name": "created",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
+            "start": {
+              "line": 45,
+              "column": 2
+            },
+            "end": {
+              "line": 51,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "NeonAnimationBehavior"
+        },
+        {
+          "name": "timingFromConfig",
+          "description": "Returns the animation timing by mixing in properties from `config` to the\ndefaults defined by the animation.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
+            "start": {
+              "line": 57,
+              "column": 2
+            },
+            "end": {
+              "line": 64,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "config"
+            }
+          ],
+          "inheritedFrom": "NeonAnimationBehavior"
+        },
+        {
+          "name": "setPrefixedProperty",
+          "description": "Sets `transform` and `transformOrigin` properties along with the prefixed\nversions.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
+            "start": {
+              "line": 70,
+              "column": 2
+            },
+            "end": {
+              "line": 80,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "node"
+            },
+            {
+              "name": "property"
+            },
+            {
+              "name": "value"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "NeonAnimationBehavior"
+        },
+        {
+          "name": "complete",
+          "description": "Called when the animation finishes.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
+            "start": {
+              "line": 85,
+              "column": 2
+            },
+            "end": {
+              "line": 85,
+              "column": 31
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "config"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "NeonAnimationBehavior"
+        },
         {
           "name": "configure",
           "description": "",
@@ -96,7 +417,26 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "animation-timing",
+          "description": "Defines the animation timing.",
+          "sourceRange": {
+            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
+            "start": {
+              "line": 23,
+              "column": 4
+            },
+            "end": {
+              "line": 30,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined",
+          "inheritedFrom": "NeonAnimationBehavior"
+        }
+      ],
       "events": [],
       "styling": {
         "cssVariables": [],
@@ -110,6 +450,77 @@
       "summary": "",
       "path": "app-datepicker.js",
       "properties": [
+        {
+          "name": "animationConfig",
+          "type": "Object | null | undefined",
+          "description": "Animation configuration. See README for more info.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
+            "start": {
+              "line": 25,
+              "column": 4
+            },
+            "end": {
+              "line": 25,
+              "column": 35
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          },
+          "inheritedFrom": "NeonAnimatableBehavior"
+        },
+        {
+          "name": "entryAnimation",
+          "type": "string | null | undefined",
+          "description": "Convenience property for setting an 'entry' animation. Do not set\n`animationConfig.entry` manually if using this. The animated node is set\nto `this` if using this property.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
+            "start": {
+              "line": 32,
+              "column": 4
+            },
+            "end": {
+              "line": 35,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_entryAnimationChanged\"",
+              "attributeType": "String"
+            }
+          },
+          "inheritedFrom": "NeonAnimatableBehavior"
+        },
+        {
+          "name": "exitAnimation",
+          "type": "string | null | undefined",
+          "description": "Convenience property for setting an 'exit' animation. Do not set\n`animationConfig.exit` manually if using this. The animated node is set\nto `this` if using this property.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
+            "start": {
+              "line": 42,
+              "column": 4
+            },
+            "end": {
+              "line": 45,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_exitAnimationChanged\"",
+              "attributeType": "String"
+            }
+          },
+          "inheritedFrom": "NeonAnimatableBehavior"
+        },
         {
           "name": "locale",
           "type": "string | null | undefined",
@@ -928,6 +1339,282 @@
         }
       ],
       "methods": [
+        {
+          "name": "_entryAnimationChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
+            "start": {
+              "line": 49,
+              "column": 2
+            },
+            "end": {
+              "line": 52,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "NeonAnimatableBehavior"
+        },
+        {
+          "name": "_exitAnimationChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
+            "start": {
+              "line": 54,
+              "column": 2
+            },
+            "end": {
+              "line": 57,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "NeonAnimatableBehavior"
+        },
+        {
+          "name": "_copyProperties",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
+            "start": {
+              "line": 59,
+              "column": 2
+            },
+            "end": {
+              "line": 64,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "config1"
+            },
+            {
+              "name": "config2"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "NeonAnimatableBehavior"
+        },
+        {
+          "name": "_cloneConfig",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
+            "start": {
+              "line": 66,
+              "column": 2
+            },
+            "end": {
+              "line": 70,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "config"
+            }
+          ],
+          "inheritedFrom": "NeonAnimatableBehavior"
+        },
+        {
+          "name": "_getAnimationConfigRecursive",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
+            "start": {
+              "line": 72,
+              "column": 2
+            },
+            "end": {
+              "line": 123,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "type"
+            },
+            {
+              "name": "map"
+            },
+            {
+              "name": "allConfigs"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "NeonAnimatableBehavior"
+        },
+        {
+          "name": "getAnimationConfig",
+          "description": "An element implementing `NeonAnimationRunnerBehavior` calls this\nmethod to configure an animation with an optional type. Elements\nimplementing `NeonAnimatableBehavior` should define the property\n`animationConfig`, which is either a configuration object or a map of\nanimation type to array of configuration objects.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
+            "start": {
+              "line": 132,
+              "column": 2
+            },
+            "end": {
+              "line": 141,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "type"
+            }
+          ],
+          "inheritedFrom": "NeonAnimatableBehavior"
+        },
+        {
+          "name": "_configureAnimations",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/neon-animation/neon-animation-runner-behavior.js",
+            "start": {
+              "line": 21,
+              "column": 2
+            },
+            "end": {
+              "line": 80,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "configs"
+            }
+          ],
+          "inheritedFrom": "NeonAnimationRunnerBehavior"
+        },
+        {
+          "name": "_shouldComplete",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/neon-animation/neon-animation-runner-behavior.js",
+            "start": {
+              "line": 82,
+              "column": 2
+            },
+            "end": {
+              "line": 91,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "activeEntries"
+            }
+          ],
+          "inheritedFrom": "NeonAnimationRunnerBehavior"
+        },
+        {
+          "name": "_complete",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/neon-animation/neon-animation-runner-behavior.js",
+            "start": {
+              "line": 93,
+              "column": 2
+            },
+            "end": {
+              "line": 100,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "activeEntries"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "NeonAnimationRunnerBehavior"
+        },
+        {
+          "name": "playAnimation",
+          "description": "Plays an animation with an optional `type`.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@polymer/neon-animation/neon-animation-runner-behavior.js",
+            "start": {
+              "line": 107,
+              "column": 2
+            },
+            "end": {
+              "line": 136,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "type",
+              "type": "string="
+            },
+            {
+              "name": "cookie",
+              "type": "!Object="
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "NeonAnimationRunnerBehavior"
+        },
+        {
+          "name": "cancelAnimation",
+          "description": "Cancels the currently running animations.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@polymer/neon-animation/neon-animation-runner-behavior.js",
+            "start": {
+              "line": 141,
+              "column": 2
+            },
+            "end": {
+              "line": 151,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "NeonAnimationRunnerBehavior"
+        },
         {
           "name": "attached",
           "description": "",
@@ -1898,6 +2585,60 @@
       "privacy": "public",
       "superclass": "HTMLElement",
       "attributes": [
+        {
+          "name": "animation-config",
+          "description": "Animation configuration. See README for more info.",
+          "sourceRange": {
+            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
+            "start": {
+              "line": 25,
+              "column": 4
+            },
+            "end": {
+              "line": 25,
+              "column": 35
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined",
+          "inheritedFrom": "NeonAnimatableBehavior"
+        },
+        {
+          "name": "entry-animation",
+          "description": "Convenience property for setting an 'entry' animation. Do not set\n`animationConfig.entry` manually if using this. The animated node is set\nto `this` if using this property.",
+          "sourceRange": {
+            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
+            "start": {
+              "line": 32,
+              "column": 4
+            },
+            "end": {
+              "line": 35,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined",
+          "inheritedFrom": "NeonAnimatableBehavior"
+        },
+        {
+          "name": "exit-animation",
+          "description": "Convenience property for setting an 'exit' animation. Do not set\n`animationConfig.exit` manually if using this. The animated node is set\nto `this` if using this property.",
+          "sourceRange": {
+            "file": "../@polymer/neon-animation/neon-animatable-behavior.js",
+            "start": {
+              "line": 42,
+              "column": 4
+            },
+            "end": {
+              "line": 45,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined",
+          "inheritedFrom": "NeonAnimatableBehavior"
+        },
         {
           "name": "locale",
           "description": "Set locale for the datepicker.",

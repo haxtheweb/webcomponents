@@ -1,102 +1,100 @@
 define([
-  "exports",
-  "./node_modules/@polymer/polymer/polymer-element.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_exports, _polymerElement, _HAXWiring) {
+  "./node_modules/@polymer/polymer/polymer-legacy.js",
+  "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
+  "./node_modules/@polymer/polymer/lib/legacy/templatizer-behavior.js"
+], function(_polymerLegacy, _polymerDom, _templatizerBehavior) {
   "use strict";
-  Object.defineProperty(_exports, "__esModule", { value: !0 });
-  _exports.GrafittoFilter = void 0;
-  function _templateObject_5232c090d7f411e8b2cb35ffb2793c04() {
+  function _templateObject_cbc22f50d94211e8b77655ba9d66a13f() {
     var data = babelHelpers.taggedTemplateLiteral([
-      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
+      '\n        <div id="dom">\n          <slot id="template" name="template"></slot>\n        </div>\n'
     ]);
-    _templateObject_5232c090d7f411e8b2cb35ffb2793c04 = function() {
+    _templateObject_cbc22f50d94211e8b77655ba9d66a13f = function() {
       return data;
     };
     return data;
   }
-  var GrafittoFilter = (function(_PolymerElement) {
-    babelHelpers.inherits(GrafittoFilter, _PolymerElement);
-    function GrafittoFilter() {
-      babelHelpers.classCallCheck(this, GrafittoFilter);
-      return babelHelpers.possibleConstructorReturn(
-        this,
-        (
-          GrafittoFilter.__proto__ || Object.getPrototypeOf(GrafittoFilter)
-        ).apply(this, arguments)
-      );
+  (0, _polymerLegacy.Polymer)({
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_cbc22f50d94211e8b77655ba9d66a13f()
+    ),
+    is: "grafitto-filter",
+    behaviors: [_templatizerBehavior.Templatizer],
+    properties: {
+      items: { type: Array, value: [] },
+      like: { type: String, value: "" },
+      where: { type: String, value: "name" },
+      caseSensitive: { type: Boolean, value: !1, reflectToAttribute: !0 },
+      as: { type: String, value: "items" },
+      filtered: {
+        type: Array,
+        computed: "_computeFiltered(items, where, like, caseSensitive)",
+        observer: "_onFilter"
+      },
+      f: { type: Function, notify: !0 }
+    },
+    observers: ["_populateUserTemplate(filtered)"],
+    filter: function filter() {
+      this.where = "";
+    },
+    _computeFiltered: function _computeFiltered(
+      items,
+      where,
+      like,
+      caseSensitive
+    ) {
+      var regex = null;
+      if (caseSensitive) {
+        regex = new RegExp(like);
+      } else {
+        regex = new RegExp(like, "i");
+      }
+      var filtered = [];
+      if (this.f) {
+        var customFunction = this.f.bind(this);
+        filtered = items.filter(customFunction);
+      } else {
+        var decompose = this._decomposeWhere.bind(this);
+        filtered = items.filter(function(item) {
+          if ("object" == babelHelpers.typeof(item)) {
+            var decomposed = decompose(where, item);
+            if ("undefined" == typeof decomposed && "" != where) {
+              console.warn(
+                "grafitto-filter was unable to find a property in '" +
+                  where +
+                  "'"
+              );
+            }
+            return regex.test(decomposed);
+          }
+          if ("string" == typeof item) {
+            return regex.test(item);
+          }
+          if ("number" == typeof item) {
+            return regex.test(item.toString());
+          }
+        });
+      }
+      return filtered;
+    },
+    _populateUserTemplate: function _populateUserTemplate(filtered) {
+      this._userTemplate = (0, _polymerDom.dom)(
+        this.$.template
+      ).getDistributedNodes()[0];
+      if (this._userTemplate) {
+        this.templatize(this._userTemplate);
+        var clone = this.stamp();
+        clone[this.as] = filtered;
+        (0, _polymerDom.dom)(this.$.dom).innerHTML = "";
+        (0, _polymerDom.dom)(this.$.dom).appendChild(clone.root);
+      }
+    },
+    _decomposeWhere: function _decomposeWhere(where, item) {
+      return where.split(".").reduce(function(a, b) {
+        return a && a[b];
+      }, item);
+    },
+    _onFilter: function _onFilter() {
+      this.fire("filter");
     }
-    babelHelpers.createClass(
-      GrafittoFilter,
-      [
-        {
-          key: "connectedCallback",
-          value: function connectedCallback() {
-            babelHelpers
-              .get(
-                GrafittoFilter.prototype.__proto__ ||
-                  Object.getPrototypeOf(GrafittoFilter.prototype),
-                "connectedCallback",
-                this
-              )
-              .call(this);
-            this.HAXWiring = new _HAXWiring.HAXWiring();
-            this.HAXWiring.setHaxProperties(
-              GrafittoFilter.haxProperties,
-              GrafittoFilter.tag,
-              this
-            );
-          }
-        }
-      ],
-      [
-        {
-          key: "template",
-          get: function get() {
-            return (0, _polymerElement.html)(
-              _templateObject_5232c090d7f411e8b2cb35ffb2793c04()
-            );
-          }
-        },
-        {
-          key: "haxProperties",
-          get: function get() {
-            return {
-              canScale: !0,
-              canPosition: !0,
-              canEditSource: !1,
-              gizmo: {
-                title: "Grafitto filter",
-                description: "Start of grafitto-filter fork",
-                icon: "icons:android",
-                color: "green",
-                groups: ["Filter"],
-                handles: [{ type: "todo:read-the-docs-for-usage" }],
-                meta: {
-                  author: "btopro",
-                  owner: "The Pennsylvania State University"
-                }
-              },
-              settings: { quick: [], configure: [], advanced: [] }
-            };
-          }
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {};
-          }
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "grafitto-filter";
-          }
-        }
-      ]
-    );
-    return GrafittoFilter;
-  })(_polymerElement.PolymerElement);
-  _exports.GrafittoFilter = GrafittoFilter;
-  window.customElements.define(GrafittoFilter.tag, GrafittoFilter);
+  });
 });

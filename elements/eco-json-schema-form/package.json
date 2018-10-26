@@ -36,6 +36,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@polymer/iron-flex-layout": "^3.0.0",
+    "@polymer/paper-material": "^3.0.0",
+    "@polymer/paper-toolbar": "^3.0.0",
     "@polymer/iron-icons": "^3.0.0",
     "@polymer/paper-checkbox": "^3.0.0",
     "@polymer/paper-dropdown-menu": "^3.0.0",
@@ -48,7 +50,9 @@
     "@polymer/iron-validator-behavior": "^3.0.0",
     "@polymer/paper-tooltip": "^3.0.0",
     "@polymer/polymer": "^3.0.5",
-    "paper-collapse-item": "^4.0.4"
+    "paper-collapse-item": "^4.0.4",
+    "ace-builds": "^1.4.1",
+    "jsoneditor": "^5.24.7"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

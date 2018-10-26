@@ -142,7 +142,7 @@
       "themes/*"
     ],
     "nohoist": [
-      "**/@lrnwebcomponents/hax-body-behaviors",
+      "**/@lrnwebcomponents",
       "**/@polymer",
       "**/@polymer/**",
       "**/@vaadin",
@@ -158,7 +158,11 @@
       "**/paper-collapse-item",
       "**/paper-collapse-item/**",
       "**/slim-js",
-      "**/slim-js/**"
+      "**/slim-js/**",
+      "**/jsoneditor/",
+      "**/jsoneditor/**",
+      "**/ace-builds/",
+      "**/ace-builds/**"
     ]
   },
   "husky": {

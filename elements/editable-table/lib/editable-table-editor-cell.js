@@ -1,5 +1,4 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "web-animations-js/web-animations-next-lite.min.js";
 import "@polymer/iron-autogrow-textarea/iron-autogrow-textarea.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "./editable-table-behaviors.js";

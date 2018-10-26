@@ -1,5 +1,4 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "web-animations-js/web-animations-next-lite.min.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-listbox/paper-listbox.js";

@@ -371,6 +371,78 @@
       "path": "lib/eco-json-schema-enum.js",
       "properties": [
         {
+          "name": "validator",
+          "type": "string | null | undefined",
+          "description": "Name of the validator to use.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/iron-validatable-behavior/iron-validatable-behavior.js",
+            "start": {
+              "line": 52,
+              "column": 4
+            },
+            "end": {
+              "line": 52,
+              "column": 29
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "inheritedFrom": "IronValidatableBehavior"
+        },
+        {
+          "name": "invalid",
+          "type": "boolean | null | undefined",
+          "description": "True if the last call to `validate` is invalid.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/iron-validatable-behavior/iron-validatable-behavior.js",
+            "start": {
+              "line": 57,
+              "column": 4
+            },
+            "end": {
+              "line": 63,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_invalidChanged\"",
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "IronValidatableBehavior"
+        },
+        {
+          "name": "_validator",
+          "type": "?",
+          "description": " Recompute this every time it's needed, because we don't know if the\nunderlying IronValidatableBehaviorMeta has changed.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@polymer/iron-validatable-behavior/iron-validatable-behavior.js",
+            "start": {
+              "line": 80,
+              "column": 2
+            },
+            "end": {
+              "line": 83,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true
+            }
+          },
+          "inheritedFrom": "IronValidatableBehavior"
+        },
+        {
           "name": "schema",
           "type": "Object | null | undefined",
           "description": "",
@@ -462,6 +534,125 @@
         }
       ],
       "methods": [
+        {
+          "name": "registered",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@polymer/iron-validatable-behavior/iron-validatable-behavior.js",
+            "start": {
+              "line": 66,
+              "column": 2
+            },
+            "end": {
+              "line": 68,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronValidatableBehavior"
+        },
+        {
+          "name": "_invalidChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@polymer/iron-validatable-behavior/iron-validatable-behavior.js",
+            "start": {
+              "line": 70,
+              "column": 2
+            },
+            "end": {
+              "line": 76,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronValidatableBehavior"
+        },
+        {
+          "name": "hasValidator",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/iron-validatable-behavior/iron-validatable-behavior.js",
+            "start": {
+              "line": 88,
+              "column": 2
+            },
+            "end": {
+              "line": 90,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "boolean",
+            "desc": "True if the validator `validator` exists."
+          },
+          "inheritedFrom": "IronValidatableBehavior"
+        },
+        {
+          "name": "validate",
+          "description": "Returns true if the `value` is valid, and updates `invalid`. If you want\nyour element to have custom validation logic, do not override this method;\noverride `_getValidity(value)` instead.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/iron-validatable-behavior/iron-validatable-behavior.js",
+            "start": {
+              "line": 104,
+              "column": 2
+            },
+            "end": {
+              "line": 112,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "value",
+              "type": "Object",
+              "description": "Deprecated: The value to be validated. By default,\nit is passed to the validator's `validate()` function, if a validator is\n   set.\nIf this argument is not specified, then the element's `value` property\nis used, if it exists."
+            }
+          ],
+          "return": {
+            "type": "boolean",
+            "desc": "True if `value` is valid."
+          },
+          "inheritedFrom": "IronValidatableBehavior"
+        },
+        {
+          "name": "_getValidity",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@polymer/iron-validatable-behavior/iron-validatable-behavior.js",
+            "start": {
+              "line": 124,
+              "column": 2
+            },
+            "end": {
+              "line": 129,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "value"
+            }
+          ],
+          "inheritedFrom": "IronValidatableBehavior"
+        },
         {
           "name": "ready",
           "description": "",
@@ -686,6 +877,42 @@
       "superclass": "HTMLElement",
       "attributes": [
         {
+          "name": "validator",
+          "description": "Name of the validator to use.",
+          "sourceRange": {
+            "file": "../../@polymer/iron-validatable-behavior/iron-validatable-behavior.js",
+            "start": {
+              "line": 52,
+              "column": 4
+            },
+            "end": {
+              "line": 52,
+              "column": 29
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined",
+          "inheritedFrom": "IronValidatableBehavior"
+        },
+        {
+          "name": "invalid",
+          "description": "True if the last call to `validate` is invalid.",
+          "sourceRange": {
+            "file": "../../@polymer/iron-validatable-behavior/iron-validatable-behavior.js",
+            "start": {
+              "line": 57,
+              "column": 4
+            },
+            "end": {
+              "line": 63,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "IronValidatableBehavior"
+        },
+        {
           "name": "schema",
           "description": "",
           "sourceRange": {
@@ -735,6 +962,13 @@
         }
       ],
       "events": [
+        {
+          "type": "CustomEvent",
+          "name": "invalid-changed",
+          "description": "Fired when the `invalid` property changes.",
+          "metadata": {},
+          "inheritedFrom": "IronValidatableBehavior"
+        },
         {
           "type": "CustomEvent",
           "name": "value-changed",
@@ -793,6 +1027,125 @@
             "polymer": {}
           },
           "defaultValue": "{}"
+        },
+        {
+          "name": "formats",
+          "type": "Object | null | undefined",
+          "description": "Optional dictionary of user defined formats, as explained here:\n     http://formatjs.io/guides/message-syntax/#custom-formats\n\n     For example, a valid dictionary of formats would be:\n     this.formats = {\n        number: { USD: { style: 'currency', currency: 'USD' } }\n     }",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 183,
+              "column": 4
+            },
+            "end": {
+              "line": 189,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{}",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "useKeyIfMissing",
+          "type": "boolean | null | undefined",
+          "description": "If true, will use the provided key when\n     the translation does not exist for that key.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 195,
+              "column": 4
+            },
+            "end": {
+              "line": 195,
+              "column": 50
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "localize",
+          "type": "Function | null | undefined",
+          "description": "Translates a string to the current `language`. Any parameters to the\n     string should be passed in order, as follows:\n     `localize(stringKey, param1Name, param1Value, param2Name, param2Value)`",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 202,
+              "column": 4
+            },
+            "end": {
+              "line": 205,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "Function"
+            }
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "bubbleEvent",
+          "type": "boolean | null | undefined",
+          "description": "If true, will bubble up the event to the parents",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 210,
+              "column": 4
+            },
+            "end": {
+              "line": 210,
+              "column": 46
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "__localizationCache",
+          "type": "Object",
+          "description": "   Internal singleton cache. This is the private implementation of the\n   behaviour; don't interact with it directly.\n   ",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 139,
+              "column": 2
+            },
+            "end": {
+              "line": 144,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
         },
         {
           "name": "schema",
@@ -864,6 +1217,151 @@
         }
       ],
       "methods": [
+        {
+          "name": "loadResources",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 213,
+              "column": 2
+            },
+            "end": {
+              "line": 246,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "path"
+            },
+            {
+              "name": "language"
+            },
+            {
+              "name": "merge"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "__computeLocalize",
+          "description": "Returns a computed `localize` method, based on the current `language`.",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 251,
+              "column": 2
+            },
+            "end": {
+              "line": 292,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "language"
+            },
+            {
+              "name": "resources"
+            },
+            {
+              "name": "formats"
+            }
+          ],
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "__onRequestResponse",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 294,
+              "column": 2
+            },
+            "end": {
+              "line": 323,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event"
+            },
+            {
+              "name": "language"
+            },
+            {
+              "name": "merge"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "__onRequestError",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 325,
+              "column": 2
+            },
+            "end": {
+              "line": 327,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "__checkLocalizationCache",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 329,
+              "column": 2
+            },
+            "end": {
+              "line": 338,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "proto"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
         {
           "name": "ready",
           "description": "",
@@ -1123,6 +1621,78 @@
           "metadata": {}
         },
         {
+          "name": "formats",
+          "description": "Optional dictionary of user defined formats, as explained here:\n     http://formatjs.io/guides/message-syntax/#custom-formats\n\n     For example, a valid dictionary of formats would be:\n     this.formats = {\n        number: { USD: { style: 'currency', currency: 'USD' } }\n     }",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 183,
+              "column": 4
+            },
+            "end": {
+              "line": 189,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "use-key-if-missing",
+          "description": "If true, will use the provided key when\n     the translation does not exist for that key.",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 195,
+              "column": 4
+            },
+            "end": {
+              "line": 195,
+              "column": 50
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "localize",
+          "description": "Translates a string to the current `language`. Any parameters to the\n     string should be passed in order, as follows:\n     `localize(stringKey, param1Name, param1Value, param2Name, param2Value)`",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 202,
+              "column": 4
+            },
+            "end": {
+              "line": 205,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Function | null | undefined",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "bubble-event",
+          "description": "If true, will bubble up the event to the parents",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 210,
+              "column": 4
+            },
+            "end": {
+              "line": 210,
+              "column": 46
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
           "name": "schema",
           "description": "",
           "sourceRange": {
@@ -1172,6 +1742,20 @@
         }
       ],
       "events": [
+        {
+          "type": "CustomEvent",
+          "name": "app-localize-resources-error",
+          "description": "Fired when the resources cannot be loaded due to an error.\n   ",
+          "metadata": {},
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "app-localize-resources-loaded",
+          "description": "Fired after the resources have been loaded.\n   ",
+          "metadata": {},
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
         {
           "type": "CustomEvent",
           "name": "value-changed",
@@ -1234,6 +1818,125 @@
             }
           },
           "defaultValue": "{}"
+        },
+        {
+          "name": "formats",
+          "type": "Object | null | undefined",
+          "description": "Optional dictionary of user defined formats, as explained here:\n     http://formatjs.io/guides/message-syntax/#custom-formats\n\n     For example, a valid dictionary of formats would be:\n     this.formats = {\n        number: { USD: { style: 'currency', currency: 'USD' } }\n     }",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 183,
+              "column": 4
+            },
+            "end": {
+              "line": 189,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{}",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "useKeyIfMissing",
+          "type": "boolean | null | undefined",
+          "description": "If true, will use the provided key when\n     the translation does not exist for that key.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 195,
+              "column": 4
+            },
+            "end": {
+              "line": 195,
+              "column": 50
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "localize",
+          "type": "Function | null | undefined",
+          "description": "Translates a string to the current `language`. Any parameters to the\n     string should be passed in order, as follows:\n     `localize(stringKey, param1Name, param1Value, param2Name, param2Value)`",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 202,
+              "column": 4
+            },
+            "end": {
+              "line": 205,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "Function"
+            }
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "bubbleEvent",
+          "type": "boolean | null | undefined",
+          "description": "If true, will bubble up the event to the parents",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 210,
+              "column": 4
+            },
+            "end": {
+              "line": 210,
+              "column": 46
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "__localizationCache",
+          "type": "Object",
+          "description": "   Internal singleton cache. This is the private implementation of the\n   behaviour; don't interact with it directly.\n   ",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 139,
+              "column": 2
+            },
+            "end": {
+              "line": 144,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
         },
         {
           "name": "schema",
@@ -1680,6 +2383,151 @@
         }
       ],
       "methods": [
+        {
+          "name": "loadResources",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 213,
+              "column": 2
+            },
+            "end": {
+              "line": 246,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "path"
+            },
+            {
+              "name": "language"
+            },
+            {
+              "name": "merge"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "__computeLocalize",
+          "description": "Returns a computed `localize` method, based on the current `language`.",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 251,
+              "column": 2
+            },
+            "end": {
+              "line": 292,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "language"
+            },
+            {
+              "name": "resources"
+            },
+            {
+              "name": "formats"
+            }
+          ],
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "__onRequestResponse",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 294,
+              "column": 2
+            },
+            "end": {
+              "line": 323,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event"
+            },
+            {
+              "name": "language"
+            },
+            {
+              "name": "merge"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "__onRequestError",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 325,
+              "column": 2
+            },
+            "end": {
+              "line": 327,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "__checkLocalizationCache",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 329,
+              "column": 2
+            },
+            "end": {
+              "line": 338,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "proto"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
         {
           "name": "clear",
           "description": "Clears the list of files",
@@ -2171,6 +3019,78 @@
           "metadata": {}
         },
         {
+          "name": "formats",
+          "description": "Optional dictionary of user defined formats, as explained here:\n     http://formatjs.io/guides/message-syntax/#custom-formats\n\n     For example, a valid dictionary of formats would be:\n     this.formats = {\n        number: { USD: { style: 'currency', currency: 'USD' } }\n     }",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 183,
+              "column": 4
+            },
+            "end": {
+              "line": 189,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "use-key-if-missing",
+          "description": "If true, will use the provided key when\n     the translation does not exist for that key.",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 195,
+              "column": 4
+            },
+            "end": {
+              "line": 195,
+              "column": 50
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "localize",
+          "description": "Translates a string to the current `language`. Any parameters to the\n     string should be passed in order, as follows:\n     `localize(stringKey, param1Name, param1Value, param2Name, param2Value)`",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 202,
+              "column": 4
+            },
+            "end": {
+              "line": 205,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Function | null | undefined",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "bubble-event",
+          "description": "If true, will bubble up the event to the parents",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 210,
+              "column": 4
+            },
+            "end": {
+              "line": 210,
+              "column": 46
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
           "name": "schema",
           "description": "",
           "sourceRange": {
@@ -2476,6 +3396,20 @@
         }
       ],
       "events": [
+        {
+          "type": "CustomEvent",
+          "name": "app-localize-resources-error",
+          "description": "Fired when the resources cannot be loaded due to an error.\n   ",
+          "metadata": {},
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "app-localize-resources-loaded",
+          "description": "Fired after the resources have been loaded.\n   ",
+          "metadata": {},
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
         {
           "type": "CustomEvent",
           "name": "language-changed",
@@ -3268,6 +4202,125 @@
           "defaultValue": "{}"
         },
         {
+          "name": "formats",
+          "type": "Object | null | undefined",
+          "description": "Optional dictionary of user defined formats, as explained here:\n     http://formatjs.io/guides/message-syntax/#custom-formats\n\n     For example, a valid dictionary of formats would be:\n     this.formats = {\n        number: { USD: { style: 'currency', currency: 'USD' } }\n     }",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 183,
+              "column": 4
+            },
+            "end": {
+              "line": 189,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{}",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "useKeyIfMissing",
+          "type": "boolean | null | undefined",
+          "description": "If true, will use the provided key when\n     the translation does not exist for that key.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 195,
+              "column": 4
+            },
+            "end": {
+              "line": 195,
+              "column": 50
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "localize",
+          "type": "Function | null | undefined",
+          "description": "Translates a string to the current `language`. Any parameters to the\n     string should be passed in order, as follows:\n     `localize(stringKey, param1Name, param1Value, param2Name, param2Value)`",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 202,
+              "column": 4
+            },
+            "end": {
+              "line": 205,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "Function"
+            }
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "bubbleEvent",
+          "type": "boolean | null | undefined",
+          "description": "If true, will bubble up the event to the parents",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 210,
+              "column": 4
+            },
+            "end": {
+              "line": 210,
+              "column": 46
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "__localizationCache",
+          "type": "Object",
+          "description": "   Internal singleton cache. This is the private implementation of the\n   behaviour; don't interact with it directly.\n   ",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 139,
+              "column": 2
+            },
+            "end": {
+              "line": 144,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
           "name": "schema",
           "type": "Object | null | undefined",
           "description": "",
@@ -3379,6 +4432,151 @@
         }
       ],
       "methods": [
+        {
+          "name": "loadResources",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 213,
+              "column": 2
+            },
+            "end": {
+              "line": 246,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "path"
+            },
+            {
+              "name": "language"
+            },
+            {
+              "name": "merge"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "__computeLocalize",
+          "description": "Returns a computed `localize` method, based on the current `language`.",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 251,
+              "column": 2
+            },
+            "end": {
+              "line": 292,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "language"
+            },
+            {
+              "name": "resources"
+            },
+            {
+              "name": "formats"
+            }
+          ],
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "__onRequestResponse",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 294,
+              "column": 2
+            },
+            "end": {
+              "line": 323,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event"
+            },
+            {
+              "name": "language"
+            },
+            {
+              "name": "merge"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "__onRequestError",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 325,
+              "column": 2
+            },
+            "end": {
+              "line": 327,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "__checkLocalizationCache",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 329,
+              "column": 2
+            },
+            "end": {
+              "line": 338,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "proto"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
         {
           "name": "detached",
           "description": "",
@@ -3812,6 +5010,78 @@
           "metadata": {}
         },
         {
+          "name": "formats",
+          "description": "Optional dictionary of user defined formats, as explained here:\n     http://formatjs.io/guides/message-syntax/#custom-formats\n\n     For example, a valid dictionary of formats would be:\n     this.formats = {\n        number: { USD: { style: 'currency', currency: 'USD' } }\n     }",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 183,
+              "column": 4
+            },
+            "end": {
+              "line": 189,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "use-key-if-missing",
+          "description": "If true, will use the provided key when\n     the translation does not exist for that key.",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 195,
+              "column": 4
+            },
+            "end": {
+              "line": 195,
+              "column": 50
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "localize",
+          "description": "Translates a string to the current `language`. Any parameters to the\n     string should be passed in order, as follows:\n     `localize(stringKey, param1Name, param1Value, param2Name, param2Value)`",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 202,
+              "column": 4
+            },
+            "end": {
+              "line": 205,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Function | null | undefined",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "bubble-event",
+          "description": "If true, will bubble up the event to the parents",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 210,
+              "column": 4
+            },
+            "end": {
+              "line": 210,
+              "column": 46
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
           "name": "schema",
           "description": "",
           "sourceRange": {
@@ -3895,6 +5165,20 @@
       "events": [
         {
           "type": "CustomEvent",
+          "name": "app-localize-resources-error",
+          "description": "Fired when the resources cannot be loaded due to an error.\n   ",
+          "metadata": {},
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "app-localize-resources-loaded",
+          "description": "Fired after the resources have been loaded.\n   ",
+          "metadata": {},
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "type": "CustomEvent",
           "name": "value-changed",
           "description": "Fired when the `value` property changes.",
           "metadata": {}
@@ -3961,6 +5245,125 @@
               "attributeType": "Object"
             }
           }
+        },
+        {
+          "name": "formats",
+          "type": "Object | null | undefined",
+          "description": "Optional dictionary of user defined formats, as explained here:\n     http://formatjs.io/guides/message-syntax/#custom-formats\n\n     For example, a valid dictionary of formats would be:\n     this.formats = {\n        number: { USD: { style: 'currency', currency: 'USD' } }\n     }",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 183,
+              "column": 4
+            },
+            "end": {
+              "line": 189,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{}",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "useKeyIfMissing",
+          "type": "boolean | null | undefined",
+          "description": "If true, will use the provided key when\n     the translation does not exist for that key.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 195,
+              "column": 4
+            },
+            "end": {
+              "line": 195,
+              "column": 50
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "localize",
+          "type": "Function | null | undefined",
+          "description": "Translates a string to the current `language`. Any parameters to the\n     string should be passed in order, as follows:\n     `localize(stringKey, param1Name, param1Value, param2Name, param2Value)`",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 202,
+              "column": 4
+            },
+            "end": {
+              "line": 205,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "Function"
+            }
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "bubbleEvent",
+          "type": "boolean | null | undefined",
+          "description": "If true, will bubble up the event to the parents",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 210,
+              "column": 4
+            },
+            "end": {
+              "line": 210,
+              "column": 46
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "__localizationCache",
+          "type": "Object",
+          "description": "   Internal singleton cache. This is the private implementation of the\n   behaviour; don't interact with it directly.\n   ",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 139,
+              "column": 2
+            },
+            "end": {
+              "line": 144,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
         },
         {
           "name": "schema",
@@ -4233,6 +5636,151 @@
         }
       ],
       "methods": [
+        {
+          "name": "loadResources",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 213,
+              "column": 2
+            },
+            "end": {
+              "line": 246,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "path"
+            },
+            {
+              "name": "language"
+            },
+            {
+              "name": "merge"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "__computeLocalize",
+          "description": "Returns a computed `localize` method, based on the current `language`.",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 251,
+              "column": 2
+            },
+            "end": {
+              "line": 292,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "language"
+            },
+            {
+              "name": "resources"
+            },
+            {
+              "name": "formats"
+            }
+          ],
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "__onRequestResponse",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 294,
+              "column": 2
+            },
+            "end": {
+              "line": 323,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event"
+            },
+            {
+              "name": "language"
+            },
+            {
+              "name": "merge"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "__onRequestError",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 325,
+              "column": 2
+            },
+            "end": {
+              "line": 327,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "__checkLocalizationCache",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 329,
+              "column": 2
+            },
+            "end": {
+              "line": 338,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "proto"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
         {
           "name": "detached",
           "description": "",
@@ -4748,6 +6296,78 @@
           "type": "Object | null | undefined"
         },
         {
+          "name": "formats",
+          "description": "Optional dictionary of user defined formats, as explained here:\n     http://formatjs.io/guides/message-syntax/#custom-formats\n\n     For example, a valid dictionary of formats would be:\n     this.formats = {\n        number: { USD: { style: 'currency', currency: 'USD' } }\n     }",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 183,
+              "column": 4
+            },
+            "end": {
+              "line": 189,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "use-key-if-missing",
+          "description": "If true, will use the provided key when\n     the translation does not exist for that key.",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 195,
+              "column": 4
+            },
+            "end": {
+              "line": 195,
+              "column": 50
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "localize",
+          "description": "Translates a string to the current `language`. Any parameters to the\n     string should be passed in order, as follows:\n     `localize(stringKey, param1Name, param1Value, param2Name, param2Value)`",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 202,
+              "column": 4
+            },
+            "end": {
+              "line": 205,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Function | null | undefined",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "name": "bubble-event",
+          "description": "If true, will bubble up the event to the parents",
+          "sourceRange": {
+            "file": "../../@polymer/app-localize-behavior/app-localize-behavior.js",
+            "start": {
+              "line": 210,
+              "column": 4
+            },
+            "end": {
+              "line": 210,
+              "column": 46
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
           "name": "schema",
           "description": "",
           "sourceRange": {
@@ -4943,6 +6563,20 @@
       "events": [
         {
           "type": "CustomEvent",
+          "name": "app-localize-resources-error",
+          "description": "Fired when the resources cannot be loaded due to an error.\n   ",
+          "metadata": {},
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "app-localize-resources-loaded",
+          "description": "Fired after the resources have been loaded.\n   ",
+          "metadata": {},
+          "inheritedFrom": "AppLocalizeBehavior"
+        },
+        {
+          "type": "CustomEvent",
           "name": "language-changed",
           "description": "Fired when the `language` property changes.",
           "metadata": {}
@@ -5014,6 +6648,356 @@
       },
       "slots": [],
       "tagname": "eco-json-schema-wizard"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "demo/eco-json-schema-form-live-schema-demo.js",
+      "properties": [
+        {
+          "name": "language",
+          "type": "?",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 67,
+              "column": 4
+            },
+            "end": {
+              "line": 70,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true
+            }
+          },
+          "defaultValue": "\"en\""
+        },
+        {
+          "name": "resources",
+          "type": "?",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 71,
+              "column": 4
+            },
+            "end": {
+              "line": 88,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {}
+          },
+          "defaultValue": "{\"en\":{\"prev\":\"Previous\",\"next\":\"Next\",\"submit\":\"Submit\",\"add-image\":\"Click to select an image\"},\"es\":{\"prev\":\"Anterior\",\"next\":\"Siguiente\",\"submit\":\"Enviar\",\"add-image\":\"Click para adicionar una imagen\"}}"
+        },
+        {
+          "name": "schema",
+          "type": "Object | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 89,
+              "column": 4
+            },
+            "end": {
+              "line": 95,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{\"schema\":{}}"
+        },
+        {
+          "name": "value",
+          "type": "Object | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 96,
+              "column": 4
+            },
+            "end": {
+              "line": 100,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{}"
+        },
+        {
+          "name": "page",
+          "type": "Object | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 101,
+              "column": 4
+            },
+            "end": {
+              "line": 104,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "Object"
+            }
+          }
+        },
+        {
+          "name": "pages",
+          "type": "Object | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 105,
+              "column": 4
+            },
+            "end": {
+              "line": 108,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "Object"
+            }
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 110,
+              "column": 2
+            },
+            "end": {
+              "line": 146,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_schemaChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 147,
+              "column": 2
+            },
+            "end": {
+              "line": 158,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_valueChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 159,
+              "column": 2
+            },
+            "end": {
+              "line": 162,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 63,
+          "column": 8
+        },
+        "end": {
+          "line": 163,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "attributes": [
+        {
+          "name": "language",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 67,
+              "column": 4
+            },
+            "end": {
+              "line": 70,
+              "column": 5
+            }
+          },
+          "metadata": {}
+        },
+        {
+          "name": "resources",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 71,
+              "column": 4
+            },
+            "end": {
+              "line": 88,
+              "column": 5
+            }
+          },
+          "metadata": {}
+        },
+        {
+          "name": "schema",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 89,
+              "column": 4
+            },
+            "end": {
+              "line": 95,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "value",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 96,
+              "column": 4
+            },
+            "end": {
+              "line": 100,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "page",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 101,
+              "column": 4
+            },
+            "end": {
+              "line": 104,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "pages",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 105,
+              "column": 4
+            },
+            "end": {
+              "line": 108,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "language-changed",
+          "description": "Fired when the `language` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "schema-changed",
+          "description": "Fired when the `schema` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "value-changed",
+          "description": "Fired when the `value` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "page-changed",
+          "description": "Fired when the `page` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "pages-changed",
+          "description": "Fired when the `pages` property changes.",
+          "metadata": {}
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "eco-json-schema-form-live-schema-demo"
     }
   ]
 }

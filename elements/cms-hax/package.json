@@ -35,9 +35,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
+    "@lrnwebcomponents/hax-body": "^0.0.28",
     "@polymer/polymer": "^3.0.5",
     "@polymer/iron-resizable-behavior": "^3.0.0",
     "@polymer/iron-selector": "^3.0.0",
+    "@polymer/iron-ajax": "^3.0.0",
+    "@polymer/paper-toast": "^3.0.0",
     "@polymer/paper-spinner": "^3.0.0"
   },
   "devDependencies": {

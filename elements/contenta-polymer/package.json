@@ -35,6 +35,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/materializecss-styles": "^0.0.28",
     "@polymer/polymer": "^3.0.0",
     "@polymer/iron-image": "^3.0.0",
     "@polymer/paper-button": "^3.0.0",
