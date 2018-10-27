@@ -1,0 +1,51 @@
+{
+  "name": "@lrnwebcomponents/social-media-icons",
+  "wcfactory": {
+    "className": "SocialMediaIcons",
+    "customElementClass": "PolymerElement",
+    "elementName": "social-media-icons",
+    "generator-wcfactory-version": "0.3.2",
+    "useHAX": true,
+    "useSass": false,
+    "files": {
+      "css": "src/social-media-icons.css",
+      "scss": "src/social-media-icons.scss",
+      "html": "src/social-media-icons.html",
+      "js": "src/social-media-icons.js",
+      "properties": "src/social-media-icons-properties.json",
+      "hax": "src/social-media-icons-hax.json"
+    }
+  },
+  "version": "0.0.28",
+  "description": "Start of social-media-icons",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "social-media-icons.js",
+  "module": "social-media-icons.es6.js",
+  "umd": "social-media-icons.umd.js",
+  "amd": "social-media-icons.amd.js",
+  "scripts": {
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/social-media-icons/test/",
+    "start":"yarn run dev","build":"../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'","dev":"open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'","watch":"../../node_modules/.bin/gulp dev","serve":"polymer serve --npm --module-resolution=node --open","lighthouse":"../../node_modules/.bin/gulp lighthouse"
+  },
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@lrnwebcomponents/hax-body-behaviors":"^0.0.28","@polymer/polymer":"^3.0.5"
+  },
+  "devDependencies": {
+    "@polymer/iron-demo-helpers":"3.0.2","@polymer/iron-component-page":"github:PolymerElements/iron-component-page","@webcomponents/webcomponentsjs":"2.1.3","concurrently":"4.0.1","gulp-babel":"8.0.0","gulp-sourcemaps":"2.6.4","lodash":"4.17.11","polymer-cli":"1.8.0","polymer-build":"3.0.4","wct-browser-legacy":"1.0.1"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}

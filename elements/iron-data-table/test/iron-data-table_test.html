@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../iron-data-table.js"></script>
+  </head>
+  <body>
+
+    <iron-data-table>
+      This is the element content.
+    </iron-data-table>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <iron-data-table></iron-data-table>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <iron-data-table></iron-data-table>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<iron-data-table>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('iron-data-table'), customElements.get("iron-data-table", 'iron-data-table should be an instance of ironDataTable'));
+    });
+
+    /*test('setting a property on the element works', () => {
+      const element = fixture('AdvancedTestFixture');
+      element.title = 'my title';
+      assert.equal(element.title, 'my title');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello my title!');
+    });*/
+  });
+    </script>
+  </body>
+</html>

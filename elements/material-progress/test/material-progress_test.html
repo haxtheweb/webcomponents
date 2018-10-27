@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../material-progress.js"></script>
+  </head>
+  <body>
+
+    <material-progress>
+      This is the element content.
+    </material-progress>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <material-progress></material-progress>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <material-progress></material-progress>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<material-progress>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('material-progress'), customElements.get("material-progress", 'material-progress should be an instance of materialProgress'));
+    });
+
+    /*test('setting a property on the element works', () => {
+      const element = fixture('AdvancedTestFixture');
+      element.title = 'my title';
+      assert.equal(element.title, 'my title');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello my title!');
+    });*/
+  });
+    </script>
+  </body>
+</html>

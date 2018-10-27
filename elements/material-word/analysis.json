@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "`material-word`\n`Start of material-word`",
+      "summary": "",
+      "path": "material-word.js",
+      "properties": [],
+      "methods": [
+        {
+          "name": "connectedCallback",
+          "description": "life cycle, element is afixed to the DOM",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 80,
+              "column": 2
+            },
+            "end": {
+              "line": 84,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 18,
+          "column": 0
+        },
+        "end": {
+          "line": 90,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "PolymerElement",
+      "name": "MaterialWord",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    }
+  ]
+}
