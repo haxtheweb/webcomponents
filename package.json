@@ -168,7 +168,9 @@
       "**/screenfull",
       "**/screenfull/**",
       "**/chartist",
-      "**/chartist/**"
+      "**/chartist/**",
+      "**/ical.js",
+      "**/ical.js/**"
     ]
   },
   "husky": {
