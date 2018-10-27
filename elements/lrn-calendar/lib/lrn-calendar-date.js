@@ -4,7 +4,7 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "./lrn-calendar.js";
+import "../lrn-calendar.js";
 /**
 `patrick-test`
 A LRN element

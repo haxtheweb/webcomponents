@@ -13,8 +13,9 @@ import "@lrnwebcomponents/lrnsys-layout/lrnsys-drawer.js";
 import "@lrnwebcomponents/lrnsys-layout/lrnsys-dialog.js";
 import "@lrnwebcomponents/lrnsys-layout/lrnsys-collapselist.js";
 import "@lrnwebcomponents/lrnsys-layout/lrnsys-collapselist-item.js";
+import "ical.js/build/ical.js";
 import "./lib/lrn-calendar-date.js";
-import "./lib/i-cal-js.js";
+
 /**
 `lrn-calendar`
 A LRN element

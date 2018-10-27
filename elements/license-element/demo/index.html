@@ -13,12 +13,19 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic license-element demo</h3>
+      <h3>Basic license-element</h3>
       <demo-snippet>
         <template>
-          <license-element>
-            This is license-element
-          </license-element>
+          <license-element creator="Bryan Ollendyke" scope="sibling" license="by" title="The btopro blog" source="https://btopro.com/"></license-element>
+        </template>
+      </demo-snippet>
+    </div>
+    <div class="vertical-section-container">
+      <h3>More advanced license-element</h3>
+      <demo-snippet>
+        <template>
+          <license-element creator="Bryan Ollendyke" scope="sibling" license="by" title="The btopro blog" source="https://btopro.com/"
+            more-link="https://btopro.com/about" more-label="in my policies section"></license-element>
         </template>
       </demo-snippet>
     </div>

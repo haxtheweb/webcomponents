@@ -16,8 +16,22 @@
       <h3>Basic item-overlay-ops demo</h3>
       <demo-snippet>
         <template>
-          <item-overlay-ops>
-            This is item-overlay-ops
+          <item-overlay-ops add="" edit="" remove="" duplicate="" move="" edit-mode="">
+            <paper-card heading="Title of the thing" image="stock.jpg" elevation="2" animated-shadow="false">
+              <div class="card-content"></div>
+            </paper-card>
+          </item-overlay-ops>
+    
+          <item-overlay-ops add="" edit="" remove="" duplicate="" move="">
+            <paper-card heading="Title of the thing" image="stock.jpg" elevation="2" animated-shadow="false">
+              <div class="card-content"></div>
+            </paper-card>
+          </item-overlay-ops>
+    
+          <item-overlay-ops edit="" duplicate="" move="" edit-mode="">
+            <paper-card heading="Title of the thing" image="stock.jpg" elevation="2" animated-shadow="false">
+              <div class="card-content"></div>
+            </paper-card>
           </item-overlay-ops>
         </template>
       </demo-snippet>
