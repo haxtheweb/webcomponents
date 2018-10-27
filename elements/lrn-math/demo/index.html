@@ -12,13 +12,23 @@
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
-    <div class="vertical-section-container centered">
+    <div class="vertical-section-container">
       <h3>Basic lrn-math demo</h3>
       <demo-snippet>
-        <template>
-          <lrn-math>
-            This is lrn-math
-          </lrn-math>
+        <template is="dom-bind">
+          <lrn-math>\\int_0^{20} e^{x^2} dx</lrn-math>
+        </template>
+      </demo-snippet>
+      <h3>Inline lrn-math demo</h3>
+      <demo-snippet>
+        <template is="dom-bind">
+          <lrn-math inline="">\\int_0^{20} e^{x^2} dx</lrn-math>
+        </template>
+      </demo-snippet>
+      <h3>lrn-math demo w/ editor</h3>
+      <demo-snippet>
+        <template is="dom-bind">
+          <lrn-math editor="">\\int_0^{20} e^{x^2} dx</lrn-math>
         </template>
       </demo-snippet>
     </div>

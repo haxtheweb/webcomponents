@@ -1,3 +1,4 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-tabs/paper-tabs.js";
 import "@polymer/marked-element/marked-element.js";
 import "@polymer/iron-pages/iron-pages.js";

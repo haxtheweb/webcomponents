@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "oer-schema/oer-schema.js";
+import "@lrnwebcomponents/oer-schema/oer-schema.js";
 /**
 `lrn-page`
 A LRN element for a "page" of material. This ensures there's an OERSchema wrapper

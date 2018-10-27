@@ -3,7 +3,7 @@ import "@polymer/app-route/app-location.js";
 import "@polymer/app-route/app-route.js";
 import "@lrnwebcomponents/scary-gallery/scary-gallery.js";
 import "@polymer/paper-dialog/paper-dialog.js";
-import "../lrnapp-studio-displayboard/lrnapp-studio-displayboard.js";
+import "./lrnapp-studio-displayboard.js";
 Polymer({
   _template: html`
     <style>

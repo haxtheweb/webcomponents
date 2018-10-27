@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "../lrnapp-studio-submission/lrnapp-studio-submission.js";
+import "./lrnapp-studio-submission.js";
 Polymer({
   _template: html`
     <style>

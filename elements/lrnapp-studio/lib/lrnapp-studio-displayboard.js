@@ -7,7 +7,7 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/maps-icons.js";
 import "@polymer/iron-icons/social-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
-import "../lrnapp-studio-submissions-list/lrnapp-studio-submissions-list.js";
+import "./lrnapp-studio-submissions-list.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 Polymer({
   _template: html`

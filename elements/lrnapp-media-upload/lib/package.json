@@ -1,9 +1,0 @@
-{
-  "name": "@lrnwebcomponents/lrnapp-media-upload/",
-  "flat": true,
-  "version": "0.0.22",
-  "description": "Media management application",
-  "main": "index.html",
-  "dependencies": {},
-  "devDependencies": {}
-}

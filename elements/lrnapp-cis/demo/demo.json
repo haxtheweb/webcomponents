@@ -1,0 +1,107 @@
+{
+  "status": 200,
+  "data": {
+    "courses": [
+      {
+        "id": 1,
+        "data": {
+          "machine_name": "sing100",
+          "name": "Singularity 100",
+          "title": "Intro to the singularity",
+          "image": "/demo/arthistory.jpg",
+          "color": "yellow",
+          "uri": "node/6"
+        },
+        "relationships": {
+          "program": {
+            "id": 2,
+            "data": {
+              "name": "Digital Multimedia Design"
+            }
+          },
+          "academic": {
+            "id": 3,
+            "data": {
+              "name": "Arts and Letters"
+            }
+          }
+        }
+      },
+      {
+        "id": 4,
+        "data": {
+          "machine_name": "larch001",
+          "name": "LARCH 001",
+          "title": "Intro to Landscape Architecture",
+          "image": "/demo/larch.jpg",
+          "color": "green",
+          "uri": "node/6"
+        },
+        "relationships": {
+          "program": {
+            "id": 5,
+            "data": {
+              "name": "General Education"
+            }
+          },
+          "academic": {
+            "id": 3,
+            "data": {
+              "name": "Arts and Letters"
+            }
+          }
+        }
+      },
+      {
+        "id": 6,
+        "data": {
+          "machine_name": "fakr100",
+          "name": "FAKE 001",
+          "title": "dfdfsdsfdsfe",
+          "image": "/demo/larch.jpg",
+          "color": "red",
+          "uri": "node/6"
+        },
+        "relationships": {
+          "program": {
+            "id": 5,
+            "data": {
+              "name": "General Education"
+            }
+          },
+          "academic": {
+            "id": 3,
+            "data": {
+              "name": "Arts and Letters"
+            }
+          }
+        }
+      },
+      {
+        "id": 7,
+        "data": {
+          "machine_name": "stuff500",
+          "name": "Stuff 001",
+          "title": "Graduate level STUFF",
+          "image": "/demo/larch.jpg",
+          "color": "orange",
+          "uri": "node/6"
+        },
+        "relationships": {
+          "program": {
+            "id": 5,
+            "data": {
+              "name": "General Education"
+            }
+          },
+          "academic": {
+            "id": 3,
+            "data": {
+              "name": "Arts and Letters"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
