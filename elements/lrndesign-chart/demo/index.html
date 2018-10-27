@@ -16,9 +16,18 @@
       <h3>Basic lrndesign-chart demo</h3>
       <demo-snippet>
         <template>
-          <lrndesign-chart>
-            This is lrndesign-chart
-          </lrndesign-chart>
+          <lrndesign-bar scale="ct-square" chart-title="Sales by Quarter" chart-desc="A bar graph of sales by quarter. Each series is a salesperson."
+            data-source="bar.csv"></lrndesign-bar>
+        </template>
+      </demo-snippet>
+      <demo-snippet>
+        <template>
+          <lrndesign-pie scale="ct-square" chart-title="A pie chart of favorite foods" data-source="pie.csv"></lrndesign-pie>
+        </template>
+      </demo-snippet>
+      <demo-snippet>
+        <template>
+          <lrndesign-line scale="ct-square" data-source="line.csv"></lrndesign-line>
         </template>
       </demo-snippet>
     </div>

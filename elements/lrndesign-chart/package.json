@@ -40,8 +40,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/chartist-render": "^0.0.28",
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
-    "@polymer/polymer": "^3.0.5"
+    "@lrnwebcomponents/schema-behaviors": "^0.0.28",
+    "@polymer/polymer": "^3.0.5",
+    "@polymer/iron-ajax": "^3.0.0"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

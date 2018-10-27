@@ -2,7 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "paper-contact/paper-contact.js";
+import "@lrnwebcomponents/paper-contact/paper-contact.js";
 /**
 `lrndesign-biocard`
 A LRN element
