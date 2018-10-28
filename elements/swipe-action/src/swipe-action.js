@@ -89,10 +89,10 @@ Polymer({
       }
     </style>
 
-    <content id="actions" select="[swipe-left-action],[swipe-right-action],[swipe-up-action],[swipe-down-action]"></content>
+    <slot id="actions" name="[swipe-left-action],[swipe-right-action],[swipe-up-action],[swipe-down-action]"></slot>
     
     <div id="swipeTarget">
-      <content id="content" select="*"></content>
+      <slot id="content"></slot>
     </div>
 `,
 

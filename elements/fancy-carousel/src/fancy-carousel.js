@@ -37,7 +37,7 @@ Polymer({
     </style>
 
     <div id="content-wrapper">
-      <content></content>
+      <slot></slot>
     </div>
 
     <button id="prevBtn" on-click="previous">❮</button>

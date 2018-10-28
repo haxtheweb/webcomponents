@@ -188,8 +188,8 @@ Polymer({
       </iron-list>
     </div>
     <paper-spinner-lite active=""></paper-spinner-lite>
-    <content select="data-table-column"></content>
-    <content select="template[is=row-detail]"></content>
+    <slot name="data-table-column"></slot>
+    <slot name="template[is=row-detail]"></slot>
 `,
 
   is: "iron-data-table",

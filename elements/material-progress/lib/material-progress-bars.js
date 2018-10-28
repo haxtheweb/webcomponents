@@ -32,7 +32,7 @@ $_documentContainer.innerHTML = `<dom-module id="material-progress-bars">
       }
     </style>
     <div id="barsContainer">
-      <content id="content" selector=".bar[data-value]"></content>
+      <slot id="content" name=".bar[data-value]"></slot>
     </div>
     <div class="legend" hidden\$="[[_legendNeeded]]">
       <template is="dom-repeat" items="[[_legendItems]]" as="l">

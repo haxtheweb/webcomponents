@@ -16,6 +16,17 @@
       "hax": "src/web-map-hax.json"
     }
   },
+  "contributors": [
+    {
+      "name": "Peter Rushforth",
+      "email": "peter.rushforth@canada.ca"
+    },
+    {
+      "name": "Maps for HTML Community Group",
+      "email": "public-maps4html@w3.org",
+      "homepage": "https://www.w3.org/community/maps4html/"
+    }
+  ],
   "version": "0.0.28",
   "description": "Start of web-map",
   "repository": {
