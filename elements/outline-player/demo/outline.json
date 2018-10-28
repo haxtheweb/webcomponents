@@ -1,0 +1,185 @@
+{
+  "id": "2a307fdb-87c8-466e-907d-730c6b53ea31",
+  "title": "testsite1",
+  "author": "",
+  "description": "",
+  "license": "by-sa",
+  "metadata": {
+    "siteName": "testsite1",
+    "image": "assets/banner.jpg",
+    "theme": "default",
+    "icon": "icons:add-circle-outline",
+    "hexCode": null,
+    "cssVariable": null
+  },
+  "items": [
+    {
+      "id": "item-85527fdd-e7aa-4179-8aab-6ecc255236a1",
+      "indent": 0,
+      "location": "content/page1.html",
+      "order": 0,
+      "parent": null,
+      "title": "Page 1",
+      "metadata": {
+        "icon": "bookmark"
+      }
+    },
+    {
+      "id": "item-05527fdd-e7aa-4179-8aab-6ecc255236a1",
+      "indent": 0,
+      "location": "content/page2.html",
+      "order": 0,
+      "parent": "item-85527fdd-e7aa-4179-8aab-6ecc255236a1",
+      "title": "Page 2",
+      "metadata": {
+        "icon": "bookmark"
+      }
+    },
+    {
+      "id": "item-06e983d2-bba6-4c71-b222-99ed77cfd4cd",
+      "indent": 0,
+      "location": "content/page3.html",
+      "order": 2,
+      "parent": null,
+      "title": "Page 3",
+      "metadata": {
+        "icon": "icons:visibility-off"
+      }
+    },
+    {
+      "id": "item-04919b87-7ae5-44f0-891e-6db24a21878b",
+      "indent": 0,
+      "location": "content/page4.html",
+      "order": 3,
+      "parent": null,
+      "title": "Page 4",
+      "metadata": {}
+    },
+    {
+      "id": "item-asdf6ea32d2d-f2c7-41dc-a7a5-bd6b8f5f1ba2",
+      "indent": 0,
+      "location": "content/page5.html",
+      "order": 4,
+      "parent": null,
+      "title": "Page 5",
+      "metadata": {}
+    },
+    {
+      "id": "item-sdf6ea32d2d-f2c7-41dc-a7a5-bd6b8f5f1ba2",
+      "indent": 0,
+      "location": "content/page5.html",
+      "order": 4,
+      "parent": null,
+      "title": "Page 5",
+      "metadata": {}
+    },
+    {
+      "id": "item-6enoasidnfa32d2d-f2c7-41dc-a7a5-bd6b8f5f1ba2",
+      "indent": 0,
+      "location": "content/page5.html",
+      "order": 4,
+      "parent": null,
+      "title": "Page 5",
+      "metadata": {}
+    },
+    {
+      "id": "item-6ea32d2d-oasidfnf2c7-41dc-a7a5-bd6b8f5f1ba2",
+      "indent": 0,
+      "location": "content/page5.html",
+      "order": 4,
+      "parent": null,
+      "title": "Page 5",
+      "metadata": {}
+    },
+    {
+      "id": "item-6ea32d2d-f2c7-41dc-a7a5-asdfbd6b8f5f1ba2",
+      "indent": 0,
+      "location": "content/page5.html",
+      "order": 4,
+      "parent": null,
+      "title": "Page 5",
+      "metadata": {}
+    },
+    {
+      "id": "item-6ea32d2d-aoiasdnfoinasdf2c7-41dc-a7a5-bd6b8f5f1ba2",
+      "indent": 0,
+      "location": "content/page5.html",
+      "order": 4,
+      "parent": null,
+      "title": "Page 5",
+      "metadata": {}
+    },
+    {
+      "id": "item-6ea32d2d-f2c7-41dc-a7a5aosidnf-bd6b8f5f1ba2",
+      "indent": 0,
+      "location": "content/page5.html",
+      "order": 4,
+      "parent": null,
+      "title": "Page 5",
+      "metadata": {}
+    },
+    {
+      "id": "item-6ea32d2d-f2c7-41dc-a7a5-asodifnbd6b8f5f1ba2",
+      "indent": 0,
+      "location": "content/page5.html",
+      "order": 4,
+      "parent": null,
+      "title": "Page 5",
+      "metadata": {}
+    },
+    {
+      "id": "item-asdonfno6ea32d2d-f2c7-41dc-a7a5-bd6b8f5f1ba2",
+      "indent": 0,
+      "location": "content/page5.html",
+      "order": 4,
+      "parent": null,
+      "title": "Page 5",
+      "metadata": {}
+    },
+    {
+      "id": "oinnitem-6ea32d2d-f2c7-41dc-a7a5-bd6b8f5f1ba2",
+      "indent": 0,
+      "location": "content/page5.html",
+      "order": 4,
+      "parent": null,
+      "title": "Page 5",
+      "metadata": {}
+    },
+    {
+      "id": "item-6ea32d2d-f2c7-41dc-a7a5aosdinf-bd6b8f5f1ba2",
+      "indent": 0,
+      "location": "content/page5.html",
+      "order": 4,
+      "parent": null,
+      "title": "Page 5",
+      "metadata": {}
+    },
+    {
+      "id": "item-oasindf6ea32d2d-f2c7-41dc-a7a5-bd6b8f5f1ba2",
+      "indent": 0,
+      "location": "content/page5.html",
+      "order": 4,
+      "parent": null,
+      "title": "Page 5",
+      "metadata": {}
+    },
+    {
+      "id": "item-6ea32d2d-f2c7aodinf-41dc-a7a5-bd6b8f5f1ba2",
+      "indent": 0,
+      "location": "content/page5.html",
+      "order": 4,
+      "parent": null,
+      "title": "Page 5",
+      "metadata": {}
+    },
+    {
+      "id": "itemaosidnflll-6ea32d2d-f2c7-41dc-a7a5-bd6b8f5f1ba2",
+      "indent": 0,
+      "location": "content/page5.html",
+      "order": 4,
+      "parent": null,
+      "title": "Page 5",
+      "metadata": {}
+    }
+  ]
+}

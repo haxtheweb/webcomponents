@@ -13,12 +13,40 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic paper-avatar demo</h3>
+      <h3>List Demo</h3>
       <demo-snippet>
         <template>
-          <paper-avatar>
-            This is paper-avatar
-          </paper-avatar>
+          <div role="listbox">
+            <paper-icon-item>
+              <paper-avatar label="Michael" item-icon=""></paper-avatar>
+              Michael
+            </paper-icon-item>
+            <paper-icon-item>
+              <paper-avatar label="Karen Wilson" item-icon=""></paper-avatar>
+              Karen Wilson
+            </paper-icon-item>
+            <paper-icon-item>
+              <paper-avatar label="Robert Smith" item-icon=""></paper-avatar>
+              <paper-item-body two-line="">
+                <div>Robert Smith</div>
+                <div secondary="">robert.smith@example.com</div>
+              </paper-item-body>
+            </paper-icon-item>
+            <paper-icon-item>
+              <paper-avatar label="Barbara Murphy" item-icon=""></paper-avatar>
+              <paper-item-body two-line="">
+                <div>Barbara Murphy</div>
+                <div secondary="">barbara.murphy@example.com</div>
+              </paper-item-body>
+            </paper-icon-item>
+            <paper-icon-item>
+              <paper-avatar label="William Brown" item-icon=""></paper-avatar>
+              <paper-item-body two-line="">
+                <div>William Brown</div>
+                <div secondary="">william.brown@example.com</div>
+              </paper-item-body>
+            </paper-icon-item>
+          </div>
         </template>
       </demo-snippet>
     </div>

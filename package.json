@@ -163,6 +163,8 @@
       "**/jsoneditor/**",
       "**/ace-builds",
       "**/ace-builds/**",
+      "**/juicy-ace-editor",
+      "**/juicy-ace-editor/**",
       "**/jarallax",
       "**/jarallax/**",
       "**/screenfull",

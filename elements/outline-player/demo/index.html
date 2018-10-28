@@ -10,15 +10,31 @@
       import '../outline-player.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      body,
+      html {
+        padding: 0;
+        margin: 0;
+      }
+    
+      header,
+      footer {
+        height: 100px;
+        background: lightgray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic outline-player demo</h3>
       <demo-snippet>
         <template>
-          <outline-player>
-            This is outline-player
-          </outline-player>
+          <header>Example Header</header>
+          <outline-player auto fill-remaining selected="item-85527fdd-e7aa-4179-8aab-6ecc255236a1"></outline-player>
+          <footer> Example Footer </footer>
         </template>
       </demo-snippet>
     </div>

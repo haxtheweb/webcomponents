@@ -41,7 +41,10 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
-    "@polymer/polymer": "^3.0.5"
+    "@lrnwebcomponents/materializecss-styles": "^0.0.28",
+    "@lrnwebcomponents/schema-behaviors": "^0.0.28",
+    "@polymer/polymer": "^3.0.5",
+    "juicy-ace-editor": "^2.0.5"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
