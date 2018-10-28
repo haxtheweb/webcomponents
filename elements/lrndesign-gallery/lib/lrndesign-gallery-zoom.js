@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/lrnsys-dialog/lrnsys-dialog.js";
-import "@lrnwebcomponents/lrnsys-dialog/lib/lrnsys-dialog-toolbar-button.js";
+import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
+import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog-toolbar-button.js";
 import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 /**
 `lrndesign-gallery-zoom`
