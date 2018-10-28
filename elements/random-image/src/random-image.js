@@ -1,46 +1,61 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/iron-image/iron-image.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { RandomImage };
-/**
- * `random-image`
- * `Start of random-image`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class RandomImage extends PolymerElement {
-  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+`random-image`
+Element to show random image from a given group.
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "random-image";
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
+      }
+      .is-circle{
+        border: 1px solid grey;
+border-radius: 50%;
+box-shadow: 0px 5px 10px #CCC;
+      }
+    </style>
+    <iron-image style="width:200px; height:200px;" class$="[[mode]]" sizing="contain" src$="[[imgSrc]]" title$="[[imgTitle]]"></iron-image>
+`,
+
+  is: "random-image",
+
+  properties: {
+    mode: {
+      type: String,
+      notify: true,
+      value: ""
+    },
+    imgSrc: {
+      type: String
+    },
+    imgTitle: {
+      type: String
+    },
+    imagesList: {
+      type: Object,
+      notify: true,
+      // When initializing a property to an object or array value, use a function to ensure that each element
+      // gets its own copy of the value, rather than having an object or array shared across all instances of the element
+      value: function() {
+        return [];
+      }
+    }
+  },
+
+  _pickRandomProperty: function(obj) {
+    var result;
+    var count = 0;
+    for (var prop in obj) if (Math.random() < 1 / ++count) result = prop;
+    return result;
+  },
+
+  ready: function() {
+    var randomPos = this._pickRandomProperty(this.imagesList);
+    this.imgSrc = this.imagesList[randomPos].path;
+    this.imgTitle = this.imagesList[randomPos].title;
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      RandomImage.haxProperties,
-      RandomImage.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(RandomImage.tag, RandomImage);
+});
