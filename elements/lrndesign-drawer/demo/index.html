@@ -12,15 +12,25 @@
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic lrndesign-drawer demo</h3>
-      <demo-snippet>
-        <template>
-          <lrndesign-drawer>
-            This is lrndesign-drawer
-          </lrndesign-drawer>
-        </template>
-      </demo-snippet>
-    </div>
+<div class="vertical-section-container centered">
+  <h3>Basic lrndesign-drawer demo (left fly out is always default)</h3>
+  <demo-snippet>
+    <template>
+      <lrndesign-drawer icon="lrn:network" alt="See additional content">
+        <p>This is some help text</p>
+      </lrndesign-drawer>
+    </template>
+  </demo-snippet>
+</div>
+<div class="vertical-section-container centered">
+  <h3>Same flyout but from right side</h3>
+  <demo-snippet>
+    <template>
+      <lrndesign-drawer icon="lrn:dino" align="right" alt="Access Canvas">
+        <p>This is some help text</p>
+      </lrndesign-drawer>
+    </template>
+  </demo-snippet>
+</div>
   </body>
 </html>

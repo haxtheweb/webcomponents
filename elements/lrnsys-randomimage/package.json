@@ -40,8 +40,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
-    "@polymer/polymer": "^3.0.5"
+    "@lrnwebcomponents/random-image": "^0.0.28",
+    "@polymer/polymer": "^3.0.5",
+    "@polymer/paper-spinner": "^3.0.0",
+    "@polymer/paper-tooltip": "^3.0.0"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

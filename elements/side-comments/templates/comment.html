@@ -1,0 +1,20 @@
+<li data-comment-id="<%= comment.id %>">
+  <div class="author-avatar">
+    <img src="<%= comment.authorAvatarUrl %>">
+  </div>
+  <% if (comment.authorUrl) { %>
+    <a class="author-name right-of-avatar" href="<%= comment.authorUrl %>">
+      <%= comment.authorName %>
+    </a>
+  <% } else { %>
+    <p class="author-name right-of-avatar">
+      <%= comment.authorName %>
+    </p>
+  <% } %>
+  <p class="comment right-of-avatar">
+    <%= comment.comment %>
+  </p>
+  <% if (currentUser && comment.authorId === currentUser.id){ %>
+  <a href="#" class="action-link delete">Delete</a>
+  <% } %>
+</li>

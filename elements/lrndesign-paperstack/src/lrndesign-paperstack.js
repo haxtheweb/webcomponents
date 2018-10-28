@@ -1,8 +1,8 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
-import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
 /**
 `lrndesign-paperstack`

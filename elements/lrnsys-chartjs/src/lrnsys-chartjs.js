@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "chart-elements/chart-elements.js";
+import "@vowo/chart-elements/chart-elements.js";
 /**
 `lrnsys-chartjs`
 A LRN element

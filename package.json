@@ -172,7 +172,9 @@
       "**/ical.js",
       "**/ical.js/**",
       "**/time-elements",
-      "**/time-elements/**"
+      "**/time-elements/**",
+      "**/@vowo",
+      "**/@vowo/**"
     ]
   },
   "husky": {

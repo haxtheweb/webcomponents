@@ -9,15 +9,97 @@
       import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
       import '../lrndesign-imagemap.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
-  </head>
+      <style is="custom-style" include="demo-pages-shared-styles">
+        #demo1 .hotspot{
+          fill: rgba(0,0,0,0.5);
+        }
+        #demo1 .hotspot.focus,
+        #demo1 .hotspot:hover {
+          fill: rgba(0,0,0,0.25);
+          outline: none;
+        }
+        #demo1 .hotspot.selected {
+          fill:transparent;
+        }
+        #demo2 .hotspot {
+          opacity: 0.7;
+        }
+        #demo2 .hotspot.focus,
+        #demo2 .hotspot:hover {
+          opacity: 0.9;
+        }
+        #demo2 .hotspot.selected {
+          opacity: 1;
+        }
+        @media print {
+          :host .screen-only {
+            display: none;
+          }
+        }
+      </style>
+    </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic lrndesign-imagemap demo</h3>
       <demo-snippet>
         <template>
-          <lrndesign-imagemap>
-            This is lrndesign-imagemap
+          <lrndesign-imagemap id="demo1" src="images/fastfood.svg" label="Junk Food Calories">
+            <div slot="desc">
+              <p>A fast food meal with a double cheeseburger, large fries, and a 12-ounce cola.
+                <span class="screen-only">Click on the hotspots to learn more.</span>
+              </p>
+            </div>
+            <lrndesign-imagemap-hotspot hotspot-id="burger" label="Double Cheeseburger">
+              The double cheeseburger is 459 calories.
+            </lrndesign-imagemap-hotspot>
+            <lrndesign-imagemap-hotspot hotspot-id="fries" label="Large French Fries">
+              The large order of french fries is 480 calories.
+            </lrndesign-imagemap-hotspot>
+            <lrndesign-imagemap-hotspot hotspot-id="cola" label="12-Ounce Cola">
+              The 12-ounce is 138 calories.
+            </lrndesign-imagemap-hotspot>
+          </lrndesign-imagemap>
+        </template>
+      </demo-snippet>
+    
+      <h3>Basic lrndesign-imagemap demo aith svg</h3>
+      <demo-snippet>
+        <template>
+          <lrndesign-imagemap id="demo2" src="images/designprocess.svg" label="Course Design Process">
+            <div slot="desc">
+              <p>
+                A diagram of the 5-step course design process.
+                <span class="screen-only">Click on the hotspots to learn more.</span>
+              </p>
+            </div>
+            <lrndesign-imagemap-hotspot hotspot-id="plan" label="Design Plan">
+              During the <strong>Design Plan</strong>, collaborators work
+              together to identify the Course Goals and an Assessment
+              Strategy. The project plan is laid out, the timeline is
+              confirmed, and any other specific requirements for the course
+              are identified.
+            </lrndesign-imagemap-hotspot>
+            <lrndesign-imagemap-hotspot hotspot-id="outline" label="Course Outline">
+              Then the <strong>Course Outline</strong> is created, fleshing
+              out the topics, sub-topics, lesson objectives, instructional
+              sequence, weekly activities and the relevant content and
+              media types.
+            </lrndesign-imagemap-hotspot>
+            <lrndesign-imagemap-hotspot hotspot-id="proto" label="Prototype">
+              Next, the <strong>Prototype</strong> phase, a singular lesson
+              template is created which includes content, assessments, and
+              represents the overall the layout design.
+            </lrndesign-imagemap-hotspot>
+            <lrndesign-imagemap-hotspot hotspot-id="prod" label="Production">
+              During <strong>Production</strong>, content is developed and
+              assessments are created in eLearning Management System (ELMS)
+              and Canvas.
+            </lrndesign-imagemap-hotspot>
+            <lrndesign-imagemap-hotspot hotspot-id="qr" label="Quality Review">
+              Finally, during the <strong>Quality Review</strong> phase, the
+              course is checked for quality standards, adherence to Penn
+              State copyright requirements and compliance with ADA criterions.
+            </lrndesign-imagemap-hotspot>
           </lrndesign-imagemap>
         </template>
       </demo-snippet>

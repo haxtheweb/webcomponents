@@ -1,1 +1,1 @@
-import "side-comments/release/side-comments.js";
+import "@lrnwebcomponents/side-comments/release/side-comments.js";

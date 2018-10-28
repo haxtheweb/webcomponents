@@ -1,26 +1,9 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-/**
-`lrnsys-layout`
-A LRN element
-
-@demo demo/index.html
-*/
-Polymer({
-  _template: html`
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <h2>[[title]]</h2>
-`,
-
-  is: "lrnsys-layout",
-
-  properties: {
-    title: {
-      type: String,
-      value: "lrnsys-layout"
-    }
-  }
-});
+import "./lib/lrnsys-button-inner.js";
+import "./lib/lrnsys-collapselist-item.js";
+import "./lib/lrnsys-collapselist.js";
+import "./lib/lrnsys-dialog-modal.js";
+import "./lib/lrnsys-dialog-toolbar-button.js";
+import "./lib/lrnsys-dialog-toolbar.js";
+import "./lib/lrnsys-dialog.js";
+import "./lib/lrnsys-drawer-modal.js";
+import "./lib/lrnsys-drawer.js";

@@ -1,12 +1,11 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/app-layout/app-layout.js";
 import "@polymer/neon-animation/neon-animation.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "./lrnsys-button-inner.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
 `lrnsys-drawer-modal`
-
 
 @demo demo/index.html
 */

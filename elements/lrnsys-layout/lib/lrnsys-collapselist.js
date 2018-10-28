@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-layout/app-layout.js";
-import "paper-avatar/paper-avatar.js";
+import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
 import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";

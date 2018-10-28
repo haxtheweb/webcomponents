@@ -1,11 +1,11 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "moment-element/moment-element.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/marked-element/marked-element.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-badge/paper-badge.js";
+import "@lrnwebcomponents/moment-element/moment-element.js";
 import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@lrnwebcomponents/mtz-marked-editor/mtz-marked-editor.js";
 import "@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-line.js";

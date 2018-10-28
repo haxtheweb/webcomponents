@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "pdf-browser-viewer/pdf-browser-viewer.js";
+import "@lrnwebcomponents/pdf-browser-viewer/pdf-browser-viewer.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**

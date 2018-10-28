@@ -14,11 +14,11 @@
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic lrnsys-render-html demo</h3>
+      <p>Write some html and see that it renders it.</p>
       <demo-snippet>
-        <template>
-          <lrnsys-render-html>
-            This is lrnsys-render-html
-          </lrnsys-render-html>
+        <template is="dom-bind">
+          <paper-textarea label="HTML" value="{{html}}"></paper-textarea>
+          <lrnsys-render-html html="[[html]]"></lrnsys-render-html>
         </template>
       </demo-snippet>
     </div>

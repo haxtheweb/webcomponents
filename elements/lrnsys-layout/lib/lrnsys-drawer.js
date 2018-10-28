@@ -1,9 +1,9 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
 import "@polymer/app-layout/app-layout.js";
-import "paper-avatar/paper-avatar.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./lrnsys-button-inner.js";
 import "./lrnsys-drawer-modal.js";

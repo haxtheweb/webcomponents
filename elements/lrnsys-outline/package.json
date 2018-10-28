@@ -40,8 +40,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
-    "@polymer/polymer": "^3.0.5"
+    "@lrnwebcomponents/swipe-action": "^0.0.28",
+    "@lrnwebcomponents/drawing-icons": "^0.0.28",
+    "@polymer/polymer": "^3.0.5",
+    "@polymer/iron-list": "^3.0.1",
+    "@polymer/iron-a11y-keys": "^3.0.1",
+    "@polymer/paper-input": "^3.0.1",
+    "@polymer/paper-icon-button": "^3.0.1",
+    "@polymer/paper-dialog": "^3.0.1"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

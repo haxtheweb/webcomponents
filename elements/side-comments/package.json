@@ -1,0 +1,23 @@
+{
+  "name": "@lrnwebcomponents/side-comments",
+  "version": "0.0.28",
+  "description": "Automated conversion of silly-hax-game",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "release/side-comments.js",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-concat": "*",
+    "gulp-uglify": "*",
+    "gulp-minify-css": "*",
+    "gulp-less": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-rename": "*"
+  }
+}

@@ -4,16 +4,16 @@ import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-form-element-behavior/iron-form-element-behavior.js";
 import "@polymer/app-layout/app-layout.js";
-import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
-import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
 import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-listbox/paper-listbox.js";
+import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
+import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
+import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
 /**
 `lrnsys-comment-list`
 A listing and event handling for comments.
