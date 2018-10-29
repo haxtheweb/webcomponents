@@ -2,11 +2,11 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
   _polymerLegacy
 ) {
   "use strict";
-  function _templateObject_f831abe0db3311e8a12d7192d706401b() {
+  function _templateObject_ac9261e0dbb811e89caa8b2b60145680() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n      :host {\n        display: none;\n      }\n    </style>\n"
     ]);
-    _templateObject_f831abe0db3311e8a12d7192d706401b = function() {
+    _templateObject_ac9261e0dbb811e89caa8b2b60145680 = function() {
       return data;
     };
     return data;
@@ -14,7 +14,7 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
   window.RelativeHeadingManager = {};
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_f831abe0db3311e8a12d7192d706401b()
+      _templateObject_ac9261e0dbb811e89caa8b2b60145680()
     ),
     is: "relative-heading-manager",
     properties: {},

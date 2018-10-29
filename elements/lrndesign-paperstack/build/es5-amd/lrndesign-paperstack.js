@@ -7,7 +7,7 @@ define([
   "./node_modules/@lrnwebcomponents/lrn-icons/lrn-icons.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_74ca7dd0db3411e888d4ab8c32dd2995() {
+  function _templateObject_3d2619e0dbb911e8adb8abfaf225c2d1() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style include="materializecss-styles"></style>\n    <style>\n      :host {\n        display: block;\n      }\n\n      h1, h2, h3, h4, h5, h6 {\n        margin: 0;\n      }\n      /* Example card */\n\n      .egletter p {\n        position: relative;\n        z-index: 3;\n        line-height: 1.5rem;\n      }\n\n      .egletter ul {\n        position: relative;\n        z-index: 3;\n        line-height: 1.5rem;\n      }\n\n      .egletter h2,\n      .egletter h3,\n      .egletter h4,\n      .egletter h5,\n      .egletter h6 {\n        font-family: cursive;\n        margin: 0 auto;\n        position: relative;\n        z-index: 3;\n        line-height: 4em;\n      }\n\n      iron-icon {\n        font-size: 1em;\n        height: 2em;\n        width: 2em;\n        margin: -1.1em 0 0 .5em;\n      }\n\n      .icon-container {\n        float: left;\n        width: 3em;\n        height: 3em;\n        margin-right: .5em;\n      }\n\n      .egletter h2 span,\n      .egletter h3 span,\n      .egletter h4 span,\n      .egletter h5 span,\n      .egletter h6 span {\n        line-height: 3em;\n      }\n\n      .egletter {\n        min-height: 10rem;\n        padding: .75rem 1.5rem;\n        position: relative;\n        width: 80%;\n        z-index: 4;\n        margin-bottom: 3rem;\n      }\n\n      .egletter:before,\n      .egletter:after {\n        content: "";\n        height: 98%;\n        position: absolute;\n        width: 100%;\n        z-index: 2;\n      }\n\n      .egletter:before {\n        background: #fafafa;\n        box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.2);\n        left: -.2rem;\n        top: .2rem;\n        transform: rotate(-2.5deg);\n      }\n\n      .egletter:after {\n        background: #ffffff;\n        box-shadow: 0 0 .2rem rgba(0, 0, 0, 0.2);\n        right: -.2rem;\n        top: .1rem;\n        transform: rotate(1.4deg);\n      }\n    </style>\n    <div class="egletter">\n      <h4>\n        <div class$="icon-container circle [[color]]">\n          <iron-icon icon="[[icon]]" class$="[[textColor]]"></iron-icon>\n        </div>\n        <span>[[title]]</span>\n      </h4>\n      <p><slot></slot></p>\n    </div>\n'
@@ -16,14 +16,14 @@ define([
         '\n    <style include="materializecss-styles"></style>\n    <style>\n      :host {\n        display: block;\n      }\n\n      h1, h2, h3, h4, h5, h6 {\n        margin: 0;\n      }\n      /* Example card */\n\n      .egletter p {\n        position: relative;\n        z-index: 3;\n        line-height: 1.5rem;\n      }\n\n      .egletter ul {\n        position: relative;\n        z-index: 3;\n        line-height: 1.5rem;\n      }\n\n      .egletter h2,\n      .egletter h3,\n      .egletter h4,\n      .egletter h5,\n      .egletter h6 {\n        font-family: cursive;\n        margin: 0 auto;\n        position: relative;\n        z-index: 3;\n        line-height: 4em;\n      }\n\n      iron-icon {\n        font-size: 1em;\n        height: 2em;\n        width: 2em;\n        margin: -1.1em 0 0 .5em;\n      }\n\n      .icon-container {\n        float: left;\n        width: 3em;\n        height: 3em;\n        margin-right: .5em;\n      }\n\n      .egletter h2 span,\n      .egletter h3 span,\n      .egletter h4 span,\n      .egletter h5 span,\n      .egletter h6 span {\n        line-height: 3em;\n      }\n\n      .egletter {\n        min-height: 10rem;\n        padding: .75rem 1.5rem;\n        position: relative;\n        width: 80%;\n        z-index: 4;\n        margin-bottom: 3rem;\n      }\n\n      .egletter:before,\n      .egletter:after {\n        content: "";\n        height: 98%;\n        position: absolute;\n        width: 100%;\n        z-index: 2;\n      }\n\n      .egletter:before {\n        background: #fafafa;\n        box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.2);\n        left: -.2rem;\n        top: .2rem;\n        transform: rotate(-2.5deg);\n      }\n\n      .egletter:after {\n        background: #ffffff;\n        box-shadow: 0 0 .2rem rgba(0, 0, 0, 0.2);\n        right: -.2rem;\n        top: .1rem;\n        transform: rotate(1.4deg);\n      }\n    </style>\n    <div class="egletter">\n      <h4>\n        <div class\\$="icon-container circle [[color]]">\n          <iron-icon icon="[[icon]]" class\\$="[[textColor]]"></iron-icon>\n        </div>\n        <span>[[title]]</span>\n      </h4>\n      <p><slot></slot></p>\n    </div>\n'
       ]
     );
-    _templateObject_74ca7dd0db3411e888d4ab8c32dd2995 = function() {
+    _templateObject_3d2619e0dbb911e8adb8abfaf225c2d1 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_74ca7dd0db3411e888d4ab8c32dd2995()
+      _templateObject_3d2619e0dbb911e8adb8abfaf225c2d1()
     ),
     is: "lrndesign-paperstack",
     behaviors: [

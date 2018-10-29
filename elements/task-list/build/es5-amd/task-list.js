@@ -5,7 +5,7 @@ define([
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_0ef59d00db3411e88edf81c7d9938335() {
+  function _templateObject_c4f5ab20dbb811e8aa4ff32f2dfd89b0() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <link property="oer:forComponent" content$="[[relatedResource]]">\n    <h2><span property="oer:name">[[name]]</span></h2>\n    <ol>\n      <template is="dom-repeat" items="[[tasks]]" as="task">\n        <li><span property="oer:task">[[task.name]]</span></li>\n      </template>\n    </ol>\n'
@@ -14,14 +14,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <link property="oer:forComponent" content\\$="[[relatedResource]]">\n    <h2><span property="oer:name">[[name]]</span></h2>\n    <ol>\n      <template is="dom-repeat" items="[[tasks]]" as="task">\n        <li><span property="oer:task">[[task.name]]</span></li>\n      </template>\n    </ol>\n'
       ]
     );
-    _templateObject_0ef59d00db3411e88edf81c7d9938335 = function() {
+    _templateObject_c4f5ab20dbb811e8aa4ff32f2dfd89b0 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_0ef59d00db3411e88edf81c7d9938335()
+      _templateObject_c4f5ab20dbb811e8aa4ff32f2dfd89b0()
     ),
     is: "task-list",
     behaviors: [

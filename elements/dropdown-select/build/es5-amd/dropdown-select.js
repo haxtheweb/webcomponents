@@ -5,7 +5,7 @@ define([
   "./node_modules/@polymer/paper-listbox/paper-listbox.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_2a745e00dbab11e8bd733dfb6cf188c4() {
+  function _templateObject_b99d3a60dbb611e8bf4f4dea3fa969fc() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n      paper-listbox ::slotted(paper-item) {\n        display: block;\n        width: 100%;\n        min-height: 2em;\n        vertical-align: text-top;\n        line-height: 2em;\n        @apply --dropdown-select-items;\n      }\n      paper-listbox paper-listbox {\n        @apply --dropdown-listbox;\n      }\n    </style>\n    <paper-dropdown-menu id="menu" allow-outside-scroll$="[[allowOutsideScroll]]" always-float-label$="[[alwaysFloatLabel]]" dynamic-align$="[[dynamicAlign]]" error-message$="[[errorMessage]]" horizontal-align$="[[horizontalAlign]]" label$="[[label]]" no-animations$="[[noAnimations]]" no-label-float$="[[noLabelFloat]]" on-selected-item-changed="_getSelectedValue" placeholder$="[[placeholder]]" restore-focus-on-close$="[[restoreFocusOnClose]]" vertical-align$="[[verticalAlign]]" vertical-offset$="[[verticalOffset]]">\n      <paper-listbox id="listbox" slot="dropdown-content" class="dropdown-content">\n        <slot id="content"></slot>\n      </paper-listbox>\n    </paper-dropdown-menu>\n'
@@ -14,14 +14,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n      paper-listbox ::slotted(paper-item) {\n        display: block;\n        width: 100%;\n        min-height: 2em;\n        vertical-align: text-top;\n        line-height: 2em;\n        @apply --dropdown-select-items;\n      }\n      paper-listbox paper-listbox {\n        @apply --dropdown-listbox;\n      }\n    </style>\n    <paper-dropdown-menu id="menu" allow-outside-scroll\\$="[[allowOutsideScroll]]" always-float-label\\$="[[alwaysFloatLabel]]" dynamic-align\\$="[[dynamicAlign]]" error-message\\$="[[errorMessage]]" horizontal-align\\$="[[horizontalAlign]]" label\\$="[[label]]" no-animations\\$="[[noAnimations]]" no-label-float\\$="[[noLabelFloat]]" on-selected-item-changed="_getSelectedValue" placeholder\\$="[[placeholder]]" restore-focus-on-close\\$="[[restoreFocusOnClose]]" vertical-align\\$="[[verticalAlign]]" vertical-offset\\$="[[verticalOffset]]">\n      <paper-listbox id="listbox" slot="dropdown-content" class="dropdown-content">\n        <slot id="content"></slot>\n      </paper-listbox>\n    </paper-dropdown-menu>\n'
       ]
     );
-    _templateObject_2a745e00dbab11e8bd733dfb6cf188c4 = function() {
+    _templateObject_b99d3a60dbb611e8bf4f4dea3fa969fc = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_2a745e00dbab11e8bd733dfb6cf188c4()
+      _templateObject_b99d3a60dbb611e8bf4f4dea3fa969fc()
     ),
     is: "dropdown-select",
     listeners: {

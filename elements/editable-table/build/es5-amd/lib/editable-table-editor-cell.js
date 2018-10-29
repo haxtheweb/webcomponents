@@ -5,7 +5,7 @@ define([
   "./editable-table-behaviors.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_2a3c0900db3411e89cbd8da158100420() {
+  function _templateObject_e6128940dbb811e8b8b3fdf385777713() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style is="custom-style">\n      :host {\n        padding: 0;\n        margin: 0;\n        width: 100%;\n        min-width: unset;\n        display: inline-flex;\n        justify-content: space-between;\n        align-items:center;\n        align-content: stretch;\n      }\n      :host iron-autogrow-textarea {\n        width: 100%;\n        padding: 0;\n        border: none;\n        font-weight: unset;\n        resize: none;\n        -webkit-appearance: none;\n        -mozilla-appearance: none;\n        flex-grow: 1;\n        --iron-autogrow-textarea: {\n          padding: 0;\n          font-weight: unset;\n          border: none;\n          resize: none;\n          flex-direction: column;\n          -webkit-flex-direction: column;\n          -webkit-appearance: none;\n          -mozilla-appearance: none;\n        }\n      }\n      :host iron-autogrow-textarea > * {\n        padding: 0;\n        font-weight: unset;\n        border: none;\n        resize: none;\n        flex-direction: column;\n        -webkit-flex-direction: column;\n        -webkit-appearance: none;\n        -mozilla-appearance: none;\n      }\n    </style>\n    <iron-autogrow-textarea autofocus="" id="cell" label$="[[label]]" value$="{{value}}">\n    </iron-autogrow-textarea>\n    <div id="icons"><slot></slot></div>\n    <iron-a11y-keys id="down" keys="down" target$="[[cell]]" on-keys-pressed="_onCellBelow">\n    </iron-a11y-keys>\n    <iron-a11y-keys id="up" keys="up" target$="[[cell]]" on-keys-pressed="_onCellAbove">\n    </iron-a11y-keys>\n    <iron-a11y-keys id="left" keys="left" target$="[[cell]]" on-keys-pressed="_onCellLeft">\n    </iron-a11y-keys>\n    <iron-a11y-keys id="right" keys="right" target$="[[cell]]" on-keys-pressed="_onCellRight">\n    </iron-a11y-keys>\n'
@@ -14,14 +14,14 @@ define([
         '\n    <style is="custom-style">\n      :host {\n        padding: 0;\n        margin: 0;\n        width: 100%;\n        min-width: unset;\n        display: inline-flex;\n        justify-content: space-between;\n        align-items:center;\n        align-content: stretch;\n      }\n      :host iron-autogrow-textarea {\n        width: 100%;\n        padding: 0;\n        border: none;\n        font-weight: unset;\n        resize: none;\n        -webkit-appearance: none;\n        -mozilla-appearance: none;\n        flex-grow: 1;\n        --iron-autogrow-textarea: {\n          padding: 0;\n          font-weight: unset;\n          border: none;\n          resize: none;\n          flex-direction: column;\n          -webkit-flex-direction: column;\n          -webkit-appearance: none;\n          -mozilla-appearance: none;\n        }\n      }\n      :host iron-autogrow-textarea > * {\n        padding: 0;\n        font-weight: unset;\n        border: none;\n        resize: none;\n        flex-direction: column;\n        -webkit-flex-direction: column;\n        -webkit-appearance: none;\n        -mozilla-appearance: none;\n      }\n    </style>\n    <iron-autogrow-textarea autofocus="" id="cell" label\\$="[[label]]" value\\$="{{value}}">\n    </iron-autogrow-textarea>\n    <div id="icons"><slot></slot></div>\n    <iron-a11y-keys id="down" keys="down" target\\$="[[cell]]" on-keys-pressed="_onCellBelow">\n    </iron-a11y-keys>\n    <iron-a11y-keys id="up" keys="up" target\\$="[[cell]]" on-keys-pressed="_onCellAbove">\n    </iron-a11y-keys>\n    <iron-a11y-keys id="left" keys="left" target\\$="[[cell]]" on-keys-pressed="_onCellLeft">\n    </iron-a11y-keys>\n    <iron-a11y-keys id="right" keys="right" target\\$="[[cell]]" on-keys-pressed="_onCellRight">\n    </iron-a11y-keys>\n'
       ]
     );
-    _templateObject_2a3c0900db3411e89cbd8da158100420 = function() {
+    _templateObject_e6128940dbb811e8b8b3fdf385777713 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_2a3c0900db3411e89cbd8da158100420()
+      _templateObject_e6128940dbb811e8b8b3fdf385777713()
     ),
     is: "editable-table-editor-cell",
     listeners: { "bind-value-changed": "_onValueChanged" },

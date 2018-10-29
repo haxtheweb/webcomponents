@@ -6,18 +6,18 @@ define([
   "./lib/lrn-markdown-editor-editor.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_6aa392c0db3311e8b767eb8ce4d727d6() {
+  function _templateObject_14236710dbb811e8a3b7b54da26851db() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n       :host {\n        display: block;\n      }\n\n      #split-pane {\n        display: flex;\n      }\n\n      .split-pane>* {\n        flex: 1 1 auto;\n        min-height: 10em;\n      }\n\n      .preview-pane {\n        background: lightblue;\n      }\n\n      paper-card {\n        padding: 1em;\n        width: calc(100% - 2em);\n      }\n\n      paper-tabs {\n        background: #F5F5F5;\n        border-style: solid;\n        border-color: #DCDCDC;\n        border-width: 1px;\n        min-width: 500px;\n      }\n\n      marked-element.lrn-markdown-editor {\n        width: 100%;\n        word-wrap: break-word;\n      }\n\n      .container-flex {\n        display: flex;\n        flex-wrap: nowrap;\n      }\n\n      .split-pane .container-flex>* {\n        width: 50%;\n      }\n\n      .split-pane marked-element {\n        width: calc(100% - 2em);\n        min-width: 150px;\n        margin: 0 1em;\n        padding: 0 1em;\n        background: #FFF;\n        border-left: solid #DCDCDC 1px;\n      }\n    </style>\n\n    <div class="mtz-toolbar">\n      <paper-tabs selected="{{selected}}">\n        <paper-tab>Write</paper-tab>\n        <paper-tab>Preview</paper-tab>\n        <paper-tab>Split View</paper-tab>\n      </paper-tabs>\n    </div>\n\n    <iron-pages selected="{{selected}}">\n\n      <section>\n        <paper-card>\n          <lrn-markdown-editor-editor content="{{content}}"></lrn-markdown-editor-editor>\n        </paper-card>\n      </section>\n\n      <section>\n        <paper-card>\n          <marked-element markdown="{{content}}"></marked-element>\n        </paper-card>\n      </section>\n\n      <section class="split-pane">\n        <paper-card>\n          <div class="container-flex">\n            <lrn-markdown-editor-editor content="{{content}}"></lrn-markdown-editor-editor>\n            <marked-element class="preview-pane" markdown="{{content}}"></marked-element>\n          </div>\n        </paper-card>\n      </section>\n\n    </iron-pages>\n'
     ]);
-    _templateObject_6aa392c0db3311e8b767eb8ce4d727d6 = function() {
+    _templateObject_14236710dbb811e8a3b7b54da26851db = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_6aa392c0db3311e8b767eb8ce4d727d6()
+      _templateObject_14236710dbb811e8a3b7b54da26851db()
     ),
     is: "lrn-markdown-editor",
     properties: {

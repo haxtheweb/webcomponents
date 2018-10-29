@@ -5,7 +5,7 @@ define([
   "../node_modules/@polymer/paper-tooltip/paper-tooltip.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_7d64cae0db3411e894bf75c5e7929da1() {
+  function _templateObject_46630f90dbb911e8a81971e25d0fb2c8() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <paper-icon-button raised="" icon="[[icon]]" on-tap="_onTap" id$="[[id]]" aria-label$="[[title]]">[[title]]</paper-icon-button>\n    <paper-tooltip for$="[[id]]" animation-delay="200">[[title]]</paper-tooltip>\n'
@@ -14,14 +14,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <paper-icon-button raised="" icon="[[icon]]" on-tap="_onTap" id\\$="[[id]]" aria-label\\$="[[title]]">[[title]]</paper-icon-button>\n    <paper-tooltip for\\$="[[id]]" animation-delay="200">[[title]]</paper-tooltip>\n'
       ]
     );
-    _templateObject_7d64cae0db3411e894bf75c5e7929da1 = function() {
+    _templateObject_46630f90dbb911e8a81971e25d0fb2c8 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_7d64cae0db3411e894bf75c5e7929da1()
+      _templateObject_46630f90dbb911e8a81971e25d0fb2c8()
     ),
     is: "lrnsys-dialog-toolbar-button",
     properties: {

@@ -3,7 +3,7 @@ import {
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
 import "./node_modules/@lrnwebcomponents/simple-timer/simple-timer.js";
-import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog-modal.js";
+import "./node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog-modal.js";
 import "./node_modules/@lrnwebcomponents/to-do/to-do.js";
 import "./node_modules/@polymer/paper-card/paper-card.js";
 import "./node_modules/@polymer/paper-button/paper-button.js";

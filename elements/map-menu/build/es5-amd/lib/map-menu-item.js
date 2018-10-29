@@ -6,7 +6,7 @@ define([
 ], function(_polymerLegacy) {
   "use strict";
   var _properties;
-  function _templateObject_e6495cb0db3411e8aa5db56e44d0ed48() {
+  function _templateObject_b5521bd0dbb911e8ba10c586c462b2d7() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n        --map-menu-item-height: 16px;\n      }\n\n      :host[active] {\n        background: var(--map-menu-active-color);\n      }\n\n      iron-icon {\n        --iron-icon-height: var(--map-menu-item-height);\n      }\n\n      #title {\n        font-size: .9em;\n        text-transform: none;\n      }\n    </style>\n      <paper-button id="wrapper" href$="[[url]]" role="link" noink="" on-tap="_click">\n        <template is="dom-if" if="[[__hasIcon(icon)]]">\n          <iron-icon icon="[[icon]]"></iron-icon>\n        </template>\n        <span id="title">[[title]]</span>\n      </paper-button>\n'
@@ -15,14 +15,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n        --map-menu-item-height: 16px;\n      }\n\n      :host[active] {\n        background: var(--map-menu-active-color);\n      }\n\n      iron-icon {\n        --iron-icon-height: var(--map-menu-item-height);\n      }\n\n      #title {\n        font-size: .9em;\n        text-transform: none;\n      }\n    </style>\n      <paper-button id="wrapper" href\\$="[[url]]" role="link" noink="" on-tap="_click">\n        <template is="dom-if" if="[[__hasIcon(icon)]]">\n          <iron-icon icon="[[icon]]"></iron-icon>\n        </template>\n        <span id="title">[[title]]</span>\n      </paper-button>\n'
       ]
     );
-    _templateObject_e6495cb0db3411e8aa5db56e44d0ed48 = function() {
+    _templateObject_b5521bd0dbb911e8ba10c586c462b2d7 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_e6495cb0db3411e8aa5db56e44d0ed48()
+      _templateObject_b5521bd0dbb911e8ba10c586c462b2d7()
     ),
     is: "map-menu-item",
     properties: ((_properties = {

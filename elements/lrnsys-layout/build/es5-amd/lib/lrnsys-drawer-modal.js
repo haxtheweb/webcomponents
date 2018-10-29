@@ -7,7 +7,7 @@ define([
   "./lrnsys-button-inner.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_7d8ff990db3411e894bf75c5e7929da1() {
+  function _templateObject_4691e7c0dbb911e8a81971e25d0fb2c8() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style is="custom-style" include="simple-colors">\n      :host {\n        display: block;\n        z-index: 1000;\n      }\n      app-drawer {\n        --app-drawer-width: var(--lrnsys-drawer-width);\n        --app-drawer-content-container: {\n          padding: 0;\n          overflow-y: scroll;\n          position: fixed;\n          color: var(--lrnsys-drawer-color);\n          background-color: var(--lrnsys-drawer-background-color);\n        }\n      }\n      .drawer-header {\n        width: 100%;\n        padding: 0;\n        margin: 0 0 .5em 0;\n        text-align: left;\n        @apply --lrnsys-drawer-header;\n      }\n      .drawer-header-slot {\n      }\n      .drawer-heading {\n        font-size: 1.5em;\n        margin: 0;\n        padding: 0 15px;\n        height: 2.5em;\n        line-height: 3em;\n      }\n      .drawer-content {\n        padding: 0 15px;\n        text-align: left;\n      }\n\n      #close {\n        position: absolute;\n        right: 0.5em;\n        top: 0.5em;\n        padding: 0 0 0 0.25em;\n        margin: 0;\n        min-width: .1em;\n        text-transform: none;\n      }\n      .drawer-header-slot ::slotted(*) {\n        font-size: 1.5em;\n        margin: 0;\n        padding: 0 15px;\n        height: 2.5em;\n        line-height: 3em;\n      }\n    </style>\n    <app-drawer tabindex="0" id="flyoutcontent" opened="[[opened]]" align="[[align]]" role="dialog">\n      <div class="drawer-contents">\n        <div class="drawer-header">\n          <div class$="[[headingClass]] drawer-header-slot">\n            <slot name="header"></slot>\n          </div>\n          <h3 class$="[[headingClass]] drawer-heading" hidden$="[[!header]]">[[header]]</h3>\n        </div>\n        <div class="drawer-content">\n          <slot></slot>\n        </div>\n      </div>\n      <paper-icon-button raised="" icon="close" on-tap="closeDrawer" id="close" aria-label="close dialog" class$="[[headingClass]]"></paper-icon-button>\n      <paper-tooltip for="close" animation-delay="500">Close dialog</paper-tooltip>\n    </app-drawer>\n'
@@ -16,14 +16,14 @@ define([
         '\n    <style is="custom-style" include="simple-colors">\n      :host {\n        display: block;\n        z-index: 1000;\n      }\n      app-drawer {\n        --app-drawer-width: var(--lrnsys-drawer-width);\n        --app-drawer-content-container: {\n          padding: 0;\n          overflow-y: scroll;\n          position: fixed;\n          color: var(--lrnsys-drawer-color);\n          background-color: var(--lrnsys-drawer-background-color);\n        }\n      }\n      .drawer-header {\n        width: 100%;\n        padding: 0;\n        margin: 0 0 .5em 0;\n        text-align: left;\n        @apply --lrnsys-drawer-header;\n      }\n      .drawer-header-slot {\n      }\n      .drawer-heading {\n        font-size: 1.5em;\n        margin: 0;\n        padding: 0 15px;\n        height: 2.5em;\n        line-height: 3em;\n      }\n      .drawer-content {\n        padding: 0 15px;\n        text-align: left;\n      }\n\n      #close {\n        position: absolute;\n        right: 0.5em;\n        top: 0.5em;\n        padding: 0 0 0 0.25em;\n        margin: 0;\n        min-width: .1em;\n        text-transform: none;\n      }\n      .drawer-header-slot ::slotted(*) {\n        font-size: 1.5em;\n        margin: 0;\n        padding: 0 15px;\n        height: 2.5em;\n        line-height: 3em;\n      }\n    </style>\n    <app-drawer tabindex="0" id="flyoutcontent" opened="[[opened]]" align="[[align]]" role="dialog">\n      <div class="drawer-contents">\n        <div class="drawer-header">\n          <div class\\$="[[headingClass]] drawer-header-slot">\n            <slot name="header"></slot>\n          </div>\n          <h3 class\\$="[[headingClass]] drawer-heading" hidden\\$="[[!header]]">[[header]]</h3>\n        </div>\n        <div class="drawer-content">\n          <slot></slot>\n        </div>\n      </div>\n      <paper-icon-button raised="" icon="close" on-tap="closeDrawer" id="close" aria-label="close dialog" class\\$="[[headingClass]]"></paper-icon-button>\n      <paper-tooltip for="close" animation-delay="500">Close dialog</paper-tooltip>\n    </app-drawer>\n'
       ]
     );
-    _templateObject_7d8ff990db3411e894bf75c5e7929da1 = function() {
+    _templateObject_4691e7c0dbb911e8a81971e25d0fb2c8 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_7d8ff990db3411e894bf75c5e7929da1()
+      _templateObject_4691e7c0dbb911e8a81971e25d0fb2c8()
     ),
     is: "lrnsys-drawer-modal",
     listeners: { "flyoutcontent.opened-changed": "_drawerClosed" },

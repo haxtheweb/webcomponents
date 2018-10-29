@@ -7,7 +7,7 @@ define([
   Object.defineProperty(_exports, "__esModule", { value: !0 });
   _exports.IronA11yAnnouncer = void 0;
   async = babelHelpers.interopRequireWildcard(async);
-  function _templateObject_5b99a0d0db3311e8a72f73af770cd5a3() {
+  function _templateObject_02624460dbb811e8885779a51c88ee55() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: inline-block;\n        position: fixed;\n        clip: rect(0px,0px,0px,0px);\n      }\n    </style>\n    <div aria-live$="[[mode]]">[[_text]]</div>\n'
@@ -16,14 +16,14 @@ define([
         '\n    <style>\n      :host {\n        display: inline-block;\n        position: fixed;\n        clip: rect(0px,0px,0px,0px);\n      }\n    </style>\n    <div aria-live\\$="[[mode]]">[[_text]]</div>\n'
       ]
     );
-    _templateObject_5b99a0d0db3311e8a72f73af770cd5a3 = function() {
+    _templateObject_02624460dbb811e8885779a51c88ee55 = function() {
       return data;
     };
     return data;
   }
   var IronA11yAnnouncer = (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_5b99a0d0db3311e8a72f73af770cd5a3()
+      _templateObject_02624460dbb811e8885779a51c88ee55()
     ),
     is: "iron-a11y-announcer",
     properties: {

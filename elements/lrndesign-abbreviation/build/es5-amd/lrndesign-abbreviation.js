@@ -5,18 +5,18 @@ define([
   "./node_modules/@polymer/paper-tooltip/paper-tooltip.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_775563e0db3311e8aaf591ffb3ef0687() {
+  function _templateObject_221b9ae0dbb811e89cb1851984da4d6d() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <abbr title$="[[phrase]]" id="abbr">[[abbr]]</abbr>\n    <paper-tooltip for="abbr">[[phrase]]</paper-tooltip>\n'
     ]);
-    _templateObject_775563e0db3311e8aaf591ffb3ef0687 = function() {
+    _templateObject_221b9ae0dbb811e89cb1851984da4d6d = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_775563e0db3311e8aaf591ffb3ef0687()
+      _templateObject_221b9ae0dbb811e89cb1851984da4d6d()
     ),
     is: "lrndesign-abbreviation",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

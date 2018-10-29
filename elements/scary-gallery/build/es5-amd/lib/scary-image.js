@@ -2,18 +2,18 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
   _polymerLegacy
 ) {
   "use strict";
-  function _templateObject_ff595620db3311e8a2cb671917906df0() {
+  function _templateObject_b3d953f0dbb811e896a34f030672dfa0() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: inline-block;\n        overflow: hidden;\n        position: relative;\n      }\n\n      #baseURIAnchor {\n        display: none;\n      }\n\n      #sizedImgDiv {\n        position: absolute;\n        top: 0px;\n        right: 0px;\n        bottom: 0px;\n        left: 0px;\n        display: block;\n        background-size: cover;\n        background-position: center;\n        background-repeat: no-repeat;\n      }\n\n      #img {\n        display: none;\n      }\n    </style>\n\n    <a id="baseURIAnchor" href="#"></a>\n    <div id="sizedImgDiv" role="img" aria-hidden$="[[_computeImgDivARIAHidden(alt)]]" aria-label$="[[_computeImgDivARIALabel(alt, src)]]"></div>\n    <img id="img" on-load="_imgOnLoad" on-error="_imgOnError">\n'
     ]);
-    _templateObject_ff595620db3311e8a2cb671917906df0 = function() {
+    _templateObject_b3d953f0dbb811e896a34f030672dfa0 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_ff595620db3311e8a2cb671917906df0()
+      _templateObject_b3d953f0dbb811e896a34f030672dfa0()
     ),
     is: "scary-image",
     properties: {

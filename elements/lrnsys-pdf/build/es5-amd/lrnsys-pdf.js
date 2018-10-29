@@ -5,18 +5,18 @@ define([
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_a4c8fad0db3311e8a2ea5de24ec63979() {
+  function _templateObject_53771a60dbb811e8a49a576ab2f57ccf() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <h2>[[title]]</h2>\n    <pdf-browser-viewer id="pdfViewer" file="[[file]]#page=[[page]]" width="100%" card="[[card]]" elevation="2" download-label="[[downloadLabel]]"></pdf-browser-viewer>\n'
     ]);
-    _templateObject_a4c8fad0db3311e8a2ea5de24ec63979 = function() {
+    _templateObject_53771a60dbb811e8a49a576ab2f57ccf = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a4c8fad0db3311e8a2ea5de24ec63979()
+      _templateObject_53771a60dbb811e8a49a576ab2f57ccf()
     ),
     is: "lrnsys-pdf",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

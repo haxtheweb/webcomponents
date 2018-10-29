@@ -4,7 +4,7 @@ define([
   "./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_577926a0db3411e8b5f78b83d63d61a3() {
+  function _templateObject_1d585100dbb911e8b1061d66e5aef764() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style include="materializecss-styles"></style>\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <paper-avatar label="[[label]]" src="[[src]]" two-chars="[[twoChars]]" class$="[[color]]" jdenticon="[[jdenticon]]"></paper-avatar>\n'
@@ -13,14 +13,14 @@ define([
         '\n    <style include="materializecss-styles"></style>\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <paper-avatar label="[[label]]" src="[[src]]" two-chars="[[twoChars]]" class\\$="[[color]]" jdenticon="[[jdenticon]]"></paper-avatar>\n'
       ]
     );
-    _templateObject_577926a0db3411e8b5f78b83d63d61a3 = function() {
+    _templateObject_1d585100dbb911e8b1061d66e5aef764 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_577926a0db3411e8b5f78b83d63d61a3()
+      _templateObject_1d585100dbb911e8b1061d66e5aef764()
     ),
     is: "lrndesign-avatar",
     properties: {

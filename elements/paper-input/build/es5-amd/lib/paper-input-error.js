@@ -10,18 +10,18 @@ define([
   _paperInputAddonBehavior
 ) {
   "use strict";
-  function _templateObject_e0fc0d30db3311e8b1a2b1c3dc6bc827() {
+  function _templateObject_937dca00dbb811e8a0f707d45fd382ad() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n      :host {\n        display: inline-block;\n        visibility: hidden;\n\n        color: var(--paper-input-container-invalid-color, var(--error-color));\n\n        @apply --paper-font-caption;\n        @apply --paper-input-error;\n        position: absolute;\n        left:0;\n        right:0;\n      }\n\n      :host([invalid]) {\n        visibility: visible;\n      };\n    </style>\n\n    <slot></slot>\n"
     ]);
-    _templateObject_e0fc0d30db3311e8b1a2b1c3dc6bc827 = function() {
+    _templateObject_937dca00dbb811e8a0f707d45fd382ad = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_e0fc0d30db3311e8b1a2b1c3dc6bc827()
+      _templateObject_937dca00dbb811e8a0f707d45fd382ad()
     ),
     is: "paper-input-error",
     behaviors: [_paperInputAddonBehavior.PaperInputAddonBehavior],

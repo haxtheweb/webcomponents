@@ -4,7 +4,7 @@ define([
   "../node_modules/@lrnwebcomponents/relative-heading/relative-heading.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_6ac88a70db3411e8be6c77e4c4545d87() {
+  function _templateObject_320bb1a0dbb911e8a61007849f666335() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: none;\n      }\n      :host #desc {\n        margin: 0 0 15px;\n      }\n      @media print {\n        :host {\n          display: block;\n        }\n      }\n    </style>\n    <relative-heading hidden$="[[!label]]" id="heading" text$="[[label]]">\n    </relative-heading>\n    <div id="desc"><slot></slot></div>\n'
@@ -13,14 +13,14 @@ define([
         '\n    <style>\n      :host {\n        display: none;\n      }\n      :host #desc {\n        margin: 0 0 15px;\n      }\n      @media print {\n        :host {\n          display: block;\n        }\n      }\n    </style>\n    <relative-heading hidden\\$="[[!label]]" id="heading" text\\$="[[label]]">\n    </relative-heading>\n    <div id="desc"><slot></slot></div>\n'
       ]
     );
-    _templateObject_6ac88a70db3411e8be6c77e4c4545d87 = function() {
+    _templateObject_320bb1a0dbb911e8a61007849f666335 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_6ac88a70db3411e8be6c77e4c4545d87()
+      _templateObject_320bb1a0dbb911e8a61007849f666335()
     ),
     is: "lrndesign-imagemap-hotspot",
     properties: {

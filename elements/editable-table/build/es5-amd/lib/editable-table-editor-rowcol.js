@@ -8,7 +8,7 @@ define([
   "./editable-table-behaviors.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_2a26ac40db3411e89cbd8da158100420() {
+  function _templateObject_e5eb5230dbb811e8b8b3fdf385777713() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n      :host #label {\n        margin: 0;\n        padding: 0;\n      }\n      :host paper-menu-button {\n        margin: 0;\n        padding: 0;\n        width: 100%;\n      }\n      :host paper-button {\n        margin: 0;\n        display: block;\n        background-color: transparent;\n      }\n      :host[condensed] paper-button {\n        padding-top: 0;\n        padding-bottom: 0;\n      }\n    </style>\n    <paper-menu-button id="menu">\n      <paper-button slot="dropdown-trigger">\n        <span id="label">[[label]]</span> <iron-icon icon="arrow-drop-down"></iron-icon>\n      </paper-button>\n      <paper-listbox slot="dropdown-content" label$="[[label]]">\n        <editable-table-editor-insdel action="insert" index$="[[index]]" type$="[[type]]" before="true">Insert [[type]] Before</editable-table-editor-insdel>\n        <editable-table-editor-insdel action="insert" index$="[[index]]" type$="[[type]]">Insert [[type]] After</editable-table-editor-insdel>\n        <editable-table-editor-insdel action="delete" index$="[[index]]" type$="[[type]]">Delete [[type]]</editable-table-editor-insdel>\n      </paper-listbox>\n    </paper-menu-button>\n'
@@ -17,14 +17,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n      :host #label {\n        margin: 0;\n        padding: 0;\n      }\n      :host paper-menu-button {\n        margin: 0;\n        padding: 0;\n        width: 100%;\n      }\n      :host paper-button {\n        margin: 0;\n        display: block;\n        background-color: transparent;\n      }\n      :host[condensed] paper-button {\n        padding-top: 0;\n        padding-bottom: 0;\n      }\n    </style>\n    <paper-menu-button id="menu">\n      <paper-button slot="dropdown-trigger">\n        <span id="label">[[label]]</span> <iron-icon icon="arrow-drop-down"></iron-icon>\n      </paper-button>\n      <paper-listbox slot="dropdown-content" label\\$="[[label]]">\n        <editable-table-editor-insdel action="insert" index\\$="[[index]]" type\\$="[[type]]" before="true">Insert [[type]] Before</editable-table-editor-insdel>\n        <editable-table-editor-insdel action="insert" index\\$="[[index]]" type\\$="[[type]]">Insert [[type]] After</editable-table-editor-insdel>\n        <editable-table-editor-insdel action="delete" index\\$="[[index]]" type\\$="[[type]]">Delete [[type]]</editable-table-editor-insdel>\n      </paper-listbox>\n    </paper-menu-button>\n'
       ]
     );
-    _templateObject_2a26ac40db3411e89cbd8da158100420 = function() {
+    _templateObject_e5eb5230dbb811e8b8b3fdf385777713 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_2a26ac40db3411e89cbd8da158100420()
+      _templateObject_e5eb5230dbb811e8b8b3fdf385777713()
     ),
     is: "editable-table-editor-rowcol",
     listeners: { "insdel-tapped": "_onTap" },

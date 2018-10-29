@@ -9,18 +9,18 @@ define([
   "./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_eb26e550db3311e89d50fd180e67a1d5() {
+  function _templateObject_9e8daaf0dbb811e8a77017e0e3c6fd7a() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n        transition: .6s all linear;\n        background-color: transparent;\n        opacity: 1;\n      }\n      :host[outline-loading] {\n        opacity: .6;\n        background-color: #999999;\n      }\n      paper-card {\n        width: 250px;\n        height: 250px;\n      }\n      #list {\n        min-height: 50vh;\n        width: 100%;\n      }\n    </style>\n    <iron-ajax auto="" id="endpoint" url="[[endPoint]]" loading="{{outlineLoading}}" handle-as="json" last-response="{{_outlineData}}" debounce-duration="300"></iron-ajax>\n    <iron-list grid="" id="list" items="[[outline]]">\n      <template>\n        <paper-card heading="[[item.title]]" image="" elevation="1" animated-shadow="true">\n          <div class="card-content">\n            A card\n          </div>\n          <div class="card-actions">\n            <paper-icon-button icon="add"></paper-icon-button>\n            <paper-icon-button icon="delete"></paper-icon-button>\n          </div>\n        </paper-card>\n      </template>\n    </iron-list>\n'
     ]);
-    _templateObject_eb26e550db3311e89d50fd180e67a1d5 = function() {
+    _templateObject_9e8daaf0dbb811e8a77017e0e3c6fd7a = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_eb26e550db3311e89d50fd180e67a1d5()
+      _templateObject_9e8daaf0dbb811e8a77017e0e3c6fd7a()
     ),
     is: "per-spec-tive",
     properties: {

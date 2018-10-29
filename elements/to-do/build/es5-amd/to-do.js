@@ -9,7 +9,7 @@ define([
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_18076400db3411e88b29f1b3e3a54275() {
+  function _templateObject_cfb8cba0dbb811e8a1b0a5e4dc80cae7() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n      :host[hide-form] ul {\n        border: 1px solid black;\n      }\n      paper-card {\n        width: 100%;\n        padding: 8px;\n      }\n      .task-list-wrapper {\n        width: 100%;\n        height: 100%;\n        border: 2px solid black;\n        list-style: none;\n        padding: 0;\n      }\n      .task-list-wrapper li {\n        padding: 8px;\n      }\n      .task-list-wrapper li:nth-child(even) {\n        background-color: #F5F5F5;\n      }\n      .task-list-wrapper li:nth-child(odd) {\n        background-color: #E5E5E5;\n      }\n      .task-list-wrapper li:hover {\n        background-color: #FFFFFF;\n      }\n      .task-list-wrapper li:active {\n        background-color: #FFFFFF;\n      }\n      .task-list-wrapper li:focus {\n        background-color: #FFFFFF;\n      }\n      h3 {\n        margin: 4px;\n        padding: 0;\n        font-size: 20px;\n      }\n    </style>\n    <paper-card heading="[[name]]" elevation="2">\n      <div class="card-content">\n        <div hidden$="[[hideForm]]">\n          <paper-input label="Task to accomplish" id="itemtext"></paper-input>\n          <paper-button raised="" id="itembutton">Add item</paper-button>\n        </div>\n        <ul class="task-list-wrapper">\n          <template is="dom-repeat" items="[[items]]" as="item">\n            <li data-item-id$="[[item.id]]"><paper-checkbox checked="{{item.value}}" disabled="[[item.disabled]]">[[item.label]]</paper-checkbox></li>\n          </template>\n        </ul>\n      </div>\n    </paper-card>\n'
@@ -18,14 +18,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n      :host[hide-form] ul {\n        border: 1px solid black;\n      }\n      paper-card {\n        width: 100%;\n        padding: 8px;\n      }\n      .task-list-wrapper {\n        width: 100%;\n        height: 100%;\n        border: 2px solid black;\n        list-style: none;\n        padding: 0;\n      }\n      .task-list-wrapper li {\n        padding: 8px;\n      }\n      .task-list-wrapper li:nth-child(even) {\n        background-color: #F5F5F5;\n      }\n      .task-list-wrapper li:nth-child(odd) {\n        background-color: #E5E5E5;\n      }\n      .task-list-wrapper li:hover {\n        background-color: #FFFFFF;\n      }\n      .task-list-wrapper li:active {\n        background-color: #FFFFFF;\n      }\n      .task-list-wrapper li:focus {\n        background-color: #FFFFFF;\n      }\n      h3 {\n        margin: 4px;\n        padding: 0;\n        font-size: 20px;\n      }\n    </style>\n    <paper-card heading="[[name]]" elevation="2">\n      <div class="card-content">\n        <div hidden\\$="[[hideForm]]">\n          <paper-input label="Task to accomplish" id="itemtext"></paper-input>\n          <paper-button raised="" id="itembutton">Add item</paper-button>\n        </div>\n        <ul class="task-list-wrapper">\n          <template is="dom-repeat" items="[[items]]" as="item">\n            <li data-item-id\\$="[[item.id]]"><paper-checkbox checked="{{item.value}}" disabled="[[item.disabled]]">[[item.label]]</paper-checkbox></li>\n          </template>\n        </ul>\n      </div>\n    </paper-card>\n'
       ]
     );
-    _templateObject_18076400db3411e88b29f1b3e3a54275 = function() {
+    _templateObject_cfb8cba0dbb811e8a1b0a5e4dc80cae7 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_18076400db3411e88b29f1b3e3a54275()
+      _templateObject_cfb8cba0dbb811e8a1b0a5e4dc80cae7()
     ),
     is: "to-do",
     behaviors: [HAXBehaviors.PropertiesBehaviors],

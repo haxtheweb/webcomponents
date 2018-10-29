@@ -14,7 +14,7 @@ define([
   "./lrnsys-button-inner.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_7d837670db3411e894bf75c5e7929da1() {
+  function _templateObject_46840510dbb911e8a81971e25d0fb2c8() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style is="custom-style" include="simple-colors">\n      :host {\n        display: inline-block;\n        --lrnsys-dialog-color: var(--simple-colors-foreground1,#000);\n        --lrnsys-dialog-background-color: var(--simple-colors-background1);\n        --lrnsys-dialog-toolbar-background-color: var(--simple-colors-background3);\n        --lrnsys-dialog-secondary-background-color: rgba(255,255,255, 0.7);\n      }\n      :host[dark] {\n        --lrnsys-dialog-toolbar-background-color: var(--simple-colors-background1);\n        --lrnsys-dialog-background-color: var(--simple-colors-background3);\n        --lrnsys-dialog-secondary-background-color: rgba(0, 0, 0, 0.7);\n      }\n    </style>\n    <paper-button class$="[[class]]" id="dialogtrigger" on-tap="toggleDialog" raised="[[raised]]" disabled$="[[disabled]]" title="[[alt]]" aria-label$="[[alt]]">\n      <lrnsys-button-inner avatar$="[[avatar]]" icon$="[[icon]]" text$="[[text]]">\n        <slot name="button"></slot>\n      </lrnsys-button-inner>\n    </paper-button>\n    <paper-tooltip for="dialogtrigger" animation-delay="0" hidden$="[[!alt]]">[[alt]]</paper-tooltip>\n    <lrnsys-dialog-modal id="modal" dynamic-images="[[dynamicImages]]" body-append="[[bodyAppend]]" header="[[header]]" modal="[[modal]]" heading-class="[[headingClass]]" opened$="[[opened]]">\n      <slot name="toolbar-primary" slot="primary"></slot>\n      <slot name="toolbar-secondary" slot="secondary"></slot>\n      <slot name="header" slot="header"></slot>\n      <slot></slot>\n    </lrnsys-dialog-modal>\n'
@@ -23,14 +23,14 @@ define([
         '\n    <style is="custom-style" include="simple-colors">\n      :host {\n        display: inline-block;\n        --lrnsys-dialog-color: var(--simple-colors-foreground1,#000);\n        --lrnsys-dialog-background-color: var(--simple-colors-background1);\n        --lrnsys-dialog-toolbar-background-color: var(--simple-colors-background3);\n        --lrnsys-dialog-secondary-background-color: rgba(255,255,255, 0.7);\n      }\n      :host[dark] {\n        --lrnsys-dialog-toolbar-background-color: var(--simple-colors-background1);\n        --lrnsys-dialog-background-color: var(--simple-colors-background3);\n        --lrnsys-dialog-secondary-background-color: rgba(0, 0, 0, 0.7);\n      }\n    </style>\n    <paper-button class\\$="[[class]]" id="dialogtrigger" on-tap="toggleDialog" raised="[[raised]]" disabled\\$="[[disabled]]" title="[[alt]]" aria-label\\$="[[alt]]">\n      <lrnsys-button-inner avatar\\$="[[avatar]]" icon\\$="[[icon]]" text\\$="[[text]]">\n        <slot name="button"></slot>\n      </lrnsys-button-inner>\n    </paper-button>\n    <paper-tooltip for="dialogtrigger" animation-delay="0" hidden\\$="[[!alt]]">[[alt]]</paper-tooltip>\n    <lrnsys-dialog-modal id="modal" dynamic-images="[[dynamicImages]]" body-append="[[bodyAppend]]" header="[[header]]" modal="[[modal]]" heading-class="[[headingClass]]" opened\\$="[[opened]]">\n      <slot name="toolbar-primary" slot="primary"></slot>\n      <slot name="toolbar-secondary" slot="secondary"></slot>\n      <slot name="header" slot="header"></slot>\n      <slot></slot>\n    </lrnsys-dialog-modal>\n'
       ]
     );
-    _templateObject_7d837670db3411e894bf75c5e7929da1 = function() {
+    _templateObject_46840510dbb911e8a81971e25d0fb2c8 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_7d837670db3411e894bf75c5e7929da1()
+      _templateObject_46840510dbb911e8a81971e25d0fb2c8()
     ),
     is: "lrnsys-dialog",
     listeners: {
