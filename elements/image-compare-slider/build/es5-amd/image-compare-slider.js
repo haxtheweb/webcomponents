@@ -8,7 +8,7 @@ define([
 ], function(_polymerLegacy) {
   "use strict";
   var _properties;
-  function _templateObject_545546d0db3311e8ac9321041c8fefcf() {
+  function _templateObject_33d36530dbac11e8a98d5bfbcebedd35() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n      :host .container {\n        position: relative;\n      }\n      :host .container > * {\n        left: 0;\n        position: absolute;\n      }\n      :host .container > div {\n        top: 0;\n        padding: 0;\n      }\n      :host #top {\n        overflow-x: hidden;\n      }\n    </style>\n    <h2>[[title]]</h2>\n    <div class="container" style$="[[styles.container]]">\n      <div id="bottom"><iron-image src$="[[bottomSrc]]" sizing$="[[sizing]]" style$="[[styles.image]]"></iron-image></div>\n      <div id="top" style$="[[styles.top]]"><iron-image src$="[[topSrc]]" sizing$="[[sizing]]" style$="[[styles.image]]"></iron-image></div>\n    </div>\n    <paper-slider id="slider" value="50" class="max-width-no-padding" style$="[[styles.slider]]"></paper-slider>\n'
@@ -17,14 +17,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n      :host .container {\n        position: relative;\n      }\n      :host .container > * {\n        left: 0;\n        position: absolute;\n      }\n      :host .container > div {\n        top: 0;\n        padding: 0;\n      }\n      :host #top {\n        overflow-x: hidden;\n      }\n    </style>\n    <h2>[[title]]</h2>\n    <div class="container" style\\$="[[styles.container]]">\n      <div id="bottom"><iron-image src\\$="[[bottomSrc]]" sizing\\$="[[sizing]]" style\\$="[[styles.image]]"></iron-image></div>\n      <div id="top" style\\$="[[styles.top]]"><iron-image src\\$="[[topSrc]]" sizing\\$="[[sizing]]" style\\$="[[styles.image]]"></iron-image></div>\n    </div>\n    <paper-slider id="slider" value="50" class="max-width-no-padding" style\\$="[[styles.slider]]"></paper-slider>\n'
       ]
     );
-    _templateObject_545546d0db3311e8ac9321041c8fefcf = function() {
+    _templateObject_33d36530dbac11e8a98d5bfbcebedd35 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_545546d0db3311e8ac9321041c8fefcf()
+      _templateObject_33d36530dbac11e8a98d5bfbcebedd35()
     ),
     is: "image-compare-slider",
     behaviors: [

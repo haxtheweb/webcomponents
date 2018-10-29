@@ -4,18 +4,18 @@ define([
   "./node_modules/@polymer/paper-dialog-behavior/paper-dialog-shared-styles.js"
 ], function(_polymerLegacy, _paperDialogBehavior) {
   "use strict";
-  function _templateObject_abad01d0db3211e8adb8b7105847b3ee() {
+  function _templateObject_6c3567d0dbab11e89cf953c8c0c47ccb() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style include="paper-dialog-shared-styles"></style>\n    <slot></slot>\n'
     ]);
-    _templateObject_abad01d0db3211e8adb8b7105847b3ee = function() {
+    _templateObject_6c3567d0dbab11e89cf953c8c0c47ccb = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_abad01d0db3211e8adb8b7105847b3ee()
+      _templateObject_6c3567d0dbab11e89cf953c8c0c47ccb()
     ),
     is: "lrndesign-dialog",
     behaviors: [_paperDialogBehavior.PaperDialogBehavior]

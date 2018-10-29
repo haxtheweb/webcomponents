@@ -4,18 +4,18 @@ define([
   "./node_modules/@polymer/paper-button/paper-button.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_e708c700db3211e8919cf9a1709d59d3() {
+  function _templateObject_ad04e5b0dbab11e891ab5535330fc7d9() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n        <style>\n            :host {\n                display: none;\n            }\n            :host([file]) {\n                display: inherit;\n            }\n        </style>\n\n        <template is="dom-if" if="[[card]]">\n            <paper-card heading="[[heading]]" elevation="[[elevation]]">\n                <div class="card-content">\n                    <object data="[[file]]" type="application/pdf" width="[[width]]" height="[[height]]">\n                        <p>\n                            {{notSupportedMessage}} <a href="[[file]]">{{notSupportedLinkMessage}}</a>\n                        </p>\n                    </object>\n                </div>\n                <div class="card-actions">\n                    <paper-button on-click="_download">[[downloadLabel]]</paper-button>\n                </div>\n            </paper-card>\n        </template>\n\n        <template is="dom-if" if="[[!card]]">\n            <object data="[[file]]" type="application/pdf" width="[[width]]" height="[[height]]">\n                <p>\n                    {{notSupportedMessage}} <a href="[[file]]">{{notSupportedLinkMessage}}</a>\n                </p>\n            </object>\n        </template>\n'
     ]);
-    _templateObject_e708c700db3211e8919cf9a1709d59d3 = function() {
+    _templateObject_ad04e5b0dbab11e891ab5535330fc7d9 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_e708c700db3211e8919cf9a1709d59d3()
+      _templateObject_ad04e5b0dbab11e891ab5535330fc7d9()
     ),
     is: "pdf-browser-viewer",
     properties: {

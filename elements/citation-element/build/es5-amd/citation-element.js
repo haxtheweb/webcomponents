@@ -5,7 +5,7 @@ define([
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_37975600db3311e8bd872d73f5ccbd50() {
+  function _templateObject_145988b0dbac11e89900cff8c04efc3f() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n        color: var(\'--license-text-color\');\n      }\n      :host[display-method="footnote"] {\n        visibility: hidden;\n        opacity: 0;\n      }\n      :host[display-method="popup"] {\n        display: block;\n      }\n      .license-link {\n        font-size: 1em;\n        line-height: 1em;\n        font-style: italic;\n      }\n      .citation-date {\n        font-size: 1em;\n        line-height: 1em;\n        font-style: italic;\n      }\n      .license-link img {\n        height: 1em;\n        min-width: 1em;\n        margin-right: .5em;\n      }\n    </style>\n    <!-- Link the license for the course -->\n    <link about$="[[relatedResource]]" property="cc:license" content$="[[licenseLink]]">\n    <meta about$="[[relatedResource]]" property="cc:attributionUrl" content$="[[source]]">\n    <meta about$="[[relatedResource]]" property="cc:attributionName" typeof="oer:Text" content$="[[title]]">\n    <meta rel="cc:license" href$="[[licenseLink]]" content$="License: [[licenseName]]">\n    <link rel="license" typeof="resource" src="[[source]]">\n    <cite><a target="_blank" href="[[source]]">[[title]]</a> by [[creator]], licensed under <a class="license-link" target="_blank" href="[[licenseLink]]"><img alt="[[licenseName]] graphic" src="[[licenseImage]]" hidden&="[[!licenseImage]]">[[licenseName]]</a>. Accessed <span class="citation-date">[[date]]</span>.</cite>\n'
@@ -14,14 +14,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n        color: var(\'--license-text-color\');\n      }\n      :host[display-method="footnote"] {\n        visibility: hidden;\n        opacity: 0;\n      }\n      :host[display-method="popup"] {\n        display: block;\n      }\n      .license-link {\n        font-size: 1em;\n        line-height: 1em;\n        font-style: italic;\n      }\n      .citation-date {\n        font-size: 1em;\n        line-height: 1em;\n        font-style: italic;\n      }\n      .license-link img {\n        height: 1em;\n        min-width: 1em;\n        margin-right: .5em;\n      }\n    </style>\n    <!-- Link the license for the course -->\n    <link about\\$="[[relatedResource]]" property="cc:license" content\\$="[[licenseLink]]">\n    <meta about\\$="[[relatedResource]]" property="cc:attributionUrl" content\\$="[[source]]">\n    <meta about\\$="[[relatedResource]]" property="cc:attributionName" typeof="oer:Text" content\\$="[[title]]">\n    <meta rel="cc:license" href\\$="[[licenseLink]]" content\\$="License: [[licenseName]]">\n    <link rel="license" typeof="resource" src="[[source]]">\n    <cite><a target="_blank" href="[[source]]">[[title]]</a> by [[creator]], licensed under <a class="license-link" target="_blank" href="[[licenseLink]]"><img alt="[[licenseName]] graphic" src="[[licenseImage]]" hidden&="[[!licenseImage]]">[[licenseName]]</a>. Accessed <span class="citation-date">[[date]]</span>.</cite>\n'
       ]
     );
-    _templateObject_37975600db3311e8bd872d73f5ccbd50 = function() {
+    _templateObject_145988b0dbac11e89900cff8c04efc3f = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_37975600db3311e8bd872d73f5ccbd50()
+      _templateObject_145988b0dbac11e89900cff8c04efc3f()
     ),
     is: "citation-element",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
