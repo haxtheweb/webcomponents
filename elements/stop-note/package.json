@@ -16,7 +16,7 @@
       "hax": "src/stop-note-hax.json"
     }
   },
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Automated conversion of stop-note/",
   "repository": {
     "type": "git",
@@ -40,13 +40,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
-    "@lrnwebcomponents/materializecss-styles": "^0.0.28",
-    "@lrnwebcomponents/schema-behaviors": "^0.0.28",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.29",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.29",
+    "@lrnwebcomponents/schema-behaviors": "^0.0.29",
+    "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-iconset-svg": "^3.0.1",
-    "@polymer/iron-icon":"^3.0.1",
-    "@polymer/polymer": "^3.0.5",
-    "@polymer/paper-card": "^3.0.0"
+    "@polymer/paper-card": "^3.0.0",
+    "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

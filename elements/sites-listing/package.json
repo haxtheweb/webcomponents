@@ -16,7 +16,7 @@
       "hax": "src/sites-listing-hax.json"
     }
   },
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Automated conversion of sites-listing/",
   "repository": {
     "type": "git",
@@ -40,12 +40,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/elmsln-loading": "^0.0.28",
-    "@polymer/polymer": "^3.0.0",
-    "@polymer/iron-list": "^3.0.0",
+    "@lrnwebcomponents/elmsln-loading": "^0.0.29",
     "@polymer/iron-ajax": "^3.0.0",
+    "@polymer/iron-list": "^3.0.0",
+    "@polymer/paper-button": "^3.0.0",
     "@polymer/paper-card": "^3.0.0",
-    "@polymer/paper-button": "^3.0.0"
+    "@polymer/polymer": "^3.0.0"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

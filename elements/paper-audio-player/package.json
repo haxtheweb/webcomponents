@@ -16,7 +16,7 @@
       "hax": "src/paper-audio-player-hax.json"
     }
   },
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Automated conversion of paper-audio-player/",
   "repository": {
     "type": "git",
@@ -40,16 +40,16 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
-    "@lrnwebcomponents/materializecss-styles": "^0.0.28",
-    "@lrnwebcomponents/schema-behaviors": "^0.0.28",
-    "@polymer/polymer": "^3.0.5",
-    "@polymer/paper-progress": "^3.0.0",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.29",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.29",
+    "@lrnwebcomponents/schema-behaviors": "^0.0.29",
+    "@polymer/iron-a11y-keys-behavior": "^3.0.0",
+    "@polymer/iron-icon": "^3.0.0",
     "@polymer/iron-icons": "^3.0.0",
     "@polymer/paper-icon-button": "^3.0.0",
+    "@polymer/paper-progress": "^3.0.0",
     "@polymer/paper-ripple": "^3.0.0",
-    "@polymer/iron-a11y-keys-behavior": "^3.0.0",
-    "@polymer/iron-icon": "^3.0.0"
+    "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

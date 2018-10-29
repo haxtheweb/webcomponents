@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-drawer-hax.json"
     }
   },
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Automated conversion of lrndesign-drawer/",
   "repository": {
     "type": "git",
@@ -40,10 +40,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/polymer": "^3.0.5",
     "@polymer/app-layout": "^3.0.0",
+    "@polymer/paper-icon-button": "^3.0.1",
     "@polymer/paper-tooltip": "^3.0.0",
-    "@polymer/paper-icon-button": "^3.0.1"
+    "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

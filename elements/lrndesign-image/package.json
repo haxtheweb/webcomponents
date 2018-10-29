@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-image-hax.json"
     }
   },
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Automated conversion of lrndesign-image/",
   "repository": {
     "type": "git",
@@ -40,14 +40,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/polymer": "^3.0.0",
-    "@polymer/paper-spinner": "^3.0.0",
-    "@polymer/paper-tooltip": "^3.0.0",
+    "@lrnwebcomponents/freezeframe": "^0.0.29",
+    "@lrnwebcomponents/lrnsys-layout": "^0.0.29",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.29",
     "@polymer/iron-image": "^3.0.0",
     "@polymer/paper-button": "^3.0.1",
-    "@lrnwebcomponents/materializecss-styles": "^0.0.28",
-    "@lrnwebcomponents/lrnsys-layout": "^0.0.28",
-    "@lrnwebcomponents/freezeframe": "^0.0.28"
+    "@polymer/paper-spinner": "^3.0.0",
+    "@polymer/paper-tooltip": "^3.0.0",
+    "@polymer/polymer": "^3.0.0"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

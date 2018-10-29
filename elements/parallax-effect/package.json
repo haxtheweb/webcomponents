@@ -16,7 +16,7 @@
       "hax": "src/parallax-effect-hax.json"
     }
   },
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Automated conversion of parallax-effect/",
   "repository": {
     "type": "git",

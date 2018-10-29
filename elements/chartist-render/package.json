@@ -11,7 +11,7 @@
       "js": "src/chartist-render.js"
     }
   },
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Automated conversion of chartist-render/",
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.29",
     "@polymer/polymer": "^3.0.5",
     "chartist": "^0.11.0"
   },

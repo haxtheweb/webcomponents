@@ -11,7 +11,7 @@
       "js": "src/hax-body-behaviors.js"
     }
   },
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Wire any element up to HAX",
   "repository": {
     "type": "git",

@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-animationctrl-hax.json"
     }
   },
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Automated conversion of lrndesign-animationctrl/",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrn-icons": "^0.0.28",
+    "@lrnwebcomponents/lrn-icons": "^0.0.29",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {

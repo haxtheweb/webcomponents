@@ -4,7 +4,7 @@
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json elements/all/test/"
   },
-  "version": "0.0.28",
+  "version": "0.0.29",
   "private": true,
   "license": "Apache-2.0"
 }

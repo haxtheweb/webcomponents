@@ -16,7 +16,7 @@
       "hax": "src/md-extra-icons-hax.json"
     }
   },
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Automated conversion of md-extra-icons/",
   "repository": {
     "type": "git",
@@ -40,9 +40,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/polymer": "^3.0.5",
     "@polymer/iron-icon": "^3.0.0",
-    "@polymer/iron-iconset-svg": "^3.0.0"
+    "@polymer/iron-iconset-svg": "^3.0.0",
+    "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

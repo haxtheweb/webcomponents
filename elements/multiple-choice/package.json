@@ -16,7 +16,7 @@
       "hax": "src/multiple-choice-hax.json"
     }
   },
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Automated conversion of multiple-choice/",
   "repository": {
     "type": "git",
@@ -40,15 +40,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
-    "@lrnwebcomponents/materializecss-styles": "^0.0.28",
-    "@lrnwebcomponents/schema-behaviors": "^0.0.28",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.29",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.29",
+    "@lrnwebcomponents/schema-behaviors": "^0.0.29",
     "@polymer/iron-icons": "^3.0.1",
-    "@polymer/polymer": "^3.0.5",
-    "@polymer/paper-radio-button": "^3.0.0",
     "@polymer/paper-button": "^3.0.0",
+    "@polymer/paper-checkbox": "^3.0.0",
+    "@polymer/paper-radio-button": "^3.0.0",
     "@polymer/paper-toast": "^3.0.0",
-    "@polymer/paper-checkbox": "^3.0.0"
+    "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

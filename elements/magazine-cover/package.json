@@ -16,7 +16,7 @@
       "hax": "src/magazine-cover-hax.json"
     }
   },
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Automated conversion of magazine-cover/",
   "repository": {
     "type": "git",
@@ -40,12 +40,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
-    "@polymer/polymer": "^3.0.5",
-    "@polymer/iron-image": "^3.0.0",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.29",
     "@polymer/iron-icons": "^3.0.0",
+    "@polymer/iron-image": "^3.0.0",
     "@polymer/paper-button": "^3.0.0",
-    "@polymer/paper-styles": "^3.0.0"
+    "@polymer/paper-styles": "^3.0.0",
+    "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

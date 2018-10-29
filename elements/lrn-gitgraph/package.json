@@ -16,7 +16,7 @@
       "hax": "src/lrn-gitgraph-hax.json"
     }
   },
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Automated conversion of lrn-gitgraph/",
   "repository": {
     "type": "git",

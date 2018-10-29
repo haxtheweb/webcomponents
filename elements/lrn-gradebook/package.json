@@ -16,7 +16,7 @@
       "hax": "src/lrn-gradebook-hax.json"
     }
   },
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Automated conversion of lrn-gradebook/",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/iron-data-table": "^0.0.28",
+    "@lrnwebcomponents/iron-data-table": "^0.0.29",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {

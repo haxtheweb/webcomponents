@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-contentsequencer-hax.json"
     }
   },
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Automated conversion of lrndesign-contentsequencer/",
   "repository": {
     "type": "git",
@@ -48,10 +48,10 @@
     "@polymer/neon-animation": "^3.0.0",
     "@polymer/paper-button": "^3.0.0",
     "@polymer/paper-dialog": "^3.0.0",
+    "@polymer/paper-dropdown-menu": "^3.0.0",
     "@polymer/paper-fab": "^3.0.0",
     "@polymer/paper-icon-button": "^3.0.0",
     "@polymer/paper-item": "^3.0.0",
-    "@polymer/paper-dropdown-menu": "^3.0.0",
     "@polymer/paper-listbox": "^3.0.0",
     "@polymer/paper-radio-button": "^3.0.0",
     "@polymer/paper-radio-group": "^3.0.0",

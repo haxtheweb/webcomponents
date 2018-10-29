@@ -16,7 +16,7 @@
       "hax": "src/lrnapp-fab-menu-hax.json"
     }
   },
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Automated conversion of lrnapp-fab-menu/",
   "repository": {
     "type": "git",
@@ -40,9 +40,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/paper-fab-speed-dial": "^0.0.28",
-    "@lrnwebcomponents/materializecss-styles": "^0.0.28",
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.29",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.29",
+    "@lrnwebcomponents/paper-fab-speed-dial": "^0.0.29",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {

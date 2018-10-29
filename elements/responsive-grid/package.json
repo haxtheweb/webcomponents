@@ -16,7 +16,7 @@
       "hax": "src/responsive-grid-hax.json"
     }
   },
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Automated conversion of responsive-grid/",
   "repository": {
     "type": "git",
@@ -40,9 +40,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/responsive-utility": "^0.0.28",
-    "@polymer/polymer": "^3.0.0",
-    "@polymer/iron-resizable-behavior": "^3.0.0"
+    "@lrnwebcomponents/responsive-utility": "^0.0.29",
+    "@polymer/iron-resizable-behavior": "^3.0.0",
+    "@polymer/polymer": "^3.0.0"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
