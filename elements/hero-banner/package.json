@@ -16,7 +16,7 @@
       "hax": "src/hero-banner-hax.json"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Automated conversion of hero-banner/",
   "repository": {
     "type": "git",
@@ -40,9 +40,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-behaviors": "^0.0.29",
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.29",
-    "@lrnwebcomponents/materializecss-styles": "^0.0.29",
+    "@lrnwebcomponents/a11y-behaviors": "^0.0.30",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.30",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.30",
     "@polymer/iron-image": "^3.0.0",
     "@polymer/paper-button": "^3.0.0",
     "@polymer/polymer": "^3.0.5"

@@ -11,7 +11,7 @@
       "js": "src/circle-progress.js"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Automated conversion of circle-progress/",
   "repository": {
     "type": "git",

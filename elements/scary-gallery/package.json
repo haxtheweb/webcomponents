@@ -16,7 +16,7 @@
       "hax": "src/scary-gallery-hax.json"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Start of scary-gallery",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.29",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.30",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {

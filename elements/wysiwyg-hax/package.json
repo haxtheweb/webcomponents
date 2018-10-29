@@ -16,7 +16,7 @@
       "hax": "src/wysiwyg-hax-hax.json"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Start of wysiwyg-hax fork",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/cms-hax": "^0.0.29",
+    "@lrnwebcomponents/cms-hax": "^0.0.30",
     "@polymer/iron-dropdown": "^3.0.0",
     "@polymer/polymer": "^3.0.5"
   },

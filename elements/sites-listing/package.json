@@ -16,7 +16,7 @@
       "hax": "src/sites-listing-hax.json"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Automated conversion of sites-listing/",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/elmsln-loading": "^0.0.29",
+    "@lrnwebcomponents/elmsln-loading": "^0.0.30",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-list": "^3.0.0",
     "@polymer/paper-button": "^3.0.0",

@@ -11,7 +11,7 @@
       "js": "src/game-show-quiz.js"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Automated conversion of game-show-quiz/",
   "repository": {
     "type": "git",
@@ -35,9 +35,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.29",
-    "@lrnwebcomponents/multiple-choice": "^0.0.29",
-    "@lrnwebcomponents/responsive-grid": "^0.0.29",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.30",
+    "@lrnwebcomponents/multiple-choice": "^0.0.30",
+    "@lrnwebcomponents/responsive-grid": "^0.0.30",
     "@polymer/app-layout": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-flex-layout": "^3.0.1",

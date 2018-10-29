@@ -11,7 +11,7 @@
       "js": "src/silly-hax-game.js"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Automated conversion of silly-hax-game",
   "repository": {
     "type": "git",
@@ -35,9 +35,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrnsys-layout": "^0.0.29",
-    "@lrnwebcomponents/simple-timer": "^0.0.29",
-    "@lrnwebcomponents/to-do": "^0.0.29",
+    "@lrnwebcomponents/lrnsys-layout": "^0.0.30",
+    "@lrnwebcomponents/simple-timer": "^0.0.30",
+    "@lrnwebcomponents/to-do": "^0.0.30",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-card": "^3.0.1",
     "@polymer/polymer": "^3.0.5"

@@ -16,7 +16,7 @@
       "hax": "src/lrn-icon-hax.json"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Automated conversion of lrn-icon/",
   "repository": {
     "type": "git",
@@ -46,7 +46,7 @@
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/lrn-icons": "^0.0.29",
+    "@lrnwebcomponents/lrn-icons": "^0.0.30",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.1.3",

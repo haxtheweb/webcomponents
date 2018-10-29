@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-panelcard-hax.json"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Automated conversion of lrndesign-panelcard/",
   "repository": {
     "type": "git",
@@ -40,8 +40,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.29",
-    "@lrnwebcomponents/materializecss-styles": "^0.0.29",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.30",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.30",
     "@polymer/paper-card": "^3.0.0",
     "@polymer/paper-styles": "^3.0.0",
     "@polymer/polymer": "^3.0.5"

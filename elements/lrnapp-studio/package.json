@@ -16,7 +16,7 @@
       "hax": "src/lrnapp-studio-hax.json"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Automated conversion of lrnapp-studio/",
   "repository": {
     "type": "git",
@@ -40,9 +40,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/materializecss-styles": "^0.0.29",
-    "@lrnwebcomponents/s-grid": "^0.0.29",
-    "@lrnwebcomponents/scary-gallery": "^0.0.29",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.30",
+    "@lrnwebcomponents/s-grid": "^0.0.30",
+    "@lrnwebcomponents/scary-gallery": "^0.0.30",
     "@polymer/app-route": "^3.0.0",
     "@polymer/iron-flex-layout": "^3.0.0",
     "@polymer/iron-iconset": "^3.0.0",

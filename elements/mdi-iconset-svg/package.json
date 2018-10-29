@@ -16,7 +16,7 @@
       "hax": "src/mdi-iconset-svg-hax.json"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Start of mdi-iconset-svg fork",
   "repository": {
     "type": "git",

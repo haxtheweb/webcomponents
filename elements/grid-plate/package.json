@@ -11,7 +11,7 @@
       "js": "src/grid-plate.js"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Automated conversion of grid-plate/",
   "repository": {
     "type": "git",
@@ -35,9 +35,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.29",
-    "@lrnwebcomponents/responsive-grid": "^0.0.29",
-    "@lrnwebcomponents/simple-colors": "^0.0.29",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.30",
+    "@lrnwebcomponents/responsive-grid": "^0.0.30",
+    "@lrnwebcomponents/simple-colors": "^0.0.30",
     "@polymer/iron-a11y-keys": "^3.0.0",
     "@polymer/paper-icon-button": "^3.0.1",
     "@polymer/polymer": "^3.0.5"

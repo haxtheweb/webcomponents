@@ -16,7 +16,7 @@
       "hax": "src/wave-player-hax.json"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Automated conversion of wave-player/",
   "repository": {
     "type": "git",
@@ -40,8 +40,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.29",
-    "@lrnwebcomponents/schema-behaviors": "^0.0.29",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.30",
+    "@lrnwebcomponents/schema-behaviors": "^0.0.30",
     "@polymer/iron-elements": "0.0.3",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-fab": "^3.0.1",

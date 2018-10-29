@@ -16,7 +16,7 @@
       "hax": "src/paper-search-hax.json"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Start of paper-search",
   "repository": {
     "type": "git",

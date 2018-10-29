@@ -16,7 +16,7 @@
       "hax": "src/gene-crossover-hax.json"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Automated conversion of gene-crossover/",
   "repository": {
     "type": "git",
@@ -40,9 +40,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.29",
-    "@lrnwebcomponents/lrndesign-animationctrl": "^0.0.29",
-    "@lrnwebcomponents/paper-stepper": "^0.0.29",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.30",
+    "@lrnwebcomponents/lrndesign-animationctrl": "^0.0.30",
+    "@lrnwebcomponents/paper-stepper": "^0.0.30",
     "@polymer/app-route": "^3.0.0",
     "@polymer/iron-pages": "^3.0.0",
     "@polymer/polymer": "^3.0.0"

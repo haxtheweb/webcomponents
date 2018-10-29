@@ -16,7 +16,7 @@
       "hax": "src/md-extra-icons-hax.json"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Automated conversion of md-extra-icons/",
   "repository": {
     "type": "git",

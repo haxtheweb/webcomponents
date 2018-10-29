@@ -16,7 +16,7 @@
       "hax": "src/simple-concept-network-hax.json"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Automated conversion of simple-concept-network/",
   "repository": {
     "type": "git",
@@ -40,10 +40,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-behaviors": "^0.0.29",
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.29",
-    "@lrnwebcomponents/lrn-icons": "^0.0.29",
-    "@lrnwebcomponents/materializecss-styles": "^0.0.29",
+    "@lrnwebcomponents/a11y-behaviors": "^0.0.30",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.30",
+    "@lrnwebcomponents/lrn-icons": "^0.0.30",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.30",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.0",

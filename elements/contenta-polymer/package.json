@@ -11,7 +11,7 @@
       "js": "src/contenta-polymer.js"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Automated conversion of contenta-polymer/",
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/materializecss-styles": "^0.0.29",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.30",
     "@polymer/app-layout": "^3.0.0",
     "@polymer/app-route": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",

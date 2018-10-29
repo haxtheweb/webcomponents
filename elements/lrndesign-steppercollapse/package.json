@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-steppercollapse-hax.json"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Automated conversion of lrndesign-steppercollapse/",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrndesign-stepper": "^0.0.29",
+    "@lrnwebcomponents/lrndesign-stepper": "^0.0.30",
     "@polymer/iron-collapse": "^3.0.0",
     "@polymer/paper-spinner": "^3.0.0",
     "@polymer/paper-tooltip": "^3.0.0",

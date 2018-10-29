@@ -11,7 +11,7 @@
       "js": "src/lrn-table.js"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Accessibly render a HTML table from a csv file",
   "repository": {
     "type": "git",
@@ -35,9 +35,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/csv-render": "^0.0.29",
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.29",
-    "@lrnwebcomponents/schema-behaviors": "^0.0.29",
+    "@lrnwebcomponents/csv-render": "^0.0.30",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.30",
+    "@lrnwebcomponents/schema-behaviors": "^0.0.30",
     "@polymer/paper-spinner": "^3.0.1",
     "@polymer/paper-tooltip": "^3.0.1",
     "@polymer/polymer": "^3.0.5"

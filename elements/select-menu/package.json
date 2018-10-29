@@ -16,7 +16,7 @@
       "hax": "src/select-menu-hax.json"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Automated conversion of select-menu/",
   "repository": {
     "type": "git",

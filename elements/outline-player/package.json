@@ -16,7 +16,7 @@
       "hax": "src/outline-player-hax.json"
     }
   },
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "Automated conversion of outline-player/",
   "repository": {
     "type": "git",
@@ -40,9 +40,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/map-menu": "^0.0.29",
-    "@lrnwebcomponents/materializecss-styles": "^0.0.29",
-    "@lrnwebcomponents/schema-behaviors": "^0.0.29",
+    "@lrnwebcomponents/map-menu": "^0.0.30",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.30",
+    "@lrnwebcomponents/schema-behaviors": "^0.0.30",
     "@polymer/app-layout": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-media-query": "^3.0.0",
