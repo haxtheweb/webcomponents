@@ -4,7 +4,7 @@ import "@lrnwebcomponents/scary-gallery/scary-gallery.js";
 import "@polymer/paper-header-panel/paper-header-panel.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
-import "@lrnwebcomponents/s-grid/s-grid-style.js";
+import "@lrnwebcomponents/s-grid/lib/s-grid-style.js";
 var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
