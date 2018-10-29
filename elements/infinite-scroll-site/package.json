@@ -1,28 +1,33 @@
 {
-  "name": "@lrnwebcomponents/a11y-behaviors",
+  "name": "@lrnwebcomponents/infinite-scroll-site",
   "wcfactory": {
-    "className": "A11YBehaviors",
+    "className": "InfiniteScrollSite",
     "customElementClass": "PolymerElement",
-    "elementName": "a11y-behaviors",
+    "elementName": "infinite-scroll-site",
     "generator-wcfactory-version": "0.3.1",
-    "useHAX": false,
+    "useHAX": true,
     "useSass": false,
     "files": {
-      "js": "src/a11y-behaviors.js"
+      "css": "src/infinite-scroll-site.css",
+      "scss": "src/infinite-scroll-site.scss",
+      "html": "src/infinite-scroll-site.html",
+      "js": "src/infinite-scroll-site.js",
+      "properties": "src/infinite-scroll-site-properties.json",
+      "hax": "src/infinite-scroll-site-hax.json"
     }
   },
   "version": "0.0.28",
-  "description": "Automated conversion of a11y-behaviors",
+  "description": "Automated conversion of infinite-scroll-site/",
   "repository": {
     "type": "git",
     "url": "git@github.com/elmsln/lrnwebcomponents.git"
   },
-  "main": "a11y-behaviors.js",
-  "module": "a11y-behaviors.es6.js",
-  "umd": "a11y-behaviors.umd.js",
-  "amd": "a11y-behaviors.amd.js",
+  "main": "infinite-scroll-site.js",
+  "module": "infinite-scroll-site.es6.js",
+  "umd": "infinite-scroll-site.umd.js",
+  "amd": "infinite-scroll-site.amd.js",
   "scripts": {
-    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/a11y-behaviors/test/",
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/infinite-scroll-site/test/",
     "start": "yarn run dev",
     "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
     "dev": "open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'",
