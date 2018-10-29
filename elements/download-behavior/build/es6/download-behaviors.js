@@ -1,6 +1,6 @@
 import { dom } from "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
 window.mtz = window.mtz || {};
-mtz.FileDownloadBehavior = {
+mtz.FileDownloadBehaviors = {
   properties: {
     fileTypes: {
       type: Object,

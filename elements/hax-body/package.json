@@ -35,6 +35,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/dl-behavior": "^0.0.29",
     "@lrnwebcomponents/grid-plate": "^0.0.29",
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.29",
     "@lrnwebcomponents/materializecss-styles": "^0.0.29",

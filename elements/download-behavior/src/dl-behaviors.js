@@ -7,7 +7,7 @@ window.mtz = window.mtz || {};
  * @polymerBehavior
  * @demo demo/index.html
  */
-mtz.FileDownloadBehavior = {
+mtz.FileDownloadBehaviors = {
   properties: {
     /* MIME type lookup for file extensions */
     fileTypes: {

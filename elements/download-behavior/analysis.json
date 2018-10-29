@@ -6,7 +6,7 @@
         {
           "description": "A behavior for downloading streamed files or creating files based on available data.",
           "summary": "",
-          "path": "mtz-file-download-behavior.js",
+          "path": "dl-behavior.js",
           "properties": [
             {
               "name": "fileTypes",
@@ -121,7 +121,7 @@
             }
           },
           "privacy": "public",
-          "name": "mtz.FileDownloadBehavior",
+          "name": "mtz.FileDownloadBehaviors",
           "attributes": [
             {
               "name": "file-types",

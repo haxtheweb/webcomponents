@@ -1,21 +1,21 @@
-# &lt;mtz-file-download-behavior&gt;
+# &lt;dl-behavior&gt;
 
 File
-> Start of mtz-file-download-behavior fork
+> Start of dl-behavior fork
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/mtz-file-download-behavior.js';
+import '@lrnwebcomponents/dl-behavior.js';
 /* At top of an application */
-<script type="module" src="mtz-file-download-behavior.js"></script>
+<script type="module" src="dl-behavior.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/mtz-file-download-behavior.js';
+  import '@lrnwebcomponents/dl-behavior.js';
 
-  import {MtzFileDownloadBehavior} from '@lrnwebcomponents/mtz-file-download-behavior';
+  import {MtzFileDownloadBehavior} from '@lrnwebcomponents/dl-behavior';
 </script>
 ```
 

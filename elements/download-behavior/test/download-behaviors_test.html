@@ -5,29 +5,29 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
     <script src="../node_modules/wct-browser-legacy/browser.js"></script>
-    <script type="module" src="../mtz-file-download-behavior.js"></script>
+    <script type="module" src="../dl-behavior.js"></script>
   </head>
   <body>
 
-    <mtz-file-download-behavior>
+    <dl-behavior>
       This is the element content.
-    </mtz-file-download-behavior>
+    </dl-behavior>
 <test-fixture id="BasicTestFixture">
   <template>
-    <mtz-file-download-behavior></mtz-file-download-behavior>
+    <dl-behavior></dl-behavior>
   </template>
 </test-fixture>
 
 <test-fixture id="ChangedPropertyTestFixture">
   <template>
-    <mtz-file-download-behavior></mtz-file-download-behavior>
+    <dl-behavior></dl-behavior>
   </template>
 </test-fixture>
 
 <script type="module">
-  suite('<mtz-file-download-behavior>', () => {
+  suite('<dl-behavior>', () => {
     test('it should upgrade', () => {
-      assert.instanceOf(document.querySelector('mtz-file-download-behavior'), customElements.get("mtz-file-download-behavior", 'mtz-file-download-behavior should be an instance of mtzFileDownloadBehavior'));
+      assert.instanceOf(document.querySelector('dl-behavior'), customElements.get("dl-behavior", 'dl-behavior should be an instance of mtzFileDownloadBehavior'));
     });
 
     /*test('setting a property on the element works', () => {

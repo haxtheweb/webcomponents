@@ -3,7 +3,7 @@ define(["./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js"], function(
 ) {
   "use strict";
   window.mtz = window.mtz || {};
-  mtz.FileDownloadBehavior = {
+  mtz.FileDownloadBehaviors = {
     properties: {
       fileTypes: {
         type: Object,

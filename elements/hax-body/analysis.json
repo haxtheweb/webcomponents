@@ -15178,7 +15178,7 @@
           "description": "MIME type lookup for file extensions",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@lrnwebcomponents/mtz-file-download-behavior/mtz-file-download-behavior.js",
+            "file": "../../@lrnwebcomponents/dl-behavior/dl-behavior.js",
             "start": {
               "line": 12,
               "column": 4
@@ -15193,7 +15193,7 @@
               "attributeType": "Object"
             }
           },
-          "inheritedFrom": "mtz.FileDownloadBehavior"
+          "inheritedFrom": "mtz.FileDownloadBehaviors"
         },
         {
           "name": "title",
@@ -15246,7 +15246,7 @@
           "description": "Converts the data to a blob then uses navigator to save blob if it’s available, otherwise\ncreates an <a> with [download] attribute then simulates a click.",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@lrnwebcomponents/mtz-file-download-behavior/mtz-file-download-behavior.js",
+            "file": "../../@lrnwebcomponents/dl-behavior/dl-behavior.js",
             "start": {
               "line": 34,
               "column": 2
@@ -15280,14 +15280,14 @@
           "return": {
             "type": "void"
           },
-          "inheritedFrom": "mtz.FileDownloadBehavior"
+          "inheritedFrom": "mtz.FileDownloadBehaviors"
         },
         {
           "name": "downloadFromURI",
           "description": "Opens a new tab at the URI so that download can be initiated from the page.",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@lrnwebcomponents/mtz-file-download-behavior/mtz-file-download-behavior.js",
+            "file": "../../@lrnwebcomponents/dl-behavior/dl-behavior.js",
             "start": {
               "line": 63,
               "column": 2
@@ -15309,7 +15309,7 @@
               "defaultValue": "true"
             }
           ],
-          "inheritedFrom": "mtz.FileDownloadBehavior"
+          "inheritedFrom": "mtz.FileDownloadBehaviors"
         },
         {
           "name": "ready",
@@ -15619,7 +15619,7 @@
           "name": "file-types",
           "description": "MIME type lookup for file extensions",
           "sourceRange": {
-            "file": "../../@lrnwebcomponents/mtz-file-download-behavior/mtz-file-download-behavior.js",
+            "file": "../../@lrnwebcomponents/dl-behavior/dl-behavior.js",
             "start": {
               "line": 12,
               "column": 4
@@ -15631,7 +15631,7 @@
           },
           "metadata": {},
           "type": "Object | null | undefined",
-          "inheritedFrom": "mtz.FileDownloadBehavior"
+          "inheritedFrom": "mtz.FileDownloadBehaviors"
         },
         {
           "name": "title",

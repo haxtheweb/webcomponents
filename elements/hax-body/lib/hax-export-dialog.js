@@ -3,14 +3,13 @@ import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/mtz-file-download-behavior/mtz-file-download-behavior.js";
+import "@lrnwebcomponents/dl-behavior/dl-behavior.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
 `hax-export-dialog`
 Export dialog with all export options and settings provided.
 
 @demo demo/index.html
-
 @microcopy - the mental model for this element
  -
 
@@ -120,7 +119,7 @@ Polymer({
     "elementexport.tap": "htmlToHaxElements"
   },
 
-  behaviors: [mtz.FileDownloadBehavior, simpleColorsBehaviors],
+  behaviors: [mtz.FileDownloadBehaviors, simpleColorsBehaviors],
 
   properties: {
     /**
