@@ -3,7 +3,7 @@ define([
   "./lib/chartist-lib.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_b2bf8e80db1311e8970517e1575310d5() {
+  function _templateObject_41f6ce50db1511e8b9b599d764d0f2ea() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <div id="chart" chart$="[[__chartId]]" class$="ct-chart [[scale]]"></div>\n'
@@ -12,14 +12,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <div id="chart" chart\\$="[[__chartId]]" class\\$="ct-chart [[scale]]"></div>\n'
       ]
     );
-    _templateObject_b2bf8e80db1311e8970517e1575310d5 = function() {
+    _templateObject_41f6ce50db1511e8b9b599d764d0f2ea = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_b2bf8e80db1311e8970517e1575310d5()
+      _templateObject_41f6ce50db1511e8b9b599d764d0f2ea()
     ),
     is: "chartist-render",
     listeners: { "chart.tap": "makeChart", created: "_onCreated" },

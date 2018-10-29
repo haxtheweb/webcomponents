@@ -3,18 +3,18 @@ define([
   "./data-table-templatizer-behavior.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_d3cc3570db1211e8bf630bf889a443ae() {
+  function _templateObject_704c2f30db1411e8a264c998b4b370c6() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n      :host {\n        padding: 0 24px 0 24px;\n        display: flex;\n        align-items: center;\n      }\n    </style>\n    <slot></slot>\n"
     ]);
-    _templateObject_d3cc3570db1211e8bf630bf889a443ae = function() {
+    _templateObject_704c2f30db1411e8a264c998b4b370c6 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_d3cc3570db1211e8bf630bf889a443ae()
+      _templateObject_704c2f30db1411e8a264c998b4b370c6()
     ),
     is: "data-table-row-detail",
     behaviors: [saulis.DataTableTemplatizerBehavior],

@@ -2,22 +2,370 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`fancy-carousel`\n`Start of fancy-carousel fork`",
+      "description": "`fancy-carousel`\nCarousel which gives you options for multiple fancy transistions and different ways to include images.",
       "summary": "",
       "path": "fancy-carousel.js",
-      "properties": [],
-      "methods": [
+      "properties": [
         {
-          "name": "connectedCallback",
-          "description": "life cycle, element is afixed to the DOM",
+          "name": "selected",
+          "type": "?",
+          "description": "",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 80,
+              "line": 51,
+              "column": 4
+            },
+            "end": {
+              "line": 53,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_selectedChanged\""
+            }
+          }
+        },
+        {
+          "name": "imageTopic",
+          "type": "string | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 54,
+              "column": 4
+            },
+            "end": {
+              "line": 56,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "searchEngineCx",
+          "type": "string | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 57,
+              "column": 4
+            },
+            "end": {
+              "line": 59,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "apiKey",
+          "type": "string | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 60,
+              "column": 4
+            },
+            "end": {
+              "line": 62,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "transitionType",
+          "type": "string | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 63,
+              "column": 4
+            },
+            "end": {
+              "line": 67,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"default\""
+        },
+        {
+          "name": "noControls",
+          "type": "boolean | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 68,
+              "column": 4
+            },
+            "end": {
+              "line": 71,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "transitionTimer",
+          "type": "number | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 72,
+              "column": 4
+            },
+            "end": {
+              "line": 76,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_timerChanged\"",
+              "attributeType": "Number"
+            }
+          },
+          "defaultValue": "0"
+        }
+      ],
+      "methods": [
+        {
+          "name": "_loadCustomImages",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "lib/fancy-carousel-behaviour.js",
+            "start": {
+              "line": 8,
               "column": 2
             },
             "end": {
-              "line": 84,
+              "line": 20,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "searchTerm"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "FancyCarouselBehaviour"
+        },
+        {
+          "name": "_addImageNodes",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "lib/fancy-carousel-behaviour.js",
+            "start": {
+              "line": 22,
+              "column": 2
+            },
+            "end": {
+              "line": 34,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "imgUrls"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "FancyCarouselBehaviour"
+        },
+        {
+          "name": "_getNextElement",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "lib/fancy-carousel-behaviour.js",
+            "start": {
+              "line": 36,
+              "column": 2
+            },
+            "end": {
+              "line": 45,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "FancyCarouselBehaviour"
+        },
+        {
+          "name": "_timerChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "lib/fancy-carousel-behaviour.js",
+            "start": {
+              "line": 47,
+              "column": 2
+            },
+            "end": {
+              "line": 54,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "FancyCarouselBehaviour"
+        },
+        {
+          "name": "_selectedChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "lib/fancy-carousel-behaviour.js",
+            "start": {
+              "line": 56,
+              "column": 2
+            },
+            "end": {
+              "line": 69,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "selected"
+            },
+            {
+              "name": "oldSelected"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "FancyCarouselBehaviour"
+        },
+        {
+          "name": "_loadImage",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "lib/fancy-carousel-behaviour.js",
+            "start": {
+              "line": 71,
+              "column": 2
+            },
+            "end": {
+              "line": 75,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "img"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "FancyCarouselBehaviour"
+        },
+        {
+          "name": "attached",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 79,
+              "column": 2
+            },
+            "end": {
+              "line": 94,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "previous",
+          "description": "Changes the carousel to the previous image",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 99,
+              "column": 2
+            },
+            "end": {
+              "line": 107,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "next",
+          "description": "Changes the carousel to the next image",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 112,
+              "column": 2
+            },
+            "end": {
+              "line": 117,
               "column": 3
             }
           },
@@ -38,24 +386,707 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 18,
-          "column": 0
+          "line": 10,
+          "column": 8
         },
         "end": {
-          "line": 90,
+          "line": 118,
           "column": 1
         }
       },
       "privacy": "public",
-      "superclass": "PolymerElement",
-      "name": "FancyCarousel",
-      "attributes": [],
-      "events": [],
+      "superclass": "HTMLElement",
+      "attributes": [
+        {
+          "name": "selected",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 51,
+              "column": 4
+            },
+            "end": {
+              "line": 53,
+              "column": 5
+            }
+          },
+          "metadata": {}
+        },
+        {
+          "name": "image-topic",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 54,
+              "column": 4
+            },
+            "end": {
+              "line": 56,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "search-engine-cx",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 57,
+              "column": 4
+            },
+            "end": {
+              "line": 59,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "api-key",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 60,
+              "column": 4
+            },
+            "end": {
+              "line": 62,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "transition-type",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 63,
+              "column": 4
+            },
+            "end": {
+              "line": 67,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "no-controls",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 68,
+              "column": 4
+            },
+            "end": {
+              "line": 71,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "transition-timer",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 72,
+              "column": 4
+            },
+            "end": {
+              "line": 76,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "transition-type-changed",
+          "description": "Fired when the `transitionType` property changes.",
+          "metadata": {}
+        }
+      ],
       "styling": {
         "cssVariables": [],
         "selectors": []
       },
-      "slots": []
+      "slots": [],
+      "tagname": "fancy-carousel"
     }
-  ]
+  ],
+  "metadata": {
+    "polymer": {
+      "behaviors": [
+        {
+          "description": "",
+          "summary": "",
+          "path": "lib/fancy-carousel-animation-behaviour.js",
+          "properties": [],
+          "methods": [
+            {
+              "name": "_getNatureSpriteUrl",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 10,
+                  "column": 2
+                },
+                "end": {
+                  "line": 12,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": []
+            },
+            {
+              "name": "_getUrbanSpriteUrl",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 14,
+                  "column": 2
+                },
+                "end": {
+                  "line": 16,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": []
+            },
+            {
+              "name": "_getShiftSpriteUrl",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 18,
+                  "column": 2
+                },
+                "end": {
+                  "line": 20,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": []
+            },
+            {
+              "name": "_getCollaspeSpriteUrl",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 22,
+                  "column": 2
+                },
+                "end": {
+                  "line": 24,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": []
+            },
+            {
+              "name": "_preloadAnimationSprites",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 26,
+                  "column": 2
+                },
+                "end": {
+                  "line": 50,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [],
+              "return": {
+                "type": "void"
+              }
+            },
+            {
+              "name": "_resetZIndex",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 52,
+                  "column": 2
+                },
+                "end": {
+                  "line": 60,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "elements"
+                },
+                {
+                  "name": "current"
+                }
+              ],
+              "return": {
+                "type": "void"
+              }
+            },
+            {
+              "name": "_startTransition",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 62,
+                  "column": 2
+                },
+                "end": {
+                  "line": 94,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "direction"
+                },
+                {
+                  "name": "selected"
+                },
+                {
+                  "name": "nextElem"
+                }
+              ],
+              "return": {
+                "type": "void"
+              }
+            },
+            {
+              "name": "_animateTransition",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 96,
+                  "column": 2
+                },
+                "end": {
+                  "line": 128,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "direction"
+                },
+                {
+                  "name": "selected"
+                },
+                {
+                  "name": "nextElem"
+                }
+              ],
+              "return": {
+                "type": "void"
+              }
+            },
+            {
+              "name": "_resetChildrenStyles",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 137,
+                  "column": 2
+                },
+                "end": {
+                  "line": 145,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [],
+              "return": {
+                "type": "void"
+              }
+            },
+            {
+              "name": "_translateX",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 147,
+                  "column": 2
+                },
+                "end": {
+                  "line": 151,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "elem"
+                },
+                {
+                  "name": "x"
+                },
+                {
+                  "name": "transition"
+                }
+              ],
+              "return": {
+                "type": "void"
+              }
+            },
+            {
+              "name": "_touchstart",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 153,
+                  "column": 2
+                },
+                "end": {
+                  "line": 164,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "event"
+                }
+              ],
+              "return": {
+                "type": "void"
+              }
+            },
+            {
+              "name": "_touchmove",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 166,
+                  "column": 2
+                },
+                "end": {
+                  "line": 200,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "event"
+                }
+              ],
+              "return": {
+                "type": "void"
+              }
+            },
+            {
+              "name": "_touchend",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 202,
+                  "column": 2
+                },
+                "end": {
+                  "line": 268,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "event"
+                }
+              ],
+              "return": {
+                "type": "void"
+              }
+            }
+          ],
+          "staticMethods": [],
+          "demos": [],
+          "metadata": {},
+          "sourceRange": {
+            "start": {
+              "line": 3,
+              "column": 0
+            },
+            "end": {
+              "line": 269,
+              "column": 2
+            }
+          },
+          "privacy": "public",
+          "name": "FancyCarouselAnimationBehaviour",
+          "attributes": [],
+          "events": [],
+          "styling": {
+            "cssVariables": [],
+            "selectors": []
+          },
+          "slots": []
+        },
+        {
+          "description": "",
+          "summary": "",
+          "path": "lib/fancy-carousel-animation-behaviour.js",
+          "properties": [],
+          "methods": [],
+          "staticMethods": [],
+          "demos": [],
+          "metadata": {},
+          "sourceRange": {
+            "start": {
+              "line": 272,
+              "column": 0
+            },
+            "end": {
+              "line": 274,
+              "column": 2
+            }
+          },
+          "privacy": "public",
+          "name": "window.FancyCarouselAnimationBehaviour",
+          "attributes": [],
+          "events": [],
+          "styling": {
+            "cssVariables": [],
+            "selectors": []
+          },
+          "slots": []
+        },
+        {
+          "description": "",
+          "summary": "",
+          "path": "lib/fancy-carousel-behaviour.js",
+          "properties": [],
+          "methods": [
+            {
+              "name": "_loadCustomImages",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 8,
+                  "column": 2
+                },
+                "end": {
+                  "line": 20,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "searchTerm"
+                }
+              ],
+              "return": {
+                "type": "void"
+              }
+            },
+            {
+              "name": "_addImageNodes",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 22,
+                  "column": 2
+                },
+                "end": {
+                  "line": 34,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "imgUrls"
+                }
+              ],
+              "return": {
+                "type": "void"
+              }
+            },
+            {
+              "name": "_getNextElement",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 36,
+                  "column": 2
+                },
+                "end": {
+                  "line": 45,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": []
+            },
+            {
+              "name": "_timerChanged",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 47,
+                  "column": 2
+                },
+                "end": {
+                  "line": 54,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ],
+              "return": {
+                "type": "void"
+              }
+            },
+            {
+              "name": "_selectedChanged",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 56,
+                  "column": 2
+                },
+                "end": {
+                  "line": 69,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "selected"
+                },
+                {
+                  "name": "oldSelected"
+                }
+              ],
+              "return": {
+                "type": "void"
+              }
+            },
+            {
+              "name": "_loadImage",
+              "description": "",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 71,
+                  "column": 2
+                },
+                "end": {
+                  "line": 75,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "img"
+                }
+              ],
+              "return": {
+                "type": "void"
+              }
+            }
+          ],
+          "staticMethods": [],
+          "demos": [],
+          "metadata": {},
+          "sourceRange": {
+            "start": {
+              "line": 3,
+              "column": 0
+            },
+            "end": {
+              "line": 76,
+              "column": 2
+            }
+          },
+          "privacy": "public",
+          "name": "FancyCarouselBehaviour",
+          "attributes": [],
+          "events": [],
+          "styling": {
+            "cssVariables": [],
+            "selectors": []
+          },
+          "slots": []
+        },
+        {
+          "description": "",
+          "summary": "",
+          "path": "lib/fancy-carousel-behaviour.js",
+          "properties": [],
+          "methods": [],
+          "staticMethods": [],
+          "demos": [],
+          "metadata": {},
+          "sourceRange": {
+            "start": {
+              "line": 79,
+              "column": 0
+            },
+            "end": {
+              "line": 82,
+              "column": 2
+            }
+          },
+          "privacy": "public",
+          "name": "window.FancyCarouselBehaviour",
+          "attributes": [],
+          "events": [],
+          "styling": {
+            "cssVariables": [],
+            "selectors": []
+          },
+          "slots": []
+        }
+      ]
+    }
+  }
 }

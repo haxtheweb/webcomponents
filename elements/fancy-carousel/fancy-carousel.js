@@ -1,92 +1,119 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "./lib/fancy-carousel-behaviour.js";
+import "./lib/fancy-carousel-shared-styles.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { FancyCarousel };
-/**
- * `fancy-carousel`
- * `Start of fancy-carousel fork`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class FancyCarousel extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
+`fancy-carousel`
+Carousel which gives you options for multiple fancy transistions and different ways to include images.
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
-
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Fancy carousel",
-        description: "Start of fancy-carousel fork",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Carousel"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [],
-        advanced: []
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style include="fancy-carousel-shared-styles">
+      :host {
+        display: block;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        contain: content;
       }
-    };
-  }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
+
+      :host:after {
+        display: block;
+        content: '';
+        padding-top: 75%; /* 4:3 = height is 75% of width */
+      }
+
+      #prevBtn {
+        left: 12px;
+        z-index: 1000;
+      }
+
+      #nextBtn {
+        right: 12px;
+        z-index: 1000;
+      }
+    </style>
+
+    <div id="content-wrapper">
+      <slot></slot>
+    </div>
+
+    <button id="prevBtn" on-click="previous">❮</button>
+    <button id="nextBtn" on-click="next">❯</button>
+`,
+
+  is: "fancy-carousel",
+
+  behaviors: [FancyCarouselBehaviour],
+
+  properties: {
+    selected: {
+      observer: "_selectedChanged"
+    },
+    imageTopic: {
+      type: String
+    },
+    searchEngineCx: {
+      type: String
+    },
+    apiKey: {
+      type: String
+    },
+    transitionType: {
+      value: "default",
+      type: String,
+      notify: true
+    },
+    noControls: {
+      type: Boolean,
+      value: false
+    },
+    transitionTimer: {
+      type: Number,
+      value: 0,
+      observer: "_timerChanged"
+    }
+  },
+
+  attached: function() {
+    this._resetZIndex(dom(this).children);
+    this.selected = dom(this).querySelectorAll("img")[0];
+    if (this.selected) {
+      this.selected.style.zIndex = "100";
+    }
+    if (this.noControls) {
+      this.$.prevBtn.style.display = "none";
+      this.$.nextBtn.style.display = "none";
+    }
+    if (this.imageTopic) {
+      this._loadCustomImages(this.imageTopic);
+    }
+
+    this._preloadAnimationSprites();
+  },
 
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * Changes the carousel to the previous image
    */
-  static get tag() {
-    return "fancy-carousel";
-  }
+  previous: function() {
+    var elem = this.selected.previousElementSibling;
+    while (elem && elem.getAttribute("class") === "dummy") {
+      elem = elem.previousElementSibling;
+    }
+    if (elem && !this._touchDir) {
+      this._startTransition(-1, this.selected, elem);
+    }
+  },
+
   /**
-   * life cycle, element is afixed to the DOM
+   * Changes the carousel to the next image
    */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      FancyCarousel.haxProperties,
-      FancyCarousel.tag,
-      this
-    );
+  next: function() {
+    var elem = this._getNextElement();
+    if (elem && !this._touchDir) {
+      this._startTransition(1, this.selected, elem);
+    }
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(FancyCarousel.tag, FancyCarousel);
+});

@@ -4,18 +4,18 @@ define([
   "./node_modules/@polymer/polymer/lib/legacy/templatizer-behavior.js"
 ], function(_polymerLegacy, _polymerDom, _templatizerBehavior) {
   "use strict";
-  function _templateObject_c3e35530db1211e89ccb576b786a9c96() {
+  function _templateObject_5aa51fc0db1411e8a62ab99639a47ba8() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n        <div id="dom">\n          <slot id="template" name="template"></slot>\n        </div>\n'
     ]);
-    _templateObject_c3e35530db1211e89ccb576b786a9c96 = function() {
+    _templateObject_5aa51fc0db1411e8a62ab99639a47ba8 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_c3e35530db1211e89ccb576b786a9c96()
+      _templateObject_5aa51fc0db1411e8a62ab99639a47ba8()
     ),
     is: "grafitto-filter",
     behaviors: [_templatizerBehavior.Templatizer],
