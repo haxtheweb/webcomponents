@@ -5,7 +5,7 @@ define([
   "./node_modules/jarallax/src/jarallax-element.esm.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_b5b376e0d96211e88bc5ef7e87676a59() {
+  function _templateObject_4b7c50a0db1311e8b33dd312fda73be9() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n\n      .jarallax {\n        position: relative;\n        z-index: 0;\n        height: 400px;\n        overflow: hidden;\n      }\n\n      .jarallax>.jarallax-img {\n        position: absolute;\n        object-fit: cover;\n        /* support for plugin https://github.com/bfred-it/object-fit-images */\n        font-family: \'object-fit: cover;\';\n        top: 0;\n        left: 0;\n        width: 100%;\n        height: 100%;\n        z-index: -1;\n      }\n\n      #title_contain {\n        display: flex;\n        /* flex-direction: column; */\n        justify-content: center;\n        padding-top: 170px;\n      }\n\n      .title {\n        background: rgba(0, 0, 0, 0.3);\n        display: block;\n        padding: 20px 15px;\n        text-align: center;\n        width: 40%;\n        color: #fff;\n        font-size: 2em;\n        position: absolute;\n        border: solid 1px;\n      }\n\n      @media screen and (max-width: 900px) {\n        .title {\n          font-size: 18px;\n        }\n      }\n\n      @media screen and (max-width: 600px) {\n        .title {\n          font-size: 14px;\n        }\n      }\n    </style>\n\n    <a href="[[url]]" target$="[[_urlTarget(url)]]">\n      <div class="parallax_contain">\n        <div class="jarallax">\n          <template is="dom-if" if="[[title]]">\n            <div id="title_contain">\n              <div class="title">[[title]]</div>\n            </div>\n          </template>\n        </div>\n      </div>\n    </a>\n'
@@ -14,14 +14,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n\n      .jarallax {\n        position: relative;\n        z-index: 0;\n        height: 400px;\n        overflow: hidden;\n      }\n\n      .jarallax>.jarallax-img {\n        position: absolute;\n        object-fit: cover;\n        /* support for plugin https://github.com/bfred-it/object-fit-images */\n        font-family: \'object-fit: cover;\';\n        top: 0;\n        left: 0;\n        width: 100%;\n        height: 100%;\n        z-index: -1;\n      }\n\n      #title_contain {\n        display: flex;\n        /* flex-direction: column; */\n        justify-content: center;\n        padding-top: 170px;\n      }\n\n      .title {\n        background: rgba(0, 0, 0, 0.3);\n        display: block;\n        padding: 20px 15px;\n        text-align: center;\n        width: 40%;\n        color: #fff;\n        font-size: 2em;\n        position: absolute;\n        border: solid 1px;\n      }\n\n      @media screen and (max-width: 900px) {\n        .title {\n          font-size: 18px;\n        }\n      }\n\n      @media screen and (max-width: 600px) {\n        .title {\n          font-size: 14px;\n        }\n      }\n    </style>\n\n    <a href="[[url]]" target\\$="[[_urlTarget(url)]]">\n      <div class="parallax_contain">\n        <div class="jarallax">\n          <template is="dom-if" if="[[title]]">\n            <div id="title_contain">\n              <div class="title">[[title]]</div>\n            </div>\n          </template>\n        </div>\n      </div>\n    </a>\n'
       ]
     );
-    _templateObject_b5b376e0d96211e88bc5ef7e87676a59 = function() {
+    _templateObject_4b7c50a0db1311e8b33dd312fda73be9 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_b5b376e0d96211e88bc5ef7e87676a59()
+      _templateObject_4b7c50a0db1311e8b33dd312fda73be9()
     ),
     is: "parallax-effect",
     properties: {

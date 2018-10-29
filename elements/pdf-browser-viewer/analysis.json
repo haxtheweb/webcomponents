@@ -2,22 +2,218 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`pdf-browser-viewer`\n`Start of pdf-browser-viewer`",
+      "description": "Example:\n```html\n    <pdf-browser-viewer id=\"pdfViewer\" file=\"[[pdfUrl]]\" width=\"100%\"></pdf-browser-viewer>\n```\n\nData Bind with Blob example:\n```js\n    this.pdfUrl = URL.createObjectURL(blob);\n```\n\nClear PDF container example:\n```js\n    this.$.pdfViewer.clear();\n```\n\nMessage example:\n```html\n    <pdf-browser-viewer\n        file=\"[[pdfUrl]]\"\n        not-supported-message=\"Not supported by your browser\"\n        not-supported-link-message=\"see the file here!\">\n    </pdf-browser-viewer>\n```\n\nCard example:\n```html\n    <pdf-browser-viewer\n        file=\"[[pdfUrl]]\"\n        card elevation=\"3\"\n        download-label=\"Baixar\">\n    </pdf-browser-viewer>\n```",
       "summary": "",
       "path": "pdf-browser-viewer.js",
-      "properties": [],
-      "methods": [
+      "properties": [
         {
-          "name": "connectedCallback",
-          "description": "life cycle, element is afixed to the DOM",
+          "name": "file",
+          "type": "string | null | undefined",
+          "description": "The location of the PDF file.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 80,
+              "line": 93,
+              "column": 4
+            },
+            "end": {
+              "line": 97,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "notSupportedMessage",
+          "type": "string | null | undefined",
+          "description": "The message when browser doesn't support pdf object",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 103,
+              "column": 4
+            },
+            "end": {
+              "line": 107,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"It appears your Web browser is not configured to display PDF files. No worries, just\""
+        },
+        {
+          "name": "notSupportedLinkMessage",
+          "type": "string | null | undefined",
+          "description": "The PDF link message when browser doesn't support pdf object",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 113,
+              "column": 4
+            },
+            "end": {
+              "line": 116,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"click here to download the PDF file.\""
+        },
+        {
+          "name": "height",
+          "type": "string | null | undefined",
+          "description": "The height of the PDF viewer.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 122,
+              "column": 4
+            },
+            "end": {
+              "line": 125,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"400px\""
+        },
+        {
+          "name": "width",
+          "type": "string | null | undefined",
+          "description": "The width of the PDF viewer.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 131,
+              "column": 4
+            },
+            "end": {
+              "line": 134,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"100%\""
+        },
+        {
+          "name": "card",
+          "type": "boolean | null | undefined",
+          "description": "PDF viewer as a card with download button.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 140,
+              "column": 4
+            },
+            "end": {
+              "line": 143,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "downloadLabel",
+          "type": "string | null | undefined",
+          "description": "Download button label.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 149,
+              "column": 4
+            },
+            "end": {
+              "line": 152,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"Download\""
+        },
+        {
+          "name": "elevation",
+          "type": "string | null | undefined",
+          "description": "The z-depth of the card, from 0-5.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 158,
+              "column": 4
+            },
+            "end": {
+              "line": 161,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"1\""
+        }
+      ],
+      "methods": [
+        {
+          "name": "clear",
+          "description": "Clear PDF container",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 167,
               "column": 2
             },
             "end": {
-              "line": 84,
+              "line": 169,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_download",
+          "description": "Downloads the pdf file",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 174,
+              "column": 2
+            },
+            "end": {
+              "line": 176,
               "column": 3
             }
           },
@@ -38,24 +234,153 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 18,
-          "column": 0
+          "line": 50,
+          "column": 8
         },
         "end": {
-          "line": 90,
+          "line": 177,
           "column": 1
         }
       },
       "privacy": "public",
-      "superclass": "PolymerElement",
-      "name": "PdfBrowserViewer",
-      "attributes": [],
+      "superclass": "HTMLElement",
+      "attributes": [
+        {
+          "name": "file",
+          "description": "The location of the PDF file.",
+          "sourceRange": {
+            "start": {
+              "line": 93,
+              "column": 4
+            },
+            "end": {
+              "line": 97,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "not-supported-message",
+          "description": "The message when browser doesn't support pdf object",
+          "sourceRange": {
+            "start": {
+              "line": 103,
+              "column": 4
+            },
+            "end": {
+              "line": 107,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "not-supported-link-message",
+          "description": "The PDF link message when browser doesn't support pdf object",
+          "sourceRange": {
+            "start": {
+              "line": 113,
+              "column": 4
+            },
+            "end": {
+              "line": 116,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "height",
+          "description": "The height of the PDF viewer.",
+          "sourceRange": {
+            "start": {
+              "line": 122,
+              "column": 4
+            },
+            "end": {
+              "line": 125,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "width",
+          "description": "The width of the PDF viewer.",
+          "sourceRange": {
+            "start": {
+              "line": 131,
+              "column": 4
+            },
+            "end": {
+              "line": 134,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "card",
+          "description": "PDF viewer as a card with download button.",
+          "sourceRange": {
+            "start": {
+              "line": 140,
+              "column": 4
+            },
+            "end": {
+              "line": 143,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "download-label",
+          "description": "Download button label.",
+          "sourceRange": {
+            "start": {
+              "line": 149,
+              "column": 4
+            },
+            "end": {
+              "line": 152,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "elevation",
+          "description": "The z-depth of the card, from 0-5.",
+          "sourceRange": {
+            "start": {
+              "line": 158,
+              "column": 4
+            },
+            "end": {
+              "line": 161,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        }
+      ],
       "events": [],
       "styling": {
         "cssVariables": [],
         "selectors": []
       },
-      "slots": []
+      "slots": [],
+      "tagname": "pdf-browser-viewer"
     }
   ]
 }

@@ -1,102 +1,38 @@
 define([
-  "exports",
-  "./node_modules/@polymer/polymer/polymer-element.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_exports, _polymerElement, _HAXWiring) {
+  "./node_modules/@polymer/polymer/polymer-legacy.js",
+  "./lib/lrndesign-stepper-button.js"
+], function(_polymerLegacy) {
   "use strict";
-  Object.defineProperty(_exports, "__esModule", { value: !0 });
-  _exports.LrndesignStepper = void 0;
-  function _templateObject_91507f60d6fa11e89ad55705cb98ef50() {
+  function _templateObject_12ba7030db1311e8bafa05d4cb035e30() {
     var data = babelHelpers.taggedTemplateLiteral([
-      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
+      '\n    <style>\n       :host {\n        display: block;\n      }\n    </style>\n\n    <div class="buttons">\n      <slot id="stepper-children">\n      </slot>\n    </div>\n'
     ]);
-    _templateObject_91507f60d6fa11e89ad55705cb98ef50 = function() {
+    _templateObject_12ba7030db1311e8bafa05d4cb035e30 = function() {
       return data;
     };
     return data;
   }
-  var LrndesignStepper = (function(_PolymerElement) {
-    babelHelpers.inherits(LrndesignStepper, _PolymerElement);
-    function LrndesignStepper() {
-      babelHelpers.classCallCheck(this, LrndesignStepper);
-      return babelHelpers.possibleConstructorReturn(
-        this,
-        (
-          LrndesignStepper.__proto__ || Object.getPrototypeOf(LrndesignStepper)
-        ).apply(this, arguments)
-      );
+  (0, _polymerLegacy.Polymer)({
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_12ba7030db1311e8bafa05d4cb035e30()
+    ),
+    is: "lrndesign-stepper",
+    properties: {},
+    ready: function ready() {
+      var root = this,
+        children = root.getContentChildren("#stepper-children");
+      if (1 < children.length) {
+        children.forEach(function(child, index) {
+          if (0 === index) {
+            child.setAttribute("location", "start");
+          } else if (index === children.length - 1) {
+            child.setAttribute("location", "end");
+          } else {
+            child.setAttribute("location", "middle");
+          }
+          console.log(child, index);
+        });
+      }
     }
-    babelHelpers.createClass(
-      LrndesignStepper,
-      [
-        {
-          key: "connectedCallback",
-          value: function connectedCallback() {
-            babelHelpers
-              .get(
-                LrndesignStepper.prototype.__proto__ ||
-                  Object.getPrototypeOf(LrndesignStepper.prototype),
-                "connectedCallback",
-                this
-              )
-              .call(this);
-            this.HAXWiring = new _HAXWiring.HAXWiring();
-            this.HAXWiring.setHaxProperties(
-              LrndesignStepper.haxProperties,
-              LrndesignStepper.tag,
-              this
-            );
-          }
-        }
-      ],
-      [
-        {
-          key: "template",
-          get: function get() {
-            return (0, _polymerElement.html)(
-              _templateObject_91507f60d6fa11e89ad55705cb98ef50()
-            );
-          }
-        },
-        {
-          key: "haxProperties",
-          get: function get() {
-            return {
-              canScale: !0,
-              canPosition: !0,
-              canEditSource: !1,
-              gizmo: {
-                title: "Lrndesign stepper",
-                description: "Automated conversion of lrndesign-stepper/",
-                icon: "icons:android",
-                color: "green",
-                groups: ["Stepper"],
-                handles: [{ type: "todo:read-the-docs-for-usage" }],
-                meta: {
-                  author: "btopro",
-                  owner: "The Pennsylvania State University"
-                }
-              },
-              settings: { quick: [], configure: [], advanced: [] }
-            };
-          }
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {};
-          }
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "lrndesign-stepper";
-          }
-        }
-      ]
-    );
-    return LrndesignStepper;
-  })(_polymerElement.PolymerElement);
-  _exports.LrndesignStepper = LrndesignStepper;
-  window.customElements.define(LrndesignStepper.tag, LrndesignStepper);
+  });
 });

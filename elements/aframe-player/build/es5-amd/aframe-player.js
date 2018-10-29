@@ -5,7 +5,7 @@ define([
   "./lib/aframe-aframe.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_fc83f950d96211e8aa58cd42e0761ec7() {
+  function _templateObject_a8bcb0c0db1311e88e47bdb0efe8dc38() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n        position: relative;\n      }\n    </style>\n    <a-scene id="scene" class="embedded" embedded="" arjs$="[[ar]]" style$="height:[[height]];width:[[width]];">\n      <a-sky color$="[[skyColor]]"></a-sky>\n      <a-marker-camera preset="hiro"></a-marker-camera>\n      <a-entity id="entity" gltf-model$="[[source]]" position="0 0 0"></a-entity>\n    </a-scene>\n'
@@ -14,14 +14,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n        position: relative;\n      }\n    </style>\n    <a-scene id="scene" class="embedded" embedded="" arjs\\$="[[ar]]" style\\$="height:[[height]];width:[[width]];">\n      <a-sky color\\$="[[skyColor]]"></a-sky>\n      <a-marker-camera preset="hiro"></a-marker-camera>\n      <a-entity id="entity" gltf-model\\$="[[source]]" position="0 0 0"></a-entity>\n    </a-scene>\n'
       ]
     );
-    _templateObject_fc83f950d96211e8aa58cd42e0761ec7 = function() {
+    _templateObject_a8bcb0c0db1311e88e47bdb0efe8dc38 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_fc83f950d96211e8aa58cd42e0761ec7()
+      _templateObject_a8bcb0c0db1311e88e47bdb0efe8dc38()
     ),
     is: "aframe-player",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

@@ -1,102 +1,97 @@
 define([
-  "exports",
-  "./node_modules/@polymer/polymer/polymer-element.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_exports, _polymerElement, _HAXWiring) {
+  "./node_modules/@polymer/polymer/polymer-legacy.js",
+  "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
+  "./node_modules/@polymer/iron-form-element-behavior/iron-form-element-behavior.js",
+  "./node_modules/@polymer/iron-validatable-behavior/iron-validatable-behavior.js"
+], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  Object.defineProperty(_exports, "__esModule", { value: !0 });
-  _exports.MtzMarkedEditor = void 0;
-  function _templateObject_e2bd4720d6ff11e8a6c6bd5f85eb3d20() {
+  function _templateObject_2ebdeaa0db1311e89ba2d54a07ca2152() {
     var data = babelHelpers.taggedTemplateLiteral([
-      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
+      '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n\n      <slot name="controls"></slot>\n      <slot name="textarea"></slot>\n      <slot name="footer"></slot>\n'
     ]);
-    _templateObject_e2bd4720d6ff11e8a6c6bd5f85eb3d20 = function() {
+    _templateObject_2ebdeaa0db1311e89ba2d54a07ca2152 = function() {
       return data;
     };
     return data;
   }
-  var MtzMarkedEditor = (function(_PolymerElement) {
-    babelHelpers.inherits(MtzMarkedEditor, _PolymerElement);
-    function MtzMarkedEditor() {
-      babelHelpers.classCallCheck(this, MtzMarkedEditor);
-      return babelHelpers.possibleConstructorReturn(
-        this,
-        (
-          MtzMarkedEditor.__proto__ || Object.getPrototypeOf(MtzMarkedEditor)
-        ).apply(this, arguments)
-      );
+  (0, _polymerLegacy.Polymer)({
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_2ebdeaa0db1311e89ba2d54a07ca2152()
+    ),
+    is: "mtz-marked-editor",
+    properties: {
+      autofocus: Boolean,
+      readonly: Boolean,
+      textareaSelector: { type: String, value: "textarea" },
+      __textarea: Object
+    },
+    ready: function ready() {
+      this.__bindControlToEditor = this.__bindControlToEditor.bind(this);
+    },
+    attached: function attached() {
+      this.addEventListener("register-control", this.__bindControlToEditor);
+      this.__textarea = (0, _polymerDom.dom)(this).queryDistributedElements(
+        '[slot="textarea"]'
+      )[0];
+    },
+    detached: function detached() {
+      this.removeEventListener("register-control", this.__bindControlToEditor);
+    },
+    getTextarea: function getTextarea() {
+      return this.__textarea;
+    },
+    getLines: function getLines() {
+      return this.getContent().split(/(?=\n|\r\n)$/gm);
+    },
+    getContent: function getContent() {
+      if (babelHelpers.typeof(this.getTextarea()) !== "undefined") {
+        return this.getTextarea().value;
+      }
+      return "";
+    },
+    setContent: function setContent(content) {
+      this.getTextarea().value = content;
+    },
+    getSelection: function getSelection() {
+      var textarea =
+          0 < arguments.length && arguments[0] !== void 0
+            ? arguments[0]
+            : this.getTextarea(),
+        start = textarea.selectionStart,
+        end = textarea.selectionEnd;
+      return {
+        start: start,
+        end: end,
+        length: end - start,
+        text: textarea.value.substring(start, end)
+      };
+    },
+    setSelection: function setSelection(start, end) {
+      var textarea =
+        2 < arguments.length && arguments[2] !== void 0
+          ? arguments[2]
+          : this.getTextarea();
+      textarea.selectionStart = start;
+      textarea.selectionEnd = end;
+    },
+    replaceSelection: function replaceSelection(text) {
+      var textarea =
+          1 < arguments.length && arguments[1] !== void 0
+            ? arguments[1]
+            : this.getTextarea(),
+        selection =
+          2 < arguments.length && arguments[2] !== void 0
+            ? arguments[2]
+            : this.getSelection(),
+        val = textarea.value;
+      textarea.value = ""
+        .concat(val.substr(0, selection.start))
+        .concat(text)
+        .concat(val.substr(selection.end, val.length));
+    },
+    __bindControlToEditor: function __bindControlToEditor(event) {
+      event.stopPropagation();
+      (0, _polymerDom.dom)(event).rootTarget.__editor = this;
     }
-    babelHelpers.createClass(
-      MtzMarkedEditor,
-      [
-        {
-          key: "connectedCallback",
-          value: function connectedCallback() {
-            babelHelpers
-              .get(
-                MtzMarkedEditor.prototype.__proto__ ||
-                  Object.getPrototypeOf(MtzMarkedEditor.prototype),
-                "connectedCallback",
-                this
-              )
-              .call(this);
-            this.HAXWiring = new _HAXWiring.HAXWiring();
-            this.HAXWiring.setHaxProperties(
-              MtzMarkedEditor.haxProperties,
-              MtzMarkedEditor.tag,
-              this
-            );
-          }
-        }
-      ],
-      [
-        {
-          key: "template",
-          get: function get() {
-            return (0, _polymerElement.html)(
-              _templateObject_e2bd4720d6ff11e8a6c6bd5f85eb3d20()
-            );
-          }
-        },
-        {
-          key: "haxProperties",
-          get: function get() {
-            return {
-              canScale: !0,
-              canPosition: !0,
-              canEditSource: !1,
-              gizmo: {
-                title: "Mtz marked-editor",
-                description: "Automated conversion of mtz-marked-editor/",
-                icon: "icons:android",
-                color: "green",
-                groups: ["Marked"],
-                handles: [{ type: "todo:read-the-docs-for-usage" }],
-                meta: {
-                  author: "btopro",
-                  owner: "The Pennsylvania State University"
-                }
-              },
-              settings: { quick: [], configure: [], advanced: [] }
-            };
-          }
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {};
-          }
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "mtz-marked-editor";
-          }
-        }
-      ]
-    );
-    return MtzMarkedEditor;
-  })(_polymerElement.PolymerElement);
-  _exports.MtzMarkedEditor = MtzMarkedEditor;
-  window.customElements.define(MtzMarkedEditor.tag, MtzMarkedEditor);
+  });
 });

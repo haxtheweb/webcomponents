@@ -1,92 +1,120 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/app-layout/app-layout.js";
+import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
+import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icons/image-icons.js";
+import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { ImageInspector };
-/**
- * `image-inspector`
- * `Automated conversion of image-inspector/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class ImageInspector extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
+`image-inspector`
+Zoom, Rotate, Mirror, Download, and View image
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
-
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Image inspector",
-        description: "Automated conversion of image-inspector/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Inspector"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [],
-        advanced: []
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style include="materializecss-styles-colors">
+       :host {
+        display: block;
+        --image-inspector-background: #dddddd;
       }
-    };
-  }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
+
+      app-toolbar {
+        width: 90%;
+        background: var(--image-inspector-background);
+        margin: 2em auto;
+        z-index: 1;
+      }
+
+      .top {
+        top: 8em;
+      }
+    </style>
+    <app-toolbar>
+      <lrnsys-button alt="Zoom in" icon="zoom-in" on-tap="zoomIn" hover-class="[[hoverClass]]"></lrnsys-button>
+      <lrnsys-button alt="Zoom out" icon="zoom-out" on-tap="zoomOut" hover-class="[[hoverClass]]"></lrnsys-button>
+      <lrnsys-button alt="Rotate right" icon="image:rotate-right" on-tap="rotateRight" hover-class="[[hoverClass]]"></lrnsys-button>
+      <lrnsys-button alt="Rotate left" icon="image:rotate-left" on-tap="rotateLeft" hover-class="[[hoverClass]]"></lrnsys-button>
+      <lrnsys-button alt="Mirror image" icon="image:flip" on-tap="mirrorImage" hover-class="[[hoverClass]]"></lrnsys-button>
+      <lrnsys-button alt="Open in new window" icon="launch" href="[[src]]" target="_blank" hover-class="[[hoverClass]]"></lrnsys-button>
+      <slot name="toolbar"></slot>
+    </app-toolbar>
+    <img-pan-zoom id="img" src="[[src]]"></img-pan-zoom>
+    <slot></slot>
+`,
+
+  is: "image-inspector",
+
+  properties: {
+    /**
+     * Image rotation
+     */
+    degrees: {
+      type: Number,
+      value: 0,
+      reflectToAttribute: true
+    },
+    /**
+     * Image source.
+     */
+    src: {
+      type: String,
+      reflectToAttribute: true
+    },
+    /**
+     * Hover class for button styling
+     */
+    hoverClass: {
+      type: String,
+      value: "blue white-text"
+    }
+  },
 
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * Rotate the image to the right.
    */
-  static get tag() {
-    return "image-inspector";
-  }
+  rotateRight: function() {
+    let img = this.$.img;
+    // spin 90
+    this.degrees += 90;
+    img.style.transform = "rotate(" + this.degrees + "deg)";
+    img.toggleClass("top");
+  },
+
   /**
-   * life cycle, element is afixed to the DOM
+   * Rotate the image to the left.
    */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      ImageInspector.haxProperties,
-      ImageInspector.tag,
-      this
-    );
-  }
+  rotateLeft: function() {
+    let img = this.$.img;
+    // go back 90
+    this.degrees += -90;
+    img.style.transform = "rotate(" + this.degrees + "deg)";
+    img.toggleClass("top");
+  },
+
   /**
-   * life cycle, element is removed from the DOM
+   * Flip the image.
    */
-  //disconnectedCallback() {}
-}
-window.customElements.define(ImageInspector.tag, ImageInspector);
+  mirrorImage: function() {
+    let img = this.$.img;
+    if (img.style.transform === "scaleX(1)") {
+      img.style.transform = "scaleX(-1)";
+    } else {
+      img.style.transform = "scaleX(1)";
+    }
+  },
+
+  /**
+   * Zoom in by calling  downstream function.
+   */
+  zoomIn: function() {
+    this.$.img.zoomIn();
+  },
+
+  /**
+   * Zoom out by calling downstream function.
+   */
+  zoomOut: function() {
+    this.$.img.zoomOut();
+  }
+});

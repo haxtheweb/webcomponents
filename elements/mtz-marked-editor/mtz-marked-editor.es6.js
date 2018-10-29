@@ -1,10 +1,11 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";export{MtzMarkedEditor};class MtzMarkedEditor extends PolymerElement{static get template(){return html`
-<style>:host {
-  display: block;
-}
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import"./node_modules/@polymer/iron-form-element-behavior/iron-form-element-behavior.js";import"./node_modules/@polymer/iron-validatable-behavior/iron-validatable-behavior.js";Polymer({_template:html`
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Mtz marked-editor",description:"Automated conversion of mtz-marked-editor/",icon:"icons:android",color:"green",groups:["Marked"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[],advanced:[]}}}static get properties(){return{}}static get tag(){return"mtz-marked-editor"}connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setHaxProperties(MtzMarkedEditor.haxProperties,MtzMarkedEditor.tag,this)}}window.customElements.define(MtzMarkedEditor.tag,MtzMarkedEditor);
+      <slot name="controls"></slot>
+      <slot name="textarea"></slot>
+      <slot name="footer"></slot>
+`,is:"mtz-marked-editor",properties:{autofocus:Boolean,readonly:Boolean,textareaSelector:{type:String,value:"textarea"},__textarea:Object},ready(){this.__bindControlToEditor=this.__bindControlToEditor.bind(this)},attached(){this.addEventListener("register-control",this.__bindControlToEditor);this.__textarea=dom(this).queryDistributedElements("[slot=\"textarea\"]")[0]},detached(){this.removeEventListener("register-control",this.__bindControlToEditor)},getTextarea(){return this.__textarea},getLines(){return this.getContent().split(/(?=\n|\r\n)$/gm)},getContent(){if(typeof this.getTextarea()!==typeof void 0){return this.getTextarea().value}return""},setContent(content){this.getTextarea().value=content},getSelection(textarea=this.getTextarea()){const start=textarea.selectionStart,end=textarea.selectionEnd;return{start,end,length:end-start,text:textarea.value.substring(start,end)}},setSelection(start,end,textarea=this.getTextarea()){textarea.selectionStart=start;textarea.selectionEnd=end},replaceSelection(text,textarea=this.getTextarea(),selection=this.getSelection()){const val=textarea.value;textarea.value=`${val.substr(0,selection.start)}${text}${val.substr(selection.end,val.length)}`},__bindControlToEditor(event){event.stopPropagation();dom(event).rootTarget.__editor=this}});

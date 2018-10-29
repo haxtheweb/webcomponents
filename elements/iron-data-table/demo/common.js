@@ -1,5 +1,5 @@
 import "../lib/default-styles.js";
-import "../lib/iron-data-table.js";
+import "../iron-data-table.js";
 var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 

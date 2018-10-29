@@ -1,49 +1,45 @@
 import {
   html,
-  PolymerElement
-} from "./node_modules/@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { JwtLogin };
-class JwtLogin extends PolymerElement {
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
+  Polymer
+} from "./node_modules/@polymer/polymer/polymer-legacy.js";
+import "./node_modules/@polymer/iron-ajax/iron-ajax.js";
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        visibility: hidden;
+      }
+    </style>
+    <iron-ajax id="loginrequest" method="GET" url="[[url]]" handle-as="json" on-response="loginResponse">
+    </iron-ajax>
+`,
+  is: "jwt-login",
+  properties: {
+    url: { type: String },
+    key: { type: String, value: "jwt" },
+    jwt: { type: String, notify: !0 }
+  },
+  ready: function() {
+    this.jwt = localStorage.getItem(this.key);
+    this.fire("jwt-token", this.jwt);
+  },
+  toggleLogin: function() {
+    if (null == this.jwt) {
+      this.$.loginrequest.generateRequest();
+    } else {
+      localStorage.removeItem(this.key);
+      this.jwt = null;
+      this.fire("jwt-logged-in", !1);
+    }
+  },
+  loginResponse: function(e) {
+    this.jwt = e.detail.response;
+    if (null == this.jwt || "" == this.jwt) {
+      this.fire("jwt-logged-in", !1);
+    } else {
+      localStorage.setItem(this.key, this.jwt);
+      this.fire("jwt-token", this.jwt);
+      this.fire("jwt-logged-in", !0);
+    }
   }
-  static get haxProperties() {
-    return {
-      canScale: !0,
-      canPosition: !0,
-      canEditSource: !1,
-      gizmo: {
-        title: "Jwt login",
-        description: "Automated conversion of jwt-login/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Login"],
-        handles: [{ type: "todo:read-the-docs-for-usage" }],
-        meta: { author: "btopro", owner: "The Pennsylvania State University" }
-      },
-      settings: { quick: [], configure: [], advanced: [] }
-    };
-  }
-  static get properties() {
-    return {};
-  }
-  static get tag() {
-    return "jwt-login";
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(JwtLogin.haxProperties, JwtLogin.tag, this);
-  }
-}
-window.customElements.define(JwtLogin.tag, JwtLogin);
+});

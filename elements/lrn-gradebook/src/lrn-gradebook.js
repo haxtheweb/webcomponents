@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "iron-data-table/iron-data-table.js";
+import "@lrnwebcomponents/iron-data-table/iron-data-table.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");

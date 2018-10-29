@@ -2,22 +2,346 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`swipe-action`\n`Start of swipe-action`",
+      "description": "",
       "summary": "",
       "path": "swipe-action.js",
-      "properties": [],
-      "methods": [
+      "properties": [
         {
-          "name": "connectedCallback",
-          "description": "life cycle, element is afixed to the DOM",
+          "name": "_parentResizable",
+          "type": "Object | null | undefined",
+          "description": "The closest ancestor element that implements `IronResizableBehavior`.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
+            "start": {
+              "line": 41,
+              "column": 4
+            },
+            "end": {
+              "line": 44,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_parentResizableChanged\"",
+              "attributeType": "Object"
+            }
+          },
+          "inheritedFrom": "IronResizableBehavior"
+        },
+        {
+          "name": "_notifyingDescendant",
+          "type": "boolean | null | undefined",
+          "description": "True if this element is currently notifying its descendant elements of\nresize.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
+            "start": {
+              "line": 50,
+              "column": 4
+            },
+            "end": {
+              "line": 53,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "IronResizableBehavior"
+        },
+        {
+          "name": "gestureDisabled",
+          "type": "boolean | null | undefined",
+          "description": "If set, the swipe gesture will be disabled. Actions can only be activated\nvia the `activateAction` function or by setting the `activatedActionId` property.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 80,
+              "line": 178,
+              "column": 4
+            },
+            "end": {
+              "line": 183,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_refreshActions\"",
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "isSwiping",
+          "type": "boolean | null | undefined",
+          "description": "Flag set to true when the element is being swiped via a gesture.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 188,
+              "column": 4
+            },
+            "end": {
+              "line": 194,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "readOnly": true,
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "isSwipedAway",
+          "type": "boolean | null | undefined",
+          "description": "Flag set to true when the element has been swiped away.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 199,
+              "column": 4
+            },
+            "end": {
+              "line": 205,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "readOnly": true,
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "activatedAction",
+          "type": "Action | null | undefined",
+          "description": "The currently activated action, if there is one.\nRead-only.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 211,
+              "column": 4
+            },
+            "end": {
+              "line": 216,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "readOnly": true,
+              "attributeType": "Action"
+            }
+          }
+        },
+        {
+          "name": "activatedActionId",
+          "type": "string | null | undefined",
+          "description": "The ID of the activated action. One of `window.SwipeAction.ACTION_LEFT`,\n`window.SwipeAction.ACTION_RIGHT`, `window.SwipeAction.ACTION_UP`, `window.SwipeAction.ACTION_DOWN`\n\nSetting this property will activate/deactivate action(s) but without any animation,\nand without triggering any event.\nBind this property to your model when using `iron-list` to persist the activated action.\n\nIf you want to programmatically activate/deactivate an action, take a look at\nthe `activateAction` and `reset` functions.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 229,
+              "column": 4
+            },
+            "end": {
+              "line": 234,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_onActivatedActionIdChange\"",
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "_SWIPE_SPEED_THREASHOLD",
+          "type": "number | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 236,
+              "column": 4
+            },
+            "end": {
+              "line": 240,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "Number"
+            }
+          },
+          "defaultValue": "10"
+        },
+        {
+          "name": "_OPPOSITE_AXIS_MAX_SCROLLING_THREASHOLD",
+          "type": "number | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 242,
+              "column": 4
+            },
+            "end": {
+              "line": 246,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "Number"
+            }
+          },
+          "defaultValue": "10"
+        },
+        {
+          "name": "_SWIPE_TRANSITION",
+          "type": "string | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 248,
+              "column": 4
+            },
+            "end": {
+              "line": 252,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"all 200ms ease-in-out\""
+        },
+        {
+          "name": "_ACTIONS_CONFIG",
+          "type": "Array | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 254,
+              "column": 4
+            },
+            "end": {
+              "line": 265,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "Array"
+            }
+          },
+          "defaultValue": "[]"
+        },
+        {
+          "name": "_gesture",
+          "type": "Object | null | undefined",
+          "description": "Data describing the ongoing swipe gesture.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 270,
+              "column": 4
+            },
+            "end": {
+              "line": 273,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "null"
+        }
+      ],
+      "methods": [
+        {
+          "name": "created",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
+            "start": {
+              "line": 60,
               "column": 2
             },
             "end": {
-              "line": 84,
+              "line": 66,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronResizableBehavior"
+        },
+        {
+          "name": "attached",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
+            "start": {
+              "line": 68,
+              "column": 2
+            },
+            "end": {
+              "line": 70,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronResizableBehavior"
+        },
+        {
+          "name": "detached",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 307,
+              "column": 2
+            },
+            "end": {
+              "line": 310,
               "column": 3
             }
           },
@@ -26,36 +350,1088 @@
           "return": {
             "type": "void"
           }
+        },
+        {
+          "name": "notifyResize",
+          "description": "Can be called to manually notify a resizable and its descendant\nresizables of a resize change.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
+            "start": {
+              "line": 87,
+              "column": 2
+            },
+            "end": {
+              "line": 99,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronResizableBehavior"
+        },
+        {
+          "name": "assignParentResizable",
+          "description": "Used to assign the closest resizable ancestor to this resizable\nif the ancestor detects a request for notifications.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
+            "start": {
+              "line": 105,
+              "column": 2
+            },
+            "end": {
+              "line": 117,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "parentResizable"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronResizableBehavior"
+        },
+        {
+          "name": "stopResizeNotificationsFor",
+          "description": "Used to remove a resizable descendant from the list of descendants\nthat should be notified of a resize change.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
+            "start": {
+              "line": 123,
+              "column": 2
+            },
+            "end": {
+              "line": 130,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "target"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronResizableBehavior"
+        },
+        {
+          "name": "_subscribeIronResize",
+          "description": "Subscribe this element to listen to iron-resize events on the given target.\n\nPreferred over target.listen because the property renamer does not\nunderstand to rename when the target is not specifically \"this\"",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
+            "start": {
+              "line": 140,
+              "column": 2
+            },
+            "end": {
+              "line": 142,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "target",
+              "type": "!HTMLElement",
+              "description": "Element to listen to for iron-resize events."
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronResizableBehavior"
+        },
+        {
+          "name": "_unsubscribeIronResize",
+          "description": "Unsubscribe this element from listening to to iron-resize events on the\ngiven target.\n\nPreferred over target.unlisten because the property renamer does not\nunderstand to rename when the target is not specifically \"this\"",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
+            "start": {
+              "line": 153,
+              "column": 2
+            },
+            "end": {
+              "line": 156,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "target",
+              "type": "!HTMLElement",
+              "description": "Element to listen to for iron-resize events."
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronResizableBehavior"
+        },
+        {
+          "name": "resizerShouldNotify",
+          "description": "This method can be overridden to filter nested elements that should or\nshould not be notified by the current element. Return true if an element\nshould be notified, or false if it should not be notified.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
+            "start": {
+              "line": 167,
+              "column": 2
+            },
+            "end": {
+              "line": 169,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "element",
+              "type": "HTMLElement",
+              "description": "A candidate descendant element that\nimplements `IronResizableBehavior`."
+            }
+          ],
+          "return": {
+            "type": "boolean",
+            "desc": "True if the `element` should be notified of resize."
+          },
+          "inheritedFrom": "IronResizableBehavior"
+        },
+        {
+          "name": "_onDescendantIronResize",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
+            "start": {
+              "line": 171,
+              "column": 2
+            },
+            "end": {
+              "line": 181,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronResizableBehavior"
+        },
+        {
+          "name": "_fireResize",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
+            "start": {
+              "line": 183,
+              "column": 2
+            },
+            "end": {
+              "line": 185,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronResizableBehavior"
+        },
+        {
+          "name": "_onIronRequestResizeNotifications",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
+            "start": {
+              "line": 187,
+              "column": 2
+            },
+            "end": {
+              "line": 197,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronResizableBehavior"
+        },
+        {
+          "name": "_parentResizableChanged",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
+            "start": {
+              "line": 199,
+              "column": 2
+            },
+            "end": {
+              "line": 203,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "parentResizable"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronResizableBehavior"
+        },
+        {
+          "name": "_notifyDescendant",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
+            "start": {
+              "line": 205,
+              "column": 2
+            },
+            "end": {
+              "line": 216,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "descendant"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronResizableBehavior"
+        },
+        {
+          "name": "_requestResizeNotifications",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
+            "start": {
+              "line": 218,
+              "column": 2
+            },
+            "end": {
+              "line": 257,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronResizableBehavior"
+        },
+        {
+          "name": "_findParent",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
+            "start": {
+              "line": 259,
+              "column": 2
+            },
+            "end": {
+              "line": 271,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronResizableBehavior"
+        },
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 283,
+              "column": 2
+            },
+            "end": {
+              "line": 305,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "reset",
+          "description": "Reset the item to it's initial state (not swiped away) and cancel\nany activated action.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 319,
+              "column": 2
+            },
+            "end": {
+              "line": 322,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "animate",
+              "type": "Boolean",
+              "description": "Whether or not to animate the item whilst\nthe item is being reseted"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "activateAction",
+          "description": "Programmatically activate a swipe action.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 332,
+              "column": 2
+            },
+            "end": {
+              "line": 358,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "actionId",
+              "type": "String",
+              "description": "The ID of the action to activate. One of `window.SwipeAction.ACTION_LEFT`,\n`window.SwipeAction.ACTION_RIGHT`, `window.SwipeAction.ACTION_UP`, `window.SwipeAction.ACTION_DOWN`."
+            },
+            {
+              "name": "animate",
+              "type": "Boolean",
+              "description": "Whether or not to animate the item whilst\nthe item is being activated"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_activateCurrentAction",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 360,
+              "column": 2
+            },
+            "end": {
+              "line": 374,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_onActivatedActionIdChange",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 376,
+              "column": 2
+            },
+            "end": {
+              "line": 388,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_onResize",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 390,
+              "column": 2
+            },
+            "end": {
+              "line": 392,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_refreshActions",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 394,
+              "column": 2
+            },
+            "end": {
+              "line": 429,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_actionFactory",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 431,
+              "column": 2
+            },
+            "end": {
+              "line": 459,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "actionId"
+            },
+            {
+              "name": "actionNode"
+            }
+          ]
+        },
+        {
+          "name": "_getActionId",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 461,
+              "column": 2
+            },
+            "end": {
+              "line": 471,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "axis"
+            },
+            {
+              "name": "direction"
+            }
+          ]
+        },
+        {
+          "name": "_getSwipingDirection",
+          "description": "Computes the swiping direction",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 476,
+              "column": 2
+            },
+            "end": {
+              "line": 478,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            },
+            {
+              "name": "axis"
+            }
+          ]
+        },
+        {
+          "name": "_onTrack",
+          "description": "Track gesture handler",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 483,
+              "column": 2
+            },
+            "end": {
+              "line": 502,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_swipeStart",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 504,
+              "column": 2
+            },
+            "end": {
+              "line": 532,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_swipeUpdate",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 534,
+              "column": 2
+            },
+            "end": {
+              "line": 556,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_swipeEnd",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 558,
+              "column": 2
+            },
+            "end": {
+              "line": 597,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_updateActions",
+          "description": "Update the actions objects, and initialize the currently visible one",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 602,
+              "column": 2
+            },
+            "end": {
+              "line": 613,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "axis"
+            },
+            {
+              "name": "direction"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_swipeAway",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 615,
+              "column": 2
+            },
+            "end": {
+              "line": 631,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "action"
+            },
+            {
+              "name": "transition"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_snapBack",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 633,
+              "column": 2
+            },
+            "end": {
+              "line": 644,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "animate"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_onTransitionEnd",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 646,
+              "column": 2
+            },
+            "end": {
+              "line": 655,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_cleanupAfterTransition",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 657,
+              "column": 2
+            },
+            "end": {
+              "line": 675,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_fireEvent",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 677,
+              "column": 2
+            },
+            "end": {
+              "line": 684,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "eventName"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_changeActivatedAction",
+          "description": "Do change the activatedAction after a swipe or when set programmatically.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 689,
+              "column": 2
+            },
+            "end": {
+              "line": 717,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "action"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_getTranslate3d",
+          "description": "Computes the translation along the correct axis",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 722,
+              "column": 2
+            },
+            "end": {
+              "line": 725,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "translation"
+            },
+            {
+              "name": "axis"
+            }
+          ]
+        },
+        {
+          "name": "_applyGestureTranslation",
+          "description": "Translate the target to match the swipe gesture",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 730,
+              "column": 2
+            },
+            "end": {
+              "line": 745,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "track"
+            },
+            {
+              "name": "axis"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_applyRubberBand",
+          "description": "Calculate the translation to apply to create the rubber band effect.\nIf the limit is reached, fire the approriate event.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 751,
+              "column": 2
+            },
+            "end": {
+              "line": 791,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "track"
+            }
+          ]
+        },
+        {
+          "name": "_rubberBand",
+          "description": "Rubber banding effect when the target node is swiped further than the action allows.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 796,
+              "column": 2
+            },
+            "end": {
+              "line": 810,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "currentTrack"
+            },
+            {
+              "name": "trackForEffectStart"
+            },
+            {
+              "name": "trackForEffectPeak"
+            },
+            {
+              "name": "maxResult"
+            }
+          ]
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 18,
-          "column": 0
+          "line": 41,
+          "column": 8
         },
         "end": {
-          "line": 90,
+          "line": 811,
           "column": 1
         }
       },
       "privacy": "public",
-      "superclass": "PolymerElement",
-      "name": "SwipeAction",
-      "attributes": [],
-      "events": [],
+      "superclass": "HTMLElement",
+      "attributes": [
+        {
+          "name": "gesture-disabled",
+          "description": "If set, the swipe gesture will be disabled. Actions can only be activated\nvia the `activateAction` function or by setting the `activatedActionId` property.",
+          "sourceRange": {
+            "start": {
+              "line": 178,
+              "column": 4
+            },
+            "end": {
+              "line": 183,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "is-swiping",
+          "description": "Flag set to true when the element is being swiped via a gesture.",
+          "sourceRange": {
+            "start": {
+              "line": 188,
+              "column": 4
+            },
+            "end": {
+              "line": 194,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "is-swiped-away",
+          "description": "Flag set to true when the element has been swiped away.",
+          "sourceRange": {
+            "start": {
+              "line": 199,
+              "column": 4
+            },
+            "end": {
+              "line": 205,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "activated-action",
+          "description": "The currently activated action, if there is one.\nRead-only.",
+          "sourceRange": {
+            "start": {
+              "line": 211,
+              "column": 4
+            },
+            "end": {
+              "line": 216,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Action | null | undefined"
+        },
+        {
+          "name": "activated-action-id",
+          "description": "The ID of the activated action. One of `window.SwipeAction.ACTION_LEFT`,\n`window.SwipeAction.ACTION_RIGHT`, `window.SwipeAction.ACTION_UP`, `window.SwipeAction.ACTION_DOWN`\n\nSetting this property will activate/deactivate action(s) but without any animation,\nand without triggering any event.\nBind this property to your model when using `iron-list` to persist the activated action.\n\nIf you want to programmatically activate/deactivate an action, take a look at\nthe `activateAction` and `reset` functions.",
+          "sourceRange": {
+            "start": {
+              "line": 229,
+              "column": 4
+            },
+            "end": {
+              "line": 234,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "swipe-canceled",
+          "description": "Fired when a swipe has been canceled (ie a pending swipe action\nhas not been 'validated' by the user) or reset (ie an action was\ntriggered and then has been reset).\n\nContent of the event's `detail` property: See the `swiped-away` event.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "swipe-rubber-band-limit",
+          "description": "Fired when the target is swiped, whenever the rubber band effect reaches\nit's limit (ie the target can't swipe be swiped further).\n\nFired once per swipe and per swipe action\n(unless the action to be triggered changes during a swipe,\nin which case the event can be fired again once after each change).\n\nDoes not fire if the `swipe-rubber-band` argument of the swipe action is set\nto 0 (default), or if the `swipe-fade` argument is set for the swipe action.\n\nContent of the event's `detail` property: See the `swiped-away` event.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "swiped-away",
+          "description": "Fired when the target has been swiped away and a swipe action\nhas been triggered as a result.\n\nContent of the event's `detail` property:\n\n    {\n      action: { // The related action\n        id, // {String} Id of the action. One of\n          // `window.SwipeAction.ACTION_LEFT`,\n          // `window.SwipeAction.ACTION_RIGHT`,\n          // `window.SwipeAction.ACTION_UP`,\n          // `window.SwipeAction.ACTION_DOWN`\n        node, // {Object} The action's DOM node\n        size, // {Number} The actual size of the action\n        requestedSize, // {Number} The requested size of\n          // the action (as per the `swipe-size` attribute)\n        rubberBand, // {Boolean} The requested size of the\n          // action (as per the `swipe-rubber-band` attr.)\n        fade, // {Boolean} `true` if the swipeable item\n          // fades when swiped\n          // (as per the `swipe-fade` attribute)\n        maxRubberBandReached, // {Boolean} `true` if the\n          // swipeable item was swiped all the way\n          // to maximize the rubber band effect\n        axis, // {String} The axis of the action\n          // (either `x` or `y`)\n        direction // {Number} The direction of the action\n          // along it's axis (either `1` or `-1`)\n      },\n      gesture: { // The triggering swipe gesture\n        axis, // {String} The axis of the action\n          // (either `x` or `y`)\n        direction, // {Number} The direction of the action\n          // along it's axis (either `1` or `-1`)\n        lastDelta, // {Number} change in pixels along the\n          // `axis` since last track event\n        lastDeltaDuration, // {Number} Time in ms since\n          // last track event\n        lastTimestamp // {Number} Timestamp in ms\n          //of last track event\n      }\n    }",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "is-swiping-changed",
+          "description": "Fired when the `isSwiping` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "is-swiped-away-changed",
+          "description": "Fired when the `isSwipedAway` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "activated-action-changed",
+          "description": "Fired when the `activatedAction` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "activated-action-id-changed",
+          "description": "Fired when the `activatedActionId` property changes.",
+          "metadata": {}
+        }
+      ],
       "styling": {
         "cssVariables": [],
         "selectors": []
       },
-      "slots": []
+      "slots": [],
+      "tagname": "swipe-action"
     }
   ]
 }

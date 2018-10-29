@@ -1,10 +1,26 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";export{LrndesignDrawer};class LrndesignDrawer extends PolymerElement{static get template(){return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Lrndesign drawer",description:"Automated conversion of lrndesign-drawer/",icon:"icons:android",color:"green",groups:["Drawer"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[],advanced:[]}}}static get properties(){return{}}static get tag(){return"lrndesign-drawer"}connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setHaxProperties(LrndesignDrawer.haxProperties,LrndesignDrawer.tag,this)}}window.customElements.define(LrndesignDrawer.tag,LrndesignDrawer);
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/app-layout/app-layout.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";Polymer({_template:html`
+    <style>
+      :host {
+        display: block;
+        --lrndesign-drawer-width: 30%;
+      }
+      app-header {
+        z-index: 100;
+      }
+      app-drawer {
+        --app-drawer-width: var(--lrndesign-drawer-width);
+        --app-drawer-content-container: {
+          padding: 1em;
+          overflow-y: scroll;
+          margin-top: 7em;
+        }
+      }
+    </style>
+    <app-header>
+      <app-drawer opened="{{opened}}" align="{{align}}">
+        <slot></slot>
+      </app-drawer>
+    </app-header>
+    <paper-icon-button icon="[[icon]]" alt="[[alt]]" id="flyout-drawer"></paper-icon-button>
+    <paper-tooltip for="flyout-drawer">[[alt]]</paper-tooltip>
+`,is:"lrndesign-drawer",properties:{opened:{type:Boolean,value:!1},icon:{type:String,value:"icon"},align:{type:String,value:"left"},alt:{type:String,value:""}},ready:function(){let root=this,opened=this.opened;this.shadowRoot.querySelector("paper-icon-button").addEventListener("click",function(){root.opened=!root.opened})}});

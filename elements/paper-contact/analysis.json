@@ -2,60 +2,579 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`paper-contact`\n`Start of paper-contact`",
+      "description": "",
       "summary": "",
-      "path": "paper-contact.js",
+      "path": "lib/paper-contact-email.js",
       "properties": [],
       "methods": [
         {
-          "name": "connectedCallback",
-          "description": "life cycle, element is afixed to the DOM",
-          "privacy": "public",
+          "name": "_getTargetUrl",
+          "description": "Private methods",
+          "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 80,
+              "line": 9,
               "column": 2
             },
             "end": {
-              "line": 84,
+              "line": 11,
               "column": 3
             }
           },
           "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
+          "params": [
+            {
+              "name": "content"
+            }
+          ]
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 18,
-          "column": 0
+          "line": 3,
+          "column": 8
         },
         "end": {
-          "line": 90,
+          "line": 12,
           "column": 1
         }
       },
       "privacy": "public",
-      "superclass": "PolymerElement",
-      "name": "PaperContact",
+      "superclass": "HTMLElement",
       "attributes": [],
       "events": [],
       "styling": {
         "cssVariables": [],
         "selectors": []
       },
-      "slots": []
+      "slots": [],
+      "tagname": "paper-contact-email"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "lib/paper-contact-phone.js",
+      "properties": [],
+      "methods": [
+        {
+          "name": "_getTargetUrl",
+          "description": "Private methods",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 9,
+              "column": 2
+            },
+            "end": {
+              "line": 11,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "content"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 3,
+          "column": 8
+        },
+        "end": {
+          "line": 12,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "paper-contact-phone"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "lib/paper-contact-mobile.js",
+      "properties": [],
+      "methods": [
+        {
+          "name": "_getTargetUrl",
+          "description": "Private methods",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 10,
+              "column": 2
+            },
+            "end": {
+              "line": 12,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "content"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 4,
+          "column": 8
+        },
+        "end": {
+          "line": 13,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "paper-contact-mobile"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "lib/paper-contact-linkedin.js",
+      "properties": [],
+      "methods": [
+        {
+          "name": "_getTargetUrl",
+          "description": "Private methods",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 10,
+              "column": 2
+            },
+            "end": {
+              "line": 12,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "content"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 4,
+          "column": 8
+        },
+        "end": {
+          "line": 13,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "paper-contact-linkedin"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "lib/paper-contact-twitter.js",
+      "properties": [],
+      "methods": [
+        {
+          "name": "_getTargetUrl",
+          "description": "Private methods",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 10,
+              "column": 2
+            },
+            "end": {
+              "line": 12,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "content"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 4,
+          "column": 8
+        },
+        "end": {
+          "line": 13,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "paper-contact-twitter"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "lib/paper-contact-skype.js",
+      "properties": [],
+      "methods": [
+        {
+          "name": "_getTargetUrl",
+          "description": "Private methods",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 10,
+              "column": 2
+            },
+            "end": {
+              "line": 12,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "content"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 4,
+          "column": 8
+        },
+        "end": {
+          "line": 13,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "paper-contact-skype"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "lib/paper-contact-address.js",
+      "properties": [
+        {
+          "name": "latitude",
+          "type": "number | null | undefined",
+          "description": "Latitude of the desired location, e.g. 51.5287718",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 10,
+              "column": 4
+            },
+            "end": {
+              "line": 10,
+              "column": 20
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          }
+        },
+        {
+          "name": "longitude",
+          "type": "number | null | undefined",
+          "description": "Longitude of the desired location, e.g. -0.2416798",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 15,
+              "column": 4
+            },
+            "end": {
+              "line": 15,
+              "column": 21
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "_getTargetUrl",
+          "description": "Private methods",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 21,
+              "column": 2
+            },
+            "end": {
+              "line": 28,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "content"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 4,
+          "column": 8
+        },
+        "end": {
+          "line": 29,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "attributes": [
+        {
+          "name": "latitude",
+          "description": "Latitude of the desired location, e.g. 51.5287718",
+          "sourceRange": {
+            "start": {
+              "line": 10,
+              "column": 4
+            },
+            "end": {
+              "line": 10,
+              "column": 20
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        },
+        {
+          "name": "longitude",
+          "description": "Longitude of the desired location, e.g. -0.2416798",
+          "sourceRange": {
+            "start": {
+              "line": 15,
+              "column": 4
+            },
+            "end": {
+              "line": 15,
+              "column": 21
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "paper-contact-address"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "lib/paper-contact-list.js",
+      "properties": [],
+      "methods": [],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 3,
+          "column": 8
+        },
+        "end": {
+          "line": 5,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "paper-contact-list"
     }
-  ]
+  ],
+  "metadata": {
+    "polymer": {
+      "behaviors": [
+        {
+          "description": "Contact elements can use this behavior to open a detail view on tap. The user needs to implement\na method _getTargetUrl() which returns the URL that is opened.",
+          "summary": "",
+          "path": "lib/paper-contact-behavior.js",
+          "properties": [],
+          "methods": [
+            {
+              "name": "openInSameTab",
+              "description": "Opens the target URL in the same tab",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 11,
+                  "column": 2
+                },
+                "end": {
+                  "line": 16,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "e"
+                }
+              ],
+              "return": {
+                "type": "void"
+              }
+            },
+            {
+              "name": "openInBlankTab",
+              "description": "Opens the target URL in a new tab",
+              "privacy": "public",
+              "sourceRange": {
+                "start": {
+                  "line": 21,
+                  "column": 2
+                },
+                "end": {
+                  "line": 26,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "e"
+                }
+              ],
+              "return": {
+                "type": "void"
+              }
+            },
+            {
+              "name": "_getContent",
+              "description": "Private methods",
+              "privacy": "protected",
+              "sourceRange": {
+                "start": {
+                  "line": 29,
+                  "column": 2
+                },
+                "end": {
+                  "line": 36,
+                  "column": 3
+                }
+              },
+              "metadata": {},
+              "params": [
+                {
+                  "name": "e"
+                }
+              ]
+            }
+          ],
+          "staticMethods": [],
+          "demos": [],
+          "metadata": {},
+          "sourceRange": {
+            "start": {
+              "line": 7,
+              "column": 0
+            },
+            "end": {
+              "line": 37,
+              "column": 2
+            }
+          },
+          "privacy": "public",
+          "name": "window.PaperContactBehavior",
+          "attributes": [],
+          "events": [],
+          "styling": {
+            "cssVariables": [],
+            "selectors": []
+          },
+          "slots": []
+        }
+      ]
+    }
+  }
 }

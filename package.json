@@ -165,6 +165,8 @@
       "**/ace-builds/**",
       "**/juicy-ace-editor",
       "**/juicy-ace-editor/**",
+      "**/moment",
+      "**/moment/**",
       "**/jarallax",
       "**/jarallax/**",
       "**/screenfull",

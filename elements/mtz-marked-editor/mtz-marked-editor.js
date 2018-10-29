@@ -1,92 +1,143 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@polymer/iron-form-element-behavior/iron-form-element-behavior.js";
+import "@polymer/iron-validatable-behavior/iron-validatable-behavior.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { MtzMarkedEditor };
-/**
- * `mtz-marked-editor`
- * `Automated conversion of mtz-marked-editor/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class MtzMarkedEditor extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
+`mtz-marked-editor`
+Creates a textarea with common editor logic and can be controlled by UI elements
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
-
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Mtz marked-editor",
-        description: "Automated conversion of mtz-marked-editor/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Marked"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [],
-        advanced: []
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
       }
-    };
-  }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
+    </style>
+
+      <slot name="controls"></slot>
+      <slot name="textarea"></slot>
+      <slot name="footer"></slot>
+`,
+
+  is: "mtz-marked-editor",
+
+  properties: {
+    autofocus: Boolean,
+    readonly: Boolean,
+    textareaSelector: {
+      type: String,
+      value: "textarea"
+    },
+    __textarea: Object
+  },
+
+  ready() {
+    this.__bindControlToEditor = this.__bindControlToEditor.bind(this);
+  },
+
+  attached() {
+    this.addEventListener("register-control", this.__bindControlToEditor);
+    this.__textarea = dom(this).queryDistributedElements(
+      '[slot="textarea"]'
+    )[0];
+  },
+
+  detached() {
+    this.removeEventListener("register-control", this.__bindControlToEditor);
+  },
 
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * Returns the instance of textarea
+   * @return {HTMLTextAreaElement}
    */
-  static get tag() {
-    return "mtz-marked-editor";
-  }
+  getTextarea() {
+    return this.__textarea;
+  },
+
   /**
-   * life cycle, element is afixed to the DOM
+   * Returns the number of lines in the textarea
+   * @return {Number}
    */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      MtzMarkedEditor.haxProperties,
-      MtzMarkedEditor.tag,
-      this
-    );
-  }
+  getLines() {
+    return this.getContent().split(/(?=\n|\r\n)$/gm);
+  },
+
   /**
-   * life cycle, element is removed from the DOM
+   * Gets the content of the textarea
+   * @return {String}
    */
-  //disconnectedCallback() {}
-}
-window.customElements.define(MtzMarkedEditor.tag, MtzMarkedEditor);
+  getContent() {
+    if (typeof this.getTextarea() !== typeof undefined) {
+      return this.getTextarea().value;
+    }
+    return "";
+  },
+
+  /**
+   * Sets the content of the textarea
+   * @param {String} content
+   */
+  setContent(content) {
+    this.getTextarea().value = content;
+  },
+
+  /**
+   * Gets the selection information from the textarea and puts it into
+   * a useful object.
+   * @param {HTMLTextAreaElement} [textarea=this.getTextarea()]
+   * @return {Object} Containing selection information, start, end, text, and length.
+   */
+  getSelection(textarea = this.getTextarea()) {
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    return {
+      start,
+      end,
+      length: end - start,
+      text: textarea.value.substring(start, end)
+    };
+  },
+
+  /**
+   * Updates the selection of the textarea
+   * @param {Number} start - Starting index of selection
+   * @param {Number} end - Ending index of selection
+   * @param {HTMLTextAreaElement} [textarea=this.getTextarea()]
+   */
+  setSelection(start, end, textarea = this.getTextarea()) {
+    textarea.selectionStart = start;
+    textarea.selectionEnd = end;
+  },
+
+  /**
+   * Replaces the current selection with the passed in text
+   * @param {String} text
+   * @param {HTMLTextAreaElement} [textarea=this.getTextarea()]
+   * @param {Object} [selection=this.getSelection()]
+   */
+  replaceSelection(
+    text,
+    textarea = this.getTextarea(),
+    selection = this.getSelection()
+  ) {
+    const val = textarea.value;
+    textarea.value = `${val.substr(0, selection.start)}${text}${val.substr(
+      selection.end,
+      val.length
+    )}`;
+  },
+
+  /**
+   * Adds a reference of editor to the control
+   * @param {CustomEvent} event
+   * @private
+   */
+  __bindControlToEditor(event) {
+    event.stopPropagation();
+    // TODO: Update this in 2.0 to use updated API.
+    // dom(event).rootTarget => event.composedPath()[0]
+    dom(event).rootTarget.__editor = this;
+  }
+});

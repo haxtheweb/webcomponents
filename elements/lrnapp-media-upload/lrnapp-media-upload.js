@@ -1,92 +1,41 @@
-/**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrnappMediaUpload };
-/**
- * `lrnapp-media-upload`
- * `Automated conversion of lrnapp-media-upload/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrnappMediaUpload extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
-
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Lrnapp media-upload",
-        description: "Automated conversion of lrnapp-media-upload/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Media"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [],
-        advanced: []
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@vaadin/vaadin-upload/vaadin-upload.js";
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
       }
-    };
-  }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
+      paper-button {
+        padding: 0;
+        margin: 0;
+        min-width: 1rem;
+      }
+      vaadin-upload.thick-border {
+        --primary-color: #396;
+        --dark-primary-color: #063;
+        --light-primary-color: #6c9;
+        --error-color: darkred;
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrnapp-media-upload";
+        border: 2px solid #ccc;
+        padding: 14px;
+        background: #eee;
+        border-radius: 0;
+      }
+      vaadin-upload.thick-border[dragover] {
+        border-color: #396;
+      }
+    </style>
+    <vaadin-upload target\$="{{uploadPath}}" method="POST" form-data-name="file-upload"></vaadin-upload>
+`,
+
+  is: "lrnapp-media-upload",
+
+  properties: {
+    uploadPath: {
+      type: String,
+      notify: true,
+      reflectToAttribute: true
+    }
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrnappMediaUpload.haxProperties,
-      LrnappMediaUpload.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrnappMediaUpload.tag, LrnappMediaUpload);
+});

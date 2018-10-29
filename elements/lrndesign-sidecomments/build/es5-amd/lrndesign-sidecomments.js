@@ -1,106 +1,66 @@
 define([
-  "exports",
-  "./node_modules/@polymer/polymer/polymer-element.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_exports, _polymerElement, _HAXWiring) {
+  "./node_modules/@polymer/polymer/polymer-legacy.js",
+  "./lib/side-comments.js"
+], function(_polymerLegacy) {
   "use strict";
-  Object.defineProperty(_exports, "__esModule", { value: !0 });
-  _exports.LrndesignSidecomments = void 0;
-  function _templateObject_449f51a0d6fa11e8b8773b8c7f5b013d() {
+  function _templateObject_0d9d8a10db1311e8b2833b06107b77e0() {
     var data = babelHelpers.taggedTemplateLiteral([
-      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
+      '\n    <style>\n       :host {\n        display: block;\n      }\n    </style>\n    <div id="commentable-area">\n      <p data-section-id="1" class="commentable-section">\n        This is a section that can be commented on.\n        This is a section that can be commented on.\n        This is a section that can be commented on.\n        This is a section that can be commented on.\n        This is a section that can be commented on.\n        This is a section that can be commented on.\n      </p>\n      <p data-section-id="2" class="commentable-section">\n        This is a another section that can be commented on.\n        This is a another section that can be commented on.\n        This is a another section that can be commented on.\n        This is a another section that can be commented on.\n        This is a another section that can be commented on.\n        This is a another section that can be commented on.\n        This is a another section that can be commented on.\n      </p>\n      <p data-section-id="3" class="commentable-section">\n        This is yet another section that can be commented on.\n        This is yet another section that can be commented on.\n        This is yet another section that can be commented on.\n        This is yet another section that can be commented on.\n        This is yet another section that can be commented on.\n      </p>\n    </div>\n'
     ]);
-    _templateObject_449f51a0d6fa11e8b8773b8c7f5b013d = function() {
+    _templateObject_0d9d8a10db1311e8b2833b06107b77e0 = function() {
       return data;
     };
     return data;
   }
-  var LrndesignSidecomments = (function(_PolymerElement) {
-    babelHelpers.inherits(LrndesignSidecomments, _PolymerElement);
-    function LrndesignSidecomments() {
-      babelHelpers.classCallCheck(this, LrndesignSidecomments);
-      return babelHelpers.possibleConstructorReturn(
-        this,
-        (
-          LrndesignSidecomments.__proto__ ||
-          Object.getPrototypeOf(LrndesignSidecomments)
-        ).apply(this, arguments)
+  (0, _polymerLegacy.Polymer)({
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_0d9d8a10db1311e8b2833b06107b77e0()
+    ),
+    is: "lrndesign-sidecomments",
+    properties: { title: { type: String, value: "lrndesign-sidecomments" } },
+    ready: function ready() {
+      var SideComments = require("side-comments"),
+        target = this.shadowRoot.querySelector("#commentable-area");
+      sideComments = new SideComments(
+        target,
+        {
+          id: 1,
+          avatarUrl:
+            "http://f.cl.ly/items/0s1a0q1y2Z2k2I193k1y/default-user.png",
+          name: "You"
+        },
+        [
+          {
+            sectionId: "1",
+            comments: [
+              {
+                authorAvatarUrl:
+                  "http://f.cl.ly/items/1W303Y360b260u3v1P0T/jon_snow_small.png",
+                authorName: "Jon Sno",
+                comment: "I'm Ned Stark's bastard. Related: I know nothing."
+              },
+              {
+                authorAvatarUrl:
+                  "http://f.cl.ly/items/2o1a3d2f051L0V0q1p19/donald_draper.png",
+                authorName: "Donald Draper",
+                comment: "I need a scotch."
+              }
+            ]
+          },
+          {
+            sectionId: "3",
+            comments: [
+              {
+                authorAvatarUrl:
+                  "http://f.cl.ly/items/0l1j230k080S0N1P0M3e/clay-davis.png",
+                authorName: "Senator Clay Davis",
+                comment:
+                  "These Side Comments are incredible. Sssshhhiiiiieeeee."
+              }
+            ]
+          }
+        ]
       );
     }
-    babelHelpers.createClass(
-      LrndesignSidecomments,
-      [
-        {
-          key: "connectedCallback",
-          value: function connectedCallback() {
-            babelHelpers
-              .get(
-                LrndesignSidecomments.prototype.__proto__ ||
-                  Object.getPrototypeOf(LrndesignSidecomments.prototype),
-                "connectedCallback",
-                this
-              )
-              .call(this);
-            this.HAXWiring = new _HAXWiring.HAXWiring();
-            this.HAXWiring.setHaxProperties(
-              LrndesignSidecomments.haxProperties,
-              LrndesignSidecomments.tag,
-              this
-            );
-          }
-        }
-      ],
-      [
-        {
-          key: "template",
-          get: function get() {
-            return (0, _polymerElement.html)(
-              _templateObject_449f51a0d6fa11e8b8773b8c7f5b013d()
-            );
-          }
-        },
-        {
-          key: "haxProperties",
-          get: function get() {
-            return {
-              canScale: !0,
-              canPosition: !0,
-              canEditSource: !1,
-              gizmo: {
-                title: "Lrndesign sidecomments",
-                description: "Automated conversion of lrndesign-sidecomments/",
-                icon: "icons:android",
-                color: "green",
-                groups: ["Sidecomments"],
-                handles: [{ type: "todo:read-the-docs-for-usage" }],
-                meta: {
-                  author: "btopro",
-                  owner: "The Pennsylvania State University"
-                }
-              },
-              settings: { quick: [], configure: [], advanced: [] }
-            };
-          }
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {};
-          }
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "lrndesign-sidecomments";
-          }
-        }
-      ]
-    );
-    return LrndesignSidecomments;
-  })(_polymerElement.PolymerElement);
-  _exports.LrndesignSidecomments = LrndesignSidecomments;
-  window.customElements.define(
-    LrndesignSidecomments.tag,
-    LrndesignSidecomments
-  );
+  });
 });

@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-layout/app-layout.js";
-import "img-pan-zoom/img-pan-zoom.js";
+import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/image-icons.js";

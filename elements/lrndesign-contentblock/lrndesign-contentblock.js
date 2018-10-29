@@ -1,92 +1,31 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrndesignContentblock };
-/**
- * `lrndesign-contentblock`
- * `Automated conversion of lrndesign-contentblock/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrndesignContentblock extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
+`lrndesign-contentblock`
+An incredibly basic content block
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
-
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Lrndesign contentblock",
-        description: "Automated conversion of lrndesign-contentblock/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Contentblock"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [],
-        advanced: []
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+  <style>
+      :host {
+        display: inline-block;
+        position: relative;
+        box-sizing: border-box;
       }
-    };
-  }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
+    </style>
+    <h3>[[title]]</h3>
+    <slot></slot>
+`,
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrndesign-contentblock";
+  is: "lrndesign-contentblock",
+
+  properties: {
+    /**
+     * Heading for this block
+     */
+    title: {
+      type: String
+    }
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrndesignContentblock.haxProperties,
-      LrndesignContentblock.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrndesignContentblock.tag, LrndesignContentblock);
+});

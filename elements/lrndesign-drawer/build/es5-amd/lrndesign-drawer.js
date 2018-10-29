@@ -1,102 +1,38 @@
 define([
-  "exports",
-  "./node_modules/@polymer/polymer/polymer-element.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_exports, _polymerElement, _HAXWiring) {
+  "./node_modules/@polymer/polymer/polymer-legacy.js",
+  "./node_modules/@polymer/app-layout/app-layout.js",
+  "./node_modules/@polymer/paper-icon-button/paper-icon-button.js",
+  "./node_modules/@polymer/paper-tooltip/paper-tooltip.js"
+], function(_polymerLegacy) {
   "use strict";
-  Object.defineProperty(_exports, "__esModule", { value: !0 });
-  _exports.LrndesignDrawer = void 0;
-  function _templateObject_befc7650d6f811e8834c1b273a2b2f11() {
+  function _templateObject_04b0b030db1311e8a8b599acf685b48d() {
     var data = babelHelpers.taggedTemplateLiteral([
-      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
+      '\n    <style>\n      :host {\n        display: block;\n        --lrndesign-drawer-width: 30%;\n      }\n      app-header {\n        z-index: 100;\n      }\n      app-drawer {\n        --app-drawer-width: var(--lrndesign-drawer-width);\n        --app-drawer-content-container: {\n          padding: 1em;\n          overflow-y: scroll;\n          margin-top: 7em;\n        }\n      }\n    </style>\n    <app-header>\n      <app-drawer opened="{{opened}}" align="{{align}}">\n        <slot></slot>\n      </app-drawer>\n    </app-header>\n    <paper-icon-button icon="[[icon]]" alt="[[alt]]" id="flyout-drawer"></paper-icon-button>\n    <paper-tooltip for="flyout-drawer">[[alt]]</paper-tooltip>\n'
     ]);
-    _templateObject_befc7650d6f811e8834c1b273a2b2f11 = function() {
+    _templateObject_04b0b030db1311e8a8b599acf685b48d = function() {
       return data;
     };
     return data;
   }
-  var LrndesignDrawer = (function(_PolymerElement) {
-    babelHelpers.inherits(LrndesignDrawer, _PolymerElement);
-    function LrndesignDrawer() {
-      babelHelpers.classCallCheck(this, LrndesignDrawer);
-      return babelHelpers.possibleConstructorReturn(
-        this,
-        (
-          LrndesignDrawer.__proto__ || Object.getPrototypeOf(LrndesignDrawer)
-        ).apply(this, arguments)
-      );
+  (0, _polymerLegacy.Polymer)({
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_04b0b030db1311e8a8b599acf685b48d()
+    ),
+    is: "lrndesign-drawer",
+    properties: {
+      opened: { type: Boolean, value: !1 },
+      icon: { type: String, value: "icon" },
+      align: { type: String, value: "left" },
+      alt: { type: String, value: "" }
+    },
+    ready: function ready() {
+      var root = this,
+        opened = this.opened;
+      this.shadowRoot
+        .querySelector("paper-icon-button")
+        .addEventListener("click", function() {
+          root.opened = !root.opened;
+        });
     }
-    babelHelpers.createClass(
-      LrndesignDrawer,
-      [
-        {
-          key: "connectedCallback",
-          value: function connectedCallback() {
-            babelHelpers
-              .get(
-                LrndesignDrawer.prototype.__proto__ ||
-                  Object.getPrototypeOf(LrndesignDrawer.prototype),
-                "connectedCallback",
-                this
-              )
-              .call(this);
-            this.HAXWiring = new _HAXWiring.HAXWiring();
-            this.HAXWiring.setHaxProperties(
-              LrndesignDrawer.haxProperties,
-              LrndesignDrawer.tag,
-              this
-            );
-          }
-        }
-      ],
-      [
-        {
-          key: "template",
-          get: function get() {
-            return (0, _polymerElement.html)(
-              _templateObject_befc7650d6f811e8834c1b273a2b2f11()
-            );
-          }
-        },
-        {
-          key: "haxProperties",
-          get: function get() {
-            return {
-              canScale: !0,
-              canPosition: !0,
-              canEditSource: !1,
-              gizmo: {
-                title: "Lrndesign drawer",
-                description: "Automated conversion of lrndesign-drawer/",
-                icon: "icons:android",
-                color: "green",
-                groups: ["Drawer"],
-                handles: [{ type: "todo:read-the-docs-for-usage" }],
-                meta: {
-                  author: "btopro",
-                  owner: "The Pennsylvania State University"
-                }
-              },
-              settings: { quick: [], configure: [], advanced: [] }
-            };
-          }
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {};
-          }
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "lrndesign-drawer";
-          }
-        }
-      ]
-    );
-    return LrndesignDrawer;
-  })(_polymerElement.PolymerElement);
-  _exports.LrndesignDrawer = LrndesignDrawer;
-  window.customElements.define(LrndesignDrawer.tag, LrndesignDrawer);
+  });
 });
