@@ -171,6 +171,8 @@
       "**/jarallax/**",
       "**/screenfull",
       "**/screenfull/**",
+      "**/web-animations-js",
+      "**/web-animations-js/**",
       "**/chartist",
       "**/chartist/**",
       "**/ical.js",

@@ -22,5 +22,6 @@
     "polymer-build": "3.1.0",
     "polymer-cli": "1.8.1",
     "wct-browser-legacy": "1.0.2"
-  }
+  },
+  "gitHead": "9a19006247e8f5523b63bdc4adb4e358fcf59090"
 }

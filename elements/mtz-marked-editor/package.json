@@ -17,7 +17,7 @@
     }
   },
   "version": "0.0.29",
-  "description": "Automated conversion of mtz-marked-editor/",
+  "description": "Automated conversion of mtz-marked-editor",
   "repository": {
     "type": "git",
     "url": "git@github.com/elmsln/lrnwebcomponents.git"
@@ -65,5 +65,6 @@
   "keywords": [
     "web-components",
     "html"
-  ]
+  ],
+  "gitHead": "9a19006247e8f5523b63bdc4adb4e358fcf59090"
 }

@@ -1,7 +1,7 @@
 define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./node_modules/@lrnwebcomponents/simple-timer/simple-timer.js",
-  "@lrnwebcomponents/lrnsys-layout/lrnsys-dialog-modal.js",
+  "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog-modal.js",
   "./node_modules/@lrnwebcomponents/to-do/to-do.js",
   "./node_modules/@polymer/paper-card/paper-card.js",
   "./node_modules/@polymer/paper-button/paper-button.js"

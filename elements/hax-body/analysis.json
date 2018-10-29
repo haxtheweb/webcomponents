@@ -15173,6 +15173,29 @@
       "path": "lib/hax-export-dialog.js",
       "properties": [
         {
+          "name": "fileTypes",
+          "type": "Object | null | undefined",
+          "description": "MIME type lookup for file extensions",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/mtz-file-download-behavior/mtz-file-download-behavior.js",
+            "start": {
+              "line": 12,
+              "column": 4
+            },
+            "end": {
+              "line": 22,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          },
+          "inheritedFrom": "mtz.FileDownloadBehavior"
+        },
+        {
           "name": "title",
           "type": "string | null | undefined",
           "description": "Title when open.",
@@ -15218,6 +15241,76 @@
         }
       ],
       "methods": [
+        {
+          "name": "downloadFromData",
+          "description": "Converts the data to a blob then uses navigator to save blob if it’s available, otherwise\ncreates an <a> with [download] attribute then simulates a click.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/mtz-file-download-behavior/mtz-file-download-behavior.js",
+            "start": {
+              "line": 34,
+              "column": 2
+            },
+            "end": {
+              "line": 54,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "data",
+              "type": "String",
+              "description": "data to encode."
+            },
+            {
+              "name": "type",
+              "type": "String",
+              "description": "type of file to generate (i.e, JSON or CSV)."
+            },
+            {
+              "name": "name",
+              "defaultValue": "\"download\""
+            },
+            {
+              "name": "newTab",
+              "defaultValue": "true"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "mtz.FileDownloadBehavior"
+        },
+        {
+          "name": "downloadFromURI",
+          "description": "Opens a new tab at the URI so that download can be initiated from the page.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/mtz-file-download-behavior/mtz-file-download-behavior.js",
+            "start": {
+              "line": 63,
+              "column": 2
+            },
+            "end": {
+              "line": 66,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "uri",
+              "type": "String",
+              "description": "The uri to open."
+            },
+            {
+              "name": "newTab",
+              "defaultValue": "true"
+            }
+          ],
+          "inheritedFrom": "mtz.FileDownloadBehavior"
+        },
         {
           "name": "ready",
           "description": "Ready life cycle.",
@@ -15522,6 +15615,24 @@
       "privacy": "public",
       "superclass": "HTMLElement",
       "attributes": [
+        {
+          "name": "file-types",
+          "description": "MIME type lookup for file extensions",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/mtz-file-download-behavior/mtz-file-download-behavior.js",
+            "start": {
+              "line": 12,
+              "column": 4
+            },
+            "end": {
+              "line": 22,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined",
+          "inheritedFrom": "mtz.FileDownloadBehavior"
+        },
         {
           "name": "title",
           "description": "Title when open.",
