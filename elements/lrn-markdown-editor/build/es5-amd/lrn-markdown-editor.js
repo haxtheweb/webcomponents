@@ -1,103 +1,79 @@
 define([
-  "exports",
-  "./node_modules/@polymer/polymer/polymer-element.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_exports, _polymerElement, _HAXWiring) {
+  "./node_modules/@polymer/polymer/polymer-legacy.js",
+  "./node_modules/@polymer/paper-tabs/paper-tabs.js",
+  "./node_modules/@polymer/marked-element/marked-element.js",
+  "./node_modules/@polymer/iron-pages/iron-pages.js",
+  "./lib/lrn-markdown-editor-editor.js"
+], function(_polymerLegacy) {
   "use strict";
-  Object.defineProperty(_exports, "__esModule", { value: !0 });
-  _exports.LrnMarkdownEditor = void 0;
-  function _templateObject_7aa925b0d6f411e8a6c5196223595f90() {
+  function _templateObject_6aa392c0db3311e8b767eb8ce4d727d6() {
     var data = babelHelpers.taggedTemplateLiteral([
-      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
+      '\n    <style>\n       :host {\n        display: block;\n      }\n\n      #split-pane {\n        display: flex;\n      }\n\n      .split-pane>* {\n        flex: 1 1 auto;\n        min-height: 10em;\n      }\n\n      .preview-pane {\n        background: lightblue;\n      }\n\n      paper-card {\n        padding: 1em;\n        width: calc(100% - 2em);\n      }\n\n      paper-tabs {\n        background: #F5F5F5;\n        border-style: solid;\n        border-color: #DCDCDC;\n        border-width: 1px;\n        min-width: 500px;\n      }\n\n      marked-element.lrn-markdown-editor {\n        width: 100%;\n        word-wrap: break-word;\n      }\n\n      .container-flex {\n        display: flex;\n        flex-wrap: nowrap;\n      }\n\n      .split-pane .container-flex>* {\n        width: 50%;\n      }\n\n      .split-pane marked-element {\n        width: calc(100% - 2em);\n        min-width: 150px;\n        margin: 0 1em;\n        padding: 0 1em;\n        background: #FFF;\n        border-left: solid #DCDCDC 1px;\n      }\n    </style>\n\n    <div class="mtz-toolbar">\n      <paper-tabs selected="{{selected}}">\n        <paper-tab>Write</paper-tab>\n        <paper-tab>Preview</paper-tab>\n        <paper-tab>Split View</paper-tab>\n      </paper-tabs>\n    </div>\n\n    <iron-pages selected="{{selected}}">\n\n      <section>\n        <paper-card>\n          <lrn-markdown-editor-editor content="{{content}}"></lrn-markdown-editor-editor>\n        </paper-card>\n      </section>\n\n      <section>\n        <paper-card>\n          <marked-element markdown="{{content}}"></marked-element>\n        </paper-card>\n      </section>\n\n      <section class="split-pane">\n        <paper-card>\n          <div class="container-flex">\n            <lrn-markdown-editor-editor content="{{content}}"></lrn-markdown-editor-editor>\n            <marked-element class="preview-pane" markdown="{{content}}"></marked-element>\n          </div>\n        </paper-card>\n      </section>\n\n    </iron-pages>\n'
     ]);
-    _templateObject_7aa925b0d6f411e8a6c5196223595f90 = function() {
+    _templateObject_6aa392c0db3311e8b767eb8ce4d727d6 = function() {
       return data;
     };
     return data;
   }
-  var LrnMarkdownEditor = (function(_PolymerElement) {
-    babelHelpers.inherits(LrnMarkdownEditor, _PolymerElement);
-    function LrnMarkdownEditor() {
-      babelHelpers.classCallCheck(this, LrnMarkdownEditor);
-      return babelHelpers.possibleConstructorReturn(
-        this,
-        (
-          LrnMarkdownEditor.__proto__ ||
-          Object.getPrototypeOf(LrnMarkdownEditor)
-        ).apply(this, arguments)
-      );
+  (0, _polymerLegacy.Polymer)({
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_6aa392c0db3311e8b767eb8ce4d727d6()
+    ),
+    is: "lrn-markdown-editor",
+    properties: {
+      content: { type: String, notify: !0 },
+      selected: { type: String, value: "0", reflectToAttribute: !0 },
+      layout: { type: String, value: 0 },
+      cookies: { type: Boolean, value: !0 },
+      elReady: { type: Boolean, value: !1 }
+    },
+    observers: ["_selectedChanged(selected)"],
+    _selectedChanged: function _selectedChanged(selected) {
+      var root = this,
+        cookieName = root._getCookieName();
+      if (2 === selected) {
+        root._createCookie(cookieName, "true", "30");
+      } else if (2 !== selected && !0 === root.elReady) {
+        root._eraseCookie(cookieName);
+      }
+    },
+    _createCookie: function _createCookie(name, value, days) {
+      var expires = "";
+      if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + 1e3 * (60 * (60 * (24 * days))));
+        expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + value + expires + "; path=/";
+    },
+    _readCookie: function _readCookie(name) {
+      for (
+        var nameEQ = name + "=", ca = document.cookie.split(";"), i = 0, c;
+        i < ca.length;
+        i++
+      ) {
+        c = ca[i];
+        while (" " == c.charAt(0)) {
+          c = c.substring(1, c.length);
+        }
+        if (0 == c.indexOf(nameEQ)) return c.substring(nameEQ.length, c.length);
+      }
+      return null;
+    },
+    _eraseCookie: function _eraseCookie(name) {
+      this._createCookie(name, "", -1);
+    },
+    _getCookieName: function _getCookieName() {
+      return "lrnmarkdowneditorsplitview";
+    },
+    ready: function ready() {
+      var root = this;
+      root.elReady = !0;
+      var cookieName = root._getCookieName(),
+        cookie = root._readCookie(cookieName);
+      if (cookie && "true" === cookie) {
+        root.selected = 2;
+      }
     }
-    babelHelpers.createClass(
-      LrnMarkdownEditor,
-      [
-        {
-          key: "connectedCallback",
-          value: function connectedCallback() {
-            babelHelpers
-              .get(
-                LrnMarkdownEditor.prototype.__proto__ ||
-                  Object.getPrototypeOf(LrnMarkdownEditor.prototype),
-                "connectedCallback",
-                this
-              )
-              .call(this);
-            this.HAXWiring = new _HAXWiring.HAXWiring();
-            this.HAXWiring.setHaxProperties(
-              LrnMarkdownEditor.haxProperties,
-              LrnMarkdownEditor.tag,
-              this
-            );
-          }
-        }
-      ],
-      [
-        {
-          key: "template",
-          get: function get() {
-            return (0, _polymerElement.html)(
-              _templateObject_7aa925b0d6f411e8a6c5196223595f90()
-            );
-          }
-        },
-        {
-          key: "haxProperties",
-          get: function get() {
-            return {
-              canScale: !0,
-              canPosition: !0,
-              canEditSource: !1,
-              gizmo: {
-                title: "Lrn markdown-editor",
-                description: "Automated conversion of lrn-markdown-editor/",
-                icon: "icons:android",
-                color: "green",
-                groups: ["Markdown"],
-                handles: [{ type: "todo:read-the-docs-for-usage" }],
-                meta: {
-                  author: "btopro",
-                  owner: "The Pennsylvania State University"
-                }
-              },
-              settings: { quick: [], configure: [], advanced: [] }
-            };
-          }
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {};
-          }
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "lrn-markdown-editor";
-          }
-        }
-      ]
-    );
-    return LrnMarkdownEditor;
-  })(_polymerElement.PolymerElement);
-  _exports.LrnMarkdownEditor = LrnMarkdownEditor;
-  window.customElements.define(LrnMarkdownEditor.tag, LrnMarkdownEditor);
+  });
 });

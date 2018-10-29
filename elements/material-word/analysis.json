@@ -2,22 +2,90 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`material-word`\n`Start of material-word`",
+      "description": "`material-word`\nOutputs word in material alphabet",
       "summary": "",
       "path": "material-word.js",
-      "properties": [],
-      "methods": [
+      "properties": [
         {
-          "name": "connectedCallback",
-          "description": "life cycle, element is afixed to the DOM",
+          "name": "word",
+          "type": "string | null | undefined",
+          "description": "",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 80,
+              "line": 800,
+              "column": 4
+            },
+            "end": {
+              "line": 803,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "letters",
+          "type": "Array | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 804,
+              "column": 4
+            },
+            "end": {
+              "line": 809,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "Array"
+            }
+          },
+          "defaultValue": "[]"
+        },
+        {
+          "name": "halfLetters",
+          "type": "Array | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 810,
+              "column": 4
+            },
+            "end": {
+              "line": 813,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Array"
+            }
+          },
+          "defaultValue": "[\"e\",\"f\",\"h\",\"i\"]"
+        }
+      ],
+      "methods": [
+        {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 816,
               "column": 2
             },
             "end": {
-              "line": 84,
+              "line": 825,
               "column": 3
             }
           },
@@ -26,6 +94,27 @@
           "return": {
             "type": "void"
           }
+        },
+        {
+          "name": "showHalf",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 827,
+              "column": 2
+            },
+            "end": {
+              "line": 832,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "letter"
+            }
+          ]
         }
       ],
       "staticMethods": [],
@@ -38,24 +127,86 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 18,
-          "column": 0
+          "line": 7,
+          "column": 8
         },
         "end": {
-          "line": 90,
+          "line": 833,
           "column": 1
         }
       },
       "privacy": "public",
-      "superclass": "PolymerElement",
-      "name": "MaterialWord",
-      "attributes": [],
-      "events": [],
+      "superclass": "HTMLElement",
+      "attributes": [
+        {
+          "name": "word",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 800,
+              "column": 4
+            },
+            "end": {
+              "line": 803,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "letters",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 804,
+              "column": 4
+            },
+            "end": {
+              "line": 809,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Array | null | undefined"
+        },
+        {
+          "name": "half-letters",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 810,
+              "column": 4
+            },
+            "end": {
+              "line": 813,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Array | null | undefined"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "word-changed",
+          "description": "Fired when the `word` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "letters-changed",
+          "description": "Fired when the `letters` property changes.",
+          "metadata": {}
+        }
+      ],
       "styling": {
         "cssVariables": [],
         "selectors": []
       },
-      "slots": []
+      "slots": [],
+      "tagname": "material-word"
     }
   ]
 }

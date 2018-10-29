@@ -1,0 +1,773 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "`progress-donut`\nA LRN element",
+      "summary": "",
+      "path": "progress-donut.js",
+      "properties": [
+        {
+          "name": "schemaResourceID",
+          "type": "string | null | undefined",
+          "description": "Unique Resource ID, generated when schemaMap processes.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 26,
+              "column": 4
+            },
+            "end": {
+              "line": 29,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\"",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "schemaMap",
+          "type": "Object | null | undefined",
+          "description": "Schema Map for this element.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 33,
+              "column": 4
+            },
+            "end": {
+              "line": 46,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_schemaMapChanged\"",
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "complete",
+          "type": "Array | null | undefined",
+          "description": "An array of completed values",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 88,
+              "column": 4
+            },
+            "end": {
+              "line": 91,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Array"
+            }
+          },
+          "defaultValue": "[]"
+        },
+        {
+          "name": "donutThickness",
+          "type": "number | null | undefined",
+          "description": "The thickness of the donut from 0-100",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 95,
+              "column": 4
+            },
+            "end": {
+              "line": 97,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          }
+        },
+        {
+          "name": "colors",
+          "type": "Array | null | undefined",
+          "description": "An array of hex codes to use as colors for each section.\nIf null, colors are determined by accentColor & dark properties",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 102,
+              "column": 4
+            },
+            "end": {
+              "line": 105,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Array"
+            }
+          },
+          "defaultValue": "null"
+        },
+        {
+          "name": "data",
+          "type": "Array | null | undefined",
+          "description": "An array of data for the donut chart",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 109,
+              "column": 4
+            },
+            "end": {
+              "line": 112,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "Array"
+            }
+          }
+        },
+        {
+          "name": "desc",
+          "type": "string | null | undefined",
+          "description": "Accessible long description",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 116,
+              "column": 4
+            },
+            "end": {
+              "line": 119,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "null"
+        },
+        {
+          "name": "options",
+          "type": "Array | null | undefined",
+          "description": "An array of data for the donut chart",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 123,
+              "column": 4
+            },
+            "end": {
+              "line": 126,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "Array"
+            }
+          }
+        },
+        {
+          "name": "imageSrc",
+          "type": "string | null | undefined",
+          "description": "The source of the image in the center of the object.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 130,
+              "column": 4
+            },
+            "end": {
+              "line": 134,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "null"
+        },
+        {
+          "name": "imageAlt",
+          "type": "string | null | undefined",
+          "description": "The alt text for the image.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 138,
+              "column": 4
+            },
+            "end": {
+              "line": 142,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "null"
+        },
+        {
+          "name": "imageStyle",
+          "type": "string | null | undefined",
+          "description": "The style for the image based on the size of the donut",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 146,
+              "column": 4
+            },
+            "end": {
+              "line": 149,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "size",
+          "type": "string | null | undefined",
+          "description": "The size of the progress-donut: sx, sm, md, lg, or xl. Default is md",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 153,
+              "column": 4
+            },
+            "end": {
+              "line": 156,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"md\""
+        },
+        {
+          "name": "title",
+          "type": "string | null | undefined",
+          "description": "Title",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 160,
+              "column": 4
+            },
+            "end": {
+              "line": 162,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "total",
+          "type": "number | null | undefined",
+          "description": "An array of incomplete values",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 166,
+              "column": 4
+            },
+            "end": {
+              "line": 169,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          },
+          "defaultValue": "100"
+        }
+      ],
+      "methods": [
+        {
+          "name": "generateResourceID",
+          "description": "Generate a uinque ID",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 51,
+              "column": 2
+            },
+            "end": {
+              "line": 68,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "_schemaMapChanged",
+          "description": "Notice the schema map has changed, reprocess attributes.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 72,
+              "column": 2
+            },
+            "end": {
+              "line": 94,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "attached",
+          "description": "Attached to the DOM, now fire.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 175,
+              "column": 2
+            },
+            "end": {
+              "line": 221,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_getData",
+          "description": "Makes chart and returns the chart object.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 226,
+              "column": 2
+            },
+            "end": {
+              "line": 228,
+              "column": 2
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "complete"
+            }
+          ]
+        },
+        {
+          "name": "_getImageStyle",
+          "description": "Makes chart and returns the chart object.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 233,
+              "column": 2
+            },
+            "end": {
+              "line": 249,
+              "column": 2
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "size"
+            }
+          ]
+        },
+        {
+          "name": "_getOptions",
+          "description": "Makes chart and returns the chart object.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 254,
+              "column": 2
+            },
+            "end": {
+              "line": 260,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "complete"
+            },
+            {
+              "name": "total"
+            },
+            {
+              "name": "size"
+            },
+            {
+              "name": "colors"
+            },
+            {
+              "name": "accentColor"
+            },
+            {
+              "name": "dark"
+            }
+          ]
+        },
+        {
+          "name": "_onCreated",
+          "description": "Handles chart creation event.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 265,
+              "column": 2
+            },
+            "end": {
+              "line": 268,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "makeChart",
+          "description": "Makes chart and returns the chart object.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 273,
+              "column": 2
+            },
+            "end": {
+              "line": 321,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "chart"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 17,
+          "column": 8
+        },
+        "end": {
+          "line": 322,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "attributes": [
+        {
+          "name": "schema-resource-i-d",
+          "description": "Unique Resource ID, generated when schemaMap processes.",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 26,
+              "column": 4
+            },
+            "end": {
+              "line": 29,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "schema-map",
+          "description": "Schema Map for this element.",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 33,
+              "column": 4
+            },
+            "end": {
+              "line": 46,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "complete",
+          "description": "An array of completed values",
+          "sourceRange": {
+            "start": {
+              "line": 88,
+              "column": 4
+            },
+            "end": {
+              "line": 91,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Array | null | undefined"
+        },
+        {
+          "name": "donut-thickness",
+          "description": "The thickness of the donut from 0-100",
+          "sourceRange": {
+            "start": {
+              "line": 95,
+              "column": 4
+            },
+            "end": {
+              "line": 97,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        },
+        {
+          "name": "colors",
+          "description": "An array of hex codes to use as colors for each section.\nIf null, colors are determined by accentColor & dark properties",
+          "sourceRange": {
+            "start": {
+              "line": 102,
+              "column": 4
+            },
+            "end": {
+              "line": 105,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Array | null | undefined"
+        },
+        {
+          "name": "data",
+          "description": "An array of data for the donut chart",
+          "sourceRange": {
+            "start": {
+              "line": 109,
+              "column": 4
+            },
+            "end": {
+              "line": 112,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Array | null | undefined"
+        },
+        {
+          "name": "desc",
+          "description": "Accessible long description",
+          "sourceRange": {
+            "start": {
+              "line": 116,
+              "column": 4
+            },
+            "end": {
+              "line": 119,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "options",
+          "description": "An array of data for the donut chart",
+          "sourceRange": {
+            "start": {
+              "line": 123,
+              "column": 4
+            },
+            "end": {
+              "line": 126,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Array | null | undefined"
+        },
+        {
+          "name": "image-src",
+          "description": "The source of the image in the center of the object.",
+          "sourceRange": {
+            "start": {
+              "line": 130,
+              "column": 4
+            },
+            "end": {
+              "line": 134,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "image-alt",
+          "description": "The alt text for the image.",
+          "sourceRange": {
+            "start": {
+              "line": 138,
+              "column": 4
+            },
+            "end": {
+              "line": 142,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "image-style",
+          "description": "The style for the image based on the size of the donut",
+          "sourceRange": {
+            "start": {
+              "line": 146,
+              "column": 4
+            },
+            "end": {
+              "line": 149,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "size",
+          "description": "The size of the progress-donut: sx, sm, md, lg, or xl. Default is md",
+          "sourceRange": {
+            "start": {
+              "line": 153,
+              "column": 4
+            },
+            "end": {
+              "line": 156,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "title",
+          "description": "Title",
+          "sourceRange": {
+            "start": {
+              "line": 160,
+              "column": 4
+            },
+            "end": {
+              "line": 162,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "total",
+          "description": "An array of incomplete values",
+          "sourceRange": {
+            "start": {
+              "line": 166,
+              "column": 4
+            },
+            "end": {
+              "line": 169,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "progress-donut"
+    }
+  ]
+}

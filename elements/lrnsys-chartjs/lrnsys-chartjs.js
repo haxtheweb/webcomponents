@@ -1,92 +1,67 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@vowo/chart-elements/chart-elements.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrnsysChartjs };
-/**
- * `lrnsys-chartjs`
- * `Automated conversion of lrnsys-chartjs/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrnsysChartjs extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
+`lrnsys-chartjs`
+A LRN element
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
-
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Lrnsys chartjs",
-        description: "Automated conversion of lrnsys-chartjs/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Chartjs"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [],
-        advanced: []
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
       }
-    };
-  }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
+    </style>
+    <div>
+    <!-- 
+    Use the logic from the logic of the template dom-if's to allow for abstraction for all the chart types
+    -->
+        <chart-line labels="{{labels}}" data="[[data]]"></chart-line>
+    </div>
+`,
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrnsys-chartjs";
+  is: "lrnsys-chartjs",
+
+  properties: {
+    labels: {
+      type: Array,
+      value: ["January", "February", "March", "April", "May", "June", "July"]
+    },
+    data: {
+      type: Object,
+      value: {}
+    }
+  },
+
+  ready: function() {
+    this.data = {
+      labels: this.labels,
+      datasets: [
+        {
+          label: "My First dataset",
+          backgroundColor: "rgba(220,220,220,0.2)",
+          borderColor: "rgba(220,220,220,1)",
+          borderWidth: 1,
+          pointBackgroundColor: "rgba(220,220,220,1)",
+          pointBorderColor: "#fff",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          data: [65, 59, 80, 81, 56, 55, 40]
+        },
+        {
+          label: "My Second dataset",
+          backgroundColor: "rgba(151,187,205,0.2)",
+          borderColor: "rgba(151,187,205,1)",
+          borderWidth: 1,
+          pointBackgroundColor: "rgba(151,187,205,1)",
+          pointBorderColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHoverBorderColor: "rgba(151,187,205,1)",
+          data: [28, 48, 40, 19, 86, 27, 90]
+        }
+      ]
+    };
+    console.log(this.data);
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrnsysChartjs.haxProperties,
-      LrnsysChartjs.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrnsysChartjs.tag, LrnsysChartjs);
+});

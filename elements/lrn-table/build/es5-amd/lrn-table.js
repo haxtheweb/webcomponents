@@ -1,103 +1,96 @@
 define([
-  "exports",
-  "./node_modules/@polymer/polymer/polymer-element.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_exports, _polymerElement, _HAXWiring) {
+  "./node_modules/@polymer/polymer/polymer-legacy.js",
+  "./node_modules/@lrnwebcomponents/csv-render/csv-render.js",
+  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
+  "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"
+], function(_polymerLegacy) {
   "use strict";
-  Object.defineProperty(_exports, "__esModule", { value: !0 });
-  _exports.LrnTable = void 0;
-  function _templateObject_118105c0d6f511e8bb9c9b9a04f669f9() {
+  function _templateObject_4cb4cda0db3411e8a41af3cba5671edd() {
     var data = babelHelpers.taggedTemplateLiteral([
-      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
+      '\n    <style>\n      :host {\n        display: block;\n      }\n      .hidden-title {\n        display: none;\n      }\n    </style>\n    <div typeof="oer:SupportingMaterial">\n      <div class="hidden-title" property="oer:name">[[title]]</div>\n      <div property="oer:description">\n        <slot></slot>\n        <csv-render data-source="[[csvFile]]" caption="[[title]]" summary="[[description]]"></csv-render>\n      </div>\n    </div>\n'
     ]);
-    _templateObject_118105c0d6f511e8bb9c9b9a04f669f9 = function() {
+    _templateObject_4cb4cda0db3411e8a41af3cba5671edd = function() {
       return data;
     };
     return data;
   }
-  var LrnTable = (function(_PolymerElement) {
-    babelHelpers.inherits(LrnTable, _PolymerElement);
-    function LrnTable() {
-      babelHelpers.classCallCheck(this, LrnTable);
-      return babelHelpers.possibleConstructorReturn(
-        this,
-        (LrnTable.__proto__ || Object.getPrototypeOf(LrnTable)).apply(
-          this,
-          arguments
-        )
-      );
+  (0, _polymerLegacy.Polymer)({
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_4cb4cda0db3411e8a41af3cba5671edd()
+    ),
+    is: "lrn-table",
+    behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
+    properties: {
+      title: { type: String },
+      csvFile: { type: String },
+      description: { type: String }
+    },
+    attached: function attached() {
+      this.setHaxProperties({
+        canScale: !0,
+        canPosition: !0,
+        canEditSource: !1,
+        gizmo: {
+          title: "CSV table",
+          description:
+            "This can generate a table from a CSV file no matter where it is located.",
+          icon: "editor:border-all",
+          color: "green",
+          groups: ["Presentation", "Table", "Data"],
+          handles: [{ type: "csv", source: "csvFile" }],
+          meta: { author: "LRNWebComponents" }
+        },
+        settings: {
+          quick: [
+            {
+              property: "csvFile",
+              title: "Source",
+              description: "The URL for this csv file.",
+              inputMethod: "textfield",
+              icon: "link",
+              required: !0
+            },
+            {
+              property: "title",
+              title: "Title",
+              description: "Title for the table to be generated.",
+              inputMethod: "textfield",
+              icon: "editor:title"
+            },
+            {
+              property: "description",
+              title: "Description",
+              description:
+                "More detailed description for improved accessibility of the table data.",
+              inputMethod: "textfield",
+              icon: "editor:short-text"
+            }
+          ],
+          configure: [
+            {
+              property: "csvFile",
+              title: "Source",
+              description: "The URL for this csv file.",
+              inputMethod: "textfield",
+              required: !0
+            },
+            {
+              property: "title",
+              title: "Title",
+              description: "Title for the table to be generated.",
+              inputMethod: "textfield"
+            },
+            {
+              property: "description",
+              title: "Description",
+              description:
+                "More detailed description for improved accessibility of the table data.",
+              inputMethod: "textfield"
+            }
+          ],
+          advanced: []
+        }
+      });
     }
-    babelHelpers.createClass(
-      LrnTable,
-      [
-        {
-          key: "connectedCallback",
-          value: function connectedCallback() {
-            babelHelpers
-              .get(
-                LrnTable.prototype.__proto__ ||
-                  Object.getPrototypeOf(LrnTable.prototype),
-                "connectedCallback",
-                this
-              )
-              .call(this);
-            this.HAXWiring = new _HAXWiring.HAXWiring();
-            this.HAXWiring.setHaxProperties(
-              LrnTable.haxProperties,
-              LrnTable.tag,
-              this
-            );
-          }
-        }
-      ],
-      [
-        {
-          key: "template",
-          get: function get() {
-            return (0, _polymerElement.html)(
-              _templateObject_118105c0d6f511e8bb9c9b9a04f669f9()
-            );
-          }
-        },
-        {
-          key: "haxProperties",
-          get: function get() {
-            return {
-              canScale: !0,
-              canPosition: !0,
-              canEditSource: !1,
-              gizmo: {
-                title: "Lrn table",
-                description: "Automated conversion of lrn-table/",
-                icon: "icons:android",
-                color: "green",
-                groups: ["Table"],
-                handles: [{ type: "todo:read-the-docs-for-usage" }],
-                meta: {
-                  author: "btopro",
-                  owner: "The Pennsylvania State University"
-                }
-              },
-              settings: { quick: [], configure: [], advanced: [] }
-            };
-          }
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {};
-          }
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "lrn-table";
-          }
-        }
-      ]
-    );
-    return LrnTable;
-  })(_polymerElement.PolymerElement);
-  _exports.LrnTable = LrnTable;
-  window.customElements.define(LrnTable.tag, LrnTable);
+  });
 });

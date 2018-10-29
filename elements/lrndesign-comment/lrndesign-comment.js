@@ -1,92 +1,68 @@
-/**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrndesignComment };
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
+import "time-elements/time-elements.js";
 /**
  * `lrndesign-comment`
- * `Automated conversion of lrndesign-comment/`
+ * A LRN element
  *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
  * @demo demo/index.html
  */
-class LrndesignComment extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
-
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Lrndesign comment",
-        description: "Automated conversion of lrndesign-comment/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Comment"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [],
-        advanced: []
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
       }
-    };
-  }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
+      .comment-left {
+        float: left;
+        display: inline-block;
+      }
+      .comment-right {
+        display: inline-block;
+      }
+    </style>
+    <div class="comment-container">
+      <div class="comment-left">
+        <lrndesign-avatar></lrndesign-avatar>
+      </div>
+      <div class="comment-right">
+        <div class="row-1">
+          <span>{{name}}</span>
+          <relative-time datetime\$="{{date}}">
+          </relative-time>
+        </div>
+        <div class="row-2">
+          <slot></slot>
+        </div>
+        <div class="row-3">
+          {{links}}
+        </div>
+      </div>
+    </div>
+`,
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrndesign-comment";
+  is: "lrndesign-comment",
+
+  properties: {
+    avatar: {
+      type: Object,
+      reflectToAttribute: true,
+      notify: true
+    },
+    name: {
+      type: String,
+      reflectToAttribute: true,
+      notify: true
+    },
+    date: {
+      type: String,
+      value: "2014-04-01T00:00:00.000Z",
+      reflectToAttribute: true,
+      notify: true
+    },
+    links: {
+      type: Object,
+      notify: true
+    }
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrndesignComment.haxProperties,
-      LrndesignComment.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrndesignComment.tag, LrndesignComment);
+});

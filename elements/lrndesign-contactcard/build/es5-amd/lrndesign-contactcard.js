@@ -1,103 +1,43 @@
 define([
-  "exports",
-  "./node_modules/@polymer/polymer/polymer-element.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_exports, _polymerElement, _HAXWiring) {
+  "./node_modules/@polymer/polymer/polymer-legacy.js",
+  "./node_modules/@polymer/paper-card/paper-card.js",
+  "./node_modules/@polymer/paper-button/paper-button.js",
+  "./node_modules/@lrnwebcomponents/lrn-icons/lrn-icons.js",
+  "./node_modules/@polymer/iron-icons/iron-icons.js",
+  "./node_modules/@polymer/iron-icons/maps-icons.js",
+  "./node_modules/@polymer/iron-icons/hardware-icons.js",
+  "./node_modules/@polymer/paper-tooltip/paper-tooltip.js",
+  "./node_modules/@lrnwebcomponents/social-media-icons/social-media-icons.js"
+], function(_polymerLegacy) {
   "use strict";
-  Object.defineProperty(_exports, "__esModule", { value: !0 });
-  _exports.LrndesignContactcard = void 0;
-  function _templateObject_cd600b90d6f711e8acc0755759aec619() {
-    var data = babelHelpers.taggedTemplateLiteral([
-      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
-    ]);
-    _templateObject_cd600b90d6f711e8acc0755759aec619 = function() {
+  function _templateObject_64202250db3411e8a63df977ca858d12() {
+    var data = babelHelpers.taggedTemplateLiteral(
+      [
+        '\n    <style>\n      :host {\n        display: block;\n        --contactcard-icons-hover-color: gray;\n        --contactcard-icons-fill-color: #aeaeae;\n      }\n\n      .name {\n        text-align: center;\n        min-height: 1em;\n      }\n\n      #img_wrap {\n        display: flex;\n        justify-content: center;\n        align-items: flex-start;\n      }\n\n      .profile-image {\n        background-color: #aeaeae;\n        padding: 4px;\n        border-radius: 50%;\n        width: 50%;\n        min-height: 10em;\n        margin-top: 25px;\n      }\n\n      .position {\n        text-align: center;\n        font-style: italic;\n        font-size: 16px;\n        margin: -10px 0 10px;\n      }\n\n      .organization {\n        text-align: center;\n        font-size: 14px;\n        margin: -8px 0 10px;\n      }\n\n      .mail_icon {\n        width: 35px;\n        height: 35px;\n        color: var(--contactcard-icons-fill-color);\n      }\n\n      .mail_icon:hover {\n        color: var(--contactcard-icons-hover-color);\n      }\n\n      .phone_icon {\n        width: 35px;\n        height: 35px;\n        color: var(--contactcard-icons-fill-color);\n      }\n\n      .phone_icon:hover {\n        color: var(--contactcard-icons-hover-color);\n      }\n\n      .computer_icon {\n        width: 35px;\n        height: 35px;\n        color: var(--contactcard-icons-fill-color);\n      }\n\n      .computer_icon:hover {\n        color: var(--contactcard-icons-hover-color);\n      }\n\n      #group_icons {\n        width: 70%;\n        margin-left: auto;\n        margin-right: auto;\n        margin-bottom: 10px;\n        border-top: 2px #aeaeae solid;\n        padding-top: 5px;\n      }\n\n      social-media-icons {\n        --social-media-icons-hover-color: var(--contactcard-icons-hover-color);\n        margin-left: .5em;\n      }\n\n      .icons {\n        display: flex;\n        justify-content: center;\n        align-items: flext-start;\n        padding-top: 5px;\n      }\n\n      paper-button {\n        padding: 0;\n        margin: 0;\n        min-width: 1rem;\n      }\n    </style>\n    <paper-card>\n      <div id="img_wrap"><img class="profile-image" src="[[image]]"></div>\n      <div class="name">\n        <template is="dom-if" if="[[name]]">\n        <h2>[[name]]</h2>\n        </template>\n      </div>\n      <div class="position">[[position]]</div>\n      <div class="organization">[[organization]]</div>\n      <div id="group_icons">\n        <div class="icons">\n        <template is="dom-if" if="[[email]]">\n          <a href$="mailto:[[email]]">\n            <paper-button id="mail">\n              <iron-icon icon="mail" class="mail_icon"></iron-icon>\n            </paper-button>\n          </a>\n          <paper-tooltip for="mail">Email</paper-tooltip>\n        </template>\n        <template is="dom-if" if="[[phone]]">\n          <a href$="tel:[[phone]]">\n            <paper-button id="phone">\n              <iron-icon icon="maps:local-phone" class="phone_icon"></iron-icon>\n              </paper-button>\n          </a>\n          <paper-tooltip for="phone">Call</paper-tooltip>\n        </template>\n        <template is="dom-if" if="[[website]]">\n          <a href$="[[website]]">\n            <paper-button id="website">\n              <iron-icon icon="hardware:desktop-windows" class="computer_icon"></iron-icon>\n              </paper-button>\n          </a>\n          <paper-tooltip for="website">Visit</paper-tooltip>\n        </template>\n        <template is="dom-if" if="[[twitter]]">\n          <a href$="[[twitter]]">\n            <paper-button id="twitter">\n              <social-media-icons icon="twitter" color="#aeaeae" size="35" class="twitter_icon"></social-media-icons>\n              </paper-button>\n          </a>\n          <paper-tooltip for="twitter">Connect</paper-tooltip>\n        </template>\n        </div>\n      </div>\n    </paper-card>\n'
+      ],
+      [
+        '\n    <style>\n      :host {\n        display: block;\n        --contactcard-icons-hover-color: gray;\n        --contactcard-icons-fill-color: #aeaeae;\n      }\n\n      .name {\n        text-align: center;\n        min-height: 1em;\n      }\n\n      #img_wrap {\n        display: flex;\n        justify-content: center;\n        align-items: flex-start;\n      }\n\n      .profile-image {\n        background-color: #aeaeae;\n        padding: 4px;\n        border-radius: 50%;\n        width: 50%;\n        min-height: 10em;\n        margin-top: 25px;\n      }\n\n      .position {\n        text-align: center;\n        font-style: italic;\n        font-size: 16px;\n        margin: -10px 0 10px;\n      }\n\n      .organization {\n        text-align: center;\n        font-size: 14px;\n        margin: -8px 0 10px;\n      }\n\n      .mail_icon {\n        width: 35px;\n        height: 35px;\n        color: var(--contactcard-icons-fill-color);\n      }\n\n      .mail_icon:hover {\n        color: var(--contactcard-icons-hover-color);\n      }\n\n      .phone_icon {\n        width: 35px;\n        height: 35px;\n        color: var(--contactcard-icons-fill-color);\n      }\n\n      .phone_icon:hover {\n        color: var(--contactcard-icons-hover-color);\n      }\n\n      .computer_icon {\n        width: 35px;\n        height: 35px;\n        color: var(--contactcard-icons-fill-color);\n      }\n\n      .computer_icon:hover {\n        color: var(--contactcard-icons-hover-color);\n      }\n\n      #group_icons {\n        width: 70%;\n        margin-left: auto;\n        margin-right: auto;\n        margin-bottom: 10px;\n        border-top: 2px #aeaeae solid;\n        padding-top: 5px;\n      }\n\n      social-media-icons {\n        --social-media-icons-hover-color: var(--contactcard-icons-hover-color);\n        margin-left: .5em;\n      }\n\n      .icons {\n        display: flex;\n        justify-content: center;\n        align-items: flext-start;\n        padding-top: 5px;\n      }\n\n      paper-button {\n        padding: 0;\n        margin: 0;\n        min-width: 1rem;\n      }\n    </style>\n    <paper-card>\n      <div id="img_wrap"><img class="profile-image" src="[[image]]"></div>\n      <div class="name">\n        <template is="dom-if" if="[[name]]">\n        <h2>[[name]]</h2>\n        </template>\n      </div>\n      <div class="position">[[position]]</div>\n      <div class="organization">[[organization]]</div>\n      <div id="group_icons">\n        <div class="icons">\n        <template is="dom-if" if="[[email]]">\n          <a href\\$="mailto:[[email]]">\n            <paper-button id="mail">\n              <iron-icon icon="mail" class="mail_icon"></iron-icon>\n            </paper-button>\n          </a>\n          <paper-tooltip for="mail">Email</paper-tooltip>\n        </template>\n        <template is="dom-if" if="[[phone]]">\n          <a href\\$="tel:[[phone]]">\n            <paper-button id="phone">\n              <iron-icon icon="maps:local-phone" class="phone_icon"></iron-icon>\n              </paper-button>\n          </a>\n          <paper-tooltip for="phone">Call</paper-tooltip>\n        </template>\n        <template is="dom-if" if="[[website]]">\n          <a href\\$="[[website]]">\n            <paper-button id="website">\n              <iron-icon icon="hardware:desktop-windows" class="computer_icon"></iron-icon>\n              </paper-button>\n          </a>\n          <paper-tooltip for="website">Visit</paper-tooltip>\n        </template>\n        <template is="dom-if" if="[[twitter]]">\n          <a href\\$="[[twitter]]">\n            <paper-button id="twitter">\n              <social-media-icons icon="twitter" color="#aeaeae" size="35" class="twitter_icon"></social-media-icons>\n              </paper-button>\n          </a>\n          <paper-tooltip for="twitter">Connect</paper-tooltip>\n        </template>\n        </div>\n      </div>\n    </paper-card>\n'
+      ]
+    );
+    _templateObject_64202250db3411e8a63df977ca858d12 = function() {
       return data;
     };
     return data;
   }
-  var LrndesignContactcard = (function(_PolymerElement) {
-    babelHelpers.inherits(LrndesignContactcard, _PolymerElement);
-    function LrndesignContactcard() {
-      babelHelpers.classCallCheck(this, LrndesignContactcard);
-      return babelHelpers.possibleConstructorReturn(
-        this,
-        (
-          LrndesignContactcard.__proto__ ||
-          Object.getPrototypeOf(LrndesignContactcard)
-        ).apply(this, arguments)
-      );
+  (0, _polymerLegacy.Polymer)({
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_64202250db3411e8a63df977ca858d12()
+    ),
+    is: "lrndesign-contactcard",
+    properties: {
+      image: { type: String },
+      email: { type: String },
+      name: { type: String },
+      position: { type: String },
+      organization: { type: String },
+      phone: { type: String },
+      website: { type: String },
+      twitter: { type: String }
     }
-    babelHelpers.createClass(
-      LrndesignContactcard,
-      [
-        {
-          key: "connectedCallback",
-          value: function connectedCallback() {
-            babelHelpers
-              .get(
-                LrndesignContactcard.prototype.__proto__ ||
-                  Object.getPrototypeOf(LrndesignContactcard.prototype),
-                "connectedCallback",
-                this
-              )
-              .call(this);
-            this.HAXWiring = new _HAXWiring.HAXWiring();
-            this.HAXWiring.setHaxProperties(
-              LrndesignContactcard.haxProperties,
-              LrndesignContactcard.tag,
-              this
-            );
-          }
-        }
-      ],
-      [
-        {
-          key: "template",
-          get: function get() {
-            return (0, _polymerElement.html)(
-              _templateObject_cd600b90d6f711e8acc0755759aec619()
-            );
-          }
-        },
-        {
-          key: "haxProperties",
-          get: function get() {
-            return {
-              canScale: !0,
-              canPosition: !0,
-              canEditSource: !1,
-              gizmo: {
-                title: "Lrndesign contactcard",
-                description: "Automated conversion of lrndesign-contactcard/",
-                icon: "icons:android",
-                color: "green",
-                groups: ["Contactcard"],
-                handles: [{ type: "todo:read-the-docs-for-usage" }],
-                meta: {
-                  author: "btopro",
-                  owner: "The Pennsylvania State University"
-                }
-              },
-              settings: { quick: [], configure: [], advanced: [] }
-            };
-          }
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {};
-          }
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "lrndesign-contactcard";
-          }
-        }
-      ]
-    );
-    return LrndesignContactcard;
-  })(_polymerElement.PolymerElement);
-  _exports.LrndesignContactcard = LrndesignContactcard;
-  window.customElements.define(LrndesignContactcard.tag, LrndesignContactcard);
+  });
 });

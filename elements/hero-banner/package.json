@@ -40,6 +40,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/materializecss-styles": "^0.0.28",
+    "@lrnwebcomponents/a11y-behaviors": "^0.0.28",
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.28",
     "@polymer/polymer": "^3.0.5",
     "@polymer/paper-button": "^3.0.0",

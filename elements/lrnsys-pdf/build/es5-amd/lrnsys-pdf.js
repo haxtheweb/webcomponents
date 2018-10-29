@@ -1,103 +1,96 @@
 define([
-  "exports",
-  "./node_modules/@polymer/polymer/polymer-element.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_exports, _polymerElement, _HAXWiring) {
+  "./node_modules/@polymer/polymer/polymer-legacy.js",
+  "./node_modules/@lrnwebcomponents/pdf-browser-viewer/pdf-browser-viewer.js",
+  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
+  "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"
+], function(_polymerLegacy) {
   "use strict";
-  Object.defineProperty(_exports, "__esModule", { value: !0 });
-  _exports.LrnsysPdf = void 0;
-  function _templateObject_afde8a60d6fc11e8bfbeb3eebcab7c1e() {
+  function _templateObject_a4c8fad0db3311e8a2ea5de24ec63979() {
     var data = babelHelpers.taggedTemplateLiteral([
-      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
+      '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <h2>[[title]]</h2>\n    <pdf-browser-viewer id="pdfViewer" file="[[file]]#page=[[page]]" width="100%" card="[[card]]" elevation="2" download-label="[[downloadLabel]]"></pdf-browser-viewer>\n'
     ]);
-    _templateObject_afde8a60d6fc11e8bfbeb3eebcab7c1e = function() {
+    _templateObject_a4c8fad0db3311e8a2ea5de24ec63979 = function() {
       return data;
     };
     return data;
   }
-  var LrnsysPdf = (function(_PolymerElement) {
-    babelHelpers.inherits(LrnsysPdf, _PolymerElement);
-    function LrnsysPdf() {
-      babelHelpers.classCallCheck(this, LrnsysPdf);
-      return babelHelpers.possibleConstructorReturn(
-        this,
-        (LrnsysPdf.__proto__ || Object.getPrototypeOf(LrnsysPdf)).apply(
-          this,
-          arguments
-        )
-      );
+  (0, _polymerLegacy.Polymer)({
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_a4c8fad0db3311e8a2ea5de24ec63979()
+    ),
+    is: "lrnsys-pdf",
+    behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
+    properties: {
+      title: { type: String, value: "lrnsys-pdf" },
+      card: { type: Boolean, value: !1 },
+      downloadLabel: {
+        type: String,
+        computed: "_computeDownloadLabel(download)"
+      },
+      page: { type: String },
+      file: { type: String },
+      download: { type: Boolean, value: !0 }
+    },
+    attached: function attached() {
+      this.setHaxProperties({
+        canScale: !0,
+        canPosition: !0,
+        canEditSource: !1,
+        gizmo: {
+          title: "PDF viewer",
+          descrption:
+            "Nicely present PDFs in a cross browser compatible manner.",
+          icon: "editor:border-all",
+          color: "green",
+          groups: ["Presentation", "Table", "Data"],
+          handles: [{ type: "pdf", url: "file" }],
+          meta: { author: "LRNWebComponents" }
+        },
+        settings: {
+          quick: [
+            {
+              property: "file",
+              title: "File",
+              description: "The URL for the pdf.",
+              inputMethod: "textfield",
+              icon: "link",
+              required: !0
+            }
+          ],
+          configure: [
+            {
+              property: "file",
+              title: "File",
+              description: "The URL for this pdf.",
+              inputMethod: "textfield",
+              icon: "link",
+              required: !0
+            },
+            {
+              property: "title",
+              title: "Title",
+              description: "Title to present",
+              inputMethod: "textfield",
+              icon: "editor:title"
+            },
+            {
+              property: "download",
+              title: "Download",
+              description: "Can the user see a download link?",
+              inputMethod: "boolean",
+              icon: "file"
+            }
+          ],
+          advanced: []
+        }
+      });
+    },
+    _computeDownloadLabel: function _computeDownloadLabel(download) {
+      if (download) {
+        return "Download";
+      } else {
+        return null;
+      }
     }
-    babelHelpers.createClass(
-      LrnsysPdf,
-      [
-        {
-          key: "connectedCallback",
-          value: function connectedCallback() {
-            babelHelpers
-              .get(
-                LrnsysPdf.prototype.__proto__ ||
-                  Object.getPrototypeOf(LrnsysPdf.prototype),
-                "connectedCallback",
-                this
-              )
-              .call(this);
-            this.HAXWiring = new _HAXWiring.HAXWiring();
-            this.HAXWiring.setHaxProperties(
-              LrnsysPdf.haxProperties,
-              LrnsysPdf.tag,
-              this
-            );
-          }
-        }
-      ],
-      [
-        {
-          key: "template",
-          get: function get() {
-            return (0, _polymerElement.html)(
-              _templateObject_afde8a60d6fc11e8bfbeb3eebcab7c1e()
-            );
-          }
-        },
-        {
-          key: "haxProperties",
-          get: function get() {
-            return {
-              canScale: !0,
-              canPosition: !0,
-              canEditSource: !1,
-              gizmo: {
-                title: "Lrnsys pdf",
-                description: "Automated conversion of lrnsys-pdf/",
-                icon: "icons:android",
-                color: "green",
-                groups: ["Pdf"],
-                handles: [{ type: "todo:read-the-docs-for-usage" }],
-                meta: {
-                  author: "btopro",
-                  owner: "The Pennsylvania State University"
-                }
-              },
-              settings: { quick: [], configure: [], advanced: [] }
-            };
-          }
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {};
-          }
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "lrnsys-pdf";
-          }
-        }
-      ]
-    );
-    return LrnsysPdf;
-  })(_polymerElement.PolymerElement);
-  _exports.LrnsysPdf = LrnsysPdf;
-  window.customElements.define(LrnsysPdf.tag, LrnsysPdf);
+  });
 });

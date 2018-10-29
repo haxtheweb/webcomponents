@@ -5,18 +5,18 @@ define([
   "./node_modules/@polymer/iron-validatable-behavior/iron-validatable-behavior.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_cd05d320db1411e893ee2f4d7ec462ba() {
+  function _templateObject_ced1e4f0db3211e886dc5fbff912ef51() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n\n      <slot name="controls"></slot>\n      <slot name="textarea"></slot>\n      <slot name="footer"></slot>\n'
     ]);
-    _templateObject_cd05d320db1411e893ee2f4d7ec462ba = function() {
+    _templateObject_ced1e4f0db3211e886dc5fbff912ef51 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_cd05d320db1411e893ee2f4d7ec462ba()
+      _templateObject_ced1e4f0db3211e886dc5fbff912ef51()
     ),
     is: "mtz-marked-editor",
     properties: {

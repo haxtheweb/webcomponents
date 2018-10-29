@@ -13,10 +13,10 @@ import "./node_modules/@polymer/paper-button/paper-button.js";
 import "./node_modules/@polymer/paper-toast/paper-toast.js";
 import "./node_modules/@polymer/iron-ajax/iron-ajax.js";
 import "./node_modules/@polymer/iron-image/iron-image.js";
-import "../../node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "../../node_modules/@lrnwebcomponents/multiple-choice/multiple-choice.js";
-import "../../node_modules/@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
-import "../../node_modules/@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
+import "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "./node_modules/@lrnwebcomponents/multiple-choice/multiple-choice.js";
+import "./node_modules/@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
+import "./node_modules/@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
 import "./lib/game-show-quiz-modal.js";
 Polymer({
   _template: html`

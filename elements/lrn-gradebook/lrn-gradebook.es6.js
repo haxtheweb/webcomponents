@@ -1,10 +1,20 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";export{LrnGradebook};class LrnGradebook extends PolymerElement{static get template(){return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/iron-data-table/iron-data-table.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";var $_documentContainer=document.createElement("div");$_documentContainer.setAttribute("style","display: none;");$_documentContainer.innerHTML=`<dom-module id="lrn-gradebook">
+<style>
+  data-table-row {
+    border: 10px solid black;
+  }
 </style>
-<slot></slot>`}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Lrn gradebook",description:"Automated conversion of lrn-gradebook/",icon:"icons:android",color:"green",groups:["Gradebook"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[],advanced:[]}}}static get properties(){return{}}static get tag(){return"lrn-gradebook"}connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setHaxProperties(LrnGradebook.haxProperties,LrnGradebook.tag,this)}}window.customElements.define(LrnGradebook.tag,LrnGradebook);
+  <template>
+    <iron-ajax url="demo/data.json" last-response="{{data}}" auto=""></iron-ajax>
+		  <iron-data-table items="[[data]]">
+		    <data-table-column name="First Name">
+		      <template>[[item.name.first]]</template>
+		    </data-table-column>
+		    <data-table-column name="Last Name">
+		      <template>[[item.name.last]]</template>
+		    </data-table-column>
+		  </iron-data-table>
+  </template>
+
+  
+</dom-module>`;document.head.appendChild($_documentContainer);Polymer({is:"lrn-gradebook",properties:{data:{type:Object}}});

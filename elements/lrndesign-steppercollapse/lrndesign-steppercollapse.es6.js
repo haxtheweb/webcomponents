@@ -1,10 +1,28 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";export{LrndesignSteppercollapse};class LrndesignSteppercollapse extends PolymerElement{static get template(){return html`
-<style>:host {
-  display: block;
-}
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/iron-collapse/iron-collapse.js";import"./node_modules/@lrnwebcomponents/lrndesign-stepper/lrndesign-stepper.js";Polymer({_template:html`
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>[[title]]</h2>
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Lrndesign steppercollapse",description:"Automated conversion of lrndesign-steppercollapse/",icon:"icons:android",color:"green",groups:["Steppercollapse"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[],advanced:[]}}}static get properties(){return{}}static get tag(){return"lrndesign-steppercollapse"}connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setHaxProperties(LrndesignSteppercollapse.haxProperties,LrndesignSteppercollapse.tag,this)}}window.customElements.define(LrndesignSteppercollapse.tag,LrndesignSteppercollapse);
+<lrn-objective title="Text" task="assignment">
+dokokadskoadsokds
+ads
+ad
+s
+ads
+asd
+</lrn-objective>
+<lrndesign-stepper>
+  <lrndesign-stepper-button title="Step 1: Text" icon="book" url="#">
+  </lrndesign-stepper-button>
+  <lrndesign-stepper-button title="Step 2: Video" icon="av:play-circle-filled" collapsible="">
+    Things and stuff
+  </lrndesign-stepper-button>
+  <lrndesign-stepper-button title="Step 3: Quiz" icon="assignment-turned-in" url="#"></lrndesign-stepper-button>
+  <lrndesign-stepper-button title="Step 4: Discuss" icon="social:people" collapsible="">
+    Fourth step content goes here...
+  </lrndesign-stepper-button>
+</lrndesign-stepper>
+`,is:"lrndesign-steppercollapse",properties:{title:{type:String,value:"lrndesign-steppercollapse"}}});

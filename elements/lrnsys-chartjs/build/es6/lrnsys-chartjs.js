@@ -1,53 +1,58 @@
 import {
   html,
-  PolymerElement
-} from "./node_modules/@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrnsysChartjs };
-class LrnsysChartjs extends PolymerElement {
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
-  static get haxProperties() {
-    return {
-      canScale: !0,
-      canPosition: !0,
-      canEditSource: !1,
-      gizmo: {
-        title: "Lrnsys chartjs",
-        description: "Automated conversion of lrnsys-chartjs/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Chartjs"],
-        handles: [{ type: "todo:read-the-docs-for-usage" }],
-        meta: { author: "btopro", owner: "The Pennsylvania State University" }
-      },
-      settings: { quick: [], configure: [], advanced: [] }
+  Polymer
+} from "./node_modules/@polymer/polymer/polymer-legacy.js";
+import "./node_modules/@vowo/chart-elements/chart-elements.js";
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <div>
+    <!-- 
+    Use the logic from the logic of the template dom-if's to allow for abstraction for all the chart types
+    -->
+        <chart-line labels="{{labels}}" data="[[data]]"></chart-line>
+    </div>
+`,
+  is: "lrnsys-chartjs",
+  properties: {
+    labels: {
+      type: Array,
+      value: ["January", "February", "March", "April", "May", "June", "July"]
+    },
+    data: { type: Object, value: {} }
+  },
+  ready: function() {
+    this.data = {
+      labels: this.labels,
+      datasets: [
+        {
+          label: "My First dataset",
+          backgroundColor: "rgba(220,220,220,0.2)",
+          borderColor: "rgba(220,220,220,1)",
+          borderWidth: 1,
+          pointBackgroundColor: "rgba(220,220,220,1)",
+          pointBorderColor: "#fff",
+          pointHoverBackgroundColor: "#fff",
+          pointHoverBorderColor: "rgba(220,220,220,1)",
+          data: [65, 59, 80, 81, 56, 55, 40]
+        },
+        {
+          label: "My Second dataset",
+          backgroundColor: "rgba(151,187,205,0.2)",
+          borderColor: "rgba(151,187,205,1)",
+          borderWidth: 1,
+          pointBackgroundColor: "rgba(151,187,205,1)",
+          pointBorderColor: "#fff",
+          pointHighlightFill: "#fff",
+          pointHoverBorderColor: "rgba(151,187,205,1)",
+          data: [28, 48, 40, 19, 86, 27, 90]
+        }
+      ]
     };
+    console.log(this.data);
   }
-  static get properties() {
-    return {};
-  }
-  static get tag() {
-    return "lrnsys-chartjs";
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrnsysChartjs.haxProperties,
-      LrnsysChartjs.tag,
-      this
-    );
-  }
-}
-window.customElements.define(LrnsysChartjs.tag, LrnsysChartjs);
+});

@@ -1,10 +1,46 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";export{LrndesignSidenote};class LrndesignSidenote extends PolymerElement{static get template(){return html`
-<style>:host {
-  display: block;
-}
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";Polymer({_template:html`
+    <style>
+      :host {
+        display: block;
+        --container-bg-color: lightgray;
+        --container-text-color: black;
+        --container-padding: 1em;
+        --container-outset: 0;
+        @apply --host-styles;
+      }
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Lrndesign sidenote",description:"Automated conversion of lrndesign-sidenote/",icon:"icons:android",color:"green",groups:["Sidenote"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[],advanced:[]}}}static get properties(){return{}}static get tag(){return"lrndesign-sidenote"}connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setHaxProperties(LrndesignSidenote.haxProperties,LrndesignSidenote.tag,this)}}window.customElements.define(LrndesignSidenote.tag,LrndesignSidenote);
+      #container {
+        display: block;
+        background: var(--container-bg-color);
+        color: var(--container-text-color);
+        padding: var(--container-padding);
+        margin-left: -var(--container-outset);
+        @apply --container-styles;
+      }
+
+      #header {
+        display: flex;
+        align-items: center;
+        @apply --container-header;
+      }
+
+      #icon {
+        margin-right: .5em;
+        @apply --icon-styles;
+      }
+
+      #label {
+        font-size: 1.3em;
+        margin: .8em 0;
+        flex: 1 1 auto;
+        @apply --label-styles;
+      }
+    </style>
+    <div id="container">
+      <div id="header">
+        <iron-icon id="icon" icon="[[icon]]" hidden\$="[[!icon]]"></iron-icon>
+        <div id="label" hidden\$="[[!label]]">[[label]]</div>
+      </div>
+      <slot></slot>
+    </div>
+`,is:"lrndesign-sidenote",behaviors:[A11yBehaviors.A11y,MaterializeCSSBehaviors.ColorBehaviors],properties:{label:{type:String,value:""},icon:{type:String,value:""},bgColor:{type:String,value:"#f7f7f7"},outset:{type:Number,value:0},outsetMeasurementType:{type:String,value:"em"}},created:function(){for(prop in this.properties){let prefix=this.is;prefix=prefix.replace("-"," ").replace(/(?:^\w|[A-Z]|\b\w)/g,function(letter,index){return 0==index?letter.toLowerCase():letter.toUpperCase()}).replace(/\s+/g,"");if("undefined"!==typeof window[prefix]){if("undefined"!==typeof window[prefix][prop]){this.properties[prop].value=window[prefix][prop]}}}},observers:["__updateStyles(bgColor, outset, outsetMeasurementType)"],__updateStyles:function(bgColor,outset,outsetMeasurementType){const bgColorHex=this._colorTransformFromClass(bgColor)||bgColor;this.updateStyles({"--container-text-color":this.getTextContrastColor(bgColorHex),"--container-bg-color":bgColorHex,"--container-outset":`${+outset}${outsetMeasurementType}`})}});

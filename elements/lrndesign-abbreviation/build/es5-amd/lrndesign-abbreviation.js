@@ -1,106 +1,79 @@
 define([
-  "exports",
-  "./node_modules/@polymer/polymer/polymer-element.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_exports, _polymerElement, _HAXWiring) {
+  "./node_modules/@polymer/polymer/polymer-legacy.js",
+  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
+  "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+  "./node_modules/@polymer/paper-tooltip/paper-tooltip.js"
+], function(_polymerLegacy) {
   "use strict";
-  Object.defineProperty(_exports, "__esModule", { value: !0 });
-  _exports.LrndesignAbbreviation = void 0;
-  function _templateObject_7f7da640d6f611e88a0c4b33f113d35e() {
+  function _templateObject_775563e0db3311e8aaf591ffb3ef0687() {
     var data = babelHelpers.taggedTemplateLiteral([
-      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
+      '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <abbr title$="[[phrase]]" id="abbr">[[abbr]]</abbr>\n    <paper-tooltip for="abbr">[[phrase]]</paper-tooltip>\n'
     ]);
-    _templateObject_7f7da640d6f611e88a0c4b33f113d35e = function() {
+    _templateObject_775563e0db3311e8aaf591ffb3ef0687 = function() {
       return data;
     };
     return data;
   }
-  var LrndesignAbbreviation = (function(_PolymerElement) {
-    babelHelpers.inherits(LrndesignAbbreviation, _PolymerElement);
-    function LrndesignAbbreviation() {
-      babelHelpers.classCallCheck(this, LrndesignAbbreviation);
-      return babelHelpers.possibleConstructorReturn(
-        this,
-        (
-          LrndesignAbbreviation.__proto__ ||
-          Object.getPrototypeOf(LrndesignAbbreviation)
-        ).apply(this, arguments)
-      );
+  (0, _polymerLegacy.Polymer)({
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_775563e0db3311e8aaf591ffb3ef0687()
+    ),
+    is: "lrndesign-abbreviation",
+    behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
+    properties: {
+      abbr: { type: String, reflectToAttribute: !0, notify: !0 },
+      phrase: { type: String, reflectToAttribute: !0, notify: !0 }
+    },
+    attached: function attached() {
+      this.setHaxProperties({
+        canScale: !1,
+        canPosition: !1,
+        canEditSource: !1,
+        gizmo: {
+          title: "Abbreviation",
+          description: "Simple abbreviation with tooltip of full word",
+          icon: "editor:title",
+          color: "grey",
+          groups: ["Instructional", "Term"],
+          handles: [{ type: "inline", text: "text" }],
+          meta: { author: "LRNWebComponents" }
+        },
+        settings: {
+          quick: [
+            {
+              property: "abbr",
+              title: "Abbreviation",
+              description: "Abbreviation word",
+              inputMethod: "textfield",
+              icon: "editor:title"
+            },
+            {
+              property: "phrase",
+              title: "Phrase",
+              description: "The phrase / original words",
+              inputMethod: "textfield",
+              icon: "editor:title"
+            }
+          ],
+          configure: [
+            {
+              property: "abbr",
+              title: "Abbreviation",
+              description: "Abbreviation word",
+              inputMethod: "textfield",
+              icon: "editor:title"
+            },
+            {
+              property: "phrase",
+              title: "Phrase",
+              description: "The phrase / original words",
+              inputMethod: "textfield",
+              icon: "editor:title"
+            }
+          ],
+          advanced: []
+        }
+      });
     }
-    babelHelpers.createClass(
-      LrndesignAbbreviation,
-      [
-        {
-          key: "connectedCallback",
-          value: function connectedCallback() {
-            babelHelpers
-              .get(
-                LrndesignAbbreviation.prototype.__proto__ ||
-                  Object.getPrototypeOf(LrndesignAbbreviation.prototype),
-                "connectedCallback",
-                this
-              )
-              .call(this);
-            this.HAXWiring = new _HAXWiring.HAXWiring();
-            this.HAXWiring.setHaxProperties(
-              LrndesignAbbreviation.haxProperties,
-              LrndesignAbbreviation.tag,
-              this
-            );
-          }
-        }
-      ],
-      [
-        {
-          key: "template",
-          get: function get() {
-            return (0, _polymerElement.html)(
-              _templateObject_7f7da640d6f611e88a0c4b33f113d35e()
-            );
-          }
-        },
-        {
-          key: "haxProperties",
-          get: function get() {
-            return {
-              canScale: !0,
-              canPosition: !0,
-              canEditSource: !1,
-              gizmo: {
-                title: "Lrndesign abbreviation",
-                description: "Automated conversion of lrndesign-abbreviation/",
-                icon: "icons:android",
-                color: "green",
-                groups: ["Abbreviation"],
-                handles: [{ type: "todo:read-the-docs-for-usage" }],
-                meta: {
-                  author: "btopro",
-                  owner: "The Pennsylvania State University"
-                }
-              },
-              settings: { quick: [], configure: [], advanced: [] }
-            };
-          }
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {};
-          }
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "lrndesign-abbreviation";
-          }
-        }
-      ]
-    );
-    return LrndesignAbbreviation;
-  })(_polymerElement.PolymerElement);
-  _exports.LrndesignAbbreviation = LrndesignAbbreviation;
-  window.customElements.define(
-    LrndesignAbbreviation.tag,
-    LrndesignAbbreviation
-  );
+  });
 });

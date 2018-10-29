@@ -1,14 +1,30 @@
 define([
   "exports",
-  "@polymer/polymer/polymer.js",
-  "./node_modules/@polymer/polymer/lib/legacy/polymer-fn.js"
-], function(_exports, _polymer, _polymerFn) {
+  "./node_modules/@polymer/polymer/polymer-legacy.js",
+  "./node_modules/@polymer/polymer/lib/utils/async.js"
+], function(_exports, _polymerLegacy, async) {
   "use strict";
   Object.defineProperty(_exports, "__esModule", { value: !0 });
   _exports.IronA11yAnnouncer = void 0;
-  var IronA11yAnnouncer = (0, _polymerFn.Polymer)({
-    _template:
-      '\n    <style>\n      :host {\n        display: inline-block;\n        position: fixed;\n        clip: rect(0px,0px,0px,0px);\n      }\n    </style>\n    <div aria-live$="[[mode]]">[[_text]]</div>\n',
+  async = babelHelpers.interopRequireWildcard(async);
+  function _templateObject_5b99a0d0db3311e8a72f73af770cd5a3() {
+    var data = babelHelpers.taggedTemplateLiteral(
+      [
+        '\n    <style>\n      :host {\n        display: inline-block;\n        position: fixed;\n        clip: rect(0px,0px,0px,0px);\n      }\n    </style>\n    <div aria-live$="[[mode]]">[[_text]]</div>\n'
+      ],
+      [
+        '\n    <style>\n      :host {\n        display: inline-block;\n        position: fixed;\n        clip: rect(0px,0px,0px,0px);\n      }\n    </style>\n    <div aria-live\\$="[[mode]]">[[_text]]</div>\n'
+      ]
+    );
+    _templateObject_5b99a0d0db3311e8a72f73af770cd5a3 = function() {
+      return data;
+    };
+    return data;
+  }
+  var IronA11yAnnouncer = (0, _polymerLegacy.Polymer)({
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_5b99a0d0db3311e8a72f73af770cd5a3()
+    ),
     is: "iron-a11y-announcer",
     properties: {
       mode: { type: String, value: "polite" },
@@ -24,10 +40,11 @@ define([
       );
     },
     announce: function announce(text) {
+      var _this = this;
       this._text = "";
-      async.microTask.run(() => {
-        this._text = text;
-      }, 100);
+      async.microTask.run(function() {
+        _this._text = text;
+      });
     },
     _onIronAnnounce: function _onIronAnnounce(event) {
       if (event.detail && event.detail.text) {

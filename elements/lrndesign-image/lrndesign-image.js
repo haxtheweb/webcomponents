@@ -3,7 +3,6 @@ import "@polymer/iron-image/iron-image.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
-import "@lrnwebcomponents/lrnsys-behaviors/lrnsys-behaviors.js";
 import "@lrnwebcomponents/lrnsys-layout/lrnsys-dialog.js";
 import "@lrnwebcomponents/freezeframe/src/js/vendor/imagesloaded.pkgd.js";
 import "@lrnwebcomponents/freezeframe/build/js/freezeframe.js";
@@ -15,6 +14,7 @@ A LRN element
 */
 Polymer({
   _template: html`
+  <custom-style>
     <style>
       :host {
         display: block;
@@ -85,6 +85,7 @@ Polymer({
       .ff-container.ff-responsive .ff-canvas-ready {
         width: 100%; }
     </style>
+  </custom-style>
     <template is="dom-if" if="{{matchDisplay('parallax', display)}}">
       <div class="parallax-background">
         <span class="hide-alt">[[alt]]</span>

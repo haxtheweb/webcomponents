@@ -1,92 +1,47 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrnsysRenderHtml };
-/**
- * `lrnsys-render-html`
- * `Automated conversion of lrnsys-render-html/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrnsysRenderHtml extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
+`lrnsys-render-html`
+A legacy element which just directly renders HTML.
+WARNING: DO NOT USE THIS UNLESS YOU KNOW WHAT YOU ARE DOING!
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
+This element is meant to render html from a source that has already been sanitized.
+Polymer will, by design, not render html for security reasons. This element gets around
+that. Do not render raw user input through this element! This would allow XSS attacks for
+your users.
 
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Lrnsys render-html",
-        description: "Automated conversion of lrnsys-render-html/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Render"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [],
-        advanced: []
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
       }
-    };
-  }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
+    </style>
+    <div id="container"> </div>
+`,
+
+  is: "lrnsys-render-html",
+
+  properties: {
+    /**
+     * String to render as HTML directly
+     * @type {Object}
+     */
+    html: {
+      type: String
+    }
+  },
 
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * When HTML changes, inject it directly.
    */
-  static get tag() {
-    return "lrnsys-render-html";
-  }
+  observers: ["_render(html)"],
+
   /**
-   * life cycle, element is afixed to the DOM
+   * Render the HTML by just injecting it directly.
    */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrnsysRenderHtml.haxProperties,
-      LrnsysRenderHtml.tag,
-      this
-    );
+  _render: function(html) {
+    this.$.container.innerHTML = html;
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrnsysRenderHtml.tag, LrnsysRenderHtml);
+});

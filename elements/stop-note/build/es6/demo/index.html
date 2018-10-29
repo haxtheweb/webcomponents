@@ -1,1 +1,47 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=yes"><title>StopNote: stop-note Demo</title><script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script><script type="module">import"../node_modules/@polymer/iron-demo-helpers/demo-snippet.js";import"../stop-note.js";</script><style is="custom-style" include="demo-pages-shared-styles"></style></head><body><div class="vertical-section-container centered"><h3>Basic stop-note demo</h3><demo-snippet><template><stop-note>This is stop-note</stop-note></template></demo-snippet></div></body></html>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=yes"><title>stop-note demo</title><script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script><script type="module" src="../node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script><script type="module" src="../node_modules/@polymer/iron-demo-helpers/demo-snippet.js"></script><script type="module" src="../stop-note.js"></script><script type="module">var $_documentContainer=document.createElement("div");$_documentContainer.setAttribute("style","display: none;");$_documentContainer.innerHTML=`<style is="custom-style" include="demo-pages-shared-styles">
+  </style>`;document.head.appendChild($_documentContainer);</script></head><body><script type="module">var $_documentContainer=document.createElement("div");$_documentContainer.innerHTML=`<div class="vertical-section-container">
+    <h3>Basic stop-note demo: Default</h3>
+    <demo-snippet>
+      <template>
+        <stop-note>
+          <span slot="message">You can write any message you want here.</span>
+        </stop-note>
+      </template>
+    </demo-snippet>
+  </div>`;document.body.appendChild($_documentContainer);</script><script type="module">var $_documentContainer=document.createElement("div");$_documentContainer.innerHTML=`<div class="vertical-section-container">
+    <h3>Basic stop-note demo: URL</h3>
+    <demo-snippet>
+      <template>
+        <stop-note title="Error Message" url="https://www.google.com">
+          <span slot="message">You can write any error message you want here.</span>
+        </stop-note>
+      </template>
+    </demo-snippet>
+  </div>`;document.body.appendChild($_documentContainer);</script><script type="module">var $_documentContainer=document.createElement("div");$_documentContainer.innerHTML=`<div class="vertical-section-container">
+    <h3>Basic stop-note demo: Warning</h3>
+    <demo-snippet>
+      <template>
+        <stop-note title="Warning Message" url="https://www.google.com" icon="stopnoteicons:warning-icon">
+          <span slot="message">You can write any warning message you want here.</span>
+        </stop-note>
+      </template>
+    </demo-snippet>
+  </div>`;document.body.appendChild($_documentContainer);</script><script type="module">var $_documentContainer=document.createElement("div");$_documentContainer.innerHTML=`<div class="vertical-section-container">
+    <h3>Basic stop-note demo: Confirm</h3>
+    <demo-snippet>
+      <template>
+        <stop-note title="Confirmation Message" url="https://www.google.com" icon="stopnoteicons:confirm-icon">
+          <span slot="message">You can write any confirmation message you want here.</span>
+        </stop-note>
+      </template>
+    </demo-snippet>
+  </div>`;document.body.appendChild($_documentContainer);</script><script type="module">var $_documentContainer=document.createElement("div");$_documentContainer.innerHTML=`<div class="vertical-section-container">
+      <h3>Basic stop-note demo: Read</h3>
+      <demo-snippet>
+        <template>
+          <stop-note title="Read the Textbook" icon="stopnoteicons:book-icon">
+            <span slot="message">You can write anything you want here (chapters, pages, etc.).</span>
+          </stop-note>
+        </template>
+      </demo-snippet>
+    </div>`;document.body.appendChild($_documentContainer);</script></body></html>

@@ -1,10 +1,11 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";export{LrnsysRandomimage};class LrnsysRandomimage extends PolymerElement{static get template(){return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Lrnsys randomimage",description:"Automated conversion of lrnsys-randomimage/",icon:"icons:android",color:"green",groups:["Randomimage"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[],advanced:[]}}}static get properties(){return{}}static get tag(){return"lrnsys-randomimage"}connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setHaxProperties(LrnsysRandomimage.haxProperties,LrnsysRandomimage.tag,this)}}window.customElements.define(LrnsysRandomimage.tag,LrnsysRandomimage);
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/random-image/random-image.js";import"@polymer/paper-button/paper-button.js";Polymer({_template:html`
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <div id="image-list">
+      <random-image images-list\$="{{images}}"></random-image>
+  </div>
+  <paper-button raised="" on-click="reload">Reload</paper-button>
+`,is:"lrnsys-randomimage",properties:{images:{type:Object,notify:!0,value:function(){return[]}}},reload:function(){let root=this;root.shadowRoot.querySelector("#image-list").innerHTML=root.shadowRoot.querySelector("#image-list").innerHTML}});

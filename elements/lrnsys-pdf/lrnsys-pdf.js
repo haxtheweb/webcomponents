@@ -1,92 +1,144 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/pdf-browser-viewer/pdf-browser-viewer.js";
+import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrnsysPdf };
-/**
- * `lrnsys-pdf`
- * `Automated conversion of lrnsys-pdf/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrnsysPdf extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
+`lrnsys-pdf`
+A LRN element
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>[[title]]</h2>
+    <pdf-browser-viewer id="pdfViewer" file="[[file]]#page=[[page]]" width="100%" card="[[card]]" elevation="2" download-label="[[downloadLabel]]"></pdf-browser-viewer>
+`,
 
-  // haxProperty definition
-  static get haxProperties() {
-    return {
+  is: "lrnsys-pdf",
+  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
+
+  properties: {
+    /**
+     * Title prior to the PDF
+     */
+    title: {
+      type: String,
+      value: "lrnsys-pdf"
+    },
+    /**
+     * Whether or not to present this as a card.
+     */
+    card: {
+      type: Boolean,
+      value: false
+    },
+    /**
+     * Download Label.
+     */
+    downloadLabel: {
+      type: String,
+      computed: "_computeDownloadLabel(download)"
+    },
+    /**
+     * Active Page
+     */
+    page: {
+      type: String
+    },
+    /**
+     * File to present
+     */
+    file: {
+      type: String
+    },
+    /**
+     * Whether or not to present a download button.
+     */
+    download: {
+      type: Boolean,
+      value: true
+    }
+  },
+
+  /**
+   * attached.
+   */
+  attached: function() {
+    // Establish hax properties if they exist
+    let props = {
       canScale: true,
       canPosition: true,
       canEditSource: false,
       gizmo: {
-        title: "Lrnsys pdf",
-        description: "Automated conversion of lrnsys-pdf/",
-        icon: "icons:android",
+        title: "PDF viewer",
+        descrption: "Nicely present PDFs in a cross browser compatible manner.",
+        icon: "editor:border-all",
         color: "green",
-        groups: ["Pdf"],
+        groups: ["Presentation", "Table", "Data"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
+            type: "pdf",
+            url: "file"
           }
         ],
         meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
+          author: "LRNWebComponents"
         }
       },
       settings: {
-        quick: [],
-        configure: [],
+        quick: [
+          {
+            property: "file",
+            title: "File",
+            description: "The URL for the pdf.",
+            inputMethod: "textfield",
+            icon: "link",
+            required: true
+          }
+        ],
+        configure: [
+          {
+            property: "file",
+            title: "File",
+            description: "The URL for this pdf.",
+            inputMethod: "textfield",
+            icon: "link",
+            required: true
+          },
+          {
+            property: "title",
+            title: "Title",
+            description: "Title to present",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          },
+          {
+            property: "download",
+            title: "Download",
+            description: "Can the user see a download link?",
+            inputMethod: "boolean",
+            icon: "file"
+          }
+        ],
         advanced: []
       }
     };
-  }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
+    this.setHaxProperties(props);
+  },
 
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * See if we should supply a label.
    */
-  static get tag() {
-    return "lrnsys-pdf";
+  _computeDownloadLabel: function(download) {
+    if (download) {
+      return "Download";
+    } else {
+      return null;
+    }
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrnsysPdf.haxProperties,
-      LrnsysPdf.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrnsysPdf.tag, LrnsysPdf);
+});

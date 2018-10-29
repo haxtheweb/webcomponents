@@ -1,10 +1,32 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";export{LrndesignComment};class LrndesignComment extends PolymerElement{static get template(){return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Lrndesign comment",description:"Automated conversion of lrndesign-comment/",icon:"icons:android",color:"green",groups:["Comment"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[],advanced:[]}}}static get properties(){return{}}static get tag(){return"lrndesign-comment"}connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setHaxProperties(LrndesignComment.haxProperties,LrndesignComment.tag,this)}}window.customElements.define(LrndesignComment.tag,LrndesignComment);
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";import"time-elements/time-elements.js";Polymer({_template:html`
+    <style>
+      :host {
+        display: block;
+      }
+      .comment-left {
+        float: left;
+        display: inline-block;
+      }
+      .comment-right {
+        display: inline-block;
+      }
+    </style>
+    <div class="comment-container">
+      <div class="comment-left">
+        <lrndesign-avatar></lrndesign-avatar>
+      </div>
+      <div class="comment-right">
+        <div class="row-1">
+          <span>{{name}}</span>
+          <relative-time datetime\$="{{date}}">
+          </relative-time>
+        </div>
+        <div class="row-2">
+          <slot></slot>
+        </div>
+        <div class="row-3">
+          {{links}}
+        </div>
+      </div>
+    </div>
+`,is:"lrndesign-comment",properties:{avatar:{type:Object,reflectToAttribute:!0,notify:!0},name:{type:String,reflectToAttribute:!0,notify:!0},date:{type:String,value:"2014-04-01T00:00:00.000Z",reflectToAttribute:!0,notify:!0},links:{type:Object,notify:!0}}});

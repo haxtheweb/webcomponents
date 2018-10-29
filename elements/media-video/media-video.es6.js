@@ -1,10 +1,8 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";export{MediaVideo};class MediaVideo extends PolymerElement{static get template(){return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Media video",description:"Automated conversion of media-video/",icon:"icons:android",color:"green",groups:["Video"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[],advanced:[]}}}static get properties(){return{}}static get tag(){return"media-video"}connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setHaxProperties(MediaVideo.haxProperties,MediaVideo.tag,this)}}window.customElements.define(MediaVideo.tag,MediaVideo);
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";Polymer({_template:html`
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <slot></slot>
+`,is:"media-video",behaviors:[],properties:{},ready:function(){this.querySelector("*[data-mediavideo-src]");this.addEventListener("click",e=>{e.stopPropagation();const target=dom(e).localTarget,videoContainer=this.querySelector(".mediavideo"),videoPoster=this.querySelector(".mediavideo-button-container"),videoSrc=this.querySelector("*[data-mediavideo-src]");videoPoster.classList.toggle("mediavideo-button-display");videoContainer.classList.toggle("mediavideo--is-open");if(target.classList.contains("poster--image")||target.classList.contains("mediavideo-icon")){setTimeout(()=>{this._startIframeVideo(videoSrc)},500)}else{this._stopIframeVideo(videoSrc)}})},_startIframeVideo:function(video){var videoIframeSrc=video.dataset.mediavideoSrc;if(0<=videoIframeSrc.indexOf("youtube")||0<=videoIframeSrc.indexOf("vimeo")){if(0<=videoIframeSrc.indexOf("?")){videoIframeSrc+="&autoplay=1"}else{videoIframeSrc+="?autoplay=1"}}video.setAttribute("src",videoIframeSrc)},_stopIframeVideo:function(video){video.setAttribute("src","")}});

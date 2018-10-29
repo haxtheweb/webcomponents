@@ -1,92 +1,47 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/random-image/random-image.js";
+import "@polymer/paper-button/paper-button.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrnsysRandomimage };
-/**
- * `lrnsys-randomimage`
- * `Automated conversion of lrnsys-randomimage/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrnsysRandomimage extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
+`lrnsys-randomimage`
+A LRN element
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
-
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Lrnsys randomimage",
-        description: "Automated conversion of lrnsys-randomimage/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Randomimage"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [],
-        advanced: []
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
       }
-    };
-  }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
+    </style>
+    <div id="image-list">
+      <random-image images-list\$="{{images}}"></random-image>
+  </div>
+  <paper-button raised="" on-click="reload">Reload</paper-button>
+`,
+
+  is: "lrnsys-randomimage",
+
+  properties: {
+    /**
+     * An array of images to pick from at random.
+     */
+    images: {
+      type: Object,
+      notify: true,
+      value: function() {
+        return [];
+      }
+    }
+  },
 
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * trigger a reload of the random-image element
    */
-  static get tag() {
-    return "lrnsys-randomimage";
+  reload: function(e) {
+    let root = this;
+    root.shadowRoot.querySelector(
+      "#image-list"
+    ).innerHTML = root.shadowRoot.querySelector("#image-list").innerHTML;
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrnsysRandomimage.haxProperties,
-      LrnsysRandomimage.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrnsysRandomimage.tag, LrnsysRandomimage);
+});

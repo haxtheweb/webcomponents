@@ -2,22 +2,253 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`relative-heading`\n`Start of relative-heading`",
+      "description": "",
       "summary": "",
-      "path": "relative-heading.js",
+      "path": "lib/relative-heading-manager.js",
       "properties": [],
       "methods": [
         {
-          "name": "connectedCallback",
-          "description": "life cycle, element is afixed to the DOM",
-          "privacy": "public",
+          "name": "created",
+          "description": "listen for headings and set their parent elements",
+          "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 80,
+              "line": 18,
               "column": 2
             },
             "end": {
-              "line": 84,
+              "line": 31,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 3,
+          "column": 8
+        },
+        "end": {
+          "line": 32,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "relative-heading-manager"
+    },
+    {
+      "description": "`relative-heading`\nA LRN element",
+      "summary": "",
+      "path": "relative-heading.js",
+      "properties": [
+        {
+          "name": "subtopicOf",
+          "type": "string | null | undefined",
+          "description": "id of the heading element that this heading is a subtopic of",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 30,
+              "column": 4
+            },
+            "end": {
+              "line": 34,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "null"
+        },
+        {
+          "name": "text",
+          "type": "string | null | undefined",
+          "description": "text of the heading",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 38,
+              "column": 4
+            },
+            "end": {
+              "line": 42,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "null"
+        },
+        {
+          "name": "parentHeading",
+          "type": "Object | null | undefined",
+          "description": "the id of the heading element that this heading is a subtopic of",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 46,
+              "column": 4
+            },
+            "end": {
+              "line": 49,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{}"
+        },
+        {
+          "name": "tag",
+          "type": "string | null | undefined",
+          "description": "the heading tag, eg. <h1/>, <h2/> ...",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 53,
+              "column": 4
+            },
+            "end": {
+              "line": 57,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "null"
+        }
+      ],
+      "methods": [
+        {
+          "name": "created",
+          "description": "make sure the heading manager is ready to listen",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 63,
+              "column": 2
+            },
+            "end": {
+              "line": 65,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "attached",
+          "description": "fire a heading created event for the heading manager",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 70,
+              "column": 2
+            },
+            "end": {
+              "line": 73,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "attributeChanged",
+          "description": "fired if the subtopic changes",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 78,
+              "column": 2
+            },
+            "end": {
+              "line": 85,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "name"
+            },
+            {
+              "name": "type"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_setParent",
+          "description": "sets the parent of the heading",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 90,
+              "column": 2
+            },
+            "end": {
+              "line": 104,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "el"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_setTag",
+          "description": "gets the  heading tag name",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 109,
+              "column": 2
+            },
+            "end": {
+              "line": 138,
               "column": 3
             }
           },
@@ -38,24 +269,89 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 18,
-          "column": 0
+          "line": 14,
+          "column": 8
         },
         "end": {
-          "line": 90,
+          "line": 139,
           "column": 1
         }
       },
       "privacy": "public",
-      "superclass": "PolymerElement",
-      "name": "RelativeHeading",
-      "attributes": [],
+      "superclass": "HTMLElement",
+      "attributes": [
+        {
+          "name": "subtopic-of",
+          "description": "id of the heading element that this heading is a subtopic of",
+          "sourceRange": {
+            "start": {
+              "line": 30,
+              "column": 4
+            },
+            "end": {
+              "line": 34,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "text",
+          "description": "text of the heading",
+          "sourceRange": {
+            "start": {
+              "line": 38,
+              "column": 4
+            },
+            "end": {
+              "line": 42,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "parent-heading",
+          "description": "the id of the heading element that this heading is a subtopic of",
+          "sourceRange": {
+            "start": {
+              "line": 46,
+              "column": 4
+            },
+            "end": {
+              "line": 49,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "tag",
+          "description": "the heading tag, eg. <h1/>, <h2/> ...",
+          "sourceRange": {
+            "start": {
+              "line": 53,
+              "column": 4
+            },
+            "end": {
+              "line": 57,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        }
+      ],
       "events": [],
       "styling": {
         "cssVariables": [],
         "selectors": []
       },
-      "slots": []
+      "slots": [],
+      "tagname": "relative-heading"
     }
   ]
 }

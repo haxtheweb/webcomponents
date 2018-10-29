@@ -1,10 +1,31 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";export{LrnappFabMenu};class LrnappFabMenu extends PolymerElement{static get template(){return html`
-<style>:host {
-  display: block;
-}
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/paper-fab-speed-dial/paper-fab-speed-dial.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";Polymer({_template:html`
+  <custom-style>
+    <style include="materializecss-styles-colors"></style>
+    <style>
+      .open,.overlay {
+        position: fixed;
+        bottom: var(--paper-fab-speed-dial-bottom, 16px);
+        right: var(--paper-fab-speed-dial-right, 16px);
+      }
+      .open {
+        --paper-fab-background: var(--paper-fab-speed-dial-background);
+        --paper-fab-keyboard-focus-background: var(--paper-fab-speed-dial-keyboard-focus-background);
+      }
+      .close {
+        --paper-fab-background: var(--paper-grey-500);
+        --paper-fab-keyboard-focus-background: var(--paper-grey-500);
+        margin-top: 20px;
+        display: inline-block;
+      }
+      .overlay {
+        text-align: right;
+      }
+    </style>
+  </custom-style>
+    <paper-fab icon="[[icon]]" class="open blue" on-tap="open" hidden\$="[[opened]]" disabled="[[disabled]]"></paper-fab>
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Lrnapp fab-menu",description:"Automated conversion of lrnapp-fab-menu/",icon:"icons:android",color:"green",groups:["Fab"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[],advanced:[]}}}static get properties(){return{}}static get tag(){return"lrnapp-fab-menu"}connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setHaxProperties(LrnappFabMenu.haxProperties,LrnappFabMenu.tag,this)}}window.customElements.define(LrnappFabMenu.tag,LrnappFabMenu);
+    <paper-fab-speed-dial-overlay class="overlay" opened="{{opened}}" with-backdrop="">
+      <slot></slot>
+      <paper-fab icon="close" class="close" on-tap="close"></paper-fab>
+    </paper-fab-speed-dial-overlay>
+`,is:"lrnapp-fab-menu",properties:{icon:{type:String,value:"add"},opened:{type:Boolean,notify:!0},disabled:{type:Boolean,value:!1}},open:function(e){if(e){e.preventDefault()}this.opened=!0},close:function(e){if(e){e.preventDefault()}this.opened=!1}});

@@ -1,56 +1,35 @@
 import {
   html,
-  PolymerElement
-} from "./node_modules/@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrndesignAnimationctrl };
-class LrndesignAnimationctrl extends PolymerElement {
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
-  static get haxProperties() {
-    return {
-      canScale: !0,
-      canPosition: !0,
-      canEditSource: !1,
-      gizmo: {
-        title: "Lrndesign animationctrl",
-        description: "Automated conversion of lrndesign-animationctrl/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Animationctrl"],
-        handles: [{ type: "todo:read-the-docs-for-usage" }],
-        meta: { author: "btopro", owner: "The Pennsylvania State University" }
-      },
-      settings: { quick: [], configure: [], advanced: [] }
-    };
-  }
-  static get properties() {
-    return {};
-  }
-  static get tag() {
-    return "lrndesign-animationctrl";
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrndesignAnimationctrl.haxProperties,
-      LrndesignAnimationctrl.tag,
-      this
-    );
-  }
-}
-window.customElements.define(
-  LrndesignAnimationctrl.tag,
-  LrndesignAnimationctrl
-);
+  Polymer
+} from "./node_modules/@polymer/polymer/polymer-legacy.js";
+import "./lib/lrndesign-animationctrl-button.js";
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
+        background: var(--animationctrl-bg-color);
+        --animationctrl-bg-color: #f5f5f5;
+      }
+      .buttons {
+        padding: 1em;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        @apply --animationctrl-buttons;
+      }
+      :host ::shadow lrndesign-animationctrl-button {
+        display: flex;
+      }
+    </style>
+    <div class="buttons">
+      <slot></slot>
+    </div>
+`,
+  is: "lrndesign-animationctrl",
+  properties: {},
+  listeners: { "lrndesign-animationctrl-button-click": "_buttonClicked" },
+  _buttonClicked: function() {},
+  ready: function() {}
+});

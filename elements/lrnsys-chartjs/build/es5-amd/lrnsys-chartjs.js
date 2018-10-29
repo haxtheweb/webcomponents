@@ -1,103 +1,58 @@
 define([
-  "exports",
-  "./node_modules/@polymer/polymer/polymer-element.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_exports, _polymerElement, _HAXWiring) {
+  "./node_modules/@polymer/polymer/polymer-legacy.js",
+  "./node_modules/@vowo/chart-elements/chart-elements.js"
+], function(_polymerLegacy) {
   "use strict";
-  Object.defineProperty(_exports, "__esModule", { value: !0 });
-  _exports.LrnsysChartjs = void 0;
-  function _templateObject_f8bafee0d6fb11e8a8b645cbe5e2b4cc() {
+  function _templateObject_9ab30a40db3311e8bdc9279738958fc5() {
     var data = babelHelpers.taggedTemplateLiteral([
-      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
+      '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <div>\n    <!-- \n    Use the logic from the logic of the template dom-if\'s to allow for abstraction for all the chart types\n    -->\n        <chart-line labels="{{labels}}" data="[[data]]"></chart-line>\n    </div>\n'
     ]);
-    _templateObject_f8bafee0d6fb11e8a8b645cbe5e2b4cc = function() {
+    _templateObject_9ab30a40db3311e8bdc9279738958fc5 = function() {
       return data;
     };
     return data;
   }
-  var LrnsysChartjs = (function(_PolymerElement) {
-    babelHelpers.inherits(LrnsysChartjs, _PolymerElement);
-    function LrnsysChartjs() {
-      babelHelpers.classCallCheck(this, LrnsysChartjs);
-      return babelHelpers.possibleConstructorReturn(
-        this,
-        (LrnsysChartjs.__proto__ || Object.getPrototypeOf(LrnsysChartjs)).apply(
-          this,
-          arguments
-        )
-      );
+  (0, _polymerLegacy.Polymer)({
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_9ab30a40db3311e8bdc9279738958fc5()
+    ),
+    is: "lrnsys-chartjs",
+    properties: {
+      labels: {
+        type: Array,
+        value: ["January", "February", "March", "April", "May", "June", "July"]
+      },
+      data: { type: Object, value: {} }
+    },
+    ready: function ready() {
+      this.data = {
+        labels: this.labels,
+        datasets: [
+          {
+            label: "My First dataset",
+            backgroundColor: "rgba(220,220,220,0.2)",
+            borderColor: "rgba(220,220,220,1)",
+            borderWidth: 1,
+            pointBackgroundColor: "rgba(220,220,220,1)",
+            pointBorderColor: "#fff",
+            pointHoverBackgroundColor: "#fff",
+            pointHoverBorderColor: "rgba(220,220,220,1)",
+            data: [65, 59, 80, 81, 56, 55, 40]
+          },
+          {
+            label: "My Second dataset",
+            backgroundColor: "rgba(151,187,205,0.2)",
+            borderColor: "rgba(151,187,205,1)",
+            borderWidth: 1,
+            pointBackgroundColor: "rgba(151,187,205,1)",
+            pointBorderColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHoverBorderColor: "rgba(151,187,205,1)",
+            data: [28, 48, 40, 19, 86, 27, 90]
+          }
+        ]
+      };
+      console.log(this.data);
     }
-    babelHelpers.createClass(
-      LrnsysChartjs,
-      [
-        {
-          key: "connectedCallback",
-          value: function connectedCallback() {
-            babelHelpers
-              .get(
-                LrnsysChartjs.prototype.__proto__ ||
-                  Object.getPrototypeOf(LrnsysChartjs.prototype),
-                "connectedCallback",
-                this
-              )
-              .call(this);
-            this.HAXWiring = new _HAXWiring.HAXWiring();
-            this.HAXWiring.setHaxProperties(
-              LrnsysChartjs.haxProperties,
-              LrnsysChartjs.tag,
-              this
-            );
-          }
-        }
-      ],
-      [
-        {
-          key: "template",
-          get: function get() {
-            return (0, _polymerElement.html)(
-              _templateObject_f8bafee0d6fb11e8a8b645cbe5e2b4cc()
-            );
-          }
-        },
-        {
-          key: "haxProperties",
-          get: function get() {
-            return {
-              canScale: !0,
-              canPosition: !0,
-              canEditSource: !1,
-              gizmo: {
-                title: "Lrnsys chartjs",
-                description: "Automated conversion of lrnsys-chartjs/",
-                icon: "icons:android",
-                color: "green",
-                groups: ["Chartjs"],
-                handles: [{ type: "todo:read-the-docs-for-usage" }],
-                meta: {
-                  author: "btopro",
-                  owner: "The Pennsylvania State University"
-                }
-              },
-              settings: { quick: [], configure: [], advanced: [] }
-            };
-          }
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {};
-          }
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "lrnsys-chartjs";
-          }
-        }
-      ]
-    );
-    return LrnsysChartjs;
-  })(_polymerElement.PolymerElement);
-  _exports.LrnsysChartjs = LrnsysChartjs;
-  window.customElements.define(LrnsysChartjs.tag, LrnsysChartjs);
+  });
 });

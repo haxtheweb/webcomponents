@@ -7,7 +7,7 @@ define([
   "../node_modules/@polymer/paper-tooltip/paper-tooltip.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_25da4da0db1511e8b5f31152f9ef48ff() {
+  function _templateObject_11c8fdc0db3311e8a3553537f2370c6b() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style include="a11y-collapse-button-styles">\n      :host #expand:focus,\n      :host #expand:hover {\n        @apply --a11y-collapse-icon-focus;\n      }\n    </style>\n    <div id="heading">\n      <div id="text"><slot></slot></div>\n      <paper-icon-button id="expand" alt$="[[label]]" aria-controls="content" aria-expanded$="[[exanded]]" disabled$="[[disabled]]" label$="[[label]]" icon$="[[icon]]" rotated$="[[rotated]]">\n      </paper-icon-button>\n      <paper-tooltip for="expand">[[tooltip]]</paper-tooltip>\n    </div>\n'
@@ -16,14 +16,14 @@ define([
         '\n    <style include="a11y-collapse-button-styles">\n      :host #expand:focus,\n      :host #expand:hover {\n        @apply --a11y-collapse-icon-focus;\n      }\n    </style>\n    <div id="heading">\n      <div id="text"><slot></slot></div>\n      <paper-icon-button id="expand" alt\\$="[[label]]" aria-controls="content" aria-expanded\\$="[[exanded]]" disabled\\$="[[disabled]]" label\\$="[[label]]" icon\\$="[[icon]]" rotated\\$="[[rotated]]">\n      </paper-icon-button>\n      <paper-tooltip for="expand">[[tooltip]]</paper-tooltip>\n    </div>\n'
       ]
     );
-    _templateObject_25da4da0db1511e8b5f31152f9ef48ff = function() {
+    _templateObject_11c8fdc0db3311e8a3553537f2370c6b = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_25da4da0db1511e8b5f31152f9ef48ff()
+      _templateObject_11c8fdc0db3311e8a3553537f2370c6b()
     ),
     is: "a11y-collapse-icon-button",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

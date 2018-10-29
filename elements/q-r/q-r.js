@@ -1,88 +1,193 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "webcomponent-qr-code/qr-code.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { QR };
-/**
- * `q-r`
- * `Automated conversion of q-r/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class QR extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
+`q-r`
+Polymer wrapper for a qr code.
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
+@demo demo/index.html
 
-  // haxProperty definition
-  static get haxProperties() {
-    return {
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
+      }
+      #link {
+        visibility: hidden;
+        opacity: 0;
+      }
+    </style>
+    <qr-code id="qr" data\$="[[data]]" modulesize\$="[[modulesize]]" margin\$="[[margin]]" format\$="[[format]]"></qr-code>
+    <a href\$="[[data]]" id="link">[[title]]</a>
+`,
+
+  is: "q-r",
+  behaviors: [HAXBehaviors.PropertiesBehaviors],
+
+  properties: {
+    /**
+     * Data to code via QR code
+     */
+    data: {
+      type: String
+    },
+    /**
+     * Alternate title for the data
+     */
+    title: {
+      type: String
+    },
+    /**
+     * module size of the square
+     */
+    modulesize: {
+      type: Number,
+      value: 4
+    },
+    /**
+     * Margin on the square
+     */
+    margin: {
+      type: Number,
+      value: 2
+    },
+    /**
+     * format to output
+     */
+    format: {
+      type: String,
+      value: "png"
+    }
+  },
+
+  /**
+   * Attached to the DOM, now fire.
+   */
+  attached: function() {
+    // Establish hax property binding
+    let props = {
       canScale: true,
       canPosition: true,
       canEditSource: false,
       gizmo: {
-        title: "Q r",
-        description: "Automated conversion of q-r/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["R"],
+        title: "QR Code",
+        description: "A code to scan from a smartphone.",
+        icon: "hardware:developer-board",
+        color: "grey",
+        groups: ["QR"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
+            type: "video",
+            source: "data",
+            title: "title"
+          },
+          {
+            type: "image",
+            source: "data",
+            title: "title"
+          },
+          {
+            type: "link",
+            source: "data",
+            title: "title"
           }
         ],
         meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
+          author: "LRNWebComponents"
         }
       },
       settings: {
-        quick: [],
-        configure: [],
+        quick: [
+          {
+            property: "data",
+            title: "QR data",
+            description: "Source of the data for the QR code.",
+            inputMethod: "textfield",
+            icon: "hardware:developer-board"
+          },
+          {
+            property: "title",
+            title: "Alternate title",
+            description:
+              "An alternate title to go to the source of the QR code.",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          },
+          {
+            property: "modulesize",
+            title: "Size",
+            description: "Size of the QR code",
+            inputMethod: "textfield",
+            icon: "image:photo-size-select-small"
+          },
+          {
+            property: "margin",
+            title: "Margin",
+            description: "Wrapper to the code.",
+            inputMethod: "textfield",
+            icon: "icons:settings-overscan"
+          },
+          {
+            property: "format",
+            title: "Output format",
+            description: "Format to put it out.",
+            inputMethod: "select",
+            options: {
+              png: "PNG",
+              html: "HTML",
+              svg: "SVG"
+            },
+            icon: "editor:bubble-chart"
+          }
+        ],
+        configure: [
+          {
+            property: "data",
+            title: "QR data",
+            description: "Source of the data for the QR code.",
+            inputMethod: "textfield",
+            icon: "hardware:developer-board"
+          },
+          {
+            property: "title",
+            title: "Alternate title",
+            description:
+              "An alternate title to go to the source of the QR code.",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          },
+          {
+            property: "modulesize",
+            title: "Size",
+            description: "Size of the QR code",
+            inputMethod: "number",
+            icon: "image:photo-size-select-small"
+          },
+          {
+            property: "margin",
+            title: "Margin",
+            description: "Wrapper to the code.",
+            inputMethod: "number",
+            icon: "icons:settings-overscan"
+          },
+          {
+            property: "format",
+            title: "Output format",
+            description: "Format to put it out.",
+            inputMethod: "select",
+            options: {
+              png: "PNG",
+              html: "HTML",
+              svg: "SVG"
+            },
+            icon: "editor:bubble-chart"
+          }
+        ],
         advanced: []
       }
     };
+    this.setHaxProperties(props);
   }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
-
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "q-r";
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(QR.haxProperties, QR.tag, this);
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(QR.tag, QR);
+});

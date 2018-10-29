@@ -1,103 +1,152 @@
-define([
-  "exports",
-  "./node_modules/@polymer/polymer/polymer-element.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_exports, _polymerElement, _HAXWiring) {
-  "use strict";
-  Object.defineProperty(_exports, "__esModule", { value: !0 });
-  _exports.PaperAvatar = void 0;
-  function _templateObject_076e7a20d70111e882dbc3fa3939062f() {
-    var data = babelHelpers.taggedTemplateLiteral([
-      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
-    ]);
-    _templateObject_076e7a20d70111e882dbc3fa3939062f = function() {
-      return data;
-    };
-    return data;
-  }
-  var PaperAvatar = (function(_PolymerElement) {
-    babelHelpers.inherits(PaperAvatar, _PolymerElement);
-    function PaperAvatar() {
-      babelHelpers.classCallCheck(this, PaperAvatar);
-      return babelHelpers.possibleConstructorReturn(
-        this,
-        (PaperAvatar.__proto__ || Object.getPrototypeOf(PaperAvatar)).apply(
-          this,
-          arguments
-        )
-      );
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { Polymer } from "@polymer/polymer/lib/legacy/polymer-fn.js";
+import "./lib/jdenticon-1.4.0.min.js";
+import "./lib/md5.min.js";
+/**
+`paper-avatar`
+User avatar in material style
+
+### Styling
+
+To change the background color:
+
+    paper-avatar {
+      --paper-avatar-color: red;
     }
-    babelHelpers.createClass(
-      PaperAvatar,
-      [
-        {
-          key: "connectedCallback",
-          value: function connectedCallback() {
-            babelHelpers
-              .get(
-                PaperAvatar.prototype.__proto__ ||
-                  Object.getPrototypeOf(PaperAvatar.prototype),
-                "connectedCallback",
-                this
-              )
-              .call(this);
-            this.HAXWiring = new _HAXWiring.HAXWiring();
-            this.HAXWiring.setHaxProperties(
-              PaperAvatar.haxProperties,
-              PaperAvatar.tag,
-              this
-            );
-          }
-        }
-      ],
-      [
-        {
-          key: "template",
-          get: function get() {
-            return (0, _polymerElement.html)(
-              _templateObject_076e7a20d70111e882dbc3fa3939062f()
-            );
-          }
-        },
-        {
-          key: "haxProperties",
-          get: function get() {
-            return {
-              canScale: !0,
-              canPosition: !0,
-              canEditSource: !1,
-              gizmo: {
-                title: "Paper avatar",
-                description: "Automated conversion of paper-avatar/",
-                icon: "icons:android",
-                color: "green",
-                groups: ["Avatar"],
-                handles: [{ type: "todo:read-the-docs-for-usage" }],
-                meta: {
-                  author: "btopro",
-                  owner: "The Pennsylvania State University"
-                }
-              },
-              settings: { quick: [], configure: [], advanced: [] }
-            };
-          }
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {};
-          }
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "paper-avatar";
-          }
-        }
-      ]
-    );
-    return PaperAvatar;
-  })(_polymerElement.PolymerElement);
-  _exports.PaperAvatar = PaperAvatar;
-  window.customElements.define(PaperAvatar.tag, PaperAvatar);
+	
+To change the size of the avatar:
+
+    paper-avatar {
+      --paper-avatar-width: 60px;
+    }
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--paper-avatar-width` | Size (width and height) of the avatar image | `40px`
+`--paper-avatar-color` | Background color of the avatar image | 
+
+
+@demo demo/index.html 
+*/
+Polymer({
+  is: "paper-avatar",
+
+  properties: {
+    /**
+     * Image address or base64
+     */
+    src: {
+      type: String
+    },
+
+    /**
+     *	Label with username
+     */
+    label: {
+      type: String,
+      observer: "_observerLabel"
+    },
+
+    /**
+     * Show two chars in avatar
+     */
+    twoChars: {
+      type: Boolean,
+      value: false
+    },
+
+    /**
+     * Array of colors for avatar background
+     */
+    colors: {
+      type: Array
+    },
+
+    /**
+     * Set true if you want use a jdenticon avatar
+     */
+    jdenticon: {
+      type: Boolean,
+      value: false
+    }
+  },
+
+  _observerLabel: function(label) {
+    if (label) {
+      if (this.jdenticon) {
+        this.$.label.hidden = true;
+
+        jdenticon.config = {
+          lightness: {
+            color: [1, 1],
+            grayscale: [1, 1]
+          },
+          saturation: 1
+        };
+
+        jdenticon.update(this.$.jdenticon, md5(label));
+      }
+
+      this.updateStyles({
+        "--paper-avatar-bgcolor": this._parseColor(label)
+      });
+    }
+  },
+
+  _label: function(label) {
+    if (!label) return "";
+
+    if (this.twoChars) {
+      if (this.label.indexOf(" ") > -1) {
+        var matches = this.label.match(/\b(\w)/g);
+        return matches[0] + matches[1];
+      } else {
+        return label.substring(0, 2);
+      }
+    }
+
+    return label.charAt(0);
+  },
+
+  _onImgLoad: function(e) {
+    e.currentTarget.hidden = false;
+  },
+
+  _onImgError: function(e) {
+    e.currentTarget.hidden = true;
+  },
+
+  _parseColor: function(label) {
+    var colors = this.colors
+      ? this.colors
+      : [
+          "#F44336",
+          "#E91E63",
+          "#9C27B0",
+          "#673AB7",
+          "#3F51B5",
+          "#2196F3",
+          "#03A9F4",
+          "#00BCD4",
+          "#795548",
+          "#009688",
+          "#4CAF50",
+          "#8BC34A",
+          "#CDDC39",
+          "#FFEB3B",
+          "#FFC107",
+          "#FF9800",
+          "#FF5722",
+          "#9E9E9E",
+          "#607D8B"
+        ];
+
+    var hash = 0;
+
+    for (var a = 0; a < label.length; a++) hash += label.charCodeAt(a) << 5;
+
+    if (hash >= colors.length) return colors[hash % colors.length];
+
+    return colors[hash];
+  }
 });

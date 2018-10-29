@@ -1,92 +1,105 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrndesignAbbreviation };
-/**
- * `lrndesign-abbreviation`
- * `Automated conversion of lrndesign-abbreviation/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrndesignAbbreviation extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
+`lrndesign-abbreviation`
+A wrapper to make a cleaner abbreviation deign element
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <abbr title$="[[phrase]]" id="abbr">[[abbr]]</abbr>
+    <paper-tooltip for="abbr">[[phrase]]</paper-tooltip>
+`,
 
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
+  is: "lrndesign-abbreviation",
+  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
+  properties: {
+    /**
+     * Abbreviation text.
+     */
+    abbr: {
+      type: String,
+      reflectToAttribute: true,
+      notify: true
+    },
+    /**
+     * The thing the abbreviation represents.
+     */
+    phrase: {
+      type: String,
+      reflectToAttribute: true,
+      notify: true
+    }
+  },
+  /**
+   * Attached to the DOM, now fire.
+   */
+  attached: function() {
+    // Establish hax property binding
+    let props = {
+      canScale: false,
+      canPosition: false,
       canEditSource: false,
       gizmo: {
-        title: "Lrndesign abbreviation",
-        description: "Automated conversion of lrndesign-abbreviation/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Abbreviation"],
+        title: "Abbreviation",
+        description: "Simple abbreviation with tooltip of full word",
+        icon: "editor:title",
+        color: "grey",
+        groups: ["Instructional", "Term"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
+            type: "inline",
+            text: "text"
           }
         ],
         meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
+          author: "LRNWebComponents"
         }
       },
       settings: {
-        quick: [],
-        configure: [],
+        quick: [
+          {
+            property: "abbr",
+            title: "Abbreviation",
+            description: "Abbreviation word",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          },
+          {
+            property: "phrase",
+            title: "Phrase",
+            description: "The phrase / original words",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          }
+        ],
+        configure: [
+          {
+            property: "abbr",
+            title: "Abbreviation",
+            description: "Abbreviation word",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          },
+          {
+            property: "phrase",
+            title: "Phrase",
+            description: "The phrase / original words",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          }
+        ],
         advanced: []
       }
     };
+    this.setHaxProperties(props);
   }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
-
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrndesign-abbreviation";
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrndesignAbbreviation.haxProperties,
-      LrndesignAbbreviation.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrndesignAbbreviation.tag, LrndesignAbbreviation);
+});

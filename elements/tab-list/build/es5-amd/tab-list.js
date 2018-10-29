@@ -1,103 +1,77 @@
 define([
-  "exports",
-  "./node_modules/@polymer/polymer/polymer-element.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_exports, _polymerElement, _HAXWiring) {
+  "./node_modules/@polymer/polymer/polymer-legacy.js",
+  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
+  "./node_modules/@polymer/paper-tabs/paper-tabs.js",
+  "./node_modules/@polymer/paper-tabs/paper-tab.js"
+], function(_polymerLegacy) {
   "use strict";
-  Object.defineProperty(_exports, "__esModule", { value: !0 });
-  _exports.TabList = void 0;
-  function _templateObject_3c103f70d70b11e8ad63570f9b33346b() {
+  function _templateObject_0d8ff280db3411e8b7abad722fa02013() {
     var data = babelHelpers.taggedTemplateLiteral([
-      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
+      '\n    <style>\n      :host {\n        display: block;\n        margin: 0 auto;\n        list-style: none;\n        display: flex;\n        padding: 16px;\n        border-bottom: 1px solid black;\n      }\n      paper-tab a {\n        text-decoration: none;\n      }\n      paper-button {\n        text-transform: unset;\n      }\n    </style>\n    <paper-tabs>\n      <template is="dom-repeat" items="[[tabs]]" as="tab">\n        <paper-tab><a target="_blank" href="[[tab.link]]" tabindex="-1"><paper-button raised="">[[tab.label]]</paper-button></a></paper-tab>\n      </template>\n    </paper-tabs>\n'
     ]);
-    _templateObject_3c103f70d70b11e8ad63570f9b33346b = function() {
+    _templateObject_0d8ff280db3411e8b7abad722fa02013 = function() {
       return data;
     };
     return data;
   }
-  var TabList = (function(_PolymerElement) {
-    babelHelpers.inherits(TabList, _PolymerElement);
-    function TabList() {
-      babelHelpers.classCallCheck(this, TabList);
-      return babelHelpers.possibleConstructorReturn(
-        this,
-        (TabList.__proto__ || Object.getPrototypeOf(TabList)).apply(
-          this,
-          arguments
-        )
-      );
-    }
-    babelHelpers.createClass(
-      TabList,
-      [
-        {
-          key: "connectedCallback",
-          value: function connectedCallback() {
-            babelHelpers
-              .get(
-                TabList.prototype.__proto__ ||
-                  Object.getPrototypeOf(TabList.prototype),
-                "connectedCallback",
-                this
-              )
-              .call(this);
-            this.HAXWiring = new _HAXWiring.HAXWiring();
-            this.HAXWiring.setHaxProperties(
-              TabList.haxProperties,
-              TabList.tag,
-              this
-            );
-          }
+  (0, _polymerLegacy.Polymer)({
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_0d8ff280db3411e8b7abad722fa02013()
+    ),
+    is: "tab-list",
+    behaviors: [HAXBehaviors.PropertiesBehaviors],
+    observers: ["_valueChanged(tabs.*)"],
+    properties: { tabs: { type: Array, value: [] } },
+    _valueChanged: function _valueChanged(e) {
+      for (var i in e.base) {
+        for (var j in e.base[i]) {
+          this.notifyPath("tabs." + i + "." + j);
         }
-      ],
-      [
-        {
-          key: "template",
-          get: function get() {
-            return (0, _polymerElement.html)(
-              _templateObject_3c103f70d70b11e8ad63570f9b33346b()
-            );
-          }
+      }
+    },
+    attached: function attached() {
+      this.setHaxProperties({
+        canScale: !1,
+        canPosition: !1,
+        canEditSource: !1,
+        gizmo: {
+          title: "Tabs",
+          description: "A list of links as tabs.",
+          icon: "icons:tab",
+          color: "grey",
+          groups: ["Presentation", "Links"],
+          handles: [],
+          meta: { author: "LRNWebComponents" }
         },
-        {
-          key: "haxProperties",
-          get: function get() {
-            return {
-              canScale: !0,
-              canPosition: !0,
-              canEditSource: !1,
-              gizmo: {
-                title: "Tab list",
-                description: "Automated conversion of tab-list/",
-                icon: "icons:android",
-                color: "green",
-                groups: ["List"],
-                handles: [{ type: "todo:read-the-docs-for-usage" }],
-                meta: {
-                  author: "btopro",
-                  owner: "The Pennsylvania State University"
+        settings: {
+          quick: [],
+          configure: [
+            {
+              property: "tabs",
+              title: "Tabs",
+              description: "Listing of tabs",
+              inputMethod: "array",
+              properties: [
+                {
+                  property: "link",
+                  title: "Link",
+                  description: "link to go to",
+                  inputMethod: "textfield",
+                  required: !0
+                },
+                {
+                  property: "label",
+                  title: "Label",
+                  description: "text to place on the tab",
+                  inputMethod: "textfield",
+                  required: !0
                 }
-              },
-              settings: { quick: [], configure: [], advanced: [] }
-            };
-          }
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {};
-          }
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "tab-list";
-          }
+              ]
+            }
+          ],
+          advanced: []
         }
-      ]
-    );
-    return TabList;
-  })(_polymerElement.PolymerElement);
-  _exports.TabList = TabList;
-  window.customElements.define(TabList.tag, TabList);
+      });
+    }
+  });
 });

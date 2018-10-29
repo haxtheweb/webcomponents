@@ -1,107 +1,23 @@
 define([
-  "exports",
-  "./node_modules/@polymer/polymer/polymer-element.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_exports, _polymerElement, _HAXWiring) {
+  "./node_modules/@polymer/polymer/polymer-legacy.js",
+  "./node_modules/@polymer/iron-collapse/iron-collapse.js",
+  "./node_modules/@lrnwebcomponents/lrndesign-stepper/lrndesign-stepper.js"
+], function(_polymerLegacy) {
   "use strict";
-  Object.defineProperty(_exports, "__esModule", { value: !0 });
-  _exports.LrndesignSteppercollapse = void 0;
-  function _templateObject_b00e5ee0d6fa11e8989f4d8ec1045af3() {
+  function _templateObject_9543be60db3311e8abec2ff64acdd93d() {
     var data = babelHelpers.taggedTemplateLiteral([
-      "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
+      '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <h2>[[title]]</h2>\n\n<lrn-objective title="Text" task="assignment">\ndokokadskoadsokds\nads\nad\ns\nads\nasd\n</lrn-objective>\n<lrndesign-stepper>\n  <lrndesign-stepper-button title="Step 1: Text" icon="book" url="#">\n  </lrndesign-stepper-button>\n  <lrndesign-stepper-button title="Step 2: Video" icon="av:play-circle-filled" collapsible="">\n    Things and stuff\n  </lrndesign-stepper-button>\n  <lrndesign-stepper-button title="Step 3: Quiz" icon="assignment-turned-in" url="#"></lrndesign-stepper-button>\n  <lrndesign-stepper-button title="Step 4: Discuss" icon="social:people" collapsible="">\n    Fourth step content goes here...\n  </lrndesign-stepper-button>\n</lrndesign-stepper>\n'
     ]);
-    _templateObject_b00e5ee0d6fa11e8989f4d8ec1045af3 = function() {
+    _templateObject_9543be60db3311e8abec2ff64acdd93d = function() {
       return data;
     };
     return data;
   }
-  var LrndesignSteppercollapse = (function(_PolymerElement) {
-    babelHelpers.inherits(LrndesignSteppercollapse, _PolymerElement);
-    function LrndesignSteppercollapse() {
-      babelHelpers.classCallCheck(this, LrndesignSteppercollapse);
-      return babelHelpers.possibleConstructorReturn(
-        this,
-        (
-          LrndesignSteppercollapse.__proto__ ||
-          Object.getPrototypeOf(LrndesignSteppercollapse)
-        ).apply(this, arguments)
-      );
-    }
-    babelHelpers.createClass(
-      LrndesignSteppercollapse,
-      [
-        {
-          key: "connectedCallback",
-          value: function connectedCallback() {
-            babelHelpers
-              .get(
-                LrndesignSteppercollapse.prototype.__proto__ ||
-                  Object.getPrototypeOf(LrndesignSteppercollapse.prototype),
-                "connectedCallback",
-                this
-              )
-              .call(this);
-            this.HAXWiring = new _HAXWiring.HAXWiring();
-            this.HAXWiring.setHaxProperties(
-              LrndesignSteppercollapse.haxProperties,
-              LrndesignSteppercollapse.tag,
-              this
-            );
-          }
-        }
-      ],
-      [
-        {
-          key: "template",
-          get: function get() {
-            return (0, _polymerElement.html)(
-              _templateObject_b00e5ee0d6fa11e8989f4d8ec1045af3()
-            );
-          }
-        },
-        {
-          key: "haxProperties",
-          get: function get() {
-            return {
-              canScale: !0,
-              canPosition: !0,
-              canEditSource: !1,
-              gizmo: {
-                title: "Lrndesign steppercollapse",
-                description:
-                  "Automated conversion of lrndesign-steppercollapse/",
-                icon: "icons:android",
-                color: "green",
-                groups: ["Steppercollapse"],
-                handles: [{ type: "todo:read-the-docs-for-usage" }],
-                meta: {
-                  author: "btopro",
-                  owner: "The Pennsylvania State University"
-                }
-              },
-              settings: { quick: [], configure: [], advanced: [] }
-            };
-          }
-        },
-        {
-          key: "properties",
-          get: function get() {
-            return {};
-          }
-        },
-        {
-          key: "tag",
-          get: function get() {
-            return "lrndesign-steppercollapse";
-          }
-        }
-      ]
-    );
-    return LrndesignSteppercollapse;
-  })(_polymerElement.PolymerElement);
-  _exports.LrndesignSteppercollapse = LrndesignSteppercollapse;
-  window.customElements.define(
-    LrndesignSteppercollapse.tag,
-    LrndesignSteppercollapse
-  );
+  (0, _polymerLegacy.Polymer)({
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_9543be60db3311e8abec2ff64acdd93d()
+    ),
+    is: "lrndesign-steppercollapse",
+    properties: { title: { type: String, value: "lrndesign-steppercollapse" } }
+  });
 });

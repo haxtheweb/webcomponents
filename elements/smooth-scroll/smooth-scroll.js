@@ -1,92 +1,88 @@
+import { Polymer } from "@polymer/polymer/polymer-legacy.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { SmoothScroll };
-/**
- * `smooth-scroll`
- * `Start of smooth-scroll`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class SmoothScroll extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
+`smooth-scroll`
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
+@demo demo/index.html
+Smooth scroll an element
 
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Smooth scroll",
-        description: "Start of smooth-scroll",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Scroll"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [],
-        advanced: []
-      }
+@microcopy - this is element provides methods to be called for smooth scrolling
+ - scroll()
+*/
+Polymer({
+  is: "smooth-scroll",
+  properties: {},
+  /**
+   * Smooth scroll an elment into view
+   * @target {Node} DOM node object
+   * @options {object}
+   *           - align (top, center, bottom)
+   *           - delay
+   *           - duration
+   *           - scrollElement
+   */
+  scroll: function(target, options) {
+    // define default options
+    const defaultOptions = {
+      align: "top",
+      delay: 0,
+      duration: 300,
+      scrollElement: window
     };
-  }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
+    // combine default and user defined options
+    const _options = Object.assign({}, defaultOptions, options);
+    // get the bound client
+    const targetPosition = target.getBoundingClientRect();
+    // get the scroll Element position
+    const scrollElementPosition = _options.scrollElement.getBoundingClientRect();
+    // get the height of the scroll Element
+    const scrollElementHeight =
+      _options.scrollElement.getBoundingClientRect().bottom -
+      _options.scrollElement.getBoundingClientRect().top;
+    // get the height of the element target
+    const targetHeight = targetPosition.bottom - targetPosition.top;
+    // get the offset of the scroll Element
+    const startPosition = _options.scrollElement.scrollTop;
+    // get the distance between the top of the scroll and the top of the bounding rectangles
+    let distance =
+      target.getBoundingClientRect().top -
+      _options.scrollElement.getBoundingClientRect().top;
+    /**
+     * @todo weird trick to position the scroll over the target
+     * I'm still not sure why this works :)
+     */
+    distance = distance - scrollElementHeight / 2;
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "smooth-scroll";
+    // see where the user wants to align the scroll
+    switch (_options.align) {
+      case "center":
+        distance = distance + targetHeight / 2;
+        break;
+      case "bottom":
+        distance = distance + targetHeight;
+        break;
+      default:
+        break;
+    }
+
+    // record start time
+    let startTime = null;
+
+    // internal animation function
+    function animation(currentTime) {
+      if (startTime === null) startTime = currentTime;
+      let timeElapsed = currentTime - startTime;
+      let run = ease(timeElapsed, startPosition, distance, _options.duration);
+      _options.scrollElement.scrollTop = run;
+      if (timeElapsed < _options.duration) requestAnimationFrame(animation);
+    }
+
+    // define a ease-in-out
+    function ease(t, b, c, d) {
+      if ((t /= d / 2) < 1) return (c / 2) * t * t + b;
+      return (-c / 2) * (--t * (t - 2) - 1) + b;
+    }
+
+    // start animation
+    requestAnimationFrame(animation);
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      SmoothScroll.haxProperties,
-      SmoothScroll.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(SmoothScroll.tag, SmoothScroll);
+});

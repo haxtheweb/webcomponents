@@ -6,11 +6,11 @@ define([
   "use strict";
   var _Mathmin = Math.min,
     _Mathabs = Math.abs;
-  function _templateObject_0fd65120db1511e889c52939b92b962c() {
+  function _templateObject_020cd2d0db3311e8b8b40de352c9d4a0() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n        position: relative;\n      }\n\n      :host([is-swiping]) {\n        z-index: 1001;\n      }\n\n      :host > ::content > * {\n        position: absolute;\n        box-sizing: border-box;\n        top: 0;\n        right: 0;\n        bottom: 0;\n        left: 0;\n        height: 100%;\n      }\n\n      ::content > [swipe-left-action] {visibility: hidden;}\n      ::content > [swipe-right-action] {visibility: hidden;}\n      ::content > [swipe-up-action] {visibility: hidden;}\n      ::content > [swipe-down-action] {visibility: hidden;}\n\n      ::content > .visible-action {\n        visibility: visible;\n      }\n\n      #swipeTarget {\n        @apply(--swipe-action-swipe-target);\n      }\n\n      #swipeTarget.fade {\n        opacity: 0 !important;\n      }\n\n      #swipeTarget.snap-back {\n        -webkit-transform: none !important;\n        transform: none !important;\n        opacity: 1 !important;\n      }\n\n      #swipeTarget.snap-back.animated {\n        transition: all 200ms ease-in-out;\n      }\n    </style>\n\n    <slot id="actions" name="[swipe-left-action],[swipe-right-action],[swipe-up-action],[swipe-down-action]"></slot>\n    \n    <div id="swipeTarget">\n      <slot id="content"></slot>\n    </div>\n'
     ]);
-    _templateObject_0fd65120db1511e889c52939b92b962c = function() {
+    _templateObject_020cd2d0db3311e8b8b40de352c9d4a0 = function() {
       return data;
     };
     return data;
@@ -50,7 +50,7 @@ define([
   };
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_0fd65120db1511e889c52939b92b962c()
+      _templateObject_020cd2d0db3311e8b8b40de352c9d4a0()
     ),
     is: "swipe-action",
     properties: {

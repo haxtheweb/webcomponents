@@ -1,10 +1,89 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";export{LrnMarkdownEditor};class LrnMarkdownEditor extends PolymerElement{static get template(){return html`
-<style>:host {
-  display: block;
-}
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-tabs/paper-tabs.js";import"./node_modules/@polymer/marked-element/marked-element.js";import"./node_modules/@polymer/iron-pages/iron-pages.js";import"./lib/lrn-markdown-editor-editor.js";Polymer({_template:html`
+    <style>
+       :host {
+        display: block;
+      }
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Lrn markdown-editor",description:"Automated conversion of lrn-markdown-editor/",icon:"icons:android",color:"green",groups:["Markdown"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[],advanced:[]}}}static get properties(){return{}}static get tag(){return"lrn-markdown-editor"}connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setHaxProperties(LrnMarkdownEditor.haxProperties,LrnMarkdownEditor.tag,this)}}window.customElements.define(LrnMarkdownEditor.tag,LrnMarkdownEditor);
+      #split-pane {
+        display: flex;
+      }
+
+      .split-pane>* {
+        flex: 1 1 auto;
+        min-height: 10em;
+      }
+
+      .preview-pane {
+        background: lightblue;
+      }
+
+      paper-card {
+        padding: 1em;
+        width: calc(100% - 2em);
+      }
+
+      paper-tabs {
+        background: #F5F5F5;
+        border-style: solid;
+        border-color: #DCDCDC;
+        border-width: 1px;
+        min-width: 500px;
+      }
+
+      marked-element.lrn-markdown-editor {
+        width: 100%;
+        word-wrap: break-word;
+      }
+
+      .container-flex {
+        display: flex;
+        flex-wrap: nowrap;
+      }
+
+      .split-pane .container-flex>* {
+        width: 50%;
+      }
+
+      .split-pane marked-element {
+        width: calc(100% - 2em);
+        min-width: 150px;
+        margin: 0 1em;
+        padding: 0 1em;
+        background: #FFF;
+        border-left: solid #DCDCDC 1px;
+      }
+    </style>
+
+    <div class="mtz-toolbar">
+      <paper-tabs selected="{{selected}}">
+        <paper-tab>Write</paper-tab>
+        <paper-tab>Preview</paper-tab>
+        <paper-tab>Split View</paper-tab>
+      </paper-tabs>
+    </div>
+
+    <iron-pages selected="{{selected}}">
+
+      <section>
+        <paper-card>
+          <lrn-markdown-editor-editor content="{{content}}"></lrn-markdown-editor-editor>
+        </paper-card>
+      </section>
+
+      <section>
+        <paper-card>
+          <marked-element markdown="{{content}}"></marked-element>
+        </paper-card>
+      </section>
+
+      <section class="split-pane">
+        <paper-card>
+          <div class="container-flex">
+            <lrn-markdown-editor-editor content="{{content}}"></lrn-markdown-editor-editor>
+            <marked-element class="preview-pane" markdown="{{content}}"></marked-element>
+          </div>
+        </paper-card>
+      </section>
+
+    </iron-pages>
+`,is:"lrn-markdown-editor",properties:{content:{type:String,notify:!0},selected:{type:String,value:"0",reflectToAttribute:!0},layout:{type:String,value:0},cookies:{type:Boolean,value:!0},elReady:{type:Boolean,value:!1}},observers:["_selectedChanged(selected)"],_selectedChanged:function(selected){var root=this,cookieName=root._getCookieName();if(2===selected){root._createCookie(cookieName,"true","30")}else if(2!==selected&&!0===root.elReady){root._eraseCookie(cookieName)}},_createCookie:function(name,value,days){var expires="";if(days){var date=new Date;date.setTime(date.getTime()+1e3*(60*(60*(24*days))));expires="; expires="+date.toUTCString()}document.cookie=name+"="+value+expires+"; path=/"},_readCookie:function(name){for(var nameEQ=name+"=",ca=document.cookie.split(";"),i=0,c;i<ca.length;i++){c=ca[i];while(" "==c.charAt(0))c=c.substring(1,c.length);if(0==c.indexOf(nameEQ))return c.substring(nameEQ.length,c.length)}return null},_eraseCookie:function(name){this._createCookie(name,"",-1)},_getCookieName:function(){return"lrnmarkdowneditorsplitview"},ready:function(){var root=this;root.elReady=!0;var cookieName=root._getCookieName(),cookie=root._readCookie(cookieName);if(cookie&&"true"===cookie){root.selected=2}}});

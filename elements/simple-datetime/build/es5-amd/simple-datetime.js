@@ -3,7 +3,7 @@ define([
   "./lib/date.format.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_0321e7f0db1511e8a7eb97f9e1797710() {
+  function _templateObject_f9dc4410db3211e89e52a56357dd77b1() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n        font-size: 14px;\n        color: #b3b3b1;\n        line-height: 30px;\n      }\n    </style>\n    <time datetime$="[[date]]">[[date]]</time>\n'
@@ -12,14 +12,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n        font-size: 14px;\n        color: #b3b3b1;\n        line-height: 30px;\n      }\n    </style>\n    <time datetime\\$="[[date]]">[[date]]</time>\n'
       ]
     );
-    _templateObject_0321e7f0db1511e8a7eb97f9e1797710 = function() {
+    _templateObject_f9dc4410db3211e89e52a56357dd77b1 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_0321e7f0db1511e8a7eb97f9e1797710()
+      _templateObject_f9dc4410db3211e89e52a56357dd77b1()
     ),
     is: "simple-datetime",
     properties: {

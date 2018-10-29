@@ -7,6 +7,7 @@ import "./node_modules/@polymer/iron-icons/iron-icons.js";
 import "./node_modules/@polymer/iron-icon/iron-icon.js";
 import "./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./node_modules/@polymer/paper-tooltip/paper-tooltip.js";
+export { LrnButton };
 class LrnButton extends PolymerElement {
   static get template() {
     return html`

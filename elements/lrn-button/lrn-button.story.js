@@ -11,7 +11,7 @@ template = array_matches[1];
 const stories = storiesOf("Atoms", module);
 stories.addDecorator(storybookBridge.withKnobs);
 stories.add("lrn-button", () => {
-var binding = {};
+  var binding = {};
   // start of tag for demo
   let elementDemo = `<${LrnButton.tag}`;
   // mix in properties defined on the class
@@ -20,28 +20,33 @@ var binding = {};
     if (!LrnButton.properties.hasOwnProperty(key)) continue;
     // convert typed props
     if (LrnButton.properties[key].type.name) {
-      let method = 'text';
+      let method = "text";
       switch (LrnButton.properties[key].type.name) {
-        case 'Boolean':
-        case 'Number':
-        case 'Object':
-        case 'Array':
-        case 'Date':
+        case "Boolean":
+        case "Number":
+        case "Object":
+        case "Array":
+        case "Date":
           method = LrnButton.properties[key].type.name.toLowerCase();
           break;
         default:
-          method = 'text';
-        break;
+          method = "text";
+          break;
       }
-      binding[key] = storybookBridge[method](key, LrnButton.properties[key].value);
+      binding[key] = storybookBridge[method](
+        key,
+        LrnButton.properties[key].value
+      );
       // ensure ke-bab case
-      let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function (match) {
-        return '-' + match.toLowerCase();
+      let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(
+        match
+      ) {
+        return "-" + match.toLowerCase();
       });
       elementDemo += ` ${kebab}="${binding[key]}"`;
     }
   }
-  elementDemo += `></${LrnButton.tag}>`
+  elementDemo += `></${LrnButton.tag}>`;
   return `
   <h1>Live demo</h1>
   ${elementDemo}

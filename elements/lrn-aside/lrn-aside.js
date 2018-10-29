@@ -1,88 +1,141 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/lrndesign-panelcard/lrndesign-panelcard.js";
+import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrnAside };
-/**
- * `lrn-aside`
- * `Automated conversion of lrn-aside/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrnAside extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
+`lrn-aside`
+an aside as a panel
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: flex;
+		    padding: 8px;
+      }
+      :host[sticky] {
+        top:0;
+        position: sticky;
+      }
+      :host[direction='left'] {
+        float: left;
+        max-width: 30em;
+      }
+      :host[direction='right'] {
+        float: right;
+        max-width: 30em;
+      }
+    </style>
+    <aside>
+      <lrndesign-panelcard title="[[title]]">
+        <slot></slot>
+      </lrndesign-panelcard>
+    </aside>
+`,
 
-  // haxProperty definition
-  static get haxProperties() {
-    return {
+  is: "lrn-aside",
+
+  behaviors: [HAXBehaviors.PropertiesBehaviors],
+
+  properties: {
+    /**
+     * Title for the aside.
+     */
+    title: {
+      type: String,
+      value: "Related content"
+    },
+    /**
+     * Apply CSS sticky styling
+     */
+    sticky: {
+      type: Boolean,
+      value: false,
+      reflectToAttribute: true
+    },
+    /**
+     * Direction to hang off UI if sticky, left or right.
+     */
+    direction: {
+      type: String,
+      value: "",
+      reflectToAttribute: true
+    }
+  },
+
+  /**
+   * Attached to the DOM, now fire.
+   */
+  attached: function() {
+    // Establish hax property binding
+    let props = {
       canScale: true,
       canPosition: true,
       canEditSource: false,
       gizmo: {
-        title: "Lrn aside",
-        description: "Automated conversion of lrn-aside/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Aside"],
+        title: "Sticky note",
+        description:
+          "A sticky note to present some basic info offset on the page.",
+        icon: "av:note",
+        color: "yellow",
+        groups: ["Content"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
+            type: "text",
+            title: "title"
           }
         ],
         meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
+          author: "LRNWebComponents"
         }
       },
       settings: {
-        quick: [],
-        configure: [],
+        quick: [
+          {
+            property: "title",
+            title: "Title",
+            description: "Enter title for sticky note",
+            inputMethod: "textfield",
+            required: true
+          }
+        ],
+        configure: [
+          {
+            property: "title",
+            title: "Title",
+            description: "Enter title for sticky note.",
+            inputMethod: "textfield",
+            required: true
+          },
+          {
+            slot: "",
+            title: "Content",
+            description: "Content of the sticky note",
+            inputMethod: "code-editor",
+            required: true
+          },
+          {
+            property: "sticky",
+            title: "Stick to page on scroll",
+            description: "Appear sticky when the user scrolls past it",
+            inputMethod: "boolean"
+          },
+          {
+            property: "direction",
+            title: "Direction to hang",
+            description: "Location of the sticky note to hang",
+            inputMethod: "select",
+            options: {
+              "": "none",
+              right: "Right",
+              left: "Left"
+            }
+          }
+        ],
         advanced: []
       }
     };
+    this.setHaxProperties(props);
   }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
-
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrn-aside";
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(LrnAside.haxProperties, LrnAside.tag, this);
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrnAside.tag, LrnAside);
+});

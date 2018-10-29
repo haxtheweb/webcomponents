@@ -8,7 +8,7 @@ import "./node_modules/@polymer/iron-list/iron-list.js";
 import "./node_modules/@polymer/iron-ajax/iron-ajax.js";
 import "./node_modules/@polymer/iron-icons/iron-icons.js";
 import "./node_modules/@polymer/paper-icon-button/paper-icon-button.js";
-import "../../node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";
+import "./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";
 Polymer({
   _template: html`
     <style>

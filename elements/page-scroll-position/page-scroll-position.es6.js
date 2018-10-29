@@ -1,10 +1,1 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";export{PageScrollPosition};class PageScrollPosition extends PolymerElement{static get template(){return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Page scroll-position",description:"Automated conversion of page-scroll-position/",icon:"icons:android",color:"green",groups:["Scroll"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[],advanced:[]}}}static get properties(){return{}}static get tag(){return"page-scroll-position"}connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setHaxProperties(PageScrollPosition.haxProperties,PageScrollPosition.tag,this)}}window.customElements.define(PageScrollPosition.tag,PageScrollPosition);
+class PageScrollPosition extends HTMLElement{attachedCallback(){this.value=0;let element=document,valueChangedEvent=new CustomEvent("value-changed",{detail:{value:0}});this.dispatchEvent(valueChangedEvent);element.addEventListener("scroll",()=>{let a=document.documentElement.scrollTop,b=document.documentElement.scrollHeight-document.documentElement.clientHeight;this.value=100*(a/b);valueChangedEvent=new CustomEvent("value-changed",{detail:{value:this.value}});this.dispatchEvent(valueChangedEvent)})}}document.registerElement("page-scroll-position",PageScrollPosition);

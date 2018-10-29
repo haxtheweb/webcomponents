@@ -1,92 +1,38 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/paper-button/paper-button.js";
+import "@lrnwebcomponents/lrndesign-dialog/lrndesign-dialog.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrndesignButtondialog };
-/**
- * `lrndesign-buttondialog`
- * `Automated conversion of lrndesign-buttondialog/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrndesignButtondialog extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
+`lrndesign-dialog`
+A LRN element
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
-
-  // haxProperty definition
-  static get haxProperties() {
-    return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Lrndesign buttondialog",
-        description: "Automated conversion of lrndesign-buttondialog/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Buttondialog"],
-        handles: [
-          {
-            type: "todo:read-the-docs-for-usage"
-          }
-        ],
-        meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [],
-        advanced: []
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
       }
-    };
-  }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
+    </style>
+    <paper-button raised="" onclick="dialog.toggle()">{{buttonLabel}}</paper-button>
+    <lrndesign-dialog id="dialog">
+      <h2>{{title}}</h2>
+      <div>
+        <slot></slot>
+      </div>
+    </lrndesign-dialog>
+`,
 
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "lrndesign-buttondialog";
+  is: "lrndesign-buttondialog",
+
+  properties: {
+    buttonLabel: {
+      type: String,
+      value: "Label"
+    },
+    title: {
+      type: String,
+      value: "Heading"
+    }
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      LrndesignButtondialog.haxProperties,
-      LrndesignButtondialog.tag,
-      this
-    );
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrndesignButtondialog.tag, LrndesignButtondialog);
+});

@@ -1,49 +1,104 @@
 import {
   html,
-  PolymerElement
-} from "./node_modules/@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrnMath };
-class LrnMath extends PolymerElement {
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
-  static get haxProperties() {
-    return {
+  Polymer
+} from "./node_modules/@polymer/polymer/polymer-legacy.js";
+import { dom } from "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
+import "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+Polymer({
+  _template: html`
+    <style>
+       :host {
+        display: inline;
+      }
+    </style>
+    [[prefix]] [[math]] [[suffix]]
+    <span hidden=""><slot id="content"></slot></span>
+`,
+  is: "lrn-math",
+  behaviors: [HAXBehaviors.PropertiesBehaviors],
+  properties: {
+    prefix: { type: String, value: "$$" },
+    suffix: { type: String, value: "$$" },
+    inline: { type: Boolean, value: !0, reflectToAttribute: !0 },
+    math: { type: String },
+    mathText: { type: String, observer: "_mathChanged" }
+  },
+  observers: ["_inlineChanged(inline)"],
+  _inlineChanged: function(inline) {
+    if (inline) {
+      this.prefix = "\\(";
+      this.suffix = "\\)";
+    }
+  },
+  _mathChanged: function(newValue, oldValue) {
+    if (newValue !== oldValue) {
+      while (null !== dom(this).firstChild) {
+        dom(this).removeChild(dom(this).firstChild);
+      }
+      let frag = document.createTextNode(newValue);
+      dom(this).appendChild(frag);
+    }
+  },
+  attached: function() {
+    this.setHaxProperties({
       canScale: !0,
       canPosition: !0,
-      canEditSource: !1,
+      canEditSource: !0,
       gizmo: {
-        title: "Lrn math",
-        description: "Automated conversion of lrn-math/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Math"],
-        handles: [{ type: "todo:read-the-docs-for-usage" }],
-        meta: { author: "btopro", owner: "The Pennsylvania State University" }
+        title: "Math",
+        description: "Present math in a nice looking way.",
+        icon: "places:all-inclusive",
+        color: "grey",
+        groups: ["Content"],
+        handles: [
+          { type: "math", math: "mathText" },
+          { type: "inline", text: "mathText" }
+        ],
+        meta: { author: "LRNWebComponents" }
       },
-      settings: { quick: [], configure: [], advanced: [] }
-    };
+      settings: {
+        quick: [
+          {
+            property: "inline",
+            title: "Inline",
+            description: "Display this math inline",
+            inputMethod: "boolean",
+            icon: "remove"
+          }
+        ],
+        configure: [
+          {
+            property: "mathText",
+            title: "Math",
+            description: "Math",
+            inputMethod: "textfield",
+            icon: "editor:format-quote"
+          },
+          {
+            property: "inline",
+            title: "Inline",
+            description: "Display this math inline",
+            inputMethod: "boolean",
+            icon: "remove"
+          }
+        ],
+        advanced: []
+      }
+    });
+  },
+  ready: function() {
+    if (typeof window.__mathJaxLoaded === typeof void 0) {
+      let mathjaxCDN = document.createElement("script");
+      mathjaxCDN.src =
+        "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML";
+      document.body.appendChild(mathjaxCDN);
+      window.__mathJaxLoaded = !0;
+    }
+    this._observer = dom(this.$.content).observeNodes(info => {
+      this.math = info.addedNodes.map(node => node.textContent).toString();
+      setTimeout(function() {
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+      }, 100);
+    });
   }
-  static get properties() {
-    return {};
-  }
-  static get tag() {
-    return "lrn-math";
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(LrnMath.haxProperties, LrnMath.tag, this);
-  }
-}
-window.customElements.define(LrnMath.tag, LrnMath);
+});

@@ -17,7 +17,17 @@
       <demo-snippet>
         <template>
           <mtz-marked-editor>
-            This is mtz-marked-editor
+            <div slot="controls">
+              <mtz-marked-control-generic-wrap icon="editor:format-bold" title="Bold" syntax-prefix="**" syntax-suffix="**"
+                keys="ctrl+b"></mtz-marked-control-generic-wrap>
+              <mtz-marked-control-generic-wrap icon="editor:format-italic" title="Italic" syntax-prefix="_" syntax-suffix="_"
+                keys="ctrl+i"></mtz-marked-control-generic-wrap>
+              <mtz-marked-control-generic-line icon="editor:format-size" title="Heading" syntax-prefix="# "></mtz-marked-control-generic-line>
+              <mtz-marked-control-generic-line icon="editor:format-list-numbered" title="Ordered List" syntax-prefix="1. "></mtz-marked-control-generic-line>
+              <mtz-marked-control-generic-line icon="editor:format-list-bulleted" title="Unordered List" syntax-prefix="- "></mtz-marked-control-generic-line>
+              <mtz-marked-control-link icon="editor:insert-link" title="Link"></mtz-marked-control-link>
+            </div>
+            <textarea slot="textarea"></textarea>
           </mtz-marked-editor>
         </template>
       </demo-snippet>

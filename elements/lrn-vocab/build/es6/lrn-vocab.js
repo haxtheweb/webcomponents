@@ -1,49 +1,100 @@
 import {
   html,
-  PolymerElement
-} from "./node_modules/@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrnVocab };
-class LrnVocab extends PolymerElement {
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
+  Polymer
+} from "./node_modules/@polymer/polymer/polymer-legacy.js";
+import "./node_modules/@polymer/paper-button/paper-button.js";
+import "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import "./lib/lrn-vocab-dialog.js";
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: inline-flex;
+        --lrn-vocab-border: 1px dashed gray;
+      }
+      paper-button {
+        text-transform: none;
+        padding: 0;
+        margin: 0;
+        border-bottom: var(--lrn-vocab-border);
+        position: relative;
+        top: 3px;
+      }
+    </style>
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
-  static get haxProperties() {
-    return {
-      canScale: !0,
-      canPosition: !0,
+    <div>
+      <paper-button id="button" noink="">[[term]]</paper-button>
+    </div>
+    <lrn-vocab-dialog id="dialog" opened="{{opened}}">
+      <slot></slot>
+    </lrn-vocab-dialog>
+`,
+  is: "lrn-vocab",
+  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
+  properties: {
+    term: { type: String, reflectToAttribute: !0 },
+    opened: { type: Boolean, value: !1 }
+  },
+  ready: function() {
+    this.$.button.addEventListener("click", () => {
+      this.opened = !this.opened;
+    });
+    this.__modal = this.$.dialog;
+  },
+  attached: function() {
+    document.body.addEventListener(
+      "lrn-vocab-dialog-closed",
+      this._accessibleFocus.bind(this)
+    );
+    this.setHaxProperties({
+      canScale: !1,
+      canPosition: !1,
       canEditSource: !1,
       gizmo: {
-        title: "Lrn vocab",
-        description: "Automated conversion of lrn-vocab/",
-        icon: "icons:android",
-        color: "green",
+        title: "Vocab",
+        description: "Vocabulary term",
+        icon: "image:details",
+        color: "red",
         groups: ["Vocab"],
-        handles: [{ type: "todo:read-the-docs-for-usage" }],
-        meta: { author: "btopro", owner: "The Pennsylvania State University" }
+        handles: [{ type: "inline", text: "term" }],
+        meta: { author: "LRNWebComponents" }
       },
-      settings: { quick: [], configure: [], advanced: [] }
-    };
+      settings: {
+        quick: [
+          {
+            property: "term",
+            title: "Term",
+            description: "The word or words to make clickable for more detail.",
+            inputMethod: "textfield",
+            icon: "editor:title",
+            required: !0
+          }
+        ],
+        configure: [
+          {
+            property: "term",
+            title: "Term",
+            description: "The word or words to make clickable for more detail.",
+            inputMethod: "textfield",
+            icon: "editor:title",
+            required: !0
+          },
+          {
+            slot: "",
+            title: "Contents",
+            description: "Contents to display in the pop up.",
+            inputMethod: "code-editor",
+            required: !0
+          }
+        ],
+        advanced: []
+      }
+    });
+  },
+  _accessibleFocus: function(e) {
+    if (e.detail === this.__modal) {
+      this.$.button.focus();
+    }
   }
-  static get properties() {
-    return {};
-  }
-  static get tag() {
-    return "lrn-vocab";
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(LrnVocab.haxProperties, LrnVocab.tag, this);
-  }
-}
-window.customElements.define(LrnVocab.tag, LrnVocab);
+});

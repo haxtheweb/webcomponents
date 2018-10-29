@@ -1,88 +1,165 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { LrnMath };
-/**
- * `lrn-math`
- * `Automated conversion of lrn-math/`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class LrnMath extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
+`lrn-math`
+A LRN element
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
-  }
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`
+    <style>
+       :host {
+        display: inline;
+      }
+    </style>
+    [[prefix]] [[math]] [[suffix]]
+    <span hidden=""><slot id="content"></slot></span>
+`,
 
-  // haxProperty definition
-  static get haxProperties() {
-    return {
+  is: "lrn-math",
+
+  behaviors: [HAXBehaviors.PropertiesBehaviors],
+
+  properties: {
+    /**
+     * Styling for targeting the math pre and post
+     */
+    prefix: {
+      type: String,
+      value: "$$"
+    },
+    suffix: {
+      type: String,
+      value: "$$"
+    },
+    /**
+     * display the math inline
+     */
+    inline: {
+      type: Boolean,
+      value: true,
+      reflectToAttribute: true
+    },
+    /**
+     * The math to get rendered.
+     */
+    math: {
+      type: String
+    },
+    /**
+     * backdown to inject text
+     */
+    mathText: {
+      type: String,
+      observer: "_mathChanged"
+    }
+  },
+
+  observers: ["_inlineChanged(inline)"],
+
+  /**
+   * Modify pre and suffix if inline is set
+   */
+  _inlineChanged: function(inline) {
+    if (inline) {
+      this.prefix = "\\(";
+      this.suffix = "\\)";
+    }
+  },
+
+  /**
+   * Notice math changed, update slot.
+   */
+  _mathChanged: function(newValue, oldValue) {
+    if (newValue !== oldValue) {
+      while (dom(this).firstChild !== null) {
+        dom(this).removeChild(dom(this).firstChild);
+      }
+      let frag = document.createTextNode(newValue);
+      dom(this).appendChild(frag);
+    }
+  },
+
+  /**
+   * Attached life cycle
+   */
+  attached: function() {
+    // Establish hax properties if they exist
+    let props = {
       canScale: true,
       canPosition: true,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
-        title: "Lrn math",
-        description: "Automated conversion of lrn-math/",
-        icon: "icons:android",
-        color: "green",
-        groups: ["Math"],
+        title: "Math",
+        description: "Present math in a nice looking way.",
+        icon: "places:all-inclusive",
+        color: "grey",
+        groups: ["Content"],
         handles: [
           {
-            type: "todo:read-the-docs-for-usage"
+            type: "math",
+            math: "mathText"
+          },
+          {
+            type: "inline",
+            text: "mathText"
           }
         ],
         meta: {
-          author: "btopro",
-          owner: "The Pennsylvania State University"
+          author: "LRNWebComponents"
         }
       },
       settings: {
-        quick: [],
-        configure: [],
+        quick: [
+          {
+            property: "inline",
+            title: "Inline",
+            description: "Display this math inline",
+            inputMethod: "boolean",
+            icon: "remove"
+          }
+        ],
+        configure: [
+          {
+            property: "mathText",
+            title: "Math",
+            description: "Math",
+            inputMethod: "textfield",
+            icon: "editor:format-quote"
+          },
+          {
+            property: "inline",
+            title: "Inline",
+            description: "Display this math inline",
+            inputMethod: "boolean",
+            icon: "remove"
+          }
+        ],
         advanced: []
       }
     };
-  }
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
+    this.setHaxProperties(props);
+  },
 
   /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
+   * Notice changes to the slot and reflect these to the math value
+   * so that we can render it to the page.
    */
-  static get tag() {
-    return "lrn-math";
+  ready: function() {
+    if (typeof window.__mathJaxLoaded === typeof undefined) {
+      let mathjaxCDN = document.createElement("script");
+      mathjaxCDN.src =
+        "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML";
+      document.body.appendChild(mathjaxCDN);
+      window.__mathJaxLoaded = true;
+    }
+    this._observer = dom(this.$.content).observeNodes(info => {
+      this.math = info.addedNodes.map(node => node.textContent).toString();
+      setTimeout(function() {
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+      }, 100);
+    });
   }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(LrnMath.haxProperties, LrnMath.tag, this);
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(LrnMath.tag, LrnMath);
+});
