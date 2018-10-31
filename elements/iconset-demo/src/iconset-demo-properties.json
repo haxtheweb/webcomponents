@@ -1,0 +1,16 @@
+{
+  "iconsets": {
+    "name": "iconsets",
+    "type": "String",
+    "value": null,
+    "reflectToAttribute": false,
+    "observer": false
+  },
+  "items": {
+    "name": "items",
+    "type": "Array",
+    "computed": "_getIcons(iconsets)",
+    "reflectToAttribute": false,
+    "observer": false
+  }
+}

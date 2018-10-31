@@ -1,0 +1,21 @@
+:host {
+  font-size: 14px;
+  color: rgb(97,97,97);
+}
+:host ul {
+  list-style-type: none;
+}
+:host li {
+  display: inline-block;
+  width: 10em;
+  margin: 1em 0.5em;
+  text-align: center;
+}
+:host li > #icon > div {
+  text-align: center;
+}
+:host li #icon-text {
+  margin-top: 0.5em;
+  font-size: 10px;
+  color: black;
+}

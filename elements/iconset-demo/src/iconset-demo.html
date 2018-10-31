@@ -1,0 +1,14 @@
+
+<template is="dom-repeat" items="[[items]]" as="iconset">
+<h1>[[iconset.name]]</h1>
+<ul>
+    <template is="dom-repeat" items="[[iconset.icons]]" as="icon">
+        <li>
+        <div id="icon">
+            <div id="icon-svg"><iron-icon icon\$="[[iconset.prefix]][[icon]]"></iron-icon></div>
+            <div id="icon-text">[[iconset.prefix]][[icon]]</div>
+        </div>
+        </li>
+    </template>
+</ul>
+</template>
