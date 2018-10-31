@@ -1,8 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "./lib/aframe-aframe.js";
-/*<link rel="import" href="aframe-arjs.html">*/
+import "aframe/dist/aframe-v0.8.2.js";
 /**
 `aframe-player`
 A LRN element
