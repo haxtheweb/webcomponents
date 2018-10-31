@@ -8,9 +8,24 @@
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../paper-avatar.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      div[role="listbox"] {
+        display: flex;
+        flex-direction: column;
+      }
+
+      paper-icon-item {
+        display: flex;
+        align-items: center;
+      }
+
+      paper-avatar {
+        margin-right: .5em;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
@@ -46,6 +61,19 @@
                 <div>William Brown</div>
                 <div secondary="">william.brown@example.com</div>
               </paper-item-body>
+            </paper-icon-item>
+          </div>
+        </template>
+      </demo-snippet>
+    </div>
+    <div class="vertical-section-container centered">
+      <h3>Icon with image</h3>
+      <demo-snippet>
+        <template>
+          <div role="listbox">
+            <paper-icon-item>
+              <paper-avatar src="https://mmilutinovic1313.github.io/elmsln-website/img/snowflake.png"></paper-avatar>
+              Michael
             </paper-icon-item>
           </div>
         </template>
