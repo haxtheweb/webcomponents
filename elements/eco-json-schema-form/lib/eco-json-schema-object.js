@@ -12,13 +12,6 @@ $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-object">
 
-  
-  
-  
-  
-  
-  
-
   <template>
 
     <style is="custom-style" include="iron-flex iron-flex-alignment">
@@ -532,7 +525,9 @@ Polymer({
           .toLowerCase() + "-changed",
         "_schemaPropertyChanged"
       );
-      dom(ctx.$.form).appendChild(el);
+      if (typeof ctx.$ !== typeof undefined) {
+        dom(ctx.$.form).appendChild(el);
+      }
       // support for slot injection too!
       if (property.component.slot != "") {
         var temp = document.createElement("template");
@@ -555,16 +550,20 @@ Polymer({
     dom(this.$.form).removeChild(el);
   },
   _clearForm: function() {
-    var formEl = dom(this.$.form);
-    while (formEl.firstChild) {
-      this._removePropertyEl(formEl.firstChild);
+    if (typeof this.$ !== typeof undefined) {
+      var formEl = dom(this.$.form);
+      while (formEl.firstChild) {
+        this._removePropertyEl(formEl.firstChild);
+      }
     }
   },
-  _schemaChanged: function() {
-    this._clearForm();
-    this._buildSchemaProperties();
-    this._buildForm();
-    this._setValue();
+  _schemaChanged: function(newValue, oldValue) {
+    if (newValue && typeof oldValue !== typeof undefined) {
+      this._clearForm();
+      this._buildSchemaProperties();
+      this._buildForm();
+      this._setValue();
+    }
   },
   _errorChanged: function() {
     var ctx = this;
