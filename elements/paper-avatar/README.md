@@ -6,6 +6,10 @@ Avatar
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
+### NOTICE
+
+jdenticon functionality is not working in the latest version of this component.
+
 ```js
 /* In an existing module / web component */
 import '@lrnwebcomponents/paper-avatar.js';
