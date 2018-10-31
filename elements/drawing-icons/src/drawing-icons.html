@@ -1,35 +1,6 @@
-/**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-
-export { DrawingIcons };
-/**
- * `drawing-icons`
- * `iconset for drawing toolbar buttons`
- *
- * @microcopy - language worth noting:
- *  -
- *
- * @customElement
- * @polymer
- * @demo demo/index.html
- */
-class DrawingIcons extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
 <iron-iconset-svg size="30" name="lrn">
     <iron-iconset-svg size="24" name="drawing">
+      <!-- move -->
       <svg>
         <defs>
           <g id="move">
@@ -38,8 +9,9 @@ class DrawingIcons extends PolymerElement {
           </g>
         </defs>
       </svg>
-
-
+      
+      
+      <!-- select -->
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <defs>
           <g id="select">
@@ -47,8 +19,9 @@ class DrawingIcons extends PolymerElement {
           </g>
         </defs>
       </svg>
-
-
+    
+    
+      <!-- draw ellipsis -->
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <defs>
           <g id="draw-ellip">
@@ -57,8 +30,9 @@ class DrawingIcons extends PolymerElement {
           </g>
         </defs>
       </svg>
-
-
+    
+    
+      <!-- draw rectangle -->
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <defs>
           <g id="draw-rect">
@@ -67,8 +41,9 @@ class DrawingIcons extends PolymerElement {
           </g>
         </defs>
       </svg>
-
-
+      
+      
+      <!-- draw polygon -->
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <defs>
           <g id="draw-poly">
@@ -77,31 +52,5 @@ class DrawingIcons extends PolymerElement {
           </g>
         </defs>
       </svg>
-
-          </iron-iconset-svg></iron-iconset-svg>`;
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {};
-  }
-
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "drawing-icons";
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-  }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  //disconnectedCallback() {}
-}
-window.customElements.define(DrawingIcons.tag, DrawingIcons);
+      
+    </iron-iconset-svg></iron-iconset-svg>

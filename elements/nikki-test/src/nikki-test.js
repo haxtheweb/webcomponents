@@ -3,11 +3,11 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-
-export { DrawingIcons };
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+export { NikkiTest };
 /**
- * `drawing-icons`
- * `iconset for drawing toolbar buttons`
+ * `nikki-test`
+ * `testing 123`
  *
  * @microcopy - language worth noting:
  *  -
@@ -16,7 +16,7 @@ export { DrawingIcons };
  * @polymer
  * @demo demo/index.html
  */
-class DrawingIcons extends PolymerElement {
+class NikkiTest extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -24,17 +24,29 @@ class DrawingIcons extends PolymerElement {
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "drawing-icons";
+    return "nikki-test";
   }
   /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
     super.connectedCallback();
+    this.HAXWiring = new HAXWiring();
+    this.HAXWiring.setHaxProperties(
+      NikkiTest.haxProperties,
+      NikkiTest.tag,
+      this
+    );
   }
   /**
    * life cycle, element is removed from the DOM
    */
   //disconnectedCallback() {}
+  // Observer title for changes
+  _titleChanged(newValue, oldValue) {
+    if (typeof newValue !== typeof undefined) {
+      console.log(newValue);
+    }
+  }
 }
-window.customElements.define(DrawingIcons.tag, DrawingIcons);
+window.customElements.define(NikkiTest.tag, NikkiTest);

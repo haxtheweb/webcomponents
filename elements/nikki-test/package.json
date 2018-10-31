@@ -1,33 +1,33 @@
 {
-  "name": "@lrnwebcomponents/drawing-icons",
+  "name": "@lrnwebcomponents/nikki-test",
   "wcfactory": {
-    "className": "DrawingIcons",
+    "className": "NikkiTest",
     "customElementClass": "PolymerElement",
-    "elementName": "drawing-icons",
+    "elementName": "nikki-test",
     "generator-wcfactory-version": "0.4.0",
-    "useHAX": false,
+    "useHAX": true,
     "useSass": false,
     "files": {
-      "css": "src/drawing-icons.css",
-      "scss": "src/drawing-icons.scss",
-      "html": "src/drawing-icons.html",
-      "js": "src/drawing-icons.js",
-      "properties": "src/drawing-icons-properties.json",
-      "hax": "src/drawing-icons-hax.json"
+      "css": "src/nikki-test.css",
+      "scss": "src/nikki-test.scss",
+      "html": "src/nikki-test.html",
+      "js": "src/nikki-test.js",
+      "properties": "src/nikki-test-properties.json",
+      "hax": "src/nikki-test-hax.json"
     }
   },
   "version": "0.0.28",
-  "description": "iconset for drawing toolbar buttons",
+  "description": "testing 123",
   "repository": {
     "type": "git",
     "url": "git@github.com/elmsln/lrnwebcomponents.git"
   },
-  "main": "drawing-icons.js",
-  "module": "drawing-icons.es6.js",
-  "umd": "drawing-icons.umd.js",
-  "amd": "drawing-icons.amd.js",
+  "main": "nikki-test.js",
+  "module": "nikki-test.es6.js",
+  "umd": "nikki-test.umd.js",
+  "amd": "nikki-test.amd.js",
   "scripts": {
-    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/drawing-icons/test/",
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/nikki-test/test/",
     "start":"yarn run dev","build":"../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'","dev":"open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'","watch":"../../node_modules/.bin/gulp dev","serve":"polymer serve --npm --module-resolution=node --open","lighthouse":"../../node_modules/.bin/gulp lighthouse"
   },
   "author": {
@@ -35,7 +35,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/polymer":"^3.0.5"
+    "@lrnwebcomponents/hax-body-behaviors":"^0.0.28","@polymer/polymer":"^3.0.5"
   },
   "devDependencies": {
     "@polymer/iron-demo-helpers":"3.0.2","@polymer/iron-component-page":"github:PolymerElements/iron-component-page","@webcomponents/webcomponentsjs":"2.1.3","concurrently":"4.0.1","gulp-babel":"8.0.0","gulp-sourcemaps":"2.6.4","lodash":"4.17.11","polymer-cli":"1.8.1","polymer-build":"3.1.0","wct-browser-legacy":"1.0.2"
