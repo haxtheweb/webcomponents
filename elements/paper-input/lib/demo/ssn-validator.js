@@ -1,6 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { IronValidatorBehavior } from "@polymer/iron-validator-behavior/iron-validator-behavior.js";
-import { Polymer } from "@polymer/polymer/lib/legacy/polymer-fn.js";
 /**
 @license
 Copyright (c) 2015 The Polymer Project Authors. All rights reserved.

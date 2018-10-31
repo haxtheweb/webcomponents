@@ -8,10 +8,11 @@
 
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
-    <script type="module" src="../node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
-    <script type="module" src="../node_modules/@polymer/iron-demo-helpers/demo-snippet.js"></script>
-    <script type="module" src="../responsive-grid-row.js"></script>
-
+    <script type="module">
+      import "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
+      import "@polymer/iron-demo-helpers/demo-snippet.js";
+      import "../responsive-grid-row.js";
+    </script>
     <!-- FIXME(polymer-modulizer):
         These imperative modules that innerHTML your HTML are
         a hacky way to be sure that any mixins in included style

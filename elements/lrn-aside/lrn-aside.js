@@ -2,11 +2,11 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/lrndesign-panelcard/lrndesign-panelcard.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
-`lrn-aside`
-an aside as a panel
-
-@demo demo/index.html
-*/
+ * `lrn-aside`
+ * A content aside as a panel
+ *
+ * @demo demo/index.html
+ */
 Polymer({
   _template: html`
     <style>

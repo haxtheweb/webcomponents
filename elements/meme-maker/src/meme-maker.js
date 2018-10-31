@@ -1,5 +1,14 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+/**
+ * `meme-maker`
+ * Connects lrndesign-gallery to HAX
+ *
+ * @demo demo/index.html
+ *
+ * @microcopy - the mental model for this element
+ *  -
+ */
 Polymer({
   _template: html`
     <style>

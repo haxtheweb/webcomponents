@@ -45,7 +45,7 @@
     "@lrnwebcomponents/paper-stepper": "^0.0.30",
     "@polymer/app-route": "^3.0.0",
     "@polymer/iron-pages": "^3.0.0",
-    "@polymer/polymer": "^3.0.0"
+    "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
