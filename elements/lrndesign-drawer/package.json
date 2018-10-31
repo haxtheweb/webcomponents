@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@lrnwebcomponents/lrn-icons": "^0.0.30",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@lrnwebcomponents/deduping-fix": "0.0.30",
     "@webcomponents/webcomponentsjs": "2.1.3",

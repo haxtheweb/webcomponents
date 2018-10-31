@@ -30,10 +30,10 @@ Polymer({
         }
       </style>
     </custom-style>
-    <iron-ajax url\$="https://en.wikipedia.org/w/api.php?origin=*&amp;action=query&amp;titles=[[search]]&amp;prop=extracts&amp;format=json" handle-as="json" on-response="handleResponse" debounce-duration="100" last-response="{{searchResponse}}"></iron-ajax>
-    <h3 hidden\$="[[!showTitle]]">[[search]] Wikipedia article</h3>
-    <div id="result" hidden\$="[[!__rendercontent]]"></div>
-    <citation-element hidden\$="[[!__rendercontent]]" creator="{Wikipedia contributors}" scope="sibling" license="by-sa" title="[[search]] --- {Wikipedia}{,} The Free Encyclopedia" source="https://en.wikipedia.org/w/index.php?title=[[search]]" date="[[__now]]"></citation-element>
+    <iron-ajax auto url$="https://en.wikipedia.org/w/api.php?origin=*&amp;action=query&amp;titles=[[search]]&amp;prop=extracts&amp;format=json" handle-as="json" on-response="handleResponse" debounce-duration="100" last-response="{{searchResponse}}"></iron-ajax>
+    <h3 hidden$="[[!showTitle]]">[[search]] Wikipedia article</h3>
+    <div id="result" hidden$="[[!__rendercontent]]"></div>
+    <citation-element hidden$="[[!__rendercontent]]" creator="{Wikipedia contributors}" scope="sibling" license="by-sa" title="[[search]] --- {Wikipedia}{,} The Free Encyclopedia" source="https://en.wikipedia.org/w/index.php?title=[[search]]" date="[[__now]]"></citation-element>
 `,
 
   is: "wikipedia-query",
