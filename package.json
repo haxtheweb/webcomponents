@@ -1,7 +1,7 @@
 {
   "name": "@lrnwebcomponents/lrnwebcomponents",
   "description": "ELMS:LN produced web components for any project",
-  "version": "0.0.28",
+  "version": "0.0.30",
   "wcfactory": {
     "askSASS": true,
     "askProps": true,
@@ -171,6 +171,10 @@
       "**/jarallax/**",
       "**/screenfull",
       "**/screenfull/**",
+      "**/webcomponent-qr-code",
+      "**/webcomponent-qr-code/**",
+      "**/pdfjs-dist",
+      "**/pdfjs-dist/**",
       "**/web-animations-js",
       "**/web-animations-js/**",
       "**/chartist",

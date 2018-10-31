@@ -6,7 +6,7 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { WaveSurfer } from "wavesurfer.js";
+import { WaveSurfer } from "wavesurfer.js/dist/wavesurfer.js";
 import { TimelinePlugin } from "wavesurfer.js/dist/plugin/wavesurfer.timeline.min.js";
 import { MinimapPlugin } from "wavesurfer.js/dist/plugin/wavesurfer.minimap.min.js";
 
