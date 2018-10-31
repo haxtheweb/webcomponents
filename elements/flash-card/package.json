@@ -44,7 +44,7 @@
     "@lrnwebcomponents/materializecss-styles": "^0.0.30",
     "@lrnwebcomponents/schema-behaviors": "^0.0.30",
     "@polymer/paper-card": "^3.0.0",
-    "@polymer/polymer": "^3.0.0"
+    "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

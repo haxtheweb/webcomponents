@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrn-aside`\nan aside as a panel",
+      "description": "`lrn-aside`\nA content aside as a panel",
       "summary": "",
       "path": "lrn-aside.js",
       "properties": [

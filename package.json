@@ -180,7 +180,9 @@
       "**/time-elements",
       "**/time-elements/**",
       "**/@vowo",
-      "**/@vowo/**"
+      "**/@vowo/**",
+      "**/wavesurfer.js",
+      "**/wavesurfer.js/**"
     ]
   },
   "husky": {

@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "",
+      "description": "`meme-maker`\nConnects lrndesign-gallery to HAX",
       "summary": "",
       "path": "meme-maker.js",
       "properties": [
@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 77,
+              "line": 86,
               "column": 4
             },
             "end": {
-              "line": 79,
+              "line": 88,
               "column": 5
             }
           },
@@ -34,11 +34,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 92,
               "column": 4
             },
             "end": {
-              "line": 85,
+              "line": 94,
               "column": 5
             }
           },
@@ -55,11 +55,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 89,
+              "line": 98,
               "column": 4
             },
             "end": {
-              "line": 91,
+              "line": 100,
               "column": 5
             }
           },
@@ -76,11 +76,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 95,
+              "line": 104,
               "column": 4
             },
             "end": {
-              "line": 97,
+              "line": 106,
               "column": 5
             }
           },
@@ -98,11 +98,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 103,
+              "line": 112,
               "column": 2
             },
             "end": {
-              "line": 172,
+              "line": 181,
               "column": 3
             }
           },
@@ -114,15 +114,20 @@
         }
       ],
       "staticMethods": [],
-      "demos": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 2,
+          "line": 11,
           "column": 8
         },
         "end": {
-          "line": 173,
+          "line": 182,
           "column": 1
         }
       },
@@ -134,11 +139,11 @@
           "description": "Alt data passed down to appropriate tag",
           "sourceRange": {
             "start": {
-              "line": 77,
+              "line": 86,
               "column": 4
             },
             "end": {
-              "line": 79,
+              "line": 88,
               "column": 5
             }
           },
@@ -150,11 +155,11 @@
           "description": "url to the meme image",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 92,
               "column": 4
             },
             "end": {
-              "line": 85,
+              "line": 94,
               "column": 5
             }
           },
@@ -166,11 +171,11 @@
           "description": "Text on top of the image.",
           "sourceRange": {
             "start": {
-              "line": 89,
+              "line": 98,
               "column": 4
             },
             "end": {
-              "line": 91,
+              "line": 100,
               "column": 5
             }
           },
@@ -182,11 +187,11 @@
           "description": "Bottom text for the image.",
           "sourceRange": {
             "start": {
-              "line": 95,
+              "line": 104,
               "column": 4
             },
             "end": {
-              "line": 97,
+              "line": 106,
               "column": 5
             }
           },
