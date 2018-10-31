@@ -9,10 +9,10 @@ import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
 import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/lrnsys-layout/lrnsys-layout.js";
-import "@lrnwebcomponents/lrnsys-layout/lrnsys-drawer.js";
-import "@lrnwebcomponents/lrnsys-layout/lrnsys-dialog.js";
-import "@lrnwebcomponents/lrnsys-layout/lrnsys-collapselist.js";
-import "@lrnwebcomponents/lrnsys-layout/lrnsys-collapselist-item.js";
+import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-drawer.js";
+import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
+import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-collapselist.js";
+import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-collapselist-item.js";
 import "ical.js/build/ical.js";
 import "./lib/lrn-calendar-date.js";
 

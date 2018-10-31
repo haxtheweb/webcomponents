@@ -3,7 +3,7 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "juicy-ace-editor/juicy-ace-editor.js";
+import "./lib/juicy-ace-editor.js";
 import "./lib/code-pen-button.js";
 /**
 `code-editor`

@@ -193,7 +193,7 @@ Polymer({
     if (typeof index === "number" && index >= 0 && index < this.items.length) {
       this.selected = this.items[index];
       this.$.thumbslist.selectItem(this.items[index]);
-      this.$$("#gallery-zoom").toggleDialog();
+      this.shadowRoot.querySelector("#gallery-zoom").toggleDialog();
     }
   },
 
@@ -220,7 +220,7 @@ Polymer({
         item = anchor.replace("-zoom", "");
       if (this.selected && this.selected.id == item) {
         this.__init = true;
-        this.$$("#gallery-zoom").toggleDialog();
+        this.shadowRoot.querySelector("#gallery-zoom").toggleDialog();
         this.$.itembody.innerHTML = this.selected.details;
       }
     }

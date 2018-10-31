@@ -39,7 +39,8 @@
     "@lrnwebcomponents/schema-behaviors": "^0.0.30",
     "@polymer/paper-spinner": "^3.0.0",
     "@polymer/paper-tooltip": "^3.0.0",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.0.5",
+    "aframe": "^0.8.2"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

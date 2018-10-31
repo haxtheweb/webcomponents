@@ -6,9 +6,7 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import { WaveSurfer } from "wavesurfer.js";
-import { TimelinePlugin } from "wavesurfer.js/dist/plugin/wavesurfer.timeline.min.js";
-import { MinimapPlugin } from "wavesurfer.js/dist/plugin/wavesurfer.minimap.min.js";
+import * as WaveSurfer from "wavesurfer.js/dist/wavesurfer.js";
 
 Polymer({
   _template: html`
@@ -473,7 +471,7 @@ Polymer({
    * Stores Object
    */
   updateWavesurfer: function() {
-    window.wavesurferobject = Object.create(WaveSurfer);
+    window.wavesurferobject = WaveSurfer.create();
     this.initWaveSurfer();
   },
 

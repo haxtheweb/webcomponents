@@ -7,7 +7,6 @@ import "@polymer/paper-spinner/paper-spinner.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "pdfjs-dist/web/compatibility.js";
 import "pdfjs-dist/build/pdf.js";
 import "pdfjs-dist/build/pdf.worker.js";
 import "./lib/main.js";
