@@ -9,6 +9,7 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../drawing-icons.js';
+      import '@lrnwebcomponents/iconset-demo/iconset-demo.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -16,13 +17,7 @@
     <div class="vertical-section-container centered">
       <h3>Basic drawing-icons demo</h3>
       <demo-snippet>
-        <template>
-          <iron-icon icon="drawing:move"></iron-icon>
-          <iron-icon icon="drawing:select"></iron-icon>
-          <iron-icon icon="drawing:draw-ellip"></iron-icon>
-          <iron-icon icon="drawing:draw-rect"></iron-icon>
-          <iron-icon icon="drawing:draw-poly"></iron-icon>
-        </template>
+        <template><iconset-demo iconsets='[{"name": "drawing","icons": ["move","select","draw-ellip","draw-rect","draw-poly"]}]'></iconset-demo></template>
       </demo-snippet>
     </div>
   </body>

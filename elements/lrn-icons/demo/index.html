@@ -8,7 +8,8 @@
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import './lrn-icons-demo.js';
+      import '../lrn-icons.js';
+      import '@lrnwebcomponents/iconset-demo/iconset-demo.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -16,7 +17,7 @@
     <div class="vertical-section-container centered">
       <h3>Basic lrn-icon demo</h3>
       <demo-snippet>
-        <lrn-icons-demo></lrn-icons-demo>
+        <template><iconset-demo iconsets='[{"name": "lrn","icons": [ "done","input","about","add","plus","apps","network","arrow-left","arrow-right","assignment","assignments","assessment","lab","labs","beaker","blog","blogs","editorial","write","bookmark","bookmark-outline","calendar","chevron-down","chevron-left","chevron-right","online","cis","studio","cle","close","collab","comment","comply","ecd","mooc","content-outline","book","courses","content","dino","discuss","speechballoons","dotgrid","download","file-download","edit","media","elmsmedia","play","replay","gear","settings","grades","help","tour","view","visible","hidden","view-off","interact","icor","inbox","letter","info","page","pdf","people","cpr","user","quiz","support","teacher", "instructor"]}]'></iconset-demo></template>
       </demo-snippet>
     </div>
   </body>

@@ -4,6 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/marked-element/marked-element.js";
 
 export { IconsetDemo };
 /**
@@ -21,11 +22,7 @@ class IconsetDemo extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
-  font-size: 14px;
-  color: rgb(97,97,97);
-}
-:host ul {
+<style>:host ul {
   list-style-type: none;
 }
 :host li {
@@ -34,13 +31,38 @@ class IconsetDemo extends PolymerElement {
   margin: 1em 0.5em;
   text-align: center;
 }
-:host li > #icon > div {
+:host #icon > div {
   text-align: center;
 }
-:host li #icon-text {
+:host iron-icon {
+  font-size: 14px;
+  color: rgb(97,97,97);
+  display: inline-block;
+}
+:host #icon-text {
   margin-top: 0.5em;
   font-size: 10px;
   color: black;
+}
+:host .code-container {
+  margin: 0;
+  background-color: var(--google-grey-100,#f5f5f5);
+  border-top: 1px solid #e0e0e0;
+}
+:host code {
+  padding: 20px 40px;
+  display: block;
+  margin: 0;
+  font-size: 13px;
+}
+:host .tag {
+  color: #905;
+}
+:host .attr-name {
+  color: #690;
+}
+:host .attr-value {
+  color: #07a;
 }</style>
 <template is="dom-repeat" items="[[items]]" as="iconset">
 <h1>[[iconset.name]]</h1>
@@ -48,13 +70,16 @@ class IconsetDemo extends PolymerElement {
     <template is="dom-repeat" items="[[iconset.icons]]" as="icon">
         <li>
         <div id="icon">
-            <div id="icon-svg"><iron-icon icon\$="[[iconset.prefix]][[icon]]"></iron-icon></div>
+            <iron-icon icon\$="[[iconset.prefix]][[icon]]"></iron-icon>
             <div id="icon-text">[[iconset.prefix]][[icon]]</div>
         </div>
         </li>
     </template>
 </ul>
-</template>`;
+</template>
+<div class="code-container">
+    <code><span class="tag">&lt;iron-icon</span> <span class="attr-name">icon="<strong><em><span class="attr-value">optional_iconset_name:icon_name</span></em></strong>"</span><span class="tag">&gt;&lt;/iron-icon&gt;</span></code>
+</div>`;
   }
 
   // properties available to the custom element for data binding

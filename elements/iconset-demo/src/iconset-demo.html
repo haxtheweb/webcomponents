@@ -5,10 +5,13 @@
     <template is="dom-repeat" items="[[iconset.icons]]" as="icon">
         <li>
         <div id="icon">
-            <div id="icon-svg"><iron-icon icon\$="[[iconset.prefix]][[icon]]"></iron-icon></div>
+            <iron-icon icon\$="[[iconset.prefix]][[icon]]"></iron-icon>
             <div id="icon-text">[[iconset.prefix]][[icon]]</div>
         </div>
         </li>
     </template>
 </ul>
 </template>
+<div class="code-container">
+    <code><span class="tag">&lt;iron-icon</span> <span class="attr-name">icon="<strong><em><span class="attr-value">optional_iconset_name:icon_name</span></em></strong>"</span><span class="tag">&gt;&lt;/iron-icon&gt;</span></code>
+</div>

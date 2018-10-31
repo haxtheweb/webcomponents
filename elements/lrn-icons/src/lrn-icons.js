@@ -1,9 +1,9 @@
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
 
-$_documentContainer.innerHTML = `<iron-iconset-svg size="30" name="lrn">
+import { html } from "@polymer/polymer/lib/utils/html-tag.js";
+
+const template = html`<iron-iconset-svg size="30" name="lrn">
   <svg>
     <defs>
 
@@ -544,7 +544,7 @@ $_documentContainer.innerHTML = `<iron-iconset-svg size="30" name="lrn">
   </svg>
 </iron-iconset-svg>`;
 
-document.head.appendChild($_documentContainer);
+document.head.appendChild(template.content);
 
 /**
 @license
