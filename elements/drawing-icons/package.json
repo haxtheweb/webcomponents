@@ -41,6 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@polymer/iron-icons": "PolymerElements/iron-icons",
+    "@polymer/iron-iconset": "PolymerElements/iron-iconset",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
