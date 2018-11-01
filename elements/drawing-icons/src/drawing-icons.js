@@ -1,6 +1,16 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
+ *
+ * `drawing-icons` is a iconset for the Material Design Icons collection
+ *
+ * Example:
+ *   <script>import "@lrnwebcomponents/drawing-icons/drawing-icons.js";</script>
+ *   <iron-icon icon="drawing:draw-rect"></iron-icon>
+ *
+ * @group LRN Elements
+ * @pseudoElement drawing-icons
+ * @demo demo/index.html
  */
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-iconset-svg/iron-iconset-svg.js";

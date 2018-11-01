@@ -2,6 +2,9 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  * `md-extra-icons`
+ *
+ * @group LRN Elements
+ * @pseudoElement md-extra-icons
  * @demo demo/index.html
  */
 import "@polymer/iron-icon/iron-icon.js";

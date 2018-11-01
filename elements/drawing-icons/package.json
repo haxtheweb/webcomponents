@@ -16,7 +16,7 @@
       "hax": "src/drawing-icons-hax.json"
     }
   },
-  "version": "0.0.28",
+  "version": "0.0.30",
   "description": "iconset for drawing toolbar buttons",
   "repository": {
     "type": "git",

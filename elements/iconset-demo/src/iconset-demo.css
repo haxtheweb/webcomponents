@@ -6,8 +6,8 @@
 :host .demo-container {
   padding: 20px 40px;
 }
-:host .demo-container:not(:last-of-type) {
-  border-bottom: 1px solid #f5f5f5;
+:host .demo-container .iconset:not(:first-of-type) {
+  border-top: 1px solid #ddd;
 }
 :host ul {
   list-style-type: none;
@@ -19,18 +19,40 @@
   margin: 1em 0.5em;
   text-align: center;
 }
-:host #icon > div {
-  text-align: center;
-}
 :host iron-icon {
   font-size: 14px;
   color: rgb(97,97,97);
   display: inline-block;
 }
+:host .iconset:nth-of-type(9n+2) iron-icon {
+  color: #BE3300;
+}
+:host .iconset:nth-of-type(9n+3) iron-icon {
+  color: #0000B5;
+}
+:host .iconset:nth-of-type(9n+4) iron-icon {
+  color: #750075;
+}
+:host .iconset:nth-of-type(9n+5) iron-icon {
+  color: #AA5D00;
+}
+:host .iconset:nth-of-type(9n+6) iron-icon {
+  color: #DB0A5B;
+}
+:host .iconset:nth-of-type(9n+7) iron-icon {
+  color: #005500;
+}
+:host .iconset:nth-of-type(9n+8) iron-icon {
+  color: #CF000F;
+}
+:host .iconset:nth-of-type(9n) iron-icon {
+  color: #005f8b;
+}
 :host #icon-text {
   margin-top: 0.5em;
   font-size: 10px;
   color: black;
+  text-align: center;
 }
 :host .code-container {
   margin: 0;

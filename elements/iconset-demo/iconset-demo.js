@@ -30,8 +30,8 @@ class IconsetDemo extends PolymerElement {
 :host .demo-container {
   padding: 20px 40px;
 }
-:host .demo-container:not(:last-of-type) {
-  border-bottom: 1px solid #f5f5f5;
+:host .demo-container .iconset:not(:first-of-type) {
+  border-top: 1px solid #ddd;
 }
 :host ul {
   list-style-type: none;
@@ -43,18 +43,40 @@ class IconsetDemo extends PolymerElement {
   margin: 1em 0.5em;
   text-align: center;
 }
-:host #icon > div {
-  text-align: center;
-}
 :host iron-icon {
   font-size: 14px;
   color: rgb(97,97,97);
   display: inline-block;
 }
+:host .iconset:nth-of-type(9n+2) iron-icon {
+  color: #BE3300;
+}
+:host .iconset:nth-of-type(9n+3) iron-icon {
+  color: #0000B5;
+}
+:host .iconset:nth-of-type(9n+4) iron-icon {
+  color: #750075;
+}
+:host .iconset:nth-of-type(9n+5) iron-icon {
+  color: #AA5D00;
+}
+:host .iconset:nth-of-type(9n+6) iron-icon {
+  color: #DB0A5B;
+}
+:host .iconset:nth-of-type(9n+7) iron-icon {
+  color: #005500;
+}
+:host .iconset:nth-of-type(9n+8) iron-icon {
+  color: #CF000F;
+}
+:host .iconset:nth-of-type(9n) iron-icon {
+  color: #005f8b;
+}
 :host #icon-text {
   margin-top: 0.5em;
   font-size: 10px;
   color: black;
+  text-align: center;
 }
 :host .code-container {
   margin: 0;
@@ -77,19 +99,21 @@ class IconsetDemo extends PolymerElement {
   color: #07a;
 }</style>
 <div class="demo-container">
-<template is="dom-repeat" items="[[items]]" as="iconset">
-<p><strong>[[iconset.name]]</strong></p>
-<ul>
-    <template is="dom-repeat" items="[[iconset.icons]]" as="icon">
-        <li>
-        <div id="icon">
-            <iron-icon icon\$="[[iconset.prefix]][[icon]]"></iron-icon>
-            <div id="icon-text">[[iconset.prefix]][[icon]]</div>
+    <template is="dom-repeat" items="[[items]]" as="iconset">
+        <div class="iconset">
+            <p><strong>[[iconset.name]]</strong></p>
+            <ul>
+                <template is="dom-repeat" items="[[iconset.icons]]" as="icon">
+                    <li>
+                    <div id="icon">
+                        <iron-icon icon\$="[[iconset.prefix]][[icon]]"></iron-icon>
+                        <div id="icon-text">[[iconset.prefix]][[icon]]</div>
+                    </div>
+                    </li>
+                </template>
+            </ul>
         </div>
-        </li>
     </template>
-</ul>
-</template>
 </div>
 <div class="code-container">
     <code><span class="tag">&lt;iron-icon</span> <span class="attr-name">icon="<strong><em><span class="attr-value">optional_iconset_name:icon_name</span></em></strong>"</span><span class="tag">&gt;&lt;/iron-icon&gt;</span></code>
@@ -141,10 +165,12 @@ class IconsetDemo extends PolymerElement {
   _getIconsFromNodeList() {
     let set = document.head.querySelectorAll("iron-iconset-svg"),
       items = [];
+    console.log(set);
     for (let i = 0; i < set.length; i++) {
       let setName = set[i].getAttribute("name"),
-        g = set[i].querySelectorAll("svg g"),
+        g = set[i].querySelectorAll("svg > defs > g, svg > g"),
         icons = [];
+      console.log(g);
       for (let j = 0; j < g.length; j++) {
         icons.push(g[j].getAttribute("id"));
       }

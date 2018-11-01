@@ -46,10 +46,12 @@ class IconsetDemo extends PolymerElement {
   _getIconsFromNodeList() {
     let set = document.head.querySelectorAll("iron-iconset-svg"),
       items = [];
+    console.log(set);
     for (let i = 0; i < set.length; i++) {
       let setName = set[i].getAttribute("name"),
-        g = set[i].querySelectorAll("svg g"),
+        g = set[i].querySelectorAll("svg > defs > g, svg > g"),
         icons = [];
+      console.log(g);
       for (let j = 0; j < g.length; j++) {
         icons.push(g[j].getAttribute("id"));
       }

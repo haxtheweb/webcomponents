@@ -7,6 +7,7 @@
  *   <link rel="import" href="mdi-logo-iconset-svg.html">
  *   <iron-icon icon="mdi-logo:polymer"></iron-icon>
  *
+ * @group LRN Elements
  * @pseudoElement mdi-iconset-svg
  * @demo demo/index.html
  */
