@@ -44,19 +44,19 @@ Polymer({
         background-color: var(--a11y-media-transcript-bg-color);
         transition: color 0.25s, background-color 0.25s;
       }
-      :host[hide-timestamps] {
+      :host([hide-timestamps]) {
         display: inline;
       }
-      :host:not([active]):not([disabled]):active,
-      :host:not([active]):not([disabled]):focus,
-      :host:not([active]):not([disabled]):hover {
+      :host(:not([active]):not([disabled]):active),
+      :host(:not([active]):not([disabled]):focus),
+      :host(:not([active]):not([disabled]):hover) {
         cursor: pointer;
         color: var(--a11y-media-transcript-focused-cue-color);
         background-color: var(--a11y-media-transcript-focused-cue-bg-color);
         outline: 1px dotted var(--a11y-media-transcript-focused-cue-color);
         @apply --a11y-media-transcript-focused-cue;
       }
-      :host[active] {
+      :host([active]) {
         color: var(--a11y-media-transcript-active-cue-color);
         background-color: var(--a11y-media-transcript-active-cue-bg-color);
         @apply --a11y-media-transcript-active-cue;
@@ -66,7 +66,7 @@ Polymer({
         width: 100%;
         line-height: 200%;
       }
-      :host[hide-timestamps] #text {
+      :host([hide-timestamps]) #text {
         display: inline;
       }
       :host #time {
@@ -76,7 +76,7 @@ Polymer({
         white-space: nowrap;
         font-family: monospace;
       }
-      :host[hide-timestamps] #time {
+      :host([hide-timestamps]) #time {
         display: none;
       }
       :host simple-search-content {
@@ -90,10 +90,10 @@ Polymer({
         };
       }
       @media print {
-        :host, :host[active],
-        :host:not([active]):not([disabled]):active,
-        :host:not([active]):not([disabled]):focus,
-        :host:not([active]):not([disabled]):hover {
+        :host, :host([active]),
+        :host(:not([active]):not([disabled]):active),
+        :host(:not([active]):not([disabled]):focus),
+        :host(:not([active]):not([disabled]):hover) {
           color: #000000;
           background-color: #ffffff;
         }

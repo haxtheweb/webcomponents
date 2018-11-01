@@ -119,7 +119,7 @@ Polymer({
         background-color: var(--simple-colors-background2);
         outline: 1px solid var(--simple-colors-background3);
       }
-      :host[dark] {  
+      :host([dark]) {  
         outline: 1px solid var(--simple-colors-background1);
       }
       :host #outerplayer, :host #outerplayer * {
@@ -191,7 +191,7 @@ Polymer({
         align-items: stretch;
         position: relative;
       }
-      :host[no-height] #sources {
+      :host([no-height]) #sources {
         display: none;
       }
       :host #controls,
@@ -217,19 +217,19 @@ Polymer({
         height: 100%;
         transition: font-size 0.25s;
       }
-      :host[responsive-size*="lg"] #customcc {
+      :host([responsive-size*="lg"]) #customcc {
         font-size: 14px;
       }
-      :host[responsive-size*="md"] #customcc {
+      :host([responsive-size*="md"]) #customcc {
         font-size: 14px;
       }
-      :host[responsive-size*="sm"] #customcc {
+      :host([responsive-size*="sm"]) #customcc {
         font-size: 12px;
       }
-      :host[responsive-size*="xs"] #customcc {
+      :host([responsive-size*="xs"]) #customcc {
         font-size: 10px;
       }
-      :host[sticky]:not([sticky-corner="none"]) #customcc {
+      :host([sticky]:not([sticky-corner="none"])) #customcc {
         display: none;
       }
       :host #customcctxt {
@@ -280,7 +280,7 @@ Polymer({
         :host #printthumb {
           display: none;
         }
-        :host[flex-layout]:not([responsive-size*="s"]) {
+        :host([flex-layout]:not([responsive-size*="s"])) {
           display: inline-flex;
           align-items: stretch;
           outline: 1px solid;
@@ -289,13 +289,13 @@ Polymer({
           outline-color: var(--simple-colors-background3);
           padding: 0;
         }
-        :host[dark][flex-layout]:not([responsive-size*="s"]) {
+        :host([dark][flex-layout]:not([responsive-size*="s"])) {
           outline-color: var(--simple-colors-background1);
         }
         :host > div {
           transition: all 0.5s;
         }
-        :host[sticky]:not([sticky-corner="none"]) #player {
+        :host([sticky]:not([sticky-corner="none"])) #player {
           position: fixed;
           top: 5px;
           right: 5px;
@@ -333,7 +333,7 @@ Polymer({
         :host #transcript {
           padding-top: 48px;
         }
-        :host:not([no-height]):not([stacked-layout]):not([responsive-size*="s"]) #transcript {
+        :host(:not([no-height]):not([stacked-layout]):not([responsive-size*="s"])) #transcript {
           position: absolute;
           top: 0; 
           left: 0;
@@ -341,7 +341,7 @@ Polymer({
           bottom: 0;
           overflow-y: scroll;
         }
-        :host:not([no-height]):not([stacked-layout]):not([responsive-size*="s"]) #player.totop {
+        :host(:not([no-height]):not([stacked-layout]):not([responsive-size*="s"])) #player.totop {
           position: absolute;
           top:0;
           left: 0;
@@ -390,7 +390,7 @@ Polymer({
         :host #printthumb:not([src]) {
           display: none;
         }
-        :host:not([thumbnail-src]) #sources, 
+        :host(:not([thumbnail-src])) #sources, 
         :host #slider, 
         :host #loader, 
         :host #youtube,

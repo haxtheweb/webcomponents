@@ -152,17 +152,17 @@ $_documentContainer.innerHTML = `<dom-module id="editable-table-styles">
           width: 100%;
         }
         @media screen {
-          :host[responsive-size="xs"]:not([scroll]) .table[transition] {
+          :host([responsive-size="xs"]:not([scroll])) .table[transition] {
             opacity: 0;
             transition: opacity 5s;
           }
           :host[scroll] #column, 
-          :host:not([responsive-size="xs"]) #column, 
-          :host[responsive-size="xs"]:not([scroll]) .table .th[xs-hidden],
-          :host[responsive-size="xs"]:not([scroll]) .table .td[xs-hidden],
-          :host[responsive-size="xs"]:not([scroll]) .table[default-xs-display] .th:nth-of-type(n+3), 
-          :host[responsive-size="xs"]:not([scroll]) .table[default-xs-display][row-header] .td:nth-of-type(n+3), 
-          :host[responsive-size="xs"]:not([scroll]) .table[default-xs-display]:not([row-header]) .td:nth-of-type(n+2) {
+          :host(:not([responsive-size="xs"])) #column, 
+          :host([responsive-size="xs"]:not([scroll])) .table .th[xs-hidden],
+          :host([responsive-size="xs"]:not([scroll])) .table .td[xs-hidden],
+          :host([responsive-size="xs"]:not([scroll])) .table[default-xs-display] .th:nth-of-type(n+3), 
+          :host([responsive-size="xs"]:not([scroll])) .table[default-xs-display][row-header] .td:nth-of-type(n+3), 
+          :host([responsive-size="xs"]:not([scroll])) .table[default-xs-display]:not([row-header]) .td:nth-of-type(n+2) {
             display: none;
           }  
         }

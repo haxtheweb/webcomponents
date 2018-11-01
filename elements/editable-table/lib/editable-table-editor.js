@@ -76,7 +76,7 @@ Polymer({
           padding-top: 0; 
         };
       }
-      :host[responsive-size="xs"] editable-table-editor-settings {
+      :host([responsive-size="xs"]) editable-table-editor-settings {
         padding: 3px 0;
       }
       :host .filter-icon,

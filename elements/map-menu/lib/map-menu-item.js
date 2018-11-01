@@ -10,7 +10,7 @@ Polymer({
         --map-menu-item-height: 16px;
       }
 
-      :host[active] {
+      :host([active]) {
         background: var(--map-menu-active-color);
       }
 

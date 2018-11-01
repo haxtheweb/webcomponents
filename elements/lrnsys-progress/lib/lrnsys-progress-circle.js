@@ -26,7 +26,7 @@ Polymer({
       :host[status='available'] .circle-wrapper {
         box-shadow: none;
       }
-      :host[active] .circle-wrapper {
+      :host([active]) .circle-wrapper {
         box-shadow: 0px 0px 0px .1em var(--google-grey-500);
       }
       .circle-wrapper {
@@ -112,8 +112,8 @@ Polymer({
       .complete .activeIcon {
         color: white;
       }
-      :host[active] .complete .activeIcon,
-      :host[active] .finished .activeIcon {
+      :host([active]) .complete .activeIcon,
+      :host([active]) .finished .activeIcon {
         color: black;
       }
       .complete,
@@ -121,7 +121,7 @@ Polymer({
         background-color: var(--lrnsys-progress-container-color, --paper-green-500);
         color: white;
       }
-      :host[active] circle-progress {
+      :host([active]) circle-progress {
         background-color: white;
         color: black;
       }

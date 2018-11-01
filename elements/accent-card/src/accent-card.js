@@ -27,12 +27,12 @@ Polymer({
         --accent-card-flat: none;
         @apply --accent-card;
       }
-      :host[dark] {
+      :host([dark]) {
         --accent-card-color: var(--simple-colors-foreground1, #fff);
         --accent-card-border-color: var(--simple-colors-accent-foreground5, #fff);
         --accent-card-footer-border-color: var(--simple-colors-background5, #666);
       }
-      :host[accent-background] {
+      :host([accent-background]) {
         --accent-card-background-color: var(--simple-colors-accent-background1, #fff);
         --accent-card-footer-border-color: var(--accent-card-border-color);
       }
@@ -45,7 +45,7 @@ Polymer({
         background-color: var(--accent-card-background-color);
         @apply --accent-card-inner;
       }
-      :host[horizontal] section {
+      :host([horizontal]) section {
         display: flex;
         justify-content: space-between;
         align-items: stretch;
@@ -62,16 +62,16 @@ Polymer({
       }
       :host section[aria-role]:not([disabled]):focus,
       :host section[aria-role]:not([disabled]):hover,
-      :host[flat] section {
+      :host([flat]) section {
         box-shadow: var(--accent-card-flat);
       }
-      :host[flat]:not([accent-background]) section {
+      :host([flat]:not([accent-background])) section {
         border: 1px solid var(--accent-card-footer-border-color);
       }
-      :host:not([horizontal]):not([no-border]) section {
+      :host(:not([horizontal]):not([no-border])) section {
         border-top: 4px solid var(--accent-card-border-color);
       }
-      :host[horizontal]:not([no-border]) section {
+      :host([horizontal]:not([no-border])) section {
         border-left: 4px solid var(--accent-card-border-color);
       }
       :host .body {
@@ -83,11 +83,11 @@ Polymer({
         background-position-x: var(--accent-card-image-x, center); 
         background-position-y: var(--accent-card-image-y, center);
       }
-      :host:not([horizontal]) .image {
+      :host(:not([horizontal])) .image {
         height: var(--accent-card-image-height, 100px);
         @apply --accent-card-vertical-image;
       }
-      :host[horizontal] .image {
+      :host([horizontal]) .image {
         width: var(--accent-card-image-width, 100px);;
         @apply --accent-card-horizontal-image;
       }

@@ -38,7 +38,7 @@ Polymer({
         background-color: var(--a11y-media-transcript-bg-color);
       }
 
-      :host[hidden] {
+      :host([hidden]) {
         display: none;
       }
       :host #inner {
