@@ -22,8 +22,20 @@ class IconsetDemo extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host ul {
+<style>:host {
+  display: block;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 40px;
+}
+:host .demo-container {
+  padding: 20px 40px;
+}
+:host .demo-container:not(:last-of-type) {
+  border-bottom: 1px solid #f5f5f5;
+}
+:host ul {
   list-style-type: none;
+  padding: 0;
 }
 :host li {
   display: inline-block;
@@ -64,8 +76,9 @@ class IconsetDemo extends PolymerElement {
 :host .attr-value {
   color: #07a;
 }</style>
+<div class="demo-container">
 <template is="dom-repeat" items="[[items]]" as="iconset">
-<h1>[[iconset.name]]</h1>
+<p><strong>[[iconset.name]]</strong></p>
 <ul>
     <template is="dom-repeat" items="[[iconset.icons]]" as="icon">
         <li>
@@ -77,6 +90,7 @@ class IconsetDemo extends PolymerElement {
     </template>
 </ul>
 </template>
+</div>
 <div class="code-container">
     <code><span class="tag">&lt;iron-icon</span> <span class="attr-name">icon="<strong><em><span class="attr-value">optional_iconset_name:icon_name</span></em></strong>"</span><span class="tag">&gt;&lt;/iron-icon&gt;</span></code>
 </div>`;

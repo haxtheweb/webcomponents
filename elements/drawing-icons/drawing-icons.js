@@ -33,8 +33,8 @@ const template = html`<iron-iconset-svg size="24" name="drawing">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <defs>
       <g id="draw-ellip">
-        <ellipse cx="12" cy="11.9" rx="10.1" ry="7.1" opacity=".3" stroke-width="2" stroke-miterlimit="10"></ellipse>
-        <ellipse cx="12" cy="11.9" rx="10.1" ry="7.1" stroke="#000" fill="none" stroke-width="2" stroke-miterlimit="10"></ellipse>
+        <ellipse cx="11.23" cy="8" rx="10.1" ry="7.1" style="opacity: 0.3;isolation: isolate"/>
+        <path d="M12,3.94C5.77,3.94.73,7.52.73,11.94s5,8,11.25,8,11.25-3.59,11.25-8S18.19,3.94,12,3.94ZM12,18c-5,0-9.13-2.72-9.13-6.06S6.94,5.87,12,5.87s9.12,2.72,9.12,6.07S17,18,12,18Z" transform="translate(-0.73 -3.94)" style="isolation: isolate"/>
       </g>
     </defs>
   </svg>
@@ -44,8 +44,8 @@ const template = html`<iron-iconset-svg size="24" name="drawing">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <defs>
       <g id="draw-rect">
-        <path opacity=".3" d="M3.1 6h18v12.1h-18z" stroke-width="2" stroke-miterlimit="10"></path>
-        <path fill="none" d="M3.1 6h18v12.1h-18z" stroke="#000" stroke-width="2" stroke-miterlimit="10"></path>
+      <path d="M3.1,6h18V18.1H3.1Z" transform="translate(-2.08 -5)" style="opacity: 0.3;isolation: isolate"/>
+      <path d="M2.08,5V19.17h20V5Zm18,12.08H4.1v-10h16Z" transform="translate(-2.08 -5)" style="isolation: isolate"/>
       </g>
     </defs>
   </svg>
@@ -55,8 +55,8 @@ const template = html`<iron-iconset-svg size="24" name="drawing">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <defs>
       <g id="draw-poly">
-        <path opacity=".3" d="M2.7 7.3l17.6-2.8-4.1 16.6-11.6-5z" stroke-width="2" stroke-miterlimit="10"></path>
-        <path fill="none" stroke="#000" stroke-width="2" stroke-miterlimit="10" d="M2.7 7.3l17.6-2.8-4.1 16.6-11.6-5z"></path>
+        <path d="M2.7,7.31,20.3,4.5,16.2,21.14l-11.6-5Z" transform="translate(-1.5 -3.25)" style="opacity: 0.3;isolation: isolate"/>
+        <path d="M1.5,6.5,3.67,16.73,16.9,22.54,21.58,3.25Zm14,13.25-10-4.23L3.83,8.08,19,5.71Z" transform="translate(-1.5 -3.25)" style="isolation: isolate"/>
       </g>
     </defs>
   </svg>

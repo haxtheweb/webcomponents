@@ -1,6 +1,6 @@
-
+<div class="demo-container">
 <template is="dom-repeat" items="[[items]]" as="iconset">
-<h1>[[iconset.name]]</h1>
+<p><strong>[[iconset.name]]</strong></p>
 <ul>
     <template is="dom-repeat" items="[[iconset.icons]]" as="icon">
         <li>
@@ -12,6 +12,7 @@
     </template>
 </ul>
 </template>
+</div>
 <div class="code-container">
     <code><span class="tag">&lt;iron-icon</span> <span class="attr-name">icon="<strong><em><span class="attr-value">optional_iconset_name:icon_name</span></em></strong>"</span><span class="tag">&gt;&lt;/iron-icon&gt;</span></code>
 </div>

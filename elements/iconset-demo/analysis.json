@@ -611,11 +611,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 88,
+              "line": 102,
               "column": 2
             },
             "end": {
-              "line": 94,
+              "line": 108,
               "column": 3
             }
           },
@@ -633,11 +633,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 95,
+              "line": 109,
               "column": 2
             },
             "end": {
-              "line": 101,
+              "line": 115,
               "column": 3
             }
           },
@@ -2737,11 +2737,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 116,
+              "line": 130,
               "column": 2
             },
             "end": {
-              "line": 118,
+              "line": 132,
               "column": 3
             }
           },
@@ -2870,11 +2870,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 123,
+              "line": 137,
               "column": 2
             },
             "end": {
-              "line": 143,
+              "line": 157,
               "column": 3
             }
           },
@@ -3834,7 +3834,7 @@
           "column": 0
         },
         "end": {
-          "line": 144,
+          "line": 158,
           "column": 1
         }
       },
@@ -3847,11 +3847,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 88,
+              "line": 102,
               "column": 2
             },
             "end": {
-              "line": 94,
+              "line": 108,
               "column": 3
             }
           },
@@ -3862,11 +3862,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 95,
+              "line": 109,
               "column": 2
             },
             "end": {
-              "line": 101,
+              "line": 115,
               "column": 3
             }
           },
