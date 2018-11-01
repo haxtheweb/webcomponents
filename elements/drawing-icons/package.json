@@ -40,12 +40,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/iconset-demo": "^0.0.30",
     "@polymer/iron-icons": "PolymerElements/iron-icons",
     "@polymer/iron-iconset": "PolymerElements/iron-iconset",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
+    "@lrnwebcomponents/iconset-demo": "^0.0.30",
     "@lrnwebcomponents/deduping-fix": "0.0.30",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
