@@ -26,10 +26,10 @@ Polymer({
         transition: all 1s linear;
         visibility: hidden;
       }
-      :host[loading] #slot {
+      :host([loading]) #slot {
         opacity: .8;
       }
-      :host[theme-loaded] #slot {
+      :host([theme-loaded]) #slot {
         opacity: 1;
         visibility: visible;
       }

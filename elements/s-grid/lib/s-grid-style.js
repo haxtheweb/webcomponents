@@ -33,8 +33,8 @@ $_documentContainer.innerHTML = `<dom-module id="s-grid-style">
         position: relative;
       }
 
-      .s-grid[has-aspect-ratio] > *::before,
-      :host ::content .s-grid[has-aspect-ratio] > *::before {
+      .s-grid[has-aspect-ratio] > *:before,
+      :host ::content .s-grid[has-aspect-ratio] > *:before {
         display: block;
         content: "";
       }

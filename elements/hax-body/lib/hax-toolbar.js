@@ -28,8 +28,8 @@ Polymer({
         font-family: "Roboto", sans-serif;
         pointer-events: all;
       }
-      :host:hover,
-      :host[selected] {
+      :host(:hover),
+      :host([selected]) {
         opacity: 1;
       }
       .close-cap {

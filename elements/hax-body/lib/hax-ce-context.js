@@ -58,7 +58,7 @@ Polymer({
         opacity: .4;
         transition: .6s all ease;
       }
-      :host:hover .human-name-inner {
+      :host(:hover) .human-name-inner {
         opacity: 1;
       }
       :host.hax-context-pin-top hax-toolbar {

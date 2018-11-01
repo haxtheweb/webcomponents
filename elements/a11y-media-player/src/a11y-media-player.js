@@ -307,14 +307,14 @@ Polymer({
           border-radius: 0.2em; 
           border-color: var(--a11y-media-bg-color);
         }
-        :host[dark][sticky]:not([sticky-corner="none"]) #player {
+        :host([dark][sticky]:not([sticky-corner="none"])) #player {
           border-color: var(--a11y-media-bg-color);
         }
-        :host[sticky][sticky-corner="top-left"] #player {
+        :host([sticky][sticky-corner="top-left"]) #player {
           right: unset;
           left: 5px;
         }
-        :host[flex-layout]:not([responsive-size*="s"]) > div {
+        :host([flex-layout]:not([responsive-size*="s"])) > div {
           width: 50%;
           flex-grow: 1;
           flex-shrink: 1;
@@ -323,11 +323,11 @@ Polymer({
           position: relative;
           height: 100%;
         }
-        :host[hide-transcript] #outerplayer {
+        :host([hide-transcript]) #outerplayer {
           min-width: 50%;
           max-width: 100%;
         }
-        :host[hide-transcript] #outertranscript {
+        :host([hide-transcript]) #outertranscript {
           display: none;
         }
         :host #transcript {
@@ -356,16 +356,16 @@ Polymer({
           width: 100%;
           display: flex;
         }
-        :host[sticky][sticky-corner="bottom-left"] #player {
+        :host([sticky][sticky-corner="bottom-left"]) #player {
           top: unset;
           right: unset;
           bottom: 5px;
         }
-        :host[sticky][sticky-corner="bottom-right"] #player {
+        :host([sticky][sticky-corner="bottom-right"]) #player {
           top: unset;
           bottom: 5px;
         }
-        :host[sticky]:not([sticky-corner="none"]):not([no-height]):not([stacked-layout]):not([responsive-size*="s"]) #controls {
+        :host([sticky]:not([sticky-corner="none"]):not([no-height]):not([stacked-layout]):not([responsive-size*="s"])) #controls {
           display: none;
         }
         :host .print-only {
@@ -378,11 +378,11 @@ Polymer({
       }
 
       @media print {
-        :host, :host[dark] {
+        :host, :host([dark]) {
           outline: 1px solid #aaaaaa; 
           background-color: #ffffff;
         }
-        :host[sticky]:not([sticky-corner="none"]) #outerplayer {
+        :host([sticky]:not([sticky-corner="none"])) #outerplayer {
           height: unset !important;
         }
         :host .screen-only,

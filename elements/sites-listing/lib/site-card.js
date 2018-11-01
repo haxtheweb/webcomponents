@@ -16,15 +16,15 @@ Polymer({
         display: inline-flex;
         min-width: 250px;
       }
-      :host:focus {
+      :host(:focus) {
         outline: none;
       }
     
-      :host[size="micro"] {
+      :host([size="micro"]) {
         transform: scale(.5);
       }
     
-      :host[size="small"] {
+      :host([size="small"]) {
         transform: scale(.8);
       }
     

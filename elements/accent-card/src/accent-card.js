@@ -103,7 +103,7 @@ Polymer({
       :host section[aria-role]:not([disabled]):hover .heading {
         @apply --accent-card-focus-heading;
       }
-      :host[accent-heading][accent-color] .heading {
+      :host([accent-heading][accent-color]) .heading {
         color: var(--accent-card-heading-color);
       }
       :host .subheading {

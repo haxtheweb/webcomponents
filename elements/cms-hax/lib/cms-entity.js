@@ -28,14 +28,14 @@ $_documentContainer.innerHTML = `<dom-module id="cms-entity">
         visibility: visible;
         opacity: 1;
       }
-      :host[loading] {
+      :host([loading]) {
         text-align: center;
       }
-      :host[loading] paper-spinner {
+      :host([loading]) paper-spinner {
         visibility: visible;
         opacity: 1;
       }
-      :host[loading] #replacementcontent {
+      :host([loading]) #replacementcontent {
         opacity: 0;
         visibility: hidden;
       }

@@ -16,14 +16,14 @@ Polymer({
           color var(--lrnsys-progress-circle-transition, 0.5s) ease-in-out,
           background-color var(--lrnsys-progress-circle-transition, .5s) ease-in-out;
       }
-      :host[status='complete'] .circle-wrapper {
+      :host([status='complete']) .circle-wrapper {
         --paper-button-ink-color: var(--lrnsys-progress-complete-color, --paper-green-500);
         box-shadow: 0px 0px 0px .1em var(--lrnsys-progress-complete-color, --paper-green-900);
       }
-      :host[status='disabled'] .circle-wrapper {
+      :host([status='disabled']) .circle-wrapper {
         box-shadow: none;
       }
-      :host[status='available'] .circle-wrapper {
+      :host([status='available']) .circle-wrapper {
         box-shadow: none;
       }
       :host([active]) .circle-wrapper {
@@ -148,7 +148,7 @@ Polymer({
         height: 2.5em;
         width: 100%;
       }
-      :host[list-view] .button {
+      :host([list-view]) .button {
         margin: 0;
         padding: 0;
         display: block;

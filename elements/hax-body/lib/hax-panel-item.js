@@ -45,10 +45,10 @@ Polymer({
         width: 80px;
         min-width: unset;
       }
-      :host[edged="left"] paper-button {
+      :host([edged="left"]) paper-button {
         border-bottom-right-radius: 16px;
       }
-      :host[edged="right"] paper-button {
+      :host([edged="right"]) paper-button {
         border-bottom-left-radius: 16px;
       }
       paper-button .label {

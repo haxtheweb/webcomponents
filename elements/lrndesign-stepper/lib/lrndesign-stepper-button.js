@@ -27,16 +27,16 @@ Polymer({
         background-color: transparent;
       }
 
-      :host[location="start"] .bottom-line {
+      :host([location="start"]) .bottom-line {
         background-color: var(--lrndesign-icon-button-color);
       }
 
-      :host[location="middle"] .top-line,
-      :host[location="middle"] .bottom-line {
+      :host([location="middle"]) .top-line,
+      :host([location="middle"]) .bottom-line {
         background-color: var(--lrndesign-icon-button-color);
       }
 
-      :host[location="end"] .top-line {
+      :host([location="end"]) .top-line {
         background-color: var(--lrndesign-icon-button-color);
       }
 
