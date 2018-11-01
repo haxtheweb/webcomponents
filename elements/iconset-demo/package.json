@@ -42,7 +42,11 @@
   "dependencies": {
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/marked-element": "^3.0.1",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.0.5",
+    "@lrnwebcomponents/drawing-icons": "^0.0.30",
+    "@lrnwebcomponents/lrn-icons": "^0.0.30",
+    "@lrnwebcomponents/md-extra-icons": "^0.0.30",
+    "@lrnwebcomponents/mdi-iconset-svg": "^0.0.30"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

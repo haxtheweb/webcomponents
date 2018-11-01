@@ -32,15 +32,51 @@ class IconsetDemo extends PolymerElement {
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
+    this._getIcons(this.iconsets);
     super.connectedCallback();
   }
   /**
    * life cycle, element is removed from the DOM
    */
   //disconnectedCallback() {}
-  _getIcons(iconsets) {
-    let set = iconsets !== null ? JSON.parse(iconsets) : [],
+
+  /**
+   * gets icon data based on a query of iron-iconset-svg
+   */
+  _getIconsFromNodeList() {
+    let set = document.head.querySelectorAll("iron-iconset-svg"),
       items = [];
+    for (let i = 0; i < set.length; i++) {
+      let setName = set[i].getAttribute("name"),
+        g = set[i].querySelectorAll("svg g"),
+        icons = [];
+      for (let j = 0; j < g.length; j++) {
+        icons.push(g[j].getAttribute("id"));
+      }
+      items.push({
+        name:
+          setName !== undefined && setName !== null ? setName + " " : "Icons",
+        prefix: setName !== undefined && setName !== null ? setName + ":" : "",
+        icons: icons !== undefined && icons !== null ? icons : []
+      });
+    }
+    return items;
+  }
+
+  /**
+   * life cycle, element is removed from the DOM
+   */
+  _getIcons(iconsets) {
+    return iconsets !== null
+      ? this._getIconsFromObject(JSON.parse(iconsets))
+      : this._getIconsFromNodeList();
+  }
+
+  /**
+   * life cycle, element is removed from the DOM
+   */
+  _getIconsFromObject(set) {
+    let items = [];
     for (let i = 0; i < set.length; i++) {
       items.push({
         name:

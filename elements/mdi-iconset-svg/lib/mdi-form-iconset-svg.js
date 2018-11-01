@@ -1,7 +1,18 @@
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
+/**
+ * Material design: [Icons](https://material.io/guidelines/style/icons.html)
+ * `mdi-form-iconset-svg` is a iconset for the Material Design Icons collection with the "form" tag
+ *
+ * Example:
+ *   <iron-icon icon="mdi-form:checked-marked-circle-outline"></iron-icon>
+ *
+ * @demo demo/index.html
+ */
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
 
-$_documentContainer.innerHTML = `<iron-iconset-svg name="mdi-form" size="24">
+import { html } from "@polymer/polymer/lib/utils/html-tag.js";
+
+const template = html`<iron-iconset-svg name="mdi-form" size="24">
   <svg>
 
     <g id="check">
@@ -55,16 +66,4 @@ $_documentContainer.innerHTML = `<iron-iconset-svg name="mdi-form" size="24">
   </svg>
 </iron-iconset-svg>`;
 
-document.head.appendChild($_documentContainer);
-
-/**
-Material design: [Icons](https://material.io/guidelines/style/icons.html)
-
-`mdi-form-iconset-svg` is a iconset for the Material Design Icons collection with the "form" tag
-
-Example:
-
-    <iron-icon icon="mdi-form:checked-marked-circle-outline"></iron-icon>
-
-@demo demo/index.html
-*/
+document.head.appendChild(template.content);

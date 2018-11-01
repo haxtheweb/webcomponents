@@ -2741,7 +2741,7 @@
               "column": 2
             },
             "end": {
-              "line": 132,
+              "line": 133,
               "column": 3
             }
           },
@@ -2865,16 +2865,33 @@
           "inheritedFrom": "ElementMixin"
         },
         {
-          "name": "_getIcons",
-          "description": "disconnectedCallback() {}",
+          "name": "_getIconsFromNodeList",
+          "description": "gets icon data based on a query of iron-iconset-svg",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 137,
+              "line": 142,
               "column": 2
             },
             "end": {
-              "line": 157,
+              "line": 156,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_getIcons",
+          "description": "life cycle, element is removed from the DOM",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 161,
+              "column": 2
+            },
+            "end": {
+              "line": 163,
               "column": 3
             }
           },
@@ -2882,6 +2899,27 @@
           "params": [
             {
               "name": "iconsets"
+            }
+          ]
+        },
+        {
+          "name": "_getIconsFromObject",
+          "description": "life cycle, element is removed from the DOM",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 168,
+              "column": 2
+            },
+            "end": {
+              "line": 187,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "set"
             }
           ]
         }
@@ -3834,7 +3872,7 @@
           "column": 0
         },
         "end": {
-          "line": 158,
+          "line": 188,
           "column": 1
         }
       },

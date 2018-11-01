@@ -9,10 +9,17 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../mdi-iconset-svg.js';
+      import '@lrnwebcomponents/iconset-demo/iconset-demo.js';
     </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
-    <custom-style>
+    <div class="vertical-section-container centered">
+      <h3>Basic md-extra-icons demo</h3>
+      <iconset-demo></iconset-demo>
+    </div>
+  </body>
+    <!--custom-style>
       <style is="custom-style">
         iron-icon {
             transition: all 0.2s;
@@ -83,5 +90,5 @@
       scope.parentNode.getIconsets = scope.getIconsets;
       scope.parentNode.getIconNames = scope.getIconNames;
     </script>
-  </body>
+  </body-->
 </html>
