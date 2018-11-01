@@ -9,21 +9,14 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../md-extra-icons.js';
+      import '@lrnwebcomponents/iconset-demo/iconset-demo.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
-<div class="vertical-section-container centered">
-  <h3>Basic md-extra-icons demo</h3>
-  <demo-snippet>
-    <template>
-      <iron-icon icon="mdextra:subscript"></iron-icon>
-      <iron-icon icon="mdextra:superscript"></iron-icon>
-      <iron-icon icon="mdextra:hexagon"></iron-icon>
-      <iron-icon icon="mdextra:hexagon-multiple"></iron-icon>
-      <iron-icon icon="mdextra:hexagon-outline"></iron-icon>
-    </template>
-  </demo-snippet>
-</div>
+    <div class="vertical-section-container centered">
+      <h3>Basic md-extra-icons demo</h3>
+      <iconset-demo iconsets='[{"name": "mdextra","icons": ["subscript","superscript","hexagon","hexagon-multiple","hexagon-outline"]}]'></iconset-demo>
+    </div>
   </body>
 </html>
