@@ -26,7 +26,7 @@ Polymer({
         --lrnsys-dialog-toolbar-background-color: var(--simple-colors-background3);
         --lrnsys-dialog-secondary-background-color: rgba(255,255,255, 0.7);
       }
-      :host[dark] {
+      :host([dark]) {
         --lrnsys-dialog-toolbar-background-color: var(--simple-colors-background1);
         --lrnsys-dialog-background-color: var(--simple-colors-background3);
         --lrnsys-dialog-secondary-background-color: rgba(0, 0, 0, 0.7);

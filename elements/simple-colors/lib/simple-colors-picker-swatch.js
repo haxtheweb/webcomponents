@@ -9,29 +9,29 @@ Polymer({
         border-radius: 0;
         box-sizing: content-box;
       }
-      :host[disabled] {
+      :host([disabled]) {
         opacity: 0.5;
       }
-      :host:not([disabled]):focus,
-      :host:not([disabled]):hover {
+      :host(:not([disabled]):focus),
+      :host(:not([disabled]):hover) {
         cursor: pointer;
       }
-      :host[disabled]:focus,
-      :host[disabled]:hover {
+      :host([disabled]:focus),
+      :host([disabled]:hover) {
         cursor: not-allowed;
       }
-      :host[selected] {
+      :host([selected]) {
         outline: 1px solid white;
       }
-      :host[dark][selected]{
+      :host([dark][selected]){
         outline: 1px solid black;
       }
-      :host:focus,
-      :host:hover {
+      :host(:focus),
+      :host(:hover) {
         outline: 1px dotted white;
       }
-      :host[dark]:focus,
-      :host[dark]:hover {
+      :host([dark]:focus),
+      :host([dark]:hover) {
         outline: 1px dotted black;
       }
     </style>

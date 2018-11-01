@@ -86,7 +86,7 @@ Polymer({
         width: var(--simple-colors-picker-preview-size, 20px);
         height: var(--simple-colors-picker-preview-size, 20px);
       }
-      :host:not([collapsed]) #icon {
+      :host(:not([collapsed])) #icon {
         transform: rotate(-90deg);
         transition: transform 0.25s;
       }

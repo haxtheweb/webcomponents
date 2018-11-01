@@ -46,7 +46,7 @@ Polymer({
         background-color: var(--lrndesign-gallery-background-color);
         border: 1px solid var(--lrndesign-gallery-border-color);
       }
-      :host:not([responsive-size="xs"]):not([extra-wide]) #gallery-item {
+      :host(:not([responsive-size="xs"]):not([extra-wide])) #gallery-item {
         display: flex;
         justify-content: space-between;
         align-items: stretch;
@@ -95,7 +95,7 @@ Polymer({
         overflow-y: scroll;
       }
       :host([responsive-size="xs"]) #details,
-      :host[extra-wide] #details {
+      :host([extra-wide]) #details {
         margin-top: -4px;
         border-top: 4px solid var(--lrndesign-gallery-focus-color);
       }

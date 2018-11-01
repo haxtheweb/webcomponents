@@ -14245,11 +14245,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 77,
+              "line": 78,
               "column": 4
             },
             "end": {
-              "line": 80,
+              "line": 81,
               "column": 5
             }
           },
@@ -14268,11 +14268,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 86,
+              "line": 87,
               "column": 2
             },
             "end": {
-              "line": 88,
+              "line": 89,
               "column": 3
             }
           },
@@ -14288,11 +14288,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 94,
               "column": 2
             },
             "end": {
-              "line": 95,
+              "line": 96,
               "column": 3
             }
           },
@@ -14308,11 +14308,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 100,
+              "line": 101,
               "column": 2
             },
             "end": {
-              "line": 103,
+              "line": 104,
               "column": 3
             }
           },
@@ -14328,11 +14328,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 109,
               "column": 2
             },
             "end": {
-              "line": 110,
+              "line": 111,
               "column": 3
             }
           },
@@ -14348,11 +14348,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 115,
+              "line": 116,
               "column": 2
             },
             "end": {
-              "line": 121,
+              "line": 122,
               "column": 3
             }
           },
@@ -14373,11 +14373,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 16,
+          "line": 17,
           "column": 8
         },
         "end": {
-          "line": 122,
+          "line": 123,
           "column": 1
         }
       },
@@ -14389,11 +14389,11 @@
           "description": "Header so it's variable",
           "sourceRange": {
             "start": {
-              "line": 77,
+              "line": 78,
               "column": 4
             },
             "end": {
-              "line": 80,
+              "line": 81,
               "column": 5
             }
           },
@@ -14597,11 +14597,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 139,
+              "line": 138,
               "column": 4
             },
             "end": {
-              "line": 143,
+              "line": 142,
               "column": 5
             }
           },
@@ -14619,11 +14619,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 147,
+              "line": 146,
               "column": 4
             },
             "end": {
-              "line": 151,
+              "line": 150,
               "column": 5
             }
           },
@@ -14641,11 +14641,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 155,
+              "line": 154,
               "column": 4
             },
             "end": {
-              "line": 158,
+              "line": 157,
               "column": 5
             }
           },
@@ -14663,11 +14663,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 162,
+              "line": 161,
               "column": 4
             },
             "end": {
-              "line": 165,
+              "line": 164,
               "column": 5
             }
           },
@@ -14685,11 +14685,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 169,
+              "line": 168,
               "column": 4
             },
             "end": {
-              "line": 172,
+              "line": 171,
               "column": 5
             }
           },
@@ -14707,11 +14707,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 177,
+              "line": 176,
               "column": 4
             },
             "end": {
-              "line": 180,
+              "line": 179,
               "column": 5
             }
           },
@@ -14729,11 +14729,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 184,
+              "line": 183,
               "column": 4
             },
             "end": {
-              "line": 186,
+              "line": 185,
               "column": 5
             }
           },
@@ -14751,11 +14751,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 192,
+              "line": 191,
               "column": 2
             },
             "end": {
-              "line": 194,
+              "line": 193,
               "column": 3
             }
           },
@@ -14771,11 +14771,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 200,
+              "line": 199,
               "column": 2
             },
             "end": {
-              "line": 210,
+              "line": 209,
               "column": 3
             }
           },
@@ -14791,11 +14791,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 215,
+              "line": 214,
               "column": 2
             },
             "end": {
-              "line": 224,
+              "line": 223,
               "column": 3
             }
           },
@@ -14811,11 +14811,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 229,
+              "line": 228,
               "column": 2
             },
             "end": {
-              "line": 244,
+              "line": 243,
               "column": 3
             }
           },
@@ -14835,11 +14835,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 249,
+              "line": 248,
               "column": 2
             },
             "end": {
-              "line": 260,
+              "line": 259,
               "column": 3
             }
           },
@@ -14859,11 +14859,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 265,
+              "line": 264,
               "column": 2
             },
             "end": {
-              "line": 351,
+              "line": 350,
               "column": 3
             }
           },
@@ -14883,11 +14883,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 356,
+              "line": 355,
               "column": 2
             },
             "end": {
-              "line": 364,
+              "line": 363,
               "column": 3
             }
           },
@@ -14910,11 +14910,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 369,
+              "line": 368,
               "column": 2
             },
             "end": {
-              "line": 371,
+              "line": 370,
               "column": 3
             }
           },
@@ -14934,11 +14934,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 376,
+              "line": 375,
               "column": 2
             },
             "end": {
-              "line": 379,
+              "line": 378,
               "column": 3
             }
           },
@@ -14958,11 +14958,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 384,
+              "line": 383,
               "column": 2
             },
             "end": {
-              "line": 386,
+              "line": 385,
               "column": 3
             }
           },
@@ -14982,11 +14982,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 391,
+              "line": 390,
               "column": 2
             },
             "end": {
-              "line": 393,
+              "line": 392,
               "column": 3
             }
           },
@@ -15006,11 +15006,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 398,
+              "line": 397,
               "column": 2
             },
             "end": {
-              "line": 404,
+              "line": 403,
               "column": 3
             }
           },
@@ -15039,7 +15039,7 @@
           "column": 8
         },
         "end": {
-          "line": 405,
+          "line": 404,
           "column": 1
         }
       },
@@ -15051,11 +15051,11 @@
           "description": "Display to the right corner instead of the left (default)",
           "sourceRange": {
             "start": {
-              "line": 139,
+              "line": 138,
               "column": 4
             },
             "end": {
-              "line": 143,
+              "line": 142,
               "column": 5
             }
           },
@@ -15067,11 +15067,11 @@
           "description": "State of the panel",
           "sourceRange": {
             "start": {
-              "line": 147,
+              "line": 146,
               "column": 4
             },
             "end": {
-              "line": 151,
+              "line": 150,
               "column": 5
             }
           },
@@ -15083,11 +15083,11 @@
           "description": "Showing export area.",
           "sourceRange": {
             "start": {
-              "line": 155,
+              "line": 154,
               "column": 4
             },
             "end": {
-              "line": 158,
+              "line": 157,
               "column": 5
             }
           },
@@ -15099,11 +15099,11 @@
           "description": "Show developer mode",
           "sourceRange": {
             "start": {
-              "line": 162,
+              "line": 161,
               "column": 4
             },
             "end": {
-              "line": 165,
+              "line": 164,
               "column": 5
             }
           },
@@ -15115,11 +15115,11 @@
           "description": "Showing preferences area.",
           "sourceRange": {
             "start": {
-              "line": 169,
+              "line": 168,
               "column": 4
             },
             "end": {
-              "line": 172,
+              "line": 171,
               "column": 5
             }
           },
@@ -15131,11 +15131,11 @@
           "description": "Showing button area at all a well as internal\nstate managing buttons like cancel and save",
           "sourceRange": {
             "start": {
-              "line": 177,
+              "line": 176,
               "column": 4
             },
             "end": {
-              "line": 180,
+              "line": 179,
               "column": 5
             }
           },
@@ -15147,11 +15147,11 @@
           "description": "Global preferences for HAX overall",
           "sourceRange": {
             "start": {
-              "line": 184,
+              "line": 183,
               "column": 4
             },
             "end": {
-              "line": 186,
+              "line": 185,
               "column": 5
             }
           },

@@ -51,7 +51,7 @@ Polymer({
         --lrndesign-gallery-thumbnail-size-lg: 250px;
         --lrndesign-gallery-thumbnail-size-xl: 300px;
       } 
-      :host[dark] * {
+      :host([dark]) * {
         --lrndesign-gallery-border-color: var(--simple-colors-background1);
         --lrndesign-gallery-rgba-high: rgba(0,0,0,0.7);
         --lrndesign-gallery-rgba-mid: rgba(0,0,0,0.5);

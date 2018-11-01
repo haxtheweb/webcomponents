@@ -39,7 +39,7 @@ Polymer({
         }
       }
 
-      :host[edit-mode] responsive-grid-col.mover {
+      :host([edit-mode]) responsive-grid-col.mover {
         min-height: 150px;
         background-color: #d1d1d1;
       }

@@ -56,19 +56,19 @@ Polymer({
         margin: 0;
         color: var(--simple-colors-light-green-background1);
       }
-      :host[active-page="0"] #dialog {
+      :host([active-page="0"]) #dialog {
         --app-drawer-width: 400px;
       }
-      :host[active-page="1"] #dialog {
+      :host([active-page="1"]) #dialog {
         --app-drawer-width: 800px;
       }
-      :host[active-page="2"] #dialog {
+      :host([active-page="2"]) #dialog {
         --app-drawer-width: 800px;
       }
-      :host[active-step] #dialog {
+      :host([active-step]) #dialog {
         --app-drawer-width: 1000px;
       }
-      :host[searching] #dialog {
+      :host([searching]) #dialog {
         --app-drawer-width: 1000px;
       }
       .title {
