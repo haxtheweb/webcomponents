@@ -28,16 +28,16 @@ $_documentContainer.innerHTML = `<dom-module id="a11y-collapse-button-styles">
             :host [aria-controls] {
                 cursor: pointer;
             }
-            :host[disabled] [aria-controls] {
+            :host([disabled]) [aria-controls] {
                 cursor: not-allowed;
             }
-            :host[expanded] #heading {
+            :host([expanded]) #heading {
                 @apply --a11y-collapse-heading-expanded;
             }
-            :host[expanded] #text {
+            :host([expanded]) #text {
                 @apply --a11y-collapse-heading-text-expanded;
             }
-            :host[expanded] #expand {
+            :host([expanded]) #expand {
                 @apply --a11y-collapse-icon-expanded;
             }
         </style>

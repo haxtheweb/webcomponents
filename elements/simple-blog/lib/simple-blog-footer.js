@@ -44,10 +44,10 @@ Polymer({
         transition: all .6s linear;
         opacity: 1;
       }
-      :host[active] .background-closer-image {
+      :host([active]) .background-closer-image {
         opacity: .8;
       }
-      :host[active] .background-closer-image-wrap {
+      :host([active]) .background-closer-image-wrap {
         background-color: rgba(0, 0, 0, .2);
       }
       .inner {

@@ -82,15 +82,15 @@ Polymer({
           width: 40px;
           height: 40px;
         }
-        :host[responsive-size="xs"] lrndesign-gallery-thumb {
+        :host([responsive-size="xs"]) lrndesign-gallery-thumb {
           display: none;
         }
-        :host[responsive-size="md"] lrndesign-gallery-thumb {
+        :host([responsive-size="md"]) lrndesign-gallery-thumb {
           width: 45px;
           height: 45px;
         }
-        :host[responsive-size="lg"] lrndesign-gallery-thumb,
-        :host[responsive-size="xl"] lrndesign-gallery-thumb {
+        :host([responsive-size="lg"]) lrndesign-gallery-thumb,
+        :host([responsive-size="xl"]) lrndesign-gallery-thumb {
           width: 50px;
           height: 50px;
         }
