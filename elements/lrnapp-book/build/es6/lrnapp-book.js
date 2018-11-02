@@ -214,11 +214,11 @@ Polymer({
       paper-tooltip {
         --paper-tooltip-opacity: .96;
       }
-      :host[drawer-opened] .content-nav-buttons paper-icon-button {
+      :host([drawer-opened]) .content-nav-buttons paper-icon-button {
         width: 2.5em;
         height: 2.5em;
       }
-      :host[edit-mode] .content-nav-buttons {
+      :host([edit-mode]) .content-nav-buttons {
         opacity: 0;
         pointer-events: none;
         visibility: hidden;
@@ -258,11 +258,11 @@ Polymer({
       :host {
         --app-drawer-width: 300px;
       }
-      :host[full-width] {
+      :host([full-width]) {
         --app-drawer-width: 0px;
       }
-      :host[drawer-opened] .prev,
-      :host[edit-mode] .prev {
+      :host([drawer-opened]) .prev,
+      :host([edit-mode]) .prev {
         left: 17em;
       }
       .progress-container {
@@ -386,7 +386,7 @@ Polymer({
         opacity: 1;
         transition: all .4s ease;
       }
-      :host[edit-mode] #editbutton {
+      :host([edit-mode]) #editbutton {
         width: 100%;
         z-index: 100;
         right: 0;
@@ -396,10 +396,10 @@ Polymer({
         padding: 1em;
         background-color: var(--paper-blue-500) !important;
       }
-      :host[edit-mode] #header {
+      :host([edit-mode]) #header {
         background-color: var(--paper-grey-500);
       }
-      :host[edit-mode] #toolbar {
+      :host([edit-mode]) #toolbar {
         opacity: .5;
       }
       .your-progress-button {

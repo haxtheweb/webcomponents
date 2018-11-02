@@ -35,7 +35,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrn-icon": "^0.0.30",
+    "@lrnwebcomponents/lrn-icons": "^0.0.30",
     "@lrnwebcomponents/materializecss-styles": "^0.0.30",
     "@polymer/iron-icon": "^3.0.0",
     "@polymer/polymer": "^3.0.5"

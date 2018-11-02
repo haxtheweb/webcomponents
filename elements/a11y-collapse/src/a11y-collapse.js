@@ -67,25 +67,25 @@ Polymer({
         transition: all 0.5s ease-in-out;
         @apply --a11y-collapse-content;
       }
-      :host[disabled] {
+      :host([disabled]) {
         opacity: 0.5;
         @apply --a11y-collapse-disabled;
       }
-      :host[disabled]:not([accordion]) #expand,
-      :host[disabled][accordion] #heading {
+      :host([disabled]:not([accordion])) #expand,
+      :host([disabled][accordion]) #heading {
         cursor: not-allowed;
       }
-      :host[expanded] {
+      :host([expanded]) {
         @apply --a11y-collapse-expanded;
       }
-      :host[expanded] #content {
+      :host([expanded]) #content {
         max-height: unset;
         overflow: visibility: hidden;;
         padding: var(--a11y-collapse-vertical-padding, 1em) var(--a11y-collapse-horizontal-padding, 1em);
         border-top: var(--a11y-collapse-border, 0px solid);
         @apply --a11y-collapse-content-expanded;
       }
-      :host:not([expanded]) #content-inner {
+      :host(:not([expanded])) #content-inner {
         overflow: hidden;
       }
     </style>

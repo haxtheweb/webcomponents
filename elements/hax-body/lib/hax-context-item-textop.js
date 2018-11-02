@@ -32,7 +32,7 @@ Polymer({
         display: inline-flex;
         box-sizing: border-box;
       }
-      :host[menu] {
+      :host([menu]) {
         display: flex;
         width: 100%;
       }

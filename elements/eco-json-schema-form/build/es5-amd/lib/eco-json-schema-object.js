@@ -18,7 +18,7 @@ define([
   var $_documentContainer = document.createElement("div");
   $_documentContainer.setAttribute("style", "display: none;");
   $_documentContainer.innerHTML =
-    '<dom-module id="eco-json-schema-object">\n\n  \n  \n  \n  \n  \n  \n\n  <template>\n\n    <style is="custom-style" include="iron-flex iron-flex-alignment">\n      div.layout {\n        height: auto;\n      }\n      #form {\n        display: block;\n        @apply(--eco-json-schema-object-form);\n        @apply(--layout-vertical);\n        @apply(--layout-wrap);\n      }\n    </style>\n\n    <template is="dom-if" if="{{!wizard}}">\n      <div class="header" hidden$="[[!label]]">[[label]]</div>\n    </template>\n    <div class="layout vertical flex start-justified">\n      <div id="form" class="layout horizontal flex start-justified"></div>\n    </div>\n\n\n  </template>\n\n  \n\n</dom-module>';
+    '<dom-module id="eco-json-schema-object">\n\n  <template>\n\n    <style is="custom-style" include="iron-flex iron-flex-alignment">\n      div.layout {\n        height: auto;\n      }\n      #form {\n        display: block;\n        @apply(--eco-json-schema-object-form);\n        @apply(--layout-vertical);\n        @apply(--layout-wrap);\n      }\n    </style>\n\n    <template is="dom-if" if="{{!wizard}}">\n      <div class="header" hidden$="[[!label]]">[[label]]</div>\n    </template>\n    <div class="layout vertical flex start-justified">\n      <div id="form" class="layout horizontal flex start-justified"></div>\n    </div>\n\n\n  </template>\n\n  \n\n</dom-module>';
   document.head.appendChild($_documentContainer);
   (0, _polymerLegacy.Polymer)({
     is: "eco-json-schema-object",
@@ -208,7 +208,9 @@ define([
             .toLowerCase() + "-changed",
           "_schemaPropertyChanged"
         );
-        (0, _polymerDom.dom)(ctx.$.form).appendChild(el);
+        if (babelHelpers.typeof(ctx.$) !== "undefined") {
+          (0, _polymerDom.dom)(ctx.$.form).appendChild(el);
+        }
         if ("" != property.component.slot) {
           var temp = document.createElement("template");
           temp.innerHTML = property.component.slot;
@@ -230,16 +232,20 @@ define([
       (0, _polymerDom.dom)(this.$.form).removeChild(el);
     },
     _clearForm: function _clearForm() {
-      var formEl = (0, _polymerDom.dom)(this.$.form);
-      while (formEl.firstChild) {
-        this._removePropertyEl(formEl.firstChild);
+      if (babelHelpers.typeof(this.$) !== "undefined") {
+        var formEl = (0, _polymerDom.dom)(this.$.form);
+        while (formEl.firstChild) {
+          this._removePropertyEl(formEl.firstChild);
+        }
       }
     },
-    _schemaChanged: function _schemaChanged() {
-      this._clearForm();
-      this._buildSchemaProperties();
-      this._buildForm();
-      this._setValue();
+    _schemaChanged: function _schemaChanged(newValue, oldValue) {
+      if (newValue && babelHelpers.typeof(oldValue) !== "undefined") {
+        this._clearForm();
+        this._buildSchemaProperties();
+        this._buildForm();
+        this._setValue();
+      }
     },
     _errorChanged: function _errorChanged() {
       var ctx = this;

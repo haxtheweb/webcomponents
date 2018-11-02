@@ -50,8 +50,8 @@ $_documentContainer.innerHTML = `<dom-module id="s-grid-1-style">
         margin-right: var(--s-grid-1-gutter, 0px);
       }
 
-      .s-grid-1[has-aspect-ratio] > *::before,
-      :host ::content .s-grid-1[has-aspect-ratio] > *::before {
+      .s-grid-1[has-aspect-ratio] > *:before,
+      :host ::content .s-grid-1[has-aspect-ratio] > *:before {
         padding-top: var(--s-grid-1-item-height, 100%);
       }
 

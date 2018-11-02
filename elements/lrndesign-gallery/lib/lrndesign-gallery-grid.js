@@ -52,16 +52,16 @@ Polymer({
         max-width: 100%;
         width: var(--lrndesign-gallery-thumbnail-size, 100px);
       }
-      :host[responsive-size="sm"] lrndesign-gallery-thumb {
+      :host([responsive-size="sm"]) lrndesign-gallery-thumb {
         width: var(--lrndesign-gallery-thumbnail-size-sm, 150px);
       }
-      :host[responsive-size="md"] lrndesign-gallery-thumb {
+      :host([responsive-size="md"]) lrndesign-gallery-thumb {
         width: var(--lrndesign-gallery-thumbnail-size-md, 200px);
       }
-      :host[responsive-size="lg"] lrndesign-gallery-thumb {
+      :host([responsive-size="lg"]) lrndesign-gallery-thumb {
         width: var(--lrndesign-gallery-thumbnail-size-lg, 250px);
       }
-      :host[responsive-size="xl"] lrndesign-gallery-thumb {
+      :host([responsive-size="xl"]) lrndesign-gallery-thumb {
         width: var(--lrndesign-gallery-thumbnail-size-lg, 300px);
       }
       :host lrndesign-gallery-thumb ::slotted(* > iron-image) {
@@ -74,8 +74,8 @@ Polymer({
         opacity: 0.7;
         outline: 1px solid black;
       }
-      :host[theme="dark"] lrndesign-gallery-thumb:focus ::slotted(*),
-      :host[theme="dark"] lrndesign-gallery-thumb:hover ::slotted(*) {
+      :host([theme="dark"]) lrndesign-gallery-thumb:focus ::slotted(*),
+      :host([theme="dark"]) lrndesign-gallery-thumb:hover ::slotted(*) {
         outline: 1px solid white;
       }
       @media print {
@@ -193,7 +193,7 @@ Polymer({
     if (typeof index === "number" && index >= 0 && index < this.items.length) {
       this.selected = this.items[index];
       this.$.thumbslist.selectItem(this.items[index]);
-      this.$$("#gallery-zoom").toggleDialog();
+      this.shadowRoot.querySelector("#gallery-zoom").toggleDialog();
     }
   },
 
@@ -220,7 +220,7 @@ Polymer({
         item = anchor.replace("-zoom", "");
       if (this.selected && this.selected.id == item) {
         this.__init = true;
-        this.$$("#gallery-zoom").toggleDialog();
+        this.shadowRoot.querySelector("#gallery-zoom").toggleDialog();
         this.$.itembody.innerHTML = this.selected.details;
       }
     }

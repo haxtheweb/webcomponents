@@ -29,9 +29,9 @@ Polymer({
         background-color: var(--haxcms-color, #ff4081);
         transition: all .6s linear;
       }
-      :host[page-allowed] #editbutton,
-      :host[outline-allowed] #outlinebutton,
-      :host[outline-allowed] #manifestbutton {
+      :host([page-allowed]) #editbutton,
+      :host([outline-allowed]) #outlinebutton,
+      :host([outline-allowed]) #manifestbutton {
         visibility: visible;
         opacity: 1;
       }
@@ -44,7 +44,7 @@ Polymer({
       #manifestbutton {
         right: 0px;
       }
-      :host[edit-mode] #editbutton {
+      :host([edit-mode]) #editbutton {
         width: 100%;
         z-index: 100;
         right: 0;

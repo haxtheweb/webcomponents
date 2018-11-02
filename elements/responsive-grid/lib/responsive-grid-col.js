@@ -34,13 +34,13 @@ Polymer({
       }
       /* Hide Print-Only on Screen */
       @media screen {
-        :host[print-only] {
+        :host([print-only]) {
           display: none;
         }
       }
       /* Hide Screen-Only on Print */
       @media print {
-        :host[screen-only] {
+        :host([screen-only]) {
           display: none;
         }
       }

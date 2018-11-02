@@ -15,10 +15,10 @@ Polymer({
        :host {
         display: inline-flex;
       }
-      :host[size="micro"] {
+      :host([size="micro"]) {
         transform: scale(.5);
       }
-      :host[size="small"] {
+      :host([size="small"]) {
         transform: scale(.8);
       }
 

@@ -14,15 +14,15 @@ Polymer({
         display: flex;
 		    padding: 8px;
       }
-      :host[sticky] {
+      :host([sticky]) {
         top:0;
         position: sticky;
       }
-      :host[direction='left'] {
+      :host([direction='left']) {
         float: left;
         max-width: 30em;
       }
-      :host[direction='right'] {
+      :host([direction='right']) {
         float: right;
         max-width: 30em;
       }

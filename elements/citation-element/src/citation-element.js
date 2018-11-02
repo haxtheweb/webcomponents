@@ -21,11 +21,11 @@ Polymer({
         display: block;
         color: var('--license-text-color');
       }
-      :host[display-method="footnote"] {
+      :host([display-method="footnote"]) {
         visibility: hidden;
         opacity: 0;
       }
-      :host[display-method="popup"] {
+      :host([display-method="popup"]) {
         display: block;
       }
       .license-link {
@@ -44,12 +44,9 @@ Polymer({
         margin-right: .5em;
       }
     </style>
-    <!-- Link the license for the course -->
-    <link about\$="[[relatedResource]]" property="cc:license" content\$="[[licenseLink]]">
     <meta about\$="[[relatedResource]]" property="cc:attributionUrl" content\$="[[source]]">
     <meta about\$="[[relatedResource]]" property="cc:attributionName" typeof="oer:Text" content\$="[[title]]">
     <meta rel="cc:license" href\$="[[licenseLink]]" content\$="License: [[licenseName]]">
-    <link rel="license" typeof="resource" src="[[source]]">
     <cite><a target="_blank" href="[[source]]">[[title]]</a> by [[creator]], licensed under <a class="license-link" target="_blank" href="[[licenseLink]]"><img alt="[[licenseName]] graphic" src="[[licenseImage]]" hidden&="[[!licenseImage]]">[[licenseName]]</a>. Accessed <span class="citation-date">[[date]]</span>.</cite>
 `,
 
@@ -116,9 +113,56 @@ Polymer({
     license: {
       type: String,
       observer: "_licenseUpdated"
+    },
+    /**
+     * About link for semantic meaning
+     */
+    _aboutLink: {
+      type: Object,
+      computed: "_generateAboutLink(relatedResource, licenseLink)"
+    },
+    /**
+     * License link object for semantic meaning
+     */
+    _licenseLink: {
+      type: Object,
+      computed: "_generateLicenseLink(source)"
     }
   },
+  /**
+   * Generate a license link whenever we have a source
+   * @param {href} source
+   */
+  _generateLicenseLink(source) {
+    // remove existing if this is moving around
+    if (this._licenseLink) {
+      document.head.removeChild(this._licenseLink);
+    }
+    let link = document.createElement("link");
+    link.setAttribute("typeof", "resource");
+    link.setAttribute("rel", "license");
+    link.setAttribute("src", source);
 
+    document.head.appendChild(link);
+    return link;
+  },
+  /**
+   * Generate an about link whenever we have a related resource and license link
+   * @param {uuid / id} relatedResource
+   * @param {href} licenseLink
+   */
+  _generateAboutLink(relatedResource, licenseLink) {
+    // remove existing if this is moving around
+    if (this._aboutLink) {
+      document.head.removeChild(this._aboutLink);
+    }
+    let link = document.createElement("link");
+    link.setAttribute("about", relatedResource);
+    link.setAttribute("property", "cc:license");
+    link.setAttribute("content", licenseLink);
+    document.head.appendChild(link);
+    return link;
+  },
   /**
    * Notice scope change.
    */

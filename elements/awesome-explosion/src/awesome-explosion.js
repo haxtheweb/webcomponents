@@ -23,40 +23,40 @@ Polymer({
       :host {
         display: inline-block;
       }
-      :host[size="tiny"] #image {
+      :host([size="tiny"]) #image {
         width: 5em;
         height: 5em;
       }
-      :host[size="small"] #image {
+      :host([size="small"]) #image {
         width: 10em;
         height: 10em;
       }
-      :host[size="medium"] #image {
+      :host([size="medium"]) #image {
         width: 15em;
         height: 15em;
       }
-      :host[size="large"] #image {
+      :host([size="large"]) #image {
         width: 20em;
         height: 20em;
       }
-      :host[size="epic"] #image {
+      :host([size="epic"]) #image {
         width: 45em;
         height: 45em;
       }
 
-      :host[color="red"] #image {
+      :host([color="red"]) #image {
         filter: sepia() saturate(10000%) hue-rotate(30deg);
       }
-      :host[color="purple"] #image {
+      :host([color="purple"]) #image {
         filter: sepia() saturate(10000%) hue-rotate(290deg);
       }
-      :host[color="blue"] #image {
+      :host([color="blue"]) #image {
         filter: sepia() saturate(10000%) hue-rotate(210deg);
       }
-      :host[color="orange"] #image {
+      :host([color="orange"]) #image {
         filter: sepia() saturate(10000%) hue-rotate(320deg);
       }
-      :host[color="yellow"] #image {
+      :host([color="yellow"]) #image {
         filter: sepia() saturate(10000%) hue-rotate(70deg);
       }
       #image {

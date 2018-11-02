@@ -13,25 +13,25 @@ import "./editable-table-styles.js";
 Polymer({
   _template: html`
     <style is="custom-style" include="editable-table-styles">
-      :host[dark] .caption {
+      :host([dark]) .caption {
         padding: 0.25em 0.25em 0;
       }
-      :host[bordered] .table .th,
-      :host[bordered] .table .td {
+      :host([bordered]) .table .th,
+      :host([bordered]) .table .td {
         border: 1px solid var(--editable-table-border-color);
       }
-      :host[striped] .table .tbody .tr:nth-child(2n) .th,
-      :host[striped] .table .tbody .tr:nth-child(2n) .td {
+      :host([striped]) .table .tbody .tr:nth-child(2n) .th,
+      :host([striped]) .table .tbody .tr:nth-child(2n) .td {
         @apply --editable-table-style-stripe;
       }
-      :host[column-header] .table .thead .tr .th {
+      :host([column-header]) .table .thead .tr .th {
         @apply --editable-table-style-column-header;
       }
-      :host[row-header] .table .tbody .tr .th {
+      :host([row-header]) .table .tbody .tr .th {
         @apply --editable-table-style-row-header;
       }
-      :host[footer] .table .tfoot .tr .th, 
-      :host[footer] .table .tfoot .tr .td {
+      :host([footer]) .table .tfoot .tr .th, 
+      :host([footer]) .table .tfoot .tr .td {
         @apply --editable-table-style-footer;
       }
     </style>

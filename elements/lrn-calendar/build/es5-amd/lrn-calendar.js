@@ -9,27 +9,27 @@ define([
   "./node_modules/@polymer/paper-dropdown-menu/paper-dropdown-menu.js",
   "./node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js",
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
-  "./node_modules/@lrnwebcomponents/lrnsys-layout/lrnsys-layout.js",
-  "@lrnwebcomponents/lrnsys-layout/lrnsys-drawer.js",
-  "@lrnwebcomponents/lrnsys-layout/lrnsys-dialog.js",
-  "@lrnwebcomponents/lrnsys-layout/lrnsys-collapselist.js",
-  "@lrnwebcomponents/lrnsys-layout/lrnsys-collapselist-item.js",
+  "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-layout.js",
+  "./node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-drawer.js",
+  "./node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js",
+  "./node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-collapselist.js",
+  "./node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-collapselist-item.js",
   "./node_modules/ical.js/build/ical.js",
   "./lib/lrn-calendar-date.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_8f8e71f0dbb911e8a9446372f435f374() {
+  function _templateObject_58080f90deaa11e8b951fb68a6318713() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n      lrn-calendar-date {\n        display: inline-table;\n        top: 0px;\n      }\n      paper-card {\n        width: 14%;\n        height: 20px;\n        display: inline-table;\n        padding: 0;\n        margin: 0;\n      }\n      .calendar {\n        color: var(--my-toolbar-title-color);\n      }\n      .header{\n        padding-bottom: 15px;\n      }\n    </style>\n\n    <div class="calendar">\n      <div class="header">\n        <div style="float: left">\n          <paper-button raised="" type="button" on-tap="monthView">Month</paper-button>\n          <paper-button raised="" type="button" on-tap="weekView">Week</paper-button>\n        </div>\n        <div style="float: right">\n          <paper-button raised="" type="button" on-tap="showDate">Today</paper-button>\n          <paper-icon-button icon="arrow-back" on-tap="showPrev"></paper-icon-button>\n          <paper-icon-button icon="arrow-forward" on-tap="showNext"></paper-icon-button>\n        </div>\n        <div style="margin: 0 auto; width: 200px; text-align: center">\n          <h2>[[getDisplayDate(date)]]</h2>\n        </div>\n      </div>\n\n      <div class="calendarView" id="calView">\n      </div>\n    </div>\n'
     ]);
-    _templateObject_8f8e71f0dbb911e8a9446372f435f374 = function() {
+    _templateObject_58080f90deaa11e8b951fb68a6318713 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_8f8e71f0dbb911e8a9446372f435f374()
+      _templateObject_58080f90deaa11e8b951fb68a6318713()
     ),
     is: "lrn-calendar",
     behaviors: [HAXBehaviors.PropertiesBehaviors],

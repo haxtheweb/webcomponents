@@ -58,7 +58,7 @@ haxcms editor element
         transition: all .4s ease;
         z-index: 1000;
       }
-      :host[edit-mode] #editbutton {
+      :host([edit-mode]) #editbutton {
         width: 100%;
         z-index: 100;
         right: 0;
@@ -75,7 +75,7 @@ haxcms editor element
         margin: auto;
         display: none;
       }
-      :host[edit-mode] hax-body {
+      :host([edit-mode]) hax-body {
         display: block;
         padding: 0 !important;
       }

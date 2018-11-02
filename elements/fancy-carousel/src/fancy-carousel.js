@@ -19,7 +19,7 @@ Polymer({
         contain: content;
       }
 
-      :host:after {
+      :host(:after) {
         display: block;
         content: '';
         padding-top: 75%; /* 4:3 = height is 75% of width */

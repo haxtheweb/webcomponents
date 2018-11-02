@@ -8,7 +8,7 @@ $_documentContainer.innerHTML = `<dom-module id="editable-table-styles">
   <template>
     <custom-style>
       <style is="custom-style">
-        :host, :host[accent-color="none"] {
+        :host, :host([accent-color="none"]) {
           display: block;
           width: 100%;
           max-width: 100%;
@@ -51,12 +51,12 @@ $_documentContainer.innerHTML = `<dom-module id="editable-table-styles">
           width: 0;
           overflow: hidden;
         }
-        :host[accent-color]{
+        :host([accent-color]){
           --editable-table-caption-color:  var(--simple-colors-accent-foreground3, #222);
           --editable-table-heading-bg-color: var(--simple-colors-accent-background2, #ddd);
           --editable-table-border-color: var(--simple-colors-accent-foreground5, #999);
         }
-        :host[dark], :host[dark][accent-color="none"]{
+        :host([dark]), :host([dark][accent-color="none"]) {
           --editable-table-light-weight: 100;
           --editable-table-medium-weight: 300;
           --editable-table-heavy-weight: 400;
@@ -69,7 +69,7 @@ $_documentContainer.innerHTML = `<dom-module id="editable-table-styles">
           --editable-table-heading-color: var(--simple-colors-foreground1, #fff);
           --editable-table-stripe-bg-color: var(--simple-colors-background2, #111);
         }
-        :host[dark][accent-color]{
+        :host([dark][accent-color]){
           --editable-table-caption-bg-color: var(--simple-colors-accent-background2, #000);
           --editable-table-heading-bg-color: var(--simple-colors-accent-background3, #000);
           --editable-table-border-color: var(--simple-colors-accent-foreground5, #000);
@@ -104,7 +104,7 @@ $_documentContainer.innerHTML = `<dom-module id="editable-table-styles">
         :host .body {
           display: table-footer-group;
         } 
-        :host[dark][bordered] .caption {
+        :host([dark][bordered]) .caption {
           /*padding: 0.5em 0 0 0.25em;*/
           border: 1px solid var(--editable-table-border-color);
           border-bottom: none;
@@ -124,8 +124,8 @@ $_documentContainer.innerHTML = `<dom-module id="editable-table-styles">
           height: 24px;
           padding: 0.75em 0.25em;
         }
-        :host[condensed] .table .th,
-        :host[condensed] .table .td {
+        :host([condensed]) .table .th,
+        :host([condensed]) .table .td {
           padding: 0em 0.25em;
         }
         :host .caption, 
@@ -154,17 +154,17 @@ $_documentContainer.innerHTML = `<dom-module id="editable-table-styles">
           width: 100%;
         }
         @media screen {
-          :host[responsive-size="xs"]:not([scroll]) .table[transition] {
+          :host([responsive-size="xs"]:not([scroll])) .table[transition] {
             opacity: 0;
             transition: opacity 5s;
           }
-          :host[scroll] #column, 
-          :host:not([responsive-size="xs"]) #column, 
-          :host[responsive-size="xs"]:not([scroll]) .table .th[xs-hidden],
-          :host[responsive-size="xs"]:not([scroll]) .table .td[xs-hidden],
-          :host[responsive-size="xs"]:not([scroll]) .table[default-xs-display] .th:nth-of-type(n+3), 
-          :host[responsive-size="xs"]:not([scroll]) .table[default-xs-display][row-header] .td:nth-of-type(n+3), 
-          :host[responsive-size="xs"]:not([scroll]) .table[default-xs-display]:not([row-header]) .td:nth-of-type(n+2) {
+          :host([scroll]) #column, 
+          :host(:not([responsive-size="xs"])) #column, 
+          :host([responsive-size="xs"]:not([scroll])) .table .th[xs-hidden],
+          :host([responsive-size="xs"]:not([scroll])) .table .td[xs-hidden],
+          :host([responsive-size="xs"]:not([scroll])) .table[default-xs-display] .th:nth-of-type(n+3), 
+          :host([responsive-size="xs"]:not([scroll])) .table[default-xs-display][row-header] .td:nth-of-type(n+3), 
+          :host([responsive-size="xs"]:not([scroll])) .table[default-xs-display]:not([row-header]) .td:nth-of-type(n+2) {
             display: none;
           }  
         }

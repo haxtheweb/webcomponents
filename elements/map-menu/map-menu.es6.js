@@ -20,7 +20,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
 
       /* turn default active color if indicator is on */
-      :host[active-indicator] map-menu-builder { 
+      :host([active-indicator]) map-menu-builder { 
         --map-menu-active-color: transparent;
       }
     </style>

@@ -3,7 +3,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       :host {
         display: block;
       }
-      :host[hide-form] ul {
+      :host([hide-form]) ul {
         border: 1px solid black;
       }
       paper-card {

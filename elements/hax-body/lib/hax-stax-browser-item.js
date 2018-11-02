@@ -18,11 +18,11 @@ Polymer({
       :host {
         display: inline-flex;
       }
-      :host[elevation="1"] {
+      :host([elevation="1"]) {
         -webkit-transform: scale(1, 1);
         transform: scale(1, 1);
       }
-      :host[elevation="2"] {
+      :host([elevation="2"]) {
         -webkit-transform: scale(1.4, 1.4);
         transform: scale(1.4, 1.4);
       }

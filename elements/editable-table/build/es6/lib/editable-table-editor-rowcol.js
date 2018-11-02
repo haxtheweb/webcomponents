@@ -28,7 +28,7 @@ Polymer({
         display: block;
         background-color: transparent;
       }
-      :host[condensed] paper-button {
+      :host([condensed]) paper-button {
         padding-top: 0;
         padding-bottom: 0;
       }

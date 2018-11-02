@@ -39,25 +39,25 @@ $_documentContainer.innerHTML = `<dom-module id="hax-body">
         visibility: visible;
         opacity: 1;
       }
-      :host[edit-mode] #bodycontainer ::slotted(*[data-editable]) {
+      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
         outline: none;
         transition:
           .6s width ease-in-out,
           .6s height ease-in-out,
           .6s margin ease-in-out;
       }
-      :host[edit-mode] #bodycontainer ::slotted(p):empty {
+      :host([edit-mode]) #bodycontainer ::slotted(p):empty {
         background: #f8f8f8;
       }
-      :host[edit-mode] #bodycontainer ::slotted(*[data-editable]):hover {
+      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]):hover {
         outline: 1px dotted #d3d3d3;
         outline-offset: 2px;
       }
-      :host[edit-mode] #bodycontainer ::slotted(* [data-editable]):hover {
+      :host([edit-mode]) #bodycontainer ::slotted(* [data-editable]):hover {
         outline: 1px dotted #d3d3d3;
         outline-offset: 2px;
       }
-      :host[edit-mode] #bodycontainer ::slotted(*[data-editable])::before {
+      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]):before {
         content: '';
         display: block;
         position: absolute;
@@ -67,7 +67,7 @@ $_documentContainer.innerHTML = `<dom-module id="hax-body">
         width: 32px;
         transition: .6s all ease;
       }
-      :host[edit-mode] #bodycontainer ::slotted(*[data-editable]):hover::before {
+      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]):hover:before {
         content: '';
         display: block;
         position: absolute;
@@ -77,17 +77,17 @@ $_documentContainer.innerHTML = `<dom-module id="hax-body">
         width: 32px;
         transition: .6s all ease;
       }
-      :host[edit-mode] #bodycontainer ::slotted(*.hax-active[data-editable]) {
+      :host([edit-mode]) #bodycontainer ::slotted(*.hax-active[data-editable]) {
         cursor: text !important;
         outline: 1px dashed #c3c3c3 !important;
         outline-offset: 4px;
       }
-      :host[edit-mode] #bodycontainer ::slotted(*[data-editable] .hax-active) {
+      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable] .hax-active) {
         cursor: text !important;
         outline: 1px dashed #c3c3c3 !important;
         outline-offset: 4px;
       }
-      :host[edit-mode] #bodycontainer ::slotted(*.hax-active[data-editable])::before {
+      :host([edit-mode]) #bodycontainer ::slotted(*.hax-active[data-editable]):before {
         content: '';
         display: block;
         position: absolute;
@@ -97,28 +97,28 @@ $_documentContainer.innerHTML = `<dom-module id="hax-body">
         width: 32px;
         transition: .6s all ease;
       }
-      :host[edit-mode] #bodycontainer ::slotted(code.hax-active[data-editable]) {
+      :host([edit-mode]) #bodycontainer ::slotted(code.hax-active[data-editable]) {
         display: block;
       }
-      :host[edit-mode] #bodycontainer ::slotted(hr[data-editable]) {
+      :host([edit-mode]) #bodycontainer ::slotted(hr[data-editable]) {
         height:4px;
         background-color: #EEEEEE;
         padding-top: 8px;
         padding-bottom: 8px;
       }
       /** Fix to support safari as it defaults to none */
-      :host[edit-mode] #bodycontainer ::slotted(*[data-editable]) {
+      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
         -webkit-user-select: text;
         cursor:pointer;
       }
 
-      :host[edit-mode] #bodycontainer ::slotted(*[data-editable]::-moz-selection),
-      :host[edit-mode] #bodycontainer ::slotted(*[data-editable] *::-moz-selection) {
+      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]::-moz-selection),
+      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable] *::-moz-selection) {
         background-color: var(--hax-body-highlight, --paper-yellow-300);
         color: black;
       }
-      :host[edit-mode] #bodycontainer ::slotted(*[data-editable]::selection),
-      :host[edit-mode] #bodycontainer ::slotted(*[data-editable] *::selection) {
+      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]::selection),
+      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable] *::selection) {
         background-color: var(--hax-body-highlight, --paper-yellow-300);
         color: black;
       }
@@ -130,11 +130,11 @@ $_documentContainer.innerHTML = `<dom-module id="hax-body">
       #contextcontainer {
         display: none;
       }
-      :host[edit-mode][hax-ray-mode] #bodycontainer ::slotted(*[data-editable]) {
+      :host([edit-mode])[hax-ray-mode] #bodycontainer ::slotted(*[data-editable]) {
         outline: 1px dashed #d3d3d3;
         outline-offset: 4px;
       }
-      :host[edit-mode][hax-ray-mode] #bodycontainer ::slotted(*[data-editable])::before {
+      :host([edit-mode])[hax-ray-mode] #bodycontainer ::slotted(*[data-editable]):before {
         content: attr(data-hax-ray) " " attr(resource) " " attr(typeof) " " attr(property) " " attr(content);
         font-size: 10px;
         font-style: italic;

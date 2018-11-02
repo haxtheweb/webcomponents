@@ -46,7 +46,7 @@ Polymer({
         background-color: var(--lrndesign-gallery-background-color);
         border: 1px solid var(--lrndesign-gallery-border-color);
       }
-      :host:not([responsive-size="xs"]):not([extra-wide]) #gallery-item {
+      :host(:not([responsive-size="xs"]):not([extra-wide])) #gallery-item {
         display: flex;
         justify-content: space-between;
         align-items: stretch;
@@ -66,20 +66,20 @@ Polymer({
         width: 100%;
         position: absolute;
       }
-      :host[responsive-size="sm"]:not([extra-wide])  #gallery-item, 
-      :host[responsive-size="sm"]:not([extra-wide]) #prevnext,
-      :host[responsive-size="md"]:not([extra-wide]) #gallery-item, 
-      :host[responsive-size="md"]:not([extra-wide]) #prevnext{
+      :host([responsive-size="sm"]:not([extra-wide]))  #gallery-item, 
+      :host([responsive-size="sm"]:not([extra-wide])) #prevnext,
+      :host([responsive-size="md"]:not([extra-wide])) #gallery-item, 
+      :host([responsive-size="md"]:not([extra-wide])) #prevnext{
         height: 200px;
         max-height: 200px;
       }
-      :host[responsive-size="lg"]:not([extra-wide]) #gallery-item, 
-      :host[responsive-size="lg"]:not([extra-wide]) #prevnext{
+      :host([responsive-size="lg"]:not([extra-wide])) #gallery-item, 
+      :host([responsive-size="lg"]:not([extra-wide])) #prevnext{
         height: 300px;
         max-height: 300px;
       }
-      :host[responsive-size="xl"]:not([extra-wide]) #gallery-item, 
-      :host[responsive-size="xl"]:not([extra-wide]) #prevnext{
+      :host([responsive-size="xl"]:not([extra-wide])) #gallery-item, 
+      :host([responsive-size="xl"]:not([extra-wide])) #prevnext{
         height: 400px;
         max-height: 400px;
       }
@@ -94,8 +94,8 @@ Polymer({
         flex-shrink: 1;
         overflow-y: scroll;
       }
-      :host[responsive-size="xs"] #details,
-      :host[extra-wide] #details {
+      :host([responsive-size="xs"]) #details,
+      :host([extra-wide]) #details {
         margin-top: -4px;
         border-top: 4px solid var(--lrndesign-gallery-focus-color);
       }

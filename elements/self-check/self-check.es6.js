@@ -61,7 +61,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         padding: 15px 15px;
       }
 
-      :host[correct] .question {
+      :host([correct]) .question {
         display: none;
       }
 
@@ -77,7 +77,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         position: absolute;
       }
 
-      :host[correct] #answer_wrap {
+      :host([correct]) #answer_wrap {
         visibility: visible;
         opacity: 1;
         position: relative;

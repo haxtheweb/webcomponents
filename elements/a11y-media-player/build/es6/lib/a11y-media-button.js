@@ -22,16 +22,16 @@ Polymer({
         color: var(--a11y-media-button-color);
         background-color: var(--a11y-media-button-bg-color);
       }
-      :host[toggle] #button {
+      :host([toggle]) #button {
         color: var(--a11y-media-button-toggle-color);
         background-color: var(--a11y-media-button-toggle-bg-color);
       }
-      :host[toggle]:active #button,
-      :host[toggle]:focus #button,
-      :host[toggle]:hover #button,
-      :host:active #button,
-      :host:focus #button,
-      :host:hover #button {
+      :host([toggle]:active) #button,
+      :host([toggle]:focus) #button,
+      :host([toggle]:hover) #button,
+      :host(:active) #button,
+      :host(:focus) #button,
+      :host(:hover) #button {
         cursor: pointer;
         color: var(--a11y-media-button-hover-color);
         background-color: var(--a11y-media-button-hover-bg-color);

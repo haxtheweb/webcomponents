@@ -24,7 +24,7 @@ Polymer({
         background-color: transparent;
         opacity: 1;
       }
-      :host[outline-loading] {
+      :host([outline-loading]) {
         opacity: .6;
         background-color: #999999;
       }

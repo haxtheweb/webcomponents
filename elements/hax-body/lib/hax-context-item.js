@@ -29,7 +29,7 @@ Polymer({
       :host {
         display: inline-flex;
       }
-      :host[menu] {
+      :host([menu]) {
         display: flex;
         width: 100%;
       }

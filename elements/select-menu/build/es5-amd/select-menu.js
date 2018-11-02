@@ -6,7 +6,7 @@ define([
   "./node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_7041d1e0dbb711e881cba365daa63036() {
+  function _templateObject_2a988230dea811e89ce70f3b40c79078() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n  <custom-style>\n    <style is="custom-style">\n      paper-dropdown-menu, paper-listbox {\n        width: 250px;\n      }\n      paper-dropdown-menu {\n        height: 200px;\n        margin: auto;\n        display: block;\n      }\n    </style>\n  </custom-style>\n  <paper-dropdown-menu id="menu" label$="[[label]]" on-selected-item-changed="_setSelectedValue">\n    <paper-listbox id="listbox" slot="dropdown-content" selected="{{selectedIndex}}">\n      <slot></slot>\n    </paper-listbox>\n  </paper-dropdown-menu>\n'
@@ -15,14 +15,14 @@ define([
         '\n  <custom-style>\n    <style is="custom-style">\n      paper-dropdown-menu, paper-listbox {\n        width: 250px;\n      }\n      paper-dropdown-menu {\n        height: 200px;\n        margin: auto;\n        display: block;\n      }\n    </style>\n  </custom-style>\n  <paper-dropdown-menu id="menu" label\\$="[[label]]" on-selected-item-changed="_setSelectedValue">\n    <paper-listbox id="listbox" slot="dropdown-content" selected="{{selectedIndex}}">\n      <slot></slot>\n    </paper-listbox>\n  </paper-dropdown-menu>\n'
       ]
     );
-    _templateObject_7041d1e0dbb711e881cba365daa63036 = function() {
+    _templateObject_2a988230dea811e89ce70f3b40c79078 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_7041d1e0dbb711e881cba365daa63036()
+      _templateObject_2a988230dea811e89ce70f3b40c79078()
     ),
     is: "select-menu",
     listeners: { "menubutton.tap": "_menubuttonTap" },

@@ -36,11 +36,11 @@ $_documentContainer.innerHTML = `<dom-module id="cms-token">
                 width: auto;
             }
 
-            :host[loading] {
+            :host([loading]) {
                 text-align: center;
             }
 
-            :host[loading] paper-spinner {
+            :host([loading]) paper-spinner {
                 visibility: visible;
                 opacity: 1;
                 position: relative;
@@ -50,7 +50,7 @@ $_documentContainer.innerHTML = `<dom-module id="cms-token">
                 display: flex;
             }
 
-            :host[loading] #replacementcontent {
+            :host([loading]) #replacementcontent {
                 opacity: 0;
                 visibility: hidden;
                 height: 0;

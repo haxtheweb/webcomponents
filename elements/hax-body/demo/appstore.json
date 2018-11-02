@@ -1476,13 +1476,13 @@
     "lrn-math",
     "person-testimonial",
     "citation-element",
-    "lrn-calendar",
     "code-editor",
     "place-holder",
     "stop-note",
-    "q-r",
-    "wave-player",
     "pdf-element",
-    "aframe-player"
+    "aframe-player",
+    "lrn-calendar",
+    "q-r",
+    "wave-player"
   ]
 }

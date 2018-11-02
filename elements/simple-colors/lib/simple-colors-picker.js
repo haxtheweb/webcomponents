@@ -21,8 +21,8 @@ Polymer({
         top: var(--simple-colors-picker-preview-size, 20px);
         margin-top: 12px;
       }
-      :host[disabled] #collapse,
-      :host[collapsed] #collapse {
+      :host([disabled]) #collapse,
+      :host([collapsed]) #collapse {
         height: 0;
         overflow: hidden;
         transition: all 0.25s;
@@ -62,15 +62,15 @@ Polymer({
         border-color: var(--simple-colors-picker-button-border-color, --simple-colors-background3);
         background-color: var(--simple-colors-picker-button-bg-color, --simple-colors-background2);
       }
-      :host[disabled] #button, 
+      :host([disabled]) #button, 
       :host #button[disabled] {
         color: var(--simple-colors-picker-button-disabled-color, --simple-colors-foreground4);
         border-color: var(--simple-colors-picker-button-disabled-border-color, --simple-colors-background5);
         background-color: var(--simple-colors-picker-button-disabled-bg-color, --simple-colors-background4);
         cursor: not-allowed;
       }
-      :host:not([disabled]) #button:focus,
-      :host:not([disabled]) #button:hover {
+      :host(:not([disabled])) #button:focus,
+      :host(:not([disabled])) #button:hover {
         color: var(--simple-colors-picker-button-hover-color, --simple-colors-foreground1);
         border-color: var(--simple-colors-picker-button-hover-color, --simple-colors-background5);
         background-color: var(--simple-colors-picker-button-hover-bg-color, --simple-colors-background1);
@@ -86,7 +86,7 @@ Polymer({
         width: var(--simple-colors-picker-preview-size, 20px);
         height: var(--simple-colors-picker-preview-size, 20px);
       }
-      :host:not([collapsed]) #icon {
+      :host(:not([collapsed])) #icon {
         transform: rotate(-90deg);
         transition: transform 0.25s;
       }

@@ -10,7 +10,7 @@ Polymer({
         display: block;
       }
 
-      :host[active] {
+      :host([active]) {
         background: var(--map-menu-active-color);
       }
 

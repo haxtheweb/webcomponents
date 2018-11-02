@@ -54,7 +54,7 @@ Polymer({
         -moz-hyphens: auto;
         hyphens: auto;
       }
-      :host[has-image] .article-image {
+      :host([has-image]) .article-image {
         position: absolute;
         background-color: var(--haxcms-color, black);
         top: 0;
@@ -78,7 +78,7 @@ Polymer({
         font-family: Open Sans,MundoSans,"Helvetica Neue",Arial,Helvetica,sans-serif;
         padding-top: 60px;
       }
-      :host[has-image] .post-meta {
+      :host([has-image]) .post-meta {
         position: absolute;
         bottom: 80px;
         left: 30%;
@@ -97,7 +97,7 @@ Polymer({
         line-height: 1.1;
         color: black;
       }
-      :host[has-image] .post-title {
+      :host([has-image]) .post-title {
         color: white;
         margin-bottom: 16px;
         text-shadow: 0 1px 16px rgba(0,0,0,.5), 0 0 1px rgba(0,0,0,.5);
@@ -105,7 +105,7 @@ Polymer({
       /**
        * Hide the slotted content during edit mode
        */
-      :host[edit-mode] #slot {
+      :host([edit-mode]) #slot {
         display: none;
       }
     </style>

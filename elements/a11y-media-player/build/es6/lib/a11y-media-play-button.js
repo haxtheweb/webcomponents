@@ -15,8 +15,8 @@ Polymer({
         position: absolute;
         height: 100%;
       }
-      :host[disabled]:not([audio-only]),
-      :host[playing]:not([audio-only]) {
+      :host([disabled]:not([audio-only])),
+      :host([playing]:not([audio-only])) {
         opacity: 0;
       }
       :host, 
@@ -39,8 +39,8 @@ Polymer({
         margin: 0;
         border: none;
       }
-      :host[audio-only][thumbnail-src][playing] #button > *:not(#thumbnail), 
-      :host[audio-only][thumbnail-src][disabled] #button > *:not(#thumbnail) {
+      :host([audio-only][thumbnail-src][playing]) #button > *:not(#thumbnail), 
+      :host([audio-only][thumbnail-src][disabled]) #button > *:not(#thumbnail) {
         opacity: 0;
       }
       :host #thumbnail {
@@ -74,7 +74,7 @@ Polymer({
         font-size: 0;
       }
       @media print {
-        :host:not([thumbnail-src]),
+        :host(:not([thumbnail-src])),
         :host #background, 
         :host #svg {
           display: none;

@@ -4,18 +4,18 @@ define([
   "../node_modules/@lrnwebcomponents/lrn-icons/lrn-icons.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_2b5694c0dbb811e8925bbdcb47627c0a() {
+  function _templateObject_d0f0e3c0dea811e8aaa13520d15b8f7a() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n      paper-button {\n        @apply --animationctrl-button;\n      }\n    </style>\n    <paper-button raised="" id="[[name]]">\n      [[name]] \n      <template is="dom-if" if="[[icon]]">\n        <lrn-icon icon="[[icon]]"></lrn-icon>\n      </template>\n    </paper-button>\n'
     ]);
-    _templateObject_2b5694c0dbb811e8925bbdcb47627c0a = function() {
+    _templateObject_d0f0e3c0dea811e8aaa13520d15b8f7a = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_2b5694c0dbb811e8925bbdcb47627c0a()
+      _templateObject_d0f0e3c0dea811e8aaa13520d15b8f7a()
     ),
     is: "lrndesign-animationctrl-button",
     properties: { name: String, icon: String },

@@ -62,12 +62,12 @@ Polymer({
         transition: all .6s ease-in-out;
         visibility: hidden;
       }
-      :host[selected-page="0"] #post {
+      :host([selected-page="0"]) #post {
         visibility: visible;
         opacity: 0;
         visibility: hidden;
       }
-      :host[selected-page="1"] #post {
+      :host([selected-page="1"]) #post {
         visibility: visible;
         opacity: 1;
       }

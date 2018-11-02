@@ -3,7 +3,7 @@ define([
   "./data-table-icons.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_d19083c0dbb611e8825631a5e07d15a1() {
+  function _templateObject_b6eb78b0dea711e88b02e5df4cc43173() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n        margin: 4px;\n      }\n\n      :host([hidden]) {\n        display: none;\n      }\n\n      paper-icon-button {\n        position: relative;\n        opacity: .84;\n        transition: all .2s;\n      }\n\n      paper-icon-button:hover,\n      paper-icon-button[focused] {\n        color: var(--default-primary-color);\n      }\n\n      paper-icon-button:not([direction]) {\n        opacity: .16;\n      }\n\n      paper-icon-button[direction=\'desc\'] {\n        transform: rotate(-180deg);\n      }\n\n      paper-icon-button[hidden] {\n        display: none;\n      }\n\n      .order {\n        font-size: 9px;\n        font-weight: bold;\n        position: absolute;\n        right: 4px;\n        bottom: 8px;\n      }\n    </style>\n\n    <div style="position: relative">\n      <paper-icon-button id="sortIcon" on-tap="_sort" icon="data-table:arrow-upward" direction$="[[direction]]">\n      </paper-icon-button>\n      <div class="order">[[order]]</div>\n    </div>\n'
@@ -12,14 +12,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n        margin: 4px;\n      }\n\n      :host([hidden]) {\n        display: none;\n      }\n\n      paper-icon-button {\n        position: relative;\n        opacity: .84;\n        transition: all .2s;\n      }\n\n      paper-icon-button:hover,\n      paper-icon-button[focused] {\n        color: var(--default-primary-color);\n      }\n\n      paper-icon-button:not([direction]) {\n        opacity: .16;\n      }\n\n      paper-icon-button[direction=\'desc\'] {\n        transform: rotate(-180deg);\n      }\n\n      paper-icon-button[hidden] {\n        display: none;\n      }\n\n      .order {\n        font-size: 9px;\n        font-weight: bold;\n        position: absolute;\n        right: 4px;\n        bottom: 8px;\n      }\n    </style>\n\n    <div style="position: relative">\n      <paper-icon-button id="sortIcon" on-tap="_sort" icon="data-table:arrow-upward" direction\\$="[[direction]]">\n      </paper-icon-button>\n      <div class="order">[[order]]</div>\n    </div>\n'
       ]
     );
-    _templateObject_d19083c0dbb611e8825631a5e07d15a1 = function() {
+    _templateObject_b6eb78b0dea711e88b02e5df4cc43173 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_d19083c0dbb611e8825631a5e07d15a1()
+      _templateObject_b6eb78b0dea711e88b02e5df4cc43173()
     ),
     is: "data-table-column-sort",
     properties: {

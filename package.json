@@ -171,6 +171,10 @@
       "**/jarallax/**",
       "**/screenfull",
       "**/screenfull/**",
+      "**/webcomponent-qr-code",
+      "**/webcomponent-qr-code/**",
+      "**/pdfjs-dist",
+      "**/pdfjs-dist/**",
       "**/web-animations-js",
       "**/web-animations-js/**",
       "**/chartist",
@@ -182,7 +186,8 @@
       "**/@vowo",
       "**/@vowo/**",
       "**/wavesurfer.js",
-      "**/wavesurfer.js/**"
+      "**/wavesurfer.js/**",
+      "**/aframe"
     ]
   },
   "husky": {

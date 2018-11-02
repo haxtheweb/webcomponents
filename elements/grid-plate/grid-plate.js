@@ -3,6 +3,7 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@polymer/iron-icons/iron-icons.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
@@ -38,7 +39,7 @@ Polymer({
         }
       }
 
-      :host[edit-mode] responsive-grid-col.mover {
+      :host([edit-mode]) responsive-grid-col.mover {
         min-height: 150px;
         background-color: #d1d1d1;
       }

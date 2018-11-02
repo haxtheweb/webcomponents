@@ -49,8 +49,8 @@ Polymer({
       .post-excerpt p {
         text-transform: none;
       }
-      :host[elevation="2"] .post-excerpt,
-      :host[elevation="2"] simple-datetime {
+      :host([elevation="2"]) .post-excerpt,
+      :host([elevation="2"]) simple-datetime {
         color: #333335;
       }
       .post-meta {

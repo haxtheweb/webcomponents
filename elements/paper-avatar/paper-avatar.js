@@ -1,7 +1,11 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import { Polymer } from "@polymer/polymer/lib/legacy/polymer-fn.js";
-import "./lib/jdenticon-1.4.0.min.js";
-import "./lib/md5.min.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
+/**
+ * @todo importing jdenticon bricks saying jQuery not found
+ */
+// import "./lib/jdenticon-1.4.0.min.js";
+// import "./lib/md5.min.js";
+
 /**
 `paper-avatar`
 User avatar in material style
@@ -30,7 +34,83 @@ Custom property | Description | Default
 */
 Polymer({
   is: "paper-avatar",
+  _template: html`
+    <style>
+			:host {
+				--paper-avatar-width: 40px;
+			}
+			:host {
+				display: inline-block;
+				box-sizing: border-box;
+				position: relative;
+				width: var(--paper-avatar-width);
+				height:  var(--paper-avatar-width);
+				border-radius: 50%;
+				cursor: default;
+				background-color: var(--paper-avatar-color, var(--paper-avatar-bgcolor));
+				-webkit-user-select: none;
+				   -moz-user-select: none;
+				    -ms-user-select: none;
+						user-select: none;
+			}
+			
+			:host > * {
+				pointer-events: none;
+			}
+			
+			#label, #img, #jdenticon {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+			}
+			#label {
+				overflow: hidden;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-flex-direction: row;
+					-ms-flex-direction: row;
+						flex-direction: row;
+				-webkit-align-items: center;
+					 -ms-flex-align: center;
+					 	align-items: center;
+			}
+			#label span {
+				display: block;
+				width: 100%;
+				font-weight: 400;
+				color: rgba(255, 255, 255, .8);
+				text-transform: capitalize;
+				font-family: 'Roboto', 'Noto', sans-serif;
+				-webkit-font-smoothing: antialiased;
+				text-align: center;
+				font-size: calc(var(--paper-avatar-width) / 1.65);
+			}
+			#jdenticon {
+				width: var(--paper-avatar-width);
+				height: var(--paper-avatar-width);
+			}
+			
+			*[hidden] {
+				display: none !important;
+			}
+		</style>
 
+		<div id="label" title="[[label]]"><span>[[_label(label)]]</span></div>
+
+		<svg id="jdenticon" width="40" height="40">
+      <slot></slot>
+    </svg>
+
+		<template is="dom-if" if="[[src]]">
+			<img id="img" src="[[src]]" title="[[label]]" on-load="_onImgLoad" on-error="_onImgError" title="[[color]]">
+		</template>
+  `,
   properties: {
     /**
      * Image address or base64
@@ -84,7 +164,10 @@ Polymer({
           saturation: 1
         };
 
-        jdenticon.update(this.$.jdenticon, md5(label));
+        /**
+         * @todo: we are commenting this out for now.
+         */
+        // jdenticon.update(jdenticon, md5(label));
       }
 
       this.updateStyles({

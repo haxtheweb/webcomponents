@@ -5,18 +5,18 @@ define([
   "../node_modules/@polymer/paper-button/paper-button.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_b55b91b0dbb911e8ba10c586c462b2d7() {
+  function _templateObject_8734ef40deaa11e8b01f1db88d870bd0() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n\n      :host([collapsable])>map-menu-header {\n        cursor: pointer;\n        display: block;\n      }\n\n      #container {\n        margin-left: 1em;\n      }\n\n      #container ::slotted(map-menu-item) {\n        margin-top: .4em;\n      }\n    </style>\n    <map-menu-header avatar-label="[[avatarLabel]]" id="[[id]]" title="[[title]]" label="[[label]]" opened="[[opened]]" url="[[url]]" icon="[[icon]]"></map-menu-header>\n    <iron-collapse id="container">\n      <slot id="slot"></slot>\n    </iron-collapse>\n'
     ]);
-    _templateObject_b55b91b0dbb911e8ba10c586c462b2d7 = function() {
+    _templateObject_8734ef40deaa11e8b01f1db88d870bd0 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_b55b91b0dbb911e8ba10c586c462b2d7()
+      _templateObject_8734ef40deaa11e8b01f1db88d870bd0()
     ),
     is: "map-menu-submenu",
     properties: {

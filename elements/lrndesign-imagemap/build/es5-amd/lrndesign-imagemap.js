@@ -8,7 +8,7 @@ define([
   "./lib/lrndesign-imagemap-hotspot.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_314be410dbb911e8a61007849f666335() {
+  function _templateObject_f2de3bd0dea911e8b9bce9d9658e125b() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n      :host #buttons {\n        position: absolute;\n        left: -999999px;\n        top: 0;\n        overflow: hidden;\n        opacity: 0;\n      }\n      :host paper-dialog {\n        border: 1px solid #000;\n        border-radius: 0.25em;\n      }\n      :host paper-dialog > #title, \n      :host paper-dialog > #desc {\n        padding: 15px;\n        margin: 0;\n      }\n      :host paper-dialog > #title {\n        position: absolute;\n        left: -9999px;\n        overflow: hidden;\n        height: 0;\n        width: 0;\n      }\n      :host paper-dialog > #title > * {\n        margin: 0;\n      }\n      /*::slotted([hotspot]) {\n        display: none;\n      }*/\n      @media print {\n        :host > #svg {\n          display: none;\n        }\n        /*::slotted(#screen-only) {\n          display: none;\n        }\n        ::slotted([hotspot]) {\n          display: block;\n        }*/\n      }\n    </style>\n    <relative-heading hidden$="[[!label]]" id="heading" subtopic-of$="[[subtopicOf]]" tag$="[[tag]]" text$="[[label]]">\n    </relative-heading>\n    <div id="desc"><slot name="desc"></slot></div>\n    <div id="svg"></div>\n    <div id="buttons"></div>\n    <slot></slot>\n    <paper-dialog id="hdetails">\n      <div id="title"></div>\n      <div id="desc"></div>\n    </paper-dialog>\n    <iron-ajax auto="" id="get_svg" url="[[src]]" handle-as="text" on-response="_getSVGHandler"></iron-ajax>\n'
@@ -17,14 +17,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n      :host #buttons {\n        position: absolute;\n        left: -999999px;\n        top: 0;\n        overflow: hidden;\n        opacity: 0;\n      }\n      :host paper-dialog {\n        border: 1px solid #000;\n        border-radius: 0.25em;\n      }\n      :host paper-dialog > #title, \n      :host paper-dialog > #desc {\n        padding: 15px;\n        margin: 0;\n      }\n      :host paper-dialog > #title {\n        position: absolute;\n        left: -9999px;\n        overflow: hidden;\n        height: 0;\n        width: 0;\n      }\n      :host paper-dialog > #title > * {\n        margin: 0;\n      }\n      /*::slotted([hotspot]) {\n        display: none;\n      }*/\n      @media print {\n        :host > #svg {\n          display: none;\n        }\n        /*::slotted(#screen-only) {\n          display: none;\n        }\n        ::slotted([hotspot]) {\n          display: block;\n        }*/\n      }\n    </style>\n    <relative-heading hidden\\$="[[!label]]" id="heading" subtopic-of\\$="[[subtopicOf]]" tag\\$="[[tag]]" text\\$="[[label]]">\n    </relative-heading>\n    <div id="desc"><slot name="desc"></slot></div>\n    <div id="svg"></div>\n    <div id="buttons"></div>\n    <slot></slot>\n    <paper-dialog id="hdetails">\n      <div id="title"></div>\n      <div id="desc"></div>\n    </paper-dialog>\n    <iron-ajax auto="" id="get_svg" url="[[src]]" handle-as="text" on-response="_getSVGHandler"></iron-ajax>\n'
       ]
     );
-    _templateObject_314be410dbb911e8a61007849f666335 = function() {
+    _templateObject_f2de3bd0dea911e8b9bce9d9658e125b = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_314be410dbb911e8a61007849f666335()
+      _templateObject_f2de3bd0dea911e8b9bce9d9658e125b()
     ),
     is: "lrndesign-imagemap",
     properties: {

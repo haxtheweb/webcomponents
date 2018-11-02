@@ -179,8 +179,8 @@ paper-fab {
   font-weight: 400;
 }
 
-.toc-item i::before,
-.toc-item i::after {
+.toc-item i:before,
+.toc-item i:after {
   content: '';
   display: block;
   border-left: 1px solid var(--paper-grey-400);
@@ -190,12 +190,12 @@ paper-fab {
   margin-top: 1px;
 }
 
-.toc-item i::before {
+.toc-item i:before {
   margin-top: -44px;
   margin-left: 11px;
 }
 
-.toc-item i::after {
+.toc-item i:after {
   margin-left: 11px;
 }
 
@@ -210,15 +210,15 @@ paper-fab {
 }
 
 .toc-item.completed i,
-.toc-item.completed i::before,
-.toc-item.completed i::after,
+.toc-item.completed i:before,
+.toc-item.completed i:after,
 .toc-item.iron-selected i,
 .toc-item.iron-selected i:before {
   border-color: var(--paper-blue-500);
 }
 
-.toc-item:first-of-type i::before,
-.toc-item:last-of-type i::after {
+.toc-item:first-of-type i:before,
+.toc-item:last-of-type i:after {
   display: none;
 }
 
