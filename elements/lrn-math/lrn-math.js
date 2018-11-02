@@ -1,12 +1,14 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "mathjax/unpacked/MathJax.js";
 /**
 `lrn-math`
 A LRN element
 
 @demo demo/index.html
 */
+
 Polymer({
   _template: html`
     <style>
@@ -148,17 +150,10 @@ Polymer({
    * so that we can render it to the page.
    */
   ready: function() {
-    if (typeof window.__mathJaxLoaded === typeof undefined) {
-      let mathjaxCDN = document.createElement("script");
-      mathjaxCDN.src =
-        "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML";
-      document.body.appendChild(mathjaxCDN);
-      window.__mathJaxLoaded = true;
-    }
     this._observer = dom(this.$.content).observeNodes(info => {
       this.math = info.addedNodes.map(node => node.textContent).toString();
       setTimeout(function() {
-        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub]);
       }, 100);
     });
   }

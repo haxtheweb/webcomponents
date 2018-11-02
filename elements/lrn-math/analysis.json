@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 28,
+              "line": 29,
               "column": 4
             },
             "end": {
-              "line": 31,
+              "line": 32,
               "column": 5
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 32,
+              "line": 33,
               "column": 4
             },
             "end": {
-              "line": 35,
+              "line": 36,
               "column": 5
             }
           },
@@ -57,11 +57,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 39,
+              "line": 40,
               "column": 4
             },
             "end": {
-              "line": 43,
+              "line": 44,
               "column": 5
             }
           },
@@ -79,11 +79,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 47,
+              "line": 48,
               "column": 4
             },
             "end": {
-              "line": 49,
+              "line": 50,
               "column": 5
             }
           },
@@ -100,11 +100,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 53,
+              "line": 54,
               "column": 4
             },
             "end": {
-              "line": 56,
+              "line": 57,
               "column": 5
             }
           },
@@ -123,11 +123,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 64,
+              "line": 65,
               "column": 2
             },
             "end": {
-              "line": 69,
+              "line": 70,
               "column": 3
             }
           },
@@ -147,11 +147,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 74,
+              "line": 75,
               "column": 2
             },
             "end": {
-              "line": 82,
+              "line": 83,
               "column": 3
             }
           },
@@ -174,11 +174,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 88,
               "column": 2
             },
             "end": {
-              "line": 143,
+              "line": 144,
               "column": 3
             }
           },
@@ -194,11 +194,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 149,
+              "line": 150,
               "column": 2
             },
             "end": {
-              "line": 163,
+              "line": 157,
               "column": 3
             }
           },
@@ -219,11 +219,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 9,
+          "line": 10,
           "column": 8
         },
         "end": {
-          "line": 164,
+          "line": 158,
           "column": 1
         }
       },
@@ -235,11 +235,11 @@
           "description": "Styling for targeting the math pre and post",
           "sourceRange": {
             "start": {
-              "line": 28,
+              "line": 29,
               "column": 4
             },
             "end": {
-              "line": 31,
+              "line": 32,
               "column": 5
             }
           },
@@ -251,11 +251,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 32,
+              "line": 33,
               "column": 4
             },
             "end": {
-              "line": 35,
+              "line": 36,
               "column": 5
             }
           },
@@ -267,11 +267,11 @@
           "description": "display the math inline",
           "sourceRange": {
             "start": {
-              "line": 39,
+              "line": 40,
               "column": 4
             },
             "end": {
-              "line": 43,
+              "line": 44,
               "column": 5
             }
           },
@@ -283,11 +283,11 @@
           "description": "The math to get rendered.",
           "sourceRange": {
             "start": {
-              "line": 47,
+              "line": 48,
               "column": 4
             },
             "end": {
-              "line": 49,
+              "line": 50,
               "column": 5
             }
           },
@@ -299,11 +299,11 @@
           "description": "backdown to inject text",
           "sourceRange": {
             "start": {
-              "line": 53,
+              "line": 54,
               "column": 4
             },
             "end": {
-              "line": 56,
+              "line": 57,
               "column": 5
             }
           },
