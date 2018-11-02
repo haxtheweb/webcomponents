@@ -1,7 +1,9 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-list/iron-list.js";
+import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/paper-input/paper-input.js";
+import "@polymer/paper-item/paper-item.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
 import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
