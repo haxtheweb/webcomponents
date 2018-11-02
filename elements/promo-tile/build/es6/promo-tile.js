@@ -34,12 +34,12 @@ Polymer({
 
       }
 
-      :host[hover] #container .back_card {
+      :host([hover]) #container .back_card {
         opacity: 0.9;
         transition: all .3s ease-in-out;
       }
 
-      :host[hover] #container .front_card .front_title {
+      :host([hover]) #container .front_card .front_title {
         opacity: 0;
         transition: all .3s ease-in-out;
       }
@@ -96,7 +96,7 @@ Polymer({
         margin-right: 10px;
       }
 
-      :host[hover] .learn_more paper-button {
+      :host([hover]) .learn_more paper-button {
         color: var(--hover-link);
       }
 

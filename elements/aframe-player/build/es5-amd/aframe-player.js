@@ -2,10 +2,10 @@ define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-  "./lib/aframe-aframe.js"
+  "./node_modules/aframe/dist/aframe-master.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_b7ae4630dbb711e8991257cc060826f9() {
+  function _templateObject_5e12c300dea811e889eadd3f7a1e4242() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n        position: relative;\n      }\n    </style>\n    <a-scene id="scene" class="embedded" embedded="" arjs$="[[ar]]" style$="height:[[height]];width:[[width]];">\n      <a-sky color$="[[skyColor]]"></a-sky>\n      <a-marker-camera preset="hiro"></a-marker-camera>\n      <a-entity id="entity" gltf-model$="[[source]]" position="0 0 0"></a-entity>\n    </a-scene>\n'
@@ -14,14 +14,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n        position: relative;\n      }\n    </style>\n    <a-scene id="scene" class="embedded" embedded="" arjs\\$="[[ar]]" style\\$="height:[[height]];width:[[width]];">\n      <a-sky color\\$="[[skyColor]]"></a-sky>\n      <a-marker-camera preset="hiro"></a-marker-camera>\n      <a-entity id="entity" gltf-model\\$="[[source]]" position="0 0 0"></a-entity>\n    </a-scene>\n'
       ]
     );
-    _templateObject_b7ae4630dbb711e8991257cc060826f9 = function() {
+    _templateObject_5e12c300dea811e889eadd3f7a1e4242 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_b7ae4630dbb711e8991257cc060826f9()
+      _templateObject_5e12c300dea811e889eadd3f7a1e4242()
     ),
     is: "aframe-player",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

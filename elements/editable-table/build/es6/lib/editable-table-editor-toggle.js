@@ -18,7 +18,7 @@ Polymer({
         justify-content: space-between;
         width: 100%;
       }
-      :host[disabled] .setting-text {
+      :host([disabled]) .setting-text {
         opacity: 0.5;
       }
     </style>

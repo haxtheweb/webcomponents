@@ -4,16 +4,16 @@ define([
   "./node_modules/@polymer/paper-button/paper-button.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject2_e5132c90dbb611e8ad0c8921c5db7143() {
+  function _templateObject2_c46331e0dea711e8865e6d0ce79d2047() {
     var data = babelHelpers.taggedTemplateLiteral([
-      '\n    <style>\n      :host {\n        display: flex;\n        flex-wrap: wrap;\n      }\n      :host lrn-assignment {\n        margin: 1em;\n      }\n      :host[layout="wide"] lrn-assignment {\n        width: calc(100% - 2em);\n      }\n      :host[layout="medium"] lrn-assignment {\n        width: calc(50% - 2em);\n      }\n      :host[layout="tight"] lrn-assignment {\n        width: calc(25% - 2em);\n      }\n    </style>\n    <template is="dom-repeat" items="[[assignments]]">\n      <lrn-assignment title="[[item.title]]" actions="[[item.actions]]"></lrn-assignment>\n    </template>\n\n    <template is="dom-if" if="[[url]]">\n      <iron-ajax auto="" url="[[url]]" handle-as="json" on-response="handleResponse"></iron-ajax>\n    </template>\n'
+      '\n    <style>\n      :host {\n        display: flex;\n        flex-wrap: wrap;\n      }\n      :host lrn-assignment {\n        margin: 1em;\n      }\n      :host([layout="wide"]) lrn-assignment {\n        width: calc(100% - 2em);\n      }\n      :host([layout="medium"]) lrn-assignment {\n        width: calc(50% - 2em);\n      }\n      :host([layout="tight"]) lrn-assignment {\n        width: calc(25% - 2em);\n      }\n    </style>\n    <template is="dom-repeat" items="[[assignments]]">\n      <lrn-assignment title="[[item.title]]" actions="[[item.actions]]"></lrn-assignment>\n    </template>\n\n    <template is="dom-if" if="[[url]]">\n      <iron-ajax auto="" url="[[url]]" handle-as="json" on-response="handleResponse"></iron-ajax>\n    </template>\n'
     ]);
-    _templateObject2_e5132c90dbb611e8ad0c8921c5db7143 = function() {
+    _templateObject2_c46331e0dea711e8865e6d0ce79d2047 = function() {
       return data;
     };
     return data;
   }
-  function _templateObject_e5132c90dbb611e8ad0c8921c5db7143() {
+  function _templateObject_c46331e0dea711e8865e6d0ce79d2047() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: flex;\n        width: 100%;\n      }\n      paper-card {\n        width: 100%;\n      }\n    </style>\n    <paper-card heading="[[title]]" image="[[image]]" elevation="1" animated-shadow="false">\n      <div class="card-content">\n        [[details]]\n        <slot></slot>\n      </div>\n      <div class="card-actions">\n        <template is="dom-repeat" items="[[actions]]">\n          <a href$="[[item.url]]"><paper-button raised="">[[item.label]]</paper-button></a>\n        </template>\n      </div>\n    </paper-card>\n'
@@ -22,14 +22,14 @@ define([
         '\n    <style>\n      :host {\n        display: flex;\n        width: 100%;\n      }\n      paper-card {\n        width: 100%;\n      }\n    </style>\n    <paper-card heading="[[title]]" image="[[image]]" elevation="1" animated-shadow="false">\n      <div class="card-content">\n        [[details]]\n        <slot></slot>\n      </div>\n      <div class="card-actions">\n        <template is="dom-repeat" items="[[actions]]">\n          <a href\\$="[[item.url]]"><paper-button raised="">[[item.label]]</paper-button></a>\n        </template>\n      </div>\n    </paper-card>\n'
       ]
     );
-    _templateObject_e5132c90dbb611e8ad0c8921c5db7143 = function() {
+    _templateObject_c46331e0dea711e8865e6d0ce79d2047 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_e5132c90dbb611e8ad0c8921c5db7143()
+      _templateObject_c46331e0dea711e8865e6d0ce79d2047()
     ),
     is: "lrn-assignment",
     properties: {
@@ -44,7 +44,7 @@ define([
   });
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject2_e5132c90dbb611e8ad0c8921c5db7143()
+      _templateObject2_c46331e0dea711e8865e6d0ce79d2047()
     ),
     is: "lrn-assignments",
     properties: {

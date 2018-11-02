@@ -32,11 +32,11 @@ Polymer({
         width: 100%;
         height: 2em;
       }
-      :host[opened] #collapse {
+      :host([opened]) #collapse {
         border-top: 1px solid var(--lrnsys-collapselist-item-border, #bbb);
         background-color: var(--lrnsys-collapselist-item-active-color, #eee);
       }
-      :host[opened] .collapse-label {
+      :host([opened]) .collapse-label {
         font-weight: bold;
         background-color: var(--lrnsys-collapselist-item-active-color, #eee);
       }

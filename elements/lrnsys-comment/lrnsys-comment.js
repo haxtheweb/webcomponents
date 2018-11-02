@@ -27,17 +27,17 @@ Polymer({
         display: block;
         padding: 10px 10px 10px 0px;
       }
-      :host[disabled] {
+      :host([disabled]) {
         opacity: .5;
         background-color: #cccccc;
         pointer-events: none;
       }
-      :host:focus,
-      :host:hover {
+      :host(:focus),
+      :host(:hover) {
         z-index: 2;
       }
-      :host:focus .comment-outer,
-      :host:hover .comment-outer {
+      :host(:focus) .comment-outer,
+      :host(:hover) .comment-outer {
         border: 1px #0277bd solid;
       }
       .comment-outer {
@@ -105,7 +105,7 @@ Polymer({
         text-overflow: ellipsis;
         margin-bottom: 35px;
       }
-      .nowrap-me marked-element ::slotted(#content p.marked-element::after) {
+      .nowrap-me marked-element ::slotted(#content p.marked-element:after) {
         content: "see more";
         position: absolute;
         bottom: 65px;

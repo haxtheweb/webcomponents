@@ -3,38 +3,38 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       :host {
         display: block;
       }
-      :host[visualization="network"] simple-concept-network-node {
+      :host([visualization="network"]) simple-concept-network-node {
         position: relative;
       }
-      :host[visualization="network"] simple-concept-network-node:nth-child(1) {
+      :host([visualization="network"]) simple-concept-network-node:nth-child(1) {
         top: 150px;
         left: 176px;
       }
-      :host[visualization="network"] simple-concept-network-node:nth-child(2) {
+      :host([visualization="network"]) simple-concept-network-node:nth-child(2) {
         top: 0px;
         left: 60px;
       }
-      :host[visualization="network"] simple-concept-network-node:nth-child(3) {
+      :host([visualization="network"]) simple-concept-network-node:nth-child(3) {
         top: 75px;
         left: 60px;
       }
-      :host[visualization="network"] simple-concept-network-node:nth-child(4) {
+      :host([visualization="network"]) simple-concept-network-node:nth-child(4) {
         top: 230px;
         left: -56px;
       }
-      :host[visualization="network"] simple-concept-network-node:nth-child(5) {
+      :host([visualization="network"]) simple-concept-network-node:nth-child(5) {
         top: 300px;
         left: -282px;
       }
-      :host[visualization="network"] simple-concept-network-node:nth-child(6) {
+      :host([visualization="network"]) simple-concept-network-node:nth-child(6) {
         top: 230px;
         left: -515px;
       }
-      :host[visualization="network"] simple-concept-network-node:nth-child(7) {
+      :host([visualization="network"]) simple-concept-network-node:nth-child(7) {
         top: 75px;
         left: -630px;
       }
-      :host[visualization="network"] {
+      :host([visualization="network"]) {
         display: block;
         min-height: 450px;
       }

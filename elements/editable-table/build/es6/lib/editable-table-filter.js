@@ -34,13 +34,13 @@ Polymer({
       :host #filter-off {
         opacity: 0.25;
       }
-      :host:not([filtered]) .filtered,
-      :host:not([filtered]):not(:focus):not(:hover) #filter,
-      :host:not([filtered]):focus #filter-off, 
-      :host:not([filtered]):hover #filter-off,
-      :host[filtered]:not(:focus):not(:hover) #filter-off,
-      :host[filtered]:focus #filter, 
-      :host[filtered]:hover #filter {
+      :host(:not([filtered])) .filtered,
+      :host(:not([filtered]):not(:focus):not(:hover)) #filter,
+      :host(:not([filtered]):focus) #filter-off, 
+      :host(:not([filtered]):hover) #filter-off,
+      :host([filtered]:not(:focus):not(:hover)) #filter-off,
+      :host([filtered]:focus) #filter, 
+      :host([filtered]:hover) #filter {
         display: none;
       }
     </style>

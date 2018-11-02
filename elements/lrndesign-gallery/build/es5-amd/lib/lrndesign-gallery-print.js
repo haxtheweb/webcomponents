@@ -2,7 +2,7 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
   _polymerLegacy
 ) {
   "use strict";
-  function _templateObject_9e617560dbb911e88b1215448b1f0d23() {
+  function _templateObject_68692d10deaa11e8afc95111646d7872() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: none;\n      }\n      @media print {\n        :host {\n          margin-top: 15px;\n          margin-bottom: 15px;\n          display: block;\n        }\n        :host iron-image {\n          display: block;\n          margin-top: 15px;\n          width: 100%;\n          height: 400px;\n        }\n        :host .print-image {\n          max-width: 400px;\n          max-height: 400px;\n          display:block;\n          border: 1px solid #ddd;\n          page-break-inside: avoid;\n        }\n      }\n    </style>\n    <section class="print">\n      <template is="dom-if" if="[[hasTitle]]">\n        <h2>[[title]]</h2>\n      </template>\n      <div><span id="details"></span></div>\n      <img class="print-image" alt$="[[alt]]" src$="[[src]]">\n    </section>\n'
@@ -11,14 +11,14 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
         '\n    <style>\n      :host {\n        display: none;\n      }\n      @media print {\n        :host {\n          margin-top: 15px;\n          margin-bottom: 15px;\n          display: block;\n        }\n        :host iron-image {\n          display: block;\n          margin-top: 15px;\n          width: 100%;\n          height: 400px;\n        }\n        :host .print-image {\n          max-width: 400px;\n          max-height: 400px;\n          display:block;\n          border: 1px solid #ddd;\n          page-break-inside: avoid;\n        }\n      }\n    </style>\n    <section class="print">\n      <template is="dom-if" if="[[hasTitle]]">\n        <h2>[[title]]</h2>\n      </template>\n      <div><span id="details"></span></div>\n      <img class="print-image" alt\\$="[[alt]]" src\\$="[[src]]">\n    </section>\n'
       ]
     );
-    _templateObject_9e617560dbb911e88b1215448b1f0d23 = function() {
+    _templateObject_68692d10deaa11e8afc95111646d7872 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_9e617560dbb911e88b1215448b1f0d23()
+      _templateObject_68692d10deaa11e8afc95111646d7872()
     ),
     is: "lrndesign-gallery-print",
     properties: {

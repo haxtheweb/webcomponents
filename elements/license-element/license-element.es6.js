@@ -8,7 +8,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         --license-background-color: #F2F2F2;
         background-color: var(--license-background-color);
       }
-      :host::after {
+      :host:after {
         content: 'License';
         position: relative;
         float: right;
@@ -26,11 +26,11 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         @apply --license-body;
       }
 
-      :host[display-method="footnote"] {
+      :host([display-method="footnote"]) {
         visibility: hidden;
         opacity: 0;
       }
-      :host[display-method="popup"] {
+      :host([display-method="popup"]) {
         display: block;
       }
       .license-link {

@@ -13,19 +13,19 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         width: 100px;
       }
 
-      :host[icon="stopnoteicons:stop-icon"] {
+      :host([icon="stopnoteicons:stop-icon"]) {
         --accent-color: #d8261c;
       }
 
-      :host[icon="stopnoteicons:warning-icon"] {
+      :host([icon="stopnoteicons:warning-icon"]) {
         --accent-color: #ffeb3b;
       }
 
-      :host[icon="stopnoteicons:confirm-icon"] {
+      :host([icon="stopnoteicons:confirm-icon"]) {
         --accent-color: #81c784;
       }
 
-      :host[icon="stopnoteicons:book-icon"] {
+      :host([icon="stopnoteicons:book-icon"]) {
         --accent-color: #21a3db;
       }
 

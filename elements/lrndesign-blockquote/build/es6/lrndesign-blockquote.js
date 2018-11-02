@@ -47,22 +47,22 @@ Polymer({
         margin-top: .25rem;
         text-align: right;
       }
-      :host[depth="1"] blockquote { @apply --shadow-elevation-2dp; }
-      :host[depth="2"] blockquote { @apply --shadow-elevation-3dp; }
-      :host[depth="3"] blockquote { @apply --shadow-elevation-4dp; }
-      :host[depth="4"] blockquote { @apply --shadow-elevation-6dp; }
-      :host[depth="5"] blockquote { @apply --shadow-elevation-8dp; }
+      :host([depth="1"]) blockquote { @apply --shadow-elevation-2dp; }
+      :host([depth="2"]) blockquote { @apply --shadow-elevation-3dp; }
+      :host([depth="3"]) blockquote { @apply --shadow-elevation-4dp; }
+      :host([depth="4"]) blockquote { @apply --shadow-elevation-6dp; }
+      :host([depth="5"]) blockquote { @apply --shadow-elevation-8dp; }
 
 
       /* BEGIN HYPERCARDIFY, thanks @realdlnorman */
-      :host[hypercard] ::slotted(*) {
+      :host([hypercard]) ::slotted(*) {
         -webkit-filter: grayscale(1) contrast(300%);
         filter: grayscale(1) contrast(300%);
         font-family: Chikarego, Helvetica, sans-serif;
         transition: all .6s ease;
       }
       /* Disable grayscale on hover */
-      :host[hypercard] ::slotted(*):hover {
+      :host([hypercard]) ::slotted(*):hover {
         -webkit-filter: grayscale(0);
         filter: none;
       }

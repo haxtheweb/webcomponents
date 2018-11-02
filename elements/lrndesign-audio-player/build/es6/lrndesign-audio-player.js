@@ -106,7 +106,7 @@ Polymer({
 
       /* On hover */
 
-      :host:not(.cantplay) #right:hover #replay {
+      :host(:not(.cantplay)) #right:hover #replay {
         opacity: 1;
       }
 

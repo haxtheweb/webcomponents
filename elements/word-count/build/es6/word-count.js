@@ -11,7 +11,7 @@ Polymer({
         --word-count-color: #888888;
         --word-count-color-hover: #000000;
       }
-      :host::after{
+      :host:after{
         content: attr(words-text);
         font-size: 10px;
         position: relative;
@@ -23,19 +23,19 @@ Polymer({
         color: var(--word-count-color);
         @apply(--word-count-text);
       }
-      :host:hover::after {
+      :host(:hover):after {
         font-size: 12px;
         font-weight: bold;
         color: var(--word-count-color-hover);
         @apply(--word-count-text-hover);
       }
-      :host:focus::after {
+      :host(:focus):after {
         font-size: 12px;
         font-weight: bold;
         color: var(--word-count-color-hover);
         @apply(--word-count-text-hover);
       }
-      :host:active::after {
+      :host(:active):after {
         font-size: 12px;
         font-weight: bold;
         color: var(--word-count-color-hover);

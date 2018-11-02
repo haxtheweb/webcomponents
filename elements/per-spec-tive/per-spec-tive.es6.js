@@ -6,7 +6,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         background-color: transparent;
         opacity: 1;
       }
-      :host[outline-loading] {
+      :host([outline-loading]) {
         opacity: .6;
         background-color: #999999;
       }

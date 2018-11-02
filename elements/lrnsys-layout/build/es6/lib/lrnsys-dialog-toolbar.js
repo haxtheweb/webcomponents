@@ -37,7 +37,7 @@ Polymer({
         justify-content: center;
         padding: 0;
       }
-      :host[secondary-visible] #secondary {
+      :host([secondary-visible]) #secondary {
         transform: translateY(0);
         height: var(--app-toolbar-secondary-height);
       }

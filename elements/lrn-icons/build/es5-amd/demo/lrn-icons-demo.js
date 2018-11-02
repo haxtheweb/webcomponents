@@ -4,7 +4,7 @@ define([
   "../lrn-icons.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_f85faa30dbb611e8a994a5a21bfa6a29() {
+  function _templateObject_d35444a0dea711e8a7277f9fa92af57b() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n  <ul>\n  <template is="dom-repeat" items="[[iconList]]">\n    <li>\n    <iron-icon icon$="lrn:[[item.icon]]"></iron-icon>\n    <strong>&lt;iron-icon icon="lrn:[[item.icon]]"&gt;</strong>\n    </li>\n  </template>\n  </ul>\n'
@@ -13,14 +13,14 @@ define([
         '\n  <ul>\n  <template is="dom-repeat" items="[[iconList]]">\n    <li>\n    <iron-icon icon\\$="lrn:[[item.icon]]"></iron-icon>\n    <strong>&lt;iron-icon icon="lrn:[[item.icon]]"&gt;</strong>\n    </li>\n  </template>\n  </ul>\n'
       ]
     );
-    _templateObject_f85faa30dbb611e8a994a5a21bfa6a29 = function() {
+    _templateObject_d35444a0dea711e8a7277f9fa92af57b = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_f85faa30dbb611e8a994a5a21bfa6a29()
+      _templateObject_d35444a0dea711e8a7277f9fa92af57b()
     ),
     is: "lrn-icons-demo",
     ready: function ready() {

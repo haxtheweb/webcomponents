@@ -7,34 +7,34 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         --box-background-color: #f7f6ef;
       }
 
-      :host[card] {
+      :host([card]) {
         box-shadow: 0 1px 5px rgba(0, 0, 0, 0.14);
         padding: 20px;
       }
 
-      :host[box] {
+      :host([box]) {
         background-color:var(--box-background-color);
         padding: 20px;
       }
 
-      :host[round] iron-image {
+      :host([round]) iron-image {
         border-radius: 50%;
       }
 
       @media screen and (min-width: 450px) {
-        :host[size="small"] {
+        :host([size="small"]) {
           max-width: 50%;
         }
       }
 
       @media screen and (min-width: 650px) {
-        :host[size="small"] {
+        :host([size="small"]) {
           max-width: 35%;
         }
       }
 
       @media screen and (min-width: 900px) {
-        :host[size="small"] {
+        :host([size="small"]) {
           max-width: 25%;
         }
       }

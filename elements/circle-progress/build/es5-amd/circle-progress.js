@@ -5,7 +5,7 @@ define([
   "./node_modules/@polymer/paper-styles/default-theme.js"
 ], function(_polymerLegacy, _ironFlexLayout, _ironResizableBehavior) {
   "use strict";
-  function _templateObject_a73d66b0dbb611e8bfefa528cdbbfe74() {
+  function _templateObject_99c30640dea711e8973889d2b8df9a3c() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n        <style>\n\n            :host {\n                @apply(--layout-vertical);\n                @apply(--layout-center-center);\n\n                position: relative;\n\n                width: var(--circle-progress-width, 64px);\n                height: var(--circle-progress-height, 64px);\n                margin: 24px;\n\n                border-radius: 50%;\n            }\n\n            svg {\n                position: absolute;\n                top: 0;\n                left: 0;\n\n                display: none;\n            }\n\n            .circle-background {\n                stroke: var(--circle-progress-bg-stroke-color, --paper-grey-100);\n            }\n\n            .circle-foreground {\n                transition: stroke-dashoffset var(--circle-progress-transition, 150ms);\n\n                stroke: var(--circle-progress-stroke-color, --accent-color);\n                stroke-linecap: var(--circle-progress-stroke-linecap, round);\n            }\n\n        </style>\n\n        <svg id="circle" width="100%" height="100%">\n            <circle class="circle-background" r$="[[_radius]]" cx$="[[_cx]]" cy$="[[_cy]]" fill="transparent" stroke-width$="[[strokeWidth]]"></circle>\n            <circle class="circle-foreground" r$="[[_radius]]" cx$="[[_cx]]" cy$="[[_cy]]" fill="transparent" stroke-width$="[[strokeWidth]]" stroke-dasharray$="[[_dasharray]]" stroke-dashoffset$="[[_dashoffset]]" transform$="[[_transform]]"></circle>\n        </svg>\n\n        <slot></slot>\n'
@@ -14,14 +14,14 @@ define([
         '\n        <style>\n\n            :host {\n                @apply(--layout-vertical);\n                @apply(--layout-center-center);\n\n                position: relative;\n\n                width: var(--circle-progress-width, 64px);\n                height: var(--circle-progress-height, 64px);\n                margin: 24px;\n\n                border-radius: 50%;\n            }\n\n            svg {\n                position: absolute;\n                top: 0;\n                left: 0;\n\n                display: none;\n            }\n\n            .circle-background {\n                stroke: var(--circle-progress-bg-stroke-color, --paper-grey-100);\n            }\n\n            .circle-foreground {\n                transition: stroke-dashoffset var(--circle-progress-transition, 150ms);\n\n                stroke: var(--circle-progress-stroke-color, --accent-color);\n                stroke-linecap: var(--circle-progress-stroke-linecap, round);\n            }\n\n        </style>\n\n        <svg id="circle" width="100%" height="100%">\n            <circle class="circle-background" r\\$="[[_radius]]" cx\\$="[[_cx]]" cy\\$="[[_cy]]" fill="transparent" stroke-width\\$="[[strokeWidth]]"></circle>\n            <circle class="circle-foreground" r\\$="[[_radius]]" cx\\$="[[_cx]]" cy\\$="[[_cy]]" fill="transparent" stroke-width\\$="[[strokeWidth]]" stroke-dasharray\\$="[[_dasharray]]" stroke-dashoffset\\$="[[_dashoffset]]" transform\\$="[[_transform]]"></circle>\n        </svg>\n\n        <slot></slot>\n'
       ]
     );
-    _templateObject_a73d66b0dbb611e8bfefa528cdbbfe74 = function() {
+    _templateObject_99c30640dea711e8973889d2b8df9a3c = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a73d66b0dbb611e8bfefa528cdbbfe74()
+      _templateObject_99c30640dea711e8973889d2b8df9a3c()
     ),
     is: "circle-progress",
     behaviors: [_ironResizableBehavior.IronResizableBehavior],

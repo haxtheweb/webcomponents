@@ -6,7 +6,7 @@ define([
   "../node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_27a4e1f0dbb911e8a9fe6f95c8271ab5() {
+  function _templateObject_e9caa010dea911e8bd87d7fc5c9c3d31() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <iron-ajax id="datasource" url="{{dataSource}}" handle-as="text" last-response="{{rawData}}" on-response="handleResponse"></iron-ajax>\n    <chartist-render id="chartist" type="bar" scale$="[[scale]]" chart-title$="[[chartTitle]]" chart-desc$="[[chartDesc]]" data$="[[data]]" options$="{{options}}" responsive-options$="[[responsiveOptions]]"></chartist-render>\n'
@@ -15,14 +15,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <iron-ajax id="datasource" url="{{dataSource}}" handle-as="text" last-response="{{rawData}}" on-response="handleResponse"></iron-ajax>\n    <chartist-render id="chartist" type="bar" scale\\$="[[scale]]" chart-title\\$="[[chartTitle]]" chart-desc\\$="[[chartDesc]]" data\\$="[[data]]" options\\$="{{options}}" responsive-options\\$="[[responsiveOptions]]"></chartist-render>\n'
       ]
     );
-    _templateObject_27a4e1f0dbb911e8a9fe6f95c8271ab5 = function() {
+    _templateObject_e9caa010dea911e8bd87d7fc5c9c3d31 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_27a4e1f0dbb911e8a9fe6f95c8271ab5()
+      _templateObject_e9caa010dea911e8bd87d7fc5c9c3d31()
     ),
     is: "lrndesign-bar",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

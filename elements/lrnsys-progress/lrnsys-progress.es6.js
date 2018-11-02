@@ -4,22 +4,22 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         display: block;
         margin-top: 1.5em;
       }
-      :host[size="tiny"] {
+      :host([size="tiny"]) {
         font-size: .8em;
       }
-      :host[size="small"] {
+      :host([size="small"]) {
         font-size: 1.2em;
       }
-      :host[size="medium"]{
+      :host([size="medium"]) {
         font-size: 1.6em;
       }
-      :host[size="large"] {
+      :host([size="large"]) {
         font-size: 2.8em;
       }
-      :host[size="x-large"] {
+      :host([size="x-large"]) {
         font-size: 4em;
       }
-      :host[size="epic"] {
+      :host([size="epic"]) {
         font-size: 6em;
       }
       #circle-container {
@@ -51,16 +51,16 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         list-style-type: none;
       }
 
-      :host[vertical] {
+      :host([vertical]) {
         width: max-content;
       }
-      :host[vertical] #circle-container {
+      :host([vertical]) #circle-container {
         display: block;
       }
-      :host[vertical] paper-progress {
+      :host([vertical]) paper-progress {
         display: none !important;
       }
-      :host[vertical] lrnsys-progress-circle {
+      :host([vertical]) lrnsys-progress-circle {
         margin: 1em 0;
         padding: 0;
         width: 100%;

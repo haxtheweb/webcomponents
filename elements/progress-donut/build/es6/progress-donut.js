@@ -31,23 +31,23 @@ Polymer({
         width: 250px;
         height: 250px;
       }
-      :host[size="xs"] #wrapper,
-      :host[size="xs"] #wrapper #chart {
+      :host([size="xs"]) #wrapper,
+      :host([size="xs"]) #wrapper #chart {
         width: 150px;
         height: 150px;
       }
-      :host[size="sm"] #wrapper,
-      :host[size="sm"] #wrapper #chart {
+      :host([size="sm"]) #wrapper,
+      :host([size="sm"]) #wrapper #chart {
         width: 200px;
         height: 200px;
       }
-      :host[size="lg"] #wrapper,
-      :host[size="lg"] #wrapper #chart {
+      :host([size="lg"]) #wrapper,
+      :host([size="lg"]) #wrapper #chart {
         width: 300px;
         height: 300px;
       }
-      :host[size="xl"] #wrapper,
-      :host[size="xl"] #wrapper #chart {
+      :host([size="xl"]) #wrapper,
+      :host([size="xl"]) #wrapper #chart {
         width: 400px;
         height: 400px;
       }

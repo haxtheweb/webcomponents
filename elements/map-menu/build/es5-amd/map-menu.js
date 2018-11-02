@@ -5,18 +5,18 @@ define([
   "./lib/map-menu-builder.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_b3c205f0dbb911e8ba10c586c462b2d7() {
+  function _templateObject_8533ef20deaa11e8b01f1db88d870bd0() {
     var data = babelHelpers.taggedTemplateLiteral([
-      '\n    <style>\n      :host {\n        --map-menu-active-color: rgba(0,0,0, .1);\n        display: block;\n        overflow-y: scroll;\n        position: relative;\n        height: 100%;\n      }\n\n      #activeIndicator {\n        background: var(--map-menu-active-color);\n        transition: all .3s ease-in-out;\n        position: absolute\n      }\n\n      map-menu-container {\n        padding: 2em;\n        @apply(--map-menu-container)\n      }\n\n      /* turn default active color if indicator is on */\n      :host[active-indicator] map-menu-builder { \n        --map-menu-active-color: transparent;\n      }\n    </style>\n    <div id="itemslist">\n      <map-menu-container>\n        <div id="activeIndicator"></div>\n        <map-menu-builder id="builder" items="[[items]]"></map-menu-builder>\n      </map-menu-container>\n    </div>\n    <smooth-scroll id="smoothScroll"></smooth-scroll>\n'
+      '\n    <style>\n      :host {\n        --map-menu-active-color: rgba(0,0,0, .1);\n        display: block;\n        overflow-y: scroll;\n        position: relative;\n        height: 100%;\n      }\n\n      #activeIndicator {\n        background: var(--map-menu-active-color);\n        transition: all .3s ease-in-out;\n        position: absolute\n      }\n\n      map-menu-container {\n        padding: 2em;\n        @apply(--map-menu-container)\n      }\n\n      /* turn default active color if indicator is on */\n      :host([active-indicator]) map-menu-builder { \n        --map-menu-active-color: transparent;\n      }\n    </style>\n    <div id="itemslist">\n      <map-menu-container>\n        <div id="activeIndicator"></div>\n        <map-menu-builder id="builder" items="[[items]]"></map-menu-builder>\n      </map-menu-container>\n    </div>\n    <smooth-scroll id="smoothScroll"></smooth-scroll>\n'
     ]);
-    _templateObject_b3c205f0dbb911e8ba10c586c462b2d7 = function() {
+    _templateObject_8533ef20deaa11e8b01f1db88d870bd0 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_b3c205f0dbb911e8ba10c586c462b2d7()
+      _templateObject_8533ef20deaa11e8b01f1db88d870bd0()
     ),
     is: "map-menu",
     properties: {

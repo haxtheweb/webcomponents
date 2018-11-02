@@ -49,8 +49,8 @@ Polymer({
         border-radius: 0.1em;
         background-color: white;
       }
-      :host:focus #wrapper,
-      :host:hover #wrapper {
+      :host(:focus) #wrapper,
+      :host(:hover) #wrapper {
         cursor: pointer;
       }
       :host #swipe #move {
@@ -58,8 +58,8 @@ Polymer({
         padding: 10px;
         color: transparent;
       }
-      :host:focus #swipe #move,
-      :host:hover #swipe #move {
+      :host(:focus) #swipe #move,
+      :host(:hover) #swipe #move {
         color: var(--lrnsys-outline-move-icon-color, #aaaaaa);
       }
       :host #swipe paper-icon-button {
@@ -71,8 +71,8 @@ Polymer({
         display: none;
         border-radius: 0.1em;
       }
-      :host:focus #swipe paper-icon-button,
-      :host:hover #swipe paper-icon-button {
+      :host(:focus) #swipe paper-icon-button,
+      :host(:hover) #swipe paper-icon-button {
         width: 36px;
         display: block;
       }

@@ -11,7 +11,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         transition: background-color .6s linear, visibility .6s linear, opacity .6s linear;
         visibility: hidden;
       }
-      :host[edit-mode] #container {
+      :host([edit-mode]) #container {
         display: block;
         opacity: .4;
         visibility: visible;
@@ -19,9 +19,9 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         position: absolute;
         z-index: 1;
       }
-      :host[edit-mode] #container:hover,
-      :host[edit-mode] #container:focus,
-      :host[focused] #container {
+      :host([edit-mode]) #container:hover,
+      :host([edit-mode]) #container:focus,
+      :host([focused]) #container {
         opacity: .8;
         background-color: var(--item-overlay-ops, #ffffff);
       }

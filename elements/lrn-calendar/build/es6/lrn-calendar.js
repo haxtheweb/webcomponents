@@ -11,11 +11,11 @@ import "./node_modules/@polymer/paper-menu-button/paper-menu-button.js";
 import "./node_modules/@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
 import "./node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "./node_modules/@lrnwebcomponents/lrnsys-layout/lrnsys-layout.js";
-import "@lrnwebcomponents/lrnsys-layout/lrnsys-drawer.js";
-import "@lrnwebcomponents/lrnsys-layout/lrnsys-dialog.js";
-import "@lrnwebcomponents/lrnsys-layout/lrnsys-collapselist.js";
-import "@lrnwebcomponents/lrnsys-layout/lrnsys-collapselist-item.js";
+import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-layout.js";
+import "./node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-drawer.js";
+import "./node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
+import "./node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-collapselist.js";
+import "./node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-collapselist-item.js";
 import "./node_modules/ical.js/build/ical.js";
 import "./lib/lrn-calendar-date.js";
 Polymer({
