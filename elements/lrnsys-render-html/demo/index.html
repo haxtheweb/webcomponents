@@ -8,6 +8,8 @@
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '@polymer/polymer/lib/elements/dom-bind.js';
+      import '@polymer/paper-input/paper-textarea.js';
       import '../lrnsys-render-html.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
@@ -16,6 +18,12 @@
     <div class="vertical-section-container centered">
       <h3>Basic lrnsys-render-html demo</h3>
       <p>Write some html and see that it renders it.</p>
+      <dom-bind>
+        <template>
+          <paper-textarea label="HTML" value="{{html}}"></paper-textarea>
+          <lrnsys-render-html html="[[html]]"></lrnsys-render-html>
+        </template>
+      </dom-bind>
       <demo-snippet>
         <template is="dom-bind">
           <paper-textarea label="HTML" value="{{html}}"></paper-textarea>

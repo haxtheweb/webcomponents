@@ -1,22 +1,50 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 /**
-`lrndesign-abbreviation`
-A wrapper to make a cleaner abbreviation deign element
-
-@demo demo/index.html
-*/
+ * `lrndesign-abbreviation`
+ * `A wrapper to make a cleaner abbreviation deign element`
+ *
+ * @demo demo/index.html
+ */
 Polymer({
   _template: html`
     <style>
       :host {
-        display: block;
+        display: inline-block;
+      }
+      abbr {
+        transition: .6s all ease;
+        padding: 2px 4px;
+        font-style: italic;
+        background-color: var(--abbreviation-bg, #F9F9F9);
+        text-underline-position: under;
+        text-decoration:underline double;
+        cursor: help;
+        outline: var(--abbreviation-selection, #FFFF33);
+        @apply --abbreviation-main;
+      }
+      abbr:focus,
+      abbr:active,
+      abbr:hover {
+        text-decoration: none;
+        background-color: var(--abbreviation-selection, #FFFF33);
+        @apply --abbreviation-hover;
+      }
+      abbr::-moz-selection,
+      abbr::selection {
+        text-decoration: none;
+        background-color: var(--abbreviation-selection, #FFFF33);
+        @apply --abbreviation-selection;
       }
     </style>
-    <abbr title$="[[phrase]]" id="abbr">[[abbr]]</abbr>
-    <paper-tooltip for="abbr">[[phrase]]</paper-tooltip>
+    <abbr tabindex="0" title$="[[phrase]]" id="abbr">[[abbr]]</abbr>
+    <paper-tooltip for="abbr" position="top" offset="2" animation-delay="300">[[phrase]]</paper-tooltip>
 `,
 
   is: "lrndesign-abbreviation",

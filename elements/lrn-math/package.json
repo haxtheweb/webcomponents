@@ -42,7 +42,7 @@
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.30",
     "@polymer/polymer": "^3.0.5",
-    "mathjax": "^2.7.5"
+    "mathjax3": "^3.0.0-beta.2"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

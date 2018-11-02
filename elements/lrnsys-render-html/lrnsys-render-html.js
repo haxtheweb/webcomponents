@@ -18,7 +18,7 @@ Polymer({
         display: block;
       }
     </style>
-    <div id="container"> </div>
+    <div id="container"></div>
 `,
 
   is: "lrnsys-render-html",
