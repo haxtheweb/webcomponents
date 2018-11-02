@@ -188,7 +188,7 @@
       "**/wavesurfer.js",
       "**/wavesurfer.js/**",
       "**/aframe",
-      "**/mathjax"
+      "**/mathjax3"
     ]
   },
   "husky": {
