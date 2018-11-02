@@ -11,6 +11,6 @@ test/.wct-kludge
 yarn.lock
 *-*.tgz
 package-lock.json
-elements/*/build/*
-elements/*/analysis.json
+build
+analysis.json
 yarn-error.log
