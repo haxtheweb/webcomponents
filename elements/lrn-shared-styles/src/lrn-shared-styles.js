@@ -16,8 +16,10 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 const styleElement = document.createElement("dom-module");
 
 const css = html`<style>
-  iron-icon, lrn-icon {
-    display: inline-block;
+  lrn-icon, iron-icon {
+    --layout-inline: {
+      display: inline-flex;
+    }; 
   }
   .sr-only {
     position: absolute;
