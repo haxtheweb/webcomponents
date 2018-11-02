@@ -45,7 +45,6 @@
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "0.0.30",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.1.3",
@@ -55,8 +54,7 @@
     "lodash": "4.17.11",
     "polymer-build": "3.1.0",
     "polymer-cli": "1.8.1",
-    "wct-browser-legacy": "1.0.2",
-    "@lrnwebcomponents/iconset-demo": "^0.0.30"
+    "wct-browser-legacy": "1.0.2"
   },
   "private": false,
   "publishConfig": {
@@ -66,5 +64,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "9a19006247e8f5523b63bdc4adb4e358fcf59090"
+  "gitHead": "47f880abc249252e1ee3a26eb759332bd8da7515"
 }

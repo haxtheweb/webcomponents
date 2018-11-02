@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>LrnIcons: lrn-icons Demo</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
-      import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../lrn-icons.js';
-      import '@lrnwebcomponents/iconset-demo/iconset-demo.js';
+      import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
+      import './lrn-icons-demo.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic lrn-icon demo</h3>
-      <iconset-demo></iconset-demo></template>
+      <demo-snippet>
+        <lrn-icons-demo></lrn-icons-demo>
+      </demo-snippet>
     </div>
   </body>
 </html>

@@ -2,6 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-meta/iron-meta.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
+import "@lrnwebcomponents/lrn-shared-styles/lrn-shared-styles.js";
 
 /**
 This is a fork of https://github.com/PolymerElements/lrn-icon
@@ -84,9 +85,8 @@ Custom property | Description | Default
 */
 Polymer({
   _template: html`
-    <style>
+    <style include="lrn-shared-styles">
       :host {
-        display: inline-block;
         position: relative;
 
         vertical-align: middle;
@@ -101,6 +101,7 @@ Polymer({
         @apply(--lrn-icon);
       }
     </style>
+    <iron-icon icon$="[[icon]]"></iron-icon>
 `,
 
   is: "lrn-icon",
