@@ -8,16 +8,14 @@ import "@polymer/iron-icons/image-icons.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
-`place-holder`
-A LRN element
-
-@demo demo/index.html
-
-@microcopy - the mental model for this element
- -
- -
-
-*/
+ * `place-holder`
+ * Placeholder for a piece of media in the future
+ *
+ * @demo demo/index.html
+ *
+ * @microcopy - the mental model for this element
+ * - placeholder is a grey block on the page which can respond to drag and drop
+ */
 Polymer({
   _template: html`
     <style include="materializecss-styles-colors">

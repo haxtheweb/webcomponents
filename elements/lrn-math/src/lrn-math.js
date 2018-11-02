@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "mathjax/unpacked/MathJax.js";
+import "mathjax3/unpacked/MathJax.js";
 /**
 `lrn-math`
 A LRN element
