@@ -605,7 +605,7 @@
           "inheritedFrom": "ElementMixin"
         },
         {
-          "name": "iconsets",
+          "name": "items",
           "type": "?",
           "description": "",
           "privacy": "public",
@@ -624,29 +624,7 @@
               "observer": "false"
             }
           },
-          "defaultValue": "null"
-        },
-        {
-          "name": "items",
-          "type": "?",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 133,
-              "column": 2
-            },
-            "end": {
-              "line": 139,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "false",
-              "readOnly": true
-            }
-          }
+          "defaultValue": "[]"
         }
       ],
       "methods": [
@@ -2737,11 +2715,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 154,
+              "line": 147,
               "column": 2
             },
             "end": {
-              "line": 157,
+              "line": 150,
               "column": 3
             }
           },
@@ -2870,58 +2848,19 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 166,
+              "line": 159,
               "column": 2
             },
             "end": {
-              "line": 186,
+              "line": 176,
               "column": 3
             }
           },
           "metadata": {},
-          "params": []
-        },
-        {
-          "name": "_getIcons",
-          "description": "life cycle, element is removed from the DOM",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 191,
-              "column": 2
-            },
-            "end": {
-              "line": 195,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "iconsets"
-            }
-          ]
-        },
-        {
-          "name": "_getIconsFromObject",
-          "description": "life cycle, element is removed from the DOM",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 200,
-              "column": 2
-            },
-            "end": {
-              "line": 219,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "set"
-            }
-          ]
+          "params": [],
+          "return": {
+            "type": "void"
+          }
         }
       ],
       "staticMethods": [
@@ -3872,7 +3811,7 @@
           "column": 0
         },
         "end": {
-          "line": 220,
+          "line": 177,
           "column": 1
         }
       },
@@ -3881,7 +3820,7 @@
       "name": "IconsetDemo",
       "attributes": [
         {
-          "name": "iconsets",
+          "name": "items",
           "description": "",
           "sourceRange": {
             "start": {
@@ -3890,21 +3829,6 @@
             },
             "end": {
               "line": 132,
-              "column": 3
-            }
-          },
-          "metadata": {}
-        },
-        {
-          "name": "items",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 133,
-              "column": 2
-            },
-            "end": {
-              "line": 139,
               "column": 3
             }
           },
