@@ -8,14 +8,15 @@
  * @microcopy - language worth noting:
  *  -
  *
- * @customElement
+ * @pseudoElement
  * @polymer
  * @demo demo/index.html
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/iron-flex-layout/iron-flex-layout.js";
 const styleElement = document.createElement("dom-module");
 
-const css = html`<style>
+const css = html`<style include="iron-flex-layout">
   lrn-icon, iron-icon {
     --layout-inline: {
       display: inline-flex;
