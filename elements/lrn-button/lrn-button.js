@@ -31,7 +31,7 @@ class LrnButton extends PolymerElement {
     --lrnsys-button-height: 3em;
   }
 
-  :host.center {
+  :host(.center) {
     text-align: center;
   }
 

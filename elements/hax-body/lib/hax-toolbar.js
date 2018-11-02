@@ -22,7 +22,7 @@ Polymer({
         transition: .6s all ease;
         box-sizing: border-box;
         height: 32px;
-        pointer-events: none;
+        pointer-events: all;
       }
       :host ::slotted(*) {
         font-family: "Roboto", sans-serif;
@@ -71,17 +71,17 @@ Polymer({
         <iron-icon icon="editor:format-align-right"></iron-icon>
       </paper-item>
     </hax-context-item-menu>
-    <paper-slider hidden\$="[[!haxProperties.canScale]]" id="slider" pin="" min="25" step="25" max="100" value="{{size}}"></paper-slider>
-    <paper-tooltip hidden\$="[[inline]]" for="slider" position="top" offset="10">
+    <paper-slider hidden$="[[!haxProperties.canScale]]" id="slider" pin="" min="25" step="25" max="100" value="{{size}}"></paper-slider>
+    <paper-tooltip hidden$="[[inline]]" for="slider" position="top" offset="10">
       Resize
     </paper-tooltip>
     <slot name="primary"></slot>
-    <hax-context-item hidden\$="[[inline]]" icon="delete" icon-class="red-text text-darken-1" label="Remove" event-name="grid-plate-delete"></hax-context-item>
-    <hax-context-item-menu corner="right" hidden\$="[[hideMore]]" icon="more-vert" label="More" id="moremenu" event-name="grid-plate-op" reset-on-select="">
+    <hax-context-item hidden$="[[inline]]" icon="delete" icon-class="red-text text-darken-1" label="Remove" event-name="grid-plate-delete"></hax-context-item>
+    <hax-context-item-menu corner="right" hidden$="[[hideMore]]" icon="more-vert" label="More" id="moremenu" event-name="grid-plate-op" reset-on-select="">
       <paper-item value="" hidden=""></paper-item>
       <slot name="more"></slot>
       <hax-context-item menu="" slot="more" icon="icons:content-copy" icon-class="green-text" event-name="grid-plate-duplicate">Duplicate</hax-context-item>
-      <hax-context-item hidden\$="[[hideTransform]]" menu="" slot="more" icon="image:transform" class="convert-button" icon-class="orange-text" event-name="grid-plate-convert">Transform to..</hax-context-item>
+      <hax-context-item hidden$="[[hideTransform]]" menu="" slot="more" icon="image:transform" class="convert-button" icon-class="orange-text" event-name="grid-plate-convert">Transform to..</hax-context-item>
     </hax-context-item-menu>
 `,
 

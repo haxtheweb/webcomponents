@@ -1,4 +1,16 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icons/av-icons.js";
+import "@polymer/iron-icons/communication-icons.js";
+import "@polymer/iron-icons/device-icons.js";
+import "@polymer/iron-icons/editor-icons.js";
+import "@polymer/iron-icons/hardware-icons.js";
+import "@polymer/iron-icons/image-icons.js";
+import "@polymer/iron-icons/maps-icons.js";
+import "@polymer/iron-icons/notification-icons.js";
+import "@polymer/iron-icons/social-icons.js";
+import "@polymer/iron-icons/places-icons.js";
+import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-ripple/paper-ripple.js";
 import "@polymer/paper-toast/paper-toast.js";
@@ -67,8 +79,8 @@ Polymer({
       }
     </style>
   </custom-style>
-    <paper-icon-button id="button" class\$="icon [[color]]" icon="[[icon]]" title="[[label]]"></paper-icon-button>
-    <div aria-hidden="true">[[label]]</div>
+  <paper-icon-button id="button" class$="icon [[color]]" icon="[[icon]]" title="[[label]]"></paper-icon-button>
+  <div aria-hidden="true">[[label]]</div>
 `,
 
   is: "hax-app-picker-item",

@@ -633,6 +633,9 @@ Polymer({
     this._injectToast();
     // register built in primitive definitions
     this._buildPrimitiveDefinitions();
+    // fire that hax store is ready to go so now we can setup the rest
+    this.fire("hax-store-ready", true);
+    window.HaxStore.ready = true;
   },
 
   /**
@@ -1394,6 +1397,7 @@ Polymer({
             typeof e.target.parentElement !== typeof undefined &&
             e.target.parentElement.tagName === "HAX-AUTOLOADER"
           ) {
+            // @todo weird error but might just be aframe specific
             dom(e.target.parentElement).removeChild(e.target);
           }
         }
