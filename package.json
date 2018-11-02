@@ -187,7 +187,8 @@
       "**/@vowo/**",
       "**/wavesurfer.js",
       "**/wavesurfer.js/**",
-      "**/aframe"
+      "**/aframe",
+      "**/mathjax"
     ]
   },
   "husky": {
