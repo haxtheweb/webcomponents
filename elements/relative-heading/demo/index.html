@@ -8,7 +8,10 @@
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '@polymer/polymer/lib/elements/dom-bind.js';
       import '../relative-heading.js';
+    </script>
+    <script>
       function setAttrs(attr, id) {
         document.getElementById('colors').setAttribute(attr, id);
         if (attr === null) {
@@ -23,7 +26,6 @@
           document.getElementById('tag').setAttribute('disabled', 'disabled');
           document.getElementById('subtopic').removeAttribute('disabled');
           document.getElementById('reset').removeAttribute('disabled');
-
         }
       }
     </script>
@@ -32,13 +34,30 @@
   <body>
     <div class="vertical-section-container centered">
       <h3 id="demo1">Basic relative-heading demo</h3>
-      <demo-snippet>
-        <p>
-          <button id="subtopic" onclick="setAttrs('subtopic-of','demo1')">Change subtopic-of</button>
-          <button id="tag" onclick="setAttrs('tag','h2')">Change tag</button>
-          <button id="reset" onclick="setAttrs(null)">Reset</button>
-        </p>
+      <dom-bind>
         <template>
+          <p>
+            <button id="subtopic" onclick="setAttrs('subtopic-of','demo1')">Change subtopic-of</button>
+            <button id="tag" onclick="setAttrs('tag','h2')">Change tag</button>
+            <button id="reset" onclick="setAttrs(null)">Reset</button>
+          </p>
+          <relative-heading id="colors" text="Colors"></relative-heading>
+          <relative-heading id="primary" subtopic-of="colors" text="Primary Colors"></relative-heading>
+          <relative-heading id="blue" subtopic-of="primary" text="Blue"></relative-heading>
+          <relative-heading id="yellow" subtopic-of="primary" text="Yellow"></relative-heading>
+          <relative-heading id="red" subtopic-of="primary" text="Red"></relative-heading>
+          <relative-heading id="secondary" subtopic-of="colors" text="Secondary Colors"></relative-heading>
+          <relative-heading id="purple" subtopic-of="secondary" text="Purple"></relative-heading>
+          <relative-heading id="green" subtopic-of="secondary" text="Green"></relative-heading>
+          <relative-heading id="orange" subtopic-of="secondary" text="Orange"></relative-heading>
+          <relative-heading id="tertiary" subtopic-of="colors" text="Tertiary Colors"></relative-heading>
+          <relative-heading id="indigo" subtopic-of="tertiary" text="Indigo"></relative-heading>
+          <relative-heading id="aqua" subtopic-of="tertiary" text="Aqua"></relative-heading>
+          <relative-heading id="lime" subtopic-of="tertiary" text="Lime"></relative-heading>
+        </template>
+      </dom-bind>
+      <demo-snippet>
+        <template is="dom-bind">
           <relative-heading id="colors" text="Colors"></relative-heading>
           <relative-heading id="primary" subtopic-of="colors" text="Primary Colors"></relative-heading>
           <relative-heading id="blue" subtopic-of="primary" text="Blue"></relative-heading>

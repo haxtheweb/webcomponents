@@ -1,6 +1,8 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 
 window.RelativeHeadingManager = {};
+window.RelativeHeadingManager.instance = null;
+
 Polymer({
   _template: html`
     <style>
@@ -31,8 +33,6 @@ Polymer({
     });
   }
 });
-
-window.RelativeHeadingManager.instance = null;
 
 /*
  * checks to see if there is an instance available, and if not appends one
