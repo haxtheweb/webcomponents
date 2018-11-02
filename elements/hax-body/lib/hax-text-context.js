@@ -43,12 +43,12 @@ Polymer({
         padding: 8px;
         font-size: 12px;
       }
-      :host.hax-context-pin-top hax-toolbar {
+      :host(.hax-context-pin-top) hax-toolbar {
         position: fixed;
         top: 64px;
         opacity: .95;
       }
-      :host.hax-context-pin-bottom hax-toolbar {
+      :host(.hax-context-pin-bottom) hax-toolbar {
         position: fixed;
         bottom: 0;
         opacity: .95;
@@ -168,22 +168,24 @@ Polymer({
         this.$.formatsize.$.menu.hideMenu();
         break;
       case "insert-inline-gizmo":
-        // store placeholder because if this all goes through we'll want
-        // to kill the originating text
-        let values = {
-          text: window.HaxStore.instance.activePlaceHolder.toString()
-        };
-        let type = "inline";
-        let haxElements = window.HaxStore.guessGizmo(type, values);
-        // see if we got anything
-        if (haxElements.length > 0) {
-          // hand off to hax-app-picker to deal with the rest of this
-          window.HaxStore.instance.haxAppPicker.presentOptions(
-            haxElements,
-            type,
-            "Transform selected text to..",
-            "gizmo"
-          );
+        if (window.HaxStore.instance.activePlaceHolder != null) {
+          // store placeholder because if this all goes through we'll want
+          // to kill the originating text
+          let values = {
+            text: window.HaxStore.instance.activePlaceHolder.toString()
+          };
+          let type = "inline";
+          let haxElements = window.HaxStore.guessGizmo(type, values);
+          // see if we got anything
+          if (haxElements.length > 0) {
+            // hand off to hax-app-picker to deal with the rest of this
+            window.HaxStore.instance.haxAppPicker.presentOptions(
+              haxElements,
+              type,
+              "Transform selected text to..",
+              "gizmo"
+            );
+          }
         }
         break;
       // wow these are way too easy

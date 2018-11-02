@@ -28,7 +28,12 @@ export class HAXWiring {
      * This is to then be implemented by the ready state of whatever is supplying the
      * properties in order to be able to bubble up the properties for a tag.
      */
-    this.setHaxProperties = (props, tag = "", context = document) => {
+    this.setHaxProperties = (
+      props,
+      tag = "",
+      context = document,
+      isReady = false
+    ) => {
       // these are a core piece of hax capabilities
       // set them in the event this got called without anything
       // so we at least won't bomb
@@ -152,71 +157,73 @@ export class HAXWiring {
         // fire event so we know they have been set for the store to collect
         // only fire if we haven't already so multiple elements don't keep bubbling
 
-        // @todo need the correct way of detecting this without global scope
-        // if polymer doesn't exist, then just fire anyway with a flag
-        // this would be if others are implementing hax and want to use
-        // all it's schema wired objects but not the platform as we
-        // had envisioned it
-        if (typeof Polymer === typeof undefined) {
-          let evt = new CustomEvent("hax-register-properties", {
-            bubbles: true,
-            cancelable: true,
-            detail: {
-              tag: tag.toLowerCase(),
-              properties: props,
-              polymer: false
-            }
-          });
-          context.dispatchEvent(evt);
-        } else if (
-          tag !== "" &&
-          typeof Polymer !== typeof undefined &&
-          typeof window.HaxStore !== typeof undefined &&
-          typeof window.HaxStore.instance !== typeof undefined &&
-          window.HaxStore.instance != null &&
-          typeof window.HaxStore.instance.elementList !== typeof undefined &&
-          typeof window.HaxStore.instance.elementList[tag.toLowerCase()] ===
-            typeof undefined
-        ) {
-          let evt = new CustomEvent("hax-register-properties", {
-            bubbles: true,
-            cancelable: true,
-            detail: {
-              tag: tag.toLowerCase(),
-              properties: props
-            }
-          });
-          context.dispatchEvent(evt);
-        } else if (
-          typeof Polymer !== typeof undefined &&
-          typeof window.HaxStore !== typeof undefined &&
-          typeof window.HaxStore.instance !== typeof undefined &&
-          window.HaxStore.instance != null &&
-          typeof window.HaxStore.instance.elementList !== typeof undefined &&
-          typeof window.HaxStore.instance.elementList[
-            this.tagName.toLowerCase()
-          ] === typeof undefined
-        ) {
-          let evt = new CustomEvent("hax-register-properties", {
-            bubbles: true,
-            cancelable: true,
-            detail: {
-              tag: this.tagName.toLowerCase(),
-              properties: props
-            }
-          });
-          context.dispatchEvent(evt);
+        // if there's no global HaxStore then this means it is a custom
+        // implementation of the schema
+        if (isReady) {
+          if (tag !== "" && typeof window.HaxStore === typeof undefined) {
+            const evt = new CustomEvent("hax-register-properties", {
+              bubbles: true,
+              cancelable: true,
+              detail: {
+                tag: tag.toLowerCase(),
+                properties: props,
+                polymer: false
+              }
+            });
+            context.dispatchEvent(evt);
+          } else if (
+            tag !== "" &&
+            typeof window.HaxStore !== typeof undefined &&
+            typeof window.HaxStore.instance !== typeof undefined &&
+            window.HaxStore.instance != null &&
+            typeof window.HaxStore.instance.elementList !== typeof undefined &&
+            typeof window.HaxStore.instance.elementList[tag.toLowerCase()] ===
+              typeof undefined
+          ) {
+            const evt = new CustomEvent("hax-register-properties", {
+              bubbles: true,
+              cancelable: true,
+              detail: {
+                tag: tag.toLowerCase(),
+                properties: props
+              }
+            });
+            context.dispatchEvent(evt);
+          } else if (
+            typeof this.tagName !== typeof undefined &&
+            typeof window.HaxStore !== typeof undefined &&
+            typeof window.HaxStore.instance !== typeof undefined &&
+            window.HaxStore.instance != null &&
+            typeof window.HaxStore.instance.elementList !== typeof undefined &&
+            typeof window.HaxStore.instance.elementList[
+              this.tagName.toLowerCase()
+            ] === typeof undefined
+          ) {
+            const evt = new CustomEvent("hax-register-properties", {
+              bubbles: true,
+              cancelable: true,
+              detail: {
+                tag: this.tagName.toLowerCase(),
+                properties: props
+              }
+            });
+            context.dispatchEvent(evt);
+          }
         }
         // only set these when tag hasn't been force fed
         if (tag === "") {
-          this.haxProperties = props;
+          if (typeof this._setHaxProperties === "function") {
+            this._setHaxProperties(props);
+          } else {
+            this.haxProperties = props;
+          }
         }
       } else {
         // especially useful during development if we implement our own API
         // incorrectly. Don't hard brick cause it'll still more or less work
         // but would probably default to an iframe which is less then ideal
         // but at least wouldn't brick the AX.
-        console.log(
+        console.warn(
           "This is't a valid usage of hax-body-behaviors API. See hax-body-behaviors for more details on how to implement the API. Most likely your hax item just was placed in an iframe as a fallback as opposed to a custom element."
         );
       }
@@ -812,7 +819,149 @@ export class HAXWiring {
     };
   }
 }
-
+// invoke an instance so we can support behaviors as well
+window.HAXWiring = new HAXWiring();
 // ensure HAXPropertiesBehaviors exists
 window.HAXBehaviors = window.HAXBehaviors || {};
-window.HAXBehaviors.PropertiesBehaviors = new HAXWiring();
+window.HAXBehaviors.PropertiesBehaviors = {
+  properties: {
+    /**
+     * haxProperties
+     */
+    haxProperties: window.HAXWiring.haxProperties
+  },
+  /**
+   * Setter to bridge private haxProperties setter.
+   * This is to then be implemented by the ready state of whatever is supplying the
+   * properties in order to be able to bubble up the properties for a tag.
+   */
+  setHaxProperties: function(props, tag = "", context = this) {
+    if (typeof this.tagName !== typeof undefined) {
+      tag = this.tagName.toLowerCase();
+    }
+    window.addEventListener("hax-store-ready", this._haxStoreReady.bind(this));
+    if (
+      typeof window.HaxStore !== typeof undefined &&
+      window.HaxStore.instance != null &&
+      window.HaxStore.ready
+    ) {
+      return window.HAXWiring.setHaxProperties(props, tag, context, true);
+    } else {
+      return window.HAXWiring.setHaxProperties(props, tag, context, false);
+    }
+  },
+  /**
+   * Private function to fire off props when ready
+   */
+  _haxStoreReady: function(e) {
+    if (
+      e.detail &&
+      typeof this.tagName !== typeof undefined &&
+      typeof this.haxProperties !== typeof undefined
+    ) {
+      let tag = this.tagName;
+      let props = this.haxProperties;
+      let context = this;
+      if (tag !== "" && typeof window.HaxStore === typeof undefined) {
+        const evt = new CustomEvent("hax-register-properties", {
+          bubbles: true,
+          cancelable: true,
+          detail: {
+            tag: tag.toLowerCase(),
+            properties: props,
+            polymer: false
+          }
+        });
+        context.dispatchEvent(evt);
+      } else if (
+        tag !== "" &&
+        typeof window.HaxStore !== typeof undefined &&
+        typeof window.HaxStore.instance !== typeof undefined &&
+        window.HaxStore.instance != null &&
+        typeof window.HaxStore.instance.elementList !== typeof undefined &&
+        typeof window.HaxStore.instance.elementList[tag.toLowerCase()] ===
+          typeof undefined
+      ) {
+        const evt = new CustomEvent("hax-register-properties", {
+          bubbles: true,
+          cancelable: true,
+          detail: {
+            tag: tag.toLowerCase(),
+            properties: props
+          }
+        });
+        context.dispatchEvent(evt);
+      } else if (
+        typeof this.tagName !== typeof undefined &&
+        typeof window.HaxStore !== typeof undefined &&
+        typeof window.HaxStore.instance !== typeof undefined &&
+        window.HaxStore.instance != null &&
+        typeof window.HaxStore.instance.elementList !== typeof undefined &&
+        typeof window.HaxStore.instance.elementList[
+          this.tagName.toLowerCase()
+        ] === typeof undefined
+      ) {
+        const evt = new CustomEvent("hax-register-properties", {
+          bubbles: true,
+          cancelable: true,
+          detail: {
+            tag: this.tagName.toLowerCase(),
+            properties: props
+          }
+        });
+        context.dispatchEvent(evt);
+      }
+    }
+  },
+  /**
+   * Validate settings object.
+   */
+  validateSetting: function(setting) {
+    return window.HAXWiring.validateSetting(setting);
+  },
+  /**
+   * Match convention for set.
+   */
+  getHaxProperties: function() {
+    return this.haxProperties;
+  },
+  /**
+   * Convert haxProperties structure to a simple json-schema.
+   * This allows for complex form building systems based on this data.
+   * type is configure or advanced
+   */
+  getHaxJSONSchema: function(type, haxProperties, target = this) {
+    return window.HAXWiring.getHaxJSONSchema(type, haxProperties, target);
+  },
+  /**
+   * Default postProcessgetHaxJSONSchema to be overridden.
+   */
+  postProcessgetHaxJSONSchema: function(schema) {
+    return window.HAXWiring.postProcessgetHaxJSONSchema(schema);
+  },
+  /**
+   * Internal helper for getHaxJSONSchema to buiild the properties object
+   * correctly with support for recursive nesting thx to objects / arrays.
+   */
+  _getHaxJSONSchemaProperty: function(settings, target) {
+    return window.HAXWiring._getHaxJSONSchemaProperty(settings, target);
+  },
+  /**
+   * Convert input method to schedma type
+   */
+  getHaxJSONSchemaType: function(inputMethod) {
+    return window.HAXWiring.getHaxJSONSchemaType(inputMethod);
+  },
+  /**
+   * List valid input methods.
+   */
+  validHAXPropertyInputMethod: function() {
+    return window.HAXWiring.validHAXPropertyInputMethod();
+  },
+  /**
+   * Return a haxProperties prototype / example structure
+   */
+  prototypeHaxProperties: function() {
+    return window.HAXWiring.prototypeHaxProperties();
+  }
+};

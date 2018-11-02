@@ -61,12 +61,12 @@ Polymer({
       :host(:hover) .human-name-inner {
         opacity: 1;
       }
-      :host.hax-context-pin-top hax-toolbar {
+      :host(.hax-context-pin-top) hax-toolbar {
         position: fixed;
         top: 64px;
         opacity: .95;
       }
-      :host.hax-context-pin-bottom hax-toolbar {
+      :host(.hax-context-pin-bottom) hax-toolbar {
         position: fixed;
         bottom: 0;
         opacity: .95;
@@ -195,7 +195,7 @@ Polymer({
       }
       var item;
       // @todo kick stuff into the local dom as options
-      for (i = 0; i < settings.length; i++) {
+      for (var i = 0; i < settings.length; i++) {
         let setting = settings[i];
         // create a new context item for the quick
         item = document.createElement("hax-context-item");
