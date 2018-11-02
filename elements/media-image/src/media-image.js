@@ -1,17 +1,21 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
-`media-image`
-A LRN element
-
-@demo demo/index.html
-*/
+ * `media-image`
+ * `A simple image presentaiton with minor documented options`
+ *
+ * @demo demo/index.html
+ */
 Polymer({
   _template: html`
-    <style>
+    <style is="custom-style">
       :host {
         display: block;
         font-family: "Roboto", sans-serif;
@@ -73,8 +77,8 @@ Polymer({
     </style>
 
     <iron-image resource\$="[[schemaResourceID]]-image" src\$="[[source]]" alt\$="[[alt]]"></iron-image>
-    <div class="citation">[[citation]]</div>
-    <div class="caption">[[caption]]</div>
+    <div class="citation">[[citation]]<slot name="citation"></slot></div>
+    <div class="caption">[[caption]]<slot name="caption"></slot></div>
 `,
 
   is: "media-image",
