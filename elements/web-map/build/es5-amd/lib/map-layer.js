@@ -4,18 +4,18 @@ define([
   "./map-styles.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_d2e0bf90dbb811e8b42e65befbc72f49() {
+  function _templateObject_90ce5240dea911e8bbc82584225115f0() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style include="map-styles">\n     :host {\n       display: none;\n     }\n    </style>\n    <!-- hide any feature, image or tile elements the author includes -->\n    <slot></slot>\n'
     ]);
-    _templateObject_d2e0bf90dbb811e8b42e65befbc72f49 = function() {
+    _templateObject_90ce5240dea911e8bbc82584225115f0 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_d2e0bf90dbb811e8b42e65befbc72f49()
+      _templateObject_90ce5240dea911e8bbc82584225115f0()
     ),
     is: "layer-",
     properties: {

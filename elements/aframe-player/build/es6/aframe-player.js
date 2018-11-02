@@ -4,7 +4,7 @@ import {
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
 import "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "./lib/aframe-aframe.js";
+import "./node_modules/aframe/dist/aframe-master.js";
 Polymer({
   _template: html`
     <style>

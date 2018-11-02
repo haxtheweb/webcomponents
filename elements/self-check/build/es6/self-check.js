@@ -74,7 +74,7 @@ Polymer({
         padding: 15px 15px;
       }
 
-      :host[correct] .question {
+      :host([correct]) .question {
         display: none;
       }
 
@@ -90,7 +90,7 @@ Polymer({
         position: absolute;
       }
 
-      :host[correct] #answer_wrap {
+      :host([correct]) #answer_wrap {
         visibility: visible;
         opacity: 1;
         position: relative;

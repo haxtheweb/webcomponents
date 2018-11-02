@@ -24,7 +24,7 @@ Polymer({
       :host {
         display: block;
       }
-      :host[hide-form] ul {
+      :host([hide-form]) ul {
         border: 1px solid black;
       }
       paper-card {

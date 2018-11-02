@@ -26,7 +26,7 @@ Polymer({
         border: none;
         transition: .6s border ease-in-out;
       }
-      :host[drag-over] {
+      :host([drag-over]) {
         border: 4px dashed #2196F3;
       }
       .placeholder-inner {

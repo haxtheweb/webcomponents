@@ -14,7 +14,7 @@ window.MediaBehaviors.Video = {
         v = "";
       input = tmp[0];
       if (2 == tmp.length) {
-        args = tmp[1].split("=");
+        let args = tmp[1].split("=");
         if ("v" == args[0]) {
           v = args[1];
         }

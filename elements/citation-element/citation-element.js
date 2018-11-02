@@ -21,11 +21,11 @@ Polymer({
         display: block;
         color: var('--license-text-color');
       }
-      :host[display-method="footnote"] {
+      :host([display-method="footnote"]) {
         visibility: hidden;
         opacity: 0;
       }
-      :host[display-method="popup"] {
+      :host([display-method="popup"]) {
         display: block;
       }
       .license-link {

@@ -17,16 +17,16 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         color: var(--paper-grey-400);
         background-color: transparent;
       }
-      :host[status=info] #icon {
+      :host([status="info"]) #icon {
         color: var(--paper-green-400);
       }
-      :host[status=notice] #icon {
+      :host([status="notice"]) #icon {
         color: var(--paper-grey-400);
       }
-      :host[status=warning] #icon {
+      :host([status="warning"]) #icon {
         color: var(--paper-yellow-700);
       }
-      :host[status=error] #icon {
+      :host([status="error"]) #icon {
         color: var(--paper-red-900);
       }
     </style>

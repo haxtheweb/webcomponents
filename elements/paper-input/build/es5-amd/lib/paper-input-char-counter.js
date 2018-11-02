@@ -4,18 +4,18 @@ define([
   "./paper-input-addon-behavior.js"
 ], function(_polymerLegacy, _typography, _paperInputAddonBehavior) {
   "use strict";
-  function _templateObject_9345ca10dbb811e8a0f707d45fd382ad() {
+  function _templateObject_51395030dea911e8b05fff20da2ba930() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: inline-block;\n        float: right;\n\n        @apply --paper-font-caption;\n        @apply --paper-input-char-counter;\n      }\n\n      :host([hidden]) {\n        display: none !important;\n      }\n\n      :host-context([dir="rtl"]) {\n        float: left;\n      }\n    </style>\n\n    <span>[[_charCounterStr]]</span>\n'
     ]);
-    _templateObject_9345ca10dbb811e8a0f707d45fd382ad = function() {
+    _templateObject_51395030dea911e8b05fff20da2ba930 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_9345ca10dbb811e8a0f707d45fd382ad()
+      _templateObject_51395030dea911e8b05fff20da2ba930()
     ),
     is: "paper-input-char-counter",
     behaviors: [_paperInputAddonBehavior.PaperInputAddonBehavior],

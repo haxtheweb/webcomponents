@@ -5,18 +5,18 @@ define([
   "./node_modules/@polymer/iron-flex-layout/iron-flex-layout.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_107d1b60dbb811e89ab3fd949eb4f83a() {
+  function _templateObject_afcb04f0dea811e89d59db24352740f7() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n      :host {\n        @apply(--layout-inline);\n        @apply(--layout-center-center);\n        position: relative;\n\n        vertical-align: middle;\n\n        fill: var(--lrn-icon-fill-color, currentcolor);\n        stroke: var(--lrn-icon-stroke-color, none);\n\n        width: var(--lrn-icon-width, 24px);\n        height: var(--lrn-icon-height, 24px);\n        @apply(--lrn-icon);\n      }\n    </style>\n"
     ]);
-    _templateObject_107d1b60dbb811e89ab3fd949eb4f83a = function() {
+    _templateObject_afcb04f0dea811e89d59db24352740f7 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_107d1b60dbb811e89ab3fd949eb4f83a()
+      _templateObject_afcb04f0dea811e89d59db24352740f7()
     ),
     is: "lrn-icon",
     properties: {

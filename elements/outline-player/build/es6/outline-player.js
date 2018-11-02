@@ -32,7 +32,7 @@ Polymer({
         --outline-player-arrow-margin-top: 50px;
       }
 
-      :host[closed] {
+      :host([closed]) {
         --app-drawer-width: 0px;
       }
 

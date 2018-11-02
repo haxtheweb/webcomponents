@@ -3,18 +3,18 @@ define([
   "./lib/relative-heading-manager.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_ac165410dbb811e89caa8b2b60145680() {
+  function _templateObject_6b49ad30dea911e8aa13ad94e01f08a0() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <div id="html"></div>\n'
     ]);
-    _templateObject_ac165410dbb811e89caa8b2b60145680 = function() {
+    _templateObject_6b49ad30dea911e8aa13ad94e01f08a0 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_ac165410dbb811e89caa8b2b60145680()
+      _templateObject_6b49ad30dea911e8aa13ad94e01f08a0()
     ),
     is: "relative-heading",
     properties: {

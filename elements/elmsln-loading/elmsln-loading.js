@@ -21,56 +21,56 @@ import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
  */
 Polymer({
   _template: html`
-    <style include="materializecss-styles-colors">
+    <style is="custom-style" include="materializecss-styles-colors">
+      @-moz-keyframes spin { 100% { -moz-transform: rotate(60deg); filter:saturate(10) invert(.9);} }
+      @-webkit-keyframes spin { 100% { -webkit-transform: rotate(60deg); filter:saturate(10) invert(.9);} }
+      @keyframes spin { 100% { -webkit-transform: rotate(60deg); transform:rotate(60deg);} }
       :host {
         display: block;
-      }
-      iron-icon {
         -webkit-animation:spin 1.25s ease-out infinite;
         -moz-animation:spin 1.25s ease-out infinite;
         animation:spin 1.25s ease-out infinite;
       }
-      .tiny {
-        width: 1em;
-        height: 1em;
+      :host([size="tiny"]) {
+        width: 16px;
+        height: 16px;
         -webkit-animation:spin .75s ease-out infinite;
         -moz-animation:spin .75s ease-out infinite;
         animation:spin .75s ease-out infinite;
       }
-      .small {
-        width: 2em;
-        height: 2em;
+      :host([size="small"]) {
+        width: 32px;
+        height: 32px;
         -webkit-animation:spin 1s ease-out infinite;
         -moz-animation:spin 1s ease-out infinite;
         animation:spin 1s ease-out infinite;
       }
-      .medium {
-        width: 4em;
-        height: 4em;
-      }
-      .large {
-        width: 5em;
-        height: 5em;
+      :host([size="medium"]) {
+        width: 64px;
+        height: 64px;
         -webkit-animation:spin 1.25s ease-out infinite;
         -moz-animation:spin 1.25s ease-out infinite;
         animation:spin 1.25s ease-out infinite;
       }
-      .epic {
-        width: 25em;
-        height: 25em;
+      :host([size="large"]) {
+        width: 80px;
+        height: 80px;
+        -webkit-animation:spin 1.25s ease-out infinite;
+        -moz-animation:spin 1.25s ease-out infinite;
+        animation:spin 1.25s ease-out infinite;
+      }
+      :host([size="epic"]) {
+        width: 400px;
+        height: 400px;
         -webkit-animation:spin 2s ease-out infinite;
         -moz-animation:spin 2s ease-out infinite;
         animation:spin 2s ease-out infinite;
       }
-      @-moz-keyframes spin { 100% { -moz-transform: rotate(60deg); filter:saturate(10) invert(.9);} }
-      @-webkit-keyframes spin { 100% { -webkit-transform: rotate(60deg); filter:saturate(10) invert(.9);} }
-      @keyframes spin { 100% { -webkit-transform: rotate(60deg); transform:rotate(60deg);} }
     </style>
-    <iron-icon icon="lrn:network" class\$="[[color]] [[size]]"></iron-icon>
+    <iron-icon icon="lrn:network" class$="[[color]]"></iron-icon>
 `,
 
   is: "elmsln-loading",
-
   properties: {
     /**
      * materialize class names for color

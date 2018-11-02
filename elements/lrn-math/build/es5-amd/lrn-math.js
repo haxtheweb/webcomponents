@@ -4,18 +4,18 @@ define([
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_14303850dbb811e886b0a5fd2027d9a5() {
+  function _templateObject_bd41acb0dea811e8bb74b182b64af7a1() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n       :host {\n        display: inline;\n      }\n    </style>\n    [[prefix]] [[math]] [[suffix]]\n    <span hidden=""><slot id="content"></slot></span>\n'
     ]);
-    _templateObject_14303850dbb811e886b0a5fd2027d9a5 = function() {
+    _templateObject_bd41acb0dea811e8bb74b182b64af7a1 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_14303850dbb811e886b0a5fd2027d9a5()
+      _templateObject_bd41acb0dea811e8bb74b182b64af7a1()
     ),
     is: "lrn-math",
     behaviors: [HAXBehaviors.PropertiesBehaviors],

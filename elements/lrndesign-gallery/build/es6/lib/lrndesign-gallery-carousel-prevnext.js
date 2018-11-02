@@ -9,7 +9,7 @@ Polymer({
         display: inline-block;
         --lrndesign-gallery-rgba: var(--lrndesign-gallery-rgba-none) 0%, var(--lrndesign-gallery-rgba-mid) 50%, var(--lrndesign-gallery-rgba-high) 70%, var(--lrndesign-gallery-rgba-high) 100%
       }
-      :host[item="-1"] {
+      :host([item="-1"]) {
         display: none;
       }
       :host #lrnsysbutton {
@@ -30,7 +30,7 @@ Polymer({
         background-color: var(--lrndesign-gallery-background-color);
         background: linear-gradient(to left, var(--lrndesign-gallery-rgba)); 
       }
-      :host[type="next"] #lrnsysbutton ::slotted(a > paper-button) {
+      :host([type="next"]) #lrnsysbutton ::slotted(a > paper-button) {
         background: linear-gradient(to right, var(--lrndesign-gallery-rgba));
       }
       :host #lrnsysbutton ::slotted(a > paper-button):focus, 
@@ -46,10 +46,10 @@ Polymer({
         top: 45%;
         position: absolute;
       }
-      :host[type="previous"] #lrnsysbutton ::slotted(a > paper-button > div.inner > iron-icon) {
+      :host([type="previous"]) #lrnsysbutton ::slotted(a > paper-button > div.inner > iron-icon) {
         left: 10%;
       }
-      :host[type="next"] #lrnsysbutton ::slotted(a > paper-button > div.inner > iron-icon) {
+      :host([type="next"]) #lrnsysbutton ::slotted(a > paper-button > div.inner > iron-icon) {
         right: 10%;
       }
     </style>

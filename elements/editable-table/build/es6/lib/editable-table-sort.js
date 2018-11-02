@@ -30,16 +30,16 @@ Polymer({
         width: 0;
         overflow: hidden;
       }
-      :host:not([sort-mode="asc"]) .asc,
-      :host:not([sort-mode="desc"]) .desc,
-      :host:not([sort-mode="none"]) .none,
+      :host(:not([sort-mode="asc"])) .asc,
+      :host(:not([sort-mode="desc"])) .desc,
+      :host(:not([sort-mode="none"])) .none,
       :host #asc,
       :host #desc,
-      :host[sorting]:not([sort-mode="none"]) #none {
+      :host([sorting]:not([sort-mode="none"])) #none {
         display: none;
       }
-      :host[sorting][sort-mode="asc"] #asc,
-      :host[sorting][sort-mode="desc"] #desc {
+      :host([sorting][sort-mode="asc"]) #asc,
+      :host([sorting][sort-mode="desc"]) #desc {
         display: flex;
       }
     </style>

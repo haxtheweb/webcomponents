@@ -28,13 +28,13 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       :host lrn-assignment {
         margin: 1em;
       }
-      :host[layout="wide"] lrn-assignment {
+      :host([layout="wide"]) lrn-assignment {
         width: calc(100% - 2em);
       }
-      :host[layout="medium"] lrn-assignment {
+      :host([layout="medium"]) lrn-assignment {
         width: calc(50% - 2em);
       }
-      :host[layout="tight"] lrn-assignment {
+      :host([layout="tight"]) lrn-assignment {
         width: calc(25% - 2em);
       }
     </style>

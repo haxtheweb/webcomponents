@@ -5,11 +5,11 @@ define([
 ], function(_polymerLegacy, async, _ironResizableBehavior) {
   "use strict";
   async = babelHelpers.interopRequireWildcard(async);
-  function _templateObject_63dd0f50dbb711e8a3ced9aacfc1785d() {
+  function _templateObject_1f020c20dea811e8a304a1a811530c98() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n      :host {\n        display: inline;\n      }\n    </style>\n    <slot></slot>\n"
     ]);
-    _templateObject_63dd0f50dbb711e8a3ced9aacfc1785d = function() {
+    _templateObject_1f020c20dea811e8a304a1a811530c98 = function() {
       return data;
     };
     return data;
@@ -18,7 +18,7 @@ define([
   window.ResponsiveUtility.instance = null;
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_63dd0f50dbb711e8a3ced9aacfc1785d()
+      _templateObject_1f020c20dea811e8a304a1a811530c98()
     ),
     is: "responsive-utility",
     behaviors: [_ironResizableBehavior.IronResizableBehavior],

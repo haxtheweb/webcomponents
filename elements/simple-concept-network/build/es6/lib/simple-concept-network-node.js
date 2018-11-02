@@ -22,19 +22,19 @@ Polymer({
         clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
         color: var(--simple-concept-network-color);
       }
-      :host[visualization="network"] paper-button:hover,
-      :host[visualization="network"] paper-button:focus {
+      :host([visualization="network"]) paper-button:hover,
+      :host([visualization="network"]) paper-button:focus {
         opacity: .8;
       }
-      :host[visualization="3d"] paper-button {
+      :host([visualization="3d"]) paper-button {
         -webkit-transform: perspective(600px) rotateX(60deg);
         -moz-transform: perspective(600px) rotateX(60deg);
         -ms-transform: perspective(600px) rotateX(60deg);
         -o-transform: perspective(600px) rotateX(60deg);
         transform: perspective(600px) rotateX(60deg);
       }
-      :host[visualization="3d"] paper-button:hover,
-      :host[visualization="3d"] paper-button:focus {
+      :host([visualization="3d"]) paper-button:hover,
+      :host([visualization="3d"]) paper-button:focus {
         transform: perspective(0px) rotateX(0deg);
       }
       iron-icon {

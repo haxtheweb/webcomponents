@@ -8,18 +8,18 @@ define([
   "./node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_057bc3f0dbb911e8b1d045b4c3f64b01() {
+  function _templateObject_c69a9960dea911e8a456e7a88e7d650d() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style include="materializecss-styles-colors">\n       :host {\n        display: block;\n        --image-inspector-background: #dddddd;\n      }\n\n      app-toolbar {\n        width: 90%;\n        background: var(--image-inspector-background);\n        margin: 2em auto;\n        z-index: 1;\n      }\n\n      .top {\n        top: 8em;\n      }\n    </style>\n    <app-toolbar>\n      <lrnsys-button alt="Zoom in" icon="zoom-in" on-tap="zoomIn" hover-class="[[hoverClass]]"></lrnsys-button>\n      <lrnsys-button alt="Zoom out" icon="zoom-out" on-tap="zoomOut" hover-class="[[hoverClass]]"></lrnsys-button>\n      <lrnsys-button alt="Rotate right" icon="image:rotate-right" on-tap="rotateRight" hover-class="[[hoverClass]]"></lrnsys-button>\n      <lrnsys-button alt="Rotate left" icon="image:rotate-left" on-tap="rotateLeft" hover-class="[[hoverClass]]"></lrnsys-button>\n      <lrnsys-button alt="Mirror image" icon="image:flip" on-tap="mirrorImage" hover-class="[[hoverClass]]"></lrnsys-button>\n      <lrnsys-button alt="Open in new window" icon="launch" href="[[src]]" target="_blank" hover-class="[[hoverClass]]"></lrnsys-button>\n      <slot name="toolbar"></slot>\n    </app-toolbar>\n    <img-pan-zoom id="img" src="[[src]]"></img-pan-zoom>\n    <slot></slot>\n'
     ]);
-    _templateObject_057bc3f0dbb911e8b1d045b4c3f64b01 = function() {
+    _templateObject_c69a9960dea911e8a456e7a88e7d650d = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_057bc3f0dbb911e8b1d045b4c3f64b01()
+      _templateObject_c69a9960dea911e8a456e7a88e7d650d()
     ),
     is: "image-inspector",
     properties: {

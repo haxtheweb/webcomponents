@@ -87,14 +87,14 @@ Polymer({
       :host .play-status.control-bar {
         padding: 8px 13px 8px;
       }
-      :host[hide-play-status] .play-status {
+      :host([hide-play-status]) .play-status {
         display: none;
       }
-      :host:not([has-captions]) .captions {
+      :host(:not([has-captions])) .captions {
         display: none;
       }
-      :host:not([has-transcript]) .transcript,
-      :host.stand-alone .transcript {
+      :host(:not([has-transcript])) .transcript,
+      :host(.stand-alone) .transcript {
         display: none;
       }
       :host .setting {
@@ -147,13 +147,13 @@ Polymer({
         overflow: visible;
         width: 100px;
       }
-      :host[responsive-size="xs"] #volume:active,
-      :host[responsive-size="xs"] #volume:focus,
-      :host[responsive-size="xs"] #volume:hover,
-      :host[responsive-size="xs"] #volume.focus,
-      :host[responsive-size="xs"] #showvolume:active #volume,
-      :host[responsive-size="xs"] #showvolume:focus #volume,
-      :host[responsive-size="xs"] #showvolume:hover #volume {
+      :host([responsive-size="xs"]) #volume:active,
+      :host([responsive-size="xs"]) #volume:focus,
+      :host([responsive-size="xs"]) #volume:hover,
+      :host([responsive-size="xs"]) #volume.focus,
+      :host([responsive-size="xs"]) #showvolume:active #volume,
+      :host([responsive-size="xs"]) #showvolume:focus #volume,
+      :host([responsive-size="xs"]) #showvolume:hover #volume {
         top: -35px
         border-radius: 0.25em;
       }

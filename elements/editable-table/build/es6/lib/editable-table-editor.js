@@ -40,7 +40,7 @@ Polymer({
           padding-top: 0; 
         };
       }
-      :host[responsive-size="xs"] editable-table-editor-settings {
+      :host([responsive-size="xs"]) editable-table-editor-settings {
         padding: 3px 0;
       }
       :host .filter-icon,
@@ -50,12 +50,12 @@ Polymer({
         width: 24px;
         height: 24px;
       }
-      :host[sort] .tbody .tr:first-child .sortable-icon {
+      :host([sort]) .tbody .tr:first-child .sortable-icon {
         display: inline-block;
         opacity: 0.25;
       }
-      :host[filter]:not([sort]) .filter-icon,
-      :host[filter][sort] .tbody .tr:not(:first-child) .filter-icon {
+      :host([filter]:not([sort])) .filter-icon,
+      :host([filter][sort]) .tbody .tr:not(:first-child) .filter-icon {
         display: inline-block;
         opacity: 0.25;
       }
@@ -120,34 +120,34 @@ Polymer({
       :host .table .th:first-child {
         width: 6em;
       }
-      :host[condensed] .table .th {
+      :host([condensed]) .table .th {
         padding: 0;
       }
-      :host[condensed] .table .td {
+      :host([condensed]) .table .td {
         padding: 0em 0.25em;
       }
       :host .table[bordered] .td {
         border: 1px solid var(--editable-table-border-color);
       }
-      :host[dark] table .tbody .th {
+      :host([dark]) table .tbody .th {
         border-right: 1px solid var(--editable-table-bg-color);
       }
-      :host[dark] .table .thead .th:not(:first-child) {
+      :host([dark]) .table .thead .th:not(:first-child) {
         border-bottom: 1px solid var(--editable-table-bg-color);
       }
-      :host .table[bordered] .thead .th:not(:first-child) {
+      :host .table([bordered]) .thead .th:not(:first-child) {
         border-bottom: 1px solid var(--editable-table-border-color);
       }
-      :host[striped] .table .tr:nth-child(2n+1) .td {
+      :host([striped]) .table .tr:nth-child(2n+1) .td {
         @apply --editable-table-style-stripe;
       }
-      :host[column-header] .table .tbody .tr:first-child .td {
+      :host([column-header]) .table .tbody .tr:first-child .td {
         @apply --editable-table-style-column-header;
       }
-      :host[row-header] .table .tbody .tr .td:first-of-type {
+      :host([row-header]) .table .tbody .tr .td:first-of-type {
         @apply --editable-table-style-row-header;
       }
-      :host[footer] .table .tbody .tr:last-of-type .td {
+      :host([footer]) .table .tbody .tr:last-of-type .td {
         @apply --editable-table-style-footer;
       }
     </style>
