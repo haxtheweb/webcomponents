@@ -1,7 +1,18 @@
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
+/**
+ * Material design: [Icons](https://material.io/guidelines/style/icons.html)
+ * `mdi-vote-iconset-svg` is a iconset for the Material Design Icons collection with the "vote" tag
+ *
+ * Example:
+ *   <iron-icon icon="mdi-vote:thumb-up"></iron-icon>
+ *
+ * @demo demo/index.html
+ */
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
 
-$_documentContainer.innerHTML = `<iron-iconset-svg name="mdi-vote" size="24">
+import { html } from "@polymer/polymer/lib/utils/html-tag.js";
+
+const template = html`<iron-iconset-svg name="mdi-vote" size="24">
   <svg>
 
     <g id="heart">
@@ -35,16 +46,4 @@ $_documentContainer.innerHTML = `<iron-iconset-svg name="mdi-vote" size="24">
   </svg>
 </iron-iconset-svg>`;
 
-document.head.appendChild($_documentContainer);
-
-/**
-Material design: [Icons](https://material.io/guidelines/style/icons.html)
-
-`mdi-vote-iconset-svg` is a iconset for the Material Design Icons collection with the "vote" tag
-
-Example:
-
-    <iron-icon icon="mdi-vote:thumb-up"></iron-icon>
-
-@demo demo/index.html
-*/
+document.head.appendChild(template.content);

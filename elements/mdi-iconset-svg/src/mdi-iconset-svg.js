@@ -1,3 +1,17 @@
+/**
+ * Material design: [Icons](https://material.io/guidelines/style/icons.html)
+ *
+ * `mdi-iconset-svg` is a iconset for the Material Design Icons collection
+ *
+ * Example:
+ *   <link rel="import" href="mdi-logo-iconset-svg.html">
+ *   <iron-icon icon="mdi-logo:polymer"></iron-icon>
+ *
+ * @group LRN Elements
+ * @pseudoElement mdi-iconset-svg
+ * @demo demo/index.html
+ */
+
 import "./lib/mdi-account-iconset-svg.js";
 import "./lib/mdi-action-iconset-svg.js";
 import "./lib/mdi-agriculture-iconset-svg.js";
@@ -64,18 +78,4 @@ import "./lib/mdi-video-iconset-svg.js";
 import "./lib/mdi-view-iconset-svg.js";
 import "./lib/mdi-vote-iconset-svg.js";
 import "./lib/mdi-weather-iconset-svg.js";
-
-/**
-Material design: [Icons](https://material.io/guidelines/style/icons.html)
-
-`mdi-iconset-svg` is a iconset for the Material Design Icons collection
-
-Example:
-
-    <link rel="import" href="mdi-logo-iconset-svg.html">
-
-    <iron-icon icon="mdi-logo:polymer"></iron-icon>
-
-@pseudoElement mdi-iconset-svg
-@demo demo/index.html
-*/
+console.log(document.head.querySelectorAll("iron-iconset-svg"));

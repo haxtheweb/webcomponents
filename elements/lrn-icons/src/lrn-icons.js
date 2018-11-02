@@ -1,9 +1,117 @@
+/**
+ * `lrn-icons` is a utility import that includes the definition for the `lrn-icon` element, `iron-iconset-svg` element, as well as an import for the default icon set.
+ * 
+ * The `lrn-icons` directory also includes imports for additional icon sets that can be loaded into your project.
+ * 
+ * Example loading icon set:
+ *  <link rel="import" href="../lrn-icons/maps-icons.html">
+ * 
+ * To use an icon from one of these sets, first prefix your `lrn-icon` with the icon set name, followed by a colon, ":", and then the icon id.
+ * 
+ * Example using the directions-bus icon from the maps icon set:
+ *   <lrn-icon icon="maps:directions-bus"></lrn-icon>
+ * 
+ *   To load a subset of icons from one of the default `lrn-icons` sets, you can
+ *   use the [poly-icon](https://poly-icon.appspot.com/) tool. It allows you
+ *   to select individual icons, and creates an iconset from them that you can
+ *   use directly in your elements.
+ * 
+ * See [lrn-icon](#lrn-icon) for more information about working with icons.
+ * 
+ * See [iron-iconset](#iron-iconset) and [iron-iconset-svg](#iron-iconset-svg) for more information about how to create a custom iconset.
+
+@group LRN Elements
+@pseudoElement lrn-icons
+@demo demo/index.html
+*/
+/* explore */
+/* save */
+/* cancel */
+/* done */
+/* input */
+/* local-library */
+/* info-outline */
+/* mode-edit */
+/* accessibility */
+/* share */
+/* more-vert */
+/* about */
+/* plus */
+/* add */
+/* apps */
+/* network */
+/* arrow-left */
+/* arrow-right */
+/* studio-assignment-list */
+/* canban */
+/* columns */
+/* assignment */
+/* beaker */
+/* grades */
+/* notifications */
+/* inbox */
+/* letter */
+/* user */
+/* calendar */
+/* palette */
+/* studio */
+/* cle */
+/* blog */
+/* blogs */
+/* editorial */
+/* write */
+/* bookmark */
+/* bookmark-border */
+/* chevron-down */
+/* chevron-left */
+/* chevron-right */
+/* online */
+/* cis */
+/* close */
+/* collab */
+/* comply */
+/* ecd */
+/* mooc */
+/* content-outline */
+/* content */
+/* dino */
+/* discuss */
+/* speechballoons */
+/* dotgrid */
+/* download */
+/* file-download */
+/* edit */
+/* media */
+/* elmsmedia */
+/* play */
+/* replay */
+/* gear */
+/* settings */
+/* assessment */
+/* help */
+/* hidden */
+/* view-off */
+/* icor */
+/* interact */
+/* info */
+/* page */
+/* pdf */
+/* cpr */
+/* people */
+/* quiz */
+/* support */
+/* teacher */
+/* instructor */
+/* tour */
+/* visible */
+/* view */
+
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
 
-$_documentContainer.innerHTML = `<iron-iconset-svg size="30" name="lrn">
+import { html } from "@polymer/polymer/lib/utils/html-tag.js";
+
+const template = html`<iron-iconset-svg size="30" name="lrn">
   <svg>
     <defs>
 
@@ -544,124 +652,4 @@ $_documentContainer.innerHTML = `<iron-iconset-svg size="30" name="lrn">
   </svg>
 </iron-iconset-svg>`;
 
-document.head.appendChild($_documentContainer);
-
-/**
-@license
-Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
-*/
-/**
-
-`lrn-icons` is a utility import that includes the definition for the `lrn-icon` element, `iron-iconset-svg` element, as well as an import for the default icon set.
-
-The `lrn-icons` directory also includes imports for additional icon sets that can be loaded into your project.
-
-Example loading icon set:
-
-    <link rel="import" href="../lrn-icons/maps-icons.html">
-
-To use an icon from one of these sets, first prefix your `lrn-icon` with the icon set name, followed by a colon, ":", and then the icon id.
-
-Example using the directions-bus icon from the maps icon set:
-
-    <lrn-icon icon="maps:directions-bus"></lrn-icon>
-
-    To load a subset of icons from one of the default `lrn-icons` sets, you can
-    use the [poly-icon](https://poly-icon.appspot.com/) tool. It allows you
-    to select individual icons, and creates an iconset from them that you can
-    use directly in your elements.
-
-See [lrn-icon](#lrn-icon) for more information about working with icons.
-
-See [iron-iconset](#iron-iconset) and [iron-iconset-svg](#iron-iconset-svg) for more information about how to create a custom iconset.
-
-@group LRN Elements
-@pseudoElement lrn-icons
-@demo demo/index.html
-*/
-/* explore */
-/* save */
-/* cancel */
-/* done */
-/* input */
-/* local-library */
-/* info-outline */
-/* mode-edit */
-/* accessibility */
-/* share */
-/* more-vert */
-/* about */
-/* plus */
-/* add */
-/* apps */
-/* network */
-/* arrow-left */
-/* arrow-right */
-/* studio-assignment-list */
-/* canban */
-/* columns */
-/* assignment */
-/* beaker */
-/* grades */
-/* notifications */
-/* inbox */
-/* letter */
-/* user */
-/* calendar */
-/* palette */
-/* studio */
-/* cle */
-/* blog */
-/* blogs */
-/* editorial */
-/* write */
-/* bookmark */
-/* bookmark-border */
-/* chevron-down */
-/* chevron-left */
-/* chevron-right */
-/* online */
-/* cis */
-/* close */
-/* collab */
-/* comply */
-/* ecd */
-/* mooc */
-/* content-outline */
-/* content */
-/* dino */
-/* discuss */
-/* speechballoons */
-/* dotgrid */
-/* download */
-/* file-download */
-/* edit */
-/* media */
-/* elmsmedia */
-/* play */
-/* replay */
-/* gear */
-/* settings */
-/* assessment */
-/* help */
-/* hidden */
-/* view-off */
-/* icor */
-/* interact */
-/* info */
-/* page */
-/* pdf */
-/* cpr */
-/* people */
-/* quiz */
-/* support */
-/* teacher */
-/* instructor */
-/* tour */
-/* visible */
-/* view */
+document.head.appendChild(template.content);

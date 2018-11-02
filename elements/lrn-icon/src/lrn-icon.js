@@ -86,8 +86,7 @@ Polymer({
   _template: html`
     <style>
       :host {
-        @apply(--layout-inline);
-        @apply(--layout-center-center);
+        display: inline-block;
         position: relative;
 
         vertical-align: middle;
@@ -97,6 +96,8 @@ Polymer({
 
         width: var(--lrn-icon-width, 24px);
         height: var(--lrn-icon-height, 24px);
+        @apply(--layout-inline);
+        @apply(--layout-center-center);
         @apply(--lrn-icon);
       }
     </style>

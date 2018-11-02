@@ -1,0 +1,16 @@
+{
+  "title": {
+    "name": "title",
+    "type": "String",
+    "value": "null",
+    "reflectToAttribute": true,
+    "observer": "_titleChanged"
+  },
+  "number": {
+    "name": "number",
+    "type": "Number",
+    "value": "0",
+    "reflectToAttribute": true,
+    "observer": false
+  }
+}

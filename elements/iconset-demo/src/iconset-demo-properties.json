@@ -1,0 +1,9 @@
+{
+  "items": {
+    "name": "items",
+    "type": "Array",
+    "value": [],
+    "reflectToAttribute": false,
+    "observer": false
+  }
+}

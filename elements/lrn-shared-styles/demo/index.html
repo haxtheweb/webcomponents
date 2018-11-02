@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>LrnSharedStyles: lrn-shared-styles Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script type="module">
+      import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
+      import './lrn-shared-styles-demo.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic lrn-shared-styles demo</h3>
+      <demo-snippet>
+        <template>
+          <script>
+            /**
+             * Example custom element using lrn-shared styles.
+             */
+            import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+            import "../lrn-shared-styles.js";   //import the shared styles
+            
+            class LrnSharedStylesDemo extends PolymerElement {
+              static get template() {
+                return html`
+                    <!-- include the lrn-shared-styles in the element-->
+                    <style include="lrn-shared-styles">
+                        /** 
+                         * add styles specific to the element here 
+                         */
+                        .screen-only {
+                            color: #006;
+                        }
+                        .print-only {
+                            color: #222;
+                        }
+                    </style>
+                    <p class="sr-only">This text can only be read on screen readers. It is not visible on screen.</p>
+                    <p class="screen-only">This text can only be read on screen. It will not print.</p>
+                    <p class="print-only">This text can only be read when printed. It will not be visible on screen.</p>
+                `;
+              }
+            }
+            customElements.define('lrn-shared-styles-demo', LrnSharedStylesDemo);
+          </script>
+          <lrn-shared-styles-demo></lrn-shared-styles-demo>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

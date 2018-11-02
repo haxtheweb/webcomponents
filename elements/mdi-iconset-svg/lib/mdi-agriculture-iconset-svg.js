@@ -1,7 +1,17 @@
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
+/**
+ * Material design: [Icons](https://material.io/guidelines/style/icons.html)
+ * `mdi-agriculture-iconset-svg` is a iconset for the Material Design Icons collection with the "agriculture" tag
+ * Example:
+ *   <iron-icon icon="mdi-agriculture:cow"></iron-icon>
+ *
+ * @demo demo/index.html
+ */
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
 
-$_documentContainer.innerHTML = `<iron-iconset-svg name="mdi-agriculture" size="24">
+import { html } from "@polymer/polymer/lib/utils/html-tag.js";
+
+const template = html`<iron-iconset-svg name="mdi-agriculture" size="24">
   <svg>
 
     <g id="cow">
@@ -19,16 +29,4 @@ $_documentContainer.innerHTML = `<iron-iconset-svg name="mdi-agriculture" size="
   </svg>
 </iron-iconset-svg>`;
 
-document.head.appendChild($_documentContainer);
-
-/**
-Material design: [Icons](https://material.io/guidelines/style/icons.html)
-
-`mdi-agriculture-iconset-svg` is a iconset for the Material Design Icons collection with the "agriculture" tag
-
-Example:
-
-    <iron-icon icon="mdi-agriculture:cow"></iron-icon>
-
-@demo demo/index.html
-*/
+document.head.appendChild(template.content);
