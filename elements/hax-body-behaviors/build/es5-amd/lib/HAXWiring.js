@@ -21,7 +21,9 @@ define([
         context =
           2 < arguments.length && arguments[2] !== void 0
             ? arguments[2]
-            : document;
+            : document,
+        isReady =
+          3 < arguments.length && arguments[3] !== void 0 ? arguments[3] : !1;
       if (babelHelpers.typeof(props.api) === "undefined") {
         props.api = "1";
       }
@@ -124,62 +126,62 @@ define([
         if (babelHelpers.typeof(props.saveOptions) === "undefined") {
           props.saveOptions = { wipeSlot: !1 };
         }
-        if (
-          ("undefined" === typeof Polymer
-            ? "undefined"
-            : babelHelpers.typeof(Polymer)) === "undefined"
-        ) {
-          var evt = new CustomEvent("hax-register-properties", {
-            bubbles: !0,
-            cancelable: !0,
-            detail: { tag: tag.toLowerCase(), properties: props, polymer: !1 }
-          });
-          context.dispatchEvent(evt);
-        } else if (
-          "" !== tag &&
-          ("undefined" === typeof Polymer
-            ? "undefined"
-            : babelHelpers.typeof(Polymer)) !== "undefined" &&
-          babelHelpers.typeof(window.HaxStore) !== "undefined" &&
-          babelHelpers.typeof(window.HaxStore.instance) !== "undefined" &&
-          null != window.HaxStore.instance &&
-          babelHelpers.typeof(window.HaxStore.instance.elementList) !==
-            "undefined" &&
-          babelHelpers.typeof(
-            window.HaxStore.instance.elementList[tag.toLowerCase()]
-          ) === "undefined"
-        ) {
-          var _evt = new CustomEvent("hax-register-properties", {
-            bubbles: !0,
-            cancelable: !0,
-            detail: { tag: tag.toLowerCase(), properties: props }
-          });
-          context.dispatchEvent(_evt);
-        } else if (
-          ("undefined" === typeof Polymer
-            ? "undefined"
-            : babelHelpers.typeof(Polymer)) !== "undefined" &&
-          babelHelpers.typeof(window.HaxStore) !== "undefined" &&
-          babelHelpers.typeof(window.HaxStore.instance) !== "undefined" &&
-          null != window.HaxStore.instance &&
-          babelHelpers.typeof(window.HaxStore.instance.elementList) !==
-            "undefined" &&
-          babelHelpers.typeof(
-            window.HaxStore.instance.elementList[_this.tagName.toLowerCase()]
-          ) === "undefined"
-        ) {
-          var _evt2 = new CustomEvent("hax-register-properties", {
-            bubbles: !0,
-            cancelable: !0,
-            detail: { tag: _this.tagName.toLowerCase(), properties: props }
-          });
-          context.dispatchEvent(_evt2);
+        if (isReady) {
+          if (
+            "" !== tag &&
+            babelHelpers.typeof(window.HaxStore) === "undefined"
+          ) {
+            var evt = new CustomEvent("hax-register-properties", {
+              bubbles: !0,
+              cancelable: !0,
+              detail: { tag: tag.toLowerCase(), properties: props, polymer: !1 }
+            });
+            context.dispatchEvent(evt);
+          } else if (
+            "" !== tag &&
+            babelHelpers.typeof(window.HaxStore) !== "undefined" &&
+            babelHelpers.typeof(window.HaxStore.instance) !== "undefined" &&
+            null != window.HaxStore.instance &&
+            babelHelpers.typeof(window.HaxStore.instance.elementList) !==
+              "undefined" &&
+            babelHelpers.typeof(
+              window.HaxStore.instance.elementList[tag.toLowerCase()]
+            ) === "undefined"
+          ) {
+            var _evt = new CustomEvent("hax-register-properties", {
+              bubbles: !0,
+              cancelable: !0,
+              detail: { tag: tag.toLowerCase(), properties: props }
+            });
+            context.dispatchEvent(_evt);
+          } else if (
+            babelHelpers.typeof(_this.tagName) !== "undefined" &&
+            babelHelpers.typeof(window.HaxStore) !== "undefined" &&
+            babelHelpers.typeof(window.HaxStore.instance) !== "undefined" &&
+            null != window.HaxStore.instance &&
+            babelHelpers.typeof(window.HaxStore.instance.elementList) !==
+              "undefined" &&
+            babelHelpers.typeof(
+              window.HaxStore.instance.elementList[_this.tagName.toLowerCase()]
+            ) === "undefined"
+          ) {
+            var _evt2 = new CustomEvent("hax-register-properties", {
+              bubbles: !0,
+              cancelable: !0,
+              detail: { tag: _this.tagName.toLowerCase(), properties: props }
+            });
+            context.dispatchEvent(_evt2);
+          }
         }
         if ("" === tag) {
-          _this.haxProperties = props;
+          if ("function" === typeof _this._setHaxProperties) {
+            _this._setHaxProperties(props);
+          } else {
+            _this.haxProperties = props;
+          }
         }
       } else {
-        console.log(
+        console.warn(
           "This is't a valid usage of hax-body-behaviors API. See hax-body-behaviors for more details on how to implement the API. Most likely your hax item just was placed in an iframe as a fallback as opposed to a custom element."
         );
       }
@@ -693,6 +695,116 @@ define([
     };
   };
   _exports.HAXWiring = HAXWiring;
+  window.HAXWiring = new HAXWiring();
   window.HAXBehaviors = window.HAXBehaviors || {};
-  window.HAXBehaviors.PropertiesBehaviors = new HAXWiring();
+  window.HAXBehaviors.PropertiesBehaviors = {
+    properties: { haxProperties: window.HAXWiring.haxProperties },
+    setHaxProperties: function setHaxProperties(props) {
+      var tag =
+          1 < arguments.length && arguments[1] !== void 0 ? arguments[1] : "",
+        context =
+          2 < arguments.length && arguments[2] !== void 0 ? arguments[2] : this;
+      if (babelHelpers.typeof(this.tagName) !== "undefined") {
+        tag = this.tagName.toLowerCase();
+      }
+      window.addEventListener(
+        "hax-store-ready",
+        this._haxStoreReady.bind(this)
+      );
+      if (
+        babelHelpers.typeof(window.HaxStore) !== "undefined" &&
+        null != window.HaxStore.instance &&
+        window.HaxStore.ready
+      ) {
+        return window.HAXWiring.setHaxProperties(props, tag, context, !0);
+      } else {
+        return window.HAXWiring.setHaxProperties(props, tag, context, !1);
+      }
+    },
+    _haxStoreReady: function _haxStoreReady(e) {
+      if (
+        e.detail &&
+        babelHelpers.typeof(this.tagName) !== "undefined" &&
+        babelHelpers.typeof(this.haxProperties) !== "undefined"
+      ) {
+        var tag = this.tagName,
+          props = this.haxProperties,
+          context = this;
+        if (
+          "" !== tag &&
+          babelHelpers.typeof(window.HaxStore) === "undefined"
+        ) {
+          var evt = new CustomEvent("hax-register-properties", {
+            bubbles: !0,
+            cancelable: !0,
+            detail: { tag: tag.toLowerCase(), properties: props, polymer: !1 }
+          });
+          context.dispatchEvent(evt);
+        } else if (
+          "" !== tag &&
+          babelHelpers.typeof(window.HaxStore) !== "undefined" &&
+          babelHelpers.typeof(window.HaxStore.instance) !== "undefined" &&
+          null != window.HaxStore.instance &&
+          babelHelpers.typeof(window.HaxStore.instance.elementList) !==
+            "undefined" &&
+          babelHelpers.typeof(
+            window.HaxStore.instance.elementList[tag.toLowerCase()]
+          ) === "undefined"
+        ) {
+          var _evt3 = new CustomEvent("hax-register-properties", {
+            bubbles: !0,
+            cancelable: !0,
+            detail: { tag: tag.toLowerCase(), properties: props }
+          });
+          context.dispatchEvent(_evt3);
+        } else if (
+          babelHelpers.typeof(this.tagName) !== "undefined" &&
+          babelHelpers.typeof(window.HaxStore) !== "undefined" &&
+          babelHelpers.typeof(window.HaxStore.instance) !== "undefined" &&
+          null != window.HaxStore.instance &&
+          babelHelpers.typeof(window.HaxStore.instance.elementList) !==
+            "undefined" &&
+          babelHelpers.typeof(
+            window.HaxStore.instance.elementList[this.tagName.toLowerCase()]
+          ) === "undefined"
+        ) {
+          var _evt4 = new CustomEvent("hax-register-properties", {
+            bubbles: !0,
+            cancelable: !0,
+            detail: { tag: this.tagName.toLowerCase(), properties: props }
+          });
+          context.dispatchEvent(_evt4);
+        }
+      }
+    },
+    validateSetting: function validateSetting(setting) {
+      return window.HAXWiring.validateSetting(setting);
+    },
+    getHaxProperties: function getHaxProperties() {
+      return this.haxProperties;
+    },
+    getHaxJSONSchema: function getHaxJSONSchema(type, haxProperties) {
+      var target =
+        2 < arguments.length && arguments[2] !== void 0 ? arguments[2] : this;
+      return window.HAXWiring.getHaxJSONSchema(type, haxProperties, target);
+    },
+    postProcessgetHaxJSONSchema: function postProcessgetHaxJSONSchema(schema) {
+      return window.HAXWiring.postProcessgetHaxJSONSchema(schema);
+    },
+    _getHaxJSONSchemaProperty: function _getHaxJSONSchemaProperty(
+      settings,
+      target
+    ) {
+      return window.HAXWiring._getHaxJSONSchemaProperty(settings, target);
+    },
+    getHaxJSONSchemaType: function getHaxJSONSchemaType(inputMethod) {
+      return window.HAXWiring.getHaxJSONSchemaType(inputMethod);
+    },
+    validHAXPropertyInputMethod: function validHAXPropertyInputMethod() {
+      return window.HAXWiring.validHAXPropertyInputMethod();
+    },
+    prototypeHaxProperties: function prototypeHaxProperties() {
+      return window.HAXWiring.prototypeHaxProperties();
+    }
+  };
 });

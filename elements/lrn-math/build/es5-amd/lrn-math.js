@@ -1,21 +1,22 @@
 define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
-  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
+  "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
+  "mathjax3/unpacked/MathJax.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_bd41acb0dea811e8bb74b182b64af7a1() {
+  function _templateObject_45208030e11911e89f44553d39ad6ced() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n       :host {\n        display: inline;\n      }\n    </style>\n    [[prefix]] [[math]] [[suffix]]\n    <span hidden=""><slot id="content"></slot></span>\n'
     ]);
-    _templateObject_bd41acb0dea811e8bb74b182b64af7a1 = function() {
+    _templateObject_45208030e11911e89f44553d39ad6ced = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_bd41acb0dea811e8bb74b182b64af7a1()
+      _templateObject_45208030e11911e89f44553d39ad6ced()
     ),
     is: "lrn-math",
     behaviors: [HAXBehaviors.PropertiesBehaviors],
@@ -93,13 +94,6 @@ define([
     },
     ready: function ready() {
       var _this = this;
-      if (babelHelpers.typeof(window.__mathJaxLoaded) === "undefined") {
-        var mathjaxCDN = document.createElement("script");
-        mathjaxCDN.src =
-          "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML";
-        document.body.appendChild(mathjaxCDN);
-        window.__mathJaxLoaded = !0;
-      }
       this._observer = (0, _polymerDom.dom)(this.$.content).observeNodes(
         function(info) {
           _this.math = info.addedNodes
@@ -108,7 +102,7 @@ define([
             })
             .toString();
           setTimeout(function() {
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub]);
           }, 100);
         }
       );

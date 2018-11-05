@@ -1,10 +1,55 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";export{SitesListing};class SitesListing extends PolymerElement{static get template(){return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`}static get haxProperties(){return{canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Sites listing",description:"Automated conversion of sites-listing/",icon:"icons:android",color:"green",groups:["Listing"],handles:[{type:"todo:read-the-docs-for-usage"}],meta:{author:"btopro",owner:"The Pennsylvania State University"}},settings:{quick:[],configure:[],advanced:[]}}}static get properties(){return{}}static get tag(){return"sites-listing"}connectedCallback(){super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setHaxProperties(SitesListing.haxProperties,SitesListing.tag,this)}}window.customElements.define(SitesListing.tag,SitesListing);
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import"./node_modules/@polymer/iron-list/iron-list.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@lrnwebcomponents/elmsln-loading/elmsln-loading.js";import"./lib/site-card.js";Polymer({_template:html`
+    <style>
+      :host {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      iron-list {
+        flex: 1 1 auto;
+      }
+      #loading {
+        width:100%;
+        z-index: 1000;
+        opacity: .8;
+        padding: 16px;
+        text-align: center;
+        align-content: center;
+        justify-content: center;
+        height: 100vh;
+        position: absolute;
+        background-color: rgba(250, 250, 250, .8);
+        transition: all linear .8s;
+        visibility: visible;
+      }
+      #loading div {
+        font-size: 32px;
+        font-weight: bold;
+        padding: 16px;
+      }
+      #loading[data-loading] {
+        background-color: rgba(0, 0, 0, 0);
+        opacity: 0;
+        visibility: hidden;
+      }
+      site-card {
+        padding: 16px;
+      }
+      paper-button.site-card-wrapper {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <iron-ajax auto="" loading="{{__loading}}" url="[[dataSource]]" handle-as="json" debounce-duration="250" last-response="{{sites}}"></iron-ajax>
+    <div id="loading" data-loading\$="[[!__loading]]">
+      <elmsln-loading></elmsln-loading>
+      <div>Loading..</div>
+    </div>
+    <iron-list items="[[sites]]" as="site" grid="">
+      <template>
+        <paper-button tabindex="-1" data-site-id\$="[[site.id]]" class="site-card-wrapper" on-tap="_siteClicked">
+          <site-card data-site-id\$="[[site.id]]" size="[[size]]" image="[[site.image]]" icon="[[site.icon]]" name="[[site.name]]" title="[[site.title]]" elevation="2"></site-card>
+        </paper-button>
+      </template>
+    </iron-list>
+`,is:"sites-listing",properties:{sites:{type:Array},size:{type:String,value:"large"},dataSource:{type:String}},_siteClicked:function(e){this;var normalizedEvent=dom(e),local=normalizedEvent.localTarget,active=local.getAttribute("data-site-id");let findSite=this.sites.filter(site=>{if(site.id!==active){return!1}return!0});if(0<findSite.length){findSite=findSite.pop()}if(typeof findSite.location!==typeof void 0){window.location.href=findSite.location}}});

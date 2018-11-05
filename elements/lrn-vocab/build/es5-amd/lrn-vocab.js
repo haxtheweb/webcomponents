@@ -6,18 +6,18 @@ define([
   "./lib/lrn-vocab-dialog.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_c04ec5a0dea811e88bd0e71e8a80535b() {
+  function _templateObject_4a28cce0e11911e89206fd8340077899() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: inline-flex;\n        --lrn-vocab-border: 1px dashed gray;\n      }\n      paper-button {\n        text-transform: none;\n        padding: 0;\n        margin: 0;\n        border-bottom: var(--lrn-vocab-border);\n        position: relative;\n        top: 3px;\n      }\n    </style>\n\n    <div>\n      <paper-button id="button" noink="">[[term]]</paper-button>\n    </div>\n    <lrn-vocab-dialog id="dialog" opened="{{opened}}">\n      <slot></slot>\n    </lrn-vocab-dialog>\n'
     ]);
-    _templateObject_c04ec5a0dea811e88bd0e71e8a80535b = function() {
+    _templateObject_4a28cce0e11911e89206fd8340077899 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_c04ec5a0dea811e88bd0e71e8a80535b()
+      _templateObject_4a28cce0e11911e89206fd8340077899()
     ),
     is: "lrn-vocab",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

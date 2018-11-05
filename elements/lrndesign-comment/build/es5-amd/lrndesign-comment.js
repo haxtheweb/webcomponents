@@ -4,7 +4,7 @@ define([
   "time-elements/time-elements.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_5258d480deaa11e8b42f4d9d75545e94() {
+  function _templateObject_c8c47e40e11a11e8a25abb312852d033() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n      .comment-left {\n        float: left;\n        display: inline-block;\n      }\n      .comment-right {\n        display: inline-block;\n      }\n    </style>\n    <div class="comment-container">\n      <div class="comment-left">\n        <lrndesign-avatar></lrndesign-avatar>\n      </div>\n      <div class="comment-right">\n        <div class="row-1">\n          <span>{{name}}</span>\n          <relative-time datetime$="{{date}}">\n          </relative-time>\n        </div>\n        <div class="row-2">\n          <slot></slot>\n        </div>\n        <div class="row-3">\n          {{links}}\n        </div>\n      </div>\n    </div>\n'
@@ -13,14 +13,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n      .comment-left {\n        float: left;\n        display: inline-block;\n      }\n      .comment-right {\n        display: inline-block;\n      }\n    </style>\n    <div class="comment-container">\n      <div class="comment-left">\n        <lrndesign-avatar></lrndesign-avatar>\n      </div>\n      <div class="comment-right">\n        <div class="row-1">\n          <span>{{name}}</span>\n          <relative-time datetime\\$="{{date}}">\n          </relative-time>\n        </div>\n        <div class="row-2">\n          <slot></slot>\n        </div>\n        <div class="row-3">\n          {{links}}\n        </div>\n      </div>\n    </div>\n'
       ]
     );
-    _templateObject_5258d480deaa11e8b42f4d9d75545e94 = function() {
+    _templateObject_c8c47e40e11a11e8a25abb312852d033 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_5258d480deaa11e8b42f4d9d75545e94()
+      _templateObject_c8c47e40e11a11e8a25abb312852d033()
     ),
     is: "lrndesign-comment",
     properties: {

@@ -8,7 +8,7 @@ import "./node_modules/@polymer/iron-image/iron-image.js";
 import "./node_modules/@polymer/iron-icons/iron-icons.js";
 Polymer({
   _template: html`
-    <style>
+    <style is="custom-style">
       :host {
         display: block;
         font-family: "Roboto", sans-serif;
@@ -70,8 +70,8 @@ Polymer({
     </style>
 
     <iron-image resource\$="[[schemaResourceID]]-image" src\$="[[source]]" alt\$="[[alt]]"></iron-image>
-    <div class="citation">[[citation]]</div>
-    <div class="caption">[[caption]]</div>
+    <div class="citation">[[citation]]<slot name="citation"></slot></div>
+    <div class="caption">[[caption]]<slot name="caption"></slot></div>
 `,
   is: "media-image",
   behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

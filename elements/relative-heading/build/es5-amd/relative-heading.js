@@ -3,18 +3,18 @@ define([
   "./lib/relative-heading-manager.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_6b49ad30dea911e8aa13ad94e01f08a0() {
+  function _templateObject_eb22ab70e11911e89190a9165c3af78d() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <div id="html"></div>\n'
     ]);
-    _templateObject_6b49ad30dea911e8aa13ad94e01f08a0 = function() {
+    _templateObject_eb22ab70e11911e89190a9165c3af78d = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_6b49ad30dea911e8aa13ad94e01f08a0()
+      _templateObject_eb22ab70e11911e89190a9165c3af78d()
     ),
     is: "relative-heading",
     properties: {
@@ -27,7 +27,6 @@ define([
       window.RelativeHeadingManager.requestAvailability();
     },
     attached: function attached() {
-      this;
       this.fire("heading-created", this);
     },
     attributeChanged: function attributeChanged(name) {
@@ -35,7 +34,7 @@ define([
         this.fire("heading-created", this);
       } else if ("tag" === name) {
         this.fire("heading-changed", this);
-        this.innerHTML =
+        this.$.html.innerHTML =
           "<" + this.tag + ">" + this.text + "</" + this.tag + ">";
       }
     },

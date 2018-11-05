@@ -3,6 +3,7 @@ import {
   Polymer
 } from "../node_modules/@polymer/polymer/polymer-legacy.js";
 window.RelativeHeadingManager = {};
+window.RelativeHeadingManager.instance = null;
 Polymer({
   _template: html`
     <style>
@@ -28,7 +29,6 @@ Polymer({
     });
   }
 });
-window.RelativeHeadingManager.instance = null;
 window.RelativeHeadingManager.requestAvailability = function() {
   if (!window.RelativeHeadingManager.instance) {
     window.RelativeHeadingManager.instance = document.createElement(

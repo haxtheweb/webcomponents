@@ -23,7 +23,6 @@ Polymer({
     window.RelativeHeadingManager.requestAvailability();
   },
   attached: function() {
-    this;
     this.fire("heading-created", this);
   },
   attributeChanged: function(name) {
@@ -31,7 +30,8 @@ Polymer({
       this.fire("heading-created", this);
     } else if ("tag" === name) {
       this.fire("heading-changed", this);
-      this.innerHTML = "<" + this.tag + ">" + this.text + "</" + this.tag + ">";
+      this.$.html.innerHTML =
+        "<" + this.tag + ">" + this.text + "</" + this.tag + ">";
     }
   },
   _setParent: function(el) {

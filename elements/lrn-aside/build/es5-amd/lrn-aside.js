@@ -4,18 +4,18 @@ define([
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_c569ba80dea911e8aff43344e0e888c3() {
+  function _templateObject_3a5ef0e0e11a11e8bf1a3da28c267f1f() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n      :host {\n        display: flex;\n\t\t    padding: 8px;\n      }\n      :host([sticky]) {\n        top:0;\n        position: sticky;\n      }\n      :host([direction='left']) {\n        float: left;\n        max-width: 30em;\n      }\n      :host([direction='right']) {\n        float: right;\n        max-width: 30em;\n      }\n    </style>\n    <aside>\n      <lrndesign-panelcard title=\"[[title]]\">\n        <slot></slot>\n      </lrndesign-panelcard>\n    </aside>\n"
     ]);
-    _templateObject_c569ba80dea911e8aff43344e0e888c3 = function() {
+    _templateObject_3a5ef0e0e11a11e8bf1a3da28c267f1f = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_c569ba80dea911e8aff43344e0e888c3()
+      _templateObject_3a5ef0e0e11a11e8bf1a3da28c267f1f()
     ),
     is: "lrn-aside",
     behaviors: [HAXBehaviors.PropertiesBehaviors],

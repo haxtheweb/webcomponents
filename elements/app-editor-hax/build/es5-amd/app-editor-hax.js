@@ -9,7 +9,7 @@ define([
   "hax-body/hax-export-dialog.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_5b54b470dea811e88bc4e74db2a3fab9() {
+  function _templateObject_f139ec90e11811e8bb7bfb1a0c5cf574() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n        font-size: 1em;\n        box-sizing: content-box;\n      }\n    </style>\n    <hax-store skip-exit-trap="" hidden="" app-store="[[appStoreConnection]]"></hax-store>\n    <hax-autoloader hidden=""></hax-autoloader>\n    <hax-panel id="panel" hide-panel-ops="" hide-export-button="" hide-preferences-button$="[[hidePreferencesButton]]" align="right"></hax-panel>\n    <hax-body id="body"></hax-body>\n    <hax-manager></hax-manager>\n    <hax-export-dialog></hax-export-dialog>\n    <hax-app-picker></hax-app-picker>\n'
@@ -18,14 +18,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n        font-size: 1em;\n        box-sizing: content-box;\n      }\n    </style>\n    <hax-store skip-exit-trap="" hidden="" app-store="[[appStoreConnection]]"></hax-store>\n    <hax-autoloader hidden=""></hax-autoloader>\n    <hax-panel id="panel" hide-panel-ops="" hide-export-button="" hide-preferences-button\\$="[[hidePreferencesButton]]" align="right"></hax-panel>\n    <hax-body id="body"></hax-body>\n    <hax-manager></hax-manager>\n    <hax-export-dialog></hax-export-dialog>\n    <hax-app-picker></hax-app-picker>\n'
       ]
     );
-    _templateObject_5b54b470dea811e88bc4e74db2a3fab9 = function() {
+    _templateObject_f139ec90e11811e8bb7bfb1a0c5cf574 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_5b54b470dea811e88bc4e74db2a3fab9()
+      _templateObject_f139ec90e11811e8bb7bfb1a0c5cf574()
     ),
     is: "app-editor-hax",
     properties: {

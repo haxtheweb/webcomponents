@@ -2,28 +2,34 @@ import {
   html,
   PolymerElement
 } from "./node_modules/@polymer/polymer/polymer-element.js";
-export { LrnSharedStyles };
-class LrnSharedStyles extends PolymerElement {
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
+import "./node_modules/@polymer/iron-flex-layout/iron-flex-layout.js";
+const styleElement = document.createElement("dom-module"),
+  css = html`<style include="iron-flex-layout">
+  lrn-icon, iron-icon {
+    --layout-inline: {
+      display: inline-flex;
+    }; 
   }
-  static get properties() {
-    return {};
+  .sr-only {
+    position: absolute;
+    left: -9999999px;
+    top: 0;
+    height: 0;
+    width: 0;
+    overflow: hidden;
   }
-  static get tag() {
-    return "lrn-shared-styles";
+  @media screen {
+    .print-only {
+      display: none;
+    }
   }
-  connectedCallback() {
-    super.connectedCallback();
+  @media print {
+    .screen-only {
+      display: none;
+    }
   }
-}
-window.customElements.define(LrnSharedStyles.tag, LrnSharedStyles);
+</style>`;
+console.log(css);
+styleElement.appendChild(css);
+styleElement.register("lrn-shared-styles");
+console.log(styleElement);

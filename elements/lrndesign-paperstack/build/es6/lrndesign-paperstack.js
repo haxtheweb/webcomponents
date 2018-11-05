@@ -9,17 +9,11 @@ import "./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 import "./node_modules/@lrnwebcomponents/lrn-icons/lrn-icons.js";
 Polymer({
   _template: html`
-    <style include="materializecss-styles"></style>
-    <style>
+    <style include="materializecss-styles">
       :host {
         display: block;
       }
-
-      h1, h2, h3, h4, h5, h6 {
-        margin: 0;
-      }
       /* Example card */
-
       .egletter p {
         position: relative;
         z-index: 3;
@@ -32,11 +26,7 @@ Polymer({
         line-height: 1.5rem;
       }
 
-      .egletter h2,
-      .egletter h3,
-      .egletter h4,
-      .egletter h5,
-      .egletter h6 {
+      .egletter span {
         font-family: cursive;
         margin: 0 auto;
         position: relative;
@@ -58,11 +48,7 @@ Polymer({
         margin-right: .5em;
       }
 
-      .egletter h2 span,
-      .egletter h3 span,
-      .egletter h4 span,
-      .egletter h5 span,
-      .egletter h6 span {
+      .egletter span {
         line-height: 3em;
       }
 
@@ -101,12 +87,10 @@ Polymer({
       }
     </style>
     <div class="egletter">
-      <h4>
-        <div class\$="icon-container circle [[color]]">
-          <iron-icon icon="[[icon]]" class\$="[[textColor]]"></iron-icon>
-        </div>
-        <span>[[title]]</span>
-      </h4>
+      <div class$="icon-container circle [[color]]">
+        <iron-icon icon="[[icon]]" class$="[[textColor]]"></iron-icon>
+      </div>
+      <span>[[title]]</span>
       <p><slot></slot></p>
     </div>
 `,

@@ -3,11 +3,11 @@ define([
   "./node_modules/@polymer/polymer/lib/elements/dom-if.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_4338b7f0dea911e880464f346128291f() {
+  function _templateObject_c339d7a0e11911e8b42d4744b23b8536() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n\t\t\t:host {\n\t\t\t\t--paper-avatar-width: 40px;\n\t\t\t}\n\t\t\t:host {\n\t\t\t\tdisplay: inline-block;\n\t\t\t\tbox-sizing: border-box;\n\t\t\t\tposition: relative;\n\t\t\t\twidth: var(--paper-avatar-width);\n\t\t\t\theight:  var(--paper-avatar-width);\n\t\t\t\tborder-radius: 50%;\n\t\t\t\tcursor: default;\n\t\t\t\tbackground-color: var(--paper-avatar-color, var(--paper-avatar-bgcolor));\n\t\t\t\t-webkit-user-select: none;\n\t\t\t\t   -moz-user-select: none;\n\t\t\t\t    -ms-user-select: none;\n\t\t\t\t\t\tuser-select: none;\n\t\t\t}\n\t\t\t\n\t\t\t:host > * {\n\t\t\t\tpointer-events: none;\n\t\t\t}\n\t\t\t\n\t\t\t#label, #img, #jdenticon {\n\t\t\t\tposition: absolute;\n\t\t\t\ttop: 0;\n\t\t\t\tleft: 0;\n\t\t\t\tright: 0;\n\t\t\t\tbottom: 0;\n\t\t\t\twidth: 100%;\n\t\t\t\theight: 100%;\n\t\t\t\tborder-radius: 50%;\n\t\t\t}\n\t\t\t#label {\n\t\t\t\toverflow: hidden;\n\t\t\t\tdisplay: -ms-flexbox;\n\t\t\t\tdisplay: -webkit-flex;\n\t\t\t\tdisplay: flex;\n\t\t\t\t-webkit-flex-direction: row;\n\t\t\t\t\t-ms-flex-direction: row;\n\t\t\t\t\t\tflex-direction: row;\n\t\t\t\t-webkit-align-items: center;\n\t\t\t\t\t -ms-flex-align: center;\n\t\t\t\t\t \talign-items: center;\n\t\t\t}\n\t\t\t#label span {\n\t\t\t\tdisplay: block;\n\t\t\t\twidth: 100%;\n\t\t\t\tfont-weight: 400;\n\t\t\t\tcolor: rgba(255, 255, 255, .8);\n\t\t\t\ttext-transform: capitalize;\n\t\t\t\tfont-family: \'Roboto\', \'Noto\', sans-serif;\n\t\t\t\t-webkit-font-smoothing: antialiased;\n\t\t\t\ttext-align: center;\n\t\t\t\tfont-size: calc(var(--paper-avatar-width) / 1.65);\n\t\t\t}\n\t\t\t#jdenticon {\n\t\t\t\twidth: var(--paper-avatar-width);\n\t\t\t\theight: var(--paper-avatar-width);\n\t\t\t}\n\t\t\t\n\t\t\t*[hidden] {\n\t\t\t\tdisplay: none !important;\n\t\t\t}\n\t\t</style>\n\n\t\t<div id="label" title="[[label]]"><span>[[_label(label)]]</span></div>\n\n\t\t<svg id="jdenticon" width="40" height="40">\n      <slot></slot>\n    </svg>\n\n\t\t<template is="dom-if" if="[[src]]">\n\t\t\t<img id="img" src="[[src]]" title="[[label]]" on-load="_onImgLoad" on-error="_onImgError" title="[[color]]">\n\t\t</template>\n  '
     ]);
-    _templateObject_4338b7f0dea911e880464f346128291f = function() {
+    _templateObject_c339d7a0e11911e8b42d4744b23b8536 = function() {
       return data;
     };
     return data;
@@ -15,7 +15,7 @@ define([
   (0, _polymerLegacy.Polymer)({
     is: "paper-avatar",
     _template: (0, _polymerLegacy.html)(
-      _templateObject_4338b7f0dea911e880464f346128291f()
+      _templateObject_c339d7a0e11911e8b42d4744b23b8536()
     ),
     properties: {
       src: { type: String },

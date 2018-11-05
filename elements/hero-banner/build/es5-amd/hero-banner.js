@@ -7,7 +7,7 @@ define([
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_c2b32600dea911e8a256f10ba2c26536() {
+  function _templateObject_32ecd020e11a11e898beffa128da4aa5() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style include="materializecss-styles">\n      :host {\n        display: block;\n        width: 100%;\n        min-height: 600px;\n        height: 100%;\n        max-height: 600px;\n        overflow: hidden;\n        position: relative;\n      }\n      .image {\n        position: absolute;\n        left: 0;\n        right: 0;\n      }\n      .itemwrapper {\n        position: absolute;\n        bottom: 10%;\n        left: 10%;\n        width: 50%;\n      }\n      .title {\n        background-color: rgba(0,0,0,0.5);\n        padding: 10px 16px;\n        font-size: 32px;\n        color: #FFFFFF;\n        margin: 4px 0;\n        font-family: \'Roboto\';\n        font-weight: 500;\n      }\n      .details {\n        background-color: rgba(0,0,0,0.5);\n        padding: 10px 16px;\n        font-size: 16px;\n        color: #FFFFFF;\n        margin: 4px 0;\n        font-family: \'Roboto\';\n      }\n      .linkbutton {\n        padding: 0;\n        margin: 8px 0;\n        color: #FFFFFF;\n        text-decoration: none;\n        font-family: \'Roboto\';\n      }\n      .linkbutton paper-button {\n        text-transform: none;\n        font-weight: bold;\n      }\n      @media screen and (max-width: 720px) {\n        .title {\n          font-size: 20px;\n        }\n        .details {\n          font-size: 12px;\n        }\n        .itemwrapper {\n          left: 5%;\n          width: 50%;\n        }\n      }\n      @media screen and (max-width: 500px) {\n        .title {\n          font-size: 16px;\n        }\n        .details {\n          display: none;\n        }\n        .itemwrapper {\n          left: 0;\n          width: 300px;\n        }\n      }\n\n    </style>\n    <iron-image class="image" src$="[[image]]" fade="" preload="" sizing="cover" style="background-color:grey;width: 100%;height: 100%;"></iron-image>\n    <div class="itemwrapper">\n      <div class="title">[[title]]</div>\n      <div class="details">[[details]]</div>\n      <a class="linkbutton" href$="[[buttonLink]]"><paper-button raised="" class$="[[buttonColorClass]] [[textColorClass]]">[[buttonText]]</paper-button></a>\n    </div>\n'
@@ -16,14 +16,14 @@ define([
         '\n    <style include="materializecss-styles">\n      :host {\n        display: block;\n        width: 100%;\n        min-height: 600px;\n        height: 100%;\n        max-height: 600px;\n        overflow: hidden;\n        position: relative;\n      }\n      .image {\n        position: absolute;\n        left: 0;\n        right: 0;\n      }\n      .itemwrapper {\n        position: absolute;\n        bottom: 10%;\n        left: 10%;\n        width: 50%;\n      }\n      .title {\n        background-color: rgba(0,0,0,0.5);\n        padding: 10px 16px;\n        font-size: 32px;\n        color: #FFFFFF;\n        margin: 4px 0;\n        font-family: \'Roboto\';\n        font-weight: 500;\n      }\n      .details {\n        background-color: rgba(0,0,0,0.5);\n        padding: 10px 16px;\n        font-size: 16px;\n        color: #FFFFFF;\n        margin: 4px 0;\n        font-family: \'Roboto\';\n      }\n      .linkbutton {\n        padding: 0;\n        margin: 8px 0;\n        color: #FFFFFF;\n        text-decoration: none;\n        font-family: \'Roboto\';\n      }\n      .linkbutton paper-button {\n        text-transform: none;\n        font-weight: bold;\n      }\n      @media screen and (max-width: 720px) {\n        .title {\n          font-size: 20px;\n        }\n        .details {\n          font-size: 12px;\n        }\n        .itemwrapper {\n          left: 5%;\n          width: 50%;\n        }\n      }\n      @media screen and (max-width: 500px) {\n        .title {\n          font-size: 16px;\n        }\n        .details {\n          display: none;\n        }\n        .itemwrapper {\n          left: 0;\n          width: 300px;\n        }\n      }\n\n    </style>\n    <iron-image class="image" src\\$="[[image]]" fade="" preload="" sizing="cover" style="background-color:grey;width: 100%;height: 100%;"></iron-image>\n    <div class="itemwrapper">\n      <div class="title">[[title]]</div>\n      <div class="details">[[details]]</div>\n      <a class="linkbutton" href\\$="[[buttonLink]]"><paper-button raised="" class\\$="[[buttonColorClass]] [[textColorClass]]">[[buttonText]]</paper-button></a>\n    </div>\n'
       ]
     );
-    _templateObject_c2b32600dea911e8a256f10ba2c26536 = function() {
+    _templateObject_32ecd020e11a11e898beffa128da4aa5 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_c2b32600dea911e8a256f10ba2c26536()
+      _templateObject_32ecd020e11a11e898beffa128da4aa5()
     ),
     is: "hero-banner",
     behaviors: [

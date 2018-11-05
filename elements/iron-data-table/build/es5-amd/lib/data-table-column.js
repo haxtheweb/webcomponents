@@ -4,7 +4,7 @@ define([
   "./data-table-column-filter.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_b6d57fb0dea711e88b02e5df4cc43173() {
+  function _templateObject_61bf6cc0e11811e8a104f5de9e67f862() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <template id="header">\n      <data-table-column-filter label="[[column.name]]" value="{{column.filterValue}}" hidden$="[[!column.filterBy]]"></data-table-column-filter>\n      <div hidden$="[[column.filterBy]]">[[column.name]]</div>\n    </template>\n'
@@ -13,14 +13,14 @@ define([
         '\n    <template id="header">\n      <data-table-column-filter label="[[column.name]]" value="{{column.filterValue}}" hidden\\$="[[!column.filterBy]]"></data-table-column-filter>\n      <div hidden\\$="[[column.filterBy]]">[[column.name]]</div>\n    </template>\n'
       ]
     );
-    _templateObject_b6d57fb0dea711e88b02e5df4cc43173 = function() {
+    _templateObject_61bf6cc0e11811e8a104f5de9e67f862 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_b6d57fb0dea711e88b02e5df4cc43173()
+      _templateObject_61bf6cc0e11811e8a104f5de9e67f862()
     ),
     is: "data-table-column",
     properties: {

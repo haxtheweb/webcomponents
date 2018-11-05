@@ -64,3 +64,4 @@ import "./lib/mdi-video-iconset-svg.js";
 import "./lib/mdi-view-iconset-svg.js";
 import "./lib/mdi-vote-iconset-svg.js";
 import "./lib/mdi-weather-iconset-svg.js";
+console.log(document.head.querySelectorAll("iron-iconset-svg"));

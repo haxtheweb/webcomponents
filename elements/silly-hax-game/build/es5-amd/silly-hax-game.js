@@ -7,7 +7,7 @@ define([
   "./node_modules/@polymer/paper-button/paper-button.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_965687e0deaa11e89a711747269922fe() {
+  function _templateObject_0bb814a0e11b11e8a82e15dd52e299ae() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <paper-card heading="[[haxText]]" elevation="1">\n      <simple-timer id="timer" start-time="60" count-up="" hidden="" current-time="{{timer}}"></simple-timer>\n      <div class="card-content">\n        <to-do items="{{tasks}}" hide-form="" id="todo" name="Hax Challenge"></to-do>\n      </div>\n      <div class="card-actions">\n        <paper-button raised="" on-tap="_playButton">Play</paper-button>\n        <paper-button raised="" on-tap="_resetTimer">Reset</paper-button>\n      </div>\n    </paper-card>\n\n    <lrnsys-dialog-modal id="modal" body-append="">\n      <h3 slot="header">HAX Challenge score</h3>\n      <div slot="primary">\n        <p>[[__successText]]\n          <a href="https://github.com/LRNWebComponents/hax-body/issues/new" target="_blank" style="text-decoration: none;text-transform: none;"><paper-button raised="">Give us feedback to improve</paper-button></a>\n          <a href$="[[tweet]]" target="_blank" style="text-decoration: none;text-transform: none;"><paper-button raised="">Tweet your score</paper-button></a>\n      \t</p>\n        <to-do name="Report card" hide-form="" items="{{__score}}"></to-do>\n      </div>\n    </lrnsys-dialog-modal>\n'
@@ -16,14 +16,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <paper-card heading="[[haxText]]" elevation="1">\n      <simple-timer id="timer" start-time="60" count-up="" hidden="" current-time="{{timer}}"></simple-timer>\n      <div class="card-content">\n        <to-do items="{{tasks}}" hide-form="" id="todo" name="Hax Challenge"></to-do>\n      </div>\n      <div class="card-actions">\n        <paper-button raised="" on-tap="_playButton">Play</paper-button>\n        <paper-button raised="" on-tap="_resetTimer">Reset</paper-button>\n      </div>\n    </paper-card>\n\n    <lrnsys-dialog-modal id="modal" body-append="">\n      <h3 slot="header">HAX Challenge score</h3>\n      <div slot="primary">\n        <p>[[__successText]]\n          <a href="https://github.com/LRNWebComponents/hax-body/issues/new" target="_blank" style="text-decoration: none;text-transform: none;"><paper-button raised="">Give us feedback to improve</paper-button></a>\n          <a href\\$="[[tweet]]" target="_blank" style="text-decoration: none;text-transform: none;"><paper-button raised="">Tweet your score</paper-button></a>\n      \t</p>\n        <to-do name="Report card" hide-form="" items="{{__score}}"></to-do>\n      </div>\n    </lrnsys-dialog-modal>\n'
       ]
     );
-    _templateObject_965687e0deaa11e89a711747269922fe = function() {
+    _templateObject_0bb814a0e11b11e8a82e15dd52e299ae = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_965687e0deaa11e89a711747269922fe()
+      _templateObject_0bb814a0e11b11e8a82e15dd52e299ae()
     ),
     is: "silly-hax-game",
     properties: {

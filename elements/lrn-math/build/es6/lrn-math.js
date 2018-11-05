@@ -4,6 +4,7 @@ import {
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
 import { dom } from "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
 import "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "mathjax3/unpacked/MathJax.js";
 Polymer({
   _template: html`
     <style>
@@ -87,17 +88,10 @@ Polymer({
     });
   },
   ready: function() {
-    if (typeof window.__mathJaxLoaded === typeof void 0) {
-      let mathjaxCDN = document.createElement("script");
-      mathjaxCDN.src =
-        "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML";
-      document.body.appendChild(mathjaxCDN);
-      window.__mathJaxLoaded = !0;
-    }
     this._observer = dom(this.$.content).observeNodes(info => {
       this.math = info.addedNodes.map(node => node.textContent).toString();
       setTimeout(function() {
-        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub]);
       }, 100);
     });
   }

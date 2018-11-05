@@ -11,7 +11,7 @@ import "./node_modules/@polymer/paper-menu-button/paper-menu-button.js";
 import "./node_modules/@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
 import "./node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-layout.js";
+import "./node_modules/@lrnwebcomponents/lrnsys-layout/lrnsys-layout.js";
 import "./node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-drawer.js";
 import "./node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
 import "./node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-collapselist.js";

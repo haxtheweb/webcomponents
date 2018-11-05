@@ -13,7 +13,7 @@ Polymer({
         line-height: 30px;
       }
     </style>
-    <time datetime\$="[[date]]">[[date]]</time>
+    <time datetime$="[[date]]">[[date]]</time>
 `,
   is: "simple-datetime",
   properties: {

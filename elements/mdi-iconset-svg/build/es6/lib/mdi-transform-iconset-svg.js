@@ -1,6 +1,7 @@
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
-$_documentContainer.innerHTML = `<iron-iconset-svg name="mdi-transform" size="24">
+import "../node_modules/@polymer/iron-icon/iron-icon.js";
+import "../node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js";
+import { html } from "../node_modules/@polymer/polymer/lib/utils/html-tag.js";
+const template = html`<iron-iconset-svg name="mdi-transform" size="24">
   <svg>
 
     <g id="rotate-left-variant">
@@ -13,4 +14,4 @@ $_documentContainer.innerHTML = `<iron-iconset-svg name="mdi-transform" size="24
 
   </svg>
 </iron-iconset-svg>`;
-document.head.appendChild($_documentContainer);
+document.head.appendChild(template.content);

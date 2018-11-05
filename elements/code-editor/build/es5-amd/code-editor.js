@@ -8,7 +8,7 @@ define([
   "./lib/code-pen-button.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_7d43afa0dea811e8931521fd8b107c3f() {
+  function _templateObject_0efe50e0e11911e88e4d7b87daee9b44() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n        padding: 16px;\n        --code-pen-button-color: #222222;\n        --code-pen-title-color: #222222;\n      }\n      .code-pen-container {\n        width: 100%;\n        display: block;\n        background-color: var(--code-pen-button-color);\n        height: 40px;\n      }\n      code-pen-button {\n        float: right;\n        height: 40px;\n      }\n      h3 {\n        color: var(--code-pen-title-color);\n      }\n    </style>\n    <h3>[[title]]</h3>\n    <juicy-ace-editor id="codeeditor" theme$="[[theme]]" mode$="[[mode]]" font-size$="[[fontSize]]" readonly$="[[readOnly]]"></juicy-ace-editor>\n    <div class="code-pen-container" hidden$="[[!showCodePen]]">\n      <code-pen-button data="[[codePenData]]"></code-pen-button>\n    </div>\n'
@@ -17,14 +17,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n        padding: 16px;\n        --code-pen-button-color: #222222;\n        --code-pen-title-color: #222222;\n      }\n      .code-pen-container {\n        width: 100%;\n        display: block;\n        background-color: var(--code-pen-button-color);\n        height: 40px;\n      }\n      code-pen-button {\n        float: right;\n        height: 40px;\n      }\n      h3 {\n        color: var(--code-pen-title-color);\n      }\n    </style>\n    <h3>[[title]]</h3>\n    <juicy-ace-editor id="codeeditor" theme\\$="[[theme]]" mode\\$="[[mode]]" font-size\\$="[[fontSize]]" readonly\\$="[[readOnly]]"></juicy-ace-editor>\n    <div class="code-pen-container" hidden\\$="[[!showCodePen]]">\n      <code-pen-button data="[[codePenData]]"></code-pen-button>\n    </div>\n'
       ]
     );
-    _templateObject_7d43afa0dea811e8931521fd8b107c3f = function() {
+    _templateObject_0efe50e0e11911e88e4d7b87daee9b44 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_7d43afa0dea811e8931521fd8b107c3f()
+      _templateObject_0efe50e0e11911e88e4d7b87daee9b44()
     ),
     is: "code-editor",
     behaviors: [

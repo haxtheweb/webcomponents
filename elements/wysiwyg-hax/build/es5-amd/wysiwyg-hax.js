@@ -3,7 +3,7 @@ define([
   "./node_modules/@lrnwebcomponents/cms-hax/cms-hax.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_6edde590deab11e8b941039e75e2b425() {
+  function _templateObject_03cc3a90e11c11e883c4453955c26358() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <textarea id$="[[fieldId]]" name="[[fieldName]]" hidden="">[[bodyValue]]</textarea>\n    <cms-hax open-default="[[openDefault]]" hide-message="" body-offset-left="[[bodyOffsetLeft]]" update-page-data="[[updatePageData]]" end-point="[[endPoint]]" app-store-connection="[[appStoreConnection]]" hide-export-button="[[hideExportButton]]" align="[[align]]"></cms-hax>\n'
@@ -12,14 +12,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <textarea id\\$="[[fieldId]]" name="[[fieldName]]" hidden="">[[bodyValue]]</textarea>\n    <cms-hax open-default="[[openDefault]]" hide-message="" body-offset-left="[[bodyOffsetLeft]]" update-page-data="[[updatePageData]]" end-point="[[endPoint]]" app-store-connection="[[appStoreConnection]]" hide-export-button="[[hideExportButton]]" align="[[align]]"></cms-hax>\n'
       ]
     );
-    _templateObject_6edde590deab11e8b941039e75e2b425 = function() {
+    _templateObject_03cc3a90e11c11e883c4453955c26358 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_6edde590deab11e8b941039e75e2b425()
+      _templateObject_03cc3a90e11c11e883c4453955c26358()
     ),
     is: "wysiwyg-hax",
     properties: {
