@@ -1,7 +1,7 @@
 {
   "name": "@lrnwebcomponents/lrnwebcomponents",
   "description": "ELMS:LN produced web components for any project",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "wcfactory": {
     "askSASS": true,
     "askProps": true,
