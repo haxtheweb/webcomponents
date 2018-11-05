@@ -8,7 +8,12 @@ export class HAXWiring {
       settings: { quick: [], configure: [], advanced: [] },
       wipeSlot: {}
     };
-    this.setHaxProperties = (props, tag = "", context = document) => {
+    this.setHaxProperties = (
+      props,
+      tag = "",
+      context = document,
+      isReady = !1
+    ) => {
       if (typeof props.api === typeof void 0) {
         props.api = "1";
       }
@@ -111,51 +116,56 @@ export class HAXWiring {
         if (typeof props.saveOptions === typeof void 0) {
           props.saveOptions = { wipeSlot: !1 };
         }
-        if (typeof Polymer === typeof void 0) {
-          let evt = new CustomEvent("hax-register-properties", {
-            bubbles: !0,
-            cancelable: !0,
-            detail: { tag: tag.toLowerCase(), properties: props, polymer: !1 }
-          });
-          context.dispatchEvent(evt);
-        } else if (
-          "" !== tag &&
-          typeof Polymer !== typeof void 0 &&
-          typeof window.HaxStore !== typeof void 0 &&
-          typeof window.HaxStore.instance !== typeof void 0 &&
-          null != window.HaxStore.instance &&
-          typeof window.HaxStore.instance.elementList !== typeof void 0 &&
-          typeof window.HaxStore.instance.elementList[tag.toLowerCase()] ===
-            typeof void 0
-        ) {
-          let evt = new CustomEvent("hax-register-properties", {
-            bubbles: !0,
-            cancelable: !0,
-            detail: { tag: tag.toLowerCase(), properties: props }
-          });
-          context.dispatchEvent(evt);
-        } else if (
-          typeof Polymer !== typeof void 0 &&
-          typeof window.HaxStore !== typeof void 0 &&
-          typeof window.HaxStore.instance !== typeof void 0 &&
-          null != window.HaxStore.instance &&
-          typeof window.HaxStore.instance.elementList !== typeof void 0 &&
-          typeof window.HaxStore.instance.elementList[
-            this.tagName.toLowerCase()
-          ] === typeof void 0
-        ) {
-          let evt = new CustomEvent("hax-register-properties", {
-            bubbles: !0,
-            cancelable: !0,
-            detail: { tag: this.tagName.toLowerCase(), properties: props }
-          });
-          context.dispatchEvent(evt);
+        if (isReady) {
+          if ("" !== tag && typeof window.HaxStore === typeof void 0) {
+            const evt = new CustomEvent("hax-register-properties", {
+              bubbles: !0,
+              cancelable: !0,
+              detail: { tag: tag.toLowerCase(), properties: props, polymer: !1 }
+            });
+            context.dispatchEvent(evt);
+          } else if (
+            "" !== tag &&
+            typeof window.HaxStore !== typeof void 0 &&
+            typeof window.HaxStore.instance !== typeof void 0 &&
+            null != window.HaxStore.instance &&
+            typeof window.HaxStore.instance.elementList !== typeof void 0 &&
+            typeof window.HaxStore.instance.elementList[tag.toLowerCase()] ===
+              typeof void 0
+          ) {
+            const evt = new CustomEvent("hax-register-properties", {
+              bubbles: !0,
+              cancelable: !0,
+              detail: { tag: tag.toLowerCase(), properties: props }
+            });
+            context.dispatchEvent(evt);
+          } else if (
+            typeof this.tagName !== typeof void 0 &&
+            typeof window.HaxStore !== typeof void 0 &&
+            typeof window.HaxStore.instance !== typeof void 0 &&
+            null != window.HaxStore.instance &&
+            typeof window.HaxStore.instance.elementList !== typeof void 0 &&
+            typeof window.HaxStore.instance.elementList[
+              this.tagName.toLowerCase()
+            ] === typeof void 0
+          ) {
+            const evt = new CustomEvent("hax-register-properties", {
+              bubbles: !0,
+              cancelable: !0,
+              detail: { tag: this.tagName.toLowerCase(), properties: props }
+            });
+            context.dispatchEvent(evt);
+          }
         }
         if ("" === tag) {
-          this.haxProperties = props;
+          if ("function" === typeof this._setHaxProperties) {
+            this._setHaxProperties(props);
+          } else {
+            this.haxProperties = props;
+          }
         }
       } else {
-        console.log(
+        console.warn(
           "This is't a valid usage of hax-body-behaviors API. See hax-body-behaviors for more details on how to implement the API. Most likely your hax item just was placed in an iframe as a fallback as opposed to a custom element."
         );
       }
@@ -651,5 +661,97 @@ export class HAXWiring {
     };
   }
 }
+window.HAXWiring = new HAXWiring();
 window.HAXBehaviors = window.HAXBehaviors || {};
-window.HAXBehaviors.PropertiesBehaviors = new HAXWiring();
+window.HAXBehaviors.PropertiesBehaviors = {
+  properties: { haxProperties: window.HAXWiring.haxProperties },
+  setHaxProperties: function(props, tag = "", context = this) {
+    if (typeof this.tagName !== typeof void 0) {
+      tag = this.tagName.toLowerCase();
+    }
+    window.addEventListener("hax-store-ready", this._haxStoreReady.bind(this));
+    if (
+      typeof window.HaxStore !== typeof void 0 &&
+      null != window.HaxStore.instance &&
+      window.HaxStore.ready
+    ) {
+      return window.HAXWiring.setHaxProperties(props, tag, context, !0);
+    } else {
+      return window.HAXWiring.setHaxProperties(props, tag, context, !1);
+    }
+  },
+  _haxStoreReady: function(e) {
+    if (
+      e.detail &&
+      typeof this.tagName !== typeof void 0 &&
+      typeof this.haxProperties !== typeof void 0
+    ) {
+      let tag = this.tagName,
+        props = this.haxProperties,
+        context = this;
+      if ("" !== tag && typeof window.HaxStore === typeof void 0) {
+        const evt = new CustomEvent("hax-register-properties", {
+          bubbles: !0,
+          cancelable: !0,
+          detail: { tag: tag.toLowerCase(), properties: props, polymer: !1 }
+        });
+        context.dispatchEvent(evt);
+      } else if (
+        "" !== tag &&
+        typeof window.HaxStore !== typeof void 0 &&
+        typeof window.HaxStore.instance !== typeof void 0 &&
+        null != window.HaxStore.instance &&
+        typeof window.HaxStore.instance.elementList !== typeof void 0 &&
+        typeof window.HaxStore.instance.elementList[tag.toLowerCase()] ===
+          typeof void 0
+      ) {
+        const evt = new CustomEvent("hax-register-properties", {
+          bubbles: !0,
+          cancelable: !0,
+          detail: { tag: tag.toLowerCase(), properties: props }
+        });
+        context.dispatchEvent(evt);
+      } else if (
+        typeof this.tagName !== typeof void 0 &&
+        typeof window.HaxStore !== typeof void 0 &&
+        typeof window.HaxStore.instance !== typeof void 0 &&
+        null != window.HaxStore.instance &&
+        typeof window.HaxStore.instance.elementList !== typeof void 0 &&
+        typeof window.HaxStore.instance.elementList[
+          this.tagName.toLowerCase()
+        ] === typeof void 0
+      ) {
+        const evt = new CustomEvent("hax-register-properties", {
+          bubbles: !0,
+          cancelable: !0,
+          detail: { tag: this.tagName.toLowerCase(), properties: props }
+        });
+        context.dispatchEvent(evt);
+      }
+    }
+  },
+  validateSetting: function(setting) {
+    return window.HAXWiring.validateSetting(setting);
+  },
+  getHaxProperties: function() {
+    return this.haxProperties;
+  },
+  getHaxJSONSchema: function(type, haxProperties, target = this) {
+    return window.HAXWiring.getHaxJSONSchema(type, haxProperties, target);
+  },
+  postProcessgetHaxJSONSchema: function(schema) {
+    return window.HAXWiring.postProcessgetHaxJSONSchema(schema);
+  },
+  _getHaxJSONSchemaProperty: function(settings, target) {
+    return window.HAXWiring._getHaxJSONSchemaProperty(settings, target);
+  },
+  getHaxJSONSchemaType: function(inputMethod) {
+    return window.HAXWiring.getHaxJSONSchemaType(inputMethod);
+  },
+  validHAXPropertyInputMethod: function() {
+    return window.HAXWiring.validHAXPropertyInputMethod();
+  },
+  prototypeHaxProperties: function() {
+    return window.HAXWiring.prototypeHaxProperties();
+  }
+};

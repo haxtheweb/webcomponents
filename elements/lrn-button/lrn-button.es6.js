@@ -7,7 +7,7 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
     --lrnsys-button-height: 3em;
   }
 
-  :host.center {
+  :host(.center) {
     text-align: center;
   }
 

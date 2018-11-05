@@ -2,19 +2,20 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
   _polymerLegacy
 ) {
   "use strict";
-  function _templateObject_6bcf7f00dea911e8aa13ad94e01f08a0() {
+  function _templateObject_ec83e920e11911e89190a9165c3af78d() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n      :host {\n        display: none;\n      }\n    </style>\n"
     ]);
-    _templateObject_6bcf7f00dea911e8aa13ad94e01f08a0 = function() {
+    _templateObject_ec83e920e11911e89190a9165c3af78d = function() {
       return data;
     };
     return data;
   }
   window.RelativeHeadingManager = {};
+  window.RelativeHeadingManager.instance = null;
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_6bcf7f00dea911e8aa13ad94e01f08a0()
+      _templateObject_ec83e920e11911e89190a9165c3af78d()
     ),
     is: "relative-heading-manager",
     properties: {},
@@ -33,7 +34,6 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
       });
     }
   });
-  window.RelativeHeadingManager.instance = null;
   window.RelativeHeadingManager.requestAvailability = function() {
     if (!window.RelativeHeadingManager.instance) {
       window.RelativeHeadingManager.instance = document.createElement(

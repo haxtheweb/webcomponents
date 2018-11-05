@@ -67,4 +67,5 @@ define([
   "./lib/mdi-weather-iconset-svg.js"
 ], function() {
   "use strict";
+  console.log(document.head.querySelectorAll("iron-iconset-svg"));
 });

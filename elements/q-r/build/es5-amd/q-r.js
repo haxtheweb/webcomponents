@@ -4,7 +4,7 @@ define([
   "./node_modules/webcomponent-qr-code/qr-code.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_6811dac0dea911e8822ed3524a59a82f() {
+  function _templateObject_e84506f0e11911e8a8393f850ebc33f5() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n      #link {\n        visibility: hidden;\n        opacity: 0;\n      }\n    </style>\n    <qr-code id="qr" data$="[[data]]" modulesize$="[[modulesize]]" margin$="[[margin]]" format$="[[format]]"></qr-code>\n    <a href$="[[data]]" id="link">[[title]]</a>\n'
@@ -13,14 +13,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n      #link {\n        visibility: hidden;\n        opacity: 0;\n      }\n    </style>\n    <qr-code id="qr" data\\$="[[data]]" modulesize\\$="[[modulesize]]" margin\\$="[[margin]]" format\\$="[[format]]"></qr-code>\n    <a href\\$="[[data]]" id="link">[[title]]</a>\n'
       ]
     );
-    _templateObject_6811dac0dea911e8822ed3524a59a82f = function() {
+    _templateObject_e84506f0e11911e8a8393f850ebc33f5 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_6811dac0dea911e8822ed3524a59a82f()
+      _templateObject_e84506f0e11911e8a8393f850ebc33f5()
     ),
     is: "q-r",
     behaviors: [HAXBehaviors.PropertiesBehaviors],

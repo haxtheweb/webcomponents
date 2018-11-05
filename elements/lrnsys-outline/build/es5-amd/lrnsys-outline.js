@@ -7,7 +7,7 @@ define([
 ], function(_polymerLegacy) {
   "use strict";
   var _listeners, _Polymer;
-  function _templateObject_07c8a770dea911e8861fefd9233c9861() {
+  function _templateObject_763dc8c0e11a11e8a0fde50b4d62c050() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n      :host kbd {\n        display: inline-block;\n        background: #333;\n        color: white;\n        border-radius: 0.25em;\n        margin: 0.25em 0.25em 0.25em 0;\n        padding: 0.5em;\n        font-family: Verdana, Geneva, Tahoma, sans-serif;\n        font-size:85%;\n      }\n    </style>\n    <h1>[[title]]<paper-icon-button title="Keyboard directions" id="dialogtrigger" icon="icons:help" on-tap="openDirections"></paper-icon-button></h1>\n    <paper-dialog id="modal" with-backdrop="">\n      <h2>Keyboard shortcuts</h2>\n      <div>\n        <paper-icon-button title="close directions" style="position: absolute;top: 0; right:0;" icon="icons:cancel" on-tap="closeDirections"></paper-icon-button>\n        <ul>\n          <li><kbd>Enter</kbd> to <strong>add</strong> an item</li>\n          <li><kbd>Backspace</kbd> <em>with entire item selected</em> to <strong>delete</strong> an item.</li>\n          <li><kbd>\u2191</kbd> / <kbd>\u2193</kbd> / <kbd>\u2190</kbd> / <kbd>\u2192</kbd> to <strong>navigate</strong> through items</li>\n          <li><kbd>Tab</kbd> / <kbd>Shift+Tab</kbd> <em>at the beginning of a line</em> to <strong>indent/outdent</strong></li>\n          <li><kbd>Shift+\u2191</kbd> / <kbd>Shift+\u2193</kbd> to items up/down</li>\n        </ul>\n      </div>\n    </paper-dialog>\n    <div id="itemslist">\n      <template id="domRepeat" is="dom-repeat" items$="{{items}}" as="item">\n        <lrnsys-outline-item disable-down$="{{item.disableDown}}" disable-left$="{{item.disableLeft}}" disable-right$="{{item.disableRight}}" disable-up$="{{item.disableUp}}" id$="{{item.id}}" index$="{{item.index}}" indent-level$="{{item.indent}}" parent$="{{item.parent}}" title$="{{item.title}}">\n        </lrnsys-outline-item>\n      </template>\n    </div>\n'
@@ -16,7 +16,7 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n      :host kbd {\n        display: inline-block;\n        background: #333;\n        color: white;\n        border-radius: 0.25em;\n        margin: 0.25em 0.25em 0.25em 0;\n        padding: 0.5em;\n        font-family: Verdana, Geneva, Tahoma, sans-serif;\n        font-size:85%;\n      }\n    </style>\n    <h1>[[title]]<paper-icon-button title="Keyboard directions" id="dialogtrigger" icon="icons:help" on-tap="openDirections"></paper-icon-button></h1>\n    <paper-dialog id="modal" with-backdrop="">\n      <h2>Keyboard shortcuts</h2>\n      <div>\n        <paper-icon-button title="close directions" style="position: absolute;top: 0; right:0;" icon="icons:cancel" on-tap="closeDirections"></paper-icon-button>\n        <ul>\n          <li><kbd>Enter</kbd> to <strong>add</strong> an item</li>\n          <li><kbd>Backspace</kbd> <em>with entire item selected</em> to <strong>delete</strong> an item.</li>\n          <li><kbd>\u2191</kbd> / <kbd>\u2193</kbd> / <kbd>\u2190</kbd> / <kbd>\u2192</kbd> to <strong>navigate</strong> through items</li>\n          <li><kbd>Tab</kbd> / <kbd>Shift+Tab</kbd> <em>at the beginning of a line</em> to <strong>indent/outdent</strong></li>\n          <li><kbd>Shift+\u2191</kbd> / <kbd>Shift+\u2193</kbd> to items up/down</li>\n        </ul>\n      </div>\n    </paper-dialog>\n    <div id="itemslist">\n      <template id="domRepeat" is="dom-repeat" items\\$="{{items}}" as="item">\n        <lrnsys-outline-item disable-down\\$="{{item.disableDown}}" disable-left\\$="{{item.disableLeft}}" disable-right\\$="{{item.disableRight}}" disable-up\\$="{{item.disableUp}}" id\\$="{{item.id}}" index\\$="{{item.index}}" indent-level\\$="{{item.indent}}" parent\\$="{{item.parent}}" title\\$="{{item.title}}">\n        </lrnsys-outline-item>\n      </template>\n    </div>\n'
       ]
     );
-    _templateObject_07c8a770dea911e8861fefd9233c9861 = function() {
+    _templateObject_763dc8c0e11a11e8a0fde50b4d62c050 = function() {
       return data;
     };
     return data;
@@ -24,7 +24,7 @@ define([
   (0, _polymerLegacy.Polymer)(
     ((_Polymer = {
       _template: (0, _polymerLegacy.html)(
-        _templateObject_07c8a770dea911e8861fefd9233c9861()
+        _templateObject_763dc8c0e11a11e8a0fde50b4d62c050()
       ),
       is: "lrnsys-outline",
       listeners: ((_listeners = {

@@ -1,4 +1,4 @@
-import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js";var $_documentContainer=document.createElement("div");$_documentContainer.setAttribute("style","display: none;");$_documentContainer.innerHTML=`<iron-iconset-svg name="mdextra" size="24">
+import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js";import{html}from"./node_modules/@polymer/polymer/lib/utils/html-tag.js";const template=html`<iron-iconset-svg name="mdextra" size="24">
 <svg><defs>
   <g id="superscript">
     <path d="M16,7.41L11.41,12L16,16.59L14.59,18L10,13.41L5.41,18L4,16.59L8.59,12L4,7.41L5.41,6L10,10.59L14.59,6L16,7.41M21.85,9H16.97V8L17.86,7.18C18.62,6.54 19.18,6 19.56,5.55C19.93,5.11 20.12,4.7 20.13,4.32C20.14,4.04 20.05,3.8 19.86,3.62C19.68,3.43 19.39,3.34 19,3.33C18.69,3.34 18.42,3.4 18.16,3.5L17.5,3.89L17.05,2.72C17.32,2.5 17.64,2.33 18.03,2.19C18.42,2.05 18.85,2 19.32,2C20.1,2 20.7,2.2 21.1,2.61C21.5,3 21.72,3.54 21.72,4.18C21.71,4.74 21.53,5.26 21.18,5.73C20.84,6.21 20.42,6.66 19.91,7.09L19.27,7.61V7.63H21.85V9Z"></path>
@@ -19,4 +19,4 @@ import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@po
     <path d="M2,5.27L3.28,4L20,20.72L18.73,22L14.73,18H13V16.27L9.73,13H8V11.27L5.5,8.76C4.5,9.5 3.9,10.68 3.9,12C3.9,14.26 5.74,16.1 8,16.1H11V18H8A6,6 0 0,1 2,12C2,10.16 2.83,8.5 4.14,7.41L2,5.27M16,6A6,6 0 0,1 22,12C22,14.21 20.8,16.15 19,17.19L17.6,15.77C19.07,15.15 20.1,13.7 20.1,12C20.1,9.73 18.26,7.9 16,7.9H13V6H16M8,6H11V7.9H9.72L7.82,6H8M16,11V13H14.82L12.82,11H16Z"></path>
   </g>
 </defs></svg>
-</iron-iconset-svg>`;document.head.appendChild($_documentContainer);
+</iron-iconset-svg>`;document.head.appendChild(template.content);

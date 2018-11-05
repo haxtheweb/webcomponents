@@ -3,16 +3,16 @@ define([
   "../node_modules/@polymer/iron-overlay-behavior/iron-overlay-behavior.js"
 ], function(_polymerLegacy, _ironOverlayBehavior) {
   "use strict";
-  function _templateObject_47ac8cd0dea911e8b2b4556348efafce() {
+  function _templateObject_c68272f0e11911e8979c8b3b1f0736d2() {
     var data = babelHelpers.taggedTemplateLiteral(["\n\t\t<slot></slot>\n"]);
-    _templateObject_47ac8cd0dea911e8b2b4556348efafce = function() {
+    _templateObject_c68272f0e11911e8979c8b3b1f0736d2 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_47ac8cd0dea911e8b2b4556348efafce()
+      _templateObject_c68272f0e11911e8979c8b3b1f0736d2()
     ),
     is: "paper-fab-speed-dial-overlay",
     behaviors: [_ironOverlayBehavior.IronOverlayBehavior]

@@ -5,7 +5,8 @@ import {
 import "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "./node_modules/@polymer/iron-image/iron-image.js";
-import "@lrnwebcomponents/mdi-iconset-svg/mdi-social-iconset-svg.js";
+import "./node_modules/@polymer/paper-icon-button/paper-icon-button.js";
+import "./node_modules/@lrnwebcomponents/mdi-iconset-svg/lib/mdi-social-iconset-svg.js";
 Polymer({
   _template: html`
     <style is="custom-style">

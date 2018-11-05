@@ -4,7 +4,7 @@ define([
   "./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_0308e000deaa11e8831db797ada06512() {
+  function _templateObject_709cbe80e11a11e88dd52590c4efd568() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n        --container-bg-color: lightgray;\n        --container-text-color: black;\n        --container-padding: 1em;\n        --container-outset: 0;\n        @apply --host-styles;\n      }\n\n      #container {\n        display: block;\n        background: var(--container-bg-color);\n        color: var(--container-text-color);\n        padding: var(--container-padding);\n        margin-left: -var(--container-outset);\n        @apply --container-styles;\n      }\n\n      #header {\n        display: flex;\n        align-items: center;\n        @apply --container-header;\n      }\n\n      #icon {\n        margin-right: .5em;\n        @apply --icon-styles;\n      }\n\n      #label {\n        font-size: 1.3em;\n        margin: .8em 0;\n        flex: 1 1 auto;\n        @apply --label-styles;\n      }\n    </style>\n    <div id="container">\n      <div id="header">\n        <iron-icon id="icon" icon="[[icon]]" hidden$="[[!icon]]"></iron-icon>\n        <div id="label" hidden$="[[!label]]">[[label]]</div>\n      </div>\n      <slot></slot>\n    </div>\n'
@@ -13,14 +13,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n        --container-bg-color: lightgray;\n        --container-text-color: black;\n        --container-padding: 1em;\n        --container-outset: 0;\n        @apply --host-styles;\n      }\n\n      #container {\n        display: block;\n        background: var(--container-bg-color);\n        color: var(--container-text-color);\n        padding: var(--container-padding);\n        margin-left: -var(--container-outset);\n        @apply --container-styles;\n      }\n\n      #header {\n        display: flex;\n        align-items: center;\n        @apply --container-header;\n      }\n\n      #icon {\n        margin-right: .5em;\n        @apply --icon-styles;\n      }\n\n      #label {\n        font-size: 1.3em;\n        margin: .8em 0;\n        flex: 1 1 auto;\n        @apply --label-styles;\n      }\n    </style>\n    <div id="container">\n      <div id="header">\n        <iron-icon id="icon" icon="[[icon]]" hidden\\$="[[!icon]]"></iron-icon>\n        <div id="label" hidden\\$="[[!label]]">[[label]]</div>\n      </div>\n      <slot></slot>\n    </div>\n'
       ]
     );
-    _templateObject_0308e000deaa11e8831db797ada06512 = function() {
+    _templateObject_709cbe80e11a11e88dd52590c4efd568 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_0308e000deaa11e8831db797ada06512()
+      _templateObject_709cbe80e11a11e88dd52590c4efd568()
     ),
     is: "lrndesign-sidenote",
     behaviors: [A11yBehaviors.A11y, MaterializeCSSBehaviors.ColorBehaviors],

@@ -89,6 +89,7 @@ Polymer({
         border-radius: .5em;
       }
       #icon {
+        display: inline-block;
         width: 1.2em;
         height: 1.2em;
         font-size: 1.2em;
@@ -126,15 +127,15 @@ Polymer({
     </style>
     <iron-image src="[[image]]" preload="" fade="" sizing="cover" id="image"></iron-image>
     <div class="overlay">
-      <h2 id="header" hidden\$="[[!header]]">[[header]]</h2>
-      <div id="subheader" hidden\$="[[!subheader]]">[[subheader]]</div>
+      <h2 id="header" hidden$="[[!header]]">[[header]]</h2>
+      <div id="subheader" hidden$="[[!subheader]]">[[subheader]]</div>
       <div id="body">
-        <p hidden\$="[[!text]]">[[text]]</p>
+        <p hidden$="[[!text]]">[[text]]</p>
         <slot></slot>
       </div>
-      <a tabindex="-1" href\$="[[link]]" id="actionlink">
+      <a tabindex="-1" href$="[[link]]" id="actionlink">
         <paper-button raised="" id="action">
-        <span id="label">[[action]]<iron-icon id="icon" icon="[[icon]]" hidden\$="[[!icon]]"></iron-icon></span>
+        <span id="label">[[action]]<iron-icon id="icon" icon="[[icon]]" hidden$="[[!icon]]"></iron-icon></span>
         </paper-button>
       </a>
     </div>
