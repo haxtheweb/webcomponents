@@ -2,7 +2,8 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/iron-image/iron-image.js";
-import "@lrnwebcomponents/mdi-iconset-svg/mdi-social-iconset-svg.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@lrnwebcomponents/mdi-iconset-svg/lib/mdi-social-iconset-svg.js";
 /**
  * `team-member`
  * `A simple presentation of a team member and basic info`
