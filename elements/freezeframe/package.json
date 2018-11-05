@@ -1,6 +1,6 @@
 {
   "name": "@lrnwebcomponents/freezeframe",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "description": "Ported over from freezeframe.js",
   "repository": {
     "type": "git",
