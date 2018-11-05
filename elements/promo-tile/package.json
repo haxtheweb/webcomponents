@@ -56,9 +56,9 @@
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.4",
     "lodash": "4.17.11",
-    "polymer-build": "3.0.4",
-    "polymer-cli": "1.8.0",
-    "wct-browser-legacy": "1.0.1"
+    "polymer-build": "3.1.0",
+    "polymer-cli": "1.8.1",
+    "wct-browser-legacy": "1.0.2"
   },
   "private": false,
   "publishConfig": {
