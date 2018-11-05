@@ -41,7 +41,11 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.30",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.0.5",
+    "@polymer/paper-input": "^3.0.0",
+    "@polymer/iron-icons": "^3.0.0",
+    "@polymer/iron-icon": "^3.0.0",
+    "@polymer/paper-tooltip": "^3.0.0"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

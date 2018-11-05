@@ -45,10 +45,17 @@ Polymer({
       :host([status="error"]) #icon {
         color: var(--paper-red-900);
       }
+      .element-invisible {
+        position: absolute !important;
+        clip: rect(1px, 1px, 1px, 1px);
+        overflow: hidden;
+        height: 1px;
+      }
     </style>
     <paper-input label="[[label]]" value="{{value}}" char-counter="[[charCounter]]" disabled="[[disabled]]" minlength="[[minlength]]" maxlength="[[minlength]]">
       <iron-icon id="icon" icon="[[icon]]" slot="prefix"></iron-icon>
     </paper-input>
+    <div class="element-invisible">[[__activeMessage]]</div>
     <paper-tooltip for="icon" position="top" offset="20" fit-to-visible-bounds="">
         [[__activeMessage]]
       </paper-tooltip>
