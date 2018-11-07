@@ -173,7 +173,7 @@
               "column": 2
             },
             "end": {
-              "line": 179,
+              "line": 183,
               "column": 3
             }
           },
@@ -189,11 +189,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 183,
+              "line": 187,
               "column": 2
             },
             "end": {
-              "line": 186,
+              "line": 190,
               "column": 3
             }
           },
@@ -213,11 +213,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 190,
+              "line": 194,
               "column": 2
             },
             "end": {
-              "line": 203,
+              "line": 207,
               "column": 3
             }
           },
@@ -230,30 +230,6 @@
         },
         {
           "name": "_onImgLoad",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 205,
-              "column": 2
-            },
-            "end": {
-              "line": 207,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_onImgError",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -277,7 +253,7 @@
           }
         },
         {
-          "name": "_parseColor",
+          "name": "_onImgError",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
@@ -286,7 +262,31 @@
               "column": 2
             },
             "end": {
-              "line": 245,
+              "line": 215,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_parseColor",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 217,
+              "column": 2
+            },
+            "end": {
+              "line": 249,
               "column": 3
             }
           },
@@ -312,7 +312,7 @@
           "column": 8
         },
         "end": {
-          "line": 246,
+          "line": 250,
           "column": 1
         }
       },
