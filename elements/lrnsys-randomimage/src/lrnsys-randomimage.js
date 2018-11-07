@@ -14,10 +14,10 @@ Polymer({
         display: block;
       }
     </style>
-    <div id="image-list">
-      <random-image images-list\$="{{images}}"></random-image>
+    <div id="list">
+      <random-image images-list$="{{images}}"></random-image>
   </div>
-  <paper-button raised="" on-click="reload">Reload</paper-button>
+  <paper-button raised on-click="reload">Reload</paper-button>
 `,
 
   is: "lrnsys-randomimage",
@@ -40,8 +40,6 @@ Polymer({
    */
   reload: function(e) {
     let root = this;
-    root.shadowRoot.querySelector(
-      "#image-list"
-    ).innerHTML = root.shadowRoot.querySelector("#image-list").innerHTML;
+    this.$.list.innerHTML = this.$.list.innerHTML;
   }
 });
