@@ -65,7 +65,7 @@ Polymer({
         transition: all .6s ease;
       }
       /* Disable grayscale on hover */
-      :host([hypercard]) ::slotted(*):hover {
+      :host([hypercard]:hover) ::slotted(*) {
         -webkit-filter: grayscale(0);
         filter: none;
       }
