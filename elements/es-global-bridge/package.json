@@ -1,0 +1,24 @@
+{
+  "name": "@lrnwebcomponents/es-global-bridge",
+  "version": "0.0.31",
+  "description": "A very simple class to help bridge global scoped code with ES Modules",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "es-global-bridge.js",
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "esm",
+    "compatibility",
+    "html"
+  ]
+}

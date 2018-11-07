@@ -91,7 +91,7 @@ Polymer({
     </style>
     <div class="egletter">
       <div class$="icon-container circle [[color]]">
-        <iron-icon icon="[[icon]]" class$="[[textColor]]"></iron-icon>
+        <iron-icon icon$="[[icon]]" class$="[[textColor]]"></iron-icon>
       </div>
       <span>[[title]]</span>
       <p><slot></slot></p>

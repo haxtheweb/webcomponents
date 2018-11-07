@@ -1,13 +1,14 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { resolveUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "mathjax3/unpacked/MathJax.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
-`lrn-math`
-A LRN element
-
-@demo demo/index.html
-*/
+ * `lrn-math`
+ * `An element for presenting Math based content.`
+ *
+ * @demo demo/index.html
+ */
 
 Polymer({
   _template: html`
@@ -17,7 +18,6 @@ Polymer({
       }
     </style>
     [[prefix]] [[math]] [[suffix]]
-    <span hidden=""><slot id="content"></slot></span>
 `,
 
   is: "lrn-math",
@@ -75,11 +75,13 @@ Polymer({
    * Notice math changed, update slot.
    */
   _mathChanged: function(newValue, oldValue) {
+    console.log("?");
     if (newValue !== oldValue) {
       while (dom(this).firstChild !== null) {
         dom(this).removeChild(dom(this).firstChild);
       }
       let frag = document.createTextNode(newValue);
+      console.log(frag);
       dom(this).appendChild(frag);
     }
   },
@@ -143,18 +145,32 @@ Polymer({
       }
     };
     this.setHaxProperties(props);
-  },
+    const name = "mathjax";
+    const location = resolveUrl("../../../mathjax/latest.js");
+    window.addEventListener(
+      `es-bridge-${name}-loaded`,
+      this._mathjaxLoaded.bind(this)
+    );
+    window.ESGlobalBridge.requestAvailability();
 
+    window.ESGlobalBridge.instance.load(name, location);
+  },
   /**
    * Notice changes to the slot and reflect these to the math value
    * so that we can render it to the page.
    */
-  ready: function() {
-    this._observer = dom(this.$.content).observeNodes(info => {
+  _mathjaxLoaded: function() {
+    this._observer = dom(this).observeNodes(info => {
       this.math = info.addedNodes.map(node => node.textContent).toString();
-      setTimeout(function() {
-        window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub]);
-      }, 100);
+      window.MathJax.Hub.Config({
+        skipStartupTypeset: true,
+        jax: ["input/TeX", "output/HTML-CSS"],
+        messageStyle: "none",
+        tex2jax: {
+          preview: "none"
+        }
+      });
+      window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, "lrn-math"]);
     });
   }
 });
