@@ -2,6 +2,118 @@
   "schema_version": "1.0.0",
   "elements": [
     {
+      "description": "An action within a material design [Floating Action Button with Speed Dial](https://www.google.com/design/spec/components/buttons-floating-action-button.html#buttons-floating-action-button-transitions)\n\n### Styling\n\nStyle                                                   | Description\n------------------------------------------------------- | ------------\n--lrnapp-fab-speed-dial-action-background                | The background color of the Floating Action Button\n--lrnapp-fab-speed-dial-action-keyboard-focus-background | The background color of the Floating Action Button when focused\n\n### Example\n\n```html\n<lrnapp-fab-speed-dial-action icon=\"icons:content-copy\">Copy</lrnapp-fab-speed-dial-action>\n```",
+      "summary": "",
+      "path": "lib/lrnapp-fab-speed-dial-action.js",
+      "properties": [
+        {
+          "name": "icon",
+          "type": "string | null | undefined",
+          "description": "Icon that is shown next to the content",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 62,
+              "column": 4
+            },
+            "end": {
+              "line": 65,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "color",
+          "type": "string | null | undefined",
+          "description": "Color class work to apply",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 69,
+              "column": 4
+            },
+            "end": {
+              "line": 73,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"blue\""
+        }
+      ],
+      "methods": [],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 23,
+          "column": 8
+        },
+        "end": {
+          "line": 75,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "attributes": [
+        {
+          "name": "icon",
+          "description": "Icon that is shown next to the content",
+          "sourceRange": {
+            "start": {
+              "line": 62,
+              "column": 4
+            },
+            "end": {
+              "line": 65,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "color",
+          "description": "Color class work to apply",
+          "sourceRange": {
+            "start": {
+              "line": 69,
+              "column": 4
+            },
+            "end": {
+              "line": 73,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "lrnapp-fab-speed-dial-action"
+    },
+    {
       "description": "`lrnapp-fab-menu`\n`floating action button with menu`",
       "summary": "",
       "path": "lrnapp-fab-menu.js",
@@ -13,11 +125,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 45,
+              "line": 47,
               "column": 4
             },
             "end": {
-              "line": 48,
+              "line": 50,
               "column": 5
             }
           },
@@ -35,11 +147,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 49,
+              "line": 51,
               "column": 4
             },
             "end": {
-              "line": 52,
+              "line": 54,
               "column": 5
             }
           },
@@ -57,11 +169,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 53,
+              "line": 55,
               "column": 4
             },
             "end": {
-              "line": 56,
+              "line": 58,
               "column": 5
             }
           },
@@ -80,11 +192,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 60,
+              "line": 62,
               "column": 2
             },
             "end": {
-              "line": 67,
+              "line": 69,
               "column": 3
             }
           },
@@ -104,11 +216,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 69,
+              "line": 71,
               "column": 2
             },
             "end": {
-              "line": 76,
+              "line": 78,
               "column": 3
             }
           },
@@ -133,11 +245,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 9,
+          "line": 11,
           "column": 8
         },
         "end": {
-          "line": 77,
+          "line": 79,
           "column": 1
         }
       },
@@ -149,11 +261,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 45,
+              "line": 47,
               "column": 4
             },
             "end": {
-              "line": 48,
+              "line": 50,
               "column": 5
             }
           },
@@ -165,11 +277,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 49,
+              "line": 51,
               "column": 4
             },
             "end": {
-              "line": 52,
+              "line": 54,
               "column": 5
             }
           },
@@ -181,11 +293,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 53,
+              "line": 55,
               "column": 4
             },
             "end": {
-              "line": 56,
+              "line": 58,
               "column": 5
             }
           },

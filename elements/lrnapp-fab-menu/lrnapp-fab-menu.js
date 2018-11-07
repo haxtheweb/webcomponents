@@ -1,5 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/paper-fab/paper-fab.js";
 import "@lrnwebcomponents/paper-fab-speed-dial/paper-fab-speed-dial.js";
+import "@lrnwebcomponents/paper-fab-speed-dial/lib/paper-fab-speed-dial-overlay.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 /**
  * `lrnapp-fab-menu`
@@ -32,9 +34,9 @@ Polymer({
       }
     </style>
   </custom-style>
-    <paper-fab icon="[[icon]]" class="open blue" on-tap="open" hidden\$="[[opened]]" disabled="[[disabled]]"></paper-fab>
+    <paper-fab icon="[[icon]]" class="open blue" on-tap="open" hidden$="[[opened]]" disabled$="[[disabled]]"></paper-fab>
 
-    <paper-fab-speed-dial-overlay class="overlay" opened="{{opened}}" with-backdrop="">
+    <paper-fab-speed-dial-overlay class="overlay" opened="{{opened}}" with-backdrop>
       <slot></slot>
       <paper-fab icon="close" class="close" on-tap="close"></paper-fab>
     </paper-fab-speed-dial-overlay>

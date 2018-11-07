@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import { resolveUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import * as md5 from "./lib/md5.min.js";
 
@@ -173,9 +173,8 @@ Polymer({
    */
   ready: function() {
     const name = "jdenticon";
-    const location = resolveUrl(
-      "../../paper-avatar/lib/jdenticon-1.4.0.min.js"
-    );
+    const basePath = pathFromUrl(import.meta.url);
+    const location = `${basePath}lib/jdenticon-1.4.0.min.js`;
     window.addEventListener(
       `es-bridge-${name}-loaded`,
       this._jdenticonLoaded.bind(this)

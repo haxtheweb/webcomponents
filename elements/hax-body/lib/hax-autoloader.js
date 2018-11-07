@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 
 /**
 `hax-autoloader`
@@ -72,7 +73,10 @@ Polymer({
           this.processedList[name] = name;
           // @todo support CDN failover or a flag of some kind to ensure
           // this delivers locally or from remote
-          this.importHref(this.resolveUrl(`../../${name}/${name}.js`));
+          // @todo need to support name spacing of packages so that we
+          // don't assume they are all relative to lrnwebcomponents
+          const basePath = pathFromUrl(import.meta.url);
+          this.importHref(`${basePath}../../${name}/${name}.js`);
         } catch (err) {
           // error in the event this is a double registration
         }

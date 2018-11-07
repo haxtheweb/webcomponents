@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 26,
+              "line": 25,
               "column": 4
             },
             "end": {
-              "line": 29,
+              "line": 28,
               "column": 5
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 33,
+              "line": 32,
               "column": 4
             },
             "end": {
-              "line": 35,
+              "line": 34,
               "column": 5
             }
           },
@@ -56,11 +56,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 39,
+              "line": 38,
               "column": 4
             },
             "end": {
-              "line": 42,
+              "line": 41,
               "column": 5
             }
           },
@@ -78,11 +78,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 46,
+              "line": 45,
               "column": 4
             },
             "end": {
-              "line": 49,
+              "line": 48,
               "column": 5
             }
           },
@@ -99,11 +99,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 53,
+              "line": 52,
               "column": 4
             },
             "end": {
-              "line": 56,
+              "line": 55,
               "column": 5
             }
           },
@@ -130,7 +130,7 @@
           "column": 8
         },
         "end": {
-          "line": 58,
+          "line": 57,
           "column": 1
         }
       },
@@ -142,11 +142,11 @@
           "description": "text to use for avatar",
           "sourceRange": {
             "start": {
-              "line": 26,
+              "line": 25,
               "column": 4
             },
             "end": {
-              "line": 29,
+              "line": 28,
               "column": 5
             }
           },
@@ -158,11 +158,11 @@
           "description": "link to an image, optional",
           "sourceRange": {
             "start": {
-              "line": 33,
+              "line": 32,
               "column": 4
             },
             "end": {
-              "line": 35,
+              "line": 34,
               "column": 5
             }
           },
@@ -174,11 +174,11 @@
           "description": "Mode for presenting 1st two letters",
           "sourceRange": {
             "start": {
-              "line": 39,
+              "line": 38,
               "column": 4
             },
             "end": {
-              "line": 42,
+              "line": 41,
               "column": 5
             }
           },
@@ -190,11 +190,11 @@
           "description": "Materialize CSS color class names",
           "sourceRange": {
             "start": {
-              "line": 46,
+              "line": 45,
               "column": 4
             },
             "end": {
-              "line": 49,
+              "line": 48,
               "column": 5
             }
           },
@@ -206,11 +206,11 @@
           "description": "Form abstract art from hash of label",
           "sourceRange": {
             "start": {
-              "line": 53,
+              "line": 52,
               "column": 4
             },
             "end": {
-              "line": 56,
+              "line": 55,
               "column": 5
             }
           },

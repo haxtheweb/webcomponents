@@ -1,9 +1,9 @@
-<script type="module" src="../node_modules/@polymer/polymer/polymer.js"></script>
-<script type="module" src="../node_modules/@polymer/iron-flex-layout/iron-flex-layout.js"></script>
-<script type="module" src="../node_modules/@polymer/paper-fab/paper-fab.js"></script>
-<script type="module" src="materializecss-styles/materializecss-styles.js"></script>
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/paper-fab/paper-fab.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 
-<!--
+/*
 An action within a material design [Floating Action Button with Speed Dial](https://www.google.com/design/spec/components/buttons-floating-action-button.html#buttons-floating-action-button-transitions)
 
 ### Styling
@@ -20,11 +20,10 @@ Style                                                   | Description
 ```
 
 @demo demo/index.html
--->
-<dom-module id="lrnapp-fab-speed-dial-action">
-
-  <template>
-    <style include="materializecss-styles-colors"></style>
+*/
+Polymer({
+  _template: html`
+    <style is="custom-style" include="iron-flex iron-flex-alignment materializecss-styles-colors"></style>
     <style>
       :host {
         @apply(--layout-horizontal);
@@ -56,34 +55,23 @@ Style                                                   | Description
 
     <div class="flex"><span class="label"><slot></slot></span></div>
     <paper-fab class$="fab [[color]]" icon="[[icon]]" mini></paper-fab>
-
-  </template>
-</dom-module>
-
-<script type="module">
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import '@polymer/iron-flex-layout/iron-flex-layout.js';
-import '@polymer/paper-fab/paper-fab.js';
-import '@lrnwebcomponents/materializecss-styles/materializecss-styles.js';
-
-Polymer({
-  is: 'lrnapp-fab-speed-dial-action',
+`,
+  is: "lrnapp-fab-speed-dial-action",
   properties: {
     /**
      * Icon that is shown next to the content
      */
     icon: {
       type: String,
-      reflectToAttribute: true,
+      reflectToAttribute: true
     },
     /**
      * Color class work to apply
      */
     color: {
       type: String,
-      value: 'blue',
-      reflectToAttribute: true,
+      value: "blue",
+      reflectToAttribute: true
     }
   }
 });
-</script>
