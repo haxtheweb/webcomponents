@@ -9,13 +9,12 @@ Visualize a user account eitehr with an image, a label, or as abstract art.
 */
 Polymer({
   _template: html`
-    <style include="materializecss-styles"></style>
-    <style>
+    <style include="materializecss-styles">
       :host {
         display: block;
       }
     </style>
-    <paper-avatar label="[[label]]" src="[[src]]" two-chars="[[twoChars]]" class\$="[[color]]" jdenticon="[[jdenticon]]"></paper-avatar>
+    <paper-avatar label="[[label]]" src="[[src]]" two-chars="[[twoChars]]" class$="[[color]]" jdenticon="[[jdenticon]]"></paper-avatar>
 `,
 
   is: "lrndesign-avatar",

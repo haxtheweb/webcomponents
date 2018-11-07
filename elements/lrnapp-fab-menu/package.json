@@ -43,9 +43,12 @@
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.31",
     "@lrnwebcomponents/materializecss-styles": "^0.0.31",
     "@lrnwebcomponents/paper-fab-speed-dial": "^0.0.31",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.0.5",
+    "@polymer/paper-fab": "^3.0.1",
+    "@polymer/iron-flex-layout": "^3.0.1"
   },
   "devDependencies": {
+    "@polymer/iron-icons": "^3.0.1",
     "@lrnwebcomponents/deduping-fix": "^0.0.31",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
