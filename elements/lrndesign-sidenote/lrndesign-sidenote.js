@@ -108,7 +108,7 @@ Polymer({
    *  _.set(window, 'lrndesignSidenote.bgColor', 'blue');
    */
   created: function() {
-    for (prop in this.properties) {
+    for (var prop in this.properties) {
       let prefix = this.is;
       // convert prefix to camel case
       prefix = prefix
