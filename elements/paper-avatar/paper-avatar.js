@@ -1,10 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
-/**
- * @todo importing jdenticon bricks saying jQuery not found
- */
-// import "./lib/jdenticon-1.4.0.min.js";
-// import "./lib/md5.min.js";
+import { resolveUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import * as md5 from "./lib/md5.min.js";
 
 /**
 `paper-avatar`
@@ -37,9 +34,7 @@ Polymer({
   _template: html`
     <style>
 			:host {
-				--paper-avatar-width: 40px;
-			}
-			:host {
+        --paper-avatar-width: 40px;
 				display: inline-block;
 				box-sizing: border-box;
 				position: relative;
@@ -49,9 +44,9 @@ Polymer({
 				cursor: default;
 				background-color: var(--paper-avatar-color, var(--paper-avatar-bgcolor));
 				-webkit-user-select: none;
-				   -moz-user-select: none;
-				    -ms-user-select: none;
-						user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
 			}
 			
 			:host > * {
@@ -95,28 +90,22 @@ Polymer({
 				width: var(--paper-avatar-width);
 				height: var(--paper-avatar-width);
 			}
-			
-			*[hidden] {
-				display: none !important;
-			}
 		</style>
-
 		<div id="label" title="[[label]]"><span>[[_label(label)]]</span></div>
-
 		<svg id="jdenticon" width="40" height="40">
       <slot></slot>
     </svg>
-
-		<template is="dom-if" if="[[src]]">
-			<img id="img" src="[[src]]" title="[[label]]" on-load="_onImgLoad" on-error="_onImgError" title="[[color]]">
-		</template>
+    <template is="dom-if" if="[[src]]">
+		  <img id="img" src="[[src]]" title="[[label]]" on-load="_onImgLoad" on-error="_onImgError" title="[[color]]">
+    </template>
   `,
   properties: {
     /**
      * Image address or base64
      */
     src: {
-      type: String
+      type: String,
+      value: false
     },
 
     /**
@@ -126,7 +115,13 @@ Polymer({
       type: String,
       observer: "_observerLabel"
     },
-
+    /**
+     * Ensure we can support jdenticon before invoking it
+     */
+    jdenticonExists: {
+      type: Boolean,
+      value: false
+    },
     /**
      * Show two chars in avatar
      */
@@ -150,24 +145,22 @@ Polymer({
       value: false
     }
   },
-
+  /**
+   * Generate the correct label from change with optional jdenticon md5 hash
+   */
   _observerLabel: function(label) {
     if (label) {
-      if (this.jdenticon) {
+      if (this.jdenticonExists && this.jdenticon) {
         this.$.label.hidden = true;
 
-        jdenticon.config = {
+        window.jdenticon.config = {
           lightness: {
             color: [1, 1],
             grayscale: [1, 1]
           },
           saturation: 1
         };
-
-        /**
-         * @todo: we are commenting this out for now.
-         */
-        // jdenticon.update(jdenticon, md5(label));
+        window.jdenticon.update(this.$.jdenticon, window.md5(label));
       }
 
       this.updateStyles({
@@ -175,7 +168,31 @@ Polymer({
       });
     }
   },
-
+  /**
+   * ready lifecycle
+   */
+  ready: function() {
+    const name = "jdenticon";
+    const location = resolveUrl(
+      "../../paper-avatar/lib/jdenticon-1.4.0.min.js"
+    );
+    window.addEventListener(
+      `es-bridge-${name}-loaded`,
+      this._jdenticonLoaded.bind(this)
+    );
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load(name, location);
+  },
+  /**
+   * Callback once we know that the jdenticon library is globally loaded.
+   */
+  _jdenticonLoaded: function(e) {
+    this.jdenticonExists = true;
+    this._observerLabel(this.label);
+  },
+  /**
+   * convert label in context
+   */
   _label: function(label) {
     if (!label) return "";
 

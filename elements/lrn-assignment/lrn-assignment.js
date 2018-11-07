@@ -21,10 +21,10 @@ Polymer({
       <div class="card-content">
         [[details]]
         <slot></slot>
-      </div>
+      </div>  
       <div class="card-actions">
         <template is="dom-repeat" items="[[actions]]">
-          <a href\$="[[item.url]]"><paper-button raised="">[[item.label]]</paper-button></a>
+          <a href$="[[item.url]]"><paper-button raised>[[item.label]]</paper-button></a>
         </template>
       </div>
     </paper-card>

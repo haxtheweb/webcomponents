@@ -151,7 +151,7 @@
               "column": 2
             },
             "end": {
-              "line": 84,
+              "line": 86,
               "column": 3
             }
           },
@@ -174,11 +174,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 89,
+              "line": 91,
               "column": 2
             },
             "end": {
-              "line": 145,
+              "line": 153,
               "column": 3
             }
           },
@@ -189,16 +189,16 @@
           }
         },
         {
-          "name": "ready",
+          "name": "_mathjaxLoaded",
           "description": "Notice changes to the slot and reflect these to the math value\nso that we can render it to the page.",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 151,
+              "line": 158,
               "column": 2
             },
             "end": {
-              "line": 158,
+              "line": 171,
               "column": 3
             }
           },
@@ -214,11 +214,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 11,
+          "line": 12,
           "column": 8
         },
         "end": {
-          "line": 159,
+          "line": 172,
           "column": 1
         }
       },

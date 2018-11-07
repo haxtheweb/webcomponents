@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 117,
+              "line": 105,
               "column": 4
             },
             "end": {
-              "line": 119,
+              "line": 108,
               "column": 5
             }
           },
@@ -25,7 +25,8 @@
             "polymer": {
               "attributeType": "String"
             }
-          }
+          },
+          "defaultValue": "false"
         },
         {
           "name": "label",
@@ -34,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 124,
+              "line": 113,
               "column": 4
             },
             "end": {
-              "line": 127,
+              "line": 116,
               "column": 5
             }
           },
@@ -50,17 +51,39 @@
           }
         },
         {
+          "name": "jdenticonExists",
+          "type": "boolean | null | undefined",
+          "description": "Ensure we can support jdenticon before invoking it",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 120,
+              "column": 4
+            },
+            "end": {
+              "line": 123,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
           "name": "twoChars",
           "type": "boolean | null | undefined",
           "description": "Show two chars in avatar",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 132,
+              "line": 127,
               "column": 4
             },
             "end": {
-              "line": 135,
+              "line": 130,
               "column": 5
             }
           },
@@ -78,11 +101,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 140,
+              "line": 135,
               "column": 4
             },
             "end": {
-              "line": 142,
+              "line": 137,
               "column": 5
             }
           },
@@ -99,11 +122,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 147,
+              "line": 142,
               "column": 4
             },
             "end": {
-              "line": 150,
+              "line": 145,
               "column": 5
             }
           },
@@ -118,15 +141,15 @@
       "methods": [
         {
           "name": "_observerLabel",
-          "description": "",
+          "description": "Generate the correct label from change with optional jdenticon md5 hash",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 153,
+              "line": 150,
               "column": 2
             },
             "end": {
-              "line": 176,
+              "line": 169,
               "column": 3
             }
           },
@@ -141,16 +164,60 @@
           }
         },
         {
-          "name": "_label",
-          "description": "",
+          "name": "ready",
+          "description": "ready lifecycle",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 178,
+              "line": 173,
               "column": 2
             },
             "end": {
-              "line": 191,
+              "line": 179,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_jdenticonLoaded",
+          "description": "Callback once we know that the jdenticon library is globally loaded.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 183,
+              "column": 2
+            },
+            "end": {
+              "line": 186,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_label",
+          "description": "convert label in context",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 190,
+              "column": 2
+            },
+            "end": {
+              "line": 203,
               "column": 3
             }
           },
@@ -167,11 +234,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 193,
+              "line": 205,
               "column": 2
             },
             "end": {
-              "line": 195,
+              "line": 207,
               "column": 3
             }
           },
@@ -191,11 +258,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 197,
+              "line": 209,
               "column": 2
             },
             "end": {
-              "line": 199,
+              "line": 211,
               "column": 3
             }
           },
@@ -215,11 +282,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 201,
+              "line": 213,
               "column": 2
             },
             "end": {
-              "line": 233,
+              "line": 245,
               "column": 3
             }
           },
@@ -241,11 +308,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 34,
+          "line": 31,
           "column": 8
         },
         "end": {
-          "line": 234,
+          "line": 246,
           "column": 1
         }
       },
@@ -257,11 +324,11 @@
           "description": "Image address or base64",
           "sourceRange": {
             "start": {
-              "line": 117,
+              "line": 105,
               "column": 4
             },
             "end": {
-              "line": 119,
+              "line": 108,
               "column": 5
             }
           },
@@ -273,11 +340,11 @@
           "description": "Label with username",
           "sourceRange": {
             "start": {
-              "line": 124,
+              "line": 113,
               "column": 4
             },
             "end": {
-              "line": 127,
+              "line": 116,
               "column": 5
             }
           },
@@ -285,15 +352,31 @@
           "type": "string | null | undefined"
         },
         {
+          "name": "jdenticon-exists",
+          "description": "Ensure we can support jdenticon before invoking it",
+          "sourceRange": {
+            "start": {
+              "line": 120,
+              "column": 4
+            },
+            "end": {
+              "line": 123,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
           "name": "two-chars",
           "description": "Show two chars in avatar",
           "sourceRange": {
             "start": {
-              "line": 132,
+              "line": 127,
               "column": 4
             },
             "end": {
-              "line": 135,
+              "line": 130,
               "column": 5
             }
           },
@@ -305,11 +388,11 @@
           "description": "Array of colors for avatar background",
           "sourceRange": {
             "start": {
-              "line": 140,
+              "line": 135,
               "column": 4
             },
             "end": {
-              "line": 142,
+              "line": 137,
               "column": 5
             }
           },
@@ -321,11 +404,11 @@
           "description": "Set true if you want use a jdenticon avatar",
           "sourceRange": {
             "start": {
-              "line": 147,
+              "line": 142,
               "column": 4
             },
             "end": {
-              "line": 150,
+              "line": 145,
               "column": 5
             }
           },
