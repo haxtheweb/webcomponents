@@ -16,7 +16,7 @@ Polymer({
         position: relative;
       }
     </style>
-    <a-scene id="scene" class="embedded" embedded="" arjs$="[[ar]]" style$="height:[[height]];width:[[width]];">
+    <a-scene id="scene" class="embedded" embedded arjs$="[[ar]]" style$="height:[[height]];width:[[width]];">
       <a-sky color\$="[[skyColor]]"></a-sky>
       <a-marker-camera preset="hiro"></a-marker-camera>
       <a-entity id="entity" gltf-model\$="[[source]]" position="0 0 0"></a-entity>
