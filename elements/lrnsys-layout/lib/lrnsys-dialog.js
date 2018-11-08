@@ -18,6 +18,7 @@ import "./lrnsys-button-inner.js";
 */
 Polymer({
   _template: html`
+    <custom-style>
     <style is="custom-style" include="simple-colors">
       :host {
         display: inline-block;
@@ -32,13 +33,14 @@ Polymer({
         --lrnsys-dialog-secondary-background-color: rgba(0, 0, 0, 0.7);
       }
     </style>
-    <paper-button class\$="[[class]]" id="dialogtrigger" on-tap="toggleDialog" raised="[[raised]]" disabled\$="[[disabled]]" title="[[alt]]" aria-label\$="[[alt]]">
-      <lrnsys-button-inner avatar\$="[[avatar]]" icon\$="[[icon]]" text\$="[[text]]">
+    </custom-style>
+    <paper-button class$="[[class]]" id="dialogtrigger" on-tap="toggleDialog" raised="[[raised]]" disabled$="[[disabled]]" title="[[alt]]" aria-label$="[[alt]]">
+      <lrnsys-button-inner avatar\$="[[avatar]]" icon$="[[icon]]" text$="[[text]]">
         <slot name="button"></slot>
       </lrnsys-button-inner>
     </paper-button>
-    <paper-tooltip for="dialogtrigger" animation-delay="0" hidden\$="[[!alt]]">[[alt]]</paper-tooltip>
-    <lrnsys-dialog-modal id="modal" dynamic-images="[[dynamicImages]]" body-append="[[bodyAppend]]" header="[[header]]" modal="[[modal]]" heading-class="[[headingClass]]" opened\$="[[opened]]">
+    <paper-tooltip for="dialogtrigger" animation-delay="0" hidden$="[[!alt]]">[[alt]]</paper-tooltip>
+    <lrnsys-dialog-modal id="modal" dynamic-images="[[dynamicImages]]" body-append="[[bodyAppend]]" header="[[header]]" modal="[[modal]]" heading-class="[[headingClass]]" opened$="[[opened]]">
       <slot name="toolbar-primary" slot="primary"></slot>
       <slot name="toolbar-secondary" slot="secondary"></slot>
       <slot name="header" slot="header"></slot>

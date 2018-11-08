@@ -148,7 +148,7 @@ Polymer({
     this.items = data;
     if (data !== undefined && data.length > 0) {
       let prevIndent = -1;
-      for (i in data) {
+      for (var i in data) {
         let indent = parseInt(this._getIndent(data, i));
         this.__tempid = this.__tempid === undefined ? 0 : this.__tempid + 1;
         data[i].index = parseInt(i);
@@ -174,7 +174,7 @@ Polymer({
    * gets a flat array of items to convert & updates it to a nested array
    */
   getData: function() {
-    for (i in this.items) {
+    for (var i in this.items) {
       this.items[i].order = this._getOrder(this.items[i]);
     }
     return this.items;
@@ -336,7 +336,7 @@ Polymer({
   _getOrder: function(item) {
     let ctr = 0,
       order = 0;
-    for (i in this.items) {
+    for (var i in this.items) {
       if (this.items[i].parent == item.parent && this.items[i].id == item.id) {
         order = ctr;
       } else if (this.items[i].parent == item.parent) {

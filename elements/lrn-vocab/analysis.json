@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 49,
+              "line": 50,
               "column": 4
             },
             "end": {
-              "line": 53,
+              "line": 54,
               "column": 5
             }
           },
@@ -37,11 +37,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 59,
+              "line": 60,
               "column": 2
             },
             "end": {
-              "line": 66,
+              "line": 67,
               "column": 3
             }
           },
@@ -57,11 +57,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 71,
+              "line": 72,
               "column": 2
             },
             "end": {
-              "line": 76,
+              "line": 77,
               "column": 3
             }
           },
@@ -81,11 +81,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 81,
+              "line": 82,
               "column": 2
             },
             "end": {
-              "line": 87,
+              "line": 88,
               "column": 3
             }
           },
@@ -105,11 +105,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 92,
+              "line": 93,
               "column": 2
             },
             "end": {
-              "line": 99,
+              "line": 100,
               "column": 3
             }
           },
@@ -129,11 +129,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 4,
+          "line": 5,
           "column": 8
         },
         "end": {
-          "line": 100,
+          "line": 101,
           "column": 1
         }
       },
@@ -145,11 +145,11 @@
           "description": "Dialog state management.",
           "sourceRange": {
             "start": {
-              "line": 49,
+              "line": 50,
               "column": 4
             },
             "end": {
-              "line": 53,
+              "line": 54,
               "column": 5
             }
           },

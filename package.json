@@ -191,6 +191,7 @@
       "**/wavesurfer.js",
       "**/wavesurfer.js/**",
       "**/aframe",
+      "**/openseadragon",
       "**/mathjax"
     ]
   },

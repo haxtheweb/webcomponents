@@ -49,6 +49,9 @@ Polymer({
       ul li paper-button span {
         pointer-events: none;
       }
+      iron-icon {
+        display: inline-block;
+      }
       .collapse-label {
         margin-left: .5em;
       }

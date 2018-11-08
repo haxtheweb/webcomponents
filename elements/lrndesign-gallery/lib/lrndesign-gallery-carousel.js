@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-
+import "@polymer/iron-list/iron-list.js";
 import "./lrndesign-gallery-thumb.js";
 import "./lrndesign-gallery-carousel-item.js";
 import "./lrndesign-gallery-carousel-prevnext.js";
