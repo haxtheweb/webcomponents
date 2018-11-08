@@ -1,6 +1,10 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
-import "@polymer/paper-card/paper-card.js";
+import "@polymer/paper-material/paper-material.js";
 import "@polymer/paper-fab/paper-fab.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -8,14 +12,22 @@ import "@polymer/iron-icons/av-icons.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-
+/**
+ * `wave-player`
+ * `A player for visualizing a sound file`
+ *
+ * @customElement
+ * @polymer
+ * @polymerLegacy
+ * @demo demo/index.html
+ */
 Polymer({
   _template: html`
     <style>
       :host {
-        min-width: 480px;
         height: 150px;
         background-color: var(--dark-primary-color);
+        display: block;
       }
 
       paper-icon-button {
@@ -56,7 +68,6 @@ Polymer({
         margin-bottom: -150px;
         z-index: 20;
         height: 150px;
-        width: 400px;
         background-color: rgba(0, 0, 0, .4);
         color: #fff;
         font-family: Roboto, sans-serif;
@@ -164,14 +175,12 @@ Polymer({
       }
     </style>
     <paper-fab id="playbutton" class="circleAnimation" disabled="" icon="av:play-arrow" on-click="togglePlay"></paper-fab>
-    <paper-card id="controls" class="controls hidden" elevation="2">
-      <div class="actions">
+    <paper-material id="controls" class="controls hidden" elevation="2">
       <paper-icon-button class="centred middle" style="color: white;" icon="av:pause" on-click="togglePlay"></paper-icon-button>
       <paper-icon-button id="replay" class="centred" style="color: white;" icon="av:replay-30" on-click="throwBack"></paper-icon-button>
       <paper-icon-button id="mute" class="centred" style="color: white;" icon="av:volume-up" on-click="toggleMute"></paper-icon-button>
-      </div>
-    </paper-card>
-    <paper-card id="container" class="waveContainer" elevation="0"></paper-card>
+    </paper-material>
+    <div id="container" class="waveContainer" elevation="0"></div>
     <div id="albuminfo" class="albuminfo">
       <img class="coverart" src="[[coverart]]">
       <span class="title">[[title]]</span>
@@ -191,7 +200,6 @@ Polymer({
      */
     src: {
       type: String,
-      value: "",
       notify: true,
       observer: "_srcChanged"
     },
@@ -283,8 +291,8 @@ Polymer({
    */
   _srcChanged: function(newValue, oldValue) {
     // don't care what it is so long as it's a value
-    if (typeof newValue !== typeof undefined && newValue !== "") {
-      window.wavesurferobject.load(this.src);
+    if (typeof newValue !== typeof undefined && this.__wavesurfer) {
+      window.wavesurferobject.load(newValue);
     }
   },
   /**
@@ -389,7 +397,8 @@ Polymer({
    * invoke wavesurfer once we know it's globally scoped
    */
   _wavesurferLoaded: function() {
-    this.updateWavesurfer();
+    this.__wavesurfer = true;
+    this.initWaveSurfer();
   },
 
   /**
@@ -470,28 +479,23 @@ Polymer({
    * Initializing wave object
    */
   initWaveSurfer: function() {
-    var self = this;
-    window.wavesurferobject.init({
+    window.wavesurferobject = new WaveSurfer({
       container: this.$.container,
       waveColor: this.wavecolor,
       progressColor: this.progresscolor, // --primary-background-color
       fillParent: true,
       height: 100
     });
-    window.wavesurferobject.on("ready", function() {
-      self.$.playbutton.removeAttribute("disabled");
+    window.wavesurferobject.init();
+    if (typeof this.src !== typeof undefined) {
+      window.wavesurferobject.load(this.src);
+    }
+    window.wavesurferobject.on("ready", () => {
+      this.$.playbutton.removeAttribute("disabled");
     });
-    window.wavesurferobject.on("finish", function() {
-      self.deactivateAnimation();
+    window.wavesurferobject.on("finish", () => {
+      this.deactivateAnimation();
     });
-  },
-
-  /**
-   * Stores Object
-   */
-  updateWavesurfer: function() {
-    window.wavesurferobject = WaveSurfer.create();
-    this.initWaveSurfer();
   },
 
   /**

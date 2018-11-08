@@ -12,55 +12,49 @@
 		import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
 		import '@polymer/iron-demo-helpers/demo-snippet';
 		import '../wave-player.js';
-		import '../lib/app-theme.js';
 	</script>
-	<style is="custom-style" include="demo-pages-shared-styles">
-    .detail,.footer,.nav,.separator,wave-player {
-      width:100%
+  <style is="custom-style" include="demo-pages-shared-styles">
+    html {
+      --dark-primary-color: #455A64;
+      --default-primary-color: #607D8B;
+      --light-primary-color: #CFD8DC;
+      --text-primary-color: #FFFFFF;
+      --accent-color: #03A9F4;
+      --primary-background-color: #CFD8DC;
+      --primary-text-color: #212121;
+      --secondary-text-color: #727272;
+      --disabled-text-color: #BDBDBD;
+      --divider-color: #B6B6B6;
+      /* Components */
+      /* paper-drawer-panel */
+      --drawer-menu-color: #ffffff;
+      --drawer-border-color: 1px solid #ccc;
+      --drawer-toolbar-border-color: 1px solid rgba(0, 0, 0, 0.22);
+      /* paper-menu */
+      --paper-menu-background-color: #fff;
+      --menu-link-color: #111111;
+      /* paper-input */
+      --paper-input-container-color: rgba(255, 255, 255, 0.64);
+      --paper-input-container-focus-color: rgba(255, 255, 255, 1);
+      --paper-input-container-input-color: #fff;
     }
-    body,html {
-      margin:0;
-      padding:0;
-      background:#eee
-    }
-    .nav {
-      height:26px
-    }
-    .separator {
-      height:4px;
-      background:#016fba
-    }
-    .detail {
-      height:75px;
-      background:#E54D26
-    }
-    .mainbody {
-      height:calc(100% - 453px);
-      background:#eee;
-      padding:10px
-    }
-    .footer {
-      height:250px;
-      background:#455a64
-    }
-		</style>
+  </style>
 	</head>
 	<body>
-		<div class="nav"></div>
-		<div class="separator"></div>
-		<div class="detail"></div>
-    <wave-player 
-      wavecolor="#e44d26" 
-      progresscolor="#f16529" 
-      src="mirror.mp3" 
-      coverart="art.jpg"
-      title="Main Bold title!"
-      subtitle="Subtitle">
-    </wave-player>
-		<div class="mainbody">
-		Lots of text!!! <br><br>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi bibendum, mauris dapibus placerat placerat, lectus tortor dapibus elit, ullamcorper fringilla magna enim nec eros. Nunc maximus nibh sed ante gravida, nec bibendum arcu elementum. Suspendisse laoreet imperdiet tempor. Praesent pulvinar nibh in purus rhoncus fringilla. Quisque iaculis neque magna, sed faucibus diam accumsan vel. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis vitae arcu volutpat lectus feugiat consequat. Curabitur ultricies neque augue, quis semper mi gravida non. Cras molestie ullamcorper feugiat. Duis tristique felis orci, ac rutrum orci iaculis id.
-		</div>
-		<div class="footer"></div>
+    <div class="vertical-section-container centered">
+      <h3>Basic wave-player implementation</h3>
+      <demo-snippet>
+        <template>
+          <wave-player
+          wavecolor="#e44d26"
+          progresscolor="#f16529"
+          src="mirror.mp3"
+          coverart="art.jpg"
+          title="Main Bold title!"
+          subtitle="Subtitle">
+          </wave-player>
+        </template>
+      </demo-snippet>
+    </div>
 	</body>
 </html>
