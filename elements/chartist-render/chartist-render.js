@@ -1,5 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "./lib/chartist-lib.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+
 /**
 `chartist-render`
 A LRN element
@@ -8,9 +10,6 @@ A LRN element
 
 @microcopy - the mental model for this element
  -
- -
- -
-
 */
 Polymer({
   _template: html`
@@ -19,7 +18,7 @@ Polymer({
         display: block;
       }
     </style>
-    <div id="chart" chart\$="[[__chartId]]" class\$="ct-chart [[scale]]"></div>
+    <div id="chart" chart$="[[__chartId]]" class$="ct-chart [[scale]]"></div>
 `,
 
   is: "chartist-render",
@@ -100,11 +99,28 @@ Polymer({
       observer: "makeChart"
     }
   },
-
+  /**
+   * created life cycle
+   */
+  created: function() {
+    const name = "chartist";
+    const basePath = pathFromUrl(import.meta.url);
+    const location = `${basePath}../../chartist/dist/chartist.min.js`;
+    window.addEventListener(
+      `es-bridge-${name}-loaded`,
+      this._chartistLoaded.bind(this)
+    );
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load(name, location);
+  },
+  _chartistLoaded: function() {
+    this.__chartistLoaded = true;
+  },
   attached: function() {
-    let root = this;
-    root.__chartId = root._getUniqueId("chartist-render-");
-    root._chartReady();
+    this.__chartId = this._getUniqueId("chartist-render-");
+    if (this.__chartistLoaded) {
+      this._chartReady();
+    }
   },
 
   /**
