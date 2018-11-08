@@ -66,7 +66,7 @@ Polymer({
       }
     </style>
 
-    <a href="[[url]]" target\$="[[_urlTarget(url)]]">
+    <a href="[[url]]" target$="[[_urlTarget(url)]]">
       <div class="parallax_container">
         <div id="bgParallax" class="parallax">
           <div class="title" id="titleParallax">
