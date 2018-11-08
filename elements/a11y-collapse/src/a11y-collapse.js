@@ -90,17 +90,17 @@ Polymer({
       }
     </style>
     <template is="dom-if" if="[[!accordion]]">
-      <a11y-collapse-icon-button id="iconbutton" disabled\$="[[disabled]]" expanded\$="[[_setAriaExpanded(expanded)]]" label\$="[[_getExpandCollapse(expanded,label,labelExpanded)]]" icon\$="[[_getExpandCollapse(expanded,icon,iconExpanded)]]" rotated\$="[[__rotateIcon]]" tooltip\$="[[_getExpandCollapse(expanded,tooltip,tooltipExpanded)]]">
+      <a11y-collapse-icon-button id="iconbutton" disabled$="[[disabled]]" expanded$="[[_setAriaExpanded(expanded)]]" label$="[[_getExpandCollapse(expanded,label,labelExpanded)]]" icon$="[[_getExpandCollapse(expanded,icon,iconExpanded)]]" rotated$="[[__rotateIcon]]" tooltip$="[[_getExpandCollapse(expanded,tooltip,tooltipExpanded)]]">
         <slot name="heading"></slot>
       </a11y-collapse-icon-button>
     </template>
     <template is="dom-if" if="[[accordion]]">
-      <a11y-collapse-accordion-button id="accordionbutton" disabled\$="[[disabled]]" expanded\$="[[_setAriaExpanded(expanded)]]" label\$="[[_getExpandCollapse(expanded,label,labelExpanded)]]" icon\$="[[_getExpandCollapse(expanded,icon,iconExpanded)]]" rotated\$="[[__rotateIcon]]" tooltip\$="[[_getExpandCollapse(expanded,tooltip,tooltipExpanded)]]">
+      <a11y-collapse-accordion-button id="accordionbutton" disabled$="[[disabled]]" expanded$="[[_setAriaExpanded(expanded)]]" label$="[[_getExpandCollapse(expanded,label,labelExpanded)]]" icon$="[[_getExpandCollapse(expanded,icon,iconExpanded)]]" rotated$="[[__rotateIcon]]" tooltip$="[[_getExpandCollapse(expanded,tooltip,tooltipExpanded)]]">
         <slot name="heading"></slot>
       </a11y-collapse-accordion-button>
     </template>
     <div id="content" aria-hidden\$="{{!expanded}}" aria-labelledby="heading" aria-live="polite">
-      <div id="content-inner"><slot></slot></div>
+      <div id="content-inner"><slot name="content"></slot><slot></slot></div>
     </div>
 `,
 
@@ -115,6 +115,7 @@ Polymer({
     accordion: {
       type: Boolean,
       value: false,
+      observer: "flush",
       reflectToAttribute: true
     },
     /**
@@ -183,7 +184,6 @@ Polymer({
       computed: "_isRotated(expanded,iconExpanded)"
     }
   },
-
   /**
    * Attached to the DOM, now fire.
    */
@@ -289,6 +289,7 @@ Polymer({
    * Handle tap
    */
   _onTap: function(e) {
+    console.log(e);
     if (!this.disabled) {
       this.toggle();
       this.fire("a11y-collapse-click", this);
