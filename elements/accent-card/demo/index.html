@@ -9,8 +9,6 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../accent-card.js';
-    </script>
-    <script>
       let button1 = document.getElementById('button1');
       button1.addEventListener('accent-card-tap', function (e) {
         console.log('#button accent-card-tap', e);
@@ -94,11 +92,11 @@
       </demo-snippet>
       
       <h3>accent-card as button</h3>
+      <accent-card id="button1" accent-color="purple" button="" heading="Accent Card Button">
+        <div slot="content">This card is clickable.</div>
+      </accent-card>
       <demo-snippet>
         <template>
-          <accent-card id="button1" accent-color="purple" button="" heading="Accent Card Button">
-            <div slot="content">This card is clickable.</div>
-          </accent-card>
           <accent-card id="button2" accent-color="purple" button="" disabled="" heading="Disabled Accent Card Button">
             <div slot="content">This card is not clickable.</div>
           </accent-card>
