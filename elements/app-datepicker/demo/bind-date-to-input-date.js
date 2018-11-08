@@ -1,9 +1,9 @@
-import "../app-datepicker-dialog.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/paper-button/paper-button.js";
+import "../lib/app-datepicker-dialog.js";
 
-$_documentContainer.innerHTML = `<dom-module id="bind-date-to-input-date">
-  <template strip-whitspace="">
+Polymer({
+  _template: html`
     <style>
       :host {
         display: block;
@@ -31,14 +31,8 @@ $_documentContainer.innerHTML = `<dom-module id="bind-date-to-input-date">
 
       <app-datepicker-dialog id="startDatePicker" date="{{planDate.startDate}}" input-date="[[planDate.startDate]]" with-backdrop=""></app-datepicker-dialog>
     </div>
-  </template>
-  
-</dom-module>`;
-
-document.head.appendChild($_documentContainer);
-Polymer({
+`,
   is: "bind-date-to-input-date",
-
   properties: {
     planDate: {
       type: Object,

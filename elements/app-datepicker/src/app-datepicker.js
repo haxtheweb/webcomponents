@@ -1,15 +1,106 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
+import "@polymer/iron-selector/iron-selector.js";
+import "@polymer/iron-list/iron-list.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
 import { NeonAnimationRunnerBehavior } from "@polymer/neon-animation/neon-animation-runner-behavior.js";
+import "@polymer/neon-animation/neon-animated-pages.js";
 import "./lib/app-datepicker-icons.js";
 import "./lib/app-datepicker-animations.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
+/**
+Material Design: [Pickers](https://www.google.com/design/spec/components/pickers.html#pickers-date-pickers)
 
-$_documentContainer.innerHTML = `<dom-module id="app-datepicker">
-  <template strip-whitespace="">
-    <style>
+An custom Polymer element created to provide a datepicker element that is more compelling and rich with features.
+
+Example:
+
+    <app-datepicker></app-datepicker>
+    <app-datepicker-dialog></app-datepicker-dialog>
+    <app-datepicker-dialog modal></app-datepicker-dialog>
+    <app-datepicker-dialog with-backdrop></app-datepicker-dialog>
+    <app-datepicker view="horizontal"></app-datepicker>
+    <app-datepicker theme="dark-theme"></app-datepicker>
+    <app-datepicker confirm-label="confirm date" dismiss-label="cancel"></app-datepicker>
+
+`app-datepicker` provides a regular datepicker element.
+While `app-datepicker-dialog` has a `app-datepicker` being wrapped inside a dialog.
+
+~~### ( Coming soon!) Generating your own boilerplate code of the element `app-datepicker` or `app-datepicker-dialog`~~
+
+~~At the end of the demo, there is a section where user can play around with to generate your own boilerplate code with the attributes provided. Let's go and check out the demo!~~
+
+### Styling
+
+By default, the datepicker is in `light-theme` and now you are able to style almost all possible sections of the datepicker with your own choices of color.
+
+**__ ** Note: As of release v2.4.0 the datepicker includes some basic themes that can be set via `theme` property: `dark-theme`, `light-theme`, or `goog-theme`.__*
+
+Style the datepicker with CSS as you would a normal DOM element.
+
+    app-datepicker-dialog#darkThemedDialog {
+      background: #424242;
+      --app-datepicker-bg: #424242;
+      --app-datepicker-selection-bg: #555555;
+      --app-datepicker-selection-color: #cccccc;
+      --app-datepicker-iron-selected: #FFFFFF;
+      --app-datepicker-calendar-bg: #424242;
+      --app-datepicker-calendar-color: #ffffff;
+      --app-datepicker-weekdays-color: #c6c6c6;
+      --app-datepicker-selected-day-bg: #80CBC4;
+      --app-datepicker-selected-day-color: #555555;
+      --app-datepicker-selected-year-bg: #f5f5f5;
+      --app-datepicker-selected-year-color: #80CBC4;
+      --app-datepicker-today-color: #80CBC4;
+      --app-datepicker-disabled-color: #ffff00;
+      --app-datepicker-icon-button-color: #ffff00;
+      --app-datepicker-icon-button-ink-color: #ffff00;
+      --app-datepicker-button-color: #80CBC4;
+      --app-datepicker-button-ink-color: #bcbcbc;
+    }
+
+The following custom properties and mixin are also available for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--app-datepicker-bg` | Background color of the datepicker | #fafafa
+`--app-datepicker-selection-bg` | Background color of the display section (selectionView) | #009688
+`--app-datepicker-selection-color` | Text color of the display section (selectionView) | #b2dfdb
+`--app-datepicker-iron-selected` | Text color of the view selector | #fefefe
+`--app-datepicker-calendar-bg` | Background color of calendar section | #fafafa
+`--app-datepicker-calendar-color` | Text color of calendar section | #000
+`--app-datepicker-weekdays-color` | Text color of weekdays | #9b9b9b
+`--app-datepicker-selected-day-bg` | Background color of selected day | #009688
+`--app-datepicker-selected-day-color` | Text color of selected day | #fff
+`--app-datepicker-selected-year-bg` | Background color of selected year in year list | #f5f5f5
+`--app-datepicker-selected-year-color` | Text color of selected year in year list | #009688
+`--app-datepicker-today-color` | Text color of today's day | #009688
+`--app-datepicker-disabled-color` | Text color of disabled days | #9e9e9e
+`--app-datepicker-icon-buttons-color` | Text color of `paper-icon-button` | #737373
+`--app-datepicker-icon-button-ink-color` | Ink color of `paper-icon-button` | #737373
+`--app-datepicker-button-color` | Color of `paper-button` | #009688
+`--app-datepicker-button-ink-color` | Ink color of `paper-button` | #737373
+`--app-datepicker-date-hover-color` | Color of hovered date | #737373
+`--app-datepicker-date-hover-background-color` | Background color of hovered date | #737373
+`--app-datepicker-year-hover-background-color` | Background color of hovered year at year list view | {}
+`--app-datepicker` | Mixin applied to the datepicker | {}
+`--app-datepicker-buttons` | Mixin applied to the datepicker's buttons | {}
+`--app-datepicker-selected-year` | Mixin applied to the datepicker's selected year at calendar view | {}
+`--app-datepicker-selected-date` | Mixin applied to the datepicker's selected date at calendar view | {}
+`--app-datepicker-nav-month-year` | Mixin applied to the datepicker's nav-month-year | {}
+`--app-datepicker-days-of-week` | Mixin applied to the datepicker's days-of-week | {}
+`--app-datepicker-days-of-month` | Mixin applied to the datepicker's days-of-month | {}
+`--app-datepicker-each-list-of-years` | Mixin applied to the datepicker's each-list-of-years | {}
+`--app-datepicker-selected-each-list-of-years` | Mixin applied to the datepicker's selected year at year list view | {}
+`--app-datepicker-year-hover` | Mixin applied to the datepicker's hovered year at year list view | {}
+
+
+@author motss
+@element app-datepicker, app-datepicker-dialog
+@demo demo/index.html
+*/
+Polymer({
+  _template: html`<style>
       :host {
         display: block;
         position: relative;
@@ -602,105 +693,7 @@ $_documentContainer.innerHTML = `<dom-module id="app-datepicker">
         </template>
       </neon-animated-pages>
 
-    </div>
-  </template>
-
-  
-</dom-module>`;
-
-document.head.appendChild($_documentContainer);
-/**
-Material Design: [Pickers](https://www.google.com/design/spec/components/pickers.html#pickers-date-pickers)
-
-An custom Polymer element created to provide a datepicker element that is more compelling and rich with features.
-
-Example:
-
-    <app-datepicker></app-datepicker>
-    <app-datepicker-dialog></app-datepicker-dialog>
-    <app-datepicker-dialog modal></app-datepicker-dialog>
-    <app-datepicker-dialog with-backdrop></app-datepicker-dialog>
-    <app-datepicker view="horizontal"></app-datepicker>
-    <app-datepicker theme="dark-theme"></app-datepicker>
-    <app-datepicker confirm-label="confirm date" dismiss-label="cancel"></app-datepicker>
-
-`app-datepicker` provides a regular datepicker element.
-While `app-datepicker-dialog` has a `app-datepicker` being wrapped inside a dialog.
-
-~~### ( Coming soon!) Generating your own boilerplate code of the element `app-datepicker` or `app-datepicker-dialog`~~
-
-~~At the end of the demo, there is a section where user can play around with to generate your own boilerplate code with the attributes provided. Let's go and check out the demo!~~
-
-### Styling
-
-By default, the datepicker is in `light-theme` and now you are able to style almost all possible sections of the datepicker with your own choices of color.
-
-**__ ** Note: As of release v2.4.0 the datepicker includes some basic themes that can be set via `theme` property: `dark-theme`, `light-theme`, or `goog-theme`.__*
-
-Style the datepicker with CSS as you would a normal DOM element.
-
-    app-datepicker-dialog#darkThemedDialog {
-      background: #424242;
-      --app-datepicker-bg: #424242;
-      --app-datepicker-selection-bg: #555555;
-      --app-datepicker-selection-color: #cccccc;
-      --app-datepicker-iron-selected: #FFFFFF;
-      --app-datepicker-calendar-bg: #424242;
-      --app-datepicker-calendar-color: #ffffff;
-      --app-datepicker-weekdays-color: #c6c6c6;
-      --app-datepicker-selected-day-bg: #80CBC4;
-      --app-datepicker-selected-day-color: #555555;
-      --app-datepicker-selected-year-bg: #f5f5f5;
-      --app-datepicker-selected-year-color: #80CBC4;
-      --app-datepicker-today-color: #80CBC4;
-      --app-datepicker-disabled-color: #ffff00;
-      --app-datepicker-icon-button-color: #ffff00;
-      --app-datepicker-icon-button-ink-color: #ffff00;
-      --app-datepicker-button-color: #80CBC4;
-      --app-datepicker-button-ink-color: #bcbcbc;
-    }
-
-The following custom properties and mixin are also available for styling:
-
-Custom property | Description | Default
-----------------|-------------|----------
-`--app-datepicker-bg` | Background color of the datepicker | #fafafa
-`--app-datepicker-selection-bg` | Background color of the display section (selectionView) | #009688
-`--app-datepicker-selection-color` | Text color of the display section (selectionView) | #b2dfdb
-`--app-datepicker-iron-selected` | Text color of the view selector | #fefefe
-`--app-datepicker-calendar-bg` | Background color of calendar section | #fafafa
-`--app-datepicker-calendar-color` | Text color of calendar section | #000
-`--app-datepicker-weekdays-color` | Text color of weekdays | #9b9b9b
-`--app-datepicker-selected-day-bg` | Background color of selected day | #009688
-`--app-datepicker-selected-day-color` | Text color of selected day | #fff
-`--app-datepicker-selected-year-bg` | Background color of selected year in year list | #f5f5f5
-`--app-datepicker-selected-year-color` | Text color of selected year in year list | #009688
-`--app-datepicker-today-color` | Text color of today's day | #009688
-`--app-datepicker-disabled-color` | Text color of disabled days | #9e9e9e
-`--app-datepicker-icon-buttons-color` | Text color of `paper-icon-button` | #737373
-`--app-datepicker-icon-button-ink-color` | Ink color of `paper-icon-button` | #737373
-`--app-datepicker-button-color` | Color of `paper-button` | #009688
-`--app-datepicker-button-ink-color` | Ink color of `paper-button` | #737373
-`--app-datepicker-date-hover-color` | Color of hovered date | #737373
-`--app-datepicker-date-hover-background-color` | Background color of hovered date | #737373
-`--app-datepicker-year-hover-background-color` | Background color of hovered year at year list view | {}
-`--app-datepicker` | Mixin applied to the datepicker | {}
-`--app-datepicker-buttons` | Mixin applied to the datepicker's buttons | {}
-`--app-datepicker-selected-year` | Mixin applied to the datepicker's selected year at calendar view | {}
-`--app-datepicker-selected-date` | Mixin applied to the datepicker's selected date at calendar view | {}
-`--app-datepicker-nav-month-year` | Mixin applied to the datepicker's nav-month-year | {}
-`--app-datepicker-days-of-week` | Mixin applied to the datepicker's days-of-week | {}
-`--app-datepicker-days-of-month` | Mixin applied to the datepicker's days-of-month | {}
-`--app-datepicker-each-list-of-years` | Mixin applied to the datepicker's each-list-of-years | {}
-`--app-datepicker-selected-each-list-of-years` | Mixin applied to the datepicker's selected year at year list view | {}
-`--app-datepicker-year-hover` | Mixin applied to the datepicker's hovered year at year list view | {}
-
-
-@author motss
-@element app-datepicker, app-datepicker-dialog
-@demo demo/index.html
-*/
-Polymer({
+    </div>`,
   is: "app-datepicker",
 
   behaviors: [NeonAnimationRunnerBehavior],
@@ -1879,7 +1872,7 @@ Polymer({
 
   // workaround to update custom property of distributed children until Polymer supports Native custom properties.
   _updateDistributedButtonInkColorCustomProp: function(_node, _colorCode) {
-    _node.updateStyles({
+    this.updateStyles({
       "--paper-button-ink-color": _colorCode
     });
   }

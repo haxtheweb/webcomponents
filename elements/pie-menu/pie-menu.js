@@ -3,11 +3,9 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
 `pie-menu`
-A pie menu of context menu options.
+SVG Menu based on the excellent resource at : https://sarasoueidan.com/tools/circulus
 
 @demo demo/index.html
-
-SVG Menu based on the excellent resource at : https://sarasoueidan.com/tools/circulus
 
 @microcopy - the mental model for this element
  - pie - a delicious circle shaped container used to house berries or fruit filling. Best served with <ice-cream> or <boiled-apples>.
