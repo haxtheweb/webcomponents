@@ -4,11 +4,12 @@ var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<dom-module id="simple-search-content">
+<template>
   <style>
     :host #content {
       @apply --simple-search-content;
     }
-    :host #content [match-number]{
+    :host #content[match-number]{
       color: var(--simple-search-match-text-color, #000);
       background-color: var(--simple-search-match-bg-color, #f0f0f0);
       border: 1px solid; 
@@ -19,7 +20,6 @@ $_documentContainer.innerHTML = `<dom-module id="simple-search-content">
       @apply --simple-search-match;
     }
   </style>
-  <template>
     <span id="content">
       <template is="dom-repeat" items="[[_searchedContent]]">
         <span match-number\$="[[item.matchNumber]]" tabindex\$="[[_getTabIndex(item.matchNumber)]]">[[item.text]]</span>
