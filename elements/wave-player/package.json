@@ -42,11 +42,11 @@
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.31",
     "@lrnwebcomponents/schema-behaviors": "^0.0.31",
-    "@polymer/iron-elements": "0.0.3",
+    "@lrnwebcomponents/es-global-bridge": "^0.0.31",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-fab": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.1",
-    "@polymer/paper-material": "^3.0.1",
+    "@polymer/paper-card": "^3.0.1",
     "@polymer/polymer": "^3.0.5",
     "wavesurfer.js": "^2.1.0"
   },

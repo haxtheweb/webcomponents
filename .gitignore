@@ -13,3 +13,4 @@ yarn.lock
 package-lock.json
 analysis.json
 yarn-error.log
+.cache

@@ -1,12 +1,13 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@polymer/paper-material/paper-material.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-fab/paper-fab.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import * as WaveSurfer from "wavesurfer.js/dist/wavesurfer.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 
 Polymer({
   _template: html`
@@ -163,12 +164,14 @@ Polymer({
       }
     </style>
     <paper-fab id="playbutton" class="circleAnimation" disabled="" icon="av:play-arrow" on-click="togglePlay"></paper-fab>
-    <paper-material id="controls" class="controls hidden" elevation="2">
+    <paper-card id="controls" class="controls hidden" elevation="2">
+      <div class="actions">
       <paper-icon-button class="centred middle" style="color: white;" icon="av:pause" on-click="togglePlay"></paper-icon-button>
       <paper-icon-button id="replay" class="centred" style="color: white;" icon="av:replay-30" on-click="throwBack"></paper-icon-button>
       <paper-icon-button id="mute" class="centred" style="color: white;" icon="av:volume-up" on-click="toggleMute"></paper-icon-button>
-    </paper-material>
-    <paper-material id="container" class="waveContainer" elevation="0"></paper-material>
+      </div>
+    </paper-card>
+    <paper-card id="container" class="waveContainer" elevation="0"></paper-card>
     <div id="albuminfo" class="albuminfo">
       <img class="coverart" src="[[coverart]]">
       <span class="title">[[title]]</span>
@@ -177,9 +180,7 @@ Polymer({
 `,
 
   is: "wave-player",
-
   behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
-
   properties: {
     /**
      * The source of the audio file to be played
@@ -286,7 +287,20 @@ Polymer({
       window.wavesurferobject.load(this.src);
     }
   },
-
+  /**
+   * created life cycle
+   */
+  created: function() {
+    const name = "wavesurfer";
+    const basePath = pathFromUrl(import.meta.url);
+    const location = `${basePath}../../wavesurfer.js/dist/wavesurfer.js`;
+    window.addEventListener(
+      `es-bridge-${name}-loaded`,
+      this._wavesurferLoaded.bind(this)
+    );
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load(name, location);
+  },
   /**
    * Attached life cycle
    */
@@ -356,7 +370,6 @@ Polymer({
    * Ready life cycle
    */
   ready: function() {
-    this.updateWavesurfer();
     if (this.lean === "right") {
       this.$.playbutton.style.right = "25";
       this.$.controls.style.right = "0";
@@ -371,6 +384,12 @@ Polymer({
     if (this.coverart === "") {
       this.coverart = this.resolveUrl("art.jpg");
     }
+  },
+  /**
+   * invoke wavesurfer once we know it's globally scoped
+   */
+  _wavesurferLoaded: function() {
+    this.updateWavesurfer();
   },
 
   /**
