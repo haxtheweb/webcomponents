@@ -9,6 +9,7 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../app-datepicker.js';
+      import './bind-date-to-input-date.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -17,9 +18,15 @@
       <h3>Basic app-datepicker demo</h3>
       <demo-snippet>
         <template>
-          <app-datepicker>
-            This is app-datepicker
-          </app-datepicker>
+          <app-datepicker></app-datepicker>
+        </template>
+      </demo-snippet>
+    </div>
+    <div class="vertical-section-container centered">
+      <h3>Advanced app-datepicker demo</h3>
+      <demo-snippet>
+        <template>
+          <bind-date-to-input-date></bind-date-to-input-date>
         </template>
       </demo-snippet>
     </div>

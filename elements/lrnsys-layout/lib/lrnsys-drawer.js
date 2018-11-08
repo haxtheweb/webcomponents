@@ -8,11 +8,10 @@ import "@polymer/iron-icons/iron-icons.js";
 import "./lrnsys-button-inner.js";
 import "./lrnsys-drawer-modal.js";
 /**
-`lrnsys-drawer`
-
-
-@demo demo/index.html
-*/
+ * `lrnsys-drawer`
+ *
+ * @demo demo/index.html
+ */
 Polymer({
   _template: html`
     <style is="custom-style" include="simple-colors">

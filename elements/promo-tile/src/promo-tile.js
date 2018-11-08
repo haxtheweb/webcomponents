@@ -4,6 +4,7 @@ import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/iron-icons.js";
 /**
 `promo-tile`
 A LRN element
@@ -95,7 +96,6 @@ Polymer({
         margin-right: auto;
         padding-top: 10px;
       }
-
       .learn_more {
         float: right;
         margin-top: -75px;
@@ -103,12 +103,9 @@ Polymer({
         color: var(--font-color);
         margin-right: 10px;
       }
-
       :host([hover]) .learn_more paper-button {
         color: var(--hover-link);
       }
-
-
     </style>
 
     <div id="container">
@@ -121,8 +118,8 @@ Polymer({
               <slot></slot>
             </div>
             <div class="learn_more">
-              <a href="[[url]]" id="link" target\$="[[_urlTarget(url)]]">
-                <paper-button noink="">Learn More
+              <a tabindex="-1" href="[[url]]" id="link" target$="[[_urlTarget(url)]]">
+                <paper-button no-ink>Learn More
                   <iron-icon icon="chevron-right"></iron-icon>
                 </paper-button>
               </a>
@@ -186,8 +183,10 @@ Polymer({
   observers: ["__updateStyles(image)"],
 
   listeners: {
-    mouseover: "__hoverState",
-    mouseout: "__hoverState"
+    mouseover: "__hoverIn",
+    mouseout: "__hoverOut",
+    focusin: "__hoverIn",
+    focusout: "__hoverOut"
   },
 
   /**
@@ -278,8 +277,7 @@ Polymer({
   },
 
   __updateStyles: function(image) {
-    this.customStyle["--tile-image"] = `url(${image})`;
-    this.updateStyles();
+    this.updateStyles({ "--tile-image": `url(${image})` });
   },
 
   /**
@@ -315,7 +313,10 @@ Polymer({
     }
   },
 
-  __hoverState: function() {
-    this.hover = !this.hover;
+  __hoverIn: function() {
+    this.hover = true;
+  },
+  __hoverOut: function() {
+    this.hover = false;
   }
 });

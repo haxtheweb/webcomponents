@@ -37,12 +37,13 @@
   "dependencies": {
     "@polymer/iron-iconset-svg": "^3.0.0",
     "@polymer/iron-list": "^3.0.0",
-    "@polymer/iron-selector": "^3.0.0",
+    "@polymer/iron-selector": "^3.0.1",
     "@polymer/neon-animation": "^3.0.0",
     "@polymer/paper-button": "^3.0.0",
     "@polymer/paper-dialog-behavior": "^3.0.0",
     "@polymer/paper-icon-button": "^3.0.0",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.0.5",
+    "web-animations-js": "^2.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^0.0.31",

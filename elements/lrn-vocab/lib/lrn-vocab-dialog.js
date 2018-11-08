@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-dialog/paper-dialog.js";
+import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 Polymer({

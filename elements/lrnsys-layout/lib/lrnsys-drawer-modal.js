@@ -3,6 +3,7 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/app-layout/app-layout.js";
 import "@polymer/neon-animation/neon-animation.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
 import "./lrnsys-button-inner.js";
 /**
 `lrnsys-drawer-modal`
@@ -163,7 +164,7 @@ Polymer({
     // while also making sure we don't loop in attach
     if (this.bodyAppend && !this._bodyAppended) {
       this._bodyAppended = true;
-      document.body.appendChild(this);
+      //document.body.appendChild(this);
     }
   },
 

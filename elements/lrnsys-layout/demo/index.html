@@ -6,17 +6,15 @@
     <title>LrnsysLayout: lrnsys-layout Demo</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
-      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
+      import "@polymer/iron-demo-helpers/demo-snippet.js";
       import '@polymer/iron-image/iron-image.js';
       import '../lrnsys-layout.js';
       import '../lib/lrnsys-drawer.js';
       import '../lib/lrnsys-collapselist.js';
       import '../lib/lrnsys-collapselist-item.js';
-    </script>
-    <script>
-      var toolbar = document.querySelector('#toolbar');
-      toolbar.setAttribute('secondary-visible', true);
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -123,13 +121,11 @@
     <h3>Toolbar</h3>
     <demo-snippet>
       <template>
-        <lrnsys-dialog-toolbar id="toolbar">
-          <span slot="secondary">
-            <lrnsys-dialog-toolbar-button title="Zoom In" icon="zoom-in" id="zoom-in"></lrnsys-dialog-toolbar-button>
-            <lrnsys-dialog-toolbar-button title="Zoom Out" icon="zoom-out" id="zoom-out"></lrnsys-dialog-toolbar-button>
-            <lrnsys-dialog-toolbar-button title="Restore" icon="refresh" id="restore"></lrnsys-dialog-toolbar-button>
-            <lrnsys-dialog-toolbar-button title="Download" icon="save" id="download"></lrnsys-dialog-toolbar-button>
-          </span>
+        <lrnsys-dialog-toolbar id="toolbar" secondary-visible>
+          <lrnsys-dialog-toolbar-button slot="secondary" title="Zoom In" icon="zoom-in" id="zoom-in"></lrnsys-dialog-toolbar-button>
+          <lrnsys-dialog-toolbar-button slot="secondary" title="Zoom Out" icon="zoom-out" id="zoom-out"></lrnsys-dialog-toolbar-button>
+          <lrnsys-dialog-toolbar-button slot="secondary" title="Restore" icon="refresh" id="restore"></lrnsys-dialog-toolbar-button>
+          <lrnsys-dialog-toolbar-button slot="secondary" title="Download" icon="save" id="download"></lrnsys-dialog-toolbar-button>
         </lrnsys-dialog-toolbar>
       </template>
     </demo-snippet>

@@ -2,7 +2,6 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-listbox/paper-listbox.js";
-import "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
 /**
  * `select-menu`
  * accepts an array of values and human-readable text and creates a paper-dropdown-menu, provides the value fo the selected item

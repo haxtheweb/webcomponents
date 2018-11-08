@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/iron-image/iron-image.js";
 import "./lrndesign-gallery-zoom.js";
 /**
 `lrndesign-gallery-carousel-item`

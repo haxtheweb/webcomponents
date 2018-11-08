@@ -44,7 +44,7 @@ Polymer({
       :host #heading:focus #expand, 
       :host #heading:hover #expand {
         @apply --a11y-collapse-icon-focus;
-      }
+      } 
     </style>
     <div id="heading" aria-controls="content" aria-expanded\$="[[expanded]]" disabled\$="[[disabled]]" label\$="[[label]]" role="button">
       <div id="text"><slot></slot></div>
@@ -55,7 +55,9 @@ Polymer({
 `,
 
   is: "a11y-collapse-accordion-button",
-
+  listeners: {
+    tap: "_onTap"
+  },
   properties: {
     /**
      * is disabled?
@@ -104,28 +106,11 @@ Polymer({
   },
 
   /**
-   * Attached to the DOM, now fire.
-   */
-  ready: function() {
-    let root = this;
-    this.$.heading.addEventListener("tap", function(e) {
-      root._onTap(e);
-    });
-  },
-
-  /**
-   * Remove lsitener.
-   */
-  detached: function() {
-    this.$.heading.removeEventListener("tap");
-  },
-
-  /**
-  /**
    * Handle tap
    */
   _onTap: function(e) {
     if (!this.disabled) {
+      console.log(this);
       this.fire("a11y-collapse-tap", this);
     }
   }

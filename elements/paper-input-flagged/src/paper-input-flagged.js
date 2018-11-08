@@ -56,9 +56,9 @@ Polymer({
       <iron-icon id="icon" icon="[[icon]]" slot="prefix"></iron-icon>
     </paper-input>
     <div class="element-invisible">[[__activeMessage]]</div>
-    <paper-tooltip for="icon" position="top" offset="20" fit-to-visible-bounds="">
+    <paper-tooltip for="icon" position="top" offset="20" fit-to-visible-bounds>
         [[__activeMessage]]
-      </paper-tooltip>
+    </paper-tooltip>
 `,
 
   is: "paper-input-flagged",
@@ -85,7 +85,8 @@ Polymer({
      */
     value: {
       type: String,
-      notify: true
+      notify: true,
+      value: ""
     },
     /**
      * Input to trap and offer feedback about.
