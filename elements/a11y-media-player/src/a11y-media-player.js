@@ -1,5 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-slider/paper-slider.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icons/av-icons.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./lib/screenfull-lib.js";
 import "./lib/a11y-media-behaviors.js";

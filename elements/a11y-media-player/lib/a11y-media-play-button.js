@@ -111,7 +111,7 @@ Polymer({
   behaviors: [a11yMediaBehaviors.PlayerBehaviors],
 
   listeners: {
-    "button.tap": "_buttonTap"
+    tap: "_buttonTap"
   },
 
   properties: {
