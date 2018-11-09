@@ -673,11 +673,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 79,
+              "line": 80,
               "column": 4
             },
             "end": {
-              "line": 82,
+              "line": 83,
               "column": 5
             }
           },
@@ -695,11 +695,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 86,
+              "line": 87,
               "column": 4
             },
             "end": {
-              "line": 89,
+              "line": 90,
               "column": 5
             }
           },
@@ -717,11 +717,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 94,
               "column": 4
             },
             "end": {
-              "line": 96,
+              "line": 97,
               "column": 5
             }
           },
@@ -739,11 +739,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 100,
+              "line": 101,
               "column": 4
             },
             "end": {
-              "line": 104,
+              "line": 105,
               "column": 5
             }
           },
@@ -761,11 +761,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 109,
               "column": 4
             },
             "end": {
-              "line": 111,
+              "line": 112,
               "column": 5
             }
           },
@@ -784,11 +784,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 115,
+              "line": 116,
               "column": 2
             },
             "end": {
-              "line": 117,
+              "line": 118,
               "column": 3
             }
           },
@@ -804,11 +804,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 120,
+              "line": 121,
               "column": 2
             },
             "end": {
-              "line": 122,
+              "line": 123,
               "column": 3
             }
           },
@@ -829,11 +829,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 19,
+          "line": 17,
           "column": 8
         },
         "end": {
-          "line": 123,
+          "line": 124,
           "column": 1
         }
       },
@@ -845,11 +845,11 @@
           "description": "id of element button controls",
           "sourceRange": {
             "start": {
-              "line": 79,
+              "line": 80,
               "column": 4
             },
             "end": {
-              "line": 82,
+              "line": 83,
               "column": 5
             }
           },
@@ -861,11 +861,11 @@
           "description": "iron-icon type",
           "sourceRange": {
             "start": {
-              "line": 86,
+              "line": 87,
               "column": 4
             },
             "end": {
-              "line": 89,
+              "line": 90,
               "column": 5
             }
           },
@@ -877,11 +877,11 @@
           "description": "button label",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 94,
               "column": 4
             },
             "end": {
-              "line": 96,
+              "line": 97,
               "column": 5
             }
           },
@@ -893,11 +893,11 @@
           "description": "Is it toggled on?",
           "sourceRange": {
             "start": {
-              "line": 100,
+              "line": 101,
               "column": 4
             },
             "end": {
-              "line": 104,
+              "line": 105,
               "column": 5
             }
           },
@@ -909,11 +909,11 @@
           "description": "Is it disabled?",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 109,
               "column": 4
             },
             "end": {
-              "line": 111,
+              "line": 112,
               "column": 5
             }
           },

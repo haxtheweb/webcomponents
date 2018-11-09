@@ -42,7 +42,7 @@
   "dependencies": {
     "@polymer/iron-icons": "PolymerElements/iron-icons",
     "@polymer/iron-iconset": "PolymerElements/iron-iconset",
-    "@polymer/polymer": "^3.1.0"
+    "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^0.0.31",
