@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/lrndesign-avatar": "^0.0.31",
-    "@polymer/polymer": "^3.0.5",
+    "@polymer/polymer": "^3.1.0",
     "time-elements": "1.2.0"
   },
   "devDependencies": {

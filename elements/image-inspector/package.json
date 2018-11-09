@@ -45,7 +45,7 @@
     "@lrnwebcomponents/materializecss-styles": "^0.0.31",
     "@polymer/app-layout": "^3.0.0",
     "@polymer/iron-icons": "^3.0.0",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.1.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^0.0.31",

@@ -40,7 +40,7 @@
     "@lrnwebcomponents/to-do": "^0.0.31",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-card": "^3.0.1",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.1.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^0.0.31",

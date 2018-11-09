@@ -3,6 +3,7 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-item/paper-item.js";
+import "@polymer/paper-styles/color.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@polymer/iron-list/iron-list.js";
@@ -11,6 +12,7 @@ import "@polymer/iron-meta/iron-meta.js";
 import "@polymer/neon-animation/neon-animation.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
 import "./lib/paper-icon-picker-icon.js";
 /**
 @license
@@ -51,7 +53,7 @@ Custom property | Description | Default
 */
 Polymer({
   _template: html`
-    <style>
+    <style is="custom-style">
       :host {
         display: inline-block;
         position: relative;
@@ -181,11 +183,11 @@ Polymer({
     </style>
 
     <paper-menu-button id="iconpicker" vertical-align="[[verticalAlign]]" horizontal-align="[[horizontalAlign]]" opened="{{opened}}">
-      <paper-icon-button id="iconButton" icon="swatch:perm-media" class="dropdown-trigger" alt="icon picker" noink\$="[[noink]]" slot="dropdown-trigger">
+      <paper-icon-button id="iconButton" icon="swatch:perm-media" class="dropdown-trigger" alt="icon picker" noink$="[[noink]]" slot="dropdown-trigger">
       </paper-icon-button>
-      <iron-list grid="" items="[[renderIconList]]" id="container" slot="dropdown-content">
+      <iron-list grid items="[[renderIconList]]" id="container" slot="dropdown-content">
       <template>
-        <paper-item class\$="icon-group-[[item.index]] icon" value="[[item.icon]]">
+        <paper-item class$="icon-group-[[item.index]] icon" value="[[item.icon]]">
           <iron-icon icon="[[item.icon]]"></iron-icon>
         </paper-item>
       </template>
@@ -194,14 +196,14 @@ Polymer({
     <paper-tooltip for="iconpicker" position="bottom" offset="14">
       [[iconText]]
     </paper-tooltip>
-    <iron-a11y-keys target="[[iconpicker]]" keys="escape" on-keys-pressed="close" stop-keyboard-event-propagation=""></iron-a11y-keys>
+    <iron-a11y-keys target="[[iconpicker]]" keys="escape" on-keys-pressed="close" stop-keyboard-event-propagation></iron-a11y-keys>
 `,
 
   is: "paper-icon-picker",
 
   listeners: {
     "iconpicker.tap": "_onOpen",
-    "container.tap": "_onIconTap"
+    tap: "_onIconTap"
   },
 
   /**
@@ -412,10 +414,12 @@ Polymer({
 
   _onIconTap: function(e) {
     var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
-    this.icon = local.value;
-    this.fire("icon-picker-selected", { icon: this.icon });
-    this.$.container.fire("iron-select", this.icon);
+    var target = normalizedEvent.rootTarget;
+    if (target.tagName === "PAPER-ITEM") {
+      this.icon = target.value;
+      this.fire("icon-picker-selected", { icon: this.icon });
+      this.$.container.fire("iron-select", this.icon);
+    }
   },
 
   _iconChanged: function() {

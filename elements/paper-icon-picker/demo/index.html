@@ -10,10 +10,25 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../paper-icon-picker.js';
+      import "@polymer/iron-icons/iron-icons.js";
+      import "@polymer/iron-icons/av-icons.js";
+      import "@polymer/iron-icons/communication-icons.js";
+      import "@polymer/iron-icons/device-icons.js";
+      import "@polymer/iron-icons/editor-icons.js";
+      import "@polymer/iron-icons/hardware-icons.js";
+      import "@polymer/iron-icons/image-icons.js";
+      import "@polymer/iron-icons/maps-icons.js";
+      import "@polymer/iron-icons/notification-icons.js";
+      import "@polymer/iron-icons/social-icons.js";
+      import "@polymer/iron-icons/places-icons.js";
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
       paper-icon-picker {
         margin: 0 10px;
+      }
+      paper-icon-picker.fancy {
+        --paper-icon-picker-icon-size: 40px;
+        --paper-icon-picker-size: 40px;
       }
     </style>
   </head>
@@ -39,12 +54,6 @@
       <h3>The picker can be styled using custom properties</h3>
       <demo-snippet class="centered-demo">
         <template>
-          <style is="custom-style">
-            paper-icon-picker.fancy {
-              --paper-icon-picker-icon-size: 40px;
-              --paper-icon-picker-size: 40px;
-            }
-          </style>
           <paper-icon-picker class="fancy"></paper-icon-picker>
         </template>
       </demo-snippet>

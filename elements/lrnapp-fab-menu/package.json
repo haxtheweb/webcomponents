@@ -43,7 +43,7 @@
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.31",
     "@lrnwebcomponents/materializecss-styles": "^0.0.31",
     "@lrnwebcomponents/paper-fab-speed-dial": "^0.0.31",
-    "@polymer/polymer": "^3.0.5",
+    "@polymer/polymer": "^3.1.0",
     "@polymer/paper-fab": "^3.0.1",
     "@polymer/iron-flex-layout": "^3.0.1"
   },

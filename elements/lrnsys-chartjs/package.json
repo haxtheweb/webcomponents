@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.31",
-    "@polymer/polymer": "^3.0.5",
+    "@polymer/polymer": "^3.1.0",
     "@vowo/chart-elements": "^5.0.0"
   },
   "devDependencies": {

@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@polymer/iron-flex-layout": "^3.0.1",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.1.0"
   },
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
