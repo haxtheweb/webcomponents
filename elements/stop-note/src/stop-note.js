@@ -58,19 +58,19 @@ Polymer({
       }
 
       .main_message {
-        font-size: 2em;
+        font-size: 32px;
         margin-top: 10px;
       }
 
       .secondary_message {
         margin-top: 5px;
-        font-size: 1.2em;
+        font-size: 19.2px;
         float: left;
       }
 
       .link a {
         margin-top: 5px;
-        font-size: 1.2em;
+        font-size: 19.2px;
         float: left;
         clear: left;
         text-decoration: none;

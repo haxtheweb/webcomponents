@@ -63,9 +63,9 @@ font-size: inherit;\
 margin: 0;\
 line-height: inherit;\
 padding: 0 6px;\
-min-width: 17em;\
+min-width: 272px;\
 vertical-align: top;\
-min-height: 1.8em;\
+min-height: 28.8px;\
 box-sizing: content-box;\
 }\
 .ace_searchbtn {\
@@ -93,13 +93,13 @@ cursor: default;\
 background-color: #eef1f6;\
 }\
 .ace_searchbtn.prev, .ace_searchbtn.next {\
-padding: 0px 0.7em\
+padding: 0px 11.2px\
 }\
 .ace_searchbtn.prev:after, .ace_searchbtn.next:after {\
 content: "";\
 border: solid 2px #888;\
-width: 0.5em;\
-height: 0.5em;\
+width: 8px;\
+height: 8px;\
 border-width:  2px 0 0 2px;\
 display:inline-block;\
 transform: rotate(-45deg);\

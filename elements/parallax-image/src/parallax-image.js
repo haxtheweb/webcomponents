@@ -54,14 +54,14 @@ Polymer({
         text-align: center;
         width: 40%;
         color: var(--parallax-title-font);
-        font-size: 2em;
+        font-size: 32px;
         position: absolute;
         margin-top: 120px;
       }
 
       @media screen and (max-width: 900px) {
         .title {
-          font-size: 1em;
+          font-size: 16px;
         }
       }
     </style>

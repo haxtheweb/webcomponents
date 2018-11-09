@@ -179,8 +179,6 @@
       "**/jarallax/**",
       "**/screenfull",
       "**/screenfull/**",
-      "**/webcomponent-qr-code",
-      "**/webcomponent-qr-code/**",
       "**/pdfjs-dist",
       "**/pdfjs-dist/**",
       "**/web-animations-js",

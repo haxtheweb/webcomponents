@@ -20580,8 +20580,8 @@ height: 100%;\
 .ace_text-input {\
 position: absolute;\
 z-index: 0;\
-width: 0.5em;\
-height: 1em;\
+width: 8px;\
+height: 16px;\
 opacity: 0;\
 background: transparent;\
 -moz-appearance: none;\

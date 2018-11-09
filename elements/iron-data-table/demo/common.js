@@ -12,8 +12,8 @@ $_documentContainer.innerHTML = `<style is="custom-style">
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
-    font-size: 0.8rem;
-    line-height: 1.4rem;
+    font-size: 12.8px;
+    line-height: 22.4px;
     position: relative;
     transition: 0.5s;
   }

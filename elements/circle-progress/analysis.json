@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`circle-progress`\nPolymer-based web component displaying a circular progress bar.",
+      "description": "`circle-progress`\n`Polymer-based web component displaying a circular progress bar.`",
       "summary": "",
       "path": "circle-progress.js",
       "properties": [
@@ -61,11 +61,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 64,
+              "line": 59,
               "column": 4
             },
             "end": {
-              "line": 67,
+              "line": 62,
               "column": 5
             }
           },
@@ -83,11 +83,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 72,
+              "line": 67,
               "column": 4
             },
             "end": {
-              "line": 75,
+              "line": 70,
               "column": 5
             }
           },
@@ -105,11 +105,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 80,
+              "line": 75,
               "column": 4
             },
             "end": {
-              "line": 83,
+              "line": 78,
               "column": 5
             }
           },
@@ -127,6 +127,28 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
+              "line": 83,
+              "column": 4
+            },
+            "end": {
+              "line": 86,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Number"
+            }
+          },
+          "defaultValue": "-90"
+        },
+        {
+          "name": "_cx",
+          "type": "number | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
               "line": 88,
               "column": 4
             },
@@ -140,10 +162,10 @@
               "attributeType": "Number"
             }
           },
-          "defaultValue": "-90"
+          "defaultValue": "null"
         },
         {
-          "name": "_cx",
+          "name": "_cy",
           "type": "number | null | undefined",
           "description": "",
           "privacy": "protected",
@@ -165,7 +187,7 @@
           "defaultValue": "null"
         },
         {
-          "name": "_cy",
+          "name": "_radius",
           "type": "number | null | undefined",
           "description": "",
           "privacy": "protected",
@@ -176,28 +198,6 @@
             },
             "end": {
               "line": 101,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Number"
-            }
-          },
-          "defaultValue": "null"
-        },
-        {
-          "name": "_radius",
-          "type": "number | null | undefined",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 103,
-              "column": 4
-            },
-            "end": {
-              "line": 106,
               "column": 5
             }
           },
@@ -215,11 +215,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 103,
               "column": 4
             },
             "end": {
-              "line": 111,
+              "line": 106,
               "column": 5
             }
           },
@@ -237,11 +237,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 113,
+              "line": 108,
               "column": 4
             },
             "end": {
-              "line": 116,
+              "line": 111,
               "column": 5
             }
           },
@@ -259,11 +259,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 118,
+              "line": 113,
               "column": 4
             },
             "end": {
-              "line": 121,
+              "line": 116,
               "column": 5
             }
           },
@@ -677,11 +677,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 128,
+              "line": 123,
               "column": 2
             },
             "end": {
-              "line": 130,
+              "line": 125,
               "column": 3
             }
           },
@@ -698,11 +698,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 132,
+              "line": 127,
               "column": 2
             },
             "end": {
-              "line": 134,
+              "line": 129,
               "column": 3
             }
           },
@@ -725,11 +725,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 136,
+              "line": 131,
               "column": 2
             },
             "end": {
-              "line": 138,
+              "line": 133,
               "column": 3
             }
           },
@@ -752,11 +752,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 140,
+              "line": 135,
               "column": 2
             },
             "end": {
-              "line": 142,
+              "line": 137,
               "column": 3
             }
           },
@@ -779,11 +779,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 144,
+              "line": 139,
               "column": 2
             },
             "end": {
-              "line": 150,
+              "line": 146,
               "column": 3
             }
           },
@@ -808,7 +808,7 @@
           "column": 8
         },
         "end": {
-          "line": 151,
+          "line": 147,
           "column": 1
         }
       },
@@ -820,11 +820,11 @@
           "description": "Value of circular progress bar.",
           "sourceRange": {
             "start": {
-              "line": 64,
+              "line": 59,
               "column": 4
             },
             "end": {
-              "line": 67,
+              "line": 62,
               "column": 5
             }
           },
@@ -836,11 +836,11 @@
           "description": "Maximum of value.",
           "sourceRange": {
             "start": {
-              "line": 72,
+              "line": 67,
               "column": 4
             },
             "end": {
-              "line": 75,
+              "line": 70,
               "column": 5
             }
           },
@@ -852,11 +852,11 @@
           "description": "Stroke width of circle.",
           "sourceRange": {
             "start": {
-              "line": 80,
+              "line": 75,
               "column": 4
             },
             "end": {
-              "line": 83,
+              "line": 78,
               "column": 5
             }
           },
@@ -868,11 +868,11 @@
           "description": "Starting angle of the progress.",
           "sourceRange": {
             "start": {
-              "line": 88,
+              "line": 83,
               "column": 4
             },
             "end": {
-              "line": 91,
+              "line": 86,
               "column": 5
             }
           },

@@ -78,7 +78,7 @@
     "@polymer/paper-toggle-button": "^3.0.0",
     "@polymer/paper-toolbar": "^3.0.1",
     "@polymer/paper-tooltip": "^3.0.0",
-    "@polymer/polymer": "^3.1.0",
+    "@polymer/polymer": "^3.0.5",
     "@vaadin/vaadin-split-layout": "^4.1.0",
     "@vaadin/vaadin-upload": "^4.2.1",
     "paper-collapse-item": "^4.0.4",

@@ -60,9 +60,9 @@ Polymer({
           background: transparent;
           margin: 0;
           padding: 0;
-          min-width: 20em;
-          line-height: 1em;
-          font-size: 1em;
+          min-width: 320px;
+          line-height: 16px;
+          font-size: 16px;
           margin-top: -8px;
           margin-bottom: 8px;
           outline: none;

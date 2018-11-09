@@ -37,7 +37,7 @@
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^0.0.31",
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.31",
-    "@polymer/polymer": "^3.1.0",
+    "@polymer/polymer": "^3.0.5",
     "chartist": "^0.11.0"
   },
   "devDependencies": {

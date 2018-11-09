@@ -14,10 +14,10 @@ Polymer({
         display: block;
       }
       #container {
-        padding: 1em 2em;
+        padding: 16px 32px;
       }
       :host > ::shadow map-menu-submenu + map-menu-submenu {
-        margin-top: 1em;
+        margin-top: 16px;
       }
     </style>
     <slot></slot>

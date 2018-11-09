@@ -110,7 +110,7 @@ Polymer({
         color: #fff;
         font-size: 16px;
         padding: 15px;
-        line-height: 1.2em;
+        line-height: 19.2px;
       }
 
       #quote_start {

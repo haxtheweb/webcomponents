@@ -1,0 +1,40 @@
+[
+  {
+    "title": "Introduction",
+    "dataUrl": "data.json",
+    "status": "available",
+    "value": 25,
+    "max": 100,
+    "icon": "gif",
+    "iconComplete": "check",
+    "description": "In this lesson we're going to learn about Egypt!"
+  },
+  {
+    "title": "ELMSLN",
+    "dataUrl": "data.json",
+    "status": "disabled",
+    "value": 0,
+    "max": 100,
+    "icon": "3d-rotation",
+    "iconComplete": "check",
+    "description": "Rome wasn't built in a day; let's explore just how long this empire took to mature to what we know today."
+  },
+  {
+    "title": "Stuff",
+    "dataUrl": "data/callback.json",
+    "status": "disabled",
+    "value": 0,
+    "max": 100,
+    "icon": "flag",
+    "iconComplete": "check"
+  },
+  {
+    "title": "Things",
+    "dataUrl": "data/callback.json",
+    "status": "disabled",
+    "value": 0,
+    "max": 100,
+    "icon": "forward",
+    "iconComplete": "check"
+  }
+]

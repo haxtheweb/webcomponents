@@ -52,7 +52,7 @@
     "@polymer/paper-dialog": "^3.0.0",
     "@polymer/paper-header-panel": "^3.0.0",
     "@polymer/paper-material": "^3.0.0",
-    "@polymer/polymer": "^3.1.0"
+    "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^0.0.31",

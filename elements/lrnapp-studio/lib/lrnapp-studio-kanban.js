@@ -25,7 +25,7 @@ Polymer({
       paper-button {
         padding: 0;
         margin: 0;
-        min-width: 1rem;
+        min-width: 16px;
       }
       .project-card {
         width: 100%;
@@ -39,7 +39,7 @@ Polymer({
         position: absolute;
         top: 0;
         right: 0;
-        padding: 1em;
+        padding: 16px;
       }
       .project-operations .operation {
         display: inline-flex;
@@ -59,7 +59,7 @@ Polymer({
       .assignment-row-button {
         width: 100%;
         justify-content: flex-start;
-        height: 3em;
+        height: 48px;
         text-transform: none;
       }
       .assignment-operations {

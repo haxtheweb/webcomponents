@@ -37,40 +37,40 @@ $_documentContainer.innerHTML = `<dom-module id="lrnapp-studio-submission">
         border-top: 1px solid #8c8b8b;
       }
       paper-material {
-        margin: 1rem 1rem;
+        margin: 16px 16px;
       }
       
       .submission-title {
         font-family: "Roboto", sans-serif;
         font-weight: 500;
-        font-size: 2.25rem;
-        margin-bottom: 0.75rem;
+        font-size: 36px;
+        margin-bottom: 12px;
       }
       .submission-date {
-        font-size:0.75rem;
-        margin-bottom:2rem;
+        font-size:12px;
+        margin-bottom:32px;
       }
       .submission-attachments, .submission-links {
-        padding: 0.25rem;
+        padding: 4px;
         border: 1px solid #dfdfdf;
         border-radius: 4px;
-        margin:1rem 0;
-        padding:1rem;
+        margin:16px 0;
+        padding:16px;
       }
       .submission-attachments-title, .submission-links-title {
         color: #888;
         margin-top: 0;
         border-bottom: 1px solid #efefef;
-        padding-bottom: 1rem;
-        margin-bottom: 0.75rem;
+        padding-bottom: 16px;
+        margin-bottom: 12px;
       }
       @media (min-width:1200px) {
         .paper-material-margin-med {
-          padding:2rem 3.5rem;
+          padding:32px 56px;
         }
       }
       scary-gallery {
-        margin: 1.75rem 0rem;
+        margin: 28px 0;
       }
     </style>
       

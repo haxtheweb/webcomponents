@@ -50,7 +50,7 @@
     "@polymer/paper-slider": "^3.0.0",
     "@polymer/paper-toggle-button": "^3.0.0",
     "@polymer/paper-tooltip": "^3.0.0",
-    "@polymer/polymer": "^3.1.0",
+    "@polymer/polymer": "^3.0.5",
     "screenfull": "^3.3.3"
   },
   "devDependencies": {

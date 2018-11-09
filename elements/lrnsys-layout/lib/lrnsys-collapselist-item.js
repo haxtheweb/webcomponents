@@ -15,10 +15,10 @@ Polymer({
         color: var(--lrnsys-collapselist-text-color, #000);
       }
       paper-button {
-        height: 3em;
+        height: 48px;
         padding: 0;
         margin: 0;
-        min-width: .1em;
+        min-width: .16px;
         -webkit-justify-content: flex-start;
         justify-content: flex-start;
         align-items: center;
@@ -31,9 +31,9 @@ Polymer({
         pointer-events: none;
       }
       .collapse-label {
-        padding: .75em .5em .25em .5em;
+        padding: 12px 8px 4px 8px;
         width: 100%;
-        height: 2em;
+        height: 32px;
       }
       :host([opened]) #collapse {
         border-top: 1px solid var(--lrnsys-collapselist-item-border, #bbb);
@@ -44,7 +44,7 @@ Polymer({
         background-color: var(--lrnsys-collapselist-item-active-color, #eee);
       }
       .collapse-content {
-        padding: 1em;
+        padding: 16px;
       }
     </style>
     <paper-button on-tap="collapseToggle" id="collapse-trigger" aria-controls="collapse">

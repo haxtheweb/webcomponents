@@ -12,7 +12,7 @@ Polymer({
     <style>
       :host {
         display: block;
-        font-size: 1em;
+        font-size: 16px;
       }
     </style>
     <cms-hax open-default="" app-store-connection="[[storeData]]" body-offset-left="">

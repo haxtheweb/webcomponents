@@ -49,7 +49,7 @@
     "@polymer/paper-icon-button": "^3.0.0",
     "@polymer/paper-progress": "^3.0.0",
     "@polymer/paper-ripple": "^3.0.0",
-    "@polymer/polymer": "^3.1.0"
+    "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^0.0.31",

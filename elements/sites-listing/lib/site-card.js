@@ -37,7 +37,7 @@ Polymer({
       .card-actions {
         background-color: #f5f5f5;
         border-radius: 0 0 4px 4px;
-        padding: 0 .5em;
+        padding: 0 8px;
       }
     
       .card-actions .card-action-details {
@@ -48,7 +48,7 @@ Polymer({
       }
     
       .card-control-height {
-        height: 15rem;
+        height: 240px;
       }
     
       [elevation="0"] {
@@ -66,17 +66,17 @@ Polymer({
       .name,
       .title {
         color: #222;
-        font-size: .8em;
+        font-size: 12.8px;
         font-weight: 600;
-        line-height: 1.25em;
-        padding: 0 .75em;
+        line-height: 20px;
+        padding: 0 12px;
         overflow: hidden;
         text-overflow: ellipsis;
-        margin-top: .5em;
+        margin-top: 8px;
       }
     
       .title {
-        font-size: .7em;
+        font-size: 11.2px;
         font-weight: 400;
       }
     
@@ -94,7 +94,7 @@ Polymer({
         --iron-icon-width: 100%;
         overflow: hidden;
         color: grey;
-        margin: -1em .5em 0 0;
+        margin: -16px 8px 0 0;
         position: absolute;
         right: 0;
       }
@@ -107,12 +107,12 @@ Polymer({
       .center {
         margin: auto;
         width: 80%;
-        padding: 1em;
+        padding: 16px;
       }
     
       .link {
-        font-size: 1em;
-        line-height: 1em;
+        font-size: 16px;
+        line-height: 16px;
       }
     
       .site-info {
@@ -120,7 +120,7 @@ Polymer({
       }
     
       .site-preview {
-        height: 10em;
+        height: 160px;
       }
       .card-content {
         padding: 0;

@@ -1,28 +1,25 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
-import "@polymer/paper-styles/default-theme.js";
+import "@polymer/paper-styles/paper-styles.js";
 
 /**
-`circle-progress`
-Polymer-based web component displaying a circular progress bar.
-
-@demo demo/index.html
-*/
+ * `circle-progress`
+ * `Polymer-based web component displaying a circular progress bar.`
+ *
+ * @demo demo/index.html
+ */
 Polymer({
   _template: html`
-        <style>
-
+  <custom-style>
+        <style is="custom-style">
             :host {
                 @apply(--layout-vertical);
                 @apply(--layout-center-center);
-
                 position: relative;
-
                 width: var(--circle-progress-width, 64px);
                 height: var(--circle-progress-height, 64px);
                 margin: 24px;
-
                 border-radius: 50%;
             }
 
@@ -30,10 +27,8 @@ Polymer({
                 position: absolute;
                 top: 0;
                 left: 0;
-
                 display: none;
             }
-
             .circle-background {
                 stroke: var(--circle-progress-bg-stroke-color, --paper-grey-100);
             }
@@ -41,12 +36,12 @@ Polymer({
             .circle-foreground {
                 transition: stroke-dashoffset var(--circle-progress-transition, 150ms);
 
-                stroke: var(--circle-progress-stroke-color, --accent-color);
+                stroke: var(--circle-progress-stroke-color, blue);
                 stroke-linecap: var(--circle-progress-stroke-linecap, round);
             }
 
         </style>
-
+  </custom-style>
         <svg id="circle" width="100%" height="100%">
             <circle class="circle-background" r\$="[[_radius]]" cx\$="[[_cx]]" cy\$="[[_cy]]" fill="transparent" stroke-width\$="[[strokeWidth]]"></circle>
             <circle class="circle-foreground" r\$="[[_radius]]" cx\$="[[_cx]]" cy\$="[[_cy]]" fill="transparent" stroke-width\$="[[strokeWidth]]" stroke-dasharray\$="[[_dasharray]]" stroke-dashoffset\$="[[_dashoffset]]" transform\$="[[_transform]]"></circle>
@@ -143,6 +138,7 @@ Polymer({
   },
 
   _onIronResize: function() {
+    console.log(this.offsetHeight);
     if (this.offsetWidth && this.offsetHeight) {
       this._cx = this.offsetWidth / 2;
       this._cy = this.offsetHeight / 2;

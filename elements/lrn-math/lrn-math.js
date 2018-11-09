@@ -145,7 +145,7 @@ Polymer({
     this.setHaxProperties(props);
     const name = "mathjax";
     const basePath = pathFromUrl(import.meta.url);
-    const location = `${basePath}../../mathjax/latest.js`;
+    const location = `${basePath}lib/mathjax/latest.js`;
     window.addEventListener(
       `es-bridge-${name}-loaded`,
       this._mathjaxLoaded.bind(this)

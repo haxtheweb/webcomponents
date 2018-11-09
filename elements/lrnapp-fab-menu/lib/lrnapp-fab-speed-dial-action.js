@@ -38,9 +38,9 @@ Polymer({
       .label {
         color: black;
         background: white;
-        padding: 0 1em;
-        border-radius: .25em;
-        margin-right: 1.5em;
+        padding: 0 16px;
+        border-radius: 4px;
+        margin-right: 24px;
       }
 
       .fab {

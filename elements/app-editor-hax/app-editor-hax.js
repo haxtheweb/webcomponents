@@ -26,7 +26,7 @@ Polymer({
     <style>
       :host {
         display: block;
-        font-size: 1em;
+        font-size: 16px;
         box-sizing: content-box;
       }
     </style>

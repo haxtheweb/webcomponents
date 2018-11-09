@@ -36,9 +36,9 @@ Polymer({
       paper-listbox ::slotted(paper-item) {
         display: block;
         width: 100%;
-        min-height: 2em;
+        min-height: 32px;
         vertical-align: text-top;
-        line-height: 2em;
+        line-height: 32px;
         @apply --dropdown-select-items;
       }
       paper-listbox paper-listbox {

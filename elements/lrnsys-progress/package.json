@@ -41,6 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/circle-progress": "^0.0.31",
+    "@polymer/neon-animation": "^3.0.1",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-icons": "^3.0.0",
     "@polymer/paper-button": "^3.0.0",
@@ -48,7 +49,9 @@
     "@polymer/paper-spinner": "^3.0.0",
     "@polymer/paper-toast": "^3.0.0",
     "@polymer/paper-tooltip": "^3.0.0",
-    "@polymer/polymer": "^3.1.0"
+    "@polymer/paper-styles": "^3.0.1",
+    "@polymer/polymer": "^3.0.5",
+    "web-animations-js": "^2.3.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^0.0.31",

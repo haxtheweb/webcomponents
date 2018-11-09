@@ -6689,7 +6689,7 @@
         if (rsLeft) {
           rs.left = elem.currentStyle.left;
         }
-        style.left = name === "fontSize" ? "1em" : ret;
+        style.left = name === "fontSize" ? "16px" : ret;
         ret = style.pixelLeft + "px";
 
         // Revert the changed values

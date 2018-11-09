@@ -14,8 +14,8 @@ $_documentContainer.innerHTML = `<dom-module id="simple-search-content">
       background-color: var(--simple-search-match-bg-color, #f0f0f0);
       border: 1px solid; 
       border-color: var(--simple-search-match-border-color, #ddd);
-      padding: 0.1em 0.25em;
-      border-radius: 0.1em;
+      padding: 0.16px 4px;
+      border-radius: 0.16px;
       font-weight: bold;
       @apply --simple-search-match;
     }

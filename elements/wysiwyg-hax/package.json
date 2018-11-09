@@ -42,7 +42,7 @@
   "dependencies": {
     "@lrnwebcomponents/cms-hax": "^0.0.31",
     "@polymer/iron-dropdown": "^3.0.0",
-    "@polymer/polymer": "^3.1.0"
+    "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^0.0.31",

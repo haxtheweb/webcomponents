@@ -22,7 +22,7 @@ Polymer({
 
       .card-panel {
         transition: box-shadow .25s;
-        padding: 1.5em;
+        padding: 24px;
         margin: 0;
         border-radius: 2px;
         background-color: #fff;
@@ -30,7 +30,7 @@ Polymer({
 
       h3 {
         padding: 0;
-        margin: 0 0 .5em 0;
+        margin: 0 0 8px 0;
       }
     </style>
     <aside>

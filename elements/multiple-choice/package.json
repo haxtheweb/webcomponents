@@ -48,7 +48,7 @@
     "@polymer/paper-checkbox": "^3.0.0",
     "@polymer/paper-radio-button": "^3.0.0",
     "@polymer/paper-toast": "^3.0.0",
-    "@polymer/polymer": "^3.1.0"
+    "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^0.0.31",

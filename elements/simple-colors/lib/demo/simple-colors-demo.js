@@ -15,8 +15,8 @@ Polymer({
         margin-bottom: 15px;
       }
       .theme-selector select { 
-        margin-left: 1em;
-        border-radius: 0.25em;
+        margin-left: 16px;
+        border-radius: 4px;
         border: 1px solid;
         height: 27px;
         color: var(--simple-colors-picker-button-color, --simple-colors-foreground2);
