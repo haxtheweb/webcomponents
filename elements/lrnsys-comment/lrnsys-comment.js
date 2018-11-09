@@ -60,8 +60,8 @@ Polymer({
       .comment-depth,
       .comment-avatar, 
       .comment-content {
-        padding-top: 0.5em;
-        padding-bottom: 0.5em;
+        padding-top: 8px;
+        padding-bottom: 8px;
         display: table-cell;
         vertical-align: top;
       }
@@ -73,8 +73,8 @@ Polymer({
       h3,
       h4 {
         text-align: left;
-        font-size: 1rem;
-        line-height: 1.25rem;
+        font-size: 16px;
+        line-height: 20px;
       }
       h1.comment-heading,
       h2.comment-heading,
@@ -89,18 +89,18 @@ Polymer({
       }
       #edit-comment {
         background-color: white;
-        padding: .25em;
+        padding: 4px;
       }
       marked-element {
-        line-height: 1rem;
-        font-size: 0.9rem;
+        line-height: 16px;
+        font-size: 14.4px;
       }
       .nowrap-me marked-element:hover {
         box-shadow: -1px 0 0 0 black inset;
         cursor: pointer;
       }
       .nowrap-me marked-element ::slotted(#content p.marked-element) {
-        height: 2em;
+        height: 32px;
         overflow: hidden;
         text-overflow: ellipsis;
         margin-bottom: 35px;
@@ -113,7 +113,7 @@ Polymer({
         color: #1976d2;
       }
       .comment-depth-1 {
-        width: 0em;
+        width: 0;
       }
       .comment-depth-2 {
         width: 54px;

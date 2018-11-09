@@ -14,7 +14,7 @@ Polymer({
         display: block;
         position: relative;
         font-family: libre baskerville;
-        width: 3em;
+        width: 48px;
         --app-drawer-width: 300px;
         --outline-player-dark: #222222;
         --outline-player-light: #F8F8F8;

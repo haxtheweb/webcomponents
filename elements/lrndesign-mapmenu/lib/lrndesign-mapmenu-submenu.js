@@ -14,7 +14,7 @@ Polymer({
         display: block;
       }
       #container {
-        padding: 1em;
+        padding: 16px;
       }
       #container ::slotted(lrndesign-mapmenu-item) {
         margin-top: .4em;

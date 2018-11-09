@@ -57,7 +57,7 @@ Polymer({
         display: flex;
         align-items: center;
         border: 1px solid;
-        border-radius: 0.25em;
+        border-radius: 4px;
         color: var(--simple-colors-picker-button-color, --simple-colors-foreground2);
         border-color: var(--simple-colors-picker-button-border-color, --simple-colors-background3);
         background-color: var(--simple-colors-picker-button-bg-color, --simple-colors-background2);

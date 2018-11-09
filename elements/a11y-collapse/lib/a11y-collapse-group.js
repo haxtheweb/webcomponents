@@ -35,7 +35,7 @@ Polymer({
       }
       :host ::slotted(a11y-collapse){
         margin: 0;
-        border-radius: 0em;
+        border-radius: 0;
       }
       :host ::slotted(a11y-collapse):not(:first-of-type) {
         border-top: none;

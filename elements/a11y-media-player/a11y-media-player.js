@@ -236,13 +236,13 @@ Polymer({
       }
       :host #customcctxt {
         top: unset;
-        bottom: 0.5em;
+        bottom: 8px;
         display: inline-block;
         margin: 0 10px;
         color: white;
         background-color: black;
         background-color: rgba(0, 0, 0, 0.8);
-        padding: 0.15em 0.25em;
+        padding: 0.15em 4px;
       }
       :host #customcctxt:empty {
         display: none;
@@ -306,7 +306,7 @@ Polymer({
           z-index: 999999;
           border: 1px solid;
           box-shadow: 1px 1px 20px 1px rgba(125,125,125);
-          border-radius: 0.2em; 
+          border-radius: 3.2px; 
           border-color: var(--a11y-media-bg-color);
         }
         :host([dark][sticky]:not([sticky-corner="none"])) #player {

@@ -18,13 +18,13 @@ font-size: 12px;\
 white-space: pre-wrap\
 }\
 .ace_static_highlight .ace_gutter {\
-width: 2em;\
+width: 32px;\
 text-align: right;\
 padding: 0 3px 0 0;\
 margin-right: 3px;\
 }\
 .ace_static_highlight.ace_show_gutter .ace_line {\
-padding-left: 2.6em;\
+padding-left: 41.6px;\
 }\
 .ace_static_highlight .ace_line { position: relative; }\
 .ace_static_highlight .ace_gutter-cell {\

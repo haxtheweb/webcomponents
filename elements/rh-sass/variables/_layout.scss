@@ -102,7 +102,7 @@ $rh-global--grid-breakpoint--lg--max: $rh-global--grid-breakpoint--xl - 1 !defau
 // Spacers / Gutters
 // ========================================================================
 
-// Factors of 1em or 16px;
+// Factors of 16px or 16px;
 $rh-global--spacer--xxs:    rh-size-prem(4px) !default;
 $rh-global--spacer--xs:     rh-size-prem(8px) !default;
 $rh-global--spacer--sm:     rh-size-prem(12px) !default; // NEW. Not in PF

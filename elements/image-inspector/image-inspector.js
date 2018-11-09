@@ -22,12 +22,12 @@ Polymer({
       app-toolbar {
         width: 90%;
         background: var(--image-inspector-background);
-        margin: 2em auto;
+        margin: 32px auto;
         z-index: 1;
       }
 
       .top {
-        top: 8em;
+        top: 128px;
       }
     </style>
     <app-toolbar>

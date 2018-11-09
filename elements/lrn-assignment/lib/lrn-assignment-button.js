@@ -19,7 +19,7 @@ Polymer({
         background: #e7ffe7;
       }
       iron-icon {
-        margin-left: .5em;
+        margin-left: 8px;
         opacity: .8;
       }
     </style>

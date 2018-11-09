@@ -34,10 +34,10 @@ Polymer({
         margin-bottom: -1px;
       }
       ul li paper-button {
-        height: 2em;
-        padding: .5em;
+        height: 32px;
+        padding: 8px;
         margin: 0;
-        min-width: .1em;
+        min-width: .16px;
         -webkit-justify-content: flex-start;
         justify-content: flex-start;
         align-items: center;
@@ -53,10 +53,10 @@ Polymer({
         display: inline-block;
       }
       .collapse-label {
-        margin-left: .5em;
+        margin-left: 8px;
       }
       .collapse-content {
-        padding: 1em;
+        padding: 16px;
       }
     </style>
     <ul>

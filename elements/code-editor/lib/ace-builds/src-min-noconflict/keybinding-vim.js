@@ -2119,7 +2119,7 @@ ace.define(
         v.prototype[e] = t;
       }),
       o.importCssString(
-        ".normal-mode .ace_cursor{  border: 1px solid red;  background-color: red;  opacity: 0.5;}.normal-mode .ace_hidden-cursors .ace_cursor{  background-color: transparent;}.ace_dialog {  position: absolute;  left: 0; right: 0;  background: inherit;  z-index: 15;  padding: .1em .8em;  overflow: hidden;  color: inherit;}.ace_dialog-top {  border-bottom: 1px solid #444;  top: 0;}.ace_dialog-bottom {  border-top: 1px solid #444;  bottom: 0;}.ace_dialog input {  border: none;  outline: none;  background: transparent;  width: 20em;  color: inherit;  font-family: monospace;}",
+        ".normal-mode .ace_cursor{  border: 1px solid red;  background-color: red;  opacity: 0.5;}.normal-mode .ace_hidden-cursors .ace_cursor{  background-color: transparent;}.ace_dialog {  position: absolute;  left: 0; right: 0;  background: inherit;  z-index: 15;  padding: .16px 12.8px;  overflow: hidden;  color: inherit;}.ace_dialog-top {  border-bottom: 1px solid #444;  top: 0;}.ace_dialog-bottom {  border-top: 1px solid #444;  bottom: 0;}.ace_dialog input {  border: none;  outline: none;  background: transparent;  width: 320px;  color: inherit;  font-family: monospace;}",
         "vimMode"
       ),
       (function() {

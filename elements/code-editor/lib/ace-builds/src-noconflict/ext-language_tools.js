@@ -1232,7 +1232,7 @@ ace.define(
 }\
 .ace_completion-meta {\
     opacity: 0.5;\
-    margin: 0.9em;\
+    margin: 14.4px;\
 }\
 .ace_editor.ace_autocomplete .ace_completion-highlight{\
     color: #2d69c7;\

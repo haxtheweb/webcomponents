@@ -15,7 +15,7 @@ Polymer({
       }
 
       #container {
-        margin-left: 1em;
+        margin-left: 16px;
       }
 
       #container ::slotted(map-menu-item) {

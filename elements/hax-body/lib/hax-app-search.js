@@ -65,7 +65,7 @@ Polymer({
         transition: visibility .5s, opacity .5s ease;
       }
       .loading elmsln-loading {
-        margin: 0 5em;
+        margin: 0 80px;
         display: inline-flex;
       }
       #loading {
@@ -76,10 +76,10 @@ Polymer({
       #loading .loading,
       #loading elmsln-loading{
         display: block;
-        height: 5em;
+        height: 80px;
       }
       .card-content {
-        padding: .1em;
+        padding: .16px;
       }
       .card-content p {
         padding: 0;
@@ -96,7 +96,7 @@ Polymer({
       }
       hax-app-pagination {
         min-height: 32px;
-        font-size: .8em;
+        font-size: 12.8px;
         display: none;
         justify-content: flex-end;
         justify-content: center;

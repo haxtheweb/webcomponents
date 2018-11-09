@@ -6,114 +6,99 @@
     <title>LrnsysProgress: lrnsys-progress Demo</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js'
       import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '@polymer/iron-ajax/iron-ajax.js';
+      import '@polymer/paper-toast/paper-toast.js';
+      import '@polymer/paper-button/paper-button.js';
       import '../lrnsys-progress.js';
+      var t = document.querySelector('#button10');
+      var t2 = document.querySelector('#button50');
+      var add = document.querySelector('#additem');
+      var drop = document.querySelector('#drop');
+      var p = document.querySelector('#progress');
+      var ajax = document.querySelector('#ajax');
+      var percent = 0;
+      // add 10 to percentage whenever hit
+      t.addEventListener('click', function (e) {
+        percent = percent + 10;
+        if (percent > 100) {
+          percent = 100;
+        }
+        p.changePercentage(percent, 'add');
+        if (percent == 100) {
+          percent = 0;
+        }
+      });
+      // add 50 to percentage whenever hit
+      t2.addEventListener('click', function (e) {
+        percent = percent + 50;
+        if (percent > 100) {
+          percent = 100;
+        }
+        p.changePercentage(percent, 'add');
+        if (percent == 100) {
+          percent = 0;
+        }
+      });
+      // alert when status event changed as to what it was
+      p.addEventListener('progress-state-change', function (e) {
+        percent = 0;
+        console.log(e.detail.state);
+        document.querySelector('#toast').show(e.detail.state);
+      });
+      // alert when status event changed as to what it was
+      p.addEventListener('node-percent-milestone', function (e) {
+        console.log(e.detail);
+        document.querySelector('#toast').show('percent complete:' + e.detail.percentage);
+      });
+      // alert if there was an error loading content
+      p.addEventListener('node-load-failed', function (e) {
+        console.log(e.detail);
+        console.log('dataUrl ' + e.detail.node.dataUrl + ' ' + e.detail.message.error.message);
+        document.querySelector('#toast').show('dataUrl ' + e.detail.node.dataUrl + ' ' + e.detail.message.error.message);
+      });
+      // add an item
+      add.addEventListener('click', function (e) {
+        const item = {
+          "title": "New item",
+          "url": "#",
+          "status": "disabled",
+          "value": 0,
+          "max": 100,
+          "icon": "forward",
+          "iconComplete": "check"
+        };
+        p.updateItems('splice', item);
+        console.log(p.items);
+        document.querySelector('#toast').show('Item added');
+      });
+      // drop an item
+      drop.addEventListener('click', function (e) {
+        if (p.items.length > 0) {
+          p.updateItems('pop', {});
+          console.log(p.items);
+          document.querySelector('#toast').show('Item removed');
+        }
+      });
+      ajax.addEventListener('last-response-changed', (e) => {
+        p.items = ajax.lastResponse;
+      });
     </script>
-          <script>
-            var t = document.querySelector('#button10');
-            var t2 = document.querySelector('#button50');
-            var add = document.querySelector('#add');
-            var drop = document.querySelector('#drop');
-            var p = document.querySelector('#progress');
-            var percent = 0;
-            // add 10 to percentage whenever hit
-            t.addEventListener('click', function (e) {
-              percent = percent + 10;
-              if (percent > 100) {
-                percent = 100;
-              }
-              p.changePercentage(percent, 'add');
-              if (percent == 100) {
-                percent = 0;
-              }
-            });
-            // add 50 to percentage whenever hit
-            t2.addEventListener('click', function (e) {
-              percent = percent + 50;
-              if (percent > 100) {
-                percent = 100;
-              }
-              p.changePercentage(percent, 'add');
-              if (percent == 100) {
-                percent = 0;
-              }
-            });
-            // alert when status event changed as to what it was
-            p.addEventListener('progress-state-change', function (e) {
-              percent = 0;
-              console.log(e.detail.state);
-              document.querySelector('#toast').show(e.detail.state);
-            });
-            // alert when status event changed as to what it was
-            p.addEventListener('node-percent-milestone', function (e) {
-              console.log(e.detail);
-              document.querySelector('#toast').show('percent complete:' + e.detail.percentage);
-            });
-            // alert if there was an error loading content
-            p.addEventListener('node-load-failed', function (e) {
-              console.log(e.detail);
-              console.log('dataUrl ' + e.detail.node.dataUrl + ' ' + e.detail.message.error.message);
-              document.querySelector('#toast').show('dataUrl ' + e.detail.node.dataUrl + ' ' + e.detail.message.error.message);
-            });
-            // add an item
-            add.addEventListener('click', function (e) {
-              const item = {
-                "title": "New item",
-                "url": "#",
-                "status": "disabled",
-                "value": 0,
-                "max": 100,
-                "icon": "forward",
-                "iconComplete": "check"
-              };
-              p.updateItems('splice', item);
-              console.log(p.items);
-              document.querySelector('#toast').show('Item added');
-            });
-            // drop an item
-            drop.addEventListener('click', function (e) {
-              if (p.items.length > 0) {
-                p.updateItems('pop', {});
-                console.log(p.items);
-                document.querySelector('#toast').show('Item removed');
-              }
-            });
-          </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
-    <div class="vertical-section-container">
-      <h3>Basic lrnsys-progress demo</h3>
-      <demo-snippet>
-        <template is="dom-bind">
+    <lrnsys-progress sound="" sound-finish="" title="The steps to complete this lesson" id="progress" progressive-unlock="" size="large"></lrnsys-progress>
+        
+    <iron-ajax auto id="ajax" params="" url="data.json" handle-as="json"></iron-ajax>
+    <paper-toast id="toast"></paper-toast>
     
-          <lrnsys-progress sound="" sound-finish="" title="The steps to complete this lesson" id="progress" active="{{__active}}"
-            items="{{__items}}" progressive-unlock="" size="small"></lrnsys-progress>
+    <paper-button id="button10">Add 10</paper-button>
+    <paper-button id="button50">Add 50</paper-button>
     
-          <lrnsys-progress sound="" sound-finish="" title="The steps to complete this lesson" id="progress" active="{{__active}}"
-            items="{{__items}}" progressive-unlock="" size="medium"></lrnsys-progress>
-    
-          <lrnsys-progress sound="" sound-finish="" title="The steps to complete this lesson" id="progress" active="{{__active}}"
-            items="{{__items}}" progressive-unlock="" size="large"></lrnsys-progress>
-    
-          <lrnsys-progress sound="" sound-finish="" title="The steps to complete this lesson" id="progress" active="{{__active}}"
-            items="{{__items}}" progressive-unlock="" size="x-large"></lrnsys-progress>
-    
-          <iron-ajax auto="" id="ajax" params="" url="data.json" handle-as="json" last-response="{{__items}}"></iron-ajax>
-          <paper-toast id="toast"></paper-toast>
-    
-          <paper-button id="button10">Add 10</paper-button>
-          <paper-button id="button50">Add 50</paper-button>
-    
-          <paper-button id="add">Add to end</paper-button>
-          <paper-button id="drop">Remove last</paper-button>
-    
-          <lrnsys-progress vertical="" title="The steps to complete this lesson" id="progress" active="{{__active}}" items="{{__items}}"
-            progressive-unlock="" size="epic"></lrnsys-progress>
-    
-            </template>
-          </demo-snippet>
-        </div>
+    <paper-button id="drop">Remove last</paper-button>
+    <paper-button id="additem">Add to end</paper-button>
   </body>
 </html>

@@ -91,7 +91,7 @@ Polymer({
       }
       :host #input {
         flex-grow: 2;
-        margin-right: 0.25em;
+        margin-right: 4px;
         --paper-input-container-input-color: var(--simple-search-input-text-color, #000);
         --paper-input-container-focus-color: var(--simple-search-input-line-color, #000);
         --paper-input-container-color: var(--simple-search-input-placeholder-color, #222);

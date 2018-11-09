@@ -11,7 +11,7 @@ define("ace/ext/menu_tools/overlay_page", [
 background-color: #F7F7F7;\
 color: black;\
 box-shadow: -5px 4px 5px rgba(126, 126, 126, 0.55);\
-padding: 1em 0.5em 2em 1em;\
+padding: 16px 8px 32px 16px;\
 overflow: auto;\
 position: absolute;\
 margin: 0;\

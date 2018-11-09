@@ -62,7 +62,7 @@ Polymer({
       :host #content {
         max-height: 0;
         overflow: hidden;
-        padding: 0em var(--a11y-collapse-horizontal-padding, 1em);
+        padding: 0 var(--a11y-collapse-horizontal-padding, 16px);
         border-top: 0px solid rgba(255,255,255,0);
         transition: all 0.5s ease-in-out;
         @apply --a11y-collapse-content;
@@ -81,7 +81,7 @@ Polymer({
       :host([expanded]) #content {
         max-height: unset;
         overflow: visibility: hidden;;
-        padding: var(--a11y-collapse-vertical-padding, 1em) var(--a11y-collapse-horizontal-padding, 1em);
+        padding: var(--a11y-collapse-vertical-padding, 16px) var(--a11y-collapse-horizontal-padding, 16px);
         border-top: var(--a11y-collapse-border, 0px solid);
         @apply --a11y-collapse-content-expanded;
       }

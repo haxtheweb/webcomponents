@@ -67,7 +67,7 @@ Polymer({
         opacity: 1;
         float: left;
         margin: 375px 0 0 25px;
-        font-size: 2.5em;
+        font-size: 40px;
         color: var(--font-color);
         border-bottom: solid 5px #fff;
         border-radius: 5px;
@@ -76,7 +76,7 @@ Polymer({
 
       .back_title {
         opacity: 1;
-        font-size: 2.5em;
+        font-size: 40px;
         color: var(--font-color);
         float: left;
         margin: -390px 0 0 25px;
@@ -87,7 +87,7 @@ Polymer({
 
       .back_content {
         color: var(--font-color);
-        font-size: 1em;
+        font-size: 16px;
         clear: left;
         position: relative;
         bottom: 334px;
@@ -99,7 +99,7 @@ Polymer({
       .learn_more {
         float: right;
         margin-top: -75px;
-        font-size: 1em;
+        font-size: 16px;
         color: var(--font-color);
         margin-right: 10px;
       }

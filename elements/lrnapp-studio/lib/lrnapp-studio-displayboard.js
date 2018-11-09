@@ -21,13 +21,13 @@ Polymer({
       }
       @media (min-width:1200px) {
         .paper-material-padding-med {
-          padding:3.5rem;
+          padding:56px;
         }
       }
       @media (min-width:56rem) {
         .lrnapp-studio-displayboard-wrapper {
-          max-width: 54rem;
-          margin: 2rem auto;
+          max-width: 864px;
+          margin: 32px auto;
         }
       }
       @media (max-width:410px) {

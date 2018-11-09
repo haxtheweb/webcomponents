@@ -25,13 +25,13 @@ Polymer({
         margin-bottom: 5px;
       }
       .theme-selector-inner simple-colors-picker {
-        margin-left: 0.5em;
+        margin-left: 8px;
         display: inline-flex;
         --simple-colors-picker-preview-size: 15px;
       }
       .theme-selector-inner select { 
-        margin-left: 1em;
-        border-radius: 0.25em;
+        margin-left: 16px;
+        border-radius: 4px;
         border: 1px solid;
         height: 27px;
         color: var(--simple-colors-picker-button-color, --simple-colors-foreground2);
@@ -41,7 +41,7 @@ Polymer({
       #preview {
         border: 1px solid;
         border-color: var(--simple-colors-picker-button-border-color, --simple-colors-background3);
-        border-radius: 0.25em;
+        border-radius: 4px;
         padding: 20px;
         text-align: center;
         display: none;

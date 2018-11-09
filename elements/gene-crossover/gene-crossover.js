@@ -25,7 +25,7 @@ Polymer({
         letter-spacing: 2px;
         color: #6D6E71;
         text-align: center;
-        font-size: 1.2em;
+        font-size: 19.2px;
       }
 
       p {

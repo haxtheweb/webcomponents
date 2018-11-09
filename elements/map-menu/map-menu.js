@@ -20,7 +20,7 @@ Polymer({
       }
 
       map-menu-container {
-        padding: 2em;
+        padding: 32px;
         @apply(--map-menu-container)
       }
 

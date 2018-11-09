@@ -794,7 +794,7 @@ define("ace/keyboard/vim", [
   left: 0; right: 0;\
   background: inherit;\
   z-index: 15;\
-  padding: .1em .8em;\
+  padding: .16px 12.8px;\
   overflow: hidden;\
   color: inherit;\
 }\
@@ -810,7 +810,7 @@ define("ace/keyboard/vim", [
   border: none;\
   outline: none;\
   background: transparent;\
-  width: 20em;\
+  width: 320px;\
   color: inherit;\
   font-family: monospace;\
 }",

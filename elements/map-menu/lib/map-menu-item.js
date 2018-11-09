@@ -19,7 +19,7 @@ Polymer({
       }
 
       #title {
-        font-size: .9em;
+        font-size: 14.4px;
         text-transform: none;
       }
     </style>

@@ -46,7 +46,7 @@ Polymer({
         --paper-progress-active-color: var(--paper-blue-300, blue);
         --paper-progress-secondary-color: var(--paper-yellow-300, yellow);
         --paper-progress-container-color: var(--paper-green-300, green);
-        height: 1.5em;
+        height: 24px;
         display: inline-block;
         vertical-align: text-top;
       }
@@ -54,12 +54,12 @@ Polymer({
         display: inline-block;
       }
       lrnsys-progress-circle {
-        font-size: 4em;
+        font-size: 64px;
       }
       .progress-icon {
-        height: 2.5em;
-        width: 2.5em;
-        padding: .25em;
+        height: 40px;
+        width: 40px;
+        padding: 4px;
         display: inline-block;
         color: white;
         background-color: var(--paper-gray-300, gray);
@@ -71,9 +71,9 @@ Polymer({
       }
       .progress-left,
       .progress-right {
-        padding: 1em;
+        padding: 16px;
         display: inline-block;
-        height: 10em;
+        height: 160px;
         vertical-align: text-top;
       }
       material-progress-histo {
@@ -86,7 +86,7 @@ Polymer({
       }
       material-progress-bars > .bar > span {
         text-align: end;
-        font-size: 0.9em;
+        font-size: 14.4px;
         @apply(--layout-flex);
       }
       .bar {

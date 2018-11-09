@@ -186,7 +186,7 @@ Polymer({
       :host([responsive-size="xs"]) #showvolume:focus #volume,
       :host([responsive-size="xs"]) #showvolume:hover #volume {
         top: -35px
-        border-radius: 0.25em;
+        border-radius: 4px;
       }
       :host .sr-only {
         position: absolute;

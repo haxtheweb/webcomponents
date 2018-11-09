@@ -42,13 +42,13 @@ Polymer({
 
       .top-line {
         width: 2px;
-        height: 1.5em;
+        height: 24px;
         margin: auto;
       }
 
       .bottom-line {
         width: 2px;
-        height: 1.5em;
+        height: 24px;
         margin: auto;
       }
 
@@ -62,9 +62,9 @@ Polymer({
       .node-title {
         color: var(--lrndesign-stepper-btn-title-color);
         text-transform: none;
-        line-height: 2em;
+        line-height: 32px;
         font-weight: bold;
-        font-size: 1em;
+        font-size: 16px;
       }
 
       .btn-icon {
@@ -83,7 +83,7 @@ Polymer({
         padding: 10px;
         width: 70%;
         position: relative;
-        right: 1.2em;
+        right: 19.2px;
       }
 
       .title-container:hover {

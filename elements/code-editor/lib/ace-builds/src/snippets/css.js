@@ -438,7 +438,7 @@ snippet fl:n\n\
 snippet fl:r\n\
 	float: right;\n\
 snippet f+\n\
-	font: ${1:1em} ${2:Arial},${3:sans-serif};\n\
+	font: ${1:16px} ${2:Arial},${3:sans-serif};\n\
 snippet fef\n\
 	font-effect: ${1};\n\
 snippet fef:eb\n\

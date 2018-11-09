@@ -28,7 +28,7 @@ class LrnButton extends PolymerElement {
     display: block;
     @apply --paper-font-common-base;
     @apply --paper-button;
-    --lrnsys-button-height: 3em;
+    --lrnsys-button-height: 48px;
   }
 
   :host(.center) {
@@ -54,13 +54,13 @@ class LrnButton extends PolymerElement {
 
   paper-button iron-icon {
     height: var(--lrnsys-button-height);
-    margin: 0 .75em;
+    margin: 0 12px;
   }
 
   paper-button div.inner {
     height: var(--lrnsys-button-height);
     line-height: var(--lrnsys-button-height);
-    padding: 0 .75em;
+    padding: 0 12px;
   }
 
   paper-button span.label {

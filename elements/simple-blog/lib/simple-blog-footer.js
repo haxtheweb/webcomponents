@@ -85,7 +85,7 @@ Polymer({
       .back {
         display: inline-block;
         text-align: center;
-        letter-spacing: -.02em;
+        letter-spacing: -.32px;
         font-size: 15px;
         font-weight: 400;
         font-style: normal;
@@ -96,7 +96,7 @@ Polymer({
         color: white;
         vertical-align: middle;
         box-sizing: border-box;
-        border-radius: 999em;
+        border-radius: 50%;
         line-height: 44px;
         padding: 0 18px;
       }

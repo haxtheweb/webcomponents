@@ -1,48 +1,51 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "./lib/lrnsys-progress-circle.js";
 /**
-`lrnsys-progress`
-A LRN element
-
-@demo demo/index.html
-
-@microcopy
-  node / circle - A progress circle on the line
-  nodes / items - the list of items in the progress bar
-  bubble - reserved for when events fire out of an element or value is tracking events
-  percentage - amount complete either in the bar or the nodes themselves
-  bar - the underlayed bar that's tracking overall progression
-*/
+ * `lrnsys-progress`
+ * `track progression as a circle and series of circles`
+ *
+ * @demo demo/index.html
+ * @microcopy
+ *  - node / circle - A progress circle on the line
+ *  - nodes / items - the list of items in the progress bar
+ *  - bubble - reserved for when events fire out of an element or value is tracking events
+ *  - percentage - amount complete either in the bar or the nodes themselves
+ *  - bar - the underlayed bar that's tracking overall progression
+ */
 Polymer({
   _template: html`
     <style>
       :host {
         display: block;
-        margin-top: 1.5em;
+        margin-top: 24px;
       }
       :host([size="tiny"]) {
-        font-size: .8em;
+        font-size: 12.8px;
       }
       :host([size="small"]) {
-        font-size: 1.2em;
+        font-size: 19.2px;
       }
       :host([size="medium"]) {
-        font-size: 1.6em;
+        font-size: 25.6px;
       }
       :host([size="large"]) {
-        font-size: 2.8em;
+        font-size: 44.8px;
       }
       :host([size="x-large"]) {
-        font-size: 4em;
+        font-size: 64px;
       }
       :host([size="epic"]) {
-        font-size: 6em;
+        font-size: 96px;
       }
       #circle-container {
         display: flex;
         justify-content:space-between;
-        margin: -1.5em 0 0 0;
+        margin: -24px 0 0 0;
         padding: 0;
         list-style: none;
       }
@@ -54,7 +57,7 @@ Polymer({
         height: 1px;
       }
       paper-progress {
-        --paper-progress-height: .5em;
+        --paper-progress-height: 8px;
         --paper-progress-transition-duration: 0.5s;
         --paper-progress-transition-timing-function: ease;
         --paper-progress-transition-delay: .4s;
@@ -78,18 +81,18 @@ Polymer({
         display: none !important;
       }
       :host([vertical]) lrnsys-progress-circle {
-        margin: 1em 0;
+        margin: 16px 0;
         padding: 0;
         width: 100%;
       }
 
       lrnsys-progress-circle {
-        width: 2.5em;
-        height: 2.5em;
-        --lrnsys-progress-circle-size: 2.5em;
-        --lrnsys-progress-spinner-size: 2em;
-        --lrnsys-progress-icon-size: 1.5em;
-        --paper-spinner-stroke-width: .1em;
+        width: 40px;
+        height: 40px;
+        --lrnsys-progress-circle-size: 40px;
+        --lrnsys-progress-spinner-size: 32px;
+        --lrnsys-progress-icon-size: 24px;
+        --paper-spinner-stroke-width: 1.2px;
       }
 
     </style>
