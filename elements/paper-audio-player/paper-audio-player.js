@@ -1,12 +1,13 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { IronA11yKeysBehavior } from "@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-ripple/paper-ripple.js";
-import { IronA11yKeysBehavior } from "@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
 import "./lib/paper-audio-icons.js";
 /**
 A custom audio player with material paper style and clean design.
@@ -45,17 +46,10 @@ Custom property                             | Description                       
 Polymer({
   _template: html`
     <style>
-
       :host {
         display: block;
-        /*margin: auto 10px;
-        width: 100%;*/
         box-sizing: border-box;
         font-family: 'Roboto', 'Noto', sans-serif;
-      }
-
-      [hidden] {
-        display: none !important;
       }
 
       #wrapper {
@@ -210,42 +204,31 @@ Polymer({
         align-self: flex-end;
       }
     </style>
-
     <div id="wrapper" class="layout-horizontal">
-
       <div id="left" class="self-start" on-tap="playPause">
-
         <!-- Icon -->
-        <paper-icon-button id="play" icon="paper-audio-icons:play-arrow" class="fit" hidden\$="[[ _hidePlayIcon(isPlaying, canBePlayed) ]]" role="button" aria-label="Play Audio" tabindex="-1"></paper-icon-button>
-        <paper-icon-button id="pause" icon="paper-audio-icons:pause" class="fit" hidden\$="[[ !isPlaying ]]" role="button" aria-label="Pause Audio" tabindex="-1"></paper-icon-button>
-        <iron-icon id="error" icon="paper-audio-icons:error-outline" class="fit" hidden\$="[[ !error ]]"></iron-icon>
+        <paper-icon-button id="play" icon="paper-audio-icons:play-arrow" class="fit" hidden$="[[ _hidePlayIcon(isPlaying, canBePlayed) ]]" role="button" aria-label="Play Audio" tabindex="-1"></paper-icon-button>
+        <paper-icon-button id="pause" icon="paper-audio-icons:pause" class="fit" hidden$="[[ !isPlaying ]]" role="button" aria-label="Pause Audio" tabindex="-1"></paper-icon-button>
+        <iron-icon id="error" icon="paper-audio-icons:error-outline" class="fit" hidden$="[[ !error ]]"></iron-icon>
       </div>
-
       <div id="center" class="flex" on-down="_onDown">
         <!-- Title -->
         <div id="title" class="fit" role="alert">[[title]]</div>
-
         <!-- Audio HTML5 element -->
-        <audio id="audio" src="[[src]]" preload="[[ _setPreload(autoPlay, preload) ]]"></audio>
-
+        <audio id="audio" src$="[[src]]" preload$="[[ _setPreload(autoPlay, preload) ]]"></audio>
         <!-- Progress bar -->
         <div id="progress" class="fit"></div>
-
         <paper-ripple></paper-ripple>
-
         <!-- Secondary white title -->
         <div id="progress2" class="fit">
           <div id="title2" aria-hidden="true">[[title]]</div>
         </div>
       </div>
-
       <div id="right" class="self-end" on-click="restart">
-
         <!-- Duration -->
         <div id="duration" class="fit" hidden\$="[[ended]]">
           <span class="fit" role="timer" aria-label="Audio Track Length">[[ _convertSecToMin(timeLeft) ]]</span>
         </div>
-
         <!-- Icon -->
         <paper-icon-button id="replay" class="fit" icon="paper-audio-icons:replay" tabindex="-1" role="button" aria-label="Replay Audio"></paper-icon-button>
       </div>
@@ -262,20 +245,14 @@ Polymer({
     MaterializeCSSBehaviors.ColorBehaviors,
     SchemaBehaviors.Schema
   ],
-
-  //
   // Define component default attributes
   hostAttributes: {
     tabindex: 0,
     role: "application",
-    //'aria-activedescendant': 'play',
     "aria-label": "Audio Player",
     "aria-describedby": "title"
   },
-
-  //
   // Define public properties
-
   properties: {
     src: {
       type: String,
@@ -321,15 +298,9 @@ Polymer({
     timeOffset: {
       type: Number,
       value: 0
-    },
-    gaId: {
-      type: String
     }
   },
-
-  //
   // Register event listeners
-
   listeners: {
     "audio.loadedmetadata": "_onCanPlay",
     "audio.playing": "_onPlaying",
@@ -348,7 +319,7 @@ Polymer({
   },
 
   /**
-   * Attached.
+   * attached life cycle
    */
   attached: function() {
     // Establish hax properties if they exist
@@ -435,27 +406,20 @@ Polymer({
     this.setHaxProperties(props);
   },
 
-  //
-  // When element is created
-
+  /**
+   * ready life cycle
+   */
   ready: function() {
     var player = this;
-
     // create Player defaults
-
     player.canBePlayed = false;
     player.isPlaying = false;
     player.ended = false;
     player.error = false;
     player.$.audio.currentTime = player.timeOffset; // apply the audio start time property
-
-    // If 'ga-id' property is set,
-    // prepare Google Analytics tracker
-    if (!!player.gaId) player._setupGATracking();
   },
 
   // Play/Pause controls
-
   playPause: function(e) {
     if (!!e) e.preventDefault();
     var player = this;
@@ -478,17 +442,11 @@ Polymer({
   _play: function() {
     var player = this;
     player.$.audio.play();
-
-    // Dispatch 'Play' event to GA
-    if (!!player.gaId) this._dispatchGAEvent("Play");
   },
 
   _pause: function() {
     var player = this;
     player.$.audio.pause();
-
-    // Dispatch 'Pause' event to GA
-    if (!!player.gaId) this._dispatchGAEvent("Pause");
   },
 
   //
@@ -530,10 +488,7 @@ Polymer({
     player.$.replay.style = ""; // remove Replay inline styling
     player._startProgressTimer();
   },
-
-  //
   // Skip or reverse by pre-defined intervals
-
   _skipReverseByInterval: function(e) {
     if (!!e) e.preventDefault();
 
@@ -599,9 +554,6 @@ Polymer({
     player.ended = true;
     player.isPlaying = false;
     player.$.replay.style.opacity = 1; // display Replay icon
-
-    // Dispatch 'Ended' event to GA
-    if (!!player.gaId) this._dispatchGAEvent("Ended");
   },
 
   // on file load error
@@ -639,12 +591,7 @@ Polymer({
       player._updateProgressBar(e);
       if (!player.isPlaying) {
         player._play();
-      } else {
-        // Audio is already playing,
-        // so dispatch 'Scrub' event to GA
-        if (!!player.gaId) this._dispatchGAEvent("Scrub");
       }
-
       // When preload="none" is being used,
       // player should first try to load the audio,
       // and when it's successfully loaded, recalculate the progress bar
@@ -656,10 +603,6 @@ Polymer({
           player._updateProgressBar(e);
           if (!player.isPlaying) {
             player._play();
-          } else {
-            // Audio is already playing,
-            // so dispatch 'Scrub' event to GA
-            if (!!player.gaId) this._dispatchGAEvent("Scrub");
           }
         },
         false
@@ -711,7 +654,7 @@ Polymer({
   // If src is changed when track is playing,
   // pause the track and start playing a new src
 
-  _srcChanged: function(oldValue, newValue) {
+  _srcChanged: function(newValue, oldValue) {
     var player = this;
 
     if (player.isPlaying) {
@@ -739,51 +682,5 @@ Polymer({
 
   _setPreload: function(autoplay, preload) {
     return autoplay ? "auto" : preload;
-  },
-
-  //
-  // Dispatch an event to Google Analytics
-
-  _dispatchGAEvent: function(action) {
-    var player = this;
-
-    window.ga("audioTracker.send", "event", {
-      eventCategory: "Paper Audio Player",
-      eventAction: action,
-      eventLabel: !!player.title ? player.title : player.src,
-      eventValue: player.$.audio.currentTime
-    });
-  },
-
-  _setupGATracking: function() {
-    var player = this;
-
-    // check if GA tracking exists on the page
-    // if not - load it
-    if (window) {
-      if (!window.ga) {
-        (function(i, s, o, g, r, a, m) {
-          i["GoogleAnalyticsObject"] = r;
-          (i[r] =
-            i[r] ||
-            function() {
-              (i[r].q = i[r].q || []).push(arguments);
-            }),
-            (i[r].l = 1 * new Date());
-          (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
-          a.async = 1;
-          a.src = g;
-          m.parentNode.insertBefore(a, m);
-        })(
-          window,
-          document,
-          "script",
-          "https://www.google-analytics.com/analytics.js",
-          "ga"
-        );
-      }
-
-      window.ga("create", player.gaId, "auto", "audioTracker");
-    }
   }
 });
