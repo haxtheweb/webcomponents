@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@polymer/iron-image": "^3.0.0",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.1.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^0.0.31",

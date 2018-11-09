@@ -40,7 +40,7 @@
     "@lrnwebcomponents/schema-behaviors": "^0.0.31",
     "@polymer/paper-spinner": "^3.0.1",
     "@polymer/paper-tooltip": "^3.0.1",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.1.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^0.0.31",

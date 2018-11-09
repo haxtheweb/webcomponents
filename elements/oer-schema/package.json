@@ -42,7 +42,7 @@
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.31",
     "@lrnwebcomponents/schema-behaviors": "^0.0.31",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.1.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^0.0.31",
