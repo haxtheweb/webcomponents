@@ -4,6 +4,7 @@ import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/editor-icons.js";
+import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
