@@ -82,7 +82,7 @@ Polymer({
   is: "hax-toolbar-menu",
 
   listeners: {
-    "button.tap": "_menubuttonTap"
+    tap: "_menubuttonTap"
   },
 
   properties: {

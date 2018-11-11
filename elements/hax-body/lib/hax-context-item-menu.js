@@ -23,10 +23,10 @@ Polymer({
         height: 32px;
         box-sizing: border-box;
       }
-      :host ::slotted(*):hover {
+      :host hax-toolbar-menu ::slotted(*):hover {
         background-color: #cccccc;
       };
-      :host ::slotted(*) {
+      :host hax-toolbar-menu ::slotted(*) {
         height: 32px;
       };
     </style>

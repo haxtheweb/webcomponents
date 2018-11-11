@@ -1,21 +1,4 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
-
-$_documentContainer.innerHTML = `<dom-module id="hax-app">
-
-  <template>
-    <style>
-    :host {
-      display:none;
-    }
-  </style>
-  </template>
-
-  
-</dom-module>`;
-
-document.head.appendChild($_documentContainer);
 /**
  `hax-app`
  An app registered with HAX. This provides all the information needed for HAX
@@ -141,6 +124,13 @@ document.head.appendChild($_documentContainer);
 
 */
 Polymer({
+  _template: html`
+  <style>
+    :host {
+      display:none;
+    }
+  </style>
+  `,
   is: "hax-app",
   properties: {
     /**

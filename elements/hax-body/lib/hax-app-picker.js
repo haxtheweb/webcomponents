@@ -123,10 +123,11 @@ Polymer({
     <paper-dialog id="dialog" with-backdrop="" always-on-top="">
       <h3 id="title">[[title]]</h3>
       <paper-dialog-scrollable id="buttonlist">
-        <iron-list id="ironlist" items="[[selectionList]]" as="element" grid="">
+        <iron-list id="ironlist" items="[[selectionList]]" as="element" grid>
           <template>
             <div>
-            <hax-app-picker-item id\$="picker-item-[[index]]" class="element-button" on-tap="_selected" data-selected\$="[[index]]" label="[[element.title]]" icon="[[element.icon]]" color="[[element.color]]"></hax-app-picker-item></div>
+              <hax-app-picker-item id$="picker-item-[[index]]" class="element-button" on-tap="_selected" data-selected\$="[[index]]" label="[[element.title]]" icon="[[element.icon]]" color="[[element.color]]"></hax-app-picker-item>
+            </div>
           </template>
         </iron-list>
       </paper-dialog-scrollable>
@@ -137,8 +138,8 @@ Polymer({
   is: "hax-app-picker",
 
   listeners: {
-    "dialog.iron-overlay-canceled": "close",
-    "dialog.iron-overlay-closed": "close"
+    "iron-overlay-canceled": "close",
+    "iron-overlay-closed": "close"
   },
 
   behaviors: [simpleColorsBehaviors],

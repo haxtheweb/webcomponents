@@ -55,8 +55,8 @@ Polymer({
   ],
 
   listeners: {
-    "codeeditor.change": "_editorDataChanged",
-    "codeeditor.editor-ready": "_editorReady"
+    change: "_editorDataChanged",
+    "editor-ready": "_editorReady"
   },
 
   properties: {

@@ -27,17 +27,13 @@ Polymer({
         <lrnsys-outline items="{{items}}" id="outline"></lrnsys-outline>
       </paper-dialog-scrollable>
       <div class="buttons">
-        <paper-button id="save" dialog-confirm="">Save</paper-button>
+        <paper-button id="save" dialog-confirm="" on-tap="_saveTap">Save</paper-button>
         <paper-button id="cancel" dialog-dismiss="">Cancel</paper-button>
       </div>
     </paper-dialog>
 `,
 
   is: "haxcms-outline-editor-dialog",
-
-  listeners: {
-    "save.tap": "_saveTap"
-  },
 
   properties: {
     /**

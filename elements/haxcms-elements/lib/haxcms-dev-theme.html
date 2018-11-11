@@ -92,10 +92,6 @@ import '@polymer/paper-button/paper-button.js';
 import '@polymer/iron-icons/iron-icons.js';
 Polymer({
   is: 'haxcms-dev-theme',
-  listeners: {
-    'list.tap': '_itemTapped',
-    'unset.tap': '_unsetTapped',
-  },
   behaviors: [
     SchemaBehaviors.Schema,
     window.simpleColorsBehaviors,
@@ -112,12 +108,18 @@ Polymer({
     // required so that HAX is injected when available
     this.setupHAXTheme();
   },
+  attached: function() {
+    this.$.list.addEventListener('tap', this._itemTapped.bind(this));
+    this.$.unset.addEventListener('tap', this._unsetTapped.bind(this));
+  },
   /**
    * Detatched life cycle
    */
   detached: function () {
     // this helps with cleaning things up if the theme is changed
     this.setupHAXTheme(false);
+    this.$.list.removeEventListener('tap', this._itemTapped.bind(this));
+    this.$.unset.removeEventListener('tap', this._unsetTapped.bind(this));
   },
   /**
    * Item tapped, let's set it as active by searching the manifest array

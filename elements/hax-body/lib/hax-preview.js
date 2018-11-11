@@ -188,8 +188,8 @@ Polymer({
       <!-- critique panel -->
       <div class="vaadin-split-layout-panel">
         <div class="preview-buttons">
-          <paper-button id="insert" raised="">[[editTitle]]</paper-button>
-          <paper-button id="cancel" raised="">Cancel</paper-button>
+          <paper-button id="insert" raised on-click="insert">[[editTitle]]</paper-button>
+          <paper-button id="cancel" raised on-click="cancel">Cancel</paper-button>
         </div>
         <div class="preview-text"><iron-icon icon="icons:arrow-drop-down"></iron-icon><iron-icon icon="icons:arrow-drop-down"></iron-icon><iron-icon icon="icons:arrow-drop-down"></iron-icon>[[humanName]] preview<iron-icon icon="icons:arrow-drop-down"></iron-icon><iron-icon icon="icons:arrow-drop-down"></iron-icon><iron-icon icon="icons:arrow-drop-down"></iron-icon></div>
         <div id="preview"></div>
@@ -212,11 +212,6 @@ Polymer({
   behaviors: [simpleColorsBehaviors],
 
   observers: ["_valueChanged(value.*, formKey)"],
-
-  listeners: {
-    "cancel.tap": "cancel",
-    "insert.tap": "insert"
-  },
 
   properties: {
     /**

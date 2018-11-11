@@ -53,8 +53,7 @@ Polymer({
   listeners: {
     mousedown: "tapEventOn",
     mouseover: "tapEventOn",
-    mouseout: "tapEventOff",
-    "dialogtrigger.focused-changed": "focusToggle"
+    mouseout: "tapEventOff"
   },
 
   behaviors: [simpleColorsBehaviors],
@@ -249,6 +248,29 @@ Polymer({
         this._accessibleFocus.bind(this)
       );
     }
+    this.$.dialogtrigger.addEventListener(
+      "focused-changed",
+      this.focusToggle.bind(this)
+    );
+  },
+  /**
+   * detached lifecycle
+   */
+  detached: function() {
+    document.body.removeEventListener(
+      "lrnsys-dialog-modal-changed",
+      this._changeOpen.bind(this)
+    );
+    if (!this.disableAutoFocus) {
+      document.body.removeEventListener(
+        "lrnsys-dialog-modal-closed",
+        this._accessibleFocus.bind(this)
+      );
+    }
+    this.$.dialogtrigger.removeEventListener(
+      "focused-changed",
+      this.focusToggle.bind(this)
+    );
   },
 
   /**

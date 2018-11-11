@@ -228,11 +228,6 @@ Polymer({
 
   is: "lrnsys-comment",
 
-  listeners: {
-    "bodyarea.tap": "bodyToggle",
-    "bodyarea.dblclick": "bodyToggleOn"
-  },
-
   properties: {
     comment: {
       type: Object,
@@ -265,6 +260,24 @@ Polymer({
       notify: true,
       reflectToAttribute: true
     }
+  },
+
+  /**
+   * attached lifecycle
+   */
+  attached: function() {
+    this.$.bodyarea.addEventListener("tap", this.bodyToggle.bind(this));
+    this.$.bodyarea.addEventListener("dblclick", this.bodyToggleOn.bind(this));
+  },
+  /**
+   * detached lifecycle
+   */
+  detached: function() {
+    this.$.bodyarea.removeEventListener("tap", this.bodyToggle.bind(this));
+    this.$.bodyarea.removeEventListener(
+      "dblclick",
+      this.bodyToggleOn.bind(this)
+    );
   },
 
   _generateName: function(name, visual) {

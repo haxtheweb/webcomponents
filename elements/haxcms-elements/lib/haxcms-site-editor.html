@@ -143,9 +143,9 @@ import './haxcms-site-editor-ui.js';
 Polymer({
   is: 'haxcms-site-editor',
   listeners: {
-    'outlineeditor.haxcms-save-outline': 'saveOutline',
-    'manifesteditor.haxcms-save-site-data': 'saveManifest',
-    'manifesteditor.haxcms-publish-site': 'publishSite',
+    'haxcms-save-outline': 'saveOutline', // from outlineeditor
+    'haxcms-save-site-data': 'saveManifest', // from manifesteditor
+    'haxcms-publish-site': 'publishSite', // from manifesteditor
   },
   properties: {
     /**

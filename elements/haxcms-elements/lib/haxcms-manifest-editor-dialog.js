@@ -64,13 +64,13 @@ Polymer({
         <paper-icon-picker id="siteicon" icon="[[manifest.metadata.icon]]"></paper-icon-picker>
       </paper-dialog-scrollable>
       <div class="buttons">
-        <paper-button id="save" dialog-confirm="" raised="">
+        <paper-button id="save" dialog-confirm="" raised="" on-tap="_saveTap">
           <iron-icon icon="icons:save"></iron-icon>Save
         </paper-button>
         <paper-button id="cancel" dialog-dismiss="" raised="">
           <iron-icon icon="icons:cancel"></iron-icon>Cancel
         </paper-button>
-        <paper-button id="publish" dialog-confirm="">
+        <paper-button id="publish" dialog-confirm="" on-tap="_publishTap">
           <iron-icon icon="icons:cloud-upload"></iron-icon>Publish
         </paper-button>
       </div>
@@ -78,13 +78,6 @@ Polymer({
 `,
 
   is: "haxcms-manifest-editor-dialog",
-
-  listeners: {
-    "save.tap": "_saveTap",
-    "publish.tap": "_publishTap",
-    "sitetheme.change": "_themeChanged",
-    "sitecolor.change": "_colorChanged"
-  },
 
   properties: {
     /**
@@ -113,6 +106,26 @@ Polymer({
     );
     // state issue but it can miss in timing othewise on first event
     this.set("manifest", window.cmsSiteEditor.jsonOutlineSchema);
+  },
+  /**
+   * attached life cycle
+   */
+  attached: function() {
+    this.$.sitetheme.addEventListener("change", this._themeChanged.bind(this));
+    this.$.sitecolor.addEventListener("change", this._colorChanged.bind(this));
+  },
+  /**
+   * detached life cycle
+   */
+  detached: function() {
+    this.$.sitetheme.removeEventListener(
+      "change",
+      this._themeChanged.bind(this)
+    );
+    this.$.sitecolor.removeEventListener(
+      "change",
+      this._colorChanged.bind(this)
+    );
   },
 
   /**

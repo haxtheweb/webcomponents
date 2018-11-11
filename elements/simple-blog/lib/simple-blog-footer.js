@@ -108,14 +108,13 @@ Polymer({
     <div class="inner">
       <h1 class="blog-title">[[manifest.title]]</h1>
       <h2 class="blog-description">[[manifest.description]]</h2>
-      <paper-button id="backbutton" class="back" raised="[[active]]">Back to main site</paper-button>
+      <paper-button id="backbutton" class="back" raised="[[active]]" on-tap="_backButtonTap">Back to main site</paper-button>
     </div>
 `,
 
   is: "simple-blog-footer",
 
   listeners: {
-    "backbutton.tap": "_backButtonTap",
     mousedown: "_activate",
     mouseover: "_activate",
     mouseout: "_deactivate",

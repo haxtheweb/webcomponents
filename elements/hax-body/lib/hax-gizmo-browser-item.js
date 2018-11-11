@@ -85,8 +85,8 @@ Polymer({
     mousedown: "tapEventOn",
     mouseover: "tapEventOn",
     mouseout: "tapEventOff",
-    "button.focusin": "tapEventOn",
-    "button.focusout": "tapEventOff"
+    focusin: "tapEventOn",
+    focusout: "tapEventOff"
   },
 
   properties: {

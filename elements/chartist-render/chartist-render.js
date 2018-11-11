@@ -24,7 +24,7 @@ Polymer({
   is: "chartist-render",
 
   listeners: {
-    "chart.tap": "makeChart",
+    tap: "makeChart",
     created: "_onCreated"
   },
 

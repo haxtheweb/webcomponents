@@ -188,10 +188,10 @@ Polymer({
   is: "lrnsys-progress-circle",
 
   listeners: {
-    "button.tap": "tapEventOn",
-    "button.mouseover": "focusOn",
-    "button.mouseout": "focusOff",
-    "button.focused-changed": "focusEvent"
+    tap: "tapEventOn",
+    mouseover: "focusOn",
+    mouseout: "focusOff",
+    "focused-changed": "focusEvent"
   },
 
   properties: {

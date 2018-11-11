@@ -84,10 +84,6 @@ Polymer({
 
   is: "lrnsys-drawer-modal",
 
-  listeners: {
-    "flyoutcontent.opened-changed": "_drawerClosed"
-  },
-
   properties: {
     /**
      * State for if it is currently open.
@@ -164,10 +160,24 @@ Polymer({
     // while also making sure we don't loop in attach
     if (this.bodyAppend && !this._bodyAppended) {
       this._bodyAppended = true;
-      //document.body.appendChild(this);
+      // @todo investigate why this doesn't actually work anymore
+      document.body.appendChild(this);
     }
+    this.$.flyoutcontent.addEventListener(
+      "opened-changed",
+      this._drawerClosed.bind(this)
+    );
   },
 
+  /**
+   * detached lifecyce
+   */
+  detached: function() {
+    this.$.flyoutcontent.removeEventListener(
+      "opened-changed",
+      this._drawerClosed.bind(this)
+    );
+  },
   /**
    * Close the drawer.
    */
