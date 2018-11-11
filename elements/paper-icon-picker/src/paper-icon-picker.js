@@ -182,7 +182,7 @@ Polymer({
       }
     </style>
 
-    <paper-menu-button id="iconpicker" vertical-align="[[verticalAlign]]" horizontal-align="[[horizontalAlign]]" opened="{{opened}}">
+    <paper-menu-button id="iconpicker" on-tap="_onOpen" vertical-align="[[verticalAlign]]" horizontal-align="[[horizontalAlign]]" opened="{{opened}}">
       <paper-icon-button id="iconButton" icon="swatch:perm-media" class="dropdown-trigger" alt="icon picker" noink$="[[noink]]" slot="dropdown-trigger">
       </paper-icon-button>
       <iron-list grid items="[[renderIconList]]" id="container" slot="dropdown-content">
@@ -202,7 +202,6 @@ Polymer({
   is: "paper-icon-picker",
 
   listeners: {
-    "iconpicker.tap": "_onOpen",
     tap: "_onIconTap"
   },
 

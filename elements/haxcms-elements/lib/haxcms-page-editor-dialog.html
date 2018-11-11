@@ -44,7 +44,7 @@ Dialog for presenting an editable page of core settings
         <paper-input id="pagetitle" label="Title" required autofocus></paper-input>
       </paper-dialog-scrollable>
       <div class="buttons">
-        <paper-button id="save" dialog-confirm>Save</paper-button>
+        <paper-button id="save" dialog-confirm on-tap="_saveTap">Save</paper-button>
         <paper-button id="cancel" dialog-dismiss>Cancel</paper-button>
       </div>
     </paper-dialog>
@@ -60,9 +60,6 @@ import '@polymer/iron-icons/device-icons.js';
 import '@polymer/iron-icons/image-icons.js';
 Polymer({
   is: 'haxcms-page-editor-dialog',
-  listeners: {
-    'save.tap': '_saveTap',
-  },
   properties: {
     /**
      * opened state of the dialog inside here

@@ -90,7 +90,7 @@ Polymer({
         <iron-list id="ironlist" items="[[filtered]]" as="app" grid="">
           <template>
             <div class="app-container">
-            <hax-app-browser-item index="[[app.index]]" title="[[app.details.title]]" icon="[[app.details.icon]]" image="[[app.details.tag]]" color="[[app.details.color]]" meta="[[app.details.meta]]" groups="[[app.details.groups]]" handles="[[app.details.handles]]" description="[[app.details.description]]" rating="[[app.details.rating]]" tags="[[app.details.tags]]"></hax-app-browser-item>
+              <hax-app-browser-item index="[[app.index]]" title="[[app.details.title]]" icon="[[app.details.icon]]" image="[[app.details.tag]]" color="[[app.details.color]]" meta="[[app.details.meta]]" groups="[[app.details.groups]]" handles="[[app.details.handles]]" description="[[app.details.description]]" rating="[[app.details.rating]]" tags="[[app.details.tags]]"></hax-app-browser-item>
             </div>
           </template>
         </iron-list>

@@ -179,21 +179,6 @@ Polymer({
     window.dispatchEvent(evt);
     this._changeOpen(e);
   },
-
-  /**
-   * Ready lifecyce
-   */
-  ready: function() {
-    const dialog = this.shadowRoot.querySelector("paper-dialog");
-    const toolbar = this.shadowRoot.querySelector("lrnsys-dialog-toolbar");
-    dialog.addEventListener("mouseover", e => {
-      toolbar.setAttribute("secondary-visible", true);
-    });
-    dialog.addEventListener("mouseout", e => {
-      toolbar.removeAttribute("secondary-visible");
-    });
-  },
-
   /**
    * Attached lifecyce
    */
@@ -205,10 +190,29 @@ Polymer({
       // @todo this doesn't work with ShadowDom
       document.body.appendChild(this);
     }
+    const toolbar = this.shadowRoot.querySelector("lrnsys-dialog-toolbar");
+    this.$.dialog.addEventListener("mouseover", e => {
+      toolbar.setAttribute("secondary-visible", true);
+    });
+    this.$.dialog.addEventListener("mouseout", e => {
+      toolbar.removeAttribute("secondary-visible");
+    });
+  },
+  /**
+   * detached lifecyce
+   */
+  detached: function() {
+    const toolbar = this.shadowRoot.querySelector("lrnsys-dialog-toolbar");
+    this.$.dialog.removeEventListener("mouseover", e => {
+      toolbar.setAttribute("secondary-visible", true);
+    });
+    this.$.dialog.removeEventListener("mouseout", e => {
+      toolbar.removeAttribute("secondary-visible");
+    });
   },
 
   /**
-   * Attached lifecyce
+   * change state
    */
   _changeOpen: function(e) {
     e.stopPropagation();

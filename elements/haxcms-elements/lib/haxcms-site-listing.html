@@ -123,15 +123,15 @@ A LRN element
       <app-toolbar>
         <paper-icon-button icon="menu" onclick="drawer.toggle()"></paper-icon-button>
         <div main-title>[[title]]</div>
-        <paper-icon-button id="edit" icon="[[__editIcon]]" hidden$="[[!loggedIn]]"></paper-icon-button>
-        <paper-icon-button id="login" icon="[[__loginIcon]]"></paper-icon-button>
+        <paper-icon-button on-tap="_editTap" id="edit" icon="[[__editIcon]]" hidden$="[[!loggedIn]]"></paper-icon-button>
+        <paper-icon-button on-tap="_loginUserRoutine" id="login" icon="[[__loginIcon]]"></paper-icon-button>
         <paper-tooltip for="login" position="bottom" offset="12" animation-delay="200">[[__loginText]]</paper-tooltip>
       </app-toolbar>
     </app-header>
     <app-drawer id="drawer" swipe-open>
       <paper-icon-button id="closedrawer" icon="icons:close" onclick="drawer.toggle()"></paper-icon-button>
       <paper-tooltip for="closedrawer" position="bottom" offset="12" animation-delay="200">Close</paper-tooltip>
-      <paper-icon-button id="add" icon="icons:add"></paper-icon-button>
+      <paper-icon-button on-tap="_addTap" id="add" icon="icons:add"></paper-icon-button>
       <paper-tooltip for="add" position="bottom" offset="12" animation-delay="200">Add site</paper-tooltip>
       <h3 style="margin: 18px; padding: 6px; border-bottom: 1px solid #ffffff; text-align: center; font-weight: normal;">Site list</h3>
       <map-menu id="mapmenu" items="{{outline}}" data="[[__sites]]" selected="{{activeItemID}}"></map-menu>
@@ -155,7 +155,7 @@ A LRN element
         <paper-icon-picker id="newsiteicon" icon="[[activeItem.metadata.icon]]"></paper-icon-picker>
       </paper-dialog-scrollable>
       <div class="buttons">
-        <paper-button dialog-confirm id="create" raised>Let's go!</paper-button>
+        <paper-button on-tap="_createSite" dialog-confirm id="create" raised>Let's go!</paper-button>
         <paper-button dialog-dismiss>cancel</paper-button>
       </div>
     </paper-dialog>
@@ -174,9 +174,8 @@ A LRN element
         <paper-tooltip for="edit" position="bottom" offset="12" animation-delay="200">change details</paper-tooltip>
         <paper-icon-button id="archivesite" icon="icons:archive" dialog-dismiss style="color:grey"></paper-icon-button>
         <paper-tooltip for="archivesite" position="top" offset="12" animation-delay="200">archive site</paper-tooltip>
-        <paper-icon-button id="download" icon="icons:file-download" style="color:black"></paper-icon-button>
+        <paper-icon-button on-tap="_downloadSite" id="download" icon="icons:file-download" style="color:black"></paper-icon-button>
         <paper-tooltip for="download" position="top" offset="12" animation-delay="200">Download zip</paper-tooltip>
-
       </div>
     </paper-dialog>
     <paper-toast id="toast"></paper-toast>
@@ -192,19 +191,6 @@ import '@polymer/iron-icons/device-icons.js';
 import '@polymer/iron-icons/image-icons.js';
 Polymer({
   is: 'haxcms-site-listing',
-  listeners: {
-    'create.tap': '_createSite',
-    'download.tap': '_downloadSite',
-    'add.tap': '_addTap',
-    'edit.tap': '_editTap',
-    'mapmenu.selected': '_mapMenuSelection',
-    'newsitetheme.change': '_themeChanged',
-    'newsitecolor.change': '_colorChanged',
-    'login.tap': '_loginUserRoutine',
-    'jwt.jwt-logged-in': '_loginStateChange',
-    'siteslisting.item-overlay-option-selected': '_itemOptionSelected',
-    'siteslisting.item-overlay-op-changed': '_itemOpChanged',
-  },
   behaviors: [
     window.simpleColorsBehaviors,
   ],
@@ -456,6 +442,26 @@ Polymer({
     // @todo support state routing for loadActiveSite
     document.body.addEventListener('sites-listing-item-selected', this._itemSelected.bind(this));
     document.body.addEventListener('haxcms-load-site', this.loadActiveSite.bind(this));
+    this.$.mapmenu.addEventListener('selected', this._mapMenuSelection.bind(this));
+    this.$.newsitetheme.addEventListener('change', this._themeChanged.bind(this));
+    this.$.newsitecolor.addEventListener('change', this._colorChanged.bind(this));
+    this.$.jwt.addEventListener('jwt-logged-in', this._loginStateChange.bind(this));
+    this.$.siteslisting.addEventListener('item-overlay-option-selected', this._itemOptionSelected.bind(this));
+    this.$.siteslisting.addEventListener('item-overlay-op-changed', this._itemOpChanged.bind(this));
+  },
+  /**
+   * detached life cycle
+   */
+  detached: function () {
+    // @todo support state routing for loadActiveSite
+    document.body.removeEventListener('sites-listing-item-selected', this._itemSelected.bind(this));
+    document.body.removeEventListener('haxcms-load-site', this.loadActiveSite.bind(this));
+    this.$.mapmenu.removeEventListener('selected', this._mapMenuSelection.bind(this));
+    this.$.newsitetheme.removeEventListener('change', this._themeChanged.bind(this));
+    this.$.newsitecolor.removeEventListener('change', this._colorChanged.bind(this));
+    this.$.jwt.removeEventListener('jwt-logged-in', this._loginStateChange.bind(this));
+    this.$.siteslisting.removeEventListener('item-overlay-option-selected', this._itemOptionSelected.bind(this));
+    this.$.siteslisting.removeEventListener('item-overlay-op-changed', this._itemOpChanged.bind(this));
   },
   /**
    * Ready life cycle

@@ -56,21 +56,15 @@ Polymer({
         background-color: var(--paper-blue-500) !important;
       }
     </style>    
-    <paper-fab id="editbutton" icon="[[__editIcon]]"></paper-fab>
+    <paper-fab id="editbutton" icon="[[__editIcon]]" on-tap="_editButtonTap"></paper-fab>
     <paper-tooltip for="editbutton" position="top" offset="14">[[__editText]]</paper-tooltip>
-    <paper-fab id="manifestbutton" icon="icons:settings"></paper-fab>
+    <paper-fab id="manifestbutton" icon="icons:settings" on-tap="_manifestButtonTap"></paper-fab>
     <paper-tooltip for="manifestbutton" position="top" offset="14">site details</paper-tooltip>
-    <paper-fab id="outlinebutton" icon="icons:list"></paper-fab>
+    <paper-fab id="outlinebutton" icon="icons:list" on-tap="_outlineButtonTap"></paper-fab>
     <paper-tooltip for="outlinebutton" position="top" offset="14">edit outline</paper-tooltip>
 `,
 
   is: "haxcms-site-editor-ui",
-
-  listeners: {
-    "editbutton.tap": "_editButtonTap",
-    "outlinebutton.tap": "_outlineButtonTap",
-    "manifestbutton.tap": "_manifestButtonTap"
-  },
 
   properties: {
     /**

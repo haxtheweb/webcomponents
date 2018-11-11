@@ -25,7 +25,7 @@ Polymer({
       }
     </style>
   </custom-style>
-  <paper-dropdown-menu id="menu" label\$="[[label]]" on-selected-item-changed="_setSelectedValue">
+  <paper-dropdown-menu id="menu" label\$="[[label]]" on-tap="_menubuttonTap" on-selected-item-changed="_setSelectedValue">
     <paper-listbox id="listbox" slot="dropdown-content" selected="{{selectedIndex}}">
       <slot></slot>
     </paper-listbox>
@@ -33,11 +33,6 @@ Polymer({
 `,
 
   is: "select-menu",
-
-  listeners: {
-    "menubutton.tap": "_menubuttonTap"
-  },
-
   properties: {
     /**
      * The label of the select menu

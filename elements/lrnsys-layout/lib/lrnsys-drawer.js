@@ -41,8 +41,7 @@ Polymer({
   listeners: {
     mousedown: "tapEventOn",
     mouseover: "tapEventOn",
-    mouseout: "tapEventOff",
-    "flyouttrigger.focused-changed": "focusToggle"
+    mouseout: "tapEventOff"
   },
 
   behaviors: [simpleColorsBehaviors],
@@ -153,6 +152,23 @@ Polymer({
     document.body.addEventListener(
       "lrnsys-drawer-modal-closed",
       this._accessibleFocus.bind(this)
+    );
+    this.$.flyouttrigger.addEventListener(
+      "focused-changed",
+      this.focusToggle.bind(this)
+    );
+  },
+  /**
+   * detached lifecycle
+   */
+  detached: function() {
+    document.body.removeEventListener(
+      "lrnsys-drawer-modal-closed",
+      this._accessibleFocus.bind(this)
+    );
+    this.$.flyouttrigger.removeEventListener(
+      "focused-changed",
+      this.focusToggle.bind(this)
     );
   },
 

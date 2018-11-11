@@ -223,15 +223,6 @@ Polymer({
 
   is: "hax-manager",
 
-  listeners: {
-    "dialog.iron-overlay-canceled": "close",
-    "dialog.iron-overlay-closed": "close",
-    "closedialog.tap": "close",
-    "newassetconfigure.tap": "newAssetConfigure",
-    "fileupload.upload-before": "_fileAboutToUpload",
-    "fileupload.upload-response": "_fileUploadResponse"
-  },
-
   behaviors: [simpleColorsBehaviors],
 
   properties: {
@@ -367,6 +358,27 @@ Polymer({
       "place-holder-file-drop",
       this._placeHolderFileDrop.bind(this)
     );
+    this.$.dialog.addEventListener(
+      "iron-overlay-canceled",
+      this.close.bind(this)
+    );
+    this.$.dialog.addEventListener(
+      "iron-overlay-closed",
+      this.close.bind(this)
+    );
+    this.$.closedialog.addEventListener("tap", this.close.bind(this));
+    this.$.newassetconfigure.addEventListener(
+      "tap",
+      this.newAssetConfigure.bind(this)
+    );
+    this.$.fileupload.addEventListener(
+      "upload-before",
+      this._fileAboutToUpload.bind(this)
+    );
+    this.$.fileupload.addEventListener(
+      "upload-response",
+      this._fileUploadResponse.bind(this)
+    );
   },
 
   /**
@@ -384,6 +396,27 @@ Polymer({
     document.body.removeEventListener(
       "place-holder-file-drop",
       this._placeHolderFileDrop.bind(this)
+    );
+    this.$.dialog.removeEventListener(
+      "iron-overlay-canceled",
+      this.close.bind(this)
+    );
+    this.$.dialog.removeEventListener(
+      "iron-overlay-closed",
+      this.close.bind(this)
+    );
+    this.$.closedialog.removeEventListener("tap", this.close.bind(this));
+    this.$.newassetconfigure.removeEventListener(
+      "tap",
+      this.newAssetConfigure.bind(this)
+    );
+    this.$.fileupload.removeEventListener(
+      "upload-before",
+      this._fileAboutToUpload.bind(this)
+    );
+    this.$.fileupload.removeEventListener(
+      "upload-response",
+      this._fileUploadResponse.bind(this)
     );
   },
 

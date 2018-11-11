@@ -300,14 +300,6 @@ Polymer({
       value: 0
     }
   },
-  // Register event listeners
-  listeners: {
-    "audio.loadedmetadata": "_onCanPlay",
-    "audio.playing": "_onPlaying",
-    "audio.pause": "_onPause",
-    "audio.ended": "_onEnd",
-    "audio.error": "_onError"
-  },
 
   keyBindings: {
     space: "playPause",
@@ -404,8 +396,25 @@ Polymer({
       }
     };
     this.setHaxProperties(props);
+    this.$.audio.addEventListener("loadedmetadata", this._onCanPlay.bind(this));
+    this.$.audio.addEventListener("playing", this._onPlaying.bind(this));
+    this.$.audio.addEventListener("pause", this._onPause.bind(this));
+    this.$.audio.addEventListener("ended", this._onEnd.bind(this));
+    this.$.audio.addEventListener("error", this._onError.bind(this));
   },
-
+  /**
+   * detached life cycle
+   */
+  detached: function() {
+    this.$.audio.removeEventListener(
+      "loadedmetadata",
+      this._onCanPlay.bind(this)
+    );
+    this.$.audio.removeEventListener("playing", this._onPlaying.bind(this));
+    this.$.audio.removeEventListener("pause", this._onPause.bind(this));
+    this.$.audio.removeEventListener("ended", this._onEnd.bind(this));
+    this.$.audio.removeEventListener("error", this._onError.bind(this));
+  },
   /**
    * ready life cycle
    */

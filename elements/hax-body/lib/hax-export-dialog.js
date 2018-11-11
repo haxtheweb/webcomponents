@@ -110,15 +110,6 @@ Polymer({
 
   is: "hax-export-dialog",
 
-  listeners: {
-    "download.tap": "download",
-    "downloadfull.tap": "downloadfull",
-    "import.tap": "importContent",
-    "copy.tap": "selectBody",
-    "close.tap": "close",
-    "elementexport.tap": "htmlToHaxElements"
-  },
-
   behaviors: [mtz.FileDownloadBehaviors, simpleColorsBehaviors],
 
   properties: {
@@ -143,16 +134,25 @@ Polymer({
    */
   ready: function() {
     document.body.appendChild(this);
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
   },
 
   /**
    * Attached to the DOM, now fire that we exist.
    */
   attached: function() {
+    document.body.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+    this.$.download.addEventListener("tap", this.download.bind(this));
+    this.$.downloadfull.addEventListener("tap", this.downloadfull.bind(this));
+    this.$.import.addEventListener("tap", this.importContent.bind(this));
+    this.$.copy.addEventListener("tap", this.selectBody.bind(this));
+    this.$.close.addEventListener("tap", this.close.bind(this));
+    this.$.elementexport.addEventListener(
+      "tap",
+      this.htmlToHaxElements.bind(this)
+    );
     // fire an event that this is the manager
     this.fire("hax-register-export", this);
   },
@@ -164,6 +164,18 @@ Polymer({
     document.body.removeEventListener(
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
+    );
+    this.$.download.removeEventListener("tap", this.download.bind(this));
+    this.$.downloadfull.removeEventListener(
+      "tap",
+      this.downloadfull.bind(this)
+    );
+    this.$.import.removeEventListener("tap", this.importContent.bind(this));
+    this.$.copy.removeEventListener("tap", this.selectBody.bind(this));
+    this.$.close.removeEventListener("tap", this.close.bind(this));
+    this.$.elementexport.removeEventListener(
+      "tap",
+      this.htmlToHaxElements.bind(this)
     );
   },
 
