@@ -3,6 +3,7 @@ import {
   Polymer
 } from "../node_modules/@polymer/polymer/polymer-legacy.js";
 import "../node_modules/@polymer/paper-dialog/paper-dialog.js";
+import "../node_modules/@polymer/iron-icons/iron-icons.js";
 import "../node_modules/@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "../node_modules/@polymer/paper-icon-button/paper-icon-button.js";
 Polymer({

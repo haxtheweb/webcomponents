@@ -5,7 +5,7 @@ define([
   "./node_modules/@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_2b72cab0e11b11e8a474dbfb4c5a4dd6() {
+  function _templateObject_65260cd0e5f911e8b0a547be60ba3dcd() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <lrndesign-gallery accent-color$="[[accentColor]]" dark$="[[dark]]" grid$="[[grid]]" sizing$="[[sizing]]" sources$="[[sources]]" title$="[[title]]">\n      <div slot="description"><slot name="description"></slot></div>\n    </lrndesign-gallery>\n'
@@ -14,14 +14,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <lrndesign-gallery accent-color\\$="[[accentColor]]" dark\\$="[[dark]]" grid\\$="[[grid]]" sizing\\$="[[sizing]]" sources\\$="[[sources]]" title\\$="[[title]]">\n      <div slot="description"><slot name="description"></slot></div>\n    </lrndesign-gallery>\n'
       ]
     );
-    _templateObject_2b72cab0e11b11e8a474dbfb4c5a4dd6 = function() {
+    _templateObject_65260cd0e5f911e8b0a547be60ba3dcd = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_2b72cab0e11b11e8a474dbfb4c5a4dd6()
+      _templateObject_65260cd0e5f911e8b0a547be60ba3dcd()
     ),
     is: "media-gallery",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

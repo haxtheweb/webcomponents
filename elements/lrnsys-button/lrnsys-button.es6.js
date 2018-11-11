@@ -4,7 +4,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         display: block;
         @apply --paper-font-common-base;
         @apply --paper-button;
-        --lrnsys-button-height: 3em;
+        --lrnsys-button-height: 48px;
       }
       a {
         text-decoration: none;
@@ -14,7 +14,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       paper-button {
         padding: 0;
         margin: 0;
-        min-width: .1em;
+        min-width: .16px;
         height: inherit;
         -webkit-justify-content: flex-start;
         justify-content: flex-start;
@@ -25,18 +25,18 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
       paper-button iron-icon {
         height: var(--lrnsys-button-height);
-        margin: 0 .25em;
+        margin: 0 4px;
       }
       paper-button iron-icon:first-child {
-        margin: 0 .25em 0 0;
+        margin: 0 4px 0 0;
       }
       paper-button iron-icon:last-child {
-        margin: 0 0 0 .25em;
+        margin: 0 0 0 4px;
       }
       paper-button div.inner {
         height: var(--lrnsys-button-height);
         line-height: var(--lrnsys-button-height);
-        padding: 0 1em;
+        padding: 0 16px;
       }
       paper-button span.label {
         height: var(--lrnsys-button-height);

@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-slider/paper-slider.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./lib/screenfull-lib.js";import"./lib/a11y-media-behaviors.js";import"./lib/a11y-media-video-loader.js";import"./lib/a11y-media-play-button.js";import"./lib/a11y-media-controls.js";import"./lib/a11y-media-transcript.js";import"./lib/a11y-media-transcript-controls.js";import"./lib/a11y-media-utility.js";import"./lib/a11y-media-youtube-utility.js";Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-slider/paper-slider.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icons/av-icons.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./lib/screenfull-lib.js";import"./lib/a11y-media-behaviors.js";import"./lib/a11y-media-video-loader.js";import"./lib/a11y-media-play-button.js";import"./lib/a11y-media-controls.js";import"./lib/a11y-media-transcript.js";import"./lib/a11y-media-transcript-controls.js";import"./lib/a11y-media-utility.js";import"./lib/a11y-media-youtube-utility.js";Polymer({_template:html`
   <custom-style>
     <style is="custom-style">
       :host {  
@@ -123,13 +123,13 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
       :host #customcctxt {
         top: unset;
-        bottom: 0.5em;
+        bottom: 8px;
         display: inline-block;
         margin: 0 10px;
         color: white;
         background-color: black;
         background-color: rgba(0, 0, 0, 0.8);
-        padding: 0.15em 0.25em;
+        padding: 0.15em 4px;
       }
       :host #customcctxt:empty {
         display: none;
@@ -193,7 +193,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
           z-index: 999999;
           border: 1px solid;
           box-shadow: 1px 1px 20px 1px rgba(125,125,125);
-          border-radius: 0.2em; 
+          border-radius: 3.2px; 
           border-color: var(--a11y-media-bg-color);
         }
         :host([dark][sticky]:not([sticky-corner="none"])) #player {

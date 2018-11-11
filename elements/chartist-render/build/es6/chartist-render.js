@@ -2,7 +2,8 @@ import {
   html,
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
-import "./lib/chartist-lib.js";
+import "./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import { pathFromUrl } from "./node_modules/@polymer/polymer/lib/utils/resolve-url.js";
 Polymer({
   _template: html`
     <style>
@@ -10,10 +11,10 @@ Polymer({
         display: block;
       }
     </style>
-    <div id="chart" chart\$="[[__chartId]]" class\$="ct-chart [[scale]]"></div>
+    <div id="chart" chart$="[[__chartId]]" class$="ct-chart [[scale]]"></div>
 `,
   is: "chartist-render",
-  listeners: { "chart.tap": "makeChart", created: "_onCreated" },
+  listeners: { tap: "makeChart", created: "_onCreated" },
   properties: {
     id: { type: String, value: "chart" },
     type: { type: String, value: "bar" },
@@ -25,10 +26,27 @@ Polymer({
     responsiveOptions: { type: Array, value: [], observer: "makeChart" },
     showTable: { type: Boolean, value: !1, observer: "makeChart" }
   },
+  created: function() {
+    const name = "chartist",
+      basePath = pathFromUrl(import.meta.url);
+    window.addEventListener(
+      `es-bridge-${name}-loaded`,
+      this._chartistLoaded.bind(this)
+    );
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load(
+      name,
+      `${basePath}../../chartist/dist/chartist.min.js`
+    );
+  },
+  _chartistLoaded: function() {
+    this.__chartistLoaded = !0;
+  },
   attached: function() {
-    let root = this;
-    root.__chartId = root._getUniqueId("chartist-render-");
-    root._chartReady();
+    this.__chartId = this._getUniqueId("chartist-render-");
+    if (this.__chartistLoaded) {
+      this._chartReady();
+    }
   },
   _checkReady: function() {
     let root = this;

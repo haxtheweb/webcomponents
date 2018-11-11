@@ -25,7 +25,7 @@ Polymer({
     </style>
     <paper-tabs>
       <template is="dom-repeat" items="[[tabs]]" as="tab">
-        <paper-tab><a target="_blank" href="[[tab.link]]" tabindex="-1"><paper-button raised="">[[tab.label]]</paper-button></a></paper-tab>
+        <paper-tab><a target="_blank" href="[[tab.link]]" tabindex="-1"><paper-button raised>[[tab.label]]</paper-button></a></paper-tab>
       </template>
     </paper-tabs>
 `,

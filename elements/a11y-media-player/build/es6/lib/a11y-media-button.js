@@ -47,15 +47,18 @@ Polymer({
       :host paper-tooltip {
         z-index: 100;
       }
+      iron-icon {
+        display: inline-block;
+      }
     </style>
-    <button id="button" aria-role="button" aria-pressed\$="[[toggle]]" tabindex="0" aria-label\$="[[label]]" controls="[[controls]]" disabled\$="[[disabled]]" toggle\$="[[toggle]]">
-      <iron-icon icon\$="[[icon]]"></iron-icon>
+    <button id="button" aria-role="button" aria-pressed$="[[toggle]]" tabindex="0" aria-label$="[[label]]" controls="[[controls]]" disabled$="[[disabled]]" toggle$="[[toggle]]">
+      <iron-icon icon$="[[icon]]"></iron-icon>
     </button>
     <paper-tooltip for="button">[[label]]</paper-tooltip>
 `,
   is: "a11y-media-button",
   behaviors: [a11yMediaBehaviors.PlayerBehaviors],
-  listeners: { "button.tap": "_buttonTap" },
+  listeners: { tap: "_buttonTap" },
   properties: {
     controls: { type: String, value: "video" },
     icon: { type: String, value: null },

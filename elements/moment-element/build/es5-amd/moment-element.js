@@ -3,16 +3,16 @@ define([
   "./node_modules/moment/moment.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_9bb18fd0e11811e8a8ea4f1c9784c6fd() {
+  function _templateObject_d5de6ec0e5f611e8bb1b418df1c92569() {
     var data = babelHelpers.taggedTemplateLiteral(["\n    [[output]]\n"]);
-    _templateObject_9bb18fd0e11811e8a8ea4f1c9784c6fd = function() {
+    _templateObject_d5de6ec0e5f611e8bb1b418df1c92569 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_9bb18fd0e11811e8a8ea4f1c9784c6fd()
+      _templateObject_d5de6ec0e5f611e8bb1b418df1c92569()
     ),
     is: "moment-element",
     properties: {

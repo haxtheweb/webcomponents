@@ -3,18 +3,18 @@ define([
   "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_aa8b7ba0e11911e8a28dd112e7d787b2() {
+  function _templateObject_e6eec290e5f711e88232f1a8922ae552() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <slot></slot>\n"
     ]);
-    _templateObject_aa8b7ba0e11911e8a28dd112e7d787b2 = function() {
+    _templateObject_e6eec290e5f711e88232f1a8922ae552 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_aa8b7ba0e11911e8a28dd112e7d787b2()
+      _templateObject_e6eec290e5f711e88232f1a8922ae552()
     ),
     is: "media-video",
     behaviors: [],

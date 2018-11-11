@@ -26,7 +26,7 @@ Polymer({
         background-color: transparent;
       }
       .post-title {
-        letter-spacing: -.02em;
+        letter-spacing: -.32px;
         font-weight: 700;
         font-style: normal;
         display: block;
@@ -39,7 +39,7 @@ Polymer({
         color: #333332;
       }
       .post-excerpt {
-        letter-spacing: -.02em;
+        letter-spacing: -.32px;
         font-weight: 300;
         font-style: normal;
         font-size: 16px;

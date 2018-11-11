@@ -34,13 +34,13 @@ Polymer({
     <style>
       :host {
         display: block;
-        font-size: 1em;
+        font-size: 16px;
         box-sizing: content-box;
       }
       #toolbar {
         color: gray;
         background-color: white;
-        padding: 0 .5em;
+        padding: 0 8px;
         margin: 0;
         height: auto;
         box-sizing: content-box;
@@ -49,7 +49,7 @@ Polymer({
       paper-button {
         padding: 0;
         margin: 0;
-        min-width: 1rem;
+        min-width: 16px;
       }
 
       hax-panel ::shadow app-drawer {
@@ -87,7 +87,7 @@ Polymer({
         }
       }
       hax-panel {
-        font-size: .8rem;
+        font-size: 12.8px;
       }
       hax-panel {
       --app-drawer-content-container: {
@@ -108,7 +108,7 @@ Polymer({
       }
       lrndesign-stepper-button ::shadow paper-button {
         margin: 0;
-        height: 3em;
+        height: 48px;
       }
       lrndesign-stepper-button ::shadow .title-container.lrndesign-stepper-button {
         padding: 0;
@@ -116,8 +116,8 @@ Polymer({
         right: unset;
       }
       lrndesign-stepper-button ::shadow .node-title.lrndesign-stepper-button {
-        font-size: .9em;
-        line-height: 1.5em;
+        font-size: 14.4px;
+        line-height: 24px;
       }
 
       .loading {
@@ -137,7 +137,7 @@ Polymer({
         transition: visibility 1s, opacity 1s ease;
       }
       .loading elmsln-loading {
-        margin: 0 5em;
+        margin: 0 80px;
         display: inline-flex;
       }
       #bodyloading {
@@ -148,17 +148,17 @@ Polymer({
       #bodyloading .loading,
       #bodyloading elmsln-loading{
         display: block;
-        height: 5em;
+        height: 80px;
       }
       .outline-title {
-        margin-left: .5em;
+        margin-left: 8px;
         max-width: 50%;
       }
       .content-nav-buttons {
         top: 60%;
         position: fixed;
         opacity: .8;
-        padding: 0 .25em;
+        padding: 0 4px;
         height: 40%;
         padding-top: 15%;
         margin-top: -15%;
@@ -189,16 +189,16 @@ Polymer({
       .content-body {
         position: relative;
         padding: 0;
-        margin: -3em 4em 5em 4em;
-        font-size: 1.1em;
+        margin: -48px 64px 80px 64px;
+        font-size: 16px;
         transition:
           margin .4s ease,
           width .4s ease;
       }
 
       .content-nav-buttons paper-icon-button {
-        width: 4em;
-        height: 4em;
+        width: 64px;
+        height: 64px;
         opacity: .4;
         display: block;
         visibility: visible;
@@ -215,8 +215,8 @@ Polymer({
         --paper-tooltip-opacity: .96;
       }
       :host([drawer-opened]) .content-nav-buttons paper-icon-button {
-        width: 2.5em;
-        height: 2.5em;
+        width: 40px;
+        height: 40px;
       }
       :host([edit-mode]) .content-nav-buttons {
         opacity: 0;
@@ -224,9 +224,9 @@ Polymer({
         visibility: hidden;
       }
       .content-title {
-        font-size: 1.4em;
+        font-size: 22.4px;
         margin: 0;
-        padding: .25em 0;
+        padding: 4px 0;
         background-color: white;
         top: 70px;
         position: sticky;
@@ -263,12 +263,12 @@ Polymer({
       }
       :host([drawer-opened]) .prev,
       :host([edit-mode]) .prev {
-        left: 17em;
+        left: 272px;
       }
       .progress-container {
         width: 90%;
         padding: 0;
-        margin: 0 0 0 1em;
+        margin: 0 0 0 16px;
         overflow: visible;
       }
 
@@ -276,7 +276,7 @@ Polymer({
         font-weight: lighter;
         padding: .6em 0 0 0;
         margin: 0;
-        height: 3em;
+        height: 48px;
         overflow-y: scroll;
       }
       [hidden] {
@@ -288,8 +288,8 @@ Polymer({
         display: none !important;
       }
       lrnsys-progress {
-        margin-top: .5em;
-        padding: .2em 0 0 0;
+        margin-top: 8px;
+        padding: 3.2px 0 0 0;
         box-sizing: content-box;
       }
       lrnsys-progress lrnsys-progress-circle {
@@ -306,22 +306,22 @@ Polymer({
       }
       @media (max-width: 1200px) {
         :host .content-body {
-          font-size: .94em;
+          font-size: 15.04px;
         }
       }
       @media (max-width: 960px) {
         :host .content-body {
-          font-size: .92em;
+          font-size: 14.72px;
         }
       }
       @media (max-width: 820px) {
         :host .content-body {
-          font-size: .9em;
+          font-size: 14.4px;
         }
       }
       @media (max-width: 700px) {
         :host .content-body {
-          font-size: .9em;
+          font-size: 14.4px;
         }
       }
       @media (max-width: 639px) {
@@ -329,10 +329,10 @@ Polymer({
           top: 0;
         }
         [main-title] {
-          font-size: .8em;
+          font-size: 12.8px;
         }
         .content-title {
-          font-size: 1.1em;
+          font-size: 16px;
         }
         .outline-title {
           position: absolute !important;
@@ -342,8 +342,8 @@ Polymer({
           height: 1px;
         }
         :host .content-body {
-          margin: 0 .5em;
-          font-size: .9em;
+          margin: 0 8px;
+          font-size: 14.4px;
           width: 85%;
         }
         .content-nav-buttons {
@@ -368,7 +368,7 @@ Polymer({
       }
       @media (max-width: 500px) {
         [main-title] {
-          font-size: .7em;
+          font-size: 11.2px;
         }
       }
       /**
@@ -378,10 +378,10 @@ Polymer({
         position: fixed;
         bottom: 0;
         right: 0;
-        margin: 2em;
-        padding: .5em;
-        width: 1.6em;
-        height: 1.6em;
+        margin: 32px;
+        padding: 8px;
+        width: 25.6px;
+        height: 25.6px;
         visibility: visible;
         opacity: 1;
         transition: all .4s ease;
@@ -393,7 +393,7 @@ Polymer({
         bottom: 0;
         border-radius: 0;
         margin: 0;
-        padding: 1em;
+        padding: 16px;
         background-color: var(--paper-blue-500) !important;
       }
       :host([edit-mode]) #header {
@@ -403,14 +403,14 @@ Polymer({
         opacity: .5;
       }
       .your-progress-button {
-        padding-right: 1em;
+        padding-right: 16px;
       }
       #mapmenu {
-        padding: 1em 0;
+        padding: 16px 0;
         overflow-x: hidden;
       }
       .course-title-drawer {
-        font-size: 1.2em;
+        font-size: 19.2px;
       }
     </style>
     <page-scroll-position value="{{scrollPosition}}"></page-scroll-position>
@@ -466,7 +466,7 @@ Polymer({
           </div>
           <app-toolbar id="toolbar" sticky="" class="tall">
             <div style="pointer-events: auto;" class="menu-btn-wrap">
-              <paper-icon-button style="pointer-events: auto;" title="Content outline" id="menubutton" icon="menu"></paper-icon-button>
+              <paper-icon-button style="pointer-events: auto;" title="Content outline" id="menubutton" icon="menu" on-tap="toggleBook"></paper-icon-button>
             </div>
             <div spacer="" class="outline-title">[[outlineTitle]]</div>
             <div spacer="" main-title="" style="pointer-events: auto;">
@@ -523,11 +523,10 @@ Polymer({
 `,
   is: "lrnapp-book",
   listeners: {
-    "menubutton.tap": "toggleBook",
     "progress.node-percent-milestone": "testMilestone",
     "route-change": "_routeChange",
-    "haxpanel.hax-item-selected": "_haxOperation",
-    "haxpanel.hax-content-insert": "_haxContentInsert"
+    "hax-item-selected": "_haxOperation",
+    "hax-content-insert": "_haxContentInsert"
   },
   observers: ["_routeChanged(data, route, endPoint)"],
   properties: {

@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";Polymer({_template:html`
     <style>
       :host {
         display: block;
@@ -48,7 +48,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         opacity: 1;
         float: left;
         margin: 375px 0 0 25px;
-        font-size: 2.5em;
+        font-size: 40px;
         color: var(--font-color);
         border-bottom: solid 5px #fff;
         border-radius: 5px;
@@ -57,7 +57,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
 
       .back_title {
         opacity: 1;
-        font-size: 2.5em;
+        font-size: 40px;
         color: var(--font-color);
         float: left;
         margin: -390px 0 0 25px;
@@ -68,7 +68,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
 
       .back_content {
         color: var(--font-color);
-        font-size: 1em;
+        font-size: 16px;
         clear: left;
         position: relative;
         bottom: 334px;
@@ -77,20 +77,16 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         margin-right: auto;
         padding-top: 10px;
       }
-
       .learn_more {
         float: right;
         margin-top: -75px;
-        font-size: 1em;
+        font-size: 16px;
         color: var(--font-color);
         margin-right: 10px;
       }
-
       :host([hover]) .learn_more paper-button {
         color: var(--hover-link);
       }
-
-
     </style>
 
     <div id="container">
@@ -103,8 +99,8 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
               <slot></slot>
             </div>
             <div class="learn_more">
-              <a href="[[url]]" id="link" target\$="[[_urlTarget(url)]]">
-                <paper-button noink="">Learn More
+              <a tabindex="-1" href="[[url]]" id="link" target$="[[_urlTarget(url)]]">
+                <paper-button no-ink>Learn More
                   <iron-icon icon="chevron-right"></iron-icon>
                 </paper-button>
               </a>
@@ -113,4 +109,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         </div>
       </div>
     </div>
-`,is:"promo-tile",behaviors:[HAXBehaviors.PropertiesBehaviors,MaterializeCSSBehaviors.ColorBehaviors,SchemaBehaviors.Schema],properties:{image:{type:String,value:"",reflectToAttribute:!0},alt:{type:String,value:"",reflectToAttribute:!0},title:{type:String,value:"",reflectToAttribute:!0},url:{type:String,value:"",reflectToAttribute:!0},hover:{type:Boolean,value:!1,reflectToAttribute:!0}},observers:["__updateStyles(image)"],listeners:{mouseover:"__hoverState",mouseout:"__hoverState"},attached:function(){this.setHaxProperties({canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Promo-Tile",description:"A tile element for promoting content.",icon:"icons:dashboard",color:"orange",groups:["Content","Media"],handles:[{type:"content",source:"image",title:"citation",url:"source"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the tile",inputMethod:"textfield",icon:"editor:title"},{property:"image",title:"Image",description:"The image of the tile",inputMethod:"textfield",icon:"editor:insert-photo"},{property:"url",title:"Link",description:"The link of the tile",inputMethod:"textfield",icon:"editor:insert-link"}],configure:[{property:"title",title:"Title",description:"The title of the tile",inputMethod:"textfield",icon:"editor:title"},{property:"image",title:"Image",description:"The image of the tile",inputMethod:"textfield",icon:"editor:insert-photo"},{property:"alt",title:"Alt",description:"The alt text for the image",inputMethod:"textfield",icon:"editor:mode-edit"},{property:"url",title:"Link",description:"The link of the tile",inputMethod:"textfield",icon:"editor:insert-link"}],advanced:[]}})},__updateStyles:function(image){this.customStyle["--tile-image"]=`url(${image})`;this.updateStyles()},_outsideLink:function(url){if(0!=url.indexOf("http"))return!1;var loc=location.href,path=location.pathname,root=loc.substring(0,loc.indexOf(path));return 0!=url.indexOf(root)},_urlTarget:function(url){if(url){const external=this._outsideLink(url);if(external){return"_blank"}}return!1},activateBtn:function(){if(this.hover){const link=this.$.link;if(700<window.innerWidth){link.click()}}},__hoverState:function(){this.hover=!this.hover}});
+`,is:"promo-tile",behaviors:[HAXBehaviors.PropertiesBehaviors,MaterializeCSSBehaviors.ColorBehaviors,SchemaBehaviors.Schema],properties:{image:{type:String,value:"",reflectToAttribute:!0},alt:{type:String,value:"",reflectToAttribute:!0},title:{type:String,value:"",reflectToAttribute:!0},url:{type:String,value:"",reflectToAttribute:!0},hover:{type:Boolean,value:!1,reflectToAttribute:!0}},observers:["__updateStyles(image)"],listeners:{mouseover:"__hoverIn",mouseout:"__hoverOut",focusin:"__hoverIn",focusout:"__hoverOut"},attached:function(){this.setHaxProperties({canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Promo-Tile",description:"A tile element for promoting content.",icon:"icons:dashboard",color:"orange",groups:["Content","Media"],handles:[{type:"content",source:"image",title:"citation",url:"source"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the tile",inputMethod:"textfield",icon:"editor:title"},{property:"image",title:"Image",description:"The image of the tile",inputMethod:"textfield",icon:"editor:insert-photo"},{property:"url",title:"Link",description:"The link of the tile",inputMethod:"textfield",icon:"editor:insert-link"}],configure:[{property:"title",title:"Title",description:"The title of the tile",inputMethod:"textfield",icon:"editor:title"},{property:"image",title:"Image",description:"The image of the tile",inputMethod:"textfield",icon:"editor:insert-photo"},{property:"alt",title:"Alt",description:"The alt text for the image",inputMethod:"textfield",icon:"editor:mode-edit"},{property:"url",title:"Link",description:"The link of the tile",inputMethod:"textfield",icon:"editor:insert-link"}],advanced:[]}})},__updateStyles:function(image){this.updateStyles({"--tile-image":`url(${image})`})},_outsideLink:function(url){if(0!=url.indexOf("http"))return!1;var loc=location.href,path=location.pathname,root=loc.substring(0,loc.indexOf(path));return 0!=url.indexOf(root)},_urlTarget:function(url){if(url){const external=this._outsideLink(url);if(external){return"_blank"}}return!1},activateBtn:function(){if(this.hover){const link=this.$.link;if(700<window.innerWidth){link.click()}}},__hoverIn:function(){this.hover=!0},__hoverOut:function(){this.hover=!1}});

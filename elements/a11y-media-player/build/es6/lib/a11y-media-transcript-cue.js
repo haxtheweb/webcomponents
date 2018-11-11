@@ -44,7 +44,7 @@ Polymer({
       :host #time {
         display: table-cell;
         font-size: 80%;
-        padding: 0 1em 0 0;
+        padding: 0 16px 0 0;
         white-space: nowrap;
         font-family: monospace;
       }
@@ -57,7 +57,7 @@ Polymer({
         --simple-search-match-border-color:  var(--a11y-media-transcript-match-border-color);
         --simple-search-match: {
           border: none;
-          border-radius: 0.25em;
+          border-radius: 4px;
           font-weight: normal;
         };
       }

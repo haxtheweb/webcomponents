@@ -12,7 +12,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
       :host paper-dialog {
         border: 1px solid #000;
-        border-radius: 0.25em;
+        border-radius: 4px;
       }
       :host paper-dialog > #title, 
       :host paper-dialog > #desc {

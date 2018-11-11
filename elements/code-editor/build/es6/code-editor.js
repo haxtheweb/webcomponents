@@ -43,10 +43,7 @@ Polymer({
     MaterializeCSSBehaviors.ColorBehaviors,
     SchemaBehaviors.Schema
   ],
-  listeners: {
-    "codeeditor.change": "_editorDataChanged",
-    "codeeditor.editor-ready": "_editorReady"
-  },
+  listeners: { change: "_editorDataChanged", "editor-ready": "_editorReady" },
   properties: {
     title: { type: String, value: "Code sample" },
     showCodePen: { type: Boolean, value: !1, reflectToAttribute: !0 },

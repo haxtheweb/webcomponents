@@ -12,7 +12,7 @@ Polymer({
         --animationctrl-bg-color: #f5f5f5;
       }
       .buttons {
-        padding: 1em;
+        padding: 16px;
         text-align: center;
         display: flex;
         justify-content: center;

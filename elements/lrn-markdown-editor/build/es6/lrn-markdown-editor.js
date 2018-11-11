@@ -19,7 +19,7 @@ Polymer({
 
       .split-pane>* {
         flex: 1 1 auto;
-        min-height: 10em;
+        min-height: 160px;
       }
 
       .preview-pane {
@@ -27,8 +27,8 @@ Polymer({
       }
 
       paper-card {
-        padding: 1em;
-        width: calc(100% - 2em);
+        padding: 16px;
+        width: calc(100% - 32px);
       }
 
       paper-tabs {
@@ -54,10 +54,10 @@ Polymer({
       }
 
       .split-pane marked-element {
-        width: calc(100% - 2em);
+        width: calc(100% - 32px);
         min-width: 150px;
-        margin: 0 1em;
-        padding: 0 1em;
+        margin: 0 16px;
+        padding: 0 16px;
         background: #FFF;
         border-left: solid #DCDCDC 1px;
       }

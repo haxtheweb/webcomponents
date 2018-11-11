@@ -15,7 +15,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
 
       map-menu-container {
-        padding: 2em;
+        padding: 32px;
         @apply(--map-menu-container)
       }
 

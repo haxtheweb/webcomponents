@@ -40,7 +40,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
 
       .citation {
-        font-size: .8rem;
+        font-size: 12.8px;
         font-style: italic;
         color: #4c4c4c;
         margin: 15px 0 15px;

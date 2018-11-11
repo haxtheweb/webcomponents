@@ -1,4 +1,5 @@
 define([
+  "./node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js",
   "./lib/mdi-account-iconset-svg.js",
   "./lib/mdi-action-iconset-svg.js",
   "./lib/mdi-agriculture-iconset-svg.js",
@@ -67,5 +68,4 @@ define([
   "./lib/mdi-weather-iconset-svg.js"
 ], function() {
   "use strict";
-  console.log(document.head.querySelectorAll("iron-iconset-svg"));
 });

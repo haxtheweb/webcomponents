@@ -118,32 +118,22 @@ Polymer({
     </style>
     <div id="container">
       <div class="ops">
-        <paper-icon-button icon="icons:add" id="add" hidden\$="[[!add]]" title="Add to this"></paper-icon-button>
-        <paper-icon-button icon="icons:create" id="edit" hidden\$="[[!edit]]" title="Edit this"></paper-icon-button>
-        <paper-icon-button icon="icons:swap-horiz" id="move" hidden\$="[[!move]]" title="Move this"></paper-icon-button>
-        <paper-icon-button icon="icons:delete" id="remove" hidden\$="[[!remove]]" title="Delete this"></paper-icon-button>
-        <paper-icon-button icon="icons:content-copy" id="duplicate" hidden\$="[[!duplicate]]" title="Duplicate this"></paper-icon-button>
+        <paper-icon-button on-tap="_opTap" icon="icons:add" id="add" hidden\$="[[!add]]" title="Add to this"></paper-icon-button>
+        <paper-icon-button on-tap="_opTap" icon="icons:create" id="edit" hidden\$="[[!edit]]" title="Edit this"></paper-icon-button>
+        <paper-icon-button on-tap="_opTap" icon="icons:swap-horiz" id="move" hidden\$="[[!move]]" title="Move this"></paper-icon-button>
+        <paper-icon-button on-tap="_opTap" icon="icons:delete" id="remove" hidden\$="[[!remove]]" title="Delete this"></paper-icon-button>
+        <paper-icon-button on-tap="_opTap" icon="icons:content-copy" id="duplicate" hidden\$="[[!duplicate]]" title="Duplicate this"></paper-icon-button>
       </div>
       <div class="active-op">[[activeTitle]]</div>
       <div id="workingarea" class\$="[[activeOp]]">
-        <paper-icon-button id="option1" title="[[__option1Text]]" icon="[[__option1Icon]]"></paper-icon-button>
-        <paper-icon-button id="option2" title="[[__option2Text]]" icon="[[__option2Icon]]"></paper-icon-button>
+        <paper-icon-button on-tap="_optionSelected" id="option1" title="[[__option1Text]]" icon="[[__option1Icon]]"></paper-icon-button>
+        <paper-icon-button on-tap="_optionSelected" id="option2" title="[[__option2Text]]" icon="[[__option2Icon]]"></paper-icon-button>
       </div>
     </div>
     <slot></slot>
 `,
   is: "item-overlay-ops",
-  listeners: {
-    "add.tap": "_opTap",
-    "edit.tap": "_opTap",
-    "move.tap": "_opTap",
-    focusin: "_inFocus",
-    focusout: "_outFocus",
-    "remove.tap": "_opTap",
-    "duplicate.tap": "_opTap",
-    "option1.tap": "_optionSelected",
-    "option2.tap": "_optionSelected"
-  },
+  listeners: { focusin: "_inFocus", focusout: "_outFocus" },
   hostAttributes: { tabindex: "0" },
   properties: {
     editMode: { type: Boolean, reflectToAttribute: !0, value: !1 },

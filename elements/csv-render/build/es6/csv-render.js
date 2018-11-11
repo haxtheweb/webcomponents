@@ -21,17 +21,17 @@ Polymer({
         border: 1px solid rgba(0, 0, 0, 0.12);
         border-collapse: collapse;
         white-space: nowrap;
-        font-size: 1em;
+        font-size: 16px;
         background-color: rgb(255, 255, 255);
       }
       .mdl-data-table thead {
-        padding-bottom: .1em;
+        padding-bottom: .16px;
         position: sticky;
       }
       .mdl-data-table caption {
         background-color: #eee;
         font-weight: bold;
-        padding: 0.5em;
+        padding: 8px;
         border: 1px solid rgba(0, 0, 0, 0.12);
         border-bottom: none;
       }
@@ -43,7 +43,7 @@ Polymer({
       }
       .mdl-data-table tbody tr {
         position: relative;
-        height: 3em;
+        height: 48px;
         -webkit-transition-duration: 0.28s;
         transition-duration: 0.28s;
         -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -64,11 +64,11 @@ Polymer({
       }
       .mdl-data-table td:first-of-type,
       .mdl-data-table th:first-of-type {
-        padding-left: 1.5em;
+        padding-left: 24px;
       }
       .mdl-data-table td:last-of-type,
       .mdl-data-table th:last-of-type {
-        padding-right: 1.5em;
+        padding-right: 24px;
       }
       .mdl-data-table td {
         border-top: 1px solid rgba(0, 0, 0, 0.12);
@@ -77,7 +77,7 @@ Polymer({
       .mdl-data-table td .mdl-data-table__select {
         vertical-align: top;
         position: absolute;
-        left: 1.5em;
+        left: 24px;
       }
       .mdl-data-table th.mdl-data-table__sort {
         color: rgba(0, 0, 0, 0.87);
@@ -86,20 +86,20 @@ Polymer({
         position: relative;
         vertical-align: bottom;
         text-overflow: ellipsis;
-        font-size: 1em;
+        font-size: 16px;
         font-weight: bold;
-        line-height: 1.5em;
+        line-height: 24px;
         letter-spacing: 0;
         color: rgba(0, 0, 0, 0.54);
-        height: 3em;
-        padding-bottom: .5em;
+        height: 48px;
+        padding-bottom: 8px;
         box-sizing: border-box;
       }
       .mdl-data-table th .mdl-data-table__select {
         position: relative;
       }
       .mdl-data-table__select {
-        width: 1em;
+        width: 16px;
       }
       .mdl-data-table td.mdl-data-table__cell--non-numeric {
         text-align: left;

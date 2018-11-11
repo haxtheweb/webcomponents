@@ -57,7 +57,7 @@ Polymer({
       <div class="card-content">
         <div hidden\$="[[hideForm]]">
           <paper-input label="Task to accomplish" id="itemtext"></paper-input>
-          <paper-button raised="" id="itembutton">Add item</paper-button>
+          <paper-button raised="" id="itembutton" on-tap="_addItemToList">Add item</paper-button>
         </div>
         <ul class="task-list-wrapper">
           <template is="dom-repeat" items="[[items]]" as="item">
@@ -70,7 +70,6 @@ Polymer({
   is: "to-do",
   behaviors: [HAXBehaviors.PropertiesBehaviors],
   observers: ["_valueChanged(items.*)"],
-  listeners: { "itembutton.tap": "_addItemToList" },
   properties: {
     hideForm: { type: Boolean, value: !1, reflectToAttribute: !0 },
     disabledList: { type: Boolean, value: !1, reflectToAttribute: !0 },

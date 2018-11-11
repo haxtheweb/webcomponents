@@ -3,18 +3,18 @@ define([
   "./lib/side-comments.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_8f8d58b0e11811e88d41cd63d13b3a7a() {
+  function _templateObject_c8f67270e5f611e8a3fb37e25b3cb401() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n       :host {\n        display: block;\n      }\n    </style>\n    <div id="commentable-area">\n      <p data-section-id="1" class="commentable-section">\n        This is a section that can be commented on.\n        This is a section that can be commented on.\n        This is a section that can be commented on.\n        This is a section that can be commented on.\n        This is a section that can be commented on.\n        This is a section that can be commented on.\n      </p>\n      <p data-section-id="2" class="commentable-section">\n        This is a another section that can be commented on.\n        This is a another section that can be commented on.\n        This is a another section that can be commented on.\n        This is a another section that can be commented on.\n        This is a another section that can be commented on.\n        This is a another section that can be commented on.\n        This is a another section that can be commented on.\n      </p>\n      <p data-section-id="3" class="commentable-section">\n        This is yet another section that can be commented on.\n        This is yet another section that can be commented on.\n        This is yet another section that can be commented on.\n        This is yet another section that can be commented on.\n        This is yet another section that can be commented on.\n      </p>\n    </div>\n'
     ]);
-    _templateObject_8f8d58b0e11811e88d41cd63d13b3a7a = function() {
+    _templateObject_c8f67270e5f611e8a3fb37e25b3cb401 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_8f8d58b0e11811e88d41cd63d13b3a7a()
+      _templateObject_c8f67270e5f611e8a3fb37e25b3cb401()
     ),
     is: "lrndesign-sidecomments",
     properties: { title: { type: String, value: "lrndesign-sidecomments" } },

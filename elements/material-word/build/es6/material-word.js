@@ -155,8 +155,8 @@ Polymer({
     display: inline-block;
     width: 150px;
     height: 150px;
-    padding: 2em;
-    margin: 1em;
+    padding: 32px;
+    margin: 16px;
     background: #fff;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16);
   }

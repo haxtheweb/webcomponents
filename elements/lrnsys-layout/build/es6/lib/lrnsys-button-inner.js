@@ -15,10 +15,10 @@ Polymer({
         vertical-align: middle;
       }
       .text-label {
-        margin-left: 0.5em;
+        margin-left: 8px;
       }
       .text-label-only {
-        margin-left: 0em;
+        margin-left: 0;
       }
     </style>
     <div>

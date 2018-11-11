@@ -3,13 +3,13 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
     <style>
       :host {
         display: block;
-        font-size: 1em;
+        font-size: 16px;
         box-sizing: content-box;
       }
       #toolbar {
         color: gray;
         background-color: white;
-        padding: 0 .5em;
+        padding: 0 8px;
         margin: 0;
         height: auto;
         box-sizing: content-box;
@@ -18,7 +18,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       paper-button {
         padding: 0;
         margin: 0;
-        min-width: 1rem;
+        min-width: 16px;
       }
 
       hax-panel ::shadow app-drawer {
@@ -56,7 +56,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         }
       }
       hax-panel {
-        font-size: .8rem;
+        font-size: 12.8px;
       }
       hax-panel {
       --app-drawer-content-container: {
@@ -77,7 +77,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
       lrndesign-stepper-button ::shadow paper-button {
         margin: 0;
-        height: 3em;
+        height: 48px;
       }
       lrndesign-stepper-button ::shadow .title-container.lrndesign-stepper-button {
         padding: 0;
@@ -85,8 +85,8 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         right: unset;
       }
       lrndesign-stepper-button ::shadow .node-title.lrndesign-stepper-button {
-        font-size: .9em;
-        line-height: 1.5em;
+        font-size: 14.4px;
+        line-height: 24px;
       }
 
       .loading {
@@ -106,7 +106,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         transition: visibility 1s, opacity 1s ease;
       }
       .loading elmsln-loading {
-        margin: 0 5em;
+        margin: 0 80px;
         display: inline-flex;
       }
       #bodyloading {
@@ -117,17 +117,17 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       #bodyloading .loading,
       #bodyloading elmsln-loading{
         display: block;
-        height: 5em;
+        height: 80px;
       }
       .outline-title {
-        margin-left: .5em;
+        margin-left: 8px;
         max-width: 50%;
       }
       .content-nav-buttons {
         top: 60%;
         position: fixed;
         opacity: .8;
-        padding: 0 .25em;
+        padding: 0 4px;
         height: 40%;
         padding-top: 15%;
         margin-top: -15%;
@@ -158,16 +158,16 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       .content-body {
         position: relative;
         padding: 0;
-        margin: -3em 4em 5em 4em;
-        font-size: 1.1em;
+        margin: -48px 64px 80px 64px;
+        font-size: 16px;
         transition:
           margin .4s ease,
           width .4s ease;
       }
 
       .content-nav-buttons paper-icon-button {
-        width: 4em;
-        height: 4em;
+        width: 64px;
+        height: 64px;
         opacity: .4;
         display: block;
         visibility: visible;
@@ -184,8 +184,8 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         --paper-tooltip-opacity: .96;
       }
       :host([drawer-opened]) .content-nav-buttons paper-icon-button {
-        width: 2.5em;
-        height: 2.5em;
+        width: 40px;
+        height: 40px;
       }
       :host([edit-mode]) .content-nav-buttons {
         opacity: 0;
@@ -193,9 +193,9 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         visibility: hidden;
       }
       .content-title {
-        font-size: 1.4em;
+        font-size: 22.4px;
         margin: 0;
-        padding: .25em 0;
+        padding: 4px 0;
         background-color: white;
         top: 70px;
         position: sticky;
@@ -232,12 +232,12 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
       :host([drawer-opened]) .prev,
       :host([edit-mode]) .prev {
-        left: 17em;
+        left: 272px;
       }
       .progress-container {
         width: 90%;
         padding: 0;
-        margin: 0 0 0 1em;
+        margin: 0 0 0 16px;
         overflow: visible;
       }
 
@@ -245,7 +245,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         font-weight: lighter;
         padding: .6em 0 0 0;
         margin: 0;
-        height: 3em;
+        height: 48px;
         overflow-y: scroll;
       }
       [hidden] {
@@ -257,8 +257,8 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         display: none !important;
       }
       lrnsys-progress {
-        margin-top: .5em;
-        padding: .2em 0 0 0;
+        margin-top: 8px;
+        padding: 3.2px 0 0 0;
         box-sizing: content-box;
       }
       lrnsys-progress lrnsys-progress-circle {
@@ -275,22 +275,22 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
       @media (max-width: 1200px) {
         :host .content-body {
-          font-size: .94em;
+          font-size: 15.04px;
         }
       }
       @media (max-width: 960px) {
         :host .content-body {
-          font-size: .92em;
+          font-size: 14.72px;
         }
       }
       @media (max-width: 820px) {
         :host .content-body {
-          font-size: .9em;
+          font-size: 14.4px;
         }
       }
       @media (max-width: 700px) {
         :host .content-body {
-          font-size: .9em;
+          font-size: 14.4px;
         }
       }
       @media (max-width: 639px) {
@@ -298,10 +298,10 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
           top: 0;
         }
         [main-title] {
-          font-size: .8em;
+          font-size: 12.8px;
         }
         .content-title {
-          font-size: 1.1em;
+          font-size: 16px;
         }
         .outline-title {
           position: absolute !important;
@@ -311,8 +311,8 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
           height: 1px;
         }
         :host .content-body {
-          margin: 0 .5em;
-          font-size: .9em;
+          margin: 0 8px;
+          font-size: 14.4px;
           width: 85%;
         }
         .content-nav-buttons {
@@ -337,7 +337,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
       @media (max-width: 500px) {
         [main-title] {
-          font-size: .7em;
+          font-size: 11.2px;
         }
       }
       /**
@@ -347,10 +347,10 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         position: fixed;
         bottom: 0;
         right: 0;
-        margin: 2em;
-        padding: .5em;
-        width: 1.6em;
-        height: 1.6em;
+        margin: 32px;
+        padding: 8px;
+        width: 25.6px;
+        height: 25.6px;
         visibility: visible;
         opacity: 1;
         transition: all .4s ease;
@@ -362,7 +362,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         bottom: 0;
         border-radius: 0;
         margin: 0;
-        padding: 1em;
+        padding: 16px;
         background-color: var(--paper-blue-500) !important;
       }
       :host([edit-mode]) #header {
@@ -372,14 +372,14 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         opacity: .5;
       }
       .your-progress-button {
-        padding-right: 1em;
+        padding-right: 16px;
       }
       #mapmenu {
-        padding: 1em 0;
+        padding: 16px 0;
         overflow-x: hidden;
       }
       .course-title-drawer {
-        font-size: 1.2em;
+        font-size: 19.2px;
       }
     </style>
     <page-scroll-position value="{{scrollPosition}}"></page-scroll-position>
@@ -435,7 +435,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
           </div>
           <app-toolbar id="toolbar" sticky="" class="tall">
             <div style="pointer-events: auto;" class="menu-btn-wrap">
-              <paper-icon-button style="pointer-events: auto;" title="Content outline" id="menubutton" icon="menu"></paper-icon-button>
+              <paper-icon-button style="pointer-events: auto;" title="Content outline" id="menubutton" icon="menu" on-tap="toggleBook"></paper-icon-button>
             </div>
             <div spacer="" class="outline-title">[[outlineTitle]]</div>
             <div spacer="" main-title="" style="pointer-events: auto;">
@@ -489,4 +489,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       <span id="fablabel">edit mode</span>
     </paper-tooltip>
     <paper-toast id="toast" horizontal-align="left"></paper-toast>
-`,is:"lrnapp-book",listeners:{"menubutton.tap":"toggleBook","progress.node-percent-milestone":"testMilestone","route-change":"_routeChange","haxpanel.hax-item-selected":"_haxOperation","haxpanel.hax-content-insert":"_haxContentInsert"},observers:["_routeChanged(data, route, endPoint)"],properties:{progressDashboardPath:{type:String},showSearch:{type:Boolean,reflectToAttribute:!0,value:!1},createRequestBody:{type:Object,computed:"_computeCreateRequestBody(currentPageData)"},updatePageData:{type:Object,value:{id:null,type:null,attributes:{}}},pageUpdatePath:{type:String,computed:"_computePageUpdatePath(data, sourcePath)"},sourcePath:{type:String},editMode:{type:Boolean,value:!1,reflectToAttribute:!0,observer:"_editModeChanged"},drawerOpened:{type:Boolean,value:!0,reflectToAttribute:!0},route:{type:Object,notify:!0},currentTitle:{type:String},outlineTitle:{type:String},bookTitle:{type:String,value:"Course outline"},soundFinish:{type:Boolean,value:!0},sound:{type:Boolean,value:!0},completeSound:{type:String,value:""},finishedSound:{type:String,value:""},scrollPosition:{type:Number,value:0,observer:"_scrollChanged"},activePage:{type:Number,value:0,observer:"_activePageChanged"},activeOutline:{type:Number,value:0,observer:"_activeOutlineChanged"},outlineItems:{type:Array,value:[],notify:!0,observer:"_outlineItemsChanged"},bookItems:{type:Array,value:[],notify:!0},itemResponses:{type:Array,value:[]},requestParams:{type:Object,notify:!0,value:{node:null}},pageParams:{type:Object,notify:!0,value:{load:!1}},outlineData:{type:Object,notify:!0},bookData:{type:Object,notify:!0},pageData:{type:Object,notify:!0},outlinePath:{type:String},bookPath:{type:String},pagePath:{type:String},hasPrevPage:{type:Boolean,notify:!0},prevLabel:{type:String},hasNextPage:{type:Boolean,notify:!0},nextLabel:{type:String},resetScroll:{type:Boolean,value:!1},currentPageData:{type:Object,value:{},observer:"_currentPageDataUpdated"},responseData:{type:Object,value:{}},rebuildOutline:{type:Boolean,value:!1},fullWidth:{type:Boolean,reflectToAttribute:!0,value:!1,observer:"_fullWidthChanged"}},ready:function(){this.$.bodyloading.hidden=!0;this.$.outlineajax.generateRequest();setTimeout(()=>{this._resetScroll()},500)},_fullWidthChanged:function(){updateStyles()},progressdashboardopen:function(){this.$.progressdashboard.showProgress=!0},_computePageUpdatePath:function(data,sourcePath){return sourcePath.replace("%",data.id)},_haxOperation:function(e){this.$.toast.show(e.detail.eventName)},_haxContentInsert:function(e){this.$.toast.show(e.detail.eventName);var properties={};if(typeof e.detail.properties!==typeof void 0){properties=e.detail.properties}this.$.haxbody.haxInsert(e.detail.tag,e.detail.content,properties)},_computeCreateRequestBody:function(currentPageData){if(typeof currentPageData.page!==typeof void 0){return{bid:currentPageData.page.relationships.book.id,pid:currentPageData.page.relationships.parent.id}}},_toggleEditMode:function(){this.editMode=!this.editMode},_editModeChanged:function(newValue,oldValue){if(typeof newValue!==typeof void 0){if(!0===newValue){this.$.editbutton.icon="save";this.$.editbutton.title="Tap to save content and exit edit mode";this.$.fablabel="save changes";this.__bookdraweropened=this.$.bookdrawer.opened;if(this.$.bookdrawer.opened){this.$.bookdrawer.opened=!1}this.$.haxpanel.opened=!0;this.$.currenttitle.contentEditable=!0;this.$.haxbody.editMode=!0;this.resetScroll=!0;this.$.toast.show("Authoring mode active")}else{this.$.editbutton.icon="editor:mode-edit";this.$.editbutton.title="Tap to place content in edit mode.";this.$.fablabel="edit mode";this.$.bookdrawer.opened=this.__bookdraweropened;this.$.haxpanel.opened=!1;this.$.currenttitle.contentEditable=!1;this.$.haxbody.editMode=!1;this.resetScroll=!1;if(!0===oldValue){let updated=!1,haxcontent=this.$.haxbody.haxToContent();if(this.$.currenttitle.innerHTML!==this.currentPageData.title){this.currentPageData.title=this.$.currenttitle.innerHTML;this.updatePageData.attributes.title=this.currentPageData.title}if(this.currentPageData.content!==haxcontent){this.currentPageData.content=haxcontent;this.updatePageData.attributes.body=this.currentPageData.content;updated=!0}if(updated){this.updatePageData.type=this.data.type;this.updatePageData.id=this.data.id;this.$.toast.show("Saving...");this.$.pageupdateajax.generateRequest()}}}}},_handleUpdateResponse:function(){this.$.toast.show("Saved!")},_bookOutlineTap:function(e){var normalizedEvent=dom(e),local=normalizedEvent.localTarget;if(typeof local.getAttribute("data-book-parent")!==typeof void 0){this.activeOutline=local.getAttribute("data-book-parent")}},_activeOutlineChanged:function(newValue,oldValue){if(typeof newValue!==typeof void 0&&typeof oldValue!==typeof void 0){this.rebuildOutline=!0}},_routeChanged:function(data,route,endPoint){if("string"===typeof route.path){if("string"===typeof endPoint){if(route.path.startsWith(endPoint)){if(!1!=this.pageParams.load&&typeof data.type!==typeof void 0&&typeof data.id!==typeof void 0){this.pageParams[data.type]=data.id;if(typeof this.responseData[data.type+data.id]!==typeof void 0){this.set("currentPageData",this.responseData[data.type+data.id])}else{this.$.bodyloading.hidden=!1;this.$.pageajax.generateRequest()}if(this.rebuildOutline){this.set("requestParams",[]);this.set("requestParams",this.pageParams);if(typeof this.responseData[data.type+"."+data.id+".outline"]!==typeof void 0){this.activePage=0;this.set("outlineItems",[]);this.set("outlineItems",this._toArray(this.responseData[data.type+"."+data.id+".outline"].items));this.set("outlineTitle",this.responseData[data.type+"."+data.id+".outline"].items.outlineTitle)}else{this.$.outlineloading.hidden=!1;this.pageParams.load=!1;this.$.outlineajax.generateRequest()}this.rebuildOutline=!1}}return}}window.location.reload()}},_resetScroll:function(){this.resetScroll=!0;this.scrollPosition=0;this.$.anchor.scrollIntoView({block:"start",behavior:"smooth",inline:"nearest"})},_activePageChanged:function(newValue,oldValue){if(typeof newValue!==typeof void 0){if(typeof this.outlineItems!==typeof void 0){this.set("route.path",this.outlineItems[newValue].url);this.updatePageData.attributes={};this.updatePageData.id=null;this.updatePageData.type=null}if(typeof oldValue!==typeof void 0){}setTimeout(()=>{this.resetScroll=!1},1e3);if(0==newValue){this.hasPrevPage=!1}else{this.hasPrevPage=!0;if(typeof this.outlineItems!==typeof void 0){this.prevLabel=this.outlineItems[newValue-1].title}}if(typeof this.outlineItems!==typeof void 0&&newValue+1==this.outlineItems.length){this.hasNextPage=!1}else{this.hasNextPage=!0;if(typeof this.outlineItems!==typeof void 0){this.nextLabel=this.outlineItems[newValue+1].title}}}},_outlineItemsChanged:function(newValue){if(typeof newValue!==typeof void 0&&0!=newValue.length){if(0!=this.activePage){this.prevLabel=newValue[this.activePage-1].title}if(this.activePage+1!=newValue.length){this.nextLabel=newValue[this.activePage+1].title}}},testMilestone:function(e){if(75==e.detail.percentage){console.log("@todo preload the next page and present grayed out right of UI.")}},_scrollChanged:function(newValue){if(typeof this.outlineItems!==typeof void 0&&typeof this.outlineItems[this.activePage]!==typeof void 0&&newValue>this.outlineItems[this.activePage].value&&!this.resetScroll){if(75<=newValue){this.outlineItems[this.activePage].value=this.outlineItems[this.activePage].max;this.set("outlineItems."+this.activePage+".value",this.outlineItems[this.activePage].max)}else{this.outlineItems[this.activePage].value=newValue;this.set("outlineItems."+this.activePage+".value",newValue)}}},_nextBtn:function(){if(this.activePage<this.outlineItems.length-1){this.set("outlineItems."+this.activePage+".value",this.outlineItems[this.activePage].max);this.activePage=this.activePage+1}},_prevBtn:function(){if(0<this.activePage){this.activePage=this.activePage-1}},toggleBook:function(){if(this.editMode){this.$.haxpanel.toggle();this.fullWidth=!this.$.haxpanel.opened}else{this.$.bookdrawer.toggle();this.fullWidth=!this.$.bookdrawer.opened}},handleOutlineResponse:function(obj){if(typeof obj!==typeof void 0){const response=obj.detail.response.data,items=this._toArray(obj.detail.response.data.items),outlineTitle=obj.detail.response.data.outlineTitle;if(0!==this.activePage){this.activePage=0}this.set("responseData."+this.data.type+"."+this.data.id+".outline",response);this.set("outlineItems",[]);this.set("outlineItems",items);this.set("outlineTitle",outlineTitle);var activePage=0;for(var i in items){if(this.data.type===items[i].type&&this.data.id===items[i].id&&0!==i){activePage=parseInt(i)}}if(0!==activePage){this.activePage=activePage}this.$.outlineloading.hidden=!0;this.pageParams.load=!0;if(0===this.bookItems.length){this.$.bookajax.generateRequest();this.pageParams=this.requestParams;this.$.pageajax.generateRequest()}}},handleBookResponse:function(obj){const response=obj.detail.response.data;this.set("bookItems",this._toArray(response.items));this.$.mapmenu.innerHTML=response.render},handlePageResponse:function(obj){if(typeof obj!==typeof void 0){const response=obj.detail.response.data;this.set("responseData."+this.data.type+this.data.id,response);this.set("currentPageData",response)}},_currentPageDataUpdated:function(newValue){if(typeof newValue!==typeof void 0&&typeof newValue.content!==typeof void 0){this.set("currentTitle",newValue.title);let slot=dom(this.$.haxbody);while(null!==slot.firstChild){slot.removeChild(slot.firstChild)}var tmp=document.createElement("div");let frag=document.createRange().createContextualFragment(newValue.content);tmp.appendChild(frag);if(null==tmp.firstChild){var tmp2=document.createElement("p");tmp2.innerHTML=tmp.innerHTML;tmp=document.createElement("div");tmp.innerHTML=tmp2.outerHTML}else if(typeof tmp.firstChild.length!==typeof void 0){var tmp2=document.createElement("p");tmp2.innerHTML=tmp.innerHTML;tmp=document.createElement("div");tmp.innerHTML=tmp2.outerHTML}while(tmp.firstChild){dom(this.$.haxbody).appendChild(tmp.firstChild)}this._resetScroll();this.$.bodyloading.hidden=!0;if(this.editMode&&!newValue.page.meta.canUpdate){this.editMode=!1}}},_toArray:function(obj){return Object.keys(obj).map(function(key){return obj[key]})}});
+`,is:"lrnapp-book",listeners:{"progress.node-percent-milestone":"testMilestone","route-change":"_routeChange","hax-item-selected":"_haxOperation","hax-content-insert":"_haxContentInsert"},observers:["_routeChanged(data, route, endPoint)"],properties:{progressDashboardPath:{type:String},showSearch:{type:Boolean,reflectToAttribute:!0,value:!1},createRequestBody:{type:Object,computed:"_computeCreateRequestBody(currentPageData)"},updatePageData:{type:Object,value:{id:null,type:null,attributes:{}}},pageUpdatePath:{type:String,computed:"_computePageUpdatePath(data, sourcePath)"},sourcePath:{type:String},editMode:{type:Boolean,value:!1,reflectToAttribute:!0,observer:"_editModeChanged"},drawerOpened:{type:Boolean,value:!0,reflectToAttribute:!0},route:{type:Object,notify:!0},currentTitle:{type:String},outlineTitle:{type:String},bookTitle:{type:String,value:"Course outline"},soundFinish:{type:Boolean,value:!0},sound:{type:Boolean,value:!0},completeSound:{type:String,value:""},finishedSound:{type:String,value:""},scrollPosition:{type:Number,value:0,observer:"_scrollChanged"},activePage:{type:Number,value:0,observer:"_activePageChanged"},activeOutline:{type:Number,value:0,observer:"_activeOutlineChanged"},outlineItems:{type:Array,value:[],notify:!0,observer:"_outlineItemsChanged"},bookItems:{type:Array,value:[],notify:!0},itemResponses:{type:Array,value:[]},requestParams:{type:Object,notify:!0,value:{node:null}},pageParams:{type:Object,notify:!0,value:{load:!1}},outlineData:{type:Object,notify:!0},bookData:{type:Object,notify:!0},pageData:{type:Object,notify:!0},outlinePath:{type:String},bookPath:{type:String},pagePath:{type:String},hasPrevPage:{type:Boolean,notify:!0},prevLabel:{type:String},hasNextPage:{type:Boolean,notify:!0},nextLabel:{type:String},resetScroll:{type:Boolean,value:!1},currentPageData:{type:Object,value:{},observer:"_currentPageDataUpdated"},responseData:{type:Object,value:{}},rebuildOutline:{type:Boolean,value:!1},fullWidth:{type:Boolean,reflectToAttribute:!0,value:!1,observer:"_fullWidthChanged"}},ready:function(){this.$.bodyloading.hidden=!0;this.$.outlineajax.generateRequest();setTimeout(()=>{this._resetScroll()},500)},_fullWidthChanged:function(){updateStyles()},progressdashboardopen:function(){this.$.progressdashboard.showProgress=!0},_computePageUpdatePath:function(data,sourcePath){return sourcePath.replace("%",data.id)},_haxOperation:function(e){this.$.toast.show(e.detail.eventName)},_haxContentInsert:function(e){this.$.toast.show(e.detail.eventName);var properties={};if(typeof e.detail.properties!==typeof void 0){properties=e.detail.properties}this.$.haxbody.haxInsert(e.detail.tag,e.detail.content,properties)},_computeCreateRequestBody:function(currentPageData){if(typeof currentPageData.page!==typeof void 0){return{bid:currentPageData.page.relationships.book.id,pid:currentPageData.page.relationships.parent.id}}},_toggleEditMode:function(){this.editMode=!this.editMode},_editModeChanged:function(newValue,oldValue){if(typeof newValue!==typeof void 0){if(!0===newValue){this.$.editbutton.icon="save";this.$.editbutton.title="Tap to save content and exit edit mode";this.$.fablabel="save changes";this.__bookdraweropened=this.$.bookdrawer.opened;if(this.$.bookdrawer.opened){this.$.bookdrawer.opened=!1}this.$.haxpanel.opened=!0;this.$.currenttitle.contentEditable=!0;this.$.haxbody.editMode=!0;this.resetScroll=!0;this.$.toast.show("Authoring mode active")}else{this.$.editbutton.icon="editor:mode-edit";this.$.editbutton.title="Tap to place content in edit mode.";this.$.fablabel="edit mode";this.$.bookdrawer.opened=this.__bookdraweropened;this.$.haxpanel.opened=!1;this.$.currenttitle.contentEditable=!1;this.$.haxbody.editMode=!1;this.resetScroll=!1;if(!0===oldValue){let updated=!1,haxcontent=this.$.haxbody.haxToContent();if(this.$.currenttitle.innerHTML!==this.currentPageData.title){this.currentPageData.title=this.$.currenttitle.innerHTML;this.updatePageData.attributes.title=this.currentPageData.title}if(this.currentPageData.content!==haxcontent){this.currentPageData.content=haxcontent;this.updatePageData.attributes.body=this.currentPageData.content;updated=!0}if(updated){this.updatePageData.type=this.data.type;this.updatePageData.id=this.data.id;this.$.toast.show("Saving...");this.$.pageupdateajax.generateRequest()}}}}},_handleUpdateResponse:function(){this.$.toast.show("Saved!")},_bookOutlineTap:function(e){var normalizedEvent=dom(e),local=normalizedEvent.localTarget;if(typeof local.getAttribute("data-book-parent")!==typeof void 0){this.activeOutline=local.getAttribute("data-book-parent")}},_activeOutlineChanged:function(newValue,oldValue){if(typeof newValue!==typeof void 0&&typeof oldValue!==typeof void 0){this.rebuildOutline=!0}},_routeChanged:function(data,route,endPoint){if("string"===typeof route.path){if("string"===typeof endPoint){if(route.path.startsWith(endPoint)){if(!1!=this.pageParams.load&&typeof data.type!==typeof void 0&&typeof data.id!==typeof void 0){this.pageParams[data.type]=data.id;if(typeof this.responseData[data.type+data.id]!==typeof void 0){this.set("currentPageData",this.responseData[data.type+data.id])}else{this.$.bodyloading.hidden=!1;this.$.pageajax.generateRequest()}if(this.rebuildOutline){this.set("requestParams",[]);this.set("requestParams",this.pageParams);if(typeof this.responseData[data.type+"."+data.id+".outline"]!==typeof void 0){this.activePage=0;this.set("outlineItems",[]);this.set("outlineItems",this._toArray(this.responseData[data.type+"."+data.id+".outline"].items));this.set("outlineTitle",this.responseData[data.type+"."+data.id+".outline"].items.outlineTitle)}else{this.$.outlineloading.hidden=!1;this.pageParams.load=!1;this.$.outlineajax.generateRequest()}this.rebuildOutline=!1}}return}}window.location.reload()}},_resetScroll:function(){this.resetScroll=!0;this.scrollPosition=0;this.$.anchor.scrollIntoView({block:"start",behavior:"smooth",inline:"nearest"})},_activePageChanged:function(newValue,oldValue){if(typeof newValue!==typeof void 0){if(typeof this.outlineItems!==typeof void 0){this.set("route.path",this.outlineItems[newValue].url);this.updatePageData.attributes={};this.updatePageData.id=null;this.updatePageData.type=null}if(typeof oldValue!==typeof void 0){}setTimeout(()=>{this.resetScroll=!1},1e3);if(0==newValue){this.hasPrevPage=!1}else{this.hasPrevPage=!0;if(typeof this.outlineItems!==typeof void 0){this.prevLabel=this.outlineItems[newValue-1].title}}if(typeof this.outlineItems!==typeof void 0&&newValue+1==this.outlineItems.length){this.hasNextPage=!1}else{this.hasNextPage=!0;if(typeof this.outlineItems!==typeof void 0){this.nextLabel=this.outlineItems[newValue+1].title}}}},_outlineItemsChanged:function(newValue){if(typeof newValue!==typeof void 0&&0!=newValue.length){if(0!=this.activePage){this.prevLabel=newValue[this.activePage-1].title}if(this.activePage+1!=newValue.length){this.nextLabel=newValue[this.activePage+1].title}}},testMilestone:function(e){if(75==e.detail.percentage){console.log("@todo preload the next page and present grayed out right of UI.")}},_scrollChanged:function(newValue){if(typeof this.outlineItems!==typeof void 0&&typeof this.outlineItems[this.activePage]!==typeof void 0&&newValue>this.outlineItems[this.activePage].value&&!this.resetScroll){if(75<=newValue){this.outlineItems[this.activePage].value=this.outlineItems[this.activePage].max;this.set("outlineItems."+this.activePage+".value",this.outlineItems[this.activePage].max)}else{this.outlineItems[this.activePage].value=newValue;this.set("outlineItems."+this.activePage+".value",newValue)}}},_nextBtn:function(){if(this.activePage<this.outlineItems.length-1){this.set("outlineItems."+this.activePage+".value",this.outlineItems[this.activePage].max);this.activePage=this.activePage+1}},_prevBtn:function(){if(0<this.activePage){this.activePage=this.activePage-1}},toggleBook:function(){if(this.editMode){this.$.haxpanel.toggle();this.fullWidth=!this.$.haxpanel.opened}else{this.$.bookdrawer.toggle();this.fullWidth=!this.$.bookdrawer.opened}},handleOutlineResponse:function(obj){if(typeof obj!==typeof void 0){const response=obj.detail.response.data,items=this._toArray(obj.detail.response.data.items),outlineTitle=obj.detail.response.data.outlineTitle;if(0!==this.activePage){this.activePage=0}this.set("responseData."+this.data.type+"."+this.data.id+".outline",response);this.set("outlineItems",[]);this.set("outlineItems",items);this.set("outlineTitle",outlineTitle);var activePage=0;for(var i in items){if(this.data.type===items[i].type&&this.data.id===items[i].id&&0!==i){activePage=parseInt(i)}}if(0!==activePage){this.activePage=activePage}this.$.outlineloading.hidden=!0;this.pageParams.load=!0;if(0===this.bookItems.length){this.$.bookajax.generateRequest();this.pageParams=this.requestParams;this.$.pageajax.generateRequest()}}},handleBookResponse:function(obj){const response=obj.detail.response.data;this.set("bookItems",this._toArray(response.items));this.$.mapmenu.innerHTML=response.render},handlePageResponse:function(obj){if(typeof obj!==typeof void 0){const response=obj.detail.response.data;this.set("responseData."+this.data.type+this.data.id,response);this.set("currentPageData",response)}},_currentPageDataUpdated:function(newValue){if(typeof newValue!==typeof void 0&&typeof newValue.content!==typeof void 0){this.set("currentTitle",newValue.title);let slot=dom(this.$.haxbody);while(null!==slot.firstChild){slot.removeChild(slot.firstChild)}var tmp=document.createElement("div");let frag=document.createRange().createContextualFragment(newValue.content);tmp.appendChild(frag);if(null==tmp.firstChild){var tmp2=document.createElement("p");tmp2.innerHTML=tmp.innerHTML;tmp=document.createElement("div");tmp.innerHTML=tmp2.outerHTML}else if(typeof tmp.firstChild.length!==typeof void 0){var tmp2=document.createElement("p");tmp2.innerHTML=tmp.innerHTML;tmp=document.createElement("div");tmp.innerHTML=tmp2.outerHTML}while(tmp.firstChild){dom(this.$.haxbody).appendChild(tmp.firstChild)}this._resetScroll();this.$.bodyloading.hidden=!0;if(this.editMode&&!newValue.page.meta.canUpdate){this.editMode=!1}}},_toArray:function(obj){return Object.keys(obj).map(function(key){return obj[key]})}});

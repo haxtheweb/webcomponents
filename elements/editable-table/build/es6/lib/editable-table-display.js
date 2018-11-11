@@ -14,7 +14,7 @@ Polymer({
   _template: html`
     <style is="custom-style" include="editable-table-styles">
       :host([dark]) .caption {
-        padding: 0.25em 0.25em 0;
+        padding: 4px 4px 0;
       }
       :host([bordered]) .table .th,
       :host([bordered]) .table .td {

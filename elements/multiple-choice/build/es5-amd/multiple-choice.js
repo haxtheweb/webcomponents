@@ -9,7 +9,7 @@ define([
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_b6be7fd0e11911e8b0b439e3dc62f222() {
+  function _templateObject_f2c1a560e5f711e8b8e73584bebbccb6() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style include="materializecss-styles">\n      :host {\n        display: block;\n        padding: 16px 16px 54px 16px;\n      }\n      h3 {\n        margin: 8px;\n      }\n      ul {\n        list-style: none;\n        padding: 0;\n        margin: 0;\n      }\n      ul li {\n        padding: 8px;\n      }\n      paper-radio-button {\n        padding: 8px;\n      }\n    </style>\n    <meta property="oer:assessing" content$="[[relatedResource]]">\n    <h3 hidden$="[[hideTitle]]"><span property="oer:name">[[title]]</span></h3>\n    <div>[[question]]</div>\n    <ul>\n      <template is="dom-repeat" items="[[displayedAnswers]]" as="answer">\n        <li><paper-checkbox disabled$="[[disabled]]" property="oer:answer" checked="{{answer.userGuess}}">[[answer.label]]</paper-checkbox></li>\n      </template>\n    </ul>\n    <div hidden$="[[hideButtons]]">\n      <paper-button disabled$="[[disabled]]" raised="" on-tap="_verifyAnswers">[[checkLabel]]</paper-button>\n      <paper-button disabled$="[[disabled]]" raised="" on-tap="_resetAnswers">[[resetLabel]]</paper-button>\n    </div>\n    <paper-toast id="toast" duration="6000" class$="fit-bottom [[__toastColor]]">\n    [[__toastText]]\n    <iron-icon icon="[[__toastIcon]]" style="margin-left:16px;"></iron-icon>\n    </paper-toast>\n'
@@ -18,14 +18,14 @@ define([
         '\n    <style include="materializecss-styles">\n      :host {\n        display: block;\n        padding: 16px 16px 54px 16px;\n      }\n      h3 {\n        margin: 8px;\n      }\n      ul {\n        list-style: none;\n        padding: 0;\n        margin: 0;\n      }\n      ul li {\n        padding: 8px;\n      }\n      paper-radio-button {\n        padding: 8px;\n      }\n    </style>\n    <meta property="oer:assessing" content\\$="[[relatedResource]]">\n    <h3 hidden\\$="[[hideTitle]]"><span property="oer:name">[[title]]</span></h3>\n    <div>[[question]]</div>\n    <ul>\n      <template is="dom-repeat" items="[[displayedAnswers]]" as="answer">\n        <li><paper-checkbox disabled\\$="[[disabled]]" property="oer:answer" checked="{{answer.userGuess}}">[[answer.label]]</paper-checkbox></li>\n      </template>\n    </ul>\n    <div hidden\\$="[[hideButtons]]">\n      <paper-button disabled\\$="[[disabled]]" raised="" on-tap="_verifyAnswers">[[checkLabel]]</paper-button>\n      <paper-button disabled\\$="[[disabled]]" raised="" on-tap="_resetAnswers">[[resetLabel]]</paper-button>\n    </div>\n    <paper-toast id="toast" duration="6000" class\\$="fit-bottom [[__toastColor]]">\n    [[__toastText]]\n    <iron-icon icon="[[__toastIcon]]" style="margin-left:16px;"></iron-icon>\n    </paper-toast>\n'
       ]
     );
-    _templateObject_b6be7fd0e11911e8b0b439e3dc62f222 = function() {
+    _templateObject_f2c1a560e5f711e8b8e73584bebbccb6 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_b6be7fd0e11911e8b0b439e3dc62f222()
+      _templateObject_f2c1a560e5f711e8b8e73584bebbccb6()
     ),
     is: "multiple-choice",
     hostAttributes: { typeof: "oer:Assessment" },

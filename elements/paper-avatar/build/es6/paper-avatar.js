@@ -2,15 +2,15 @@ import {
   html,
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
-import "./node_modules/@polymer/polymer/lib/elements/dom-if.js";
+import { pathFromUrl } from "./node_modules/@polymer/polymer/lib/utils/resolve-url.js";
+import "./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import * as md5 from "./lib/md5.min.js";
 Polymer({
   is: "paper-avatar",
   _template: html`
     <style>
 			:host {
-				--paper-avatar-width: 40px;
-			}
-			:host {
+        --paper-avatar-width: 40px;
 				display: inline-block;
 				box-sizing: border-box;
 				position: relative;
@@ -20,9 +20,9 @@ Polymer({
 				cursor: default;
 				background-color: var(--paper-avatar-color, var(--paper-avatar-bgcolor));
 				-webkit-user-select: none;
-				   -moz-user-select: none;
-				    -ms-user-select: none;
-						user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
 			}
 			
 			:host > * {
@@ -66,40 +66,52 @@ Polymer({
 				width: var(--paper-avatar-width);
 				height: var(--paper-avatar-width);
 			}
-			
-			*[hidden] {
-				display: none !important;
-			}
 		</style>
-
 		<div id="label" title="[[label]]"><span>[[_label(label)]]</span></div>
-
 		<svg id="jdenticon" width="40" height="40">
       <slot></slot>
     </svg>
-
-		<template is="dom-if" if="[[src]]">
-			<img id="img" src="[[src]]" title="[[label]]" on-load="_onImgLoad" on-error="_onImgError" title="[[color]]">
-		</template>
+    <template is="dom-if" if="[[src]]">
+		  <img id="img" src="[[src]]" title="[[label]]" on-load="_onImgLoad" on-error="_onImgError" title="[[color]]">
+    </template>
   `,
   properties: {
-    src: { type: String },
+    src: { type: String, value: !1 },
     label: { type: String, observer: "_observerLabel" },
+    jdenticonExists: { type: Boolean, value: !1 },
     twoChars: { type: Boolean, value: !1 },
     colors: { type: Array },
     jdenticon: { type: Boolean, value: !1 }
   },
   _observerLabel: function(label) {
     if (label) {
-      if (this.jdenticon) {
+      if (this.jdenticonExists && this.jdenticon) {
         this.$.label.hidden = !0;
-        jdenticon.config = {
+        window.jdenticon.config = {
           lightness: { color: [1, 1], grayscale: [1, 1] },
           saturation: 1
         };
+        window.jdenticon.update(this.$.jdenticon, window.md5(label));
       }
       this.updateStyles({ "--paper-avatar-bgcolor": this._parseColor(label) });
     }
+  },
+  ready: function() {
+    const name = "jdenticon",
+      basePath = pathFromUrl(import.meta.url);
+    window.addEventListener(
+      `es-bridge-${name}-loaded`,
+      this._jdenticonLoaded.bind(this)
+    );
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load(
+      name,
+      `${basePath}lib/jdenticon-1.4.0.min.js`
+    );
+  },
+  _jdenticonLoaded: function() {
+    this.jdenticonExists = !0;
+    this._observerLabel(this.label);
   },
   _label: function(label) {
     if (!label) return "";

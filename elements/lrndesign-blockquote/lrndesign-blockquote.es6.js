@@ -10,10 +10,10 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         @apply(--lrndesign-blockquote);
       }
       blockquote {
-        font-size: 1.2rem;
+        font-size: 19.2px;
         font-style: italic;
-        margin: .25em 0;
-        padding: 1.5em 1.5em 1.5em 2.5em;
+        margin: 4px 0;
+        padding: 24px 24px 24px 40px;
         line-height: 1.5;
         position: relative;
         color: var(--lrndesign-blockquote-color);
@@ -22,19 +22,19 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         display: block;
         font-family: Georgia, serif;
         content: "\\201C";
-        font-size: 5rem;
+        font-size: 80px;
         position: absolute;
-        left: -1.25rem;
-        top: -1.25rem;
+        left: -20px;
+        top: -20px;
       }
       blockquote.outset {
-        margin: .25rem -8rem .25rem -8rem;
+        margin: 4px -128px 4px -128px;
       }
       cite {
         color: var(--lrndesign-blockquote-cite);
-        font-size: .8rem;
+        font-size: 12.8px;
         display: block;
-        margin-top: .25rem;
+        margin-top: 4px;
         text-align: right;
       }
       :host([depth="1"]) blockquote { @apply --shadow-elevation-2dp; }
@@ -52,7 +52,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         transition: all .6s ease;
       }
       /* Disable grayscale on hover */
-      :host([hypercard]) ::slotted(*):hover {
+      :host([hypercard]:hover) ::slotted(*) {
         -webkit-filter: grayscale(0);
         filter: none;
       }

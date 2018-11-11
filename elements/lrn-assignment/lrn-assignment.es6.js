@@ -12,10 +12,10 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       <div class="card-content">
         [[details]]
         <slot></slot>
-      </div>
+      </div>  
       <div class="card-actions">
         <template is="dom-repeat" items="[[actions]]">
-          <a href\$="[[item.url]]"><paper-button raised="">[[item.label]]</paper-button></a>
+          <a href$="[[item.url]]"><paper-button raised>[[item.label]]</paper-button></a>
         </template>
       </div>
     </paper-card>
@@ -26,16 +26,16 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         flex-wrap: wrap;
       }
       :host lrn-assignment {
-        margin: 1em;
+        margin: 16px;
       }
       :host([layout="wide"]) lrn-assignment {
-        width: calc(100% - 2em);
+        width: calc(100% - 32px);
       }
       :host([layout="medium"]) lrn-assignment {
-        width: calc(50% - 2em);
+        width: calc(50% - 32px);
       }
       :host([layout="tight"]) lrn-assignment {
-        width: calc(25% - 2em);
+        width: calc(25% - 32px);
       }
     </style>
     <template is="dom-repeat" items="[[assignments]]">

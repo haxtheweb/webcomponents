@@ -5,23 +5,18 @@ define([
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_03202e00e11a11e890dd47b0c58cf7e3() {
-    var data = babelHelpers.taggedTemplateLiteral(
-      [
-        '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <link property="oer:forComponent" content$="[[relatedResource]]">\n    <h2><span property="oer:name">[[name]]</span></h2>\n    <ol>\n      <template is="dom-repeat" items="[[tasks]]" as="task">\n        <li><span property="oer:task">[[task.name]]</span></li>\n      </template>\n    </ol>\n'
-      ],
-      [
-        '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <link property="oer:forComponent" content\\$="[[relatedResource]]">\n    <h2><span property="oer:name">[[name]]</span></h2>\n    <ol>\n      <template is="dom-repeat" items="[[tasks]]" as="task">\n        <li><span property="oer:task">[[task.name]]</span></li>\n      </template>\n    </ol>\n'
-      ]
-    );
-    _templateObject_03202e00e11a11e890dd47b0c58cf7e3 = function() {
+  function _templateObject_36105410e5f811e8a6fdb9f3929ea813() {
+    var data = babelHelpers.taggedTemplateLiteral([
+      '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <h3><span property="oer:name">[[name]]</span></h3>\n    <ol>\n      <template is="dom-repeat" items="[[tasks]]" as="task">\n        <li><span property="oer:task">[[task.name]]</span></li>\n      </template>\n    </ol>\n'
+    ]);
+    _templateObject_36105410e5f811e8a6fdb9f3929ea813 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_03202e00e11a11e890dd47b0c58cf7e3()
+      _templateObject_36105410e5f811e8a6fdb9f3929ea813()
     ),
     is: "task-list",
     behaviors: [
@@ -34,7 +29,21 @@ define([
     properties: {
       name: { type: String, value: "Steps to completion" },
       relatedResource: { type: String },
-      tasks: { type: Array, value: [], notify: !0 }
+      tasks: { type: Array, value: [], notify: !0 },
+      _resourceLink: {
+        type: Object,
+        computed: "_generateResourceLink(relatedResource)"
+      }
+    },
+    _generateResourceLink: function _generateResourceLink(relatedResource) {
+      if (this._resourceLink) {
+        document.head.removeChild(this._resourceLink);
+      }
+      var link = document.createElement("link");
+      link.setAttribute("property", "oer:forComponent");
+      link.setAttribute("content", relatedResource);
+      document.head.appendChild(link);
+      return link;
     },
     _valueChanged: function _valueChanged(e) {
       for (var i in e.base) {

@@ -5,7 +5,6 @@ import {
 import "./node_modules/@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
 import "./node_modules/@polymer/paper-item/paper-item.js";
 import "./node_modules/@polymer/paper-listbox/paper-listbox.js";
-import "./node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
 Polymer({
   _template: html`
   <custom-style>
@@ -20,14 +19,13 @@ Polymer({
       }
     </style>
   </custom-style>
-  <paper-dropdown-menu id="menu" label\$="[[label]]" on-selected-item-changed="_setSelectedValue">
+  <paper-dropdown-menu id="menu" label\$="[[label]]" on-tap="_menubuttonTap" on-selected-item-changed="_setSelectedValue">
     <paper-listbox id="listbox" slot="dropdown-content" selected="{{selectedIndex}}">
       <slot></slot>
     </paper-listbox>
   </paper-dropdown-menu>
 `,
   is: "select-menu",
-  listeners: { "menubutton.tap": "_menubuttonTap" },
   properties: {
     label: { type: String, value: "Select an option." },
     value: { type: String, value: null },

@@ -7,16 +7,16 @@ define([
 ], function(_polymerLegacy) {
   "use strict";
   var _listeners, _Polymer;
-  function _templateObject_763dc8c0e11a11e8a0fde50b4d62c050() {
+  function _templateObject_a9de04f0e5f811e8a78cfbf2702021b4() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
-        '\n    <style>\n      :host {\n        display: block;\n      }\n      :host kbd {\n        display: inline-block;\n        background: #333;\n        color: white;\n        border-radius: 0.25em;\n        margin: 0.25em 0.25em 0.25em 0;\n        padding: 0.5em;\n        font-family: Verdana, Geneva, Tahoma, sans-serif;\n        font-size:85%;\n      }\n    </style>\n    <h1>[[title]]<paper-icon-button title="Keyboard directions" id="dialogtrigger" icon="icons:help" on-tap="openDirections"></paper-icon-button></h1>\n    <paper-dialog id="modal" with-backdrop="">\n      <h2>Keyboard shortcuts</h2>\n      <div>\n        <paper-icon-button title="close directions" style="position: absolute;top: 0; right:0;" icon="icons:cancel" on-tap="closeDirections"></paper-icon-button>\n        <ul>\n          <li><kbd>Enter</kbd> to <strong>add</strong> an item</li>\n          <li><kbd>Backspace</kbd> <em>with entire item selected</em> to <strong>delete</strong> an item.</li>\n          <li><kbd>\u2191</kbd> / <kbd>\u2193</kbd> / <kbd>\u2190</kbd> / <kbd>\u2192</kbd> to <strong>navigate</strong> through items</li>\n          <li><kbd>Tab</kbd> / <kbd>Shift+Tab</kbd> <em>at the beginning of a line</em> to <strong>indent/outdent</strong></li>\n          <li><kbd>Shift+\u2191</kbd> / <kbd>Shift+\u2193</kbd> to items up/down</li>\n        </ul>\n      </div>\n    </paper-dialog>\n    <div id="itemslist">\n      <template id="domRepeat" is="dom-repeat" items$="{{items}}" as="item">\n        <lrnsys-outline-item disable-down$="{{item.disableDown}}" disable-left$="{{item.disableLeft}}" disable-right$="{{item.disableRight}}" disable-up$="{{item.disableUp}}" id$="{{item.id}}" index$="{{item.index}}" indent-level$="{{item.indent}}" parent$="{{item.parent}}" title$="{{item.title}}">\n        </lrnsys-outline-item>\n      </template>\n    </div>\n'
+        '\n    <style>\n      :host {\n        display: block;\n      }\n      :host kbd {\n        display: inline-block;\n        background: #333;\n        color: white;\n        border-radius: 4px;\n        margin: 4px 4px 4px 0;\n        padding: 8px;\n        font-family: Verdana, Geneva, Tahoma, sans-serif;\n        font-size:85%;\n      }\n    </style>\n    <h1>[[title]]<paper-icon-button title="Keyboard directions" id="dialogtrigger" icon="icons:help" on-tap="openDirections"></paper-icon-button></h1>\n    <paper-dialog id="modal" with-backdrop="">\n      <h2>Keyboard shortcuts</h2>\n      <div>\n        <paper-icon-button title="close directions" style="position: absolute;top: 0; right:0;" icon="icons:cancel" on-tap="closeDirections"></paper-icon-button>\n        <ul>\n          <li><kbd>Enter</kbd> to <strong>add</strong> an item</li>\n          <li><kbd>Backspace</kbd> <em>with entire item selected</em> to <strong>delete</strong> an item.</li>\n          <li><kbd>\u2191</kbd> / <kbd>\u2193</kbd> / <kbd>\u2190</kbd> / <kbd>\u2192</kbd> to <strong>navigate</strong> through items</li>\n          <li><kbd>Tab</kbd> / <kbd>Shift+Tab</kbd> <em>at the beginning of a line</em> to <strong>indent/outdent</strong></li>\n          <li><kbd>Shift+\u2191</kbd> / <kbd>Shift+\u2193</kbd> to items up/down</li>\n        </ul>\n      </div>\n    </paper-dialog>\n    <div id="itemslist">\n      <template id="domRepeat" is="dom-repeat" items$="{{items}}" as="item">\n        <lrnsys-outline-item disable-down$="{{item.disableDown}}" disable-left$="{{item.disableLeft}}" disable-right$="{{item.disableRight}}" disable-up$="{{item.disableUp}}" id$="{{item.id}}" index$="{{item.index}}" indent-level$="{{item.indent}}" parent$="{{item.parent}}" title$="{{item.title}}">\n        </lrnsys-outline-item>\n      </template>\n    </div>\n'
       ],
       [
-        '\n    <style>\n      :host {\n        display: block;\n      }\n      :host kbd {\n        display: inline-block;\n        background: #333;\n        color: white;\n        border-radius: 0.25em;\n        margin: 0.25em 0.25em 0.25em 0;\n        padding: 0.5em;\n        font-family: Verdana, Geneva, Tahoma, sans-serif;\n        font-size:85%;\n      }\n    </style>\n    <h1>[[title]]<paper-icon-button title="Keyboard directions" id="dialogtrigger" icon="icons:help" on-tap="openDirections"></paper-icon-button></h1>\n    <paper-dialog id="modal" with-backdrop="">\n      <h2>Keyboard shortcuts</h2>\n      <div>\n        <paper-icon-button title="close directions" style="position: absolute;top: 0; right:0;" icon="icons:cancel" on-tap="closeDirections"></paper-icon-button>\n        <ul>\n          <li><kbd>Enter</kbd> to <strong>add</strong> an item</li>\n          <li><kbd>Backspace</kbd> <em>with entire item selected</em> to <strong>delete</strong> an item.</li>\n          <li><kbd>\u2191</kbd> / <kbd>\u2193</kbd> / <kbd>\u2190</kbd> / <kbd>\u2192</kbd> to <strong>navigate</strong> through items</li>\n          <li><kbd>Tab</kbd> / <kbd>Shift+Tab</kbd> <em>at the beginning of a line</em> to <strong>indent/outdent</strong></li>\n          <li><kbd>Shift+\u2191</kbd> / <kbd>Shift+\u2193</kbd> to items up/down</li>\n        </ul>\n      </div>\n    </paper-dialog>\n    <div id="itemslist">\n      <template id="domRepeat" is="dom-repeat" items\\$="{{items}}" as="item">\n        <lrnsys-outline-item disable-down\\$="{{item.disableDown}}" disable-left\\$="{{item.disableLeft}}" disable-right\\$="{{item.disableRight}}" disable-up\\$="{{item.disableUp}}" id\\$="{{item.id}}" index\\$="{{item.index}}" indent-level\\$="{{item.indent}}" parent\\$="{{item.parent}}" title\\$="{{item.title}}">\n        </lrnsys-outline-item>\n      </template>\n    </div>\n'
+        '\n    <style>\n      :host {\n        display: block;\n      }\n      :host kbd {\n        display: inline-block;\n        background: #333;\n        color: white;\n        border-radius: 4px;\n        margin: 4px 4px 4px 0;\n        padding: 8px;\n        font-family: Verdana, Geneva, Tahoma, sans-serif;\n        font-size:85%;\n      }\n    </style>\n    <h1>[[title]]<paper-icon-button title="Keyboard directions" id="dialogtrigger" icon="icons:help" on-tap="openDirections"></paper-icon-button></h1>\n    <paper-dialog id="modal" with-backdrop="">\n      <h2>Keyboard shortcuts</h2>\n      <div>\n        <paper-icon-button title="close directions" style="position: absolute;top: 0; right:0;" icon="icons:cancel" on-tap="closeDirections"></paper-icon-button>\n        <ul>\n          <li><kbd>Enter</kbd> to <strong>add</strong> an item</li>\n          <li><kbd>Backspace</kbd> <em>with entire item selected</em> to <strong>delete</strong> an item.</li>\n          <li><kbd>\u2191</kbd> / <kbd>\u2193</kbd> / <kbd>\u2190</kbd> / <kbd>\u2192</kbd> to <strong>navigate</strong> through items</li>\n          <li><kbd>Tab</kbd> / <kbd>Shift+Tab</kbd> <em>at the beginning of a line</em> to <strong>indent/outdent</strong></li>\n          <li><kbd>Shift+\u2191</kbd> / <kbd>Shift+\u2193</kbd> to items up/down</li>\n        </ul>\n      </div>\n    </paper-dialog>\n    <div id="itemslist">\n      <template id="domRepeat" is="dom-repeat" items\\$="{{items}}" as="item">\n        <lrnsys-outline-item disable-down\\$="{{item.disableDown}}" disable-left\\$="{{item.disableLeft}}" disable-right\\$="{{item.disableRight}}" disable-up\\$="{{item.disableUp}}" id\\$="{{item.id}}" index\\$="{{item.index}}" indent-level\\$="{{item.indent}}" parent\\$="{{item.parent}}" title\\$="{{item.title}}">\n        </lrnsys-outline-item>\n      </template>\n    </div>\n'
       ]
     );
-    _templateObject_763dc8c0e11a11e8a0fde50b4d62c050 = function() {
+    _templateObject_a9de04f0e5f811e8a78cfbf2702021b4 = function() {
       return data;
     };
     return data;
@@ -24,7 +24,7 @@ define([
   (0, _polymerLegacy.Polymer)(
     ((_Polymer = {
       _template: (0, _polymerLegacy.html)(
-        _templateObject_763dc8c0e11a11e8a0fde50b4d62c050()
+        _templateObject_a9de04f0e5f811e8a78cfbf2702021b4()
       ),
       is: "lrnsys-outline",
       listeners: ((_listeners = {
@@ -82,7 +82,7 @@ define([
         this.items = data;
         if (data !== void 0 && 0 < data.length) {
           var prevIndent = -1;
-          for (i in data) {
+          for (var i in data) {
             var indent = parseInt(this._getIndent(data, i));
             this.__tempid = this.__tempid === void 0 ? 0 : this.__tempid + 1;
             data[i].index = parseInt(i);
@@ -104,7 +104,7 @@ define([
         this.items = data;
       },
       getData: function getData() {
-        for (i in this.items) {
+        for (var i in this.items) {
           this.items[i].order = this._getOrder(this.items[i]);
         }
         return this.items;
@@ -178,10 +178,10 @@ define([
           (0 < amount && !item.disableRight) ||
           (0 > amount && !item.disableLeft)
         ) {
-          var _i = parseInt(item.index),
+          var i = parseInt(item.index),
             oldIndent = item.indent,
             indent = item.indent + amount,
-            n = _i + 1,
+            n = i + 1,
             prevParent = null !== item.prevSibling ? item.prevSibling.id : null,
             grandParent =
               this._getItemById(item.parent) &&
@@ -190,13 +190,13 @@ define([
                 : null;
           item.indent = indent;
           item.parent = 0 < amount ? prevParent : grandParent;
-          item.prevSibling = this._getSibling(_i, indent, !0);
-          item.nextSibling = this._getSibling(_i, indent, !1);
+          item.prevSibling = this._getSibling(i, indent, !0);
+          item.nextSibling = this._getSibling(i, indent, !1);
           item.disableUp = null === item.prevSibling;
           item.disableDown = null === item.nextSibling;
           item.disableLeft = 0 === indent;
           item.disableRight =
-            null === this.items[_i - 1] || indent > this.items[_i - 1].indent;
+            null === this.items[i - 1] || indent > this.items[i - 1].indent;
           while (
             null !== this.items[n] &&
             this.items[n] !== void 0 &&
@@ -240,7 +240,7 @@ define([
       _getOrder: function _getOrder(item) {
         var ctr = 0,
           order = 0;
-        for (i in this.items) {
+        for (var i in this.items) {
           if (
             this.items[i].parent == item.parent &&
             this.items[i].id == item.id

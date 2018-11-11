@@ -1,28 +1,26 @@
 define([
+  "meta",
   "./node_modules/@polymer/polymer/polymer-legacy.js",
-  "./lib/chartist-lib.js"
-], function(_polymerLegacy) {
+  "./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js",
+  "./node_modules/@polymer/polymer/lib/utils/resolve-url.js"
+], function(meta, _polymerLegacy, _esGlobalBridge, _resolveUrl) {
   "use strict";
-  function _templateObject_fe800e70e11811e889e94bb9a8000e31() {
-    var data = babelHelpers.taggedTemplateLiteral(
-      [
-        '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <div id="chart" chart$="[[__chartId]]" class$="ct-chart [[scale]]"></div>\n'
-      ],
-      [
-        '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <div id="chart" chart\\$="[[__chartId]]" class\\$="ct-chart [[scale]]"></div>\n'
-      ]
-    );
-    _templateObject_fe800e70e11811e889e94bb9a8000e31 = function() {
+  meta = babelHelpers.interopRequireWildcard(meta);
+  function _templateObject_3de48770e5f711e8aef2ebc0d6e5a462() {
+    var data = babelHelpers.taggedTemplateLiteral([
+      '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <div id="chart" chart$="[[__chartId]]" class$="ct-chart [[scale]]"></div>\n'
+    ]);
+    _templateObject_3de48770e5f711e8aef2ebc0d6e5a462 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_fe800e70e11811e889e94bb9a8000e31()
+      _templateObject_3de48770e5f711e8aef2ebc0d6e5a462()
     ),
     is: "chartist-render",
-    listeners: { "chart.tap": "makeChart", created: "_onCreated" },
+    listeners: { tap: "makeChart", created: "_onCreated" },
     properties: {
       id: { type: String, value: "chart" },
       type: { type: String, value: "bar" },
@@ -34,10 +32,25 @@ define([
       responsiveOptions: { type: Array, value: [], observer: "makeChart" },
       showTable: { type: Boolean, value: !1, observer: "makeChart" }
     },
+    created: function created() {
+      var name = "chartist",
+        basePath = (0, _resolveUrl.pathFromUrl)(meta.url),
+        location = "".concat(basePath, "../../chartist/dist/chartist.min.js");
+      window.addEventListener(
+        "es-bridge-".concat(name, "-loaded"),
+        this._chartistLoaded.bind(this)
+      );
+      window.ESGlobalBridge.requestAvailability();
+      window.ESGlobalBridge.instance.load(name, location);
+    },
+    _chartistLoaded: function _chartistLoaded() {
+      this.__chartistLoaded = !0;
+    },
     attached: function attached() {
-      var root = this;
-      root.__chartId = root._getUniqueId("chartist-render-");
-      root._chartReady();
+      this.__chartId = this._getUniqueId("chartist-render-");
+      if (this.__chartistLoaded) {
+        this._chartReady();
+      }
     },
     _checkReady: function _checkReady() {
       var root = this;

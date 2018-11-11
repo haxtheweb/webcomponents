@@ -34,7 +34,7 @@ class LRNAceEditor extends HTMLElement {
             <style>
                 :host{
                     display: flex;
-                    min-height: 1em;
+                    min-height: 16px;
                     flex-direction: column;
                 }
                 #juicy-ace-editor-container{

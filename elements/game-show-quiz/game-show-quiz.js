@@ -191,14 +191,6 @@ Polymer({
 
   is: "game-show-quiz",
 
-  listeners: {
-    "dismiss.tap": "resetFocus",
-    "contentcontainer.tap": "_gameBoardTap",
-    "submit.tap": "submitAnswer",
-    "continue.tap": "continueGameTap",
-    "question.tap": "registerTap"
-  },
-
   behaviors: [HAXBehaviors.PropertiesBehaviors],
 
   properties: {
@@ -465,5 +457,26 @@ Polymer({
       }
     };
     this.setHaxProperties(props);
+    this.$.dismiss.addEventListener("tap", this.resetFocus.bind(this));
+    this.$.contentcontainer.addEventListener(
+      "tap",
+      this._gameBoardTap.bind(this)
+    );
+    this.$.submit.addEventListener("tap", this.submitAnswer.bind(this));
+    this.$.continue.addEventListener("tap", this.continueGameTap.bind(this));
+    this.$.question.addEventListener("tap", this.registerTap.bind(this));
+  },
+  /**
+   * detached life cycke
+   */
+  detached: function() {
+    this.$.dismiss.removeEventListener("tap", this.resetFocus.bind(this));
+    this.$.contentcontainer.removeEventListener(
+      "tap",
+      this._gameBoardTap.bind(this)
+    );
+    this.$.submit.removeEventListener("tap", this.submitAnswer.bind(this));
+    this.$.continue.removeEventListener("tap", this.continueGameTap.bind(this));
+    this.$.question.removeEventListener("tap", this.registerTap.bind(this));
   }
 });

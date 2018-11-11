@@ -8,7 +8,7 @@ define([
   "../lrn-calendar.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_d2201f80e11a11e894c671420db3b893() {
+  function _templateObject_025d81a0e5f911e8b5e14b0789c60ec9() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style include="materializecss-styles-colors">\n      :host {\n        display: block;\n      }\n      ::-webkit-scrollbar {\n        width: 0px;  /* remove scrollbar space */\n        background: transparent;  /* optional: just make scrollbar invisible */\n      }\n\n\n      .month {\n        width: 100%;\n        height: 20vh;\n        vertical-align: top;\n        overflow: scroll;\n\n      }\n      .week{\n        width: 100%;\n        height: 40vh;\n        vertical-align: top;\n        overflow: scroll;\n      }\n      .card-content{\n        position: relative;\n        bottom: 10px;\n        white-space: nowrap;\n        font-size: 12px;\n        padding: 0px 5px;\n        line-height: 7px;\n      }\n      .label{\n        width: 100%\n      }\n\n\n    </style>\n    \n      <div id="test">\n        <div>\n          <template is="dom-if" if="[[firstWeek]]">\n            <paper-card class="label">\n            <h3>[[getWeek(date)]]</h3>\n            </paper-card>\n          </template>\n        </div>\n        <paper-card class$="{{view}}" id="dateHeader">\n          \n            <h5> [[getMonth(date)]] </h5>\n          \n          <template is="dom-repeat" items="{{events}}">\n              <div class="card-content">\n                <lrnsys-drawer text="[[timeString(item.event.startDate._time.hour, item.event.startDate._time.minute, item.event.endDate._time.hour,item.event.endDate._time.minute)]] {{item.event.summary}}" header="[[getDateString(date)]]" align="left" heading-class="orange lighten-3 blue-text text-darken-4" style="{{computeStyle(item)}};overflow:auto;">\n                [[displayActivity(item)]] <br><br>[[displayStart(item)]]<br><br>[[displayEnd(item)]]<br><br>[[displayDuration(item)]]<br><br>[[displayDescription(item)]]<br><br>[[displayLocation(item)]]\n                </lrnsys-drawer>\n              </div>\n          </template>\n        </paper-card>\n      </div>\n'
@@ -17,14 +17,14 @@ define([
         '\n    <style include="materializecss-styles-colors">\n      :host {\n        display: block;\n      }\n      ::-webkit-scrollbar {\n        width: 0px;  /* remove scrollbar space */\n        background: transparent;  /* optional: just make scrollbar invisible */\n      }\n\n\n      .month {\n        width: 100%;\n        height: 20vh;\n        vertical-align: top;\n        overflow: scroll;\n\n      }\n      .week{\n        width: 100%;\n        height: 40vh;\n        vertical-align: top;\n        overflow: scroll;\n      }\n      .card-content{\n        position: relative;\n        bottom: 10px;\n        white-space: nowrap;\n        font-size: 12px;\n        padding: 0px 5px;\n        line-height: 7px;\n      }\n      .label{\n        width: 100%\n      }\n\n\n    </style>\n    \n      <div id="test">\n        <div>\n          <template is="dom-if" if="[[firstWeek]]">\n            <paper-card class="label">\n            <h3>[[getWeek(date)]]</h3>\n            </paper-card>\n          </template>\n        </div>\n        <paper-card class\\$="{{view}}" id="dateHeader">\n          \n            <h5> [[getMonth(date)]] </h5>\n          \n          <template is="dom-repeat" items="{{events}}">\n              <div class="card-content">\n                <lrnsys-drawer text="[[timeString(item.event.startDate._time.hour, item.event.startDate._time.minute, item.event.endDate._time.hour,item.event.endDate._time.minute)]] {{item.event.summary}}" header="[[getDateString(date)]]" align="left" heading-class="orange lighten-3 blue-text text-darken-4" style="{{computeStyle(item)}};overflow:auto;">\n                [[displayActivity(item)]] <br><br>[[displayStart(item)]]<br><br>[[displayEnd(item)]]<br><br>[[displayDuration(item)]]<br><br>[[displayDescription(item)]]<br><br>[[displayLocation(item)]]\n                </lrnsys-drawer>\n              </div>\n          </template>\n        </paper-card>\n      </div>\n'
       ]
     );
-    _templateObject_d2201f80e11a11e894c671420db3b893 = function() {
+    _templateObject_025d81a0e5f911e8b5e14b0789c60ec9 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_d2201f80e11a11e894c671420db3b893()
+      _templateObject_025d81a0e5f911e8b5e14b0789c60ec9()
     ),
     is: "lrn-calendar-date",
     properties: {

@@ -3,6 +3,7 @@ import {
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
 import "./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";
+import "./node_modules/@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "./lib/lrndesign-gallery-carousel.js";
 import "./lib/lrndesign-gallery-grid.js";
 import "./lib/lrndesign-gallery-print.js";
@@ -84,7 +85,7 @@ Polymer({
         i => "#" + i.id === anchor.replace("-zoom", "")
       );
     if (sources !== void 0 && null !== this.items && 0 < sources.length) {
-      for (i in temp) {
+      for (var i in temp) {
         temp[i].index = parseInt(i);
         temp[i].large = temp[i].large !== void 0 ? temp[i].large : temp[i].src;
         temp[i].next = parseInt(i) + 1 < sources.length ? parseInt(i) + 1 : -1;

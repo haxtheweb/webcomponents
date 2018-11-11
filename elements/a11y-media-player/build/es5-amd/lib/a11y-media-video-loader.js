@@ -3,7 +3,7 @@ define([
   "./a11y-media-behaviors.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_ea72b1d0e11811e890362723497a45ce() {
+  function _templateObject_296b97c0e5f711e8a261cdfb256cd213() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      #video {\n        width: 100%;\n        max-width: 100%;\n        max-height: 80vh;\n      }\n    </style>\n    <video id="video" autoplay$="[[autoplay]]" crossorigin$="[[crossorigin]]" hidden$="[[audioOnly]]" lang$="[[lang]]" src$="[[manifest]]" preload="metadata">\n      <slot></slot>\n      HTML5 video not supported \n    </video>\n    <audio id="audio" autoplay$="[[autoplay]]" crossorigin$="[[crossorigin]]" hidden$="[[!audioOnly]]" lang$="[[lang]]" src$="[[manifest]]" preload="metadata">\n      <slot></slot>\n      HTML5 audio not supported \n    </audio>\n'
@@ -12,14 +12,14 @@ define([
         '\n    <style>\n      #video {\n        width: 100%;\n        max-width: 100%;\n        max-height: 80vh;\n      }\n    </style>\n    <video id="video" autoplay\\$="[[autoplay]]" crossorigin\\$="[[crossorigin]]" hidden\\$="[[audioOnly]]" lang\\$="[[lang]]" src\\$="[[manifest]]" preload="metadata">\n      <slot></slot>\n      HTML5 video not supported \n    </video>\n    <audio id="audio" autoplay\\$="[[autoplay]]" crossorigin\\$="[[crossorigin]]" hidden\\$="[[!audioOnly]]" lang\\$="[[lang]]" src\\$="[[manifest]]" preload="metadata">\n      <slot></slot>\n      HTML5 audio not supported \n    </audio>\n'
       ]
     );
-    _templateObject_ea72b1d0e11811e890362723497a45ce = function() {
+    _templateObject_296b97c0e5f711e8a261cdfb256cd213 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_ea72b1d0e11811e890362723497a45ce()
+      _templateObject_296b97c0e5f711e8a261cdfb256cd213()
     ),
     is: "a11y-media-video-loader",
     behaviors: [

@@ -3,7 +3,7 @@ import {
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
 import "./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
-import "time-elements/time-elements.js";
+import "./node_modules/time-elements/dist/time-elements.js";
 Polymer({
   _template: html`
     <style>

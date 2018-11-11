@@ -4,32 +4,27 @@ define([
   "./node_modules/@polymer/paper-button/paper-button.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject2_6e0e8470e11811e8a1ed4164aaf9b370() {
+  function _templateObject2_7b0be4e0e5f711e8a0ad77dd4f7e56cc() {
     var data = babelHelpers.taggedTemplateLiteral([
-      '\n    <style>\n      :host {\n        display: flex;\n        flex-wrap: wrap;\n      }\n      :host lrn-assignment {\n        margin: 1em;\n      }\n      :host([layout="wide"]) lrn-assignment {\n        width: calc(100% - 2em);\n      }\n      :host([layout="medium"]) lrn-assignment {\n        width: calc(50% - 2em);\n      }\n      :host([layout="tight"]) lrn-assignment {\n        width: calc(25% - 2em);\n      }\n    </style>\n    <template is="dom-repeat" items="[[assignments]]">\n      <lrn-assignment title="[[item.title]]" actions="[[item.actions]]"></lrn-assignment>\n    </template>\n\n    <template is="dom-if" if="[[url]]">\n      <iron-ajax auto="" url="[[url]]" handle-as="json" on-response="handleResponse"></iron-ajax>\n    </template>\n'
+      '\n    <style>\n      :host {\n        display: flex;\n        flex-wrap: wrap;\n      }\n      :host lrn-assignment {\n        margin: 16px;\n      }\n      :host([layout="wide"]) lrn-assignment {\n        width: calc(100% - 32px);\n      }\n      :host([layout="medium"]) lrn-assignment {\n        width: calc(50% - 32px);\n      }\n      :host([layout="tight"]) lrn-assignment {\n        width: calc(25% - 32px);\n      }\n    </style>\n    <template is="dom-repeat" items="[[assignments]]">\n      <lrn-assignment title="[[item.title]]" actions="[[item.actions]]"></lrn-assignment>\n    </template>\n\n    <template is="dom-if" if="[[url]]">\n      <iron-ajax auto="" url="[[url]]" handle-as="json" on-response="handleResponse"></iron-ajax>\n    </template>\n'
     ]);
-    _templateObject2_6e0e8470e11811e8a1ed4164aaf9b370 = function() {
+    _templateObject2_7b0be4e0e5f711e8a0ad77dd4f7e56cc = function() {
       return data;
     };
     return data;
   }
-  function _templateObject_6e0e8470e11811e8a1ed4164aaf9b370() {
-    var data = babelHelpers.taggedTemplateLiteral(
-      [
-        '\n    <style>\n      :host {\n        display: flex;\n        width: 100%;\n      }\n      paper-card {\n        width: 100%;\n      }\n    </style>\n    <paper-card heading="[[title]]" image="[[image]]" elevation="1" animated-shadow="false">\n      <div class="card-content">\n        [[details]]\n        <slot></slot>\n      </div>\n      <div class="card-actions">\n        <template is="dom-repeat" items="[[actions]]">\n          <a href$="[[item.url]]"><paper-button raised="">[[item.label]]</paper-button></a>\n        </template>\n      </div>\n    </paper-card>\n'
-      ],
-      [
-        '\n    <style>\n      :host {\n        display: flex;\n        width: 100%;\n      }\n      paper-card {\n        width: 100%;\n      }\n    </style>\n    <paper-card heading="[[title]]" image="[[image]]" elevation="1" animated-shadow="false">\n      <div class="card-content">\n        [[details]]\n        <slot></slot>\n      </div>\n      <div class="card-actions">\n        <template is="dom-repeat" items="[[actions]]">\n          <a href\\$="[[item.url]]"><paper-button raised="">[[item.label]]</paper-button></a>\n        </template>\n      </div>\n    </paper-card>\n'
-      ]
-    );
-    _templateObject_6e0e8470e11811e8a1ed4164aaf9b370 = function() {
+  function _templateObject_7b0be4e0e5f711e8a0ad77dd4f7e56cc() {
+    var data = babelHelpers.taggedTemplateLiteral([
+      '\n    <style>\n      :host {\n        display: flex;\n        width: 100%;\n      }\n      paper-card {\n        width: 100%;\n      }\n    </style>\n    <paper-card heading="[[title]]" image="[[image]]" elevation="1" animated-shadow="false">\n      <div class="card-content">\n        [[details]]\n        <slot></slot>\n      </div>  \n      <div class="card-actions">\n        <template is="dom-repeat" items="[[actions]]">\n          <a href$="[[item.url]]"><paper-button raised>[[item.label]]</paper-button></a>\n        </template>\n      </div>\n    </paper-card>\n'
+    ]);
+    _templateObject_7b0be4e0e5f711e8a0ad77dd4f7e56cc = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_6e0e8470e11811e8a1ed4164aaf9b370()
+      _templateObject_7b0be4e0e5f711e8a0ad77dd4f7e56cc()
     ),
     is: "lrn-assignment",
     properties: {
@@ -44,7 +39,7 @@ define([
   });
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject2_6e0e8470e11811e8a1ed4164aaf9b370()
+      _templateObject2_7b0be4e0e5f711e8a0ad77dd4f7e56cc()
     ),
     is: "lrn-assignments",
     properties: {
