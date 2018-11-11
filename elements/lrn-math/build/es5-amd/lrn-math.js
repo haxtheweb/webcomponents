@@ -1,22 +1,25 @@
 define([
+  "meta",
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
+  "./node_modules/@polymer/polymer/lib/utils/resolve-url.js",
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
-  "mathjax3/unpacked/MathJax.js"
-], function(_polymerLegacy, _polymerDom) {
+  "./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js"
+], function(meta, _polymerLegacy, _polymerDom, _resolveUrl) {
   "use strict";
-  function _templateObject_45208030e11911e89f44553d39ad6ced() {
+  meta = babelHelpers.interopRequireWildcard(meta);
+  function _templateObject_903a41e0e5f711e8a4f2c583573f4f41() {
     var data = babelHelpers.taggedTemplateLiteral([
-      '\n    <style>\n       :host {\n        display: inline;\n      }\n    </style>\n    [[prefix]] [[math]] [[suffix]]\n    <span hidden=""><slot id="content"></slot></span>\n'
+      "\n    <style>\n       :host {\n        display: inline;\n      }\n    </style>\n    [[prefix]] [[math]] [[suffix]]\n"
     ]);
-    _templateObject_45208030e11911e89f44553d39ad6ced = function() {
+    _templateObject_903a41e0e5f711e8a4f2c583573f4f41 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_45208030e11911e89f44553d39ad6ced()
+      _templateObject_903a41e0e5f711e8a4f2c583573f4f41()
     ),
     is: "lrn-math",
     behaviors: [HAXBehaviors.PropertiesBehaviors],
@@ -91,21 +94,32 @@ define([
           advanced: []
         }
       });
-    },
-    ready: function ready() {
-      var _this = this;
-      this._observer = (0, _polymerDom.dom)(this.$.content).observeNodes(
-        function(info) {
-          _this.math = info.addedNodes
-            .map(function(node) {
-              return node.textContent;
-            })
-            .toString();
-          setTimeout(function() {
-            window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub]);
-          }, 100);
-        }
+      var name = "mathjax",
+        basePath = (0, _resolveUrl.pathFromUrl)(meta.url),
+        location = "".concat(basePath, "lib/mathjax/latest.js");
+      window.addEventListener(
+        "es-bridge-".concat(name, "-loaded"),
+        this._mathjaxLoaded.bind(this)
       );
+      window.ESGlobalBridge.requestAvailability();
+      window.ESGlobalBridge.instance.load(name, location);
+    },
+    _mathjaxLoaded: function _mathjaxLoaded() {
+      var _this = this;
+      this._observer = (0, _polymerDom.dom)(this).observeNodes(function(info) {
+        _this.math = info.addedNodes
+          .map(function(node) {
+            return node.textContent;
+          })
+          .toString();
+        window.MathJax.Hub.Config({
+          skipStartupTypeset: !0,
+          jax: ["input/TeX", "output/HTML-CSS"],
+          messageStyle: "none",
+          tex2jax: { preview: "none" }
+        });
+        window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, "lrn-math"]);
+      });
     }
   });
 });

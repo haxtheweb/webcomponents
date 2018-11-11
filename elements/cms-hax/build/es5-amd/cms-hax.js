@@ -16,18 +16,18 @@ define([
   "./lib/cms-entity.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_a38ec710e11b11e88327fbf01976b8e2() {
+  function _templateObject_fcbd1e30e5f911e8a58c71af1e226f36() {
     var data = babelHelpers.taggedTemplateLiteral([
-      '\n    <style>\n      :host {\n        display: block;\n        font-size: 1em;\n        box-sizing: content-box;\n      }\n    </style>\n    <iron-ajax id="pageupdateajax" url="[[endPoint]]" method="[[method]]" body="[[updatePageData]]" content-type="application/json" handle-as="json" on-response="_handleUpdateResponse"></iron-ajax>\n    <paper-toast id="toast" horizontal-align="left"></paper-toast>\n    <hax-store hidden="" app-store="[[appStoreConnection]]" valid-tag-list="[[allowedTags]]"></hax-store>\n    <hax-autoloader id="loader" hidden=""></hax-autoloader>\n    <hax-panel id="panel" hide-export-button="{{hideExportButton}}" hide-panel-ops="[[hidePanelOps]]" hide-preferences-button="[[hidePreferencesButton]]" align="[[align]]"></hax-panel>\n    <hax-body id="body" context-offset-left="[[bodyOffsetLeft]]"></hax-body>\n    <hax-manager></hax-manager>\n    <hax-app-picker></hax-app-picker>\n    <hax-export-dialog></hax-export-dialog>\n    <cms-token></cms-token>\n    <cms-views></cms-views>\n    <cms-block></cms-block>\n    <cms-entity></cms-entity>\n'
+      '\n    <style>\n      :host {\n        display: block;\n        font-size: 16px;\n        box-sizing: content-box;\n      }\n    </style>\n    <iron-ajax id="pageupdateajax" url="[[endPoint]]" method="[[method]]" body="[[updatePageData]]" content-type="application/json" handle-as="json" on-response="_handleUpdateResponse"></iron-ajax>\n    <paper-toast id="toast" horizontal-align="left"></paper-toast>\n    <hax-store hidden="" app-store="[[appStoreConnection]]" valid-tag-list="[[allowedTags]]"></hax-store>\n    <hax-autoloader id="loader" hidden=""></hax-autoloader>\n    <hax-panel id="panel" hide-export-button="{{hideExportButton}}" hide-panel-ops="[[hidePanelOps]]" hide-preferences-button="[[hidePreferencesButton]]" align="[[align]]"></hax-panel>\n    <hax-body id="body" context-offset-left="[[bodyOffsetLeft]]"></hax-body>\n    <hax-manager></hax-manager>\n    <hax-app-picker></hax-app-picker>\n    <hax-export-dialog></hax-export-dialog>\n    <cms-token></cms-token>\n    <cms-views></cms-views>\n    <cms-block></cms-block>\n    <cms-entity></cms-entity>\n'
     ]);
-    _templateObject_a38ec710e11b11e88327fbf01976b8e2 = function() {
+    _templateObject_fcbd1e30e5f911e8a58c71af1e226f36 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a38ec710e11b11e88327fbf01976b8e2()
+      _templateObject_fcbd1e30e5f911e8a58c71af1e226f36()
     ),
     is: "cms-hax",
     properties: {

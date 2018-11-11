@@ -7,11 +7,11 @@ define([
   "./paper-square-grow-animation.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_a7c26600e11811e895e7ed71c57352a5() {
+  function _templateObject_e0bd0680e5f611e8acb9e384b77a2d1a() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host .vertical ::content .dropdown-content {\n        @apply(--layout-vertical);\n      }\n      :host .horizontal ::content .dropdown-content {\n        @apply(--layout-horizontal);\n      }\n      :host ::content .dropdown-content > * {\n        margin: 8px;\n        @apply(--paper-fab-speed-dial-option);\n      }\n    </style>\n    <slot id="fabContainer" select=".dropdown-trigger"></slot>\n    <iron-dropdown id="dropdown" open-animation-config="[[openAnimationConfig]]" close-animation-config="[[closeAnimationConfig]]">\n      <slot id="contentContainer" select=".dropdown-content"></slot>\n    </iron-dropdown>\n'
     ]);
-    _templateObject_a7c26600e11811e895e7ed71c57352a5 = function() {
+    _templateObject_e0bd0680e5f611e8acb9e384b77a2d1a = function() {
       return data;
     };
     return data;
@@ -19,7 +19,7 @@ define([
   (function(Polymer) {
     Polymer({
       _template: (0, _polymerLegacy.html)(
-        _templateObject_a7c26600e11811e895e7ed71c57352a5()
+        _templateObject_e0bd0680e5f611e8acb9e384b77a2d1a()
       ),
       is: "paper-fab-speed-dial",
       properties: {

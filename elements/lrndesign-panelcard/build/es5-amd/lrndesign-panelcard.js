@@ -5,23 +5,23 @@ define([
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_74c17e70e11911e8a26d01f39028c5f7() {
+  function _templateObject_b37b86a0e5f711e88692c91a0c6257a3() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
-        '\n    <style include="materializecss-styles"></style>\n    <style>\n      :host {\n        display: inline-block;\n        position: relative;\n        box-sizing: border-box;\n        --secondary-text-color: #FFFFFF;\n        --paper-input-container-color: #FFFFFF;\n      }\n\n      .card-panel {\n        transition: box-shadow .25s;\n        padding: 1.5em;\n        margin: 0;\n        border-radius: 2px;\n        background-color: #fff;\n      }\n\n      h3 {\n        padding: 0;\n        margin: 0 0 .5em 0;\n      }\n    </style>\n    <aside>\n      <paper-card elevation="[[elevation]]">\n        <div class$="card-panel [[color]]">\n          <h3 class$="[[textColor]]">[[title]]</h3>\n          <span class$="[[textColor]]">\n            <slot></slot>\n          </span>\n        </div>\n      </paper-card>\n    </aside>\n'
+        '\n    <style include="materializecss-styles"></style>\n    <style>\n      :host {\n        display: inline-block;\n        position: relative;\n        box-sizing: border-box;\n        --secondary-text-color: #FFFFFF;\n        --paper-input-container-color: #FFFFFF;\n      }\n\n      .card-panel {\n        transition: box-shadow .25s;\n        padding: 24px;\n        margin: 0;\n        border-radius: 2px;\n        background-color: #fff;\n      }\n\n      h3 {\n        padding: 0;\n        margin: 0 0 8px 0;\n      }\n    </style>\n    <aside>\n      <paper-card elevation="[[elevation]]">\n        <div class$="card-panel [[color]]">\n          <h3 class$="[[textColor]]">[[title]]</h3>\n          <span class$="[[textColor]]">\n            <slot></slot>\n          </span>\n        </div>\n      </paper-card>\n    </aside>\n'
       ],
       [
-        '\n    <style include="materializecss-styles"></style>\n    <style>\n      :host {\n        display: inline-block;\n        position: relative;\n        box-sizing: border-box;\n        --secondary-text-color: #FFFFFF;\n        --paper-input-container-color: #FFFFFF;\n      }\n\n      .card-panel {\n        transition: box-shadow .25s;\n        padding: 1.5em;\n        margin: 0;\n        border-radius: 2px;\n        background-color: #fff;\n      }\n\n      h3 {\n        padding: 0;\n        margin: 0 0 .5em 0;\n      }\n    </style>\n    <aside>\n      <paper-card elevation="[[elevation]]">\n        <div class\\$="card-panel [[color]]">\n          <h3 class\\$="[[textColor]]">[[title]]</h3>\n          <span class\\$="[[textColor]]">\n            <slot></slot>\n          </span>\n        </div>\n      </paper-card>\n    </aside>\n'
+        '\n    <style include="materializecss-styles"></style>\n    <style>\n      :host {\n        display: inline-block;\n        position: relative;\n        box-sizing: border-box;\n        --secondary-text-color: #FFFFFF;\n        --paper-input-container-color: #FFFFFF;\n      }\n\n      .card-panel {\n        transition: box-shadow .25s;\n        padding: 24px;\n        margin: 0;\n        border-radius: 2px;\n        background-color: #fff;\n      }\n\n      h3 {\n        padding: 0;\n        margin: 0 0 8px 0;\n      }\n    </style>\n    <aside>\n      <paper-card elevation="[[elevation]]">\n        <div class\\$="card-panel [[color]]">\n          <h3 class\\$="[[textColor]]">[[title]]</h3>\n          <span class\\$="[[textColor]]">\n            <slot></slot>\n          </span>\n        </div>\n      </paper-card>\n    </aside>\n'
       ]
     );
-    _templateObject_74c17e70e11911e8a26d01f39028c5f7 = function() {
+    _templateObject_b37b86a0e5f711e88692c91a0c6257a3 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_74c17e70e11911e8a26d01f39028c5f7()
+      _templateObject_b37b86a0e5f711e88692c91a0c6257a3()
     ),
     is: "lrndesign-panelcard",
     behaviors: [

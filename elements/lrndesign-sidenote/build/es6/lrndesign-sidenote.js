@@ -11,7 +11,7 @@ Polymer({
         display: block;
         --container-bg-color: lightgray;
         --container-text-color: black;
-        --container-padding: 1em;
+        --container-padding: 16px;
         --container-outset: 0;
         @apply --host-styles;
       }
@@ -32,13 +32,13 @@ Polymer({
       }
 
       #icon {
-        margin-right: .5em;
+        margin-right: 8px;
         @apply --icon-styles;
       }
 
       #label {
-        font-size: 1.3em;
-        margin: .8em 0;
+        font-size: 20.8px;
+        margin: 12.8px 0;
         flex: 1 1 auto;
         @apply --label-styles;
       }
@@ -61,7 +61,7 @@ Polymer({
     outsetMeasurementType: { type: String, value: "em" }
   },
   created: function() {
-    for (prop in this.properties) {
+    for (var prop in this.properties) {
       let prefix = this.is;
       prefix = prefix
         .replace("-", " ")

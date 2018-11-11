@@ -52,7 +52,7 @@ Polymer({
       }
 
       #title {
-        font-size: 1.0em;
+        font-size: 16px;
       }
 
       #right iron-icon {

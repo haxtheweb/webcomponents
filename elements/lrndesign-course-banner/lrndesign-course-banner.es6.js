@@ -14,23 +14,23 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         background-color: rgba(30, 30, 30, .8);
         text-align: left;
         margin: -5em 0 0 0;
-        padding: 1em;
+        padding: 16px;
         color: #ffffff;
-        height: 4em;
+        height: 64px;
       }
       .course-avatar {
         float: left;
         display: inline-flex;
-        padding: 0 1em 0 0;
+        padding: 0 16px 0 0;
       }
       .course-name {
-        font-size: 1em;
-        line-height: 1em;
-        min-width: 6em;
+        font-size: 16px;
+        line-height: 16px;
+        min-width: 96px;
       }
       .course-title {
-        font-size: 1em;
-        line-height: 1em;
+        font-size: 16px;
+        line-height: 16px;
         display: none;
       }
       .name-wrapper {
@@ -40,7 +40,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
       @media screen and (min-width: 420px) {
         .course-name {
-          font-size: 1.5em;
+          font-size: 24px;
         }
         .course-title {
           display: block;

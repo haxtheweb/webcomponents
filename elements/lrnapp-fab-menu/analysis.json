@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 62,
+              "line": 63,
               "column": 4
             },
             "end": {
-              "line": 65,
+              "line": 66,
               "column": 5
             }
           },
@@ -34,11 +34,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 69,
+              "line": 70,
               "column": 4
             },
             "end": {
-              "line": 73,
+              "line": 74,
               "column": 5
             }
           },
@@ -65,7 +65,7 @@
           "column": 8
         },
         "end": {
-          "line": 75,
+          "line": 76,
           "column": 1
         }
       },
@@ -77,11 +77,11 @@
           "description": "Icon that is shown next to the content",
           "sourceRange": {
             "start": {
-              "line": 62,
+              "line": 63,
               "column": 4
             },
             "end": {
-              "line": 65,
+              "line": 66,
               "column": 5
             }
           },
@@ -93,11 +93,11 @@
           "description": "Color class work to apply",
           "sourceRange": {
             "start": {
-              "line": 69,
+              "line": 70,
               "column": 4
             },
             "end": {
-              "line": 73,
+              "line": 74,
               "column": 5
             }
           },

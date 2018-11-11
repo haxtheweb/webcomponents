@@ -477,7 +477,7 @@ Polymer({
           </div>
           <app-toolbar id="toolbar" sticky="" class="tall">
             <div style="pointer-events: auto;" class="menu-btn-wrap">
-              <paper-icon-button style="pointer-events: auto;" title="Content outline" id="menubutton" icon="menu"></paper-icon-button>
+              <paper-icon-button style="pointer-events: auto;" title="Content outline" id="menubutton" icon="menu" on-tap="toggleBook"></paper-icon-button>
             </div>
             <div spacer="" class="outline-title">[[outlineTitle]]</div>
             <div spacer="" main-title="" style="pointer-events: auto;">
@@ -536,11 +536,10 @@ Polymer({
   is: "lrnapp-book",
 
   listeners: {
-    "menubutton.tap": "toggleBook",
     "progress.node-percent-milestone": "testMilestone",
     "route-change": "_routeChange",
-    "haxpanel.hax-item-selected": "_haxOperation",
-    "haxpanel.hax-content-insert": "_haxContentInsert"
+    "hax-item-selected": "_haxOperation",
+    "hax-content-insert": "_haxContentInsert"
   },
 
   observers: ["_routeChanged(data, route, endPoint)"],

@@ -17,7 +17,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
     </style>
     <paper-tabs>
       <template is="dom-repeat" items="[[tabs]]" as="tab">
-        <paper-tab><a target="_blank" href="[[tab.link]]" tabindex="-1"><paper-button raised="">[[tab.label]]</paper-button></a></paper-tab>
+        <paper-tab><a target="_blank" href="[[tab.link]]" tabindex="-1"><paper-button raised>[[tab.label]]</paper-button></a></paper-tab>
       </template>
     </paper-tabs>
 `,is:"tab-list",behaviors:[HAXBehaviors.PropertiesBehaviors],observers:["_valueChanged(tabs.*)"],properties:{tabs:{type:Array,value:[]}},_valueChanged:function(e){for(var i in e.base){for(var j in e.base[i]){this.notifyPath("tabs."+i+"."+j)}}},attached:function(){this.setHaxProperties({canScale:!1,canPosition:!1,canEditSource:!1,gizmo:{title:"Tabs",description:"A list of links as tabs.",icon:"icons:tab",color:"grey",groups:["Presentation","Links"],handles:[],meta:{author:"LRNWebComponents"}},settings:{quick:[],configure:[{property:"tabs",title:"Tabs",description:"Listing of tabs",inputMethod:"array",properties:[{property:"link",title:"Link",description:"link to go to",inputMethod:"textfield",required:!0},{property:"label",title:"Label",description:"text to place on the tab",inputMethod:"textfield",required:!0}]}],advanced:[]}})}});

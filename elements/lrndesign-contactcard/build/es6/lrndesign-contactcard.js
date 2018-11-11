@@ -21,7 +21,11 @@ Polymer({
 
       .name {
         text-align: center;
-        min-height: 1em;
+        min-height: 16px;
+      }
+      .name div {
+        font-size: 24px;
+        margin-bottom: 12px;
       }
 
       #img_wrap {
@@ -35,7 +39,7 @@ Polymer({
         padding: 4px;
         border-radius: 50%;
         width: 50%;
-        min-height: 10em;
+        min-height: 160px;
         margin-top: 25px;
       }
 
@@ -52,33 +56,45 @@ Polymer({
         margin: -8px 0 10px;
       }
 
-      .mail_icon {
+      #mail {
         width: 35px;
         height: 35px;
         color: var(--contactcard-icons-fill-color);
       }
 
-      .mail_icon:hover {
+      #mail:hover,
+      #mail:focus {
         color: var(--contactcard-icons-hover-color);
       }
 
-      .phone_icon {
+      #phone {
         width: 35px;
         height: 35px;
         color: var(--contactcard-icons-fill-color);
       }
 
-      .phone_icon:hover {
+      #phone:hover,
+      #phone:focus {
         color: var(--contactcard-icons-hover-color);
       }
 
-      .computer_icon {
+      #twitter {
         width: 35px;
         height: 35px;
         color: var(--contactcard-icons-fill-color);
       }
+      #twitter:hover,
+      #twitter:focus {
+        color: var(--contactcard-icons-hover-color);
+      }
 
-      .computer_icon:hover {
+      #website {
+        width: 35px;
+        height: 35px;
+        color: var(--contactcard-icons-fill-color);
+      }
+      #website:hover,
+      #website:focus {
         color: var(--contactcard-icons-hover-color);
       }
 
@@ -93,7 +109,7 @@ Polymer({
 
       social-media-icons {
         --social-media-icons-hover-color: var(--contactcard-icons-hover-color);
-        margin-left: .5em;
+        margin-left: 8px;
       }
 
       .icons {
@@ -105,15 +121,16 @@ Polymer({
 
       paper-button {
         padding: 0;
-        margin: 0;
-        min-width: 1rem;
+        margin: 0 8px;
+        display: block;
+        min-width: 16px;
       }
     </style>
     <paper-card>
       <div id="img_wrap"><img class="profile-image" src="[[image]]"></div>
       <div class="name">
         <template is="dom-if" if="[[name]]">
-        <h2>[[name]]</h2>
+        <div>[[name]]</div>
         </template>
       </div>
       <div class="position">[[position]]</div>
@@ -121,36 +138,36 @@ Polymer({
       <div id="group_icons">
         <div class="icons">
         <template is="dom-if" if="[[email]]">
-          <a href\$="mailto:[[email]]">
-            <paper-button id="mail">
+          <a tabindex="-1" href\$="mailto:[[email]]">
+            <paper-button id="mail" title$="Email address [[email]]">
               <iron-icon icon="mail" class="mail_icon"></iron-icon>
             </paper-button>
           </a>
-          <paper-tooltip for="mail">Email</paper-tooltip>
+          <paper-tooltip for="mail" position="bottom">Email</paper-tooltip>
         </template>
         <template is="dom-if" if="[[phone]]">
-          <a href\$="tel:[[phone]]">
-            <paper-button id="phone">
+          <a tabindex="-1" href\$="tel:[[phone]]">
+            <paper-button id="phone" title$="Phone number [[phone]]">
               <iron-icon icon="maps:local-phone" class="phone_icon"></iron-icon>
               </paper-button>
           </a>
-          <paper-tooltip for="phone">Call</paper-tooltip>
+          <paper-tooltip for="phone" position="bottom">Call</paper-tooltip>
         </template>
         <template is="dom-if" if="[[website]]">
-          <a href\$="[[website]]">
-            <paper-button id="website">
+          <a tabindex="-1" href\$="[[website]]">
+            <paper-button id="website" title$="Website address [[website]]">
               <iron-icon icon="hardware:desktop-windows" class="computer_icon"></iron-icon>
               </paper-button>
           </a>
-          <paper-tooltip for="website">Visit</paper-tooltip>
+          <paper-tooltip for="website" position="bottom">Visit</paper-tooltip>
         </template>
         <template is="dom-if" if="[[twitter]]">
-          <a href\$="[[twitter]]">
-            <paper-button id="twitter">
+          <a tabindex="-1" href$="[[twitter]]">
+            <paper-button id="twitter" title$="Twitter name [[twitter]]">
               <social-media-icons icon="twitter" color="#aeaeae" size="35" class="twitter_icon"></social-media-icons>
               </paper-button>
           </a>
-          <paper-tooltip for="twitter">Connect</paper-tooltip>
+          <paper-tooltip for="twitter" position="bottom">Connect</paper-tooltip>
         </template>
         </div>
       </div>

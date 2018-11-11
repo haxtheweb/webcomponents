@@ -20,19 +20,19 @@ Polymer({
         display: block;
       }
       .license-link {
-        font-size: 1em;
-        line-height: 1em;
+        font-size: 16px;
+        line-height: 16px;
         font-style: italic;
       }
       .citation-date {
-        font-size: 1em;
-        line-height: 1em;
+        font-size: 16px;
+        line-height: 16px;
         font-style: italic;
       }
       .license-link img {
-        height: 1em;
-        min-width: 1em;
-        margin-right: .5em;
+        height: 16px;
+        min-width: 16px;
+        margin-right: 8px;
       }
     </style>
     <meta about\$="[[relatedResource]]" property="cc:attributionUrl" content\$="[[source]]">

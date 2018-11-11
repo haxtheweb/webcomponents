@@ -1,11 +1,11 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/random-image/random-image.js";import"@polymer/paper-button/paper-button.js";Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/random-image/random-image.js";import"./node_modules/@polymer/paper-button/paper-button.js";Polymer({_template:html`
     <style>
       :host {
         display: block;
       }
     </style>
-    <div id="image-list">
-      <random-image images-list\$="{{images}}"></random-image>
+    <div id="list">
+      <random-image images-list$="{{images}}"></random-image>
   </div>
-  <paper-button raised="" on-click="reload">Reload</paper-button>
-`,is:"lrnsys-randomimage",properties:{images:{type:Object,notify:!0,value:function(){return[]}}},reload:function(){let root=this;root.shadowRoot.querySelector("#image-list").innerHTML=root.shadowRoot.querySelector("#image-list").innerHTML}});
+  <paper-button raised on-click="reload">Reload</paper-button>
+`,is:"lrnsys-randomimage",properties:{images:{type:Object,notify:!0,value:function(){return[]}}},reload:function(){this;this.$.list.innerHTML=this.$.list.innerHTML}});

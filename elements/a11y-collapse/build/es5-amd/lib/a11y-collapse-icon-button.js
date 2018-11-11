@@ -3,11 +3,12 @@ define([
   "../node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
   "../node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
   "../node_modules/@polymer/paper-icon-button/paper-icon-button.js",
+  "../node_modules/@polymer/iron-icons/iron-icons.js",
   "./a11y-collapse-button-styles.js",
   "../node_modules/@polymer/paper-tooltip/paper-tooltip.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_e51c9340e11811e894a841840aff2209() {
+  function _templateObject_23745730e5f711e8919ecd17167bf29a() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style include="a11y-collapse-button-styles">\n      :host #expand:focus,\n      :host #expand:hover {\n        @apply --a11y-collapse-icon-focus;\n      }\n    </style>\n    <div id="heading">\n      <div id="text"><slot></slot></div>\n      <paper-icon-button id="expand" alt$="[[label]]" aria-controls="content" aria-expanded$="[[exanded]]" disabled$="[[disabled]]" label$="[[label]]" icon$="[[icon]]" rotated$="[[rotated]]">\n      </paper-icon-button>\n      <paper-tooltip for="expand">[[tooltip]]</paper-tooltip>\n    </div>\n'
@@ -16,14 +17,14 @@ define([
         '\n    <style include="a11y-collapse-button-styles">\n      :host #expand:focus,\n      :host #expand:hover {\n        @apply --a11y-collapse-icon-focus;\n      }\n    </style>\n    <div id="heading">\n      <div id="text"><slot></slot></div>\n      <paper-icon-button id="expand" alt\\$="[[label]]" aria-controls="content" aria-expanded\\$="[[exanded]]" disabled\\$="[[disabled]]" label\\$="[[label]]" icon\\$="[[icon]]" rotated\\$="[[rotated]]">\n      </paper-icon-button>\n      <paper-tooltip for="expand">[[tooltip]]</paper-tooltip>\n    </div>\n'
       ]
     );
-    _templateObject_e51c9340e11811e894a841840aff2209 = function() {
+    _templateObject_23745730e5f711e8919ecd17167bf29a = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_e51c9340e11811e894a841840aff2209()
+      _templateObject_23745730e5f711e8919ecd17167bf29a()
     ),
     is: "a11y-collapse-icon-button",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

@@ -17,13 +17,13 @@ Polymer({
       .egletter p {
         position: relative;
         z-index: 3;
-        line-height: 1.5rem;
+        line-height: 24px;
       }
 
       .egletter ul {
         position: relative;
         z-index: 3;
-        line-height: 1.5rem;
+        line-height: 24px;
       }
 
       .egletter span {
@@ -31,34 +31,34 @@ Polymer({
         margin: 0 auto;
         position: relative;
         z-index: 3;
-        line-height: 4em;
+        line-height: 64px;
       }
 
       iron-icon {
-        font-size: 1em;
-        height: 2em;
-        width: 2em;
-        margin: -1.1em 0 0 .5em;
+        font-size: 16px;
+        height: 32px;
+        width: 32px;
+        margin: -16px 0 0 8px;
       }
 
       .icon-container {
         float: left;
-        width: 3em;
-        height: 3em;
-        margin-right: .5em;
+        width: 48px;
+        height: 48px;
+        margin-right: 8px;
       }
 
       .egletter span {
-        line-height: 3em;
+        line-height: 48px;
       }
 
       .egletter {
-        min-height: 10rem;
-        padding: .75rem 1.5rem;
+        min-height: 160px;
+        padding: 12px 24px;
         position: relative;
         width: 80%;
         z-index: 4;
-        margin-bottom: 3rem;
+        margin-bottom: 48px;
       }
 
       .egletter:before,
@@ -73,22 +73,22 @@ Polymer({
       .egletter:before {
         background: #fafafa;
         box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.2);
-        left: -.2rem;
-        top: .2rem;
+        left: -.32px;
+        top: .32px;
         transform: rotate(-2.5deg);
       }
 
       .egletter:after {
         background: #ffffff;
-        box-shadow: 0 0 .2rem rgba(0, 0, 0, 0.2);
-        right: -.2rem;
-        top: .1rem;
+        box-shadow: 0 0 .32px rgba(0, 0, 0, 0.2);
+        right: -.32px;
+        top: 1.6px;
         transform: rotate(1.4deg);
       }
     </style>
     <div class="egletter">
       <div class$="icon-container circle [[color]]">
-        <iron-icon icon="[[icon]]" class$="[[textColor]]"></iron-icon>
+        <iron-icon icon$="[[icon]]" class$="[[textColor]]"></iron-icon>
       </div>
       <span>[[title]]</span>
       <p><slot></slot></p>

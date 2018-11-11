@@ -42,7 +42,7 @@ Polymer({
           flex-grow: 2;
         }
         :host #autoscroll {
-          padding-right: 0.5em;
+          padding-right: 8px;
         }
         :host #scrolling,
         :host #printing {

@@ -3,8 +3,9 @@ import {
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
 import { dom } from "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
+import { pathFromUrl } from "./node_modules/@polymer/polymer/lib/utils/resolve-url.js";
 import "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "mathjax3/unpacked/MathJax.js";
+import "./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 Polymer({
   _template: html`
     <style>
@@ -13,7 +14,6 @@ Polymer({
       }
     </style>
     [[prefix]] [[math]] [[suffix]]
-    <span hidden=""><slot id="content"></slot></span>
 `,
   is: "lrn-math",
   behaviors: [HAXBehaviors.PropertiesBehaviors],
@@ -86,13 +86,28 @@ Polymer({
         advanced: []
       }
     });
+    const name = "mathjax",
+      basePath = pathFromUrl(import.meta.url);
+    window.addEventListener(
+      `es-bridge-${name}-loaded`,
+      this._mathjaxLoaded.bind(this)
+    );
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load(
+      name,
+      `${basePath}lib/mathjax/latest.js`
+    );
   },
-  ready: function() {
-    this._observer = dom(this.$.content).observeNodes(info => {
+  _mathjaxLoaded: function() {
+    this._observer = dom(this).observeNodes(info => {
       this.math = info.addedNodes.map(node => node.textContent).toString();
-      setTimeout(function() {
-        window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub]);
-      }, 100);
+      window.MathJax.Hub.Config({
+        skipStartupTypeset: !0,
+        jax: ["input/TeX", "output/HTML-CSS"],
+        messageStyle: "none",
+        tex2jax: { preview: "none" }
+      });
+      window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, "lrn-math"]);
     });
   }
 });

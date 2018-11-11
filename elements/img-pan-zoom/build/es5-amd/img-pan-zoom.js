@@ -1,26 +1,24 @@
 define([
+  "meta",
   "./node_modules/@polymer/polymer/polymer-legacy.js",
-  "./lib/img-loader.js",
-  "openseadragon/openseadragon.min.js"
-], function(_polymerLegacy) {
+  "./node_modules/@polymer/polymer/lib/utils/resolve-url.js",
+  "./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js",
+  "./lib/img-loader.js"
+], function(meta, _polymerLegacy, _resolveUrl) {
   "use strict";
-  function _templateObject_5ff497d0e11811e8b64e1f0a02c4acf6() {
-    var data = babelHelpers.taggedTemplateLiteral(
-      [
-        '\n    <style>\n      :host {\n        display: block;\n        position: relative;\n        height: 500px;\n      }\n      #viewer{\n        position: relative;\n        height: 100%;\n        width: 100%;\n      }\n\n      paper-spinner-lite{\n        opacity: 0;\n        display: block;\n        transition: opacity 700ms;\n        position: absolute;\n        margin: auto;\n        top: 0;\n        left: 0;\n        bottom: 0;\n        right: 0;\n        z-index: 1;\n        height: 70px;\n        width: 70px;\n        --paper-spinner-color: var(--img-pan-zoom-spinner-color, #2196F3);\n        --paper-spinner-stroke-width: var(--img-pan-zoom-spinner-width, 5px);\n        @apply(--img-pan-zoom-spinner);\n      }\n      paper-spinner-lite[active]{\n        opacity: 1;\n      }\n      [hidden]{\n        display: none;\n      }\n    </style>\n\n    <!-- Only preload regular images -->\n    <template is="dom-if" if="[[!dzi]]">\n      <paper-spinner-lite hidden$="[[hideSpinner]]" active="[[loading]]"></paper-spinner-lite>\n      <img-loader loaded="{{loaded}}" loading="{{loading}}" src="[[src]]"></img-loader>\n    </template>\n\n    <!-- Openseadragon -->\n    <div id="viewer"></div>\n'
-      ],
-      [
-        '\n    <style>\n      :host {\n        display: block;\n        position: relative;\n        height: 500px;\n      }\n      #viewer{\n        position: relative;\n        height: 100%;\n        width: 100%;\n      }\n\n      paper-spinner-lite{\n        opacity: 0;\n        display: block;\n        transition: opacity 700ms;\n        position: absolute;\n        margin: auto;\n        top: 0;\n        left: 0;\n        bottom: 0;\n        right: 0;\n        z-index: 1;\n        height: 70px;\n        width: 70px;\n        --paper-spinner-color: var(--img-pan-zoom-spinner-color, #2196F3);\n        --paper-spinner-stroke-width: var(--img-pan-zoom-spinner-width, 5px);\n        @apply(--img-pan-zoom-spinner);\n      }\n      paper-spinner-lite[active]{\n        opacity: 1;\n      }\n      [hidden]{\n        display: none;\n      }\n    </style>\n\n    <!-- Only preload regular images -->\n    <template is="dom-if" if="[[!dzi]]">\n      <paper-spinner-lite hidden\\$="[[hideSpinner]]" active="[[loading]]"></paper-spinner-lite>\n      <img-loader loaded="{{loaded}}" loading="{{loading}}" src="[[src]]"></img-loader>\n    </template>\n\n    <!-- Openseadragon -->\n    <div id="viewer"></div>\n'
-      ]
-    );
-    _templateObject_5ff497d0e11811e8b64e1f0a02c4acf6 = function() {
+  meta = babelHelpers.interopRequireWildcard(meta);
+  function _templateObject_a1d27540e5f611e884df2594769b91dd() {
+    var data = babelHelpers.taggedTemplateLiteral([
+      '\n    <style>\n      :host {\n        display: block;\n        position: relative;\n        height: 500px;\n      }\n      #viewer {\n        position: relative;\n        height: 100%;\n        width: 100%;\n      }\n\n      paper-spinner-lite {\n        opacity: 0;\n        display: block;\n        transition: opacity 700ms;\n        position: absolute;\n        margin: auto;\n        top: 0;\n        left: 0;\n        bottom: 0;\n        right: 0;\n        z-index: 1;\n        height: 70px;\n        width: 70px;\n        --paper-spinner-color: var(--img-pan-zoom-spinner-color, #2196F3);\n        --paper-spinner-stroke-width: var(--img-pan-zoom-spinner-width, 5px);\n        @apply(--img-pan-zoom-spinner);\n      }\n      paper-spinner-lite[active] {\n        opacity: 1;\n      }\n    </style>\n\n    <!-- Only preload regular images -->\n    <template is="dom-if" if="[[!dzi]]">\n      <paper-spinner-lite hidden$="[[hideSpinner]]" active="[[loading]]"></paper-spinner-lite>\n      <img-loader loaded="{{loaded}}" loading="{{loading}}" src="[[src]]"></img-loader>\n    </template>\n\n    <!-- Openseadragon -->\n    <div id="viewer"></div>\n'
+    ]);
+    _templateObject_a1d27540e5f611e884df2594769b91dd = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_5ff497d0e11811e8b64e1f0a02c4acf6()
+      _templateObject_a1d27540e5f611e884df2594769b91dd()
     ),
     is: "img-pan-zoom",
     properties: {
@@ -48,35 +46,58 @@ define([
       visibilityRatio: { type: Number, value: 1 }
     },
     observers: ["_srcChanged(src)"],
-    ready: function ready() {
-      this.animationConfig = {
-        fade: { name: "fade-in-animation", node: this.$.viewer }
-      };
+    created: function created() {
+      var name = "openseadragon",
+        basePath = (0, _resolveUrl.pathFromUrl)(meta.url),
+        location = "".concat(
+          basePath,
+          "../../openseadragon/build/openseadragon/openseadragon.js"
+        );
+      window.addEventListener(
+        "es-bridge-".concat(name, "-loaded"),
+        this._openseadragonLoaded.bind(this)
+      );
+      window.ESGlobalBridge.requestAvailability();
+      window.ESGlobalBridge.instance.load(name, location);
+    },
+    _openseadragonLoaded: function _openseadragonLoaded() {
+      this.__openseadragonLoaded = !0;
       if (this.dzi) {
         this._initOpenSeadragon();
       }
     },
-    _initOpenSeadragon: function _initOpenSeadragon() {
-      var tileSources = this.src;
-      if (!this.dzi) {
-        tileSources = { type: "image", url: this.src, buildPyramid: !1 };
+    ready: function ready() {
+      this.animationConfig = {
+        fade: { name: "fade-in-animation", node: this.$.viewer }
+      };
+      if (this.dzi && this.__openseadragonLoaded) {
+        this._initOpenSeadragon();
       }
-      this.viewer = OpenSeadragon({
-        element: this.$.viewer,
-        visibilityRatio: this.visibilityRatio,
-        constrainDuringPan: this.constrainDuringPan,
-        showNavigationControl: this.showNavigationControl,
-        showNavigator: this.showNavigator,
-        zoomPerClick: this.zoomPerClick,
-        zoomPerScroll: this.zoomPerScroll,
-        animationTime: this.animationTime,
-        navPrevNextWrap: this.navPrevNextWrap,
-        showRotationControl: this.showRotationControl,
-        minZoomImageRatio: this.minZoomImageRatio,
-        maxZoomPixelRatio: this.maxZoomPixelRatio,
-        tileSources: tileSources
-      });
-      this.init = !0;
+    },
+    _initOpenSeadragon: function _initOpenSeadragon() {
+      var _this = this;
+      setTimeout(function() {
+        var tileSources = _this.src;
+        if (!_this.dzi) {
+          tileSources = { type: "image", url: _this.src, buildPyramid: !1 };
+        }
+        _this.viewer = new OpenSeadragon({
+          element: _this.$.viewer,
+          visibilityRatio: _this.visibilityRatio,
+          constrainDuringPan: _this.constrainDuringPan,
+          showNavigationControl: _this.showNavigationControl,
+          showNavigator: _this.showNavigator,
+          zoomPerClick: _this.zoomPerClick,
+          zoomPerScroll: _this.zoomPerScroll,
+          animationTime: _this.animationTime,
+          navPrevNextWrap: _this.navPrevNextWrap,
+          showRotationControl: _this.showRotationControl,
+          minZoomImageRatio: _this.minZoomImageRatio,
+          maxZoomPixelRatio: _this.maxZoomPixelRatio,
+          tileSources: tileSources
+        });
+        _this.init = !0;
+      }, 100);
     },
     destroy: function destroy() {
       this.viewer.destroy();

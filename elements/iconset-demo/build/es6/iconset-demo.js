@@ -25,8 +25,8 @@ class IconsetDemo extends PolymerElement {
 }
 :host li {
   display: inline-block;
-  width: 10em;
-  margin: 1em 0.5em;
+  width: 160px;
+  margin: 16px 8px;
   text-align: center;
 }
 :host iron-icon {
@@ -59,7 +59,7 @@ class IconsetDemo extends PolymerElement {
   color: #005f8b;
 }
 :host #icon-text {
-  margin-top: 0.5em;
+  margin-top: 8px;
   font-size: 10px;
   color: black;
   text-align: center;

@@ -2,26 +2,26 @@ define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./node_modules/@polymer/iron-flex-layout/iron-flex-layout.js",
   "./node_modules/@polymer/iron-resizable-behavior/iron-resizable-behavior.js",
-  "./node_modules/@polymer/paper-styles/default-theme.js"
+  "./node_modules/@polymer/paper-styles/paper-styles.js"
 ], function(_polymerLegacy, _ironFlexLayout, _ironResizableBehavior) {
   "use strict";
-  function _templateObject_47b57860e11811e8b0ce979cfde2ecc2() {
+  function _templateObject_7c8b4e60e5f611e891a90b78e40e96d4() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
-        '\n        <style>\n\n            :host {\n                @apply(--layout-vertical);\n                @apply(--layout-center-center);\n\n                position: relative;\n\n                width: var(--circle-progress-width, 64px);\n                height: var(--circle-progress-height, 64px);\n                margin: 24px;\n\n                border-radius: 50%;\n            }\n\n            svg {\n                position: absolute;\n                top: 0;\n                left: 0;\n\n                display: none;\n            }\n\n            .circle-background {\n                stroke: var(--circle-progress-bg-stroke-color, --paper-grey-100);\n            }\n\n            .circle-foreground {\n                transition: stroke-dashoffset var(--circle-progress-transition, 150ms);\n\n                stroke: var(--circle-progress-stroke-color, --accent-color);\n                stroke-linecap: var(--circle-progress-stroke-linecap, round);\n            }\n\n        </style>\n\n        <svg id="circle" width="100%" height="100%">\n            <circle class="circle-background" r$="[[_radius]]" cx$="[[_cx]]" cy$="[[_cy]]" fill="transparent" stroke-width$="[[strokeWidth]]"></circle>\n            <circle class="circle-foreground" r$="[[_radius]]" cx$="[[_cx]]" cy$="[[_cy]]" fill="transparent" stroke-width$="[[strokeWidth]]" stroke-dasharray$="[[_dasharray]]" stroke-dashoffset$="[[_dashoffset]]" transform$="[[_transform]]"></circle>\n        </svg>\n\n        <slot></slot>\n'
+        '\n  <custom-style>\n        <style is="custom-style">\n            :host {\n                @apply(--layout-vertical);\n                @apply(--layout-center-center);\n                position: relative;\n                width: var(--circle-progress-width, 64px);\n                height: var(--circle-progress-height, 64px);\n                margin: 24px;\n                border-radius: 50%;\n            }\n\n            svg {\n                position: absolute;\n                top: 0;\n                left: 0;\n                display: none;\n            }\n            .circle-background {\n                stroke: var(--circle-progress-bg-stroke-color, --paper-grey-100);\n            }\n\n            .circle-foreground {\n                transition: stroke-dashoffset var(--circle-progress-transition, 150ms);\n\n                stroke: var(--circle-progress-stroke-color, blue);\n                stroke-linecap: var(--circle-progress-stroke-linecap, round);\n            }\n\n        </style>\n  </custom-style>\n        <svg id="circle" width="100%" height="100%">\n            <circle class="circle-background" r$="[[_radius]]" cx$="[[_cx]]" cy$="[[_cy]]" fill="transparent" stroke-width$="[[strokeWidth]]"></circle>\n            <circle class="circle-foreground" r$="[[_radius]]" cx$="[[_cx]]" cy$="[[_cy]]" fill="transparent" stroke-width$="[[strokeWidth]]" stroke-dasharray$="[[_dasharray]]" stroke-dashoffset$="[[_dashoffset]]" transform$="[[_transform]]"></circle>\n        </svg>\n\n        <slot></slot>\n'
       ],
       [
-        '\n        <style>\n\n            :host {\n                @apply(--layout-vertical);\n                @apply(--layout-center-center);\n\n                position: relative;\n\n                width: var(--circle-progress-width, 64px);\n                height: var(--circle-progress-height, 64px);\n                margin: 24px;\n\n                border-radius: 50%;\n            }\n\n            svg {\n                position: absolute;\n                top: 0;\n                left: 0;\n\n                display: none;\n            }\n\n            .circle-background {\n                stroke: var(--circle-progress-bg-stroke-color, --paper-grey-100);\n            }\n\n            .circle-foreground {\n                transition: stroke-dashoffset var(--circle-progress-transition, 150ms);\n\n                stroke: var(--circle-progress-stroke-color, --accent-color);\n                stroke-linecap: var(--circle-progress-stroke-linecap, round);\n            }\n\n        </style>\n\n        <svg id="circle" width="100%" height="100%">\n            <circle class="circle-background" r\\$="[[_radius]]" cx\\$="[[_cx]]" cy\\$="[[_cy]]" fill="transparent" stroke-width\\$="[[strokeWidth]]"></circle>\n            <circle class="circle-foreground" r\\$="[[_radius]]" cx\\$="[[_cx]]" cy\\$="[[_cy]]" fill="transparent" stroke-width\\$="[[strokeWidth]]" stroke-dasharray\\$="[[_dasharray]]" stroke-dashoffset\\$="[[_dashoffset]]" transform\\$="[[_transform]]"></circle>\n        </svg>\n\n        <slot></slot>\n'
+        '\n  <custom-style>\n        <style is="custom-style">\n            :host {\n                @apply(--layout-vertical);\n                @apply(--layout-center-center);\n                position: relative;\n                width: var(--circle-progress-width, 64px);\n                height: var(--circle-progress-height, 64px);\n                margin: 24px;\n                border-radius: 50%;\n            }\n\n            svg {\n                position: absolute;\n                top: 0;\n                left: 0;\n                display: none;\n            }\n            .circle-background {\n                stroke: var(--circle-progress-bg-stroke-color, --paper-grey-100);\n            }\n\n            .circle-foreground {\n                transition: stroke-dashoffset var(--circle-progress-transition, 150ms);\n\n                stroke: var(--circle-progress-stroke-color, blue);\n                stroke-linecap: var(--circle-progress-stroke-linecap, round);\n            }\n\n        </style>\n  </custom-style>\n        <svg id="circle" width="100%" height="100%">\n            <circle class="circle-background" r\\$="[[_radius]]" cx\\$="[[_cx]]" cy\\$="[[_cy]]" fill="transparent" stroke-width\\$="[[strokeWidth]]"></circle>\n            <circle class="circle-foreground" r\\$="[[_radius]]" cx\\$="[[_cx]]" cy\\$="[[_cy]]" fill="transparent" stroke-width\\$="[[strokeWidth]]" stroke-dasharray\\$="[[_dasharray]]" stroke-dashoffset\\$="[[_dashoffset]]" transform\\$="[[_transform]]"></circle>\n        </svg>\n\n        <slot></slot>\n'
       ]
     );
-    _templateObject_47b57860e11811e8b0ce979cfde2ecc2 = function() {
+    _templateObject_7c8b4e60e5f611e891a90b78e40e96d4 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_47b57860e11811e8b0ce979cfde2ecc2()
+      _templateObject_7c8b4e60e5f611e891a90b78e40e96d4()
     ),
     is: "circle-progress",
     behaviors: [_ironResizableBehavior.IronResizableBehavior],
@@ -60,6 +60,7 @@ define([
       return cx && cy ? "rotate(" + angle + ", " + cx + ", " + cy + ")" : "";
     },
     _onIronResize: function _onIronResize() {
+      console.log(this.offsetHeight);
       if (this.offsetWidth && this.offsetHeight) {
         this._cx = this.offsetWidth / 2;
         this._cy = this.offsetHeight / 2;

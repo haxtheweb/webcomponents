@@ -1,22 +1,23 @@
 define([
   "../node_modules/@polymer/polymer/polymer-legacy.js",
   "../node_modules/@polymer/paper-dialog/paper-dialog.js",
+  "../node_modules/@polymer/iron-icons/iron-icons.js",
   "../node_modules/@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js",
   "../node_modules/@polymer/paper-icon-button/paper-icon-button.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_4b2666c0e11911e89206fd8340077899() {
+  function _templateObject_04415cd0e5f911e89b531df1ff6ecd3d() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n        <style>\n          :host {\n            display: block;\n            position: relative;\n          }\n          paper-dialog {\n            display: block;\n            margin: auto;\n            width: 80%;\n            height: auto;\n            z-index: 1000;\n          }\n          .close_button {\n            display: flex;\n            flex-direction: row-reverse;\n            margin-top: 0;\n            background-color: #20427b;\n            color: #fff;\n            padding: 8px;\n          }\n        </style>\n        <paper-dialog id="dialog" with-backdrop="" opened="{{opened}}">\n          <div class="close_button">\n            <paper-icon-button icon="cancel" dialog-dismiss=""></paper-icon-button>\n          </div>\n          <paper-dialog-scrollable>\n            <slot></slot>\n          </paper-dialog-scrollable>\n        </paper-dialog>\n'
     ]);
-    _templateObject_4b2666c0e11911e89206fd8340077899 = function() {
+    _templateObject_04415cd0e5f911e89b531df1ff6ecd3d = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_4b2666c0e11911e89206fd8340077899()
+      _templateObject_04415cd0e5f911e89b531df1ff6ecd3d()
     ),
     is: "lrn-vocab-dialog",
     listeners: {

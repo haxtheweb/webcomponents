@@ -77,7 +77,7 @@ Polymer({
       .back {
         display: inline-block;
         text-align: center;
-        letter-spacing: -.02em;
+        letter-spacing: -.32px;
         font-size: 15px;
         font-weight: 400;
         font-style: normal;
@@ -88,7 +88,7 @@ Polymer({
         color: white;
         vertical-align: middle;
         box-sizing: border-box;
-        border-radius: 999em;
+        border-radius: 50%;
         line-height: 44px;
         padding: 0 18px;
       }
@@ -100,12 +100,11 @@ Polymer({
     <div class="inner">
       <h1 class="blog-title">[[manifest.title]]</h1>
       <h2 class="blog-description">[[manifest.description]]</h2>
-      <paper-button id="backbutton" class="back" raised="[[active]]">Back to main site</paper-button>
+      <paper-button id="backbutton" class="back" raised="[[active]]" on-tap="_backButtonTap">Back to main site</paper-button>
     </div>
 `,
   is: "simple-blog-footer",
   listeners: {
-    "backbutton.tap": "_backButtonTap",
     mousedown: "_activate",
     mouseover: "_activate",
     mouseout: "_deactivate",

@@ -8,7 +8,7 @@ $_documentContainer.innerHTML = `<dom-module id="a11y-collapse-button-styles">
                 display: flex;
                 justify-content: stretch;
                 align-items: center;
-                padding: 0em var(--a11y-collapse-horizontal-padding, 1em);
+                padding: 0 var(--a11y-collapse-horizontal-padding, 16px);
                 font-weight: bold;
                 @apply --a11y-collapse-heading;
             }

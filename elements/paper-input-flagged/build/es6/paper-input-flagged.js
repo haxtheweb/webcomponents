@@ -2,9 +2,9 @@ import {
   html,
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
-import "@polymer/paper-input/paper-input.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
-import { PaperInputBehavior } from "@polymer/paper-input/paper-input-behavior.js";
+import "./node_modules/@polymer/paper-input/paper-input.js";
+import "./node_modules/@polymer/paper-tooltip/paper-tooltip.js";
+import { PaperInputBehavior } from "./node_modules/@polymer/paper-input/paper-input-behavior.js";
 import "./node_modules/@polymer/iron-icons/iron-icons.js";
 import "./node_modules/@polymer/iron-icon/iron-icon.js";
 Polymer({
@@ -50,9 +50,9 @@ Polymer({
       <iron-icon id="icon" icon="[[icon]]" slot="prefix"></iron-icon>
     </paper-input>
     <div class="element-invisible">[[__activeMessage]]</div>
-    <paper-tooltip for="icon" position="top" offset="20" fit-to-visible-bounds="">
+    <paper-tooltip for="icon" position="top" offset="20" fit-to-visible-bounds>
         [[__activeMessage]]
-      </paper-tooltip>
+    </paper-tooltip>
 `,
   is: "paper-input-flagged",
   behaviors: [PaperInputBehavior],
@@ -63,7 +63,7 @@ Polymer({
       reflectToAttribute: !0,
       computed: "testStatus(flaggedInput, value)"
     },
-    value: { type: String, notify: !0 },
+    value: { type: String, notify: !0, value: "" },
     flaggedInput: {
       type: Array,
       value: [

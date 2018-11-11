@@ -11,18 +11,18 @@ define([
   "./lib/gene-crossover-5.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_1a4726b0e11a11e89f59276939c17549() {
+  function _templateObject_4c15b020e5f811e88463e57e2e4ebdaa() {
     var data = babelHelpers.taggedTemplateLiteral([
-      '\n    <style is="custom-style" include="animation-shared-styles">\n       :host {\n        display: block;\n      }\n      h1,\n      h2,\n      h3,\n      h4,\n      h5,\n      h6 {\n        font-family: \'Open Sans\', sans-serif;\n        text-transform: uppercase;\n        letter-spacing: 2px;\n        color: #6D6E71;\n        text-align: center;\n        font-size: 1.2em;\n      }\n\n      p {\n        font-family: \'Open Sans\', sans-serif;\n      }\n    </style>\n\n    <!--Pages-->\n    <iron-pages selected="[[activePage]]">\n      <gene-crossover-1 selected="[[_isActive(activePage, 0)]]"></gene-crossover-1>\n      <gene-crossover-2 selected="[[_isActive(activePage, 1)]]"></gene-crossover-2>\n      <gene-crossover-3 selected="[[_isActive(activePage, 2)]]"></gene-crossover-3>\n      <gene-crossover-4 selected="[[_isActive(activePage, 3)]]"></gene-crossover-4>\n      <!-- <gene-crossover-5 selected="[[_isActive(activePage, 4)]]"></gene-crossover-5> -->\n    </iron-pages>\n\n\n    <!--Counter-->\n    <template is="dom-if" if="[[count]]">\n      <paper-stepper selected="{{activePage}}" progress-bar="">\n        <template is="dom-repeat" items="[[_countToArray(count)]]">\n          <paper-step></paper-step>\n        </template>\n      </paper-stepper>\n    </template>\n'
+      '\n    <style is="custom-style" include="animation-shared-styles">\n       :host {\n        display: block;\n      }\n      h1,\n      h2,\n      h3,\n      h4,\n      h5,\n      h6 {\n        font-family: \'Open Sans\', sans-serif;\n        text-transform: uppercase;\n        letter-spacing: 2px;\n        color: #6D6E71;\n        text-align: center;\n        font-size: 19.2px;\n      }\n\n      p {\n        font-family: \'Open Sans\', sans-serif;\n      }\n    </style>\n\n    <!--Pages-->\n    <iron-pages selected="[[activePage]]">\n      <gene-crossover-1 selected="[[_isActive(activePage, 0)]]"></gene-crossover-1>\n      <gene-crossover-2 selected="[[_isActive(activePage, 1)]]"></gene-crossover-2>\n      <gene-crossover-3 selected="[[_isActive(activePage, 2)]]"></gene-crossover-3>\n      <gene-crossover-4 selected="[[_isActive(activePage, 3)]]"></gene-crossover-4>\n      <!-- <gene-crossover-5 selected="[[_isActive(activePage, 4)]]"></gene-crossover-5> -->\n    </iron-pages>\n\n\n    <!--Counter-->\n    <template is="dom-if" if="[[count]]">\n      <paper-stepper selected="{{activePage}}" progress-bar="">\n        <template is="dom-repeat" items="[[_countToArray(count)]]">\n          <paper-step></paper-step>\n        </template>\n      </paper-stepper>\n    </template>\n'
     ]);
-    _templateObject_1a4726b0e11a11e89f59276939c17549 = function() {
+    _templateObject_4c15b020e5f811e88463e57e2e4ebdaa = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_1a4726b0e11a11e89f59276939c17549()
+      _templateObject_4c15b020e5f811e88463e57e2e4ebdaa()
     ),
     is: "gene-crossover",
     properties: {
@@ -35,7 +35,7 @@ define([
     _countToArray: function _countToArray(count) {
       var array = [];
       if (count) {
-        for (i = 0; i < count; i++) {
+        for (var i = 0; i < count; i++) {
           array.push(i);
         }
       }

@@ -37,8 +37,8 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       .comment-depth,
       .comment-avatar, 
       .comment-content {
-        padding-top: 0.5em;
-        padding-bottom: 0.5em;
+        padding-top: 8px;
+        padding-bottom: 8px;
         display: table-cell;
         vertical-align: top;
       }
@@ -50,8 +50,8 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       h3,
       h4 {
         text-align: left;
-        font-size: 1rem;
-        line-height: 1.25rem;
+        font-size: 16px;
+        line-height: 20px;
       }
       h1.comment-heading,
       h2.comment-heading,
@@ -66,18 +66,18 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
       #edit-comment {
         background-color: white;
-        padding: .25em;
+        padding: 4px;
       }
       marked-element {
-        line-height: 1rem;
-        font-size: 0.9rem;
+        line-height: 16px;
+        font-size: 14.4px;
       }
       .nowrap-me marked-element:hover {
         box-shadow: -1px 0 0 0 black inset;
         cursor: pointer;
       }
       .nowrap-me marked-element ::slotted(#content p.marked-element) {
-        height: 2em;
+        height: 32px;
         overflow: hidden;
         text-overflow: ellipsis;
         margin-bottom: 35px;
@@ -90,7 +90,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         color: #1976d2;
       }
       .comment-depth-1 {
-        width: 0em;
+        width: 0;
       }
       .comment-depth-2 {
         width: 54px;
@@ -201,4 +201,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       <paper-badge icon="[[comment.relationships.author.data.visual.icon]]" for="papercard" label="[[comment.relationships.author.data.visual.label]]">
       </paper-badge>
     </template>
-`,is:"lrnsys-comment",listeners:{"bodyarea.tap":"bodyToggle","bodyarea.dblclick":"bodyToggleOn"},properties:{comment:{type:Object,notify:!0,observer:"_commentLoaded"},displayName:{type:String,notify:!0,computed:"_generateName(comment.relationships.author.data.display_name, comment.relationships.author.data.visual)"},commentNew:{type:String,notify:!0,computed:"_isCommentNew(comment.relationships.author.data.visual)"},hoverClass:{type:String,reflectToAttribute:!0},editform:{type:Boolean,notify:!0,observer:"_editTrigger",reflectToAttribute:!0},disabled:{type:Boolean,notify:!0,reflectToAttribute:!0}},_generateName:function(name,visual){if(typeof visual!==typeof void 0&&!1!==visual.label){return name+" ("+visual.label+")"}return name},_isCommentNew:function(visual){if(typeof visual!==typeof void 0&&!1!==visual.label){return"new-comment"}return""},_commentLoaded:function(){let root=this;root.editform=root.comment.metadata.editing;root.disabled=root.comment.metadata.disabled;root.blockFirstState=!0},actionHandler:function(e){let root=this;var normalizedEvent=dom(e),target=normalizedEvent.localTarget;if(null!=target.dataCommentid&&!target.disabled){target.dataCommentid;if("reply"==target.id){root.fire("comment-reply",{comment:root.comment})}else if("like"==target.id){root.shadowRoot.querySelector("#like").classList.toggle("like-icon-color");root.fire("comment-like",{comment:root.comment})}else if("edit"==target.id){root.editform=!root.editform}else if("delete"==target.id){root.fire("comment-delete-dialog",{comment:root.comment})}}},_editTrigger:function(){let root=this;if(typeof root.comment!==typeof void 0&&root.comment.actions.edit){root.async(function(){root.shadowRoot.querySelector("#rendered-comment").hidden=root.editform;root.shadowRoot.querySelector("#comment-editor").hidden=!root.editform;if(root.editform){root.shadowRoot.querySelector("#edit").icon="save";root.shadowRoot.querySelector("#edit").alt="Save";root.shadowRoot.querySelector("#reply").disabled=!0;root.shadowRoot.querySelector("#edit-comment").focus();root.fire("comment-editing",{comment:root.comment});root.blockFirstState=!1}else{if(!root.blockFirstState){root.fire("comment-save",{comment:root.comment})}else{root.blockFirstState=!1}root.shadowRoot.querySelector("#edit").icon="create";root.shadowRoot.querySelector("#edit").alt="Edit";root.shadowRoot.querySelector("#reply").disabled=!1}document.querySelector("iron-list").fire("iron-resize")})}},bodyToggle:function(){let root=this;root.$.bodyarea.classList.remove("nowrap-me");document.querySelector("iron-list").fire("iron-resize")},bodyToggleOn:function(){let root=this;root.$.bodyarea.classList.toggle("nowrap-me");document.querySelector("iron-list").fire("iron-resize")}});
+`,is:"lrnsys-comment",properties:{comment:{type:Object,notify:!0,observer:"_commentLoaded"},displayName:{type:String,notify:!0,computed:"_generateName(comment.relationships.author.data.display_name, comment.relationships.author.data.visual)"},commentNew:{type:String,notify:!0,computed:"_isCommentNew(comment.relationships.author.data.visual)"},hoverClass:{type:String,reflectToAttribute:!0},editform:{type:Boolean,notify:!0,observer:"_editTrigger",reflectToAttribute:!0},disabled:{type:Boolean,notify:!0,reflectToAttribute:!0}},attached:function(){this.$.bodyarea.addEventListener("tap",this.bodyToggle.bind(this));this.$.bodyarea.addEventListener("dblclick",this.bodyToggleOn.bind(this))},detached:function(){this.$.bodyarea.removeEventListener("tap",this.bodyToggle.bind(this));this.$.bodyarea.removeEventListener("dblclick",this.bodyToggleOn.bind(this))},_generateName:function(name,visual){if(typeof visual!==typeof void 0&&!1!==visual.label){return name+" ("+visual.label+")"}return name},_isCommentNew:function(visual){if(typeof visual!==typeof void 0&&!1!==visual.label){return"new-comment"}return""},_commentLoaded:function(){let root=this;root.editform=root.comment.metadata.editing;root.disabled=root.comment.metadata.disabled;root.blockFirstState=!0},actionHandler:function(e){let root=this;var normalizedEvent=dom(e),target=normalizedEvent.localTarget;if(null!=target.dataCommentid&&!target.disabled){target.dataCommentid;if("reply"==target.id){root.fire("comment-reply",{comment:root.comment})}else if("like"==target.id){root.shadowRoot.querySelector("#like").classList.toggle("like-icon-color");root.fire("comment-like",{comment:root.comment})}else if("edit"==target.id){root.editform=!root.editform}else if("delete"==target.id){root.fire("comment-delete-dialog",{comment:root.comment})}}},_editTrigger:function(){let root=this;if(typeof root.comment!==typeof void 0&&root.comment.actions.edit){root.async(function(){root.shadowRoot.querySelector("#rendered-comment").hidden=root.editform;root.shadowRoot.querySelector("#comment-editor").hidden=!root.editform;if(root.editform){root.shadowRoot.querySelector("#edit").icon="save";root.shadowRoot.querySelector("#edit").alt="Save";root.shadowRoot.querySelector("#reply").disabled=!0;root.shadowRoot.querySelector("#edit-comment").focus();root.fire("comment-editing",{comment:root.comment});root.blockFirstState=!1}else{if(!root.blockFirstState){root.fire("comment-save",{comment:root.comment})}else{root.blockFirstState=!1}root.shadowRoot.querySelector("#edit").icon="create";root.shadowRoot.querySelector("#edit").alt="Edit";root.shadowRoot.querySelector("#reply").disabled=!1}document.querySelector("iron-list").fire("iron-resize")})}},bodyToggle:function(){let root=this;root.$.bodyarea.classList.remove("nowrap-me");document.querySelector("iron-list").fire("iron-resize")},bodyToggleOn:function(){let root=this;root.$.bodyarea.classList.toggle("nowrap-me");document.querySelector("iron-list").fire("iron-resize")}});

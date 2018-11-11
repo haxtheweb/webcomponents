@@ -16,9 +16,9 @@ Polymer({
         display: inline-block;
         background: #333;
         color: white;
-        border-radius: 0.25em;
-        margin: 0.25em 0.25em 0.25em 0;
-        padding: 0.5em;
+        border-radius: 4px;
+        margin: 4px 4px 4px 0;
+        padding: 8px;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         font-size:85%;
       }
@@ -99,7 +99,7 @@ Polymer({
     this.items = data;
     if (data !== void 0 && 0 < data.length) {
       let prevIndent = -1;
-      for (i in data) {
+      for (var i in data) {
         let indent = parseInt(this._getIndent(data, i));
         this.__tempid = this.__tempid === void 0 ? 0 : this.__tempid + 1;
         data[i].index = parseInt(i);
@@ -119,7 +119,7 @@ Polymer({
     this.items = data;
   },
   getData: function() {
-    for (i in this.items) {
+    for (var i in this.items) {
       this.items[i].order = this._getOrder(this.items[i]);
     }
     return this.items;
@@ -244,7 +244,7 @@ Polymer({
   _getOrder: function(item) {
     let ctr = 0,
       order = 0;
-    for (i in this.items) {
+    for (var i in this.items) {
       if (this.items[i].parent == item.parent && this.items[i].id == item.id) {
         order = ctr;
       } else if (this.items[i].parent == item.parent) {

@@ -6,7 +6,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       paper-button {
         padding: 0;
         margin: 0;
-        min-width: 1rem;
+        min-width: 16px;
       }
       vaadin-upload.thick-border {
         --primary-color: #396;

@@ -1,3 +1,4 @@
+import "./node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js";
 import "./lib/mdi-account-iconset-svg.js";
 import "./lib/mdi-action-iconset-svg.js";
 import "./lib/mdi-agriculture-iconset-svg.js";
@@ -64,4 +65,3 @@ import "./lib/mdi-video-iconset-svg.js";
 import "./lib/mdi-view-iconset-svg.js";
 import "./lib/mdi-vote-iconset-svg.js";
 import "./lib/mdi-weather-iconset-svg.js";
-console.log(document.head.querySelectorAll("iron-iconset-svg"));

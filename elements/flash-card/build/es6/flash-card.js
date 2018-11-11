@@ -40,7 +40,7 @@ Polymer({
         -webkit-backface-visibility: hidden ;
         z-index: 2;
         font-family: Georgia;
-        font-size: 3em;
+        font-size: 48px;
         text-align: center;
         line-height: 200px;
       }

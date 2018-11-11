@@ -3,6 +3,9 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       :host {
         display: block;
       }
+      iron-icon {
+        display: inline-block;
+      }
     </style>
     <paper-card image="[[image]]">
   <div class="card-content">
@@ -19,7 +22,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       <p><iron-icon icon="icons:query-builder"></iron-icon> Office Hours: </p>
       [[officeHours]]
       <p><a href="mailto:[[email]]">
-  <paper-button raised=""><iron-icon icon="icons:today"></iron-icon> Schedule Appointment</paper-button>
+  <paper-button raised><iron-icon icon="icons:today"></iron-icon> Schedule Appointment</paper-button>
 </a></p>
 <p>Social
 <paper-contact-list style="width: 300px;">

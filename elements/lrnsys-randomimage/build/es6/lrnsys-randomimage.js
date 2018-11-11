@@ -3,7 +3,7 @@ import {
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
 import "./node_modules/@lrnwebcomponents/random-image/random-image.js";
-import "@polymer/paper-button/paper-button.js";
+import "./node_modules/@polymer/paper-button/paper-button.js";
 Polymer({
   _template: html`
     <style>
@@ -11,10 +11,10 @@ Polymer({
         display: block;
       }
     </style>
-    <div id="image-list">
-      <random-image images-list\$="{{images}}"></random-image>
+    <div id="list">
+      <random-image images-list$="{{images}}"></random-image>
   </div>
-  <paper-button raised="" on-click="reload">Reload</paper-button>
+  <paper-button raised on-click="reload">Reload</paper-button>
 `,
   is: "lrnsys-randomimage",
   properties: {
@@ -27,9 +27,7 @@ Polymer({
     }
   },
   reload: function() {
-    let root = this;
-    root.shadowRoot.querySelector(
-      "#image-list"
-    ).innerHTML = root.shadowRoot.querySelector("#image-list").innerHTML;
+    this;
+    this.$.list.innerHTML = this.$.list.innerHTML;
   }
 });

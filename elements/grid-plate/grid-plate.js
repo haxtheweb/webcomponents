@@ -74,6 +74,7 @@ Polymer({
         outline: none;
         width: 20px;
         height: 20px;
+        color: black;
         background-color: #EEEEEE;
         border-radius: 50%;
         box-sizing: content-box !important;
@@ -89,10 +90,10 @@ Polymer({
       }
     </style>
     <div class="button-holding-pen">
-      <paper-icon-button title="move item up" icon="icons:arrow-upward" id="up"></paper-icon-button>
-      <paper-icon-button title="move item right" icon="icons:arrow-forward" id="right"></paper-icon-button>
-      <paper-icon-button title="move item down" icon="icons:arrow-downward" id="down"></paper-icon-button>
-      <paper-icon-button title="move item left" icon="icons:arrow-back" id="left"></paper-icon-button>
+      <paper-icon-button title="move item up" icon="icons:arrow-upward" id="up" on-tap="moveActiveElement"></paper-icon-button>
+      <paper-icon-button title="move item right" icon="icons:arrow-forward" id="right" on-tap="moveActiveElement"></paper-icon-button>
+      <paper-icon-button title="move item down" icon="icons:arrow-downward" id="down" on-tap="moveActiveElement"></paper-icon-button>
+      <paper-icon-button title="move item left" icon="icons:arrow-back" id="left" on-tap="moveActiveElement"></paper-icon-button>
     </div>
     <responsive-grid-row gutter="0">
       <template is="dom-if" if="[[!hideCol1]]" strip-whitespace>
@@ -126,11 +127,7 @@ Polymer({
   is: "grid-plate",
 
   listeners: {
-    focusin: "_focusIn",
-    "up.tap": "moveActiveElement",
-    "down.tap": "moveActiveElement",
-    "left.tap": "moveActiveElement",
-    "right.tap": "moveActiveElement"
+    focusin: "_focusIn"
   },
 
   behaviors: [HAXBehaviors.PropertiesBehaviors, window.simpleColorsBehaviors],

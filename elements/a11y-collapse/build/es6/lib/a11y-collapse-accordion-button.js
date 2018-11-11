@@ -18,7 +18,7 @@ Polymer({
       :host #heading:focus #expand, 
       :host #heading:hover #expand {
         @apply --a11y-collapse-icon-focus;
-      }
+      } 
     </style>
     <div id="heading" aria-controls="content" aria-expanded\$="[[expanded]]" disabled\$="[[disabled]]" label\$="[[label]]" role="button">
       <div id="text"><slot></slot></div>
@@ -28,6 +28,7 @@ Polymer({
     <paper-tooltip for="heading">[[tooltip]]</paper-tooltip>
 `,
   is: "a11y-collapse-accordion-button",
+  listeners: { tap: "_onTap" },
   properties: {
     disabled: { type: Boolean, value: !1, reflectToAttribute: !0 },
     expanded: { type: Boolean, value: !1, reflectToAttribute: !0 },
@@ -36,17 +37,9 @@ Polymer({
     tooltip: { type: String, value: "toggle expand/collapse" },
     rotated: { type: Boolean, value: !1 }
   },
-  ready: function() {
-    let root = this;
-    this.$.heading.addEventListener("tap", function(e) {
-      root._onTap(e);
-    });
-  },
-  detached: function() {
-    this.$.heading.removeEventListener("tap");
-  },
   _onTap: function() {
     if (!this.disabled) {
+      console.log(this);
       this.fire("a11y-collapse-tap", this);
     }
   }

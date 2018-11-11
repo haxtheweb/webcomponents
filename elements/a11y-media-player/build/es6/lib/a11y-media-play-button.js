@@ -93,7 +93,7 @@ Polymer({
 `,
   is: "a11y-media-play-button",
   behaviors: [a11yMediaBehaviors.PlayerBehaviors],
-  listeners: { "button.tap": "_buttonTap" },
+  listeners: { tap: "_buttonTap" },
   properties: {
     label: {
       type: String,

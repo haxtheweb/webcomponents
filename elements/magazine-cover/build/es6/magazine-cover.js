@@ -22,7 +22,7 @@ Polymer({
         min-height: 30vh;
         margin: -38vh 0 0 0;
         background-color:rgba(0, 0, 0, 0.8);
-        padding: 2em;
+        padding: 32px;
         position: relative;
       }
       #image {
@@ -40,16 +40,16 @@ Polymer({
       }
       #header {
         color: var(--magazine-cover-text-color);
-        font-size: 3em;
+        font-size: 48px;
         padding: 0;
         margin: 0;
         font-weight: bold;
       }
       #subheader {
         color: var(--magazine-cover-text-color);
-        font-size: 1.4em;
+        font-size: 22.4px;
         padding: 0;
-        margin: .2em 0 1em 0;
+        margin: 3.2px 0 16px 0;
         font-style: italic;
         font-weight: normal;
       }
@@ -57,9 +57,9 @@ Polymer({
         color: var(--magazine-cover-text-color);
         padding: 0;
         margin: 0;
-        font-size: 1.2em;
-        padding: 0 0 0 .2em;
-        margin: 0 0 2em 0;
+        font-size: 19.2px;
+        padding: 0 0 0 3.2px;
+        margin: 0 0 32px 0;
       }
       #body p {
         color: var(--magazine-cover-text-color);
@@ -67,12 +67,12 @@ Polymer({
       #action {
         color: var(--magazine-cover-text-color);
         text-transform: none;
-        font-size: 1.5em;
+        font-size: 24px;
         font-style: italic;
         font-weight: bold;
         background-color: #000000;
         border: 1px solid var(--magazine-cover-text-color);
-        border-radius: .5em;
+        border-radius: 8px;
         transition: background 0.3s linear;
         width: 100%;
         margin: 0;
@@ -86,42 +86,42 @@ Polymer({
         color: var(--magazine-cover-text-color);
         display: flex;
         text-decoration: none;
-        border-radius: .5em;
+        border-radius: 8px;
       }
       #icon {
         display: inline-block;
-        width: 1.2em;
-        height: 1.2em;
-        font-size: 1.2em;
-        margin-left: .5em;
+        width: 19.2px;
+        height: 19.2px;
+        font-size: 19.2px;
+        margin-left: 8px;
       }
       #label {
         text-shadow: -1px 1px 2px #000000;
       }
       @media screen and (max-width: 900px) {
         #header {
-          font-size: 2em;
+          font-size: 32px;
         }
         #subheader {
-          font-size: 1em;
+          font-size: 16px;
         }
         #body {
-          font-size: 1em;
+          font-size: 16px;
         }
         #action {
-          font-size: 1.2em;
+          font-size: 19.2px;
         }
       }
       @media screen and (max-width: 650px) {
         #body {
-          font-size: .8em;
+          font-size: 12.8px;
         }
         #action {
-          font-size: 1em;
+          font-size: 16px;
         }
         .overlay {
           margin: -50vh 0 0 0;
-          padding: 1em;
+          padding: 16px;
         }
       }      
     </style>
@@ -133,7 +133,7 @@ Polymer({
         <p hidden$="[[!text]]">[[text]]</p>
         <slot></slot>
       </div>
-      <a tabindex="-1" href$="[[link]]" id="actionlink">
+      <a tabindex="-1" href$="[[link]]" id="actionlink" on-tap="_linkTapped">
         <paper-button raised="" id="action">
         <span id="label">[[action]]<iron-icon id="icon" icon="[[icon]]" hidden$="[[!icon]]"></iron-icon></span>
         </paper-button>
@@ -141,7 +141,6 @@ Polymer({
     </div>
 `,
   is: "magazine-cover",
-  listeners: { "actionlink.tap": "_linkTapped" },
   behaviors: [HAXBehaviors.PropertiesBehaviors],
   properties: {
     header: { type: String },

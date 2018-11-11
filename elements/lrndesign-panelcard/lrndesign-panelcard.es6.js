@@ -11,7 +11,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
 
       .card-panel {
         transition: box-shadow .25s;
-        padding: 1.5em;
+        padding: 24px;
         margin: 0;
         border-radius: 2px;
         background-color: #fff;
@@ -19,7 +19,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
 
       h3 {
         padding: 0;
-        margin: 0 0 .5em 0;
+        margin: 0 0 8px 0;
       }
     </style>
     <aside>

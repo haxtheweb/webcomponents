@@ -6,13 +6,12 @@ import "./node_modules/@lrnwebcomponents/paper-avatar/paper-avatar.js";
 import "./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 Polymer({
   _template: html`
-    <style include="materializecss-styles"></style>
-    <style>
+    <style include="materializecss-styles">
       :host {
         display: block;
       }
     </style>
-    <paper-avatar label="[[label]]" src="[[src]]" two-chars="[[twoChars]]" class\$="[[color]]" jdenticon="[[jdenticon]]"></paper-avatar>
+    <paper-avatar label="[[label]]" src="[[src]]" two-chars="[[twoChars]]" class$="[[color]]" jdenticon="[[jdenticon]]"></paper-avatar>
 `,
   is: "lrndesign-avatar",
   properties: {

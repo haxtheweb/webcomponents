@@ -6,7 +6,7 @@ define([
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_e3994ea0e11811e89e7b3526a46fe390() {
+  function _templateObject_21d3c690e5f711e890f9f5010be715cd() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n      :host #gifbutton > * {\n        position: relative;\n      }\n      :host #svg {\n        position: absolute;\n        top: 35%;\n        left: 35%;\n      }\n      :host #gifbutton:active,\n      :host #gifbutton:focus,\n      :host #gifbutton:hover {\n        cursor: pointer;\n        outline: 1px solid blue;\n      }\n      :host #preload {\n        display: none;\n      }\n    </style>\n    <div id="gifbutton" aria-role="button" aria-controls="gif" tabindex="0">\n      <div>\n        <img id="gif" alt$="[[alt]]" src$="[[srcWithoutAnimation]]" style="width:100%;height:100%;">\n        <svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="30%" height="30%">\n          <g opacity=".5">\n            <polygon points="30,20 30,180 170,100" fill="#000000" stroke="#ffffff" stroke-width="15px"></polygon>\n            <text x="50" y="115" fill="#ffffff" font-size="40px">GIF</text>\n          </g>\n        </svg>\n      </div>\n    </div>\n    <iron-image id="preload" src$="[[src]]" hidden=""></iron-image>\n    <iron-a11y-keys id="a11y" keys="enter space" on-keys-pressed="toggleAnimation"></iron-a11y-keys>\n'
@@ -15,14 +15,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n      :host #gifbutton > * {\n        position: relative;\n      }\n      :host #svg {\n        position: absolute;\n        top: 35%;\n        left: 35%;\n      }\n      :host #gifbutton:active,\n      :host #gifbutton:focus,\n      :host #gifbutton:hover {\n        cursor: pointer;\n        outline: 1px solid blue;\n      }\n      :host #preload {\n        display: none;\n      }\n    </style>\n    <div id="gifbutton" aria-role="button" aria-controls="gif" tabindex="0">\n      <div>\n        <img id="gif" alt\\$="[[alt]]" src\\$="[[srcWithoutAnimation]]" style="width:100%;height:100%;">\n        <svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="30%" height="30%">\n          <g opacity=".5">\n            <polygon points="30,20 30,180 170,100" fill="#000000" stroke="#ffffff" stroke-width="15px"></polygon>\n            <text x="50" y="115" fill="#ffffff" font-size="40px">GIF</text>\n          </g>\n        </svg>\n      </div>\n    </div>\n    <iron-image id="preload" src\\$="[[src]]" hidden=""></iron-image>\n    <iron-a11y-keys id="a11y" keys="enter space" on-keys-pressed="toggleAnimation"></iron-a11y-keys>\n'
       ]
     );
-    _templateObject_e3994ea0e11811e89e7b3526a46fe390 = function() {
+    _templateObject_21d3c690e5f711e890f9f5010be715cd = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_e3994ea0e11811e89e7b3526a46fe390()
+      _templateObject_21d3c690e5f711e890f9f5010be715cd()
     ),
     is: "a11y-gif-player",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

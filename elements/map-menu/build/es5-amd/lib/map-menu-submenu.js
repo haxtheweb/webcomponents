@@ -5,18 +5,18 @@ define([
   "../node_modules/@polymer/paper-button/paper-button.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_0274b650e11b11e8b51fdde26072d36e() {
+  function _templateObject_39edbfe0e5f911e88f58a900e4d6e8ab() {
     var data = babelHelpers.taggedTemplateLiteral([
-      '\n    <style>\n      :host {\n        display: block;\n      }\n\n      :host([collapsable])>map-menu-header {\n        cursor: pointer;\n        display: block;\n      }\n\n      #container {\n        margin-left: 1em;\n      }\n\n      #container ::slotted(map-menu-item) {\n        margin-top: .4em;\n      }\n    </style>\n    <map-menu-header avatar-label="[[avatarLabel]]" id="[[id]]" title="[[title]]" label="[[label]]" opened="[[opened]]" url="[[url]]" icon="[[icon]]"></map-menu-header>\n    <iron-collapse id="container">\n      <slot id="slot"></slot>\n    </iron-collapse>\n'
+      '\n    <style>\n      :host {\n        display: block;\n      }\n\n      :host([collapsable])>map-menu-header {\n        cursor: pointer;\n        display: block;\n      }\n\n      #container {\n        margin-left: 16px;\n      }\n\n      #container ::slotted(map-menu-item) {\n        margin-top: .4em;\n      }\n    </style>\n    <map-menu-header avatar-label="[[avatarLabel]]" id="[[id]]" title="[[title]]" label="[[label]]" opened="[[opened]]" url="[[url]]" icon="[[icon]]"></map-menu-header>\n    <iron-collapse id="container">\n      <slot id="slot"></slot>\n    </iron-collapse>\n'
     ]);
-    _templateObject_0274b650e11b11e8b51fdde26072d36e = function() {
+    _templateObject_39edbfe0e5f911e88f58a900e4d6e8ab = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_0274b650e11b11e8b51fdde26072d36e()
+      _templateObject_39edbfe0e5f911e88f58a900e4d6e8ab()
     ),
     is: "map-menu-submenu",
     properties: {

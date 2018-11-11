@@ -14,7 +14,7 @@ Polymer({
        :host {
         display: inline-flex;
       }
-      :host([size="micro")] {
+      :host([size="micro"]) {
         transform: scale(.5);
       }
       :host([size="small"]) {
@@ -30,7 +30,7 @@ Polymer({
       .card-actions {
         background-color: #f5f5f5;
         border-radius: 0 0 4px 4px;
-        padding: 0 .5em;
+        padding: 0 8px;
       }
       .card-actions .card-action-details{
         display: inline-block;
@@ -45,7 +45,7 @@ Polymer({
       }
 
       .card-control-height {
-        height: 15rem;
+        height: 240px;
       }
 
       [elevation="0"] {
@@ -62,17 +62,17 @@ Polymer({
 
       .title {
         color: #222;
-        font-size: .8em;
+        font-size: 12.8px;
         font-weight: 600;
-        line-height: 1.25em;
-        padding: 0 .75em;
+        line-height: 20px;
+        padding: 0 12px;
         overflow: hidden;
         text-overflow: ellipsis;
-        margin-top: .5em;
+        margin-top: 8px;
       }
 
       .comments {
-        font-size: .75rem;
+        font-size: 12px;
         float: right;
       }
 
@@ -96,19 +96,19 @@ Polymer({
       .center {
         margin: auto;
         width: 80%;
-        padding: 1em;
+        padding: 16px;
       }
 
       .link {
-        font-size: 1em;
-        line-height: 1em;
+        font-size: 16px;
+        line-height: 16px;
       }
 
       .submission-info {
         width: 100%;
       }
       .submission-preview {
-        height: 10em;
+        height: 160px;
       }
 
       .card-content {

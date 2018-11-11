@@ -2,6 +2,7 @@ import {
   html,
   Polymer
 } from "../node_modules/@polymer/polymer/polymer-legacy.js";
+import "../node_modules/@polymer/iron-list/iron-list.js";
 import "./lrndesign-gallery-thumb.js";
 import "./lrndesign-gallery-carousel-item.js";
 import "./lrndesign-gallery-carousel-prevnext.js";

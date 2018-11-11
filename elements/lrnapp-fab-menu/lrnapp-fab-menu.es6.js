@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/paper-fab-speed-dial/paper-fab-speed-dial.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-fab/paper-fab.js";import"./node_modules/@lrnwebcomponents/paper-fab-speed-dial/paper-fab-speed-dial.js";import"./node_modules/@lrnwebcomponents/paper-fab-speed-dial/lib/paper-fab-speed-dial-overlay.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";Polymer({_template:html`
   <custom-style>
     <style include="materializecss-styles-colors"></style>
     <style>
@@ -22,9 +22,9 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
     </style>
   </custom-style>
-    <paper-fab icon="[[icon]]" class="open blue" on-tap="open" hidden\$="[[opened]]" disabled="[[disabled]]"></paper-fab>
+    <paper-fab icon="[[icon]]" class="open blue" on-tap="open" hidden$="[[opened]]" disabled$="[[disabled]]"></paper-fab>
 
-    <paper-fab-speed-dial-overlay class="overlay" opened="{{opened}}" with-backdrop="">
+    <paper-fab-speed-dial-overlay class="overlay" opened="{{opened}}" with-backdrop>
       <slot></slot>
       <paper-fab icon="close" class="close" on-tap="close"></paper-fab>
     </paper-fab-speed-dial-overlay>

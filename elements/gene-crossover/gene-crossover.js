@@ -73,7 +73,7 @@ Polymer({
   _countToArray: function(count) {
     var array = [];
     if (count) {
-      for (i = 0; i < count; i++) {
+      for (var i = 0; i < count; i++) {
         array.push(i);
       }
     }

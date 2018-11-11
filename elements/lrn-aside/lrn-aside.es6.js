@@ -10,11 +10,11 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
       :host([direction='left']) {
         float: left;
-        max-width: 30em;
+        max-width: 480px;
       }
       :host([direction='right']) {
         float: right;
-        max-width: 30em;
+        max-width: 480px;
       }
     </style>
     <aside>

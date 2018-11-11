@@ -78,7 +78,7 @@ Polymer({
         <simple-blog-listing id="listing" items="[[manifest.items]]"></simple-blog-listing>
       </section>
       <section>
-        <paper-icon-button id="backbutton" icon="icons:arrow-back"></paper-icon-button>
+        <paper-icon-button id="backbutton" icon="icons:arrow-back" on-tap="_resetActiveItem"></paper-icon-button>
         <paper-tooltip for="backbutton" position="right" offset="14" animation-delay="100">
         Back to main site
         </paper-tooltip>
@@ -94,9 +94,8 @@ Polymer({
     HAXCMSBehaviors.Theme
   ],
   listeners: {
-    "listing.active-item-selected": "_itemSelected",
-    "backbutton.tap": "_resetActiveItem",
-    "footer.active-item-reset": "_resetActiveItem"
+    "active-item-selected": "_itemSelected",
+    "active-item-reset": "_resetActiveItem"
   },
   properties: {
     selectedPage: { type: Number, reflectToAttribute: !0, value: 0 }

@@ -26,8 +26,8 @@ Polymer({
         left: 5%;
         overflow: auto;
         border-radius: 3px;
-        color: var(--lrnsys-dialog-color);
-        background-color: var(--lrnsys-dialog-background-color);
+        color: var(--lrnsys-dialog-color, black);
+        background-color: var(--lrnsys-dialog-background-color, white);
       }
       paper-dialog-scrollable {
         margin-top:0;
@@ -54,23 +54,17 @@ Polymer({
       }
     </style>
     <paper-dialog modal="[[modal]]" id="dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="" opened\$="[[opened]]">
-      <!--START TOOLBAR TO DIALOG -->
-      <lrnsys-dialog-toolbar on-button-clicked="_toolbarButtonClickedHandler">
-        <span slot="primary">
-          <slot name="toolbar-primary"></slot>
-        </span>
-        <span slot="secondary">
-          <slot name="toolbar-secondary"></slot>
-        </span>
-      </lrnsys-dialog-toolbar>
-      <!--END TOOLBAR TO DIALOG -->
-      <div class\$="[[headingClass]] dialog-header">
-        <div class\$="[[headingClass]] dialog-heading" hidden\$="[[!header]]">[[header]]</div>
+      <div class$="[[headingClass]] dialog-header">
+        <div class$="[[headingClass]] dialog-heading" hidden$="[[!header]]">[[header]]</div>
         <span class="dialog-header-slot"><slot name="header"></slot></span>
       </div>
       <paper-dialog-scrollable class="dialog-contents" id="dialogcontent">
         <slot></slot>
       </paper-dialog-scrollable>
+      <lrnsys-dialog-toolbar on-button-clicked="_toolbarButtonClickedHandler">
+        <slot slot="primary" name="toolbar-primary"></slot>
+        <slot slot="secondary" name="toolbar-secondary"></slot>
+      </lrnsys-dialog-toolbar>
     </paper-dialog>
 `,
   is: "lrnsys-dialog-modal",
@@ -117,21 +111,27 @@ Polymer({
     window.dispatchEvent(evt);
     this._changeOpen(e);
   },
-  ready: function() {
-    const dialog = this.shadowRoot.querySelector("paper-dialog"),
-      toolbar = this.shadowRoot.querySelector("lrnsys-dialog-toolbar");
-    dialog.addEventListener("mouseover", () => {
-      toolbar.setAttribute("secondary-visible", !0);
-    });
-    dialog.addEventListener("mouseout", () => {
-      toolbar.removeAttribute("secondary-visible");
-    });
-  },
   attached: function() {
     if (this.bodyAppend && !this._bodyAppended) {
       this._bodyAppended = !0;
       document.body.appendChild(this);
     }
+    const toolbar = this.shadowRoot.querySelector("lrnsys-dialog-toolbar");
+    this.$.dialog.addEventListener("mouseover", () => {
+      toolbar.setAttribute("secondary-visible", !0);
+    });
+    this.$.dialog.addEventListener("mouseout", () => {
+      toolbar.removeAttribute("secondary-visible");
+    });
+  },
+  detached: function() {
+    const toolbar = this.shadowRoot.querySelector("lrnsys-dialog-toolbar");
+    this.$.dialog.removeEventListener("mouseover", () => {
+      toolbar.setAttribute("secondary-visible", !0);
+    });
+    this.$.dialog.removeEventListener("mouseout", () => {
+      toolbar.removeAttribute("secondary-visible");
+    });
   },
   _changeOpen: function(e) {
     e.stopPropagation();

@@ -12,7 +12,6 @@ A LRN element
 
 @microcopy - the mental model for this element
  -
- -
 
 */
 Polymer({

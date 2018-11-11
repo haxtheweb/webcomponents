@@ -1,2 +1,251 @@
-!function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(require("@polymer/polymer/polymer-legacy.js"),require("@polymer/polymer/lib/elements/dom-if.js")):"function"==typeof define&&define.amd?define(["@polymer/polymer/polymer-legacy.js","@polymer/polymer/lib/elements/dom-if.js"],e):e(t.polymerLegacy_js)}(this,function(t){"use strict";function e(){var t,n,r=(t=['\n    <style>\n\t\t\t:host {\n\t\t\t\t--paper-avatar-width: 40px;\n\t\t\t}\n\t\t\t:host {\n\t\t\t\tdisplay: inline-block;\n\t\t\t\tbox-sizing: border-box;\n\t\t\t\tposition: relative;\n\t\t\t\twidth: var(--paper-avatar-width);\n\t\t\t\theight:  var(--paper-avatar-width);\n\t\t\t\tborder-radius: 50%;\n\t\t\t\tcursor: default;\n\t\t\t\tbackground-color: var(--paper-avatar-color, var(--paper-avatar-bgcolor));\n\t\t\t\t-webkit-user-select: none;\n\t\t\t\t   -moz-user-select: none;\n\t\t\t\t    -ms-user-select: none;\n\t\t\t\t\t\tuser-select: none;\n\t\t\t}\n\t\t\t\n\t\t\t:host > * {\n\t\t\t\tpointer-events: none;\n\t\t\t}\n\t\t\t\n\t\t\t#label, #img, #jdenticon {\n\t\t\t\tposition: absolute;\n\t\t\t\ttop: 0;\n\t\t\t\tleft: 0;\n\t\t\t\tright: 0;\n\t\t\t\tbottom: 0;\n\t\t\t\twidth: 100%;\n\t\t\t\theight: 100%;\n\t\t\t\tborder-radius: 50%;\n\t\t\t}\n\t\t\t#label {\n\t\t\t\toverflow: hidden;\n\t\t\t\tdisplay: -ms-flexbox;\n\t\t\t\tdisplay: -webkit-flex;\n\t\t\t\tdisplay: flex;\n\t\t\t\t-webkit-flex-direction: row;\n\t\t\t\t\t-ms-flex-direction: row;\n\t\t\t\t\t\tflex-direction: row;\n\t\t\t\t-webkit-align-items: center;\n\t\t\t\t\t -ms-flex-align: center;\n\t\t\t\t\t \talign-items: center;\n\t\t\t}\n\t\t\t#label span {\n\t\t\t\tdisplay: block;\n\t\t\t\twidth: 100%;\n\t\t\t\tfont-weight: 400;\n\t\t\t\tcolor: rgba(255, 255, 255, .8);\n\t\t\t\ttext-transform: capitalize;\n\t\t\t\tfont-family: \'Roboto\', \'Noto\', sans-serif;\n\t\t\t\t-webkit-font-smoothing: antialiased;\n\t\t\t\ttext-align: center;\n\t\t\t\tfont-size: calc(var(--paper-avatar-width) / 1.65);\n\t\t\t}\n\t\t\t#jdenticon {\n\t\t\t\twidth: var(--paper-avatar-width);\n\t\t\t\theight: var(--paper-avatar-width);\n\t\t\t}\n\t\t\t\n\t\t\t*[hidden] {\n\t\t\t\tdisplay: none !important;\n\t\t\t}\n\t\t</style>\n\n\t\t<div id="label" title="[[label]]"><span>[[_label(label)]]</span></div>\n\n\t\t<svg id="jdenticon" width="40" height="40">\n      <slot></slot>\n    </svg>\n\n\t\t<template is="dom-if" if="[[src]]">\n\t\t\t<img id="img" src="[[src]]" title="[[label]]" on-load="_onImgLoad" on-error="_onImgError" title="[[color]]">\n\t\t</template>\n  '],n||(n=t.slice(0)),Object.freeze(Object.defineProperties(t,{raw:{value:Object.freeze(n)}})));return e=function(){return r},r}t.Polymer({is:"paper-avatar",_template:t.html(e()),properties:{src:{type:String},label:{type:String,observer:"_observerLabel"},twoChars:{type:Boolean,value:!1},colors:{type:Array},jdenticon:{type:Boolean,value:!1}},_observerLabel:function(t){t&&(this.jdenticon&&(this.$.label.hidden=!0,jdenticon.config={lightness:{color:[1,1],grayscale:[1,1]},saturation:1}),this.updateStyles({"--paper-avatar-bgcolor":this._parseColor(t)}))},_label:function(t){if(!t)return"";if(this.twoChars){if(this.label.indexOf(" ")>-1){var e=this.label.match(/\b(\w)/g);return e[0]+e[1]}return t.substring(0,2)}return t.charAt(0)},_onImgLoad:function(t){t.currentTarget.hidden=!1},_onImgError:function(t){t.currentTarget.hidden=!0},_parseColor:function(t){for(var e=this.colors?this.colors:["#F44336","#E91E63","#9C27B0","#673AB7","#3F51B5","#2196F3","#03A9F4","#00BCD4","#795548","#009688","#4CAF50","#8BC34A","#CDDC39","#FFEB3B","#FFC107","#FF9800","#FF5722","#9E9E9E","#607D8B"],n=0,r=0;r<t.length;r++)n+=t.charCodeAt(r)<<5;return n>=e.length?e[n%e.length]:e[n]}})});
-//# sourceMappingURL=paper-avatar.umd.js.map
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import * as md5 from "./lib/md5.min.js";
+
+/**
+`paper-avatar`
+User avatar in material style
+
+### Styling
+
+To change the background color:
+
+    paper-avatar {
+      --paper-avatar-color: red;
+    }
+	
+To change the size of the avatar:
+
+    paper-avatar {
+      --paper-avatar-width: 60px;
+    }
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--paper-avatar-width` | Size (width and height) of the avatar image | `40px`
+`--paper-avatar-color` | Background color of the avatar image | 
+
+
+@demo demo/index.html 
+*/
+Polymer({
+  is: "paper-avatar",
+  _template: html`
+    <style>
+			:host {
+        --paper-avatar-width: 40px;
+				display: inline-block;
+				box-sizing: border-box;
+				position: relative;
+				width: var(--paper-avatar-width);
+				height:  var(--paper-avatar-width);
+				border-radius: 50%;
+				cursor: default;
+				background-color: var(--paper-avatar-color, var(--paper-avatar-bgcolor));
+				-webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+			}
+			
+			:host > * {
+				pointer-events: none;
+			}
+			
+			#label, #img, #jdenticon {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				width: 100%;
+				height: 100%;
+				border-radius: 50%;
+			}
+			#label {
+				overflow: hidden;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;
+				-webkit-flex-direction: row;
+					-ms-flex-direction: row;
+						flex-direction: row;
+				-webkit-align-items: center;
+					 -ms-flex-align: center;
+					 	align-items: center;
+			}
+			#label span {
+				display: block;
+				width: 100%;
+				font-weight: 400;
+				color: rgba(255, 255, 255, .8);
+				text-transform: capitalize;
+				font-family: 'Roboto', 'Noto', sans-serif;
+				-webkit-font-smoothing: antialiased;
+				text-align: center;
+				font-size: calc(var(--paper-avatar-width) / 1.65);
+			}
+			#jdenticon {
+				width: var(--paper-avatar-width);
+				height: var(--paper-avatar-width);
+			}
+		</style>
+		<div id="label" title="[[label]]"><span>[[_label(label)]]</span></div>
+		<svg id="jdenticon" width="40" height="40">
+      <slot></slot>
+    </svg>
+    <template is="dom-if" if="[[src]]">
+		  <img id="img" src="[[src]]" title="[[label]]" on-load="_onImgLoad" on-error="_onImgError" title="[[color]]">
+    </template>
+  `,
+  properties: {
+    /**
+     * Image address or base64
+     */
+    src: {
+      type: String,
+      value: false
+    },
+
+    /**
+     *	Label with username
+     */
+    label: {
+      type: String,
+      observer: "_observerLabel"
+    },
+    /**
+     * Ensure we can support jdenticon before invoking it
+     */
+    jdenticonExists: {
+      type: Boolean,
+      value: false
+    },
+    /**
+     * Show two chars in avatar
+     */
+    twoChars: {
+      type: Boolean,
+      value: false
+    },
+
+    /**
+     * Array of colors for avatar background
+     */
+    colors: {
+      type: Array
+    },
+
+    /**
+     * Set true if you want use a jdenticon avatar
+     */
+    jdenticon: {
+      type: Boolean,
+      value: false
+    }
+  },
+  /**
+   * Generate the correct label from change with optional jdenticon md5 hash
+   */
+  _observerLabel: function(label) {
+    if (label) {
+      if (this.jdenticonExists && this.jdenticon) {
+        this.$.label.hidden = true;
+
+        window.jdenticon.config = {
+          lightness: {
+            color: [1, 1],
+            grayscale: [1, 1]
+          },
+          saturation: 1
+        };
+        window.jdenticon.update(this.$.jdenticon, window.md5(label));
+      }
+
+      this.updateStyles({
+        "--paper-avatar-bgcolor": this._parseColor(label)
+      });
+    }
+  },
+  /**
+   * ready lifecycle
+   */
+  ready: function() {
+    const name = "jdenticon";
+    const basePath = pathFromUrl(import.meta.url);
+    const location = `${basePath}lib/jdenticon-1.4.0.min.js`;
+    window.addEventListener(
+      `es-bridge-${name}-loaded`,
+      this._jdenticonLoaded.bind(this)
+    );
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load(name, location);
+  },
+  /**
+   * Callback once we know that the jdenticon library is globally loaded.
+   */
+  _jdenticonLoaded: function(e) {
+    this.jdenticonExists = true;
+    this._observerLabel(this.label);
+  },
+  /**
+   * convert label in context
+   */
+  _label: function(label) {
+    if (!label) return "";
+
+    if (this.twoChars) {
+      if (this.label.indexOf(" ") > -1) {
+        var matches = this.label.match(/\b(\w)/g);
+        return matches[0] + matches[1];
+      } else {
+        return label.substring(0, 2);
+      }
+    }
+
+    return label.charAt(0);
+  },
+
+  _onImgLoad: function(e) {
+    e.currentTarget.hidden = false;
+  },
+
+  _onImgError: function(e) {
+    e.currentTarget.hidden = true;
+  },
+
+  _parseColor: function(label) {
+    var colors = this.colors
+      ? this.colors
+      : [
+          "#F44336",
+          "#E91E63",
+          "#9C27B0",
+          "#673AB7",
+          "#3F51B5",
+          "#2196F3",
+          "#03A9F4",
+          "#00BCD4",
+          "#795548",
+          "#009688",
+          "#4CAF50",
+          "#8BC34A",
+          "#CDDC39",
+          "#FFEB3B",
+          "#FFC107",
+          "#FF9800",
+          "#FF5722",
+          "#9E9E9E",
+          "#607D8B"
+        ];
+
+    var hash = 0;
+
+    for (var a = 0; a < label.length; a++) hash += label.charCodeAt(a) << 5;
+
+    if (hash >= colors.length) return colors[hash % colors.length];
+
+    return colors[hash];
+  }
+});

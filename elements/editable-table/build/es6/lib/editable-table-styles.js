@@ -92,7 +92,7 @@ $_documentContainer.innerHTML = `<dom-module id="editable-table-styles">
           font-weight: var(--editable-table-heavy-weight);
           color: var(--editable-table-caption-color);
           background-color: var(--editable-table-caption-bg-color);
-          padding: 0.5em 0 0;
+          padding: 8px 0 0;
           width: 100%;
         }
         :host .thead {
@@ -105,7 +105,7 @@ $_documentContainer.innerHTML = `<dom-module id="editable-table-styles">
           display: table-footer-group;
         } 
         :host([dark][bordered]) .caption {
-          /*padding: 0.5em 0 0 0.25em;*/
+          /*padding: 8px 0 0 4px;*/
           border: 1px solid var(--editable-table-border-color);
           border-bottom: none;
         }
@@ -122,11 +122,11 @@ $_documentContainer.innerHTML = `<dom-module id="editable-table-styles">
         :host .table .td {
           display: table-cell;
           height: 24px;
-          padding: 0.75em 0.25em;
+          padding: 12px 4px;
         }
         :host([condensed]) .table .th,
         :host([condensed]) .table .td {
-          padding: 0em 0.25em;
+          padding: 0 4px;
         }
         :host .caption, 
         :host .table .th, 

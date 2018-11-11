@@ -56,7 +56,7 @@ define([
         shadowRoot = self.createShadowRoot();
       }
       shadowRoot.innerHTML =
-        '\n            <style>\n                :host{\n                    display: flex;\n                    min-height: 1em;\n                    flex-direction: column;\n                }\n                #juicy-ace-editor-container{\n                    flex: 1;\n                    height: 100%;\n                }\n            </style>\n            <div id="juicy-ace-editor-container"></div>\n        ';
+        '\n            <style>\n                :host{\n                    display: flex;\n                    min-height: 16px;\n                    flex-direction: column;\n                }\n                #juicy-ace-editor-container{\n                    flex: 1;\n                    height: 100%;\n                }\n            </style>\n            <div id="juicy-ace-editor-container"></div>\n        ';
       self.container = shadowRoot.querySelector("#juicy-ace-editor-container");
       return babelHelpers.possibleConstructorReturn(_this, self);
     }

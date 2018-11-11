@@ -2,8 +2,9 @@ import {
   html,
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
+import { pathFromUrl } from "./node_modules/@polymer/polymer/lib/utils/resolve-url.js";
+import "./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "./lib/img-loader.js";
-import "openseadragon/openseadragon.min.js";
 Polymer({
   _template: html`
     <style>
@@ -12,13 +13,13 @@ Polymer({
         position: relative;
         height: 500px;
       }
-      #viewer{
+      #viewer {
         position: relative;
         height: 100%;
         width: 100%;
       }
 
-      paper-spinner-lite{
+      paper-spinner-lite {
         opacity: 0;
         display: block;
         transition: opacity 700ms;
@@ -35,17 +36,14 @@ Polymer({
         --paper-spinner-stroke-width: var(--img-pan-zoom-spinner-width, 5px);
         @apply(--img-pan-zoom-spinner);
       }
-      paper-spinner-lite[active]{
+      paper-spinner-lite[active] {
         opacity: 1;
-      }
-      [hidden]{
-        display: none;
       }
     </style>
 
     <!-- Only preload regular images -->
     <template is="dom-if" if="[[!dzi]]">
-      <paper-spinner-lite hidden\$="[[hideSpinner]]" active="[[loading]]"></paper-spinner-lite>
+      <paper-spinner-lite hidden$="[[hideSpinner]]" active="[[loading]]"></paper-spinner-lite>
       <img-loader loaded="{{loaded}}" loading="{{loading}}" src="[[src]]"></img-loader>
     </template>
 
@@ -78,35 +76,56 @@ Polymer({
     visibilityRatio: { type: Number, value: 1 }
   },
   observers: ["_srcChanged(src)"],
-  ready: function() {
-    this.animationConfig = {
-      fade: { name: "fade-in-animation", node: this.$.viewer }
-    };
+  created: function() {
+    const name = "openseadragon",
+      basePath = pathFromUrl(import.meta.url);
+    window.addEventListener(
+      `es-bridge-${name}-loaded`,
+      this._openseadragonLoaded.bind(this)
+    );
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load(
+      name,
+      `${basePath}../../openseadragon/build/openseadragon/openseadragon.js`
+    );
+  },
+  _openseadragonLoaded: function() {
+    this.__openseadragonLoaded = !0;
     if (this.dzi) {
       this._initOpenSeadragon();
     }
   },
-  _initOpenSeadragon: function() {
-    var tileSources = this.src;
-    if (!this.dzi) {
-      tileSources = { type: "image", url: this.src, buildPyramid: !1 };
+  ready: function() {
+    this.animationConfig = {
+      fade: { name: "fade-in-animation", node: this.$.viewer }
+    };
+    if (this.dzi && this.__openseadragonLoaded) {
+      this._initOpenSeadragon();
     }
-    this.viewer = OpenSeadragon({
-      element: this.$.viewer,
-      visibilityRatio: this.visibilityRatio,
-      constrainDuringPan: this.constrainDuringPan,
-      showNavigationControl: this.showNavigationControl,
-      showNavigator: this.showNavigator,
-      zoomPerClick: this.zoomPerClick,
-      zoomPerScroll: this.zoomPerScroll,
-      animationTime: this.animationTime,
-      navPrevNextWrap: this.navPrevNextWrap,
-      showRotationControl: this.showRotationControl,
-      minZoomImageRatio: this.minZoomImageRatio,
-      maxZoomPixelRatio: this.maxZoomPixelRatio,
-      tileSources: tileSources
-    });
-    this.init = !0;
+  },
+  _initOpenSeadragon: function() {
+    setTimeout(() => {
+      var tileSources = this.src;
+      if (!this.dzi) {
+        tileSources = { type: "image", url: this.src, buildPyramid: !1 };
+      }
+      this.viewer = new OpenSeadragon({
+        element: this.$.viewer,
+        visibilityRatio: this.visibilityRatio,
+        constrainDuringPan: this.constrainDuringPan,
+        showNavigationControl: this.showNavigationControl,
+        showNavigator: this.showNavigator,
+        zoomPerClick: this.zoomPerClick,
+        zoomPerScroll: this.zoomPerScroll,
+        animationTime: this.animationTime,
+        navPrevNextWrap: this.navPrevNextWrap,
+        showRotationControl: this.showRotationControl,
+        minZoomImageRatio: this.minZoomImageRatio,
+        maxZoomPixelRatio: this.maxZoomPixelRatio,
+        tileSources: tileSources
+      });
+      this.init = !0;
+    }, 100);
   },
   destroy: function() {
     this.viewer.destroy();

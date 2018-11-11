@@ -14,7 +14,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         letter-spacing: 2px;
         color: #6D6E71;
         text-align: center;
-        font-size: 1.2em;
+        font-size: 19.2px;
       }
 
       p {
@@ -40,4 +40,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         </template>
       </paper-stepper>
     </template>
-`,is:"gene-crossover",properties:{activePage:{type:String,value:0},count:{type:Number,value:0}},_isActive:function(activePage,index){return activePage===index},_countToArray:function(count){var array=[];if(count){for(i=0;i<count;i++){array.push(i)}}return array},ready:function(){var root=this,ironPages=root.shadowRoot.querySelector("iron-pages");if(ironPages.children){if(ironPages.children.length){root.count=ironPages.children.length}}}});
+`,is:"gene-crossover",properties:{activePage:{type:String,value:0},count:{type:Number,value:0}},_isActive:function(activePage,index){return activePage===index},_countToArray:function(count){var array=[];if(count){for(var i=0;i<count;i++){array.push(i)}}return array},ready:function(){var root=this,ironPages=root.shadowRoot.querySelector("iron-pages");if(ironPages.children){if(ironPages.children.length){root.count=ironPages.children.length}}}});

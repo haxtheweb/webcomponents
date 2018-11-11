@@ -12,8 +12,7 @@ Polymer({
         display: block;
       }
     </style>
-    <link property="oer:forComponent" content\$="[[relatedResource]]">
-    <h2><span property="oer:name">[[name]]</span></h2>
+    <h3><span property="oer:name">[[name]]</span></h3>
     <ol>
       <template is="dom-repeat" items="[[tasks]]" as="task">
         <li><span property="oer:task">[[task.name]]</span></li>
@@ -31,7 +30,21 @@ Polymer({
   properties: {
     name: { type: String, value: "Steps to completion" },
     relatedResource: { type: String },
-    tasks: { type: Array, value: [], notify: !0 }
+    tasks: { type: Array, value: [], notify: !0 },
+    _resourceLink: {
+      type: Object,
+      computed: "_generateResourceLink(relatedResource)"
+    }
+  },
+  _generateResourceLink(relatedResource) {
+    if (this._resourceLink) {
+      document.head.removeChild(this._resourceLink);
+    }
+    let link = document.createElement("link");
+    link.setAttribute("property", "oer:forComponent");
+    link.setAttribute("content", relatedResource);
+    document.head.appendChild(link);
+    return link;
   },
   _valueChanged: function(e) {
     for (var i in e.base) {

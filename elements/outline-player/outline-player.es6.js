@@ -17,16 +17,16 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
 
       h1 {
-        font-size: 3em;
-        line-height: 1em;
+        font-size: 48px;
+        line-height: 16px;
       }
 
       h2 {
-        font-size: 2em;
+        font-size: 32px;
       }
 
       h3 {
-        font-size: 1.75em;
+        font-size: 28px;
       }
 
       p {
@@ -45,14 +45,14 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
 
       ul li {
-        padding-bottom: 1.5em;
+        padding-bottom: 24px;
         line-height: 1.5;
         color: #424242;
-        max-width: 28em;
+        max-width: 448px;
       }
 
       ul li:last-child {
-        padding-bottom: 1em;
+        padding-bottom: 16px;
       }
 
       app-toolbar {
@@ -142,8 +142,8 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
 
       #slot {
-        padding: 1em;
-        max-width: 65em;
+        padding: 16px;
+        max-width: 1040px;
         flex: 1 1 auto;
         order: 1;
       }

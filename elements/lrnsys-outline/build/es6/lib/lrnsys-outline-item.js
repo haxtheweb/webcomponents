@@ -46,7 +46,7 @@ Polymer({
       :host #wrapper {
         display: flex;
         height: 40px;
-        border-radius: 0.1em;
+        border-radius: 0.16px;
         background-color: white;
       }
       :host(:focus) #wrapper,
@@ -69,7 +69,7 @@ Polymer({
         padding: 10px;
         margin: 4px;
         display: none;
-        border-radius: 0.1em;
+        border-radius: 0.16px;
       }
       :host(:focus) #swipe paper-icon-button,
       :host(:hover) #swipe paper-icon-button {

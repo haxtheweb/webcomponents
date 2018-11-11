@@ -3,13 +3,13 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       <style>
         :host {
           display: block;
-          --wikipedia-query-body-height: 10em;
+          --wikipedia-query-body-height: 160px;
         }
         #result {
           height: var(--wikipedia-query-body-height);
           overflow: scroll;
           border: 1px grey solid;
-          padding: .5em 1em;
+          padding: 8px 16px;
         }
         citation-element {
           background-color: #F8F8F8;

@@ -35,7 +35,7 @@ Polymer({
         transform: translateY(2px);
       }
       #title {
-        font-size: 1.2em;
+        font-size: 19.2px;
       }
       #right iron-icon {
         color: gray;

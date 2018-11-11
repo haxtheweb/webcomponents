@@ -2,6 +2,7 @@ import {
   html,
   Polymer
 } from "../node_modules/@polymer/polymer/polymer-legacy.js";
+import "../node_modules/@polymer/iron-image/iron-image.js";
 import "./lrndesign-gallery-zoom.js";
 Polymer({
   _template: html`

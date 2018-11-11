@@ -5,6 +5,7 @@ import {
 import "../node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "../node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "../node_modules/@polymer/paper-icon-button/paper-icon-button.js";
+import "../node_modules/@polymer/iron-icons/iron-icons.js";
 import "./a11y-collapse-button-styles.js";
 import "../node_modules/@polymer/paper-tooltip/paper-tooltip.js";
 Polymer({

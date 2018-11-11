@@ -17,7 +17,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         background-color: white;
       }
       iron-selector {
-        line-height: 1em;
+        line-height: 16px;
       }
       iron-selector lrnsys-button {
         display: inline-flex;
@@ -28,9 +28,9 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
       lrnapp-cis-course-card {
         padding: 0;
-        margin: 1em;
-        height: 15em;
-        width: 14em;
+        margin: 16px;
+        height: 240px;
+        width: 224px;
       }
       .courses-grid {
         margin: 0 auto;
@@ -61,7 +61,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
     </div>
     <app-toolbar class="">
       <span main-title=""></span>
-      <span top-item="" style="text-align:right;font-size:.5em;padding-right:1em;">Displaying [[courses.length]] of [[originalCourses.length]]</span>
+      <span top-item="" style="text-align:right;font-size:8px;padding-right:16px;">Displaying [[courses.length]] of [[originalCourses.length]]</span>
       <paper-dropdown-menu label="Course" hidden\$="[[!courses]]">
         <paper-listbox slot="dropdown-content" class="dropdown-content" selected="{{queryParams.course}}" attr-for-selected="item-id">
           <paper-item></paper-item>

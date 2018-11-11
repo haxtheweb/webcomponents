@@ -7,6 +7,7 @@ import "./node_modules/@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.j
 import "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "./node_modules/@polymer/paper-button/paper-button.js";
 import "./node_modules/@polymer/iron-icon/iron-icon.js";
+import "./node_modules/@polymer/iron-icons/iron-icons.js";
 Polymer({
   _template: html`
     <style>
@@ -58,7 +59,7 @@ Polymer({
         opacity: 1;
         float: left;
         margin: 375px 0 0 25px;
-        font-size: 2.5em;
+        font-size: 40px;
         color: var(--font-color);
         border-bottom: solid 5px #fff;
         border-radius: 5px;
@@ -67,7 +68,7 @@ Polymer({
 
       .back_title {
         opacity: 1;
-        font-size: 2.5em;
+        font-size: 40px;
         color: var(--font-color);
         float: left;
         margin: -390px 0 0 25px;
@@ -78,7 +79,7 @@ Polymer({
 
       .back_content {
         color: var(--font-color);
-        font-size: 1em;
+        font-size: 16px;
         clear: left;
         position: relative;
         bottom: 334px;
@@ -87,20 +88,16 @@ Polymer({
         margin-right: auto;
         padding-top: 10px;
       }
-
       .learn_more {
         float: right;
         margin-top: -75px;
-        font-size: 1em;
+        font-size: 16px;
         color: var(--font-color);
         margin-right: 10px;
       }
-
       :host([hover]) .learn_more paper-button {
         color: var(--hover-link);
       }
-
-
     </style>
 
     <div id="container">
@@ -113,8 +110,8 @@ Polymer({
               <slot></slot>
             </div>
             <div class="learn_more">
-              <a href="[[url]]" id="link" target\$="[[_urlTarget(url)]]">
-                <paper-button noink="">Learn More
+              <a tabindex="-1" href="[[url]]" id="link" target$="[[_urlTarget(url)]]">
+                <paper-button no-ink>Learn More
                   <iron-icon icon="chevron-right"></iron-icon>
                 </paper-button>
               </a>
@@ -138,7 +135,12 @@ Polymer({
     hover: { type: Boolean, value: !1, reflectToAttribute: !0 }
   },
   observers: ["__updateStyles(image)"],
-  listeners: { mouseover: "__hoverState", mouseout: "__hoverState" },
+  listeners: {
+    mouseover: "__hoverIn",
+    mouseout: "__hoverOut",
+    focusin: "__hoverIn",
+    focusout: "__hoverOut"
+  },
   attached: function() {
     this.setHaxProperties({
       canScale: !0,
@@ -214,8 +216,7 @@ Polymer({
     });
   },
   __updateStyles: function(image) {
-    this.customStyle["--tile-image"] = `url(${image})`;
-    this.updateStyles();
+    this.updateStyles({ "--tile-image": `url(${image})` });
   },
   _outsideLink: function(url) {
     if (0 != url.indexOf("http")) return !1;
@@ -241,7 +242,10 @@ Polymer({
       }
     }
   },
-  __hoverState: function() {
-    this.hover = !this.hover;
+  __hoverIn: function() {
+    this.hover = !0;
+  },
+  __hoverOut: function() {
+    this.hover = !1;
   }
 });

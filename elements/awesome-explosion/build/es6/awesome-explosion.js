@@ -10,24 +10,24 @@ Polymer({
         display: inline-block;
       }
       :host([size="tiny"]) #image {
-        width: 5em;
-        height: 5em;
+        width: 80px;
+        height: 80px;
       }
       :host([size="small"]) #image {
-        width: 10em;
-        height: 10em;
+        width: 160px;
+        height: 160px;
       }
       :host([size="medium"]) #image {
-        width: 15em;
-        height: 15em;
+        width: 240px;
+        height: 240px;
       }
       :host([size="large"]) #image {
-        width: 20em;
-        height: 20em;
+        width: 320px;
+        height: 320px;
       }
       :host([size="epic"]) #image {
-        width: 45em;
-        height: 45em;
+        width: 720px;
+        height: 720px;
       }
 
       :host([color="red"]) #image {
@@ -46,8 +46,8 @@ Polymer({
         filter: sepia() saturate(10000%) hue-rotate(70deg);
       }
       #image {
-        width: 15em;
-        height: 15em;
+        width: 240px;
+        height: 240px;
       }
     </style>
     </custom-style>

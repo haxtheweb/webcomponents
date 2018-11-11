@@ -10,9 +10,9 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       app-drawer {
         --app-drawer-width: var(--lrndesign-drawer-width);
         --app-drawer-content-container: {
-          padding: 1em;
+          padding: 16px;
           overflow-y: scroll;
-          margin-top: 7em;
+          margin-top: 112px;
         }
       }
     </style>

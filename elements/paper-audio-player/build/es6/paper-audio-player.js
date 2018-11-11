@@ -2,29 +2,23 @@ import {
   html,
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
+import { IronA11yKeysBehavior } from "./node_modules/@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
 import "./node_modules/@polymer/paper-progress/paper-progress.js";
 import "./node_modules/@polymer/iron-icon/iron-icon.js";
 import "./node_modules/@polymer/paper-icon-button/paper-icon-button.js";
 import "./node_modules/@polymer/paper-ripple/paper-ripple.js";
-import { IronA11yKeysBehavior } from "./node_modules/@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
 import "./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import "./node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js";
 import "./lib/paper-audio-icons.js";
 Polymer({
   _template: html`
     <style>
-
       :host {
         display: block;
-        /*margin: auto 10px;
-        width: 100%;*/
         box-sizing: border-box;
         font-family: 'Roboto', 'Noto', sans-serif;
-      }
-
-      [hidden] {
-        display: none !important;
       }
 
       #wrapper {
@@ -179,42 +173,31 @@ Polymer({
         align-self: flex-end;
       }
     </style>
-
     <div id="wrapper" class="layout-horizontal">
-
       <div id="left" class="self-start" on-tap="playPause">
-
         <!-- Icon -->
-        <paper-icon-button id="play" icon="paper-audio-icons:play-arrow" class="fit" hidden\$="[[ _hidePlayIcon(isPlaying, canBePlayed) ]]" role="button" aria-label="Play Audio" tabindex="-1"></paper-icon-button>
-        <paper-icon-button id="pause" icon="paper-audio-icons:pause" class="fit" hidden\$="[[ !isPlaying ]]" role="button" aria-label="Pause Audio" tabindex="-1"></paper-icon-button>
-        <iron-icon id="error" icon="paper-audio-icons:error-outline" class="fit" hidden\$="[[ !error ]]"></iron-icon>
+        <paper-icon-button id="play" icon="paper-audio-icons:play-arrow" class="fit" hidden$="[[ _hidePlayIcon(isPlaying, canBePlayed) ]]" role="button" aria-label="Play Audio" tabindex="-1"></paper-icon-button>
+        <paper-icon-button id="pause" icon="paper-audio-icons:pause" class="fit" hidden$="[[ !isPlaying ]]" role="button" aria-label="Pause Audio" tabindex="-1"></paper-icon-button>
+        <iron-icon id="error" icon="paper-audio-icons:error-outline" class="fit" hidden$="[[ !error ]]"></iron-icon>
       </div>
-
       <div id="center" class="flex" on-down="_onDown">
         <!-- Title -->
         <div id="title" class="fit" role="alert">[[title]]</div>
-
         <!-- Audio HTML5 element -->
-        <audio id="audio" src="[[src]]" preload="[[ _setPreload(autoPlay, preload) ]]"></audio>
-
+        <audio id="audio" src$="[[src]]" preload$="[[ _setPreload(autoPlay, preload) ]]"></audio>
         <!-- Progress bar -->
         <div id="progress" class="fit"></div>
-
         <paper-ripple></paper-ripple>
-
         <!-- Secondary white title -->
         <div id="progress2" class="fit">
           <div id="title2" aria-hidden="true">[[title]]</div>
         </div>
       </div>
-
       <div id="right" class="self-end" on-click="restart">
-
         <!-- Duration -->
         <div id="duration" class="fit" hidden\$="[[ended]]">
           <span class="fit" role="timer" aria-label="Audio Track Length">[[ _convertSecToMin(timeLeft) ]]</span>
         </div>
-
         <!-- Icon -->
         <paper-icon-button id="replay" class="fit" icon="paper-audio-icons:replay" tabindex="-1" role="button" aria-label="Replay Audio"></paper-icon-button>
       </div>
@@ -244,15 +227,7 @@ Polymer({
     smallSkip: { type: Number, value: 15 },
     largeSkip: { type: Number, value: 60 },
     error: { type: Boolean },
-    timeOffset: { type: Number, value: 0 },
-    gaId: { type: String }
-  },
-  listeners: {
-    "audio.loadedmetadata": "_onCanPlay",
-    "audio.playing": "_onPlaying",
-    "audio.pause": "_onPause",
-    "audio.ended": "_onEnd",
-    "audio.error": "_onError"
+    timeOffset: { type: Number, value: 0 }
   },
   keyBindings: {
     space: "playPause",
@@ -336,6 +311,21 @@ Polymer({
         advanced: []
       }
     });
+    this.$.audio.addEventListener("loadedmetadata", this._onCanPlay.bind(this));
+    this.$.audio.addEventListener("playing", this._onPlaying.bind(this));
+    this.$.audio.addEventListener("pause", this._onPause.bind(this));
+    this.$.audio.addEventListener("ended", this._onEnd.bind(this));
+    this.$.audio.addEventListener("error", this._onError.bind(this));
+  },
+  detached: function() {
+    this.$.audio.removeEventListener(
+      "loadedmetadata",
+      this._onCanPlay.bind(this)
+    );
+    this.$.audio.removeEventListener("playing", this._onPlaying.bind(this));
+    this.$.audio.removeEventListener("pause", this._onPause.bind(this));
+    this.$.audio.removeEventListener("ended", this._onEnd.bind(this));
+    this.$.audio.removeEventListener("error", this._onError.bind(this));
   },
   ready: function() {
     var player = this;
@@ -344,7 +334,6 @@ Polymer({
     player.ended = !1;
     player.error = !1;
     player.$.audio.currentTime = player.timeOffset;
-    if (!!player.gaId) player._setupGATracking();
   },
   playPause: function(e) {
     if (!!e) e.preventDefault();
@@ -363,12 +352,10 @@ Polymer({
   _play: function() {
     var player = this;
     player.$.audio.play();
-    if (!!player.gaId) this._dispatchGAEvent("Play");
   },
   _pause: function() {
     var player = this;
     player.$.audio.pause();
-    if (!!player.gaId) this._dispatchGAEvent("Pause");
   },
   restart: function(e) {
     if (!!e) e.preventDefault();
@@ -443,7 +430,6 @@ Polymer({
     player.ended = !0;
     player.isPlaying = !1;
     player.$.replay.style.opacity = 1;
-    if (!!player.gaId) this._dispatchGAEvent("Ended");
   },
   _onError: function() {
     var player = this;
@@ -470,8 +456,6 @@ Polymer({
       player._updateProgressBar(e);
       if (!player.isPlaying) {
         player._play();
-      } else {
-        if (!!player.gaId) this._dispatchGAEvent("Scrub");
       }
     } else if ("none" === player.preload) {
       player.$.audio.load();
@@ -481,8 +465,6 @@ Polymer({
           player._updateProgressBar(e);
           if (!player.isPlaying) {
             player._play();
-          } else {
-            if (!!player.gaId) this._dispatchGAEvent("Scrub");
           }
         },
         !1
@@ -529,41 +511,5 @@ Polymer({
   },
   _setPreload: function(autoplay, preload) {
     return autoplay ? "auto" : preload;
-  },
-  _dispatchGAEvent: function(action) {
-    var player = this;
-    window.ga("audioTracker.send", "event", {
-      eventCategory: "Paper Audio Player",
-      eventAction: action,
-      eventLabel: !!player.title ? player.title : player.src,
-      eventValue: player.$.audio.currentTime
-    });
-  },
-  _setupGATracking: function() {
-    var player = this;
-    if (window) {
-      if (!window.ga) {
-        (function(i, s, o, g, r, a, m) {
-          i.GoogleAnalyticsObject = r;
-          (i[r] =
-            i[r] ||
-            function() {
-              (i[r].q = i[r].q || []).push(arguments);
-            }),
-            (i[r].l = 1 * new Date());
-          (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
-          a.async = 1;
-          a.src = g;
-          m.parentNode.insertBefore(a, m);
-        })(
-          window,
-          document,
-          "script",
-          "https://www.google-analytics.com/analytics.js",
-          "ga"
-        );
-      }
-      window.ga("create", player.gaId, "auto", "audioTracker");
-    }
   }
 });

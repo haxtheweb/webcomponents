@@ -22,7 +22,7 @@ Polymer({
         --a11y-collapse-border: 1px solid #ddd;
         --a11y-collapse-horizontal-padding: 0;
         --a11y-collapse: {
-          margin: 0em;
+          margin: 0;
         };
         --a11y-collapse-heading-focus: {
           background-color: #f0f0f0;
@@ -76,7 +76,7 @@ Polymer({
       }
       :host .field-group-border {
         border: 1px solid #ddd;
-        border-radius: 0.25em;
+        border-radius: 4px;
         padding: 15px;
         margin: 15px;
       }
@@ -89,14 +89,14 @@ Polymer({
         transition: width 2s;
       }
       :host .field-group-label {
-       padding-right: 0.5em;
+       padding-right: 8px;
        font-weight: bold;
       }
       :host .field-group label {
         line-height: 30px;
       }
       :host #caption {
-        padding: 0em;
+        padding: 0;
         display: inline-block;
         width: unset;
       }
@@ -115,16 +115,16 @@ Polymer({
       }
       :host .table .td {
         vertical-align: top;
-        padding: 0.5em 0.25em;
+        padding: 8px 4px;
       }
       :host .table .th:first-child {
-        width: 6em;
+        width: 96px;
       }
       :host([condensed]) .table .th {
         padding: 0;
       }
       :host([condensed]) .table .td {
-        padding: 0em 0.25em;
+        padding: 0 4px;
       }
       :host .table[bordered] .td {
         border: 1px solid var(--editable-table-border-color);

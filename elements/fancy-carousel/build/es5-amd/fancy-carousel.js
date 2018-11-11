@@ -5,18 +5,18 @@ define([
   "./lib/fancy-carousel-shared-styles.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_21007430e11911e8973e839b7a7a14b7() {
+  function _templateObject_60983230e5f711e8a5aea58f54ec830c() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style include="fancy-carousel-shared-styles">\n      :host {\n        display: block;\n        position: relative;\n        overflow: hidden;\n        width: 100%;\n        contain: content;\n      }\n\n      :host(:after) {\n        display: block;\n        content: \'\';\n        padding-top: 75%; /* 4:3 = height is 75% of width */\n      }\n\n      #prevBtn {\n        left: 12px;\n        z-index: 1000;\n      }\n\n      #nextBtn {\n        right: 12px;\n        z-index: 1000;\n      }\n    </style>\n\n    <div id="content-wrapper">\n      <slot></slot>\n    </div>\n\n    <button id="prevBtn" on-click="previous">\u276E</button>\n    <button id="nextBtn" on-click="next">\u276F</button>\n'
     ]);
-    _templateObject_21007430e11911e8973e839b7a7a14b7 = function() {
+    _templateObject_60983230e5f711e8a5aea58f54ec830c = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_21007430e11911e8973e839b7a7a14b7()
+      _templateObject_60983230e5f711e8a5aea58f54ec830c()
     ),
     is: "fancy-carousel",
     behaviors: [FancyCarouselBehaviour],

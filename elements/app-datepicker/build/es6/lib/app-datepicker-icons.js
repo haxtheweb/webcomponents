@@ -1,3 +1,4 @@
+import "../node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js";
 var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 $_documentContainer.innerHTML = `<iron-iconset-svg size="24" name="datepicker">

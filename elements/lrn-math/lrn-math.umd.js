@@ -1,2 +1,174 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(require("@polymer/polymer/polymer-legacy.js"),require("@polymer/polymer/lib/legacy/polymer.dom.js"),require("@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"),require("mathjax3/unpacked/MathJax.js")):"function"==typeof define&&define.amd?define(["@polymer/polymer/polymer-legacy.js","@polymer/polymer/lib/legacy/polymer.dom.js","@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js","mathjax3/unpacked/MathJax.js"],t):t(e.polymerLegacy_js,e.polymer_dom_js)}(this,function(e,t){"use strict";function i(){var e,t,n=(e=['\n    <style>\n       :host {\n        display: inline;\n      }\n    </style>\n    [[prefix]] [[math]] [[suffix]]\n    <span hidden=""><slot id="content"></slot></span>\n'],t||(t=e.slice(0)),Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(t)}})));return i=function(){return n},n}e.Polymer({_template:e.html(i()),is:"lrn-math",behaviors:[HAXBehaviors.PropertiesBehaviors],properties:{prefix:{type:String,value:"$$"},suffix:{type:String,value:"$$"},inline:{type:Boolean,value:!0,reflectToAttribute:!0},math:{type:String},mathText:{type:String,observer:"_mathChanged"}},observers:["_inlineChanged(inline)"],_inlineChanged:function(e){e&&(this.prefix="\\(",this.suffix="\\)")},_mathChanged:function(e,i){if(e!==i){for(;null!==t.dom(this).firstChild;)t.dom(this).removeChild(t.dom(this).firstChild);var n=document.createTextNode(e);t.dom(this).appendChild(n)}},attached:function(){this.setHaxProperties({canScale:!0,canPosition:!0,canEditSource:!0,gizmo:{title:"Math",description:"Present math in a nice looking way.",icon:"places:all-inclusive",color:"grey",groups:["Content"],handles:[{type:"math",math:"mathText"},{type:"inline",text:"mathText"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"inline",title:"Inline",description:"Display this math inline",inputMethod:"boolean",icon:"remove"}],configure:[{property:"mathText",title:"Math",description:"Math",inputMethod:"textfield",icon:"editor:format-quote"},{property:"inline",title:"Inline",description:"Display this math inline",inputMethod:"boolean",icon:"remove"}],advanced:[]}})},ready:function(){var e=this;this._observer=t.dom(this.$.content).observeNodes(function(t){e.math=t.addedNodes.map(function(e){return e.textContent}).toString(),setTimeout(function(){window.MathJax.Hub.Queue(["Typeset",window.MathJax.Hub])},100)})}})});
-//# sourceMappingURL=lrn-math.umd.js.map
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+/**
+ * `lrn-math`
+ * `An element for presenting Math based content.`
+ *
+ * @demo demo/index.html
+ */
+
+Polymer({
+  _template: html`
+    <style>
+       :host {
+        display: inline;
+      }
+    </style>
+    [[prefix]] [[math]] [[suffix]]
+`,
+
+  is: "lrn-math",
+
+  behaviors: [HAXBehaviors.PropertiesBehaviors],
+
+  properties: {
+    /**
+     * Styling for targeting the math pre and post
+     */
+    prefix: {
+      type: String,
+      value: "$$"
+    },
+    suffix: {
+      type: String,
+      value: "$$"
+    },
+    /**
+     * display the math inline
+     */
+    inline: {
+      type: Boolean,
+      value: true,
+      reflectToAttribute: true
+    },
+    /**
+     * The math to get rendered.
+     */
+    math: {
+      type: String
+    },
+    /**
+     * backdown to inject text
+     */
+    mathText: {
+      type: String,
+      observer: "_mathChanged"
+    }
+  },
+
+  observers: ["_inlineChanged(inline)"],
+
+  /**
+   * Modify pre and suffix if inline is set
+   */
+  _inlineChanged: function(inline) {
+    if (inline) {
+      this.prefix = "\\(";
+      this.suffix = "\\)";
+    }
+  },
+
+  /**
+   * Notice math changed, update slot.
+   */
+  _mathChanged: function(newValue, oldValue) {
+    if (newValue !== oldValue) {
+      while (dom(this).firstChild !== null) {
+        dom(this).removeChild(dom(this).firstChild);
+      }
+      let frag = document.createTextNode(newValue);
+      dom(this).appendChild(frag);
+    }
+  },
+
+  /**
+   * Attached life cycle
+   */
+  attached: function() {
+    // Establish hax properties if they exist
+    let props = {
+      canScale: true,
+      canPosition: true,
+      canEditSource: true,
+      gizmo: {
+        title: "Math",
+        description: "Present math in a nice looking way.",
+        icon: "places:all-inclusive",
+        color: "grey",
+        groups: ["Content"],
+        handles: [
+          {
+            type: "math",
+            math: "mathText"
+          },
+          {
+            type: "inline",
+            text: "mathText"
+          }
+        ],
+        meta: {
+          author: "LRNWebComponents"
+        }
+      },
+      settings: {
+        quick: [
+          {
+            property: "inline",
+            title: "Inline",
+            description: "Display this math inline",
+            inputMethod: "boolean",
+            icon: "remove"
+          }
+        ],
+        configure: [
+          {
+            property: "mathText",
+            title: "Math",
+            description: "Math",
+            inputMethod: "textfield",
+            icon: "editor:format-quote"
+          },
+          {
+            property: "inline",
+            title: "Inline",
+            description: "Display this math inline",
+            inputMethod: "boolean",
+            icon: "remove"
+          }
+        ],
+        advanced: []
+      }
+    };
+    this.setHaxProperties(props);
+    const name = "mathjax";
+    const basePath = pathFromUrl(import.meta.url);
+    const location = `${basePath}lib/mathjax/latest.js`;
+    window.addEventListener(
+      `es-bridge-${name}-loaded`,
+      this._mathjaxLoaded.bind(this)
+    );
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load(name, location);
+  },
+  /**
+   * Notice changes to the slot and reflect these to the math value
+   * so that we can render it to the page.
+   */
+  _mathjaxLoaded: function() {
+    this._observer = dom(this).observeNodes(info => {
+      this.math = info.addedNodes.map(node => node.textContent).toString();
+      window.MathJax.Hub.Config({
+        skipStartupTypeset: true,
+        jax: ["input/TeX", "output/HTML-CSS"],
+        messageStyle: "none",
+        tex2jax: {
+          preview: "none"
+        }
+      });
+      window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, "lrn-math"]);
+    });
+  }
+});

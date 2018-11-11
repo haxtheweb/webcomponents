@@ -7,7 +7,7 @@ define([
   "./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_7e66dd70e11a11e8940f77b200168e75() {
+  function _templateObject_b01079c0e5f811e8b9151f44fc4c3e80() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style is="custom-style">\n      :host {\n        background-color: var(--simple-colors-background1, #ffffff);\n        overflow: visible;\n        display: block;\n      }\n      :host #wrapper {\n        margin: 0 auto;\n        position: relative;\n      }\n      :host #wrapper > * {\n        position: absolute;\n      }\n      :host #wrapper #chart {\n        left: 0;\n        top: 0;\n      }\n      :host #wrapper,\n      :host #wrapper #chart {\n        width: 250px;\n        height: 250px;\n      }\n      :host([size="xs"]) #wrapper,\n      :host([size="xs"]) #wrapper #chart {\n        width: 150px;\n        height: 150px;\n      }\n      :host([size="sm"]) #wrapper,\n      :host([size="sm"]) #wrapper #chart {\n        width: 200px;\n        height: 200px;\n      }\n      :host([size="lg"]) #wrapper,\n      :host([size="lg"]) #wrapper #chart {\n        width: 300px;\n        height: 300px;\n      }\n      :host([size="xl"]) #wrapper,\n      :host([size="xl"]) #wrapper #chart {\n        width: 400px;\n        height: 400px;\n      }\n      :host #wrapper > #image {\n        left: 20%;\n        top: 20%;\n        width: 60%;\n        height: 60%;\n        -webkit-clip-path: circle(50% at 50% 50%);\n        clip-path: circle(50% at 50% 50%);\n      }\n    </style>\n    <div id="wrapper">\n      <img id="image" alt$="[[imageAlt]]" aria-hidden="true" hidden$="[[!imageSrc]]" src$="[[imageSrc]]" style$="[[imageStyle]]">\n      <chartist-render id="chart" data$="[[data]]" chart-desc$="[[desc]]" chart-title="[[title]]" scale="ct-square" options$="[[options]]" title$="[[title]]" type="pie">\n      </chartist-render>\n    </div>\n'
@@ -16,14 +16,14 @@ define([
         '\n    <style is="custom-style">\n      :host {\n        background-color: var(--simple-colors-background1, #ffffff);\n        overflow: visible;\n        display: block;\n      }\n      :host #wrapper {\n        margin: 0 auto;\n        position: relative;\n      }\n      :host #wrapper > * {\n        position: absolute;\n      }\n      :host #wrapper #chart {\n        left: 0;\n        top: 0;\n      }\n      :host #wrapper,\n      :host #wrapper #chart {\n        width: 250px;\n        height: 250px;\n      }\n      :host([size="xs"]) #wrapper,\n      :host([size="xs"]) #wrapper #chart {\n        width: 150px;\n        height: 150px;\n      }\n      :host([size="sm"]) #wrapper,\n      :host([size="sm"]) #wrapper #chart {\n        width: 200px;\n        height: 200px;\n      }\n      :host([size="lg"]) #wrapper,\n      :host([size="lg"]) #wrapper #chart {\n        width: 300px;\n        height: 300px;\n      }\n      :host([size="xl"]) #wrapper,\n      :host([size="xl"]) #wrapper #chart {\n        width: 400px;\n        height: 400px;\n      }\n      :host #wrapper > #image {\n        left: 20%;\n        top: 20%;\n        width: 60%;\n        height: 60%;\n        -webkit-clip-path: circle(50% at 50% 50%);\n        clip-path: circle(50% at 50% 50%);\n      }\n    </style>\n    <div id="wrapper">\n      <img id="image" alt\\$="[[imageAlt]]" aria-hidden="true" hidden\\$="[[!imageSrc]]" src\\$="[[imageSrc]]" style\\$="[[imageStyle]]">\n      <chartist-render id="chart" data\\$="[[data]]" chart-desc\\$="[[desc]]" chart-title="[[title]]" scale="ct-square" options\\$="[[options]]" title\\$="[[title]]" type="pie">\n      </chartist-render>\n    </div>\n'
       ]
     );
-    _templateObject_7e66dd70e11a11e8940f77b200168e75 = function() {
+    _templateObject_b01079c0e5f811e8b9151f44fc4c3e80 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_7e66dd70e11a11e8940f77b200168e75()
+      _templateObject_b01079c0e5f811e8b9151f44fc4c3e80()
     ),
     is: "progress-donut",
     behaviors: [

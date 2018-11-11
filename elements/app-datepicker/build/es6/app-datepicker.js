@@ -4,14 +4,15 @@ import {
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
 import { dom } from "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
 import * as async from "./node_modules/@polymer/polymer/lib/utils/async.js";
+import "./node_modules/@polymer/iron-selector/iron-selector.js";
+import "./node_modules/@polymer/iron-list/iron-list.js";
+import "./node_modules/@polymer/paper-icon-button/paper-icon-button.js";
 import { NeonAnimationRunnerBehavior } from "./node_modules/@polymer/neon-animation/neon-animation-runner-behavior.js";
+import "./node_modules/@polymer/neon-animation/neon-animated-pages.js";
 import "./lib/app-datepicker-icons.js";
 import "./lib/app-datepicker-animations.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
-$_documentContainer.innerHTML = `<dom-module id="app-datepicker">
-  <template strip-whitespace="">
-    <style>
+Polymer({
+  _template: html`<style>
       :host {
         display: block;
         position: relative;
@@ -604,13 +605,7 @@ $_documentContainer.innerHTML = `<dom-module id="app-datepicker">
         </template>
       </neon-animated-pages>
 
-    </div>
-  </template>
-
-  
-</dom-module>`;
-document.head.appendChild($_documentContainer);
-Polymer({
+    </div>`,
   is: "app-datepicker",
   behaviors: [NeonAnimationRunnerBehavior],
   properties: {
@@ -1460,6 +1455,6 @@ Polymer({
     this.toggleClass("vertical-view", "vertical" === _view, this);
   },
   _updateDistributedButtonInkColorCustomProp: function(_node, _colorCode) {
-    _node.updateStyles({ "--paper-button-ink-color": _colorCode });
+    this.updateStyles({ "--paper-button-ink-color": _colorCode });
   }
 });

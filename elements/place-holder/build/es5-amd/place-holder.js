@@ -10,18 +10,18 @@ define([
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_e20f5dd0e11911e89cc81f4608d4df4e() {
+  function _templateObject_16a14d00e5f811e88133552f9a2a7efc() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style include="materializecss-styles-colors">\n      :host {\n        display: block;\n        border: none;\n        transition: .6s border ease-in-out;\n      }\n      :host([drag-over]) {\n        border: 4px dashed #2196F3;\n      }\n      .placeholder-inner {\n        text-align: center;\n        padding: 16px;\n      }\n      iron-icon.placeholder-icon {\n        margin: 0 auto;\n        width: 50%;\n        height: 50%;\n        display: block;\n      }\n      .placeholder-text {\n        line-height: 16px;\n        font-size: 12px;\n        font-style: italic;\n      }\n    </style>\n    <div class="placeholder-inner grey lighten-3 grey-text text-darken-3">\n      <iron-icon icon="[[iconFromType]]" class="placeholder-icon"></iron-icon>\n      <span class="placeholder-text">[[calcText]]</span>\n    </div>\n'
     ]);
-    _templateObject_e20f5dd0e11911e89cc81f4608d4df4e = function() {
+    _templateObject_16a14d00e5f811e88133552f9a2a7efc = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_e20f5dd0e11911e89cc81f4608d4df4e()
+      _templateObject_16a14d00e5f811e88133552f9a2a7efc()
     ),
     is: "place-holder",
     behaviors: [HAXBehaviors.PropertiesBehaviors],

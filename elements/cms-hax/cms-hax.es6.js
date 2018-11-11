@@ -2,7 +2,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
     <style>
       :host {
         display: block;
-        font-size: 1em;
+        font-size: 16px;
         box-sizing: content-box;
       }
     </style>

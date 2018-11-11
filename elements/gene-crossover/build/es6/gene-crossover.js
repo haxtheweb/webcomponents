@@ -28,7 +28,7 @@ Polymer({
         letter-spacing: 2px;
         color: #6D6E71;
         text-align: center;
-        font-size: 1.2em;
+        font-size: 19.2px;
       }
 
       p {
@@ -66,7 +66,7 @@ Polymer({
   _countToArray: function(count) {
     var array = [];
     if (count) {
-      for (i = 0; i < count; i++) {
+      for (var i = 0; i < count; i++) {
         array.push(i);
       }
     }
