@@ -31,7 +31,7 @@ Polymer({
       };
     </style>
     <hax-toolbar-menu corner="[[corner]]" id="menu" icon="[[icon]]" tooltip="[[label]]" tooltip-direction="[[direction]]" selected="{{selectedValue}}" reset-on-select="[[resetOnSelect]]">
-      <slot id="items"></slot>
+      <slot></slot>
     </hax-toolbar-menu>
 `,
 
@@ -121,7 +121,7 @@ Polymer({
       typeof oldValue !== typeof undefined &&
       typeof oldValue !== typeof null
     ) {
-      let children = dom(this.$.items).getDistributedNodes();
+      let children = dom(this).getDistributedNodes();
       var item = new Object();
       var j = 0;
       // check for tag match since we have to filter out text nodes
