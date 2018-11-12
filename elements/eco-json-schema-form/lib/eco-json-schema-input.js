@@ -3,39 +3,6 @@ import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-styles/typography.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
-
-$_documentContainer.innerHTML = `<dom-module id="eco-json-schema-input">
-
-  
-  
-
-  <template>
-    <style is="custom-style" include="iron-flex iron-flex-alignment">
-      paper-input {
-        padding: 2px;
-
-        --paper-input-container-label: {
-          white-space: normal;
-          position: static;
-          font-size: 16px;
-          color: #212121;
-        }
-      }
-    </style>
-
-    <paper-input id="input" class="flex" value="{{value}}" auto-validate="">
-
-    </paper-input>
-
-  </template>
-
-  
-
-</dom-module>`;
-
-document.head.appendChild($_documentContainer);
 /**
 `eco-json-schema-input` takes in a JSON schema of type number and string and
 contains a `paper-input`, exposing a `value` property that represents the schema.
@@ -52,6 +19,20 @@ Please see the `eco-json-schema-object` documentation for further information.
 */
 Polymer({
   is: "eco-json-schema-input",
+  _template: html`
+    <style is="custom-style" include="iron-flex iron-flex-alignment">
+      paper-input {
+        padding: 2px;
+        --paper-input-container-label: {
+          white-space: normal;
+          position: static;
+          font-size: 16px;
+          color: #212121;
+        }
+      }
+    </style>
+    <paper-input id="input" class="flex" value="{{value}}" auto-validate></paper-input>  
+`,
   behaviors: [AppLocalizeBehavior],
 
   properties: {

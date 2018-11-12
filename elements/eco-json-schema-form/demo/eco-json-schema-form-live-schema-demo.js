@@ -22,17 +22,17 @@ Polymer({
 
     #jsoneditor {
       width: 400px;
-      height: 93%;
+      height: 400px;
     }
     eco-json-schema-wizard {
       width: 400px;
-      height: 93%;
+      height: 400px;
     }
   </style>
     <div class="horizontal layout main-container">
       <paper-material class="flex-2 editor-container">
         <h3>Schema Editor</h3>
-        <div id="jsoneditor"></div>
+        <div id="jsoneditor" style="width: 400px; height: 400px;"></div>
       </paper-material>
 
       <paper-material class="flex-2">
@@ -46,7 +46,6 @@ Polymer({
       </paper-material>
     </div>
 `,
-  observers: ["_valueChanged(value.*)"],
   properties: {
     language: {
       value: "en",
@@ -75,7 +74,8 @@ Polymer({
       notify: true,
       value: {
         schema: {}
-      }
+      },
+      observer: "_valueChanged"
     },
     value: {
       type: Object,
@@ -122,8 +122,8 @@ Polymer({
     this.schema = JSON.parse(JSON.stringify(this._schema));
 
     var editorOpts = {
-      mode: "code",
-      change: this._schemaChanged.bind(this)
+      mode: "tree",
+      onChange: this._schemaChanged.bind(this)
     };
     this.editor = new JSONEditor(this.$.jsoneditor, editorOpts, this._schema);
   },
@@ -132,16 +132,16 @@ Polymer({
       console.log("Editor is false");
     } else {
       try {
-        var json = JSON.parse(this.editor.getText());
-        this.schema = json;
+        var json = this.editor.get();
+        this.set("schema", json);
       } catch (e) {
         // bad, bad json
       }
     }
   },
-  _valueChanged: function() {
+  _valueChanged: function(newValue, oldValue) {
     if (typeof this.$.valueText !== typeof undefined) {
-      var json = JSON.stringify(this.value, null, " ");
+      let json = JSON.stringify(newValue, null, " ");
       this.$.valueText.innerHTML = json;
     }
   }

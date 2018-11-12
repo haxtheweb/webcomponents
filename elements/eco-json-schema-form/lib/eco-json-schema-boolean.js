@@ -1,15 +1,10 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import "@polymer/paper-checkbox/paper-checkbox.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
-
-$_documentContainer.innerHTML = `<dom-module id="eco-json-schema-boolean">
-
-  
-
-  <template>
-    <style is="custom-style" include="iron-flex iron-flex-alignment">
+Polymer({
+  is: "eco-json-schema-boolean",
+  _template: html`
+<style is="custom-style" include="iron-flex iron-flex-alignment">
       paper-checkbox {
         color: #737373;
         padding: 2px;
@@ -19,17 +14,8 @@ $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-boolean">
     }
     </style>
 
-    <paper-checkbox id="checkbox" class="flex" checked="{{value}}" invalid="[[error]]">[[_label]]</paper-checkbox>
-
-  </template>
-
-  
-
-</dom-module>`;
-
-document.head.appendChild($_documentContainer);
-Polymer({
-  is: "eco-json-schema-boolean",
+    <paper-checkbox id="checkbox" class="flex" checked="{{value}}" invalid="[[error]]">[[_label]]</paper-checkbox>  
+`,
   properties: {
     schema: {
       type: Object,

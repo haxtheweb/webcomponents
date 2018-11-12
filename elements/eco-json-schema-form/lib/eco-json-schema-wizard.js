@@ -5,7 +5,7 @@ import "@polymer/iron-icons/image-icons.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-pages/iron-pages.js";
-import "@polymer/paper-toolbar/paper-toolbar.js";
+import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-ripple/paper-ripple.js";
@@ -327,26 +327,26 @@ Polymer({
         z-index: 1;
       }
 
-      paper-toolbar.bottom {
-        --paper-toolbar-color: var(--app-primary-color);
-        --paper-toolbar-background: var(--dark-theme-text-color);
+      app-toolbar.bottom {
+        --app-toolbar-color: var(--app-primary-color);
+        --app-toolbar-background: var(--dark-theme-text-color);
       }
 
-      paper-toolbar.bottom paper-icon-button {
-        --paper-toolbar-color: var(--dark-theme-text-color);
-        --paper-toolbar-background: var(--app-primary-color);
+      app-toolbar.bottom paper-icon-button {
+        --app-toolbar-color: var(--dark-theme-text-color);
+        --app-toolbar-background: var(--app-primary-color);
       }
 
     </style>
     <div class="vertical flex layout fullbleed">
       <!--paper-icon-button id="camButton" icon="editor:insert-photo" raised>add photo</paper-icon-button-->
-      <paper-toolbar>
+      <app-toolbar>
         <paper-icon-button id="prevButton" icon="arrow-back" hidden\$="{{!hasPrev}}" on-tap="prev" raised="">{{localize('prev')}}</paper-icon-button><span class="title layout horizontal flex" style="white-space: normal">[[title]]</span>
         <paper-icon-button id="nextButton" icon="arrow-forward" hidden\$="{{!hasNext}}" on-tap="next" raised="">{{localize('next')}}</paper-icon-button>
         <paper-icon-button id="submitButton" icon="cloud-upload" on-tap="submit" raised="">{{localize('submit')}}</paper-icon-button>
-      </paper-toolbar>
+      </app-toolbar>
       <iron-pages id="form" class="layout horizontal flex start-justified" role="main" selected="[[page]]" attr-for-selected="name"></iron-pages>
-      <paper-toolbar class="bottom">
+      <app-toolbar class="bottom">
         <div hidden\$="{{!hasPrev}}" on-tap="prev">
           <paper-icon-button id="prevButton" icon="arrow-back" raised="">{{localize('prev')}}</paper-icon-button>
           <span class="title layout" style="white-space: normal">{{localize('prev')}}</span>
@@ -356,7 +356,7 @@ Polymer({
           <span class="title layout" style="white-space: normal">{{localize('next')}}</span>
           <paper-icon-button id="nextButton" icon="arrow-forward" raised="">{{localize('next')}}</paper-icon-button>
         </div>
-      </paper-toolbar>
+      </app-toolbar>
     </div>
 `,
 
@@ -371,6 +371,7 @@ Polymer({
     },
     schema: {
       type: Object,
+      notify: true,
       observer: "_schemaChanged"
     },
     label: {

@@ -81,7 +81,7 @@ Polymer({
     </app-toolbar>
     <grafitto-filter id="filter" items="[[__gizmoList]]" like="" where="title" as="filtered">
       <template>
-        <iron-list id="ironlist" items="[[filtered]]" as="gizmo" grid="">
+        <iron-list id="ironlist" items="[[filtered]]" as="gizmo" grid>
           <template>
             <div class="gizmo-container">
               <hax-gizmo-browser-item index="[[gizmo.index]]" title="[[gizmo.title]]" tag="[[gizmo.tag]]" icon="[[gizmo.icon]]" image="[[gizmo.image]]" color="[[gizmo.color]]" author="[[gizmo.author]]" teaser="[[gizmo.teaser]]" description="[[gizmo.description]]" examples="[[gizmo.examples]]" status="[[gizmo.status]]"></hax-gizmo-browser-item>
@@ -162,27 +162,29 @@ Polymer({
    * Reset this browser.
    */
   resetBrowser: function() {
-    async.microTask.run(() => {
-      this.set("__gizmoList", window.HaxStore.instance.gizmoList);
-      if (this.$.filter.shadowRoot.querySelector("#ironlist")) {
-        this.$.filter.shadowRoot.querySelector(
-          "#ironlist"
-        ).filtered = this.__gizmoList;
-      }
-      this.$.inputfilter.value = "";
-      this.$.filtertype.value = "title";
-      this.$.filter.value = "";
-      this.$.filter.filter();
-      this.$.filter.where = "title";
-      this.$.filter.like = "";
-      setTimeout(() => {
+    if (typeof this.$.filter !== typeof undefined) {
+      async.microTask.run(() => {
+        this.set("__gizmoList", window.HaxStore.instance.gizmoList);
         if (this.$.filter.shadowRoot.querySelector("#ironlist")) {
-          this.$.filter.shadowRoot
-            .querySelector("#ironlist")
-            .fire("iron-resize");
-          window.dispatchEvent(new Event("resize"));
+          this.$.filter.shadowRoot.querySelector(
+            "#ironlist"
+          ).filtered = this.__gizmoList;
         }
-      }, 100);
-    });
+        this.$.inputfilter.value = "";
+        this.$.filtertype.value = "title";
+        this.$.filter.value = "";
+        this.$.filter.filter();
+        this.$.filter.where = "title";
+        this.$.filter.like = "";
+        setTimeout(() => {
+          if (this.$.filter.shadowRoot.querySelector("#ironlist")) {
+            this.$.filter.shadowRoot
+              .querySelector("#ironlist")
+              .fire("iron-resize");
+            window.dispatchEvent(new Event("resize"));
+          }
+        }, 100);
+      });
+    }
   }
 });
