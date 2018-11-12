@@ -45,6 +45,7 @@
     "@polymer/iron-input": "^3.0.0",
     "@polymer/paper-card": "^3.0.0",
     "@polymer/paper-input": "^3.0.0",
+    "@polymer/app-layout": "^3.0.1",
     "@polymer/paper-spinner": "^3.0.0",
     "@polymer/polymer": "^3.0.5",
     "pdfjs-dist": "^2.0.489"

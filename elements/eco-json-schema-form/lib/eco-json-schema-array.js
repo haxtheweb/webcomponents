@@ -11,26 +11,20 @@ import "./eco-json-schema-enum.js";
 import "./eco-json-schema-input.js";
 import "./eco-json-schema-object.js";
 import "./eco-json-schema-file.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
+/**
+`eco-json-schema-array` takes in a JSON schema of type array and builds a form,
+exposing a `value` property that represents an array described by the schema.
 
-$_documentContainer.innerHTML = `<dom-module id="eco-json-schema-array">
+Please see the `eco-json-schema-object` documentation for further information.
 
-  
-  
-  
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-  <template>
-    <style is="custom-style" include="iron-flex iron-flex-alignment">
+@group eco Elements
+@element eco-json-schema-array
+@demo demo/index.html
+*/
+Polymer({
+  is: "eco-json-schema-array",
+  _template: html`
+  <style is="custom-style" include="iron-flex iron-flex-alignment">
       paper-input {
         padding: 2px;
 
@@ -98,14 +92,13 @@ $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-array">
 
       :host {
         display: block;
-
-        .label {
-          @apply(--paper-input-container-label);
-          white-space: normal;
-          position: static;
-          font-size: 22px;
-          color: #212121;
-        }
+      }
+      .label {
+        white-space: normal;
+        position: static;
+        font-size: 22px;
+        color: #212121;
+        @apply(--paper-input-container-label);
       }
     </style>
 
@@ -115,26 +108,8 @@ $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-array">
     </div>
 
     <paper-collapse-group id="form" class="vertical flex layout"></paper-collapse-group>
-
-  </template>
-
   
-
-</dom-module>`;
-
-document.head.appendChild($_documentContainer);
-/**
-`eco-json-schema-array` takes in a JSON schema of type array and builds a form,
-exposing a `value` property that represents an array described by the schema.
-
-Please see the `eco-json-schema-object` documentation for further information.
-
-@group eco Elements
-@element eco-json-schema-array
-@demo demo/index.html
-*/
-Polymer({
-  is: "eco-json-schema-array",
+`,
   properties: {
     schema: {
       type: Object,

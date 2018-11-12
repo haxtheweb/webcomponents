@@ -40,6 +40,7 @@ Polymer({
         height: 32px;
         min-height: 32px;
         padding: 0 8px;
+        width: 100px;
       }
       paper-item:hover {
         background-color: #d3d3d3;

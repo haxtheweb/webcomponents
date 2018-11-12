@@ -1,6 +1,11 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import {
+  addDebouncer,
+  dom,
+  flush
+} from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { Templatizer } from "@polymer/polymer/lib/legacy/templatizer-behavior.js";
+import { OptionalMutableDataBehavior } from "@polymer/polymer/lib/legacy/mutable-data-behavior.js";
 
 /**
 @license
@@ -177,13 +182,13 @@ by the regular expression engine.
 */
 Polymer({
   _template: html`
-        <div id="dom">
-          <slot id="template" name="template"></slot>
-        </div>
+    <div id="dom">
+      <slot></slot>
+    </div>
 `,
 
   is: "grafitto-filter",
-  behaviors: [Templatizer],
+  behaviors: [Templatizer, OptionalMutableDataBehavior],
   properties: {
     /**
      * These are the items to be filtered
@@ -306,14 +311,29 @@ Polymer({
    *@param {array} filtered the filtered array to be displayed
    */
   _populateUserTemplate: function(filtered) {
-    this._userTemplate = dom(this.$.template).getDistributedNodes()[0];
-    if (this._userTemplate) {
-      this.templatize(this._userTemplate);
-      var clone = this.stamp();
-      clone[this.as] = filtered;
-      dom(this.$.dom).innerHTML = "";
-      dom(this.$.dom).appendChild(clone.root);
+    // set after template is stamped
+    if (this.ctor) {
+      // use this so filtered items can be updated after the fact
+      this.__clone[this.as] = filtered;
+      // bail so we don't get a double template error
+      return;
     }
+    // find the template, just the 1st time though
+    this._userTemplate = this.queryEffectiveChildren("template");
+    // if we didn't find one we need to tell devs that this is a problem
+    if (!this._userTemplate) {
+      console.warn(
+        "grafitto-filter requires a template to be provided in light-dom"
+      );
+    }
+    // process template variable areas
+    this.templatize(this._userTemplate);
+    // stamp it from template into an object
+    this.__clone = this.stamp(null);
+    // set filtered to whatever it is to start
+    this.__clone[this.as] = filtered;
+    // stamp this into itself...weird I know
+    dom(this).appendChild(this.__clone);
   },
 
   /**

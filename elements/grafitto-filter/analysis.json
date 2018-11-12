@@ -7,17 +7,40 @@
       "path": "grafitto-filter.js",
       "properties": [
         {
+          "name": "mutableData",
+          "type": "boolean | null | undefined",
+          "description": "Instance-level flag for configuring the dirty-checking strategy\nfor this element.  When true, Objects and Arrays will skip dirty\nchecking, otherwise strict equality checking will be used.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@polymer/polymer/lib/legacy/mutable-data-behavior.js",
+            "start": {
+              "line": 125,
+              "column": 4
+            },
+            "end": {
+              "line": 125,
+              "column": 24
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "inheritedFrom": "OptionalMutableDataBehavior"
+        },
+        {
           "name": "items",
           "type": "Array | null | undefined",
           "description": "These are the items to be filtered",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 190,
+              "line": 194,
               "column": 4
             },
             "end": {
-              "line": 193,
+              "line": 197,
               "column": 5
             }
           },
@@ -35,11 +58,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 197,
+              "line": 201,
               "column": 4
             },
             "end": {
-              "line": 200,
+              "line": 204,
               "column": 5
             }
           },
@@ -57,11 +80,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 204,
+              "line": 208,
               "column": 4
             },
             "end": {
-              "line": 207,
+              "line": 211,
               "column": 5
             }
           },
@@ -79,11 +102,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 211,
+              "line": 215,
               "column": 4
             },
             "end": {
-              "line": 215,
+              "line": 219,
               "column": 5
             }
           },
@@ -101,11 +124,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 219,
+              "line": 223,
               "column": 4
             },
             "end": {
-              "line": 222,
+              "line": 226,
               "column": 5
             }
           },
@@ -123,11 +146,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 226,
+              "line": 230,
               "column": 4
             },
             "end": {
-              "line": 230,
+              "line": 234,
               "column": 5
             }
           },
@@ -146,11 +169,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 234,
+              "line": 238,
               "column": 4
             },
             "end": {
-              "line": 237,
+              "line": 241,
               "column": 5
             }
           },
@@ -255,16 +278,55 @@
           "inheritedFrom": "Templatizer"
         },
         {
+          "name": "_shouldPropertyChange",
+          "description": "Overrides `Polymer.PropertyEffects` to skip strict equality checking\nfor Objects and Arrays.\n\nPulls the value to dirty check against from the `__dataTemp` cache\n(rather than the normal `__data` cache) for Objects.  Since the temp\ncache is cleared at the end of a turn, this implementation allows\nside-effects of deep object changes to be processed by re-setting the\nsame object (using the temp cache as an in-turn backstop to prevent\ncycles due to 2-way notification).",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@polymer/polymer/lib/legacy/mutable-data-behavior.js",
+            "start": {
+              "line": 146,
+              "column": 2
+            },
+            "end": {
+              "line": 148,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "property",
+              "type": "string",
+              "description": "Property name"
+            },
+            {
+              "name": "value",
+              "type": "*",
+              "description": "New property value"
+            },
+            {
+              "name": "old",
+              "type": "*",
+              "description": "Previous property value"
+            }
+          ],
+          "return": {
+            "type": "boolean",
+            "desc": "Whether the property should be considered a change"
+          },
+          "inheritedFrom": "OptionalMutableDataBehavior"
+        },
+        {
           "name": "filter",
           "description": "Filters the items using the f function provided. Recommended when f function is provided",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 245,
+              "line": 249,
               "column": 2
             },
             "end": {
-              "line": 248,
+              "line": 252,
               "column": 3
             }
           },
@@ -280,11 +342,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 259,
+              "line": 263,
               "column": 2
             },
             "end": {
-              "line": 301,
+              "line": 305,
               "column": 3
             }
           },
@@ -319,11 +381,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 307,
+              "line": 311,
               "column": 2
             },
             "end": {
-              "line": 316,
+              "line": 333,
               "column": 3
             }
           },
@@ -345,11 +407,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 321,
+              "line": 338,
               "column": 2
             },
             "end": {
-              "line": 325,
+              "line": 342,
               "column": 3
             }
           },
@@ -369,11 +431,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 332,
+              "line": 349,
               "column": 2
             },
             "end": {
-              "line": 334,
+              "line": 351,
               "column": 3
             }
           },
@@ -394,11 +456,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 177,
+          "line": 178,
           "column": 8
         },
         "end": {
-          "line": 335,
+          "line": 352,
           "column": 1
         }
       },
@@ -406,15 +468,33 @@
       "superclass": "HTMLElement",
       "attributes": [
         {
+          "name": "mutable-data",
+          "description": "Instance-level flag for configuring the dirty-checking strategy\nfor this element.  When true, Objects and Arrays will skip dirty\nchecking, otherwise strict equality checking will be used.",
+          "sourceRange": {
+            "file": "../@polymer/polymer/lib/legacy/mutable-data-behavior.js",
+            "start": {
+              "line": 125,
+              "column": 4
+            },
+            "end": {
+              "line": 125,
+              "column": 24
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "OptionalMutableDataBehavior"
+        },
+        {
           "name": "items",
           "description": "These are the items to be filtered",
           "sourceRange": {
             "start": {
-              "line": 190,
+              "line": 194,
               "column": 4
             },
             "end": {
-              "line": 193,
+              "line": 197,
               "column": 5
             }
           },
@@ -426,11 +506,11 @@
           "description": "Filter regular expression string",
           "sourceRange": {
             "start": {
-              "line": 197,
+              "line": 201,
               "column": 4
             },
             "end": {
-              "line": 200,
+              "line": 204,
               "column": 5
             }
           },
@@ -442,11 +522,11 @@
           "description": "The filter-by field of your items array of objects",
           "sourceRange": {
             "start": {
-              "line": 204,
+              "line": 208,
               "column": 4
             },
             "end": {
-              "line": 207,
+              "line": 211,
               "column": 5
             }
           },
@@ -458,11 +538,11 @@
           "description": "Enable case sensitivity when filtering",
           "sourceRange": {
             "start": {
-              "line": 211,
+              "line": 215,
               "column": 4
             },
             "end": {
-              "line": 215,
+              "line": 219,
               "column": 5
             }
           },
@@ -474,11 +554,11 @@
           "description": "How the filtered items will be passed to the light-DOM. Default `items`",
           "sourceRange": {
             "start": {
-              "line": 219,
+              "line": 223,
               "column": 4
             },
             "end": {
-              "line": 222,
+              "line": 226,
               "column": 5
             }
           },
@@ -490,11 +570,11 @@
           "description": "Filtered items",
           "sourceRange": {
             "start": {
-              "line": 226,
+              "line": 230,
               "column": 4
             },
             "end": {
-              "line": 230,
+              "line": 234,
               "column": 5
             }
           },
@@ -506,11 +586,11 @@
           "description": "Custom filter function, if this is provided then 'where' and 'like' are ignored",
           "sourceRange": {
             "start": {
-              "line": 234,
+              "line": 238,
               "column": 4
             },
             "end": {
-              "line": 237,
+              "line": 241,
               "column": 5
             }
           },

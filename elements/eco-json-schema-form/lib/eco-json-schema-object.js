@@ -7,40 +7,6 @@ import "./eco-json-schema-boolean.js";
 import "./eco-json-schema-enum.js";
 import "./eco-json-schema-file.js";
 import "./eco-json-schema-input.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
-
-$_documentContainer.innerHTML = `<dom-module id="eco-json-schema-object">
-
-  <template>
-
-    <style is="custom-style" include="iron-flex iron-flex-alignment">
-      div.layout {
-        height: auto;
-      }
-      #form {
-        display: block;
-        @apply(--eco-json-schema-object-form);
-        @apply(--layout-vertical);
-        @apply(--layout-wrap);
-      }
-    </style>
-
-    <template is="dom-if" if="{{!wizard}}">
-      <div class="header" hidden\$="[[!label]]">[[label]]</div>
-    </template>
-    <div class="layout vertical flex start-justified">
-      <div id="form" class="layout horizontal flex start-justified"></div>
-    </div>
-
-
-  </template>
-
-  
-
-</dom-module>`;
-
-document.head.appendChild($_documentContainer);
 /**
 `eco-json-schema-object` takes in a JSON schema of type object and builds a form,
 exposing a `value` property that represents an object described by the schema.
@@ -316,6 +282,26 @@ el.error = {
 */
 Polymer({
   is: "eco-json-schema-object",
+  _template: html`
+<style is="custom-style" include="iron-flex iron-flex-alignment">
+      div.layout {
+        height: auto;
+      }
+      #form {
+        display: block;
+        @apply(--eco-json-schema-object-form);
+        @apply(--layout-vertical);
+        @apply(--layout-wrap);
+      }
+    </style>
+
+    <template is="dom-if" if="{{!wizard}}">
+      <div class="header" hidden\$="[[!label]]">[[label]]</div>
+    </template>
+    <div class="layout vertical flex start-justified">
+      <div id="form" class="layout horizontal flex start-justified"></div>
+    </div>  
+`,
   behaviors: [AppLocalizeBehavior],
   properties: {
     language: {
@@ -531,7 +517,7 @@ Polymer({
       // support for slot injection too!
       if (property.component.slot != "") {
         var temp = document.createElement("template");
-        temp.innerHTML = property.component.slot;
+        temp.content = property.component.slot;
         dom(el).appendChild(temp.content);
       }
     });

@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-card/paper-card.js";
-import "@polymer/paper-toolbar/paper-toolbar.js";
+import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/iron-input/iron-input.js";
 import "@polymer/paper-spinner/paper-spinner.js";
@@ -47,8 +47,8 @@ Polymer({
         height: 100%;
       }
 
-      paper-toolbar.pdf-toolbar {
-        --paper-toolbar-background: #323639;
+      app-toolbar.pdf-toolbar {
+        --app-toolbar-background: #323639;
       }
 
       .pdf-viewer {
@@ -134,7 +134,7 @@ Polymer({
       <div class="card-content" style="width: {{width}}px">
         <paper-card class="paperCard" style="width: {{width}}px">
           <div class="pdf-viewer">
-            <paper-toolbar class="pdf-toolbar">
+            <app-toolbar class="pdf-toolbar">
               <paper-icon-button icon="menu" on-click="sideBar"></paper-icon-button>
               <paper-icon-button icon="arrow-back" on-click="showPrev"></paper-icon-button>
               <input class="pageselector" id="input" is="iron-input" value="{{currentPage}}" prevent-invalid-input="" allowed-pattern="\\d" on-change="pageNumSearch">
@@ -147,7 +147,7 @@ Polymer({
               <paper-icon-button icon="zoom-out" on-click="zoomOut"></paper-icon-button>
               <paper-icon-button id="zoomIcon" icon="fullscreen" on-click="zoomFit"></paper-icon-button>
               <paper-icon-button icon="file-download" hidden\$="{{!downloadable}}" on-click="download"></paper-icon-button>
-            </paper-toolbar>
+            </app-toolbar>
             <div id="container" class="sidebar" style="width:25%"></div>
             <div id="main">
             <div id="test" class="pdf-viewport-out">

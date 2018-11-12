@@ -6,17 +6,24 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
+/**
+`eco-json-schema-file` takes in a JSON schema of type number and string and
+contains a `paper-input`, exposing a `value` property that represents the schema.
 
-$_documentContainer.innerHTML = `<dom-module id="eco-json-schema-file">
-	
-	
-	
-	
+Validation is handled for strings and number/integers by mapping JSON schema
+validation keywords to `paper-input` attributes; form elements will automatically
+try and validate themselves as users provide input:
 
-	<template>
-		<style is="custom-style" include="iron-flex iron-flex-alignment">
+Please see the `eco-json-schema-object` documentation for further information.
+
+@group eco Elements
+@element eco-json-schema-file
+@demo demo/index.html
+*/
+Polymer({
+  is: "eco-json-schema-file",
+  _template: html`
+  <style is="custom-style" include="iron-flex iron-flex-alignment">
 			paper-input {
 				padding: 2px;
 				--paper-input-container-label: {
@@ -128,32 +135,8 @@ $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-file">
 				</div>
 			</div>
 			<input type="file" id="fileInput" on-change="_fileChange" hidden="" multiple="{{multi}}" accept="{{accept}}">
-		</div>
-
-
-	</template>
-
-	
-
-</dom-module>`;
-
-document.head.appendChild($_documentContainer);
-/**
-`eco-json-schema-file` takes in a JSON schema of type number and string and
-contains a `paper-input`, exposing a `value` property that represents the schema.
-
-Validation is handled for strings and number/integers by mapping JSON schema
-validation keywords to `paper-input` attributes; form elements will automatically
-try and validate themselves as users provide input:
-
-Please see the `eco-json-schema-object` documentation for further information.
-
-@group eco Elements
-@element eco-json-schema-file
-@demo demo/index.html
-*/
-Polymer({
-  is: "eco-json-schema-file",
+    </div>
+`,
   behaviors: [AppLocalizeBehavior],
 
   properties: {

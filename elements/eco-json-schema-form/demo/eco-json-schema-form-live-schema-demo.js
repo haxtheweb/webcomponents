@@ -2,18 +2,9 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import "@polymer/paper-material/paper-material.js";
 import "../lib/eco-json-schema-wizard.js";
-import "ace-builds/src/ace.js";
-import "jsoneditor/dist/jsoneditor.min.js";
-import "./schema.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
-
-$_documentContainer.innerHTML = `<dom-module id="eco-json-schema-form-live-schema-demo">
-
-  
-
-  
-
+Polymer({
+  is: "eco-json-schema-form-live-schema-demo",
+  _template: html`
   <style is="custom-style" include="iron-flex iron-flex-alignment">
     paper-material {
       background: #ffffff;
@@ -21,7 +12,7 @@ $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-form-live-schem
     }
 
     paper-material,
-    paper-material&gt;* {
+    paper-material > * {
       margin: 10px;
     }
 
@@ -31,18 +22,17 @@ $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-form-live-schem
 
     #jsoneditor {
       width: 400px;
-      height: 93%;
+      height: 400px;
     }
     eco-json-schema-wizard {
       width: 400px;
-      height: 93%;
+      height: 400px;
     }
   </style>
-  <template>
     <div class="horizontal layout main-container">
       <paper-material class="flex-2 editor-container">
         <h3>Schema Editor</h3>
-        <div id="jsoneditor"></div>
+        <div id="jsoneditor" style="width: 400px; height: 400px;"></div>
       </paper-material>
 
       <paper-material class="flex-2">
@@ -55,15 +45,7 @@ $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-form-live-schem
         <pre id="valueText"></pre>
       </paper-material>
     </div>
-
-  </template>
-  
-</dom-module>`;
-
-document.head.appendChild($_documentContainer);
-Polymer({
-  is: "eco-json-schema-form-live-schema-demo",
-  observers: ["_valueChanged(value.*)"],
+`,
   properties: {
     language: {
       value: "en",
@@ -92,7 +74,8 @@ Polymer({
       notify: true,
       value: {
         schema: {}
-      }
+      },
+      observer: "_valueChanged"
     },
     value: {
       type: Object,
@@ -108,7 +91,7 @@ Polymer({
       notify: true
     }
   },
-  ready: function() {
+  attached: function() {
     this._schema = demoSchema;
 
     //        this.value =          {
@@ -139,10 +122,9 @@ Polymer({
     this.schema = JSON.parse(JSON.stringify(this._schema));
 
     var editorOpts = {
-      mode: "code",
-      change: this._schemaChanged.bind(this)
+      mode: "tree",
+      onChange: this._schemaChanged.bind(this)
     };
-
     this.editor = new JSONEditor(this.$.jsoneditor, editorOpts, this._schema);
   },
   _schemaChanged: function() {
@@ -150,15 +132,17 @@ Polymer({
       console.log("Editor is false");
     } else {
       try {
-        var json = JSON.parse(this.editor.getText());
-        this.schema = json;
+        var json = this.editor.get();
+        this.set("schema", json);
       } catch (e) {
         // bad, bad json
       }
     }
   },
-  _valueChanged: function() {
-    var json = JSON.stringify(this.value, null, " ");
-    this.$.valueText.innerHTML = json;
+  _valueChanged: function(newValue, oldValue) {
+    if (typeof this.$.valueText !== typeof undefined) {
+      let json = JSON.stringify(newValue, null, " ");
+      this.$.valueText.innerHTML = json;
+    }
   }
 });
