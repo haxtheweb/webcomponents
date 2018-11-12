@@ -2,6 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/paper-input/paper-input.js";
+import "@polymer/paper-styles/paper-styles.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-pages/iron-pages.js";

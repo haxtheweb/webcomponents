@@ -96,7 +96,7 @@ Polymer({
         </iron-list>
       </template>
     </grafitto-filter>
-    <hax-app-search id="haxappsearch" hidden\$="[[!searching]]"></hax-app-search>
+    <hax-app-search id="haxappsearch" hidden$="[[!searching]]"></hax-app-search>
     <slot></slot>
 `,
 
