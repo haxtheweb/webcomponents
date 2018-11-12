@@ -14,6 +14,7 @@
       import '@polymer/paper-input/paper-input.js';
       import '@polymer/paper-checkbox/paper-checkbox.js';
       import '@polymer/paper-item/paper-item.js';
+      import '@polymer/paper-item/paper-item-body.js';
       import '@polymer/polymer/lib/elements/dom-bind.js';
       import '../grafitto-filter.js';
     </script>
@@ -21,7 +22,6 @@
       #like {
         width: 100%;
       }
-    
       paper-checkbox.styled {
         width: 92%;
         align-self: center;
@@ -65,59 +65,44 @@
           width: 99%
         }
       }
+      :host {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      iron-list {
+        flex: 1 1 auto;
+      }
     </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic grafitto-filter demo</h3>
-      <paper-input label="Filter" id="like"></paper-input>
-      <paper-checkbox class="styled" id="i" raised>
-        Case
-        <span class="subtitle">
-          Enable case sensitivity
-        </span>
-      </paper-checkbox>
       <dom-bind>
-        <grafitto-filter where="name" like="" as="vitu">
-          <template>
-            <iron-list items="[[vitu]]" as="item">
-              <template>
-                <paper-item>
-                  <paper-item-body two-line>
-                    <div>{{item.name}}</div>
-                    <div class="small" secondary>{{item.code}}</div>
-                  </paper-item-body>
-                </paper-item>
-              </template>
-            </iron-list>
-          </template>
-        </grafitto-filter>
+        <template>
+          <paper-input label="Filter" id="like"></paper-input>
+          <paper-checkbox class="styled" id="i" raised>
+            Case <span class="subtitle">Enable case sensitivity</span>
+          </paper-checkbox>
+          <grafitto-filter where="name" like="" as="vitu">
+            <template>
+              <iron-list items="[[vitu]]" as="item">
+                <template>
+                  <paper-item>
+                    <paper-item-body two-line>
+                      <div>[[item.name]]</div>
+                      <div class="small" secondary>[[item.code]]</div>
+                    </paper-item-body>
+                  </paper-item>
+                </template>
+              </iron-list>
+            </template>
+          </grafitto-filter>
+        </template>
       </dom-bind>
     </div>
     <script>
-      var complexObj = [
-        {
-          name: {
-            first: "Kevin",
-            second: "Nderitu"
-          },
-          home: "Thika"
-        },
-        {
-          name: {
-            first: "Faith",
-            second: "Wangechi"
-          },
-          home: "Othaya"
-        },
-        {
-          name: {
-            first: "Clement",
-            second: "Habinshuti"
-          },
-          home: "Kilimani"
-        }
-      ];
       var items = [
         {
           "code": "+7 840",
@@ -1064,17 +1049,18 @@
           "name": "Zimbabwe"
         }
       ];
-
-      var f = document.querySelector("grafitto-filter");
-      f.items = items;//["one", "two", "three", "four", "five"];
-      //Set case sensitivity event handler
-      document.getElementById("i").addEventListener("checked-changed", function (e) {
-        f.caseSensitive = e.detail.value;
-      })
-      //Listen for value changed
-      document.getElementById("like").addEventListener("value-changed", function (from, to) {
-        f.like = from.detail.value;
-      });
+      setTimeout(() => {
+        var f = document.querySelector("grafitto-filter");
+        f.set('items', items);//["one", "two", "three", "four", "five"];
+        //Set case sensitivity event handler
+        document.getElementById("i").addEventListener("checked-changed", function (e) {
+          f.caseSensitive = e.detail.value;
+        })
+        //Listen for value changed
+        document.getElementById("like").addEventListener("value-changed", function (from, to) {
+          f.set('like', from.detail.value);
+        });
+      }, 500);
     </script>
   </body>
 </html>
