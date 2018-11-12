@@ -4,18 +4,10 @@ import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import { IronValidatableBehavior } from "@polymer/iron-validatable-behavior/iron-validatable-behavior.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
 
-$_documentContainer.innerHTML = `<dom-module id="eco-json-schema-enum">
-
-  
-  
-  
-  
-
-  <template>
-    <style is="custom-style" include="iron-flex iron-flex-alignment">
+Polymer({
+  _template: html`
+  <style is="custom-style" include="iron-flex iron-flex-alignment">
       paper-input {
         --paper-input-container-label: {
           white-space: normal;
@@ -47,15 +39,7 @@ $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-enum">
         </paper-listbox>
       </paper-dropdown-menu>
     </paper-dropdown-menu>
-
-  </template>
-
-  
-
-</dom-module>`;
-
-document.head.appendChild($_documentContainer);
-Polymer({
+`,
   is: "eco-json-schema-enum",
   behaviors: [IronValidatableBehavior],
   properties: {
