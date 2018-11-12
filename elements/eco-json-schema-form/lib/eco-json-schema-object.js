@@ -283,7 +283,28 @@ el.error = {
 Polymer({
   is: "eco-json-schema-object",
   _template: html`
-<style is="custom-style" include="iron-flex iron-flex-alignment">
+    <style is="custom-style" include="iron-flex iron-flex-alignment">
+      :host {
+        --paper-input-container: {
+          width: 100%;
+        };
+        --paper-input-container-input: {
+          background-color: transparent;
+          border: none;
+        };
+        --paper-input-container-shared-input-style: {
+          width: 100%;
+          background-color: transparent;
+          border: none;
+        };
+      }
+      :host input {
+        background-color: transparent;
+        border: none;
+      }
+      :host iron-input {
+        width: 100%;
+      }
       div.layout {
         height: auto;
       }
@@ -517,8 +538,8 @@ Polymer({
       // support for slot injection too!
       if (property.component.slot != "") {
         var temp = document.createElement("template");
-        temp.content = property.component.slot;
-        dom(el).appendChild(temp.content);
+        temp.innerHTML = property.component.slot;
+        dom(el).appendChild(temp);
       }
     });
   },

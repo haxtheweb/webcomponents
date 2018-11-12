@@ -314,8 +314,10 @@ Polymer({
    * operations are valid.
    */
   isTextElement: function(node) {
-    let tag = node.tagName.toLowerCase();
-    if (this.validTagList.includes(tag)) {
+    if (
+      node != null &&
+      this.validTagList.includes(node.tagName.toLowerCase())
+    ) {
       if (
         [
           "p",
@@ -332,7 +334,7 @@ Polymer({
           "blockquote",
           "code",
           "figure"
-        ].includes(tag)
+        ].includes(node.tagName.toLowerCase())
       ) {
         return true;
       }

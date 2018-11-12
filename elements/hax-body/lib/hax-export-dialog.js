@@ -1,6 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/dl-behavior/dl-behavior.js";
@@ -24,15 +25,6 @@ Polymer({
         z-index: 1000;
         margin-top: 64px;
       }
-      paper-icon-button#closedialog {
-        float: right;
-        top: 135px;
-        right: 0;
-        position: absolute;
-        padding: 4px;
-        margin: 0;
-        color: var(--simple-colors-light-green-background1);
-      }
       .title {
         margin-top: 32px;
         text-align: center;
@@ -55,7 +47,13 @@ Polymer({
         };
         --app-drawer-width: 320px;
       }
-      paper-button {
+      .buttons paper-button:focus,
+      .buttons paper-button:hover {
+        background-color: var(--simple-colors-light-green-background1);
+        border-color: var(--simple-colors-light-green-background1);
+        outline: 2px solid var(--simple-colors-light-green-background1);
+      }
+      .buttons paper-button {
         color: #222222;
         text-transform: none;
         margin:0;
@@ -65,18 +63,21 @@ Polymer({
         border-style: solid;
         border-width: 1px;
         min-width: unset;
-      }
-      paper-button:focus,
-      paper-button:hover {
-        background-color: var(--simple-colors-light-green-background1);
-        border-color: var(--simple-colors-light-green-background1);
-        outline: 2px solid var(--simple-colors-light-green-background1);
-      }
-      .buttons paper-button {
-        color: black;
         font-size: 12px;
         font-weight: bold;
-        text-transform: none;
+      }
+      #closedialog {
+        float: right;
+        top: 135px;
+        right: 0;
+        position: absolute;
+        padding: 4px;
+        margin: 0;
+        color: var(--simple-colors-light-green-background1, green);
+        background-color: transparent;
+        width: 40px;
+        height: 40px;
+        min-width: unset;
       }
       #textarea {
         margin-bottom: 16px;
@@ -104,7 +105,9 @@ Polymer({
           <paper-button id="close" raised="">Close dialog</paper-button>
         </div>
       </div>
-      <paper-icon-button id="closedialog" on-tap="close" icon="icons:cancel" title="Close dialog"></paper-icon-button>
+      <paper-button id="closedialog" on-tap="close">
+        <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
+      </paper-button>
     </app-drawer>
 `,
 
@@ -128,35 +131,38 @@ Polymer({
       value: {}
     }
   },
-
   /**
-   * Ready life cycle.
+   * Created life cycle.
    */
-  ready: function() {
-    document.body.appendChild(this);
+  created: function() {
+    this.__attached = false;
   },
-
   /**
    * Attached to the DOM, now fire that we exist.
    */
   attached: function() {
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    this.$.download.addEventListener("tap", this.download.bind(this));
-    this.$.downloadfull.addEventListener("tap", this.downloadfull.bind(this));
-    this.$.import.addEventListener("tap", this.importContent.bind(this));
-    this.$.copy.addEventListener("tap", this.selectBody.bind(this));
-    this.$.close.addEventListener("tap", this.close.bind(this));
-    this.$.elementexport.addEventListener(
-      "tap",
-      this.htmlToHaxElements.bind(this)
-    );
-    // fire an event that this is the manager
-    this.fire("hax-register-export", this);
+    if (!this.__attached) {
+      this.__attached = true;
+      document.body.appendChild(this);
+    } else {
+      // fire an event that this is the manager
+      this.fire("hax-register-export", this);
+      // add event listeners
+      document.body.addEventListener(
+        "hax-store-property-updated",
+        this._haxStorePropertyUpdated.bind(this)
+      );
+      this.$.download.addEventListener("tap", this.download.bind(this));
+      this.$.downloadfull.addEventListener("tap", this.downloadfull.bind(this));
+      this.$.import.addEventListener("tap", this.importContent.bind(this));
+      this.$.copy.addEventListener("tap", this.selectBody.bind(this));
+      this.$.close.addEventListener("tap", this.close.bind(this));
+      this.$.elementexport.addEventListener(
+        "tap",
+        this.htmlToHaxElements.bind(this)
+      );
+    }
   },
-
   /**
    * Detached life cycle
    */

@@ -36,11 +36,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 194,
+              "line": 195,
               "column": 4
             },
             "end": {
-              "line": 197,
+              "line": 198,
               "column": 5
             }
           },
@@ -58,11 +58,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 201,
+              "line": 202,
               "column": 4
             },
             "end": {
-              "line": 204,
+              "line": 205,
               "column": 5
             }
           },
@@ -80,11 +80,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 208,
+              "line": 209,
               "column": 4
             },
             "end": {
-              "line": 211,
+              "line": 212,
               "column": 5
             }
           },
@@ -102,11 +102,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 215,
+              "line": 216,
               "column": 4
             },
             "end": {
-              "line": 219,
+              "line": 220,
               "column": 5
             }
           },
@@ -124,11 +124,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 223,
+              "line": 224,
               "column": 4
             },
             "end": {
-              "line": 226,
+              "line": 227,
               "column": 5
             }
           },
@@ -146,11 +146,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 230,
+              "line": 231,
               "column": 4
             },
             "end": {
-              "line": 234,
+              "line": 235,
               "column": 5
             }
           },
@@ -169,11 +169,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 238,
+              "line": 239,
               "column": 4
             },
             "end": {
-              "line": 241,
+              "line": 242,
               "column": 5
             }
           },
@@ -322,11 +322,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 249,
+              "line": 250,
               "column": 2
             },
             "end": {
-              "line": 252,
+              "line": 253,
               "column": 3
             }
           },
@@ -342,11 +342,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 263,
+              "line": 264,
               "column": 2
             },
             "end": {
-              "line": 305,
+              "line": 306,
               "column": 3
             }
           },
@@ -381,11 +381,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 311,
+              "line": 312,
               "column": 2
             },
             "end": {
-              "line": 333,
+              "line": 336,
               "column": 3
             }
           },
@@ -407,11 +407,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 338,
+              "line": 341,
               "column": 2
             },
             "end": {
-              "line": 342,
+              "line": 345,
               "column": 3
             }
           },
@@ -431,11 +431,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 349,
+              "line": 352,
               "column": 2
             },
             "end": {
-              "line": 351,
+              "line": 354,
               "column": 3
             }
           },
@@ -456,11 +456,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 178,
+          "line": 182,
           "column": 8
         },
         "end": {
-          "line": 352,
+          "line": 355,
           "column": 1
         }
       },
@@ -490,11 +490,11 @@
           "description": "These are the items to be filtered",
           "sourceRange": {
             "start": {
-              "line": 194,
+              "line": 195,
               "column": 4
             },
             "end": {
-              "line": 197,
+              "line": 198,
               "column": 5
             }
           },
@@ -506,11 +506,11 @@
           "description": "Filter regular expression string",
           "sourceRange": {
             "start": {
-              "line": 201,
+              "line": 202,
               "column": 4
             },
             "end": {
-              "line": 204,
+              "line": 205,
               "column": 5
             }
           },
@@ -522,11 +522,11 @@
           "description": "The filter-by field of your items array of objects",
           "sourceRange": {
             "start": {
-              "line": 208,
+              "line": 209,
               "column": 4
             },
             "end": {
-              "line": 211,
+              "line": 212,
               "column": 5
             }
           },
@@ -538,11 +538,11 @@
           "description": "Enable case sensitivity when filtering",
           "sourceRange": {
             "start": {
-              "line": 215,
+              "line": 216,
               "column": 4
             },
             "end": {
-              "line": 219,
+              "line": 220,
               "column": 5
             }
           },
@@ -554,11 +554,11 @@
           "description": "How the filtered items will be passed to the light-DOM. Default `items`",
           "sourceRange": {
             "start": {
-              "line": 223,
+              "line": 224,
               "column": 4
             },
             "end": {
-              "line": 226,
+              "line": 227,
               "column": 5
             }
           },
@@ -570,11 +570,11 @@
           "description": "Filtered items",
           "sourceRange": {
             "start": {
-              "line": 230,
+              "line": 231,
               "column": 4
             },
             "end": {
-              "line": 234,
+              "line": 235,
               "column": 5
             }
           },
@@ -586,11 +586,11 @@
           "description": "Custom filter function, if this is provided then 'where' and 'like' are ignored",
           "sourceRange": {
             "start": {
-              "line": 238,
+              "line": 239,
               "column": 4
             },
             "end": {
-              "line": 241,
+              "line": 242,
               "column": 5
             }
           },

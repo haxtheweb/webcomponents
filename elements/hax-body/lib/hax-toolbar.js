@@ -60,17 +60,11 @@ Polymer({
         border-top: 1px solid #d3d3d3;
       }
     </style>
-    <hax-context-item hidden\$="[[inline]]" mini="" light="" icon="close" label="Close" event-name="close-menu" class="close-cap" direction="left"></hax-context-item>
-    <hax-context-item-menu hidden\$="[[!haxProperties.canPosition]]" selected-value="{{justifyValue}}" id="justify" icon="[[justifyIcon]]" label="Alignment">
-      <paper-item value="hax-align-left">
-        <iron-icon icon="editor:format-align-left"></iron-icon>
-      </paper-item>
-      <paper-item value="hax-align-center">
-        <iron-icon icon="editor:format-align-center"></iron-icon>
-      </paper-item>
-      <paper-item value="hax-align-right">
-        <iron-icon icon="editor:format-align-right"></iron-icon>
-      </paper-item>
+    <hax-context-item hidden$="[[inline]]" mini="" light="" icon="close" label="Close" event-name="close-menu" class="close-cap" direction="left"></hax-context-item>
+    <hax-context-item-menu hidden$="[[!haxProperties.canPosition]]" selected-value="{{justifyValue}}" id="justify" icon="[[justifyIcon]]" label="Alignment">
+      <hax-context-item menu icon="editor:format-align-left" event-name="hax-align-left">Left</hax-context-item>
+      <hax-context-item menu icon="editor:format-align-center" event-name="hax-align-center">Center</hax-context-item>
+      <hax-context-item menu icon="editor:format-align-right" event-name="hax-align-right">Right</hax-context-item>
     </hax-context-item-menu>
     <paper-slider hidden$="[[!haxProperties.canScale]]" id="slider" pin="" min="25" step="25" max="100" value="{{size}}"></paper-slider>
     <paper-tooltip hidden$="[[inline]]" for="slider" position="top" offset="10">

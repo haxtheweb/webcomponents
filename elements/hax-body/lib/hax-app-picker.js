@@ -1,6 +1,9 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-list/iron-list.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-ripple/paper-ripple.js";
@@ -36,14 +39,18 @@ Polymer({
         transition: .3s all linear;
         display: inline-flex;
       }
-      paper-icon-button.close {
+      #closedialog {
         float: right;
-        top: 0;
+        top: 15px;
         right: 0;
         position: absolute;
         padding: 4px;
         margin: 0;
-        color: var(--simple-colors-light-green-background1);
+        color: var(--simple-colors-light-green-background1, green);
+        background-color: transparent;
+        width: 40px;
+        height: 40px;
+        min-width: unset;
       }
       #ironlist {
         width: 100%;
@@ -77,8 +84,8 @@ Polymer({
       #buttonlist {
         display: block;
         text-align: left;
-        margin: auto;
-        padding: 8px;
+        margin: -32px;
+        padding: 32px;
         overflow-x: hidden;
         overflow-y: auto;
         --paper-dialog-scrollable: {
@@ -120,7 +127,7 @@ Polymer({
         }
       }
     </style>
-    <paper-dialog id="dialog" with-backdrop="" always-on-top="">
+    <paper-dialog id="dialog" with-backdrop always-on-top>
       <h3 id="title">[[title]]</h3>
       <paper-dialog-scrollable id="buttonlist">
         <iron-list id="ironlist" items="[[selectionList]]" as="element" grid>
@@ -131,7 +138,9 @@ Polymer({
           </template>
         </iron-list>
       </paper-dialog-scrollable>
-      <paper-icon-button dialog-dismiss="" icon="icons:cancel" class="close" title="Close dialog"></paper-icon-button>
+      <paper-button id="closedialog" on-tap="close">
+        <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
+      </paper-button>
     </paper-dialog>
 `,
 

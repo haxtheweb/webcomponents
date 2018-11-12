@@ -300,7 +300,6 @@ export class HAXWiring {
       if (typeof haxProperties === typeof undefined) {
         haxProperties = target.haxProperties;
       }
-      var slot = "";
       let settings = haxProperties.settings[type];
       var schema = {
         $schema: "http://json-schema.org/schema#",
@@ -361,7 +360,7 @@ export class HAXWiring {
                 };
                 break;
               case "select":
-                slot = "";
+                var slot = "";
                 if (typeof settings[value].options !== typeof undefined) {
                   for (var val in settings[value].options) {
                     slot +=
@@ -526,7 +525,7 @@ export class HAXWiring {
                 };
                 break;
               case "select":
-                slot = "";
+                var slot = "";
                 if (typeof settings[value].options !== typeof undefined) {
                   for (var val in settings[value].options) {
                     slot +=
@@ -633,7 +632,7 @@ export class HAXWiring {
                 }
               }
             };
-            let slot = "";
+            var slot = "";
             // test for slotted content values names is tricky
             for (var i in dom(target).childNodes) {
               // this is crazy... you know that right
