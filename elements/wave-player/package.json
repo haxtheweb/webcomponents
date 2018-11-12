@@ -47,8 +47,7 @@
     "@polymer/paper-fab": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.1",
     "@polymer/paper-material": "^3.0.1",
-    "@polymer/polymer": "^3.0.5",
-    "wavesurfer.js": "^2.1.0"
+    "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^0.0.31",

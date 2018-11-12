@@ -1,6 +1,9 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
+import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
@@ -22,14 +25,18 @@ Polymer({
         z-index: 1000;
         margin-top: 64px;
       }
-      paper-icon-button#closedialog {
+      #closedialog {
         float: right;
         top: 135px;
         right: 0;
         position: absolute;
         padding: 4px;
         margin: 0;
-        color: var(--simple-colors-light-green-background1);
+        color: var(--simple-colors-light-green-background1, green);
+        background-color: transparent;
+        width: 40px;
+        height: 40px;
+        min-width: unset;
       }
       .title {
         margin-top: 32px;
@@ -79,7 +86,9 @@ Polymer({
       <div style="height: 100%; overflow: auto;" class="pref-container">
         <eco-json-schema-object schema="[[schema]]" value="{{preferences}}"></eco-json-schema-object>
       </div>
-      <paper-icon-button id="closedialog" on-tap="close" icon="icons:cancel" title="Close dialog"></paper-icon-button>
+      <paper-button id="closedialog" on-tap="close">
+        <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
+      </paper-button>
     </app-drawer>
 `,
 
@@ -112,17 +121,6 @@ Polymer({
   },
 
   /**
-   * Ready life cycle.
-   */
-  ready: function() {
-    document.body.appendChild(this);
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-  },
-
-  /**
    * Detached life cycle
    */
   detached: function() {
@@ -133,13 +131,19 @@ Polymer({
   },
 
   /**
-   * Attached to the DOM; now we can fire event to the store that
-   * we exist and are the thing being edited.
+   * ready life cycle.
+   */
+  ready: function() {
+    document.body.appendChild(this);
+  },
+
+  /**
+   * Attached to the DOM, now fire that we exist.
    */
   attached: function() {
     // JSON schema object needs delayed to ensure page repaints the form
     setTimeout(() => {
-      let schema = {
+      var schema = {
         $schema: "http://json-schema.org/schema#",
         title: "HAX preferences",
         type: "object",
@@ -182,7 +186,13 @@ Polymer({
       };
       this.set("schema", schema);
     }, 1000);
+    // register this with hax as the preference pane
     this.fire("hax-register-preferences", this);
+    // add event listener
+    document.body.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
     // force color values to apply
     this.updateStyles();
   },

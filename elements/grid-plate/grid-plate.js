@@ -497,7 +497,9 @@ Polymer({
     let children = dom(this).children;
     // walk the children and apply the draggable state needed
     for (var i in children) {
-      children[i].classList.remove("mover");
+      if (typeof children[i].classList !== typeof undefined) {
+        children[i].classList.remove("mover");
+      }
     }
     let cols = [1, 2, 3, 4];
     for (var j in cols) {
@@ -536,7 +538,9 @@ Polymer({
     let children = dom(this).children;
     // walk the children and apply the draggable state needed
     for (var i in children) {
-      children[i].classList.add("mover");
+      if (typeof children[i].classList !== typeof undefined) {
+        children[i].classList.add("mover");
+      }
     }
     let cols = [1, 2, 3, 4];
     for (var j in cols) {
@@ -553,7 +557,9 @@ Polymer({
     let children = dom(this).children;
     // walk the children and apply the draggable state needed
     for (var i in children) {
-      children[i].classList.remove("mover");
+      if (typeof children[i].classList !== typeof undefined) {
+        children[i].classList.remove("mover");
+      }
     }
     let cols = [1, 2, 3, 4];
     for (var j in cols) {

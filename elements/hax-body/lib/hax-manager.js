@@ -6,6 +6,7 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@vaadin/vaadin-upload/vaadin-upload.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
@@ -47,14 +48,18 @@ Polymer({
           background-color: rgba(0, 0, 0, 0.7);
         };
       }
-      paper-icon-button#closedialog {
+      #closedialog {
         float: right;
         top: 135px;
         right: 0;
         position: absolute;
         padding: 4px;
         margin: 0;
-        color: var(--simple-colors-light-green-background1);
+        color: var(--simple-colors-light-green-background1, green);
+        background-color: transparent;
+        width: 40px;
+        height: 40px;
+        min-width: unset;
       }
       :host([active-page="0"]) #dialog {
         --app-drawer-width: 400px;
@@ -216,7 +221,9 @@ Polymer({
             <hax-preview id="preview" element="{{activeHaxElement}}"></hax-preview>
           </div>
         </iron-pages>
-        <paper-icon-button id="closedialog" icon="icons:cancel" title="Close dialog"></paper-icon-button>
+        <paper-button id="closedialog" on-tap="cancel">
+          <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
+        </paper-button>
       </div>
     </app-drawer>
 `,
@@ -341,44 +348,46 @@ Polymer({
     if (!this.__attached) {
       this.__attached = true;
       document.body.appendChild(this);
+    } else {
+      // fire an event that this is the manager
+      this.fire("hax-register-manager", this);
+      // add event listeners
+      document.body.addEventListener(
+        "hax-store-property-updated",
+        this._haxStorePropertyUpdated.bind(this)
+      );
+      document.body.addEventListener(
+        "hax-app-picker-selection",
+        this._haxAppPickerSelection.bind(this)
+      );
+      // specialized support for the place-holder tag
+      // and a drag and drop event
+      document.body.addEventListener(
+        "place-holder-file-drop",
+        this._placeHolderFileDrop.bind(this)
+      );
+      this.$.dialog.addEventListener(
+        "iron-overlay-canceled",
+        this.close.bind(this)
+      );
+      this.$.dialog.addEventListener(
+        "iron-overlay-closed",
+        this.close.bind(this)
+      );
+      this.$.closedialog.addEventListener("tap", this.close.bind(this));
+      this.$.newassetconfigure.addEventListener(
+        "tap",
+        this.newAssetConfigure.bind(this)
+      );
+      this.$.fileupload.addEventListener(
+        "upload-before",
+        this._fileAboutToUpload.bind(this)
+      );
+      this.$.fileupload.addEventListener(
+        "upload-response",
+        this._fileUploadResponse.bind(this)
+      );
     }
-    // fire an event that this is the manager
-    this.fire("hax-register-manager", this);
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    document.body.addEventListener(
-      "hax-app-picker-selection",
-      this._haxAppPickerSelection.bind(this)
-    );
-    // specialized support for the place-holder tag
-    // and a drag and drop event
-    document.body.addEventListener(
-      "place-holder-file-drop",
-      this._placeHolderFileDrop.bind(this)
-    );
-    this.$.dialog.addEventListener(
-      "iron-overlay-canceled",
-      this.close.bind(this)
-    );
-    this.$.dialog.addEventListener(
-      "iron-overlay-closed",
-      this.close.bind(this)
-    );
-    this.$.closedialog.addEventListener("tap", this.close.bind(this));
-    this.$.newassetconfigure.addEventListener(
-      "tap",
-      this.newAssetConfigure.bind(this)
-    );
-    this.$.fileupload.addEventListener(
-      "upload-before",
-      this._fileAboutToUpload.bind(this)
-    );
-    this.$.fileupload.addEventListener(
-      "upload-response",
-      this._fileUploadResponse.bind(this)
-    );
   },
 
   /**
