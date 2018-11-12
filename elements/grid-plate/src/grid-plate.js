@@ -2,8 +2,9 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
@@ -66,7 +67,7 @@ Polymer({
         cursor: move !important;
       }
 
-      paper-icon-button {
+      paper-button {
         display: none;
         position: absolute;
         margin: 0;
@@ -79,9 +80,13 @@ Polymer({
         border-radius: 50%;
         box-sizing: content-box !important;
         z-index: 1;
+        min-width: unset;
       }
 
-      paper-icon-button.active {
+      paper-button.active {
+        display: block;
+      }
+      paper-button iron-icon {
         display: block;
       }
 
@@ -90,10 +95,18 @@ Polymer({
       }
     </style>
     <div class="button-holding-pen">
-      <paper-icon-button title="move item up" icon="icons:arrow-upward" id="up" on-tap="moveActiveElement"></paper-icon-button>
-      <paper-icon-button title="move item right" icon="icons:arrow-forward" id="right" on-tap="moveActiveElement"></paper-icon-button>
-      <paper-icon-button title="move item down" icon="icons:arrow-downward" id="down" on-tap="moveActiveElement"></paper-icon-button>
-      <paper-icon-button title="move item left" icon="icons:arrow-back" id="left" on-tap="moveActiveElement"></paper-icon-button>
+      <paper-button title="move item up" id="up" on-tap="moveActiveElement">
+        <iron-icon icon="icons:arrow-upward"></iron-icon>
+      </paper-button>
+      <paper-button title="move item right" id="right" on-tap="moveActiveElement">
+        <iron-icon icon="icons:arrow-forward"></iron-icon>
+      </paper-button>
+      <paper-button title="move item down" id="down" on-tap="moveActiveElement">
+        <iron-icon icon="icons:arrow-downward"></iron-icon>
+      </paper-button>
+      <paper-button title="move item left" id="left" on-tap="moveActiveElement">
+        <iron-icon icon="icons:arrow-back"></iron-icon>
+      </paper-button>
     </div>
     <responsive-grid-row gutter="0">
       <template is="dom-if" if="[[!hideCol1]]" strip-whitespace>
