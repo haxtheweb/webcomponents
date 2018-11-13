@@ -1,0 +1,43 @@
+{
+  /**
+   * heading / label of the modal
+   */
+  "title": {
+    "name": "title",
+    "type": String,
+    "value": ""
+  },
+  /**
+   * open state
+   */
+  "opened": {
+    "name": "opened",
+    "type": Boolean,
+    "value": false,
+    "reflectToAttribute": true,
+    "observer": "_openedChanged"
+  },
+  /**
+   * Close label
+   */
+  "closeLabel": {
+    "name": "closeLabel",
+    "type": String,
+    "value": "Close"
+  },
+  /**
+   * Close icon
+   */
+  "closeIcon": {
+    "name": "closeIcon",
+    "type": String,
+    "value": "cancel"
+  },
+  /**
+   * The element that invoked this. This way we can track our way back accessibly
+   */
+  "invokedBy": {
+    "name": "invokedBy",
+    "type": Object
+  }
+}
