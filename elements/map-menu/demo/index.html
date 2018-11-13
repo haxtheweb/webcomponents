@@ -7,189 +7,182 @@
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../map-menu.js';
       window.onload = function () {
-          const menus = ['menu', 'menu2']
-          menus.forEach(selector => {
-            document.getElementById(selector).setData([
-              {
-                id: 'unique-id-001',
-                title: 'The Transcendentalists',
-                parent: null,
-                order: 0,
-                url: '#',
-              }, {
-                id: 'unique-id-002',
-                title: 'Ralph Waldo Emerson',
-                parent: 'unique-id-001',
-                order: 0,
-                url: '#',
-              }, {
-                id: 'unique-id-003',
-                title: 'Overview',
-                parent: 'unique-id-002',
-                order: 0,
-                url: '#',
-              }, {
-                id: 'unique-id-004',
-                title: 'Readings',
-                parent: 'unique-id-002',
-                order: 1,
-                url: '#',
-              }, {
-                id: 'unique-id-005',
-                title: 'Self-Reliance',
-                parent: 'unique-id-004',
-                order: 0,
-                url: '#',
-              }, {
-                id: 'unique-id-006',
-                title: 'Nature',
-                parent: 'unique-id-004',
-                order: 1,
-                url: '#',
-              }, {
-                id: 'unique-id-007',
-                title: 'Summary',
-                parent: 'unique-id-002',
-                order: 2,
-                url: '#',
-              }, {
-                id: 'unique-id-008',
-                title: 'Henry David Thoreau',
-                parent: 'unique-id-001',
-                order: 2,
-                url: '#',
-              }, {
-                id: 'unique-id-009',
-                title: 'Overview',
-                parent: 'unique-id-008',
-                order: 0,
-                url: '#',
-              }, {
-                id: 'unique-id-010',
-                title: 'Readings',
-                parent: 'unique-id-008',
-                order: 1,
-                url: '#',
-              }, {
-                id: 'unique-id-011',
-                title: 'Civil Disobedience',
-                parent: 'unique-id-010',
-                order: 0,
-                url: '#',
-              }, {
-                id: 'unique-id-012',
-                title: 'Walden',
-                parent: 'unique-id-010',
-                order: 1,
-                url: '#',
-              }, {
-                id: 'unique-id-013',
-                title: 'Summary',
-                parent: 'unique-id-008',
-                order: 2,
-                url: '#',
-              }, {
-                id: 'unique-id-014',
-                title: 'The Anti-Transcendentalists',
-                parent: null,
-                order: 1,
-                url: '#',
-              }, {
-                id: 'unique-id-015',
-                title: 'Herman Melville',
-                parent: 'unique-id-014',
-                order: 0,
-                url: '#',
-              }, {
-                id: 'unique-id-016',
-                title: 'Overview',
-                parent: 'unique-id-015',
-                order: 0,
-                url: '#',
-              }, {
-                id: 'unique-id-017',
-                title: 'Readings',
-                parent: 'unique-id-015',
-                order: 1,
-                url: '#',
-              }, {
-                id: 'unique-id-018',
-                title: 'Bartleby the Scrivener',
-                parent: 'unique-id-017',
-                order: 0,
-                url: '#',
-              }, {
-                id: 'unique-id-019',
-                title: 'Moby Dick',
-                parent: 'unique-id-017',
-                order: 1,
-                url: '#',
-              }, {
-                id: 'unique-id-020',
-                title: 'Summary',
-                parent: 'unique-id-015',
-                order: 2,
-                url: '#',
-              }, {
-                id: 'unique-id-021',
-                title: 'Nathaniel Hawthorne',
-                parent: 'unique-id-014',
-                order: 1,
-                url: '#',
-              }, {
-                id: 'unique-id-022',
-                title: 'Overview',
-                parent: 'unique-id-021',
-                order: 0,
-                url: '#',
-              }, {
-                id: 'unique-id-023',
-                title: 'Readings',
-                parent: 'unique-id-021',
-                order: 1,
-                url: '#',
-              }, {
-                id: 'unique-id-024',
-                title: 'The Scarlet Letter',
-                parent: 'unique-id-023',
-                order: 0,
-                url: '#',
-              }, {
-                id: 'unique-id-025',
-                title: 'Rappaccini\'s Daughter',
-                parent: 'unique-id-023',
-                order: 1,
-                url: '#',
-              }, {
-                id: 'unique-id-026',
-                title: 'Summary',
-                parent: 'unique-id-021',
-                order: 2,
-                url: '#',
-              }
-            ]);
-          })
-        };
+        const menus = ['menu1', 'menu2']
+        menus.forEach(selector => {
+          document.getElementById(selector).data = [
+            {
+              id: 'unique-id-001',
+              title: 'The Transcendentalists',
+              parent: null,
+              order: 0,
+              url: '#',
+            }, {
+              id: 'unique-id-002',
+              title: 'Ralph Waldo Emerson',
+              parent: 'unique-id-001',
+              order: 0,
+              url: '#',
+            }, {
+              id: 'unique-id-003',
+              title: 'Overview',
+              parent: 'unique-id-002',
+              order: 0,
+              url: '#',
+            }, {
+              id: 'unique-id-004',
+              title: 'Readings',
+              parent: 'unique-id-002',
+              order: 1,
+              url: '#',
+            }, {
+              id: 'unique-id-005',
+              title: 'Self-Reliance',
+              parent: 'unique-id-004',
+              order: 0,
+              url: '#',
+            }, {
+              id: 'unique-id-006',
+              title: 'Nature',
+              parent: 'unique-id-004',
+              order: 1,
+              url: '#',
+            }, {
+              id: 'unique-id-007',
+              title: 'Summary',
+              parent: 'unique-id-002',
+              order: 2,
+              url: '#',
+            }, {
+              id: 'unique-id-008',
+              title: 'Henry David Thoreau',
+              parent: 'unique-id-001',
+              order: 2,
+              url: '#',
+            }, {
+              id: 'unique-id-009',
+              title: 'Overview',
+              parent: 'unique-id-008',
+              order: 0,
+              url: '#',
+            }, {
+              id: 'unique-id-010',
+              title: 'Readings',
+              parent: 'unique-id-008',
+              order: 1,
+              url: '#',
+            }, {
+              id: 'unique-id-011',
+              title: 'Civil Disobedience',
+              parent: 'unique-id-010',
+              order: 0,
+              url: '#',
+            }, {
+              id: 'unique-id-012',
+              title: 'Walden',
+              parent: 'unique-id-010',
+              order: 1,
+              url: '#',
+            }, {
+              id: 'unique-id-013',
+              title: 'Summary',
+              parent: 'unique-id-008',
+              order: 2,
+              url: '#',
+            }, {
+              id: 'unique-id-014',
+              title: 'The Anti-Transcendentalists',
+              parent: null,
+              order: 1,
+              url: '#',
+            }, {
+              id: 'unique-id-015',
+              title: 'Herman Melville',
+              parent: 'unique-id-014',
+              order: 0,
+              url: '#',
+            }, {
+              id: 'unique-id-016',
+              title: 'Overview',
+              parent: 'unique-id-015',
+              order: 0,
+              url: '#',
+            }, {
+              id: 'unique-id-017',
+              title: 'Readings',
+              parent: 'unique-id-015',
+              order: 1,
+              url: '#',
+            }, {
+              id: 'unique-id-018',
+              title: 'Bartleby the Scrivener',
+              parent: 'unique-id-017',
+              order: 0,
+              url: '#',
+            }, {
+              id: 'unique-id-019',
+              title: 'Moby Dick',
+              parent: 'unique-id-017',
+              order: 1,
+              url: '#',
+            }, {
+              id: 'unique-id-020',
+              title: 'Summary',
+              parent: 'unique-id-015',
+              order: 2,
+              url: '#',
+            }, {
+              id: 'unique-id-021',
+              title: 'Nathaniel Hawthorne',
+              parent: 'unique-id-014',
+              order: 1,
+              url: '#',
+            }, {
+              id: 'unique-id-022',
+              title: 'Overview',
+              parent: 'unique-id-021',
+              order: 0,
+              url: '#',
+            }, {
+              id: 'unique-id-023',
+              title: 'Readings',
+              parent: 'unique-id-021',
+              order: 1,
+              url: '#',
+            }, {
+              id: 'unique-id-024',
+              title: 'The Scarlet Letter',
+              parent: 'unique-id-023',
+              order: 0,
+              url: '#',
+            }, {
+              id: 'unique-id-025',
+              title: 'Rappaccini\'s Daughter',
+              parent: 'unique-id-023',
+              order: 1,
+              url: '#',
+            }, {
+              id: 'unique-id-026',
+              title: 'Summary',
+              parent: 'unique-id-021',
+              order: 2,
+              url: '#',
+            }
+          ];
+        })
+      };
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>map-menu demo with data</h3>
-      <demo-snippet>
-        <template>
-          <map-menu id="menu" selected="unique-id-016"></map-menu>
-        </template>
-      </demo-snippet>
+      <map-menu id="menu1" selected="unique-id-016"></map-menu>
       <h3>map-menu demo with data animated</h3>
-      <demo-snippet>
-        <template>
-          <map-menu id="menu2" selected="unique-id-016" auto-scroll="" active-indicator=""></map-menu>
-        </template>
-      </demo-snippet>
+      <map-menu id="menu2" selected="unique-id-016" auto-scroll="" active-indicator=""></map-menu>
       <h3>Vanilla map-menu demo</h3>
       <demo-snippet>
         <template>
