@@ -23,6 +23,9 @@ Polymer({
       lrnsys-drawer-modal {
         --lrnsys-drawer-width: 30%;
       }
+      paper-button {
+        display:inline-block;
+      }
     </style>
     <paper-button class\$="[[class]]" id="flyouttrigger" on-tap="toggleDrawer" raised="[[raised]]" disabled\$="[[disabled]]" title="[[alt]]">
       <lrnsys-button-inner avatar="[[avatar]]" icon="[[icon]]" text="[[text]]">

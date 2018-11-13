@@ -2,8 +2,9 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/app-layout/app-layout.js";
 import "@polymer/neon-animation/neon-animation.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icon/iron-icon.js";
 import "./lrnsys-button-inner.js";
 /**
 `lrnsys-drawer-modal`
@@ -48,21 +49,31 @@ Polymer({
         text-align: left;
       }
 
-      #close {
-        position: absolute;
-        right: 8px;
-        top: 8px;
-        padding: 0 0 0 4px;
-        margin: 0;
-        min-width: .16px;
-        text-transform: none;
-      }
       .drawer-header-slot ::slotted(*) {
         font-size: 24px;
         margin: 0;
         padding: 0 15px;
         height: 40px;
         line-height: 48px;
+      }
+      #close {
+        position: absolute;
+        right: 8px;
+        top: 8px;
+        padding: 4px;
+        margin: 0;
+        text-transform: none;
+        float: right;
+        font-size: 12px;
+        color: var(--simple-modal-color, black);
+        background-color: transparent;
+        min-width: unset;
+      }
+      #close iron-icon {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 2px;
       }
     </style>
     <app-drawer tabindex="0" id="flyoutcontent" opened="[[opened]]" align="[[align]]" role="dialog">
@@ -76,9 +87,8 @@ Polymer({
         <div class="drawer-content">
           <slot></slot>
         </div>
+        <paper-button id="close" on-tap="closeDrawer"><iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]</paper-button>
       </div>
-      <paper-icon-button raised="" icon="close" on-tap="closeDrawer" id="close" aria-label="close dialog" class\$="[[headingClass]]"></paper-icon-button>
-      <paper-tooltip for="close" animation-delay="500">Close dialog</paper-tooltip>
     </app-drawer>
 `,
 
@@ -91,6 +101,20 @@ Polymer({
     opened: {
       type: Boolean,
       value: false
+    },
+    /**
+     * Close label
+     */
+    closeLabel: {
+      type: String,
+      value: "Close"
+    },
+    /**
+     * Close icon
+     */
+    closeIcon: {
+      type: String,
+      value: "cancel"
     },
     /**
      * Side of the screen to align the flyout (right or left)

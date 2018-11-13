@@ -9,7 +9,7 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/neon-animation/animations/scale-up-animation.js";
-import "@polymer/neon-animation/animations/fade-out-animation.js";
+import "@polymer/neon-animation/animations/scale-down-animation.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom";
 export { SimpleModal };
 /**
@@ -39,7 +39,10 @@ class SimpleModal extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener("simple-modal-show", this.showEvent.bind(this));
-    this.addEventListener("transitionend", this.animationEnded.bind(this));
+    this.$.dialog.addEventListener(
+      "iron-overlay-closed",
+      this.close.bind(this)
+    );
   }
   /**
    * show event call to open the modal and display it's content
@@ -75,12 +78,14 @@ class SimpleModal extends PolymerElement {
   animationEnded(e) {
     if (!this.opened) {
       if (this.invokedBy) {
-        this.invokedBy.focus();
-      }
-      this.title = "";
-      // wipe the slot of our modal
-      while (dom(this).firstChild !== null) {
-        dom(this).removeChild(dom(this).firstChild);
+        setTimeout(() => {
+          this.invokedBy.focus();
+          this.title = "";
+          // wipe the slot of our modal
+          while (dom(this).firstChild !== null) {
+            dom(this).removeChild(dom(this).firstChild);
+          }
+        }, 100);
       }
     }
   }
@@ -88,12 +93,12 @@ class SimpleModal extends PolymerElement {
    * Close the modal and do some clean up
    */
   close() {
-    this.opened = false;
+    this.$.dialog.close();
   }
   // Observer opened for changes
   _openedChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined && !newValue) {
-      this.close();
+      this.animationEnded();
     }
   }
   /**
@@ -102,7 +107,10 @@ class SimpleModal extends PolymerElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     window.removeEventListener("simple-modal-show", this.showEvent.bind(this));
-    this.removeEventListener("transitionend", this.animationEnded.bind(this));
+    this.$.dialog.removeEventListener(
+      "iron-overlay-closed",
+      this.close.bind(this)
+    );
   }
 }
 window.customElements.define(SimpleModal.tag, SimpleModal);

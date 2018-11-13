@@ -9,7 +9,7 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/neon-animation/animations/scale-up-animation.js";
-import "@polymer/neon-animation/animations/fade-out-animation.js";
+import "@polymer/neon-animation/animations/scale-down-animation.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom";
 export { SimpleModal };
 /**
@@ -55,7 +55,7 @@ class SimpleModal extends PolymerElement {
   height: 16px;
   margin-right: 2px;
 }</style>
-<paper-dialog entry-animation="scale-up-animation"
+<paper-dialog id="dialog" entry-animation="scale-up-animation"
 exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-top>
   <h2 hidden$="[[!title]]">[[title]]</h2>
   <slot name="header"></slot>
@@ -65,7 +65,7 @@ exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-
   <div class="buttons">
     <slot name="buttons"></slot>
   </div>
-  <paper-button id="close" on-tap="close"><iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]</paper-button>
+  <paper-button id="close" on-tap="close" hidden$="[[!opened]]"><iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]</paper-button>
 </paper-dialog>`;
   }
 
@@ -129,7 +129,10 @@ exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener("simple-modal-show", this.showEvent.bind(this));
-    this.addEventListener("transitionend", this.animationEnded.bind(this));
+    this.$.dialog.addEventListener(
+      "iron-overlay-closed",
+      this.close.bind(this)
+    );
   }
   /**
    * show event call to open the modal and display it's content
@@ -165,12 +168,14 @@ exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-
   animationEnded(e) {
     if (!this.opened) {
       if (this.invokedBy) {
-        this.invokedBy.focus();
-      }
-      this.title = "";
-      // wipe the slot of our modal
-      while (dom(this).firstChild !== null) {
-        dom(this).removeChild(dom(this).firstChild);
+        setTimeout(() => {
+          this.invokedBy.focus();
+          this.title = "";
+          // wipe the slot of our modal
+          while (dom(this).firstChild !== null) {
+            dom(this).removeChild(dom(this).firstChild);
+          }
+        }, 100);
       }
     }
   }
@@ -178,12 +183,12 @@ exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-
    * Close the modal and do some clean up
    */
   close() {
-    this.opened = false;
+    this.$.dialog.close();
   }
   // Observer opened for changes
   _openedChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined && !newValue) {
-      this.close();
+      this.animationEnded();
     }
   }
   /**
@@ -192,7 +197,10 @@ exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-
   disconnectedCallback() {
     super.disconnectedCallback();
     window.removeEventListener("simple-modal-show", this.showEvent.bind(this));
-    this.removeEventListener("transitionend", this.animationEnded.bind(this));
+    this.$.dialog.removeEventListener(
+      "iron-overlay-closed",
+      this.close.bind(this)
+    );
   }
 }
 window.customElements.define(SimpleModal.tag, SimpleModal);

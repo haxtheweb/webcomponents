@@ -40,6 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@lrnwebcomponents/simple-modal": "^0.0.31",
     "@lrnwebcomponents/lrn-icons": "^0.0.31",
     "@lrnwebcomponents/paper-avatar": "^0.0.31",
     "@lrnwebcomponents/simple-colors": "^0.0.31",
@@ -48,8 +49,6 @@
     "@polymer/iron-image": "^3.0.0",
     "@polymer/neon-animation": "^3.0.0",
     "@polymer/paper-button": "^3.0.0",
-    "@polymer/paper-dialog": "^3.0.0",
-    "@polymer/paper-dialog-scrollable": "^3.0.0",
     "@polymer/paper-drawer-panel": "^3.0.0",
     "@polymer/paper-input": "^3.0.0",
     "@polymer/paper-tooltip": "^3.0.0",
