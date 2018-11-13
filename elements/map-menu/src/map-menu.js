@@ -21,7 +21,7 @@ Polymer({
 
       map-menu-container {
         padding: 32px;
-        @apply(--map-menu-container)
+        @apply --map-menu-container;
       }
 
       /* turn default active color if indicator is on */

@@ -105,7 +105,7 @@ Polymer({
         min-height: 40;
       } 
       :host paper-slider {
-        @apply(--a11y-media-slider);
+        @apply --a11y-media-slider;
       }
       :host .play-status, 
       :host paper-icon-button {
@@ -143,7 +143,7 @@ Polymer({
         width: 130px;
         margin-left: -15px;
         margin-right: -15px;
-        @apply(--a11y-media-slider);
+        @apply --a11y-media-slider;
       }
       :host #speed {
         --paper-slider-knob-start-color: var(--a11y-media-accent-color);

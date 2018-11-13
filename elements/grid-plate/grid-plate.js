@@ -133,7 +133,7 @@ Polymer({
         <slot></slot>
       </responsive-grid-col>
     </responsive-grid-row>
-    <iron-a11y-keys stop-keyboard-event-propagation="" target="[[__activeItem]]" keys="enter" on-keys-pressed="setActiveElement"></iron-a11y-keys>
+    <iron-a11y-keys stop-keyboard-event-propagation target="[[__activeItem]]" keys="enter" on-keys-pressed="setActiveElement"></iron-a11y-keys>
     <iron-a11y-keys target="[[__activeItem]]" keys="esc" on-keys-pressed="cancelActive"></iron-a11y-keys>
 `,
 

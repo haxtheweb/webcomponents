@@ -5,18 +5,18 @@ define([
   "../a11y-collapse.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_2251f740e5f711e8919ecd17167bf29a() {
+  function _templateObject_7bd86780e70611e8976f7d4a1e452fcf() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n        @apply --a11y-collapse-group;\n      }\n      :host #heading {\n        font-weight: bold;\n        @apply --a11y-collapse-group-heading;\n      }\n      :host ::slotted(a11y-collapse){\n        margin: 0;\n        border-radius: 0;\n      }\n      :host ::slotted(a11y-collapse):not(:first-of-type) {\n        border-top: none;\n      }\n    </style>\n    <slot id="heading"></slot>\n    <slot></slot>\n'
     ]);
-    _templateObject_2251f740e5f711e8919ecd17167bf29a = function() {
+    _templateObject_7bd86780e70611e8976f7d4a1e452fcf = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_2251f740e5f711e8919ecd17167bf29a()
+      _templateObject_7bd86780e70611e8976f7d4a1e452fcf()
     ),
     is: "a11y-collapse-group",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

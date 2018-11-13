@@ -3,18 +3,18 @@ define([
   "../node_modules/@polymer/paper-button/paper-button.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_55763360e5f811e899cfa985bcfcb4ce() {
+  function _templateObject_b83ea260e70711e881fc13e66a8b53cb() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n      :host {\n        display: block;\n      }\n      :host paper-button {\n        display: block;\n        text-transform: none;\n        text-align: left;\n      }\n    </style>\n    <paper-button><slot></slot></paper-button>\n"
     ]);
-    _templateObject_55763360e5f811e899cfa985bcfcb4ce = function() {
+    _templateObject_b83ea260e70711e881fc13e66a8b53cb = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_55763360e5f811e899cfa985bcfcb4ce()
+      _templateObject_b83ea260e70711e881fc13e66a8b53cb()
     ),
     is: "editable-table-editor-insdel",
     listeners: { tap: "_onTap" },

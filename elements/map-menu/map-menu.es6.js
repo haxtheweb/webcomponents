@@ -16,7 +16,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
 
       map-menu-container {
         padding: 32px;
-        @apply(--map-menu-container)
+        @apply --map-menu-container;
       }
 
       /* turn default active color if indicator is on */

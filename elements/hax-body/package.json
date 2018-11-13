@@ -27,7 +27,7 @@
     "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
     "dev": "open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'",
     "watch": "../../node_modules/.bin/gulp dev",
-    "serve": "polymer serve --npm --module-resolution=node --open",
+    "serve": "polymer serve --npm --module-resolution=node --compile never --compile-cache 5242880000  --open",
     "lighthouse": "../../node_modules/.bin/gulp lighthouse"
   },
   "author": {

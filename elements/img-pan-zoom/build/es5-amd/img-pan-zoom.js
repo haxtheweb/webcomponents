@@ -7,18 +7,18 @@ define([
 ], function(meta, _polymerLegacy, _resolveUrl) {
   "use strict";
   meta = babelHelpers.interopRequireWildcard(meta);
-  function _templateObject_a1d27540e5f611e884df2594769b91dd() {
+  function _templateObject_e91c5140e70511e89ec29b442b53f172() {
     var data = babelHelpers.taggedTemplateLiteral([
-      '\n    <style>\n      :host {\n        display: block;\n        position: relative;\n        height: 500px;\n      }\n      #viewer {\n        position: relative;\n        height: 100%;\n        width: 100%;\n      }\n\n      paper-spinner-lite {\n        opacity: 0;\n        display: block;\n        transition: opacity 700ms;\n        position: absolute;\n        margin: auto;\n        top: 0;\n        left: 0;\n        bottom: 0;\n        right: 0;\n        z-index: 1;\n        height: 70px;\n        width: 70px;\n        --paper-spinner-color: var(--img-pan-zoom-spinner-color, #2196F3);\n        --paper-spinner-stroke-width: var(--img-pan-zoom-spinner-width, 5px);\n        @apply(--img-pan-zoom-spinner);\n      }\n      paper-spinner-lite[active] {\n        opacity: 1;\n      }\n    </style>\n\n    <!-- Only preload regular images -->\n    <template is="dom-if" if="[[!dzi]]">\n      <paper-spinner-lite hidden$="[[hideSpinner]]" active="[[loading]]"></paper-spinner-lite>\n      <img-loader loaded="{{loaded}}" loading="{{loading}}" src="[[src]]"></img-loader>\n    </template>\n\n    <!-- Openseadragon -->\n    <div id="viewer"></div>\n'
+      '\n    <style>\n      :host {\n        display: block;\n        position: relative;\n        height: 500px;\n      }\n      #viewer {\n        position: relative;\n        height: 100%;\n        width: 100%;\n      }\n\n      paper-spinner-lite {\n        opacity: 0;\n        display: block;\n        transition: opacity 700ms;\n        position: absolute;\n        margin: auto;\n        top: 0;\n        left: 0;\n        bottom: 0;\n        right: 0;\n        z-index: 1;\n        height: 70px;\n        width: 70px;\n        --paper-spinner-color: var(--img-pan-zoom-spinner-color, #2196F3);\n        --paper-spinner-stroke-width: var(--img-pan-zoom-spinner-width, 5px);\n        @apply --img-pan-zoom-spinner;\n      }\n      paper-spinner-lite[active] {\n        opacity: 1;\n      }\n    </style>\n\n    <!-- Only preload regular images -->\n    <template is="dom-if" if="[[!dzi]]">\n      <paper-spinner-lite hidden$="[[hideSpinner]]" active="[[loading]]"></paper-spinner-lite>\n      <img-loader loaded="{{loaded}}" loading="{{loading}}" src="[[src]]"></img-loader>\n    </template>\n\n    <!-- Openseadragon -->\n    <div id="viewer"></div>\n'
     ]);
-    _templateObject_a1d27540e5f611e884df2594769b91dd = function() {
+    _templateObject_e91c5140e70511e89ec29b442b53f172 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a1d27540e5f611e884df2594769b91dd()
+      _templateObject_e91c5140e70511e89ec29b442b53f172()
     ),
     is: "img-pan-zoom",
     properties: {

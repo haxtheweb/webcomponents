@@ -268,7 +268,7 @@ export class HAXWiring {
                 };
                 break;
               case "select":
-                slot = "";
+                var slot = "";
                 if (typeof settings[value].options !== typeof void 0) {
                   for (var val in settings[value].options) {
                     slot +=
@@ -408,7 +408,7 @@ export class HAXWiring {
                 };
                 break;
               case "select":
-                slot = "";
+                var slot = "";
                 if (typeof settings[value].options !== typeof void 0) {
                   for (var val in settings[value].options) {
                     slot +=
@@ -496,7 +496,7 @@ export class HAXWiring {
                 }
               }
             };
-            let slot = "";
+            var slot = "";
             for (var i in dom(target).childNodes) {
               if (typeof dom(target).childNodes[i] !== typeof void 0) {
                 if (1 === dom(target).childNodes[i].nodeType) {

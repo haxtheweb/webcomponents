@@ -20,7 +20,7 @@ Polymer({
         box-sizing: border-box;
         --lrndesign-blockquote-color: #585858;
         --lrndesign-blockquote-cite: #3a3a3a;
-        @apply(--lrndesign-blockquote);
+        @apply --lrndesign-blockquote;
       }
       blockquote {
         font-size: 19.2px;

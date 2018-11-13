@@ -217,8 +217,6 @@ Polymer({
         } else {
           item.slotToBind = setting.slot;
         }
-        console.log(item);
-        console.log(slot);
         slot.appendChild(item);
       }
     }

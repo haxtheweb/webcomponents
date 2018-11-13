@@ -15,8 +15,8 @@ $_documentContainer.innerHTML = `<dom-module id="material-progress-bars">
         border-radius: calc(var(--material-progress-bar-height) / 2);
         min-width: var(--material-progress-bar-height);
         height: var(--material-progress-bar-height);
-        @apply(--layout);
-        @apply(--material-progress-bars-style);
+        @apply --layout;
+        @apply --material-progress-bars-style;
       }
       :host > #barsContainer > ::content > .bar {
         margin-left: calc(-var(--material-progress-bar-height) / 2);

@@ -5,18 +5,18 @@ define([
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_74a83170e5f811e8a25949224fa0ac9c() {
+  function _templateObject_d6bba850e70711e8aae2539bd84bb0df() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n      .hidden-title {\n        display: none;\n      }\n    </style>\n    <div typeof="oer:SupportingMaterial">\n      <div class="hidden-title" property="oer:name">[[title]]</div>\n      <div property="oer:description">\n        <slot></slot>\n        <csv-render data-source="[[csvFile]]" caption="[[title]]" summary="[[description]]"></csv-render>\n      </div>\n    </div>\n'
     ]);
-    _templateObject_74a83170e5f811e8a25949224fa0ac9c = function() {
+    _templateObject_d6bba850e70711e8aae2539bd84bb0df = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_74a83170e5f811e8a25949224fa0ac9c()
+      _templateObject_d6bba850e70711e8aae2539bd84bb0df()
     ),
     is: "lrn-table",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

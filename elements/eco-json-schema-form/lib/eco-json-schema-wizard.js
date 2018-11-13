@@ -297,7 +297,7 @@ Polymer({
   <style is="custom-style" include="iron-flex iron-flex-alignment">
        :host {
         display: block;
-        @apply(--layout-vertical);
+        @apply --layout-vertical;
       }
 
       paper-input {

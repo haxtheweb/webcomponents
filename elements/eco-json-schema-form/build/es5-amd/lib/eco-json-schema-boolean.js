@@ -4,13 +4,20 @@ define([
   "../node_modules/@polymer/paper-checkbox/paper-checkbox.js"
 ], function(_polymerLegacy) {
   "use strict";
-  var $_documentContainer = document.createElement("div");
-  $_documentContainer.setAttribute("style", "display: none;");
-  $_documentContainer.innerHTML =
-    '<dom-module id="eco-json-schema-boolean">\n\n  \n\n  <template>\n    <style is="custom-style" include="iron-flex iron-flex-alignment">\n      paper-checkbox {\n        color: #737373;\n        padding: 2px;\n        display: block;\n        font-size: 16px;\n        white-space: normal;\n    }\n    </style>\n\n    <paper-checkbox id="checkbox" class="flex" checked="{{value}}" invalid="[[error]]">[[_label]]</paper-checkbox>\n\n  </template>\n\n  \n\n</dom-module>';
-  document.head.appendChild($_documentContainer);
+  function _templateObject_fbd31e90e70511e886e6093a9ece0d4a() {
+    var data = babelHelpers.taggedTemplateLiteral([
+      '\n<style is="custom-style" include="iron-flex iron-flex-alignment">\n      paper-checkbox {\n        color: #737373;\n        padding: 2px;\n        display: block;\n        font-size: 16px;\n        white-space: normal;\n    }\n    </style>\n\n    <paper-checkbox id="checkbox" class="flex" checked="{{value}}" invalid="[[error]]">[[_label]]</paper-checkbox>  \n'
+    ]);
+    _templateObject_fbd31e90e70511e886e6093a9ece0d4a = function() {
+      return data;
+    };
+    return data;
+  }
   (0, _polymerLegacy.Polymer)({
     is: "eco-json-schema-boolean",
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_fbd31e90e70511e886e6093a9ece0d4a()
+    ),
     properties: {
       schema: { type: Object, observer: "_schemaChanged" },
       value: { type: Boolean, notify: !0, value: !1 },

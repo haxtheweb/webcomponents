@@ -6,11 +6,11 @@ define([
 ], function(_polymerLegacy, _polymerDom, async) {
   "use strict";
   async = babelHelpers.interopRequireWildcard(async);
-  function _templateObject_e0ad4f10e5f611e8acb9e384b77a2d1a() {
+  function _templateObject_35b8e590e70611e8b59b3d106a92985a() {
     var data = babelHelpers.taggedTemplateLiteral([
-      '\n    <style>\n      iron-dropdown {\n        @apply(--paper-morph-dropdown);\n      }\n      .dropdown-content {\n        @apply(--paper-morph-content);\n      }\n      #morpher {\n        position: fixed;\n        display: none;\n        background-color: var(--paper-morph-background, #fff);\n      }\n    </style>\n    <span id="fabContainer" class="dropdown-trigger"><slot name="dropdown-trigger"></slot></span>\n    <span id="contentContainer" class="dropdown-content"><slot name="dropdown-content"></slot></span>\n    <paper-material id="morpher"></paper-material>\n'
+      '\n    <style>\n      iron-dropdown {\n        @apply --paper-morph-dropdown;\n      }\n      .dropdown-content {\n        @apply --paper-morph-content;\n      }\n      #morpher {\n        position: fixed;\n        display: none;\n        background-color: var(--paper-morph-background, #fff);\n      }\n    </style>\n    <span id="fabContainer" class="dropdown-trigger"><slot name="dropdown-trigger"></slot></span>\n    <span id="contentContainer" class="dropdown-content"><slot name="dropdown-content"></slot></span>\n    <paper-material id="morpher"></paper-material>\n'
     ]);
-    _templateObject_e0ad4f10e5f611e8acb9e384b77a2d1a = function() {
+    _templateObject_35b8e590e70611e8b59b3d106a92985a = function() {
       return data;
     };
     return data;
@@ -18,7 +18,7 @@ define([
   (function(Polymer) {
     Polymer({
       _template: (0, _polymerLegacy.html)(
-        _templateObject_e0ad4f10e5f611e8acb9e384b77a2d1a()
+        _templateObject_35b8e590e70611e8b59b3d106a92985a()
       ),
       is: "paper-fab-morph",
       properties: {

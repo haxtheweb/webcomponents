@@ -6,18 +6,18 @@ define([
   "../node_modules/@polymer/paper-icon-button/paper-icon-button.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_04415cd0e5f911e89b531df1ff6ecd3d() {
+  function _templateObject_660be3d0e70811e8b789ebb7ca0e6841() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n        <style>\n          :host {\n            display: block;\n            position: relative;\n          }\n          paper-dialog {\n            display: block;\n            margin: auto;\n            width: 80%;\n            height: auto;\n            z-index: 1000;\n          }\n          .close_button {\n            display: flex;\n            flex-direction: row-reverse;\n            margin-top: 0;\n            background-color: #20427b;\n            color: #fff;\n            padding: 8px;\n          }\n        </style>\n        <paper-dialog id="dialog" with-backdrop="" opened="{{opened}}">\n          <div class="close_button">\n            <paper-icon-button icon="cancel" dialog-dismiss=""></paper-icon-button>\n          </div>\n          <paper-dialog-scrollable>\n            <slot></slot>\n          </paper-dialog-scrollable>\n        </paper-dialog>\n'
     ]);
-    _templateObject_04415cd0e5f911e89b531df1ff6ecd3d = function() {
+    _templateObject_660be3d0e70811e8b789ebb7ca0e6841 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_04415cd0e5f911e89b531df1ff6ecd3d()
+      _templateObject_660be3d0e70811e8b789ebb7ca0e6841()
     ),
     is: "lrn-vocab-dialog",
     listeners: {

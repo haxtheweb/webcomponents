@@ -5,8 +5,9 @@ import {
 import { dom } from "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
 import * as async from "./node_modules/@polymer/polymer/lib/utils/async.js";
 import "./node_modules/@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "./node_modules/@polymer/paper-icon-button/paper-icon-button.js";
+import "./node_modules/@polymer/paper-button/paper-button.js";
 import "./node_modules/@polymer/iron-icons/iron-icons.js";
+import "./node_modules/@polymer/iron-icon/iron-icon.js";
 import "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./node_modules/@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
@@ -59,7 +60,7 @@ Polymer({
         cursor: move !important;
       }
 
-      paper-icon-button {
+      paper-button {
         display: none;
         position: absolute;
         margin: 0;
@@ -72,9 +73,13 @@ Polymer({
         border-radius: 50%;
         box-sizing: content-box !important;
         z-index: 1;
+        min-width: unset;
       }
 
-      paper-icon-button.active {
+      paper-button.active {
+        display: block;
+      }
+      paper-button iron-icon {
         display: block;
       }
 
@@ -83,10 +88,18 @@ Polymer({
       }
     </style>
     <div class="button-holding-pen">
-      <paper-icon-button title="move item up" icon="icons:arrow-upward" id="up" on-tap="moveActiveElement"></paper-icon-button>
-      <paper-icon-button title="move item right" icon="icons:arrow-forward" id="right" on-tap="moveActiveElement"></paper-icon-button>
-      <paper-icon-button title="move item down" icon="icons:arrow-downward" id="down" on-tap="moveActiveElement"></paper-icon-button>
-      <paper-icon-button title="move item left" icon="icons:arrow-back" id="left" on-tap="moveActiveElement"></paper-icon-button>
+      <paper-button title="move item up" id="up" on-tap="moveActiveElement">
+        <iron-icon icon="icons:arrow-upward"></iron-icon>
+      </paper-button>
+      <paper-button title="move item right" id="right" on-tap="moveActiveElement">
+        <iron-icon icon="icons:arrow-forward"></iron-icon>
+      </paper-button>
+      <paper-button title="move item down" id="down" on-tap="moveActiveElement">
+        <iron-icon icon="icons:arrow-downward"></iron-icon>
+      </paper-button>
+      <paper-button title="move item left" id="left" on-tap="moveActiveElement">
+        <iron-icon icon="icons:arrow-back"></iron-icon>
+      </paper-button>
     </div>
     <responsive-grid-row gutter="0">
       <template is="dom-if" if="[[!hideCol1]]" strip-whitespace>
@@ -113,7 +126,7 @@ Polymer({
         <slot></slot>
       </responsive-grid-col>
     </responsive-grid-row>
-    <iron-a11y-keys stop-keyboard-event-propagation="" target="[[__activeItem]]" keys="enter" on-keys-pressed="setActiveElement"></iron-a11y-keys>
+    <iron-a11y-keys stop-keyboard-event-propagation target="[[__activeItem]]" keys="enter" on-keys-pressed="setActiveElement"></iron-a11y-keys>
     <iron-a11y-keys target="[[__activeItem]]" keys="esc" on-keys-pressed="cancelActive"></iron-a11y-keys>
 `,
   is: "grid-plate",
@@ -382,7 +395,9 @@ Polymer({
     }
     let children = dom(this).children;
     for (var i in children) {
-      children[i].classList.remove("mover");
+      if (typeof children[i].classList !== typeof void 0) {
+        children[i].classList.remove("mover");
+      }
     }
     let cols = [1, 2, 3, 4];
     for (var j in cols) {
@@ -410,7 +425,9 @@ Polymer({
   dragStart: function() {
     let children = dom(this).children;
     for (var i in children) {
-      children[i].classList.add("mover");
+      if (typeof children[i].classList !== typeof void 0) {
+        children[i].classList.add("mover");
+      }
     }
     let cols = [1, 2, 3, 4];
     for (var j in cols) {
@@ -422,7 +439,9 @@ Polymer({
   dragEnd: function() {
     let children = dom(this).children;
     for (var i in children) {
-      children[i].classList.remove("mover");
+      if (typeof children[i].classList !== typeof void 0) {
+        children[i].classList.remove("mover");
+      }
     }
     let cols = [1, 2, 3, 4];
     for (var j in cols) {

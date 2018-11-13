@@ -8,7 +8,7 @@ import "../node_modules/@polymer/iron-icons/image-icons.js";
 import "../node_modules/@polymer/iron-icons/iron-icons.js";
 import "../node_modules/@polymer/iron-icons/editor-icons.js";
 import "../node_modules/@polymer/iron-pages/iron-pages.js";
-import "../node_modules/@polymer/paper-toolbar/paper-toolbar.js";
+import "../node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "../node_modules/@polymer/paper-menu-button/paper-menu-button.js";
 import "../node_modules/@polymer/paper-icon-button/paper-icon-button.js";
 import "../node_modules/@polymer/paper-ripple/paper-ripple.js";
@@ -19,14 +19,14 @@ import "./eco-json-schema-boolean.js";
 import "./eco-json-schema-enum.js";
 import "./eco-json-schema-file.js";
 import "./eco-json-schema-input.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
-$_documentContainer.innerHTML = `<dom-module id="eco-json-schema-wizard">
-  <template>
-    <style is="custom-style" include="iron-flex iron-flex-alignment">
+Polymer({
+  is: "eco-json-schema-wizard",
+  behaviors: [AppLocalizeBehavior],
+  _template: html`
+  <style is="custom-style" include="iron-flex iron-flex-alignment">
        :host {
         display: block;
-        @apply(--layout-vertical);
+        @apply --layout-vertical;
       }
 
       paper-input {
@@ -56,26 +56,26 @@ $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-wizard">
         z-index: 1;
       }
 
-      paper-toolbar.bottom {
-        --paper-toolbar-color: var(--app-primary-color);
-        --paper-toolbar-background: var(--dark-theme-text-color);
+      app-toolbar.bottom {
+        --app-toolbar-color: var(--app-primary-color);
+        --app-toolbar-background: var(--dark-theme-text-color);
       }
 
-      paper-toolbar.bottom paper-icon-button {
-        --paper-toolbar-color: var(--dark-theme-text-color);
-        --paper-toolbar-background: var(--app-primary-color);
+      app-toolbar.bottom paper-icon-button {
+        --app-toolbar-color: var(--dark-theme-text-color);
+        --app-toolbar-background: var(--app-primary-color);
       }
 
     </style>
     <div class="vertical flex layout fullbleed">
       <!--paper-icon-button id="camButton" icon="editor:insert-photo" raised>add photo</paper-icon-button-->
-      <paper-toolbar>
+      <app-toolbar>
         <paper-icon-button id="prevButton" icon="arrow-back" hidden\$="{{!hasPrev}}" on-tap="prev" raised="">{{localize('prev')}}</paper-icon-button><span class="title layout horizontal flex" style="white-space: normal">[[title]]</span>
         <paper-icon-button id="nextButton" icon="arrow-forward" hidden\$="{{!hasNext}}" on-tap="next" raised="">{{localize('next')}}</paper-icon-button>
         <paper-icon-button id="submitButton" icon="cloud-upload" on-tap="submit" raised="">{{localize('submit')}}</paper-icon-button>
-      </paper-toolbar>
+      </app-toolbar>
       <iron-pages id="form" class="layout horizontal flex start-justified" role="main" selected="[[page]]" attr-for-selected="name"></iron-pages>
-      <paper-toolbar class="bottom">
+      <app-toolbar class="bottom">
         <div hidden\$="{{!hasPrev}}" on-tap="prev">
           <paper-icon-button id="prevButton" icon="arrow-back" raised="">{{localize('prev')}}</paper-icon-button>
           <span class="title layout" style="white-space: normal">{{localize('prev')}}</span>
@@ -85,19 +85,13 @@ $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-wizard">
           <span class="title layout" style="white-space: normal">{{localize('next')}}</span>
           <paper-icon-button id="nextButton" icon="arrow-forward" raised="">{{localize('next')}}</paper-icon-button>
         </div>
-      </paper-toolbar>
+      </app-toolbar>
     </div>
-  </template>
-  
-</dom-module>`;
-document.head.appendChild($_documentContainer);
-Polymer({
-  is: "eco-json-schema-wizard",
-  behaviors: [AppLocalizeBehavior],
+`,
   properties: {
     language: { type: String, notify: !0 },
     resources: { type: Object, notify: !0 },
-    schema: { type: Object, observer: "_schemaChanged" },
+    schema: { type: Object, notify: !0, observer: "_schemaChanged" },
     label: { type: String },
     value: {
       type: Object,

@@ -6,7 +6,7 @@ define([
   "../node_modules/@polymer/iron-icons/iron-icons.js",
   "../node_modules/@polymer/iron-icons/editor-icons.js",
   "../node_modules/@polymer/iron-pages/iron-pages.js",
-  "../node_modules/@polymer/paper-toolbar/paper-toolbar.js",
+  "../node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js",
   "../node_modules/@polymer/paper-menu-button/paper-menu-button.js",
   "../node_modules/@polymer/paper-icon-button/paper-icon-button.js",
   "../node_modules/@polymer/paper-ripple/paper-ripple.js",
@@ -25,25 +25,37 @@ define([
   _ironIcons,
   _editorIcons,
   _ironPages,
-  _paperToolbar,
+  _appToolbar,
   _paperMenuButton,
   _paperIconButton,
   _paperRipple,
   _appLocalizeBehavior
 ) {
   "use strict";
-  var $_documentContainer = document.createElement("div");
-  $_documentContainer.setAttribute("style", "display: none;");
-  $_documentContainer.innerHTML =
-    '<dom-module id="eco-json-schema-wizard">\n  <template>\n    <style is="custom-style" include="iron-flex iron-flex-alignment">\n       :host {\n        display: block;\n        @apply(--layout-vertical);\n      }\n\n      paper-input {\n        padding: 2px;\n        --paper-input-container-label: {\n          white-space: normal;\n          position: static;\n          font-size: 22px;\n          color: #fff;\n        }\n      }\n\n      .box,\n      #form {\n        display: -webkit-box;\n        display: -webkit-flex;\n        display: -moz-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-flex-align: center;\n        -ms-flex-align: center;\n        -webkit-align-items: center;\n        align-items: center;\n      }\n\n      .fullbleed {\n        z-index: 1;\n      }\n\n      paper-toolbar.bottom {\n        --paper-toolbar-color: var(--app-primary-color);\n        --paper-toolbar-background: var(--dark-theme-text-color);\n      }\n\n      paper-toolbar.bottom paper-icon-button {\n        --paper-toolbar-color: var(--dark-theme-text-color);\n        --paper-toolbar-background: var(--app-primary-color);\n      }\n\n    </style>\n    <div class="vertical flex layout fullbleed">\n      <!--paper-icon-button id="camButton" icon="editor:insert-photo" raised>add photo</paper-icon-button-->\n      <paper-toolbar>\n        <paper-icon-button id="prevButton" icon="arrow-back" hidden$="{{!hasPrev}}" on-tap="prev" raised="">{{localize(\'prev\')}}</paper-icon-button><span class="title layout horizontal flex" style="white-space: normal">[[title]]</span>\n        <paper-icon-button id="nextButton" icon="arrow-forward" hidden$="{{!hasNext}}" on-tap="next" raised="">{{localize(\'next\')}}</paper-icon-button>\n        <paper-icon-button id="submitButton" icon="cloud-upload" on-tap="submit" raised="">{{localize(\'submit\')}}</paper-icon-button>\n      </paper-toolbar>\n      <iron-pages id="form" class="layout horizontal flex start-justified" role="main" selected="[[page]]" attr-for-selected="name"></iron-pages>\n      <paper-toolbar class="bottom">\n        <div hidden$="{{!hasPrev}}" on-tap="prev">\n          <paper-icon-button id="prevButton" icon="arrow-back" raised="">{{localize(\'prev\')}}</paper-icon-button>\n          <span class="title layout" style="white-space: normal">{{localize(\'prev\')}}</span>\n        </div>\n        <span class="title layout horizontal flex" style="white-space: normal"></span>\n        <div hidden$="{{!hasNext}}" on-tap="next">\n          <span class="title layout" style="white-space: normal">{{localize(\'next\')}}</span>\n          <paper-icon-button id="nextButton" icon="arrow-forward" raised="">{{localize(\'next\')}}</paper-icon-button>\n        </div>\n      </paper-toolbar>\n    </div>\n  </template>\n  \n</dom-module>';
-  document.head.appendChild($_documentContainer);
+  function _templateObject_f9517cc0e70511e886e6093a9ece0d4a() {
+    var data = babelHelpers.taggedTemplateLiteral(
+      [
+        '\n  <style is="custom-style" include="iron-flex iron-flex-alignment">\n       :host {\n        display: block;\n        @apply --layout-vertical;\n      }\n\n      paper-input {\n        padding: 2px;\n        --paper-input-container-label: {\n          white-space: normal;\n          position: static;\n          font-size: 22px;\n          color: #fff;\n        }\n      }\n\n      .box,\n      #form {\n        display: -webkit-box;\n        display: -webkit-flex;\n        display: -moz-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-flex-align: center;\n        -ms-flex-align: center;\n        -webkit-align-items: center;\n        align-items: center;\n      }\n\n      .fullbleed {\n        z-index: 1;\n      }\n\n      app-toolbar.bottom {\n        --app-toolbar-color: var(--app-primary-color);\n        --app-toolbar-background: var(--dark-theme-text-color);\n      }\n\n      app-toolbar.bottom paper-icon-button {\n        --app-toolbar-color: var(--dark-theme-text-color);\n        --app-toolbar-background: var(--app-primary-color);\n      }\n\n    </style>\n    <div class="vertical flex layout fullbleed">\n      <!--paper-icon-button id="camButton" icon="editor:insert-photo" raised>add photo</paper-icon-button-->\n      <app-toolbar>\n        <paper-icon-button id="prevButton" icon="arrow-back" hidden$="{{!hasPrev}}" on-tap="prev" raised="">{{localize(\'prev\')}}</paper-icon-button><span class="title layout horizontal flex" style="white-space: normal">[[title]]</span>\n        <paper-icon-button id="nextButton" icon="arrow-forward" hidden$="{{!hasNext}}" on-tap="next" raised="">{{localize(\'next\')}}</paper-icon-button>\n        <paper-icon-button id="submitButton" icon="cloud-upload" on-tap="submit" raised="">{{localize(\'submit\')}}</paper-icon-button>\n      </app-toolbar>\n      <iron-pages id="form" class="layout horizontal flex start-justified" role="main" selected="[[page]]" attr-for-selected="name"></iron-pages>\n      <app-toolbar class="bottom">\n        <div hidden$="{{!hasPrev}}" on-tap="prev">\n          <paper-icon-button id="prevButton" icon="arrow-back" raised="">{{localize(\'prev\')}}</paper-icon-button>\n          <span class="title layout" style="white-space: normal">{{localize(\'prev\')}}</span>\n        </div>\n        <span class="title layout horizontal flex" style="white-space: normal"></span>\n        <div hidden$="{{!hasNext}}" on-tap="next">\n          <span class="title layout" style="white-space: normal">{{localize(\'next\')}}</span>\n          <paper-icon-button id="nextButton" icon="arrow-forward" raised="">{{localize(\'next\')}}</paper-icon-button>\n        </div>\n      </app-toolbar>\n    </div>\n'
+      ],
+      [
+        '\n  <style is="custom-style" include="iron-flex iron-flex-alignment">\n       :host {\n        display: block;\n        @apply --layout-vertical;\n      }\n\n      paper-input {\n        padding: 2px;\n        --paper-input-container-label: {\n          white-space: normal;\n          position: static;\n          font-size: 22px;\n          color: #fff;\n        }\n      }\n\n      .box,\n      #form {\n        display: -webkit-box;\n        display: -webkit-flex;\n        display: -moz-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-flex-align: center;\n        -ms-flex-align: center;\n        -webkit-align-items: center;\n        align-items: center;\n      }\n\n      .fullbleed {\n        z-index: 1;\n      }\n\n      app-toolbar.bottom {\n        --app-toolbar-color: var(--app-primary-color);\n        --app-toolbar-background: var(--dark-theme-text-color);\n      }\n\n      app-toolbar.bottom paper-icon-button {\n        --app-toolbar-color: var(--dark-theme-text-color);\n        --app-toolbar-background: var(--app-primary-color);\n      }\n\n    </style>\n    <div class="vertical flex layout fullbleed">\n      <!--paper-icon-button id="camButton" icon="editor:insert-photo" raised>add photo</paper-icon-button-->\n      <app-toolbar>\n        <paper-icon-button id="prevButton" icon="arrow-back" hidden\\$="{{!hasPrev}}" on-tap="prev" raised="">{{localize(\'prev\')}}</paper-icon-button><span class="title layout horizontal flex" style="white-space: normal">[[title]]</span>\n        <paper-icon-button id="nextButton" icon="arrow-forward" hidden\\$="{{!hasNext}}" on-tap="next" raised="">{{localize(\'next\')}}</paper-icon-button>\n        <paper-icon-button id="submitButton" icon="cloud-upload" on-tap="submit" raised="">{{localize(\'submit\')}}</paper-icon-button>\n      </app-toolbar>\n      <iron-pages id="form" class="layout horizontal flex start-justified" role="main" selected="[[page]]" attr-for-selected="name"></iron-pages>\n      <app-toolbar class="bottom">\n        <div hidden\\$="{{!hasPrev}}" on-tap="prev">\n          <paper-icon-button id="prevButton" icon="arrow-back" raised="">{{localize(\'prev\')}}</paper-icon-button>\n          <span class="title layout" style="white-space: normal">{{localize(\'prev\')}}</span>\n        </div>\n        <span class="title layout horizontal flex" style="white-space: normal"></span>\n        <div hidden\\$="{{!hasNext}}" on-tap="next">\n          <span class="title layout" style="white-space: normal">{{localize(\'next\')}}</span>\n          <paper-icon-button id="nextButton" icon="arrow-forward" raised="">{{localize(\'next\')}}</paper-icon-button>\n        </div>\n      </app-toolbar>\n    </div>\n'
+      ]
+    );
+    _templateObject_f9517cc0e70511e886e6093a9ece0d4a = function() {
+      return data;
+    };
+    return data;
+  }
   (0, _polymerLegacy.Polymer)({
     is: "eco-json-schema-wizard",
     behaviors: [_appLocalizeBehavior.AppLocalizeBehavior],
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_f9517cc0e70511e886e6093a9ece0d4a()
+    ),
     properties: {
       language: { type: String, notify: !0 },
       resources: { type: Object, notify: !0 },
-      schema: { type: Object, observer: "_schemaChanged" },
+      schema: { type: Object, notify: !0, observer: "_schemaChanged" },
       label: { type: String },
       value: {
         type: Object,

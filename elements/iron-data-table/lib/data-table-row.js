@@ -10,36 +10,36 @@ Polymer({
         opacity: 1;
         cursor: pointer;
 
-        @apply(--iron-data-table-row);
+        @apply --iron-data-table-row;
       }
 
       :host([selected]) .cells {
-        @apply(--iron-data-table-row-selected);
+        @apply --iron-data-table-row-selected;
       }
 
       :host(:not([header])[even]) {
-        @apply(--iron-data-table-row-even);
+        @apply --iron-data-table-row-even;
       }
 
       :host(:not([header]):not([even])) {
-        @apply(--iron-data-table-row-odd);
+        @apply --iron-data-table-row-odd;
       }
 
       :host(:focus) {
         outline: none;
-        @apply(--iron-data-table-row-focused);
+        @apply --iron-data-table-row-focused;
       }
 
       :host(:not([header]):hover) {
-        @apply(--iron-data-table-row-hover);
+        @apply --iron-data-table-row-hover;
       }
 
       :host(:focus):after {
-        @apply(--iron-data-table-row-focused-after);
+        @apply --iron-data-table-row-focused-after;
       }
 
       :host:after {
-        @apply(--iron-data-table-row-after);
+        @apply --iron-data-table-row-after;
       }
 
       .cells {

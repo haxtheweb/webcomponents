@@ -1,24 +1,33 @@
 define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
-  "./node_modules/@polymer/polymer/lib/legacy/templatizer-behavior.js"
-], function(_polymerLegacy, _polymerDom, _templatizerBehavior) {
+  "./node_modules/@polymer/polymer/lib/legacy/templatizer-behavior.js",
+  "./node_modules/@polymer/polymer/lib/legacy/mutable-data-behavior.js"
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _templatizerBehavior,
+  _mutableDataBehavior
+) {
   "use strict";
-  function _templateObject_9527d010e5f611e885f39950b7e5ed07() {
+  function _templateObject_dbab00b0e70511e8a4772dedca98777d() {
     var data = babelHelpers.taggedTemplateLiteral([
-      '\n        <div id="dom">\n          <slot id="template" name="template"></slot>\n        </div>\n'
+      '\n    <div id="dom">\n      <slot></slot>\n    </div>\n'
     ]);
-    _templateObject_9527d010e5f611e885f39950b7e5ed07 = function() {
+    _templateObject_dbab00b0e70511e8a4772dedca98777d = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_9527d010e5f611e885f39950b7e5ed07()
+      _templateObject_dbab00b0e70511e8a4772dedca98777d()
     ),
     is: "grafitto-filter",
-    behaviors: [_templatizerBehavior.Templatizer],
+    behaviors: [
+      _templatizerBehavior.Templatizer,
+      _mutableDataBehavior.OptionalMutableDataBehavior
+    ],
     properties: {
       items: { type: Array, value: [] },
       like: { type: String, value: "" },
@@ -77,16 +86,20 @@ define([
       return filtered;
     },
     _populateUserTemplate: function _populateUserTemplate(filtered) {
-      this._userTemplate = (0, _polymerDom.dom)(
-        this.$.template
-      ).getDistributedNodes()[0];
-      if (this._userTemplate) {
-        this.templatize(this._userTemplate);
-        var clone = this.stamp();
-        clone[this.as] = filtered;
-        (0, _polymerDom.dom)(this.$.dom).innerHTML = "";
-        (0, _polymerDom.dom)(this.$.dom).appendChild(clone.root);
+      if (this.ctor) {
+        this.__clone[this.as] = filtered;
+        return;
       }
+      this._userTemplate = this.queryEffectiveChildren("template");
+      if (!this._userTemplate) {
+        console.warn(
+          "grafitto-filter requires a template to be provided in light-dom"
+        );
+      }
+      this.templatize(this._userTemplate);
+      this.__clone = this.stamp(null);
+      this.__clone[this.as] = filtered;
+      (0, _polymerDom.dom)(this).appendChild(this.__clone);
     },
     _decomposeWhere: function _decomposeWhere(where, item) {
       return where.split(".").reduce(function(a, b) {

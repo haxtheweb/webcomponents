@@ -29,7 +29,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
 
       #swipeTarget {
-        @apply(--swipe-action-swipe-target);
+        @apply --swipe-action-swipe-target;
       }
 
       #swipeTarget.fade {

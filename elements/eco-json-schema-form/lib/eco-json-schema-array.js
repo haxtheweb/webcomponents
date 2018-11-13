@@ -83,7 +83,7 @@ Polymer({
       }
 
       .label {
-        @apply(--paper-input-container-label);
+        @apply --paper-input-container-label;
         white-space: normal;
         position: static;
         font-size: 22px;
@@ -98,7 +98,7 @@ Polymer({
         position: static;
         font-size: 22px;
         color: #212121;
-        @apply(--paper-input-container-label);
+        @apply --paper-input-container-label;
       }
     </style>
 

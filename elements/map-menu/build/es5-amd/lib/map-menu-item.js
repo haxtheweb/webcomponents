@@ -6,7 +6,7 @@ define([
 ], function(_polymerLegacy) {
   "use strict";
   var _properties;
-  function _templateObject_39e50d50e5f911e88f58a900e4d6e8ab() {
+  function _templateObject_9caa20f0e70811e8a7a94daf23e940c3() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n        --map-menu-item-height: 16px;\n      }\n\n      :host([active]) {\n        background: var(--map-menu-active-color);\n      }\n\n      iron-icon {\n        --iron-icon-height: var(--map-menu-item-height);\n      }\n\n      #title {\n        font-size: 14.4px;\n        text-transform: none;\n      }\n    </style>\n      <paper-button id="wrapper" href$="[[url]]" role="link" noink="" on-tap="_click">\n        <template is="dom-if" if="[[__hasIcon(icon)]]">\n          <iron-icon icon="[[icon]]"></iron-icon>\n        </template>\n        <span id="title">[[title]]</span>\n      </paper-button>\n'
@@ -15,14 +15,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n        --map-menu-item-height: 16px;\n      }\n\n      :host([active]) {\n        background: var(--map-menu-active-color);\n      }\n\n      iron-icon {\n        --iron-icon-height: var(--map-menu-item-height);\n      }\n\n      #title {\n        font-size: 14.4px;\n        text-transform: none;\n      }\n    </style>\n      <paper-button id="wrapper" href\\$="[[url]]" role="link" noink="" on-tap="_click">\n        <template is="dom-if" if="[[__hasIcon(icon)]]">\n          <iron-icon icon="[[icon]]"></iron-icon>\n        </template>\n        <span id="title">[[title]]</span>\n      </paper-button>\n'
       ]
     );
-    _templateObject_39e50d50e5f911e88f58a900e4d6e8ab = function() {
+    _templateObject_9caa20f0e70811e8a7a94daf23e940c3 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_39e50d50e5f911e88f58a900e4d6e8ab()
+      _templateObject_9caa20f0e70811e8a7a94daf23e940c3()
     ),
     is: "map-menu-item",
     properties: ((_properties = {

@@ -15,25 +15,25 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         flex-direction: row-reverse;
         margin: 12px;
         color: var(--word-count-color);
-        @apply(--word-count-text);
+        @apply --word-count-text;
       }
       :host(:hover):after {
         font-size: 12px;
         font-weight: bold;
         color: var(--word-count-color-hover);
-        @apply(--word-count-text-hover);
+        @apply --word-count-text-hover;
       }
       :host(:focus):after {
         font-size: 12px;
         font-weight: bold;
         color: var(--word-count-color-hover);
-        @apply(--word-count-text-hover);
+        @apply --word-count-text-hover;
       }
       :host(:active):after {
         font-size: 12px;
         font-weight: bold;
         color: var(--word-count-color-hover);
-        @apply(--word-count-text-hover);
+        @apply --word-count-text-hover;
       }
     </style>
     <slot></slot>

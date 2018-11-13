@@ -105,6 +105,24 @@ Polymer({
           font-size: 11px;
         }
       }
+      :host([light]) paper-button {
+        height: 32px !important;
+        border-radius: 6px;
+        margin-top: 8px;
+        margin-left: 8px;
+        border: solid #2196f3 2px;
+        background-color:#ffffff !important;
+        color: #2196f3;
+        text-transform:uppercase;
+        font-weight:800;
+      }
+      :host([light]) paper-button iron-icon {
+        display: none;
+      }
+      :host([light]) paper-button:hover{
+        border: solid #1e88e5 2px;
+        background-color:#f5f5f5 !important;
+      }
     </style>
     <paper-button disabled="[[disabled]]" data-voicecommand\$="[[voiceCommand]]">
       <div class="button-inner">
@@ -121,6 +139,13 @@ Polymer({
   },
 
   properties: {
+    /**
+     * Variant on button style for light
+     */
+    light: {
+      type: Boolean,
+      reflectToAttribute: true
+    },
     /**
      * Voice command to append for things that support data-voicecommand.
      */

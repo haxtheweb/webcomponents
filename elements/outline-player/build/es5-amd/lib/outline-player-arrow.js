@@ -3,18 +3,18 @@ define([
   "../node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_639051a0e5f911e8b667af35422e4cc8() {
+  function _templateObject_c678f2d0e70811e8b3e84d4040625af5() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style include="materializecss-styles">\n      :host {\n        display: block;\n        position: relative;\n        font-family: libre baskerville;\n        width: 48px;\n        --app-drawer-width: 300px;\n        --outline-player-dark: #222222;\n        --outline-player-light: #F8F8F8;\n      }\n\n      paper-icon-button {\n        --paper-icon-button-ink-color: var(--outline-player-dark);\n      }\n    </style>\n\n    <div id="container">\n      <paper-icon-button id="button" disabled="[[disabled]]" icon="[[icon]]"></paper-icon-button>\n      <paper-tooltip for="button" position="bottom" offset="14">\n        <slot></slot>\n      </paper-tooltip>\n    </div>\n'
     ]);
-    _templateObject_639051a0e5f911e8b667af35422e4cc8 = function() {
+    _templateObject_c678f2d0e70811e8b3e84d4040625af5 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_639051a0e5f911e8b667af35422e4cc8()
+      _templateObject_c678f2d0e70811e8b3e84d4040625af5()
     ),
     is: "outline-player-arrow",
     behaviors: [MaterializeCSSBehaviors.ColorBehaviors],

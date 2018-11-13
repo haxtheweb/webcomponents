@@ -301,7 +301,7 @@ Polymer({
   created: function() {
     const name = "wavesurfer";
     const basePath = pathFromUrl(import.meta.url);
-    const location = `${basePath}../../wavesurfer.js/dist/wavesurfer.js`;
+    const location = `${basePath}lib/wavesurfer.js/dist/wavesurfer.js`;
     window.addEventListener(
       `es-bridge-${name}-loaded`,
       this._wavesurferLoaded.bind(this)
@@ -390,7 +390,8 @@ Polymer({
     }
     // basic default for coverart if none
     if (this.coverart === "") {
-      this.coverart = this.resolveUrl("art.jpg");
+      const basePath = pathFromUrl(import.meta.url);
+      this.coverart = `${basePath}lib/art.jpg`;
     }
   },
   /**

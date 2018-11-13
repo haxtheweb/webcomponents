@@ -96,9 +96,9 @@ Polymer({
 
         width: var(--lrn-icon-width, 24px);
         height: var(--lrn-icon-height, 24px);
-        @apply(--layout-inline);
-        @apply(--layout-center-center);
-        @apply(--lrn-icon);
+        @apply --layout-inline;
+        @apply --layout-center-center;
+        @apply --lrn-icon;
       }
     </style>
     <iron-icon icon$="[[icon]]"></iron-icon>

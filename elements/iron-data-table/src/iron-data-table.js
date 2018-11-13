@@ -112,7 +112,7 @@ Polymer({
         -webkit-overflow-scrolling: touch;
         /* Default height just to help users get started in making stuff visible.  */
         height: 400px;
-        @apply(--iron-data-table);
+        @apply --iron-data-table;
       }
 
       #container {
@@ -129,7 +129,7 @@ Polymer({
         transition: box-shadow 200ms;
         -webkit-transition: box-shadow 200ms;
         z-index: 1;
-        @apply(--iron-data-table-header);
+        @apply --iron-data-table-header;
       }
 
       #header.scrolled {

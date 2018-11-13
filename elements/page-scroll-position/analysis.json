@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "classes": [
+  "elements": [
     {
       "description": "`page-scroll-position`\nA Web Component that hold the current scroll value relative to the entire document.",
       "summary": "",
@@ -43,7 +43,15 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
-      "name": "PageScrollPosition"
+      "name": "PageScrollPosition",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "page-scroll-position"
     }
   ]
 }

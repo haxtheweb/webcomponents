@@ -6,18 +6,18 @@ define([
 ], function(meta, _polymerLegacy, _esGlobalBridge, _resolveUrl) {
   "use strict";
   meta = babelHelpers.interopRequireWildcard(meta);
-  function _templateObject_3de48770e5f711e8aef2ebc0d6e5a462() {
+  function _templateObject_9580b3e0e70611e8964e7dcde794843d() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <div id="chart" chart$="[[__chartId]]" class$="ct-chart [[scale]]"></div>\n'
     ]);
-    _templateObject_3de48770e5f711e8aef2ebc0d6e5a462 = function() {
+    _templateObject_9580b3e0e70611e8964e7dcde794843d = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_3de48770e5f711e8aef2ebc0d6e5a462()
+      _templateObject_9580b3e0e70611e8964e7dcde794843d()
     ),
     is: "chartist-render",
     listeners: { tap: "makeChart", created: "_onCreated" },

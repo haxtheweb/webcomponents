@@ -68,16 +68,16 @@ Polymer({
       }
       material-progress-histo {
         width: 100%;
-        @apply(--paper-font-body2);
+        @apply --paper-font-body2;
       }
       material-progress-bars {
         width: 100%;
-        @apply(--paper-font-body2);
+        @apply --paper-font-body2;
       }
       material-progress-bars > .bar > span {
         text-align: end;
         font-size: 14.4px;
-        @apply(--layout-flex);
+        @apply --layout-flex;
       }
       .bar {
         background-color: var(--paper-deep-orange-500);
