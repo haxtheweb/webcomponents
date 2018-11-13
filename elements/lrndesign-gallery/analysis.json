@@ -399,11 +399,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 94,
               "column": 4
             },
             "end": {
-              "line": 91,
+              "line": 98,
               "column": 5
             }
           },
@@ -422,11 +422,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 95,
+              "line": 102,
               "column": 4
             },
             "end": {
-              "line": 98,
+              "line": 105,
               "column": 5
             }
           },
@@ -444,11 +444,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 102,
+              "line": 109,
               "column": 4
             },
             "end": {
-              "line": 105,
+              "line": 112,
               "column": 5
             }
           },
@@ -466,11 +466,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 109,
+              "line": 116,
               "column": 4
             },
             "end": {
-              "line": 113,
+              "line": 120,
               "column": 5
             }
           },
@@ -489,11 +489,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 117,
+              "line": 124,
               "column": 4
             },
             "end": {
-              "line": 120,
+              "line": 127,
               "column": 5
             }
           },
@@ -511,11 +511,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 124,
+              "line": 131,
               "column": 4
             },
             "end": {
-              "line": 127,
+              "line": 134,
               "column": 5
             }
           },
@@ -532,11 +532,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 131,
+              "line": 138,
               "column": 4
             },
             "end": {
-              "line": 134,
+              "line": 141,
               "column": 5
             }
           },
@@ -554,11 +554,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 138,
+              "line": 145,
               "column": 4
             },
             "end": {
-              "line": 141,
+              "line": 148,
               "column": 5
             }
           },
@@ -577,11 +577,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 147,
+              "line": 154,
               "column": 2
             },
             "end": {
-              "line": 153,
+              "line": 160,
               "column": 3
             }
           },
@@ -597,11 +597,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 224,
+              "line": 231,
               "column": 2
             },
             "end": {
-              "line": 226,
+              "line": 233,
               "column": 3
             }
           },
@@ -618,11 +618,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 165,
+              "line": 172,
               "column": 2
             },
             "end": {
-              "line": 171,
+              "line": 178,
               "column": 3
             }
           },
@@ -642,11 +642,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 176,
+              "line": 183,
               "column": 2
             },
             "end": {
-              "line": 178,
+              "line": 185,
               "column": 3
             }
           },
@@ -662,11 +662,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 183,
+              "line": 190,
               "column": 2
             },
             "end": {
-              "line": 185,
+              "line": 192,
               "column": 3
             }
           },
@@ -686,11 +686,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 190,
+              "line": 197,
               "column": 2
             },
             "end": {
-              "line": 204,
+              "line": 211,
               "column": 3
             }
           },
@@ -710,11 +710,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 209,
+              "line": 216,
               "column": 2
             },
             "end": {
-              "line": 219,
+              "line": 226,
               "column": 3
             }
           },
@@ -735,11 +735,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 19,
+          "line": 21,
           "column": 8
         },
         "end": {
-          "line": 227,
+          "line": 234,
           "column": 1
         }
       },
@@ -751,23 +751,7 @@
           "description": "optional: details for zooming",
           "sourceRange": {
             "start": {
-              "line": 87,
-              "column": 4
-            },
-            "end": {
-              "line": 91,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "heading",
-          "description": "heading for the zoom modal",
-          "sourceRange": {
-            "start": {
-              "line": 95,
+              "line": 94,
               "column": 4
             },
             "end": {
@@ -779,8 +763,8 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "icon",
-          "description": "optional: name for iron-icon used to indicate zoom",
+          "name": "heading",
+          "description": "heading for the zoom modal",
           "sourceRange": {
             "start": {
               "line": 102,
@@ -795,15 +779,15 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "item-id",
-          "description": "heading for the zoom modal",
+          "name": "icon",
+          "description": "optional: name for iron-icon used to indicate zoom",
           "sourceRange": {
             "start": {
               "line": 109,
               "column": 4
             },
             "end": {
-              "line": 113,
+              "line": 112,
               "column": 5
             }
           },
@@ -811,11 +795,11 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "tooltip",
-          "description": "tooltip for the zoom button",
+          "name": "item-id",
+          "description": "heading for the zoom modal",
           "sourceRange": {
             "start": {
-              "line": 117,
+              "line": 116,
               "column": 4
             },
             "end": {
@@ -827,8 +811,8 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "src",
-          "description": "Image source.",
+          "name": "tooltip",
+          "description": "tooltip for the zoom button",
           "sourceRange": {
             "start": {
               "line": 124,
@@ -843,8 +827,8 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "type",
-          "description": "Carousel or grid",
+          "name": "src",
+          "description": "Image source.",
           "sourceRange": {
             "start": {
               "line": 131,
@@ -859,8 +843,8 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "zoom-alt",
-          "description": "gallery item's alt text",
+          "name": "type",
+          "description": "Carousel or grid",
           "sourceRange": {
             "start": {
               "line": 138,
@@ -868,6 +852,22 @@
             },
             "end": {
               "line": 141,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "zoom-alt",
+          "description": "gallery item's alt text",
+          "sourceRange": {
+            "start": {
+              "line": 145,
+              "column": 4
+            },
+            "end": {
+              "line": 148,
               "column": 5
             }
           },
@@ -895,11 +895,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 163,
+              "line": 164,
               "column": 4
             },
             "end": {
-              "line": 166,
+              "line": 167,
               "column": 5
             }
           },
@@ -917,11 +917,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 170,
+              "line": 171,
               "column": 4
             },
             "end": {
-              "line": 173,
+              "line": 174,
               "column": 5
             }
           },
@@ -939,11 +939,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 177,
+              "line": 178,
               "column": 4
             },
             "end": {
-              "line": 183,
+              "line": 184,
               "column": 5
             }
           },
@@ -963,11 +963,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 187,
+              "line": 188,
               "column": 4
             },
             "end": {
-              "line": 191,
+              "line": 192,
               "column": 5
             }
           },
@@ -985,11 +985,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 195,
+              "line": 196,
               "column": 4
             },
             "end": {
-              "line": 198,
+              "line": 199,
               "column": 5
             }
           },
@@ -1008,11 +1008,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 204,
+              "line": 205,
               "column": 2
             },
             "end": {
-              "line": 206,
+              "line": 207,
               "column": 3
             }
           },
@@ -1028,11 +1028,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 211,
+              "line": 212,
               "column": 2
             },
             "end": {
-              "line": 213,
+              "line": 214,
               "column": 3
             }
           },
@@ -1052,11 +1052,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 218,
+              "line": 219,
               "column": 2
             },
             "end": {
-              "line": 220,
+              "line": 221,
               "column": 3
             }
           },
@@ -1078,11 +1078,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 37,
+          "line": 38,
           "column": 8
         },
         "end": {
-          "line": 221,
+          "line": 222,
           "column": 1
         }
       },
@@ -1094,11 +1094,11 @@
           "description": "dark theme?",
           "sourceRange": {
             "start": {
-              "line": 163,
+              "line": 164,
               "column": 4
             },
             "end": {
-              "line": 166,
+              "line": 167,
               "column": 5
             }
           },
@@ -1110,11 +1110,11 @@
           "description": "style css of image container (sets aspect ratio)",
           "sourceRange": {
             "start": {
-              "line": 170,
+              "line": 171,
               "column": 4
             },
             "end": {
-              "line": 173,
+              "line": 174,
               "column": 5
             }
           },
@@ -1126,11 +1126,11 @@
           "description": "selected item's data",
           "sourceRange": {
             "start": {
-              "line": 177,
+              "line": 178,
               "column": 4
             },
             "end": {
-              "line": 183,
+              "line": 184,
               "column": 5
             }
           },
@@ -1142,11 +1142,11 @@
           "description": "size for responsive CSS",
           "sourceRange": {
             "start": {
-              "line": 187,
+              "line": 188,
               "column": 4
             },
             "end": {
-              "line": 191,
+              "line": 192,
               "column": 5
             }
           },
@@ -1158,11 +1158,11 @@
           "description": "theme of the gallery: default or dark",
           "sourceRange": {
             "start": {
-              "line": 195,
+              "line": 196,
               "column": 4
             },
             "end": {
-              "line": 198,
+              "line": 199,
               "column": 5
             }
           },

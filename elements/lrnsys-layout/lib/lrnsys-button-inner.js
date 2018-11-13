@@ -35,7 +35,7 @@ Polymer({
         <span class\$="[[_getTextLabelClass()]]">[[text]]</span>
       </template>
     </div>
-    <div><slot name="button"></slot></div>
+    <div><slot name="button"></slot><slot></slot></div>
 `,
 
   is: "lrnsys-button-inner",

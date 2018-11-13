@@ -36,11 +36,11 @@ Polymer({
     </custom-style>
     <paper-button class$="[[class]]" id="dialogtrigger" on-tap="toggleDialog" raised="[[raised]]" disabled$="[[disabled]]" title="[[alt]]" aria-label$="[[alt]]">
       <lrnsys-button-inner avatar\$="[[avatar]]" icon$="[[icon]]" text$="[[text]]">
-        <slot name="button"></slot>
+        <slot name="button" slot="button"></slot>
       </lrnsys-button-inner>
     </paper-button>
     <paper-tooltip for="dialogtrigger" animation-delay="0" hidden$="[[!alt]]">[[alt]]</paper-tooltip>
-    <lrnsys-dialog-modal id="modal" dynamic-images="[[dynamicImages]]" body-append="[[bodyAppend]]" header="[[header]]" modal="[[modal]]" heading-class="[[headingClass]]" opened$="[[opened]]">
+    <lrnsys-dialog-modal id="modal" dynamic-images="[[dynamicImages]]" header="[[header]]" modal="[[modal]]" heading-class="[[headingClass]]" opened$="[[opened]]">
       <slot name="toolbar-primary" slot="primary"></slot>
       <slot name="toolbar-secondary" slot="secondary"></slot>
       <slot name="header" slot="header"></slot>
@@ -131,14 +131,6 @@ Polymer({
     headingClass: {
       type: String,
       value: "white-text black"
-    },
-    /**
-     * Support for body-appending which is a hack for stacking context
-     * correction but breaks scoped styles / shadowDOM
-     */
-    bodyAppend: {
-      type: Boolean,
-      value: true
     },
     /**
      * Support for dynamic loading of iron-image elements that are in the content slot.

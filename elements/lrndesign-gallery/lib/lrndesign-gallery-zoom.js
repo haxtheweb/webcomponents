@@ -2,6 +2,8 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog-toolbar-button.js";
 import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/iron-icons.js";
 /**
 `lrndesign-gallery-zoom`
 A LRN element that renders the zoom feature for the gallery.
@@ -51,9 +53,14 @@ Polymer({
         color: var(--lrndesign-gallery-focus-color);
         background-color: var(--lrndesign-gallery-background-color);
       }
+      iron-icon {
+        display: inline-block;
+        height: 24px;
+        width: 24px;
+      }
     </style>
-    <lrnsys-dialog id="lrnsysdialog" dark\$="[[dark]]" dynamic-images="" body-append="" title\$="[[tooltip]]">
-      <span slot="button"><iron-icon icon\$="[[icon]]" hidden\$="[[!_isAttrSet(icon)]]"></iron-icon></span>
+    <lrnsys-dialog id="lrnsysdialog" dark$="[[dark]]" dynamic-images body-append title$="[[tooltip]]">
+      <span slot="button"><iron-icon icon="[[icon]]" hidden$="[[!_isAttrSet(icon)]]"></iron-icon></span>
       <div slot="toolbar-primary"><span aria-hidden="true">[[heading]]</span></div>
       <span slot="toolbar-secondary">
         <lrnsys-dialog-toolbar-button title="Zoom In" icon="zoom-in" id="in"></lrnsys-dialog-toolbar-button>
@@ -67,7 +74,7 @@ Polymer({
       <div>
         <img-pan-zoom id="img" alt\$="[[zoomAlt]]" src\$="[[src]]" max-zoom-pixel-ratio="1.5" min-zoom-image-ratio="0.5" zoom-per-click="1.2" zoom-per-scroll="0.6">
         </img-pan-zoom>
-        <div id="details"></div>
+        <div id="details"></div> 
       </div>
     </lrnsys-dialog>
 `,
