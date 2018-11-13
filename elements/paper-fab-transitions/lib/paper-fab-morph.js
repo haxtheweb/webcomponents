@@ -64,10 +64,10 @@ Custom property | Description | Default
     _template: html`
     <style>
       iron-dropdown {
-        @apply(--paper-morph-dropdown);
+        @apply --paper-morph-dropdown;
       }
       .dropdown-content {
-        @apply(--paper-morph-content);
+        @apply --paper-morph-content;
       }
       #morpher {
         position: fixed;

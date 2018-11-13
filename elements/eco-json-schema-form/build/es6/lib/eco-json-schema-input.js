@@ -6,39 +6,34 @@ import "../node_modules/@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import { AppLocalizeBehavior } from "../node_modules/@polymer/app-localize-behavior/app-localize-behavior.js";
 import "../node_modules/@polymer/paper-input/paper-input.js";
 import "../node_modules/@polymer/paper-styles/typography.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
-$_documentContainer.innerHTML = `<dom-module id="eco-json-schema-input">
-
-  
-  
-
-  <template>
+Polymer({
+  is: "eco-json-schema-input",
+  _template: html`
     <style is="custom-style" include="iron-flex iron-flex-alignment">
       paper-input {
         padding: 2px;
-
         --paper-input-container-label: {
           white-space: normal;
           position: static;
           font-size: 16px;
           color: #212121;
         }
+        --paper-input-container: {
+          width: 100%;
+        };
+        --paper-input-container-input: {
+          background-color: transparent;
+          border: none;
+        };
+        --paper-input-container-shared-input-style: {
+          width: 100%;
+          background-color: transparent;
+          border: none;
+        };
       }
     </style>
-
-    <paper-input id="input" class="flex" value="{{value}}" auto-validate="">
-
-    </paper-input>
-
-  </template>
-
-  
-
-</dom-module>`;
-document.head.appendChild($_documentContainer);
-Polymer({
-  is: "eco-json-schema-input",
+    <paper-input id="input" class="flex" value="{{value}}" auto-validate></paper-input>  
+`,
   behaviors: [AppLocalizeBehavior],
   properties: {
     language: { value: "en" },

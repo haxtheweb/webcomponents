@@ -89,7 +89,7 @@ $_documentContainer.innerHTML = `<style is="custom-style">
 
   nav a,
   nav b {
-    @apply(--paper-font-button);
+    @apply --paper-font-button;
   }
 
   nav a {

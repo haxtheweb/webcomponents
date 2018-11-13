@@ -40,13 +40,13 @@ Polymer({
 
 			.enabled {
 				border: 1px dashed #555;
-				@apply(--file-upload-upload-border-enabled);
+				@apply --file-upload-upload-border-enabled;
 			}
 
 			.hover {
 				opacity: .7;
 				border: 1px dashed #111;
-				@apply(--file-upload-upload-border-hover);
+				@apply --file-upload-upload-border-hover;
 			}
 
 			#UploadBorder {
@@ -56,38 +56,38 @@ Polymer({
 				max-height: 300px;
 				overflow-y: auto;
 				display: inline-block;
-				@apply(--file-upload-upload-border);
+				@apply --file-upload-upload-border;
 			}
 
 			#dropArea {
 				text-align: center;
-				@apply(--file-upload-drop-area);
+				@apply --file-upload-drop-area;
 			}
 
 			paper-button#button {
 				margin-bottom: 20px;
-				@apply(--file-upload-button);
+				@apply --file-upload-button;
 			}
 
 			.file {
 				padding: 10px 0px;
-				@apply(--file-upload-file);
+				@apply --file-upload-file;
 			}
 
 			.commands {
 				float: right;
-				@apply(--file-upload-commands);
+				@apply --file-upload-commands;
 			}
 
 			.commands iron-icon:not([icon="check-circle"]) {
 				cursor: pointer;
 				opacity: .9;
-				@apply(--file-upload-commands-faded);
+				@apply --file-upload-commands-faded;
 			}
 
 			.commands iron-icon:hover {
 				opacity: 1;
-				@apply(--file-upload-commands-hovered);
+				@apply --file-upload-commands-hovered;
 			}
 
 			[hidden] {
@@ -98,7 +98,7 @@ Polymer({
 				color: #f40303;
 				font-size: 11px;
 				margin-top: 2px;
-				@apply(--file-upload-error);
+				@apply --file-upload-error;
 			}
 
 			.progress-bar {

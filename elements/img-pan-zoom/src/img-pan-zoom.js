@@ -52,7 +52,7 @@ Polymer({
         width: 70px;
         --paper-spinner-color: var(--img-pan-zoom-spinner-color, #2196F3);
         --paper-spinner-stroke-width: var(--img-pan-zoom-spinner-width, 5px);
-        @apply(--img-pan-zoom-spinner);
+        @apply --img-pan-zoom-spinner;
       }
       paper-spinner-lite[active] {
         opacity: 1;

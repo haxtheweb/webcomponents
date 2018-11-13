@@ -204,7 +204,7 @@ Polymer({
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load(
       name,
-      `${basePath}../../wavesurfer.js/dist/wavesurfer.js`
+      `${basePath}lib/wavesurfer.js/dist/wavesurfer.js`
     );
   },
   attached: function() {
@@ -271,7 +271,8 @@ Polymer({
       this.$.albuminfo.classList.add("hidden");
     }
     if ("" === this.coverart) {
-      this.coverart = this.resolveUrl("art.jpg");
+      const basePath = pathFromUrl(import.meta.url);
+      this.coverart = `${basePath}lib/art.jpg`;
     }
   },
   _wavesurferLoaded: function() {

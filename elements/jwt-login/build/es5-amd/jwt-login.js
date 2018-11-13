@@ -3,18 +3,18 @@ define([
   "./node_modules/@polymer/iron-ajax/iron-ajax.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_ae1530e0e5f611e8a2f18f49924183ec() {
+  function _templateObject_f81b6dc0e70511e88bc75ff4f5477ff1() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        visibility: hidden;\n      }\n    </style>\n    <iron-ajax id="loginrequest" method="GET" url="[[url]]" handle-as="json" on-response="loginResponse">\n    </iron-ajax>\n'
     ]);
-    _templateObject_ae1530e0e5f611e8a2f18f49924183ec = function() {
+    _templateObject_f81b6dc0e70511e88bc75ff4f5477ff1 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_ae1530e0e5f611e8a2f18f49924183ec()
+      _templateObject_f81b6dc0e70511e88bc75ff4f5477ff1()
     ),
     is: "jwt-login",
     properties: {

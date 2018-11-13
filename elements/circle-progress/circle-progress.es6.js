@@ -2,8 +2,8 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
   <custom-style>
         <style is="custom-style">
             :host {
-                @apply(--layout-vertical);
-                @apply(--layout-center-center);
+                @apply --layout-vertical;
+                @apply --layout-center-center;
                 position: relative;
                 width: var(--circle-progress-width, 64px);
                 height: var(--circle-progress-height, 64px);

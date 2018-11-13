@@ -55,7 +55,8 @@
     <meta name="theme-color" content="#ffffff">
 
     <style>
-      body {
+      html,body {
+        font-size: 16px;
         font-family: libre baskerville sans-serif;
       }
       h1 {
@@ -86,34 +87,7 @@
       ul li:last-child {
         padding-bottom:16px;
       }
-      .lrn-vocab-0 paper-button.lrn-vocab {
-        top:0px;
-        border-radius:0;
-        border-bottom: 1px dashed #ccc ;
-        background:#f5f5f5;
-      }
-      .lrn-vocab-0 paper-button.lrn-vocab:hover {
-        background:#bbdefb;
-        border-bottom: 1px dashed #2196f3 ;
-      }
-      .hax-panel-item-0[edged="left"] paper-button.hax-panel-item {
-        height: 32px !important;
-        border-radius: 6px;
-        margin-top: 8px;
-        margin-left: 8px;
-        border: solid #2196f3 2px;
-        background-color:#ffffff !important;
-        color: #2196f3;
-        text-transform:uppercase;
-        font-weight:800;
-      }
-      #button.hax-panel-item-0[edged="left"] paper-button.hax-panel-item iron-icon {
-        display: none;
-      }
-      .hax-panel-item-0[edged="left"] paper-button.hax-panel-item:hover{
-        border: solid #1e88e5 2px;
-        background-color:#f5f5f5 !important;
-      }
+      
       .vertical-section-container {
         max-width: 960px;
         margin: auto;
@@ -260,7 +234,7 @@
         </code-editor>
       </hax-body>
       <hax-autoloader hidden></hax-autoloader>
-      <hax-panel align="left"></hax-panel>
+      <hax-panel align="left" light></hax-panel>
       <hax-manager></hax-manager>
       <hax-app-picker></hax-app-picker>
       <hax-export-dialog></hax-export-dialog>

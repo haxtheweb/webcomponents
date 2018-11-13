@@ -5,20 +5,14 @@ import {
 import * as async from "../node_modules/@polymer/polymer/lib/utils/async.js";
 import "../node_modules/@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import { AppLocalizeBehavior } from "../node_modules/@polymer/app-localize-behavior/app-localize-behavior.js";
-import "@polymer/paper-button/paper-button.js";
+import "../node_modules/@polymer/paper-button/paper-button.js";
 import "../node_modules/@polymer/paper-input/paper-input.js";
 import "../node_modules/@polymer/iron-icon/iron-icon.js";
 import "../node_modules/@polymer/iron-icons/iron-icons.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
-$_documentContainer.innerHTML = `<dom-module id="eco-json-schema-file">
-	
-	
-	
-	
-
-	<template>
-		<style is="custom-style" include="iron-flex iron-flex-alignment">
+Polymer({
+  is: "eco-json-schema-file",
+  _template: html`
+  <style is="custom-style" include="iron-flex iron-flex-alignment">
 			paper-input {
 				padding: 2px;
 				--paper-input-container-label: {
@@ -35,13 +29,13 @@ $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-file">
 
 			.enabled {
 				border: 1px dashed #555;
-				@apply(--file-upload-upload-border-enabled);
+				@apply --file-upload-upload-border-enabled;
 			}
 
 			.hover {
 				opacity: .7;
 				border: 1px dashed #111;
-				@apply(--file-upload-upload-border-hover);
+				@apply --file-upload-upload-border-hover;
 			}
 
 			#UploadBorder {
@@ -51,38 +45,38 @@ $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-file">
 				max-height: 300px;
 				overflow-y: auto;
 				display: inline-block;
-				@apply(--file-upload-upload-border);
+				@apply --file-upload-upload-border;
 			}
 
 			#dropArea {
 				text-align: center;
-				@apply(--file-upload-drop-area);
+				@apply --file-upload-drop-area;
 			}
 
 			paper-button#button {
 				margin-bottom: 20px;
-				@apply(--file-upload-button);
+				@apply --file-upload-button;
 			}
 
 			.file {
 				padding: 10px 0px;
-				@apply(--file-upload-file);
+				@apply --file-upload-file;
 			}
 
 			.commands {
 				float: right;
-				@apply(--file-upload-commands);
+				@apply --file-upload-commands;
 			}
 
 			.commands iron-icon:not([icon="check-circle"]) {
 				cursor: pointer;
 				opacity: .9;
-				@apply(--file-upload-commands-faded);
+				@apply --file-upload-commands-faded;
 			}
 
 			.commands iron-icon:hover {
 				opacity: 1;
-				@apply(--file-upload-commands-hovered);
+				@apply --file-upload-commands-hovered;
 			}
 
 			[hidden] {
@@ -93,7 +87,7 @@ $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-file">
 				color: #f40303;
 				font-size: 11px;
 				margin-top: 2px;
-				@apply(--file-upload-error);
+				@apply --file-upload-error;
 			}
 
 			.progress-bar {
@@ -130,17 +124,8 @@ $_documentContainer.innerHTML = `<dom-module id="eco-json-schema-file">
 				</div>
 			</div>
 			<input type="file" id="fileInput" on-change="_fileChange" hidden="" multiple="{{multi}}" accept="{{accept}}">
-		</div>
-
-
-	</template>
-
-	
-
-</dom-module>`;
-document.head.appendChild($_documentContainer);
-Polymer({
-  is: "eco-json-schema-file",
+    </div>
+`,
   behaviors: [AppLocalizeBehavior],
   properties: {
     language: { value: "en", notify: !0 },

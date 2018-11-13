@@ -4,18 +4,18 @@ define([
   "./map-menu-item.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_38c349a0e5f911e88f58a900e4d6e8ab() {
+  function _templateObject_9b8bdfb0e70811e8a7a94daf23e940c3() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n\n    <template id="domRepeat" is="dom-repeat" items="[[items]]" as="item">\n      <template is="dom-if" if="[[__hasChildren(item)]]">\n        <map-menu-submenu title="[[item.title]]" id="[[item.id]]" url="[[item.url]]" icon="[[item.metadata.icon]]" open="[[item.active]]" avatar-label="[[item.avatarLabel]]">\n          <map-menu-builder items="[[item.children]]"></map-menu-builder>\n        </map-menu-submenu>\n      </template>\n      <template is="dom-if" if="[[!__hasChildren(item)]]">\n        <map-menu-item title="[[item.title]]" id="[[item.id]]" url="[[item.url]]" icon="[[item.metadata.icon]]" active-path="[[activePath]]"></map-menu-item>\n      </template>\n    </template>\n'
     ]);
-    _templateObject_38c349a0e5f911e88f58a900e4d6e8ab = function() {
+    _templateObject_9b8bdfb0e70811e8a7a94daf23e940c3 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_38c349a0e5f911e88f58a900e4d6e8ab()
+      _templateObject_9b8bdfb0e70811e8a7a94daf23e940c3()
     ),
     is: "map-menu-builder",
     properties: { items: { type: Array, value: [] } },

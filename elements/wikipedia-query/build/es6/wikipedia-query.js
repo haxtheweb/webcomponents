@@ -109,7 +109,12 @@ Polymer({
     for (var key in this.searchResponse.query.pages) {
       if (!this.searchResponse.query.pages.hasOwnProperty(key)) continue;
       var obj = this.searchResponse.query.pages[key];
-      this.$.result.innerHTML = obj.extract;
+      let html = obj.extract;
+      html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
+      html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
+      html = html.replace(/<style[\s\S]*?>/gi, "&lt;style&gt;");
+      html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
+      this.$.result.innerHTML = html;
     }
   }
 });

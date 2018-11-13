@@ -99,7 +99,7 @@ Polymer({
       }
     </style>
     <div hidden$="[[hidePanelOps]]">
-      <hax-panel-item data-opened$="[[editMode]]" on-tap="_clickEditButton" icon="create" id="button" edged="[[align]]" label="[[__tipText]]"></hax-panel-item>
+      <hax-panel-item light="[[light]]" data-opened$="[[editMode]]" on-tap="_clickEditButton" icon="create" id="button" edged="[[align]]" label="[[__tipText]]"></hax-panel-item>
     </div>
     <app-drawer id="drawer" opened="{{editMode}}" disable-swipe persistent transition-duration="800" align="[[align]]">
       <hax-panel-item hidden$="[[hidePanelOps]]" on-tap="_clickSaveButton" icon="save" id="haxsavebutton" label="[[__tipText]]" event-name="save" voice-command="save content"></hax-panel-item>
@@ -133,6 +133,12 @@ Polymer({
   behaviors: [simpleColorsBehaviors],
 
   properties: {
+    /**
+     * Light variant for save button
+     */
+    light: {
+      type: Boolean
+    },
     /**
      * Display to the right corner instead of the left (default)
      */

@@ -4,18 +4,18 @@ define([
   "./lib/scary-image.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_2acda350e5f811e898236f36915304b8() {
+  function _templateObject_8a1a3200e70711e884dec924ade13ffa() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n      :host {\n        width: 100%;\n        display: flex;\n        flex-wrap: wrap;\n      }\n    </style>\n    <slot></slot>\n"
     ]);
-    _templateObject_2acda350e5f811e898236f36915304b8 = function() {
+    _templateObject_8a1a3200e70711e884dec924ade13ffa = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_2acda350e5f811e898236f36915304b8()
+      _templateObject_8a1a3200e70711e884dec924ade13ffa()
     ),
     is: "scary-gallery",
     properties: {

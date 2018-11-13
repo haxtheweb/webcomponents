@@ -2,7 +2,7 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
   _polymerLegacy
 ) {
   "use strict";
-  function _templateObject_4acb2430e5f711e88ef125e5fab0297c() {
+  function _templateObject_a2468230e70611e8a653936e33520321() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <form action="[[endPoint]]" method="POST" target="_blank">\n      <input type="hidden" name="data" value$="[[dataString]]">\n      <input type="image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-1/cp-arrow-right.svg" width="40" height="40" value="Create New Pen with Prefilled Data" class="codepen-mover-button">\n    </form>\n'
@@ -11,14 +11,14 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <form action="[[endPoint]]" method="POST" target="_blank">\n      <input type="hidden" name="data" value\\$="[[dataString]]">\n      <input type="image" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-1/cp-arrow-right.svg" width="40" height="40" value="Create New Pen with Prefilled Data" class="codepen-mover-button">\n    </form>\n'
       ]
     );
-    _templateObject_4acb2430e5f711e88ef125e5fab0297c = function() {
+    _templateObject_a2468230e70611e8a653936e33520321 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_4acb2430e5f711e88ef125e5fab0297c()
+      _templateObject_a2468230e70611e8a653936e33520321()
     ),
     is: "code-pen-button",
     properties: {

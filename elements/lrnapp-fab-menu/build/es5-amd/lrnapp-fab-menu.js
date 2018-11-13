@@ -6,18 +6,18 @@ define([
   "./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_7fea9410e5f811e8b3f85170cce48623() {
+  function _templateObject_e1b198a0e70711e8a5ace931dff0a3e8() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n  <custom-style>\n    <style include="materializecss-styles-colors"></style>\n    <style>\n      .open,.overlay {\n        position: fixed;\n        bottom: var(--paper-fab-speed-dial-bottom, 16px);\n        right: var(--paper-fab-speed-dial-right, 16px);\n      }\n      .open {\n        --paper-fab-background: var(--paper-fab-speed-dial-background);\n        --paper-fab-keyboard-focus-background: var(--paper-fab-speed-dial-keyboard-focus-background);\n      }\n      .close {\n        --paper-fab-background: var(--paper-grey-500);\n        --paper-fab-keyboard-focus-background: var(--paper-grey-500);\n        margin-top: 20px;\n        display: inline-block;\n      }\n      .overlay {\n        text-align: right;\n      }\n    </style>\n  </custom-style>\n    <paper-fab icon="[[icon]]" class="open blue" on-tap="open" hidden$="[[opened]]" disabled$="[[disabled]]"></paper-fab>\n\n    <paper-fab-speed-dial-overlay class="overlay" opened="{{opened}}" with-backdrop>\n      <slot></slot>\n      <paper-fab icon="close" class="close" on-tap="close"></paper-fab>\n    </paper-fab-speed-dial-overlay>\n'
     ]);
-    _templateObject_7fea9410e5f811e8b3f85170cce48623 = function() {
+    _templateObject_e1b198a0e70711e8a5ace931dff0a3e8 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_7fea9410e5f811e8b3f85170cce48623()
+      _templateObject_e1b198a0e70711e8a5ace931dff0a3e8()
     ),
     is: "lrnapp-fab-menu",
     properties: {

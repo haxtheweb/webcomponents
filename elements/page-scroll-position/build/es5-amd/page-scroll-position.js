@@ -37,4 +37,4 @@ var PageScrollPosition = (function(_HTMLElement) {
   ]);
   return PageScrollPosition;
 })(HTMLElement);
-document.registerElement("page-scroll-position", PageScrollPosition);
+window.customElements.define("page-scroll-position", PageScrollPosition);

@@ -22,7 +22,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         width:100%;
         height:80vh;
         background-color: #222222;
-        @apply(--magazine-cover-image);
+        @apply --magazine-cover-image;
       }
       #image:hover {
         opacity: .9;

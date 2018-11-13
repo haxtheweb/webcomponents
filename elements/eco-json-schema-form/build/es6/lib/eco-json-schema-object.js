@@ -10,40 +10,37 @@ import "./eco-json-schema-boolean.js";
 import "./eco-json-schema-enum.js";
 import "./eco-json-schema-file.js";
 import "./eco-json-schema-input.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
-$_documentContainer.innerHTML = `<dom-module id="eco-json-schema-object">
-
-  <template>
-
+Polymer({
+  is: "eco-json-schema-object",
+  _template: html`
+  <custom-style>
     <style is="custom-style" include="iron-flex iron-flex-alignment">
       div.layout {
         height: auto;
       }
       #form {
         display: block;
-        @apply(--eco-json-schema-object-form);
-        @apply(--layout-vertical);
-        @apply(--layout-wrap);
+        @apply --eco-json-schema-object-form;
+        @apply --layout-vertical;
+        @apply --layout-wrap;
+      }
+      #form ::slotted(paper-input) {
+        --paper-input-container-shared-input-style: {
+          border: none !important;
+          width: 100% !important;
+          background-color: transparent !important;
+        };
       }
     </style>
+  </custom-style>
 
     <template is="dom-if" if="{{!wizard}}">
       <div class="header" hidden\$="[[!label]]">[[label]]</div>
     </template>
     <div class="layout vertical flex start-justified">
-      <div id="form" class="layout horizontal flex start-justified"></div>
-    </div>
-
-
-  </template>
-
-  
-
-</dom-module>`;
-document.head.appendChild($_documentContainer);
-Polymer({
-  is: "eco-json-schema-object",
+      <div id="form" class="layout horizontal flex start-justified"><slot></slot></div>
+    </div>  
+`,
   behaviors: [AppLocalizeBehavior],
   properties: {
     language: { value: "en" },
@@ -213,6 +210,10 @@ Polymer({
         language: this.language,
         resources: this.resources
       });
+      if ("paper-input" === property.component.name) {
+        el.style["background-color"] = "transparent";
+        el.style.width = "100%";
+      }
       el.setAttribute("name", property.property);
       el.className = "flex start-justified";
       el[property.component.valueProperty] = property.value;
@@ -230,12 +231,12 @@ Polymer({
         "_schemaPropertyChanged"
       );
       if (typeof ctx.$ !== typeof void 0) {
-        dom(ctx.$.form).appendChild(el);
+        dom(this).appendChild(el);
       }
       if ("" != property.component.slot) {
         var temp = document.createElement("template");
         temp.innerHTML = property.component.slot;
-        dom(el).appendChild(temp.content);
+        dom(el).appendChild(temp);
       }
     });
   },
@@ -250,11 +251,11 @@ Polymer({
       );
     }
     el.schemaProperty = null;
-    dom(this.$.form).removeChild(el);
+    dom(this).removeChild(el);
   },
   _clearForm: function() {
     if (typeof this.$ !== typeof void 0) {
-      var formEl = dom(this.$.form);
+      var formEl = dom(this);
       while (formEl.firstChild) {
         this._removePropertyEl(formEl.firstChild);
       }
@@ -270,7 +271,7 @@ Polymer({
   },
   _errorChanged: function() {
     var ctx = this;
-    dom(this.$.form).childNodes.forEach(function(el) {
+    dom(this).childNodes.forEach(function(el) {
       var name = el.getAttribute("name");
       if (ctx.error && ctx.error[name]) {
         el.error = ctx.error[name];

@@ -8,18 +8,18 @@ define([
 ], function(meta, _polymerLegacy, _polymerDom, _resolveUrl) {
   "use strict";
   meta = babelHelpers.interopRequireWildcard(meta);
-  function _templateObject_903a41e0e5f711e8a4f2c583573f4f41() {
+  function _templateObject_ed4481b0e70611e8b982d53f73cae3da() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n       :host {\n        display: inline;\n      }\n    </style>\n    [[prefix]] [[math]] [[suffix]]\n"
     ]);
-    _templateObject_903a41e0e5f711e8a4f2c583573f4f41 = function() {
+    _templateObject_ed4481b0e70611e8b982d53f73cae3da = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_903a41e0e5f711e8a4f2c583573f4f41()
+      _templateObject_ed4481b0e70611e8b982d53f73cae3da()
     ),
     is: "lrn-math",
     behaviors: [HAXBehaviors.PropertiesBehaviors],

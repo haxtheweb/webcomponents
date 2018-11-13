@@ -69,7 +69,7 @@ Polymer({
       }
 
       #swipeTarget {
-        @apply(--swipe-action-swipe-target);
+        @apply --swipe-action-swipe-target;
       }
 
       #swipeTarget.fade {

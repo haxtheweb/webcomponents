@@ -2,16 +2,21 @@ import {
   html,
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
-import { dom } from "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
+import {
+  addDebouncer,
+  dom,
+  flush
+} from "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
 import { Templatizer } from "./node_modules/@polymer/polymer/lib/legacy/templatizer-behavior.js";
+import { OptionalMutableDataBehavior } from "./node_modules/@polymer/polymer/lib/legacy/mutable-data-behavior.js";
 Polymer({
   _template: html`
-        <div id="dom">
-          <slot id="template" name="template"></slot>
-        </div>
+    <div id="dom">
+      <slot></slot>
+    </div>
 `,
   is: "grafitto-filter",
-  behaviors: [Templatizer],
+  behaviors: [Templatizer, OptionalMutableDataBehavior],
   properties: {
     items: { type: Array, value: [] },
     like: { type: String, value: "" },
@@ -63,14 +68,20 @@ Polymer({
     return filtered;
   },
   _populateUserTemplate: function(filtered) {
-    this._userTemplate = dom(this.$.template).getDistributedNodes()[0];
-    if (this._userTemplate) {
-      this.templatize(this._userTemplate);
-      var clone = this.stamp();
-      clone[this.as] = filtered;
-      dom(this.$.dom).innerHTML = "";
-      dom(this.$.dom).appendChild(clone.root);
+    if (this.ctor) {
+      this.__clone[this.as] = filtered;
+      return;
     }
+    this._userTemplate = this.queryEffectiveChildren("template");
+    if (!this._userTemplate) {
+      console.warn(
+        "grafitto-filter requires a template to be provided in light-dom"
+      );
+    }
+    this.templatize(this._userTemplate);
+    this.__clone = this.stamp(null);
+    this.__clone[this.as] = filtered;
+    dom(this).appendChild(this.__clone);
   },
   _decomposeWhere: function(where, item) {
     return where.split(".").reduce(function(a, b) {

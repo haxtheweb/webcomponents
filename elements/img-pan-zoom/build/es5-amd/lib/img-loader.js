@@ -2,18 +2,18 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
   _polymerLegacy
 ) {
   "use strict";
-  function _templateObject_a265dba0e5f611e884df2594769b91dd() {
+  function _templateObject_e9bcfe10e70511e89ec29b442b53f172() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <img id="img" hidden="" src="[[src]]">\n'
     ]);
-    _templateObject_a265dba0e5f611e884df2594769b91dd = function() {
+    _templateObject_e9bcfe10e70511e89ec29b442b53f172 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a265dba0e5f611e884df2594769b91dd()
+      _templateObject_e9bcfe10e70511e89ec29b442b53f172()
     ),
     is: "img-loader",
     properties: {

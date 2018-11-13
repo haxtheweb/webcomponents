@@ -50,7 +50,7 @@ Polymer({
        * adding scrollbars to the paper-listbox that are hard to get rid of.
        * An easy workaround is to use an :after pseudo element instead. */
       .icon:after {
-        @apply(--layout-fit);
+        @apply --layout-fit;
         content: '';
         -webkit-transition: -webkit-transform 0.2s;
         transition: transform .2s;
@@ -83,8 +83,8 @@ Polymer({
       paper-listbox {
         margin: 8px;
         font-size: 0;
-        @apply(--layout-vertical);
-        @apply(--layout-wrap);
+        @apply --layout-vertical;
+        @apply --layout-wrap;
       }
       paper-tooltip {
         z-index: 1;

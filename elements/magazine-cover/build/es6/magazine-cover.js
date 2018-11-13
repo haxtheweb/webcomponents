@@ -32,7 +32,7 @@ Polymer({
         width:100%;
         height:80vh;
         background-color: #222222;
-        @apply(--magazine-cover-image);
+        @apply --magazine-cover-image;
       }
       #image:hover {
         opacity: .9;

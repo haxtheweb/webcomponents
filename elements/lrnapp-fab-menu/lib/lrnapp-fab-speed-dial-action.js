@@ -26,9 +26,9 @@ Polymer({
     <style is="custom-style" include="iron-flex iron-flex-alignment materializecss-styles-colors"></style>
     <style>
       :host {
-        @apply(--layout-horizontal);
-        @apply(--layout-center);
-        @apply(--layout-end-justified);
+        @apply --layout-horizontal;
+        @apply --layout-center;
+        @apply --layout-end-justified;
         margin-top: 15px;
         margin-right: 8px;
         /** For IE11: otherwise the label overlays the FAB */

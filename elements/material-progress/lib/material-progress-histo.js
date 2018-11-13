@@ -8,8 +8,8 @@ $_documentContainer.innerHTML = `<dom-module id="material-progress-histo">
   <template>
     <style>
       #barsContainer {
-        @apply(--layout-vertical);
-        @apply(--material-progress-histo-style);
+        @apply --layout-vertical;
+        @apply --material-progress-histo-style;
       }
       :host > #barsContainer > ::content > * {
         height: 0px;

@@ -6,18 +6,18 @@ define([
   "./lrndesign-mapmenu-header.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_25841270e5f911e8b157abadb95e0e41() {
+  function _templateObject_87e0c750e70811e8a6621dd39fb8f1b1() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n      :host([collapsable]) > lrndesign-mapmenu-header {\n        cursor: pointer;\n        display: block;\n      }\n      #container {\n        padding: 16px;\n      }\n      #container ::slotted(lrndesign-mapmenu-item) {\n        margin-top: .4em;\n      }\n    </style>\n    <lrndesign-mapmenu-header on-tap="_headerClickHandler" avatar-label="[[avatarLabel]]" title="[[title]]" label="[[label]]" opened="[[opened]]"></lrndesign-mapmenu-header>\n    <iron-collapse id="container">\n      <slot id="slot"></slot>\n    </iron-collapse>\n'
     ]);
-    _templateObject_25841270e5f911e8b157abadb95e0e41 = function() {
+    _templateObject_87e0c750e70811e8a6621dd39fb8f1b1 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_25841270e5f911e8b157abadb95e0e41()
+      _templateObject_87e0c750e70811e8a6621dd39fb8f1b1()
     ),
     is: "lrndesign-mapmenu-submenu",
     properties: {

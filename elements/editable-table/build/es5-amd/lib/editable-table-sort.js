@@ -5,18 +5,18 @@ define([
   "./editable-table-iconset.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_51b2c2c0e5f811e899cfa985bcfcb4ce() {
+  function _templateObject_b4a21ab0e70711e881fc13e66a8b53cb() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style is="custom-style">\n      :host paper-button {\n        padding: 0;\n        margin: 0;\n        width: 100%;\n        min-width: unset;\n        display: inline-flex;\n        justify-content: space-between;\n        align-items:center;\n        align-content: stretch;\n        text-transform: unset;\n      }\n      :host paper-button > div {\n        flex-grow: 1;\n      }\n      :host .sr-only {\n        position: absolute;\n        left: -9999px;\n        font-size: 0;\n        height: 0;\n        width: 0;\n        overflow: hidden;\n      }\n      :host(:not([sort-mode="asc"])) .asc,\n      :host(:not([sort-mode="desc"])) .desc,\n      :host(:not([sort-mode="none"])) .none,\n      :host #asc,\n      :host #desc,\n      :host([sorting]:not([sort-mode="none"])) #none {\n        display: none;\n      }\n      :host([sorting][sort-mode="asc"]) #asc,\n      :host([sorting][sort-mode="desc"]) #desc {\n        display: flex;\n      }\n    </style>\n    <paper-button id="button" class="container">\n      [[text]]\n      <span class="sr-only asc">(ascending)</span>\n      <span class="sr-only desc">(descending)</span>\n      <span class="sr-only"> Toggle sort mode.</span>\n      <iron-icon id="asc" icon="arrow-drop-up"></iron-icon>\n      <iron-icon id="desc" icon="arrow-drop-down"></iron-icon>\n      <iron-icon id="none" icon="editable-table:sortable"></iron-icon>\n    </paper-button>\n'
     ]);
-    _templateObject_51b2c2c0e5f811e899cfa985bcfcb4ce = function() {
+    _templateObject_b4a21ab0e70711e881fc13e66a8b53cb = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_51b2c2c0e5f811e899cfa985bcfcb4ce()
+      _templateObject_b4a21ab0e70711e881fc13e66a8b53cb()
     ),
     is: "editable-table-sort",
     listeners: { tap: "_onSortTapped" },

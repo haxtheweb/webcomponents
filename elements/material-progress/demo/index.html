@@ -51,12 +51,12 @@
           <style is="custom-style">
             material-progress-bars {
                 width: 100%;
-                @apply(--paper-font-body2);
+                @apply --paper-font-body2;
               }
               material-progress-bars > .bar > span {
                 text-align: end;
                 font-size: 14.4px;
-                @apply(--layout-flex);
+                @apply --layout-flex;
               }
               .bar {
                 background-color: var(--paper-deep-orange-500);
@@ -98,7 +98,7 @@
           <style is="custom-style">
             material-progress-histo {
                 width: 100%;
-                @apply(--paper-font-body2);
+                @apply --paper-font-body2;
               }
               .bar {
                 background-color: var(--paper-deep-orange-500);
@@ -140,10 +140,10 @@
             material-progress-bars,
             material-progress-histo {
               width: 100%;
-              @apply(--paper-font-body2);
+              @apply --paper-font-body2;
             }
             material-progress-bars > .bar > span {
-              @apply(--layout-flex);
+              @apply --layout-flex;
               text-align: end;
               font-size: 14.4px;
             }
@@ -165,14 +165,14 @@
               margin: 32px 0 16px 0;
             }
             .inputs-container {
-              @apply(--layout-horizontal);
-              @apply(--layout-wrap);
-              @apply(--layout-center);
+              @apply --layout-horizontal;
+              @apply --layout-wrap;
+              @apply --layout-center;
             }
             .inputs-container > div {
               margin: 8px 16px;
               min-width: 120px;
-              @apply(--layout-flex);
+              @apply --layout-flex;
             }
             demo-snippet {
               --demo-snippet-code: {

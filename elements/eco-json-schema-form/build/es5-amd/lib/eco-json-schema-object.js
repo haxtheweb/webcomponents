@@ -15,13 +15,25 @@ define([
   _appLocalizeBehavior
 ) {
   "use strict";
-  var $_documentContainer = document.createElement("div");
-  $_documentContainer.setAttribute("style", "display: none;");
-  $_documentContainer.innerHTML =
-    '<dom-module id="eco-json-schema-object">\n\n  <template>\n\n    <style is="custom-style" include="iron-flex iron-flex-alignment">\n      div.layout {\n        height: auto;\n      }\n      #form {\n        display: block;\n        @apply(--eco-json-schema-object-form);\n        @apply(--layout-vertical);\n        @apply(--layout-wrap);\n      }\n    </style>\n\n    <template is="dom-if" if="{{!wizard}}">\n      <div class="header" hidden$="[[!label]]">[[label]]</div>\n    </template>\n    <div class="layout vertical flex start-justified">\n      <div id="form" class="layout horizontal flex start-justified"></div>\n    </div>\n\n\n  </template>\n\n  \n\n</dom-module>';
-  document.head.appendChild($_documentContainer);
+  function _templateObject_fb6dcd10e70511e886e6093a9ece0d4a() {
+    var data = babelHelpers.taggedTemplateLiteral(
+      [
+        '\n  <custom-style>\n    <style is="custom-style" include="iron-flex iron-flex-alignment">\n      div.layout {\n        height: auto;\n      }\n      #form {\n        display: block;\n        @apply --eco-json-schema-object-form;\n        @apply --layout-vertical;\n        @apply --layout-wrap;\n      }\n      #form ::slotted(paper-input) {\n        --paper-input-container-shared-input-style: {\n          border: none !important;\n          width: 100% !important;\n          background-color: transparent !important;\n        };\n      }\n    </style>\n  </custom-style>\n\n    <template is="dom-if" if="{{!wizard}}">\n      <div class="header" hidden$="[[!label]]">[[label]]</div>\n    </template>\n    <div class="layout vertical flex start-justified">\n      <div id="form" class="layout horizontal flex start-justified"><slot></slot></div>\n    </div>  \n'
+      ],
+      [
+        '\n  <custom-style>\n    <style is="custom-style" include="iron-flex iron-flex-alignment">\n      div.layout {\n        height: auto;\n      }\n      #form {\n        display: block;\n        @apply --eco-json-schema-object-form;\n        @apply --layout-vertical;\n        @apply --layout-wrap;\n      }\n      #form ::slotted(paper-input) {\n        --paper-input-container-shared-input-style: {\n          border: none !important;\n          width: 100% !important;\n          background-color: transparent !important;\n        };\n      }\n    </style>\n  </custom-style>\n\n    <template is="dom-if" if="{{!wizard}}">\n      <div class="header" hidden\\$="[[!label]]">[[label]]</div>\n    </template>\n    <div class="layout vertical flex start-justified">\n      <div id="form" class="layout horizontal flex start-justified"><slot></slot></div>\n    </div>  \n'
+      ]
+    );
+    _templateObject_fb6dcd10e70511e886e6093a9ece0d4a = function() {
+      return data;
+    };
+    return data;
+  }
   (0, _polymerLegacy.Polymer)({
     is: "eco-json-schema-object",
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_fb6dcd10e70511e886e6093a9ece0d4a()
+    ),
     behaviors: [_appLocalizeBehavior.AppLocalizeBehavior],
     properties: {
       language: { value: "en" },
@@ -192,6 +204,10 @@ define([
           language: _this.language,
           resources: _this.resources
         });
+        if ("paper-input" === property.component.name) {
+          el.style["background-color"] = "transparent";
+          el.style.width = "100%";
+        }
         el.setAttribute("name", property.property);
         el.className = "flex start-justified";
         el[property.component.valueProperty] = property.value;
@@ -209,12 +225,12 @@ define([
           "_schemaPropertyChanged"
         );
         if (babelHelpers.typeof(ctx.$) !== "undefined") {
-          (0, _polymerDom.dom)(ctx.$.form).appendChild(el);
+          (0, _polymerDom.dom)(_this).appendChild(el);
         }
         if ("" != property.component.slot) {
           var temp = document.createElement("template");
           temp.innerHTML = property.component.slot;
-          (0, _polymerDom.dom)(el).appendChild(temp.content);
+          (0, _polymerDom.dom)(el).appendChild(temp);
         }
       });
     },
@@ -229,11 +245,11 @@ define([
         );
       }
       el.schemaProperty = null;
-      (0, _polymerDom.dom)(this.$.form).removeChild(el);
+      (0, _polymerDom.dom)(this).removeChild(el);
     },
     _clearForm: function _clearForm() {
       if (babelHelpers.typeof(this.$) !== "undefined") {
-        var formEl = (0, _polymerDom.dom)(this.$.form);
+        var formEl = (0, _polymerDom.dom)(this);
         while (formEl.firstChild) {
           this._removePropertyEl(formEl.firstChild);
         }
@@ -249,7 +265,7 @@ define([
     },
     _errorChanged: function _errorChanged() {
       var ctx = this;
-      (0, _polymerDom.dom)(this.$.form).childNodes.forEach(function(el) {
+      (0, _polymerDom.dom)(this).childNodes.forEach(function(el) {
         var name = el.getAttribute("name");
         if (ctx.error && ctx.error[name]) {
           el.error = ctx.error[name];

@@ -289,7 +289,7 @@ define([
                 };
                 break;
               case "select":
-                slot = "";
+                var slot = "";
                 if (
                   babelHelpers.typeof(settings[value].options) !== "undefined"
                 ) {
@@ -434,7 +434,7 @@ define([
                 };
                 break;
               case "select":
-                slot = "";
+                var slot = "";
                 if (
                   babelHelpers.typeof(settings[value].options) !== "undefined"
                 ) {
@@ -524,7 +524,7 @@ define([
                 }
               }
             };
-            var _slot = "";
+            var slot = "";
             for (var i in (0, _polymerDom.dom)(target).childNodes) {
               if (
                 babelHelpers.typeof(
@@ -532,7 +532,7 @@ define([
                 ) !== "undefined"
               ) {
                 if (1 === (0, _polymerDom.dom)(target).childNodes[i].nodeType) {
-                  _slot += (0, _polymerDom.dom)(target).childNodes[i].innerHTML;
+                  slot += (0, _polymerDom.dom)(target).childNodes[i].innerHTML;
                 } else if (
                   1 !== (0, _polymerDom.dom)(target).childNodes[i].nodeType &&
                   babelHelpers.typeof(
@@ -540,13 +540,13 @@ define([
                   ) !== "undefined" &&
                   "" !== (0, _polymerDom.dom)(target).childNodes[i].textContent
                 ) {
-                  _slot += (0, _polymerDom.dom)(target).childNodes[i]
+                  slot += (0, _polymerDom.dom)(target).childNodes[i]
                     .textContent;
                 }
               }
             }
             props[settings[value].slot].component.slot =
-              "<template>" + _slot + "</template>";
+              "<template>" + slot + "</template>";
           }
         }
       }

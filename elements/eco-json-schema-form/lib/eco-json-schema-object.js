@@ -283,44 +283,32 @@ el.error = {
 Polymer({
   is: "eco-json-schema-object",
   _template: html`
+  <custom-style>
     <style is="custom-style" include="iron-flex iron-flex-alignment">
-      :host {
-        --paper-input-container: {
-          width: 100%;
-        };
-        --paper-input-container-input: {
-          background-color: transparent;
-          border: none;
-        };
-        --paper-input-container-shared-input-style: {
-          width: 100%;
-          background-color: transparent;
-          border: none;
-        };
-      }
-      :host input {
-        background-color: transparent;
-        border: none;
-      }
-      :host iron-input {
-        width: 100%;
-      }
       div.layout {
         height: auto;
       }
       #form {
         display: block;
-        @apply(--eco-json-schema-object-form);
-        @apply(--layout-vertical);
-        @apply(--layout-wrap);
+        @apply --eco-json-schema-object-form;
+        @apply --layout-vertical;
+        @apply --layout-wrap;
+      }
+      #form ::slotted(paper-input) {
+        --paper-input-container-shared-input-style: {
+          border: none !important;
+          width: 100% !important;
+          background-color: transparent !important;
+        };
       }
     </style>
+  </custom-style>
 
     <template is="dom-if" if="{{!wizard}}">
       <div class="header" hidden\$="[[!label]]">[[label]]</div>
     </template>
     <div class="layout vertical flex start-justified">
-      <div id="form" class="layout horizontal flex start-justified"></div>
+      <div id="form" class="layout horizontal flex start-justified"><slot></slot></div>
     </div>  
 `,
   behaviors: [AppLocalizeBehavior],
@@ -513,6 +501,10 @@ Polymer({
         language: this.language,
         resources: this.resources
       });
+      if (property.component.name === "paper-input") {
+        el.style["background-color"] = "transparent";
+        el.style["width"] = "100%";
+      }
       el.setAttribute("name", property.property);
       el.className = "flex start-justified";
       // set the element's default value to be what was passed into the schema
@@ -533,7 +525,7 @@ Polymer({
         "_schemaPropertyChanged"
       );
       if (typeof ctx.$ !== typeof undefined) {
-        dom(ctx.$.form).appendChild(el);
+        dom(this).appendChild(el);
       }
       // support for slot injection too!
       if (property.component.slot != "") {
@@ -554,11 +546,11 @@ Polymer({
       );
     }
     el.schemaProperty = null;
-    dom(this.$.form).removeChild(el);
+    dom(this).removeChild(el);
   },
   _clearForm: function() {
     if (typeof this.$ !== typeof undefined) {
-      var formEl = dom(this.$.form);
+      var formEl = dom(this);
       while (formEl.firstChild) {
         this._removePropertyEl(formEl.firstChild);
       }
@@ -574,7 +566,7 @@ Polymer({
   },
   _errorChanged: function() {
     var ctx = this;
-    dom(this.$.form).childNodes.forEach(function(el) {
+    dom(this).childNodes.forEach(function(el) {
       var name = el.getAttribute("name");
       if (ctx.error && ctx.error[name]) {
         el.error = ctx.error[name];

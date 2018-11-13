@@ -5,11 +5,11 @@ define([
   "use strict";
   Object.defineProperty(_exports, "__esModule", { value: !0 });
   _exports.BeakerBroker = void 0;
-  function _templateObject_3c2a7b60e5f711e8a0c7df9e51483f59() {
+  function _templateObject_9374de50e70611e89da16f3c742f7c4c() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
     ]);
-    _templateObject_3c2a7b60e5f711e8a0c7df9e51483f59 = function() {
+    _templateObject_9374de50e70611e89da16f3c742f7c4c = function() {
       return data;
     };
     return data;
@@ -197,7 +197,7 @@ define([
           key: "template",
           get: function get() {
             return (0, _polymerElement.html)(
-              _templateObject_3c2a7b60e5f711e8a0c7df9e51483f59()
+              _templateObject_9374de50e70611e89da16f3c742f7c4c()
             );
           }
         },

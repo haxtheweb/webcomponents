@@ -29,6 +29,18 @@ Polymer({
           font-size: 16px;
           color: #212121;
         }
+        --paper-input-container: {
+          width: 100%;
+        };
+        --paper-input-container-input: {
+          background-color: transparent;
+          border: none;
+        };
+        --paper-input-container-shared-input-style: {
+          width: 100%;
+          background-color: transparent;
+          border: none;
+        };
       }
     </style>
     <paper-input id="input" class="flex" value="{{value}}" auto-validate></paper-input>  
