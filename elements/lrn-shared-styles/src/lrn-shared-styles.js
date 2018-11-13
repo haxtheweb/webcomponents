@@ -41,7 +41,6 @@ const css = html`<style include="iron-flex-layout">
     }
   }
 </style>`;
-console.log(css);
 styleElement.appendChild(css);
 
 styleElement.register("lrn-shared-styles");
