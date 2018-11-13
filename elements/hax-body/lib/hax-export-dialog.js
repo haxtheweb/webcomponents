@@ -102,7 +102,6 @@ Polymer({
           <paper-button id="copy" raised="">Copy to clipboard</paper-button>
           <paper-button id="import" raised="" hidden\$="[[!globalPreferences.haxDeveloperMode]]">Import textarea into HAX</paper-button>
           <paper-button id="elementexport" raised="" hidden\$="[[!globalPreferences.haxDeveloperMode]]">Copy as HAX schema to clipboard</paper-button>
-          <paper-button id="close" raised="">Close dialog</paper-button>
         </div>
       </div>
       <paper-button id="closedialog" on-tap="close">
