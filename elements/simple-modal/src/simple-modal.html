@@ -1,0 +1,12 @@
+<paper-dialog entry-animation="scale-up-animation"
+exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-top>
+  <h2 hidden$="[[!title]]">[[title]]</h2>
+  <slot name="header"></slot>
+  <paper-dialog-scrollable>
+    <slot name="content"></slot>
+  </paper-dialog-scrollable>
+  <div class="buttons">
+    <slot name="buttons"></slot>
+  </div>
+  <paper-button id="close" on-tap="close"><iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]</paper-button>
+</paper-dialog>

@@ -1,0 +1,28 @@
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+#close {
+  float: right;
+  top: 0;
+  font-size: 12px;
+  text-transform: none;
+  right: 0;
+  position: absolute;
+  padding: 4px;
+  margin: 0;
+  color: var(--simple-modal-color, black);
+  background-color: transparent;
+  min-width: unset;
+}
+
+#close iron-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 2px;
+}

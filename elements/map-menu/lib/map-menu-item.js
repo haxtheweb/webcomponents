@@ -15,6 +15,7 @@ Polymer({
       }
 
       iron-icon {
+        display: inline-block;
         --iron-icon-height: var(--map-menu-item-height);
       }
 
@@ -23,7 +24,7 @@ Polymer({
         text-transform: none;
       }
     </style>
-      <paper-button id="wrapper" href\$="[[url]]" role="link" noink="" on-tap="_click">
+      <paper-button id="wrapper" href$="[[url]]" role="link" noink on-tap="_click">
         <template is="dom-if" if="[[__hasIcon(icon)]]">
           <iron-icon icon="[[icon]]"></iron-icon>
         </template>

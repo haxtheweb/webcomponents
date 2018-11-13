@@ -3,6 +3,7 @@ import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import "@polymer/iron-collapse/iron-collapse.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-behaviors/iron-button-state.js";
+import "@polymer/paper-button/paper-button.js";
 Polymer({
   _template: html`
     <style>
@@ -53,11 +54,13 @@ Polymer({
       }
 
       #right iron-icon {
+        display: inline-block;
         color: gray;
       }
 
       /* @todo this is a hack */
       #icon iron-icon {
+        display: inline-block;
         --iron-icon-height: 16px;
         transform: translateX(10px);
       }
