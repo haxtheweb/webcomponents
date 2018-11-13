@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrndesign-paperstack`\nA LRN element",
+      "description": "`lrndesign-paperstack`\n`Stack of papers visually`",
       "summary": "",
       "path": "lrndesign-paperstack.js",
       "properties": [
@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 112,
+              "line": 113,
               "column": 4
             },
             "end": {
-              "line": 115,
+              "line": 116,
               "column": 5
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 119,
+              "line": 120,
               "column": 4
             },
             "end": {
-              "line": 122,
+              "line": 123,
               "column": 5
             }
           },
@@ -57,11 +57,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 126,
+              "line": 127,
               "column": 4
             },
             "end": {
-              "line": 130,
+              "line": 131,
               "column": 5
             }
           },
@@ -80,11 +80,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 134,
+              "line": 135,
               "column": 4
             },
             "end": {
-              "line": 137,
+              "line": 138,
               "column": 5
             }
           },
@@ -102,11 +102,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 141,
+              "line": 142,
               "column": 4
             },
             "end": {
-              "line": 144,
+              "line": 145,
               "column": 5
             }
           },
@@ -124,11 +124,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 148,
+              "line": 149,
               "column": 4
             },
             "end": {
-              "line": 151,
+              "line": 152,
               "column": 5
             }
           },
@@ -203,11 +203,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 157,
+              "line": 158,
               "column": 2
             },
             "end": {
-              "line": 214,
+              "line": 215,
               "column": 3
             }
           },
@@ -223,11 +223,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 219,
+              "line": 220,
               "column": 2
             },
             "end": {
-              "line": 233,
+              "line": 234,
               "column": 3
             }
           },
@@ -247,11 +247,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 238,
+              "line": 239,
               "column": 2
             },
             "end": {
-              "line": 243,
+              "line": 244,
               "column": 3
             }
           },
@@ -283,7 +283,7 @@
           "column": 8
         },
         "end": {
-          "line": 244,
+          "line": 245,
           "column": 1
         }
       },
@@ -295,11 +295,11 @@
           "description": "Title",
           "sourceRange": {
             "start": {
-              "line": 112,
+              "line": 113,
               "column": 4
             },
             "end": {
-              "line": 115,
+              "line": 116,
               "column": 5
             }
           },
@@ -311,11 +311,11 @@
           "description": "icon",
           "sourceRange": {
             "start": {
-              "line": 119,
+              "line": 120,
               "column": 4
             },
             "end": {
-              "line": 122,
+              "line": 123,
               "column": 5
             }
           },
@@ -327,11 +327,11 @@
           "description": "Color code",
           "sourceRange": {
             "start": {
-              "line": 126,
+              "line": 127,
               "column": 4
             },
             "end": {
-              "line": 130,
+              "line": 131,
               "column": 5
             }
           },
@@ -343,11 +343,11 @@
           "description": "Color class",
           "sourceRange": {
             "start": {
-              "line": 134,
+              "line": 135,
               "column": 4
             },
             "end": {
-              "line": 137,
+              "line": 138,
               "column": 5
             }
           },
@@ -359,11 +359,11 @@
           "description": "Text color",
           "sourceRange": {
             "start": {
-              "line": 141,
+              "line": 142,
               "column": 4
             },
             "end": {
-              "line": 144,
+              "line": 145,
               "column": 5
             }
           },
@@ -375,11 +375,11 @@
           "description": "Text color class",
           "sourceRange": {
             "start": {
-              "line": 148,
+              "line": 149,
               "column": 4
             },
             "end": {
-              "line": 151,
+              "line": 152,
               "column": 5
             }
           },
