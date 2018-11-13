@@ -30,7 +30,7 @@ Polymer({
       </lrnsys-button-inner>
     </paper-button>
     <paper-tooltip for="flyouttrigger" animation-delay="0">[[alt]]</paper-tooltip>
-    <lrnsys-drawer-modal id="modal" body-append="[[bodyAppend]]" opened="[[opened]]" align="[[align]]" header="[[header]]" heading-class="[[headingClass]]">
+    <lrnsys-drawer-modal id="modal" opened="[[opened]]" align="[[align]]" header="[[header]]" heading-class="[[headingClass]]">
       <slot name="header" slot="header"></slot>
       <slot></slot>
     </lrnsys-drawer-modal>
@@ -120,14 +120,6 @@ Polymer({
     headingClass: {
       type: String,
       value: "white-text black"
-    },
-    /**
-     * Support for body-appending which is a hack for stacking context
-     * correction but breaks scoped styles / shadowDOM
-     */
-    bodyAppend: {
-      type: Boolean,
-      value: true
     },
     /**
      * Tracks if focus state is applied

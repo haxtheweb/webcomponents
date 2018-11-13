@@ -119,21 +119,6 @@ Polymer({
     headingClass: {
       type: String,
       value: "white-text black"
-    },
-    /**
-     * Support for body-appending which is a hack for stacking context
-     * correction but breaks scoped styles / shadowDOM
-     */
-    bodyAppend: {
-      type: Boolean,
-      value: true
-    },
-    /**
-     * Ensure we only attach once in this manner
-     */
-    _bodyAppended: {
-      type: Boolean,
-      value: false
     }
   },
 
@@ -158,11 +143,6 @@ Polymer({
   attached: function() {
     // support for appending to the light document
     // while also making sure we don't loop in attach
-    if (this.bodyAppend && !this._bodyAppended) {
-      this._bodyAppended = true;
-      // @todo investigate why this doesn't actually work anymore
-      document.body.appendChild(this);
-    }
     this.$.flyoutcontent.addEventListener(
       "opened-changed",
       this._drawerClosed.bind(this)

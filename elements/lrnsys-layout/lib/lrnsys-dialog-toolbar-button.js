@@ -1,6 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 Polymer({
@@ -9,8 +10,15 @@ Polymer({
       :host {
         display: inline-block;
       }
+      iron-icon {
+        display: inline-block;
+        height: 16px;
+        width: 16px;
+      }
     </style>
-    <paper-icon-button raised="" icon="[[icon]]" on-tap="_onTap" id$="[[id]]" aria-label$="[[title]]">[[title]]</paper-icon-button>
+    <paper-button raisedon-tap="_onTap" id$="[[id]]" aria-label$="[[title]]">
+      <iron-icon icon="[[icon]]"></iron-icon> [[title]]
+    </paper-button>
     <paper-tooltip for$="[[id]]" animation-delay="200">[[title]]</paper-tooltip>
 `,
 

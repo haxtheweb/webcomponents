@@ -56,18 +56,6 @@ Polymer({
   },
 
   /**
-   * Attached lifecyce
-   */
-  attached: function() {
-    // support for appending to the light document
-    // while also making sure we don't loop in attach
-    if (this.bodyAppend && !this._bodyAppended) {
-      this._bodyAppended = true;
-      document.body.appendChild(this);
-    }
-  },
-
-  /**
    * Modal has closed, let's react appropriately.
    */
   _modalClosed: function(e) {

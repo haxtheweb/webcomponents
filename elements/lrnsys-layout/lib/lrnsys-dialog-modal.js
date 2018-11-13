@@ -56,6 +56,10 @@ Polymer({
       }
     </style>
     <paper-dialog modal="[[modal]]" id="dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="" opened\$="[[opened]]">
+      <lrnsys-dialog-toolbar on-button-clicked="_toolbarButtonClickedHandler">
+        <slot slot="primary" name="toolbar-primary"></slot>
+        <slot slot="secondary" name="toolbar-secondary"></slot>
+      </lrnsys-dialog-toolbar>  
       <div class$="[[headingClass]] dialog-header">
         <div class$="[[headingClass]] dialog-heading" hidden$="[[!header]]">[[header]]</div>
         <span class="dialog-header-slot"><slot name="header"></slot></span>
@@ -63,10 +67,6 @@ Polymer({
       <paper-dialog-scrollable class="dialog-contents" id="dialogcontent">
         <slot></slot>
       </paper-dialog-scrollable>
-      <lrnsys-dialog-toolbar on-button-clicked="_toolbarButtonClickedHandler">
-        <slot slot="primary" name="toolbar-primary"></slot>
-        <slot slot="secondary" name="toolbar-secondary"></slot>
-      </lrnsys-dialog-toolbar>
     </paper-dialog>
 `,
 
@@ -108,21 +108,6 @@ Polymer({
     headingClass: {
       type: String,
       value: "white-text black"
-    },
-    /**
-     * Support for body-appending which is a hack for stacking context
-     * correction but breaks scoped styles / shadowDOM
-     */
-    bodyAppend: {
-      type: Boolean,
-      value: true
-    },
-    /**
-     * Ensure we only attach once in this manner
-     */
-    _bodyAppended: {
-      type: Boolean,
-      value: false
     },
     /**
      * Support for dynamic loading of iron-image elements that are in the content slot.
@@ -183,13 +168,6 @@ Polymer({
    * Attached lifecyce
    */
   attached: function() {
-    // support for appending to the light document
-    // while also making sure we don't loop in attach
-    if (this.bodyAppend && !this._bodyAppended) {
-      this._bodyAppended = true;
-      // @todo this doesn't work with ShadowDom
-      document.body.appendChild(this);
-    }
     const toolbar = this.shadowRoot.querySelector("lrnsys-dialog-toolbar");
     this.$.dialog.addEventListener("mouseover", e => {
       toolbar.setAttribute("secondary-visible", true);
