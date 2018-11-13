@@ -1,9 +1,9 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
 import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@polymer/paper-dialog/paper-dialog.js";
-import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
+import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/neon-animation/neon-animation.js";
@@ -32,20 +32,19 @@ Polymer({
         --lrnsys-dialog-background-color: var(--simple-colors-background3);
         --lrnsys-dialog-secondary-background-color: rgba(0, 0, 0, 0.7);
       }
+      #dialogtrigger {
+        display:inline-block;
+      }
     </style>
     </custom-style>
-    <paper-button class$="[[class]]" id="dialogtrigger" on-tap="toggleDialog" raised="[[raised]]" disabled$="[[disabled]]" title="[[alt]]" aria-label$="[[alt]]">
-      <lrnsys-button-inner avatar\$="[[avatar]]" icon$="[[icon]]" text$="[[text]]">
+    <paper-button class$="[[class]]" id="dialogtrigger" on-tap="openDialog" raised="[[raised]]" disabled$="[[disabled]]" title="[[alt]]" aria-label$="[[alt]]">
+      <lrnsys-button-inner avatar$="[[avatar]]" icon$="[[icon]]" text$="[[text]]">
         <slot name="button" slot="button"></slot>
       </lrnsys-button-inner>
     </paper-button>
     <paper-tooltip for="dialogtrigger" animation-delay="0" hidden$="[[!alt]]">[[alt]]</paper-tooltip>
-    <lrnsys-dialog-modal id="modal" dynamic-images="[[dynamicImages]]" header="[[header]]" modal="[[modal]]" heading-class="[[headingClass]]" opened$="[[opened]]">
-      <slot name="toolbar-primary" slot="primary"></slot>
-      <slot name="toolbar-secondary" slot="secondary"></slot>
-      <slot name="header" slot="header"></slot>
-      <slot></slot>
-    </lrnsys-dialog-modal>
+    <!--dynamic-images="[[dynamicImages]]" heading-class="[[headingClass]]">
+-->
 `,
 
   is: "lrnsys-dialog",
@@ -104,22 +103,6 @@ Polymer({
       value: false
     },
     /**
-     * Modal state for pop over.
-     */
-    modal: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Is dialog opened?
-     */
-    opened: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true,
-      notify: true
-    },
-    /**
      * Classes to add / subtract based on the item being hovered
      */
     hoverClass: {
@@ -143,14 +126,6 @@ Polymer({
      * Tracks if focus state is applied
      */
     focusState: {
-      type: Boolean,
-      value: false
-    },
-    /**
-     * Ability to disable the auto focus mode
-     * this is useful if something else is picking up this capability.
-     */
-    disableAutoFocus: {
       type: Boolean,
       value: false
     }
@@ -191,8 +166,45 @@ Polymer({
   /**
    * Toggle the drawer to open / close.
    */
-  toggleDialog: function() {
-    this.$.modal.toggleDialog();
+  openDialog: function() {
+    // assemble everything in the slot
+    let nodes = dom(this).getEffectiveChildNodes();
+    let h = document.createElement("span");
+    let c = document.createElement("span");
+    let node = {};
+    for (var i in nodes) {
+      if (typeof nodes[i].tagName !== typeof undefined) {
+        switch (nodes[i].getAttribute("slot")) {
+          case "toolbar-primary":
+          case "toolbar-secondary":
+          case "toolbar":
+          case "header":
+            node = nodes[i].cloneNode(true);
+            h.appendChild(node);
+            break;
+          case "button":
+            // do nothing
+            break;
+          default:
+            node = nodes[i].cloneNode(true);
+            c.appendChild(node);
+            break;
+        }
+      }
+    }
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        title: this.header,
+        elements: {
+          header: h,
+          content: c
+        },
+        invokedBy: this.$.dialogtrigger
+      }
+    });
+    this.dispatchEvent(evt);
   },
 
   /**
@@ -223,23 +235,13 @@ Polymer({
    * Ready lifecycle
    */
   ready: function() {
-    this.__modal = this.$.modal;
+    this.__modal = window.simpleModal.requestAvailability();
   },
 
   /**
    * Attached lifecycle
    */
   attached: function() {
-    document.body.addEventListener(
-      "lrnsys-dialog-modal-changed",
-      this._changeOpen.bind(this)
-    );
-    if (!this.disableAutoFocus) {
-      document.body.addEventListener(
-        "lrnsys-dialog-modal-closed",
-        this._accessibleFocus.bind(this)
-      );
-    }
     this.$.dialogtrigger.addEventListener(
       "focused-changed",
       this.focusToggle.bind(this)
@@ -249,44 +251,9 @@ Polymer({
    * detached lifecycle
    */
   detached: function() {
-    document.body.removeEventListener(
-      "lrnsys-dialog-modal-changed",
-      this._changeOpen.bind(this)
-    );
-    if (!this.disableAutoFocus) {
-      document.body.removeEventListener(
-        "lrnsys-dialog-modal-closed",
-        this._accessibleFocus.bind(this)
-      );
-    }
     this.$.dialogtrigger.removeEventListener(
       "focused-changed",
       this.focusToggle.bind(this)
     );
-  },
-
-  /**
-   * Set ourselves as having focus after the modal closes.
-   */
-  _accessibleFocus: function(e) {
-    // this is OUR modal, we found her, oh modal, We've missed
-    // you so much. thank you for coming home. We're so, so, so
-    // sorry that we appended you to the body. We'll never do it
-    // again (until the next time you open).
-    if (e.detail === this.__modal) {
-      // focus on our dialog triggering button
-      this.$.dialogtrigger.focus();
-    }
-  },
-
-  /**
-   * Attached lifecyce
-   */
-  _changeOpen: function(e) {
-    e.stopPropagation();
-    if (e.detail === this.$.modal) {
-      this.opened = e.type === "iron-overlay-opened";
-      this.fire("lrnsys-dialog-changed", this);
-    }
   }
 });
