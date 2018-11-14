@@ -17,17 +17,26 @@ Polymer({
             height: auto;
             z-index: 1000;
           }
-          .close_button {
+          .top {
             display: flex;
-            flex-direction: row-reverse;
             margin-top: 0;
+            justify-content: space-between;
             background-color: #20427b;
             color: #fff;
-            padding: 8px;
+            padding: 8px 16px;
+          }
+          .top h2 {
+            margin: 8px;
+            font-size: 40px;
+          }
+          .top paper-icon-button {
+            margin: 8px;
+            padding: 2px;
           }
         </style>
-        <paper-dialog id="dialog" with-backdrop="" opened="{{opened}}">
-          <div class="close_button">
+        <paper-dialog id="dialog" with-backdrop opened="{{opened}}">
+          <div class="top">
+            <h2>[[term]]</h2>
             <paper-icon-button icon="cancel" dialog-dismiss=""></paper-icon-button>
           </div>
           <paper-dialog-scrollable>
@@ -52,6 +61,12 @@ Polymer({
       type: Boolean,
       value: false,
       notify: true
+    },
+    /**
+     * Term from parent
+     */
+    term: {
+      type: String
     }
   },
 

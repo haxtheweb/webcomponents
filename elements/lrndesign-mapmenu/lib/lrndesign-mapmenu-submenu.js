@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import "@polymer/paper-button/paper-button.js";
 import "./lrndesign-mapmenu-item.js";
 import "./lrndesign-mapmenu-header.js";
@@ -67,7 +68,7 @@ Polymer({
   },
 
   ready: function() {
-    this._observer = dom(this.$.slot).observeNodes(info => {
+    this._observer = FlattenedNodesObserver(this.$.slot, info => {
       var submenus = info.addedNodes.filter(
         item => item.nodeName === "LRNDESIGN-MAPMENU-SUBMENU"
       );

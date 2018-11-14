@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-selector/iron-selector.js";
 import "@polymer/iron-list/iron-list.js";
@@ -973,7 +974,9 @@ Polymer({
     // NOTE: workaround to check for effectiveChildren[0] as paper-button outside of
     // this element will be queried as well even though outside of content tag.
     // Setup distributed children.
-    var effectiveChildren = this.getEffectiveChildren();
+    let effectiveChildren = FlattenedNodesObserver.getFlattenedNodes(
+      this
+    ).filter(n => n.nodeType === Node.ELEMENT_NODE);
     if (effectiveChildren && effectiveChildren.length > 0) {
       for (var i = 0; i < effectiveChildren.length; i++) {
         // addEventListener to paper-button with dialog-confirm.

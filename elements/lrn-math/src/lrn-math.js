@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
@@ -158,7 +159,7 @@ Polymer({
    * so that we can render it to the page.
    */
   _mathjaxLoaded: function() {
-    this._observer = dom(this).observeNodes(info => {
+    this._observer = FlattenedNodesObserver(this, info => {
       this.math = info.addedNodes.map(node => node.textContent).toString();
       window.MathJax.Hub.Config({
         skipStartupTypeset: true,

@@ -41,7 +41,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/drawing-icons": "^0.0.31",
-    "@lrnwebcomponents/swipe-action": "^0.0.31",
     "@polymer/iron-a11y-keys": "^3.0.1",
     "@polymer/iron-list": "^3.0.1",
     "@polymer/paper-dialog": "^3.0.1",

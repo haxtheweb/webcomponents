@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 
 /**
@@ -46,7 +47,7 @@ Polymer({
    */
   ready: function() {
     // notice elements when they update
-    this._observer = dom(this).observeNodes(function(info) {
+    this._observer = FlattenedNodesObserver(this, info => {
       // if we've got new nodes, we have to react to that
       if (info.addedNodes.length > 0) {
         this.processNewElements(info.addedNodes);
@@ -59,7 +60,9 @@ Polymer({
    */
   processNewElements: function(e) {
     // when new nodes show up in the slots then fire the needed pieces
-    var effectiveChildren = dom(this).getEffectiveChildNodes();
+    var effectiveChildren = FlattenedNodesObserver.getFlattenedNodes(
+      this
+    ).filter(n => n.nodeType === Node.ELEMENT_NODE);
     for (var i = 0; i < effectiveChildren.length; i++) {
       // strip invalid tags / textnodes
       if (

@@ -57,11 +57,9 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 72,
               "column": 2
             },
             "end": {
-              "line": 77,
               "column": 3
             }
           },
@@ -81,11 +79,9 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 82,
               "column": 2
             },
             "end": {
-              "line": 88,
               "column": 3
             }
           },
@@ -105,11 +101,9 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 93,
               "column": 2
             },
             "end": {
-              "line": 100,
               "column": 3
             }
           },
@@ -133,7 +127,6 @@
           "column": 8
         },
         "end": {
-          "line": 101,
           "column": 1
         }
       },
