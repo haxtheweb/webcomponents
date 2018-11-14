@@ -43,8 +43,6 @@ Polymer({
       </lrnsys-button-inner>
     </paper-button>
     <paper-tooltip for="dialogtrigger" animation-delay="0" hidden$="[[!alt]]">[[alt]]</paper-tooltip>
-    <!--dynamic-images="[[dynamicImages]]" heading-class="[[headingClass]]">
--->
 `,
 
   is: "lrnsys-dialog",
@@ -187,6 +185,10 @@ Polymer({
             break;
           default:
             node = nodes[i].cloneNode(true);
+            if (this.dynamicImages && node.tagName === "IRON-IMAGE") {
+              node.preventLoad = false;
+              node.removeAttribute("prevent-load");
+            }
             c.appendChild(node);
             break;
         }
