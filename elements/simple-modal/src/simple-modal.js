@@ -39,10 +39,6 @@ class SimpleModal extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener("simple-modal-show", this.showEvent.bind(this));
-    this.$.dialog.addEventListener(
-      "iron-overlay-closed",
-      this.close.bind(this)
-    );
   }
   /**
    * show event call to open the modal and display it's content
@@ -107,10 +103,6 @@ class SimpleModal extends PolymerElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     window.removeEventListener("simple-modal-show", this.showEvent.bind(this));
-    this.$.dialog.removeEventListener(
-      "iron-overlay-closed",
-      this.close.bind(this)
-    );
   }
 }
 window.customElements.define(SimpleModal.tag, SimpleModal);
