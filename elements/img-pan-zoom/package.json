@@ -42,8 +42,7 @@
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^0.0.31",
     "@polymer/paper-spinner": "^3.0.0",
-    "@polymer/polymer": "^3.0.5",
-    "openseadragon": "^2.4.0"
+    "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^0.0.31",

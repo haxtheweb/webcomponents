@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-button/paper-button.js";
@@ -10,7 +11,6 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/neon-animation/animations/scale-up-animation.js";
 import "@polymer/neon-animation/animations/scale-down-animation.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom";
 export { SimpleModal };
 /**
  * `simple-modal`
@@ -44,7 +44,19 @@ class SimpleModal extends PolymerElement {
    * show event call to open the modal and display it's content
    */
   showEvent(e) {
-    this.show(e.detail.title, e.detail.elements, e.detail.invokedBy);
+    // if we're already opened and we get told to open again....
+    // swap out the contents
+    if (this.opened) {
+      // wipe the slot of our modal
+      while (dom(this).firstChild !== null) {
+        dom(this).removeChild(dom(this).firstChild);
+      }
+      setTimeout(() => {
+        this.show(e.detail.title, e.detail.elements, e.detail.invokedBy);
+      }, 100);
+    } else {
+      this.show(e.detail.title, e.detail.elements, e.detail.invokedBy);
+    }
   }
   /**
    * Show the modal and display the material
