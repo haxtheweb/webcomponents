@@ -24,8 +24,7 @@ Polymer({
   is: "chartist-render",
 
   listeners: {
-    tap: "makeChart",
-    created: "_onCreated"
+    tap: "makeChart"
   },
 
   properties: {
@@ -105,7 +104,7 @@ Polymer({
   created: function() {
     const name = "chartist";
     const basePath = pathFromUrl(import.meta.url);
-    const location = `${basePath}../../chartist/dist/chartist.min.js`;
+    const location = `${basePath}lib/chartist/dist/chartist.min.js`;
     window.addEventListener(
       `es-bridge-${name}-loaded`,
       this._chartistLoaded.bind(this)
@@ -115,6 +114,9 @@ Polymer({
   },
   _chartistLoaded: function() {
     this.__chartistLoaded = true;
+    if (this.__chartId) {
+      this._chartReady();
+    }
   },
   attached: function() {
     this.__chartId = this._getUniqueId("chartist-render-");
@@ -122,7 +124,6 @@ Polymer({
       this._chartReady();
     }
   },
-
   /**
    * Makes chart and returns the chart object.
    */
@@ -135,13 +136,11 @@ Polymer({
    * Makes chart and returns the chart object.
    */
   _chartReady: function() {
-    let root = this,
-      query = '[chart="' + root.__chartId + '"]',
-      container = document.querySelector(query);
+    let container = this.$.chart;
     if (container !== null) {
-      root.fire("chartist-render-ready", this);
-      if (root.data !== null) root.makeChart();
-      clearInterval(root._checkReady);
+      this.fire("chartist-render-ready", this);
+      if (this.data !== null) this.makeChart();
+      clearInterval(this._checkReady);
     }
   },
 
@@ -151,35 +150,36 @@ Polymer({
   makeChart: function() {
     let root = this,
       chart;
-
     if (
+      this.__chartistLoaded &&
+      this.__chartId &&
       root.data !== null &&
-      root.querySelector('[chart="' + root.__chartId + '"]') !== null
+      this.$.chart !== null
     ) {
       if (root.type == "bar") {
         chart = Chartist.Bar(
-          '[chart="' + root.__chartId + '"]',
+          this.$.chart,
           root.data,
           root.options,
           root.responsiveOptions
         );
       } else if (root.type == "line") {
         chart = Chartist.Line(
-          '[chart="' + root.__chartId + '"]',
+          this.$.chart,
           root.data,
           root.options,
           root.responsiveOptions
         );
       } else if (root.type == "pie") {
         chart = Chartist.Pie(
-          '[chart="' + root.__chartId + '"]',
+          this.$.chart,
           root.data,
           root.options,
           root.responsiveOptions
         );
       }
       root.fire("chartist-render-draw", chart);
-      chart.on("created", function() {
+      chart.on("created", () => {
         root.addA11yFeatures(chart.container.childNodes[0]);
       });
       return chart;
@@ -241,14 +241,11 @@ Polymer({
     svg.insertBefore(el, first);
   },
 
-  /*
-   *
+  /**
+   * Get unique ID from the chart
    */
   _getUniqueId(prefix) {
     let id = prefix + Date.now();
-    while (document.querySelector('[chart="' + id + '"]') !== null) {
-      id = prefix + Date.now();
-    }
     return id;
   }
 });

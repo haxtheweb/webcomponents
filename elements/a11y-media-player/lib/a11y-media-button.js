@@ -61,7 +61,7 @@ Polymer({
       }
     </style>
     <button id="button" aria-role="button" aria-pressed$="[[toggle]]" tabindex="0" aria-label$="[[label]]" controls="[[controls]]" disabled$="[[disabled]]" toggle$="[[toggle]]">
-      <iron-icon icon$="[[icon]]"></iron-icon>
+      <iron-icon icon="[[icon]]"></iron-icon>
     </button>
     <paper-tooltip for="button">[[label]]</paper-tooltip>
 `,
