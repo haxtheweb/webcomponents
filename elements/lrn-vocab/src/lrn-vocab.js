@@ -37,7 +37,7 @@ Polymer({
     <div>
       <paper-button id="button" noink="">[[term]]</paper-button>
     </div>
-    <lrn-vocab-dialog id="dialog" opened="{{opened}}">
+    <lrn-vocab-dialog id="dialog" opened="{{opened}}" term="[[term]]">
       <slot></slot>
     </lrn-vocab-dialog>
 `,

@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { flush } from "@polymer/polymer/lib/utils/flush.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/paper-item/paper-item.js";
@@ -248,7 +249,7 @@ Polymer({
   ready: function() {
     this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
     // mutation observer that ensures state of hax applied correctly
-    this._observer = dom(this).observeNodes(function(info) {
+    this._observer = FlattenedNodesObserver(this, info => {
       // MAKE SURE WE KNOW WHAT JUST GOT ADDED HERE
       flush();
       // if we've got new nodes, we have to react to that

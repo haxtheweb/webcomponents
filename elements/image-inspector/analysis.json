@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`image-inspector`\nZoom, Rotate, Mirror, Download, and View image",
+      "description": "`image-inspector`\n`Zoom, Rotate, Mirror, Download, and View image`",
       "summary": "",
       "path": "image-inspector.js",
       "properties": [
@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 51,
+              "line": 60,
               "column": 4
             },
             "end": {
-              "line": 55,
+              "line": 64,
               "column": 5
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 59,
+              "line": 68,
               "column": 4
             },
             "end": {
-              "line": 62,
+              "line": 71,
               "column": 5
             }
           },
@@ -56,11 +56,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 66,
+              "line": 75,
               "column": 4
             },
             "end": {
-              "line": 69,
+              "line": 78,
               "column": 5
             }
           },
@@ -79,11 +79,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 75,
+              "line": 84,
               "column": 2
             },
             "end": {
-              "line": 81,
+              "line": 90,
               "column": 3
             }
           },
@@ -99,11 +99,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 86,
+              "line": 95,
               "column": 2
             },
             "end": {
-              "line": 92,
+              "line": 101,
               "column": 3
             }
           },
@@ -119,11 +119,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 97,
+              "line": 106,
               "column": 2
             },
             "end": {
-              "line": 104,
+              "line": 113,
               "column": 3
             }
           },
@@ -139,11 +139,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 109,
+              "line": 118,
               "column": 2
             },
             "end": {
-              "line": 111,
+              "line": 120,
               "column": 3
             }
           },
@@ -159,11 +159,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 116,
+              "line": 125,
               "column": 2
             },
             "end": {
-              "line": 118,
+              "line": 127,
               "column": 3
             }
           },
@@ -188,7 +188,7 @@
           "column": 8
         },
         "end": {
-          "line": 119,
+          "line": 128,
           "column": 1
         }
       },
@@ -200,11 +200,11 @@
           "description": "Image rotation",
           "sourceRange": {
             "start": {
-              "line": 51,
+              "line": 60,
               "column": 4
             },
             "end": {
-              "line": 55,
+              "line": 64,
               "column": 5
             }
           },
@@ -216,11 +216,11 @@
           "description": "Image source.",
           "sourceRange": {
             "start": {
-              "line": 59,
+              "line": 68,
               "column": 4
             },
             "end": {
-              "line": 62,
+              "line": 71,
               "column": 5
             }
           },
@@ -232,11 +232,11 @@
           "description": "Hover class for button styling",
           "sourceRange": {
             "start": {
-              "line": 66,
+              "line": 75,
               "column": 4
             },
             "end": {
-              "line": 69,
+              "line": 78,
               "column": 5
             }
           },

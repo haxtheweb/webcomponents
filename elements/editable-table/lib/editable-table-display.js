@@ -2,7 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
 import "@polymer/paper-item/paper-item.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/responsive-utility/responsive-utility-behaviors.js";
+import "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
 import "./editable-table-behaviors.js";
 import "./editable-table-sort.js";
 import "./editable-table-filter.js";

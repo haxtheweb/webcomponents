@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@lrnwebcomponents/hax-body/lib/hax-store.js";
@@ -233,7 +234,7 @@ Polymer({
     }
     // notice ANY change to body and bubble up, only when we are attached though
     if (this.syncBody) {
-      dom(this.$.body).observeNodes(function(info) {
+      FlattenedNodesObserver(this.$.body, info => {
         if (!this.__lock) {
           this.__lock = true;
           this.fire(

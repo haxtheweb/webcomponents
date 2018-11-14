@@ -47,8 +47,8 @@ Polymer({
       </div>
     </paper-dialog>
     <div id="itemslist">
-      <template id="domRepeat" is="dom-repeat" items\$="{{items}}" as="item">
-        <lrnsys-outline-item disable-down\$="{{item.disableDown}}" disable-left\$="{{item.disableLeft}}" disable-right\$="{{item.disableRight}}" disable-up\$="{{item.disableUp}}" id\$="{{item.id}}" index\$="{{item.index}}" indent-level\$="{{item.indent}}" parent\$="{{item.parent}}" title\$="{{item.title}}">
+      <template is="dom-repeat" items="{{items}}" as="item">
+        <lrnsys-outline-item disable-down$="[[item.disableDown]]" disable-left$="[[item.disableLeft]]" disable-right$="[[item.disableRight]]" disable-up$="[[item.disableUp]]" id$="[[item.id]]" index$="[[item.index]]" indent-level$="{{item.indent}}" parent\$="{{item.parent}}" title\$="{{item.title}}">
         </lrnsys-outline-item>
       </template>
     </div>
@@ -235,7 +235,7 @@ Polymer({
         items2 = items.splice(
           target,
           0,
-          ...items.splice(sourceStart, sourceCount)
+          items.splice(sourceStart, sourceCount)
         );
         this.setData(items);
         this.__focusedItem = this.$.itemslist.querySelectorAll(
