@@ -1,16 +1,12 @@
-<script type="module" src="./responsive-utility.js"></script>
-<!--
-`responsive-utility-nehaviors`
-A simpler way to use responsive utility. 
-
-To use in a webcomponent:
-1. <link rel="import" href="path/to/responsive-utility/responsive-utility-behaviors.html">
-2. behaviors: [ResponsiveUtilityBehaviors]
-
-
--->
-<script type="module">
-import './responsive-utility.js';
+import "../responsive-utility.js";
+/**
+ * `responsive-utility-nehaviors`
+ * `A simpler way to use responsive utility.`
+ *
+ * To use in a webcomponent:
+ *   1. <link rel="import" href="path/to/responsive-utility/responsive-utility-behaviors.html">
+ * 2. behaviors: [ResponsiveUtilityBehaviors]
+ */
 // ensure ResponsiveUtilityBehaviors exists globally before acting on them
 window.ResponsiveUtilityBehaviors = window.ResponsiveUtilityBehaviors || {};
 // create a behavior for elements that have a 'display' connotation
@@ -21,7 +17,7 @@ window.ResponsiveUtilityBehaviors = {
      */
     responsiveSize: {
       type: String,
-      value: 'xs',
+      value: "xs",
       reflectToAttribute: true
     },
     /*
@@ -52,36 +48,33 @@ window.ResponsiveUtilityBehaviors = {
       type: Number,
       value: 1200
     },
-    /*
+    /**
      * Miniumum value for extra-large breakpoint
      */
     md: {
       type: Number,
       value: 1500
-    },
+    }
   },
-  /*
-    * init the utility & register element
-    */
-  attached: function(){
-    let root = this;
+  /**
+   * init the utility & register element
+   */
+  attached: function() {
     window.ResponsiveUtility.requestAvailability();
-    root.fire('responsive-element',{
-      "element": root,
-      "sm": root.sm,
-      "md": root.md,
-      "lg": root.lg,
-      "xl": root.xl,
-      "responsiveToParent": root.responsiveToParent,
-      "attribute": root.attribute
+    this.fire("responsive-element", {
+      element: this,
+      sm: this.sm,
+      md: this.md,
+      lg: this.lg,
+      xl: this.xl,
+      responsiveToParent: this.responsiveToParent,
+      attribute: this.attribute
     });
   },
-  /*
-    * deregister the element
-    */
-  detached: function(){
-    let root = this;
-    root.fire('responsive-element-deleted',root);
-  },
+  /**
+   * detached the element
+   */
+  detached: function() {
+    this.fire("responsive-element-deleted", this);
+  }
 };
-</script>

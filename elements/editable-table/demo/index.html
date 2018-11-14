@@ -7,8 +7,14 @@
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../editable-table.js';
+      setTimeout(() => {
+        document.getElementById('table1togglebutton').addEventListener('change', (e) => {
+          document.getElementById('table1').toggleEditMode();
+        });
+      }, 100);
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
       .vertical-section-container {
@@ -48,13 +54,8 @@
             column-header="" filter="" row-header="" condensed="" sort="" striped="" summary="A table of foods classification by attributes. Each row represents a food with columns for enclosure, contents, and orientation."
             data="[ [ &quot;Food&quot;, &quot;Enclosure&quot;, &quot;Contents&quot;, &quot;Orientation&quot; ], [ &quot;Hamburger&quot;, &quot;one bun, split into two&quot;, &quot;meat, vegetables, cheese, and/or condiments&quot;, &quot;horizontal&quot; ], [ &quot;Hoagie&quot;, &quot;one bun&quot;, &quot;meat, vegetables, cheese, and/or condiments&quot;, &quot;vertical&quot; ], [ &quot;Hot Dog&quot;, &quot;one bun&quot;, &quot;meat, vegetables, cheese, and/or condiments&quot;, &quot;vertical&quot; ], [ &quot;Hot Pocket&quot;, &quot;two crusts sealed together&quot;, &quot;meat, vegetables, cheese, and/or condiments&quot;, &quot;horizontal&quot; ], [ &quot;Pie&quot;, &quot;two crusts sealed together&quot;, &quot;fruit or meat, vegetables, and/or cheese&quot;, &quot;horizontal&quot; ], [ &quot;Taco&quot;, &quot;one shell&quot;, &quot;meat, vegetables, cheese, and/or condiments&quot;, &quot;vertical&quot; ] ]">
           </editable-table>
-          <script>
-            document.getElementById('table1togglebutton').addEventListener('change', (e) => {
-              document.getElementById('table1').toggleEditMode();
-            });
-              & lt; /script>
-            </template >
-          </demo - snippet >
-        </div >
+        </template>
+      </demo-snippet>
+    </div >
   </body>
 </html>

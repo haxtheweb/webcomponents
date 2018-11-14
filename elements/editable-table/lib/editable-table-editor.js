@@ -4,7 +4,7 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/responsive-utility/responsive-utility-behaviors.js";
+import "@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
 import "@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 import "./editable-table-behaviors.js";
 import "./editable-table-editor-rowcol.js";
