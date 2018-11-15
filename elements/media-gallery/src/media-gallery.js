@@ -21,7 +21,7 @@ Polymer({
       }
     </style>
     <lrndesign-gallery accent-color\$="[[accentColor]]" dark\$="[[dark]]" grid\$="[[grid]]" sizing\$="[[sizing]]" sources\$="[[sources]]" title\$="[[title]]">
-      <div slot="description"><slot name="description"></slot></div>
+      <slot slot="description" name="description"></slot>
     </lrndesign-gallery>
 `,
 

@@ -182,7 +182,7 @@ Polymer({
    * Toggles the dialog.
    */
   toggleDialog: function() {
-    this.$.lrnsysdialog.toggleDialog();
+    this.$.lrnsysdialog.openDialog();
   },
 
   /**
