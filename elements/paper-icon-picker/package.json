@@ -19,7 +19,7 @@
   "contributors": [
     "Valentin Hristov <v.hristov@mail.ru>"
   ],
-  "version": "0.0.31",
+  "version": "0.0.32",
   "description": "A icon picker element using all the Material Design icons",
   "repository": {
     "type": "git",
@@ -45,23 +45,23 @@
   "dependencies": {
     "@polymer/iron-a11y-keys": "^3.0.0",
     "@polymer/iron-flex-layout": "^3.0.0",
-    "@polymer/iron-icons": "^3.0.0",
     "@polymer/iron-icon": "^3.0.1",
-    "@polymer/iron-meta": "^3.0.1",
+    "@polymer/iron-icons": "^3.0.0",
     "@polymer/iron-iconset-svg": "^3.0.0",
     "@polymer/iron-list": "^3.0.0",
+    "@polymer/iron-meta": "^3.0.1",
     "@polymer/neon-animation": "^3.0.0",
     "@polymer/paper-icon-button": "^3.0.0",
     "@polymer/paper-item": "^3.0.0",
-    "@polymer/paper-styles": "^3.0.1",
     "@polymer/paper-listbox": "^3.0.0",
     "@polymer/paper-menu-button": "^3.0.0",
+    "@polymer/paper-styles": "^3.0.1",
     "@polymer/paper-tooltip": "^3.0.0",
     "@polymer/polymer": "^3.0.5",
     "web-animations-js": "^2.3.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.0.31",
+    "@lrnwebcomponents/deduping-fix": "^0.0.32",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.1.3",
@@ -81,5 +81,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "9a19006247e8f5523b63bdc4adb4e358fcf59090"
+  "gitHead": "7aa2b90f1a43ae6ea6ee25e0f38d9a09a893218a"
 }

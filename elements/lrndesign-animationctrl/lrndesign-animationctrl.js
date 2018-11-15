@@ -22,7 +22,7 @@ Polymer({
         align-items: stretch;
         @apply --animationctrl-buttons;
       }
-      :host ::shadow lrndesign-animationctrl-button {
+      :host .buttons ::slotted(*) {
         display: flex;
       }
     </style>

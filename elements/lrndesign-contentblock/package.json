@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-contentblock-hax.json"
     }
   },
-  "version": "0.0.31",
+  "version": "0.0.32",
   "description": "Automated conversion of lrndesign-contentblock/",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.0.31",
+    "@lrnwebcomponents/deduping-fix": "^0.0.32",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.1.3",
@@ -63,5 +63,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "9a19006247e8f5523b63bdc4adb4e358fcf59090"
+  "gitHead": "7aa2b90f1a43ae6ea6ee25e0f38d9a09a893218a"
 }
