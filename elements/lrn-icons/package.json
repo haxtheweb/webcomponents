@@ -16,7 +16,7 @@
       "hax": "src/lrn-icons-hax.json"
     }
   },
-  "version": "0.0.31",
+  "version": "0.0.32",
   "description": "Automated conversion of lrn-icons/",
   "repository": {
     "type": "git",

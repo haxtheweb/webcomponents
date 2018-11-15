@@ -11,7 +11,7 @@
       "js": "src/eco-json-schema-form.js"
     }
   },
-  "version": "0.0.31",
+  "version": "0.0.32",
   "description": "Automated conversion of eco-json-schema-form/",
   "repository": {
     "type": "git",
@@ -35,20 +35,20 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@polymer/app-layout": "^3.0.1",
     "@polymer/app-localize-behavior": "^3.0.0",
     "@polymer/iron-flex-layout": "^3.0.0",
     "@polymer/iron-icons": "^3.0.0",
     "@polymer/iron-pages": "^3.0.0",
     "@polymer/iron-validator-behavior": "^3.0.0",
+    "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-checkbox": "^3.0.0",
     "@polymer/paper-dropdown-menu": "^3.0.0",
     "@polymer/paper-icon-button": "^3.0.0",
     "@polymer/paper-input": "^3.0.0",
     "@polymer/paper-item": "^3.0.0",
-    "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-listbox": "^3.0.0",
     "@polymer/paper-material": "^3.0.0",
-    "@polymer/app-layout": "^3.0.1",
     "@polymer/paper-tooltip": "^3.0.0",
     "@polymer/polymer": "^3.0.5",
     "ace-builds": "^1.4.1",
@@ -56,7 +56,7 @@
     "paper-collapse-item": "^4.0.4"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.0.31",
+    "@lrnwebcomponents/deduping-fix": "^0.0.32",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.1.3",
