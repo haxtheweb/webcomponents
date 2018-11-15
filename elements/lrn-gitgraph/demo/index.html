@@ -8,21 +8,22 @@
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-        import '../lrn-gitgraph.js';
+      import '@polymer/polymer/lib/elements/dom-bind.js';
       import '@polymer/iron-ajax/iron-ajax.js';
+      import '../lrn-gitgraph.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic lrn-gitgraph demo</h3>
-      <demo-snippet>
-        <template is="dom-bind">
+        <dom-bind>
+          <template>
           <iron-ajax auto url="api.json" handle-as="json" last-response="{{response}}">
           </iron-ajax>
           <lrn-gitgraph commits="[[response]]" orientation="vertical-reverse"></lrn-gitgraph>
-        </template>
-      </demo-snippet>
+          </template>
+        </dom-bind>
     </div>
   </body>
 </html>

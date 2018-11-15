@@ -28,7 +28,7 @@ Polymer({
         position: relative;
         margin-top: -2px;
       }
-      lrndesign-avatar ::shadow > * {
+      lrndesign-avatar ::slotted(*) {
         transform: translateY(2px);
       }
       #title {
@@ -36,6 +36,7 @@ Polymer({
       }
       #right iron-icon {
         color: gray;
+        display: inline-flex;
       }
     </style>
     <div id="container">

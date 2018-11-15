@@ -18,7 +18,7 @@ Polymer({
         padding: 16px;
       }
       #container ::slotted(lrndesign-mapmenu-item) {
-        margin-top: .4em;
+        margin-top: 6.4px;
       }
     </style>
     <lrndesign-mapmenu-header on-tap="_headerClickHandler" avatar-label="[[avatarLabel]]" title="[[title]]" label="[[label]]" opened="[[opened]]"></lrndesign-mapmenu-header>
