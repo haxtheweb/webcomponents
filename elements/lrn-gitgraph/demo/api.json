@@ -1,0 +1,318 @@
+[
+  {
+    "branch": "master",
+    "commits": [
+      {
+        "refs": "",
+        "commit": "a817aa4",
+        "tree": "afc570f",
+        "parent": "",
+        "subject": "Initial commit of lrn-gitgraph element",
+        "date": "Wed May 31 14:39:29 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "10a469a",
+        "tree": "d7bec20",
+        "parent": "a817aa4",
+        "subject": "Added a forked version of gitgraph.js.  Added demo.",
+        "date": "Fri Jun 2 12:15:37 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "f21d4c8",
+        "tree": "352fbc0",
+        "parent": "10a469a",
+        "subject": "Added test file.",
+        "date": "Mon Jun 5 15:16:23 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "3a7249c",
+        "tree": "e46738c",
+        "parent": "f21d4c8",
+        "subject": "trying new gitgraph method.",
+        "date": "Wed Jun 7 10:09:35 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "bf7f96d",
+        "tree": "3e6fcc8",
+        "parent": "3a7249c",
+        "subject": "started logic for create branches.",
+        "date": "Wed Jun 7 17:27:43 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "9154018",
+        "tree": "006099f",
+        "parent": "10a469a",
+        "subject": "added test file",
+        "date": "Wed Jun 7 17:28:12 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "5371531",
+        "tree": "818354e",
+        "parent": "9154018",
+        "subject": "Added extra test file.",
+        "date": "Wed Jun 7 17:33:02 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "7334103",
+        "tree": "d1f8af8",
+        "parent": "bf7f96d",
+        "subject": "need to fix hasChild",
+        "date": "Thu Jun 8 15:01:09 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "91a04c2",
+        "tree": "9e48a76",
+        "parent": "5371531 7334103",
+        "subject": "Merge branch test",
+        "date": "Thu Jun 8 15:02:14 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "c0c97f2",
+        "tree": "00d02aa",
+        "parent": "91a04c2",
+        "subject": "added parent check.",
+        "date": "Thu Jun 8 15:31:01 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "8b80eb8",
+        "tree": "2f2ac5c",
+        "parent": "91a04c2",
+        "subject": "license update",
+        "date": "Thu Jun 8 15:43:29 2017 -0400",
+        "author": "btopro btopro@outlook.com"
+      },
+      {
+        "refs": "",
+        "commit": "ca3fc41",
+        "tree": "5166fee",
+        "parent": "8b80eb8",
+        "subject": "ALMOST THERE",
+        "date": "Thu Jun 8 15:43:33 2017 -0400",
+        "author": "btopro btopro@outlook.com"
+      },
+      {
+        "refs": "",
+        "commit": "3d460b7",
+        "tree": "8a2b148",
+        "parent": "ca3fc41 c0c97f2",
+        "subject": "updated",
+        "date": "Thu Jun 8 15:44:01 2017 -0400",
+        "author": "btopro btopro@outlook.com"
+      },
+      {
+        "refs": "",
+        "commit": "d16661a",
+        "tree": "5166fee",
+        "parent": "3d460b7",
+        "subject": "almost there",
+        "date": "Thu Jun 8 15:44:27 2017 -0400",
+        "author": "btopro btopro@outlook.com"
+      },
+      {
+        "refs": "",
+        "commit": "4963a91",
+        "tree": "8ba28f7",
+        "parent": "d16661a",
+        "subject": "getting somewhere",
+        "date": "Tue Jun 13 11:21:10 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "41776ef",
+        "tree": "dda3209",
+        "parent": "4963a91",
+        "subject": "closer...",
+        "date": "Tue Jun 13 11:46:16 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "f9cfd6c",
+        "tree": "e7cbf96",
+        "parent": "41776ef",
+        "subject": "Updating demo json",
+        "date": "Tue Jun 13 11:47:22 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": " (HEAD -> master, origin/master)",
+        "commit": "cb87e79",
+        "tree": "dc13478",
+        "parent": "f9cfd6c",
+        "subject": "added docs",
+        "date": "Tue Jun 13 13:13:23 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      }
+    ]
+  },
+  {
+    "branch": "testing",
+    "commits": [
+      {
+        "refs": "",
+        "commit": "a817aa4",
+        "tree": "afc570f",
+        "parent": "",
+        "subject": "Initial commit of lrn-gitgraph element",
+        "date": "Wed May 31 14:39:29 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "10a469a",
+        "tree": "d7bec20",
+        "parent": "a817aa4",
+        "subject": "Added a forked version of gitgraph.js.  Added demo.",
+        "date": "Fri Jun 2 12:15:37 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "f21d4c8",
+        "tree": "352fbc0",
+        "parent": "10a469a",
+        "subject": "Added test file.",
+        "date": "Mon Jun 5 15:16:23 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "3a7249c",
+        "tree": "e46738c",
+        "parent": "f21d4c8",
+        "subject": "trying new gitgraph method.",
+        "date": "Wed Jun 7 10:09:35 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "bf7f96d",
+        "tree": "3e6fcc8",
+        "parent": "3a7249c",
+        "subject": "started logic for create branches.",
+        "date": "Wed Jun 7 17:27:43 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "9154018",
+        "tree": "006099f",
+        "parent": "10a469a",
+        "subject": "added test file",
+        "date": "Wed Jun 7 17:28:12 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "5371531",
+        "tree": "818354e",
+        "parent": "9154018",
+        "subject": "Added extra test file.",
+        "date": "Wed Jun 7 17:33:02 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "7334103",
+        "tree": "d1f8af8",
+        "parent": "bf7f96d",
+        "subject": "need to fix hasChild",
+        "date": "Thu Jun 8 15:01:09 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "91a04c2",
+        "tree": "9e48a76",
+        "parent": "5371531 7334103",
+        "subject": "Merge branch test",
+        "date": "Thu Jun 8 15:02:14 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "c0c97f2",
+        "tree": "00d02aa",
+        "parent": "91a04c2",
+        "subject": "added parent check.",
+        "date": "Thu Jun 8 15:31:01 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": "",
+        "commit": "8b80eb8",
+        "tree": "2f2ac5c",
+        "parent": "91a04c2",
+        "subject": "license update",
+        "date": "Thu Jun 8 15:43:29 2017 -0400",
+        "author": "btopro btopro@outlook.com"
+      },
+      {
+        "refs": "",
+        "commit": "ca3fc41",
+        "tree": "5166fee",
+        "parent": "8b80eb8",
+        "subject": "ALMOST THERE",
+        "date": "Thu Jun 8 15:43:33 2017 -0400",
+        "author": "btopro btopro@outlook.com"
+      },
+      {
+        "refs": "",
+        "commit": "3d460b7",
+        "tree": "8a2b148",
+        "parent": "ca3fc41 c0c97f2",
+        "subject": "updated",
+        "date": "Thu Jun 8 15:44:01 2017 -0400",
+        "author": "btopro btopro@outlook.com"
+      },
+      {
+        "refs": "",
+        "commit": "d16661a",
+        "tree": "5166fee",
+        "parent": "3d460b7",
+        "subject": "almost there",
+        "date": "Thu Jun 8 15:44:27 2017 -0400",
+        "author": "btopro btopro@outlook.com"
+      },
+      {
+        "refs": "",
+        "commit": "58c41e9",
+        "tree": "49bbff2",
+        "parent": "d16661a",
+        "subject": "testing",
+        "date": "Mon Jun 12 16:12:57 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      },
+      {
+        "refs": " (testing)",
+        "commit": "96c217d",
+        "tree": "6fa8a4b",
+        "parent": "58c41e9",
+        "subject": "More test files.",
+        "date": "Tue Jun 13 11:47:48 2017 -0400",
+        "author": "heyMP mgp140@gmail.com"
+      }
+    ]
+  }
+]

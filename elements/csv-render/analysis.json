@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 169,
+              "line": 186,
               "column": 4
             },
             "end": {
-              "line": 171,
+              "line": 188,
               "column": 5
             }
           },
@@ -34,11 +34,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 175,
+              "line": 192,
               "column": 4
             },
             "end": {
-              "line": 178,
+              "line": 195,
               "column": 5
             }
           },
@@ -55,11 +55,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 182,
+              "line": 199,
               "column": 4
             },
             "end": {
-              "line": 185,
+              "line": 202,
               "column": 5
             }
           },
@@ -76,11 +76,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 189,
+              "line": 206,
               "column": 4
             },
             "end": {
-              "line": 192,
+              "line": 209,
               "column": 5
             }
           },
@@ -98,11 +98,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 196,
+              "line": 213,
               "column": 4
             },
             "end": {
-              "line": 199,
+              "line": 216,
               "column": 5
             }
           },
@@ -120,11 +120,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 203,
+              "line": 220,
               "column": 4
             },
             "end": {
-              "line": 206,
+              "line": 223,
               "column": 5
             }
           },
@@ -143,11 +143,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 212,
+              "line": 229,
               "column": 2
             },
             "end": {
-              "line": 216,
+              "line": 233,
               "column": 3
             }
           },
@@ -167,11 +167,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 221,
+              "line": 238,
               "column": 2
             },
             "end": {
-              "line": 243,
+              "line": 260,
               "column": 3
             }
           },
@@ -193,11 +193,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 23,
+          "line": 24,
           "column": 8
         },
         "end": {
-          "line": 244,
+          "line": 261,
           "column": 1
         }
       },
@@ -209,11 +209,11 @@
           "description": "Location of the CSV file.",
           "sourceRange": {
             "start": {
-              "line": 169,
+              "line": 186,
               "column": 4
             },
             "end": {
-              "line": 171,
+              "line": 188,
               "column": 5
             }
           },
@@ -225,11 +225,11 @@
           "description": "Caption for the table to improve accessibility and readability.",
           "sourceRange": {
             "start": {
-              "line": 175,
+              "line": 192,
               "column": 4
             },
             "end": {
-              "line": 178,
+              "line": 195,
               "column": 5
             }
           },
@@ -241,11 +241,11 @@
           "description": "Summary to improve accessibility for screen readers.",
           "sourceRange": {
             "start": {
-              "line": 182,
+              "line": 199,
               "column": 4
             },
             "end": {
-              "line": 185,
+              "line": 202,
               "column": 5
             }
           },
@@ -257,11 +257,11 @@
           "description": "Table busted out as an array.",
           "sourceRange": {
             "start": {
-              "line": 189,
+              "line": 206,
               "column": 4
             },
             "end": {
-              "line": 192,
+              "line": 209,
               "column": 5
             }
           },
@@ -273,11 +273,11 @@
           "description": "Headings from the first row of the csv",
           "sourceRange": {
             "start": {
-              "line": 196,
+              "line": 213,
               "column": 4
             },
             "end": {
-              "line": 199,
+              "line": 216,
               "column": 5
             }
           },
@@ -289,11 +289,11 @@
           "description": "Raw data pulled in from the csv file.",
           "sourceRange": {
             "start": {
-              "line": 203,
+              "line": 220,
               "column": 4
             },
             "end": {
-              "line": 206,
+              "line": 223,
               "column": 5
             }
           },

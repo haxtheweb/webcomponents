@@ -16,7 +16,7 @@ Polymer({
       #container {
         padding: 16px 32px;
       }
-      :host > ::shadow lrndesign-mapmenu-submenu + lrndesign-mapmenu-submenu {
+      :host > ::slotted(lrndesign-mapmenu-submenu + lrndesign-mapmenu-submenu) {
         margin-top: 16px;
       }
     </style>
