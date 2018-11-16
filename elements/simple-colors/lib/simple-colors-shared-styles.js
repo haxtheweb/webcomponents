@@ -13,7 +13,24 @@
  * @demo demo/index.html
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/iron-flex-layout/iron-flex-layout.js";
+/**
+ * Allows the colors variables to be shared with the shared styles and custom elements
+ */
+export class SimpleColorsManager extends PolymerElement {
+  static get is() {
+    return "simple-colors-manager";
+  }
+
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  connectedCallback() {
+    if (!SimpleColorsManager.instance) {
+      SimpleColorsManager.instance = this;
+    }
+  }
+}
+
 const colors = {
   grey: [
     "#ffffff",
@@ -282,6 +299,20 @@ const colors = {
     "#0f1518"
   ]
 };
+
+SimpleColorsManager.instance = null;
+SimpleColorsManager.colors = colors;
+
+SimpleColorsManager.requestAvailability = function(element) {
+  document.addEventListener("DOMContentLoaded", function(event) {
+    if (!SimpleColorsManager.instance) {
+      SimpleColorsManager.instance = document.createElement(
+        "simple-colors-manager"
+      );
+    }
+    document.body.appendChild(SimpleColorsManager.instance);
+  });
+};
 /**
  * gets the correct hexCode for a color level,
  * depending on whether or not the list is dark (inverted)
@@ -368,7 +399,7 @@ const addAccentVariables = function() {
   for (let color in colors) {
     str.push(
       addStyle(
-        'host([accent-color="' + color + '"])',
+        ':host([accent-color="' + color + '"])',
         [
           addColorLevels("default", "accent", colors[color], false),
           addColorLevels("light", "accent", colors[color], false),
@@ -379,7 +410,7 @@ const addAccentVariables = function() {
 
     str.push(
       addStyle(
-        'host([dark][accent-color="' + color + '"])',
+        ':host([dark][accent-color="' + color + '"])',
         [addColorLevels("default", "accent", colors[color], true)].join("")
       )
     );
@@ -419,20 +450,13 @@ const addColorClasses = function(cssvar) {
 const addStyle = function(selector, style) {
   return "<style>\n" + selector + " {\n" + style + "\n}\n</style>\n";
 };
-/**
- * gets all shared styles
- */
-const getAllStyles = function() {
-  let template = document.createElement("template");
-  template.innerHTML = addCssVariables() + addAccentVariables() + addClasses();
-  return template;
-};
 
 /**
- * append and regiter the shared styles
+ * append and register the shared styles
  */
 const styleElement = document.createElement("dom-module"),
-  allStyles = getAllStyles();
-styleElement.appendChild(html`${allStyles}`);
+  template = document.createElement("template");
+template.innerHTML = addCssVariables() + addAccentVariables() + addClasses();
+styleElement.appendChild(html`${template}`);
 styleElement.register("simple-colors-shared-styles");
-console.log(styleElement);
+//console.log(styleElement);

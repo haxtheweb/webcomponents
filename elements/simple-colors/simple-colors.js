@@ -1,14 +1,9 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "./lib/simple-colors-shared-styles.js"; //import the shared styles
-
-export { SimpleColors };
-/**
+ *
  * `simple-colors`
- * `a utilty that provides a global set of color classes and variables based on theme and accent color attributes`
+ * `extend elements with simple-colors to give them the color-management properties and utilities `
  *
  * @microcopy - language worth noting:
  *  -
@@ -17,33 +12,21 @@ export { SimpleColors };
  * @polymer
  * @demo demo/index.html
  */
-class SimpleColors extends PolymerElement {
-  // render function
-  static get template() {
-    return html`
-<style>:host {
-  display: block;
-}
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+//import { SimpleColorsManager } from "./lib/simple-colors-manager.js"; //import the shared styles
+import { SimpleColorsManager } from "./lib/simple-colors-shared-styles.js"; //import the shared styles
 
-:host([hidden]) {
-  display: none;
-}</style>
-<style is="custom-style" include="simple-colors-shared-styles">
-    :host {
-        background-color: var(--simple-colors-default-theme-accent-11);
-        color: var(--simple-colors-default-theme-grey-1);
-    }
-</style>
-<p class="test">Testing</p>`;
+export class SimpleColors extends PolymerElement {
+  static get is() {
+    return "simple-colors";
   }
 
-  // properties available to the custom element for data binding
   static get properties() {
     return {
       accentColor: {
         name: "accentColor",
         type: "String",
-        value: null,
+        value: "grey",
         reflectToAttribute: true,
         observer: false
       },
@@ -53,25 +36,56 @@ class SimpleColors extends PolymerElement {
         value: null,
         reflectToAttribute: true,
         observer: false
+      },
+      colors: {
+        name: "colors",
+        type: "Object",
+        value: {},
+        reflectToAttribute: false,
+        observer: false
       }
     };
   }
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "simple-colors";
+
+  // render function
+  static get template() {
+    return html`<style is="custom-style" include="simple-colors-shared-styles"></style>`;
   }
+
   /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
+    SimpleColorsManager.requestAvailability();
+    this.set("colors", SimpleColorsManager.colors);
+    //console.log(this.colors);
+    this.getContrasts("--simple-colors-default-theme-accent-5");
+    this.getContrasts("--simple-colors-dark-theme-grey-2", false);
+    this.getContrasts("--simple-colors-dark-theme-red-11", true);
+    this.getContrasts("--simple-colors-dark-theme-grey-1", true);
     super.connectedCallback();
   }
+
   /**
-   * life cycle, element is removed from the DOM
+   * life cycle, element is afixed to the DOM
    */
-  //disconnectedCallback() {}
+  getContrasts(variable, large) {
+    large = large !== undefined && large !== null ? large : false;
+    let details = variable.replace("--", "").split("-"),
+      theme = details[2],
+      color = details[4],
+      level = details[5];
+    let makeColor = function(theme, color, level) {
+      return "--simple-colors-" + [theme, "theme", color, level].join("-");
+    };
+    console.log(
+      variable,
+      large,
+      theme,
+      color,
+      level,
+      makeColor(theme, color, level)
+    );
+  }
 }
-window.customElements.define(SimpleColors.tag, SimpleColors);
+customElements.define(SimpleColors.is, SimpleColors);
