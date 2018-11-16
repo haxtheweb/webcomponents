@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "../lib/simple-colors-shared-styles.js"; //import the shared styles
+import "./lib/simple-colors-shared-styles.js"; //import the shared styles
 
 export { SimpleColors };
 /**

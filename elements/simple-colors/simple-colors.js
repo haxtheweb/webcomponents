@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "../lib/simple-colors-shared-styles.js"; //import the shared styles
+import "./lib/simple-colors-shared-styles.js"; //import the shared styles
 
 export { SimpleColors };
 /**
@@ -28,9 +28,13 @@ class SimpleColors extends PolymerElement {
 :host([hidden]) {
   display: none;
 }</style>
-<style include="simple-colors-shared-styles"></style>
-HELLO
-<p class="simple-colors-default-theme-accent-12">Testing</p>`;
+<style is="custom-style" include="simple-colors-shared-styles">
+    :host {
+        background-color: var(--simple-colors-default-theme-accent-11);
+        color: var(--simple-colors-default-theme-grey-1);
+    }
+</style>
+<p class="test">Testing</p>`;
   }
 
   // properties available to the custom element for data binding

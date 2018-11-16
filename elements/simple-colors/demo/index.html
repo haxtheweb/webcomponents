@@ -7,7 +7,7 @@
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script type="module">
       import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../src/simple-colors.js';
+      import '../simple-colors.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -16,7 +16,15 @@
       <h3>Basic simple-colors demo</h3>
       <demo-snippet>
         <template>
+          <style is="custom-style" include="simple-colors-shared-styles">
+            simple-colors {
+                background-color: var(--simple-colors-default-theme-accent-11);
+                color: var(--simple-colors-default-theme-grey-1);
+            }
+          </style>
           <simple-colors></simple-colors>
+          <simple-colors dark></simple-colors>
+          <simple-colors accent-color="red"></simple-colors>
         </template>
       </demo-snippet>
     </div>

@@ -4,7 +4,7 @@
     {
       "description": "`simple-colors`\n`a utilty that provides a global set of color classes and variables based on theme and accent color attributes`",
       "summary": "",
-      "path": "src/simple-colors.js",
+      "path": "simple-colors.js",
       "properties": [
         {
           "name": "__dataClientsReady",
@@ -12,7 +12,7 @@
           "description": "",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1090,
               "column": 6
@@ -35,7 +35,7 @@
           "description": "",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1092,
               "column": 6
@@ -58,7 +58,7 @@
           "description": "",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1094,
               "column": 6
@@ -81,7 +81,7 @@
           "description": "",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1096,
               "column": 6
@@ -104,7 +104,7 @@
           "description": "",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1098,
               "column": 6
@@ -127,7 +127,7 @@
           "description": "",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1100,
               "column": 6
@@ -150,7 +150,7 @@
           "description": "",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1102,
               "column": 6
@@ -173,7 +173,7 @@
           "description": "",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1104,
               "column": 6
@@ -196,7 +196,7 @@
           "description": "",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1106,
               "column": 6
@@ -219,7 +219,7 @@
           "description": "",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1108,
               "column": 6
@@ -242,7 +242,7 @@
           "description": "",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1110,
               "column": 6
@@ -265,7 +265,7 @@
           "description": "",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1112,
               "column": 6
@@ -288,7 +288,7 @@
           "description": "",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1114,
               "column": 6
@@ -311,7 +311,7 @@
           "description": "",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1116,
               "column": 6
@@ -334,7 +334,7 @@
           "description": "",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1118,
               "column": 6
@@ -357,7 +357,7 @@
           "description": "",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1120,
               "column": 6
@@ -380,7 +380,7 @@
           "description": "",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1122,
               "column": 6
@@ -403,7 +403,7 @@
           "description": "",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1124,
               "column": 6
@@ -426,7 +426,7 @@
           "description": "",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1126,
               "column": 6
@@ -449,7 +449,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1129,
               "column": 4
@@ -472,7 +472,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/element-mixin.js",
             "start": {
               "line": 490,
               "column": 6
@@ -495,7 +495,7 @@
           "description": "",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/element-mixin.js",
             "start": {
               "line": 492,
               "column": 6
@@ -518,7 +518,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/element-mixin.js",
             "start": {
               "line": 494,
               "column": 6
@@ -541,7 +541,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/element-mixin.js",
             "start": {
               "line": 496,
               "column": 6
@@ -564,7 +564,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/element-mixin.js",
             "start": {
               "line": 498,
               "column": 6
@@ -587,7 +587,7 @@
           "description": "",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/element-mixin.js",
             "start": {
               "line": 500,
               "column": 6
@@ -603,6 +603,50 @@
             }
           },
           "inheritedFrom": "ElementMixin"
+        },
+        {
+          "name": "accentColor",
+          "type": "?",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 43,
+              "column": 2
+            },
+            "end": {
+              "line": 49,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "false"
+            }
+          },
+          "defaultValue": "null"
+        },
+        {
+          "name": "dark",
+          "type": "?",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 50,
+              "column": 2
+            },
+            "end": {
+              "line": 56,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "false"
+            }
+          },
+          "defaultValue": "null"
         }
       ],
       "methods": [
@@ -611,7 +655,7 @@
           "description": "Stamps the provided template and performs instance-time setup for\nPolymer template features, including data bindings, declarative event\nlisteners, and the `this.$` map of `id`'s to nodes.  A document fragment\nis returned containing the stamped DOM, ready for insertion into the\nDOM.\n\nThis method may be called more than once; however note that due to\n`shadycss` polyfill limitations, only styles from templates prepared\nusing `ShadyCSS.prepareTemplate` will be correctly polyfilled (scoped\nto the shadow root and support CSS custom properties), and note that\n`ShadyCSS.prepareTemplate` may only be called once per element. As such,\nany styles required by in runtime-stamped templates must be included\nin the main element template.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2416,
               "column": 4
@@ -640,7 +684,7 @@
           "description": "Adds an event listener by method name for the event provided.\n\nThis method generates a handler function that looks up the method\nname at handling time.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/template-stamp.js",
+            "file": "../@polymer/polymer/lib/mixins/template-stamp.js",
             "start": {
               "line": 454,
               "column": 4
@@ -684,7 +728,7 @@
           "description": "Override point for adding custom or simulated event handling.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/template-stamp.js",
+            "file": "../@polymer/polymer/lib/mixins/template-stamp.js",
             "start": {
               "line": 470,
               "column": 4
@@ -722,7 +766,7 @@
           "description": "Override point for adding custom or simulated event handling.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/template-stamp.js",
+            "file": "../@polymer/polymer/lib/mixins/template-stamp.js",
             "start": {
               "line": 483,
               "column": 4
@@ -760,7 +804,7 @@
           "description": "Creates a setter/getter pair for the named property with its own\nlocal storage.  The getter returns the value in the local storage,\nand the setter calls `_setProperty`, which updates the local storage\nfor the property and enqueues a `_propertiesChanged` callback.\n\nThis method may be called on a prototype or an instance.  Calling\nthis method may overwrite a property value that already exists on\nthe prototype/instance by creating the accessor.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-changed.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-changed.js",
             "start": {
               "line": 106,
               "column": 4
@@ -793,7 +837,7 @@
           "description": "Adds the given `property` to a map matching attribute names\nto property names, using `attributeNameForProperty`. This map is\nused when deserializing attribute values to properties.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-changed.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-changed.js",
             "start": {
               "line": 125,
               "column": 4
@@ -821,7 +865,7 @@
           "description": "Defines a property accessor for the given property.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-changed.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-changed.js",
             "start": {
               "line": 142,
               "column": 5
@@ -854,7 +898,7 @@
           "description": "Stamps the element template.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/element-mixin.js",
             "start": {
               "line": 608,
               "column": 4
@@ -876,7 +920,7 @@
           "description": "Overrides the default `PropertyAccessors` to ensure class\nmetaprogramming related to property accessors and effects has\ncompleted (calls `finalize`).\n\nIt also initializes any property defaults provided via `value` in\n`properties` metadata.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/element-mixin.js",
             "start": {
               "line": 515,
               "column": 4
@@ -898,7 +942,7 @@
           "description": "Called at ready time with bag of instance properties that overwrote\naccessors when the element upgraded.\n\nThe default implementation sets these properties back into the\nsetter at ready time.  This method is provided as an override\npoint for customizing or providing more efficient initialization.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-changed.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-changed.js",
             "start": {
               "line": 227,
               "column": 4
@@ -926,7 +970,7 @@
           "description": "Updates the local storage for a property (via `_setPendingProperty`)\nand enqueues a `_proeprtiesChanged` callback.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-changed.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-changed.js",
             "start": {
               "line": 241,
               "column": 4
@@ -959,7 +1003,7 @@
           "description": "Returns the value for the given property.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-changed.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-changed.js",
             "start": {
               "line": 254,
               "column": 4
@@ -988,7 +1032,7 @@
           "description": "Updates the local storage for a property, records the previous value,\nand adds it to the set of \"pending changes\" that will be passed to the\n`_propertiesChanged` callback.  This method does not enqueue the\n`_propertiesChanged` callback.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-changed.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-changed.js",
             "start": {
               "line": 272,
               "column": 4
@@ -1027,7 +1071,7 @@
           "description": "Marks the properties as invalid, and enqueues an async\n`_propertiesChanged` callback.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-changed.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-changed.js",
             "start": {
               "line": 299,
               "column": 4
@@ -1049,7 +1093,7 @@
           "description": "Call to enable property accessor processing. Before this method is\ncalled accessor values will be set but side effects are\nqueued. When called, any pending side effects occur immediately.\nFor elements, generally `connectedCallback` is a normal spot to do so.\nIt is safe to call this method multiple times as it only turns on\nproperty accessors once.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-changed.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-changed.js",
             "start": {
               "line": 323,
               "column": 4
@@ -1071,7 +1115,7 @@
           "description": "Calls the `_propertiesChanged` callback with the current set of\npending changes (and old values recorded when pending changes were\nset), and resets the pending set of changes. Generally, this method\nshould not be called in user code.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-changed.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-changed.js",
             "start": {
               "line": 344,
               "column": 4
@@ -1093,7 +1137,7 @@
           "description": "Called in `_flushProperties` to determine if `_propertiesChanged`\nshould be called. The default implementation returns true if\nproperties are pending. Override to customize when\n`_propertiesChanged` is called.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-changed.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-changed.js",
             "start": {
               "line": 368,
               "column": 4
@@ -1132,7 +1176,7 @@
           "description": "Callback called when any properties with accessors created via\n`_createPropertyAccessor` have been set.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-changed.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-changed.js",
             "start": {
               "line": 385,
               "column": 4
@@ -1170,7 +1214,7 @@
           "description": "Method called to determine whether a property value should be\nconsidered as a change and cause the `_propertiesChanged` callback\nto be enqueued.\n\nThe default implementation returns `true` if a strict equality\ncheck fails. The method always returns false for `NaN`.\n\nOverride this method to e.g. provide stricter checking for\nObjects/Arrays when using immutable patterns.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-changed.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-changed.js",
             "start": {
               "line": 407,
               "column": 4
@@ -1209,7 +1253,7 @@
           "description": "Implements native Custom Elements `attributeChangedCallback` to\nset an attribute value to a property via `_attributeToProperty`.",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-changed.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-changed.js",
             "start": {
               "line": 428,
               "column": 4
@@ -1252,7 +1296,7 @@
           "description": "Deserializes an attribute to its associated property.\n\nThis method calls the `_deserializeValue` method to convert the string to\na typed value.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-changed.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-changed.js",
             "start": {
               "line": 450,
               "column": 4
@@ -1290,7 +1334,7 @@
           "description": "Serializes a property to its associated attribute.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-changed.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-changed.js",
             "start": {
               "line": 470,
               "column": 4
@@ -1328,7 +1372,7 @@
           "description": "Sets a typed value to an HTML attribute on a node.\n\nThis method calls the `_serializeValue` method to convert the typed\nvalue to a string.  If the `_serializeValue` method returns `undefined`,\nthe attribute will be removed (this is the default for boolean\ntype `false`).",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-changed.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-changed.js",
             "start": {
               "line": 492,
               "column": 4
@@ -1366,7 +1410,7 @@
           "description": "Converts a typed JavaScript value to a string.\n\nThis method is called when setting JS property values to\nHTML attributes.  Users may override this method to provide\nserialization for custom types.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-changed.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-changed.js",
             "start": {
               "line": 513,
               "column": 4
@@ -1395,7 +1439,7 @@
           "description": "Converts a string to a typed JavaScript value.\n\nThis method is called when reading HTML attribute values to\nJS properties.  Users may override this method to provide\ndeserialization for custom `type`s. Types for `Boolean`, `String`,\nand `Number` convert attributes to the expected types.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-changed.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-changed.js",
             "start": {
               "line": 535,
               "column": 4
@@ -1429,7 +1473,7 @@
           "description": "Overrides `PropertyAccessors` implementation to provide a\nmore efficient implementation of initializing properties from\nthe prototype on the instance.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1160,
               "column": 4
@@ -1457,7 +1501,7 @@
           "description": "Ensures the element has the given attribute. If it does not,\nassigns the given value to the attribute.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-accessors.js",
+            "file": "../@polymer/polymer/lib/mixins/property-accessors.js",
             "start": {
               "line": 185,
               "column": 4
@@ -1490,7 +1534,7 @@
           "description": "Returns true if this library created an accessor for the given property.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-accessors.js",
+            "file": "../@polymer/polymer/lib/mixins/property-accessors.js",
             "start": {
               "line": 292,
               "column": 4
@@ -1519,7 +1563,7 @@
           "description": "Returns true if the specified property has a pending change.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-accessors.js",
+            "file": "../@polymer/polymer/lib/mixins/property-accessors.js",
             "start": {
               "line": 303,
               "column": 4
@@ -1548,7 +1592,7 @@
           "description": "Equivalent to static `addPropertyEffect` API but can be called on\nan instance to add effects at runtime.  See that method for\nfull API docs.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1198,
               "column": 4
@@ -1586,7 +1630,7 @@
           "description": "Removes the given property effect.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1216,
               "column": 4
@@ -1624,7 +1668,7 @@
           "description": "Returns whether the current prototype/instance has a property effect\nof a certain type.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1233,
               "column": 4
@@ -1658,7 +1702,7 @@
           "description": "Returns whether the current prototype/instance has a \"read only\"\naccessor for the given property.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1246,
               "column": 4
@@ -1687,7 +1731,7 @@
           "description": "Returns whether the current prototype/instance has a \"notify\"\nproperty effect for the given property.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1258,
               "column": 4
@@ -1716,7 +1760,7 @@
           "description": "Returns whether the current prototype/instance has a \"reflect to attribute\"\nproperty effect for the given property.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1270,
               "column": 4
@@ -1745,7 +1789,7 @@
           "description": "Returns whether the current prototype/instance has a \"computed\"\nproperty effect for the given property.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1282,
               "column": 4
@@ -1774,7 +1818,7 @@
           "description": "Sets a pending property or path.  If the root property of the path in\nquestion had no accessor, the path is set, otherwise it is enqueued\nvia `_setPendingProperty`.\n\nThis function isolates relatively expensive functionality necessary\nfor the public API (`set`, `setProperties`, `notifyPath`, and property\nchange listeners via {{...}} bindings), such that it is only done\nwhen paths enter the system, and not at every propagation step.  It\nalso sets a `__dataHasPaths` flag on the instance which is used to\nfast-path slower path-matching code in the property effects host paths.\n\n`path` can be a path string or array of path parts as accepted by the\npublic API.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1316,
               "column": 4
@@ -1818,7 +1862,7 @@
           "description": "Applies a value to a non-Polymer element/node's property.\n\nThe implementation makes a best-effort at binding interop:\nSome native element properties have side-effects when\nre-setting the same value (e.g. setting `<input>.value` resets the\ncursor position), so we do a dirty-check before setting the value.\nHowever, for better interop with non-Polymer custom elements that\naccept objects, we explicitly re-set object changes coming from the\nPolymer world (which may include deep object changes without the\ntop reference changing), erring on the side of providing more\ninformation.\n\nUsers may override this method to provide alternate approaches.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1371,
               "column": 4
@@ -1856,7 +1900,7 @@
           "description": "Enqueues the given client on a list of pending clients, whose\npending property changes can later be flushed via a call to\n`_flushClients`.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1486,
               "column": 4
@@ -1884,7 +1928,7 @@
           "description": "Flushes any clients previously enqueued via `_enqueueClient`, causing\ntheir `_flushProperties` method to run.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1512,
               "column": 4
@@ -1906,7 +1950,7 @@
           "description": "(c) the stamped dom enables.",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1537,
               "column": 4
@@ -1928,7 +1972,7 @@
           "description": "Implements `PropertyEffects`'s `_readyClients` call. Attaches\nelement dom by calling `_attachDom` with the dom stamped from the\nelement's template via `_stampTemplate`. Note that this allows\nclient dom to be attached to the element prior to any observers\nrunning.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/element-mixin.js",
             "start": {
               "line": 626,
               "column": 4
@@ -1950,7 +1994,7 @@
           "description": "Sets a bag of property changes to this instance, and\nsynchronously processes all effects of the properties as a batch.\n\nProperty names must be simple properties, not paths.  Batched\npath propagation is not supported.",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1579,
               "column": 4
@@ -1983,7 +2027,7 @@
           "description": "Called to propagate any property changes to stamped template nodes\nmanaged by this element.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1677,
               "column": 4
@@ -2021,7 +2065,7 @@
           "description": "Aliases one data path as another, such that path notifications from one\nare routed to the other.",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1698,
               "column": 4
@@ -2054,7 +2098,7 @@
           "description": "Removes a data path alias previously established with `_linkPaths`.\n\nNote, the path to unlink should be the target (`to`) used when\nlinking the paths.",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1715,
               "column": 4
@@ -2082,7 +2126,7 @@
           "description": "Notify that an array has changed.\n\nExample:\n\n    this.items = [ {name: 'Jim'}, {name: 'Todd'}, {name: 'Bill'} ];\n    ...\n    this.items.splice(1, 1, {name: 'Sam'});\n    this.items.push({name: 'Bob'});\n    this.notifySplices('items', [\n      { index: 1, removed: [{name: 'Todd'}], addedCount: 1, object: this.items, type: 'splice' },\n      { index: 3, removed: [], addedCount: 1, object: this.items, type: 'splice'}\n    ]);",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1752,
               "column": 4
@@ -2115,7 +2159,7 @@
           "description": "Convenience method for reading a value from a path.\n\nNote, if any part in the path is undefined, this method returns\n`undefined` (this method does not throw when dereferencing undefined\npaths).",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1777,
               "column": 4
@@ -2149,7 +2193,7 @@
           "description": "Convenience method for setting a value to a path and notifying any\nelements bound to the same path.\n\nNote, if any part in the path except for the last is undefined,\nthis method does nothing (this method does not throw when\ndereferencing undefined paths).",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1802,
               "column": 4
@@ -2187,7 +2231,7 @@
           "description": "Adds items onto the end of the array at the path specified.\n\nThe arguments after `path` and return value match that of\n`Array.prototype.push`.\n\nThis method notifies other paths to the same array that a\nsplice occurred to the array.",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1828,
               "column": 4
@@ -2222,7 +2266,7 @@
           "description": "Removes an item from the end of array at the path specified.\n\nThe arguments after `path` and return value match that of\n`Array.prototype.pop`.\n\nThis method notifies other paths to the same array that a\nsplice occurred to the array.",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1852,
               "column": 4
@@ -2251,7 +2295,7 @@
           "description": "Starting from the start index specified, removes 0 or more items\nfrom the array and inserts 0 or more new items in their place.\n\nThe arguments after `path` and return value match that of\n`Array.prototype.splice`.\n\nThis method notifies other paths to the same array that a\nsplice occurred to the array.",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1880,
               "column": 4
@@ -2296,7 +2340,7 @@
           "description": "Removes an item from the beginning of array at the path specified.\n\nThe arguments after `path` and return value match that of\n`Array.prototype.pop`.\n\nThis method notifies other paths to the same array that a\nsplice occurred to the array.",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1932,
               "column": 4
@@ -2325,7 +2369,7 @@
           "description": "Adds items onto the beginning of the array at the path specified.\n\nThe arguments after `path` and return value match that of\n`Array.prototype.push`.\n\nThis method notifies other paths to the same array that a\nsplice occurred to the array.",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1957,
               "column": 4
@@ -2360,7 +2404,7 @@
           "description": "Notify that a path has changed.\n\nExample:\n\n    this.item.user.name = 'Bob';\n    this.notifyPath('item.user.name');",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 1980,
               "column": 4
@@ -2393,7 +2437,7 @@
           "description": "Equivalent to static `createReadOnlyProperty` API but can be called on\nan instance to add effects at runtime.  See that method for\nfull API docs.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2010,
               "column": 4
@@ -2426,7 +2470,7 @@
           "description": "Equivalent to static `createPropertyObserver` API but can be called on\nan instance to add effects at runtime.  See that method for\nfull API docs.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2031,
               "column": 4
@@ -2464,7 +2508,7 @@
           "description": "Equivalent to static `createMethodObserver` API but can be called on\nan instance to add effects at runtime.  See that method for\nfull API docs.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2054,
               "column": 4
@@ -2497,7 +2541,7 @@
           "description": "Equivalent to static `createNotifyingProperty` API but can be called on\nan instance to add effects at runtime.  See that method for\nfull API docs.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2071,
               "column": 4
@@ -2525,7 +2569,7 @@
           "description": "Equivalent to static `createReflectedProperty` API but can be called on\nan instance to add effects at runtime.  See that method for\nfull API docs.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2090,
               "column": 4
@@ -2553,7 +2597,7 @@
           "description": "Equivalent to static `createComputedProperty` API but can be called on\nan instance to add effects at runtime.  See that method for\nfull API docs.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2117,
               "column": 4
@@ -2591,7 +2635,7 @@
           "description": "Gather the argument values for a method specified in the provided array\nof argument metadata.\n\nThe `path` and `value` arguments are used to fill in wildcard descriptor\nwhen the method is being called as a result of a path notification.",
           "privacy": "private",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2138,
               "column": 4
@@ -2630,7 +2674,7 @@
           "description": "Equivalent to static `bindTemplate` API but can be called on\nan instance to add effects at runtime.  See that method for\nfull API docs.\n\nThis method may be called on the prototype (for prototypical template\nbinding, to avoid creating accessors every instance) once per prototype,\nand will be called with `runtimeBinding: true` by `_stampTemplate` to\ncreate and link an instance of the template metadata associated with a\nparticular stamping.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2350,
               "column": 4
@@ -2664,7 +2708,7 @@
           "description": "Removes and unbinds the nodes previously contained in the provided\nDocumentFragment returned from `_stampTemplate`.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2452,
               "column": 4
@@ -2693,11 +2737,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 31,
+              "line": 70,
               "column": 2
             },
             "end": {
-              "line": 33,
+              "line": 72,
               "column": 3
             }
           },
@@ -2712,7 +2756,7 @@
           "description": "Called when the element is removed from a document",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-mixin.js",
             "start": {
               "line": 216,
               "column": 3
@@ -2734,7 +2778,7 @@
           "description": "Attaches an element's stamped dom to itself. By default,\nthis method creates a `shadowRoot` and adds the dom to it.\nHowever, this method may be overridden to allow an element\nto put its dom in another location.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/element-mixin.js",
             "start": {
               "line": 649,
               "column": 4
@@ -2763,7 +2807,7 @@
           "description": "When using the ShadyCSS scoping and custom property shim, causes all\nshimmed styles in this element (and its subtree) to be updated\nbased on current custom property values.\n\nThe optional parameter overrides inline custom property styles with an\nobject of properties where the keys are CSS properties, and the values\nare strings.\n\nExample: `this.updateStyles({'--color': 'blue'})`\n\nThese properties are retained unless a value of `null` is set.\n\nNote: This function does not support updating CSS mixins.\nYou can not dynamically change the value of an `@apply`.",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/element-mixin.js",
             "start": {
               "line": 688,
               "column": 4
@@ -2791,7 +2835,7 @@
           "description": "Rewrites a given URL relative to a base URL. The base URL defaults to\nthe original location of the document containing the `dom-module` for\nthis element. This method will return the same URL before and after\nbundling.\n\nNote that this function performs no resolution for URLs that start\nwith `/` (absolute URLs) or `#` (hash identifiers).  For general purpose\nURL resolution, use `window.URL`.",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/element-mixin.js",
             "start": {
               "line": 709,
               "column": 4
@@ -2827,7 +2871,7 @@
           "description": "Scans a template to produce template metadata.\n\nTemplate-specific metadata are stored in the object returned, and node-\nspecific metadata are stored in objects in its flattened `nodeInfoList`\narray.  Only nodes in the template that were parsed as nodes of\ninterest contain an object in `nodeInfoList`.  Each `nodeInfo` object\ncontains an `index` (`childNodes` index in parent) and optionally\n`parent`, which points to node info of its parent (including its index).\n\nThe template metadata object returned from this method has the following\nstructure (many fields optional):\n\n```js\n  {\n    // Flattened list of node metadata (for nodes that generated metadata)\n    nodeInfoList: [\n      {\n        // `id` attribute for any nodes with id's for generating `$` map\n        id: {string},\n        // `on-event=\"handler\"` metadata\n        events: [\n          {\n            name: {string},   // event name\n            value: {string},  // handler method name\n          }, ...\n        ],\n        // Notes when the template contained a `<slot>` for shady DOM\n        // optimization purposes\n        hasInsertionPoint: {boolean},\n        // For nested `<template>`` nodes, nested template metadata\n        templateInfo: {object}, // nested template metadata\n        // Metadata to allow efficient retrieval of instanced node\n        // corresponding to this metadata\n        parentInfo: {number},   // reference to parent nodeInfo>\n        parentIndex: {number},  // index in parent's `childNodes` collection\n        infoIndex: {number},    // index of this `nodeInfo` in `templateInfo.nodeInfoList`\n      },\n      ...\n    ],\n    // When true, the template had the `strip-whitespace` attribute\n    // or was nested in a template with that setting\n    stripWhitespace: {boolean},\n    // For nested templates, nested template content is moved into\n    // a document fragment stored here; this is an optimization to\n    // avoid the cost of nested template cloning\n    content: {DocumentFragment}\n  }\n```\n\nThis method kicks off a recursive treewalk as follows:\n\n```\n   _parseTemplate <---------------------+\n     _parseTemplateContent              |\n       _parseTemplateNode  <------------|--+\n         _parseTemplateNestedTemplate --+  |\n         _parseTemplateChildNodes ---------+\n         _parseTemplateNodeAttributes\n           _parseTemplateNodeAttribute\n\n```\n\nThese methods may be overridden to add custom metadata about templates\nto either `templateInfo` or `nodeInfo`.\n\nNote that this method may be destructive to the template, in that\ne.g. event annotations may be removed after being noted in the\ntemplate metadata.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/template-stamp.js",
+            "file": "../@polymer/polymer/lib/mixins/template-stamp.js",
             "start": {
               "line": 197,
               "column": 4
@@ -2861,7 +2905,7 @@
           "description": "Overrides `PropertyAccessors` to add map of dynamic functions on\ntemplate info, for consumption by `PropertyEffects` template binding\ncode. This map determines which method templates should have accessors\ncreated for them.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/element-mixin.js",
             "start": {
               "line": 725,
               "column": 4
@@ -2890,7 +2934,7 @@
           "description": "Overrides default `TemplateStamp` implementation to add support for\nparsing bindings from `TextNode`'s' `textContent`.  A `bindings`\narray is added to `nodeInfo` and populated with binding metadata\nwith information capturing the binding target, and a `parts` array\nwith one or more metadata objects capturing the source(s) of the\nbinding.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2492,
               "column": 4
@@ -2929,7 +2973,7 @@
           "description": "Parses template child nodes for the given root node.\n\nThis method also wraps whitelisted legacy template extensions\n(`is=\"dom-if\"` and `is=\"dom-repeat\"`) with their equivalent element\nwrappers, collapses text nodes, and strips whitespace from the template\nif the `templateInfo.stripWhitespace` setting was provided.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/template-stamp.js",
+            "file": "../@polymer/polymer/lib/mixins/template-stamp.js",
             "start": {
               "line": 258,
               "column": 4
@@ -2967,7 +3011,7 @@
           "description": "Overrides default `TemplateStamp` implementation to add support for\nbinding the properties that a nested template depends on to the template\nas `_host_<property>`.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2584,
               "column": 4
@@ -3006,7 +3050,7 @@
           "description": "Parses template node attributes and adds node metadata to `nodeInfo`\nfor nodes of interest.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/template-stamp.js",
+            "file": "../@polymer/polymer/lib/mixins/template-stamp.js",
             "start": {
               "line": 333,
               "column": 4
@@ -3045,7 +3089,7 @@
           "description": "Overrides default `TemplateStamp` implementation to add support for\nparsing bindings from attributes.  A `bindings`\narray is added to `nodeInfo` and populated with binding metadata\nwith information capturing the binding target, and a `parts` array\nwith one or more metadata objects capturing the source(s) of the\nbinding.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2527,
               "column": 4
@@ -3094,7 +3138,7 @@
           "description": "Returns the `content` document fragment for a given template.\n\nFor nested templates, Polymer performs an optimization to cache nested\ntemplate content to avoid the cost of cloning deeply nested templates.\nThis method retrieves the cached content for a given template.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/template-stamp.js",
+            "file": "../@polymer/polymer/lib/mixins/template-stamp.js",
             "start": {
               "line": 388,
               "column": 4
@@ -3123,7 +3167,7 @@
           "description": "Override of PropertiesChanged createProperties to create accessors\nand property effects for all of the properties.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/element-mixin.js",
             "start": {
               "line": 356,
               "column": 5
@@ -3149,7 +3193,7 @@
           "description": "Returns an attribute name that corresponds to the given property.\nThe attribute name is the lowercased property name. Override to\ncustomize this mapping.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-changed.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-changed.js",
             "start": {
               "line": 76,
               "column": 4
@@ -3178,7 +3222,7 @@
           "description": "Overrides `PropertiesChanged` method to return type specified in the\nstatic `properties` object for the given property.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-mixin.js",
             "start": {
               "line": 179,
               "column": 3
@@ -3207,7 +3251,7 @@
           "description": "Generates property accessors for all attributes in the standard\nstatic `observedAttributes` array.\n\nAttribute names are mapped to property names using the `dash-case` to\n`camelCase` convention",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-accessors.js",
+            "file": "../@polymer/polymer/lib/mixins/property-accessors.js",
             "start": {
               "line": 121,
               "column": 4
@@ -3229,7 +3273,7 @@
           "description": "Ensures an accessor exists for the specified property, and adds\nto a list of \"property effects\" that will run when the accessor for\nthe specified property is set.  Effects are grouped by \"type\", which\nroughly corresponds to a phase in effect processing.  The effect\nmetadata should be in the following form:\n\n    {\n      fn: effectFunction, // Reference to function to call to perform effect\n      info: { ... }       // Effect metadata passed to function\n      trigger: {          // Optional triggering metadata; if not provided\n        name: string      // the property is treated as a wildcard\n        structured: boolean\n        wildcard: boolean\n      }\n    }\n\nEffects are called from `_propertiesChanged` in the following order by\ntype:\n\n1. COMPUTE\n2. PROPAGATE\n3. REFLECT\n4. OBSERVE\n5. NOTIFY\n\nEffect functions are called with the following signature:\n\n    effectFunction(inst, path, props, oldProps, info, hasPaths)",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2213,
               "column": 4
@@ -3267,7 +3311,7 @@
           "description": "Creates a single-property observer for the given property.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2227,
               "column": 4
@@ -3305,7 +3349,7 @@
           "description": "Creates a multi-property \"method observer\" based on the provided\nexpression, which should be a string in the form of a normal JavaScript\nfunction signature: `'methodName(arg1, [..., argn])'`.  Each argument\nshould correspond to a property or path in the context of this\nprototype (or instance), or may be a literal string or number.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2244,
               "column": 4
@@ -3339,7 +3383,7 @@
           "description": "Causes the setter for the given property to dispatch `<property>-changed`\nevents to notify of changes to the property.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2256,
               "column": 4
@@ -3367,7 +3411,7 @@
           "description": "Creates a read-only accessor for the given property.\n\nTo set the property, use the protected `_setProperty` API.\nTo create a custom protected setter (e.g. `_setMyProp()` for\nproperty `myProp`), pass `true` for `protectedSetter`.\n\nNote, if the property will have other property effects, this method\nshould be called first, before adding other effects.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2276,
               "column": 4
@@ -3400,7 +3444,7 @@
           "description": "Causes the setter for the given property to reflect the property value\nto a (dash-cased) attribute of the same name.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2288,
               "column": 4
@@ -3428,7 +3472,7 @@
           "description": "Creates a computed property whose value is set to the result of the\nmethod described by the given `expression` each time one or more\narguments to the method changes.  The expression should be a string\nin the form of a normal JavaScript function signature:\n`'methodName(arg1, [..., argn])'`",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2306,
               "column": 4
@@ -3466,7 +3510,7 @@
           "description": "Parses the provided template to ensure binding effects are created\nfor them, and then ensures property accessors are created for any\ndependent properties in the template.  Binding effects for bound\ntemplates are stored in a linked list on the instance so that\ntemplates can be efficiently stamped and unstamped.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2322,
               "column": 4
@@ -3495,7 +3539,7 @@
           "description": "Adds a property effect to the given template metadata, which is run\nat the \"propagate\" stage of `_propertiesChanged` when the template\nhas been bound to the element via `_bindTemplate`.\n\nThe `effect` object should match the format in `_addPropertyEffect`.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2388,
               "column": 4
@@ -3533,7 +3577,7 @@
           "description": "Called to parse text in a template (either attribute values or\ntextContent) into binding metadata.\n\nAny overrides of this method should return an array of binding part\nmetadata  representing one or more bindings found in the provided text\nand any \"literal\" text in between.  Any non-literal parts will be passed\nto `_evaluateBinding` when any dependencies change.  The only required\nfields of each \"part\" in the returned array are as follows:\n\n- `dependencies` - Array containing trigger metadata for each property\n  that should trigger the binding to update\n- `literal` - String containing text if the part represents a literal;\n  in this case no `dependencies` are needed\n\nAdditional metadata for use by `_evaluateBinding` may be provided in\neach part object as needed.\n\nThe default implementation handles the following types of bindings\n(one or more may be intermixed with literal strings):\n- Property binding: `[[prop]]`\n- Path binding: `[[object.prop]]`\n- Negated property or path bindings: `[[!prop]]` or `[[!object.prop]]`\n- Two-way property or path bindings (supports negation):\n  `{{prop}}`, `{{object.prop}}`, `{{!prop}}` or `{{!object.prop}}`\n- Inline computed method (supports negation):\n  `[[compute(a, 'literal', b)]]`, `[[!compute(a, 'literal', b)]]`\n\nThe default implementation uses a regular expression for best\nperformance. However, the regular expression uses a white-list of\nallowed characters in a data-binding, which causes problems for\ndata-bindings that do use characters not in this white-list.\n\nInstead of updating the white-list with all allowed characters,\nthere is a StrictBindingParser (see lib/mixins/strict-binding-parser)\nthat uses a state machine instead. This state machine is able to handle\nall characters. However, it is slightly less performant, therefore we\nextracted it into a separate optional mixin.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2640,
               "column": 4
@@ -3567,7 +3611,7 @@
           "description": "Called to evaluate a previously parsed binding part based on a set of\none or more changed dependencies.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/property-effects.js",
+            "file": "../@polymer/polymer/lib/mixins/property-effects.js",
             "start": {
               "line": 2721,
               "column": 4
@@ -3621,7 +3665,7 @@
           "description": "Finalizes an element definition, including ensuring any super classes\nare also finalized. This includes ensuring property\naccessors exist on the element prototype. This method calls\n`_finalizeClass` to finalize each constructor in the prototype chain.",
           "privacy": "public",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/properties-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/properties-mixin.js",
             "start": {
               "line": 127,
               "column": 3
@@ -3643,7 +3687,7 @@
           "description": "Override of PropertiesMixin _finalizeClass to create observers and\nfind the template.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/element-mixin.js",
             "start": {
               "line": 325,
               "column": 3
@@ -3665,7 +3709,7 @@
           "description": "Creates observers for the given `observers` array.\nLeverages `PropertyEffects` to create observers.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/element-mixin.js",
             "start": {
               "line": 373,
               "column": 4
@@ -3698,7 +3742,7 @@
           "description": "Gather style text for a style element in the template.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/element-mixin.js",
             "start": {
               "line": 558,
               "column": 4
@@ -3732,7 +3776,7 @@
           "description": "Configures an element `proto` to function with a given `template`.\nThe element name `is` and extends `ext` must be specified for ShadyCSS\nstyle scoping.",
           "privacy": "protected",
           "sourceRange": {
-            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
+            "file": "../@polymer/polymer/lib/mixins/element-mixin.js",
             "start": {
               "line": 571,
               "column": 4
@@ -3769,14 +3813,45 @@
           "column": 0
         },
         "end": {
-          "line": 38,
+          "line": 77,
           "column": 1
         }
       },
       "privacy": "public",
       "superclass": "PolymerElement",
       "name": "SimpleColors",
-      "attributes": [],
+      "attributes": [
+        {
+          "name": "accent-color",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 43,
+              "column": 2
+            },
+            "end": {
+              "line": 49,
+              "column": 3
+            }
+          },
+          "metadata": {}
+        },
+        {
+          "name": "dark",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 50,
+              "column": 2
+            },
+            "end": {
+              "line": 56,
+              "column": 3
+            }
+          },
+          "metadata": {}
+        }
+      ],
       "events": [],
       "styling": {
         "cssVariables": [],
