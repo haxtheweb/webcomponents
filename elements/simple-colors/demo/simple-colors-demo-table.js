@@ -24,6 +24,13 @@ class SimpleColorsDemoTable extends SimpleColors {
     return html`
 <style></style>
 <style is="custom-style" include="simple-colors-shared-styles">
+  :host {
+    display: block;
+    margin: 15px 0;
+  }
+  :host([hidden]) {
+    display: none;
+  }
   table {
     width: 100%;
     border-collapse: collapse;

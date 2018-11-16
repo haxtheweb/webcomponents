@@ -43,6 +43,13 @@ export class SimpleColors extends PolymerElement {
         value: {},
         reflectToAttribute: false,
         observer: false
+      },
+      __wcagContrast: {
+        name: "__wcagContrast",
+        type: "Object",
+        value: {},
+        reflectToAttribute: false,
+        observer: false
       }
     };
   }
@@ -58,7 +65,8 @@ export class SimpleColors extends PolymerElement {
   connectedCallback() {
     SimpleColorsManager.requestAvailability();
     this.set("colors", SimpleColorsManager.colors);
-    //console.log(this.colors);
+    this.set("__wcagContrast", SimpleColorsManager.wcagContrast);
+    console.log(this.__wcagContrast);
     this.getContrasts("--simple-colors-default-theme-accent-5");
     this.getContrasts("--simple-colors-dark-theme-grey-2", false);
     this.getContrasts("--simple-colors-dark-theme-red-11", true);
@@ -71,21 +79,27 @@ export class SimpleColors extends PolymerElement {
    */
   getContrasts(variable, large) {
     large = large !== undefined && large !== null ? large : false;
-    let details = variable.replace("--", "").split("-"),
+    let contrasts = [],
+      details = variable.replace("--", "").split("-"),
       theme = details[2],
-      color = details[4],
-      level = details[5];
-    let makeColor = function(theme, color, level) {
-      return "--simple-colors-" + [theme, "theme", color, level].join("-");
-    };
-    console.log(
-      variable,
-      large,
-      theme,
-      color,
-      level,
-      makeColor(theme, color, level)
-    );
+      grey = details[4] === "grey";
+    for (let color in this.colors) {
+      let wcag =
+          this.colors[color] === "grey" || grey
+            ? this.__wcagContrast.colorOnColor
+            : this.__wcagContrast.greyOnColor,
+        largeOrSmall = large ? wcag.large : wcag.small,
+        colorLevel = largeOrSmall[details[5] - 1],
+        min = colorLevel.minLevelContrast - 1,
+        max = colorLevel.maxLevelContrast - 1;
+      for (let i = min; i <= max; i++) {
+        contrasts.push({
+          color: "--simple-colors-" + [theme, "theme", color, i + 1].join("-"),
+          hex: this.colors[color][i]
+        });
+      }
+    }
+    return contrasts;
   }
 }
 customElements.define(SimpleColors.is, SimpleColors);

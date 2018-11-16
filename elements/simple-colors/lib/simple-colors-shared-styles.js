@@ -302,6 +302,76 @@ const colors = {
 
 SimpleColorsManager.instance = null;
 SimpleColorsManager.colors = colors;
+SimpleColorsManager.wcagContrast = {
+  greyOnColor: {
+    //if either the color or its contrast will be a grey
+    large: [
+      //if bold text >= 14pt, text >= 18pt, decorative only, or disabled
+      {
+        level: 1, //if the color is level 1
+        minLevelContrast: 7, //contrasting color should be >= 8 <=TODO
+        maxLevelContrast: 12 //contrasting color should be <= 12
+      },
+      { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },
+      { level: 3, minLevelContrast: 7, maxLevelContrast: 12 },
+      { level: 4, minLevelContrast: 7, maxLevelContrast: 12 },
+      { level: 5, minLevelContrast: 8, maxLevelContrast: 12 },
+      { level: 6, minLevelContrast: 10, maxLevelContrast: 12 },
+      { level: 7, minLevelContrast: 1, maxLevelContrast: 3 },
+      { level: 8, minLevelContrast: 1, maxLevelContrast: 5 },
+      { level: 9, minLevelContrast: 1, maxLevelContrast: 6 },
+      { level: 10, minLevelContrast: 1, maxLevelContrast: 6 },
+      { level: 11, minLevelContrast: 1, maxLevelContrast: 6 },
+      { level: 12, minLevelContrast: 1, maxLevelContrast: 6 }
+    ],
+    small: [
+      //if bold text < 14pt, or text < 18pt
+      { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },
+      { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },
+      { level: 3, minLevelContrast: 7, maxLevelContrast: 12 },
+      { level: 4, minLevelContrast: 8, maxLevelContrast: 12 },
+      { level: 5, minLevelContrast: 8, maxLevelContrast: 12 },
+      { level: 6, minLevelContrast: 11, maxLevelContrast: 12 },
+      { level: 7, minLevelContrast: 1, maxLevelContrast: 2 },
+      { level: 8, minLevelContrast: 1, maxLevelContrast: 7 },
+      { level: 9, minLevelContrast: 1, maxLevelContrast: 7 },
+      { level: 10, minLevelContrast: 1, maxLevelContrast: 6 },
+      { level: 11, minLevelContrast: 1, maxLevelContrast: 6 },
+      { level: 12, minLevelContrast: 1, maxLevelContrast: 6 }
+    ]
+  },
+  colorOnColor: {
+    //if neith the color nor its contras are grey
+    large: [
+      { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },
+      { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },
+      { level: 3, minLevelContrast: 8, maxLevelContrast: 12 },
+      { level: 4, minLevelContrast: 9, maxLevelContrast: 12 },
+      { level: 5, minLevelContrast: 10, maxLevelContrast: 12 },
+      { level: 6, minLevelContrast: 11, maxLevelContrast: 12 },
+      { level: 7, minLevelContrast: 1, maxLevelContrast: 2 },
+      { level: 8, minLevelContrast: 1, maxLevelContrast: 3 },
+      { level: 9, minLevelContrast: 1, maxLevelContrast: 4 },
+      { level: 10, minLevelContrast: 1, maxLevelContrast: 5 },
+      { level: 11, minLevelContrast: 1, maxLevelContrast: 6 },
+      { level: 12, minLevelContrast: 1, maxLevelContrast: 6 }
+    ],
+    small: [
+      { level: 1, minLevelContrast: 8, maxLevelContrast: 12 },
+      { level: 2, minLevelContrast: 8, maxLevelContrast: 12 },
+      { level: 3, minLevelContrast: 9, maxLevelContrast: 12 },
+      { level: 4, minLevelContrast: 9, maxLevelContrast: 12 },
+      { level: 5, minLevelContrast: 11, maxLevelContrast: 12 },
+      { level: 6, minLevelContrast: 12, maxLevelContrast: 12 },
+      { level: 7, minLevelContrast: 1, maxLevelContrast: 1 },
+      { level: 8, minLevelContrast: 1, maxLevelContrast: 2 },
+      { level: 9, minLevelContrast: 1, maxLevelContrast: 4 },
+      { level: 10, minLevelContrast: 1, maxLevelContrast: 4 },
+      { level: 11, minLevelContrast: 1, maxLevelContrast: 5 },
+      { level: 12, minLevelContrast: 1, maxLevelContrast: 5 }
+    ]
+  }
+};
 
 SimpleColorsManager.requestAvailability = function(element) {
   document.addEventListener("DOMContentLoaded", function(event) {
