@@ -1,7 +1,7 @@
 # &lt;simple-colors&gt;
 
 Colors
-> Automated conversion of simple-colors/
+> a utilty that provides a global set of color classes and variables based on theme and accent color attributes
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.

@@ -1,0 +1,16 @@
+{
+  "accentColor": {
+    "name": "accentColor",
+    "type": "String",
+    "value": null,
+    "reflectToAttribute": true,
+    "observer": false
+  },
+  "dark": {
+    "name": "dark",
+    "type": "Boolean",
+    "value": null,
+    "reflectToAttribute": true,
+    "observer": false
+  }
+}

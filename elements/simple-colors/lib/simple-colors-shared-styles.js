@@ -1,0 +1,373 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ *
+ * `simple-colors-shared-styles`
+ * `a shared set of styles for @lrnwebcomponents`
+ *
+ * @microcopy - language worth noting:
+ *  -
+ *
+ * @pseudoElement
+ * @polymer
+ * @demo demo/index.html
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/iron-flex-layout/iron-flex-layout.js";
+const styleElement = document.createElement("dom-module");
+const colors = {
+  grey: [
+    "#ffffff",
+    "#eeeeee",
+    "#dddddd",
+    "#cccccc",
+    "#bbbbbb",
+    "#999999",
+    "#666666",
+    "#444444",
+    "#333333",
+    "#222222",
+    "#111111",
+    "#000000"
+  ],
+  red: [
+    "#ffdddd",
+    "#ffaeae",
+    "#ff8f8f",
+    "#ff7474",
+    "#fd5151",
+    "#ff2222",
+    "#ee0000",
+    "#ac0000",
+    "#850000",
+    "#670000",
+    "#520000",
+    "#3f0000"
+  ],
+  pink: [
+    "#ffe6f1",
+    "#ffa5cf",
+    "#ff87c0",
+    "#ff73b5",
+    "#fd60aa",
+    "#ff3996",
+    "#da004e",
+    "#b80042",
+    "#980036",
+    "#78002b",
+    "#5a0020",
+    "#440019"
+  ],
+  purple: [
+    "#fce6ff",
+    "#f4affd",
+    "#f394ff",
+    "#f07cff",
+    "#ed61ff",
+    "#e200ff",
+    "#a500ba",
+    "#8a009b",
+    "#6c0079",
+    "#490052",
+    "#33003a",
+    "#200025"
+  ],
+  "deep-purple": [
+    "#f3e4ff",
+    "#ddacff",
+    "#c97eff",
+    "#bb63f9",
+    "#b44aff",
+    "#a931ff",
+    "#7e00d8",
+    "#5d009f",
+    "#4c0081",
+    "#3a0063",
+    "#2a0049",
+    "#1d0033"
+  ],
+  indigo: [
+    "#e5ddff",
+    "#c3b2ff",
+    "#af97ff",
+    "#9e82ff",
+    "#9373ff",
+    "#835fff",
+    "#3a00ff",
+    "#2801b0",
+    "#20008c",
+    "#160063",
+    "#100049",
+    "#0a0030"
+  ],
+  blue: [
+    "#e2ecff",
+    "#acc9ff",
+    "#95baff",
+    "#74a5ff",
+    "#5892fd",
+    "#4083ff",
+    "#0059ff",
+    "#0041bb",
+    "#003494",
+    "#002569",
+    "#001947",
+    "#001333"
+  ],
+  "light-blue": [
+    "#ddefff",
+    "#a1d1ff",
+    "#92c9ff",
+    "#65b3ff",
+    "#58adff",
+    "#41a1ff",
+    "#007ffc",
+    "#0066ca",
+    "#0055a8",
+    "#003f7d",
+    "#002850",
+    "#001b36"
+  ],
+  cyan: [
+    "#ddf8ff",
+    "#9beaff",
+    "#77e2ff",
+    "#33d4ff",
+    "#1ccfff",
+    "#00c9ff",
+    "#009dc7",
+    "#007999",
+    "#005970",
+    "#003f50",
+    "#002c38",
+    "#001a20"
+  ],
+  teal: [
+    "#d9fff0",
+    "#98ffd7",
+    "#79ffcb",
+    "#56ffbd",
+    "#29ffac",
+    "#00ff9c",
+    "#009d75",
+    "#007658",
+    "#004e3a",
+    "#003829",
+    "#002a20",
+    "#001b14"
+  ],
+  green: [
+    "#e1ffeb",
+    "#acffc9",
+    "#79ffa7",
+    "#49ff88",
+    "#24ff70",
+    "#00f961",
+    "#008c37",
+    "#00762e",
+    "#005a23",
+    "#003d18",
+    "#002a11",
+    "#001d0c"
+  ],
+  "light-green": [
+    "#ebffdb",
+    "#c7ff9b",
+    "#b1ff75",
+    "#a1fd5a",
+    "#8efd38",
+    "#6fff00",
+    "#429d00",
+    "#357f00",
+    "#296100",
+    "#1b3f00",
+    "#143000",
+    "#0d2000"
+  ],
+  lime: [
+    "#f1ffd2",
+    "#dfff9b",
+    "#d4ff77",
+    "#caff58",
+    "#bdff2d",
+    "#aeff00",
+    "#649900",
+    "#4d7600",
+    "#3b5a00",
+    "#293f00",
+    "#223400",
+    "#182400"
+  ],
+  yellow: [
+    "#ffffd5",
+    "#ffffac",
+    "#ffff90",
+    "#ffff7c",
+    "#ffff3a",
+    "#f6f600",
+    "#929100",
+    "#787700",
+    "#585700",
+    "#454400",
+    "#303000",
+    "#242400"
+  ],
+  amber: [
+    "#fff2d4",
+    "#ffdf92",
+    "#ffd677",
+    "#ffcf5e",
+    "#ffc235",
+    "#ffc500",
+    "#b28900",
+    "#876800",
+    "#614b00",
+    "#413200",
+    "#302500",
+    "#221a00"
+  ],
+  orange: [
+    "#ffebd7",
+    "#ffca92",
+    "#ffbd75",
+    "#ffb05c",
+    "#ff9e36",
+    "#ff9625",
+    "#e56a00",
+    "#ae5100",
+    "#833d00",
+    "#612d00",
+    "#3d1c00",
+    "#2c1400"
+  ],
+  "deep-orange": [
+    "#ffe7e0",
+    "#ffb299",
+    "#ffa588",
+    "#ff8a64",
+    "#ff7649",
+    "#ff6c3c",
+    "#f53100",
+    "#b92500",
+    "#8a1c00",
+    "#561100",
+    "#3a0c00",
+    "#240700"
+  ],
+  brown: [
+    "#f0e2de",
+    "#e5b8aa",
+    "#c59485",
+    "#b68373",
+    "#ac7868",
+    "#a47060",
+    "#85574a",
+    "#724539",
+    "#5b3328",
+    "#3b1e15",
+    "#2c140e",
+    "#200e09"
+  ],
+  "blue-grey": [
+    "#e7eff1",
+    "#b1c5ce",
+    "#9badb6",
+    "#8d9fa7",
+    "#7a8f98",
+    "#718892",
+    "#56707c",
+    "#40535b",
+    "#2f3e45",
+    "#1e282c",
+    "#182023",
+    "#0f1518"
+  ]
+};
+const levels = colors.grey.length;
+const getHex = function(hexcodes, index, invert) {
+  if (invert) {
+    return hexcodes[hexcodes.length - index - 1];
+  } else {
+    return hexcodes[index];
+  }
+};
+const setTheme = function(theme, invert) {
+  let str = [];
+  for (name in colors) {
+    str.push(setLevels(theme + "-theme-" + name, colors[name], invert));
+  }
+  return str.join("");
+};
+const setLevels = function(themecolor, hexcodes, invert) {
+  let str = [];
+  for (let i = 0; i < hexcodes.length; i++) {
+    str.push(
+      "    --simple-colors-" +
+        themecolor +
+        "-" +
+        (i + 1) +
+        ": " +
+        getHex(hexcodes, i, invert) +
+        ";\n"
+    );
+  }
+  return str.join("");
+};
+const setHostAccents = function() {
+  let str = [];
+  for (let name in colors) {
+    str.push(':host([accent-color="' + name + '"]) {\n');
+    str.push(setAccents("default", name, false));
+    str.push(setAccents("light", name, false));
+    str.push(setAccents("dark", name, true));
+    str.push('\n:host([dark][accent-color="' + name + '"]) {\n');
+    str.push(setAccents("default", name, true) + "\n}\n");
+  }
+  return str.join("");
+};
+const setAccents = function(theme, color, invert) {
+  return setLevels(theme + "-theme-accent", colors[color], invert);
+};
+const setThemeClasses = function(theme) {
+  let str = [];
+  for (let i = 0; i < colors["grey"].length; i++) {
+    let prefix = "simple-colors-" + theme + "-theme";
+    str.push(addClasses(prefix + "-accent-" + (i + 1)));
+    for (let name in colors) {
+      str.push(addClasses(prefix + "-" + name + "-" + (i + 1)));
+    }
+  }
+  return str.join("");
+};
+const addClasses = function(cssvar) {
+  return [
+    "  ." + cssvar + " { background-color: var(--" + cssvar + "); }\n",
+    "  ." + cssvar + "-text { color: var(--" + cssvar + "); }\n",
+    "  ." + cssvar + "-border-color { border-color: var(--" + cssvar + "); }\n"
+  ].join("");
+};
+const getCSS = function() {
+  let template = document.createElement("template"),
+    styles = [
+      "<style>\n:host {\n",
+      setAccents("default", "grey", false),
+      setTheme("default", false),
+      setAccents("light", "grey", false),
+      setTheme("light", false),
+      setAccents("dark", "grey", true),
+      setTheme("dark", true),
+      "\n}\n:host([dark]) {\n",
+      setAccents("default", "grey", true),
+      setTheme("default", true),
+      "\n}\n",
+      setHostAccents(),
+      setThemeClasses("default"),
+      setThemeClasses("light"),
+      setThemeClasses("dark"),
+      "</style>"
+    ].join("");
+  template.innerHTML = styles;
+  return html`${template}`;
+};
+styleElement.appendChild(html`${getCSS()}`);
+styleElement.register("simple-colors-shared-styles");
