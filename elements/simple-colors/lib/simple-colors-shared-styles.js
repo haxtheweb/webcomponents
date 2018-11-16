@@ -14,7 +14,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
-const styleElement = document.createElement("dom-module");
 const colors = {
   grey: [
     "#ffffff",
@@ -283,91 +282,157 @@ const colors = {
     "#0f1518"
   ]
 };
-const levels = colors.grey.length;
-const getHex = function(hexcodes, index, invert) {
-  if (invert) {
+/**
+ * gets the correct hexCode for a color level,
+ * depending on whether or not the list is dark (inverted)
+ */
+const getHex = function(hexcodes, index, dark) {
+  if (dark) {
     return hexcodes[hexcodes.length - index - 1];
   } else {
     return hexcodes[index];
   }
 };
-const setTheme = function(theme, invert) {
+/**
+ * adds all CSS variables for a given theme (default, dark, or light)
+ */
+const addThemeVariables = function(theme, dark) {
   let str = [];
   for (name in colors) {
-    str.push(setLevels(theme + "-theme-" + name, colors[name], invert));
+    str.push(addColorLevels(theme, name, colors[name], dark));
   }
   return str.join("");
 };
-const setLevels = function(themecolor, hexcodes, invert) {
+/**
+ * adds CSS variables for all levels of contrast for a given theme+color
+ * and assigns a hex code to it
+ */
+const addColorLevels = function(theme, color, hexcodes, dark) {
   let str = [];
   for (let i = 0; i < hexcodes.length; i++) {
     str.push(
-      "    --simple-colors-" +
-        themecolor +
+      "  --simple-colors-" +
+        theme +
+        "-theme-" +
+        color +
         "-" +
         (i + 1) +
         ": " +
-        getHex(hexcodes, i, invert) +
+        getHex(hexcodes, i, dark) +
         ";\n"
     );
   }
   return str.join("");
 };
-const setHostAccents = function() {
+/**
+ * adds all CSS variables as styles for :host and :host([dark]) selectors
+ */
+const addCssVariables = function() {
+  let greys = colors["grey"],
+    str = [];
+  str.push(
+    addStyle(
+      ":host",
+      addColorLevels("default", "accent", greys, false) +
+        addThemeVariables("default", false)
+    )
+  );
+  str.push(
+    addStyle(
+      ":host",
+      addColorLevels("light", "accent", greys, false) +
+        addThemeVariables("light", false)
+    )
+  );
+  str.push(
+    addStyle(
+      ":host",
+      addColorLevels("dark", "accent", greys, true) +
+        addThemeVariables("dark", true)
+    )
+  );
+  str.push(
+    addStyle(
+      ":host([dark])",
+      addColorLevels("default", "accent", greys, true) +
+        addThemeVariables("default", true)
+    )
+  );
+  return str.join("");
+};
+/**
+ * adds all CSS accent color variables as styles for :host([accent-color]]) selectors
+ */
+const addAccentVariables = function() {
   let str = [];
-  for (let name in colors) {
-    str.push(':host([accent-color="' + name + '"]) {\n');
-    str.push(setAccents("default", name, false));
-    str.push(setAccents("light", name, false));
-    str.push(setAccents("dark", name, true));
-    str.push('\n:host([dark][accent-color="' + name + '"]) {\n');
-    str.push(setAccents("default", name, true) + "\n}\n");
+  for (let color in colors) {
+    str.push(
+      addStyle(
+        'host([accent-color="' + color + '"])',
+        [
+          addColorLevels("default", "accent", colors[color], false),
+          addColorLevels("light", "accent", colors[color], false),
+          addColorLevels("dark", "accent", colors[color], true)
+        ].join("")
+      )
+    );
+
+    str.push(
+      addStyle(
+        'host([dark][accent-color="' + color + '"])',
+        [addColorLevels("default", "accent", colors[color], true)].join("")
+      )
+    );
   }
   return str.join("");
 };
-const setAccents = function(theme, color, invert) {
-  return setLevels(theme + "-theme-accent", colors[color], invert);
-};
-const setThemeClasses = function(theme) {
-  let str = [];
-  for (let i = 0; i < colors["grey"].length; i++) {
-    let prefix = "simple-colors-" + theme + "-theme";
-    str.push(addClasses(prefix + "-accent-" + (i + 1)));
-    for (let name in colors) {
-      str.push(addClasses(prefix + "-" + name + "-" + (i + 1)));
+/**
+ * adds all CSS color classes for a given theme
+ */
+const addClasses = function() {
+  let themes = ["default", "light", "dark"],
+    str = [];
+  for (let i = 0; i < themes.length; i++) {
+    let substr = [];
+    for (let j = 0; j < colors["grey"].length; j++) {
+      let prefix = "simple-colors-" + themes[i] + "-theme";
+      substr.push(addColorClasses(prefix + "-accent-" + (j + 1)));
+      for (let color in colors) {
+        substr.push(addColorClasses(prefix + "-" + color + "-" + (j + 1)));
+      }
     }
+    str.push("<style>\n" + substr.join("") + "\n</style>\n");
   }
   return str.join("");
 };
-const addClasses = function(cssvar) {
+/**
+ * adds background color, text color, and border color classes
+ * for a given level of a theme + color
+ */
+const addColorClasses = function(cssvar) {
   return [
-    "  ." + cssvar + " { background-color: var(--" + cssvar + "); }\n",
-    "  ." + cssvar + "-text { color: var(--" + cssvar + "); }\n",
-    "  ." + cssvar + "-border-color { border-color: var(--" + cssvar + "); }\n"
+    "." + cssvar + " { background-color: var(--" + cssvar + "); }\n",
+    "." + cssvar + "-text { color: var(--" + cssvar + "); }\n",
+    "." + cssvar + "-border-color { border-color: var(--" + cssvar + "); }\n"
   ].join("");
 };
-const getCSS = function() {
-  let template = document.createElement("template"),
-    styles = [
-      "<style>\n:host {\n",
-      setAccents("default", "grey", false),
-      setTheme("default", false),
-      setAccents("light", "grey", false),
-      setTheme("light", false),
-      setAccents("dark", "grey", true),
-      setTheme("dark", true),
-      "\n}\n:host([dark]) {\n",
-      setAccents("default", "grey", true),
-      setTheme("default", true),
-      "\n}\n",
-      setHostAccents(),
-      setThemeClasses("default"),
-      setThemeClasses("light"),
-      setThemeClasses("dark"),
-      "</style>"
-    ].join("");
-  template.innerHTML = styles;
-  return html`${template}`;
+const addStyle = function(selector, style) {
+  return "<style>\n" + selector + " {\n" + style + "\n}\n</style>\n";
 };
-styleElement.appendChild(html`${getCSS()}`);
+/**
+ * gets all shared styles
+ */
+const getAllStyles = function() {
+  let template = document.createElement("template");
+  template.innerHTML = addCssVariables() + addAccentVariables() + addClasses();
+  return template;
+};
+
+/**
+ * append and regiter the shared styles
+ */
+const styleElement = document.createElement("dom-module"),
+  allStyles = getAllStyles();
+styleElement.appendChild(html`${allStyles}`);
 styleElement.register("simple-colors-shared-styles");
+console.log(styleElement);
