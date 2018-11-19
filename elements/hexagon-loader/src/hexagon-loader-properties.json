@@ -1,0 +1,18 @@
+{
+  /**
+   * Color to make the loader
+   */
+  "color": {
+    "name": "color",
+    "type": "String",
+    "value": "orange"
+  },
+  /**
+   * The relative size of this loader. Options small, medium, large
+   */
+  "size": {
+    "name": "size",
+    "type": "String",
+    "value": "medium"
+  }
+}
