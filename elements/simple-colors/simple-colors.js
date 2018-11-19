@@ -1,7 +1,11 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- *
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { SimpleColorsManager } from "./lib/simple-colors-shared-styles.js"; //import the shared styles
+
+/**
  * `simple-colors`
  * `extend elements with simple-colors to give them the color-management properties and utilities `
  *
@@ -12,9 +16,6 @@
  * @polymer
  * @demo demo/index.html
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SimpleColorsManager } from "./lib/simple-colors-shared-styles.js"; //import the shared styles
-
 export { SimpleColors };
 
 class SimpleColors extends PolymerElement {

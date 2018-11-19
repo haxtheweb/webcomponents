@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+
 export { SimpleColorsManager };
 /**
  * `simple-colors-manager`
