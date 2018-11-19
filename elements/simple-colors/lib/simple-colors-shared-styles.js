@@ -1,7 +1,11 @@
 /**
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- *
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+export { SimpleColorsManager };
+/**
+ * `simple-colors-manager`
  * `simple-colors-shared-styles`
  * `a shared set of styles for @lrnwebcomponents`
  *
@@ -12,11 +16,7 @@
  * @polymer
  * @demo demo/index.html
  */
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-/**
- * Allows the colors variables to be shared with the shared styles and custom elements
- */
-export class SimpleColorsManager extends PolymerElement {
+class SimpleColorsManager extends PolymerElement {
   static get is() {
     return "simple-colors-manager";
   }
