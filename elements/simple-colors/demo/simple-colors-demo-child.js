@@ -15,7 +15,7 @@ export { SimpleColorsDemoChild };
  *
  * @customElement
  * @polymer
- * @demo demo/index.html
+ * @demos demos/index.html
  */
 class SimpleColorsDemoChild extends SimpleColors {
   // render function
