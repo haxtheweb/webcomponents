@@ -15,7 +15,9 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SimpleColorsManager } from "./lib/simple-colors-shared-styles.js"; //import the shared styles
 
-export class SimpleColors extends PolymerElement {
+export { SimpleColors };
+
+class SimpleColors extends PolymerElement {
   static get is() {
     return "simple-colors";
   }

@@ -29,6 +29,7 @@ class SimpleColorsManager extends PolymerElement {
     }
   }
 }
+customElements.define(SimpleColorsManager.is, SimpleColorsManager);
 
 const colors = {
   grey: [
