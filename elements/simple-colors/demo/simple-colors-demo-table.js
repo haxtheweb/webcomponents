@@ -7,7 +7,7 @@ import { SimpleColors } from "../simple-colors.js"; //import the shared styles
 
 export { SimpleColorsDemoTable };
 /**
- * `simple-colors`
+ * `simple-colors-demo-table`
  * `a utilty that provides a global set of color classes and variables based on theme and accent color attributes`
  *
  * @microcopy - language worth noting:
@@ -22,7 +22,6 @@ class SimpleColorsDemoTable extends SimpleColors {
   static get template() {
     let table = this.getTable();
     return html`
-<style></style>
 <style is="custom-style" include="simple-colors-shared-styles">
   :host {
     display: block;
