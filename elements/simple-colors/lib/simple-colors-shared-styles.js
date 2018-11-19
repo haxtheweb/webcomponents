@@ -14,7 +14,7 @@ export { SimpleColorsManager };
  *
  * @customElement
  * @polymer
- * @demo demo/index.html
+ * @demo demo/index2.html
  */
 class SimpleColorsManager extends PolymerElement {
   static get is() {

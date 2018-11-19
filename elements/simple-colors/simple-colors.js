@@ -5,6 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SimpleColorsManager } from "./lib/simple-colors-shared-styles.js"; //import the shared styles
 
+export { SimpleColors };
 /**
  * `simple-colors`
  * `extend elements with simple-colors to give them the color-management properties and utilities `
@@ -16,7 +17,6 @@ import { SimpleColorsManager } from "./lib/simple-colors-shared-styles.js"; //im
  * @polymer
  * @demo demo/index.html
  */
-export { SimpleColors };
 
 class SimpleColors extends PolymerElement {
   static get is() {
@@ -65,7 +65,8 @@ class SimpleColors extends PolymerElement {
 
   // render function
   static get template() {
-    return html`<style is="custom-style" include="simple-colors-shared-styles"></style>`;
+    return html`<style is="custom-style" include="simple-colors-shared-styles"></style>
+  <slot></slot>`;
   }
 
   /**
