@@ -1,43 +1,40 @@
-<script type="module" src="../node_modules/@polymer/polymer/polymer.js"></script>
-<link rel="import" href="../map-menu/map-menu.html">
-<link rel="import" href="../jwt-login/jwt-login.html">
-<link rel="import" href="../simple-colors/simple-colors.html">
-<link rel="import" href="../simple-colors/simple-colors-picker.html">
-<script type="module" src="../node_modules/@polymer/paper-icon-button/paper-icon-button.js"></script>
-<link rel="import" href="../paper-input/paper-input.html">
-<link rel="import" href="../magazine-cover/magazine-cover.html">
-<link rel="import" href="../paper-toast/paper-toast.html">
-<link rel="import" href="../dropdown-select/dropdown-select.html">
-<link rel="import" href="../paper-item/paper-item.html">
-<link rel="import" href="../paper-dialog/paper-dialog.html">
-<link rel="import" href="../paper-icon-picker/paper-icon-picker.html">
-<link rel="import" href="../paper-dialog-scrollable/paper-dialog-scrollable.html">
-<link rel="import" href="../paper-tooltip/paper-tooltip.html">
-<link rel="import" href="../app-layout/app-header/app-header.html">
-<link rel="import" href="../app-layout/app-toolbar/app-toolbar.html">
-<link rel="import" href="../app-layout/app-drawer/app-drawer.html">
-<script type="module" src="../node_modules/@polymer/iron-icons/iron-icons.js"></script>
-<script type="module" src="../node_modules/@polymer/iron-icons/editor-icons.js"></script>
-<script type="module" src="../node_modules/@polymer/iron-icons/notification-icons.js"></script>
-<script type="module" src="../node_modules/@polymer/iron-icons/av-icons.js"></script>
-<script type="module" src="../node_modules/@polymer/iron-icons/device-icons.js"></script>
-<script type="module" src="../node_modules/@polymer/iron-icons/image-icons.js"></script>
-<link rel="import" href="../sites-listing/sites-listing.html">
-<!--
-`haxcms-site-listing`
-A LRN element
-
-@demo demo/index.html
-
-@microcopy - the mental model for this element
- -
- -
-
--->
-
-<dom-module id="haxcms-site-listing">
-  <template>
-    <style>
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@polymer/app-layout/app-header/app-header.js";
+import "@polymer/app-layout/app-toolbar/app-toolbar.js";
+import "@polymer/app-layout/app-drawer/app-drawer.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icons/editor-icons.js";
+import "@polymer/iron-icons/notification-icons.js";
+import "@polymer/iron-icons/av-icons.js";
+import "@polymer/iron-icons/device-icons.js";
+import "@polymer/iron-icons/image-icons.js";
+import "@polymer/paper-item/paper-item.js";
+import "@polymer/paper-input/paper-input.js";
+import "@polymer/paper-toast/paper-toast.js";
+import "@polymer/paper-dialog/paper-dialog.js";
+import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/paper-icon-picker/paper-icon-picker.js";
+import "@lrnwebcomponents/map-menu/map-menu.js";
+import "@lrnwebcomponents/jwt-login/jwt-login.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
+import "@lrnwebcomponents/magazine-cover/magazine-cover.js";
+import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
+import "@lrnwebcomponents/sites-listing/sites-listing.js";
+/**
+ * `haxcms-site-listing`
+ * `A listing of all sites being managed by this instance.`
+ */
+Polymer({
+  is: "haxcms-site-listing",
+  _template: html`
+    <style is="custom-style">
       app-toolbar {
         background-color: #3a0063;
         color: #ffffff;
@@ -179,81 +176,68 @@ A LRN element
       </div>
     </paper-dialog>
     <paper-toast id="toast"></paper-toast>
-  </template>
-  <script type="module">
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import '@polymer/paper-icon-button/paper-icon-button.js';
-import '@polymer/iron-icons/iron-icons.js';
-import '@polymer/iron-icons/editor-icons.js';
-import '@polymer/iron-icons/notification-icons.js';
-import '@polymer/iron-icons/av-icons.js';
-import '@polymer/iron-icons/device-icons.js';
-import '@polymer/iron-icons/image-icons.js';
-Polymer({
-  is: 'haxcms-site-listing',
-  behaviors: [
-    window.simpleColorsBehaviors,
-  ],
+`,
+  behaviors: [window.simpleColorsBehaviors],
   properties: {
     /**
      * Title
      */
     title: {
       type: String,
-      value: 'Site list'
+      value: "Site list"
     },
     /**
      * Site title
      */
     siteTitle: {
-      type: String,
+      type: String
     },
     /**
      * Domain name
      */
     domainName: {
       type: String,
-      computed: '_computeDomainName(siteTitle)',
+      computed: "_computeDomainName(siteTitle)"
     },
     /**
      * Sites response change
      */
     __sitesResponse: {
       type: String,
-      observer: '__sitesResponseChanged',
+      observer: "__sitesResponseChanged"
     },
     /**
      * Base path of where this is located.
      */
     basePath: {
-      type: String,
+      type: String
     },
     /**
      * Data Source to power the loading of sites in JSON Outline Schema format.
      */
     dataSource: {
-      type: String,
+      type: String
     },
     /**
      * JSON Web token
      */
     jwt: {
       type: String,
-      observer: '_jwtChanged',
+      observer: "_jwtChanged"
     },
     /**
      * Request params for creating a new site
      */
     createParams: {
       type: Object,
-      value: {},
+      value: {}
     },
     /**
      * Request params for downloading a new site
      */
     downloadParams: {
       type: Object,
-      value: {},
+      value: {}
     },
     /**
      * Active item that's being reviewed / has bubbled up.
@@ -261,7 +245,7 @@ Polymer({
     activeItem: {
       type: Object,
       notify: true,
-      observer: '_activeItemChanged',
+      observer: "_activeItemChanged"
     },
     /**
      * Logged in state
@@ -270,7 +254,7 @@ Polymer({
       type: Boolean,
       notify: true,
       reflectToAttribute: true,
-      observer: '_loginStateChanged',
+      observer: "_loginStateChanged"
     },
     /**
      * Edit mode
@@ -280,30 +264,41 @@ Polymer({
       notify: true,
       reflectToAttribute: true,
       value: false,
-      observer: '_editModeChanged',
-    },
+      observer: "_editModeChanged"
+    }
   },
   /**
    * Generate domain from title
    */
-  _computeDomainName: function (title) {
-    return 'https://' + title.replace(/[^a-zA-Z0-9]/g, '').toLowerCase() + '.surge.sh';
+  _computeDomainName: function(title) {
+    return (
+      "https://" +
+      title.replace(/[^a-zA-Z0-9]/g, "").toLowerCase() +
+      ".surge.sh"
+    );
   },
   /**
    * Site response has changed.
    */
-  __sitesResponseChanged: function (newValue, oldValue) {
+  __sitesResponseChanged: function(newValue, oldValue) {
     if (newValue) {
       this.title = newValue.title;
       setTimeout(() => {
         if (this.jwt) {
-          this.$.siteslisting.$.list.querySelector('[data-site-id="item-new"]').hidden = false;
-          this.$.mapmenu.$.builder.shadowRoot.querySelector('#item-new').hidden = false;
+          this.$.siteslisting.$.list.querySelector(
+            '[data-site-id="item-new"]'
+          ).hidden = false;
+          this.$.mapmenu.$.builder.shadowRoot.querySelector(
+            "#item-new"
+          ).hidden = false;
           this.$.add.hidden = false;
-        }
-        else {
-          this.$.siteslisting.$.list.querySelector('[data-site-id="item-new"]').hidden = true;
-          this.$.mapmenu.$.builder.shadowRoot.querySelector('#item-new').hidden = true;
+        } else {
+          this.$.siteslisting.$.list.querySelector(
+            '[data-site-id="item-new"]'
+          ).hidden = true;
+          this.$.mapmenu.$.builder.shadowRoot.querySelector(
+            "#item-new"
+          ).hidden = true;
           this.$.add.hidden = true;
         }
       }, 100);
@@ -315,8 +310,7 @@ Polymer({
   _loginStateChange: function(e) {
     if (e.detail) {
       this.loggedIn = true;
-    }
-    else {
+    } else {
       this.loggedIn = false;
     }
   },
@@ -325,81 +319,88 @@ Polymer({
    */
   _editModeChanged: function(newValue, oldValue) {
     if (newValue) {
-      this.__editIcon = 'icons:check';
-    }
-    else {
-      this.__editIcon = 'icons:create';
+      this.__editIcon = "icons:check";
+    } else {
+      this.__editIcon = "icons:create";
     }
   },
   /**
    * Login state changed
    */
-  _loginStateChanged: function (newValue, oldValue) {
+  _loginStateChanged: function(newValue, oldValue) {
     if (newValue) {
-      this.__loginText = 'Log out';
-      this.__loginIcon = 'icons:account-circle';
-      this.$.toast.show('Welcome, log in successful!');
+      this.__loginText = "Log out";
+      this.__loginIcon = "icons:account-circle";
+      this.$.toast.show("Welcome, log in successful!");
       this.$.add.hidden = false;
-      this.$.siteslisting.$.list.querySelector('[data-site-id="item-new"]').hidden = false;
-      this.$.mapmenu.$.builder.shadowRoot.querySelector('#item-new').hidden = false;
-    }
-    else {
-      this.__loginText = 'Log in';
-      this.__loginIcon = 'icons:power-settings-new';
-      this.$.toast.show('You logged out');
+      this.$.siteslisting.$.list.querySelector(
+        '[data-site-id="item-new"]'
+      ).hidden = false;
+      this.$.mapmenu.$.builder.shadowRoot.querySelector(
+        "#item-new"
+      ).hidden = false;
+    } else {
+      this.__loginText = "Log in";
+      this.__loginIcon = "icons:power-settings-new";
+      this.$.toast.show("You logged out");
       this.$.add.hidden = true;
-      this.$.siteslisting.$.list.querySelector('[data-site-id="item-new"]').hidden = true;
-      this.$.mapmenu.$.builder.shadowRoot.querySelector('#item-new').hidden = true;
+      this.$.siteslisting.$.list.querySelector(
+        '[data-site-id="item-new"]'
+      ).hidden = true;
+      this.$.mapmenu.$.builder.shadowRoot.querySelector(
+        "#item-new"
+      ).hidden = true;
     }
   },
   /**
    * Request a user login if we need one or log out
    */
-  _jwtChanged: function (newValue, oldValue) {
+  _jwtChanged: function(newValue, oldValue) {
     if (newValue) {
-      this.__loginText = 'Log out';
-      this.__loginIcon = 'icons:account-circle';
-    }
-    else {
-      this.__loginText = 'Log in';
-      this.__loginIcon = 'icons:power-settings-new';
+      this.__loginText = "Log out";
+      this.__loginIcon = "icons:account-circle";
+    } else {
+      this.__loginText = "Log in";
+      this.__loginIcon = "icons:power-settings-new";
     }
   },
   /**
    * Request a user login if we need one or log out
    */
-  _loginUserRoutine: function (e) {
+  _loginUserRoutine: function(e) {
     this.$.jwt.toggleLogin();
   },
   /**
    * Use events for real value in theme.
    */
-  _themeChanged: function (e) {
-    this.set('activeItem.metadata.theme', e.detail.value);
+  _themeChanged: function(e) {
+    this.set("activeItem.metadata.theme", e.detail.value);
   },
   /**
    * Use events for real value in color area.
    */
-  _colorChanged: function (e) {
-    this.set('activeItem.metadata.cssVariable', e.detail.cssVariable);
-    this.set('activeItem.metadata.hexCode', e.detail.hexCode);
+  _colorChanged: function(e) {
+    this.set("activeItem.metadata.cssVariable", e.detail.cssVariable);
+    this.set("activeItem.metadata.hexCode", e.detail.hexCode);
   },
   /**
    * Add button clicked, trick DOM into clicking the add new site item.
    */
-  _addTap: function (e) {
-    this.$.siteslisting.$.list.querySelector('[data-site-id="item-new"]').click();
+  _addTap: function(e) {
+    this.$.siteslisting.$.list
+      .querySelector('[data-site-id="item-new"]')
+      .click();
   },
   /**
    * Toggle edit state
    */
-  _editTap: function (e) {
+  _editTap: function(e) {
     this.editMode = !this.editMode;
   },
   /**
    * User clicked on the flyout menu, set that item to active.
    */
-  _mapMenuSelection: function (e) {
+  _mapMenuSelection: function(e) {
     // run through available sites and find the matching ID
     let findSite = this.__sites.filter(site => {
       if (site.id !== e.detail) {
@@ -409,27 +410,32 @@ Polymer({
     });
     // if we found one, make it the top level item
     if (findSite.length > 0) {
-      this.set('activeItem', {});
-      this.set('activeItem', findSite.pop());
+      this.set("activeItem", {});
+      this.set("activeItem", findSite.pop());
     }
   },
   /**
    * Selected item has changed
    */
-  _activeItemChanged: function (newValue, oldvalue) {
-    if (typeof newValue !== typeof undefined && typeof newValue.id !== typeof undefined) {
+  _activeItemChanged: function(newValue, oldvalue) {
+    if (
+      typeof newValue !== typeof undefined &&
+      typeof newValue.id !== typeof undefined
+    ) {
       // for new items we need the new item form
-      if (newValue.id === 'item-new') {
+      if (newValue.id === "item-new") {
         this.$.newdialog.opened = true;
         this.$.itemdialog.opened = false;
-      }
-      else {
+      } else {
         this.$.newdialog.opened = false;
         this.$.itemdialog.opened = true;
       }
     }
     // it's possible to have NO item in scope, ensure everything closes :)
-    else if (typeof newValue !== typeof undefined && typeof newValue.id !== typeof undefined) {
+    else if (
+      typeof newValue !== typeof undefined &&
+      typeof newValue.id !== typeof undefined
+    ) {
       this.$.newdialog.opened = false;
       this.$.itemdialog.opened = false;
       this.$.drawer.opened = false;
@@ -438,42 +444,90 @@ Polymer({
   /**
    * Attached life cycle
    */
-  attached: function () {
+  attached: function() {
     // @todo support state routing for loadActiveSite
-    document.body.addEventListener('sites-listing-item-selected', this._itemSelected.bind(this));
-    document.body.addEventListener('haxcms-load-site', this.loadActiveSite.bind(this));
-    this.$.mapmenu.addEventListener('selected', this._mapMenuSelection.bind(this));
-    this.$.newsitetheme.addEventListener('change', this._themeChanged.bind(this));
-    this.$.newsitecolor.addEventListener('change', this._colorChanged.bind(this));
-    this.$.jwt.addEventListener('jwt-logged-in', this._loginStateChange.bind(this));
-    this.$.siteslisting.addEventListener('item-overlay-option-selected', this._itemOptionSelected.bind(this));
-    this.$.siteslisting.addEventListener('item-overlay-op-changed', this._itemOpChanged.bind(this));
+    document.body.addEventListener(
+      "sites-listing-item-selected",
+      this._itemSelected.bind(this)
+    );
+    document.body.addEventListener(
+      "haxcms-load-site",
+      this.loadActiveSite.bind(this)
+    );
+    this.$.mapmenu.addEventListener(
+      "selected",
+      this._mapMenuSelection.bind(this)
+    );
+    this.$.newsitetheme.addEventListener(
+      "change",
+      this._themeChanged.bind(this)
+    );
+    this.$.newsitecolor.addEventListener(
+      "change",
+      this._colorChanged.bind(this)
+    );
+    this.$.jwt.addEventListener(
+      "jwt-logged-in",
+      this._loginStateChange.bind(this)
+    );
+    this.$.siteslisting.addEventListener(
+      "item-overlay-option-selected",
+      this._itemOptionSelected.bind(this)
+    );
+    this.$.siteslisting.addEventListener(
+      "item-overlay-op-changed",
+      this._itemOpChanged.bind(this)
+    );
   },
   /**
    * detached life cycle
    */
-  detached: function () {
+  detached: function() {
     // @todo support state routing for loadActiveSite
-    document.body.removeEventListener('sites-listing-item-selected', this._itemSelected.bind(this));
-    document.body.removeEventListener('haxcms-load-site', this.loadActiveSite.bind(this));
-    this.$.mapmenu.removeEventListener('selected', this._mapMenuSelection.bind(this));
-    this.$.newsitetheme.removeEventListener('change', this._themeChanged.bind(this));
-    this.$.newsitecolor.removeEventListener('change', this._colorChanged.bind(this));
-    this.$.jwt.removeEventListener('jwt-logged-in', this._loginStateChange.bind(this));
-    this.$.siteslisting.removeEventListener('item-overlay-option-selected', this._itemOptionSelected.bind(this));
-    this.$.siteslisting.removeEventListener('item-overlay-op-changed', this._itemOpChanged.bind(this));
+    document.body.removeEventListener(
+      "sites-listing-item-selected",
+      this._itemSelected.bind(this)
+    );
+    document.body.removeEventListener(
+      "haxcms-load-site",
+      this.loadActiveSite.bind(this)
+    );
+    this.$.mapmenu.removeEventListener(
+      "selected",
+      this._mapMenuSelection.bind(this)
+    );
+    this.$.newsitetheme.removeEventListener(
+      "change",
+      this._themeChanged.bind(this)
+    );
+    this.$.newsitecolor.removeEventListener(
+      "change",
+      this._colorChanged.bind(this)
+    );
+    this.$.jwt.removeEventListener(
+      "jwt-logged-in",
+      this._loginStateChange.bind(this)
+    );
+    this.$.siteslisting.removeEventListener(
+      "item-overlay-option-selected",
+      this._itemOptionSelected.bind(this)
+    );
+    this.$.siteslisting.removeEventListener(
+      "item-overlay-op-changed",
+      this._itemOpChanged.bind(this)
+    );
   },
   /**
    * Ready life cycle
    */
-  ready: function () {
+  ready: function() {
     // set jwt from local storage bin
-    this.jwt = localStorage.getItem('jwt');
+    this.jwt = localStorage.getItem("jwt");
   },
   /**
    * Simple method of loading whatever's been dictated as active.
    */
-  loadActiveSite: function (e) {
+  loadActiveSite: function(e) {
     let findSite = this.__sites.filter(site => {
       if (site.id !== e.detail.id) {
         return false;
@@ -484,120 +538,116 @@ Polymer({
     // if location isn't there, push out to it
     if (item.location) {
       window.open(item.location);
-    }
-    else {
-      window.open('/_sites/' + item.metadata.siteName + '/index.html');
+    } else {
+      window.open("/_sites/" + item.metadata.siteName + "/index.html");
     }
   },
   /**
    * New button clicked, open modal
    */
-  _itemSelected: function (e) {
-    this.set('activeItem', {});
-    this.set('activeItem', e.detail);
+  _itemSelected: function(e) {
+    this.set("activeItem", {});
+    this.set("activeItem", e.detail);
   },
   /**
    * Create a new site button was clicked
    */
-  _createSite: function (e) {
+  _createSite: function(e) {
     // ship off a new call
-    this.set('createParams.domain', this.$.domain.value);
-    this.set('createParams.siteName', this.$.newsitetitle.value);
-    this.set('createParams.description', this.$.newsitedescription.value);
+    this.set("createParams.domain", this.$.domain.value);
+    this.set("createParams.siteName", this.$.newsitetitle.value);
+    this.set("createParams.description", this.$.newsitedescription.value);
     // need to pull this from the active item bc of data binding silly
-    this.set('createParams.theme', this.activeItem.metadata.theme);
-    this.set('createParams.hexCode', this.activeItem.metadata.hexCode);
-    this.set('createParams.cssVariable', this.activeItem.metadata.cssVariable);
-    this.set('createParams.image', this.$.newsiteimage.value);
-    this.set('createParams.icon', this.$.newsiteicon.icon);
+    this.set("createParams.theme", this.activeItem.metadata.theme);
+    this.set("createParams.hexCode", this.activeItem.metadata.hexCode);
+    this.set("createParams.cssVariable", this.activeItem.metadata.cssVariable);
+    this.set("createParams.image", this.$.newsiteimage.value);
+    this.set("createParams.icon", this.$.newsiteicon.icon);
     // pass along the jwt for user "session" purposes
-    this.set('createParams.jwt', this.jwt);
-    this.$.newsitetitle.value = '';
+    this.set("createParams.jwt", this.jwt);
+    this.$.newsitetitle.value = "";
     this.$.newsitedescription.value = null;
     this.$.createrequest.generateRequest();
   },
   /**
    * Download a new site button was clicked
    */
-  _downloadSite: function (e) {
+  _downloadSite: function(e) {
     // ship off a new call
-    this.set('downloadParams.siteName', this.activeItem.metadata.siteName);
+    this.set("downloadParams.siteName", this.activeItem.metadata.siteName);
     // pass along the jwt for user "session" purposes
-    this.set('downloadParams.jwt', this.jwt);
+    this.set("downloadParams.jwt", this.jwt);
     this.$.downloadrequest.generateRequest();
   },
   /**
    * Create a new site button was clicked
    */
-  handleCreateResponse: function (e) {
+  handleCreateResponse: function(e) {
     // update the listing data
-    this.fire('update-sites-listing-data', e.detail.response);
-    this.$.toast.show(e.detail.response.title + ' created successfully!');
+    this.fire("update-sites-listing-data", e.detail.response);
+    this.$.toast.show(e.detail.response.title + " created successfully!");
   },
   /**
    * Download a site
    */
-  handleDownloadResponse: function (e) {
+  handleDownloadResponse: function(e) {
     // fire incase anyone cares
-    this.fire('download-site-listing', e.detail.response);
-    var element = document.createElement('a');
-    element.setAttribute('href', e.detail.response.link);
-    element.style.display = 'none';
+    this.fire("download-site-listing", e.detail.response);
+    var element = document.createElement("a");
+    element.setAttribute("href", e.detail.response.link);
+    element.style.display = "none";
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
-    this.$.toast.show(this.activeItem.title + ' downloaded successfully!');
+    this.$.toast.show(this.activeItem.title + " downloaded successfully!");
   },
   /**
    * Option selected in an operation in context
    */
-  _itemOptionSelected: function (e) {
+  _itemOptionSelected: function(e) {
     var element = e.detail.element;
     switch (e.detail.operation) {
-      case 'remove':
-        if (e.detail.option === 'option1') {
-          this.$.toast.show('Deleting this');
+      case "remove":
+        if (e.detail.option === "option1") {
+          this.$.toast.show("Deleting this");
           // @todo send call out the door to delete callback
         }
-      break;
-      case 'duplicate':
-        if (e.detail.option === 'option1') {
-          this.$.toast.show('Duplicating this');
+        break;
+      case "duplicate":
+        if (e.detail.option === "option1") {
+          this.$.toast.show("Duplicating this");
           // @todo send call out the door to duplicate callback
         }
         break;
-      case 'move':
-          if (e.detail.option === 'option1') {
-            this.$.toast.show('Move this item left');
-          }
-          else {
-            this.$.toast.show('Move this item right');
-          }
-          // @todo send call out the door to commit the move callback          
-      break;
+      case "move":
+        if (e.detail.option === "option1") {
+          this.$.toast.show("Move this item left");
+        } else {
+          this.$.toast.show("Move this item right");
+        }
+        // @todo send call out the door to commit the move callback
+        break;
     }
   },
   /**
    * Selected operation changed; we use this for edit mode detection
    */
-  _itemOpChanged: function (e) {
+  _itemOpChanged: function(e) {
     var element = e.detail.element;
-    if (e.detail.operation === 'edit') {
+    if (e.detail.operation === "edit") {
       let findSite = this.__sites.filter(site => {
-        if (site.id !== element.getAttribute('data-site-id')) {
+        if (site.id !== element.getAttribute("data-site-id")) {
           return false;
         }
         return true;
       });
       // if we found one, make it the top level item
       if (findSite.length > 0) {
-        this.set('activeItem', {});
-        this.set('activeItem', findSite.pop());
+        this.set("activeItem", {});
+        this.set("activeItem", findSite.pop());
         // simulate clicking on the edit button that's in this tab
         this.$.edit.click();
       }
     }
-  },
-  });
-</script>
-</dom-module>
+  }
+});

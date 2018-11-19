@@ -1,0 +1,322 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/beaker-broker/beaker-broker.js";
+/**
+ * `haxcms-beaker`
+ * `a simple element to check for and fetch JWTs`
+ *
+ * @demo demo/index.html
+ * @microcopy - the mental model for this element
+ * - jwt - a json web token which is an encrypted security token to talk
+ */
+Polymer({
+  is: "haxcms-beaker",
+  _template: html`<beaker-broker id="beaker"></beaker-broker>`,
+  properties: {
+    /**
+     * JSON Web token, it'll come from a global call if it's available
+     */
+    jwt: {
+      type: String
+    },
+    /**
+     * Store manifest that makes up the site.
+     */
+    manifest: {
+      type: Object
+    },
+    /**
+     * Track activeItem
+     */
+    activeItem: {
+      type: Object
+    }
+  },
+  /**
+   * Attached life cycle
+   */
+  created: function() {
+    document.body.addEventListener("jwt-token", this._jwtTokenFired.bind(this));
+    document.body.addEventListener(
+      "json-outline-schema-active-item-changed",
+      this.initialItem.bind(this)
+    );
+    document.body.addEventListener(
+      "json-outline-schema-active-body-changed",
+      this.initialBody.bind(this)
+    );
+    // HAX CMS events to intercept
+    document.body.addEventListener(
+      "haxcms-save-site-data",
+      this.saveManifest.bind(this)
+    );
+    document.body.addEventListener(
+      "haxcms-save-outline",
+      this.saveOutline.bind(this)
+    );
+    document.body.addEventListener(
+      "haxcms-save-page",
+      this.savePage.bind(this)
+    );
+    // listen for app being selected
+    document.body.addEventListener(
+      "hax-app-picker-selection",
+      this._appPicked.bind(this)
+    );
+  },
+  /**
+   * detached life cycle
+   */
+  detached: function() {
+    document.body.removeEventListener(
+      "jwt-token",
+      this._jwtTokenFired.bind(this)
+    );
+    document.body.removeEventListener(
+      "json-outline-schema-active-item-changed",
+      this.initialItem.bind(this)
+    );
+    document.body.removeEventListener(
+      "json-outline-schema-active-body-changed",
+      this.initialBody.bind(this)
+    );
+    // HAX CMS events to intercept
+    document.body.removeEventListener(
+      "haxcms-save-site-data",
+      this.saveManifest.bind(this)
+    );
+    document.body.removeEventListener(
+      "haxcms-save-outline",
+      this.saveOutline.bind(this)
+    );
+    document.body.removeEventListener(
+      "haxcms-save-page",
+      this.savePage.bind(this)
+    );
+    // listen for app being selected
+    document.body.addEventListener(
+      "hax-app-picker-selection",
+      this._appPicked.bind(this)
+    );
+  },
+  _appPicked: function(e) {
+    if (e.detail.connection.protocol === "dat") {
+      e.preventDefault();
+      e.stopPropagation();
+      let reader = new FileReader();
+      reader.onload = event => {
+        let fileLocation =
+          "files/" +
+          window.HaxStore.instance.haxManager.$.fileupload.files[0].name;
+        this.$.beaker.write(fileLocation, event.target.result);
+        window.HaxStore.instance.haxManager.$.url.value = fileLocation;
+        window.HaxStore.instance.haxManager.newAssetConfigure();
+      };
+      reader.readAsArrayBuffer(
+        window.HaxStore.instance.haxManager.$.fileupload.files[0]
+      );
+    }
+  },
+  initialItem: function(e) {
+    this.activeItem = e.detail;
+    this.__item = e.detail;
+  },
+  initialManifest: function(e) {
+    this.manifest = e.detail;
+    this.__manifest = e.detail;
+  },
+  initialBody: function(e) {
+    this.__body = e.detail;
+  },
+  /**
+   * Save page data
+   */
+  savePage: async function(e) {
+    this.activeItem = e.detail;
+    // make sure this location exists
+    await this.$.beaker.write(
+      this.activeItem.location,
+      window.HaxStore.instance.activeHaxBody.haxToContent()
+    );
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
+      "Page updated!"
+    );
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.fire(
+      "haxcms-trigger-update-page",
+      true
+    );
+  },
+  /**
+   * Outline save event.
+   */
+  saveOutline: async function(e) {
+    // snag global to be sure we have it set first
+    this.manifest =
+      window.cmsSiteEditor.instance.haxCmsSiteEditorElement.manifest;
+    // set items specifically since it's just an outline update
+    this.manifest.items = e.detail;
+    // loop through and match the data our backend generates
+    this.manifest.items.forEach((element, index) => {
+      // test for things that are not set and build the whole thing out
+      if (typeof element.location === typeof undefined) {
+        let id = this.generateResourceID("item-");
+        element.id = id;
+        element.location = "pages/" + id + "/index.html";
+        element.order = index;
+        element.description = "";
+        element.metadata = {
+          created: Math.floor(Date.now() / 1000),
+          updated: Math.floor(Date.now() / 1000)
+        };
+        // make a directory
+        this.$.beaker.archive.mkdir("pages/" + id);
+        // make the page
+        this.$.beaker.write(
+          "pages/" + id + "/index.html",
+          "<p>My great new content!</p>"
+        );
+        this.manifest.items[index] = element;
+      }
+    });
+    this.$.beaker.write("site.json", JSON.stringify(this.manifest, null, 2));
+    // simulate save events since they wont fire
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
+      "Outline saved!"
+    );
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.fire(
+      "haxcms-trigger-update",
+      true
+    );
+    this.fire("json-outline-schema-changed", this.manifest);
+  },
+  /**
+   * Manifest save event.
+   */
+  saveManifest: async function(e) {
+    this.manifest = e.detail;
+    await this.$.beaker.write(
+      "site.json",
+      JSON.stringify(this.manifest, null, 2)
+    );
+    // simulate save events since they wont fire
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
+      "Site details saved!"
+    );
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.fire(
+      "haxcms-trigger-update",
+      true
+    );
+    this.fire("json-outline-schema-changed", this.manifest);
+  },
+  /**
+   * JWT token fired, let's capture it
+   */
+  _jwtTokenFired: function(e) {
+    this.jwt = e.detail;
+  },
+  /**
+   * Generate a uinque ID
+   */
+  generateResourceID: function(base = "") {
+    function idPart() {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1);
+    }
+    return (
+      base +
+      idPart() +
+      idPart() +
+      "-" +
+      idPart() +
+      "-" +
+      idPart() +
+      "-" +
+      idPart() +
+      "-" +
+      idPart() +
+      idPart() +
+      idPart()
+    );
+  },
+  /**
+   * Attached life cycle
+   */
+  attached: async function() {
+    let beaker = this.$.beaker;
+    this.jwt = beaker.archive.url;
+    var info = await beaker.archive.getInfo();
+    // test that we have a url (we'll call it jwt for now) and that we own the site
+    if (this.jwt != null && info.isOwner) {
+      var appstore = JSON.parse(await beaker.read("appstore.json"));
+      // attempt to dynamically import the hax cms site editor
+      // which will appear to be injecting into the page
+      // but because of this approach it should be non-blocking
+      try {
+        this.importHref(
+          this.resolveUrl("haxcms-site-editor.html"),
+          e => {
+            let haxCmsSiteEditorElement = document.createElement(
+              "haxcms-site-editor"
+            );
+            haxCmsSiteEditorElement.jwt = this.jwt;
+            //haxCmsSiteEditorElement.savePagePath = "<?php print $HAXCMS->basePath . 'system/savePage.php';?>";
+            //haxCmsSiteEditorElement.saveManifestPath = "<?php print $HAXCMS->basePath . 'system/saveManifest.php';?>";
+            //haxCmsSiteEditorElement.saveOutlinePath = "<?php print $HAXCMS->basePath . 'system/saveOutline.php';?>";
+            //haxCmsSiteEditorElement.publishPath = null;
+            haxCmsSiteEditorElement.appStore = appstore;
+            // pass along the initial state management stuff that may be missed
+            // based on timing on the initial setup
+            if (typeof this.__item !== typeof undefined) {
+              haxCmsSiteEditorElement.activeItem = this.__item;
+            }
+            if (typeof this.__manifest !== typeof undefined) {
+              haxCmsSiteEditorElement.manifest = this.__manifest;
+            }
+            if (typeof this.__body !== typeof undefined) {
+              haxCmsSiteEditorElement.__body = this.__body;
+            }
+            window.cmsSiteEditor.instance.haxCmsSiteEditorElement = haxCmsSiteEditorElement;
+            window.cmsSiteEditor.instance.appendTarget.appendChild(
+              haxCmsSiteEditorElement
+            );
+          },
+          e => {
+            //import failed
+          }
+        );
+      } catch (err) {
+        // error in the event this is a double registration
+      }
+    }
+  },
+  /**
+   * Hack to replace importHref from Polymer 1 that TYPICALLY will work in ESM
+   */
+  importHref: function(url) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      const tempGlobal =
+        "__tempModuleLoadingVariable" +
+        Math.random()
+          .toString(32)
+          .substring(2);
+      script.type = "module";
+      script.textContent = `import * as m from "${url}"; window.${tempGlobal} = m;`;
+      script.onload = () => {
+        resolve(window[tempGlobal]);
+        delete window[tempGlobal];
+        script.remove();
+      };
+      script.onerror = () => {
+        reject(new Error("Failed to load module script with URL " + url));
+        delete window[tempGlobal];
+        script.remove();
+      };
+      document.documentElement.appendChild(script);
+    });
+  }
+});

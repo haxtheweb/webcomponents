@@ -1,33 +1,35 @@
-<script type="module" src="../node_modules/@polymer/polymer/polymer.js"></script>
-<script type="module" src="../node_modules/@polymer/iron-ajax/iron-ajax.js"></script>
-<link rel="import" href="../hax-body/hax-store.html">
-<link rel="import" href="../hax-body/hax-body.html">
-<link rel="import" href="../hax-body/hax-autoloader.html">
-<link rel="import" href="../hax-body/hax-manager.html">
-<link rel="import" href="../hax-body/hax-app-picker.html">
-<link rel="import" href="../hax-body/hax-app.html">
-<link rel="import" href="../hax-body/hax-panel.html">
-<link rel="import" href="../hax-body/hax-export-dialog.html">
-<link rel="import" href="../hax-body/hax-toolbar.html">
-<link rel="import" href="../paper-fab/paper-fab.html">
-<link rel="import" href="../paper-tooltip/paper-tooltip.html">
-<script type="module" src="../node_modules/@polymer/iron-icons/editor-icons.js"></script>
-<link rel="import" href="../paper-toast/paper-toast.html">
-<script type="module" src="./haxcms-outline-editor-dialog.js"></script>
-<script type="module" src="./haxcms-manifest-editor-dialog.js"></script>
-<script type="module" src="./haxcms-site-editor-ui.js"></script>
-<!--
-`haxcms-site-editor`
-haxcms editor element
-
-@demo demo/index.html
-
-@microcopy - the mental model for this element
-
--->
-
-<dom-module id="haxcms-site-editor">
-  <template>
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/paper-fab/paper-fab.js";
+import "@polymer/paper-toast/paper-toast.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@polymer/iron-ajax/iron-ajax.js";
+import "@polymer/iron-icons/editor-icons.js";
+import "@lrnwebcomponents/jwt-login/jwt-login.js";
+import "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import "@lrnwebcomponents/hax-body/hax-body.js";
+import "@lrnwebcomponents/hax-body/lib/hax-autoloader.js";
+import "@lrnwebcomponents/hax-body/lib/hax-manager.js";
+import "@lrnwebcomponents/hax-body/lib/hax-app-picker.js";
+import "@lrnwebcomponents/hax-body/lib/hax-app.js";
+import "@lrnwebcomponents/hax-body/lib/hax-panel.js";
+import "@lrnwebcomponents/hax-body/lib/hax-export-dialog.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
+import "./haxcms-outline-editor-dialog.js";
+import "./haxcms-manifest-editor-dialog.js";
+import "./haxcms-site-editor-ui.js";
+/**
+ * `haxcms-site-editor`
+ * `haxcms editor element that provides all editing capabilities`
+ *
+ * @demo demo/index.html
+ */
+Polymer({
+  is: "haxcms-site-editor",
+  _template: html`
     <style is="custom-style">
       :host {
         display: block;
@@ -132,64 +134,55 @@ haxcms editor element
     <paper-toast id="publishtoast" duration="0">
       <a href$="[[__publishLink]]" target="_blank"><paper-button raised style="color:yellow;text-transform: none;font-weight: bold;">[[__publishLabel]]</paper-button></a>
     </paper-toast>
-  </template>
-  <script type="module">
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import '@polymer/iron-ajax/iron-ajax.js';
-import '@polymer/iron-icons/editor-icons.js';
-import './haxcms-outline-editor-dialog.js';
-import './haxcms-manifest-editor-dialog.js';
-import './haxcms-site-editor-ui.js';
-Polymer({
-  is: 'haxcms-site-editor',
+`,
   listeners: {
-    'haxcms-save-outline': 'saveOutline', // from outlineeditor
-    'haxcms-save-site-data': 'saveManifest', // from manifesteditor
-    'haxcms-publish-site': 'publishSite', // from manifesteditor
+    "haxcms-save-outline": "saveOutline", // from outlineeditor
+    "haxcms-save-site-data": "saveManifest", // from manifesteditor
+    "haxcms-publish-site": "publishSite" // from manifesteditor
   },
   properties: {
     /**
      * JSON Web token, it'll come from a global call if it's available
      */
     jwt: {
-      type: String,
+      type: String
     },
     /**
      * end point for saving page
      */
     savePagePath: {
-      type: String,
+      type: String
     },
     /**
      * end point for saving manifest
      */
     saveManifestPath: {
-      type: String,
+      type: String
     },
     /**
      * end point for publishing to surge
      */
     publishPath: {
-      type: String,
+      type: String
     },
     /**
      * Publishing end point, this has CDN implications so show message
      */
     publishing: {
       type: Boolean,
-      observer: '_publishingChanged',
+      observer: "_publishingChanged"
     },
     /**
      * end point for saving outline
      */
     saveOutlinePath: {
-      type: String,
+      type: String
     },
     /**
      * appStore object from backend
      */
     appStore: {
-      type: Object,
+      type: Object
     },
     /**
      * if the page is in an edit state or not
@@ -197,8 +190,8 @@ Polymer({
     editMode: {
       type: Boolean,
       reflectToAttribute: true,
-      observer: '_editModeChanged',
-      value: false,
+      observer: "_editModeChanged",
+      value: false
     },
     /**
      * Outline editing state
@@ -206,8 +199,8 @@ Polymer({
     outlineEditMode: {
       type: Boolean,
       reflectToAttribute: true,
-      observer: '_outlineEditModeChanged',
-      value: false,
+      observer: "_outlineEditModeChanged",
+      value: false
     },
     /**
      * manifest editing state
@@ -215,36 +208,36 @@ Polymer({
     manifestEditMode: {
       type: Boolean,
       reflectToAttribute: true,
-      observer: '_manifestEditModeChanged',
-      value: false,
+      observer: "_manifestEditModeChanged",
+      value: false
     },
     /**
      * data as part of the POST to the backend
      */
     updatePageData: {
       type: Object,
-      value: {},
+      value: {}
     },
     /**
      * published site data
      */
     publishSiteData: {
       type: Object,
-      value: {},
+      value: {}
     },
     /**
      * data as part of the POST to the backend
      */
     updateOutlineData: {
       type: Object,
-      value: {},
+      value: {}
     },
     /**
      * data as part of the POST to the backend
      */
     updateManifestData: {
       type: Object,
-      value: {},
+      value: {}
     },
     /**
      * Active item of the page being worked on, JSON outline schema item format
@@ -252,28 +245,37 @@ Polymer({
     activeItem: {
       type: Object,
       notify: true,
-      observer: '_activeItemChanged',
+      observer: "_activeItemChanged"
     },
     /**
      * Outline of items in json outline schema format
      */
-     manifest: {
+    manifest: {
       type: Object,
-      notify: true,
-     },
+      notify: true
+    }
   },
   /**
    * created life cycle
    */
-  created: function () {
-    document.body.addEventListener('json-outline-schema-active-item-changed', this._newActiveItem.bind(this));      
-    document.body.addEventListener('json-outline-schema-changed', this._manifestChanged.bind(this));      
-    document.body.addEventListener('json-outline-schema-active-body-changed', this._bodyChanged.bind(this));
+  created: function() {
+    document.body.addEventListener(
+      "json-outline-schema-active-item-changed",
+      this._newActiveItem.bind(this)
+    );
+    document.body.addEventListener(
+      "json-outline-schema-changed",
+      this._manifestChanged.bind(this)
+    );
+    document.body.addEventListener(
+      "json-outline-schema-active-body-changed",
+      this._bodyChanged.bind(this)
+    );
   },
   /**
    * ready life cycle
    */
-  ready: function () {
+  ready: function() {
     document.body.appendChild(this.$.toast);
     document.body.appendChild(this.$.publishtoast);
     document.body.appendChild(this.$.ui);
@@ -283,84 +285,93 @@ Polymer({
   /**
    * attached life cycle
    */
-  attached: function () {
-    this.$.toast.show('You are logged in, edit tools shown.');
+  attached: function() {
+    this.$.toast.show("You are logged in, edit tools shown.");
     // get around initial setup state management
     if (typeof this.__body !== typeof undefined) {
       this.$.body.importContent(this.__body);
     }
     // allow for initial setting since this editor gets injected basically
     if (typeof window.cmsSiteEditor.jsonOutlineSchema !== typeof undefined) {
-      this.set('manifest', window.cmsSiteEditor.jsonOutlineSchema);
+      this.set("manifest", window.cmsSiteEditor.jsonOutlineSchema);
     }
     if (typeof window.cmsSiteEditor.initialActiveItem !== typeof undefined) {
-      this.set('activeItem', window.cmsSiteEditor.initialActiveItem);
+      this.set("activeItem", window.cmsSiteEditor.initialActiveItem);
     }
     this.updateStyles();
   },
   /**
    * Detatched life cycle
    */
-  detached: function () {
-    document.body.removeEventListener('json-outline-schema-active-item-changed', this._newActiveItem.bind(this));
-    document.body.removeEventListener('json-outline-schema-changed', this._manifestChanged.bind(this));
-    document.body.removeEventListener('json-outline-schema-active-body-changed', this._bodyChanged.bind(this));
+  detached: function() {
+    document.body.removeEventListener(
+      "json-outline-schema-active-item-changed",
+      this._newActiveItem.bind(this)
+    );
+    document.body.removeEventListener(
+      "json-outline-schema-changed",
+      this._manifestChanged.bind(this)
+    );
+    document.body.removeEventListener(
+      "json-outline-schema-active-body-changed",
+      this._bodyChanged.bind(this)
+    );
   },
   /**
    * notice publishing callback changing state
    */
-  _publishingChanged: function (newValue, oldValue) {
+  _publishingChanged: function(newValue, oldValue) {
     if (newValue) {
       this.$.toast.duration = 0;
-      this.$.toast.show('Publishing...');
-    }
-    else if (!newValue && oldValue) {
+      this.$.toast.show("Publishing...");
+    } else if (!newValue && oldValue) {
       this.$.toast.duration = 3000;
     }
   },
   /**
    * react to manifest being changed
    */
-  _manifestChanged: function (e) {
-    this.set('manifest', {});
-    this.set('manifest', e.detail);
+  _manifestChanged: function(e) {
+    this.set("manifest", {});
+    this.set("manifest", e.detail);
   },
   /**
    * update the internal active item
    */
-  _newActiveItem: function (e) {
-    this.set('activeItem', e.detail);
+  _newActiveItem: function(e) {
+    this.set("activeItem", e.detail);
   },
   /**
    * active item changed
    */
-  _activeItemChanged: function (newValue, oldValue) {
+  _activeItemChanged: function(newValue, oldValue) {
     if (newValue) {
-      let parts = window.location.pathname.split('/');
+      let parts = window.location.pathname.split("/");
       parts.pop();
       let site = parts.pop();
       // set upload manager to point to this location in a more dynamic fashion
-      this.$.haxmanager.appendUploadEndPoint = 'siteName=' + site + '&page=' + newValue.id;
+      this.$.haxmanager.appendUploadEndPoint =
+        "siteName=" + site + "&page=" + newValue.id;
     }
   },
   /**
    * handle update responses for pages and outlines
    */
-  _handlePageResponse: function (e) {
-    this.$.toast.show('Page saved!');
-    this.fire('haxcms-trigger-update-page', true);
+  _handlePageResponse: function(e) {
+    this.$.toast.show("Page saved!");
+    this.fire("haxcms-trigger-update-page", true);
   },
-  _handleOutlineResponse: function (e) {
+  _handleOutlineResponse: function(e) {
     // trigger a refresh of the data in page
-    this.$.toast.show('Outline saved!');
-    this.fire('haxcms-trigger-update', true);
+    this.$.toast.show("Outline saved!");
+    this.fire("haxcms-trigger-update", true);
   },
-  _handleManifestResponse: function (e) {
+  _handleManifestResponse: function(e) {
     // trigger a refresh of the data in page
-    this.$.toast.show('Site details saved!');
-    this.fire('haxcms-trigger-update', true);
+    this.$.toast.show("Site details saved!");
+    this.fire("haxcms-trigger-update", true);
   },
-  _handlePublishResponse: function (e) {
+  _handlePublishResponse: function(e) {
     console.log(e.detail.response);
     let data = e.detail.response;
     // show the published response
@@ -371,56 +382,57 @@ Polymer({
   /**
    * Edit state has changed.
    */
-  _editModeChanged: function (newValue, oldValue) {
+  _editModeChanged: function(newValue, oldValue) {
     // was on, now off
     if (!newValue && oldValue) {
-      let parts = window.location.pathname.split('/');
+      let parts = window.location.pathname.split("/");
       parts.pop();
       let site = parts.pop();
-      this.set('updatePageData.siteName', site);
-      this.set('updatePageData.body', window.HaxStore.instance.activeHaxBody.haxToContent());
-      this.set('updatePageData.page', this.activeItem.id);
-      this.set('updatePageData.jwt', this.jwt);
+      this.set("updatePageData.siteName", site);
+      this.set(
+        "updatePageData.body",
+        window.HaxStore.instance.activeHaxBody.haxToContent()
+      );
+      this.set("updatePageData.page", this.activeItem.id);
+      this.set("updatePageData.jwt", this.jwt);
       // send the request
       if (this.savePagePath) {
         this.$.pageupdateajax.generateRequest();
       }
-      this.fire('haxcms-save-page', this.activeItem);
+      this.fire("haxcms-save-page", this.activeItem);
     }
   },
   /**
    * Note changes to the outline / structure of the page's items
    */
-  _outlineEditModeChanged: function (newValue, oldValue) {
+  _outlineEditModeChanged: function(newValue, oldValue) {
     if (newValue) {
       this.$.outlineeditor.opened = true;
-    }
-    else {
+    } else {
       this.$.outlineeditor.opened = false;
     }
   },
   /**
    * Note changes to the outline / structure of the page's items
    */
-  _manifestEditModeChanged: function (newValue, oldValue) {
+  _manifestEditModeChanged: function(newValue, oldValue) {
     if (newValue) {
       this.$.manifesteditor.opened = true;
-    }
-    else {
+    } else {
       this.$.manifesteditor.opened = false;
     }
   },
   /**
    * Save the outline based on an event firing.
    */
-  saveOutline: function (e) {
-    let parts = window.location.pathname.split('/');
+  saveOutline: function(e) {
+    let parts = window.location.pathname.split("/");
     parts.pop();
     let site = parts.pop();
     // now let's work on the outline
-    this.set('updateOutlineData.siteName', site);
-    this.set('updateOutlineData.items', e.detail);
-    this.set('updateOutlineData.jwt', this.jwt);
+    this.set("updateOutlineData.siteName", site);
+    this.set("updateOutlineData.items", e.detail);
+    this.set("updateOutlineData.jwt", this.jwt);
     if (this.saveOutlinePath) {
       this.$.outlineupdateajax.generateRequest();
     }
@@ -428,14 +440,14 @@ Polymer({
   /**
    * Save the outline based on an event firing.
    */
-  saveManifest: function (e) {
-    let parts = window.location.pathname.split('/');
+  saveManifest: function(e) {
+    let parts = window.location.pathname.split("/");
     parts.pop();
     let site = parts.pop();
     // now let's work on the outline
-    this.set('updateManifestData.siteName', site);
-    this.set('updateManifestData.manifest', e.detail);
-    this.set('updateManifestData.jwt', this.jwt);
+    this.set("updateManifestData.siteName", site);
+    this.set("updateManifestData.manifest", e.detail);
+    this.set("updateManifestData.jwt", this.jwt);
     if (this.saveManifestPath) {
       this.$.manifestupdateajax.generateRequest();
     }
@@ -443,12 +455,12 @@ Polymer({
   /**
    * Save the outline based on an event firing.
    */
-  publishSite: function (e) {
-    let parts = window.location.pathname.split('/');
+  publishSite: function(e) {
+    let parts = window.location.pathname.split("/");
     parts.pop();
     let site = parts.pop();
-    this.set('publishSiteData.siteName', site);
-    this.set('publishSiteData.jwt', this.jwt);
+    this.set("publishSiteData.siteName", site);
+    this.set("publishSiteData.jwt", this.jwt);
     if (this.publishPath) {
       this.$.publishajax.generateRequest();
     }
@@ -456,9 +468,7 @@ Polymer({
   /**
    * Notice body of content has changed and import into HAX
    */
-  _bodyChanged: function (e) {
+  _bodyChanged: function(e) {
     window.HaxStore.instance.activeHaxBody.importContent(e.detail);
-  },
+  }
 });
-</script>
-</dom-module>
