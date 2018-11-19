@@ -6,7 +6,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 export { SimpleColorsManager };
 /**
  * `simple-colors-manager`
- * `simple-colors-shared-styles`
  * `a shared set of styles for @lrnwebcomponents`
  *
  * @microcopy - language worth noting:
