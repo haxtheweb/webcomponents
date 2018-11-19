@@ -13,7 +13,6 @@
  * @demo demo/index.html
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-//import { SimpleColorsManager } from "./lib/simple-colors-manager.js"; //import the shared styles
 import { SimpleColorsManager } from "./lib/simple-colors-shared-styles.js"; //import the shared styles
 
 export class SimpleColors extends PolymerElement {
@@ -33,21 +32,28 @@ export class SimpleColors extends PolymerElement {
       dark: {
         name: "dark",
         type: "Boolean",
-        value: null,
+        value: false,
         reflectToAttribute: true,
         observer: false
       },
       colors: {
         name: "colors",
         type: "Object",
-        value: {},
+        value: null,
         reflectToAttribute: false,
         observer: false
       },
       __wcagContrast: {
         name: "__wcagContrast",
         type: "Object",
-        value: {},
+        value: null,
+        reflectToAttribute: false,
+        observer: false
+      },
+      __sharedStyles: {
+        name: "__sharedStyles",
+        type: "String",
+        computed: "_getSharedStyles(colors)",
         reflectToAttribute: false,
         observer: false
       }
@@ -66,12 +72,43 @@ export class SimpleColors extends PolymerElement {
     SimpleColorsManager.requestAvailability();
     this.set("colors", SimpleColorsManager.colors);
     this.set("__wcagContrast", SimpleColorsManager.wcagContrast);
-    console.log(this.__wcagContrast);
     this.getContrasts("--simple-colors-default-theme-accent-5");
     this.getContrasts("--simple-colors-dark-theme-grey-2", false);
     this.getContrasts("--simple-colors-dark-theme-red-11", true);
     this.getContrasts("--simple-colors-dark-theme-grey-1", true);
     super.connectedCallback();
+  }
+
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  _getSharedStyles(colors) {
+    let addLevels = function(color1, theme1, color2, invert) {
+        let levels = this.colors[color2],
+          str = [];
+        for (let i = 0; i < levels.length; i++) {
+          let index = invert ? 11 - i : i;
+          str.push(
+            "--simple-colors-" +
+              theme +
+              "-theme-" +
+              color1 +
+              "-" +
+              (i + 1) +
+              ":" +
+              this.colors[color2][index] +
+              ";"
+          );
+        }
+        return str.join("");
+      },
+      addColors = function(isTheme) {
+        let str = isTheme ? ["<style>"] : [""];
+        for (let color in this.colors) {
+        }
+      };
+    if (colors !== null) {
+    }
   }
 
   /**

@@ -529,4 +529,3 @@ const styleElement = document.createElement("dom-module"),
 template.innerHTML = addCssVariables() + addAccentVariables() + addClasses();
 styleElement.appendChild(html`${template}`);
 styleElement.register("simple-colors-shared-styles");
-//console.log(styleElement);
