@@ -2,37 +2,75 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "./lib/hex-a-gon.js";
-
 export { HexagonLoader };
 /**
  * `hexagon-loader`
- * `a simple VJS element that is for showing something is loading`
+ * `a simple element that is for showing something is loading`
  *
  * @microcopy - language worth noting:
  *  -
  *
  * @customElement
+ * @polymer
  * @demo demo/index.html
  */
-class HexagonLoader extends HTMLElement {
+class HexagonLoader extends PolymerElement {
   // render function
-  get html() {
-    return `
+  static get template() {
+    return html`
 <style>:host {
-  display: block;
-   --hexagon-loader-color: orange;
+  display: none;
 }
-
 :host([hidden]) {
   display: none;
 }
+:host([loading]) {
+  display: block;
+}
+:host([size="small"]) {
+  transform: scale(.5, .5);
+  -webkit-transform: scale(.5, .5);
+  -moz-transform: scale(.5, .5);
+  -ms-transform: scale(.5, .5);
+  -o-transform: scale(.5, .5);
+}
+:host([size="large"]) {
+  transform: scale(1.25, 1.25);
+  -webkit-transform: scale(1.25, 1.25);
+  -moz-transform: scale(1.25, 1.25);
+  -ms-transform: scale(1.25, 1.25);
+  -o-transform: scale(1.25, 1.25);
+}
+:host([size="epic"]) {
+  transform: scale(2.5, 2.5);
+  -webkit-transform: scale(2.5, 2.5);
+  -moz-transform: scale(2.5, 2.5);
+  -ms-transform: scale(2.5, 2.5);
+  -o-transform: scale(2.5, 2.5);
+}
 
-.loader {
+div {
   position: relative;
   width: 255px;
   height: 232.5px;
   margin: 0 auto;
+}
+
+hex-a-gon {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 18px;
+  color: #9fb475;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
 }
 
 hex-a-gon:nth-of-type(1) {
@@ -390,99 +428,10 @@ hex-a-gon:nth-of-type(37) {
             transform: scale(0) translate(-50%, -50%);
   }
 }</style>
-<div class="loader">
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
+<div>
+    <template is="dom-repeat" items="[[items]]">
+        <hex-a-gon></hex-a-gon>
+    </template>
 </div>`;
   }
 
@@ -495,7 +444,8 @@ hex-a-gon:nth-of-type(37) {
       color: {
         name: "color",
         type: "String",
-        value: "orange"
+        observer: "_colorChanged",
+        reflectToAttribute: true
       },
       /**
        * The relative size of this loader. Options small, medium, large
@@ -503,7 +453,22 @@ hex-a-gon:nth-of-type(37) {
       size: {
         name: "size",
         type: "String",
-        value: "medium"
+        reflectToAttribute: true
+      },
+      /**
+       * Loading state
+       */
+      loading: {
+        name: "loading",
+        type: "Boolean"
+      },
+      /**
+       * Count of the items
+       */
+      itemCount: {
+        name: "itemCount",
+        type: "Number",
+        value: 37
       }
     };
   }
@@ -516,89 +481,27 @@ hex-a-gon:nth-of-type(37) {
     return "hexagon-loader";
   }
   /**
-   * life cycle
-   */
-  constructor(delayRender = false) {
-    super();
-
-    // set tag for later use
-    this.tag = HexagonLoader.tag;
-    // map our imported properties json to real props on the element
-    // @notice static getter of properties is built via tooling
-    // to edit modify src/HexagonLoader-properties.json
-    let obj = HexagonLoader.properties;
-    for (let p in obj) {
-      if (obj.hasOwnProperty(p)) {
-        if (this.hasAttribute(p)) {
-          this[p] = this.getAttribute(p);
-        } else {
-          this.setAttribute(p, obj[p].value);
-          this[p] = obj[p].value;
-        }
-      }
-    }
-    // optional queue for future use
-    this._queue = [];
-    this.template = document.createElement("template");
-
-    this.attachShadow({ mode: "open" });
-
-    if (!delayRender) {
-      this.render();
-    }
-  }
-  /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
-    if (window.ShadyCSS) {
-      window.ShadyCSS.styleElement(this);
+    super.connectedCallback();
+    let items = [];
+    for (var i = 0; i < this.itemCount; i++) {
+      items.push("");
     }
-
-    if (this._queue.length) {
-      this._processQueue();
-    }
+    this.set("items", items);
   }
-
-  _copyAttribute(name, to) {
-    const recipients = this.shadowRoot.querySelectorAll(to);
-    const value = this.getAttribute(name);
-    const fname = value == null ? "removeAttribute" : "setAttribute";
-    for (const node of recipients) {
-      node[fname](name, value);
+  /**
+   * Color changed
+   */
+  _colorChanged(newValue, oldValue) {
+    if (newValue) {
+      this.updateStyles({ "--hexagon-color": newValue });
     }
   }
-
-  _queueAction(action) {
-    this._queue.push(action);
-  }
-
-  _processQueue() {
-    this._queue.forEach(action => {
-      this[`_${action.type}`](action.data);
-    });
-
-    this._queue = [];
-  }
-
-  _setProperty({ name, value }) {
-    this[name] = value;
-  }
-
-  render() {
-    this.shadowRoot.innerHTML = null;
-    this.template.innerHTML = this.html;
-
-    if (window.ShadyCSS) {
-      window.ShadyCSS.prepareTemplate(this.template, this.tag);
-    }
-    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
-  }
-
-  //static get observedAttributes() {
-  //  return [];
-  //}
-  // disconnectedCallback() {}
-  // attributeChangedCallback(attr, oldValue, newValue) {}
+  /**
+   * life cycle, element is removed from the DOM
+   */
+  //disconnectedCallback() {}
 }
 window.customElements.define(HexagonLoader.tag, HexagonLoader);

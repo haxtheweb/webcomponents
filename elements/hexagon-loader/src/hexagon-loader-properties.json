@@ -5,7 +5,8 @@
   "color": {
     "name": "color",
     "type": "String",
-    "value": "orange"
+    "observer": "_colorChanged",
+    "reflectToAttribute": true
   },
   /**
    * The relative size of this loader. Options small, medium, large
@@ -13,6 +14,21 @@
   "size": {
     "name": "size",
     "type": "String",
-    "value": "medium"
+    "reflectToAttribute": true
+  },
+  /**
+   * Loading state
+   */
+  "loading": {
+    "name": "loading",
+    "type": "Boolean"
+  },
+  /**
+   * Count of the items
+   */
+  "itemCount": {
+    "name": "itemCount",
+    "type": "Number",
+    "value": 37
   }
 }

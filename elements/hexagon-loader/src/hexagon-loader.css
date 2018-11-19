@@ -1,17 +1,53 @@
 :host {
-  display: block;
-   --hexagon-loader-color: orange;
+  display: none;
 }
-
 :host([hidden]) {
   display: none;
 }
+:host([loading]) {
+  display: block;
+}
+:host([size="small"]) {
+  transform: scale(.5, .5);
+  -webkit-transform: scale(.5, .5);
+  -moz-transform: scale(.5, .5);
+  -ms-transform: scale(.5, .5);
+  -o-transform: scale(.5, .5);
+}
+:host([size="large"]) {
+  transform: scale(1.25, 1.25);
+  -webkit-transform: scale(1.25, 1.25);
+  -moz-transform: scale(1.25, 1.25);
+  -ms-transform: scale(1.25, 1.25);
+  -o-transform: scale(1.25, 1.25);
+}
+:host([size="epic"]) {
+  transform: scale(2.5, 2.5);
+  -webkit-transform: scale(2.5, 2.5);
+  -moz-transform: scale(2.5, 2.5);
+  -ms-transform: scale(2.5, 2.5);
+  -o-transform: scale(2.5, 2.5);
+}
 
-.loader {
+div {
   position: relative;
   width: 255px;
   height: 232.5px;
   margin: 0 auto;
+}
+
+hex-a-gon {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 18px;
+  color: #9fb475;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
 }
 
 hex-a-gon:nth-of-type(1) {

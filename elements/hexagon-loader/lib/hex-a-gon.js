@@ -12,72 +12,49 @@ export { Hexagon };
  *  -
  *
  * @customElement
- * @demo demo/index.html
+ * @demo demo/hexagon.html
  */
 class Hexagon extends HTMLElement {
   // render function
   get html() {
     return `
 <style>
-
-:host([color="orange"]) .hex,
-:host([color="orange"]) .hex:before,
-:host([color="orange"]) .hex:after {
-  background-color: orange;
-}
-:host([color="purple"]) .hex,
-:host([color="purple"]) .hex:before,
-:host([color="purple"]) .hex:after {
-  background-color: purple;
-}
-:host([color="blue"]) .hex,
-:host([color="blue"]) .hex:before,
-:host([color="blue"]) .hex:after {
-  background-color: blue;
+:host {
+  display: inline-flex;
+  position: relative;
+  height: 36px;
+  width: 36px;
 }
 
-.hex {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+:host div,
+:host div:before,
+:host div:after {
+ background-color: var(--hexagon-color, orange);
+}
+
+div {
   width: 30px;
   height: 18px;
-  color: #9fb475;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  -webkit-transform-origin: 0 0;
-          transform-origin: 0 0;
+  margin: 9px 3px;
+  position: absolute;
+  color: var(--hexagon-color, orange);
 }
-.hex:before, .hex:after {
+div:before, div:after {
   content: '';
   position: absolute;
   width: 30px;
   height: 18px;
 }
-.hex:before {
+div:before {
   -webkit-transform: rotate(60deg);
           transform: rotate(60deg);
 }
-.hex:after {
+div:after {
   -webkit-transform: rotate(-60deg);
           transform: rotate(-60deg);
 }
 </style>
-    <div class="hex"></div>`;
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      /**
-       * Color to make the loader
-       */
-      color: {
-        name: "color",
-        type: "String",
-        value: "orange"
-      }
-    };
+    <div></div>`;
   }
 
   /**
@@ -95,19 +72,6 @@ class Hexagon extends HTMLElement {
 
     // set tag for later use
     this.tag = Hexagon.tag;
-    // map our imported properties json to real props on the element
-    // @notice static getter of properties is built via tooling
-    let obj = Hexagon.properties;
-    for (let p in obj) {
-      if (obj.hasOwnProperty(p)) {
-        if (this.hasAttribute(p)) {
-          this[p] = this.getAttribute(p);
-        } else {
-          this.setAttribute(p, obj[p].value);
-          this[p] = obj[p].value;
-        }
-      }
-    }
     // optional queue for future use
     this._queue = [];
     this.template = document.createElement("template");
@@ -165,11 +129,5 @@ class Hexagon extends HTMLElement {
     }
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }
-
-  //static get observedAttributes() {
-  //  return [];
-  //}
-  // disconnectedCallback() {}
-  // attributeChangedCallback(attr, oldValue, newValue) {}
 }
 window.customElements.define(Hexagon.tag, Hexagon);

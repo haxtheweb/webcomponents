@@ -2,20 +2,22 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "./lib/hex-a-gon.js";
-
 export { HexagonLoader };
 /**
  * `hexagon-loader`
- * `a simple VJS element that is for showing something is loading`
+ * `a simple element that is for showing something is loading`
  *
  * @microcopy - language worth noting:
  *  -
  *
  * @customElement
+ * @polymer
  * @demo demo/index.html
  */
-class HexagonLoader extends HTMLElement {
+class HexagonLoader extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -26,89 +28,27 @@ class HexagonLoader extends HTMLElement {
     return "hexagon-loader";
   }
   /**
-   * life cycle
-   */
-  constructor(delayRender = false) {
-    super();
-
-    // set tag for later use
-    this.tag = HexagonLoader.tag;
-    // map our imported properties json to real props on the element
-    // @notice static getter of properties is built via tooling
-    // to edit modify src/HexagonLoader-properties.json
-    let obj = HexagonLoader.properties;
-    for (let p in obj) {
-      if (obj.hasOwnProperty(p)) {
-        if (this.hasAttribute(p)) {
-          this[p] = this.getAttribute(p);
-        } else {
-          this.setAttribute(p, obj[p].value);
-          this[p] = obj[p].value;
-        }
-      }
-    }
-    // optional queue for future use
-    this._queue = [];
-    this.template = document.createElement("template");
-
-    this.attachShadow({ mode: "open" });
-
-    if (!delayRender) {
-      this.render();
-    }
-  }
-  /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
-    if (window.ShadyCSS) {
-      window.ShadyCSS.styleElement(this);
+    super.connectedCallback();
+    let items = [];
+    for (var i = 0; i < this.itemCount; i++) {
+      items.push("");
     }
-
-    if (this._queue.length) {
-      this._processQueue();
-    }
+    this.set("items", items);
   }
-
-  _copyAttribute(name, to) {
-    const recipients = this.shadowRoot.querySelectorAll(to);
-    const value = this.getAttribute(name);
-    const fname = value == null ? "removeAttribute" : "setAttribute";
-    for (const node of recipients) {
-      node[fname](name, value);
+  /**
+   * Color changed
+   */
+  _colorChanged(newValue, oldValue) {
+    if (newValue) {
+      this.updateStyles({ "--hexagon-color": newValue });
     }
   }
-
-  _queueAction(action) {
-    this._queue.push(action);
-  }
-
-  _processQueue() {
-    this._queue.forEach(action => {
-      this[`_${action.type}`](action.data);
-    });
-
-    this._queue = [];
-  }
-
-  _setProperty({ name, value }) {
-    this[name] = value;
-  }
-
-  render() {
-    this.shadowRoot.innerHTML = null;
-    this.template.innerHTML = this.html;
-
-    if (window.ShadyCSS) {
-      window.ShadyCSS.prepareTemplate(this.template, this.tag);
-    }
-    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
-  }
-
-  //static get observedAttributes() {
-  //  return [];
-  //}
-  // disconnectedCallback() {}
-  // attributeChangedCallback(attr, oldValue, newValue) {}
+  /**
+   * life cycle, element is removed from the DOM
+   */
+  //disconnectedCallback() {}
 }
 window.customElements.define(HexagonLoader.tag, HexagonLoader);

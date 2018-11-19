@@ -1,22 +1,26 @@
 # &lt;hexagon-loader&gt;
 
 Loader
-> a simple VJS element that is for showing something is loading
+> 
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
-/* In an existing module / web component */
-import '@lrnwebcomponents/hexagon-loader.js';
-/* At top of an application */
-<script type="module" src="hexagon-loader.js"></script>
+/* In an existing JS module / web component */
+import '@lrnwebcomponents/hexagon-loader/hexagon-loader.js';
+/* At top of an application with build routine */
+<script type="module" src="@lrnwebcomponents/hexagon-loader/hexagon-loader.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/hexagon-loader.js';
-
+  import '@lrnwebcomponents/hexagon-loader/hexagon-loader.js';
+  // imperative form
   import {HexagonLoader} from '@lrnwebcomponents/hexagon-loader';
+  // if you don't have a build routine and need to reference directly
+  import './node_modules/@lrnwebcomponents/hexagon-loader/hexagon-loader.js';
 </script>
+// via unpkg CDN (good for testing)
+<script type="module" src="https://unpkg.com/@lrnwebcomponents/hexagon-loader/hexagon-loader.js"></script>
 ```
 
 ## Develop / Demo

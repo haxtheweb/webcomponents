@@ -1,14 +1,13 @@
-import"./lib/hex-a-gon.js";export{HexagonLoader};class HexagonLoader extends HTMLElement{get html(){return`
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";export{HexagonLoader};class HexagonLoader extends PolymerElement{static get template(){return html`
 <style>:host {
   display: block;
-   --hexagon-loader-color: orange;
 }
 
 :host([hidden]) {
   display: none;
 }
 
-.loader {
+div {
   position: relative;
   width: 255px;
   height: 232.5px;
@@ -370,97 +369,8 @@ hex-a-gon:nth-of-type(37) {
             transform: scale(0) translate(-50%, -50%);
   }
 }</style>
-<div class="loader">
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-    <hex-a-gon></hex-a-gon>
-</div>`}static get properties(){return{color:{name:"color",type:"String",value:"orange"},size:{name:"size",type:"String",value:"medium"}}}static get tag(){return"hexagon-loader"}constructor(delayRender=!1){super();this.tag=HexagonLoader.tag;let obj=HexagonLoader.properties;for(let p in obj){if(obj.hasOwnProperty(p)){if(this.hasAttribute(p)){this[p]=this.getAttribute(p)}else{this.setAttribute(p,obj[p].value);this[p]=obj[p].value}}}this._queue=[];this.template=document.createElement("template");this.attachShadow({mode:"open"});if(!delayRender){this.render()}}connectedCallback(){if(window.ShadyCSS){window.ShadyCSS.styleElement(this)}if(this._queue.length){this._processQueue()}}_copyAttribute(name,to){const recipients=this.shadowRoot.querySelectorAll(to),value=this.getAttribute(name),fname=null==value?"removeAttribute":"setAttribute";for(const node of recipients){node[fname](name,value)}}_queueAction(action){this._queue.push(action)}_processQueue(){this._queue.forEach(action=>{this[`_${action.type}`](action.data)});this._queue=[]}_setProperty({name,value}){this[name]=value}render(){this.shadowRoot.innerHTML=null;this.template.innerHTML=this.html;if(window.ShadyCSS){window.ShadyCSS.prepareTemplate(this.template,this.tag)}this.shadowRoot.appendChild(this.template.content.cloneNode(!0))}}window.customElements.define(HexagonLoader.tag,HexagonLoader);
+<div>
+    <template is="dom-repeat" items="[[items]]">
+        <hex-a-gon color="[[color]]"></hex-a-gon>
+    </template>
+</div>`}static get properties(){return{color:{name:"color",type:"String",value:"orange"},size:{name:"size",type:"String",value:"medium"},loading:{name:"loading",type:"Boolean"},itemCount:{name:"itemCount",type:"Number",value:92}}}static get tag(){return"hexagon-loader"}connectedCallback(){super.connectedCallback()}}window.customElements.define(HexagonLoader.tag,HexagonLoader);
