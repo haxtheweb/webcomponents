@@ -11,7 +11,7 @@
       "js": "src/a11y-media-player.js"
     }
   },
-  "version": "0.0.32",
+  "version": "0.0.33",
   "description": "A feature rich, highly accessible video player",
   "repository": {
     "type": "git",
@@ -35,10 +35,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/dropdown-select": "^0.0.32",
-    "@lrnwebcomponents/responsive-utility": "^0.0.32",
-    "@lrnwebcomponents/simple-colors": "^0.0.32",
-    "@lrnwebcomponents/simple-search": "^0.0.32",
+    "@lrnwebcomponents/dropdown-select": "^0.0.33",
+    "@lrnwebcomponents/responsive-utility": "^0.0.33",
+    "@lrnwebcomponents/simple-colors": "^0.0.33",
+    "@lrnwebcomponents/simple-search": "^0.0.33",
     "@polymer/iron-a11y-keys": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-icons": "^3.0.0",
@@ -54,7 +54,7 @@
     "screenfull": "^3.3.3"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.0.32",
+    "@lrnwebcomponents/deduping-fix": "^0.0.33",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.1.3",
@@ -74,5 +74,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "7aa2b90f1a43ae6ea6ee25e0f38d9a09a893218a"
+  "gitHead": "3765fe3f5c9ee9b0e3e20ace85862d34b8113dd6"
 }
