@@ -7,25 +7,20 @@
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script type="module">
       import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
-      import './simple-colors-demo-parent.js';
+      import './simple-colors-demo-table.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
-    <div class="vertical-section-container centered">
-      <h2>simple-colors</h2>
-      <demo-snippet>
-        <template>
-          <simple-colors-demo></simple-colors-demo>
-        </template>
-      </demo-snippet>
+    <div class="vertical-section-container centered">   
+      <h1>simple-colors-default-theme</h1>
+      <simple-colors-demo-table>Simple Colors</simple-colors-demo-table>
+
+      <h1>simple-colors-dark-theme</h1>
+      <simple-colors-demo-table dark>Simple Colors Dark</simple-colors-demo-table>
       
-      <h2>simple-colors Nested Elements</h2>
-      <demo-snippet>
-        <template>
-          <simple-colors-demo nested></simple-colors-demo>
-        </template>
-      </demo-snippet>
+      <h1>simple-colors-light-theme</h1>
+      <simple-colors-demo-table dark>Simple Colors Dark</simple-colors-demo-table>
     </div>
   </body>
 </html>

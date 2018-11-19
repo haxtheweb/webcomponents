@@ -8,7 +8,7 @@
  * @microcopy - language worth noting:
  *  -
  *
- * @pseudoElement
+ * @customElement
  * @polymer
  * @demo demo/index.html
  */
