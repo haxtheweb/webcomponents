@@ -2,8 +2,6 @@ import {
   html,
   Polymer
 } from "../node_modules/@polymer/polymer/polymer-legacy.js";
-import "../node_modules/@polymer/paper-dialog/paper-dialog.js";
-import "../node_modules/@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "../node_modules/@polymer/paper-button/paper-button.js";
 import "../node_modules/@polymer/neon-animation/neon-animation.js";
 import "../node_modules/@polymer/neon-animation/neon-animations.js";
@@ -54,6 +52,10 @@ Polymer({
       }
     </style>
     <paper-dialog modal="[[modal]]" id="dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="" opened\$="[[opened]]">
+      <lrnsys-dialog-toolbar on-button-clicked="_toolbarButtonClickedHandler">
+        <slot slot="primary" name="toolbar-primary"></slot>
+        <slot slot="secondary" name="toolbar-secondary"></slot>
+      </lrnsys-dialog-toolbar>  
       <div class$="[[headingClass]] dialog-header">
         <div class$="[[headingClass]] dialog-heading" hidden$="[[!header]]">[[header]]</div>
         <span class="dialog-header-slot"><slot name="header"></slot></span>
@@ -61,10 +63,6 @@ Polymer({
       <paper-dialog-scrollable class="dialog-contents" id="dialogcontent">
         <slot></slot>
       </paper-dialog-scrollable>
-      <lrnsys-dialog-toolbar on-button-clicked="_toolbarButtonClickedHandler">
-        <slot slot="primary" name="toolbar-primary"></slot>
-        <slot slot="secondary" name="toolbar-secondary"></slot>
-      </lrnsys-dialog-toolbar>
     </paper-dialog>
 `,
   is: "lrnsys-dialog-modal",
@@ -78,8 +76,6 @@ Polymer({
     modal: { type: Boolean, value: !1 },
     opened: { type: Boolean, value: !1, reflectToAttribute: !0, notify: !0 },
     headingClass: { type: String, value: "white-text black" },
-    bodyAppend: { type: Boolean, value: !0 },
-    _bodyAppended: { type: Boolean, value: !1 },
     dynamicImages: { type: Boolean, value: !1 }
   },
   toggleDialog: function() {
@@ -112,10 +108,6 @@ Polymer({
     this._changeOpen(e);
   },
   attached: function() {
-    if (this.bodyAppend && !this._bodyAppended) {
-      this._bodyAppended = !0;
-      document.body.appendChild(this);
-    }
     const toolbar = this.shadowRoot.querySelector("lrnsys-dialog-toolbar");
     this.$.dialog.addEventListener("mouseover", () => {
       toolbar.setAttribute("secondary-visible", !0);

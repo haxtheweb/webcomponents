@@ -1,6 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-checkbox/paper-checkbox.js";
 import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
@@ -34,8 +35,11 @@ Polymer({
       ul li {
         padding: 8px;
       }
-      paper-radio-button {
+      paper-checkbox {
         padding: 8px;
+      }
+      iron-icon {
+        display: inline-flex;
       }
     </style>
     <meta property="oer:assessing" content\$="[[relatedResource]]">

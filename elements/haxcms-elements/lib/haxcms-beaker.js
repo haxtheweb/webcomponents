@@ -4,6 +4,7 @@
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/beaker-broker/beaker-broker.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 /**
  * `haxcms-beaker`
  * `a simple element to check for and fetch JWTs`
@@ -257,7 +258,7 @@ Polymer({
       // but because of this approach it should be non-blocking
       try {
         this.importHref(
-          this.resolveUrl("haxcms-site-editor.html"),
+          pathFromUrl(import.meta.url) + `haxcms-site-editor.js`,
           e => {
             let haxCmsSiteEditorElement = document.createElement(
               "haxcms-site-editor"

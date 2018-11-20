@@ -7,18 +7,18 @@ define([
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_353197b0e70711e8927ab7ea7f267cde() {
+  function _templateObject_f82b2ce0ecf211e8aabf1ddf50e2f639() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n        background-color: #222222;\n        overflow: hidden;\n        --magazine-cover-text-color: #EEEEEE;\n      }\n      .overlay {\n        left: 0;\n        right: 0;\n        min-height: 30vh;\n        margin: -38vh 0 0 0;\n        background-color:rgba(0, 0, 0, 0.8);\n        padding: 32px;\n        position: relative;\n      }\n      #image {\n        opacity: .5;\n        filter: alpha(opacity=50);\n        transition: opacity 0.3s linear;\n        width:100%;\n        height:80vh;\n        background-color: #222222;\n        @apply --magazine-cover-image;\n      }\n      #image:hover {\n        opacity: .9;\n        filter: alpha(opacity=90);\n      }\n      #header {\n        color: var(--magazine-cover-text-color);\n        font-size: 48px;\n        padding: 0;\n        margin: 0;\n        font-weight: bold;\n      }\n      #subheader {\n        color: var(--magazine-cover-text-color);\n        font-size: 22.4px;\n        padding: 0;\n        margin: 3.2px 0 16px 0;\n        font-style: italic;\n        font-weight: normal;\n      }\n      #body {\n        color: var(--magazine-cover-text-color);\n        padding: 0;\n        margin: 0;\n        font-size: 19.2px;\n        padding: 0 0 0 3.2px;\n        margin: 0 0 32px 0;\n      }\n      #body p {\n        color: var(--magazine-cover-text-color);\n      }\n      #action {\n        color: var(--magazine-cover-text-color);\n        text-transform: none;\n        font-size: 24px;\n        font-style: italic;\n        font-weight: bold;\n        background-color: #000000;\n        border: 1px solid var(--magazine-cover-text-color);\n        border-radius: 8px;\n        transition: background 0.3s linear;\n        width: 100%;\n        margin: 0;\n      }\n      #action:hover,#action:focus {\n        border-color: #FFFFFF;\n        color: #FFFFFF;\n        background-color:rgba(255, 255, 255, 0.2);\n      }\n      #actionlink {\n        color: var(--magazine-cover-text-color);\n        display: flex;\n        text-decoration: none;\n        border-radius: 8px;\n      }\n      #icon {\n        display: inline-block;\n        width: 19.2px;\n        height: 19.2px;\n        font-size: 19.2px;\n        margin-left: 8px;\n      }\n      #label {\n        text-shadow: -1px 1px 2px #000000;\n      }\n      @media screen and (max-width: 900px) {\n        #header {\n          font-size: 32px;\n        }\n        #subheader {\n          font-size: 16px;\n        }\n        #body {\n          font-size: 16px;\n        }\n        #action {\n          font-size: 19.2px;\n        }\n      }\n      @media screen and (max-width: 650px) {\n        #body {\n          font-size: 12.8px;\n        }\n        #action {\n          font-size: 16px;\n        }\n        .overlay {\n          margin: -50vh 0 0 0;\n          padding: 16px;\n        }\n      }      \n    </style>\n    <iron-image src="[[image]]" preload="" fade="" sizing="cover" id="image"></iron-image>\n    <div class="overlay">\n      <h2 id="header" hidden$="[[!header]]">[[header]]</h2>\n      <div id="subheader" hidden$="[[!subheader]]">[[subheader]]</div>\n      <div id="body">\n        <p hidden$="[[!text]]">[[text]]</p>\n        <slot></slot>\n      </div>\n      <a tabindex="-1" href$="[[link]]" id="actionlink" on-tap="_linkTapped">\n        <paper-button raised="" id="action">\n        <span id="label">[[action]]<iron-icon id="icon" icon="[[icon]]" hidden$="[[!icon]]"></iron-icon></span>\n        </paper-button>\n      </a>\n    </div>\n'
     ]);
-    _templateObject_353197b0e70711e8927ab7ea7f267cde = function() {
+    _templateObject_f82b2ce0ecf211e8aabf1ddf50e2f639 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_353197b0e70711e8927ab7ea7f267cde()
+      _templateObject_f82b2ce0ecf211e8aabf1ddf50e2f639()
     ),
     is: "magazine-cover",
     behaviors: [HAXBehaviors.PropertiesBehaviors],

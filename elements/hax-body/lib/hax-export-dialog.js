@@ -155,7 +155,7 @@ Polymer({
       this.$.downloadfull.addEventListener("tap", this.downloadfull.bind(this));
       this.$.import.addEventListener("tap", this.importContent.bind(this));
       this.$.copy.addEventListener("tap", this.selectBody.bind(this));
-      this.$.close.addEventListener("tap", this.close.bind(this));
+      this.$.closedialog.addEventListener("tap", this.close.bind(this));
       this.$.elementexport.addEventListener(
         "tap",
         this.htmlToHaxElements.bind(this)
@@ -177,7 +177,7 @@ Polymer({
     );
     this.$.import.removeEventListener("tap", this.importContent.bind(this));
     this.$.copy.removeEventListener("tap", this.selectBody.bind(this));
-    this.$.close.removeEventListener("tap", this.close.bind(this));
+    this.$.closedialog.removeEventListener("tap", this.close.bind(this));
     this.$.elementexport.removeEventListener(
       "tap",
       this.htmlToHaxElements.bind(this)

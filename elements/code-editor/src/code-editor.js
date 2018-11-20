@@ -186,7 +186,7 @@ Polymer({
    */
   ready: function() {
     // mutation observer that ensures state of hax applied correctly
-    this._observer = FlattenedNodesObserver(this, info => {
+    this._observer = new FlattenedNodesObserver(this, info => {
       // if we've got new nodes, we have to react to that
       if (info.addedNodes.length > 0) {
         info.addedNodes.map(node => {

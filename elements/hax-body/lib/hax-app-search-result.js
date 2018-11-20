@@ -33,6 +33,7 @@ Polymer({
         background-image: none;
         color: #ffffff;
         text-align: unset;
+        display: flex;
       }
       paper-button:hover,
       paper-button:focus,
@@ -46,9 +47,10 @@ Polymer({
         height: 100%;
         width: calc(80% - 16px);
         overflow: hidden;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
       }
       .title {
-        font-size: 14px;
+        font-size: 16px;
         font-weight: bold;
         text-transform: none;
         padding-bottom: 4px;
@@ -63,7 +65,7 @@ Polymer({
         text-transform: none;
       }
       .image {
-        display: inline-block;
+        display: inline-flex;
         height: 152px;
         width: 20%;
         background-color: lightgray;

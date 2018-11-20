@@ -340,7 +340,7 @@ Polymer({
       if (data != null) {
         // step through and translate response data into a form we can easily
         // understand when stamping out our cards above.
-        for (i = 0; i < data.length; i++) {
+        for (var i = 0; i < data.length; i++) {
           media[i] = {
             title: this._resolveObjectPath(map.preview.title, data[i]),
             details: this._resolveObjectPath(map.preview.details, data[i]),

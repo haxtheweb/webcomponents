@@ -2,21 +2,22 @@ define([
   "../node_modules/@polymer/polymer/polymer-legacy.js",
   "./map-menu-item.js",
   "./map-menu-header.js",
+  "../node_modules/@polymer/iron-collapse/iron-collapse.js",
   "../node_modules/@polymer/paper-button/paper-button.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_9cb19b00e70811e8a7a94daf23e940c3() {
+  function _templateObject_a6a29b90ecf411e880aac99fb7ddbd89() {
     var data = babelHelpers.taggedTemplateLiteral([
-      '\n    <style>\n      :host {\n        display: block;\n      }\n\n      :host([collapsable])>map-menu-header {\n        cursor: pointer;\n        display: block;\n      }\n\n      #container {\n        margin-left: 16px;\n      }\n\n      #container ::slotted(map-menu-item) {\n        margin-top: .4em;\n      }\n    </style>\n    <map-menu-header avatar-label="[[avatarLabel]]" id="[[id]]" title="[[title]]" label="[[label]]" opened="[[opened]]" url="[[url]]" icon="[[icon]]"></map-menu-header>\n    <iron-collapse id="container">\n      <slot id="slot"></slot>\n    </iron-collapse>\n'
+      '\n    <style>\n      :host {\n        display: block;\n      }\n\n      :host([collapsable])>map-menu-header {\n        cursor: pointer;\n        display: block;\n      }\n\n      #container {\n        margin-left: 16px;\n      }\n\n      #container ::slotted(map-menu-item) {\n        margin-top: .4em;\n      }\n    </style>\n    <map-menu-header avatar-label="[[avatarLabel]]" id="[[id]]" title="[[title]]" label="[[label]]" opened="[[opened]]" url="[[url]]" icon="[[icon]]"></map-menu-header>\n    <iron-collapse id="container">\n      <slot></slot>\n    </iron-collapse>\n'
     ]);
-    _templateObject_9cb19b00e70811e8a7a94daf23e940c3 = function() {
+    _templateObject_a6a29b90ecf411e880aac99fb7ddbd89 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_9cb19b00e70811e8a7a94daf23e940c3()
+      _templateObject_a6a29b90ecf411e880aac99fb7ddbd89()
     ),
     is: "map-menu-submenu",
     properties: {

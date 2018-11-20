@@ -6,18 +6,18 @@ define([
   "./node_modules/@lrnwebcomponents/citation-element/citation-element.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_3a83a220e70811e899d7f5a3c31c470a() {
+  function _templateObject_2a5be140ecf411e8b8536f8d4fee2b6f() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <custom-style>\n      <style>\n        :host {\n          display: block;\n          --wikipedia-query-body-height: 160px;\n        }\n        #result {\n          height: var(--wikipedia-query-body-height);\n          overflow: scroll;\n          border: 1px grey solid;\n          padding: 8px 16px;\n        }\n        citation-element {\n          background-color: #F8F8F8;\n          padding: 16px 8px;\n          font-size: 12px;\n        }\n      </style>\n    </custom-style>\n    <iron-ajax auto url$="https://en.wikipedia.org/w/api.php?origin=*&amp;action=query&amp;titles=[[search]]&amp;prop=extracts&amp;format=json" handle-as="json" on-response="handleResponse" debounce-duration="100" last-response="{{searchResponse}}"></iron-ajax>\n    <h3 hidden$="[[!showTitle]]">[[search]] Wikipedia article</h3>\n    <div id="result" hidden$="[[!__rendercontent]]"></div>\n    <citation-element hidden$="[[!__rendercontent]]" creator="{Wikipedia contributors}" scope="sibling" license="by-sa" title="[[search]] --- {Wikipedia}{,} The Free Encyclopedia" source="https://en.wikipedia.org/w/index.php?title=[[search]]" date="[[__now]]"></citation-element>\n'
     ]);
-    _templateObject_3a83a220e70811e899d7f5a3c31c470a = function() {
+    _templateObject_2a5be140ecf411e8b8536f8d4fee2b6f = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_3a83a220e70811e899d7f5a3c31c470a()
+      _templateObject_2a5be140ecf411e8b8536f8d4fee2b6f()
     ),
     is: "wikipedia-query",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

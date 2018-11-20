@@ -15,7 +15,7 @@ define([
   _appLocalizeBehavior
 ) {
   "use strict";
-  function _templateObject_fb6dcd10e70511e886e6093a9ece0d4a() {
+  function _templateObject_d62df650ecf111e88a0b4725ebfbecff() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n  <custom-style>\n    <style is="custom-style" include="iron-flex iron-flex-alignment">\n      div.layout {\n        height: auto;\n      }\n      #form {\n        display: block;\n        @apply --eco-json-schema-object-form;\n        @apply --layout-vertical;\n        @apply --layout-wrap;\n      }\n      #form ::slotted(paper-input) {\n        --paper-input-container-shared-input-style: {\n          border: none !important;\n          width: 100% !important;\n          background-color: transparent !important;\n        };\n      }\n    </style>\n  </custom-style>\n\n    <template is="dom-if" if="{{!wizard}}">\n      <div class="header" hidden$="[[!label]]">[[label]]</div>\n    </template>\n    <div class="layout vertical flex start-justified">\n      <div id="form" class="layout horizontal flex start-justified"><slot></slot></div>\n    </div>  \n'
@@ -24,7 +24,7 @@ define([
         '\n  <custom-style>\n    <style is="custom-style" include="iron-flex iron-flex-alignment">\n      div.layout {\n        height: auto;\n      }\n      #form {\n        display: block;\n        @apply --eco-json-schema-object-form;\n        @apply --layout-vertical;\n        @apply --layout-wrap;\n      }\n      #form ::slotted(paper-input) {\n        --paper-input-container-shared-input-style: {\n          border: none !important;\n          width: 100% !important;\n          background-color: transparent !important;\n        };\n      }\n    </style>\n  </custom-style>\n\n    <template is="dom-if" if="{{!wizard}}">\n      <div class="header" hidden\\$="[[!label]]">[[label]]</div>\n    </template>\n    <div class="layout vertical flex start-justified">\n      <div id="form" class="layout horizontal flex start-justified"><slot></slot></div>\n    </div>  \n'
       ]
     );
-    _templateObject_fb6dcd10e70511e886e6093a9ece0d4a = function() {
+    _templateObject_d62df650ecf111e88a0b4725ebfbecff = function() {
       return data;
     };
     return data;
@@ -32,7 +32,7 @@ define([
   (0, _polymerLegacy.Polymer)({
     is: "eco-json-schema-object",
     _template: (0, _polymerLegacy.html)(
-      _templateObject_fb6dcd10e70511e886e6093a9ece0d4a()
+      _templateObject_d62df650ecf111e88a0b4725ebfbecff()
     ),
     behaviors: [_appLocalizeBehavior.AppLocalizeBehavior],
     properties: {

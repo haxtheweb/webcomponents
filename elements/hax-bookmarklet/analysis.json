@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`hax-bookmarklet`\nPure, Evil.",
+      "description": "`hax-bookmarklet`\n`Pure, Evil.`",
       "summary": "",
       "path": "hax-bookmarklet.js",
       "properties": [
@@ -31,15 +31,15 @@
       "methods": [
         {
           "name": "ready",
-          "description": "",
+          "description": "ready life cycle",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 33,
+              "line": 35,
               "column": 2
             },
             "end": {
-              "line": 38,
+              "line": 40,
               "column": 3
             }
           },
@@ -64,7 +64,7 @@
           "column": 8
         },
         "end": {
-          "line": 39,
+          "line": 41,
           "column": 1
         }
       },

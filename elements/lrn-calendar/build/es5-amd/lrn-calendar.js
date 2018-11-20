@@ -1,8 +1,11 @@
 define([
+  "meta",
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
+  "./node_modules/@polymer/polymer/lib/utils/resolve-url.js",
   "./node_modules/@polymer/paper-button/paper-button.js",
   "./node_modules/@polymer/iron-icons/iron-icons.js",
+  "./node_modules/@polymer/iron-icon/iron-icon.js",
   "./node_modules/@polymer/paper-card/paper-card.js",
   "./node_modules/@polymer/iron-ajax/iron-ajax.js",
   "./node_modules/@polymer/paper-menu-button/paper-menu-button.js",
@@ -14,22 +17,23 @@ define([
   "./node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js",
   "./node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-collapselist.js",
   "./node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-collapselist-item.js",
-  "./node_modules/ical.js/build/ical.js",
+  "./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js",
   "./lib/lrn-calendar-date.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(meta, _polymerLegacy, _polymerDom, _resolveUrl) {
   "use strict";
-  function _templateObject_60f31c60e70811e8a3e52722552250aa() {
+  meta = babelHelpers.interopRequireWildcard(meta);
+  function _templateObject_578290b0ecf411e88a03094523bc0888() {
     var data = babelHelpers.taggedTemplateLiteral([
-      '\n    <style>\n      :host {\n        display: block;\n      }\n      lrn-calendar-date {\n        display: inline-table;\n        top: 0px;\n      }\n      paper-card {\n        width: 14%;\n        height: 20px;\n        display: inline-table;\n        padding: 0;\n        margin: 0;\n      }\n      .calendar {\n        color: var(--my-toolbar-title-color);\n      }\n      .header{\n        padding-bottom: 15px;\n      }\n    </style>\n\n    <div class="calendar">\n      <div class="header">\n        <div style="float: left">\n          <paper-button raised="" type="button" on-tap="monthView">Month</paper-button>\n          <paper-button raised="" type="button" on-tap="weekView">Week</paper-button>\n        </div>\n        <div style="float: right">\n          <paper-button raised="" type="button" on-tap="showDate">Today</paper-button>\n          <paper-icon-button icon="arrow-back" on-tap="showPrev"></paper-icon-button>\n          <paper-icon-button icon="arrow-forward" on-tap="showNext"></paper-icon-button>\n        </div>\n        <div style="margin: 0 auto; width: 200px; text-align: center">\n          <h2>[[getDisplayDate(date)]]</h2>\n        </div>\n      </div>\n\n      <div class="calendarView" id="calView">\n      </div>\n    </div>\n'
+      '\n    <style>\n      :host {\n        display: block;\n      }\n      lrn-calendar-date {\n        display: inline-table;\n        top: 0px;\n      }\n      paper-card {\n        width: 14%;\n        height: 20px;\n        display: inline-table;\n        padding: 0;\n        margin: 0;\n      }\n      .calendar {\n        color: var(--my-toolbar-title-color);\n      }\n      .header{\n        padding-bottom: 15px;\n      }\n    </style>\n\n    <div class="calendar">\n      <div class="header">\n        <div style="float: left">\n          <paper-button raised type="button" on-tap="monthView">Month</paper-button>\n          <paper-button raised type="button" on-tap="weekView">Week</paper-button>\n        </div>\n        <div style="float: right">\n          <paper-button raised type="button" on-tap="showDate">Today</paper-button>\n          <paper-button on-tap="showPrev"><iron-icon icon="arrow-back"></iron-icon></paper-button>\n          <paper-button on-tap="showNext"><iron-icon icon="arrow-forward"></iron-icon></paper-button>\n        </div>\n        <div style="margin: 0 auto; width: 200px; text-align: center">\n          <h2>[[getDisplayDate(date)]]</h2>\n        </div>\n      </div>\n\n      <div class="calendarView" id="calView"></div>\n    </div>\n'
     ]);
-    _templateObject_60f31c60e70811e8a3e52722552250aa = function() {
+    _templateObject_578290b0ecf411e88a03094523bc0888 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_60f31c60e70811e8a3e52722552250aa()
+      _templateObject_578290b0ecf411e88a03094523bc0888()
     ),
     is: "lrn-calendar",
     behaviors: [HAXBehaviors.PropertiesBehaviors],
@@ -41,7 +45,7 @@ define([
       file: { type: String, reflectToAttribute: !0, observer: "_fileChanged" }
     },
     _fileChanged: function _fileChanged(newValue) {
-      if (babelHelpers.typeof(newValue) !== "undefined") {
+      if (babelHelpers.typeof(newValue) !== "undefined" && this.__icalLoaded) {
         this.loadFile();
         this.getDateInfo();
         this.createCalendar();
@@ -50,7 +54,8 @@ define([
     _viewTypeChanged: function _viewTypeChanged(newValue) {
       if (
         babelHelpers.typeof(newValue) !== "undefined" &&
-        babelHelpers.typeof(this.file) !== "undefined"
+        babelHelpers.typeof(this.file) !== "undefined" &&
+        this.__icalLoaded
       ) {
         this.getDateInfo();
         this.createCalendar();
@@ -59,16 +64,36 @@ define([
     _dateChanged: function _dateChanged(newValue) {
       if (
         babelHelpers.typeof(newValue) !== "undefined" &&
-        babelHelpers.typeof(this.file) !== "undefined"
+        babelHelpers.typeof(this.file) !== "undefined" &&
+        this.__icalLoaded
       ) {
         this.getDateInfo();
         this.createCalendar();
       }
     },
     _dateStringChanged: function _dateStringChanged(newValue) {
-      if (babelHelpers.typeof(newValue) !== "undefined" && "" != newValue) {
+      if (
+        babelHelpers.typeof(newValue) !== "undefined" &&
+        "" != newValue &&
+        this.__icalLoaded
+      ) {
         this.date = new Date(newValue);
       }
+    },
+    created: function created() {
+      var name = "ical",
+        basePath = (0, _resolveUrl.pathFromUrl)(meta.url),
+        location = "".concat(basePath, "lib/ical.js/build/ical.js");
+      window.addEventListener(
+        "es-bridge-".concat(name, "-loaded"),
+        this._icalLoaded.bind(this)
+      );
+      window.ESGlobalBridge.requestAvailability();
+      window.ESGlobalBridge.instance.load(name, location);
+    },
+    _icalLoaded: function _icalLoaded() {
+      this.__icalLoaded = !0;
+      this.loadFile();
     },
     attached: function attached() {
       this.setHaxProperties({
@@ -255,7 +280,7 @@ define([
       this.getDateInfo();
       this.totalDays = 7 * this.numweeks;
       this.calendarText = this.readTextFile(this.file);
-      this.calendarView = this.querySelector(".calendarView");
+      this.calendarView = this.$.calView;
       var days = 1,
         elem = (0, _polymerDom.dom)(this.$.calView).node,
         elemChildren = elem.childNodes;
@@ -625,7 +650,7 @@ define([
       if ("function" === typeof date.getMonth) {
         var monthInt = date.getMonth(),
           day = date.getDate();
-        monthstring =
+        return (
           [
             "January",
             "February",
@@ -641,8 +666,8 @@ define([
             "December"
           ][monthInt] +
           " " +
-          date.getFullYear();
-        return monthstring;
+          date.getFullYear()
+        );
       }
       return "";
     }

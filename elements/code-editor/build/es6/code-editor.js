@@ -3,6 +3,7 @@ import {
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
 import { dom } from "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "./node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import "./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
@@ -86,7 +87,7 @@ Polymer({
     }
   },
   ready: function() {
-    this._observer = dom(this).observeNodes(function(info) {
+    this._observer = new FlattenedNodesObserver(this, info => {
       if (0 < info.addedNodes.length) {
         info.addedNodes.map(() => {
           this.updateEditorValue();

@@ -1,23 +1,24 @@
 define([
   "../node_modules/@polymer/polymer/polymer-legacy.js",
   "../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
-  "../node_modules/@polymer/paper-icon-button/paper-icon-button.js",
+  "../node_modules/@polymer/paper-button/paper-button.js",
+  "../node_modules/@polymer/iron-icon/iron-icon.js",
   "../node_modules/@polymer/iron-icons/iron-icons.js",
   "../node_modules/@polymer/paper-tooltip/paper-tooltip.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_0d681640e70811e8b65bc19d0dd5f1da() {
+  function _templateObject_fea38ee0ecf311e896b1b122e9a8e20a() {
     var data = babelHelpers.taggedTemplateLiteral([
-      '\n    <style>\n      :host {\n        display: inline-block;\n      }\n    </style>\n    <paper-icon-button raised="" icon="[[icon]]" on-tap="_onTap" id$="[[id]]" aria-label$="[[title]]">[[title]]</paper-icon-button>\n    <paper-tooltip for$="[[id]]" animation-delay="200">[[title]]</paper-tooltip>\n'
+      '\n    <style>\n      :host {\n        display: inline-block;\n      }\n      iron-icon {\n        display: inline-block;\n        height: 16px;\n        width: 16px;\n      }\n    </style>\n    <paper-button raisedon-tap="_onTap" id$="[[id]]" aria-label$="[[title]]">\n      <iron-icon icon="[[icon]]"></iron-icon> [[title]]\n    </paper-button>\n    <paper-tooltip for$="[[id]]" animation-delay="200">[[title]]</paper-tooltip>\n'
     ]);
-    _templateObject_0d681640e70811e8b65bc19d0dd5f1da = function() {
+    _templateObject_fea38ee0ecf311e896b1b122e9a8e20a = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_0d681640e70811e8b65bc19d0dd5f1da()
+      _templateObject_fea38ee0ecf311e896b1b122e9a8e20a()
     ),
     is: "lrnsys-dialog-toolbar-button",
     properties: {

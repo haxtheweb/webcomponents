@@ -11,22 +11,30 @@ Polymer({
     <style>
       :host {
         display: inline-flex;
-        --lrn-vocab-border: 1px dashed gray;
+        --lrn-vocab-border: 1px dashed #ccc;
       }
       paper-button {
         text-transform: none;
         padding: 0;
         margin: 0;
-        border-bottom: var(--lrn-vocab-border);
         position: relative;
-        top: 3px;
+        top:0px;
+        border-radius:0;
+        border-bottom: var(--lrn-vocab-border);
+        background:#f5f5f5;
+        @apply --lrn-vocab-button
+      }
+      paper-button:hover {
+        background:#bbdefb;
+        border-bottom: 1px dashed #2196f3;
+        @apply --lrn-vocab-button-hover
       }
     </style>
 
     <div>
       <paper-button id="button" noink="">[[term]]</paper-button>
     </div>
-    <lrn-vocab-dialog id="dialog" opened="{{opened}}">
+    <lrn-vocab-dialog id="dialog" opened="{{opened}}" term="[[term]]">
       <slot></slot>
     </lrn-vocab-dialog>
 `,

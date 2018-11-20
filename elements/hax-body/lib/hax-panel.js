@@ -309,7 +309,9 @@ Polymer({
         detail.tag = "img";
         detail.content = "";
         detail.properties = {
-          src: this.resolveUrl(window.HaxStore.instance.defaults.image.src),
+          src:
+            pathFromUrl(import.meta.url) +
+            window.HaxStore.instance.defaults.image.src,
           alt: window.HaxStore.instance.defaults.image.alt,
           style: "width:100%;"
         };

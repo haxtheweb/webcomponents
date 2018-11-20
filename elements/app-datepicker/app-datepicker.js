@@ -974,7 +974,7 @@ Polymer({
     // NOTE: workaround to check for effectiveChildren[0] as paper-button outside of
     // this element will be queried as well even though outside of content tag.
     // Setup distributed children.
-    let effectiveChildren = FlattenedNodesObserver.getFlattenedNodes(
+    let effectiveChildren = new FlattenedNodesObserver.getFlattenedNodes(
       this
     ).filter(n => n.nodeType === Node.ELEMENT_NODE);
     if (effectiveChildren && effectiveChildren.length > 0) {

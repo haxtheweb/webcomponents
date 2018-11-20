@@ -3,6 +3,7 @@ import {
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
 import { dom } from "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "./node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import * as async from "./node_modules/@polymer/polymer/lib/utils/async.js";
 import "./node_modules/@polymer/iron-selector/iron-selector.js";
 import "./node_modules/@polymer/iron-list/iron-list.js";
@@ -761,7 +762,9 @@ Polymer({
       this.set("pageEntryAnimation", "fade-in-animation");
       this.set("pageExitAnimation", "fade-out-animation");
     }
-    var effectiveChildren = this.getEffectiveChildren();
+    let effectiveChildren = new FlattenedNodesObserver.getFlattenedNodes(
+      this
+    ).filter(n => n.nodeType === Node.ELEMENT_NODE);
     if (effectiveChildren && 0 < effectiveChildren.length) {
       for (var i = 0; i < effectiveChildren.length; i++) {
         if (effectiveChildren[i].hasAttribute("dialog-confirm")) {

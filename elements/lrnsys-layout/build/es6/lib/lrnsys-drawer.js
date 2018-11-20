@@ -21,6 +21,9 @@ Polymer({
       lrnsys-drawer-modal {
         --lrnsys-drawer-width: 30%;
       }
+      paper-button {
+        display:inline-block;
+      }
     </style>
     <paper-button class\$="[[class]]" id="flyouttrigger" on-tap="toggleDrawer" raised="[[raised]]" disabled\$="[[disabled]]" title="[[alt]]">
       <lrnsys-button-inner avatar="[[avatar]]" icon="[[icon]]" text="[[text]]">
@@ -28,7 +31,7 @@ Polymer({
       </lrnsys-button-inner>
     </paper-button>
     <paper-tooltip for="flyouttrigger" animation-delay="0">[[alt]]</paper-tooltip>
-    <lrnsys-drawer-modal id="modal" body-append="[[bodyAppend]]" opened="[[opened]]" align="[[align]]" header="[[header]]" heading-class="[[headingClass]]">
+    <lrnsys-drawer-modal id="modal" opened="[[opened]]" align="[[align]]" header="[[header]]" heading-class="[[headingClass]]">
       <slot name="header" slot="header"></slot>
       <slot></slot>
     </lrnsys-drawer-modal>
@@ -52,7 +55,6 @@ Polymer({
     disabled: { type: Boolean, value: !1, reflectToAttribute: !0 },
     hoverClass: { type: String },
     headingClass: { type: String, value: "white-text black" },
-    bodyAppend: { type: Boolean, value: !0 },
     focusState: { type: Boolean, value: !1 }
   },
   ready: function() {

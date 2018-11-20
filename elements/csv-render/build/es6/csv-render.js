@@ -3,9 +3,10 @@ import {
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
 import "./node_modules/@polymer/iron-ajax/iron-ajax.js";
-import "./node_modules/@polymer/paper-icon-button/paper-icon-button.js";
+import "./node_modules/@polymer/paper-button/paper-button.js";
 import "./node_modules/@polymer/paper-spinner/paper-spinner.js";
 import "./node_modules/@polymer/iron-icons/iron-icons.js";
+import "./node_modules/@polymer/iron-icon/iron-icon.js";
 import "./node_modules/@polymer/paper-tooltip/paper-tooltip.js";
 import "./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 Polymer({
@@ -118,18 +119,34 @@ Polymer({
         visibility: visible;
         opacity: 1;
       }
+      #download paper-button {
+        border-radius: 36px;
+        width: 36px;
+        height: 36px;
+        min-width: unset;
+        padding:0;
+        margin:0;
+        display: inline-flex;
+      }
+      iron-icon {
+        display: inline-flex;
+        margin:0;
+        padding:0;
+      }
+      #download paper-button:focus,
+      #download paper-button:active {
+        outline: 2px solid grey;
+      }
     </style>
     <iron-ajax auto="" url="[[dataSource]]" handle-as="text" last-response="{{tableData}}" on-response="handleResponse"></iron-ajax>
     <paper-spinner id="loading" active=""></paper-spinner>
     <a href="[[dataSource]]" id="download" tabindex="-1">
-        <paper-icon-button icon="file-download" class="grey-text"></paper-icon-button>
-      </a><paper-tooltip for="download" animation-delay="0">Download table data</paper-tooltip><table class="mdl-data-table" summary="[[summary]]">
+        <paper-button class="grey-text"><iron-icon icon="file-download"></iron-icon></paper-button>
+    </a><paper-tooltip for="download" animation-delay="200" offset="14">Download table data</paper-tooltip><table class="mdl-data-table" summary="[[summary]]">
     <template is="dom-if" if="[[caption]]">
       <caption>[[caption]]</caption>
     </template>
     <thead>
-      
-      
       <tr>
       <template is="dom-repeat" items="[[tableHeadings]]" as="heading">
         <th scope="col">[[heading]]</th>

@@ -5,18 +5,18 @@ define([
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_985fe990e70711e88bf3bf38005714b7() {
+  function _templateObject_70366060ecf311e8932bfd0c66256d50() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <h3><span property="oer:name">[[name]]</span></h3>\n    <ol>\n      <template is="dom-repeat" items="[[tasks]]" as="task">\n        <li><span property="oer:task">[[task.name]]</span></li>\n      </template>\n    </ol>\n'
     ]);
-    _templateObject_985fe990e70711e88bf3bf38005714b7 = function() {
+    _templateObject_70366060ecf311e8932bfd0c66256d50 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_985fe990e70711e88bf3bf38005714b7()
+      _templateObject_70366060ecf311e8932bfd0c66256d50()
     ),
     is: "task-list",
     behaviors: [

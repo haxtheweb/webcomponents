@@ -6,18 +6,18 @@ define([
   "./lib/map-styles.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_a40023a0e70711e8a6203f062bc3a1bf() {
+  function _templateObject_7dd68920ecf311e8aaaad920cff3720f() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n  <!-- use the leaflet-styles style module -->\n  <style include="map-styles">\n    /* make sure the map element doesn\'t get selected and styled by document styles */\n    :host {\n        display: inline-block !important;\n        position: relative !important;\n    }\n    /* try to constrain the map and the leaflet div#map to the size of the container */\n        :host, :host #map {\n         max-width: 100%;\n         min-width: 100%;\n    }\n    /* this is a hack for shady DOM, as max-width messes with Leaflet tiles */\n    :host img {\n        max-width: none !important;\n    }\n    #map:focus {\n        outline: 2px  double lightskyblue;\n    }\n  </style>\n  <!-- giving the map div a tabindex allows the map to display its focus. -->\n  <!-- see the #map:focus selector in styles, above. -->\n  <div id="map" tabindex="0"></div>\n  <slot></slot>\n'
     ]);
-    _templateObject_a40023a0e70711e8a6203f062bc3a1bf = function() {
+    _templateObject_7dd68920ecf311e8aaaad920cff3720f = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a40023a0e70711e8a6203f062bc3a1bf()
+      _templateObject_7dd68920ecf311e8aaaad920cff3720f()
     ),
     is: "web-map",
     extends: "map",

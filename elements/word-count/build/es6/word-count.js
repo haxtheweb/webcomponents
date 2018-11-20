@@ -3,6 +3,7 @@ import {
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
 import { dom } from "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "./node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 Polymer({
   _template: html`
     <style>
@@ -56,7 +57,7 @@ Polymer({
     }
   },
   ready: function() {
-    this._observer = dom(this).observeNodes(function(info) {
+    this._observer = new FlattenedNodesObserver(this, info => {
       if (0 < info.addedNodes.length || 0 < info.removedNodes.length) {
         this._updateWords();
       }

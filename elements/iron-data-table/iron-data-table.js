@@ -435,7 +435,7 @@ Polymer({
   ],
 
   created: function() {
-    this._observer = FlattenedNodesObserver(this, info => {
+    this._observer = new FlattenedNodesObserver(this, info => {
       var hasColumns = function(node) {
         return (
           node.nodeType === Node.ELEMENT_NODE &&

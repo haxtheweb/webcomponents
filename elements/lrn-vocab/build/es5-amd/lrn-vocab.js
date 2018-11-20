@@ -6,18 +6,18 @@ define([
   "./lib/lrn-vocab-dialog.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_6404f040e70811e8b789ebb7ca0e6841() {
+  function _templateObject_5c2b3130ecf411e8b02b971101da7279() {
     var data = babelHelpers.taggedTemplateLiteral([
-      '\n    <style>\n      :host {\n        display: inline-flex;\n        --lrn-vocab-border: 1px dashed gray;\n      }\n      paper-button {\n        text-transform: none;\n        padding: 0;\n        margin: 0;\n        border-bottom: var(--lrn-vocab-border);\n        position: relative;\n        top: 3px;\n      }\n    </style>\n\n    <div>\n      <paper-button id="button" noink="">[[term]]</paper-button>\n    </div>\n    <lrn-vocab-dialog id="dialog" opened="{{opened}}">\n      <slot></slot>\n    </lrn-vocab-dialog>\n'
+      '\n    <style>\n      :host {\n        display: inline-flex;\n        --lrn-vocab-border: 1px dashed #ccc;\n      }\n      paper-button {\n        text-transform: none;\n        padding: 0;\n        margin: 0;\n        position: relative;\n        top:0px;\n        border-radius:0;\n        border-bottom: var(--lrn-vocab-border);\n        background:#f5f5f5;\n        @apply --lrn-vocab-button\n      }\n      paper-button:hover {\n        background:#bbdefb;\n        border-bottom: 1px dashed #2196f3;\n        @apply --lrn-vocab-button-hover\n      }\n    </style>\n\n    <div>\n      <paper-button id="button" noink="">[[term]]</paper-button>\n    </div>\n    <lrn-vocab-dialog id="dialog" opened="{{opened}}" term="[[term]]">\n      <slot></slot>\n    </lrn-vocab-dialog>\n'
     ]);
-    _templateObject_6404f040e70811e8b789ebb7ca0e6841 = function() {
+    _templateObject_5c2b3130ecf411e8b02b971101da7279 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_6404f040e70811e8b789ebb7ca0e6841()
+      _templateObject_5c2b3130ecf411e8b02b971101da7279()
     ),
     is: "lrn-vocab",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

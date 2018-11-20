@@ -14,18 +14,18 @@ define([
   _ironValidatableBehavior
 ) {
   "use strict";
-  function _templateObject_fbe87b50e70511e886e6093a9ece0d4a() {
+  function _templateObject_d6869da0ecf111e88a0b4725ebfbecff() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n  <style is="custom-style" include="iron-flex iron-flex-alignment">\n      paper-input {\n        --paper-input-container-label: {\n          white-space: normal;\n          position: static;\n          font-size: 22px;\n          color: #212121;\n        }\n      };\n\n      paper-dropdown-menu {\n        --paper-input-container-label: {\n          white-space: normal;\n          position: static;\n          font-size: 22px;\n          color: #212121;\n        }\n        --paper-dropdown-menu-button: {\n          padding: 2px;\n        }\n      }\n    </style>\n\n    <paper-dropdown-menu id="dropdown" class="layout horizontal vertical" value="{{value}}" required="">\n      <paper-dropdown-menu class="dropdown-content">\n        <paper-listbox slot="dropdown-content" selected="0">\n        <template is="dom-repeat" items="[[_items]]">\n          <paper-item class="flex" label="[[item]]">[[item]]</paper-item>\n        </template>\n        </paper-listbox>\n      </paper-dropdown-menu>\n    </paper-dropdown-menu>\n'
     ]);
-    _templateObject_fbe87b50e70511e886e6093a9ece0d4a = function() {
+    _templateObject_d6869da0ecf111e88a0b4725ebfbecff = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_fbe87b50e70511e886e6093a9ece0d4a()
+      _templateObject_d6869da0ecf111e88a0b4725ebfbecff()
     ),
     is: "eco-json-schema-enum",
     behaviors: [_ironValidatableBehavior.IronValidatableBehavior],

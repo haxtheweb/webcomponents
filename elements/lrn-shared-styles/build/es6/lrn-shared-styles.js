@@ -29,7 +29,6 @@ const styleElement = document.createElement("dom-module"),
     }
   }
 </style>`;
-console.log(css);
 styleElement.appendChild(css);
 styleElement.register("lrn-shared-styles");
 console.log(styleElement);

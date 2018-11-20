@@ -5,18 +5,18 @@ define([
   "../node_modules/@polymer/iron-flex-layout/iron-flex-layout-classes.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_e1a5ffe0e70711e8a5ace931dff0a3e8() {
+  function _templateObject_c862db10ecf311e89d667bcb57897322() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style is="custom-style" include="iron-flex iron-flex-alignment materializecss-styles-colors"></style>\n    <style>\n      :host {\n        @apply --layout-horizontal;\n        @apply --layout-center;\n        @apply --layout-end-justified;\n        margin-top: 15px;\n        margin-right: 8px;\n        /** For IE11: otherwise the label overlays the FAB */\n        min-width: 270px;\n      }\n\n      .label {\n        color: black;\n        background: white;\n        padding: 0 16px;\n        border-radius: 4px;\n        margin-right: 24px;\n      }\n\n      .fab {\n        --lrnapp-fab-background: var(--lrnapp-fab-speed-dial-action-background);\n        --lrnapp-fab-keyboard-focus-background: var(--lrnapp-fab-speed-dial-action-keyboard-focus-background);\n      }\n\n      .label,.fab {\n        display: inline-block;\n      }\n    </style>\n\n    <div class="flex"><span class="label"><slot></slot></span></div>\n    <paper-fab class$="fab [[color]]" icon="[[icon]]" mini></paper-fab>\n'
     ]);
-    _templateObject_e1a5ffe0e70711e8a5ace931dff0a3e8 = function() {
+    _templateObject_c862db10ecf311e89d667bcb57897322 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_e1a5ffe0e70711e8a5ace931dff0a3e8()
+      _templateObject_c862db10ecf311e89d667bcb57897322()
     ),
     is: "lrnapp-fab-speed-dial-action",
     properties: {

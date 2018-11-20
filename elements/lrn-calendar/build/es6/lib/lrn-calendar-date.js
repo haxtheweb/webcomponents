@@ -7,7 +7,6 @@ import "../node_modules/@polymer/iron-icons/iron-icons.js";
 import "../node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "../node_modules/@polymer/paper-card/paper-card.js";
 import "../node_modules/@polymer/iron-ajax/iron-ajax.js";
-import "../lrn-calendar.js";
 Polymer({
   _template: html`
     <style include="materializecss-styles-colors">
@@ -19,13 +18,11 @@ Polymer({
         background: transparent;  /* optional: just make scrollbar invisible */
       }
 
-
       .month {
         width: 100%;
         height: 20vh;
         vertical-align: top;
         overflow: scroll;
-
       }
       .week{
         width: 100%;
@@ -44,10 +41,8 @@ Polymer({
       .label{
         width: 100%
       }
-
-
     </style>
-    
+  
       <div id="test">
         <div>
           <template is="dom-if" if="[[firstWeek]]">
@@ -56,14 +51,12 @@ Polymer({
             </paper-card>
           </template>
         </div>
-        <paper-card class\$="{{view}}" id="dateHeader">
-          
-            <h5> [[getMonth(date)]] </h5>
-          
+        <paper-card class$="{{view}}" id="dateHeader">
+            <h5>[[getMonth(date)]]</h5>
           <template is="dom-repeat" items="{{events}}">
               <div class="card-content">
-                <lrnsys-drawer text="[[timeString(item.event.startDate._time.hour, item.event.startDate._time.minute, item.event.endDate._time.hour,item.event.endDate._time.minute)]] {{item.event.summary}}" header="[[getDateString(date)]]" align="left" heading-class="orange lighten-3 blue-text text-darken-4" style="{{computeStyle(item)}};overflow:auto;">
-                [[displayActivity(item)]] <br><br>[[displayStart(item)]]<br><br>[[displayEnd(item)]]<br><br>[[displayDuration(item)]]<br><br>[[displayDescription(item)]]<br><br>[[displayLocation(item)]]
+                <lrnsys-drawer text="[[timeString(item.event.startDate._time.hour, item.event.startDate._time.minute, item.event.endDate._time.hour,item.event.endDate._time.minute)]] {{item.event.summary}}" header="[[getDateString(date)]]" align="left" heading-class="orange lighten-3 blue-text text-darken-4" style$="[[computeStyle(item)]];overflow:auto;">
+                [[displayActivity(item)]] <br/><br/>[[displayStart(item)]]<br><br>[[displayEnd(item)]]<br><br>[[displayDuration(item)]]<br><br>[[displayDescription(item)]]<br><br>[[displayLocation(item)]]
                 </lrnsys-drawer>
               </div>
           </template>

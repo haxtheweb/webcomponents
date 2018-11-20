@@ -22,4 +22,4 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
       display: none;
     }
   }
-</style>`;console.log(css);styleElement.appendChild(css);styleElement.register("lrn-shared-styles");console.log(styleElement);
+</style>`;styleElement.appendChild(css);styleElement.register("lrn-shared-styles");console.log(styleElement);

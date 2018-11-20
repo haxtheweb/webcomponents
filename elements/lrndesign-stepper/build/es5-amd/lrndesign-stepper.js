@@ -3,18 +3,18 @@ define([
   "./lib/lrndesign-stepper-button.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_18745fa0e70611e8971d2f3ef5e8c859() {
+  function _templateObject_f58fde00ecf111e8abe3df1af49e62e3() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n       :host {\n        display: block;\n      }\n    </style>\n\n    <div class="buttons">\n      <slot id="stepper-children">\n      </slot>\n    </div>\n'
     ]);
-    _templateObject_18745fa0e70611e8971d2f3ef5e8c859 = function() {
+    _templateObject_f58fde00ecf111e8abe3df1af49e62e3 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_18745fa0e70611e8971d2f3ef5e8c859()
+      _templateObject_f58fde00ecf111e8abe3df1af49e62e3()
     ),
     is: "lrndesign-stepper",
     properties: {},

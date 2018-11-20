@@ -10,18 +10,18 @@ define([
   Object.defineProperty(_exports, "__esModule", { value: !0 });
   _exports.QRCodeElement = void 0;
   meta = babelHelpers.interopRequireWildcard(meta);
-  function _templateObject_7e92d720e70711e89d5f130ac9905d58() {
+  function _templateObject_53b662f0ecf311e881f0712b243aa944() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n      #link {\n        visibility: hidden;\n        opacity: 0;\n      }\n    </style>\n    <qr-code id="qr" data$="[[data]]" modulesize$="[[modulesize]]" margin$="[[margin]]" format$="[[format]]"></qr-code>\n    <a href$="[[data]]" id="link">[[title]]</a>\n'
     ]);
-    _templateObject_7e92d720e70711e89d5f130ac9905d58 = function() {
+    _templateObject_53b662f0ecf311e881f0712b243aa944 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_7e92d720e70711e89d5f130ac9905d58()
+      _templateObject_53b662f0ecf311e881f0712b243aa944()
     ),
     is: "q-r",
     behaviors: [HAXBehaviors.PropertiesBehaviors],

@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import"./node_modules/@polymer/app-layout/app-drawer/app-drawer.js";import"./node_modules/@polymer/app-layout/app-header/app-header.js";import"./node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js";import"./node_modules/@polymer/iron-flex-layout/iron-flex-layout.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-toast/paper-toast.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import"./node_modules/@polymer/iron-image/iron-image.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/multiple-choice/multiple-choice.js";import"./node_modules/@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";import"./node_modules/@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";import"./lib/game-show-quiz-modal.js";Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import"./node_modules/@polymer/app-layout/app-drawer/app-drawer.js";import"./node_modules/@polymer/app-layout/app-header/app-header.js";import"./node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js";import"./node_modules/@polymer/iron-flex-layout/iron-flex-layout.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-toast/paper-toast.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import"./node_modules/@polymer/iron-image/iron-image.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/multiple-choice/multiple-choice.js";import"./node_modules/@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";import"./node_modules/@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";import"./lib/game-show-quiz-modal.js";Polymer({_template:html`
     <style>
       :host {
         display: block;
@@ -6,19 +6,33 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         --game-show-text-color: #ffffff;
       }
       app-toolbar {
-        background-color: #4285f4;
-        color: #fff;
+        background-color: var(--game-show-bg-color, blue);
+        color: var(--game-show-text-color, white);
         font-size: 24px;
+        display: flex;
+      }
+      iron-icon {
+        display: inline-block;
       }
 
-      paper-icon-button {
-        --paper-icon-button-ink-color: white;
+      paper-button {
+        --paper-button-ink-color: var(--game-show-bg-color, blue);
+        text-transform: none;
+        display: block;
       }
-      paper-icon-button + [main-title] {
+      #helpbutton {
+        text-align: center;
+        padding: 8px;
+        font-size: 12px;
+        vertical-align: middle;
+        display: inline-flex;
+      }
+      paper-button + [main-title] {
         margin-left: 24px;
+        display: inline-flex;
       }
       app-header {
-        color: #fff;
+        color: var(--game-show-text-color, white);
         --app-header-background-rear-layer: {
           background-color: #ef6c00;
         };
@@ -67,11 +81,12 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         app-toolbar {
           font-size: 14px;
         }
-        paper-icon-button {
+        paper-button {
           padding: 0;
           margin: 0;
           width: 16px;
           height: 16px;
+          min-width: unset;
         }
         .grid-button {
           font-size: 9px;
@@ -80,6 +95,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
           width: 24px;
           height: 24px;
           opacity: 1;
+          display: inline-block;
         }
         .row-0 paper-button[disabled] {
           font-weight: bold;
@@ -89,7 +105,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
     </style>
     <app-header>
       <app-toolbar>
-        <paper-icon-button id="helpbutton" icon="help" onclick="directions.toggle()"></paper-icon-button>
+        <paper-button id="helpbutton" on-tap="directionsToggle"><iron-icon icon="help"></iron-icon> Directions</paper-button>
         <div main-title="">[[title]]</div>
       </app-toolbar>
     </app-header>
@@ -154,9 +170,9 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
     <game-show-quiz-modal id="dialog" title="[[activeQuestion.title]]">
       <iron-image slot="content" style="min-width:100px; width:100%; min-height:25vh; height:40vh; background-color: lightgray;" sizing="contain" preload="" src\$="[[activeQuestion.image]]"></iron-image>
       <multiple-choice disabled\$="[[activeQuestion.submitted]]" slot="content" id="question" hide-buttons="" title="[[activeQuestion.title]]" answers="[[activeQuestion.data]]"></multiple-choice>
-      <paper-button slot="buttons" hidden\$="[[activeQuestion.submitted]]" id="submit" raised="" disabled\$="[[__submitDisabled]]">Submit answer <iron-icon hidden\$="[[__submitDisabled]]" icon="icons:touch-app"></iron-icon></paper-button>
+      <paper-button slot="buttons" hidden\$="[[activeQuestion.submitted]]" id="submit" raised="" disabled\$="[[__submitDisabled]]">Submit answer <iron-icon hidden$="[[__submitDisabled]]" icon="icons:touch-app"></iron-icon></paper-button>
       <paper-button slot="buttons" id="continue" hidden\$="[[!activeQuestion.submitted]]" dialog-confirm="" raised="">Continue <iron-icon icon="icons:arrow-forward"></iron-icon></paper-button>
     </game-show-quiz-modal>
     <iron-ajax auto="" id="gamedata" url="[[gameData]]" handle-as="json" last-response="{{gameBoard}}"></iron-ajax>
     <iron-ajax id="questiondata" url="[[__questionEndpoint]]" handle-as="json" last-response="{{activeQuestion}}"></iron-ajax>
-`,is:"game-show-quiz",behaviors:[HAXBehaviors.PropertiesBehaviors],properties:{title:{type:String},points:{type:Object,value:{slide:{attempted:0,earned:0,percent:0},terms:{attempted:0,earned:0,percent:0},reading:{attempted:0,earned:0,percent:0},lecture:{attempted:0,earned:0,percent:0},bonus:{attempted:0,earned:0,percent:0},total:{attempted:0,earned:0,percent:0}}},remainingAttempts:{type:Number,value:30},directionsTitle:{type:String,value:"Directions"},gameBoard:{type:Array,observer:"_gameBoardChanged"},gameData:{type:String},activeQuestion:{type:Object}},continueGameTap:function(){if(typeof this.__activeTap!==typeof void 0&&null!=dom(this.__activeTap).parentNode.nextElementSibling.firstElementChild){dom(this.__activeTap).parentNode.nextElementSibling.firstElementChild.firstElementChild.focus();delete this.__activeTap}else if(typeof this.__activeTap!==typeof void 0&&null==dom(this.__activeTap).parentNode.nextElementSibling.firstElementChild){this.__activeTap.focus();delete this.__activeTap}},registerTap:function(){this.__submitDisabled=!1},submitAnswer:function(){this.set("activeQuestion.submitted",!0);this.$.continue.focus();this.__activeTap.disabled=!0;let icon=document.createElement("iron-icon");icon.classList.add("status-icon");let num=parseInt(this.points[this.__activeType].attempted)+parseInt(this.__activeValue);this.set("points."+this.__activeType+".attempted",num);let total=parseInt(this.points.total.attempted)+parseInt(this.__activeValue);this.set("points.total.attempted",total);this.remainingAttempts=this.remainingAttempts-parseInt(this.__activeValue);if(this.$.question.checkAnswers()){this.$.toast.show("Correct!");let num=parseInt(this.points[this.__activeType].earned)+parseInt(this.__activeValue);this.set("points."+this.__activeType+".earned",num);icon.icon="icons:check-circle";icon.classList.add("correct");let total=parseInt(this.points.total.earned)+parseInt(this.__activeValue);this.set("points.total.earned",total)}else{this.$.toast.show(":( You got it wrong");icon.icon="icons:cancel";icon.classList.add("incorrect")}let percent=(100*(parseInt(this.points[this.__activeType].earned)/parseInt(this.points[this.__activeType].attempted))).toFixed(1);this.set("points."+this.__activeType+".percent",percent);total=(100*(parseInt(this.points.total.earned)/parseInt(this.points.total.attempted))).toFixed(1);this.set("points.total.percent",total);dom(this.__activeTap).appendChild(icon)},_gameBoardTap:function(e){var normalizedEvent=dom(e),local=normalizedEvent.localTarget;if(null!=local.getAttribute("data-question-data")){this.__submitDisabled=!0;this.__questionEndpoint=local.getAttribute("data-question-data");this.__activeTap=local;this.__activeType=local.getAttribute("data-type");this.__activeValue=local.getAttribute("data-value");this.$.questiondata.answers=[];setTimeout(()=>{this.$.questiondata.generateRequest();this.$.dialog.toggle()},100)}},_gameBoardChanged:function(){},resetFocus:function(){this.$.helpbutton.focus()},attached:function(){document.body.appendChild(this.$.dialog);document.body.appendChild(this.$.directions);this.setHaxProperties({canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Game show",description:"Tweak the game show options",icon:"av:play-circle-filled",color:"grey",groups:["Video","Media"],handles:[{type:"video",url:"source"}],meta:{author:"Your organization on github"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],advanced:[]}});this.$.dismiss.addEventListener("tap",this.resetFocus.bind(this));this.$.contentcontainer.addEventListener("tap",this._gameBoardTap.bind(this));this.$.submit.addEventListener("tap",this.submitAnswer.bind(this));this.$.continue.addEventListener("tap",this.continueGameTap.bind(this));this.$.question.addEventListener("tap",this.registerTap.bind(this))},detached:function(){this.$.dismiss.removeEventListener("tap",this.resetFocus.bind(this));this.$.contentcontainer.removeEventListener("tap",this._gameBoardTap.bind(this));this.$.submit.removeEventListener("tap",this.submitAnswer.bind(this));this.$.continue.removeEventListener("tap",this.continueGameTap.bind(this));this.$.question.removeEventListener("tap",this.registerTap.bind(this))}});
+`,is:"game-show-quiz",behaviors:[HAXBehaviors.PropertiesBehaviors],properties:{title:{type:String},points:{type:Object,value:{slide:{attempted:0,earned:0,percent:0},terms:{attempted:0,earned:0,percent:0},reading:{attempted:0,earned:0,percent:0},lecture:{attempted:0,earned:0,percent:0},bonus:{attempted:0,earned:0,percent:0},total:{attempted:0,earned:0,percent:0}}},remainingAttempts:{type:Number,value:30},directionsTitle:{type:String,value:"Directions"},gameBoard:{type:Array,observer:"_gameBoardChanged"},gameData:{type:String},activeQuestion:{type:Object}},directionsToggle:function(){this.$.directions.toggle()},continueGameTap:function(){if(typeof this.__activeTap!==typeof void 0&&null!=dom(this.__activeTap).parentNode.nextElementSibling.firstElementChild){dom(this.__activeTap).parentNode.nextElementSibling.firstElementChild.firstElementChild.focus();delete this.__activeTap}else if(typeof this.__activeTap!==typeof void 0&&null==dom(this.__activeTap).parentNode.nextElementSibling.firstElementChild){this.__activeTap.focus();delete this.__activeTap}},registerTap:function(){this.__submitDisabled=!1},submitAnswer:function(){this.set("activeQuestion.submitted",!0);this.$.continue.focus();this.__activeTap.disabled=!0;let icon=document.createElement("iron-icon");icon.classList.add("status-icon");let num=parseInt(this.points[this.__activeType].attempted)+parseInt(this.__activeValue);this.set("points."+this.__activeType+".attempted",num);let total=parseInt(this.points.total.attempted)+parseInt(this.__activeValue);this.set("points.total.attempted",total);this.remainingAttempts=this.remainingAttempts-parseInt(this.__activeValue);if(this.$.question.checkAnswers()){this.$.toast.show("Correct!");let num=parseInt(this.points[this.__activeType].earned)+parseInt(this.__activeValue);this.set("points."+this.__activeType+".earned",num);icon.icon="icons:check-circle";icon.classList.add("correct");let total=parseInt(this.points.total.earned)+parseInt(this.__activeValue);this.set("points.total.earned",total)}else{this.$.toast.show(":( You got it wrong");icon.icon="icons:cancel";icon.classList.add("incorrect")}let percent=(100*(parseInt(this.points[this.__activeType].earned)/parseInt(this.points[this.__activeType].attempted))).toFixed(1);this.set("points."+this.__activeType+".percent",percent);total=(100*(parseInt(this.points.total.earned)/parseInt(this.points.total.attempted))).toFixed(1);this.set("points.total.percent",total);dom(this.__activeTap).appendChild(icon)},_gameBoardTap:function(e){var normalizedEvent=dom(e),local=normalizedEvent.localTarget;if(null!=local.getAttribute("data-question-data")){this.__submitDisabled=!0;this.__questionEndpoint=local.getAttribute("data-question-data");this.__activeTap=local;this.__activeType=local.getAttribute("data-type");this.__activeValue=local.getAttribute("data-value");this.$.questiondata.answers=[];setTimeout(()=>{this.$.questiondata.generateRequest();this.$.dialog.toggle()},100)}},_gameBoardChanged:function(){},resetFocus:function(){this.$.helpbutton.focus()},attached:function(){this.setHaxProperties({canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Game show",description:"Tweak the game show options",icon:"av:play-circle-filled",color:"grey",groups:["Video","Media"],handles:[{type:"video",url:"source"}],meta:{author:"Your organization on github"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],advanced:[]}});this.$.dismiss.addEventListener("tap",this.resetFocus.bind(this));this.$.contentcontainer.addEventListener("tap",this._gameBoardTap.bind(this));this.$.submit.addEventListener("tap",this.submitAnswer.bind(this));this.$.continue.addEventListener("tap",this.continueGameTap.bind(this));this.$.question.addEventListener("tap",this.registerTap.bind(this))},detached:function(){this.$.dismiss.removeEventListener("tap",this.resetFocus.bind(this));this.$.contentcontainer.removeEventListener("tap",this._gameBoardTap.bind(this));this.$.submit.removeEventListener("tap",this.submitAnswer.bind(this));this.$.continue.removeEventListener("tap",this.continueGameTap.bind(this));this.$.question.removeEventListener("tap",this.registerTap.bind(this))}});

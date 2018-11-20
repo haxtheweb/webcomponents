@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 /**
  * `word-count`
  * `Count the words on whatever this wraps`
@@ -83,7 +84,7 @@ Polymer({
    */
   ready: function() {
     // mutation observer that ensures state of hax applied correctly
-    this._observer = dom(this).observeNodes(function(info) {
+    this._observer = new FlattenedNodesObserver(this, info => {
       if (info.addedNodes.length > 0 || info.removedNodes.length > 0) {
         this._updateWords();
       }

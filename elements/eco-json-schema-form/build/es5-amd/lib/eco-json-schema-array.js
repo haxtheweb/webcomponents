@@ -14,7 +14,7 @@ define([
   "./eco-json-schema-file.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_fbc47890e70511e886e6093a9ece0d4a() {
+  function _templateObject_d6669280ecf111e88a0b4725ebfbecff() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n  <style is="custom-style" include="iron-flex iron-flex-alignment">\n      paper-input {\n        padding: 2px;\n\n        --paper-input-container-label: {\n          white-space: normal;\n          position: static;\n          font-size: 22px;\n          color: #212121;\n        }\n      }\n\n      paper-collapse-item {\n        --paper-collapse-item-header: {\n          font-weight: bold;\n          padding: 8px 0 0 8px;\n        }\n\n        ;\n      }\n\n      #form {\n        border: 1px solid #AAAAAA;\n      }\n\n      #form div:nth-child(odd) {\n        background-color: #F2F2F2;\n        padding: 4px;\n      }\n\n      #form div:nth-child(even) {\n        background-color: #E2E2E2;\n        border-top: 1px solid #AAAAAA;\n        border-bottom: 1px solid #AAAAAA;\n        padding: 4px;\n      }\n\n      #form div:focus,\n      #form div:hover,\n      #form div:active {\n        background-color: #FFFFFF !important;\n      }\n\n      paper-icon-button {\n        float: right;\n        border-radius: 50%;\n      }\n\n      .array-add {\n        color: #34e79a;\n        background-color: #f8f8f8;\n      }\n\n      .array-remove-element {\n        color: #f44336;\n        background-color: #f8f8f8;\n      }\n\n      .label {\n        @apply --paper-input-container-label;\n        white-space: normal;\n        position: static;\n        font-size: 22px;\n        color: #212121;\n      }\n\n      :host {\n        display: block;\n      }\n      .label {\n        white-space: normal;\n        position: static;\n        font-size: 22px;\n        color: #212121;\n        @apply --paper-input-container-label;\n      }\n    </style>\n\n    <div class="horizontal layout">\n      <div class="flex" hidden$="[[!label]]">[[label]]</div>\n      <paper-icon-button id="addarray" title="Add another item" class="array-add" icon="add" on-click="_onAddItem" role="button" aria-label="Add another item"></paper-icon-button>\n    </div>\n\n    <paper-collapse-group id="form" class="vertical flex layout"></paper-collapse-group>\n  \n'
@@ -23,7 +23,7 @@ define([
         '\n  <style is="custom-style" include="iron-flex iron-flex-alignment">\n      paper-input {\n        padding: 2px;\n\n        --paper-input-container-label: {\n          white-space: normal;\n          position: static;\n          font-size: 22px;\n          color: #212121;\n        }\n      }\n\n      paper-collapse-item {\n        --paper-collapse-item-header: {\n          font-weight: bold;\n          padding: 8px 0 0 8px;\n        }\n\n        ;\n      }\n\n      #form {\n        border: 1px solid #AAAAAA;\n      }\n\n      #form div:nth-child(odd) {\n        background-color: #F2F2F2;\n        padding: 4px;\n      }\n\n      #form div:nth-child(even) {\n        background-color: #E2E2E2;\n        border-top: 1px solid #AAAAAA;\n        border-bottom: 1px solid #AAAAAA;\n        padding: 4px;\n      }\n\n      #form div:focus,\n      #form div:hover,\n      #form div:active {\n        background-color: #FFFFFF !important;\n      }\n\n      paper-icon-button {\n        float: right;\n        border-radius: 50%;\n      }\n\n      .array-add {\n        color: #34e79a;\n        background-color: #f8f8f8;\n      }\n\n      .array-remove-element {\n        color: #f44336;\n        background-color: #f8f8f8;\n      }\n\n      .label {\n        @apply --paper-input-container-label;\n        white-space: normal;\n        position: static;\n        font-size: 22px;\n        color: #212121;\n      }\n\n      :host {\n        display: block;\n      }\n      .label {\n        white-space: normal;\n        position: static;\n        font-size: 22px;\n        color: #212121;\n        @apply --paper-input-container-label;\n      }\n    </style>\n\n    <div class="horizontal layout">\n      <div class="flex" hidden\\$="[[!label]]">[[label]]</div>\n      <paper-icon-button id="addarray" title="Add another item" class="array-add" icon="add" on-click="_onAddItem" role="button" aria-label="Add another item"></paper-icon-button>\n    </div>\n\n    <paper-collapse-group id="form" class="vertical flex layout"></paper-collapse-group>\n  \n'
       ]
     );
-    _templateObject_fbc47890e70511e886e6093a9ece0d4a = function() {
+    _templateObject_d6669280ecf111e88a0b4725ebfbecff = function() {
       return data;
     };
     return data;
@@ -31,7 +31,7 @@ define([
   (0, _polymerLegacy.Polymer)({
     is: "eco-json-schema-array",
     _template: (0, _polymerLegacy.html)(
-      _templateObject_fbc47890e70511e886e6093a9ece0d4a()
+      _templateObject_d6669280ecf111e88a0b4725ebfbecff()
     ),
     properties: {
       schema: { type: Object, observer: "_schemaChanged" },

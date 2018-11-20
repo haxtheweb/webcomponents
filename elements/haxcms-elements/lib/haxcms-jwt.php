@@ -4,6 +4,7 @@
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 /** 
  * `haxcms-jwt`
  * `a simple element to check for and fetch JWTs`
@@ -84,7 +85,8 @@ Polymer({
       // which will appear to be injecting into the page
       // but because of this approach it should be non-blocking
       try {
-        this.importHref(this.resolveUrl('haxcms-site-editor.html'), (e) => {
+        let basePath = pathFromUrl(import.meta.url);
+        this.importHref(basePath + 'haxcms-site-editor.js', (e) => {
           let haxCmsSiteEditorElement = document.createElement('haxcms-site-editor');
           haxCmsSiteEditorElement.jwt = this.jwt;
           haxCmsSiteEditorElement.savePagePath = window.appSettings.savePagePath;

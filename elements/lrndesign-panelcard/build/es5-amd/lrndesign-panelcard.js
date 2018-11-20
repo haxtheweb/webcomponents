@@ -5,7 +5,7 @@ define([
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_10a77f40e70711e8a8adb39327ed9d69() {
+  function _templateObject_d6fe2220ecf211e8b4524f691fbf52e3() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style include="materializecss-styles"></style>\n    <style>\n      :host {\n        display: inline-block;\n        position: relative;\n        box-sizing: border-box;\n        --secondary-text-color: #FFFFFF;\n        --paper-input-container-color: #FFFFFF;\n      }\n\n      .card-panel {\n        transition: box-shadow .25s;\n        padding: 24px;\n        margin: 0;\n        border-radius: 2px;\n        background-color: #fff;\n      }\n\n      h3 {\n        padding: 0;\n        margin: 0 0 8px 0;\n      }\n    </style>\n    <aside>\n      <paper-card elevation="[[elevation]]">\n        <div class$="card-panel [[color]]">\n          <h3 class$="[[textColor]]">[[title]]</h3>\n          <span class$="[[textColor]]">\n            <slot></slot>\n          </span>\n        </div>\n      </paper-card>\n    </aside>\n'
@@ -14,14 +14,14 @@ define([
         '\n    <style include="materializecss-styles"></style>\n    <style>\n      :host {\n        display: inline-block;\n        position: relative;\n        box-sizing: border-box;\n        --secondary-text-color: #FFFFFF;\n        --paper-input-container-color: #FFFFFF;\n      }\n\n      .card-panel {\n        transition: box-shadow .25s;\n        padding: 24px;\n        margin: 0;\n        border-radius: 2px;\n        background-color: #fff;\n      }\n\n      h3 {\n        padding: 0;\n        margin: 0 0 8px 0;\n      }\n    </style>\n    <aside>\n      <paper-card elevation="[[elevation]]">\n        <div class\\$="card-panel [[color]]">\n          <h3 class\\$="[[textColor]]">[[title]]</h3>\n          <span class\\$="[[textColor]]">\n            <slot></slot>\n          </span>\n        </div>\n      </paper-card>\n    </aside>\n'
       ]
     );
-    _templateObject_10a77f40e70711e8a8adb39327ed9d69 = function() {
+    _templateObject_d6fe2220ecf211e8b4524f691fbf52e3 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_10a77f40e70711e8a8adb39327ed9d69()
+      _templateObject_d6fe2220ecf211e8b4524f691fbf52e3()
     ),
     is: "lrndesign-panelcard",
     behaviors: [

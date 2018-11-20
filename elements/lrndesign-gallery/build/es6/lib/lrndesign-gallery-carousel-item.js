@@ -3,6 +3,7 @@ import {
   Polymer
 } from "../node_modules/@polymer/polymer/polymer-legacy.js";
 import "../node_modules/@polymer/iron-image/iron-image.js";
+import "../node_modules/@polymer/iron-icons/iron-icons.js";
 import "./lrndesign-gallery-zoom.js";
 Polymer({
   _template: html`

@@ -1,10 +1,10 @@
 define([
   "../node_modules/@polymer/polymer/polymer-legacy.js",
+  "../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
   "../node_modules/@lrnwebcomponents/paper-avatar/paper-avatar.js",
   "../node_modules/@lrnwebcomponents/lrn-icons/lrn-icons.js",
   "../node_modules/@lrnwebcomponents/simple-colors/simple-colors.js",
-  "../node_modules/@polymer/paper-dialog/paper-dialog.js",
-  "../node_modules/@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js",
+  "../node_modules/@lrnwebcomponents/simple-modal/simple-modal.js",
   "../node_modules/@polymer/paper-tooltip/paper-tooltip.js",
   "../node_modules/@polymer/paper-button/paper-button.js",
   "../node_modules/@polymer/neon-animation/neon-animation.js",
@@ -12,25 +12,20 @@ define([
   "../node_modules/@polymer/iron-icons/iron-icons.js",
   "./lrnsys-dialog-modal.js",
   "./lrnsys-button-inner.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_0d870ff0e70811e8b65bc19d0dd5f1da() {
-    var data = babelHelpers.taggedTemplateLiteral(
-      [
-        '\n    <custom-style>\n    <style is="custom-style" include="simple-colors">\n      :host {\n        display: inline-block;\n        --lrnsys-dialog-color: var(--simple-colors-foreground1,#000);\n        --lrnsys-dialog-background-color: var(--simple-colors-background1);\n        --lrnsys-dialog-toolbar-background-color: var(--simple-colors-background3);\n        --lrnsys-dialog-secondary-background-color: rgba(255,255,255, 0.7);\n      }\n      :host([dark]) {\n        --lrnsys-dialog-toolbar-background-color: var(--simple-colors-background1);\n        --lrnsys-dialog-background-color: var(--simple-colors-background3);\n        --lrnsys-dialog-secondary-background-color: rgba(0, 0, 0, 0.7);\n      }\n    </style>\n    </custom-style>\n    <paper-button class$="[[class]]" id="dialogtrigger" on-tap="toggleDialog" raised="[[raised]]" disabled$="[[disabled]]" title="[[alt]]" aria-label$="[[alt]]">\n      <lrnsys-button-inner avatar$="[[avatar]]" icon$="[[icon]]" text$="[[text]]">\n        <slot name="button"></slot>\n      </lrnsys-button-inner>\n    </paper-button>\n    <paper-tooltip for="dialogtrigger" animation-delay="0" hidden$="[[!alt]]">[[alt]]</paper-tooltip>\n    <lrnsys-dialog-modal id="modal" dynamic-images="[[dynamicImages]]" body-append="[[bodyAppend]]" header="[[header]]" modal="[[modal]]" heading-class="[[headingClass]]" opened$="[[opened]]">\n      <slot name="toolbar-primary" slot="primary"></slot>\n      <slot name="toolbar-secondary" slot="secondary"></slot>\n      <slot name="header" slot="header"></slot>\n      <slot></slot>\n    </lrnsys-dialog-modal>\n'
-      ],
-      [
-        '\n    <custom-style>\n    <style is="custom-style" include="simple-colors">\n      :host {\n        display: inline-block;\n        --lrnsys-dialog-color: var(--simple-colors-foreground1,#000);\n        --lrnsys-dialog-background-color: var(--simple-colors-background1);\n        --lrnsys-dialog-toolbar-background-color: var(--simple-colors-background3);\n        --lrnsys-dialog-secondary-background-color: rgba(255,255,255, 0.7);\n      }\n      :host([dark]) {\n        --lrnsys-dialog-toolbar-background-color: var(--simple-colors-background1);\n        --lrnsys-dialog-background-color: var(--simple-colors-background3);\n        --lrnsys-dialog-secondary-background-color: rgba(0, 0, 0, 0.7);\n      }\n    </style>\n    </custom-style>\n    <paper-button class$="[[class]]" id="dialogtrigger" on-tap="toggleDialog" raised="[[raised]]" disabled$="[[disabled]]" title="[[alt]]" aria-label$="[[alt]]">\n      <lrnsys-button-inner avatar\\$="[[avatar]]" icon$="[[icon]]" text$="[[text]]">\n        <slot name="button"></slot>\n      </lrnsys-button-inner>\n    </paper-button>\n    <paper-tooltip for="dialogtrigger" animation-delay="0" hidden$="[[!alt]]">[[alt]]</paper-tooltip>\n    <lrnsys-dialog-modal id="modal" dynamic-images="[[dynamicImages]]" body-append="[[bodyAppend]]" header="[[header]]" modal="[[modal]]" heading-class="[[headingClass]]" opened$="[[opened]]">\n      <slot name="toolbar-primary" slot="primary"></slot>\n      <slot name="toolbar-secondary" slot="secondary"></slot>\n      <slot name="header" slot="header"></slot>\n      <slot></slot>\n    </lrnsys-dialog-modal>\n'
-      ]
-    );
-    _templateObject_0d870ff0e70811e8b65bc19d0dd5f1da = function() {
+  function _templateObject_feca50c0ecf311e896b1b122e9a8e20a() {
+    var data = babelHelpers.taggedTemplateLiteral([
+      '\n    <custom-style>\n    <style is="custom-style" include="simple-colors">\n      :host {\n        display: inline-block;\n        --lrnsys-dialog-color: var(--simple-colors-foreground1,#000);\n        --lrnsys-dialog-background-color: var(--simple-colors-background1);\n        --lrnsys-dialog-toolbar-background-color: var(--simple-colors-background3);\n        --lrnsys-dialog-secondary-background-color: rgba(255,255,255, 0.7);\n      }\n      :host([dark]) {\n        --lrnsys-dialog-toolbar-background-color: var(--simple-colors-background1);\n        --lrnsys-dialog-background-color: var(--simple-colors-background3);\n        --lrnsys-dialog-secondary-background-color: rgba(0, 0, 0, 0.7);\n      }\n      #dialogtrigger {\n        display:inline-block;\n      }\n    </style>\n    </custom-style>\n    <paper-button class$="[[class]]" id="dialogtrigger" on-tap="openDialog" raised="[[raised]]" disabled$="[[disabled]]" title="[[alt]]" aria-label$="[[alt]]">\n      <lrnsys-button-inner avatar$="[[avatar]]" icon$="[[icon]]" text$="[[text]]">\n        <slot name="button" slot="button"></slot>\n      </lrnsys-button-inner>\n    </paper-button>\n    <paper-tooltip for="dialogtrigger" animation-delay="0" hidden$="[[!alt]]">[[alt]]</paper-tooltip>\n'
+    ]);
+    _templateObject_feca50c0ecf311e896b1b122e9a8e20a = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_0d870ff0e70811e8b65bc19d0dd5f1da()
+      _templateObject_feca50c0ecf311e896b1b122e9a8e20a()
     ),
     is: "lrnsys-dialog",
     listeners: {
@@ -47,14 +42,10 @@ define([
       alt: { type: String, reflectToAttribute: !0 },
       header: { type: String },
       disabled: { type: Boolean, value: !1 },
-      modal: { type: Boolean, value: !1 },
-      opened: { type: Boolean, value: !1, reflectToAttribute: !0, notify: !0 },
       hoverClass: { type: String },
       headingClass: { type: String, value: "white-text black" },
-      bodyAppend: { type: Boolean, value: !0 },
       dynamicImages: { type: Boolean, value: !1 },
-      focusState: { type: Boolean, value: !1 },
-      disableAutoFocus: { type: Boolean, value: !1 }
+      focusState: { type: Boolean, value: !1 }
     },
     tapEventOn: function tapEventOn() {
       var root = this;
@@ -78,8 +69,44 @@ define([
         });
       }
     },
-    toggleDialog: function toggleDialog() {
-      this.$.modal.toggleDialog();
+    openDialog: function openDialog() {
+      var nodes = (0, _polymerDom.dom)(this).getEffectiveChildNodes(),
+        h = document.createElement("span"),
+        c = document.createElement("span"),
+        node = {};
+      for (var i in nodes) {
+        if (babelHelpers.typeof(nodes[i].tagName) !== "undefined") {
+          switch (nodes[i].getAttribute("slot")) {
+            case "toolbar-primary":
+            case "toolbar-secondary":
+            case "toolbar":
+            case "header":
+              node = nodes[i].cloneNode(!0);
+              h.appendChild(node);
+              break;
+            case "button":
+              break;
+            default:
+              node = nodes[i].cloneNode(!0);
+              if (this.dynamicImages && "IRON-IMAGE" === node.tagName) {
+                node.preventLoad = !1;
+                node.removeAttribute("prevent-load");
+              }
+              c.appendChild(node);
+              break;
+          }
+        }
+      }
+      var evt = new CustomEvent("simple-modal-show", {
+        bubbles: !0,
+        cancelable: !0,
+        detail: {
+          title: this.header,
+          elements: { header: h, content: c },
+          invokedBy: this.$.dialogtrigger
+        }
+      });
+      this.dispatchEvent(evt);
     },
     focusToggle: function focusToggle() {
       var root = this;
@@ -99,51 +126,19 @@ define([
       root.focusState = !root.focusState;
     },
     ready: function ready() {
-      this.__modal = this.$.modal;
+      this.__modal = window.simpleModal.requestAvailability();
     },
     attached: function attached() {
-      document.body.addEventListener(
-        "lrnsys-dialog-modal-changed",
-        this._changeOpen.bind(this)
-      );
-      if (!this.disableAutoFocus) {
-        document.body.addEventListener(
-          "lrnsys-dialog-modal-closed",
-          this._accessibleFocus.bind(this)
-        );
-      }
       this.$.dialogtrigger.addEventListener(
         "focused-changed",
         this.focusToggle.bind(this)
       );
     },
     detached: function detached() {
-      document.body.removeEventListener(
-        "lrnsys-dialog-modal-changed",
-        this._changeOpen.bind(this)
-      );
-      if (!this.disableAutoFocus) {
-        document.body.removeEventListener(
-          "lrnsys-dialog-modal-closed",
-          this._accessibleFocus.bind(this)
-        );
-      }
       this.$.dialogtrigger.removeEventListener(
         "focused-changed",
         this.focusToggle.bind(this)
       );
-    },
-    _accessibleFocus: function _accessibleFocus(e) {
-      if (e.detail === this.__modal) {
-        this.$.dialogtrigger.focus();
-      }
-    },
-    _changeOpen: function _changeOpen(e) {
-      e.stopPropagation();
-      if (e.detail === this.$.modal) {
-        this.opened = "iron-overlay-opened" === e.type;
-        this.fire("lrnsys-dialog-changed", this);
-      }
     }
   });
 });

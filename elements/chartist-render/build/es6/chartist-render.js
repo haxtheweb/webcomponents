@@ -14,7 +14,7 @@ Polymer({
     <div id="chart" chart$="[[__chartId]]" class$="ct-chart [[scale]]"></div>
 `,
   is: "chartist-render",
-  listeners: { tap: "makeChart", created: "_onCreated" },
+  listeners: { tap: "makeChart" },
   properties: {
     id: { type: String, value: "chart" },
     type: { type: String, value: "bar" },
@@ -36,11 +36,14 @@ Polymer({
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load(
       name,
-      `${basePath}../../chartist/dist/chartist.min.js`
+      `${basePath}lib/chartist/dist/chartist.min.js`
     );
   },
   _chartistLoaded: function() {
     this.__chartistLoaded = !0;
+    if (this.__chartId) {
+      this._chartReady();
+    }
   },
   attached: function() {
     this.__chartId = this._getUniqueId("chartist-render-");
@@ -53,46 +56,46 @@ Polymer({
     setInterval(root._chartReady, 500);
   },
   _chartReady: function() {
-    let root = this,
-      query = '[chart="' + root.__chartId + '"]',
-      container = document.querySelector(query);
+    let container = this.$.chart;
     if (null !== container) {
-      root.fire("chartist-render-ready", this);
-      if (null !== root.data) root.makeChart();
-      clearInterval(root._checkReady);
+      this.fire("chartist-render-ready", this);
+      if (null !== this.data) this.makeChart();
+      clearInterval(this._checkReady);
     }
   },
   makeChart: function() {
     let root = this,
       chart;
     if (
+      this.__chartistLoaded &&
+      this.__chartId &&
       null !== root.data &&
-      null !== root.querySelector('[chart="' + root.__chartId + '"]')
+      null !== this.$.chart
     ) {
       if ("bar" == root.type) {
         chart = Chartist.Bar(
-          '[chart="' + root.__chartId + '"]',
+          this.$.chart,
           root.data,
           root.options,
           root.responsiveOptions
         );
       } else if ("line" == root.type) {
         chart = Chartist.Line(
-          '[chart="' + root.__chartId + '"]',
+          this.$.chart,
           root.data,
           root.options,
           root.responsiveOptions
         );
       } else if ("pie" == root.type) {
         chart = Chartist.Pie(
-          '[chart="' + root.__chartId + '"]',
+          this.$.chart,
           root.data,
           root.options,
           root.responsiveOptions
         );
       }
       root.fire("chartist-render-draw", chart);
-      chart.on("created", function() {
+      chart.on("created", () => {
         root.addA11yFeatures(chart.container.childNodes[0]);
       });
       return chart;
@@ -145,9 +148,6 @@ Polymer({
   },
   _getUniqueId(prefix) {
     let id = prefix + Date.now();
-    while (null !== document.querySelector('[chart="' + id + '"]')) {
-      id = prefix + Date.now();
-    }
     return id;
   }
 });

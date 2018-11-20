@@ -1,10 +1,33 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";export{HexagonLoader};class HexagonLoader extends PolymerElement{static get template(){return html`
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import"./node_modules/@polymer/polymer/lib/elements/dom-repeat.js";import"./lib/hex-a-gon.js";export{HexagonLoader};class HexagonLoader extends PolymerElement{static get template(){return html`
 <style>:host {
-  display: block;
+  display: none;
 }
-
 :host([hidden]) {
   display: none;
+}
+:host([loading]) {
+  display: block;
+}
+:host([size="small"]) {
+  transform: scale(.5, .5);
+  -webkit-transform: scale(.5, .5);
+  -moz-transform: scale(.5, .5);
+  -ms-transform: scale(.5, .5);
+  -o-transform: scale(.5, .5);
+}
+:host([size="large"]) {
+  transform: scale(1.25, 1.25);
+  -webkit-transform: scale(1.25, 1.25);
+  -moz-transform: scale(1.25, 1.25);
+  -ms-transform: scale(1.25, 1.25);
+  -o-transform: scale(1.25, 1.25);
+}
+:host([size="epic"]) {
+  transform: scale(2.5, 2.5);
+  -webkit-transform: scale(2.5, 2.5);
+  -moz-transform: scale(2.5, 2.5);
+  -ms-transform: scale(2.5, 2.5);
+  -o-transform: scale(2.5, 2.5);
 }
 
 div {
@@ -12,6 +35,20 @@ div {
   width: 255px;
   height: 232.5px;
   margin: 0 auto;
+}
+
+hex-a-gon {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 18px;
+  color: #9fb475;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
 }
 
 hex-a-gon:nth-of-type(1) {
@@ -371,6 +408,6 @@ hex-a-gon:nth-of-type(37) {
 }</style>
 <div>
     <template is="dom-repeat" items="[[items]]">
-        <hex-a-gon color="[[color]]"></hex-a-gon>
+        <hex-a-gon></hex-a-gon>
     </template>
-</div>`}static get properties(){return{color:{name:"color",type:"String",value:"orange"},size:{name:"size",type:"String",value:"medium"},loading:{name:"loading",type:"Boolean"},itemCount:{name:"itemCount",type:"Number",value:92}}}static get tag(){return"hexagon-loader"}connectedCallback(){super.connectedCallback()}}window.customElements.define(HexagonLoader.tag,HexagonLoader);
+</div>`}static get properties(){return{color:{name:"color",type:"String",observer:"_colorChanged",reflectToAttribute:!0},size:{name:"size",type:"String",reflectToAttribute:!0},loading:{name:"loading",type:"Boolean"},itemCount:{name:"itemCount",type:"Number",value:37}}}static get tag(){return"hexagon-loader"}connectedCallback(){super.connectedCallback();let items=[];for(var i=0;i<this.itemCount;i++){items.push("")}this.set("items",items)}_colorChanged(newValue){if(newValue){this.updateStyles({"--hexagon-color":newValue})}}}window.customElements.define(HexagonLoader.tag,HexagonLoader);

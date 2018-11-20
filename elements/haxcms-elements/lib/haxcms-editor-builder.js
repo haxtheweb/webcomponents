@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 /**
  * `haxcms-editor-builder`
  * Figure out what our context is and setup based on that
@@ -25,15 +26,27 @@ Polymer({
    */
   getContext: function() {
     let context = "";
-    window.cmsSiteEditor.tag = "haxcms-jwt";
-    // @todo add support for a demo mode tag
+    let basePath = pathFromUrl(import.meta.url);
+    // @todo add support for a demo mode as well as other context definitions
     // figure out if we need to load the PHP or beaker
     if (typeof DatArchive !== typeof undefined) {
-      this.importHref(this.resolveUrl("haxcms-beaker.html"));
+      this.importHref(basePath + "haxcms-beaker.js");
       window.cmsSiteEditor.tag = "haxcms-beaker";
+      context = "beaker";
+    } else if (window.__haxCMSContextNode === true) {
+      // @todo add support for node js based back end
+      context = "nodejs";
+      //this.importHref(basePath + "haxcms-nodejs.js");
+      //window.cmsSiteEditor.tag = "haxcms-nodejs";
+    } else if (window.__haxCMSContextDemo === true) {
+      // @todo add support for demo mode that has no real backend
+      context = "demo";
+      //this.importHref(basePath + "haxcms-demo.js");
+      //window.cmsSiteEditor.tag = "haxcms-demo";
     } else {
-      this.importHref(this.resolveUrl("haxcms-jwt.php"));
+      this.importHref(basePath + "haxcms-jwt.php");
       window.cmsSiteEditor.tag = "haxcms-jwt";
+      context = "php";
     }
     return context;
   },

@@ -1,14 +1,15 @@
 define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
+  "./node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js",
   "./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js",
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
   "./lib/juicy-ace-editor.js",
   "./lib/code-pen-button.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(_polymerLegacy, _polymerDom, _flattenedNodesObserver) {
   "use strict";
-  function _templateObject_a1133250e70611e8a653936e33520321() {
+  function _templateObject_6f19c240ecf211e89695a5d4b8d09223() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n        padding: 16px;\n        --code-pen-button-color: #222222;\n        --code-pen-title-color: #222222;\n      }\n      .code-pen-container {\n        width: 100%;\n        display: block;\n        background-color: var(--code-pen-button-color);\n        height: 40px;\n      }\n      code-pen-button {\n        float: right;\n        height: 40px;\n      }\n      h3 {\n        color: var(--code-pen-title-color);\n      }\n    </style>\n    <h3>[[title]]</h3>\n    <juicy-ace-editor id="codeeditor" theme$="[[theme]]" mode$="[[mode]]" font-size$="[[fontSize]]" readonly$="[[readOnly]]"></juicy-ace-editor>\n    <div class="code-pen-container" hidden$="[[!showCodePen]]">\n      <code-pen-button data="[[codePenData]]"></code-pen-button>\n    </div>\n'
@@ -17,14 +18,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n        padding: 16px;\n        --code-pen-button-color: #222222;\n        --code-pen-title-color: #222222;\n      }\n      .code-pen-container {\n        width: 100%;\n        display: block;\n        background-color: var(--code-pen-button-color);\n        height: 40px;\n      }\n      code-pen-button {\n        float: right;\n        height: 40px;\n      }\n      h3 {\n        color: var(--code-pen-title-color);\n      }\n    </style>\n    <h3>[[title]]</h3>\n    <juicy-ace-editor id="codeeditor" theme\\$="[[theme]]" mode\\$="[[mode]]" font-size\\$="[[fontSize]]" readonly\\$="[[readOnly]]"></juicy-ace-editor>\n    <div class="code-pen-container" hidden\\$="[[!showCodePen]]">\n      <code-pen-button data="[[codePenData]]"></code-pen-button>\n    </div>\n'
       ]
     );
-    _templateObject_a1133250e70611e8a653936e33520321 = function() {
+    _templateObject_6f19c240ecf211e89695a5d4b8d09223 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a1133250e70611e8a653936e33520321()
+      _templateObject_6f19c240ecf211e89695a5d4b8d09223()
     ),
     is: "code-editor",
     behaviors: [
@@ -76,19 +77,22 @@ define([
       }
     },
     ready: function ready() {
-      this._observer = (0, _polymerDom.dom)(this).observeNodes(function(info) {
-        var _this2 = this;
-        if (0 < info.addedNodes.length) {
-          info.addedNodes.map(function() {
-            _this2.updateEditorValue();
-          });
+      var _this2 = this;
+      this._observer = new _flattenedNodesObserver.FlattenedNodesObserver(
+        this,
+        function(info) {
+          if (0 < info.addedNodes.length) {
+            info.addedNodes.map(function() {
+              _this2.updateEditorValue();
+            });
+          }
+          if (0 < info.removedNodes.length) {
+            info.removedNodes.map(function() {
+              _this2.updateEditorValue();
+            });
+          }
         }
-        if (0 < info.removedNodes.length) {
-          info.removedNodes.map(function() {
-            _this2.updateEditorValue();
-          });
-        }
-      });
+      );
     },
     attached: function attached() {
       this.setHaxProperties({

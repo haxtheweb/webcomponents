@@ -3,6 +3,7 @@ import {
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
 import { dom } from "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "./node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { IronResizableBehavior } from "./node_modules/@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 import "./lib/data-table-column.js";
 import "./lib/data-table-column-sort.js";
@@ -193,46 +194,50 @@ Polymer({
     "_resetData(dataSource, filter.*, sortOrder.*)"
   ],
   created: function() {
-    this._observer = dom(this).observeNodes(
-      function(info) {
-        var hasColumns = function(node) {
+    this._observer = new FlattenedNodesObserver(this, info => {
+      var hasColumns = function(node) {
+        return (
+          node.nodeType === Node.ELEMENT_NODE &&
+          "DATA-TABLE-COLUMN" === node.tagName.toUpperCase()
+        );
+      };
+      if (
+        0 < info.addedNodes.filter(hasColumns).length ||
+        0 < info.removedNodes.filter(hasColumns).length
+      ) {
+        this.set(
+          "columns",
+          this.shadowRoot
+            .querySelector("[select=data-table-column]")
+            .assignedNodes({ flatten: !0 })
+            .filter(n => n.nodeType === Node.ELEMENT_NODE)
+        );
+        this.notifyResize();
+      }
+      if (
+        0 <
+        info.addedNodes.filter(function(node) {
           return (
             node.nodeType === Node.ELEMENT_NODE &&
-            "DATA-TABLE-COLUMN" === node.tagName.toUpperCase()
+            "TEMPLATE" === node.tagName.toUpperCase() &&
+            node.hasAttribute("is") &&
+            "row-detail" === node.getAttribute("is")
           );
-        };
-        if (
-          0 < info.addedNodes.filter(hasColumns).length ||
-          0 < info.removedNodes.filter(hasColumns).length
-        ) {
-          this.set(
-            "columns",
-            this.getContentChildren("[select=data-table-column]")
-          );
-          this.notifyResize();
-        }
-        if (
-          0 <
-          info.addedNodes.filter(function(node) {
-            return (
-              node.nodeType === Node.ELEMENT_NODE &&
-              "TEMPLATE" === node.tagName.toUpperCase() &&
-              node.hasAttribute("is") &&
-              "row-detail" === node.getAttribute("is")
-            );
-          }).length
-        ) {
-          this.set(
-            "rowDetail",
-            this.getContentChildren('[select="template[is=row-detail]"]')[0]
-          );
-          var parent = dom(this.rowDetail).parentNode;
-          this.rowDetail._rootDataHost = parent.dataHost
-            ? parent.dataHost._rootDataHost || parent.dataHost
-            : parent;
-        }
-      }.bind(this)
-    );
+        }).length
+      ) {
+        this.set(
+          "rowDetail",
+          this.shadowRoot
+            .querySelector('[select="template[is=row-detail]"]')
+            .assignedNodes({ flatten: !0 })
+            .filter(n => n.nodeType === Node.ELEMENT_NODE)[0]
+        );
+        var parent = dom(this.rowDetail).parentNode;
+        this.rowDetail._rootDataHost = parent.dataHost
+          ? parent.dataHost._rootDataHost || parent.dataHost
+          : parent;
+      }
+    }).bind(this);
   },
   _stopPropagation: function(e) {
     e.stopImmediatePropagation();
