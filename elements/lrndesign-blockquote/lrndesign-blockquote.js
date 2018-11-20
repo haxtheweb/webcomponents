@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
@@ -164,15 +165,11 @@ Polymer({
   _applyChikarego: function(newValue, oldValue) {
     if (newValue === true) {
       let style = document.createElement("style");
-      style.innerHTML =
-        `@font-face {
+      let basePath = pathFromUrl(import.meta.url);
+      style.innerHTML = `@font-face {
         font-family: 'Chikarego';
-        src: url('` +
-        this.resolveUrl("chikarego2-webfont.woff2") +
-        `') format('woff2'),
-             url('` +
-        this.resolveUrl("chikarego2-webfont.woff") +
-        `') format('woff');
+        src: url('${basePath}lib/chikarego2-webfont.woff2') format('woff2'),
+             url('${basePath}lib/chikarego2-webfont.woff') format('woff');
         font-weight: normal;
         font-style: normal;
       }`;

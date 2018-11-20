@@ -2,18 +2,18 @@ define(["./node_modules/@polymer/polymer/polymer-legacy.js"], function(
   _polymerLegacy
 ) {
   "use strict";
-  function _templateObject_6c548aa0e70611e89642b96c3a59be9a() {
+  function _templateObject_37c8d6f0ecf211e8b192df0b9aee0447() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n  <style>\n    :host {\n      display: block;\n    }\n  </style>\n  {{_formattedTime}}\n"
     ]);
-    _templateObject_6c548aa0e70611e89642b96c3a59be9a = function() {
+    _templateObject_37c8d6f0ecf211e8b192df0b9aee0447 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_6c548aa0e70611e89642b96c3a59be9a()
+      _templateObject_37c8d6f0ecf211e8b192df0b9aee0447()
     ),
     is: "simple-timer",
     properties: {

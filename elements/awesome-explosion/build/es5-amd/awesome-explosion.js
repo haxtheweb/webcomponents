@@ -2,18 +2,18 @@ define(["./node_modules/@polymer/polymer/polymer-legacy.js"], function(
   _polymerLegacy
 ) {
   "use strict";
-  function _templateObject_c57f57f0e70511e8a2b949fc160bb66a() {
+  function _templateObject_a32a1e00ecf111e8aeff8b1884c7ff48() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <custom-style>\n    <style is="custom-style">\n      :host {\n        display: inline-block;\n      }\n      :host([size="tiny"]) #image {\n        width: 80px;\n        height: 80px;\n      }\n      :host([size="small"]) #image {\n        width: 160px;\n        height: 160px;\n      }\n      :host([size="medium"]) #image {\n        width: 240px;\n        height: 240px;\n      }\n      :host([size="large"]) #image {\n        width: 320px;\n        height: 320px;\n      }\n      :host([size="epic"]) #image {\n        width: 720px;\n        height: 720px;\n      }\n\n      :host([color="red"]) #image {\n        filter: sepia() saturate(10000%) hue-rotate(30deg);\n      }\n      :host([color="purple"]) #image {\n        filter: sepia() saturate(10000%) hue-rotate(290deg);\n      }\n      :host([color="blue"]) #image {\n        filter: sepia() saturate(10000%) hue-rotate(210deg);\n      }\n      :host([color="orange"]) #image {\n        filter: sepia() saturate(10000%) hue-rotate(320deg);\n      }\n      :host([color="yellow"]) #image {\n        filter: sepia() saturate(10000%) hue-rotate(70deg);\n      }\n      #image {\n        width: 240px;\n        height: 240px;\n      }\n    </style>\n    </custom-style>\n    <img src="[[image]]" id="image" class="image-tag" alt="" />\n'
     ]);
-    _templateObject_c57f57f0e70511e8a2b949fc160bb66a = function() {
+    _templateObject_a32a1e00ecf111e8aeff8b1884c7ff48 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_c57f57f0e70511e8a2b949fc160bb66a()
+      _templateObject_a32a1e00ecf111e8aeff8b1884c7ff48()
     ),
     is: "awesome-explosion",
     listeners: {

@@ -10,23 +10,23 @@ define([
   "./lrnsys-drawer-modal.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_0cc03d80e70811e8b65bc19d0dd5f1da() {
+  function _templateObject_fdb36280ecf311e896b1b122e9a8e20a() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
-        '\n    <style is="custom-style" include="simple-colors">\n      :host {\n        display: block;\n        --lrnsys-drawer-color: var(--simple-colors-foreground1);\n        --lrnsys-drawer-background-color: var(--simple-colors-background1);\n      }\n      lrnsys-drawer-modal {\n        --lrnsys-drawer-width: 30%;\n      }\n    </style>\n    <paper-button class$="[[class]]" id="flyouttrigger" on-tap="toggleDrawer" raised="[[raised]]" disabled$="[[disabled]]" title="[[alt]]">\n      <lrnsys-button-inner avatar="[[avatar]]" icon="[[icon]]" text="[[text]]">\n        <slot name="button"></slot>\n      </lrnsys-button-inner>\n    </paper-button>\n    <paper-tooltip for="flyouttrigger" animation-delay="0">[[alt]]</paper-tooltip>\n    <lrnsys-drawer-modal id="modal" body-append="[[bodyAppend]]" opened="[[opened]]" align="[[align]]" header="[[header]]" heading-class="[[headingClass]]">\n      <slot name="header" slot="header"></slot>\n      <slot></slot>\n    </lrnsys-drawer-modal>\n'
+        '\n    <style is="custom-style" include="simple-colors">\n      :host {\n        display: block;\n        --lrnsys-drawer-color: var(--simple-colors-foreground1);\n        --lrnsys-drawer-background-color: var(--simple-colors-background1);\n      }\n      lrnsys-drawer-modal {\n        --lrnsys-drawer-width: 30%;\n      }\n      paper-button {\n        display:inline-block;\n      }\n    </style>\n    <paper-button class$="[[class]]" id="flyouttrigger" on-tap="toggleDrawer" raised="[[raised]]" disabled$="[[disabled]]" title="[[alt]]">\n      <lrnsys-button-inner avatar="[[avatar]]" icon="[[icon]]" text="[[text]]">\n        <slot name="button"></slot>\n      </lrnsys-button-inner>\n    </paper-button>\n    <paper-tooltip for="flyouttrigger" animation-delay="0">[[alt]]</paper-tooltip>\n    <lrnsys-drawer-modal id="modal" opened="[[opened]]" align="[[align]]" header="[[header]]" heading-class="[[headingClass]]">\n      <slot name="header" slot="header"></slot>\n      <slot></slot>\n    </lrnsys-drawer-modal>\n'
       ],
       [
-        '\n    <style is="custom-style" include="simple-colors">\n      :host {\n        display: block;\n        --lrnsys-drawer-color: var(--simple-colors-foreground1);\n        --lrnsys-drawer-background-color: var(--simple-colors-background1);\n      }\n      lrnsys-drawer-modal {\n        --lrnsys-drawer-width: 30%;\n      }\n    </style>\n    <paper-button class\\$="[[class]]" id="flyouttrigger" on-tap="toggleDrawer" raised="[[raised]]" disabled\\$="[[disabled]]" title="[[alt]]">\n      <lrnsys-button-inner avatar="[[avatar]]" icon="[[icon]]" text="[[text]]">\n        <slot name="button"></slot>\n      </lrnsys-button-inner>\n    </paper-button>\n    <paper-tooltip for="flyouttrigger" animation-delay="0">[[alt]]</paper-tooltip>\n    <lrnsys-drawer-modal id="modal" body-append="[[bodyAppend]]" opened="[[opened]]" align="[[align]]" header="[[header]]" heading-class="[[headingClass]]">\n      <slot name="header" slot="header"></slot>\n      <slot></slot>\n    </lrnsys-drawer-modal>\n'
+        '\n    <style is="custom-style" include="simple-colors">\n      :host {\n        display: block;\n        --lrnsys-drawer-color: var(--simple-colors-foreground1);\n        --lrnsys-drawer-background-color: var(--simple-colors-background1);\n      }\n      lrnsys-drawer-modal {\n        --lrnsys-drawer-width: 30%;\n      }\n      paper-button {\n        display:inline-block;\n      }\n    </style>\n    <paper-button class\\$="[[class]]" id="flyouttrigger" on-tap="toggleDrawer" raised="[[raised]]" disabled\\$="[[disabled]]" title="[[alt]]">\n      <lrnsys-button-inner avatar="[[avatar]]" icon="[[icon]]" text="[[text]]">\n        <slot name="button"></slot>\n      </lrnsys-button-inner>\n    </paper-button>\n    <paper-tooltip for="flyouttrigger" animation-delay="0">[[alt]]</paper-tooltip>\n    <lrnsys-drawer-modal id="modal" opened="[[opened]]" align="[[align]]" header="[[header]]" heading-class="[[headingClass]]">\n      <slot name="header" slot="header"></slot>\n      <slot></slot>\n    </lrnsys-drawer-modal>\n'
       ]
     );
-    _templateObject_0cc03d80e70811e8b65bc19d0dd5f1da = function() {
+    _templateObject_fdb36280ecf311e896b1b122e9a8e20a = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_0cc03d80e70811e8b65bc19d0dd5f1da()
+      _templateObject_fdb36280ecf311e896b1b122e9a8e20a()
     ),
     is: "lrnsys-drawer",
     listeners: {
@@ -47,7 +47,6 @@ define([
       disabled: { type: Boolean, value: !1, reflectToAttribute: !0 },
       hoverClass: { type: String },
       headingClass: { type: String, value: "white-text black" },
-      bodyAppend: { type: Boolean, value: !0 },
       focusState: { type: Boolean, value: !1 }
     },
     ready: function ready() {

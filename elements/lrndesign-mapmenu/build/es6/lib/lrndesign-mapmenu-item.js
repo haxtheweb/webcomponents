@@ -13,6 +13,7 @@ Polymer({
       }
       iron-icon {
         --iron-icon-height: var(--lrndesign-mapmenu-item-height);
+        display: inline-flex;
       }
     </style>
     <template is="dom-if" if="[[icon]]">

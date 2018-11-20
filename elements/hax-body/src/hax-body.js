@@ -249,7 +249,7 @@ Polymer({
   ready: function() {
     this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
     // mutation observer that ensures state of hax applied correctly
-    this._observer = FlattenedNodesObserver(this, info => {
+    this._observer = new FlattenedNodesObserver(this, info => {
       // MAKE SURE WE KNOW WHAT JUST GOT ADDED HERE
       flush();
       // if we've got new nodes, we have to react to that

@@ -3,6 +3,7 @@ import {
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
 import { dom } from "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "./node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import "./node_modules/@polymer/iron-ajax/iron-ajax.js";
 import "./node_modules/@polymer/paper-toast/paper-toast.js";
 import "./node_modules/@lrnwebcomponents/hax-body/lib/hax-store.js";
@@ -92,7 +93,7 @@ Polymer({
       window.HaxStore.write("editMode", !0, this);
     }
     if (this.syncBody) {
-      dom(this.$.body).observeNodes(function() {
+      FlattenedNodesObserver(this.$.body, () => {
         if (!this.__lock) {
           this.__lock = !0;
           this.fire(

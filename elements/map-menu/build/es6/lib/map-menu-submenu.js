@@ -4,6 +4,7 @@ import {
 } from "../node_modules/@polymer/polymer/polymer-legacy.js";
 import "./map-menu-item.js";
 import "./map-menu-header.js";
+import "../node_modules/@polymer/iron-collapse/iron-collapse.js";
 import "../node_modules/@polymer/paper-button/paper-button.js";
 Polymer({
   _template: html`
@@ -27,7 +28,7 @@ Polymer({
     </style>
     <map-menu-header avatar-label="[[avatarLabel]]" id="[[id]]" title="[[title]]" label="[[label]]" opened="[[opened]]" url="[[url]]" icon="[[icon]]"></map-menu-header>
     <iron-collapse id="container">
-      <slot id="slot"></slot>
+      <slot></slot>
     </iron-collapse>
 `,
   is: "map-menu-submenu",

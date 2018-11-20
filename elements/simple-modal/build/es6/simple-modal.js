@@ -2,14 +2,14 @@ import {
   html,
   PolymerElement
 } from "./node_modules/@polymer/polymer/polymer-element.js";
+import { dom } from "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
 import "./node_modules/@polymer/paper-dialog/paper-dialog.js";
 import "./node_modules/@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "./node_modules/@polymer/paper-button/paper-button.js";
 import "./node_modules/@polymer/iron-icons/iron-icons.js";
 import "./node_modules/@polymer/iron-icon/iron-icon.js";
 import "./node_modules/@polymer/neon-animation/animations/scale-up-animation.js";
-import "./node_modules/@polymer/neon-animation/animations/fade-out-animation.js";
-import { dom } from "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
+import "./node_modules/@polymer/neon-animation/animations/scale-down-animation.js";
 export { SimpleModal };
 class SimpleModal extends PolymerElement {
   static get template() {
@@ -42,7 +42,7 @@ class SimpleModal extends PolymerElement {
   height: 16px;
   margin-right: 2px;
 }</style>
-<paper-dialog entry-animation="scale-up-animation"
+<paper-dialog id="dialog" entry-animation="scale-up-animation"
 exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-top>
   <h2 hidden$="[[!title]]">[[title]]</h2>
   <slot name="header"></slot>
@@ -52,7 +52,7 @@ exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-
   <div class="buttons">
     <slot name="buttons"></slot>
   </div>
-  <paper-button id="close" on-tap="close"><iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]</paper-button>
+  <paper-button id="close" on-tap="close" hidden$="[[!opened]]"><iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]</paper-button>
 </paper-dialog>`;
   }
   static get properties() {
@@ -76,10 +76,18 @@ exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener("simple-modal-show", this.showEvent.bind(this));
-    this.addEventListener("transitionend", this.animationEnded.bind(this));
   }
   showEvent(e) {
-    this.show(e.detail.title, e.detail.elements, e.detail.invokedBy);
+    if (this.opened) {
+      while (null !== dom(this).firstChild) {
+        dom(this).removeChild(dom(this).firstChild);
+      }
+      setTimeout(() => {
+        this.show(e.detail.title, e.detail.elements, e.detail.invokedBy);
+      }, 100);
+    } else {
+      this.show(e.detail.title, e.detail.elements, e.detail.invokedBy);
+    }
   }
   show(title, elements, invokedBy) {
     this.set("invokedBy", invokedBy);
@@ -99,26 +107,27 @@ exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-
   animationEnded() {
     if (!this.opened) {
       if (this.invokedBy) {
-        this.invokedBy.focus();
-      }
-      this.title = "";
-      while (null !== dom(this).firstChild) {
-        dom(this).removeChild(dom(this).firstChild);
+        setTimeout(() => {
+          this.invokedBy.focus();
+          this.title = "";
+          while (null !== dom(this).firstChild) {
+            dom(this).removeChild(dom(this).firstChild);
+          }
+        }, 100);
       }
     }
   }
   close() {
-    this.opened = !1;
+    this.$.dialog.close();
   }
   _openedChanged(newValue) {
     if (typeof newValue !== typeof void 0 && !newValue) {
-      this.close();
+      this.animationEnded();
     }
   }
   disconnectedCallback() {
     super.disconnectedCallback();
     window.removeEventListener("simple-modal-show", this.showEvent.bind(this));
-    this.removeEventListener("transitionend", this.animationEnded.bind(this));
   }
 }
 window.customElements.define(SimpleModal.tag, SimpleModal);

@@ -3,18 +3,18 @@ define([
   "../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_eb3c7220e70511e885cea173bb7b18e0() {
+  function _templateObject_d33c2d90ecf111e8afe6e3e72f732a1f() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style is="custom-style">\n      :host {\n        display: flex;\n        flex-direction: column;\n        opacity: 1;\n        cursor: pointer;\n\n        @apply --iron-data-table-row;\n      }\n\n      :host([selected]) .cells {\n        @apply --iron-data-table-row-selected;\n      }\n\n      :host(:not([header])[even]) {\n        @apply --iron-data-table-row-even;\n      }\n\n      :host(:not([header]):not([even])) {\n        @apply --iron-data-table-row-odd;\n      }\n\n      :host(:focus) {\n        outline: none;\n        @apply --iron-data-table-row-focused;\n      }\n\n      :host(:not([header]):hover) {\n        @apply --iron-data-table-row-hover;\n      }\n\n      :host(:focus):after {\n        @apply --iron-data-table-row-focused-after;\n      }\n\n      :host:after {\n        @apply --iron-data-table-row-after;\n      }\n\n      .cells {\n        display: flex;\n        flex-direction: row;\n        width: 100%;\n      }\n    </style>\n    <div class="cells">\n      <slot name="data-table-checkbox"></slot>\n      <slot name="data-table-cell"></slot>\n    </div>\n    <div class="details">\n      <slot name="data-table-row-detail"></slot>\n    </div>\n'
     ]);
-    _templateObject_eb3c7220e70511e885cea173bb7b18e0 = function() {
+    _templateObject_d33c2d90ecf111e8afe6e3e72f732a1f = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_eb3c7220e70511e885cea173bb7b18e0()
+      _templateObject_d33c2d90ecf111e8afe6e3e72f732a1f()
     ),
     is: "data-table-row",
     properties: {

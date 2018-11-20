@@ -10,18 +10,18 @@ define([
   _mutableDataBehavior
 ) {
   "use strict";
-  function _templateObject_dbab00b0e70511e8a4772dedca98777d() {
+  function _templateObject_ba8286f0ecf111e8870fd574e18c710a() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <div id="dom">\n      <slot></slot>\n    </div>\n'
     ]);
-    _templateObject_dbab00b0e70511e8a4772dedca98777d = function() {
+    _templateObject_ba8286f0ecf111e8870fd574e18c710a = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_dbab00b0e70511e8a4772dedca98777d()
+      _templateObject_ba8286f0ecf111e8870fd574e18c710a()
     ),
     is: "grafitto-filter",
     behaviors: [

@@ -1,22 +1,27 @@
-<script type="module" src="../node_modules/@polymer/polymer/polymer.js"></script>
-<link rel="import" href="../haxcms-elements/haxcms-theme-behavior.html">
-<script type="module" src="schema-behaviors/schema-behaviors.js"></script>
-<link rel="import" href="../simple-colors/simple-colors.html">
-<link rel="import" href="../paper-card/paper-card.html">
-<script type="module" src="../node_modules/@polymer/paper-button/paper-button.js"></script>
-<script type="module" src="../node_modules/@polymer/iron-icons/iron-icons.js"></script>
-
-<!--
-`haxcms-dev-theme`
-A theme intended as the starting point to fork from and build new themes for HAXCMS
-which allows you to build things that just work using JSON Outline Schema as it's "backend"
-and then IF hax is around it'll show up :)
-
-@demo demo/index.html
-
--->
-<dom-module id="haxcms-dev-theme">
-  <template>
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@polymer/paper-card/paper-card.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-list/iron-list.js";
+import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "./haxcms-theme-behavior.js";
+/**
+ * `haxcms-dev-theme`
+ * `A theme intended as the starting point to fork from and build new themes for HAXCMS
+ *  which allows you to build things that just work using JSON Outline Schema as it's "backend"
+ * and then IF hax is around it'll show up :)`
+ *
+ * @demo demo/index.html
+ */
+Polymer({
+  is: "haxcms-dev-theme",
+  _template: html`
     <style is="custom-style" include="simple-colors">
       :host {
         display: block;
@@ -84,18 +89,11 @@ and then IF hax is around it'll show up :)
       </div>
     </div>
     </div>
-  </template>
-  <script type="module">
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import 'schema-behaviors/schema-behaviors.js';
-import '@polymer/paper-button/paper-button.js';
-import '@polymer/iron-icons/iron-icons.js';
-Polymer({
-  is: 'haxcms-dev-theme',
+  `,
   behaviors: [
     SchemaBehaviors.Schema,
     window.simpleColorsBehaviors,
-    HAXCMSBehaviors.Theme,
+    HAXCMSBehaviors.Theme
   ],
   properties: {
     // The behavior gives you editMode, activeItem and manifest
@@ -104,39 +102,44 @@ Polymer({
   /**
    * Ready life cycle
    */
-  ready: function () {
+  ready: function() {
     // required so that HAX is injected when available
     this.setupHAXTheme();
   },
   attached: function() {
-    this.$.list.addEventListener('tap', this._itemTapped.bind(this));
-    this.$.unset.addEventListener('tap', this._unsetTapped.bind(this));
+    this.$.list.addEventListener("tap", this._itemTapped.bind(this));
+    this.$.unset.addEventListener("tap", this._unsetTapped.bind(this));
   },
   /**
    * Detatched life cycle
    */
-  detached: function () {
+  detached: function() {
     // this helps with cleaning things up if the theme is changed
     this.setupHAXTheme(false);
-    this.$.list.removeEventListener('tap', this._itemTapped.bind(this));
-    this.$.unset.removeEventListener('tap', this._unsetTapped.bind(this));
+    this.$.list.removeEventListener("tap", this._itemTapped.bind(this));
+    this.$.unset.removeEventListener("tap", this._unsetTapped.bind(this));
   },
   /**
    * Item tapped, let's set it as active by searching the manifest array
    * Your theme is in charge of ensuring that when activeItem needs changed
    * that it ensures that happens
    */
-  _itemTapped: function (e) {
+  _itemTapped: function(e) {
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
-    var activeId = local.getAttribute('data-id');
-    if (local.tagName === 'PAPER-BUTTON' && typeof activeId !== typeof undefined) {
-      const item = this.manifest.items.filter((d, i) => {
-        if (activeId === d.id) {
-          return d;
-        }
-      }).pop();
-      this.fire('json-outline-schema-active-item-changed', item);
+    var activeId = local.getAttribute("data-id");
+    if (
+      local.tagName === "PAPER-BUTTON" &&
+      typeof activeId !== typeof undefined
+    ) {
+      const item = this.manifest.items
+        .filter((d, i) => {
+          if (activeId === d.id) {
+            return d;
+          }
+        })
+        .pop();
+      this.fire("json-outline-schema-active-item-changed", item);
       // console log these so you can debug easily as you build out
       console.log(this.manifest);
       console.log(item);
@@ -146,9 +149,7 @@ Polymer({
    * Settings activeItem to nothing will ensure that state goes back to nothing active
    * and then other options appear
    */
-  _unsetTapped: function (e) {
-    this.fire('json-outline-schema-active-item-changed', {});
-  },
+  _unsetTapped: function(e) {
+    this.fire("json-outline-schema-active-item-changed", {});
+  }
 });
-</script>
-</dom-module>

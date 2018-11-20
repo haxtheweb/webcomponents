@@ -7,18 +7,18 @@ define([
   "./node_modules/@lrnwebcomponents/lrn-icons/lrn-icons.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_fbe227d0e70711e8828fb990c674673a() {
+  function _templateObject_e6b17e00ecf311e8b6d247086b53178f() {
     var data = babelHelpers.taggedTemplateLiteral([
-      '\n    <style include="materializecss-styles">\n      :host {\n        display: block;\n      }\n      /* Example card */\n      .egletter p {\n        position: relative;\n        z-index: 3;\n        line-height: 24px;\n      }\n\n      .egletter ul {\n        position: relative;\n        z-index: 3;\n        line-height: 24px;\n      }\n\n      .egletter span {\n        font-family: cursive;\n        margin: 0 auto;\n        position: relative;\n        z-index: 3;\n        line-height: 64px;\n      }\n\n      iron-icon {\n        font-size: 16px;\n        height: 32px;\n        width: 32px;\n        margin: -16px 0 0 8px;\n      }\n\n      .icon-container {\n        float: left;\n        width: 48px;\n        height: 48px;\n        margin-right: 8px;\n      }\n\n      .egletter span {\n        line-height: 48px;\n      }\n\n      .egletter {\n        min-height: 160px;\n        padding: 12px 24px;\n        position: relative;\n        width: 80%;\n        z-index: 4;\n        margin-bottom: 48px;\n      }\n\n      .egletter:before,\n      .egletter:after {\n        content: "";\n        height: 98%;\n        position: absolute;\n        width: 100%;\n        z-index: 2;\n      }\n\n      .egletter:before {\n        background: #fafafa;\n        box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.2);\n        left: -.32px;\n        top: .32px;\n        transform: rotate(-2.5deg);\n      }\n\n      .egletter:after {\n        background: #ffffff;\n        box-shadow: 0 0 .32px rgba(0, 0, 0, 0.2);\n        right: -.32px;\n        top: 1.6px;\n        transform: rotate(1.4deg);\n      }\n    </style>\n    <div class="egletter">\n      <div class$="icon-container circle [[color]]">\n        <iron-icon icon$="[[icon]]" class$="[[textColor]]"></iron-icon>\n      </div>\n      <span>[[title]]</span>\n      <p><slot></slot></p>\n    </div>\n'
+      '\n    <style include="materializecss-styles">\n      :host {\n        display: block;\n      }\n      /* Example card */\n      .egletter p {\n        position: relative;\n        z-index: 3;\n        line-height: 24px;\n      }\n\n      .egletter ul {\n        position: relative;\n        z-index: 3;\n        line-height: 24px;\n      }\n\n      .egletter span {\n        font-family: cursive;\n        margin: 0 auto;\n        position: relative;\n        z-index: 3;\n        line-height: 64px;\n      }\n\n      iron-icon {\n        display: block;\n        font-size: 12px;\n        height: 40px;\n        width: 40px;\n        padding: 4px;\n      }\n\n      .icon-container {\n        float: left;\n        width: 48px;\n        height: 48px;\n        margin-right: 8px;\n      }\n\n      .egletter span {\n        line-height: 48px;\n      }\n\n      .egletter {\n        min-height: 160px;\n        padding: 12px 24px;\n        position: relative;\n        width: 80%;\n        z-index: 4;\n        margin-bottom: 48px;\n      }\n\n      .egletter:before,\n      .egletter:after {\n        content: "";\n        height: 98%;\n        position: absolute;\n        width: 100%;\n        z-index: -1;\n      }\n\n      .egletter:before {\n        background: #fafafa;\n        box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.2);\n        left: -.32px;\n        top: .32px;\n        transform: rotate(-2.5deg);\n      }\n\n      .egletter:after {\n        background: #ffffff;\n        box-shadow: 0 0 .32px rgba(0, 0, 0, 0.2);\n        right: -.32px;\n        top: 1.6px;\n        transform: rotate(1.4deg);\n      }\n    </style>\n    <div class="egletter">\n      <div class$="icon-container circle [[color]]">\n        <iron-icon icon="[[icon]]" class$="[[textColor]]"></iron-icon>\n      </div>\n      <span>[[title]]</span>\n      <p><slot></slot></p>\n    </div>\n'
     ]);
-    _templateObject_fbe227d0e70711e8828fb990c674673a = function() {
+    _templateObject_e6b17e00ecf311e8b6d247086b53178f = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_fbe227d0e70711e8828fb990c674673a()
+      _templateObject_e6b17e00ecf311e8b6d247086b53178f()
     ),
     is: "lrndesign-paperstack",
     behaviors: [

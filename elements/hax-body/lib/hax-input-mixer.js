@@ -22,7 +22,8 @@ required for populating input.
 */
 Polymer({
   _template: html`
-    <style>
+    <custom-style>
+    <style is="custom-style">
       :host {
         display: block;
         color: #FFFFFF;
@@ -73,6 +74,7 @@ Polymer({
         color: #FFFFFF;
       }
     </style>
+    </custom-style>
     <app-toolbar>
       <template is="dom-if" if="[[__inputselect]]">
         <span class="input-mixer-label">[[label]]</span>

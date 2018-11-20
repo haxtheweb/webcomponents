@@ -1,22 +1,31 @@
-define(["../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js"], function(
-  _polymerDom
-) {
+define([
+  "meta",
+  "../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
+  "../node_modules/@polymer/polymer/lib/utils/resolve-url.js"
+], function(meta, _polymerDom, _resolveUrl) {
   "use strict";
+  meta = babelHelpers.interopRequireWildcard(meta);
   var _Mathround = Math.round;
   window.FancyCarouselAnimationBehaviourImpl = {
     properties: { _isWorking: !1 },
     observers: [],
     _getNatureSpriteUrl: function _getNatureSpriteUrl() {
-      return "url('" + this.resolveUrl("images/nature-sprite.png") + "')";
+      var basePath = (0, _resolveUrl.pathFromUrl)(meta.url);
+      return "url('" + "".concat(basePath, "images/nature-sprite.png") + "')";
     },
     _getUrbanSpriteUrl: function _getUrbanSpriteUrl() {
-      return "url('" + this.resolveUrl("images/urban-sprite.png") + "')";
+      var basePath = (0, _resolveUrl.pathFromUrl)(meta.url);
+      return "url('" + "".concat(basePath, "images/urban-sprite.png") + "')";
     },
     _getShiftSpriteUrl: function _getShiftSpriteUrl() {
-      return "url('" + this.resolveUrl("images/building-sprite.png") + "')";
+      var basePath = (0, _resolveUrl.pathFromUrl)(meta.url);
+      return "url('" + "".concat(basePath, "images/building-sprite.png") + "')";
     },
     _getCollaspeSpriteUrl: function _getCollaspeSpriteUrl() {
-      return "url('" + this.resolveUrl("images/building-sprite-2.png") + "')";
+      var basePath = (0, _resolveUrl.pathFromUrl)(meta.url);
+      return (
+        "url('" + "".concat(basePath, "images/building-sprite-2.png") + "')"
+      );
     },
     _preloadAnimationSprites: function _preloadAnimationSprites() {
       var dummyDiv1 = document.createElement("div");

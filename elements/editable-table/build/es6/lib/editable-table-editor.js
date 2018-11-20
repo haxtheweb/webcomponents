@@ -7,7 +7,7 @@ import "../node_modules/@polymer/iron-icons/iron-icons.js";
 import "../node_modules/@polymer/paper-tooltip/paper-tooltip.js";
 import "../node_modules/@lrnwebcomponents/dropdown-select/dropdown-select.js";
 import "../node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/responsive-utility/responsive-utility-behaviors.js";
+import "../node_modules/@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
 import "../node_modules/@lrnwebcomponents/a11y-collapse/a11y-collapse.js";
 import "./editable-table-behaviors.js";
 import "./editable-table-editor-rowcol.js";

@@ -3,8 +3,10 @@ import {
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
 import { dom } from "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
+import { pathFromUrl } from "./node_modules/@polymer/polymer/lib/utils/resolve-url.js";
 import "./node_modules/@polymer/paper-button/paper-button.js";
 import "./node_modules/@polymer/iron-icons/iron-icons.js";
+import "./node_modules/@polymer/iron-icon/iron-icon.js";
 import "./node_modules/@polymer/paper-card/paper-card.js";
 import "./node_modules/@polymer/iron-ajax/iron-ajax.js";
 import "./node_modules/@polymer/paper-menu-button/paper-menu-button.js";
@@ -16,7 +18,7 @@ import "./node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-drawer.js";
 import "./node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
 import "./node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-collapselist.js";
 import "./node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-collapselist-item.js";
-import "./node_modules/ical.js/build/ical.js";
+import "./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import "./lib/lrn-calendar-date.js";
 Polymer({
   _template: html`
@@ -46,21 +48,20 @@ Polymer({
     <div class="calendar">
       <div class="header">
         <div style="float: left">
-          <paper-button raised="" type="button" on-tap="monthView">Month</paper-button>
-          <paper-button raised="" type="button" on-tap="weekView">Week</paper-button>
+          <paper-button raised type="button" on-tap="monthView">Month</paper-button>
+          <paper-button raised type="button" on-tap="weekView">Week</paper-button>
         </div>
         <div style="float: right">
-          <paper-button raised="" type="button" on-tap="showDate">Today</paper-button>
-          <paper-icon-button icon="arrow-back" on-tap="showPrev"></paper-icon-button>
-          <paper-icon-button icon="arrow-forward" on-tap="showNext"></paper-icon-button>
+          <paper-button raised type="button" on-tap="showDate">Today</paper-button>
+          <paper-button on-tap="showPrev"><iron-icon icon="arrow-back"></iron-icon></paper-button>
+          <paper-button on-tap="showNext"><iron-icon icon="arrow-forward"></iron-icon></paper-button>
         </div>
         <div style="margin: 0 auto; width: 200px; text-align: center">
           <h2>[[getDisplayDate(date)]]</h2>
         </div>
       </div>
 
-      <div class="calendarView" id="calView">
-      </div>
+      <div class="calendarView" id="calView"></div>
     </div>
 `,
   is: "lrn-calendar",
@@ -73,7 +74,7 @@ Polymer({
     file: { type: String, reflectToAttribute: !0, observer: "_fileChanged" }
   },
   _fileChanged: function(newValue) {
-    if (typeof newValue !== typeof void 0) {
+    if (typeof newValue !== typeof void 0 && this.__icalLoaded) {
       this.loadFile();
       this.getDateInfo();
       this.createCalendar();
@@ -82,7 +83,8 @@ Polymer({
   _viewTypeChanged: function(newValue) {
     if (
       typeof newValue !== typeof void 0 &&
-      typeof this.file !== typeof void 0
+      typeof this.file !== typeof void 0 &&
+      this.__icalLoaded
     ) {
       this.getDateInfo();
       this.createCalendar();
@@ -91,16 +93,38 @@ Polymer({
   _dateChanged: function(newValue) {
     if (
       typeof newValue !== typeof void 0 &&
-      typeof this.file !== typeof void 0
+      typeof this.file !== typeof void 0 &&
+      this.__icalLoaded
     ) {
       this.getDateInfo();
       this.createCalendar();
     }
   },
   _dateStringChanged: function(newValue) {
-    if (typeof newValue !== typeof void 0 && "" != newValue) {
+    if (
+      typeof newValue !== typeof void 0 &&
+      "" != newValue &&
+      this.__icalLoaded
+    ) {
       this.date = new Date(newValue);
     }
+  },
+  created: function() {
+    const name = "ical",
+      basePath = pathFromUrl(import.meta.url);
+    window.addEventListener(
+      `es-bridge-${name}-loaded`,
+      this._icalLoaded.bind(this)
+    );
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load(
+      name,
+      `${basePath}lib/ical.js/build/ical.js`
+    );
+  },
+  _icalLoaded: function() {
+    this.__icalLoaded = !0;
+    this.loadFile();
   },
   attached: function() {
     this.setHaxProperties({
@@ -283,7 +307,7 @@ Polymer({
     this.getDateInfo();
     this.totalDays = 7 * this.numweeks;
     this.calendarText = this.readTextFile(this.file);
-    this.calendarView = this.querySelector(".calendarView");
+    this.calendarView = this.$.calView;
     var days = 1,
       elem = dom(this.$.calView).node,
       elemChildren = elem.childNodes;
@@ -640,7 +664,7 @@ Polymer({
     if ("function" === typeof date.getMonth) {
       var monthInt = date.getMonth(),
         day = date.getDate();
-      monthstring =
+      return (
         [
           "January",
           "February",
@@ -656,8 +680,8 @@ Polymer({
           "December"
         ][monthInt] +
         " " +
-        date.getFullYear();
-      return monthstring;
+        date.getFullYear()
+      );
     }
     return "";
   }

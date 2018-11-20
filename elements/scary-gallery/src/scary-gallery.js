@@ -60,7 +60,7 @@ Polymer({
   observers: ["_init(minHeight, gap)"],
 
   attached: function() {
-    this._observer = FlattenedNodesObserver(this, this._init);
+    this._observer = new FlattenedNodesObserver(this, this._init);
     this._boundResize = this._resize.bind(this);
     window.addEventListener("resize", this._boundResize);
   },

@@ -3,18 +3,18 @@ define([
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_4d53e050e70711e89416efcd91eebecf() {
+  function _templateObject_18aab990ecf311e88f27b19fac81a85c() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n      * {\n        box-sizing: border-box;\n      }\n\n      figure {\n        position: relative;\n        width: 100%;\n        margin: 0;\n        padding: 0;\n\n        font-size: 20px;\n      }\n\n      img {\n        width: 100%;\n        height: auto;\n      }\n\n      .top-text,\n      .bottom-text {\n        position: absolute;\n        left: 0;\n        width: 100%;\n        padding: 3% 2%;\n\n        text-align: center;\n        text-transform: uppercase;\n        font-weight: 900;\n        font-family: "Impact", "Arial Black", "sans serif";\n        line-height: 1.2;\n\n        font-size: 36px;\n\n        color: white;\n        text-shadow:\n          -1px -1px 0 #000,\n          1px -1px 0 #000,\n          -1px 1px 0 #000,\n          1px 1px 0 #000;\n        letter-spacing: 2px;\n      }\n\n      .top-text { top: 0; }\n      .bottom-text { bottom: 0; }\n\n      @media (max-width: 600px) {\n\n        .top-text,\n        .bottom-text {\n          font-size: 20px;\n        }\n\n      }\n    </style>\n    <figure>\n      <img src="[[imageUrl]]" alt="[[alt]]">\n      <figcaption class="top-text">[[topText]]</figcaption>\n      <figcaption class="bottom-text">[[bottomText]]</figcaption>\n    </figure>\n'
     ]);
-    _templateObject_4d53e050e70711e89416efcd91eebecf = function() {
+    _templateObject_18aab990ecf311e88f27b19fac81a85c = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_4d53e050e70711e89416efcd91eebecf()
+      _templateObject_18aab990ecf311e88f27b19fac81a85c()
     ),
     is: "meme-maker",
     behaviors: [HAXBehaviors.PropertiesBehaviors],

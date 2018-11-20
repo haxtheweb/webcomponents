@@ -2,6 +2,7 @@ import {
   html,
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
+import { pathFromUrl } from "./node_modules/@polymer/polymer/lib/utils/resolve-url.js";
 import "./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
@@ -99,16 +100,12 @@ Polymer({
   },
   _applyChikarego: function(newValue) {
     if (!0 === newValue) {
-      let style = document.createElement("style");
-      style.innerHTML =
-        `@font-face {
+      let style = document.createElement("style"),
+        basePath = pathFromUrl(import.meta.url);
+      style.innerHTML = `@font-face {
         font-family: 'Chikarego';
-        src: url('` +
-        this.resolveUrl("chikarego2-webfont.woff2") +
-        `') format('woff2'),
-             url('` +
-        this.resolveUrl("chikarego2-webfont.woff") +
-        `') format('woff');
+        src: url('${basePath}lib/chikarego2-webfont.woff2') format('woff2'),
+             url('${basePath}lib/chikarego2-webfont.woff') format('woff');
         font-weight: normal;
         font-style: normal;
       }`;

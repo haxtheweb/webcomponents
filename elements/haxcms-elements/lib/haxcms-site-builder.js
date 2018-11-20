@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
@@ -103,11 +104,11 @@ Polymer({
     themeData: {
       type: Object,
       value: {
-        "outline-player": "../outline-player/outline-player.html",
-        "simple-blog": "../simple-blog/simple-blog.html",
-        "infinite-scroll-site":
-          "../infinite-scroll-site/infinite-scroll-site.html",
-        "haxcms-dev-theme": "../haxcms-elements/haxcms-dev-theme.html"
+        "outline-player":
+          "../@lrnwebcomponents/outline-player/outline-player.js",
+        "simple-blog": "../@lrnwebcomponents/simple-blog/simple-blog.js",
+        "haxcms-dev-theme":
+          "../@lrnwebcomponents/haxcms-elements/lib/haxcms-dev-theme.js"
       }
     },
     /**
@@ -365,7 +366,8 @@ Polymer({
       } else {
         // import the reference to the item dynamically, if we can
         try {
-          this.importHref(this.resolveUrl(this.themeData[themeName]), e => {
+          let basePath = pathFromUrl(import.meta.url);
+          this.importHref(basePath + this.themeData[themeName], e => {
             // add it into ourselves so it unpacks and we kick this off!
             dom(this).appendChild(this.themeElement);
             this.__imported[themeName] = themeName;

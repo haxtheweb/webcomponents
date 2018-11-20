@@ -1,23 +1,24 @@
 define([
   "../node_modules/@polymer/polymer/polymer-legacy.js",
   "../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
+  "../node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js",
   "../node_modules/@polymer/paper-button/paper-button.js",
   "./lrndesign-mapmenu-item.js",
   "./lrndesign-mapmenu-header.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(_polymerLegacy, _polymerDom, _flattenedNodesObserver) {
   "use strict";
-  function _templateObject_87e0c750e70811e8a6621dd39fb8f1b1() {
+  function _templateObject_8bddbba0ecf411e893fb0b59370b06e7() {
     var data = babelHelpers.taggedTemplateLiteral([
-      '\n    <style>\n      :host {\n        display: block;\n      }\n      :host([collapsable]) > lrndesign-mapmenu-header {\n        cursor: pointer;\n        display: block;\n      }\n      #container {\n        padding: 16px;\n      }\n      #container ::slotted(lrndesign-mapmenu-item) {\n        margin-top: .4em;\n      }\n    </style>\n    <lrndesign-mapmenu-header on-tap="_headerClickHandler" avatar-label="[[avatarLabel]]" title="[[title]]" label="[[label]]" opened="[[opened]]"></lrndesign-mapmenu-header>\n    <iron-collapse id="container">\n      <slot id="slot"></slot>\n    </iron-collapse>\n'
+      '\n    <style>\n      :host {\n        display: block;\n      }\n      :host([collapsable]) > lrndesign-mapmenu-header {\n        cursor: pointer;\n        display: block;\n      }\n      #container {\n        padding: 16px;\n      }\n      #container ::slotted(lrndesign-mapmenu-item) {\n        margin-top: 6.4px;\n      }\n    </style>\n    <lrndesign-mapmenu-header on-tap="_headerClickHandler" avatar-label="[[avatarLabel]]" title="[[title]]" label="[[label]]" opened="[[opened]]"></lrndesign-mapmenu-header>\n    <iron-collapse id="container">\n      <slot id="slot"></slot>\n    </iron-collapse>\n'
     ]);
-    _templateObject_87e0c750e70811e8a6621dd39fb8f1b1 = function() {
+    _templateObject_8bddbba0ecf411e893fb0b59370b06e7 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_87e0c750e70811e8a6621dd39fb8f1b1()
+      _templateObject_8bddbba0ecf411e893fb0b59370b06e7()
     ),
     is: "lrndesign-mapmenu-submenu",
     properties: {
@@ -41,41 +42,42 @@ define([
     },
     ready: function ready() {
       var _this = this;
-      this._observer = (0, _polymerDom.dom)(this.$.slot).observeNodes(function(
-        info
-      ) {
-        var submenus = info.addedNodes.filter(function(item) {
-          return "LRNDESIGN-MAPMENU-SUBMENU" === item.nodeName;
-        });
-        if (_this.expandChildren) {
-          var _iteratorNormalCompletion = !0,
-            _didIteratorError = !1,
-            _iteratorError = void 0;
-          try {
-            for (
-              var _iterator = submenus[Symbol.iterator](), _step, menu;
-              !(_iteratorNormalCompletion = (_step = _iterator.next()).done);
-              _iteratorNormalCompletion = !0
-            ) {
-              menu = _step.value;
-              menu.setAttribute("opened", !0);
-            }
-          } catch (err) {
-            _didIteratorError = !0;
-            _iteratorError = err;
-          } finally {
+      this._observer = new _flattenedNodesObserver.FlattenedNodesObserver(
+        this.$.slot,
+        function(info) {
+          var submenus = info.addedNodes.filter(function(item) {
+            return "LRNDESIGN-MAPMENU-SUBMENU" === item.nodeName;
+          });
+          if (_this.expandChildren) {
+            var _iteratorNormalCompletion = !0,
+              _didIteratorError = !1,
+              _iteratorError = void 0;
             try {
-              if (!_iteratorNormalCompletion && null != _iterator.return) {
-                _iterator.return();
+              for (
+                var _iterator = submenus[Symbol.iterator](), _step, menu;
+                !(_iteratorNormalCompletion = (_step = _iterator.next()).done);
+                _iteratorNormalCompletion = !0
+              ) {
+                menu = _step.value;
+                menu.setAttribute("opened", !0);
               }
+            } catch (err) {
+              _didIteratorError = !0;
+              _iteratorError = err;
             } finally {
-              if (_didIteratorError) {
-                throw _iteratorError;
+              try {
+                if (!_iteratorNormalCompletion && null != _iterator.return) {
+                  _iterator.return();
+                }
+              } finally {
+                if (_didIteratorError) {
+                  throw _iteratorError;
+                }
               }
             }
           }
         }
-      });
+      );
     }
   });
 });

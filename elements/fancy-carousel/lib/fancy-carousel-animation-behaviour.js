@@ -1,4 +1,5 @@
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 
 /** @polymerBehavior FancyCarouselAnimationBehaviour */
 window.FancyCarouselAnimationBehaviourImpl = {
@@ -9,19 +10,23 @@ window.FancyCarouselAnimationBehaviourImpl = {
   observers: [],
 
   _getNatureSpriteUrl: function() {
-    return "url('" + this.resolveUrl("images/nature-sprite.png") + "')";
+    let basePath = pathFromUrl(import.meta.url);
+    return "url('" + `${basePath}images/nature-sprite.png` + "')";
   },
 
   _getUrbanSpriteUrl: function() {
-    return "url('" + this.resolveUrl("images/urban-sprite.png") + "')";
+    let basePath = pathFromUrl(import.meta.url);
+    return "url('" + `${basePath}images/urban-sprite.png` + "')";
   },
 
   _getShiftSpriteUrl: function() {
-    return "url('" + this.resolveUrl("images/building-sprite.png") + "')";
+    let basePath = pathFromUrl(import.meta.url);
+    return "url('" + `${basePath}images/building-sprite.png` + "')";
   },
 
   _getCollaspeSpriteUrl: function() {
-    return "url('" + this.resolveUrl("images/building-sprite-2.png") + "')";
+    let basePath = pathFromUrl(import.meta.url);
+    return "url('" + `${basePath}images/building-sprite-2.png` + "')";
   },
 
   _preloadAnimationSprites: function() {

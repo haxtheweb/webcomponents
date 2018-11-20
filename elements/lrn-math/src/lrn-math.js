@@ -159,7 +159,7 @@ Polymer({
    * so that we can render it to the page.
    */
   _mathjaxLoaded: function() {
-    this._observer = FlattenedNodesObserver(this, info => {
+    this._observer = new FlattenedNodesObserver(this, info => {
       this.math = info.addedNodes.map(node => node.textContent).toString();
       window.MathJax.Hub.Config({
         skipStartupTypeset: true,

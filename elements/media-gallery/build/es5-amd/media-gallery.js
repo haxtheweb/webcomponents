@@ -5,23 +5,23 @@ define([
   "./node_modules/@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_c7f866e0e70811e8b49c059e918a6b8c() {
+  function _templateObject_dd0c0d10ecf411e8aa52d78122381ba0() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
-        '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <lrndesign-gallery accent-color$="[[accentColor]]" dark$="[[dark]]" grid$="[[grid]]" sizing$="[[sizing]]" sources$="[[sources]]" title$="[[title]]">\n      <div slot="description"><slot name="description"></slot></div>\n    </lrndesign-gallery>\n'
+        '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <lrndesign-gallery accent-color$="[[accentColor]]" dark$="[[dark]]" grid$="[[grid]]" sizing$="[[sizing]]" sources$="[[sources]]" title$="[[title]]">\n      <slot slot="description" name="description"></slot>\n    </lrndesign-gallery>\n'
       ],
       [
-        '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <lrndesign-gallery accent-color\\$="[[accentColor]]" dark\\$="[[dark]]" grid\\$="[[grid]]" sizing\\$="[[sizing]]" sources\\$="[[sources]]" title\\$="[[title]]">\n      <div slot="description"><slot name="description"></slot></div>\n    </lrndesign-gallery>\n'
+        '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <lrndesign-gallery accent-color\\$="[[accentColor]]" dark\\$="[[dark]]" grid\\$="[[grid]]" sizing\\$="[[sizing]]" sources\\$="[[sources]]" title\\$="[[title]]">\n      <slot slot="description" name="description"></slot>\n    </lrndesign-gallery>\n'
       ]
     );
-    _templateObject_c7f866e0e70811e8b49c059e918a6b8c = function() {
+    _templateObject_dd0c0d10ecf411e8aa52d78122381ba0 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_c7f866e0e70811e8b49c059e918a6b8c()
+      _templateObject_dd0c0d10ecf411e8aa52d78122381ba0()
     ),
     is: "media-gallery",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

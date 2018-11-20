@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import "./lib/scary-image.js";
 /**
 `<scary-gallery>` will (try to) layout any of its `<scary-image>` children
@@ -59,7 +60,7 @@ Polymer({
   observers: ["_init(minHeight, gap)"],
 
   attached: function() {
-    this._observer = dom(this).observeNodes(this._init);
+    this._observer = new FlattenedNodesObserver(this, this._init);
     this._boundResize = this._resize.bind(this);
     window.addEventListener("resize", this._boundResize);
   },

@@ -8,7 +8,7 @@ import "./node_modules/@polymer/app-layout/app-header/app-header.js";
 import "./node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "./node_modules/@polymer/iron-flex-layout/iron-flex-layout.js";
 import "./node_modules/@polymer/iron-icons/iron-icons.js";
-import "./node_modules/@polymer/paper-icon-button/paper-icon-button.js";
+import "./node_modules/@polymer/iron-icon/iron-icon.js";
 import "./node_modules/@polymer/paper-button/paper-button.js";
 import "./node_modules/@polymer/paper-toast/paper-toast.js";
 import "./node_modules/@polymer/iron-ajax/iron-ajax.js";
@@ -27,19 +27,33 @@ Polymer({
         --game-show-text-color: #ffffff;
       }
       app-toolbar {
-        background-color: #4285f4;
-        color: #fff;
+        background-color: var(--game-show-bg-color, blue);
+        color: var(--game-show-text-color, white);
         font-size: 24px;
+        display: flex;
+      }
+      iron-icon {
+        display: inline-block;
       }
 
-      paper-icon-button {
-        --paper-icon-button-ink-color: white;
+      paper-button {
+        --paper-button-ink-color: var(--game-show-bg-color, blue);
+        text-transform: none;
+        display: block;
       }
-      paper-icon-button + [main-title] {
+      #helpbutton {
+        text-align: center;
+        padding: 8px;
+        font-size: 12px;
+        vertical-align: middle;
+        display: inline-flex;
+      }
+      paper-button + [main-title] {
         margin-left: 24px;
+        display: inline-flex;
       }
       app-header {
-        color: #fff;
+        color: var(--game-show-text-color, white);
         --app-header-background-rear-layer: {
           background-color: #ef6c00;
         };
@@ -88,11 +102,12 @@ Polymer({
         app-toolbar {
           font-size: 14px;
         }
-        paper-icon-button {
+        paper-button {
           padding: 0;
           margin: 0;
           width: 16px;
           height: 16px;
+          min-width: unset;
         }
         .grid-button {
           font-size: 9px;
@@ -101,6 +116,7 @@ Polymer({
           width: 24px;
           height: 24px;
           opacity: 1;
+          display: inline-block;
         }
         .row-0 paper-button[disabled] {
           font-weight: bold;
@@ -110,7 +126,7 @@ Polymer({
     </style>
     <app-header>
       <app-toolbar>
-        <paper-icon-button id="helpbutton" icon="help" onclick="directions.toggle()"></paper-icon-button>
+        <paper-button id="helpbutton" on-tap="directionsToggle"><iron-icon icon="help"></iron-icon> Directions</paper-button>
         <div main-title="">[[title]]</div>
       </app-toolbar>
     </app-header>
@@ -175,7 +191,7 @@ Polymer({
     <game-show-quiz-modal id="dialog" title="[[activeQuestion.title]]">
       <iron-image slot="content" style="min-width:100px; width:100%; min-height:25vh; height:40vh; background-color: lightgray;" sizing="contain" preload="" src\$="[[activeQuestion.image]]"></iron-image>
       <multiple-choice disabled\$="[[activeQuestion.submitted]]" slot="content" id="question" hide-buttons="" title="[[activeQuestion.title]]" answers="[[activeQuestion.data]]"></multiple-choice>
-      <paper-button slot="buttons" hidden\$="[[activeQuestion.submitted]]" id="submit" raised="" disabled\$="[[__submitDisabled]]">Submit answer <iron-icon hidden\$="[[__submitDisabled]]" icon="icons:touch-app"></iron-icon></paper-button>
+      <paper-button slot="buttons" hidden\$="[[activeQuestion.submitted]]" id="submit" raised="" disabled\$="[[__submitDisabled]]">Submit answer <iron-icon hidden$="[[__submitDisabled]]" icon="icons:touch-app"></iron-icon></paper-button>
       <paper-button slot="buttons" id="continue" hidden\$="[[!activeQuestion.submitted]]" dialog-confirm="" raised="">Continue <iron-icon icon="icons:arrow-forward"></iron-icon></paper-button>
     </game-show-quiz-modal>
     <iron-ajax auto="" id="gamedata" url="[[gameData]]" handle-as="json" last-response="{{gameBoard}}"></iron-ajax>
@@ -201,6 +217,9 @@ Polymer({
     gameBoard: { type: Array, observer: "_gameBoardChanged" },
     gameData: { type: String },
     activeQuestion: { type: Object }
+  },
+  directionsToggle: function() {
+    this.$.directions.toggle();
   },
   continueGameTap: function() {
     if (
@@ -290,8 +309,6 @@ Polymer({
     this.$.helpbutton.focus();
   },
   attached: function() {
-    document.body.appendChild(this.$.dialog);
-    document.body.appendChild(this.$.directions);
     this.setHaxProperties({
       canScale: !0,
       canPosition: !0,

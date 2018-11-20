@@ -393,7 +393,10 @@ Polymer({
    * Load and attach items from the app store.
    */
   _loadAppStoreData: function(appDataResponse, haxAutoloader) {
-    if (typeof appDataResponse !== typeof undefined) {
+    if (
+      typeof appDataResponse !== typeof undefined &&
+      appDataResponse != null
+    ) {
       // autoload elements
       if (typeof appDataResponse.autoloader !== typeof undefined) {
         for (var i = 0; i < appDataResponse.autoloader.length; i++) {
@@ -1399,8 +1402,7 @@ Polymer({
             typeof e.target.parentElement !== typeof undefined &&
             e.target.parentElement.tagName === "HAX-AUTOLOADER"
           ) {
-            // @todo weird error but might just be aframe specific
-            dom(e.target.parentElement).removeChild(e.target);
+            dom(this.haxAutoloader).removeChild(e.target);
           }
         }
         this.set("elementList." + e.detail.tag, e.detail.properties);

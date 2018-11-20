@@ -5,18 +5,18 @@ define([
   "./node_modules/@polymer/paper-tooltip/paper-tooltip.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_09a05550e70711e8bc47ab183ee1d2a6() {
+  function _templateObject_ce914db0ecf211e881a9cff6d6031e31() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n        --lrndesign-drawer-width: 30%;\n      }\n      app-header {\n        z-index: 100;\n      }\n      app-drawer {\n        --app-drawer-width: var(--lrndesign-drawer-width);\n        --app-drawer-content-container: {\n          padding: 16px;\n          overflow-y: scroll;\n          margin-top: 112px;\n        }\n      }\n    </style>\n    <app-header>\n      <app-drawer opened="{{opened}}" align="{{align}}">\n        <slot></slot>\n      </app-drawer>\n    </app-header>\n    <paper-icon-button icon="[[icon]]" alt="[[alt]]" id="flyout-drawer"></paper-icon-button>\n    <paper-tooltip for="flyout-drawer">[[alt]]</paper-tooltip>\n'
     ]);
-    _templateObject_09a05550e70711e8bc47ab183ee1d2a6 = function() {
+    _templateObject_ce914db0ecf211e881a9cff6d6031e31 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_09a05550e70711e8bc47ab183ee1d2a6()
+      _templateObject_ce914db0ecf211e881a9cff6d6031e31()
     ),
     is: "lrndesign-drawer",
     properties: {

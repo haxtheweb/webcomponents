@@ -6,11 +6,11 @@ define([
   "../node_modules/@polymer/paper-styles/typography.js"
 ], function(_polymerLegacy, _ironFlexLayoutClasses, _appLocalizeBehavior) {
   "use strict";
-  function _templateObject_fc202d20e70511e886e6093a9ece0d4a() {
+  function _templateObject_d6fbf4b0ecf111e88a0b4725ebfbecff() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style is="custom-style" include="iron-flex iron-flex-alignment">\n      paper-input {\n        padding: 2px;\n        --paper-input-container-label: {\n          white-space: normal;\n          position: static;\n          font-size: 16px;\n          color: #212121;\n        }\n        --paper-input-container: {\n          width: 100%;\n        };\n        --paper-input-container-input: {\n          background-color: transparent;\n          border: none;\n        };\n        --paper-input-container-shared-input-style: {\n          width: 100%;\n          background-color: transparent;\n          border: none;\n        };\n      }\n    </style>\n    <paper-input id="input" class="flex" value="{{value}}" auto-validate></paper-input>  \n'
     ]);
-    _templateObject_fc202d20e70511e886e6093a9ece0d4a = function() {
+    _templateObject_d6fbf4b0ecf111e88a0b4725ebfbecff = function() {
       return data;
     };
     return data;
@@ -18,7 +18,7 @@ define([
   (0, _polymerLegacy.Polymer)({
     is: "eco-json-schema-input",
     _template: (0, _polymerLegacy.html)(
-      _templateObject_fc202d20e70511e886e6093a9ece0d4a()
+      _templateObject_d6fbf4b0ecf111e88a0b4725ebfbecff()
     ),
     behaviors: [_appLocalizeBehavior.AppLocalizeBehavior],
     properties: {

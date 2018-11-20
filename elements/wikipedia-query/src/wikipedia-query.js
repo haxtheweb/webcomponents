@@ -167,18 +167,20 @@ Polymer({
    */
   handleResponse: function(response) {
     // the key of pages is a number so need to look for it
-    for (var key in this.searchResponse.query.pages) {
-      // skip anything that's prototype object
-      if (!this.searchResponse.query.pages.hasOwnProperty(key)) continue;
-      // load object response
-      var obj = this.searchResponse.query.pages[key];
-      let html = obj.extract;
-      html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
-      html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
-      html = html.replace(/<style[\s\S]*?>/gi, "&lt;style&gt;");
-      html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
-      // need to innerHTML this or it won't set
-      this.$.result.innerHTML = html;
+    if (typeof this.searchResponse !== typeof undefined) {
+      for (var key in this.searchResponse.query.pages) {
+        // skip anything that's prototype object
+        if (!this.searchResponse.query.pages.hasOwnProperty(key)) continue;
+        // load object response
+        var obj = this.searchResponse.query.pages[key];
+        let html = obj.extract;
+        html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
+        html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
+        html = html.replace(/<style[\s\S]*?>/gi, "&lt;style&gt;");
+        html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
+        // need to innerHTML this or it won't set
+        this.$.result.innerHTML = html;
+      }
     }
   }
 });

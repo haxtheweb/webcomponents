@@ -319,7 +319,7 @@ Polymer({
       return;
     }
     // find the template, just the 1st time though
-    this._userTemplate = this.queryEffectiveChildren("template");
+    this._userTemplate = this.querySelector("template");
     // if we didn't find one we need to tell devs that this is a problem
     if (!this._userTemplate) {
       console.warn(
@@ -333,7 +333,7 @@ Polymer({
     // set filtered to whatever it is to start
     this.__clone[this.as] = filtered;
     // stamp this into itself...weird I know
-    dom(this).appendChild(this.__clone);
+    dom(this).appendChild(this.__clone.root);
   },
 
   /**

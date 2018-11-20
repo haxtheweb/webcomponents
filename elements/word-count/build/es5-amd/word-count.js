@@ -1,20 +1,21 @@
 define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
-  "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js"
-], function(_polymerLegacy, _polymerDom) {
+  "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
+  "./node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js"
+], function(_polymerLegacy, _polymerDom, _flattenedNodesObserver) {
   "use strict";
-  function _templateObject_726805c0e70611e89eff25f06be6a026() {
+  function _templateObject_3edfb850ecf211e8abf0b10e4831ec67() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n      :host {\n        display: block;\n        --word-count-color: #888888;\n        --word-count-color-hover: #000000;\n      }\n      :host:after{\n        content: attr(words-text);\n        font-size: 10px;\n        position: relative;\n        transition: .3s font-size,color ease;\n        display: flex;\n        line-height: 16px;\n        flex-direction: row-reverse;\n        margin: 12px;\n        color: var(--word-count-color);\n        @apply --word-count-text;\n      }\n      :host(:hover):after {\n        font-size: 12px;\n        font-weight: bold;\n        color: var(--word-count-color-hover);\n        @apply --word-count-text-hover;\n      }\n      :host(:focus):after {\n        font-size: 12px;\n        font-weight: bold;\n        color: var(--word-count-color-hover);\n        @apply --word-count-text-hover;\n      }\n      :host(:active):after {\n        font-size: 12px;\n        font-weight: bold;\n        color: var(--word-count-color-hover);\n        @apply --word-count-text-hover;\n      }\n    </style>\n    <slot></slot>\n"
     ]);
-    _templateObject_726805c0e70611e89eff25f06be6a026 = function() {
+    _templateObject_3edfb850ecf211e8abf0b10e4831ec67 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_726805c0e70611e89eff25f06be6a026()
+      _templateObject_3edfb850ecf211e8abf0b10e4831ec67()
     ),
     is: "word-count",
     hostAttributes: { tabindex: "0" },
@@ -28,11 +29,15 @@ define([
       }
     },
     ready: function ready() {
-      this._observer = (0, _polymerDom.dom)(this).observeNodes(function(info) {
-        if (0 < info.addedNodes.length || 0 < info.removedNodes.length) {
-          this._updateWords();
+      var _this = this;
+      this._observer = new _flattenedNodesObserver.FlattenedNodesObserver(
+        this,
+        function(info) {
+          if (0 < info.addedNodes.length || 0 < info.removedNodes.length) {
+            _this._updateWords();
+          }
         }
-      });
+      );
     },
     _updateWords: function _updateWords() {
       if ("" !== (0, _polymerDom.dom)(this).textContent) {

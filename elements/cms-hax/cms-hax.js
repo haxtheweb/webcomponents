@@ -1,7 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@lrnwebcomponents/hax-body/lib/hax-store.js";

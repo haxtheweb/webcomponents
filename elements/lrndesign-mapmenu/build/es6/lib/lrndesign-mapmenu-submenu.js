@@ -3,6 +3,7 @@ import {
   Polymer
 } from "../node_modules/@polymer/polymer/polymer-legacy.js";
 import { dom } from "../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "../node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import "../node_modules/@polymer/paper-button/paper-button.js";
 import "./lrndesign-mapmenu-item.js";
 import "./lrndesign-mapmenu-header.js";
@@ -20,7 +21,7 @@ Polymer({
         padding: 16px;
       }
       #container ::slotted(lrndesign-mapmenu-item) {
-        margin-top: .4em;
+        margin-top: 6.4px;
       }
     </style>
     <lrndesign-mapmenu-header on-tap="_headerClickHandler" avatar-label="[[avatarLabel]]" title="[[title]]" label="[[label]]" opened="[[opened]]"></lrndesign-mapmenu-header>
@@ -49,7 +50,7 @@ Polymer({
     }
   },
   ready: function() {
-    this._observer = dom(this.$.slot).observeNodes(info => {
+    this._observer = new FlattenedNodesObserver(this.$.slot, info => {
       var submenus = info.addedNodes.filter(
         item => "LRNDESIGN-MAPMENU-SUBMENU" === item.nodeName
       );

@@ -6,21 +6,21 @@ define([
 ], function(meta, _polymerLegacy, _esGlobalBridge, _resolveUrl) {
   "use strict";
   meta = babelHelpers.interopRequireWildcard(meta);
-  function _templateObject_9580b3e0e70611e8964e7dcde794843d() {
+  function _templateObject_637653e0ecf211e88d8d4f01df174690() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <div id="chart" chart$="[[__chartId]]" class$="ct-chart [[scale]]"></div>\n'
     ]);
-    _templateObject_9580b3e0e70611e8964e7dcde794843d = function() {
+    _templateObject_637653e0ecf211e88d8d4f01df174690 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_9580b3e0e70611e8964e7dcde794843d()
+      _templateObject_637653e0ecf211e88d8d4f01df174690()
     ),
     is: "chartist-render",
-    listeners: { tap: "makeChart", created: "_onCreated" },
+    listeners: { tap: "makeChart" },
     properties: {
       id: { type: String, value: "chart" },
       type: { type: String, value: "bar" },
@@ -35,7 +35,7 @@ define([
     created: function created() {
       var name = "chartist",
         basePath = (0, _resolveUrl.pathFromUrl)(meta.url),
-        location = "".concat(basePath, "../../chartist/dist/chartist.min.js");
+        location = "".concat(basePath, "lib/chartist/dist/chartist.min.js");
       window.addEventListener(
         "es-bridge-".concat(name, "-loaded"),
         this._chartistLoaded.bind(this)
@@ -45,6 +45,9 @@ define([
     },
     _chartistLoaded: function _chartistLoaded() {
       this.__chartistLoaded = !0;
+      if (this.__chartId) {
+        this._chartReady();
+      }
     },
     attached: function attached() {
       this.__chartId = this._getUniqueId("chartist-render-");
@@ -57,39 +60,39 @@ define([
       setInterval(root._chartReady, 500);
     },
     _chartReady: function _chartReady() {
-      var root = this,
-        query = '[chart="' + root.__chartId + '"]',
-        container = document.querySelector(query);
+      var container = this.$.chart;
       if (null !== container) {
-        root.fire("chartist-render-ready", this);
-        if (null !== root.data) root.makeChart();
-        clearInterval(root._checkReady);
+        this.fire("chartist-render-ready", this);
+        if (null !== this.data) this.makeChart();
+        clearInterval(this._checkReady);
       }
     },
     makeChart: function makeChart() {
       var root = this,
         chart;
       if (
+        this.__chartistLoaded &&
+        this.__chartId &&
         null !== root.data &&
-        null !== root.querySelector('[chart="' + root.__chartId + '"]')
+        null !== this.$.chart
       ) {
         if ("bar" == root.type) {
           chart = Chartist.Bar(
-            '[chart="' + root.__chartId + '"]',
+            this.$.chart,
             root.data,
             root.options,
             root.responsiveOptions
           );
         } else if ("line" == root.type) {
           chart = Chartist.Line(
-            '[chart="' + root.__chartId + '"]',
+            this.$.chart,
             root.data,
             root.options,
             root.responsiveOptions
           );
         } else if ("pie" == root.type) {
           chart = Chartist.Pie(
-            '[chart="' + root.__chartId + '"]',
+            this.$.chart,
             root.data,
             root.options,
             root.responsiveOptions
@@ -153,9 +156,6 @@ define([
     },
     _getUniqueId: function _getUniqueId(prefix) {
       var id = prefix + Date.now();
-      while (null !== document.querySelector('[chart="' + id + '"]')) {
-        id = prefix + Date.now();
-      }
       return id;
     }
   });

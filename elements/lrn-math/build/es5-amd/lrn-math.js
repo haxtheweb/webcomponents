@@ -2,24 +2,31 @@ define([
   "meta",
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
+  "./node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js",
   "./node_modules/@polymer/polymer/lib/utils/resolve-url.js",
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
   "./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js"
-], function(meta, _polymerLegacy, _polymerDom, _resolveUrl) {
+], function(
+  meta,
+  _polymerLegacy,
+  _polymerDom,
+  _flattenedNodesObserver,
+  _resolveUrl
+) {
   "use strict";
   meta = babelHelpers.interopRequireWildcard(meta);
-  function _templateObject_ed4481b0e70611e8b982d53f73cae3da() {
+  function _templateObject_afb16740ecf211e8a37a7f3d38ed91b5() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n       :host {\n        display: inline;\n      }\n    </style>\n    [[prefix]] [[math]] [[suffix]]\n"
     ]);
-    _templateObject_ed4481b0e70611e8b982d53f73cae3da = function() {
+    _templateObject_afb16740ecf211e8a37a7f3d38ed91b5 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_ed4481b0e70611e8b982d53f73cae3da()
+      _templateObject_afb16740ecf211e8a37a7f3d38ed91b5()
     ),
     is: "lrn-math",
     behaviors: [HAXBehaviors.PropertiesBehaviors],
@@ -106,20 +113,23 @@ define([
     },
     _mathjaxLoaded: function _mathjaxLoaded() {
       var _this = this;
-      this._observer = (0, _polymerDom.dom)(this).observeNodes(function(info) {
-        _this.math = info.addedNodes
-          .map(function(node) {
-            return node.textContent;
-          })
-          .toString();
-        window.MathJax.Hub.Config({
-          skipStartupTypeset: !0,
-          jax: ["input/TeX", "output/HTML-CSS"],
-          messageStyle: "none",
-          tex2jax: { preview: "none" }
-        });
-        window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, "lrn-math"]);
-      });
+      this._observer = new _flattenedNodesObserver.FlattenedNodesObserver(
+        this,
+        function(info) {
+          _this.math = info.addedNodes
+            .map(function(node) {
+              return node.textContent;
+            })
+            .toString();
+          window.MathJax.Hub.Config({
+            skipStartupTypeset: !0,
+            jax: ["input/TeX", "output/HTML-CSS"],
+            messageStyle: "none",
+            tex2jax: { preview: "none" }
+          });
+          window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, "lrn-math"]);
+        }
+      );
     }
   });
 });

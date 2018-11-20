@@ -7,7 +7,7 @@ define([
   "./a11y-media-transcript-cue.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_82472200e70611e89fc38fd9bed061c6() {
+  function _templateObject_4effae20ecf211e8a12d29d64f8163fd() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style is="custom-style">\n      :host {\n        display: block;\n        padding: 15px;\n        color: var(--a11y-media-transcript-color);\n        background-color: var(--a11y-media-transcript-bg-color);\n      }\n\n      :host([hidden]) {\n        display: none;\n      }\n      :host #inner {\n        width: 100%;\n        display: none;\n      }\n      :host #inner[active] {\n        display: table;\n        width: 100%;\n      }\n      :host #inner[active][hideTimestamps] {\n        display: block;\n      }\n      :host .sr-only:not(:focus) {\n        position: absolute;\n        left: -99999;\n        top: 0;\n        height: 0;\n        width: 0;\n        overflow: hidden;\n      }\n      @media print {\n        :host {\n          padding: 0 15px 5px;\n          color: #000;\n          background-color: #ffffff;\n          border-top: 1px solid #aaa;\n        }\n      }\n    </style>\n    <a id="transcript-desc" href="#bottom" class="sr-only">[[skipTranscriptLink]]</a>\n    <template id="tracks" is="dom-repeat" items="{{tracks}}" as="track">\n      <div id="inner" class="transcript-from-track" lang="{{track.language}}" active$="[[track.active]]">\n        <template is="dom-repeat" items="{{track.cues}}" as="cue">\n          <a11y-media-transcript-cue accent-color$="[[accentColor]]" active-cues$="[[activeCues]]" controls$="[[mediaId]]" cue$="{{cue}}" disabled$="[[disableInteractive]]" disable-search$="[[disableSearch]]" hide-timestamps$="[[hideTimestamps]]" order$="{{cue.order}}" role="button" search="[[search]]" tabindex="0">\n          </a11y-media-transcript-cue>\n        </template>\n      </div>\n    </template>\n    <div id="bottom" class="sr-only"></div>\n'
@@ -16,14 +16,14 @@ define([
         '\n    <style is="custom-style">\n      :host {\n        display: block;\n        padding: 15px;\n        color: var(--a11y-media-transcript-color);\n        background-color: var(--a11y-media-transcript-bg-color);\n      }\n\n      :host([hidden]) {\n        display: none;\n      }\n      :host #inner {\n        width: 100%;\n        display: none;\n      }\n      :host #inner[active] {\n        display: table;\n        width: 100%;\n      }\n      :host #inner[active][hideTimestamps] {\n        display: block;\n      }\n      :host .sr-only:not(:focus) {\n        position: absolute;\n        left: -99999;\n        top: 0;\n        height: 0;\n        width: 0;\n        overflow: hidden;\n      }\n      @media print {\n        :host {\n          padding: 0 15px 5px;\n          color: #000;\n          background-color: #ffffff;\n          border-top: 1px solid #aaa;\n        }\n      }\n    </style>\n    <a id="transcript-desc" href="#bottom" class="sr-only">[[skipTranscriptLink]]</a>\n    <template id="tracks" is="dom-repeat" items="{{tracks}}" as="track">\n      <div id="inner" class="transcript-from-track" lang="{{track.language}}" active\\$="[[track.active]]">\n        <template is="dom-repeat" items="{{track.cues}}" as="cue">\n          <a11y-media-transcript-cue accent-color\\$="[[accentColor]]" active-cues\\$="[[activeCues]]" controls\\$="[[mediaId]]" cue\\$="{{cue}}" disabled\\$="[[disableInteractive]]" disable-search\\$="[[disableSearch]]" hide-timestamps\\$="[[hideTimestamps]]" order\\$="{{cue.order}}" role="button" search="[[search]]" tabindex="0">\n          </a11y-media-transcript-cue>\n        </template>\n      </div>\n    </template>\n    <div id="bottom" class="sr-only"></div>\n'
       ]
     );
-    _templateObject_82472200e70611e89fc38fd9bed061c6 = function() {
+    _templateObject_4effae20ecf211e8a12d29d64f8163fd = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_82472200e70611e89fc38fd9bed061c6()
+      _templateObject_4effae20ecf211e8a12d29d64f8163fd()
     ),
     is: "a11y-media-transcript",
     listeners: { "cue-seek": "_onCueSeek" },

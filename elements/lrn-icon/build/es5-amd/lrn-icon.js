@@ -6,18 +6,18 @@ define([
   "./node_modules/@lrnwebcomponents/lrn-shared-styles/lrn-shared-styles.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_e7bfb200e70611e89aca1bd088f588bb() {
+  function _templateObject_ac405c60ecf211e88f30ad740e403874() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style include="lrn-shared-styles">\n      :host {\n        position: relative;\n\n        vertical-align: middle;\n\n        fill: var(--lrn-icon-fill-color, currentcolor);\n        stroke: var(--lrn-icon-stroke-color, none);\n\n        width: var(--lrn-icon-width, 24px);\n        height: var(--lrn-icon-height, 24px);\n        @apply --layout-inline;\n        @apply --layout-center-center;\n        @apply --lrn-icon;\n      }\n    </style>\n    <iron-icon icon$="[[icon]]"></iron-icon>\n'
     ]);
-    _templateObject_e7bfb200e70611e89aca1bd088f588bb = function() {
+    _templateObject_ac405c60ecf211e88f30ad740e403874 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_e7bfb200e70611e89aca1bd088f588bb()
+      _templateObject_ac405c60ecf211e88f30ad740e403874()
     ),
     is: "lrn-icon",
     properties: {

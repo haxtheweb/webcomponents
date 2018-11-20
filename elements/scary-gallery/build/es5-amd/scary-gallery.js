@@ -1,21 +1,22 @@
 define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
+  "./node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js",
   "./lib/scary-image.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(_polymerLegacy, _polymerDom, _flattenedNodesObserver) {
   "use strict";
-  function _templateObject_8a1a3200e70711e884dec924ade13ffa() {
+  function _templateObject_5f92e2b0ecf311e8b2eba3f380c9791f() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n      :host {\n        width: 100%;\n        display: flex;\n        flex-wrap: wrap;\n      }\n    </style>\n    <slot></slot>\n"
     ]);
-    _templateObject_8a1a3200e70711e884dec924ade13ffa = function() {
+    _templateObject_5f92e2b0ecf311e8b2eba3f380c9791f = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_8a1a3200e70711e884dec924ade13ffa()
+      _templateObject_5f92e2b0ecf311e8b2eba3f380c9791f()
     ),
     is: "scary-gallery",
     properties: {
@@ -24,7 +25,10 @@ define([
     },
     observers: ["_init(minHeight, gap)"],
     attached: function attached() {
-      this._observer = (0, _polymerDom.dom)(this).observeNodes(this._init);
+      this._observer = new _flattenedNodesObserver.FlattenedNodesObserver(
+        this,
+        this._init
+      );
       this._boundResize = this._resize.bind(this);
       window.addEventListener("resize", this._boundResize);
     },

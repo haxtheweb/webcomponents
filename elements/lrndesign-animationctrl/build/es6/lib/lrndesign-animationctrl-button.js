@@ -2,8 +2,8 @@ import {
   html,
   Polymer
 } from "../node_modules/@polymer/polymer/polymer-legacy.js";
-import "@polymer/paper-button/paper-button.js";
-import "../node_modules/@lrnwebcomponents/lrn-icons/lrn-icons.js";
+import "../node_modules/@polymer/paper-button/paper-button.js";
+import "../node_modules/@polymer/iron-icon/iron-icon.js";
 Polymer({
   _template: html`
     <style>
@@ -13,23 +13,25 @@ Polymer({
       paper-button {
         @apply --animationctrl-button;
       }
+      iron-icon {
+        display: inline-flex;
+      }
+      :host iron-icon[hidden] {
+        display: none;
+      }
     </style>
-    <paper-button raised="" id="[[name]]">
+    <paper-button raised="" id="[[name]]" on-tap="_tap">
       [[name]] 
-      <template is="dom-if" if="[[icon]]">
-        <lrn-icon icon="[[icon]]"></lrn-icon>
-      </template>
+      <iron-icon icon="[[icon]]" hidden$="[[!icon]]"></iron-icon>
     </paper-button>
 `,
   is: "lrndesign-animationctrl-button",
-  properties: { name: String, icon: String },
-  ready: function() {
-    var root = this;
-    root.shadowRoot
-      .querySelector("paper-button")
-      .addEventListener("click", function(e) {
-        e.preventDefault();
-        root.fire("lrndesign-animationctrl-click", { button: root.name });
-      });
+  properties: {
+    name: { type: String, value: "buttonid" },
+    icon: { type: String, value: !1 }
+  },
+  _tap: function(e) {
+    e.preventDefault();
+    this.fire("lrndesign-animationctrl-click", { button: this.name });
   }
 });

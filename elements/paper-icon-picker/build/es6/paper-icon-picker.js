@@ -11,7 +11,7 @@ import "./node_modules/@polymer/paper-listbox/paper-listbox.js";
 import "./node_modules/@polymer/paper-menu-button/paper-menu-button.js";
 import "./node_modules/@polymer/iron-list/iron-list.js";
 import "./node_modules/@polymer/iron-icon/iron-icon.js";
-import "./node_modules/@polymer/iron-meta/iron-meta.js";
+import { IronMeta } from "./node_modules/@polymer/iron-meta/iron-meta.js";
 import "./node_modules/@polymer/neon-animation/neon-animation.js";
 import "./node_modules/@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "./node_modules/@polymer/paper-tooltip/paper-tooltip.js";
@@ -39,7 +39,7 @@ Polymer({
         margin: 0;
         cursor: pointer;
         font-size: 0;
-        position: relative;
+        position: absolute;
       }
       .icon iron-icon {
         width: var(--paper-icon-picker-icon-size, 26px);
@@ -189,7 +189,9 @@ Polymer({
   },
   _onOpen: function() {
     setTimeout(() => {
-      this.shadowRoot.querySelector("paper-item").focus();
+      try {
+        this.shadowRoot.querySelector("paper-item").focus();
+      } catch (error) {}
     }, 500);
   },
   close: function() {
@@ -224,8 +226,13 @@ Polymer({
     this._renderedIcons = !1;
   },
   attached: function() {
-    const iconSets = document.createElement("iron-meta", { type: "iconset" });
-    if (0 === this.iconList.length && iconSets.list && iconSets.list.length) {
+    const iconSets = new IronMeta({ type: "iconset" });
+    if (
+      0 === this.iconList.length &&
+      typeof iconSets !== typeof void 0 &&
+      iconSets.list &&
+      iconSets.list.length
+    ) {
       var iconList = [],
         index = 0;
       iconSets.list.forEach(function(item) {

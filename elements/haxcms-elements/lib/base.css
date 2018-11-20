@@ -1,0 +1,34 @@
+body,html {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+h1 {
+  font-size: 3em;
+  line-height: 1em;
+}
+h2 {
+  font-size: 2em;
+}
+h3 {
+  font-size: 1.75em;
+}
+p {
+  line-height: 26px;
+  min-height: 26px;
+}
+a, a:visited, a:active {
+  color: #000;
+}
+a:hover {
+  color: #2196f3;
+}
+ul li {
+  padding-bottom: 1.5em;
+  line-height: 1.5;
+  color: #424242;
+  max-width: 28em;
+}
+ul li:last-child {
+  padding-bottom: 1em;
+}

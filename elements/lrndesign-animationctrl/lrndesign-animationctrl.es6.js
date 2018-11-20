@@ -13,7 +13,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         align-items: stretch;
         @apply --animationctrl-buttons;
       }
-      :host ::shadow lrndesign-animationctrl-button {
+      :host .buttons ::slotted(*) {
         display: flex;
       }
     </style>

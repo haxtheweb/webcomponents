@@ -86,7 +86,7 @@ Polymer({
     window.ESGlobalBridge.requestAvailability();
     window.ESGlobalBridge.instance.load(
       name,
-      `${basePath}../../openseadragon/build/openseadragon/openseadragon.js`
+      `${basePath}lib/openseadragon/build/openseadragon/openseadragon.js`
     );
   },
   _openseadragonLoaded: function() {

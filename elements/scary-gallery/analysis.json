@@ -650,11 +650,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 44,
+              "line": 45,
               "column": 4
             },
             "end": {
-              "line": 47,
+              "line": 48,
               "column": 5
             }
           },
@@ -672,11 +672,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 52,
+              "line": 53,
               "column": 4
             },
             "end": {
-              "line": 55,
+              "line": 56,
               "column": 5
             }
           },
@@ -695,11 +695,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 60,
+              "line": 61,
               "column": 2
             },
             "end": {
-              "line": 64,
+              "line": 65,
               "column": 3
             }
           },
@@ -715,11 +715,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 66,
+              "line": 67,
               "column": 2
             },
             "end": {
-              "line": 69,
+              "line": 70,
               "column": 3
             }
           },
@@ -735,11 +735,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 71,
+              "line": 72,
               "column": 2
             },
             "end": {
-              "line": 83,
+              "line": 84,
               "column": 3
             }
           },
@@ -755,11 +755,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 85,
+              "line": 86,
               "column": 2
             },
             "end": {
-              "line": 156,
+              "line": 157,
               "column": 3
             }
           },
@@ -780,11 +780,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 26,
+          "line": 27,
           "column": 8
         },
         "end": {
-          "line": 157,
+          "line": 158,
           "column": 1
         }
       },
@@ -796,11 +796,11 @@
           "description": "Minimum height of photos, unless they are too wide to fit.",
           "sourceRange": {
             "start": {
-              "line": 44,
+              "line": 45,
               "column": 4
             },
             "end": {
-              "line": 47,
+              "line": 48,
               "column": 5
             }
           },
@@ -812,11 +812,11 @@
           "description": "Spacing between the images in pixels",
           "sourceRange": {
             "start": {
-              "line": 52,
+              "line": 53,
               "column": 4
             },
             "end": {
-              "line": 55,
+              "line": 56,
               "column": 5
             }
           },

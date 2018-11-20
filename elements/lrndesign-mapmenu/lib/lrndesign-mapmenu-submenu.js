@@ -68,7 +68,7 @@ Polymer({
   },
 
   ready: function() {
-    this._observer = FlattenedNodesObserver(this.$.slot, info => {
+    this._observer = new FlattenedNodesObserver(this.$.slot, info => {
       var submenus = info.addedNodes.filter(
         item => item.nodeName === "LRNDESIGN-MAPMENU-SUBMENU"
       );

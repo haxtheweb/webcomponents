@@ -5,7 +5,7 @@ import {
 import "../node_modules/@lrnwebcomponents/dropdown-select/dropdown-select.js";
 import "../node_modules/@polymer/paper-item/paper-item.js";
 import "../node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/responsive-utility/responsive-utility-behaviors.js";
+import "../node_modules/@lrnwebcomponents/responsive-utility/lib/responsive-utility-behaviors.js";
 import "./editable-table-behaviors.js";
 import "./editable-table-sort.js";
 import "./editable-table-filter.js";

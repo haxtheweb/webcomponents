@@ -6,18 +6,18 @@ define([
   "./lib/simple-concept-network-node.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_26f587a0e70811e8baf669d449468a6a() {
+  function _templateObject_12e6a180ecf411e89f614780ca4671ec() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style include="materializecss-styles">\n      :host {\n        display: block;\n      }\n      :host([visualization="network"]) simple-concept-network-node {\n        position: relative;\n      }\n      :host([visualization="network"]) simple-concept-network-node:nth-child(1) {\n        top: 150px;\n        left: 176px;\n      }\n      :host([visualization="network"]) simple-concept-network-node:nth-child(2) {\n        top: 0px;\n        left: 60px;\n      }\n      :host([visualization="network"]) simple-concept-network-node:nth-child(3) {\n        top: 75px;\n        left: 60px;\n      }\n      :host([visualization="network"]) simple-concept-network-node:nth-child(4) {\n        top: 230px;\n        left: -56px;\n      }\n      :host([visualization="network"]) simple-concept-network-node:nth-child(5) {\n        top: 300px;\n        left: -282px;\n      }\n      :host([visualization="network"]) simple-concept-network-node:nth-child(6) {\n        top: 230px;\n        left: -515px;\n      }\n      :host([visualization="network"]) simple-concept-network-node:nth-child(7) {\n        top: 75px;\n        left: -630px;\n      }\n      :host([visualization="network"]) {\n        display: block;\n        min-height: 450px;\n      }\n    </style>\n    <template is="dom-repeat" items="[[nodes]]" as="node">\n      <simple-concept-network-node visualization="[[visualization]]" src="[[node.src]]" icon="[[node.icon]]" icon-color="[[node.iconColor]]" image="[[node.image]]" label="[[node.label]]" color="[[node.color]]" disabled="[[node.disabled]]"></simple-concept-network-node>\n    </template>\n'
     ]);
-    _templateObject_26f587a0e70811e8baf669d449468a6a = function() {
+    _templateObject_12e6a180ecf411e89f614780ca4671ec = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_26f587a0e70811e8baf669d449468a6a()
+      _templateObject_12e6a180ecf411e89f614780ca4671ec()
     ),
     is: "simple-concept-network",
     behaviors: [

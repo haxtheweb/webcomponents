@@ -35,10 +35,11 @@ Polymer({
       }
 
       iron-icon {
-        font-size: 16px;
-        height: 32px;
-        width: 32px;
-        margin: -16px 0 0 8px;
+        display: block;
+        font-size: 12px;
+        height: 40px;
+        width: 40px;
+        padding: 4px;
       }
 
       .icon-container {
@@ -67,7 +68,7 @@ Polymer({
         height: 98%;
         position: absolute;
         width: 100%;
-        z-index: 2;
+        z-index: -1;
       }
 
       .egletter:before {
@@ -88,7 +89,7 @@ Polymer({
     </style>
     <div class="egletter">
       <div class$="icon-container circle [[color]]">
-        <iron-icon icon$="[[icon]]" class$="[[textColor]]"></iron-icon>
+        <iron-icon icon="[[icon]]" class$="[[textColor]]"></iron-icon>
       </div>
       <span>[[title]]</span>
       <p><slot></slot></p>

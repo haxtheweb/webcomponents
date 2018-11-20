@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-button/paper-button.js";

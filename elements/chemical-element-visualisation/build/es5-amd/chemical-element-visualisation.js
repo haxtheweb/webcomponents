@@ -4,7 +4,7 @@ define([
   "./node_modules/@polymer/neon-animation/neon-animation.js"
 ], function(_polymerElement) {
   "use strict";
-  function _templateObject_c87e6720e70511e8bbb38d569211b87d() {
+  function _templateObject_a7e13d70ecf111e8bedb3746750df7d8() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <custom-style>\n      <style>\n\n        .alkali-metal           { fill: var(--alkali-metal-primary-color, #ff8a65);           }\n        .alkaline-earth-metal   { fill: var(--alkaline-earth-metal-primary-color, #ffb74d);   }\n        .transition-metal       { fill: var(--transition-metal-primary-color, #ffd54f);       }\n        .post-transition-metal  { fill: var(--post-transition-metal-primary-color, #dce775);  }\n        .metalloid              { fill: var(--metalloid-primary-color, #aed581);              }\n        .other-nonmetal         { fill: var(--other-nonmetal-primary-color, #4db6ac);         }\n        .halogen                { fill: var(--halogen-primary-color, #4dd0e1);                }\n        .noble-gas              { fill: var(--noble-gas-primary-color, #4fc3f7);              }\n        .lanthanide             { fill: var(--lanthanide-primary-color, #9575cd);             }\n        .actinide               { fill: var(--actinide-primary-color, #f06292);               }\n\n        .ring\n        {\n          fill: none;\n          stroke: #ddd;\n        }\n\n        .electron\n        {\n          fill: #888;\n        }\n\n        .electron-background\n        {\n          fill: #fff;\n        }\n\n        .s-group-electron { fill: var(--s-group-electron-color, #2196f3); }\n        .p-group-electron { fill: var(--p-group-electron-color, #ff9800); }\n        .d-group-electron { fill: var(--d-group-electron-color, #4caf50); }\n        .f-group-electron { fill: var(--f-group-electron-color, #e91e63); }\n\n      </style>\n    </custom-style>\n    <svg id="element" version="1.1" viewBox="0 0 500 500">\n      <title>An animation of the chemical element [[_element.name]].</title>\n      <circle cx$="[[_divide(500, 2)]]" cy$="[[_divide(500, 2)]]" r$="[[_divide(500, 10)]]" class$="[[_element.group]]"></circle>\n      <g id="ring-group"></g>\n      <g id="electron-group"></g>\n    </svg>\n    <paper-tooltip for="element" position="bottom" animation-delay="0">\n      [[_element.name]]\n    </paper-tooltip>\n'
@@ -13,7 +13,7 @@ define([
         '\n    <custom-style>\n      <style>\n\n        .alkali-metal           { fill: var(--alkali-metal-primary-color, #ff8a65);           }\n        .alkaline-earth-metal   { fill: var(--alkaline-earth-metal-primary-color, #ffb74d);   }\n        .transition-metal       { fill: var(--transition-metal-primary-color, #ffd54f);       }\n        .post-transition-metal  { fill: var(--post-transition-metal-primary-color, #dce775);  }\n        .metalloid              { fill: var(--metalloid-primary-color, #aed581);              }\n        .other-nonmetal         { fill: var(--other-nonmetal-primary-color, #4db6ac);         }\n        .halogen                { fill: var(--halogen-primary-color, #4dd0e1);                }\n        .noble-gas              { fill: var(--noble-gas-primary-color, #4fc3f7);              }\n        .lanthanide             { fill: var(--lanthanide-primary-color, #9575cd);             }\n        .actinide               { fill: var(--actinide-primary-color, #f06292);               }\n\n        .ring\n        {\n          fill: none;\n          stroke: #ddd;\n        }\n\n        .electron\n        {\n          fill: #888;\n        }\n\n        .electron-background\n        {\n          fill: #fff;\n        }\n\n        .s-group-electron { fill: var(--s-group-electron-color, #2196f3); }\n        .p-group-electron { fill: var(--p-group-electron-color, #ff9800); }\n        .d-group-electron { fill: var(--d-group-electron-color, #4caf50); }\n        .f-group-electron { fill: var(--f-group-electron-color, #e91e63); }\n\n      </style>\n    </custom-style>\n    <svg id="element" version="1.1" viewBox="0 0 500 500">\n      <title>An animation of the chemical element [[_element.name]].</title>\n      <circle cx\\$="[[_divide(500, 2)]]" cy\\$="[[_divide(500, 2)]]" r\\$="[[_divide(500, 10)]]" class\\$="[[_element.group]]"></circle>\n      <g id="ring-group"></g>\n      <g id="electron-group"></g>\n    </svg>\n    <paper-tooltip for="element" position="bottom" animation-delay="0">\n      [[_element.name]]\n    </paper-tooltip>\n'
       ]
     );
-    _templateObject_c87e6720e70511e8bbb38d569211b87d = function() {
+    _templateObject_a7e13d70ecf111e8bedb3746750df7d8 = function() {
       return data;
     };
     return data;
@@ -25,7 +25,7 @@ define([
         key: "template",
         get: function get() {
           return (0, _polymerElement.html)(
-            _templateObject_c87e6720e70511e8bbb38d569211b87d()
+            _templateObject_a7e13d70ecf111e8bedb3746750df7d8()
           );
         }
       },

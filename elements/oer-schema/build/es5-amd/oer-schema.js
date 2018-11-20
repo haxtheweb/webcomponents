@@ -4,7 +4,7 @@ define([
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_50fbb2a0e70711e88fc7f367ff38096b() {
+  function _templateObject_1eee9380ecf311e89a18b508bb93cec9() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: inline-block;\n      }\n    </style>\n    <link property="oer:forComponent" content$="[[relatedResource]]">\n    <span property$="oer:[[oerProperty]]">\n      <slot></slot>\n      [[text]]\n    </span>\n'
@@ -13,14 +13,14 @@ define([
         '\n    <style>\n      :host {\n        display: inline-block;\n      }\n    </style>\n    <link property="oer:forComponent" content\\$="[[relatedResource]]">\n    <span property\\$="oer:[[oerProperty]]">\n      <slot></slot>\n      [[text]]\n    </span>\n'
       ]
     );
-    _templateObject_50fbb2a0e70711e88fc7f367ff38096b = function() {
+    _templateObject_1eee9380ecf311e89a18b508bb93cec9 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_50fbb2a0e70711e88fc7f367ff38096b()
+      _templateObject_1eee9380ecf311e89a18b508bb93cec9()
     ),
     is: "oer-schema",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

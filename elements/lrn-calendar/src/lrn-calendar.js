@@ -183,7 +183,9 @@ Polymer({
    */
   _icalLoaded: function() {
     this.__icalLoaded = true;
-    this.loadFile();
+    if (typeof this.file !== typeof undefined) {
+      this.loadFile();
+    }
   },
   /**
    * Attached lifecycle.

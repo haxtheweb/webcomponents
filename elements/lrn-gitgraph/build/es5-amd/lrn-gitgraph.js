@@ -3,18 +3,18 @@ define([
   "./lib/gitgraph.js/src/gitgraph.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_050083e0e70611e89fdd579c9b905a9a() {
+  function _templateObject_e3f86360ecf111e8b7c90984a6304f17() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n        overflow-x: scroll;\n      }\n    </style>\n    <canvas id="gitGraph"></canvas>\n'
     ]);
-    _templateObject_050083e0e70611e89fdd579c9b905a9a = function() {
+    _templateObject_e3f86360ecf111e8b7c90984a6304f17 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_050083e0e70611e89fdd579c9b905a9a()
+      _templateObject_e3f86360ecf111e8b7c90984a6304f17()
     ),
     is: "lrn-gitgraph",
     properties: {

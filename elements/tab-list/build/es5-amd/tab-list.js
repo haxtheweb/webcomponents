@@ -5,18 +5,18 @@ define([
   "./node_modules/@polymer/paper-tabs/paper-tab.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_97921240e70711e8b81c117cfb61bc23() {
+  function _templateObject_7018c640ecf311e897f0e76ddcd22341() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n        margin: 0 auto;\n        list-style: none;\n        display: flex;\n        padding: 16px;\n        border-bottom: 1px solid black;\n      }\n      paper-tab a {\n        text-decoration: none;\n      }\n      paper-button {\n        text-transform: unset;\n      }\n    </style>\n    <paper-tabs>\n      <template is="dom-repeat" items="[[tabs]]" as="tab">\n        <paper-tab><a target="_blank" href="[[tab.link]]" tabindex="-1"><paper-button raised>[[tab.label]]</paper-button></a></paper-tab>\n      </template>\n    </paper-tabs>\n'
     ]);
-    _templateObject_97921240e70711e8b81c117cfb61bc23 = function() {
+    _templateObject_7018c640ecf311e897f0e76ddcd22341 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_97921240e70711e8b81c117cfb61bc23()
+      _templateObject_7018c640ecf311e897f0e76ddcd22341()
     ),
     is: "tab-list",
     behaviors: [HAXBehaviors.PropertiesBehaviors],

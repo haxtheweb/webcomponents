@@ -173,9 +173,9 @@ Polymer({
     this.$.hdetails.querySelector("#title").innerHTML = details.getAttribute(
       "label"
     );
-    this.$.hdetails.querySelector("#desc").innerHTML = details.querySelector(
-      "#desc"
-    ).innerHTML;
+    this.$.desc.appendChild(
+      document.createTextNode(details.querySelector("#desc").innerHTML)
+    );
     this.$.hdetails.positionTarget = hotspot;
     this.__activeHotspot = hotspot;
     this.$.hdetails.open();

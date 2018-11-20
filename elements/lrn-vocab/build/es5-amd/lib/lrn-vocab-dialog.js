@@ -6,18 +6,18 @@ define([
   "../node_modules/@polymer/paper-icon-button/paper-icon-button.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_660be3d0e70811e8b789ebb7ca0e6841() {
+  function _templateObject_5e776b20ecf411e8b02b971101da7279() {
     var data = babelHelpers.taggedTemplateLiteral([
-      '\n        <style>\n          :host {\n            display: block;\n            position: relative;\n          }\n          paper-dialog {\n            display: block;\n            margin: auto;\n            width: 80%;\n            height: auto;\n            z-index: 1000;\n          }\n          .close_button {\n            display: flex;\n            flex-direction: row-reverse;\n            margin-top: 0;\n            background-color: #20427b;\n            color: #fff;\n            padding: 8px;\n          }\n        </style>\n        <paper-dialog id="dialog" with-backdrop="" opened="{{opened}}">\n          <div class="close_button">\n            <paper-icon-button icon="cancel" dialog-dismiss=""></paper-icon-button>\n          </div>\n          <paper-dialog-scrollable>\n            <slot></slot>\n          </paper-dialog-scrollable>\n        </paper-dialog>\n'
+      '\n        <style>\n          :host {\n            display: block;\n            position: relative;\n          }\n          paper-dialog {\n            display: block;\n            margin: auto;\n            width: 80%;\n            height: auto;\n            z-index: 1000;\n          }\n          .top {\n            display: flex;\n            margin-top: 0;\n            justify-content: space-between;\n            background-color: #20427b;\n            color: #fff;\n            padding: 8px 16px;\n          }\n          .top h2 {\n            margin: 8px;\n            font-size: 40px;\n          }\n          .top paper-icon-button {\n            margin: 8px;\n            padding: 2px;\n          }\n        </style>\n        <paper-dialog id="dialog" with-backdrop opened="{{opened}}">\n          <div class="top">\n            <h2>[[term]]</h2>\n            <paper-icon-button icon="cancel" dialog-dismiss=""></paper-icon-button>\n          </div>\n          <paper-dialog-scrollable>\n            <slot></slot>\n          </paper-dialog-scrollable>\n        </paper-dialog>\n'
     ]);
-    _templateObject_660be3d0e70811e8b789ebb7ca0e6841 = function() {
+    _templateObject_5e776b20ecf411e8b02b971101da7279 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_660be3d0e70811e8b789ebb7ca0e6841()
+      _templateObject_5e776b20ecf411e8b02b971101da7279()
     ),
     is: "lrn-vocab-dialog",
     listeners: {
@@ -25,12 +25,9 @@ define([
       "iron-overlay-opened": "_resizeContent",
       "iron-overlay-canceled": "_changeOpen"
     },
-    properties: { opened: { type: Boolean, value: !1, notify: !0 } },
-    attached: function attached() {
-      if (this.bodyAppend && !this._bodyAppended) {
-        this._bodyAppended = !0;
-        document.body.appendChild(this);
-      }
+    properties: {
+      opened: { type: Boolean, value: !1, notify: !0 },
+      term: { type: String }
     },
     _modalClosed: function _modalClosed(e) {
       this._changeOpen(e);

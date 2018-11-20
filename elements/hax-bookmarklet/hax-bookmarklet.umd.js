@@ -1,2 +1,42 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(require("@polymer/polymer/polymer-legacy.js"),require("@lrnwebcomponents/cms-hax/cms-hax.js")):"function"==typeof define&&define.amd?define(["@polymer/polymer/polymer-legacy.js","@lrnwebcomponents/cms-hax/cms-hax.js"],t):t(e.polymerLegacy_js)}(this,function(e){"use strict";function t(){var e,o,n=(e=['\n    <style>\n      :host {\n        display: block;\n        font-size: 16px;\n      }\n    </style>\n    <cms-hax open-default="" app-store-connection="[[storeData]]" body-offset-left="">\n    <template><slot></slot></template>\n    </cms-hax>\n'],o||(o=e.slice(0)),Object.freeze(Object.defineProperties(e,{raw:{value:Object.freeze(o)}})));return t=function(){return n},n}e.Polymer({_template:e.html(t()),is:"hax-bookmarklet",properties:{storeData:{type:Object}},ready:function(){var e={url:this.resolveUrl("appstore.json")};this.storeData=e}})});
-//# sourceMappingURL=hax-bookmarklet.umd.js.map
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import "@lrnwebcomponents/cms-hax/cms-hax.js";
+/**
+ * `hax-bookmarklet`
+ * `Pure, Evil.`
+ * 
+ * @demo ../../demo/index.html
+ */
+Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: block;
+        font-size: 16px;
+      }
+    </style>
+    <cms-hax open-default="" app-store-connection="[[storeData]]" body-offset-left="">
+    <template><slot></slot></template>
+    </cms-hax>
+`,
+
+  is: "hax-bookmarklet",
+
+  properties: {
+    /**
+     * Store data with path resolved.
+     */
+    storeData: {
+      type: Object
+    }
+  },
+  /**
+   * ready life cycle
+   */
+  ready: function() {
+    let json = {
+      url: pathFromUrl(import.meta.url) + "appstore.json"
+    };
+    this.storeData = json;
+  }
+});

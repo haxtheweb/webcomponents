@@ -13,7 +13,7 @@ Polymer({
       #container {
         padding: 16px 32px;
       }
-      :host > ::shadow map-menu-submenu + map-menu-submenu {
+      :host > ::slotted(map-menu-submenu + map-menu-submenu) {
         margin-top: 16px;
       }
     </style>

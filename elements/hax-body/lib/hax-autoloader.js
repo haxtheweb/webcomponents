@@ -47,7 +47,7 @@ Polymer({
    */
   ready: function() {
     // notice elements when they update
-    this._observer = FlattenedNodesObserver(this, info => {
+    this._observer = new FlattenedNodesObserver(this, info => {
       // if we've got new nodes, we have to react to that
       if (info.addedNodes.length > 0) {
         this.processNewElements(info.addedNodes);
@@ -90,26 +90,6 @@ Polymer({
    * Hack to replace importHref from Polymer 1 that TYPICALLY will work in ESM
    */
   importHref: function(url) {
-    return new Promise((resolve, reject) => {
-      const script = document.createElement("script");
-      const tempGlobal =
-        "__tempModuleLoadingVariable" +
-        Math.random()
-          .toString(32)
-          .substring(2);
-      script.type = "module";
-      script.textContent = `import * as m from "${url}"; window.${tempGlobal} = m;`;
-      script.onload = () => {
-        resolve(window[tempGlobal]);
-        delete window[tempGlobal];
-        script.remove();
-      };
-      script.onerror = () => {
-        reject(new Error("Failed to load module script with URL " + url));
-        delete window[tempGlobal];
-        script.remove();
-      };
-      document.documentElement.appendChild(script);
-    });
+    import(url);
   }
 });

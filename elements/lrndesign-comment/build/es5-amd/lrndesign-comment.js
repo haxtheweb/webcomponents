@@ -4,7 +4,7 @@ define([
   "./node_modules/time-elements/dist/time-elements.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_5bdb8d70e70811e8a23ef183bdf25fa1() {
+  function _templateObject_50c010e0ecf411e8bb31a9e8c82b5f60() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n      .comment-left {\n        float: left;\n        display: inline-block;\n      }\n      .comment-right {\n        display: inline-block;\n      }\n    </style>\n    <div class="comment-container">\n      <div class="comment-left">\n        <lrndesign-avatar></lrndesign-avatar>\n      </div>\n      <div class="comment-right">\n        <div class="row-1">\n          <span>{{name}}</span>\n          <relative-time datetime$="{{date}}">\n          </relative-time>\n        </div>\n        <div class="row-2">\n          <slot></slot>\n        </div>\n        <div class="row-3">\n          {{links}}\n        </div>\n      </div>\n    </div>\n'
@@ -13,14 +13,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n      .comment-left {\n        float: left;\n        display: inline-block;\n      }\n      .comment-right {\n        display: inline-block;\n      }\n    </style>\n    <div class="comment-container">\n      <div class="comment-left">\n        <lrndesign-avatar></lrndesign-avatar>\n      </div>\n      <div class="comment-right">\n        <div class="row-1">\n          <span>{{name}}</span>\n          <relative-time datetime\\$="{{date}}">\n          </relative-time>\n        </div>\n        <div class="row-2">\n          <slot></slot>\n        </div>\n        <div class="row-3">\n          {{links}}\n        </div>\n      </div>\n    </div>\n'
       ]
     );
-    _templateObject_5bdb8d70e70811e8a23ef183bdf25fa1 = function() {
+    _templateObject_50c010e0ecf411e8bb31a9e8c82b5f60 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_5bdb8d70e70811e8a23ef183bdf25fa1()
+      _templateObject_50c010e0ecf411e8bb31a9e8c82b5f60()
     ),
     is: "lrndesign-comment",
     properties: {

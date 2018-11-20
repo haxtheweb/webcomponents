@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
 import "@polymer/iron-ajax/iron-ajax.js";
@@ -431,7 +432,7 @@ Polymer({
           try {
             this.__processedList[tag] = tag;
             this.importHref(
-              this.resolveUrl(`../${tag}/${tag}.html`),
+              pathFromUrl(import.meta.url) + `../${tag}/${tag}.js`,
               e => {
                 //e.target.import
               },
