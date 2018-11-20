@@ -8,25 +8,30 @@ import { SimpleColors } from "../simple-colors.js"; //import the shared styles
 export { SimpleColorsDemoChild };
 /**
  * `simple-colors-demo-child`
- * `testing css variables`
+ * `used inside simple-colors-demo to demontrate how nested elements use simple-colors as behaviors`
  *
  * @microcopy - language worth noting:
  *  -
  *
  * @customElement
+ * @see "./simple-colors-child.js"
+ * @see "../simple-colors.js"
  * @polymer
  */
 class SimpleColorsDemoChild extends SimpleColors {
   // render function
   static get template() {
     return html`
-<style is="custom-style" include="simple-colors-shared-styles">
+<style is="custom-style" include="simple-colors">
 :host {
   background-color: var(--simple-colors-default-theme-accent-1); 
   color: var(--simple-colors-default-theme-grey-12); 
   border: 1px solid var(--simple-colors-default-theme-accent-3); 
   padding: 15px 30px;
   display: block;
+}
+:host([hidden]){
+  display: none;
 }</style>
 <slot></slot>`;
   }
@@ -36,7 +41,9 @@ class SimpleColorsDemoChild extends SimpleColors {
     return {};
   }
 
-  // properties available to the custom element for data binding
+  /**
+   * gets simple-colors behaviors
+   */
   static get behaviors() {
     return [SimpleColors];
   }

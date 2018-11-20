@@ -15,14 +15,15 @@ export { SimpleColorsDemoTable };
  *
  * @customElement
  * @polymer
- * @demo colors.html
+ * @see "../simple-colors.js"
+ * @demo demo/colors.html
  */
 class SimpleColorsDemoTable extends SimpleColors {
-  // render function
+  //render function
   static get template() {
     let table = this.getTable();
     return html`
-<style is="custom-style" include="simple-colors-shared-styles">
+<style is="custom-style" include="simple-colors">
   :host {
     display: block;
     margin: 15px 0;
@@ -52,16 +53,24 @@ class SimpleColorsDemoTable extends SimpleColors {
 ${table}`;
   }
 
-  // properties available to the custom element for data binding
+  /**
+   * properties available to the custom element for data binding
+   */
+
   static get properties() {
     return {};
   }
 
-  // properties available to the custom element for data binding
+  /**
+   * gets simple-colors behaviors
+   */
   static get behaviors() {
     return [SimpleColors];
   }
 
+  /**
+   * builds the table for the template
+   */
   static getTable() {
     let template = document.createElement("template"),
       table = ['<table border-spacing="0">'],

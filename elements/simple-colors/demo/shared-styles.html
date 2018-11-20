@@ -8,8 +8,6 @@
     <script type="module">
       import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
       import '../simple-colors.js';
-      import './simple-colors-demo.js';
-      import './simple-colors-demo-table.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
       div {
@@ -24,35 +22,29 @@
       <p>
         You can use the shared styles as a stylesheet
       </p>
-      <h2>simple-colors classes</h2>
+      <h2>Default (light) theme and accent, using classes</h2>
       <demo-snippet>
-        <simple-colors-demo>
-          <div class="simple-colors-light-theme-accent-1 simple-colors-light-theme-accent-3-border">
-            Tip: Here is something you should know.
-          </div>
-          <div class="simple-colors-light-theme-amber-1 simple-colors-light-theme-amber-3-border">
-              Warning: Something might happen.
-          </div>
-          <div class="simple-colors-light-theme-red-1 simple-colors-light-theme-red-3-border">
-              Alert! Something catastrophic happened.
-          </div>
-        </simple-colors-demo>
         <template>
           <style is="custom-style" include="simple-colors">
             div {
               border-width: 2px;
             }
           </style>
+          <simple-colors>
+            <div class="simple-colors-light-theme-accent-1 simple-colors-light-theme-accent-3-border">
+              Tip: Here is something you should know.
+            </div>
+            <div class="simple-colors-light-theme-amber-1 simple-colors-light-theme-amber-3-border">
+                Warning: Something might happen.
+            </div>
+            <div class="simple-colors-light-theme-red-1 simple-colors-light-theme-red-3-border">
+                Alert! Something catastrophic happened.
+            </div>
+          </simple-colors>
         </template>
       </demo-snippet>
-
-      <h2>simple-colors CSS variables</h2>
+      <h2>Default (light) theme and accent, using CSS variables</h2>
       <demo-snippet>
-        <simple-colors-demo>
-          <div class="info">Tip: Here is something you should know.</div>
-          <div class="warning">Warning: Something might happen.</div>
-          <div class="alert">Alert! Something catastrophic happened.</div>
-        <simple-colors-demo>
         <template>
           <style is="custom-style" include="simple-colors">
             div {
@@ -71,6 +63,11 @@
               border: 2px solid var(--simple-colors-default-theme-red-3);
             }
           </style>
+          <simple-colors>
+            <div class="info">Tip: Here is something you should know.</div>
+            <div class="warning">Warning: Something might happen.</div>
+            <div class="alert">Alert! Something catastrophic happened.</div>
+          </simple-colors>
         </template>
       </demo-snippet>
       

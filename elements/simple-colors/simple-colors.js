@@ -14,7 +14,10 @@ export { SimpleColors };
  *
  * @customElement
  * @polymer
- * @demo demo/index.html
+ * @demo demo/index.html demo
+ * @demo demo/shared-styles.html using shared styles
+ * @demo demo/extending.html extending simple-colors
+ * @demo demo/colors.html all of the colors
  */
 class SimpleColors extends PolymerElement {
   static get is() {
@@ -23,6 +26,9 @@ class SimpleColors extends PolymerElement {
 
   static get properties() {
     return {
+      /**
+       * a selected accent-color: grey, red, pink, purple, etc.
+       */
       accentColor: {
         name: "accentColor",
         type: "String",
@@ -30,6 +36,9 @@ class SimpleColors extends PolymerElement {
         reflectToAttribute: true,
         observer: false
       },
+      /**
+       * make the default theme dark?
+       */
       dark: {
         name: "dark",
         type: "Boolean",
@@ -37,6 +46,14 @@ class SimpleColors extends PolymerElement {
         reflectToAttribute: true,
         observer: false
       },
+      /**
+       * the colors object, eg.:
+       * {
+       *    "grey": [ "#ffffff", "#eeeeee", ... "#111111","#000000" ],
+       *    "red": [ "#ffdddd", "#ffaeae", ... "#520000", "#3f0000" ],
+       *    ...
+       * }
+       */
       colors: {
         name: "colors",
         type: "Object",
@@ -44,17 +61,42 @@ class SimpleColors extends PolymerElement {
         reflectToAttribute: false,
         observer: false
       },
+      /**
+       * object with information on which color combinations are WCAG 2.0AA compliant, eg: {
+       *    greyOnColor: { //if either the color or its contrast will be a grey
+       *      large: [ //if bold text >= 14pt, text >= 18pt, decorative only, or disabled
+       *        {
+       *          level: 1, //if the color is level 1
+       *          minLevelContrast: 7, //contrasting color should be >= 8 <=TODO
+       *          maxLevelContrast: 12 //contrasting color should be <= 12
+       *        },
+       *        { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },
+       *        ...
+       *      ],
+       *      small: [ //if bold text < 14pt, or text < 18pt
+       *        { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },
+       *        { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },
+       *        ...
+       *      ]
+       *    },
+       *    colorOnColor: { //if neither the color nor its contrast are grey
+       *      large: [
+       *        { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },
+       *        { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },
+       *        ...
+       *      ],
+       *      small: [
+       *        { level: 1, minLevelContrast: 8, maxLevelContrast: 12 },
+       *        { level: 2, minLevelContrast: 8, maxLevelContrast: 12 },
+       *        ...
+       *      ]
+       *    }
+       *  }
+       */
       __wcagContrast: {
         name: "__wcagContrast",
         type: "Object",
         value: null,
-        reflectToAttribute: false,
-        observer: false
-      },
-      __sharedStyles: {
-        name: "__sharedStyles",
-        type: "String",
-        computed: "_getSharedStyles(colors)",
         reflectToAttribute: false,
         observer: false
       }
@@ -82,39 +124,17 @@ class SimpleColors extends PolymerElement {
   }
 
   /**
-   * life cycle, element is afixed to the DOM
-   */
-  _getSharedStyles(colors) {
-    let addLevels = function(color1, theme1, color2, invert) {
-        let levels = this.colors[color2],
-          str = [];
-        for (let i = 0; i < levels.length; i++) {
-          let index = invert ? 11 - i : i;
-          str.push(
-            "--simple-colors-" +
-              theme +
-              "-theme-" +
-              color1 +
-              "-" +
-              (i + 1) +
-              ":" +
-              this.colors[color2][index] +
-              ";"
-          );
-        }
-        return str.join("");
-      },
-      addColors = function(isTheme) {
-        let str = isTheme ? ["<style>"] : [""];
-        for (let color in this.colors) {
-        }
-      };
-    if (colors !== null) {
-    }
-  }
-
-  /**
-   * life cycle, element is afixed to the DOM
+   * for a given simple-colors variable and WCAG 2.0AA-defined text size (large or small),
+   * returns an array with variable names and and hex codes of WCAG 2.0AA-compliant contrasting colors, eg:
+   * [
+   *    { "color": "--simple-colors-light-theme-grey-2", "hex": "#eeeeee" },
+   *    { "color": "--simple-colors-light-theme-red-2", "hex": "#ffaeae" },
+   *    ...
+   * ]
+   *
+   * @param {string} the css variable for which contrasting colors are needed, eg. "--simple-colors-light-theme-grey-12"
+   * @param {boolean} contrast with WCAG 2.0AA-defined large text (bold >= 14pt or normal >= 18pt)
+   * @return {Array}
    */
   getContrasts(variable, large) {
     large = large !== undefined && large !== null ? large : false;
@@ -143,6 +163,14 @@ class SimpleColors extends PolymerElement {
 }
 customElements.define(SimpleColors.is, SimpleColors);
 
+/**
+ * a constant used by both the simple-colors element and the simple-colors shared styles, eg.:
+ * {
+ *    "grey": [ "#ffffff", "#eeeeee", ... "#111111","#000000" ],
+ *    "red": [ "#ffdddd", "#ffaeae", ... "#520000", "#3f0000" ],
+ *    ...
+ * }
+ */
 const colors = {
   grey: [
     "#ffffff",
@@ -453,7 +481,7 @@ SimpleColors.wcagContrast = {
     ]
   },
   colorOnColor: {
-    //if neith the color nor its contras are grey
+    //if neither the color nor its contrast are grey
     large: [
       { level: 1, minLevelContrast: 7, maxLevelContrast: 12 },
       { level: 2, minLevelContrast: 7, maxLevelContrast: 12 },
@@ -493,6 +521,7 @@ SimpleColors.requestAvailability = function(element) {
     document.body.appendChild(SimpleColors.instance);
   });
 };
+
 /**
  * gets the correct hexCode for a color level,
  * depending on whether or not the list is dark (inverted)
@@ -543,28 +572,28 @@ const addCssVariables = function() {
     str = [];
   str.push(
     addStyle(
-      ":host",
+      ":host, :host ::slotted(*)",
       addColorLevels("default", "accent", greys, false) +
         addThemeVariables("default", false)
     )
   );
   str.push(
     addStyle(
-      ":host",
+      ":host, :host ::slotted(*)",
       addColorLevels("light", "accent", greys, false) +
         addThemeVariables("light", false)
     )
   );
   str.push(
     addStyle(
-      ":host",
+      ":host, :host ::slotted(*)",
       addColorLevels("dark", "accent", greys, true) +
         addThemeVariables("dark", true)
     )
   );
   str.push(
     addStyle(
-      ":host([dark])",
+      ":host([dark]), :host([dark]) ::slotted(*)",
       addColorLevels("default", "accent", greys, true) +
         addThemeVariables("default", true)
     )
@@ -579,7 +608,11 @@ const addAccentVariables = function() {
   for (let color in colors) {
     str.push(
       addStyle(
-        ':host([accent-color="' + color + '"])',
+        ':host([accent-color="' +
+          color +
+          '"]), :host([accent-color="' +
+          color +
+          '"]) ::slotted(*)',
         [
           addColorLevels("default", "accent", colors[color], false),
           addColorLevels("light", "accent", colors[color], false),
@@ -590,7 +623,11 @@ const addAccentVariables = function() {
 
     str.push(
       addStyle(
-        ':host([dark][accent-color="' + color + '"])',
+        ':host([dark][accent-color="' +
+          color +
+          '"]), :host([dark][accent-color="' +
+          color +
+          '"]) ::slotted(*)',
         [addColorLevels("default", "accent", colors[color], true)].join("")
       )
     );
@@ -609,7 +646,12 @@ const addClasses = function() {
       let prefix = "simple-colors-" + themes[i] + "-theme";
       substr.push(addColorClasses(prefix + "-accent-" + (j + 1)));
       for (let color in colors) {
-        substr.push(addColorClasses(prefix + "-" + color + "-" + (j + 1)));
+        substr.push(
+          addColorClasses(
+            prefix + "-" + color + "-" + (j + 1),
+            colors[color][j]
+          )
+        );
       }
     }
     str.push("<style>\n" + substr.join("") + "\n</style>\n");
@@ -620,11 +662,29 @@ const addClasses = function() {
  * adds background color, text color, and border color classes
  * for a given level of a theme + color
  */
-const addColorClasses = function(cssvar) {
+const addColorClasses = function(cssvar, hex) {
   return [
-    "." + cssvar + " { background-color: var(--" + cssvar + "); }\n",
-    "." + cssvar + "-text { color: var(--" + cssvar + "); }\n",
-    "." + cssvar + "-border-color { border-color: var(--" + cssvar + "); }\n"
+    "." +
+      cssvar +
+      ", ::slotted(." +
+      cssvar +
+      ") { background-color: var(--" +
+      cssvar +
+      "); }\n",
+    "." +
+      cssvar +
+      "-text, ::slotted(." +
+      cssvar +
+      "-text) { color: var(--" +
+      cssvar +
+      "); }\n",
+    "." +
+      cssvar +
+      "-border, ::slotted(." +
+      cssvar +
+      "-border) { border: 1px solid var(--" +
+      cssvar +
+      "); }\n"
   ].join("");
 };
 const addStyle = function(selector, style) {

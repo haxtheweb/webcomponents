@@ -9,23 +9,37 @@
       import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
       import './simple-colors-demo.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      iframe {
+        border: 1px solid #ddd;
+        margin-bottom: 40px;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h2>simple-colors</h2>
+      <h1>Extending Simple Colors to Custom Elements</h1>
+      <p>
+        You can extend simple-colors to your own custom elements 
+        to use of the <tt>accent-color</tt> and <tt>dark</tt> 
+        properties that affect simple-colors variables.
+      </p>
+      <h2>Custom Element Extending simple-colors</h2>
       <demo-snippet>
         <template>
           <simple-colors-demo></simple-colors-demo>
         </template>
       </demo-snippet>
       
-      <h2>simple-colors Nested Elements</h2>
+      <h2>Nested Custom Element Both Extending simple-colors</h2>
       <demo-snippet>
         <template>
           <simple-colors-demo nested></simple-colors-demo>
         </template>
       </demo-snippet>
+
+      <h2>How to Extend simple-colors to a Custom-Element</h2>
+      <iframe src="./simple-colors-demo-child.js" width="100%" height="200px;"></iframe>
     </div>
   </body>
 </html>
