@@ -6,18 +6,18 @@ define([
 ], function(_polymerLegacy, async) {
   "use strict";
   async = babelHelpers.interopRequireWildcard(async);
-  function _templateObject_73a432b0edbe11e883a5d91bd26efb3f() {
+  function _templateObject_9c0f1be0edcb11e88aa8b5030f652492() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n      hax-stax-browser-item {\n        margin: 10px;\n        -webkit-transition: .3s all linear;\n        transition: .3s all linear;\n      }\n      #ironlist {\n        min-height: 50vh;\n      }\n    </style>\n    <iron-list id="ironlist" items="[[__staxList]]" as="stax" grid="">\n      <template>\n        <div class="stax-container">\n          <hax-stax-browser-item index="[[stax.index]]" title="[[stax.details.title]]" tag="[[stax.details.tag]]" image="[[stax.details.image]]" author="[[stax.details.author]]" teaser="[[stax.details.teaser]]" description="[[stax.details.description]]" examples="[[stax.details.examples]]" status="[[stax.details.status]]" stax="[[stax.stax]]"></hax-stax-browser-item>\n        </div>\n      </template>\n    </iron-list>\n'
     ]);
-    _templateObject_73a432b0edbe11e883a5d91bd26efb3f = function() {
+    _templateObject_9c0f1be0edcb11e88aa8b5030f652492 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_73a432b0edbe11e883a5d91bd26efb3f()
+      _templateObject_9c0f1be0edcb11e88aa8b5030f652492()
     ),
     is: "hax-stax-browser",
     properties: { staxList: { type: Array, observer: "_staxListChanged" } },
