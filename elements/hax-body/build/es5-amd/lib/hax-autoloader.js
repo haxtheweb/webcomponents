@@ -16,18 +16,18 @@ define([
   "use strict";
   meta = babelHelpers.interopRequireWildcard(meta);
   _require = babelHelpers.interopRequireWildcard(_require);
-  function _templateObject_718cc460edbe11e883a5d91bd26efb3f() {
+  function _templateObject_99f58ab0edcb11e88aa8b5030f652492() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n      :host {\n        display: none;\n      }\n    </style>\n    <slot></slot>\n"
     ]);
-    _templateObject_718cc460edbe11e883a5d91bd26efb3f = function() {
+    _templateObject_99f58ab0edcb11e88aa8b5030f652492 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_718cc460edbe11e883a5d91bd26efb3f()
+      _templateObject_99f58ab0edcb11e88aa8b5030f652492()
     ),
     is: "hax-autoloader",
     properties: { processedList: { type: Object, value: {} } },

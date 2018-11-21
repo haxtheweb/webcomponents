@@ -16,7 +16,7 @@
       "hax": "src/haxcms-elements-hax.json"
     }
   },
-  "version": "0.0.33",
+  "version": "0.0.34",
   "description": "Automated conversion of haxcms-elements/",
   "repository": {
     "type": "git",
@@ -40,35 +40,35 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/polymer": "^3.1.0",
-    "@polymer/paper-fab": "^3.0.1",
-    "@polymer/paper-card": "^3.0.1",
-    "@polymer/paper-icon-button": "^3.0.1",
-    "@polymer/paper-button": "^3.0.1",
-    "@polymer/iron-icons": "^3.0.1",
+    "@lrnwebcomponents/beaker-broker": "^0.0.34",
+    "@lrnwebcomponents/dropdown-select": "^0.0.34",
+    "@lrnwebcomponents/hax-body": "^0.0.34",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.34",
+    "@lrnwebcomponents/jwt-login": "^0.0.34",
+    "@lrnwebcomponents/magazine-cover": "^0.0.34",
+    "@lrnwebcomponents/map-menu": "^0.0.34",
+    "@lrnwebcomponents/paper-icon-picker": "^0.0.34",
+    "@lrnwebcomponents/schema-behaviors": "^0.0.34",
+    "@lrnwebcomponents/simple-colors": "^0.0.34",
+    "@lrnwebcomponents/sites-listing": "^0.0.34",
     "@polymer/app-layout": "^3.0.1",
-    "@polymer/iron-list": "^3.0.1",
     "@polymer/iron-ajax": "^3.0.1",
-    "@polymer/paper-item": "^3.0.1",
-    "@polymer/paper-input": "^3.0.1",
-    "@polymer/paper-toast": "^3.0.1",
+    "@polymer/iron-icons": "^3.0.1",
+    "@polymer/iron-list": "^3.0.1",
+    "@polymer/paper-button": "^3.0.1",
+    "@polymer/paper-card": "^3.0.1",
     "@polymer/paper-dialog": "^3.0.1",
     "@polymer/paper-dialog-scrollable": "^3.0.1",
+    "@polymer/paper-fab": "^3.0.1",
+    "@polymer/paper-icon-button": "^3.0.1",
+    "@polymer/paper-input": "^3.0.1",
+    "@polymer/paper-item": "^3.0.1",
+    "@polymer/paper-toast": "^3.0.1",
     "@polymer/paper-tooltip": "^3.0.1",
-    "@lrnwebcomponents/hax-body": "^0.0.33",
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.33",
-    "@lrnwebcomponents/schema-behaviors": "^0.0.33",
-    "@lrnwebcomponents/beaker-broker": "^0.0.33",
-    "@lrnwebcomponents/simple-colors": "^0.0.33",
-    "@lrnwebcomponents/jwt-login": "^0.0.33",
-    "@lrnwebcomponents/paper-icon-picker": "^0.0.33",
-    "@lrnwebcomponents/map-menu": "^0.0.33",
-    "@lrnwebcomponents/magazine-cover": "^0.0.33",
-    "@lrnwebcomponents/dropdown-select": "^0.0.33",
-    "@lrnwebcomponents/sites-listing": "^0.0.33"
+    "@polymer/polymer": "^3.1.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.0.33",
+    "@lrnwebcomponents/deduping-fix": "^0.0.34",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.1.3",
@@ -88,5 +88,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "3765fe3f5c9ee9b0e3e20ace85862d34b8113dd6"
+  "gitHead": "85bf1e684f0f88c1ce807c92255af222057eeaa0"
 }

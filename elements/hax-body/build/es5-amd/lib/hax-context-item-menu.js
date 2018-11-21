@@ -7,18 +7,18 @@ define([
   "./hax-toolbar-menu.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_7586d560edbe11e883a5d91bd26efb3f() {
+  function _templateObject_9df20cb0edcb11e88aa8b5030f652492() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: inline-flex;\n        height: 32px;\n        box-sizing: border-box;\n      }\n      :host hax-toolbar-menu ::slotted(*):hover {\n        background-color: #cccccc;\n      };\n      :host hax-toolbar-menu ::slotted(*) {\n        height: 32px;\n      };\n    </style>\n    <hax-toolbar-menu corner="[[corner]]" id="menu" icon="[[icon]]" tooltip="[[label]]" tooltip-direction="[[direction]]" selected="{{selectedValue}}" reset-on-select="[[resetOnSelect]]">\n      <slot></slot>\n    </hax-toolbar-menu>\n'
     ]);
-    _templateObject_7586d560edbe11e883a5d91bd26efb3f = function() {
+    _templateObject_9df20cb0edcb11e88aa8b5030f652492 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_7586d560edbe11e883a5d91bd26efb3f()
+      _templateObject_9df20cb0edcb11e88aa8b5030f652492()
     ),
     is: "hax-context-item-menu",
     properties: {

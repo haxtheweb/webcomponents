@@ -16,7 +16,7 @@
       "hax": "src/page-scroll-position-hax.json"
     }
   },
-  "version": "0.0.33",
+  "version": "0.0.34",
   "description": "Automated conversion of page-scroll-position/",
   "repository": {
     "type": "git",
@@ -40,11 +40,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.33",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.34",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.0.33",
+    "@lrnwebcomponents/deduping-fix": "^0.0.34",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.1.3",
@@ -64,5 +64,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "3765fe3f5c9ee9b0e3e20ace85862d34b8113dd6"
+  "gitHead": "85bf1e684f0f88c1ce807c92255af222057eeaa0"
 }
