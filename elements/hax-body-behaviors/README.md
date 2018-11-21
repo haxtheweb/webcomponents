@@ -10,20 +10,316 @@ HAX body behaviors provide a consistent way to rapidly wire Polymer elements up 
 
 The major is in HAX Schema defintion which can be translated to JSON Schema with a single function. This allows for rapidly building out headless "forms" in HAX while the elements themselves just define the JSON blob as to how it should function and what should be wired where. It's more complicated then it sounds.
 
-## Example
-For full documentation just open the `lib/HAXWiring.js` file as it's got a lot of documentation but here's a basic example from `../video-player/video-player.js`.
-top of file:
+## Examples
+For full documentation just open the `lib/HAXWiring.js` file as it's got a lot of documentation but here's the relevent parts from [example-hax-element](https://github.com/elmsln/lrnwebcomponents/tree/master/elements/example-hax-element/example-hax-element.js).
 ```js
-/* In an existing module / web component */
-import '@lrnwebcomponents/hax-body-behaviors.js';
-/* At top of an application */
-<script type="module" src="hax-body-behaviors.js"></script>
-/* Alternatives for top of application */
-<script type="module">
-  import '@lrnwebcomponents/hax-body-behaviors.js';
 
-  import {HaxBodyBehaviors} from '@lrnwebcomponents/hax-body-behaviors';
-</script>
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+
+class ExampleHaxElement extends HTMLElement {
+...
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Example hax-element",
+        description:
+          "Provide an example to pick apart of a working HAX element",
+        icon: "icons:android",
+        color: "green",
+        groups: ["Hax"],
+        handles: [
+          {
+            type: "todo:read-the-docs-for-usage"
+          }
+        ],
+        meta: {
+          author: "You",
+          owner: "Your Company"
+        }
+      },
+      settings: {
+        quick: [],
+        configure: [
+          {
+            property: "title",
+            description: "",
+            inputMethod: "textfield",
+            required: false,
+            icon: "icons:android"
+          },
+          {
+            property: "available",
+            description: "",
+            inputMethod: "boolean",
+            required: false,
+            icon: "icons:android"
+          }
+        ],
+        advanced: []
+      }
+    };
+  }
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      title: {
+        name: "title",
+        type: "String",
+        value: "My Example"
+      },
+      available: {
+        name: "available",
+        type: "Boolean",
+        value: ""
+      }
+    };
+  }
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  connectedCallback() {
+    this.HAXWiring = new HAXWiring();
+    this.HAXWiring.setHaxProperties(
+      ExampleHaxElement.haxProperties,
+      ExampleHaxElement.tag,
+      this
+    );
+  }
+...
+
+```
+
+Here's a much more complex example from a Polymer Legacy style element who calls attached when it is fixed to the DOM (`video-player/video-player.js`):
+```
+  /**
+   * Attached.
+   */
+  attached: function() {
+    // Establish hax properties if they exist
+    let props = {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Video player",
+        description:
+          "This can present video in a highly accessible manner regardless of source.",
+        icon: "av:play-circle-filled",
+        color: "red",
+        groups: ["Video", "Media"],
+        handles: [
+          {
+            type: "video",
+            source: "source",
+            title: "caption",
+            caption: "caption",
+            description: "caption",
+            color: "primaryColor"
+          }
+        ],
+        meta: {
+          author: "LRNWebComponents"
+        }
+      },
+      settings: {
+        quick: [
+          /*{
+            'property': 'responsive',
+            'title': 'Responsive',
+            'description': 'The video automatically fills the available area.',
+            'inputMethod': 'boolean',
+            'icon': 'image:photo-size-select-small',
+          },*/
+          {
+            property: "accentColor",
+            title: "Accent color",
+            description: "Select the accent color for the player.",
+            inputMethod: "colorpicker",
+            icon: "editor:format-color-fill"
+          },
+          {
+            property: "dark",
+            title: "Dark theme",
+            description: "Enable dark theme for the player.",
+            inputMethod: "boolean",
+            icon: "invert-colors"
+          }
+        ],
+        configure: [
+          {
+            property: "source",
+            title: "Source",
+            description: "The URL for this video.",
+            inputMethod: "textfield",
+            icon: "link",
+            required: true,
+            validationType: "url"
+          },
+          {
+            property: "track",
+            title: "Closed captions",
+            description: "The URL for the captions file.",
+            inputMethod: "textfield",
+            icon: "link",
+            required: true,
+            validationType: "url"
+          },
+          {
+            property: "thumbnailSrc",
+            title: "Thumbnail image",
+            description: "Optional. The URL for a thumbnail/poster image.",
+            inputMethod: "textfield",
+            icon: "link",
+            required: true,
+            validationType: "url"
+          },
+          {
+            property: "mediaTitle",
+            title: "Title",
+            description: "Simple title for under video",
+            inputMethod: "textfield",
+            icon: "av:video-label",
+            required: false,
+            validationType: "text"
+          },
+          {
+            property: "accentColor",
+            title: "Accent color",
+            description: "Select the accent color for the player.",
+            inputMethod: "colorpicker",
+            icon: "editor:format-color-fill"
+          },
+          {
+            property: "dark",
+            title: "Dark theme",
+            description: "Enable dark theme for the player.",
+            inputMethod: "boolean",
+            icon: "invert-colors"
+          }
+        ],
+        advanced: [
+          {
+            property: "darkTranscript",
+            title: "Dark theme for transcript",
+            description: "Enable dark theme for the transcript.",
+            inputMethod: "boolean"
+          },
+          {
+            property: "hideTimestamps",
+            title: "Hide timestamps",
+            description: "Hide the time stamps on the transcript.",
+            inputMethod: "boolean"
+          },
+          {
+            property: "preload",
+            title: "Preload source(s).",
+            description:
+              "How the sources should be preloaded, i.e. auto, metadata (default), or none.",
+            inputMethod: "select",
+            options: {
+              preload: "Preload all media",
+              metadata: "Preload media metadata only",
+              none: "Don't preload anything"
+            }
+          },
+          {
+            property: "stickyCorner",
+            title: "Sticky Corner",
+            description:
+              "Set the corner where a video plays when scrolled out of range, or choose none to disable sticky video.",
+            inputMethod: "select",
+            options: {
+              none: "none",
+              "top-left": "top-left",
+              "top-right": "top-right",
+              "bottom-left": "bottom-left",
+              "bottom-right": "bottom-right"
+            }
+          },
+          {
+            property: "sources",
+            title: "Other sources",
+            description: "List of other sources",
+            inputMethod: "array",
+            properties: [
+              {
+                property: "src",
+                title: "Source",
+                description: "The URL for this video.",
+                inputMethod: "textfield"
+              },
+              {
+                property: "type",
+                title: "Type",
+                description: "Media type data",
+                inputMethod: "select",
+                options: {
+                  "audio/aac": "acc audio",
+                  "audio/flac": "flac audio",
+                  "audio/mp3": "mp3 audio",
+                  "video/mp4": "mp4 video",
+                  "video/mov": "mov video",
+                  "audio/ogg": "ogg audio",
+                  "video/ogg": "ogg video",
+                  "audio/wav": "wav audio",
+                  "audio/webm": "webm audio",
+                  "video/webm": "webm video"
+                }
+              }
+            ]
+          },
+          {
+            property: "tracks",
+            title: "Track list",
+            description: "Tracks of different languages of closed captions",
+            inputMethod: "array",
+            properties: [
+              {
+                property: "kind",
+                title: "Kind",
+                description: "Kind of track",
+                inputMethod: "select",
+                options: {
+                  subtitles:
+                    "subtitles" /*,
+                  Future Features
+                  'description': 'description',
+                  'thumbnails': 'thumbnails',
+                  'interactive': 'interactive',
+                  'annotation': 'annotation'*/
+                }
+              },
+              {
+                property: "label",
+                title: "Label",
+                description:
+                  'The human-readable name for this track, eg. "English Subtitles"',
+                inputMethod: "textfield"
+              },
+              {
+                property: "src",
+                title: "Source",
+                description: "Source of the track",
+                inputMethod: "textfield"
+              },
+              {
+                property: "srclang",
+                title:
+                  'Two letter, language code, eg. "en" for English, "de" for German, "es" for Spanish, etc.',
+                description: "Label",
+                inputMethod: "textfield"
+              }
+            ]
+          }
+        ]
+      }
+    };
+    this.setHaxProperties(props);
+  },
 ```
 
 ## Develop

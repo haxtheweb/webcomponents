@@ -16,6 +16,8 @@ There's lots of documentation in this file and examples of integrations and you 
 ### Deeper developer dive into how HAX works
 - initial deep dive - https://www.youtube.com/watch?v=eGV1XWzUko8&list=PLJQupiji7J5eTqv8JFiW8SZpSeKouZACH&index=10
 - State management and pluggability - https://www.youtube.com/watch?v=Pehb3s5JBTw&list=PLJQupiji7J5eTqv8JFiW8SZpSeKouZACH&index=1
+- HAX Element Schema - https://github.com/elmsln/lrnwebcomponents/blob/master/elements/hax-body-behaviors/lib/HAXWiring.js
+- HAX App Schema - https://github.com/elmsln/lrnwebcomponents/blob/master/elements/hax-body/lib/hax-app.js#L14
 
 An application that uses HAX is made up of several custom elements working together. Some of the primary elements to make this happen are:
 ```
