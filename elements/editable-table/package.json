@@ -16,7 +16,7 @@
       "hax": "src/editable-table-hax.json"
     }
   },
-  "version": "0.0.33",
+  "version": "0.0.34",
   "description": "Automated conversion of editable-table/",
   "repository": {
     "type": "git",
@@ -40,10 +40,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-collapse": "^0.0.33",
-    "@lrnwebcomponents/dropdown-select": "^0.0.33",
-    "@lrnwebcomponents/responsive-utility": "^0.0.33",
-    "@lrnwebcomponents/simple-colors": "^0.0.33",
+    "@lrnwebcomponents/a11y-collapse": "^0.0.34",
+    "@lrnwebcomponents/dropdown-select": "^0.0.34",
+    "@lrnwebcomponents/responsive-utility": "^0.0.34",
+    "@lrnwebcomponents/simple-colors": "^0.0.34",
     "@polymer/iron-a11y-keys": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-autogrow-textarea": "^3.0.0",
@@ -62,7 +62,7 @@
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.0.33",
+    "@lrnwebcomponents/deduping-fix": "^0.0.34",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.1.3",
