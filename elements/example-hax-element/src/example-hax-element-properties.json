@@ -1,0 +1,16 @@
+{
+  "title": {
+    "name": "title",
+    "type": "String",
+    "value": "My Example",
+    "reflectToAttribute": false,
+    "observer": false
+  },
+  "available": {
+    "name": "available",
+    "type": "Boolean",
+    "value": "",
+    "reflectToAttribute": false,
+    "observer": false
+  }
+}
