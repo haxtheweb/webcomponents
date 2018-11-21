@@ -4,8 +4,15 @@ Body
 > Wire any element up to HAX
 
 ## Usage
-To use this web component in your project you can utilize one of the following styles of syntax.
+[Video showing how we integrate HAX with elements](https://www.youtube.com/watch?v=P-ZA4CQASpY&index=1&list=PLJQupiji7J5eTqv8JFiW8SZpSeKouZACH)
 
+HAX body behaviors provide a consistent way to rapidly wire Polymer elements up to HAX. While anything can talk to HAX via consistent property and event usage, these body behaviors reduce the time and increase accuracy when trying to wire to HAX (drastically).
+
+The major is in HAX Schema defintion which can be translated to JSON Schema with a single function. This allows for rapidly building out headless "forms" in HAX while the elements themselves just define the JSON blob as to how it should function and what should be wired where. It's more complicated then it sounds.
+
+## Example
+For full documentation just open the `lib/HAXWiring.js` file as it's got a lot of documentation but here's a basic example from `../video-player/video-player.js`.
+top of file:
 ```js
 /* In an existing module / web component */
 import '@lrnwebcomponents/hax-body-behaviors.js';
