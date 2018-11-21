@@ -1,59 +1,81 @@
 define([
   "../node_modules/@polymer/polymer/polymer-legacy.js",
   "../node_modules/@polymer/app-layout/app-drawer/app-drawer.js",
-  "../node_modules/@polymer/paper-icon-button/paper-icon-button.js",
+  "../node_modules/@polymer/iron-icon/iron-icon.js",
+  "../node_modules/@polymer/iron-icons/iron-icons.js",
   "../node_modules/@polymer/paper-input/paper-input.js",
   "../node_modules/@polymer/paper-button/paper-button.js",
-  "@lrnwebcomponents/dl-behavior/dl-behavior.js",
+  "../node_modules/@lrnwebcomponents/dl-behavior/dl-behavior.js",
   "../node_modules/@lrnwebcomponents/simple-colors/simple-colors.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_e96d0970dbb911e89b94f594419eb4d2() {
+  function _templateObject_71e062a0edbe11e883a5d91bd26efb3f() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
-        '\n    <style>\n      :host {\n        display: block;\n      }\n      #dialog {\n        z-index: 1000;\n        margin-top: 64px;\n      }\n      paper-icon-button#closedialog {\n        float: right;\n        top: 135px;\n        right: 0;\n        position: absolute;\n        padding: 4px;\n        margin: 0;\n        color: var(--simple-colors-light-green-background1);\n      }\n      .title {\n        margin-top: 32px;\n        text-align: center;\n        padding: 16px;\n        margin: 0;\n        background-color: rgba(0, 0, 0, 0.5);\n        font-size: 32px;\n        font-weight: bold;\n        font-family: sans-serif;\n        text-transform: uppercase;\n        color: var(--simple-colors-light-green-background1);\n      }\n      .pref-container {\n        text-align: left;\n        padding: 16px;\n      }\n      app-drawer {\n        --app-drawer-content-container: {\n          background-color: rgba(0, 0, 0, 0.7);\n        };\n        --app-drawer-width: 320px;\n      }\n      paper-button {\n        color: #222222;\n        text-transform: none;\n        margin:0;\n        background-color: #F8F8F8;\n        display: flex;\n        border-radius: 0px;\n        border-style: solid;\n        border-width: 1px;\n        min-width: unset;\n      }\n      paper-button:focus,\n      paper-button:hover {\n        background-color: var(--simple-colors-light-green-background1);\n        border-color: var(--simple-colors-light-green-background1);\n        outline: 2px solid var(--simple-colors-light-green-background1);\n      }\n      .buttons paper-button {\n        color: black;\n        font-size: 12px;\n        font-weight: bold;\n        text-transform: none;\n      }\n      #textarea {\n        margin-bottom: 16px;\n        padding: 10px;\n        width: 90%;\n        font-size: 10px;\n        resize: none;\n        width: 80%;\n        width: -webkit-fill-available;\n        background-color: transparent;\n        color: #EEEEEE;\n        font-family: monospace;\n      }\n    </style>\n    <app-drawer id="dialog" align="right">\n      <h3 class="title">[[title]]</h3>\n      <div style="height: 100%; overflow: auto;" class="pref-container">\n        <textarea id="textarea" rows="20"></textarea>\n        <div class="buttons">\n          <paper-button id="downloadfull" raised="">Download as full file</paper-button>\n          <paper-button id="download" raised="">Download HTML contents only</paper-button>\n          <paper-button id="copy" raised="">Copy to clipboard</paper-button>\n          <paper-button id="import" raised="" hidden$="[[!globalPreferences.haxDeveloperMode]]">Import textarea into HAX</paper-button>\n          <paper-button id="elementexport" raised="" hidden$="[[!globalPreferences.haxDeveloperMode]]">Copy as HAX schema to clipboard</paper-button>\n          <paper-button id="close" raised="">Close dialog</paper-button>\n        </div>\n      </div>\n      <paper-icon-button id="closedialog" on-tap="close" icon="icons:cancel" title="Close dialog"></paper-icon-button>\n    </app-drawer>\n'
+        '\n    <style>\n      :host {\n        display: block;\n      }\n      #dialog {\n        z-index: 1000;\n        margin-top: 64px;\n      }\n      .title {\n        margin-top: 32px;\n        text-align: center;\n        padding: 16px;\n        margin: 0;\n        background-color: rgba(0, 0, 0, 0.5);\n        font-size: 32px;\n        font-weight: bold;\n        font-family: sans-serif;\n        text-transform: uppercase;\n        color: var(--simple-colors-light-green-background1);\n      }\n      .pref-container {\n        text-align: left;\n        padding: 16px;\n      }\n      app-drawer {\n        --app-drawer-content-container: {\n          background-color: rgba(0, 0, 0, 0.7);\n        };\n        --app-drawer-width: 320px;\n      }\n      .buttons paper-button:focus,\n      .buttons paper-button:hover {\n        background-color: var(--simple-colors-light-green-background1);\n        border-color: var(--simple-colors-light-green-background1);\n        outline: 2px solid var(--simple-colors-light-green-background1);\n      }\n      .buttons paper-button {\n        color: #222222;\n        text-transform: none;\n        margin:0;\n        background-color: #F8F8F8;\n        display: flex;\n        border-radius: 0px;\n        border-style: solid;\n        border-width: 1px;\n        min-width: unset;\n        font-size: 12px;\n        font-weight: bold;\n      }\n      #closedialog {\n        float: right;\n        top: 135px;\n        right: 0;\n        position: absolute;\n        padding: 4px;\n        margin: 0;\n        color: var(--simple-colors-light-green-background1, green);\n        background-color: transparent;\n        width: 40px;\n        height: 40px;\n        min-width: unset;\n      }\n      #textarea {\n        margin-bottom: 16px;\n        padding: 10px;\n        width: 90%;\n        font-size: 10px;\n        resize: none;\n        width: 80%;\n        width: -webkit-fill-available;\n        background-color: transparent;\n        color: #EEEEEE;\n        font-family: monospace;\n      }\n    </style>\n    <app-drawer id="dialog" align="right">\n      <h3 class="title">[[title]]</h3>\n      <div style="height: 100%; overflow: auto;" class="pref-container">\n        <textarea id="textarea" rows="20"></textarea>\n        <div class="buttons">\n          <paper-button id="downloadfull" raised="">Download as full file</paper-button>\n          <paper-button id="download" raised="">Download HTML contents only</paper-button>\n          <paper-button id="copy" raised="">Copy to clipboard</paper-button>\n          <paper-button id="import" raised="" hidden$="[[!globalPreferences.haxDeveloperMode]]">Import textarea into HAX</paper-button>\n          <paper-button id="elementexport" raised="" hidden$="[[!globalPreferences.haxDeveloperMode]]">Copy as HAX schema to clipboard</paper-button>\n        </div>\n      </div>\n      <paper-button id="closedialog" on-tap="close">\n        <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>\n      </paper-button>\n    </app-drawer>\n'
       ],
       [
-        '\n    <style>\n      :host {\n        display: block;\n      }\n      #dialog {\n        z-index: 1000;\n        margin-top: 64px;\n      }\n      paper-icon-button#closedialog {\n        float: right;\n        top: 135px;\n        right: 0;\n        position: absolute;\n        padding: 4px;\n        margin: 0;\n        color: var(--simple-colors-light-green-background1);\n      }\n      .title {\n        margin-top: 32px;\n        text-align: center;\n        padding: 16px;\n        margin: 0;\n        background-color: rgba(0, 0, 0, 0.5);\n        font-size: 32px;\n        font-weight: bold;\n        font-family: sans-serif;\n        text-transform: uppercase;\n        color: var(--simple-colors-light-green-background1);\n      }\n      .pref-container {\n        text-align: left;\n        padding: 16px;\n      }\n      app-drawer {\n        --app-drawer-content-container: {\n          background-color: rgba(0, 0, 0, 0.7);\n        };\n        --app-drawer-width: 320px;\n      }\n      paper-button {\n        color: #222222;\n        text-transform: none;\n        margin:0;\n        background-color: #F8F8F8;\n        display: flex;\n        border-radius: 0px;\n        border-style: solid;\n        border-width: 1px;\n        min-width: unset;\n      }\n      paper-button:focus,\n      paper-button:hover {\n        background-color: var(--simple-colors-light-green-background1);\n        border-color: var(--simple-colors-light-green-background1);\n        outline: 2px solid var(--simple-colors-light-green-background1);\n      }\n      .buttons paper-button {\n        color: black;\n        font-size: 12px;\n        font-weight: bold;\n        text-transform: none;\n      }\n      #textarea {\n        margin-bottom: 16px;\n        padding: 10px;\n        width: 90%;\n        font-size: 10px;\n        resize: none;\n        width: 80%;\n        width: -webkit-fill-available;\n        background-color: transparent;\n        color: #EEEEEE;\n        font-family: monospace;\n      }\n    </style>\n    <app-drawer id="dialog" align="right">\n      <h3 class="title">[[title]]</h3>\n      <div style="height: 100%; overflow: auto;" class="pref-container">\n        <textarea id="textarea" rows="20"></textarea>\n        <div class="buttons">\n          <paper-button id="downloadfull" raised="">Download as full file</paper-button>\n          <paper-button id="download" raised="">Download HTML contents only</paper-button>\n          <paper-button id="copy" raised="">Copy to clipboard</paper-button>\n          <paper-button id="import" raised="" hidden\\$="[[!globalPreferences.haxDeveloperMode]]">Import textarea into HAX</paper-button>\n          <paper-button id="elementexport" raised="" hidden\\$="[[!globalPreferences.haxDeveloperMode]]">Copy as HAX schema to clipboard</paper-button>\n          <paper-button id="close" raised="">Close dialog</paper-button>\n        </div>\n      </div>\n      <paper-icon-button id="closedialog" on-tap="close" icon="icons:cancel" title="Close dialog"></paper-icon-button>\n    </app-drawer>\n'
+        '\n    <style>\n      :host {\n        display: block;\n      }\n      #dialog {\n        z-index: 1000;\n        margin-top: 64px;\n      }\n      .title {\n        margin-top: 32px;\n        text-align: center;\n        padding: 16px;\n        margin: 0;\n        background-color: rgba(0, 0, 0, 0.5);\n        font-size: 32px;\n        font-weight: bold;\n        font-family: sans-serif;\n        text-transform: uppercase;\n        color: var(--simple-colors-light-green-background1);\n      }\n      .pref-container {\n        text-align: left;\n        padding: 16px;\n      }\n      app-drawer {\n        --app-drawer-content-container: {\n          background-color: rgba(0, 0, 0, 0.7);\n        };\n        --app-drawer-width: 320px;\n      }\n      .buttons paper-button:focus,\n      .buttons paper-button:hover {\n        background-color: var(--simple-colors-light-green-background1);\n        border-color: var(--simple-colors-light-green-background1);\n        outline: 2px solid var(--simple-colors-light-green-background1);\n      }\n      .buttons paper-button {\n        color: #222222;\n        text-transform: none;\n        margin:0;\n        background-color: #F8F8F8;\n        display: flex;\n        border-radius: 0px;\n        border-style: solid;\n        border-width: 1px;\n        min-width: unset;\n        font-size: 12px;\n        font-weight: bold;\n      }\n      #closedialog {\n        float: right;\n        top: 135px;\n        right: 0;\n        position: absolute;\n        padding: 4px;\n        margin: 0;\n        color: var(--simple-colors-light-green-background1, green);\n        background-color: transparent;\n        width: 40px;\n        height: 40px;\n        min-width: unset;\n      }\n      #textarea {\n        margin-bottom: 16px;\n        padding: 10px;\n        width: 90%;\n        font-size: 10px;\n        resize: none;\n        width: 80%;\n        width: -webkit-fill-available;\n        background-color: transparent;\n        color: #EEEEEE;\n        font-family: monospace;\n      }\n    </style>\n    <app-drawer id="dialog" align="right">\n      <h3 class="title">[[title]]</h3>\n      <div style="height: 100%; overflow: auto;" class="pref-container">\n        <textarea id="textarea" rows="20"></textarea>\n        <div class="buttons">\n          <paper-button id="downloadfull" raised="">Download as full file</paper-button>\n          <paper-button id="download" raised="">Download HTML contents only</paper-button>\n          <paper-button id="copy" raised="">Copy to clipboard</paper-button>\n          <paper-button id="import" raised="" hidden\\$="[[!globalPreferences.haxDeveloperMode]]">Import textarea into HAX</paper-button>\n          <paper-button id="elementexport" raised="" hidden\\$="[[!globalPreferences.haxDeveloperMode]]">Copy as HAX schema to clipboard</paper-button>\n        </div>\n      </div>\n      <paper-button id="closedialog" on-tap="close">\n        <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>\n      </paper-button>\n    </app-drawer>\n'
       ]
     );
-    _templateObject_e96d0970dbb911e89b94f594419eb4d2 = function() {
+    _templateObject_71e062a0edbe11e883a5d91bd26efb3f = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_e96d0970dbb911e89b94f594419eb4d2()
+      _templateObject_71e062a0edbe11e883a5d91bd26efb3f()
     ),
     is: "hax-export-dialog",
-    listeners: {
-      "download.tap": "download",
-      "downloadfull.tap": "downloadfull",
-      "import.tap": "importContent",
-      "copy.tap": "selectBody",
-      "close.tap": "close",
-      "elementexport.tap": "htmlToHaxElements"
-    },
     behaviors: [mtz.FileDownloadBehaviors, simpleColorsBehaviors],
     properties: {
       title: { type: String, value: "Export" },
       globalPreferences: { type: Object, value: {} }
     },
-    ready: function ready() {
-      document.body.appendChild(this);
-      document.body.addEventListener(
-        "hax-store-property-updated",
-        this._haxStorePropertyUpdated.bind(this)
-      );
+    created: function created() {
+      this.__attached = !1;
     },
     attached: function attached() {
-      this.fire("hax-register-export", this);
+      if (!this.__attached) {
+        this.__attached = !0;
+        document.body.appendChild(this);
+      } else {
+        this.fire("hax-register-export", this);
+        document.body.addEventListener(
+          "hax-store-property-updated",
+          this._haxStorePropertyUpdated.bind(this)
+        );
+        this.$.download.addEventListener("tap", this.download.bind(this));
+        this.$.downloadfull.addEventListener(
+          "tap",
+          this.downloadfull.bind(this)
+        );
+        this.$.import.addEventListener("tap", this.importContent.bind(this));
+        this.$.copy.addEventListener("tap", this.selectBody.bind(this));
+        this.$.closedialog.addEventListener("tap", this.close.bind(this));
+        this.$.elementexport.addEventListener(
+          "tap",
+          this.htmlToHaxElements.bind(this)
+        );
+      }
     },
     detached: function detached() {
       document.body.removeEventListener(
         "hax-store-property-updated",
         this._haxStorePropertyUpdated.bind(this)
+      );
+      this.$.download.removeEventListener("tap", this.download.bind(this));
+      this.$.downloadfull.removeEventListener(
+        "tap",
+        this.downloadfull.bind(this)
+      );
+      this.$.import.removeEventListener("tap", this.importContent.bind(this));
+      this.$.copy.removeEventListener("tap", this.selectBody.bind(this));
+      this.$.closedialog.removeEventListener("tap", this.close.bind(this));
+      this.$.elementexport.removeEventListener(
+        "tap",
+        this.htmlToHaxElements.bind(this)
       );
     },
     _haxStorePropertyUpdated: function _haxStorePropertyUpdated(e) {

@@ -5,10 +5,12 @@ import {
 import { dom } from "../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
 import "../node_modules/@polymer/app-layout/app-drawer/app-drawer.js";
 import "../node_modules/@polymer/paper-input/paper-input.js";
+import "../node_modules/@polymer/paper-styles/paper-styles.js";
 import "../node_modules/@polymer/paper-button/paper-button.js";
 import "../node_modules/@polymer/paper-icon-button/paper-icon-button.js";
 import "../node_modules/@polymer/iron-pages/iron-pages.js";
 import "../node_modules/@polymer/iron-icons/iron-icons.js";
+import "../node_modules/@polymer/iron-icon/iron-icon.js";
 import "../node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";
 import "../node_modules/@vaadin/vaadin-upload/vaadin-upload.js";
 import "../node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
@@ -36,28 +38,32 @@ Polymer({
           background-color: rgba(0, 0, 0, 0.7);
         };
       }
-      paper-icon-button#closedialog {
+      #closedialog {
         float: right;
         top: 135px;
         right: 0;
         position: absolute;
         padding: 4px;
         margin: 0;
-        color: var(--simple-colors-light-green-background1);
+        color: var(--simple-colors-light-green-background1, green);
+        background-color: transparent;
+        width: 40px;
+        height: 40px;
+        min-width: unset;
       }
-      :host[active-page="0"] #dialog {
+      :host([active-page="0"]) #dialog {
         --app-drawer-width: 400px;
       }
-      :host[active-page="1"] #dialog {
+      :host([active-page="1"]) #dialog {
         --app-drawer-width: 800px;
       }
-      :host[active-page="2"] #dialog {
+      :host([active-page="2"]) #dialog {
         --app-drawer-width: 800px;
       }
-      :host[active-step] #dialog {
+      :host([active-step]) #dialog {
         --app-drawer-width: 1000px;
       }
-      :host[searching] #dialog {
+      :host([searching]) #dialog {
         --app-drawer-width: 1000px;
       }
       .title {
@@ -205,19 +211,13 @@ Polymer({
             <hax-preview id="preview" element="{{activeHaxElement}}"></hax-preview>
           </div>
         </iron-pages>
-        <paper-icon-button id="closedialog" icon="icons:cancel" title="Close dialog"></paper-icon-button>
+        <paper-button id="closedialog" on-tap="cancel">
+          <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
+        </paper-button>
       </div>
     </app-drawer>
 `,
   is: "hax-manager",
-  listeners: {
-    "dialog.iron-overlay-canceled": "close",
-    "dialog.iron-overlay-closed": "close",
-    "closedialog.tap": "close",
-    "newassetconfigure.tap": "newAssetConfigure",
-    "fileupload.upload-before": "_fileAboutToUpload",
-    "fileupload.upload-response": "_fileUploadResponse"
-  },
   behaviors: [simpleColorsBehaviors],
   properties: {
     opened: {
@@ -259,20 +259,42 @@ Polymer({
     if (!this.__attached) {
       this.__attached = !0;
       document.body.appendChild(this);
+    } else {
+      this.fire("hax-register-manager", this);
+      document.body.addEventListener(
+        "hax-store-property-updated",
+        this._haxStorePropertyUpdated.bind(this)
+      );
+      document.body.addEventListener(
+        "hax-app-picker-selection",
+        this._haxAppPickerSelection.bind(this)
+      );
+      document.body.addEventListener(
+        "place-holder-file-drop",
+        this._placeHolderFileDrop.bind(this)
+      );
+      this.$.dialog.addEventListener(
+        "iron-overlay-canceled",
+        this.close.bind(this)
+      );
+      this.$.dialog.addEventListener(
+        "iron-overlay-closed",
+        this.close.bind(this)
+      );
+      this.$.closedialog.addEventListener("tap", this.close.bind(this));
+      this.$.newassetconfigure.addEventListener(
+        "tap",
+        this.newAssetConfigure.bind(this)
+      );
+      this.$.fileupload.addEventListener(
+        "upload-before",
+        this._fileAboutToUpload.bind(this)
+      );
+      this.$.fileupload.addEventListener(
+        "upload-response",
+        this._fileUploadResponse.bind(this)
+      );
     }
-    this.fire("hax-register-manager", this);
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
-    document.body.addEventListener(
-      "hax-app-picker-selection",
-      this._haxAppPickerSelection.bind(this)
-    );
-    document.body.addEventListener(
-      "place-holder-file-drop",
-      this._placeHolderFileDrop.bind(this)
-    );
   },
   detached: function() {
     document.body.removeEventListener(
@@ -286,6 +308,27 @@ Polymer({
     document.body.removeEventListener(
       "place-holder-file-drop",
       this._placeHolderFileDrop.bind(this)
+    );
+    this.$.dialog.removeEventListener(
+      "iron-overlay-canceled",
+      this.close.bind(this)
+    );
+    this.$.dialog.removeEventListener(
+      "iron-overlay-closed",
+      this.close.bind(this)
+    );
+    this.$.closedialog.removeEventListener("tap", this.close.bind(this));
+    this.$.newassetconfigure.removeEventListener(
+      "tap",
+      this.newAssetConfigure.bind(this)
+    );
+    this.$.fileupload.removeEventListener(
+      "upload-before",
+      this._fileAboutToUpload.bind(this)
+    );
+    this.$.fileupload.removeEventListener(
+      "upload-response",
+      this._fileUploadResponse.bind(this)
     );
   },
   togglePanelSize: function() {

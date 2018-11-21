@@ -12,7 +12,7 @@ Polymer({
         display: block;
         width: 32px;
       }
-      :host:hover {
+      :host(:hover) {
         opacity: 1;
       }
       hax-context-item {

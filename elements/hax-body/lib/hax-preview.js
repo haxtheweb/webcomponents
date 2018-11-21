@@ -110,6 +110,7 @@ Polymer({
         height: 80px;
         border-bottom: 1px #e5e5e5 solid;
         display: block;
+        justify-content: space-evenly;
         --paper-tabs-selection-bar-color: var(--simple-colors-light-green-background1);
         --paper-tabs: {
           background: transparent;
@@ -117,6 +118,8 @@ Polymer({
       }
 
       #modetabs paper-tab {
+        display: inline-flex;
+        height:100%;
         --paper-tab-ink: var(--simple-colors-light-green-background1);
         --paper-tab: {
           font-size: 16px;
@@ -125,6 +128,7 @@ Polymer({
       #modetabs paper-tab paper-button {
         min-width: unset;
         width: 100%;
+        height:100%;
       }
       .human-name {
         width: 100%;

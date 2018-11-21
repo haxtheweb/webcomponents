@@ -12,7 +12,6 @@ import "./hax-stax-picker.js";
 import "./hax-blox-picker.js";
 Polymer({
   _template: html`
-  <custom-style>
     <style>
       :host {
         display: block;
@@ -30,7 +29,8 @@ Polymer({
         display: flex;
         --app-drawer-width: 100%;
         --app-drawer-content-container: {
-          height:unset;
+        --app-drawer-content-container_-_height: 64px;
+        --app-drawer-content-container_-_padding: 0;
           width: 100%;
           left: 0;
           right: 0;
@@ -44,11 +44,11 @@ Polymer({
           white-space: nowrap;
         }
       }
-      :host[align="right"] app-drawer {
+      :host([align="right"]) app-drawer {
         right: 0;
         left: unset;
       }
-      :host[edit-mode] app-drawer {
+      :host([edit-mode]) app-drawer {
         visibility: visible;
         transition: .6s ease opacity;
         opacity: .9;
@@ -56,7 +56,7 @@ Polymer({
         left: 0;
         top: 0;
       }
-      :host[edit-mode] app-drawer:hover {
+      app-drawer[opened]:hover {
         opacity: 1;
       }
       #button {
@@ -70,7 +70,7 @@ Polymer({
         opacity: .9;
         border-radius: 50%;
       }
-      :host[edit-mode] #button {
+      :host([edit-mode]) #button {
         visibility: hidden;
         opacity: 0;
         transition: all .8s ease;
@@ -78,7 +78,7 @@ Polymer({
       #button:hover {
         opacity: 1;
       }
-      :host[align="right"] #button {
+      :host([align="right"]) #button {
         right: 0;
         left: unset;
       }
@@ -88,12 +88,11 @@ Polymer({
         }
       }
     </style>
-  </custom-style>
-    <div hidden\$="[[hidePanelOps]]">
-      <hax-panel-item data-opened\$="[[editMode]]" on-tap="_clickEditButton" icon="create" id="button" edged="[[align]]" label="[[__tipText]]"></hax-panel-item>
+    <div hidden$="[[hidePanelOps]]">
+      <hax-panel-item light="[[light]]" data-opened$="[[editMode]]" on-tap="_clickEditButton" icon="create" id="button" edged="[[align]]" label="[[__tipText]]"></hax-panel-item>
     </div>
-    <app-drawer id="drawer" opened="{{editMode}}" disable-swipe="" persistent="" transition-duration="800" align="[[align]]">
-      <hax-panel-item hidden\$="[[hidePanelOps]]" on-tap="_clickSaveButton" icon="save" id="haxsavebutton" label="[[__tipText]]" event-name="save" voice-command="save content"></hax-panel-item>
+    <app-drawer id="drawer" opened="{{editMode}}" disable-swipe persistent transition-duration="800" align="[[align]]">
+      <hax-panel-item hidden$="[[hidePanelOps]]" on-tap="_clickSaveButton" icon="save" id="haxsavebutton" label="[[__tipText]]" event-name="save" voice-command="save content"></hax-panel-item>
       <hax-panel-item icon="image:add-to-photos" icon-class="amber-text" label="Add" event-name="hax-manager-open" value="0"></hax-panel-item>
       <hax-panel-item icon="search" icon-class="amber-text" label="Find" event-name="hax-manager-open" value="1"></hax-panel-item>
       <hax-panel-item icon="hardware:toys" icon-class="amber-text" label="Make" event-name="hax-manager-open" value="2"></hax-panel-item>
@@ -104,9 +103,9 @@ Polymer({
       <hax-panel-item icon="image:transform" icon-class="light-blue-text" label="Placeholder" event-name="placeholder" voice-command="insert placeholder"></hax-panel-item>
       <hax-panel-item icon="editor:space-bar" icon-class="light-blue-text text-darken-1" label="Divider" event-name="divider" voice-command="insert divider"></hax-panel-item>
       <slot></slot>
-      <hax-panel-item hidden\$="[[hidePreferencesButton]]" on-tap="_preferencesDialog" icon="settings" label="Preferences"></hax-panel-item>
-      <hax-panel-item hidden\$="[[hideExportButton]]" on-tap="_htmlExportDialog" icon="code" label="Export"></hax-panel-item>
-      <hax-panel-item hidden\$="[[hidePanelOps]]" icon="cancel" id="haxcancelbutton" label="Cancel" event-name="cancel" voice-command="cancel hax"></hax-panel-item>
+      <hax-panel-item hidden$="[[hidePreferencesButton]]" on-tap="_preferencesDialog" icon="settings" label="Preferences"></hax-panel-item>
+      <hax-panel-item hidden$="[[hideExportButton]]" on-tap="_htmlExportDialog" icon="code" label="Export"></hax-panel-item>
+      <hax-panel-item hidden$="[[hidePanelOps]]" icon="cancel" id="haxcancelbutton" label="Cancel" event-name="cancel" voice-command="cancel hax"></hax-panel-item>
     </app-drawer>
     <hax-stax-picker></hax-stax-picker>
     <hax-blox-picker></hax-blox-picker>
@@ -117,6 +116,7 @@ Polymer({
   observers: ["_globalPreferencesChanged(globalPreferences.*)"],
   behaviors: [simpleColorsBehaviors],
   properties: {
+    light: { type: Boolean },
     align: { type: String, reflectToAttribute: !0, value: "left" },
     editMode: {
       type: Boolean,
@@ -217,7 +217,9 @@ Polymer({
         detail.tag = "img";
         detail.content = "";
         detail.properties = {
-          src: this.resolveUrl(window.HaxStore.instance.defaults.image.src),
+          src:
+            pathFromUrl(import.meta.url) +
+            window.HaxStore.instance.defaults.image.src,
           alt: window.HaxStore.instance.defaults.image.alt,
           style: "width:100%;"
         };

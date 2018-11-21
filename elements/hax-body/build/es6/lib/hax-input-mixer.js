@@ -14,7 +14,8 @@ import "./hax-context-item-menu.js";
 import "./hax-context-item.js";
 Polymer({
   _template: html`
-    <style>
+    <custom-style>
+    <style is="custom-style">
       :host {
         display: block;
         color: #FFFFFF;
@@ -52,9 +53,9 @@ Polymer({
           background: transparent;
           margin: 0;
           padding: 0;
-          min-width: 20em;
-          line-height: 1em;
-          font-size: 1em;
+          min-width: 320px;
+          line-height: 16px;
+          font-size: 16px;
           margin-top: -8px;
           margin-bottom: 8px;
           outline: none;
@@ -65,6 +66,7 @@ Polymer({
         color: #FFFFFF;
       }
     </style>
+    </custom-style>
     <app-toolbar>
       <template is="dom-if" if="[[__inputselect]]">
         <span class="input-mixer-label">[[label]]</span>

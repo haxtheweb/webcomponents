@@ -11,23 +11,18 @@ define([
   "./hax-toolbar.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_ebc77430dbb911e89b94f594419eb4d2() {
-    var data = babelHelpers.taggedTemplateLiteral(
-      [
-        '\n    <style>\n      :host {\n        display: block;\n        height: 32px;\n        background-color: white;\n      }\n      hax-context-item {\n        margin: 0;\n        height: 32px;\n      }\n      .human-name {\n        font-size: 16px;\n        border-top-left-radius: 25%;\n        border-top-right-radius: 25%;\n        line-height: 16px;\n        font-family: sans-serif;\n        width: -webkit-fit-content;\n        width: -moz-max-content;\n        width: fit-content;\n        background-color: white;\n      }\n      .human-name-inner {\n        font-size: 16px;\n        border-top-left-radius: 25%;\n        border-top-right-radius: 25%;\n        margin: -32px 0px 0 34px;\n        line-height: 16px;\n        padding: 8px 16px 8px 8px;\n        font-family: sans-serif;\n        width: -webkit-fit-content;\n        width: -moz-max-content;\n        width: fit-content;\n        background-color: black;\n        color: white;\n        opacity: .4;\n        transition: .6s all ease;\n      }\n      :host:hover .human-name-inner {\n        opacity: 1;\n      }\n      :host.hax-context-pin-top hax-toolbar {\n        position: fixed;\n        top: 64px;\n        opacity: .95;\n      }\n      :host.hax-context-pin-bottom hax-toolbar {\n        position: fixed;\n        bottom: 0;\n        opacity: .95;\n      }\n    </style>\n    <div class="human-name">\n      <div class="human-name-inner">[[humanName]]</div>\n    </div>\n    <hax-toolbar hax-properties="[[haxProperties]]" size="{{ceSize}}">\n      <slot></slot>\n      <hax-context-item slot="primary" icon="icons:settings" label="Settings" event-name="hax-manager-configure" hidden$="[[!__hasSettingsForm]]"></hax-context-item>\n      <hax-context-item slot="primary" icon="icons:view-quilt" label="[[__parentName]]" event-name="hax-manager-configure-container" hidden$="[[!__hasParentSettingsForm]]"></hax-context-item>\n    </hax-toolbar>\n'
-      ],
-      [
-        '\n    <style>\n      :host {\n        display: block;\n        height: 32px;\n        background-color: white;\n      }\n      hax-context-item {\n        margin: 0;\n        height: 32px;\n      }\n      .human-name {\n        font-size: 16px;\n        border-top-left-radius: 25%;\n        border-top-right-radius: 25%;\n        line-height: 16px;\n        font-family: sans-serif;\n        width: -webkit-fit-content;\n        width: -moz-max-content;\n        width: fit-content;\n        background-color: white;\n      }\n      .human-name-inner {\n        font-size: 16px;\n        border-top-left-radius: 25%;\n        border-top-right-radius: 25%;\n        margin: -32px 0px 0 34px;\n        line-height: 16px;\n        padding: 8px 16px 8px 8px;\n        font-family: sans-serif;\n        width: -webkit-fit-content;\n        width: -moz-max-content;\n        width: fit-content;\n        background-color: black;\n        color: white;\n        opacity: .4;\n        transition: .6s all ease;\n      }\n      :host:hover .human-name-inner {\n        opacity: 1;\n      }\n      :host.hax-context-pin-top hax-toolbar {\n        position: fixed;\n        top: 64px;\n        opacity: .95;\n      }\n      :host.hax-context-pin-bottom hax-toolbar {\n        position: fixed;\n        bottom: 0;\n        opacity: .95;\n      }\n    </style>\n    <div class="human-name">\n      <div class="human-name-inner">[[humanName]]</div>\n    </div>\n    <hax-toolbar hax-properties="[[haxProperties]]" size="{{ceSize}}">\n      <slot></slot>\n      <hax-context-item slot="primary" icon="icons:settings" label="Settings" event-name="hax-manager-configure" hidden\\$="[[!__hasSettingsForm]]"></hax-context-item>\n      <hax-context-item slot="primary" icon="icons:view-quilt" label="[[__parentName]]" event-name="hax-manager-configure-container" hidden\\$="[[!__hasParentSettingsForm]]"></hax-context-item>\n    </hax-toolbar>\n'
-      ]
-    );
-    _templateObject_ebc77430dbb911e89b94f594419eb4d2 = function() {
+  function _templateObject_75cba690edbe11e883a5d91bd26efb3f() {
+    var data = babelHelpers.taggedTemplateLiteral([
+      '\n    <style>\n      :host {\n        display: block;\n        height: 32px;\n        background-color: white;\n      }\n      hax-context-item {\n        margin: 0;\n        height: 32px;\n      }\n      .human-name {\n        font-size: 16px;\n        border-top-left-radius: 25%;\n        border-top-right-radius: 25%;\n        line-height: 16px;\n        font-family: sans-serif;\n        width: -webkit-fit-content;\n        width: -moz-max-content;\n        width: fit-content;\n        background-color: white;\n      }\n      .human-name-inner {\n        font-size: 16px;\n        border-top-left-radius: 25%;\n        border-top-right-radius: 25%;\n        margin: -32px 0px 0 34px;\n        line-height: 16px;\n        padding: 8px 16px 8px 8px;\n        font-family: sans-serif;\n        width: -webkit-fit-content;\n        width: -moz-max-content;\n        width: fit-content;\n        background-color: black;\n        color: white;\n        opacity: .4;\n        transition: .6s all ease;\n      }\n      :host(:hover) .human-name-inner {\n        opacity: 1;\n      }\n      :host(.hax-context-pin-top) hax-toolbar {\n        position: fixed;\n        top: 64px;\n        opacity: .95;\n      }\n      :host(.hax-context-pin-bottom) hax-toolbar {\n        position: fixed;\n        bottom: 0;\n        opacity: .95;\n      }\n    </style>\n    <div class="human-name">\n      <div class="human-name-inner">[[humanName]]</div>\n    </div>\n    <hax-toolbar hax-properties="[[haxProperties]]" size="{{ceSize}}">\n      <slot slot="primary"></slot>\n      <hax-context-item slot="primary" icon="icons:settings" label="Settings" event-name="hax-manager-configure" hidden$="[[!__hasSettingsForm]]"></hax-context-item>\n      <hax-context-item slot="primary" icon="icons:view-quilt" label="[[__parentName]]" event-name="hax-manager-configure-container" hidden$="[[!__hasParentSettingsForm]]"></hax-context-item>\n    </hax-toolbar>\n'
+    ]);
+    _templateObject_75cba690edbe11e883a5d91bd26efb3f = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_ebc77430dbb911e89b94f594419eb4d2()
+      _templateObject_75cba690edbe11e883a5d91bd26efb3f()
     ),
     is: "hax-ce-context",
     properties: {
@@ -104,13 +99,11 @@ define([
         } else {
           this.humanName = newValue.gizmo.title;
         }
-        var item;
-        for (i = 0; i < settings.length; i++) {
-          var setting = settings[i];
+        for (var item, i = 0, setting; i < settings.length; i++) {
+          setting = settings[i];
           item = document.createElement("hax-context-item");
           item.eventName = "hax-edit-property";
           item.label = setting.title;
-          item.setAttribute("slot", "primary");
           item.options = setting.options;
           item.icon = setting.icon;
           item.inputMethod = setting.inputMethod;
