@@ -6,7 +6,7 @@ import "../node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "../node_modules/@polymer/paper-item/paper-item.js";
 import "../node_modules/@polymer/iron-icons/iron-icons.js";
 import "../node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js";
-import "../../../node_modules/@lrnwebcomponents/md-extra-icons/md-extra-icons.js";
+import "../node_modules/@lrnwebcomponents/md-extra-icons/md-extra-icons.js";
 import "./hax-context-item-menu.js";
 import "./hax-context-item.js";
 import "./hax-context-item-textop.js";
@@ -37,12 +37,12 @@ Polymer({
         padding: 8px;
         font-size: 12px;
       }
-      :host.hax-context-pin-top hax-toolbar {
+      :host(.hax-context-pin-top) hax-toolbar {
         position: fixed;
         top: 64px;
         opacity: .95;
       }
-      :host.hax-context-pin-bottom hax-toolbar {
+      :host(.hax-context-pin-bottom) hax-toolbar {
         position: fixed;
         bottom: 0;
         opacity: .95;
@@ -115,18 +115,20 @@ Polymer({
         this.$.formatsize.$.menu.hideMenu();
         break;
       case "insert-inline-gizmo":
-        let values = {
-            text: window.HaxStore.instance.activePlaceHolder.toString()
-          },
-          type = "inline",
-          haxElements = window.HaxStore.guessGizmo(type, values);
-        if (0 < haxElements.length) {
-          window.HaxStore.instance.haxAppPicker.presentOptions(
-            haxElements,
-            type,
-            "Transform selected text to..",
-            "gizmo"
-          );
+        if (null != window.HaxStore.instance.activePlaceHolder) {
+          let values = {
+              text: window.HaxStore.instance.activePlaceHolder.toString()
+            },
+            type = "inline",
+            haxElements = window.HaxStore.guessGizmo(type, values);
+          if (0 < haxElements.length) {
+            window.HaxStore.instance.haxAppPicker.presentOptions(
+              haxElements,
+              type,
+              "Transform selected text to..",
+              "gizmo"
+            );
+          }
         }
         break;
       case "text-bold":

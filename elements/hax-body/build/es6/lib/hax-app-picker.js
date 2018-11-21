@@ -4,6 +4,9 @@ import {
 } from "../node_modules/@polymer/polymer/polymer-legacy.js";
 import { dom } from "../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
 import "../node_modules/@polymer/iron-list/iron-list.js";
+import "../node_modules/@polymer/iron-icon/iron-icon.js";
+import "../node_modules/@polymer/iron-icons/iron-icons.js";
+import "../node_modules/@polymer/paper-button/paper-button.js";
 import "../node_modules/@polymer/paper-dialog/paper-dialog.js";
 import "../node_modules/@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "../node_modules/@polymer/paper-ripple/paper-ripple.js";
@@ -27,14 +30,18 @@ Polymer({
         transition: .3s all linear;
         display: inline-flex;
       }
-      paper-icon-button.close {
+      #closedialog {
         float: right;
-        top: 0;
+        top: 15px;
         right: 0;
         position: absolute;
         padding: 4px;
         margin: 0;
-        color: var(--simple-colors-light-green-background1);
+        color: var(--simple-colors-light-green-background1, green);
+        background-color: transparent;
+        width: 40px;
+        height: 40px;
+        min-width: unset;
       }
       #ironlist {
         width: 100%;
@@ -68,8 +75,8 @@ Polymer({
       #buttonlist {
         display: block;
         text-align: left;
-        margin: auto;
-        padding: 8px;
+        margin: -32px;
+        padding: 32px;
         overflow-x: hidden;
         overflow-y: auto;
         --paper-dialog-scrollable: {
@@ -111,23 +118,26 @@ Polymer({
         }
       }
     </style>
-    <paper-dialog id="dialog" with-backdrop="" always-on-top="">
+    <paper-dialog id="dialog" with-backdrop always-on-top>
       <h3 id="title">[[title]]</h3>
       <paper-dialog-scrollable id="buttonlist">
-        <iron-list id="ironlist" items="[[selectionList]]" as="element" grid="">
+        <iron-list id="ironlist" items="[[selectionList]]" as="element" grid>
           <template>
             <div>
-            <hax-app-picker-item id\$="picker-item-[[index]]" class="element-button" on-tap="_selected" data-selected\$="[[index]]" label="[[element.title]]" icon="[[element.icon]]" color="[[element.color]]"></hax-app-picker-item></div>
+              <hax-app-picker-item id$="picker-item-[[index]]" class="element-button" on-tap="_selected" data-selected\$="[[index]]" label="[[element.title]]" icon="[[element.icon]]" color="[[element.color]]"></hax-app-picker-item>
+            </div>
           </template>
         </iron-list>
       </paper-dialog-scrollable>
-      <paper-icon-button dialog-dismiss="" icon="icons:cancel" class="close" title="Close dialog"></paper-icon-button>
+      <paper-button id="closedialog" on-tap="close">
+        <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
+      </paper-button>
     </paper-dialog>
 `,
   is: "hax-app-picker",
   listeners: {
-    "dialog.iron-overlay-canceled": "close",
-    "dialog.iron-overlay-closed": "close"
+    "iron-overlay-canceled": "close",
+    "iron-overlay-closed": "close"
   },
   behaviors: [simpleColorsBehaviors],
   properties: {

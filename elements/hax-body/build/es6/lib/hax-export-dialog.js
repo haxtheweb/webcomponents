@@ -3,10 +3,11 @@ import {
   Polymer
 } from "../node_modules/@polymer/polymer/polymer-legacy.js";
 import "../node_modules/@polymer/app-layout/app-drawer/app-drawer.js";
-import "../node_modules/@polymer/paper-icon-button/paper-icon-button.js";
+import "../node_modules/@polymer/iron-icon/iron-icon.js";
+import "../node_modules/@polymer/iron-icons/iron-icons.js";
 import "../node_modules/@polymer/paper-input/paper-input.js";
 import "../node_modules/@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/dl-behavior/dl-behavior.js";
+import "../node_modules/@lrnwebcomponents/dl-behavior/dl-behavior.js";
 import "../node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";
 Polymer({
   _template: html`
@@ -17,15 +18,6 @@ Polymer({
       #dialog {
         z-index: 1000;
         margin-top: 64px;
-      }
-      paper-icon-button#closedialog {
-        float: right;
-        top: 135px;
-        right: 0;
-        position: absolute;
-        padding: 4px;
-        margin: 0;
-        color: var(--simple-colors-light-green-background1);
       }
       .title {
         margin-top: 32px;
@@ -49,7 +41,13 @@ Polymer({
         };
         --app-drawer-width: 320px;
       }
-      paper-button {
+      .buttons paper-button:focus,
+      .buttons paper-button:hover {
+        background-color: var(--simple-colors-light-green-background1);
+        border-color: var(--simple-colors-light-green-background1);
+        outline: 2px solid var(--simple-colors-light-green-background1);
+      }
+      .buttons paper-button {
         color: #222222;
         text-transform: none;
         margin:0;
@@ -59,18 +57,21 @@ Polymer({
         border-style: solid;
         border-width: 1px;
         min-width: unset;
-      }
-      paper-button:focus,
-      paper-button:hover {
-        background-color: var(--simple-colors-light-green-background1);
-        border-color: var(--simple-colors-light-green-background1);
-        outline: 2px solid var(--simple-colors-light-green-background1);
-      }
-      .buttons paper-button {
-        color: black;
         font-size: 12px;
         font-weight: bold;
-        text-transform: none;
+      }
+      #closedialog {
+        float: right;
+        top: 135px;
+        right: 0;
+        position: absolute;
+        padding: 4px;
+        margin: 0;
+        color: var(--simple-colors-light-green-background1, green);
+        background-color: transparent;
+        width: 40px;
+        height: 40px;
+        min-width: unset;
       }
       #textarea {
         margin-bottom: 16px;
@@ -95,40 +96,59 @@ Polymer({
           <paper-button id="copy" raised="">Copy to clipboard</paper-button>
           <paper-button id="import" raised="" hidden\$="[[!globalPreferences.haxDeveloperMode]]">Import textarea into HAX</paper-button>
           <paper-button id="elementexport" raised="" hidden\$="[[!globalPreferences.haxDeveloperMode]]">Copy as HAX schema to clipboard</paper-button>
-          <paper-button id="close" raised="">Close dialog</paper-button>
         </div>
       </div>
-      <paper-icon-button id="closedialog" on-tap="close" icon="icons:cancel" title="Close dialog"></paper-icon-button>
+      <paper-button id="closedialog" on-tap="close">
+        <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
+      </paper-button>
     </app-drawer>
 `,
   is: "hax-export-dialog",
-  listeners: {
-    "download.tap": "download",
-    "downloadfull.tap": "downloadfull",
-    "import.tap": "importContent",
-    "copy.tap": "selectBody",
-    "close.tap": "close",
-    "elementexport.tap": "htmlToHaxElements"
-  },
   behaviors: [mtz.FileDownloadBehaviors, simpleColorsBehaviors],
   properties: {
     title: { type: String, value: "Export" },
     globalPreferences: { type: Object, value: {} }
   },
-  ready: function() {
-    document.body.appendChild(this);
-    document.body.addEventListener(
-      "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
-    );
+  created: function() {
+    this.__attached = !1;
   },
   attached: function() {
-    this.fire("hax-register-export", this);
+    if (!this.__attached) {
+      this.__attached = !0;
+      document.body.appendChild(this);
+    } else {
+      this.fire("hax-register-export", this);
+      document.body.addEventListener(
+        "hax-store-property-updated",
+        this._haxStorePropertyUpdated.bind(this)
+      );
+      this.$.download.addEventListener("tap", this.download.bind(this));
+      this.$.downloadfull.addEventListener("tap", this.downloadfull.bind(this));
+      this.$.import.addEventListener("tap", this.importContent.bind(this));
+      this.$.copy.addEventListener("tap", this.selectBody.bind(this));
+      this.$.closedialog.addEventListener("tap", this.close.bind(this));
+      this.$.elementexport.addEventListener(
+        "tap",
+        this.htmlToHaxElements.bind(this)
+      );
+    }
   },
   detached: function() {
     document.body.removeEventListener(
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
+    );
+    this.$.download.removeEventListener("tap", this.download.bind(this));
+    this.$.downloadfull.removeEventListener(
+      "tap",
+      this.downloadfull.bind(this)
+    );
+    this.$.import.removeEventListener("tap", this.importContent.bind(this));
+    this.$.copy.removeEventListener("tap", this.selectBody.bind(this));
+    this.$.closedialog.removeEventListener("tap", this.close.bind(this));
+    this.$.elementexport.removeEventListener(
+      "tap",
+      this.htmlToHaxElements.bind(this)
     );
   },
   _haxStorePropertyUpdated: function(e) {

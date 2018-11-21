@@ -135,8 +135,10 @@ Polymer({
     __appStoreData: { type: Object }
   },
   isTextElement: function(node) {
-    let tag = node.tagName.toLowerCase();
-    if (this.validTagList.includes(tag)) {
+    if (
+      null != node &&
+      this.validTagList.includes(node.tagName.toLowerCase())
+    ) {
       if (
         [
           "p",
@@ -153,7 +155,7 @@ Polymer({
           "blockquote",
           "code",
           "figure"
-        ].includes(tag)
+        ].includes(node.tagName.toLowerCase())
       ) {
         return !0;
       }
@@ -196,7 +198,7 @@ Polymer({
     }
   },
   _loadAppStoreData: function(appDataResponse, haxAutoloader) {
-    if (typeof appDataResponse !== typeof void 0) {
+    if (typeof appDataResponse !== typeof void 0 && null != appDataResponse) {
       if (typeof appDataResponse.autoloader !== typeof void 0) {
         for (var i = 0; i < appDataResponse.autoloader.length; i++) {
           let loader = document.createElement(appDataResponse.autoloader[i]);
@@ -380,6 +382,8 @@ Polymer({
     });
     this._injectToast();
     this._buildPrimitiveDefinitions();
+    this.fire("hax-store-ready", !0);
+    window.HaxStore.ready = !0;
   },
   __splitNode: function(node, limit) {
     window.HaxStore.write("activeNode", null, this);
@@ -953,7 +957,7 @@ Polymer({
             typeof e.target.parentElement !== typeof void 0 &&
             "HAX-AUTOLOADER" === e.target.parentElement.tagName
           ) {
-            dom(e.target.parentElement).removeChild(e.target);
+            dom(this.haxAutoloader).removeChild(e.target);
           }
         }
         this.set("elementList." + e.detail.tag, e.detail.properties);

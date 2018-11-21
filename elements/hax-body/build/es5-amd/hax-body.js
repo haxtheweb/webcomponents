@@ -1,6 +1,7 @@
 define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
+  "./node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js",
   "./node_modules/@polymer/polymer/lib/utils/flush.js",
   "./node_modules/@polymer/polymer/lib/utils/async.js",
   "./node_modules/@polymer/paper-item/paper-item.js",
@@ -10,13 +11,19 @@ define([
   "./lib/hax-ce-context.js",
   "./lib/hax-plate-context.js",
   "./lib/hax-input-mixer.js"
-], function(_polymerLegacy, _polymerDom, _flush, async) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _flattenedNodesObserver,
+  _flush,
+  async
+) {
   "use strict";
   async = babelHelpers.interopRequireWildcard(async);
   var $_documentContainer = document.createElement("div");
   $_documentContainer.setAttribute("style", "display: none;");
   $_documentContainer.innerHTML =
-    '<dom-module id="hax-body">\n  <template strip-whitespace="">\n    <style>\n      :host {\n        display: block;\n        min-height: 32px;\n        min-width: 32px;\n        /*font-family: sans-serif;*/\n      }\n      :host #bodycontainer ::slotted(.hax-context-menu) {\n        padding: 0;\n        margin: 0;\n        position: absolute;\n        visibility: hidden;\n        opacity: 0;\n        transition: all .3s ease;\n        z-index: 100;\n        float: left;\n        display: block;\n      }\n      :host #bodycontainer ::slotted(#haxinputmixer) {\n        z-index: 10000000;\n      }\n      :host #bodycontainer ::slotted(.hax-context-visible) {\n        visibility: visible;\n        opacity: 1;\n      }\n      :host[edit-mode] #bodycontainer ::slotted(*[data-editable]) {\n        outline: none;\n        transition:\n          .6s width ease-in-out,\n          .6s height ease-in-out,\n          .6s margin ease-in-out;\n      }\n      :host[edit-mode] #bodycontainer ::slotted(p):empty {\n        background: #f8f8f8;\n      }\n      :host[edit-mode] #bodycontainer ::slotted(*[data-editable]):hover {\n        outline: 1px dotted #d3d3d3;\n        outline-offset: 2px;\n      }\n      :host[edit-mode] #bodycontainer ::slotted(* [data-editable]):hover {\n        outline: 1px dotted #d3d3d3;\n        outline-offset: 2px;\n      }\n      :host[edit-mode] #bodycontainer ::slotted(*[data-editable])::before {\n        content: \'\';\n        display: block;\n        position: absolute;\n        top: 0;\n        left: 0;\n        bottom: 0;\n        width: 32px;\n        transition: .6s all ease;\n      }\n      :host[edit-mode] #bodycontainer ::slotted(*[data-editable]):hover::before {\n        content: \'\';\n        display: block;\n        position: absolute;\n        top: 0;\n        left: 0;\n        bottom: 0;\n        width: 32px;\n        transition: .6s all ease;\n      }\n      :host[edit-mode] #bodycontainer ::slotted(*.hax-active[data-editable]) {\n        cursor: text !important;\n        outline: 1px dashed #c3c3c3 !important;\n        outline-offset: 4px;\n      }\n      :host[edit-mode] #bodycontainer ::slotted(*[data-editable] .hax-active) {\n        cursor: text !important;\n        outline: 1px dashed #c3c3c3 !important;\n        outline-offset: 4px;\n      }\n      :host[edit-mode] #bodycontainer ::slotted(*.hax-active[data-editable])::before {\n        content: \'\';\n        display: block;\n        position: absolute;\n        top: 0;\n        left: 0;\n        bottom: 0;\n        width: 32px;\n        transition: .6s all ease;\n      }\n      :host[edit-mode] #bodycontainer ::slotted(code.hax-active[data-editable]) {\n        display: block;\n      }\n      :host[edit-mode] #bodycontainer ::slotted(hr[data-editable]) {\n        height:4px;\n        background-color: #EEEEEE;\n        padding-top: 8px;\n        padding-bottom: 8px;\n      }\n      /** Fix to support safari as it defaults to none */\n      :host[edit-mode] #bodycontainer ::slotted(*[data-editable]) {\n        -webkit-user-select: text;\n        cursor:pointer;\n      }\n\n      :host[edit-mode] #bodycontainer ::slotted(*[data-editable]::-moz-selection),\n      :host[edit-mode] #bodycontainer ::slotted(*[data-editable] *::-moz-selection) {\n        background-color: var(--hax-body-highlight, --paper-yellow-300);\n        color: black;\n      }\n      :host[edit-mode] #bodycontainer ::slotted(*[data-editable]::selection),\n      :host[edit-mode] #bodycontainer ::slotted(*[data-editable] *::selection) {\n        background-color: var(--hax-body-highlight, --paper-yellow-300);\n        color: black;\n      }\n      #bodycontainer {\n        -webkit-user-select: text;\n        user-select: text;\n      }\n\n      #contextcontainer {\n        display: none;\n      }\n      :host[edit-mode][hax-ray-mode] #bodycontainer ::slotted(*[data-editable]) {\n        outline: 1px dashed #d3d3d3;\n        outline-offset: 4px;\n      }\n      :host[edit-mode][hax-ray-mode] #bodycontainer ::slotted(*[data-editable])::before {\n        content: attr(data-hax-ray) " " attr(resource) " " attr(typeof) " " attr(property) " " attr(content);\n        font-size: 10px;\n        font-style: italic;\n        left: unset;\n        right: unset;\n        top: unset;\n        background-color: #d3d3d3;\n        color: #000000;\n        bottom: unset;\n        width: auto;\n        padding: 8px;\n        margin: 0;\n        z-index: 1;\n        margin: -16px 0 0 0;\n        float: left;\n        line-height: 2;\n      }\n    </style>\n    <div id="bodycontainer" class="ignore-activation">\n      <slot id="body"></slot>\n    </div>\n    <div id="contextcontainer">\n      <hax-text-context id="textcontextmenu" class="hax-context-menu ignore-activation"></hax-text-context>\n      <hax-ce-context id="cecontextmenu" class="hax-context-menu ignore-activation"></hax-ce-context>\n      <hax-plate-context id="platecontextmenu" class="hax-context-menu ignore-activation"></hax-plate-context>\n      <hax-input-mixer id="haxinputmixer" class="hax-context-menu ignore-activation"></hax-input-mixer>\n    </div>\n    <iron-a11y-keys target="[[activeContainerNode]]" keys="esc" on-keys-pressed="_escKeyPressed" stop-keyboard-event-propagation=""></iron-a11y-keys>\n    <iron-a11y-keys target="[[activeContainerNode]]" keys="del backspace" on-keys-pressed="_delKeyPressed"></iron-a11y-keys>\n    <iron-a11y-keys target="[[activeContainerNode]]" keys="shift+tab" on-keys-pressed="_tabBackKeyPressed" stop-keyboard-event-propagation=""></iron-a11y-keys>\n    <iron-a11y-keys target="[[activeContainerNode]]" keys="tab" on-keys-pressed="_tabKeyPressed" stop-keyboard-event-propagation=""></iron-a11y-keys>\n    <iron-a11y-keys target="[[activeContainerNode]]" keys="up" on-keys-pressed="_upKeyPressed" stop-keyboard-event-propagation=""></iron-a11y-keys>\n    <iron-a11y-keys target="[[activeContainerNode]]" keys="down" on-keys-pressed="_downKeyPressed" stop-keyboard-event-propagation=""></iron-a11y-keys>\n\n  </template>\n\n  \n</dom-module>';
+    '<dom-module id="hax-body">\n  <template strip-whitespace="">\n    <style>\n      :host {\n        display: block;\n        min-height: 32px;\n        min-width: 32px;\n        /*font-family: sans-serif;*/\n      }\n      :host #bodycontainer ::slotted(.hax-context-menu) {\n        padding: 0;\n        margin: 0;\n        position: absolute;\n        visibility: hidden;\n        opacity: 0;\n        transition: all .3s ease;\n        z-index: 100;\n        float: left;\n        display: block;\n      }\n      :host #bodycontainer ::slotted(#haxinputmixer) {\n        z-index: 10000000;\n      }\n      :host #bodycontainer ::slotted(.hax-context-visible) {\n        visibility: visible;\n        opacity: 1;\n      }\n      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {\n        outline: none;\n        transition:\n          .6s width ease-in-out,\n          .6s height ease-in-out,\n          .6s margin ease-in-out;\n      }\n      :host([edit-mode]) #bodycontainer ::slotted(p):empty {\n        background: #f8f8f8;\n      }\n      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]):hover {\n        outline: 1px dotted #d3d3d3;\n        outline-offset: 2px;\n      }\n      :host([edit-mode]) #bodycontainer ::slotted(* [data-editable]):hover {\n        outline: 1px dotted #d3d3d3;\n        outline-offset: 2px;\n      }\n      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]):before {\n        content: \'\';\n        display: block;\n        position: absolute;\n        top: 0;\n        left: 0;\n        bottom: 0;\n        width: 32px;\n        transition: .6s all ease;\n      }\n      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]):hover:before {\n        content: \'\';\n        display: block;\n        position: absolute;\n        top: 0;\n        left: 0;\n        bottom: 0;\n        width: 32px;\n        transition: .6s all ease;\n      }\n      :host([edit-mode]) #bodycontainer ::slotted(*.hax-active[data-editable]) {\n        cursor: text !important;\n        outline: 1px dashed #c3c3c3 !important;\n        outline-offset: 4px;\n      }\n      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable] .hax-active) {\n        cursor: text !important;\n        outline: 1px dashed #c3c3c3 !important;\n        outline-offset: 4px;\n      }\n      :host([edit-mode]) #bodycontainer ::slotted(*.hax-active[data-editable]):before {\n        content: \'\';\n        display: block;\n        position: absolute;\n        top: 0;\n        left: 0;\n        bottom: 0;\n        width: 32px;\n        transition: .6s all ease;\n      }\n      :host([edit-mode]) #bodycontainer ::slotted(code.hax-active[data-editable]) {\n        display: block;\n      }\n      :host([edit-mode]) #bodycontainer ::slotted(hr[data-editable]) {\n        height:4px;\n        background-color: #EEEEEE;\n        padding-top: 8px;\n        padding-bottom: 8px;\n      }\n      /** Fix to support safari as it defaults to none */\n      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {\n        -webkit-user-select: text;\n        cursor:pointer;\n      }\n\n      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]::-moz-selection),\n      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable] *::-moz-selection) {\n        background-color: var(--hax-body-highlight, --paper-yellow-300);\n        color: black;\n      }\n      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]::selection),\n      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable] *::selection) {\n        background-color: var(--hax-body-highlight, --paper-yellow-300);\n        color: black;\n      }\n      #bodycontainer {\n        -webkit-user-select: text;\n        user-select: text;\n      }\n\n      #contextcontainer {\n        display: none;\n      }\n      :host([edit-mode])[hax-ray-mode] #bodycontainer ::slotted(*[data-editable]) {\n        outline: 1px dashed #d3d3d3;\n        outline-offset: 4px;\n      }\n      :host([edit-mode])[hax-ray-mode] #bodycontainer ::slotted(*[data-editable]):before {\n        content: attr(data-hax-ray) " " attr(resource) " " attr(typeof) " " attr(property) " " attr(content);\n        font-size: 10px;\n        font-style: italic;\n        left: unset;\n        right: unset;\n        top: unset;\n        background-color: #d3d3d3;\n        color: #000000;\n        bottom: unset;\n        width: auto;\n        padding: 8px;\n        margin: 0;\n        z-index: 1;\n        margin: -16px 0 0 0;\n        float: left;\n        line-height: 2;\n      }\n    </style>\n    <div id="bodycontainer" class="ignore-activation">\n      <slot id="body"></slot>\n    </div>\n    <div id="contextcontainer">\n      <hax-text-context id="textcontextmenu" class="hax-context-menu ignore-activation"></hax-text-context>\n      <hax-ce-context id="cecontextmenu" class="hax-context-menu ignore-activation"></hax-ce-context>\n      <hax-plate-context id="platecontextmenu" class="hax-context-menu ignore-activation"></hax-plate-context>\n      <hax-input-mixer id="haxinputmixer" class="hax-context-menu ignore-activation"></hax-input-mixer>\n    </div>\n    <iron-a11y-keys target="[[activeContainerNode]]" keys="esc" on-keys-pressed="_escKeyPressed" stop-keyboard-event-propagation=""></iron-a11y-keys>\n    <iron-a11y-keys target="[[activeContainerNode]]" keys="del backspace" on-keys-pressed="_delKeyPressed"></iron-a11y-keys>\n    <iron-a11y-keys target="[[activeContainerNode]]" keys="shift+tab" on-keys-pressed="_tabBackKeyPressed" stop-keyboard-event-propagation=""></iron-a11y-keys>\n    <iron-a11y-keys target="[[activeContainerNode]]" keys="tab" on-keys-pressed="_tabKeyPressed" stop-keyboard-event-propagation=""></iron-a11y-keys>\n    <iron-a11y-keys target="[[activeContainerNode]]" keys="up" on-keys-pressed="_upKeyPressed" stop-keyboard-event-propagation=""></iron-a11y-keys>\n    <iron-a11y-keys target="[[activeContainerNode]]" keys="down" on-keys-pressed="_downKeyPressed" stop-keyboard-event-propagation=""></iron-a11y-keys>\n\n  </template>\n\n  \n</dom-module>';
   document.head.appendChild($_documentContainer);
   (0, _polymerLegacy.Polymer)({
     is: "hax-body",
@@ -55,33 +62,36 @@ define([
       }
     },
     ready: function ready() {
+      var _this = this;
       this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
-      this._observer = (0, _polymerDom.dom)(this).observeNodes(function(info) {
-        var _this = this;
-        (0, _flush.flush)();
-        if (0 < info.addedNodes.length) {
-          info.addedNodes.map(function(node) {
-            if (_this._haxElementTest(node)) {
-              if (_this._HTMLPrimativeTest(node)) {
-                node.contentEditable = _this.editMode;
+      this._observer = new _flattenedNodesObserver.FlattenedNodesObserver(
+        this,
+        function(info) {
+          (0, _flush.flush)();
+          if (0 < info.addedNodes.length) {
+            info.addedNodes.map(function(node) {
+              if (_this._haxElementTest(node)) {
+                if (_this._HTMLPrimativeTest(node)) {
+                  node.contentEditable = _this.editMode;
+                }
+                node.setAttribute("data-editable", _this.editMode);
+                node.setAttribute("data-hax-ray", node.tagName);
+                _this.fire("hax-body-tag-added", { node: node });
               }
-              node.setAttribute("data-editable", _this.editMode);
-              node.setAttribute("data-hax-ray", node.tagName);
-              _this.fire("hax-body-tag-added", { node: node });
-            }
-          });
+            });
+          }
+          if (0 < info.removedNodes.length) {
+            info.removedNodes.map(function(node) {
+              if (
+                _this._haxElementTest(node) &&
+                !node.classList.contains("hax-active")
+              ) {
+                _this.fire("hax-body-tag-removed", { node: node });
+              }
+            });
+          }
         }
-        if (0 < info.removedNodes.length) {
-          info.removedNodes.map(function(node) {
-            if (
-              _this._haxElementTest(node) &&
-              !node.classList.contains("hax-active")
-            ) {
-              _this.fire("hax-body-tag-removed", { node: node });
-            }
-          });
-        }
-      });
+      );
     },
     attached: function attached() {
       this.__tabTrap = !1;

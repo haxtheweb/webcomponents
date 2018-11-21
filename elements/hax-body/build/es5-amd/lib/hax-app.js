@@ -2,12 +2,19 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
   _polymerLegacy
 ) {
   "use strict";
-  var $_documentContainer = document.createElement("div");
-  $_documentContainer.setAttribute("style", "display: none;");
-  $_documentContainer.innerHTML =
-    '<dom-module id="hax-app">\n\n  <template>\n    <style>\n    :host {\n      display:none;\n    }\n  </style>\n  </template>\n\n  \n</dom-module>';
-  document.head.appendChild($_documentContainer);
+  function _templateObject_71c27a60edbe11e883a5d91bd26efb3f() {
+    var data = babelHelpers.taggedTemplateLiteral([
+      "\n  <style>\n    :host {\n      display:none;\n    }\n  </style>\n  "
+    ]);
+    _templateObject_71c27a60edbe11e883a5d91bd26efb3f = function() {
+      return data;
+    };
+    return data;
+  }
   (0, _polymerLegacy.Polymer)({
+    _template: (0, _polymerLegacy.html)(
+      _templateObject_71c27a60edbe11e883a5d91bd26efb3f()
+    ),
     is: "hax-app",
     properties: { data: { type: Object } },
     attached: function attached() {

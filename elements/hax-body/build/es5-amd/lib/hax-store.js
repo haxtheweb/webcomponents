@@ -12,11 +12,11 @@ define([
   "./hax-blox-browser.js"
 ], function(_polymerLegacy, _polymerDom) {
   "use strict";
-  function _templateObject_e8692e00dbb911e89b94f594419eb4d2() {
+  function _templateObject_7176f270edbe11e883a5d91bd26efb3f() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: none;\n      }\n    </style>\n    <slot></slot>\n    <iron-ajax id="appstore" url="[[appStore.url]]" params="[[appStore.params]]" method="GET" content-type="application/json" handle-as="json" last-response="{{__appStoreData}}"></iron-ajax>\n'
     ]);
-    _templateObject_e8692e00dbb911e89b94f594419eb4d2 = function() {
+    _templateObject_7176f270edbe11e883a5d91bd26efb3f = function() {
       return data;
     };
     return data;
@@ -31,7 +31,7 @@ define([
   };
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_e8692e00dbb911e89b94f594419eb4d2()
+      _templateObject_7176f270edbe11e883a5d91bd26efb3f()
     ),
     is: "hax-store",
     behaviors: [MediaBehaviors.Video, HAXBehaviors.PropertiesBehaviors],
@@ -138,8 +138,10 @@ define([
       __appStoreData: { type: Object }
     },
     isTextElement: function isTextElement(node) {
-      var tag = node.tagName.toLowerCase();
-      if (this.validTagList.includes(tag)) {
+      if (
+        null != node &&
+        this.validTagList.includes(node.tagName.toLowerCase())
+      ) {
         if (
           [
             "p",
@@ -156,7 +158,7 @@ define([
             "blockquote",
             "code",
             "figure"
-          ].includes(tag)
+          ].includes(node.tagName.toLowerCase())
         ) {
           return !0;
         }
@@ -203,7 +205,10 @@ define([
       haxAutoloader
     ) {
       var _this = this;
-      if (babelHelpers.typeof(appDataResponse) !== "undefined") {
+      if (
+        babelHelpers.typeof(appDataResponse) !== "undefined" &&
+        null != appDataResponse
+      ) {
         if (babelHelpers.typeof(appDataResponse.autoloader) !== "undefined") {
           for (var i = 0, loader; i < appDataResponse.autoloader.length; i++) {
             loader = document.createElement(appDataResponse.autoloader[i]);
@@ -408,6 +413,8 @@ define([
       });
       this._injectToast();
       this._buildPrimitiveDefinitions();
+      this.fire("hax-store-ready", !0);
+      window.HaxStore.ready = !0;
     },
     __splitNode: function __splitNode(node, limit) {
       var _this3 = this;
@@ -989,9 +996,7 @@ define([
               babelHelpers.typeof(e.target.parentElement) !== "undefined" &&
               "HAX-AUTOLOADER" === e.target.parentElement.tagName
             ) {
-              (0, _polymerDom.dom)(e.target.parentElement).removeChild(
-                e.target
-              );
+              (0, _polymerDom.dom)(this.haxAutoloader).removeChild(e.target);
             }
           }
           this.set("elementList." + e.detail.tag, e.detail.properties);

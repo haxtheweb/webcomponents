@@ -5,18 +5,18 @@ define([
   "./hax-icons.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_eb4e73a0dbb911e89b94f594419eb4d2() {
+  function _templateObject_73abacc0edbe11e883a5d91bd26efb3f() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n      hax-blox-browser-item {\n        margin: 10px;\n        -webkit-transition: .3s all linear;\n        transition: .3s all linear;\n      }\n      #ironlist {\n        min-height: 50vh;\n      }\n    </style>\n    <iron-list id="ironlist" items="[[__bloxList]]" as="blox" grid="">\n      <template>\n        <div class="blox-container">\n          <hax-blox-browser-item index="[[blox.index]]" layout="[[blox.details.layout]]" title="[[blox.details.title]]" tag="[[blox.details.tag]]" icon="[[blox.details.icon]]" author="[[blox.details.author]]" teaser="[[blox.details.teaser]]" description="[[blox.details.description]]" examples="[[blox.details.examples]]" status="[[blox.details.status]]" blox="[[blox.blox]]"></hax-blox-browser-item>\n        </div>\n      </template>\n    </iron-list>\n'
     ]);
-    _templateObject_eb4e73a0dbb911e89b94f594419eb4d2 = function() {
+    _templateObject_73abacc0edbe11e883a5d91bd26efb3f = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_eb4e73a0dbb911e89b94f594419eb4d2()
+      _templateObject_73abacc0edbe11e883a5d91bd26efb3f()
     ),
     is: "hax-blox-browser",
     properties: { bloxList: { type: Array, observer: "_bloxListChanged" } },

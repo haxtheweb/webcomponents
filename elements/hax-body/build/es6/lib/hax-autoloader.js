@@ -3,6 +3,8 @@ import {
   Polymer
 } from "../node_modules/@polymer/polymer/polymer-legacy.js";
 import { dom } from "../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
+import { FlattenedNodesObserver } from "../node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js";
+import { pathFromUrl } from "../node_modules/@polymer/polymer/lib/utils/resolve-url.js";
 Polymer({
   _template: html`
     <style>
@@ -18,7 +20,7 @@ Polymer({
     this.fire("hax-register-autoloader", this);
   },
   ready: function() {
-    this._observer = dom(this).observeNodes(function(info) {
+    this._observer = new FlattenedNodesObserver(this, info => {
       if (0 < info.addedNodes.length) {
         this.processNewElements(info.addedNodes);
       }
@@ -26,7 +28,10 @@ Polymer({
   },
   processNewElements: function() {
     for (
-      var effectiveChildren = dom(this).getEffectiveChildNodes(), i = 0;
+      var effectiveChildren = FlattenedNodesObserver.getFlattenedNodes(
+          this
+        ).filter(n => n.nodeType === Node.ELEMENT_NODE),
+        i = 0;
       i < effectiveChildren.length;
       i++
     ) {
@@ -38,32 +43,13 @@ Polymer({
         try {
           let name = effectiveChildren[i].tagName.toLowerCase();
           this.processedList[name] = name;
-          this.importHref(this.resolveUrl(`../../${name}/${name}.js`));
+          const basePath = pathFromUrl(import.meta.url);
+          this.importHref(`${basePath}../../${name}/${name}.js`);
         } catch (err) {}
       }
     }
   },
   importHref: function(url) {
-    return new Promise((resolve, reject) => {
-      const script = document.createElement("script"),
-        tempGlobal =
-          "__tempModuleLoadingVariable" +
-          Math.random()
-            .toString(32)
-            .substring(2);
-      script.type = "module";
-      script.textContent = `import * as m from "${url}"; window.${tempGlobal} = m;`;
-      script.onload = () => {
-        resolve(window[tempGlobal]);
-        delete window[tempGlobal];
-        script.remove();
-      };
-      script.onerror = () => {
-        reject(new Error("Failed to load module script with URL " + url));
-        delete window[tempGlobal];
-        script.remove();
-      };
-      document.documentElement.appendChild(script);
-    });
+    import(url);
   }
 });

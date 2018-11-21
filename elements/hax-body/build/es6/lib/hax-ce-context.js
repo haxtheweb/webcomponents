@@ -50,15 +50,15 @@ Polymer({
         opacity: .4;
         transition: .6s all ease;
       }
-      :host:hover .human-name-inner {
+      :host(:hover) .human-name-inner {
         opacity: 1;
       }
-      :host.hax-context-pin-top hax-toolbar {
+      :host(.hax-context-pin-top) hax-toolbar {
         position: fixed;
         top: 64px;
         opacity: .95;
       }
-      :host.hax-context-pin-bottom hax-toolbar {
+      :host(.hax-context-pin-bottom) hax-toolbar {
         position: fixed;
         bottom: 0;
         opacity: .95;
@@ -68,9 +68,9 @@ Polymer({
       <div class="human-name-inner">[[humanName]]</div>
     </div>
     <hax-toolbar hax-properties="[[haxProperties]]" size="{{ceSize}}">
-      <slot></slot>
-      <hax-context-item slot="primary" icon="icons:settings" label="Settings" event-name="hax-manager-configure" hidden\$="[[!__hasSettingsForm]]"></hax-context-item>
-      <hax-context-item slot="primary" icon="icons:view-quilt" label="[[__parentName]]" event-name="hax-manager-configure-container" hidden\$="[[!__hasParentSettingsForm]]"></hax-context-item>
+      <slot slot="primary"></slot>
+      <hax-context-item slot="primary" icon="icons:settings" label="Settings" event-name="hax-manager-configure" hidden$="[[!__hasSettingsForm]]"></hax-context-item>
+      <hax-context-item slot="primary" icon="icons:view-quilt" label="[[__parentName]]" event-name="hax-manager-configure-container" hidden$="[[!__hasParentSettingsForm]]"></hax-context-item>
     </hax-toolbar>
 `,
   is: "hax-ce-context",
@@ -148,13 +148,11 @@ Polymer({
       } else {
         this.humanName = newValue.gizmo.title;
       }
-      var item;
-      for (i = 0; i < settings.length; i++) {
+      for (var item, i = 0; i < settings.length; i++) {
         let setting = settings[i];
         item = document.createElement("hax-context-item");
         item.eventName = "hax-edit-property";
         item.label = setting.title;
-        item.setAttribute("slot", "primary");
         item.options = setting.options;
         item.icon = setting.icon;
         item.inputMethod = setting.inputMethod;
