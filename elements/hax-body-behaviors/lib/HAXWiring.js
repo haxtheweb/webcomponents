@@ -3,7 +3,135 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-
+/**
+ * In order to use this, the user must supply a haxProperties object
+ * which returns what settings are allowed as well as their format.
+ * For example, the default of:
+ *
+ *  {
+ *    'api': '1',
+ *    'canScale': true,
+ *    'canPosition': true,
+ *    'canEditSource': true,
+ *    'gizmo': {},
+ *    'settings': {
+ *      'quick': [],
+ *      'configure': [],
+ *      'advanced': [],
+ *    },
+ *    'saveOptions': {}
+ *  }
+ *
+ * This tells hax-body's context menu for custom-elements that this element
+ * can use the scaling widget and the positioning widget as well as have a traditional source editor view when in an advanced form.
+ *
+ * So now you're probably saying 'What's a gizmo???'. Well, gizmo is what we call widgets or custom-elements when an end user of HAX places them in the page. It's our playful way of explaining what's happening to an end user as well as ensuring when developers talk to each other then don't use words that have duplicate meanings. It's also just a fun word.
+ * A gizmo helps describe the element to the HAX Gizmo manager so that a user can select the element they want to place in the page. Think of your custom-element as an app in an app store. Well, how would you describe your 'app' or Gizmo to a store of apps (in our case the Gizmo manager).
+ *
+ * This is an example of th gizmo object that is expressed in the lrn-table tag:
+ * 'gizmo': {
+ *    'title': 'CSV Table',
+ *    'descrption': 'This can generate a table from a CSV file no matter where it is located.',
+ *     'icon': 'editor:border-all',
+ *     'color': 'green',
+ *     'groups': ['Presentation', 'Table', 'Data'],
+ *     'handles': [
+ *       {
+ *         'type': 'data',
+ *         'url': 'csvFile'
+ *       }
+ *     ],
+ *     'meta': {
+ *       'author': 'LRNWebComponents'
+ *     }
+ *   },
+ *
+ * Groups is like a filter that someone could search amongst dozens of gizmos for the type of one they are looking for. So if you said your gizmo is for presenting video then you could tag it as Video and people looking for ways to present videos could filter by just Video gizmos.
+ * handles has to do with hax-sources of gizmos (think remote app stores you are searching to bring in an app if that was even possible in cell phones);. This says that if a gizmo source claims to be able to supply 'data', that lrn-table is able to handle data and that the property to map to when producing a haxElement is called csvFile. If only 1 handler exists for a response type from a source then it'll auto select it, otherwise the user will have the option of which custom element / gizmo they want to use to render that source material.
+ * meta is typical meta data, these things will be printed in a table in the event anyone wants to see them. Author is a logical one so people know who an element came from; like if you wanted to have a core gizmo's vs 3rd party gizmo's concept.
+ *
+ * Other settings can be expressed through beyond these simple layout modifiers.
+ * This example illustrates how you can show forms in three different areas of HAX.
+ * Items in the 'quick' key group means that it would show up in hax's in-place editor
+ * on the context menu. Things keyed with 'configure' show up in a
+ * form / preview display mode in a modal above the interface. Things in 'advanced' will
+ * show up on a sub-set of the configure form for more advanced operations.
+ * 'settings': {
+ *   'quick': [
+ *     {
+ *       'property': 'responsive',
+ *       'title': 'Responsive',
+ *       'description': 'The video automatically fills the available area.',
+ *       'inputMethod': 'boolean',
+ *       'icon': 'video'
+ *     }
+ *   ],
+ *   'configure': [
+ *     {
+ *       'property': 'citation',
+ *       'title': 'Citation',
+ *       'description': 'Proper MLA or other standard citation format for the image.',
+ *       'inputMethod': 'textfield',
+ *       'icon': 'text-format',
+ *       'required': true
+ *     },
+ *     {
+ *       'property': 'responsive',
+ *       'title': 'Responsive',
+ *       'description': 'The video automatically fills the available area.',
+ *       'inputMethod': 'boolean',
+ *       'icon': 'video'
+ *     }
+ *   ],
+ *   'advanced': [
+ *     {
+ *       'slot': 'area1',
+ *       'title': 'Section 1',
+ *       'description': 'Content that goes in the fist area in the layout.',
+ *       'inputMethod': 'textarea',
+ *       'icon': 'layout'
+ *     }
+ *   ]
+ * }
+ * `saveOptions` is a more open ended object which can be used to help
+ * support future flexibility / needs. The first major thing this supports
+ * is the wipeSlot flag (default false). wipeSlot is used to inform HAX
+ * that when it's going to save the current item to a backend (convert to html / text)
+ * that it needs to first wipe out the contents of the element. This is not a common
+ * operation but useful for things like tokens and other tags that leverage slot
+ * in order to present information but should not be saving that information
+ * to a backend. Elements that dynamically pull content from an end point are
+ * the perfect example of when you'd want to wipe the slot. A content element
+ * like a block-quote tag which uses slot to allow users to write whatever
+ * they want inside the tag would NOT want to use this, otherwise the contents
+ * would be lost.
+ * Another used saveOption is `unsetAttributes`. `unsetAttributes` is an Array
+ * which can be used to tell a hax-body save operation to NOT save certain
+ * attributes. The form of these is in the html style, NOT the javascript
+ * style of attribute definition. In this way, you can define non property
+ * based values that you require not saving. For example, the following
+ * would be a valid use of `unsetAttributes`:
+ * 'saveOptions': {
+ *   'unsetAttributes': [
+ *     'displayed-answers',
+ *     'data-some-value',
+ *     'id',
+ *     'colors'
+ *   ]
+ * },
+ *
+ * Specialized functions
+ * `preProcessHaxNodeToContent` - If you define this function on your element
+ * then it will run BEFORE the conversion to text. This can be used to do
+ * specialized processing that may not be standard prior to conversion to content.
+ *
+ * `postProcesshaxNodeToContent` - If you define this function on your element
+ * then it will run AFTER the node has been converted to Content and allows you
+ * to act upon the content even further. This could be to clean up / regex against
+ * the text certain patterns or to look for certain elements at the end of
+ * the conversion routine.
+ *
+ */
 /**
  * Object to validate HAX
  */
@@ -224,7 +352,7 @@ export class HAXWiring {
         // but would probably default to an iframe which is less then ideal
         // but at least wouldn't brick the AX.
         console.warn(
-          "This is't a valid usage of hax-body-behaviors API. See hax-body-behaviors for more details on how to implement the API. Most likely your hax item just was placed in an iframe as a fallback as opposed to a custom element."
+          "This is't a valid usage of hax API. See hax-body-behaviors/lib/HAXWiring.js for more details on how to implement the API. Most likely your hax item just was placed in an iframe as a fallback as opposed to a custom element."
         );
       }
     };
