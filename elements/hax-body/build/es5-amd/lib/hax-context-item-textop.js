@@ -17,7 +17,7 @@ define([
   "./hax-toolbar-item.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_a2f32d70edcb11e88aa8b5030f652492() {
+  function _templateObject_ad7d1b10ee0311e8bb61cd2eef6a9bf2() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style include="materializecss-styles-colors">\n      :host {\n        display: inline-flex;\n        box-sizing: border-box;\n      }\n      :host([menu]) {\n        display: flex;\n        width: 100%;\n      }\n    </style>\n    <iron-a11y-keys id="a11y" target="[[target]]" keys="enter" on-keys-pressed="_fireEvent"></iron-a11y-keys>\n    <hax-toolbar-item corner="[[corner]]" id="button" icon="[[icon]]" hidden$="[[!icon]]" tooltip-direction="[[direction]]" tooltip="[[label]]" class$="[[iconClass]]" on-mousedown="_fireEvent" icon-class="[[iconClass]]" mini="[[mini]]" menu="[[menu]]" light="[[light]]">\n      <slot></slot>\n    </hax-toolbar-item>\n'
@@ -26,14 +26,14 @@ define([
         '\n    <style include="materializecss-styles-colors">\n      :host {\n        display: inline-flex;\n        box-sizing: border-box;\n      }\n      :host([menu]) {\n        display: flex;\n        width: 100%;\n      }\n    </style>\n    <iron-a11y-keys id="a11y" target="[[target]]" keys="enter" on-keys-pressed="_fireEvent"></iron-a11y-keys>\n    <hax-toolbar-item corner="[[corner]]" id="button" icon="[[icon]]" hidden\\$="[[!icon]]" tooltip-direction="[[direction]]" tooltip="[[label]]" class\\$="[[iconClass]]" on-mousedown="_fireEvent" icon-class="[[iconClass]]" mini="[[mini]]" menu="[[menu]]" light="[[light]]">\n      <slot></slot>\n    </hax-toolbar-item>\n'
       ]
     );
-    _templateObject_a2f32d70edcb11e88aa8b5030f652492 = function() {
+    _templateObject_ad7d1b10ee0311e8bb61cd2eef6a9bf2 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a2f32d70edcb11e88aa8b5030f652492()
+      _templateObject_ad7d1b10ee0311e8bb61cd2eef6a9bf2()
     ),
     is: "hax-context-item-textop",
     properties: {

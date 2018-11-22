@@ -15,7 +15,7 @@ define([
   "./hax-toolbar-item.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_9dea4480edcb11e88aa8b5030f652492() {
+  function _templateObject_a8b5a7f0ee0311e8bb61cd2eef6a9bf2() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: inline-flex;\n      }\n      :host([menu]) {\n        display: flex;\n        width: 100%;\n      }\n    </style>\n    <hax-toolbar-item disabled="[[disabled]]" light="[[light]]" mini="[[mini]]" id="button" icon="[[icon]]" hidden$="[[!icon]]" icon-class="[[iconClass]]" on-tap="_fireEvent" tooltip="[[label]]" tooltip-direction="[[direction]]" default="[[default]]" menu="[[menu]]">\n      <slot></slot>\n    </hax-toolbar-item>\n'
@@ -24,14 +24,14 @@ define([
         '\n    <style>\n      :host {\n        display: inline-flex;\n      }\n      :host([menu]) {\n        display: flex;\n        width: 100%;\n      }\n    </style>\n    <hax-toolbar-item disabled="[[disabled]]" light="[[light]]" mini="[[mini]]" id="button" icon="[[icon]]" hidden\\$="[[!icon]]" icon-class="[[iconClass]]" on-tap="_fireEvent" tooltip="[[label]]" tooltip-direction="[[direction]]" default="[[default]]" menu="[[menu]]">\n      <slot></slot>\n    </hax-toolbar-item>\n'
       ]
     );
-    _templateObject_9dea4480edcb11e88aa8b5030f652492 = function() {
+    _templateObject_a8b5a7f0ee0311e8bb61cd2eef6a9bf2 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_9dea4480edcb11e88aa8b5030f652492()
+      _templateObject_a8b5a7f0ee0311e8bb61cd2eef6a9bf2()
     ),
     is: "hax-context-item",
     properties: {

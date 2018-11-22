@@ -3,7 +3,7 @@ import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@lrnwebcomponents/haxcms-elements/haxcms-theme-behavior.js";
+import "@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";
 import "./lib/simple-blog-listing.js";
 import "./lib/simple-blog-header.js";
 import "./lib/simple-blog-footer.js";

@@ -43,8 +43,8 @@ Polymer({
         try {
           let name = effectiveChildren[i].tagName.toLowerCase();
           this.processedList[name] = name;
-          const basePath = pathFromUrl(import.meta.url);
-          this.importHref(`${basePath}../../${name}/${name}.js`);
+          pathFromUrl(import.meta.url);
+          this.importHref(`../../../../${name}/${name}.js`);
         } catch (err) {}
       }
     }

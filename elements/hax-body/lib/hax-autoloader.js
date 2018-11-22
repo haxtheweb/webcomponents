@@ -79,7 +79,7 @@ Polymer({
           // @todo need to support name spacing of packages so that we
           // don't assume they are all relative to lrnwebcomponents
           const basePath = pathFromUrl(import.meta.url);
-          this.importHref(`${basePath}../../${name}/${name}.js`);
+          this.importHref(`../../${name}/${name}.js`);
         } catch (err) {
           // error in the event this is a double registration
         }
