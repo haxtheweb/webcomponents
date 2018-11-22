@@ -56,6 +56,14 @@ class SimpleColorsDemoChild extends SimpleColors {
     return "simple-colors-demo-child";
   }
   /**
+   * The the parent know the child is ready.
+   */
+  ready() {
+    super.ready();
+    console.log("child-attached");
+    this.dispatchEvent(new CustomEvent("child-attached"));
+  }
+  /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {

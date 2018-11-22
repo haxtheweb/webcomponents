@@ -3,10 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/polymer/lib/elements/dom-repeat.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 
 import { SimpleColors } from "../simple-colors.js"; //import the shared styles
+import "./simple-colors-select.js";
 import "./simple-colors-demo-child.js";
 
 export { SimpleColorsDemo };
@@ -52,36 +52,12 @@ select {
 
 <p>
   <tt>
-    &lt;simple-colors-demo
-    <select id="paccent" on-change="_handleSelectChange" aria-label="parent's accent-color">
-      <option>--- (accent not specified) ---</option>
-      <template is="dom-repeat" items="[[_toArray(colors)]]" as="color">
-        <option value="[[color.name]]">accent-color="[[color.name]]"</option>
-      </template>
-    </select> 
-    <select id="pdark" on-change="_handleSelectChange" aria-label="parent's dark attribute">
-      <option value="false">--- (dark not specified) ---</option>
-      <option value="dark">dark="dark"</option>
-    </select>&gt; 
+    &lt;simple-colors-demo <simple-colors-selectors id="parent" accent-label="parent's accent-color" as-code colors$="[[colors]]" dark-label="parent's dark attribute">&gt; 
   </tt>
 </p>
-<template is="dom-if" if="[[_isNested(nested)]]">
-  <simple-colors-demo-child accent-color$="[[__accentColorChild]]" dark$="[[__darkChild]]">
-    <tt>&lt;simple-colors-demo-child
-      <select id="caccent" on-change="_handleSelectChange" aria-label="nested child's accent-color">
-      <option value="false">--- (accent not specified) ---</option>
-      <option value$="[[accentColor]]">accent-color[[__open]]accentColor[[__close]]</option>
-      <template is="dom-repeat" items="[[_toArray(colors)]]" as="color">
-        <option value="[[color.name]]">accent-color="[[color.name]]"</option>
-      </template>
-    </select> 
-    <select id="cdark" on-change="_handleSelectChange" aria-label="nested child's dark attribute">
-      <option value="false">--- (dark not specified) ---</option>
-      <option value="parent">dark[[__open]]dark[[__close]]</option>
-      <option value="dark">dark="dark"</option>
-    </select>/&gt;</tt>
-  </simple-colors-demo-child>
-</template>
+<simple-colors-demo-child accent-color$="[[__accentColorChild]]" dark$="[[__darkChild]]" hidden$="[[!_isNested(nested)]]">
+  <tt>&lt;simple-colors-demo-child<simple-colors-selectors id="child" accent-label="nested child's accent-color" as-code colors$="[[colors]]" dark-label="nested child's attribute" inherit/>/&gt;</tt>
+</simple-colors-demo-child>
 
 <p><tt>&lt;/simple-colors-demo&gt;</tt></p>`;
   }
@@ -110,42 +86,12 @@ select {
         observer: false
       },
       /**
-       * stores the selection for mthe child's dark selector
-       */
-      __darkSelectorChild: {
-        name: "__darkSelectorChild",
-        type: "Boolean",
-        value: false,
-        reflectToAttribute: false,
-        observer: false
-      },
-      /**
        * sets the dark attribute of the nested child
        */
       __darkChild: {
         name: "__darkChild",
         type: "Boolean",
         value: false,
-        reflectToAttribute: false,
-        observer: false
-      },
-      /**
-       * used to escape the opening brackets in the template
-       */
-      __open: {
-        name: "open",
-        type: "String",
-        value: '$="[[',
-        reflectToAttribute: false,
-        observer: false
-      },
-      /**
-       * used to escape the closing brackets in the template
-       */
-      __close: {
-        name: "open",
-        type: "String",
-        value: ']]"',
         reflectToAttribute: false,
         observer: false
       }
@@ -186,37 +132,60 @@ select {
   }
 
   /**
-   * handles when the on-change event for <select>
-   *
-   * @param {object} the event that fires
+   * updates parent's accent-color based on `<select>`
    */
-  _handleSelectChange(e) {
-    if (e.path[0].id === "paccent") {
-      this.accentColor = e.path[0].value;
-    } else if (e.path[0].id === "caccent") {
-      this.__accentColorChild = e.path[0].value;
-    } else if (e.path[0].id === "pdark") {
-      this.dark = e.path[0].value !== "false";
-    } else {
-      this.__darkSelectorChild = e.path[0].value !== "false";
-    }
-    this.__darkChild =
-      this.__darkSelectorChild === "parent"
-        ? this.dark
-        : this.__darkSelectorChild !== false;
+  _updateParentAccent() {
+    this.accentColor = this.$.parent.accentColor;
+    this._updateChildAccent();
   }
 
   /**
-   * converts an object into an array
-   *
-   * @param {object} the object to convert
+   * updates parent's dark attribute based on `<select>`
    */
-  _toArray(obj) {
-    return Object.keys(obj).map(function(key) {
-      return {
-        name: key,
-        value: obj[key]
-      };
+  _updateParentDark() {
+    this.dark = this.$.parent.dark !== "false";
+    this._updateChildDark();
+  }
+
+  /**
+   * updates nested child's accent-color based on `<select>`
+   */
+  _updateChildAccent() {
+    if (this.$.child.accentColor === "parent") {
+      this.__accentColorChild = this.$.parent.accentColor;
+    } else {
+      this.__accentColorChild = this.$.child.accentColor;
+    }
+  }
+
+  /**
+   * updates nested child's dark attribute based on `<select>`
+   */
+  _updateChildDark() {
+    if (this.$.child.dark === "parent") {
+      this.__darkChild = this.$.parent.dark !== "false";
+    } else {
+      this.__darkChild = this.$.child.dark !== "false";
+    }
+  }
+
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  ready() {
+    super.ready();
+    this.$.parent.addEventListener("accent-change", e => {
+      console.log(e);
+      this._updateParentAccent();
+    });
+    this.$.parent.addEventListener("dark-change", e => {
+      this._updateParentDark();
+    });
+    this.$.child.addEventListener("accent-change", e => {
+      this._updateChildAccent();
+    });
+    this.$.child.addEventListener("dark-change", e => {
+      this._updateChildDark();
     });
   }
   /**
