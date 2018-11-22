@@ -7,14 +7,27 @@
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script type="module">
       import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../lrn-shared-styles.js';
       import '../lib/lrn-shared-styles-demo.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      p:not(.visible){
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic lrn-shared-styles demo</h3>
-      <lrn-shared-styles-demo></lrn-shared-styles-demo>
+      <demo-snippet>
+        <lrn-shared-styles-demo></lrn-shared-styles-demo>
+        <template>
+          <style include="lrn-shared-styles"></style>
+          <p class="sr-only">This text can only be read on screen readers. It is not visible on screen.</p>
+          <p class="screen-only">This text can only be read on screen. It will not print.</p>
+          <p class="print-only">This text can only be read when printed. It will not be visible on screen.</p>
+        </template>
+      </demo-snippet>
     </div>
   </body>
 </html>

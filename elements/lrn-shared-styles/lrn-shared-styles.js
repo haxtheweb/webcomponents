@@ -11,6 +11,7 @@
  * @pseudoElement
  * @polymer
  * @demo demo/index.html
+ * @see lib/lrn-shared-styles-demo.js
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
@@ -41,7 +42,6 @@ const css = html`<style include="iron-flex-layout">
     }
   }
 </style>`;
-console.log(css);
 styleElement.appendChild(css);
 
 styleElement.register("lrn-shared-styles");
