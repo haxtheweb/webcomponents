@@ -192,13 +192,9 @@ Polymer({
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
       case "hax-align-left":
-        this.justifyIcon = detail.target.children[0].attributes[0].value;
-        break;
       case "hax-align-center":
-        this.justifyIcon = detail.target.children[0].attributes[0].value;
-        break;
       case "hax-align-right":
-        this.justifyIcon = detail.target.children[0].attributes[0].value;
+        this.justifyIcon = detail.target.icon;
         break;
       case "close-menu":
         this.$.moremenu.$.menu.hideMenu();
