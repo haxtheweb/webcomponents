@@ -14,18 +14,18 @@ define([
 ], function(_polymerLegacy, async) {
   "use strict";
   async = babelHelpers.interopRequireWildcard(async);
-  function _templateObject_9cb9dad0edcb11e88aa8b5030f652492() {
+  function _templateObject_a7681950ee0311e8bb61cd2eef6a9bf2() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style is="custom-style">\n      :host {\n        display: block;\n        --hax-accent: #34e79a;\n      }\n      #ironlist {\n        min-height: 72px;\n        margin: 0;\n      }\n      hax-app-browser-item {\n        margin: 10px;\n        -webkit-transition: .3s all linear;\n        transition: .3s all linear;\n      }\n      .title {\n        text-align: center;\n        padding: 16px 0;\n        margin: 0 64px 0 0;\n        font-size: 32px;\n        font-weight: bold;\n        color:var(--simple-colors-light-green-background1);\n        font-family: sans-serif;\n        text-transform: uppercase;\n        display: inline-flex;\n      }\n      dropdown-select {\n        color: #FFFFFF;\n        --paper-input-container-invalid-color: var(--simple-colors-red-foreground3);\n        --paper-input-container-input-color: #FFFFFF;\n        --paper-input-container-color: #FFFFFF;\n        --paper-input-container-focus-color: var(--simple-colors-light-green-background1);\n        --paper-listbox-color: #000000;\n      }\n      paper-item {\n        --secondary-text-color: #000000;\n        --primary-text-color: #000000;\n      }\n      paper-input {\n        color: #FFFFFF;\n        --paper-input-container-invalid-color: var(--simple-colors-red-foreground3);\n        --secondary-text-color: #FFFFFF;\n        --primary-text-color: #FFFFFF;\n        --paper-input-container-input-color: #FFFFFF;\n        --paper-input-container-color: #FFFFFF;\n        --paper-input-container-focus-color: var(--simple-colors-light-green-background1);\n      }\n      app-toolbar {\n        background-color: rgba(0,0,0,.5);\n      }\n      .toolbar-inner {\n        width: 100%;\n        display: inline-flex;\n      }\n    </style>\n    <app-toolbar>\n      <div class="toolbar-inner">\n      <h3 class="title">[[title]]</h3>\n      <dropdown-select id="filtertype" label="Filter by" value="details.title">\n        <paper-item value="details.title">Title</paper-item>\n      </dropdown-select>\n      <paper-input label="Filter" id="inputfilter" aria-controls="filter" value="" always-float-label=""></paper-input>\n      </div>\n    </app-toolbar>\n    <grafitto-filter id="filter" items="[[__appList]]" like="" where="details.title" as="filtered">\n      <template>\n        <iron-list id="ironlist" items="[[filtered]]" as="app" grid="">\n          <template>\n            <div class="app-container">\n              <hax-app-browser-item index="[[app.index]]" title="[[app.details.title]]" icon="[[app.details.icon]]" image="[[app.details.tag]]" color="[[app.details.color]]" meta="[[app.details.meta]]" groups="[[app.details.groups]]" handles="[[app.details.handles]]" description="[[app.details.description]]" rating="[[app.details.rating]]" tags="[[app.details.tags]]"></hax-app-browser-item>\n            </div>\n          </template>\n        </iron-list>\n      </template>\n    </grafitto-filter>\n    <hax-app-search id="haxappsearch" hidden$="[[!searching]]"></hax-app-search>\n    <slot></slot>\n'
     ]);
-    _templateObject_9cb9dad0edcb11e88aa8b5030f652492 = function() {
+    _templateObject_a7681950ee0311e8bb61cd2eef6a9bf2 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_9cb9dad0edcb11e88aa8b5030f652492()
+      _templateObject_a7681950ee0311e8bb61cd2eef6a9bf2()
     ),
     is: "hax-app-browser",
     behaviors: [simpleColorsBehaviors],

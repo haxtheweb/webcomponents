@@ -16,18 +16,18 @@ define([
   "use strict";
   meta = babelHelpers.interopRequireWildcard(meta);
   _require = babelHelpers.interopRequireWildcard(_require);
-  function _templateObject_99f58ab0edcb11e88aa8b5030f652492() {
+  function _templateObject_a3d64000ee0311e8bb61cd2eef6a9bf2() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n      :host {\n        display: none;\n      }\n    </style>\n    <slot></slot>\n"
     ]);
-    _templateObject_99f58ab0edcb11e88aa8b5030f652492 = function() {
+    _templateObject_a3d64000ee0311e8bb61cd2eef6a9bf2 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_99f58ab0edcb11e88aa8b5030f652492()
+      _templateObject_a3d64000ee0311e8bb61cd2eef6a9bf2()
     ),
     is: "hax-autoloader",
     properties: { processedList: { type: Object, value: {} } },
@@ -65,12 +65,9 @@ define([
           try {
             var name = effectiveChildren[i].tagName.toLowerCase();
             this.processedList[name] = name;
-            var basePath = (0, _resolveUrl.pathFromUrl)(meta.url);
+            (0, _resolveUrl.pathFromUrl)(meta.url);
             this.importHref(
-              ""
-                .concat(basePath, "../../")
-                .concat(name, "/")
-                .concat(name, ".js")
+              "../../../../".concat(name, "/").concat(name, ".js")
             );
           } catch (err) {}
         }

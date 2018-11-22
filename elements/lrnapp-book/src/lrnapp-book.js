@@ -6,7 +6,7 @@ import "@polymer/iron-icons/hardware-icons.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-styles/color.js";
-import "paper-search/paper-search-bar.js";
+import "@lrnwebcomponents/paper-search/lib/paper-search-bar.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-slider/paper-slider.js";
 import "@polymer/app-layout/app-layout.js";

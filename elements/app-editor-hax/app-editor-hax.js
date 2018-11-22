@@ -1,11 +1,11 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "hax-body/hax-store.js";
-import "hax-body/hax-body.js";
-import "hax-body/hax-autoloader.js";
-import "hax-body/hax-manager.js";
-import "hax-body/hax-panel.js";
-import "hax-body/hax-app-picker.js";
-import "hax-body/hax-export-dialog.js";
+import "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import "@lrnwebcomponents/hax-body/hax-body.js";
+import "@lrnwebcomponents/hax-body/lib/hax-autoloader.js";
+import "@lrnwebcomponents/hax-body/lib/hax-manager.js";
+import "@lrnwebcomponents/hax-body/lib/hax-panel.js";
+import "@lrnwebcomponents/hax-body/lib/hax-app-picker.js";
+import "@lrnwebcomponents/hax-body/lib/hax-export-dialog.js";
 /**
 `app-editor-hax`
 stand alone editor intended for use in a larger application

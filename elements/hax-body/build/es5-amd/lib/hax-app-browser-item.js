@@ -16,7 +16,7 @@ define([
   "../node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js"
 ], function(_polymerLegacy) {
   "use strict";
-  function _templateObject_a1c311e0edcb11e88aa8b5030f652492() {
+  function _templateObject_ac82dc90ee0311e8bb61cd2eef6a9bf2() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style include="materializecss-styles-colors">\n      :host {\n        display: inline-flex;\n      }\n      :host([elevation="1"]) {\n        -webkit-transform: scale(1, 1);\n        transform: scale(1, 1);\n      }\n      :host([elevation="2"]) {\n        -webkit-transform: scale(1.4, 1.4);\n        transform: scale(1.4, 1.4);\n      }\n      paper-card {\n        margin: 4px 0;\n        border-radius: 10px;\n      }\n      paper-button {\n        color: #000000;\n        text-transform: none;\n        margin:0;\n        background-color: #ffffff;\n        height: 72px !important;\n        width: 72px !important;\n        display: flex;\n        border-radius: 10px;\n        border-style: solid;\n        border-width: 4px;\n        font-weight: normal;\n      }\n      paper-button .item-title {\n        font-size: 10px;\n      }\n      paper-button .button-inner {\n        text-align: center;\n      }\n      paper-button iron-icon {\n        height: 32px;\n        width: 32px;\n        display: inline-block;\n      }\n      .flip-icon {\n        transform: rotateY(180deg);\n      }\n    </style>\n    <paper-card id="card" elevation="[[elevation]]">\n      <paper-button id="button" data-voicecommand$="select [[title]]" class$="[[color]] lighten-5 [[color]]-border">\n        <div class="button-inner">\n          <iron-icon icon="[[icon]]" class$="[[color]]-text text-darken-3" hidden$="[[!icon]]"></iron-icon>\n          <iron-image src="[[image]]" preload="" sizing="cover" hidden$="[[!image]]"></iron-image>\n          <div class="item-title">[[title]]</div>\n        </div>\n      </paper-button>\n    </paper-card>\n'
@@ -25,14 +25,14 @@ define([
         '\n    <style include="materializecss-styles-colors">\n      :host {\n        display: inline-flex;\n      }\n      :host([elevation="1"]) {\n        -webkit-transform: scale(1, 1);\n        transform: scale(1, 1);\n      }\n      :host([elevation="2"]) {\n        -webkit-transform: scale(1.4, 1.4);\n        transform: scale(1.4, 1.4);\n      }\n      paper-card {\n        margin: 4px 0;\n        border-radius: 10px;\n      }\n      paper-button {\n        color: #000000;\n        text-transform: none;\n        margin:0;\n        background-color: #ffffff;\n        height: 72px !important;\n        width: 72px !important;\n        display: flex;\n        border-radius: 10px;\n        border-style: solid;\n        border-width: 4px;\n        font-weight: normal;\n      }\n      paper-button .item-title {\n        font-size: 10px;\n      }\n      paper-button .button-inner {\n        text-align: center;\n      }\n      paper-button iron-icon {\n        height: 32px;\n        width: 32px;\n        display: inline-block;\n      }\n      .flip-icon {\n        transform: rotateY(180deg);\n      }\n    </style>\n    <paper-card id="card" elevation="[[elevation]]">\n      <paper-button id="button" data-voicecommand\\$="select [[title]]" class\\$="[[color]] lighten-5 [[color]]-border">\n        <div class="button-inner">\n          <iron-icon icon="[[icon]]" class\\$="[[color]]-text text-darken-3" hidden\\$="[[!icon]]"></iron-icon>\n          <iron-image src="[[image]]" preload="" sizing="cover" hidden\\$="[[!image]]"></iron-image>\n          <div class="item-title">[[title]]</div>\n        </div>\n      </paper-button>\n    </paper-card>\n'
       ]
     );
-    _templateObject_a1c311e0edcb11e88aa8b5030f652492 = function() {
+    _templateObject_ac82dc90ee0311e8bb61cd2eef6a9bf2 = function() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a1c311e0edcb11e88aa8b5030f652492()
+      _templateObject_ac82dc90ee0311e8bb61cd2eef6a9bf2()
     ),
     is: "hax-app-browser-item",
     listeners: {
