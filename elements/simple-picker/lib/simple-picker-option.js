@@ -19,18 +19,7 @@ export { SimplePickerOption };
 class SimplePickerOption extends PolymerElement {
   // render function
   static get template() {
-    return html`<style is="custom-style">
-  :host([active]) {
-    cursor: pointer;
-    border: 1px solid var(--simple-picker-option-border-color, blue);
-    @apply --simple-picker-option-active;
-  }
-  :host([selected]) {
-    border: 1px solid var(--simple-picker-option-border-color, black);
-    @apply --simple-picker-option-selected;
-  }
-</style>
-<span class="label">[[item.text]]</span>`;
+    return html`<span class="label">[[item.text]]</span>`;
   }
 
   // properties available to the custom element for data binding
