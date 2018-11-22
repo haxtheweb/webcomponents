@@ -1,0 +1,38 @@
+<div id="listbox"
+  aria-activedescendant$="[[__activeDesc]]" 
+  aria-labelledby$="[[ariaLabelledby]]" 
+  disabled$="[[disabled]]"
+  label$="[[label]]" 
+  role="listbox" 
+  tabindex="0">
+  <div id="sample">
+    <simple-picker-option 
+      style="[[_getBgcolor(__selectedOption.color)]]" 
+      text$="[[__selectedOption.text]]">
+    </simple-picker-option>
+    <span id="icon"><iron-icon icon="arrow-drop-down"></iron-icon></span>
+  </div>
+  <div id="collapse">
+    <div class="rows">
+      <template is="dom-repeat" items="[[options]]" as="row" index-as="rownum">
+        <div class="row">
+          <template is="dom-repeat" items=[[row]] as="option" index-as="colnum">
+            <simple-picker-option 
+              active$="[[_isMatch(__activeDesc,rownum,colnum)]]"
+              aria-selected$="[[option.selected]]" 
+              id="[[_getOptionId(rownum,colnum)]]"
+              role="option"
+              selected$="[[_isMatch(__selected,rownum,colnum)]]"
+              on-option-focus="_handleOptionFocus"
+              on-set-selected-option="_handleSetSelectedOption"
+              style="[[_getBgcolor(option.color)]]" 
+              tabindex="-1"
+              text$="[[option.text]]"
+              value$="[[option.value]]">
+            </simple-picker-option>
+          </template>
+        </div>
+      </template>
+    </div>
+  </div>
+</div>

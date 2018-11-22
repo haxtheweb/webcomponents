@@ -1,0 +1,67 @@
+{
+  "name": "@lrnwebcomponents/simple-picker",
+  "wcfactory": {
+    "className": "SimplePicker",
+    "customElementClass": "PolymerElement",
+    "elementName": "simple-picker",
+    "generator-wcfactory-version": "0.4.0",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/simple-picker.css",
+      "scss": "src/simple-picker.scss",
+      "html": "src/simple-picker.html",
+      "js": "src/simple-picker.js",
+      "properties": "src/simple-picker-properties.json"
+    }
+  },
+  "version": "0.0.31",
+  "description": "a simple picker for swatches, icons, etc.",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "simple-picker.js",
+  "module": "simple-picker.es6.js",
+  "umd": "simple-picker.umd.js",
+  "amd": "simple-picker.amd.js",
+  "scripts": {
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/simple-picker/test/",
+    "start": "yarn run dev",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
+    "dev": "open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'",
+    "watch": "../../node_modules/.bin/gulp dev",
+    "serve": "polymer serve --npm --module-resolution=node --open",
+    "lighthouse": "../../node_modules/.bin/gulp lighthouse"
+  },
+  "author": {
+    "name": "nikkimk"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.31",
+    "@lrnwebcomponents/lrn-shared-styles": "^0.0.33",
+    "@polymer/iron-icons": "^3.0.1",
+    "@polymer/polymer": "^3.0.5"
+  },
+  "devDependencies": {
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.0.2",
+    "@webcomponents/webcomponentsjs": "2.1.3",
+    "concurrently": "4.0.1",
+    "gulp-babel": "8.0.0",
+    "gulp-sourcemaps": "2.6.4",
+    "lodash": "4.17.11",
+    "polymer-build": "3.1.0",
+    "polymer-cli": "1.8.1",
+    "wct-browser-legacy": "1.0.2"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}

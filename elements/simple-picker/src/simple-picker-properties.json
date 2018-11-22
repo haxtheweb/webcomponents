@@ -1,0 +1,101 @@
+{
+  /**
+   * Optional. Sets the aria-labelledby attribute
+   */
+  "ariaLabelledby": {
+    "name": "ariaLabelledby",
+    "type": "String",
+    "value": null,
+    "reflectToAttribute": false,
+    "observer": false
+  },
+
+  /**
+   * Is the picker disabled?
+   */
+  "disabled": {
+    "name": "disabled",
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": false,
+    "observer": false
+  },
+
+  /**
+   * Optional. The label for the picker input
+   */
+  "label": {
+    "name": "label",
+    "type": "String",
+    "value": null,
+    "reflectToAttribute": false,
+    "observer": false
+  },
+
+  /**
+   * An string that stores the current value for the picker
+   */
+  "swatches": {
+    "name": "swatches",
+    "type": "Array",
+    "value": [],
+    "reflectToAttribute": false,
+    "observer": false
+  },
+
+  /**
+   * An string that stores the current value for the picker
+   */
+  "value": {
+    "name": "value",
+    "type": "String",
+    "value": "_getValue(__selectedDesc)",
+    "reflectToAttribute": false,
+    "read-only": true,
+    "observer": false
+  },
+
+  /**
+   * The aria-activedescendant attribute (active option's ID)
+   */
+  "__activeDesc": {
+    "name": "__activeDesc",
+    "type": "String",
+    "value": "option-0-0",
+    "reflectToAttribute": false,
+    "observer": false
+  },
+
+  /**
+   * The ID of the selected option
+   */
+  "__selectedDesc": {
+    "name": "__selectedDesc",
+    "type": "String",
+    "value": "option-0-0",
+    "reflectToAttribute": false,
+    "observer": false
+  },
+
+  /**
+   * The ID of the selected option
+   */
+  "__selectedOption": {
+    "name": "__selectedOption",
+    "type": "Object",
+    "computed": "_getOption(__selectedDesc)",
+    "reflectToAttribute": false,
+    "observer": false
+  },
+
+  /**
+   * Is it expanded?
+   */
+  "expanded": {
+    "name": "expanded",
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": true,
+    "observer": false
+  }
+}
