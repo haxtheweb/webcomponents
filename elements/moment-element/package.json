@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@polymer/polymer": "^3.0.5",
-    "moment": "^2.22.2"
+    "@lrnwebcomponents/es-global-bridge": "^0.0.34"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^0.0.34",

@@ -1,5 +1,4 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "../lrnsys-comment.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-form-element-behavior/iron-form-element-behavior.js";
@@ -14,6 +13,8 @@ import "@polymer/paper-listbox/paper-listbox.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
 import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
+import "../lrnsys-comment.js";
+
 /**
 `lrnsys-comment-list`
 A listing and event handling for comments.
