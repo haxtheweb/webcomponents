@@ -79,17 +79,11 @@ Polymer({
           // @todo need to support name spacing of packages so that we
           // don't assume they are all relative to lrnwebcomponents
           const basePath = pathFromUrl(import.meta.url);
-          this.importHref(`../../${name}/${name}.js`);
+          import(`../../${name}/${name}.js`);
         } catch (err) {
           // error in the event this is a double registration
         }
       }
     }
-  },
-  /**
-   * Hack to replace importHref from Polymer 1 that TYPICALLY will work in ESM
-   */
-  importHref: function(url) {
-    import(url);
   }
 });

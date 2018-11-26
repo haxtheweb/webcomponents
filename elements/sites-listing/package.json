@@ -43,6 +43,9 @@
     "@lrnwebcomponents/elmsln-loading": "^0.0.34",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-list": "^3.0.0",
+    "@polymer/iron-icons": "^3.0.1",
+    "@polymer/iron-icon": "^3.0.1",
+    "@polymer/iron-image": "^3.0.1",
     "@polymer/paper-button": "^3.0.0",
     "@polymer/paper-card": "^3.0.0",
     "@polymer/polymer": "^3.0.5"

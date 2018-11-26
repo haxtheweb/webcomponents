@@ -61,10 +61,25 @@ Polymer({
       "json-outline-schema-changed",
       this._manifestChanged.bind(this)
     );
-    // state issue but it can miss in timing othewise on first event
-    this.set("items", window.cmsSiteEditor.jsonOutlineSchema.items);
   },
-
+  /**
+   * attached life cycle
+   */
+  attached: function() {
+    // state issue but it can miss in timing othewise on first event
+    if (typeof window.cmsSiteEditor.jsonOutlineSchema !== typeof undefined) {
+      this.set("items", window.cmsSiteEditor.jsonOutlineSchema.items);
+    }
+  },
+  /**
+   * detached life cycle
+   */
+  detached: function() {
+    document.body.removeEventListener(
+      "json-outline-schema-changed",
+      this._manifestChanged.bind(this)
+    );
+  },
   /**
    * manifest changed, let's get the items only
    */

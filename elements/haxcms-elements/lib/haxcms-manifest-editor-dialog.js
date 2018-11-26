@@ -118,6 +118,10 @@ Polymer({
    * detached life cycle
    */
   detached: function() {
+    document.body.removeEventListener(
+      "json-outline-schema-changed",
+      this._manifestSet.bind(this)
+    );
     this.$.sitetheme.removeEventListener(
       "change",
       this._themeChanged.bind(this)

@@ -105,10 +105,9 @@ Polymer({
       type: Object,
       value: {
         "outline-player":
-          "../@lrnwebcomponents/outline-player/outline-player.js",
-        "simple-blog": "../@lrnwebcomponents/simple-blog/simple-blog.js",
-        "haxcms-dev-theme":
-          "../@lrnwebcomponents/haxcms-elements/lib/haxcms-dev-theme.js"
+          "../../../@lrnwebcomponents/outline-player/outline-player.js",
+        "simple-blog": "../../../@lrnwebcomponents/simple-blog/simple-blog.js",
+        "haxcms-dev-theme": "haxcms-dev-theme.js"
       }
     },
     /**
@@ -316,6 +315,7 @@ Polymer({
   _manifestChanged: function(newValue, oldValue) {
     if (
       typeof newValue !== typeof undefined &&
+      newValue != null &&
       typeof newValue.id !== typeof undefined
     ) {
       this.themeElementName = newValue.metadata.theme;
@@ -366,13 +366,14 @@ Polymer({
       } else {
         // import the reference to the item dynamically, if we can
         try {
-          let basePath = pathFromUrl(import.meta.url);
-          this.importHref(basePath + this.themeData[themeName], e => {
-            // add it into ourselves so it unpacks and we kick this off!
-            dom(this).appendChild(this.themeElement);
-            this.__imported[themeName] = themeName;
-            this.themeLoaded = true;
-          });
+          import(pathFromUrl(import.meta.url) + this.themeData[themeName]).then(
+            e => {
+              // add it into ourselves so it unpacks and we kick this off!
+              dom(this).appendChild(this.themeElement);
+              this.__imported[themeName] = themeName;
+              this.themeLoaded = true;
+            }
+          );
         } catch (err) {
           // error in the event this is a double registration
           // also strange to be able to reach this but technically possible

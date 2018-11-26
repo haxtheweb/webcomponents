@@ -11,9 +11,7 @@ define([
       babelHelpers.classCallCheck(this, HaxcmsElements);
       return babelHelpers.possibleConstructorReturn(
         this,
-        (
-          HaxcmsElements.__proto__ || Object.getPrototypeOf(HaxcmsElements)
-        ).apply(this, arguments)
+        babelHelpers.getPrototypeOf(HaxcmsElements).apply(this, arguments)
       );
     }
     babelHelpers.createClass(HaxcmsElements, null, [

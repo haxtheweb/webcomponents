@@ -95,13 +95,13 @@ Polymer({
     changed: { type: Number },
     elevation: { type: Number, value: 0, reflectToAttribute: !0 }
   },
-  _itemTap: function() {
+  _itemTap: function(e) {
     this.fire("active-item-selected", this.itemId);
   },
-  tapEventOn: function() {
+  tapEventOn: function(e) {
     this.elevation = 2;
   },
-  tapEventOff: function() {
+  tapEventOff: function(e) {
     this.elevation = 0;
   }
 });
