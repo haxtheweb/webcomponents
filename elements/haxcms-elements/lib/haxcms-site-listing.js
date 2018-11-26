@@ -3,6 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/iron-ajax/iron-ajax.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
@@ -42,7 +45,7 @@ Polymer({
       paper-icon-button {
         --paper-icon-button-ink-color: #ffffff;
       }
-      paper-icon-button+[main-title] {
+      paper-icon-button + [main-title] {
         margin-left: 24px;
       }
       app-header {
@@ -118,7 +121,7 @@ Polymer({
     <sites-listing id="siteslisting" sites-response="{{__sitesResponse}}" sites="{{__sites}}" data-source="[[dataSource]]" edit-mode="[[editMode]]"></sites-listing>
     <app-header reveals>
       <app-toolbar>
-        <paper-icon-button icon="menu" onclick="drawer.toggle()"></paper-icon-button>
+        <paper-icon-button icon="menu" on-tap="drawerToggle"></paper-icon-button>
         <div main-title>[[title]]</div>
         <paper-icon-button on-tap="_editTap" id="edit" icon="[[__editIcon]]" hidden$="[[!loggedIn]]"></paper-icon-button>
         <paper-icon-button on-tap="_loginUserRoutine" id="login" icon="[[__loginIcon]]"></paper-icon-button>
@@ -126,7 +129,7 @@ Polymer({
       </app-toolbar>
     </app-header>
     <app-drawer id="drawer" swipe-open>
-      <paper-icon-button id="closedrawer" icon="icons:close" onclick="drawer.toggle()"></paper-icon-button>
+      <paper-icon-button id="closedrawer" icon="icons:close" on-tap="drawerToggle"></paper-icon-button>
       <paper-tooltip for="closedrawer" position="bottom" offset="12" animation-delay="200">Close</paper-tooltip>
       <paper-icon-button on-tap="_addTap" id="add" icon="icons:add"></paper-icon-button>
       <paper-tooltip for="add" position="bottom" offset="12" animation-delay="200">Add site</paper-tooltip>
@@ -268,6 +271,12 @@ Polymer({
     }
   },
   /**
+   * Toggle drawer open
+   */
+  drawerToggle: function(e) {
+    this.$.drawer.toggle();
+  },
+  /**
    * Generate domain from title
    */
   _computeDomainName: function(title) {
@@ -387,9 +396,12 @@ Polymer({
    * Add button clicked, trick DOM into clicking the add new site item.
    */
   _addTap: function(e) {
-    this.$.siteslisting.$.list
-      .querySelector('[data-site-id="item-new"]')
-      .click();
+    let itemNew = this.$.siteslisting.$.list.querySelector(
+      '[data-site-id="item-new"]'
+    );
+    if (itemNew) {
+      itemNew.click();
+    }
   },
   /**
    * Toggle edit state

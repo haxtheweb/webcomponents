@@ -136,7 +136,7 @@ Polymer({
   detached: function() {
     window.removeEventListener("scroll", this._scrollListener.bind(this));
   },
-  _scrollListener: function() {
+  _scrollListener: function(e) {
     if (this.hasImage) {
       let top =
         (window.pageYOffset || document.scrollTop) - (document.clientTop || 0);
@@ -149,7 +149,7 @@ Polymer({
         1 - Math.max(top / 700, 0);
     }
   },
-  _hasImageChanged: function(newValue) {
+  _hasImageChanged: function(newValue, oldValue) {
     if (newValue) {
       async.microTask.run(() => {
         let rect = this.shadowRoot

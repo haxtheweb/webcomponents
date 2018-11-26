@@ -98,7 +98,7 @@ Polymer({
       this.savePage.bind(this)
     );
     // listen for app being selected
-    document.body.addEventListener(
+    document.body.removeEventListener(
       "hax-app-picker-selection",
       this._appPicked.bind(this)
     );
@@ -257,8 +257,7 @@ Polymer({
       // which will appear to be injecting into the page
       // but because of this approach it should be non-blocking
       try {
-        this.importHref(
-          pathFromUrl(import.meta.url) + `haxcms-site-editor.js`,
+        import(pathFromUrl(import.meta.url) + `haxcms-site-editor.js`).then(
           e => {
             let haxCmsSiteEditorElement = document.createElement(
               "haxcms-site-editor"
@@ -293,31 +292,5 @@ Polymer({
         // error in the event this is a double registration
       }
     }
-  },
-  /**
-   * Hack to replace importHref from Polymer 1 that TYPICALLY will work in ESM
-   */
-  importHref: function(url) {
-    return new Promise((resolve, reject) => {
-      const script = document.createElement("script");
-      const tempGlobal =
-        "__tempModuleLoadingVariable" +
-        Math.random()
-          .toString(32)
-          .substring(2);
-      script.type = "module";
-      script.textContent = `import * as m from "${url}"; window.${tempGlobal} = m;`;
-      script.onload = () => {
-        resolve(window[tempGlobal]);
-        delete window[tempGlobal];
-        script.remove();
-      };
-      script.onerror = () => {
-        reject(new Error("Failed to load module script with URL " + url));
-        delete window[tempGlobal];
-        script.remove();
-      };
-      document.documentElement.appendChild(script);
-    });
   }
 });

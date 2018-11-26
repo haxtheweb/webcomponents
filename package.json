@@ -37,7 +37,9 @@
     "new": "yarn run rebuild-wcfcache && wcf element && yarn run test-suite-inject && yarn install --link-duplicates"
   },
   "devDependencies": {
-    "@babel/core": "7.1.2",
+    "@babel/core": "^7.1.6",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-syntax-import-meta": "^7.0.0",
     "@babel/preset-env": "7.1.0",
     "@emotion/core": "^10.0.0-beta.8",
     "@emotion/styled-base": "^0.10.6",

@@ -4,6 +4,10 @@
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+
+window.cmsSiteEditor = window.cmsSiteEditor || {};
+// store reference to the instance as a global
+window.cmsSiteEditor.instance = null;
 /**
  * `haxcms-editor-builder`
  * Figure out what our context is and setup based on that
@@ -25,62 +29,40 @@ Polymer({
    * Try to get context of what backend is powering this
    */
   getContext: function() {
-    let context = "";
-    let basePath = pathFromUrl(import.meta.url);
+    var context = "";
+    const basePath = pathFromUrl(import.meta.url);
     // @todo add support for a demo mode as well as other context definitions
     // figure out if we need to load the PHP or beaker
     if (typeof DatArchive !== typeof undefined) {
-      this.importHref(basePath + "haxcms-beaker.js");
+      import(`${basePath}haxcms-beaker.js`);
       window.cmsSiteEditor.tag = "haxcms-beaker";
       context = "beaker";
     } else if (window.__haxCMSContextNode === true) {
       // @todo add support for node js based back end
       context = "nodejs";
-      //this.importHref(basePath + "haxcms-nodejs.js");
+      //import(`${basePath}haxcms-node-js.js`);
       //window.cmsSiteEditor.tag = "haxcms-nodejs";
     } else if (window.__haxCMSContextDemo === true) {
       // @todo add support for demo mode that has no real backend
       context = "demo";
-      //this.importHref(basePath + "haxcms-demo.js");
+      //import(`${basePath}haxcms-demo.js`);
       //window.cmsSiteEditor.tag = "haxcms-demo";
     } else {
-      this.importHref(basePath + "haxcms-jwt.php");
+      // append the php for global scope to show up via window
+      let script = document.createElement("script");
+      script.src = `/haxcms-jwt.php`;
+      document.documentElement.appendChild(script);
+      // delay import slightly to ensure global scope is there
+      setTimeout(() => {
+        import(`${basePath}haxcms-jwt-php.js`);
+      }, 100);
       window.cmsSiteEditor.tag = "haxcms-jwt";
       context = "php";
     }
     return context;
-  },
-  /**
-   * Hack to replace importHref from Polymer 1 that TYPICALLY will work in ESM
-   */
-  importHref: function(url) {
-    return new Promise((resolve, reject) => {
-      const script = document.createElement("script");
-      const tempGlobal =
-        "__tempModuleLoadingVariable" +
-        Math.random()
-          .toString(32)
-          .substring(2);
-      script.type = "module";
-      script.textContent = `import * as m from "${url}"; window.${tempGlobal} = m;`;
-      script.onload = () => {
-        resolve(window[tempGlobal]);
-        delete window[tempGlobal];
-        script.remove();
-      };
-      script.onerror = () => {
-        reject(new Error("Failed to load module script with URL " + url));
-        delete window[tempGlobal];
-        script.remove();
-      };
-      document.documentElement.appendChild(script);
-    });
   }
 });
 
-window.cmsSiteEditor = window.cmsSiteEditor || {};
-// store reference to the instance as a global
-window.cmsSiteEditor.instance = null;
 // self append if anyone calls us into action
 window.cmsSiteEditor.requestAvailability = function(
   element = this,

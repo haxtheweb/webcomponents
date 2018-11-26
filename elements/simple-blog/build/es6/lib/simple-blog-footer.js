@@ -115,13 +115,13 @@ Polymer({
     manifest: { type: Object },
     active: { type: Boolean, value: !1, reflectToAttribute: !0 }
   },
-  _backButtonTap: function() {
+  _backButtonTap: function(e) {
     this.fire("active-item-reset", null);
   },
-  _activate: function() {
+  _activate: function(e) {
     this.active = !0;
   },
-  _deactivate: function() {
+  _deactivate: function(e) {
     this.active = !1;
   }
 });

@@ -4,6 +4,8 @@
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-card/paper-card.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-image/iron-image.js";
 /**
  * `site-card`
  * `A simple card for representing a site`
@@ -155,15 +157,11 @@ Polymer({
 
   listeners: {
     mouseover: "_mouseEnter",
-    focusin: "_mouseEnter",
     mousedown: "_mouseEnter",
     mouseleave: "_mouseLeave",
     mouseout: "_mouseLeave",
+    focusin: "_mouseEnter",
     focusout: "_mouseLeave"
-  },
-
-  hostAttributes: {
-    tabindex: "0"
   },
 
   properties: {

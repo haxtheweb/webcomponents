@@ -6,7 +6,7 @@ import "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./node_modules/@polymer/iron-pages/iron-pages.js";
 import "./node_modules/@polymer/paper-icon-button/paper-icon-button.js";
-import "@lrnwebcomponents/haxcms-elements/haxcms-theme-behavior.js";
+import "./node_modules/@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";
 import "./lib/simple-blog-listing.js";
 import "./lib/simple-blog-header.js";
 import "./lib/simple-blog-footer.js";
@@ -143,10 +143,10 @@ Polymer({
       this.selectedPage = 0;
     }
   },
-  _resetActiveItem: function() {
+  _resetActiveItem: function(e) {
     this.fire("json-outline-schema-active-item-changed", {});
   },
-  _dataRefreshed: function() {
+  _dataRefreshed: function(e) {
     this.fire("json-outline-schema-active-item-changed", {});
   }
 });

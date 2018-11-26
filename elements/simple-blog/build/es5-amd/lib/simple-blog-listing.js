@@ -3,20 +3,20 @@ define([
   "../node_modules/@polymer/iron-list/iron-list.js",
   "../node_modules/@polymer/paper-button/paper-button.js",
   "./simple-blog-overview.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _ironList, _paperButton, _simpleBlogOverview) {
   "use strict";
-  function _templateObject_cedc8020ecf511e88df25fd2fd1018d8() {
+  function _templateObject_474224f0f1b211e8aa64fd4892676eca() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n      iron-list {\n        width: 100%;\n        max-width: 640px;\n        margin: 0 auto;\n        -webkit-box-sizing: border-box;\n        -moz-box-sizing: border-box;\n        box-sizing: border-box;\n      }\n      @media only screen and (max-width: 800px) {\n        iron-list {\n          padding: 0 32px;\n        }\n      }\n      simple-blog-overview {\n        width: 100%;\n        border: 1px solid #f2f2f0;\n      }\n    </style>\n    <iron-list items="[[items]]">\n      <template>\n        <simple-blog-overview item-id="[[item.id]]" title="[[item.title]]" description="[[item.description]]" link="[[item.location]]" changed="[[item.metadata.updated]]"></simple-blog-overview>\n      </template>\n    </iron-list>\n'
     ]);
-    _templateObject_cedc8020ecf511e88df25fd2fd1018d8 = function() {
+    _templateObject_474224f0f1b211e8aa64fd4892676eca = function _templateObject_474224f0f1b211e8aa64fd4892676eca() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_cedc8020ecf511e88df25fd2fd1018d8()
+      _templateObject_474224f0f1b211e8aa64fd4892676eca()
     ),
     is: "simple-blog-listing",
     properties: { items: { type: Object } }

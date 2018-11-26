@@ -431,8 +431,8 @@ Polymer({
           // attempt a dynamic import with graceful failure / fallback
           try {
             this.__processedList[tag] = tag;
-            this.importHref(
-              pathFromUrl(import.meta.url) + `../${tag}/${tag}.js`,
+            // @todo this won't find all tags
+            import(pathFromUrl(import.meta.url) + `../${tag}/${tag}.js`).then(
               e => {
                 //e.target.import
               },
