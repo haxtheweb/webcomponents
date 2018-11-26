@@ -5,7 +5,6 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "@lrnwebcomponents/lrn-shared-styles/lrn-shared-styles.js";
 import "./lib/simple-picker-option.js";
 export { SimplePicker };
 /**
@@ -48,31 +47,60 @@ class SimplePicker extends PolymerElement {
     return option !== null ? option.value : null;
   }
 
-  _getBgcolor(color) {
-    return "background-color:" + color + ";";
-  }
-
+  /**
+   * returns a unique id for the option based on its row and column.
+   *
+   * @param {number} the row number
+   * @param {number} the column number
+   * @returns {string} a unique id
+   */
   _getOptionId(rownum, colnum) {
     return "option-" + rownum + "-" + colnum;
   }
 
+  /**
+   * returns the value of the selected option.
+   *
+   * @param {string} the selected option's id
+   * @returns {object} the selected option's value
+   */
   _getValue(__selectedDesc) {
     return this._getOption(__selectedDesc).value;
   }
 
+  /**
+   * returns the value of the selected option.
+   *
+   * @param {string} the selected option's id
+   * @returns {object} the selected option
+   */
   _getOption(optionId) {
     let coords = this.__selectedDesc.split("-");
     return this.options[coords[1]][coords[2]];
   }
 
+  /**
+   * determines if an option is at a given row and column
+   *
+   * @param {string} an option's id
+   * @param {number} the row number to be tested
+   * @param {number} the column number to be tested
+   * @returns {boolean} whether or not the option is at the given row and column
+   */
   _isMatch(match, rownum, colnum) {
     return match === this._getOptionId(rownum, colnum);
   }
 
+  /**
+   * handles listbox click event
+   */
   _handleListboxClick(e) {
     this._toggleListbox(!this.expanded);
   }
 
+  /**
+   * handles listbox keyboard events
+   */
   _handleListboxKeydown(e) {
     let coords = this.__activeDesc.split("-"),
       rownum = parseInt(coords[1]),
@@ -111,10 +139,19 @@ class SimplePicker extends PolymerElement {
     }
   }
 
+  /**
+   * handles option focus event and sets the active descendant
+   */
   _handleOptionFocus(e) {
     this._setActiveOption(e.detail.id);
   }
 
+  /**
+   * sets a new active descendant and sets focus on it
+   *
+   * @param {number} the row number to be tested
+   * @param {number} the column number to be tested
+   */
   _goToOption(rownum, colnum) {
     let targetId = this._getOptionId(rownum, colnum),
       target = this.shadowRoot.querySelector("#" + targetId),
@@ -126,14 +163,29 @@ class SimplePicker extends PolymerElement {
     }
   }
 
+  /**
+   * sets the  active descendant to a given option's id
+   *
+   * @param {string} the option id
+   */
   _setActiveOption(optionId) {
     this.__activeDesc = optionId;
   }
 
+  /**
+   * sets the selected option to a given option's id
+   *
+   * @param {string} the option id
+   */
   _setSelectedOption(optionId) {
     this.__selectedDesc = optionId;
   }
 
+  /**
+   * toggles the listbox
+   *
+   * @param {boolean} expand the listbox?
+   */
   _toggleListbox(expanded) {
     this.expanded = expanded;
     if (expanded) {

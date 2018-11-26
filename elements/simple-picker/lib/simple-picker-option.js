@@ -3,6 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@lrnwebcomponents/lrn-shared-styles/lrn-shared-styles.js";
 export { SimplePickerOption };
 /**
  * `simple-picker-option`
@@ -19,7 +22,14 @@ export { SimplePickerOption };
 class SimplePickerOption extends PolymerElement {
   // render function
   static get template() {
-    return html`<span class="label">[[item.text]]</span>`;
+    return html`<style is="custom-style" include="lrn-shared-styles">
+  :host .label {
+    padding: 5px 10px;
+    @apply --simple-picker-option-label;
+  }
+</style>
+<iron-icon aria-hidden="true" hidden$="[[_hideIcon(icon)]]" icon$="[[icon]]"></iron-icon> 
+<span class$="[[_getSrOnly(hideOptionLabels)]]">[[title]]</span>`;
   }
 
   // properties available to the custom element for data binding
@@ -32,6 +42,29 @@ class SimplePickerOption extends PolymerElement {
         name: "active",
         type: "Boolean",
         value: null,
+        reflectToAttribute: true,
+        observer: false
+      },
+
+      /**
+       * Optional. If option is an iron icon, the iconset:name of the icon
+       */
+      icon: {
+        name: "icon",
+        type: "String",
+        value: null,
+        reflectToAttribute: false,
+        observer: false
+      },
+
+      /**
+       * Hide option labels? As color-picker or icon-picker, labels may be redundant.
+       * This option would move the labels off-screen so that only screen-readers will have them.
+       */
+      hideOptionLabels: {
+        name: "hideOptionLabels",
+        type: "Boolean",
+        value: false,
         reflectToAttribute: true,
         observer: false
       },
@@ -61,8 +94,8 @@ class SimplePickerOption extends PolymerElement {
       /**
        * The text of the option. (Required for accessibility.)
        */
-      text: {
-        name: "text",
+      title: {
+        name: "title",
         type: "String",
         value: null,
         reflectToAttribute: true,
@@ -89,11 +122,39 @@ class SimplePickerOption extends PolymerElement {
   static get tag() {
     return "simple-picker-option";
   }
+
+  /**
+   * If the option is not an iron-icon, hide the iron-icon.
+   *
+   * @param {string} the icon property
+   * @returns {boolean} whether or not the iron iron should be hidden
+   */
+  _hideIcon(icon) {
+    return this.icon === null;
+  }
+
+  /**
+   * On keyboard focus, fires an event to the picker so that active descendant can be set.
+   */
   _handleFocus() {
     this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
   }
+
+  /**
+   * On mouse hover, fires an event to the picker so that active descendant can be set.
+   */
   _handleHover() {
     this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
+  }
+
+  /**
+   * determines if a label should visible on screen
+   *
+   * @param {boolean} hideOptionLabels property
+   * @returns {string} the sr-only (screenreader-only) class
+   */
+  _getSrOnly(hideOptionLabels) {
+    return hideOptionLabels === false ? "label" : "label sr-only";
   }
 
   /**

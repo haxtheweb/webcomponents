@@ -7,10 +7,13 @@
   tabindex="0">
   <div id="sample">
     <simple-picker-option 
-      style="[[_getBgcolor(__selectedOption.color)]]" 
-      text$="[[__selectedOption.text]]">
+      aria-hidden="true" 
+      hide-option-labels$="[[hideOptionLabels]]"
+      icon$="[[__selectedOption.icon]]"
+      style$="[[__selectedOption.style]]" 
+      title$="[[__selectedOption.alt]]">
     </simple-picker-option>
-    <span id="icon"><iron-icon icon="arrow-drop-down"></iron-icon></span>
+    <span id="icon"><iron-icon aria-hidden="true" icon="arrow-drop-down"></iron-icon></span>
   </div>
   <div id="collapse">
     <div class="rows">
@@ -20,15 +23,17 @@
             <simple-picker-option 
               active$="[[_isMatch(__activeDesc,rownum,colnum)]]"
               aria-selected$="[[option.selected]]" 
-              id="[[_getOptionId(rownum,colnum)]]"
+              hide-option-labels$="[[hideOptionLabels]]"
+              icon$="[[option.icon]]"
+              id$="[[_getOptionId(rownum,colnum)]]"
               role="option"
-              selected$="[[_isMatch(__selected,rownum,colnum)]]"
+              selected$="[[_isMatch(__selectedDesc,rownum,colnum)]]"
               on-option-focus="_handleOptionFocus"
               on-set-selected-option="_handleSetSelectedOption"
-              style="[[_getBgcolor(option.color)]]" 
+              style$="[[option.style]]" 
               tabindex="-1"
-              text$="[[option.text]]"
-              value$="[[option.value]]">
+              title$="[[option.alt]]"
+              value$="[[option]]">
             </simple-picker-option>
           </template>
         </div>

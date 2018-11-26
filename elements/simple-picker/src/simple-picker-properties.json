@@ -22,6 +22,17 @@
   },
 
   /**
+   * Is it expanded?
+   */
+  "expanded": {
+    "name": "expanded",
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": true,
+    "observer": false
+  },
+
+  /**
    * Optional. The label for the picker input
    */
   "label": {
@@ -33,12 +44,32 @@
   },
 
   /**
-   * An string that stores the current value for the picker
+   * An array of options for the picker, eg.: `
+[
+  {
+    "icon": "editor:format-paint",      //Optional. Used if the picker is used as an icon picker.
+    "alt": "Blue",                      //Required for accessibility. Alt text description of the choice.
+    "style": "background-color: blue;", //Optional. Used to set an option's style.
+    ...                                 //Optional. Any other properties that should be captured as part of the selected option's value
+  },...
+]`
    */
-  "swatches": {
-    "name": "swatches",
+  "options": {
+    "name": "options",
     "type": "Array",
     "value": [],
+    "reflectToAttribute": false,
+    "observer": false
+  },
+
+  /**
+   * Hide option labels? As color-picker or icon-picker, labels may be redundant.
+   * This option would move the labels off-screen so that only screen-readers will have them.
+   */
+  "hideOptionLabels": {
+    "name": "hideOptionLabels",
+    "type": "Boolean",
+    "value": false,
     "reflectToAttribute": false,
     "observer": false
   },
@@ -85,17 +116,6 @@
     "type": "Object",
     "computed": "_getOption(__selectedDesc)",
     "reflectToAttribute": false,
-    "observer": false
-  },
-
-  /**
-   * Is it expanded?
-   */
-  "expanded": {
-    "name": "expanded",
-    "type": "Boolean",
-    "value": false,
-    "reflectToAttribute": true,
     "observer": false
   }
 }

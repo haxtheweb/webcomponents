@@ -9,7 +9,15 @@
       import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
       import '../simple-picker.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      #icondemo {
+        display: flex;
+        align-items: center;
+      }
+      #iconpicker-label {
+        margin-right: 0.5em;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
@@ -20,37 +28,110 @@
             document.getElementById('picker').options = [
               [
                 {
-                  "color": "blue",
-                  "text": "Blue",
-                  "value": { "hex": "#0000FF" }
-                },{
-                  "color": "yellow",
-                  "text": "Yellow",
-                  "selected": true,
-                  "value": { "hex": "#888800" }
-                },{
-                  "color": "red",
-                  "text": "Red",
-                  "value": { "hex": "#FF0000" }
+                  "alt": "sans-serif",               //sets the option's font-family, so that user can preview the option
+                  "style": "font-family: sans-serif"
                 }
               ],[
                 {
-                  "color": "purple",
-                  "text": "Purple",
-                  "value": { "hex": "#880088" }
-                },{
-                  "color": "green",
-                  "text": "Green",
-                  "value": { "hex": "#00FF00" }
-                },{
-                  "color": "orange",
-                  "text": "Orange",
-                  "value": { "hex": "#BB4400" }
+                  "alt": "serif",
+                  "style": "font-family: serif"
+                }
+              ],[
+                {
+                  "alt": "monospace",
+                  "selected": true,
+                  "style": "font-family: monospace"
+                }
+              ],[
+                {
+                  "alt": "cursive",
+                  "style": "font-family: cursive"
                 }
               ]
             ];
           </script>
-          <simple-picker id="picker" label="test-picker"></simple-picker>
+          <simple-picker id="picker" label="Pick a Font-Family"></simple-picker>
+        </template>
+      </demo-snippet>
+      <h3>simple-picker as a Color-Picker</h3>
+      <demo-snippet>
+        <template>
+          <script>
+            document.getElementById('colorpicker').options = [
+              [
+              {
+                  "style": "background-color: #FF00FF", //sets the option's background color
+                  "alt": "Purple"
+                },{
+                  "style": "background-color: #2222FF",
+                  "alt": "Blue"
+                },{
+                  "style": "background-color: #00FF00",
+                  "alt": "Green"
+                },{
+                  "style": "background-color: #FFFF00",
+                  "alt": "Yellow"
+                },{
+                  "style": "background-color: #FF8800",
+                  "alt": "Orange"
+                },{
+                  "style": "background-color: #FF0000",
+                  "alt": "Red"
+                }
+              ]
+            ];
+          </script>
+          <style>
+            /* 
+             Since background color styles override styles for active and selected options, 
+             we will set border styles for default, active, and selected options.
+            */
+            #colorpicker {
+              --simple-picker-active-option-outline: 2px solid black;
+            }
+          </style>
+          <simple-picker id="colorpicker" hide-option-labels label="Pick a Color"></simple-picker>
+        </template>
+      </demo-snippet>
+      <h3>simple-picker as an Icon-Picker</h3>
+      <demo-snippet>
+        <template>
+          <script>
+            document.getElementById('iconpicker').options = [
+              [
+                {
+                  "alt": "none"
+                },{
+                  "icon": "check",
+                  "alt": "OK"
+                },{
+                  "icon": "clear",
+                  "alt": "Cancel"
+                },{
+                  "icon": "search",
+                  "alt": "Find"
+                }
+              ],[
+                {
+                  "icon": "arrow-back", //sets the option's iron-icon
+                  "alt": "Left"
+                },{
+                  "icon": "arrow-downward",
+                  "alt": "Down"
+                },{
+                  "icon": "arrow-forward",
+                  "alt": "Right"
+                },{
+                  "icon": "arrow-upward",
+                  "alt": "Up"
+                }
+              ]
+            ];
+          </script>
+          <div id="icondemo">
+            <label id="iconpicker-label">Pick an Icon: </label> 
+            <simple-picker id="iconpicker" hide-option-labels aria-labelledby="iconpicker-label"></simple-picker>
+          </div>
         </template>
       </demo-snippet>
     </div>
