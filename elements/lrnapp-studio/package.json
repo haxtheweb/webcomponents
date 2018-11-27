@@ -41,20 +41,25 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/materializecss-styles": "^0.0.35",
-    "@lrnwebcomponents/s-grid": "^0.0.35",
     "@lrnwebcomponents/scary-gallery": "^0.0.35",
     "@polymer/app-route": "^3.0.0",
     "@polymer/iron-flex-layout": "^3.0.0",
     "@polymer/iron-iconset": "^3.0.0",
+    "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-media-query": "^3.0.0",
+    "@polymer/iron-ajax": "^3.0.1",
+    "@polymer/iron-list": "^3.0.1",
     "@polymer/paper-button": "^3.0.0",
     "@polymer/paper-card": "^3.0.0",
     "@polymer/paper-dialog": "^3.0.0",
     "@polymer/paper-header-panel": "^3.0.0",
     "@polymer/paper-material": "^3.0.0",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.0.5",
+    "@lrnwebcomponents/lrnsys-layout": "^0.0.35",
+    "@lrnwebcomponents/lrnsys-button": "^0.0.35"
   },
   "devDependencies": {
+    "web-animations-js": "^2.3.1",
     "@lrnwebcomponents/deduping-fix": "^0.0.35",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
