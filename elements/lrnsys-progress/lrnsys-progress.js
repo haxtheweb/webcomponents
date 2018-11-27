@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "./lib/lrnsys-progress-circle.js";
 /**
@@ -19,7 +20,8 @@ import "./lib/lrnsys-progress-circle.js";
  */
 Polymer({
   _template: html`
-    <style>
+    <custom-style>
+    <style is="custom-style" include="paper-material-styles">
       :host {
         display: block;
         margin-top: 24px;
@@ -94,8 +96,8 @@ Polymer({
         --lrnsys-progress-icon-size: 24px;
         --paper-spinner-stroke-width: 1.2px;
       }
-
     </style>
+    </custom-style>
     <iron-ajax id="ajax" url="[[activeNodeURL]]" handle-as="json" last-response="{{nodeData}}" last-error="{{nodeDataError}}" on-response="handleNodeResponse"></iron-ajax>
     <h3 class="progress-title">[[title]]</h3>
     <paper-progress id="progress" value="[[overallPercentage]]"></paper-progress>
@@ -159,7 +161,7 @@ Polymer({
      */
     completeSound: {
       type: String,
-      value: "assets/complete.mp3",
+      value: pathFromUrl(import.meta.url) + "lib/assets/complete.mp3",
       reflectToAttribute: true
     },
     /**
@@ -167,7 +169,7 @@ Polymer({
      */
     finishedSound: {
       type: String,
-      value: "assets/finished.mp3",
+      value: pathFromUrl(import.meta.url) + "lib/assets/finished.mp3",
       reflectToAttribute: true
     },
     /**
@@ -336,6 +338,7 @@ Polymer({
     ) {
       newValue[this.active].status = "loading";
       this.set("items." + this.active + ".status", "loading");
+      this.notifyPath("items." + this.active + ".status");
       // becasue this is so early in bootstrap of the element we
       // won't be able to detect the initial loading event
       if (
@@ -348,6 +351,7 @@ Polymer({
         setTimeout(() => {
           newValue[this.active].status = "available";
           this.set("items." + this.active + ".status", "available");
+          this.notifyPath("items." + this.active + ".status");
           this._responseList[this.active] = {};
           this.activeNodeResponse = this._responseList[this.active];
         }, 1200);
@@ -396,6 +400,7 @@ Polymer({
         ) {
           this.items[index].status = "loading";
           this.set("items." + index + ".status", "loading");
+          this.notifyPath("items." + index + ".status");
         }
       }
       // or if our value is at max AND it's the last item in the list
@@ -405,11 +410,13 @@ Polymer({
       ) {
         this.items[index].status = "finished";
         this.set("items." + index + ".status", "finished");
+        this.notifyPath("items." + index + ".status");
       }
       // or if we're just at max then mark us complete
       else if (this.items[index].value >= this.items[index].max) {
         this.items[index].status = "complete";
         this.set("items." + index + ".status", "complete");
+        this.notifyPath("items." + index + ".status");
       }
       // or if the index is the currently active item
       else if (index == this.active) {
@@ -417,17 +424,20 @@ Polymer({
         if (typeof this._responseList[index] === typeof undefined) {
           this.items[index].status = "loading";
           this.set("items." + index + ".status", "loading");
+          this.notifyPath("items." + index + ".status");
         }
         // if we already had a response, then mark available
         else {
           this.activeNodeResponse = this._responseList[index];
           this.items[index].status = "available";
           this.set("items." + index + ".status", "available");
+          this.notifyPath("items." + index + ".status");
         }
       } else {
         // we didn't match any cases, just leave it active
         this.items[index].status = "available";
         this.set("items." + index + ".status", "available");
+        this.notifyPath("items." + index + ".status");
       }
     });
   },
@@ -449,6 +459,7 @@ Polymer({
         setTimeout(() => {
           this.items[this.active].status = "available";
           this.set("items." + this.active + ".status", "available");
+          this.notifyPath("items." + this.active + ".status");
           this._responseList[this.active] = {};
           this.activeNodeResponse = this._responseList[this.active];
         }, 1500);
@@ -460,6 +471,7 @@ Polymer({
       setTimeout(() => {
         this.items[this.active].status = "finished";
         this.set("items." + this.active + ".status", "finished");
+        this.notifyPath("items." + this.active + ".status");
       }, 100);
     }
   },
@@ -474,6 +486,7 @@ Polymer({
       setTimeout(() => {
         this.items[this.active].status = "available";
         this.set("items." + this.active + ".status", "available");
+        this.notifyPath("items." + this.active + ".status");
         this._responseList[this.active] = detail.response;
         this.activeNodeResponse = this._responseList[this.active];
       }, 1500);
@@ -482,6 +495,7 @@ Polymer({
     else {
       this.items[this.active].status = "available";
       this.set("items." + this.active + ".status", "available");
+      this.notifyPath("items." + this.active + ".status");
       this._responseList[this.active] = detail.response;
       this.activeNodeResponse = this._responseList[this.active];
     }
@@ -503,6 +517,7 @@ Polymer({
       // set available because we don't have a failed state
       this.items[this.active].status = "available";
       this.set("items." + this.active + ".status", "available");
+      this.notifyPath("items." + this.active + ".status");
       // fire an event that this isn't really available so we know an issue occured
       this.fire("node-load-failed", {
         message: newValue,
@@ -541,6 +556,7 @@ Polymer({
         this.state = "finished";
         this.items[this.active].status = "finished";
         this.set("items." + this.active + ".status", "finished");
+        this.notifyPath("items." + this.active + ".status");
         // need to make sure finished happens prior to value set to 100
         // otherwise this will kick off the circle to complete itself
         this.items[this.active].value = this.items[this.active].max;
@@ -548,6 +564,7 @@ Polymer({
           "items." + this.active + ".value",
           this.items[this.active].max
         );
+        this.notifyPath("items." + this.active + ".value");
       } else {
         // set value = max which will automatically trigger complete in the circle
         this.items[this.active].value = this.items[this.active].max;
@@ -555,6 +572,7 @@ Polymer({
           "items." + this.active + ".value",
           this.items[this.active].max
         );
+        this.notifyPath("items." + this.active + ".value");
       }
       // ensure we still have more items to go in the list
       if (this.items.length > this.active + 1) {
@@ -570,6 +588,7 @@ Polymer({
         ) {
           this.items[this.active + 1].status = "loading";
           this.set("items." + (this.active + 1) + ".status", "loading");
+          this.notifyPath("items." + (this.active + 1) + ".status");
         }
         // set state so it gets reported upstream in events
         this.state = "active item is " + (this.active + 1);
@@ -579,6 +598,7 @@ Polymer({
     } else {
       this.items[this.active].value = newp;
       this.set("items." + this.active + ".value", newp);
+      this.notifyPath("items." + this.active + ".value");
     }
   },
 
@@ -600,6 +620,7 @@ Polymer({
     const active = this.active;
     this.set("active", 0);
     this.set("active", active);
+    this.notifyPath("active");
     return response;
   }
 });

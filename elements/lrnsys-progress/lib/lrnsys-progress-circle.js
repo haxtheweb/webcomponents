@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/circle-progress/circle-progress.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
@@ -18,9 +19,9 @@ import "@polymer/iron-icons/iron-icons.js";
 Polymer({
   _template: html`
   <custom-style>
-    <style is="custom-style">
+    <style is="custom-style" include="paper-material-styles">
       :host {
-        --paper-button-ink-color: var(--lrnsys-progress-color, --paper-green-500);
+        --paper-button-ink-color: var(--lrnsys-progress-color, var(--paper-green-500));
         display: block;
         transition:
           box-shadow var(--lrnsys-progress-circle-transition, 0.5s) linear,
@@ -28,8 +29,8 @@ Polymer({
           background-color var(--lrnsys-progress-circle-transition, .5s) ease-in-out;
       }
       :host([status='complete']) .circle-wrapper {
-        --paper-button-ink-color: var(--lrnsys-progress-complete-color, --paper-green-500);
-        box-shadow: 0px 0px 0px .16px var(--lrnsys-progress-complete-color, --paper-green-900);
+        --paper-button-ink-color: var(--lrnsys-progress-complete-color, var(--paper-green-500));
+        box-shadow: 0px 0px 0px .16px var(--lrnsys-progress-complete-color, var(--paper-green-900));
       }
       :host([status='disabled']) .circle-wrapper {
         box-shadow: none;
@@ -38,7 +39,7 @@ Polymer({
         box-shadow: none;
       }
       :host([active]) .circle-wrapper {
-        box-shadow: 0px 0px 0px .16px var(--google-grey-500);
+        box-shadow: 0px 0px 0px .16px var(--google-grey-500, #555555);
       }
       .circle-wrapper {
         border-radius: 100%;
@@ -46,7 +47,7 @@ Polymer({
       .button {
         margin: 0;
         padding: 0;
-        display: block;
+        display: flex;
         min-width: 40px;
         border-radius: 100%;
       }
@@ -58,8 +59,8 @@ Polymer({
         margin: 0;
         --circle-progress-width: var(--lrnsys-progress-circle-size, 40px);
         --circle-progress-height: var(--lrnsys-progress-circle-size, 40px);
-        --circle-progress-stroke-color: var(--lrnsys-progress-color, --paper-green-500);
-        --circle-progress-bg-stroke-color: var(--lrnsys-progress-container-color, --google-grey-300);
+        --circle-progress-stroke-color: var(--lrnsys-progress-color, var(--paper-green-500));
+        --circle-progress-bg-stroke-color: var(--lrnsys-progress-container-color, var(--google-grey-300));
         --circle-progress-transition: 0.5s;
         --circle-progress-stroke-linecap: square;
         transition:
@@ -68,6 +69,7 @@ Polymer({
       }
       paper-spinner {
         display: block;
+        font-size: 16px;
         width: var(--lrnsys-progress-spinner-size, 32px);
         height: var(--lrnsys-progress-spinner-size, 32px);
         position: absolute;
@@ -97,7 +99,7 @@ Polymer({
         height: var(--lrnsys-progress-icon-size, 24px);
       }
       .disabled {
-        background-color: var(--lrnsys-progress-disabled-color, --google-grey-500);
+        background-color: var(--lrnsys-progress-disabled-color, var(--google-grey-500));
         color: white;
       }
       .loading {
@@ -109,8 +111,8 @@ Polymer({
         height: calc(var(--lrnsys-progress-icon-size, 24px) - 8px);
       }
       .available {
-        background-color: var(--lrnsys-progress-active-color, --google-grey-300);
-        color: var(--lrnsys-progress-active-text-color, --google-grey-500);
+        background-color: var(--lrnsys-progress-active-color, var(--google-grey-300));
+        color: var(--lrnsys-progress-active-text-color, var(--google-grey-500));
       }
       .activeIcon {
         color: black;
@@ -124,7 +126,7 @@ Polymer({
       }
       .complete,
       .finished {
-        background-color: var(--lrnsys-progress-container-color, --paper-green-500);
+        background-color: var(--lrnsys-progress-container-color, var(--paper-green-500));
         color: white;
       }
       :host([active]) circle-progress {
@@ -199,8 +201,9 @@ Polymer({
      * Current value.
      */
     value: {
-      type: String,
+      type: Number,
       value: 0,
+      notify: true,
       reflectToAttribute: true,
       observer: "_testValueComplete"
     },
@@ -385,7 +388,7 @@ Polymer({
      */
     completeSound: {
       type: String,
-      value: "assets/complete.mp3",
+      value: pathFromUrl(import.meta.url) + "assets/complete.mp3",
       reflectToAttribute: true
     },
     /**
@@ -393,7 +396,7 @@ Polymer({
      */
     finishedSound: {
       type: String,
-      value: "assets/finished.mp3",
+      value: pathFromUrl(import.meta.url) + "assets/finished.mp3",
       reflectToAttribute: true
     },
     /**
