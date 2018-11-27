@@ -33,7 +33,8 @@ A polymer app to talk to Contenta to serve up it's content in a visually awesome
 */
 Polymer({
   _template: html`
-    <style include="materializecss-styles">
+  <custom-style>
+    <style is="custom-style" include="materializecss-styles">
       :host {
         --app-primary-color: #4285f4;
         --app-secondary-color: black;
@@ -71,7 +72,7 @@ Polymer({
         font-weight: bold;
       }
     </style>
-
+  </custom-style>
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
     </app-location>
 
