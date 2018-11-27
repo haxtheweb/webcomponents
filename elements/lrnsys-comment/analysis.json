@@ -518,11 +518,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 85,
               "column": 4
             },
             "end": {
-              "line": 95,
+              "line": 87,
               "column": 5
             }
           },
@@ -539,11 +539,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 99,
+              "line": 91,
               "column": 4
             },
             "end": {
-              "line": 108,
+              "line": 100,
               "column": 5
             }
           },
@@ -561,11 +561,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 112,
+              "line": 104,
               "column": 4
             },
             "end": {
-              "line": 115,
+              "line": 107,
               "column": 5
             }
           },
@@ -583,11 +583,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 119,
+              "line": 111,
               "column": 4
             },
             "end": {
-              "line": 122,
+              "line": 114,
               "column": 5
             }
           },
@@ -605,11 +605,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 126,
+              "line": 118,
               "column": 4
             },
             "end": {
-              "line": 129,
+              "line": 121,
               "column": 5
             }
           },
@@ -627,11 +627,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 133,
+              "line": 125,
               "column": 4
             },
             "end": {
-              "line": 136,
+              "line": 128,
               "column": 5
             }
           },
@@ -649,11 +649,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 140,
+              "line": 132,
               "column": 4
             },
             "end": {
-              "line": 143,
+              "line": 135,
               "column": 5
             }
           },
@@ -671,11 +671,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 147,
+              "line": 139,
               "column": 4
             },
             "end": {
-              "line": 150,
+              "line": 142,
               "column": 5
             }
           },
@@ -693,11 +693,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 154,
+              "line": 146,
               "column": 4
             },
             "end": {
-              "line": 159,
+              "line": 151,
               "column": 5
             }
           },
@@ -717,11 +717,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 165,
+              "line": 157,
               "column": 2
             },
             "end": {
-              "line": 178,
+              "line": 171,
               "column": 3
             }
           },
@@ -741,11 +741,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 182,
+              "line": 175,
               "column": 2
             },
             "end": {
-              "line": 191,
+              "line": 184,
               "column": 3
             }
           },
@@ -765,11 +765,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 195,
+              "line": 188,
               "column": 2
             },
             "end": {
-              "line": 199,
+              "line": 192,
               "column": 3
             }
           },
@@ -792,11 +792,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 203,
+              "line": 196,
               "column": 2
             },
             "end": {
-              "line": 206,
+              "line": 199,
               "column": 3
             }
           },
@@ -816,11 +816,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 210,
+              "line": 203,
               "column": 2
             },
             "end": {
-              "line": 210,
+              "line": 203,
               "column": 37
             }
           },
@@ -840,11 +840,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 214,
+              "line": 207,
               "column": 2
             },
             "end": {
-              "line": 219,
+              "line": 246,
               "column": 3
             }
           },
@@ -864,11 +864,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 223,
+              "line": 250,
               "column": 2
             },
             "end": {
-              "line": 226,
+              "line": 253,
               "column": 3
             }
           },
@@ -888,11 +888,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 234,
+              "line": 261,
               "column": 2
             },
             "end": {
-              "line": 239,
+              "line": 266,
               "column": 3
             }
           },
@@ -912,11 +912,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 247,
+              "line": 274,
               "column": 2
             },
             "end": {
-              "line": 252,
+              "line": 279,
               "column": 3
             }
           },
@@ -936,11 +936,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 258,
+              "line": 285,
               "column": 2
             },
             "end": {
-              "line": 283,
+              "line": 310,
               "column": 3
             }
           },
@@ -960,11 +960,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 288,
+              "line": 315,
               "column": 2
             },
             "end": {
-              "line": 290,
+              "line": 317,
               "column": 3
             }
           },
@@ -984,11 +984,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 292,
+              "line": 319,
               "column": 2
             },
             "end": {
-              "line": 310,
+              "line": 337,
               "column": 3
             }
           },
@@ -1005,11 +1005,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 315,
+              "line": 342,
               "column": 2
             },
             "end": {
-              "line": 318,
+              "line": 345,
               "column": 3
             }
           },
@@ -1029,11 +1029,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 320,
+              "line": 347,
               "column": 2
             },
             "end": {
-              "line": 323,
+              "line": 350,
               "column": 3
             }
           },
@@ -1053,11 +1053,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 328,
+              "line": 355,
               "column": 2
             },
             "end": {
-              "line": 332,
+              "line": 359,
               "column": 3
             }
           },
@@ -1083,7 +1083,7 @@
           "column": 8
         },
         "end": {
-          "line": 333,
+          "line": 360,
           "column": 1
         }
       },
@@ -1095,11 +1095,11 @@
           "description": "CSRF Token",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 85,
               "column": 4
             },
             "end": {
-              "line": 95,
+              "line": 87,
               "column": 5
             }
           },
@@ -1111,11 +1111,11 @@
           "description": "Request methods",
           "sourceRange": {
             "start": {
-              "line": 99,
+              "line": 91,
               "column": 4
             },
             "end": {
-              "line": 108,
+              "line": 100,
               "column": 5
             }
           },
@@ -1127,11 +1127,11 @@
           "description": "Comment currently in scope",
           "sourceRange": {
             "start": {
-              "line": 112,
+              "line": 104,
               "column": 4
             },
             "end": {
-              "line": 115,
+              "line": 107,
               "column": 5
             }
           },
@@ -1143,11 +1143,11 @@
           "description": "New stub comment from backend.",
           "sourceRange": {
             "start": {
-              "line": 119,
+              "line": 111,
               "column": 4
             },
             "end": {
-              "line": 122,
+              "line": 114,
               "column": 5
             }
           },
@@ -1159,11 +1159,11 @@
           "description": "An object containing all comments to render in the list",
           "sourceRange": {
             "start": {
-              "line": 126,
+              "line": 118,
               "column": 4
             },
             "end": {
-              "line": 129,
+              "line": 121,
               "column": 5
             }
           },
@@ -1175,11 +1175,11 @@
           "description": "Source to pull the comments from",
           "sourceRange": {
             "start": {
-              "line": 133,
+              "line": 125,
               "column": 4
             },
             "end": {
-              "line": 136,
+              "line": 128,
               "column": 5
             }
           },
@@ -1191,11 +1191,11 @@
           "description": "Base for ops calls",
           "sourceRange": {
             "start": {
-              "line": 140,
+              "line": 132,
               "column": 4
             },
             "end": {
-              "line": 143,
+              "line": 135,
               "column": 5
             }
           },
@@ -1207,11 +1207,11 @@
           "description": "Source to get stub comments from",
           "sourceRange": {
             "start": {
-              "line": 147,
+              "line": 139,
               "column": 4
             },
             "end": {
-              "line": 150,
+              "line": 142,
               "column": 5
             }
           },
@@ -1223,11 +1223,11 @@
           "description": "Source for CRUD ops against individual comments.",
           "sourceRange": {
             "start": {
-              "line": 154,
+              "line": 146,
               "column": 4
             },
             "end": {
-              "line": 159,
+              "line": 151,
               "column": 5
             }
           },

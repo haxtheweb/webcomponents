@@ -318,15 +318,18 @@ Polymer({
       comment = target.dataCommentid;
       // handle the type of event requested
       if (target.id == "reply") {
-        this.fire("comment-reply", { comment: this.comment });
+        this.fire("comment-reply", { comment: this.comment, target: target });
       } else if (target.id == "like") {
         this.$.like.classList.toggle("like-icon-color");
-        this.fire("comment-like", { comment: this.comment });
+        this.fire("comment-like", { comment: this.comment, target: target });
       } else if (target.id == "edit") {
         // toggle edit, allow edit state handle itself via observer
         this.editform = !this.editform;
       } else if (target.id == "delete") {
-        this.fire("comment-delete-dialog", { comment: this.comment });
+        this.fire("comment-delete-dialog", {
+          comment: this.comment,
+          target: target
+        });
       }
     }
   },

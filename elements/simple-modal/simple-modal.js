@@ -191,15 +191,16 @@ exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-
    */
   animationEnded(e) {
     if (this.invokedBy) {
+      // wipe the slot of our modal
+      this.title = "";
+
+      while (dom(this).firstChild !== null) {
+        dom(this).removeChild(dom(this).firstChild);
+      }
       async.microTask.run(() => {
         setTimeout(() => {
           this.invokedBy.focus();
         }, 500);
-        this.title = "";
-        // wipe the slot of our modal
-        while (dom(this).firstChild !== null) {
-          dom(this).removeChild(dom(this).firstChild);
-        }
       });
     }
   }

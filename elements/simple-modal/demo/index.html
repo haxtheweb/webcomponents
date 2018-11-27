@@ -37,6 +37,11 @@
             p.innerHTML = '<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.';
             modal.show('Some stuff pulled in', {content: p}, document.getElementById('button2'));
           });
+          window.__click = (e) => {
+            alert('i kept your event');
+            console.log(e);
+          };
+          // this is the best way to work with the modal as it provides the most flexibility
           document.getElementById('button3').addEventListener('tap', () => {
             let p = document.createElement("div");
             p.innerHTML = '<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.';
@@ -44,6 +49,7 @@
             h.innerHTML = 'We Love headings';
             let button = document.createElement("paper-button");
             button.raised = true;
+            button.addEventListener('click', window.__click.bind(this));
             button.appendChild(document.createTextNode("Button label"));
             const evt = new CustomEvent("simple-modal-show", {
               bubbles: true,

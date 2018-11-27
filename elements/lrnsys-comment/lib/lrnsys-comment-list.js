@@ -228,7 +228,7 @@ Polymer({
     pb2.setAttribute("autofocus", "autofocus");
     pb2.addEventListener("click", this._handleDeleteConfirm.bind(this));
     t = document.createTextNode("Accept");
-    pb.appendChild(t);
+    pb2.appendChild(t);
     b.appendChild(pb2);
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
