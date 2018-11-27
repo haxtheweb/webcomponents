@@ -4,29 +4,19 @@ import "@lrnwebcomponents/scary-gallery/scary-gallery.js";
 import "@polymer/paper-header-panel/paper-header-panel.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
-import "@lrnwebcomponents/s-grid/lib/s-grid-style.js";
 var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<dom-module id="lrnapp-studio-submission">
   <template is="dom-bind">
    <style include="iron-flex iron-flex-alignment"></style>
-    <style include="s-grid-style s-grid-1-style">
-      :host {
-        --s-grid-1-items: 3;
-        --s-grid-1-item-height: 100px;
-      }
+    <style>
       ul {
         padding: 0;
         list-style: none;
       }
       .item {
         background-color: white;
-      }
-      @media (max-width: 640px) {
-        :host {
-          --s-grid-1-items: 1;
-        }
       }
     </style>
     <style> 
@@ -74,11 +64,6 @@ $_documentContainer.innerHTML = `<dom-module id="lrnapp-studio-submission">
       }
     </style>
       
-        <!-- <div class="s-grid s-grid-1">
-          <div class="item">Thing 1</div>
-          <div class="item">Thing 2</div>
-          <div class="item">Thing 3</div>
-        </div> -->
       <div class="divider"></div>
       <div class="paper-material-margin-med">
         <h2 class="submission-title">[[title]]</h2>
