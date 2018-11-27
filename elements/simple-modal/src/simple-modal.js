@@ -12,7 +12,18 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/neon-animation/animations/scale-up-animation.js";
 import "@polymer/neon-animation/animations/fade-out-animation.js";
-export { SimpleModal };
+// register globally so we can make sure there is only one
+window.simpleModal = window.simpleModal || {};
+// request if this exists. This helps invoke the element existing in the dom
+// as well as that there is only one of them. That way we can ensure everything
+// is rendered through the same modal
+window.simpleModal.requestAvailability = () => {
+  if (!window.simpleModal.instance) {
+    window.simpleModal.instance = document.createElement("simple-modal");
+    document.body.appendChild(window.simpleModal.instance);
+  }
+  return window.simpleModal.instance;
+};
 /**
  * `simple-modal`
  * `A simple modal that ensures accessibility and stack order context appropriately`
@@ -40,6 +51,19 @@ class SimpleModal extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener("simple-modal-show", this.showEvent.bind(this));
+    this.$.dialog.addEventListener(
+      "iron-overlay-opened",
+      this._resizeContent.bind(this)
+    );
+  }
+  /**
+   * Ensure everything is visible in what's been expanded.
+   */
+  _resizeContent(e) {
+    // fake a resize event to make contents happy
+    async.microTask.run(() => {
+      window.dispatchEvent(new Event("resize"));
+    });
   }
   /**
    * show event call to open the modal and display it's content
@@ -151,18 +175,11 @@ class SimpleModal extends PolymerElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     window.removeEventListener("simple-modal-show", this.showEvent.bind(this));
+    this.$.dialog.removeEventListener(
+      "iron-overlay-opened",
+      this._resizeContent.bind(this)
+    );
   }
 }
 window.customElements.define(SimpleModal.tag, SimpleModal);
-// register globally so we can make sure there is only one
-window.simpleModal = window.simpleModal || {};
-// request if this exists. This helps invoke the element existing in the dom
-// as well as that there is only one of them. That way we can ensure everything
-// is rendered through the same modal
-window.simpleModal.requestAvailability = () => {
-  if (!window.simpleModal.instance) {
-    window.simpleModal.instance = document.createElement("simple-modal");
-    document.body.appendChild(window.simpleModal.instance);
-  }
-  return window.simpleModal.instance;
-};
+export { SimpleModal };
