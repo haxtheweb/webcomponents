@@ -2,7 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "@polymer/paper-dialog/paper-dialog.js";
+import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@lrnwebcomponents/relative-heading/relative-heading.js";
 import "./lib/lrndesign-imagemap-hotspot.js";
 /**
@@ -26,25 +26,6 @@ Polymer({
         overflow: hidden;
         opacity: 0;
       }
-      :host paper-dialog {
-        border: 1px solid #000;
-        border-radius: 4px;
-      }
-      :host paper-dialog > #title, 
-      :host paper-dialog > #desc {
-        padding: 15px;
-        margin: 0;
-      }
-      :host paper-dialog > #title {
-        position: absolute;
-        left: -9999px;
-        overflow: hidden;
-        height: 0;
-        width: 0;
-      }
-      :host paper-dialog > #title > * {
-        margin: 0;
-      }
       /*::slotted([hotspot]) {
         display: none;
       }*/
@@ -66,10 +47,6 @@ Polymer({
     <div id="svg"></div>
     <div id="buttons"></div>
     <slot></slot>
-    <paper-dialog id="hdetails">
-      <div id="title"></div>
-      <div id="desc"></div>
-    </paper-dialog>
     <iron-ajax auto="" id="get_svg" url="[[src]]" handle-as="text" on-response="_getSVGHandler"></iron-ajax>
 `,
 
@@ -116,26 +93,25 @@ Polymer({
   },
 
   /**
-   * when ready, set an event for when the hdetails dialog is mouseout or blur
+   * attached life cycle
    */
-  ready: function() {
-    let root = this;
-    this.$.hdetails.addEventListener("blur", function() {
-      root.closeHotspot();
-    });
-    this.$.hdetails.addEventListener("mouseout", function() {
-      root.closeHotspot();
-    });
-    this.$.hdetails.addEventListener("keyup", function(e) {
-      if (e.keyCode === 13 || e.keyCode === 32) {
-        root.closeHotspot();
+  attached: function() {
+    window.simpleModal.requestAvailability();
+    window.addEventListener("simple-modal-closed", e => {
+      if (e.detail.invokedBy === this) {
+        this.closeHotspot();
       }
     });
-    /*window.addEventListener('keypress',function(e){
-     if (e.target.getAttribute('aria-controls') === 'hdetails' || e.target.getAttribute('id') == 'hdetails'){
-       e.preventDefault();
-     }
-   });*/
+  },
+  /**
+   * detached life cycle
+   */
+  detached: function() {
+    window.removeEventListener("simple-modal-closed", e => {
+      if (e.detail.invokedBy === this) {
+        this.closeHotspot();
+      }
+    });
   },
 
   /**
@@ -203,7 +179,6 @@ Polymer({
 
       //configure hotspot on main (interactive) svg
       let hbutton = document.createElement("button");
-      hbutton.setAttribute("aria-controls", "hdetails");
       hbutton.setAttribute("tabindex", 0);
       hbutton.setAttribute("aria-label", hdata[i].label);
       root.$.buttons.appendChild(hbutton);
@@ -215,13 +190,13 @@ Polymer({
         hotspot.classList.remove("focus");
       });
       hotspot.classList.add("hotspot");
-      hotspot.addEventListener("click", function(e) {
-        root.openHotspot(hotspot, hdata[i]);
+      hotspot.addEventListener("click", e => {
+        this.openHotspot(hotspot, hdata[i]);
       });
-      hbutton.addEventListener("keyup", function(e) {
+      hbutton.addEventListener("keyup", e => {
         if (e.keyCode === 13 || e.keyCode === 32) {
           if (!hotspot.classList.contains("selected")) {
-            root.openHotspot(hotspot, hdata[i]);
+            this.openHotspot(hotspot, hdata[i]);
           }
         }
       });
@@ -229,24 +204,32 @@ Polymer({
   },
 
   /**
-   * Selects a hotspot and opens hdetails dialog with details about it.
+   * Selects a hotspot and opens dialog with details about it.
    */
   openHotspot: function(hotspot, details) {
-    let root = this,
-      node = dom(root).querySelector(
-        'lrndesign-imagemap-hotspot[hotspot-id="' +
-          hotspot.getAttribute("id") +
-          '"]'
-      );
-    this.$.hdetails.querySelector("#title").innerHTML = details.getAttribute(
-      "label"
-    );
-    this.$.desc.appendChild(
-      document.createTextNode(details.querySelector("#desc").innerHTML)
-    );
-    this.$.hdetails.positionTarget = hotspot;
+    // get everything flat
+    var children = details.$.desc
+      .querySelector("slot")
+      .assignedNodes({ flatten: true });
+    let c = document.createElement("div");
+    // append clones of the children we found
+    for (var child in children) {
+      c.appendChild(children[child].cloneNode(true));
+    }
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        title: details.getAttribute("label"),
+        elements: {
+          content: c
+        },
+        invokedBy: this,
+        clone: false
+      }
+    });
+    this.dispatchEvent(evt);
     this.__activeHotspot = hotspot;
-    this.$.hdetails.open();
     this.resetHotspots();
     hotspot.classList.add("selected");
   },
@@ -255,15 +238,12 @@ Polymer({
    * Closes a hotspot.
    */
   closeHotspot: function() {
-    this.$.hdetails.querySelector("#title").innerHTML = "";
-    this.$.hdetails.querySelector("#desc").innerHTML = "";
     this.resetHotspots();
-    this.$.hdetails.close();
     this.__activeHotspot.focus();
   },
 
   /**
-   * Closes hdetails dialog and deselects all hotspots.
+   * Closes dialog and deselects all hotspots.
    */
   resetHotspots: function() {
     let hotspots = this.querySelectorAll('.hotspot[role="button"]');

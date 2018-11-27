@@ -48,9 +48,11 @@
     "@polymer/paper-dialog": "^3.0.0",
     "@polymer/paper-icon-button": "^3.0.0",
     "@polymer/polymer": "^3.0.5",
-    "@polymer/prism-element": "^3.0.0"
+    "@polymer/prism-element": "^3.0.0",
+    "@lrnwebcomponents/simple-modal": "^0.0.35"
   },
   "devDependencies": {
+    "web-animations-js": "^2.3.1",
     "@lrnwebcomponents/deduping-fix": "^0.0.35",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
