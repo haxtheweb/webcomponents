@@ -6,7 +6,7 @@ import "@polymer/iron-form-element-behavior/iron-form-element-behavior.js";
 import "@polymer/app-layout/app-layout.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/paper-toast/paper-toast.js";
-import "@polymer/paper-dialog/paper-dialog.js";
+import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
@@ -67,14 +67,6 @@ Polymer({
       </template>
     </grafitto-filter>
     <paper-toast text="Updated" id="toast"></paper-toast>
-    <paper-dialog id="deleteaction" modal="">
-      <h3>Delete comment</h3>
-      <p>Are you sure you want to delete your comment?</p>
-      <div class="buttons">
-        <paper-button dialog-dismiss="">Decline</paper-button>
-        <paper-button on-click="_handleDeleteConfirm" dialog-confirm="" autofocus="">Accept</paper-button>
-      </div>
-    </paper-dialog>
 `,
 
   is: "lrnsys-comment-list",
@@ -164,6 +156,7 @@ Polymer({
    * attached life cycle
    */
   attached: function(e) {
+    window.simpleModal.requestAvailability();
     async.microTask.run(() => {
       this.$.filteredcomments.querySelector("iron-list").fire("iron-resize");
       window.dispatchEvent(new Event("resize"));
@@ -214,9 +207,43 @@ Polymer({
    */
   handleDeleteDialog: function(e) {
     this.activeComment = e.detail.comment;
-    // @todo convert to the new dialog methodology
-    document.body.appendChild(this.$.deleteaction);
-    this.$.deleteaction.open();
+    // content of dialog
+    let c = document.createElement("p");
+    let t = document.createTextNode(
+      "Are you sure you want to delete your comment?"
+    );
+    c.appendChild(t);
+    // buttons
+    let b = document.createElement("div");
+    b.classList.add("buttons");
+    // close button
+    let pb = document.createElement("paper-button");
+    pb.setAttribute("dialog-dismiss", "dialog-dismiss");
+    t = document.createTextNode("Decline");
+    pb.appendChild(t);
+    b.appendChild(pb);
+    // confirm button
+    let pb2 = document.createElement("paper-button");
+    pb2.setAttribute("dialog-confirm", "dialog-confirm");
+    pb2.setAttribute("autofocus", "autofocus");
+    pb2.addEventListener("click", this._handleDeleteConfirm.bind(this));
+    t = document.createTextNode("Accept");
+    pb.appendChild(t);
+    b.appendChild(pb2);
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        title: "Delete comment",
+        elements: {
+          content: c,
+          buttons: b
+        },
+        invokedBy: e.detail.target,
+        clone: false
+      }
+    });
+    this.dispatchEvent(evt);
   },
   /**
    * Handle editing response

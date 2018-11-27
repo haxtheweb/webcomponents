@@ -8,5 +8,5 @@ exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-
   <div class="buttons">
     <slot name="buttons"></slot>
   </div>
-  <paper-button id="close" on-tap="close" hidden$="[[!opened]]"><iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]</paper-button>
+  <paper-button id="close" dialog-dismiss hidden$="[[!opened]]"><iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]</paper-button>
 </paper-dialog>

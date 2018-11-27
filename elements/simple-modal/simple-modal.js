@@ -4,13 +4,14 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/neon-animation/animations/scale-up-animation.js";
-import "@polymer/neon-animation/animations/scale-down-animation.js";
+import "@polymer/neon-animation/animations/fade-out-animation.js";
 export { SimpleModal };
 /**
  * `simple-modal`
@@ -65,7 +66,7 @@ exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-
   <div class="buttons">
     <slot name="buttons"></slot>
   </div>
-  <paper-button id="close" on-tap="close" hidden$="[[!opened]]"><iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]</paper-button>
+  <paper-button id="close" dialog-dismiss hidden$="[[!opened]]"><iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]</paper-button>
 </paper-dialog>`;
   }
 
@@ -142,24 +143,39 @@ exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-
         dom(this).removeChild(dom(this).firstChild);
       }
       setTimeout(() => {
-        this.show(e.detail.title, e.detail.elements, e.detail.invokedBy);
+        this.show(
+          e.detail.title,
+          e.detail.elements,
+          e.detail.invokedBy,
+          e.detail.clone
+        );
       }, 100);
     } else {
-      this.show(e.detail.title, e.detail.elements, e.detail.invokedBy);
+      this.show(
+        e.detail.title,
+        e.detail.elements,
+        e.detail.invokedBy,
+        e.detail.clone
+      );
     }
   }
   /**
    * Show the modal and display the material
    */
-  show(title, elements, invokedBy) {
+  show(title, elements, invokedBy, clone = false) {
     this.set("invokedBy", invokedBy);
     this.title = title;
+    let element;
     // append element areas into the appropriate slots
     // ensuring they are set if it wasn't previously
     let slots = ["header", "content", "buttons"];
     for (var i in slots) {
       if (elements[slots[i]]) {
-        let element = elements[slots[i]].cloneNode(true);
+        if (clone) {
+          element = elements[slots[i]].cloneNode(true);
+        } else {
+          element = elements[slots[i]];
+        }
         element.setAttribute("slot", slots[i]);
         dom(this).appendChild(element);
       }
@@ -174,17 +190,17 @@ exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-
    * This keeps the DOM tiddy and allows animation to happen gracefully.
    */
   animationEnded(e) {
-    if (!this.opened) {
-      if (this.invokedBy) {
+    if (this.invokedBy) {
+      async.microTask.run(() => {
         setTimeout(() => {
           this.invokedBy.focus();
-          this.title = "";
-          // wipe the slot of our modal
-          while (dom(this).firstChild !== null) {
-            dom(this).removeChild(dom(this).firstChild);
-          }
-        }, 100);
-      }
+        }, 500);
+        this.title = "";
+        // wipe the slot of our modal
+        while (dom(this).firstChild !== null) {
+          dom(this).removeChild(dom(this).firstChild);
+        }
+      });
     }
   }
   /**
@@ -197,6 +213,25 @@ exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-
   _openedChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined && !newValue) {
       this.animationEnded();
+      const evt = new CustomEvent("simple-modal-closed", {
+        bubbles: true,
+        cancelable: true,
+        detail: {
+          opened: false,
+          invokedBy: this.invokedBy
+        }
+      });
+      this.dispatchEvent(evt);
+    } else if (newValue) {
+      const evt = new CustomEvent("simple-modal-opened", {
+        bubbles: true,
+        cancelable: true,
+        detail: {
+          opened: true,
+          invokedBy: this.invokedBy
+        }
+      });
+      this.dispatchEvent(evt);
     }
   }
   /**
