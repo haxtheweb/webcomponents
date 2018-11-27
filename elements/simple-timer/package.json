@@ -16,7 +16,7 @@
       "hax": "src/simple-timer-hax.json"
     }
   },
-  "version": "0.0.34",
+  "version": "0.0.35",
   "description": "Automated conversion of simple-timer/",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.0.34",
+    "@lrnwebcomponents/deduping-fix": "^0.0.35",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@polymer/paper-button": "^3.0.1",

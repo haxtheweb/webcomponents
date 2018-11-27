@@ -6,7 +6,7 @@
     "elementName": "lrn-button",
     "generator-rhelement-version": "0.0.8"
   },
-  "version": "0.0.34",
+  "version": "0.0.35",
   "description": "Button element for PolymerElement",
   "repository": {
     "type": "git",
@@ -30,15 +30,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.34",
-    "@lrnwebcomponents/materializecss-styles": "^0.0.34",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.35",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.35",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-tooltip": "^3.0.1",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.0.34",
+    "@lrnwebcomponents/deduping-fix": "^0.0.35",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.1.3",
