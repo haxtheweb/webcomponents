@@ -8,8 +8,7 @@
     <script type="module">
       import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
       import '../simple-colors.js';
-      import './simple-colors-demo-select.js';
-      import './simple-colors-demo.js';
+      import '../lib/demo/simple-colors-demo.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
       div {
@@ -17,16 +16,18 @@
         margin: 0 0 15px;
       }
       button {
+        color: var(--simple-colors-default-theme-grey-1);
         border-radius: 3px;
-        padding: 5px 7px;
+        padding: 3px 5px;
         font-size: 110%;
         cursor: pointer;
       }
-      .info, .warning, .alert {
-        color: var(--simple-colors-default-theme-grey-12);
-      }
-      .confirm, .delete {
-        color: var(--simple-colors-dark-theme-grey-12);
+      simple-colors {
+        background-color: var(--simple-colors-default-theme-grey-1);
+        border: 1px solid var(--simple-colors-default-theme-grey-2);
+        display: block;
+        margin: 0 15px;
+        padding: 20px;
       }
     </style>
   </head>
@@ -41,36 +42,32 @@
       <demo-snippet>
         <template>
           <style is="custom-style" include="simple-colors">
-            .info {
-              background-color: var(--simple-colors-default-theme-accent-1);
-              border: 2px solid var(--simple-colors-default-theme-accent-3);
-            }
-            .alert {
-              background-color: var(--simple-colors-default-theme-red-1);
-              border: 2px solid var(--simple-colors-default-theme-red-3);
-            }
             .confirm {
-              background-color: var(--simple-colors-dark-theme-light-blue-6);
-              border: 2px solid var(--simple-colors-dark-theme-light-blue-5);
+              background-color: var(--simple-colors-default-theme-light-blue-7);
+              border: 2px solid var(--simple-colors-default-theme-light-blue-8);
             }
             .confirm:hover {
-              background-color: var(--simple-colors-dark-theme-light-blue-5);
+              background-color: var(--simple-colors-default-theme-light-blue-8);
             }
             .delete {
-              background-color: var(--simple-colors-dark-theme-red-6);
-              border: 2px solid var(--simple-colors-dark-theme-red-5);
+              background-color: var(--simple-colors-default-theme-red-7);
+              border: 2px solid var(--simple-colors-default-theme-red-8);
             }
             .delete:hover {
-              background-color: var(--simple-colors-dark-theme-red-5);
+              background-color: var(--simple-colors-default-theme-red-8);
             }
           </style>
-          <simple-colors-demo>
-            <div class="info">Tip: Here is something you should know.</div>
-            <div class="simple-colors-default-theme-amber-1 --simple-colors-default-theme-amber-3-border">Warning: Something might happen.</div>
-            <div class="alert">Alert! Something catastrophic happened.</div>
+          <simple-colors accent-color="cyan">
+            <div class="simple-colors-default-theme-accent-1 simple-colors-default-theme-grey-12-text simple-colors-default-theme-accent-3-border">This is an accent-color box.</div>
             <button class="confirm">Save</button>
             <button class="delete">Delete</button>
-          </simple-colors-demo>
+          </simple-colors>
+
+          <simple-colors accent-color="pink" dark>
+            <div class="simple-colors-default-theme-accent-1 simple-colors-default-theme-grey-12-text simple-colors-default-theme-accent-3-border">This is an accent-color box.</div>
+            <button class="confirm">Save</button>
+            <button class="delete">Delete</button>
+          </simple-colors>
         </template>
       </demo-snippet>
     </div>

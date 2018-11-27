@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
-import { SimpleColors } from "../simple-colors.js";
+import { SimpleColors } from "../../simple-colors.js";
 
 export { SimpleColorsDemoSelect };
 /**
