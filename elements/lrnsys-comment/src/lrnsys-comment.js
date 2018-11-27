@@ -1,9 +1,11 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/marked-element/marked-element.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-card/paper-card.js";
+import "@polymer/paper-input/paper-textarea.js";
 import "@polymer/paper-badge/paper-badge.js";
 import "@lrnwebcomponents/moment-element/moment-element.js";
 import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
@@ -40,6 +42,9 @@ Polymer({
       :host(:hover) .comment-outer {
         border: 1px #0277bd solid;
       }
+      :host [hidden] {
+        display: none;
+      }
       .comment-outer {
         display: table;
         width: 100%;
@@ -58,7 +63,7 @@ Polymer({
         width: 40px;
       }
       .comment-depth,
-      .comment-avatar, 
+      .comment-avatar,
       .comment-content {
         padding-top: 8px;
         padding-bottom: 8px;
@@ -73,7 +78,7 @@ Polymer({
       h3,
       h4 {
         text-align: left;
-        font-size: 16px;
+        font-size: 20px;
         line-height: 20px;
       }
       h1.comment-heading,
@@ -87,7 +92,7 @@ Polymer({
         line-height: 18px;
         text-align: left;
       }
-      #edit-comment {
+      #editcomment {
         background-color: white;
         padding: 4px;
       }
@@ -191,11 +196,11 @@ Polymer({
                 <span class="element-invisible">At </span><moment-element datetime\$="[[comment.attributes.created]]" output-format="MMM DD[,] YYYY"></moment-element>
                 [[comment.relationships.author.data.display_name]] <span class="element-invisible">[[comment.relationships.author.data.visual.label]]</span> said:
               </h4>
-              <marked-element smartypants="" id="rendered-comment" markdown="[[comment.attributes.body]]">
+              <marked-element smartypants id="renderedcomment" markdown="[[comment.attributes.body]]">
                 <word-count class="markdown-html-slot" slot="markdown-html"></word-count>
               </marked-element>
             </div>
-            <mtz-marked-editor id="comment-editor" hidden="">
+            <mtz-marked-editor id="commenteditor" hidden>
               <div slot="controls">
                 <mtz-marked-control-generic-wrap icon="editor:format-bold" title="Bold" syntax-prefix="**" syntax-suffix="**" keys="ctrl+b"></mtz-marked-control-generic-wrap>
                 <mtz-marked-control-generic-wrap icon="editor:format-italic" title="Italic" syntax-prefix="_" syntax-suffix="_" keys="ctrl+i"></mtz-marked-control-generic-wrap>
@@ -204,17 +209,17 @@ Polymer({
                 <mtz-marked-control-generic-line icon="editor:format-list-bulleted" title="Unordered List" syntax-prefix="- "></mtz-marked-control-generic-line>
                 <mtz-marked-control-link icon="editor:insert-link" title="Link"></mtz-marked-control-link>
               </div>
-              <paper-textarea char-counter="" autofocus="" id="edit-comment" label="Comment" value="{{comment.attributes.body}}" slot="textarea"></paper-textarea>
+              <paper-textarea char-counter autofocus id="editcomment" label="Comment" value="{{comment.attributes.body}}" slot="textarea"></paper-textarea>
             </mtz-marked-editor>
           </div>
           <div class="comment-actions">
             <div class="comment-actions-group left-actions">
-              <lrnsys-button on-click="actionHandler" id="reply" data-commentid="[[comment.id]]" alt="Reply" icon="reply" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.reply]]"></lrnsys-button>
-              <lrnsys-button on-click="actionHandler" id="like" data-commentid="[[comment.id]]" alt="Like" icon="thumb-up" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.like]]"></lrnsys-button>
+              <lrnsys-button on-tap="actionHandler" id="reply" data-commentid="[[comment.id]]" alt="Reply" icon="reply" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.reply]]"></lrnsys-button>
+              <lrnsys-button on-tap="actionHandler" id="like" data-commentid="[[comment.id]]" alt="Like" icon="thumb-up" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.like]]"></lrnsys-button>
             </div>
             <div class="comment-actions-group right-actions">
-              <lrnsys-button on-click="actionHandler" id="edit" data-commentid="[[comment.id]]" icon="create" alt="Edit" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.edit]]"></lrnsys-button>
-              <lrnsys-button on-click="actionHandler" id="delete" data-commentid="[[comment.id]]" icon="delete-forever" alt="Delete" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.delete]]"></lrnsys-button>
+              <lrnsys-button on-tap="actionHandler" id="edit" data-commentid="[[comment.id]]" icon="create" alt="Edit" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.edit]]"></lrnsys-button>
+              <lrnsys-button on-tap="actionHandler" id="delete" data-commentid="[[comment.id]]" icon="delete-forever" alt="Delete" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.delete]]"></lrnsys-button>
             </div>
           </div>
         </div>
@@ -295,17 +300,15 @@ Polymer({
   },
 
   _commentLoaded: function(e) {
-    let root = this;
-    root.editform = root.comment.metadata.editing;
-    root.disabled = root.comment.metadata.disabled;
-    root.blockFirstState = true;
+    this.editform = this.comment.metadata.editing;
+    this.disabled = this.comment.metadata.disabled;
+    this.blockFirstState = true;
   },
 
   /**
    * Handle all actions from the button bar.
    */
   actionHandler: function(e) {
-    let root = this;
     // convert click handler into local dom object
     var normalizedEvent = dom(e);
     var target = normalizedEvent.localTarget;
@@ -315,17 +318,15 @@ Polymer({
       comment = target.dataCommentid;
       // handle the type of event requested
       if (target.id == "reply") {
-        root.fire("comment-reply", { comment: root.comment });
+        this.fire("comment-reply", { comment: this.comment });
       } else if (target.id == "like") {
-        root.shadowRoot
-          .querySelector("#like")
-          .classList.toggle("like-icon-color");
-        root.fire("comment-like", { comment: root.comment });
+        this.$.like.classList.toggle("like-icon-color");
+        this.fire("comment-like", { comment: this.comment });
       } else if (target.id == "edit") {
         // toggle edit, allow edit state handle itself via observer
-        root.editform = !root.editform;
+        this.editform = !this.editform;
       } else if (target.id == "delete") {
-        root.fire("comment-delete-dialog", { comment: root.comment });
+        this.fire("comment-delete-dialog", { comment: this.comment });
       }
     }
   },
@@ -334,55 +335,47 @@ Polymer({
    * Trigger the edit form.
    */
   _editTrigger: function(e) {
-    let root = this;
     // bother checking if they can edit or not first
-    if (typeof root.comment !== typeof undefined && root.comment.actions.edit) {
-      root.async(function() {
+    if (typeof this.comment !== typeof undefined && this.comment.actions.edit) {
+      async.microTask.run(() => {
         // show / hide the edit vs display area
-        root.shadowRoot.querySelector("#rendered-comment").hidden =
-          root.editform;
-        root.shadowRoot.querySelector(
-          "#comment-editor"
-        ).hidden = !root.editform;
+        this.$.renderedcomment.hidden = this.editform;
+        this.$.commenteditor.hidden = !this.editform;
         // simple icon toggle
-        if (root.editform) {
-          root.shadowRoot.querySelector("#edit").icon = "save";
-          root.shadowRoot.querySelector("#edit").alt = "Save";
-          root.shadowRoot.querySelector("#reply").disabled = true;
-          root.shadowRoot.querySelector("#edit-comment").focus();
-          root.fire("comment-editing", { comment: root.comment });
-          root.blockFirstState = false;
+        if (this.editform) {
+          this.$.edit.icon = "save";
+          this.$.edit.alt = "Save";
+          this.$.reply.disabled = true;
+          this.$.editcomment.focus();
+          this.fire("comment-editing", { comment: this.comment });
+          this.blockFirstState = false;
         } else {
-          if (!root.blockFirstState) {
-            root.fire("comment-save", { comment: root.comment });
+          if (!this.blockFirstState) {
+            this.fire("comment-save", { comment: this.comment });
           } else {
-            root.blockFirstState = false;
+            this.blockFirstState = false;
           }
-          root.shadowRoot.querySelector("#edit").icon = "create";
-          root.shadowRoot.querySelector("#edit").alt = "Edit";
-          root.shadowRoot.querySelector("#reply").disabled = false;
+          this.$.edit.icon = "create";
+          this.$.edit.alt = "Edit";
+          this.$.reply.disabled = false;
         }
-        document.querySelector("iron-list").fire("iron-resize");
-        // access sibling or parent elements here
+        this.fire("iron-resize");
       });
     }
   },
-
   /**
    * Toggle the body field expanding to show the whole comment
    */
   bodyToggle: function(e) {
-    let root = this;
-    root.$.bodyarea.classList.remove("nowrap-me");
-    document.querySelector("iron-list").fire("iron-resize");
+    this.$.bodyarea.classList.remove("nowrap-me");
+    this.fire("iron-resize");
   },
 
   /**
    * Toggle the body field expanding to show the whole comment
    */
   bodyToggleOn: function(e) {
-    let root = this;
-    root.$.bodyarea.classList.toggle("nowrap-me");
-    document.querySelector("iron-list").fire("iron-resize");
+    this.$.bodyarea.classList.toggle("nowrap-me");
+    this.fire("iron-resize");
   }
 });

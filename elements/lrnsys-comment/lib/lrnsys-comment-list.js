@@ -1,8 +1,10 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-form-element-behavior/iron-form-element-behavior.js";
 import "@polymer/app-layout/app-layout.js";
+import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-input/paper-input.js";
@@ -38,26 +40,26 @@ Polymer({
       }
     </style>
     <!-- Load all comments on load of element -->
-    <iron-ajax auto="" url="[[sourcePath]]" handle-as="json" last-response="{{comments}}"></iron-ajax>
+    <iron-ajax auto url="[[sourcePath]]" handle-as="json" method="[[opsRequestMethod.list]]" last-response="{{comments}}"></iron-ajax>
     <!-- Create stub-comment -->
-     <iron-ajax id="ajaxCreateStub" url="[[createStubUrl]]" method="POST" body="[[activeComment.id]]" on-response="_updateReply" last-response="{{newComment}}" handle-as="json"></iron-ajax>
+     <iron-ajax id="ajaxcreatestub" url="[[createStubUrl]]" method="[[opsRequestMethod.create]]" body="[[activeComment.id]]" on-response="_updateReply" handle-as="json" last-response="{{newComment}}"></iron-ajax>
      <!-- Update comment -->
-    <iron-ajax id="ajaxUpdateRequest" url="[[reqUrl]]" method="PUT" body="[[activeComment]]" content-type="application/json" handle-as="json" on-response="_handleUpdateResponse"></iron-ajax>
+    <iron-ajax id="ajaxupdaterequest" url="[[reqUrl]]" method="[[opsRequestMethod.update]]" body="[[activeComment]]" content-type="application/json" handle-as="json" on-response="_handleUpdateResponse"></iron-ajax>
     <!-- Delete comment -->
-    <iron-ajax id="ajaxDeleteRequest" url="[[reqUrl]]" method="DELETE" body="[[activeComment]]" content-type="application/json" handle-as="json" on-response="_handleDeleteResponse"></iron-ajax>
+    <iron-ajax id="ajaxdeleterequest" url="[[reqUrl]]" method="[[opsRequestMethod.delete]]" body="[[activeComment]]" content-type="application/json" handle-as="json" on-response="_handleDeleteResponse"></iron-ajax>
     <!-- Like comment -->
-    <iron-ajax id="ajaxLikeRequest" url="[[reqUrl]]" method="PATCH" body="[[activeComment]]" content-type="application/json" handle-as="json" on-response="_handleLikeResponse"></iron-ajax>
+    <iron-ajax id="ajaxlikerequest" url="[[reqUrl]]" method="[[opsRequestMethod.like]]" body="[[activeComment]]" content-type="application/json" handle-as="json" on-response="_handleLikeResponse"></iron-ajax>
     <app-toolbar>
-      <lrnsys-button class="comment-button" raised="" on-click="handleTopReply" id="leave-comment" hover-class="blue white-text" label="Add Comment"></lrnsys-button>
-      <dropdown-select id="filter-type" label="Filter Comments by" value="attributes.body">
+      <lrnsys-button class="comment-button" raised="" on-click="handleTopReply" id="leavecomment" hover-class="blue white-text" label="Add Comment"></lrnsys-button>
+      <dropdown-select id="filtertype" label="Filter Comments by" value="attributes.body">
         <paper-item value="attributes.body">Body</paper-item>
         <paper-item value="relationships.author.data.name">User Name</paper-item>
       </dropdown-select>
-      <paper-input label="Filter Text" id="filter-comments" aria-controls="filtered-comments" value="" always-float-label=""></paper-input>   
+      <paper-input label="Filter Text" id="filtercomments" aria-controls="filteredcomments" value="" always-float-label=""></paper-input>   
     </app-toolbar>
-    <grafitto-filter id="filtered-comments" items\$="[[_toArray(comments.data)]]" where="" as="filtered" like="">
+    <grafitto-filter id="filteredcomments" items\$="[[_toArray(comments.data)]]" where="" as="filtered" like="">
       <template>
-        <iron-list id="comment-list" items\$="[[filtered]]" as="item">
+        <iron-list id="commentlist" items="[[filtered]]" as="item">
           <template>
           <lrnsys-comment comment="{{item}}" hover-class="blue white-text"></lrnsys-comment>
           </template>
@@ -93,6 +95,19 @@ Polymer({
       type: String
     },
     /**
+     * Request methods
+     */
+    opsRequestMethod: {
+      type: Object,
+      value: {
+        list: "GET",
+        create: "POST",
+        update: "PUT",
+        delete: "DELETE",
+        like: "PATCH"
+      }
+    },
+    /**
      * Comment currently in scope
      */
     activeComment: {
@@ -118,24 +133,21 @@ Polymer({
      */
     sourcePath: {
       type: String,
-      notify: true,
-      reflectToAttribute: true
+      notify: true
     },
     /**
      * Base for ops calls
      */
     commentOpsBase: {
       type: String,
-      notify: true,
-      reflectToAttribute: true
+      notify: true
     },
     /**
      * Source to get stub comments from
      */
     createStubUrl: {
       type: String,
-      notify: true,
-      reflectToAttribute: true
+      notify: true
     },
     /**
      * Source for CRUD ops against individual comments.
@@ -149,73 +161,69 @@ Polymer({
   },
 
   /**
-   * Ready event should ensure that the iron-list is the correct size.
+   * attached life cycle
    */
-  ready: function(e) {
-    let root = this;
-    root.shadowRoot
-      .querySelector("#filtered-comments")
-      .shadowRoot.querySelector("#comment-list")
-      .fire("iron-resize");
-    root.shadowRoot
-      .querySelector("#filter-comments")
-      .addEventListener("value-changed", function(e) {
-        root.shadowRoot.querySelector("#filtered-comments").like =
-          e.target.value;
-      });
-    root.shadowRoot
-      .querySelector("#filter-type")
-      .addEventListener("change", function(e) {
-        root.shadowRoot.querySelector("#filter-comments").value = "";
-        root.shadowRoot.querySelector("#filtered-comments").where =
-          e.detail.value;
-        root.shadowRoot.querySelector("#filtered-comments").like = "";
-      });
+  attached: function(e) {
+    async.microTask.run(() => {
+      this.$.filteredcomments.querySelector("iron-list").fire("iron-resize");
+      window.dispatchEvent(new Event("resize"));
+    });
+    this.$.filtercomments.addEventListener("value-changed", e => {
+      this.$.filteredcomments.like = e.target.value;
+    });
+    this.$.filtertype.addEventListener("change", e => {
+      this.$.filtercomments.value = "";
+      this.$.filteredcomments.where = e.detail.value;
+      this.$.filteredcomments.like = "";
+    });
   },
-
+  /**
+   * detached life cycle
+   */
+  detached: function(e) {
+    this.$.filtercomments.removeEventListener("value-changed", e => {
+      this.$.filteredcomments.like = e.target.value;
+    });
+    this.$.filtertype.removeEventListener("change", e => {
+      this.$.filtercomments.value = "";
+      this.$.filteredcomments.where = e.detail.value;
+      this.$.filteredcomments.like = "";
+    });
+  },
   /**
    * Generate the ops URL based on the active comment
    */
-  _computeCommentOpsUrl: function(activeComment, sourcePath, csrfToken) {
-    return sourcePath + "/" + activeComment.id + "?token=" + csrfToken;
+  _computeCommentOpsUrl: function(activeComment, commentOpsBase, csrfToken) {
+    if (typeof activeComment !== typeof undefined) {
+      return commentOpsBase + "/" + activeComment.id + "?token=" + csrfToken;
+    }
   },
-
-  /**
-   * Handle filtering comments list.
-   */
-  handleLike: function(e) {
-    let root = this;
-    root.activeComment = e.detail.comment;
-    this.$.ajaxLikeRequest.generateRequest();
-  },
-
   /**
    * Handle liking a comment.
    */
   handleLike: function(e) {
-    let root = this;
-    root.activeComment = e.detail.comment;
-    this.$.ajaxLikeRequest.generateRequest();
+    this.activeComment = e.detail.comment;
+    this.$.ajaxlikerequest.generateRequest();
   },
-
-  _handleLikeResponse: function(e) {
-    // @todo not sure we need to do anything post like button
-  },
-
+  /**
+   * @todo not sure we need to do anything post like button
+   */
+  _handleLikeResponse: function(e) {},
   /**
    * Handle a delete dialog to confirm.
    */
   handleDeleteDialog: function(e) {
-    let root = this;
-    root.activeComment = e.detail.comment;
-    document.body.appendChild(root.$.deleteaction);
-    root.$.deleteaction.open();
+    this.activeComment = e.detail.comment;
+    // @todo convert to the new dialog methodology
+    document.body.appendChild(this.$.deleteaction);
+    this.$.deleteaction.open();
   },
-
+  /**
+   * Handle editing response
+   */
   handleEditing: function(e) {
-    let root = this;
-    root.$.toast.text = "Be awesome to each other";
-    root.$.toast.toggle();
+    this.$.toast.text = "Be awesome to each other";
+    this.$.toast.toggle();
   },
 
   /**
@@ -225,11 +233,10 @@ Polymer({
    * up above.
    */
   handleTopReply: function(e) {
-    let root = this;
     // ensure nothing is set as active for when this goes out the door
-    root.set("newComment", []);
-    root.set("activeComment", []);
-    root.$.ajaxCreateStub.generateRequest();
+    this.set("newComment", []);
+    this.set("activeComment", []);
+    this.$.ajaxcreatestub.generateRequest();
   },
 
   /**
@@ -239,11 +246,10 @@ Polymer({
    * up above.
    */
   handleReply: function(e) {
-    let root = this;
-    root.set("newComment", []);
-    root.activeComment = e.detail.comment;
+    this.set("newComment", []);
+    this.activeComment = e.detail.comment;
     // shift where the response will go
-    root.$.ajaxCreateStub.generateRequest();
+    this.$.ajaxcreatestub.generateRequest();
   },
 
   /**
@@ -251,55 +257,53 @@ Polymer({
    * added to the end since it's a new comment.
    */
   _updateReply: function(e) {
-    let root = this;
-    var comment = root.activeComment;
-    var comments = root.comments.data;
+    var comment = this.activeComment;
+    var comments = this.comments.data;
     // normalize response
-    root.newComment = root.newComment.data;
+    this.newComment = this.newComment.data;
     // see if we have any comments at all
     if (comments.length == 0) {
       // top level replys need to get added to the end of the array
-      comments.push(root.newComment);
+      comments.push(this.newComment);
     }
     // see if this is top level
     else if (typeof comment.id == typeof undefined) {
       // top level replys need to get added to the end of the array
-      comments.push(root.newComment);
+      comments.push(this.newComment);
     } else {
       for (var index = 0; index < comments.length; index++) {
         if (comments[index].id == comment.id) {
-          comments.splice(index + 1, 0, root.newComment);
+          comments.splice(index + 1, 0, this.newComment);
         }
       }
     }
-    root.activeComment = root.newComment;
+    this.activeComment = this.newComment;
     // force tree to notice element updated
-    root.set("comments.data", []);
-    root.set("comments.data", comments);
+    this.set("comments.data", []);
+    this.set("comments.data", comments);
   },
 
   /**
    * Handle a delete event bubbling up from a comment we've printed.
    */
   _handleDeleteConfirm: function(e) {
-    this.$.ajaxDeleteRequest.generateRequest();
+    this.$.ajaxdeleterequest.generateRequest();
   },
 
   _handleDeleteResponse: function(e) {
-    let root = this;
-    var comment = root.activeComment;
-    var comments = root.comments.data;
+    var comment = this.activeComment;
+    var comments = this.comments.data;
     for (var index = 0; index < comments.length; index++) {
       if (comments[index].id == comment.id) {
         comments.splice(index, 1);
         // nulify the active comment since it's been removed
-        root.set("activeComment", []);
+        this.set("activeComment", []);
         // force tree to notice element updated
-        root.set("comments.data", []);
-        root.set("comments.data", comments);
+        this.set("comments.data", []);
+        this.set("comments.data", comments);
         // force tree to notice element updated
-        root.$.toast.text = "Comment deleted";
-        root.$.toast.toggle();
+        this.$.toast.text = "Comment deleted";
+        this.$.toast.toggle();
         // bail early
         return true;
       }
@@ -310,9 +314,8 @@ Polymer({
    * Handle saving a comment.
    */
   handleSave: function(e) {
-    let root = this;
-    root.activeComment = e.detail.comment;
-    this.$.ajaxUpdateRequest.generateRequest();
+    this.activeComment = e.detail.comment;
+    this.$.ajaxupdaterequest.generateRequest();
   },
 
   _handleUpdateResponse: function(e) {

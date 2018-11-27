@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 231,
+              "line": 236,
               "column": 4
             },
             "end": {
-              "line": 235,
+              "line": 240,
               "column": 5
             }
           },
@@ -36,11 +36,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 236,
+              "line": 241,
               "column": 4
             },
             "end": {
-              "line": 241,
+              "line": 246,
               "column": 5
             }
           },
@@ -59,11 +59,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 242,
+              "line": 247,
               "column": 4
             },
             "end": {
-              "line": 246,
+              "line": 251,
               "column": 5
             }
           },
@@ -82,11 +82,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 247,
+              "line": 252,
               "column": 4
             },
             "end": {
-              "line": 250,
+              "line": 255,
               "column": 5
             }
           },
@@ -103,11 +103,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 251,
+              "line": 256,
               "column": 4
             },
             "end": {
-              "line": 256,
+              "line": 261,
               "column": 5
             }
           },
@@ -126,11 +126,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 257,
+              "line": 262,
               "column": 4
             },
             "end": {
-              "line": 261,
+              "line": 266,
               "column": 5
             }
           },
@@ -149,11 +149,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 267,
+              "line": 272,
               "column": 2
             },
             "end": {
-              "line": 270,
+              "line": 275,
               "column": 3
             }
           },
@@ -169,11 +169,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 274,
+              "line": 279,
               "column": 2
             },
             "end": {
-              "line": 280,
+              "line": 285,
               "column": 3
             }
           },
@@ -189,11 +189,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 282,
+              "line": 287,
               "column": 2
             },
             "end": {
-              "line": 287,
+              "line": 292,
               "column": 3
             }
           },
@@ -213,11 +213,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 289,
+              "line": 294,
               "column": 2
             },
             "end": {
-              "line": 294,
+              "line": 299,
               "column": 3
             }
           },
@@ -234,11 +234,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 296,
+              "line": 301,
               "column": 2
             },
             "end": {
-              "line": 301,
+              "line": 305,
               "column": 3
             }
           },
@@ -258,11 +258,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 306,
+              "line": 310,
               "column": 2
             },
             "end": {
-              "line": 330,
+              "line": 331,
               "column": 3
             }
           },
@@ -282,11 +282,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 335,
+              "line": 336,
               "column": 2
             },
             "end": {
-              "line": 368,
+              "line": 366,
               "column": 3
             }
           },
@@ -306,11 +306,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 373,
+              "line": 370,
               "column": 2
             },
             "end": {
-              "line": 377,
+              "line": 373,
               "column": 3
             }
           },
@@ -330,11 +330,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 382,
+              "line": 378,
               "column": 2
             },
             "end": {
-              "line": 386,
+              "line": 381,
               "column": 3
             }
           },
@@ -359,11 +359,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 22,
+          "line": 24,
           "column": 8
         },
         "end": {
-          "line": 387,
+          "line": 382,
           "column": 1
         }
       },
@@ -375,11 +375,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 231,
+              "line": 236,
               "column": 4
             },
             "end": {
-              "line": 235,
+              "line": 240,
               "column": 5
             }
           },
@@ -391,23 +391,7 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 236,
-              "column": 4
-            },
-            "end": {
               "line": 241,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "comment-new",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 242,
               "column": 4
             },
             "end": {
@@ -419,7 +403,7 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "hover-class",
+          "name": "comment-new",
           "description": "",
           "sourceRange": {
             "start": {
@@ -427,7 +411,23 @@
               "column": 4
             },
             "end": {
-              "line": 250,
+              "line": 251,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "hover-class",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 252,
+              "column": 4
+            },
+            "end": {
+              "line": 255,
               "column": 5
             }
           },
@@ -439,11 +439,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 251,
+              "line": 256,
               "column": 4
             },
             "end": {
-              "line": 256,
+              "line": 261,
               "column": 5
             }
           },
@@ -455,11 +455,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 257,
+              "line": 262,
               "column": 4
             },
             "end": {
-              "line": 261,
+              "line": 266,
               "column": 5
             }
           },
@@ -505,6 +505,786 @@
       },
       "slots": [],
       "tagname": "lrnsys-comment"
+    },
+    {
+      "description": "`lrnsys-comment-list`\nA listing and event handling for comments.",
+      "summary": "",
+      "path": "lib/lrnsys-comment-list.js",
+      "properties": [
+        {
+          "name": "csrfToken",
+          "type": "string | null | undefined",
+          "description": "CSRF Token",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 93,
+              "column": 4
+            },
+            "end": {
+              "line": 95,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "opsRequestMethod",
+          "type": "Object | null | undefined",
+          "description": "Request methods",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 99,
+              "column": 4
+            },
+            "end": {
+              "line": 108,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{\"list\":\"GET\",\"create\":\"POST\",\"update\":\"PUT\",\"delete\":\"DELETE\",\"like\":\"PATCH\"}"
+        },
+        {
+          "name": "activeComment",
+          "type": "Object | null | undefined",
+          "description": "Comment currently in scope",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 112,
+              "column": 4
+            },
+            "end": {
+              "line": 115,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "Object"
+            }
+          }
+        },
+        {
+          "name": "newComment",
+          "type": "Object | null | undefined",
+          "description": "New stub comment from backend.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 119,
+              "column": 4
+            },
+            "end": {
+              "line": 122,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "Object"
+            }
+          }
+        },
+        {
+          "name": "comments",
+          "type": "Object | null | undefined",
+          "description": "An object containing all comments to render in the list",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 126,
+              "column": 4
+            },
+            "end": {
+              "line": 129,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "Object"
+            }
+          }
+        },
+        {
+          "name": "sourcePath",
+          "type": "string | null | undefined",
+          "description": "Source to pull the comments from",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 133,
+              "column": 4
+            },
+            "end": {
+              "line": 136,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "commentOpsBase",
+          "type": "string | null | undefined",
+          "description": "Base for ops calls",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 140,
+              "column": 4
+            },
+            "end": {
+              "line": 143,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "createStubUrl",
+          "type": "string | null | undefined",
+          "description": "Source to get stub comments from",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 147,
+              "column": 4
+            },
+            "end": {
+              "line": 150,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "reqUrl",
+          "type": "string | null | undefined",
+          "description": "Source for CRUD ops against individual comments.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 154,
+              "column": 4
+            },
+            "end": {
+              "line": 159,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "readOnly": true,
+              "attributeType": "String"
+            }
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "attached",
+          "description": "attached life cycle",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 165,
+              "column": 2
+            },
+            "end": {
+              "line": 178,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "detached",
+          "description": "detached life cycle",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 182,
+              "column": 2
+            },
+            "end": {
+              "line": 191,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_computeCommentOpsUrl",
+          "description": "Generate the ops URL based on the active comment",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 195,
+              "column": 2
+            },
+            "end": {
+              "line": 199,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "activeComment"
+            },
+            {
+              "name": "commentOpsBase"
+            },
+            {
+              "name": "csrfToken"
+            }
+          ]
+        },
+        {
+          "name": "handleLike",
+          "description": "Handle liking a comment.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 203,
+              "column": 2
+            },
+            "end": {
+              "line": 206,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_handleLikeResponse",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 210,
+              "column": 2
+            },
+            "end": {
+              "line": 210,
+              "column": 37
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "handleDeleteDialog",
+          "description": "Handle a delete dialog to confirm.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 214,
+              "column": 2
+            },
+            "end": {
+              "line": 219,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "handleEditing",
+          "description": "Handle editing response",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 223,
+              "column": 2
+            },
+            "end": {
+              "line": 226,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "handleTopReply",
+          "description": "Handle a reply event bubbling up from a comment we've printed\nvia our template in this element. This allows the higher element\nto create new lower ones which can invoke more lower ones from\nup above.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 234,
+              "column": 2
+            },
+            "end": {
+              "line": 239,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "handleReply",
+          "description": "Handle a reply event bubbling up from a comment we've printed\nvia our template in this element. This allows the higher element\nto create new lower ones which can invoke more lower ones from\nup above.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 247,
+              "column": 2
+            },
+            "end": {
+              "line": 252,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_updateReply",
+          "description": "Update the UI to reflect the new comment based on returned data\nadded to the end since it's a new comment.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 258,
+              "column": 2
+            },
+            "end": {
+              "line": 284,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_handleDeleteConfirm",
+          "description": "Handle a delete event bubbling up from a comment we've printed.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 289,
+              "column": 2
+            },
+            "end": {
+              "line": 291,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_handleDeleteResponse",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 293,
+              "column": 2
+            },
+            "end": {
+              "line": 311,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "name": "handleSave",
+          "description": "Handle saving a comment.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 316,
+              "column": 2
+            },
+            "end": {
+              "line": 319,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_handleUpdateResponse",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 321,
+              "column": 2
+            },
+            "end": {
+              "line": 324,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_toArray",
+          "description": "Simple way to convert from object to array.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 329,
+              "column": 2
+            },
+            "end": {
+              "line": 333,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "obj"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 25,
+          "column": 8
+        },
+        "end": {
+          "line": 334,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "attributes": [
+        {
+          "name": "csrf-token",
+          "description": "CSRF Token",
+          "sourceRange": {
+            "start": {
+              "line": 93,
+              "column": 4
+            },
+            "end": {
+              "line": 95,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "ops-request-method",
+          "description": "Request methods",
+          "sourceRange": {
+            "start": {
+              "line": 99,
+              "column": 4
+            },
+            "end": {
+              "line": 108,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "active-comment",
+          "description": "Comment currently in scope",
+          "sourceRange": {
+            "start": {
+              "line": 112,
+              "column": 4
+            },
+            "end": {
+              "line": 115,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "new-comment",
+          "description": "New stub comment from backend.",
+          "sourceRange": {
+            "start": {
+              "line": 119,
+              "column": 4
+            },
+            "end": {
+              "line": 122,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "comments",
+          "description": "An object containing all comments to render in the list",
+          "sourceRange": {
+            "start": {
+              "line": 126,
+              "column": 4
+            },
+            "end": {
+              "line": 129,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "source-path",
+          "description": "Source to pull the comments from",
+          "sourceRange": {
+            "start": {
+              "line": 133,
+              "column": 4
+            },
+            "end": {
+              "line": 136,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "comment-ops-base",
+          "description": "Base for ops calls",
+          "sourceRange": {
+            "start": {
+              "line": 140,
+              "column": 4
+            },
+            "end": {
+              "line": 143,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "create-stub-url",
+          "description": "Source to get stub comments from",
+          "sourceRange": {
+            "start": {
+              "line": 147,
+              "column": 4
+            },
+            "end": {
+              "line": 150,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "req-url",
+          "description": "Source for CRUD ops against individual comments.",
+          "sourceRange": {
+            "start": {
+              "line": 154,
+              "column": 4
+            },
+            "end": {
+              "line": 159,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "active-comment-changed",
+          "description": "Fired when the `activeComment` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "new-comment-changed",
+          "description": "Fired when the `newComment` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "comments-changed",
+          "description": "Fired when the `comments` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "source-path-changed",
+          "description": "Fired when the `sourcePath` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "comment-ops-base-changed",
+          "description": "Fired when the `commentOpsBase` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "create-stub-url-changed",
+          "description": "Fired when the `createStubUrl` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "req-url-changed",
+          "description": "Fired when the `reqUrl` property changes.",
+          "metadata": {}
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "lrnsys-comment-list"
     }
   ]
 }

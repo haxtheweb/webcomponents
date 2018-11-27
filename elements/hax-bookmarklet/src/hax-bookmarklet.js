@@ -1,11 +1,10 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/cms-hax/cms-hax.js";
 /**
  * `hax-bookmarklet`
  * `Pure, Evil.`
  *
- * @demo ../../demo/index.html
+ * @demo demo/index.html
  */
 Polymer({
   _template: html`
@@ -15,8 +14,8 @@ Polymer({
         font-size: 16px;
       }
     </style>
-    <cms-hax open-default="" app-store-connection="[[storeData]]" body-offset-left="">
-    <template><slot></slot></template>
+    <cms-hax open-default app-store-connection="[[appStoreConnection]]" body-offset-left>
+      <slot></slot>
     </cms-hax>
 `,
 
@@ -26,17 +25,11 @@ Polymer({
     /**
      * Store data with path resolved.
      */
-    storeData: {
-      type: Object
+    appStoreConnection: {
+      type: Object,
+      value: {
+        url: "appstore.json"
+      }
     }
-  },
-  /**
-   * ready life cycle
-   */
-  ready: function() {
-    let json = {
-      url: pathFromUrl(import.meta.url) + "appstore.json"
-    };
-    this.storeData = json;
   }
 });
