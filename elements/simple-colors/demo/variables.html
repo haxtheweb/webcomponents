@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>SimpleColors: simple-colors Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script type="module">
+      import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
+      import './simple-colors-demo.js';
+      import './simple-colors-demo-variables.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+        .info, .warning, .alert { 
+          padding: 20px;
+          margin: 0 0 15px;
+        }
+        button {
+          border-radius: 3px;
+          padding: 5px 7px;
+          font-size: 120%;
+          cursor: pointer;
+        } 
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>simple-colors Variables</h1>
+      <demo-snippet>
+        <p>
+          Simple colors variables allow you the flexibility to theme your 
+          your custom elements.
+        </p>
+        <template>
+          <style is="custom-style" include="simple-colors">
+            .info, .warning {
+              color: var(--simple-colors-light-theme-grey-12);
+            }
+            .info {
+              background-color: var(--simple-colors-light-theme-accent-2);
+              border: 1px solid var(--simple-colors-light-theme-accent-4);
+            }
+            .warning {
+              background-color: var(--simple-colors-light-theme-amber-2);
+              border: 1px solid var(--simple-colors-light-theme-amber-4);
+            }
+            .alert {
+              color: var(--simple-colors-default-theme-grey-12);
+              background-color: var(--simple-colors-default-theme-red-2);
+              border: 1px solid var(--simple-colors-default-theme-red-4);
+            }
+          </style>
+          <simple-colors-demo>
+            <div class="info">
+              My accent color changes based on my parent's element's accent-color.
+            </div>
+            <div class="warning">
+                My color is always amber.
+            </div>
+            <div class="alert">
+                My color is always red, but it changes based on whether or not my parent is light or dark.
+            </div>
+          </template>
+        </simple-colors-demo>
+      </demo-snippet>
+      <div>
+          <p>
+            Use the selectors below, to explore how variables work.
+          </p>
+          <simple-colors-demo>
+            <simple-colors-demo-variables></simple-colors-demo-variables>
+          </simple-colors-demo>
+      </div>
+    </div>
+  </body>
+</html>

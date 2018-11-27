@@ -4,9 +4,8 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
-
 import { SimpleColors } from "../simple-colors.js"; //import the shared styles
-import "./simple-colors-select.js";
+import "./simple-colors-demo-select.js";
 import "./simple-colors-demo-child.js";
 
 export { SimpleColorsDemo };
@@ -29,15 +28,25 @@ class SimpleColorsDemo extends SimpleColors {
     return html`
 <style is="custom-style" include="simple-colors">
 :host {
-  background-color: var(--simple-colors-default-theme-accent-1); 
+  background-color: var(--simple-colors-default-theme-grey-1); 
   color: var(--simple-colors-default-theme-grey-12); 
-  border: 1px solid var(--simple-colors-default-theme-accent-6);
+  border: 1px solid var(--simple-colors-default-theme-grey-6);
   margin: 15px 0;
-  padding: 15px;
+  padding: 0px;
   display: block;
 }
 :host([hidden]){
   display: none;
+}
+:host .selectors {
+  background-color: var(--simple-colors-default-theme-grey-2); 
+  padding: 2px;
+  margin: 0 0 15px;
+  font-family: monospace;
+}
+:host .slot {
+  padding: 15px;
+  margin: 15px;
 }
 a, a[link] {
   color: var(--simple-colors-default-theme-blue-8); 
@@ -45,21 +54,34 @@ a, a[link] {
 a[visited] {
   color: var(--simple-colors-default-theme-purple-8); 
 }
-select {
-  font-family: monospace;
-}
 </style>
-
-<p>
-  <tt>
-    &lt;simple-colors-demo <simple-colors-selectors id="parent" accent-label="parent's accent-color" as-code colors$="[[colors]]" dark-label="parent's dark attribute">&gt; 
-  </tt>
-</p>
-<simple-colors-demo-child accent-color$="[[__accentColorChild]]" dark$="[[__darkChild]]" hidden$="[[!_isNested(nested)]]">
-  <tt>&lt;simple-colors-demo-child<simple-colors-selectors id="child" accent-label="nested child's accent-color" as-code colors$="[[colors]]" dark-label="nested child's attribute" inherit/>/&gt;</tt>
-</simple-colors-demo-child>
-
-<p><tt>&lt;/simple-colors-demo&gt;</tt></p>`;
+<div class="selectors">
+  &lt;<em>parent-element</em> 
+  <label>
+    accent-color<simple-colors-demo-select id="accent"
+      label="accent-color"
+      value$="[[accentColor]]" 
+      as-code 
+      on-accent-color-change="_handleAccentChange"
+      options$=[[_getOptions(colors)]]>
+      <span slot="prefix">="</span>
+      <span slot="suffix">" </span>
+    </simple-colors-demo-select>
+  </label>
+  <label>
+    dark<simple-colors-demo-select id="dark"
+      label="dark"
+      value$="[[dark]]" 
+      as-code 
+      on-dark-change="_handleDarkChange"
+      options='["","dark"]'>
+      <span slot="prefix">="</span>
+      <span slot="suffix">" </span>
+    </simple-colors-demo-select>
+  </label>
+  &lt;<em>/parent-element</em>&gt; 
+</div>
+<div class="slot"><slot></slot></div>`;
   }
 
   // properties available to the custom element for data binding
@@ -114,12 +136,24 @@ select {
   }
 
   /**
-   * determines if a given <option> is selected based on the option's value and this element's accent-color
-   *
-   * @param {String} the option's value
+   * gets the options array based on an object's keys
    */
-  _accentSelected(option) {
-    return this.accentColor === option ? "selected" : "";
+  _getOptions(obj) {
+    return Object.keys(obj);
+  }
+
+  /**
+   * determines if the element is in nested mode
+   */
+  _handleAccentChange(e) {
+    this.accentColor = this.$.accent.value;
+  }
+
+  /**
+   * determines if the element is in nested mode
+   */
+  _handleDarkChange(e) {
+    this.dark = this.$.dark.value === "dark" ? "dark" : false;
   }
 
   /**
@@ -174,7 +208,7 @@ select {
    */
   ready() {
     super.ready();
-    this.$.parent.addEventListener("accent-change", e => {
+    /*this.$.parent.addEventListener("accent-change", e => {
       console.log(e);
       this._updateParentAccent();
     });
@@ -186,7 +220,7 @@ select {
     });
     this.$.child.addEventListener("dark-change", e => {
       this._updateChildDark();
-    });
+    });*/
   }
   /**
    * life cycle, element is afixed to the DOM

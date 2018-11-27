@@ -8,106 +8,69 @@
     <script type="module">
       import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
       import '../simple-colors.js';
+      import './simple-colors-demo-select.js';
       import './simple-colors-demo.js';
-      import './simple-colors-demo-table.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
       div {
         padding: 20px;
-        margin: 15px 0;
+        margin: 0 0 15px;
+      }
+      button {
+        border-radius: 3px;
+        padding: 5px 7px;
+        font-size: 110%;
+        cursor: pointer;
+      }
+      .info, .warning, .alert {
+        color: var(--simple-colors-default-theme-grey-12);
+      }
+      .confirm, .delete {
+        color: var(--simple-colors-dark-theme-grey-12);
       }
     </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h1>simple-colors Shared Styles</h1>
+      <h1>simple-colors</h1>
       <p>
-        You can use the shared styles as a stylesheet
+        Simple-colors allows you to design components with colors that 
+        can adjust based on a parent's theme and accent-color by using 
+        CSS variables or classes.
       </p>
-      <h2>simple-colors classes</h2>
-      <simple-colors-selectors accent-label="parent's accent-color" colors$="[[colors]]" code dark-label="parent's dark attribute"/>
       <demo-snippet>
-        <simple-colors-demo>
-          <div class="simple-colors-light-theme-accent-1 simple-colors-light-theme-accent-3-border">
-            Tip: Here is something you should know.
-          </div>
-          <div class="simple-colors-light-theme-amber-1 simple-colors-light-theme-amber-3-border">
-              Warning: Something might happen.
-          </div>
-          <div class="simple-colors-light-theme-red-1 simple-colors-light-theme-red-3-border">
-              Alert! Something catastrophic happened.
-          </div>
-        </simple-colors-demo>
         <template>
           <style is="custom-style" include="simple-colors">
-            div {
-              border-width: 2px;
-            }
-          </style>
-        </template>
-      </demo-snippet>
-
-      <h2>simple-colors CSS variables</h2>
-      <demo-snippet>
-        <simple-colors-demo>
-          <div class="info">Tip: Here is something you should know.</div>
-          <div class="warning">Warning: Something might happen.</div>
-          <div class="alert">Alert! Something catastrophic happened.</div>
-        <simple-colors-demo>
-        <template>
-          <style is="custom-style" include="simple-colors">
-            div {
-              color: var(--simple-colors-default-theme-grey-12);
-            }
             .info {
               background-color: var(--simple-colors-default-theme-accent-1);
               border: 2px solid var(--simple-colors-default-theme-accent-3);
-            }
-            .warning {
-              background-color: var(--simple-colors-default-theme-amber-1);
-              border: 2px solid var(--simple-colors-default-theme-amber-3);
             }
             .alert {
               background-color: var(--simple-colors-default-theme-red-1);
               border: 2px solid var(--simple-colors-default-theme-red-3);
             }
-          </style>
-        </template>
-      </demo-snippet>
-      
-      <h2>Dark theme, default accent, using CSS variables</h2>
-      <demo-snippet>
-        <template>
-          <style is="custom-style" include="simple-colors">
-            div {
-              color: var(--simple-colors-default-theme-grey-12);
+            .confirm {
+              background-color: var(--simple-colors-dark-theme-light-blue-6);
+              border: 2px solid var(--simple-colors-dark-theme-light-blue-5);
             }
-            .info {
-              background-color: var(--simple-colors-default-theme-accent-1);
-              border: 2px solid var(--simple-colors-default-theme-accent-3);
+            .confirm:hover {
+              background-color: var(--simple-colors-dark-theme-light-blue-5);
+            }
+            .delete {
+              background-color: var(--simple-colors-dark-theme-red-6);
+              border: 2px solid var(--simple-colors-dark-theme-red-5);
+            }
+            .delete:hover {
+              background-color: var(--simple-colors-dark-theme-red-5);
             }
           </style>
-          <simple-colors dark>
+          <simple-colors-demo>
             <div class="info">Tip: Here is something you should know.</div>
-          </simple-colors>
-        </template>
-      </demo-snippet>
-
-      <h2>Default (light) theme, cyan accent, using CSS variables</h2>
-      <demo-snippet>
-        <template>
-          <style is="custom-style" include="simple-colors">
-            div {
-              color: var(--simple-colors-default-theme-grey-12);
-            }
-            .info {
-              background-color: var(--simple-colors-default-theme-accent-1);
-              border: 2px solid var(--simple-colors-default-theme-accent-3);
-            }
-          </style>
-          <simple-colors accent-color="cyan">
-            <div class="info">Tip: Here is something you should know.</div>
-          </simple-colors>
+            <div class="simple-colors-default-theme-amber-1 --simple-colors-default-theme-amber-3-border">Warning: Something might happen.</div>
+            <div class="alert">Alert! Something catastrophic happened.</div>
+            <button class="confirm">Save</button>
+            <button class="delete">Delete</button>
+          </simple-colors-demo>
         </template>
       </demo-snippet>
     </div>
