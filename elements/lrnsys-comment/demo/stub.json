@@ -1,0 +1,53 @@
+{
+  "status": 200,
+  "data": {
+    "type": "comment",
+    "id": "711",
+    "attributes": {
+      "subject": "Feedback from bto108",
+      "body": null,
+      "thread": "01/",
+      "threadDepth": 1,
+      "parentComment": 0,
+      "created": "2018-11-27T09:59:25-05:00",
+      "changed": "2018-11-27T09:59:25-05:00"
+    },
+    "metadata": {
+      "editing": true,
+      "disabled": false
+    },
+    "relationships": {
+      "author": {
+        "data": {
+          "type": "user",
+          "id": "1",
+          "name": "bto108",
+          "display_name": "bto108",
+          "avatar": false,
+          "visual": {
+            "icon": "stars",
+            "label": "Staff"
+          },
+          "sis": {
+            "sortable_name": "bto108",
+            "name": "bto108"
+          }
+        }
+      },
+      "node": {
+        "data": {
+          "type": "node",
+          "id": "2215"
+        }
+      }
+    },
+    "actions": {
+      "reply": true,
+      "like": false,
+      "edit": true,
+      "delete": true
+    }
+  },
+  "detail": "",
+  "environment": []
+}

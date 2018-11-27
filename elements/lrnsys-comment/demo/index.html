@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>LrnsysComment: lrnsys-comment Demo</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../lrnsys-comment.js';
+      import '../lib/lrnsys-comment-list.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -17,7 +19,12 @@
       <h3>Basic lrnsys-comment-list demo</h3>
       <demo-snippet>
         <template>
-          <lrnsys-comment-list source-path="data.json">
+          <lrnsys-comment-list
+            ops-request-method='{"list": "GET", "create": "GET", "update": "GET", "delete": "GET", "like": "GET"}'
+            comment-ops-base="opsresponse"
+            csrf-token="abc-123"
+            create-stub-url="stub.json"
+            source-path="data.json">
           </lrnsys-comment-list>
         </template>
       </demo-snippet>

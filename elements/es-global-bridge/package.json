@@ -1,6 +1,6 @@
 {
   "name": "@lrnwebcomponents/es-global-bridge",
-  "version": "0.0.34",
+  "version": "0.0.35",
   "description": "A very simple class to help bridge global scoped code with ES Modules",
   "repository": {
     "type": "git",
@@ -21,5 +21,5 @@
     "compatibility",
     "html"
   ],
-  "gitHead": "85bf1e684f0f88c1ce807c92255af222057eeaa0"
+  "gitHead": "71dcc2b61045070a009e654226e6c0892f11a854"
 }

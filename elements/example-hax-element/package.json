@@ -16,7 +16,7 @@
       "hax": "src/example-hax-element-hax.json"
     }
   },
-  "version": "0.0.34",
+  "version": "0.0.35",
   "description": "Provide an example to pick apart of a working HAX element",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.34"
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.35"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^0.0.31",
@@ -64,5 +64,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "85bf1e684f0f88c1ce807c92255af222057eeaa0"
+  "gitHead": "71dcc2b61045070a009e654226e6c0892f11a854"
 }

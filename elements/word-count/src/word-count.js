@@ -83,7 +83,7 @@ Polymer({
    * Ready life cycle
    */
   ready: function() {
-    // mutation observer that ensures state of hax applied correctly
+    // mutation observer that ensures state applied correctly
     this._observer = new FlattenedNodesObserver(this, info => {
       if (info.addedNodes.length > 0 || info.removedNodes.length > 0) {
         this._updateWords();

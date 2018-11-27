@@ -2,7 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/mtz-marked-editor/mtz-marked-editor.js";
 import "@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-wrap.js";
 import "@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-line.js";
-import "@lrnwebcomponents/mtz-marked-editor/lib/controls/mtz-marked-control-link.js";
+import "@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-link.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/places-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
