@@ -1,20 +1,20 @@
 define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./node_modules/@polymer/iron-image/iron-image.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _ironImage) {
   "use strict";
-  function _templateObject_1a7276b0ecf211e8bde07fa58db83dec() {
+  function _templateObject_c7c00d90f1e411e894559d8dc095ffbc() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n      .is-circle{\n        border: 1px solid grey;\nborder-radius: 50%;\nbox-shadow: 0px 5px 10px #CCC;\n      }\n    </style>\n    <iron-image style="width:200px; height:200px;" class$="[[mode]]" sizing="contain" src$="[[imgSrc]]" title$="[[imgTitle]]"></iron-image>\n'
     ]);
-    _templateObject_1a7276b0ecf211e8bde07fa58db83dec = function() {
+    _templateObject_c7c00d90f1e411e894559d8dc095ffbc = function _templateObject_c7c00d90f1e411e894559d8dc095ffbc() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_1a7276b0ecf211e8bde07fa58db83dec()
+      _templateObject_c7c00d90f1e411e894559d8dc095ffbc()
     ),
     is: "random-image",
     properties: {

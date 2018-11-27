@@ -104,7 +104,9 @@ Polymer({
   },
   print: function(mediaTitle) {
     let root = this,
-      track = root.shadowRoot.querySelector("#inner[active]");
+      track = root.shadowRoot.querySelector("#inner[active]"),
+      css =
+        "a11y-media-transcript-cue{display:table-row;background-color:#fff;color:#000}a11y-media-transcript-cue[hide-timestamps],a11y-media-transcript-cue[hide-timestamps] #text{display:inline}a11y-media-transcript-cue #text{display:table-cell;line-height:200%}a11y-media-transcript-cue #time{display:table-cell;font-size:80%;padding:0 16px;white-space:nowrap;font-family:monospace}a11y-media-transcript-cue[hide-timestamps] #time{display:none}a11y-media-transcript-cue [matched]{background-color:#fff;color:#eee;padding:.16px 4px;border-radius:.16px}";
     mediaTitle = mediaTitle !== void 0 ? mediaTitle : "Transcript";
     if ((null !== track) & (track !== void 0)) {
       let print = window.open(
@@ -115,7 +117,7 @@ Polymer({
         node = dom(root).node;
       print.document.write(
         "<style>" +
-          "a11y-media-transcript-cue{display:table-row;background-color:#fff;color:#000}a11y-media-transcript-cue[hide-timestamps],a11y-media-transcript-cue[hide-timestamps] #text{display:inline}a11y-media-transcript-cue #text{display:table-cell;line-height:200%}a11y-media-transcript-cue #time{display:table-cell;font-size:80%;padding:0 16px;white-space:nowrap;font-family:monospace}a11y-media-transcript-cue[hide-timestamps] #time{display:none}a11y-media-transcript-cue [matched]{background-color:#fff;color:#eee;padding:.16px 4px;border-radius:.16px}" +
+          css +
           "</style><h1>" +
           mediaTitle +
           "</h1>" +
@@ -146,9 +148,10 @@ Polymer({
     if (!root.disableScroll && (null !== cue) & (cue !== void 0)) {
       let scrollingTo = function(element, to, duration) {
         if (0 >= duration) return;
-        var difference = to - element.scrollTop;
+        var difference = to - element.scrollTop,
+          perTick = 10 * (difference / duration);
         setTimeout(function() {
-          element.scrollTop = element.scrollTop + 10 * (difference / duration);
+          element.scrollTop = element.scrollTop + perTick;
           if (element.scrollTop === to) return;
           scrollingTo(element, to, duration - 10);
         }, 10);

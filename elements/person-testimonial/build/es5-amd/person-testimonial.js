@@ -6,9 +6,17 @@ define([
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
   "./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js",
   "./lib/person-testimonial-icon.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _paperCard,
+  _ironImage,
+  _ironIcon,
+  _HAXWiring,
+  _materializecssStyles,
+  _personTestimonialIcon
+) {
   "use strict";
-  function _templateObject_40b2d530ecf311e88821e1e89c29568c() {
+  function _templateObject_c2894160f1e511e89db3b5d519b92cf0() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style include="materializecss-styles">\n      :host {\n        display: block;\n        font-family: sans-serif;\n        color: darkslategray;\n      }\n\n      paper-card {\n        display: inline-flex;\n      }\n\n      iron-image {\n        display: block;\n        width: 150px;\n        height: 100%;\n      }\n      .image {\n        padding-right:5px;\n      }\n\n      iron-icon {\n        --iron-icon-height: 15px;\n        --iron-icon-width: 15px;\n        --iron-icon-fill-color: darkslategray;\n      }\n\n      .wrap {\n        margin: 15px;\n      }\n\n      .testimonial {\n        line-height: 24px;\n        font-size: 16px;\n        font-style: italic;\n      }\n\n      .name {\n        font-size: 21px;\n        text-transform: uppercase;\n        font-weight: bold;\n        margin-top: 20px;\n      }\n\n      .position {\n        font-size: 14px;\n        margin-top: 5px;\n      }\n\n      .arrow_right {\n        width: 0;\n        height: 0;\n        border-top: 15px solid white;\n        border-bottom: 15px solid white;\n        border-left: solid 15px transparent;\n        position: relative;\n        top: 55px;\n      }\n\n      #quotestart {\n        display: inline-flex;\n        transform: rotateY(180deg);\n      }\n\n      #quoteend {\n        display: inline-flex;\n      }\n\n      @media screen and (max-width: 850px) {\n        paper-card {\n          display: flex;\n          flex-wrap: wrap;\n        }\n        iron-image {\n          display: block;\n          border-radius: 50%;\n          width: 200px;\n          height: 200px;\n        }\n        .image {\n          margin-top: 25px;\n          border-radius: 50%;\n          padding: 5px;\n          margin-left: auto;\n          margin-right: auto;\n        }\n        .arrow_right {\n          display: none;\n        }\n        .name, .position {\n          text-align: center;\n        }\n      }\n    </style>\n    <paper-card elevation="[[elevation]]">\n      <div class$="[[accentColorClass]] image">\n        <iron-image style$="background-color: [[accentColor]];" src="[[image]]" sizing="cover" preload="" fade=""></iron-image>\n      </div>\n      <div class$="arrow_right [[accentColorClass]]"></div>\n      <div class="wrap">\n        <div class="testimonial">\n          <iron-icon id="quotestart" icon="persontestimonial:format-quote"></iron-icon>\n          <slot></slot>\n          <iron-icon id="quoteend" icon="persontestimonial:format-quote"></iron-icon>\n        </div>\n        <div class="name">[[name]]</div>\n        <div class="position">[[position]]</div>\n      </div>\n    </paper-card>\n'
@@ -17,14 +25,14 @@ define([
         '\n    <style include="materializecss-styles">\n      :host {\n        display: block;\n        font-family: sans-serif;\n        color: darkslategray;\n      }\n\n      paper-card {\n        display: inline-flex;\n      }\n\n      iron-image {\n        display: block;\n        width: 150px;\n        height: 100%;\n      }\n      .image {\n        padding-right:5px;\n      }\n\n      iron-icon {\n        --iron-icon-height: 15px;\n        --iron-icon-width: 15px;\n        --iron-icon-fill-color: darkslategray;\n      }\n\n      .wrap {\n        margin: 15px;\n      }\n\n      .testimonial {\n        line-height: 24px;\n        font-size: 16px;\n        font-style: italic;\n      }\n\n      .name {\n        font-size: 21px;\n        text-transform: uppercase;\n        font-weight: bold;\n        margin-top: 20px;\n      }\n\n      .position {\n        font-size: 14px;\n        margin-top: 5px;\n      }\n\n      .arrow_right {\n        width: 0;\n        height: 0;\n        border-top: 15px solid white;\n        border-bottom: 15px solid white;\n        border-left: solid 15px transparent;\n        position: relative;\n        top: 55px;\n      }\n\n      #quotestart {\n        display: inline-flex;\n        transform: rotateY(180deg);\n      }\n\n      #quoteend {\n        display: inline-flex;\n      }\n\n      @media screen and (max-width: 850px) {\n        paper-card {\n          display: flex;\n          flex-wrap: wrap;\n        }\n        iron-image {\n          display: block;\n          border-radius: 50%;\n          width: 200px;\n          height: 200px;\n        }\n        .image {\n          margin-top: 25px;\n          border-radius: 50%;\n          padding: 5px;\n          margin-left: auto;\n          margin-right: auto;\n        }\n        .arrow_right {\n          display: none;\n        }\n        .name, .position {\n          text-align: center;\n        }\n      }\n    </style>\n    <paper-card elevation="[[elevation]]">\n      <div class\\$="[[accentColorClass]] image">\n        <iron-image style\\$="background-color: [[accentColor]];" src="[[image]]" sizing="cover" preload="" fade=""></iron-image>\n      </div>\n      <div class\\$="arrow_right [[accentColorClass]]"></div>\n      <div class="wrap">\n        <div class="testimonial">\n          <iron-icon id="quotestart" icon="persontestimonial:format-quote"></iron-icon>\n          <slot></slot>\n          <iron-icon id="quoteend" icon="persontestimonial:format-quote"></iron-icon>\n        </div>\n        <div class="name">[[name]]</div>\n        <div class="position">[[position]]</div>\n      </div>\n    </paper-card>\n'
       ]
     );
-    _templateObject_40b2d530ecf311e88821e1e89c29568c = function() {
+    _templateObject_c2894160f1e511e89db3b5d519b92cf0 = function _templateObject_c2894160f1e511e89db3b5d519b92cf0() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_40b2d530ecf311e88821e1e89c29568c()
+      _templateObject_c2894160f1e511e89db3b5d519b92cf0()
     ),
     is: "person-testimonial",
     behaviors: [
@@ -44,7 +52,7 @@ define([
       position: { type: String }
     },
     attached: function attached() {
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !0,
@@ -134,7 +142,8 @@ define([
           ],
           advanced: []
         }
-      });
+      };
+      this.setHaxProperties(props);
     },
     _computeColorClass: function _computeColorClass(color) {
       if (null != color && "#" == color.substring(0, 1)) {

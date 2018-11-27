@@ -86,7 +86,7 @@ Polymer({
   },
   attached: function() {
     this.fire("a11y-collapse-attached", this);
-    this.setHaxProperties({
+    let props = {
       canScale: !1,
       canPosition: !0,
       canEditSource: !1,
@@ -139,7 +139,8 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
   detached: function() {
     this.fire("a11y-collapse-detached", this);

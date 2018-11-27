@@ -13,9 +13,24 @@ define([
   "../node_modules/@polymer/iron-icons/maps-icons.js",
   "../node_modules/@polymer/neon-animation/neon-animation.js",
   "./hax-toolbar-item.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _paperButton,
+  _paperIconButton,
+  _paperTooltip,
+  _ironIcons,
+  _editorIcons,
+  _deviceIcons,
+  _hardwareIcons,
+  _socialIcons,
+  _avIcons,
+  _imageIcons,
+  _mapsIcons,
+  _neonAnimation,
+  _haxToolbarItem
+) {
   "use strict";
-  function _templateObject_a8b5a7f0ee0311e8bb61cd2eef6a9bf2() {
+  function _templateObject_9bc744e0f1e611e8b3a2e3a031c18fd0() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: inline-flex;\n      }\n      :host([menu]) {\n        display: flex;\n        width: 100%;\n      }\n    </style>\n    <hax-toolbar-item disabled="[[disabled]]" light="[[light]]" mini="[[mini]]" id="button" icon="[[icon]]" hidden$="[[!icon]]" icon-class="[[iconClass]]" on-tap="_fireEvent" tooltip="[[label]]" tooltip-direction="[[direction]]" default="[[default]]" menu="[[menu]]">\n      <slot></slot>\n    </hax-toolbar-item>\n'
@@ -24,14 +39,14 @@ define([
         '\n    <style>\n      :host {\n        display: inline-flex;\n      }\n      :host([menu]) {\n        display: flex;\n        width: 100%;\n      }\n    </style>\n    <hax-toolbar-item disabled="[[disabled]]" light="[[light]]" mini="[[mini]]" id="button" icon="[[icon]]" hidden\\$="[[!icon]]" icon-class="[[iconClass]]" on-tap="_fireEvent" tooltip="[[label]]" tooltip-direction="[[direction]]" default="[[default]]" menu="[[menu]]">\n      <slot></slot>\n    </hax-toolbar-item>\n'
       ]
     );
-    _templateObject_a8b5a7f0ee0311e8bb61cd2eef6a9bf2 = function() {
+    _templateObject_9bc744e0f1e611e8b3a2e3a031c18fd0 = function _templateObject_9bc744e0f1e611e8b3a2e3a031c18fd0() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a8b5a7f0ee0311e8bb61cd2eef6a9bf2()
+      _templateObject_9bc744e0f1e611e8b3a2e3a031c18fd0()
     ),
     is: "hax-context-item",
     properties: {
@@ -55,7 +70,7 @@ define([
       default: { type: Boolean, value: !1 },
       value: { type: String, value: "" }
     },
-    _fireEvent: function _fireEvent() {
+    _fireEvent: function _fireEvent(e) {
       this.fire("hax-context-item-selected", {
         target: this,
         eventName: this.eventName,

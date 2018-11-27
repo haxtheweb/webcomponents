@@ -106,7 +106,7 @@ Polymer({
     crossorigin: { type: Boolean, value: !1 }
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -306,7 +306,8 @@ Polymer({
           }
         ]
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
   _computeYoutubeId: function(source, sourceType) {
     if (source !== void 0 && "youtube" === sourceType) {
@@ -361,7 +362,9 @@ Polymer({
     return temp;
   },
   _computeMediaType: function(source) {
-    let type = "",
+    let audio = ["aac", "flac", "mp3", "oga", "wav"],
+      video = ["mov", "mp4", "ogv", "webm"],
+      type = "",
       findType = function(text, data) {
         for (let i = 0; i < data.length; i++) {
           if (
@@ -372,8 +375,8 @@ Polymer({
             type = text + "/" + data[i];
         }
       };
-    findType("audio", ["aac", "flac", "mp3", "oga", "wav"]);
-    findType("video", ["mov", "mp4", "ogv", "webm"]);
+    findType("audio", audio);
+    findType("video", video);
     return type;
   },
   _computeSandboxed: function(sourceData) {

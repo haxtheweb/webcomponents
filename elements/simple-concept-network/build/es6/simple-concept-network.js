@@ -72,7 +72,7 @@ Polymer({
     }
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -176,6 +176,7 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   }
 });

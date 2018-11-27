@@ -238,7 +238,7 @@ Polymer({
     up: "_skipReverseByInterval"
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -310,7 +310,8 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
     this.$.audio.addEventListener("loadedmetadata", this._onCanPlay.bind(this));
     this.$.audio.addEventListener("playing", this._onPlaying.bind(this));
     this.$.audio.addEventListener("pause", this._onPause.bind(this));
@@ -491,7 +492,7 @@ Polymer({
     player.$.progress2.style.width = 100 * percentagePlayed + "%";
     player.$.title2.style.width = 100 * (1 / percentagePlayed) + "%";
   },
-  _srcChanged: function() {
+  _srcChanged: function(newValue, oldValue) {
     var player = this;
     if (player.isPlaying) {
       player._pause();

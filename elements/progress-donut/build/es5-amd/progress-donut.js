@@ -5,9 +5,16 @@ define([
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
   "./node_modules/@lrnwebcomponents/chartist-render/chartist-render.js",
   "./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _materializecssStyles,
+  _haxBodyBehaviors,
+  _schemaBehaviors,
+  _chartistRender,
+  _simpleColors
+) {
   "use strict";
-  function _templateObject_001dd2d0ecf411e8a4e5570ff685a0b0() {
+  function _templateObject_408acb10f1e611e8b6e58170cce404de() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style is="custom-style">\n      :host {\n        background-color: var(--simple-colors-background1, #ffffff);\n        overflow: visible;\n        display: block;\n      }\n      :host #wrapper {\n        margin: 0 auto;\n        position: relative;\n      }\n      :host #wrapper > * {\n        position: absolute;\n      }\n      :host #wrapper #chart {\n        left: 0;\n        top: 0;\n      }\n      :host #wrapper,\n      :host #wrapper #chart {\n        width: 250px;\n        height: 250px;\n      }\n      :host([size="xs"]) #wrapper,\n      :host([size="xs"]) #wrapper #chart {\n        width: 150px;\n        height: 150px;\n      }\n      :host([size="sm"]) #wrapper,\n      :host([size="sm"]) #wrapper #chart {\n        width: 200px;\n        height: 200px;\n      }\n      :host([size="lg"]) #wrapper,\n      :host([size="lg"]) #wrapper #chart {\n        width: 300px;\n        height: 300px;\n      }\n      :host([size="xl"]) #wrapper,\n      :host([size="xl"]) #wrapper #chart {\n        width: 400px;\n        height: 400px;\n      }\n      :host #wrapper > #image {\n        left: 20%;\n        top: 20%;\n        width: 60%;\n        height: 60%;\n        -webkit-clip-path: circle(50% at 50% 50%);\n        clip-path: circle(50% at 50% 50%);\n      }\n    </style>\n    <div id="wrapper">\n      <img id="image" alt$="[[imageAlt]]" aria-hidden="true" hidden$="[[!imageSrc]]" src$="[[imageSrc]]" style$="[[imageStyle]]">\n      <chartist-render id="chart" data$="[[data]]" chart-desc$="[[desc]]" chart-title="[[title]]" scale="ct-square" options$="[[options]]" title$="[[title]]" type="pie">\n      </chartist-render>\n    </div>\n'
@@ -16,14 +23,14 @@ define([
         '\n    <style is="custom-style">\n      :host {\n        background-color: var(--simple-colors-background1, #ffffff);\n        overflow: visible;\n        display: block;\n      }\n      :host #wrapper {\n        margin: 0 auto;\n        position: relative;\n      }\n      :host #wrapper > * {\n        position: absolute;\n      }\n      :host #wrapper #chart {\n        left: 0;\n        top: 0;\n      }\n      :host #wrapper,\n      :host #wrapper #chart {\n        width: 250px;\n        height: 250px;\n      }\n      :host([size="xs"]) #wrapper,\n      :host([size="xs"]) #wrapper #chart {\n        width: 150px;\n        height: 150px;\n      }\n      :host([size="sm"]) #wrapper,\n      :host([size="sm"]) #wrapper #chart {\n        width: 200px;\n        height: 200px;\n      }\n      :host([size="lg"]) #wrapper,\n      :host([size="lg"]) #wrapper #chart {\n        width: 300px;\n        height: 300px;\n      }\n      :host([size="xl"]) #wrapper,\n      :host([size="xl"]) #wrapper #chart {\n        width: 400px;\n        height: 400px;\n      }\n      :host #wrapper > #image {\n        left: 20%;\n        top: 20%;\n        width: 60%;\n        height: 60%;\n        -webkit-clip-path: circle(50% at 50% 50%);\n        clip-path: circle(50% at 50% 50%);\n      }\n    </style>\n    <div id="wrapper">\n      <img id="image" alt\\$="[[imageAlt]]" aria-hidden="true" hidden\\$="[[!imageSrc]]" src\\$="[[imageSrc]]" style\\$="[[imageStyle]]">\n      <chartist-render id="chart" data\\$="[[data]]" chart-desc\\$="[[desc]]" chart-title="[[title]]" scale="ct-square" options\\$="[[options]]" title\\$="[[title]]" type="pie">\n      </chartist-render>\n    </div>\n'
       ]
     );
-    _templateObject_001dd2d0ecf411e8a4e5570ff685a0b0 = function() {
+    _templateObject_408acb10f1e611e8b6e58170cce404de = function _templateObject_408acb10f1e611e8b6e58170cce404de() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_001dd2d0ecf411e8a4e5570ff685a0b0()
+      _templateObject_408acb10f1e611e8b6e58170cce404de()
     ),
     is: "progress-donut",
     behaviors: [
@@ -50,7 +57,7 @@ define([
       total: { type: Number, value: 100 }
     },
     attached: function attached() {
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !1,
@@ -85,12 +92,13 @@ define([
           ],
           advanced: []
         }
-      });
+      };
+      this.setHaxProperties(props);
     },
     _getData: function _getData(complete) {
       return { series: complete };
     },
-    _getImageStyle: function _getImageStyle() {
+    _getImageStyle: function _getImageStyle(size) {
       var offset = "22%",
         diameter = "56%";
       if ("xs" === this.size) {
@@ -118,7 +126,14 @@ define([
         ";"
       );
     },
-    _getOptions: function _getOptions(complete, total) {
+    _getOptions: function _getOptions(
+      complete,
+      total,
+      size,
+      colors,
+      accentColor,
+      dark
+    ) {
       for (var sum = 0, i = 0; i < complete.length; i++) {
         sum += parseFloat(complete[i]);
       }

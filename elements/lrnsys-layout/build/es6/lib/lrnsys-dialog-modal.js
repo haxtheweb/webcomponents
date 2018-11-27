@@ -109,19 +109,19 @@ Polymer({
   },
   attached: function() {
     const toolbar = this.shadowRoot.querySelector("lrnsys-dialog-toolbar");
-    this.$.dialog.addEventListener("mouseover", () => {
+    this.$.dialog.addEventListener("mouseover", e => {
       toolbar.setAttribute("secondary-visible", !0);
     });
-    this.$.dialog.addEventListener("mouseout", () => {
+    this.$.dialog.addEventListener("mouseout", e => {
       toolbar.removeAttribute("secondary-visible");
     });
   },
   detached: function() {
     const toolbar = this.shadowRoot.querySelector("lrnsys-dialog-toolbar");
-    this.$.dialog.removeEventListener("mouseover", () => {
+    this.$.dialog.removeEventListener("mouseover", e => {
       toolbar.setAttribute("secondary-visible", !0);
     });
-    this.$.dialog.removeEventListener("mouseout", () => {
+    this.$.dialog.removeEventListener("mouseout", e => {
       toolbar.removeAttribute("secondary-visible");
     });
   },

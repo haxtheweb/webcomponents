@@ -97,7 +97,7 @@ Polymer({
   is: "hax-app-search-result",
   behaviors: [simpleColorsBehaviors],
   properties: { resultData: { type: Object } },
-  _itemSelected: function() {
+  _itemSelected: function(e) {
     var map = this.resultData.map,
       gizmoType = this.resultData.type;
     if (

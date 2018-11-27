@@ -10,13 +10,25 @@ define([
   "./hax-stax-browser.js",
   "./hax-blox.js",
   "./hax-blox-browser.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _paperToast,
+  _mediaBehaviors,
+  _haxBodyBehaviors,
+  _ironAjax,
+  _haxApp,
+  _haxStax,
+  _haxStaxBrowser,
+  _haxBlox,
+  _haxBloxBrowser
+) {
   "use strict";
-  function _templateObject_a3bf0e80ee0311e8bb61cd2eef6a9bf2() {
+  function _templateObject_9735aed0f1e611e8b3a2e3a031c18fd0() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: none;\n      }\n    </style>\n    <slot></slot>\n    <iron-ajax id="appstore" url="[[appStore.url]]" params="[[appStore.params]]" method="GET" content-type="application/json" handle-as="json" last-response="{{__appStoreData}}"></iron-ajax>\n'
     ]);
-    _templateObject_a3bf0e80ee0311e8bb61cd2eef6a9bf2 = function() {
+    _templateObject_9735aed0f1e611e8b3a2e3a031c18fd0 = function _templateObject_9735aed0f1e611e8b3a2e3a031c18fd0() {
       return data;
     };
     return data;
@@ -31,7 +43,7 @@ define([
   };
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a3bf0e80ee0311e8bb61cd2eef6a9bf2()
+      _templateObject_9735aed0f1e611e8b3a2e3a031c18fd0()
     ),
     is: "hax-store",
     behaviors: [MediaBehaviors.Video, HAXBehaviors.PropertiesBehaviors],
@@ -191,9 +203,19 @@ define([
       }
       return !1;
     },
-    _appStoreChanged: function _appStoreChanged(newValue) {
-      if (babelHelpers.typeof(newValue) !== "undefined") {
-        if (babelHelpers.typeof(newValue.apps) === "undefined") {
+    _appStoreChanged: function _appStoreChanged(newValue, oldValue) {
+      if (
+        babelHelpers.typeof(newValue) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
+        if (
+          babelHelpers.typeof(newValue.apps) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           this.$.appstore.generateRequest();
         } else {
           this.__appStoreData = newValue;
@@ -206,16 +228,29 @@ define([
     ) {
       var _this = this;
       if (
-        babelHelpers.typeof(appDataResponse) !== "undefined" &&
+        babelHelpers.typeof(appDataResponse) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         null != appDataResponse
       ) {
-        if (babelHelpers.typeof(appDataResponse.autoloader) !== "undefined") {
+        if (
+          babelHelpers.typeof(appDataResponse.autoloader) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           for (var i = 0, loader; i < appDataResponse.autoloader.length; i++) {
             loader = document.createElement(appDataResponse.autoloader[i]);
             (0, _polymerDom.dom)(haxAutoloader).appendChild(loader);
           }
         }
-        if (babelHelpers.typeof(appDataResponse.apps) !== "undefined") {
+        if (
+          babelHelpers.typeof(appDataResponse.apps) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           for (
             var apps = appDataResponse.apps, i = 0, app;
             i < apps.length;
@@ -225,7 +260,9 @@ define([
             app.data = apps[i];
             if (
               babelHelpers.typeof(apps[i].connection.operations.add) !==
-              "undefined"
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
             ) {
               async.microTask.run(function() {
                 window.HaxStore.write("canSupportUploads", !0, _this);
@@ -234,7 +271,12 @@ define([
             window.HaxStore.instance.appendChild(app);
           }
         }
-        if (babelHelpers.typeof(appDataResponse.stax) !== "undefined") {
+        if (
+          babelHelpers.typeof(appDataResponse.stax) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           for (
             var staxs = appDataResponse.stax, i = 0, stax;
             i < staxs.length;
@@ -245,7 +287,12 @@ define([
             window.HaxStore.instance.appendChild(stax);
           }
         }
-        if (babelHelpers.typeof(appDataResponse.blox) !== "undefined") {
+        if (
+          babelHelpers.typeof(appDataResponse.blox) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           for (
             var bloxs = appDataResponse.blox, i = 0, blox;
             i < bloxs.length;
@@ -342,7 +389,7 @@ define([
           } else if (window.clipboardData) {
             text = window.clipboardData.getData("Text");
           }
-          var sel, range;
+          var sel, range, _html;
           if (window.getSelection) {
             sel = window.getSelection();
             if (sel.getRangeAt && sel.rangeCount) {
@@ -359,7 +406,9 @@ define([
         var keyName = event.key;
         if (
           babelHelpers.typeof(window.HaxStore.instance.activeContainerNode) !==
-            "undefined" &&
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           "Enter" === keyName &&
           window.HaxStore.instance.editMode &&
           null !== window.HaxStore.instance.activeNode &&
@@ -372,7 +421,12 @@ define([
             selection = window.getSelection(),
             range = selection.getRangeAt(0).cloneRange(),
             tagTest = range.commonAncestorContainer.tagName;
-          if (babelHelpers.typeof(tagTest) === "undefined") {
+          if (
+            babelHelpers.typeof(tagTest) ===
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
+          ) {
             tagTest = range.commonAncestorContainer.parentNode.tagName;
           }
           if (
@@ -510,267 +564,255 @@ define([
     },
     _buildPrimitiveDefinitions: function _buildPrimitiveDefinitions() {
       if (window.HaxStore.instance._isSandboxed) {
-        this.setHaxProperties(
-          {
-            canScale: !0,
-            canPosition: !0,
-            canEditSource: !1,
-            settings: {
-              quick: [
-                {
-                  attribute: "src",
-                  title: "Source",
-                  description: "The URL for this video.",
-                  inputMethod: "textfield",
-                  icon: "link",
-                  required: !0,
-                  validationType: "url"
-                }
-              ],
-              configure: [
-                {
-                  attribute: "src",
-                  title: "Source",
-                  description: "The URL for this video.",
-                  inputMethod: "textfield",
-                  icon: "link",
-                  required: !0,
-                  validationType: "url"
-                }
-              ],
-              advanced: []
-            }
-          },
-          "webview"
-        );
+        var webview = {
+          canScale: !0,
+          canPosition: !0,
+          canEditSource: !1,
+          settings: {
+            quick: [
+              {
+                attribute: "src",
+                title: "Source",
+                description: "The URL for this video.",
+                inputMethod: "textfield",
+                icon: "link",
+                required: !0,
+                validationType: "url"
+              }
+            ],
+            configure: [
+              {
+                attribute: "src",
+                title: "Source",
+                description: "The URL for this video.",
+                inputMethod: "textfield",
+                icon: "link",
+                required: !0,
+                validationType: "url"
+              }
+            ],
+            advanced: []
+          }
+        };
+        this.setHaxProperties(webview, "webview");
       }
-      this.setHaxProperties(
-        {
-          canScale: !0,
-          canPosition: !0,
-          canEditSource: !0,
-          gizmo: {
-            title: "Basic iframe",
-            description: "A basic iframe",
-            icon: "icons:fullscreen",
-            color: "grey",
-            groups: ["Content"],
-            handles: [
-              { type: "link", source: "src", height: "height", width: "width" }
-            ],
-            meta: { author: "W3C" }
-          },
-          settings: {
-            quick: [
-              {
-                attribute: "src",
-                title: "Source",
-                description: "The URL for this video.",
-                inputMethod: "textfield",
-                icon: "link",
-                required: !0,
-                validationType: "url"
-              }
-            ],
-            configure: [
-              {
-                attribute: "src",
-                title: "Source",
-                description: "The URL for this video.",
-                inputMethod: "textfield",
-                icon: "link",
-                required: !0,
-                validationType: "url"
-              }
-            ],
-            advanced: []
-          }
+      var iframe = {
+        canScale: !0,
+        canPosition: !0,
+        canEditSource: !0,
+        gizmo: {
+          title: "Basic iframe",
+          description: "A basic iframe",
+          icon: "icons:fullscreen",
+          color: "grey",
+          groups: ["Content"],
+          handles: [
+            { type: "link", source: "src", height: "height", width: "width" }
+          ],
+          meta: { author: "W3C" }
         },
-        "iframe"
-      );
-      this.setHaxProperties(
-        {
-          canScale: !0,
-          canPosition: !0,
-          canEditSource: !1,
-          gizmo: {
-            title: "Basic image",
-            description: "A basic img tag",
-            icon: "image:image",
-            color: "grey",
-            groups: ["Image", "Media"],
-            handles: [
-              { type: "link", source: "src" },
-              { type: "image", source: "src", height: "height", width: "width" }
-            ],
-            meta: { author: "W3C" }
-          },
-          settings: {
-            quick: [
-              {
-                attribute: "src",
-                title: "Source",
-                description: "The URL for this video.",
-                inputMethod: "textfield",
-                icon: "link",
-                required: !0,
-                validationType: "url"
-              },
-              {
-                attribute: "alt",
-                title: "Alt text",
-                description: "Useful for screen readers and improved SEO.",
-                inputMethod: "alt",
-                icon: "accessibility"
-              },
-              {
-                attribute: "height",
-                title: "Height",
-                description: "height in pixels of the item",
-                inputMethod: "textfield",
-                icon: "icons:swap-vert"
-              },
-              {
-                attribute: "width",
-                title: "Width",
-                description: "width in pixels of the item",
-                inputMethod: "textfield",
-                icon: "icons:swap-horiz"
-              }
-            ],
-            configure: [
-              {
-                attribute: "src",
-                title: "Source",
-                description: "The URL for this video.",
-                inputMethod: "textfield",
-                icon: "link",
-                required: !0,
-                validationType: "url"
-              },
-              {
-                attribute: "alt",
-                title: "Alt text",
-                description: "Useful for screen readers and improved SEO.",
-                inputMethod: "alt",
-                icon: "accessibility"
-              },
-              {
-                attribute: "height",
-                title: "Height",
-                description: "height in pixels of the item",
-                inputMethod: "textfield",
-                icon: "icons:swap-vert"
-              },
-              {
-                attribute: "width",
-                title: "Width",
-                description: "width in pixels of the item",
-                inputMethod: "textfield",
-                icon: "icons:swap-horiz"
-              }
-            ],
-            advanced: []
-          }
+        settings: {
+          quick: [
+            {
+              attribute: "src",
+              title: "Source",
+              description: "The URL for this video.",
+              inputMethod: "textfield",
+              icon: "link",
+              required: !0,
+              validationType: "url"
+            }
+          ],
+          configure: [
+            {
+              attribute: "src",
+              title: "Source",
+              description: "The URL for this video.",
+              inputMethod: "textfield",
+              icon: "link",
+              required: !0,
+              validationType: "url"
+            }
+          ],
+          advanced: []
+        }
+      };
+      this.setHaxProperties(iframe, "iframe");
+      var img = {
+        canScale: !0,
+        canPosition: !0,
+        canEditSource: !1,
+        gizmo: {
+          title: "Basic image",
+          description: "A basic img tag",
+          icon: "image:image",
+          color: "grey",
+          groups: ["Image", "Media"],
+          handles: [
+            { type: "link", source: "src" },
+            { type: "image", source: "src", height: "height", width: "width" }
+          ],
+          meta: { author: "W3C" }
         },
-        "img"
-      );
-      this.setHaxProperties(
-        {
-          canScale: !1,
-          canPosition: !1,
-          canEditSource: !1,
-          gizmo: {
-            title: "Basic link",
-            description: "A basic a tag",
-            icon: "icons:link",
-            color: "grey",
-            groups: ["Link"],
-            handles: [
-              { type: "link", source: "href", title: "innerText", alt: "title" }
-            ],
-            meta: { author: "W3C" }
-          },
-          settings: {
-            quick: [
-              {
-                attribute: "href",
-                title: "Link",
-                description: "The URL for this video.",
-                inputMethod: "textfield",
-                icon: "icons:link",
-                required: !0,
-                validationType: "url"
-              },
-              {
-                attribute: "title",
-                title: "Title text",
-                description: "Useful for screen readers and improved SEO.",
-                inputMethod: "textfield",
-                icon: "icons:accessibility"
+        settings: {
+          quick: [
+            {
+              attribute: "src",
+              title: "Source",
+              description: "The URL for this video.",
+              inputMethod: "textfield",
+              icon: "link",
+              required: !0,
+              validationType: "url"
+            },
+            {
+              attribute: "alt",
+              title: "Alt text",
+              description: "Useful for screen readers and improved SEO.",
+              inputMethod: "alt",
+              icon: "accessibility"
+            },
+            {
+              attribute: "height",
+              title: "Height",
+              description: "height in pixels of the item",
+              inputMethod: "textfield",
+              icon: "icons:swap-vert"
+            },
+            {
+              attribute: "width",
+              title: "Width",
+              description: "width in pixels of the item",
+              inputMethod: "textfield",
+              icon: "icons:swap-horiz"
+            }
+          ],
+          configure: [
+            {
+              attribute: "src",
+              title: "Source",
+              description: "The URL for this video.",
+              inputMethod: "textfield",
+              icon: "link",
+              required: !0,
+              validationType: "url"
+            },
+            {
+              attribute: "alt",
+              title: "Alt text",
+              description: "Useful for screen readers and improved SEO.",
+              inputMethod: "alt",
+              icon: "accessibility"
+            },
+            {
+              attribute: "height",
+              title: "Height",
+              description: "height in pixels of the item",
+              inputMethod: "textfield",
+              icon: "icons:swap-vert"
+            },
+            {
+              attribute: "width",
+              title: "Width",
+              description: "width in pixels of the item",
+              inputMethod: "textfield",
+              icon: "icons:swap-horiz"
+            }
+          ],
+          advanced: []
+        }
+      };
+      this.setHaxProperties(img, "img");
+      var ahref = {
+        canScale: !1,
+        canPosition: !1,
+        canEditSource: !1,
+        gizmo: {
+          title: "Basic link",
+          description: "A basic a tag",
+          icon: "icons:link",
+          color: "grey",
+          groups: ["Link"],
+          handles: [
+            { type: "link", source: "href", title: "innerText", alt: "title" }
+          ],
+          meta: { author: "W3C" }
+        },
+        settings: {
+          quick: [
+            {
+              attribute: "href",
+              title: "Link",
+              description: "The URL for this video.",
+              inputMethod: "textfield",
+              icon: "icons:link",
+              required: !0,
+              validationType: "url"
+            },
+            {
+              attribute: "title",
+              title: "Title text",
+              description: "Useful for screen readers and improved SEO.",
+              inputMethod: "textfield",
+              icon: "icons:accessibility"
+            }
+          ],
+          configure: [
+            {
+              attribute: "innerText",
+              title: "Text",
+              description: "Text of the link",
+              inputMethod: "textfield",
+              required: !0
+            },
+            {
+              attribute: "href",
+              title: "Link",
+              description: "The URL for this video.",
+              inputMethod: "textfield",
+              icon: "icons:link",
+              required: !0,
+              validationType: "url"
+            },
+            {
+              attribute: "title",
+              title: "Title text",
+              description: "Useful for screen readers and improved SEO.",
+              inputMethod: "textfield",
+              icon: "icons:accessibility"
+            },
+            {
+              attribute: "target",
+              title: "Target",
+              description: "Where to place the link.",
+              inputMethod: "select",
+              icon: "icons:launch",
+              options: {
+                "": "Same window",
+                _blank: "New window",
+                _top: "Top window",
+                _parent: "Parent window"
               }
-            ],
-            configure: [
-              {
-                attribute: "innerText",
-                title: "Text",
-                description: "Text of the link",
-                inputMethod: "textfield",
-                required: !0
-              },
-              {
-                attribute: "href",
-                title: "Link",
-                description: "The URL for this video.",
-                inputMethod: "textfield",
-                icon: "icons:link",
-                required: !0,
-                validationType: "url"
-              },
-              {
-                attribute: "title",
-                title: "Title text",
-                description: "Useful for screen readers and improved SEO.",
-                inputMethod: "textfield",
-                icon: "icons:accessibility"
-              },
-              {
-                attribute: "target",
-                title: "Target",
-                description: "Where to place the link.",
-                inputMethod: "select",
-                icon: "icons:launch",
-                options: {
-                  "": "Same window",
-                  _blank: "New window",
-                  _top: "Top window",
-                  _parent: "Parent window"
-                }
-              }
-            ],
-            advanced: []
-          }
-        },
-        "a"
-      );
-      this.setHaxProperties(
-        {
-          canScale: !1,
-          canPosition: !1,
-          canEditSource: !0,
-          settings: { quick: [], configure: [], advanced: [] }
-        },
-        "p"
-      );
-      this.setHaxProperties(
-        {
-          canScale: !0,
-          canPosition: !1,
-          canEditSource: !1,
-          settings: { quick: [], configure: [], advanced: [] }
-        },
-        "hr"
-      );
+            }
+          ],
+          advanced: []
+        }
+      };
+      this.setHaxProperties(ahref, "a");
+      var p = {
+        canScale: !1,
+        canPosition: !1,
+        canEditSource: !0,
+        settings: { quick: [], configure: [], advanced: [] }
+      };
+      this.setHaxProperties(p, "p");
+      var hr = {
+        canScale: !0,
+        canPosition: !1,
+        canEditSource: !1,
+        settings: { quick: [], configure: [], advanced: [] }
+      };
+      this.setHaxProperties(hr, "hr");
     },
     _injectToast: function _injectToast() {
       var toast = document.createElement("paper-toast");
@@ -780,27 +822,57 @@ define([
       this.haxToast = toast;
     },
     _haxStoreRegisterManager: function _haxStoreRegisterManager(e) {
-      if (e.detail && babelHelpers.typeof(this.haxManager) === "undefined") {
+      if (
+        e.detail &&
+        babelHelpers.typeof(this.haxManager) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+      ) {
         this.haxManager = e.detail;
       }
     },
     _haxStoreRegisterAutoloader: function _haxStoreRegisterAutoloader(e) {
-      if (e.detail && babelHelpers.typeof(this.haxAutoloader) === "undefined") {
+      if (
+        e.detail &&
+        babelHelpers.typeof(this.haxAutoloader) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+      ) {
         this.haxAutoloader = e.detail;
       }
     },
     _haxStoreRegisterAppPicker: function _haxStoreRegisterAppPicker(e) {
-      if (e.detail && babelHelpers.typeof(this.haxAppPicker) === "undefined") {
+      if (
+        e.detail &&
+        babelHelpers.typeof(this.haxAppPicker) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+      ) {
         this.haxAppPicker = e.detail;
       }
     },
     _haxStoreRegisterStaxPicker: function _haxStoreRegisterStaxPicker(e) {
-      if (e.detail && babelHelpers.typeof(this.haxStaxPicker) === "undefined") {
+      if (
+        e.detail &&
+        babelHelpers.typeof(this.haxStaxPicker) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+      ) {
         this.haxStaxPicker = e.detail;
       }
     },
     _haxStoreRegisterBloxPicker: function _haxStoreRegisterBloxPicker(e) {
-      if (e.detail && babelHelpers.typeof(this.haxBloxPicker) === "undefined") {
+      if (
+        e.detail &&
+        babelHelpers.typeof(this.haxBloxPicker) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+      ) {
         this.haxBloxPicker = e.detail;
       }
     },
@@ -852,7 +924,12 @@ define([
     _haxStoreInsertContent: function _haxStoreInsertContent(e) {
       if (e.detail) {
         var properties = {};
-        if (babelHelpers.typeof(e.detail.properties) !== "undefined") {
+        if (
+          babelHelpers.typeof(e.detail.properties) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           properties = e.detail.properties;
         }
         if (e.detail.replace && e.detail.replacement) {
@@ -871,7 +948,10 @@ define([
             this.activeHaxBody.haxReplaceNode(this.activeNode, node);
           }
         } else if (
-          babelHelpers.typeof(e.detail.__type) !== "undefined" &&
+          babelHelpers.typeof(e.detail.__type) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           "inline" === e.detail.__type
         ) {
           var _node = window.HaxStore.haxElementToNode(
@@ -902,19 +982,34 @@ define([
       }
     },
     _haxStoreRegisterPanel: function _haxStoreRegisterPanel(e) {
-      if (e.detail && babelHelpers.typeof(this.haxPanel) === "undefined") {
+      if (
+        e.detail &&
+        babelHelpers.typeof(this.haxPanel) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+      ) {
         this.haxPanel = e.detail;
       }
     },
     _haxStoreRegisterExport: function _haxStoreRegisterExport(e) {
-      if (e.detail && babelHelpers.typeof(this.haxExport) === "undefined") {
+      if (
+        e.detail &&
+        babelHelpers.typeof(this.haxExport) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+      ) {
         this.haxExport = e.detail;
       }
     },
     _haxStoreRegisterPreferences: function _haxStoreRegisterPreferences(e) {
       if (
         e.detail &&
-        babelHelpers.typeof(this.haxPreferences) === "undefined"
+        babelHelpers.typeof(this.haxPreferences) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
       ) {
         this.haxPreferences = e.detail;
       }
@@ -930,7 +1025,10 @@ define([
     _writeHaxStore: function _writeHaxStore(e) {
       if (
         e.detail &&
-        babelHelpers.typeof(e.detail.value) !== "undefined" &&
+        babelHelpers.typeof(e.detail.value) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         e.detail.property &&
         e.detail.owner
       ) {
@@ -948,7 +1046,10 @@ define([
         this.push("appList", e.detail);
         window.HaxStore.write("appList", this.appList, this);
         if (
-          babelHelpers.typeof(e.target.parentElement) !== "undefined" &&
+          babelHelpers.typeof(e.target.parentElement) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           "HAX-STORE" === e.target.parentElement.tagName
         ) {
           (0, _polymerDom.dom)(e.target.parentElement).removeChild(e.target);
@@ -961,7 +1062,10 @@ define([
         this.push("staxList", e.detail);
         window.HaxStore.write("staxList", this.staxList, this);
         if (
-          babelHelpers.typeof(e.target.parentElement) !== "undefined" &&
+          babelHelpers.typeof(e.target.parentElement) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           "HAX-STORE" === e.target.parentElement.tagName
         ) {
           (0, _polymerDom.dom)(e.target.parentElement).removeChild(e.target);
@@ -974,7 +1078,10 @@ define([
         this.push("bloxList", e.detail);
         window.HaxStore.write("bloxList", this.bloxList, this);
         if (
-          babelHelpers.typeof(e.target.parentElement) !== "undefined" &&
+          babelHelpers.typeof(e.target.parentElement) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           "HAX-STORE" === e.target.parentElement.tagName
         ) {
           (0, _polymerDom.dom)(e.target.parentElement).removeChild(e.target);
@@ -984,7 +1091,10 @@ define([
     _haxStoreRegisterProperties: function _haxStoreRegisterProperties(e) {
       if (e.detail && e.detail.properties && e.detail.tag) {
         if (
-          babelHelpers.typeof(this.elementList[e.detail.tag]) === "undefined"
+          babelHelpers.typeof(this.elementList[e.detail.tag]) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
         ) {
           var gizmo = e.detail.properties.gizmo;
           if (gizmo) {
@@ -993,7 +1103,10 @@ define([
             gizmos.push(gizmo);
             window.HaxStore.write("gizmoList", gizmos, this);
             if (
-              babelHelpers.typeof(e.target.parentElement) !== "undefined" &&
+              babelHelpers.typeof(e.target.parentElement) !==
+                ("undefined" === typeof void 0
+                  ? "undefined"
+                  : babelHelpers.typeof(void 0)) &&
               "HAX-AUTOLOADER" === e.target.parentElement.tagName
             ) {
               (0, _polymerDom.dom)(this.haxAutoloader).removeChild(e.target);
@@ -1034,7 +1147,10 @@ define([
     fragment.innerHTML = html;
     for (var children = fragment.childNodes, i = 0; i < children.length; i++) {
       if (
-        babelHelpers.typeof(children[i].tagName) !== "undefined" &&
+        babelHelpers.typeof(children[i].tagName) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         validTags.includes(children[i].tagName.toLowerCase())
       ) {
         elements.push(window.HaxStore.nodeToHaxElement(children[i], null));
@@ -1048,19 +1164,39 @@ define([
           ? arguments[1]
           : "insert-element",
       props = {};
-    if (babelHelpers.typeof(node.style) !== "undefined") {
+    if (
+      babelHelpers.typeof(node.style) !==
+      ("undefined" === typeof void 0
+        ? "undefined"
+        : babelHelpers.typeof(void 0))
+    ) {
       props.style = node.getAttribute("style");
     }
     if (null === props.style || "null" === props.style) {
       delete props.style;
     }
-    if (babelHelpers.typeof(node.attributes.class) !== "undefined") {
+    if (
+      babelHelpers.typeof(node.attributes.class) !==
+      ("undefined" === typeof void 0
+        ? "undefined"
+        : babelHelpers.typeof(void 0))
+    ) {
       props.class = node.attributes.class.nodeValue.replace("hax-active", "");
     }
-    if (babelHelpers.typeof(node.attributes.id) !== "undefined") {
+    if (
+      babelHelpers.typeof(node.attributes.id) !==
+      ("undefined" === typeof void 0
+        ? "undefined"
+        : babelHelpers.typeof(void 0))
+    ) {
       props.id = node.getAttribute("id");
     }
-    if (babelHelpers.typeof(node.properties) !== "undefined") {
+    if (
+      babelHelpers.typeof(node.properties) !==
+      ("undefined" === typeof void 0
+        ? "undefined"
+        : babelHelpers.typeof(void 0))
+    ) {
       for (var property in node.properties) {
         if (
           "class" != property &&
@@ -1078,7 +1214,9 @@ define([
       for (var attribute in node.attributes) {
         if (
           babelHelpers.typeof(node.attributes[attribute].name) !==
-            "undefined" &&
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           "class" != node.attributes[attribute].name &&
           "style" != node.attributes[attribute].name &&
           "id" != node.attributes[attribute].name &&
@@ -1092,13 +1230,16 @@ define([
         ) {
           props[window.HaxStore.dashToCamel(node.attributes[attribute].name)] =
             node.attributes[attribute].value;
+        } else {
         }
       }
     } else {
       for (var attribute in node.attributes) {
         if (
           babelHelpers.typeof(node.attributes[attribute].name) !==
-            "undefined" &&
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           "class" != node.attributes[attribute].name &&
           "style" != node.attributes[attribute].name &&
           "id" != node.attributes[attribute].name &&
@@ -1169,7 +1310,10 @@ define([
     }
     var prototype = Object.getPrototypeOf(node);
     if (
-      babelHelpers.typeof(prototype.preProcessHaxNodeToContent) !== "undefined"
+      babelHelpers.typeof(prototype.preProcessHaxNodeToContent) !==
+      ("undefined" === typeof void 0
+        ? "undefined"
+        : babelHelpers.typeof(void 0))
     ) {
       var clone = node.cloneNode();
       node = prototype.preProcessHaxNodeToContent(clone);
@@ -1202,7 +1346,8 @@ define([
       } else if (null != value && "null" != value) {
         if (!0 === value || "true" === value) {
           propvals[nodeName] = !0;
-        } else if (!(!1 === value)) {
+        } else if (!1 === value) {
+        } else {
           if ("string" === typeof value && "" !== value) {
             value = value.replace(/"/g, "&quot;");
             propvals[nodeName] = value;
@@ -1217,11 +1362,21 @@ define([
         }
       }
     }
-    if (babelHelpers.typeof(node.properties) !== "undefined") {
+    if (
+      babelHelpers.typeof(node.properties) !==
+      ("undefined" === typeof void 0
+        ? "undefined"
+        : babelHelpers.typeof(void 0))
+    ) {
       for (var j in node.properties) {
         var nodeName = window.HaxStore.camelToDash(j),
           value = null;
-        if (babelHelpers.typeof(node[j]) !== "undefined") {
+        if (
+          babelHelpers.typeof(node[j]) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           value = node[j];
         }
         if (
@@ -1240,7 +1395,8 @@ define([
           } else if (null != value && "null" != value) {
             if (!0 === value || "true" === value) {
               propvals[nodeName] = !0;
-            } else if (!(!1 === value)) {
+            } else if (!1 === value) {
+            } else {
               if ("string" === typeof value && "" !== value) {
                 value = value.replace(/"/g, "&quot;");
                 propvals[nodeName] = value;
@@ -1258,8 +1414,14 @@ define([
       }
     }
     if (
-      babelHelpers.typeof(props) !== "undefined" &&
-      babelHelpers.typeof(props.saveOptions.unsetAttributes) !== "undefined"
+      babelHelpers.typeof(props) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0)) &&
+      babelHelpers.typeof(props.saveOptions.unsetAttributes) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
     ) {
       for (var i in props.saveOptions.unsetAttributes) {
         delete propvals[props.saveOptions.unsetAttributes[i]];
@@ -1267,12 +1429,20 @@ define([
     }
     var delProps = ["inner-text", "tabindex", "guestinstance"];
     for (var delProp in delProps) {
-      if (babelHelpers.typeof(propvals[delProps[delProp]]) !== "undefined") {
+      if (
+        babelHelpers.typeof(propvals[delProps[delProp]]) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         delete propvals[delProps[delProp]];
       }
     }
     if (
-      babelHelpers.typeof(propvals.id) !== "undefined" &&
+      babelHelpers.typeof(propvals.id) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0)) &&
       "" === propvals.id
     ) {
       delete propvals.id;
@@ -1284,37 +1454,44 @@ define([
         content += " " + i + '="' + propvals[i] + '"';
       }
     }
-    if (
-      [
-        "area",
-        "base",
-        "br",
-        "col",
-        "embed",
-        "hr",
-        "img",
-        "input",
-        "keygen",
-        "link",
-        "meta",
-        "param",
-        "source",
-        "track",
-        "wbr"
-      ].includes(tag)
-    ) {
+    var voidTags = [
+      "area",
+      "base",
+      "br",
+      "col",
+      "embed",
+      "hr",
+      "img",
+      "input",
+      "keygen",
+      "link",
+      "meta",
+      "param",
+      "source",
+      "track",
+      "wbr"
+    ];
+    if (voidTags.includes(tag)) {
       content += "/>";
     } else {
       content += ">";
     }
     if (
-      babelHelpers.typeof(props) === "undefined" ||
+      babelHelpers.typeof(props) ===
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0)) ||
       !props.saveOptions.wipeSlot
     ) {
       var slotnodes = (0, _polymerDom.dom)(node).getEffectiveChildNodes();
       if (0 < slotnodes.length) {
         for (var j = 0, len2 = slotnodes.length; j < len2; j++) {
-          if (babelHelpers.typeof(slotnodes[j].tagName) !== "undefined") {
+          if (
+            babelHelpers.typeof(slotnodes[j].tagName) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
+          ) {
             if (
               !window.HaxStore.HTMLPrimativeTest(slotnodes[j].tagName) &&
               "TEMPLATE" !== slotnodes[j].tagName
@@ -1330,7 +1507,10 @@ define([
             content += "<!-- " + slotnodes[j].textContent + " -->";
           } else if (
             1 !== slotnodes[j].nodeType &&
-            babelHelpers.typeof(slotnodes[j].textContent) !== "undefined" &&
+            babelHelpers.typeof(slotnodes[j].textContent) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0)) &&
             "undefined" !== slotnodes[j].textContent
           ) {
             content += slotnodes[j].textContent;
@@ -1340,7 +1520,8 @@ define([
     }
     if ("span" === tag) {
       content += "</" + tag + ">";
-    } else if (!("hr" === tag || "br" === tag || "img" === tag)) {
+    } else if ("hr" === tag || "br" === tag || "img" === tag) {
+    } else {
       content += "</" + tag + ">" + "\n";
     }
     if (
@@ -1355,7 +1536,10 @@ define([
   };
   window.HaxStore.HTMLPrimativeTest = function(node) {
     if (
-      babelHelpers.typeof(node.tagName) !== "undefined" &&
+      babelHelpers.typeof(node.tagName) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0)) &&
       -1 == node.tagName.indexOf("-")
     ) {
       return !0;
@@ -1367,7 +1551,12 @@ define([
       slotnodes = (0, _polymerDom.dom)(node).children;
     if (0 < slotnodes.length) {
       for (var j = 0, len2 = slotnodes.length; j < len2; j++) {
-        if (babelHelpers.typeof(slotnodes[j].tagName) !== "undefined") {
+        if (
+          babelHelpers.typeof(slotnodes[j].tagName) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           if (0 < slotnodes[j].tagName.indexOf("-")) {
             content +=
               "  " + window.HaxStore.haxNodeToContent(slotnodes[j]) + "\n";
@@ -1378,7 +1567,10 @@ define([
           content += "<!-- " + slotnodes[j].textContent + " -->";
         } else if (
           1 !== slotnodes[j].nodeType &&
-          babelHelpers.typeof(slotnodes[j].textContent) !== "undefined" &&
+          babelHelpers.typeof(slotnodes[j].textContent) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           "undefined" !== slotnodes[j].textContent
         ) {
           content += slotnodes[j].textContent;
@@ -1391,7 +1583,12 @@ define([
     obj.fire("hax-store-write", { property: prop, value: value, owner: obj });
   };
   window.HaxStore.guessGizmoType = function(guess) {
-    if (babelHelpers.typeof(guess.source) !== "undefined") {
+    if (
+      babelHelpers.typeof(guess.source) !==
+      ("undefined" === typeof void 0
+        ? "undefined"
+        : babelHelpers.typeof(void 0))
+    ) {
       if (-1 != guess.source.indexOf(".mp3")) {
         return "audio";
       } else if (
@@ -1420,7 +1617,12 @@ define([
     var skipPropMatch =
         2 < arguments.length && arguments[2] !== void 0 ? arguments[2] : !1,
       matches = [];
-    if (babelHelpers.typeof(guess) !== "undefined") {
+    if (
+      babelHelpers.typeof(guess) !==
+      ("undefined" === typeof void 0
+        ? "undefined"
+        : babelHelpers.typeof(void 0))
+    ) {
       var store = window.HaxStore.instance;
       if (store.validGizmoTypes.includes(guess)) {
         for (var gizmoposition in store.gizmoList) {
@@ -1435,7 +1637,12 @@ define([
             if (guess === gizmo.handles[i].type || ("*" === guess && !match)) {
               for (var property in gizmo.handles[i]) {
                 if ("type" !== property) {
-                  if (babelHelpers.typeof(values[property]) !== "undefined") {
+                  if (
+                    babelHelpers.typeof(values[property]) !==
+                    ("undefined" === typeof void 0
+                      ? "undefined"
+                      : babelHelpers.typeof(void 0))
+                  ) {
                     match = !0;
                     props[gizmo.handles[i][property]] = values[property];
                   }
@@ -1455,10 +1662,18 @@ define([
   };
   window.HaxStore.getHaxAppStoreTargets = function(type) {
     var targets = window.HaxStore.instance.appList.filter(function(app) {
-      if (babelHelpers.typeof(app.connection.operations.add) !== "undefined") {
+      if (
+        babelHelpers.typeof(app.connection.operations.add) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         var add = app.connection.operations.add;
         if (
-          babelHelpers.typeof(add.acceptsGizmoTypes) !== "undefined" &&
+          babelHelpers.typeof(add.acceptsGizmoTypes) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           add.acceptsGizmoTypes.includes(type)
         ) {
           return !0;
@@ -1491,7 +1706,9 @@ define([
       for (var i in (0, _polymerDom.dom)(element).childNodes) {
         if (
           babelHelpers.typeof((0, _polymerDom.dom)(element).childNodes[i]) !==
-            "undefined" &&
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           (0, _polymerDom.dom)(element).childNodes[i].slot === slot
         ) {
           (0, _polymerDom.dom)(element).removeChild(
@@ -1508,7 +1725,7 @@ define([
     html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
     html = html.replace(
       /<template[\s\S]*?>[\s\S]*?&lt;script[\s\S]*?&gt;[\s\S]*?&lt;\/script&gt;/gi,
-      function(match) {
+      function(match, contents, offset, input_string) {
         match = match.replace("&lt;script&gt;", "<script>");
         match = match.replace("&lt;/script&gt;", "</script>");
         match = match.replace("&lt;style&gt;", "<style>");

@@ -1,7 +1,7 @@
 /*************************************************************
  *
  *  MathJax/jax/output/HTML-CSS/fonts/Neo-Euler/Symbols/Regular/Main.js
- *  
+ *
  *  Copyright (c) 2013-2018 The MathJax Consortium
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,39 +17,44 @@
  *  limitations under the License.
  */
 
-MathJax.OutputJax['HTML-CSS'].FONTDATA.FONTS['NeoEulerMathJax_Symbols'] = {
-  directory: 'Symbols/Regular',
-  family: 'NeoEulerMathJax_Symbols',
-  testString: '\u00A0\u2320\u2321\u2329\u232A\u239B\u239C\u239D\u239E\u239F\u23A0\u23A1\u23A2\u23A3\u23A4',
-  0x20: [0,0,333,0,0],
-  0xA0: [0,0,333,0,0],
-  0x2320: [915,0,444,180,452],
-  0x2321: [925,0,444,-23,265],
-  0x2329: [737,237,388,107,330],
-  0x232A: [737,237,388,57,280],
-  0x239B: [1808,0,883,292,851],
-  0x239C: [620,0,875,292,403],
-  0x239D: [1808,0,883,292,851],
-  0x239E: [1808,0,873,22,581],
-  0x239F: [620,0,875,472,583],
-  0x23A0: [1808,0,873,22,581],
-  0x23A1: [1799,0,666,326,659],
-  0x23A2: [602,0,666,326,395],
-  0x23A3: [1800,-1,666,326,659],
-  0x23A4: [1799,0,666,7,340],
-  0x23A5: [602,0,666,271,340],
-  0x23A6: [1800,-1,666,7,340],
-  0x23A7: [909,0,889,395,718],
-  0x23A8: [1820,0,889,170,492],
-  0x23A9: [909,0,889,395,718],
-  0x23AA: [320,0,889,395,492],
-  0x23AB: [909,0,889,170,492],
-  0x23AC: [1820,0,889,395,718],
-  0x23AD: [909,0,889,170,492],
-  0x23AE: [381,0,444,181,265]
+MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS["NeoEulerMathJax_Symbols"] = {
+  directory: "Symbols/Regular",
+  family: "NeoEulerMathJax_Symbols",
+  testString:
+    "\u00A0\u2320\u2321\u2329\u232A\u239B\u239C\u239D\u239E\u239F\u23A0\u23A1\u23A2\u23A3\u23A4",
+  0x20: [0, 0, 333, 0, 0],
+  0xa0: [0, 0, 333, 0, 0],
+  0x2320: [915, 0, 444, 180, 452],
+  0x2321: [925, 0, 444, -23, 265],
+  0x2329: [737, 237, 388, 107, 330],
+  0x232a: [737, 237, 388, 57, 280],
+  0x239b: [1808, 0, 883, 292, 851],
+  0x239c: [620, 0, 875, 292, 403],
+  0x239d: [1808, 0, 883, 292, 851],
+  0x239e: [1808, 0, 873, 22, 581],
+  0x239f: [620, 0, 875, 472, 583],
+  0x23a0: [1808, 0, 873, 22, 581],
+  0x23a1: [1799, 0, 666, 326, 659],
+  0x23a2: [602, 0, 666, 326, 395],
+  0x23a3: [1800, -1, 666, 326, 659],
+  0x23a4: [1799, 0, 666, 7, 340],
+  0x23a5: [602, 0, 666, 271, 340],
+  0x23a6: [1800, -1, 666, 7, 340],
+  0x23a7: [909, 0, 889, 395, 718],
+  0x23a8: [1820, 0, 889, 170, 492],
+  0x23a9: [909, 0, 889, 395, 718],
+  0x23aa: [320, 0, 889, 395, 492],
+  0x23ab: [909, 0, 889, 170, 492],
+  0x23ac: [1820, 0, 889, 395, 718],
+  0x23ad: [909, 0, 889, 170, 492],
+  0x23ae: [381, 0, 444, 181, 265]
 };
 
 MathJax.Callback.Queue(
-  ["initFont",MathJax.OutputJax["HTML-CSS"],"NeoEulerMathJax_Symbols"],
-  ["loadComplete",MathJax.Ajax,MathJax.OutputJax["HTML-CSS"].fontDir+"/Symbols/Regular/Main.js"]
+  ["initFont", MathJax.OutputJax["HTML-CSS"], "NeoEulerMathJax_Symbols"],
+  [
+    "loadComplete",
+    MathJax.Ajax,
+    MathJax.OutputJax["HTML-CSS"].fontDir + "/Symbols/Regular/Main.js"
+  ]
 );

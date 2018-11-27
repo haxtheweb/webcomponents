@@ -151,7 +151,7 @@ Polymer({
         hotspot.classList.remove("focus");
       });
       hotspot.classList.add("hotspot");
-      hotspot.addEventListener("click", function() {
+      hotspot.addEventListener("click", function(e) {
         root.openHotspot(hotspot, hdata[i]);
       });
       hbutton.addEventListener("keyup", function(e) {

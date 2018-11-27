@@ -48,6 +48,9 @@ window.a11yMediaBehaviors.GeneralFunctions = {
       },
       b = (val, i, none) => {
         return max >= i ? a(Math.floor(val / i)) + ":" : none;
+      },
+      c = val => {
+        return 100 > val ? val + "0" : val;
       };
     return (
       b(val, 3600, "") + b(val % 3600, 60, "00:") + a(Math.round(val % 60))

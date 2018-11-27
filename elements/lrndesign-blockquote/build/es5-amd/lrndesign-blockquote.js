@@ -7,10 +7,19 @@ define([
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
   "./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js",
   "./node_modules/@polymer/paper-styles/shadow.js"
-], function(meta, _polymerLegacy, _resolveUrl) {
+], function(
+  meta,
+  _polymerLegacy,
+  _resolveUrl,
+  _materializecssStyles,
+  _HAXWiring,
+  _schemaBehaviors,
+  _a11yBehaviors,
+  _shadow
+) {
   "use strict";
   meta = babelHelpers.interopRequireWildcard(meta);
-  function _templateObject_cebf4610ecf311e8b4b3bfd8de8d351a() {
+  function _templateObject_253013c0f1e611e889c4cdb4a8317ee3() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style include="materializecss-styles"></style>\n    <style>\n      :host {\n        display: inline-block;\n        position: relative;\n        box-sizing: border-box;\n        --lrndesign-blockquote-color: #585858;\n        --lrndesign-blockquote-cite: #3a3a3a;\n        @apply --lrndesign-blockquote;\n      }\n      blockquote {\n        font-size: 19.2px;\n        font-style: italic;\n        margin: 4px 0;\n        padding: 24px 24px 24px 40px;\n        line-height: 1.5;\n        position: relative;\n        color: var(--lrndesign-blockquote-color);\n      }\n      blockquote.decorate:before {\n        display: block;\n        font-family: Georgia, serif;\n        content: "\\201C";\n        font-size: 80px;\n        position: absolute;\n        left: -20px;\n        top: -20px;\n      }\n      blockquote.outset {\n        margin: 4px -128px 4px -128px;\n      }\n      cite {\n        color: var(--lrndesign-blockquote-cite);\n        font-size: 12.8px;\n        display: block;\n        margin-top: 4px;\n        text-align: right;\n      }\n      :host([depth="1"]) blockquote { @apply --shadow-elevation-2dp; }\n      :host([depth="2"]) blockquote { @apply --shadow-elevation-3dp; }\n      :host([depth="3"]) blockquote { @apply --shadow-elevation-4dp; }\n      :host([depth="4"]) blockquote { @apply --shadow-elevation-6dp; }\n      :host([depth="5"]) blockquote { @apply --shadow-elevation-8dp; }\n\n\n      /* BEGIN HYPERCARDIFY, thanks @realdlnorman */\n      :host([hypercard]) ::slotted(*) {\n        -webkit-filter: grayscale(1) contrast(300%);\n        filter: grayscale(1) contrast(300%);\n        font-family: Chikarego, Helvetica, sans-serif;\n        transition: all .6s ease;\n      }\n      /* Disable grayscale on hover */\n      :host([hypercard]:hover) ::slotted(*) {\n        -webkit-filter: grayscale(0);\n        filter: none;\n      }\n    </style>\n    <blockquote class$="[[generateClass(decorate, outset, color, textColor)]]">\n      <slot></slot>\n      <cite class$="[[textColor]]">\n        [[citation]]\n      </cite>\n    </blockquote>\n'
@@ -19,14 +28,14 @@ define([
         '\n    <style include="materializecss-styles"></style>\n    <style>\n      :host {\n        display: inline-block;\n        position: relative;\n        box-sizing: border-box;\n        --lrndesign-blockquote-color: #585858;\n        --lrndesign-blockquote-cite: #3a3a3a;\n        @apply --lrndesign-blockquote;\n      }\n      blockquote {\n        font-size: 19.2px;\n        font-style: italic;\n        margin: 4px 0;\n        padding: 24px 24px 24px 40px;\n        line-height: 1.5;\n        position: relative;\n        color: var(--lrndesign-blockquote-color);\n      }\n      blockquote.decorate:before {\n        display: block;\n        font-family: Georgia, serif;\n        content: "\\\\201C";\n        font-size: 80px;\n        position: absolute;\n        left: -20px;\n        top: -20px;\n      }\n      blockquote.outset {\n        margin: 4px -128px 4px -128px;\n      }\n      cite {\n        color: var(--lrndesign-blockquote-cite);\n        font-size: 12.8px;\n        display: block;\n        margin-top: 4px;\n        text-align: right;\n      }\n      :host([depth="1"]) blockquote { @apply --shadow-elevation-2dp; }\n      :host([depth="2"]) blockquote { @apply --shadow-elevation-3dp; }\n      :host([depth="3"]) blockquote { @apply --shadow-elevation-4dp; }\n      :host([depth="4"]) blockquote { @apply --shadow-elevation-6dp; }\n      :host([depth="5"]) blockquote { @apply --shadow-elevation-8dp; }\n\n\n      /* BEGIN HYPERCARDIFY, thanks @realdlnorman */\n      :host([hypercard]) ::slotted(*) {\n        -webkit-filter: grayscale(1) contrast(300%);\n        filter: grayscale(1) contrast(300%);\n        font-family: Chikarego, Helvetica, sans-serif;\n        transition: all .6s ease;\n      }\n      /* Disable grayscale on hover */\n      :host([hypercard]:hover) ::slotted(*) {\n        -webkit-filter: grayscale(0);\n        filter: none;\n      }\n    </style>\n    <blockquote class\\$="[[generateClass(decorate, outset, color, textColor)]]">\n      <slot></slot>\n      <cite class\\$="[[textColor]]">\n        [[citation]]\n      </cite>\n    </blockquote>\n'
       ]
     );
-    _templateObject_cebf4610ecf311e8b4b3bfd8de8d351a = function() {
+    _templateObject_253013c0f1e611e889c4cdb4a8317ee3 = function _templateObject_253013c0f1e611e889c4cdb4a8317ee3() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_cebf4610ecf311e8b4b3bfd8de8d351a()
+      _templateObject_253013c0f1e611e889c4cdb4a8317ee3()
     ),
     is: "lrndesign-blockquote",
     behaviors: [
@@ -58,7 +67,7 @@ define([
         observer: "_applyChikarego"
       }
     },
-    _applyChikarego: function _applyChikarego(newValue) {
+    _applyChikarego: function _applyChikarego(newValue, oldValue) {
       if (!0 === newValue) {
         var style = document.createElement("style"),
           basePath = (0, _resolveUrl.pathFromUrl)(meta.url);
@@ -75,7 +84,7 @@ define([
       }
     },
     attached: function attached() {
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !0,
@@ -182,10 +191,17 @@ define([
           ],
           advanced: []
         }
-      });
+      };
+      this.setHaxProperties(props);
     },
-    _bgColorChanged: function _bgColorChanged(newValue) {
-      if (babelHelpers.typeof(newValue) !== "undefined" && null != newValue) {
+    _bgColorChanged: function _bgColorChanged(newValue, oldValue) {
+      if (
+        babelHelpers.typeof(newValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
+        null != newValue
+      ) {
         this.computeTextPropContrast("textColorCode", "colorCode");
       }
     },

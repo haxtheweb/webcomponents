@@ -17,41 +17,43 @@
  *  limitations under the License.
  *
  */
-MathJax.Localization.addTranslation("sco",null,{
+MathJax.Localization.addTranslation("sco", null, {
   menuTitle: "scots",
   version: "2.7.5",
   isLoaded: true,
   domains: {
-    "_": {
-        version: "2.7.5",
-        isLoaded: true,
-        strings: {
-          MathProcessingError: "Maths processin mistak",
-          MathError: "Maths mistak",
-          LoadFile: "Laidin %1",
-          Loading: "Laidin",
-          LoadFailed: "File failed tae laid: %1",
-          ProcessMath: "Processin maths: %1%%",
-          Processing: "Processin",
-          TypesetMath: "Typesettin maths: %1%%",
-          Typesetting: "Typesettin",
-          MathJaxNotSupported: "Yer brouser disna support MathJax"
-        }
+    _: {
+      version: "2.7.5",
+      isLoaded: true,
+      strings: {
+        MathProcessingError: "Maths processin mistak",
+        MathError: "Maths mistak",
+        LoadFile: "Laidin %1",
+        Loading: "Laidin",
+        LoadFailed: "File failed tae laid: %1",
+        ProcessMath: "Processin maths: %1%%",
+        Processing: "Processin",
+        TypesetMath: "Typesettin maths: %1%%",
+        Typesetting: "Typesettin",
+        MathJaxNotSupported: "Yer brouser disna support MathJax"
+      }
     },
-    "FontWarnings": {},
+    FontWarnings: {},
     "HTML-CSS": {},
-    "HelpDialog": {},
-    "MathML": {},
-    "MathMenu": {},
-    "TeX": {}
+    HelpDialog: {},
+    MathML: {},
+    MathMenu: {},
+    TeX: {}
   },
-  plural: function (n) {
-      if (n === 1) {return 1} // one
-      return 2; // other
-    },
-  number: function (n) {
-      return n;
-    }
+  plural: function(n) {
+    if (n === 1) {
+      return 1;
+    } // one
+    return 2; // other
+  },
+  number: function(n) {
+    return n;
+  }
 });
 
 MathJax.Ajax.loadComplete("[MathJax]/localization/sco/sco.js");

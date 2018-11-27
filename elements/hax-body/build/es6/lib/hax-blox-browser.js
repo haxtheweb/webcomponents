@@ -61,7 +61,7 @@ Polymer({
       this.set(e.detail.property, e.detail.value);
     }
   },
-  _bloxListChanged: function(newValue) {
+  _bloxListChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0) {
       this.set("__bloxList", newValue);
     }

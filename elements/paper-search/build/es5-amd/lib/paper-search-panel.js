@@ -2,7 +2,7 @@ define([
   "../node_modules/@polymer/polymer/polymer-legacy.js",
   "./paper-search-bar.js",
   "./paper-filter-dialog.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _paperSearchBar, _paperFilterDialog) {
   "use strict";
   (0, _polymerLegacy.Polymer)({
     is: "paper-search-panel",

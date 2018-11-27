@@ -1,7 +1,7 @@
 define([
   "../node_modules/@polymer/polymer/polymer-legacy.js",
   "./material-progress-behavior.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _materialProgressBehavior) {
   "use strict";
   var $_documentContainer = document.createElement("div");
   $_documentContainer.setAttribute("style", "display: none;");
@@ -17,7 +17,8 @@ define([
     _getWidthForBar: function _getWidthForBar(
       barValue,
       barValuesSum,
-      maxBarValue
+      maxBarValue,
+      barHeight
     ) {
       var scaleBase = this.scaleToSum ? barValuesSum : maxBarValue,
         width =

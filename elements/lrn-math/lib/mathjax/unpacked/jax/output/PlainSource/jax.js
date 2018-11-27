@@ -22,9 +22,7 @@
  *  limitations under the License.
  */
 
-
 (function(AJAX, HUB, HTML, PlainSource) {
-
   var EVENT, TOUCH, HOVER; // filled in later
 
   PlainSource.Augment({
@@ -53,8 +51,13 @@
 
     preTranslate: function(state) {
       var scripts = state.jax[this.id],
-          i, m = scripts.length,
-          script, prev, span, div, jax;
+        i,
+        m = scripts.length,
+        script,
+        prev,
+        span,
+        div,
+        jax;
       //
       //  Loop through the scripts
       //
@@ -65,7 +68,12 @@
         //  Remove any existing output
         //
         prev = script.previousSibling;
-        if (prev && String(prev.className).match(/^MathJax(_PlainSource)?(_Display)?( MathJax_Process(ing|ed))?$/)) {
+        if (
+          prev &&
+          String(prev.className).match(
+            /^MathJax(_PlainSource)?(_Display)?( MathJax_Process(ing|ed))?$/
+          )
+        ) {
           prev.parentNode.removeChild(prev);
         }
         //
@@ -74,24 +82,28 @@
         jax = script.MathJax.elementJax;
         if (!jax) continue;
         jax.PlainSource = {
-          display: (jax.root.Get("display") === "block")
-        }
-        span = div = HTML.Element("span", {
-          className: "MathJax_PlainSource",
-          id: jax.inputID + "-Frame",
-          isMathJax: true,
-          jaxID: this.id,
-          oncontextmenu: EVENT.Menu,
-          onmousedown: EVENT.Mousedown,
-          onmouseover: EVENT.Mouseover,
-          onmouseout: EVENT.Mouseout,
-          onmousemove: EVENT.Mousemove,
-          onclick: EVENT.Click,
-          ondblclick: EVENT.DblClick,
-          // Added for keyboard accessible menu.
-          onkeydown: EVENT.Keydown,
-          tabIndex: HUB.getTabOrder(jax)
-        },[["span"]]);
+          display: jax.root.Get("display") === "block"
+        };
+        span = div = HTML.Element(
+          "span",
+          {
+            className: "MathJax_PlainSource",
+            id: jax.inputID + "-Frame",
+            isMathJax: true,
+            jaxID: this.id,
+            oncontextmenu: EVENT.Menu,
+            onmousedown: EVENT.Mousedown,
+            onmouseover: EVENT.Mouseover,
+            onmouseout: EVENT.Mouseout,
+            onmousemove: EVENT.Mousemove,
+            onclick: EVENT.Click,
+            ondblclick: EVENT.DblClick,
+            // Added for keyboard accessible menu.
+            onkeydown: EVENT.Keydown,
+            tabIndex: HUB.getTabOrder(jax)
+          },
+          [["span"]]
+        );
         if (HUB.Browser.noContextMenu) {
           span.ontouchstart = TOUCH.start;
           span.ontouchend = TOUCH.end;
@@ -113,18 +125,21 @@
       //  Get the data about the math
       //
       var jax = script.MathJax.elementJax,
-          math = jax.root,
-          span = document.getElementById(jax.inputID + "-Frame");
+        math = jax.root,
+        span = document.getElementById(jax.inputID + "-Frame");
       //
       //  Typeset the math
       //
       this.initPlainSource(math, span);
       var source = jax.originalText;
       if (jax.inputJax === "MathML") {
-        if ((jax.root.data[0].data.length > 0) && (jax.root.data[0].data[0].type === "semantics")) {
+        if (
+          jax.root.data[0].data.length > 0 &&
+          jax.root.data[0].data[0].type === "semantics"
+        ) {
           var annotations = jax.root.data[0].data[0].data;
-          for (var a = 0; a < annotations.length; a++){
-            if (annotations[a].attr.encoding === "application/x-tex"){
+          for (var a = 0; a < annotations.length; a++) {
+            if (annotations[a].attr.encoding === "application/x-tex") {
               source = jax.root.data[0].data[0].data[a].data[0].data[0];
               break;
             }
@@ -135,25 +150,30 @@
         }
       }
       jax.PlainSource.source = source;
-      HTML.addText(span.firstChild,source);
+      HTML.addText(span.firstChild, source);
     },
 
     postTranslate: function(state) {},
 
     getJaxFromMath: function(math) {
-      if (math.parentNode.className.match(/MathJax_PlainSource_Display/)) math = math.parentNode;
-      do {math = math.nextSibling} while (math && math.nodeName.toLowerCase() !== "script");
+      if (math.parentNode.className.match(/MathJax_PlainSource_Display/))
+        math = math.parentNode;
+      do {
+        math = math.nextSibling;
+      } while (math && math.nodeName.toLowerCase() !== "script");
       return HUB.getJaxFor(math);
     },
-    
-    Zoom: function (jax,span,math,Mw,Mh) {
+
+    Zoom: function(jax, span, math, Mw, Mh) {
       var pad = Math.round(span.parentNode.offsetWidth / 2);
       span.style.whiteSpace = "pre";
-      HTML.addText(span,jax.PlainSource.source);
-      var mW = math.offsetWidth, mH = math.offsetHeight,
-          zW = span.offsetWidth, zH = span.offsetHeight;
-      var Y = -Math.round((zH+mH)/2) - (jax.PlainSource.display ? 0 : pad);
-      return {mW:mW, mH:mH, zW:zW, zH:zH, Y:Y};
+      HTML.addText(span, jax.PlainSource.source);
+      var mW = math.offsetWidth,
+        mH = math.offsetHeight,
+        zW = span.offsetWidth,
+        zH = span.offsetHeight;
+      var Y = -Math.round((zH + mH) / 2) - (jax.PlainSource.display ? 0 : pad);
+      return { mW: mW, mH: mH, zW: zW, zH: zH, Y: Y };
     },
 
     initPlainSource: function(math, span) {},
@@ -166,7 +186,6 @@
       }
       delete jax.PlainSource;
     }
-
   });
 
   MathJax.Hub.Register.StartupHook("mml Jax Ready", function() {
@@ -177,8 +196,7 @@
 
   MathJax.Hub.Register.StartupHook("End Cookie", function() {
     if (HUB.config.menuSettings.zoom !== "None") {
-      AJAX.Require("[MathJax]/extensions/MathZoom.js")
+      AJAX.Require("[MathJax]/extensions/MathZoom.js");
     }
   });
-
 })(MathJax.Ajax, MathJax.Hub, MathJax.HTML, MathJax.OutputJax.PlainSource);

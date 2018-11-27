@@ -99,7 +99,7 @@ Polymer({
   toggleDialog: function() {
     this.$.lrnsysdialog.openDialog();
   },
-  _detailsChanged: function() {
+  _detailsChanged: function(e) {
     this.$.details.innerHTML = this.details;
   },
   _dialogChanged: function(e) {

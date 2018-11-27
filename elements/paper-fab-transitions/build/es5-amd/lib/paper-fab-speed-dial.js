@@ -5,13 +5,20 @@ define([
   "../node_modules/@polymer/iron-dropdown/iron-dropdown.js",
   "../node_modules/@polymer/neon-animation/neon-animations.js",
   "./paper-square-grow-animation.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _ironFlexLayout,
+  _ironDropdown,
+  _neonAnimations,
+  _paperSquareGrowAnimation
+) {
   "use strict";
-  function _templateObject_0825b5d0ecf211e88958894c83ed35c1() {
+  function _templateObject_b6de0040f1e411e8b0e08d782bfa23f2() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <custom-style>\n    <style>\n      :host .vertical ::content .dropdown-content {\n        @apply --layout-vertical;\n      }\n      :host .horizontal ::content .dropdown-content {\n        @apply --layout-horizontal;\n      }\n      :host ::content .dropdown-content > * {\n        margin: 8px;\n        @apply --paper-fab-speed-dial-option;\n      }\n    </style>\n    </custom-style>\n    <slot id="fabContainer" name="dropdown-trigger"></slot>\n    <iron-dropdown id="dropdown" open-animation-config="[[openAnimationConfig]]" close-animation-config="[[closeAnimationConfig]]">\n      <slot id="contentContainer" name="dropdown-content"></slot>\n    </iron-dropdown>\n'
     ]);
-    _templateObject_0825b5d0ecf211e88958894c83ed35c1 = function() {
+    _templateObject_b6de0040f1e411e8b0e08d782bfa23f2 = function _templateObject_b6de0040f1e411e8b0e08d782bfa23f2() {
       return data;
     };
     return data;
@@ -19,7 +26,7 @@ define([
   (function(Polymer) {
     Polymer({
       _template: (0, _polymerLegacy.html)(
-        _templateObject_0825b5d0ecf211e88958894c83ed35c1()
+        _templateObject_b6de0040f1e411e8b0e08d782bfa23f2()
       ),
       is: "paper-fab-speed-dial",
       properties: {

@@ -12,10 +12,15 @@ define([
   _polymerLegacy,
   _polymerDom,
   _ironFlexLayoutClasses,
-  _appLocalizeBehavior
+  _appLocalizeBehavior,
+  _ecoJsonSchemaArray,
+  _ecoJsonSchemaBoolean,
+  _ecoJsonSchemaEnum,
+  _ecoJsonSchemaFile,
+  _ecoJsonSchemaInput
 ) {
   "use strict";
-  function _templateObject_d62df650ecf111e88a0b4725ebfbecff() {
+  function _templateObject_8ea6be50f1e411e8bd8eaf7090426072() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n  <custom-style>\n    <style is="custom-style" include="iron-flex iron-flex-alignment">\n      div.layout {\n        height: auto;\n      }\n      #form {\n        display: block;\n        @apply --eco-json-schema-object-form;\n        @apply --layout-vertical;\n        @apply --layout-wrap;\n      }\n      #form ::slotted(paper-input) {\n        --paper-input-container-shared-input-style: {\n          border: none !important;\n          width: 100% !important;\n          background-color: transparent !important;\n        };\n      }\n    </style>\n  </custom-style>\n\n    <template is="dom-if" if="{{!wizard}}">\n      <div class="header" hidden$="[[!label]]">[[label]]</div>\n    </template>\n    <div class="layout vertical flex start-justified">\n      <div id="form" class="layout horizontal flex start-justified"><slot></slot></div>\n    </div>  \n'
@@ -24,7 +29,7 @@ define([
         '\n  <custom-style>\n    <style is="custom-style" include="iron-flex iron-flex-alignment">\n      div.layout {\n        height: auto;\n      }\n      #form {\n        display: block;\n        @apply --eco-json-schema-object-form;\n        @apply --layout-vertical;\n        @apply --layout-wrap;\n      }\n      #form ::slotted(paper-input) {\n        --paper-input-container-shared-input-style: {\n          border: none !important;\n          width: 100% !important;\n          background-color: transparent !important;\n        };\n      }\n    </style>\n  </custom-style>\n\n    <template is="dom-if" if="{{!wizard}}">\n      <div class="header" hidden\\$="[[!label]]">[[label]]</div>\n    </template>\n    <div class="layout vertical flex start-justified">\n      <div id="form" class="layout horizontal flex start-justified"><slot></slot></div>\n    </div>  \n'
       ]
     );
-    _templateObject_d62df650ecf111e88a0b4725ebfbecff = function() {
+    _templateObject_8ea6be50f1e411e8bd8eaf7090426072 = function _templateObject_8ea6be50f1e411e8bd8eaf7090426072() {
       return data;
     };
     return data;
@@ -32,7 +37,7 @@ define([
   (0, _polymerLegacy.Polymer)({
     is: "eco-json-schema-object",
     _template: (0, _polymerLegacy.html)(
-      _templateObject_d62df650ecf111e88a0b4725ebfbecff()
+      _templateObject_8ea6be50f1e411e8bd8eaf7090426072()
     ),
     behaviors: [_appLocalizeBehavior.AppLocalizeBehavior],
     properties: {
@@ -77,42 +82,72 @@ define([
           if (ctx._isSchemaEnum(schema)) {
             property.component.name =
               property.component.name || "eco-json-schema-enum";
-            if (babelHelpers.typeof(schema.value) === "undefined") {
+            if (
+              babelHelpers.typeof(schema.value) ===
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
+            ) {
               schema.value = "";
             }
             property.value = schema.value;
           } else if (ctx._isSchemaBoolean(schema.type)) {
             property.component.name =
               property.component.name || "eco-json-schema-boolean";
-            if (babelHelpers.typeof(schema.value) === "undefined") {
+            if (
+              babelHelpers.typeof(schema.value) ===
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
+            ) {
               schema.value = !1;
             }
             property.value = schema.value;
           } else if (ctx._isSchemaFile(schema.type)) {
             property.component.name =
               property.component.name || "eco-json-schema-file";
-            if (babelHelpers.typeof(schema.value) === "undefined") {
+            if (
+              babelHelpers.typeof(schema.value) ===
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
+            ) {
               schema.value = {};
             }
             property.value = schema.value;
           } else if (ctx._isSchemaValue(schema.type)) {
             property.component.name =
               property.component.name || "eco-json-schema-input";
-            if (babelHelpers.typeof(schema.value) === "undefined") {
+            if (
+              babelHelpers.typeof(schema.value) ===
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
+            ) {
               schema.value = "";
             }
             property.value = schema.value;
           } else if (ctx._isSchemaObject(schema.type)) {
             property.component.name =
               property.component.name || "eco-json-schema-object";
-            if (babelHelpers.typeof(schema.value) === "undefined") {
+            if (
+              babelHelpers.typeof(schema.value) ===
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
+            ) {
               schema.value = {};
             }
             property.value = schema.value;
           } else if (ctx._isSchemaArray(schema.type)) {
             property.component.name =
               property.component.name || "eco-json-schema-array";
-            if (babelHelpers.typeof(schema.value) === "undefined") {
+            if (
+              babelHelpers.typeof(schema.value) ===
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
+            ) {
               schema.value = [];
             }
             property.value = schema.value;
@@ -187,7 +222,12 @@ define([
       var ctx = this,
         value = {};
       this._schemaProperties.forEach(function(property) {
-        if (babelHelpers.typeof(property.value) !== "undefined") {
+        if (
+          babelHelpers.typeof(property.value) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           value[property.property] = ctx._deepClone(property.value);
         }
       });
@@ -224,7 +264,12 @@ define([
             .toLowerCase() + "-changed",
           "_schemaPropertyChanged"
         );
-        if (babelHelpers.typeof(ctx.$) !== "undefined") {
+        if (
+          babelHelpers.typeof(ctx.$) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           (0, _polymerDom.dom)(_this).appendChild(el);
         }
         if ("" != property.component.slot) {
@@ -235,7 +280,12 @@ define([
       });
     },
     _removePropertyEl: function _removePropertyEl(el) {
-      if (babelHelpers.typeof(el.schemaProperty) !== "undefined") {
+      if (
+        babelHelpers.typeof(el.schemaProperty) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         this.unlisten(
           el,
           el.schemaProperty.component.valueProperty
@@ -248,7 +298,12 @@ define([
       (0, _polymerDom.dom)(this).removeChild(el);
     },
     _clearForm: function _clearForm() {
-      if (babelHelpers.typeof(this.$) !== "undefined") {
+      if (
+        babelHelpers.typeof(this.$) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         var formEl = (0, _polymerDom.dom)(this);
         while (formEl.firstChild) {
           this._removePropertyEl(formEl.firstChild);
@@ -256,7 +311,13 @@ define([
       }
     },
     _schemaChanged: function _schemaChanged(newValue, oldValue) {
-      if (newValue && babelHelpers.typeof(oldValue) !== "undefined") {
+      if (
+        newValue &&
+        babelHelpers.typeof(oldValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+      ) {
         this._clearForm();
         this._buildSchemaProperties();
         this._buildForm();

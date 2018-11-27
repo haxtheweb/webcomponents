@@ -4,11 +4,11 @@
 /*************************************************************
  *
  *  MathJax/jax/output/HTML-CSS/fonts/STIX/fontdata-extra.js
- *  
+ *
  *  Adds extra stretchy characters to the STIX data.
  *
  *  ---------------------------------------------------------------------
- *  
+ *
  *  Copyright (c) 2011-2018 The MathJax Consortium
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,398 +24,758 @@
  *  limitations under the License.
  */
 
-(function (HTMLCSS) {
+(function(HTMLCSS) {
   var VERSION = "2.7.5";
-  
+
   var DELIMITERS = HTMLCSS.FONTDATA.DELIMITERS;
 
   var GENERAL = "STIXGeneral",
-      BOLD    = "STIXGeneral-bold",
-      VARIANT = "STIXVariants",
-      NONUNI  = "STIXNonUnicode",
-      SIZE1   = "STIXSizeOneSym",
-      SIZE2   = "STIXSizeTwoSym",
-      SIZE3   = "STIXSizeThreeSym",
-      SIZE4   = "STIXSizeFourSym",
-      SIZE5   = "STIXSizeFiveSym",
-      INTD    = "STIXIntegralsD";
-  var H = "H", V = "V";
-  
-  var delim = {
-    0x003D: // equal sign
-    {
-      dir: H, HW: [[.685,GENERAL]], stretch: {rep:[0x003D,GENERAL]}
-    },
-    0x219E: // left two-headed arrow
-    {
-      dir: H, HW: [[.926,GENERAL]], stretch: {left:[0x219E,GENERAL], rep:[0x2212,GENERAL]}
-    },
-    0x21A0: // right two-headed arrow
-    {
-      dir: H, HW: [[.926,GENERAL]], stretch: {right:[0x21A0,GENERAL], rep:[0x2212,GENERAL]}
-    },
-    0x21A4: // left arrow from bar
-    {
-      dir: H, HW: [[.926,GENERAL]],
-      stretch: {left:[0x2190,VARIANT], rep:[0x2212,GENERAL], right:[0x22A3,BOLD,0,.1,.6]}
-    },
-    0x21A5: // up arrow from bar
-    {
-      dir: V, HW: [[.816,GENERAL]],
-      stretch: {bot:[0x5F,GENERAL,.05,-.01,.8], ext:[0x23D0,GENERAL], top:[0x2191,GENERAL]}
-    },
-    0x21A6: // right arrow from bar
-    {
-      dir: H, HW: [[1,GENERAL]],
-      stretch: {left:[0xE0B6,NONUNI], rep:[0x2212,GENERAL], right:[0x2192,GENERAL]}
-    },
-    0x21A7: // down arrow from bar
-    {
-      dir: V, HW: [[.816,GENERAL]],
-      stretch: {top:[0x22A4,BOLD,0.04,0,.6], ext:[0x23D0,GENERAL], bot:[0x2193,GENERAL]}
-    },
-    0x21B0: // up arrow with top leftwards
-    {
-      dir: V, HW: [[.818,GENERAL]], stretch: {top:[0x21B0,GENERAL], ext:[0x23D0,GENERAL,.152]}
-    },
-    0x21B1: // up arrow with top right
-    {
-      dir: V, HW: [[.818,GENERAL]], stretch: {top:[0x21B1,GENERAL], ext:[0x23D0,GENERAL,-.195]}
-    },
-    0x21BC: // left harpoon with barb up
-    {
-      dir: H, HW: [[.955,GENERAL]], stretch: {left:[0x21BC,GENERAL], rep:[0x2212,GENERAL]}
-    },
-    0x21BD: // left harpoon with barb down
-    {
-      dir: H, HW: [[.955,GENERAL]], stretch: {left:[0x21BD,GENERAL], rep:[0x2212,GENERAL]}
-    },
-    0x21BE: // up harpoon with barb right
-    {
-      dir: V, HW: [[.818,GENERAL]], stretch: {top:[0x21BE,GENERAL], ext:[0x23D0,GENERAL]}
-    },
-    0x21BF: // up harpoon with barb left
-    {
-      dir: V, HW: [[.818,GENERAL]], stretch: {top:[0x21BF,GENERAL], ext:[0x23D0,GENERAL]}
-    },
-    0x21C0: // right harpoon with barb up
-    {
-      dir: H, HW: [[.955,GENERAL]], stretch: {right:[0x21C0,GENERAL], rep:[0x2212,GENERAL]}
-    },
-    0x21C1: // right harpoon with barb down
-    {
-      dir: H, HW: [[.955,GENERAL]], stretch: {right:[0x21C1,GENERAL], rep:[0x2212,GENERAL]}
-    },
-    0x21C2: // down harpoon with barb right
-    {
-      dir: V, HW: [[.818,GENERAL]], stretch: {bot:[0x21C2,GENERAL], ext:[0x23D0,GENERAL]}
-    },
-    0x21C3: // down harpoon with barb left
-    {
-      dir: V, HW: [[.818,GENERAL]], stretch: {bot:[0x21C3,GENERAL], ext:[0x23D0,GENERAL]}
-    },
-    0x21DA: // left triple arrow
-    {
-      dir: H, HW: [[.926,GENERAL]], stretch: {left:[0x21DA,GENERAL], rep:[0x2261,GENERAL]}
-    },
-    0x21DB: // right triple arrow
-    {
-      dir: H, HW: [[.926,GENERAL]], stretch: {right:[0x21DB,GENERAL], rep:[0x2261,GENERAL]}
-    },
-    0x222B: // integral
-    {
-      dir: V, HW: [[0.607,GENERAL], [0.979,INTD]],
-      stretch: {top:[0x2320,SIZE1], ext:[0x23AE,SIZE1], bot:[0x2321,SIZE1]}
-    },
-    0x23B4: // top square bracket
-    {
-      dir: H, HW: [[.926,GENERAL],[1.063,SIZE1],[1.606,SIZE2],[2.147,SIZE3],[2.692,SIZE4],[3.237,SIZE5]],
-      stretch: {left:[0x2310,GENERAL], rep:[0x2212,GENERAL,0,.12], right:[0xAC,GENERAL]}
-    },
-    0x23B5: // bottom square bracket
-    {
-      dir: H, HW: [[.926,GENERAL],[1.063,SIZE1],[1.606,SIZE2],[2.147,SIZE3],[2.692,SIZE4],[3.237,SIZE5]],
-      stretch: {left:[0x2A3D,GENERAL,0,.12], rep:[0x2212,GENERAL,0,0,0,.12], right:[0x2A3C,GENERAL,0,.12]}
-    },
-    0x23DC: // top paren
-    {
-      dir: H, HW: [[.926,SIZE1],[1,GENERAL],[1.460,SIZE2],[1.886,SIZE3],[2.328,SIZE4],[3.237,SIZE5]],
-      stretch: {left:[0xE13B,NONUNI], right:[0xE13C,NONUNI], rep:[0xE14A,NONUNI]}
-    },
-    0x23DD: // bottom paren
-    {
-      dir: H, HW: [[.926,SIZE1],[1,GENERAL],[1.460,SIZE2],[1.886,SIZE3],[2.328,SIZE4],[3.237,SIZE5]],
-      stretch: {left:[0xE13D,NONUNI], right:[0xE13E,NONUNI], rep:[0xE14B,NONUNI]}
-    },
-    0x23E0: // top tortoise shell
-    {
-      dir: H, HW: [[1,GENERAL],[1.460,SIZE1],[1.886,SIZE2],[2.312,SIZE3],[2.738,SIZE4],[3.164,SIZE5]],
-      stretch: {left:[0xE10D,NONUNI,-.1,-.1], rep:[0x2212,GENERAL,0,.05], right:[0xE10C,NONUNI,0,-.1], fullExtenders:true}
-    },
-    0x23E1: // bottom tortoise shell
-    {
-      dir: H, HW: [[1,GENERAL],[1.460,SIZE1],[1.886,SIZE2],[2.312,SIZE3],[2.738,SIZE4],[3.164,SIZE5]],
-      stretch: {left:[0xE10C,NONUNI,-.1,.1], rep:[0x2212,GENERAL,0,-.1,0,.1], right:[0xE10D,NONUNI,0,.1], fullExtenders:true}
-    },
-    0x2906: // leftwards double arrow from bar
-    {
-      dir: H, HW: [[.926,GENERAL]],
-      stretch: {left:[0x21D0,GENERAL], rep:[0x3D,GENERAL], right:[0x2AE4,GENERAL,0,-.09]}
-    },
-    0x2907: // rightwards double arrow from bar
-    {
-      dir: H, HW: [[.926,GENERAL]],
-      stretch: {left:[0x22A8,GENERAL,0,-.09], rep:[0x3D,GENERAL], right:[0x21D2,GENERAL]}
-    },
-    0x294E: // left barb up right barb up harpoon
-    {
-      dir: H, HW: [],
-      stretch: {left:[0x21BC,GENERAL], rep:[0x2212,GENERAL], right:[0x21C0,GENERAL]}
-    },
-    0x294F: // up barb right down barb right harpoon
-    {
-      dir: V, HW: [[.818,GENERAL]],
-      stretch: {top:[0x21BE,GENERAL], ext:[0x23D0,GENERAL], bot:[0x21C2,GENERAL]}
-    },
-    0x2950: // left barb dow right barb down harpoon
-    {
-      dir: H, HW: [[.926,GENERAL]],
-      stretch: {left:[0x21BD,GENERAL], rep:[0x2212,GENERAL], right:[0x21C1,GENERAL]}
-    },
-    0x2951: // up barb left down barb left harpoon
-    {
-      dir: V, HW: [[.818,GENERAL]],
-      stretch: {top:[0x21BF,GENERAL], ext:[0x23D0,GENERAL], bot:[0x21C3,GENERAL]}
-    },
-    0x295A: // leftwards harpoon with barb up from bar
-    {
-      dir: H, HW: [[.926,GENERAL]],
-      stretch: {left:[0x21BC,GENERAL], rep:[0x2212,GENERAL], right:[0x22A3,BOLD,0,.1,.6]}
-    },
-    0x295B: // rightwards harpoon with barb up from bar
-    {
-      dir: H, HW: [[.926,GENERAL]],
-      stretch: {left:[0xE0B6,NONUNI], rep:[0x2212,GENERAL], right:[0x21C0,GENERAL]}
-    },
-    0x295C: // up harpoon with barb right from bar
-    {
-      dir: V, HW: [[.818,GENERAL]],
-      stretch: {bot:[0x5F,GENERAL,.05,-.01,.8], ext:[0x23D0,GENERAL], top:[0x21BE,GENERAL]}
-    },
-    0x295D: // down harpoon with barb right from bar
-    {
-      dir: V, HW: [[.818,GENERAL]],
-      stretch: {top:[0x22A4,BOLD,0.04,0,.6], ext:[0x23D0,GENERAL], bot:[0x21C2,GENERAL]}
-    },
-    0x295E: // leftwards harpoon with barb down from bar
-    {
-      dir: H, HW: [[.926,GENERAL]],
-      stretch: {left:[0x21BD,GENERAL], rep:[0x2212,GENERAL], right:[0x22A3,BOLD,0,.1,.6]}
-    },
-    0x295F: // rightwards harpoon with barb down from bar
-    {
-      dir: H, HW: [[.926,GENERAL]],
-      stretch: {left:[0xE0B6,NONUNI], rep:[0x2212,GENERAL], right:[0x21C1,GENERAL]}
-    },
-    0x2960: // up harpoon with barb left from bar
-    {
-      dir: V, HW: [[.818,GENERAL]],
-      stretch: {bot:[0x5F,GENERAL,.05,-.01,.8], ext:[0x23D0,GENERAL], top:[0x21BF,GENERAL]}
-    },
-    0x2961: // down harpoon with barb left from bar
-    {
-      dir: V, HW: [[.818,GENERAL]],
-      stretch: {top:[0x22A4,BOLD,0.04,0,.6], ext:[0x23D0,GENERAL], bot:[0x21C3,GENERAL]}
-    },
-    
-    0x02C7: // caron
-    {
-      dir: H, HW: [[.333,GENERAL],[.56,SIZE1],[.979,SIZE2],[1.458,SIZE3],[1.886,SIZE4],[2.328,SIZE5]]
-    },
-    0x02CD: // low macron
-    {
-      dir: H, HW: [[.334,GENERAL]], stretch: {rep:[0x2CD,GENERAL]}
-    },
-    0x02F7: // low tilde
-    {
-      dir: H, HW: [[.558,SIZE1],[.977,SIZE2],[1.458,SIZE3],[1.886,SIZE4],[2.328,SIZE5]]
-    },
-    0x219F: // upwards two headed arrow
-    {
-      dir: V, HW: [[.816,GENERAL]], stretch: {ext:[0x23D0,GENERAL], top:[0x219F,GENERAL]}
-    },
-    0x21A1: // downwards two headed arrow
-    {
-      dir: V, HW: [[.816,GENERAL]], stretch: {ext:[0x23D0,GENERAL], bot:[0x21A1,GENERAL]}
-    },
-    0x21A8: // up down arrow with base
-    {
-      dir: V, HW: [[.816,GENERAL]],
-      stretch: {top:[0x2191,GENERAL], ext:[0x23D0,GENERAL], bot:[0x2913,GENERAL]}
-    },
-    0x21A9: // left hook arrow
-    {
-      dir: H, HW: [[.926,GENERAL]],
-      stretch: {left:[0x2190,GENERAL], rep:[0x2212,GENERAL], right:[0xE0B5,NONUNI]}
-    },
-    0x21AA: // right hook arrow
-    {
-      dir: H, HW: [[.926,GENERAL]],
-      stretch: {left:[0xE0B4,NONUNI], rep:[0x2212,GENERAL], right:[0x2192,GENERAL]}
-    },
-    0x21B2: // down arrow with tip left
-    {
-      dir: V, HW: [[.818,GENERAL]], stretch: {bot:[0x21B2,GENERAL], ext:[0x23D0,GENERAL,.152]}
-    },
-    0x21B3: // down arrow with tip right
-    {
-      dir: V, HW: [[.818,GENERAL]], stretch: {bot:[0x21B3,GENERAL], ext:[0x23D0,GENERAL,-.195]}
-    },
-    0x21B4: // right arrow with corner down
-    {
-      dir: H, HW: [[.926,GENERAL]], stretch: {rep:[0x2212,GENERAL,0,.4], right:[0x21B4,GENERAL]}
-    },
-    0x21B5: // down arrow with corner left
-    {
-      dir: V, HW: [[.818,GENERAL]], stretch: {bot:[0x21B5,GENERAL], ext:[0x23D0,GENERAL,.57]}
-    },
-    0x21CB: // left harpoon over right harpoon
-    {
-      dir: H, HW: [[.926,GENERAL]],
-      stretch: {left:[0x296A,GENERAL], rep:[0x3D,GENERAL], right:[0x296D,GENERAL]}
-    },
-    0x21CC: // right harpoon over left harpoon
-    {
-      dir: H, HW: [[.926,GENERAL]],
-      stretch: {left:[0x296B,GENERAL], rep:[0x3D,GENERAL], right:[0x296C,GENERAL]}
-    },
-    0x21E0: // left dashed arrow
-    {
-      dir: H, HW: [[.926,GENERAL]],
-      stretch: {left:[0x21E0,GENERAL], rep:[0xE121,NONUNI,0,0,0,0,.1], fullExtenders:true}
-    },
-    0x21E1: // up dashed arrow
-    {
-      dir: V, HW: [[.818,GENERAL]],
-      stretch: {ext:[0xE12D,NONUNI], top:[0x21E1,GENERAL], fullExtenders: true}
-    },
-    0x21E2: // right dashed arrow
-    {
-      dir: H, HW: [[.926,GENERAL]],
-      stretch: {right:[0x21E2,VARIANT], rep:[0xE12E,NONUNI,0,0,0,0,.1], fullExtenders:true}
-    },
-    0x21E3: // down dashed arrow
-    {
-      dir: V, HW: [[.818,GENERAL]],
-      stretch: {ext:[0xE12C,NONUNI], bot:[0x21E3,GENERAL], fullExtenders: true}
-    },
-    0x21E4: // left arrow to bar
-    {
-      dir: H, HW: [[.926,GENERAL]], stretch: {left:[0x21E4,GENERAL], rep:[0x2212,GENERAL]}
-    },
-    0x21E5: // right arrow to bar
-    {
-      dir: H, HW: [[.926,GENERAL]], stretch: {right:[0x21E5,GENERAL], rep:[0x2212,GENERAL]}
-    },
-    0x21FD: // left open-headed arrow
-    {
-      dir: H, HW: [[.926,GENERAL]], stretch: {left:[0x21FD,GENERAL], rep:[0x2212,GENERAL]}
-    },
-    0x21FE: // right open-headed arrow
-    {
-      dir: H, HW: [[.926,GENERAL]], stretch: {right:[0x21FE,GENERAL], rep:[0x2212,GENERAL]}
-    },
-    0x21FF: // left right open-headed arrow
-    {
-      dir: H, HW: [[.926,GENERAL]],
-      stretch: {left:[0x21FD,GENERAL], rep:[0x2212,GENERAL], right:[0x21FE,GENERAL]}
-    },
-    0x27E6: // left white square bracket
-    {
-      dir: V, HW: [[.93,GENERAL],[1.23,SIZE1],[1.845,SIZE2],[2.46,SIZE3],[3.075,SIZE4]],
-      stretch: {top:[0x2553,GENERAL], ext:[0x2551,GENERAL], bot:[0x2559,GENERAL]}
-    },
-    0x27E7: // right white square bracket
-    {
-      dir: V, HW: [[.93,GENERAL],[1.23,SIZE1],[1.845,SIZE2],[2.46,SIZE3],[3.075,SIZE4]],
-      stretch: {top:[0x2556,GENERAL], ext:[0x2551,GENERAL], bot:[0x255C,GENERAL]}
-    },
-    0x27EA: // left double angle bracket
-    {
-      dir: V, HW: [[.931,GENERAL],[1.23,SIZE1],[1.845,SIZE2],[2.461,SIZE3],[3.075,SIZE4]]
-    },
-    0x27EB: // right double angle bracket
-    {
-      dir: V, HW: [[.931,GENERAL],[1.23,SIZE1],[1.845,SIZE2],[2.461,SIZE3],[3.075,SIZE4]]
-    },
-    0x290A: // up triple arrow
-    {
-      dir: V, HW: [[.818,GENERAL]], stretch: {top:[0x290A,GENERAL], ext:[0xE135,NONUNI]}
-    },
-    0x290B: // down triple arrow
-    {
-      dir: V, HW: [[.818,GENERAL]], stretch: {bot:[0x290B,GENERAL], ext:[0xE135,NONUNI]}
-    },
-    0x2912: // up arrow to bar
-    {
-      dir: V, HW: [[.818,GENERAL]], stretch: {top:[0x2912,GENERAL], ext:[0x23D0,GENERAL]}
-    },
-    0x2913: // down arrow to bar
-    {
-      dir: V, HW: [[.818,GENERAL]], stretch: {bot:[0x2913,GENERAL], ext:[0x23D0,GENERAL]}
-    },
-    0x2952: // left harpoon with barb up to bar
-    {
-      dir: H, HW: [[.926,GENERAL]], stretch: {left:[0x2952,GENERAL], rep:[0x2212,GENERAL]}
-    },
-    0x2953: // right harpoon with barb up to bar
-    {
-      dir: H, HW: [[.926,GENERAL]], stretch: {right:[0x2953,GENERAL], rep:[0x2212,GENERAL]}
-    },
-    0x2954: // up harpoon with barb right to bar
-    {
-      dir: V, HW: [[.818,GENERAL]], stretch: {top:[0x2954,GENERAL], ext:[0x23D0,GENERAL]}
-    },
-    0x2955: // down harpoon with barb right to bar
-    {
-      dir: V, HW: [[.818,GENERAL]], stretch: {bot:[0x2955,GENERAL], ext:[0x23D0,GENERAL]}
-    },
-    0x2956: // left harpoon with barb down to bar
-    {
-      dir: H, HW: [[.926,GENERAL]], stretch: {left:[0x2956,GENERAL], rep:[0x2212,GENERAL]}
-    },
-    0x2957: // right harpoon with barb down to bar
-    {
-      dir: H, HW: [[.926,GENERAL]], stretch: {right:[0x2957,GENERAL], rep:[0x2212,GENERAL]}
-    },
-    0x2958: // up harpoon with barb left to bar
-    {
-      dir: V, HW: [[.818,GENERAL]], stretch: {top:[0x2958,GENERAL], ext:[0x23D0,GENERAL]}
-    },
-    0x2959: // down harpoon with barb left to bar
-    {
-      dir: V, HW: [[.818,GENERAL]], stretch: {bot:[0x2959,GENERAL], ext:[0x23D0,GENERAL]}
-    },
-    0x2980: // triple vertical bar
-    {
-      dir: V, HW: [[.874,GENERAL]], stretch: {ext:[0x2980,GENERAL]}
-    },
-    0x2997: // left black tortoise shell
-    {
-      dir: V, HW: [[.932,GENERAL]],
-      stretch: {top:[0xE10D,NONUNI,.1,.05], ext:[0x23D0,GENERAL,-.1], bot:[0xE10C,NONUNI,.1]}
-    },
-    0x2998: // right black tortoise shell
-    {
-      dir: V, HW: [[.932,GENERAL]],
-      stretch: {top:[0xE10C,NONUNI,-.1,.05], ext:[0x23D0,GENERAL], bot:[0xE10D,NONUNI,-.1]}
-    }
+    BOLD = "STIXGeneral-bold",
+    VARIANT = "STIXVariants",
+    NONUNI = "STIXNonUnicode",
+    SIZE1 = "STIXSizeOneSym",
+    SIZE2 = "STIXSizeTwoSym",
+    SIZE3 = "STIXSizeThreeSym",
+    SIZE4 = "STIXSizeFourSym",
+    SIZE5 = "STIXSizeFiveSym",
+    INTD = "STIXIntegralsD";
+  var H = "H",
+    V = "V";
 
+  var delim = {
+    // equal sign
+    0x003d: {
+      dir: H,
+      HW: [[0.685, GENERAL]],
+      stretch: { rep: [0x003d, GENERAL] }
+    },
+    // left two-headed arrow
+    0x219e: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: { left: [0x219e, GENERAL], rep: [0x2212, GENERAL] }
+    },
+    // right two-headed arrow
+    0x21a0: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: { right: [0x21a0, GENERAL], rep: [0x2212, GENERAL] }
+    },
+    // left arrow from bar
+    0x21a4: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: {
+        left: [0x2190, VARIANT],
+        rep: [0x2212, GENERAL],
+        right: [0x22a3, BOLD, 0, 0.1, 0.6]
+      }
+    },
+    // up arrow from bar
+    0x21a5: {
+      dir: V,
+      HW: [[0.816, GENERAL]],
+      stretch: {
+        bot: [0x5f, GENERAL, 0.05, -0.01, 0.8],
+        ext: [0x23d0, GENERAL],
+        top: [0x2191, GENERAL]
+      }
+    },
+    // right arrow from bar
+    0x21a6: {
+      dir: H,
+      HW: [[1, GENERAL]],
+      stretch: {
+        left: [0xe0b6, NONUNI],
+        rep: [0x2212, GENERAL],
+        right: [0x2192, GENERAL]
+      }
+    },
+    // down arrow from bar
+    0x21a7: {
+      dir: V,
+      HW: [[0.816, GENERAL]],
+      stretch: {
+        top: [0x22a4, BOLD, 0.04, 0, 0.6],
+        ext: [0x23d0, GENERAL],
+        bot: [0x2193, GENERAL]
+      }
+    },
+    // up arrow with top leftwards
+    0x21b0: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: { top: [0x21b0, GENERAL], ext: [0x23d0, GENERAL, 0.152] }
+    },
+    // up arrow with top right
+    0x21b1: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: { top: [0x21b1, GENERAL], ext: [0x23d0, GENERAL, -0.195] }
+    },
+    // left harpoon with barb up
+    0x21bc: {
+      dir: H,
+      HW: [[0.955, GENERAL]],
+      stretch: { left: [0x21bc, GENERAL], rep: [0x2212, GENERAL] }
+    },
+    // left harpoon with barb down
+    0x21bd: {
+      dir: H,
+      HW: [[0.955, GENERAL]],
+      stretch: { left: [0x21bd, GENERAL], rep: [0x2212, GENERAL] }
+    },
+    // up harpoon with barb right
+    0x21be: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: { top: [0x21be, GENERAL], ext: [0x23d0, GENERAL] }
+    },
+    // up harpoon with barb left
+    0x21bf: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: { top: [0x21bf, GENERAL], ext: [0x23d0, GENERAL] }
+    },
+    // right harpoon with barb up
+    0x21c0: {
+      dir: H,
+      HW: [[0.955, GENERAL]],
+      stretch: { right: [0x21c0, GENERAL], rep: [0x2212, GENERAL] }
+    },
+    // right harpoon with barb down
+    0x21c1: {
+      dir: H,
+      HW: [[0.955, GENERAL]],
+      stretch: { right: [0x21c1, GENERAL], rep: [0x2212, GENERAL] }
+    },
+    // down harpoon with barb right
+    0x21c2: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: { bot: [0x21c2, GENERAL], ext: [0x23d0, GENERAL] }
+    },
+    // down harpoon with barb left
+    0x21c3: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: { bot: [0x21c3, GENERAL], ext: [0x23d0, GENERAL] }
+    },
+    // left triple arrow
+    0x21da: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: { left: [0x21da, GENERAL], rep: [0x2261, GENERAL] }
+    },
+    // right triple arrow
+    0x21db: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: { right: [0x21db, GENERAL], rep: [0x2261, GENERAL] }
+    },
+    // integral
+    0x222b: {
+      dir: V,
+      HW: [[0.607, GENERAL], [0.979, INTD]],
+      stretch: {
+        top: [0x2320, SIZE1],
+        ext: [0x23ae, SIZE1],
+        bot: [0x2321, SIZE1]
+      }
+    },
+    // top square bracket
+    0x23b4: {
+      dir: H,
+      HW: [
+        [0.926, GENERAL],
+        [1.063, SIZE1],
+        [1.606, SIZE2],
+        [2.147, SIZE3],
+        [2.692, SIZE4],
+        [3.237, SIZE5]
+      ],
+      stretch: {
+        left: [0x2310, GENERAL],
+        rep: [0x2212, GENERAL, 0, 0.12],
+        right: [0xac, GENERAL]
+      }
+    },
+    // bottom square bracket
+    0x23b5: {
+      dir: H,
+      HW: [
+        [0.926, GENERAL],
+        [1.063, SIZE1],
+        [1.606, SIZE2],
+        [2.147, SIZE3],
+        [2.692, SIZE4],
+        [3.237, SIZE5]
+      ],
+      stretch: {
+        left: [0x2a3d, GENERAL, 0, 0.12],
+        rep: [0x2212, GENERAL, 0, 0, 0, 0.12],
+        right: [0x2a3c, GENERAL, 0, 0.12]
+      }
+    },
+    // top paren
+    0x23dc: {
+      dir: H,
+      HW: [
+        [0.926, SIZE1],
+        [1, GENERAL],
+        [1.46, SIZE2],
+        [1.886, SIZE3],
+        [2.328, SIZE4],
+        [3.237, SIZE5]
+      ],
+      stretch: {
+        left: [0xe13b, NONUNI],
+        right: [0xe13c, NONUNI],
+        rep: [0xe14a, NONUNI]
+      }
+    },
+    // bottom paren
+    0x23dd: {
+      dir: H,
+      HW: [
+        [0.926, SIZE1],
+        [1, GENERAL],
+        [1.46, SIZE2],
+        [1.886, SIZE3],
+        [2.328, SIZE4],
+        [3.237, SIZE5]
+      ],
+      stretch: {
+        left: [0xe13d, NONUNI],
+        right: [0xe13e, NONUNI],
+        rep: [0xe14b, NONUNI]
+      }
+    },
+    // top tortoise shell
+    0x23e0: {
+      dir: H,
+      HW: [
+        [1, GENERAL],
+        [1.46, SIZE1],
+        [1.886, SIZE2],
+        [2.312, SIZE3],
+        [2.738, SIZE4],
+        [3.164, SIZE5]
+      ],
+      stretch: {
+        left: [0xe10d, NONUNI, -0.1, -0.1],
+        rep: [0x2212, GENERAL, 0, 0.05],
+        right: [0xe10c, NONUNI, 0, -0.1],
+        fullExtenders: true
+      }
+    },
+    // bottom tortoise shell
+    0x23e1: {
+      dir: H,
+      HW: [
+        [1, GENERAL],
+        [1.46, SIZE1],
+        [1.886, SIZE2],
+        [2.312, SIZE3],
+        [2.738, SIZE4],
+        [3.164, SIZE5]
+      ],
+      stretch: {
+        left: [0xe10c, NONUNI, -0.1, 0.1],
+        rep: [0x2212, GENERAL, 0, -0.1, 0, 0.1],
+        right: [0xe10d, NONUNI, 0, 0.1],
+        fullExtenders: true
+      }
+    },
+    // leftwards double arrow from bar
+    0x2906: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: {
+        left: [0x21d0, GENERAL],
+        rep: [0x3d, GENERAL],
+        right: [0x2ae4, GENERAL, 0, -0.09]
+      }
+    },
+    // rightwards double arrow from bar
+    0x2907: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: {
+        left: [0x22a8, GENERAL, 0, -0.09],
+        rep: [0x3d, GENERAL],
+        right: [0x21d2, GENERAL]
+      }
+    },
+    // left barb up right barb up harpoon
+    0x294e: {
+      dir: H,
+      HW: [],
+      stretch: {
+        left: [0x21bc, GENERAL],
+        rep: [0x2212, GENERAL],
+        right: [0x21c0, GENERAL]
+      }
+    },
+    // up barb right down barb right harpoon
+    0x294f: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: {
+        top: [0x21be, GENERAL],
+        ext: [0x23d0, GENERAL],
+        bot: [0x21c2, GENERAL]
+      }
+    },
+    // left barb dow right barb down harpoon
+    0x2950: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: {
+        left: [0x21bd, GENERAL],
+        rep: [0x2212, GENERAL],
+        right: [0x21c1, GENERAL]
+      }
+    },
+    // up barb left down barb left harpoon
+    0x2951: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: {
+        top: [0x21bf, GENERAL],
+        ext: [0x23d0, GENERAL],
+        bot: [0x21c3, GENERAL]
+      }
+    },
+    // leftwards harpoon with barb up from bar
+    0x295a: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: {
+        left: [0x21bc, GENERAL],
+        rep: [0x2212, GENERAL],
+        right: [0x22a3, BOLD, 0, 0.1, 0.6]
+      }
+    },
+    // rightwards harpoon with barb up from bar
+    0x295b: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: {
+        left: [0xe0b6, NONUNI],
+        rep: [0x2212, GENERAL],
+        right: [0x21c0, GENERAL]
+      }
+    },
+    // up harpoon with barb right from bar
+    0x295c: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: {
+        bot: [0x5f, GENERAL, 0.05, -0.01, 0.8],
+        ext: [0x23d0, GENERAL],
+        top: [0x21be, GENERAL]
+      }
+    },
+    // down harpoon with barb right from bar
+    0x295d: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: {
+        top: [0x22a4, BOLD, 0.04, 0, 0.6],
+        ext: [0x23d0, GENERAL],
+        bot: [0x21c2, GENERAL]
+      }
+    },
+    // leftwards harpoon with barb down from bar
+    0x295e: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: {
+        left: [0x21bd, GENERAL],
+        rep: [0x2212, GENERAL],
+        right: [0x22a3, BOLD, 0, 0.1, 0.6]
+      }
+    },
+    // rightwards harpoon with barb down from bar
+    0x295f: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: {
+        left: [0xe0b6, NONUNI],
+        rep: [0x2212, GENERAL],
+        right: [0x21c1, GENERAL]
+      }
+    },
+    // up harpoon with barb left from bar
+    0x2960: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: {
+        bot: [0x5f, GENERAL, 0.05, -0.01, 0.8],
+        ext: [0x23d0, GENERAL],
+        top: [0x21bf, GENERAL]
+      }
+    },
+    // down harpoon with barb left from bar
+    0x2961: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: {
+        top: [0x22a4, BOLD, 0.04, 0, 0.6],
+        ext: [0x23d0, GENERAL],
+        bot: [0x21c3, GENERAL]
+      }
+    },
+
+    // caron
+    0x02c7: {
+      dir: H,
+      HW: [
+        [0.333, GENERAL],
+        [0.56, SIZE1],
+        [0.979, SIZE2],
+        [1.458, SIZE3],
+        [1.886, SIZE4],
+        [2.328, SIZE5]
+      ]
+    },
+    // low macron
+    0x02cd: {
+      dir: H,
+      HW: [[0.334, GENERAL]],
+      stretch: { rep: [0x2cd, GENERAL] }
+    },
+    // low tilde
+    0x02f7: {
+      dir: H,
+      HW: [
+        [0.558, SIZE1],
+        [0.977, SIZE2],
+        [1.458, SIZE3],
+        [1.886, SIZE4],
+        [2.328, SIZE5]
+      ]
+    },
+    // upwards two headed arrow
+    0x219f: {
+      dir: V,
+      HW: [[0.816, GENERAL]],
+      stretch: { ext: [0x23d0, GENERAL], top: [0x219f, GENERAL] }
+    },
+    // downwards two headed arrow
+    0x21a1: {
+      dir: V,
+      HW: [[0.816, GENERAL]],
+      stretch: { ext: [0x23d0, GENERAL], bot: [0x21a1, GENERAL] }
+    },
+    // up down arrow with base
+    0x21a8: {
+      dir: V,
+      HW: [[0.816, GENERAL]],
+      stretch: {
+        top: [0x2191, GENERAL],
+        ext: [0x23d0, GENERAL],
+        bot: [0x2913, GENERAL]
+      }
+    },
+    // left hook arrow
+    0x21a9: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: {
+        left: [0x2190, GENERAL],
+        rep: [0x2212, GENERAL],
+        right: [0xe0b5, NONUNI]
+      }
+    },
+    // right hook arrow
+    0x21aa: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: {
+        left: [0xe0b4, NONUNI],
+        rep: [0x2212, GENERAL],
+        right: [0x2192, GENERAL]
+      }
+    },
+    // down arrow with tip left
+    0x21b2: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: { bot: [0x21b2, GENERAL], ext: [0x23d0, GENERAL, 0.152] }
+    },
+    // down arrow with tip right
+    0x21b3: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: { bot: [0x21b3, GENERAL], ext: [0x23d0, GENERAL, -0.195] }
+    },
+    // right arrow with corner down
+    0x21b4: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: { rep: [0x2212, GENERAL, 0, 0.4], right: [0x21b4, GENERAL] }
+    },
+    // down arrow with corner left
+    0x21b5: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: { bot: [0x21b5, GENERAL], ext: [0x23d0, GENERAL, 0.57] }
+    },
+    // left harpoon over right harpoon
+    0x21cb: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: {
+        left: [0x296a, GENERAL],
+        rep: [0x3d, GENERAL],
+        right: [0x296d, GENERAL]
+      }
+    },
+    // right harpoon over left harpoon
+    0x21cc: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: {
+        left: [0x296b, GENERAL],
+        rep: [0x3d, GENERAL],
+        right: [0x296c, GENERAL]
+      }
+    },
+    // left dashed arrow
+    0x21e0: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: {
+        left: [0x21e0, GENERAL],
+        rep: [0xe121, NONUNI, 0, 0, 0, 0, 0.1],
+        fullExtenders: true
+      }
+    },
+    // up dashed arrow
+    0x21e1: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: {
+        ext: [0xe12d, NONUNI],
+        top: [0x21e1, GENERAL],
+        fullExtenders: true
+      }
+    },
+    // right dashed arrow
+    0x21e2: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: {
+        right: [0x21e2, VARIANT],
+        rep: [0xe12e, NONUNI, 0, 0, 0, 0, 0.1],
+        fullExtenders: true
+      }
+    },
+    // down dashed arrow
+    0x21e3: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: {
+        ext: [0xe12c, NONUNI],
+        bot: [0x21e3, GENERAL],
+        fullExtenders: true
+      }
+    },
+    // left arrow to bar
+    0x21e4: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: { left: [0x21e4, GENERAL], rep: [0x2212, GENERAL] }
+    },
+    // right arrow to bar
+    0x21e5: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: { right: [0x21e5, GENERAL], rep: [0x2212, GENERAL] }
+    },
+    // left open-headed arrow
+    0x21fd: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: { left: [0x21fd, GENERAL], rep: [0x2212, GENERAL] }
+    },
+    // right open-headed arrow
+    0x21fe: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: { right: [0x21fe, GENERAL], rep: [0x2212, GENERAL] }
+    },
+    // left right open-headed arrow
+    0x21ff: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: {
+        left: [0x21fd, GENERAL],
+        rep: [0x2212, GENERAL],
+        right: [0x21fe, GENERAL]
+      }
+    },
+    // left white square bracket
+    0x27e6: {
+      dir: V,
+      HW: [
+        [0.93, GENERAL],
+        [1.23, SIZE1],
+        [1.845, SIZE2],
+        [2.46, SIZE3],
+        [3.075, SIZE4]
+      ],
+      stretch: {
+        top: [0x2553, GENERAL],
+        ext: [0x2551, GENERAL],
+        bot: [0x2559, GENERAL]
+      }
+    },
+    // right white square bracket
+    0x27e7: {
+      dir: V,
+      HW: [
+        [0.93, GENERAL],
+        [1.23, SIZE1],
+        [1.845, SIZE2],
+        [2.46, SIZE3],
+        [3.075, SIZE4]
+      ],
+      stretch: {
+        top: [0x2556, GENERAL],
+        ext: [0x2551, GENERAL],
+        bot: [0x255c, GENERAL]
+      }
+    },
+    // left double angle bracket
+    0x27ea: {
+      dir: V,
+      HW: [
+        [0.931, GENERAL],
+        [1.23, SIZE1],
+        [1.845, SIZE2],
+        [2.461, SIZE3],
+        [3.075, SIZE4]
+      ]
+    },
+    // right double angle bracket
+    0x27eb: {
+      dir: V,
+      HW: [
+        [0.931, GENERAL],
+        [1.23, SIZE1],
+        [1.845, SIZE2],
+        [2.461, SIZE3],
+        [3.075, SIZE4]
+      ]
+    },
+    // up triple arrow
+    0x290a: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: { top: [0x290a, GENERAL], ext: [0xe135, NONUNI] }
+    },
+    // down triple arrow
+    0x290b: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: { bot: [0x290b, GENERAL], ext: [0xe135, NONUNI] }
+    },
+    // up arrow to bar
+    0x2912: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: { top: [0x2912, GENERAL], ext: [0x23d0, GENERAL] }
+    },
+    // down arrow to bar
+    0x2913: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: { bot: [0x2913, GENERAL], ext: [0x23d0, GENERAL] }
+    },
+    // left harpoon with barb up to bar
+    0x2952: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: { left: [0x2952, GENERAL], rep: [0x2212, GENERAL] }
+    },
+    // right harpoon with barb up to bar
+    0x2953: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: { right: [0x2953, GENERAL], rep: [0x2212, GENERAL] }
+    },
+    // up harpoon with barb right to bar
+    0x2954: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: { top: [0x2954, GENERAL], ext: [0x23d0, GENERAL] }
+    },
+    // down harpoon with barb right to bar
+    0x2955: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: { bot: [0x2955, GENERAL], ext: [0x23d0, GENERAL] }
+    },
+    // left harpoon with barb down to bar
+    0x2956: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: { left: [0x2956, GENERAL], rep: [0x2212, GENERAL] }
+    },
+    // right harpoon with barb down to bar
+    0x2957: {
+      dir: H,
+      HW: [[0.926, GENERAL]],
+      stretch: { right: [0x2957, GENERAL], rep: [0x2212, GENERAL] }
+    },
+    // up harpoon with barb left to bar
+    0x2958: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: { top: [0x2958, GENERAL], ext: [0x23d0, GENERAL] }
+    },
+    // down harpoon with barb left to bar
+    0x2959: {
+      dir: V,
+      HW: [[0.818, GENERAL]],
+      stretch: { bot: [0x2959, GENERAL], ext: [0x23d0, GENERAL] }
+    },
+    // triple vertical bar
+    0x2980: {
+      dir: V,
+      HW: [[0.874, GENERAL]],
+      stretch: { ext: [0x2980, GENERAL] }
+    },
+    // left black tortoise shell
+    0x2997: {
+      dir: V,
+      HW: [[0.932, GENERAL]],
+      stretch: {
+        top: [0xe10d, NONUNI, 0.1, 0.05],
+        ext: [0x23d0, GENERAL, -0.1],
+        bot: [0xe10c, NONUNI, 0.1]
+      }
+    },
+    // right black tortoise shell
+    0x2998: {
+      dir: V,
+      HW: [[0.932, GENERAL]],
+      stretch: {
+        top: [0xe10c, NONUNI, -0.1, 0.05],
+        ext: [0x23d0, GENERAL],
+        bot: [0xe10d, NONUNI, -0.1]
+      }
+    }
   };
-  
-  for (var id in delim) {if (delim.hasOwnProperty(id)) {DELIMITERS[id] = delim[id]}};
+
+  for (var id in delim) {
+    if (delim.hasOwnProperty(id)) {
+      DELIMITERS[id] = delim[id];
+    }
+  }
 
   MathJax.Ajax.loadComplete(HTMLCSS.fontDir + "/fontdata-extra.js");
-
 })(MathJax.OutputJax["HTML-CSS"]);
-

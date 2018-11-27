@@ -28,16 +28,14 @@ Polymer({
   },
   created: function() {
     const name = "chartist",
-      basePath = pathFromUrl(import.meta.url);
+      basePath = pathFromUrl(import.meta.url),
+      location = `${basePath}lib/chartist/dist/chartist.min.js`;
     window.addEventListener(
       `es-bridge-${name}-loaded`,
       this._chartistLoaded.bind(this)
     );
     window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(
-      name,
-      `${basePath}lib/chartist/dist/chartist.min.js`
-    );
+    window.ESGlobalBridge.instance.load(name, location);
   },
   _chartistLoaded: function() {
     this.__chartistLoaded = !0;
@@ -115,7 +113,7 @@ Polymer({
       this.__chartId + "-chart-title " + this.__chartId + "-chart-desc"
     );
   },
-  makeA11yTable: function() {
+  makeA11yTable: function(svg) {
     let title =
         null !== this.chartTitle
           ? this.chartTitle

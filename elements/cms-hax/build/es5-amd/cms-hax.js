@@ -15,20 +15,37 @@ define([
   "./lib/cms-block.js",
   "./lib/cms-views.js",
   "./lib/cms-entity.js"
-], function(_polymerLegacy, _polymerDom, _flattenedNodesObserver) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _flattenedNodesObserver,
+  _ironAjax,
+  _paperToast,
+  _haxStore,
+  _haxBody,
+  _haxAutoloader,
+  _haxManager,
+  _haxPanel,
+  _haxAppPicker,
+  _haxExportDialog,
+  _cmsToken,
+  _cmsBlock,
+  _cmsViews,
+  _cmsEntity
+) {
   "use strict";
-  function _templateObject_6ef65460ecf511e88fb621c4c50d4891() {
+  function _templateObject_b83df380f1e611e8b3facd417e89298f() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n        font-size: 16px;\n        box-sizing: content-box;\n      }\n    </style>\n    <iron-ajax id="pageupdateajax" url="[[endPoint]]" method="[[method]]" body="[[updatePageData]]" content-type="application/json" handle-as="json" on-response="_handleUpdateResponse"></iron-ajax>\n    <paper-toast id="toast" horizontal-align="left"></paper-toast>\n    <hax-store hidden="" app-store="[[appStoreConnection]]" valid-tag-list="[[allowedTags]]"></hax-store>\n    <hax-autoloader id="loader" hidden=""></hax-autoloader>\n    <hax-panel id="panel" hide-export-button="{{hideExportButton}}" hide-panel-ops="[[hidePanelOps]]" hide-preferences-button="[[hidePreferencesButton]]" align="[[align]]"></hax-panel>\n    <hax-body id="body" context-offset-left="[[bodyOffsetLeft]]"></hax-body>\n    <hax-manager></hax-manager>\n    <hax-app-picker></hax-app-picker>\n    <hax-export-dialog></hax-export-dialog>\n    <cms-token></cms-token>\n    <cms-views></cms-views>\n    <cms-block></cms-block>\n    <cms-entity></cms-entity>\n'
     ]);
-    _templateObject_6ef65460ecf511e88fb621c4c50d4891 = function() {
+    _templateObject_b83df380f1e611e8b3facd417e89298f = function _templateObject_b83df380f1e611e8b3facd417e89298f() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_6ef65460ecf511e88fb621c4c50d4891()
+      _templateObject_b83df380f1e611e8b3facd417e89298f()
     ),
     is: "cms-hax",
     properties: {
@@ -55,17 +72,27 @@ define([
       activeHaxBody: { type: Object, observer: "_activeHaxBodyUpdated" },
       __imported: { type: Boolean, value: !1 }
     },
-    _activeHaxBodyUpdated: function _activeHaxBodyUpdated(newValue) {
+    _activeHaxBodyUpdated: function _activeHaxBodyUpdated(newValue, oldValue) {
       if (null != newValue && !this.__imported) {
         this.__imported = !0;
         var children = this.queryEffectiveChildren("template");
-        if (babelHelpers.typeof(children) !== "undefined") {
+        if (
+          babelHelpers.typeof(children) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           newValue.importContent(children.innerHTML);
         }
       }
     },
     _computeRedirectOnSave: function _computeRedirectOnSave(redirectLocation) {
-      if (babelHelpers.typeof(redirectLocation) !== "undefined") {
+      if (
+        babelHelpers.typeof(redirectLocation) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         return !0;
       }
       return !1;
@@ -86,7 +113,7 @@ define([
       if (this.syncBody) {
         (0, _flattenedNodesObserver.FlattenedNodesObserver)(
           this.$.body,
-          function() {
+          function(info) {
             if (!_this.__lock) {
               _this.__lock = !0;
               _this.fire(
@@ -104,7 +131,10 @@ define([
     _haxStorePropertyUpdated: function _haxStorePropertyUpdated(e) {
       if (
         e.detail &&
-        babelHelpers.typeof(e.detail.value) !== "undefined" &&
+        babelHelpers.typeof(e.detail.value) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         e.detail.property
       ) {
         if ("object" === babelHelpers.typeof(e.detail.value)) {
@@ -113,11 +143,11 @@ define([
         this.set(e.detail.property, e.detail.value);
       }
     },
-    _saveFired: function _saveFired() {
+    _saveFired: function _saveFired(e) {
       this.updatePageData = window.HaxStore.instance.activeHaxBody.haxToContent();
       this.$.pageupdateajax.generateRequest();
     },
-    _handleUpdateResponse: function _handleUpdateResponse() {
+    _handleUpdateResponse: function _handleUpdateResponse(e) {
       var _this2 = this;
       if (!this.hideMessage) {
         this.$.toast.show("Saved!");

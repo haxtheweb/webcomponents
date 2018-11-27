@@ -16,4 +16,20 @@
  *  limitations under the License.
  */
 
-(function(a){var c=a.mo.OPTYPES;var b=a.TEXCLASS;MathJax.Hub.Insert(a.mo.prototype,{OPTABLE:{postfix:{"\u23B4":c.WIDEACCENT,"\u23B5":c.WIDEACCENT,"\u23DC":c.WIDEACCENT,"\u23DD":c.WIDEACCENT,"\u23E0":c.WIDEACCENT,"\u23E1":c.WIDEACCENT}}});MathJax.Ajax.loadComplete(a.optableDir+"/MiscTechnical.js")})(MathJax.ElementJax.mml);
+(function(a) {
+  var c = a.mo.OPTYPES;
+  var b = a.TEXCLASS;
+  MathJax.Hub.Insert(a.mo.prototype, {
+    OPTABLE: {
+      postfix: {
+        "\u23B4": c.WIDEACCENT,
+        "\u23B5": c.WIDEACCENT,
+        "\u23DC": c.WIDEACCENT,
+        "\u23DD": c.WIDEACCENT,
+        "\u23E0": c.WIDEACCENT,
+        "\u23E1": c.WIDEACCENT
+      }
+    }
+  });
+  MathJax.Ajax.loadComplete(a.optableDir + "/MiscTechnical.js");
+})(MathJax.ElementJax.mml);

@@ -16,4 +16,20 @@
  *  limitations under the License.
  */
 
-(function(a){var c=a.mo.OPTYPES;var b=a.TEXCLASS;MathJax.Hub.Insert(a.mo.prototype,{OPTABLE:{infix:{"\u27F0":c.RELSTRETCH,"\u27F1":c.RELSTRETCH,"\u27FB":c.WIDEREL,"\u27FD":c.WIDEREL,"\u27FE":c.WIDEREL,"\u27FF":c.WIDEREL}}});MathJax.Ajax.loadComplete(a.optableDir+"/SupplementalArrowsA.js")})(MathJax.ElementJax.mml);
+(function(a) {
+  var c = a.mo.OPTYPES;
+  var b = a.TEXCLASS;
+  MathJax.Hub.Insert(a.mo.prototype, {
+    OPTABLE: {
+      infix: {
+        "\u27F0": c.RELSTRETCH,
+        "\u27F1": c.RELSTRETCH,
+        "\u27FB": c.WIDEREL,
+        "\u27FD": c.WIDEREL,
+        "\u27FE": c.WIDEREL,
+        "\u27FF": c.WIDEREL
+      }
+    }
+  });
+  MathJax.Ajax.loadComplete(a.optableDir + "/SupplementalArrowsA.js");
+})(MathJax.ElementJax.mml);

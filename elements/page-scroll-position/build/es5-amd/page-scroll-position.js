@@ -1,13 +1,11 @@
 var PageScrollPosition = (function(_HTMLElement) {
+  "use strict";
   babelHelpers.inherits(PageScrollPosition, _HTMLElement);
   function PageScrollPosition() {
     babelHelpers.classCallCheck(this, PageScrollPosition);
     return babelHelpers.possibleConstructorReturn(
       this,
-      (
-        PageScrollPosition.__proto__ ||
-        Object.getPrototypeOf(PageScrollPosition)
-      ).apply(this, arguments)
+      babelHelpers.getPrototypeOf(PageScrollPosition).apply(this, arguments)
     );
   }
   babelHelpers.createClass(PageScrollPosition, [
@@ -25,8 +23,9 @@ var PageScrollPosition = (function(_HTMLElement) {
           var a = document.documentElement.scrollTop,
             b =
               document.documentElement.scrollHeight -
-              document.documentElement.clientHeight;
-          _this.value = 100 * (a / b);
+              document.documentElement.clientHeight,
+            c = 100 * (a / b);
+          _this.value = c;
           valueChangedEvent = new CustomEvent("value-changed", {
             detail: { value: _this.value }
           });
@@ -36,5 +35,5 @@ var PageScrollPosition = (function(_HTMLElement) {
     }
   ]);
   return PageScrollPosition;
-})(HTMLElement);
+})(babelHelpers.wrapNativeSuper(HTMLElement));
 window.customElements.define("page-scroll-position", PageScrollPosition);

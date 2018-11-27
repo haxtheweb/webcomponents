@@ -77,7 +77,7 @@ Polymer({
       return { module: `${blockModule}`, delta: `${blockDelta}` };
     }
   },
-  _handleblockResponse: function(newValue) {
+  _handleblockResponse: function(newValue, oldValue) {
     if (null !== newValue && typeof newValue.content !== typeof void 0) {
       if (null != document.getElementById("cmstokenidtolockonto")) {
         document
@@ -103,7 +103,7 @@ Polymer({
       element.removeChild(element.firstChild);
     }
   },
-  _blockChanged: function(newValue) {
+  _blockChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0 && "" !== newValue && !this.loading) {
       if (
         typeof this.blockEndPoint === typeof void 0 &&
@@ -141,7 +141,7 @@ Polymer({
         }
       }
     }
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -183,7 +183,8 @@ Polymer({
           "block-end-point"
         ]
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
   postProcessgetHaxJSONSchema: function(schema) {
     schema.properties.__editThis = {

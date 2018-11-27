@@ -1,20 +1,20 @@
 define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./node_modules/@vowo/chart-elements/chart-elements.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _chartElements) {
   "use strict";
-  function _templateObject_e1cdecd0ecf211e8896d030a4c98c71a() {
+  function _templateObject_737d0ca0f1e511e89520dbd854f7e39a() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <div>\n    <!-- \n    Use the logic from the logic of the template dom-if\'s to allow for abstraction for all the chart types\n    -->\n        <chart-line labels="{{labels}}" data="[[data]]"></chart-line>\n    </div>\n'
     ]);
-    _templateObject_e1cdecd0ecf211e8896d030a4c98c71a = function() {
+    _templateObject_737d0ca0f1e511e89520dbd854f7e39a = function _templateObject_737d0ca0f1e511e89520dbd854f7e39a() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_e1cdecd0ecf211e8896d030a4c98c71a()
+      _templateObject_737d0ca0f1e511e89520dbd854f7e39a()
     ),
     is: "lrnsys-chartjs",
     properties: {

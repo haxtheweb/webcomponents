@@ -99,7 +99,7 @@ Polymer({
     inline: { type: Boolean, value: !1, reflectToAttritue: !0 },
     justifyValue: { type: String, value: "", notify: !0 }
   },
-  _haxPropertiesChanged: function() {
+  _haxPropertiesChanged: function(newValue, oldValue) {
     if (typeof window.HaxStore.instance.activeNode !== typeof void 0) {
       if ("" != window.HaxStore.instance.activeNode.style.width) {
         this.size = window.HaxStore.instance.activeNode.style.width.replace(
@@ -128,13 +128,9 @@ Polymer({
     let detail = e.detail;
     switch (detail.eventName) {
       case "hax-align-left":
-        this.justifyIcon = detail.target.children[0].attributes[0].value;
-        break;
       case "hax-align-center":
-        this.justifyIcon = detail.target.children[0].attributes[0].value;
-        break;
       case "hax-align-right":
-        this.justifyIcon = detail.target.children[0].attributes[0].value;
+        this.justifyIcon = detail.target.icon;
         break;
       case "close-menu":
         this.$.moremenu.$.menu.hideMenu();

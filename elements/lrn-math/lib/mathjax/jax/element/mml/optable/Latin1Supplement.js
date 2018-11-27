@@ -16,4 +16,13 @@
  *  limitations under the License.
  */
 
-(function(a){var c=a.mo.OPTYPES;var b=a.TEXCLASS;MathJax.Hub.Insert(a.mo.prototype,{OPTABLE:{postfix:{"\u00B0":c.ORD,"\u00B4":c.ACCENT,"\u00B8":c.ACCENT}}});MathJax.Ajax.loadComplete(a.optableDir+"/Latin1Supplement.js")})(MathJax.ElementJax.mml);
+(function(a) {
+  var c = a.mo.OPTYPES;
+  var b = a.TEXCLASS;
+  MathJax.Hub.Insert(a.mo.prototype, {
+    OPTABLE: {
+      postfix: { "\u00B0": c.ORD, "\u00B4": c.ACCENT, "\u00B8": c.ACCENT }
+    }
+  });
+  MathJax.Ajax.loadComplete(a.optableDir + "/Latin1Supplement.js");
+})(MathJax.ElementJax.mml);

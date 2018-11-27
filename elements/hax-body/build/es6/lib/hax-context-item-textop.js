@@ -58,7 +58,7 @@ Polymer({
   ready: function() {
     this.target = this.$.button;
   },
-  _fireEvent: function() {
+  _fireEvent: function(e) {
     this.fire("hax-context-item-selected", {
       target: this,
       eventName: this.eventName

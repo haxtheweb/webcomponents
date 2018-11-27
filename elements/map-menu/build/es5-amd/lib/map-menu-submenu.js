@@ -4,20 +4,26 @@ define([
   "./map-menu-header.js",
   "../node_modules/@polymer/iron-collapse/iron-collapse.js",
   "../node_modules/@polymer/paper-button/paper-button.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _mapMenuItem,
+  _mapMenuHeader,
+  _ironCollapse,
+  _paperButton
+) {
   "use strict";
-  function _templateObject_a6a29b90ecf411e880aac99fb7ddbd89() {
+  function _templateObject_83d7cc10f1e611e894ed01deebeec496() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n\n      :host([collapsable])>map-menu-header {\n        cursor: pointer;\n        display: block;\n      }\n\n      #container {\n        margin-left: 16px;\n      }\n\n      #container ::slotted(map-menu-item) {\n        margin-top: .4em;\n      }\n    </style>\n    <map-menu-header avatar-label="[[avatarLabel]]" id="[[id]]" title="[[title]]" label="[[label]]" opened="[[opened]]" url="[[url]]" icon="[[icon]]"></map-menu-header>\n    <iron-collapse id="container">\n      <slot></slot>\n    </iron-collapse>\n'
     ]);
-    _templateObject_a6a29b90ecf411e880aac99fb7ddbd89 = function() {
+    _templateObject_83d7cc10f1e611e894ed01deebeec496 = function _templateObject_83d7cc10f1e611e894ed01deebeec496() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a6a29b90ecf411e880aac99fb7ddbd89()
+      _templateObject_83d7cc10f1e611e894ed01deebeec496()
     ),
     is: "map-menu-submenu",
     properties: {
@@ -43,7 +49,7 @@ define([
       if (opened) target.show();
       if (!opened) target.hide();
     },
-    _headerClickHandler: function _headerClickHandler() {
+    _headerClickHandler: function _headerClickHandler(e) {
       if (!this.opened) {
         this.opened = !this.opened;
       }
@@ -53,7 +59,7 @@ define([
       this.opened = !this.opened;
       this.fire("toggle-updated");
     },
-    __activeChanged: function __activeChanged() {
+    __activeChanged: function __activeChanged(e) {
       this.opened = !0;
     }
   });

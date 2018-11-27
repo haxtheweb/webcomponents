@@ -1,5 +1,6 @@
 define([
   "../node_modules/@polymer/polymer/polymer-legacy.js",
+  "../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
   "../node_modules/@polymer/iron-flex-layout/iron-flex-layout-classes.js",
   "../node_modules/@polymer/iron-icons/iron-icons.js",
   "../node_modules/@polymer/iron-icons/editor-icons.js",
@@ -12,18 +13,33 @@ define([
   "./eco-json-schema-input.js",
   "./eco-json-schema-object.js",
   "./eco-json-schema-file.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _ironFlexLayoutClasses,
+  _ironIcons,
+  _editorIcons,
+  _paperIconButton,
+  _paperCollapseItem,
+  _paperCollapseGroup,
+  _appLocalizeBehavior,
+  _ecoJsonSchemaBoolean,
+  _ecoJsonSchemaEnum,
+  _ecoJsonSchemaInput,
+  _ecoJsonSchemaObject,
+  _ecoJsonSchemaFile
+) {
   "use strict";
-  function _templateObject_d6669280ecf111e88a0b4725ebfbecff() {
+  function _templateObject_8ecb3640f1e411e8bd8eaf7090426072() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
-        '\n  <style is="custom-style" include="iron-flex iron-flex-alignment">\n      paper-input {\n        padding: 2px;\n\n        --paper-input-container-label: {\n          white-space: normal;\n          position: static;\n          font-size: 22px;\n          color: #212121;\n        }\n      }\n\n      paper-collapse-item {\n        --paper-collapse-item-header: {\n          font-weight: bold;\n          padding: 8px 0 0 8px;\n        }\n\n        ;\n      }\n\n      #form {\n        border: 1px solid #AAAAAA;\n      }\n\n      #form div:nth-child(odd) {\n        background-color: #F2F2F2;\n        padding: 4px;\n      }\n\n      #form div:nth-child(even) {\n        background-color: #E2E2E2;\n        border-top: 1px solid #AAAAAA;\n        border-bottom: 1px solid #AAAAAA;\n        padding: 4px;\n      }\n\n      #form div:focus,\n      #form div:hover,\n      #form div:active {\n        background-color: #FFFFFF !important;\n      }\n\n      paper-icon-button {\n        float: right;\n        border-radius: 50%;\n      }\n\n      .array-add {\n        color: #34e79a;\n        background-color: #f8f8f8;\n      }\n\n      .array-remove-element {\n        color: #f44336;\n        background-color: #f8f8f8;\n      }\n\n      .label {\n        @apply --paper-input-container-label;\n        white-space: normal;\n        position: static;\n        font-size: 22px;\n        color: #212121;\n      }\n\n      :host {\n        display: block;\n      }\n      .label {\n        white-space: normal;\n        position: static;\n        font-size: 22px;\n        color: #212121;\n        @apply --paper-input-container-label;\n      }\n    </style>\n\n    <div class="horizontal layout">\n      <div class="flex" hidden$="[[!label]]">[[label]]</div>\n      <paper-icon-button id="addarray" title="Add another item" class="array-add" icon="add" on-click="_onAddItem" role="button" aria-label="Add another item"></paper-icon-button>\n    </div>\n\n    <paper-collapse-group id="form" class="vertical flex layout"></paper-collapse-group>\n  \n'
+        '\n  <custom-style>\n  <style is="custom-style" include="iron-flex iron-flex-alignment">\n      paper-input {\n        padding: 2px;\n\n        --paper-input-container-label: {\n          white-space: normal;\n          position: static;\n          font-size: 22px;\n          color: #212121;\n        }\n      }\n\n      paper-collapse-item {\n        --paper-collapse-item-header: {\n          font-weight: bold;\n          padding: 8px 0 0 8px;\n        }\n\n        ;\n      }\n\n      #form {\n        border: 1px solid #AAAAAA;\n      }\n\n      #form div:nth-child(odd) {\n        background-color: #F2F2F2;\n        padding: 4px;\n      }\n\n      #form div:nth-child(even) {\n        background-color: #E2E2E2;\n        border-top: 1px solid #AAAAAA;\n        border-bottom: 1px solid #AAAAAA;\n        padding: 4px;\n      }\n\n      #form div:focus,\n      #form div:hover,\n      #form div:active {\n        background-color: #FFFFFF !important;\n      }\n\n      paper-icon-button {\n        float: right;\n        border-radius: 50%;\n      }\n\n      .array-add {\n        color: #34e79a;\n        background-color: #f8f8f8;\n      }\n\n      .array-remove-element {\n        color: #f44336;\n        background-color: #f8f8f8;\n      }\n\n      .label {\n        @apply --paper-input-container-label;\n        white-space: normal;\n        position: static;\n        font-size: 22px;\n        color: #212121;\n      }\n\n      :host {\n        display: block;\n      }\n      .label {\n        white-space: normal;\n        position: static;\n        font-size: 22px;\n        color: #212121;\n        @apply --paper-input-container-label;\n      }\n    </style>\n    </custom-style>\n    <div class="horizontal layout">\n      <div class="flex" hidden$="[[!label]]">[[label]]</div>\n      <paper-icon-button id="addarray" title="Add another item" class="array-add" icon="add" on-click="_onAddItem" role="button" aria-label="Add another item"></paper-icon-button>\n    </div>\n\n    <paper-collapse-group id="form" class="vertical flex layout"></paper-collapse-group>\n  \n'
       ],
       [
-        '\n  <style is="custom-style" include="iron-flex iron-flex-alignment">\n      paper-input {\n        padding: 2px;\n\n        --paper-input-container-label: {\n          white-space: normal;\n          position: static;\n          font-size: 22px;\n          color: #212121;\n        }\n      }\n\n      paper-collapse-item {\n        --paper-collapse-item-header: {\n          font-weight: bold;\n          padding: 8px 0 0 8px;\n        }\n\n        ;\n      }\n\n      #form {\n        border: 1px solid #AAAAAA;\n      }\n\n      #form div:nth-child(odd) {\n        background-color: #F2F2F2;\n        padding: 4px;\n      }\n\n      #form div:nth-child(even) {\n        background-color: #E2E2E2;\n        border-top: 1px solid #AAAAAA;\n        border-bottom: 1px solid #AAAAAA;\n        padding: 4px;\n      }\n\n      #form div:focus,\n      #form div:hover,\n      #form div:active {\n        background-color: #FFFFFF !important;\n      }\n\n      paper-icon-button {\n        float: right;\n        border-radius: 50%;\n      }\n\n      .array-add {\n        color: #34e79a;\n        background-color: #f8f8f8;\n      }\n\n      .array-remove-element {\n        color: #f44336;\n        background-color: #f8f8f8;\n      }\n\n      .label {\n        @apply --paper-input-container-label;\n        white-space: normal;\n        position: static;\n        font-size: 22px;\n        color: #212121;\n      }\n\n      :host {\n        display: block;\n      }\n      .label {\n        white-space: normal;\n        position: static;\n        font-size: 22px;\n        color: #212121;\n        @apply --paper-input-container-label;\n      }\n    </style>\n\n    <div class="horizontal layout">\n      <div class="flex" hidden\\$="[[!label]]">[[label]]</div>\n      <paper-icon-button id="addarray" title="Add another item" class="array-add" icon="add" on-click="_onAddItem" role="button" aria-label="Add another item"></paper-icon-button>\n    </div>\n\n    <paper-collapse-group id="form" class="vertical flex layout"></paper-collapse-group>\n  \n'
+        '\n  <custom-style>\n  <style is="custom-style" include="iron-flex iron-flex-alignment">\n      paper-input {\n        padding: 2px;\n\n        --paper-input-container-label: {\n          white-space: normal;\n          position: static;\n          font-size: 22px;\n          color: #212121;\n        }\n      }\n\n      paper-collapse-item {\n        --paper-collapse-item-header: {\n          font-weight: bold;\n          padding: 8px 0 0 8px;\n        }\n\n        ;\n      }\n\n      #form {\n        border: 1px solid #AAAAAA;\n      }\n\n      #form div:nth-child(odd) {\n        background-color: #F2F2F2;\n        padding: 4px;\n      }\n\n      #form div:nth-child(even) {\n        background-color: #E2E2E2;\n        border-top: 1px solid #AAAAAA;\n        border-bottom: 1px solid #AAAAAA;\n        padding: 4px;\n      }\n\n      #form div:focus,\n      #form div:hover,\n      #form div:active {\n        background-color: #FFFFFF !important;\n      }\n\n      paper-icon-button {\n        float: right;\n        border-radius: 50%;\n      }\n\n      .array-add {\n        color: #34e79a;\n        background-color: #f8f8f8;\n      }\n\n      .array-remove-element {\n        color: #f44336;\n        background-color: #f8f8f8;\n      }\n\n      .label {\n        @apply --paper-input-container-label;\n        white-space: normal;\n        position: static;\n        font-size: 22px;\n        color: #212121;\n      }\n\n      :host {\n        display: block;\n      }\n      .label {\n        white-space: normal;\n        position: static;\n        font-size: 22px;\n        color: #212121;\n        @apply --paper-input-container-label;\n      }\n    </style>\n    </custom-style>\n    <div class="horizontal layout">\n      <div class="flex" hidden\\$="[[!label]]">[[label]]</div>\n      <paper-icon-button id="addarray" title="Add another item" class="array-add" icon="add" on-click="_onAddItem" role="button" aria-label="Add another item"></paper-icon-button>\n    </div>\n\n    <paper-collapse-group id="form" class="vertical flex layout"></paper-collapse-group>\n  \n'
       ]
     );
-    _templateObject_d6669280ecf111e88a0b4725ebfbecff = function() {
+    _templateObject_8ecb3640f1e411e8bd8eaf7090426072 = function _templateObject_8ecb3640f1e411e8bd8eaf7090426072() {
       return data;
     };
     return data;
@@ -31,7 +47,7 @@ define([
   (0, _polymerLegacy.Polymer)({
     is: "eco-json-schema-array",
     _template: (0, _polymerLegacy.html)(
-      _templateObject_d6669280ecf111e88a0b4725ebfbecff()
+      _templateObject_8ecb3640f1e411e8bd8eaf7090426072()
     ),
     properties: {
       schema: { type: Object, observer: "_schemaChanged" },
@@ -58,8 +74,14 @@ define([
       var _this = this;
       if (
         newValue !== oldValue &&
-        babelHelpers.typeof(newValue) !== "undefined" &&
-        babelHelpers.typeof(this.schema) !== "undefined"
+        babelHelpers.typeof(newValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
+        babelHelpers.typeof(this.schema) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
       ) {
         setTimeout(function() {
           _this._buildSchemaArrayItems();
@@ -123,13 +145,16 @@ define([
             ctx.listen(buttonEl, "tap", "_onRemoveItem");
             buttonEl.classList.add("array-remove-element");
             componentEl.classList.add("flex", "horizontal", "layout");
-            dom(containerEl).appendChild(componentEl);
-            dom(containerEl).appendChild(buttonEl);
+            (0, _polymerDom.dom)(containerEl).appendChild(componentEl);
+            (0, _polymerDom.dom)(containerEl).appendChild(buttonEl);
             var beforeEl = ctx.$.form.children[i];
             if (beforeEl) {
-              dom(ctx.$.form).insertBefore(containerEl, beforeEl);
+              (0, _polymerDom.dom)(ctx.$.form).insertBefore(
+                containerEl,
+                beforeEl
+              );
             } else {
-              dom(ctx.$.form).appendChild(containerEl);
+              (0, _polymerDom.dom)(ctx.$.form).appendChild(containerEl);
             }
             ctx.listen(
               componentEl,
@@ -180,8 +205,13 @@ define([
       }
     },
     _removeArrayEl: function _removeArrayEl(el) {
-      var polyEl = dom(el);
-      if (babelHelpers.typeof(polyEl.childNodes[0]) !== "undefined") {
+      var polyEl = (0, _polymerDom.dom)(el);
+      if (
+        babelHelpers.typeof(polyEl.childNodes[0]) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         this.unlisten(
           polyEl.childNodes[0],
           polyEl.firstChild.schemaArrayItem.component.valueProperty
@@ -189,15 +219,20 @@ define([
             .toLowerCase() + "-changed",
           "_schemaArrayItemChanged"
         );
-        if (babelHelpers.typeof(polyEl.childNodes[1]) !== "undefined") {
+        if (
+          babelHelpers.typeof(polyEl.childNodes[1]) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           this.unlisten(polyEl.childNodes[1], "tap", "_onRemoveItem");
         }
       }
       el.schemaArrayItem = null;
-      dom(this.$.form).removeChild(el);
+      (0, _polymerDom.dom)(this.$.form).removeChild(el);
     },
     _clearForm: function _clearForm() {
-      var formEl = dom(this.$.form);
+      var formEl = (0, _polymerDom.dom)(this.$.form);
       while (formEl.firstChild) {
         this._removeArrayEl(formEl.firstChild);
       }
@@ -209,19 +244,32 @@ define([
     },
     _errorChanged: function _errorChanged() {
       var ctx = this;
-      dom(this.$.form).childNodes.forEach(function(rowEl, idx) {
+      (0, _polymerDom.dom)(this.$.form).childNodes.forEach(function(
+        rowEl,
+        idx
+      ) {
         if (ctx.error && ctx.error[idx]) {
-          dom(rowEl).childNodes[0].error = ctx.error[idx];
+          (0, _polymerDom.dom)(rowEl).childNodes[0].error = ctx.error[idx];
         } else {
-          dom(rowEl).childNodes[0].error = null;
+          (0, _polymerDom.dom)(rowEl).childNodes[0].error = null;
         }
       });
     },
-    _onAddItemWithValue: function _onAddItemWithValue(values) {
+    _onAddItemWithValue: function _onAddItemWithValue(values, pointer) {
       var schema = this.schema.items;
-      if (babelHelpers.typeof(values) !== "undefined") {
+      if (
+        babelHelpers.typeof(values) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         for (var i in values) {
-          if (babelHelpers.typeof(schema.properties[i]) !== "undefined") {
+          if (
+            babelHelpers.typeof(schema.properties[i]) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
+          ) {
             schema.properties[i].value = values[i];
           }
         }
@@ -267,13 +315,13 @@ define([
       ctx.listen(buttonEl, "tap", "_onRemoveItem");
       buttonEl.classList.add("array-remove-element");
       componentEl.classList.add("flex", "horizontal", "layout");
-      dom(containerEl).appendChild(componentEl);
-      dom(containerEl).appendChild(buttonEl);
+      (0, _polymerDom.dom)(containerEl).appendChild(componentEl);
+      (0, _polymerDom.dom)(containerEl).appendChild(buttonEl);
       var beforeEl = ctx.$.form.children[i];
       if (beforeEl) {
-        dom(ctx.$.form).insertBefore(containerEl, beforeEl);
+        (0, _polymerDom.dom)(ctx.$.form).insertBefore(containerEl, beforeEl);
       } else {
-        dom(ctx.$.form).appendChild(containerEl);
+        (0, _polymerDom.dom)(ctx.$.form).appendChild(containerEl);
       }
       ctx.listen(
         componentEl,
@@ -313,7 +361,8 @@ define([
       this.push("_schemaArrayItems", item);
     },
     _onRemoveItem: function _onRemoveItem(e) {
-      var item = dom(e).localTarget.previousSibling.schemaArrayItem,
+      var item = (0, _polymerDom.dom)(e).localTarget.previousSibling
+          .schemaArrayItem,
         index = this._schemaArrayItems.indexOf(item);
       this.splice("_schemaArrayItems", index, 1);
     },

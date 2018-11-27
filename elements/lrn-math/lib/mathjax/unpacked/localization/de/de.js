@@ -17,43 +17,48 @@
  *  limitations under the License.
  *
  */
-MathJax.Localization.addTranslation("de",null,{
+MathJax.Localization.addTranslation("de", null, {
   menuTitle: "Deutsch",
   version: "2.7.5",
   isLoaded: true,
   domains: {
-    "_": {
-        version: "2.7.5",
-        isLoaded: true,
-        strings: {
-          CookieConfig: "MathJax hat eine Cookie mit ausf\u00FChrbaren Code gefunden. Soll dieser Code ausgef\u00FChrt werden?\n\n(Klicken Sie 'Abbrechen' falls Sie das Cookie nicht selber akzeptiert haben.)",
-          MathProcessingError: "Fehler bei der Verarbeitung des mathematischen Ausdrucks",
-          MathError: "Fehler im mathematischen Ausdruck",
-          LoadFile: "Lade %1",
-          Loading: "Lade",
-          LoadFailed: "Datei konnte nicht geladen werden: %1",
-          ProcessMath: "Verarbeite mathematischen Ausdruck: %1%%",
-          Processing: "Verarbeite",
-          TypesetMath: "mathematischer Ausdruck wird gesetzt: %1%%",
-          Typesetting: "Formelsatz",
-          MathJaxNotSupported: "Ihr Webbrowser unterst\u00FCtzt MathJax nicht",
-          ErrorTips: "Fehlerbehebungs-Tipps: Verwende %%1, pr\u00FCfe %%2 in der Browserkonsole"
-        }
+    _: {
+      version: "2.7.5",
+      isLoaded: true,
+      strings: {
+        CookieConfig:
+          "MathJax hat eine Cookie mit ausf\u00FChrbaren Code gefunden. Soll dieser Code ausgef\u00FChrt werden?\n\n(Klicken Sie 'Abbrechen' falls Sie das Cookie nicht selber akzeptiert haben.)",
+        MathProcessingError:
+          "Fehler bei der Verarbeitung des mathematischen Ausdrucks",
+        MathError: "Fehler im mathematischen Ausdruck",
+        LoadFile: "Lade %1",
+        Loading: "Lade",
+        LoadFailed: "Datei konnte nicht geladen werden: %1",
+        ProcessMath: "Verarbeite mathematischen Ausdruck: %1%%",
+        Processing: "Verarbeite",
+        TypesetMath: "mathematischer Ausdruck wird gesetzt: %1%%",
+        Typesetting: "Formelsatz",
+        MathJaxNotSupported: "Ihr Webbrowser unterst\u00FCtzt MathJax nicht",
+        ErrorTips:
+          "Fehlerbehebungs-Tipps: Verwende %%1, pr\u00FCfe %%2 in der Browserkonsole"
+      }
     },
-    "FontWarnings": {},
+    FontWarnings: {},
     "HTML-CSS": {},
-    "HelpDialog": {},
-    "MathML": {},
-    "MathMenu": {},
-    "TeX": {}
+    HelpDialog: {},
+    MathML: {},
+    MathMenu: {},
+    TeX: {}
   },
-  plural: function (n) {
-      if (n === 1) {return 1} // one
-      return 2; // other
-    },
-  number: function (n) {
-      return String(n).replace(".", ","); // replace dot by comma
-    }
+  plural: function(n) {
+    if (n === 1) {
+      return 1;
+    } // one
+    return 2; // other
+  },
+  number: function(n) {
+    return String(n).replace(".", ","); // replace dot by comma
+  }
 });
 
 MathJax.Ajax.loadComplete("[MathJax]/localization/de/de.js");

@@ -16,9 +16,27 @@ define([
   "../node_modules/@lrnwebcomponents/paper-icon-picker/paper-icon-picker.js",
   "../node_modules/@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js",
   "../node_modules/@lrnwebcomponents/simple-colors/simple-colors.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _paperToggleButton,
+  _paperCard,
+  _paperTabs,
+  _paperTab,
+  _paperButton,
+  _paperTextarea,
+  _ironIcons,
+  _vaadinSplitLayout,
+  _ecoJsonSchemaForm,
+  _ecoJsonSchemaObject,
+  _codeEditor,
+  _appDatepicker,
+  _paperIconPicker,
+  _paperInputFlagged,
+  _simpleColors
+) {
   "use strict";
-  function _templateObject_a74e4fc0ee0311e8bb61cd2eef6a9bf2() {
+  function _templateObject_9aa0c640f1e611e8b3a2e3a031c18fd0() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n  <custom-style>\n    <style is="custom-style" include="simple-colors">\n      :host {\n        display: block;\n        background-color: rgba(0, 0, 0, .6);\n      }\n      paper-card.form-wrapper {\n        margin: 0;\n        padding: 8px;\n        width: 100%;\n        min-height: 160px;\n        background-color: transparent;\n      }\n\n      vaadin-split-layout {\n        display: flex;\n        justify-content: space-around;\n        height: 100%;\n        --vaadin-split-layout-splitter: {\n          background-color: #FFFFFF;\n        };\n      }\n      eco-json-schema-object {\n        width: 50%;\n      }\n\n      .vaadin-split-layout-panel {\n        flex: 1 1 auto;\n        width: 100%;\n        flex-wrap: nowrap;\n        margin: 0;\n        height: 100%;\n      }\n      #form {\n        --eco-json-schema-object-form: {\n          display: block !important;\n        }\n      }\n      #preview {\n        padding: 16px;\n        color: #000000;\n        background-color: #FFFFFF;\n      }\n      #preview ::slotted(*) {\n        float: unset !important;\n        float: unset !important;\n        margin: unset !important;\n        width: unset !important;\n      }\n      .preview-text {\n        font-size: 14px;\n        font-family: sans-serif;\n        color: #FFFFFF;\n        font-style: italic;\n        width: 100%;\n        height: 24px;\n        border-bottom: 1px solid #FFFFFF;\n        text-align: center;\n        padding: 8px 0;\n        box-sizing: content-box;\n      }\n      .preview-text iron-icon {\n        margin: 0 8px;\n        display: inline-block;\n      }\n      .preview-text-bottom {\n        border-bottom: unset;\n        border-top: 1px solid #FFFFFF;\n      }\n      @media screen and (max-width: 550px) {\n        .hide-on-mobile {\n          opacity: 0;\n          visibility: hidden;\n          position: absolute;\n          left: -9999px;\n        }\n      }\n\n      #modetabs {\n        height: 80px;\n        border-bottom: 1px #e5e5e5 solid;\n        display: block;\n        justify-content: space-evenly;\n        --paper-tabs-selection-bar-color: var(--simple-colors-light-green-background1);\n        --paper-tabs: {\n          background: transparent;\n        }\n      }\n\n      #modetabs paper-tab {\n        display: inline-flex;\n        height:100%;\n        --paper-tab-ink: var(--simple-colors-light-green-background1);\n        --paper-tab: {\n          font-size: 16px;\n        }\n      }\n      #modetabs paper-tab paper-button {\n        min-width: unset;\n        width: 100%;\n        height:100%;\n      }\n      .human-name {\n        width: 100%;\n        text-align: center;\n        font-size: 16px;\n      }\n      .preview-buttons {\n        height: 64px;\n        padding: 0px;\n        color: #222222;\n        border-bottom: 1px var(--hax-manager-steps-color) solid;\n        background-color: transparent;\n        margin: 16px 0 0 0;\n        text-align: center;\n        box-sizing: content-box;\n      }\n      eco-json-schema-object {\n        color: white;\n        --eco-json-schema-object-form : {\n          -ms-flex: unset;\n          -webkit-flex: unset;\n          flex: unset;\n          -webkit-flex-basis: unset;\n          flex-basis: unset;\n        };\n        --paper-icon-button: {\n          background-color: rgba(0,0,0,.9) !important;\n          border-radius: 50%;\n        }\n        --code-pen-title-color: #FFFFFF;\n        --paper-checkbox-size: 22px;\n        --paper-checkbox-unchecked-color: var(--simple-colors-blue-grey-background1);\n        --paper-checkbox-checked-color: var(--simple-colors-light-green-foreground3);\n        --paper-checkbox-checked-ink-color: #FFFFFF;\n        --paper-checkbox-unchecked-ink-color: #FFFFFF;\n        --paper-checkbox-label-color: var(--simple-colors-blue-grey-background1);\n        --paper-checkbox-label-checked-color: var(--simple-colors-accent-background1);\n        --paper-checkbox-label: {\n          font-size: 22px;\n          line-height: 32px;\n        };\n        --paper-input-container-invalid-color: var(--simple-colors-red-foreground3);\n        --secondary-text-color: #FFFFFF;\n        --primary-text-color: #FFFFFF;\n        --primary-color: #FFFFFF;\n        --paper-input-container-input-color: #FFFFFF;\n        --paper-input-container-color: #FFFFFF !important;\n        --paper-input-container-focus-color: var(--simple-colors-light-green-background1) !important;\n        --paper-listbox-color: #000000;\n      }\n      .preview-buttons paper-button {\n        min-width: unset;\n        width: 40%;\n        color: #000000;\n        display: inline-block;\n        background-color: var(--simple-colors-light-green-background1);\n      }\n    </style>\n  </custom-style>\n    <vaadin-split-layout class="panel-wrapper">\n      <!-- critique panel -->\n      <div class="vaadin-split-layout-panel">\n        <div class="preview-buttons">\n          <paper-button id="insert" raised on-click="insert">[[editTitle]]</paper-button>\n          <paper-button id="cancel" raised on-click="cancel">Cancel</paper-button>\n        </div>\n        <div class="preview-text"><iron-icon icon="icons:arrow-drop-down"></iron-icon><iron-icon icon="icons:arrow-drop-down"></iron-icon><iron-icon icon="icons:arrow-drop-down"></iron-icon>[[humanName]] preview<iron-icon icon="icons:arrow-drop-down"></iron-icon><iron-icon icon="icons:arrow-drop-down"></iron-icon><iron-icon icon="icons:arrow-drop-down"></iron-icon></div>\n        <div id="preview"></div>\n        <div class="preview-text preview-text-bottom"><iron-icon icon="icons:arrow-drop-up"></iron-icon><iron-icon icon="icons:arrow-drop-up"></iron-icon><iron-icon icon="icons:arrow-drop-up"></iron-icon>end preview<iron-icon icon="icons:arrow-drop-up"></iron-icon><iron-icon icon="icons:arrow-drop-up"></iron-icon><iron-icon icon="icons:arrow-drop-up"></iron-icon></div>\n      </div>\n      <div class="vaadin-split-layout-panel">\n        <paper-tabs hidden$="[[!haspreviewNode]]" id="modetabs" selected="{{modeTab}}" attr-for-selected="data-mode">\n          <paper-tab id="configurebutton" data-mode="configure"><paper-button raised="" noink="">Configure</paper-button></paper-tab>\n          <paper-tab id="advancedbutton" data-mode="advanced"><paper-button raised="" noink="">Advanced</paper-button></paper-tab>\n        </paper-tabs>\n        <paper-card class="form-wrapper">\n          <eco-json-schema-object id="form" schema="[[schema]]" value="{{value}}"></eco-json-schema-object>\n        </paper-card>\n      </div>\n    </vaadin-split-layout>\n'
@@ -27,14 +45,14 @@ define([
         '\n  <custom-style>\n    <style is="custom-style" include="simple-colors">\n      :host {\n        display: block;\n        background-color: rgba(0, 0, 0, .6);\n      }\n      paper-card.form-wrapper {\n        margin: 0;\n        padding: 8px;\n        width: 100%;\n        min-height: 160px;\n        background-color: transparent;\n      }\n\n      vaadin-split-layout {\n        display: flex;\n        justify-content: space-around;\n        height: 100%;\n        --vaadin-split-layout-splitter: {\n          background-color: #FFFFFF;\n        };\n      }\n      eco-json-schema-object {\n        width: 50%;\n      }\n\n      .vaadin-split-layout-panel {\n        flex: 1 1 auto;\n        width: 100%;\n        flex-wrap: nowrap;\n        margin: 0;\n        height: 100%;\n      }\n      #form {\n        --eco-json-schema-object-form: {\n          display: block !important;\n        }\n      }\n      #preview {\n        padding: 16px;\n        color: #000000;\n        background-color: #FFFFFF;\n      }\n      #preview ::slotted(*) {\n        float: unset !important;\n        float: unset !important;\n        margin: unset !important;\n        width: unset !important;\n      }\n      .preview-text {\n        font-size: 14px;\n        font-family: sans-serif;\n        color: #FFFFFF;\n        font-style: italic;\n        width: 100%;\n        height: 24px;\n        border-bottom: 1px solid #FFFFFF;\n        text-align: center;\n        padding: 8px 0;\n        box-sizing: content-box;\n      }\n      .preview-text iron-icon {\n        margin: 0 8px;\n        display: inline-block;\n      }\n      .preview-text-bottom {\n        border-bottom: unset;\n        border-top: 1px solid #FFFFFF;\n      }\n      @media screen and (max-width: 550px) {\n        .hide-on-mobile {\n          opacity: 0;\n          visibility: hidden;\n          position: absolute;\n          left: -9999px;\n        }\n      }\n\n      #modetabs {\n        height: 80px;\n        border-bottom: 1px #e5e5e5 solid;\n        display: block;\n        justify-content: space-evenly;\n        --paper-tabs-selection-bar-color: var(--simple-colors-light-green-background1);\n        --paper-tabs: {\n          background: transparent;\n        }\n      }\n\n      #modetabs paper-tab {\n        display: inline-flex;\n        height:100%;\n        --paper-tab-ink: var(--simple-colors-light-green-background1);\n        --paper-tab: {\n          font-size: 16px;\n        }\n      }\n      #modetabs paper-tab paper-button {\n        min-width: unset;\n        width: 100%;\n        height:100%;\n      }\n      .human-name {\n        width: 100%;\n        text-align: center;\n        font-size: 16px;\n      }\n      .preview-buttons {\n        height: 64px;\n        padding: 0px;\n        color: #222222;\n        border-bottom: 1px var(--hax-manager-steps-color) solid;\n        background-color: transparent;\n        margin: 16px 0 0 0;\n        text-align: center;\n        box-sizing: content-box;\n      }\n      eco-json-schema-object {\n        color: white;\n        --eco-json-schema-object-form : {\n          -ms-flex: unset;\n          -webkit-flex: unset;\n          flex: unset;\n          -webkit-flex-basis: unset;\n          flex-basis: unset;\n        };\n        --paper-icon-button: {\n          background-color: rgba(0,0,0,.9) !important;\n          border-radius: 50%;\n        }\n        --code-pen-title-color: #FFFFFF;\n        --paper-checkbox-size: 22px;\n        --paper-checkbox-unchecked-color: var(--simple-colors-blue-grey-background1);\n        --paper-checkbox-checked-color: var(--simple-colors-light-green-foreground3);\n        --paper-checkbox-checked-ink-color: #FFFFFF;\n        --paper-checkbox-unchecked-ink-color: #FFFFFF;\n        --paper-checkbox-label-color: var(--simple-colors-blue-grey-background1);\n        --paper-checkbox-label-checked-color: var(--simple-colors-accent-background1);\n        --paper-checkbox-label: {\n          font-size: 22px;\n          line-height: 32px;\n        };\n        --paper-input-container-invalid-color: var(--simple-colors-red-foreground3);\n        --secondary-text-color: #FFFFFF;\n        --primary-text-color: #FFFFFF;\n        --primary-color: #FFFFFF;\n        --paper-input-container-input-color: #FFFFFF;\n        --paper-input-container-color: #FFFFFF !important;\n        --paper-input-container-focus-color: var(--simple-colors-light-green-background1) !important;\n        --paper-listbox-color: #000000;\n      }\n      .preview-buttons paper-button {\n        min-width: unset;\n        width: 40%;\n        color: #000000;\n        display: inline-block;\n        background-color: var(--simple-colors-light-green-background1);\n      }\n    </style>\n  </custom-style>\n    <vaadin-split-layout class="panel-wrapper">\n      <!-- critique panel -->\n      <div class="vaadin-split-layout-panel">\n        <div class="preview-buttons">\n          <paper-button id="insert" raised on-click="insert">[[editTitle]]</paper-button>\n          <paper-button id="cancel" raised on-click="cancel">Cancel</paper-button>\n        </div>\n        <div class="preview-text"><iron-icon icon="icons:arrow-drop-down"></iron-icon><iron-icon icon="icons:arrow-drop-down"></iron-icon><iron-icon icon="icons:arrow-drop-down"></iron-icon>[[humanName]] preview<iron-icon icon="icons:arrow-drop-down"></iron-icon><iron-icon icon="icons:arrow-drop-down"></iron-icon><iron-icon icon="icons:arrow-drop-down"></iron-icon></div>\n        <div id="preview"></div>\n        <div class="preview-text preview-text-bottom"><iron-icon icon="icons:arrow-drop-up"></iron-icon><iron-icon icon="icons:arrow-drop-up"></iron-icon><iron-icon icon="icons:arrow-drop-up"></iron-icon>end preview<iron-icon icon="icons:arrow-drop-up"></iron-icon><iron-icon icon="icons:arrow-drop-up"></iron-icon><iron-icon icon="icons:arrow-drop-up"></iron-icon></div>\n      </div>\n      <div class="vaadin-split-layout-panel">\n        <paper-tabs hidden\\$="[[!haspreviewNode]]" id="modetabs" selected="{{modeTab}}" attr-for-selected="data-mode">\n          <paper-tab id="configurebutton" data-mode="configure"><paper-button raised="" noink="">Configure</paper-button></paper-tab>\n          <paper-tab id="advancedbutton" data-mode="advanced"><paper-button raised="" noink="">Advanced</paper-button></paper-tab>\n        </paper-tabs>\n        <paper-card class="form-wrapper">\n          <eco-json-schema-object id="form" schema="[[schema]]" value="{{value}}"></eco-json-schema-object>\n        </paper-card>\n      </div>\n    </vaadin-split-layout>\n'
       ]
     );
-    _templateObject_a74e4fc0ee0311e8bb61cd2eef6a9bf2 = function() {
+    _templateObject_9aa0c640f1e611e8b3a2e3a031c18fd0 = function _templateObject_9aa0c640f1e611e8b3a2e3a031c18fd0() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a74e4fc0ee0311e8bb61cd2eef6a9bf2()
+      _templateObject_9aa0c640f1e611e8b3a2e3a031c18fd0()
     ),
     is: "hax-preview",
     behaviors: [simpleColorsBehaviors],
@@ -73,16 +91,29 @@ define([
       window.HaxStore.instance.haxManager.insertHaxElement(e);
     },
     _computedHasPreviewNode: function _computedHasPreviewNode(previewNode) {
-      if (babelHelpers.typeof(previewNode.tagName) === "undefined") {
+      if (
+        babelHelpers.typeof(previewNode.tagName) ===
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         return !1;
       } else {
         return !0;
       }
     },
-    _computedEditSource: function _computedEditSource(newValue) {
-      if (babelHelpers.typeof(newValue) !== "undefined") {
+    _computedEditSource: function _computedEditSource(newValue, oldValue) {
+      if (
+        babelHelpers.typeof(newValue) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         if (
-          babelHelpers.typeof(this.previewNode.tagName) !== "undefined" &&
+          babelHelpers.typeof(this.previewNode.tagName) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           window.HaxStore.instance.elementList[
             this.previewNode.tagName.toLowerCase()
           ]
@@ -102,16 +133,30 @@ define([
       }
     },
     _formKeyChanged: function _formKeyChanged(newValue, oldValue) {
-      if (babelHelpers.typeof(oldValue) !== "undefined") {
+      if (
+        babelHelpers.typeof(oldValue) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         var schema = {};
         if (
-          babelHelpers.typeof(this.previewNode) !== "undefined" &&
-          babelHelpers.typeof(this.previewNode.tagName) !== "undefined" &&
+          babelHelpers.typeof(this.previewNode) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
+          babelHelpers.typeof(this.previewNode.tagName) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           babelHelpers.typeof(
             window.HaxStore.instance.elementList[
               this.previewNode.tagName.toLowerCase()
             ]
-          ) !== "undefined"
+          ) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
         ) {
           var element = this.element,
             props =
@@ -130,13 +175,18 @@ define([
           for (var property in element.properties) {
             if (element.properties.hasOwnProperty(property)) {
               if (
-                babelHelpers.typeof(schema.properties[property]) !== "undefined"
+                babelHelpers.typeof(schema.properties[property]) !==
+                ("undefined" === typeof void 0
+                  ? "undefined"
+                  : babelHelpers.typeof(void 0))
               ) {
                 schema.properties[property].value =
                   element.properties[property];
                 if (
                   babelHelpers.typeof(schema.properties[property].component) !==
-                  "undefined"
+                  ("undefined" === typeof void 0
+                    ? "undefined"
+                    : babelHelpers.typeof(void 0))
                 ) {
                   schema.properties[property].component.properties.value =
                     element.properties[property];
@@ -162,7 +212,9 @@ define([
             var previewNode = this.previewNode;
             if (
               babelHelpers.typeof(props.settings[this.formKey][prop].slot) !==
-              "undefined"
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
             ) {
               for (var i in (0, _polymerDom.dom)(
                 previewNode
@@ -172,7 +224,10 @@ define([
                     (0, _polymerDom.dom)(previewNode).getEffectiveChildNodes()[
                       i
                     ]
-                  ) !== "undefined" &&
+                  ) !==
+                    ("undefined" === typeof void 0
+                      ? "undefined"
+                      : babelHelpers.typeof(void 0)) &&
                   1 ===
                     (0, _polymerDom.dom)(previewNode).getEffectiveChildNodes()[
                       i
@@ -185,7 +240,10 @@ define([
                       (0, _polymerDom.dom)(
                         previewNode
                       ).getEffectiveChildNodes()[i].innerHTML
-                    ) !== "undefined"
+                    ) !==
+                    ("undefined" === typeof void 0
+                      ? "undefined"
+                      : babelHelpers.typeof(void 0))
                   ) {
                     schema.properties[
                       props.settings[this.formKey][prop].slot
@@ -210,14 +268,23 @@ define([
     },
     _previewNodeChanged: function _previewNodeChanged(newValue, oldValue) {
       if (
-        babelHelpers.typeof(oldValue) !== "undefined" &&
+        babelHelpers.typeof(oldValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         newValue != oldValue
       ) {
         if (
-          babelHelpers.typeof(newValue.tagName) !== "undefined" &&
+          babelHelpers.typeof(newValue.tagName) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           babelHelpers.typeof(
             window.HaxStore.instance.elementList[newValue.tagName.toLowerCase()]
-          ) !== "undefined"
+          ) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
         ) {
           var element = this.element,
             props =
@@ -237,7 +304,12 @@ define([
               props
             );
           }
-          if (babelHelpers.typeof(props.gizmo.title) === "undefined") {
+          if (
+            babelHelpers.typeof(props.gizmo.title) ===
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
+          ) {
             this.humanName = newValue.tagName.replace("-", " ").toLowerCase();
           } else {
             this.humanName = props.gizmo.title;
@@ -245,13 +317,18 @@ define([
           for (var property in element.properties) {
             if (element.properties.hasOwnProperty(property)) {
               if (
-                babelHelpers.typeof(schema.properties[property]) !== "undefined"
+                babelHelpers.typeof(schema.properties[property]) !==
+                ("undefined" === typeof void 0
+                  ? "undefined"
+                  : babelHelpers.typeof(void 0))
               ) {
                 schema.properties[property].value =
                   element.properties[property];
                 if (
                   babelHelpers.typeof(schema.properties[property].component) !==
-                  "undefined"
+                  ("undefined" === typeof void 0
+                    ? "undefined"
+                    : babelHelpers.typeof(void 0))
                 ) {
                   schema.properties[property].component.properties.value =
                     element.properties[property];
@@ -272,15 +349,22 @@ define([
             if (
               newValue.hasOwnProperty(property) &&
               babelHelpers.typeof(schema.properties[property]) !==
-                "undefined" &&
-              babelHelpers.typeof(newValue[property].value) !== "undefined" &&
+                ("undefined" === typeof void 0
+                  ? "undefined"
+                  : babelHelpers.typeof(void 0)) &&
+              babelHelpers.typeof(newValue[property].value) !==
+                ("undefined" === typeof void 0
+                  ? "undefined"
+                  : babelHelpers.typeof(void 0)) &&
               null !== newValue[property].value
             ) {
               schema.properties[property].value =
                 newValue.properties[property].value;
               if (
                 babelHelpers.typeof(schema.properties[property].component) !==
-                "undefined"
+                ("undefined" === typeof void 0
+                  ? "undefined"
+                  : babelHelpers.typeof(void 0))
               ) {
                 schema.properties[property].component.properties.value =
                   newValue.properties[property].value;
@@ -294,7 +378,9 @@ define([
           for (var prop in props.settings[this.formKey]) {
             if (
               babelHelpers.typeof(props.settings[this.formKey][prop].slot) !==
-              "undefined"
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
             ) {
               for (var i in (0, _polymerDom.dom)(
                 newValue
@@ -302,7 +388,10 @@ define([
                 if (
                   babelHelpers.typeof(
                     (0, _polymerDom.dom)(newValue).getEffectiveChildNodes()[i]
-                  ) !== "undefined" &&
+                  ) !==
+                    ("undefined" === typeof void 0
+                      ? "undefined"
+                      : babelHelpers.typeof(void 0)) &&
                   1 ===
                     (0, _polymerDom.dom)(newValue).getEffectiveChildNodes()[i]
                       .nodeType &&
@@ -313,7 +402,10 @@ define([
                     babelHelpers.typeof(
                       (0, _polymerDom.dom)(newValue).getEffectiveChildNodes()[i]
                         .innerHTML
-                    ) !== "undefined"
+                    ) !==
+                    ("undefined" === typeof void 0
+                      ? "undefined"
+                      : babelHelpers.typeof(void 0))
                   ) {
                     schema.properties[
                       props.settings[this.formKey][prop].slot
@@ -335,10 +427,13 @@ define([
         }
       }
     },
-    _elementChanged: function _elementChanged(newValue) {
+    _elementChanged: function _elementChanged(newValue, oldValue) {
       var _this = this;
       if (
-        babelHelpers.typeof(newValue) !== "undefined" &&
+        babelHelpers.typeof(newValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         0 < Object.keys(newValue).length
       ) {
         var preview = this.$.preview;
@@ -362,10 +457,16 @@ define([
     _valueChanged: function _valueChanged() {
       var node = this.previewNode;
       if (
-        babelHelpers.typeof(node.tagName) !== "undefined" &&
+        babelHelpers.typeof(node.tagName) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         babelHelpers.typeof(
           window.HaxStore.instance.elementList[node.tagName.toLowerCase()]
-        ) !== "undefined"
+        ) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
       ) {
         var props =
           window.HaxStore.instance.elementList[node.tagName.toLowerCase()];
@@ -374,10 +475,16 @@ define([
             props.settings[this.formKey].hasOwnProperty(value) &&
             babelHelpers.typeof(
               props.settings[this.formKey][value].property
-            ) !== "undefined" &&
+            ) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0)) &&
             babelHelpers.typeof(
               this.value[props.settings[this.formKey][value].property]
-            ) !== "undefined"
+            ) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
           ) {
             if (
               !0 === this.value[props.settings[this.formKey][value].property]
@@ -426,10 +533,16 @@ define([
             props.settings[this.formKey].hasOwnProperty(value) &&
             babelHelpers.typeof(
               props.settings[this.formKey][value].attribute
-            ) !== "undefined" &&
+            ) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0)) &&
             babelHelpers.typeof(
               this.value[props.settings[this.formKey][value].attribute]
-            ) !== "undefined"
+            ) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
           ) {
             var attributeName = window.HaxStore.camelToDash(
               props.settings[this.formKey][value].attribute
@@ -475,10 +588,15 @@ define([
             }
           } else if (
             babelHelpers.typeof(props.settings[this.formKey][value].slot) !==
-              "undefined" &&
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0)) &&
             babelHelpers.typeof(
               this.value[props.settings[this.formKey][value].slot]
-            ) !== "undefined"
+            ) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
           ) {
             var slotTag = "span";
             if ("code-editor" === node.tagName.toLowerCase()) {
@@ -500,6 +618,7 @@ define([
               "element.content",
               "<template>" + tmpel.innerHTML + "</template>"
             );
+          } else {
           }
         }
       }

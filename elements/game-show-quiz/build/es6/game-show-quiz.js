@@ -218,10 +218,10 @@ Polymer({
     gameData: { type: String },
     activeQuestion: { type: Object }
   },
-  directionsToggle: function() {
+  directionsToggle: function(e) {
     this.$.directions.toggle();
   },
-  continueGameTap: function() {
+  continueGameTap: function(e) {
     if (
       typeof this.__activeTap !== typeof void 0 &&
       null !=
@@ -240,10 +240,10 @@ Polymer({
       delete this.__activeTap;
     }
   },
-  registerTap: function() {
+  registerTap: function(e) {
     this.__submitDisabled = !1;
   },
-  submitAnswer: function() {
+  submitAnswer: function(e) {
     this.set("activeQuestion.submitted", !0);
     this.$.continue.focus();
     this.__activeTap.disabled = !0;
@@ -304,12 +304,12 @@ Polymer({
       }, 100);
     }
   },
-  _gameBoardChanged: function() {},
-  resetFocus: function() {
+  _gameBoardChanged: function(newValue, oldvalue) {},
+  resetFocus: function(e) {
     this.$.helpbutton.focus();
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -343,7 +343,8 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
     this.$.dismiss.addEventListener("tap", this.resetFocus.bind(this));
     this.$.contentcontainer.addEventListener(
       "tap",

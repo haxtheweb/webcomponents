@@ -28,10 +28,10 @@ define(["./node_modules/@polymer/polymer/polymer-legacy.js"], function(
     _getDisableNext: function _getDisableNext(selected, nrItems, disableNext) {
       return selected < nrItems - 1 && !disableNext;
     },
-    _computeProgressValue: function _computeProgressValue(selected) {
+    _computeProgressValue: function _computeProgressValue(selected, items) {
       return selected + 1;
     },
-    _onItemsChanged: function _onItemsChanged() {
+    _onItemsChanged: function _onItemsChanged(e) {
       this._items = this.$.selector.items;
     }
   });

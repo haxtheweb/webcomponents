@@ -2,9 +2,9 @@ define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _schemaBehaviors, _HAXWiring) {
   "use strict";
-  function _templateObject_1eee9380ecf311e89a18b508bb93cec9() {
+  function _templateObject_a8cdbb20f1e511e8af551ba8aad32601() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: inline-block;\n      }\n    </style>\n    <link property="oer:forComponent" content$="[[relatedResource]]">\n    <span property$="oer:[[oerProperty]]">\n      <slot></slot>\n      [[text]]\n    </span>\n'
@@ -13,14 +13,14 @@ define([
         '\n    <style>\n      :host {\n        display: inline-block;\n      }\n    </style>\n    <link property="oer:forComponent" content\\$="[[relatedResource]]">\n    <span property\\$="oer:[[oerProperty]]">\n      <slot></slot>\n      [[text]]\n    </span>\n'
       ]
     );
-    _templateObject_1eee9380ecf311e89a18b508bb93cec9 = function() {
+    _templateObject_a8cdbb20f1e511e8af551ba8aad32601 = function _templateObject_a8cdbb20f1e511e8af551ba8aad32601() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_1eee9380ecf311e89a18b508bb93cec9()
+      _templateObject_a8cdbb20f1e511e8af551ba8aad32601()
     ),
     is: "oer-schema",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
@@ -840,13 +840,19 @@ define([
         }
       };
     },
-    types: function() {
+    types: function types() {
       var schema = this.latestSchema(),
         types = {};
       for (var i in schema.classes) {
         if (
-          babelHelpers.typeof(schema.classes[i].label) !== "undefined" &&
-          babelHelpers.typeof(schema.classes[i].subClassOf) !== "undefined" &&
+          babelHelpers.typeof(schema.classes[i].label) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
+          babelHelpers.typeof(schema.classes[i].subClassOf) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           (schema.classes[i].subClassOf.includes("Resource") ||
             schema.classes[i].subClassOf.includes("LearningComponent") ||
             schema.classes[i].subClassOf.includes("InstructionalPattern"))

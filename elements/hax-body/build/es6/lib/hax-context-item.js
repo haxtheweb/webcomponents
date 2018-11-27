@@ -48,7 +48,7 @@ Polymer({
     default: { type: Boolean, value: !1 },
     value: { type: String, value: "" }
   },
-  _fireEvent: function() {
+  _fireEvent: function(e) {
     this.fire("hax-context-item-selected", {
       target: this,
       eventName: this.eventName,

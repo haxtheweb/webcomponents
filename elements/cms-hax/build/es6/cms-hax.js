@@ -65,7 +65,7 @@ Polymer({
     activeHaxBody: { type: Object, observer: "_activeHaxBodyUpdated" },
     __imported: { type: Boolean, value: !1 }
   },
-  _activeHaxBodyUpdated: function(newValue) {
+  _activeHaxBodyUpdated: function(newValue, oldValue) {
     if (null != newValue && !this.__imported) {
       this.__imported = !0;
       let children = this.queryEffectiveChildren("template");
@@ -93,7 +93,7 @@ Polymer({
       window.HaxStore.write("editMode", !0, this);
     }
     if (this.syncBody) {
-      FlattenedNodesObserver(this.$.body, () => {
+      FlattenedNodesObserver(this.$.body, info => {
         if (!this.__lock) {
           this.__lock = !0;
           this.fire(
@@ -119,11 +119,11 @@ Polymer({
       this.set(e.detail.property, e.detail.value);
     }
   },
-  _saveFired: function() {
+  _saveFired: function(e) {
     this.updatePageData = window.HaxStore.instance.activeHaxBody.haxToContent();
     this.$.pageupdateajax.generateRequest();
   },
-  _handleUpdateResponse: function() {
+  _handleUpdateResponse: function(e) {
     if (!this.hideMessage) {
       this.$.toast.show("Saved!");
       if (this.redirectOnSave) {

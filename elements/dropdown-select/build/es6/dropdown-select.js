@@ -61,10 +61,10 @@ Polymer({
       this.fire("dropdown-select-changed", this);
     }
   },
-  _onOpen: function() {
+  _onOpen: function(e) {
     this.opened = !0;
   },
-  _onClose: function() {
+  _onClose: function(e) {
     this.opened = !1;
   },
   _setSelectedValues: function() {

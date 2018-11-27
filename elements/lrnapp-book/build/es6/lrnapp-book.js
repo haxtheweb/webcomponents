@@ -9,8 +9,8 @@ import "./node_modules/@polymer/iron-icons/hardware-icons.js";
 import "./node_modules/@polymer/iron-ajax/iron-ajax.js";
 import "./node_modules/@polymer/paper-icon-button/paper-icon-button.js";
 import "./node_modules/@polymer/paper-styles/color.js";
-import "paper-search/paper-search-bar.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "./node_modules/@lrnwebcomponents/paper-search/lib/paper-search-bar.js";
+import "./node_modules/@polymer/paper-tooltip/paper-tooltip.js";
 import "./node_modules/@polymer/paper-slider/paper-slider.js";
 import "./node_modules/@polymer/app-layout/app-layout.js";
 import "./node_modules/@polymer/app-layout/app-drawer/app-drawer.js";
@@ -602,17 +602,17 @@ Polymer({
       observer: "_fullWidthChanged"
     }
   },
-  ready: function() {
+  ready: function(e) {
     this.$.bodyloading.hidden = !0;
     this.$.outlineajax.generateRequest();
     setTimeout(() => {
       this._resetScroll();
     }, 500);
   },
-  _fullWidthChanged: function() {
+  _fullWidthChanged: function(newValue, oldValue) {
     updateStyles();
   },
-  progressdashboardopen: function() {
+  progressdashboardopen: function(e) {
     this.$.progressdashboard.showProgress = !0;
   },
   _computePageUpdatePath: function(data, sourcePath) {
@@ -637,7 +637,7 @@ Polymer({
       };
     }
   },
-  _toggleEditMode: function() {
+  _toggleEditMode: function(e) {
     this.editMode = !this.editMode;
   },
   _editModeChanged: function(newValue, oldValue) {
@@ -686,7 +686,7 @@ Polymer({
       }
     }
   },
-  _handleUpdateResponse: function() {
+  _handleUpdateResponse: function(e) {
     this.$.toast.show("Saved!");
   },
   _bookOutlineTap: function(e) {
@@ -804,7 +804,7 @@ Polymer({
       }
     }
   },
-  _outlineItemsChanged: function(newValue) {
+  _outlineItemsChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0 && 0 != newValue.length) {
       if (0 != this.activePage) {
         this.prevLabel = newValue[this.activePage - 1].title;
@@ -821,7 +821,7 @@ Polymer({
       );
     }
   },
-  _scrollChanged: function(newValue) {
+  _scrollChanged: function(newValue, oldValue) {
     if (
       typeof this.outlineItems !== typeof void 0 &&
       typeof this.outlineItems[this.activePage] !== typeof void 0 &&
@@ -842,7 +842,7 @@ Polymer({
       }
     }
   },
-  _nextBtn: function() {
+  _nextBtn: function(e) {
     if (this.activePage < this.outlineItems.length - 1) {
       this.set(
         "outlineItems." + this.activePage + ".value",
@@ -851,12 +851,12 @@ Polymer({
       this.activePage = this.activePage + 1;
     }
   },
-  _prevBtn: function() {
+  _prevBtn: function(e) {
     if (0 < this.activePage) {
       this.activePage = this.activePage - 1;
     }
   },
-  toggleBook: function() {
+  toggleBook: function(e) {
     if (this.editMode) {
       this.$.haxpanel.toggle();
       this.fullWidth = !this.$.haxpanel.opened;
@@ -914,7 +914,7 @@ Polymer({
       this.set("currentPageData", response);
     }
   },
-  _currentPageDataUpdated: function(newValue) {
+  _currentPageDataUpdated: function(newValue, oldValue) {
     if (
       typeof newValue !== typeof void 0 &&
       typeof newValue.content !== typeof void 0

@@ -25,7 +25,7 @@ Polymer({
     before: { type: Boolean, value: !1, reflectToAttribute: !0 },
     type: { type: String, value: null }
   },
-  _onTap: function() {
+  _onTap: function(e) {
     let root = this,
       action = root.action,
       type = root.type,

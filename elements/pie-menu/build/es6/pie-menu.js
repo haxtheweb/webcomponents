@@ -156,7 +156,7 @@ Polymer({
     }
   },
   _addListenerAddState: function(menu, button, action, state) {
-    button.addEventListener(action, () => {
+    button.addEventListener(action, e => {
       for (
         var elements = menu._getButtonElements(menu, button), i = 0;
         i < elements.length;
@@ -167,7 +167,7 @@ Polymer({
     });
   },
   _addListenerRemoveState: function(menu, button, action, state) {
-    button.addEventListener(action, () => {
+    button.addEventListener(action, e => {
       for (
         var elements = menu._getButtonElements(menu, button), i = 0;
         i < elements.length;

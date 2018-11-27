@@ -72,6 +72,13 @@ window.simpleColorsBehaviors = {
     }
   },
   _getLightTheme: function(hexCodes) {
+    let setThemeProps = function(themePrefix, theme) {
+      for (var property in theme) {
+        if (theme.hasOwnProperty(property)) {
+          this._setProps(themePrefix + property, theme[property]);
+        }
+      }
+    };
     this._setThemeProps("--simple-colors-", hexCodes);
     this._setThemeProps("--simple-colors-light-theme-", hexCodes);
     return hexCodes;

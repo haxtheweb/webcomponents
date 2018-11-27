@@ -4,6 +4,7 @@ import {
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
 import "./node_modules/@polymer/paper-checkbox/paper-checkbox.js";
 import "./node_modules/@polymer/iron-icons/iron-icons.js";
+import "./node_modules/@polymer/iron-icon/iron-icon.js";
 import "./node_modules/@polymer/paper-button/paper-button.js";
 import "./node_modules/@polymer/paper-toast/paper-toast.js";
 import "./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
@@ -27,8 +28,11 @@ Polymer({
       ul li {
         padding: 8px;
       }
-      paper-radio-button {
+      paper-checkbox {
         padding: 8px;
+      }
+      iron-icon {
+        display: inline-flex;
       }
     </style>
     <meta property="oer:assessing" content\$="[[relatedResource]]">
@@ -82,7 +86,7 @@ Polymer({
       }
     }
   },
-  _resetAnswers: function() {
+  _resetAnswers: function(e) {
     this.$.toast.hide();
     for (var i in this.displayedAnswers) {
       if (this.displayedAnswers[i].userGuess) {
@@ -118,7 +122,7 @@ Polymer({
     }
     return gotRight;
   },
-  _verifyAnswers: function() {
+  _verifyAnswers: function(e) {
     let gotRight = this.checkAnswers();
     if (gotRight) {
       this.$.toast.hide();
@@ -159,7 +163,7 @@ Polymer({
   },
   attached: function() {
     this.$.toast.fitInto = this;
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -264,6 +268,7 @@ Polymer({
         ]
       },
       saveOptions: { unsetAttributes: ["displayed-answers"] }
-    });
+    };
+    this.setHaxProperties(props);
   }
 });

@@ -16,4 +16,16 @@
  *  limitations under the License.
  */
 
-MathJax.Hub.Insert(MathJax.OutputJax.SVG.FONTDATA.FONTS.MathJax_AMS,{8245:[560,-43,275,12,244,"12 501Q12 527 31 542T63 558Q73 560 77 560Q114 560 128 528Q133 518 188 293T244 61Q244 56 223 50T195 43Q192 43 190 45T102 263T14 486Q12 496 12 501"]});MathJax.Ajax.loadComplete(MathJax.OutputJax.SVG.fontDir+"/AMS/Regular/GeneralPunctuation.js");
+MathJax.Hub.Insert(MathJax.OutputJax.SVG.FONTDATA.FONTS.MathJax_AMS, {
+  8245: [
+    560,
+    -43,
+    275,
+    12,
+    244,
+    "12 501Q12 527 31 542T63 558Q73 560 77 560Q114 560 128 528Q133 518 188 293T244 61Q244 56 223 50T195 43Q192 43 190 45T102 263T14 486Q12 496 12 501"
+  ]
+});
+MathJax.Ajax.loadComplete(
+  MathJax.OutputJax.SVG.fontDir + "/AMS/Regular/GeneralPunctuation.js"
+);

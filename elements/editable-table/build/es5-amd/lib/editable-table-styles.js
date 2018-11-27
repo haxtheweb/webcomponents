@@ -1,4 +1,6 @@
-define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function() {
+define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
+  _polymerLegacy
+) {
   "use strict";
   var $_documentContainer = document.createElement("div");
   $_documentContainer.setAttribute("style", "display: none;");

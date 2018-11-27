@@ -189,26 +189,24 @@ Polymer({
     wavecolor: { type: String, value: "#ffffff", notify: !0 },
     progresscolor: { type: String, value: "#CFD8DC", notify: !0 }
   },
-  _srcChanged: function(newValue) {
+  _srcChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0 && this.__wavesurfer) {
       window.wavesurferobject.load(newValue);
     }
   },
   created: function() {
     const name = "wavesurfer",
-      basePath = pathFromUrl(import.meta.url);
+      basePath = pathFromUrl(import.meta.url),
+      location = `${basePath}lib/wavesurfer.js/dist/wavesurfer.js`;
     window.addEventListener(
       `es-bridge-${name}-loaded`,
       this._wavesurferLoaded.bind(this)
     );
     window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(
-      name,
-      `${basePath}lib/wavesurfer.js/dist/wavesurfer.js`
-    );
+    window.ESGlobalBridge.instance.load(name, location);
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -257,7 +255,8 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
   ready: function() {
     if ("right" === this.lean) {
@@ -364,7 +363,7 @@ Polymer({
       this.deactivateAnimation();
     });
   },
-  togglePlay: function() {
+  togglePlay: function(e) {
     window.wavesurferobject.playPause();
     var iconType = this.$.playbutton.getAttribute("icon");
     if ("av:play-arrow" === iconType) {
@@ -373,7 +372,7 @@ Polymer({
       this.deactivateAnimation();
     }
   },
-  toggleMute: function() {
+  toggleMute: function(e) {
     var muteStyle = this.$.mute,
       iconType = muteStyle.getAttribute("icon");
     window.wavesurferobject.toggleMute();
@@ -383,7 +382,7 @@ Polymer({
       muteStyle.setAttribute("icon", "av:volume-up");
     }
   },
-  throwBack: function() {
+  throwBack: function(e) {
     window.wavesurferobject.skipBackward(30);
   }
 });

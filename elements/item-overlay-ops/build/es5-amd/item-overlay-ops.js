@@ -4,9 +4,15 @@ define([
   "./node_modules/@polymer/paper-icon-button/paper-icon-button.js",
   "./node_modules/@polymer/paper-button/paper-button.js",
   "./node_modules/@polymer/iron-icons/iron-icons.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _paperIconButton,
+  _paperButton,
+  _ironIcons
+) {
   "use strict";
-  function _templateObject_d438b600ecf111e89845ade87d18d8a1() {
+  function _templateObject_8ffb9ff0f1e411e8ab236b4d152bf057() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n        outline: none;\n      }\n      #container {\n        display: none;\n        opacity: 0;\n        background-color: transparent;\n        transition: background-color .6s linear, visibility .6s linear, opacity .6s linear;\n        visibility: hidden;\n      }\n      :host([edit-mode]) #container {\n        display: block;\n        opacity: .4;\n        visibility: visible;\n        background-color: var(--item-overlay-ops, #999999);\n        position: absolute;\n        z-index: 1;\n      }\n      :host([edit-mode]) #container:hover,\n      :host([edit-mode]) #container:focus,\n      :host([focused]) #container {\n        opacity: .8;\n        background-color: var(--item-overlay-ops, #ffffff);\n      }\n      .ops {\n        width: 100%;\n        height: 39px;\n        padding: 0;\n        margin: 0;\n        border-bottom: 1px solid rgba(100, 100, 100, .4);\n        text-align: center;\n      }\n      .ops paper-icon-button {\n        display: inline-flex;\n        width: 30px;\n        height: 30px;\n        padding: 2px;\n        margin: 5px 8px;\n        color: #999999;\n      }\n      .ops paper-icon-button.active {\n        color: #000000;\n        background-color: rgba(255, 255, 255, .6);\n        border-radius: 50%;\n      }\n      .active-op {\n        text-transform:capitalize;\n        margin: 0;\n        height: 40px;\n        line-height: 40px;\n        font-size: 20px;\n        text-align: center;\n      }\n      #workingarea {\n        width: 100%;\n        padding: 0;\n        margin: 0 auto;\n        align-content: center;\n      }\n      #workingarea paper-icon-button {\n        width: 50%;\n        height: 100%;\n        display: inline-flex;\n        min-width: unset;\n        padding: 16px;\n        margin: 0;\n        border: none;\n        border-radius: 0;\n      }\n      #workingarea #option1 {\n        background-color: rgba(100, 255, 100, .6);\n      }\n      #workingarea #option2 {\n        background-color: rgba(255, 100, 100, .6);\n      }\n      #workingarea #option1:hover,\n      #workingarea #option1:focus {\n        background-color: rgba(100, 255, 100, 1);\n      }\n      #workingarea #option2:hover,\n      #workingarea #option2:focus {\n        background-color: rgba(255, 100, 100, 1);\n      }\n      #workingarea {\n        display: none;\n      }\n      #workingarea.move {\n        display: flex;\n      }\n      #workingarea.move #option1,\n      #workingarea.move #option2 {\n        background-color: rgba(200, 200, 200, .5);\n      }\n      #workingarea.move #option1:hover,\n      #workingarea.move #option1:focus,\n      #workingarea.move #option2:hover,\n      #workingarea.move #option2:focus {\n        background-color: rgba(200, 200, 200, 1);\n      }\n      #workingarea.remove {\n        display: flex;\n      }\n      #workingarea.duplicate {\n        display: flex;\n      }\n    </style>\n    <div id="container">\n      <div class="ops">\n        <paper-icon-button on-tap="_opTap" icon="icons:add" id="add" hidden$="[[!add]]" title="Add to this"></paper-icon-button>\n        <paper-icon-button on-tap="_opTap" icon="icons:create" id="edit" hidden$="[[!edit]]" title="Edit this"></paper-icon-button>\n        <paper-icon-button on-tap="_opTap" icon="icons:swap-horiz" id="move" hidden$="[[!move]]" title="Move this"></paper-icon-button>\n        <paper-icon-button on-tap="_opTap" icon="icons:delete" id="remove" hidden$="[[!remove]]" title="Delete this"></paper-icon-button>\n        <paper-icon-button on-tap="_opTap" icon="icons:content-copy" id="duplicate" hidden$="[[!duplicate]]" title="Duplicate this"></paper-icon-button>\n      </div>\n      <div class="active-op">[[activeTitle]]</div>\n      <div id="workingarea" class$="[[activeOp]]">\n        <paper-icon-button on-tap="_optionSelected" id="option1" title="[[__option1Text]]" icon="[[__option1Icon]]"></paper-icon-button>\n        <paper-icon-button on-tap="_optionSelected" id="option2" title="[[__option2Text]]" icon="[[__option2Icon]]"></paper-icon-button>\n      </div>\n    </div>\n    <slot></slot>\n'
@@ -15,14 +21,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n        outline: none;\n      }\n      #container {\n        display: none;\n        opacity: 0;\n        background-color: transparent;\n        transition: background-color .6s linear, visibility .6s linear, opacity .6s linear;\n        visibility: hidden;\n      }\n      :host([edit-mode]) #container {\n        display: block;\n        opacity: .4;\n        visibility: visible;\n        background-color: var(--item-overlay-ops, #999999);\n        position: absolute;\n        z-index: 1;\n      }\n      :host([edit-mode]) #container:hover,\n      :host([edit-mode]) #container:focus,\n      :host([focused]) #container {\n        opacity: .8;\n        background-color: var(--item-overlay-ops, #ffffff);\n      }\n      .ops {\n        width: 100%;\n        height: 39px;\n        padding: 0;\n        margin: 0;\n        border-bottom: 1px solid rgba(100, 100, 100, .4);\n        text-align: center;\n      }\n      .ops paper-icon-button {\n        display: inline-flex;\n        width: 30px;\n        height: 30px;\n        padding: 2px;\n        margin: 5px 8px;\n        color: #999999;\n      }\n      .ops paper-icon-button.active {\n        color: #000000;\n        background-color: rgba(255, 255, 255, .6);\n        border-radius: 50%;\n      }\n      .active-op {\n        text-transform:capitalize;\n        margin: 0;\n        height: 40px;\n        line-height: 40px;\n        font-size: 20px;\n        text-align: center;\n      }\n      #workingarea {\n        width: 100%;\n        padding: 0;\n        margin: 0 auto;\n        align-content: center;\n      }\n      #workingarea paper-icon-button {\n        width: 50%;\n        height: 100%;\n        display: inline-flex;\n        min-width: unset;\n        padding: 16px;\n        margin: 0;\n        border: none;\n        border-radius: 0;\n      }\n      #workingarea #option1 {\n        background-color: rgba(100, 255, 100, .6);\n      }\n      #workingarea #option2 {\n        background-color: rgba(255, 100, 100, .6);\n      }\n      #workingarea #option1:hover,\n      #workingarea #option1:focus {\n        background-color: rgba(100, 255, 100, 1);\n      }\n      #workingarea #option2:hover,\n      #workingarea #option2:focus {\n        background-color: rgba(255, 100, 100, 1);\n      }\n      #workingarea {\n        display: none;\n      }\n      #workingarea.move {\n        display: flex;\n      }\n      #workingarea.move #option1,\n      #workingarea.move #option2 {\n        background-color: rgba(200, 200, 200, .5);\n      }\n      #workingarea.move #option1:hover,\n      #workingarea.move #option1:focus,\n      #workingarea.move #option2:hover,\n      #workingarea.move #option2:focus {\n        background-color: rgba(200, 200, 200, 1);\n      }\n      #workingarea.remove {\n        display: flex;\n      }\n      #workingarea.duplicate {\n        display: flex;\n      }\n    </style>\n    <div id="container">\n      <div class="ops">\n        <paper-icon-button on-tap="_opTap" icon="icons:add" id="add" hidden\\$="[[!add]]" title="Add to this"></paper-icon-button>\n        <paper-icon-button on-tap="_opTap" icon="icons:create" id="edit" hidden\\$="[[!edit]]" title="Edit this"></paper-icon-button>\n        <paper-icon-button on-tap="_opTap" icon="icons:swap-horiz" id="move" hidden\\$="[[!move]]" title="Move this"></paper-icon-button>\n        <paper-icon-button on-tap="_opTap" icon="icons:delete" id="remove" hidden\\$="[[!remove]]" title="Delete this"></paper-icon-button>\n        <paper-icon-button on-tap="_opTap" icon="icons:content-copy" id="duplicate" hidden\\$="[[!duplicate]]" title="Duplicate this"></paper-icon-button>\n      </div>\n      <div class="active-op">[[activeTitle]]</div>\n      <div id="workingarea" class\\$="[[activeOp]]">\n        <paper-icon-button on-tap="_optionSelected" id="option1" title="[[__option1Text]]" icon="[[__option1Icon]]"></paper-icon-button>\n        <paper-icon-button on-tap="_optionSelected" id="option2" title="[[__option2Text]]" icon="[[__option2Icon]]"></paper-icon-button>\n      </div>\n    </div>\n    <slot></slot>\n'
       ]
     );
-    _templateObject_d438b600ecf111e89845ade87d18d8a1 = function() {
+    _templateObject_8ffb9ff0f1e411e8ab236b4d152bf057 = function _templateObject_8ffb9ff0f1e411e8ab236b4d152bf057() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_d438b600ecf111e89845ade87d18d8a1()
+      _templateObject_8ffb9ff0f1e411e8ab236b4d152bf057()
     ),
     is: "item-overlay-ops",
     listeners: { focusin: "_inFocus", focusout: "_outFocus" },
@@ -48,7 +54,7 @@ define([
       }, 1);
       window.addEventListener("resize", this._windowResize.bind(this));
     },
-    _windowResize: function _windowResize() {
+    _windowResize: function _windowResize(e) {
       var rect = this.getBoundingClientRect();
       this.$.container.style.width = rect.width + "px";
       this.$.container.style.height = rect.height + "px";
@@ -84,12 +90,12 @@ define([
       var op = { element: this, operation: this.activeOp };
       this.fire("item-overlay-op-changed", op);
     },
-    _inFocus: function _inFocus() {
+    _inFocus: function _inFocus(e) {
       if (this.editMode) {
         this.focused = !0;
       }
     },
-    _outFocus: function _outFocus() {
+    _outFocus: function _outFocus(e) {
       if (this.editMode) {
         this.focused = !1;
       }

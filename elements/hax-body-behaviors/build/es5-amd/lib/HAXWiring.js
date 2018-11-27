@@ -24,24 +24,59 @@ define([
             : document,
         isReady =
           3 < arguments.length && arguments[3] !== void 0 ? arguments[3] : !1;
-      if (babelHelpers.typeof(props.api) === "undefined") {
+      if (
+        babelHelpers.typeof(props.api) ===
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         props.api = "1";
       }
       if ("1" == props.api) {
-        if (babelHelpers.typeof(props.canPosition) === "undefined") {
+        if (
+          babelHelpers.typeof(props.canPosition) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           props.canPosition = !0;
         }
-        if (babelHelpers.typeof(props.canScale) === "undefined") {
+        if (
+          babelHelpers.typeof(props.canScale) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           props.canScale = !0;
         }
-        if (babelHelpers.typeof(props.canEditSource) === "undefined") {
+        if (
+          babelHelpers.typeof(props.canEditSource) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           props.canEditSource = !1;
         }
-        if (babelHelpers.typeof(props.gizmo) === "undefined") {
+        if (
+          babelHelpers.typeof(props.gizmo) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           props.gizmo = !1;
         }
-        if (babelHelpers.typeof(props.settings) !== "undefined") {
-          if (babelHelpers.typeof(props.settings.quick) === "undefined") {
+        if (
+          babelHelpers.typeof(props.settings) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
+          if (
+            babelHelpers.typeof(props.settings.quick) ===
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
+          ) {
             props.settings.quick = [];
           }
           for (var i = 0; i < props.settings.quick.length; i++) {
@@ -52,7 +87,12 @@ define([
               props.settings.quick.splice(i, 1);
             }
           }
-          if (babelHelpers.typeof(props.settings.configure) === "undefined") {
+          if (
+            babelHelpers.typeof(props.settings.configure) ===
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
+          ) {
             props.settings.configure = [];
           }
           for (var _i = 0; _i < props.settings.configure.length; _i++) {
@@ -63,7 +103,12 @@ define([
               props.settings.configure.splice(_i, 1);
             }
           }
-          if (babelHelpers.typeof(props.settings.advanced) === "undefined") {
+          if (
+            babelHelpers.typeof(props.settings.advanced) ===
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
+          ) {
             props.settings.advanced = [];
           }
           for (var _i2 = 0; _i2 < props.settings.advanced.length; _i2++) {
@@ -123,13 +168,21 @@ define([
             inputMethod: "textfield"
           });
         }
-        if (babelHelpers.typeof(props.saveOptions) === "undefined") {
+        if (
+          babelHelpers.typeof(props.saveOptions) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           props.saveOptions = { wipeSlot: !1 };
         }
         if (isReady) {
           if (
             "" !== tag &&
-            babelHelpers.typeof(window.HaxStore) === "undefined"
+            babelHelpers.typeof(window.HaxStore) ===
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
           ) {
             var evt = new CustomEvent("hax-register-properties", {
               bubbles: !0,
@@ -139,14 +192,25 @@ define([
             context.dispatchEvent(evt);
           } else if (
             "" !== tag &&
-            babelHelpers.typeof(window.HaxStore) !== "undefined" &&
-            babelHelpers.typeof(window.HaxStore.instance) !== "undefined" &&
+            babelHelpers.typeof(window.HaxStore) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0)) &&
+            babelHelpers.typeof(window.HaxStore.instance) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0)) &&
             null != window.HaxStore.instance &&
             babelHelpers.typeof(window.HaxStore.instance.elementList) !==
-              "undefined" &&
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0)) &&
             babelHelpers.typeof(
               window.HaxStore.instance.elementList[tag.toLowerCase()]
-            ) === "undefined"
+            ) ===
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
           ) {
             var _evt = new CustomEvent("hax-register-properties", {
               bubbles: !0,
@@ -155,15 +219,29 @@ define([
             });
             context.dispatchEvent(_evt);
           } else if (
-            babelHelpers.typeof(_this.tagName) !== "undefined" &&
-            babelHelpers.typeof(window.HaxStore) !== "undefined" &&
-            babelHelpers.typeof(window.HaxStore.instance) !== "undefined" &&
+            babelHelpers.typeof(_this.tagName) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0)) &&
+            babelHelpers.typeof(window.HaxStore) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0)) &&
+            babelHelpers.typeof(window.HaxStore.instance) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0)) &&
             null != window.HaxStore.instance &&
             babelHelpers.typeof(window.HaxStore.instance.elementList) !==
-              "undefined" &&
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0)) &&
             babelHelpers.typeof(
               window.HaxStore.instance.elementList[_this.tagName.toLowerCase()]
-            ) === "undefined"
+            ) ===
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
           ) {
             var _evt2 = new CustomEvent("hax-register-properties", {
               bubbles: !0,
@@ -182,47 +260,106 @@ define([
         }
       } else {
         console.warn(
-          "This is't a valid usage of hax-body-behaviors API. See hax-body-behaviors for more details on how to implement the API. Most likely your hax item just was placed in an iframe as a fallback as opposed to a custom element."
+          "This is't a valid usage of hax API. See hax-body-behaviors/lib/HAXWiring.js for more details on how to implement the API. Most likely your hax item just was placed in an iframe as a fallback as opposed to a custom element."
         );
       }
     };
     this.validateSetting = function(setting) {
       if (
-        babelHelpers.typeof(setting.property) === "undefined" &&
-        babelHelpers.typeof(setting.slot) === "undefined" &&
-        babelHelpers.typeof(setting.attribute) === "undefined"
+        babelHelpers.typeof(setting.property) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
+        babelHelpers.typeof(setting.slot) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
+        babelHelpers.typeof(setting.attribute) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
       ) {
         return !1;
       }
-      if (babelHelpers.typeof(setting.title) === "undefined") {
-        if (babelHelpers.typeof(setting.attribute) === "undefined") {
+      if (
+        babelHelpers.typeof(setting.title) ===
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
+        if (
+          babelHelpers.typeof(setting.attribute) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           setting.title = setting.property;
         } else {
           setting.title = setting.attribute;
         }
       }
-      if (babelHelpers.typeof(setting.description) === "undefined") {
+      if (
+        babelHelpers.typeof(setting.description) ===
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         setting.description = "";
       }
-      if (babelHelpers.typeof(setting.inputMethod) === "undefined") {
+      if (
+        babelHelpers.typeof(setting.inputMethod) ===
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         setting.inputMethod = "textfield";
       }
-      if (babelHelpers.typeof(setting.type) === "undefined") {
+      if (
+        babelHelpers.typeof(setting.type) ===
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         setting.type = "settings";
       }
-      if (babelHelpers.typeof(setting.icon) === "undefined") {
+      if (
+        babelHelpers.typeof(setting.icon) ===
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         setting.icon = "android";
       }
-      if (babelHelpers.typeof(setting.options) === "undefined") {
+      if (
+        babelHelpers.typeof(setting.options) ===
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         setting.options = {};
       }
-      if (babelHelpers.typeof(setting.required) === "undefined") {
+      if (
+        babelHelpers.typeof(setting.required) ===
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         setting.required = !1;
       }
-      if (babelHelpers.typeof(setting.validation) === "undefined") {
+      if (
+        babelHelpers.typeof(setting.validation) ===
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         setting.validation = ".*";
       }
-      if (babelHelpers.typeof(setting.validationType) === "undefined") {
+      if (
+        babelHelpers.typeof(setting.validationType) ===
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         setting.validationType = "";
       }
       return setting;
@@ -233,10 +370,20 @@ define([
     this.getHaxJSONSchema = function(type, haxProperties) {
       var target =
         2 < arguments.length && arguments[2] !== void 0 ? arguments[2] : _this;
-      if (babelHelpers.typeof(type) === "undefined") {
+      if (
+        babelHelpers.typeof(type) ===
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         type = "configure";
       }
-      if (babelHelpers.typeof(haxProperties) === "undefined") {
+      if (
+        babelHelpers.typeof(haxProperties) ===
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         haxProperties = target.haxProperties;
       }
       var settings = haxProperties.settings[type],
@@ -257,14 +404,21 @@ define([
       var props = {};
       for (var value in settings) {
         if (settings.hasOwnProperty(value)) {
-          if (babelHelpers.typeof(settings[value].property) !== "undefined") {
+          if (
+            babelHelpers.typeof(settings[value].property) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
+          ) {
             props[settings[value].property] = {
               title: settings[value].title,
               type: target.getHaxJSONSchemaType(settings[value].inputMethod)
             };
             if (
               babelHelpers.typeof(target[settings[value].property]) !==
-              "undefined"
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
             ) {
               props[settings[value].property].value =
                 target[settings[value].property];
@@ -291,7 +445,10 @@ define([
               case "select":
                 var slot = "";
                 if (
-                  babelHelpers.typeof(settings[value].options) !== "undefined"
+                  babelHelpers.typeof(settings[value].options) !==
+                  ("undefined" === typeof void 0
+                    ? "undefined"
+                    : babelHelpers.typeof(void 0))
                 ) {
                   for (var val in settings[value].options) {
                     slot +=
@@ -392,7 +549,10 @@ define([
                 break;
             }
           } else if (
-            babelHelpers.typeof(settings[value].attribute) !== "undefined"
+            babelHelpers.typeof(settings[value].attribute) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
           ) {
             props[settings[value].attribute] = {
               title: settings[value].title,
@@ -405,7 +565,10 @@ define([
             } else if (
               babelHelpers.typeof(
                 target.attributes[settings[value].attribute]
-              ) !== "undefined"
+              ) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
             ) {
               props[settings[value].attribute].value = target.getAttribute(
                 settings[value].attribute
@@ -436,7 +599,10 @@ define([
               case "select":
                 var slot = "";
                 if (
-                  babelHelpers.typeof(settings[value].options) !== "undefined"
+                  babelHelpers.typeof(settings[value].options) !==
+                  ("undefined" === typeof void 0
+                    ? "undefined"
+                    : babelHelpers.typeof(void 0))
                 ) {
                   for (var val in settings[value].options) {
                     slot +=
@@ -529,7 +695,10 @@ define([
               if (
                 babelHelpers.typeof(
                   (0, _polymerDom.dom)(target).childNodes[i]
-                ) !== "undefined"
+                ) !==
+                ("undefined" === typeof void 0
+                  ? "undefined"
+                  : babelHelpers.typeof(void 0))
               ) {
                 if (1 === (0, _polymerDom.dom)(target).childNodes[i].nodeType) {
                   slot += (0, _polymerDom.dom)(target).childNodes[i].innerHTML;
@@ -537,7 +706,10 @@ define([
                   1 !== (0, _polymerDom.dom)(target).childNodes[i].nodeType &&
                   babelHelpers.typeof(
                     (0, _polymerDom.dom)(target).childNodes[i].textContent
-                  ) !== "undefined" &&
+                  ) !==
+                    ("undefined" === typeof void 0
+                      ? "undefined"
+                      : babelHelpers.typeof(void 0)) &&
                   "" !== (0, _polymerDom.dom)(target).childNodes[i].textContent
                 ) {
                   slot += (0, _polymerDom.dom)(target).childNodes[i]
@@ -582,7 +754,7 @@ define([
       }
     };
     this.validHAXPropertyInputMethod = function() {
-      return [
+      var methods = [
         "flipboolean",
         "boolean",
         "select",
@@ -596,9 +768,10 @@ define([
         "code-editor",
         "array"
       ];
+      return methods;
     };
     this.prototypeHaxProperties = function() {
-      return {
+      var props = {
         api: "1",
         canScale: !0,
         canPosition: !0,
@@ -692,6 +865,7 @@ define([
           unsetAttributes: ["end-point", "secondary-color"]
         }
       };
+      return props;
     };
   };
   _exports.HAXWiring = HAXWiring;
@@ -704,7 +878,12 @@ define([
           1 < arguments.length && arguments[1] !== void 0 ? arguments[1] : "",
         context =
           2 < arguments.length && arguments[2] !== void 0 ? arguments[2] : this;
-      if (babelHelpers.typeof(this.tagName) !== "undefined") {
+      if (
+        babelHelpers.typeof(this.tagName) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         tag = this.tagName.toLowerCase();
       }
       window.addEventListener(
@@ -712,7 +891,10 @@ define([
         this._haxStoreReady.bind(this)
       );
       if (
-        babelHelpers.typeof(window.HaxStore) !== "undefined" &&
+        babelHelpers.typeof(window.HaxStore) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         null != window.HaxStore.instance &&
         window.HaxStore.ready
       ) {
@@ -724,15 +906,24 @@ define([
     _haxStoreReady: function _haxStoreReady(e) {
       if (
         e.detail &&
-        babelHelpers.typeof(this.tagName) !== "undefined" &&
-        babelHelpers.typeof(this.haxProperties) !== "undefined"
+        babelHelpers.typeof(this.tagName) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
+        babelHelpers.typeof(this.haxProperties) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
       ) {
         var tag = this.tagName,
           props = this.haxProperties,
           context = this;
         if (
           "" !== tag &&
-          babelHelpers.typeof(window.HaxStore) === "undefined"
+          babelHelpers.typeof(window.HaxStore) ===
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
         ) {
           var evt = new CustomEvent("hax-register-properties", {
             bubbles: !0,
@@ -742,14 +933,25 @@ define([
           context.dispatchEvent(evt);
         } else if (
           "" !== tag &&
-          babelHelpers.typeof(window.HaxStore) !== "undefined" &&
-          babelHelpers.typeof(window.HaxStore.instance) !== "undefined" &&
+          babelHelpers.typeof(window.HaxStore) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
+          babelHelpers.typeof(window.HaxStore.instance) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           null != window.HaxStore.instance &&
           babelHelpers.typeof(window.HaxStore.instance.elementList) !==
-            "undefined" &&
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           babelHelpers.typeof(
             window.HaxStore.instance.elementList[tag.toLowerCase()]
-          ) === "undefined"
+          ) ===
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
         ) {
           var _evt3 = new CustomEvent("hax-register-properties", {
             bubbles: !0,
@@ -758,15 +960,29 @@ define([
           });
           context.dispatchEvent(_evt3);
         } else if (
-          babelHelpers.typeof(this.tagName) !== "undefined" &&
-          babelHelpers.typeof(window.HaxStore) !== "undefined" &&
-          babelHelpers.typeof(window.HaxStore.instance) !== "undefined" &&
+          babelHelpers.typeof(this.tagName) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
+          babelHelpers.typeof(window.HaxStore) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
+          babelHelpers.typeof(window.HaxStore.instance) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           null != window.HaxStore.instance &&
           babelHelpers.typeof(window.HaxStore.instance.elementList) !==
-            "undefined" &&
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           babelHelpers.typeof(
             window.HaxStore.instance.elementList[this.tagName.toLowerCase()]
-          ) === "undefined"
+          ) ===
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
         ) {
           var _evt4 = new CustomEvent("hax-register-properties", {
             bubbles: !0,

@@ -2,13 +2,13 @@ import {
   html,
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
-import "hax-body/hax-store.js";
-import "hax-body/hax-body.js";
-import "hax-body/hax-autoloader.js";
-import "hax-body/hax-manager.js";
-import "hax-body/hax-panel.js";
-import "hax-body/hax-app-picker.js";
-import "hax-body/hax-export-dialog.js";
+import "./node_modules/@lrnwebcomponents/hax-body/lib/hax-store.js";
+import "./node_modules/@lrnwebcomponents/hax-body/hax-body.js";
+import "./node_modules/@lrnwebcomponents/hax-body/lib/hax-autoloader.js";
+import "./node_modules/@lrnwebcomponents/hax-body/lib/hax-manager.js";
+import "./node_modules/@lrnwebcomponents/hax-body/lib/hax-panel.js";
+import "./node_modules/@lrnwebcomponents/hax-body/lib/hax-app-picker.js";
+import "./node_modules/@lrnwebcomponents/hax-body/lib/hax-export-dialog.js";
 Polymer({
   _template: html`
     <style>

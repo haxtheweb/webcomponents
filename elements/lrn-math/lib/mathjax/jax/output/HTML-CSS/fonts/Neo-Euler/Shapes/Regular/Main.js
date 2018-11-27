@@ -16,4 +16,19 @@
  *  limitations under the License.
  */
 
-MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS.NeoEulerMathJax_Shapes={directory:"Shapes/Regular",family:"NeoEulerMathJax_Shapes",testString:"\u00A0\u2B1A",32:[0,0,333,0,0],160:[0,0,333,0,0],11034:[690,6,816,60,756]};MathJax.Callback.Queue(["initFont",MathJax.OutputJax["HTML-CSS"],"NeoEulerMathJax_Shapes"],["loadComplete",MathJax.Ajax,MathJax.OutputJax["HTML-CSS"].fontDir+"/Shapes/Regular/Main.js"]);
+MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS.NeoEulerMathJax_Shapes = {
+  directory: "Shapes/Regular",
+  family: "NeoEulerMathJax_Shapes",
+  testString: "\u00A0\u2B1A",
+  32: [0, 0, 333, 0, 0],
+  160: [0, 0, 333, 0, 0],
+  11034: [690, 6, 816, 60, 756]
+};
+MathJax.Callback.Queue(
+  ["initFont", MathJax.OutputJax["HTML-CSS"], "NeoEulerMathJax_Shapes"],
+  [
+    "loadComplete",
+    MathJax.Ajax,
+    MathJax.OutputJax["HTML-CSS"].fontDir + "/Shapes/Regular/Main.js"
+  ]
+);

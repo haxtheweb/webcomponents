@@ -6,18 +6,18 @@ define([
 ], function(meta, _polymerLegacy, _esGlobalBridge, _resolveUrl) {
   "use strict";
   meta = babelHelpers.interopRequireWildcard(meta);
-  function _templateObject_637653e0ecf211e88d8d4f01df174690() {
+  function _templateObject_010c7ac0f1e511e889c74b520678e28e() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <div id="chart" chart$="[[__chartId]]" class$="ct-chart [[scale]]"></div>\n'
     ]);
-    _templateObject_637653e0ecf211e88d8d4f01df174690 = function() {
+    _templateObject_010c7ac0f1e511e889c74b520678e28e = function _templateObject_010c7ac0f1e511e889c74b520678e28e() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_637653e0ecf211e88d8d4f01df174690()
+      _templateObject_010c7ac0f1e511e889c74b520678e28e()
     ),
     is: "chartist-render",
     listeners: { tap: "makeChart" },
@@ -119,7 +119,7 @@ define([
         this.__chartId + "-chart-title " + this.__chartId + "-chart-desc"
       );
     },
-    makeA11yTable: function makeA11yTable() {
+    makeA11yTable: function makeA11yTable(svg) {
       for (
         var title =
             null !== this.chartTitle

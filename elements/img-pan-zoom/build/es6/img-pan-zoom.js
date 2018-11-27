@@ -78,16 +78,14 @@ Polymer({
   observers: ["_srcChanged(src)"],
   created: function() {
     const name = "openseadragon",
-      basePath = pathFromUrl(import.meta.url);
+      basePath = pathFromUrl(import.meta.url),
+      location = `${basePath}lib/openseadragon/build/openseadragon/openseadragon.js`;
     window.addEventListener(
       `es-bridge-${name}-loaded`,
       this._openseadragonLoaded.bind(this)
     );
     window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(
-      name,
-      `${basePath}lib/openseadragon/build/openseadragon/openseadragon.js`
-    );
+    window.ESGlobalBridge.instance.load(name, location);
   },
   _openseadragonLoaded: function() {
     this.__openseadragonLoaded = !0;

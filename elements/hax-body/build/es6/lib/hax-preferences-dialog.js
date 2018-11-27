@@ -160,7 +160,7 @@ Polymer({
       this.set(e.detail.property, e.detail.value);
     }
   },
-  _preferencesChanged: function() {
+  _preferencesChanged: function(prop) {
     window.HaxStore.write("globalPreferences", this.preferences, this);
   },
   toggleDialog: function() {

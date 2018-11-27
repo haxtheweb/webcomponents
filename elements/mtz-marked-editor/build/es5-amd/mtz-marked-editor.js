@@ -3,20 +3,25 @@ define([
   "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
   "./node_modules/@polymer/iron-form-element-behavior/iron-form-element-behavior.js",
   "./node_modules/@polymer/iron-validatable-behavior/iron-validatable-behavior.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _ironFormElementBehavior,
+  _ironValidatableBehavior
+) {
   "use strict";
-  function _templateObject_02c07c10ecf211e8b0a2dbe0bb2c4fb7() {
+  function _templateObject_b2796da0f1e411e8b0c5216ab96a7cdc() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n\n      <slot name="controls"></slot>\n      <slot name="textarea"></slot>\n      <slot name="footer"></slot>\n'
     ]);
-    _templateObject_02c07c10ecf211e8b0a2dbe0bb2c4fb7 = function() {
+    _templateObject_b2796da0f1e411e8b0c5216ab96a7cdc = function _templateObject_b2796da0f1e411e8b0c5216ab96a7cdc() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_02c07c10ecf211e8b0a2dbe0bb2c4fb7()
+      _templateObject_b2796da0f1e411e8b0c5216ab96a7cdc()
     ),
     is: "mtz-marked-editor",
     properties: {
@@ -44,7 +49,12 @@ define([
       return this.getContent().split(/(?=\n|\r\n)$/gm);
     },
     getContent: function getContent() {
-      if (babelHelpers.typeof(this.getTextarea()) !== "undefined") {
+      if (
+        babelHelpers.typeof(this.getTextarea()) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         return this.getTextarea().value;
       }
       return "";

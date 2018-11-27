@@ -8,9 +8,19 @@ define([
   "../node_modules/@polymer/iron-icons/iron-icons.js",
   "./lrnsys-button-inner.js",
   "./lrnsys-drawer-modal.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _simpleColors,
+  _paperAvatar,
+  _appLayout,
+  _paperTooltip,
+  _paperButton,
+  _ironIcons,
+  _lrnsysButtonInner,
+  _lrnsysDrawerModal
+) {
   "use strict";
-  function _templateObject_fdb36280ecf311e896b1b122e9a8e20a() {
+  function _templateObject_395b7fb0f1e611e8b229e5d6dee848e6() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style is="custom-style" include="simple-colors">\n      :host {\n        display: block;\n        --lrnsys-drawer-color: var(--simple-colors-foreground1);\n        --lrnsys-drawer-background-color: var(--simple-colors-background1);\n      }\n      lrnsys-drawer-modal {\n        --lrnsys-drawer-width: 30%;\n      }\n      paper-button {\n        display:inline-block;\n      }\n    </style>\n    <paper-button class$="[[class]]" id="flyouttrigger" on-tap="toggleDrawer" raised="[[raised]]" disabled$="[[disabled]]" title="[[alt]]">\n      <lrnsys-button-inner avatar="[[avatar]]" icon="[[icon]]" text="[[text]]">\n        <slot name="button"></slot>\n      </lrnsys-button-inner>\n    </paper-button>\n    <paper-tooltip for="flyouttrigger" animation-delay="0">[[alt]]</paper-tooltip>\n    <lrnsys-drawer-modal id="modal" opened="[[opened]]" align="[[align]]" header="[[header]]" heading-class="[[headingClass]]">\n      <slot name="header" slot="header"></slot>\n      <slot></slot>\n    </lrnsys-drawer-modal>\n'
@@ -19,14 +29,14 @@ define([
         '\n    <style is="custom-style" include="simple-colors">\n      :host {\n        display: block;\n        --lrnsys-drawer-color: var(--simple-colors-foreground1);\n        --lrnsys-drawer-background-color: var(--simple-colors-background1);\n      }\n      lrnsys-drawer-modal {\n        --lrnsys-drawer-width: 30%;\n      }\n      paper-button {\n        display:inline-block;\n      }\n    </style>\n    <paper-button class\\$="[[class]]" id="flyouttrigger" on-tap="toggleDrawer" raised="[[raised]]" disabled\\$="[[disabled]]" title="[[alt]]">\n      <lrnsys-button-inner avatar="[[avatar]]" icon="[[icon]]" text="[[text]]">\n        <slot name="button"></slot>\n      </lrnsys-button-inner>\n    </paper-button>\n    <paper-tooltip for="flyouttrigger" animation-delay="0">[[alt]]</paper-tooltip>\n    <lrnsys-drawer-modal id="modal" opened="[[opened]]" align="[[align]]" header="[[header]]" heading-class="[[headingClass]]">\n      <slot name="header" slot="header"></slot>\n      <slot></slot>\n    </lrnsys-drawer-modal>\n'
       ]
     );
-    _templateObject_fdb36280ecf311e896b1b122e9a8e20a = function() {
+    _templateObject_395b7fb0f1e611e8b229e5d6dee848e6 = function _templateObject_395b7fb0f1e611e8b229e5d6dee848e6() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_fdb36280ecf311e896b1b122e9a8e20a()
+      _templateObject_395b7fb0f1e611e8b229e5d6dee848e6()
     ),
     is: "lrnsys-drawer",
     listeners: {
@@ -77,22 +87,32 @@ define([
         this.$.flyouttrigger.focus();
       }
     },
-    tapEventOn: function tapEventOn() {
+    tapEventOn: function tapEventOn(e) {
       var root = this;
-      if (babelHelpers.typeof(root.hoverClass) !== "undefined") {
+      if (
+        babelHelpers.typeof(root.hoverClass) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         var classes = root.hoverClass.split(" ");
-        classes.forEach(function(item) {
+        classes.forEach(function(item, index) {
           if ("" != item) {
             root.$.flyouttrigger.classList.add(item);
           }
         });
       }
     },
-    tapEventOff: function tapEventOff() {
+    tapEventOff: function tapEventOff(e) {
       var root = this;
-      if (babelHelpers.typeof(root.hoverClass) !== "undefined") {
+      if (
+        babelHelpers.typeof(root.hoverClass) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         var classes = root.hoverClass.split(" ");
-        classes.forEach(function(item) {
+        classes.forEach(function(item, index) {
           if ("" != item) {
             root.$.flyouttrigger.classList.remove(item);
           }
@@ -102,12 +122,17 @@ define([
     toggleDrawer: function toggleDrawer() {
       this.$.modal.open();
     },
-    focusToggle: function focusToggle() {
+    focusToggle: function focusToggle(e) {
       var root = this;
       root.fire("focus-changed", { focus: root.focusState });
-      if (babelHelpers.typeof(root.hoverClass) !== "undefined") {
+      if (
+        babelHelpers.typeof(root.hoverClass) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         var classes = root.hoverClass.split(" ");
-        classes.forEach(function(item) {
+        classes.forEach(function(item, index) {
           if ("" != item) {
             if (root.focusState) {
               root.$.flyouttrigger.classList.add(item);

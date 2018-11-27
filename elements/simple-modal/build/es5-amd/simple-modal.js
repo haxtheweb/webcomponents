@@ -9,15 +9,26 @@ define([
   "./node_modules/@polymer/iron-icon/iron-icon.js",
   "./node_modules/@polymer/neon-animation/animations/scale-up-animation.js",
   "./node_modules/@polymer/neon-animation/animations/scale-down-animation.js"
-], function(_exports, _polymerElement, _polymerDom) {
+], function(
+  _exports,
+  _polymerElement,
+  _polymerDom,
+  _paperDialog,
+  _paperDialogScrollable,
+  _paperButton,
+  _ironIcons,
+  _ironIcon,
+  _scaleUpAnimation,
+  _scaleDownAnimation
+) {
   "use strict";
   Object.defineProperty(_exports, "__esModule", { value: !0 });
   _exports.SimpleModal = void 0;
-  function _templateObject_30b37c30ecf211e8b6415faa9b966c82() {
+  function _templateObject_d8f0b010f1e411e8be43ef9f11b10c11() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n\n#close {\n  float: right;\n  top: 0;\n  font-size: 12px;\n  text-transform: none;\n  right: 0;\n  position: absolute;\n  padding: 4px;\n  margin: 0;\n  color: var(--simple-modal-color, black);\n  background-color: transparent;\n  min-width: unset;\n}\n\n#close iron-icon {\n  display: inline-block;\n  width: 16px;\n  height: 16px;\n  margin-right: 2px;\n}</style>\n<paper-dialog id="dialog" entry-animation="scale-up-animation"\nexit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-top>\n  <h2 hidden$="[[!title]]">[[title]]</h2>\n  <slot name="header"></slot>\n  <paper-dialog-scrollable>\n    <slot name="content"></slot>\n  </paper-dialog-scrollable>\n  <div class="buttons">\n    <slot name="buttons"></slot>\n  </div>\n  <paper-button id="close" on-tap="close" hidden$="[[!opened]]"><iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]</paper-button>\n</paper-dialog>'
     ]);
-    _templateObject_30b37c30ecf211e8b6415faa9b966c82 = function() {
+    _templateObject_d8f0b010f1e411e8be43ef9f11b10c11 = function _templateObject_d8f0b010f1e411e8be43ef9f11b10c11() {
       return data;
     };
     return data;
@@ -28,10 +39,7 @@ define([
       babelHelpers.classCallCheck(this, SimpleModal);
       return babelHelpers.possibleConstructorReturn(
         this,
-        (SimpleModal.__proto__ || Object.getPrototypeOf(SimpleModal)).apply(
-          this,
-          arguments
-        )
+        babelHelpers.getPrototypeOf(SimpleModal).apply(this, arguments)
       );
     }
     babelHelpers.createClass(
@@ -42,8 +50,7 @@ define([
           value: function connectedCallback() {
             babelHelpers
               .get(
-                SimpleModal.prototype.__proto__ ||
-                  Object.getPrototypeOf(SimpleModal.prototype),
+                babelHelpers.getPrototypeOf(SimpleModal.prototype),
                 "connectedCallback",
                 this
               )
@@ -97,7 +104,7 @@ define([
         },
         {
           key: "animationEnded",
-          value: function animationEnded() {
+          value: function animationEnded(e) {
             var _this3 = this;
             if (!this.opened) {
               if (this.invokedBy) {
@@ -122,8 +129,14 @@ define([
         },
         {
           key: "_openedChanged",
-          value: function _openedChanged(newValue) {
-            if (babelHelpers.typeof(newValue) !== "undefined" && !newValue) {
+          value: function _openedChanged(newValue, oldValue) {
+            if (
+              babelHelpers.typeof(newValue) !==
+                ("undefined" === typeof void 0
+                  ? "undefined"
+                  : babelHelpers.typeof(void 0)) &&
+              !newValue
+            ) {
               this.animationEnded();
             }
           }
@@ -133,8 +146,7 @@ define([
           value: function disconnectedCallback() {
             babelHelpers
               .get(
-                SimpleModal.prototype.__proto__ ||
-                  Object.getPrototypeOf(SimpleModal.prototype),
+                babelHelpers.getPrototypeOf(SimpleModal.prototype),
                 "disconnectedCallback",
                 this
               )
@@ -151,7 +163,7 @@ define([
           key: "template",
           get: function get() {
             return (0, _polymerElement.html)(
-              _templateObject_30b37c30ecf211e8b6415faa9b966c82()
+              _templateObject_d8f0b010f1e411e8be43ef9f11b10c11()
             );
           }
         },

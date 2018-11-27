@@ -4,9 +4,15 @@ define([
   "./node_modules/@polymer/paper-input/paper-input.js",
   "./node_modules/@polymer/paper-tooltip/paper-tooltip.js",
   "./lib/simple-search-content.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _ironIcons,
+  _paperInput,
+  _paperTooltip,
+  _simpleSearchContent
+) {
   "use strict";
-  function _templateObject_33ecfc50ecf211e8b6f8f3422244b261() {
+  function _templateObject_dd16da20f1e411e8a99f5dc819e27ed9() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n  <custom-style>\n    <style is="custom-style">\n      :host {\n        display: flex;\n        align-items: flex-end;\n        justify-content: space-between;\n        width: 100%;\n      }\n      :host #input {\n        flex-grow: 2;\n        margin-right: 4px;\n        --paper-input-container-input-color: var(--simple-search-input-text-color, #000);\n        --paper-input-container-focus-color: var(--simple-search-input-line-color, #000);\n        --paper-input-container-color: var(--simple-search-input-placeholder-color, #222);\n        color: var(--simple-search-input-placeholder-color, #222);\n        @apply --simple-search-container;\n      }\n      :host #xofy {\n        margin: 8px;\n      }\n      :host button {\n        margin: 8px 0 8px;\n        color: var(--simple-search-button-color, #111);\n        background-color: var(--simple-search-button-bg-color, #eee);\n        border-color: var(--simple-search-button-border-color, #ccc);\n        @apply --simple-search-button;\n      }\n      :host button:not([disabled]):focus,\n      :host button:not([disabled]):hover {\n        cursor: pointer;\n        color: var(--simple-search-button-hover-color, #000);\n        background-color: var(--simple-search-button-hover-bg-color, #fff);\n        border-color: var(--simple-search-button-hover-border-color, #ddd);\n        @apply --simple-search-button-hover;\n      }\n      :host button[disabled] {\n        cursor: not-allowed;\n        color: var(--simple-search-button-disabled-color, #999);\n        background-color: var(--simple-search-button-disabled-bg-color, #eee);\n        border-color: var(--simple-search-button-disabled-border-color, #ccc);\n        @apply --simple-search-button-disabled;\n      }\n      :host button:not([controls]) {\n        display: none;\n      }\n      :host [shrink-hide] {\n        display: none;\n      }\n    </style>\n    </custom-style>\n    <paper-input id="input" always-float-label$="[[alwaysFloatLabel]]" label="[[searchInputLabel]]" no-label-float$="[[noLabelFloat]]">\n      <iron-icon icon="[[searchInputIcon]]" slot="prefix"></iron-icon>\n    </paper-input>\n    <div id="xofy" shrink-hide$="[[noSearch]]"></div>\n    <div shrink-hide$="[[noResults]]">\n      <button id="prev" aria-label="[[prevButtonLabel]]" aria-role="button" controls$="[[controls]]" disabled$="[[prevButtonDisabled]]" tabindex="0">\n        <iron-icon icon="[[prevButtonIcon]]"></iron-icon>\n      </button>\n      <paper-tooltip for="prev">[[prevButtonLabel]]</paper-tooltip>\n      <button id="next" aria-label="[[nextButtonLabel]]" aria-role="button" controls$="[[controls]]" disabled$="[[nextButtonDisabled]]" tabindex="0">\n        <iron-icon icon$="[[nextButtonIcon]]"></iron-icon>\n      </button>\n      <paper-tooltip for="next">[[nextButtonLabel]]</paper-tooltip>\n    </div>\n'
@@ -15,14 +21,14 @@ define([
         '\n  <custom-style>\n    <style is="custom-style">\n      :host {\n        display: flex;\n        align-items: flex-end;\n        justify-content: space-between;\n        width: 100%;\n      }\n      :host #input {\n        flex-grow: 2;\n        margin-right: 4px;\n        --paper-input-container-input-color: var(--simple-search-input-text-color, #000);\n        --paper-input-container-focus-color: var(--simple-search-input-line-color, #000);\n        --paper-input-container-color: var(--simple-search-input-placeholder-color, #222);\n        color: var(--simple-search-input-placeholder-color, #222);\n        @apply --simple-search-container;\n      }\n      :host #xofy {\n        margin: 8px;\n      }\n      :host button {\n        margin: 8px 0 8px;\n        color: var(--simple-search-button-color, #111);\n        background-color: var(--simple-search-button-bg-color, #eee);\n        border-color: var(--simple-search-button-border-color, #ccc);\n        @apply --simple-search-button;\n      }\n      :host button:not([disabled]):focus,\n      :host button:not([disabled]):hover {\n        cursor: pointer;\n        color: var(--simple-search-button-hover-color, #000);\n        background-color: var(--simple-search-button-hover-bg-color, #fff);\n        border-color: var(--simple-search-button-hover-border-color, #ddd);\n        @apply --simple-search-button-hover;\n      }\n      :host button[disabled] {\n        cursor: not-allowed;\n        color: var(--simple-search-button-disabled-color, #999);\n        background-color: var(--simple-search-button-disabled-bg-color, #eee);\n        border-color: var(--simple-search-button-disabled-border-color, #ccc);\n        @apply --simple-search-button-disabled;\n      }\n      :host button:not([controls]) {\n        display: none;\n      }\n      :host [shrink-hide] {\n        display: none;\n      }\n    </style>\n    </custom-style>\n    <paper-input id="input" always-float-label\\$="[[alwaysFloatLabel]]" label="[[searchInputLabel]]" no-label-float\\$="[[noLabelFloat]]">\n      <iron-icon icon="[[searchInputIcon]]" slot="prefix"></iron-icon>\n    </paper-input>\n    <div id="xofy" shrink-hide\\$="[[noSearch]]"></div>\n    <div shrink-hide\\$="[[noResults]]">\n      <button id="prev" aria-label="[[prevButtonLabel]]" aria-role="button" controls\\$="[[controls]]" disabled\\$="[[prevButtonDisabled]]" tabindex="0">\n        <iron-icon icon="[[prevButtonIcon]]"></iron-icon>\n      </button>\n      <paper-tooltip for="prev">[[prevButtonLabel]]</paper-tooltip>\n      <button id="next" aria-label="[[nextButtonLabel]]" aria-role="button" controls\\$="[[controls]]" disabled\\$="[[nextButtonDisabled]]" tabindex="0">\n        <iron-icon icon\\$="[[nextButtonIcon]]"></iron-icon>\n      </button>\n      <paper-tooltip for="next">[[nextButtonLabel]]</paper-tooltip>\n    </div>\n'
       ]
     );
-    _templateObject_33ecfc50ecf211e8b6f8f3422244b261 = function() {
+    _templateObject_dd16da20f1e411e8a99f5dc819e27ed9 = function _templateObject_dd16da20f1e411e8a99f5dc819e27ed9() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_33ecfc50ecf211e8b6f8f3422244b261()
+      _templateObject_dd16da20f1e411e8a99f5dc819e27ed9()
     ),
     is: "simple-search",
     properties: {
@@ -61,16 +67,16 @@ define([
       var root = this,
         search = root.$.input;
       root._getSearchText(search.value);
-      root.addEventListener("change", function() {
+      root.addEventListener("change", function(e) {
         root._getSearchText(search.value);
         root.resultCount = 0;
         root.resultPointer = 0;
         root.fire("search", root);
       });
-      root.$.prev.addEventListener("tap", function() {
+      root.$.prev.addEventListener("tap", function(e) {
         root._navigateResults(-1);
       });
-      root.$.next.addEventListener("tap", function() {
+      root.$.next.addEventListener("tap", function(e) {
         root._navigateResults(1);
       });
     },
@@ -132,7 +138,7 @@ define([
           terms = root.searchTerms,
           modifier = this.caseSensitive ? "gm" : "gim",
           results = content.slice(0),
-          updateResults = function(find) {
+          updateResults = function updateResults(find) {
             for (var i = 0; i < results.length; i++) {
               if (!1 === results[i].matched) {
                 var regex = new RegExp("\\b" + find + "\\b", modifier),

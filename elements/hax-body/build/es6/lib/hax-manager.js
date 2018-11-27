@@ -331,7 +331,7 @@ Polymer({
       this._fileUploadResponse.bind(this)
     );
   },
-  togglePanelSize: function() {
+  togglePanelSize: function(e) {
     this.$.dialog.classList.toggle("grow");
     this.updateStyles();
     window.dispatchEvent(new Event("resize"));
@@ -422,7 +422,7 @@ Polymer({
     this.$.url.value = item.url;
     this.newAssetConfigure();
   },
-  _activePageChanged: function(newValue) {
+  _activePageChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0) {
       this.searching = !1;
       this.updateStyles();
@@ -454,7 +454,7 @@ Polymer({
       }
     }
   },
-  insertHaxElement: function() {
+  insertHaxElement: function(e) {
     let previewNode = this.$.preview.previewNode,
       element = window.HaxStore.nodeToHaxElement(previewNode);
     element.replace = this.editExistingNode;
@@ -485,7 +485,7 @@ Polymer({
     this.$.fileupload.target = "";
     this.__allowUpload = !1;
   },
-  cancel: function() {
+  cancel: function(e) {
     this.close();
   },
   _openedChanged: function(newValue, oldValue) {
@@ -508,7 +508,7 @@ Polymer({
       this.resetManager();
     }
   },
-  open: function() {
+  open: function(e) {
     this.opened = !0;
   },
   newAssetConfigure: function() {
@@ -548,7 +548,7 @@ Polymer({
       this.activeStep = !1;
     }
   },
-  _activeStepChanged: function(newValue) {
+  _activeStepChanged: function(newValue, oldValue) {
     if (newValue || !newValue) {
       this.updateStyles();
       window.dispatchEvent(new Event("resize"));

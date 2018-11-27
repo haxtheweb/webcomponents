@@ -141,11 +141,11 @@ class LrnButton extends PolymerElement {
     }
     this.$.button.addEventListener("focused-changed", this.focusToggle);
   }
-  tapEventOn() {
+  tapEventOn(e) {
     let root = this;
     if (typeof root.hoverClass !== typeof void 0 && !root.disabled) {
       var classes = root.hoverClass.split(" ");
-      classes.forEach(function(item) {
+      classes.forEach(function(item, index) {
         if ("" != item) {
           root.$.button.classList.add(item);
           if (-1 != item.indexOf("-")) {
@@ -155,11 +155,11 @@ class LrnButton extends PolymerElement {
       });
     }
   }
-  tapEventOff() {
+  tapEventOff(e) {
     let root = this;
     if (typeof root.hoverClass !== typeof void 0 && !root.disabled) {
       var classes = root.hoverClass.split(" ");
-      classes.forEach(function(item) {
+      classes.forEach(function(item, index) {
         if ("" != item) {
           root.$.button.classList.remove(item);
           if (-1 != item.indexOf("-")) {
@@ -169,7 +169,7 @@ class LrnButton extends PolymerElement {
       });
     }
   }
-  focusToggle() {
+  focusToggle(e) {
     let root = this;
     this.dispatchEvent(
       new CustomEvent("focus-changed", {
@@ -180,7 +180,7 @@ class LrnButton extends PolymerElement {
     );
     if (typeof root.hoverClass !== typeof void 0 && !root.disabled) {
       var classes = root.hoverClass.split(" ");
-      classes.forEach(function(item) {
+      classes.forEach(function(item, index) {
         if ("" != item) {
           if (root.focusState) {
             root.$.button.classList.add(item);

@@ -5,20 +5,27 @@ define([
   "../node_modules/@polymer/paper-button/paper-button.js",
   "./lrndesign-mapmenu-item.js",
   "./lrndesign-mapmenu-header.js"
-], function(_polymerLegacy, _polymerDom, _flattenedNodesObserver) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _flattenedNodesObserver,
+  _paperButton,
+  _lrndesignMapmenuItem,
+  _lrndesignMapmenuHeader
+) {
   "use strict";
-  function _templateObject_8bddbba0ecf411e893fb0b59370b06e7() {
+  function _templateObject_78c700c0f1e611e88c7551f55180b4f0() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n      :host([collapsable]) > lrndesign-mapmenu-header {\n        cursor: pointer;\n        display: block;\n      }\n      #container {\n        padding: 16px;\n      }\n      #container ::slotted(lrndesign-mapmenu-item) {\n        margin-top: 6.4px;\n      }\n    </style>\n    <lrndesign-mapmenu-header on-tap="_headerClickHandler" avatar-label="[[avatarLabel]]" title="[[title]]" label="[[label]]" opened="[[opened]]"></lrndesign-mapmenu-header>\n    <iron-collapse id="container">\n      <slot id="slot"></slot>\n    </iron-collapse>\n'
     ]);
-    _templateObject_8bddbba0ecf411e893fb0b59370b06e7 = function() {
+    _templateObject_78c700c0f1e611e88c7551f55180b4f0 = function _templateObject_78c700c0f1e611e88c7551f55180b4f0() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_8bddbba0ecf411e893fb0b59370b06e7()
+      _templateObject_78c700c0f1e611e88c7551f55180b4f0()
     ),
     is: "lrndesign-mapmenu-submenu",
     properties: {
@@ -35,7 +42,7 @@ define([
       if (opened) target.show();
       if (!opened) target.hide();
     },
-    _headerClickHandler: function _headerClickHandler() {
+    _headerClickHandler: function _headerClickHandler(e) {
       if (this.collapsable) {
         this.opened = !this.opened;
       }

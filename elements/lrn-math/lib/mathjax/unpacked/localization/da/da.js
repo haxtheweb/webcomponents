@@ -17,43 +17,45 @@
  *  limitations under the License.
  *
  */
-MathJax.Localization.addTranslation("da",null,{
+MathJax.Localization.addTranslation("da", null, {
   menuTitle: "dansk",
   version: "2.7.5",
   isLoaded: true,
   domains: {
-    "_": {
-        version: "2.7.5",
-        isLoaded: true,
-        strings: {
-          CookieConfig: "MathJax har fundet en cookie med brugerkonfiguration, der indeholder kode til at k\u00F8re. Vil du k\u00F8re det?\n\n(Du b\u00F8r trykke p\u00E5 Annuller, medmindre du oprettede cookien selv.)",
-          MathProcessingError: "Fejl under bearbejdning af matematik",
-          MathError: "Matematikfejl",
-          LoadFile: "Indl\u00E6ser %1",
-          Loading: "Indl\u00E6ser",
-          LoadFailed: "Kunne ikke indl\u00E6se filen: %1",
-          ProcessMath: "Bearbejder matematik: %1%%",
-          Processing: "Bearbejder",
-          TypesetMath: "Ops\u00E6tter matematik: %1%%",
-          Typesetting: "Ops\u00E6tter",
-          MathJaxNotSupported: "Din browser underst\u00F8tter ikke MathJax",
-          ErrorTips: "Tips til fejls\u00F8gning: brug %%1, inspicer %%2 i browserkonsollen"
-        }
+    _: {
+      version: "2.7.5",
+      isLoaded: true,
+      strings: {
+        CookieConfig:
+          "MathJax har fundet en cookie med brugerkonfiguration, der indeholder kode til at k\u00F8re. Vil du k\u00F8re det?\n\n(Du b\u00F8r trykke p\u00E5 Annuller, medmindre du oprettede cookien selv.)",
+        MathProcessingError: "Fejl under bearbejdning af matematik",
+        MathError: "Matematikfejl",
+        LoadFile: "Indl\u00E6ser %1",
+        Loading: "Indl\u00E6ser",
+        LoadFailed: "Kunne ikke indl\u00E6se filen: %1",
+        ProcessMath: "Bearbejder matematik: %1%%",
+        Processing: "Bearbejder",
+        TypesetMath: "Ops\u00E6tter matematik: %1%%",
+        Typesetting: "Ops\u00E6tter",
+        MathJaxNotSupported: "Din browser underst\u00F8tter ikke MathJax",
+        ErrorTips:
+          "Tips til fejls\u00F8gning: brug %%1, inspicer %%2 i browserkonsollen"
+      }
     },
-    "FontWarnings": {},
+    FontWarnings: {},
     "HTML-CSS": {},
-    "HelpDialog": {},
-    "MathML": {},
-    "MathMenu": {},
-    "TeX": {}
+    HelpDialog: {},
+    MathML: {},
+    MathMenu: {},
+    TeX: {}
   },
-  plural: function (n) {
-      if (n === 1) return 1; // one
-      return 2; // other
-    },
-  number: function (n) {
-      return n;
-    }
+  plural: function(n) {
+    if (n === 1) return 1; // one
+    return 2; // other
+  },
+  number: function(n) {
+    return n;
+  }
 });
 
 MathJax.Ajax.loadComplete("[MathJax]/localization/da/da.js");

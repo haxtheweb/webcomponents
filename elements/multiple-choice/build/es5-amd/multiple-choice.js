@@ -2,30 +2,41 @@ define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./node_modules/@polymer/paper-checkbox/paper-checkbox.js",
   "./node_modules/@polymer/iron-icons/iron-icons.js",
+  "./node_modules/@polymer/iron-icon/iron-icon.js",
   "./node_modules/@polymer/paper-button/paper-button.js",
   "./node_modules/@polymer/paper-toast/paper-toast.js",
   "./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js",
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _paperCheckbox,
+  _ironIcons,
+  _ironIcon,
+  _paperButton,
+  _paperToast,
+  _materializecssStyles,
+  _HAXWiring,
+  _schemaBehaviors
+) {
   "use strict";
-  function _templateObject_1be01b00ecf311e894fb539752ba8be2() {
+  function _templateObject_a8c0c2d0f1e511e8a464d3172c283c61() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
-        '\n    <style include="materializecss-styles">\n      :host {\n        display: block;\n        padding: 16px 16px 54px 16px;\n      }\n      h3 {\n        margin: 8px;\n      }\n      ul {\n        list-style: none;\n        padding: 0;\n        margin: 0;\n      }\n      ul li {\n        padding: 8px;\n      }\n      paper-radio-button {\n        padding: 8px;\n      }\n    </style>\n    <meta property="oer:assessing" content$="[[relatedResource]]">\n    <h3 hidden$="[[hideTitle]]"><span property="oer:name">[[title]]</span></h3>\n    <div>[[question]]</div>\n    <ul>\n      <template is="dom-repeat" items="[[displayedAnswers]]" as="answer">\n        <li><paper-checkbox disabled$="[[disabled]]" property="oer:answer" checked="{{answer.userGuess}}">[[answer.label]]</paper-checkbox></li>\n      </template>\n    </ul>\n    <div hidden$="[[hideButtons]]">\n      <paper-button disabled$="[[disabled]]" raised="" on-tap="_verifyAnswers">[[checkLabel]]</paper-button>\n      <paper-button disabled$="[[disabled]]" raised="" on-tap="_resetAnswers">[[resetLabel]]</paper-button>\n    </div>\n    <paper-toast id="toast" duration="6000" class$="fit-bottom [[__toastColor]]">\n    [[__toastText]]\n    <iron-icon icon="[[__toastIcon]]" style="margin-left:16px;"></iron-icon>\n    </paper-toast>\n'
+        '\n    <style include="materializecss-styles">\n      :host {\n        display: block;\n        padding: 16px 16px 54px 16px;\n      }\n      h3 {\n        margin: 8px;\n      }\n      ul {\n        list-style: none;\n        padding: 0;\n        margin: 0;\n      }\n      ul li {\n        padding: 8px;\n      }\n      paper-checkbox {\n        padding: 8px;\n      }\n      iron-icon {\n        display: inline-flex;\n      }\n    </style>\n    <meta property="oer:assessing" content$="[[relatedResource]]">\n    <h3 hidden$="[[hideTitle]]"><span property="oer:name">[[title]]</span></h3>\n    <div>[[question]]</div>\n    <ul>\n      <template is="dom-repeat" items="[[displayedAnswers]]" as="answer">\n        <li><paper-checkbox disabled$="[[disabled]]" property="oer:answer" checked="{{answer.userGuess}}">[[answer.label]]</paper-checkbox></li>\n      </template>\n    </ul>\n    <div hidden$="[[hideButtons]]">\n      <paper-button disabled$="[[disabled]]" raised="" on-tap="_verifyAnswers">[[checkLabel]]</paper-button>\n      <paper-button disabled$="[[disabled]]" raised="" on-tap="_resetAnswers">[[resetLabel]]</paper-button>\n    </div>\n    <paper-toast id="toast" duration="6000" class$="fit-bottom [[__toastColor]]">\n    [[__toastText]]\n    <iron-icon icon="[[__toastIcon]]" style="margin-left:16px;"></iron-icon>\n    </paper-toast>\n'
       ],
       [
-        '\n    <style include="materializecss-styles">\n      :host {\n        display: block;\n        padding: 16px 16px 54px 16px;\n      }\n      h3 {\n        margin: 8px;\n      }\n      ul {\n        list-style: none;\n        padding: 0;\n        margin: 0;\n      }\n      ul li {\n        padding: 8px;\n      }\n      paper-radio-button {\n        padding: 8px;\n      }\n    </style>\n    <meta property="oer:assessing" content\\$="[[relatedResource]]">\n    <h3 hidden\\$="[[hideTitle]]"><span property="oer:name">[[title]]</span></h3>\n    <div>[[question]]</div>\n    <ul>\n      <template is="dom-repeat" items="[[displayedAnswers]]" as="answer">\n        <li><paper-checkbox disabled\\$="[[disabled]]" property="oer:answer" checked="{{answer.userGuess}}">[[answer.label]]</paper-checkbox></li>\n      </template>\n    </ul>\n    <div hidden\\$="[[hideButtons]]">\n      <paper-button disabled\\$="[[disabled]]" raised="" on-tap="_verifyAnswers">[[checkLabel]]</paper-button>\n      <paper-button disabled\\$="[[disabled]]" raised="" on-tap="_resetAnswers">[[resetLabel]]</paper-button>\n    </div>\n    <paper-toast id="toast" duration="6000" class\\$="fit-bottom [[__toastColor]]">\n    [[__toastText]]\n    <iron-icon icon="[[__toastIcon]]" style="margin-left:16px;"></iron-icon>\n    </paper-toast>\n'
+        '\n    <style include="materializecss-styles">\n      :host {\n        display: block;\n        padding: 16px 16px 54px 16px;\n      }\n      h3 {\n        margin: 8px;\n      }\n      ul {\n        list-style: none;\n        padding: 0;\n        margin: 0;\n      }\n      ul li {\n        padding: 8px;\n      }\n      paper-checkbox {\n        padding: 8px;\n      }\n      iron-icon {\n        display: inline-flex;\n      }\n    </style>\n    <meta property="oer:assessing" content\\$="[[relatedResource]]">\n    <h3 hidden\\$="[[hideTitle]]"><span property="oer:name">[[title]]</span></h3>\n    <div>[[question]]</div>\n    <ul>\n      <template is="dom-repeat" items="[[displayedAnswers]]" as="answer">\n        <li><paper-checkbox disabled\\$="[[disabled]]" property="oer:answer" checked="{{answer.userGuess}}">[[answer.label]]</paper-checkbox></li>\n      </template>\n    </ul>\n    <div hidden\\$="[[hideButtons]]">\n      <paper-button disabled\\$="[[disabled]]" raised="" on-tap="_verifyAnswers">[[checkLabel]]</paper-button>\n      <paper-button disabled\\$="[[disabled]]" raised="" on-tap="_resetAnswers">[[resetLabel]]</paper-button>\n    </div>\n    <paper-toast id="toast" duration="6000" class\\$="fit-bottom [[__toastColor]]">\n    [[__toastText]]\n    <iron-icon icon="[[__toastIcon]]" style="margin-left:16px;"></iron-icon>\n    </paper-toast>\n'
       ]
     );
-    _templateObject_1be01b00ecf311e894fb539752ba8be2 = function() {
+    _templateObject_a8c0c2d0f1e511e8a464d3172c283c61 = function _templateObject_a8c0c2d0f1e511e8a464d3172c283c61() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_1be01b00ecf311e894fb539752ba8be2()
+      _templateObject_a8c0c2d0f1e511e8a464d3172c283c61()
     ),
     is: "multiple-choice",
     hostAttributes: { typeof: "oer:Assessment" },
@@ -61,7 +72,7 @@ define([
         }
       }
     },
-    _resetAnswers: function _resetAnswers() {
+    _resetAnswers: function _resetAnswers(e) {
       var _this = this;
       this.$.toast.hide();
       for (var i in this.displayedAnswers) {
@@ -98,7 +109,7 @@ define([
       }
       return gotRight;
     },
-    _verifyAnswers: function _verifyAnswers() {
+    _verifyAnswers: function _verifyAnswers(e) {
       var gotRight = this.checkAnswers();
       if (gotRight) {
         this.$.toast.hide();
@@ -119,7 +130,10 @@ define([
       randomize
     ) {
       if (
-        babelHelpers.typeof(answers) !== "undefined" &&
+        babelHelpers.typeof(answers) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         null != answers &&
         0 < answers.length &&
         randomize
@@ -142,7 +156,7 @@ define([
     },
     attached: function attached() {
       this.$.toast.fitInto = this;
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !1,
@@ -247,7 +261,8 @@ define([
           ]
         },
         saveOptions: { unsetAttributes: ["displayed-answers"] }
-      });
+      };
+      this.setHaxProperties(props);
     }
   });
 });

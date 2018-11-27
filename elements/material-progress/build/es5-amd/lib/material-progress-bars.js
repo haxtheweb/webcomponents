@@ -1,7 +1,7 @@
 define([
   "../node_modules/@polymer/polymer/polymer-legacy.js",
   "./material-progress-behavior.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _materialProgressBehavior) {
   "use strict";
   var $_documentContainer = document.createElement("div");
   $_documentContainer.setAttribute("style", "display: none;");
@@ -21,8 +21,9 @@ define([
       var realMax = Math.max(barValuesSum, this.max),
         width =
           (0 < realMax ? Math.floor(1e4 * (barValue / realMax)) / 100 : "0") +
-          "%";
-      return "calc(" + width + " + " + barHeight / 2 + "px" + ")";
+          "%",
+        negativeMargin = barHeight / 2;
+      return "calc(" + width + " + " + negativeMargin + "px" + ")";
     }
   });
 });

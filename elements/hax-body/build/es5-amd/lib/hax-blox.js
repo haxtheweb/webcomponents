@@ -11,7 +11,12 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
     is: "hax-blox",
     properties: { data: { type: Object } },
     attached: function attached() {
-      if (babelHelpers.typeof(this.data) !== "undefined") {
+      if (
+        babelHelpers.typeof(this.data) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         this.fire("hax-register-blox", this.data);
       }
     }

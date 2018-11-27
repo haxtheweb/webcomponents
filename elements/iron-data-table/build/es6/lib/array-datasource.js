@@ -3,7 +3,7 @@ function ArrayDataSource(arr) {
     if (0 === filter.length) {
       return items;
     }
-    return Array.prototype.filter.call(items, function(item) {
+    return Array.prototype.filter.call(items, function(item, index) {
       for (var i = 0, value; i < filter.length; i++) {
         value = Polymer.Base.get(filter[i].path, item);
         if (-1 < [void 0, null, ""].indexOf(filter[i].filter)) {
@@ -35,33 +35,31 @@ function ArrayDataSource(arr) {
     if (!sortOrder || 0 === sortOrder.length) {
       return items;
     }
-    return Array.prototype.sort.call(
-      items.slice(0),
-      (function() {
-        return function(a, b) {
-          return sortOrder
-            .map(function(sort) {
-              if ("asc" === sort.direction) {
-                return _compare(
-                  Polymer.Base.get(sort.path, a),
-                  Polymer.Base.get(sort.path, b)
-                );
-              } else if ("desc" === sort.direction) {
-                return _compare(
-                  Polymer.Base.get(sort.path, b),
-                  Polymer.Base.get(sort.path, a)
-                );
-              }
-              return 0;
-            })
-            .reduce(function(p, n) {
-              return p ? p : n;
-            }, 0);
-        };
-      })(sortOrder)
-    );
+    var multiSort = function() {
+      return function(a, b) {
+        return sortOrder
+          .map(function(sort) {
+            if ("asc" === sort.direction) {
+              return _compare(
+                Polymer.Base.get(sort.path, a),
+                Polymer.Base.get(sort.path, b)
+              );
+            } else if ("desc" === sort.direction) {
+              return _compare(
+                Polymer.Base.get(sort.path, b),
+                Polymer.Base.get(sort.path, a)
+              );
+            }
+            return 0;
+          })
+          .reduce(function firstNonZeroValue(p, n) {
+            return p ? p : n;
+          }, 0);
+      };
+    };
+    return Array.prototype.sort.call(items.slice(0), multiSort(sortOrder));
   }
-  return function(opts, cb) {
+  return function(opts, cb, err) {
     var filteredItems = _filter(arr, opts.filter),
       sortedItems = _sort(filteredItems, opts.sortOrder),
       start = opts.page * opts.pageSize,

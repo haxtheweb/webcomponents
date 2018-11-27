@@ -43,14 +43,14 @@ Polymer({
       return Object.assign({}, value, { selected: isSelected(value) });
     });
   },
-  _tapReset: function() {
+  _tapReset: function(e) {
     this._selectedFilters = {};
   },
-  _tapApply: function() {
+  _tapApply: function(e) {
     this.selectedFilters = this._selectedFilters;
     this.fire("save");
   },
-  _tapSelectValues: function() {
+  _tapSelectValues: function(e) {
     const selectedValues = this._selectedFilterValues
       .filter(function(value) {
         return value.selected;

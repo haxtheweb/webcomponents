@@ -8,6 +8,16 @@ define([
   "./lib/lrnsys-dialog.js",
   "./lib/lrnsys-drawer-modal.js",
   "./lib/lrnsys-drawer.js"
-], function() {
+], function(
+  _lrnsysButtonInner,
+  _lrnsysCollapselistItem,
+  _lrnsysCollapselist,
+  _lrnsysDialogModal,
+  _lrnsysDialogToolbarButton,
+  _lrnsysDialogToolbar,
+  _lrnsysDialog,
+  _lrnsysDrawerModal,
+  _lrnsysDrawer
+) {
   "use strict";
 });

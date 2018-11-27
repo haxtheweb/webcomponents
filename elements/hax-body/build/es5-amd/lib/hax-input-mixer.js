@@ -10,9 +10,21 @@ define([
   "../node_modules/@polymer/paper-tooltip/paper-tooltip.js",
   "./hax-context-item-menu.js",
   "./hax-context-item.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _appToolbar,
+  _paperTextarea,
+  _paperInput,
+  _paperCheckbox,
+  _simpleColorsPicker,
+  _paperSlider,
+  _paperTooltip,
+  _haxContextItemMenu,
+  _haxContextItem
+) {
   "use strict";
-  function _templateObject_a9325200ee0311e8bb61cd2eef6a9bf2() {
+  function _templateObject_9c4c7a70f1e611e8b3a2e3a031c18fd0() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <custom-style>\n    <style is="custom-style">\n      :host {\n        display: block;\n        color: #FFFFFF;\n      }\n      app-toolbar {\n        background-color: #3e3e3e;\n        color: white;\n        padding: 0 0 0 16px;\n      }\n      hax-context-item {\n        margin: 0;\n        width: 40px;\n        height: 40px;\n      }\n      #elementoptions {\n        height: inherit;\n      }\n      #input {\n        color: #FFFFFF;\n      }\n      paper-checkbox {\n        --paper-checkbox-label-color: #FFFFFF;\n      }\n      .input-mixer-label {\n        padding-left: 4px;\n      }\n      paper-textarea,\n      paper-input {\n        --paper-input-container-color: #BBBBFF;\n        --paper-input-container-focus-color: #FFFFFF;\n        --paper-input-container-invalid-color: #FFAAAA;\n        --paper-input-container-input-color: #FFFFFF;\n        --paper-input-container-shared-input-style: {\n          color: #FFFFFF;\n          background: transparent;\n          margin: 0;\n          padding: 0;\n          min-width: 320px;\n          line-height: 16px;\n          font-size: 16px;\n          margin-top: -8px;\n          margin-bottom: 8px;\n          outline: none;\n          border: none;\n        }\n      }\n      .input-method {\n        color: #FFFFFF;\n      }\n    </style>\n    </custom-style>\n    <app-toolbar>\n      <template is="dom-if" if="[[__inputselect]]">\n        <span class="input-mixer-label">[[label]]</span>\n        <hax-context-item-menu selected="{{value}}" icon="[[icon]]" id="input">\n          <slot></slot>\n        </hax-context-item-menu>\n      </template>\n      <span class="input-method">\n      <template is="dom-if" if="[[__inputtextarea]]">\n        <paper-textarea id="input" label="[[label]]" value="{{value}}" auto-validate="" pattern="[[validation]]" required="[[required]]"></paper-textarea>\n      </template>\n      <template is="dom-if" if="[[__inputtextfield]]">\n        <paper-input id="input" type="[[validationType]]" label="[[label]]" value="{{value}}" auto-validate="" pattern="[[validation]]" required="[[required]]"></paper-input>\n      </template>\n      <template is="dom-if" if="[[__inputboolean]]">\n        <paper-checkbox id="input" checked="{{value}}">[[label]]</paper-checkbox>\n      </template>\n      <template is="dom-if" if="[[__inputflipboolean]]">\n        <paper-checkbox id="input" checked="{{value}}">[[label]]</paper-checkbox>\n      </template>\n      <template is="dom-if" if="[[__inputcolorpicker]]">\n        <span>[[label]]</span>\n        <simple-colors-picker id="input" value="{{value}}"></simple-colors-picker>\n      </template>\n      </span>\n      <paper-tooltip for="input" position="top" offset="14">\n        [[description]]\n      </paper-tooltip>\n      <hax-context-item id="updatebutton" icon="subdirectory-arrow-right" label$="Update [[label]]" event-name="hax-update-tap"></hax-context-item>\n    </app-toolbar>\n'
@@ -21,14 +33,14 @@ define([
         '\n    <custom-style>\n    <style is="custom-style">\n      :host {\n        display: block;\n        color: #FFFFFF;\n      }\n      app-toolbar {\n        background-color: #3e3e3e;\n        color: white;\n        padding: 0 0 0 16px;\n      }\n      hax-context-item {\n        margin: 0;\n        width: 40px;\n        height: 40px;\n      }\n      #elementoptions {\n        height: inherit;\n      }\n      #input {\n        color: #FFFFFF;\n      }\n      paper-checkbox {\n        --paper-checkbox-label-color: #FFFFFF;\n      }\n      .input-mixer-label {\n        padding-left: 4px;\n      }\n      paper-textarea,\n      paper-input {\n        --paper-input-container-color: #BBBBFF;\n        --paper-input-container-focus-color: #FFFFFF;\n        --paper-input-container-invalid-color: #FFAAAA;\n        --paper-input-container-input-color: #FFFFFF;\n        --paper-input-container-shared-input-style: {\n          color: #FFFFFF;\n          background: transparent;\n          margin: 0;\n          padding: 0;\n          min-width: 320px;\n          line-height: 16px;\n          font-size: 16px;\n          margin-top: -8px;\n          margin-bottom: 8px;\n          outline: none;\n          border: none;\n        }\n      }\n      .input-method {\n        color: #FFFFFF;\n      }\n    </style>\n    </custom-style>\n    <app-toolbar>\n      <template is="dom-if" if="[[__inputselect]]">\n        <span class="input-mixer-label">[[label]]</span>\n        <hax-context-item-menu selected="{{value}}" icon="[[icon]]" id="input">\n          <slot></slot>\n        </hax-context-item-menu>\n      </template>\n      <span class="input-method">\n      <template is="dom-if" if="[[__inputtextarea]]">\n        <paper-textarea id="input" label="[[label]]" value="{{value}}" auto-validate="" pattern="[[validation]]" required="[[required]]"></paper-textarea>\n      </template>\n      <template is="dom-if" if="[[__inputtextfield]]">\n        <paper-input id="input" type="[[validationType]]" label="[[label]]" value="{{value}}" auto-validate="" pattern="[[validation]]" required="[[required]]"></paper-input>\n      </template>\n      <template is="dom-if" if="[[__inputboolean]]">\n        <paper-checkbox id="input" checked="{{value}}">[[label]]</paper-checkbox>\n      </template>\n      <template is="dom-if" if="[[__inputflipboolean]]">\n        <paper-checkbox id="input" checked="{{value}}">[[label]]</paper-checkbox>\n      </template>\n      <template is="dom-if" if="[[__inputcolorpicker]]">\n        <span>[[label]]</span>\n        <simple-colors-picker id="input" value="{{value}}"></simple-colors-picker>\n      </template>\n      </span>\n      <paper-tooltip for="input" position="top" offset="14">\n        [[description]]\n      </paper-tooltip>\n      <hax-context-item id="updatebutton" icon="subdirectory-arrow-right" label\\$="Update [[label]]" event-name="hax-update-tap"></hax-context-item>\n    </app-toolbar>\n'
       ]
     );
-    _templateObject_a9325200ee0311e8bb61cd2eef6a9bf2 = function() {
+    _templateObject_9c4c7a70f1e611e8b3a2e3a031c18fd0 = function _templateObject_9c4c7a70f1e611e8b3a2e3a031c18fd0() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a9325200ee0311e8bb61cd2eef6a9bf2()
+      _templateObject_9c4c7a70f1e611e8b3a2e3a031c18fd0()
     ),
     is: "hax-input-mixer",
     listeners: { "hax-context-item-selected": "_haxContextOperation" },
@@ -55,7 +67,13 @@ define([
     },
     _inputMethodChanged: function _inputMethodChanged(newValue, oldValue) {
       var _this = this;
-      if (null != newValue && babelHelpers.typeof(oldValue) !== "undefined") {
+      if (
+        null != newValue &&
+        babelHelpers.typeof(oldValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+      ) {
         var method = newValue,
           methods = this.validInputMethods();
         if (methods.includes(method)) {
@@ -67,7 +85,10 @@ define([
           }
           if (
             "select" === method &&
-            babelHelpers.typeof(this.options) !== "undefined"
+            babelHelpers.typeof(this.options) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
           ) {
             for (val in this.options) {
               item = document.createElement("paper-item");
@@ -89,7 +110,7 @@ define([
       }
     },
     validInputMethods: function validInputMethods() {
-      return [
+      var methods = [
         "flipboolean",
         "boolean",
         "select",
@@ -100,6 +121,7 @@ define([
         "colorpicker",
         "number"
       ];
+      return methods;
     },
     _resetInputMethods: function _resetInputMethods() {
       for (

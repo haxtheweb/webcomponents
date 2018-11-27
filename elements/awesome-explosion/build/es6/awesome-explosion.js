@@ -78,7 +78,7 @@ Polymer({
     color: { type: String, value: "", reflectToAttribute: !0 },
     resetSound: { type: Boolean, value: !1, reflectToAttribute: !0 }
   },
-  _calculateStopped: function(newValue) {
+  _calculateStopped: function(newValue, oldValue) {
     if ("stop" == newValue) {
       this.stopped = !0;
       if (typeof window.audio !== typeof void 0) {
@@ -90,7 +90,7 @@ Polymer({
       this.stopped = !1;
     }
   },
-  _calculatePlaying: function(newValue) {
+  _calculatePlaying: function(newValue, oldValue) {
     if ("play" == newValue) {
       this.playing = !0;
       this._playSound();
@@ -99,7 +99,7 @@ Polymer({
       this.playing = !1;
     }
   },
-  _calculatePaused: function(newValue) {
+  _calculatePaused: function(newValue, oldValue) {
     if ("pause" == newValue) {
       this.paused = !0;
       this._stopSound();
@@ -116,10 +116,10 @@ Polymer({
       }
     }
   },
-  _setPlaySound: function() {
+  _setPlaySound: function(e) {
     this.state = "play";
   },
-  _setStopSound: function() {
+  _setStopSound: function(e) {
     this.state = "pause";
   },
   _playSound: function() {

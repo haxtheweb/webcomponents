@@ -205,7 +205,7 @@ Polymer({
     this.correct = !this.correct;
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -286,14 +286,15 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
-  _backgroundColorChanged: function(newValue) {
+  _backgroundColorChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0 && null != newValue) {
       this.computeTextPropContrast("textColor", "backgroundColor");
     }
   },
-  _primaryColorChanged: function(newValue) {
+  _primaryColorChanged: function(newValue, oldValue) {
     if (null != newValue && typeof this.source !== typeof void 0) {
       this.videoColor = newValue.substring(1);
       var source = this.source;

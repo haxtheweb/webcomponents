@@ -66,7 +66,7 @@ Polymer({
     this.fire("button-clicked", e.detail);
   },
   ready: function() {
-    this.$.secondary.addEventListener("button-initialized", () => {
+    this.$.secondary.addEventListener("button-initialized", e => {
       this._secondaryHasChildren = !0;
     });
   }

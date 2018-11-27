@@ -98,18 +98,16 @@ Polymer({
   },
   ready: function() {
     const name = "jdenticon",
-      basePath = pathFromUrl(import.meta.url);
+      basePath = pathFromUrl(import.meta.url),
+      location = `${basePath}lib/jdenticon-1.4.0.min.js`;
     window.addEventListener(
       `es-bridge-${name}-loaded`,
       this._jdenticonLoaded.bind(this)
     );
     window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(
-      name,
-      `${basePath}lib/jdenticon-1.4.0.min.js`
-    );
+    window.ESGlobalBridge.instance.load(name, location);
   },
-  _jdenticonLoaded: function() {
+  _jdenticonLoaded: function(e) {
     this.jdenticonExists = !0;
     this._observerLabel(this.label);
   },

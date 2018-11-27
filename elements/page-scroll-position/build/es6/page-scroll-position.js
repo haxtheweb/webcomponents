@@ -10,8 +10,9 @@ class PageScrollPosition extends HTMLElement {
       let a = document.documentElement.scrollTop,
         b =
           document.documentElement.scrollHeight -
-          document.documentElement.clientHeight;
-      this.value = 100 * (a / b);
+          document.documentElement.clientHeight,
+        c = 100 * (a / b);
+      this.value = c;
       valueChangedEvent = new CustomEvent("value-changed", {
         detail: { value: this.value }
       });

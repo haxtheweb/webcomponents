@@ -60,10 +60,10 @@ Polymer({
     data: { type: Array, value: null },
     items: { type: Array, value: null, notify: !0 }
   },
-  openDirections: function() {
+  openDirections: function(e) {
     this.$.modal.opened = !0;
   },
-  closeDirections: function() {
+  closeDirections: function(e) {
     this.$.modal.opened = !1;
     this.$.dialogtrigger.focus();
   },
@@ -139,7 +139,8 @@ Polymer({
     this.__focusedItem.focus();
   },
   removeItem: function(item) {
-    let i = item.index;
+    let i = item.index,
+      items;
     if (confirm("Do you really want to delete " + this.items[i].title + "?")) {
       this.__focusedItem = item.previousElementSibling;
       for (k in this.items) {
@@ -160,10 +161,15 @@ Polymer({
       target = moveUp
         ? this.items[sourceStart].prevSibling
         : this._getLastChild(this.items[sourceEnd + 1]) - sourceCount + 1,
-      items = this.items;
+      items = this.items,
+      items2;
     if (-1 < target && target < this.items.length) {
       if ((moveUp && !item.disableUp) || (!moveUp && !item.disableDown)) {
-        items.splice(target, 0, items.splice(sourceStart, sourceCount));
+        items2 = items.splice(
+          target,
+          0,
+          items.splice(sourceStart, sourceCount)
+        );
         this.setData(items);
         this.__focusedItem = this.$.itemslist.querySelectorAll(
           "lrnsys-outline-item"
@@ -300,5 +306,5 @@ Polymer({
   _handleFocusItem: function(e) {
     this.__focusedItem = e.srcElement;
   },
-  _handleBlurItem: function() {}
+  _handleBlurItem: function(e) {}
 });

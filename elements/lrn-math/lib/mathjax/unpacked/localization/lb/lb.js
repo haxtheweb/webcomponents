@@ -17,37 +17,38 @@
  *  limitations under the License.
  *
  */
-MathJax.Localization.addTranslation("lb",null,{
+MathJax.Localization.addTranslation("lb", null, {
   menuTitle: "L\u00EBtzebuergesch",
   version: "2.7.5",
   isLoaded: true,
   domains: {
-    "_": {
-        version: "2.7.5",
-        isLoaded: true,
-        strings: {
-          MathError: "Math Feeler",
-          LoadFile: "%1 lueden",
-          Loading: "Lueden",
-          LoadFailed: "De Fichier konnt net geluede ginn: %1",
-          Processing: "Verschaffen",
-          MathJaxNotSupported: "\u00C4re browser \u00EBnnerst\u00EBtzt MathJax net"
-        }
+    _: {
+      version: "2.7.5",
+      isLoaded: true,
+      strings: {
+        MathError: "Math Feeler",
+        LoadFile: "%1 lueden",
+        Loading: "Lueden",
+        LoadFailed: "De Fichier konnt net geluede ginn: %1",
+        Processing: "Verschaffen",
+        MathJaxNotSupported:
+          "\u00C4re browser \u00EBnnerst\u00EBtzt MathJax net"
+      }
     },
-    "FontWarnings": {},
+    FontWarnings: {},
     "HTML-CSS": {},
-    "HelpDialog": {},
-    "MathML": {},
-    "MathMenu": {},
-    "TeX": {}
+    HelpDialog: {},
+    MathML: {},
+    MathMenu: {},
+    TeX: {}
   },
-  plural: function (n) {
-      if (n === 1) return 1; // one
-      return 2; // other
-    },
-  number: function (n) {
-      return n;
-    }
+  plural: function(n) {
+    if (n === 1) return 1; // one
+    return 2; // other
+  },
+  number: function(n) {
+    return n;
+  }
 });
 
 MathJax.Ajax.loadComplete("[MathJax]/localization/lb/lb.js");

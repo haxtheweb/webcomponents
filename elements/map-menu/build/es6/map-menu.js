@@ -93,7 +93,7 @@ Polymer({
         items.push(element);
       }
     });
-    items.forEach(item => {
+    items.forEach((item, i) => {
       this._setChildren(item, data);
     });
     this.set("items", []);
@@ -121,7 +121,7 @@ Polymer({
       this.refreshActiveChildren(this.selected);
     }
   },
-  __toggleUpdated: function() {
+  __toggleUpdated: function(e) {
     this.refreshActiveChildren(this.selected, 300);
   },
   __isInViewport: function(element) {

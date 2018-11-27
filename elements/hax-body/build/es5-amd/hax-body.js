@@ -16,7 +16,14 @@ define([
   _polymerDom,
   _flattenedNodesObserver,
   _flush,
-  async
+  async,
+  _paperItem,
+  _ironA11yKeys,
+  _gridPlate,
+  _haxTextContext,
+  _haxCeContext,
+  _haxPlateContext,
+  _haxInputMixer
 ) {
   "use strict";
   async = babelHelpers.interopRequireWildcard(async);
@@ -125,7 +132,7 @@ define([
       );
       window.removeEventListener("scroll", this._keepContextVisible.bind(this));
     },
-    _keepContextVisible: function _keepContextVisible() {
+    _keepContextVisible: function _keepContextVisible(e) {
       var el = !1;
       if (this.$.textcontextmenu.classList.contains("hax-context-visible")) {
         el = this.$.textcontextmenu;
@@ -168,10 +175,10 @@ define([
         left + width > window.pageXOffset
       );
     },
-    _selectionChange: function _selectionChange() {
+    _selectionChange: function _selectionChange(e) {
       window.__startedSelection = !0;
     },
-    _selectionMouseUp: function _selectionMouseUp() {
+    _selectionMouseUp: function _selectionMouseUp(e) {
       if (window.__startedSelection && this.editMode) {
         try {
           var selection = window.getSelection(),
@@ -213,7 +220,10 @@ define([
         skipPropMatch = !1;
       if (
         "place-holder" === element.tag &&
-        babelHelpers.typeof(element.properties.type) !== "undefined"
+        babelHelpers.typeof(element.properties.type) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
       ) {
         type = element.properties.type;
         skipPropMatch = !0;
@@ -222,11 +232,17 @@ define([
       if (
         babelHelpers.typeof(
           window.HaxStore.instance.elementList[element.tag]
-        ) !== "undefined" &&
+        ) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         !1 !== window.HaxStore.instance.elementList[element.tag].gizmo &&
         babelHelpers.typeof(
           window.HaxStore.instance.elementList[element.tag].gizmo.handles
-        ) !== "undefined" &&
+        ) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         0 <
           window.HaxStore.instance.elementList[element.tag].gizmo.handles.length
       ) {
@@ -241,7 +257,10 @@ define([
               "type" !== prop &&
               babelHelpers.typeof(
                 element.properties[gizmo.handles[i][prop]]
-              ) !== "undefined"
+              ) !==
+                ("undefined" === typeof void 0
+                  ? "undefined"
+                  : babelHelpers.typeof(void 0))
             ) {
               props[prop] = element.properties[gizmo.handles[i][prop]];
             }
@@ -254,7 +273,9 @@ define([
           humanName = tag.replace("-", " ");
         if (
           babelHelpers.typeof(window.HaxStore.instance.elementList[tag]) !==
-            "undefined" &&
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           !1 !== window.HaxStore.instance.elementList[tag].gizmo
         ) {
           humanName = window.HaxStore.instance.elementList[tag].gizmo.title;
@@ -269,15 +290,27 @@ define([
         window.HaxStore.toast("Sorry, this can not be transformed!", 5e3);
       }
     },
-    _globalPreferencesUpdated: function _globalPreferencesUpdated(newValue) {
-      if (babelHelpers.typeof(newValue) !== "undefined" && null != newValue) {
+    _globalPreferencesUpdated: function _globalPreferencesUpdated(
+      newValue,
+      oldValue
+    ) {
+      if (
+        babelHelpers.typeof(newValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
+        null != newValue
+      ) {
         this.haxRayMode = newValue.haxRayMode;
       }
     },
     _haxStorePropertyUpdated: function _haxStorePropertyUpdated(e) {
       if (
         e.detail &&
-        babelHelpers.typeof(e.detail.value) !== "undefined" &&
+        babelHelpers.typeof(e.detail.value) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         e.detail.property
       ) {
         if ("object" === babelHelpers.typeof(e.detail.value)) {
@@ -334,7 +367,10 @@ define([
           null !== window.HaxStore.instance.activePlaceHolder &&
           babelHelpers.typeof(
             window.HaxStore.instance.activePlaceHolder.style
-          ) !== "undefined"
+          ) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
         ) {
           newNode.style.width =
             window.HaxStore.instance.activePlaceHolder.style.width;
@@ -408,7 +444,10 @@ define([
           content += "<!-- " + children[i].textContent + " -->";
         } else if (
           1 !== children[i].nodeType &&
-          babelHelpers.typeof(children[i].textContent) !== "undefined" &&
+          babelHelpers.typeof(children[i].textContent) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           "undefined" !== children[i].textContent
         ) {
           content += children[i].textContent;
@@ -423,28 +462,30 @@ define([
       content = content.replace(/\sdraggable/g, "");
       content = content.replace(/\sdata-draggable/g, "");
       content = content.replace(/\sdata-hax-ray=\".*?\"/g, "");
-      var parentTag = this.parentNode.tagName.toLowerCase(),
-        string = "style-scope " + parentTag + " x-scope",
-        re = new RegExp(string, "g");
-      content = content.replace(re, "");
-      string = "style-scope " + parentTag;
-      re = new RegExp(string, "g");
-      content = content.replace(re, "");
-      string = "x-scope " + parentTag + "-0";
-      re = new RegExp(string, "g");
-      content = content.replace(re, "");
-      var tags = window.HaxStore.instance.validTagList;
-      tags.push("hax-preview");
-      for (var i in tags) {
-        string = "style-scope " + tags[i];
+      if (this.parentNode.tagName) {
+        var parentTag = this.parentNode.tagName.toLowerCase(),
+          string = "style-scope " + parentTag + " x-scope",
+          re = new RegExp(string, "g");
+        content = content.replace(re, "");
+        string = "style-scope " + parentTag;
         re = new RegExp(string, "g");
         content = content.replace(re, "");
-        string = "x-scope " + tags[i] + "-0 ";
+        string = "x-scope " + parentTag + "-0";
         re = new RegExp(string, "g");
         content = content.replace(re, "");
-        string = "x-scope " + tags[i] + "-0";
-        re = new RegExp(string, "g");
-        content = content.replace(re, "");
+        var tags = window.HaxStore.instance.validTagList;
+        tags.push("hax-preview");
+        for (var i in tags) {
+          string = "style-scope " + tags[i];
+          re = new RegExp(string, "g");
+          content = content.replace(re, "");
+          string = "x-scope " + tags[i] + "-0 ";
+          re = new RegExp(string, "g");
+          content = content.replace(re, "");
+          string = "x-scope " + tags[i] + "-0";
+          re = new RegExp(string, "g");
+          content = content.replace(re, "");
+        }
       }
       content = content.replace(/\sclass=\"\"/g, "");
       content = content.replace(/\sclass=\"\s\"/g, "");
@@ -466,7 +507,10 @@ define([
       if (
         "webview" === nodeClone.tagName.toLowerCase() &&
         window.HaxStore.instance._isSandboxed &&
-        babelHelpers.typeof(nodeClone.guestinstance) !== "undefined"
+        babelHelpers.typeof(nodeClone.guestinstance) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
       ) {
         delete nodeClone.guestinstance;
       }
@@ -509,7 +553,13 @@ define([
         offsetmenu = 0;
         offsetplate = 0;
       }
-      if (babelHelpers.typeof(props) !== "undefined" && "P" !== node.tagName) {
+      if (
+        babelHelpers.typeof(props) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
+        "P" !== node.tagName
+      ) {
         this.__activeContextType = this.$.cecontextmenu;
         props.element = node;
         this.__activeContextType.setHaxProperties(props);
@@ -592,7 +642,7 @@ define([
       }
       return replacement;
     },
-    haxChangeTagName: function haxChangeTagName(node, tagName) {
+    haxChangeTagName: function haxChangeTagName(node, tagName, newNode) {
       this.hideContextMenus();
       for (
         var replacement = document.createElement(tagName),
@@ -664,7 +714,10 @@ define([
         fragment.insertAdjacentHTML("beforeend", html);
         while (null !== fragment.firstChild) {
           if (
-            babelHelpers.typeof(fragment.firstChild.tagName) !== "undefined" &&
+            babelHelpers.typeof(fragment.firstChild.tagName) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0)) &&
             validTags.includes(fragment.firstChild.tagName.toLowerCase())
           ) {
             if (
@@ -734,20 +787,23 @@ define([
           }
           break;
         case "grid-plate-delete":
-          var tag = this.activeNode.tagName.toLowerCase(),
+          var options = [
+              { icon: "thumb-up", color: "green", title: "Yes" },
+              { icon: "thumb-down", color: "red", title: "No" }
+            ],
+            tag = this.activeNode.tagName.toLowerCase(),
             humanName = tag.replace("-", " ");
           if (
             babelHelpers.typeof(window.HaxStore.instance.elementList[tag]) !==
-              "undefined" &&
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0)) &&
             !1 !== window.HaxStore.instance.elementList[tag].gizmo
           ) {
             humanName = window.HaxStore.instance.elementList[tag].gizmo.title;
           }
           window.HaxStore.instance.haxAppPicker.presentOptions(
-            [
-              { icon: "thumb-up", color: "green", title: "Yes" },
-              { icon: "thumb-down", color: "red", title: "No" }
-            ],
+            options,
             "",
             "Remove this `".concat(humanName, "`?"),
             "delete"
@@ -804,7 +860,10 @@ define([
           haxInputMixer.inputMethod = detail.target.inputMethod;
           haxInputMixer.value = "";
           if (
-            babelHelpers.typeof(detail.target.propertyToBind) !== "undefined" &&
+            babelHelpers.typeof(detail.target.propertyToBind) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0)) &&
             null != detail.target.propertyToBind &&
             !1 != detail.target.propertyToBind
           ) {
@@ -812,7 +871,10 @@ define([
             if (
               babelHelpers.typeof(
                 this.activeNode[detail.target.propertyToBind]
-              ) !== "undefined"
+              ) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
             ) {
               haxInputMixer.value = this.activeNode[
                 detail.target.propertyToBind
@@ -972,11 +1034,19 @@ define([
       }
     },
     _editModeChanged: function _editModeChanged(newValue, oldValue) {
-      if (babelHelpers.typeof(oldValue) !== "undefined") {
+      if (
+        babelHelpers.typeof(oldValue) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         this._applyContentEditable(newValue);
         if (
           !1 !== newValue &&
-          babelHelpers.typeof(this.activeNode) !== "undefined" &&
+          babelHelpers.typeof(this.activeNode) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           null !== this.activeNode
         ) {
           this.positionContextMenus(this.activeNode, this.activeContainerNode);
@@ -989,7 +1059,10 @@ define([
     _haxResolvePreviousElement: function _haxResolvePreviousElement(node) {
       node = (0, _polymerDom.dom)(node).previousElementSibling;
       while (
-        babelHelpers.typeof(node.tagName) !== "undefined" &&
+        babelHelpers.typeof(node.tagName) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         "HAX-" === node.tagName.substring(0, 4)
       ) {
         node = (0, _polymerDom.dom)(node).previousElementSibling;
@@ -998,7 +1071,10 @@ define([
     },
     _haxElementTest: function _haxElementTest(node) {
       if (
-        babelHelpers.typeof(node.tagName) !== "undefined" &&
+        babelHelpers.typeof(node.tagName) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         "HAX-" !== node.tagName.substring(0, 4)
       ) {
         return !0;
@@ -1007,7 +1083,10 @@ define([
     },
     _HTMLPrimativeTest: function _HTMLPrimativeTest(node) {
       if (
-        babelHelpers.typeof(node.tagName) !== "undefined" &&
+        babelHelpers.typeof(node.tagName) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         -1 == node.tagName.indexOf("-")
       ) {
         return !0;
@@ -1039,11 +1118,15 @@ define([
       }
     },
     _activeContainerNodeChanged: function _activeContainerNodeChanged(
-      newValue
+      newValue,
+      oldValue
     ) {
       if (
         this.editMode &&
-        babelHelpers.typeof(newValue) !== "undefined" &&
+        babelHelpers.typeof(newValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         null !== newValue
       ) {
         var tag = newValue.tagName.toLowerCase();
@@ -1055,12 +1138,21 @@ define([
     },
     _activeNodeChanged: function _activeNodeChanged(newValue, oldValue) {
       var _this8 = this;
-      if (babelHelpers.typeof(oldValue) !== "undefined" && null != oldValue) {
+      if (
+        babelHelpers.typeof(oldValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
+        null != oldValue
+      ) {
         oldValue.classList.remove("hax-active");
       }
       if (
         this.editMode &&
-        babelHelpers.typeof(newValue) !== "undefined" &&
+        babelHelpers.typeof(newValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         null !== newValue
       ) {
         var tag = newValue.tagName.toLowerCase();
@@ -1169,7 +1261,12 @@ define([
           var selection = window.getSelection(),
             range = selection.getRangeAt(0).cloneRange(),
             tagTest = range.commonAncestorContainer.tagName;
-          if (babelHelpers.typeof(tagTest) === "undefined") {
+          if (
+            babelHelpers.typeof(tagTest) ===
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
+          ) {
             tagTest = range.commonAncestorContainer.parentNode.tagName;
           }
           if (
@@ -1191,7 +1288,7 @@ define([
         }
       }
     },
-    _upKeyPressed: function _upKeyPressed() {
+    _upKeyPressed: function _upKeyPressed(e) {
       if (
         this.editMode &&
         "" === (0, _polymerDom.dom)(this.activeContainerNode).textContent
@@ -1202,7 +1299,7 @@ define([
         } catch (e) {}
       }
     },
-    _downKeyPressed: function _downKeyPressed() {
+    _downKeyPressed: function _downKeyPressed(e) {
       if (
         this.editMode &&
         "" === (0, _polymerDom.dom)(this.activeContainerNode).textContent
@@ -1225,7 +1322,12 @@ define([
           var selection = window.getSelection(),
             range = selection.getRangeAt(0).cloneRange(),
             tagTest = range.commonAncestorContainer.tagName;
-          if (babelHelpers.typeof(tagTest) === "undefined") {
+          if (
+            babelHelpers.typeof(tagTest) ===
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
+          ) {
             tagTest = range.commonAncestorContainer.parentNode.tagName;
           }
           if (

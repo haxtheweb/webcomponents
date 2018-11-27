@@ -42,7 +42,7 @@ Polymer({
     beforeBind: {
       type: Object,
       value: function() {
-        return function() {};
+        return function(data, cell) {};
       }
     }
   },

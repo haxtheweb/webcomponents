@@ -385,7 +385,8 @@ Polymer({
     }
   },
   ready: function() {
-    let root = this;
+    let root = this,
+      tracks = [];
     root.__playerReady = !0;
     root.__interactive = !root.disableInteractive;
     root.target = root.shadowRoot.querySelector("#transcript");
@@ -421,10 +422,10 @@ Polymer({
     root.$.tcontrols.addEventListener("searchbar-added", function(e) {
       root.search = e.detail;
     });
-    root.$.tcontrols.addEventListener("toggle-scroll", function() {
+    root.$.tcontrols.addEventListener("toggle-scroll", function(e) {
       root.disableScroll = !root.disableScroll;
     });
-    root.$.tcontrols.addEventListener("print-transcript", function() {
+    root.$.tcontrols.addEventListener("print-transcript", function(e) {
       this.fire("printing-transcript", this);
       root.$.transcript.print(root.mediaTitle);
     });
@@ -434,13 +435,13 @@ Polymer({
         this.fullscreen = screenfull.isFullscreen;
       });
     }
-    root.$.slider.addEventListener("dragging-changed", () => {
+    root.$.slider.addEventListener("dragging-changed", e => {
       this._toggleSliderSeek(
         root.$.slider.dragging,
         root.$.slider.immediateValue
       );
     });
-    root.$.slider.addEventListener("focused-changed", () => {
+    root.$.slider.addEventListener("focused-changed", e => {
       this._toggleSliderSeek(root.$.slider.focused, root.$.slider.value);
     });
   },
@@ -482,7 +483,7 @@ Polymer({
             }
           }, 100);
         },
-        checkApi = function() {
+        checkApi = function(e) {
           if (window.A11yMediaYoutubeUtility.apiReady) {
             document.removeEventListener("youtube-api-ready", checkApi);
             ytInit();
@@ -599,13 +600,15 @@ Polymer({
     this.__media.setPlaybackRate(value);
   },
   toggleAutoplay: function(mode) {
-    if (!this.isYoutube) {
+    if (this.isYoutube) {
+    } else {
       this.autoplay = mode === void 0 ? !this.muted : mode;
       this.__media.setAutoplay(this.autoplay);
     }
   },
   toggleLoop: function(mode) {
-    if (!this.isYoutube) {
+    if (this.isYoutube) {
+    } else {
       this.loop = mode === void 0 ? !this.loop : mode;
       this.__media.setLoop(this.loop);
     }
@@ -661,17 +664,20 @@ Polymer({
   _getTrackData: function() {
     let root = this,
       media = root.$.loader.media,
-      tdata = [];
+      tdata = [],
+      selected = 0;
     root.hasTranscript = !root.standAlone;
     for (let i = 0; i < media.textTracks.length; i++) {
       if (null !== media.textTracks[i]) {
         let track = media.textTracks[i],
           tidata = {},
           loaded = track.cues !== void 0,
+          complete = 0,
           label = track.label,
           lang = track.language,
           text =
             label !== void 0 ? label : lang !== void 0 ? lang : "Track " + i,
+          cues,
           loadCueData = setInterval(() => {
             track.mode = "showing";
             if (track.cues !== void 0 && 0 < track.cues.length) {

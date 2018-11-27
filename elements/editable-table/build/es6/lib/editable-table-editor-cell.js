@@ -129,16 +129,16 @@ Polymer({
       this.setCaretPosition(0, 0);
     }
   },
-  _onCellLeft: function() {
+  _onCellLeft: function(e) {
     this.fire("cell-move", { cell: this.parentNode, direction: "left" });
   },
-  _onCellRight: function() {
+  _onCellRight: function(e) {
     this.fire("cell-move", { cell: this.parentNode, direction: "right" });
   },
-  _onCellAbove: function() {
+  _onCellAbove: function(e) {
     this.fire("cell-move", { cell: this.parentNode, direction: "up" });
   },
-  _onCellBelow: function() {
+  _onCellBelow: function(e) {
     this.fire("cell-move", { cell: this.parentNode, direction: "down" });
   }
 });

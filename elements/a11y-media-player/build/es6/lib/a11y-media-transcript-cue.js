@@ -112,7 +112,7 @@ Polymer({
       ? !0
       : !1;
   },
-  _onClick: function() {
+  _onClick: function(e) {
     if (!this.disabled) {
       this.fire("cue-seek", this);
     }

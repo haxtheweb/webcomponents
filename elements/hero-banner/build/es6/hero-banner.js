@@ -121,7 +121,7 @@ Polymer({
       computed: "_computeColorClass(textColor)"
     }
   },
-  _buttonColorChanged: function(newValue) {
+  _buttonColorChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0 && null != newValue) {
       this.computeTextPropContrast("textColor", "buttonColor");
     }
@@ -136,7 +136,7 @@ Polymer({
     }
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !1,
       canPosition: !1,
       canEditSource: !1,
@@ -251,6 +251,7 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   }
 });

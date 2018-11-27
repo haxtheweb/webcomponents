@@ -5,7 +5,14 @@ define([
   "../node_modules/@polymer/iron-ajax/iron-ajax.js",
   "../node_modules/@polymer/paper-spinner/paper-spinner.js",
   "../node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_polymerLegacy, _polymerDom, async) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  async,
+  _ironAjax,
+  _paperSpinner,
+  _HAXWiring
+) {
   "use strict";
   async = babelHelpers.interopRequireWildcard(async);
   var $_documentContainer = document.createElement("div");
@@ -49,11 +56,14 @@ define([
         };
       }
     },
-    _handleEntityResponse: function _handleEntityResponse(newValue) {
+    _handleEntityResponse: function _handleEntityResponse(newValue, oldValue) {
       var _this = this;
       if (
         null !== newValue &&
-        babelHelpers.typeof(newValue.content) !== "undefined"
+        babelHelpers.typeof(newValue.content) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
       ) {
         if (null != document.getElementById("cmstokenidtolockonto")) {
           document
@@ -79,16 +89,25 @@ define([
         element.removeChild(element.firstChild);
       }
     },
-    _entityChanged: function _entityChanged(newValue) {
+    _entityChanged: function _entityChanged(newValue, oldValue) {
       var _this2 = this;
       if (
-        babelHelpers.typeof(newValue) !== "undefined" &&
+        babelHelpers.typeof(newValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         "" !== newValue &&
         !this.loading
       ) {
         if (
-          babelHelpers.typeof(this.entityEndPoint) === "undefined" &&
-          babelHelpers.typeof(window.cmsentityEndPoint) !== "undefined"
+          babelHelpers.typeof(this.entityEndPoint) ===
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
+          babelHelpers.typeof(window.cmsentityEndPoint) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
         ) {
           this.entityEndPoint = window.cmsentityEndPoint;
         }
@@ -103,15 +122,24 @@ define([
     attached: function attached() {
       var _this3 = this;
       if (
-        babelHelpers.typeof(this.entity) !== "undefined" &&
+        babelHelpers.typeof(this.entity) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         null !== this.entity &&
         "" !== this.entity
       ) {
         var slot = (0, _polymerDom.dom)(this).getEffectiveChildNodes();
         if (0 === slot.length && !this.loading) {
           if (
-            babelHelpers.typeof(this.entityEndPoint) === "undefined" &&
-            babelHelpers.typeof(window.cmsentityEndPoint) !== "undefined"
+            babelHelpers.typeof(this.entityEndPoint) ===
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0)) &&
+            babelHelpers.typeof(window.cmsentityEndPoint) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
           ) {
             this.entityEndPoint = window.cmsentityEndPoint;
           }
@@ -123,7 +151,7 @@ define([
           }
         }
       }
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !1,
@@ -173,7 +201,8 @@ define([
             "entity-end-point"
           ]
         }
-      });
+      };
+      this.setHaxProperties(props);
     },
     postProcessgetHaxJSONSchema: function postProcessgetHaxJSONSchema(schema) {
       schema.properties.__editThis = {

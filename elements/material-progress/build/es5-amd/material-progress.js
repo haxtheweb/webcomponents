@@ -1,6 +1,6 @@
 define([
   "./lib/material-progress-bars.js",
   "./lib/material-progress-histo.js"
-], function() {
+], function(_materialProgressBars, _materialProgressHisto) {
   "use strict";
 });

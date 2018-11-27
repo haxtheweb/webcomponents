@@ -110,7 +110,7 @@ Polymer({
       };
     }
   },
-  _handleTokenResponse: function(newValue) {
+  _handleTokenResponse: function(newValue, oldValue) {
     if (null !== newValue && typeof newValue.content !== typeof void 0) {
       if (null != document.getElementById("cmstokenidtolockonto")) {
         document
@@ -136,7 +136,7 @@ Polymer({
       element.removeChild(element.firstChild);
     }
   },
-  _tokenChanged: function(newValue) {
+  _tokenChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0 && "" !== newValue && !this.loading) {
       if (
         typeof this.tokenEndPoint === typeof void 0 &&
@@ -152,13 +152,13 @@ Polymer({
       }
     }
   },
-  _windowVisibilityChanged: function() {
+  _windowVisibilityChanged: function(e) {
     if (!this.loading && this._clickInvoked) {
       this.$.tokenrequest.generateRequest();
       this._clickInvoked = !1;
     }
   },
-  __tokenClicked: function() {
+  __tokenClicked: function(e) {
     this._clickInvoked = !0;
   },
   detached: function() {
@@ -193,7 +193,7 @@ Polymer({
         }
       }
     }
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -228,7 +228,8 @@ Polymer({
           "token-end-point"
         ]
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
   postProcessgetHaxJSONSchema: function(schema) {
     let href = "",

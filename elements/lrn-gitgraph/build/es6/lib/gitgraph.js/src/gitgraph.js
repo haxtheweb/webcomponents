@@ -255,7 +255,7 @@
       };
       _emitEvent(self.canvas, "commit:" + event, mouseEventOptions);
     }
-    self.applyCommits(event, function(commit, isOverCommit) {
+    self.applyCommits(event, function(commit, isOverCommit, event) {
       if (isOverCommit) {
         if (
           !self.template.commit.message.display &&
@@ -476,8 +476,10 @@
     }
     var previousCommit = _getLast(options.branch.commits) || {},
       commitPosition = options.x + options.y,
-      previousCommitPosition = previousCommit.x + previousCommit.y;
-    if (commitPosition === previousCommitPosition) {
+      previousCommitPosition = previousCommit.x + previousCommit.y,
+      isCommitAtSamePlaceThanPreviousOne =
+        commitPosition === previousCommitPosition;
+    if (isCommitAtSamePlaceThanPreviousOne) {
       this.parent.commitOffsetX += this.template.commit.spacingX;
       this.parent.commitOffsetY += this.template.commit.spacingY;
       options.x = this.offsetX - this.parent.commitOffsetX;
@@ -656,7 +658,8 @@
     } else if (lastPoint.x === point.x && lastPoint.y === point.y) {
       if ("start" !== lastPoint.type && "end" === point.type) {
         lastPoint.type = "end";
-      } else if (!("joint" === point.type)) {
+      } else if ("joint" === point.type) {
+      } else {
         this.path.push(point);
       }
     } else {
@@ -788,10 +791,14 @@
       var tag = new Tag(this, { color: this.tagColor, font: this.tagFont });
       commitOffsetLeft += tag.width - commitOffsetForTags;
     }
-    var DETAIL_OFFSET_TOP_IN_PX = 30;
+    var DETAIL_OFFSET_LEFT_IN_PX = 60,
+      DETAIL_OFFSET_TOP_IN_PX = 30;
     if (null !== this.detail && _isVertical(this.parent)) {
       this.detail.style.left =
-        this.parent.canvas.offsetLeft + commitOffsetLeft + 60 + "px";
+        this.parent.canvas.offsetLeft +
+        commitOffsetLeft +
+        DETAIL_OFFSET_LEFT_IN_PX +
+        "px";
       var detailPositionTop = this.parent.canvas.offsetTop + this.y;
       if ("vertical-reverse" === this.parent.orientation) {
         var clientHeight =
@@ -824,7 +831,7 @@
       );
     }
   };
-  Commit.prototype.arrow = function() {
+  Commit.prototype.arrow = function Arrow() {
     var _Mathsin = Math.sin,
       _Mathcos = Math.cos,
       size = this.template.arrow.size,

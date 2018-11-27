@@ -16,9 +16,27 @@ define([
   "../node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js",
   "../node_modules/@lrnwebcomponents/simple-colors/simple-colors.js",
   "./hax-app-picker-item.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _ironList,
+  _ironIcon,
+  _ironIcons,
+  _paperButton,
+  _paperDialog,
+  _paperDialogScrollable,
+  _paperRipple,
+  _paperToast,
+  _paperIconButton,
+  _neonAnimation,
+  _scaleUpAnimation,
+  _scaleDownAnimation,
+  _materializecssStyles,
+  _simpleColors,
+  _haxAppPickerItem
+) {
   "use strict";
-  function _templateObject_a4053f40ee0311e8bb61cd2eef6a9bf2() {
+  function _templateObject_977aa710f1e611e8b3a2e3a031c18fd0() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style is="custom-style" include="materializecss-styles">\n      :host {\n        display: block;\n        --hax-app-picker-dialog-background-color: var(--simple-colors-light-green-background1);\n      };\n      hax-app-picker-item {\n        -webkit-transition: .3s all linear;\n        transition: .3s all linear;\n        display: inline-flex;\n      }\n      #closedialog {\n        float: right;\n        top: 15px;\n        right: 0;\n        position: absolute;\n        padding: 4px;\n        margin: 0;\n        color: var(--simple-colors-light-green-background1, green);\n        background-color: transparent;\n        width: 40px;\n        height: 40px;\n        min-width: unset;\n      }\n      #ironlist {\n        width: 100%;\n        height: 30vh;\n      }\n      #dialog {\n        min-width: 30vw;\n        min-height: 30vh;\n        height: 30vw;\n        width: 30vh;\n        padding: 8px;\n        overflow: hidden;\n        background-color: rgba(0,0,0,.9);\n        border-radius: 16px;\n        z-index: 1000000;\n        border: 2px solid var(--simple-colors-light-green-background1);\n        @apply --hax-app-picker-dialog;\n      }\n      #title, .element-button > div {\n        color: var(--hax-app-picker-dialog-text-color, #FFFFFF);\n      }\n      #title {\n        padding: 16px;\n        border-bottom: 2px solid var(--simple-colors-light-green-background1);\n        margin: 0;\n        width: calc(100% - 32px);\n        color: var(--hax-app-picker-dialog-text-color, #FFFFFF);\n        @apply --paper-font-title;\n        @apply --hax-app-picker-dialog-title;\n      }\n      #buttonlist {\n        display: block;\n        text-align: left;\n        margin: -32px;\n        padding: 32px;\n        overflow-x: hidden;\n        overflow-y: auto;\n        --paper-dialog-scrollable: {\n          padding: 0 0 78px 0;\n        }\n      }\n      @media (orientation: landscape) {\n        #buttonlist,\n        #ironlist,\n        #dialog {\n          width: 40vw;\n          height: 50vh;\n        }\n      }\n      @media (orientation: portrait) {\n        #buttonlist,\n        #ironlist,\n        #dialog {\n          width: 50vw;\n          height: 60vh;\n        }\n      }\n      .element-button {\n        display: inline-block;\n        width: 72px;\n        margin: 8px 4px;\n        text-align: center;\n      }\n      @media screen and (max-width: 550px) {\n        #buttonlist,\n        #ironlist,\n        #dialog {\n          max-width: 80%;\n          overflow: auto;\n        }\n        .element-button {\n          width: 54px;\n          margin: 0px;\n        }\n      }\n    </style>\n    <paper-dialog id="dialog" with-backdrop always-on-top>\n      <h3 id="title">[[title]]</h3>\n      <paper-dialog-scrollable id="buttonlist">\n        <iron-list id="ironlist" items="[[selectionList]]" as="element" grid>\n          <template>\n            <div>\n              <hax-app-picker-item id$="picker-item-[[index]]" class="element-button" on-tap="_selected" data-selected$="[[index]]" label="[[element.title]]" icon="[[element.icon]]" color="[[element.color]]"></hax-app-picker-item>\n            </div>\n          </template>\n        </iron-list>\n      </paper-dialog-scrollable>\n      <paper-button id="closedialog" on-tap="close">\n        <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>\n      </paper-button>\n    </paper-dialog>\n'
@@ -27,14 +45,14 @@ define([
         '\n    <style is="custom-style" include="materializecss-styles">\n      :host {\n        display: block;\n        --hax-app-picker-dialog-background-color: var(--simple-colors-light-green-background1);\n      };\n      hax-app-picker-item {\n        -webkit-transition: .3s all linear;\n        transition: .3s all linear;\n        display: inline-flex;\n      }\n      #closedialog {\n        float: right;\n        top: 15px;\n        right: 0;\n        position: absolute;\n        padding: 4px;\n        margin: 0;\n        color: var(--simple-colors-light-green-background1, green);\n        background-color: transparent;\n        width: 40px;\n        height: 40px;\n        min-width: unset;\n      }\n      #ironlist {\n        width: 100%;\n        height: 30vh;\n      }\n      #dialog {\n        min-width: 30vw;\n        min-height: 30vh;\n        height: 30vw;\n        width: 30vh;\n        padding: 8px;\n        overflow: hidden;\n        background-color: rgba(0,0,0,.9);\n        border-radius: 16px;\n        z-index: 1000000;\n        border: 2px solid var(--simple-colors-light-green-background1);\n        @apply --hax-app-picker-dialog;\n      }\n      #title, .element-button > div {\n        color: var(--hax-app-picker-dialog-text-color, #FFFFFF);\n      }\n      #title {\n        padding: 16px;\n        border-bottom: 2px solid var(--simple-colors-light-green-background1);\n        margin: 0;\n        width: calc(100% - 32px);\n        color: var(--hax-app-picker-dialog-text-color, #FFFFFF);\n        @apply --paper-font-title;\n        @apply --hax-app-picker-dialog-title;\n      }\n      #buttonlist {\n        display: block;\n        text-align: left;\n        margin: -32px;\n        padding: 32px;\n        overflow-x: hidden;\n        overflow-y: auto;\n        --paper-dialog-scrollable: {\n          padding: 0 0 78px 0;\n        }\n      }\n      @media (orientation: landscape) {\n        #buttonlist,\n        #ironlist,\n        #dialog {\n          width: 40vw;\n          height: 50vh;\n        }\n      }\n      @media (orientation: portrait) {\n        #buttonlist,\n        #ironlist,\n        #dialog {\n          width: 50vw;\n          height: 60vh;\n        }\n      }\n      .element-button {\n        display: inline-block;\n        width: 72px;\n        margin: 8px 4px;\n        text-align: center;\n      }\n      @media screen and (max-width: 550px) {\n        #buttonlist,\n        #ironlist,\n        #dialog {\n          max-width: 80%;\n          overflow: auto;\n        }\n        .element-button {\n          width: 54px;\n          margin: 0px;\n        }\n      }\n    </style>\n    <paper-dialog id="dialog" with-backdrop always-on-top>\n      <h3 id="title">[[title]]</h3>\n      <paper-dialog-scrollable id="buttonlist">\n        <iron-list id="ironlist" items="[[selectionList]]" as="element" grid>\n          <template>\n            <div>\n              <hax-app-picker-item id$="picker-item-[[index]]" class="element-button" on-tap="_selected" data-selected\\$="[[index]]" label="[[element.title]]" icon="[[element.icon]]" color="[[element.color]]"></hax-app-picker-item>\n            </div>\n          </template>\n        </iron-list>\n      </paper-dialog-scrollable>\n      <paper-button id="closedialog" on-tap="close">\n        <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>\n      </paper-button>\n    </paper-dialog>\n'
       ]
     );
-    _templateObject_a4053f40ee0311e8bb61cd2eef6a9bf2 = function() {
+    _templateObject_977aa710f1e611e8b3a2e3a031c18fd0 = function _templateObject_977aa710f1e611e8b3a2e3a031c18fd0() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a4053f40ee0311e8bb61cd2eef6a9bf2()
+      _templateObject_977aa710f1e611e8b3a2e3a031c18fd0()
     ),
     is: "hax-app-picker",
     listeners: {
@@ -58,9 +76,14 @@ define([
     close: function close() {
       this.opened = !1;
     },
-    _openedChanged: function _openedChanged(newValue) {
+    _openedChanged: function _openedChanged(newValue, oldValue) {
       var _this = this;
-      if (babelHelpers.typeof(newValue) !== "undefined") {
+      if (
+        babelHelpers.typeof(newValue) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         if (newValue) {
           this.$.dialog.open();
           setTimeout(function() {
@@ -124,7 +147,12 @@ define([
         key = normalizedEvent.localTarget.getAttribute("data-selected");
       e.preventDefault();
       e.stopPropagation();
-      if (babelHelpers.typeof(this._elements[key]) !== "undefined") {
+      if (
+        babelHelpers.typeof(this._elements[key]) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         if ("gizmo" == this.pickerType) {
           window.HaxStore.write("activeHaxElement", this._elements[key], this);
           if ("__convert" === this._elements[key].__type) {

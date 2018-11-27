@@ -16,4 +16,10 @@
  *  limitations under the License.
  */
 
-MathJax.Hub.Insert(MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS.MathJax_AMS,{8994:[378,-122,778,55,722],8995:[378,-143,778,55,722]});MathJax.Ajax.loadComplete(MathJax.OutputJax["HTML-CSS"].fontDir+"/AMS/Regular/MiscTechnical.js");
+MathJax.Hub.Insert(MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS.MathJax_AMS, {
+  8994: [378, -122, 778, 55, 722],
+  8995: [378, -143, 778, 55, 722]
+});
+MathJax.Ajax.loadComplete(
+  MathJax.OutputJax["HTML-CSS"].fontDir + "/AMS/Regular/MiscTechnical.js"
+);

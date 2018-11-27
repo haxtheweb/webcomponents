@@ -1,6 +1,6 @@
 define([
   "../node_modules/@lrnwebcomponents/responsive-utility/responsive-utility.js"
-], function() {
+], function(_responsiveUtility) {
   "use strict";
   var _properties;
   window.a11yMediaBehaviors = window.a11yMediaBehaviors || {};
@@ -47,11 +47,14 @@ define([
     },
     _getHHMMSS: function _getHHMMSS(val, max) {
       max = max === void 0 ? val : max;
-      var a = function(val) {
+      var a = function a(val) {
           return 10 > val ? "0" + val : val;
         },
-        b = function(val, i, none) {
+        b = function b(val, i, none) {
           return max >= i ? a(Math.floor(val / i)) + ":" : none;
+        },
+        c = function c(val) {
+          return 100 > val ? val + "0" : val;
         };
       return (
         b(val, 3600, "") + b(val % 3600, 60, "00:") + a(Math.round(val % 60))

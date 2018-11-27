@@ -59,7 +59,7 @@ Polymer({
   properties: {
     opened: { type: Boolean, value: !1, reflectToAttribute: !0, notify: !0 }
   },
-  collapseToggle: function() {
+  collapseToggle: function(e) {
     this.$.collapse.toggle();
   }
 });

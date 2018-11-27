@@ -174,7 +174,7 @@ Polymer({
       return obj[key];
     });
   },
-  _handleResponse: function() {
+  _handleResponse: function(event) {
     var course = {},
       program = {},
       academic = {},
@@ -203,7 +203,7 @@ Polymer({
     this.set("courses", courses);
   },
   _loadCourseUrl: function(e) {
-    this;
+    let root = this;
     var normalizedEvent = dom(e),
       local = normalizedEvent.localTarget,
       active = local.getAttribute("data-course-id");

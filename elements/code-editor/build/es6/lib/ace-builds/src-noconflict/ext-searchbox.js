@@ -10,7 +10,7 @@ ace.define(
     "ace/keyboard/hash_handler",
     "ace/lib/keys"
   ],
-  function(require, exports) {
+  function(require, exports, module) {
     "use strict";
     var dom = require("../lib/dom"),
       lang = require("../lib/lang"),
@@ -25,7 +25,7 @@ ace.define(
         /> +/g,
         ">"
       ),
-      SearchBox = function(editor) {
+      SearchBox = function(editor, range, showReplaceForm) {
         var div = dom.createElement("div");
         div.innerHTML = html;
         this.element = div.firstChild;
@@ -40,7 +40,7 @@ ace.define(
         editor.renderer.scroller.appendChild(this.element);
         this.editor = editor;
       };
-      this.setSession = function() {
+      this.setSession = function(e) {
         this.searchRange = null;
         this.$syncOptions(!0);
       };

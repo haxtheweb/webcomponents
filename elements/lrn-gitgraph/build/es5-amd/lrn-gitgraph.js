@@ -1,20 +1,20 @@
 define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./lib/gitgraph.js/src/gitgraph.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _gitgraph) {
   "use strict";
-  function _templateObject_e3f86360ecf111e8b7c90984a6304f17() {
+  function _templateObject_9ae226f0f1e411e89768650b56e97284() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n        overflow-x: scroll;\n      }\n    </style>\n    <canvas id="gitGraph"></canvas>\n'
     ]);
-    _templateObject_e3f86360ecf111e8b7c90984a6304f17 = function() {
+    _templateObject_9ae226f0f1e411e89768650b56e97284 = function _templateObject_9ae226f0f1e411e89768650b56e97284() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_e3f86360ecf111e8b7c90984a6304f17()
+      _templateObject_9ae226f0f1e411e89768650b56e97284()
     ),
     is: "lrn-gitgraph",
     properties: {
@@ -47,7 +47,7 @@ define([
           });
           tree.reverse();
           var branches = [];
-          tree.forEach(function(item) {
+          tree.forEach(function(item, i) {
             if ("undefined" === typeof branches[item.branch]) {
               branches[item.branch] = gitgraph.branch(item.branch);
             }

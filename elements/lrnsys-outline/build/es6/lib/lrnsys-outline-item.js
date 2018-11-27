@@ -132,16 +132,16 @@ Polymer({
     let root = this;
     this.target = this.$.input;
     root.fire("focus-item", root);
-    root.addEventListener("focus", function() {
+    root.addEventListener("focus", function(e) {
       root.fire("focus-item", root);
     });
-    root.addEventListener("mouseover", function() {
+    root.addEventListener("mouseover", function(e) {
       root.fire("focus-item", root);
     });
-    root.addEventListener("blur", function() {
+    root.addEventListener("blur", function(e) {
       root.fire("blur-item", root);
     });
-    root.addEventListener("mouseout", function() {
+    root.addEventListener("mouseout", function(e) {
       root.fire("blur-item", root);
     });
   },
@@ -193,7 +193,7 @@ Polymer({
       new: j.slice(i, j.length)
     });
   },
-  _onBackspace: function() {
+  _onBackspace: function(e) {
     if (window.getSelection().toString() == this.$.input.value) {
       event.detail.keyboardEvent.preventDefault();
       this.fire("delete-item", { item: this });

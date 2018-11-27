@@ -26,7 +26,7 @@ Polymer({
       }
     });
   },
-  processNewElements: function() {
+  processNewElements: function(e) {
     for (
       var effectiveChildren = FlattenedNodesObserver.getFlattenedNodes(
           this
@@ -43,13 +43,10 @@ Polymer({
         try {
           let name = effectiveChildren[i].tagName.toLowerCase();
           this.processedList[name] = name;
-          pathFromUrl(import.meta.url);
-          this.importHref(`../../../../${name}/${name}.js`);
+          const basePath = pathFromUrl(import.meta.url);
+          import(`../../${name}/${name}.js`);
         } catch (err) {}
       }
     }
-  },
-  importHref: function(url) {
-    import(url);
   }
 });

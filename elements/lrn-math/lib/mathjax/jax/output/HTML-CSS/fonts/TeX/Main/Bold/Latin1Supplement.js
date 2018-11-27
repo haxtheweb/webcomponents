@@ -16,4 +16,20 @@
  *  limitations under the License.
  */
 
-MathJax.Hub.Insert(MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS["MathJax_Main-bold"],{160:[0,0,250,0,0],168:[695,-535,575,96,478],172:[371,-61,767,64,702],175:[607,-540,575,80,494],176:[702,-536,575,160,414],177:[728,35,894,64,829],180:[706,-503,575,236,460],215:[530,28,894,168,726],247:[597,96,894,64,828]});MathJax.Ajax.loadComplete(MathJax.OutputJax["HTML-CSS"].fontDir+"/Main/Bold/Latin1Supplement.js");
+MathJax.Hub.Insert(
+  MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS["MathJax_Main-bold"],
+  {
+    160: [0, 0, 250, 0, 0],
+    168: [695, -535, 575, 96, 478],
+    172: [371, -61, 767, 64, 702],
+    175: [607, -540, 575, 80, 494],
+    176: [702, -536, 575, 160, 414],
+    177: [728, 35, 894, 64, 829],
+    180: [706, -503, 575, 236, 460],
+    215: [530, 28, 894, 168, 726],
+    247: [597, 96, 894, 64, 828]
+  }
+);
+MathJax.Ajax.loadComplete(
+  MathJax.OutputJax["HTML-CSS"].fontDir + "/Main/Bold/Latin1Supplement.js"
+);

@@ -131,7 +131,7 @@ Polymer({
     default: { type: Boolean, value: !1, reflectToAttribute: !0 },
     iconClass: { type: String, value: "", reflectToAttribute: !0 }
   },
-  _tooltipChanged: function(newValue) {
+  _tooltipChanged: function(newValue, oldValue) {
     if ("" == newValue || null == newValue) {
       this.$.tooltip.setAttribute("aria-hidden", "true");
     } else {

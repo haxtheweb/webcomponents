@@ -6,9 +6,17 @@ define([
   "./node_modules/@polymer/paper-dialog/paper-dialog.js",
   "./node_modules/@lrnwebcomponents/relative-heading/relative-heading.js",
   "./lib/lrndesign-imagemap-hotspot.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _ironAjax,
+  _ironA11yKeys,
+  _paperDialog,
+  _relativeHeading,
+  _lrndesignImagemapHotspot
+) {
   "use strict";
-  function _templateObject_e0698560ecf311e898b47d34e17e6a3c() {
+  function _templateObject_30a7de40f1e611e8881b8549e7f5959d() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n      :host #buttons {\n        position: absolute;\n        left: -999999px;\n        top: 0;\n        overflow: hidden;\n        opacity: 0;\n      }\n      :host paper-dialog {\n        border: 1px solid #000;\n        border-radius: 4px;\n      }\n      :host paper-dialog > #title, \n      :host paper-dialog > #desc {\n        padding: 15px;\n        margin: 0;\n      }\n      :host paper-dialog > #title {\n        position: absolute;\n        left: -9999px;\n        overflow: hidden;\n        height: 0;\n        width: 0;\n      }\n      :host paper-dialog > #title > * {\n        margin: 0;\n      }\n      /*::slotted([hotspot]) {\n        display: none;\n      }*/\n      @media print {\n        :host > #svg {\n          display: none;\n        }\n        /*::slotted(#screen-only) {\n          display: none;\n        }\n        ::slotted([hotspot]) {\n          display: block;\n        }*/\n      }\n    </style>\n    <relative-heading hidden$="[[!label]]" id="heading" subtopic-of$="[[subtopicOf]]" tag$="[[tag]]" text$="[[label]]">\n    </relative-heading>\n    <div id="desc"><slot name="desc"></slot></div>\n    <div id="svg"></div>\n    <div id="buttons"></div>\n    <slot></slot>\n    <paper-dialog id="hdetails">\n      <div id="title"></div>\n      <div id="desc"></div>\n    </paper-dialog>\n    <iron-ajax auto="" id="get_svg" url="[[src]]" handle-as="text" on-response="_getSVGHandler"></iron-ajax>\n'
@@ -17,14 +25,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n      :host #buttons {\n        position: absolute;\n        left: -999999px;\n        top: 0;\n        overflow: hidden;\n        opacity: 0;\n      }\n      :host paper-dialog {\n        border: 1px solid #000;\n        border-radius: 4px;\n      }\n      :host paper-dialog > #title, \n      :host paper-dialog > #desc {\n        padding: 15px;\n        margin: 0;\n      }\n      :host paper-dialog > #title {\n        position: absolute;\n        left: -9999px;\n        overflow: hidden;\n        height: 0;\n        width: 0;\n      }\n      :host paper-dialog > #title > * {\n        margin: 0;\n      }\n      /*::slotted([hotspot]) {\n        display: none;\n      }*/\n      @media print {\n        :host > #svg {\n          display: none;\n        }\n        /*::slotted(#screen-only) {\n          display: none;\n        }\n        ::slotted([hotspot]) {\n          display: block;\n        }*/\n      }\n    </style>\n    <relative-heading hidden\\$="[[!label]]" id="heading" subtopic-of\\$="[[subtopicOf]]" tag\\$="[[tag]]" text\\$="[[label]]">\n    </relative-heading>\n    <div id="desc"><slot name="desc"></slot></div>\n    <div id="svg"></div>\n    <div id="buttons"></div>\n    <slot></slot>\n    <paper-dialog id="hdetails">\n      <div id="title"></div>\n      <div id="desc"></div>\n    </paper-dialog>\n    <iron-ajax auto="" id="get_svg" url="[[src]]" handle-as="text" on-response="_getSVGHandler"></iron-ajax>\n'
       ]
     );
-    _templateObject_e0698560ecf311e898b47d34e17e6a3c = function() {
+    _templateObject_30a7de40f1e611e8881b8549e7f5959d = function _templateObject_30a7de40f1e611e8881b8549e7f5959d() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_e0698560ecf311e898b47d34e17e6a3c()
+      _templateObject_30a7de40f1e611e8881b8549e7f5959d()
     ),
     is: "lrndesign-imagemap",
     properties: {
@@ -51,13 +59,13 @@ define([
     _getSVGHandler: function _getSVGHandler(e) {
       var root = this,
         temp = document.createElement("div"),
-        getID = function(element, alt) {
+        getID = function getID(element, alt) {
           if (null === element.getAttribute("id"))
             element.setAttribute("id", alt);
           return element.getAttribute("id");
         },
-        setAriaLabelledBy = function(source, target, prefix) {
-          var svgElem = function(nodename) {
+        setAriaLabelledBy = function setAriaLabelledBy(source, target, prefix) {
+          var svgElem = function svgElem(nodename) {
             source = null !== source ? source : root;
             var attr = "title" === nodename ? "label" : nodename,
               query = source.querySelector("#" + attr),
@@ -87,7 +95,7 @@ define([
       setAriaLabelledBy(root, svg, svgid);
       this.$.svg.appendChild(svg);
       for (
-        var _loop = function(i) {
+        var _loop = function _loop(i) {
             var hid = hdata[i].getAttribute("hotspot-id"),
               hotspot = svg.querySelector("#" + hid),
               clone = svg.cloneNode(!0);
@@ -113,7 +121,7 @@ define([
               hotspot.classList.remove("focus");
             });
             hotspot.classList.add("hotspot");
-            hotspot.addEventListener("click", function() {
+            hotspot.addEventListener("click", function(e) {
               root.openHotspot(hotspot, hdata[i]);
             });
             hbutton.addEventListener("keyup", function(e) {

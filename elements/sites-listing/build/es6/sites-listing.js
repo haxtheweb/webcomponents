@@ -56,9 +56,9 @@ Polymer({
       <elmsln-loading></elmsln-loading>
       <div>Loading..</div>
     </div>
-    <iron-list items="[[sites]]" as="site" grid="">
+    <iron-list id="list" items="[[sites]]" as="site" grid="">
       <template>
-        <paper-button tabindex="-1" data-site-id\$="[[site.id]]" class="site-card-wrapper" on-tap="_siteClicked">
+        <paper-button on-focusin="_mouseEnter" on-focusout="_mouseLeave" data-site-id\$="[[site.id]]" class="site-card-wrapper" on-tap="_siteClicked">
           <site-card data-site-id\$="[[site.id]]" size="[[size]]" image="[[site.image]]" icon="[[site.icon]]" name="[[site.name]]" title="[[site.title]]" elevation="2"></site-card>
         </paper-button>
       </template>
@@ -71,7 +71,6 @@ Polymer({
     dataSource: { type: String }
   },
   _siteClicked: function(e) {
-    this;
     var normalizedEvent = dom(e),
       local = normalizedEvent.localTarget,
       active = local.getAttribute("data-site-id");
@@ -87,5 +86,18 @@ Polymer({
     if (typeof findSite.location !== typeof void 0) {
       window.location.href = findSite.location;
     }
+  },
+  _mouseEnter: function(e) {
+    let card = dom(e.target).querySelectorAll("site-card")[0];
+    card.__oldElevation = card.elevation;
+    if (5 < card.elevation + 2) {
+      card.elevation = 5;
+    } else {
+      card.elevation += 2;
+    }
+  },
+  _mouseLeave: function(e) {
+    let card = dom(e.target).querySelectorAll("site-card")[0];
+    card.elevation = card.__oldElevation;
   }
 });

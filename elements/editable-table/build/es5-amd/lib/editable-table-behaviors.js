@@ -56,8 +56,10 @@ window.editableTableBehaviors.cellBehaviors = {
   },
   _getLetter: function _getLetter(index) {
     var place = Math.floor(index / 26),
+      multiplier = 26 * place,
+      remainder = index - multiplier,
       letters = "";
-    letters += index - 26 * place + "-";
+    letters += remainder + "-";
     if (0 < place && 26 > place) {
       letters += place - 1 + "-";
     } else if (26 <= place) {

@@ -37,7 +37,7 @@ Polymer({
     tooltip: { type: String, value: "toggle expand/collapse" },
     rotated: { type: Boolean, value: !1 }
   },
-  _onTap: function() {
+  _onTap: function(e) {
     if (!this.disabled) {
       console.log(this);
       this.fire("a11y-collapse-tap", this);

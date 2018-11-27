@@ -17,43 +17,47 @@
  *  limitations under the License.
  *
  */
-MathJax.Localization.addTranslation("ast",null,{
+MathJax.Localization.addTranslation("ast", null, {
   menuTitle: "asturianu",
   version: "2.7.5",
   isLoaded: true,
   domains: {
-    "_": {
-        version: "2.7.5",
-        isLoaded: true,
-        strings: {
-          CookieConfig: "MathJax alcontr\u00F3 una cookie de configuraci\u00F3n d'usuariu qu'incluye c\u00F3digu a executar. \u00BFQuier executar esi c\u00F3digu?\n\n(Tendr\u00EDa de calcar \u00ABEncaboxar\u00BB a menos que creara la cookie vust\u00E9 mesmu.)",
-          MathProcessingError: "Error de procesamientu matem\u00E1ticu",
-          MathError: "Error matem\u00E1ticu",
-          LoadFile: "Cargando %1",
-          Loading: "Cargando",
-          LoadFailed: "Fall\u00F3 la carga del ficheru: %1",
-          ProcessMath: "Procesando matem\u00E1tiques: %1%%",
-          Processing: "Procesando",
-          TypesetMath: "Escribiendo matem\u00E1tiques: %1%%",
-          Typesetting: "Componiendo",
-          MathJaxNotSupported: "El so navegador nun tien sofitu pa MathJax",
-          ErrorTips: "Conseyos de depuraci\u00F3n: usa %%1, inspect %%2 na consola del restolador"
-        }
+    _: {
+      version: "2.7.5",
+      isLoaded: true,
+      strings: {
+        CookieConfig:
+          "MathJax alcontr\u00F3 una cookie de configuraci\u00F3n d'usuariu qu'incluye c\u00F3digu a executar. \u00BFQuier executar esi c\u00F3digu?\n\n(Tendr\u00EDa de calcar \u00ABEncaboxar\u00BB a menos que creara la cookie vust\u00E9 mesmu.)",
+        MathProcessingError: "Error de procesamientu matem\u00E1ticu",
+        MathError: "Error matem\u00E1ticu",
+        LoadFile: "Cargando %1",
+        Loading: "Cargando",
+        LoadFailed: "Fall\u00F3 la carga del ficheru: %1",
+        ProcessMath: "Procesando matem\u00E1tiques: %1%%",
+        Processing: "Procesando",
+        TypesetMath: "Escribiendo matem\u00E1tiques: %1%%",
+        Typesetting: "Componiendo",
+        MathJaxNotSupported: "El so navegador nun tien sofitu pa MathJax",
+        ErrorTips:
+          "Conseyos de depuraci\u00F3n: usa %%1, inspect %%2 na consola del restolador"
+      }
     },
-    "FontWarnings": {},
+    FontWarnings: {},
     "HTML-CSS": {},
-    "HelpDialog": {},
-    "MathML": {},
-    "MathMenu": {},
-    "TeX": {}
+    HelpDialog: {},
+    MathML: {},
+    MathMenu: {},
+    TeX: {}
   },
-  plural: function (n) {
-      if (n === 1) {return 1} // one
-      return 2; // other
-    },
-  number: function (n) {
-      return n;
-    }
+  plural: function(n) {
+    if (n === 1) {
+      return 1;
+    } // one
+    return 2; // other
+  },
+  number: function(n) {
+    return n;
+  }
 });
 
 MathJax.Ajax.loadComplete("[MathJax]/localization/ast/ast.js");

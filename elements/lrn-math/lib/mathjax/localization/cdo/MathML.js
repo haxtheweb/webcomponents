@@ -16,4 +16,9 @@
  *  limitations under the License.
  */
 
-MathJax.Localization.addTranslation("cdo","MathML",{version:"2.7.5",isLoaded:true,strings:{}});MathJax.Ajax.loadComplete("[MathJax]/localization/cdo/MathML.js");
+MathJax.Localization.addTranslation("cdo", "MathML", {
+  version: "2.7.5",
+  isLoaded: true,
+  strings: {}
+});
+MathJax.Ajax.loadComplete("[MathJax]/localization/cdo/MathML.js");

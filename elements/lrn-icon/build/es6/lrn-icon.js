@@ -45,7 +45,7 @@ Polymer({
     this._iconsetName = this._DEFAULT_ICONSET;
     this._updateIcon();
   },
-  _srcChanged: function() {
+  _srcChanged: function(src) {
     this._updateIcon();
   },
   _usesIconset: function() {

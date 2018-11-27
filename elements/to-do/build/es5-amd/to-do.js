@@ -7,9 +7,18 @@ define([
   "./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js",
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _paperCheckbox,
+  _paperButton,
+  _paperCard,
+  _paperInput,
+  _materializecssStyles,
+  _HAXWiring,
+  _schemaBehaviors
+) {
   "use strict";
-  function _templateObject_7cc62a90ecf311e8811dfd8804501645() {
+  function _templateObject_f4e1be80f1e511e8a1d501129e7ce828() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n      :host([hide-form]) ul {\n        border: 1px solid black;\n      }\n      paper-card {\n        width: 100%;\n        padding: 8px;\n      }\n      .task-list-wrapper {\n        width: 100%;\n        height: 100%;\n        border: 2px solid black;\n        list-style: none;\n        padding: 0;\n      }\n      .task-list-wrapper li {\n        padding: 8px;\n      }\n      .task-list-wrapper li:nth-child(even) {\n        background-color: #F5F5F5;\n      }\n      .task-list-wrapper li:nth-child(odd) {\n        background-color: #E5E5E5;\n      }\n      .task-list-wrapper li:hover {\n        background-color: #FFFFFF;\n      }\n      .task-list-wrapper li:active {\n        background-color: #FFFFFF;\n      }\n      .task-list-wrapper li:focus {\n        background-color: #FFFFFF;\n      }\n      h3 {\n        margin: 4px;\n        padding: 0;\n        font-size: 20px;\n      }\n    </style>\n    <paper-card heading="[[name]]" elevation="2">\n      <div class="card-content">\n        <div hidden$="[[hideForm]]">\n          <paper-input label="Task to accomplish" id="itemtext"></paper-input>\n          <paper-button raised="" id="itembutton" on-tap="_addItemToList">Add item</paper-button>\n        </div>\n        <ul class="task-list-wrapper">\n          <template is="dom-repeat" items="[[items]]" as="item">\n            <li data-item-id$="[[item.id]]"><paper-checkbox checked="{{item.value}}" disabled="[[item.disabled]]">[[item.label]]</paper-checkbox></li>\n          </template>\n        </ul>\n      </div>\n    </paper-card>\n'
@@ -18,14 +27,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n      :host([hide-form]) ul {\n        border: 1px solid black;\n      }\n      paper-card {\n        width: 100%;\n        padding: 8px;\n      }\n      .task-list-wrapper {\n        width: 100%;\n        height: 100%;\n        border: 2px solid black;\n        list-style: none;\n        padding: 0;\n      }\n      .task-list-wrapper li {\n        padding: 8px;\n      }\n      .task-list-wrapper li:nth-child(even) {\n        background-color: #F5F5F5;\n      }\n      .task-list-wrapper li:nth-child(odd) {\n        background-color: #E5E5E5;\n      }\n      .task-list-wrapper li:hover {\n        background-color: #FFFFFF;\n      }\n      .task-list-wrapper li:active {\n        background-color: #FFFFFF;\n      }\n      .task-list-wrapper li:focus {\n        background-color: #FFFFFF;\n      }\n      h3 {\n        margin: 4px;\n        padding: 0;\n        font-size: 20px;\n      }\n    </style>\n    <paper-card heading="[[name]]" elevation="2">\n      <div class="card-content">\n        <div hidden\\$="[[hideForm]]">\n          <paper-input label="Task to accomplish" id="itemtext"></paper-input>\n          <paper-button raised="" id="itembutton" on-tap="_addItemToList">Add item</paper-button>\n        </div>\n        <ul class="task-list-wrapper">\n          <template is="dom-repeat" items="[[items]]" as="item">\n            <li data-item-id\\$="[[item.id]]"><paper-checkbox checked="{{item.value}}" disabled="[[item.disabled]]">[[item.label]]</paper-checkbox></li>\n          </template>\n        </ul>\n      </div>\n    </paper-card>\n'
       ]
     );
-    _templateObject_7cc62a90ecf311e8811dfd8804501645 = function() {
+    _templateObject_f4e1be80f1e511e8a1d501129e7ce828 = function _templateObject_f4e1be80f1e511e8a1d501129e7ce828() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_7cc62a90ecf311e8811dfd8804501645()
+      _templateObject_f4e1be80f1e511e8a1d501129e7ce828()
     ),
     is: "to-do",
     behaviors: [HAXBehaviors.PropertiesBehaviors],
@@ -43,10 +52,13 @@ define([
         }
       }
     },
-    _addItemToList: function _addItemToList() {
+    _addItemToList: function _addItemToList(e) {
       if (
         "" != this.$.itemtext.value &&
-        babelHelpers.typeof(this.$.itemtext.value) !== "undefined"
+        babelHelpers.typeof(this.$.itemtext.value) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
       ) {
         this.push("items", {
           label: this.$.itemtext.value,
@@ -58,7 +70,7 @@ define([
       }
     },
     attached: function attached() {
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !1,
@@ -113,7 +125,8 @@ define([
           ],
           advanced: []
         }
-      });
+      };
+      this.setHaxProperties(props);
     }
   });
 });

@@ -407,7 +407,7 @@ Polymer({
     player.$.progress2.style.width = 100 * percentagePlayed + "%";
     player.$.title2.style.width = 100 * (1 / percentagePlayed) + "%";
   },
-  _srcChanged: function() {
+  _srcChanged: function(oldValue, newValue) {
     var player = this;
     if (player.isPlaying) {
       player.$.audio.pause();

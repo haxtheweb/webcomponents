@@ -445,7 +445,7 @@ hex-a-gon:nth-of-type(37) {
     }
     this.set("items", items);
   }
-  _colorChanged(newValue) {
+  _colorChanged(newValue, oldValue) {
     if (newValue) {
       this.updateStyles({ "--hexagon-color": newValue });
     }

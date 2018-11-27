@@ -33,7 +33,7 @@ Polymer({
     this.selectedValues = [];
     this._selected = -1;
   },
-  _onItemsChanged: function() {
+  _onItemsChanged: function(e) {
     this._items = this.$.selector.items;
   }
 });

@@ -108,16 +108,16 @@ Polymer({
     let root = this,
       search = root.$.input;
     root._getSearchText(search.value);
-    root.addEventListener("change", function() {
+    root.addEventListener("change", function(e) {
       root._getSearchText(search.value);
       root.resultCount = 0;
       root.resultPointer = 0;
       root.fire("search", root);
     });
-    root.$.prev.addEventListener("tap", function() {
+    root.$.prev.addEventListener("tap", function(e) {
       root._navigateResults(-1);
     });
-    root.$.next.addEventListener("tap", function() {
+    root.$.next.addEventListener("tap", function(e) {
       root._navigateResults(1);
     });
   },

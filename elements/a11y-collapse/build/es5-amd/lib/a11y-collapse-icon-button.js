@@ -6,9 +6,17 @@ define([
   "../node_modules/@polymer/iron-icons/iron-icons.js",
   "./a11y-collapse-button-styles.js",
   "../node_modules/@polymer/paper-tooltip/paper-tooltip.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _HAXWiring,
+  _schemaBehaviors,
+  _paperIconButton,
+  _ironIcons,
+  _a11yCollapseButtonStyles,
+  _paperTooltip
+) {
   "use strict";
-  function _templateObject_4912f4e0ecf211e89329630396a69cbf() {
+  function _templateObject_ee8a03e0f1e411e8aecbdb72e8c3acca() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style include="a11y-collapse-button-styles">\n      :host #expand:focus,\n      :host #expand:hover {\n        @apply --a11y-collapse-icon-focus;\n      }\n    </style>\n    <div id="heading">\n      <div id="text"><slot></slot></div>\n      <paper-icon-button id="expand" alt$="[[label]]" aria-controls="content" aria-expanded$="[[exanded]]" disabled$="[[disabled]]" label$="[[label]]" icon$="[[icon]]" rotated$="[[rotated]]">\n      </paper-icon-button>\n      <paper-tooltip for="expand">[[tooltip]]</paper-tooltip>\n    </div>\n'
@@ -17,14 +25,14 @@ define([
         '\n    <style include="a11y-collapse-button-styles">\n      :host #expand:focus,\n      :host #expand:hover {\n        @apply --a11y-collapse-icon-focus;\n      }\n    </style>\n    <div id="heading">\n      <div id="text"><slot></slot></div>\n      <paper-icon-button id="expand" alt\\$="[[label]]" aria-controls="content" aria-expanded\\$="[[exanded]]" disabled\\$="[[disabled]]" label\\$="[[label]]" icon\\$="[[icon]]" rotated\\$="[[rotated]]">\n      </paper-icon-button>\n      <paper-tooltip for="expand">[[tooltip]]</paper-tooltip>\n    </div>\n'
       ]
     );
-    _templateObject_4912f4e0ecf211e89329630396a69cbf = function() {
+    _templateObject_ee8a03e0f1e411e8aecbdb72e8c3acca = function _templateObject_ee8a03e0f1e411e8aecbdb72e8c3acca() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_4912f4e0ecf211e89329630396a69cbf()
+      _templateObject_ee8a03e0f1e411e8aecbdb72e8c3acca()
     ),
     is: "a11y-collapse-icon-button",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
@@ -45,7 +53,7 @@ define([
     detached: function detached() {
       this.$.expand.removeEventListener("tap");
     },
-    _onTap: function _onTap() {
+    _onTap: function _onTap(e) {
       if (!this.disabled) {
         this.fire("a11y-collapse-tap", this);
       }

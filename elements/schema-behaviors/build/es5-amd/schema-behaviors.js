@@ -35,8 +35,13 @@ window.SchemaBehaviors.Schema = {
       idPart()
     );
   },
-  _schemaMapChanged: function _schemaMapChanged(newValue) {
-    if (babelHelpers.typeof(newValue) !== "undefined") {
+  _schemaMapChanged: function _schemaMapChanged(newValue, oldValue) {
+    if (
+      babelHelpers.typeof(newValue) !==
+      ("undefined" === typeof void 0
+        ? "undefined"
+        : babelHelpers.typeof(void 0))
+    ) {
       this.schemaResourceID = this.getAttribute("resource");
       if ("" == this.schemaResourceID || null == this.schemaResourceID) {
         this.schemaResourceID = this.generateResourceID();

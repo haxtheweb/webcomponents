@@ -5,9 +5,16 @@ define([
   "./lib/editable-table-behaviors.js",
   "./lib/editable-table-editor.js",
   "./lib/editable-table-display.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _paperTooltip,
+  _paperToggleButton,
+  _editableTableBehaviors,
+  _editableTableEditor,
+  _editableTableDisplay
+) {
   "use strict";
-  function _templateObject_90caad90ecf311e89cb22b61cebc916e() {
+  function _templateObject_03b97ce0f1e611e8bd08675227bfaebf() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n        width: 100%;\n      }\n    </style>\n    <paper-tooltip for="button" position="left">Edit this table.</paper-tooltip>\n    <template id="display" is="dom-if" if="[[!editMode]]" restamp="true">\n      <editable-table-display accent-color$="[[accentColor]]" bordered$="[[bordered]]" caption$="[[caption]]" column-header$="[[columnHeader]]" dark$="[[dark]]" data$="[[data]]" condensed$="[[condensed]]" filter$="[[filter]]" footer$="[[footer]]" row-header$="[[rowHeader]]" scroll$="[[scroll]]" sort$="[[sort]]" striped$="[[striped]]" summary$="[[summary]]">\n      </editable-table-display>\n    </template>\n    <template id="editor" is="dom-if" if="[[editMode]]" restamp="true">\n      <editable-table-editor accent-color$="[[accentColor]]" bordered$="[[bordered]]" caption$="[[caption]]" column-header$="[[columnHeader]]" condensed$="[[condensed]]" dark$="[[dark]]" data$="[[data]]" filter$="[[filter]]" footer$="[[footer]]" hide-accent-color$="[[hideAccentColor]]" hide-dark-theme$="[[hideDarkTheme]]" hide-bordered$="[[hideBordered]]" hide-condensed$="[[hideCondensed]]" hide-filter$="[[hideFilter]]" hide-sort$="[[hideSort]]" hide-scroll$="[[hideScroll]]" hide-striped$="[[hideStriped]]" row-header$="[[rowHeader]]" scroll$="[[scroll]]" sort$="[[sort]]" striped$="[[striped]]" summary$="[[summary]]">\n      </editable-table-editor>\n    </template>\n'
@@ -16,14 +23,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n        width: 100%;\n      }\n    </style>\n    <paper-tooltip for="button" position="left">Edit this table.</paper-tooltip>\n    <template id="display" is="dom-if" if="[[!editMode]]" restamp="true">\n      <editable-table-display accent-color\\$="[[accentColor]]" bordered\\$="[[bordered]]" caption\\$="[[caption]]" column-header\\$="[[columnHeader]]" dark\\$="[[dark]]" data\\$="[[data]]" condensed\\$="[[condensed]]" filter\\$="[[filter]]" footer\\$="[[footer]]" row-header\\$="[[rowHeader]]" scroll\\$="[[scroll]]" sort\\$="[[sort]]" striped\\$="[[striped]]" summary\\$="[[summary]]">\n      </editable-table-display>\n    </template>\n    <template id="editor" is="dom-if" if="[[editMode]]" restamp="true">\n      <editable-table-editor accent-color\\$="[[accentColor]]" bordered\\$="[[bordered]]" caption\\$="[[caption]]" column-header\\$="[[columnHeader]]" condensed\\$="[[condensed]]" dark\\$="[[dark]]" data\\$="[[data]]" filter\\$="[[filter]]" footer\\$="[[footer]]" hide-accent-color\\$="[[hideAccentColor]]" hide-dark-theme\\$="[[hideDarkTheme]]" hide-bordered\\$="[[hideBordered]]" hide-condensed\\$="[[hideCondensed]]" hide-filter\\$="[[hideFilter]]" hide-sort\\$="[[hideSort]]" hide-scroll\\$="[[hideScroll]]" hide-striped\\$="[[hideStriped]]" row-header\\$="[[rowHeader]]" scroll\\$="[[scroll]]" sort\\$="[[sort]]" striped\\$="[[striped]]" summary\\$="[[summary]]">\n      </editable-table-editor>\n    </template>\n'
       ]
     );
-    _templateObject_90caad90ecf311e89cb22b61cebc916e = function() {
+    _templateObject_03b97ce0f1e611e8bd08675227bfaebf = function _templateObject_03b97ce0f1e611e8bd08675227bfaebf() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_90caad90ecf311e89cb22b61cebc916e()
+      _templateObject_03b97ce0f1e611e8bd08675227bfaebf()
     ),
     is: "editable-table",
     behaviors: [

@@ -55,7 +55,7 @@ Polymer({
     if (opened) target.show();
     if (!opened) target.hide();
   },
-  _headerClickHandler: function() {
+  _headerClickHandler: function(e) {
     if (!this.opened) {
       this.opened = !this.opened;
     }
@@ -65,7 +65,7 @@ Polymer({
     this.opened = !this.opened;
     this.fire("toggle-updated");
   },
-  __activeChanged: function() {
+  __activeChanged: function(e) {
     this.opened = !0;
   }
 });

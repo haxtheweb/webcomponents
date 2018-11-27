@@ -1,20 +1,20 @@
 define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./lib/relative-heading-manager.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _relativeHeadingManager) {
   "use strict";
-  function _templateObject_563d8300ecf311e8b2a087074f3d964e() {
+  function _templateObject_d8226e20f1e511e8b6e5fb3c2927ae57() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <div id="html"></div>\n'
     ]);
-    _templateObject_563d8300ecf311e8b2a087074f3d964e = function() {
+    _templateObject_d8226e20f1e511e8b6e5fb3c2927ae57 = function _templateObject_d8226e20f1e511e8b6e5fb3c2927ae57() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_563d8300ecf311e8b2a087074f3d964e()
+      _templateObject_d8226e20f1e511e8b6e5fb3c2927ae57()
     ),
     is: "relative-heading",
     properties: {
@@ -29,7 +29,7 @@ define([
     attached: function attached() {
       this.fire("heading-created", this);
     },
-    attributeChanged: function attributeChanged(name) {
+    attributeChanged: function attributeChanged(name, type) {
       if ("subtopic-of" === name) {
         this.fire("heading-created", this);
       } else if ("tag" === name) {
@@ -46,7 +46,7 @@ define([
       if (null !== el) {
         root.__parentListener = root.parentHeading.addEventListener(
           "heading-changed",
-          function() {
+          function(e) {
             root._setTag();
           }
         );
@@ -56,7 +56,7 @@ define([
     _setTag: function _setTag() {
       var tag = "h1",
         level = 1,
-        h = function(level) {
+        h = function h(level) {
           return "h" + Math.max(Math.min(level, 6), 1);
         };
       if (null !== this.parentHeading) {

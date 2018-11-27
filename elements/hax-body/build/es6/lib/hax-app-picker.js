@@ -156,7 +156,7 @@ Polymer({
   close: function() {
     this.opened = !1;
   },
-  _openedChanged: function(newValue) {
+  _openedChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0) {
       if (newValue) {
         this.$.dialog.open();

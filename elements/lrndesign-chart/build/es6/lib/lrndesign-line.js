@@ -58,15 +58,15 @@ Polymer({
     dataSource: { type: String, notify: !0 },
     rawData: { type: String, notify: !0, value: "" }
   },
-  handleResponse: function() {
+  handleResponse: function(e) {
     let root = this,
       raw = root.CSVtoArray(root.rawData);
     root.data = { labels: raw[0], series: raw.slice(1, raw.length) };
     root.options = root._getOptions();
-    root.$.chartist.makeChart();
+    let chart = root.$.chartist.makeChart();
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -308,7 +308,8 @@ Polymer({
           }
         ]
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
   _getOptions: function() {
     return {

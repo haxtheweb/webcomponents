@@ -59,23 +59,23 @@ Polymer({
     dataSource: { type: String, notify: !0, observer: "_dataSourceChanged" },
     rawData: { type: String, notify: !0, value: "" }
   },
-  _dataSourceChanged: function(newValue) {
+  _dataSourceChanged: function(newValue, oldValue) {
     if (typeof newValue !== void 0) {
       this.$.datasource.generateRequest();
     }
   },
-  handleResponse: function() {
+  handleResponse: function(e) {
     let raw = this.CSVtoArray(this.rawData);
     this.set("data", {});
     this.set("data", { labels: raw[0], series: raw.slice(1, raw.length) });
   },
-  _dataUpdated: function() {
+  _dataUpdated: function(newValue, oldValue) {
     this.set("options", {});
     this.set("options", this._getOptions());
-    this.$.chartist.makeChart();
+    let chart = this.$.chartist.makeChart();
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -317,7 +317,8 @@ Polymer({
           }
         ]
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
   _getOptions: function() {
     return {

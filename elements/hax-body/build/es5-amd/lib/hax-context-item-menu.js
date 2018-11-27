@@ -5,20 +5,27 @@ define([
   "../node_modules/@polymer/paper-item/paper-item.js",
   "../node_modules/@polymer/neon-animation/neon-animation.js",
   "./hax-toolbar-menu.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _paperTooltip,
+  _paperItem,
+  _neonAnimation,
+  _haxToolbarMenu
+) {
   "use strict";
-  function _templateObject_a8bdbe40ee0311e8bb61cd2eef6a9bf2() {
+  function _templateObject_9bcebef0f1e611e8b3a2e3a031c18fd0() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: inline-flex;\n        height: 32px;\n        box-sizing: border-box;\n      }\n      :host hax-toolbar-menu ::slotted(*):hover {\n        background-color: #cccccc;\n      };\n      :host hax-toolbar-menu ::slotted(*) {\n        height: 32px;\n      };\n    </style>\n    <hax-toolbar-menu corner="[[corner]]" id="menu" icon="[[icon]]" tooltip="[[label]]" tooltip-direction="[[direction]]" selected="{{selectedValue}}" reset-on-select="[[resetOnSelect]]">\n      <slot></slot>\n    </hax-toolbar-menu>\n'
     ]);
-    _templateObject_a8bdbe40ee0311e8bb61cd2eef6a9bf2 = function() {
+    _templateObject_9bcebef0f1e611e8b3a2e3a031c18fd0 = function _templateObject_9bcebef0f1e611e8b3a2e3a031c18fd0() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a8bdbe40ee0311e8bb61cd2eef6a9bf2()
+      _templateObject_9bcebef0f1e611e8b3a2e3a031c18fd0()
     ),
     is: "hax-context-item-menu",
     properties: {
@@ -49,7 +56,10 @@ define([
     _selectedUpdated: function _selectedUpdated(newValue, oldValue) {
       if (
         babelHelpers.typeof(newValue) !== babelHelpers.typeof(null) &&
-        babelHelpers.typeof(oldValue) !== "undefined" &&
+        babelHelpers.typeof(oldValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         babelHelpers.typeof(oldValue) !== babelHelpers.typeof(null)
       ) {
         for (
@@ -72,9 +82,18 @@ define([
         }
         if (
           !this._blockEvent &&
-          babelHelpers.typeof(item.attributes) !== "undefined" &&
-          babelHelpers.typeof(item.attributes.value) !== "undefined" &&
-          babelHelpers.typeof(item.attributes.value.value) !== "undefined"
+          babelHelpers.typeof(item.attributes) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
+          babelHelpers.typeof(item.attributes.value) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
+          babelHelpers.typeof(item.attributes.value.value) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
         ) {
           this.$.menu.hideMenu();
           this.fire("hax-context-item-selected", {

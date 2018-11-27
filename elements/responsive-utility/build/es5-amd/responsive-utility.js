@@ -5,11 +5,11 @@ define([
 ], function(_polymerLegacy, async, _ironResizableBehavior) {
   "use strict";
   async = babelHelpers.interopRequireWildcard(async);
-  function _templateObject_1b4b98a0ecf211e882ef4d386d12ffe1() {
+  function _templateObject_c83ae2e0f1e411e89dd4711b8b5dec47() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n      :host {\n        display: inline;\n      }\n    </style>\n    <slot></slot>\n"
     ]);
-    _templateObject_1b4b98a0ecf211e882ef4d386d12ffe1 = function() {
+    _templateObject_c83ae2e0f1e411e89dd4711b8b5dec47 = function _templateObject_c83ae2e0f1e411e89dd4711b8b5dec47() {
       return data;
     };
     return data;
@@ -18,7 +18,7 @@ define([
   window.ResponsiveUtility.instance = null;
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_1b4b98a0ecf211e882ef4d386d12ffe1()
+      _templateObject_c83ae2e0f1e411e89dd4711b8b5dec47()
     ),
     is: "responsive-utility",
     behaviors: [_ironResizableBehavior.IronResizableBehavior],
@@ -87,13 +87,7 @@ define([
         target.relativeToParent !== void 0 && null !== target.relativeToParent
           ? target.relativeToParent
           : !0,
-      testBreakpoint = function(width, breakpoint, def) {
-        var val =
-          breakpoint !== void 0 && null !== breakpoint ? breakpoint : def;
-        return width < val;
-      },
-      size,
-      width = (function getWidth() {
+      getWidth = function getWidth() {
         if (null !== target.element.parentNode && !0 === relative) {
           if (
             target.element.parentNode.nodeType === Node.DOCUMENT_FRAGMENT_NODE
@@ -103,7 +97,14 @@ define([
           return target.element.parentNode.offsetWidth;
         }
         return window.outerWidth;
-      })();
+      },
+      testBreakpoint = function testBreakpoint(width, breakpoint, def) {
+        var val =
+          breakpoint !== void 0 && null !== breakpoint ? breakpoint : def;
+        return width < val;
+      },
+      size,
+      width = getWidth();
     if (testBreakpoint(width, target.sm, 600)) {
       size = "xs";
     } else if (testBreakpoint(width, target.md, 900)) {

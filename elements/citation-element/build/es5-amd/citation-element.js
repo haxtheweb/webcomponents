@@ -3,9 +3,9 @@ define([
   "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(_polymerLegacy, _polymerDom, _HAXWiring, _schemaBehaviors) {
   "use strict";
-  function _templateObject_6d831cb0ecf211e8bf2a5360a63a39de() {
+  function _templateObject_09ad3070f1e511e894fc635937feadff() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n        color: var(\'--license-text-color\');\n      }\n      :host([display-method="footnote"]) {\n        visibility: hidden;\n        opacity: 0;\n      }\n      :host([display-method="popup"]) {\n        display: block;\n      }\n      .license-link {\n        font-size: 16px;\n        line-height: 16px;\n        font-style: italic;\n      }\n      .citation-date {\n        font-size: 16px;\n        line-height: 16px;\n        font-style: italic;\n      }\n      .license-link img {\n        height: 16px;\n        min-width: 16px;\n        margin-right: 8px;\n      }\n    </style>\n    <meta about$="[[relatedResource]]" property="cc:attributionUrl" content$="[[source]]">\n    <meta about$="[[relatedResource]]" property="cc:attributionName" typeof="oer:Text" content$="[[title]]">\n    <meta rel="cc:license" href$="[[licenseLink]]" content$="License: [[licenseName]]">\n    <cite><a target="_blank" href="[[source]]">[[title]]</a> by [[creator]], licensed under <a class="license-link" target="_blank" href="[[licenseLink]]"><img alt="[[licenseName]] graphic" src="[[licenseImage]]" hidden&="[[!licenseImage]]">[[licenseName]]</a>. Accessed <span class="citation-date">[[date]]</span>.</cite>\n'
@@ -14,14 +14,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n        color: var(\'--license-text-color\');\n      }\n      :host([display-method="footnote"]) {\n        visibility: hidden;\n        opacity: 0;\n      }\n      :host([display-method="popup"]) {\n        display: block;\n      }\n      .license-link {\n        font-size: 16px;\n        line-height: 16px;\n        font-style: italic;\n      }\n      .citation-date {\n        font-size: 16px;\n        line-height: 16px;\n        font-style: italic;\n      }\n      .license-link img {\n        height: 16px;\n        min-width: 16px;\n        margin-right: 8px;\n      }\n    </style>\n    <meta about\\$="[[relatedResource]]" property="cc:attributionUrl" content\\$="[[source]]">\n    <meta about\\$="[[relatedResource]]" property="cc:attributionName" typeof="oer:Text" content\\$="[[title]]">\n    <meta rel="cc:license" href\\$="[[licenseLink]]" content\\$="License: [[licenseName]]">\n    <cite><a target="_blank" href="[[source]]">[[title]]</a> by [[creator]], licensed under <a class="license-link" target="_blank" href="[[licenseLink]]"><img alt="[[licenseName]] graphic" src="[[licenseImage]]" hidden&="[[!licenseImage]]">[[licenseName]]</a>. Accessed <span class="citation-date">[[date]]</span>.</cite>\n'
       ]
     );
-    _templateObject_6d831cb0ecf211e8bf2a5360a63a39de = function() {
+    _templateObject_09ad3070f1e511e894fc635937feadff = function _templateObject_09ad3070f1e511e894fc635937feadff() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_6d831cb0ecf211e8bf2a5360a63a39de()
+      _templateObject_09ad3070f1e511e894fc635937feadff()
     ),
     is: "citation-element",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
@@ -66,7 +66,7 @@ define([
       document.head.appendChild(link);
       return link;
     },
-    _scopeChanged: function _scopeChanged(newValue) {
+    _scopeChanged: function _scopeChanged(newValue, oldValue) {
       if (
         "sibling" === newValue &&
         null !== (0, _polymerDom.dom)(this).previousElementSibling
@@ -239,10 +239,20 @@ define([
       }
       return list;
     },
-    _licenseUpdated: function _licenseUpdated(newValue) {
-      if (babelHelpers.typeof(newValue) !== "undefined") {
+    _licenseUpdated: function _licenseUpdated(newValue, oldValue) {
+      if (
+        babelHelpers.typeof(newValue) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         var list = this.licenseList();
-        if (babelHelpers.typeof(list[newValue]) !== "undefined") {
+        if (
+          babelHelpers.typeof(list[newValue]) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           this.licenseName = list[newValue].name;
           this.licenseLink = list[newValue].link;
           this.licenseImage = list[newValue].image;

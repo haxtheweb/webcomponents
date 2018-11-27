@@ -16,7 +16,7 @@ Polymer({
   behaviors: [],
   properties: {},
   ready: function() {
-    this.querySelector("*[data-mediavideo-src]");
+    const videoSrc = this.querySelector("*[data-mediavideo-src]");
     this.addEventListener("click", e => {
       e.stopPropagation();
       const target = dom(e).localTarget,

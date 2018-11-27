@@ -73,14 +73,14 @@ Polymer({
     view: { type: String, value: "month", observer: "_viewTypeChanged" },
     file: { type: String, reflectToAttribute: !0, observer: "_fileChanged" }
   },
-  _fileChanged: function(newValue) {
+  _fileChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0 && this.__icalLoaded) {
       this.loadFile();
       this.getDateInfo();
       this.createCalendar();
     }
   },
-  _viewTypeChanged: function(newValue) {
+  _viewTypeChanged: function(newValue, oldValue) {
     if (
       typeof newValue !== typeof void 0 &&
       typeof this.file !== typeof void 0 &&
@@ -90,7 +90,7 @@ Polymer({
       this.createCalendar();
     }
   },
-  _dateChanged: function(newValue) {
+  _dateChanged: function(newValue, oldValue) {
     if (
       typeof newValue !== typeof void 0 &&
       typeof this.file !== typeof void 0 &&
@@ -100,7 +100,7 @@ Polymer({
       this.createCalendar();
     }
   },
-  _dateStringChanged: function(newValue) {
+  _dateStringChanged: function(newValue, oldValue) {
     if (
       typeof newValue !== typeof void 0 &&
       "" != newValue &&
@@ -111,23 +111,23 @@ Polymer({
   },
   created: function() {
     const name = "ical",
-      basePath = pathFromUrl(import.meta.url);
+      basePath = pathFromUrl(import.meta.url),
+      location = `${basePath}lib/ical.js/build/ical.js`;
     window.addEventListener(
       `es-bridge-${name}-loaded`,
       this._icalLoaded.bind(this)
     );
     window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(
-      name,
-      `${basePath}lib/ical.js/build/ical.js`
-    );
+    window.ESGlobalBridge.instance.load(name, location);
   },
   _icalLoaded: function() {
     this.__icalLoaded = !0;
-    this.loadFile();
+    if (typeof this.file !== typeof void 0) {
+      this.loadFile();
+    }
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !1,
       canPosition: !1,
       canEditSource: !1,
@@ -177,7 +177,8 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
   loadFile: function() {
     this.startIndex = 0;
@@ -309,6 +310,7 @@ Polymer({
     this.calendarText = this.readTextFile(this.file);
     this.calendarView = this.$.calView;
     var days = 1,
+      pastDate = 0,
       elem = dom(this.$.calView).node,
       elemChildren = elem.childNodes;
     while (elemChildren[1]) {
@@ -474,7 +476,7 @@ Polymer({
     dynamicEl.firstWeek = !0;
     dynamicEl.style.width = "14.25%";
     dynamicEl.style.display = "inline-block";
-    dynamicEl.id = "date";
+    dynamicEl.setAttribute("id", "date");
     dynamicEl.view = this.view;
     if (
       this.date.getFullYear() === this.newDate.getFullYear() &&
@@ -522,7 +524,7 @@ Polymer({
       }
       var dynamicEl = document.createElement("lrn-calendar-date");
       dynamicEl.valid = !0;
-      dynamicEl.id = "date";
+      dynamicEl.setAttribute("id", "date");
       dynamicEl.date = this.newDay;
       dynamicEl.style.width = "14.25%";
       dynamicEl.style.display = "inline-block";
@@ -546,6 +548,7 @@ Polymer({
       days = days + 1;
       if (days == this.totalDays && 6 != this.newDay.getDay()) {
         days = days - 1;
+        pastDate = 1;
       }
     }
   },
@@ -553,7 +556,8 @@ Polymer({
     if ("Not Found" == text) {
       return "";
     }
-    var jcalData = ICAL.parse(text),
+    var iCalendarData = text,
+      jcalData = ICAL.parse(iCalendarData),
       vcalendar = new ICAL.Component(jcalData),
       vevent = vcalendar.getFirstSubcomponent("vevent"),
       vevents = vcalendar.getAllSubcomponents("vevent"),
@@ -562,8 +566,8 @@ Polymer({
         return event;
       });
     this.eventArray = [];
-    for (var i = 0; i < displayEvents.length; i++) {
-      this.createDate(displayEvents[i]);
+    for (var i = 0, startDay; i < displayEvents.length; i++) {
+      startDay = this.createDate(displayEvents[i]);
       if (displayEvents[i].isRecurring()) {
         this.createRecurrence(displayEvents[i]);
       }
@@ -602,6 +606,7 @@ Polymer({
         this.eventArray.push(newTest);
       }
     }
+    return;
   },
   createDate: function(event) {
     var year = event.startDate._time.year,
@@ -653,6 +658,7 @@ Polymer({
     this.currentMonth = this.startMonth;
     this.currentYear = this.startYear;
     this.currentDayofWeek = this.startDayOfWeek;
+    return;
   },
   createReturn: function(event) {
     for (var EventArray = [], i = 0; i < event.length; i++) {
@@ -663,9 +669,8 @@ Polymer({
   getDisplayDate: function(date) {
     if ("function" === typeof date.getMonth) {
       var monthInt = date.getMonth(),
-        day = date.getDate();
-      return (
-        [
+        day = date.getDate(),
+        monthsArray = [
           "January",
           "February",
           "March",
@@ -678,10 +683,8 @@ Polymer({
           "October",
           "November",
           "December"
-        ][monthInt] +
-        " " +
-        date.getFullYear()
-      );
+        ];
+      return monthsArray[monthInt] + " " + date.getFullYear();
     }
     return "";
   }

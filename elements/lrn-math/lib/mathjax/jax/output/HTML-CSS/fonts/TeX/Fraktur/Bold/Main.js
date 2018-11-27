@@ -16,4 +16,18 @@
  *  limitations under the License.
  */
 
-MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS["MathJax_Fraktur-bold"]={directory:"Fraktur/Bold",family:"MathJax_Fraktur",weight:"bold",testString:"MathJax Fraktur",Ranges:[[0,127,"BasicLatin"],[128,57343,"Other"],[58112,58128,"PUA"]]};MathJax.Callback.Queue(["initFont",MathJax.OutputJax["HTML-CSS"],"MathJax_Fraktur-bold"],["loadComplete",MathJax.Ajax,MathJax.OutputJax["HTML-CSS"].fontDir+"/Fraktur/Bold/Main.js"]);
+MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS["MathJax_Fraktur-bold"] = {
+  directory: "Fraktur/Bold",
+  family: "MathJax_Fraktur",
+  weight: "bold",
+  testString: "MathJax Fraktur",
+  Ranges: [[0, 127, "BasicLatin"], [128, 57343, "Other"], [58112, 58128, "PUA"]]
+};
+MathJax.Callback.Queue(
+  ["initFont", MathJax.OutputJax["HTML-CSS"], "MathJax_Fraktur-bold"],
+  [
+    "loadComplete",
+    MathJax.Ajax,
+    MathJax.OutputJax["HTML-CSS"].fontDir + "/Fraktur/Bold/Main.js"
+  ]
+);

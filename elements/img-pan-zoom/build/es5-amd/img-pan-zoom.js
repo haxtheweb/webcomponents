@@ -4,21 +4,21 @@ define([
   "./node_modules/@polymer/polymer/lib/utils/resolve-url.js",
   "./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js",
   "./lib/img-loader.js"
-], function(meta, _polymerLegacy, _resolveUrl) {
+], function(meta, _polymerLegacy, _resolveUrl, _esGlobalBridge, _imgLoader) {
   "use strict";
   meta = babelHelpers.interopRequireWildcard(meta);
-  function _templateObject_c8cd2080ecf111e89ab8dfdb6345a05e() {
+  function _templateObject_84af2b30f1e411e88ecb3726e99983d3() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n        position: relative;\n        height: 500px;\n      }\n      #viewer {\n        position: relative;\n        height: 100%;\n        width: 100%;\n      }\n\n      paper-spinner-lite {\n        opacity: 0;\n        display: block;\n        transition: opacity 700ms;\n        position: absolute;\n        margin: auto;\n        top: 0;\n        left: 0;\n        bottom: 0;\n        right: 0;\n        z-index: 1;\n        height: 70px;\n        width: 70px;\n        --paper-spinner-color: var(--img-pan-zoom-spinner-color, #2196F3);\n        --paper-spinner-stroke-width: var(--img-pan-zoom-spinner-width, 5px);\n        @apply --img-pan-zoom-spinner;\n      }\n      paper-spinner-lite[active] {\n        opacity: 1;\n      }\n    </style>\n\n    <!-- Only preload regular images -->\n    <template is="dom-if" if="[[!dzi]]">\n      <paper-spinner-lite hidden$="[[hideSpinner]]" active="[[loading]]"></paper-spinner-lite>\n      <img-loader loaded="{{loaded}}" loading="{{loading}}" src="[[src]]"></img-loader>\n    </template>\n\n    <!-- Openseadragon -->\n    <div id="viewer"></div>\n'
     ]);
-    _templateObject_c8cd2080ecf111e89ab8dfdb6345a05e = function() {
+    _templateObject_84af2b30f1e411e88ecb3726e99983d3 = function _templateObject_84af2b30f1e411e88ecb3726e99983d3() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_c8cd2080ecf111e89ab8dfdb6345a05e()
+      _templateObject_84af2b30f1e411e88ecb3726e99983d3()
     ),
     is: "img-pan-zoom",
     properties: {

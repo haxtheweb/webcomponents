@@ -19,11 +19,13 @@
  */
 
 MathJax.Hub.Insert(
-  MathJax.OutputJax['HTML-CSS'].FONTDATA.FONTS['STIXNonUnicode-italic'],
+  MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS["STIXNonUnicode-italic"],
   {
-    0x20: [0,0,250,0,0],               // SPACE
-    0xA0: [0,0,250,0,0]                // NO-BREAK SPACE
+    0x20: [0, 0, 250, 0, 0], // SPACE
+    0xa0: [0, 0, 250, 0, 0] // NO-BREAK SPACE
   }
 );
 
-MathJax.Ajax.loadComplete(MathJax.OutputJax["HTML-CSS"].fontDir + "/NonUnicode/Italic/All.js");
+MathJax.Ajax.loadComplete(
+  MathJax.OutputJax["HTML-CSS"].fontDir + "/NonUnicode/Italic/All.js"
+);

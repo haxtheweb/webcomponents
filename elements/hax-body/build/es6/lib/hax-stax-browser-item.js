@@ -80,13 +80,13 @@ Polymer({
     tag: { type: String },
     elevation: { type: Number, value: 1, reflectToAttribute: !0 }
   },
-  tapEventOn: function() {
+  tapEventOn: function(e) {
     this.elevation = 2;
   },
-  tapEventOff: function() {
+  tapEventOff: function(e) {
     this.elevation = 1;
   },
-  _fireEvent: function() {
+  _fireEvent: function(e) {
     for (var i = 0; i < this.stax.length; i++) {
       this.fire("hax-insert-content", this.stax[i]);
     }

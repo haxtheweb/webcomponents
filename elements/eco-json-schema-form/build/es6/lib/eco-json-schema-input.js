@@ -9,6 +9,7 @@ import "../node_modules/@polymer/paper-styles/typography.js";
 Polymer({
   is: "eco-json-schema-input",
   _template: html`
+  <custom-style>
     <style is="custom-style" include="iron-flex iron-flex-alignment">
       paper-input {
         padding: 2px;
@@ -22,16 +23,18 @@ Polymer({
           width: 100%;
         };
         --paper-input-container-input: {
-          background-color: transparent;
-          border: none;
+          width: 100% !important;
+          background-color: transparent !important;
+          border: none !important;
         };
         --paper-input-container-shared-input-style: {
-          width: 100%;
-          background-color: transparent;
-          border: none;
+          width: 100% !important;
+          background-color: transparent !important;
+          border: none !important;
         };
       }
     </style>
+    </custom-style>
     <paper-input id="input" class="flex" value="{{value}}" auto-validate></paper-input>  
 `,
   behaviors: [AppLocalizeBehavior],

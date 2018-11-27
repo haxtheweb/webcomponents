@@ -158,7 +158,7 @@ Polymer({
     color: { type: String, value: "grey" },
     elevation: { type: Number, value: 1, reflectToAttribute: !0 }
   },
-  _mouseEnter: function() {
+  _mouseEnter: function(e) {
     this.__oldElevation = this.elevation;
     if (5 < this.elevation + 2) {
       this.elevation = 5;
@@ -166,7 +166,7 @@ Polymer({
       this.elevation += 2;
     }
   },
-  _mouseLeave: function() {
+  _mouseLeave: function(e) {
     this.elevation = this.__oldElevation;
   }
 });

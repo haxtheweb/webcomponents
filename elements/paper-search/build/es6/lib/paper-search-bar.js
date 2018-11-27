@@ -2,7 +2,7 @@ import {
   html,
   Polymer
 } from "../node_modules/@polymer/polymer/polymer-legacy.js";
-import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
+import "../node_modules/@polymer/iron-a11y-keys/iron-a11y-keys.js";
 Polymer({
   is: "paper-search-bar",
   properties: {
@@ -18,7 +18,7 @@ Polymer({
   focus: function() {
     this.$.input.focus();
   },
-  _filter: function() {
+  _filter: function(e) {
     this.fire("paper-search-filter");
   },
   _clear: function() {

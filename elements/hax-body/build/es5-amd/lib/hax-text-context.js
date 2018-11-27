@@ -9,9 +9,20 @@ define([
   "./hax-context-item.js",
   "./hax-context-item-textop.js",
   "./hax-toolbar.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _appToolbar,
+  _paperItem,
+  _ironIcons,
+  _colors,
+  _mdExtraIcons,
+  _haxContextItemMenu,
+  _haxContextItem,
+  _haxContextItemTextop,
+  _haxToolbar
+) {
   "use strict";
-  function _templateObject_a90d3dd0ee0311e8bb61cd2eef6a9bf2() {
+  function _templateObject_9c35e530f1e611e8b3a2e3a031c18fd0() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style include="materializecss-styles-colors">\n      :host {\n        display: block;\n        pointer-events: none;\n        background-color: white;\n      }\n      paper-item {\n        -webkit-justify-content: flex-start;\n        justify-content: flex-start;\n        height: 32px;\n        padding: 0 8px;\n        min-height: 32px;\n      }\n      paper-item:hover {\n        background-color: #d3d3d3;\n        cursor: pointer;\n      }\n      iron-icon {\n        padding: 8px;\n      }\n      paper-item strong {\n        padding: 8px;\n        font-size: 12px;\n      }\n      :host(.hax-context-pin-top) hax-toolbar {\n        position: fixed;\n        top: 64px;\n        opacity: .95;\n      }\n      :host(.hax-context-pin-bottom) hax-toolbar {\n        position: fixed;\n        bottom: 0;\n        opacity: .95;\n      }\n    </style>\n    <hax-toolbar selected="[[selection]]" hide-transform="">\n      <hax-context-item-menu corner="left" slot="primary" selected-value="{{selectedValue}}" id="formatsize" icon="text-format" label="Format" event-name="text-tag">\n        <paper-item value="p"><iron-icon icon="editor:format-textdirection-l-to-r"></iron-icon>Normal text <strong>&lt;P&gt;</strong></paper-item>\n        <paper-item value="h2"><iron-icon icon="editor:title"></iron-icon>Title <strong>&lt;H2&gt;</strong></paper-item>\n        <paper-item value="h3"><iron-icon icon="editor:title"></iron-icon>Content heading <strong>&lt;H3&gt;</strong></paper-item>\n        <paper-item value="h4"><iron-icon icon="editor:text-fields"></iron-icon>Subheading <strong>&lt;H4&gt;</strong></paper-item>\n        <paper-item value="h5"><iron-icon icon="editor:text-fields"></iron-icon>Deeper subheading <strong>&lt;H5&gt;</strong></paper-item>\n        <paper-item value="blockquote"><iron-icon icon="editor:format-quote"></iron-icon>Quote<strong>&lt;blockquote&gt;</strong></paper-item>\n        <paper-item value="code"><iron-icon icon="icons:code"></iron-icon>Code block<strong>&lt;code&gt;</strong></paper-item>\n      </hax-context-item-menu>\n      <hax-context-item-textop slot="primary" icon="editor:format-bold" label="Bold" event-name="text-bold"></hax-context-item-textop>\n      <hax-context-item-textop slot="primary" icon="editor:format-italic" label="Italic" event-name="text-italic"></hax-context-item-textop>\n      <hax-context-item-textop slot="primary" icon="editor:insert-link" label="Link" event-name="text-link"></hax-context-item-textop>\n      <hax-context-item-menu slot="primary" selected-value="{{justifyValue}}" id="justify" icon="[[justifyIcon]]" label="Alignment">\n        <paper-item value="" hidden=""></paper-item>\n        <paper-item value="text-align-left">\n          <iron-icon icon="editor:format-align-left"></iron-icon>\n        </paper-item>\n        <paper-item value="text-align-right">\n          <iron-icon icon="editor:format-align-right"></iron-icon>\n        </paper-item>\n      </hax-context-item-menu>\n      <hax-context-item-textop slot="primary" icon="editor:format-list-numbered" label="Numbered list" event-name="text-list-numbered" hidden$="[[!polyfillSafe]]"></hax-context-item-textop>\n      <hax-context-item-textop slot="primary" icon="editor:format-list-bulleted" label="Bulleted list" event-name="text-list-bulleted" hidden$="[[!polyfillSafe]]"></hax-context-item-textop>\n      <hax-context-item-textop slot="primary" icon="editor:format-indent-increase" label="Indent" event-name="text-indent" hidden$="[[!polyfillSafe]]"></hax-context-item-textop>\n      <hax-context-item-textop slot="primary" icon="editor:format-indent-decrease" label="Outdent" event-name="text-outdent" hidden$="[[!polyfillSafe]]"></hax-context-item-textop>\n      <hax-context-item-textop slot="primary" icon="editor:format-clear" label="Remove format" event-name="text-remove-format"></hax-context-item-textop>\n      <hax-context-item slot="primary" icon="device:graphic-eq" label="Advanced item" event-name="insert-inline-gizmo"></hax-context-item>\n      <hax-context-item-textop menu="" slot="more" icon="mdextra:unlink" event-name="text-unlink">Remove link</hax-context-item-textop>\n      <hax-context-item-textop menu="" slot="more" icon="mdextra:subscript" event-name="text-subscript">Subscript</hax-context-item-textop>\n      <hax-context-item-textop menu="" slot="more" icon="mdextra:superscript" event-name="text-superscript">Superscript</hax-context-item-textop>\n      <hax-context-item-textop menu="" slot="more" icon="editor:format-strikethrough" event-name="text-strikethrough">Cross out</hax-context-item-textop>\n    </hax-toolbar>\n'
@@ -20,14 +31,14 @@ define([
         '\n    <style include="materializecss-styles-colors">\n      :host {\n        display: block;\n        pointer-events: none;\n        background-color: white;\n      }\n      paper-item {\n        -webkit-justify-content: flex-start;\n        justify-content: flex-start;\n        height: 32px;\n        padding: 0 8px;\n        min-height: 32px;\n      }\n      paper-item:hover {\n        background-color: #d3d3d3;\n        cursor: pointer;\n      }\n      iron-icon {\n        padding: 8px;\n      }\n      paper-item strong {\n        padding: 8px;\n        font-size: 12px;\n      }\n      :host(.hax-context-pin-top) hax-toolbar {\n        position: fixed;\n        top: 64px;\n        opacity: .95;\n      }\n      :host(.hax-context-pin-bottom) hax-toolbar {\n        position: fixed;\n        bottom: 0;\n        opacity: .95;\n      }\n    </style>\n    <hax-toolbar selected="[[selection]]" hide-transform="">\n      <hax-context-item-menu corner="left" slot="primary" selected-value="{{selectedValue}}" id="formatsize" icon="text-format" label="Format" event-name="text-tag">\n        <paper-item value="p"><iron-icon icon="editor:format-textdirection-l-to-r"></iron-icon>Normal text <strong>&lt;P&gt;</strong></paper-item>\n        <paper-item value="h2"><iron-icon icon="editor:title"></iron-icon>Title <strong>&lt;H2&gt;</strong></paper-item>\n        <paper-item value="h3"><iron-icon icon="editor:title"></iron-icon>Content heading <strong>&lt;H3&gt;</strong></paper-item>\n        <paper-item value="h4"><iron-icon icon="editor:text-fields"></iron-icon>Subheading <strong>&lt;H4&gt;</strong></paper-item>\n        <paper-item value="h5"><iron-icon icon="editor:text-fields"></iron-icon>Deeper subheading <strong>&lt;H5&gt;</strong></paper-item>\n        <paper-item value="blockquote"><iron-icon icon="editor:format-quote"></iron-icon>Quote<strong>&lt;blockquote&gt;</strong></paper-item>\n        <paper-item value="code"><iron-icon icon="icons:code"></iron-icon>Code block<strong>&lt;code&gt;</strong></paper-item>\n      </hax-context-item-menu>\n      <hax-context-item-textop slot="primary" icon="editor:format-bold" label="Bold" event-name="text-bold"></hax-context-item-textop>\n      <hax-context-item-textop slot="primary" icon="editor:format-italic" label="Italic" event-name="text-italic"></hax-context-item-textop>\n      <hax-context-item-textop slot="primary" icon="editor:insert-link" label="Link" event-name="text-link"></hax-context-item-textop>\n      <hax-context-item-menu slot="primary" selected-value="{{justifyValue}}" id="justify" icon="[[justifyIcon]]" label="Alignment">\n        <paper-item value="" hidden=""></paper-item>\n        <paper-item value="text-align-left">\n          <iron-icon icon="editor:format-align-left"></iron-icon>\n        </paper-item>\n        <paper-item value="text-align-right">\n          <iron-icon icon="editor:format-align-right"></iron-icon>\n        </paper-item>\n      </hax-context-item-menu>\n      <hax-context-item-textop slot="primary" icon="editor:format-list-numbered" label="Numbered list" event-name="text-list-numbered" hidden\\$="[[!polyfillSafe]]"></hax-context-item-textop>\n      <hax-context-item-textop slot="primary" icon="editor:format-list-bulleted" label="Bulleted list" event-name="text-list-bulleted" hidden\\$="[[!polyfillSafe]]"></hax-context-item-textop>\n      <hax-context-item-textop slot="primary" icon="editor:format-indent-increase" label="Indent" event-name="text-indent" hidden\\$="[[!polyfillSafe]]"></hax-context-item-textop>\n      <hax-context-item-textop slot="primary" icon="editor:format-indent-decrease" label="Outdent" event-name="text-outdent" hidden\\$="[[!polyfillSafe]]"></hax-context-item-textop>\n      <hax-context-item-textop slot="primary" icon="editor:format-clear" label="Remove format" event-name="text-remove-format"></hax-context-item-textop>\n      <hax-context-item slot="primary" icon="device:graphic-eq" label="Advanced item" event-name="insert-inline-gizmo"></hax-context-item>\n      <hax-context-item-textop menu="" slot="more" icon="mdextra:unlink" event-name="text-unlink">Remove link</hax-context-item-textop>\n      <hax-context-item-textop menu="" slot="more" icon="mdextra:subscript" event-name="text-subscript">Subscript</hax-context-item-textop>\n      <hax-context-item-textop menu="" slot="more" icon="mdextra:superscript" event-name="text-superscript">Superscript</hax-context-item-textop>\n      <hax-context-item-textop menu="" slot="more" icon="editor:format-strikethrough" event-name="text-strikethrough">Cross out</hax-context-item-textop>\n    </hax-toolbar>\n'
       ]
     );
-    _templateObject_a90d3dd0ee0311e8bb61cd2eef6a9bf2 = function() {
+    _templateObject_9c35e530f1e611e8b3a2e3a031c18fd0 = function _templateObject_9c35e530f1e611e8b3a2e3a031c18fd0() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a90d3dd0ee0311e8bb61cd2eef6a9bf2()
+      _templateObject_9c35e530f1e611e8b3a2e3a031c18fd0()
     ),
     is: "hax-text-context",
     listeners: { "hax-context-item-selected": "_haxContextOperation" },
@@ -107,7 +118,9 @@ define([
           var href = "";
           if (
             babelHelpers.typeof(selection.focusNode.parentNode.href) !==
-            "undefined"
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
           ) {
             href = selection.focusNode.parentNode.href;
           }
@@ -133,10 +146,11 @@ define([
           break;
       }
     },
-    isSafari: function isSafari() {
+    isSafari: function isSafari(typevalue) {
       var ua = navigator.userAgent.toLowerCase();
       if (-1 != ua.indexOf("safari")) {
-        if (!(-1 < ua.indexOf("chrome"))) {
+        if (-1 < ua.indexOf("chrome")) {
+        } else {
           return !0;
         }
       }

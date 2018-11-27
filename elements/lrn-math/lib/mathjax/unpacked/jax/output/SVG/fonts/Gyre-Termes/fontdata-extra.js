@@ -19,769 +19,1101 @@
  *  limitations under the License.
  */
 
-(function (SVG) {
+(function(SVG) {
   var VERSION = "2.7.5";
 
   var DELIMITERS = SVG.FONTDATA.DELIMITERS;
 
-  var H = "H", V = "V";
+  var H = "H",
+    V = "V";
 
   var ALPHABETS = "GyreTermesMathJax_Alphabets",
-      ARROWS = "GyreTermesMathJax_Arrows",
-      DOUBLESTRUCK = "GyreTermesMathJax_DoubleStruck",
-      FRAKTUR = "GyreTermesMathJax_Fraktur",
-      LATIN = "GyreTermesMathJax_Latin",
-      MAIN = "GyreTermesMathJax_Main",
-      MARKS = "GyreTermesMathJax_Marks",
-      MISC = "GyreTermesMathJax_Misc",
-      MONOSPACE = "GyreTermesMathJax_Monospace",
-      NONUNICODE = "GyreTermesMathJax_NonUnicode",
-      NORMAL = "GyreTermesMathJax_Normal",
-      OPERATORS = "GyreTermesMathJax_Operators",
-      SANSSERIF = "GyreTermesMathJax_SansSerif",
-      SCRIPT = "GyreTermesMathJax_Script",
-      SHAPES = "GyreTermesMathJax_Shapes",
-      SIZE1 = "GyreTermesMathJax_Size1",
-      SIZE2 = "GyreTermesMathJax_Size2",
-      SIZE3 = "GyreTermesMathJax_Size3",
-      SIZE4 = "GyreTermesMathJax_Size4",
-      SIZE5 = "GyreTermesMathJax_Size5",
-      SIZE6 = "GyreTermesMathJax_Size6",
-      SYMBOLS = "GyreTermesMathJax_Symbols",
-      VARIANTS = "GyreTermesMathJax_Variants";
+    ARROWS = "GyreTermesMathJax_Arrows",
+    DOUBLESTRUCK = "GyreTermesMathJax_DoubleStruck",
+    FRAKTUR = "GyreTermesMathJax_Fraktur",
+    LATIN = "GyreTermesMathJax_Latin",
+    MAIN = "GyreTermesMathJax_Main",
+    MARKS = "GyreTermesMathJax_Marks",
+    MISC = "GyreTermesMathJax_Misc",
+    MONOSPACE = "GyreTermesMathJax_Monospace",
+    NONUNICODE = "GyreTermesMathJax_NonUnicode",
+    NORMAL = "GyreTermesMathJax_Normal",
+    OPERATORS = "GyreTermesMathJax_Operators",
+    SANSSERIF = "GyreTermesMathJax_SansSerif",
+    SCRIPT = "GyreTermesMathJax_Script",
+    SHAPES = "GyreTermesMathJax_Shapes",
+    SIZE1 = "GyreTermesMathJax_Size1",
+    SIZE2 = "GyreTermesMathJax_Size2",
+    SIZE3 = "GyreTermesMathJax_Size3",
+    SIZE4 = "GyreTermesMathJax_Size4",
+    SIZE5 = "GyreTermesMathJax_Size5",
+    SIZE6 = "GyreTermesMathJax_Size6",
+    SYMBOLS = "GyreTermesMathJax_Symbols",
+    VARIANTS = "GyreTermesMathJax_Variants";
 
   var delim = {
-      0x306:
-      {
-        dir: H,
-        HW: [[350,MAIN], [620,SIZE1], [740,SIZE2], [885,SIZE3], [1058,SIZE4], [1266,SIZE5], [1515,SIZE6]]
-      },
-      0x311:
-      {
-        dir: H,
-        HW: [[350,MARKS], [620,SIZE1], [740,SIZE2], [885,SIZE3], [1058,SIZE4], [1266,SIZE5], [1515,SIZE6]]
-      },
-      0x32C:
-      {
-        dir: H,
-        HW: [[342,MARKS], [608,SIZE1], [727,SIZE2], [870,SIZE3], [1041,SIZE4], [1249,SIZE5], [1496,SIZE6]]
-      },
-      0x32D:
-      {
-        dir: H,
-        HW: [[342,MARKS], [608,SIZE1], [727,SIZE2], [870,SIZE3], [1041,SIZE4], [1249,SIZE5], [1496,SIZE6]]
-      },
-      0x32E:
-      {
-        dir: H,
-        HW: [[350,MARKS], [620,SIZE1], [740,SIZE2], [885,SIZE3], [1058,SIZE4], [1266,SIZE5], [1515,SIZE6]]
-      },
-      0x32F:
-      {
-        dir: H,
-        HW: [[350,MARKS], [620,SIZE1], [740,SIZE2], [885,SIZE3], [1058,SIZE4], [1266,SIZE5], [1515,SIZE6]]
-      },
-      0x330:
-      {
-        dir: H,
-        HW: [[334,MARKS], [601,SIZE1], [720,SIZE2], [863,SIZE3], [1037,SIZE4], [1241,SIZE5], [1491,SIZE6]]
-      },
-      0x333:
-      {
-        dir: H,
-        HW: [[333,MARKS], [500,SIZE1]],
-        stretch: {left:[0xE0F8,SIZE6], rep:[0xE0F9,SIZE6], right:[0xE0FA,SIZE6]}
-      },
-      0x33F:
-      {
-        dir: H,
-        HW: [[333,MARKS], [500,SIZE1]],
-        stretch: {left:[0xE0FE,SIZE6], rep:[0xE0FF,SIZE6], right:[0xE100,SIZE6]}
-      },
-      0x20D0:
-      {
-        dir: H,
-        HW: [[376,MARKS], [500,SIZE1]],
-        stretch: {left:[0xE008,SIZE6], rep:[0xE009,SIZE6], right:[0xE00A,SIZE6]}
-      },
-      0x20D1:
-      {
-        dir: H,
-        HW: [[376,MARKS], [500,SIZE1]],
-        stretch: {left:[0xE00B,SIZE6], rep:[0xE00C,SIZE6], right:[0xE00D,SIZE6]}
-      },
-      0x20D6:
-      {
-        dir: H,
-        HW: [[386,MARKS], [510,SIZE1]],
-        stretch: {left:[0xE00E,SIZE6], rep:[0xE00F,SIZE6], right:[0xE010,SIZE6]}
-      },
-      0x20D7:
-      {
-        dir: H,
-        HW: [[386,MAIN], [510,SIZE1]],
-        stretch: {left:[0xE011,SIZE6], rep:[0xE012,SIZE6], right:[0xE013,SIZE6]}
-      },
-      0x20E1:
-      {
-        dir: H,
-        HW: [[458,MARKS], [582,SIZE1]],
-        stretch: {left:[0xE014,SIZE6], rep:[0xE015,SIZE6], right:[0xE016,SIZE6]}
-      },
-      0x20E9:
-      {
-        dir: H,
-        HW: [[375,MARKS], [750,SIZE1], [1125,SIZE2], [1500,SIZE3], [1875,SIZE4], [2250,SIZE5], [2625,SIZE6]],
-        stretch: {left:[0xE11B,SIZE6], rep:[0xE11C,SIZE6], right:[0xE11D,SIZE6]}
-      },
-      0x20EC:
-      {
-        dir: H,
-        HW: [[376,MARKS], [500,SIZE1]],
-        stretch: {left:[0xE017,SIZE6], rep:[0xE018,SIZE6], right:[0xE019,SIZE6]}
-      },
-      0x20ED:
-      {
-        dir: H,
-        HW: [[376,MARKS], [500,SIZE1]],
-        stretch: {left:[0xE01A,SIZE6], rep:[0xE01B,SIZE6], right:[0xE01C,SIZE6]}
-      },
-      0x20EE:
-      {
-        dir: H,
-        HW: [[386,MARKS], [510,SIZE1]],
-        stretch: {left:[0xE01D,SIZE6], rep:[0xE01E,SIZE6], right:[0xE01F,SIZE6]}
-      },
-      0x20EF:
-      {
-        dir: H,
-        HW: [[386,MARKS], [510,SIZE1]],
-        stretch: {left:[0xE020,SIZE6], rep:[0xE021,SIZE6], right:[0xE022,SIZE6]}
-      },
-      0x2196:
-      {
-        dir: V,
-        HW: [[506,MAIN], [733,SIZE1]]
-      },
-      0x2197:
-      {
-        dir: V,
-        HW: [[506,MAIN], [733,SIZE1]]
-      },
-      0x2198:
-      {
-        dir: V,
-        HW: [[506,MAIN], [733,SIZE1]]
-      },
-      0x2199:
-      {
-        dir: V,
-        HW: [[506,MAIN], [733,SIZE1]]
-      },
-      0x219A:
-      {
-        dir: H,
-        HW: [[690,MAIN], [1010,SIZE1]],
-        stretch: {left:[0xE02F,SIZE6], rep:[0xE030,SIZE6], mid:[0xE031,SIZE6], right:[0xE032,SIZE6]}
-      },
-      0x219B:
-      {
-        dir: H,
-        HW: [[690,MAIN], [1010,SIZE1]],
-        stretch: {left:[0xE033,SIZE6], rep:[0xE034,SIZE6], mid:[0xE035,SIZE6], right:[0xE036,SIZE6]}
-      },
-      0x219E:
-      {
-        dir: H,
-        HW: [[870,MAIN], [1190,SIZE1]],
-        stretch: {left:[0xE041,SIZE6], rep:[0xE042,SIZE6], right:[0xE043,SIZE6]}
-      },
-      0x219F:
-      {
-        dir: V,
-        HW: [[870,ARROWS], [1190,SIZE1]],
-        stretch: {bot:[0xE047,SIZE6], ext:[0xE048,SIZE6], top:[0xE049,SIZE6]}
-      },
-      0x21A0:
-      {
-        dir: H,
-        HW: [[870,MAIN], [1190,SIZE1]],
-        stretch: {left:[0xE044,SIZE6], rep:[0xE045,SIZE6], right:[0xE046,SIZE6]}
-      },
-      0x21A1:
-      {
-        dir: V,
-        HW: [[870,ARROWS], [1190,SIZE1]],
-        stretch: {bot:[0xE04A,SIZE6], ext:[0xE04B,SIZE6], top:[0xE04C,SIZE6]}
-      },
-      0x21A2:
-      {
-        dir: H,
-        HW: [[880,MAIN], [1200,SIZE1]],
-        stretch: {left:[0xE04D,SIZE6], rep:[0xE04E,SIZE6], right:[0xE04F,SIZE6]}
-      },
-      0x21A3:
-      {
-        dir: H,
-        HW: [[880,MAIN], [1200,SIZE1]],
-        stretch: {left:[0xE050,SIZE6], rep:[0xE051,SIZE6], right:[0xE052,SIZE6]}
-      },
-      0x21A5:
-      {
-        dir: V,
-        HW: [[690,ARROWS], [1010,SIZE1]],
-        stretch: {bot:[0xE059,SIZE6], ext:[0xE05A,SIZE6], top:[0xE05B,SIZE6]}
-      },
-      0x21A7:
-      {
-        dir: V,
-        HW: [[690,ARROWS], [1010,SIZE1]],
-        stretch: {bot:[0xE05C,SIZE6], ext:[0xE05D,SIZE6], top:[0xE05E,SIZE6]}
-      },
-      0x21A9:
-      {
-        dir: H,
-        HW: [[716,MAIN], [1036,SIZE1]],
-        stretch: {left:[0xE062,SIZE6], rep:[0xE063,SIZE6], right:[0xE064,SIZE6]}
-      },
-      0x21AA:
-      {
-        dir: H,
-        HW: [[716,MAIN], [1036,SIZE1]],
-        stretch: {left:[0xE05F,SIZE6], rep:[0xE060,SIZE6], right:[0xE061,SIZE6]}
-      },
-      0x21AB:
-      {
-        dir: H,
-        HW: [[716,MAIN], [1036,SIZE1]],
-        stretch: {left:[0xE068,SIZE6], rep:[0xE069,SIZE6], right:[0xE06A,SIZE6]}
-      },
-      0x21AC:
-      {
-        dir: H,
-        HW: [[716,MAIN], [1036,SIZE1]],
-        stretch: {left:[0xE065,SIZE6], rep:[0xE066,SIZE6], right:[0xE067,SIZE6]}
-      },
-      0x21AD:
-      {
-        dir: H,
-        HW: [[880,MAIN], [1200,SIZE1]]
-      },
-      0x21AE:
-      {
-        dir: H,
-        HW: [[880,MAIN], [1200,SIZE1]],
-        stretch: {left:[0xE03D,SIZE6], rep:[0xE03E,SIZE6], mid:[0xE03F,SIZE6], right:[0xE040,SIZE6]}
-      },
-      0x21B0:
-      {
-        dir: V,
-        HW: [[696,MAIN], [888,SIZE1]]
-      },
-      0x21B1:
-      {
-        dir: V,
-        HW: [[696,MAIN], [888,SIZE1]]
-      },
-      0x21B2:
-      {
-        dir: V,
-        HW: [[696,ARROWS], [888,SIZE1]]
-      },
-      0x21B3:
-      {
-        dir: V,
-        HW: [[696,ARROWS], [888,SIZE1]]
-      },
-      0x21B6:
-      {
-        dir: H,
-        HW: [[639,MAIN], [879,SIZE1]]
-      },
-      0x21B7:
-      {
-        dir: H,
-        HW: [[639,MAIN], [879,SIZE1]]
-      },
-      0x21BC:
-      {
-        dir: H,
-        HW: [[680,MAIN], [1000,SIZE1]],
-        stretch: {left:[0xE06B,SIZE6], rep:[0xE06C,SIZE6], right:[0xE06D,SIZE6]}
-      },
-      0x21BD:
-      {
-        dir: H,
-        HW: [[680,MAIN], [1000,SIZE1]],
-        stretch: {left:[0xE071,SIZE6], rep:[0xE072,SIZE6], right:[0xE073,SIZE6]}
-      },
-      0x21BE:
-      {
-        dir: V,
-        HW: [[680,MAIN], [1000,SIZE1]],
-        stretch: {bot:[0xE077,SIZE6], ext:[0xE078,SIZE6], top:[0xE079,SIZE6]}
-      },
-      0x21BF:
-      {
-        dir: V,
-        HW: [[680,MAIN], [1000,SIZE1]],
-        stretch: {bot:[0xE07D,SIZE6], ext:[0xE07E,SIZE6], top:[0xE07F,SIZE6]}
-      },
-      0x21C0:
-      {
-        dir: H,
-        HW: [[680,MAIN], [1000,SIZE1]],
-        stretch: {left:[0xE06E,SIZE6], rep:[0xE06F,SIZE6], right:[0xE070,SIZE6]}
-      },
-      0x21C1:
-      {
-        dir: H,
-        HW: [[680,MAIN], [1000,SIZE1]],
-        stretch: {left:[0xE074,SIZE6], rep:[0xE075,SIZE6], right:[0xE076,SIZE6]}
-      },
-      0x21C2:
-      {
-        dir: V,
-        HW: [[680,MAIN], [1000,SIZE1]],
-        stretch: {bot:[0xE07A,SIZE6], ext:[0xE07B,SIZE6], top:[0xE07C,SIZE6]}
-      },
-      0x21C3:
-      {
-        dir: V,
-        HW: [[680,MAIN], [1000,SIZE1]],
-        stretch: {bot:[0xE080,SIZE6], ext:[0xE081,SIZE6], top:[0xE082,SIZE6]}
-      },
-      0x21C4:
-      {
-        dir: H,
-        HW: [[700,MAIN], [1020,SIZE1]],
-        stretch: {left:[0xE083,SIZE6], rep:[0xE084,SIZE6], right:[0xE085,SIZE6]}
-      },
-      0x21C5:
-      {
-        dir: V,
-        HW: [[700,ARROWS], [1020,SIZE1]],
-        stretch: {bot:[0xE089,SIZE6], ext:[0xE08A,SIZE6], top:[0xE08B,SIZE6]}
-      },
-      0x21C6:
-      {
-        dir: H,
-        HW: [[700,MAIN], [1020,SIZE1]],
-        stretch: {left:[0xE086,SIZE6], rep:[0xE087,SIZE6], right:[0xE088,SIZE6]}
-      },
-      0x21C7:
-      {
-        dir: H,
-        HW: [[690,MAIN], [1010,SIZE1]],
-        stretch: {left:[0xE08F,SIZE6], rep:[0xE090,SIZE6], right:[0xE091,SIZE6]}
-      },
-      0x21C8:
-      {
-        dir: V,
-        HW: [[690,MAIN], [1010,SIZE1]],
-        stretch: {bot:[0xE095,SIZE6], ext:[0xE096,SIZE6], top:[0xE097,SIZE6]}
-      },
-      0x21C9:
-      {
-        dir: H,
-        HW: [[690,MAIN], [1010,SIZE1]],
-        stretch: {left:[0xE092,SIZE6], rep:[0xE093,SIZE6], right:[0xE094,SIZE6]}
-      },
-      0x21CA:
-      {
-        dir: V,
-        HW: [[690,MAIN], [1010,SIZE1]],
-        stretch: {bot:[0xE098,SIZE6], ext:[0xE099,SIZE6], top:[0xE09A,SIZE6]}
-      },
-      0x21CB:
-      {
-        dir: H,
-        HW: [[680,MAIN], [1000,SIZE1]],
-        stretch: {left:[0xE0A1,SIZE6], rep:[0xE0A2,SIZE6], right:[0xE0A3,SIZE6]}
-      },
-      0x21CC:
-      {
-        dir: H,
-        HW: [[680,MAIN], [1000,SIZE1]],
-        stretch: {left:[0xE0A4,SIZE6], rep:[0xE0A5,SIZE6], right:[0xE0A6,SIZE6]}
-      },
-      0x21CD:
-      {
-        dir: H,
-        HW: [[690,MAIN], [1010,SIZE1]],
-        stretch: {left:[0xE0B9,SIZE6], rep:[0xE0BA,SIZE6], mid:[0xE0BB,SIZE6], right:[0xE0BC,SIZE6]}
-      },
-      0x21CE:
-      {
-        dir: H,
-        HW: [[880,MAIN], [1200,SIZE1]],
-        stretch: {left:[0xE0C1,SIZE6], rep:[0xE0C2,SIZE6], mid:[0xE0C3,SIZE6], right:[0xE0C4,SIZE6]}
-      },
-      0x21CF:
-      {
-        dir: H,
-        HW: [[690,MAIN], [1010,SIZE1]],
-        stretch: {left:[0xE0BD,SIZE6], rep:[0xE0BE,SIZE6], mid:[0xE0BF,SIZE6], right:[0xE0C0,SIZE6]}
-      },
-      0x21D6:
-      {
-        dir: V,
-        HW: [[560,ARROWS], [787,SIZE1]]
-      },
-      0x21D7:
-      {
-        dir: V,
-        HW: [[560,ARROWS], [787,SIZE1]]
-      },
-      0x21D8:
-      {
-        dir: V,
-        HW: [[560,ARROWS], [787,SIZE1]]
-      },
-      0x21D9:
-      {
-        dir: V,
-        HW: [[560,ARROWS], [787,SIZE1]]
-      },
-      0x21DA:
-      {
-        dir: H,
-        HW: [[870,MAIN], [1190,SIZE1]],
-        stretch: {left:[0xE0CB,SIZE6], rep:[0xE0CC,SIZE6], right:[0xE0CD,SIZE6]}
-      },
-      0x21DB:
-      {
-        dir: H,
-        HW: [[870,MAIN], [1190,SIZE1]],
-        stretch: {left:[0xE0CE,SIZE6], rep:[0xE0CF,SIZE6], right:[0xE0D0,SIZE6]}
-      },
-      0x21DC:
-      {
-        dir: H,
-        HW: [[690,ARROWS], [1010,SIZE1]]
-      },
-      0x21DD:
-      {
-        dir: H,
-        HW: [[690,MAIN], [1010,SIZE1]]
-      },
-      0x21E6:
-      {
-        dir: H,
-        HW: [[913,ARROWS], [1233,SIZE1]],
-        stretch: {left:[0xE0D1,SIZE6], rep:[0xE0D2,SIZE6], right:[0xE0D3,SIZE6]}
-      },
-      0x21E7:
-      {
-        dir: V,
-        HW: [[913,ARROWS], [1233,SIZE1]],
-        stretch: {bot:[0xE0D7,SIZE6], ext:[0xE0D8,SIZE6], top:[0xE0D9,SIZE6]}
-      },
-      0x21E8:
-      {
-        dir: H,
-        HW: [[913,ARROWS], [1233,SIZE1]],
-        stretch: {left:[0xE0D4,SIZE6], rep:[0xE0D5,SIZE6], right:[0xE0D6,SIZE6]}
-      },
-      0x21E9:
-      {
-        dir: V,
-        HW: [[913,ARROWS], [1233,SIZE1]],
-        stretch: {bot:[0xE0DA,SIZE6], ext:[0xE0DB,SIZE6], top:[0xE0DC,SIZE6]}
-      },
-      0x21F3:
-      {
-        dir: V,
-        HW: [[930,ARROWS], [1250,SIZE1]],
-        stretch: {bot:[0xE0DD,SIZE6], ext:[0xE0DE,SIZE6], top:[0xE0DF,SIZE6]}
-      },
-      0x21F5:
-      {
-        dir: V,
-        HW: [[700,ARROWS], [1020,SIZE1]],
-        stretch: {bot:[0xE08C,SIZE6], ext:[0xE08D,SIZE6], top:[0xE08E,SIZE6]}
-      },
-      0x21F6:
-      {
-        dir: H,
-        HW: [[690,ARROWS], [1010,SIZE1]],
-        stretch: {left:[0xE09B,SIZE6], rep:[0xE09C,SIZE6], right:[0xE09D,SIZE6]}
-      },
-      0x220F:
-      {
-        dir: V,
-        HW: [[954,OPERATORS], [1374,SIZE1]]
-      },
-      0x2210:
-      {
-        dir: V,
-        HW: [[954,OPERATORS], [1374,SIZE1]]
-      },
-      0x2211:
-      {
-        dir: V,
-        HW: [[954,OPERATORS], [1374,SIZE1]]
-      },
-      0x222B:
-      {
-        dir: V,
-        HW: [[1092,MAIN], [2025,SIZE1]],
-        stretch: {top:[0xE135,SIZE6], ext:[0x23AE,SYMBOLS], bot:[0xE136,SIZE6]}
-      },
-      0x222C:
-      {
-        dir: V,
-        HW: [[1092,OPERATORS], [2025,SIZE1]],
-        stretch: {top:[0xE137,SIZE6], ext:[0xE138,SIZE6], bot:[0xE139,SIZE6]}
-      },
-      0x222D:
-      {
-        dir: V,
-        HW: [[1092,OPERATORS], [2025,SIZE1]],
-        stretch: {top:[0xE13A,SIZE6], ext:[0xE13B,SIZE6], bot:[0xE13C,SIZE6]}
-      },
-      0x222E:
-      {
-        dir: V,
-        HW: [[1092,OPERATORS,null,0x222F], [2025,SIZE1]]
-      },
-      0x222F:
-      {
-        dir: V,
-        HW: [[1092,OPERATORS], [2025,SIZE1]]
-      },
-      0x2230:
-      {
-        dir: V,
-        HW: [[1092,OPERATORS], [2025,SIZE1]]
-      },
-      0x2231:
-      {
-        dir: V,
-        HW: [[1092,OPERATORS], [2025,SIZE1]]
-      },
-      0x2232:
-      {
-        dir: V,
-        HW: [[1092,OPERATORS], [2025,SIZE1]]
-      },
-      0x2233:
-      {
-        dir: V,
-        HW: [[1092,OPERATORS], [2025,SIZE1]]
-      },
-      0x2261:
-      {
-        dir: H,
-        HW: [[500,MAIN]],
-        stretch: {left:[0xE12D,SIZE6], rep:[0xE12E,SIZE6], right:[0xE12F,SIZE6]}
-      },
-      0x2263:
-      {
-        dir: H,
-        HW: [[500,OPERATORS]],
-        stretch: {left:[0xE130,SIZE6], rep:[0xE131,SIZE6], right:[0xE132,SIZE6]}
-      },
-      0x22A2:
-      {
-        dir: V,
-        HW: [[650,MAIN], [800,SIZE1]]
-      },
-      0x22A3:
-      {
-        dir: V,
-        HW: [[650,MAIN], [800,SIZE1]]
-      },
-      0x22A4:
-      {
-        dir: V,
-        HW: [[650,MAIN], [800,SIZE1]]
-      },
-      0x22A5:
-      {
-        dir: V,
-        HW: [[650,MAIN], [800,SIZE1]]
-      },
-      0x22C0:
-      {
-        dir: V,
-        HW: [[888,OPERATORS], [1165,SIZE1]]
-      },
-      0x22C1:
-      {
-        dir: V,
-        HW: [[888,OPERATORS], [1165,SIZE1]]
-      },
-      0x22C2:
-      {
-        dir: V,
-        HW: [[898,OPERATORS], [1170,SIZE1]]
-      },
-      0x22C3:
-      {
-        dir: V,
-        HW: [[898,OPERATORS], [1170,SIZE1]]
-      },
-      0x23B4:
-      {
-        dir: H,
-        HW: [[375,MAIN], [750,SIZE1], [1125,SIZE2], [1500,SIZE3], [1875,SIZE4], [2250,SIZE5], [2625,SIZE6]],
-        stretch: {left:[0xE11B,SIZE6], rep:[0xE11C,SIZE6], right:[0xE11D,SIZE6]}
-      },
-      0x23B5:
-      {
-        dir: H,
-        HW: [[375,MAIN], [750,SIZE1], [1125,SIZE2], [1500,SIZE3], [1875,SIZE4], [2250,SIZE5], [2625,SIZE6]],
-        stretch: {left:[0xE11E,SIZE6], rep:[0xE11F,SIZE6], right:[0xE120,SIZE6]}
-      },
-      0x23DC:
-      {
-        dir: H,
-        HW: [[514,MAIN], [1014,SIZE1], [1514,SIZE2], [2013,SIZE3], [2514,SIZE4], [3014,SIZE5], [3514,SIZE6]],
-        stretch: {left:[0xE115,SIZE6], rep:[0xE116,SIZE6], right:[0xE117,SIZE6]}
-      },
-      0x23DD:
-      {
-        dir: H,
-        HW: [[514,MAIN], [1014,SIZE1], [1514,SIZE2], [2013,SIZE3], [2514,SIZE4], [3014,SIZE5], [3514,SIZE6]],
-        stretch: {left:[0xE118,SIZE6], rep:[0xE119,SIZE6], right:[0xE11A,SIZE6]}
-      },
-      0x23E0:
-      {
-        dir: H,
-        HW: [[562,MAIN], [1066,SIZE1], [1568,SIZE2], [2072,SIZE3], [2576,SIZE4], [3080,SIZE5], [3584,SIZE6]],
-        stretch: {left:[0xE121,SIZE6], rep:[0xE122,SIZE6], right:[0xE123,SIZE6]}
-      },
-      0x23E1:
-      {
-        dir: H,
-        HW: [[562,MAIN], [1066,SIZE1], [1568,SIZE2], [2072,SIZE3], [2576,SIZE4], [3080,SIZE5], [3584,SIZE6]],
-        stretch: {left:[0xE124,SIZE6], rep:[0xE125,SIZE6], right:[0xE126,SIZE6]}
-      },
-      0x27A1:
-      {
-        dir: H,
-        HW: [[870,MISC], [1190,SIZE1]],
-        stretch: {left:[0xE0E6,SIZE6], rep:[0xE0E7,SIZE6], right:[0xE0E8,SIZE6]}
-      },
-      0x27E6:
-      {
-        dir: V,
-        HW: [[836,SYMBOLS], [998,SIZE1], [1190,SIZE2], [1422,SIZE3], [1698,SIZE4], [2032,SIZE5], [2432,SIZE6]],
-        stretch: {bot:[0xE107,SIZE6], ext:[0xE108,SIZE6], top:[0xE109,SIZE6]}
-      },
-      0x27E7:
-      {
-        dir: V,
-        HW: [[836,SYMBOLS], [998,SIZE1], [1190,SIZE2], [1422,SIZE3], [1698,SIZE4], [2032,SIZE5], [2432,SIZE6]],
-        stretch: {bot:[0xE10A,SIZE6], ext:[0xE10B,SIZE6], top:[0xE10C,SIZE6]}
-      },
-      0x27EA:
-      {
-        dir: V,
-        HW: [[812,SYMBOLS], [1060,SIZE1], [1382,SIZE2], [1806,SIZE3], [2364,SIZE4], [3092,SIZE5], [4048,SIZE6]]
-      },
-      0x27EB:
-      {
-        dir: V,
-        HW: [[812,SYMBOLS], [1060,SIZE1], [1382,SIZE2], [1806,SIZE3], [2364,SIZE4], [3092,SIZE5], [4048,SIZE6]]
-      },
-      0x2A00:
-      {
-        dir: V,
-        HW: [[876,OPERATORS], [1132,SIZE1]]
-      },
-      0x2A01:
-      {
-        dir: V,
-        HW: [[876,OPERATORS], [1132,SIZE1]]
-      },
-      0x2A02:
-      {
-        dir: V,
-        HW: [[876,OPERATORS], [1132,SIZE1]]
-      },
-      0x2A03:
-      {
-        dir: V,
-        HW: [[898,OPERATORS], [1170,SIZE1]]
-      },
-      0x2A04:
-      {
-        dir: V,
-        HW: [[898,OPERATORS], [1170,SIZE1]]
-      },
-      0x2A05:
-      {
-        dir: V,
-        HW: [[880,OPERATORS], [1152,SIZE1]]
-      },
-      0x2A06:
-      {
-        dir: V,
-        HW: [[880,OPERATORS], [1152,SIZE1]]
-      },
-      0x2A09:
-      {
-        dir: V,
-        HW: [[716,OPERATORS], [906,SIZE1]]
-      },
-      0x2A0C:
-      {
-        dir: V,
-        HW: [[1092,OPERATORS], [2025,SIZE1]]
-      },
-      0x2A11:
-      {
-        dir: V,
-        HW: [[1092,OPERATORS], [2025,SIZE1]]
-      },
-      0x2B04:
-      {
-        dir: H,
-        HW: [[931,SHAPES], [1251,SIZE1]],
-        stretch: {left:[0xE0E0,SIZE6], rep:[0xE0E1,SIZE6], right:[0xE0E2,SIZE6]}
-      },
-      0x2B05:
-      {
-        dir: H,
-        HW: [[870,SHAPES], [1190,SIZE1]],
-        stretch: {left:[0xE0E3,SIZE6], rep:[0xE0E4,SIZE6], right:[0xE0E5,SIZE6]}
-      },
-      0x2B06:
-      {
-        dir: V,
-        HW: [[870,SHAPES], [1190,SIZE1]],
-        stretch: {bot:[0xE0E9,SIZE6], ext:[0xE0EA,SIZE6], top:[0xE0EB,SIZE6]}
-      },
-      0x2B07:
-      {
-        dir: V,
-        HW: [[870,SHAPES], [1190,SIZE1]],
-        stretch: {bot:[0xE0EC,SIZE6], ext:[0xE0ED,SIZE6], top:[0xE0EE,SIZE6]}
-      },
-      0x2B0C:
-      {
-        dir: H,
-        HW: [[880,SHAPES], [1200,SIZE1]],
-        stretch: {left:[0xE0EF,SIZE6], rep:[0xE0F0,SIZE6], right:[0xE0F1,SIZE6]}
-      },
-      0x2B0D:
-      {
-        dir: V,
-        HW: [[880,SHAPES], [1200,SIZE1]],
-        stretch: {bot:[0xE0F2,SIZE6], ext:[0xE0F3,SIZE6], top:[0xE0F4,SIZE6]}
-      },
-      0x2B31:
-      {
-        dir: H,
-        HW: [[690,SHAPES], [1010,SIZE1]],
-        stretch: {left:[0xE09E,SIZE6], rep:[0xE09F,SIZE6], right:[0xE0A0,SIZE6]}
+    0x306: {
+      dir: H,
+      HW: [
+        [350, MAIN],
+        [620, SIZE1],
+        [740, SIZE2],
+        [885, SIZE3],
+        [1058, SIZE4],
+        [1266, SIZE5],
+        [1515, SIZE6]
+      ]
+    },
+    0x311: {
+      dir: H,
+      HW: [
+        [350, MARKS],
+        [620, SIZE1],
+        [740, SIZE2],
+        [885, SIZE3],
+        [1058, SIZE4],
+        [1266, SIZE5],
+        [1515, SIZE6]
+      ]
+    },
+    0x32c: {
+      dir: H,
+      HW: [
+        [342, MARKS],
+        [608, SIZE1],
+        [727, SIZE2],
+        [870, SIZE3],
+        [1041, SIZE4],
+        [1249, SIZE5],
+        [1496, SIZE6]
+      ]
+    },
+    0x32d: {
+      dir: H,
+      HW: [
+        [342, MARKS],
+        [608, SIZE1],
+        [727, SIZE2],
+        [870, SIZE3],
+        [1041, SIZE4],
+        [1249, SIZE5],
+        [1496, SIZE6]
+      ]
+    },
+    0x32e: {
+      dir: H,
+      HW: [
+        [350, MARKS],
+        [620, SIZE1],
+        [740, SIZE2],
+        [885, SIZE3],
+        [1058, SIZE4],
+        [1266, SIZE5],
+        [1515, SIZE6]
+      ]
+    },
+    0x32f: {
+      dir: H,
+      HW: [
+        [350, MARKS],
+        [620, SIZE1],
+        [740, SIZE2],
+        [885, SIZE3],
+        [1058, SIZE4],
+        [1266, SIZE5],
+        [1515, SIZE6]
+      ]
+    },
+    0x330: {
+      dir: H,
+      HW: [
+        [334, MARKS],
+        [601, SIZE1],
+        [720, SIZE2],
+        [863, SIZE3],
+        [1037, SIZE4],
+        [1241, SIZE5],
+        [1491, SIZE6]
+      ]
+    },
+    0x333: {
+      dir: H,
+      HW: [[333, MARKS], [500, SIZE1]],
+      stretch: {
+        left: [0xe0f8, SIZE6],
+        rep: [0xe0f9, SIZE6],
+        right: [0xe0fa, SIZE6]
       }
+    },
+    0x33f: {
+      dir: H,
+      HW: [[333, MARKS], [500, SIZE1]],
+      stretch: {
+        left: [0xe0fe, SIZE6],
+        rep: [0xe0ff, SIZE6],
+        right: [0xe100, SIZE6]
+      }
+    },
+    0x20d0: {
+      dir: H,
+      HW: [[376, MARKS], [500, SIZE1]],
+      stretch: {
+        left: [0xe008, SIZE6],
+        rep: [0xe009, SIZE6],
+        right: [0xe00a, SIZE6]
+      }
+    },
+    0x20d1: {
+      dir: H,
+      HW: [[376, MARKS], [500, SIZE1]],
+      stretch: {
+        left: [0xe00b, SIZE6],
+        rep: [0xe00c, SIZE6],
+        right: [0xe00d, SIZE6]
+      }
+    },
+    0x20d6: {
+      dir: H,
+      HW: [[386, MARKS], [510, SIZE1]],
+      stretch: {
+        left: [0xe00e, SIZE6],
+        rep: [0xe00f, SIZE6],
+        right: [0xe010, SIZE6]
+      }
+    },
+    0x20d7: {
+      dir: H,
+      HW: [[386, MAIN], [510, SIZE1]],
+      stretch: {
+        left: [0xe011, SIZE6],
+        rep: [0xe012, SIZE6],
+        right: [0xe013, SIZE6]
+      }
+    },
+    0x20e1: {
+      dir: H,
+      HW: [[458, MARKS], [582, SIZE1]],
+      stretch: {
+        left: [0xe014, SIZE6],
+        rep: [0xe015, SIZE6],
+        right: [0xe016, SIZE6]
+      }
+    },
+    0x20e9: {
+      dir: H,
+      HW: [
+        [375, MARKS],
+        [750, SIZE1],
+        [1125, SIZE2],
+        [1500, SIZE3],
+        [1875, SIZE4],
+        [2250, SIZE5],
+        [2625, SIZE6]
+      ],
+      stretch: {
+        left: [0xe11b, SIZE6],
+        rep: [0xe11c, SIZE6],
+        right: [0xe11d, SIZE6]
+      }
+    },
+    0x20ec: {
+      dir: H,
+      HW: [[376, MARKS], [500, SIZE1]],
+      stretch: {
+        left: [0xe017, SIZE6],
+        rep: [0xe018, SIZE6],
+        right: [0xe019, SIZE6]
+      }
+    },
+    0x20ed: {
+      dir: H,
+      HW: [[376, MARKS], [500, SIZE1]],
+      stretch: {
+        left: [0xe01a, SIZE6],
+        rep: [0xe01b, SIZE6],
+        right: [0xe01c, SIZE6]
+      }
+    },
+    0x20ee: {
+      dir: H,
+      HW: [[386, MARKS], [510, SIZE1]],
+      stretch: {
+        left: [0xe01d, SIZE6],
+        rep: [0xe01e, SIZE6],
+        right: [0xe01f, SIZE6]
+      }
+    },
+    0x20ef: {
+      dir: H,
+      HW: [[386, MARKS], [510, SIZE1]],
+      stretch: {
+        left: [0xe020, SIZE6],
+        rep: [0xe021, SIZE6],
+        right: [0xe022, SIZE6]
+      }
+    },
+    0x2196: {
+      dir: V,
+      HW: [[506, MAIN], [733, SIZE1]]
+    },
+    0x2197: {
+      dir: V,
+      HW: [[506, MAIN], [733, SIZE1]]
+    },
+    0x2198: {
+      dir: V,
+      HW: [[506, MAIN], [733, SIZE1]]
+    },
+    0x2199: {
+      dir: V,
+      HW: [[506, MAIN], [733, SIZE1]]
+    },
+    0x219a: {
+      dir: H,
+      HW: [[690, MAIN], [1010, SIZE1]],
+      stretch: {
+        left: [0xe02f, SIZE6],
+        rep: [0xe030, SIZE6],
+        mid: [0xe031, SIZE6],
+        right: [0xe032, SIZE6]
+      }
+    },
+    0x219b: {
+      dir: H,
+      HW: [[690, MAIN], [1010, SIZE1]],
+      stretch: {
+        left: [0xe033, SIZE6],
+        rep: [0xe034, SIZE6],
+        mid: [0xe035, SIZE6],
+        right: [0xe036, SIZE6]
+      }
+    },
+    0x219e: {
+      dir: H,
+      HW: [[870, MAIN], [1190, SIZE1]],
+      stretch: {
+        left: [0xe041, SIZE6],
+        rep: [0xe042, SIZE6],
+        right: [0xe043, SIZE6]
+      }
+    },
+    0x219f: {
+      dir: V,
+      HW: [[870, ARROWS], [1190, SIZE1]],
+      stretch: {
+        bot: [0xe047, SIZE6],
+        ext: [0xe048, SIZE6],
+        top: [0xe049, SIZE6]
+      }
+    },
+    0x21a0: {
+      dir: H,
+      HW: [[870, MAIN], [1190, SIZE1]],
+      stretch: {
+        left: [0xe044, SIZE6],
+        rep: [0xe045, SIZE6],
+        right: [0xe046, SIZE6]
+      }
+    },
+    0x21a1: {
+      dir: V,
+      HW: [[870, ARROWS], [1190, SIZE1]],
+      stretch: {
+        bot: [0xe04a, SIZE6],
+        ext: [0xe04b, SIZE6],
+        top: [0xe04c, SIZE6]
+      }
+    },
+    0x21a2: {
+      dir: H,
+      HW: [[880, MAIN], [1200, SIZE1]],
+      stretch: {
+        left: [0xe04d, SIZE6],
+        rep: [0xe04e, SIZE6],
+        right: [0xe04f, SIZE6]
+      }
+    },
+    0x21a3: {
+      dir: H,
+      HW: [[880, MAIN], [1200, SIZE1]],
+      stretch: {
+        left: [0xe050, SIZE6],
+        rep: [0xe051, SIZE6],
+        right: [0xe052, SIZE6]
+      }
+    },
+    0x21a5: {
+      dir: V,
+      HW: [[690, ARROWS], [1010, SIZE1]],
+      stretch: {
+        bot: [0xe059, SIZE6],
+        ext: [0xe05a, SIZE6],
+        top: [0xe05b, SIZE6]
+      }
+    },
+    0x21a7: {
+      dir: V,
+      HW: [[690, ARROWS], [1010, SIZE1]],
+      stretch: {
+        bot: [0xe05c, SIZE6],
+        ext: [0xe05d, SIZE6],
+        top: [0xe05e, SIZE6]
+      }
+    },
+    0x21a9: {
+      dir: H,
+      HW: [[716, MAIN], [1036, SIZE1]],
+      stretch: {
+        left: [0xe062, SIZE6],
+        rep: [0xe063, SIZE6],
+        right: [0xe064, SIZE6]
+      }
+    },
+    0x21aa: {
+      dir: H,
+      HW: [[716, MAIN], [1036, SIZE1]],
+      stretch: {
+        left: [0xe05f, SIZE6],
+        rep: [0xe060, SIZE6],
+        right: [0xe061, SIZE6]
+      }
+    },
+    0x21ab: {
+      dir: H,
+      HW: [[716, MAIN], [1036, SIZE1]],
+      stretch: {
+        left: [0xe068, SIZE6],
+        rep: [0xe069, SIZE6],
+        right: [0xe06a, SIZE6]
+      }
+    },
+    0x21ac: {
+      dir: H,
+      HW: [[716, MAIN], [1036, SIZE1]],
+      stretch: {
+        left: [0xe065, SIZE6],
+        rep: [0xe066, SIZE6],
+        right: [0xe067, SIZE6]
+      }
+    },
+    0x21ad: {
+      dir: H,
+      HW: [[880, MAIN], [1200, SIZE1]]
+    },
+    0x21ae: {
+      dir: H,
+      HW: [[880, MAIN], [1200, SIZE1]],
+      stretch: {
+        left: [0xe03d, SIZE6],
+        rep: [0xe03e, SIZE6],
+        mid: [0xe03f, SIZE6],
+        right: [0xe040, SIZE6]
+      }
+    },
+    0x21b0: {
+      dir: V,
+      HW: [[696, MAIN], [888, SIZE1]]
+    },
+    0x21b1: {
+      dir: V,
+      HW: [[696, MAIN], [888, SIZE1]]
+    },
+    0x21b2: {
+      dir: V,
+      HW: [[696, ARROWS], [888, SIZE1]]
+    },
+    0x21b3: {
+      dir: V,
+      HW: [[696, ARROWS], [888, SIZE1]]
+    },
+    0x21b6: {
+      dir: H,
+      HW: [[639, MAIN], [879, SIZE1]]
+    },
+    0x21b7: {
+      dir: H,
+      HW: [[639, MAIN], [879, SIZE1]]
+    },
+    0x21bc: {
+      dir: H,
+      HW: [[680, MAIN], [1000, SIZE1]],
+      stretch: {
+        left: [0xe06b, SIZE6],
+        rep: [0xe06c, SIZE6],
+        right: [0xe06d, SIZE6]
+      }
+    },
+    0x21bd: {
+      dir: H,
+      HW: [[680, MAIN], [1000, SIZE1]],
+      stretch: {
+        left: [0xe071, SIZE6],
+        rep: [0xe072, SIZE6],
+        right: [0xe073, SIZE6]
+      }
+    },
+    0x21be: {
+      dir: V,
+      HW: [[680, MAIN], [1000, SIZE1]],
+      stretch: {
+        bot: [0xe077, SIZE6],
+        ext: [0xe078, SIZE6],
+        top: [0xe079, SIZE6]
+      }
+    },
+    0x21bf: {
+      dir: V,
+      HW: [[680, MAIN], [1000, SIZE1]],
+      stretch: {
+        bot: [0xe07d, SIZE6],
+        ext: [0xe07e, SIZE6],
+        top: [0xe07f, SIZE6]
+      }
+    },
+    0x21c0: {
+      dir: H,
+      HW: [[680, MAIN], [1000, SIZE1]],
+      stretch: {
+        left: [0xe06e, SIZE6],
+        rep: [0xe06f, SIZE6],
+        right: [0xe070, SIZE6]
+      }
+    },
+    0x21c1: {
+      dir: H,
+      HW: [[680, MAIN], [1000, SIZE1]],
+      stretch: {
+        left: [0xe074, SIZE6],
+        rep: [0xe075, SIZE6],
+        right: [0xe076, SIZE6]
+      }
+    },
+    0x21c2: {
+      dir: V,
+      HW: [[680, MAIN], [1000, SIZE1]],
+      stretch: {
+        bot: [0xe07a, SIZE6],
+        ext: [0xe07b, SIZE6],
+        top: [0xe07c, SIZE6]
+      }
+    },
+    0x21c3: {
+      dir: V,
+      HW: [[680, MAIN], [1000, SIZE1]],
+      stretch: {
+        bot: [0xe080, SIZE6],
+        ext: [0xe081, SIZE6],
+        top: [0xe082, SIZE6]
+      }
+    },
+    0x21c4: {
+      dir: H,
+      HW: [[700, MAIN], [1020, SIZE1]],
+      stretch: {
+        left: [0xe083, SIZE6],
+        rep: [0xe084, SIZE6],
+        right: [0xe085, SIZE6]
+      }
+    },
+    0x21c5: {
+      dir: V,
+      HW: [[700, ARROWS], [1020, SIZE1]],
+      stretch: {
+        bot: [0xe089, SIZE6],
+        ext: [0xe08a, SIZE6],
+        top: [0xe08b, SIZE6]
+      }
+    },
+    0x21c6: {
+      dir: H,
+      HW: [[700, MAIN], [1020, SIZE1]],
+      stretch: {
+        left: [0xe086, SIZE6],
+        rep: [0xe087, SIZE6],
+        right: [0xe088, SIZE6]
+      }
+    },
+    0x21c7: {
+      dir: H,
+      HW: [[690, MAIN], [1010, SIZE1]],
+      stretch: {
+        left: [0xe08f, SIZE6],
+        rep: [0xe090, SIZE6],
+        right: [0xe091, SIZE6]
+      }
+    },
+    0x21c8: {
+      dir: V,
+      HW: [[690, MAIN], [1010, SIZE1]],
+      stretch: {
+        bot: [0xe095, SIZE6],
+        ext: [0xe096, SIZE6],
+        top: [0xe097, SIZE6]
+      }
+    },
+    0x21c9: {
+      dir: H,
+      HW: [[690, MAIN], [1010, SIZE1]],
+      stretch: {
+        left: [0xe092, SIZE6],
+        rep: [0xe093, SIZE6],
+        right: [0xe094, SIZE6]
+      }
+    },
+    0x21ca: {
+      dir: V,
+      HW: [[690, MAIN], [1010, SIZE1]],
+      stretch: {
+        bot: [0xe098, SIZE6],
+        ext: [0xe099, SIZE6],
+        top: [0xe09a, SIZE6]
+      }
+    },
+    0x21cb: {
+      dir: H,
+      HW: [[680, MAIN], [1000, SIZE1]],
+      stretch: {
+        left: [0xe0a1, SIZE6],
+        rep: [0xe0a2, SIZE6],
+        right: [0xe0a3, SIZE6]
+      }
+    },
+    0x21cc: {
+      dir: H,
+      HW: [[680, MAIN], [1000, SIZE1]],
+      stretch: {
+        left: [0xe0a4, SIZE6],
+        rep: [0xe0a5, SIZE6],
+        right: [0xe0a6, SIZE6]
+      }
+    },
+    0x21cd: {
+      dir: H,
+      HW: [[690, MAIN], [1010, SIZE1]],
+      stretch: {
+        left: [0xe0b9, SIZE6],
+        rep: [0xe0ba, SIZE6],
+        mid: [0xe0bb, SIZE6],
+        right: [0xe0bc, SIZE6]
+      }
+    },
+    0x21ce: {
+      dir: H,
+      HW: [[880, MAIN], [1200, SIZE1]],
+      stretch: {
+        left: [0xe0c1, SIZE6],
+        rep: [0xe0c2, SIZE6],
+        mid: [0xe0c3, SIZE6],
+        right: [0xe0c4, SIZE6]
+      }
+    },
+    0x21cf: {
+      dir: H,
+      HW: [[690, MAIN], [1010, SIZE1]],
+      stretch: {
+        left: [0xe0bd, SIZE6],
+        rep: [0xe0be, SIZE6],
+        mid: [0xe0bf, SIZE6],
+        right: [0xe0c0, SIZE6]
+      }
+    },
+    0x21d6: {
+      dir: V,
+      HW: [[560, ARROWS], [787, SIZE1]]
+    },
+    0x21d7: {
+      dir: V,
+      HW: [[560, ARROWS], [787, SIZE1]]
+    },
+    0x21d8: {
+      dir: V,
+      HW: [[560, ARROWS], [787, SIZE1]]
+    },
+    0x21d9: {
+      dir: V,
+      HW: [[560, ARROWS], [787, SIZE1]]
+    },
+    0x21da: {
+      dir: H,
+      HW: [[870, MAIN], [1190, SIZE1]],
+      stretch: {
+        left: [0xe0cb, SIZE6],
+        rep: [0xe0cc, SIZE6],
+        right: [0xe0cd, SIZE6]
+      }
+    },
+    0x21db: {
+      dir: H,
+      HW: [[870, MAIN], [1190, SIZE1]],
+      stretch: {
+        left: [0xe0ce, SIZE6],
+        rep: [0xe0cf, SIZE6],
+        right: [0xe0d0, SIZE6]
+      }
+    },
+    0x21dc: {
+      dir: H,
+      HW: [[690, ARROWS], [1010, SIZE1]]
+    },
+    0x21dd: {
+      dir: H,
+      HW: [[690, MAIN], [1010, SIZE1]]
+    },
+    0x21e6: {
+      dir: H,
+      HW: [[913, ARROWS], [1233, SIZE1]],
+      stretch: {
+        left: [0xe0d1, SIZE6],
+        rep: [0xe0d2, SIZE6],
+        right: [0xe0d3, SIZE6]
+      }
+    },
+    0x21e7: {
+      dir: V,
+      HW: [[913, ARROWS], [1233, SIZE1]],
+      stretch: {
+        bot: [0xe0d7, SIZE6],
+        ext: [0xe0d8, SIZE6],
+        top: [0xe0d9, SIZE6]
+      }
+    },
+    0x21e8: {
+      dir: H,
+      HW: [[913, ARROWS], [1233, SIZE1]],
+      stretch: {
+        left: [0xe0d4, SIZE6],
+        rep: [0xe0d5, SIZE6],
+        right: [0xe0d6, SIZE6]
+      }
+    },
+    0x21e9: {
+      dir: V,
+      HW: [[913, ARROWS], [1233, SIZE1]],
+      stretch: {
+        bot: [0xe0da, SIZE6],
+        ext: [0xe0db, SIZE6],
+        top: [0xe0dc, SIZE6]
+      }
+    },
+    0x21f3: {
+      dir: V,
+      HW: [[930, ARROWS], [1250, SIZE1]],
+      stretch: {
+        bot: [0xe0dd, SIZE6],
+        ext: [0xe0de, SIZE6],
+        top: [0xe0df, SIZE6]
+      }
+    },
+    0x21f5: {
+      dir: V,
+      HW: [[700, ARROWS], [1020, SIZE1]],
+      stretch: {
+        bot: [0xe08c, SIZE6],
+        ext: [0xe08d, SIZE6],
+        top: [0xe08e, SIZE6]
+      }
+    },
+    0x21f6: {
+      dir: H,
+      HW: [[690, ARROWS], [1010, SIZE1]],
+      stretch: {
+        left: [0xe09b, SIZE6],
+        rep: [0xe09c, SIZE6],
+        right: [0xe09d, SIZE6]
+      }
+    },
+    0x220f: {
+      dir: V,
+      HW: [[954, OPERATORS], [1374, SIZE1]]
+    },
+    0x2210: {
+      dir: V,
+      HW: [[954, OPERATORS], [1374, SIZE1]]
+    },
+    0x2211: {
+      dir: V,
+      HW: [[954, OPERATORS], [1374, SIZE1]]
+    },
+    0x222b: {
+      dir: V,
+      HW: [[1092, MAIN], [2025, SIZE1]],
+      stretch: {
+        top: [0xe135, SIZE6],
+        ext: [0x23ae, SYMBOLS],
+        bot: [0xe136, SIZE6]
+      }
+    },
+    0x222c: {
+      dir: V,
+      HW: [[1092, OPERATORS], [2025, SIZE1]],
+      stretch: {
+        top: [0xe137, SIZE6],
+        ext: [0xe138, SIZE6],
+        bot: [0xe139, SIZE6]
+      }
+    },
+    0x222d: {
+      dir: V,
+      HW: [[1092, OPERATORS], [2025, SIZE1]],
+      stretch: {
+        top: [0xe13a, SIZE6],
+        ext: [0xe13b, SIZE6],
+        bot: [0xe13c, SIZE6]
+      }
+    },
+    0x222e: {
+      dir: V,
+      HW: [[1092, OPERATORS, null, 0x222f], [2025, SIZE1]]
+    },
+    0x222f: {
+      dir: V,
+      HW: [[1092, OPERATORS], [2025, SIZE1]]
+    },
+    0x2230: {
+      dir: V,
+      HW: [[1092, OPERATORS], [2025, SIZE1]]
+    },
+    0x2231: {
+      dir: V,
+      HW: [[1092, OPERATORS], [2025, SIZE1]]
+    },
+    0x2232: {
+      dir: V,
+      HW: [[1092, OPERATORS], [2025, SIZE1]]
+    },
+    0x2233: {
+      dir: V,
+      HW: [[1092, OPERATORS], [2025, SIZE1]]
+    },
+    0x2261: {
+      dir: H,
+      HW: [[500, MAIN]],
+      stretch: {
+        left: [0xe12d, SIZE6],
+        rep: [0xe12e, SIZE6],
+        right: [0xe12f, SIZE6]
+      }
+    },
+    0x2263: {
+      dir: H,
+      HW: [[500, OPERATORS]],
+      stretch: {
+        left: [0xe130, SIZE6],
+        rep: [0xe131, SIZE6],
+        right: [0xe132, SIZE6]
+      }
+    },
+    0x22a2: {
+      dir: V,
+      HW: [[650, MAIN], [800, SIZE1]]
+    },
+    0x22a3: {
+      dir: V,
+      HW: [[650, MAIN], [800, SIZE1]]
+    },
+    0x22a4: {
+      dir: V,
+      HW: [[650, MAIN], [800, SIZE1]]
+    },
+    0x22a5: {
+      dir: V,
+      HW: [[650, MAIN], [800, SIZE1]]
+    },
+    0x22c0: {
+      dir: V,
+      HW: [[888, OPERATORS], [1165, SIZE1]]
+    },
+    0x22c1: {
+      dir: V,
+      HW: [[888, OPERATORS], [1165, SIZE1]]
+    },
+    0x22c2: {
+      dir: V,
+      HW: [[898, OPERATORS], [1170, SIZE1]]
+    },
+    0x22c3: {
+      dir: V,
+      HW: [[898, OPERATORS], [1170, SIZE1]]
+    },
+    0x23b4: {
+      dir: H,
+      HW: [
+        [375, MAIN],
+        [750, SIZE1],
+        [1125, SIZE2],
+        [1500, SIZE3],
+        [1875, SIZE4],
+        [2250, SIZE5],
+        [2625, SIZE6]
+      ],
+      stretch: {
+        left: [0xe11b, SIZE6],
+        rep: [0xe11c, SIZE6],
+        right: [0xe11d, SIZE6]
+      }
+    },
+    0x23b5: {
+      dir: H,
+      HW: [
+        [375, MAIN],
+        [750, SIZE1],
+        [1125, SIZE2],
+        [1500, SIZE3],
+        [1875, SIZE4],
+        [2250, SIZE5],
+        [2625, SIZE6]
+      ],
+      stretch: {
+        left: [0xe11e, SIZE6],
+        rep: [0xe11f, SIZE6],
+        right: [0xe120, SIZE6]
+      }
+    },
+    0x23dc: {
+      dir: H,
+      HW: [
+        [514, MAIN],
+        [1014, SIZE1],
+        [1514, SIZE2],
+        [2013, SIZE3],
+        [2514, SIZE4],
+        [3014, SIZE5],
+        [3514, SIZE6]
+      ],
+      stretch: {
+        left: [0xe115, SIZE6],
+        rep: [0xe116, SIZE6],
+        right: [0xe117, SIZE6]
+      }
+    },
+    0x23dd: {
+      dir: H,
+      HW: [
+        [514, MAIN],
+        [1014, SIZE1],
+        [1514, SIZE2],
+        [2013, SIZE3],
+        [2514, SIZE4],
+        [3014, SIZE5],
+        [3514, SIZE6]
+      ],
+      stretch: {
+        left: [0xe118, SIZE6],
+        rep: [0xe119, SIZE6],
+        right: [0xe11a, SIZE6]
+      }
+    },
+    0x23e0: {
+      dir: H,
+      HW: [
+        [562, MAIN],
+        [1066, SIZE1],
+        [1568, SIZE2],
+        [2072, SIZE3],
+        [2576, SIZE4],
+        [3080, SIZE5],
+        [3584, SIZE6]
+      ],
+      stretch: {
+        left: [0xe121, SIZE6],
+        rep: [0xe122, SIZE6],
+        right: [0xe123, SIZE6]
+      }
+    },
+    0x23e1: {
+      dir: H,
+      HW: [
+        [562, MAIN],
+        [1066, SIZE1],
+        [1568, SIZE2],
+        [2072, SIZE3],
+        [2576, SIZE4],
+        [3080, SIZE5],
+        [3584, SIZE6]
+      ],
+      stretch: {
+        left: [0xe124, SIZE6],
+        rep: [0xe125, SIZE6],
+        right: [0xe126, SIZE6]
+      }
+    },
+    0x27a1: {
+      dir: H,
+      HW: [[870, MISC], [1190, SIZE1]],
+      stretch: {
+        left: [0xe0e6, SIZE6],
+        rep: [0xe0e7, SIZE6],
+        right: [0xe0e8, SIZE6]
+      }
+    },
+    0x27e6: {
+      dir: V,
+      HW: [
+        [836, SYMBOLS],
+        [998, SIZE1],
+        [1190, SIZE2],
+        [1422, SIZE3],
+        [1698, SIZE4],
+        [2032, SIZE5],
+        [2432, SIZE6]
+      ],
+      stretch: {
+        bot: [0xe107, SIZE6],
+        ext: [0xe108, SIZE6],
+        top: [0xe109, SIZE6]
+      }
+    },
+    0x27e7: {
+      dir: V,
+      HW: [
+        [836, SYMBOLS],
+        [998, SIZE1],
+        [1190, SIZE2],
+        [1422, SIZE3],
+        [1698, SIZE4],
+        [2032, SIZE5],
+        [2432, SIZE6]
+      ],
+      stretch: {
+        bot: [0xe10a, SIZE6],
+        ext: [0xe10b, SIZE6],
+        top: [0xe10c, SIZE6]
+      }
+    },
+    0x27ea: {
+      dir: V,
+      HW: [
+        [812, SYMBOLS],
+        [1060, SIZE1],
+        [1382, SIZE2],
+        [1806, SIZE3],
+        [2364, SIZE4],
+        [3092, SIZE5],
+        [4048, SIZE6]
+      ]
+    },
+    0x27eb: {
+      dir: V,
+      HW: [
+        [812, SYMBOLS],
+        [1060, SIZE1],
+        [1382, SIZE2],
+        [1806, SIZE3],
+        [2364, SIZE4],
+        [3092, SIZE5],
+        [4048, SIZE6]
+      ]
+    },
+    0x2a00: {
+      dir: V,
+      HW: [[876, OPERATORS], [1132, SIZE1]]
+    },
+    0x2a01: {
+      dir: V,
+      HW: [[876, OPERATORS], [1132, SIZE1]]
+    },
+    0x2a02: {
+      dir: V,
+      HW: [[876, OPERATORS], [1132, SIZE1]]
+    },
+    0x2a03: {
+      dir: V,
+      HW: [[898, OPERATORS], [1170, SIZE1]]
+    },
+    0x2a04: {
+      dir: V,
+      HW: [[898, OPERATORS], [1170, SIZE1]]
+    },
+    0x2a05: {
+      dir: V,
+      HW: [[880, OPERATORS], [1152, SIZE1]]
+    },
+    0x2a06: {
+      dir: V,
+      HW: [[880, OPERATORS], [1152, SIZE1]]
+    },
+    0x2a09: {
+      dir: V,
+      HW: [[716, OPERATORS], [906, SIZE1]]
+    },
+    0x2a0c: {
+      dir: V,
+      HW: [[1092, OPERATORS], [2025, SIZE1]]
+    },
+    0x2a11: {
+      dir: V,
+      HW: [[1092, OPERATORS], [2025, SIZE1]]
+    },
+    0x2b04: {
+      dir: H,
+      HW: [[931, SHAPES], [1251, SIZE1]],
+      stretch: {
+        left: [0xe0e0, SIZE6],
+        rep: [0xe0e1, SIZE6],
+        right: [0xe0e2, SIZE6]
+      }
+    },
+    0x2b05: {
+      dir: H,
+      HW: [[870, SHAPES], [1190, SIZE1]],
+      stretch: {
+        left: [0xe0e3, SIZE6],
+        rep: [0xe0e4, SIZE6],
+        right: [0xe0e5, SIZE6]
+      }
+    },
+    0x2b06: {
+      dir: V,
+      HW: [[870, SHAPES], [1190, SIZE1]],
+      stretch: {
+        bot: [0xe0e9, SIZE6],
+        ext: [0xe0ea, SIZE6],
+        top: [0xe0eb, SIZE6]
+      }
+    },
+    0x2b07: {
+      dir: V,
+      HW: [[870, SHAPES], [1190, SIZE1]],
+      stretch: {
+        bot: [0xe0ec, SIZE6],
+        ext: [0xe0ed, SIZE6],
+        top: [0xe0ee, SIZE6]
+      }
+    },
+    0x2b0c: {
+      dir: H,
+      HW: [[880, SHAPES], [1200, SIZE1]],
+      stretch: {
+        left: [0xe0ef, SIZE6],
+        rep: [0xe0f0, SIZE6],
+        right: [0xe0f1, SIZE6]
+      }
+    },
+    0x2b0d: {
+      dir: V,
+      HW: [[880, SHAPES], [1200, SIZE1]],
+      stretch: {
+        bot: [0xe0f2, SIZE6],
+        ext: [0xe0f3, SIZE6],
+        top: [0xe0f4, SIZE6]
+      }
+    },
+    0x2b31: {
+      dir: H,
+      HW: [[690, SHAPES], [1010, SIZE1]],
+      stretch: {
+        left: [0xe09e, SIZE6],
+        rep: [0xe09f, SIZE6],
+        right: [0xe0a0, SIZE6]
+      }
+    }
   };
-  
-  for (var id in delim) {if (delim.hasOwnProperty(id)) {DELIMITERS[id] = delim[id]}};
+
+  for (var id in delim) {
+    if (delim.hasOwnProperty(id)) {
+      DELIMITERS[id] = delim[id];
+    }
+  }
 
   MathJax.Ajax.loadComplete(SVG.fontDir + "/fontdata-extra.js");
-
 })(MathJax.OutputJax["SVG"]);

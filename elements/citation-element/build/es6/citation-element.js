@@ -80,7 +80,7 @@ Polymer({
     document.head.appendChild(link);
     return link;
   },
-  _scopeChanged: function(newValue) {
+  _scopeChanged: function(newValue, oldValue) {
     if ("sibling" === newValue && null !== dom(this).previousElementSibling) {
       if (dom(this).previousElementSibling.getAttribute("resource")) {
         this.relatedResource = dom(this).previousElementSibling.getAttribute(
@@ -234,7 +234,7 @@ Polymer({
     }
     return list;
   },
-  _licenseUpdated: function(newValue) {
+  _licenseUpdated: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0) {
       var list = this.licenseList();
       if (typeof list[newValue] !== typeof void 0) {

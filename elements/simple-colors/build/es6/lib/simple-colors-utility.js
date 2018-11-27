@@ -261,6 +261,9 @@ window.SimpleColorsUtility.hexCodes = {
 window.SimpleColorsUtility.addStyles = function() {
   let root = this,
     css = "",
+    addProp = function(prop, val) {
+      return prop + ": " + val + "; \n";
+    },
     addTheme = function(selector, prefix, reverse) {
       css += selector + " { ";
       for (var property in root.hexCodes) {
@@ -287,7 +290,7 @@ window.SimpleColorsUtility.addStyles = function() {
       css += " } \n\n";
       return css;
     },
-    addClasses = function() {
+    addClasses = function(prefix) {
       for (var property in root.hexCodes) {
         if (
           "colorLevels" !== property &&

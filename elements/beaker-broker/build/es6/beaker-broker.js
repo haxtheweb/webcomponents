@@ -39,7 +39,7 @@ class BeakerBroker extends PolymerElement {
       console.log("Beaker is not available from this site loading methodology");
     }
   }
-  async _datUrlChanged(newValue) {
+  async _datUrlChanged(newValue, oldValue) {
     if (typeof DatArchive !== typeof void 0 && newValue) {
       this.set("archive", new DatArchive(newValue));
     }

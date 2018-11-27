@@ -8,9 +8,19 @@ define([
   "./node_modules/@lrnwebcomponents/media-behaviors/media-behaviors.js",
   "./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js",
   "./node_modules/@lrnwebcomponents/a11y-media-player/a11y-media-player.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _materializecssStyles,
+  _HAXWiring,
+  _schemaBehaviors,
+  _a11yBehaviors,
+  _mediaBehaviors,
+  _simpleColors,
+  _a11yMediaPlayer
+) {
   "use strict";
-  function _templateObject_30772490ecf411e8b11f3180c0cd928f() {
+  function _templateObject_573567d0f1e611e882f1f368dc485e07() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n   <custom-style>\n    <style>\n      :host {\n        display: block;\n        margin: 0 0 15px;\n      }\n      .video-caption {\n        font-style: italic;\n        margin: 0;\n        padding: 8px;\n        @apply --video-player-caption-theme;\n      }\n    </style>\n    </custom-style>\n    \n    <template is="dom-if" if="[[isA11yMedia]]" restamp="">\n      <a11y-media-player accent-color$="[[accentColor]]" dark$="[[dark]]" dark-transcript$="[[darkTranscript]]" disable-interactive$="[[disableInteractive]]" hide-timestamps$="[[hideTimestamps]]" lang$="[[lang]]" media-type$="[[sourceType]]" preload$="[[preload]]" media-title$="[[mediaTitle]]" stand-alone$="[[__standAlone]]" sticky-corner$="[[stickyCorner]]" thumbnail-src$="[[thumbnailSrc]]" crossorigin$="[[crossorigin]]" youtube-id$="[[youtubeId]]">\n        <slot name="source"></slot>\n        <slot name="track"></slot>\n        <template id="sources" is="dom-repeat" items="[[sourceData]]" as="sd">\n          <source src$="[[sd.src]]" type$="[[sd.type]]">\n        </template>\n        <template id="tracks" is="dom-repeat" items="[[tracks]]" as="track">\n          <track src$="[[track.src]]" kind$="[[track.kind]]" label$="[[track.label]]" srclang$="[[track.lang]]">\n        </template>\n        <slot name="caption"></slot>\n      </a11y-media-player>\n    </template>\n    <template is="dom-if" if="[[!isA11yMedia]]">\n      <template is="dom-if" if="[[sandboxed]]">\n        <div class="responsive-video-container" lang$="[[lang]]">\n          <webview resource$="[[schemaResourceID]]-video" src$="[[sourceData.0.src]]" width$="[[width]]" height$="[[height]]" frameborder="0"></webview>\n        </div>\n      </template>\n      <template is="dom-if" if="[[!sandboxed]]">\n        <template is="dom-if" if="[[iframed]]">\n          <div class="responsive-video-container" lang$="[[lang]]">\n            <iframe resource$="[[schemaResourceID]]-video" src$="[[sourceData.0.src]]" width$="[[width]]" height$="[[height]]" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>\n          </div>\n        </template>\n      </template>\n      <div id="videocaption" class$="video-caption">\n        <p>[[mediaTitle]] <span class="media-type print-only">(embedded media)</span></p>\n        <slot name="caption"></slot>\n      </div>\n    </template>\n'
@@ -19,14 +29,14 @@ define([
         '\n   <custom-style>\n    <style>\n      :host {\n        display: block;\n        margin: 0 0 15px;\n      }\n      .video-caption {\n        font-style: italic;\n        margin: 0;\n        padding: 8px;\n        @apply --video-player-caption-theme;\n      }\n    </style>\n    </custom-style>\n    \n    <template is="dom-if" if="[[isA11yMedia]]" restamp="">\n      <a11y-media-player accent-color\\$="[[accentColor]]" dark\\$="[[dark]]" dark-transcript\\$="[[darkTranscript]]" disable-interactive\\$="[[disableInteractive]]" hide-timestamps\\$="[[hideTimestamps]]" lang\\$="[[lang]]" media-type\\$="[[sourceType]]" preload\\$="[[preload]]" media-title\\$="[[mediaTitle]]" stand-alone\\$="[[__standAlone]]" sticky-corner\\$="[[stickyCorner]]" thumbnail-src\\$="[[thumbnailSrc]]" crossorigin\\$="[[crossorigin]]" youtube-id\\$="[[youtubeId]]">\n        <slot name="source"></slot>\n        <slot name="track"></slot>\n        <template id="sources" is="dom-repeat" items="[[sourceData]]" as="sd">\n          <source src\\$="[[sd.src]]" type\\$="[[sd.type]]">\n        </template>\n        <template id="tracks" is="dom-repeat" items="[[tracks]]" as="track">\n          <track src\\$="[[track.src]]" kind\\$="[[track.kind]]" label\\$="[[track.label]]" srclang\\$="[[track.lang]]">\n        </template>\n        <slot name="caption"></slot>\n      </a11y-media-player>\n    </template>\n    <template is="dom-if" if="[[!isA11yMedia]]">\n      <template is="dom-if" if="[[sandboxed]]">\n        <div class="responsive-video-container" lang\\$="[[lang]]">\n          <webview resource\\$="[[schemaResourceID]]-video" src\\$="[[sourceData.0.src]]" width\\$="[[width]]" height\\$="[[height]]" frameborder="0"></webview>\n        </div>\n      </template>\n      <template is="dom-if" if="[[!sandboxed]]">\n        <template is="dom-if" if="[[iframed]]">\n          <div class="responsive-video-container" lang\\$="[[lang]]">\n            <iframe resource\\$="[[schemaResourceID]]-video" src\\$="[[sourceData.0.src]]" width\\$="[[width]]" height\\$="[[height]]" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>\n          </div>\n        </template>\n      </template>\n      <div id="videocaption" class\\$="video-caption">\n        <p>[[mediaTitle]] <span class="media-type print-only">(embedded media)</span></p>\n        <slot name="caption"></slot>\n      </div>\n    </template>\n'
       ]
     );
-    _templateObject_30772490ecf411e8b11f3180c0cd928f = function() {
+    _templateObject_573567d0f1e611e882f1f368dc485e07 = function _templateObject_573567d0f1e611e882f1f368dc485e07() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_30772490ecf411e8b11f3180c0cd928f()
+      _templateObject_573567d0f1e611e882f1f368dc485e07()
     ),
     is: "video-player",
     behaviors: [
@@ -79,7 +89,7 @@ define([
       crossorigin: { type: Boolean, value: !1 }
     },
     attached: function attached() {
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !1,
@@ -279,7 +289,8 @@ define([
             }
           ]
         }
-      });
+      };
+      this.setHaxProperties(props);
     },
     _computeYoutubeId: function _computeYoutubeId(source, sourceType) {
       if (source !== void 0 && "youtube" === sourceType) {
@@ -338,8 +349,10 @@ define([
       return temp;
     },
     _computeMediaType: function _computeMediaType(source) {
-      var type = "",
-        findType = function(text, data) {
+      var audio = ["aac", "flac", "mp3", "oga", "wav"],
+        video = ["mov", "mp4", "ogv", "webm"],
+        type = "",
+        findType = function findType(text, data) {
           for (var i = 0; i < data.length; i++) {
             if (
               "" === type &&
@@ -349,8 +362,8 @@ define([
               type = text + "/" + data[i];
           }
         };
-      findType("audio", ["aac", "flac", "mp3", "oga", "wav"]);
-      findType("video", ["mov", "mp4", "ogv", "webm"]);
+      findType("audio", audio);
+      findType("video", video);
       return type;
     },
     _computeSandboxed: function _computeSandboxed(sourceData) {
@@ -372,7 +385,10 @@ define([
       if (
         0 < sourceData.length &&
         sourceData[0] !== void 0 &&
-        babelHelpers.typeof(sourceData[0].src) !== "undefined"
+        babelHelpers.typeof(sourceData[0].src) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
       ) {
         return root.getVideoType(sourceData[0].src);
       } else if (null !== slotted) {
@@ -405,7 +421,12 @@ define([
           } else {
             source += "&portrait=0";
           }
-          if (babelHelpers.typeof(this.videoColor) !== "undefined") {
+          if (
+            babelHelpers.typeof(this.videoColor) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
+          ) {
             source += "&color=" + this.videoColor;
           }
         } else if ("dailymotion" == type) {
@@ -413,7 +434,12 @@ define([
           source += "&ui-logo=false";
           source += "&sharing-enable=false";
           source += "&endscreen-enable=false";
-          if (babelHelpers.typeof(this.videoColor) !== "undefined") {
+          if (
+            babelHelpers.typeof(this.videoColor) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
+          ) {
             source += "&ui-highlight=" + this.videoColor;
           }
         }

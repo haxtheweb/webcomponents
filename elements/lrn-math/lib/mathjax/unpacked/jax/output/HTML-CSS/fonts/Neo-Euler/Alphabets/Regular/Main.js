@@ -1,7 +1,7 @@
 /*************************************************************
  *
  *  MathJax/jax/output/HTML-CSS/fonts/Neo-Euler/Alphabets/Regular/Main.js
- *  
+ *
  *  Copyright (c) 2013-2018 The MathJax Consortium
  *
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,16 +17,20 @@
  *  limitations under the License.
  */
 
-MathJax.OutputJax['HTML-CSS'].FONTDATA.FONTS['NeoEulerMathJax_Alphabets'] = {
-  directory: 'Alphabets/Regular',
-  family: 'NeoEulerMathJax_Alphabets',
-  testString: '\u00A0\u2126',
-  0x20: [0,0,333,0,0],
-  0xA0: [0,0,333,0,0],
-  0x2126: [689,2,875,25,844]
+MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS["NeoEulerMathJax_Alphabets"] = {
+  directory: "Alphabets/Regular",
+  family: "NeoEulerMathJax_Alphabets",
+  testString: "\u00A0\u2126",
+  0x20: [0, 0, 333, 0, 0],
+  0xa0: [0, 0, 333, 0, 0],
+  0x2126: [689, 2, 875, 25, 844]
 };
 
 MathJax.Callback.Queue(
-  ["initFont",MathJax.OutputJax["HTML-CSS"],"NeoEulerMathJax_Alphabets"],
-  ["loadComplete",MathJax.Ajax,MathJax.OutputJax["HTML-CSS"].fontDir+"/Alphabets/Regular/Main.js"]
+  ["initFont", MathJax.OutputJax["HTML-CSS"], "NeoEulerMathJax_Alphabets"],
+  [
+    "loadComplete",
+    MathJax.Ajax,
+    MathJax.OutputJax["HTML-CSS"].fontDir + "/Alphabets/Regular/Main.js"
+  ]
 );

@@ -29,7 +29,7 @@ Polymer({
     activeHaxBody: { type: Object, observer: "_activeHaxBodyUpdated" },
     __imported: { type: Boolean, value: !1 }
   },
-  _activeHaxBodyUpdated: function(newValue) {
+  _activeHaxBodyUpdated: function(newValue, oldValue) {
     if (null != newValue && !this.__imported) {
       this.__imported = !0;
       let children = this.queryEffectiveChildren("template");
@@ -72,7 +72,7 @@ Polymer({
       this.set(e.detail.property, e.detail.value);
     }
   },
-  _bodyContentUpdated: function() {
+  _bodyContentUpdated: function(e) {
     this.bodyValue = window.HaxStore.instance.activeHaxBody.haxToContent();
   }
 });

@@ -142,7 +142,7 @@ Polymer({
     focusout: "__hoverOut"
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -213,7 +213,8 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
   __updateStyles: function(image) {
     this.updateStyles({ "--tile-image": `url(${image})` });

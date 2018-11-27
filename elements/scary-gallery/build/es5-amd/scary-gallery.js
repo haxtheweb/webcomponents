@@ -3,20 +3,20 @@ define([
   "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
   "./node_modules/@polymer/polymer/lib/utils/flattened-nodes-observer.js",
   "./lib/scary-image.js"
-], function(_polymerLegacy, _polymerDom, _flattenedNodesObserver) {
+], function(_polymerLegacy, _polymerDom, _flattenedNodesObserver, _scaryImage) {
   "use strict";
-  function _templateObject_5f92e2b0ecf311e8b2eba3f380c9791f() {
+  function _templateObject_e031b940f1e511e8a4bc3fb611bac7a9() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n      :host {\n        width: 100%;\n        display: flex;\n        flex-wrap: wrap;\n      }\n    </style>\n    <slot></slot>\n"
     ]);
-    _templateObject_5f92e2b0ecf311e8b2eba3f380c9791f = function() {
+    _templateObject_e031b940f1e511e8a4bc3fb611bac7a9 = function _templateObject_e031b940f1e511e8a4bc3fb611bac7a9() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_5f92e2b0ecf311e8b2eba3f380c9791f()
+      _templateObject_e031b940f1e511e8a4bc3fb611bac7a9()
     ),
     is: "scary-gallery",
     properties: {

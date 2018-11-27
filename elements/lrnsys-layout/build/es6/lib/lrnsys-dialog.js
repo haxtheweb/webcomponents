@@ -62,22 +62,22 @@ Polymer({
     dynamicImages: { type: Boolean, value: !1 },
     focusState: { type: Boolean, value: !1 }
   },
-  tapEventOn: function() {
+  tapEventOn: function(e) {
     const root = this;
     if (typeof root.hoverClass !== typeof void 0) {
       var classes = root.hoverClass.split(" ");
-      classes.forEach(function(item) {
+      classes.forEach(function(item, index) {
         if ("" != item) {
           root.$.dialogtrigger.classList.add(item);
         }
       });
     }
   },
-  tapEventOff: function() {
+  tapEventOff: function(e) {
     const root = this;
     if (typeof root.hoverClass !== typeof void 0) {
       var classes = root.hoverClass.split(" ");
-      classes.forEach(function(item) {
+      classes.forEach(function(item, index) {
         if ("" != item) {
           root.$.dialogtrigger.classList.remove(item);
         }
@@ -123,12 +123,12 @@ Polymer({
     });
     this.dispatchEvent(evt);
   },
-  focusToggle: function() {
+  focusToggle: function(e) {
     const root = this;
     root.fire("focus-changed", { focus: root.focusState });
     if (typeof root.hoverClass !== typeof void 0) {
       var classes = root.hoverClass.split(" ");
-      classes.forEach(function(item) {
+      classes.forEach(function(item, index) {
         if ("" != item) {
           if (root.focusState) {
             root.$.dialogtrigger.classList.add(item);

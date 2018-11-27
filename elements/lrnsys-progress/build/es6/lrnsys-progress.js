@@ -175,7 +175,7 @@ Polymer({
     }
     return width;
   },
-  _reportState: function(newValue) {
+  _reportState: function(newValue, oldValue) {
     if (typeof null !== typeof newValue) {
       this.fire("progress-state-change", {
         state: this.state,
@@ -216,9 +216,9 @@ Polymer({
   _bubbleUpChangeActive: function(e) {
     this.active = e.target.step;
   },
-  _activeChanged: function() {
+  _activeChanged: function(newValue, oldValue) {
     this.state = "active item is " + this.active;
-    this.items.forEach((element, index) => {
+    this.items.forEach((element, index, array) => {
       if ("disabled" == this.items[index].status) {
         if (
           0 != index &&

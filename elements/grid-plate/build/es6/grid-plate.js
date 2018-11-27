@@ -153,7 +153,7 @@ Polymer({
     },
     __activeItem: { type: Object, observer: "_activeItemChanged" }
   },
-  cancelActive: function() {
+  cancelActive: function(e) {
     this.__activeItem = null;
   },
   moveActiveElement: function(e) {
@@ -422,7 +422,7 @@ Polymer({
     }
     return items;
   },
-  dragStart: function() {
+  dragStart: function(e) {
     let children = dom(this).children;
     for (var i in children) {
       if (typeof children[i].classList !== typeof void 0) {
@@ -436,7 +436,7 @@ Polymer({
       }
     }
   },
-  dragEnd: function() {
+  dragEnd: function(e) {
     let children = dom(this).children;
     for (var i in children) {
       if (typeof children[i].classList !== typeof void 0) {
@@ -458,7 +458,7 @@ Polymer({
     }
     return value;
   },
-  _colColors: function(newValue) {
+  _colColors: function(newValue, oldValue) {
     if ("" != newValue) {
       for (var i in newValue) {
         this["__col" + (parseInt(i) + 1) + "Color"] = this.splitColor(
@@ -518,7 +518,7 @@ Polymer({
     for (var i in this.__hexCodes) {
       colorOptions[i] = i;
     }
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -573,9 +573,10 @@ Polymer({
       saveOptions: {
         unsetAttributes: ["__active-item", "_colors", "edit-mode"]
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
-  haxInsertContent: function() {
+  haxInsertContent: function(e) {
     if (this === window.HaxStore.instance.activeContainerNode) {
       this.editMode = !1;
       setTimeout(() => {

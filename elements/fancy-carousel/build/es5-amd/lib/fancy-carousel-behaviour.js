@@ -1,7 +1,7 @@
 define([
   "../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
   "./fancy-carousel-animation-behaviour.js"
-], function(_polymerDom) {
+], function(_polymerDom, _fancyCarouselAnimationBehaviour) {
   "use strict";
   window.FancyCarouselBehaviourImpl = {
     properties: {},
@@ -41,7 +41,7 @@ define([
       }
       return elem;
     },
-    _timerChanged: function _timerChanged(newValue) {
+    _timerChanged: function _timerChanged(newValue, oldValue) {
       var that = this;
       if (0 != newValue) {
         setInterval(function() {

@@ -5,20 +5,27 @@ define([
   "./node_modules/@polymer/paper-input/paper-input-behavior.js",
   "./node_modules/@polymer/iron-icons/iron-icons.js",
   "./node_modules/@polymer/iron-icon/iron-icon.js"
-], function(_polymerLegacy, _paperInput, _paperTooltip, _paperInputBehavior) {
+], function(
+  _polymerLegacy,
+  _paperInput,
+  _paperTooltip,
+  _paperInputBehavior,
+  _ironIcons,
+  _ironIcon
+) {
   "use strict";
-  function _templateObject_2e813d70ecf311e8a203c93303db6484() {
+  function _templateObject_b610f6d0f1e511e8a0e221187bc4eaa9() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n      iron-icon {\n        transition: .6s all ease-in;\n        width: 24px;\n        height: 24px;\n        margin-right: 4px;\n      }\n      paper-tooltip {\n        font-size: 11px;\n        --paper-tooltip-delay-in: 100;\n      }\n      #icon {\n        color: var(--paper-grey-400);\n        background-color: transparent;\n      }\n      :host([status="info"]) #icon {\n        color: var(--paper-green-400);\n      }\n      :host([status="notice"]) #icon {\n        color: var(--paper-grey-400);\n      }\n      :host([status="warning"]) #icon {\n        color: var(--paper-yellow-700);\n      }\n      :host([status="error"]) #icon {\n        color: var(--paper-red-900);\n      }\n      .element-invisible {\n        position: absolute !important;\n        clip: rect(1px, 1px, 1px, 1px);\n        overflow: hidden;\n        height: 1px;\n      }\n    </style>\n    <paper-input label="[[label]]" value="{{value}}" char-counter="[[charCounter]]" disabled="[[disabled]]" minlength="[[minlength]]" maxlength="[[minlength]]">\n      <iron-icon id="icon" icon="[[icon]]" slot="prefix"></iron-icon>\n    </paper-input>\n    <div class="element-invisible">[[__activeMessage]]</div>\n    <paper-tooltip for="icon" position="top" offset="20" fit-to-visible-bounds>\n        [[__activeMessage]]\n    </paper-tooltip>\n'
     ]);
-    _templateObject_2e813d70ecf311e8a203c93303db6484 = function() {
+    _templateObject_b610f6d0f1e511e8a0e221187bc4eaa9 = function _templateObject_b610f6d0f1e511e8a0e221187bc4eaa9() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_2e813d70ecf311e8a203c93303db6484()
+      _templateObject_b610f6d0f1e511e8a0e221187bc4eaa9()
     ),
     is: "paper-input-flagged",
     behaviors: [_paperInputBehavior.PaperInputBehavior],

@@ -91,7 +91,7 @@ Polymer({
     total: { type: Number, value: 100 }
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -125,12 +125,13 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
   _getData: function(complete) {
     return { series: complete };
   },
-  _getImageStyle: function() {
+  _getImageStyle: function(size) {
     let offset = "22%",
       diameter = "56%";
     if ("xs" === this.size) {
@@ -158,7 +159,7 @@ Polymer({
       ";"
     );
   },
-  _getOptions: function(complete, total) {
+  _getOptions: function(complete, total, size, colors, accentColor, dark) {
     let sum = 0;
     for (let i = 0; i < complete.length; i++) {
       sum += parseFloat(complete[i]);

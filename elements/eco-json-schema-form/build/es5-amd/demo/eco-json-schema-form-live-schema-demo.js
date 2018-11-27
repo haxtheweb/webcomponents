@@ -3,13 +3,18 @@ define([
   "../node_modules/@polymer/iron-flex-layout/iron-flex-layout-classes.js",
   "../node_modules/@polymer/paper-material/paper-material.js",
   "../lib/eco-json-schema-wizard.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _ironFlexLayoutClasses,
+  _paperMaterial,
+  _ecoJsonSchemaWizard
+) {
   "use strict";
-  function _templateObject_d3570890ecf111e88a0b4725ebfbecff() {
+  function _templateObject_8c5e2de0f1e411e8bd8eaf7090426072() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n  <style is="custom-style" include="iron-flex iron-flex-alignment">\n    paper-material {\n      background: #ffffff;\n      height: 100%;\n    }\n\n    paper-material,\n    paper-material > * {\n      margin: 10px;\n    }\n\n    .editor-container {\n      height: 600px;\n    }\n\n    #jsoneditor {\n      width: 400px;\n      height: 400px;\n    }\n    eco-json-schema-wizard {\n      width: 400px;\n      height: 400px;\n    }\n  </style>\n    <div class="horizontal layout main-container">\n      <paper-material class="flex-2 editor-container">\n        <h3>Schema Editor</h3>\n        <div id="jsoneditor" style="width: 400px; height: 400px;"></div>\n      </paper-material>\n\n      <paper-material class="flex-2">\n        <h3>Generated Form</h3>\n        <eco-json-schema-wizard language="[[language]]" resources="[[resources]]" id="schemaObj" on-submit="submit" page="{{page}}" pages="{{pages}}" schema="[[schema]]" value="{{value}}"></eco-json-schema-wizard>\n      </paper-material>\n\n      <paper-material class="flex">\n        <h3>Value</h3>\n        <pre id="valueText"></pre>\n      </paper-material>\n    </div>\n'
     ]);
-    _templateObject_d3570890ecf111e88a0b4725ebfbecff = function() {
+    _templateObject_8c5e2de0f1e411e8bd8eaf7090426072 = function _templateObject_8c5e2de0f1e411e8bd8eaf7090426072() {
       return data;
     };
     return data;
@@ -17,7 +22,7 @@ define([
   (0, _polymerLegacy.Polymer)({
     is: "eco-json-schema-form-live-schema-demo",
     _template: (0, _polymerLegacy.html)(
-      _templateObject_d3570890ecf111e88a0b4725ebfbecff()
+      _templateObject_8c5e2de0f1e411e8bd8eaf7090426072()
     ),
     properties: {
       language: { value: "en", notify: !0 },
@@ -68,8 +73,13 @@ define([
         } catch (e) {}
       }
     },
-    _valueChanged: function _valueChanged(newValue) {
-      if (babelHelpers.typeof(this.$.valueText) !== "undefined") {
+    _valueChanged: function _valueChanged(newValue, oldValue) {
+      if (
+        babelHelpers.typeof(this.$.valueText) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         var json = JSON.stringify(newValue, null, " ");
         this.$.valueText.innerHTML = json;
       }

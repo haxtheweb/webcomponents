@@ -3,9 +3,9 @@ define([
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
   "./node_modules/@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _HAXWiring, _schemaBehaviors, _lrndesignGallery) {
   "use strict";
-  function _templateObject_dd0c0d10ecf411e8aa52d78122381ba0() {
+  function _templateObject_9090c920f1e611e8b55fffc4308afc66() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <lrndesign-gallery accent-color$="[[accentColor]]" dark$="[[dark]]" grid$="[[grid]]" sizing$="[[sizing]]" sources$="[[sources]]" title$="[[title]]">\n      <slot slot="description" name="description"></slot>\n    </lrndesign-gallery>\n'
@@ -14,14 +14,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <lrndesign-gallery accent-color\\$="[[accentColor]]" dark\\$="[[dark]]" grid\\$="[[grid]]" sizing\\$="[[sizing]]" sources\\$="[[sources]]" title\\$="[[title]]">\n      <slot slot="description" name="description"></slot>\n    </lrndesign-gallery>\n'
       ]
     );
-    _templateObject_dd0c0d10ecf411e8aa52d78122381ba0 = function() {
+    _templateObject_9090c920f1e611e8b55fffc4308afc66 = function _templateObject_9090c920f1e611e8b55fffc4308afc66() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_dd0c0d10ecf411e8aa52d78122381ba0()
+      _templateObject_9090c920f1e611e8b55fffc4308afc66()
     ),
     is: "media-gallery",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
@@ -34,7 +34,7 @@ define([
       title: { type: String, value: null }
     },
     attached: function attached() {
-      this.setHaxProperties({
+      var props = {
         canScale: !1,
         canPosition: !1,
         canEditSource: !1,
@@ -133,7 +133,8 @@ define([
           ],
           advanced: []
         }
-      });
+      };
+      this.setHaxProperties(props);
     }
   });
 });

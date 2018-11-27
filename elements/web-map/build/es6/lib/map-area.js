@@ -42,11 +42,12 @@ Polymer({
         for (
           var worig = this.parentElement.poster.width,
             wresp = this.parentElement.width,
+            wadjstmnt = (worig - wresp) / 2,
             i = 0;
           i < points.length;
           i++
         ) {
-          points[i][0] = points[i][0] - (worig - wresp) / 2;
+          points[i][0] = points[i][0] - wadjstmnt;
         }
       }
       if ("marker" === this.shape) {

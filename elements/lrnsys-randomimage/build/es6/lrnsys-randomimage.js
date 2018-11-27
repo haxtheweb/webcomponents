@@ -26,8 +26,8 @@ Polymer({
       }
     }
   },
-  reload: function() {
-    this;
+  reload: function(e) {
+    let root = this;
     this.$.list.innerHTML = this.$.list.innerHTML;
   }
 });

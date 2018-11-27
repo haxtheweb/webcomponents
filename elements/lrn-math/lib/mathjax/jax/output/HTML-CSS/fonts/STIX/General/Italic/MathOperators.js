@@ -16,4 +16,10 @@
  *  limitations under the License.
  */
 
-MathJax.Hub.Insert(MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS["STIXGeneral-italic"],{8706:[668,11,471,40,471],8722:[286,-220,675,86,590]});MathJax.Ajax.loadComplete(MathJax.OutputJax["HTML-CSS"].fontDir+"/General/Italic/MathOperators.js");
+MathJax.Hub.Insert(
+  MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS["STIXGeneral-italic"],
+  { 8706: [668, 11, 471, 40, 471], 8722: [286, -220, 675, 86, 590] }
+);
+MathJax.Ajax.loadComplete(
+  MathJax.OutputJax["HTML-CSS"].fontDir + "/General/Italic/MathOperators.js"
+);

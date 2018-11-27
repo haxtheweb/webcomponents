@@ -9,20 +9,31 @@ define([
   "./hax-context-item-menu.js",
   "./hax-context-item.js",
   "./hax-toolbar.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _appToolbar,
+  _paperTextarea,
+  _paperInput,
+  _paperCheckbox,
+  _simpleColorsPicker,
+  _haxContextItemMenu,
+  _haxContextItem,
+  _haxToolbar
+) {
   "use strict";
-  function _templateObject_a91a5d30ee0311e8bb61cd2eef6a9bf2() {
+  function _templateObject_9c3f5b10f1e611e8b3a2e3a031c18fd0() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n        height: 32px;\n        background-color: white;\n      }\n      hax-context-item {\n        margin: 0;\n        height: 32px;\n      }\n      .human-name {\n        font-size: 16px;\n        border-top-left-radius: 25%;\n        border-top-right-radius: 25%;\n        line-height: 16px;\n        font-family: sans-serif;\n        width: -webkit-fit-content;\n        width: -moz-max-content;\n        width: fit-content;\n        background-color: white;\n      }\n      .human-name-inner {\n        font-size: 16px;\n        border-top-left-radius: 25%;\n        border-top-right-radius: 25%;\n        margin: -32px 0px 0 34px;\n        line-height: 16px;\n        padding: 8px 16px 8px 8px;\n        font-family: sans-serif;\n        width: -webkit-fit-content;\n        width: -moz-max-content;\n        width: fit-content;\n        background-color: black;\n        color: white;\n        opacity: .4;\n        transition: .6s all ease;\n      }\n      :host(:hover) .human-name-inner {\n        opacity: 1;\n      }\n      :host(.hax-context-pin-top) hax-toolbar {\n        position: fixed;\n        top: 64px;\n        opacity: .95;\n      }\n      :host(.hax-context-pin-bottom) hax-toolbar {\n        position: fixed;\n        bottom: 0;\n        opacity: .95;\n      }\n    </style>\n    <div class="human-name">\n      <div class="human-name-inner">[[humanName]]</div>\n    </div>\n    <hax-toolbar hax-properties="[[haxProperties]]" size="{{ceSize}}">\n      <slot slot="primary"></slot>\n      <hax-context-item slot="primary" icon="icons:settings" label="Settings" event-name="hax-manager-configure" hidden$="[[!__hasSettingsForm]]"></hax-context-item>\n      <hax-context-item slot="primary" icon="icons:view-quilt" label="[[__parentName]]" event-name="hax-manager-configure-container" hidden$="[[!__hasParentSettingsForm]]"></hax-context-item>\n    </hax-toolbar>\n'
     ]);
-    _templateObject_a91a5d30ee0311e8bb61cd2eef6a9bf2 = function() {
+    _templateObject_9c3f5b10f1e611e8b3a2e3a031c18fd0 = function _templateObject_9c3f5b10f1e611e8b3a2e3a031c18fd0() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a91a5d30ee0311e8bb61cd2eef6a9bf2()
+      _templateObject_9c3f5b10f1e611e8b3a2e3a031c18fd0()
     ),
     is: "hax-ce-context",
     properties: {
@@ -40,8 +51,14 @@ define([
     },
     _ceSizeChanged: function _ceSizeChanged(newValue, oldValue) {
       if (
-        babelHelpers.typeof(newValue) !== "undefined" &&
-        babelHelpers.typeof(oldValue) !== "undefined"
+        babelHelpers.typeof(newValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
+        babelHelpers.typeof(oldValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
       ) {
         this.fire("hax-context-item-selected", {
           eventName: "hax-size-change",
@@ -51,8 +68,14 @@ define([
     },
     _haxPropertiesChanged: function _haxPropertiesChanged(newValue, oldValue) {
       if (
-        babelHelpers.typeof(oldValue) !== "undefined" &&
-        babelHelpers.typeof(newValue.settings) !== "undefined"
+        babelHelpers.typeof(oldValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
+        babelHelpers.typeof(newValue.settings) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
       ) {
         var slot = (0, _polymerDom.dom)(this);
         while (null !== slot.firstChild) {
@@ -89,10 +112,16 @@ define([
               this.__parentName = window.HaxStore.instance.activeContainerNode.tagName
                 .replace("-", " ")
                 .toLowerCase();
+              +" settings";
               break;
           }
         }
-        if (babelHelpers.typeof(newValue.gizmo.title) === "undefined") {
+        if (
+          babelHelpers.typeof(newValue.gizmo.title) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           this.humanName = window.HaxStore.instance.activeNode.tagName
             .replace("-", " ")
             .toLowerCase();
@@ -112,9 +141,19 @@ define([
           item.validation = setting.validation;
           item.validationType = setting.validationType;
           item.description = setting.description;
-          if (babelHelpers.typeof(setting.property) !== "undefined") {
+          if (
+            babelHelpers.typeof(setting.property) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
+          ) {
             item.propertyToBind = setting.property;
-          } else if (babelHelpers.typeof(setting.attribute) !== "undefined") {
+          } else if (
+            babelHelpers.typeof(setting.attribute) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
+          ) {
             item.propertyToBind = setting.attribute;
           } else {
             item.slotToBind = setting.slot;

@@ -25,7 +25,7 @@ Polymer({
   attached: function() {
     this.fire("heading-created", this);
   },
-  attributeChanged: function(name) {
+  attributeChanged: function(name, type) {
     if ("subtopic-of" === name) {
       this.fire("heading-created", this);
     } else if ("tag" === name) {
@@ -42,7 +42,7 @@ Polymer({
     if (null !== el) {
       root.__parentListener = root.parentHeading.addEventListener(
         "heading-changed",
-        function() {
+        function(e) {
           root._setTag();
         }
       );

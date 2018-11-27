@@ -33,7 +33,7 @@ MathJax.OutputJax.PlainSource = MathJax.OutputJax({
       ".MathJax_PlainSource_Display": {
         "text-align": "center",
         margin: ".75em 0px",
-        "white-space":"pre"
+        "white-space": "pre"
       },
       ".MathJax_PlainSource_Display > span": {
         display: "inline-block",

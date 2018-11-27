@@ -64,22 +64,24 @@ Polymer({
   ready: function() {
     let root = this,
       slider = this.$.slider;
-    slider.addEventListener("immediate-value-changed", function() {
+    slider.addEventListener("immediate-value-changed", function(e) {
       root.sliderPercent = slider.immediateValue;
     });
   },
-  _setStyles: function() {
+  _setStyles: function(width, height, sliderPercent) {
     let w = this.width,
-      h = this.height;
+      h = this.height,
+      sw = w + 30,
+      cmb = h + 15;
     this.styles = {
       image: "width: " + w + "px; height: " + h + "px;",
-      slider: "width: " + (w + 30) + "px; margin: 0 -15px;",
-      container: "width: " + w + "px; margin-bottom: " + (h + 15) + "px;",
+      slider: "width: " + sw + "px; margin: 0 -15px;",
+      container: "width: " + w + "px; margin-bottom: " + cmb + "px;",
       top: "width: " + this.sliderPercent + "%;"
     };
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -134,6 +136,7 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   }
 });

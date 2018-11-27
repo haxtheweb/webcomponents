@@ -2,9 +2,9 @@ define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./node_modules/@polymer/paper-progress/paper-progress.js",
   "./lib/lrnsys-progress-circle.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _paperProgress, _lrnsysProgressCircle) {
   "use strict";
-  function _templateObject_ea9b09b0ecf211e889cd69f02b25ee38() {
+  function _templateObject_8327d270f1e511e8ab17ef6b3b88f07d() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n        margin-top: 24px;\n      }\n      :host([size="tiny"]) {\n        font-size: 12.8px;\n      }\n      :host([size="small"]) {\n        font-size: 19.2px;\n      }\n      :host([size="medium"]) {\n        font-size: 25.6px;\n      }\n      :host([size="large"]) {\n        font-size: 44.8px;\n      }\n      :host([size="x-large"]) {\n        font-size: 64px;\n      }\n      :host([size="epic"]) {\n        font-size: 96px;\n      }\n      #circle-container {\n        display: flex;\n        justify-content:space-between;\n        margin: -24px 0 0 0;\n        padding: 0;\n        list-style: none;\n      }\n      .progress-title {\n        position: absolute !important;\n        clip: rect(1px 1px 1px 1px); /* IE6, IE7 */\n        clip: rect(1px, 1px, 1px, 1px);\n        overflow: hidden;\n        height: 1px;\n      }\n      paper-progress {\n        --paper-progress-height: 8px;\n        --paper-progress-transition-duration: 0.5s;\n        --paper-progress-transition-timing-function: ease;\n        --paper-progress-transition-delay: .4s;\n        width: 100%;\n      }\n      /* required to get the box shadow above the progress bar */\n      .circle-node {\n        z-index: 1;\n      }\n      ul#circle-container li.circle-node {\n        list-style-type: none;\n      }\n\n      :host([vertical]) {\n        width: max-content;\n      }\n      :host([vertical]) #circle-container {\n        display: block;\n      }\n      :host([vertical]) paper-progress {\n        display: none !important;\n      }\n      :host([vertical]) lrnsys-progress-circle {\n        margin: 16px 0;\n        padding: 0;\n        width: 100%;\n      }\n\n      lrnsys-progress-circle {\n        width: 40px;\n        height: 40px;\n        --lrnsys-progress-circle-size: 40px;\n        --lrnsys-progress-spinner-size: 32px;\n        --lrnsys-progress-icon-size: 24px;\n        --paper-spinner-stroke-width: 1.2px;\n      }\n\n    </style>\n    <iron-ajax id="ajax" url="[[activeNodeURL]]" handle-as="json" last-response="{{nodeData}}" last-error="{{nodeDataError}}" on-response="handleNodeResponse"></iron-ajax>\n    <h3 class="progress-title">[[title]]</h3>\n    <paper-progress id="progress" value="[[overallPercentage]]"></paper-progress>\n    <ul id="circle-container">\n      <template is="dom-repeat" items="[[items]]" as="item">\n        <li class="circle-node">\n          <lrnsys-progress-circle play-finish-sound="[[soundFinish]]" play-sound="[[sound]]" complete-sound="[[completeSound]]" finished-sound="[[finishedSound]]" active="[[_isActive(index, active)]]" step="[[index]]" label="[[item.title]]" icon="[[item.icon]]" icon-complete="[[item.iconComplete]]" data-url="[[item.dataUrl]]" url="[[item.url]]" status="[[item.status]]" value="[[item.value]]" max="[[item.max]]" stroke-width="[[strokeWidth]]" tool-tip="[[!vertical]]" list-view="[[vertical]]" class$="[[size]]">\n            <span slot="description">[[item.description]]</span>\n          </lrnsys-progress-circle>\n        </li>\n      </template>\n    </ul>\n'
@@ -13,14 +13,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n        margin-top: 24px;\n      }\n      :host([size="tiny"]) {\n        font-size: 12.8px;\n      }\n      :host([size="small"]) {\n        font-size: 19.2px;\n      }\n      :host([size="medium"]) {\n        font-size: 25.6px;\n      }\n      :host([size="large"]) {\n        font-size: 44.8px;\n      }\n      :host([size="x-large"]) {\n        font-size: 64px;\n      }\n      :host([size="epic"]) {\n        font-size: 96px;\n      }\n      #circle-container {\n        display: flex;\n        justify-content:space-between;\n        margin: -24px 0 0 0;\n        padding: 0;\n        list-style: none;\n      }\n      .progress-title {\n        position: absolute !important;\n        clip: rect(1px 1px 1px 1px); /* IE6, IE7 */\n        clip: rect(1px, 1px, 1px, 1px);\n        overflow: hidden;\n        height: 1px;\n      }\n      paper-progress {\n        --paper-progress-height: 8px;\n        --paper-progress-transition-duration: 0.5s;\n        --paper-progress-transition-timing-function: ease;\n        --paper-progress-transition-delay: .4s;\n        width: 100%;\n      }\n      /* required to get the box shadow above the progress bar */\n      .circle-node {\n        z-index: 1;\n      }\n      ul#circle-container li.circle-node {\n        list-style-type: none;\n      }\n\n      :host([vertical]) {\n        width: max-content;\n      }\n      :host([vertical]) #circle-container {\n        display: block;\n      }\n      :host([vertical]) paper-progress {\n        display: none !important;\n      }\n      :host([vertical]) lrnsys-progress-circle {\n        margin: 16px 0;\n        padding: 0;\n        width: 100%;\n      }\n\n      lrnsys-progress-circle {\n        width: 40px;\n        height: 40px;\n        --lrnsys-progress-circle-size: 40px;\n        --lrnsys-progress-spinner-size: 32px;\n        --lrnsys-progress-icon-size: 24px;\n        --paper-spinner-stroke-width: 1.2px;\n      }\n\n    </style>\n    <iron-ajax id="ajax" url="[[activeNodeURL]]" handle-as="json" last-response="{{nodeData}}" last-error="{{nodeDataError}}" on-response="handleNodeResponse"></iron-ajax>\n    <h3 class="progress-title">[[title]]</h3>\n    <paper-progress id="progress" value="[[overallPercentage]]"></paper-progress>\n    <ul id="circle-container">\n      <template is="dom-repeat" items="[[items]]" as="item">\n        <li class="circle-node">\n          <lrnsys-progress-circle play-finish-sound="[[soundFinish]]" play-sound="[[sound]]" complete-sound="[[completeSound]]" finished-sound="[[finishedSound]]" active="[[_isActive(index, active)]]" step="[[index]]" label="[[item.title]]" icon="[[item.icon]]" icon-complete="[[item.iconComplete]]" data-url="[[item.dataUrl]]" url="[[item.url]]" status="[[item.status]]" value="[[item.value]]" max="[[item.max]]" stroke-width="[[strokeWidth]]" tool-tip="[[!vertical]]" list-view="[[vertical]]" class\\$="[[size]]">\n            <span slot="description">[[item.description]]</span>\n          </lrnsys-progress-circle>\n        </li>\n      </template>\n    </ul>\n'
       ]
     );
-    _templateObject_ea9b09b0ecf211e889cd69f02b25ee38 = function() {
+    _templateObject_8327d270f1e511e8ab17ef6b3b88f07d = function _templateObject_8327d270f1e511e8ab17ef6b3b88f07d() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_ea9b09b0ecf211e889cd69f02b25ee38()
+      _templateObject_8327d270f1e511e8ab17ef6b3b88f07d()
     ),
     is: "lrnsys-progress",
     listeners: {
@@ -106,7 +106,7 @@ define([
       }
       return width;
     },
-    _reportState: function _reportState(newValue) {
+    _reportState: function _reportState(newValue, oldValue) {
       if (babelHelpers.typeof(newValue) !== babelHelpers.typeof(null)) {
         this.fire("progress-state-change", {
           state: this.state,
@@ -117,14 +117,23 @@ define([
     _itemsChanged: function _itemsChanged(newValue, oldValue) {
       var _this = this;
       if (
-        babelHelpers.typeof(oldValue) !== "undefined" &&
+        babelHelpers.typeof(oldValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         newValue.length != oldValue.length &&
-        babelHelpers.typeof(this._responseList[this.active]) === "undefined"
+        babelHelpers.typeof(this._responseList[this.active]) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
       ) {
         newValue[this.active].status = "loading";
         this.set("items." + this.active + ".status", "loading");
         if (
-          babelHelpers.typeof(newValue[this.active].dataUrl) !== "undefined" &&
+          babelHelpers.typeof(newValue[this.active].dataUrl) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           !this.disableAjaxCalls
         ) {
           this.$.ajax.url = newValue[this.active].dataUrl;
@@ -148,10 +157,10 @@ define([
     _bubbleUpChangeActive: function _bubbleUpChangeActive(e) {
       this.active = e.target.step;
     },
-    _activeChanged: function _activeChanged() {
+    _activeChanged: function _activeChanged(newValue, oldValue) {
       var _this2 = this;
       this.state = "active item is " + this.active;
-      this.items.forEach(function(element, index) {
+      this.items.forEach(function(element, index, array) {
         if ("disabled" == _this2.items[index].status) {
           if (
             0 != index &&
@@ -172,7 +181,10 @@ define([
           _this2.set("items." + index + ".status", "complete");
         } else if (index == _this2.active) {
           if (
-            babelHelpers.typeof(_this2._responseList[index]) === "undefined"
+            babelHelpers.typeof(_this2._responseList[index]) ===
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
           ) {
             _this2.items[index].status = "loading";
             _this2.set("items." + index + ".status", "loading");
@@ -192,7 +204,9 @@ define([
       if ("loading" == e.target.status) {
         if (
           babelHelpers.typeof(this.items[this.active].dataUrl) !==
-            "undefined" &&
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           !this.disableAjaxCalls
         ) {
           this.$.ajax.url = this.items[this.active].dataUrl;
@@ -234,7 +248,10 @@ define([
     },
     _handleNodeError: function _handleNodeError(newValue, oldValue) {
       if (
-        babelHelpers.typeof(oldValue) !== "undefined" &&
+        babelHelpers.typeof(oldValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         null != newValue &&
         0 != newValue.length
       ) {
@@ -287,7 +304,9 @@ define([
               "complete" == this.items[this.active].status &&
               "disabled" == this.items[this.active + 1].status) ||
             babelHelpers.typeof(this._responseList[this.active + 1]) ===
-              "undefined"
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
           ) {
             this.items[this.active + 1].status = "loading";
             this.set("items." + (this.active + 1) + ".status", "loading");

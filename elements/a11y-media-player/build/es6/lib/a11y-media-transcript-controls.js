@@ -85,10 +85,10 @@ Polymer({
     window.SimpleColorsUtility.requestAvailability();
     root.search = root.$.search;
     root.fire("searchbar-added", root.$.search);
-    root.$.scroll.addEventListener("button-clicked", function() {
+    root.$.scroll.addEventListener("button-clicked", function(e) {
       this.fire("toggle-scroll", this);
     });
-    root.$.print.addEventListener("button-clicked", function() {
+    root.$.print.addEventListener("button-clicked", function(e) {
       this.fire("print-transcript", this);
     });
   }

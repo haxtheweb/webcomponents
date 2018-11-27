@@ -45,4 +45,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
     <template is="dom-if" if="[[url]]">
       <iron-ajax auto="" url="[[url]]" handle-as="json" on-response="handleResponse"></iron-ajax>
     </template>
-`,is:"lrn-assignments",properties:{assignments:{type:Object,reflectToAttribute:!0,observer:"assignmentsChanged"},layout:{type:String,reflectToAttribute:!0},url:{type:String}},assignmentsChanged:function(assignments){if(1>=assignments.length){this.layout="wide"}else if(4>=assignments.length){this.layout="medium"}else if(6>=assignments.length){this.layout="tight"}},rowItemsChanged:function(){},handleResponse:function(data){this.assignments=data.response}});
+`,is:"lrn-assignments",properties:{assignments:{type:Object,reflectToAttribute:!0,observer:"assignmentsChanged"},layout:{type:String,reflectToAttribute:!0},url:{type:String}},assignmentsChanged:function(assignments){if(1>=assignments.length){this.layout="wide"}else if(4>=assignments.length){this.layout="medium"}else if(6>=assignments.length){this.layout="tight"}},rowItemsChanged:function(items){},handleResponse:function(data){this.assignments=data.response}});

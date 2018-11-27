@@ -38,7 +38,7 @@ Polymer({
   },
   attached: function() {
     this.$.scene.removeFullScreenStyles();
-    this.setHaxProperties({
+    let props = {
       canScale: !1,
       canPosition: !1,
       canEditSource: !1,
@@ -120,9 +120,10 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
-  _computePosition: function(x, y, z) {
+  _computePosition: function(x, y, z, width, height) {
     return { x: x, y: y, z: z };
   },
   _positionChanged: function(position) {
