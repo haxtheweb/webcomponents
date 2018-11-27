@@ -63,9 +63,11 @@
     "@polymer/paper-listbox": "^3.0.0",
     "@polymer/paper-toast": "^3.0.0",
     "@polymer/paper-tooltip": "^3.0.0",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.0.5",
+    "@lrnwebcomponents/simple-modal": "^0.0.35"
   },
   "devDependencies": {
+    "web-animations-js": "^2.3.1",
     "@lrnwebcomponents/deduping-fix": "^0.0.35",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",

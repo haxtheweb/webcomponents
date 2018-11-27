@@ -1,7 +1,10 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "./lib/lrn-vocab-dialog.js";
 /**
 `lrn-vocab`
@@ -11,7 +14,8 @@ Vocabulary term with visual treatment and semantic meaning.
 */
 Polymer({
   _template: html`
-    <style>
+  <custom-style>
+    <style is="custom-style">
       :host {
         display: inline-flex;
         --lrn-vocab-border: 1px dashed #ccc;
@@ -33,13 +37,8 @@ Polymer({
         @apply --lrn-vocab-button-hover
       }
     </style>
-
-    <div>
-      <paper-button id="button" noink="">[[term]]</paper-button>
-    </div>
-    <lrn-vocab-dialog id="dialog" opened="{{opened}}" term="[[term]]">
-      <slot></slot>
-    </lrn-vocab-dialog>
+  </custom-style>
+  <paper-button id="button" noink on-tap="openDialog">[[term]]</paper-button>
 `,
 
   is: "lrn-vocab",
@@ -53,35 +52,37 @@ Polymer({
     term: {
       type: String,
       reflectToAttribute: true
-    },
-    /**
-     * Tracking the state of the dialog
-     */
-    opened: {
-      type: Boolean,
-      value: false
     }
   },
-
   /**
-   * Ready life cycle
+   * Request the singleton dialog open
    */
-  ready: function() {
-    this.$.button.addEventListener("click", e => {
-      this.opened = !this.opened;
+  openDialog: function(e) {
+    let children = FlattenedNodesObserver.getFlattenedNodes(this).filter(
+      n => n.nodeType === Node.ELEMENT_NODE
+    );
+    let c = document.createElement("div");
+    for (var child in children) {
+      c.appendChild(children[child].cloneNode(true));
+    }
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        title: this.term,
+        elements: {
+          content: c
+        },
+        invokedBy: this.$.button
+      }
     });
-    // track this specific element to later match
-    this.__modal = this.$.dialog;
+    this.dispatchEvent(evt);
   },
-
   /**
    * Attached life cycle
    */
   attached: function() {
-    document.body.addEventListener(
-      "lrn-vocab-dialog-closed",
-      this._accessibleFocus.bind(this)
-    );
+    window.simpleModal.requestAvailability();
     // Establish hax properties if they exist
     let props = {
       canScale: false,
@@ -135,19 +136,5 @@ Polymer({
       }
     };
     this.setHaxProperties(props);
-  },
-
-  /**
-   * Set ourselves as having focus after the modal closes.
-   */
-  _accessibleFocus: function(e) {
-    // this is OUR modal, we found her, oh modal, We've missed
-    // you so much. thank you for coming home. We're so, so, so
-    // sorry that we appended you to the body. We'll never do it
-    // again (until the next time you open).
-    if (e.detail === this.__modal) {
-      // focus on our dialog triggering button
-      this.$.button.focus();
-    }
   }
 });

@@ -151,11 +151,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 81,
+              "line": 58,
               "column": 4
             },
             "end": {
-              "line": 84,
+              "line": 61,
               "column": 5
             }
           },
@@ -173,11 +173,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 88,
+              "line": 65,
               "column": 4
             },
             "end": {
-              "line": 91,
+              "line": 68,
               "column": 5
             }
           },
@@ -195,11 +195,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 95,
+              "line": 72,
               "column": 4
             },
             "end": {
-              "line": 98,
+              "line": 75,
               "column": 5
             }
           },
@@ -217,11 +217,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 102,
+              "line": 79,
               "column": 4
             },
             "end": {
-              "line": 106,
+              "line": 83,
               "column": 5
             }
           },
@@ -239,11 +239,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 110,
+              "line": 87,
               "column": 4
             },
             "end": {
-              "line": 114,
+              "line": 91,
               "column": 5
             }
           },
@@ -257,16 +257,36 @@
       ],
       "methods": [
         {
-          "name": "ready",
-          "description": "when ready, set an event for when the hdetails dialog is mouseout or blur",
+          "name": "attached",
+          "description": "attached life cycle",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 120,
+              "line": 97,
               "column": 2
             },
             "end": {
-              "line": 138,
+              "line": 104,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "detached",
+          "description": "detached life cycle",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 108,
+              "column": 2
+            },
+            "end": {
+              "line": 114,
               "column": 3
             }
           },
@@ -282,11 +302,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 143,
+              "line": 119,
               "column": 2
             },
             "end": {
-              "line": 228,
+              "line": 203,
               "column": 3
             }
           },
@@ -302,15 +322,15 @@
         },
         {
           "name": "openHotspot",
-          "description": "Selects a hotspot and opens hdetails dialog with details about it.",
+          "description": "Selects a hotspot and opens dialog with details about it.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 233,
+              "line": 208,
               "column": 2
             },
             "end": {
-              "line": 251,
+              "line": 232,
               "column": 3
             }
           },
@@ -333,11 +353,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 256,
+              "line": 237,
               "column": 2
             },
             "end": {
-              "line": 262,
+              "line": 240,
               "column": 3
             }
           },
@@ -349,15 +369,15 @@
         },
         {
           "name": "resetHotspots",
-          "description": "Closes hdetails dialog and deselects all hotspots.",
+          "description": "Closes dialog and deselects all hotspots.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 267,
+              "line": 245,
               "column": 2
             },
             "end": {
-              "line": 272,
+              "line": 250,
               "column": 3
             }
           },
@@ -382,7 +402,7 @@
           "column": 8
         },
         "end": {
-          "line": 273,
+          "line": 251,
           "column": 1
         }
       },
@@ -394,11 +414,11 @@
           "description": "Label for the imagemap",
           "sourceRange": {
             "start": {
-              "line": 81,
+              "line": 58,
               "column": 4
             },
             "end": {
-              "line": 84,
+              "line": 61,
               "column": 5
             }
           },
@@ -410,11 +430,11 @@
           "description": "The path of the SVG",
           "sourceRange": {
             "start": {
-              "line": 88,
+              "line": 65,
               "column": 4
             },
             "end": {
-              "line": 91,
+              "line": 68,
               "column": 5
             }
           },
@@ -426,11 +446,11 @@
           "description": "The path of the SVG",
           "sourceRange": {
             "start": {
-              "line": 95,
+              "line": 72,
               "column": 4
             },
             "end": {
-              "line": 98,
+              "line": 75,
               "column": 5
             }
           },
@@ -442,11 +462,11 @@
           "description": "optional: the id of the heading element that this imagemap is a subtopic of",
           "sourceRange": {
             "start": {
-              "line": 102,
+              "line": 79,
               "column": 4
             },
             "end": {
-              "line": 106,
+              "line": 83,
               "column": 5
             }
           },
@@ -458,11 +478,11 @@
           "description": "optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...",
           "sourceRange": {
             "start": {
-              "line": 110,
+              "line": 87,
               "column": 4
             },
             "end": {
-              "line": 114,
+              "line": 91,
               "column": 5
             }
           },

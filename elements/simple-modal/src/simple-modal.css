@@ -5,24 +5,69 @@
 :host([hidden]) {
   display: none;
 }
+:host ::slotted(*) {
+  font-size: 14px;
+  @apply --simple-modal-content;
+}
+
+paper-dialog-scrollable {
+  padding: 8px 24px;
+  @apply --simple-modal-content-container;
+}
+#dialog {
+  display: block;
+  margin: auto;
+  width: auto;
+  height: auto;
+  z-index: 1000;
+  min-width: 50vw;
+  min-height: 50vh;
+  @apply --simple-modal-dialog;
+}
+.buttons {
+  padding: 8px 24px;
+  @apply --simple-modal-buttons;
+}
 
 #close {
-  float: right;
   top: 0;
-  font-size: 12px;
+  font-size: 14px;
   text-transform: none;
   right: 0;
   position: absolute;
   padding: 4px;
-  margin: 0;
-  color: var(--simple-modal-color, black);
+  margin: 4px;
+  color: var(--simple-modal-text, #ffffff);
   background-color: transparent;
   min-width: unset;
+  line-height: 32px;
+  @apply --simple-modal-close;
 }
 
 #close iron-icon {
   display: inline-block;
+  color: var(--simple-modal-text, #ffffff);
   width: 16px;
   height: 16px;
-  margin-right: 2px;
+  margin-right: 4px;
+  @apply --simple-modal-close-icon;
+}
+
+.top {
+  display: flex;
+  margin-top: 0;
+  justify-content: space-between;
+  background-color: var(--simple-modal-background, #20427b);
+  color: var(--simple-modal-text, #ffffff);
+  padding: 8px 16px;
+  @apply --simple-modal-top;
+}
+.top h2 {
+  color: var(--simple-modal-text, #ffffff);
+  font-size: 32px;
+  text-transform: capitalize;
+  padding: 0;
+  line-height: 32px;
+  margin: 8px;
+  @apply --simple-modal-heading;
 }
