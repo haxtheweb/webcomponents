@@ -2,20 +2,20 @@ define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./node_modules/@lrnwebcomponents/lrndesign-panelcard/lrndesign-panelcard.js",
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _lrndesignPanelcard, _HAXWiring) {
   "use strict";
-  function _templateObject_b1b976d0ecf311e895b21188cc7becb5() {
+  function _templateObject_143f6070f1e611e8a72db1705a942e8b() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n      :host {\n        display: flex;\n\t\t    padding: 8px;\n      }\n      :host([sticky]) {\n        top:0;\n        position: sticky;\n      }\n      :host([direction='left']) {\n        float: left;\n        max-width: 480px;\n      }\n      :host([direction='right']) {\n        float: right;\n        max-width: 480px;\n      }\n    </style>\n    <aside>\n      <lrndesign-panelcard title=\"[[title]]\">\n        <slot></slot>\n      </lrndesign-panelcard>\n    </aside>\n"
     ]);
-    _templateObject_b1b976d0ecf311e895b21188cc7becb5 = function() {
+    _templateObject_143f6070f1e611e8a72db1705a942e8b = function _templateObject_143f6070f1e611e8a72db1705a942e8b() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_b1b976d0ecf311e895b21188cc7becb5()
+      _templateObject_143f6070f1e611e8a72db1705a942e8b()
     ),
     is: "lrn-aside",
     behaviors: [HAXBehaviors.PropertiesBehaviors],
@@ -25,7 +25,7 @@ define([
       direction: { type: String, value: "", reflectToAttribute: !0 }
     },
     attached: function attached() {
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !1,
@@ -80,7 +80,8 @@ define([
           ],
           advanced: []
         }
-      });
+      };
+      this.setHaxProperties(props);
     }
   });
 });

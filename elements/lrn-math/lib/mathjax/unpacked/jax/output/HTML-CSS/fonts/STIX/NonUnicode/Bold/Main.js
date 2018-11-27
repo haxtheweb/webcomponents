@@ -18,18 +18,19 @@
  *
  */
 
-MathJax.OutputJax['HTML-CSS'].FONTDATA.FONTS['STIXNonUnicode-bold'] = {
-  directory: 'NonUnicode/Bold',
-  family: 'STIXNonUnicode',
-  weight: 'bold',
+MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS["STIXNonUnicode-bold"] = {
+  directory: "NonUnicode/Bold",
+  family: "STIXNonUnicode",
+  weight: "bold",
   Ranges: [
-    [0x20,0x20,"All"],
-    [0xA0,0xA0,"All"],
-    [0xE000,0xF8FF,"PrivateUse"]
+    [0x20, 0x20, "All"],
+    [0xa0, 0xa0, "All"],
+    [0xe000, 0xf8ff, "PrivateUse"]
   ]
-
 };
 
 MathJax.OutputJax["HTML-CSS"].initFont("STIXNonUnicode-bold");
 
-MathJax.Ajax.loadComplete(MathJax.OutputJax["HTML-CSS"].fontDir + "/NonUnicode/Bold/Main.js");
+MathJax.Ajax.loadComplete(
+  MathJax.OutputJax["HTML-CSS"].fontDir + "/NonUnicode/Bold/Main.js"
+);

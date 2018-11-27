@@ -4,21 +4,30 @@ define([
   "../node_modules/@polymer/iron-icons/iron-icons.js",
   "../node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js",
   "../node_modules/@polymer/paper-card/paper-card.js",
+  "../node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-drawer.js",
   "../node_modules/@polymer/iron-ajax/iron-ajax.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _paperButton,
+  _ironIcons,
+  _colors,
+  _paperCard,
+  _lrnsysDrawer,
+  _ironAjax
+) {
   "use strict";
-  function _templateObject_59978e00ecf411e88a03094523bc0888() {
+  function _templateObject_67a440f0f1e611e89a8a7d26a5be1eb2() {
     var data = babelHelpers.taggedTemplateLiteral([
-      '\n    <style include="materializecss-styles-colors">\n      :host {\n        display: block;\n      }\n      ::-webkit-scrollbar {\n        width: 0px;  /* remove scrollbar space */\n        background: transparent;  /* optional: just make scrollbar invisible */\n      }\n\n      .month {\n        width: 100%;\n        height: 20vh;\n        vertical-align: top;\n        overflow: scroll;\n      }\n      .week{\n        width: 100%;\n        height: 40vh;\n        vertical-align: top;\n        overflow: scroll;\n      }\n      .card-content{\n        position: relative;\n        bottom: 10px;\n        white-space: nowrap;\n        font-size: 12px;\n        padding: 0px 5px;\n        line-height: 7px;\n      }\n      .label{\n        width: 100%\n      }\n    </style>\n  \n      <div id="test">\n        <div>\n          <template is="dom-if" if="[[firstWeek]]">\n            <paper-card class="label">\n            <h3>[[getWeek(date)]]</h3>\n            </paper-card>\n          </template>\n        </div>\n        <paper-card class$="{{view}}" id="dateHeader">\n            <h5>[[getMonth(date)]]</h5>\n          <template is="dom-repeat" items="{{events}}">\n              <div class="card-content">\n                <lrnsys-drawer text="[[timeString(item.event.startDate._time.hour, item.event.startDate._time.minute, item.event.endDate._time.hour,item.event.endDate._time.minute)]] {{item.event.summary}}" header="[[getDateString(date)]]" align="left" heading-class="orange lighten-3 blue-text text-darken-4" style$="[[computeStyle(item)]];overflow:auto;">\n                [[displayActivity(item)]] <br/><br/>[[displayStart(item)]]<br><br>[[displayEnd(item)]]<br><br>[[displayDuration(item)]]<br><br>[[displayDescription(item)]]<br><br>[[displayLocation(item)]]\n                </lrnsys-drawer>\n              </div>\n          </template>\n        </paper-card>\n      </div>\n'
+      '\n    <style include="materializecss-styles-colors">\n      :host {\n        display: block;\n      }\n      ::-webkit-scrollbar {\n        width: 0px;  /* remove scrollbar space */\n        background: transparent;  /* optional: just make scrollbar invisible */\n      }\n\n      .month {\n        width: 100%;\n        height: 20vh;\n        vertical-align: top;\n        overflow: scroll;\n      }\n      .week{\n        width: 100%;\n        height: 40vh;\n        vertical-align: top;\n        overflow: scroll;\n      }\n      .card-content{\n        position: relative;\n        bottom: 10px;\n        white-space: nowrap;\n        font-size: 12px;\n        padding: 0px 5px;\n        line-height: 7px;\n      }\n      .label{\n        width: 100%\n      }\n    </style>\n  \n      <div id="test">\n        <div>\n          <template is="dom-if" if="[[firstWeek]]">\n            <paper-card class="label">\n              <h3>[[getWeek(date)]]</h3>\n            </paper-card>\n          </template>\n        </div>\n        <paper-card class$="[[view]]" id="dateHeader">\n          <h5>[[getMonth(date)]]</h5>\n          <template is="dom-repeat" items="{{events}}">\n              <div class="card-content">\n                <lrnsys-drawer text="[[timeString(item.event.startDate._time.hour, item.event.startDate._time.minute, item.event.endDate._time.hour,item.event.endDate._time.minute)]] {{item.event.summary}}" header="[[getDateString(date)]]" align="left" heading-class="orange lighten-3 blue-text text-darken-4" style$="[[computeStyle(item)]];overflow:auto;">\n                [[displayActivity(item)]] <br/><br/>[[displayStart(item)]]<br><br>[[displayEnd(item)]]<br><br>[[displayDuration(item)]]<br><br>[[displayDescription(item)]]<br><br>[[displayLocation(item)]]\n                </lrnsys-drawer>\n              </div>\n          </template>\n        </paper-card>\n      </div>\n'
     ]);
-    _templateObject_59978e00ecf411e88a03094523bc0888 = function() {
+    _templateObject_67a440f0f1e611e89a8a7d26a5be1eb2 = function _templateObject_67a440f0f1e611e89a8a7d26a5be1eb2() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_59978e00ecf411e88a03094523bc0888()
+      _templateObject_67a440f0f1e611e89a8a7d26a5be1eb2()
     ),
     is: "lrn-calendar-date",
     properties: {
@@ -32,33 +41,32 @@ define([
     },
     getMonth: function getMonth(date) {
       var monthInt = date.getMonth(),
-        day = date.getDate();
+        day = date.getDate(),
+        monthsArray = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec"
+        ];
       if (1 == day) {
-        monthstring =
-          [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec"
-          ][monthInt] +
-          " " +
-          day;
+        monthstring = monthsArray[monthInt] + " " + day;
       } else {
         monthstring = day;
       }
       return monthstring;
     },
     getWeek: function getWeek(date) {
-      var weekdays = date.getDay();
-      return ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][weekdays];
+      var weekdays = date.getDay(),
+        weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      return weekArray[weekdays];
     },
     timeString: function timeString(
       startHour,
@@ -71,7 +79,8 @@ define([
         startHour -= 12;
       } else if (0 == startHour) {
         if (0 == startMinute && 0 == endHour && 0 == endMinute) {
-          return "";
+          var allDayText = "";
+          return allDayText;
         } else {
           startHour = "12";
         }
@@ -92,9 +101,8 @@ define([
     },
     getDateString: function getDateString(date) {
       var monthInt = date.getMonth(),
-        day = date.getDate();
-      monthstring =
-        [
+        day = date.getDate(),
+        monthsArray = [
           "January",
           "February",
           "March",
@@ -107,11 +115,9 @@ define([
           "October",
           "November",
           "December"
-        ][monthInt] +
-        " " +
-        date.getDate() +
-        " " +
-        date.getFullYear();
+        ];
+      monthstring =
+        monthsArray[monthInt] + " " + date.getDate() + " " + date.getFullYear();
       return monthstring;
     },
     displayActivity: function displayActivity(e) {

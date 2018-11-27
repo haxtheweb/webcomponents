@@ -16,4 +16,19 @@
  *  limitations under the License.
  */
 
-MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS.NeoEulerMathJax_Alphabets={directory:"Alphabets/Regular",family:"NeoEulerMathJax_Alphabets",testString:"\u00A0\u2126",32:[0,0,333,0,0],160:[0,0,333,0,0],8486:[689,2,875,25,844]};MathJax.Callback.Queue(["initFont",MathJax.OutputJax["HTML-CSS"],"NeoEulerMathJax_Alphabets"],["loadComplete",MathJax.Ajax,MathJax.OutputJax["HTML-CSS"].fontDir+"/Alphabets/Regular/Main.js"]);
+MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS.NeoEulerMathJax_Alphabets = {
+  directory: "Alphabets/Regular",
+  family: "NeoEulerMathJax_Alphabets",
+  testString: "\u00A0\u2126",
+  32: [0, 0, 333, 0, 0],
+  160: [0, 0, 333, 0, 0],
+  8486: [689, 2, 875, 25, 844]
+};
+MathJax.Callback.Queue(
+  ["initFont", MathJax.OutputJax["HTML-CSS"], "NeoEulerMathJax_Alphabets"],
+  [
+    "loadComplete",
+    MathJax.Ajax,
+    MathJax.OutputJax["HTML-CSS"].fontDir + "/Alphabets/Regular/Main.js"
+  ]
+);

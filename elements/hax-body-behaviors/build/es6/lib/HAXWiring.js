@@ -166,7 +166,7 @@ export class HAXWiring {
         }
       } else {
         console.warn(
-          "This is't a valid usage of hax-body-behaviors API. See hax-body-behaviors for more details on how to implement the API. Most likely your hax item just was placed in an iframe as a fallback as opposed to a custom element."
+          "This is't a valid usage of hax API. See hax-body-behaviors/lib/HAXWiring.js for more details on how to implement the API. Most likely your hax item just was placed in an iframe as a fallback as opposed to a custom element."
         );
       }
     };
@@ -548,7 +548,7 @@ export class HAXWiring {
       }
     };
     this.validHAXPropertyInputMethod = () => {
-      return [
+      var methods = [
         "flipboolean",
         "boolean",
         "select",
@@ -562,9 +562,10 @@ export class HAXWiring {
         "code-editor",
         "array"
       ];
+      return methods;
     };
     this.prototypeHaxProperties = () => {
-      return {
+      let props = {
         api: "1",
         canScale: !0,
         canPosition: !0,
@@ -658,6 +659,7 @@ export class HAXWiring {
           unsetAttributes: ["end-point", "secondary-color"]
         }
       };
+      return props;
     };
   }
 }

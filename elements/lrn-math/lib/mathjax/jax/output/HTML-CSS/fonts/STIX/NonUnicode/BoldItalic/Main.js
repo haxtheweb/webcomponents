@@ -16,4 +16,14 @@
  *  limitations under the License.
  */
 
-MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS["STIXNonUnicode-bold-italic"]={directory:"NonUnicode/BoldItalic",family:"STIXNonUnicode",weight:"bold",style:"italic",Ranges:[[32,32,"All"],[160,160,"All"],[57344,63743,"PrivateUse"]]};MathJax.OutputJax["HTML-CSS"].initFont("STIXNonUnicode-bold-italic");MathJax.Ajax.loadComplete(MathJax.OutputJax["HTML-CSS"].fontDir+"/NonUnicode/BoldItalic/Main.js");
+MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS["STIXNonUnicode-bold-italic"] = {
+  directory: "NonUnicode/BoldItalic",
+  family: "STIXNonUnicode",
+  weight: "bold",
+  style: "italic",
+  Ranges: [[32, 32, "All"], [160, 160, "All"], [57344, 63743, "PrivateUse"]]
+};
+MathJax.OutputJax["HTML-CSS"].initFont("STIXNonUnicode-bold-italic");
+MathJax.Ajax.loadComplete(
+  MathJax.OutputJax["HTML-CSS"].fontDir + "/NonUnicode/BoldItalic/Main.js"
+);

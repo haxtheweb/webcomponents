@@ -137,7 +137,7 @@ Polymer({
     position: { type: String }
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !0,
@@ -222,7 +222,8 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
   _computeColorClass: function(color) {
     if (null != color && "#" == color.substring(0, 1)) {

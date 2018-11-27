@@ -3,20 +3,20 @@ define([
   "../node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
   "../node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
   "../a11y-collapse.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _HAXWiring, _schemaBehaviors, _a11yCollapse) {
   "use strict";
-  function _templateObject_47ea2c50ecf211e89329630396a69cbf() {
+  function _templateObject_ed664460f1e411e8aecbdb72e8c3acca() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n        @apply --a11y-collapse-group;\n      }\n      :host #heading {\n        font-weight: bold;\n        @apply --a11y-collapse-group-heading;\n      }\n      :host ::slotted(a11y-collapse){\n        margin: 0;\n        border-radius: 0;\n      }\n      :host ::slotted(a11y-collapse):not(:first-of-type) {\n        border-top: none;\n      }\n    </style>\n    <slot id="heading"></slot>\n    <slot></slot>\n'
     ]);
-    _templateObject_47ea2c50ecf211e89329630396a69cbf = function() {
+    _templateObject_ed664460f1e411e8aecbdb72e8c3acca = function _templateObject_ed664460f1e411e8aecbdb72e8c3acca() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_47ea2c50ecf211e89329630396a69cbf()
+      _templateObject_ed664460f1e411e8aecbdb72e8c3acca()
     ),
     is: "a11y-collapse-group",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
@@ -46,7 +46,7 @@ define([
       }
       this.push("__items", item);
     },
-    _detachItem: function _detachItem() {
+    _detachItem: function _detachItem(item) {
       for (var i = 0; i < this.__items.length; i++) {
         if (this.__items[i] === e.detail) this.splice("_items", i, 1);
       }
@@ -71,7 +71,7 @@ define([
       this.set("__items", []);
     },
     attached: function attached() {
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !1,
@@ -106,7 +106,8 @@ define([
           ],
           advanced: []
         }
-      });
+      };
+      this.setHaxProperties(props);
     }
   });
 });

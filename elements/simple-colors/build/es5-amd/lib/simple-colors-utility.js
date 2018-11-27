@@ -263,7 +263,10 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
   window.SimpleColorsUtility.addStyles = function() {
     var root = this,
       css = "",
-      addTheme = function(selector, prefix, reverse) {
+      addProp = function addProp(prop, val) {
+        return prop + ": " + val + "; \n";
+      },
+      addTheme = function addTheme(selector, prefix, reverse) {
         css += selector + " { ";
         for (var property in root.hexCodes) {
           if (
@@ -294,7 +297,7 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
         css += " } \n\n";
         return css;
       },
-      addClasses = function() {
+      addClasses = function addClasses(prefix) {
         for (var property in root.hexCodes) {
           if (
             "colorLevels" !== property &&
@@ -336,7 +339,7 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
         css += "\n";
         return css;
       },
-      addClass = function(prop, prefix, suffix, type, style, hex) {
+      addClass = function addClass(prop, prefix, suffix, type, style, hex) {
         var color = "" === prop ? "none" : prop,
           accent = prefix + "accent-" + suffix + type,
           varName =
@@ -363,7 +366,7 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
                 "); \n}\n";
         return css;
       },
-      addAccent = function(prefix, color) {
+      addAccent = function addAccent(prefix, color) {
         for (var i = 0; 10 > i; i++) {
           var suffix = 5 > i ? "-foreground" : "-background",
             level = 5 > i ? i + 1 : i - 4,

@@ -5,9 +5,16 @@ define([
   "./node_modules/@lrnwebcomponents/to-do/to-do.js",
   "./node_modules/@polymer/paper-card/paper-card.js",
   "./node_modules/@polymer/paper-button/paper-button.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _simpleTimer,
+  _lrnsysDialogModal,
+  _toDo,
+  _paperCard,
+  _paperButton
+) {
   "use strict";
-  function _templateObject_ad81f230ecf411e89e21d562a6c9946f() {
+  function _templateObject_85929b70f1e611e8a51bfd7743588ba5() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <paper-card heading="[[haxText]]" elevation="1">\n      <simple-timer id="timer" start-time="60" count-up="" hidden="" current-time="{{timer}}"></simple-timer>\n      <div class="card-content">\n        <to-do items="{{tasks}}" hide-form="" id="todo" name="Hax Challenge"></to-do>\n      </div>\n      <div class="card-actions">\n        <paper-button raised="" on-tap="_playButton">Play</paper-button>\n        <paper-button raised="" on-tap="_resetTimer">Reset</paper-button>\n      </div>\n    </paper-card>\n\n    <lrnsys-dialog-modal id="modal" body-append="">\n      <h3 slot="header">HAX Challenge score</h3>\n      <div slot="primary">\n        <p>[[__successText]]\n          <a href="https://github.com/LRNWebComponents/hax-body/issues/new" target="_blank" style="text-decoration: none;text-transform: none;"><paper-button raised="">Give us feedback to improve</paper-button></a>\n          <a href$="[[tweet]]" target="_blank" style="text-decoration: none;text-transform: none;"><paper-button raised="">Tweet your score</paper-button></a>\n      \t</p>\n        <to-do name="Report card" hide-form="" items="{{__score}}"></to-do>\n      </div>\n    </lrnsys-dialog-modal>\n'
@@ -16,14 +23,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <paper-card heading="[[haxText]]" elevation="1">\n      <simple-timer id="timer" start-time="60" count-up="" hidden="" current-time="{{timer}}"></simple-timer>\n      <div class="card-content">\n        <to-do items="{{tasks}}" hide-form="" id="todo" name="Hax Challenge"></to-do>\n      </div>\n      <div class="card-actions">\n        <paper-button raised="" on-tap="_playButton">Play</paper-button>\n        <paper-button raised="" on-tap="_resetTimer">Reset</paper-button>\n      </div>\n    </paper-card>\n\n    <lrnsys-dialog-modal id="modal" body-append="">\n      <h3 slot="header">HAX Challenge score</h3>\n      <div slot="primary">\n        <p>[[__successText]]\n          <a href="https://github.com/LRNWebComponents/hax-body/issues/new" target="_blank" style="text-decoration: none;text-transform: none;"><paper-button raised="">Give us feedback to improve</paper-button></a>\n          <a href\\$="[[tweet]]" target="_blank" style="text-decoration: none;text-transform: none;"><paper-button raised="">Tweet your score</paper-button></a>\n      \t</p>\n        <to-do name="Report card" hide-form="" items="{{__score}}"></to-do>\n      </div>\n    </lrnsys-dialog-modal>\n'
       ]
     );
-    _templateObject_ad81f230ecf411e89e21d562a6c9946f = function() {
+    _templateObject_85929b70f1e611e8a51bfd7743588ba5 = function _templateObject_85929b70f1e611e8a51bfd7743588ba5() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_ad81f230ecf411e89e21d562a6c9946f()
+      _templateObject_85929b70f1e611e8a51bfd7743588ba5()
     ),
     is: "silly-hax-game",
     properties: {
@@ -39,13 +46,13 @@ define([
         reflectToAttribute: !0
       }
     },
-    _playButton: function _playButton() {
+    _playButton: function _playButton(e) {
       if (!this.playing) {
         this.playing = !0;
         this.$.timer.start();
       }
     },
-    _playGame: function _playGame(newValue) {
+    _playGame: function _playGame(newValue, oldValue) {
       if (newValue) {
         this.__started = !0;
         this.set("tasks", []);
@@ -73,14 +80,20 @@ define([
         );
       }
     },
-    _resetTimer: function _resetTimer() {
+    _resetTimer: function _resetTimer(e) {
       this.$.timer.pause();
       this.playing = !1;
       this.timer = 0;
       this.set("tasks", []);
     },
     _haxTextValue: function _haxTextValue(time) {
-      if (babelHelpers.typeof(time) === "undefined" || 60 == time) {
+      if (
+        babelHelpers.typeof(time) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) ||
+        60 == time
+      ) {
         return "Take the HAX challenge";
       } else {
         return time.toFixed(2);
@@ -103,7 +116,10 @@ define([
             this.playing &&
             this.__started &&
             e.detail.value &&
-            babelHelpers.typeof(this.tasks[0].label) !== "undefined"
+            babelHelpers.typeof(this.tasks[0].label) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
           ) {
             this.set("tasks.0.value", !0);
             this.set(

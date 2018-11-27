@@ -11,11 +11,15 @@ define([
   _polymerLegacy,
   async,
   _ironFlexLayoutClasses,
-  _appLocalizeBehavior
+  _appLocalizeBehavior,
+  _paperButton,
+  _paperInput,
+  _ironIcon,
+  _ironIcons
 ) {
   "use strict";
   async = babelHelpers.interopRequireWildcard(async);
-  function _templateObject_d6e5ad90ecf111e88a0b4725ebfbecff() {
+  function _templateObject_8efccd90f1e411e8bd8eaf7090426072() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n  <style is="custom-style" include="iron-flex iron-flex-alignment">\n\t\t\tpaper-input {\n\t\t\t\tpadding: 2px;\n\t\t\t\t--paper-input-container-label: {\n\t\t\t\t\twhite-space: normal;\n\t\t\t\t\tposition: static;\n\t\t\t\t\tfont-size: 22px;\n\t\t\t\t\tcolor: #212121;\n\t\t\t\t}\n\t\t\t}\n\n\t\t\t:host {\n\t\t\t\tdisplay: inline-block;\n\t\t\t}\n\n\t\t\t.enabled {\n\t\t\t\tborder: 1px dashed #555;\n\t\t\t\t@apply --file-upload-upload-border-enabled;\n\t\t\t}\n\n\t\t\t.hover {\n\t\t\t\topacity: .7;\n\t\t\t\tborder: 1px dashed #111;\n\t\t\t\t@apply --file-upload-upload-border-hover;\n\t\t\t}\n\n\t\t\t#UploadBorder {\n\t\t\t\tvertical-align: middle;\n\t\t\t\tcolor: #555;\n\t\t\t\tpadding: 20px;\n\t\t\t\tmax-height: 300px;\n\t\t\t\toverflow-y: auto;\n\t\t\t\tdisplay: inline-block;\n\t\t\t\t@apply --file-upload-upload-border;\n\t\t\t}\n\n\t\t\t#dropArea {\n\t\t\t\ttext-align: center;\n\t\t\t\t@apply --file-upload-drop-area;\n\t\t\t}\n\n\t\t\tpaper-button#button {\n\t\t\t\tmargin-bottom: 20px;\n\t\t\t\t@apply --file-upload-button;\n\t\t\t}\n\n\t\t\t.file {\n\t\t\t\tpadding: 10px 0px;\n\t\t\t\t@apply --file-upload-file;\n\t\t\t}\n\n\t\t\t.commands {\n\t\t\t\tfloat: right;\n\t\t\t\t@apply --file-upload-commands;\n\t\t\t}\n\n\t\t\t.commands iron-icon:not([icon="check-circle"]) {\n\t\t\t\tcursor: pointer;\n\t\t\t\topacity: .9;\n\t\t\t\t@apply --file-upload-commands-faded;\n\t\t\t}\n\n\t\t\t.commands iron-icon:hover {\n\t\t\t\topacity: 1;\n\t\t\t\t@apply --file-upload-commands-hovered;\n\t\t\t}\n\n\t\t\t[hidden] {\n\t\t\t\tdisplay: none;\n\t\t\t}\n\n\t\t\t.error {\n\t\t\t\tcolor: #f40303;\n\t\t\t\tfont-size: 11px;\n\t\t\t\tmargin-top: 2px;\n\t\t\t\t@apply --file-upload-error;\n\t\t\t}\n\n\t\t\t.progress-bar {\n\t\t\t\tmargin-top: 2px;\n\t\t\t}\n\n\t\t\tpaper-progress {\n\t\t\t\t--paper-progress-active-color: #03a9f4;\n\t\t\t}\n\n\t\t\tpaper-progress[error] {\n\t\t\t\t--paper-progress-active-color: #f40303;\n\t\t\t}\n\t\t</style>\n\n\t\t<div class="layout horizontal nowrap">\n\t\t\t<div>\n\t\t\t\t<paper-button id="button" on-click="_fileClick" alt="{{paperButtonAlt}}" raised="">\n\t\t\t\t\t<iron-icon icon="editor:attach-file"></iron-icon>{{paperButtonTitle}}</paper-button>\n\t\t\t\t<div id="UploadBorder">\n\t\t\t\t\t<div id="dropArea" hidden$="{{!_shownDropText}}">{{dropText}}</div>\n\t\t\t\t\t<template is="dom-repeat" items="{{files}}">\n\t\t\t\t\t\t<div class="file">\n\t\t\t\t\t\t\t<div class="name"><span>{{item.name}}</span>\n\t\t\t\t\t\t\t\t<div class="commands">\n\t\t\t\t\t\t\t\t\t<iron-icon icon="autorenew" title="{{retryText}}" on-click="_retryUpload" hidden$="{{!item.error}}"></iron-icon>\n\t\t\t\t\t\t\t\t\t<iron-icon icon="cancel" title="{{removeText}}" on-click="_cancelUpload" hidden$="{{item.complete}}"></iron-icon>\n\t\t\t\t\t\t\t\t\t<iron-icon icon="check-circle" title="{{successText}}" hidden$="{{!item.complete}}"></iron-icon>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class="error" hidden$="{{!item.error}}">{{errorText}}</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</template>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<input type="file" id="fileInput" on-change="_fileChange" hidden="" multiple="{{multi}}" accept="{{accept}}">\n    </div>\n'
@@ -24,7 +28,7 @@ define([
         '\n  <style is="custom-style" include="iron-flex iron-flex-alignment">\n\t\t\tpaper-input {\n\t\t\t\tpadding: 2px;\n\t\t\t\t--paper-input-container-label: {\n\t\t\t\t\twhite-space: normal;\n\t\t\t\t\tposition: static;\n\t\t\t\t\tfont-size: 22px;\n\t\t\t\t\tcolor: #212121;\n\t\t\t\t}\n\t\t\t}\n\n\t\t\t:host {\n\t\t\t\tdisplay: inline-block;\n\t\t\t}\n\n\t\t\t.enabled {\n\t\t\t\tborder: 1px dashed #555;\n\t\t\t\t@apply --file-upload-upload-border-enabled;\n\t\t\t}\n\n\t\t\t.hover {\n\t\t\t\topacity: .7;\n\t\t\t\tborder: 1px dashed #111;\n\t\t\t\t@apply --file-upload-upload-border-hover;\n\t\t\t}\n\n\t\t\t#UploadBorder {\n\t\t\t\tvertical-align: middle;\n\t\t\t\tcolor: #555;\n\t\t\t\tpadding: 20px;\n\t\t\t\tmax-height: 300px;\n\t\t\t\toverflow-y: auto;\n\t\t\t\tdisplay: inline-block;\n\t\t\t\t@apply --file-upload-upload-border;\n\t\t\t}\n\n\t\t\t#dropArea {\n\t\t\t\ttext-align: center;\n\t\t\t\t@apply --file-upload-drop-area;\n\t\t\t}\n\n\t\t\tpaper-button#button {\n\t\t\t\tmargin-bottom: 20px;\n\t\t\t\t@apply --file-upload-button;\n\t\t\t}\n\n\t\t\t.file {\n\t\t\t\tpadding: 10px 0px;\n\t\t\t\t@apply --file-upload-file;\n\t\t\t}\n\n\t\t\t.commands {\n\t\t\t\tfloat: right;\n\t\t\t\t@apply --file-upload-commands;\n\t\t\t}\n\n\t\t\t.commands iron-icon:not([icon="check-circle"]) {\n\t\t\t\tcursor: pointer;\n\t\t\t\topacity: .9;\n\t\t\t\t@apply --file-upload-commands-faded;\n\t\t\t}\n\n\t\t\t.commands iron-icon:hover {\n\t\t\t\topacity: 1;\n\t\t\t\t@apply --file-upload-commands-hovered;\n\t\t\t}\n\n\t\t\t[hidden] {\n\t\t\t\tdisplay: none;\n\t\t\t}\n\n\t\t\t.error {\n\t\t\t\tcolor: #f40303;\n\t\t\t\tfont-size: 11px;\n\t\t\t\tmargin-top: 2px;\n\t\t\t\t@apply --file-upload-error;\n\t\t\t}\n\n\t\t\t.progress-bar {\n\t\t\t\tmargin-top: 2px;\n\t\t\t}\n\n\t\t\tpaper-progress {\n\t\t\t\t--paper-progress-active-color: #03a9f4;\n\t\t\t}\n\n\t\t\tpaper-progress[error] {\n\t\t\t\t--paper-progress-active-color: #f40303;\n\t\t\t}\n\t\t</style>\n\n\t\t<div class="layout horizontal nowrap">\n\t\t\t<div>\n\t\t\t\t<paper-button id="button" on-click="_fileClick" alt="{{paperButtonAlt}}" raised="">\n\t\t\t\t\t<iron-icon icon="editor:attach-file"></iron-icon>{{paperButtonTitle}}</paper-button>\n\t\t\t\t<div id="UploadBorder">\n\t\t\t\t\t<div id="dropArea" hidden\\$="{{!_shownDropText}}">{{dropText}}</div>\n\t\t\t\t\t<template is="dom-repeat" items="{{files}}">\n\t\t\t\t\t\t<div class="file">\n\t\t\t\t\t\t\t<div class="name"><span>{{item.name}}</span>\n\t\t\t\t\t\t\t\t<div class="commands">\n\t\t\t\t\t\t\t\t\t<iron-icon icon="autorenew" title="{{retryText}}" on-click="_retryUpload" hidden\\$="{{!item.error}}"></iron-icon>\n\t\t\t\t\t\t\t\t\t<iron-icon icon="cancel" title="{{removeText}}" on-click="_cancelUpload" hidden\\$="{{item.complete}}"></iron-icon>\n\t\t\t\t\t\t\t\t\t<iron-icon icon="check-circle" title="{{successText}}" hidden\\$="{{!item.complete}}"></iron-icon>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class="error" hidden\\$="{{!item.error}}">{{errorText}}</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</template>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t<input type="file" id="fileInput" on-change="_fileChange" hidden="" multiple="{{multi}}" accept="{{accept}}">\n    </div>\n'
       ]
     );
-    _templateObject_d6e5ad90ecf111e88a0b4725ebfbecff = function() {
+    _templateObject_8efccd90f1e411e8bd8eaf7090426072 = function _templateObject_8efccd90f1e411e8bd8eaf7090426072() {
       return data;
     };
     return data;
@@ -32,7 +36,7 @@ define([
   (0, _polymerLegacy.Polymer)({
     is: "eco-json-schema-file",
     _template: (0, _polymerLegacy.html)(
-      _templateObject_d6e5ad90ecf111e88a0b4725ebfbecff()
+      _templateObject_8efccd90f1e411e8bd8eaf7090426072()
     ),
     behaviors: [_appLocalizeBehavior.AppLocalizeBehavior],
     properties: {
@@ -221,7 +225,7 @@ define([
       console.log("this.value: " + JSON.stringify(this.value));
     },
     _schemaChanged: function _schemaChanged() {
-      this.schema;
+      var schema = this.schema;
     },
     _isSchemaValue: function _isSchemaValue(type) {
       return this._isSchemaFile(type);

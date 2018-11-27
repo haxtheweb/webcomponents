@@ -5,9 +5,16 @@ define([
   "../node_modules/@polymer/iron-icon/iron-icon.js",
   "../node_modules/@polymer/iron-behaviors/iron-button-state.js",
   "../node_modules/@polymer/paper-button/paper-button.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _lrndesignAvatar,
+  _ironCollapse,
+  _ironIcon,
+  _ironButtonState,
+  _paperButton
+) {
   "use strict";
-  function _templateObject_aaa2ee20ecf411e880aac99fb7ddbd89() {
+  function _templateObject_858491b0f1e611e894ed01deebeec496() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n\n      :host([active]) {\n        background: var(--map-menu-active-color);\n      }\n\n      #container {\n        display: flex;\n        align-items: center;\n      }\n\n      #avatarLabel {\n        margin-right: 10px;\n      }\n\n      #center {\n        flex: 1 1 auto;\n      }\n\n      lrndesign-avatar {\n        display: inline-block;\n        background: #fff;\n        border-radius: 50%;\n        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);\n        padding: 2px;\n        position: relative;\n        margin-top: -2px;\n      }\n\n      lrndesign-avatar ::shadow>* {\n        transform: translateY(2px);\n      }\n\n      #link {\n        display: flex;\n        justify-content: flex-start;\n        align-items: flex-start;\n        flex-direction: column;\n      }\n\n      #title {\n        font-size: 16px;\n      }\n\n      #right iron-icon {\n        display: inline-block;\n        color: gray;\n      }\n\n      /* @todo this is a hack */\n      #icon iron-icon {\n        display: inline-block;\n        --iron-icon-height: 16px;\n        transform: translateX(10px);\n      }\n    </style>\n    <div id="container">\n      <template is="dom-if" if="[[avatarLabel]]">\n        <div id="avatarLabel">\n          <lrndesign-avatar label="[[avatarLabel]]"></lrndesign-avatar>\n        </div>\n      </template>\n      <template is="dom-if" if="[[icon]]">\n        <div id="icon">\n          <iron-icon icon="[[icon]]"></iron-icon>\n        </div>\n      </template>\n      <div id="center">\n        <paper-button id="title" noink="" role$="[[__titleRole()]]" on-tap="__linkClickHandler">\n          <div id="label">[[label]]</div>\n          <div id="title">[[title]]</div>\n        </paper-button>\n      </div>\n      <div id="right">\n        <template is="dom-if" if="[[!opened]]">\n          <iron-icon id="toggle" icon="arrow-drop-down" aria-role="button" aria-label="expand menu" tabindex="0"></iron-icon>\n        </template>\n        <template is="dom-if" if="[[opened]]">\n          <iron-icon id="toggle" icon="arrow-drop-up" aria-role="button" aria-label="collapse menu" tabindex="0"></iron-icon>\n        </template>\n      </div>\n    </div>\n'
@@ -16,14 +23,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n\n      :host([active]) {\n        background: var(--map-menu-active-color);\n      }\n\n      #container {\n        display: flex;\n        align-items: center;\n      }\n\n      #avatarLabel {\n        margin-right: 10px;\n      }\n\n      #center {\n        flex: 1 1 auto;\n      }\n\n      lrndesign-avatar {\n        display: inline-block;\n        background: #fff;\n        border-radius: 50%;\n        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);\n        padding: 2px;\n        position: relative;\n        margin-top: -2px;\n      }\n\n      lrndesign-avatar ::shadow>* {\n        transform: translateY(2px);\n      }\n\n      #link {\n        display: flex;\n        justify-content: flex-start;\n        align-items: flex-start;\n        flex-direction: column;\n      }\n\n      #title {\n        font-size: 16px;\n      }\n\n      #right iron-icon {\n        display: inline-block;\n        color: gray;\n      }\n\n      /* @todo this is a hack */\n      #icon iron-icon {\n        display: inline-block;\n        --iron-icon-height: 16px;\n        transform: translateX(10px);\n      }\n    </style>\n    <div id="container">\n      <template is="dom-if" if="[[avatarLabel]]">\n        <div id="avatarLabel">\n          <lrndesign-avatar label="[[avatarLabel]]"></lrndesign-avatar>\n        </div>\n      </template>\n      <template is="dom-if" if="[[icon]]">\n        <div id="icon">\n          <iron-icon icon="[[icon]]"></iron-icon>\n        </div>\n      </template>\n      <div id="center">\n        <paper-button id="title" noink="" role\\$="[[__titleRole()]]" on-tap="__linkClickHandler">\n          <div id="label">[[label]]</div>\n          <div id="title">[[title]]</div>\n        </paper-button>\n      </div>\n      <div id="right">\n        <template is="dom-if" if="[[!opened]]">\n          <iron-icon id="toggle" icon="arrow-drop-down" aria-role="button" aria-label="expand menu" tabindex="0"></iron-icon>\n        </template>\n        <template is="dom-if" if="[[opened]]">\n          <iron-icon id="toggle" icon="arrow-drop-up" aria-role="button" aria-label="collapse menu" tabindex="0"></iron-icon>\n        </template>\n      </div>\n    </div>\n'
       ]
     );
-    _templateObject_aaa2ee20ecf411e880aac99fb7ddbd89 = function() {
+    _templateObject_858491b0f1e611e894ed01deebeec496 = function _templateObject_858491b0f1e611e894ed01deebeec496() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_aaa2ee20ecf411e880aac99fb7ddbd89()
+      _templateObject_858491b0f1e611e894ed01deebeec496()
     ),
     is: "map-menu-header",
     properties: {
@@ -44,7 +51,7 @@ define([
         return !1;
       }
     },
-    __linkClickHandler: function __linkClickHandler() {
+    __linkClickHandler: function __linkClickHandler(e) {
       if (this.id) {
         this.fire("link-clicked", { id: this.id });
       }

@@ -17,43 +17,48 @@
  *  limitations under the License.
  *
  */
-MathJax.Localization.addTranslation("ca",null,{
+MathJax.Localization.addTranslation("ca", null, {
   menuTitle: "catal\u00E0",
   version: "2.7.5",
   isLoaded: true,
   domains: {
-    "_": {
-        version: "2.7.5",
-        isLoaded: true,
-        strings: {
-          CookieConfig: "MathJax ha trobat una galeta de configuraci\u00F3 d'usuari que inclou codi que s'ha d'executar. Voleu executar-lo?",
-          MathProcessingError: "Error en processament d'expressi\u00F3 matem\u00E0tica",
-          MathError: "Error d'expressi\u00F3 matem\u00E0tica",
-          LoadFile: "Carregant %1",
-          Loading: "Carregant",
-          LoadFailed: "No s'ha pogut carregar el fitxer: %1",
-          ProcessMath: "Processant expressi\u00F3: %1%%",
-          Processing: "Processant",
-          TypesetMath: "Formatejant expressi\u00F3: %1%%",
-          Typesetting: "Formatejant",
-          MathJaxNotSupported: "El vostre navegador no suporta MathJax",
-          ErrorTips: "Consells de depuraci\u00F3: utilitzeu %%1, inspeccioneu %%2 a la consola del navegador"
-        }
+    _: {
+      version: "2.7.5",
+      isLoaded: true,
+      strings: {
+        CookieConfig:
+          "MathJax ha trobat una galeta de configuraci\u00F3 d'usuari que inclou codi que s'ha d'executar. Voleu executar-lo?",
+        MathProcessingError:
+          "Error en processament d'expressi\u00F3 matem\u00E0tica",
+        MathError: "Error d'expressi\u00F3 matem\u00E0tica",
+        LoadFile: "Carregant %1",
+        Loading: "Carregant",
+        LoadFailed: "No s'ha pogut carregar el fitxer: %1",
+        ProcessMath: "Processant expressi\u00F3: %1%%",
+        Processing: "Processant",
+        TypesetMath: "Formatejant expressi\u00F3: %1%%",
+        Typesetting: "Formatejant",
+        MathJaxNotSupported: "El vostre navegador no suporta MathJax",
+        ErrorTips:
+          "Consells de depuraci\u00F3: utilitzeu %%1, inspeccioneu %%2 a la consola del navegador"
+      }
     },
-    "FontWarnings": {},
+    FontWarnings: {},
     "HTML-CSS": {},
-    "HelpDialog": {},
-    "MathML": {},
-    "MathMenu": {},
-    "TeX": {}
+    HelpDialog: {},
+    MathML: {},
+    MathMenu: {},
+    TeX: {}
   },
-  plural: function (n) {
-      if (n === 1) {return 1} // one
-      return 2; // other
-    },
-  number: function (n) {
-      return String(n).replace(".", ","); // replace dot by comma
-    }
+  plural: function(n) {
+    if (n === 1) {
+      return 1;
+    } // one
+    return 2; // other
+  },
+  number: function(n) {
+    return String(n).replace(".", ","); // replace dot by comma
+  }
 });
 
 MathJax.Ajax.loadComplete("[MathJax]/localization/ca/ca.js");

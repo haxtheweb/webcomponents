@@ -273,7 +273,7 @@ Polymer({
     );
     window.removeEventListener("scroll", this._keepContextVisible.bind(this));
   },
-  _keepContextVisible: function() {
+  _keepContextVisible: function(e) {
     let el = !1;
     if (this.$.textcontextmenu.classList.contains("hax-context-visible")) {
       el = this.$.textcontextmenu;
@@ -314,10 +314,10 @@ Polymer({
       left + width > window.pageXOffset
     );
   },
-  _selectionChange: function() {
+  _selectionChange: function(e) {
     window.__startedSelection = !0;
   },
-  _selectionMouseUp: function() {
+  _selectionMouseUp: function(e) {
     if (window.__startedSelection && this.editMode) {
       try {
         let selection = window.getSelection(),
@@ -400,7 +400,7 @@ Polymer({
       window.HaxStore.toast("Sorry, this can not be transformed!", 5e3);
     }
   },
-  _globalPreferencesUpdated: function(newValue) {
+  _globalPreferencesUpdated: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0 && null != newValue) {
       this.haxRayMode = newValue.haxRayMode;
     }
@@ -544,28 +544,30 @@ Polymer({
     content = content.replace(/\sdraggable/g, "");
     content = content.replace(/\sdata-draggable/g, "");
     content = content.replace(/\sdata-hax-ray=\".*?\"/g, "");
-    let parentTag = this.parentNode.tagName.toLowerCase(),
-      string = "style-scope " + parentTag + " x-scope",
-      re = new RegExp(string, "g");
-    content = content.replace(re, "");
-    string = "style-scope " + parentTag;
-    re = new RegExp(string, "g");
-    content = content.replace(re, "");
-    string = "x-scope " + parentTag + "-0";
-    re = new RegExp(string, "g");
-    content = content.replace(re, "");
-    let tags = window.HaxStore.instance.validTagList;
-    tags.push("hax-preview");
-    for (var i in tags) {
-      string = "style-scope " + tags[i];
+    if (this.parentNode.tagName) {
+      let parentTag = this.parentNode.tagName.toLowerCase(),
+        string = "style-scope " + parentTag + " x-scope",
+        re = new RegExp(string, "g");
+      content = content.replace(re, "");
+      string = "style-scope " + parentTag;
       re = new RegExp(string, "g");
       content = content.replace(re, "");
-      string = "x-scope " + tags[i] + "-0 ";
+      string = "x-scope " + parentTag + "-0";
       re = new RegExp(string, "g");
       content = content.replace(re, "");
-      string = "x-scope " + tags[i] + "-0";
-      re = new RegExp(string, "g");
-      content = content.replace(re, "");
+      let tags = window.HaxStore.instance.validTagList;
+      tags.push("hax-preview");
+      for (var i in tags) {
+        string = "style-scope " + tags[i];
+        re = new RegExp(string, "g");
+        content = content.replace(re, "");
+        string = "x-scope " + tags[i] + "-0 ";
+        re = new RegExp(string, "g");
+        content = content.replace(re, "");
+        string = "x-scope " + tags[i] + "-0";
+        re = new RegExp(string, "g");
+        content = content.replace(re, "");
+      }
     }
     content = content.replace(/\sclass=\"\"/g, "");
     content = content.replace(/\sclass=\"\s\"/g, "");
@@ -696,7 +698,7 @@ Polymer({
     }
     return replacement;
   },
-  haxChangeTagName: function(node, tagName) {
+  haxChangeTagName: function(node, tagName, newNode) {
     this.hideContextMenus();
     for (
       var replacement = document.createElement(tagName),
@@ -832,7 +834,11 @@ Polymer({
         }
         break;
       case "grid-plate-delete":
-        let tag = this.activeNode.tagName.toLowerCase(),
+        let options = [
+            { icon: "thumb-up", color: "green", title: "Yes" },
+            { icon: "thumb-down", color: "red", title: "No" }
+          ],
+          tag = this.activeNode.tagName.toLowerCase(),
           humanName = tag.replace("-", " ");
         if (
           typeof window.HaxStore.instance.elementList[tag] !== typeof void 0 &&
@@ -841,10 +847,7 @@ Polymer({
           humanName = window.HaxStore.instance.elementList[tag].gizmo.title;
         }
         window.HaxStore.instance.haxAppPicker.presentOptions(
-          [
-            { icon: "thumb-up", color: "green", title: "Yes" },
-            { icon: "thumb-down", color: "red", title: "No" }
-          ],
+          options,
           "",
           `Remove this \`${humanName}\`?`,
           "delete"
@@ -1120,7 +1123,7 @@ Polymer({
       }
     }
   },
-  _activeContainerNodeChanged: function(newValue) {
+  _activeContainerNodeChanged: function(newValue, oldValue) {
     if (
       this.editMode &&
       typeof newValue !== typeof void 0 &&
@@ -1266,7 +1269,7 @@ Polymer({
       }
     }
   },
-  _upKeyPressed: function() {
+  _upKeyPressed: function(e) {
     if (this.editMode && "" === dom(this.activeContainerNode).textContent) {
       let node = this._haxResolvePreviousElement(this.activeContainerNode);
       try {
@@ -1274,7 +1277,7 @@ Polymer({
       } catch (e) {}
     }
   },
-  _downKeyPressed: function() {
+  _downKeyPressed: function(e) {
     if (this.editMode && "" === dom(this.activeContainerNode).textContent) {
       let node = dom(this.activeContainerNode);
       try {

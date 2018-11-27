@@ -3,20 +3,20 @@ define([
   "./node_modules/@lrnwebcomponents/csv-render/csv-render.js",
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _csvRender, _HAXWiring, _schemaBehaviors) {
   "use strict";
-  function _templateObject_bb901470ecf311e8b54f7f8d9bddccdd() {
+  function _templateObject_1b594f10f1e611e8a1c981da2c4a55d2() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n      .hidden-title {\n        display: none;\n      }\n    </style>\n    <div typeof="oer:SupportingMaterial">\n      <div class="hidden-title" property="oer:name">[[title]]</div>\n      <div property="oer:description">\n        <slot></slot>\n        <csv-render data-source="[[csvFile]]" caption="[[title]]" summary="[[description]]"></csv-render>\n      </div>\n    </div>\n'
     ]);
-    _templateObject_bb901470ecf311e8b54f7f8d9bddccdd = function() {
+    _templateObject_1b594f10f1e611e8a1c981da2c4a55d2 = function _templateObject_1b594f10f1e611e8a1c981da2c4a55d2() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_bb901470ecf311e8b54f7f8d9bddccdd()
+      _templateObject_1b594f10f1e611e8a1c981da2c4a55d2()
     ),
     is: "lrn-table",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
@@ -26,7 +26,7 @@ define([
       description: { type: String }
     },
     attached: function attached() {
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !1,
@@ -90,7 +90,8 @@ define([
           ],
           advanced: []
         }
-      });
+      };
+      this.setHaxProperties(props);
     }
   });
 });

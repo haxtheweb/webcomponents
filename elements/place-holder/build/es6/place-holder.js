@@ -55,7 +55,7 @@ Polymer({
     type: { type: String, value: "text" },
     dragOver: { type: Boolean, value: !1, reflectToAttribute: !0 }
   },
-  fireReplaceEvent: function() {
+  fireReplaceEvent: function(e) {
     this.fire("place-holder-replace", this.type);
   },
   _getCalcText: function(text, type, dragOver) {
@@ -124,7 +124,7 @@ Polymer({
     }
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -159,6 +159,7 @@ Polymer({
         advanced: []
       },
       saveOptions: { wipeSlot: !0 }
-    });
+    };
+    this.setHaxProperties(props);
   }
 });

@@ -34,7 +34,7 @@ define([
     },
     _preselectFilterValues: function _preselectFilterValues() {
       var selectedValueIds = this._selectedFilters[this._selectedFilter.id],
-        isSelected = function(value) {
+        isSelected = function isSelected(value) {
           return !!selectedValueIds && 0 <= selectedValueIds.indexOf(value.id);
         };
       this._selectedFilterValues = this._selectedFilter.values.map(function(
@@ -43,14 +43,14 @@ define([
         return Object.assign({}, value, { selected: isSelected(value) });
       });
     },
-    _tapReset: function _tapReset() {
+    _tapReset: function _tapReset(e) {
       this._selectedFilters = {};
     },
-    _tapApply: function _tapApply() {
+    _tapApply: function _tapApply(e) {
       this.selectedFilters = this._selectedFilters;
       this.fire("save");
     },
-    _tapSelectValues: function _tapSelectValues() {
+    _tapSelectValues: function _tapSelectValues(e) {
       var selectedValues = this._selectedFilterValues
         .filter(function(value) {
           return value.selected;

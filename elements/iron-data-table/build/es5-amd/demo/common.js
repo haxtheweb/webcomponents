@@ -1,4 +1,7 @@
-define(["../lib/default-styles.js", "../iron-data-table.js"], function() {
+define(["../lib/default-styles.js", "../iron-data-table.js"], function(
+  _defaultStyles,
+  _ironDataTable
+) {
   "use strict";
   var $_documentContainer = document.createElement("div");
   $_documentContainer.setAttribute("style", "display: none;");

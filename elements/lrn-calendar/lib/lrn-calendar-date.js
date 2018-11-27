@@ -3,9 +3,10 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@polymer/paper-card/paper-card.js";
+import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-drawer.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 /**
- * `patrick-test`
+ * `lrn-calendar-date`
  * `A LRN element`
  *
  * @demo demo/index.html
@@ -51,12 +52,12 @@ Polymer({
         <div>
           <template is="dom-if" if="[[firstWeek]]">
             <paper-card class="label">
-            <h3>[[getWeek(date)]]</h3>
+              <h3>[[getWeek(date)]]</h3>
             </paper-card>
           </template>
         </div>
-        <paper-card class$="{{view}}" id="dateHeader">
-            <h5>[[getMonth(date)]]</h5>
+        <paper-card class$="[[view]]" id="dateHeader">
+          <h5>[[getMonth(date)]]</h5>
           <template is="dom-repeat" items="{{events}}">
               <div class="card-content">
                 <lrnsys-drawer text="[[timeString(item.event.startDate._time.hour, item.event.startDate._time.minute, item.event.endDate._time.hour,item.event.endDate._time.minute)]] {{item.event.summary}}" header="[[getDateString(date)]]" align="left" heading-class="orange lighten-3 blue-text text-darken-4" style$="[[computeStyle(item)]];overflow:auto;">

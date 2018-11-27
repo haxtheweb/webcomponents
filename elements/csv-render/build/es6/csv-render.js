@@ -173,7 +173,7 @@ Polymer({
     tableHeadings: { type: Array, value: [] },
     tableData: { type: String, value: "" }
   },
-  handleResponse: function() {
+  handleResponse: function(e) {
     this.table = this.CSVtoArray(this.tableData);
     this.tableHeadings = this.table.shift();
     this.$.loading.active = !1;

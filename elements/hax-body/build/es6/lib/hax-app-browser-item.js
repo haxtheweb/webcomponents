@@ -93,13 +93,13 @@ Polymer({
     status: { type: Array },
     elevation: { type: Number, value: 1, reflectToAttribute: !0 }
   },
-  tapEventOn: function() {
+  tapEventOn: function(e) {
     this.elevation = 2;
   },
-  tapEventOff: function() {
+  tapEventOff: function(e) {
     this.elevation = 1;
   },
-  _fireEvent: function() {
+  _fireEvent: function(e) {
     this.fire("hax-app-selected", this.index);
   }
 });

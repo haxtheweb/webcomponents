@@ -19,16 +19,18 @@
  */
 
 MathJax.Hub.Insert(
-  MathJax.OutputJax['HTML-CSS'].FONTDATA.FONTS['MathJax_Main-bold'],
+  MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS["MathJax_Main-bold"],
   {
-    0x27F5: [518,17,1805,64,1741],     // LONG LEFTWARDS ARROW
-    0x27F6: [518,17,1833,96,1773],     // LONG RIGHTWARDS ARROW
-    0x27F7: [518,17,2126,64,2061],     // LONG LEFT RIGHT ARROW
-    0x27F8: [547,46,1868,64,1804],     // LONG LEFTWARDS DOUBLE ARROW
-    0x27F9: [547,46,1870,64,1804],     // LONG RIGHTWARDS DOUBLE ARROW
-    0x27FA: [547,46,2126,64,2060],     // LONG LEFT RIGHT DOUBLE ARROW
-    0x27FC: [518,17,1833,65,1773]      // LONG RIGHTWARDS ARROW FROM BAR
+    0x27f5: [518, 17, 1805, 64, 1741], // LONG LEFTWARDS ARROW
+    0x27f6: [518, 17, 1833, 96, 1773], // LONG RIGHTWARDS ARROW
+    0x27f7: [518, 17, 2126, 64, 2061], // LONG LEFT RIGHT ARROW
+    0x27f8: [547, 46, 1868, 64, 1804], // LONG LEFTWARDS DOUBLE ARROW
+    0x27f9: [547, 46, 1870, 64, 1804], // LONG RIGHTWARDS DOUBLE ARROW
+    0x27fa: [547, 46, 2126, 64, 2060], // LONG LEFT RIGHT DOUBLE ARROW
+    0x27fc: [518, 17, 1833, 65, 1773] // LONG RIGHTWARDS ARROW FROM BAR
   }
 );
 
-MathJax.Ajax.loadComplete(MathJax.OutputJax["HTML-CSS"].fontDir + "/Main/Bold/SupplementalArrowsA.js");
+MathJax.Ajax.loadComplete(
+  MathJax.OutputJax["HTML-CSS"].fontDir + "/Main/Bold/SupplementalArrowsA.js"
+);

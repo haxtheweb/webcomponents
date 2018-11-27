@@ -17,12 +17,10 @@
  *  limitations under the License.
  *
  */
-MathJax.Localization.addTranslation("diq","FontWarnings",{
-        version: "2.7.5",
-        isLoaded: true,
-        strings: {
-
-        }
+MathJax.Localization.addTranslation("diq", "FontWarnings", {
+  version: "2.7.5",
+  isLoaded: true,
+  strings: {}
 });
 
 MathJax.Ajax.loadComplete("[MathJax]/localization/diq/FontWarnings.js");

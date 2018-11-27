@@ -3,20 +3,25 @@ define([
   "./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js",
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _materializecssStyles,
+  _HAXWiring,
+  _schemaBehaviors
+) {
   "use strict";
-  function _templateObject_70366060ecf311e8932bfd0c66256d50() {
+  function _templateObject_ee25a750f1e511e8a98705cf502b104c() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <h3><span property="oer:name">[[name]]</span></h3>\n    <ol>\n      <template is="dom-repeat" items="[[tasks]]" as="task">\n        <li><span property="oer:task">[[task.name]]</span></li>\n      </template>\n    </ol>\n'
     ]);
-    _templateObject_70366060ecf311e8932bfd0c66256d50 = function() {
+    _templateObject_ee25a750f1e511e8a98705cf502b104c = function _templateObject_ee25a750f1e511e8a98705cf502b104c() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_70366060ecf311e8932bfd0c66256d50()
+      _templateObject_ee25a750f1e511e8a98705cf502b104c()
     ),
     is: "task-list",
     behaviors: [
@@ -53,7 +58,7 @@ define([
       }
     },
     attached: function attached() {
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !1,
@@ -122,7 +127,8 @@ define([
           ],
           advanced: []
         }
-      });
+      };
+      this.setHaxProperties(props);
     }
   });
 });

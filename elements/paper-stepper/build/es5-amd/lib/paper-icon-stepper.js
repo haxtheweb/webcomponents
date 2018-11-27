@@ -33,7 +33,7 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
       this.selectedValues = [];
       this._selected = -1;
     },
-    _onItemsChanged: function _onItemsChanged() {
+    _onItemsChanged: function _onItemsChanged(e) {
       this._items = this.$.selector.items;
     }
   });

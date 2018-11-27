@@ -3,14 +3,14 @@ define([
   "../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
   "../node_modules/@polymer/polymer/lib/utils/async.js",
   "../node_modules/@polymer/iron-dropdown/iron-dropdown.js"
-], function(_polymerLegacy, _polymerDom, async) {
+], function(_polymerLegacy, _polymerDom, async, _ironDropdown) {
   "use strict";
   async = babelHelpers.interopRequireWildcard(async);
-  function _templateObject_081477c0ecf211e88958894c83ed35c1() {
+  function _templateObject_b6cf0c20f1e411e8b0e08d782bfa23f2() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      iron-dropdown {\n        @apply --paper-morph-dropdown;\n      }\n      .dropdown-content {\n        @apply --paper-morph-content;\n      }\n      #morpher {\n        position: fixed;\n        display: none;\n        background-color: var(--paper-morph-background, #fff);\n      }\n    </style>\n    <span id="fabContainer" class="dropdown-trigger"><slot name="dropdown-trigger"></slot></span>\n    <span id="contentContainer" class="dropdown-content"><slot name="dropdown-content"></slot></span>\n    <paper-material id="morpher"></paper-material>\n'
     ]);
-    _templateObject_081477c0ecf211e88958894c83ed35c1 = function() {
+    _templateObject_b6cf0c20f1e411e8b0e08d782bfa23f2 = function _templateObject_b6cf0c20f1e411e8b0e08d782bfa23f2() {
       return data;
     };
     return data;
@@ -18,7 +18,7 @@ define([
   (function(Polymer) {
     Polymer({
       _template: (0, _polymerLegacy.html)(
-        _templateObject_081477c0ecf211e88958894c83ed35c1()
+        _templateObject_b6cf0c20f1e411e8b0e08d782bfa23f2()
       ),
       is: "paper-fab-morph",
       properties: {

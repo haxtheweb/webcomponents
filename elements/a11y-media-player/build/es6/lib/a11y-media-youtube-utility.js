@@ -25,7 +25,11 @@ window.A11yMediaYoutubeUtility.requestAvailability = function() {
     };
   }
 };
-window.A11yMediaYoutubeUtility.initYoutubePlayer = function(elem, options) {
+window.A11yMediaYoutubeUtility.initYoutubePlayer = function(
+  elem,
+  options,
+  attached
+) {
   this.counter++;
   let root = this,
     div = document.createElement("div"),
@@ -66,10 +70,10 @@ window.A11yMediaYoutubeUtility.initYoutubePlayer = function(elem, options) {
   };
   iframe.seekable = {
     length: 1,
-    start: function() {
+    start: function(index) {
       return 0;
     },
-    end: function() {
+    end: function(index) {
       return iframe.duration;
     }
   };

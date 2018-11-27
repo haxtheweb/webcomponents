@@ -98,7 +98,7 @@ Polymer({
       observer: "_applyChikarego"
     }
   },
-  _applyChikarego: function(newValue) {
+  _applyChikarego: function(newValue, oldValue) {
     if (!0 === newValue) {
       let style = document.createElement("style"),
         basePath = pathFromUrl(import.meta.url);
@@ -113,7 +113,7 @@ Polymer({
     }
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !0,
@@ -217,9 +217,10 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
-  _bgColorChanged: function(newValue) {
+  _bgColorChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0 && null != newValue) {
       this.computeTextPropContrast("textColorCode", "colorCode");
     }

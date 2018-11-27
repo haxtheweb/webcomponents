@@ -762,7 +762,7 @@ Polymer({
       this.set("pageEntryAnimation", "fade-in-animation");
       this.set("pageExitAnimation", "fade-out-animation");
     }
-    let effectiveChildren = new FlattenedNodesObserver.getFlattenedNodes(
+    let effectiveChildren = FlattenedNodesObserver.getFlattenedNodes(
       this
     ).filter(n => n.nodeType === Node.ELEMENT_NODE);
     if (effectiveChildren && 0 < effectiveChildren.length) {
@@ -797,12 +797,13 @@ Polymer({
     if (!window.Intl) {
       return;
     }
+    function _computeTotalDaysOfMonth(_year, _month) {
+      var _totalDaysOfMonth = new Date(_year, _month + 1, 0).getDate();
+      return _totalDaysOfMonth;
+    }
     var _start = new Date(_activeYear, _activeMonth, 1).getDay(),
       _daysOfMonth = [],
-      _totalDays = (function(_year, _month) {
-        var _totalDaysOfMonth = new Date(_year, _month + 1, 0).getDate();
-        return _totalDaysOfMonth;
-      })(_activeYear, _activeMonth);
+      _totalDays = _computeTotalDaysOfMonth(_activeYear, _activeMonth);
     if (0 < _firstDayOfWeek && 7 > _firstDayOfWeek) {
       _start = _start - _firstDayOfWeek;
       _start = 0 > _start ? 7 + _start : _start;
@@ -821,7 +822,7 @@ Polymer({
                 timeZone: "UTC",
                 day: "numeric"
               }).format
-            : function(date) {
+            : function dateTimeFormatShim(date) {
                 return date.getDate();
               },
         i = 0,
@@ -843,7 +844,7 @@ Polymer({
     );
     this.set("_daysOfMonth", _daysOfMonth);
   },
-  _computeShiftedDisableDays: function(_firstDayOfWeek) {
+  _computeShiftedDisableDays: function(_firstDayOfWeek, _isDisableDays) {
     _firstDayOfWeek =
       0 < _firstDayOfWeek && 7 > _firstDayOfWeek ? _firstDayOfWeek : 0;
     var _sdd = this.disableDays.map(function(_day) {
@@ -852,7 +853,7 @@ Polymer({
     });
     this.set("_shiftedDisableDays", _sdd);
   },
-  _incrementMonth: function() {
+  _incrementMonth: function(ev) {
     this.debounce(
       "_incrementMonth",
       function() {
@@ -875,7 +876,7 @@ Polymer({
       100
     );
   },
-  _decrementMonth: function() {
+  _decrementMonth: function(ev) {
     this.debounce(
       "_decrementMonth",
       function() {
@@ -1079,8 +1080,8 @@ Polymer({
       _isValidDate = "Invalid Date" !== _checkDate.toDateString();
     return _isValidDate ? _checkDate : null;
   },
-  _updateList: function() {
-    for (var _newList = [], i = 1900; 2100 >= i; i++) {
+  _updateList: function(_activeView) {
+    for (var _newList = [], y = 1900, i = y; 2100 >= i; i++) {
       _newList.push({ year: i });
     }
     this.set("_listOfYears", _newList);
@@ -1309,46 +1310,48 @@ Polymer({
       this._setInvalidDate(!0);
       return;
     }
+    function validateDate(_id, _showLongDate) {
+      var _res = { valid: !1, result: "" };
+      if (_showLongDate) {
+        var _ds = _id.split(", ");
+        if (2 < _ds.length) {
+          _ds = _ds[1].split(" ").join("/") + ", " + _ds[2];
+          var _newDate = new Date(_ds);
+          if ("Invalid Date" === _newDate.toString()) {
+            return _res;
+          } else {
+            return { valid: !0, result: _newDate };
+          }
+        }
+        return _res;
+      }
+      var _re1 = /^(\d{4})\W+(\d{1,2})\W+(\d{1,2})$/i,
+        _re2 = /^(\d{4})[ ](\w+)[ ](\d{1,2})$/i,
+        _validWithRe1 = _re1.exec(_id),
+        _validWithRe2 = _re2.exec(_id);
+      if (null === _validWithRe1 && null === _validWithRe2) {
+        return _res;
+      } else {
+        var _resultToDate = null;
+        if (null === _validWithRe1) {
+          _resultToDate = new Date(
+            _validWithRe2[1] + " " + _validWithRe2[2] + " " + _validWithRe2[3]
+          );
+        } else if (null === _validWithRe2) {
+          _resultToDate = new Date(
+            +_validWithRe1[1],
+            +_validWithRe1[2] - 1,
+            +_validWithRe1[3]
+          );
+        }
+        return { valid: !0, result: _resultToDate };
+      }
+    }
     var _showLongDate = this.showLongDate,
       _yy = 0,
       _mm = 0,
-      _isValidDate = (function(_id, _showLongDate) {
-        var _res = { valid: !1, result: "" };
-        if (_showLongDate) {
-          var _ds = _id.split(", ");
-          if (2 < _ds.length) {
-            _ds = _ds[1].split(" ").join("/") + ", " + _ds[2];
-            var _newDate = new Date(_ds);
-            if ("Invalid Date" === _newDate.toString()) {
-              return _res;
-            } else {
-              return { valid: !0, result: _newDate };
-            }
-          }
-          return _res;
-        }
-        var _re1 = /^(\d{4})\W+(\d{1,2})\W+(\d{1,2})$/i,
-          _re2 = /^(\d{4})[ ](\w+)[ ](\d{1,2})$/i,
-          _validWithRe1 = _re1.exec(_id),
-          _validWithRe2 = _re2.exec(_id);
-        if (null === _validWithRe1 && null === _validWithRe2) {
-          return _res;
-        } else {
-          var _resultToDate = null;
-          if (null === _validWithRe1) {
-            _resultToDate = new Date(
-              _validWithRe2[1] + " " + _validWithRe2[2] + " " + _validWithRe2[3]
-            );
-          } else if (null === _validWithRe2) {
-            _resultToDate = new Date(
-              +_validWithRe1[1],
-              +_validWithRe1[2] - 1,
-              +_validWithRe1[3]
-            );
-          }
-          return { valid: !0, result: _resultToDate };
-        }
-      })(_inputDate, _showLongDate);
+      _dd = 0,
+      _isValidDate = validateDate(_inputDate, _showLongDate);
     if (_isValidDate.valid) {
       if (this.alwaysResetSelectedDateOnDialogClose) {
         return;
@@ -1420,7 +1423,8 @@ Polymer({
     return !(_item && 0 <= _item && !_isDisableDays);
   },
   _padStart: function(_string, _length, _chars) {
-    var _str = (_chars + _string).slice(-_length);
+    var _len = -_length,
+      _str = (_chars + _string).slice(_len);
     return _str;
   },
   _isNumber: function(_value) {

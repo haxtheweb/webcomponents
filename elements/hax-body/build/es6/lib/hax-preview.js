@@ -242,7 +242,7 @@ Polymer({
       return !0;
     }
   },
-  _computedEditSource: function(newValue) {
+  _computedEditSource: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0) {
       if (
         typeof this.previewNode.tagName !== typeof void 0 &&
@@ -452,7 +452,7 @@ Polymer({
       }
     }
   },
-  _elementChanged: function(newValue) {
+  _elementChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0 && 0 < Object.keys(newValue).length) {
       let preview = this.$.preview;
       window.HaxStore.wipeSlot(preview, "*");
@@ -604,6 +604,7 @@ Polymer({
             "element.content",
             "<template>" + tmpel.innerHTML + "</template>"
           );
+        } else {
         }
       }
     }

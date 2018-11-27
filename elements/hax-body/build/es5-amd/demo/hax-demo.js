@@ -23,6 +23,31 @@ define([
   "../lib/hax-export-dialog.js",
   "../lib/hax-toolbar.js",
   "../hax-body.js"
-], function() {
+], function(
+  _polymerLegacy,
+  _ironIcons,
+  _editorIcons,
+  _deviceIcons,
+  _hardwareIcons,
+  _communicationIcons,
+  _lrnIcons,
+  _socialIcons,
+  _avIcons,
+  _placesIcons,
+  _mapsIcons,
+  _ironImage,
+  _sillyHaxGame,
+  _paperTabs,
+  _paperTab,
+  _haxStore,
+  _haxAutoloader,
+  _haxManager,
+  _haxAppPicker,
+  _haxApp,
+  _haxPanel,
+  _haxExportDialog,
+  _haxToolbar,
+  _haxBody
+) {
   "use strict";
 });

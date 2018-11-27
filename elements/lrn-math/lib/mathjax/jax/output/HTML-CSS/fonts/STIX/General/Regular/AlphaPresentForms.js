@@ -16,4 +16,14 @@
  *  limitations under the License.
  */
 
-MathJax.Hub.Insert(MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS.STIXGeneral,{64256:[683,0,605,20,655],64257:[683,0,558,32,523],64258:[683,0,556,31,522],64259:[683,0,832,20,797],64260:[683,0,830,20,796]});MathJax.Ajax.loadComplete(MathJax.OutputJax["HTML-CSS"].fontDir+"/General/Regular/AlphaPresentForms.js");
+MathJax.Hub.Insert(MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS.STIXGeneral, {
+  64256: [683, 0, 605, 20, 655],
+  64257: [683, 0, 558, 32, 523],
+  64258: [683, 0, 556, 31, 522],
+  64259: [683, 0, 832, 20, 797],
+  64260: [683, 0, 830, 20, 796]
+});
+MathJax.Ajax.loadComplete(
+  MathJax.OutputJax["HTML-CSS"].fontDir +
+    "/General/Regular/AlphaPresentForms.js"
+);

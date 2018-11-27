@@ -3,20 +3,25 @@ define([
   "./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js",
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _materializecssStyles,
+  _HAXWiring,
+  _schemaBehaviors
+) {
   "use strict";
-  function _templateObject_393d3200ecf311e89aa69da3ac0d864e() {
+  function _templateObject_bd875d50f1e511e893a9171d335c9631() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n        --parallax-image-background: \'\';\n        --parallax-title-background: rgba(0, 0, 0, 0.3);\n        --parallax-title-font: #fff;\n      }\n\n      .parallax_container {\n        height: 400px;\n        width: 100%;\n        overflow: hidden;\n        display: flex;\n        justify-content: center;\n      }\n\n      .parallax {\n        background-image: var(--parallax-image-background);\n        background-attachment: fixed;\n        background-position: top center;\n        background-repeat: no-repeat;\n        background-size: cover;\n        width: 100%;\n        height: 100%;\n        justify-content: center;\n      }\n\n      #bgParallax {\n        display: flex;\n        align-items: center;\n      }\n\n      .title {\n        background: var(--parallax-title-background);\n        display: block;\n        padding: 20px 15px;\n        text-align: center;\n        width: 40%;\n        color: var(--parallax-title-font);\n        font-size: 32px;\n        position: absolute;\n        margin-top: 120px;\n      }\n\n      @media screen and (max-width: 900px) {\n        .title {\n          font-size: 16px;\n        }\n      }\n    </style>\n\n    <a href="[[url]]" target$="[[_urlTarget(url)]]">\n      <div class="parallax_container">\n        <div id="bgParallax" class="parallax">\n          <div class="title" id="titleParallax">\n            <slot name="parallax_heading"></slot>\n          </div>\n        </div>\n      </div>\n    </a>\n'
     ]);
-    _templateObject_393d3200ecf311e89aa69da3ac0d864e = function() {
+    _templateObject_bd875d50f1e511e893a9171d335c9631 = function _templateObject_bd875d50f1e511e893a9171d335c9631() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_393d3200ecf311e89aa69da3ac0d864e()
+      _templateObject_bd875d50f1e511e893a9171d335c9631()
     ),
     is: "parallax-image",
     behaviors: [
@@ -46,7 +51,7 @@ define([
       return 0 != url.indexOf(root);
     },
     attached: function attached() {
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !1,
@@ -81,7 +86,8 @@ define([
           ],
           advanced: []
         }
-      });
+      };
+      this.setHaxProperties(props);
     },
     __updateStyles: function __updateStyles(imageBg) {
       this.updateStyles({
@@ -91,14 +97,15 @@ define([
     ready: function ready() {
       var bgParallax = this.$.bgParallax,
         titleParallax = this.$.titleParallax;
-      window.addEventListener("scroll", function() {
-        var yParallaxPosition = -0.2 * window.scrollY;
+      window.addEventListener("scroll", function(e) {
+        var yParallaxPosition = -0.2 * window.scrollY,
+          yParallaxPositionTitle = 1.4 * yParallaxPosition;
         bgParallax.style.backgroundPosition = "center ".concat(
           yParallaxPosition,
           "px"
         );
         titleParallax.style.transform = "translate3D(0, ".concat(
-          1.4 * yParallaxPosition,
+          yParallaxPositionTitle,
           "px, 0)"
         );
       });

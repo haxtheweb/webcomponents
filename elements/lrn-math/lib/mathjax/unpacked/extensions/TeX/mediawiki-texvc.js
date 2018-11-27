@@ -1,19 +1,19 @@
 /*************************************************************
  *
  *  MathJax/extensions/TeX/mediawiki-texvc.js
- *  
+ *
  *  Implements macros used by mediawiki with their texvc preprocessor.
  *
  *  ---------------------------------------------------------------------
- *  
+ *
  *  Copyright (c) 2015-2018 The MathJax Consortium
- * 
+ *
  *  Licensed under the Apache License, Version 2.0 (the "License");
  *  you may not use this file except in compliance with the License.
  *  You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  *  Unless required by applicable law or agreed to in writing, software
  *  distributed under the License is distributed on an "AS IS" BASIS,
  *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -25,7 +25,7 @@ MathJax.Extension["TeX/mediawiki-texvc"] = {
   version: "2.7.5"
 };
 
-MathJax.Hub.Register.StartupHook("TeX Jax Ready", function () {
+MathJax.Hub.Register.StartupHook("TeX Jax Ready", function() {
   MathJax.InputJax.TeX.Definitions.Add({
     macros: {
       AA: ["Macro", "\u00c5"],
@@ -93,7 +93,7 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready", function () {
       Omicron: ["Macro", "\\mathrm{O}"],
       or: ["Macro", "\\lor"],
       P: ["Macro", "\u00B6"],
-      pagecolor: ['Macro','',1],  // ignore \pagecolor{}
+      pagecolor: ["Macro", "", 1], // ignore \pagecolor{}
       part: ["Macro", "\\partial"],
       plusmn: ["Macro", "\\pm"],
       Q: ["Macro", "\\mathbb{Q}"],
@@ -122,11 +122,15 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready", function () {
       uarr: ["Macro", "\\uparrow"],
       uArr: ["Macro", "\\Uparrow"],
       Uarr: ["Macro", "\\Uparrow"],
-      unicodeInt: ["Macro", "\\mathop{\\vcenter{\\mathchoice{\\huge\\unicode{#1}\\,}{\\unicode{#1}}{\\unicode{#1}}{\\unicode{#1}}}\\,}\\nolimits", 1],
+      unicodeInt: [
+        "Macro",
+        "\\mathop{\\vcenter{\\mathchoice{\\huge\\unicode{#1}\\,}{\\unicode{#1}}{\\unicode{#1}}{\\unicode{#1}}}\\,}\\nolimits",
+        1
+      ],
       varcoppa: ["Macro", "\u03D9"],
       varstigma: ["Macro", "\u03DB"],
       varointclockwise: ["Macro", "\\unicodeInt{x2232}"],
-      vline: ['Macro','\\smash{\\large\\lvert}',0],
+      vline: ["Macro", "\\smash{\\large\\lvert}", 0],
       weierp: ["Macro", "\\wp"],
       Z: ["Macro", "\\mathbb{Z}"],
       Zeta: ["Macro", "\\mathrm{Z}"]

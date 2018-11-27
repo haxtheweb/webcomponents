@@ -3,6 +3,7 @@ import {
   Polymer
 } from "./node_modules/@polymer/polymer/polymer-legacy.js";
 import { dom } from "./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
+import { IronMeta } from "./node_modules/@polymer/iron-meta/iron-meta.js";
 import "./node_modules/@polymer/iron-flex-layout/iron-flex-layout.js";
 import "./node_modules/@polymer/paper-icon-button/paper-icon-button.js";
 import "./node_modules/@polymer/paper-item/paper-item.js";
@@ -11,7 +12,6 @@ import "./node_modules/@polymer/paper-listbox/paper-listbox.js";
 import "./node_modules/@polymer/paper-menu-button/paper-menu-button.js";
 import "./node_modules/@polymer/iron-list/iron-list.js";
 import "./node_modules/@polymer/iron-icon/iron-icon.js";
-import { IronMeta } from "./node_modules/@polymer/iron-meta/iron-meta.js";
 import "./node_modules/@polymer/neon-animation/neon-animation.js";
 import "./node_modules/@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "./node_modules/@polymer/paper-tooltip/paper-tooltip.js";
@@ -147,16 +147,14 @@ Polymer({
         color: var(--google-blue-700);
       }
     </style>
-
     <paper-menu-button id="iconpicker" on-tap="_onOpen" vertical-align="[[verticalAlign]]" horizontal-align="[[horizontalAlign]]" opened="{{opened}}">
-      <paper-icon-button id="iconButton" icon="swatch:perm-media" class="dropdown-trigger" alt="icon picker" noink$="[[noink]]" slot="dropdown-trigger">
-      </paper-icon-button>
+      <paper-icon-button id="iconButton" icon="swatch:perm-media" class="dropdown-trigger" alt="icon picker" noink$="[[noink]]" slot="dropdown-trigger"></paper-icon-button>
       <iron-list grid items="[[renderIconList]]" id="container" slot="dropdown-content">
-      <template>
-        <paper-item class$="icon-group-[[item.index]] icon" value="[[item.icon]]">
-          <iron-icon icon="[[item.icon]]"></iron-icon>
-        </paper-item>
-      </template>
+        <template>
+          <paper-item on-tap="_onIconTap" class$="icon-group-[[item.index]] icon" value="[[item.icon]]">
+            <iron-icon icon="[[item.icon]]" value="[[item.icon]]"></iron-icon>
+          </paper-item>
+        </template>
       </iron-list>
     </paper-menu-button>
     <paper-tooltip for="iconpicker" position="bottom" offset="14">
@@ -165,7 +163,6 @@ Polymer({
     <iron-a11y-keys target="[[iconpicker]]" keys="escape" on-keys-pressed="close" stop-keyboard-event-propagation></iron-a11y-keys>
 `,
   is: "paper-icon-picker",
-  listeners: { tap: "_onIconTap" },
   properties: {
     opened: { type: Boolean },
     icon: { type: String, notify: !0, observer: "_iconChanged" },
@@ -187,7 +184,7 @@ Polymer({
     verticalAlign: { type: String, value: "top", reflectToAttribute: !0 },
     noink: { type: Boolean }
   },
-  _onOpen: function() {
+  _onOpen: function(e) {
     setTimeout(() => {
       try {
         this.shadowRoot.querySelector("paper-item").focus();
@@ -273,13 +270,10 @@ Polymer({
     this.$.container.toggleClass("opened", !1);
   },
   _onIconTap: function(e) {
-    var normalizedEvent = dom(e),
-      target = normalizedEvent.rootTarget;
-    if ("PAPER-ITEM" === target.tagName) {
-      this.icon = target.value;
-      this.fire("icon-picker-selected", { icon: this.icon });
-      this.$.container.fire("iron-select", this.icon);
-    }
+    this.icon = e.target.value;
+    this.fire("icon-picker-selected", { icon: this.icon });
+    this.$.container.fire("iron-select", this.icon);
+    this.close();
   },
   _iconChanged: function() {
     if (this.icon) {

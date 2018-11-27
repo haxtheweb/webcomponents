@@ -2,21 +2,21 @@ define([
   "../node_modules/@polymer/polymer/polymer-legacy.js",
   "../node_modules/@polymer/polymer/lib/utils/async.js",
   "./data-table-templatizer-behavior.js"
-], function(_polymerLegacy, async) {
+], function(_polymerLegacy, async, _dataTableTemplatizerBehavior) {
   "use strict";
   async = babelHelpers.interopRequireWildcard(async);
-  function _templateObject_d32f3540ecf111e8afe6e3e72f732a1f() {
+  function _templateObject_8c60c5f0f1e411e8bfa4f9e331d1ff6f() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n      :host {\n        flex: 1 0 100px;\n        padding: 0 24px 0 24px;\n        min-height: 10px; /* Prevent iron-list from looping when item height is really small */\n        height: 48px;\n        display: flex;\n        align-items: center;\n        overflow: hidden;\n        transition: flex-basis 200ms, flex-grow 200ms;\n      }\n\n      :host([header]) {\n        height: 56px;\n      }\n\n      :host([hidden]) {\n        display: none;\n      }\n    </style>\n    <slot></slot>\n"
     ]);
-    _templateObject_d32f3540ecf111e8afe6e3e72f732a1f = function() {
+    _templateObject_8c60c5f0f1e411e8bfa4f9e331d1ff6f = function _templateObject_8c60c5f0f1e411e8bfa4f9e331d1ff6f() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_d32f3540ecf111e8afe6e3e72f732a1f()
+      _templateObject_8c60c5f0f1e411e8bfa4f9e331d1ff6f()
     ),
     is: "data-table-cell",
     behaviors: [saulis.DataTableTemplatizerBehavior],
@@ -32,7 +32,7 @@ define([
       beforeBind: {
         type: Object,
         value: function value() {
-          return function() {};
+          return function(data, cell) {};
         }
       }
     },

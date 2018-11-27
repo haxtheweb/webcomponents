@@ -4,20 +4,26 @@ define([
   "./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js",
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _paperCard,
+  _materializecssStyles,
+  _HAXWiring,
+  _schemaBehaviors
+) {
   "use strict";
-  function _templateObject_8f0d1480ecf211e8bb6a39d18a623679() {
+  function _templateObject_2bc1dc10f1e511e8b6d7cfc1e6328645() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style include="materializecss-styles-colors">\n      :host {\n        display: block;\n      }\n      paper-card {\n        -webkit-perspective: 800;\n        width: 400px;\n        height: 300px;\n        position: relative;\n        padding: 0;\n        margin: 0;\n      }\n      paper-card.flipped {\n        -webkit-transform: rotatex(-180deg);\n      }\n      paper-card.flipped .back {\n        z-index: 3;\n      }\n      paper-card {\n        -webkit-transform-style: preserve-3d;\n        -webkit-transition: 0.5s;\n      }\n      paper-card .face {\n        width: 100%;\n        height: 100%;\n        padding: 0;\n        margin: 0;\n        cursor: pointer;\n        position: absolute;\n        -webkit-backface-visibility: hidden ;\n        z-index: 2;\n        font-family: Georgia;\n        font-size: 48px;\n        text-align: center;\n        line-height: 200px;\n      }\n      paper-card .front {\n        position: absolute;\n        z-index: 1;\n      }\n      paper-card .back {\n        -webkit-transform: rotatex(-180deg);\n      }\n    </style>\n    <paper-card id="card" animated-shadow="true">\n      <div class="face front white black-text">\n        Front\n      </div>\n      <div class="face back black white-text">\n          Back\n      </div>\n    </paper-card>\n'
     ]);
-    _templateObject_8f0d1480ecf211e8bb6a39d18a623679 = function() {
+    _templateObject_2bc1dc10f1e511e8b6d7cfc1e6328645 = function _templateObject_2bc1dc10f1e511e8b6d7cfc1e6328645() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_8f0d1480ecf211e8bb6a39d18a623679()
+      _templateObject_2bc1dc10f1e511e8b6d7cfc1e6328645()
     ),
     is: "flash-card",
     behaviors: [
@@ -28,7 +34,7 @@ define([
     listeners: { mouseenter: "_flipup", mouseleave: "_flipback" },
     properties: { title: { type: String } },
     attached: function attached() {
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !1,
@@ -63,12 +69,13 @@ define([
           ],
           advanced: []
         }
-      });
+      };
+      this.setHaxProperties(props);
     },
-    _flipup: function _flipup() {
+    _flipup: function _flipup(e) {
       this.$.card.classList.add("flipped");
     },
-    _flipback: function _flipback() {
+    _flipback: function _flipback(e) {
       this.$.card.classList.remove("flipped");
     }
   });

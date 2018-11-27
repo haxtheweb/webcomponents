@@ -16,4 +16,11 @@
  *  limitations under the License.
  */
 
-(function(a){var c=a.mo.OPTYPES;var b=a.TEXCLASS;MathJax.Hub.Insert(a.mo.prototype,{OPTABLE:{infix:{"\u2B45":c.RELSTRETCH,"\u2B46":c.RELSTRETCH}}});MathJax.Ajax.loadComplete(a.optableDir+"/MiscSymbolsAndArrows.js")})(MathJax.ElementJax.mml);
+(function(a) {
+  var c = a.mo.OPTYPES;
+  var b = a.TEXCLASS;
+  MathJax.Hub.Insert(a.mo.prototype, {
+    OPTABLE: { infix: { "\u2B45": c.RELSTRETCH, "\u2B46": c.RELSTRETCH } }
+  });
+  MathJax.Ajax.loadComplete(a.optableDir + "/MiscSymbolsAndArrows.js");
+})(MathJax.ElementJax.mml);

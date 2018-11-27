@@ -127,11 +127,11 @@ Polymer({
       return href;
     }
   },
-  tapEventOn: function() {
+  tapEventOn: function(e) {
     let root = this;
     if (typeof root.hoverClass !== typeof void 0 && !root.disabled) {
       var classes = root.hoverClass.split(" ");
-      classes.forEach(function(item) {
+      classes.forEach(function(item, index) {
         if ("" != item) {
           root.$.button.classList.add(item);
           if (-1 != item.indexOf("-")) {
@@ -141,11 +141,11 @@ Polymer({
       });
     }
   },
-  tapEventOff: function() {
+  tapEventOff: function(e) {
     let root = this;
     if (typeof root.hoverClass !== typeof void 0 && !root.disabled) {
       var classes = root.hoverClass.split(" ");
-      classes.forEach(function(item) {
+      classes.forEach(function(item, index) {
         if ("" != item) {
           root.$.button.classList.remove(item);
           if (-1 != item.indexOf("-")) {
@@ -155,10 +155,10 @@ Polymer({
       });
     }
   },
-  focusToggle: function() {
+  focusToggle: function(e) {
     if (typeof this.hoverClass !== typeof void 0 && !this.disabled) {
       var classes = this.hoverClass.split(" ");
-      classes.forEach(item => {
+      classes.forEach((item, index) => {
         if ("" != item) {
           if (!this.focusState) {
             this.$.button.classList.add(item);

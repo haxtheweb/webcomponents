@@ -5,20 +5,27 @@ define([
   "../node_modules/@polymer/iron-icon/iron-icon.js",
   "../node_modules/@polymer/iron-icons/iron-icons.js",
   "../node_modules/@polymer/paper-tooltip/paper-tooltip.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _paperButton,
+  _ironIcon,
+  _ironIcons,
+  _paperTooltip
+) {
   "use strict";
-  function _templateObject_fea38ee0ecf311e896b1b122e9a8e20a() {
+  function _templateObject_39ee97f0f1e611e8b229e5d6dee848e6() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: inline-block;\n      }\n      iron-icon {\n        display: inline-block;\n        height: 16px;\n        width: 16px;\n      }\n    </style>\n    <paper-button raisedon-tap="_onTap" id$="[[id]]" aria-label$="[[title]]">\n      <iron-icon icon="[[icon]]"></iron-icon> [[title]]\n    </paper-button>\n    <paper-tooltip for$="[[id]]" animation-delay="200">[[title]]</paper-tooltip>\n'
     ]);
-    _templateObject_fea38ee0ecf311e896b1b122e9a8e20a = function() {
+    _templateObject_39ee97f0f1e611e8b229e5d6dee848e6 = function _templateObject_39ee97f0f1e611e8b229e5d6dee848e6() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_fea38ee0ecf311e896b1b122e9a8e20a()
+      _templateObject_39ee97f0f1e611e8b229e5d6dee848e6()
     ),
     is: "lrnsys-dialog-toolbar-button",
     properties: {

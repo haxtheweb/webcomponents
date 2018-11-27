@@ -25,7 +25,11 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
       };
     }
   };
-  window.A11yMediaYoutubeUtility.initYoutubePlayer = function(elem, options) {
+  window.A11yMediaYoutubeUtility.initYoutubePlayer = function(
+    elem,
+    options,
+    attached
+  ) {
     this.counter++;
     var root = this,
       div = document.createElement("div"),
@@ -66,10 +70,10 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
     };
     iframe.seekable = {
       length: 1,
-      start: function start() {
+      start: function start(index) {
         return 0;
       },
-      end: function end() {
+      end: function end(index) {
         return iframe.duration;
       }
     };

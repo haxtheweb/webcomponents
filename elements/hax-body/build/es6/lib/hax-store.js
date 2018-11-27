@@ -188,7 +188,7 @@ Polymer({
     }
     return !1;
   },
-  _appStoreChanged: function(newValue) {
+  _appStoreChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0) {
       if (typeof newValue.apps === typeof void 0) {
         this.$.appstore.generateRequest();
@@ -316,7 +316,7 @@ Polymer({
         } else if (window.clipboardData) {
           text = window.clipboardData.getData("Text");
         }
-        let sel, range;
+        let sel, range, html;
         if (window.getSelection) {
           sel = window.getSelection();
           if (sel.getRangeAt && sel.rangeCount) {
@@ -478,267 +478,255 @@ Polymer({
   },
   _buildPrimitiveDefinitions: function() {
     if (window.HaxStore.instance._isSandboxed) {
-      this.setHaxProperties(
-        {
-          canScale: !0,
-          canPosition: !0,
-          canEditSource: !1,
-          settings: {
-            quick: [
-              {
-                attribute: "src",
-                title: "Source",
-                description: "The URL for this video.",
-                inputMethod: "textfield",
-                icon: "link",
-                required: !0,
-                validationType: "url"
-              }
-            ],
-            configure: [
-              {
-                attribute: "src",
-                title: "Source",
-                description: "The URL for this video.",
-                inputMethod: "textfield",
-                icon: "link",
-                required: !0,
-                validationType: "url"
-              }
-            ],
-            advanced: []
-          }
-        },
-        "webview"
-      );
+      let webview = {
+        canScale: !0,
+        canPosition: !0,
+        canEditSource: !1,
+        settings: {
+          quick: [
+            {
+              attribute: "src",
+              title: "Source",
+              description: "The URL for this video.",
+              inputMethod: "textfield",
+              icon: "link",
+              required: !0,
+              validationType: "url"
+            }
+          ],
+          configure: [
+            {
+              attribute: "src",
+              title: "Source",
+              description: "The URL for this video.",
+              inputMethod: "textfield",
+              icon: "link",
+              required: !0,
+              validationType: "url"
+            }
+          ],
+          advanced: []
+        }
+      };
+      this.setHaxProperties(webview, "webview");
     }
-    this.setHaxProperties(
-      {
-        canScale: !0,
-        canPosition: !0,
-        canEditSource: !0,
-        gizmo: {
-          title: "Basic iframe",
-          description: "A basic iframe",
-          icon: "icons:fullscreen",
-          color: "grey",
-          groups: ["Content"],
-          handles: [
-            { type: "link", source: "src", height: "height", width: "width" }
-          ],
-          meta: { author: "W3C" }
-        },
-        settings: {
-          quick: [
-            {
-              attribute: "src",
-              title: "Source",
-              description: "The URL for this video.",
-              inputMethod: "textfield",
-              icon: "link",
-              required: !0,
-              validationType: "url"
-            }
-          ],
-          configure: [
-            {
-              attribute: "src",
-              title: "Source",
-              description: "The URL for this video.",
-              inputMethod: "textfield",
-              icon: "link",
-              required: !0,
-              validationType: "url"
-            }
-          ],
-          advanced: []
-        }
+    let iframe = {
+      canScale: !0,
+      canPosition: !0,
+      canEditSource: !0,
+      gizmo: {
+        title: "Basic iframe",
+        description: "A basic iframe",
+        icon: "icons:fullscreen",
+        color: "grey",
+        groups: ["Content"],
+        handles: [
+          { type: "link", source: "src", height: "height", width: "width" }
+        ],
+        meta: { author: "W3C" }
       },
-      "iframe"
-    );
-    this.setHaxProperties(
-      {
-        canScale: !0,
-        canPosition: !0,
-        canEditSource: !1,
-        gizmo: {
-          title: "Basic image",
-          description: "A basic img tag",
-          icon: "image:image",
-          color: "grey",
-          groups: ["Image", "Media"],
-          handles: [
-            { type: "link", source: "src" },
-            { type: "image", source: "src", height: "height", width: "width" }
-          ],
-          meta: { author: "W3C" }
-        },
-        settings: {
-          quick: [
-            {
-              attribute: "src",
-              title: "Source",
-              description: "The URL for this video.",
-              inputMethod: "textfield",
-              icon: "link",
-              required: !0,
-              validationType: "url"
-            },
-            {
-              attribute: "alt",
-              title: "Alt text",
-              description: "Useful for screen readers and improved SEO.",
-              inputMethod: "alt",
-              icon: "accessibility"
-            },
-            {
-              attribute: "height",
-              title: "Height",
-              description: "height in pixels of the item",
-              inputMethod: "textfield",
-              icon: "icons:swap-vert"
-            },
-            {
-              attribute: "width",
-              title: "Width",
-              description: "width in pixels of the item",
-              inputMethod: "textfield",
-              icon: "icons:swap-horiz"
-            }
-          ],
-          configure: [
-            {
-              attribute: "src",
-              title: "Source",
-              description: "The URL for this video.",
-              inputMethod: "textfield",
-              icon: "link",
-              required: !0,
-              validationType: "url"
-            },
-            {
-              attribute: "alt",
-              title: "Alt text",
-              description: "Useful for screen readers and improved SEO.",
-              inputMethod: "alt",
-              icon: "accessibility"
-            },
-            {
-              attribute: "height",
-              title: "Height",
-              description: "height in pixels of the item",
-              inputMethod: "textfield",
-              icon: "icons:swap-vert"
-            },
-            {
-              attribute: "width",
-              title: "Width",
-              description: "width in pixels of the item",
-              inputMethod: "textfield",
-              icon: "icons:swap-horiz"
-            }
-          ],
-          advanced: []
-        }
+      settings: {
+        quick: [
+          {
+            attribute: "src",
+            title: "Source",
+            description: "The URL for this video.",
+            inputMethod: "textfield",
+            icon: "link",
+            required: !0,
+            validationType: "url"
+          }
+        ],
+        configure: [
+          {
+            attribute: "src",
+            title: "Source",
+            description: "The URL for this video.",
+            inputMethod: "textfield",
+            icon: "link",
+            required: !0,
+            validationType: "url"
+          }
+        ],
+        advanced: []
+      }
+    };
+    this.setHaxProperties(iframe, "iframe");
+    let img = {
+      canScale: !0,
+      canPosition: !0,
+      canEditSource: !1,
+      gizmo: {
+        title: "Basic image",
+        description: "A basic img tag",
+        icon: "image:image",
+        color: "grey",
+        groups: ["Image", "Media"],
+        handles: [
+          { type: "link", source: "src" },
+          { type: "image", source: "src", height: "height", width: "width" }
+        ],
+        meta: { author: "W3C" }
       },
-      "img"
-    );
-    this.setHaxProperties(
-      {
-        canScale: !1,
-        canPosition: !1,
-        canEditSource: !1,
-        gizmo: {
-          title: "Basic link",
-          description: "A basic a tag",
-          icon: "icons:link",
-          color: "grey",
-          groups: ["Link"],
-          handles: [
-            { type: "link", source: "href", title: "innerText", alt: "title" }
-          ],
-          meta: { author: "W3C" }
-        },
-        settings: {
-          quick: [
-            {
-              attribute: "href",
-              title: "Link",
-              description: "The URL for this video.",
-              inputMethod: "textfield",
-              icon: "icons:link",
-              required: !0,
-              validationType: "url"
-            },
-            {
-              attribute: "title",
-              title: "Title text",
-              description: "Useful for screen readers and improved SEO.",
-              inputMethod: "textfield",
-              icon: "icons:accessibility"
+      settings: {
+        quick: [
+          {
+            attribute: "src",
+            title: "Source",
+            description: "The URL for this video.",
+            inputMethod: "textfield",
+            icon: "link",
+            required: !0,
+            validationType: "url"
+          },
+          {
+            attribute: "alt",
+            title: "Alt text",
+            description: "Useful for screen readers and improved SEO.",
+            inputMethod: "alt",
+            icon: "accessibility"
+          },
+          {
+            attribute: "height",
+            title: "Height",
+            description: "height in pixels of the item",
+            inputMethod: "textfield",
+            icon: "icons:swap-vert"
+          },
+          {
+            attribute: "width",
+            title: "Width",
+            description: "width in pixels of the item",
+            inputMethod: "textfield",
+            icon: "icons:swap-horiz"
+          }
+        ],
+        configure: [
+          {
+            attribute: "src",
+            title: "Source",
+            description: "The URL for this video.",
+            inputMethod: "textfield",
+            icon: "link",
+            required: !0,
+            validationType: "url"
+          },
+          {
+            attribute: "alt",
+            title: "Alt text",
+            description: "Useful for screen readers and improved SEO.",
+            inputMethod: "alt",
+            icon: "accessibility"
+          },
+          {
+            attribute: "height",
+            title: "Height",
+            description: "height in pixels of the item",
+            inputMethod: "textfield",
+            icon: "icons:swap-vert"
+          },
+          {
+            attribute: "width",
+            title: "Width",
+            description: "width in pixels of the item",
+            inputMethod: "textfield",
+            icon: "icons:swap-horiz"
+          }
+        ],
+        advanced: []
+      }
+    };
+    this.setHaxProperties(img, "img");
+    let ahref = {
+      canScale: !1,
+      canPosition: !1,
+      canEditSource: !1,
+      gizmo: {
+        title: "Basic link",
+        description: "A basic a tag",
+        icon: "icons:link",
+        color: "grey",
+        groups: ["Link"],
+        handles: [
+          { type: "link", source: "href", title: "innerText", alt: "title" }
+        ],
+        meta: { author: "W3C" }
+      },
+      settings: {
+        quick: [
+          {
+            attribute: "href",
+            title: "Link",
+            description: "The URL for this video.",
+            inputMethod: "textfield",
+            icon: "icons:link",
+            required: !0,
+            validationType: "url"
+          },
+          {
+            attribute: "title",
+            title: "Title text",
+            description: "Useful for screen readers and improved SEO.",
+            inputMethod: "textfield",
+            icon: "icons:accessibility"
+          }
+        ],
+        configure: [
+          {
+            attribute: "innerText",
+            title: "Text",
+            description: "Text of the link",
+            inputMethod: "textfield",
+            required: !0
+          },
+          {
+            attribute: "href",
+            title: "Link",
+            description: "The URL for this video.",
+            inputMethod: "textfield",
+            icon: "icons:link",
+            required: !0,
+            validationType: "url"
+          },
+          {
+            attribute: "title",
+            title: "Title text",
+            description: "Useful for screen readers and improved SEO.",
+            inputMethod: "textfield",
+            icon: "icons:accessibility"
+          },
+          {
+            attribute: "target",
+            title: "Target",
+            description: "Where to place the link.",
+            inputMethod: "select",
+            icon: "icons:launch",
+            options: {
+              "": "Same window",
+              _blank: "New window",
+              _top: "Top window",
+              _parent: "Parent window"
             }
-          ],
-          configure: [
-            {
-              attribute: "innerText",
-              title: "Text",
-              description: "Text of the link",
-              inputMethod: "textfield",
-              required: !0
-            },
-            {
-              attribute: "href",
-              title: "Link",
-              description: "The URL for this video.",
-              inputMethod: "textfield",
-              icon: "icons:link",
-              required: !0,
-              validationType: "url"
-            },
-            {
-              attribute: "title",
-              title: "Title text",
-              description: "Useful for screen readers and improved SEO.",
-              inputMethod: "textfield",
-              icon: "icons:accessibility"
-            },
-            {
-              attribute: "target",
-              title: "Target",
-              description: "Where to place the link.",
-              inputMethod: "select",
-              icon: "icons:launch",
-              options: {
-                "": "Same window",
-                _blank: "New window",
-                _top: "Top window",
-                _parent: "Parent window"
-              }
-            }
-          ],
-          advanced: []
-        }
-      },
-      "a"
-    );
-    this.setHaxProperties(
-      {
-        canScale: !1,
-        canPosition: !1,
-        canEditSource: !0,
-        settings: { quick: [], configure: [], advanced: [] }
-      },
-      "p"
-    );
-    this.setHaxProperties(
-      {
-        canScale: !0,
-        canPosition: !1,
-        canEditSource: !1,
-        settings: { quick: [], configure: [], advanced: [] }
-      },
-      "hr"
-    );
+          }
+        ],
+        advanced: []
+      }
+    };
+    this.setHaxProperties(ahref, "a");
+    let p = {
+      canScale: !1,
+      canPosition: !1,
+      canEditSource: !0,
+      settings: { quick: [], configure: [], advanced: [] }
+    };
+    this.setHaxProperties(p, "p");
+    let hr = {
+      canScale: !0,
+      canPosition: !1,
+      canEditSource: !1,
+      settings: { quick: [], configure: [], advanced: [] }
+    };
+    this.setHaxProperties(hr, "hr");
   },
   _injectToast: function() {
     var toast = document.createElement("paper-toast");
@@ -1049,6 +1037,7 @@ window.HaxStore.nodeToHaxElement = (node, eventName = "insert-element") => {
       ) {
         props[window.HaxStore.dashToCamel(node.attributes[attribute].name)] =
           node.attributes[attribute].value;
+      } else {
       }
     }
   } else {
@@ -1152,7 +1141,8 @@ window.HaxStore.haxNodeToContent = node => {
     } else if (null != value && "null" != value) {
       if (!0 === value || "true" === value) {
         propvals[nodeName] = !0;
-      } else if (!(!1 === value)) {
+      } else if (!1 === value) {
+      } else {
         if ("string" === typeof value && "" !== value) {
           value = value.replace(/"/g, "&quot;");
           propvals[nodeName] = value;
@@ -1183,7 +1173,8 @@ window.HaxStore.haxNodeToContent = node => {
         } else if (null != value && "null" != value) {
           if (!0 === value || "true" === value) {
             propvals[nodeName] = !0;
-          } else if (!(!1 === value)) {
+          } else if (!1 === value) {
+          } else {
             if ("string" === typeof value && "" !== value) {
               value = value.replace(/"/g, "&quot;");
               propvals[nodeName] = value;
@@ -1224,25 +1215,24 @@ window.HaxStore.haxNodeToContent = node => {
       content += " " + i + '="' + propvals[i] + '"';
     }
   }
-  if (
-    [
-      "area",
-      "base",
-      "br",
-      "col",
-      "embed",
-      "hr",
-      "img",
-      "input",
-      "keygen",
-      "link",
-      "meta",
-      "param",
-      "source",
-      "track",
-      "wbr"
-    ].includes(tag)
-  ) {
+  let voidTags = [
+    "area",
+    "base",
+    "br",
+    "col",
+    "embed",
+    "hr",
+    "img",
+    "input",
+    "keygen",
+    "link",
+    "meta",
+    "param",
+    "source",
+    "track",
+    "wbr"
+  ];
+  if (voidTags.includes(tag)) {
     content += "/>";
   } else {
     content += ">";
@@ -1277,7 +1267,8 @@ window.HaxStore.haxNodeToContent = node => {
   }
   if ("span" === tag) {
     content += "</" + tag + ">";
-  } else if (!("hr" === tag || "br" === tag || "img" === tag)) {
+  } else if ("hr" === tag || "br" === tag || "img" === tag) {
+  } else {
     content += "</" + tag + ">" + "\n";
   }
   if (
@@ -1434,7 +1425,7 @@ window.HaxStore.encapScript = html => {
   html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
   html = html.replace(
     /<template[\s\S]*?>[\s\S]*?&lt;script[\s\S]*?&gt;[\s\S]*?&lt;\/script&gt;/gi,
-    function(match) {
+    function(match, contents, offset, input_string) {
       match = match.replace("&lt;script&gt;", "<script>");
       match = match.replace("&lt;/script&gt;", "</script>");
       match = match.replace("&lt;style&gt;", "<style>");

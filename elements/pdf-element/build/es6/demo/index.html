@@ -1,0 +1,13 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=yes"><title>PdfElement: pdf-element Demo</title><script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script><script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script><script type="module">import"../node_modules/@polymer/iron-demo-helpers/demo-snippet.js";import"../pdf-element.js";</script><style is="custom-style" include="demo-pages-shared-styles">.vertical-section-container{max-width:900px;}paper-button{margin:10px;}</style></head><body><div class="vertical-section-container"><h3>Basic pdf-element demo</h3><demo-snippet><template><pdf-element src="./example.pdf" elevation="5" downloadable="" height="900" width="700" show-file-name="" enable-text-selection=""></pdf-element></template></demo-snippet></div><div class="vertical-section-container"><h3>Dynamically change PDF source</h3><demo-snippet class="centered-demo"><template><paper-button raised="" id="one">PDF One</paper-button><paper-button raised="" id="another">PDF Two</paper-button><pdf-element id="pdf" height="700" width="500" show-spinner=""></pdf-element><script>document.querySelector("#one").addEventListener("click", function () {
+              document.getElementById("pdf").setAttribute("src", "./pdf.pdf");
+            });
+            document.querySelector("#another").addEventListener("click", function () {
+              document.getElementById("pdf").setAttribute("src", "./example.pdf");
+            });
+              & lt; /script>
+            </template >
+    
+          </demo - snippet >
+        </div >
+  </body>
+</html></script></template></demo-snippet></div></body></html>

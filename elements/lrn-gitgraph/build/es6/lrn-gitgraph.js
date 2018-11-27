@@ -44,7 +44,7 @@ Polymer({
         });
         tree.reverse();
         var branches = [];
-        tree.forEach(function(item) {
+        tree.forEach(function(item, i) {
           if ("undefined" === typeof branches[item.branch]) {
             branches[item.branch] = gitgraph.branch(item.branch);
           }

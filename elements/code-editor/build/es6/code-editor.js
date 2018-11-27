@@ -63,7 +63,7 @@ Polymer({
   _computeCodePenData: function(title, editorValue) {
     return { title: title, html: editorValue };
   },
-  _editorReady: function() {
+  _editorReady: function(e) {
     this.__editorReady = !0;
     setTimeout(() => {
       this.$.codeeditor.editor.setOptions({
@@ -73,7 +73,7 @@ Polymer({
       this.updateEditorValue();
     }, 200);
   },
-  _editorDataChanged: function() {
+  _editorDataChanged: function(e) {
     this.editorValue = this.$.codeeditor.value;
   },
   updateEditorValue: function() {
@@ -89,19 +89,19 @@ Polymer({
   ready: function() {
     this._observer = new FlattenedNodesObserver(this, info => {
       if (0 < info.addedNodes.length) {
-        info.addedNodes.map(() => {
+        info.addedNodes.map(node => {
           this.updateEditorValue();
         });
       }
       if (0 < info.removedNodes.length) {
-        info.removedNodes.map(() => {
+        info.removedNodes.map(node => {
           this.updateEditorValue();
         });
       }
     });
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -156,6 +156,7 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   }
 });

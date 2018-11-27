@@ -1,7 +1,7 @@
 define([
   "../node_modules/@polymer/polymer/polymer-legacy.js",
   "../node_modules/@polymer/iron-resizable-behavior/iron-resizable-behavior.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _ironResizableBehavior) {
   "use strict";
   var _Polymer;
   window.A11yMediaUtility = {};
@@ -27,7 +27,7 @@ define([
         this.__stickyManager = function(e) {
           root.setStickyPlayer(e.detail);
         };
-        this.__scrollChecker = function() {
+        this.__scrollChecker = function(e) {
           root._checkScroll();
         };
         document.body.addEventListener(

@@ -6,9 +6,17 @@ define([
   "../node_modules/@lrnwebcomponents/simple-colors/simple-colors.js",
   "./lrnsys-dialog-toolbar.js",
   "./lrnsys-button-inner.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _paperButton,
+  _neonAnimation,
+  _neonAnimations,
+  _simpleColors,
+  _lrnsysDialogToolbar,
+  _lrnsysButtonInner
+) {
   "use strict";
-  function _templateObject_fe97f620ecf311e896b1b122e9a8e20a() {
+  function _templateObject_39e63380f1e611e8b229e5d6dee848e6() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style is="custom-style" include="simple-colors">\n      :host {\n        display: inline-block;\n        z-index: 1000;\n      }\n\n      paper-dialog {\n        position: fixed;\n        top: 5%;\n        right: 5%;\n        bottom: 5%;\n        left: 5%;\n        overflow: auto;\n        border-radius: 3px;\n        color: var(--lrnsys-dialog-color, black);\n        background-color: var(--lrnsys-dialog-background-color, white);\n      }\n      paper-dialog-scrollable {\n        margin-top:0;\n        @apply --layout-flex;\n      }\n\n      paper-dialog>*:first-child {\n        margin-top: 0;\n      }\n\n      .dialog-header {\n        width: 100%;\n        padding: 0;\n        margin: 0;\n      }\n      .dialog-heading {\n        padding: 0;\n        margin: 0;\n      }\n      .dialog-header-slot ::slotted(*) {\n        margin: 0;\n        padding: 0 15px;\n        line-height: 200%;\n      }\n    </style>\n    <paper-dialog modal="[[modal]]" id="dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="" opened$="[[opened]]">\n      <lrnsys-dialog-toolbar on-button-clicked="_toolbarButtonClickedHandler">\n        <slot slot="primary" name="toolbar-primary"></slot>\n        <slot slot="secondary" name="toolbar-secondary"></slot>\n      </lrnsys-dialog-toolbar>  \n      <div class$="[[headingClass]] dialog-header">\n        <div class$="[[headingClass]] dialog-heading" hidden$="[[!header]]">[[header]]</div>\n        <span class="dialog-header-slot"><slot name="header"></slot></span>\n      </div>\n      <paper-dialog-scrollable class="dialog-contents" id="dialogcontent">\n        <slot></slot>\n      </paper-dialog-scrollable>\n    </paper-dialog>\n'
@@ -17,14 +25,14 @@ define([
         '\n    <style is="custom-style" include="simple-colors">\n      :host {\n        display: inline-block;\n        z-index: 1000;\n      }\n\n      paper-dialog {\n        position: fixed;\n        top: 5%;\n        right: 5%;\n        bottom: 5%;\n        left: 5%;\n        overflow: auto;\n        border-radius: 3px;\n        color: var(--lrnsys-dialog-color, black);\n        background-color: var(--lrnsys-dialog-background-color, white);\n      }\n      paper-dialog-scrollable {\n        margin-top:0;\n        @apply --layout-flex;\n      }\n\n      paper-dialog>*:first-child {\n        margin-top: 0;\n      }\n\n      .dialog-header {\n        width: 100%;\n        padding: 0;\n        margin: 0;\n      }\n      .dialog-heading {\n        padding: 0;\n        margin: 0;\n      }\n      .dialog-header-slot ::slotted(*) {\n        margin: 0;\n        padding: 0 15px;\n        line-height: 200%;\n      }\n    </style>\n    <paper-dialog modal="[[modal]]" id="dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="" opened\\$="[[opened]]">\n      <lrnsys-dialog-toolbar on-button-clicked="_toolbarButtonClickedHandler">\n        <slot slot="primary" name="toolbar-primary"></slot>\n        <slot slot="secondary" name="toolbar-secondary"></slot>\n      </lrnsys-dialog-toolbar>  \n      <div class$="[[headingClass]] dialog-header">\n        <div class$="[[headingClass]] dialog-heading" hidden$="[[!header]]">[[header]]</div>\n        <span class="dialog-header-slot"><slot name="header"></slot></span>\n      </div>\n      <paper-dialog-scrollable class="dialog-contents" id="dialogcontent">\n        <slot></slot>\n      </paper-dialog-scrollable>\n    </paper-dialog>\n'
       ]
     );
-    _templateObject_fe97f620ecf311e896b1b122e9a8e20a = function() {
+    _templateObject_39e63380f1e611e8b229e5d6dee848e6 = function _templateObject_39e63380f1e611e8b229e5d6dee848e6() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_fe97f620ecf311e896b1b122e9a8e20a()
+      _templateObject_39e63380f1e611e8b229e5d6dee848e6()
     ),
     is: "lrnsys-dialog-modal",
     listeners: {
@@ -70,19 +78,19 @@ define([
     },
     attached: function attached() {
       var toolbar = this.shadowRoot.querySelector("lrnsys-dialog-toolbar");
-      this.$.dialog.addEventListener("mouseover", function() {
+      this.$.dialog.addEventListener("mouseover", function(e) {
         toolbar.setAttribute("secondary-visible", !0);
       });
-      this.$.dialog.addEventListener("mouseout", function() {
+      this.$.dialog.addEventListener("mouseout", function(e) {
         toolbar.removeAttribute("secondary-visible");
       });
     },
     detached: function detached() {
       var toolbar = this.shadowRoot.querySelector("lrnsys-dialog-toolbar");
-      this.$.dialog.removeEventListener("mouseover", function() {
+      this.$.dialog.removeEventListener("mouseover", function(e) {
         toolbar.setAttribute("secondary-visible", !0);
       });
-      this.$.dialog.removeEventListener("mouseout", function() {
+      this.$.dialog.removeEventListener("mouseout", function(e) {
         toolbar.removeAttribute("secondary-visible");
       });
     },

@@ -53,7 +53,8 @@ Polymer({
     var realMax = Math.max(barValuesSum, this.max),
       width =
         (0 < realMax ? Math.floor(1e4 * (barValue / realMax)) / 100 : "0") +
-        "%";
-    return "calc(" + width + " + " + barHeight / 2 + "px" + ")";
+        "%",
+      negativeMargin = barHeight / 2;
+    return "calc(" + width + " + " + negativeMargin + "px" + ")";
   }
 });

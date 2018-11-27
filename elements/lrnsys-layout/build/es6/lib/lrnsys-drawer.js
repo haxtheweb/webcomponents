@@ -85,22 +85,22 @@ Polymer({
       this.$.flyouttrigger.focus();
     }
   },
-  tapEventOn: function() {
+  tapEventOn: function(e) {
     const root = this;
     if (typeof root.hoverClass !== typeof void 0) {
       var classes = root.hoverClass.split(" ");
-      classes.forEach(function(item) {
+      classes.forEach(function(item, index) {
         if ("" != item) {
           root.$.flyouttrigger.classList.add(item);
         }
       });
     }
   },
-  tapEventOff: function() {
+  tapEventOff: function(e) {
     const root = this;
     if (typeof root.hoverClass !== typeof void 0) {
       var classes = root.hoverClass.split(" ");
-      classes.forEach(function(item) {
+      classes.forEach(function(item, index) {
         if ("" != item) {
           root.$.flyouttrigger.classList.remove(item);
         }
@@ -110,12 +110,12 @@ Polymer({
   toggleDrawer: function() {
     this.$.modal.open();
   },
-  focusToggle: function() {
+  focusToggle: function(e) {
     const root = this;
     root.fire("focus-changed", { focus: root.focusState });
     if (typeof root.hoverClass !== typeof void 0) {
       var classes = root.hoverClass.split(" ");
-      classes.forEach(function(item) {
+      classes.forEach(function(item, index) {
         if ("" != item) {
           if (root.focusState) {
             root.$.flyouttrigger.classList.add(item);

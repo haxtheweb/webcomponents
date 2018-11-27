@@ -10,10 +10,22 @@ define([
   "./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js",
   "./node_modules/@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js",
   "./node_modules/@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js"
-], function(_polymerLegacy, _polymerDom, async) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  async,
+  _ironA11yKeys,
+  _paperButton,
+  _ironIcons,
+  _ironIcon,
+  _HAXWiring,
+  _simpleColors,
+  _responsiveGridRow,
+  _responsiveGridCol
+) {
   "use strict";
   async = babelHelpers.interopRequireWildcard(async);
-  function _templateObject_8d7a4a10ecf311e8ab97d795f149a77d() {
+  function _templateObject_025e59b0f1e611e888b1cf884d97fbd9() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n\n      responsive-grid-col {\n        --responsive-grid-col-inner: {\n          padding-left: 0;\n          padding-right: 0;\n        }\n      }\n\n      responsive-grid-row {\n        --responsive-grid-row-inner: {\n          margin-left: 0;\n          margin-right: 0;\n        }\n      }\n\n      :host([edit-mode]) responsive-grid-col.mover {\n        min-height: 150px;\n        background-color: #d1d1d1;\n      }\n\n      :host ::slotted(*) .mover,\n      :host responsive-grid-col[data-draggable].mover {\n        outline: 2px dotted #d1d1d1;\n        outline-offset: 2px;\n        background-color: rgba(240, 240, 240, .2);\n      }\n\n      :host ::slotted(*) .active-item {\n        outline: 2px dashed #aaaaaa !important;\n        outline-offset: 2px;\n        background-color: rgba(220, 220, 220, .6) !important;\n      }\n\n      :host ::slotted(*) [data-draggable]:focus,\n      :host ::slotted(*) [data-draggable]:hover,\n      :host ::slotted(*) [data-draggable]:active {\n        outline: 2px dotted #d1d1d1;\n        outline-offset: 2px;\n        background-color: rgba(240, 240, 240, .2);\n        cursor: move !important;\n      }\n\n      paper-button {\n        display: none;\n        position: absolute;\n        margin: 0;\n        padding: 0;\n        outline: none;\n        width: 20px;\n        height: 20px;\n        color: black;\n        background-color: #EEEEEE;\n        border-radius: 50%;\n        box-sizing: content-box !important;\n        z-index: 1;\n        min-width: unset;\n      }\n\n      paper-button.active {\n        display: block;\n      }\n      paper-button iron-icon {\n        display: block;\n      }\n\n      .button-holding-pen {\n        position: relative;\n      }\n    </style>\n    <div class="button-holding-pen">\n      <paper-button title="move item up" id="up" on-tap="moveActiveElement">\n        <iron-icon icon="icons:arrow-upward"></iron-icon>\n      </paper-button>\n      <paper-button title="move item right" id="right" on-tap="moveActiveElement">\n        <iron-icon icon="icons:arrow-forward"></iron-icon>\n      </paper-button>\n      <paper-button title="move item down" id="down" on-tap="moveActiveElement">\n        <iron-icon icon="icons:arrow-downward"></iron-icon>\n      </paper-button>\n      <paper-button title="move item left" id="left" on-tap="moveActiveElement">\n        <iron-icon icon="icons:arrow-back"></iron-icon>\n      </paper-button>\n    </div>\n    <responsive-grid-row gutter="0">\n      <template is="dom-if" if="[[!hideCol1]]" strip-whitespace>\n        <responsive-grid-col id="col1" style$="background-color:[[__col1Color]];" xl$="[[col1_xl]]" lg$="[[col1_lg]]" md$="[[col1_md]]" sm$="[[col1_sm]]" xs$="[[col1_xs]]">\n          <slot name="col-1"></slot>\n        </responsive-grid-col>\n      </template>\n      <template is="dom-if" if="[[!hideCol2]]" strip-whitespace>\n        <responsive-grid-col id="col2" style$="background-color:[[__col2Color]];" xl$="[[col2_xl]]" lg$="[[col2_lg]]" md$="[[col2_md]]" sm$="[[col2_sm]]" xs$="[[col2_xs]]">\n          <slot name="col-2"></slot>\n        </responsive-grid-col>\n      </template>\n      <template is="dom-if" if="[[!hideCol3]]" strip-whitespace>\n        <responsive-grid-col id="col3" style$="background-color:[[__col3Color]];" xl$="[[col3_xl]]" lg$="[[col3_lg]]" md$="[[col3_md]]" sm$="[[col3_sm]]" xs$="[[col3_xs]]">\n          <slot name="col-3"></slot>\n        </responsive-grid-col>\n      </template>\n      <template is="dom-if" if="[[!hideCol4]]" strip-whitespace>\n        <responsive-grid-col id="col4" style$="background-color:[[__col4Color]];" xl$="[[col4_xl]]" lg$="[[col4_lg]]" md$="[[col4_md]]" sm$="[[col4_sm]]" xs$="[[col4_xs]]">\n          <slot name="col-4"></slot>\n        </responsive-grid-col>\n      </template>\n      <responsive-grid-col xl="12" lg="12" md="12" sm="12" xs="12">\n        <slot></slot>\n      </responsive-grid-col>\n    </responsive-grid-row>\n    <iron-a11y-keys stop-keyboard-event-propagation target="[[__activeItem]]" keys="enter" on-keys-pressed="setActiveElement"></iron-a11y-keys>\n    <iron-a11y-keys target="[[__activeItem]]" keys="esc" on-keys-pressed="cancelActive"></iron-a11y-keys>\n'
@@ -22,14 +34,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n\n      responsive-grid-col {\n        --responsive-grid-col-inner: {\n          padding-left: 0;\n          padding-right: 0;\n        }\n      }\n\n      responsive-grid-row {\n        --responsive-grid-row-inner: {\n          margin-left: 0;\n          margin-right: 0;\n        }\n      }\n\n      :host([edit-mode]) responsive-grid-col.mover {\n        min-height: 150px;\n        background-color: #d1d1d1;\n      }\n\n      :host ::slotted(*) .mover,\n      :host responsive-grid-col[data-draggable].mover {\n        outline: 2px dotted #d1d1d1;\n        outline-offset: 2px;\n        background-color: rgba(240, 240, 240, .2);\n      }\n\n      :host ::slotted(*) .active-item {\n        outline: 2px dashed #aaaaaa !important;\n        outline-offset: 2px;\n        background-color: rgba(220, 220, 220, .6) !important;\n      }\n\n      :host ::slotted(*) [data-draggable]:focus,\n      :host ::slotted(*) [data-draggable]:hover,\n      :host ::slotted(*) [data-draggable]:active {\n        outline: 2px dotted #d1d1d1;\n        outline-offset: 2px;\n        background-color: rgba(240, 240, 240, .2);\n        cursor: move !important;\n      }\n\n      paper-button {\n        display: none;\n        position: absolute;\n        margin: 0;\n        padding: 0;\n        outline: none;\n        width: 20px;\n        height: 20px;\n        color: black;\n        background-color: #EEEEEE;\n        border-radius: 50%;\n        box-sizing: content-box !important;\n        z-index: 1;\n        min-width: unset;\n      }\n\n      paper-button.active {\n        display: block;\n      }\n      paper-button iron-icon {\n        display: block;\n      }\n\n      .button-holding-pen {\n        position: relative;\n      }\n    </style>\n    <div class="button-holding-pen">\n      <paper-button title="move item up" id="up" on-tap="moveActiveElement">\n        <iron-icon icon="icons:arrow-upward"></iron-icon>\n      </paper-button>\n      <paper-button title="move item right" id="right" on-tap="moveActiveElement">\n        <iron-icon icon="icons:arrow-forward"></iron-icon>\n      </paper-button>\n      <paper-button title="move item down" id="down" on-tap="moveActiveElement">\n        <iron-icon icon="icons:arrow-downward"></iron-icon>\n      </paper-button>\n      <paper-button title="move item left" id="left" on-tap="moveActiveElement">\n        <iron-icon icon="icons:arrow-back"></iron-icon>\n      </paper-button>\n    </div>\n    <responsive-grid-row gutter="0">\n      <template is="dom-if" if="[[!hideCol1]]" strip-whitespace>\n        <responsive-grid-col id="col1" style\\$="background-color:[[__col1Color]];" xl\\$="[[col1_xl]]" lg\\$="[[col1_lg]]" md\\$="[[col1_md]]" sm\\$="[[col1_sm]]" xs\\$="[[col1_xs]]">\n          <slot name="col-1"></slot>\n        </responsive-grid-col>\n      </template>\n      <template is="dom-if" if="[[!hideCol2]]" strip-whitespace>\n        <responsive-grid-col id="col2" style\\$="background-color:[[__col2Color]];" xl\\$="[[col2_xl]]" lg\\$="[[col2_lg]]" md\\$="[[col2_md]]" sm\\$="[[col2_sm]]" xs\\$="[[col2_xs]]">\n          <slot name="col-2"></slot>\n        </responsive-grid-col>\n      </template>\n      <template is="dom-if" if="[[!hideCol3]]" strip-whitespace>\n        <responsive-grid-col id="col3" style\\$="background-color:[[__col3Color]];" xl\\$="[[col3_xl]]" lg\\$="[[col3_lg]]" md\\$="[[col3_md]]" sm\\$="[[col3_sm]]" xs\\$="[[col3_xs]]">\n          <slot name="col-3"></slot>\n        </responsive-grid-col>\n      </template>\n      <template is="dom-if" if="[[!hideCol4]]" strip-whitespace>\n        <responsive-grid-col id="col4" style\\$="background-color:[[__col4Color]];" xl\\$="[[col4_xl]]" lg\\$="[[col4_lg]]" md\\$="[[col4_md]]" sm\\$="[[col4_sm]]" xs\\$="[[col4_xs]]">\n          <slot name="col-4"></slot>\n        </responsive-grid-col>\n      </template>\n      <responsive-grid-col xl="12" lg="12" md="12" sm="12" xs="12">\n        <slot></slot>\n      </responsive-grid-col>\n    </responsive-grid-row>\n    <iron-a11y-keys stop-keyboard-event-propagation target="[[__activeItem]]" keys="enter" on-keys-pressed="setActiveElement"></iron-a11y-keys>\n    <iron-a11y-keys target="[[__activeItem]]" keys="esc" on-keys-pressed="cancelActive"></iron-a11y-keys>\n'
       ]
     );
-    _templateObject_8d7a4a10ecf311e8ab97d795f149a77d = function() {
+    _templateObject_025e59b0f1e611e888b1cf884d97fbd9 = function _templateObject_025e59b0f1e611e888b1cf884d97fbd9() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_8d7a4a10ecf311e8ab97d795f149a77d()
+      _templateObject_025e59b0f1e611e888b1cf884d97fbd9()
     ),
     is: "grid-plate",
     listeners: { focusin: "_focusIn" },
@@ -55,7 +67,7 @@ define([
       },
       __activeItem: { type: Object, observer: "_activeItemChanged" }
     },
-    cancelActive: function cancelActive() {
+    cancelActive: function cancelActive(e) {
       this.__activeItem = null;
     },
     moveActiveElement: function moveActiveElement(e) {
@@ -112,13 +124,25 @@ define([
       }, 100);
     },
     _activeItemChanged: function _activeItemChanged(newValue, oldValue) {
-      if (babelHelpers.typeof(newValue) !== "undefined" && null != newValue) {
+      if (
+        babelHelpers.typeof(newValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
+        null != newValue
+      ) {
         newValue.classList.add("active-item");
         this.positionArrows(newValue);
       } else if (null == newValue) {
         this.positionArrows(newValue);
       }
-      if (babelHelpers.typeof(oldValue) !== "undefined" && null != oldValue) {
+      if (
+        babelHelpers.typeof(oldValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
+        null != oldValue
+      ) {
         oldValue.classList.remove("active-item");
         oldValue.blur();
       }
@@ -194,7 +218,12 @@ define([
       if ("object" === babelHelpers.typeof(children)) {
         if (newValue && !oldValue) {
           for (var i in children) {
-            if (babelHelpers.typeof(children[i].tagName) !== "undefined") {
+            if (
+              babelHelpers.typeof(children[i].tagName) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
+            ) {
               children[i].addEventListener("drop", this.dropEvent.bind(this));
               children[i].addEventListener(
                 "dragstart",
@@ -235,7 +264,12 @@ define([
           });
         } else if (!newValue && oldValue) {
           for (var i in children) {
-            if (babelHelpers.typeof(children[i].tagName) !== "undefined") {
+            if (
+              babelHelpers.typeof(children[i].tagName) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
+            ) {
               children[i].removeEventListener(
                 "drop",
                 this.dropEvent.bind(this)
@@ -291,8 +325,14 @@ define([
         normalizedEvent = (0, _polymerDom.dom)(e),
         local = normalizedEvent.localTarget;
       if (
-        babelHelpers.typeof(this.__activeItem) !== "undefined" &&
-        babelHelpers.typeof(local) !== "undefined" &&
+        babelHelpers.typeof(this.__activeItem) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
+        babelHelpers.typeof(local) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         null != local.getAttribute("slot") &&
         this.__activeItem !== local
       ) {
@@ -309,7 +349,12 @@ define([
       }
       var children = (0, _polymerDom.dom)(this).children;
       for (var i in children) {
-        if (babelHelpers.typeof(children[i].classList) !== "undefined") {
+        if (
+          babelHelpers.typeof(children[i].classList) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           children[i].classList.remove("mover");
         }
       }
@@ -336,10 +381,15 @@ define([
       }
       return items;
     },
-    dragStart: function dragStart() {
+    dragStart: function dragStart(e) {
       var children = (0, _polymerDom.dom)(this).children;
       for (var i in children) {
-        if (babelHelpers.typeof(children[i].classList) !== "undefined") {
+        if (
+          babelHelpers.typeof(children[i].classList) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           children[i].classList.add("mover");
         }
       }
@@ -352,10 +402,15 @@ define([
         }
       }
     },
-    dragEnd: function dragEnd() {
+    dragEnd: function dragEnd(e) {
       var children = (0, _polymerDom.dom)(this).children;
       for (var i in children) {
-        if (babelHelpers.typeof(children[i].classList) !== "undefined") {
+        if (
+          babelHelpers.typeof(children[i].classList) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           children[i].classList.remove("mover");
         }
       }
@@ -371,13 +426,16 @@ define([
     splitColor: function splitColor(value) {
       if (
         "" != value &&
-        babelHelpers.typeof(this.__hexCodes[value]) !== "undefined"
+        babelHelpers.typeof(this.__hexCodes[value]) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
       ) {
         return this.__hexCodes[value][this.__hexCodes[value].length - 1];
       }
       return value;
     },
-    _colColors: function _colColors(newValue) {
+    _colColors: function _colColors(newValue, oldValue) {
       if ("" != newValue) {
         for (var i in newValue) {
           this["__col" + (parseInt(i) + 1) + "Color"] = this.splitColor(
@@ -437,7 +495,7 @@ define([
       for (var i in this.__hexCodes) {
         colorOptions[i] = i;
       }
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !1,
@@ -492,9 +550,10 @@ define([
         saveOptions: {
           unsetAttributes: ["__active-item", "_colors", "edit-mode"]
         }
-      });
+      };
+      this.setHaxProperties(props);
     },
-    haxInsertContent: function haxInsertContent() {
+    haxInsertContent: function haxInsertContent(e) {
       var _this4 = this;
       if (this === window.HaxStore.instance.activeContainerNode) {
         this.editMode = !1;
@@ -508,7 +567,10 @@ define([
     _haxStorePropertyUpdated: function _haxStorePropertyUpdated(e) {
       if (
         e.detail &&
-        babelHelpers.typeof(e.detail.value) !== "undefined" &&
+        babelHelpers.typeof(e.detail.value) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         e.detail.property
       ) {
         if ("object" === babelHelpers.typeof(e.detail.value)) {

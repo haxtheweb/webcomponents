@@ -16,10 +16,28 @@ define([
   "./node_modules/@lrnwebcomponents/lrnsys-button/lrnsys-button.js",
   "./node_modules/@lrnwebcomponents/elmsln-loading/elmsln-loading.js",
   "./lib/lrnapp-cis-course-card.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _ironAjax,
+  _ironPages,
+  _ironList,
+  _ironSelector,
+  _paperToast,
+  _paperStyles,
+  _paperButton,
+  _paperListbox,
+  _paperDropdownMenu,
+  _paperItem,
+  _appRoute,
+  _appLocation,
+  _lrnsysButton,
+  _elmslnLoading,
+  _lrnappCisCourseCard
+) {
   "use strict";
   var _properties;
-  function _templateObject_5762aca0ecf411e881790daef6914e88() {
+  function _templateObject_6612f290f1e611e8a92ccde37bfe9ae7() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style include="materializecss-styles"></style>\n    <style>\n      :host {\n        display: block;\n        align-content: center;\n      }\n      #loading {\n        width: 100%;\n        z-index: 1000;\n        opacity: .8;\n        text-align: center;\n        align-content: center;\n        justify-content: center;\n        height: 100vh;\n        position: absolute;\n        background-color: white;\n      }\n      iron-selector {\n        line-height: 16px;\n      }\n      iron-selector lrnsys-button {\n        display: inline-flex;\n      }\n      paper-button.coursecard-wrapper {\n        margin: 0;\n        padding: 0;\n      }\n      lrnapp-cis-course-card {\n        padding: 0;\n        margin: 16px;\n        height: 240px;\n        width: 224px;\n      }\n      .courses-grid {\n        margin: 0 auto;\n        width: 95%;\n      }\n      .iron-selected .display-mode {\n        background-color: #ff6f00;\n        color: white;\n      }\n      .iron-list-container {\n        display: flex;\n        flex-direction: column;\n        min-height:50vh;\n      }\n      iron-list {\n        flex: 1 1 auto;\n      }\n    </style>\n    <iron-ajax auto="" url="[[sourcePath]]" params="" handle-as="json" last-response="{{cisResponse}}" on-response="_handleResponse"></iron-ajax>\n\n    <app-location route="{{route}}" query-params="{{queryParams}}"></app-location>\n    <app-route route="{{route}}" pattern="[[endPoint]]/:page" data="{{data}}" tail="{{tail}}" query-params="{{queryParams}}">\n    </app-route>\n\n    <div id="loading">\n      <h3>Loading..</h3>\n      <elmsln-loading color="grey-text" size="large"></elmsln-loading>\n    </div>\n    <app-toolbar class="">\n      <span main-title=""></span>\n      <span top-item="" style="text-align:right;font-size:8px;padding-right:16px;">Displaying [[courses.length]] of [[originalCourses.length]]</span>\n      <paper-dropdown-menu label="Course" hidden$="[[!courses]]">\n        <paper-listbox slot="dropdown-content" class="dropdown-content" selected="{{queryParams.course}}" attr-for-selected="item-id">\n          <paper-item></paper-item>\n          <template is="dom-repeat" items="[[_toArray(courses)]]" as="course">\n          <paper-item item-id="[[course.id]]">[[course.data.name]]</paper-item>\n          </template>\n        </paper-listbox>\n      </paper-dropdown-menu>\n      <paper-dropdown-menu label="Program" hidden$="[[!programs]]">\n        <paper-listbox slot="dropdown-content" class="dropdown-content" selected="{{queryParams.program}}" attr-for-selected="item-id">\n          <paper-item></paper-item>\n        <template is="dom-repeat" items="[[_toArray(programs)]]" as="program">\n          <paper-item item-id="[[program.id]]">[[program.data.name]]</paper-item>\n        </template>\n        </paper-listbox>\n      </paper-dropdown-menu>\n      <paper-dropdown-menu label="Academic home" hidden$="[[!academics]]">\n        <paper-listbox slot="dropdown-content" class="dropdown-content" selected="{{queryParams.academic}}" attr-for-selected="item-id">\n          <paper-item></paper-item>\n        <template is="dom-repeat" items="[[_toArray(academics)]]" as="academic">\n          <paper-item item-id="[[academic.id]]">[[academic.data.name]]</paper-item>\n        </template>\n        </paper-listbox>\n      </paper-dropdown-menu>\n    </app-toolbar>\n    <div class="courses-grid">\n    <iron-pages selected="{{data.page}}" attr-for-selected="name" fallback-selection="courses" role="main">\n      <div class="iron-list-container" name="courses">\n        <iron-list items="[[courses]]" as="course" grid="">\n          <template>\n          <paper-button data-course-id$="[[course.id]]" class="coursecard-wrapper" on-tap="_loadCourseUrl">\n            <lrnapp-cis-course-card elevation="2" data-course-id$="[[course.id]]" name="[[course.data.name]]" image="[[course.data.image]]" title="[[course.data.title]]" color="[[course.data.color]]">\n            </lrnapp-cis-course-card>\n          </paper-button>\n          </template>\n        </iron-list>\n      </div>\n    </iron-pages>\n    </div>\n    <paper-toast id="toast"></paper-toast>\n'
@@ -28,14 +46,14 @@ define([
         '\n    <style include="materializecss-styles"></style>\n    <style>\n      :host {\n        display: block;\n        align-content: center;\n      }\n      #loading {\n        width: 100%;\n        z-index: 1000;\n        opacity: .8;\n        text-align: center;\n        align-content: center;\n        justify-content: center;\n        height: 100vh;\n        position: absolute;\n        background-color: white;\n      }\n      iron-selector {\n        line-height: 16px;\n      }\n      iron-selector lrnsys-button {\n        display: inline-flex;\n      }\n      paper-button.coursecard-wrapper {\n        margin: 0;\n        padding: 0;\n      }\n      lrnapp-cis-course-card {\n        padding: 0;\n        margin: 16px;\n        height: 240px;\n        width: 224px;\n      }\n      .courses-grid {\n        margin: 0 auto;\n        width: 95%;\n      }\n      .iron-selected .display-mode {\n        background-color: #ff6f00;\n        color: white;\n      }\n      .iron-list-container {\n        display: flex;\n        flex-direction: column;\n        min-height:50vh;\n      }\n      iron-list {\n        flex: 1 1 auto;\n      }\n    </style>\n    <iron-ajax auto="" url="[[sourcePath]]" params="" handle-as="json" last-response="{{cisResponse}}" on-response="_handleResponse"></iron-ajax>\n\n    <app-location route="{{route}}" query-params="{{queryParams}}"></app-location>\n    <app-route route="{{route}}" pattern="[[endPoint]]/:page" data="{{data}}" tail="{{tail}}" query-params="{{queryParams}}">\n    </app-route>\n\n    <div id="loading">\n      <h3>Loading..</h3>\n      <elmsln-loading color="grey-text" size="large"></elmsln-loading>\n    </div>\n    <app-toolbar class="">\n      <span main-title=""></span>\n      <span top-item="" style="text-align:right;font-size:8px;padding-right:16px;">Displaying [[courses.length]] of [[originalCourses.length]]</span>\n      <paper-dropdown-menu label="Course" hidden\\$="[[!courses]]">\n        <paper-listbox slot="dropdown-content" class="dropdown-content" selected="{{queryParams.course}}" attr-for-selected="item-id">\n          <paper-item></paper-item>\n          <template is="dom-repeat" items="[[_toArray(courses)]]" as="course">\n          <paper-item item-id="[[course.id]]">[[course.data.name]]</paper-item>\n          </template>\n        </paper-listbox>\n      </paper-dropdown-menu>\n      <paper-dropdown-menu label="Program" hidden\\$="[[!programs]]">\n        <paper-listbox slot="dropdown-content" class="dropdown-content" selected="{{queryParams.program}}" attr-for-selected="item-id">\n          <paper-item></paper-item>\n        <template is="dom-repeat" items="[[_toArray(programs)]]" as="program">\n          <paper-item item-id="[[program.id]]">[[program.data.name]]</paper-item>\n        </template>\n        </paper-listbox>\n      </paper-dropdown-menu>\n      <paper-dropdown-menu label="Academic home" hidden\\$="[[!academics]]">\n        <paper-listbox slot="dropdown-content" class="dropdown-content" selected="{{queryParams.academic}}" attr-for-selected="item-id">\n          <paper-item></paper-item>\n        <template is="dom-repeat" items="[[_toArray(academics)]]" as="academic">\n          <paper-item item-id="[[academic.id]]">[[academic.data.name]]</paper-item>\n        </template>\n        </paper-listbox>\n      </paper-dropdown-menu>\n    </app-toolbar>\n    <div class="courses-grid">\n    <iron-pages selected="{{data.page}}" attr-for-selected="name" fallback-selection="courses" role="main">\n      <div class="iron-list-container" name="courses">\n        <iron-list items="[[courses]]" as="course" grid="">\n          <template>\n          <paper-button data-course-id\\$="[[course.id]]" class="coursecard-wrapper" on-tap="_loadCourseUrl">\n            <lrnapp-cis-course-card elevation="2" data-course-id\\$="[[course.id]]" name="[[course.data.name]]" image="[[course.data.image]]" title="[[course.data.title]]" color="[[course.data.color]]">\n            </lrnapp-cis-course-card>\n          </paper-button>\n          </template>\n        </iron-list>\n      </div>\n    </iron-pages>\n    </div>\n    <paper-toast id="toast"></paper-toast>\n'
       ]
     );
-    _templateObject_5762aca0ecf411e881790daef6914e88 = function() {
+    _templateObject_6612f290f1e611e8a92ccde37bfe9ae7 = function _templateObject_6612f290f1e611e8a92ccde37bfe9ae7() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_5762aca0ecf411e881790daef6914e88()
+      _templateObject_6612f290f1e611e8a92ccde37bfe9ae7()
     ),
     is: "lrnapp-cis",
     properties: ((_properties = {
@@ -94,16 +112,36 @@ define([
     },
     _routeChange: function _routeChange(e) {
       var details = e.detail;
-      if (babelHelpers.typeof(details.queryParams.course) !== "undefined") {
+      if (
+        babelHelpers.typeof(details.queryParams.course) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         this.set("queryParams.course", details.queryParams.course);
       }
-      if (babelHelpers.typeof(details.queryParams.academic) !== "undefined") {
+      if (
+        babelHelpers.typeof(details.queryParams.academic) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         this.set("queryParams.academic", details.queryParams.academic);
       }
-      if (babelHelpers.typeof(details.queryParams.program) !== "undefined") {
+      if (
+        babelHelpers.typeof(details.queryParams.program) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         this.set("queryParams.program", details.queryParams.program);
       }
-      if (babelHelpers.typeof(details.data.page) !== "undefined") {
+      if (
+        babelHelpers.typeof(details.data.page) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         this.set("data.page", details.data.page);
       }
     },
@@ -112,7 +150,7 @@ define([
         return obj[key];
       });
     },
-    _handleResponse: function _handleResponse() {
+    _handleResponse: function _handleResponse(event) {
       var course = {},
         program = {},
         academic = {},
@@ -154,7 +192,12 @@ define([
       if (0 < findCourse.length) {
         findCourse = findCourse.pop();
       }
-      if (babelHelpers.typeof(findCourse.data.uri) !== "undefined") {
+      if (
+        babelHelpers.typeof(findCourse.data.uri) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         window.location.href = findCourse.data.uri;
       }
     },

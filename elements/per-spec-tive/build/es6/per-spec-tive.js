@@ -53,13 +53,13 @@ Polymer({
     _outlineData: { type: Object, observer: "_outlineRawDataChanged" },
     outline: { type: Array, observer: "_outlineChanged" }
   },
-  _outlineRawDataChanged: function(newValue) {
+  _outlineRawDataChanged: function(newValue, oldValue) {
     if (null != newValue && typeof newValue.items !== typeof void 0) {
       this.set("outline", []);
       this.set("outline", newValue.items);
     }
   },
-  _outlineChanged: function() {},
+  _outlineChanged: function(newValue, oldValue) {},
   _toArray: function(obj) {
     return Object.keys(obj).map(function(key) {
       return obj[key];

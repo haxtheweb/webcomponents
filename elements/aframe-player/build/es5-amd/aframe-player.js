@@ -3,9 +3,9 @@ define([
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
   "./node_modules/aframe/dist/aframe-master.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _HAXWiring, _schemaBehaviors, _aframeMaster) {
   "use strict";
-  function _templateObject_58299100ecf211e8bd21fbc64b8b47ca() {
+  function _templateObject_fb46d180f1e411e8b7c141387e01f3e4() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n        position: relative;\n      }\n    </style>\n    <a-scene id="scene" class="embedded" embedded arjs$="[[ar]]" style$="height:[[height]];width:[[width]];">\n      <a-sky color$="[[skyColor]]"></a-sky>\n      <a-marker-camera preset="hiro"></a-marker-camera>\n      <a-entity id="entity" gltf-model$="[[source]]" position="0 0 0"></a-entity>\n    </a-scene>\n'
@@ -14,14 +14,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n        position: relative;\n      }\n    </style>\n    <a-scene id="scene" class="embedded" embedded arjs$="[[ar]]" style$="height:[[height]];width:[[width]];">\n      <a-sky color\\$="[[skyColor]]"></a-sky>\n      <a-marker-camera preset="hiro"></a-marker-camera>\n      <a-entity id="entity" gltf-model\\$="[[source]]" position="0 0 0"></a-entity>\n    </a-scene>\n'
       ]
     );
-    _templateObject_58299100ecf211e8bd21fbc64b8b47ca = function() {
+    _templateObject_fb46d180f1e411e8b7c141387e01f3e4 = function _templateObject_fb46d180f1e411e8b7c141387e01f3e4() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_58299100ecf211e8bd21fbc64b8b47ca()
+      _templateObject_fb46d180f1e411e8b7c141387e01f3e4()
     ),
     is: "aframe-player",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
@@ -42,7 +42,7 @@ define([
     },
     attached: function attached() {
       this.$.scene.removeFullScreenStyles();
-      this.setHaxProperties({
+      var props = {
         canScale: !1,
         canPosition: !1,
         canEditSource: !1,
@@ -124,9 +124,10 @@ define([
           ],
           advanced: []
         }
-      });
+      };
+      this.setHaxProperties(props);
     },
-    _computePosition: function _computePosition(x, y, z) {
+    _computePosition: function _computePosition(x, y, z, width, height) {
       return { x: x, y: y, z: z };
     },
     _positionChanged: function _positionChanged(position) {

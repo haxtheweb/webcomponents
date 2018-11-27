@@ -2,20 +2,20 @@ define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./node_modules/@lrnwebcomponents/random-image/random-image.js",
   "./node_modules/@polymer/paper-button/paper-button.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _randomImage, _paperButton) {
   "use strict";
-  function _templateObject_f3fbb400ecf211e8aa7fef534aed74c5() {
+  function _templateObject_84ec8ce0f1e511e8be39150c9bedf50a() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <div id="list">\n      <random-image images-list$="{{images}}"></random-image>\n  </div>\n  <paper-button raised on-click="reload">Reload</paper-button>\n'
     ]);
-    _templateObject_f3fbb400ecf211e8aa7fef534aed74c5 = function() {
+    _templateObject_84ec8ce0f1e511e8be39150c9bedf50a = function _templateObject_84ec8ce0f1e511e8be39150c9bedf50a() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_f3fbb400ecf211e8aa7fef534aed74c5()
+      _templateObject_84ec8ce0f1e511e8be39150c9bedf50a()
     ),
     is: "lrnsys-randomimage",
     properties: {
@@ -27,8 +27,8 @@ define([
         }
       }
     },
-    reload: function reload() {
-      this;
+    reload: function reload(e) {
+      var root = this;
       this.$.list.innerHTML = this.$.list.innerHTML;
     }
   });

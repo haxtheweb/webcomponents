@@ -49,7 +49,7 @@ Polymer({
   properties: {
     scaleToSum: { type: Boolean, value: !1, observer: "_refresh" }
   },
-  _getWidthForBar: function(barValue, barValuesSum, maxBarValue) {
+  _getWidthForBar: function(barValue, barValuesSum, maxBarValue, barHeight) {
     var scaleBase = this.scaleToSum ? barValuesSum : maxBarValue,
       width =
         (0 < scaleBase ? Math.floor(1e4 * (barValue / scaleBase)) / 100 : "0") +

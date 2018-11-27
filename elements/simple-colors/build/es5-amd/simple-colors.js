@@ -1,7 +1,7 @@
 define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./lib/simple-colors-utility.js"
-], function() {
+], function(_polymerLegacy, _simpleColorsUtility) {
   "use strict";
   window.simpleColorsBehaviors = window.simpleColorsBehaviors || {};
   window.simpleColorsBehaviors = {
@@ -71,6 +71,13 @@ define([
       }
     },
     _getLightTheme: function _getLightTheme(hexCodes) {
+      var setThemeProps = function setThemeProps(themePrefix, theme) {
+        for (var property in theme) {
+          if (theme.hasOwnProperty(property)) {
+            this._setProps(themePrefix + property, theme[property]);
+          }
+        }
+      };
       this._setThemeProps("--simple-colors-", hexCodes);
       this._setThemeProps("--simple-colors-light-theme-", hexCodes);
       return hexCodes;

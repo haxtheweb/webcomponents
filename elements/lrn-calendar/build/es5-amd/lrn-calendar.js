@@ -19,21 +19,42 @@ define([
   "./node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-collapselist-item.js",
   "./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js",
   "./lib/lrn-calendar-date.js"
-], function(meta, _polymerLegacy, _polymerDom, _resolveUrl) {
+], function(
+  meta,
+  _polymerLegacy,
+  _polymerDom,
+  _resolveUrl,
+  _paperButton,
+  _ironIcons,
+  _ironIcon,
+  _paperCard,
+  _ironAjax,
+  _paperMenuButton,
+  _paperDropdownMenu,
+  _colors,
+  _HAXWiring,
+  _lrnsysLayout,
+  _lrnsysDrawer,
+  _lrnsysDialog,
+  _lrnsysCollapselist,
+  _lrnsysCollapselistItem,
+  _esGlobalBridge,
+  _lrnCalendarDate
+) {
   "use strict";
   meta = babelHelpers.interopRequireWildcard(meta);
-  function _templateObject_578290b0ecf411e88a03094523bc0888() {
+  function _templateObject_65a4ee80f1e611e89a8a7d26a5be1eb2() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n      lrn-calendar-date {\n        display: inline-table;\n        top: 0px;\n      }\n      paper-card {\n        width: 14%;\n        height: 20px;\n        display: inline-table;\n        padding: 0;\n        margin: 0;\n      }\n      .calendar {\n        color: var(--my-toolbar-title-color);\n      }\n      .header{\n        padding-bottom: 15px;\n      }\n    </style>\n\n    <div class="calendar">\n      <div class="header">\n        <div style="float: left">\n          <paper-button raised type="button" on-tap="monthView">Month</paper-button>\n          <paper-button raised type="button" on-tap="weekView">Week</paper-button>\n        </div>\n        <div style="float: right">\n          <paper-button raised type="button" on-tap="showDate">Today</paper-button>\n          <paper-button on-tap="showPrev"><iron-icon icon="arrow-back"></iron-icon></paper-button>\n          <paper-button on-tap="showNext"><iron-icon icon="arrow-forward"></iron-icon></paper-button>\n        </div>\n        <div style="margin: 0 auto; width: 200px; text-align: center">\n          <h2>[[getDisplayDate(date)]]</h2>\n        </div>\n      </div>\n\n      <div class="calendarView" id="calView"></div>\n    </div>\n'
     ]);
-    _templateObject_578290b0ecf411e88a03094523bc0888 = function() {
+    _templateObject_65a4ee80f1e611e89a8a7d26a5be1eb2 = function _templateObject_65a4ee80f1e611e89a8a7d26a5be1eb2() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_578290b0ecf411e88a03094523bc0888()
+      _templateObject_65a4ee80f1e611e89a8a7d26a5be1eb2()
     ),
     is: "lrn-calendar",
     behaviors: [HAXBehaviors.PropertiesBehaviors],
@@ -44,36 +65,57 @@ define([
       view: { type: String, value: "month", observer: "_viewTypeChanged" },
       file: { type: String, reflectToAttribute: !0, observer: "_fileChanged" }
     },
-    _fileChanged: function _fileChanged(newValue) {
-      if (babelHelpers.typeof(newValue) !== "undefined" && this.__icalLoaded) {
+    _fileChanged: function _fileChanged(newValue, oldValue) {
+      if (
+        babelHelpers.typeof(newValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
+        this.__icalLoaded
+      ) {
         this.loadFile();
         this.getDateInfo();
         this.createCalendar();
       }
     },
-    _viewTypeChanged: function _viewTypeChanged(newValue) {
+    _viewTypeChanged: function _viewTypeChanged(newValue, oldValue) {
       if (
-        babelHelpers.typeof(newValue) !== "undefined" &&
-        babelHelpers.typeof(this.file) !== "undefined" &&
+        babelHelpers.typeof(newValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
+        babelHelpers.typeof(this.file) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         this.__icalLoaded
       ) {
         this.getDateInfo();
         this.createCalendar();
       }
     },
-    _dateChanged: function _dateChanged(newValue) {
+    _dateChanged: function _dateChanged(newValue, oldValue) {
       if (
-        babelHelpers.typeof(newValue) !== "undefined" &&
-        babelHelpers.typeof(this.file) !== "undefined" &&
+        babelHelpers.typeof(newValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
+        babelHelpers.typeof(this.file) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         this.__icalLoaded
       ) {
         this.getDateInfo();
         this.createCalendar();
       }
     },
-    _dateStringChanged: function _dateStringChanged(newValue) {
+    _dateStringChanged: function _dateStringChanged(newValue, oldValue) {
       if (
-        babelHelpers.typeof(newValue) !== "undefined" &&
+        babelHelpers.typeof(newValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         "" != newValue &&
         this.__icalLoaded
       ) {
@@ -93,10 +135,17 @@ define([
     },
     _icalLoaded: function _icalLoaded() {
       this.__icalLoaded = !0;
-      this.loadFile();
+      if (
+        babelHelpers.typeof(this.file) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
+        this.loadFile();
+      }
     },
     attached: function attached() {
-      this.setHaxProperties({
+      var props = {
         canScale: !1,
         canPosition: !1,
         canEditSource: !1,
@@ -146,7 +195,8 @@ define([
           ],
           advanced: []
         }
-      });
+      };
+      this.setHaxProperties(props);
     },
     loadFile: function loadFile() {
       this.startIndex = 0;
@@ -282,6 +332,7 @@ define([
       this.calendarText = this.readTextFile(this.file);
       this.calendarView = this.$.calView;
       var days = 1,
+        pastDate = 0,
         elem = (0, _polymerDom.dom)(this.$.calView).node,
         elemChildren = elem.childNodes;
       while (elemChildren[1]) {
@@ -457,7 +508,7 @@ define([
       dynamicEl.firstWeek = !0;
       dynamicEl.style.width = "14.25%";
       dynamicEl.style.display = "inline-block";
-      dynamicEl.id = "date";
+      dynamicEl.setAttribute("id", "date");
       dynamicEl.view = this.view;
       if (
         this.date.getFullYear() === this.newDate.getFullYear() &&
@@ -505,7 +556,7 @@ define([
         }
         var dynamicEl = document.createElement("lrn-calendar-date");
         dynamicEl.valid = !0;
-        dynamicEl.id = "date";
+        dynamicEl.setAttribute("id", "date");
         dynamicEl.date = this.newDay;
         dynamicEl.style.width = "14.25%";
         dynamicEl.style.display = "inline-block";
@@ -529,6 +580,7 @@ define([
         days = days + 1;
         if (days == this.totalDays && 6 != this.newDay.getDay()) {
           days = days - 1;
+          pastDate = 1;
         }
       }
     },
@@ -536,7 +588,8 @@ define([
       if ("Not Found" == text) {
         return "";
       }
-      var jcalData = ICAL.parse(text),
+      var iCalendarData = text,
+        jcalData = ICAL.parse(iCalendarData),
         vcalendar = new ICAL.Component(jcalData),
         vevent = vcalendar.getFirstSubcomponent("vevent"),
         vevents = vcalendar.getAllSubcomponents("vevent"),
@@ -545,8 +598,8 @@ define([
           return event;
         });
       this.eventArray = [];
-      for (var i = 0; i < displayEvents.length; i++) {
-        this.createDate(displayEvents[i]);
+      for (var i = 0, startDay; i < displayEvents.length; i++) {
+        startDay = this.createDate(displayEvents[i]);
         if (displayEvents[i].isRecurring()) {
           this.createRecurrence(displayEvents[i]);
         }
@@ -585,6 +638,7 @@ define([
           this.eventArray.push(newTest);
         }
       }
+      return;
     },
     createDate: function createDate(event) {
       var year = event.startDate._time.year,
@@ -639,6 +693,7 @@ define([
       this.currentMonth = this.startMonth;
       this.currentYear = this.startYear;
       this.currentDayofWeek = this.startDayOfWeek;
+      return;
     },
     createReturn: function createReturn(event) {
       for (var EventArray = [], i = 0; i < event.length; i++) {
@@ -649,9 +704,8 @@ define([
     getDisplayDate: function getDisplayDate(date) {
       if ("function" === typeof date.getMonth) {
         var monthInt = date.getMonth(),
-          day = date.getDate();
-        return (
-          [
+          day = date.getDate(),
+          monthsArray = [
             "January",
             "February",
             "March",
@@ -664,10 +718,8 @@ define([
             "October",
             "November",
             "December"
-          ][monthInt] +
-          " " +
-          date.getFullYear()
-        );
+          ];
+        return monthsArray[monthInt] + " " + date.getFullYear();
       }
       return "";
     }

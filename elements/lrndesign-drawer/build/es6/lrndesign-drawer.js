@@ -44,7 +44,7 @@ Polymer({
       opened = this.opened;
     this.shadowRoot
       .querySelector("paper-icon-button")
-      .addEventListener("click", function() {
+      .addEventListener("click", function(e) {
         root.opened = !root.opened;
       });
   }

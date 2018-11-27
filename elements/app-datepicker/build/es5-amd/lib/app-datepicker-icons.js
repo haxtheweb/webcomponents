@@ -1,6 +1,6 @@
 define([
   "../node_modules/@polymer/iron-iconset-svg/iron-iconset-svg.js"
-], function() {
+], function(_ironIconsetSvg) {
   "use strict";
   var $_documentContainer = document.createElement("div");
   $_documentContainer.setAttribute("style", "display: none;");

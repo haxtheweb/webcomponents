@@ -80,6 +80,7 @@ Polymer({
         function(sort) {
           if (sort.path === this.path) {
             this.direction = sort.direction;
+            return;
           }
         }.bind(this)
       );

@@ -16,4 +16,10 @@
  *  limitations under the License.
  */
 
-MathJax.Hub.Insert(MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS["STIXGeneral-bold"],{8319:[700,-275,491,15,478]});MathJax.Ajax.loadComplete(MathJax.OutputJax["HTML-CSS"].fontDir+"/General/Bold/SuperAndSubscripts.js");
+MathJax.Hub.Insert(
+  MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS["STIXGeneral-bold"],
+  { 8319: [700, -275, 491, 15, 478] }
+);
+MathJax.Ajax.loadComplete(
+  MathJax.OutputJax["HTML-CSS"].fontDir + "/General/Bold/SuperAndSubscripts.js"
+);

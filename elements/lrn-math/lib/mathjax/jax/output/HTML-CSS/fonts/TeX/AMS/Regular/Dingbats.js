@@ -16,4 +16,10 @@
  *  limitations under the License.
  */
 
-MathJax.Hub.Insert(MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS.MathJax_AMS,{10003:[706,34,833,84,749],10016:[716,22,833,48,786]});MathJax.Ajax.loadComplete(MathJax.OutputJax["HTML-CSS"].fontDir+"/AMS/Regular/Dingbats.js");
+MathJax.Hub.Insert(MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS.MathJax_AMS, {
+  10003: [706, 34, 833, 84, 749],
+  10016: [716, 22, 833, 48, 786]
+});
+MathJax.Ajax.loadComplete(
+  MathJax.OutputJax["HTML-CSS"].fontDir + "/AMS/Regular/Dingbats.js"
+);

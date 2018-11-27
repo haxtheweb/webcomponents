@@ -70,7 +70,7 @@ Polymer({
     type: { type: String, value: null }
   },
   attached: function() {
-    this;
+    let root = this;
   },
   ready: function() {
     this.__button = this.$.lrnsysbutton;

@@ -3,21 +3,21 @@ define([
   "../node_modules/@polymer/iron-icons/iron-icons.js",
   "../node_modules/@polymer/iron-icon/iron-icon.js",
   "../node_modules/@polymer/paper-button/paper-button.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _ironIcons, _ironIcon, _paperButton) {
   "use strict";
   var _properties;
-  function _templateObject_a696dbc0ecf411e880aac99fb7ddbd89() {
+  function _templateObject_83d0a020f1e611e894ed01deebeec496() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n        --map-menu-item-height: 16px;\n      }\n\n      :host([active]) {\n        background: var(--map-menu-active-color);\n      }\n\n      iron-icon {\n        display: inline-block;\n        --iron-icon-height: var(--map-menu-item-height);\n      }\n\n      #title {\n        font-size: 14.4px;\n        text-transform: none;\n      }\n    </style>\n      <paper-button id="wrapper" href$="[[url]]" role="link" noink on-tap="_click">\n        <template is="dom-if" if="[[__hasIcon(icon)]]">\n          <iron-icon icon="[[icon]]"></iron-icon>\n        </template>\n        <span id="title">[[title]]</span>\n      </paper-button>\n'
     ]);
-    _templateObject_a696dbc0ecf411e880aac99fb7ddbd89 = function() {
+    _templateObject_83d0a020f1e611e894ed01deebeec496 = function _templateObject_83d0a020f1e611e894ed01deebeec496() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a696dbc0ecf411e880aac99fb7ddbd89()
+      _templateObject_83d0a020f1e611e894ed01deebeec496()
     ),
     is: "map-menu-item",
     properties: ((_properties = {

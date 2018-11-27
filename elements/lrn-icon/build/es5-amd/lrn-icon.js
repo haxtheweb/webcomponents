@@ -4,20 +4,26 @@ define([
   "./node_modules/@polymer/iron-meta/iron-meta.js",
   "./node_modules/@polymer/iron-flex-layout/iron-flex-layout.js",
   "./node_modules/@lrnwebcomponents/lrn-shared-styles/lrn-shared-styles.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _ironMeta,
+  _ironFlexLayout,
+  _lrnSharedStyles
+) {
   "use strict";
-  function _templateObject_ac405c60ecf211e88f30ad740e403874() {
+  function _templateObject_41191dd0f1e511e8b70b45839f48fb6b() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style include="lrn-shared-styles">\n      :host {\n        position: relative;\n\n        vertical-align: middle;\n\n        fill: var(--lrn-icon-fill-color, currentcolor);\n        stroke: var(--lrn-icon-stroke-color, none);\n\n        width: var(--lrn-icon-width, 24px);\n        height: var(--lrn-icon-height, 24px);\n        @apply --layout-inline;\n        @apply --layout-center-center;\n        @apply --lrn-icon;\n      }\n    </style>\n    <iron-icon icon$="[[icon]]"></iron-icon>\n'
     ]);
-    _templateObject_ac405c60ecf211e88f30ad740e403874 = function() {
+    _templateObject_41191dd0f1e511e8b70b45839f48fb6b = function _templateObject_41191dd0f1e511e8b70b45839f48fb6b() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_ac405c60ecf211e88f30ad740e403874()
+      _templateObject_41191dd0f1e511e8b70b45839f48fb6b()
     ),
     is: "lrn-icon",
     properties: {
@@ -38,7 +44,7 @@ define([
       this._iconsetName = this._DEFAULT_ICONSET;
       this._updateIcon();
     },
-    _srcChanged: function _srcChanged() {
+    _srcChanged: function _srcChanged(src) {
       this._updateIcon();
     },
     _usesIconset: function _usesIconset() {

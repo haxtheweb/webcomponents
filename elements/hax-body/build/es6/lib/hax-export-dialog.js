@@ -163,24 +163,24 @@ Polymer({
       this.set(e.detail.property, e.detail.value);
     }
   },
-  download: function() {
+  download: function(e) {
     const data = this.contentToFile(!1);
     this.downloadFromData(data, "html", "my-new-code");
   },
-  downloadfull: function() {
+  downloadfull: function(e) {
     const data = this.contentToFile(!0);
     this.downloadFromData(data, "html", "my-new-webpage");
   },
-  importContent: function() {
+  importContent: function(e) {
     const htmlBody = this.$.textarea.value;
     return window.HaxStore.instance.activeHaxBody.importContent(htmlBody);
   },
-  selectBody: function() {
+  selectBody: function(e) {
     this.$.textarea.focus();
     this.$.textarea.select();
     document.execCommand("copy");
   },
-  htmlToHaxElements: function() {
+  htmlToHaxElements: function(e) {
     let elements = window.HaxStore.htmlToHaxElements(this.$.textarea.value);
     var str = JSON.stringify(elements, null, 2);
     let val = this.$.textarea.value;

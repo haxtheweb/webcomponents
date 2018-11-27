@@ -82,7 +82,7 @@ Polymer({
       };
     }
   },
-  _handleEntityResponse: function(newValue) {
+  _handleEntityResponse: function(newValue, oldValue) {
     if (null !== newValue && typeof newValue.content !== typeof void 0) {
       if (null != document.getElementById("cmstokenidtolockonto")) {
         document
@@ -108,7 +108,7 @@ Polymer({
       element.removeChild(element.firstChild);
     }
   },
-  _entityChanged: function(newValue) {
+  _entityChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0 && "" !== newValue && !this.loading) {
       if (
         typeof this.entityEndPoint === typeof void 0 &&
@@ -146,7 +146,7 @@ Polymer({
         }
       }
     }
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -196,7 +196,8 @@ Polymer({
           "entity-end-point"
         ]
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
   postProcessgetHaxJSONSchema: function(schema) {
     schema.properties.__editThis = {

@@ -72,7 +72,7 @@ Polymer({
       this.__clone[this.as] = filtered;
       return;
     }
-    this._userTemplate = this.queryEffectiveChildren("template");
+    this._userTemplate = this.querySelector("template");
     if (!this._userTemplate) {
       console.warn(
         "grafitto-filter requires a template to be provided in light-dom"
@@ -81,7 +81,7 @@ Polymer({
     this.templatize(this._userTemplate);
     this.__clone = this.stamp(null);
     this.__clone[this.as] = filtered;
-    dom(this).appendChild(this.__clone);
+    dom(this).appendChild(this.__clone.root);
   },
   _decomposeWhere: function(where, item) {
     return where.split(".").reduce(function(a, b) {

@@ -4,20 +4,26 @@ define([
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
   "./lib/lrn-vocab-dialog.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _paperButton,
+  _HAXWiring,
+  _schemaBehaviors,
+  _lrnVocabDialog
+) {
   "use strict";
-  function _templateObject_5c2b3130ecf411e8b02b971101da7279() {
+  function _templateObject_6697da00f1e611e88f5abf4ce1825c15() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: inline-flex;\n        --lrn-vocab-border: 1px dashed #ccc;\n      }\n      paper-button {\n        text-transform: none;\n        padding: 0;\n        margin: 0;\n        position: relative;\n        top:0px;\n        border-radius:0;\n        border-bottom: var(--lrn-vocab-border);\n        background:#f5f5f5;\n        @apply --lrn-vocab-button\n      }\n      paper-button:hover {\n        background:#bbdefb;\n        border-bottom: 1px dashed #2196f3;\n        @apply --lrn-vocab-button-hover\n      }\n    </style>\n\n    <div>\n      <paper-button id="button" noink="">[[term]]</paper-button>\n    </div>\n    <lrn-vocab-dialog id="dialog" opened="{{opened}}" term="[[term]]">\n      <slot></slot>\n    </lrn-vocab-dialog>\n'
     ]);
-    _templateObject_5c2b3130ecf411e8b02b971101da7279 = function() {
+    _templateObject_6697da00f1e611e88f5abf4ce1825c15 = function _templateObject_6697da00f1e611e88f5abf4ce1825c15() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_5c2b3130ecf411e8b02b971101da7279()
+      _templateObject_6697da00f1e611e88f5abf4ce1825c15()
     ),
     is: "lrn-vocab",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
@@ -27,7 +33,7 @@ define([
     },
     ready: function ready() {
       var _this = this;
-      this.$.button.addEventListener("click", function() {
+      this.$.button.addEventListener("click", function(e) {
         _this.opened = !_this.opened;
       });
       this.__modal = this.$.dialog;
@@ -37,7 +43,7 @@ define([
         "lrn-vocab-dialog-closed",
         this._accessibleFocus.bind(this)
       );
-      this.setHaxProperties({
+      var props = {
         canScale: !1,
         canPosition: !1,
         canEditSource: !1,
@@ -82,7 +88,8 @@ define([
           ],
           advanced: []
         }
-      });
+      };
+      this.setHaxProperties(props);
     },
     _accessibleFocus: function _accessibleFocus(e) {
       if (e.detail === this.__modal) {

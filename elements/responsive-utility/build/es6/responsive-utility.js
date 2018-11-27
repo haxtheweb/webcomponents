@@ -82,12 +82,7 @@ window.ResponsiveUtility.getSize = function(target) {
       target.relativeToParent !== void 0 && null !== target.relativeToParent
         ? target.relativeToParent
         : !0,
-    testBreakpoint = function(width, breakpoint, def) {
-      let val = breakpoint !== void 0 && null !== breakpoint ? breakpoint : def;
-      return width < val;
-    },
-    size,
-    width = (function() {
+    getWidth = function() {
       if (null !== target.element.parentNode && !0 === relative) {
         if (
           target.element.parentNode.nodeType === Node.DOCUMENT_FRAGMENT_NODE
@@ -97,7 +92,13 @@ window.ResponsiveUtility.getSize = function(target) {
         return target.element.parentNode.offsetWidth;
       }
       return window.outerWidth;
-    })();
+    },
+    testBreakpoint = function(width, breakpoint, def) {
+      let val = breakpoint !== void 0 && null !== breakpoint ? breakpoint : def;
+      return width < val;
+    },
+    size,
+    width = getWidth();
   if (testBreakpoint(width, target.sm, 600)) {
     size = "xs";
   } else if (testBreakpoint(width, target.md, 900)) {

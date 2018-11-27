@@ -118,12 +118,12 @@ Polymer({
       this._drawerClosed.bind(this)
     );
   },
-  _drawerClosed: function() {
+  _drawerClosed: function(e) {
     if (!this.$.flyoutcontent.opened) {
       this.fire("lrnsys-drawer-modal-closed", this);
     }
   },
-  closeDrawer: function() {
+  closeDrawer: function(e) {
     this.$.flyoutcontent.close();
   }
 });

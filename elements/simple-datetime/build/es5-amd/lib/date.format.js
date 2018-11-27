@@ -41,7 +41,7 @@
     "Saturday"
   ];
   var replaceChars = {
-    d: function() {
+    d: function d() {
       var d = this.getDate();
       return (10 > d ? "0" : "") + d;
     },
@@ -54,11 +54,11 @@
     l: function l() {
       return Date.longDays[this.getDay()];
     },
-    N: function() {
+    N: function N() {
       var N = this.getDay();
       return 0 === N ? 7 : N;
     },
-    S: function() {
+    S: function S() {
       var S = this.getDate();
       return 1 === S % 10 && 11 !== S
         ? "st"
@@ -90,7 +90,7 @@
     F: function F() {
       return Date.longMonths[this.getMonth()];
     },
-    m: function() {
+    m: function m() {
       var m = this.getMonth();
       return (9 > m ? "0" : "") + (m + 1);
     },
@@ -109,7 +109,7 @@
       }
       return new Date(year, nextMonth, 0).getDate();
     },
-    L: function() {
+    L: function L() {
       var L = this.getFullYear();
       return 0 === L % 400 || (0 !== L % 100 && 0 === L % 4);
     },
@@ -145,23 +145,23 @@
     G: function G() {
       return this.getHours();
     },
-    h: function() {
+    h: function h() {
       var h = this.getHours();
       return (10 > (h % 12 || 12) ? "0" : "") + (h % 12 || 12);
     },
-    H: function() {
+    H: function H() {
       var H = this.getHours();
       return (10 > H ? "0" : "") + H;
     },
-    i: function() {
+    i: function i() {
       var i = this.getMinutes();
       return (10 > i ? "0" : "") + i;
     },
-    s: function() {
+    s: function s() {
       var s = this.getSeconds();
       return (10 > s ? "0" : "") + s;
     },
-    v: function() {
+    v: function v() {
       var v = this.getMilliseconds();
       return (10 > v ? "00" : 100 > v ? "0" : "") + v;
     },
@@ -180,7 +180,7 @@
       }
       return 0 | (this.getTimezoneOffset() === DST);
     },
-    O: function() {
+    O: function O() {
       var O = this.getTimezoneOffset();
       return (
         (0 > -O ? "-" : "+") +
@@ -191,7 +191,7 @@
           : (10 > _Mathabs(O % 60) ? "0" : "") + _Mathabs(O % 60))
       );
     },
-    P: function() {
+    P: function P() {
       var P = this.getTimezoneOffset();
       return (
         (0 > -P ? "-" : "+") +

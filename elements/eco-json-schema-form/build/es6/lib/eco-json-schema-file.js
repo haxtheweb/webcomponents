@@ -311,7 +311,7 @@ Polymer({
     console.log("this.value: " + JSON.stringify(this.value));
   },
   _schemaChanged: function() {
-    this.schema;
+    var schema = this.schema;
   },
   _isSchemaValue: function(type) {
     return this._isSchemaFile(type);

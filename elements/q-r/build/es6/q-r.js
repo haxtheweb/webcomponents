@@ -30,7 +30,7 @@ Polymer({
     format: { type: String, value: "png" }
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -128,7 +128,8 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   }
 });
 class QRCodeElement extends HTMLElement {
@@ -138,13 +139,14 @@ class QRCodeElement extends HTMLElement {
     this.attachShadow({ mode: "open" });
     Object.keys(QRCodeElement.defaultAttributes).map(this._defineProperty);
     const name = "qr",
-      basePath = pathFromUrl(import.meta.url);
+      basePath = pathFromUrl(import.meta.url),
+      location = `${basePath}lib/qr.js`;
     window.addEventListener(
       `es-bridge-${name}-loaded`,
       this._qrLoaded.bind(this)
     );
     window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(name, `${basePath}lib/qr.js`);
+    window.ESGlobalBridge.instance.load(name, location);
   }
   _qrLoaded() {
     this.generate();

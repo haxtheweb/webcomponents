@@ -2,6 +2,7 @@ import {
   html,
   Polymer
 } from "../node_modules/@polymer/polymer/polymer-legacy.js";
+import { dom } from "../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
 import "../node_modules/@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import "../node_modules/@polymer/iron-icons/iron-icons.js";
 import "../node_modules/@polymer/iron-icons/editor-icons.js";
@@ -17,6 +18,7 @@ import "./eco-json-schema-file.js";
 Polymer({
   is: "eco-json-schema-array",
   _template: html`
+  <custom-style>
   <style is="custom-style" include="iron-flex iron-flex-alignment">
       paper-input {
         padding: 2px;
@@ -94,7 +96,7 @@ Polymer({
         @apply --paper-input-container-label;
       }
     </style>
-
+    </custom-style>
     <div class="horizontal layout">
       <div class="flex" hidden\$="[[!label]]">[[label]]</div>
       <paper-icon-button id="addarray" title="Add another item" class="array-add" icon="add" on-click="_onAddItem" role="button" aria-label="Add another item"></paper-icon-button>
@@ -284,7 +286,7 @@ Polymer({
       }
     });
   },
-  _onAddItemWithValue: function(values) {
+  _onAddItemWithValue: function(values, pointer) {
     var schema = this.schema.items;
     if (typeof values !== typeof void 0) {
       for (var i in values) {

@@ -38,7 +38,7 @@ window.FancyCarouselBehaviourImpl = {
     }
     return elem;
   },
-  _timerChanged: function(newValue) {
+  _timerChanged: function(newValue, oldValue) {
     var that = this;
     if (0 != newValue) {
       setInterval(function() {

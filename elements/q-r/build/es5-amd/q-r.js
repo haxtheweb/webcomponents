@@ -5,23 +5,30 @@ define([
   "./node_modules/@polymer/polymer/lib/utils/resolve-url.js",
   "./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
   "./node_modules/@lrnwebcomponents/es-global-bridge/es-global-bridge.js"
-], function(_exports, meta, _polymerLegacy, _resolveUrl) {
+], function(
+  _exports,
+  meta,
+  _polymerLegacy,
+  _resolveUrl,
+  _HAXWiring,
+  _esGlobalBridge
+) {
   "use strict";
   Object.defineProperty(_exports, "__esModule", { value: !0 });
   _exports.QRCodeElement = void 0;
   meta = babelHelpers.interopRequireWildcard(meta);
-  function _templateObject_53b662f0ecf311e881f0712b243aa944() {
+  function _templateObject_d331a110f1e511e8b902d3d2ab165505() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n      #link {\n        visibility: hidden;\n        opacity: 0;\n      }\n    </style>\n    <qr-code id="qr" data$="[[data]]" modulesize$="[[modulesize]]" margin$="[[margin]]" format$="[[format]]"></qr-code>\n    <a href$="[[data]]" id="link">[[title]]</a>\n'
     ]);
-    _templateObject_53b662f0ecf311e881f0712b243aa944 = function() {
+    _templateObject_d331a110f1e511e8b902d3d2ab165505 = function _templateObject_d331a110f1e511e8b902d3d2ab165505() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_53b662f0ecf311e881f0712b243aa944()
+      _templateObject_d331a110f1e511e8b902d3d2ab165505()
     ),
     is: "q-r",
     behaviors: [HAXBehaviors.PropertiesBehaviors],
@@ -33,7 +40,7 @@ define([
       format: { type: String, value: "png" }
     },
     attached: function attached() {
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !1,
@@ -131,7 +138,8 @@ define([
           ],
           advanced: []
         }
-      });
+      };
+      this.setHaxProperties(props);
     }
   });
   var QRCodeElement = (function(_HTMLElement) {
@@ -141,12 +149,12 @@ define([
       babelHelpers.classCallCheck(this, QRCodeElement);
       _this = babelHelpers.possibleConstructorReturn(
         this,
-        (QRCodeElement.__proto__ || Object.getPrototypeOf(QRCodeElement)).call(
-          this
-        )
+        babelHelpers.getPrototypeOf(QRCodeElement).call(this)
       );
       _this._defineProperty = _this._defineProperty.bind(
-        babelHelpers.assertThisInitialized(_this)
+        babelHelpers.assertThisInitialized(
+          babelHelpers.assertThisInitialized(_this)
+        )
       );
       _this.attachShadow({ mode: "open" });
       Object.keys(QRCodeElement.defaultAttributes).map(_this._defineProperty);
@@ -155,7 +163,11 @@ define([
         location = "".concat(basePath, "lib/qr.js");
       window.addEventListener(
         "es-bridge-".concat(name, "-loaded"),
-        _this._qrLoaded.bind(babelHelpers.assertThisInitialized(_this))
+        _this._qrLoaded.bind(
+          babelHelpers.assertThisInitialized(
+            babelHelpers.assertThisInitialized(_this)
+          )
+        )
       );
       window.ESGlobalBridge.requestAvailability();
       window.ESGlobalBridge.instance.load(name, location);
@@ -289,7 +301,7 @@ define([
       ]
     );
     return QRCodeElement;
-  })(HTMLElement);
+  })(babelHelpers.wrapNativeSuper(HTMLElement));
   _exports.QRCodeElement = QRCodeElement;
   window.customElements.define("qr-code", QRCodeElement);
 });

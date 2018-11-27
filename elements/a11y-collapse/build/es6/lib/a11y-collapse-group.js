@@ -55,7 +55,7 @@ Polymer({
     }
     this.push("__items", item);
   },
-  _detachItem: function() {
+  _detachItem: function(item) {
     for (let i = 0; i < this.__items.length; i++) {
       if (this.__items[i] === e.detail) this.splice("_items", i, 1);
     }
@@ -80,7 +80,7 @@ Polymer({
     this.set("__items", []);
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -114,6 +114,7 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   }
 });

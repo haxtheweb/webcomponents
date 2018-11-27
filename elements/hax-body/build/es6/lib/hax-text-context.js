@@ -183,10 +183,11 @@ Polymer({
         break;
     }
   },
-  isSafari: function() {
+  isSafari: function(typevalue) {
     let ua = navigator.userAgent.toLowerCase();
     if (-1 != ua.indexOf("safari")) {
-      if (!(-1 < ua.indexOf("chrome"))) {
+      if (-1 < ua.indexOf("chrome")) {
+      } else {
         return !0;
       }
     }

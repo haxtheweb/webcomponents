@@ -167,7 +167,12 @@ define(["../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js"], function(
       }
       return meta;
     },
-    _getWidthForBar: function _getWidthForBar() {
+    _getWidthForBar: function _getWidthForBar(
+      barValue,
+      barValuesSum,
+      maxBarValue,
+      barHeight
+    ) {
       return "0px";
     },
     _playFirstAnimation: function _playFirstAnimation(

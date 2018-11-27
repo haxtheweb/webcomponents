@@ -2,20 +2,20 @@ define([
   "../node_modules/@polymer/polymer/polymer-legacy.js",
   "../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js",
   "./map-styles.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(_polymerLegacy, _polymerDom, _mapStyles) {
   "use strict";
-  function _templateObject_7e581530ecf311e8aaaad920cff3720f() {
+  function _templateObject_f8d19650f1e511e8b6443bd6a9b6db86() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style include="map-styles">\n     :host {\n       display: none;\n     }\n    </style>\n    <!-- hide any feature, image or tile elements the author includes -->\n    <slot></slot>\n'
     ]);
-    _templateObject_7e581530ecf311e8aaaad920cff3720f = function() {
+    _templateObject_f8d19650f1e511e8b6443bd6a9b6db86 = function _templateObject_f8d19650f1e511e8b6443bd6a9b6db86() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_7e581530ecf311e8aaaad920cff3720f()
+      _templateObject_f8d19650f1e511e8b6443bd6a9b6db86()
     ),
     is: "layer-",
     properties: {
@@ -71,7 +71,7 @@ define([
         this._apiToggleChecked = !0;
       }
     },
-    _onLayerExtentLoad: function _onLayerExtentLoad() {
+    _onLayerExtentLoad: function _onLayerExtentLoad(e) {
       if (this._layer._legendUrl) {
         this.legendLinks = [
           {

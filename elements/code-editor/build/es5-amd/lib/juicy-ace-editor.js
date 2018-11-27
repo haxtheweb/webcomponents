@@ -1,8 +1,11 @@
 define([
+  "meta",
   "./ace-builds/src-noconflict/ace.js",
-  "./ace-builds/src-noconflict/ext-searchbox.js"
-], function() {
+  "./ace-builds/src-noconflict/ext-searchbox.js",
+  "../node_modules/@polymer/polymer/lib/utils/resolve-url.js"
+], function(meta, _ace, _extSearchbox, _resolveUrl) {
   "use strict";
+  meta = babelHelpers.interopRequireWildcard(meta);
   var LRNAceEditor = (function(_HTMLElement) {
     babelHelpers.inherits(LRNAceEditor, _HTMLElement);
     babelHelpers.createClass(
@@ -44,10 +47,7 @@ define([
       babelHelpers.classCallCheck(this, LRNAceEditor);
       self = _this = babelHelpers.possibleConstructorReturn(
         this,
-        (LRNAceEditor.__proto__ || Object.getPrototypeOf(LRNAceEditor)).call(
-          this,
-          self
-        )
+        babelHelpers.getPrototypeOf(LRNAceEditor).call(this, self)
       );
       var shadowRoot;
       if (self.attachShadow && self.getRootNode) {
@@ -72,9 +72,10 @@ define([
             editor = this.editor;
           } else {
             container.textContent = this.value;
+            var basePath = (0, _resolveUrl.pathFromUrl)(meta.url);
             ace.config.set(
               "basePath",
-              "../../code-editor/lib/ace-builds/src-min-noconflict"
+              "".concat(basePath, "ace-builds/src-min-noconflict")
             );
             editor = ace.edit(container);
             this.dispatchEvent(
@@ -178,7 +179,7 @@ define([
       }
     ]);
     return LRNAceEditor;
-  })(HTMLElement);
+  })(babelHelpers.wrapNativeSuper(HTMLElement));
   function cloneStyle(style) {
     var s = document.createElement("style");
     s.id = style.id;

@@ -14,12 +14,19 @@ define([
   _polymerLegacy,
   _polymerDom,
   _flattenedNodesObserver,
-  _ironResizableBehavior
+  _ironResizableBehavior,
+  _dataTableColumn,
+  _dataTableColumnSort,
+  _dataTableCell,
+  _dataTableRow,
+  _dataTableCheckbox,
+  _dataTableRowDetail,
+  _arrayDatasource
 ) {
   "use strict";
   var _Mathfloor = Math.floor,
     _Mathmin = Math.min;
-  function _templateObject_d2978920ecf111e8afe6e3e72f732a1f() {
+  function _templateObject_8beeca40f1e411e8bfa4f9e331d1ff6f() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style is="custom-style">\n      :host {\n        display: block;\n        position: relative;\n        overflow-x: auto;\n        overflow-y: hidden;\n        -webkit-overflow-scrolling: touch;\n        /* Default height just to help users get started in making stuff visible.  */\n        height: 400px;\n        @apply --iron-data-table;\n      }\n\n      #container {\n        position: absolute;\n        left: 0;\n        top: 0;\n        bottom: 0;\n        display: flex;\n        flex-direction: column;\n      }\n\n      #header {\n        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);\n        transition: box-shadow 200ms;\n        -webkit-transition: box-shadow 200ms;\n        z-index: 1;\n        @apply --iron-data-table-header;\n      }\n\n      #header.scrolled {\n        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06), 0 2px 0 rgba(0, 0, 0, 0.075), 0 3px 0 rgba(0, 0, 0, 0.05), 0 4px 0 rgba(0, 0, 0, 0.015);\n      }\n\n      #list {\n        overflow-x: hidden !important;\n        overflow-y: auto !important;\n        flex: 1;\n        transition: opacity 200ms;\n        -webkit-transition: opacity 200ms;\n      }\n\n      :host([loading]) #list {\n        opacity: 0.25;\n      }\n\n      :host(:not([loading])) paper-spinner-lite {\n        display: none;\n      }\n\n      :host([loading]) paper-spinner-lite {\n        position: absolute;\n        top: 45%;\n        left: 50%;\n        --paper-spinner-color: var(--default-primary-color);\n      }\n    </style>\n    <div id="container">\n      <div id="header">\n        <data-table-row header="">\n          <data-table-checkbox header="" hidden$="[[!multiSelection]]" on-tap="_toggleSelectAll" checked="[[_isSelectAllChecked(selectedItems.length, selectedItems.inverted, size)]]" indeterminate="[[_isSelectAllIndeterminate(selectedItems.length, size)]]"></data-table-checkbox>\n          <template is="dom-repeat" items="[[columns]]" as="column">\n            <data-table-cell header="" align-right="[[column.alignRight]]" before-bind="[[beforeCellBind]]" column="[[column]]" flex="[[column.flex]]" hidden="[[column.hidden]]" order="[[column.order]]" table="[[_this]]" template="[[column.headerTemplate]]" width="[[column.width]]">\n              <data-table-column-sort sort-order="[[sortOrder]]" path="[[column.sortBy]]" on-sort-direction-changed="_sortDirectionChanged" hidden$="[[!column.sortBy]]"></data-table-column-sort>\n            </data-table-cell>\n          </template>\n        </data-table-row>\n      </div>\n\n      <iron-list id="list" as="item" items="[[_cachedItems]]" on-scroll="_onVerticalScroll">\n        <template>\n          <div class="item">\n            <data-table-row before-bind="[[beforeRowBind]]" even$="[[!_isEven(index)]]" expanded="[[_isExpanded(item, _expandedItems, _expandedItems.*)]]" index="[[index]]" item="[[item]]" tabindex="-1" selected="[[_isSelected(item, selectedItems, selectedItems.*)]]">\n              <data-table-checkbox hidden$="[[!multiSelection]]" tabindex="0" checked="[[_isSelected(item, selectedItems, selectedItems.*)]]" on-tap="_onCheckBoxTap"></data-table-checkbox>\n              <template is="dom-repeat" items="[[columns]]" as="column" index-as="colIndex">\n                <data-table-cell template="[[column.template]]" table="[[_this]]" align-right="[[column.alignRight]]" column="[[column]]" expanded="[[_isExpanded(item, _expandedItems, _expandedItems.*)]]" flex="[[column.flex]]" hidden="[[column.hidden]]" index="[[index]]" item="[[item]]" on-click="_onCellClick" order="[[column.order]]" selected="[[_isSelected(item, selectedItems, selectedItems.*)]]" width="[[column.width]]" before-bind="[[beforeCellBind]]"></data-table-cell>\n              </template>\n              <template is="dom-if" if="[[_isExpanded(item, _expandedItems)]]" on-dom-change="_updateSizeForItem">\n                <data-table-row-detail index="[[index]]" item="[[item]]" expanded="[[_isExpanded(item, _expandedItems, _expandedItems.*)]]" selected="[[_isSelected(item, selectedItems, selectedItems.*)]]" before-bind="[[beforeDetailsBind]]" table="[[_this]]" template="[[rowDetail]]"></data-table-row-detail>\n              </template>\n            </data-table-row>\n          </div>\n        </template>\n      </iron-list>\n    </div>\n    <paper-spinner-lite active=""></paper-spinner-lite>\n    <slot name="data-table-column"></slot>\n    <slot name="template[is=row-detail]"></slot>\n'
@@ -28,14 +35,14 @@ define([
         '\n    <style is="custom-style">\n      :host {\n        display: block;\n        position: relative;\n        overflow-x: auto;\n        overflow-y: hidden;\n        -webkit-overflow-scrolling: touch;\n        /* Default height just to help users get started in making stuff visible.  */\n        height: 400px;\n        @apply --iron-data-table;\n      }\n\n      #container {\n        position: absolute;\n        left: 0;\n        top: 0;\n        bottom: 0;\n        display: flex;\n        flex-direction: column;\n      }\n\n      #header {\n        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);\n        transition: box-shadow 200ms;\n        -webkit-transition: box-shadow 200ms;\n        z-index: 1;\n        @apply --iron-data-table-header;\n      }\n\n      #header.scrolled {\n        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06), 0 2px 0 rgba(0, 0, 0, 0.075), 0 3px 0 rgba(0, 0, 0, 0.05), 0 4px 0 rgba(0, 0, 0, 0.015);\n      }\n\n      #list {\n        overflow-x: hidden !important;\n        overflow-y: auto !important;\n        flex: 1;\n        transition: opacity 200ms;\n        -webkit-transition: opacity 200ms;\n      }\n\n      :host([loading]) #list {\n        opacity: 0.25;\n      }\n\n      :host(:not([loading])) paper-spinner-lite {\n        display: none;\n      }\n\n      :host([loading]) paper-spinner-lite {\n        position: absolute;\n        top: 45%;\n        left: 50%;\n        --paper-spinner-color: var(--default-primary-color);\n      }\n    </style>\n    <div id="container">\n      <div id="header">\n        <data-table-row header="">\n          <data-table-checkbox header="" hidden\\$="[[!multiSelection]]" on-tap="_toggleSelectAll" checked="[[_isSelectAllChecked(selectedItems.length, selectedItems.inverted, size)]]" indeterminate="[[_isSelectAllIndeterminate(selectedItems.length, size)]]"></data-table-checkbox>\n          <template is="dom-repeat" items="[[columns]]" as="column">\n            <data-table-cell header="" align-right="[[column.alignRight]]" before-bind="[[beforeCellBind]]" column="[[column]]" flex="[[column.flex]]" hidden="[[column.hidden]]" order="[[column.order]]" table="[[_this]]" template="[[column.headerTemplate]]" width="[[column.width]]">\n              <data-table-column-sort sort-order="[[sortOrder]]" path="[[column.sortBy]]" on-sort-direction-changed="_sortDirectionChanged" hidden\\$="[[!column.sortBy]]"></data-table-column-sort>\n            </data-table-cell>\n          </template>\n        </data-table-row>\n      </div>\n\n      <iron-list id="list" as="item" items="[[_cachedItems]]" on-scroll="_onVerticalScroll">\n        <template>\n          <div class="item">\n            <data-table-row before-bind="[[beforeRowBind]]" even\\$="[[!_isEven(index)]]" expanded="[[_isExpanded(item, _expandedItems, _expandedItems.*)]]" index="[[index]]" item="[[item]]" tabindex="-1" selected="[[_isSelected(item, selectedItems, selectedItems.*)]]">\n              <data-table-checkbox hidden\\$="[[!multiSelection]]" tabindex="0" checked="[[_isSelected(item, selectedItems, selectedItems.*)]]" on-tap="_onCheckBoxTap"></data-table-checkbox>\n              <template is="dom-repeat" items="[[columns]]" as="column" index-as="colIndex">\n                <data-table-cell template="[[column.template]]" table="[[_this]]" align-right="[[column.alignRight]]" column="[[column]]" expanded="[[_isExpanded(item, _expandedItems, _expandedItems.*)]]" flex="[[column.flex]]" hidden="[[column.hidden]]" index="[[index]]" item="[[item]]" on-click="_onCellClick" order="[[column.order]]" selected="[[_isSelected(item, selectedItems, selectedItems.*)]]" width="[[column.width]]" before-bind="[[beforeCellBind]]"></data-table-cell>\n              </template>\n              <template is="dom-if" if="[[_isExpanded(item, _expandedItems)]]" on-dom-change="_updateSizeForItem">\n                <data-table-row-detail index="[[index]]" item="[[item]]" expanded="[[_isExpanded(item, _expandedItems, _expandedItems.*)]]" selected="[[_isSelected(item, selectedItems, selectedItems.*)]]" before-bind="[[beforeDetailsBind]]" table="[[_this]]" template="[[rowDetail]]"></data-table-row-detail>\n              </template>\n            </data-table-row>\n          </div>\n        </template>\n      </iron-list>\n    </div>\n    <paper-spinner-lite active=""></paper-spinner-lite>\n    <slot name="data-table-column"></slot>\n    <slot name="template[is=row-detail]"></slot>\n'
       ]
     );
-    _templateObject_d2978920ecf111e8afe6e3e72f732a1f = function() {
+    _templateObject_8beeca40f1e411e8bfa4f9e331d1ff6f = function _templateObject_8beeca40f1e411e8bfa4f9e331d1ff6f() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_d2978920ecf111e8afe6e3e72f732a1f()
+      _templateObject_8beeca40f1e411e8bfa4f9e331d1ff6f()
     ),
     is: "iron-data-table",
     behaviors: [_ironResizableBehavior.IronResizableBehavior],
@@ -133,12 +140,20 @@ define([
       this._observer = new _flattenedNodesObserver.FlattenedNodesObserver(
         this,
         function(info) {
-          var hasColumns = function(node) {
-            return (
-              node.nodeType === Node.ELEMENT_NODE &&
-              "DATA-TABLE-COLUMN" === node.tagName.toUpperCase()
-            );
-          };
+          var hasColumns = function hasColumns(node) {
+              return (
+                node.nodeType === Node.ELEMENT_NODE &&
+                "DATA-TABLE-COLUMN" === node.tagName.toUpperCase()
+              );
+            },
+            hasDetails = function hasDetails(node) {
+              return (
+                node.nodeType === Node.ELEMENT_NODE &&
+                "TEMPLATE" === node.tagName.toUpperCase() &&
+                node.hasAttribute("is") &&
+                "row-detail" === node.getAttribute("is")
+              );
+            };
           if (
             0 < info.addedNodes.filter(hasColumns).length ||
             0 < info.removedNodes.filter(hasColumns).length
@@ -154,17 +169,7 @@ define([
             );
             _this.notifyResize();
           }
-          if (
-            0 <
-            info.addedNodes.filter(function hasDetails(node) {
-              return (
-                node.nodeType === Node.ELEMENT_NODE &&
-                "TEMPLATE" === node.tagName.toUpperCase() &&
-                node.hasAttribute("is") &&
-                "row-detail" === node.getAttribute("is")
-              );
-            }).length
-          ) {
+          if (0 < info.addedNodes.filter(hasDetails).length) {
             _this.set(
               "rowDetail",
               _this.shadowRoot
@@ -293,7 +298,7 @@ define([
     _isEven: function _isEven(index) {
       return 0 === index % 2;
     },
-    _resetData: function _resetData() {
+    _resetData: function _resetData(dataSource, filter, sortOrder) {
       this.clearSelection();
       this.clearCache();
       this.$.list.scrollToIndex(0);
@@ -375,7 +380,7 @@ define([
         );
       }
     },
-    _onVerticalScroll: function _onVerticalScroll() {
+    _onVerticalScroll: function _onVerticalScroll(e) {
       this.toggleClass("scrolled", 1 <= this.$.list.scrollTop, this.$.header);
       this._currentPage = Math.max(
         0,
@@ -598,6 +603,7 @@ define([
     },
     _onCellClick: function _onCellClick(e) {
       if (this._isFocusable((0, _polymerDom.dom)(e).localTarget)) {
+        return;
       } else {
         if (this.rowDetail && this.detailsEnabled) {
           if (this._isExpanded(e.model.item, this._expandedItems)) {

@@ -42,7 +42,7 @@ Polymer({
     }
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !0,
@@ -86,18 +86,17 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
     const name = "mathjax",
-      basePath = pathFromUrl(import.meta.url);
+      basePath = pathFromUrl(import.meta.url),
+      location = `${basePath}lib/mathjax/latest.js`;
     window.addEventListener(
       `es-bridge-${name}-loaded`,
       this._mathjaxLoaded.bind(this)
     );
     window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(
-      name,
-      `${basePath}lib/mathjax/latest.js`
-    );
+    window.ESGlobalBridge.instance.load(name, location);
   },
   _mathjaxLoaded: function() {
     this._observer = new FlattenedNodesObserver(this, info => {

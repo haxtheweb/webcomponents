@@ -155,7 +155,7 @@ Polymer({
     }, 1);
     window.addEventListener("resize", this._windowResize.bind(this));
   },
-  _windowResize: function() {
+  _windowResize: function(e) {
     let rect = this.getBoundingClientRect();
     this.$.container.style.width = rect.width + "px";
     this.$.container.style.height = rect.height + "px";
@@ -191,12 +191,12 @@ Polymer({
     let op = { element: this, operation: this.activeOp };
     this.fire("item-overlay-op-changed", op);
   },
-  _inFocus: function() {
+  _inFocus: function(e) {
     if (this.editMode) {
       this.focused = !0;
     }
   },
-  _outFocus: function() {
+  _outFocus: function(e) {
     if (this.editMode) {
       this.focused = !1;
     }

@@ -608,13 +608,13 @@ Polymer({
       this.currentDayofWeek = this.currentDayofWeek - 1;
     }
 
-    //Creates first date element
+    // Creates first date element
     var dynamicEl = document.createElement("lrn-calendar-date");
     dynamicEl.date = this.newDate;
     dynamicEl.firstWeek = true;
     dynamicEl.style.width = "14.25%";
     dynamicEl.style.display = "inline-block";
-    dynamicEl.id = "date";
+    dynamicEl.setAttribute("id", "date");
     dynamicEl.view = this.view;
     if (
       this.date.getFullYear() === this.newDate.getFullYear() &&
@@ -669,7 +669,7 @@ Polymer({
       }
       var dynamicEl = document.createElement("lrn-calendar-date");
       dynamicEl.valid = true;
-      dynamicEl.id = "date";
+      dynamicEl.setAttribute("id", "date");
       dynamicEl.date = this.newDay;
       dynamicEl.style.width = "14.25%";
       dynamicEl.style.display = "inline-block";

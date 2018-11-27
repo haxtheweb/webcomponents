@@ -135,7 +135,7 @@ Polymer({
       this.set("requestParams", requestParams);
     }
   },
-  _resetAppSearch: function(newValue) {
+  _resetAppSearch: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0 && null !== newValue) {
       let app = newValue;
       var requestParams = {};

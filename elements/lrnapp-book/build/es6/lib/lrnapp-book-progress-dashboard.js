@@ -7,8 +7,8 @@ import "../node_modules/@polymer/iron-icons/hardware-icons.js";
 import "../node_modules/@polymer/iron-ajax/iron-ajax.js";
 import "../node_modules/@polymer/paper-icon-button/paper-icon-button.js";
 import "../node_modules/@polymer/paper-styles/color.js";
-import "@lrnwebcomponents/paper-search/paper-search-bar.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
+import "../node_modules/@lrnwebcomponents/paper-search/lib/paper-search-bar.js";
+import "../node_modules/@polymer/paper-tooltip/paper-tooltip.js";
 import "../node_modules/@polymer/paper-slider/paper-slider.js";
 import "../node_modules/@polymer/app-layout/app-layout.js";
 import "../node_modules/@polymer/app-layout/app-drawer/app-drawer.js";
@@ -165,7 +165,7 @@ Polymer({
       observer: "_showProgressChanged"
     }
   },
-  _routeDataChanged: function(newValue) {
+  _routeDataChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0) {
       this.requestParams[newValue.type] = newValue.id;
       if (this.progressChanged) {
@@ -173,7 +173,7 @@ Polymer({
       }
     }
   },
-  _showProgressChanged: function(newValue) {
+  _showProgressChanged: function(newValue, oldValue) {
     if (newValue && typeof this.routeData !== typeof void 0) {
       this.$.dataajax.generateRequest();
     }

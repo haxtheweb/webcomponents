@@ -17,38 +17,38 @@
  *  limitations under the License.
  *
  */
-MathJax.Localization.addTranslation("eo",null,{
+MathJax.Localization.addTranslation("eo", null, {
   menuTitle: "Esperanto",
   version: "2.7.5",
   isLoaded: true,
   domains: {
-    "_": {
-        version: "2.7.5",
-        isLoaded: true,
-        strings: {
-          Loading: "\u015Cargado",
-          LoadFailed: "\u015Cargado de dosiero malsukcesis: %1",
-          ProcessMath: "Prilaborado de formulo: %1 %%",
-          Processing: "Prilaborado",
-          TypesetMath: "Kompostado de formulo: %1 %%",
-          Typesetting: "Kompostado",
-          MathJaxNotSupported: "Via krozilo ne subtenas Mathjax."
-        }
+    _: {
+      version: "2.7.5",
+      isLoaded: true,
+      strings: {
+        Loading: "\u015Cargado",
+        LoadFailed: "\u015Cargado de dosiero malsukcesis: %1",
+        ProcessMath: "Prilaborado de formulo: %1 %%",
+        Processing: "Prilaborado",
+        TypesetMath: "Kompostado de formulo: %1 %%",
+        Typesetting: "Kompostado",
+        MathJaxNotSupported: "Via krozilo ne subtenas Mathjax."
+      }
     },
-    "FontWarnings": {},
+    FontWarnings: {},
     "HTML-CSS": {},
-    "HelpDialog": {},
-    "MathML": {},
-    "MathMenu": {},
-    "TeX": {}
+    HelpDialog: {},
+    MathML: {},
+    MathMenu: {},
+    TeX: {}
   },
-  plural: function (n) {
-      if (n === 1) return 1; // one
-      return 2; // other
-    },
-  number: function (n) {
-      return n;
-    }
+  plural: function(n) {
+    if (n === 1) return 1; // one
+    return 2; // other
+  },
+  number: function(n) {
+    return n;
+  }
 });
 
 MathJax.Ajax.loadComplete("[MathJax]/localization/eo/eo.js");

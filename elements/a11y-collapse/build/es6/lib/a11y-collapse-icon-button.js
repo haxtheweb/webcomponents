@@ -42,7 +42,7 @@ Polymer({
   detached: function() {
     this.$.expand.removeEventListener("tap");
   },
-  _onTap: function() {
+  _onTap: function(e) {
     if (!this.disabled) {
       this.fire("a11y-collapse-tap", this);
     }

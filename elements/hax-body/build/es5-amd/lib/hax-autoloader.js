@@ -16,18 +16,18 @@ define([
   "use strict";
   meta = babelHelpers.interopRequireWildcard(meta);
   _require = babelHelpers.interopRequireWildcard(_require);
-  function _templateObject_a3d64000ee0311e8bb61cd2eef6a9bf2() {
+  function _templateObject_97428010f1e611e8b3a2e3a031c18fd0() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n      :host {\n        display: none;\n      }\n    </style>\n    <slot></slot>\n"
     ]);
-    _templateObject_a3d64000ee0311e8bb61cd2eef6a9bf2 = function() {
+    _templateObject_97428010f1e611e8b3a2e3a031c18fd0 = function _templateObject_97428010f1e611e8b3a2e3a031c18fd0() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a3d64000ee0311e8bb61cd2eef6a9bf2()
+      _templateObject_97428010f1e611e8b3a2e3a031c18fd0()
     ),
     is: "hax-autoloader",
     properties: { processedList: { type: Object, value: {} } },
@@ -45,9 +45,10 @@ define([
         }
       );
     },
-    processNewElements: function processNewElements() {
+    processNewElements: function processNewElements(e) {
       for (
-        var effectiveChildren = _flattenedNodesObserver.FlattenedNodesObserver.getFlattenedNodes(
+        var _this2 = this,
+          effectiveChildren = _flattenedNodesObserver.FlattenedNodesObserver.getFlattenedNodes(
             this
           ).filter(function(n) {
             return n.nodeType === Node.ELEMENT_NODE;
@@ -57,26 +58,33 @@ define([
         i++
       ) {
         if (
-          babelHelpers.typeof(effectiveChildren[i].tagName) !== "undefined" &&
+          babelHelpers.typeof(effectiveChildren[i].tagName) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
           babelHelpers.typeof(
             this.processedList[effectiveChildren[i].tagName]
-          ) === "undefined"
+          ) ===
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
         ) {
           try {
-            var name = effectiveChildren[i].tagName.toLowerCase();
-            this.processedList[name] = name;
-            (0, _resolveUrl.pathFromUrl)(meta.url);
-            this.importHref(
-              "../../../../".concat(name, "/").concat(name, ".js")
-            );
+            (function() {
+              var name = effectiveChildren[i].tagName.toLowerCase();
+              _this2.processedList[name] = name;
+              var basePath = (0, _resolveUrl.pathFromUrl)(meta.url);
+              new Promise(function(res, rej) {
+                return _require.default(
+                  ["../../".concat(name, "/").concat(name, ".js")],
+                  res,
+                  rej
+                );
+              });
+            })();
           } catch (err) {}
         }
       }
-    },
-    importHref: function importHref(url) {
-      new Promise(function(res, rej) {
-        return _require.default([url], res, rej);
-      });
     }
   });
 });

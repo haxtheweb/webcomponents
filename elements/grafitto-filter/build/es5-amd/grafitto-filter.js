@@ -10,18 +10,18 @@ define([
   _mutableDataBehavior
 ) {
   "use strict";
-  function _templateObject_ba8286f0ecf111e8870fd574e18c710a() {
+  function _templateObject_758d6b80f1e411e888a9596c49fbce5a() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <div id="dom">\n      <slot></slot>\n    </div>\n'
     ]);
-    _templateObject_ba8286f0ecf111e8870fd574e18c710a = function() {
+    _templateObject_758d6b80f1e411e888a9596c49fbce5a = function _templateObject_758d6b80f1e411e888a9596c49fbce5a() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_ba8286f0ecf111e8870fd574e18c710a()
+      _templateObject_758d6b80f1e411e888a9596c49fbce5a()
     ),
     is: "grafitto-filter",
     behaviors: [
@@ -90,7 +90,7 @@ define([
         this.__clone[this.as] = filtered;
         return;
       }
-      this._userTemplate = this.queryEffectiveChildren("template");
+      this._userTemplate = this.querySelector("template");
       if (!this._userTemplate) {
         console.warn(
           "grafitto-filter requires a template to be provided in light-dom"
@@ -99,7 +99,7 @@ define([
       this.templatize(this._userTemplate);
       this.__clone = this.stamp(null);
       this.__clone[this.as] = filtered;
-      (0, _polymerDom.dom)(this).appendChild(this.__clone);
+      (0, _polymerDom.dom)(this).appendChild(this.__clone.root);
     },
     _decomposeWhere: function _decomposeWhere(where, item) {
       return where.split(".").reduce(function(a, b) {

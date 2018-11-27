@@ -18,19 +18,21 @@
  *
  */
 
-MathJax.OutputJax['HTML-CSS'].FONTDATA.FONTS['STIXIntegralsUpD'] = {
-  directory: 'IntegralsUpD/Regular',
-  family: 'STIXIntegralsUpD',
+MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS["STIXIntegralsUpD"] = {
+  directory: "IntegralsUpD/Regular",
+  family: "STIXIntegralsUpD",
   Ranges: [
-    [0x20,0x20,"All"],
-    [0xA0,0xA0,"All"],
-    [0x222B,0x2233,"All"],
-    [0x2A0B,0x2A1C,"All"]
+    [0x20, 0x20, "All"],
+    [0xa0, 0xa0, "All"],
+    [0x222b, 0x2233, "All"],
+    [0x2a0b, 0x2a1c, "All"]
   ],
-  0x222B: [2000,269,467,58,512],     // INTEGRAL
-  0x222E: [2000,269,616,56,685]      // CONTOUR INTEGRAL
+  0x222b: [2000, 269, 467, 58, 512], // INTEGRAL
+  0x222e: [2000, 269, 616, 56, 685] // CONTOUR INTEGRAL
 };
 
 MathJax.OutputJax["HTML-CSS"].initFont("STIXIntegralsUpD");
 
-MathJax.Ajax.loadComplete(MathJax.OutputJax["HTML-CSS"].fontDir + "/IntegralsUpD/Regular/Main.js");
+MathJax.Ajax.loadComplete(
+  MathJax.OutputJax["HTML-CSS"].fontDir + "/IntegralsUpD/Regular/Main.js"
+);

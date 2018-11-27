@@ -5,10 +5,17 @@ define([
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
   "./node_modules/@polymer/iron-image/iron-image.js",
   "./node_modules/@polymer/paper-slider/paper-slider.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _materializecssStyles,
+  _HAXWiring,
+  _schemaBehaviors,
+  _ironImage,
+  _paperSlider
+) {
   "use strict";
   var _properties;
-  function _templateObject_93f61960ecf211e8905e7d7276e4cd63() {
+  function _templateObject_2e831ef0f1e511e8871679d860532979() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n      :host .container {\n        position: relative;\n      }\n      :host .container > * {\n        left: 0;\n        position: absolute;\n      }\n      :host .container > div {\n        top: 0;\n        padding: 0;\n      }\n      :host #top {\n        overflow-x: hidden;\n      }\n    </style>\n    <h2>[[title]]</h2>\n    <div class="container" style$="[[styles.container]]">\n      <div id="bottom"><iron-image src$="[[bottomSrc]]" sizing$="[[sizing]]" style$="[[styles.image]]"></iron-image></div>\n      <div id="top" style$="[[styles.top]]"><iron-image src$="[[topSrc]]" sizing$="[[sizing]]" style$="[[styles.image]]"></iron-image></div>\n    </div>\n    <paper-slider id="slider" value="50" class="max-width-no-padding" style$="[[styles.slider]]"></paper-slider>\n'
@@ -17,14 +24,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n      :host .container {\n        position: relative;\n      }\n      :host .container > * {\n        left: 0;\n        position: absolute;\n      }\n      :host .container > div {\n        top: 0;\n        padding: 0;\n      }\n      :host #top {\n        overflow-x: hidden;\n      }\n    </style>\n    <h2>[[title]]</h2>\n    <div class="container" style\\$="[[styles.container]]">\n      <div id="bottom"><iron-image src\\$="[[bottomSrc]]" sizing\\$="[[sizing]]" style\\$="[[styles.image]]"></iron-image></div>\n      <div id="top" style\\$="[[styles.top]]"><iron-image src\\$="[[topSrc]]" sizing\\$="[[sizing]]" style\\$="[[styles.image]]"></iron-image></div>\n    </div>\n    <paper-slider id="slider" value="50" class="max-width-no-padding" style\\$="[[styles.slider]]"></paper-slider>\n'
       ]
     );
-    _templateObject_93f61960ecf211e8905e7d7276e4cd63 = function() {
+    _templateObject_2e831ef0f1e511e8871679d860532979 = function _templateObject_2e831ef0f1e511e8871679d860532979() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_93f61960ecf211e8905e7d7276e4cd63()
+      _templateObject_2e831ef0f1e511e8871679d860532979()
     ),
     is: "image-compare-slider",
     behaviors: [
@@ -62,22 +69,24 @@ define([
     ready: function ready() {
       var root = this,
         slider = this.$.slider;
-      slider.addEventListener("immediate-value-changed", function() {
+      slider.addEventListener("immediate-value-changed", function(e) {
         root.sliderPercent = slider.immediateValue;
       });
     },
-    _setStyles: function _setStyles() {
+    _setStyles: function _setStyles(width, height, sliderPercent) {
       var w = this.width,
-        h = this.height;
+        h = this.height,
+        sw = w + 30,
+        cmb = h + 15;
       this.styles = {
         image: "width: " + w + "px; height: " + h + "px;",
-        slider: "width: " + (w + 30) + "px; margin: 0 -15px;",
-        container: "width: " + w + "px; margin-bottom: " + (h + 15) + "px;",
+        slider: "width: " + sw + "px; margin: 0 -15px;",
+        container: "width: " + w + "px; margin-bottom: " + cmb + "px;",
         top: "width: " + this.sliderPercent + "%;"
       };
     },
     attached: function attached() {
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !1,
@@ -132,7 +141,8 @@ define([
           ],
           advanced: []
         }
-      });
+      };
+      this.setHaxProperties(props);
     }
   });
 });

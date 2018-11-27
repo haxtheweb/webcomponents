@@ -9,9 +9,20 @@ define([
   "../node_modules/@lrnwebcomponents/simple-colors/simple-colors.js",
   "./hax-app-search-inputs.js",
   "./hax-app-search-result.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _paperInput,
+  _paperCard,
+  _paperStyles,
+  _ironList,
+  _ironAjax,
+  _elmslnLoading,
+  _simpleColors,
+  _haxAppSearchInputs,
+  _haxAppSearchResult
+) {
   "use strict";
-  function _templateObject_ac96d9c0ee0311e8bb61cd2eef6a9bf2() {
+  function _templateObject_9f3df510f1e611e8b3a2e3a031c18fd0() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style is="custom-style">\n      :host {\n        display: block;\n      };\n      paper-button.item-wrapper {\n        margin: 0;\n        padding: 0;\n      }\n      paper-card {\n        padding: 0;\n        margin: 8px;\n        width: 240px;\n        font-size: 12px;\n        --paper-card-header: {\n          max-height: 160px;\n        }\n      }\n      @media screen and (min-width: 800px) {\n        paper-card {\n          font-size: 14px;\n        }\n      }\n      #loading[hidden] {\n        visibility: hidden !important;\n        opacity: 0 !important;\n        display: block !important;\n      }\n      .loading {\n        width: calc(100% - 32px);\n        z-index: 1000;\n        opacity: .9;\n        text-align: center;\n        align-content: space-around;\n        justify-content: center;\n        position: absolute;\n        padding: 0;\n        margin: 0;\n        display: flex;\n        margin: 0 auto;\n        visibility: visible;\n        transition: visibility .5s, opacity .5s ease;\n      }\n      .loading elmsln-loading {\n        margin: 0 80px;\n        display: inline-flex;\n      }\n      #loading {\n        height: 100%;\n        display: flex;\n        justify-content: center;\n      }\n      #loading .loading,\n      #loading elmsln-loading{\n        display: block;\n        height: 80px;\n      }\n      .card-content {\n        padding: .16px;\n      }\n      .card-content p {\n        padding: 0;\n        margin: 0;\n      }\n      #itemlist {\n        min-height: 150px;\n        border: 1px solid #222222;\n      }\n      hax-app-search-inputs {\n        min-height: 150px;\n        padding: 16px 16px 0 16px;\n        color: #222222;\n      }\n      hax-app-pagination {\n        min-height: 32px;\n        font-size: 12.8px;\n        display: none;\n        justify-content: flex-end;\n        justify-content: center;\n        color: #222222;\n      }\n      .loading-text {\n        font-size: 32px;\n        padding: 16px 0;\n        color: var(--simple-colors-light-green-background3);\n      }\n    </style>\n\n    <iron-ajax auto="[[auto]]" id="request" method="[[method]]" url="[[requestEndPoint]]" handle-as="json" headers="[[headers]]" params="[[requestParams]]" last-response="{{requestData}}" hidden="" loading="{{loading}}" debounce-duration="250"></iron-ajax>\n    <hax-app-search-inputs label="[[label]]" schema="{{searchSchema}}" values="{{searchValues}}"></hax-app-search-inputs>\n    <hax-app-pagination id="pagerbottom" request-data="[[requestData]]" pagination="[[pagination]]"></hax-app-pagination>\n    <div id="loading" class="loading" hidden$="[[!loading]]">\n      <elmsln-loading color="light-green-text text-accent-3" size="large"></elmsln-loading>\n      <div class="loading-text">Loading content..</div>\n    </div>\n    <iron-list grid="" id="itemlist" items="[[media]]" as="resultData">\n      <template>\n        <hax-app-search-result result-data="[[resultData]]"></hax-app-search-result>\n      </template>\n    </iron-list>\n'
@@ -20,14 +31,14 @@ define([
         '\n    <style is="custom-style">\n      :host {\n        display: block;\n      };\n      paper-button.item-wrapper {\n        margin: 0;\n        padding: 0;\n      }\n      paper-card {\n        padding: 0;\n        margin: 8px;\n        width: 240px;\n        font-size: 12px;\n        --paper-card-header: {\n          max-height: 160px;\n        }\n      }\n      @media screen and (min-width: 800px) {\n        paper-card {\n          font-size: 14px;\n        }\n      }\n      #loading[hidden] {\n        visibility: hidden !important;\n        opacity: 0 !important;\n        display: block !important;\n      }\n      .loading {\n        width: calc(100% - 32px);\n        z-index: 1000;\n        opacity: .9;\n        text-align: center;\n        align-content: space-around;\n        justify-content: center;\n        position: absolute;\n        padding: 0;\n        margin: 0;\n        display: flex;\n        margin: 0 auto;\n        visibility: visible;\n        transition: visibility .5s, opacity .5s ease;\n      }\n      .loading elmsln-loading {\n        margin: 0 80px;\n        display: inline-flex;\n      }\n      #loading {\n        height: 100%;\n        display: flex;\n        justify-content: center;\n      }\n      #loading .loading,\n      #loading elmsln-loading{\n        display: block;\n        height: 80px;\n      }\n      .card-content {\n        padding: .16px;\n      }\n      .card-content p {\n        padding: 0;\n        margin: 0;\n      }\n      #itemlist {\n        min-height: 150px;\n        border: 1px solid #222222;\n      }\n      hax-app-search-inputs {\n        min-height: 150px;\n        padding: 16px 16px 0 16px;\n        color: #222222;\n      }\n      hax-app-pagination {\n        min-height: 32px;\n        font-size: 12.8px;\n        display: none;\n        justify-content: flex-end;\n        justify-content: center;\n        color: #222222;\n      }\n      .loading-text {\n        font-size: 32px;\n        padding: 16px 0;\n        color: var(--simple-colors-light-green-background3);\n      }\n    </style>\n\n    <iron-ajax auto="[[auto]]" id="request" method="[[method]]" url="[[requestEndPoint]]" handle-as="json" headers="[[headers]]" params="[[requestParams]]" last-response="{{requestData}}" hidden="" loading="{{loading}}" debounce-duration="250"></iron-ajax>\n    <hax-app-search-inputs label="[[label]]" schema="{{searchSchema}}" values="{{searchValues}}"></hax-app-search-inputs>\n    <hax-app-pagination id="pagerbottom" request-data="[[requestData]]" pagination="[[pagination]]"></hax-app-pagination>\n    <div id="loading" class="loading" hidden\\$="[[!loading]]">\n      <elmsln-loading color="light-green-text text-accent-3" size="large"></elmsln-loading>\n      <div class="loading-text">Loading content..</div>\n    </div>\n    <iron-list grid="" id="itemlist" items="[[media]]" as="resultData">\n      <template>\n        <hax-app-search-result result-data="[[resultData]]"></hax-app-search-result>\n      </template>\n    </iron-list>\n'
       ]
     );
-    _templateObject_ac96d9c0ee0311e8bb61cd2eef6a9bf2 = function() {
+    _templateObject_9f3df510f1e611e8b3a2e3a031c18fd0 = function _templateObject_9f3df510f1e611e8b3a2e3a031c18fd0() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_ac96d9c0ee0311e8bb61cd2eef6a9bf2()
+      _templateObject_9f3df510f1e611e8b3a2e3a031c18fd0()
     ),
     is: "hax-app-search",
     properties: {
@@ -42,7 +53,12 @@ define([
       media: { type: Array, value: [], observer: "_mediaChanged" }
     },
     _searchValuesEvent: function _searchValuesEvent(e) {
-      if (babelHelpers.typeof(e.detail) !== "undefined") {
+      if (
+        babelHelpers.typeof(e.detail) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         var requestParams = this.requestParams;
         for (var property in e.detail) {
           requestParams[property] = e.detail[property];
@@ -51,19 +67,32 @@ define([
         this.set("requestParams", requestParams);
       }
     },
-    _resetAppSearch: function _resetAppSearch(newValue) {
-      if (babelHelpers.typeof(newValue) !== "undefined" && null !== newValue) {
+    _resetAppSearch: function _resetAppSearch(newValue, oldValue) {
+      if (
+        babelHelpers.typeof(newValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
+        null !== newValue
+      ) {
         var app = newValue,
           requestParams = {};
         this.label = app.details.title;
         this.auto = !1;
         this.set("media", []);
-        if (babelHelpers.typeof(app.connection.data) !== "undefined") {
+        if (
+          babelHelpers.typeof(app.connection.data) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           requestParams = app.connection.data;
         }
         if (
           babelHelpers.typeof(app.connection.operations.browse.data) !==
-          "undefined"
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
         ) {
           requestParams = Object.assign(
             requestParams,
@@ -72,7 +101,12 @@ define([
         }
         this.set("method", app.connection.operations.browse.method);
         this.set("headers", {});
-        if (babelHelpers.typeof(app.connection.headers) !== "undefined") {
+        if (
+          babelHelpers.typeof(app.connection.headers) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           this.set("headers", app.connection.headers);
         }
         this.set("requestParams", {});
@@ -84,7 +118,9 @@ define([
         }
         if (
           babelHelpers.typeof(app.connection.operations.browse.endPoint) !==
-          "undefined"
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
         ) {
           requestEndPoint += app.connection.operations.browse.endPoint;
         }
@@ -93,7 +129,9 @@ define([
         var searchSchema = { properties: {} };
         if (
           babelHelpers.typeof(app.connection.operations.browse.search) !==
-          "undefined"
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
         ) {
           searchSchema.properties = app.connection.operations.browse.search;
           this.set("searchSchema", searchSchema);
@@ -102,11 +140,18 @@ define([
         this.set("pagination", {});
         if (
           babelHelpers.typeof(app.connection.operations.browse.pagination) !==
-          "undefined"
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
         ) {
           this.set("pagination", app.connection.operations.browse.pagination);
         }
-        if (babelHelpers.typeof(app.connection.auto) !== "undefined") {
+        if (
+          babelHelpers.typeof(app.connection.auto) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           this.auto = app.connection.auto;
         } else {
           this.auto = !0;
@@ -136,7 +181,10 @@ define([
     _haxStorePropertyUpdated: function _haxStorePropertyUpdated(e) {
       if (
         e.detail &&
-        babelHelpers.typeof(e.detail.value) !== "undefined" &&
+        babelHelpers.typeof(e.detail.value) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         e.detail.property
       ) {
         this.set(e.detail.property, e.detail.value);
@@ -145,14 +193,19 @@ define([
     _requestDataChanged: function _requestDataChanged(newValue, oldValue) {
       if (
         {} != babelHelpers.typeof(newValue) &&
-        babelHelpers.typeof(oldValue) !== "undefined"
+        babelHelpers.typeof(oldValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
       ) {
         var media = [],
           map = this.resultMap,
           data = [];
         if (
           babelHelpers.typeof(this._resolveObjectPath(map.items, newValue)) !==
-          "undefined"
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
         ) {
           data = this._resolveObjectPath(map.items, newValue);
         } else {
@@ -169,7 +222,10 @@ define([
               map: {}
             };
             if (
-              babelHelpers.typeof(media[i].details) !== "undefined" &&
+              babelHelpers.typeof(media[i].details) !==
+                ("undefined" === typeof void 0
+                  ? "undefined"
+                  : babelHelpers.typeof(void 0)) &&
               null != media[i].details
             ) {
               media[i].details = media[i].details.replace(/(<([^>]+)>)/gi, "");
@@ -186,12 +242,22 @@ define([
             } else {
               media[i].id = this._resolveObjectPath(map.preview.id, data[i]);
             }
-            if (babelHelpers.typeof(map.preview.image) !== "undefined") {
+            if (
+              babelHelpers.typeof(map.preview.image) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
+            ) {
               media[i].image = this._resolveObjectPath(
                 map.preview.image,
                 data[i]
               );
-            } else if (babelHelpers.typeof(map.image) !== "undefined") {
+            } else if (
+              babelHelpers.typeof(map.image) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
+            ) {
               media[i].image = map.image;
             } else {
               media[i].image = "";
@@ -199,7 +265,12 @@ define([
             for (var prop in map.gizmo) {
               if ("_url_source" === prop) {
                 var _id = "";
-                if (babelHelpers.typeof(media[i].map.__id) !== "undefined") {
+                if (
+                  babelHelpers.typeof(media[i].map.__id) !==
+                  ("undefined" === typeof void 0
+                    ? "undefined"
+                    : babelHelpers.typeof(void 0))
+                ) {
                   _id = media[i].map.__id;
                 } else {
                   _id = this._resolveObjectPath(map.gizmo.id, data[i]);
@@ -230,12 +301,23 @@ define([
               }
             }
             if (
-              babelHelpers.typeof(media[i].map.url) === "undefined" &&
-              babelHelpers.typeof(media[i].map.source) !== "undefined"
+              babelHelpers.typeof(media[i].map.url) ===
+                ("undefined" === typeof void 0
+                  ? "undefined"
+                  : babelHelpers.typeof(void 0)) &&
+              babelHelpers.typeof(media[i].map.source) !==
+                ("undefined" === typeof void 0
+                  ? "undefined"
+                  : babelHelpers.typeof(void 0))
             ) {
               media[i].map.url = media[i].map.source;
             }
-            if (babelHelpers.typeof(map.gizmo.type) !== "undefined") {
+            if (
+              babelHelpers.typeof(map.gizmo.type) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
+            ) {
               media[i].type = this._resolveObjectPath(map.gizmo.type, data[i]);
             }
           }
@@ -246,7 +328,12 @@ define([
     },
     _mediaChanged: function _mediaChanged(newValue, oldValue) {
       var _this = this;
-      if (babelHelpers.typeof(oldValue) !== "undefined") {
+      if (
+        babelHelpers.typeof(oldValue) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         setTimeout(function() {
           _this.$.itemlist.fire("iron-resize");
         }, 200);

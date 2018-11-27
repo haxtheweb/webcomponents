@@ -7,6 +7,15 @@ define([
   "./lib/paper-contact-skype.js",
   "./lib/paper-contact-address.js",
   "./lib/paper-contact-list.js"
-], function() {
+], function(
+  _paperContactEmail,
+  _paperContactPhone,
+  _paperContactMobile,
+  _paperContactLinkedin,
+  _paperContactTwitter,
+  _paperContactSkype,
+  _paperContactAddress,
+  _paperContactList
+) {
   "use strict";
 });

@@ -5,7 +5,14 @@ define([
   "../node_modules/@polymer/iron-ajax/iron-ajax.js",
   "../node_modules/@polymer/paper-spinner/paper-spinner.js",
   "../node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js"
-], function(_polymerLegacy, _polymerDom, async) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  async,
+  _ironAjax,
+  _paperSpinner,
+  _HAXWiring
+) {
   "use strict";
   async = babelHelpers.interopRequireWildcard(async);
   var $_documentContainer = document.createElement("div");
@@ -37,9 +44,15 @@ define([
     },
     _displayModeChanged: function _displayModeChanged(newValue, oldValue) {
       if (
-        babelHelpers.typeof(newValue) !== "undefined" &&
+        babelHelpers.typeof(newValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         "" != newValue &&
-        babelHelpers.typeof(this.token) !== "undefined"
+        babelHelpers.typeof(this.token) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
       ) {
         this.token = this.token.replace(oldValue, newValue);
       }
@@ -57,11 +70,14 @@ define([
         };
       }
     },
-    _handleTokenResponse: function _handleTokenResponse(newValue) {
+    _handleTokenResponse: function _handleTokenResponse(newValue, oldValue) {
       var _this = this;
       if (
         null !== newValue &&
-        babelHelpers.typeof(newValue.content) !== "undefined"
+        babelHelpers.typeof(newValue.content) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
       ) {
         if (null != document.getElementById("cmstokenidtolockonto")) {
           document
@@ -89,16 +105,25 @@ define([
         element.removeChild(element.firstChild);
       }
     },
-    _tokenChanged: function _tokenChanged(newValue) {
+    _tokenChanged: function _tokenChanged(newValue, oldValue) {
       var _this2 = this;
       if (
-        babelHelpers.typeof(newValue) !== "undefined" &&
+        babelHelpers.typeof(newValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         "" !== newValue &&
         !this.loading
       ) {
         if (
-          babelHelpers.typeof(this.tokenEndPoint) === "undefined" &&
-          babelHelpers.typeof(window.cmstokenEndPoint) !== "undefined"
+          babelHelpers.typeof(this.tokenEndPoint) ===
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0)) &&
+          babelHelpers.typeof(window.cmstokenEndPoint) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
         ) {
           this.tokenEndPoint = window.cmstokenEndPoint;
         }
@@ -110,13 +135,13 @@ define([
         }
       }
     },
-    _windowVisibilityChanged: function _windowVisibilityChanged() {
+    _windowVisibilityChanged: function _windowVisibilityChanged(e) {
       if (!this.loading && this._clickInvoked) {
         this.$.tokenrequest.generateRequest();
         this._clickInvoked = !1;
       }
     },
-    __tokenClicked: function __tokenClicked() {
+    __tokenClicked: function __tokenClicked(e) {
       this._clickInvoked = !0;
     },
     detached: function detached() {
@@ -132,15 +157,24 @@ define([
         this._windowVisibilityChanged.bind(this)
       );
       if (
-        babelHelpers.typeof(this.token) !== "undefined" &&
+        babelHelpers.typeof(this.token) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         null !== this.token &&
         "" !== this.token
       ) {
         var slot = (0, _polymerDom.dom)(this).getEffectiveChildNodes();
         if (0 === slot.length && !this.loading) {
           if (
-            babelHelpers.typeof(this.tokenEndPoint) === "undefined" &&
-            babelHelpers.typeof(window.cmstokenEndPoint) !== "undefined"
+            babelHelpers.typeof(this.tokenEndPoint) ===
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0)) &&
+            babelHelpers.typeof(window.cmstokenEndPoint) !==
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
           ) {
             this.tokenEndPoint = window.cmstokenEndPoint;
           }
@@ -152,7 +186,7 @@ define([
           }
         }
       }
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !1,
@@ -187,12 +221,18 @@ define([
             "token-end-point"
           ]
         }
-      });
+      };
+      this.setHaxProperties(props);
     },
     postProcessgetHaxJSONSchema: function postProcessgetHaxJSONSchema(schema) {
       var href = "",
         slot = "Edit";
-      if (babelHelpers.typeof(this.tokenData) !== "undefined") {
+      if (
+        babelHelpers.typeof(this.tokenData) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         href = this.tokenData.editEndpoint;
         slot = this.tokenData.editText;
         for (var i in this.tokenData.schema) {

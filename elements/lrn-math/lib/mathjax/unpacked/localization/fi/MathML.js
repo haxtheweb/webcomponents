@@ -17,12 +17,10 @@
  *  limitations under the License.
  *
  */
-MathJax.Localization.addTranslation("fi","MathML",{
-        version: "2.7.5",
-        isLoaded: true,
-        strings: {
-
-        }
+MathJax.Localization.addTranslation("fi", "MathML", {
+  version: "2.7.5",
+  isLoaded: true,
+  strings: {}
 });
 
 MathJax.Ajax.loadComplete("[MathJax]/localization/fi/MathML.js");

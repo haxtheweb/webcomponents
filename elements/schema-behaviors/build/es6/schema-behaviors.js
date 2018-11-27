@@ -35,7 +35,7 @@ window.SchemaBehaviors.Schema = {
       idPart()
     );
   },
-  _schemaMapChanged: function(newValue) {
+  _schemaMapChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0) {
       this.schemaResourceID = this.getAttribute("resource");
       if ("" == this.schemaResourceID || null == this.schemaResourceID) {

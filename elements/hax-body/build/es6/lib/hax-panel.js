@@ -264,7 +264,7 @@ Polymer({
         break;
     }
   },
-  _editModeChanged: function(newValue) {
+  _editModeChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0 && newValue) {
       this.__tipText = "Save";
       this.$.button.icon = "save";
@@ -273,20 +273,20 @@ Polymer({
       this.$.button.icon = "create";
     }
   },
-  _clickEditButton: function() {
+  _clickEditButton: function(e) {
     this.toggle();
   },
   _clickSaveButton: function(e) {
     this.toggle();
     this.fire("hax-save", e.detail);
   },
-  _htmlExportDialog: function() {
+  _htmlExportDialog: function(e) {
     window.HaxStore.instance.haxExport.toggleDialog();
   },
-  _preferencesDialog: function() {
+  _preferencesDialog: function(e) {
     window.HaxStore.instance.haxPreferences.toggleDialog();
   },
-  toggle: function() {
+  toggle: function(e) {
     window.HaxStore.write("editMode", !this.editMode, this);
     this.$.drawer.opened = this.editMode;
     if (!this.$.drawer.opened) {

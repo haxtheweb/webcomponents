@@ -12,7 +12,7 @@ document.head.appendChild($_documentContainer);
 window.MaterializeCSSBehaviors = window.MaterializeCSSBehaviors || {};
 window.MaterializeCSSBehaviors.ColorBehaviors = {
   getColorClasses: function(parta = "", partb = "") {
-    return {
+    var colorClasses = {
       "#ffffff": "white",
       "#000000": "black",
       "#ffebee": "red" + parta + " " + partb + "lighten-5",
@@ -270,6 +270,7 @@ window.MaterializeCSSBehaviors.ColorBehaviors = {
       "#37474f": "blue-grey" + parta + " " + partb + "darken-3",
       "#263238": "blue-grey" + parta + " " + partb + "darken-4"
     };
+    return colorClasses;
   },
   _colorTransform: function(item, parta, partb) {
     const colorClasses = this.getColorClasses(parta, partb);

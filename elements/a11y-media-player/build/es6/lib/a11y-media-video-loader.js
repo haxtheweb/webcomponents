@@ -100,7 +100,7 @@ Polymer({
   setLoop: function(mode) {
     this.media.loop = mode;
   },
-  setMute: function(mode) {
+  setMute: function(mode, value) {
     this.media.muted = mode;
   }
 });

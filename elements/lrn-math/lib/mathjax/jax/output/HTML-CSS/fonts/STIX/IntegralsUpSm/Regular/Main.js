@@ -16,4 +16,19 @@
  *  limitations under the License.
  */
 
-MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS.STIXIntegralsUpSm={directory:"IntegralsUpSm/Regular",family:"STIXIntegralsUpSm",Ranges:[[32,32,"All"],[160,160,"All"],[8747,8755,"All"],[10763,10780,"All"]],8747:[690,189,357,52,375],8750:[690,189,452,52,412]};MathJax.OutputJax["HTML-CSS"].initFont("STIXIntegralsUpSm");MathJax.Ajax.loadComplete(MathJax.OutputJax["HTML-CSS"].fontDir+"/IntegralsUpSm/Regular/Main.js");
+MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS.STIXIntegralsUpSm = {
+  directory: "IntegralsUpSm/Regular",
+  family: "STIXIntegralsUpSm",
+  Ranges: [
+    [32, 32, "All"],
+    [160, 160, "All"],
+    [8747, 8755, "All"],
+    [10763, 10780, "All"]
+  ],
+  8747: [690, 189, 357, 52, 375],
+  8750: [690, 189, 452, 52, 412]
+};
+MathJax.OutputJax["HTML-CSS"].initFont("STIXIntegralsUpSm");
+MathJax.Ajax.loadComplete(
+  MathJax.OutputJax["HTML-CSS"].fontDir + "/IntegralsUpSm/Regular/Main.js"
+);

@@ -196,11 +196,19 @@ Polymer({
   created: function() {
     this._observer = new FlattenedNodesObserver(this, info => {
       var hasColumns = function(node) {
-        return (
-          node.nodeType === Node.ELEMENT_NODE &&
-          "DATA-TABLE-COLUMN" === node.tagName.toUpperCase()
-        );
-      };
+          return (
+            node.nodeType === Node.ELEMENT_NODE &&
+            "DATA-TABLE-COLUMN" === node.tagName.toUpperCase()
+          );
+        },
+        hasDetails = function(node) {
+          return (
+            node.nodeType === Node.ELEMENT_NODE &&
+            "TEMPLATE" === node.tagName.toUpperCase() &&
+            node.hasAttribute("is") &&
+            "row-detail" === node.getAttribute("is")
+          );
+        };
       if (
         0 < info.addedNodes.filter(hasColumns).length ||
         0 < info.removedNodes.filter(hasColumns).length
@@ -214,17 +222,7 @@ Polymer({
         );
         this.notifyResize();
       }
-      if (
-        0 <
-        info.addedNodes.filter(function(node) {
-          return (
-            node.nodeType === Node.ELEMENT_NODE &&
-            "TEMPLATE" === node.tagName.toUpperCase() &&
-            node.hasAttribute("is") &&
-            "row-detail" === node.getAttribute("is")
-          );
-        }).length
-      ) {
+      if (0 < info.addedNodes.filter(hasDetails).length) {
         this.set(
           "rowDetail",
           this.shadowRoot
@@ -343,7 +341,7 @@ Polymer({
   _isEven: function(index) {
     return 0 === index % 2;
   },
-  _resetData: function() {
+  _resetData: function(dataSource, filter, sortOrder) {
     this.clearSelection();
     this.clearCache();
     this.$.list.scrollToIndex(0);
@@ -420,7 +418,7 @@ Polymer({
       );
     }
   },
-  _onVerticalScroll: function() {
+  _onVerticalScroll: function(e) {
     this.toggleClass("scrolled", 1 <= this.$.list.scrollTop, this.$.header);
     this._currentPage = Math.max(
       0,
@@ -643,6 +641,7 @@ Polymer({
   },
   _onCellClick: function(e) {
     if (this._isFocusable(dom(e).localTarget)) {
+      return;
     } else {
       if (this.rowDetail && this.detailsEnabled) {
         if (this._isExpanded(e.model.item, this._expandedItems)) {

@@ -2,7 +2,7 @@ define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./node_modules/@lrnwebcomponents/iron-data-table/iron-data-table.js",
   "./node_modules/@polymer/iron-ajax/iron-ajax.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _ironDataTable, _ironAjax) {
   "use strict";
   var $_documentContainer = document.createElement("div");
   $_documentContainer.setAttribute("style", "display: none;");

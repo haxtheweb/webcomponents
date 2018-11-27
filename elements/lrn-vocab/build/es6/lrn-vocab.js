@@ -45,7 +45,7 @@ Polymer({
     opened: { type: Boolean, value: !1 }
   },
   ready: function() {
-    this.$.button.addEventListener("click", () => {
+    this.$.button.addEventListener("click", e => {
       this.opened = !this.opened;
     });
     this.__modal = this.$.dialog;
@@ -55,7 +55,7 @@ Polymer({
       "lrn-vocab-dialog-closed",
       this._accessibleFocus.bind(this)
     );
-    this.setHaxProperties({
+    let props = {
       canScale: !1,
       canPosition: !1,
       canEditSource: !1,
@@ -98,7 +98,8 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
   _accessibleFocus: function(e) {
     if (e.detail === this.__modal) {

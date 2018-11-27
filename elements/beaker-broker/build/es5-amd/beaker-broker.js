@@ -5,11 +5,11 @@ define([
   "use strict";
   Object.defineProperty(_exports, "__esModule", { value: !0 });
   _exports.BeakerBroker = void 0;
-  function _templateObject_61a08270ecf211e894c977babf56051e() {
+  function _templateObject_ff530af0f1e411e8966ecd93be86a6df() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n<style>:host {\n  display: block;\n}\n\n:host([hidden]) {\n  display: none;\n}\n</style>\n<slot></slot>"
     ]);
-    _templateObject_61a08270ecf211e894c977babf56051e = function() {
+    _templateObject_ff530af0f1e411e8966ecd93be86a6df = function _templateObject_ff530af0f1e411e8966ecd93be86a6df() {
       return data;
     };
     return data;
@@ -20,10 +20,7 @@ define([
       babelHelpers.classCallCheck(this, BeakerBroker);
       return babelHelpers.possibleConstructorReturn(
         this,
-        (BeakerBroker.__proto__ || Object.getPrototypeOf(BeakerBroker)).apply(
-          this,
-          arguments
-        )
+        babelHelpers.getPrototypeOf(BeakerBroker).apply(this, arguments)
       );
     }
     babelHelpers.createClass(
@@ -34,8 +31,7 @@ define([
           value: function connectedCallback() {
             babelHelpers
               .get(
-                BeakerBroker.prototype.__proto__ ||
-                  Object.getPrototypeOf(BeakerBroker.prototype),
+                babelHelpers.getPrototypeOf(BeakerBroker.prototype),
                 "connectedCallback",
                 this
               )
@@ -43,7 +39,10 @@ define([
             if (
               ("undefined" === typeof DatArchive
                 ? "undefined"
-                : babelHelpers.typeof(DatArchive)) === "undefined"
+                : babelHelpers.typeof(DatArchive)) ===
+              ("undefined" === typeof void 0
+                ? "undefined"
+                : babelHelpers.typeof(void 0))
             ) {
               console.log(
                 "Beaker is not available from this site loading methodology"
@@ -55,9 +54,9 @@ define([
           key: "_datUrlChanged",
           value: (function() {
             var _datUrlChanged2 = babelHelpers.asyncToGenerator(
-              regeneratorRuntime.mark(function _callee(newValue) {
+              regeneratorRuntime.mark(function _callee(newValue, oldValue) {
                 return regeneratorRuntime.wrap(
-                  function(_context) {
+                  function _callee$(_context) {
                     while (1) {
                       switch ((_context.prev = _context.next)) {
                         case 0:
@@ -65,7 +64,9 @@ define([
                             ("undefined" === typeof DatArchive
                               ? "undefined"
                               : babelHelpers.typeof(DatArchive)) !==
-                              "undefined" &&
+                              ("undefined" === typeof void 0
+                                ? "undefined"
+                                : babelHelpers.typeof(void 0)) &&
                             newValue
                           ) {
                             this.set("archive", new DatArchive(newValue));
@@ -81,7 +82,7 @@ define([
                 );
               })
             );
-            return function _datUrlChanged() {
+            return function _datUrlChanged(_x, _x2) {
               return _datUrlChanged2.apply(this, arguments);
             };
           })()
@@ -92,7 +93,7 @@ define([
             var _write = babelHelpers.asyncToGenerator(
               regeneratorRuntime.mark(function _callee2(path, data) {
                 return regeneratorRuntime.wrap(
-                  function(_context2) {
+                  function _callee2$(_context2) {
                     while (1) {
                       switch ((_context2.prev = _context2.next)) {
                         case 0:
@@ -109,7 +110,7 @@ define([
                 );
               })
             );
-            return function write() {
+            return function write(_x3, _x4) {
               return _write.apply(this, arguments);
             };
           })()
@@ -121,7 +122,7 @@ define([
               regeneratorRuntime.mark(function _callee3(path, type) {
                 var ftype, response, buf, blob, str;
                 return regeneratorRuntime.wrap(
-                  function(_context3) {
+                  function _callee3$(_context3) {
                     while (1) {
                       switch ((_context3.prev = _context3.next)) {
                         case 0:
@@ -186,7 +187,7 @@ define([
                 );
               })
             );
-            return function read() {
+            return function read(_x5, _x6) {
               return _read.apply(this, arguments);
             };
           })()
@@ -197,7 +198,7 @@ define([
           key: "template",
           get: function get() {
             return (0, _polymerElement.html)(
-              _templateObject_61a08270ecf211e894c977babf56051e()
+              _templateObject_ff530af0f1e411e8966ecd93be86a6df()
             );
           }
         },

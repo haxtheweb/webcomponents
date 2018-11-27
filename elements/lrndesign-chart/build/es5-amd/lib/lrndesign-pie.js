@@ -4,9 +4,15 @@ define([
   "../node_modules/@lrnwebcomponents/chartist-render/chartist-render.js",
   "../node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js",
   "../node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _ironAjax,
+  _chartistRender,
+  _HAXWiring,
+  _schemaBehaviors
+) {
   "use strict";
-  function _templateObject_d20d5fa0ecf311e892c6e511ef2005b8() {
+  function _templateObject_283c9070f1e611e8810acbe61bc08cf4() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <iron-ajax auto="" url="{{dataSource}}" handle-as="text" last-response="{{rawData}}" on-response="handleResponse"></iron-ajax>\n    <chartist-render id="chartist" type="pie" scale$="[[scale]]" chart-title$="[[chartTitle]]" chart-desc$="[[chartDesc]]" data$="[[data]]" options$="{{options}}" responsive-options$="[[responsiveOptions]]"></chartist-render>\n'
@@ -15,14 +21,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <iron-ajax auto="" url="{{dataSource}}" handle-as="text" last-response="{{rawData}}" on-response="handleResponse"></iron-ajax>\n    <chartist-render id="chartist" type="pie" scale\\$="[[scale]]" chart-title\\$="[[chartTitle]]" chart-desc\\$="[[chartDesc]]" data\\$="[[data]]" options\\$="{{options}}" responsive-options\\$="[[responsiveOptions]]"></chartist-render>\n'
       ]
     );
-    _templateObject_d20d5fa0ecf311e892c6e511ef2005b8 = function() {
+    _templateObject_283c9070f1e611e8810acbe61bc08cf4 = function _templateObject_283c9070f1e611e8810acbe61bc08cf4() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_d20d5fa0ecf311e892c6e511ef2005b8()
+      _templateObject_283c9070f1e611e8810acbe61bc08cf4()
     ),
     is: "lrndesign-pie",
     behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
@@ -51,14 +57,14 @@ define([
       dataSource: { type: String, notify: !0 },
       rawData: { type: String, notify: !0, value: "" }
     },
-    handleResponse: function handleResponse() {
+    handleResponse: function handleResponse(e) {
       var root = this,
         raw = root.CSVtoArray(root.rawData);
       root.data = { labels: raw[0], series: raw.slice(1, raw.length)[0] };
-      root.$.chartist.makeChart();
+      var chart = root.$.chartist.makeChart();
     },
     attached: function attached() {
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !1,
@@ -225,7 +231,8 @@ define([
             }
           ]
         }
-      });
+      };
+      this.setHaxProperties(props);
     },
     _getOptions: function _getOptions() {
       console.log("getting options");

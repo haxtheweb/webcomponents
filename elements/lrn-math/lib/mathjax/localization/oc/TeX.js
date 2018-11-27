@@ -16,4 +16,9 @@
  *  limitations under the License.
  */
 
-MathJax.Localization.addTranslation("oc","TeX",{version:"2.7.5",isLoaded:true,strings:{}});MathJax.Ajax.loadComplete("[MathJax]/localization/oc/TeX.js");
+MathJax.Localization.addTranslation("oc", "TeX", {
+  version: "2.7.5",
+  isLoaded: true,
+  strings: {}
+});
+MathJax.Ajax.loadComplete("[MathJax]/localization/oc/TeX.js");

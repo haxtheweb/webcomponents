@@ -85,7 +85,7 @@ Polymer({
       this.layout = "tight";
     }
   },
-  rowItemsChanged: function() {},
+  rowItemsChanged: function(items) {},
   handleResponse: function(data) {
     this.assignments = data.response;
   }

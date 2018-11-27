@@ -96,7 +96,7 @@ Polymer({
     return 0 != url.indexOf(root);
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -130,7 +130,8 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
   __updateStyles: function(imageBg) {
     this.updateStyles({ "--parallax-image-background": `url(${imageBg})` });
@@ -138,11 +139,11 @@ Polymer({
   ready: function() {
     const bgParallax = this.$.bgParallax,
       titleParallax = this.$.titleParallax;
-    window.addEventListener("scroll", () => {
-      const yParallaxPosition = -0.2 * window.scrollY;
+    window.addEventListener("scroll", e => {
+      const yParallaxPosition = -0.2 * window.scrollY,
+        yParallaxPositionTitle = 1.4 * yParallaxPosition;
       bgParallax.style.backgroundPosition = `center ${yParallaxPosition}px`;
-      titleParallax.style.transform = `translate3D(0, ${1.4 *
-        yParallaxPosition}px, 0)`;
+      titleParallax.style.transform = `translate3D(0, ${yParallaxPositionTitle}px, 0)`;
     });
   }
 });

@@ -153,7 +153,7 @@ Polymer({
   },
   attached: function() {
     this.__target = this.$.card;
-    this.setHaxProperties({
+    let props = {
       canEditSource: !1,
       gizmo: {
         title: "Accent Card",
@@ -226,12 +226,13 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
   ready: function() {
     this.__target = this.$.card;
   },
-  _handleTap: function() {
+  _handleTap: function(e) {
     let root = this;
     if (!1 !== root.button && !root.disabled) {
       root.fire("accent-card-tap", root);

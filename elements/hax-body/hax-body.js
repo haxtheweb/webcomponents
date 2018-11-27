@@ -687,31 +687,33 @@ Polymer({
     // clean up stray hax-ray leftovers
     content = content.replace(/\sdata-hax-ray=\".*?\"/g, "");
     // remove HAX specific classes / scoping classes
-    let parentTag = this.parentNode.tagName.toLowerCase();
-    let string = "style-scope " + parentTag + " x-scope";
-    let re = new RegExp(string, "g");
-    content = content.replace(re, "");
-    // remove without the deeeper scope as well for primitives
-    string = "style-scope " + parentTag;
-    re = new RegExp(string, "g");
-    content = content.replace(re, "");
-    // remove the last common one unpacked
-    string = "x-scope " + parentTag + "-0";
-    re = new RegExp(string, "g");
-    content = content.replace(re, "");
-    // now all tags we have defined as valid
-    let tags = window.HaxStore.instance.validTagList;
-    tags.push("hax-preview");
-    for (var i in tags) {
-      string = "style-scope " + tags[i];
+    if (this.parentNode.tagName) {
+      let parentTag = this.parentNode.tagName.toLowerCase();
+      let string = "style-scope " + parentTag + " x-scope";
+      let re = new RegExp(string, "g");
+      content = content.replace(re, "");
+      // remove without the deeeper scope as well for primitives
+      string = "style-scope " + parentTag;
       re = new RegExp(string, "g");
       content = content.replace(re, "");
-      string = "x-scope " + tags[i] + "-0 ";
+      // remove the last common one unpacked
+      string = "x-scope " + parentTag + "-0";
       re = new RegExp(string, "g");
       content = content.replace(re, "");
-      string = "x-scope " + tags[i] + "-0";
-      re = new RegExp(string, "g");
-      content = content.replace(re, "");
+      // now all tags we have defined as valid
+      let tags = window.HaxStore.instance.validTagList;
+      tags.push("hax-preview");
+      for (var i in tags) {
+        string = "style-scope " + tags[i];
+        re = new RegExp(string, "g");
+        content = content.replace(re, "");
+        string = "x-scope " + tags[i] + "-0 ";
+        re = new RegExp(string, "g");
+        content = content.replace(re, "");
+        string = "x-scope " + tags[i] + "-0";
+        re = new RegExp(string, "g");
+        content = content.replace(re, "");
+      }
     }
     // remove empty class structures
     content = content.replace(/\sclass=\"\"/g, "");

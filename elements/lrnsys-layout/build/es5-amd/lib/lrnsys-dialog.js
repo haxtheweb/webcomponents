@@ -12,20 +12,34 @@ define([
   "../node_modules/@polymer/iron-icons/iron-icons.js",
   "./lrnsys-dialog-modal.js",
   "./lrnsys-button-inner.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _paperAvatar,
+  _lrnIcons,
+  _simpleColors,
+  _simpleModal,
+  _paperTooltip,
+  _paperButton,
+  _neonAnimation,
+  _neonAnimations,
+  _ironIcons,
+  _lrnsysDialogModal,
+  _lrnsysButtonInner
+) {
   "use strict";
-  function _templateObject_feca50c0ecf311e896b1b122e9a8e20a() {
+  function _templateObject_3a061790f1e611e8b229e5d6dee848e6() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <custom-style>\n    <style is="custom-style" include="simple-colors">\n      :host {\n        display: inline-block;\n        --lrnsys-dialog-color: var(--simple-colors-foreground1,#000);\n        --lrnsys-dialog-background-color: var(--simple-colors-background1);\n        --lrnsys-dialog-toolbar-background-color: var(--simple-colors-background3);\n        --lrnsys-dialog-secondary-background-color: rgba(255,255,255, 0.7);\n      }\n      :host([dark]) {\n        --lrnsys-dialog-toolbar-background-color: var(--simple-colors-background1);\n        --lrnsys-dialog-background-color: var(--simple-colors-background3);\n        --lrnsys-dialog-secondary-background-color: rgba(0, 0, 0, 0.7);\n      }\n      #dialogtrigger {\n        display:inline-block;\n      }\n    </style>\n    </custom-style>\n    <paper-button class$="[[class]]" id="dialogtrigger" on-tap="openDialog" raised="[[raised]]" disabled$="[[disabled]]" title="[[alt]]" aria-label$="[[alt]]">\n      <lrnsys-button-inner avatar$="[[avatar]]" icon$="[[icon]]" text$="[[text]]">\n        <slot name="button" slot="button"></slot>\n      </lrnsys-button-inner>\n    </paper-button>\n    <paper-tooltip for="dialogtrigger" animation-delay="0" hidden$="[[!alt]]">[[alt]]</paper-tooltip>\n'
     ]);
-    _templateObject_feca50c0ecf311e896b1b122e9a8e20a = function() {
+    _templateObject_3a061790f1e611e8b229e5d6dee848e6 = function _templateObject_3a061790f1e611e8b229e5d6dee848e6() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_feca50c0ecf311e896b1b122e9a8e20a()
+      _templateObject_3a061790f1e611e8b229e5d6dee848e6()
     ),
     is: "lrnsys-dialog",
     listeners: {
@@ -47,22 +61,32 @@ define([
       dynamicImages: { type: Boolean, value: !1 },
       focusState: { type: Boolean, value: !1 }
     },
-    tapEventOn: function tapEventOn() {
+    tapEventOn: function tapEventOn(e) {
       var root = this;
-      if (babelHelpers.typeof(root.hoverClass) !== "undefined") {
+      if (
+        babelHelpers.typeof(root.hoverClass) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         var classes = root.hoverClass.split(" ");
-        classes.forEach(function(item) {
+        classes.forEach(function(item, index) {
           if ("" != item) {
             root.$.dialogtrigger.classList.add(item);
           }
         });
       }
     },
-    tapEventOff: function tapEventOff() {
+    tapEventOff: function tapEventOff(e) {
       var root = this;
-      if (babelHelpers.typeof(root.hoverClass) !== "undefined") {
+      if (
+        babelHelpers.typeof(root.hoverClass) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         var classes = root.hoverClass.split(" ");
-        classes.forEach(function(item) {
+        classes.forEach(function(item, index) {
           if ("" != item) {
             root.$.dialogtrigger.classList.remove(item);
           }
@@ -75,7 +99,12 @@ define([
         c = document.createElement("span"),
         node = {};
       for (var i in nodes) {
-        if (babelHelpers.typeof(nodes[i].tagName) !== "undefined") {
+        if (
+          babelHelpers.typeof(nodes[i].tagName) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           switch (nodes[i].getAttribute("slot")) {
             case "toolbar-primary":
             case "toolbar-secondary":
@@ -108,12 +137,17 @@ define([
       });
       this.dispatchEvent(evt);
     },
-    focusToggle: function focusToggle() {
+    focusToggle: function focusToggle(e) {
       var root = this;
       root.fire("focus-changed", { focus: root.focusState });
-      if (babelHelpers.typeof(root.hoverClass) !== "undefined") {
+      if (
+        babelHelpers.typeof(root.hoverClass) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         var classes = root.hoverClass.split(" ");
-        classes.forEach(function(item) {
+        classes.forEach(function(item, index) {
           if ("" != item) {
             if (root.focusState) {
               root.$.dialogtrigger.classList.add(item);

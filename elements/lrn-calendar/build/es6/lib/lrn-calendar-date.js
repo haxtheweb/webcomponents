@@ -6,6 +6,7 @@ import "../node_modules/@polymer/paper-button/paper-button.js";
 import "../node_modules/@polymer/iron-icons/iron-icons.js";
 import "../node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "../node_modules/@polymer/paper-card/paper-card.js";
+import "../node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-drawer.js";
 import "../node_modules/@polymer/iron-ajax/iron-ajax.js";
 Polymer({
   _template: html`
@@ -47,12 +48,12 @@ Polymer({
         <div>
           <template is="dom-if" if="[[firstWeek]]">
             <paper-card class="label">
-            <h3>[[getWeek(date)]]</h3>
+              <h3>[[getWeek(date)]]</h3>
             </paper-card>
           </template>
         </div>
-        <paper-card class$="{{view}}" id="dateHeader">
-            <h5>[[getMonth(date)]]</h5>
+        <paper-card class$="[[view]]" id="dateHeader">
+          <h5>[[getMonth(date)]]</h5>
           <template is="dom-repeat" items="{{events}}">
               <div class="card-content">
                 <lrnsys-drawer text="[[timeString(item.event.startDate._time.hour, item.event.startDate._time.minute, item.event.endDate._time.hour,item.event.endDate._time.minute)]] {{item.event.summary}}" header="[[getDateString(date)]]" align="left" heading-class="orange lighten-3 blue-text text-darken-4" style$="[[computeStyle(item)]];overflow:auto;">
@@ -75,33 +76,32 @@ Polymer({
   },
   getMonth: function(date) {
     var monthInt = date.getMonth(),
-      day = date.getDate();
+      day = date.getDate(),
+      monthsArray = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ];
     if (1 == day) {
-      monthstring =
-        [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec"
-        ][monthInt] +
-        " " +
-        day;
+      monthstring = monthsArray[monthInt] + " " + day;
     } else {
       monthstring = day;
     }
     return monthstring;
   },
   getWeek: function(date) {
-    var weekdays = date.getDay();
-    return ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][weekdays];
+    var weekdays = date.getDay(),
+      weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    return weekArray[weekdays];
   },
   timeString: function(startHour, startMinute, endHour, endMinute) {
     var amPM = 11 < startHour ? "pm" : "am";
@@ -109,7 +109,8 @@ Polymer({
       startHour -= 12;
     } else if (0 == startHour) {
       if (0 == startMinute && 0 == endHour && 0 == endMinute) {
-        return "";
+        var allDayText = "";
+        return allDayText;
       } else {
         startHour = "12";
       }
@@ -130,9 +131,8 @@ Polymer({
   },
   getDateString: function(date) {
     var monthInt = date.getMonth(),
-      day = date.getDate();
-    monthstring =
-      [
+      day = date.getDate(),
+      monthsArray = [
         "January",
         "February",
         "March",
@@ -145,11 +145,9 @@ Polymer({
         "October",
         "November",
         "December"
-      ][monthInt] +
-      " " +
-      date.getDate() +
-      " " +
-      date.getFullYear();
+      ];
+    monthstring =
+      monthsArray[monthInt] + " " + date.getDate() + " " + date.getFullYear();
     return monthstring;
   },
   displayActivity: function(e) {

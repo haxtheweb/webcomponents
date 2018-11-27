@@ -50,13 +50,13 @@ Polymer({
       reflectToAttribute: !0
     }
   },
-  _playButton: function() {
+  _playButton: function(e) {
     if (!this.playing) {
       this.playing = !0;
       this.$.timer.start();
     }
   },
-  _playGame: function(newValue) {
+  _playGame: function(newValue, oldValue) {
     if (newValue) {
       this.__started = !0;
       this.set("tasks", []);
@@ -84,7 +84,7 @@ Polymer({
       );
     }
   },
-  _resetTimer: function() {
+  _resetTimer: function(e) {
     this.$.timer.pause();
     this.playing = !1;
     this.timer = 0;

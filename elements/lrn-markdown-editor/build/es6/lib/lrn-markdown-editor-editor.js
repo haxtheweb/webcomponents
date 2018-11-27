@@ -5,7 +5,7 @@ import {
 import "../node_modules/@lrnwebcomponents/mtz-marked-editor/mtz-marked-editor.js";
 import "../node_modules/@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-wrap.js";
 import "../node_modules/@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-line.js";
-import "../node_modules/@lrnwebcomponents/mtz-marked-editor/lib/controls/mtz-marked-control-link.js";
+import "@lrnwebcomponents/mtz-marked-editor/lib/controls/mtz-marked-control-link.js";
 import "../node_modules/@polymer/iron-icons/editor-icons.js";
 import "../node_modules/@polymer/iron-icons/places-icons.js";
 import "../node_modules/@polymer/iron-icon/iron-icon.js";
@@ -42,7 +42,7 @@ Polymer({
 `,
   is: "lrn-markdown-editor-editor",
   properties: { content: { type: String, notify: !0 } },
-  _changed: function() {
+  _changed: function(e) {
     var content = this.$.markededitor.getContent();
     console.log("changed");
     this.set("content", content);

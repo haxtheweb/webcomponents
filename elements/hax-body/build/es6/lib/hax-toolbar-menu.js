@@ -95,10 +95,10 @@ Polymer({
       observer: "_selectChanged"
     }
   },
-  _selectChanged: function() {
+  _selectChanged: function(e) {
     this.$.button.focus();
   },
-  _menubuttonTap: function() {
+  _menubuttonTap: function(e) {
     this.$.listbox.style.display = "inherit";
     if (this.resetOnSelect) {
       this.selected = "";

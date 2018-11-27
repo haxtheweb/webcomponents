@@ -137,7 +137,7 @@ Polymer({
     return [];
   },
   _getThead: function(data, columnHeader) {
-    this;
+    let root = this;
     if (data !== void 0 && null !== data && 0 < data.length && columnHeader) {
       return data.slice(0, 1);
     }
@@ -188,7 +188,8 @@ Polymer({
     setTimeout(function() {
       for (let i = 0; i < cols.length; i++) {
         let col = cols[i],
-          index = col.cellIndex;
+          index = col.cellIndex,
+          delay;
         if (0 === index || index === selected) {
           col.removeAttribute("xs-hidden");
         } else {

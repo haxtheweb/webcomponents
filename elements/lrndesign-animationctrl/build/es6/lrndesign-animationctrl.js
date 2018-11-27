@@ -30,6 +30,6 @@ Polymer({
   is: "lrndesign-animationctrl",
   properties: {},
   listeners: { "lrndesign-animationctrl-button-click": "_buttonClicked" },
-  _buttonClicked: function() {},
+  _buttonClicked: function(e) {},
   ready: function() {}
 });

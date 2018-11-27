@@ -1,1 +1,1 @@
-define(["./lib/responsive-grid-row.js"],function(){"use strict"});
+define(["./lib/responsive-grid-row.js"],function(_responsiveGridRow){"use strict"});

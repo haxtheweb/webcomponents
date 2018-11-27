@@ -5,9 +5,16 @@ define([
   "../node_modules/@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js",
   "../node_modules/@polymer/iron-icon/iron-icon.js",
   "../node_modules/@polymer/iron-icons/iron-icons.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _lrnsysDialog,
+  _lrnsysDialogToolbarButton,
+  _imgPanZoom,
+  _ironIcon,
+  _ironIcons
+) {
   "use strict";
-  function _templateObject_93069e60ecf411e8b6efa79baa919867() {
+  function _templateObject_7aec9fe0f1e611e8a469df06e35415a9() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style is="custom-style">\n      :host #lrnsysdialog ::slotted(#dialogtrigger){\n        --app-toolbar-primary-color: var(--lrndesign-gallery-focus-color);\n        --app-toolbar-secondary-color: rgba(0, 0, 0, 0.7);\n      }\n\n      :host #lrnsysdialog ::slotted(#dialogtrigger) {\n        \n      }\n      :host #lrnsysdialog ::slotted(#dialogtrigger) {\n        text-align: center; \n        padding: 6px;\n        min-width: 30px; \n        color: var(--lrndesign-gallery-color);\n      }\n      :host #inspector ::slotted(app-toolbar) {\n        padding: 0;\n        margin: 0;\n      }\n      :host #lrnsysdialog ::slotted(#dialogtrigger > lrnsys-button-inner) {\n        width: 30px;\n        line-height: 30px;\n        transition: background-color 1s;\n        color: var(--lrndesign-gallery-color);\n        background-color: var(--lrndesign-gallery-rgba-low);\n        border-radius: 3px;\n      }\n      :host #lrnsysdialog ::slotted(#dialogtrigger > lrnsys-button-inner):focus, \n      :host #lrnsysdialog ::slotted(#dialogtrigger > lrnsys-button-inner):hover {\n        color: var(--lrndesign-gallery-focus-color);\n        background-color: var(--lrndesign-gallery-background-color);\n      }\n      iron-icon {\n        display: inline-block;\n        height: 24px;\n        width: 24px;\n      }\n    </style>\n    <lrnsys-dialog id="lrnsysdialog" dark$="[[dark]]" dynamic-images body-append title$="[[tooltip]]">\n      <span slot="button"><iron-icon icon="[[icon]]" hidden$="[[!_isAttrSet(icon)]]"></iron-icon></span>\n      <div slot="toolbar-primary"><span aria-hidden="true">[[heading]]</span></div>\n      <span slot="toolbar-secondary">\n        <lrnsys-dialog-toolbar-button title="Zoom In" icon="zoom-in" id="in"></lrnsys-dialog-toolbar-button>\n        <lrnsys-dialog-toolbar-button title="Zoom Out" icon="zoom-out" id="out"></lrnsys-dialog-toolbar-button>\n      </span>\n      <div slot="header">\n        <h1 style="position: absolute; left: -99999px; top:-1px; height: 0; width: 0; overflow: auto;">\n          [[heading]]\n        </h1>\n      </div>\n      <div>\n        <img-pan-zoom id="img" alt$="[[zoomAlt]]" src$="[[src]]" max-zoom-pixel-ratio="1.5" min-zoom-image-ratio="0.5" zoom-per-click="1.2" zoom-per-scroll="0.6">\n        </img-pan-zoom>\n        <div id="details"></div> \n      </div>\n    </lrnsys-dialog>\n'
@@ -16,7 +23,7 @@ define([
         '\n    <style is="custom-style">\n      :host #lrnsysdialog ::slotted(#dialogtrigger){\n        --app-toolbar-primary-color: var(--lrndesign-gallery-focus-color);\n        --app-toolbar-secondary-color: rgba(0, 0, 0, 0.7);\n      }\n\n      :host #lrnsysdialog ::slotted(#dialogtrigger) {\n        \n      }\n      :host #lrnsysdialog ::slotted(#dialogtrigger) {\n        text-align: center; \n        padding: 6px;\n        min-width: 30px; \n        color: var(--lrndesign-gallery-color);\n      }\n      :host #inspector ::slotted(app-toolbar) {\n        padding: 0;\n        margin: 0;\n      }\n      :host #lrnsysdialog ::slotted(#dialogtrigger > lrnsys-button-inner) {\n        width: 30px;\n        line-height: 30px;\n        transition: background-color 1s;\n        color: var(--lrndesign-gallery-color);\n        background-color: var(--lrndesign-gallery-rgba-low);\n        border-radius: 3px;\n      }\n      :host #lrnsysdialog ::slotted(#dialogtrigger > lrnsys-button-inner):focus, \n      :host #lrnsysdialog ::slotted(#dialogtrigger > lrnsys-button-inner):hover {\n        color: var(--lrndesign-gallery-focus-color);\n        background-color: var(--lrndesign-gallery-background-color);\n      }\n      iron-icon {\n        display: inline-block;\n        height: 24px;\n        width: 24px;\n      }\n    </style>\n    <lrnsys-dialog id="lrnsysdialog" dark$="[[dark]]" dynamic-images body-append title$="[[tooltip]]">\n      <span slot="button"><iron-icon icon="[[icon]]" hidden$="[[!_isAttrSet(icon)]]"></iron-icon></span>\n      <div slot="toolbar-primary"><span aria-hidden="true">[[heading]]</span></div>\n      <span slot="toolbar-secondary">\n        <lrnsys-dialog-toolbar-button title="Zoom In" icon="zoom-in" id="in"></lrnsys-dialog-toolbar-button>\n        <lrnsys-dialog-toolbar-button title="Zoom Out" icon="zoom-out" id="out"></lrnsys-dialog-toolbar-button>\n      </span>\n      <div slot="header">\n        <h1 style="position: absolute; left: -99999px; top:-1px; height: 0; width: 0; overflow: auto;">\n          [[heading]]\n        </h1>\n      </div>\n      <div>\n        <img-pan-zoom id="img" alt\\$="[[zoomAlt]]" src\\$="[[src]]" max-zoom-pixel-ratio="1.5" min-zoom-image-ratio="0.5" zoom-per-click="1.2" zoom-per-scroll="0.6">\n        </img-pan-zoom>\n        <div id="details"></div> \n      </div>\n    </lrnsys-dialog>\n'
       ]
     );
-    _templateObject_93069e60ecf411e8b6efa79baa919867 = function() {
+    _templateObject_7aec9fe0f1e611e8a469df06e35415a9 = function _templateObject_7aec9fe0f1e611e8a469df06e35415a9() {
       return data;
     };
     return data;
@@ -25,7 +32,7 @@ define([
     babelHelpers.defineProperty(
       {
         _template: (0, _polymerLegacy.html)(
-          _templateObject_93069e60ecf411e8b6efa79baa919867()
+          _templateObject_7aec9fe0f1e611e8a469df06e35415a9()
         ),
         is: "lrndesign-gallery-zoom",
         listeners: { navTap: "_onNavTapped" },
@@ -60,7 +67,7 @@ define([
         toggleDialog: function toggleDialog() {
           this.$.lrnsysdialog.openDialog();
         },
-        _detailsChanged: function _detailsChanged() {
+        _detailsChanged: function _detailsChanged(e) {
           this.$.details.innerHTML = this.details;
         },
         _dialogChanged: function _dialogChanged(e) {

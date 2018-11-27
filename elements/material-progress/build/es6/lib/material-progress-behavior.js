@@ -159,7 +159,7 @@ window.MaterialProgressBehaviorImpl = {
     }
     return meta;
   },
-  _getWidthForBar: function() {
+  _getWidthForBar: function(barValue, barValuesSum, maxBarValue, barHeight) {
     return "0px";
   },
   _playFirstAnimation: function(node, index, animationDelay) {

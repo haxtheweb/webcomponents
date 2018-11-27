@@ -30,7 +30,7 @@ define(["exports"], function(_exports) {
       babelHelpers.classCallCheck(this, Hexagon);
       _this = babelHelpers.possibleConstructorReturn(
         this,
-        (Hexagon.__proto__ || Object.getPrototypeOf(Hexagon)).call(this)
+        babelHelpers.getPrototypeOf(Hexagon).call(this)
       );
       _this.tag = Hexagon.tag;
       _this._queue = [];
@@ -124,7 +124,7 @@ define(["exports"], function(_exports) {
       }
     ]);
     return Hexagon;
-  })(HTMLElement);
+  })(babelHelpers.wrapNativeSuper(HTMLElement));
   _exports.Hexagon = Hexagon;
   window.customElements.define(Hexagon.tag, Hexagon);
 });

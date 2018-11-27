@@ -17,43 +17,47 @@
  *  limitations under the License.
  *
  */
-MathJax.Localization.addTranslation("it",null,{
+MathJax.Localization.addTranslation("it", null, {
   menuTitle: "italiano",
   version: "2.7.5",
   isLoaded: true,
   domains: {
-    "_": {
-        version: "2.7.5",
-        isLoaded: true,
-        strings: {
-          CookieConfig: "MathJax ha trovato un cookie di configurazione utente che include del codice eseguibile. Vuoi eseguirlo?\n\n(Premi Annulla a meno che non l'abbia effettivamente impostato tu.)",
-          MathProcessingError: "Errore elaborazione della formula",
-          MathError: "Errore nella formula",
-          LoadFile: "Caricamento %1",
-          Loading: "Caricamento",
-          LoadFailed: "Caricamento del file fallito: %1",
-          ProcessMath: "Elaborazione formula: %1%%",
-          Processing: "Elaborazione in corso",
-          TypesetMath: "Composizione della formula: %1%%",
-          Typesetting: "Composizione",
-          MathJaxNotSupported: "Il tuo browser non supporta MathJax",
-          ErrorTips: "Suggerimenti per il debug: utilizza %%1, ispeziona %%2 nella console del browser"
-        }
+    _: {
+      version: "2.7.5",
+      isLoaded: true,
+      strings: {
+        CookieConfig:
+          "MathJax ha trovato un cookie di configurazione utente che include del codice eseguibile. Vuoi eseguirlo?\n\n(Premi Annulla a meno che non l'abbia effettivamente impostato tu.)",
+        MathProcessingError: "Errore elaborazione della formula",
+        MathError: "Errore nella formula",
+        LoadFile: "Caricamento %1",
+        Loading: "Caricamento",
+        LoadFailed: "Caricamento del file fallito: %1",
+        ProcessMath: "Elaborazione formula: %1%%",
+        Processing: "Elaborazione in corso",
+        TypesetMath: "Composizione della formula: %1%%",
+        Typesetting: "Composizione",
+        MathJaxNotSupported: "Il tuo browser non supporta MathJax",
+        ErrorTips:
+          "Suggerimenti per il debug: utilizza %%1, ispeziona %%2 nella console del browser"
+      }
     },
-    "FontWarnings": {},
+    FontWarnings: {},
     "HTML-CSS": {},
-    "HelpDialog": {},
-    "MathML": {},
-    "MathMenu": {},
-    "TeX": {}
+    HelpDialog: {},
+    MathML: {},
+    MathMenu: {},
+    TeX: {}
   },
-  plural: function (n) {
-      if (n === 1) {return 1} // one
-      return 2; // other
-    },
-  number: function (n) {
-      return n;
-    }
+  plural: function(n) {
+    if (n === 1) {
+      return 1;
+    } // one
+    return 2; // other
+  },
+  number: function(n) {
+    return n;
+  }
 });
 
 MathJax.Ajax.loadComplete("[MathJax]/localization/it/it.js");

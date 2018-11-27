@@ -3,6 +3,8 @@ import {
   Polymer
 } from "../node_modules/@polymer/polymer/polymer-legacy.js";
 import "../node_modules/@polymer/paper-card/paper-card.js";
+import "../node_modules/@polymer/iron-icon/iron-icon.js";
+import "../node_modules/@polymer/iron-image/iron-image.js";
 Polymer({
   _template: html`
     <style>
@@ -147,13 +149,12 @@ Polymer({
   is: "site-card",
   listeners: {
     mouseover: "_mouseEnter",
-    focusin: "_mouseEnter",
     mousedown: "_mouseEnter",
     mouseleave: "_mouseLeave",
     mouseout: "_mouseLeave",
+    focusin: "_mouseEnter",
     focusout: "_mouseLeave"
   },
-  hostAttributes: { tabindex: "0" },
   properties: {
     size: { type: String, reflectToAttribute: !0 },
     image: { type: String },
@@ -162,7 +163,7 @@ Polymer({
     title: { type: String, value: "" },
     elevation: { type: Number, value: 1, reflectToAttribute: !0 }
   },
-  _mouseEnter: function() {
+  _mouseEnter: function(e) {
     this.__oldElevation = this.elevation;
     if (5 < this.elevation + 2) {
       this.elevation = 5;
@@ -170,7 +171,7 @@ Polymer({
       this.elevation += 2;
     }
   },
-  _mouseLeave: function() {
+  _mouseLeave: function(e) {
     this.elevation = this.__oldElevation;
   }
 });

@@ -15,9 +15,26 @@ define([
   "./hax-preview.js",
   "./hax-app-browser.js",
   "./hax-gizmo-browser.js"
-], function(_polymerLegacy, _polymerDom) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _appDrawer,
+  _paperInput,
+  _paperStyles,
+  _paperButton,
+  _paperIconButton,
+  _ironPages,
+  _ironIcons,
+  _ironIcon,
+  _simpleColors,
+  _vaadinUpload,
+  _materializecssStyles,
+  _haxPreview,
+  _haxAppBrowser,
+  _haxGizmoBrowser
+) {
   "use strict";
-  function _templateObject_a3f22c70ee0311e8bb61cd2eef6a9bf2() {
+  function _templateObject_97639ca0f1e611e8b3a2e3a031c18fd0() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n  <custom-style>\n    <style is="custom-style" include="materializecss-styles">\n      :host {\n        display: block;\n        --hax-manager-steps-color: #FFFFFF;\n        --hax-manager-ink-color: #FFFFFF;\n        --hax-accent: var(--simple-colors-light-green-background1);\n        color: #FFFFFF;\n      }\n      #dialog {\n        color: #FFFFFF;\n        z-index: 10000;\n        padding: 56px 0;\n        margin-top: 64px;\n        --app-drawer-width: 400px;\n        --app-drawer-content-container: {\n          background-color: rgba(0, 0, 0, 0.7);\n        };\n      }\n      #closedialog {\n        float: right;\n        top: 135px;\n        right: 0;\n        position: absolute;\n        padding: 4px;\n        margin: 0;\n        color: var(--simple-colors-light-green-background1, green);\n        background-color: transparent;\n        width: 40px;\n        height: 40px;\n        min-width: unset;\n      }\n      :host([active-page="0"]) #dialog {\n        --app-drawer-width: 400px;\n      }\n      :host([active-page="1"]) #dialog {\n        --app-drawer-width: 800px;\n      }\n      :host([active-page="2"]) #dialog {\n        --app-drawer-width: 800px;\n      }\n      :host([active-step]) #dialog {\n        --app-drawer-width: 1000px;\n      }\n      :host([searching]) #dialog {\n        --app-drawer-width: 1000px;\n      }\n      .title {\n        text-align: center;\n        padding: 16px;\n        margin: 0;\n        background-color: rgba(0, 0, 0, 0.5);\n        font-size: 32px;\n        font-weight: bold;\n        font-family: sans-serif;\n        text-transform: uppercase;\n        color: var(--simple-colors-light-green-background1);\n      }\n      #activepage {\n      }\n      #preview {\n        height: 100%;\n      }\n      vaadin-upload {\n        --primary-color: var(--hax-accent);\n        --primary-font-color: #FFFFFF;\n        --dark-primary-color: #FFFFFF;\n        --light-primary-color: var(--hax-accent);\n        --error-color: darkred;\n        color: #FFFFFF;\n        display: block;\n        padding: 32px !important;\n        --vaadin-upload-button-add-wrapper: {\n          border: 2px solid #FFFFFF;\n          background-color: var(--hax-accent);\n          color: #FFFFFF;\n          display: block;\n        };\n        --vaadin-upload-buttons-primary: {\n          display: block;\n          width: 100%;\n          flex: unset;\n          -webkit-flex: unset;\n        };\n        --vaadin-upload-button-add: {\n          color: #000000;\n          display: block;\n          flex: unset;\n          -webkit-flex: unset;\n          text-align: center;\n        };\n        --vaadin-upload-drop-label: {\n          color: #FFFFFF;\n          display: block;\n          padding: 16px;\n        };\n        --vaadin-upload-drop-label-dragover: {\n          color: #FFFFFF;\n        };\n        --vaadin-upload-file-list: {\n          padding: 16px;\n          margin: 0;\n          color: #FFFFFF;\n        };\n        --vaadin-upload-file: {\n          color: #FFFFFF;\n        };\n      }\n      vaadin-upload[dragover] {\n        border-color: #396;\n      }\n      vaadin-upload-file {\n        --disabled-text-color: #222222;\n      }\n      .add-area-content-wrapper {\n        padding: 0 16px;\n      }\n      .add-url-are,\n      .add-upload-area {\n        margin: 16px 0;\n      }\n      .url-description {\n        font-size: 18px;\n        color: #FFFFFF;\n        line-height: 22px;\n        font-family: sans-serif;\n        letter-spacing: 1px;\n      }\n      #steppages {\n        height: 100%;\n      }\n      #newassetconfigure {\n        width: 100%;\n        margin: 0;\n        padding: 16px;\n        background-color: var(--simple-colors-light-green-background1);\n        color: #000000;\n      }\n      paper-input {\n        color: #FFFFFF;\n        --paper-input-container-invalid-color: var(--simple-colors-red-foreground3);\n        --secondary-text-color: #FFFFFF;\n        --primary-text-color: #FFFFFF;\n        --paper-input-container-input-color: #FFFFFF;\n        --paper-input-container-color: #FFFFFF;\n        --paper-input-container-focus-color: var(--simple-colors-light-green-background1);\n      }\n      @media screen and (max-width: 550px) {\n        .hide-on-mobile {\n          opacity: 0;\n          visibility: hidden;\n          position: absolute;\n          left: -9999px;\n        }\n        .page-area.hax-manager {\n          padding: 6px;\n        }\n      }\n    </style>\n  </custom-style>\n    <app-drawer id="dialog" opened="{{opened}}" disable-swipe="">\n      <div class="dialog-contents" id="dialogcontent" style="height: 100%; overflow: auto;">\n        <iron-pages id="steppages" selected="{{activeStep}}" fallback-selection="select" role="main">\n          <div data-value="select">\n            <iron-pages id="activepage" selected="{{activePage}}" fallback-selection="link">\n              <div class="page-area add-area">\n                <h3 class="title">[[addTitle]]</h3>\n                <div class="add-area-content-wrapper">\n                  <div class="add-url-area">\n                    <paper-input id="url" label="URL" type="url" auto-validate=""></paper-input>\n                  <div class="url-description">A full URL with https:// referencing a link that already exists on the web.</div>\n                  </div>\n                  <div class="add-upload-area">\n                    <vaadin-upload form-data-name="file-upload" id="fileupload" hidden$="[[!canSupportUploads]]"></vaadin-upload>\n                  </div>\n                  <paper-button id="newassetconfigure" raised="">Configure item</paper-button>\n                </div>\n              </div>\n              <div class="page-area">\n                <hax-app-browser id="appbrowser">\n                  <slot></slot>\n                </hax-app-browser>\n              </div>\n              <div class="page-area">\n                <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>\n              </div>\n            </iron-pages>\n          </div>\n          <div style="height:100%;">\n            <hax-preview id="preview" element="{{activeHaxElement}}"></hax-preview>\n          </div>\n        </iron-pages>\n        <paper-button id="closedialog" on-tap="cancel">\n          <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>\n        </paper-button>\n      </div>\n    </app-drawer>\n'
@@ -26,14 +43,14 @@ define([
         '\n  <custom-style>\n    <style is="custom-style" include="materializecss-styles">\n      :host {\n        display: block;\n        --hax-manager-steps-color: #FFFFFF;\n        --hax-manager-ink-color: #FFFFFF;\n        --hax-accent: var(--simple-colors-light-green-background1);\n        color: #FFFFFF;\n      }\n      #dialog {\n        color: #FFFFFF;\n        z-index: 10000;\n        padding: 56px 0;\n        margin-top: 64px;\n        --app-drawer-width: 400px;\n        --app-drawer-content-container: {\n          background-color: rgba(0, 0, 0, 0.7);\n        };\n      }\n      #closedialog {\n        float: right;\n        top: 135px;\n        right: 0;\n        position: absolute;\n        padding: 4px;\n        margin: 0;\n        color: var(--simple-colors-light-green-background1, green);\n        background-color: transparent;\n        width: 40px;\n        height: 40px;\n        min-width: unset;\n      }\n      :host([active-page="0"]) #dialog {\n        --app-drawer-width: 400px;\n      }\n      :host([active-page="1"]) #dialog {\n        --app-drawer-width: 800px;\n      }\n      :host([active-page="2"]) #dialog {\n        --app-drawer-width: 800px;\n      }\n      :host([active-step]) #dialog {\n        --app-drawer-width: 1000px;\n      }\n      :host([searching]) #dialog {\n        --app-drawer-width: 1000px;\n      }\n      .title {\n        text-align: center;\n        padding: 16px;\n        margin: 0;\n        background-color: rgba(0, 0, 0, 0.5);\n        font-size: 32px;\n        font-weight: bold;\n        font-family: sans-serif;\n        text-transform: uppercase;\n        color: var(--simple-colors-light-green-background1);\n      }\n      #activepage {\n      }\n      #preview {\n        height: 100%;\n      }\n      vaadin-upload {\n        --primary-color: var(--hax-accent);\n        --primary-font-color: #FFFFFF;\n        --dark-primary-color: #FFFFFF;\n        --light-primary-color: var(--hax-accent);\n        --error-color: darkred;\n        color: #FFFFFF;\n        display: block;\n        padding: 32px !important;\n        --vaadin-upload-button-add-wrapper: {\n          border: 2px solid #FFFFFF;\n          background-color: var(--hax-accent);\n          color: #FFFFFF;\n          display: block;\n        };\n        --vaadin-upload-buttons-primary: {\n          display: block;\n          width: 100%;\n          flex: unset;\n          -webkit-flex: unset;\n        };\n        --vaadin-upload-button-add: {\n          color: #000000;\n          display: block;\n          flex: unset;\n          -webkit-flex: unset;\n          text-align: center;\n        };\n        --vaadin-upload-drop-label: {\n          color: #FFFFFF;\n          display: block;\n          padding: 16px;\n        };\n        --vaadin-upload-drop-label-dragover: {\n          color: #FFFFFF;\n        };\n        --vaadin-upload-file-list: {\n          padding: 16px;\n          margin: 0;\n          color: #FFFFFF;\n        };\n        --vaadin-upload-file: {\n          color: #FFFFFF;\n        };\n      }\n      vaadin-upload[dragover] {\n        border-color: #396;\n      }\n      vaadin-upload-file {\n        --disabled-text-color: #222222;\n      }\n      .add-area-content-wrapper {\n        padding: 0 16px;\n      }\n      .add-url-are,\n      .add-upload-area {\n        margin: 16px 0;\n      }\n      .url-description {\n        font-size: 18px;\n        color: #FFFFFF;\n        line-height: 22px;\n        font-family: sans-serif;\n        letter-spacing: 1px;\n      }\n      #steppages {\n        height: 100%;\n      }\n      #newassetconfigure {\n        width: 100%;\n        margin: 0;\n        padding: 16px;\n        background-color: var(--simple-colors-light-green-background1);\n        color: #000000;\n      }\n      paper-input {\n        color: #FFFFFF;\n        --paper-input-container-invalid-color: var(--simple-colors-red-foreground3);\n        --secondary-text-color: #FFFFFF;\n        --primary-text-color: #FFFFFF;\n        --paper-input-container-input-color: #FFFFFF;\n        --paper-input-container-color: #FFFFFF;\n        --paper-input-container-focus-color: var(--simple-colors-light-green-background1);\n      }\n      @media screen and (max-width: 550px) {\n        .hide-on-mobile {\n          opacity: 0;\n          visibility: hidden;\n          position: absolute;\n          left: -9999px;\n        }\n        .page-area.hax-manager {\n          padding: 6px;\n        }\n      }\n    </style>\n  </custom-style>\n    <app-drawer id="dialog" opened="{{opened}}" disable-swipe="">\n      <div class="dialog-contents" id="dialogcontent" style="height: 100%; overflow: auto;">\n        <iron-pages id="steppages" selected="{{activeStep}}" fallback-selection="select" role="main">\n          <div data-value="select">\n            <iron-pages id="activepage" selected="{{activePage}}" fallback-selection="link">\n              <div class="page-area add-area">\n                <h3 class="title">[[addTitle]]</h3>\n                <div class="add-area-content-wrapper">\n                  <div class="add-url-area">\n                    <paper-input id="url" label="URL" type="url" auto-validate=""></paper-input>\n                  <div class="url-description">A full URL with https:// referencing a link that already exists on the web.</div>\n                  </div>\n                  <div class="add-upload-area">\n                    <vaadin-upload form-data-name="file-upload" id="fileupload" hidden\\$="[[!canSupportUploads]]"></vaadin-upload>\n                  </div>\n                  <paper-button id="newassetconfigure" raised="">Configure item</paper-button>\n                </div>\n              </div>\n              <div class="page-area">\n                <hax-app-browser id="appbrowser">\n                  <slot></slot>\n                </hax-app-browser>\n              </div>\n              <div class="page-area">\n                <hax-gizmo-browser id="gizmobrowser"></hax-gizmo-browser>\n              </div>\n            </iron-pages>\n          </div>\n          <div style="height:100%;">\n            <hax-preview id="preview" element="{{activeHaxElement}}"></hax-preview>\n          </div>\n        </iron-pages>\n        <paper-button id="closedialog" on-tap="cancel">\n          <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>\n        </paper-button>\n      </div>\n    </app-drawer>\n'
       ]
     );
-    _templateObject_a3f22c70ee0311e8bb61cd2eef6a9bf2 = function() {
+    _templateObject_97639ca0f1e611e8b3a2e3a031c18fd0 = function _templateObject_97639ca0f1e611e8b3a2e3a031c18fd0() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_a3f22c70ee0311e8bb61cd2eef6a9bf2()
+      _templateObject_97639ca0f1e611e8b3a2e3a031c18fd0()
     ),
     is: "hax-manager",
     behaviors: [simpleColorsBehaviors],
@@ -149,14 +166,17 @@ define([
         this._fileUploadResponse.bind(this)
       );
     },
-    togglePanelSize: function togglePanelSize() {
+    togglePanelSize: function togglePanelSize(e) {
       this.$.dialog.classList.toggle("grow");
       this.updateStyles();
       window.dispatchEvent(new Event("resize"));
     },
     _computeEditTitle: function _computeEditTitle(updateExisting) {
       if (
-        babelHelpers.typeof(this.activeHaxElement) !== "undefined" &&
+        babelHelpers.typeof(this.activeHaxElement) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         updateExisting
       ) {
         return "Update";
@@ -205,7 +225,10 @@ define([
         requestEndPoint += "/";
       }
       if (
-        babelHelpers.typeof(connection.operations.add.endPoint) !== "undefined"
+        babelHelpers.typeof(connection.operations.add.endPoint) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
       ) {
         requestEndPoint += connection.operations.add.endPoint;
       }
@@ -228,7 +251,9 @@ define([
         item = {};
       if (
         babelHelpers.typeof(this._resolveObjectPath(map.item, response)) !==
-        "undefined"
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
       ) {
         data = this._resolveObjectPath(map.item, response);
       }
@@ -237,19 +262,35 @@ define([
         item[prop] = this._resolveObjectPath(map.gizmo[prop], data);
       }
       if (
-        babelHelpers.typeof(item.url) === "undefined" &&
-        babelHelpers.typeof(item.source) !== "undefined"
+        babelHelpers.typeof(item.url) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
+        babelHelpers.typeof(item.source) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
       ) {
         item.url = item.source;
       }
-      if (babelHelpers.typeof(map.gizmo.type) !== "undefined") {
+      if (
+        babelHelpers.typeof(map.gizmo.type) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         item.type = this._resolveObjectPath(map.gizmo.type, data);
       }
       this.$.url.value = item.url;
       this.newAssetConfigure();
     },
-    _activePageChanged: function _activePageChanged(newValue) {
-      if (babelHelpers.typeof(newValue) !== "undefined") {
+    _activePageChanged: function _activePageChanged(newValue, oldValue) {
+      if (
+        babelHelpers.typeof(newValue) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         this.searching = !1;
         this.updateStyles();
         if (1 === newValue) {
@@ -262,7 +303,10 @@ define([
     _haxStorePropertyUpdated: function _haxStorePropertyUpdated(e) {
       if (
         e.detail &&
-        babelHelpers.typeof(e.detail.value) !== "undefined" &&
+        babelHelpers.typeof(e.detail.value) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         e.detail.property
       ) {
         this.set(e.detail.property, e.detail.value);
@@ -272,9 +316,19 @@ define([
       newValue,
       oldValue
     ) {
-      if (babelHelpers.typeof(oldValue) !== "undefined") {
+      if (
+        babelHelpers.typeof(oldValue) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         this.$.preview.advancedForm = !1;
-        if (babelHelpers.typeof(newValue.tag) === "undefined") {
+        if (
+          babelHelpers.typeof(newValue.tag) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           this.resetManager();
         } else {
           this.$.fileupload.set("files", []);
@@ -283,11 +337,16 @@ define([
         }
       }
     },
-    insertHaxElement: function insertHaxElement() {
+    insertHaxElement: function insertHaxElement(e) {
       var previewNode = this.$.preview.previewNode,
         element = window.HaxStore.nodeToHaxElement(previewNode);
       element.replace = this.editExistingNode;
-      if (babelHelpers.typeof(this.activeHaxElement.__type) !== "undefined") {
+      if (
+        babelHelpers.typeof(this.activeHaxElement.__type) !==
+        ("undefined" === typeof void 0
+          ? "undefined"
+          : babelHelpers.typeof(void 0))
+      ) {
         element.__type = this.activeHaxElement.__type;
       }
       element.replacement = previewNode;
@@ -316,7 +375,7 @@ define([
       this.$.fileupload.target = "";
       this.__allowUpload = !1;
     },
-    cancel: function cancel() {
+    cancel: function cancel(e) {
       this.close();
     },
     _openedChanged: function _openedChanged(newValue, oldValue) {
@@ -330,7 +389,10 @@ define([
       var normalizedEvent = (0, _polymerDom.dom)(e),
         local = normalizedEvent.localTarget;
       if (
-        babelHelpers.typeof(e) === "undefined" ||
+        babelHelpers.typeof(e) ===
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) ||
         local === this.$.dialog ||
         local === this.$.closedialog
       ) {
@@ -339,7 +401,7 @@ define([
         this.resetManager();
       }
     },
-    open: function open() {
+    open: function open(e) {
       this.opened = !0;
     },
     newAssetConfigure: function newAssetConfigure() {
@@ -348,7 +410,12 @@ define([
         haxElements = window.HaxStore.guessGizmo(type, values);
       if (0 < haxElements.length) {
         if (1 === haxElements.length) {
-          if (babelHelpers.typeof(haxElements[0].tag) !== "undefined") {
+          if (
+            babelHelpers.typeof(haxElements[0].tag) !==
+            ("undefined" === typeof void 0
+              ? "undefined"
+              : babelHelpers.typeof(void 0))
+          ) {
             window.HaxStore.write("activeHaxElement", haxElements[0], this);
           }
         } else {
@@ -381,7 +448,7 @@ define([
         this.activeStep = !1;
       }
     },
-    _activeStepChanged: function _activeStepChanged(newValue) {
+    _activeStepChanged: function _activeStepChanged(newValue, oldValue) {
       if (newValue || !newValue) {
         this.updateStyles();
         window.dispatchEvent(new Event("resize"));

@@ -104,7 +104,7 @@ exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-
       this.opened = !0;
     }, 100);
   }
-  animationEnded() {
+  animationEnded(e) {
     if (!this.opened) {
       if (this.invokedBy) {
         setTimeout(() => {
@@ -120,7 +120,7 @@ exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-
   close() {
     this.$.dialog.close();
   }
-  _openedChanged(newValue) {
+  _openedChanged(newValue, oldValue) {
     if (typeof newValue !== typeof void 0 && !newValue) {
       this.animationEnded();
     }

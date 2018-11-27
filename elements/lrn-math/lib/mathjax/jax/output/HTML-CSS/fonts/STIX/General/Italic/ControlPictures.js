@@ -16,4 +16,10 @@
  *  limitations under the License.
  */
 
-MathJax.Hub.Insert(MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS["STIXGeneral-italic"],{9251:[16,120,500,40,460]});MathJax.Ajax.loadComplete(MathJax.OutputJax["HTML-CSS"].fontDir+"/General/Italic/ControlPictures.js");
+MathJax.Hub.Insert(
+  MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS["STIXGeneral-italic"],
+  { 9251: [16, 120, 500, 40, 460] }
+);
+MathJax.Ajax.loadComplete(
+  MathJax.OutputJax["HTML-CSS"].fontDir + "/General/Italic/ControlPictures.js"
+);

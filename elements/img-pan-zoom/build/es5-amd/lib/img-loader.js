@@ -2,18 +2,18 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
   _polymerLegacy
 ) {
   "use strict";
-  function _templateObject_c9556350ecf111e89ab8dfdb6345a05e() {
+  function _templateObject_854f62d0f1e411e88ecb3726e99983d3() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <img id="img" hidden="" src="[[src]]">\n'
     ]);
-    _templateObject_c9556350ecf111e89ab8dfdb6345a05e = function() {
+    _templateObject_854f62d0f1e411e88ecb3726e99983d3 = function _templateObject_854f62d0f1e411e88ecb3726e99983d3() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_c9556350ecf111e89ab8dfdb6345a05e()
+      _templateObject_854f62d0f1e411e88ecb3726e99983d3()
     ),
     is: "img-loader",
     properties: {
@@ -39,7 +39,7 @@ define(["../node_modules/@polymer/polymer/polymer-legacy.js"], function(
       }.bind(this);
       this._resolvedSrc = "";
     },
-    _srcChanged: function _srcChanged(newSrc) {
+    _srcChanged: function _srcChanged(newSrc, oldSrc) {
       var newResolvedSrc = this._resolveSrc(newSrc);
       if (newResolvedSrc === this._resolvedSrc) return;
       this._resolvedSrc = newResolvedSrc;

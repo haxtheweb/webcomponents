@@ -8,9 +8,19 @@ define([
   "./editable-table-sort.js",
   "./editable-table-filter.js",
   "./editable-table-styles.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _dropdownSelect,
+  _paperItem,
+  _simpleColors,
+  _responsiveUtilityBehaviors,
+  _editableTableBehaviors,
+  _editableTableSort,
+  _editableTableFilter,
+  _editableTableStyles
+) {
   "use strict";
-  function _templateObject_922386d0ecf311e89cb22b61cebc916e() {
+  function _templateObject_04bfa240f1e611e8bd08675227bfaebf() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style is="custom-style" include="editable-table-styles">\n      :host([dark]) .caption {\n        padding: 4px 4px 0;\n      }\n      :host([bordered]) .table .th,\n      :host([bordered]) .table .td {\n        border: 1px solid var(--editable-table-border-color);\n      }\n      :host([striped]) .table .tbody .tr:nth-child(2n) .th,\n      :host([striped]) .table .tbody .tr:nth-child(2n) .td {\n        @apply --editable-table-style-stripe;\n      }\n      :host([column-header]) .table .thead .tr .th {\n        @apply --editable-table-style-column-header;\n      }\n      :host([row-header]) .table .tbody .tr .th {\n        @apply --editable-table-style-row-header;\n      }\n      :host([footer]) .table .tfoot .tr .th, \n      :host([footer]) .table .tfoot .tr .td {\n        @apply --editable-table-style-footer;\n      }\n    </style>\n    <table id="table" class="table" default-xs-display="">\n      <caption class="caption">\n        <div>\n          <div>[[caption]]</div>\n          <dropdown-select id="column" label$="[[tables.0.label]]" value="1">\n            <template is="dom-repeat" items$="[[thead.0]]" as="col" index-as="index">\n              <template is="dom-if" if="[[columnHeader]]">\n                <paper-item id$="[[index]]" value$="[[index]]">[[col]]</paper-item>\n              </template>\n              <template is="dom-if" if="[[!columnHeader]]">\n                <paper-item id$="[[index]]">Column [[index]]</paper-item>\n              </template>\n            </template>\n          </dropdown-select>\n        </div>\n      </caption>\n      <thead class="thead" hidden="[[!columnHeader]]"> \n        <tr class="tr">\n          <template is="dom-repeat" items$="[[thead.0]]" as="th" index-as="index">\n            <th class="th" scope="col" numeric$="[[_isNumericColumn(index)]]">\n              <template is="dom-if" if="[[sort]]" restamp=""> \n                <editable-table-sort sort-column$="[[sortColumn]]" column-number="[[index]]" text$="[[th]]"></editable-table-sort>\n              </template>\n              <template is="dom-if" if="[[!sort]]" restamp="">[[th]]</template>\n            </th>\n          </template>\n        </tr> \n      </thead>\n      <tbody id="tbody" class="tbody"> \n        <template is="dom-repeat" items$="[[tbody]]" as="tr" filter="{{filterRows(filterColumn,filterText)}}" restamp="">\n          <tr class="tr">\n            <template is="dom-repeat" items$="[[tr]]" as="cell" index-as="index" restamp="">\n              <template is="dom-if" if="[[_isRowHeader(rowHeader,index)]]" restamp="">\n                <th class="th" scope="row" numeric$="[[_isNumericColumn(index)]]">[[cell]]</th>\n              </template>\n              <template is="dom-if" if="[[!_isRowHeader(rowHeader,index)]]" restamp="">\n                <td class="td" numeric$="[[_isNumericColumn(index)]]" negative$="[[_isNegative(cell)]]">\n                  <template is="dom-if" if="[[filter]]" restamp="">\n                    <editable-table-filter column-number="[[index]]" text$="[[cell]]" filtered$="[[_isFiltered(index,filterColumn,filtered)]]"></editable-table-filter>                      \n                  </template>\n                  <template is="dom-if" if="[[!filter]]" restamp=""><span class="cell">[[cell]]</span></template>\n                </td>\n              </template>\n            </template>\n          </tr> \n        </template>\n      </tbody>\n      <template is="dom-if" if="[[footer]]">\n        <tfoot class="tfoot">\n          <tr class="tr">\n            <template is="dom-repeat" items$="[[__tfoot.0]]" as="cell" index-as="index">\n              <template is="dom-if" if="[[_isRowHeader(rowHeader,index)]]">\n                <th class="th" scope="row" numeric$="[[_isNumericColumn(index)]]">[[cell]]</th>\n              </template>\n              <template is="dom-if" if="[[!_isRowHeader(rowHeader,index)]]">\n                <td class="td" numeric$="[[_isNumericColumn(index)]]" negative$="[[_isNegative(cell)]]">[[cell]]</td>\n              </template>\n            </template>\n          </tr> \n        </tfoot>\n      </template>\n    </table>\n'
@@ -19,14 +29,14 @@ define([
         '\n    <style is="custom-style" include="editable-table-styles">\n      :host([dark]) .caption {\n        padding: 4px 4px 0;\n      }\n      :host([bordered]) .table .th,\n      :host([bordered]) .table .td {\n        border: 1px solid var(--editable-table-border-color);\n      }\n      :host([striped]) .table .tbody .tr:nth-child(2n) .th,\n      :host([striped]) .table .tbody .tr:nth-child(2n) .td {\n        @apply --editable-table-style-stripe;\n      }\n      :host([column-header]) .table .thead .tr .th {\n        @apply --editable-table-style-column-header;\n      }\n      :host([row-header]) .table .tbody .tr .th {\n        @apply --editable-table-style-row-header;\n      }\n      :host([footer]) .table .tfoot .tr .th, \n      :host([footer]) .table .tfoot .tr .td {\n        @apply --editable-table-style-footer;\n      }\n    </style>\n    <table id="table" class="table" default-xs-display="">\n      <caption class="caption">\n        <div>\n          <div>[[caption]]</div>\n          <dropdown-select id="column" label\\$="[[tables.0.label]]" value="1">\n            <template is="dom-repeat" items\\$="[[thead.0]]" as="col" index-as="index">\n              <template is="dom-if" if="[[columnHeader]]">\n                <paper-item id\\$="[[index]]" value\\$="[[index]]">[[col]]</paper-item>\n              </template>\n              <template is="dom-if" if="[[!columnHeader]]">\n                <paper-item id\\$="[[index]]">Column [[index]]</paper-item>\n              </template>\n            </template>\n          </dropdown-select>\n        </div>\n      </caption>\n      <thead class="thead" hidden="[[!columnHeader]]"> \n        <tr class="tr">\n          <template is="dom-repeat" items\\$="[[thead.0]]" as="th" index-as="index">\n            <th class="th" scope="col" numeric\\$="[[_isNumericColumn(index)]]">\n              <template is="dom-if" if="[[sort]]" restamp=""> \n                <editable-table-sort sort-column\\$="[[sortColumn]]" column-number="[[index]]" text\\$="[[th]]"></editable-table-sort>\n              </template>\n              <template is="dom-if" if="[[!sort]]" restamp="">[[th]]</template>\n            </th>\n          </template>\n        </tr> \n      </thead>\n      <tbody id="tbody" class="tbody"> \n        <template is="dom-repeat" items\\$="[[tbody]]" as="tr" filter="{{filterRows(filterColumn,filterText)}}" restamp="">\n          <tr class="tr">\n            <template is="dom-repeat" items\\$="[[tr]]" as="cell" index-as="index" restamp="">\n              <template is="dom-if" if="[[_isRowHeader(rowHeader,index)]]" restamp="">\n                <th class="th" scope="row" numeric\\$="[[_isNumericColumn(index)]]">[[cell]]</th>\n              </template>\n              <template is="dom-if" if="[[!_isRowHeader(rowHeader,index)]]" restamp="">\n                <td class="td" numeric\\$="[[_isNumericColumn(index)]]" negative\\$="[[_isNegative(cell)]]">\n                  <template is="dom-if" if="[[filter]]" restamp="">\n                    <editable-table-filter column-number="[[index]]" text\\$="[[cell]]" filtered\\$="[[_isFiltered(index,filterColumn,filtered)]]"></editable-table-filter>                      \n                  </template>\n                  <template is="dom-if" if="[[!filter]]" restamp=""><span class="cell">[[cell]]</span></template>\n                </td>\n              </template>\n            </template>\n          </tr> \n        </template>\n      </tbody>\n      <template is="dom-if" if="[[footer]]">\n        <tfoot class="tfoot">\n          <tr class="tr">\n            <template is="dom-repeat" items\\$="[[__tfoot.0]]" as="cell" index-as="index">\n              <template is="dom-if" if="[[_isRowHeader(rowHeader,index)]]">\n                <th class="th" scope="row" numeric\\$="[[_isNumericColumn(index)]]">[[cell]]</th>\n              </template>\n              <template is="dom-if" if="[[!_isRowHeader(rowHeader,index)]]">\n                <td class="td" numeric\\$="[[_isNumericColumn(index)]]" negative\\$="[[_isNegative(cell)]]">[[cell]]</td>\n              </template>\n            </template>\n          </tr> \n        </tfoot>\n      </template>\n    </table>\n'
       ]
     );
-    _templateObject_922386d0ecf311e89cb22b61cebc916e = function() {
+    _templateObject_04bfa240f1e611e8bd08675227bfaebf = function _templateObject_04bfa240f1e611e8bd08675227bfaebf() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_922386d0ecf311e89cb22b61cebc916e()
+      _templateObject_04bfa240f1e611e8bd08675227bfaebf()
     ),
     is: "editable-table-display",
     listeners: {
@@ -67,7 +77,7 @@ define([
       return [];
     },
     _getThead: function _getThead(data, columnHeader) {
-      this;
+      var root = this;
       if (data !== void 0 && null !== data && 0 < data.length && columnHeader) {
         return data.slice(0, 1);
       }
@@ -120,7 +130,8 @@ define([
       setTimeout(function() {
         for (var i = 0; i < cols.length; i++) {
           var col = cols[i],
-            index = col.cellIndex;
+            index = col.cellIndex,
+            delay;
           if (0 === index || index === selected) {
             col.removeAttribute("xs-hidden");
           } else {

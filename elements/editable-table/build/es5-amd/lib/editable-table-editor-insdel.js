@@ -1,20 +1,20 @@
 define([
   "../node_modules/@polymer/polymer/polymer-legacy.js",
   "../node_modules/@polymer/paper-button/paper-button.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _paperButton) {
   "use strict";
-  function _templateObject_997a0940ecf311e89cb22b61cebc916e() {
+  function _templateObject_09f7ffa0f1e611e8bd08675227bfaebf() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n      :host {\n        display: block;\n      }\n      :host paper-button {\n        display: block;\n        text-transform: none;\n        text-align: left;\n      }\n    </style>\n    <paper-button><slot></slot></paper-button>\n"
     ]);
-    _templateObject_997a0940ecf311e89cb22b61cebc916e = function() {
+    _templateObject_09f7ffa0f1e611e8bd08675227bfaebf = function _templateObject_09f7ffa0f1e611e8bd08675227bfaebf() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_997a0940ecf311e89cb22b61cebc916e()
+      _templateObject_09f7ffa0f1e611e8bd08675227bfaebf()
     ),
     is: "editable-table-editor-insdel",
     listeners: { tap: "_onTap" },
@@ -24,7 +24,7 @@ define([
       before: { type: Boolean, value: !1, reflectToAttribute: !0 },
       type: { type: String, value: null }
     },
-    _onTap: function _onTap() {
+    _onTap: function _onTap(e) {
       var root = this,
         action = root.action,
         type = root.type,

@@ -138,6 +138,7 @@ Polymer({
             this.__parentName = window.HaxStore.instance.activeContainerNode.tagName
               .replace("-", " ")
               .toLowerCase();
+            +" settings";
             break;
         }
       }

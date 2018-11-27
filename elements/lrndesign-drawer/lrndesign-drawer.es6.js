@@ -23,4 +23,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
     </app-header>
     <paper-icon-button icon="[[icon]]" alt="[[alt]]" id="flyout-drawer"></paper-icon-button>
     <paper-tooltip for="flyout-drawer">[[alt]]</paper-tooltip>
-`,is:"lrndesign-drawer",properties:{opened:{type:Boolean,value:!1},icon:{type:String,value:"icon"},align:{type:String,value:"left"},alt:{type:String,value:""}},ready:function(){let root=this,opened=this.opened;this.shadowRoot.querySelector("paper-icon-button").addEventListener("click",function(){root.opened=!root.opened})}});
+`,is:"lrndesign-drawer",properties:{opened:{type:Boolean,value:!1},icon:{type:String,value:"icon"},align:{type:String,value:"left"},alt:{type:String,value:""}},ready:function(){let root=this,opened=this.opened;this.shadowRoot.querySelector("paper-icon-button").addEventListener("click",function(e){root.opened=!root.opened})}});

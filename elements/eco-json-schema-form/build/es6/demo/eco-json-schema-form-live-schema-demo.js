@@ -95,7 +95,7 @@ Polymer({
       } catch (e) {}
     }
   },
-  _valueChanged: function(newValue) {
+  _valueChanged: function(newValue, oldValue) {
     if (typeof this.$.valueText !== typeof void 0) {
       let json = JSON.stringify(newValue, null, " ");
       this.$.valueText.innerHTML = json;

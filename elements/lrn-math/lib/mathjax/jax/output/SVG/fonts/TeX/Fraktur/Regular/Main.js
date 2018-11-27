@@ -16,4 +16,12 @@
  *  limitations under the License.
  */
 
-MathJax.OutputJax.SVG.FONTDATA.FONTS.MathJax_Fraktur={directory:"Fraktur/Regular",family:"MathJax_Fraktur",id:"MJFRAK",Ranges:[[0,127,"BasicLatin"],[128,57343,"Other"],[58112,58128,"PUA"]]};MathJax.Ajax.loadComplete(MathJax.OutputJax.SVG.fontDir+"/Fraktur/Regular/Main.js");
+MathJax.OutputJax.SVG.FONTDATA.FONTS.MathJax_Fraktur = {
+  directory: "Fraktur/Regular",
+  family: "MathJax_Fraktur",
+  id: "MJFRAK",
+  Ranges: [[0, 127, "BasicLatin"], [128, 57343, "Other"], [58112, 58128, "PUA"]]
+};
+MathJax.Ajax.loadComplete(
+  MathJax.OutputJax.SVG.fontDir + "/Fraktur/Regular/Main.js"
+);

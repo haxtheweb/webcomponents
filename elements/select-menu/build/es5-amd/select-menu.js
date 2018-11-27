@@ -3,9 +3,9 @@ define([
   "./node_modules/@polymer/paper-dropdown-menu/paper-dropdown-menu.js",
   "./node_modules/@polymer/paper-item/paper-item.js",
   "./node_modules/@polymer/paper-listbox/paper-listbox.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _paperDropdownMenu, _paperItem, _paperListbox) {
   "use strict";
-  function _templateObject_28b80730ecf211e88ea95f916473248a() {
+  function _templateObject_d3ce24a0f1e411e8b2f24785024f4b57() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n  <custom-style>\n    <style is="custom-style">\n      paper-dropdown-menu, paper-listbox {\n        width: 250px;\n      }\n      paper-dropdown-menu {\n        height: 200px;\n        margin: auto;\n        display: block;\n      }\n    </style>\n  </custom-style>\n  <paper-dropdown-menu id="menu" label$="[[label]]" on-tap="_menubuttonTap" on-selected-item-changed="_setSelectedValue">\n    <paper-listbox id="listbox" slot="dropdown-content" selected="{{selectedIndex}}">\n      <slot></slot>\n    </paper-listbox>\n  </paper-dropdown-menu>\n'
@@ -14,14 +14,14 @@ define([
         '\n  <custom-style>\n    <style is="custom-style">\n      paper-dropdown-menu, paper-listbox {\n        width: 250px;\n      }\n      paper-dropdown-menu {\n        height: 200px;\n        margin: auto;\n        display: block;\n      }\n    </style>\n  </custom-style>\n  <paper-dropdown-menu id="menu" label\\$="[[label]]" on-tap="_menubuttonTap" on-selected-item-changed="_setSelectedValue">\n    <paper-listbox id="listbox" slot="dropdown-content" selected="{{selectedIndex}}">\n      <slot></slot>\n    </paper-listbox>\n  </paper-dropdown-menu>\n'
       ]
     );
-    _templateObject_28b80730ecf211e88ea95f916473248a = function() {
+    _templateObject_d3ce24a0f1e411e8b2f24785024f4b57 = function _templateObject_d3ce24a0f1e411e8b2f24785024f4b57() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_28b80730ecf211e88ea95f916473248a()
+      _templateObject_d3ce24a0f1e411e8b2f24785024f4b57()
     ),
     is: "select-menu",
     properties: {

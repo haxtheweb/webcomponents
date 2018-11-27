@@ -153,7 +153,7 @@ Polymer({
     }
   },
   validInputMethods: function() {
-    return [
+    var methods = [
       "flipboolean",
       "boolean",
       "select",
@@ -164,6 +164,7 @@ Polymer({
       "colorpicker",
       "number"
     ];
+    return methods;
   },
   _resetInputMethods: function() {
     let methods = this.validInputMethods();

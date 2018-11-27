@@ -13,7 +13,7 @@ import "./node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "./node_modules/@lrnwebcomponents/mtz-marked-editor/mtz-marked-editor.js";
 import "./node_modules/@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-line.js";
 import "./node_modules/@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-wrap.js";
-import "./node_modules/@lrnwebcomponents/mtz-marked-editor/lib/controls/mtz-marked-control-link.js";
+import "@lrnwebcomponents/mtz-marked-editor/lib/controls/mtz-marked-control-link.js";
 import "./node_modules/@lrnwebcomponents/word-count/word-count.js";
 import "./node_modules/@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
@@ -268,7 +268,7 @@ Polymer({
     }
     return "";
   },
-  _commentLoaded: function() {
+  _commentLoaded: function(e) {
     let root = this;
     root.editform = root.comment.metadata.editing;
     root.disabled = root.comment.metadata.disabled;
@@ -277,9 +277,10 @@ Polymer({
   actionHandler: function(e) {
     let root = this;
     var normalizedEvent = dom(e),
-      target = normalizedEvent.localTarget;
+      target = normalizedEvent.localTarget,
+      comment = null;
     if (null != target.dataCommentid && !target.disabled) {
-      target.dataCommentid;
+      comment = target.dataCommentid;
       if ("reply" == target.id) {
         root.fire("comment-reply", { comment: root.comment });
       } else if ("like" == target.id) {
@@ -294,7 +295,7 @@ Polymer({
       }
     }
   },
-  _editTrigger: function() {
+  _editTrigger: function(e) {
     let root = this;
     if (typeof root.comment !== typeof void 0 && root.comment.actions.edit) {
       root.async(function() {
@@ -324,12 +325,12 @@ Polymer({
       });
     }
   },
-  bodyToggle: function() {
+  bodyToggle: function(e) {
     let root = this;
     root.$.bodyarea.classList.remove("nowrap-me");
     document.querySelector("iron-list").fire("iron-resize");
   },
-  bodyToggleOn: function() {
+  bodyToggleOn: function(e) {
     let root = this;
     root.$.bodyarea.classList.toggle("nowrap-me");
     document.querySelector("iron-list").fire("iron-resize");

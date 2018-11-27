@@ -5,9 +5,16 @@ define([
   "../node_modules/@polymer/paper-input/paper-input.js",
   "../node_modules/@polymer/paper-icon-button/paper-icon-button.js",
   "../node_modules/@lrnwebcomponents/drawing-icons/drawing-icons.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _ironList,
+  _ironA11yKeys,
+  _paperInput,
+  _paperIconButton,
+  _drawingIcons
+) {
   "use strict";
-  function _templateObject_fa464f40ecf311e8896d5f4a3df9e974() {
+  function _templateObject_3eb4f9a0f1e611e89e68a131b4693ace() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n        --indent-multiplier: 20px;\n      }\n      :host [data-indent="0"] #move {\n        margin-right: calc(var(--indent-multiplier) * 0);\n      }\n      :host [data-indent="1"] #move {\n        margin-right: calc(var(--indent-multiplier) * 1);\n      }\n      :host [data-indent="2"] #move {\n        margin-right: calc(var(--indent-multiplier) * 2);\n      }\n      :host [data-indent="3"] #move {\n        margin-right: calc(var(--indent-multiplier) * 3);\n      }\n      :host [data-indent="4"] #move {\n        margin-right: calc(var(--indent-multiplier) * 4);\n      }\n      :host [data-indent="5"] #move {\n        margin-right: calc(var(--indent-multiplier) * 5);\n      }\n      :host [data-indent="6"] #move {\n        margin-right: calc(var(--indent-multiplier) * 6);\n      }\n      :host #input {\n        flex-grow: 1;\n        margin-right: 10px;\n      }\n      :host #wrapper {\n        display: flex;\n        height: 40px;\n        border-radius: 0.16px;\n        background-color: white;\n      }\n      :host(:focus) #wrapper,\n      :host(:hover) #wrapper {\n        cursor: pointer;\n      }\n      :host #move {\n        font-size: 16px;\n        padding: 10px;\n        color: transparent;\n      }\n      :host(:focus) #move,\n      :host(:hover) #move {\n        color: var(--lrnsys-outline-move-icon-color, #aaaaaa);\n      }\n      :host paper-icon-button {\n        position: static;\n        font-size: 16px;\n        height: 36px;\n        padding: 10px;\n        margin: 4px;\n        display: none;\n        border-radius: 0.16px;\n      }\n      :host(:focus) paper-icon-button,\n      :host(:hover) paper-icon-button {\n        width: 36px;\n        display: block;\n      }\n      :host paper-icon-button#add {\n        width: 36px;\n        margin-right: 2px;\n        color: white;\n        background-color: var(--lrnsys-outline-add-button-color, #018dff);\n      }\n      :host paper-icon-button#delete {\n        color: white;\n        background-color: var(--lrnsys-outline-delete-button-color, #cc0000);\n      }\n    </style>\n    <div id="wrapper" data-indent$="[[indentLevel]]">\n      <iron-icon id="move" title="Move" icon="drawing:move" role="presentation"></iron-icon>\n      <paper-input id="input" label="Enter a page title" value$="[[title]]" no-label-float="">\n      </paper-input>\n      <paper-icon-button id="add" title="Add Item" icon="icons:add" on-tap="add"></paper-icon-button>\n      <paper-icon-button id="delete" title="Delete" icon="icons:delete" on-tap="delete"></paper-icon-button>\n    </div>\n    <div id="down-action" gesture-disabled$="[[disableDown]]">\n      <paper-icon-button id="down" title="Move downwards" icon="icons:arrow-downward" on-tap="move(1)"></paper-icon-button>\n    </div>\n    <div id="left-action" gesture-disabled$="[[disableLeft]]">\n      <paper-icon-button id="left" title="Outdent" icon="icons:arrow-backward" on-tap="setIndent(-1)"></paper-icon-button>\n    </div>\n    <div id="right-action" gesture-disabled$="[[disableRight]]">\n      <paper-icon-button id="right" title="Indent" icon="icons:arrow-forward" on-tap="setIndent(1)"></paper-icon-button>\n    </div>\n    <div id="up-action"gesture-disabled$="[[disableUp]]">\n      <paper-icon-button id="up" title="Move upwards" icon="icons:arrow-upward" on-tap="move(-1)"></paper-icon-button>\n    </div>\n    <iron-a11y-keys id="a11y" target="[[target]]" keys="enter" on-keys-pressed="_onEnter"></iron-a11y-keys>\n    <iron-a11y-keys id="a11y" target="[[target]]" keys="backspace" on-keys-pressed="_onBackspace"></iron-a11y-keys>\n    <iron-a11y-keys id="a11y" target="[[target]]" keys="up" on-keys-pressed="_onArrowUp"></iron-a11y-keys>\n    <iron-a11y-keys id="a11y" target="[[target]]" keys="down" on-keys-pressed="_onArrowDown"></iron-a11y-keys>\n    <iron-a11y-keys id="a11y" target="[[target]]" keys="tab" on-keys-pressed="_onTab"></iron-a11y-keys>\n    <iron-a11y-keys id="a11y" target="[[target]]" keys="shift+tab" on-keys-pressed="_onShiftTab"></iron-a11y-keys>\n    <iron-a11y-keys id="a11y" target="[[target]]" keys="shift+up" on-keys-pressed="_onShiftArrowUp"></iron-a11y-keys>\n    <iron-a11y-keys id="a11y" target="[[target]]" keys="shift+down" on-keys-pressed="_onShiftArrowDown"></iron-a11y-keys>\n'
@@ -16,14 +23,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n        --indent-multiplier: 20px;\n      }\n      :host [data-indent="0"] #move {\n        margin-right: calc(var(--indent-multiplier) * 0);\n      }\n      :host [data-indent="1"] #move {\n        margin-right: calc(var(--indent-multiplier) * 1);\n      }\n      :host [data-indent="2"] #move {\n        margin-right: calc(var(--indent-multiplier) * 2);\n      }\n      :host [data-indent="3"] #move {\n        margin-right: calc(var(--indent-multiplier) * 3);\n      }\n      :host [data-indent="4"] #move {\n        margin-right: calc(var(--indent-multiplier) * 4);\n      }\n      :host [data-indent="5"] #move {\n        margin-right: calc(var(--indent-multiplier) * 5);\n      }\n      :host [data-indent="6"] #move {\n        margin-right: calc(var(--indent-multiplier) * 6);\n      }\n      :host #input {\n        flex-grow: 1;\n        margin-right: 10px;\n      }\n      :host #wrapper {\n        display: flex;\n        height: 40px;\n        border-radius: 0.16px;\n        background-color: white;\n      }\n      :host(:focus) #wrapper,\n      :host(:hover) #wrapper {\n        cursor: pointer;\n      }\n      :host #move {\n        font-size: 16px;\n        padding: 10px;\n        color: transparent;\n      }\n      :host(:focus) #move,\n      :host(:hover) #move {\n        color: var(--lrnsys-outline-move-icon-color, #aaaaaa);\n      }\n      :host paper-icon-button {\n        position: static;\n        font-size: 16px;\n        height: 36px;\n        padding: 10px;\n        margin: 4px;\n        display: none;\n        border-radius: 0.16px;\n      }\n      :host(:focus) paper-icon-button,\n      :host(:hover) paper-icon-button {\n        width: 36px;\n        display: block;\n      }\n      :host paper-icon-button#add {\n        width: 36px;\n        margin-right: 2px;\n        color: white;\n        background-color: var(--lrnsys-outline-add-button-color, #018dff);\n      }\n      :host paper-icon-button#delete {\n        color: white;\n        background-color: var(--lrnsys-outline-delete-button-color, #cc0000);\n      }\n    </style>\n    <div id="wrapper" data-indent\\$="[[indentLevel]]">\n      <iron-icon id="move" title="Move" icon="drawing:move" role="presentation"></iron-icon>\n      <paper-input id="input" label="Enter a page title" value\\$="[[title]]" no-label-float="">\n      </paper-input>\n      <paper-icon-button id="add" title="Add Item" icon="icons:add" on-tap="add"></paper-icon-button>\n      <paper-icon-button id="delete" title="Delete" icon="icons:delete" on-tap="delete"></paper-icon-button>\n    </div>\n    <div id="down-action" gesture-disabled\\$="[[disableDown]]">\n      <paper-icon-button id="down" title="Move downwards" icon="icons:arrow-downward" on-tap="move(1)"></paper-icon-button>\n    </div>\n    <div id="left-action" gesture-disabled\\$="[[disableLeft]]">\n      <paper-icon-button id="left" title="Outdent" icon="icons:arrow-backward" on-tap="setIndent(-1)"></paper-icon-button>\n    </div>\n    <div id="right-action" gesture-disabled\\$="[[disableRight]]">\n      <paper-icon-button id="right" title="Indent" icon="icons:arrow-forward" on-tap="setIndent(1)"></paper-icon-button>\n    </div>\n    <div id="up-action"gesture-disabled\\$="[[disableUp]]">\n      <paper-icon-button id="up" title="Move upwards" icon="icons:arrow-upward" on-tap="move(-1)"></paper-icon-button>\n    </div>\n    <iron-a11y-keys id="a11y" target="[[target]]" keys="enter" on-keys-pressed="_onEnter"></iron-a11y-keys>\n    <iron-a11y-keys id="a11y" target="[[target]]" keys="backspace" on-keys-pressed="_onBackspace"></iron-a11y-keys>\n    <iron-a11y-keys id="a11y" target="[[target]]" keys="up" on-keys-pressed="_onArrowUp"></iron-a11y-keys>\n    <iron-a11y-keys id="a11y" target="[[target]]" keys="down" on-keys-pressed="_onArrowDown"></iron-a11y-keys>\n    <iron-a11y-keys id="a11y" target="[[target]]" keys="tab" on-keys-pressed="_onTab"></iron-a11y-keys>\n    <iron-a11y-keys id="a11y" target="[[target]]" keys="shift+tab" on-keys-pressed="_onShiftTab"></iron-a11y-keys>\n    <iron-a11y-keys id="a11y" target="[[target]]" keys="shift+up" on-keys-pressed="_onShiftArrowUp"></iron-a11y-keys>\n    <iron-a11y-keys id="a11y" target="[[target]]" keys="shift+down" on-keys-pressed="_onShiftArrowDown"></iron-a11y-keys>\n'
       ]
     );
-    _templateObject_fa464f40ecf311e8896d5f4a3df9e974 = function() {
+    _templateObject_3eb4f9a0f1e611e89e68a131b4693ace = function _templateObject_3eb4f9a0f1e611e89e68a131b4693ace() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_fa464f40ecf311e8896d5f4a3df9e974()
+      _templateObject_3eb4f9a0f1e611e89e68a131b4693ace()
     ),
     is: "lrnsys-outline-item",
     listeners: { change: "_onChange" },
@@ -46,16 +53,16 @@ define([
       var root = this;
       this.target = this.$.input;
       root.fire("focus-item", root);
-      root.addEventListener("focus", function() {
+      root.addEventListener("focus", function(e) {
         root.fire("focus-item", root);
       });
-      root.addEventListener("mouseover", function() {
+      root.addEventListener("mouseover", function(e) {
         root.fire("focus-item", root);
       });
-      root.addEventListener("blur", function() {
+      root.addEventListener("blur", function(e) {
         root.fire("blur-item", root);
       });
-      root.addEventListener("mouseout", function() {
+      root.addEventListener("mouseout", function(e) {
         root.fire("blur-item", root);
       });
     },
@@ -107,7 +114,7 @@ define([
         new: j.slice(i, j.length)
       });
     },
-    _onBackspace: function _onBackspace() {
+    _onBackspace: function _onBackspace(e) {
       if (window.getSelection().toString() == this.$.input.value) {
         event.detail.keyboardEvent.preventDefault();
         this.fire("delete-item", { item: this });

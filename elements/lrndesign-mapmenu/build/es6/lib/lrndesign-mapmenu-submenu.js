@@ -44,7 +44,7 @@ Polymer({
     if (opened) target.show();
     if (!opened) target.hide();
   },
-  _headerClickHandler: function() {
+  _headerClickHandler: function(e) {
     if (this.collapsable) {
       this.opened = !this.opened;
     }

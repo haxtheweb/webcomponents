@@ -8,7 +8,8 @@ define([
   _polymerLegacy,
   async,
   _paperDialogBehavior,
-  _neonAnimationRunnerBehavior
+  _neonAnimationRunnerBehavior,
+  _appDatepicker
 ) {
   "use strict";
   async = babelHelpers.interopRequireWildcard(async);

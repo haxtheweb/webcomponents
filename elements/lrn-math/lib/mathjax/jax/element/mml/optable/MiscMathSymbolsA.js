@@ -16,4 +16,14 @@
  *  limitations under the License.
  */
 
-(function(a){var c=a.mo.OPTYPES;var b=a.TEXCLASS;MathJax.Hub.Insert(a.mo.prototype,{OPTABLE:{prefix:{"\u27E6":c.OPEN,"\u27EA":c.OPEN,"\u27EC":c.OPEN},postfix:{"\u27E7":c.CLOSE,"\u27EB":c.CLOSE,"\u27ED":c.CLOSE}}});MathJax.Ajax.loadComplete(a.optableDir+"/MiscMathSymbolsA.js")})(MathJax.ElementJax.mml);
+(function(a) {
+  var c = a.mo.OPTYPES;
+  var b = a.TEXCLASS;
+  MathJax.Hub.Insert(a.mo.prototype, {
+    OPTABLE: {
+      prefix: { "\u27E6": c.OPEN, "\u27EA": c.OPEN, "\u27EC": c.OPEN },
+      postfix: { "\u27E7": c.CLOSE, "\u27EB": c.CLOSE, "\u27ED": c.CLOSE }
+    }
+  });
+  MathJax.Ajax.loadComplete(a.optableDir + "/MiscMathSymbolsA.js");
+})(MathJax.ElementJax.mml);

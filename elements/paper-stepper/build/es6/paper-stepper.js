@@ -25,10 +25,10 @@ Polymer({
   _getDisableNext: function(selected, nrItems, disableNext) {
     return selected < nrItems - 1 && !disableNext;
   },
-  _computeProgressValue: function(selected) {
+  _computeProgressValue: function(selected, items) {
     return selected + 1;
   },
-  _onItemsChanged: function() {
+  _onItemsChanged: function(e) {
     this._items = this.$.selector.items;
   }
 });

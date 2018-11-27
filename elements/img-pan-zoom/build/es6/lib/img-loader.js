@@ -30,7 +30,7 @@ Polymer({
     }.bind(this);
     this._resolvedSrc = "";
   },
-  _srcChanged: function(newSrc) {
+  _srcChanged: function(newSrc, oldSrc) {
     var newResolvedSrc = this._resolveSrc(newSrc);
     if (newResolvedSrc === this._resolvedSrc) return;
     this._resolvedSrc = newResolvedSrc;

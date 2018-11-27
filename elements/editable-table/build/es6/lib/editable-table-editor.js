@@ -411,6 +411,8 @@ Polymer({
     }
   },
   insertColumn: function(index) {
+    let temp = [],
+      first = null;
     for (let i = 0; i < this.data.length; i++) {
       this.splice("data." + i, index, 0, "");
     }

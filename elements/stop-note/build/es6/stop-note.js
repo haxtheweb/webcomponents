@@ -122,7 +122,7 @@ Polymer({
       reflectToAttribute: !0
     }
   },
-  _iconChanged: function() {
+  _iconChanged: function(icon) {
     this.updateStyles();
   },
   _urlTarget: function(url) {
@@ -142,7 +142,7 @@ Polymer({
     return 0 != url.indexOf(root);
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -209,6 +209,7 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   }
 });

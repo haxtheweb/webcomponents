@@ -211,7 +211,7 @@ Polymer({
     }
     return list;
   },
-  _licenseUpdated: function(newValue) {
+  _licenseUpdated: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0) {
       var list = this.licenseList();
       if (typeof list[newValue] !== typeof void 0) {

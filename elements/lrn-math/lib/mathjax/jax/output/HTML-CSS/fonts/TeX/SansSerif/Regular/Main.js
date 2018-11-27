@@ -16,4 +16,21 @@
  *  limitations under the License.
  */
 
-MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS.MathJax_SansSerif={directory:"SansSerif/Regular",family:"MathJax_SansSerif",testString:"MathJax SansSerif ^ _",Ranges:[[0,127,"BasicLatin"],[128,65535,"Other"],[768,879,"CombDiacritMarks"]]};MathJax.Callback.Queue(["initFont",MathJax.OutputJax["HTML-CSS"],"MathJax_SansSerif"],["loadComplete",MathJax.Ajax,MathJax.OutputJax["HTML-CSS"].fontDir+"/SansSerif/Regular/Main.js"]);
+MathJax.OutputJax["HTML-CSS"].FONTDATA.FONTS.MathJax_SansSerif = {
+  directory: "SansSerif/Regular",
+  family: "MathJax_SansSerif",
+  testString: "MathJax SansSerif ^ _",
+  Ranges: [
+    [0, 127, "BasicLatin"],
+    [128, 65535, "Other"],
+    [768, 879, "CombDiacritMarks"]
+  ]
+};
+MathJax.Callback.Queue(
+  ["initFont", MathJax.OutputJax["HTML-CSS"], "MathJax_SansSerif"],
+  [
+    "loadComplete",
+    MathJax.Ajax,
+    MathJax.OutputJax["HTML-CSS"].fontDir + "/SansSerif/Regular/Main.js"
+  ]
+);

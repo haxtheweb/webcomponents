@@ -25,7 +25,7 @@ Polymer({
     this.__stickyManager = function(e) {
       root.setStickyPlayer(e.detail);
     };
-    this.__scrollChecker = function() {
+    this.__scrollChecker = function(e) {
       root._checkScroll();
     };
     document.body.addEventListener("a11y-player-playing", root.__stickyManager);

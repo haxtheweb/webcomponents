@@ -44,7 +44,7 @@ Polymer({
     let date = new Date(Date.now());
     this.__now =
       date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -88,16 +88,18 @@ Polymer({
         ]
       },
       saveOptions: { wipeSlot: !0 }
-    });
+    };
+    this.setHaxProperties(props);
   },
-  _renderAsUpdated: function(newValue) {
+  _renderAsUpdated: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0) {
       this._resetRenderMethods();
       this["__render" + newValue] = !0;
     }
   },
   _validRenderMethods: function() {
-    return ["content"];
+    var methods = ["content"];
+    return methods;
   },
   _resetRenderMethods: function() {
     let methods = this._validRenderMethods();
@@ -105,16 +107,18 @@ Polymer({
       this["__render" + methods[i]] = !1;
     }
   },
-  handleResponse: function() {
-    for (var key in this.searchResponse.query.pages) {
-      if (!this.searchResponse.query.pages.hasOwnProperty(key)) continue;
-      var obj = this.searchResponse.query.pages[key];
-      let html = obj.extract;
-      html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
-      html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
-      html = html.replace(/<style[\s\S]*?>/gi, "&lt;style&gt;");
-      html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
-      this.$.result.innerHTML = html;
+  handleResponse: function(response) {
+    if (typeof this.searchResponse !== typeof void 0) {
+      for (var key in this.searchResponse.query.pages) {
+        if (!this.searchResponse.query.pages.hasOwnProperty(key)) continue;
+        var obj = this.searchResponse.query.pages[key];
+        let html = obj.extract;
+        html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
+        html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
+        html = html.replace(/<style[\s\S]*?>/gi, "&lt;style&gt;");
+        html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
+        this.$.result.innerHTML = html;
+      }
     }
   }
 });

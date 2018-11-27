@@ -110,7 +110,7 @@ Polymer({
     textColor: { type: String, computed: "_computeColorClass(textCodeColor)" }
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -161,7 +161,8 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
   _computeColorClass: function(color, bg) {
     if (null != color && "#ffffff" == color.toLowerCase()) {
@@ -178,7 +179,7 @@ Polymer({
       return this._colorTransform(color.toLowerCase(), "", "");
     }
   },
-  _colorCodeChange: function(newValue) {
+  _colorCodeChange: function(newValue, oldValue) {
     if (typeof newValue !== typeof void 0 && null != newValue) {
       this.computeTextPropContrast("textCodeColor", "colorCode");
     }

@@ -136,7 +136,7 @@ class IconsetDemo extends PolymerElement {
       this.push("items", {
         name: setName !== void 0 && null !== setName ? setName + " " : "Icons",
         prefix: setName !== void 0 && null !== setName ? setName + ":" : "",
-        icons: icons
+        icons: icons !== void 0 && null !== icons ? icons : []
       });
     }
   }

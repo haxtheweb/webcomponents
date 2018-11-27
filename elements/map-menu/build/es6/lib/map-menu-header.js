@@ -114,7 +114,7 @@ Polymer({
       return !1;
     }
   },
-  __linkClickHandler: function() {
+  __linkClickHandler: function(e) {
     if (this.id) {
       this.fire("link-clicked", { id: this.id });
     }

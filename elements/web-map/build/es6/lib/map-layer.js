@@ -68,7 +68,7 @@ Polymer({
       this._apiToggleChecked = !0;
     }
   },
-  _onLayerExtentLoad: function() {
+  _onLayerExtentLoad: function(e) {
     if (this._layer._legendUrl) {
       this.legendLinks = [
         {

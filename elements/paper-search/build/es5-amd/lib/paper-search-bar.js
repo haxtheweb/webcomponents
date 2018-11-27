@@ -1,7 +1,7 @@
 define([
   "../node_modules/@polymer/polymer/polymer-legacy.js",
-  "@polymer/iron-a11y-keys/iron-a11y-keys.js"
-], function(_polymerLegacy) {
+  "../node_modules/@polymer/iron-a11y-keys/iron-a11y-keys.js"
+], function(_polymerLegacy, _ironA11yKeys) {
   "use strict";
   (0, _polymerLegacy.Polymer)({
     is: "paper-search-bar",
@@ -18,7 +18,7 @@ define([
     focus: function focus() {
       this.$.input.focus();
     },
-    _filter: function _filter() {
+    _filter: function _filter(e) {
       this.fire("paper-search-filter");
     },
     _clear: function _clear() {

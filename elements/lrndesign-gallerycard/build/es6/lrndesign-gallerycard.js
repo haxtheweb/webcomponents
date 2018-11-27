@@ -157,10 +157,10 @@ Polymer({
     elevation: { type: Number, value: 1, reflectToAttribute: !0, notify: !0 },
     comments: { type: Number, value: 0, reflectToAttribute: !0, notify: !0 }
   },
-  _mouseEnter: function() {
+  _mouseEnter: function(e) {
     this.elevation += 2;
   },
-  _mouseLeave: function() {
+  _mouseLeave: function(e) {
     this.elevation -= 2;
   }
 });

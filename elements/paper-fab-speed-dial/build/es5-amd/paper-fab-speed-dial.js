@@ -1,7 +1,7 @@
 define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./lib/paper-fab-speed-dial-overlay.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _paperFabSpeedDialOverlay) {
   "use strict";
   (0, _polymerLegacy.Polymer)({
     is: "paper-fab-speed-dial",

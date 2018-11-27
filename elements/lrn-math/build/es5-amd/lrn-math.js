@@ -11,22 +11,24 @@ define([
   _polymerLegacy,
   _polymerDom,
   _flattenedNodesObserver,
-  _resolveUrl
+  _resolveUrl,
+  _HAXWiring,
+  _esGlobalBridge
 ) {
   "use strict";
   meta = babelHelpers.interopRequireWildcard(meta);
-  function _templateObject_afb16740ecf211e8a37a7f3d38ed91b5() {
+  function _templateObject_475bbf40f1e511e88ede0d6c680d2748() {
     var data = babelHelpers.taggedTemplateLiteral([
       "\n    <style>\n       :host {\n        display: inline;\n      }\n    </style>\n    [[prefix]] [[math]] [[suffix]]\n"
     ]);
-    _templateObject_afb16740ecf211e8a37a7f3d38ed91b5 = function() {
+    _templateObject_475bbf40f1e511e88ede0d6c680d2748 = function _templateObject_475bbf40f1e511e88ede0d6c680d2748() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_afb16740ecf211e8a37a7f3d38ed91b5()
+      _templateObject_475bbf40f1e511e88ede0d6c680d2748()
     ),
     is: "lrn-math",
     behaviors: [HAXBehaviors.PropertiesBehaviors],
@@ -56,7 +58,7 @@ define([
       }
     },
     attached: function attached() {
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !0,
@@ -100,7 +102,8 @@ define([
           ],
           advanced: []
         }
-      });
+      };
+      this.setHaxProperties(props);
       var name = "mathjax",
         basePath = (0, _resolveUrl.pathFromUrl)(meta.url),
         location = "".concat(basePath, "lib/mathjax/latest.js");

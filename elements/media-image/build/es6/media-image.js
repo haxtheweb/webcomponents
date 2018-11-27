@@ -86,7 +86,7 @@ Polymer({
     box: { type: Boolean, value: !1, reflectToAttribute: !0 }
   },
   ready: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -189,6 +189,7 @@ Polymer({
           }
         ]
       }
-    });
+    };
+    this.setHaxProperties(props);
   }
 });

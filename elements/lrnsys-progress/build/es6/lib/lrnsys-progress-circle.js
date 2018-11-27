@@ -240,10 +240,10 @@ Polymer({
     },
     _bubbleProgress: { type: Object, value: { 25: !1, 50: !1, 75: !1 } }
   },
-  ready: function() {
+  ready: function(e) {
     this._bubbleProgress = { 25: !1, 50: !1, 75: !1 };
   },
-  _testValueComplete: function(newValue) {
+  _testValueComplete: function(newValue, oldValue) {
     if (newValue >= this.max && "available" == this.status) {
       this.status = "complete";
     } else if (0.75 <= newValue / this.max && !this._bubbleProgress[75]) {
@@ -257,7 +257,7 @@ Polymer({
       this._bubbleProgress[25] = !0;
     }
   },
-  focusEvent: function() {
+  focusEvent: function(e) {
     if (!this.disabled && "loading" != this.status) {
       if (this.focusState) {
         this.$.icon.icon = this.icon;
@@ -271,13 +271,13 @@ Polymer({
       this.focusState = !this.focusState;
     }
   },
-  focusOn: function() {
+  focusOn: function(e) {
     if (!this.disabled && "loading" != this.status) {
       this.$.icon.icon = this.icon;
       this.$.icon.classList.add("activeIcon");
     }
   },
-  focusOff: function() {
+  focusOff: function(e) {
     if (!this.disabled && "loading" != this.status) {
       if ("complete" == this.status || "finished" == this.status) {
         this.$.icon.icon = this.activeIcon;

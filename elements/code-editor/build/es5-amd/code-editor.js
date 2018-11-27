@@ -7,9 +7,18 @@ define([
   "./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
   "./lib/juicy-ace-editor.js",
   "./lib/code-pen-button.js"
-], function(_polymerLegacy, _polymerDom, _flattenedNodesObserver) {
+], function(
+  _polymerLegacy,
+  _polymerDom,
+  _flattenedNodesObserver,
+  _materializecssStyles,
+  _HAXWiring,
+  _schemaBehaviors,
+  _juicyAceEditor,
+  _codePenButton
+) {
   "use strict";
-  function _templateObject_6f19c240ecf211e89695a5d4b8d09223() {
+  function _templateObject_0d08de90f1e511e8b576df5057572211() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n        padding: 16px;\n        --code-pen-button-color: #222222;\n        --code-pen-title-color: #222222;\n      }\n      .code-pen-container {\n        width: 100%;\n        display: block;\n        background-color: var(--code-pen-button-color);\n        height: 40px;\n      }\n      code-pen-button {\n        float: right;\n        height: 40px;\n      }\n      h3 {\n        color: var(--code-pen-title-color);\n      }\n    </style>\n    <h3>[[title]]</h3>\n    <juicy-ace-editor id="codeeditor" theme$="[[theme]]" mode$="[[mode]]" font-size$="[[fontSize]]" readonly$="[[readOnly]]"></juicy-ace-editor>\n    <div class="code-pen-container" hidden$="[[!showCodePen]]">\n      <code-pen-button data="[[codePenData]]"></code-pen-button>\n    </div>\n'
@@ -18,14 +27,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n        padding: 16px;\n        --code-pen-button-color: #222222;\n        --code-pen-title-color: #222222;\n      }\n      .code-pen-container {\n        width: 100%;\n        display: block;\n        background-color: var(--code-pen-button-color);\n        height: 40px;\n      }\n      code-pen-button {\n        float: right;\n        height: 40px;\n      }\n      h3 {\n        color: var(--code-pen-title-color);\n      }\n    </style>\n    <h3>[[title]]</h3>\n    <juicy-ace-editor id="codeeditor" theme\\$="[[theme]]" mode\\$="[[mode]]" font-size\\$="[[fontSize]]" readonly\\$="[[readOnly]]"></juicy-ace-editor>\n    <div class="code-pen-container" hidden\\$="[[!showCodePen]]">\n      <code-pen-button data="[[codePenData]]"></code-pen-button>\n    </div>\n'
       ]
     );
-    _templateObject_6f19c240ecf211e89695a5d4b8d09223 = function() {
+    _templateObject_0d08de90f1e511e8b576df5057572211 = function _templateObject_0d08de90f1e511e8b576df5057572211() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_6f19c240ecf211e89695a5d4b8d09223()
+      _templateObject_0d08de90f1e511e8b576df5057572211()
     ),
     is: "code-editor",
     behaviors: [
@@ -52,7 +61,7 @@ define([
     _computeCodePenData: function _computeCodePenData(title, editorValue) {
       return { title: title, html: editorValue };
     },
-    _editorReady: function _editorReady() {
+    _editorReady: function _editorReady(e) {
       var _this = this;
       this.__editorReady = !0;
       setTimeout(function() {
@@ -63,7 +72,7 @@ define([
         _this.updateEditorValue();
       }, 200);
     },
-    _editorDataChanged: function _editorDataChanged() {
+    _editorDataChanged: function _editorDataChanged(e) {
       this.editorValue = this.$.codeeditor.value;
     },
     updateEditorValue: function updateEditorValue() {
@@ -82,12 +91,12 @@ define([
         this,
         function(info) {
           if (0 < info.addedNodes.length) {
-            info.addedNodes.map(function() {
+            info.addedNodes.map(function(node) {
               _this2.updateEditorValue();
             });
           }
           if (0 < info.removedNodes.length) {
-            info.removedNodes.map(function() {
+            info.removedNodes.map(function(node) {
               _this2.updateEditorValue();
             });
           }
@@ -95,7 +104,7 @@ define([
       );
     },
     attached: function attached() {
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !1,
@@ -150,7 +159,8 @@ define([
           ],
           advanced: []
         }
-      });
+      };
+      this.setHaxProperties(props);
     }
   });
 });

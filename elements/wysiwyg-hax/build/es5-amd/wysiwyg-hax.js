@@ -1,9 +1,9 @@
 define([
   "./node_modules/@polymer/polymer/polymer-legacy.js",
   "./node_modules/@lrnwebcomponents/cms-hax/cms-hax.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _cmsHax) {
   "use strict";
-  function _templateObject_e6a0a330ecf511e893e193913d1efdd8() {
+  function _templateObject_d4866630f1e611e898828fbd4a6c0bc9() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <textarea id$="[[fieldId]]" name="[[fieldName]]" hidden="">[[bodyValue]]</textarea>\n    <cms-hax open-default="[[openDefault]]" hide-message="" body-offset-left="[[bodyOffsetLeft]]" update-page-data="[[updatePageData]]" end-point="[[endPoint]]" app-store-connection="[[appStoreConnection]]" hide-export-button="[[hideExportButton]]" align="[[align]]"></cms-hax>\n'
@@ -12,14 +12,14 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n    <textarea id\\$="[[fieldId]]" name="[[fieldName]]" hidden="">[[bodyValue]]</textarea>\n    <cms-hax open-default="[[openDefault]]" hide-message="" body-offset-left="[[bodyOffsetLeft]]" update-page-data="[[updatePageData]]" end-point="[[endPoint]]" app-store-connection="[[appStoreConnection]]" hide-export-button="[[hideExportButton]]" align="[[align]]"></cms-hax>\n'
       ]
     );
-    _templateObject_e6a0a330ecf511e893e193913d1efdd8 = function() {
+    _templateObject_d4866630f1e611e898828fbd4a6c0bc9 = function _templateObject_d4866630f1e611e898828fbd4a6c0bc9() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_e6a0a330ecf511e893e193913d1efdd8()
+      _templateObject_d4866630f1e611e898828fbd4a6c0bc9()
     ),
     is: "wysiwyg-hax",
     properties: {
@@ -37,12 +37,17 @@ define([
       activeHaxBody: { type: Object, observer: "_activeHaxBodyUpdated" },
       __imported: { type: Boolean, value: !1 }
     },
-    _activeHaxBodyUpdated: function _activeHaxBodyUpdated(newValue) {
+    _activeHaxBodyUpdated: function _activeHaxBodyUpdated(newValue, oldValue) {
       var _this = this;
       if (null != newValue && !this.__imported) {
         this.__imported = !0;
         var children = this.queryEffectiveChildren("template");
-        if (babelHelpers.typeof(children) !== "undefined") {
+        if (
+          babelHelpers.typeof(children) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
+        ) {
           newValue.importContent(children.innerHTML);
           this.editMode = !1;
           window.HaxStore.write("editMode", this.editMode, this);
@@ -72,7 +77,10 @@ define([
     _haxStorePropertyUpdated: function _haxStorePropertyUpdated(e) {
       if (
         e.detail &&
-        babelHelpers.typeof(e.detail.value) !== "undefined" &&
+        babelHelpers.typeof(e.detail.value) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
         e.detail.property
       ) {
         if ("object" === babelHelpers.typeof(e.detail.value)) {
@@ -81,7 +89,7 @@ define([
         this.set(e.detail.property, e.detail.value);
       }
     },
-    _bodyContentUpdated: function _bodyContentUpdated() {
+    _bodyContentUpdated: function _bodyContentUpdated(e) {
       this.bodyValue = window.HaxStore.instance.activeHaxBody.haxToContent();
     }
   });

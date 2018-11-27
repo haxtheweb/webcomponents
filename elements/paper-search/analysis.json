@@ -7,6 +7,122 @@
       "path": "lib/paper-search-bar.js",
       "properties": [
         {
+          "name": "keyEventTarget",
+          "type": "?EventTarget",
+          "description": "The EventTarget that will be firing relevant KeyboardEvents. Set it to\n`null` to disable the listeners.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js",
+            "start": {
+              "line": 273,
+              "column": 4
+            },
+            "end": {
+              "line": 278,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          },
+          "inheritedFrom": "IronA11yKeysBehavior"
+        },
+        {
+          "name": "stopKeyboardEventPropagation",
+          "type": "boolean | null | undefined",
+          "description": "If true, this property will cause the implementing element to\nautomatically stop propagation on any handled KeyboardEvents.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js",
+            "start": {
+              "line": 284,
+              "column": 4
+            },
+            "end": {
+              "line": 284,
+              "column": 63
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false",
+          "inheritedFrom": "IronA11yKeysBehavior"
+        },
+        {
+          "name": "_boundKeyHandlers",
+          "type": "Array | null | undefined",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js",
+            "start": {
+              "line": 286,
+              "column": 4
+            },
+            "end": {
+              "line": 291,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Array"
+            }
+          },
+          "defaultValue": "[]",
+          "inheritedFrom": "IronA11yKeysBehavior"
+        },
+        {
+          "name": "_imperativeKeyBindings",
+          "type": "Object | null | undefined",
+          "description": "own properties of everything on the \"prototype\".",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js",
+            "start": {
+              "line": 295,
+              "column": 4
+            },
+            "end": {
+              "line": 300,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{}",
+          "inheritedFrom": "IronA11yKeysBehavior"
+        },
+        {
+          "name": "keyBindings",
+          "type": "Object",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 69,
+              "column": 2
+            },
+            "end": {
+              "line": 71,
+              "column": 3
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
+        },
+        {
           "name": "query",
           "type": "string | null | undefined",
           "description": "Text for which the user is searching",
@@ -138,30 +254,356 @@
             }
           },
           "defaultValue": "\"Search\""
-        },
-        {
-          "name": "keyBindings",
-          "type": "Object",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 69,
-              "column": 2
-            },
-            "end": {
-              "line": 71,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
+        {
+          "name": "registered",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js",
+            "start": {
+              "line": 313,
+              "column": 2
+            },
+            "end": {
+              "line": 315,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronA11yKeysBehavior"
+        },
+        {
+          "name": "attached",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js",
+            "start": {
+              "line": 317,
+              "column": 2
+            },
+            "end": {
+              "line": 319,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronA11yKeysBehavior"
+        },
+        {
+          "name": "detached",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js",
+            "start": {
+              "line": 321,
+              "column": 2
+            },
+            "end": {
+              "line": 323,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronA11yKeysBehavior"
+        },
+        {
+          "name": "addOwnKeyBinding",
+          "description": "Can be used to imperatively add a key binding to the implementing\nelement. This is the imperative equivalent of declaring a keybinding\nin the `keyBindings` prototype property.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js",
+            "start": {
+              "line": 333,
+              "column": 2
+            },
+            "end": {
+              "line": 337,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "eventString",
+              "type": "string"
+            },
+            {
+              "name": "handlerName",
+              "type": "string"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronA11yKeysBehavior"
+        },
+        {
+          "name": "removeOwnKeyBindings",
+          "description": "When called, will remove all imperatively-added key bindings.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js",
+            "start": {
+              "line": 342,
+              "column": 2
+            },
+            "end": {
+              "line": 346,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronA11yKeysBehavior"
+        },
+        {
+          "name": "keyboardEventMatchesKeys",
+          "description": "Returns true if a keyboard event matches `eventString`.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js",
+            "start": {
+              "line": 355,
+              "column": 2
+            },
+            "end": {
+              "line": 363,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event",
+              "type": "KeyboardEvent"
+            },
+            {
+              "name": "eventString",
+              "type": "string"
+            }
+          ],
+          "return": {
+            "type": "boolean"
+          },
+          "inheritedFrom": "IronA11yKeysBehavior"
+        },
+        {
+          "name": "_collectKeyBindings",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js",
+            "start": {
+              "line": 365,
+              "column": 2
+            },
+            "end": {
+              "line": 375,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "IronA11yKeysBehavior"
+        },
+        {
+          "name": "_prepKeyBindings",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js",
+            "start": {
+              "line": 377,
+              "column": 2
+            },
+            "end": {
+              "line": 399,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronA11yKeysBehavior"
+        },
+        {
+          "name": "_addKeyBinding",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js",
+            "start": {
+              "line": 401,
+              "column": 2
+            },
+            "end": {
+              "line": 408,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "eventString"
+            },
+            {
+              "name": "handlerName"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronA11yKeysBehavior"
+        },
+        {
+          "name": "_resetKeyEventListeners",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js",
+            "start": {
+              "line": 410,
+              "column": 2
+            },
+            "end": {
+              "line": 416,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronA11yKeysBehavior"
+        },
+        {
+          "name": "_listenKeyEventListeners",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js",
+            "start": {
+              "line": 418,
+              "column": 2
+            },
+            "end": {
+              "line": 431,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronA11yKeysBehavior"
+        },
+        {
+          "name": "_unlistenKeyEventListeners",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js",
+            "start": {
+              "line": 433,
+              "column": 2
+            },
+            "end": {
+              "line": 448,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronA11yKeysBehavior"
+        },
+        {
+          "name": "_onKeyBindingEvent",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js",
+            "start": {
+              "line": 450,
+              "column": 2
+            },
+            "end": {
+              "line": 471,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "keyBindings"
+            },
+            {
+              "name": "event"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronA11yKeysBehavior"
+        },
+        {
+          "name": "_triggerKeyHandler",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js",
+            "start": {
+              "line": 473,
+              "column": 2
+            },
+            "end": {
+              "line": 482,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "keyCombo"
+            },
+            {
+              "name": "handlerName"
+            },
+            {
+              "name": "keyboardEvent"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "IronA11yKeysBehavior"
+        },
         {
           "name": "focus",
           "description": "",
@@ -263,6 +705,42 @@
       "privacy": "public",
       "superclass": "HTMLElement",
       "attributes": [
+        {
+          "name": "key-event-target",
+          "description": "The EventTarget that will be firing relevant KeyboardEvents. Set it to\n`null` to disable the listeners.",
+          "sourceRange": {
+            "file": "../../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js",
+            "start": {
+              "line": 273,
+              "column": 4
+            },
+            "end": {
+              "line": 278,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "?EventTarget",
+          "inheritedFrom": "IronA11yKeysBehavior"
+        },
+        {
+          "name": "stop-keyboard-event-propagation",
+          "description": "If true, this property will cause the implementing element to\nautomatically stop propagation on any handled KeyboardEvents.",
+          "sourceRange": {
+            "file": "../../@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js",
+            "start": {
+              "line": 284,
+              "column": 4
+            },
+            "end": {
+              "line": 284,
+              "column": 63
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined",
+          "inheritedFrom": "IronA11yKeysBehavior"
+        },
         {
           "name": "query",
           "description": "Text for which the user is searching",

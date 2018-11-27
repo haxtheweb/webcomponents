@@ -1,5 +1,6 @@
 import "./ace-builds/src-noconflict/ace.js";
 import "./ace-builds/src-noconflict/ext-searchbox.js";
+import { pathFromUrl } from "../node_modules/@polymer/polymer/lib/utils/resolve-url.js";
 class LRNAceEditor extends HTMLElement {
   get value() {
     return (this.editor && this.editor.getValue()) || this.textContent;
@@ -56,10 +57,8 @@ class LRNAceEditor extends HTMLElement {
       editor = this.editor;
     } else {
       container.textContent = this.value;
-      ace.config.set(
-        "basePath",
-        "../../code-editor/lib/ace-builds/src-min-noconflict"
-      );
+      let basePath = pathFromUrl(import.meta.url);
+      ace.config.set("basePath", `${basePath}ace-builds/src-min-noconflict`);
       editor = ace.edit(container);
       this.dispatchEvent(
         new CustomEvent("editor-ready", {

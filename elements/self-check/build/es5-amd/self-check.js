@@ -9,9 +9,20 @@ define([
   "./node_modules/@polymer/paper-tooltip/paper-tooltip.js",
   "./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js",
   "./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _HAXWiring,
+  _schemaBehaviors,
+  _paperCard,
+  _paperIconButton,
+  _editorIcons,
+  _ironIcons,
+  _paperTooltip,
+  _materializecssStyles,
+  _a11yBehaviors
+) {
   "use strict";
-  function _templateObject_1120ae90ecf411e88f6d9f4c8ff105eb() {
+  function _templateObject_499bf5d0f1e611e8abc3b5f740d61a18() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style include="materializecss-styles">\n      :host {\n        display: block;\n      }\n\n      paper-card {\n        overflow: hidden;\n      }\n\n      paper-icon-button#checkBtn {\n        width: 50px;\n        height: 50px;\n        position: relative;\n        left: 16px;\n        bottom: -10px;\n      }\n\n      .check_button {\n        display: flex;\n        justify-content: flex-end;\n      }\n\n      paper-icon-button#closeBtn {\n        width: 50px;\n        height: 50px;\n        position: relative;\n        left: 16px;\n        bottom: -16px;\n      }\n\n      .close_button {\n        display: flex;\n        justify-content: flex-end;\n      }\n\n      iron-icon#questionmark {\n        width: 35px;\n        height: 35px;\n        padding: 5px;\n      }\n\n      .heading {\n        text-transform: uppercase;\n        font-size: 22px;\n        margin: 10px;\n      }\n\n      #header_wrap {\n        display: inline-flex;\n        width: 100%;\n        margin: -20px 0 0;\n      }\n\n      #question_wrap {\n        position: relative;\n      }\n\n      .question {\n        font-size: 16px;\n        padding: 15px 15px;\n      }\n\n      :host([correct]) .question {\n        display: none;\n      }\n\n      #answer_wrap {\n        visibility: hidden;\n        opacity: 0;\n        background-color: #66bb6a;\n        border-top: 2px solid #fff;\n        width: 100%;\n        top: 0;\n        transition: all 0.2s ease;\n        left: calc(100%);\n        position: absolute;\n      }\n\n      :host([correct]) #answer_wrap {\n        visibility: visible;\n        opacity: 1;\n        position: relative;\n        left: 0;\n      }\n\n      .answer {\n        color: #fff;\n        font-size: 16px;\n        padding: 15px;\n        line-height: 19.2px;\n      }\n\n      #quote_start {\n        display: inline-flex;\n        transform: rotateY(180deg);\n      }\n\n      #quote_end {\n        display: inline-flex;\n      }\n\n      .triangle {\n        width: 0;\n        height: 0;\n        border-left: 20px solid transparent;\n        border-right: 20px solid transparent;\n        border-bottom: 20px solid;\n        position: relative;\n        top: -20px;\n        left: -1px;\n      }\n\n      .more_info {\n        display: inline;\n      }\n\n      .more_info a {\n        text-decoration: none;\n        color: #fff;\n      }\n\n      .more_info a:hover {\n        color: #1976d2;\n      }\n    </style>\n\n    <paper-card image="[[image]]" alt="[[alt]]">\n      <div class="triangle" style$="border-bottom-color:[[backgroundColor]];"></div>\n      <div id="header_wrap" class$="[[backgroundColorClass]] [[textColorClass]]">\n        <iron-icon id="questionmark" icon="icons:help"></iron-icon>\n        <div class="heading">[[title]]</div>\n      </div>\n      <div id="question_wrap">\n        <div class="question">\n          <slot name="question"></slot>\n          <div class="check_button">\n            <paper-icon-button id="checkBtn" icon="icons:check-circle" on-click="openAnswer" noink=""></paper-icon-button>\n            <paper-tooltip for="checkBtn" position="left">Reveal Answer</paper-tooltip>\n          </div>\n        </div>\n\n        <div id="answer_wrap">\n          <div class="answer">\n            <slot></slot>\n            <div class="more_info">\n              <a href="[[link]]" target="_blank">More info...</a>\n            </div>\n            <div class="close_button">\n              <paper-icon-button id="closeBtn" icon="icons:close" on-click="openAnswer" noink=""></paper-icon-button>\n            </div>\n          </div>\n        </div>\n      </div>\n    </paper-card>\n'
@@ -20,14 +31,14 @@ define([
         '\n    <style include="materializecss-styles">\n      :host {\n        display: block;\n      }\n\n      paper-card {\n        overflow: hidden;\n      }\n\n      paper-icon-button#checkBtn {\n        width: 50px;\n        height: 50px;\n        position: relative;\n        left: 16px;\n        bottom: -10px;\n      }\n\n      .check_button {\n        display: flex;\n        justify-content: flex-end;\n      }\n\n      paper-icon-button#closeBtn {\n        width: 50px;\n        height: 50px;\n        position: relative;\n        left: 16px;\n        bottom: -16px;\n      }\n\n      .close_button {\n        display: flex;\n        justify-content: flex-end;\n      }\n\n      iron-icon#questionmark {\n        width: 35px;\n        height: 35px;\n        padding: 5px;\n      }\n\n      .heading {\n        text-transform: uppercase;\n        font-size: 22px;\n        margin: 10px;\n      }\n\n      #header_wrap {\n        display: inline-flex;\n        width: 100%;\n        margin: -20px 0 0;\n      }\n\n      #question_wrap {\n        position: relative;\n      }\n\n      .question {\n        font-size: 16px;\n        padding: 15px 15px;\n      }\n\n      :host([correct]) .question {\n        display: none;\n      }\n\n      #answer_wrap {\n        visibility: hidden;\n        opacity: 0;\n        background-color: #66bb6a;\n        border-top: 2px solid #fff;\n        width: 100%;\n        top: 0;\n        transition: all 0.2s ease;\n        left: calc(100%);\n        position: absolute;\n      }\n\n      :host([correct]) #answer_wrap {\n        visibility: visible;\n        opacity: 1;\n        position: relative;\n        left: 0;\n      }\n\n      .answer {\n        color: #fff;\n        font-size: 16px;\n        padding: 15px;\n        line-height: 19.2px;\n      }\n\n      #quote_start {\n        display: inline-flex;\n        transform: rotateY(180deg);\n      }\n\n      #quote_end {\n        display: inline-flex;\n      }\n\n      .triangle {\n        width: 0;\n        height: 0;\n        border-left: 20px solid transparent;\n        border-right: 20px solid transparent;\n        border-bottom: 20px solid;\n        position: relative;\n        top: -20px;\n        left: -1px;\n      }\n\n      .more_info {\n        display: inline;\n      }\n\n      .more_info a {\n        text-decoration: none;\n        color: #fff;\n      }\n\n      .more_info a:hover {\n        color: #1976d2;\n      }\n    </style>\n\n    <paper-card image="[[image]]" alt="[[alt]]">\n      <div class="triangle" style\\$="border-bottom-color:[[backgroundColor]];"></div>\n      <div id="header_wrap" class\\$="[[backgroundColorClass]] [[textColorClass]]">\n        <iron-icon id="questionmark" icon="icons:help"></iron-icon>\n        <div class="heading">[[title]]</div>\n      </div>\n      <div id="question_wrap">\n        <div class="question">\n          <slot name="question"></slot>\n          <div class="check_button">\n            <paper-icon-button id="checkBtn" icon="icons:check-circle" on-click="openAnswer" noink=""></paper-icon-button>\n            <paper-tooltip for="checkBtn" position="left">Reveal Answer</paper-tooltip>\n          </div>\n        </div>\n\n        <div id="answer_wrap">\n          <div class="answer">\n            <slot></slot>\n            <div class="more_info">\n              <a href="[[link]]" target="_blank">More info...</a>\n            </div>\n            <div class="close_button">\n              <paper-icon-button id="closeBtn" icon="icons:close" on-click="openAnswer" noink=""></paper-icon-button>\n            </div>\n          </div>\n        </div>\n      </div>\n    </paper-card>\n'
       ]
     );
-    _templateObject_1120ae90ecf411e88f6d9f4c8ff105eb = function() {
+    _templateObject_499bf5d0f1e611e8abc3b5f740d61a18 = function _templateObject_499bf5d0f1e611e8abc3b5f740d61a18() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_1120ae90ecf411e88f6d9f4c8ff105eb()
+      _templateObject_499bf5d0f1e611e8abc3b5f740d61a18()
     ),
     is: "self-check",
     behaviors: [
@@ -66,7 +77,7 @@ define([
       this.correct = !this.correct;
     },
     attached: function attached() {
-      this.setHaxProperties({
+      var props = {
         canScale: !0,
         canPosition: !0,
         canEditSource: !1,
@@ -147,17 +158,30 @@ define([
           ],
           advanced: []
         }
-      });
+      };
+      this.setHaxProperties(props);
     },
-    _backgroundColorChanged: function _backgroundColorChanged(newValue) {
-      if (babelHelpers.typeof(newValue) !== "undefined" && null != newValue) {
+    _backgroundColorChanged: function _backgroundColorChanged(
+      newValue,
+      oldValue
+    ) {
+      if (
+        babelHelpers.typeof(newValue) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0)) &&
+        null != newValue
+      ) {
         this.computeTextPropContrast("textColor", "backgroundColor");
       }
     },
-    _primaryColorChanged: function _primaryColorChanged(newValue) {
+    _primaryColorChanged: function _primaryColorChanged(newValue, oldValue) {
       if (
         null != newValue &&
-        babelHelpers.typeof(this.source) !== "undefined"
+        babelHelpers.typeof(this.source) !==
+          ("undefined" === typeof void 0
+            ? "undefined"
+            : babelHelpers.typeof(void 0))
       ) {
         this.videoColor = newValue.substring(1);
         var source = this.source;

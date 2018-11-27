@@ -17,41 +17,46 @@
  *  limitations under the License.
  *
  */
-MathJax.Localization.addTranslation("scn",null,{
+MathJax.Localization.addTranslation("scn", null, {
   menuTitle: "sicilianu",
   version: "2.7.5",
   isLoaded: true,
   domains: {
-    "_": {
-        version: "2.7.5",
-        isLoaded: true,
-        strings: {
-          MathProcessingError: "Erruri nt\u00E2 labburazzioni d\u00EE f\u00F2rmuli matim\u00E0tichi",
-          MathError: "Erruri nt\u00E2 matim\u00E0tica",
-          LoadFile: "Carricamentu di %1",
-          Loading: "Carricamentu",
-          LoadFailed: "Nun arrinisc\u00ECu lu carricamentu di: %1",
-          ProcessMath: "Labburazzioni d\u00EE f\u00F2rmuli matim\u00E0tichi: %1%%",
-          Processing: "Labburazzioni",
-          TypesetMath: "Mpagginazzioni d\u00EE f\u00F2rmuli matim\u00E0tichi: %1%%",
-          Typesetting: "Mpagginazzioni",
-          MathJaxNotSupported: "Lu t\u00F2 browser nun supporta MathJax"
-        }
+    _: {
+      version: "2.7.5",
+      isLoaded: true,
+      strings: {
+        MathProcessingError:
+          "Erruri nt\u00E2 labburazzioni d\u00EE f\u00F2rmuli matim\u00E0tichi",
+        MathError: "Erruri nt\u00E2 matim\u00E0tica",
+        LoadFile: "Carricamentu di %1",
+        Loading: "Carricamentu",
+        LoadFailed: "Nun arrinisc\u00ECu lu carricamentu di: %1",
+        ProcessMath:
+          "Labburazzioni d\u00EE f\u00F2rmuli matim\u00E0tichi: %1%%",
+        Processing: "Labburazzioni",
+        TypesetMath:
+          "Mpagginazzioni d\u00EE f\u00F2rmuli matim\u00E0tichi: %1%%",
+        Typesetting: "Mpagginazzioni",
+        MathJaxNotSupported: "Lu t\u00F2 browser nun supporta MathJax"
+      }
     },
-    "FontWarnings": {},
+    FontWarnings: {},
     "HTML-CSS": {},
-    "HelpDialog": {},
-    "MathML": {},
-    "MathMenu": {},
-    "TeX": {}
+    HelpDialog: {},
+    MathML: {},
+    MathMenu: {},
+    TeX: {}
   },
-  plural: function (n) {
-      if (n === 1) {return 1} // one
-      return 2; // other
-    },
-  number: function (n) {
-      return String(n).replace(".", ","); // replace dot by comma
-    }
+  plural: function(n) {
+    if (n === 1) {
+      return 1;
+    } // one
+    return 2; // other
+  },
+  number: function(n) {
+    return String(n).replace(".", ","); // replace dot by comma
+  }
 });
 
 MathJax.Ajax.loadComplete("[MathJax]/localization/scn/scn.js");

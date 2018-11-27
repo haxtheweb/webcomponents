@@ -1,10 +1,11 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "moment/moment.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 /**
-@license
-Copyright (c) 2016 Abdón Rodríguez Davila (@abdonrd). All rights reserved.
-This code may only be used under the MIT style license found at https://abdonrd.github.io/LICENSE.txt
-*/
+ * @license
+ * Copyright (c) 2016 Abdón Rodríguez Davila (@abdonrd). All rights reserved.
+ * This code may only be used under the MIT style license found at https://abdonrd.github.io/LICENSE.txt
+ */
 /**
 Polymer element wrapper for the [moment](https://github.com/moment/moment) library.
 
@@ -77,11 +78,32 @@ Polymer({
     output: {
       type: String,
       notify: true
+    },
+    /**
+     * library loaded
+     */
+    libraryLoaded: {
+      type: Boolean
     }
   },
 
-  observers: ["_computeOutput(datetime, inputFormat, outputFormat, from, to)"],
-
+  observers: [
+    "_computeOutput(datetime, inputFormat, outputFormat, from, to, libraryLoaded)"
+  ],
+  created: function() {
+    const name = "moment";
+    const basePath = pathFromUrl(import.meta.url);
+    const location = `${basePath}lib/moment/moment.js`;
+    window.addEventListener(
+      `es-bridge-${name}-loaded`,
+      this._momentLoaded.bind(this)
+    );
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load(name, location);
+  },
+  _momentLoaded: function() {
+    this.libraryLoaded = true;
+  },
   /**
    * Recomputes the output
    */
@@ -91,21 +113,31 @@ Polymer({
       this.inputFormat,
       this.outputFormat,
       this.from,
-      this.to
+      this.to,
+      this.libraryLoaded
     );
   },
 
-  _computeOutput: function(datetime, inputFormat, outputFormat, from, to) {
-    var output = inputFormat ? moment(datetime, inputFormat) : moment(datetime);
-
-    if (outputFormat) {
-      output = output.format(outputFormat);
-    } else if (from) {
-      output = from === "now" ? output.fromNow() : output.from(moment(from));
-    } else if (to) {
-      output = to === "now" ? output.toNow() : output.to(moment(to));
+  _computeOutput: function(
+    datetime,
+    inputFormat,
+    outputFormat,
+    from,
+    to,
+    libraryLoaded
+  ) {
+    if (libraryLoaded) {
+      var output = inputFormat
+        ? moment(datetime, inputFormat)
+        : moment(datetime);
+      if (outputFormat) {
+        output = output.format(outputFormat);
+      } else if (from) {
+        output = from === "now" ? output.fromNow() : output.from(moment(from));
+      } else if (to) {
+        output = to === "now" ? output.toNow() : output.to(moment(to));
+      }
+      this.set("output", output);
     }
-
-    this.set("output", output);
   }
 });

@@ -4,10 +4,16 @@ define([
   "./node_modules/@polymer/paper-dialog/paper-dialog.js",
   "./node_modules/@polymer/paper-icon-button/paper-icon-button.js",
   "./lib/lrnsys-outline-item.js"
-], function(_polymerLegacy) {
+], function(
+  _polymerLegacy,
+  _paperInput,
+  _paperDialog,
+  _paperIconButton,
+  _lrnsysOutlineItem
+) {
   "use strict";
   var _listeners, _Polymer;
-  function _templateObject_f94d4940ecf311e8896d5f4a3df9e974() {
+  function _templateObject_3df50500f1e611e89e68a131b4693ace() {
     var data = babelHelpers.taggedTemplateLiteral(
       [
         '\n    <style>\n      :host {\n        display: block;\n      }\n      :host kbd {\n        display: inline-block;\n        background: #333;\n        color: white;\n        border-radius: 4px;\n        margin: 4px 4px 4px 0;\n        padding: 8px;\n        font-family: Verdana, Geneva, Tahoma, sans-serif;\n        font-size:85%;\n      }\n    </style>\n    <h1>[[title]]<paper-icon-button title="Keyboard directions" id="dialogtrigger" icon="icons:help" on-tap="openDirections"></paper-icon-button></h1>\n    <paper-dialog id="modal" with-backdrop="">\n      <h2>Keyboard shortcuts</h2>\n      <div>\n        <paper-icon-button title="close directions" style="position: absolute;top: 0; right:0;" icon="icons:cancel" on-tap="closeDirections"></paper-icon-button>\n        <ul>\n          <li><kbd>Enter</kbd> to <strong>add</strong> an item</li>\n          <li><kbd>Backspace</kbd> <em>with entire item selected</em> to <strong>delete</strong> an item.</li>\n          <li><kbd>\u2191</kbd> / <kbd>\u2193</kbd> / <kbd>\u2190</kbd> / <kbd>\u2192</kbd> to <strong>navigate</strong> through items</li>\n          <li><kbd>Tab</kbd> / <kbd>Shift+Tab</kbd> <em>at the beginning of a line</em> to <strong>indent/outdent</strong></li>\n          <li><kbd>Shift+\u2191</kbd> / <kbd>Shift+\u2193</kbd> to items up/down</li>\n        </ul>\n      </div>\n    </paper-dialog>\n    <div id="itemslist">\n      <template is="dom-repeat" items="{{items}}" as="item">\n        <lrnsys-outline-item disable-down$="[[item.disableDown]]" disable-left$="[[item.disableLeft]]" disable-right$="[[item.disableRight]]" disable-up$="[[item.disableUp]]" id$="[[item.id]]" index$="[[item.index]]" indent-level$="{{item.indent}}" parent$="{{item.parent}}" title$="{{item.title}}">\n        </lrnsys-outline-item>\n      </template>\n    </div>\n'
@@ -16,7 +22,7 @@ define([
         '\n    <style>\n      :host {\n        display: block;\n      }\n      :host kbd {\n        display: inline-block;\n        background: #333;\n        color: white;\n        border-radius: 4px;\n        margin: 4px 4px 4px 0;\n        padding: 8px;\n        font-family: Verdana, Geneva, Tahoma, sans-serif;\n        font-size:85%;\n      }\n    </style>\n    <h1>[[title]]<paper-icon-button title="Keyboard directions" id="dialogtrigger" icon="icons:help" on-tap="openDirections"></paper-icon-button></h1>\n    <paper-dialog id="modal" with-backdrop="">\n      <h2>Keyboard shortcuts</h2>\n      <div>\n        <paper-icon-button title="close directions" style="position: absolute;top: 0; right:0;" icon="icons:cancel" on-tap="closeDirections"></paper-icon-button>\n        <ul>\n          <li><kbd>Enter</kbd> to <strong>add</strong> an item</li>\n          <li><kbd>Backspace</kbd> <em>with entire item selected</em> to <strong>delete</strong> an item.</li>\n          <li><kbd>\u2191</kbd> / <kbd>\u2193</kbd> / <kbd>\u2190</kbd> / <kbd>\u2192</kbd> to <strong>navigate</strong> through items</li>\n          <li><kbd>Tab</kbd> / <kbd>Shift+Tab</kbd> <em>at the beginning of a line</em> to <strong>indent/outdent</strong></li>\n          <li><kbd>Shift+\u2191</kbd> / <kbd>Shift+\u2193</kbd> to items up/down</li>\n        </ul>\n      </div>\n    </paper-dialog>\n    <div id="itemslist">\n      <template is="dom-repeat" items="{{items}}" as="item">\n        <lrnsys-outline-item disable-down$="[[item.disableDown]]" disable-left$="[[item.disableLeft]]" disable-right$="[[item.disableRight]]" disable-up$="[[item.disableUp]]" id$="[[item.id]]" index$="[[item.index]]" indent-level$="{{item.indent}}" parent\\$="{{item.parent}}" title\\$="{{item.title}}">\n        </lrnsys-outline-item>\n      </template>\n    </div>\n'
       ]
     );
-    _templateObject_f94d4940ecf311e8896d5f4a3df9e974 = function() {
+    _templateObject_3df50500f1e611e89e68a131b4693ace = function _templateObject_3df50500f1e611e89e68a131b4693ace() {
       return data;
     };
     return data;
@@ -24,7 +30,7 @@ define([
   (0, _polymerLegacy.Polymer)(
     ((_Polymer = {
       _template: (0, _polymerLegacy.html)(
-        _templateObject_f94d4940ecf311e8896d5f4a3df9e974()
+        _templateObject_3df50500f1e611e89e68a131b4693ace()
       ),
       is: "lrnsys-outline",
       listeners: ((_listeners = {
@@ -43,10 +49,10 @@ define([
         data: { type: Array, value: null },
         items: { type: Array, value: null, notify: !0 }
       },
-      openDirections: function openDirections() {
+      openDirections: function openDirections(e) {
         this.$.modal.opened = !0;
       },
-      closeDirections: function closeDirections() {
+      closeDirections: function closeDirections(e) {
         this.$.modal.opened = !1;
         this.$.dialogtrigger.focus();
       },
@@ -124,7 +130,8 @@ define([
         this.__focusedItem.focus();
       },
       removeItem: function removeItem(item) {
-        var i = item.index;
+        var i = item.index,
+          items;
         if (
           confirm("Do you really want to delete " + this.items[i].title + "?")
         ) {
@@ -147,10 +154,15 @@ define([
           target = moveUp
             ? this.items[sourceStart].prevSibling
             : this._getLastChild(this.items[sourceEnd + 1]) - sourceCount + 1,
-          items = this.items;
+          items = this.items,
+          items2;
         if (-1 < target && target < this.items.length) {
           if ((moveUp && !item.disableUp) || (!moveUp && !item.disableDown)) {
-            items.splice(target, 0, items.splice(sourceStart, sourceCount));
+            items2 = items.splice(
+              target,
+              0,
+              items.splice(sourceStart, sourceCount)
+            );
             this.setData(items);
             this.__focusedItem = this.$.itemslist.querySelectorAll(
               "lrnsys-outline-item"
@@ -305,7 +317,7 @@ define([
     babelHelpers.defineProperty(
       _Polymer,
       "_handleBlurItem",
-      function _handleBlurItem() {}
+      function _handleBlurItem(e) {}
     ),
     _Polymer)
   );

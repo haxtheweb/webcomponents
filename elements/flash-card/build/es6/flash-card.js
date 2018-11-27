@@ -70,7 +70,7 @@ Polymer({
   listeners: { mouseenter: "_flipup", mouseleave: "_flipback" },
   properties: { title: { type: String } },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -104,12 +104,13 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   },
-  _flipup: function() {
+  _flipup: function(e) {
     this.$.card.classList.add("flipped");
   },
-  _flipback: function() {
+  _flipback: function(e) {
     this.$.card.classList.remove("flipped");
   }
 });

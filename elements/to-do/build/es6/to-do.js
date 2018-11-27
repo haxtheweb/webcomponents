@@ -83,7 +83,7 @@ Polymer({
       }
     }
   },
-  _addItemToList: function() {
+  _addItemToList: function(e) {
     if (
       "" != this.$.itemtext.value &&
       typeof this.$.itemtext.value !== typeof void 0
@@ -98,7 +98,7 @@ Polymer({
     }
   },
   attached: function() {
-    this.setHaxProperties({
+    let props = {
       canScale: !0,
       canPosition: !0,
       canEditSource: !1,
@@ -153,6 +153,7 @@ Polymer({
         ],
         advanced: []
       }
-    });
+    };
+    this.setHaxProperties(props);
   }
 });

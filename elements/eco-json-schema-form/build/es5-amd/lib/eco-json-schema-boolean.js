@@ -2,13 +2,13 @@ define([
   "../node_modules/@polymer/polymer/polymer-legacy.js",
   "../node_modules/@polymer/iron-flex-layout/iron-flex-layout-classes.js",
   "../node_modules/@polymer/paper-checkbox/paper-checkbox.js"
-], function(_polymerLegacy) {
+], function(_polymerLegacy, _ironFlexLayoutClasses, _paperCheckbox) {
   "use strict";
-  function _templateObject_d6744e20ecf111e88a0b4725ebfbecff() {
+  function _templateObject_8ed6cf00f1e411e8bd8eaf7090426072() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n<style is="custom-style" include="iron-flex iron-flex-alignment">\n      paper-checkbox {\n        color: #737373;\n        padding: 2px;\n        display: block;\n        font-size: 16px;\n        white-space: normal;\n    }\n    </style>\n\n    <paper-checkbox id="checkbox" class="flex" checked="{{value}}" invalid="[[error]]">[[_label]]</paper-checkbox>  \n'
     ]);
-    _templateObject_d6744e20ecf111e88a0b4725ebfbecff = function() {
+    _templateObject_8ed6cf00f1e411e8bd8eaf7090426072 = function _templateObject_8ed6cf00f1e411e8bd8eaf7090426072() {
       return data;
     };
     return data;
@@ -16,7 +16,7 @@ define([
   (0, _polymerLegacy.Polymer)({
     is: "eco-json-schema-boolean",
     _template: (0, _polymerLegacy.html)(
-      _templateObject_d6744e20ecf111e88a0b4725ebfbecff()
+      _templateObject_8ed6cf00f1e411e8bd8eaf7090426072()
     ),
     properties: {
       schema: { type: Object, observer: "_schemaChanged" },
