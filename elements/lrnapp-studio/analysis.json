@@ -4,20 +4,20 @@
     {
       "description": "",
       "summary": "",
-      "path": "lib/lrnapp-studio-app.js",
+      "path": "lib/lrnapp-studio-kanban.js",
       "properties": [
         {
-          "name": "prop1",
+          "name": "activeAssignment",
           "type": "string | null | undefined",
-          "description": "",
+          "description": "Tracks the active assignment.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 21,
+              "line": 140,
               "column": 4
             },
             "end": {
-              "line": 24,
+              "line": 143,
               "column": 5
             }
           },
@@ -26,20 +26,114 @@
               "attributeType": "String"
             }
           },
-          "defaultValue": "\"lrnapp-studio-app\""
+          "defaultValue": "null"
         }
       ],
-      "methods": [],
+      "methods": [
+        {
+          "name": "handleProjectResponse",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 146,
+              "column": 2
+            },
+            "end": {
+              "line": 148,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "response"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "handleAssignmentResponse",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 150,
+              "column": 2
+            },
+            "end": {
+              "line": 152,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "response"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_toArray",
+          "description": "Simple way to convert from object to array.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 157,
+              "column": 2
+            },
+            "end": {
+              "line": 161,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "obj"
+            }
+          ]
+        },
+        {
+          "name": "assignmentFocusIn",
+          "description": "Handle toggle for mouse class and manage classList array for paper-button.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 166,
+              "column": 2
+            },
+            "end": {
+              "line": 183,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        }
+      ],
       "staticMethods": [],
       "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 5,
+          "line": 8,
           "column": 8
         },
         "end": {
-          "line": 26,
+          "line": 184,
           "column": 1
         }
       },
@@ -47,15 +141,15 @@
       "superclass": "HTMLElement",
       "attributes": [
         {
-          "name": "prop1",
-          "description": "",
+          "name": "active-assignment",
+          "description": "Tracks the active assignment.",
           "sourceRange": {
             "start": {
-              "line": 21,
+              "line": 140,
               "column": 4
             },
             "end": {
-              "line": 24,
+              "line": 143,
               "column": 5
             }
           },
@@ -69,7 +163,7 @@
         "selectors": []
       },
       "slots": [],
-      "tagname": "lrnapp-studio-app"
+      "tagname": "lrnapp-studio-kanban"
     }
   ]
 }

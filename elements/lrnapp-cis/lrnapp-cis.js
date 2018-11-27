@@ -120,10 +120,10 @@ Polymer({
     <div class="courses-grid">
     <iron-pages selected="{{data.page}}" attr-for-selected="name" fallback-selection="courses" role="main">
       <div class="iron-list-container" name="courses">
-        <iron-list items="[[courses]]" as="course" grid="">
+        <iron-list id="list" items="[[courses]]" as="course" grid="">
           <template>
-          <paper-button data-course-id\$="[[course.id]]" class="coursecard-wrapper" on-tap="_loadCourseUrl">
-            <lrnapp-cis-course-card elevation="2" data-course-id\$="[[course.id]]" name="[[course.data.name]]" image="[[course.data.image]]" title="[[course.data.title]]" color="[[course.data.color]]">
+          <paper-button data-course-id$="[[course.id]]" class="coursecard-wrapper" on-tap="_loadCourseUrl">
+            <lrnapp-cis-course-card elevation="2" data-course-id$="[[course.id]]" name="[[course.data.name]]" image="[[course.data.image]]" title="[[course.data.title]]" color="[[course.data.color]]">
             </lrnapp-cis-course-card>
           </paper-button>
           </template>
@@ -144,17 +144,24 @@ Polymer({
       type: Object
     },
     /**
+     * Data bound route from location
+     */
+    route: {
+      type: Object,
+      notify: true
+    },
+    /**
      * The courses to render; potentially filtered
      */
     courses: {
-      type: Array,
-      computed: "_coursesCompute(originalCourses, queryParams)"
+      type: Array
     },
     /**
      * The original courses array; used to filter against
      */
     originalCourses: {
-      type: Array
+      type: Array,
+      notify: true
     },
     /**
      * The courses to render
@@ -206,18 +213,14 @@ Polymer({
     },
     queryParams: {
       type: Object,
-      notify: true
+      notify: true,
+      observer: "_queryParamsChanged"
     },
     _blockcycle: {
       type: Boolean,
       value: false
     }
   },
-
-  listeners: {
-    "route-change": "_routeChange"
-  },
-
   observers: ["_routeChanged(route, endPoint)"],
 
   // If the current route is outside the scope of our app
@@ -234,26 +237,6 @@ Polymer({
       window.location.reload();
     }
   },
-
-  /**
-   * Change route from deeper in the app.
-   */
-  _routeChange: function(e) {
-    var details = e.detail;
-    if (typeof details.queryParams.course !== typeof undefined) {
-      this.set("queryParams.course", details.queryParams.course);
-    }
-    if (typeof details.queryParams.academic !== typeof undefined) {
-      this.set("queryParams.academic", details.queryParams.academic);
-    }
-    if (typeof details.queryParams.program !== typeof undefined) {
-      this.set("queryParams.program", details.queryParams.program);
-    }
-    if (typeof details.data.page !== typeof undefined) {
-      this.set("data.page", details.data.page);
-    }
-  },
-
   /**
    * Simple way to convert from object to array.
    */
@@ -308,17 +291,16 @@ Polymer({
    * Handle tap on paper-button above to redirect to the correct course url.
    */
   _loadCourseUrl: function(e) {
-    let root = this;
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     // this will have the id of the current course
     var active = local.getAttribute("data-course-id");
     // find the course by it's unique id and filter just to it
     let findCourse = this.originalCourses.filter(course => {
-      if (course.id !== active) {
-        return false;
+      if (course.id == active) {
+        return true;
       }
-      return true;
+      return false;
     });
     // if we found one, make it the top level item
     if (findCourse.length > 0) {
@@ -329,34 +311,36 @@ Polymer({
       window.location.href = findCourse.data.uri;
     }
   },
-
+  /**
+   * queryParams changed
+   */
+  _queryParamsChanged: function(newValue, oldValue) {
+    this.set("courses", this._coursesCompute(this.originalCourses, newValue));
+  },
   /**
    * Compute the active list of courses
    */
   _coursesCompute: function(originalCourses, queryParams) {
-    console.log(originalCourses);
-    console.log(queryParams);
     // if we don't have an original courses object to work with then we need to bail
     if (typeof originalCourses === "undefined") {
       return [];
     }
     // define vars
-    const root = this;
     let filteredCourses = [];
     // filter the courses by the query params
     filteredCourses = originalCourses.filter(course => {
-      if (typeof root.queryParams.course !== "undefined") {
-        if (course.id !== root.queryParams.course) {
+      if (typeof this.queryParams.course !== "undefined") {
+        if (course.id != this.queryParams.course) {
           return false;
         }
       }
-      if (typeof root.queryParams.program !== "undefined") {
-        if (course.relationships.program.id !== root.queryParams.program) {
+      if (typeof this.queryParams.program !== "undefined") {
+        if (course.relationships.program.id != this.queryParams.program) {
           return false;
         }
       }
-      if (typeof root.queryParams.academic !== "undefined") {
-        if (course.relationships.academic.id !== root.queryParams.academic) {
+      if (typeof this.queryParams.academic !== "undefined") {
+        if (course.relationships.academic.id != this.queryParams.academic) {
           return false;
         }
       }
@@ -364,8 +348,8 @@ Polymer({
     });
     // delay and repaint, can help with refresh issues
     setTimeout(() => {
-      document.querySelector("iron-list").fire("iron-resize");
-    }, 200);
+      this.$.list.fire("iron-resize");
+    }, 100);
     return filteredCourses;
   }
 });

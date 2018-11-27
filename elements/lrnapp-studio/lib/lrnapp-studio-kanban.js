@@ -1,5 +1,15 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@polymer/iron-ajax/iron-ajax.js";
+import "@polymer/iron-list/iron-list.js";
+import "@polymer/paper-card/paper-card.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
+import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 Polymer({
   _template: html`
     <style include="materializecss-styles"></style>

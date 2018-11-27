@@ -158,7 +158,8 @@ Polymer({
 
   properties: {
     size: {
-      type: String
+      type: String,
+      reflectToAttribute: true
     },
     /**
      * Cover image src.
