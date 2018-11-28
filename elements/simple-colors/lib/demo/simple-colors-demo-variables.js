@@ -5,7 +5,7 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import { SimpleColors } from "../../simple-colors.js"; //import the shared styles
-import "./simple-colors-demo-select.js";
+import "./simple-colors-demo.js";
 
 export { SimpleColorsDemoVariables };
 /**
@@ -31,10 +31,6 @@ class SimpleColorsDemoVariables extends SimpleColors {
 :host([hidden]){
   display: none;
 }
-:host #selectors, 
-:host #properties {
-  padding: 15px;
-}
 :host #demo {
   padding: 20px;
 }
@@ -44,9 +40,11 @@ class SimpleColorsDemoVariables extends SimpleColors {
   padding: 5px 7px;
   cursor: pointer;
 }
-:host #selectors {
+:host #varselectors {
+  color: black !important;
   background-color: #f5f5f5;
   font-family: monospace;
+  padding: 15px;
 }
 :host #properties {
   padding: 15px;
@@ -60,88 +58,78 @@ class SimpleColorsDemoVariables extends SimpleColors {
   overflow: hidden;
 }
 </style>
-<div id="inner">
-  <div id="demo">
-    <button id="button">Button</button>
+<simple-colors-demo>
+  <div id="inner">
+    <div id="demo">
+      <button id="button">Button</button>
+    </div>
+    <div id="varselectors">
+      <em>button</em> { 
+        <div id="properties">
+          color: var(<label class="sr-only" for="theme">Text Theme</label><simple-colors-demo-select id="theme"
+            label="theme"
+            value="--simple-colors-default-theme" 
+            as-code 
+            on-theme-change="_handleUpdate"
+            options='["--simple-colors-default-theme","--simple-colors-dark-theme","--simple-colors-light-theme"]'>
+          </simple-colors-demo-select>-<label class="sr-only" for="color">Text Base Color</label><simple-colors-demo-select id="color"
+            label="accent-color"
+            value="grey" 
+            as-code 
+            on-accent-color-change="_handleUpdate"
+            options$="[[_getOptions(colors)]]">
+          </simple-colors-demo-select>-<label class="sr-only" for="level">Text Shade Level</label><simple-colors-demo-select id="level"
+            label="level"
+            value="1" 
+            as-code 
+            on-level-change="_handleUpdate"
+            options='["1","2","3","4","5","6","7","8","9","10","11","12"]'>
+          </simple-colors-demo-select>); <br>
+          
+          background-color: var(<label class="sr-only" for="theme">Background Theme</label><simple-colors-demo-select id="bgtheme"
+            label="theme"
+            value="--simple-colors-default-theme" 
+            as-code 
+            on-theme-change="_handleUpdate"
+            options='["--simple-colors-default-theme","--simple-colors-dark-theme","--simple-colors-light-theme"]'>
+          </simple-colors-demo-select>-<label class="sr-only" for="color">Background Base Color</label><simple-colors-demo-select id="bgcolor"
+            label="accent-color"
+            value="accent" 
+            as-code 
+            on-accent-color-change="_handleUpdate"
+            options$="[[_getOptions(colors)]]">
+          </simple-colors-demo-select>-<label class="sr-only" for="level">Background Shade Level</label><simple-colors-demo-select id="bglevel"
+            label="level"
+            value="7" 
+            as-code 
+            on-level-change="_handleUpdate"
+            options='["1","2","3","4","5","6","7","8","9","10","11","12"]'>
+          </simple-colors-demo-select>); <br>
+          
+          border-color: var(<label class="sr-only" for="theme">Border Theme</label><simple-colors-demo-select id="bdtheme"
+            label="theme"
+            value="--simple-colors-default-theme" 
+            as-code 
+            on-theme-change="_handleUpdate"
+            options='["--simple-colors-default-theme","--simple-colors-dark-theme","--simple-colors-light-theme"]'>
+          </simple-colors-demo-select>-<label class="sr-only" for="color">Border Base Color</label><simple-colors-demo-select id="bdcolor"
+            label="accent-color"
+            value="accent" 
+            as-code 
+            on-accent-color-change="_handleUpdate"
+            options$="[[_getOptions(colors)]]">
+          </simple-colors-demo-select>-<label class="sr-only" for="level">Border Shade Level</label><simple-colors-demo-select id="bdlevel"
+            label="level"
+            value="9" 
+            as-code 
+            on-level-change="_handleUpdate"
+            options='["1","2","3","4","5","6","7","8","9","10","11","12"]'>
+          </simple-colors-demo-select>);
+        </div>
+      }
+    </div>
   </div>
-  <div id="selectors">
-    <em>button</em> { 
-      <div id="properties">
-        color: var(<label class="sr-only" for="theme">Text Theme</label><simple-colors-demo-select id="theme"
-          label="theme"
-          value="--simple-colors-default-theme" 
-          as-code 
-          on-theme-change="_handleUpdate"
-          options='["--simple-colors-default-theme","--simple-colors-dark-theme","--simple-colors-light-theme"]'>
-        </simple-colors-demo-select>
-        -
-        <label class="sr-only" for="color">Text Base Color</label><simple-colors-demo-select id="color"
-          label="accent-color"
-          value="grey" 
-          as-code 
-          on-accent-color-change="_handleUpdate"
-          options$="[[_getOptions(colors)]]">
-        </simple-colors-demo-select>
-        -
-        <label class="sr-only" for="level">Text Shade Level</label><simple-colors-demo-select id="level"
-          label="level"
-          value="1" 
-          as-code 
-          on-level-change="_handleUpdate"
-          options='["1","2","3","4","5","6","7","8","9","10","11","12"]'>
-        </simple-colors-demo-select>); <br>
-        
-        background-color: var(<label class="sr-only" for="theme">Background Theme</label><simple-colors-demo-select id="bgtheme"
-          label="theme"
-          value="--simple-colors-default-theme" 
-          as-code 
-          on-theme-change="_handleUpdate"
-          options='["--simple-colors-default-theme","--simple-colors-dark-theme","--simple-colors-light-theme"]'>
-        </simple-colors-demo-select>
-        -
-        <label class="sr-only" for="color">Background Base Color</label><simple-colors-demo-select id="bgcolor"
-          label="accent-color"
-          value="accent" 
-          as-code 
-          on-accent-color-change="_handleUpdate"
-          options$="[[_getOptions(colors)]]">
-        </simple-colors-demo-select>
-        -
-        <label class="sr-only" for="level">Background Shade Level</label><simple-colors-demo-select id="bglevel"
-          label="level"
-          value="7" 
-          as-code 
-          on-level-change="_handleUpdate"
-          options='["1","2","3","4","5","6","7","8","9","10","11","12"]'>
-        </simple-colors-demo-select>); <br>
-        
-        border-color: var(<label class="sr-only" for="theme">Border Theme</label><simple-colors-demo-select id="bdtheme"
-          label="theme"
-          value="--simple-colors-default-theme" 
-          as-code 
-          on-theme-change="_handleUpdate"
-          options='["--simple-colors-default-theme","--simple-colors-dark-theme","--simple-colors-light-theme"]'>
-        </simple-colors-demo-select>
-        -
-        <label class="sr-only" for="color">Border Base Color</label><simple-colors-demo-select id="bdcolor"
-          label="accent-color"
-          value="accent" 
-          as-code 
-          on-accent-color-change="_handleUpdate"
-          options$="[[_getOptions(colors)]]">
-        </simple-colors-demo-select>
-        -
-        <label class="sr-only" for="level">Border Shade Level</label><simple-colors-demo-select id="bdlevel"
-          label="level"
-          value="9" 
-          as-code 
-          on-level-change="_handleUpdate"
-          options='["1","2","3","4","5","6","7","8","9","10","11","12"]'>
-        </simple-colors-demo-select>);
-      </div>
-    }
-  </div>
-</div>`;
+</simple-colors-demo>`;
   }
 
   /**

@@ -6,7 +6,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/polymer/lib/elements/dom-if.js";
 import { SimpleColors } from "../../simple-colors.js"; //import the shared styles
 import "./simple-colors-demo-select.js";
-import "./simple-colors-demo-child.js";
 
 export { SimpleColorsDemo };
 /**
@@ -41,6 +40,9 @@ class SimpleColorsDemo extends SimpleColors {
   padding: 2px;
   margin: 0 0 15px;
   font-family: monospace;
+}
+:host .slot {
+  padding: var(--simple-colors-demo-padding, 0);
 }
 a, a[link] {
   color: var(--simple-colors-default-theme-blue-8); 

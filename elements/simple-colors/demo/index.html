@@ -9,6 +9,9 @@
       import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
       import '../simple-colors.js';
       import '../lib/demo/simple-colors-demo.js';
+      import '../lib/demo/simple-colors-demo-classes.js';
+      import '../lib/demo/simple-colors-demo-variables.js';
+      import '../lib/demo/simple-colors-demo-table.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
       div {
@@ -40,6 +43,9 @@
       }
       #parentdemo {
         border-top: 4px solid var(--simple-colors-default-theme-accent-6);
+      }
+      simple-colors-demo {
+        --simple-colors-demo-padding: 20px;
       }
       simple-colors {
         background-color: var(--simple-colors-default-theme-grey-1);
