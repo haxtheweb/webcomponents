@@ -19,7 +19,7 @@ A LRN element
  -
 
 */
-Polymer({
+let SelfCheck = Polymer({
   _template: html`
     <style include="materializecss-styles">
       :host {
@@ -406,3 +406,4 @@ Polymer({
     }
   }
 });
+export { SelfCheck };

@@ -8,7 +8,7 @@ Creates a textarea with common editor logic and can be controlled by UI elements
 
 @demo demo/index.html
 */
-Polymer({
+let MtzMarkedEditor = Polymer({
   _template: html`
     <style>
       :host {
@@ -141,3 +141,4 @@ Polymer({
     dom(event).rootTarget.__editor = this;
   }
 });
+export { MtzMarkedEditor };

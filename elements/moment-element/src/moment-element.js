@@ -16,7 +16,7 @@ Examples:
 
 @demo demo/index.html
 */
-Polymer({
+let MomentElement = Polymer({
   _template: html`
     [[output]]
 `,
@@ -141,3 +141,4 @@ Polymer({
     }
   }
 });
+export { MomentElement };

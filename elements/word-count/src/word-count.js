@@ -7,7 +7,7 @@ import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nod
  *
  * @demo demo/index.html
  */
-Polymer({
+let WordCount = Polymer({
   _template: html`
     <style>
       :host {
@@ -109,3 +109,4 @@ Polymer({
     return prefix + " " + words;
   }
 });
+export { WordCount };

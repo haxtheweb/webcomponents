@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
@@ -13,7 +17,7 @@ A LRN element
 @microcopy - the mental model for this element
  - flagged - a piece of content with a status message indicating there's an issue with the input by the user. This isn't formal validation but more of feedback or suggestions about what they are entering. The default is feedback for alt metadata, useful for images.
 */
-Polymer({
+let PaperInputFlagged = Polymer({
   _template: html`
     <style>
       :host {
@@ -200,3 +204,4 @@ Polymer({
     }
   }
 });
+export { PaperInputFlagged };

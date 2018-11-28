@@ -22,7 +22,7 @@ A LRN element
 @demo demo/index.html
 
 */
-Polymer({
+let OutlinePlayer = Polymer({
   _template: html`
     <style include="materializecss-styles">
       :host {
@@ -577,3 +577,4 @@ Polymer({
     return outlineTitle ? true : false;
   }
 });
+export { OutlinePlayer };

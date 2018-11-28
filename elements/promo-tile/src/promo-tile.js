@@ -16,7 +16,7 @@ A LRN element
  -
 
 */
-Polymer({
+let PromoTile = Polymer({
   _template: html`
     <style>
       :host {
@@ -320,3 +320,4 @@ Polymer({
     this.hover = false;
   }
 });
+export { PromoTile };

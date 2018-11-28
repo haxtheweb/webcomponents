@@ -14,7 +14,7 @@ a central concept, much like the ELMS:LN snowflake icon.
  - ELMS:LN - The ELMS: Learning Network "snowflake" is a network diagram
 
 */
-Polymer({
+let SimpleConceptNetwork = Polymer({
   _template: html`
     <style include="materializecss-styles">
       :host {
@@ -226,3 +226,4 @@ Polymer({
     this.setHaxProperties(props);
   }
 });
+export { SimpleConceptNetwork };

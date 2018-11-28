@@ -15,7 +15,7 @@ Giving learners a new perspective on education.
 @microcopy - the mental model for this app
  - perspective - a change in viewpoint, angle of seeing something
 */
-Polymer({
+let PerSpecTive = Polymer({
   _template: html`
     <style>
       :host {
@@ -109,3 +109,4 @@ Polymer({
     });
   }
 });
+export { PerSpecTive };

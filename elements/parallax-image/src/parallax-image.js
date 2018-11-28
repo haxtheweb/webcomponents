@@ -13,7 +13,7 @@ A LRN element
  -
 
 */
-Polymer({
+let ParallaxImage = Polymer({
   _template: html`
     <style>
       :host {
@@ -192,3 +192,4 @@ Polymer({
     });
   }
 });
+export { ParallaxImage };

@@ -43,7 +43,7 @@ Custom property                             | Description                       
 @element paper-audio-player
 @demo demo/index.html
 */
-Polymer({
+let PaperAudioPlayer = Polymer({
   _template: html`
     <style>
       :host {
@@ -693,3 +693,4 @@ Polymer({
     return autoplay ? "auto" : preload;
   }
 });
+export { PaperAudioPlayer };
