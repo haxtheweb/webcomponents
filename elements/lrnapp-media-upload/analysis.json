@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 34,
+              "line": 44,
               "column": 4
             },
             "end": {
-              "line": 38,
+              "line": 48,
               "column": 5
             }
           },
@@ -25,6 +25,27 @@
             "polymer": {
               "notify": true,
               "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 13,
+              "column": 2
+            },
+            "end": {
+              "line": 39,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
             }
           }
         }
@@ -35,27 +56,28 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 2,
-          "column": 8
+          "line": 12,
+          "column": 32
         },
         "end": {
-          "line": 40,
+          "line": 50,
           "column": 1
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnappMediaUpload",
       "attributes": [
         {
           "name": "upload-path",
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 34,
+              "line": 44,
               "column": 4
             },
             "end": {
-              "line": 38,
+              "line": 48,
               "column": 5
             }
           },

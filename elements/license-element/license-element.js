@@ -10,7 +10,7 @@ A simple way of applying a semantically accurate license to work.
 @microcopy - the mental model for this element
 
 */
-Polymer({
+let LicenseElement = Polymer({
   _template: html`
     <style>
       :host {
@@ -304,3 +304,4 @@ Polymer({
     }
   }
 });
+export { LicenseElement };

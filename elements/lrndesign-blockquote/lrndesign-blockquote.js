@@ -11,7 +11,7 @@ A structured blockquote element
 
 @demo demo/index.html
 */
-Polymer({
+let LrndesignBlockquote = Polymer({
   _template: html`
     <style include="materializecss-styles"></style>
     <style>
@@ -331,3 +331,4 @@ Polymer({
     return returnClass;
   }
 });
+export { LrndesignBlockquote };

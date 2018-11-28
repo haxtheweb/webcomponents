@@ -18,7 +18,7 @@ import "./lib/site-card.js";
  * @microcopy - the mental model for this element
  * -
  */
-Polymer({
+let SitesListing = Polymer({
   _template: html`
     <style>
       :host {
@@ -141,3 +141,4 @@ Polymer({
     card.elevation = card.__oldElevation;
   }
 });
+export { SitesListing };

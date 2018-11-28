@@ -135,6 +135,27 @@
             }
           },
           "defaultValue": "1"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 14,
+              "column": 2
+            },
+            "end": {
+              "line": 153,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -314,7 +335,7 @@
       "tagname": "site-card"
     },
     {
-      "description": "`sites-listing`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "sites-listing.js",
       "properties": [
@@ -379,6 +400,27 @@
           "metadata": {
             "polymer": {
               "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 21,
+              "column": 2
+            },
+            "end": {
+              "line": 75,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
             }
           }
         }
@@ -458,17 +500,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 20,
-          "column": 8
+          "column": 27
         },
         "end": {
           "line": 142,
@@ -477,6 +514,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "SitesListing",
       "attributes": [
         {
           "name": "sites",

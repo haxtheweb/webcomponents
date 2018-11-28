@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrnsys-comment`\nA well styled comment for a user with markdown support.",
+      "description": "",
       "summary": "",
       "path": "lrnsys-comment.js",
       "properties": [
@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 236,
+              "line": 240,
               "column": 4
             },
             "end": {
-              "line": 240,
+              "line": 244,
               "column": 5
             }
           },
@@ -36,11 +36,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 241,
+              "line": 245,
               "column": 4
             },
             "end": {
-              "line": 246,
+              "line": 250,
               "column": 5
             }
           },
@@ -59,11 +59,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 247,
+              "line": 251,
               "column": 4
             },
             "end": {
-              "line": 251,
+              "line": 255,
               "column": 5
             }
           },
@@ -82,11 +82,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 252,
+              "line": 256,
               "column": 4
             },
             "end": {
-              "line": 255,
+              "line": 259,
               "column": 5
             }
           },
@@ -103,11 +103,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 256,
+              "line": 260,
               "column": 4
             },
             "end": {
-              "line": 261,
+              "line": 265,
               "column": 5
             }
           },
@@ -126,11 +126,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 262,
+              "line": 266,
               "column": 4
             },
             "end": {
-              "line": 266,
+              "line": 270,
               "column": 5
             }
           },
@@ -138,6 +138,27 @@
             "polymer": {
               "notify": true,
               "attributeType": "Boolean"
+            }
+          }
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 29,
+              "column": 2
+            },
+            "end": {
+              "line": 235,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
             }
           }
         }
@@ -149,11 +170,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 272,
+              "line": 276,
               "column": 2
             },
             "end": {
-              "line": 275,
+              "line": 279,
               "column": 3
             }
           },
@@ -169,11 +190,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 279,
+              "line": 283,
               "column": 2
             },
             "end": {
-              "line": 285,
+              "line": 289,
               "column": 3
             }
           },
@@ -189,11 +210,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 287,
+              "line": 291,
               "column": 2
             },
             "end": {
-              "line": 292,
+              "line": 296,
               "column": 3
             }
           },
@@ -213,11 +234,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 294,
+              "line": 298,
               "column": 2
             },
             "end": {
-              "line": 299,
+              "line": 303,
               "column": 3
             }
           },
@@ -234,11 +255,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 301,
+              "line": 305,
               "column": 2
             },
             "end": {
-              "line": 305,
+              "line": 309,
               "column": 3
             }
           },
@@ -258,11 +279,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 310,
+              "line": 314,
               "column": 2
             },
             "end": {
-              "line": 334,
+              "line": 338,
               "column": 3
             }
           },
@@ -282,11 +303,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 339,
+              "line": 343,
               "column": 2
             },
             "end": {
-              "line": 367,
+              "line": 371,
               "column": 3
             }
           },
@@ -306,11 +327,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 371,
+              "line": 375,
               "column": 2
             },
             "end": {
-              "line": 374,
+              "line": 378,
               "column": 3
             }
           },
@@ -330,11 +351,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 379,
+              "line": 383,
               "column": 2
             },
             "end": {
-              "line": 382,
+              "line": 386,
               "column": 3
             }
           },
@@ -350,36 +371,32 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 24,
-          "column": 8
+          "line": 28,
+          "column": 28
         },
         "end": {
-          "line": 383,
+          "line": 387,
           "column": 1
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnsysComment",
       "attributes": [
         {
           "name": "comment",
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 236,
+              "line": 240,
               "column": 4
             },
             "end": {
-              "line": 240,
+              "line": 244,
               "column": 5
             }
           },
@@ -391,11 +408,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 241,
+              "line": 245,
               "column": 4
             },
             "end": {
-              "line": 246,
+              "line": 250,
               "column": 5
             }
           },
@@ -407,23 +424,7 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 247,
-              "column": 4
-            },
-            "end": {
               "line": 251,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "hover-class",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 252,
               "column": 4
             },
             "end": {
@@ -435,7 +436,7 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "editform",
+          "name": "hover-class",
           "description": "",
           "sourceRange": {
             "start": {
@@ -443,7 +444,23 @@
               "column": 4
             },
             "end": {
-              "line": 261,
+              "line": 259,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "editform",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 260,
+              "column": 4
+            },
+            "end": {
+              "line": 265,
               "column": 5
             }
           },
@@ -455,11 +472,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 262,
+              "line": 266,
               "column": 4
             },
             "end": {
-              "line": 266,
+              "line": 270,
               "column": 5
             }
           },
@@ -706,6 +723,27 @@
               "notify": true,
               "readOnly": true,
               "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 26,
+              "column": 2
+            },
+            "end": {
+              "line": 69,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
             }
           }
         }

@@ -139,6 +139,27 @@
             }
           },
           "defaultValue": "0"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 63,
+              "column": 4
+            },
+            "end": {
+              "line": 80,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -414,159 +435,8 @@
       "description": "`<paper-square-grow-animation>` increases the element's width and height from an initial\npredefined pixel square size to its final size.\n\nConfiguration:\n```\n{\n  name: 'expand-animation',\n  node: <node>,\n  startSize: <start-size-in-px>,\n  timing: <animation-timing>,\n}\n```",
       "summary": "",
       "path": "lib/paper-square-grow-animation.js",
-      "properties": [
-        {
-          "name": "animationTiming",
-          "type": "Object | null | undefined",
-          "description": "Defines the animation timing.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 23,
-              "column": 4
-            },
-            "end": {
-              "line": 30,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Object"
-            }
-          },
-          "defaultValue": "{\"duration\":500,\"easing\":\"cubic-bezier(0.4, 0, 0.2, 1)\",\"fill\":\"both\"}",
-          "inheritedFrom": "NeonAnimationBehavior"
-        },
-        {
-          "name": "isNeonAnimation",
-          "type": "boolean",
-          "description": "Can be used to determine that elements implement this behavior.\n   ",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 37,
-              "column": 2
-            },
-            "end": {
-              "line": 37,
-              "column": 23
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          },
-          "inheritedFrom": "NeonAnimationBehavior"
-        }
-      ],
+      "properties": [],
       "methods": [
-        {
-          "name": "created",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 45,
-              "column": 2
-            },
-            "end": {
-              "line": 51,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimationBehavior"
-        },
-        {
-          "name": "timingFromConfig",
-          "description": "Returns the animation timing by mixing in properties from `config` to the\ndefaults defined by the animation.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 57,
-              "column": 2
-            },
-            "end": {
-              "line": 64,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "config"
-            }
-          ],
-          "inheritedFrom": "NeonAnimationBehavior"
-        },
-        {
-          "name": "setPrefixedProperty",
-          "description": "Sets `transform` and `transformOrigin` properties along with the prefixed\nversions.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 70,
-              "column": 2
-            },
-            "end": {
-              "line": 80,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "node"
-            },
-            {
-              "name": "property"
-            },
-            {
-              "name": "value"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimationBehavior"
-        },
-        {
-          "name": "complete",
-          "description": "Called when the animation finishes.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 85,
-              "column": 2
-            },
-            "end": {
-              "line": 85,
-              "column": 31
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "config"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "NeonAnimationBehavior"
-        },
         {
           "name": "configure",
           "description": "",
@@ -609,26 +479,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
-      "attributes": [
-        {
-          "name": "animation-timing",
-          "description": "Defines the animation timing.",
-          "sourceRange": {
-            "file": "../../@polymer/neon-animation/neon-animation-behavior.js",
-            "start": {
-              "line": 23,
-              "column": 4
-            },
-            "end": {
-              "line": 30,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "Object | null | undefined",
-          "inheritedFrom": "NeonAnimationBehavior"
-        }
-      ],
+      "attributes": [],
       "events": [],
       "styling": {
         "cssVariables": [],
@@ -729,6 +580,27 @@
             }
           },
           "defaultValue": "[{\"name\":\"fade-out-animation\",\"timing\":{\"duration\":200}}]"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 42,
+              "column": 4
+            },
+            "end": {
+              "line": 61,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [

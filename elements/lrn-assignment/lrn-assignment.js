@@ -6,7 +6,7 @@ import "@polymer/paper-button/paper-button.js";
 
 @demo demo/index.html
 */
-Polymer({
+let LrnAssignment = Polymer({
   _template: html`
     <style>
       :host {
@@ -70,7 +70,8 @@ Polymer({
     }
   }
 });
-Polymer({
+export { LrnAssignment };
+let LrnAssignments = Polymer({
   _template: html`
     <style>
       :host {
@@ -132,3 +133,4 @@ Polymer({
     this.assignments = data.response;
   }
 });
+export { LrnAssignments };

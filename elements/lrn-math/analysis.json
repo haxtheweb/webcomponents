@@ -114,6 +114,27 @@
               "attributeType": "String"
             }
           }
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 14,
+              "column": 2
+            },
+            "end": {
+              "line": 21,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -215,7 +236,7 @@
       "sourceRange": {
         "start": {
           "line": 13,
-          "column": 8
+          "column": 22
         },
         "end": {
           "line": 174,
@@ -224,6 +245,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnMath",
       "attributes": [
         {
           "name": "prefix",

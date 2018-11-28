@@ -39,7 +39,7 @@ Custom property                             | Description                       
 @element lrndesign-audio-player
 @demo demo/index.html
 */
-Polymer({
+let LrndesignAudioPlayer = Polymer({
   _template: html`
     <style>
 
@@ -611,3 +611,4 @@ Polymer({
     return autoplay ? "auto" : preload;
   }
 });
+export { LrndesignAudioPlayer };

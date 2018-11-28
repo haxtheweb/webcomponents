@@ -5,7 +5,29 @@
       "description": "",
       "summary": "",
       "path": "media-video.js",
-      "properties": [],
+      "properties": [
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 13,
+              "column": 2
+            },
+            "end": {
+              "line": 20,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
+        }
+      ],
       "methods": [
         {
           "name": "ready",
@@ -13,11 +35,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 17,
+              "line": 27,
               "column": 2
             },
             "end": {
-              "line": 40,
+              "line": 50,
               "column": 3
             }
           },
@@ -33,11 +55,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 42,
+              "line": 52,
               "column": 2
             },
             "end": {
-              "line": 61,
+              "line": 71,
               "column": 3
             }
           },
@@ -57,11 +79,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 63,
+              "line": 73,
               "column": 2
             },
             "end": {
-              "line": 65,
+              "line": 75,
               "column": 3
             }
           },
@@ -81,16 +103,17 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 2,
-          "column": 8
+          "line": 12,
+          "column": 25
         },
         "end": {
-          "line": 66,
+          "line": 76,
           "column": 1
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "MediaVideo",
       "attributes": [],
       "events": [],
       "styling": {

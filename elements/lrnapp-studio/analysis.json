@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 140,
+              "line": 144,
               "column": 4
             },
             "end": {
-              "line": 143,
+              "line": 147,
               "column": 5
             }
           },
@@ -27,35 +27,32 @@
             }
           },
           "defaultValue": "null"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 13,
+              "column": 2
+            },
+            "end": {
+              "line": 136,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
         {
           "name": "handleProjectResponse",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 146,
-              "column": 2
-            },
-            "end": {
-              "line": 148,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "response"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "handleAssignmentResponse",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -79,16 +76,40 @@
           }
         },
         {
+          "name": "handleAssignmentResponse",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 154,
+              "column": 2
+            },
+            "end": {
+              "line": 156,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "response"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
           "name": "_toArray",
           "description": "Simple way to convert from object to array.",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 157,
+              "line": 161,
               "column": 2
             },
             "end": {
-              "line": 161,
+              "line": 165,
               "column": 3
             }
           },
@@ -105,11 +126,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 166,
+              "line": 170,
               "column": 2
             },
             "end": {
-              "line": 183,
+              "line": 187,
               "column": 3
             }
           },
@@ -129,11 +150,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 8,
+          "line": 12,
           "column": 8
         },
         "end": {
-          "line": 184,
+          "line": 188,
           "column": 1
         }
       },
@@ -145,11 +166,11 @@
           "description": "Tracks the active assignment.",
           "sourceRange": {
             "start": {
-              "line": 140,
+              "line": 144,
               "column": 4
             },
             "end": {
-              "line": 143,
+              "line": 147,
               "column": 5
             }
           },

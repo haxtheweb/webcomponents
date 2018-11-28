@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrnsys-render-html`\nA legacy element which just directly renders HTML.\nWARNING: DO NOT USE THIS UNLESS YOU KNOW WHAT YOU ARE DOING!\n\nThis element is meant to render html from a source that has already been sanitized.\nPolymer will, by design, not render html for security reasons. This element gets around\nthat. Do not render raw user input through this element! This would allow XSS attacks for\nyour users.",
+      "description": "",
       "summary": "",
       "path": "lrnsys-render-html.js",
       "properties": [
@@ -13,17 +13,38 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 30,
+              "line": 34,
               "column": 4
             },
             "end": {
-              "line": 32,
+              "line": 36,
               "column": 5
             }
           },
           "metadata": {
             "polymer": {
               "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 18,
+              "column": 2
+            },
+            "end": {
+              "line": 25,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
             }
           }
         }
@@ -35,11 +56,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 43,
+              "line": 47,
               "column": 2
             },
             "end": {
-              "line": 45,
+              "line": 49,
               "column": 3
             }
           },
@@ -55,36 +76,32 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 13,
-          "column": 8
+          "line": 17,
+          "column": 31
         },
         "end": {
-          "line": 46,
+          "line": 50,
           "column": 1
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnsysRenderHtml",
       "attributes": [
         {
           "name": "html",
           "description": "String to render as HTML directly",
           "sourceRange": {
             "start": {
-              "line": 30,
+              "line": 34,
               "column": 4
             },
             "end": {
-              "line": 32,
+              "line": 36,
               "column": 5
             }
           },

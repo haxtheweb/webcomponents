@@ -154,6 +154,27 @@
             }
           },
           "defaultValue": "false"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 15,
+              "column": 2
+            },
+            "end": {
+              "line": 69,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -541,7 +562,7 @@
       "tagname": "lrn-calendar-date"
     },
     {
-      "description": "`lrn-calendar`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "lrn-calendar.js",
       "properties": [
@@ -653,6 +674,27 @@
             "polymer": {
               "observer": "\"_fileChanged\"",
               "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 26,
+              "column": 2
+            },
+            "end": {
+              "line": 68,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
             }
           }
         }
@@ -1192,17 +1234,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 25,
-          "column": 8
+          "column": 26
         },
         "end": {
           "line": 885,
@@ -1211,6 +1248,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnCalendar",
       "attributes": [
         {
           "name": "list-of-events",

@@ -1,9 +1,23 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-tabs/paper-tabs.js";
 import "@polymer/marked-element/marked-element.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "./lib/lrn-markdown-editor-editor.js";
-Polymer({
+/**
+ * `lrn-markdown-editor`
+ * `Side by side markdown to HTML editor + preview pane`
+ *
+ * @microcopy - language worth noting:
+ *  - often used for quick field editing interfaces w/ minimal input allowed
+ * @polymer
+ * @customElement
+ * @demo demo/index.html
+ */
+let LrnMarkdownEditor = Polymer({
   _template: html`
     <style>
        :host {
@@ -181,3 +195,4 @@ Polymer({
     }
   }
 });
+export { LrnMarkdownEditor };

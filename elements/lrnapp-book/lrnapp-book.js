@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
@@ -39,7 +43,7 @@ A LRN element
   bar - the underlayed bar that's tracking overall progression
   author mode - authoring mode
 */
-Polymer({
+let LrnappBook = Polymer({
   _template: html`
     <style include="materializecss-styles"></style>
     <style>
@@ -1369,3 +1373,4 @@ Polymer({
     });
   }
 });
+export { LrnappBook };

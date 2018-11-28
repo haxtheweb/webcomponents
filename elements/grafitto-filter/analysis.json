@@ -2,33 +2,10 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`grafitto-filter` is a Polymer reusable web component providing a solution for filtering a list of items before displaying them.\nThis component also supports use of custom filter functions using the `f` property. \n\nInstall:\n```bash\nbower install --save grafitto/grafitto-filter\n```\n\n`array`:\n```javascript\nvar array = [\"one\", \"two\", \"three\", \"four\", \"five\", \"six\", \"seven\"];\n```\n```html\n<grafitto-filter item=[[array]] like=\"o\" as=\"vitu\">\n  <template>\n    <iron-list items=[[vitu]] as=\"item\">\n      <template>\n        <div>{{item}}</div>\n      </template>\n    </iron-list>\n  </template> </grafitto-filter>\n```\n_Note_: When a simple array is provided, the `where` attribute is ignored and filtering done on the array items themselves.\nAlso an array of numbers behave like an array of strings when filtering.\n\n### Arrays of Objects   \n`data`:\n```javascript\nvar data = [\n  {\n    name:\"John\",\n    home: \"Thika\"\n  },\n  {\n    name: \"Doe\",\n    home: \"Nairobi\"\n  }\n]\n```\nExample using `dom-repeat`:\n\n```html\n<grafitto-filter items='[[data]]' where=\"name\" like=\"Doe\" as=\"vitu\">\n  <template>\n    <template is=\"dom-repeat\" items=[[vitu]] as=\"item\">\n      <div>{{item.name}}</div>\n    </template>\n  </template>\n</grafitto-filter>\n```\n\nExample using `iron-list`:\n\n```html\n<grafitto-filter items=[[data]] where=\"name\" like=\"Doe\" as=\"vitu\">\n  <template>\n    <iron-list items=[[vitu]] as=\"item\">\n      <template>\n        <div>{{item.name}}</div>\n      </template>\n    </iron-list>\n  </template>\n</grafitto-filter>\n```\nJust incase you are wondering, `vitu` means `items` in Swahili :-)\n\n_Note_: When a simple array E.g `[\"one\",\"two\",\"three\",\"four\"]` is provided, the `where` attribute is ignored and filtering done on the array items themselves.\n\n`grafitto-filter` also supports complex objects. consider:\n\n\n```javascript\nvar complexObj = [\n  {\n    name: {\n      first: \"Thomas\",\n      second: \"Kimtu\"\n    },\n    home: \"Thika\"\n  },\n  {\n    name: {\n      first: \"John\",\n      second: \"Doe\"\n    },\n    home: \"Othaya\"\n  },\n  {\n    name: {\n      first: \"Clement\",\n      second: \"Wainaina\"\n    },\n    home: \"Nakuru\"\n  }\n]\n``` \n\nHere is an example using the `complexObj` object above\n\n```html\n<grafitto-filter items=[[complexObj]] where=\"name.first\" like=\"tho\" as=\"vitu\">\n  <template>\n    <iron-list items=[[vitu]] as=\"item\">\n      <template>\n        <div>{{item.name.first}} {{item.name.second}}, {{item.home}}</div>\n      </template>\n    </iron-list>\n  </template>\n</grafitto-filter>\n```\n\nYou can also use your custom function to filter the items provided.\nThe function receives a single `item` of the items provided and should return a `boolean` \n\n```html\n<dom-module id=\"your-element\">\n  <template>\n    <grafitto-filter items=[[data]] id=\"filter\" as=\"vitu\">\n      <template>\n        <iron-list items=[[vitu]] as=\"item\">\n          <template>\n            <div>{{item.name}}, {{item.home}}</div>\n          </template>\n        </iron-list>\n      </template>\n    </grafitto-filter>\n    <script>\n      Polymer({\n        is: \"your-element\",\n        properties: {\n          data: {\n            type: Array,\n            value: [\n                    {\n                      \"name\":\"John\",\n                      \"home\": \"Thika\"\n                    },\n                    {\n                      \"name\": \"Doe\",\n                      \"home\": \"Nairobi\"\n                    }\n                  ]\n          }\n        },\n        ready: function(){\n          this.$.filter.f = function(item){\n            return item.name == \"Doe\";\n          };\n        }\n       //Then you can call filter() function to trigger filter\n      })\n    </script>\n  </template>\n</dom-module>\n```\n\n### Rule of thumb   \n`like` is taken as a regular expression so remember to escape any characters that you don't want interpreted\nby the regular expression engine.",
+      "description": "",
       "summary": "",
       "path": "grafitto-filter.js",
       "properties": [
-        {
-          "name": "mutableData",
-          "type": "boolean | null | undefined",
-          "description": "Instance-level flag for configuring the dirty-checking strategy\nfor this element.  When true, Objects and Arrays will skip dirty\nchecking, otherwise strict equality checking will be used.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@polymer/polymer/lib/legacy/mutable-data-behavior.js",
-            "start": {
-              "line": 125,
-              "column": 4
-            },
-            "end": {
-              "line": 125,
-              "column": 24
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "inheritedFrom": "OptionalMutableDataBehavior"
-        },
         {
           "name": "items",
           "type": "Array | null | undefined",
@@ -183,139 +160,30 @@
               "attributeType": "Function"
             }
           }
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 183,
+              "column": 2
+            },
+            "end": {
+              "line": 187,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
-        {
-          "name": "templatize",
-          "description": "Generates an anonymous `TemplateInstance` class (stored as `this.ctor`)\nfor the provided template.  This method should be called once per\ntemplate to prepare an element for stamping the template, followed\nby `stamp` to create new instances of the template.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@polymer/polymer/lib/legacy/templatizer-behavior.js",
-            "start": {
-              "line": 99,
-              "column": 2
-            },
-            "end": {
-              "line": 108,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "template",
-              "type": "!HTMLTemplateElement",
-              "description": "Template to prepare"
-            },
-            {
-              "name": "mutableData",
-              "type": "boolean=",
-              "description": "When `true`, the generated class will skip\n  strict dirty-checking for objects and arrays (always consider them to\n  be \"dirty\"). Defaults to false."
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "Templatizer"
-        },
-        {
-          "name": "stamp",
-          "description": "Creates an instance of the template prepared by `templatize`.  The object\nreturned is an instance of the anonymous class generated by `templatize`\nwhose `root` property is a document fragment containing newly cloned\ntemplate content, and which has property accessors corresponding to\nproperties referenced in template bindings.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@polymer/polymer/lib/legacy/templatizer-behavior.js",
-            "start": {
-              "line": 123,
-              "column": 2
-            },
-            "end": {
-              "line": 125,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "model",
-              "type": "Object=",
-              "description": "Object containing initial property values to\n  populate into the template bindings."
-            }
-          ],
-          "return": {
-            "type": "TemplateInstanceBase",
-            "desc": "Returns the created instance of\nthe template prepared by `templatize`."
-          },
-          "inheritedFrom": "Templatizer"
-        },
-        {
-          "name": "modelForElement",
-          "description": "Returns the template \"model\" (`TemplateInstance`) associated with\na given element, which serves as the binding scope for the template\ninstance the element is contained in.  A template model should be used\nto manipulate data associated with this template instance.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@polymer/polymer/lib/legacy/templatizer-behavior.js",
-            "start": {
-              "line": 138,
-              "column": 2
-            },
-            "end": {
-              "line": 140,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "el",
-              "type": "HTMLElement",
-              "description": "Element for which to return a template model."
-            }
-          ],
-          "return": {
-            "type": "TemplateInstanceBase",
-            "desc": "Model representing the binding scope for\n  the element."
-          },
-          "inheritedFrom": "Templatizer"
-        },
-        {
-          "name": "_shouldPropertyChange",
-          "description": "Overrides `Polymer.PropertyEffects` to skip strict equality checking\nfor Objects and Arrays.\n\nPulls the value to dirty check against from the `__dataTemp` cache\n(rather than the normal `__data` cache) for Objects.  Since the temp\ncache is cleared at the end of a turn, this implementation allows\nside-effects of deep object changes to be processed by re-setting the\nsame object (using the temp cache as an in-turn backstop to prevent\ncycles due to 2-way notification).",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@polymer/polymer/lib/legacy/mutable-data-behavior.js",
-            "start": {
-              "line": 146,
-              "column": 2
-            },
-            "end": {
-              "line": 148,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "property",
-              "type": "string",
-              "description": "Property name"
-            },
-            {
-              "name": "value",
-              "type": "*",
-              "description": "New property value"
-            },
-            {
-              "name": "old",
-              "type": "*",
-              "description": "Previous property value"
-            }
-          ],
-          "return": {
-            "type": "boolean",
-            "desc": "Whether the property should be considered a change"
-          },
-          "inheritedFrom": "OptionalMutableDataBehavior"
-        },
         {
           "name": "filter",
           "description": "Filters the items using the f function provided. Recommended when f function is provided",
@@ -447,17 +315,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 182,
-          "column": 8
+          "column": 29
         },
         "end": {
           "line": 355,
@@ -466,25 +329,8 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "GrafittoFilter",
       "attributes": [
-        {
-          "name": "mutable-data",
-          "description": "Instance-level flag for configuring the dirty-checking strategy\nfor this element.  When true, Objects and Arrays will skip dirty\nchecking, otherwise strict equality checking will be used.",
-          "sourceRange": {
-            "file": "../@polymer/polymer/lib/legacy/mutable-data-behavior.js",
-            "start": {
-              "line": 125,
-              "column": 4
-            },
-            "end": {
-              "line": 125,
-              "column": 24
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined",
-          "inheritedFrom": "OptionalMutableDataBehavior"
-        },
         {
           "name": "items",
           "description": "These are the items to be filtered",

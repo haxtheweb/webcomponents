@@ -1,6 +1,15 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-
-Polymer({
+/**
+ * `paper-stepper`
+ * `steps to completion in a vertical display`
+ *
+ * @demo demo/index.html
+ */
+let PaperStepper = Polymer({
   is: "paper-stepper",
   properties: {
     selected: {
@@ -100,3 +109,4 @@ Polymer({
     this._items = this.$.selector.items;
   }
 });
+export { PaperStepper };

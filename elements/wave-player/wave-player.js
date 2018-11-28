@@ -21,7 +21,7 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
  * @polymerLegacy
  * @demo demo/index.html
  */
-Polymer({
+let WavePlayer = Polymer({
   _template: html`
     <style>
       :host {
@@ -534,3 +534,4 @@ Polymer({
     window.wavesurferobject.skipBackward(30);
   }
 });
+export { WavePlayer };

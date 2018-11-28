@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrndesign-comment`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "lrndesign-comment.js",
       "properties": [
@@ -94,21 +94,37 @@
               "attributeType": "Object"
             }
           }
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 10,
+              "column": 2
+            },
+            "end": {
+              "line": 41,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 9,
-          "column": 8
+          "column": 31
         },
         "end": {
           "line": 67,
@@ -117,6 +133,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrndesignComment",
       "attributes": [
         {
           "name": "avatar",

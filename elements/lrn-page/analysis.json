@@ -2,23 +2,40 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrn-page`\nA LRN element for a \"page\" of material. This ensures there's an OERSchema wrapper\nso that all content produced has a baseline level of being identified as OER.",
+      "description": "",
       "summary": "",
       "path": "lrn-page.js",
-      "properties": [],
-      "methods": [],
-      "staticMethods": [],
-      "demos": [
+      "properties": [
         {
-          "url": "demo/index.html",
-          "description": ""
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 10,
+              "column": 2
+            },
+            "end": {
+              "line": 19,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
+      "methods": [],
+      "staticMethods": [],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 9,
-          "column": 8
+          "column": 22
         },
         "end": {
           "line": 22,
@@ -27,6 +44,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnPage",
       "attributes": [],
       "events": [],
       "styling": {

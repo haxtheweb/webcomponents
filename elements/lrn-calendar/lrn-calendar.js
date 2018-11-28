@@ -23,7 +23,7 @@ A LRN element
 
 @demo demo/index.html
 */
-Polymer({
+let LrnCalendar = Polymer({
   _template: html`
     <style>
       :host {
@@ -884,3 +884,4 @@ Polymer({
     return "";
   }
 });
+export { LrnCalendar };

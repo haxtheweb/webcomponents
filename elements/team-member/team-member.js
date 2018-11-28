@@ -14,7 +14,7 @@ import "@lrnwebcomponents/mdi-iconset-svg/lib/mdi-social-iconset-svg.js";
  * @microcopy - the mental model for this element
  * -
  */
-Polymer({
+let TeamMember = Polymer({
   _template: html`
     <style is="custom-style">
       :host {
@@ -239,3 +239,4 @@ Polymer({
     this.setHaxProperties(props);
   }
 });
+export { TeamMember };

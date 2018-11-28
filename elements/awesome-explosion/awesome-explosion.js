@@ -16,7 +16,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
  * @silly
  * @demo demo/index.html
  */
-Polymer({
+let AwesomeExplosion = Polymer({
   _template: html`
     <custom-style>
     <style is="custom-style">
@@ -229,3 +229,4 @@ Polymer({
     window.audio.play();
   }
 });
+export { AwesomeExplosion };

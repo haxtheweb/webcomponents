@@ -5,6 +5,41 @@
       "description": "`select-menu`\naccepts an array of values and human-readable text and creates a paper-dropdown-menu, provides the value fo the selected item",
       "summary": "",
       "path": "select-menu.js",
+      "properties": [],
+      "methods": [],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 13,
+          "column": 17
+        },
+        "end": {
+          "line": 89,
+          "column": 2
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "SelectMenu",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "select-menu.js",
       "properties": [
         {
           "name": "label",
@@ -72,6 +107,27 @@
               "attributeType": "Number"
             }
           }
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 14,
+              "column": 2
+            },
+            "end": {
+              "line": 32,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -118,17 +174,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 13,
-          "column": 8
+          "column": 25
         },
         "end": {
           "line": 89,
@@ -137,6 +188,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "SelectMenu",
       "attributes": [
         {
           "name": "label",

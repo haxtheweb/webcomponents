@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "The `lrn-icon` element displays an icon. By default an icon renders as a 24px square.\n\nExample using src:\n\n    <lrn-icon src=\"star.png\"></lrn-icon>\n\nExample setting size to 32px x 32px:\n\n    <lrn-icon class=\"big\" src=\"big_star.png\"></lrn-icon>\n\n    <style is=\"custom-style\">\n      .big {\n        --lrn-icon-height: 32px;\n        --lrn-icon-width: 32px;\n      }\n    </style>\n\nThe iron elements include several sets of icons.\nTo use the default set of icons, import `lrn-icons.html` and use the `icon` attribute to specify an icon:\n\n    <link rel=\"import\" href=\"/components/lrn-icons/lrn-icons.html\">\n\n    <lrn-icon icon=\"menu\"></lrn-icon>\n\nTo use a different built-in set of icons, import the specific `lrn-icons/<iconset>-icons.html`, and\nspecify the icon as `<iconset>:<icon>`. For example, to use a communication icon, you would\nuse:\n\n    <link rel=\"import\" href=\"/components/lrn-icons/communication-icons.html\">\n\n    <lrn-icon icon=\"communication:email\"></lrn-icon>\n\nYou can also create custom icon sets of bitmap or SVG icons.\n\nExample of using an icon named `cherry` from a custom iconset with the ID `fruit`:\n\n    <lrn-icon icon=\"fruit:cherry\"></lrn-icon>\n\nSee [lrn-iconset](lrn-iconset) and [lrn-iconset-svg](lrn-iconset-svg) for more information about\nhow to create a custom iconset.\n\nSee the [lrn-icons demo](lrn-icons?view=demo:demo/index.html) to see the icons available\nin the various iconsets.\n\nTo load a subset of icons from one of the default `lrn-icons` sets, you can\nuse the [poly-icon](https://poly-icon.appspot.com/) tool. It allows you\nto select individual icons, and creates an iconset from them that you can\nuse directly in your elements.\n\n### Styling\n\nThe following custom properties are available for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--lrn-icon` | Mixin applied to the icon | {}\n`--lrn-icon-width` | Width of the icon | `24px`\n`--lrn-icon-height` | Height of the icon | `24px`\n`--lrn-icon-fill-color` | Fill color of the svg icon | `currentcolor`\n`--lrn-icon-stroke-color` | Stroke color of the svg icon | none",
+      "description": "",
       "summary": "",
       "path": "lrn-icon.js",
       "properties": [
@@ -86,6 +86,27 @@
           },
           "metadata": {
             "polymer": {}
+          }
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 86,
+              "column": 2
+            },
+            "end": {
+              "line": 104,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
           }
         },
         {
@@ -198,17 +219,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 85,
-          "column": 8
+          "column": 22
         },
         "end": {
           "line": 195,
@@ -217,6 +233,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnIcon",
       "attributes": [
         {
           "name": "icon",

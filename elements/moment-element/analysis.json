@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "Polymer element wrapper for the [moment](https://github.com/moment/moment) library.\n\nExamples:\n\n    <moment-element></moment-element>\n    <moment-element datetime=\"1991-12-31\" output-format=\"MMM DD[,] YYYY\"></moment-element>",
+      "description": "",
       "summary": "",
       "path": "moment-element.js",
       "properties": [
@@ -157,6 +157,27 @@
               "attributeType": "Boolean"
             }
           }
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 19,
+              "column": 2
+            },
+            "end": {
+              "line": 21,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -261,17 +282,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 18,
-          "column": 8
+          "column": 28
         },
         "end": {
           "line": 142,
@@ -280,6 +296,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "MomentElement",
       "attributes": [
         {
           "name": "datetime",

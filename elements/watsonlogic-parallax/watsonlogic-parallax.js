@@ -8,7 +8,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
  * @polymerLegacy
  * @demo demo/index.html
  */
-Polymer({
+let WatsonlogicParallax = Polymer({
   _template: html`
     <style>
       :host {
@@ -80,3 +80,4 @@ Polymer({
     });
   }
 });
+export { WatsonlogicParallax };

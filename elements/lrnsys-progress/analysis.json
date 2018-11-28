@@ -580,6 +580,27 @@
             }
           },
           "defaultValue": "{\"25\":false,\"50\":false,\"75\":false}"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 19,
+              "column": 2
+            },
+            "end": {
+              "line": 187,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -1287,7 +1308,7 @@
       "tagname": "lrnsys-progress-circle"
     },
     {
-      "description": "`lrnsys-progress`\n`track progression as a circle and series of circles`",
+      "description": "",
       "summary": "",
       "path": "lrnsys-progress.js",
       "properties": [
@@ -1716,6 +1737,27 @@
               "attributeType": "Number"
             }
           }
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 21,
+              "column": 2
+            },
+            "end": {
+              "line": 112,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -2045,17 +2087,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 20,
-          "column": 8
+          "column": 29
         },
         "end": {
           "line": 625,
@@ -2064,6 +2101,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnsysProgress",
       "attributes": [
         {
           "name": "disable-ajax-calls",

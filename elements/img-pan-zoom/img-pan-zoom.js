@@ -23,7 +23,7 @@ Custom property | Description | Default
 
 @demo demo/index.html
 */
-Polymer({
+let ImgPanZoom = Polymer({
   _template: html`
     <style>
       :host {
@@ -290,3 +290,4 @@ Polymer({
     });
   }
 });
+export { ImgPanZoom };

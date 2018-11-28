@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`pie-menu`\nSVG Menu based on the excellent resource at : https://sarasoueidan.com/tools/circulus",
+      "description": "",
       "summary": "",
       "path": "pie-menu.js",
       "properties": [
@@ -247,6 +247,27 @@
             }
           },
           "defaultValue": "\"icons:check-box-outline-blank\""
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 16,
+              "column": 2
+            },
+            "end": {
+              "line": 138,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -386,17 +407,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 15,
-          "column": 8
+          "column": 22
         },
         "end": {
           "line": 283,
@@ -405,6 +421,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "PieMenu",
       "attributes": [
         {
           "name": "hide-label-text",

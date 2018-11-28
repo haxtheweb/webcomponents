@@ -5,6 +5,41 @@
       "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`",
       "summary": "",
       "path": "csv-render.js",
+      "properties": [],
+      "methods": [],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 24,
+          "column": 16
+        },
+        "end": {
+          "line": 261,
+          "column": 2
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "CsvRender",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "csv-render.js",
       "properties": [
         {
           "name": "dataSource",
@@ -134,6 +169,27 @@
             }
           },
           "defaultValue": "\"\""
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 25,
+              "column": 2
+            },
+            "end": {
+              "line": 178,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -184,17 +240,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 24,
-          "column": 8
+          "column": 24
         },
         "end": {
           "line": 261,
@@ -203,6 +254,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "CsvRender",
       "attributes": [
         {
           "name": "data-source",

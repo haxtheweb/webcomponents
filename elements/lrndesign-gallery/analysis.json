@@ -181,6 +181,27 @@
             }
           },
           "defaultValue": "null"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 18,
+              "column": 2
+            },
+            "end": {
+              "line": 50,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -568,6 +589,27 @@
             }
           },
           "defaultValue": "null"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 22,
+              "column": 2
+            },
+            "end": {
+              "line": 79,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -999,6 +1041,27 @@
             }
           },
           "defaultValue": "\"default\""
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 39,
+              "column": 2
+            },
+            "end": {
+              "line": 156,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -1321,6 +1384,27 @@
             }
           },
           "defaultValue": "null"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 19,
+              "column": 2
+            },
+            "end": {
+              "line": 73,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         },
         {
           "name": "hostAttributes",
@@ -1804,6 +1888,27 @@
             }
           },
           "defaultValue": "null"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 35,
+              "column": 2
+            },
+            "end": {
+              "line": 138,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -2386,6 +2491,27 @@
             }
           },
           "defaultValue": "null"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 35,
+              "column": 2
+            },
+            "end": {
+              "line": 97,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -2846,6 +2972,27 @@
             }
           },
           "defaultValue": "null"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 15,
+              "column": 2
+            },
+            "end": {
+              "line": 48,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -3002,7 +3149,7 @@
       "tagname": "lrndesign-gallery-print"
     },
     {
-      "description": "`lrndesign-gallery`\nA LRN element that renders a collection of gallery items into a carousel or a single media item into a layout.",
+      "description": "",
       "summary": "",
       "path": "lrndesign-gallery.js",
       "properties": [
@@ -3182,6 +3329,27 @@
             }
           },
           "defaultValue": "false"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 34,
+              "column": 2
+            },
+            "end": {
+              "line": 83,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -3252,17 +3420,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 33,
-          "column": 8
+          "column": 31
         },
         "end": {
           "line": 210,
@@ -3271,6 +3434,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrndesignGallery",
       "attributes": [
         {
           "name": "grid",

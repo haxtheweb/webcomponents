@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`silly-hax-game`\nAn example web component of gamifying HAX to make it more fun and challenging.",
+      "description": "",
       "summary": "",
       "path": "silly-hax-game.js",
       "properties": [
@@ -136,6 +136,27 @@
             }
           },
           "defaultValue": "false"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 14,
+              "column": 2
+            },
+            "end": {
+              "line": 41,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -325,17 +346,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 13,
-          "column": 8
+          "column": 27
         },
         "end": {
           "line": 293,
@@ -344,6 +360,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "SillyHaxGame",
       "attributes": [
         {
           "name": "tasks",

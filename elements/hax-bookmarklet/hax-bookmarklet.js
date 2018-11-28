@@ -6,7 +6,7 @@ import "@lrnwebcomponents/cms-hax/cms-hax.js";
  *
  * @demo demo/index.html
  */
-Polymer({
+let HaxBookmarklet = Polymer({
   _template: html`
     <style>
       :host {
@@ -33,3 +33,4 @@ Polymer({
     }
   }
 });
+export { HaxBookmarklet };

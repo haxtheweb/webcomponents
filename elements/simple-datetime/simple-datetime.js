@@ -11,7 +11,7 @@ A simple datetime element that takes in unix timestamp and outputs a date.
  -
 
 */
-Polymer({
+let SimpleDatetime = Polymer({
   _template: html`
     <style>
       :host {
@@ -67,3 +67,4 @@ Polymer({
     return new Date(timestamp).format(format);
   }
 });
+export { SimpleDatetime };

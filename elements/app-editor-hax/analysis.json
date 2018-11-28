@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`app-editor-hax`\nstand alone editor intended for use in a larger application\nas the editor. It is like cms-hax in that it's prepackaged\nthe way HAX will be integrated but the connotation is that there\nis no edit state and that it is always editing effectively.",
+      "description": "",
       "summary": "",
       "path": "app-editor-hax.js",
       "properties": [
@@ -48,6 +48,27 @@
             }
           },
           "defaultValue": "false"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 24,
+              "column": 2
+            },
+            "end": {
+              "line": 39,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -97,17 +118,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 23,
-          "column": 8
+          "column": 27
         },
         "end": {
           "line": 78,
@@ -116,6 +132,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "AppEditorHax",
       "attributes": [
         {
           "name": "app-store-connection",

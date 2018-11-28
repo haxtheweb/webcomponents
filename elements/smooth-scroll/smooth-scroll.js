@@ -8,7 +8,7 @@ Smooth scroll an element
 @microcopy - this is element provides methods to be called for smooth scrolling
  - scroll()
 */
-Polymer({
+let SmoothScroll = Polymer({
   is: "smooth-scroll",
   properties: {},
   /**
@@ -86,3 +86,4 @@ Polymer({
     requestAnimationFrame(animation);
   }
 });
+export { SmoothScroll };

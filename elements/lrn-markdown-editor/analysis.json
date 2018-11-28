@@ -27,6 +27,27 @@
               "attributeType": "String"
             }
           }
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 11,
+              "column": 2
+            },
+            "end": {
+              "line": 38,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -104,6 +125,41 @@
       "tagname": "lrn-markdown-editor-editor"
     },
     {
+      "description": "`lrn-markdown-editor`\n`Side by side markdown to HTML editor + preview pane`",
+      "summary": "",
+      "path": "lrn-markdown-editor.js",
+      "properties": [],
+      "methods": [],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 19,
+          "column": 24
+        },
+        "end": {
+          "line": 196,
+          "column": 2
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "LrnMarkdownEditor",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    },
+    {
       "description": "",
       "summary": "",
       "path": "lrn-markdown-editor.js",
@@ -115,11 +171,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 99,
+              "line": 113,
               "column": 4
             },
             "end": {
-              "line": 102,
+              "line": 116,
               "column": 5
             }
           },
@@ -137,11 +193,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 103,
+              "line": 117,
               "column": 4
             },
             "end": {
-              "line": 107,
+              "line": 121,
               "column": 5
             }
           },
@@ -159,11 +215,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 122,
               "column": 4
             },
             "end": {
-              "line": 111,
+              "line": 125,
               "column": 5
             }
           },
@@ -181,11 +237,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 112,
+              "line": 126,
               "column": 4
             },
             "end": {
-              "line": 115,
+              "line": 129,
               "column": 5
             }
           },
@@ -203,11 +259,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 116,
+              "line": 130,
               "column": 4
             },
             "end": {
-              "line": 119,
+              "line": 133,
               "column": 5
             }
           },
@@ -217,6 +273,27 @@
             }
           },
           "defaultValue": "false"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 20,
+              "column": 2
+            },
+            "end": {
+              "line": 108,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -226,11 +303,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 124,
+              "line": 138,
               "column": 2
             },
             "end": {
-              "line": 138,
+              "line": 152,
               "column": 3
             }
           },
@@ -250,11 +327,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 140,
+              "line": 154,
               "column": 2
             },
             "end": {
-              "line": 148,
+              "line": 162,
               "column": 3
             }
           },
@@ -280,11 +357,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 150,
+              "line": 164,
               "column": 2
             },
             "end": {
-              "line": 159,
+              "line": 173,
               "column": 3
             }
           },
@@ -301,11 +378,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 161,
+              "line": 175,
               "column": 2
             },
             "end": {
-              "line": 163,
+              "line": 177,
               "column": 3
             }
           },
@@ -325,11 +402,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 165,
+              "line": 179,
               "column": 2
             },
             "end": {
-              "line": 167,
+              "line": 181,
               "column": 3
             }
           },
@@ -342,11 +419,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 169,
+              "line": 183,
               "column": 2
             },
             "end": {
-              "line": 181,
+              "line": 195,
               "column": 3
             }
           },
@@ -362,27 +439,28 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 5,
-          "column": 8
+          "line": 19,
+          "column": 32
         },
         "end": {
-          "line": 182,
+          "line": 196,
           "column": 1
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnMarkdownEditor",
       "attributes": [
         {
           "name": "content",
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 99,
+              "line": 113,
               "column": 4
             },
             "end": {
-              "line": 102,
+              "line": 116,
               "column": 5
             }
           },
@@ -394,11 +472,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 103,
+              "line": 117,
               "column": 4
             },
             "end": {
-              "line": 107,
+              "line": 121,
               "column": 5
             }
           },
@@ -410,11 +488,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 122,
               "column": 4
             },
             "end": {
-              "line": 111,
+              "line": 125,
               "column": 5
             }
           },
@@ -426,11 +504,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 112,
+              "line": 126,
               "column": 4
             },
             "end": {
-              "line": 115,
+              "line": 129,
               "column": 5
             }
           },
@@ -442,11 +520,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 116,
+              "line": 130,
               "column": 4
             },
             "end": {
-              "line": 119,
+              "line": 133,
               "column": 5
             }
           },

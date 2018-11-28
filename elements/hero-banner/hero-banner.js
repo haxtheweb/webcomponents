@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@polymer/paper-button/paper-button.js";
@@ -15,7 +19,7 @@ That thing no one wants to make over and over again yet always does...
  -
 
 */
-Polymer({
+let HeroBanner = Polymer({
   _template: html`
     <style include="materializecss-styles">
       :host {
@@ -326,3 +330,4 @@ Polymer({
     this.setHaxProperties(props);
   }
 });
+export { HeroBanner };

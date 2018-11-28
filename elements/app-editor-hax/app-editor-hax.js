@@ -21,7 +21,7 @@ is no edit state and that it is always editing effectively.
  - hax - just to make sure we're aware that it's actually HAX based
 
 */
-Polymer({
+let AppEditorHax = Polymer({
   _template: html`
     <style>
       :host {
@@ -77,3 +77,4 @@ Polymer({
     this.fire("app-editor-hax-import", true);
   }
 });
+export { AppEditorHax };

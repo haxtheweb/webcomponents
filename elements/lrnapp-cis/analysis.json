@@ -157,6 +157,27 @@
             }
           },
           "defaultValue": "1"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 11,
+              "column": 2
+            },
+            "end": {
+              "line": 149,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -347,7 +368,7 @@
       "tagname": "lrnapp-cis-course-card"
     },
     {
-      "description": "`lrnapp-cis`\nA learning application for visualizing course information and listing.",
+      "description": "",
       "summary": "",
       "path": "lrnapp-cis.js",
       "properties": [
@@ -358,11 +379,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 142,
+              "line": 146,
               "column": 4
             },
             "end": {
-              "line": 144,
+              "line": 148,
               "column": 5
             }
           },
@@ -379,11 +400,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 148,
+              "line": 152,
               "column": 4
             },
             "end": {
-              "line": 151,
+              "line": 155,
               "column": 5
             }
           },
@@ -401,11 +422,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 155,
+              "line": 159,
               "column": 4
             },
             "end": {
-              "line": 157,
+              "line": 161,
               "column": 5
             }
           },
@@ -421,11 +442,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 161,
+              "line": 165,
               "column": 4
             },
             "end": {
-              "line": 164,
+              "line": 168,
               "column": 5
             }
           },
@@ -443,11 +464,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 175,
+              "line": 179,
               "column": 4
             },
             "end": {
-              "line": 178,
+              "line": 182,
               "column": 5
             }
           },
@@ -465,11 +486,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 182,
+              "line": 186,
               "column": 4
             },
             "end": {
-              "line": 185,
+              "line": 189,
               "column": 5
             }
           },
@@ -487,11 +508,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 189,
+              "line": 193,
               "column": 4
             },
             "end": {
-              "line": 191,
+              "line": 195,
               "column": 5
             }
           },
@@ -508,11 +529,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 195,
+              "line": 199,
               "column": 4
             },
             "end": {
-              "line": 198,
+              "line": 202,
               "column": 5
             }
           },
@@ -530,11 +551,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 202,
+              "line": 206,
               "column": 4
             },
             "end": {
-              "line": 205,
+              "line": 209,
               "column": 5
             }
           },
@@ -552,11 +573,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 209,
+              "line": 213,
               "column": 4
             },
             "end": {
-              "line": 212,
+              "line": 216,
               "column": 5
             }
           },
@@ -574,11 +595,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 213,
+              "line": 217,
               "column": 4
             },
             "end": {
-              "line": 217,
+              "line": 221,
               "column": 5
             }
           },
@@ -597,11 +618,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 218,
+              "line": 222,
               "column": 4
             },
             "end": {
-              "line": 221,
+              "line": 225,
               "column": 5
             }
           },
@@ -611,6 +632,27 @@
             }
           },
           "defaultValue": "false"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 34,
+              "column": 2
+            },
+            "end": {
+              "line": 138,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -620,11 +662,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 228,
+              "line": 232,
               "column": 2
             },
             "end": {
-              "line": 238,
+              "line": 242,
               "column": 3
             }
           },
@@ -647,11 +689,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 242,
+              "line": 246,
               "column": 2
             },
             "end": {
-              "line": 246,
+              "line": 250,
               "column": 3
             }
           },
@@ -668,11 +710,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 251,
+              "line": 255,
               "column": 2
             },
             "end": {
-              "line": 287,
+              "line": 291,
               "column": 3
             }
           },
@@ -692,11 +734,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 292,
+              "line": 296,
               "column": 2
             },
             "end": {
-              "line": 312,
+              "line": 316,
               "column": 3
             }
           },
@@ -716,11 +758,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 316,
+              "line": 320,
               "column": 2
             },
             "end": {
-              "line": 318,
+              "line": 322,
               "column": 3
             }
           },
@@ -743,11 +785,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 322,
+              "line": 326,
               "column": 2
             },
             "end": {
-              "line": 353,
+              "line": 357,
               "column": 3
             }
           },
@@ -763,36 +805,32 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "../../demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 29,
-          "column": 8
+          "line": 33,
+          "column": 24
         },
         "end": {
-          "line": 354,
+          "line": 358,
           "column": 1
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnappCis",
       "attributes": [
         {
           "name": "cis-response",
           "description": "The cisResponse from server",
           "sourceRange": {
             "start": {
-              "line": 142,
+              "line": 146,
               "column": 4
             },
             "end": {
-              "line": 144,
+              "line": 148,
               "column": 5
             }
           },
@@ -804,11 +842,11 @@
           "description": "Data bound route from location",
           "sourceRange": {
             "start": {
-              "line": 148,
+              "line": 152,
               "column": 4
             },
             "end": {
-              "line": 151,
+              "line": 155,
               "column": 5
             }
           },
@@ -820,11 +858,11 @@
           "description": "The courses to render; potentially filtered",
           "sourceRange": {
             "start": {
-              "line": 155,
+              "line": 159,
               "column": 4
             },
             "end": {
-              "line": 157,
+              "line": 161,
               "column": 5
             }
           },
@@ -836,11 +874,11 @@
           "description": "The original courses array; used to filter against",
           "sourceRange": {
             "start": {
-              "line": 161,
+              "line": 165,
               "column": 4
             },
             "end": {
-              "line": 164,
+              "line": 168,
               "column": 5
             }
           },
@@ -852,11 +890,11 @@
           "description": "The programs to render",
           "sourceRange": {
             "start": {
-              "line": 175,
+              "line": 179,
               "column": 4
             },
             "end": {
-              "line": 178,
+              "line": 182,
               "column": 5
             }
           },
@@ -868,11 +906,11 @@
           "description": "The academics to render",
           "sourceRange": {
             "start": {
-              "line": 182,
+              "line": 186,
               "column": 4
             },
             "end": {
-              "line": 185,
+              "line": 189,
               "column": 5
             }
           },
@@ -884,11 +922,11 @@
           "description": "sourcePath for data.",
           "sourceRange": {
             "start": {
-              "line": 189,
+              "line": 193,
               "column": 4
             },
             "end": {
-              "line": 191,
+              "line": 195,
               "column": 5
             }
           },
@@ -900,11 +938,11 @@
           "description": "Endpoint for data.",
           "sourceRange": {
             "start": {
-              "line": 195,
+              "line": 199,
               "column": 4
             },
             "end": {
-              "line": 198,
+              "line": 202,
               "column": 5
             }
           },
@@ -916,11 +954,11 @@
           "description": "base path for the app",
           "sourceRange": {
             "start": {
-              "line": 202,
+              "line": 206,
               "column": 4
             },
             "end": {
-              "line": 205,
+              "line": 209,
               "column": 5
             }
           },
@@ -932,11 +970,11 @@
           "description": "Active / clicked course.",
           "sourceRange": {
             "start": {
-              "line": 209,
+              "line": 213,
               "column": 4
             },
             "end": {
-              "line": 212,
+              "line": 216,
               "column": 5
             }
           },
@@ -948,11 +986,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 213,
+              "line": 217,
               "column": 4
             },
             "end": {
-              "line": 217,
+              "line": 221,
               "column": 5
             }
           },

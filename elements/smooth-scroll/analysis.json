@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`smooth-scroll`",
+      "description": "",
       "summary": "",
       "path": "smooth-scroll.js",
       "properties": [],
@@ -36,17 +36,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": "Smooth scroll an element"
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 10,
-          "column": 8
+          "column": 27
         },
         "end": {
           "line": 87,
@@ -55,6 +50,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "SmoothScroll",
       "attributes": [],
       "events": [],
       "styling": {

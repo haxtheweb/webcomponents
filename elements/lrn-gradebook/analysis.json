@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrn-gradebook`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "lrn-gradebook.js",
       "properties": [
@@ -30,17 +30,12 @@
       ],
       "methods": [],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 34,
-          "column": 8
+          "column": 27
         },
         "end": {
           "line": 41,
@@ -49,6 +44,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnGradebook",
       "attributes": [
         {
           "name": "data",

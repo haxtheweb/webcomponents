@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrndesign-imagecarousel`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "lrndesign-imagecarousel.js",
       "properties": [
@@ -27,21 +27,37 @@
             }
           },
           "defaultValue": "\"lrndesign-imagecarousel\""
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 9,
+              "column": 2
+            },
+            "end": {
+              "line": 21,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 8,
-          "column": 8
+          "column": 37
         },
         "end": {
           "line": 31,
@@ -50,6 +66,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrndesignImagecarousel",
       "attributes": [
         {
           "name": "title",

@@ -2,10 +2,32 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`contenta-polymer`\nA polymer app to talk to Contenta to serve up it's content in a visually awesome way",
+      "description": "",
       "summary": "",
       "path": "contenta-polymer.js",
-      "properties": [],
+      "properties": [
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 37,
+              "column": 2
+            },
+            "end": {
+              "line": 113,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
+        }
+      ],
       "methods": [
         {
           "name": "_toArray",
@@ -13,11 +35,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 119,
+              "line": 122,
               "column": 2
             },
             "end": {
-              "line": 123,
+              "line": 126,
               "column": 3
             }
           },
@@ -30,25 +52,21 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "../../demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 33,
-          "column": 8
+          "line": 36,
+          "column": 30
         },
         "end": {
-          "line": 124,
+          "line": 127,
           "column": 1
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "ContentaPolymer",
       "attributes": [],
       "events": [],
       "styling": {

@@ -139,6 +139,27 @@
           "defaultValue": "[]"
         },
         {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 6,
+              "column": 2
+            },
+            "end": {
+              "line": 14,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
+        },
+        {
           "name": "_apiToggleChecked",
           "type": "boolean",
           "description": "",
@@ -989,7 +1010,7 @@
       "tagname": "map-area"
     },
     {
-      "description": "web-map is an HTML &lt;map&gt; customized built-in element",
+      "description": "",
       "summary": "",
       "path": "web-map.js",
       "properties": [
@@ -1185,6 +1206,27 @@
           "metadata": {
             "polymer": {
               "attributeType": "Boolean"
+            }
+          }
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 9,
+              "column": 2
+            },
+            "end": {
+              "line": 34,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
             }
           }
         },
@@ -1482,7 +1524,7 @@
       "sourceRange": {
         "start": {
           "line": 8,
-          "column": 8
+          "column": 21
         },
         "end": {
           "line": 474,
@@ -1491,6 +1533,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "WebMap",
       "attributes": [
         {
           "name": "lat",

@@ -15,7 +15,7 @@ Layers images over each other with a slider interface to compare them
  -
 
 */
-Polymer({
+let ImageCompareSlider = Polymer({
   _template: html`
     <style>
       :host {
@@ -207,3 +207,4 @@ Polymer({
     this.setHaxProperties(props);
   }
 });
+export { ImageCompareSlider };

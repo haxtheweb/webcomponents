@@ -6,7 +6,7 @@ A LRN element
 
 @demo demo/index.html
 */
-Polymer({
+let LrndesignImagecarousel = Polymer({
   _template: html`
     <style>
       :host {
@@ -30,3 +30,4 @@ Polymer({
     }
   }
 });
+export { LrndesignImagecarousel };

@@ -213,6 +213,27 @@
               "attributeType": "Number"
             }
           }
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 27,
+              "column": 2
+            },
+            "end": {
+              "line": 59,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -639,7 +660,7 @@
       "tagname": "scary-image"
     },
     {
-      "description": "`<scary-gallery>` will (try to) layout any of its `<scary-image>` children\nto make best use of available space, and rearranges the images, when the\nsize changes.\n\nSample usage:\n```\n<scary-gallery>\n  <scary-image src=\"img1.jpg\"></scary-image>\n  <scary-image src=\"img2.jpg\"></scary-image>\n  <scary-image src=\"img3.jpg\"></scary-image>\n  <scary-image src=\"img4.jpg\"></scary-image>\n  <scary-image src=\"img5.jpg\"></scary-image>\n  <scary-image src=\"img6.jpg\"></scary-image>\n</scary-gallery>\n```\n\nDisclaimer:\n\nWork in progress, the algorithm to layout the images is far from perfect.",
+      "description": "",
       "summary": "",
       "path": "scary-gallery.js",
       "properties": [
@@ -686,6 +707,27 @@
             }
           },
           "defaultValue": "4"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 28,
+              "column": 2
+            },
+            "end": {
+              "line": 37,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -771,17 +813,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 27,
-          "column": 8
+          "column": 27
         },
         "end": {
           "line": 158,
@@ -790,6 +827,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "ScaryGallery",
       "attributes": [
         {
           "name": "min-height",

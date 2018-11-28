@@ -6,7 +6,7 @@ A LRN element
 
 @demo demo/index.html
 */
-Polymer({
+let LrndesignAnimationctrl = Polymer({
   _template: html`
     <style>
       :host {
@@ -43,3 +43,4 @@ Polymer({
 
   ready: function() {}
 });
+export { LrndesignAnimationctrl };

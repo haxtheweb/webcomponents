@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-styles/paper-styles.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
@@ -9,7 +13,7 @@ import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-res
  *
  * @demo demo/index.html
  */
-Polymer({
+let CircleProgress = Polymer({
   _template: html`
   <custom-style>
     <style is="custom-style" include="paper-material-styles">
@@ -140,3 +144,4 @@ Polymer({
     }
   }
 });
+export { CircleProgress };

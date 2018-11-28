@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`mtz-marked-editor`\nCreates a textarea with common editor logic and can be controlled by UI elements",
+      "description": "",
       "summary": "",
       "path": "mtz-marked-editor.js",
       "properties": [
@@ -88,6 +88,27 @@
           "metadata": {
             "polymer": {
               "attributeType": "Object"
+            }
+          }
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 11,
+              "column": 2
+            },
+            "end": {
+              "line": 21,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
             }
           }
         }
@@ -355,17 +376,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 10,
-          "column": 8
+          "column": 30
         },
         "end": {
           "line": 142,
@@ -374,6 +390,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "MtzMarkedEditor",
       "attributes": [
         {
           "name": "autofocus",
@@ -588,6 +605,27 @@
           "metadata": {
             "polymer": {
               "attributeType": "Boolean"
+            }
+          }
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 5,
+              "column": 2
+            },
+            "end": {
+              "line": 15,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
             }
           }
         }
@@ -902,6 +940,27 @@
               "attributeType": "Boolean"
             }
           }
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 5,
+              "column": 2
+            },
+            "end": {
+              "line": 15,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -1171,6 +1230,27 @@
           "metadata": {
             "polymer": {
               "attributeType": "Boolean"
+            }
+          }
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 5,
+              "column": 2
+            },
+            "end": {
+              "line": 15,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
             }
           }
         }

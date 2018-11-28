@@ -11,7 +11,7 @@ import "@polymer/paper-tabs/paper-tab.js";
  * @microcopy - the mental model for this element
  * -
  */
-Polymer({
+let TabList = Polymer({
   _template: html`
     <style>
       :host {
@@ -114,3 +114,4 @@ Polymer({
     this.setHaxProperties(props);
   }
 });
+export { TabList };

@@ -5,7 +5,29 @@
       "description": "",
       "summary": "",
       "path": "lib/relative-heading-manager.js",
-      "properties": [],
+      "properties": [
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 6,
+              "column": 2
+            },
+            "end": {
+              "line": 12,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
+        }
+      ],
       "methods": [
         {
           "name": "created",
@@ -53,7 +75,7 @@
       "tagname": "relative-heading-manager"
     },
     {
-      "description": "`relative-heading`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "relative-heading.js",
       "properties": [
@@ -144,6 +166,27 @@
             }
           },
           "defaultValue": "null"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 15,
+              "column": 2
+            },
+            "end": {
+              "line": 22,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -260,17 +303,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 14,
-          "column": 8
+          "column": 30
         },
         "end": {
           "line": 139,
@@ -279,6 +317,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "RelativeHeading",
       "attributes": [
         {
           "name": "subtopic-of",

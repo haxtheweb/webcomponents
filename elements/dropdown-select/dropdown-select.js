@@ -27,7 +27,7 @@ An easy to use, works as expected dropdown menu. Add slotted items like follows:
 @demo demo/index.html
 
 */
-Polymer({
+let DropdownSelect = Polymer({
   _template: html`
     <style>
       :host {
@@ -250,3 +250,4 @@ Polymer({
     }
   }
 });
+export { DropdownSelect };

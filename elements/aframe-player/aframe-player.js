@@ -8,7 +8,7 @@ A LRN element
 
 @demo demo/index.html
 */
-Polymer({
+let AframePlayer = Polymer({
   _template: html`
     <style>
       :host {
@@ -210,3 +210,4 @@ Polymer({
     this.$.entity.setAttribute("position", position);
   }
 });
+export { AframePlayer };

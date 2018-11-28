@@ -5,7 +5,7 @@ An incredibly basic content block
 
 @demo demo/index.html
 */
-Polymer({
+let LrndesignContentblock = Polymer({
   _template: html`
   <style>
       :host {
@@ -29,3 +29,4 @@ Polymer({
     }
   }
 });
+export { LrndesignContentblock };

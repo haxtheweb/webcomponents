@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
@@ -7,7 +11,7 @@ A basic side note
 
 @demo demo/index.html
 */
-Polymer({
+let LrndesignSidenote = Polymer({
   _template: html`
     <style>
       :host {
@@ -138,3 +142,4 @@ Polymer({
     });
   }
 });
+export { LrndesignSidenote };

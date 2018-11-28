@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrndesign-avatar`\nVisualize a user account eitehr with an image, a label, or as abstract art.",
+      "description": "",
       "summary": "",
       "path": "lrndesign-avatar.js",
       "properties": [
@@ -113,21 +113,37 @@
             }
           },
           "defaultValue": "false"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 10,
+              "column": 2
+            },
+            "end": {
+              "line": 17,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 9,
-          "column": 8
+          "column": 30
         },
         "end": {
           "line": 57,
@@ -136,6 +152,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrndesignAvatar",
       "attributes": [
         {
           "name": "label",

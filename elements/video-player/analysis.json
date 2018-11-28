@@ -2,59 +2,10 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`video-player`\nA simple responsive video player with ridiculously powerful backing",
+      "description": "",
       "summary": "",
       "path": "video-player.js",
       "properties": [
-        {
-          "name": "schemaResourceID",
-          "type": "string | null | undefined",
-          "description": "Unique Resource ID, generated when schemaMap processes.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 26,
-              "column": 4
-            },
-            "end": {
-              "line": 29,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"\"",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "schemaMap",
-          "type": "Object | null | undefined",
-          "description": "Schema Map for this element.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 33,
-              "column": 4
-            },
-            "end": {
-              "line": 46,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_schemaMapChanged\"",
-              "attributeType": "Object"
-            }
-          },
-          "defaultValue": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
         {
           "name": "accentColor",
           "type": "string | null | undefined",
@@ -559,185 +510,30 @@
             }
           },
           "defaultValue": "false"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 45,
+              "column": 2
+            },
+            "end": {
+              "line": 92,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
-        {
-          "name": "generateResourceID",
-          "description": "Generate a uinque ID",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 51,
-              "column": 2
-            },
-            "end": {
-              "line": 68,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "_schemaMapChanged",
-          "description": "Notice the schema map has changed, reprocess attributes.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 72,
-              "column": 2
-            },
-            "end": {
-              "line": 94,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "newValue"
-            },
-            {
-              "name": "oldValue"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "getTextContrastColor",
-          "description": "Get a a11y safe text color based on background color",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js",
-            "start": {
-              "line": 16,
-              "column": 2
-            },
-            "end": {
-              "line": 37,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "bgColor"
-            }
-          ],
-          "return": {
-            "type": "string",
-            "desc": "hexadecimal value for the color"
-          },
-          "inheritedFrom": "A11yBehaviors.A11y"
-        },
-        {
-          "name": "computeTextPropContrast",
-          "description": "Validate and modify the text contrast to ensure the correct contrast",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js",
-            "start": {
-              "line": 42,
-              "column": 2
-            },
-            "end": {
-              "line": 49,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "textprop"
-            },
-            {
-              "name": "bgprop"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "A11yBehaviors.A11y"
-        },
-        {
-          "name": "_sourceIsIframe",
-          "description": "Compute iframe or video tag for implementation.",
-          "privacy": "protected",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/media-behaviors/media-behaviors.js",
-            "start": {
-              "line": 21,
-              "column": 2
-            },
-            "end": {
-              "line": 28,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "source"
-            }
-          ],
-          "inheritedFrom": "MediaBehaviors.Video"
-        },
-        {
-          "name": "cleanVideoSource",
-          "description": "Check source of the video, potentially correcting bad links.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/media-behaviors/media-behaviors.js",
-            "start": {
-              "line": 32,
-              "column": 2
-            },
-            "end": {
-              "line": 86,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "input"
-            },
-            {
-              "name": "type"
-            }
-          ],
-          "inheritedFrom": "MediaBehaviors.Video"
-        },
-        {
-          "name": "getVideoType",
-          "description": "Figure out the type of video based on source.",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/media-behaviors/media-behaviors.js",
-            "start": {
-              "line": 90,
-              "column": 2
-            },
-            "end": {
-              "line": 128,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "source"
-            }
-          ],
-          "inheritedFrom": "MediaBehaviors.Video"
-        },
         {
           "name": "attached",
           "description": "Attached.",
@@ -964,17 +760,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 44,
-          "column": 8
+          "column": 26
         },
         "end": {
           "line": 714,
@@ -983,43 +774,8 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "VideoPlayer",
       "attributes": [
-        {
-          "name": "schema-resource-i-d",
-          "description": "Unique Resource ID, generated when schemaMap processes.",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 26,
-              "column": 4
-            },
-            "end": {
-              "line": 29,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "schema-map",
-          "description": "Schema Map for this element.",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
-            "start": {
-              "line": 33,
-              "column": 4
-            },
-            "end": {
-              "line": 46,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "Object | null | undefined",
-          "inheritedFrom": "SchemaBehaviors.Schema"
-        },
         {
           "name": "accent-color",
           "description": "Optional accent color for controls,\nusing the following materialize colors:\nred, pink, purple, deep-purple, indigo, blue,\nlight blue, cyan, teal, green, light green, lime,\nyellow, amber, orange, deep-orange, and brown.\nDefault is null.",

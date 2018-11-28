@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-button/paper-button.js";
@@ -6,11 +10,11 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 /**
 `lrnsys-button`
-A LRN element
+`A simple button for use in system`
 
 @demo demo/index.html
 */
-Polymer({
+let LrnsysButton = Polymer({
   _template: html`
   <custom-style>
     <style include="materializecss-styles-colors">
@@ -296,3 +300,4 @@ Polymer({
     this.focusState = !this.focusState;
   }
 });
+export { LrnsysButton };

@@ -5,6 +5,41 @@
       "description": "`awesome-explosion`\n`An awesome, explosion.`",
       "summary": "",
       "path": "awesome-explosion.js",
+      "properties": [],
+      "methods": [],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 18,
+          "column": 23
+        },
+        "end": {
+          "line": 230,
+          "column": 2
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "AwesomeExplosion",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "awesome-explosion.js",
       "properties": [
         {
           "name": "state",
@@ -203,6 +238,27 @@
             }
           },
           "defaultValue": "false"
+        },
+        {
+          "name": "_template",
+          "type": "?",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 19,
+              "column": 2
+            },
+            "end": {
+              "line": 68,
+              "column": 1
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": false
+            }
+          }
         }
       ],
       "methods": [
@@ -377,17 +433,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 18,
-          "column": 8
+          "column": 31
         },
         "end": {
           "line": 230,
@@ -396,6 +447,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "AwesomeExplosion",
       "attributes": [
         {
           "name": "state",
