@@ -12,7 +12,6 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         width: 100%;
         margin: 0;
         padding: 0;
-
         font-size: 20px;
       }
 

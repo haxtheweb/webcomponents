@@ -19,6 +19,11 @@ module.exports = (baseConfig, env, defaultConfig) => {
       "../node_modules/dialog-polyfill/dialog-polyfill.js"
     )
   };
-
+  defaultConfig.module.rules.push({
+    test: /elements\/.*\/.*.js$/,
+    loader: require.resolve(
+      "@open-wc/webpack/loaders/import-meta-url-loader.js"
+    )
+  });
   return defaultConfig;
 };
