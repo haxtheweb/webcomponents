@@ -18,9 +18,7 @@ export { SimpleColorsDemo };
  *
  * @customElement
  * @polymer
- * @see "./simple-colors-demo-child.js"
- * @see "../simple-colors.js"
- * @demo demo/extending.html
+ * @see "../../simple-colors.js"
  */
 class SimpleColorsDemo extends SimpleColors {
   // render function
@@ -43,10 +41,6 @@ class SimpleColorsDemo extends SimpleColors {
   padding: 2px;
   margin: 0 0 15px;
   font-family: monospace;
-}
-:host .slot {
-  padding: 15px;
-  margin: 15px;
 }
 a, a[link] {
   color: var(--simple-colors-default-theme-blue-8); 
@@ -78,8 +72,7 @@ a[visited] {
       <span slot="prefix">="</span>
       <span slot="suffix">" </span>
     </simple-colors-demo-select>
-  </label>
-  &lt;<em>/parent-element</em>&gt; 
+  </label>&gt; 
 </div>
 <div class="slot"><slot></slot></div>`;
   }
@@ -208,19 +201,6 @@ a[visited] {
    */
   ready() {
     super.ready();
-    /*this.$.parent.addEventListener("accent-change", e => {
-      console.log(e);
-      this._updateParentAccent();
-    });
-    this.$.parent.addEventListener("dark-change", e => {
-      this._updateParentDark();
-    });
-    this.$.child.addEventListener("accent-change", e => {
-      this._updateChildAccent();
-    });
-    this.$.child.addEventListener("dark-change", e => {
-      this._updateChildDark();
-    });*/
   }
   /**
    * life cycle, element is afixed to the DOM

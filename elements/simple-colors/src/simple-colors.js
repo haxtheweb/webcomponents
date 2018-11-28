@@ -15,11 +15,10 @@ export { SimpleColors };
  * @customElement
  * @polymer
  * @demo demo/index.html overview and demo
- * @demo demo/classes.html using simple-colors classes
- * @demo demo/variables.html using simple-colors variables
- * @demo demo/shared-styles.html using shared styles
- * @demo demo/extending.html extending simple-colors
  * @demo demo/colors.html all of the colors
+ * @demo demo/variables.html using simple-colors variables
+ * @demo demo/classes.html using simple-colors classes
+ * @demo demo/extending.html extending simple-colors
  */
 class SimpleColors extends PolymerElement {
   static get is() {

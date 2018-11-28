@@ -22,6 +22,25 @@
         font-size: 110%;
         cursor: pointer;
       }
+      .info, .warning {
+        color: var(--simple-colors-light-theme-grey-12);
+      }
+      .info {
+        background-color: var(--simple-colors-light-theme-accent-2);
+        border: 1px solid var(--simple-colors-light-theme-accent-4);
+      }
+      .warning {
+        background-color: var(--simple-colors-light-theme-amber-2);
+        border: 1px solid var(--simple-colors-light-theme-amber-4);
+      }
+      .alert {
+        color: var(--simple-colors-default-theme-grey-12);
+        background-color: var(--simple-colors-default-theme-red-2);
+        border: 1px solid var(--simple-colors-default-theme-red-4);
+      }
+      #parentdemo {
+        border-top: 4px solid var(--simple-colors-default-theme-accent-6);
+      }
       simple-colors {
         background-color: var(--simple-colors-default-theme-grey-1);
         border: 1px solid var(--simple-colors-default-theme-grey-2);
@@ -35,11 +54,37 @@
     <div class="vertical-section-container centered">
       <h1>simple-colors</h1>
       <p>
-        Simple-colors allows you to design components with colors that 
-        can adjust based on a parent's theme and accent-color by using 
-        CSS variables or classes.
+        Simple-colors is a method for managing colors. It includes a 
+        custom element, shared styles, and more.
       </p>
+      <p>
+        The styles can be used to set specific colors, or to have the 
+        colors dynamically adapt based on the attributes of a custom element. 
+        Try adjusting the parent-element below to see this in action.
+      </p>
+      <style is="custom-style" include="simple-colors"></style>
+      <simple-colors-demo id="parentdemo">
+        <div class="info">
+          My background color is always light but the color changes based on my parent's element's accent-color.
+        </div>
+        <div class="warning">
+            My background color is always light amber.
+        </div>
+        <div class="alert">
+            My background color is always red, but the shade changes based on whether or not my parent is light or dark.
+        </div>
+      </simple-colors-demo>
       <demo-snippet>
+        <h2>Colors</h2>
+        <p>
+          By default, simple-colors has the following 18 base colors: grey, red, pink, 
+          purple, deep-purple, indigo, blue, light-blue, cyan, teal, green, light-green, 
+          lime, yellow, amber, orange, brown, and blue-grey. Each color has 10 shades. 
+        </p>
+        <p>
+          You can choose a specifc color or you can set let the color be determined 
+          contextually based on a custom-element's accent-color property. 
+        </p>
         <template>
           <style is="custom-style" include="simple-colors">
             .confirm {
@@ -57,17 +102,11 @@
               background-color: var(--simple-colors-default-theme-red-8);
             }
           </style>
-          <simple-colors accent-color="cyan">
+          <simple-colors-demo>
             <div class="simple-colors-default-theme-accent-1 simple-colors-default-theme-grey-12-text simple-colors-default-theme-accent-3-border">This is an accent-color box.</div>
             <button class="confirm">Save</button>
             <button class="delete">Delete</button>
-          </simple-colors>
-
-          <simple-colors accent-color="pink" dark>
-            <div class="simple-colors-default-theme-accent-1 simple-colors-default-theme-grey-12-text simple-colors-default-theme-accent-3-border">This is an accent-color box.</div>
-            <button class="confirm">Save</button>
-            <button class="delete">Delete</button>
-          </simple-colors>
+          </simple-colors-demo>
         </template>
       </demo-snippet>
     </div>

@@ -8,17 +8,15 @@ import { SimpleColors } from "../../simple-colors.js";
 
 export { SimpleColorsDemoSelect };
 /**
- * `simple-colors-demo-select`
- * `a seclect element for changing simple-colors attributes`
+ * `simple-colors-select`
+ * `a select element for changing simple-colors attributes in demos`
  *
  * @microcopy - language worth noting:
  *  -
  *
  * @customElement
  * @polymer
- * @see "./simple-colors-demo-select.js"
- * @see "../simple-colors.js"
- * @demo demo/index.html
+ * @see "../../simple-colors.js"
  */
 class SimpleColorsDemoSelect extends SimpleColors {
   // render function

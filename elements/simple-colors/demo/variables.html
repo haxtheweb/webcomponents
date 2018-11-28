@@ -21,52 +21,40 @@
           font-size: 120%;
           cursor: pointer;
         } 
+        tt { 
+          background-color: #f0f0f0; 
+          padding: 0 3px;
+        }
     </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h1>simple-colors Variables</h1>
-      <demo-snippet>
-        <p>
-          Simple colors variables allow you the flexibility to theme your 
-          your custom elements.
-        </p>
-        <template>
-          <style is="custom-style" include="simple-colors">
-            .info, .warning {
-              color: var(--simple-colors-light-theme-grey-12);
-            }
-            .info {
-              background-color: var(--simple-colors-light-theme-accent-2);
-              border: 1px solid var(--simple-colors-light-theme-accent-4);
-            }
-            .warning {
-              background-color: var(--simple-colors-light-theme-amber-2);
-              border: 1px solid var(--simple-colors-light-theme-amber-4);
-            }
-            .alert {
-              color: var(--simple-colors-default-theme-grey-12);
-              background-color: var(--simple-colors-default-theme-red-2);
-              border: 1px solid var(--simple-colors-default-theme-red-4);
-            }
-          </style>
-          <simple-colors-demo>
-            <div class="info">
-              My accent color changes based on my parent's element's accent-color.
-            </div>
-            <div class="warning">
-                My color is always amber.
-            </div>
-            <div class="alert">
-                My color is always red, but it changes based on whether or not my parent is light or dark.
-            </div>
-          </simple-colors-demo>
-        </template>
-      </demo-snippet>
+      <p>Simple colors CSS variables have the following naming convention: 
+        <tt>--simple-colors-<em>[theme name]</em>-<em>[base color]</em>-<em>[shade level]</em></tt>, 
+        as in <tt>--simple-colors-default-theme-red-3</tt>.
+      </p>
+      <p>
+        Theme name can be <tt>light-theme</tt> or <tt>dark-theme</tt>. Or it can be 
+        <tt>default-theme</tt>, which inherits the custom element's theme. 
+      </p>
+      <p>
+        Base color can be any of the following 18 base colors: <tt>grey</tt>, <tt>red</tt>, 
+        <tt>pink</tt>, <tt>purple</tt>, <tt>deep-purple</tt>, <tt>indigo</tt>, <tt>blue</tt>, 
+        <tt>light-blue</tt>, <tt>cyan</tt>, <tt>teal</tt>, <tt>green</tt>, <tt>light-green</tt>, 
+        <tt>lime</tt>, <tt>yellow</tt>, <tt>amber</tt>, <tt>orange</tt>, <tt>brown</tt>, and 
+        <tt>blue-grey</tt>. Or it can be set to <tt>accent</tt>, which inherits the custom 
+        element's accent color.
+      </p>
+      <p>
+        Shade level can be a number from <tt>1</tt> to <tt>12</tt>. Typically, lower shade levels 
+        are for backgrounds and higher levels are for foregrounds. to increase color contrast, 
+        increase the difference between the foreground and background shade levels.
+      </p>
+      <p>
+        Use the selectors below, to explore how simple colors variables work.
+      </p>
       <div>
-          <p>
-            Use the selectors below, to explore how variables work.
-          </p>
           <simple-colors-demo>
             <simple-colors-demo-variables></simple-colors-demo-variables>
           </simple-colors-demo>

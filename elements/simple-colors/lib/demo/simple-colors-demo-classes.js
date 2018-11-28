@@ -10,16 +10,14 @@ import "./simple-colors-demo-select.js";
 export { SimpleColorsDemoClasses };
 /**
  * `simple-colors-demo-classes`
- * `an example of how to extend simple-colors within a custom element`
+ * `an example of how to simple-colors CSS classes work`
  *
  * @microcopy - language worth noting:
  *  -
  *
  * @customElement
  * @polymer
- * @see "./simple-colors-demo-select.js"
- * @see "../simple-colors.js"
- * @demo demo/extending.html
+ * @see "../../simple-colors.js"
  */
 class SimpleColorsDemoClasses extends SimpleColors {
   // render function
@@ -27,19 +25,34 @@ class SimpleColorsDemoClasses extends SimpleColors {
     return html`
 <style is="custom-style" include="simple-colors">
 :host {
-  margin: 15px 0;
   padding: 0px;
   display: block;
 }
 :host([hidden]){
   display: none;
 }
-:host #inner {
+:host #selectors, 
+:host #properties {
   padding: 15px;
-  margin: 15px;
 }
-:host .tag {
+:host #demo {
+  padding: 20px ;
+}
+:host #button {
+  font-size: 110%;
+  border-radius: 3px;
+  padding: 5px 7px;
+  cursor: pointer;
+  border-width: 3px;
+}
+:host #selectors {
+  color: black;
+  background-color: #f5f5f5;
   font-family: monospace;
+}
+:host .cssclass {
+  white-space: nowrap;
+  margin: 0 7px;
 }
 :host .sr-only {
   position: absolute;
@@ -51,40 +64,70 @@ class SimpleColorsDemoClasses extends SimpleColors {
 }
 </style>
 <div id="inner">
-  <div class="tag">&lt;<em>div</em> class="<label class="sr-only" for="theme">Theme</label><simple-colors-demo-select id="theme"
-    label="theme"
-    value="simple-colors-default-theme" 
-    as-code 
-    on-theme-change="_handleUpdate"
-    options='["simple-colors-default-theme","simple-colors-dark-theme","simple-colors-light-theme"]'>
-  </simple-colors-demo-select>
-  -
-  <label class="sr-only" for="color">Color</label><simple-colors-demo-select id="color"
-    label="accent-color"
-    value="grey" 
-    as-code 
-    on-accent-color-change="_handleUpdate"
-    options$="[[_getOptions(colors)]]">
-  </simple-colors-demo-select>
-  -
-  <label class="sr-only" for="level">Level</label><simple-colors-demo-select id="level"
-    label="level"
-    value="1" 
-    as-code 
-    on-level-change="_handleUpdate"
-    options='["1","2","3","4","5","6","7","8","9","10","11","12"]'>
-  </simple-colors-demo-select>
-  -
-  <label class="sr-only" for="type">Type</label><simple-colors-demo-select id="type"
-    label="type"
-    value="" 
-    as-code 
-    on-type-change="_handleUpdate"
-    options='["","text","border"]'>
-  </simple-colors-demo-select>"&gt;
-</div>
-<div id="result"></div>
-<div class="tag">&lt;/<em>div</em>&gt;</div>
+  <div id="demo">
+    <button id="button">Button</button>
+  </div>
+  <div id="selectors">
+    <em>&lt;button</em> class="<span class="cssclass"><label class="sr-only" for="theme">Background Theme</label><simple-colors-demo-select id="bgtheme"
+      label="theme"
+      value="simple-colors-default-theme" 
+      as-code 
+      on-theme-change="_handleUpdate"
+      options='["simple-colors-default-theme","simple-colors-dark-theme","simple-colors-light-theme"]'>
+    </simple-colors-demo-select>-<label class="sr-only" for="color">Background Base Color</label><simple-colors-demo-select id="bgcolor"
+      label="accent-color"
+      value="accent" 
+      as-code 
+      on-accent-color-change="_handleUpdate"
+      options$="[[_getOptions(colors)]]">
+    </simple-colors-demo-select>-<label class="sr-only" for="level">Background Shade Level</label><simple-colors-demo-select id="bglevel"
+      label="level"
+      value="7" 
+      as-code 
+      on-level-change="_handleUpdate"
+      options='["1","2","3","4","5","6","7","8","9","10","11","12"]'>
+    </simple-colors-demo-select></span>
+
+    <span class="cssclass"><label class="sr-only" for="theme">Text Theme</label><simple-colors-demo-select id="theme"
+      label="theme"
+      value="simple-colors-default-theme" 
+      as-code 
+      on-theme-change="_handleUpdate"
+      options='["simple-colors-default-theme","simple-colors-dark-theme","simple-colors-light-theme"]'>
+    </simple-colors-demo-select>-<label class="sr-only" for="color">Text Base Color</label><simple-colors-demo-select id="color"
+      label="accent-color"
+      value="grey" 
+      as-code 
+      on-accent-color-change="_handleUpdate"
+      options$="[[_getOptions(colors)]]">
+    </simple-colors-demo-select>-<label class="sr-only" for="level">Text Shade Level</label><simple-colors-demo-select id="level"
+      label="level"
+      value="1" 
+      as-code 
+      on-level-change="_handleUpdate"
+      options='["1","2","3","4","5","6","7","8","9","10","11","12"]'>
+    </simple-colors-demo-select>-text</span>
+
+    <span class="cssclass"><label class="sr-only" for="theme">Border Theme</label><simple-colors-demo-select id="bdtheme"
+      label="theme"
+      value="simple-colors-default-theme" 
+      as-code 
+      on-theme-change="_handleUpdate"
+      options='["simple-colors-default-theme","simple-colors-dark-theme","simple-colors-light-theme"]'>
+    </simple-colors-demo-select>-<label class="sr-only" for="color">Border Base Color</label><simple-colors-demo-select id="bdcolor"
+      label="accent-color"
+      value="accent" 
+      as-code 
+      on-accent-color-change="_handleUpdate"
+      options$="[[_getOptions(colors)]]">
+    </simple-colors-demo-select>-<label class="sr-only" for="level">Border Shade Level</label><simple-colors-demo-select id="bdlevel"
+      label="level"
+      value="9" 
+      as-code 
+      on-level-change="_handleUpdate"
+      options='["1","2","3","4","5","6","7","8","9","10","11","12"]'>
+    </simple-colors-demo-select>-border</span>"/>
+  </div>
 </div>`;
   }
 
@@ -116,37 +159,21 @@ class SimpleColorsDemoClasses extends SimpleColors {
    * determines if the element is in nested mode
    */
   _handleUpdate() {
-    let text,
-      bg,
-      border,
-      color = [
-        this.$.theme.value,
-        this.$.color.value,
-        this.$.level.value,
-        this.$.type.value
-      ].join("-"),
-      inverted = parseInt(this.$.level.value) - 6 > 0 ? "1" : "12";
-    if (this.$.type.value === "text") {
-      text = color;
-      border = "simple-colors-default-theme-grey-1-border";
-      bg = this.$.theme.value + "-grey-" + inverted;
-    } else if (this.$.type.value === "") {
-      bg = color;
-      border = "simple-colors-default-theme-grey-1-border";
-      text = this.$.theme.value + "-grey-" + inverted + "-text";
-    } else {
-      border = color;
-      bg = "simple-colors-default-theme-grey-1";
-      text = "simple-colors-default-theme-grey-12-text";
-    }
-    this.$.result.innerHTML = [
-      "<ul>",
-      "<li>The background-color is set by the <tt>" + bg + "</tt> class.</li>",
-      "<li>The text color is set by the <tt>" + text + "</tt> class.</li>",
-      "<li>The border-color is set by the <tt>" + border + "</tt> class.</li>",
-      "</ul>"
-    ].join("");
-    this.$.inner.className = [bg, text, border].join(" ");
+    this.$.button.className = [
+      [this.$.theme.value, this.$.color.value, this.$.level.value, "text"].join(
+        "-"
+      ),
+      [this.$.bgtheme.value, this.$.bgcolor.value, this.$.bglevel.value].join(
+        "-"
+      ),
+      [
+        this.$.bdtheme.value,
+        this.$.bdcolor.value,
+        this.$.bdlevel.value,
+        "border"
+      ].join("-")
+    ].join(" ");
+    console.log(this.$.button.className);
   }
 
   /**
