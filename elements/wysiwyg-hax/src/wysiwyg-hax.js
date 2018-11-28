@@ -5,7 +5,7 @@ import "@lrnwebcomponents/cms-hax/cms-hax.js";
 Integration of wysiwyg edit form for a page with HAX.
 
 */
-Polymer({
+let WysiwygHax = Polymer({
   _template: html`
     <style>
       :host {
@@ -179,3 +179,4 @@ Polymer({
     this.bodyValue = window.HaxStore.instance.activeHaxBody.haxToContent();
   }
 });
+export { WysiwygHax };

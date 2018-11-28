@@ -22,7 +22,7 @@
   "license": "Apache-2.0",
   "repository": "git@github.com/elmsln/lrnwebcomponents.git",
   "scripts": {
-    "start": "yarn run storybook",
+    "start": "bash scripts/preinstall.sh && yarn run storybook",
     "lerna": "lerna",
     "preinstall": "bash scripts/preinstall.sh",
     "postinstall": "bash scripts/postinstall.sh",

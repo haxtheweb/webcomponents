@@ -218,7 +218,9 @@ Polymer({
    */
   _setActiveItem: function(e) {
     this.set("activeItem", e.detail);
+    this.notifyPath("activeItem.*");
     this.set("queryParams.page", e.detail.id);
+    this.notifyPath("queryParams.page");
   },
 
   /**

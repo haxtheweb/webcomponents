@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/iron-icons/iron-icons.js";
@@ -17,7 +21,7 @@ Example:
 
 @demo demo/index.html
 */
-Polymer({
+let MagazineCover = Polymer({
   _template: html`
     <style>
       :host {
@@ -376,3 +380,4 @@ Polymer({
     this.setHaxProperties(props);
   }
 });
+export { MagazineCover };

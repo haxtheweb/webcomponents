@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
@@ -10,7 +14,7 @@ import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
  *
  * @demo demo/index.html
  */
-Polymer({
+let LrndesignPaperstack = Polymer({
   _template: html`
     <style include="materializecss-styles">
       :host {
@@ -244,3 +248,4 @@ Polymer({
     }
   }
 });
+export { LrndesignPaperstack };

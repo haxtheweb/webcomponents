@@ -7,7 +7,7 @@ so that all content produced has a baseline level of being identified as OER.
 
 @demo demo/index.html
 */
-Polymer({
+let LrnPage = Polymer({
   _template: html`
     <style>
       :host {
@@ -21,3 +21,4 @@ Polymer({
 
   is: "lrn-page"
 });
+export { LrnPage };

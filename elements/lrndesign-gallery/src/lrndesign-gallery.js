@@ -31,7 +31,7 @@ A LRN element that renders a collection of gallery items into a carousel or a si
   </lrndesign-gallery>
 
 */
-Polymer({
+let LrndesignGallery = Polymer({
   _template: html`
     <style is="custom-style">
       :host {
@@ -209,3 +209,4 @@ Polymer({
     return attr !== null && attr !== undefined;
   }
 });
+export { LrndesignGallery };

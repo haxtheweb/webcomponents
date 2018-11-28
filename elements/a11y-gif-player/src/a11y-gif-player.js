@@ -19,7 +19,7 @@ import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
  * @polymerLegacy
  * @demo demo/index.html
  */
-Polymer({
+let A11yGifPlayer = Polymer({
   _template: html`
     <style>
       :host {
@@ -224,3 +224,4 @@ Polymer({
     this.setHaxProperties(props);
   }
 });
+export { A11yGifPlayer };

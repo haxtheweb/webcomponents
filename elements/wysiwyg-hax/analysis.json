@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`wysiwyg-hax`\nIntegration of wysiwyg edit form for a page with HAX.",
+      "description": "",
       "summary": "",
       "path": "wysiwyg-hax.js",
       "properties": [
@@ -411,7 +411,7 @@
       "sourceRange": {
         "start": {
           "line": 7,
-          "column": 8
+          "column": 25
         },
         "end": {
           "line": 180,
@@ -420,6 +420,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "WysiwygHax",
       "attributes": [
         {
           "name": "open-default",

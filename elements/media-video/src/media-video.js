@@ -1,6 +1,16 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-Polymer({
+/**
+ * `media-video`
+ * `Video wrapper class`
+ *
+ * @demo demo/index.html
+ */
+let MediaVideo = Polymer({
   _template: html`
     <style>
       :host {
@@ -65,3 +75,4 @@ Polymer({
     video.setAttribute("src", "");
   }
 });
+export { MediaVideo };

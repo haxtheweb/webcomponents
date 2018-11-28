@@ -18,7 +18,7 @@ import "./lib/lrnsys-progress-circle.js";
  *  - percentage - amount complete either in the bar or the nodes themselves
  *  - bar - the underlayed bar that's tracking overall progression
  */
-Polymer({
+let LrnsysProgress = Polymer({
   _template: html`
     <custom-style>
     <style is="custom-style" include="paper-material-styles">
@@ -624,3 +624,4 @@ Polymer({
     return response;
   }
 });
+export { LrnsysProgress };

@@ -19,7 +19,7 @@ A grid plate based on a layout that manipulates it.
  -
 
 */
-Polymer({
+let GridPlate = Polymer({
   _template: html`
     <style>
       :host {
@@ -767,3 +767,4 @@ Polymer({
     }
   }
 });
+export { GridPlate };

@@ -100,7 +100,7 @@ Custom property | Description | Default
 @element app-datepicker, app-datepicker-dialog
 @demo demo/index.html
 */
-Polymer({
+let AppDatepicker = Polymer({
   _template: html`<style>
       :host {
         display: block;
@@ -1883,3 +1883,4 @@ Polymer({
   // TODO: To add GIF to README.md.
   // TODO: To migrate 2nd datepicker to the same month when minDate is set on the 1st datepicker.
 });
+export { AppDatepicker };

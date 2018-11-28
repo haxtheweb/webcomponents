@@ -5,7 +5,7 @@ A LRN element
 
 @demo demo/index.html
 */
-Polymer({
+let LrndesignDiff2html = Polymer({
   _template: html`
     <style>
       :host {
@@ -24,3 +24,4 @@ Polymer({
     }
   }
 });
+export { LrndesignDiff2html };

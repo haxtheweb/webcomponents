@@ -10,7 +10,7 @@ A LRN element for presenting a gallery of items as cards
 that can pop up to display more info
 @demo demo/index.html
 */
-Polymer({
+let LrndesignGallerycard = Polymer({
   _template: html`
     <style include="materializecss-styles"></style>
     <style>
@@ -219,3 +219,4 @@ Polymer({
     this.elevation -= 2;
   }
 });
+export { LrndesignGallerycard };

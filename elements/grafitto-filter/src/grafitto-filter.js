@@ -180,7 +180,7 @@ by the regular expression engine.
 @element grafitto-filter
 @demo demo/index.html
 */
-Polymer({
+let GrafittoFilter = Polymer({
   _template: html`
     <div id="dom">
       <slot></slot>
@@ -354,3 +354,4 @@ Polymer({
     this.fire("filter");
   }
 });
+export { GrafittoFilter };

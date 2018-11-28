@@ -10,7 +10,7 @@ A LRN element
 
 @demo demo/index.html
 */
-Polymer({
+let LrnsysButton = Polymer({
   _template: html`
     <style include="materializecss-styles-colors">
       :host {
@@ -263,3 +263,4 @@ Polymer({
     root.focusState = !root.focusState;
   }
 });
+export { LrnsysButton };

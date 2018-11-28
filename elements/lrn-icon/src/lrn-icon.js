@@ -83,7 +83,7 @@ Custom property | Description | Default
 @hero hero.svg
 @homepage polymer.github.io
 */
-Polymer({
+let LrnIcon = Polymer({
   _template: html`
     <style include="lrn-shared-styles">
       :host {
@@ -194,3 +194,4 @@ Polymer({
     }
   }
 });
+export { LrnIcon };

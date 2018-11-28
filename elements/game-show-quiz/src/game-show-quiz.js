@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
@@ -25,7 +29,7 @@ A LRN element
  - game show - a display board in the style of Jeopardy
 
 */
-Polymer({
+let GameShowQuiz = Polymer({
   _template: html`
     <style>
       :host {
@@ -499,3 +503,4 @@ Polymer({
     this.$.question.removeEventListener("tap", this.registerTap.bind(this));
   }
 });
+export { GameShowQuiz };

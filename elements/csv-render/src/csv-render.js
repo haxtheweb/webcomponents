@@ -22,7 +22,7 @@ import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
  * @polymerLegacy
  * @demo demo/index.html
  */
-Polymer({
+let CsvRender = Polymer({
   _template: html`
     <style include="materializecss-styles-colors"></style>
     <style>
@@ -260,3 +260,4 @@ Polymer({
     return ret;
   }
 });
+export { CsvRender };
