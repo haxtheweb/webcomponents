@@ -1,0 +1,38 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=yes"><title>SimpleModal: simple-modal Demo</title><script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script><script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script><script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script><script type="module">import"../node_modules/@polymer/iron-demo-helpers/demo-pages-shared-styles.js";import"../node_modules/@polymer/iron-demo-helpers/demo-snippet.js";import"../node_modules/@polymer/paper-button/paper-button.js";import"../simple-modal.js";</script><style is="custom-style" include="demo-pages-shared-styles"></style></head><body><div id="somediv"><p>This is to illustrate the notion of some DIV being handed off to the modal but just a clone, not the real thing.</p></div><div class="vertical-section-container centered"><h3>Basic simple-modal demo</h3><demo-snippet><template><paper-button id="button1">Open 1</paper-button><paper-button id="button2">Pull some div in</paper-button><paper-button id="button3">Fire an event</paper-button><script>// this is how you prep the modal
+          const modal = window.simpleModal.requestAvailability();
+          document.getElementById('button1').addEventListener('tap', () => {
+            let p = document.createElement("p");
+            p.innerHTML = '<strong>Lets see how strong this is</strong> or is not.';
+            modal.show('My new thing', {content: p}, document.getElementById('button1'));
+          });
+          document.getElementById('button2').addEventListener('tap', () => {
+            let p = document.createElement("div");
+            p.innerHTML = '<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.';
+            modal.show('Some stuff pulled in', {content: p}, document.getElementById('button2'));
+          });
+          window.__click = (e) => {
+            alert('i kept your event');
+            console.log(e);
+          };
+          // this is the best way to work with the modal as it provides the most flexibility
+          document.getElementById('button3').addEventListener('tap', () => {
+            let p = document.createElement("div");
+            p.innerHTML = '<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.';
+            let h = document.createElement("h3");
+            h.innerHTML = 'We Love headings';
+            let button = document.createElement("paper-button");
+            button.raised = true;
+            button.addEventListener('click', window.__click.bind(this));
+            button.appendChild(document.createTextNode("Button label"));
+            const evt = new CustomEvent("simple-modal-show", {
+              bubbles: true,
+              cancelable: true,
+              detail: {
+                title: false,
+                elements: {header: h, content: p, buttons: button },
+                invokedBy: document.getElementById('button3'),
+                clone: false,
+              }
+            });
+            document.getElementById('button3').dispatchEvent(evt);
+          });</script></template></demo-snippet></div></body></html>

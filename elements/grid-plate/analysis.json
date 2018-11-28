@@ -206,27 +206,6 @@
               "attributeType": "Object"
             }
           }
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 22,
-              "column": 2
-            },
-            "end": {
-              "line": 137,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [

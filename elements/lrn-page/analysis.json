@@ -5,29 +5,7 @@
       "description": "",
       "summary": "",
       "path": "lrn-page.js",
-      "properties": [
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 10,
-              "column": 2
-            },
-            "end": {
-              "line": 19,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
-        }
-      ],
+      "properties": [],
       "methods": [],
       "staticMethods": [],
       "demos": [],

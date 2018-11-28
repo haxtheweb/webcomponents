@@ -137,27 +137,6 @@
             }
           },
           "defaultValue": "false"
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 33,
-              "column": 2
-            },
-            "end": {
-              "line": 54,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
@@ -318,6 +297,55 @@
       "path": "lib/a11y-collapse-icon-button.js",
       "properties": [
         {
+          "name": "schemaResourceID",
+          "type": "string | null | undefined",
+          "description": "Unique Resource ID, generated when schemaMap processes.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 26,
+              "column": 4
+            },
+            "end": {
+              "line": 29,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\"",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "schemaMap",
+          "type": "Object | null | undefined",
+          "description": "Schema Map for this element.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 33,
+              "column": 4
+            },
+            "end": {
+              "line": 46,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_schemaMapChanged\"",
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
           "name": "disabled",
           "type": "boolean | null | undefined",
           "description": "is disabled?",
@@ -448,30 +476,57 @@
             }
           },
           "defaultValue": "false"
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 46,
-              "column": 2
-            },
-            "end": {
-              "line": 59,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
+        {
+          "name": "generateResourceID",
+          "description": "Generate a uinque ID",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 51,
+              "column": 2
+            },
+            "end": {
+              "line": 68,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "_schemaMapChanged",
+          "description": "Notice the schema map has changed, reprocess attributes.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 72,
+              "column": 2
+            },
+            "end": {
+              "line": 94,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
         {
           "name": "ready",
           "description": "Attached to the DOM, now fire.",
@@ -558,6 +613,42 @@
       "privacy": "public",
       "superclass": "HTMLElement",
       "attributes": [
+        {
+          "name": "schema-resource-i-d",
+          "description": "Unique Resource ID, generated when schemaMap processes.",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 26,
+              "column": 4
+            },
+            "end": {
+              "line": 29,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "schema-map",
+          "description": "Schema Map for this element.",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 33,
+              "column": 4
+            },
+            "end": {
+              "line": 46,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
         {
           "name": "disabled",
           "description": "is disabled?",
@@ -668,6 +759,55 @@
       "summary": "",
       "path": "a11y-collapse.js",
       "properties": [
+        {
+          "name": "schemaResourceID",
+          "type": "string | null | undefined",
+          "description": "Unique Resource ID, generated when schemaMap processes.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 26,
+              "column": 4
+            },
+            "end": {
+              "line": 29,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\"",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "schemaMap",
+          "type": "Object | null | undefined",
+          "description": "Schema Map for this element.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 33,
+              "column": 4
+            },
+            "end": {
+              "line": 46,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_schemaMapChanged\"",
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
         {
           "name": "accordion",
           "type": "boolean | null | undefined",
@@ -888,30 +1028,57 @@
               "attributeType": "Boolean"
             }
           }
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 52,
-              "column": 2
-            },
-            "end": {
-              "line": 104,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
+        {
+          "name": "generateResourceID",
+          "description": "Generate a uinque ID",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 51,
+              "column": 2
+            },
+            "end": {
+              "line": 68,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "_schemaMapChanged",
+          "description": "Notice the schema map has changed, reprocess attributes.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 72,
+              "column": 2
+            },
+            "end": {
+              "line": 94,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
         {
           "name": "attached",
           "description": "Attached to the DOM, now fire.",
@@ -1118,6 +1285,42 @@
       "name": "A11yCollapse",
       "attributes": [
         {
+          "name": "schema-resource-i-d",
+          "description": "Unique Resource ID, generated when schemaMap processes.",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 26,
+              "column": 4
+            },
+            "end": {
+              "line": 29,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "schema-map",
+          "description": "Schema Map for this element.",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 33,
+              "column": 4
+            },
+            "end": {
+              "line": 46,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
           "name": "accordion",
           "description": "accordion-style: whole header acts as button? default is just icon.",
           "sourceRange": {
@@ -1276,6 +1479,55 @@
       "path": "lib/a11y-collapse-group.js",
       "properties": [
         {
+          "name": "schemaResourceID",
+          "type": "string | null | undefined",
+          "description": "Unique Resource ID, generated when schemaMap processes.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 26,
+              "column": 4
+            },
+            "end": {
+              "line": 29,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\"",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "schemaMap",
+          "type": "Object | null | undefined",
+          "description": "Schema Map for this element.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 33,
+              "column": 4
+            },
+            "end": {
+              "line": 46,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_schemaMapChanged\"",
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
           "name": "accordion",
           "type": "boolean | null | undefined",
           "description": "accordion-style: whole header of every a11y-collapse item acts as button? default is just icon.",
@@ -1384,30 +1636,57 @@
             }
           },
           "defaultValue": "[]"
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 25,
-              "column": 2
-            },
-            "end": {
-              "line": 45,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
+        {
+          "name": "generateResourceID",
+          "description": "Generate a uinque ID",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 51,
+              "column": 2
+            },
+            "end": {
+              "line": 68,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "_schemaMapChanged",
+          "description": "Notice the schema map has changed, reprocess attributes.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 72,
+              "column": 2
+            },
+            "end": {
+              "line": 94,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
         {
           "name": "ready",
           "description": "Attached to the DOM, now fire.",
@@ -1562,6 +1841,42 @@
       "privacy": "public",
       "superclass": "HTMLElement",
       "attributes": [
+        {
+          "name": "schema-resource-i-d",
+          "description": "Unique Resource ID, generated when schemaMap processes.",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 26,
+              "column": 4
+            },
+            "end": {
+              "line": 29,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "schema-map",
+          "description": "Schema Map for this element.",
+          "sourceRange": {
+            "file": "../../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 33,
+              "column": 4
+            },
+            "end": {
+              "line": 46,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
         {
           "name": "accordion",
           "description": "accordion-style: whole header of every a11y-collapse item acts as button? default is just icon.",

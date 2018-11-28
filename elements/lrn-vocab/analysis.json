@@ -49,27 +49,6 @@
               "attributeType": "String"
             }
           }
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 6,
-              "column": 2
-            },
-            "end": {
-              "line": 45,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
@@ -216,6 +195,55 @@
       "path": "lrn-vocab.js",
       "properties": [
         {
+          "name": "schemaResourceID",
+          "type": "string | null | undefined",
+          "description": "Unique Resource ID, generated when schemaMap processes.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 26,
+              "column": 4
+            },
+            "end": {
+              "line": 29,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\"",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "schemaMap",
+          "type": "Object | null | undefined",
+          "description": "Schema Map for this element.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 33,
+              "column": 4
+            },
+            "end": {
+              "line": 46,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_schemaMapChanged\"",
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
           "name": "term",
           "type": "string | null | undefined",
           "description": "Term to highlight / display",
@@ -235,30 +263,57 @@
               "attributeType": "String"
             }
           }
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 19,
-              "column": 2
-            },
-            "end": {
-              "line": 45,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
+        {
+          "name": "generateResourceID",
+          "description": "Generate a uinque ID",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 51,
+              "column": 2
+            },
+            "end": {
+              "line": 68,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "_schemaMapChanged",
+          "description": "Notice the schema map has changed, reprocess attributes.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 72,
+              "column": 2
+            },
+            "end": {
+              "line": 94,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
         {
           "name": "openDialog",
           "description": "Request the singleton dialog open",
@@ -321,6 +376,42 @@
       "superclass": "HTMLElement",
       "name": "LrnVocab",
       "attributes": [
+        {
+          "name": "schema-resource-i-d",
+          "description": "Unique Resource ID, generated when schemaMap processes.",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 26,
+              "column": 4
+            },
+            "end": {
+              "line": 29,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "schema-map",
+          "description": "Schema Map for this element.",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 33,
+              "column": 4
+            },
+            "end": {
+              "line": 46,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
         {
           "name": "term",
           "description": "Term to highlight / display",

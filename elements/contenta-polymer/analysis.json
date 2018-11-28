@@ -5,29 +5,7 @@
       "description": "",
       "summary": "",
       "path": "contenta-polymer.js",
-      "properties": [
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 37,
-              "column": 2
-            },
-            "end": {
-              "line": 113,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
-        }
-      ],
+      "properties": [],
       "methods": [
         {
           "name": "_toArray",

@@ -27,27 +27,6 @@
               "attributeType": "String"
             }
           }
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 13,
-              "column": 2
-            },
-            "end": {
-              "line": 39,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [],

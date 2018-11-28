@@ -1624,14 +1624,12 @@
         o = n.substr(1);
       }
       o = o.replace(/&thinsp;/, "\u2006");
-      var m = i
-        .mo(o)
-        .With({
-          movablelimits: true,
-          movesupsub: true,
-          form: i.FORM.PREFIX,
-          texClass: i.TEXCLASS.OP
-        });
+      var m = i.mo(o).With({
+        movablelimits: true,
+        movesupsub: true,
+        form: i.FORM.PREFIX,
+        texClass: i.TEXCLASS.OP
+      });
       this.Push(this.mmlToken(m));
     },
     Limits: function(n, m) {
@@ -1927,14 +1925,12 @@
         o = n;
       }
       this.Push(
-        b
-          .position()
-          .With({
-            name: m,
-            move: "horizontal",
-            left: i.mspace().With({ width: p, mathsize: i.SIZE.NORMAL }),
-            right: i.mspace().With({ width: o, mathsize: i.SIZE.NORMAL })
-          })
+        b.position().With({
+          name: m,
+          move: "horizontal",
+          left: i.mspace().With({ width: p, mathsize: i.SIZE.NORMAL }),
+          right: i.mspace().With({ width: o, mathsize: i.SIZE.NORMAL })
+        })
       );
     },
     Hskip: function(m) {
@@ -1956,13 +1952,11 @@
       var n = this.GetBrackets(p),
         m = this.GetDimen(p),
         q = this.GetDimen(p);
-      var o = i
-        .mspace()
-        .With({
-          width: m,
-          height: q,
-          mathbackground: this.stack.env.color || "black"
-        });
+      var o = i.mspace().With({
+        width: m,
+        height: q,
+        mathbackground: this.stack.env.color || "black"
+      });
       if (n) {
         o = i.mpadded(o).With({ voffset: n });
         if (n.match(/^\-/)) {
@@ -1983,15 +1977,13 @@
           .mstyle(
             i
               .TeXAtom(
-                i
-                  .mo(o)
-                  .With({
-                    minsize: n,
-                    maxsize: n,
-                    fence: true,
-                    stretchy: true,
-                    symmetric: true
-                  })
+                i.mo(o).With({
+                  minsize: n,
+                  maxsize: n,
+                  fence: true,
+                  stretchy: true,
+                  symmetric: true
+                })
               )
               .With({ texClass: p })
           )
@@ -2020,16 +2012,14 @@
     },
     Dots: function(m) {
       this.Push(
-        b
-          .dots()
-          .With({
-            ldots: this.mmlToken(
-              i.mo(i.entity("#x2026")).With({ stretchy: false })
-            ),
-            cdots: this.mmlToken(
-              i.mo(i.entity("#x22EF")).With({ stretchy: false })
-            )
-          })
+        b.dots().With({
+          ldots: this.mmlToken(
+            i.mo(i.entity("#x2026")).With({ stretchy: false })
+          ),
+          cdots: this.mmlToken(
+            i.mo(i.entity("#x22EF")).With({ stretchy: false })
+          )
+        })
       );
     },
     Require: function(m) {
@@ -2085,12 +2075,10 @@
         this.string = s + "}" + this.string.slice(this.i + 1);
         this.i = 0;
       }
-      var q = b
-        .array()
-        .With({
-          requireClose: true,
-          arraydef: { rowspacing: o || "4pt", columnspacing: u || "1em" }
-        });
+      var q = b.array().With({
+        requireClose: true,
+        arraydef: { rowspacing: o || "4pt", columnspacing: u || "1em" }
+      });
       if (w) {
         q.isCases = true;
       }
@@ -2337,15 +2325,13 @@
         .replace(/l/g, "left")
         .replace(/r/g, "right")
         .replace(/c/g, "center");
-      var r = b
-        .array()
-        .With({
-          arraydef: {
-            columnalign: s,
-            columnspacing: t || "1em",
-            rowspacing: o || "4pt"
-          }
-        });
+      var r = b.array().With({
+        arraydef: {
+          columnalign: s,
+          columnspacing: t || "1em",
+          rowspacing: o || "4pt"
+        }
+      });
       if (v.match(/[|:]/)) {
         if (v.charAt(0).match(/[|:]/)) {
           r.frame.push("left");
@@ -2868,14 +2854,12 @@
     fenced: function(o, n, p) {
       var m = i.mrow().With({ open: o, close: p, texClass: i.TEXCLASS.INNER });
       m.Append(
-        i
-          .mo(o)
-          .With({
-            fence: true,
-            stretchy: true,
-            symmetric: true,
-            texClass: i.TEXCLASS.OPEN
-          })
+        i.mo(o).With({
+          fence: true,
+          stretchy: true,
+          symmetric: true,
+          texClass: i.TEXCLASS.OPEN
+        })
       );
       if (n.type === "mrow" && n.inferred) {
         m.Append.apply(m, n.data);
@@ -2883,14 +2867,12 @@
         m.Append(n);
       }
       m.Append(
-        i
-          .mo(p)
-          .With({
-            fence: true,
-            stretchy: true,
-            symmetric: true,
-            texClass: i.TEXCLASS.CLOSE
-          })
+        i.mo(p).With({
+          fence: true,
+          stretchy: true,
+          symmetric: true,
+          texClass: i.TEXCLASS.CLOSE
+        })
       );
       return m;
     },

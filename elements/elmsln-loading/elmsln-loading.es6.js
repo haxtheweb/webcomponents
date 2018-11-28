@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/lrn-icons/lrn-icons.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js";Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/lrn-icons/lrn-icons.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js";let ElmslnLoading=Polymer({_template:html`
     <style is="custom-style" include="materializecss-styles-colors">
       @-moz-keyframes spin { 100% { -moz-transform: rotate(60deg); filter:saturate(10) invert(.9);} }
       @-webkit-keyframes spin { 100% { -webkit-transform: rotate(60deg); filter:saturate(10) invert(.9);} }
@@ -46,4 +46,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
     </style>
     <iron-icon icon="lrn:network" class$="[[color]]"></iron-icon>
-`,is:"elmsln-loading",properties:{color:{type:String,reflectToAttribute:!0},size:{type:String,reflectToAttribute:!0,value:"medium"}}});
+`,is:"elmsln-loading",properties:{color:{type:String,reflectToAttribute:!0},size:{type:String,reflectToAttribute:!0,value:"medium"}}});export{ElmslnLoading};

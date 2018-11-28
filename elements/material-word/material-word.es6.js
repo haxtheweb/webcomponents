@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";let MaterialWord=Polymer({_template:html`
   <custom-style>
   <style>
   html {
@@ -785,4 +785,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";Poly
         </div>
       </div>
 </div>
-`,is:"material-word",properties:{word:{type:String,notify:!0},letters:{type:Array,value:[],notify:!0,reflectToAttribute:!0},halfLetters:{type:Array,value:["e","f","h","i"]}},ready:function(){var word=this.getAttribute("word"),letters=word.toLowerCase().trim().split("");if(letters.length){this.letters=letters}},showHalf:function(letter){if(this.halfLetters[letter]){return!0}return!1}});
+`,is:"material-word",properties:{word:{type:String,notify:!0},letters:{type:Array,value:[],notify:!0,reflectToAttribute:!0},halfLetters:{type:Array,value:["e","f","h","i"]}},ready:function(){var word=this.getAttribute("word"),letters=word.toLowerCase().trim().split("");if(letters.length){this.letters=letters}},showHalf:function(letter){if(this.halfLetters[letter]){return!0}return!1}});export{MaterialWord};

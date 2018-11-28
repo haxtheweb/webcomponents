@@ -580,27 +580,6 @@
             }
           },
           "defaultValue": "{\"25\":false,\"50\":false,\"75\":false}"
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 19,
-              "column": 2
-            },
-            "end": {
-              "line": 187,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
@@ -1735,27 +1714,6 @@
             "polymer": {
               "readOnly": true,
               "attributeType": "Number"
-            }
-          }
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 21,
-              "column": 2
-            },
-            "end": {
-              "line": 112,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
             }
           }
         }

@@ -113,27 +113,6 @@
             }
           },
           "defaultValue": "false"
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 5,
-              "column": 2
-            },
-            "end": {
-              "line": 32,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
@@ -507,27 +486,6 @@
             }
           },
           "defaultValue": "false"
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 7,
-              "column": 2
-            },
-            "end": {
-              "line": 93,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
@@ -1020,27 +978,6 @@
             }
           },
           "defaultValue": "false"
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 6,
-              "column": 2
-            },
-            "end": {
-              "line": 29,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
@@ -1298,29 +1235,7 @@
       "description": "`map-menu`\nA LRN element",
       "summary": "",
       "path": "lib/map-menu-container.js",
-      "properties": [
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 10,
-              "column": 2
-            },
-            "end": {
-              "line": 23,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
-        }
-      ],
+      "properties": [],
       "methods": [],
       "staticMethods": [],
       "demos": [
@@ -1377,27 +1292,6 @@
             }
           },
           "defaultValue": "[]"
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 4,
-              "column": 2
-            },
-            "end": {
-              "line": 21,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
@@ -1622,27 +1516,6 @@
             }
           },
           "defaultValue": "false"
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 15,
-              "column": 2
-            },
-            "end": {
-              "line": 48,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [

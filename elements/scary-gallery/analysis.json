@@ -213,27 +213,6 @@
               "attributeType": "Number"
             }
           }
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 27,
-              "column": 2
-            },
-            "end": {
-              "line": 59,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
@@ -707,27 +686,6 @@
             }
           },
           "defaultValue": "4"
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 28,
-              "column": 2
-            },
-            "end": {
-              "line": 37,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [

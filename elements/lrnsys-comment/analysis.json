@@ -140,27 +140,6 @@
               "attributeType": "Boolean"
             }
           }
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 29,
-              "column": 2
-            },
-            "end": {
-              "line": 235,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
@@ -723,27 +702,6 @@
               "notify": true,
               "readOnly": true,
               "attributeType": "String"
-            }
-          }
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 26,
-              "column": 2
-            },
-            "end": {
-              "line": 69,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
             }
           }
         }

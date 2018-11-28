@@ -5287,13 +5287,11 @@ MathJax.ElementJax.mml.Augment(
       if (f.open !== "") {
         this.SetData(
           "open",
-          a
-            .mo(f.open)
-            .With({
-              fence: true,
-              form: a.FORM.PREFIX,
-              texClass: a.TEXCLASS.OPEN
-            })
+          a.mo(f.open).With({
+            fence: true,
+            form: a.FORM.PREFIX,
+            texClass: a.TEXCLASS.OPEN
+          })
         );
       }
       if (f.separators !== "") {
@@ -5312,13 +5310,11 @@ MathJax.ElementJax.mml.Augment(
       if (f.close !== "") {
         this.SetData(
           "close",
-          a
-            .mo(f.close)
-            .With({
-              fence: true,
-              form: a.FORM.POSTFIX,
-              texClass: a.TEXCLASS.CLOSE
-            })
+          a.mo(f.close).With({
+            fence: true,
+            form: a.FORM.POSTFIX,
+            texClass: a.TEXCLASS.CLOSE
+          })
         );
       }
     },
@@ -8432,14 +8428,12 @@ MathJax.Ajax.loadComplete("[MathJax]/extensions/TeX/noUndefined.js");
         o = n.substr(1);
       }
       o = o.replace(/&thinsp;/, "\u2006");
-      var m = i
-        .mo(o)
-        .With({
-          movablelimits: true,
-          movesupsub: true,
-          form: i.FORM.PREFIX,
-          texClass: i.TEXCLASS.OP
-        });
+      var m = i.mo(o).With({
+        movablelimits: true,
+        movesupsub: true,
+        form: i.FORM.PREFIX,
+        texClass: i.TEXCLASS.OP
+      });
       this.Push(this.mmlToken(m));
     },
     Limits: function(n, m) {
@@ -8735,14 +8729,12 @@ MathJax.Ajax.loadComplete("[MathJax]/extensions/TeX/noUndefined.js");
         o = n;
       }
       this.Push(
-        b
-          .position()
-          .With({
-            name: m,
-            move: "horizontal",
-            left: i.mspace().With({ width: p, mathsize: i.SIZE.NORMAL }),
-            right: i.mspace().With({ width: o, mathsize: i.SIZE.NORMAL })
-          })
+        b.position().With({
+          name: m,
+          move: "horizontal",
+          left: i.mspace().With({ width: p, mathsize: i.SIZE.NORMAL }),
+          right: i.mspace().With({ width: o, mathsize: i.SIZE.NORMAL })
+        })
       );
     },
     Hskip: function(m) {
@@ -8764,13 +8756,11 @@ MathJax.Ajax.loadComplete("[MathJax]/extensions/TeX/noUndefined.js");
       var n = this.GetBrackets(p),
         m = this.GetDimen(p),
         q = this.GetDimen(p);
-      var o = i
-        .mspace()
-        .With({
-          width: m,
-          height: q,
-          mathbackground: this.stack.env.color || "black"
-        });
+      var o = i.mspace().With({
+        width: m,
+        height: q,
+        mathbackground: this.stack.env.color || "black"
+      });
       if (n) {
         o = i.mpadded(o).With({ voffset: n });
         if (n.match(/^\-/)) {
@@ -8791,15 +8781,13 @@ MathJax.Ajax.loadComplete("[MathJax]/extensions/TeX/noUndefined.js");
           .mstyle(
             i
               .TeXAtom(
-                i
-                  .mo(o)
-                  .With({
-                    minsize: n,
-                    maxsize: n,
-                    fence: true,
-                    stretchy: true,
-                    symmetric: true
-                  })
+                i.mo(o).With({
+                  minsize: n,
+                  maxsize: n,
+                  fence: true,
+                  stretchy: true,
+                  symmetric: true
+                })
               )
               .With({ texClass: p })
           )
@@ -8828,16 +8816,14 @@ MathJax.Ajax.loadComplete("[MathJax]/extensions/TeX/noUndefined.js");
     },
     Dots: function(m) {
       this.Push(
-        b
-          .dots()
-          .With({
-            ldots: this.mmlToken(
-              i.mo(i.entity("#x2026")).With({ stretchy: false })
-            ),
-            cdots: this.mmlToken(
-              i.mo(i.entity("#x22EF")).With({ stretchy: false })
-            )
-          })
+        b.dots().With({
+          ldots: this.mmlToken(
+            i.mo(i.entity("#x2026")).With({ stretchy: false })
+          ),
+          cdots: this.mmlToken(
+            i.mo(i.entity("#x22EF")).With({ stretchy: false })
+          )
+        })
       );
     },
     Require: function(m) {
@@ -8893,12 +8879,10 @@ MathJax.Ajax.loadComplete("[MathJax]/extensions/TeX/noUndefined.js");
         this.string = s + "}" + this.string.slice(this.i + 1);
         this.i = 0;
       }
-      var q = b
-        .array()
-        .With({
-          requireClose: true,
-          arraydef: { rowspacing: o || "4pt", columnspacing: u || "1em" }
-        });
+      var q = b.array().With({
+        requireClose: true,
+        arraydef: { rowspacing: o || "4pt", columnspacing: u || "1em" }
+      });
       if (w) {
         q.isCases = true;
       }
@@ -9145,15 +9129,13 @@ MathJax.Ajax.loadComplete("[MathJax]/extensions/TeX/noUndefined.js");
         .replace(/l/g, "left")
         .replace(/r/g, "right")
         .replace(/c/g, "center");
-      var r = b
-        .array()
-        .With({
-          arraydef: {
-            columnalign: s,
-            columnspacing: t || "1em",
-            rowspacing: o || "4pt"
-          }
-        });
+      var r = b.array().With({
+        arraydef: {
+          columnalign: s,
+          columnspacing: t || "1em",
+          rowspacing: o || "4pt"
+        }
+      });
       if (v.match(/[|:]/)) {
         if (v.charAt(0).match(/[|:]/)) {
           r.frame.push("left");
@@ -9676,14 +9658,12 @@ MathJax.Ajax.loadComplete("[MathJax]/extensions/TeX/noUndefined.js");
     fenced: function(o, n, p) {
       var m = i.mrow().With({ open: o, close: p, texClass: i.TEXCLASS.INNER });
       m.Append(
-        i
-          .mo(o)
-          .With({
-            fence: true,
-            stretchy: true,
-            symmetric: true,
-            texClass: i.TEXCLASS.OPEN
-          })
+        i.mo(o).With({
+          fence: true,
+          stretchy: true,
+          symmetric: true,
+          texClass: i.TEXCLASS.OPEN
+        })
       );
       if (n.type === "mrow" && n.inferred) {
         m.Append.apply(m, n.data);
@@ -9691,14 +9671,12 @@ MathJax.Ajax.loadComplete("[MathJax]/extensions/TeX/noUndefined.js");
         m.Append(n);
       }
       m.Append(
-        i
-          .mo(p)
-          .With({
-            fence: true,
-            stretchy: true,
-            symmetric: true,
-            texClass: i.TEXCLASS.CLOSE
-          })
+        i.mo(p).With({
+          fence: true,
+          stretchy: true,
+          symmetric: true,
+          texClass: i.TEXCLASS.CLOSE
+        })
       );
       return m;
     },
@@ -10093,18 +10071,16 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready", function() {
     Multline: function(j, i) {
       this.Push(j);
       this.checkEqnEnv();
-      return f
-        .multline(i, this.stack)
-        .With({
-          arraydef: {
-            displaystyle: true,
-            rowspacing: ".5em",
-            width: h.config.MultLineWidth,
-            columnwidth: "100%",
-            side: h.config.TagSide,
-            minlabelspacing: h.config.TagIndent
-          }
-        });
+      return f.multline(i, this.stack).With({
+        arraydef: {
+          displaystyle: true,
+          rowspacing: ".5em",
+          width: h.config.MultLineWidth,
+          columnwidth: "100%",
+          side: h.config.TagSide,
+          minlabelspacing: h.config.TagIndent
+        }
+      });
     },
     AMSarray: function(k, j, i, m, l) {
       this.Push(k);
@@ -10119,19 +10095,17 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready", function() {
         .replace(/l/g, "left")
         .replace(/r/g, "right")
         .replace(/c/g, "center");
-      return f
-        .AMSarray(k.name, j, i, this.stack)
-        .With({
-          arraydef: {
-            displaystyle: true,
-            rowspacing: ".5em",
-            columnalign: m,
-            columnspacing: l || "1em",
-            rowspacing: "3pt",
-            side: h.config.TagSide,
-            minlabelspacing: h.config.TagIndent
-          }
-        });
+      return f.AMSarray(k.name, j, i, this.stack).With({
+        arraydef: {
+          displaystyle: true,
+          rowspacing: ".5em",
+          columnalign: m,
+          columnspacing: l || "1em",
+          rowspacing: "3pt",
+          side: h.config.TagSide,
+          minlabelspacing: h.config.TagIndent
+        }
+      });
     },
     AlignedAMSArray: function(i) {
       var j = this.GetBrackets("\\begin{" + i.name + "}");

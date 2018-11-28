@@ -39,18 +39,16 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready", function() {
   e.Parse.Augment({
     CD_env: function(f) {
       this.Push(f);
-      return d
-        .array()
-        .With({
-          arraydef: {
-            columnalign: "center",
-            columnspacing: a.colspace,
-            rowspacing: a.rowspace,
-            displaystyle: true
-          },
-          minw: this.stack.env.CD_minw || a.harrowsize,
-          minh: this.stack.env.CD_minh || a.varrowsize
-        });
+      return d.array().With({
+        arraydef: {
+          columnalign: "center",
+          columnspacing: a.colspace,
+          rowspacing: a.rowspace,
+          displaystyle: true
+        },
+        minw: this.stack.env.CD_minw || a.harrowsize,
+        minh: this.stack.env.CD_minh || a.varrowsize
+      });
     },
     CD_arrow: function(g) {
       var l = this.string.charAt(this.i);

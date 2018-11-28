@@ -26,27 +26,6 @@
               "attributeType": "String"
             }
           }
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 15,
-              "column": 2
-            },
-            "end": {
-              "line": 100,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
@@ -270,27 +249,6 @@
           "metadata": {
             "polymer": {
               "attributeType": "Object"
-            }
-          }
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 32,
-              "column": 2
-            },
-            "end": {
-              "line": 209,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
             }
           }
         }

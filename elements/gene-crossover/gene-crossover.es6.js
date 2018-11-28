@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/app-route/app-route.js";import"./node_modules/@polymer/app-route/app-location.js";import"./node_modules/@polymer/iron-pages/iron-pages.js";import"./node_modules/@lrnwebcomponents/paper-stepper/paper-stepper.js";import"./lib/gene-crossover-1.js";import"./lib/gene-crossover-2.js";import"./lib/gene-crossover-3.js";import"./lib/gene-crossover-4.js";import"./lib/gene-crossover-5.js";Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/app-route/app-route.js";import"./node_modules/@polymer/app-route/app-location.js";import"./node_modules/@polymer/iron-pages/iron-pages.js";import"./node_modules/@lrnwebcomponents/paper-stepper/paper-stepper.js";import"./lib/gene-crossover-1.js";import"./lib/gene-crossover-2.js";import"./lib/gene-crossover-3.js";import"./lib/gene-crossover-4.js";import"./lib/gene-crossover-5.js";let GeneCrossover=Polymer({_template:html`
     <style is="custom-style" include="animation-shared-styles">
        :host {
         display: block;
@@ -40,4 +40,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         </template>
       </paper-stepper>
     </template>
-`,is:"gene-crossover",properties:{activePage:{type:String,value:0},count:{type:Number,value:0}},_isActive:function(activePage,index){return activePage===index},_countToArray:function(count){var array=[];if(count){for(var i=0;i<count;i++){array.push(i)}}return array},ready:function(){var root=this,ironPages=root.shadowRoot.querySelector("iron-pages");if(ironPages.children){if(ironPages.children.length){root.count=ironPages.children.length}}}});
+`,is:"gene-crossover",properties:{activePage:{type:String,value:0},count:{type:Number,value:0}},_isActive:function(activePage,index){return activePage===index},_countToArray:function(count){var array=[];if(count){for(var i=0;i<count;i++){array.push(i)}}return array},ready:function(){var root=this,ironPages=root.shadowRoot.querySelector("iron-pages");if(ironPages.children){if(ironPages.children.length){root.count=ironPages.children.length}}}});export{GeneCrossover};

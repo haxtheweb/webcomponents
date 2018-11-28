@@ -49,27 +49,6 @@
             }
           },
           "defaultValue": "{}"
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 13,
-              "column": 2
-            },
-            "end": {
-              "line": 25,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [

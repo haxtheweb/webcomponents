@@ -68,27 +68,6 @@
               "attributeType": "String"
             }
           }
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 11,
-              "column": 2
-            },
-            "end": {
-              "line": 38,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
@@ -215,27 +194,6 @@
             }
           },
           "defaultValue": "false"
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 10,
-              "column": 2
-            },
-            "end": {
-              "line": 59,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
@@ -340,27 +298,6 @@
           "metadata": {
             "polymer": {
               "attributeType": "Array"
-            }
-          }
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 15,
-              "column": 2
-            },
-            "end": {
-              "line": 76,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
             }
           }
         }
@@ -477,27 +414,6 @@
           "metadata": {
             "polymer": {
               "attributeType": "String"
-            }
-          }
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 7,
-              "column": 2
-            },
-            "end": {
-              "line": 22,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
             }
           }
         }
@@ -647,27 +563,6 @@
             }
           },
           "defaultValue": "false"
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 4,
-              "column": 2
-            },
-            "end": {
-              "line": 57,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
@@ -855,27 +750,6 @@
             }
           },
           "defaultValue": "false"
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 13,
-              "column": 2
-            },
-            "end": {
-              "line": 68,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
@@ -1392,27 +1266,6 @@
             }
           },
           "defaultValue": "false"
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 19,
-              "column": 2
-            },
-            "end": {
-              "line": 45,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
@@ -1933,27 +1786,6 @@
             }
           },
           "defaultValue": "\"white-text black\""
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 14,
-              "column": 2
-            },
-            "end": {
-              "line": 92,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [
@@ -2489,27 +2321,6 @@
             }
           },
           "defaultValue": "false"
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 15,
-              "column": 2
-            },
-            "end": {
-              "line": 39,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
         }
       ],
       "methods": [

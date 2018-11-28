@@ -17,4 +17,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
   </template>
 
   
-</dom-module>`;document.head.appendChild($_documentContainer);Polymer({is:"lrn-gradebook",properties:{data:{type:Object}}});
+</dom-module>`;document.head.appendChild($_documentContainer);let LrnGradebook=Polymer({is:"lrn-gradebook",properties:{data:{type:Object}}});export{LrnGradebook};

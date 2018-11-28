@@ -11,7 +11,8 @@
       "name": "es6",
       "browserCapabilities": ["es2015", "modules"],
       "js": {
-        "minify": true
+        "minify": true,
+        "transformImportMeta": true
       },
       "css": {
         "minify": true
@@ -27,6 +28,7 @@
       "js": {
         "minify": true,
         "compile": true,
+        "transformImportMeta": true,
         "transformModulesToAmd": true
       },
       "css": {

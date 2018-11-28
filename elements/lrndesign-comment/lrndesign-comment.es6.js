@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";import"./node_modules/time-elements/dist/time-elements.js";Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";import"./node_modules/time-elements/dist/time-elements.js";let LrndesignComment=Polymer({_template:html`
     <style>
       :host {
         display: block;
@@ -29,4 +29,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         </div>
       </div>
     </div>
-`,is:"lrndesign-comment",properties:{avatar:{type:Object,reflectToAttribute:!0,notify:!0},name:{type:String,reflectToAttribute:!0,notify:!0},date:{type:String,value:"2014-04-01T00:00:00.000Z",reflectToAttribute:!0,notify:!0},links:{type:Object,notify:!0}}});
+`,is:"lrndesign-comment",properties:{avatar:{type:Object,reflectToAttribute:!0,notify:!0},name:{type:String,reflectToAttribute:!0,notify:!0},date:{type:String,value:"2014-04-01T00:00:00.000Z",reflectToAttribute:!0,notify:!0},links:{type:Object,notify:!0}}});export{LrndesignComment};

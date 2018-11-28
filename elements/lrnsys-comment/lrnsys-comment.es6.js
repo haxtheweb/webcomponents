@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import"./node_modules/@polymer/iron-icons/editor-icons.js";import"./node_modules/@polymer/marked-element/marked-element.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-badge/paper-badge.js";import"./node_modules/@lrnwebcomponents/moment-element/moment-element.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js";import"./node_modules/@lrnwebcomponents/mtz-marked-editor/mtz-marked-editor.js";import"./node_modules/@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-line.js";import"./node_modules/@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-wrap.js";import"@lrnwebcomponents/mtz-marked-editor/lib/controls/mtz-marked-control-link.js";import"./node_modules/@lrnwebcomponents/word-count/word-count.js";import"./node_modules/@lrnwebcomponents/lrnsys-button/lrnsys-button.js";import"./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import"./node_modules/@polymer/iron-icons/editor-icons.js";import"./node_modules/@polymer/marked-element/marked-element.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-input/paper-textarea.js";import"./node_modules/@polymer/paper-badge/paper-badge.js";import"./node_modules/@lrnwebcomponents/moment-element/moment-element.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js";import"./node_modules/@lrnwebcomponents/mtz-marked-editor/mtz-marked-editor.js";import"./node_modules/@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-line.js";import"./node_modules/@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-generic-wrap.js";import"./node_modules/@lrnwebcomponents/mtz-marked-editor/lib/mtz-marked-control-link.js";import"./node_modules/@lrnwebcomponents/word-count/word-count.js";import"./node_modules/@lrnwebcomponents/lrnsys-button/lrnsys-button.js";import"./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";let LrnsysComment=Polymer({_template:html`
     <style include="materializecss-styles-colors">
       :host {
         display: block;
@@ -16,6 +16,9 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       :host(:focus) .comment-outer,
       :host(:hover) .comment-outer {
         border: 1px #0277bd solid;
+      }
+      :host [hidden] {
+        display: none;
       }
       .comment-outer {
         display: table;
@@ -35,7 +38,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         width: 40px;
       }
       .comment-depth,
-      .comment-avatar, 
+      .comment-avatar,
       .comment-content {
         padding-top: 8px;
         padding-bottom: 8px;
@@ -50,7 +53,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       h3,
       h4 {
         text-align: left;
-        font-size: 16px;
+        font-size: 20px;
         line-height: 20px;
       }
       h1.comment-heading,
@@ -64,7 +67,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         line-height: 18px;
         text-align: left;
       }
-      #edit-comment {
+      #editcomment {
         background-color: white;
         padding: 4px;
       }
@@ -168,11 +171,11 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
                 <span class="element-invisible">At </span><moment-element datetime\$="[[comment.attributes.created]]" output-format="MMM DD[,] YYYY"></moment-element>
                 [[comment.relationships.author.data.display_name]] <span class="element-invisible">[[comment.relationships.author.data.visual.label]]</span> said:
               </h4>
-              <marked-element smartypants="" id="rendered-comment" markdown="[[comment.attributes.body]]">
+              <marked-element smartypants id="renderedcomment" markdown="[[comment.attributes.body]]">
                 <word-count class="markdown-html-slot" slot="markdown-html"></word-count>
               </marked-element>
             </div>
-            <mtz-marked-editor id="comment-editor" hidden="">
+            <mtz-marked-editor id="commenteditor" hidden>
               <div slot="controls">
                 <mtz-marked-control-generic-wrap icon="editor:format-bold" title="Bold" syntax-prefix="**" syntax-suffix="**" keys="ctrl+b"></mtz-marked-control-generic-wrap>
                 <mtz-marked-control-generic-wrap icon="editor:format-italic" title="Italic" syntax-prefix="_" syntax-suffix="_" keys="ctrl+i"></mtz-marked-control-generic-wrap>
@@ -181,17 +184,17 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
                 <mtz-marked-control-generic-line icon="editor:format-list-bulleted" title="Unordered List" syntax-prefix="- "></mtz-marked-control-generic-line>
                 <mtz-marked-control-link icon="editor:insert-link" title="Link"></mtz-marked-control-link>
               </div>
-              <paper-textarea char-counter="" autofocus="" id="edit-comment" label="Comment" value="{{comment.attributes.body}}" slot="textarea"></paper-textarea>
+              <paper-textarea char-counter autofocus id="editcomment" label="Comment" value="{{comment.attributes.body}}" slot="textarea"></paper-textarea>
             </mtz-marked-editor>
           </div>
           <div class="comment-actions">
             <div class="comment-actions-group left-actions">
-              <lrnsys-button on-click="actionHandler" id="reply" data-commentid="[[comment.id]]" alt="Reply" icon="reply" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.reply]]"></lrnsys-button>
-              <lrnsys-button on-click="actionHandler" id="like" data-commentid="[[comment.id]]" alt="Like" icon="thumb-up" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.like]]"></lrnsys-button>
+              <lrnsys-button on-tap="actionHandler" id="reply" data-commentid="[[comment.id]]" alt="Reply" icon="reply" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.reply]]"></lrnsys-button>
+              <lrnsys-button on-tap="actionHandler" id="like" data-commentid="[[comment.id]]" alt="Like" icon="thumb-up" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.like]]"></lrnsys-button>
             </div>
             <div class="comment-actions-group right-actions">
-              <lrnsys-button on-click="actionHandler" id="edit" data-commentid="[[comment.id]]" icon="create" alt="Edit" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.edit]]"></lrnsys-button>
-              <lrnsys-button on-click="actionHandler" id="delete" data-commentid="[[comment.id]]" icon="delete-forever" alt="Delete" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.delete]]"></lrnsys-button>
+              <lrnsys-button on-tap="actionHandler" id="edit" data-commentid="[[comment.id]]" icon="create" alt="Edit" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.edit]]"></lrnsys-button>
+              <lrnsys-button on-tap="actionHandler" id="delete" data-commentid="[[comment.id]]" icon="delete-forever" alt="Delete" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.delete]]"></lrnsys-button>
             </div>
           </div>
         </div>
@@ -201,4 +204,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       <paper-badge icon="[[comment.relationships.author.data.visual.icon]]" for="papercard" label="[[comment.relationships.author.data.visual.label]]">
       </paper-badge>
     </template>
-`,is:"lrnsys-comment",properties:{comment:{type:Object,notify:!0,observer:"_commentLoaded"},displayName:{type:String,notify:!0,computed:"_generateName(comment.relationships.author.data.display_name, comment.relationships.author.data.visual)"},commentNew:{type:String,notify:!0,computed:"_isCommentNew(comment.relationships.author.data.visual)"},hoverClass:{type:String,reflectToAttribute:!0},editform:{type:Boolean,notify:!0,observer:"_editTrigger",reflectToAttribute:!0},disabled:{type:Boolean,notify:!0,reflectToAttribute:!0}},attached:function(){this.$.bodyarea.addEventListener("tap",this.bodyToggle.bind(this));this.$.bodyarea.addEventListener("dblclick",this.bodyToggleOn.bind(this))},detached:function(){this.$.bodyarea.removeEventListener("tap",this.bodyToggle.bind(this));this.$.bodyarea.removeEventListener("dblclick",this.bodyToggleOn.bind(this))},_generateName:function(name,visual){if(typeof visual!==typeof void 0&&!1!==visual.label){return name+" ("+visual.label+")"}return name},_isCommentNew:function(visual){if(typeof visual!==typeof void 0&&!1!==visual.label){return"new-comment"}return""},_commentLoaded:function(e){let root=this;root.editform=root.comment.metadata.editing;root.disabled=root.comment.metadata.disabled;root.blockFirstState=!0},actionHandler:function(e){let root=this;var normalizedEvent=dom(e),target=normalizedEvent.localTarget,comment=null;if(null!=target.dataCommentid&&!target.disabled){comment=target.dataCommentid;if("reply"==target.id){root.fire("comment-reply",{comment:root.comment})}else if("like"==target.id){root.shadowRoot.querySelector("#like").classList.toggle("like-icon-color");root.fire("comment-like",{comment:root.comment})}else if("edit"==target.id){root.editform=!root.editform}else if("delete"==target.id){root.fire("comment-delete-dialog",{comment:root.comment})}}},_editTrigger:function(e){let root=this;if(typeof root.comment!==typeof void 0&&root.comment.actions.edit){root.async(function(){root.shadowRoot.querySelector("#rendered-comment").hidden=root.editform;root.shadowRoot.querySelector("#comment-editor").hidden=!root.editform;if(root.editform){root.shadowRoot.querySelector("#edit").icon="save";root.shadowRoot.querySelector("#edit").alt="Save";root.shadowRoot.querySelector("#reply").disabled=!0;root.shadowRoot.querySelector("#edit-comment").focus();root.fire("comment-editing",{comment:root.comment});root.blockFirstState=!1}else{if(!root.blockFirstState){root.fire("comment-save",{comment:root.comment})}else{root.blockFirstState=!1}root.shadowRoot.querySelector("#edit").icon="create";root.shadowRoot.querySelector("#edit").alt="Edit";root.shadowRoot.querySelector("#reply").disabled=!1}document.querySelector("iron-list").fire("iron-resize")})}},bodyToggle:function(e){let root=this;root.$.bodyarea.classList.remove("nowrap-me");document.querySelector("iron-list").fire("iron-resize")},bodyToggleOn:function(e){let root=this;root.$.bodyarea.classList.toggle("nowrap-me");document.querySelector("iron-list").fire("iron-resize")}});
+`,is:"lrnsys-comment",properties:{comment:{type:Object,notify:!0,observer:"_commentLoaded"},displayName:{type:String,notify:!0,computed:"_generateName(comment.relationships.author.data.display_name, comment.relationships.author.data.visual)"},commentNew:{type:String,notify:!0,computed:"_isCommentNew(comment.relationships.author.data.visual)"},hoverClass:{type:String,reflectToAttribute:!0},editform:{type:Boolean,notify:!0,observer:"_editTrigger",reflectToAttribute:!0},disabled:{type:Boolean,notify:!0,reflectToAttribute:!0}},attached:function(){this.$.bodyarea.addEventListener("tap",this.bodyToggle.bind(this));this.$.bodyarea.addEventListener("dblclick",this.bodyToggleOn.bind(this))},detached:function(){this.$.bodyarea.removeEventListener("tap",this.bodyToggle.bind(this));this.$.bodyarea.removeEventListener("dblclick",this.bodyToggleOn.bind(this))},_generateName:function(name,visual){if(typeof visual!==typeof void 0&&!1!==visual.label){return name+" ("+visual.label+")"}return name},_isCommentNew:function(visual){if(typeof visual!==typeof void 0&&!1!==visual.label){return"new-comment"}return""},_commentLoaded:function(e){this.editform=this.comment.metadata.editing;this.disabled=this.comment.metadata.disabled;this.blockFirstState=!0},actionHandler:function(e){var normalizedEvent=dom(e),target=normalizedEvent.localTarget,comment=null;if(null!=target.dataCommentid&&!target.disabled){comment=target.dataCommentid;if("reply"==target.id){this.fire("comment-reply",{comment:this.comment,target:target})}else if("like"==target.id){this.$.like.classList.toggle("like-icon-color");this.fire("comment-like",{comment:this.comment,target:target})}else if("edit"==target.id){this.editform=!this.editform}else if("delete"==target.id){this.fire("comment-delete-dialog",{comment:this.comment,target:target})}}},_editTrigger:function(e){if(typeof this.comment!==typeof void 0&&this.comment.actions.edit){async.microTask.run(()=>{this.$.renderedcomment.hidden=this.editform;this.$.commenteditor.hidden=!this.editform;if(this.editform){this.$.edit.icon="save";this.$.edit.alt="Save";this.$.reply.disabled=!0;this.$.editcomment.focus();this.fire("comment-editing",{comment:this.comment});this.blockFirstState=!1}else{if(!this.blockFirstState){this.fire("comment-save",{comment:this.comment})}else{this.blockFirstState=!1}this.$.edit.icon="create";this.$.edit.alt="Edit";this.$.reply.disabled=!1}this.fire("iron-resize")})}},bodyToggle:function(e){this.$.bodyarea.classList.remove("nowrap-me");this.fire("iron-resize")},bodyToggleOn:function(e){this.$.bodyarea.classList.toggle("nowrap-me");this.fire("iron-resize")}});export{LrnsysComment};

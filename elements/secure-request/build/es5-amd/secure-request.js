@@ -1,0 +1,49 @@
+window.SecureRequest = window.SecureRequest || {};
+window.SecureRequest.xhr = {
+  setCookies: function setCookies(endPoint, csrfToken) {
+    this._eraseCookie("securerequest-endpoint");
+    this._eraseCookie("securerequest-csrftoken");
+    this._createCookie("securerequest-endpoint", endPoint, 30, endPoint);
+    this._createCookie("securerequest-csrftoken", csrfToken, 30, endPoint);
+  },
+  generateUrl: function generateUrl(url) {
+    var endPoint = this.getEndPoint(),
+      csrfToken = this.getCsrfToken();
+    if (endPoint && csrfToken) {
+      return endPoint + url + "?token=" + csrfToken;
+    }
+    return null;
+  },
+  getEndPoint: function getEndPoint() {
+    return this._readCookie("securerequest-endpoint");
+  },
+  getCsrfToken: function getCsrfToken() {
+    return this._readCookie("securerequest-csrftoken");
+  },
+  _createCookie: function _createCookie(name, value, days, path) {
+    var expires = "";
+    if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + 1e3 * (60 * (60 * (24 * days))));
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + value + expires + "; path=" + path;
+  },
+  _readCookie: function _readCookie(name) {
+    for (
+      var nameEQ = name + "=", ca = document.cookie.split(";"), i = 0, c;
+      i < ca.length;
+      i++
+    ) {
+      c = ca[i];
+      while (" " == c.charAt(0)) {
+        c = c.substring(1, c.length);
+      }
+      if (0 == c.indexOf(nameEQ)) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  },
+  _eraseCookie: function _eraseCookie(name) {
+    this._createCookie(name, "", -1);
+  }
+};

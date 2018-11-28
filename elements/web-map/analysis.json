@@ -139,27 +139,6 @@
           "defaultValue": "[]"
         },
         {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 6,
-              "column": 2
-            },
-            "end": {
-              "line": 14,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
-        },
-        {
           "name": "_apiToggleChecked",
           "type": "boolean",
           "description": "",
@@ -1206,27 +1185,6 @@
           "metadata": {
             "polymer": {
               "attributeType": "Boolean"
-            }
-          }
-        },
-        {
-          "name": "_template",
-          "type": "?",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 9,
-              "column": 2
-            },
-            "end": {
-              "line": 34,
-              "column": 1
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
             }
           }
         },
