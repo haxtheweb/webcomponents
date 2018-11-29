@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import "@polymer/iron-collapse/iron-collapse.js";
 import "@polymer/iron-icon/iron-icon.js";
@@ -170,11 +171,10 @@ Polymer({
   },
 
   __toggleEventHandler: function(e) {
-    if (typeof e.target !== "undefined") {
-      if (typeof e.target.id !== "undefined") {
-        if (e.target.id === "toggle") {
-          this.fire("toggle-header");
-        }
+    let rootTarget = dom(e).rootTarget;
+    if (typeof rootTarget !== "undefined") {
+      if (typeof rootTarget.id !== "undefined" && rootTarget.id === "toggle") {
+        this.fire("toggle-header");
       }
     }
   }
