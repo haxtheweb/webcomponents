@@ -20,6 +20,7 @@ module.exports = (baseConfig, env, defaultConfig) => {
     )
   };
   defaultConfig.module.rules.push({
+    exclude: /lib\/.*\/.*.js/,
     test: /elements\/.*\/.*.js$/,
     loader: require.resolve(
       "@open-wc/webpack/loaders/import-meta-url-loader.js"

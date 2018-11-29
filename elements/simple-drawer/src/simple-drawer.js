@@ -3,8 +3,14 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-
-export { SimpleDrawer };
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@polymer/app-layout/app-drawer/app-drawer.js";
+import "@polymer/neon-animation/neon-animation.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icon/iron-icon.js";
 /**
  * `simple-drawer`
  * `a singleton drawer element`
@@ -38,3 +44,4 @@ class SimpleDrawer extends PolymerElement {
   //disconnectedCallback() {}
 }
 window.customElements.define(SimpleDrawer.tag, SimpleDrawer);
+export { SimpleDrawer };

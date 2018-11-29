@@ -9,7 +9,6 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/neon-animation/neon-animation.js";
 import "@polymer/neon-animation/neon-animations.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "./lrnsys-dialog-modal.js";
 import "./lrnsys-button-inner.js";
 /**
 `lrnsys-dialog`
