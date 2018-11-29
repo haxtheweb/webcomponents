@@ -9,7 +9,7 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "./lib/screenfull-lib.js";
 import "./lib/a11y-media-behaviors.js";
-import "./lib/a11y-media-video-loader.js";
+import "./lib/a11y-media-media-loader.js";
 import "./lib/a11y-media-play-button.js";
 import "./lib/a11y-media-controls.js";
 import "./lib/a11y-media-transcript.js";
@@ -429,9 +429,9 @@ let A11yMediaPlayer = Polymer({
           <div id="sources" hidden\$="[[noHeight]]">
             <a11y-media-play-button id="playbutton" audio-only\$="[[audioOnly]]" disabled="true" hidden\$="[[noPlayButton]]" disabled\$="[[noPlayButton]]" pause-label\$="[[pauseLabel]]" playing\$="[[__playing]]" play-label\$="[[playLabel]]">
             </a11y-media-play-button>
-            <a11y-media-video-loader id="loader" autoplay\$="[[autoplay]]" cc\$="[[cc]]" crossorigin\$="[[crossorigin]]" hidden\$="[[isYoutube]]" lang\$="[[lang]]" loop\$="[[loop]]" muted\$="[[muted]]" manifest\$="[[manifest]]" playback-rate\$="[[playbackRate]]" style\$="[[_getThumbnailCSS(thumbnailSrc)]]" preload\$="[[preload]]" volume\$="[[volume]]">
+            <a11y-media-media-loader id="loader" autoplay\$="[[autoplay]]" cc\$="[[cc]]" crossorigin\$="[[crossorigin]]" hidden\$="[[isYoutube]]" lang\$="[[lang]]" loop\$="[[loop]]" muted\$="[[muted]]" manifest\$="[[manifest]]" playback-rate\$="[[playbackRate]]" style\$="[[_getThumbnailCSS(thumbnailSrc)]]" preload\$="[[preload]]" volume\$="[[volume]]">
               <slot></slot>
-            </a11y-media-video-loader>
+            </a11y-media-media-loader>
             <div id="youtube" hidden\$="[[!isYoutube]]" video-id\$="[[videoId]]"></div>
             <div id="customcc" hidden\$="[[!showCustomCaptions]]"><span id="customcctxt"></span></div>
           </div>
@@ -520,6 +520,19 @@ let A11yMediaPlayer = Polymer({
       root.disableInteractive = true;
       this._youTubeRequest();
     } else {
+      root.$.loader.$.video.innerHTML = "HTML5 video not supported";
+      root
+        .$$("slot")
+        .assignedNodes()
+        .forEach(function(node) {
+          if (node.nodeName === "TRACK" || node.nodeName === "SOURCE") {
+            if (audioOnly) {
+              root.$.loader.$.audio.appendChild(node);
+            } else {
+              root.$.loader.$.video.appendChild(node);
+            }
+          }
+        });
       root.__media = root.$.loader;
       // handles loaded metadata
       root.__media.addEventListener("media-loaded", function() {
@@ -567,16 +580,6 @@ let A11yMediaPlayer = Polymer({
     root.$.slider.addEventListener("focused-changed", e => {
       this._toggleSliderSeek(root.$.slider.focused, root.$.slider.value);
     });
-    this.shadowRoot
-      .querySelectorAll("slot")
-      .forEach(slot =>
-        slot.addEventListener("slotchange", e => this._handleSlotChange(e))
-      );
-  },
-
-  _handleSlotChange: function(e) {
-    console.log(e.type + " detected");
-    //this.shadowRoot.innerHTML += ("<p>" + e.type + " detected</p>");
   },
 
   /**

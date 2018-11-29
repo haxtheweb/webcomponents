@@ -368,8 +368,8 @@ Polymer({
    * loads tracks from array
    */
   setTracks: function(tracks) {
+    this.set("tracks", []);
     this.set("tracks", tracks.slice(0));
-    this.notifyPaths("tracks");
   },
 
   /**

@@ -2,14 +2,14 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "./a11y-media-behaviors.js";
 /*link rel="import" href="dashjs-lib.html"*/
 /**
-`a11y-media-video-loader`
+`a11y-media-media-loader`
 A LRN element
 
 @demo demo/index.html
 
 @microcopy - the mental model for this element
 
-  <a11y-media-video-loader 
+  <a11y-media-media-loader 
     autoplay$="[[autoplay]]"                    // Is player set to autoplay (not recommended for a11y)?
     cc$="[[cc]]"                                // Are closed captions toggled? 
     height$="[[height]]"                        // The height of player
@@ -25,7 +25,7 @@ A LRN element
     <track label="English" kind="subtitles" srclang="en" src="path/to/subtitles/en.vtt" default>
     <track label="Deutsch" kind="subtitles" srclang="de" src="path/to/subtitles/de.vtt">
     <track label="Español" kind="subtitles" srclang="es" src="path/to/subtitles/es.vtt">
-  </a11y-media-video-loader>
+  </a11y-media-media-loader>
 */
 Polymer({
   _template: html`
@@ -37,16 +37,14 @@ Polymer({
       }
     </style>
     <video id="video" autoplay\$="[[autoplay]]" crossorigin\$="[[crossorigin]]" hidden\$="[[audioOnly]]" lang\$="[[lang]]" src\$="[[manifest]]" preload="metadata">
-      <slot></slot>
       HTML5 video not supported 
     </video>
     <audio id="audio" autoplay\$="[[autoplay]]" crossorigin\$="[[crossorigin]]" hidden\$="[[!audioOnly]]" lang\$="[[lang]]" src\$="[[manifest]]" preload="metadata">
-      <slot></slot>
       HTML5 audio not supported 
     </audio>
 `,
 
-  is: "a11y-media-video-loader",
+  is: "a11y-media-media-loader",
 
   behaviors: [
     a11yMediaBehaviors.MediaProps,
