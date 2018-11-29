@@ -83,7 +83,6 @@ Polymer({
 
   listeners: {
     navTap: "_onNavTapped"
-    //'lrnsys-dialog-modal-changed': '_dialogChanged'
   },
 
   behaviors: [simpleColorsBehaviors],

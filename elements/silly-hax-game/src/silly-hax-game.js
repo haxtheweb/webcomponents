@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/simple-timer/simple-timer.js";
-import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog-modal.js";
+import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@lrnwebcomponents/to-do/to-do.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-button/paper-button.js";
@@ -24,21 +24,10 @@ let SillyHaxGame = Polymer({
         <to-do items="{{tasks}}" hide-form="" id="todo" name="Hax Challenge"></to-do>
       </div>
       <div class="card-actions">
-        <paper-button raised="" on-tap="_playButton">Play</paper-button>
+        <paper-button id="play" raised="" on-tap="_playButton">Play</paper-button>
         <paper-button raised="" on-tap="_resetTimer">Reset</paper-button>
       </div>
     </paper-card>
-
-    <lrnsys-dialog-modal id="modal" body-append="">
-      <h3 slot="header">HAX Challenge score</h3>
-      <div slot="primary">
-        <p>[[__successText]]
-          <a href="https://github.com/LRNWebComponents/hax-body/issues/new" target="_blank" style="text-decoration: none;text-transform: none;"><paper-button raised="">Give us feedback to improve</paper-button></a>
-          <a href\$="[[tweet]]" target="_blank" style="text-decoration: none;text-transform: none;"><paper-button raised="">Tweet your score</paper-button></a>
-      	</p>
-        <to-do name="Report card" hide-form="" items="{{__score}}"></to-do>
-      </div>
-    </lrnsys-dialog-modal>
 `,
 
   is: "silly-hax-game",
@@ -241,7 +230,6 @@ let SillyHaxGame = Polymer({
       });
       winning++;
     }
-    this.$.modal.opened = true;
     if (!win) {
       this.__successText =
         ":( You have much sadness by only completing " +
@@ -269,6 +257,31 @@ let SillyHaxGame = Polymer({
             " seconds. Now I drink more coffee and code less! Take the challenge at http://haxtheweb.org/ !"
         );
     }
+    let c = document.createElement("div");
+    c.innerHTML = `<p>${this.__successText}
+      <a href="https://github.com/elmsln/lrnwebcomponents/issues/new" target="_blank" style="text-decoration: none;text-transform: none;"><paper-button raised="">Give us feedback to improve</paper-button></a>
+      <a href="${
+        this.tweet
+      }" target="_blank" style="text-decoration: none;text-transform: none;"><paper-button raised="">Tweet your score</paper-button></a>
+    </p>`;
+    let todo = document.createElement("to-do");
+    todo.setAttribute("hide-form", "hide-form");
+    todo.setAttribute("name", "Report card");
+    todo.setAttribute("items", JSON.stringify(this.__score, null, 2));
+    c.appendChild(todo);
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        title: "HAX Challenge score",
+        elements: {
+          content: c
+        },
+        invokedBy: this.$.play,
+        clone: true
+      }
+    });
+    this.dispatchEvent(evt);
   },
 
   /**

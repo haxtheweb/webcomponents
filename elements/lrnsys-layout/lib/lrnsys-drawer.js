@@ -1,12 +1,13 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/simple-drawer/simple-drawer.js";
 import "@lrnwebcomponents/paper-avatar/paper-avatar.js";
 import "@polymer/app-layout/app-layout.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "./lrnsys-button-inner.js";
-import "./lrnsys-drawer-modal.js";
 /**
  * `lrnsys-drawer`
  *
@@ -20,9 +21,6 @@ Polymer({
         --lrnsys-drawer-color: var(--simple-colors-foreground1);
         --lrnsys-drawer-background-color: var(--simple-colors-background1);
       }
-      lrnsys-drawer-modal {
-        --lrnsys-drawer-width: 30%;
-      }
       paper-button {
         display:inline-block;
       }
@@ -33,10 +31,6 @@ Polymer({
       </lrnsys-button-inner>
     </paper-button>
     <paper-tooltip for="flyouttrigger" animation-delay="0">[[alt]]</paper-tooltip>
-    <lrnsys-drawer-modal id="modal" opened="[[opened]]" align="[[align]]" header="[[header]]" heading-class="[[headingClass]]">
-      <slot name="header" slot="header"></slot>
-      <slot></slot>
-    </lrnsys-drawer-modal>
 `,
 
   is: "lrnsys-drawer",
@@ -137,17 +131,13 @@ Polymer({
    * Ready lifecycle
    */
   ready: function() {
-    this.__modal = this.$.modal;
+    this.__modal = window.simpleDrawer.requestAvailability();
   },
 
   /**
    * Attached lifecycle
    */
   attached: function() {
-    document.body.addEventListener(
-      "lrnsys-drawer-modal-closed",
-      this._accessibleFocus.bind(this)
-    );
     this.$.flyouttrigger.addEventListener(
       "focused-changed",
       this.focusToggle.bind(this)
@@ -157,10 +147,6 @@ Polymer({
    * detached lifecycle
    */
   detached: function() {
-    document.body.removeEventListener(
-      "lrnsys-drawer-modal-closed",
-      this._accessibleFocus.bind(this)
-    );
     this.$.flyouttrigger.removeEventListener(
       "focused-changed",
       this.focusToggle.bind(this)
@@ -168,30 +154,15 @@ Polymer({
   },
 
   /**
-   * Set ourselves as having focus after the modal closes.
-   */
-  _accessibleFocus: function(e) {
-    // this is OUR modal, we found her, oh modal, We've missed
-    // you so much. thank you for coming home. We're so, so, so
-    // sorry that we appended you to the body. We'll never do it
-    // again (until the next time you open).
-    if (e.detail === this.__modal) {
-      // focus on our flyout triggering button
-      this.$.flyouttrigger.focus();
-    }
-  },
-
-  /**
    * Handle a mouse on event and add the hoverclasses
    * to the classList array for paper-button.
    */
   tapEventOn: function(e) {
-    const root = this;
-    if (typeof root.hoverClass !== typeof undefined) {
-      var classes = root.hoverClass.split(" ");
-      classes.forEach(function(item, index) {
+    if (typeof this.hoverClass !== typeof undefined) {
+      var classes = this.hoverClass.split(" ");
+      classes.forEach((item, index) => {
         if (item != "") {
-          root.$.flyouttrigger.classList.add(item);
+          this.$.flyouttrigger.classList.add(item);
         }
       });
     }
@@ -202,12 +173,11 @@ Polymer({
    * from the classList array for paper-button.
    */
   tapEventOff: function(e) {
-    const root = this;
-    if (typeof root.hoverClass !== typeof undefined) {
-      var classes = root.hoverClass.split(" ");
-      classes.forEach(function(item, index) {
+    if (typeof this.hoverClass !== typeof undefined) {
+      var classes = this.hoverClass.split(" ");
+      classes.forEach((item, index) => {
         if (item != "") {
-          root.$.flyouttrigger.classList.remove(item);
+          this.$.flyouttrigger.classList.remove(item);
         }
       });
     }
@@ -217,31 +187,58 @@ Polymer({
    * Toggle the drawer to open / close.
    */
   toggleDrawer: function() {
-    this.$.modal.open();
+    // assemble everything in the slot
+    let nodes = dom(this).getEffectiveChildNodes();
+    let h = document.createElement("span");
+    let c = document.createElement("span");
+    for (var i in nodes) {
+      if (typeof nodes[i].tagName !== typeof undefined) {
+        switch (nodes[i].getAttribute("slot")) {
+          case "header":
+            h.appendChild(nodes[i].cloneNode(true));
+            break;
+          default:
+            c.appendChild(nodes[i].cloneNode(true));
+            break;
+        }
+      }
+    }
+    const evt = new CustomEvent("simple-drawer-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        title: this.header,
+        elements: { content: c, header: h },
+        invokedBy: this.$.flyouttrigger,
+        align: this.align,
+        size: "30%",
+        clone: false
+      }
+    });
+    this.dispatchEvent(evt);
   },
 
   /**
    * Handle toggle for mouse class and manage classList array for paper-button.
    */
   focusToggle: function(e) {
-    const root = this;
-    root.fire("focus-changed", { focus: root.focusState });
+    this.fire("focus-changed", { focus: this.focusState });
     // see if it has hover classes
-    if (typeof root.hoverClass !== typeof undefined) {
+    if (typeof this.hoverClass !== typeof undefined) {
       // break class into array
-      var classes = root.hoverClass.split(" ");
+      var classes = this.hoverClass.split(" ");
       // run through each and add or remove classes
-      classes.forEach(function(item, index) {
+      classes.forEach((item, index) => {
         if (item != "") {
-          if (root.focusState) {
-            root.$.flyouttrigger.classList.add(item);
+          if (this.focusState) {
+            this.$.flyouttrigger.classList.add(item);
           } else {
-            root.$.flyouttrigger.classList.remove(item);
+            this.$.flyouttrigger.classList.remove(item);
           }
         }
       });
     }
-    root.focusState = !root.focusState;
+    this.focusState = !this.focusState;
   },
 
   /**

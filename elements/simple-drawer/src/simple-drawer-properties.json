@@ -1,5 +1,21 @@
 {
   /**
+   * heading / label of the modal
+   */
+  "title": {
+    "name": "title",
+    "type": String,
+    "value": ""
+  },
+  /**
+   * alignment of the drawer
+   */
+  "align": {
+    "name": "align",
+    "type": String,
+    "value": "left"
+  },
+  /**
    * open state
    */
   "opened": {

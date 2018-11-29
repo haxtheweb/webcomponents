@@ -1,29 +1,104 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>SimpleDrawer: simple-drawer Demo</title>
-    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
-    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
-    <script type="module">
-      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
-      import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../simple-drawer.js';
-    </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
-  </head>
-  <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic simple-drawer demo</h3>
-      <demo-snippet>
-        <template>
-          <simple-drawer>
-            This is simple-drawer
-          </simple-drawer>
-        </template>
-      </demo-snippet>
-    </div>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <title>SimpleDrawer: simple-drawer Demo</title>
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+  <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+  <script type="module">
+    import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+    import '@polymer/iron-demo-helpers/demo-snippet.js';
+    import '@polymer/paper-button/paper-button.js';
+    import '../simple-drawer.js';
+  </script>
+  <style is="custom-style" include="demo-pages-shared-styles"></style>
+</head>
+
+<body>
+  <div id="somediv">
+    <p>This is to illustrate the notion of some DIV being handed off to the drawer but just a clone, not the real thing.</p>
+  </div>
+  <div class="vertical-section-container centered">
+    <h3>Basic simple-drawer demo</h3>
+    <demo-snippet>
+      <template>
+        <paper-button id="button1">Open 1</paper-button>
+        <paper-button id="button2">Pull some div in</paper-button>
+        <paper-button id="button3">Fire an event</paper-button>
+        <script>
+          // this is how you prep the drawer
+          const drawer = window.simpleDrawer.requestAvailability();
+          document.getElementById('button1').addEventListener('tap', () => {
+            let p = document.createElement("p");
+            p.innerHTML = '<strong>Lets see how strong this is</strong> or is not.';
+            const evt = new CustomEvent("simple-drawer-show", {
+              bubbles: true,
+              cancelable: true,
+              detail: {
+                title: 'My new thing',
+                elements: { content: p },
+                invokedBy: document.getElementById('button1'),
+              }
+            });
+            document.getElementById('button1').dispatchEvent(evt);
+          });
+          document.getElementById('button2').addEventListener('tap', () => {
+            let p = document.createElement("div");
+            p.innerHTML = '<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.';
+            const evt = new CustomEvent("simple-drawer-show", {
+              bubbles: true,
+              cancelable: true,
+              detail: {
+                title: 'Some stuff pulled in',
+                elements: { content: p },
+                invokedBy: document.getElementById('button2'),
+                align: "right",
+                size: "500px",
+                clone: false,
+              }
+            });
+            document.getElementById('button2').dispatchEvent(evt);
+          });
+          window.__click = (e) => {
+            alert('i kept your event, now i will close');
+            console.log(e);
+            const evt = new CustomEvent("simple-drawer-hide", {
+              bubbles: true,
+              cancelable: true,
+              detail: {}
+            });
+            document.getElementById('button3').dispatchEvent(evt);
+          };
+          // this is the best way to work with the drawer as it provides the most flexibility
+          document.getElementById('button3').addEventListener('tap', () => {
+            let p = document.createElement("div");
+            p.innerHTML = '<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.';
+            let h = document.createElement("h3");
+            h.innerHTML = 'We Love headings';
+            let button = document.createElement("paper-button");
+            button.raised = true;
+            button.addEventListener('click', window.__click.bind(this));
+            button.appendChild(document.createTextNode("Button label"));
+            p.appendChild(button);
+            const evt = new CustomEvent("simple-drawer-show", {
+              bubbles: true,
+              cancelable: true,
+              detail: {
+                title: false,
+                elements: { header: h, content: p},
+                invokedBy: document.getElementById('button3'),
+                clone: false,
+              }
+            });
+            document.getElementById('button3').dispatchEvent(evt);
+          });
+        </script>
+      </template>
+    </demo-snippet>
+  </div>
+</body>
+
 </html>

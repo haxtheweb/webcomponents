@@ -41,11 +41,13 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.35",
+    "@lrnwebcomponents/schema-behaviors": "^0.0.35",
     "@polymer/app-layout": "^3.0.1",
     "@polymer/iron-image": "^3.0.0",
     "@polymer/iron-input": "^3.0.0",
     "@polymer/paper-card": "^3.0.0",
     "@polymer/paper-input": "^3.0.0",
+    "@polymer/paper-icon-button": "^3.0.1",
     "@polymer/paper-spinner": "^3.0.0",
     "@polymer/polymer": "^3.0.5",
     "pdfjs-dist": "^2.0.489"

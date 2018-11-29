@@ -28,18 +28,42 @@
           // this is how you prep the modal
           const modal = window.simpleModal.requestAvailability();
           document.getElementById('button1').addEventListener('tap', () => {
-            let p = document.createElement("p");
-            p.innerHTML = '<strong>Lets see how strong this is</strong> or is not.';
-            modal.show('My new thing', {content: p}, document.getElementById('button1'));
-          });
-          document.getElementById('button2').addEventListener('tap', () => {
             let p = document.createElement("div");
             p.innerHTML = '<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.';
-            modal.show('Some stuff pulled in', {content: p}, document.getElementById('button2'));
+            const evt = new CustomEvent("simple-modal-show", {
+              bubbles: true,
+              cancelable: true,
+              detail: {
+                title: 'Some stuff pulled in',
+                elements: { content: p },
+                invokedBy: document.getElementById('button1'),
+              }
+            });
+            document.getElementById('button1').dispatchEvent(evt);
+          });
+          document.getElementById('button2').addEventListener('tap', () => {
+            let p = document.createElement("p");
+            p.appendChild(document.getElementById('somediv').cloneNode(true));
+            const evt = new CustomEvent("simple-modal-show", {
+              bubbles: true,
+              cancelable: true,
+              detail: {
+                title: 'My new thing',
+                elements: { content: p },
+                invokedBy: document.getElementById('button2'),
+              }
+            });
+            document.getElementById('button2').dispatchEvent(evt);
           });
           window.__click = (e) => {
-            alert('i kept your event');
+            alert('i kept your event, now i will close');
             console.log(e);
+            const evt = new CustomEvent("simple-modal-hide", {
+              bubbles: true,
+              cancelable: true,
+              detail: {}
+            });
+            document.getElementById('button3').dispatchEvent(evt);
           };
           // this is the best way to work with the modal as it provides the most flexibility
           document.getElementById('button3').addEventListener('tap', () => {
@@ -50,7 +74,7 @@
             let button = document.createElement("paper-button");
             button.raised = true;
             button.addEventListener('click', window.__click.bind(this));
-            button.appendChild(document.createTextNode("Button label"));
+            button.appendChild(document.createTextNode("I keep event binding"));
             const evt = new CustomEvent("simple-modal-show", {
               bubbles: true,
               cancelable: true,
