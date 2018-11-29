@@ -126,7 +126,7 @@ let SimpleSearch = Polymer({
       :host button:not([controls]) {
         display: none;
       }
-      :host [shrink-hide] {
+      :host div[shrink-hide] {
         display: none;
       }
     </style>
@@ -373,6 +373,7 @@ let SimpleSearch = Polymer({
         if (temp[i] === "") temp.splice(i, 1);
       }
     }
+    this.set("searchTerms", []);
     this.set("searchTerms", temp.slice(0));
   },
 

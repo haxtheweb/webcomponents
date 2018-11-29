@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 57,
+              "line": 47,
               "column": 4
             },
             "end": {
-              "line": 60,
+              "line": 50,
               "column": 5
             }
           },
@@ -36,11 +36,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 65,
+              "line": 55,
               "column": 2
             },
             "end": {
-              "line": 83,
+              "line": 72,
               "column": 3
             }
           },
@@ -60,11 +60,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 76,
               "column": 2
             },
             "end": {
-              "line": 89,
+              "line": 78,
               "column": 3
             }
           },
@@ -84,11 +84,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 82,
               "column": 2
             },
             "end": {
-              "line": 98,
+              "line": 87,
               "column": 3
             }
           },
@@ -108,11 +108,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 102,
+              "line": 91,
               "column": 2
             },
             "end": {
-              "line": 104,
+              "line": 93,
               "column": 3
             }
           },
@@ -134,11 +134,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 50,
+          "line": 19,
           "column": 8
         },
         "end": {
-          "line": 105,
+          "line": 94,
           "column": 1
         }
       },
@@ -150,11 +150,11 @@
           "description": "Original content. For example: \"The quick brown fox jumps over the lazy dog.\"",
           "sourceRange": {
             "start": {
-              "line": 57,
+              "line": 47,
               "column": 4
             },
             "end": {
-              "line": 60,
+              "line": 50,
               "column": 5
             }
           },
@@ -748,7 +748,7 @@
               "column": 2
             },
             "end": {
-              "line": 376,
+              "line": 377,
               "column": 3
             }
           },
@@ -768,11 +768,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 424,
+              "line": 425,
               "column": 2
             },
             "end": {
-              "line": 470,
+              "line": 471,
               "column": 3
             }
           },
@@ -793,7 +793,7 @@
           "column": 27
         },
         "end": {
-          "line": 471,
+          "line": 472,
           "column": 1
         }
       },
