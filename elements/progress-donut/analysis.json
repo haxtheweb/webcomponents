@@ -62,11 +62,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 91,
+              "line": 93,
               "column": 4
             },
             "end": {
-              "line": 94,
+              "line": 96,
               "column": 5
             }
           },
@@ -84,11 +84,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 98,
+              "line": 100,
               "column": 4
             },
             "end": {
-              "line": 100,
+              "line": 102,
               "column": 5
             }
           },
@@ -105,11 +105,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 105,
+              "line": 107,
               "column": 4
             },
             "end": {
-              "line": 108,
+              "line": 110,
               "column": 5
             }
           },
@@ -127,11 +127,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 112,
+              "line": 114,
               "column": 4
             },
             "end": {
-              "line": 115,
+              "line": 117,
               "column": 5
             }
           },
@@ -149,11 +149,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 119,
+              "line": 121,
               "column": 4
             },
             "end": {
-              "line": 122,
+              "line": 124,
               "column": 5
             }
           },
@@ -171,11 +171,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 126,
+              "line": 128,
               "column": 4
             },
             "end": {
-              "line": 129,
+              "line": 131,
               "column": 5
             }
           },
@@ -193,11 +193,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 133,
+              "line": 135,
               "column": 4
             },
             "end": {
-              "line": 137,
+              "line": 139,
               "column": 5
             }
           },
@@ -215,11 +215,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 141,
+              "line": 143,
               "column": 4
             },
             "end": {
-              "line": 145,
+              "line": 147,
               "column": 5
             }
           },
@@ -237,11 +237,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 149,
+              "line": 151,
               "column": 4
             },
             "end": {
-              "line": 152,
+              "line": 154,
               "column": 5
             }
           },
@@ -259,11 +259,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 156,
+              "line": 158,
               "column": 4
             },
             "end": {
-              "line": 159,
+              "line": 162,
               "column": 5
             }
           },
@@ -281,11 +281,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 163,
+              "line": 166,
               "column": 4
             },
             "end": {
-              "line": 165,
+              "line": 168,
               "column": 5
             }
           },
@@ -296,17 +296,39 @@
           }
         },
         {
+          "name": "accentColor",
+          "type": "string | null | undefined",
+          "description": "a selected accent-color: grey, red, pink, purple, etc.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 172,
+              "column": 4
+            },
+            "end": {
+              "line": 176,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"grey\""
+        },
+        {
           "name": "total",
           "type": "number | null | undefined",
           "description": "An array of incomplete values",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 169,
+              "line": 180,
               "column": 4
             },
             "end": {
-              "line": 172,
+              "line": 183,
               "column": 5
             }
           },
@@ -373,11 +395,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 178,
+              "line": 189,
               "column": 2
             },
             "end": {
-              "line": 223,
+              "line": 234,
               "column": 3
             }
           },
@@ -393,11 +415,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 228,
+              "line": 239,
               "column": 2
             },
             "end": {
-              "line": 230,
+              "line": 241,
               "column": 3
             }
           },
@@ -414,11 +436,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 235,
+              "line": 246,
               "column": 2
             },
             "end": {
-              "line": 262,
+              "line": 273,
               "column": 3
             }
           },
@@ -435,11 +457,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 267,
+              "line": 278,
               "column": 2
             },
             "end": {
-              "line": 278,
+              "line": 289,
               "column": 3
             }
           },
@@ -471,11 +493,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 283,
+              "line": 294,
               "column": 2
             },
             "end": {
-              "line": 286,
+              "line": 297,
               "column": 3
             }
           },
@@ -495,11 +517,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 291,
+              "line": 302,
               "column": 2
             },
             "end": {
-              "line": 376,
+              "line": 387,
               "column": 3
             }
           },
@@ -516,11 +538,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 16,
+          "line": 19,
           "column": 28
         },
         "end": {
-          "line": 377,
+          "line": 388,
           "column": 1
         }
       },
@@ -569,11 +591,11 @@
           "description": "An array of completed values",
           "sourceRange": {
             "start": {
-              "line": 91,
+              "line": 93,
               "column": 4
             },
             "end": {
-              "line": 94,
+              "line": 96,
               "column": 5
             }
           },
@@ -585,11 +607,11 @@
           "description": "The thickness of the donut from 0-100",
           "sourceRange": {
             "start": {
-              "line": 98,
+              "line": 100,
               "column": 4
             },
             "end": {
-              "line": 100,
+              "line": 102,
               "column": 5
             }
           },
@@ -601,11 +623,11 @@
           "description": "An array of hex codes to use as colors for each section.\nIf null, colors are determined by accentColor & dark properties",
           "sourceRange": {
             "start": {
-              "line": 105,
+              "line": 107,
               "column": 4
             },
             "end": {
-              "line": 108,
+              "line": 110,
               "column": 5
             }
           },
@@ -617,11 +639,11 @@
           "description": "An array of data for the donut chart",
           "sourceRange": {
             "start": {
-              "line": 112,
+              "line": 114,
               "column": 4
             },
             "end": {
-              "line": 115,
+              "line": 117,
               "column": 5
             }
           },
@@ -633,11 +655,11 @@
           "description": "Accessible long description",
           "sourceRange": {
             "start": {
-              "line": 119,
+              "line": 121,
               "column": 4
             },
             "end": {
-              "line": 122,
+              "line": 124,
               "column": 5
             }
           },
@@ -649,11 +671,11 @@
           "description": "An array of data for the donut chart",
           "sourceRange": {
             "start": {
-              "line": 126,
+              "line": 128,
               "column": 4
             },
             "end": {
-              "line": 129,
+              "line": 131,
               "column": 5
             }
           },
@@ -665,11 +687,11 @@
           "description": "The source of the image in the center of the object.",
           "sourceRange": {
             "start": {
-              "line": 133,
+              "line": 135,
               "column": 4
             },
             "end": {
-              "line": 137,
+              "line": 139,
               "column": 5
             }
           },
@@ -681,11 +703,11 @@
           "description": "The alt text for the image.",
           "sourceRange": {
             "start": {
-              "line": 141,
+              "line": 143,
               "column": 4
             },
             "end": {
-              "line": 145,
+              "line": 147,
               "column": 5
             }
           },
@@ -697,11 +719,11 @@
           "description": "The style for the image based on the size of the donut",
           "sourceRange": {
             "start": {
-              "line": 149,
+              "line": 151,
               "column": 4
             },
             "end": {
-              "line": 152,
+              "line": 154,
               "column": 5
             }
           },
@@ -713,11 +735,11 @@
           "description": "The size of the progress-donut: sx, sm, md, lg, or xl. Default is md",
           "sourceRange": {
             "start": {
-              "line": 156,
+              "line": 158,
               "column": 4
             },
             "end": {
-              "line": 159,
+              "line": 162,
               "column": 5
             }
           },
@@ -729,11 +751,27 @@
           "description": "Title",
           "sourceRange": {
             "start": {
-              "line": 163,
+              "line": 166,
               "column": 4
             },
             "end": {
-              "line": 165,
+              "line": 168,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "accent-color",
+          "description": "a selected accent-color: grey, red, pink, purple, etc.",
+          "sourceRange": {
+            "start": {
+              "line": 172,
+              "column": 4
+            },
+            "end": {
+              "line": 176,
               "column": 5
             }
           },
@@ -745,11 +783,11 @@
           "description": "An array of incomplete values",
           "sourceRange": {
             "start": {
-              "line": 169,
+              "line": 180,
               "column": 4
             },
             "end": {
-              "line": 172,
+              "line": 183,
               "column": 5
             }
           },
