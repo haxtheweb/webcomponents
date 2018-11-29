@@ -1,21 +1,21 @@
-# &lt;simple-colors&gt;
+# &lt;simple-picker&gt;
 
-Colors
-> a utilty that provides a global set of color classes and variables based on theme and accent color attributes
+Picker
+> a simple picker for swatches, icons, etc.
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/simple-colors.js';
+import '@lrnwebcomponents/simple-picker.js';
 /* At top of an application */
-<script type="module" src="simple-colors.js"></script>
+<script type="module" src="simple-picker.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/simple-colors.js';
+  import '@lrnwebcomponents/simple-picker.js';
 
-  import {SimpleColors} from '@lrnwebcomponents/simple-colors';
+  import {SimplePicker} from '@lrnwebcomponents/simple-picker';
 </script>
 ```
 
@@ -48,7 +48,7 @@ $ yarn run build
 
 ## Code style
 
-Colors (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
+Picker (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
 
 [prettier]: https://github.com/prettier/prettier/
 [prettier-ed]: https://github.com/prettier/prettier/#editor-integration

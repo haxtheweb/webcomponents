@@ -5,21 +5,105 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>SimpleColors: simple-colors Demo</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
-      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
       import '../simple-colors.js';
+      import '../lib/demo/simple-colors-demo.js';
+      import '../lib/demo/simple-colors-demo-classes.js';
+      import '../lib/demo/simple-colors-demo-variables.js';
+      import '../lib/demo/simple-colors-demo-table.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      div {
+        padding: 20px;
+        margin: 0 0 15px;
+      }
+      button {
+        color: var(--simple-colors-default-theme-grey-1);
+        border-radius: 3px;
+        padding: 3px 5px;
+        font-size: 110%;
+        cursor: pointer;
+      }
+      .info, .warning {
+        color: var(--simple-colors-light-theme-grey-12);
+      }
+      .info {
+        background-color: var(--simple-colors-light-theme-accent-2);
+        border: 1px solid var(--simple-colors-light-theme-accent-4);
+      }
+      .warning {
+        background-color: var(--simple-colors-light-theme-amber-2);
+        border: 1px solid var(--simple-colors-light-theme-amber-4);
+      }
+      .alert {
+        color: var(--simple-colors-default-theme-grey-12);
+        background-color: var(--simple-colors-default-theme-red-2);
+        border: 1px solid var(--simple-colors-default-theme-red-4);
+      }
+      #parentdemo {
+        border-top: 4px solid var(--simple-colors-default-theme-accent-6);
+      }
+      simple-colors-demo {
+        --simple-colors-demo-padding: 20px;
+      }
+      simple-colors {
+        background-color: var(--simple-colors-default-theme-grey-1);
+        border: 1px solid var(--simple-colors-default-theme-grey-2);
+        display: block;
+        margin: 0 15px;
+        padding: 20px;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic simple-colors demo</h3>
+      <h1>simple-colors</h1>
+      <p>
+        Simple-colors is a method for managing colors. It includes a 
+        custom element, shared styles, and more.
+      </p>
+      <p>
+        The styles can be used to set specific colors, or to have the 
+        colors dynamically adapt based on the attributes of a custom element. 
+        Try adjusting the parent-element below to see this in action.
+      </p>
+      <style is="custom-style" include="simple-colors"></style>
+      <simple-colors-demo id="parentdemo">
+        <div class="info">
+          My background color is always light but the color changes based on my parent's element's accent-color.
+        </div>
+        <div class="warning">
+            My background color is always light amber.
+        </div>
+        <div class="alert">
+            My background color is always red, but the shade changes based on whether or not my parent is light or dark.
+        </div>
+      </simple-colors-demo>
       <demo-snippet>
+        
         <template>
-          <simple-colors>
-            This is simple-colors
-          </simple-colors>
+          <style is="custom-style" include="simple-colors">
+            .confirm {
+              background-color: var(--simple-colors-default-theme-light-blue-7);
+              border: 2px solid var(--simple-colors-default-theme-light-blue-8);
+            }
+            .confirm:hover {
+              background-color: var(--simple-colors-default-theme-light-blue-8);
+            }
+            .delete {
+              background-color: var(--simple-colors-default-theme-red-7);
+              border: 2px solid var(--simple-colors-default-theme-red-8);
+            }
+            .delete:hover {
+              background-color: var(--simple-colors-default-theme-red-8);
+            }
+          </style>
+          <simple-colors-demo>
+            <div class="simple-colors-default-theme-accent-1 simple-colors-default-theme-grey-12-text simple-colors-default-theme-accent-3-border">This is an accent-color box.</div>
+            <button class="confirm">Save</button>
+            <button class="delete">Delete</button>
+          </simple-colors-demo>
         </template>
       </demo-snippet>
     </div>

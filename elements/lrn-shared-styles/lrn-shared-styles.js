@@ -11,6 +11,7 @@
  * @pseudoElement
  * @polymer
  * @demo demo/index.html
+ * @see lib/lrn-shared-styles-demo.js
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";

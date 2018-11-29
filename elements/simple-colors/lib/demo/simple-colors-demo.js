@@ -1,122 +1,218 @@
-import "../simple-colors.js";
-/* This is strictly to demo the other tools */
-Polymer({
-  _template: html`
-    <style is="custom-style">
-      .theme-selector {
-        border: 1px solid #ddd;
-        padding: 15px;
-      }
-      .theme-selector,
-      .theme-selector > div {
-        margin-bottom: 5px;
-      }
-      .theme-selector .prompt {
-        margin-bottom: 15px;
-      }
-      .theme-selector select { 
-        margin-left: 16px;
-        border-radius: 4px;
-        border: 1px solid;
-        height: 27px;
-        color: var(--simple-colors-picker-button-color, --simple-colors-foreground2);
-        border-color: var(--simple-colors-picker-button-border-color, --simple-colors-background3);
-        background-color: var(--simple-colors-picker-button-bg-color, --simple-colors-background2);
-      }
-      @media screen and (min-width: 900px) {
-        .theme-selector,
-        .theme-selector > div {
-          display: flex;
-          justify-content: space-around;
-        }
-        .theme-selector > div, 
-        .theme-selector > div > * {
-          align-self: middle;
-        } 
-      }
-    </style>
-    <slot name="preselector"></slot>
-    <div class="theme-selector">
-      <div class="prompt">Change the theme and/or accent color: </div>
-      <div>
-        <label for="theme">Theme: </label>
-        <select id="theme">
-          <option>light (default)</option>
-          <option>dark</option>
-        </select>
-      </div>
-      <div>
-        <label for="accent">Accent Color: </label>
-        <select id="accent">
-          <option>none (default)</option>
-          <option>red</option>
-          <option>pink</option>
-          <option>purple</option>
-          <option>deep-purple</option>
-          <option>indigo</option>
-          <option>blue</option>
-          <option>light-blue</option>
-          <option>cyan</option>
-          <option>teal</option>
-          <option>green</option>
-          <option>light-green</option>
-          <option>lime</option>
-          <option>yellow</option>
-          <option>amber</option>
-          <option>orange</option>
-          <option>deep-orange</option>
-          <option>brown</option>
-          <option>blue-grey</option>
-        </select>
-      </div>
-    </div>
-    <slot></slot>
-`,
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/polymer/lib/elements/dom-if.js";
+import { SimpleColors } from "../../simple-colors.js"; //import the shared styles
+import "./simple-colors-demo-select.js";
 
-  is: "simple-colors-demo",
-  behaviors: [simpleColorsBehaviors],
+export { SimpleColorsDemo };
+/**
+ * `simple-colors-demo`
+ * `an example of how to extend simple-colors within a custom element`
+ *
+ * @microcopy - language worth noting:
+ *  -
+ *
+ * @customElement
+ * @polymer
+ * @see "../../simple-colors.js"
+ */
+class SimpleColorsDemo extends SimpleColors {
+  // render function
+  static get template() {
+    return html`
+<style is="custom-style" include="simple-colors">
+:host {
+  background-color: var(--simple-colors-default-theme-grey-1); 
+  color: var(--simple-colors-default-theme-grey-12); 
+  border: 1px solid var(--simple-colors-default-theme-grey-6);
+  margin: 15px 0;
+  padding: 0px;
+  display: block;
+}
+:host([hidden]){
+  display: none;
+}
+:host .selectors {
+  background-color: var(--simple-colors-default-theme-grey-2); 
+  padding: 2px;
+  margin: 0 0 15px;
+  font-family: monospace;
+}
+:host .slot {
+  padding: var(--simple-colors-demo-padding, 0);
+}
+a, a[link] {
+  color: var(--simple-colors-default-theme-blue-8); 
+}
+a[visited] {
+  color: var(--simple-colors-default-theme-purple-8); 
+}
+</style>
+<div class="selectors">
+  &lt;<em>parent-element</em> 
+  <label>
+    accent-color<simple-colors-demo-select id="accent"
+      label="accent-color"
+      value$="[[accentColor]]" 
+      as-code 
+      on-accent-color-change="_handleAccentChange"
+      options$=[[_getOptions(colors)]]>
+      <span slot="prefix">="</span>
+      <span slot="suffix">" </span>
+    </simple-colors-demo-select>
+  </label>
+  <label>
+    dark<simple-colors-demo-select id="dark"
+      label="dark"
+      value$="[[dark]]" 
+      as-code 
+      on-dark-change="_handleDarkChange"
+      options='["","dark"]'>
+      <span slot="prefix">="</span>
+      <span slot="suffix">" </span>
+    </simple-colors-demo-select>
+  </label>&gt; 
+</div>
+<div class="slot"><slot></slot></div>`;
+  }
 
-  properties: {
-    target: {
-      type: String,
-      value: null
-    }
-  },
-
-  ready: function() {
-    let root = this,
-      accent = root.$.accent,
-      theme = root.$.theme,
-      span,
-      updateSpan = function(content) {
-        let ac =
-            accent.selectedIndex > 0
-              ? ' accent-color="' +
-                accent.options[accent.selectedIndex].innerText +
-                '"'
-              : "",
-          dark =
-            theme.options[theme.selectedIndex].innerText === "dark"
-              ? " dark"
-              : "";
-        if (span === undefined) {
-          span = document.createElement("span");
-          span.style.fontWeight = "700";
-          let code = document.getElementById(root.target);
-          if (code !== undefined && code !== null) {
-            code.querySelector("code span span").appendChild(span);
-          }
-        }
-        span.innerHTML = dark + ac;
-      };
-
-    accent.onchange = function() {
-      updateSpan();
-      root.accentColor = accent.options[accent.selectedIndex].innerText;
-    };
-    theme.onchange = function() {
-      updateSpan();
-      root.dark = theme.options[theme.selectedIndex].innerText === "dark";
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      /**
+       * show a nested child element in this custom element?
+       */
+      nested: {
+        name: "nested",
+        type: "Boolean",
+        value: false,
+        reflectToAttribute: true,
+        observer: false
+      },
+      /**
+       * sets the accent-color attribute of the nested child
+       */
+      __accentColorChild: {
+        name: "__accentColorChild",
+        type: "String",
+        value: null,
+        reflectToAttribute: false,
+        observer: false
+      },
+      /**
+       * sets the dark attribute of the nested child
+       */
+      __darkChild: {
+        name: "__darkChild",
+        type: "Boolean",
+        value: false,
+        reflectToAttribute: false,
+        observer: false
+      }
     };
   }
-});
+
+  /**
+   * gets simple-colors behaviors
+   */
+  static get behaviors() {
+    return [SimpleColors];
+  }
+
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "simple-colors-demo";
+  }
+
+  /**
+   * gets the options array based on an object's keys
+   */
+  _getOptions(obj) {
+    return Object.keys(obj);
+  }
+
+  /**
+   * determines if the element is in nested mode
+   */
+  _handleAccentChange(e) {
+    this.accentColor = this.$.accent.value;
+  }
+
+  /**
+   * determines if the element is in nested mode
+   */
+  _handleDarkChange(e) {
+    this.dark = this.$.dark.value === "dark" ? "dark" : false;
+  }
+
+  /**
+   * determines if the element is in nested mode
+   *
+   * @param {boolean} the element's nested property
+   */
+  _isNested(nested) {
+    return nested !== "false" && nested !== false;
+  }
+
+  /**
+   * updates parent's accent-color based on `<select>`
+   */
+  _updateParentAccent() {
+    this.accentColor = this.$.parent.accentColor;
+    this._updateChildAccent();
+  }
+
+  /**
+   * updates parent's dark attribute based on `<select>`
+   */
+  _updateParentDark() {
+    this.dark = this.$.parent.dark !== "false";
+    this._updateChildDark();
+  }
+
+  /**
+   * updates nested child's accent-color based on `<select>`
+   */
+  _updateChildAccent() {
+    if (this.$.child.accentColor === "parent") {
+      this.__accentColorChild = this.$.parent.accentColor;
+    } else {
+      this.__accentColorChild = this.$.child.accentColor;
+    }
+  }
+
+  /**
+   * updates nested child's dark attribute based on `<select>`
+   */
+  _updateChildDark() {
+    if (this.$.child.dark === "parent") {
+      this.__darkChild = this.$.parent.dark !== "false";
+    } else {
+      this.__darkChild = this.$.child.dark !== "false";
+    }
+  }
+
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  ready() {
+    super.ready();
+  }
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  connectedCallback() {
+    super.connectedCallback();
+  }
+  /**
+   * life cycle, element is removed from the DOM
+   */
+  //disconnectedCallback() {}
+}
+window.customElements.define(SimpleColorsDemo.tag, SimpleColorsDemo);

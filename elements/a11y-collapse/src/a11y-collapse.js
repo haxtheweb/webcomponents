@@ -80,9 +80,9 @@ let A11yCollapse = Polymer({
       }
       :host([expanded]) #content {
         max-height: unset;
-        overflow: visibility: hidden;;
+        overflow: hidden;
         padding: var(--a11y-collapse-vertical-padding, 16px) var(--a11y-collapse-horizontal-padding, 16px);
-        border-top: var(--a11y-collapse-border, 0px solid);
+        border-top: var(--a11y-collapse-border, 1px solid);
         @apply --a11y-collapse-content-expanded;
       }
       :host(:not([expanded])) #content-inner {
