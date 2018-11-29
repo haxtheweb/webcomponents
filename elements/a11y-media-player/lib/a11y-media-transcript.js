@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./a11y-media-behaviors.js";
 import "./a11y-media-transcript-cue.js";
 /**
@@ -88,7 +88,7 @@ Polymer({
   },
 
   behaviors: [
-    simpleColorsBehaviors,
+    SimpleColors,
     a11yMediaBehaviors.GeneralFunctions,
     a11yMediaBehaviors.TranscriptBehaviors
   ],
@@ -152,7 +152,6 @@ Polymer({
    * fires an event to let the page know there is a transcript container
    */
   attached: function() {
-    window.SimpleColorsUtility.requestAvailability();
     this.fire("transcript-ready", this);
   },
 

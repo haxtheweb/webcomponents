@@ -1,6 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/simple-search/simple-search.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./a11y-media-behaviors.js";
 import "./a11y-media-button.js";
 /**
@@ -92,7 +91,6 @@ Polymer({
   is: "a11y-media-transcript-controls",
 
   behaviors: [
-    simpleColorsBehaviors,
     a11yMediaBehaviors.GeneralFunctions,
     a11yMediaBehaviors.TranscriptBehaviors
   ],
@@ -120,7 +118,6 @@ Polymer({
    */
   attached: function() {
     let root = this;
-    window.SimpleColorsUtility.requestAvailability();
     root.search = root.$.search;
     root.fire("searchbar-added", root.$.search);
     root.$.scroll.addEventListener("button-clicked", function(e) {
