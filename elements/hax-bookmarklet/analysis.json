@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "",
+      "summary": "",
+      "path": "hax-bookmarklet.js",
+      "properties": [
+        {
+          "name": "appStoreConnection",
+          "type": "Object | null | undefined",
+          "description": "Store data with path resolved.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 27,
+              "column": 4
+            },
+            "end": {
+              "line": 32,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{\"url\":\"appstore.json\"}"
+        }
+      ],
+      "methods": [],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 8,
+          "column": 29
+        },
+        "end": {
+          "line": 34,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "HaxBookmarklet",
+      "attributes": [
+        {
+          "name": "app-store-connection",
+          "description": "Store data with path resolved.",
+          "sourceRange": {
+            "start": {
+              "line": 27,
+              "column": 4
+            },
+            "end": {
+              "line": 32,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "hax-bookmarklet"
+    }
+  ]
+}

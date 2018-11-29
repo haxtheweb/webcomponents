@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "Example:\n```html\n    <pdf-browser-viewer id=\"pdfViewer\" file=\"[[pdfUrl]]\" width=\"100%\"></pdf-browser-viewer>\n```\n\nData Bind with Blob example:\n```js\n    this.pdfUrl = URL.createObjectURL(blob);\n```\n\nClear PDF container example:\n```js\n    this.$.pdfViewer.clear();\n```\n\nMessage example:\n```html\n    <pdf-browser-viewer\n        file=\"[[pdfUrl]]\"\n        not-supported-message=\"Not supported by your browser\"\n        not-supported-link-message=\"see the file here!\">\n    </pdf-browser-viewer>\n```\n\nCard example:\n```html\n    <pdf-browser-viewer\n        file=\"[[pdfUrl]]\"\n        card elevation=\"3\"\n        download-label=\"Baixar\">\n    </pdf-browser-viewer>\n```",
+      "description": "",
       "summary": "",
       "path": "pdf-browser-viewer.js",
       "properties": [
@@ -225,17 +225,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 50,
-          "column": 8
+          "column": 31
         },
         "end": {
           "line": 177,
@@ -244,6 +239,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "PdfBrowserViewer",
       "attributes": [
         {
           "name": "file",

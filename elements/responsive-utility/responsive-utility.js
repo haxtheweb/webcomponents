@@ -4,7 +4,7 @@ import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-res
 
 window.ResponsiveUtility = {};
 window.ResponsiveUtility.instance = null;
-Polymer({
+let ResponsiveUtility = Polymer({
   _template: html`
     <style>
       :host {
@@ -163,3 +163,4 @@ window.ResponsiveUtility.getSize = function(target) {
   }
   return size;
 };
+export { ResponsiveUtility };

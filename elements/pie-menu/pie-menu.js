@@ -13,7 +13,7 @@ SVG Menu based on the excellent resource at : https://sarasoueidan.com/tools/cir
  - svg - an HTML tag that no one understands, not even the person who made this, yet loves and respects its differences and knows how important it is.
 
 */
-Polymer({
+let PieMenu = Polymer({
   _template: html`
     <style>
       :host, 
@@ -282,3 +282,4 @@ Polymer({
     this.fire("pie-menu-selection", { option: localLink });
   }
 });
+export { PieMenu };

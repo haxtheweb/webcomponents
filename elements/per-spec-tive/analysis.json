@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`per-spec-tive`\nGiving learners a new perspective on education.",
+      "description": "",
       "summary": "",
       "path": "per-spec-tive.js",
       "properties": [
@@ -171,17 +171,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "../../demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 17,
-          "column": 8
+          "column": 26
         },
         "end": {
           "line": 110,
@@ -190,6 +185,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "PerSpecTive",
       "attributes": [
         {
           "name": "outline-loading",

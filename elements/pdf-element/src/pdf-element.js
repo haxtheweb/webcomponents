@@ -38,7 +38,7 @@ Another awesome feature is dynamically load PDF file. So you can change the `src
 @demo demo/index.html
 @hero hero.svg
 */
-Polymer({
+let PdfElement = Polymer({
   _template: html`
     <style>
       :host {
@@ -498,3 +498,4 @@ Polymer({
     }
   }
 });
+export { PdfElement };

@@ -346,7 +346,8 @@ if (document.getElementById && document.childNodes && document.createElement) {
         if (window.__TeSt_VaR__) {
           try {
             delete window.__TeSt_VaR__;
-          } catch (error) { // NOTE IE9 throws when in IE7 mode
+          } catch (error) {
+            // NOTE IE9 throws when in IE7 mode
             window.__TeSt_VaR__ = null;
           }
         } else {

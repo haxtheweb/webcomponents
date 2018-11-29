@@ -17,7 +17,7 @@ Ask the user a question from a set of possible answers.
  -
 
 */
-Polymer({
+let MultipleChoice = Polymer({
   _template: html`
     <style include="materializecss-styles">
       :host {
@@ -399,3 +399,4 @@ Polymer({
     this.setHaxProperties(props);
   }
 });
+export { MultipleChoice };

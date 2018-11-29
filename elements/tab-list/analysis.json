@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`tab-list`\n`A simple listing of tabed links / items`",
+      "description": "",
       "summary": "",
       "path": "tab-list.js",
       "properties": [
@@ -76,17 +76,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 13,
-          "column": 8
+          "column": 22
         },
         "end": {
           "line": 115,
@@ -95,6 +90,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "TabList",
       "attributes": [
         {
           "name": "tabs",

@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "Polymer element which renders PDF documents. It uses [PDF.js](https://mozilla.github.io/pdf.js/) library behind.\n\nExample:\n\nMinimum configuration:\n```html\n<pdf-element src=\"../example.pdf\" width=800 height=600></pdf-element>\n```\nOptionally following parameters could be triggered:\n - `elevation` material elevation;\n - `downloadable` to be able to download document;\n - `show-file-name` to show name of the file in the PDF toolbar.\n\n\n ```html\n <pdf-element src=\"../example.pdf\" elevation=\"5\" downloadable show-file-name width=800 height=600></pdf-element>\n ```\n\nAnother awesome feature is dynamically load PDF file. So you can change the `src` attribute of the element and document will be automatically reloaded (checkout the demo):\n\n```html\n<pdf-element src=\"[[pdfFile]]\" width=800 height=600></pdf-element>\n```",
+      "description": "",
       "summary": "",
       "path": "pdf-element.js",
       "properties": [
@@ -603,17 +603,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 40,
-          "column": 8
+          "column": 25
         },
         "end": {
           "line": 499,
@@ -622,6 +617,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "PdfElement",
       "attributes": [
         {
           "name": "schema-resource-i-d",

@@ -324,7 +324,7 @@
       "tagname": "img-loader"
     },
     {
-      "description": "`img-pan-zoom` Image pan zoom element\n\nImages are preloaded by `img-loader` and a spinner is shown until loaded\nDeep Zoom Images are supported\n\n### Styling\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--img-pan-zoom-spinner` | Mixin applied to spinner |\n`--img-pan-zoom-spinner-color` | Spinner color | `#2196F3`\n`--img-pan-zoom-spinner-width` | Spinner width | `5px`\n\n### Credits\n\n<a href=\"https://openseadragon.github.io\">openSeadragon</a>",
+      "description": "",
       "summary": "",
       "path": "img-pan-zoom.js",
       "properties": [
@@ -946,17 +946,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 25,
-          "column": 8
+          "column": 25
         },
         "end": {
           "line": 291,
@@ -965,6 +960,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "ImgPanZoom",
       "attributes": [
         {
           "name": "src",

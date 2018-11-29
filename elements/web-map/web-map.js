@@ -6,7 +6,7 @@ import "./lib/map-styles.js";
 
 /* styles scoped to inside a custom element must be in a style module */
 /* web-map is an HTML &lt;map&gt; customized built-in element */
-Polymer({
+let WebMap = Polymer({
   _template: html`
   <!-- use the leaflet-styles style module -->
   <style include="map-styles">
@@ -473,3 +473,4 @@ Polymer({
     );
   }
 });
+export { WebMap };

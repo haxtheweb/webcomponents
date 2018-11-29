@@ -13,7 +13,7 @@ import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
  * @microcopy - the mental model for this element
  *  -
  */
-Polymer({
+let MemeMaker = Polymer({
   _template: html`
     <style>
       :host {
@@ -28,7 +28,6 @@ Polymer({
         width: 100%;
         margin: 0;
         padding: 0;
-
         font-size: 20px;
       }
 
@@ -185,3 +184,4 @@ Polymer({
     this.setHaxProperties(props);
   }
 });
+export { MemeMaker };

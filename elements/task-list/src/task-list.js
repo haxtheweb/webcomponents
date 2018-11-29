@@ -13,7 +13,7 @@ OER Schema capable!
  - task - a singular thing to accomplish
 
 */
-Polymer({
+let TaskList = Polymer({
   _template: html`
     <style>
       :host {
@@ -171,3 +171,4 @@ Polymer({
     this.setHaxProperties(props);
   }
 });
+export { TaskList };

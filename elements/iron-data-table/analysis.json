@@ -3811,7 +3811,7 @@
       "tagname": "data-table-row-detail"
     },
     {
-      "description": "`iron-data-table` displays a table or a grid of data.\nIt builds on top of `iron-list`, which provides the foundation for features like\nvirtual scrolling and templating.\n\nIt contains an array of `data-table-column` elements, which are used to define a template\nfor the cells on each row item.\n\nRows use flex layout which enables cells to fit the available space.\n\nCell elements are placed outside the shadow root of the `iron-data-table` which\nallows them to be styled by the user.\n\n### Template model\nColumn templates should bind to template models of the following structure:\n```js\n{\n  index: 0,        // index in the item array\n  selected: false, // true if the current item is selected\n  item: {},        // user data corresponding to items[index],\n  expanded: false  // true if row details have been expanded for the current item\n}\n```\nFor example, given the following `data` array:\n##### data.json\n```js\n[\n  {\"name\": {\n    \"title\": \"miss\",\n    \"first\": \"donna\",\n    \"last\": \"davis\"\n  }},\n  {\"name\": {\n    \"title\": \"mr\",\n    \"first\": \"samuel\",\n    \"last\": \"kelley\"\n  }},\n  {\"name\": {\n    \"title\": \"ms\",\n    \"first\": \"katie\",\n    \"last\": \"butler\"\n  }}\n]\n```\nThe following code would render the table (note the name and checked properties are\nbound from the model object provided to the template scope):\n```html\n<template is=\"dom-bind\">\n  <iron-ajax url=\"data.json\" last-response=\"{{data}}\" auto></iron-ajax>\n  <iron-data-table items=\"[[data]]\">\n    <data-table-column name=\"First Name\">\n      <template>[[item.name.first]]</template>\n    </data-table-column>\n    <data-table-column name=\"Last Name\">\n      <template>[[item.name.last]]</template>\n    </data-table-column>\n  </iron-data-table>\n</template>\n```\n\n### Styling\nThere are several custom properties and mixins you can use to style the component:\n\nCustom property | Description\n----------------|-------------\n`--iron-data-table` | Mixin applied to the main element\n`--iron-data-table-header` | Mixin applied to the header element\n`--iron-data-table-row` | Mixin applied to the row item element\n`--iron-data-table-row-hover` | Mixin applied to the row item element when hovered on\n`--iron-data-table-row-selected` | Mixin applied to the selected row item elements\n`--iron-data-table-row-after` | Mixin applied to :after pseudoelement of the row item element\n`--iron-data-table-row-focused` | Mixin applied to the focused row item elements\n`--iron-data-table-row-focused-after` | Mixin applied to :after pseudoelement of the focused row item elements\n\nTo get started, you can import `default-styles.html` which provides material design\ninspired styles to your `iron-data-table`.",
+      "description": "",
       "summary": "",
       "path": "iron-data-table.js",
       "properties": [
@@ -5681,7 +5681,7 @@
       "sourceRange": {
         "start": {
           "line": 104,
-          "column": 8
+          "column": 28
         },
         "end": {
           "line": 1126,
@@ -5690,6 +5690,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "IronDataTable",
       "attributes": [
         {
           "name": "auto-refresh",

@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrndesign-contentblock`\nAn incredibly basic content block",
+      "description": "",
       "summary": "",
       "path": "lrndesign-contentblock.js",
       "properties": [
@@ -30,17 +30,12 @@
       ],
       "methods": [],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 7,
-          "column": 8
+          "column": 36
         },
         "end": {
           "line": 30,
@@ -49,6 +44,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrndesignContentblock",
       "attributes": [
         {
           "name": "title",

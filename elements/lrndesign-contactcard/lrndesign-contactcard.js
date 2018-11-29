@@ -13,7 +13,7 @@ lrndesign-contactcard
 
 @demo demo/index.html
 */
-Polymer({
+let LrndesignContactcard = Polymer({
   _template: html`
     <style>
       :host {
@@ -230,3 +230,4 @@ Polymer({
     }
   }
 });
+export { LrndesignContactcard };

@@ -338,18 +338,16 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready", function() {
     Multline: function(j, i) {
       this.Push(j);
       this.checkEqnEnv();
-      return f
-        .multline(i, this.stack)
-        .With({
-          arraydef: {
-            displaystyle: true,
-            rowspacing: ".5em",
-            width: h.config.MultLineWidth,
-            columnwidth: "100%",
-            side: h.config.TagSide,
-            minlabelspacing: h.config.TagIndent
-          }
-        });
+      return f.multline(i, this.stack).With({
+        arraydef: {
+          displaystyle: true,
+          rowspacing: ".5em",
+          width: h.config.MultLineWidth,
+          columnwidth: "100%",
+          side: h.config.TagSide,
+          minlabelspacing: h.config.TagIndent
+        }
+      });
     },
     AMSarray: function(k, j, i, m, l) {
       this.Push(k);
@@ -364,19 +362,17 @@ MathJax.Hub.Register.StartupHook("TeX Jax Ready", function() {
         .replace(/l/g, "left")
         .replace(/r/g, "right")
         .replace(/c/g, "center");
-      return f
-        .AMSarray(k.name, j, i, this.stack)
-        .With({
-          arraydef: {
-            displaystyle: true,
-            rowspacing: ".5em",
-            columnalign: m,
-            columnspacing: l || "1em",
-            rowspacing: "3pt",
-            side: h.config.TagSide,
-            minlabelspacing: h.config.TagIndent
-          }
-        });
+      return f.AMSarray(k.name, j, i, this.stack).With({
+        arraydef: {
+          displaystyle: true,
+          rowspacing: ".5em",
+          columnalign: m,
+          columnspacing: l || "1em",
+          rowspacing: "3pt",
+          side: h.config.TagSide,
+          minlabelspacing: h.config.TagIndent
+        }
+      });
     },
     AlignedAMSArray: function(i) {
       var j = this.GetBrackets("\\begin{" + i.name + "}");

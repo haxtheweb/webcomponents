@@ -334,12 +334,14 @@ Polymer({
   _manifestChanged: function(e) {
     this.set("manifest", {});
     this.set("manifest", e.detail);
+    this.notifyPath("manifest.*");
   },
   /**
    * update the internal active item
    */
   _newActiveItem: function(e) {
     this.set("activeItem", e.detail);
+    this.notifyPath("activeItem.*");
   },
   /**
    * active item changed
@@ -400,6 +402,7 @@ Polymer({
         this.$.pageupdateajax.generateRequest();
       }
       this.fire("haxcms-save-page", this.activeItem);
+      this.notifyPath("updatePageData.*");
     }
   },
   /**
@@ -436,6 +439,7 @@ Polymer({
     if (this.saveOutlinePath) {
       this.$.outlineupdateajax.generateRequest();
     }
+    this.notifyPath("updateOutlineData.*");
   },
   /**
    * Save the outline based on an event firing.
@@ -451,6 +455,7 @@ Polymer({
     if (this.saveManifestPath) {
       this.$.manifestupdateajax.generateRequest();
     }
+    this.notifyPath("updateManifestData.*");
   },
   /**
    * Save the outline based on an event firing.
@@ -464,6 +469,7 @@ Polymer({
     if (this.publishPath) {
       this.$.publishajax.generateRequest();
     }
+    this.notifyPath("publishSiteData.*");
   },
   /**
    * Notice body of content has changed and import into HAX

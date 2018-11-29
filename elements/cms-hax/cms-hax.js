@@ -25,7 +25,7 @@ A LRN polymer app
  -
 
 */
-Polymer({
+let CmsHax = Polymer({
   _template: html`
     <style>
       :host {
@@ -262,6 +262,7 @@ Polymer({
         this.set(e.detail.property, null);
       }
       this.set(e.detail.property, e.detail.value);
+      this.notifyPath(e.detail.property);
     }
   },
 
@@ -294,3 +295,4 @@ Polymer({
     }
   }
 });
+export { CmsHax };

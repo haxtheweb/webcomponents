@@ -32,7 +32,7 @@ A LRN element
 
 @demo demo/index.html 
 */
-Polymer({
+let LrnGradebook = Polymer({
   is: "lrn-gradebook",
   properties: {
     data: {
@@ -40,3 +40,4 @@ Polymer({
     }
   }
 });
+export { LrnGradebook };

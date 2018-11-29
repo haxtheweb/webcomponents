@@ -498,7 +498,7 @@
       "sourceRange": {
         "start": {
           "line": 6,
-          "column": 8
+          "column": 32
         },
         "end": {
           "line": 96,
@@ -507,6 +507,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "ResponsiveUtility",
       "attributes": [
         {
           "name": "targets",

@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";let WatsonlogicParallax=Polymer({_template:html`
     <style>
       :host {
         display: block;
@@ -32,4 +32,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";Poly
     <div class="parallax-background">
       <div id="slogan" class="slogan">[[parallaxText]]</div>
     </div>
-`,is:"watsonlogic-parallax",properties:{parallaxText:{type:String},parallaxImage:{type:String,notify:!0,reflectToAttribute:!0},parallaxImageHeight:{type:String,notify:!0,reflectToAttribute:!0}},ready:function(){let self=this;self.parallaxImage=self.parallaxImage||"https://static.pexels.com/photos/2324/skyline-buildings-new-york-skyscrapers.jpg";Number.isNaN(parseInt(self.parallaxImageHeight))?"300":parseInt(self.parallaxImageHeight);this.updateStyles({"--parallax-background-image":"url("+self.parallaxImage+")","--parallax-background-height":self.parallaxImageHeight+"px","--parallax-slogan-top":parseInt(self.parallaxImageHeight)/2+"px"})}});
+`,is:"watsonlogic-parallax",properties:{parallaxText:{type:String},parallaxImage:{type:String,notify:!0,reflectToAttribute:!0},parallaxImageHeight:{type:String,notify:!0,reflectToAttribute:!0}},ready:function(){let self=this;self.parallaxImage=self.parallaxImage||"https://static.pexels.com/photos/2324/skyline-buildings-new-york-skyscrapers.jpg";Number.isNaN(parseInt(self.parallaxImageHeight))?"300":parseInt(self.parallaxImageHeight);this.updateStyles({"--parallax-background-image":"url("+self.parallaxImage+")","--parallax-background-height":self.parallaxImageHeight+"px","--parallax-slogan-top":parseInt(self.parallaxImageHeight)/2+"px"})}});export{WatsonlogicParallax};

@@ -13,7 +13,7 @@ import "@polymer/iron-icons/iron-icons.js";
  *
  * @demo demo/index.html
  */
-Polymer({
+let MediaImage = Polymer({
   _template: html`
     <style is="custom-style">
       :host {
@@ -261,3 +261,4 @@ Polymer({
     this.setHaxProperties(props);
   }
 });
+export { MediaImage };

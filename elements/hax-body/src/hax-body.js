@@ -188,7 +188,7 @@ A LRN element that will change the world.
  - plate/grid plate - a plate or grid plate is a container that we can operate on in HAX. it can also have layout / "global" type of body operations performed on it such as delete, duplicate and higher level format styling.
 
 */
-Polymer({
+let HaxBody = Polymer({
   is: "hax-body",
   listeners: {
     focusin: "_focusIn",
@@ -1714,3 +1714,4 @@ Polymer({
     }
   }
 });
+export { HaxBody };

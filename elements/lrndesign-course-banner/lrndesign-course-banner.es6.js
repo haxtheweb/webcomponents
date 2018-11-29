@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";import"./node_modules/@polymer/iron-image/iron-image.js";import"./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";import"./node_modules/@polymer/iron-image/iron-image.js";import"./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";let LrndesignCourseBanner=Polymer({_template:html`
     <style include="materializecss-styles-colors">
       :host {
         display: block;
@@ -56,4 +56,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         <div class="course-title">[[title]]</div>
       </div>
     </div>
-`,is:"lrndesign-course-banner",properties:{color:{type:String},image:{type:String},name:{type:String},title:{type:String}}});
+`,is:"lrndesign-course-banner",properties:{color:{type:String},image:{type:String},name:{type:String},title:{type:String}}});export{LrndesignCourseBanner};

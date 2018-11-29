@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`multiple-choice`\nAsk the user a question from a set of possible answers.",
+      "description": "",
       "summary": "",
       "path": "multiple-choice.js",
       "properties": [
@@ -548,17 +548,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 19,
-          "column": 8
+          "column": 29
         },
         "end": {
           "line": 400,
@@ -567,6 +562,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "MultipleChoice",
       "attributes": [
         {
           "name": "schema-resource-i-d",

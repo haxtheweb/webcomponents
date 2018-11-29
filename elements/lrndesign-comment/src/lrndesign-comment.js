@@ -7,7 +7,7 @@ import "time-elements/dist/time-elements.js";
  *
  * @demo demo/index.html
  */
-Polymer({
+let LrndesignComment = Polymer({
   _template: html`
     <style>
       :host {
@@ -66,3 +66,4 @@ Polymer({
     }
   }
 });
+export { LrndesignComment };

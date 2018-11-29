@@ -19,7 +19,7 @@ A simple blog and associated elements
  -
 
 */
-Polymer({
+let SimpleBlog = Polymer({
   _template: html`
     <style is="custom-style">
       :host {
@@ -194,3 +194,4 @@ Polymer({
     this.fire("json-outline-schema-active-item-changed", {});
   }
 });
+export { SimpleBlog };

@@ -171,7 +171,7 @@
       "tagname": "simple-search-content"
     },
     {
-      "description": "`simple-search`\nA button used in simple-search",
+      "description": "",
       "summary": "",
       "path": "simple-search.js",
       "properties": [
@@ -785,17 +785,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 81,
-          "column": 8
+          "column": 27
         },
         "end": {
           "line": 471,
@@ -804,6 +799,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "SimpleSearch",
       "attributes": [
         {
           "name": "always-float-label",

@@ -12,7 +12,7 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
  *
  * @demo demo/index.html
  */
-Polymer({
+let LrndesignAbbreviation = Polymer({
   _template: html`
     <style>
       :host {
@@ -131,3 +131,4 @@ Polymer({
     this.setHaxProperties(props);
   }
 });
+export { LrndesignAbbreviation };

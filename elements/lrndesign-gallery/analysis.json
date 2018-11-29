@@ -3002,7 +3002,7 @@
       "tagname": "lrndesign-gallery-print"
     },
     {
-      "description": "`lrndesign-gallery`\nA LRN element that renders a collection of gallery items into a carousel or a single media item into a layout.",
+      "description": "",
       "summary": "",
       "path": "lrndesign-gallery.js",
       "properties": [
@@ -3252,17 +3252,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 33,
-          "column": 8
+          "column": 31
         },
         "end": {
           "line": 210,
@@ -3271,6 +3266,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrndesignGallery",
       "attributes": [
         {
           "name": "grid",

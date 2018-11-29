@@ -7,7 +7,7 @@ Visualize a user account eitehr with an image, a label, or as abstract art.
 
 @demo demo/index.html
 */
-Polymer({
+let LrndesignAvatar = Polymer({
   _template: html`
     <style include="materializecss-styles">
       :host {
@@ -56,3 +56,4 @@ Polymer({
     }
   }
 });
+export { LrndesignAvatar };

@@ -11,7 +11,7 @@ A LRN element
 @microcopy - the mental model for this element
  -
 */
-Polymer({
+let ChartistRender = Polymer({
   _template: html`
     <style>
       :host {
@@ -249,3 +249,4 @@ Polymer({
     return id;
   }
 });
+export { ChartistRender };

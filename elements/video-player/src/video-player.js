@@ -42,7 +42,7 @@ A simple responsive video player with ridiculously powerful backing
 </video-player>
 
 */
-Polymer({
+let VideoPlayer = Polymer({
   _template: html`
    <custom-style>
     <style>
@@ -713,3 +713,4 @@ Polymer({
     return source;
   }
 });
+export { VideoPlayer };

@@ -19,7 +19,7 @@ import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
  * @polymerLegacy
  * @demo demo/index.html
  */
-Polymer({
+let LrnTable = Polymer({
   _template: html`
     <style>
       :host {
@@ -143,3 +143,4 @@ Polymer({
     this.setHaxProperties(props);
   }
 });
+export { LrnTable };

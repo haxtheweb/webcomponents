@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
@@ -28,10 +32,9 @@ A polymer app to talk to Contenta to serve up it's content in a visually awesome
 @microcopy - the mental model for this app
  - contenta - the future of Drupal and web development, a decoupled CMS.
  -
- -
 
 */
-Polymer({
+let ContentaPolymer = Polymer({
   _template: html`
   <custom-style>
     <style is="custom-style" include="materializecss-styles">
@@ -123,3 +126,4 @@ Polymer({
     });
   }
 });
+export { ContentaPolymer };

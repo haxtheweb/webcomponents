@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`word-count`\n`Count the words on whatever this wraps`",
+      "description": "",
       "summary": "",
       "path": "word-count.js",
       "properties": [
@@ -160,17 +160,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 9,
-          "column": 8
+          "column": 24
         },
         "end": {
           "line": 110,
@@ -179,6 +174,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "WordCount",
       "attributes": [
         {
           "name": "words",

@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`item-overlay-ops`\nOverlayed editing ops on whatever the current item slotted in is",
+      "description": "",
       "summary": "",
       "path": "item-overlay-ops.js",
       "properties": [
@@ -387,17 +387,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 14,
-          "column": 8
+          "column": 29
         },
         "end": {
           "line": 326,
@@ -406,6 +401,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "ItemOverlayOps",
       "attributes": [
         {
           "name": "edit-mode",

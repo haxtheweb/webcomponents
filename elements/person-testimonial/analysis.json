@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`person-testimonial`\n Leaving a testimonial from a person to say your company rocks!",
+      "description": "",
       "summary": "",
       "path": "person-testimonial.js",
       "properties": [
@@ -180,17 +180,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 13,
-          "column": 8
+          "column": 32
         },
         "end": {
           "line": 285,
@@ -199,6 +194,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "PersonTestimonial",
       "attributes": [
         {
           "name": "accent-color",

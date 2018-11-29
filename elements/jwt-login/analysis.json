@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`jwt-login`\na simple element to check for and fetch JWTs",
+      "description": "",
       "summary": "",
       "path": "jwt-login.js",
       "properties": [
@@ -139,17 +139,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 12,
-          "column": 8
+          "column": 23
         },
         "end": {
           "line": 85,
@@ -158,6 +153,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "JwtLogin",
       "attributes": [
         {
           "name": "url",

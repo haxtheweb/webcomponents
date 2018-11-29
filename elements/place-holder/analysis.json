@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`place-holder`\nPlaceholder for a piece of media in the future",
+      "description": "",
       "summary": "",
       "path": "place-holder.js",
       "properties": [
@@ -235,17 +235,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 18,
-          "column": 8
+          "column": 26
         },
         "end": {
           "line": 239,
@@ -254,6 +249,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "PlaceHolder",
       "attributes": [
         {
           "name": "icon-from-type",

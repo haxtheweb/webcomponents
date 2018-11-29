@@ -279,8 +279,10 @@ Polymer({
     } else if (detail.path) {
       path = path.concat(detail.path.split(".").slice(1));
       this.set(path, this._deepClone(detail.value));
+      this.notifyPath("path");
     } else {
       this.splice("value", index, 1, this._deepClone(detail.value));
+      this.notifyPath("value.1");
     }
   },
   _removeArrayEl: function(el) {

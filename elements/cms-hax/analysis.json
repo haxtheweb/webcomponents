@@ -2077,7 +2077,7 @@
       "tagname": "cms-entity"
     },
     {
-      "description": "`cms-hax`\nA LRN polymer app",
+      "description": "",
       "summary": "",
       "path": "cms-hax.js",
       "properties": [
@@ -2593,7 +2593,7 @@
               "column": 2
             },
             "end": {
-              "line": 265,
+              "line": 266,
               "column": 3
             }
           },
@@ -2613,11 +2613,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 270,
+              "line": 271,
               "column": 2
             },
             "end": {
-              "line": 275,
+              "line": 276,
               "column": 3
             }
           },
@@ -2637,11 +2637,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 280,
+              "line": 281,
               "column": 2
             },
             "end": {
-              "line": 294,
+              "line": 295,
               "column": 3
             }
           },
@@ -2657,25 +2657,21 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "../../demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 27,
-          "column": 8
+          "column": 21
         },
         "end": {
-          "line": 295,
+          "line": 296,
           "column": 1
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "CmsHax",
       "attributes": [
         {
           "name": "open-default",

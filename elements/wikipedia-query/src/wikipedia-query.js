@@ -9,7 +9,7 @@ import "@lrnwebcomponents/citation-element/citation-element.js";
  *
  * @demo demo/index.html
  */
-Polymer({
+let WikipediaQuery = Polymer({
   _template: html`
     <custom-style>
       <style>
@@ -184,3 +184,4 @@ Polymer({
     }
   }
 });
+export { WikipediaQuery };

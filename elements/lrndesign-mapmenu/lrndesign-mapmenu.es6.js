@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./lib/lrndesign-mapmenu-item.js";import"./lib/lrndesign-mapmenu-submenu.js";Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./lib/lrndesign-mapmenu-item.js";import"./lib/lrndesign-mapmenu-submenu.js";let LrndesignMapmenu=Polymer({_template:html`
     <style>
       :host {
         display: block;
@@ -11,4 +11,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
     </style>
     <slot></slot>
-`,is:"lrndesign-mapmenu",properties:{}});
+`,is:"lrndesign-mapmenu",properties:{}});export{LrndesignMapmenu};

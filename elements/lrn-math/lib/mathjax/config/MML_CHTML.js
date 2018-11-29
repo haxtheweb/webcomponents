@@ -4593,13 +4593,11 @@ MathJax.ElementJax.mml.Augment(
       if (f.open !== "") {
         this.SetData(
           "open",
-          a
-            .mo(f.open)
-            .With({
-              fence: true,
-              form: a.FORM.PREFIX,
-              texClass: a.TEXCLASS.OPEN
-            })
+          a.mo(f.open).With({
+            fence: true,
+            form: a.FORM.PREFIX,
+            texClass: a.TEXCLASS.OPEN
+          })
         );
       }
       if (f.separators !== "") {
@@ -4618,13 +4616,11 @@ MathJax.ElementJax.mml.Augment(
       if (f.close !== "") {
         this.SetData(
           "close",
-          a
-            .mo(f.close)
-            .With({
-              fence: true,
-              form: a.FORM.POSTFIX,
-              texClass: a.TEXCLASS.CLOSE
-            })
+          a.mo(f.close).With({
+            fence: true,
+            form: a.FORM.POSTFIX,
+            texClass: a.TEXCLASS.CLOSE
+          })
         );
       }
     },

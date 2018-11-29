@@ -14,7 +14,7 @@ A LRN element
  -
 
 */
-Polymer({
+let ProgressDonut = Polymer({
   _template: html`
     <style is="custom-style">
       :host {
@@ -376,3 +376,4 @@ Polymer({
     }
   }
 });
+export { ProgressDonut };

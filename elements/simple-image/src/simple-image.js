@@ -12,7 +12,7 @@ A minimalist image that modals and presents info cleanly.
  -
 
 */
-Polymer({
+let SimpleImage = Polymer({
   _template: html`
     <style is="custom-style" include="simple-colors">
       :host {
@@ -327,3 +327,4 @@ Polymer({
     this.setHaxProperties(props);
   }
 });
+export { SimpleImage };

@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`flash-card`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "flash-card.js",
       "properties": [
@@ -62,11 +62,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 88,
+              "line": 92,
               "column": 4
             },
             "end": {
-              "line": 90,
+              "line": 94,
               "column": 5
             }
           },
@@ -132,11 +132,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 96,
+              "line": 100,
               "column": 2
             },
             "end": {
-              "line": 141,
+              "line": 145,
               "column": 3
             }
           },
@@ -152,11 +152,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 146,
+              "line": 150,
               "column": 2
             },
             "end": {
-              "line": 148,
+              "line": 152,
               "column": 3
             }
           },
@@ -176,11 +176,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 153,
+              "line": 157,
               "column": 2
             },
             "end": {
-              "line": 155,
+              "line": 159,
               "column": 3
             }
           },
@@ -196,25 +196,21 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 16,
-          "column": 8
+          "line": 20,
+          "column": 24
         },
         "end": {
-          "line": 156,
+          "line": 160,
           "column": 1
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "FlashCard",
       "attributes": [
         {
           "name": "schema-resource-i-d",
@@ -257,11 +253,11 @@
           "description": "Title",
           "sourceRange": {
             "start": {
-              "line": 88,
+              "line": 92,
               "column": 4
             },
             "end": {
-              "line": 90,
+              "line": 94,
               "column": 5
             }
           },

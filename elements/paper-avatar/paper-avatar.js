@@ -29,7 +29,7 @@ Custom property | Description | Default
 
 @demo demo/index.html 
 */
-Polymer({
+let PaperAvatar = Polymer({
   is: "paper-avatar",
   _template: html`
     <style>
@@ -249,3 +249,4 @@ Polymer({
     return colors[hash];
   }
 });
+export { PaperAvatar };

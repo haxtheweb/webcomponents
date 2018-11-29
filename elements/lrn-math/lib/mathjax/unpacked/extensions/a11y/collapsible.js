@@ -110,17 +110,15 @@
         .With({ mathcolor: "blue", attr: {}, attrNames: [] });
     },
     MakeAction: function(a, c) {
-      var d = b
-        .maction(a)
-        .With({
-          id: this.getActionID(),
-          actiontype: "toggle",
-          complexity: a.getComplexity(),
-          collapsible: !0,
-          attrNames: ["id", "actiontype", "selection", e],
-          attr: {},
-          selection: 2
-        });
+      var d = b.maction(a).With({
+        id: this.getActionID(),
+        actiontype: "toggle",
+        complexity: a.getComplexity(),
+        collapsible: !0,
+        attrNames: ["id", "actiontype", "selection", e],
+        attr: {},
+        selection: 2
+      });
       if (((d.attr[e] = d.complexity), "math" === c.type)) {
         var f = b
           .mrow()

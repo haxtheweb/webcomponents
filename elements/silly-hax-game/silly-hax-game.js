@@ -11,7 +11,7 @@ An example web component of gamifying HAX to make it more fun and challenging.
 @demo demo/index.html
 
 */
-Polymer({
+let SillyHaxGame = Polymer({
   _template: html`
     <style>
       :host {
@@ -292,3 +292,4 @@ Polymer({
     }
   }
 });
+export { SillyHaxGame };

@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrn-assignment`",
+      "description": "",
       "summary": "",
       "path": "lrn-assignment.js",
       "properties": [
@@ -158,17 +158,12 @@
       ],
       "methods": [],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 8,
-          "column": 8
+          "column": 28
         },
         "end": {
           "line": 71,
@@ -177,6 +172,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnAssignment",
       "attributes": [
         {
           "name": "title",
@@ -311,11 +307,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 104,
+              "line": 105,
               "column": 4
             },
             "end": {
-              "line": 108,
+              "line": 109,
               "column": 5
             }
           },
@@ -333,11 +329,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 109,
+              "line": 110,
               "column": 4
             },
             "end": {
-              "line": 112,
+              "line": 113,
               "column": 5
             }
           },
@@ -354,11 +350,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 113,
+              "line": 114,
               "column": 4
             },
             "end": {
-              "line": 115,
+              "line": 116,
               "column": 5
             }
           },
@@ -376,11 +372,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 118,
+              "line": 119,
               "column": 2
             },
             "end": {
-              "line": 126,
+              "line": 127,
               "column": 3
             }
           },
@@ -400,11 +396,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 128,
+              "line": 129,
               "column": 2
             },
             "end": {
-              "line": 128,
+              "line": 129,
               "column": 37
             }
           },
@@ -424,11 +420,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 130,
+              "line": 131,
               "column": 2
             },
             "end": {
-              "line": 132,
+              "line": 133,
               "column": 3
             }
           },
@@ -448,27 +444,28 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 72,
-          "column": 8
+          "line": 73,
+          "column": 29
         },
         "end": {
-          "line": 133,
+          "line": 134,
           "column": 1
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnAssignments",
       "attributes": [
         {
           "name": "assignments",
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 104,
+              "line": 105,
               "column": 4
             },
             "end": {
-              "line": 108,
+              "line": 109,
               "column": 5
             }
           },
@@ -480,11 +477,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 109,
+              "line": 110,
               "column": 4
             },
             "end": {
-              "line": 112,
+              "line": 113,
               "column": 5
             }
           },
@@ -496,11 +493,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 113,
+              "line": 114,
               "column": 4
             },
             "end": {
-              "line": 115,
+              "line": 116,
               "column": 5
             }
           },

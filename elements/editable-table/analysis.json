@@ -2949,7 +2949,7 @@
       "tagname": "editable-table-display"
     },
     {
-      "description": "`editable-table`\n\nAn editor interface for tables that toggles between \nview mode (editable-table-display.html) and \nedit mode (editable-table-editor.html). \n(See editable-table-behaviors.html for more information.)",
+      "description": "",
       "summary": "",
       "path": "editable-table.js",
       "properties": [
@@ -3003,17 +3003,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 48,
-          "column": 8
+          "column": 28
         },
         "end": {
           "line": 107,
@@ -3022,6 +3017,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "EditableTable",
       "attributes": [
         {
           "name": "edit-mode",

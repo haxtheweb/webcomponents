@@ -13,7 +13,7 @@ import "./lib/lrndesign-imagemap-hotspot.js";
  * @polymer
  * @demo demo/index.html
  */
-Polymer({
+let LrndesignImagemap = Polymer({
   _template: html`
     <style>
       :host {
@@ -252,3 +252,4 @@ Polymer({
     }
   }
 });
+export { LrndesignImagemap };

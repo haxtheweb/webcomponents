@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrn-aside`\nA content aside as a panel",
+      "description": "",
       "summary": "",
       "path": "lrn-aside.js",
       "properties": [
@@ -96,17 +96,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 9,
-          "column": 8
+          "column": 23
         },
         "end": {
           "line": 140,
@@ -115,6 +110,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnAside",
       "attributes": [
         {
           "name": "title",

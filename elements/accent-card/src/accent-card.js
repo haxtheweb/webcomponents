@@ -12,7 +12,7 @@ A card with optional accent styling
  -
 
 */
-Polymer({
+let AccentCard = Polymer({
   _template: html`
     <style is="custom-style">
        :host {
@@ -374,3 +374,4 @@ Polymer({
     }
   }
 });
+export { AccentCard };

@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrndesign-comment`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "lrndesign-comment.js",
       "properties": [
@@ -98,17 +98,12 @@
       ],
       "methods": [],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 9,
-          "column": 8
+          "column": 31
         },
         "end": {
           "line": 67,
@@ -117,6 +112,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrndesignComment",
       "attributes": [
         {
           "name": "avatar",

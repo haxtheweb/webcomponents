@@ -940,7 +940,7 @@
       "tagname": "simple-blog-post"
     },
     {
-      "description": "`simple-blog`\nA simple blog and associated elements",
+      "description": "",
       "summary": "",
       "path": "simple-blog.js",
       "properties": [
@@ -1203,17 +1203,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 21,
-          "column": 8
+          "column": 25
         },
         "end": {
           "line": 195,
@@ -1222,6 +1217,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "SimpleBlog",
       "attributes": [
         {
           "name": "schema-resource-i-d",

@@ -13,7 +13,7 @@ A LRN element
  -
 
 */
-Polymer({
+let LrndesignCourseBanner = Polymer({
   _template: html`
     <style include="materializecss-styles-colors">
       :host {
@@ -103,3 +103,4 @@ Polymer({
     }
   }
 });
+export { LrndesignCourseBanner };

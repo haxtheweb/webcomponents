@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`aframe-player`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "aframe-player.js",
       "properties": [
@@ -383,17 +383,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 10,
-          "column": 8
+          "column": 27
         },
         "end": {
           "line": 211,
@@ -402,6 +397,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "AframePlayer",
       "attributes": [
         {
           "name": "schema-resource-i-d",

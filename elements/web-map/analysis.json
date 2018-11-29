@@ -989,7 +989,7 @@
       "tagname": "map-area"
     },
     {
-      "description": "web-map is an HTML &lt;map&gt; customized built-in element",
+      "description": "",
       "summary": "",
       "path": "web-map.js",
       "properties": [
@@ -1482,7 +1482,7 @@
       "sourceRange": {
         "start": {
           "line": 8,
-          "column": 8
+          "column": 21
         },
         "end": {
           "line": 474,
@@ -1491,6 +1491,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "WebMap",
       "attributes": [
         {
           "name": "lat",

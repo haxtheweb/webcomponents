@@ -46,7 +46,7 @@ edit mode (editable-table-editor.html).
   summary="...">            //An accessible description of the table, what each row reporesents, and what each column represents.
 </editable-table>
 */
-Polymer({
+let EditableTable = Polymer({
   _template: html`
     <style>
       :host {
@@ -106,3 +106,4 @@ Polymer({
     this.editMode = edit;
   }
 });
+export { EditableTable };

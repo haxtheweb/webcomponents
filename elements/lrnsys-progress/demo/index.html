@@ -46,18 +46,14 @@
       // alert when status event changed as to what it was
       p.addEventListener('progress-state-change', function (e) {
         percent = 0;
-        console.log(e.detail.state);
         document.querySelector('#toast').show(e.detail.state);
       });
       // alert when status event changed as to what it was
       p.addEventListener('node-percent-milestone', function (e) {
-        console.log(e.detail);
         document.querySelector('#toast').show('percent complete:' + e.detail.percentage);
       });
       // alert if there was an error loading content
       p.addEventListener('node-load-failed', function (e) {
-        console.log(e.detail);
-        console.log('dataUrl ' + e.detail.node.dataUrl + ' ' + e.detail.message.error.message);
         document.querySelector('#toast').show('dataUrl ' + e.detail.node.dataUrl + ' ' + e.detail.message.error.message);
       });
       // add an item
@@ -72,14 +68,12 @@
           "iconComplete": "check"
         };
         p.updateItems('splice', item);
-        console.log(p.items);
         document.querySelector('#toast').show('Item added');
       });
       // drop an item
       drop.addEventListener('click', function (e) {
         if (p.items.length > 0) {
           p.updateItems('pop', {});
-          console.log(p.items);
           document.querySelector('#toast').show('Item removed');
         }
       });

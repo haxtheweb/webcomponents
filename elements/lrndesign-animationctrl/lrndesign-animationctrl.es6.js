@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./lib/lrndesign-animationctrl-button.js";Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./lib/lrndesign-animationctrl-button.js";let LrndesignAnimationctrl=Polymer({_template:html`
     <style>
       :host {
         display: block;
@@ -20,4 +20,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
     <div class="buttons">
       <slot></slot>
     </div>
-`,is:"lrndesign-animationctrl",properties:{},listeners:{"lrndesign-animationctrl-button-click":"_buttonClicked"},_buttonClicked:function(e){},ready:function(){}});
+`,is:"lrndesign-animationctrl",properties:{},listeners:{"lrndesign-animationctrl-button-click":"_buttonClicked"},_buttonClicked:function(e){},ready:function(){}});export{LrndesignAnimationctrl};

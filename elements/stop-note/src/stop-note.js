@@ -13,7 +13,7 @@ import "./lib/stop-icon.js";
  * @microcopy - the mental model for this element
  * -
  */
-Polymer({
+let StopNote = Polymer({
   _template: html`
     <style>
       :host {
@@ -269,3 +269,4 @@ Polymer({
     this.setHaxProperties(props);
   }
 });
+export { StopNote };

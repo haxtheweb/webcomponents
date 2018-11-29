@@ -17,7 +17,7 @@ import "./lib/lrn-markdown-editor-editor.js";
  * @customElement
  * @demo demo/index.html
  */
-Polymer({
+let LrnMarkdownEditor = Polymer({
   _template: html`
     <style>
        :host {
@@ -195,3 +195,4 @@ Polymer({
     }
   }
 });
+export { LrnMarkdownEditor };

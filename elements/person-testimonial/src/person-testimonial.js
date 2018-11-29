@@ -11,7 +11,7 @@ import "./lib/person-testimonial-icon.js";
 
 @demo demo/index.html
 */
-Polymer({
+let PersonTestimonial = Polymer({
   _template: html`
     <style include="materializecss-styles">
       :host {
@@ -284,3 +284,4 @@ Polymer({
     }
   }
 });
+export { PersonTestimonial };

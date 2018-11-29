@@ -79,7 +79,7 @@ A button used in simple-search
   border-color: var(--simple-search-button-disabled-border-color, #aaa);
   @apply --simple-search-button-disabled;
 */
-Polymer({
+let SimpleSearch = Polymer({
   _template: html`
   <custom-style>
     <style is="custom-style">
@@ -470,3 +470,4 @@ Polymer({
     return results;
   }
 });
+export { SimpleSearch };

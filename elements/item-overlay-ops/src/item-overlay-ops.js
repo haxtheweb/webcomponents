@@ -12,7 +12,7 @@ Overlayed editing ops on whatever the current item slotted in is
 @microcopy - the mental model for this element
 
 */
-Polymer({
+let ItemOverlayOps = Polymer({
   _template: html`
     <style>
       :host {
@@ -325,3 +325,4 @@ Polymer({
     this.$.duplicate.classList.remove("active");
   }
 });
+export { ItemOverlayOps };

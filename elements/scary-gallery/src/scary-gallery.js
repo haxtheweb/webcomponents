@@ -25,7 +25,7 @@ Work in progress, the algorithm to layout the images is far from perfect.
 
 @demo demo/index.html
 */
-Polymer({
+let ScaryGallery = Polymer({
   _template: html`
     <style>
       :host {
@@ -157,3 +157,4 @@ Polymer({
     );
   }
 });
+export { ScaryGallery };

@@ -5,6 +5,41 @@
       "description": "`lrn-table`\n`Accessibly render a HTML table from a csv file`",
       "summary": "",
       "path": "lrn-table.js",
+      "properties": [],
+      "methods": [],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 21,
+          "column": 15
+        },
+        "end": {
+          "line": 144,
+          "column": 2
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "LrnTable",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "lrn-table.js",
       "properties": [
         {
           "name": "schemaResourceID",
@@ -190,17 +225,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 21,
-          "column": 8
+          "column": 23
         },
         "end": {
           "line": 144,
@@ -209,6 +239,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnTable",
       "attributes": [
         {
           "name": "schema-resource-i-d",

@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "This is a simple icon picker element that will allow you to choose one\nof the Material Design icons from a list of available swatches.\n\nExample:\n\n    <paper-icon-picker></paper-icon-picker>\n\n    <paper-icon-picker icon=\"{{selectedIcon}}\"></paper-icon-picker>\n\nYou can configure the icon palette being used using the `iconList` array and\nthe `columnCount` property, which specifies how many \"generic\" icons (i.e. columns\nin the picker) you want to display.\n\n    <paper-icon-picker column-count=5 icon-list='[\"icons:cloud\", \"icons:face\", \"icons:work\", \"icons:pets\", \"icons:perm-contact-calendar\"]'></paper-icon-picker>\n\n### Styling\n\nThe following custom properties and mixins are available for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--paper-icon-picker-icon-size` | The size of each of the icon boxes | `26px`\n`--paper-icon-picker-size` | The size of the icon picker | `24px`",
+      "description": "",
       "summary": "",
       "path": "paper-icon-picker.js",
       "properties": [
@@ -440,17 +440,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 53,
-          "column": 8
+          "column": 30
         },
         "end": {
           "line": 427,
@@ -459,6 +454,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "PaperIconPicker",
       "attributes": [
         {
           "name": "opened",

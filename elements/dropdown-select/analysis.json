@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`dropdown-select`\nAn easy to use, works as expected dropdown menu. Add slotted items like follows:\n\n<dropdown-select\n  allow-outside-scroll\n  always-float-label\n  dynamic-align\n  error-message=\"Required.\"\n  horizontal-align=\"left\"\n  label=\"Select an item.\" \n  no-animations\n  no-label-float\n  placeholder=\"none\" \n  restore-focus-on-close \n  vertical-align=\"bottom\" \n  vertical-offset=\"10\">\n  <paper-item value=\"100\">100 things</paper-item>\n  <paper-item value=\"1000\">Another value</paper-item>\n  <paper-item value=\"10\">Value is 10, but you will see this text</paper-item>\n</dropdown-select>",
+      "description": "",
       "summary": "",
       "path": "dropdown-select.js",
       "properties": [
@@ -491,17 +491,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 29,
-          "column": 8
+          "column": 29
         },
         "end": {
           "line": 251,
@@ -510,6 +505,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "DropdownSelect",
       "attributes": [
         {
           "name": "allow-outside-scroll",

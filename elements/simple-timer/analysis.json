@@ -5,6 +5,41 @@
       "description": "`simple-timer`\n`Automated conversion of simple-timer/`",
       "summary": "",
       "path": "simple-timer.js",
+      "properties": [],
+      "methods": [],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 17,
+          "column": 18
+        },
+        "end": {
+          "line": 128,
+          "column": 2
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "SimpleTimer",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "simple-timer.js",
       "properties": [
         {
           "name": "startTime",
@@ -248,17 +283,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 17,
-          "column": 8
+          "column": 26
         },
         "end": {
           "line": 128,
@@ -267,6 +297,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "SimpleTimer",
       "attributes": [
         {
           "name": "start-time",

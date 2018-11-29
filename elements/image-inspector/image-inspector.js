@@ -11,7 +11,7 @@ import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
  *
  * @demo demo/index.html
  */
-Polymer({
+let ImageInspector = Polymer({
   _template: html`
     <custom-style>
       <style include="materializecss-styles-colors">
@@ -127,3 +127,4 @@ Polymer({
     this.$.img.zoomOut();
   }
 });
+export { ImageInspector };

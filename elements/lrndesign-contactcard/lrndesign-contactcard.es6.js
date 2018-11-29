@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@lrnwebcomponents/lrn-icons/lrn-icons.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icons/maps-icons.js";import"./node_modules/@polymer/iron-icons/hardware-icons.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"./node_modules/@lrnwebcomponents/social-media-icons/social-media-icons.js";Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@lrnwebcomponents/lrn-icons/lrn-icons.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icons/maps-icons.js";import"./node_modules/@polymer/iron-icons/hardware-icons.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"./node_modules/@lrnwebcomponents/social-media-icons/social-media-icons.js";let LrndesignContactcard=Polymer({_template:html`
     <style>
       :host {
         display: block;
@@ -159,4 +159,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         </div>
       </div>
     </paper-card>
-`,is:"lrndesign-contactcard",properties:{image:{type:String},email:{type:String},name:{type:String},position:{type:String},organization:{type:String},phone:{type:String},website:{type:String},twitter:{type:String}}});
+`,is:"lrndesign-contactcard",properties:{image:{type:String},email:{type:String},name:{type:String},position:{type:String},organization:{type:String},phone:{type:String},website:{type:String},twitter:{type:String}}});export{LrndesignContactcard};

@@ -51,7 +51,7 @@ Custom property | Description | Default
 @element paper-icon-picker
 @demo demo/index.html
 */
-Polymer({
+let PaperIconPicker = Polymer({
   _template: html`
     <style is="custom-style">
       :host {
@@ -426,3 +426,4 @@ Polymer({
     }
   }
 });
+export { PaperIconPicker };

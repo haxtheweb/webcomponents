@@ -16,7 +16,7 @@ import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
  * @microcopy - the mental model for this element
  * - placeholder is a grey block on the page which can respond to drag and drop
  */
-Polymer({
+let PlaceHolder = Polymer({
   _template: html`
     <style include="materializecss-styles-colors">
       :host {
@@ -238,3 +238,4 @@ Polymer({
     this.setHaxProperties(props);
   }
 });
+export { PlaceHolder };

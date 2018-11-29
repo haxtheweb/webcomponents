@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`wikipedia-query`\n`Query and present information from wikipedia.`",
+      "description": "",
       "summary": "",
       "path": "wikipedia-query.js",
       "properties": [
@@ -303,17 +303,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 11,
-          "column": 8
+          "column": 29
         },
         "end": {
           "line": 185,
@@ -322,6 +317,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "WikipediaQuery",
       "attributes": [
         {
           "name": "schema-resource-i-d",

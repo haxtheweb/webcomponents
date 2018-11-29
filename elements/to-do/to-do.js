@@ -18,7 +18,7 @@ A LRN element
  -
 
 */
-Polymer({
+let ToDo = Polymer({
   _template: html`
     <style>
       :host {
@@ -213,3 +213,4 @@ Polymer({
     this.setHaxProperties(props);
   }
 });
+export { ToDo };

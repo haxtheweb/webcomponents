@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`progress-donut`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "progress-donut.js",
       "properties": [
@@ -512,17 +512,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 16,
-          "column": 8
+          "column": 28
         },
         "end": {
           "line": 377,
@@ -531,6 +526,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "ProgressDonut",
       "attributes": [
         {
           "name": "schema-resource-i-d",

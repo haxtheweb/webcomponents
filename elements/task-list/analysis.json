@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`task-list`\nVisual listing of tasks with different design components that is\nOER Schema capable!",
+      "description": "",
       "summary": "",
       "path": "task-list.js",
       "properties": [
@@ -281,17 +281,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 15,
-          "column": 8
+          "column": 23
         },
         "end": {
           "line": 172,
@@ -300,6 +295,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "TaskList",
       "attributes": [
         {
           "name": "schema-resource-i-d",

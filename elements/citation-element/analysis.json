@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`citation-element`\n An element dedicated to presenting and managing a correct citation on the web\n both visually as well as semantically with simple inputs.",
+      "description": "",
       "summary": "",
       "path": "citation-element.js",
       "properties": [
@@ -485,17 +485,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 16,
-          "column": 8
+          "column": 30
         },
         "end": {
           "line": 362,
@@ -504,6 +499,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "CitationElement",
       "attributes": [
         {
           "name": "schema-resource-i-d",

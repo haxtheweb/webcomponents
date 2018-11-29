@@ -367,7 +367,7 @@
       "tagname": "lrnapp-book-progress-dashboard"
     },
     {
-      "description": "`lrnapp-book`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "lrnapp-book.js",
       "properties": [
@@ -378,11 +378,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 550,
+              "line": 554,
               "column": 4
             },
             "end": {
-              "line": 552,
+              "line": 556,
               "column": 5
             }
           },
@@ -399,11 +399,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 556,
+              "line": 560,
               "column": 4
             },
             "end": {
-              "line": 560,
+              "line": 564,
               "column": 5
             }
           },
@@ -421,11 +421,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 564,
+              "line": 568,
               "column": 4
             },
             "end": {
-              "line": 567,
+              "line": 571,
               "column": 5
             }
           },
@@ -443,11 +443,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 571,
+              "line": 575,
               "column": 4
             },
             "end": {
-              "line": 578,
+              "line": 582,
               "column": 5
             }
           },
@@ -465,11 +465,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 582,
+              "line": 586,
               "column": 4
             },
             "end": {
-              "line": 585,
+              "line": 589,
               "column": 5
             }
           },
@@ -487,11 +487,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 589,
+              "line": 593,
               "column": 4
             },
             "end": {
-              "line": 591,
+              "line": 595,
               "column": 5
             }
           },
@@ -508,11 +508,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 595,
+              "line": 599,
               "column": 4
             },
             "end": {
-              "line": 600,
+              "line": 604,
               "column": 5
             }
           },
@@ -531,11 +531,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 605,
+              "line": 609,
               "column": 4
             },
             "end": {
-              "line": 609,
+              "line": 613,
               "column": 5
             }
           },
@@ -553,11 +553,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 613,
+              "line": 617,
               "column": 4
             },
             "end": {
-              "line": 616,
+              "line": 620,
               "column": 5
             }
           },
@@ -575,11 +575,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 620,
+              "line": 624,
               "column": 4
             },
             "end": {
-              "line": 622,
+              "line": 626,
               "column": 5
             }
           },
@@ -596,11 +596,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 626,
+              "line": 630,
               "column": 4
             },
             "end": {
-              "line": 628,
+              "line": 632,
               "column": 5
             }
           },
@@ -617,11 +617,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 632,
+              "line": 636,
               "column": 4
             },
             "end": {
-              "line": 635,
+              "line": 639,
               "column": 5
             }
           },
@@ -639,11 +639,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 639,
+              "line": 643,
               "column": 4
             },
             "end": {
-              "line": 642,
+              "line": 646,
               "column": 5
             }
           },
@@ -661,11 +661,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 646,
+              "line": 650,
               "column": 4
             },
             "end": {
-              "line": 649,
+              "line": 653,
               "column": 5
             }
           },
@@ -683,11 +683,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 653,
+              "line": 657,
               "column": 4
             },
             "end": {
-              "line": 656,
+              "line": 660,
               "column": 5
             }
           },
@@ -705,11 +705,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 660,
+              "line": 664,
               "column": 4
             },
             "end": {
-              "line": 663,
+              "line": 667,
               "column": 5
             }
           },
@@ -727,11 +727,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 667,
+              "line": 671,
               "column": 4
             },
             "end": {
-              "line": 671,
+              "line": 675,
               "column": 5
             }
           },
@@ -750,11 +750,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 675,
+              "line": 679,
               "column": 4
             },
             "end": {
-              "line": 679,
+              "line": 683,
               "column": 5
             }
           },
@@ -773,11 +773,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 683,
+              "line": 687,
               "column": 4
             },
             "end": {
-              "line": 687,
+              "line": 691,
               "column": 5
             }
           },
@@ -796,11 +796,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 691,
+              "line": 695,
               "column": 4
             },
             "end": {
-              "line": 696,
+              "line": 700,
               "column": 5
             }
           },
@@ -820,11 +820,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 700,
+              "line": 704,
               "column": 4
             },
             "end": {
-              "line": 704,
+              "line": 708,
               "column": 5
             }
           },
@@ -843,11 +843,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 708,
+              "line": 712,
               "column": 4
             },
             "end": {
-              "line": 711,
+              "line": 715,
               "column": 5
             }
           },
@@ -865,11 +865,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 715,
+              "line": 719,
               "column": 4
             },
             "end": {
-              "line": 721,
+              "line": 725,
               "column": 5
             }
           },
@@ -888,11 +888,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 725,
+              "line": 729,
               "column": 4
             },
             "end": {
-              "line": 731,
+              "line": 735,
               "column": 5
             }
           },
@@ -911,11 +911,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 735,
+              "line": 739,
               "column": 4
             },
             "end": {
-              "line": 738,
+              "line": 742,
               "column": 5
             }
           },
@@ -933,11 +933,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 742,
+              "line": 746,
               "column": 4
             },
             "end": {
-              "line": 745,
+              "line": 749,
               "column": 5
             }
           },
@@ -955,11 +955,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 749,
+              "line": 753,
               "column": 4
             },
             "end": {
-              "line": 752,
+              "line": 756,
               "column": 5
             }
           },
@@ -977,11 +977,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 756,
+              "line": 760,
               "column": 4
             },
             "end": {
-              "line": 758,
+              "line": 762,
               "column": 5
             }
           },
@@ -998,11 +998,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 762,
+              "line": 766,
               "column": 4
             },
             "end": {
-              "line": 764,
+              "line": 768,
               "column": 5
             }
           },
@@ -1019,11 +1019,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 768,
+              "line": 772,
               "column": 4
             },
             "end": {
-              "line": 770,
+              "line": 774,
               "column": 5
             }
           },
@@ -1040,11 +1040,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 774,
+              "line": 778,
               "column": 4
             },
             "end": {
-              "line": 777,
+              "line": 781,
               "column": 5
             }
           },
@@ -1062,11 +1062,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 781,
+              "line": 785,
               "column": 4
             },
             "end": {
-              "line": 783,
+              "line": 787,
               "column": 5
             }
           },
@@ -1083,11 +1083,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 787,
+              "line": 791,
               "column": 4
             },
             "end": {
-              "line": 790,
+              "line": 794,
               "column": 5
             }
           },
@@ -1105,11 +1105,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 794,
+              "line": 798,
               "column": 4
             },
             "end": {
-              "line": 796,
+              "line": 800,
               "column": 5
             }
           },
@@ -1126,11 +1126,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 800,
+              "line": 804,
               "column": 4
             },
             "end": {
-              "line": 803,
+              "line": 807,
               "column": 5
             }
           },
@@ -1148,11 +1148,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 807,
+              "line": 811,
               "column": 4
             },
             "end": {
-              "line": 811,
+              "line": 815,
               "column": 5
             }
           },
@@ -1171,11 +1171,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 815,
+              "line": 819,
               "column": 4
             },
             "end": {
-              "line": 818,
+              "line": 822,
               "column": 5
             }
           },
@@ -1193,11 +1193,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 822,
+              "line": 826,
               "column": 4
             },
             "end": {
-              "line": 825,
+              "line": 829,
               "column": 5
             }
           },
@@ -1215,11 +1215,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 829,
+              "line": 833,
               "column": 4
             },
             "end": {
-              "line": 834,
+              "line": 838,
               "column": 5
             }
           },
@@ -1239,11 +1239,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 840,
+              "line": 844,
               "column": 2
             },
             "end": {
-              "line": 849,
+              "line": 853,
               "column": 3
             }
           },
@@ -1263,11 +1263,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 854,
+              "line": 858,
               "column": 2
             },
             "end": {
-              "line": 856,
+              "line": 860,
               "column": 3
             }
           },
@@ -1290,11 +1290,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 861,
+              "line": 865,
               "column": 2
             },
             "end": {
-              "line": 863,
+              "line": 867,
               "column": 3
             }
           },
@@ -1314,11 +1314,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 868,
+              "line": 872,
               "column": 2
             },
             "end": {
-              "line": 870,
+              "line": 874,
               "column": 3
             }
           },
@@ -1338,11 +1338,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 875,
+              "line": 879,
               "column": 2
             },
             "end": {
-              "line": 877,
+              "line": 881,
               "column": 3
             }
           },
@@ -1362,11 +1362,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 882,
+              "line": 886,
               "column": 2
             },
             "end": {
-              "line": 890,
+              "line": 894,
               "column": 3
             }
           },
@@ -1386,11 +1386,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 895,
+              "line": 899,
               "column": 2
             },
             "end": {
-              "line": 902,
+              "line": 906,
               "column": 3
             }
           },
@@ -1407,11 +1407,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 907,
+              "line": 911,
               "column": 2
             },
             "end": {
-              "line": 909,
+              "line": 913,
               "column": 3
             }
           },
@@ -1431,11 +1431,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 914,
+              "line": 918,
               "column": 2
             },
             "end": {
-              "line": 976,
+              "line": 980,
               "column": 3
             }
           },
@@ -1458,11 +1458,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 981,
+              "line": 985,
               "column": 2
             },
             "end": {
-              "line": 984,
+              "line": 988,
               "column": 3
             }
           },
@@ -1482,11 +1482,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 989,
+              "line": 993,
               "column": 2
             },
             "end": {
-              "line": 996,
+              "line": 1000,
               "column": 3
             }
           },
@@ -1506,11 +1506,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1002,
+              "line": 1006,
               "column": 2
             },
             "end": {
-              "line": 1010,
+              "line": 1014,
               "column": 3
             }
           },
@@ -1533,11 +1533,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1016,
+              "line": 1020,
               "column": 2
             },
             "end": {
-              "line": 1083,
+              "line": 1087,
               "column": 3
             }
           },
@@ -1563,11 +1563,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1088,
+              "line": 1092,
               "column": 2
             },
             "end": {
-              "line": 1096,
+              "line": 1100,
               "column": 3
             }
           },
@@ -1583,11 +1583,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1101,
+              "line": 1105,
               "column": 2
             },
             "end": {
-              "line": 1141,
+              "line": 1145,
               "column": 3
             }
           },
@@ -1610,11 +1610,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1146,
+              "line": 1150,
               "column": 2
             },
             "end": {
-              "line": 1158,
+              "line": 1162,
               "column": 3
             }
           },
@@ -1637,11 +1637,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 1164,
+              "line": 1168,
               "column": 2
             },
             "end": {
-              "line": 1171,
+              "line": 1175,
               "column": 3
             }
           },
@@ -1661,11 +1661,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1176,
+              "line": 1180,
               "column": 2
             },
             "end": {
-              "line": 1198,
+              "line": 1202,
               "column": 3
             }
           },
@@ -1688,11 +1688,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1203,
+              "line": 1207,
               "column": 2
             },
             "end": {
-              "line": 1212,
+              "line": 1216,
               "column": 3
             }
           },
@@ -1712,11 +1712,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1217,
+              "line": 1221,
               "column": 2
             },
             "end": {
-              "line": 1221,
+              "line": 1225,
               "column": 3
             }
           },
@@ -1736,11 +1736,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 1226,
+              "line": 1230,
               "column": 2
             },
             "end": {
-              "line": 1235,
+              "line": 1239,
               "column": 3
             }
           },
@@ -1760,11 +1760,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 1240,
+              "line": 1244,
               "column": 2
             },
             "end": {
-              "line": 1286,
+              "line": 1290,
               "column": 3
             }
           },
@@ -1784,11 +1784,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 1291,
+              "line": 1295,
               "column": 2
             },
             "end": {
-              "line": 1297,
+              "line": 1301,
               "column": 3
             }
           },
@@ -1808,11 +1808,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 1302,
+              "line": 1306,
               "column": 2
             },
             "end": {
-              "line": 1308,
+              "line": 1312,
               "column": 3
             }
           },
@@ -1832,11 +1832,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1315,
+              "line": 1319,
               "column": 2
             },
             "end": {
-              "line": 1360,
+              "line": 1364,
               "column": 3
             }
           },
@@ -1859,11 +1859,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1365,
+              "line": 1369,
               "column": 2
             },
             "end": {
-              "line": 1369,
+              "line": 1373,
               "column": 3
             }
           },
@@ -1876,36 +1876,32 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 41,
-          "column": 8
+          "line": 45,
+          "column": 25
         },
         "end": {
-          "line": 1370,
+          "line": 1374,
           "column": 1
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnappBook",
       "attributes": [
         {
           "name": "progress-dashboard-path",
           "description": "Path for getting progress dashboard data",
           "sourceRange": {
             "start": {
-              "line": 550,
+              "line": 554,
               "column": 4
             },
             "end": {
-              "line": 552,
+              "line": 556,
               "column": 5
             }
           },
@@ -1917,11 +1913,11 @@
           "description": "Option to display the search bar.",
           "sourceRange": {
             "start": {
-              "line": 556,
+              "line": 560,
               "column": 4
             },
             "end": {
-              "line": 560,
+              "line": 564,
               "column": 5
             }
           },
@@ -1933,11 +1929,11 @@
           "description": "Request body parameters for creating a new item.",
           "sourceRange": {
             "start": {
-              "line": 564,
+              "line": 568,
               "column": 4
             },
             "end": {
-              "line": 567,
+              "line": 571,
               "column": 5
             }
           },
@@ -1949,11 +1945,11 @@
           "description": "Data to be shipped off to the update endpoint.",
           "sourceRange": {
             "start": {
-              "line": 571,
+              "line": 575,
               "column": 4
             },
             "end": {
-              "line": 578,
+              "line": 582,
               "column": 5
             }
           },
@@ -1965,11 +1961,11 @@
           "description": "Path for updating content.",
           "sourceRange": {
             "start": {
-              "line": 582,
+              "line": 586,
               "column": 4
             },
             "end": {
-              "line": 585,
+              "line": 589,
               "column": 5
             }
           },
@@ -1981,11 +1977,11 @@
           "description": "Source path to the 'find one' end point",
           "sourceRange": {
             "start": {
-              "line": 589,
+              "line": 593,
               "column": 4
             },
             "end": {
-              "line": 591,
+              "line": 595,
               "column": 5
             }
           },
@@ -1997,11 +1993,11 @@
           "description": "Edit / authoring mode.",
           "sourceRange": {
             "start": {
-              "line": 595,
+              "line": 599,
               "column": 4
             },
             "end": {
-              "line": 600,
+              "line": 604,
               "column": 5
             }
           },
@@ -2013,11 +2009,11 @@
           "description": "Binding so we can style based on drawer status",
           "sourceRange": {
             "start": {
-              "line": 605,
+              "line": 609,
               "column": 4
             },
             "end": {
-              "line": 609,
+              "line": 613,
               "column": 5
             }
           },
@@ -2029,11 +2025,11 @@
           "description": "App route tracking.",
           "sourceRange": {
             "start": {
-              "line": 613,
+              "line": 617,
               "column": 4
             },
             "end": {
-              "line": 616,
+              "line": 620,
               "column": 5
             }
           },
@@ -2045,11 +2041,11 @@
           "description": "Title for the content",
           "sourceRange": {
             "start": {
-              "line": 620,
+              "line": 624,
               "column": 4
             },
             "end": {
-              "line": 622,
+              "line": 626,
               "column": 5
             }
           },
@@ -2061,11 +2057,11 @@
           "description": "Title for the top of the bar",
           "sourceRange": {
             "start": {
-              "line": 626,
+              "line": 630,
               "column": 4
             },
             "end": {
-              "line": 628,
+              "line": 632,
               "column": 5
             }
           },
@@ -2077,11 +2073,11 @@
           "description": "Title for the top of the bar",
           "sourceRange": {
             "start": {
-              "line": 632,
+              "line": 636,
               "column": 4
             },
             "end": {
-              "line": 635,
+              "line": 639,
               "column": 5
             }
           },
@@ -2093,11 +2089,11 @@
           "description": "If the sound should play on finish.",
           "sourceRange": {
             "start": {
-              "line": 639,
+              "line": 643,
               "column": 4
             },
             "end": {
-              "line": 642,
+              "line": 646,
               "column": 5
             }
           },
@@ -2109,11 +2105,11 @@
           "description": "If the sound should play on complete.",
           "sourceRange": {
             "start": {
-              "line": 646,
+              "line": 650,
               "column": 4
             },
             "end": {
-              "line": 649,
+              "line": 653,
               "column": 5
             }
           },
@@ -2125,11 +2121,11 @@
           "description": "Completing a step sound.",
           "sourceRange": {
             "start": {
-              "line": 653,
+              "line": 657,
               "column": 4
             },
             "end": {
-              "line": 656,
+              "line": 660,
               "column": 5
             }
           },
@@ -2141,11 +2137,11 @@
           "description": "Finished sound file.",
           "sourceRange": {
             "start": {
-              "line": 660,
+              "line": 664,
               "column": 4
             },
             "end": {
-              "line": 663,
+              "line": 667,
               "column": 5
             }
           },
@@ -2157,11 +2153,11 @@
           "description": "Distance through the present document so we can visualize",
           "sourceRange": {
             "start": {
-              "line": 667,
+              "line": 671,
               "column": 4
             },
             "end": {
-              "line": 671,
+              "line": 675,
               "column": 5
             }
           },
@@ -2173,11 +2169,11 @@
           "description": "Track the active page exposed from the progress bar.",
           "sourceRange": {
             "start": {
-              "line": 675,
+              "line": 679,
               "column": 4
             },
             "end": {
-              "line": 679,
+              "line": 683,
               "column": 5
             }
           },
@@ -2189,11 +2185,11 @@
           "description": "Track the active outline to load data for the progress bar.",
           "sourceRange": {
             "start": {
-              "line": 683,
+              "line": 687,
               "column": 4
             },
             "end": {
-              "line": 687,
+              "line": 691,
               "column": 5
             }
           },
@@ -2205,11 +2201,11 @@
           "description": "List of items in our outline presently.",
           "sourceRange": {
             "start": {
-              "line": 691,
+              "line": 695,
               "column": 4
             },
             "end": {
-              "line": 696,
+              "line": 700,
               "column": 5
             }
           },
@@ -2221,11 +2217,11 @@
           "description": "List of items in our book presently.",
           "sourceRange": {
             "start": {
-              "line": 700,
+              "line": 704,
               "column": 4
             },
             "end": {
-              "line": 704,
+              "line": 708,
               "column": 5
             }
           },
@@ -2237,11 +2233,11 @@
           "description": "Item responses.",
           "sourceRange": {
             "start": {
-              "line": 708,
+              "line": 712,
               "column": 4
             },
             "end": {
-              "line": 711,
+              "line": 715,
               "column": 5
             }
           },
@@ -2253,11 +2249,11 @@
           "description": "Params for the request for outline/book to load.",
           "sourceRange": {
             "start": {
-              "line": 715,
+              "line": 719,
               "column": 4
             },
             "end": {
-              "line": 721,
+              "line": 725,
               "column": 5
             }
           },
@@ -2269,11 +2265,11 @@
           "description": "Params for the request for content to load.",
           "sourceRange": {
             "start": {
-              "line": 725,
+              "line": 729,
               "column": 4
             },
             "end": {
-              "line": 731,
+              "line": 735,
               "column": 5
             }
           },
@@ -2285,11 +2281,11 @@
           "description": "Returned data for processing.",
           "sourceRange": {
             "start": {
-              "line": 735,
+              "line": 739,
               "column": 4
             },
             "end": {
-              "line": 738,
+              "line": 742,
               "column": 5
             }
           },
@@ -2301,11 +2297,11 @@
           "description": "Returned data for processing.",
           "sourceRange": {
             "start": {
-              "line": 742,
+              "line": 746,
               "column": 4
             },
             "end": {
-              "line": 745,
+              "line": 749,
               "column": 5
             }
           },
@@ -2317,11 +2313,11 @@
           "description": "Returned data for processing.",
           "sourceRange": {
             "start": {
-              "line": 749,
+              "line": 753,
               "column": 4
             },
             "end": {
-              "line": 752,
+              "line": 756,
               "column": 5
             }
           },
@@ -2333,11 +2329,11 @@
           "description": "data pathway that expects the present outline returned.",
           "sourceRange": {
             "start": {
-              "line": 756,
+              "line": 760,
               "column": 4
             },
             "end": {
-              "line": 758,
+              "line": 762,
               "column": 5
             }
           },
@@ -2349,11 +2345,11 @@
           "description": "data pathway that expects the book chapters returned.",
           "sourceRange": {
             "start": {
-              "line": 762,
+              "line": 766,
               "column": 4
             },
             "end": {
-              "line": 764,
+              "line": 768,
               "column": 5
             }
           },
@@ -2365,11 +2361,11 @@
           "description": "data pathway that expects the book chapters returned.",
           "sourceRange": {
             "start": {
-              "line": 768,
+              "line": 772,
               "column": 4
             },
             "end": {
-              "line": 770,
+              "line": 774,
               "column": 5
             }
           },
@@ -2381,11 +2377,11 @@
           "description": "Simple flag for having the previous button show.",
           "sourceRange": {
             "start": {
-              "line": 774,
+              "line": 778,
               "column": 4
             },
             "end": {
-              "line": 777,
+              "line": 781,
               "column": 5
             }
           },
@@ -2397,11 +2393,11 @@
           "description": "Previous page title.",
           "sourceRange": {
             "start": {
-              "line": 781,
+              "line": 785,
               "column": 4
             },
             "end": {
-              "line": 783,
+              "line": 787,
               "column": 5
             }
           },
@@ -2413,11 +2409,11 @@
           "description": "Simple flag for having the next button show.",
           "sourceRange": {
             "start": {
-              "line": 787,
+              "line": 791,
               "column": 4
             },
             "end": {
-              "line": 790,
+              "line": 794,
               "column": 5
             }
           },
@@ -2429,11 +2425,11 @@
           "description": "Next page title.",
           "sourceRange": {
             "start": {
-              "line": 794,
+              "line": 798,
               "column": 4
             },
             "end": {
-              "line": 796,
+              "line": 800,
               "column": 5
             }
           },
@@ -2445,11 +2441,11 @@
           "description": "Ensure scrolling doesn't influence during a transition.",
           "sourceRange": {
             "start": {
-              "line": 800,
+              "line": 804,
               "column": 4
             },
             "end": {
-              "line": 803,
+              "line": 807,
               "column": 5
             }
           },
@@ -2461,11 +2457,11 @@
           "description": "Store current page data.",
           "sourceRange": {
             "start": {
-              "line": 807,
+              "line": 811,
               "column": 4
             },
             "end": {
-              "line": 811,
+              "line": 815,
               "column": 5
             }
           },
@@ -2477,11 +2473,11 @@
           "description": "Store current page data.",
           "sourceRange": {
             "start": {
-              "line": 815,
+              "line": 819,
               "column": 4
             },
             "end": {
-              "line": 818,
+              "line": 822,
               "column": 5
             }
           },
@@ -2493,11 +2489,11 @@
           "description": "Rebuild outline flag so we know to call it on page build.",
           "sourceRange": {
             "start": {
-              "line": 822,
+              "line": 826,
               "column": 4
             },
             "end": {
-              "line": 825,
+              "line": 829,
               "column": 5
             }
           },
@@ -2509,11 +2505,11 @@
           "description": "Track if we should go full width or not.",
           "sourceRange": {
             "start": {
-              "line": 829,
+              "line": 833,
               "column": 4
             },
             "end": {
-              "line": 834,
+              "line": 838,
               "column": 5
             }
           },

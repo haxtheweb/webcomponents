@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`grid-plate`\nA grid plate based on a layout that manipulates it.",
+      "description": "",
       "summary": "",
       "path": "grid-plate.js",
       "properties": [
@@ -630,17 +630,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 21,
-          "column": 8
+          "column": 24
         },
         "end": {
           "line": 768,
@@ -649,6 +644,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "GridPlate",
       "attributes": [
         {
           "name": "layout",

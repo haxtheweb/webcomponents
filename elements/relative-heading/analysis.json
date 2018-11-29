@@ -53,7 +53,7 @@
       "tagname": "relative-heading-manager"
     },
     {
-      "description": "`relative-heading`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "relative-heading.js",
       "properties": [
@@ -260,17 +260,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 14,
-          "column": 8
+          "column": 30
         },
         "end": {
           "line": 139,
@@ -279,6 +274,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "RelativeHeading",
       "attributes": [
         {
           "name": "subtopic-of",

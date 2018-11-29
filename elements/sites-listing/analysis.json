@@ -314,7 +314,7 @@
       "tagname": "site-card"
     },
     {
-      "description": "`sites-listing`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "sites-listing.js",
       "properties": [
@@ -458,17 +458,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 20,
-          "column": 8
+          "column": 27
         },
         "end": {
           "line": 142,
@@ -477,6 +472,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "SitesListing",
       "attributes": [
         {
           "name": "sites",

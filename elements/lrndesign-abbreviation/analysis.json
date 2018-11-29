@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrndesign-abbreviation`\n`A wrapper to make a cleaner abbreviation deign element`",
+      "description": "",
       "summary": "",
       "path": "lrndesign-abbreviation.js",
       "properties": [
@@ -171,17 +171,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 14,
-          "column": 8
+          "column": 36
         },
         "end": {
           "line": 132,
@@ -190,6 +185,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrndesignAbbreviation",
       "attributes": [
         {
           "name": "schema-resource-i-d",

@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`stop-note`\n`A note that directs people to an action item of different warning levels`",
+      "description": "",
       "summary": "",
       "path": "stop-note.js",
       "properties": [
@@ -259,17 +259,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 15,
-          "column": 8
+          "column": 23
         },
         "end": {
           "line": 270,
@@ -278,6 +273,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "StopNote",
       "attributes": [
         {
           "name": "schema-resource-i-d",

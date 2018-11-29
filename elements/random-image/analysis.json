@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`random-image`\nElement to show random image from a given group.",
+      "description": "",
       "summary": "",
       "path": "random-image.js",
       "properties": [
@@ -139,17 +139,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 8,
-          "column": 8
+          "column": 26
         },
         "end": {
           "line": 60,
@@ -158,6 +153,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "RandomImage",
       "attributes": [
         {
           "name": "mode",

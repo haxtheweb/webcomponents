@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrndesign-diff2html`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "lrndesign-diff2html.js",
       "properties": [
@@ -31,17 +31,12 @@
       ],
       "methods": [],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 7,
-          "column": 8
+          "column": 33
         },
         "end": {
           "line": 25,
@@ -50,6 +45,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrndesignDiff2html",
       "attributes": [
         {
           "name": "title",

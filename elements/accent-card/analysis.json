@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`accent-card`\nA card with optional accent styling",
+      "description": "",
       "summary": "",
       "path": "accent-card.js",
       "properties": [
@@ -498,17 +498,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 14,
-          "column": 8
+          "column": 25
         },
         "end": {
           "line": 375,
@@ -517,6 +512,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "AccentCard",
       "attributes": [
         {
           "name": "schema-resource-i-d",

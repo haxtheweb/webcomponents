@@ -7,7 +7,7 @@ A LRN element to wrap an oer schema prefix onto materials.
 
 @demo demo/index.html
 */
-Polymer({
+let OerSchema = Polymer({
   _template: html`
     <style>
       :host {
@@ -902,3 +902,4 @@ Polymer({
     return types;
   }
 });
+export { OerSchema };

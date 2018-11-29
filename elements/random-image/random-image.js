@@ -6,7 +6,7 @@ Element to show random image from a given group.
 
 @demo demo/index.html
 */
-Polymer({
+let RandomImage = Polymer({
   _template: html`
     <style>
       :host {
@@ -59,3 +59,4 @@ box-shadow: 0px 5px 10px #CCC;
     this.imgTitle = this.imagesList[randomPos].title;
   }
 });
+export { RandomImage };

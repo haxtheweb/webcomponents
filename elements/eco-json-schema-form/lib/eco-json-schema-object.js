@@ -467,6 +467,7 @@ Polymer({
       var v = this.value;
       if (!v.hasOwnProperty(property.property)) {
         this.set("value." + property.property, {});
+        this.notifyPath("value." + property.property);
       }
       while (parts.length) {
         var k = parts.shift();
@@ -476,9 +477,11 @@ Polymer({
         }
       }
       this.set(path.join("."), this._deepClone(detail.value));
+      this.notifyPath(path.join("."));
     } else {
       property.value = detail.value;
       this.set(path, this._deepClone(detail.value));
+      this.notifyPath(path);
     }
   },
   _setValue: function() {

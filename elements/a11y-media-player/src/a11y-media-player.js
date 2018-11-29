@@ -108,9 +108,8 @@ Advanced styles for sliders:
 --a11y-media-slider-knob-border-color: slider knob bordercolor, default is --a11y-media-accent-color
 --a11y-media-slider-knob-start-border-color: slider knob border color at start, default is --a11y-media-accent-color
 --a11y-media-slider-knob-end-border-color: slider knob border color at end, default is --a11y-media-accent-color
-
 */
-Polymer({
+let A11yMediaPlayer = Polymer({
   _template: html`
   <custom-style>
     <style is="custom-style">
@@ -1039,3 +1038,4 @@ Polymer({
     }
   }
 });
+export { A11yMediaPlayer };

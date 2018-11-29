@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrndesign-drawer`",
+      "description": "",
       "summary": "",
       "path": "lrndesign-drawer.js",
       "properties": [
@@ -118,17 +118,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 10,
-          "column": 8
+          "column": 30
         },
         "end": {
           "line": 84,
@@ -137,6 +132,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrndesignDrawer",
       "attributes": [
         {
           "name": "opened",

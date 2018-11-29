@@ -19,7 +19,7 @@ import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
  * @polymerLegacy
  * @demo demo/index.html
  */
-Polymer({
+let ElmslnLoading = Polymer({
   _template: html`
     <style is="custom-style" include="materializecss-styles-colors">
       @-moz-keyframes spin { 100% { -moz-transform: rotate(60deg); filter:saturate(10) invert(.9);} }
@@ -89,3 +89,4 @@ Polymer({
     }
   }
 });
+export { ElmslnLoading };

@@ -11,7 +11,7 @@ import "@polymer/paper-listbox/paper-listbox.js";
  * @polymerLegacy
  * @demo demo/index.html
  */
-Polymer({
+let SelectMenu = Polymer({
   _template: html`
   <custom-style>
     <style is="custom-style">
@@ -88,3 +88,4 @@ Polymer({
     return null;
   }
 });
+export { SelectMenu };

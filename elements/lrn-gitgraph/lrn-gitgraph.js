@@ -11,7 +11,7 @@ git log [branch_name] --format='{"refs": "%d", "commit": "%h", "tree": "%t", "pa
 
 @demo demo/index.html
 */
-Polymer({
+let LrnGitgraph = Polymer({
   _template: html`
     <style>
       :host {
@@ -123,3 +123,4 @@ Polymer({
     root.config = config;
   }
 });
+export { LrnGitgraph };

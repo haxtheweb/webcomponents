@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrndesign-gallerycard`\nA LRN element for presenting a gallery of items as cards\nthat can pop up to display more info",
+      "description": "",
       "summary": "",
       "path": "lrndesign-gallerycard.js",
       "properties": [
@@ -216,17 +216,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 12,
-          "column": 8
+          "column": 35
         },
         "end": {
           "line": 220,
@@ -235,6 +230,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrndesignGallerycard",
       "attributes": [
         {
           "name": "size",

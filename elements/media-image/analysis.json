@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`media-image`\n`A simple image presentaiton with minor documented options`",
+      "description": "",
       "summary": "",
       "path": "media-image.js",
       "properties": [
@@ -303,17 +303,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 15,
-          "column": 8
+          "column": 25
         },
         "end": {
           "line": 262,
@@ -322,6 +317,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "MediaImage",
       "attributes": [
         {
           "name": "schema-resource-i-d",

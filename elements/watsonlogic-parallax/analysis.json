@@ -5,6 +5,41 @@
       "description": "`watsonlogic-parallax`\n`Parallax scrolling effect web component for Polymer 2.0.`",
       "summary": "",
       "path": "watsonlogic-parallax.js",
+      "properties": [],
+      "methods": [],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 10,
+          "column": 26
+        },
+        "end": {
+          "line": 81,
+          "column": 2
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "WatsonlogicParallax",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "watsonlogic-parallax.js",
       "properties": [
         {
           "name": "parallaxText",
@@ -95,17 +130,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 10,
-          "column": 8
+          "column": 34
         },
         "end": {
           "line": 81,
@@ -114,6 +144,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "WatsonlogicParallax",
       "attributes": [
         {
           "name": "parallax-text",

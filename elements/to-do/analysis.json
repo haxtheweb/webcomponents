@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`to-do`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "to-do.js",
       "properties": [
@@ -167,17 +167,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 20,
-          "column": 8
+          "column": 19
         },
         "end": {
           "line": 214,
@@ -186,6 +181,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "ToDo",
       "attributes": [
         {
           "name": "hide-form",

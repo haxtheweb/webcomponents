@@ -219,6 +219,7 @@ Polymer({
    */
   setTracks: function(tracks) {
     this.set("tracks", tracks.slice(0));
+    this.notifyPath("tracks");
     if (this.tracks !== undefined && this.tracks.length > 0)
       this.$.tracks.render();
   },
@@ -288,6 +289,7 @@ Polymer({
         } else if (this.tracks[i] !== null) {
           this.set("tracks." + i + ".active", false);
         }
+        this.notifyPath("tracks." + i + ".active");
       }
     }
     this.$.tracks.render();

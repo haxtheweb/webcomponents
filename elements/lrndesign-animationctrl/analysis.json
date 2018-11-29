@@ -135,7 +135,7 @@
       "tagname": "lrndesign-animationctrl-button"
     },
     {
-      "description": "`lrndesign-animationctrl`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "lrndesign-animationctrl.js",
       "properties": [],
@@ -186,17 +186,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 8,
-          "column": 8
+          "column": 37
         },
         "end": {
           "line": 44,
@@ -205,6 +200,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrndesignAnimationctrl",
       "attributes": [],
       "events": [],
       "styling": {

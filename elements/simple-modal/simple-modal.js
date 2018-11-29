@@ -104,6 +104,7 @@ paper-dialog-scrollable {
   @apply --simple-modal-top;
 }
 .top h2 {
+  flex: auto;
   color: var(--simple-modal-text, #ffffff);
   font-size: 32px;
   text-transform: capitalize;

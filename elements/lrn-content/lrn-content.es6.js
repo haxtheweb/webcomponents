@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";let LrnContent=Polymer({_template:html`
     <style>
       :host {
         display: block;
@@ -10,4 +10,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";Poly
         <slot></slot>
       </div>
     </div>
-`,is:"lrn-content",properties:{title:{type:String,value:!1}}});
+`,is:"lrn-content",properties:{title:{type:String,value:!1}}});export{LrnContent};

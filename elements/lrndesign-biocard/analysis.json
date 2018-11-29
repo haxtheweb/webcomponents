@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrndesign-biocard`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "lrndesign-biocard.js",
       "properties": [
@@ -229,17 +229,12 @@
       ],
       "methods": [],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 11,
-          "column": 8
+          "column": 31
         },
         "end": {
           "line": 93,
@@ -248,6 +243,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrndesignBiocard",
       "attributes": [
         {
           "name": "title",

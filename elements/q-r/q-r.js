@@ -2,7 +2,6 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-export { QRCodeElement };
 
 /**
  * `q-r`
@@ -10,7 +9,7 @@ export { QRCodeElement };
  *
  * @demo demo/index.html
  */
-Polymer({
+let QR = Polymer({
   _template: html`
     <style>
       :host {
@@ -304,3 +303,5 @@ class QRCodeElement extends HTMLElement {
   }
 }
 window.customElements.define("qr-code", QRCodeElement);
+export { QRCodeElement };
+export { QR };

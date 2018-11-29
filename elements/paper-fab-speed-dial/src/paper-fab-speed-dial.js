@@ -1,6 +1,16 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "./lib/paper-fab-speed-dial-overlay.js";
-Polymer({
+/**
+ * `paper-fab-speed-dial`
+ * `A speed dial setup for a floating action button`
+ *
+ * @demo demo/index.html
+ */
+let PaperFabSpeedDial = Polymer({
   is: "paper-fab-speed-dial",
   properties: {
     icon: {
@@ -35,3 +45,4 @@ Polymer({
     this.opened = false;
   }
 });
+export { PaperFabSpeedDial };

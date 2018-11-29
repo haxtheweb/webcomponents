@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrn-content`\n  A LRN element for presenting content with a simple heading.\n  This is to improve accessibility, consistency, and tag things\n  with OER schema.",
+      "description": "",
       "summary": "",
       "path": "lrn-content.js",
       "properties": [
@@ -31,17 +31,12 @@
       ],
       "methods": [],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 9,
-          "column": 8
+          "column": 25
         },
         "end": {
           "line": 32,
@@ -50,6 +45,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnContent",
       "attributes": [
         {
           "name": "title",

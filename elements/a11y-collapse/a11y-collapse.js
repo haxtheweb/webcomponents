@@ -49,7 +49,7 @@ An accessible expand collapse.
 
 
 */
-Polymer({
+let A11yCollapse = Polymer({
   _template: html`
     <style>
       :host {
@@ -303,3 +303,4 @@ Polymer({
     return "" + expanded;
   }
 });
+export { A11yCollapse };

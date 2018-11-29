@@ -12,7 +12,7 @@ A LRN element
  -
 
 */
-Polymer({
+let RelativeHeading = Polymer({
   _template: html`
     <style>
       :host {
@@ -138,3 +138,4 @@ Polymer({
     this.tag = tag;
   }
 });
+export { RelativeHeading };

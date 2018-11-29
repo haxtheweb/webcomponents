@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@vaadin/vaadin-upload/vaadin-upload.js";Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@vaadin/vaadin-upload/vaadin-upload.js";let LrnappMediaUpload=Polymer({_template:html`
     <style>
       :host {
         display: block;
@@ -24,4 +24,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
     </style>
     <vaadin-upload target\$="{{uploadPath}}" method="POST" form-data-name="file-upload"></vaadin-upload>
-`,is:"lrnapp-media-upload",properties:{uploadPath:{type:String,notify:!0,reflectToAttribute:!0}}});
+`,is:"lrnapp-media-upload",properties:{uploadPath:{type:String,notify:!0,reflectToAttribute:!0}}});export{LrnappMediaUpload};

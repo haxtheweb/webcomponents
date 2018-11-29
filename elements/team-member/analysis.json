@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`team-member`\n`A simple presentation of a team member and basic info`",
+      "description": "",
       "summary": "",
       "path": "team-member.js",
       "properties": [
@@ -455,17 +455,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 16,
-          "column": 8
+          "column": 25
         },
         "end": {
           "line": 240,
@@ -474,6 +469,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "TeamMember",
       "attributes": [
         {
           "name": "schema-resource-i-d",

@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`parallax-image`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "parallax-image.js",
       "properties": [
@@ -257,17 +257,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 15,
-          "column": 8
+          "column": 28
         },
         "end": {
           "line": 193,
@@ -276,6 +271,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "ParallaxImage",
       "attributes": [
         {
           "name": "schema-resource-i-d",

@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`oer-schema`\nA LRN element to wrap an oer schema prefix onto materials.",
+      "description": "",
       "summary": "",
       "path": "oer-schema.js",
       "properties": [
@@ -248,17 +248,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 9,
-          "column": 8
+          "column": 24
         },
         "end": {
           "line": 903,
@@ -267,6 +262,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "OerSchema",
       "attributes": [
         {
           "name": "schema-resource-i-d",

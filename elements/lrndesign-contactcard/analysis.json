@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrndesign-contactcard`\nlrndesign-contactcard",
+      "description": "",
       "summary": "",
       "path": "lrndesign-contactcard.js",
       "properties": [
@@ -177,17 +177,12 @@
       ],
       "methods": [],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 15,
-          "column": 8
+          "column": 35
         },
         "end": {
           "line": 231,
@@ -196,6 +191,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrndesignContactcard",
       "attributes": [
         {
           "name": "image",

@@ -114,7 +114,7 @@
       "tagname": "lrnapp-fab-speed-dial-action"
     },
     {
-      "description": "`lrnapp-fab-menu`\n`floating action button with menu`",
+      "description": "",
       "summary": "",
       "path": "lrnapp-fab-menu.js",
       "properties": [
@@ -125,11 +125,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 47,
+              "line": 51,
               "column": 4
             },
             "end": {
-              "line": 50,
+              "line": 54,
               "column": 5
             }
           },
@@ -147,11 +147,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 51,
+              "line": 55,
               "column": 4
             },
             "end": {
-              "line": 54,
+              "line": 58,
               "column": 5
             }
           },
@@ -169,11 +169,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 55,
+              "line": 59,
               "column": 4
             },
             "end": {
-              "line": 58,
+              "line": 62,
               "column": 5
             }
           },
@@ -192,11 +192,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 62,
+              "line": 66,
               "column": 2
             },
             "end": {
-              "line": 69,
+              "line": 73,
               "column": 3
             }
           },
@@ -216,11 +216,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 71,
+              "line": 75,
               "column": 2
             },
             "end": {
-              "line": 78,
+              "line": 82,
               "column": 3
             }
           },
@@ -236,44 +236,24 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 11,
-          "column": 8
+          "line": 15,
+          "column": 28
         },
         "end": {
-          "line": 79,
+          "line": 83,
           "column": 1
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnappFabMenu",
       "attributes": [
         {
           "name": "icon",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 47,
-              "column": 4
-            },
-            "end": {
-              "line": 50,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "opened",
           "description": "",
           "sourceRange": {
             "start": {
@@ -286,10 +266,10 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "string | null | undefined"
         },
         {
-          "name": "disabled",
+          "name": "opened",
           "description": "",
           "sourceRange": {
             "start": {
@@ -298,6 +278,22 @@
             },
             "end": {
               "line": 58,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "disabled",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 59,
+              "column": 4
+            },
+            "end": {
+              "line": 62,
               "column": 5
             }
           },

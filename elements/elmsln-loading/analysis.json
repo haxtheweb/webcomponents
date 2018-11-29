@@ -5,6 +5,41 @@
       "description": "`elmsln-loading`\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.",
       "summary": "",
       "path": "elmsln-loading.js",
+      "properties": [],
+      "methods": [],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 21,
+          "column": 20
+        },
+        "end": {
+          "line": 90,
+          "column": 2
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "ElmslnLoading",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "elmsln-loading.js",
       "properties": [
         {
           "name": "color",
@@ -52,17 +87,12 @@
       ],
       "methods": [],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 21,
-          "column": 8
+          "column": 28
         },
         "end": {
           "line": 90,
@@ -71,6 +101,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "ElmslnLoading",
       "attributes": [
         {
           "name": "color",

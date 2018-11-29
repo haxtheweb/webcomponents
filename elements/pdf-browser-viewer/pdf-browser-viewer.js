@@ -48,7 +48,7 @@ Card example:
 
 @demo demo/index.html
 */
-Polymer({
+let PdfBrowserViewer = Polymer({
   _template: html`
         <style>
             :host {
@@ -176,3 +176,4 @@ Polymer({
     window.location = this.file;
   }
 });
+export { PdfBrowserViewer };

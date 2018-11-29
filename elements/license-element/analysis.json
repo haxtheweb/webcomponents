@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`license-element`\nA simple way of applying a semantically accurate license to work.",
+      "description": "",
       "summary": "",
       "path": "license-element.js",
       "properties": [
@@ -389,17 +389,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 12,
-          "column": 8
+          "column": 29
         },
         "end": {
           "line": 305,
@@ -408,6 +403,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LicenseElement",
       "attributes": [
         {
           "name": "schema-resource-i-d",

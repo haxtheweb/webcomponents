@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
@@ -22,7 +26,7 @@ A well styled comment for a user with markdown support.
 
 @demo demo/index.html
 */
-Polymer({
+let LrnsysComment = Polymer({
   _template: html`
     <style include="materializecss-styles-colors">
       :host {
@@ -382,3 +386,4 @@ Polymer({
     this.fire("iron-resize");
   }
 });
+export { LrnsysComment };

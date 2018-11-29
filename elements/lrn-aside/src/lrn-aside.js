@@ -7,7 +7,7 @@ import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
  *
  * @demo demo/index.html
  */
-Polymer({
+let LrnAside = Polymer({
   _template: html`
     <style>
       :host {
@@ -139,3 +139,4 @@ Polymer({
     this.setHaxProperties(props);
   }
 });
+export { LrnAside };

@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`promo-tile`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "promo-tile.js",
       "properties": [
@@ -363,17 +363,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 18,
-          "column": 8
+          "column": 24
         },
         "end": {
           "line": 321,
@@ -382,6 +377,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "PromoTile",
       "attributes": [
         {
           "name": "schema-resource-i-d",

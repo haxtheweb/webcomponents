@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`video-player`\nA simple responsive video player with ridiculously powerful backing",
+      "description": "",
       "summary": "",
       "path": "video-player.js",
       "properties": [
@@ -964,17 +964,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 44,
-          "column": 8
+          "column": 26
         },
         "end": {
           "line": 714,
@@ -983,6 +978,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "VideoPlayer",
       "attributes": [
         {
           "name": "schema-resource-i-d",

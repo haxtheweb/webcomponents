@@ -10,7 +10,7 @@ a simple element to check for and fetch JWTs
 - jwt - a json web token which is an encrypted security token to talk
 
 */
-Polymer({
+let JwtLogin = Polymer({
   _template: html`
     <style>
       :host {
@@ -84,3 +84,4 @@ Polymer({
     }
   }
 });
+export { JwtLogin };

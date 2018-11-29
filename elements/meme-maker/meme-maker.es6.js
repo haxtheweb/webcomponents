@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";let MemeMaker=Polymer({_template:html`
     <style>
       :host {
         display: block;
@@ -12,7 +12,6 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         width: 100%;
         margin: 0;
         padding: 0;
-
         font-size: 20px;
       }
 
@@ -62,4 +61,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       <figcaption class="top-text">[[topText]]</figcaption>
       <figcaption class="bottom-text">[[bottomText]]</figcaption>
     </figure>
-`,is:"meme-maker",behaviors:[HAXBehaviors.PropertiesBehaviors],properties:{alt:{type:String},imageUrl:{type:String},topText:{type:String},bottomText:{type:String}},attached:function(){let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Meme",description:"Make a meme out of an image",icon:"editor:title",color:"orange",groups:["Content","Text","Meme","Funny"],handles:[{type:"image",source:"imageUrl",title:"topText",author:"bottomText",alt:"alt"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"topText",title:"Top text",description:"Top text of the meme.",inputMethod:"textfield",icon:"editor:title"},{property:"bottomText",title:"Bottom text",description:"The date this was accessed.",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"imageUrl",title:"Source",description:"The source url for the element this is citing.",inputMethod:"textfield",icon:"link"},{property:"topText",title:"Top text",description:"Top text of the meme.",inputMethod:"textfield",icon:"editor:title"},{property:"bottomText",title:"Bottom text",description:"The date this was accessed.",inputMethod:"textfield",icon:"editor:title"}],advanced:[]}};this.setHaxProperties(props)}});
+`,is:"meme-maker",behaviors:[HAXBehaviors.PropertiesBehaviors],properties:{alt:{type:String},imageUrl:{type:String},topText:{type:String},bottomText:{type:String}},attached:function(){let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Meme",description:"Make a meme out of an image",icon:"editor:title",color:"orange",groups:["Content","Text","Meme","Funny"],handles:[{type:"image",source:"imageUrl",title:"topText",author:"bottomText",alt:"alt"}],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"topText",title:"Top text",description:"Top text of the meme.",inputMethod:"textfield",icon:"editor:title"},{property:"bottomText",title:"Bottom text",description:"The date this was accessed.",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"imageUrl",title:"Source",description:"The source url for the element this is citing.",inputMethod:"textfield",icon:"link"},{property:"topText",title:"Top text",description:"Top text of the meme.",inputMethod:"textfield",icon:"editor:title"},{property:"bottomText",title:"Bottom text",description:"The date this was accessed.",inputMethod:"textfield",icon:"editor:title"}],advanced:[]}};this.setHaxProperties(props)}});export{MemeMaker};

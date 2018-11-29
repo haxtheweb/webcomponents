@@ -9,7 +9,7 @@ A LRN element
 
 @demo demo/index.html
 */
-Polymer({
+let LrndesignBiocard = Polymer({
   _template: html`
     <style>
       :host {
@@ -92,3 +92,4 @@ Polymer({
     }
   }
 });
+export { LrndesignBiocard };

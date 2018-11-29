@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrndesign-course-banner`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "lrndesign-course-banner.js",
       "properties": [
@@ -93,17 +93,12 @@
       ],
       "methods": [],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 15,
-          "column": 8
+          "column": 36
         },
         "end": {
           "line": 104,
@@ -112,6 +107,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrndesignCourseBanner",
       "attributes": [
         {
           "name": "color",

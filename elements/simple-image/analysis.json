@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`simple-image`\nA minimalist image that modals and presents info cleanly.",
+      "description": "",
       "summary": "",
       "path": "simple-image.js",
       "properties": [
@@ -211,17 +211,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 14,
-          "column": 8
+          "column": 26
         },
         "end": {
           "line": 328,
@@ -230,6 +225,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "SimpleImage",
       "attributes": [
         {
           "name": "schema-resource-i-d",

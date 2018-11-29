@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrndesign-blockquote`\nA structured blockquote element",
+      "description": "",
       "summary": "",
       "path": "lrndesign-blockquote.js",
       "properties": [
@@ -487,17 +487,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 13,
-          "column": 8
+          "column": 34
         },
         "end": {
           "line": 332,
@@ -506,6 +501,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrndesignBlockquote",
       "attributes": [
         {
           "name": "schema-resource-i-d",

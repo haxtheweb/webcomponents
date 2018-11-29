@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@lrnwebcomponents/paper-contact/paper-contact.js";Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@lrnwebcomponents/paper-contact/paper-contact.js";let LrndesignBiocard=Polymer({_template:html`
     <style>
       :host {
         display: block;
@@ -33,4 +33,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
 </p>
 </div>
 </paper-card>
-`,is:"lrndesign-biocard",properties:{title:{type:String,value:"lrndesign-biocard"},image:{type:String,value:""},instructorName:{type:String,value:""},address:{type:String,value:""},phone:{type:String,value:""},email:{type:String,value:""},officeHours:{type:String,value:""},linkedin:{type:String,value:""},twitter:{type:String,value:""},videoConf:{type:String,value:""}}});
+`,is:"lrndesign-biocard",properties:{title:{type:String,value:"lrndesign-biocard"},image:{type:String,value:""},instructorName:{type:String,value:""},address:{type:String,value:""},phone:{type:String,value:""},email:{type:String,value:""},officeHours:{type:String,value:""},linkedin:{type:String,value:""},twitter:{type:String,value:""},videoConf:{type:String,value:""}}});export{LrndesignBiocard};

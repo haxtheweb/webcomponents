@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrndesign-sidenote`\nA basic side note",
+      "description": "",
       "summary": "",
       "path": "lrndesign-sidenote.js",
       "properties": [
@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 65,
+              "line": 69,
               "column": 4
             },
             "end": {
-              "line": 68,
+              "line": 72,
               "column": 5
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 72,
+              "line": 76,
               "column": 4
             },
             "end": {
-              "line": 75,
+              "line": 79,
               "column": 5
             }
           },
@@ -57,11 +57,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 79,
+              "line": 83,
               "column": 4
             },
             "end": {
-              "line": 82,
+              "line": 86,
               "column": 5
             }
           },
@@ -79,11 +79,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 91,
               "column": 4
             },
             "end": {
-              "line": 90,
+              "line": 94,
               "column": 5
             }
           },
@@ -101,11 +101,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 95,
+              "line": 99,
               "column": 4
             },
             "end": {
-              "line": 98,
+              "line": 102,
               "column": 5
             }
           },
@@ -180,11 +180,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 109,
+              "line": 113,
               "column": 2
             },
             "end": {
-              "line": 127,
+              "line": 131,
               "column": 3
             }
           },
@@ -200,11 +200,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 131,
+              "line": 135,
               "column": 2
             },
             "end": {
-              "line": 138,
+              "line": 142,
               "column": 3
             }
           },
@@ -226,36 +226,32 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 9,
-          "column": 8
+          "line": 13,
+          "column": 32
         },
         "end": {
-          "line": 139,
+          "line": 143,
           "column": 1
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrndesignSidenote",
       "attributes": [
         {
           "name": "label",
           "description": "The display label",
           "sourceRange": {
             "start": {
-              "line": 65,
+              "line": 69,
               "column": 4
             },
             "end": {
-              "line": 68,
+              "line": 72,
               "column": 5
             }
           },
@@ -267,11 +263,11 @@
           "description": "The display icon for the element",
           "sourceRange": {
             "start": {
-              "line": 72,
+              "line": 76,
               "column": 4
             },
             "end": {
-              "line": 75,
+              "line": 79,
               "column": 5
             }
           },
@@ -283,11 +279,11 @@
           "description": "Background Color",
           "sourceRange": {
             "start": {
-              "line": 79,
+              "line": 83,
               "column": 4
             },
             "end": {
-              "line": 82,
+              "line": 86,
               "column": 5
             }
           },
@@ -299,11 +295,11 @@
           "description": "Outset will move the entire element left to make it\nstand out from the content.",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 91,
               "column": 4
             },
             "end": {
-              "line": 90,
+              "line": 94,
               "column": 5
             }
           },
@@ -315,11 +311,11 @@
           "description": "Define the unit of measure for the outset variable\nExamples: 'em', 'px', '%', 'vw'",
           "sourceRange": {
             "start": {
-              "line": 95,
+              "line": 99,
               "column": 4
             },
             "end": {
-              "line": 98,
+              "line": 102,
               "column": 5
             }
           },

@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`self-check`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "self-check.js",
       "properties": [
@@ -500,17 +500,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 21,
-          "column": 8
+          "column": 24
         },
         "end": {
           "line": 407,
@@ -519,6 +514,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "SelfCheck",
       "attributes": [
         {
           "name": "schema-resource-i-d",

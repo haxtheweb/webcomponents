@@ -215,7 +215,7 @@
       "sourceRange": {
         "start": {
           "line": 13,
-          "column": 8
+          "column": 22
         },
         "end": {
           "line": 174,
@@ -224,6 +224,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnMath",
       "attributes": [
         {
           "name": "prefix",

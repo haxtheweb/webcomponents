@@ -11,7 +11,7 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
  * @demo demo/index.html
  */
 
-Polymer({
+let LrnMath = Polymer({
   _template: html`
     <style>
        :host {
@@ -173,3 +173,4 @@ Polymer({
     });
   }
 });
+export { LrnMath };

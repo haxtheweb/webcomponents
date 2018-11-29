@@ -15,7 +15,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
  * @polymer
  * @demo demo/index.html
  */
-Polymer({
+let SimpleTimer = Polymer({
   _template: html`
   <style>
     :host {
@@ -127,3 +127,4 @@ Polymer({
       : timeString[0] + "." + timeString[1].substring(0, 2);
   }
 });
+export { SimpleTimer };

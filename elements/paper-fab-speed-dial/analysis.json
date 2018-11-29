@@ -2818,11 +2818,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 5,
+              "line": 15,
               "column": 4
             },
             "end": {
-              "line": 8,
+              "line": 18,
               "column": 5
             }
           },
@@ -2840,11 +2840,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 9,
+              "line": 19,
               "column": 4
             },
             "end": {
-              "line": 12,
+              "line": 22,
               "column": 5
             }
           },
@@ -2862,11 +2862,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 13,
+              "line": 23,
               "column": 4
             },
             "end": {
-              "line": 16,
+              "line": 26,
               "column": 5
             }
           },
@@ -2885,11 +2885,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 20,
+              "line": 30,
               "column": 2
             },
             "end": {
-              "line": 27,
+              "line": 37,
               "column": 3
             }
           },
@@ -2909,11 +2909,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 28,
+              "line": 38,
               "column": 2
             },
             "end": {
-              "line": 35,
+              "line": 45,
               "column": 3
             }
           },
@@ -2933,27 +2933,28 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 2,
-          "column": 8
+          "line": 12,
+          "column": 32
         },
         "end": {
-          "line": 36,
+          "line": 46,
           "column": 1
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "PaperFabSpeedDial",
       "attributes": [
         {
           "name": "icon",
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 5,
+              "line": 15,
               "column": 4
             },
             "end": {
-              "line": 8,
+              "line": 18,
               "column": 5
             }
           },
@@ -2965,11 +2966,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 9,
+              "line": 19,
               "column": 4
             },
             "end": {
-              "line": 12,
+              "line": 22,
               "column": 5
             }
           },
@@ -2981,11 +2982,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 13,
+              "line": 23,
               "column": 4
             },
             "end": {
-              "line": 16,
+              "line": 26,
               "column": 5
             }
           },

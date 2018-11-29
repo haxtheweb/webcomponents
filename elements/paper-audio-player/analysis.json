@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "A custom audio player with material paper style and clean design.\n\nExample:\n\n    <paper-audio-player src=\"audio.mp3\"></paper-audio-player>\n\n### Styling the player:\n\nThis player has an accent color, and you have two option to modify it:\n\n- **Option 1**: Using the *color property* on element. This one is handy if you need to modify the color dynamically.\n\n\n    <paper-audio-player color=\"#F05C38\" src=\"audio.mp3\"></paper-audio-player>\n\n\n- **Option 2**: Using the *custom CSS property*:\n\n\n\n    paper-audio-player {\n       --paper-audio-player-color: #e91e63;\n    }\n\nThe following mixins are available for styling:\n\nCustom property                             | Description                                 | Default\n--------------------------------------------|---------------------------------------------|----------\n--paper-audio-player-color                  | Color of the element                        | blueviolet",
+      "description": "",
       "summary": "",
       "path": "paper-audio-player.js",
       "properties": [
@@ -1297,17 +1297,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 45,
-          "column": 8
+          "column": 31
         },
         "end": {
           "line": 694,
@@ -1316,6 +1311,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "PaperAudioPlayer",
       "attributes": [
         {
           "name": "key-event-target",

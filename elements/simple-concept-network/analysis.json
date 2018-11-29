@@ -373,7 +373,7 @@
       "tagname": "simple-concept-network-node"
     },
     {
-      "description": "`simple-concept-network`\nA small but effective little data visualizer for topics surrounding\na central concept, much like the ELMS:LN snowflake icon.",
+      "description": "",
       "summary": "",
       "path": "simple-concept-network.js",
       "properties": [
@@ -547,17 +547,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 16,
-          "column": 8
+          "column": 35
         },
         "end": {
           "line": 227,
@@ -566,6 +561,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "SimpleConceptNetwork",
       "attributes": [
         {
           "name": "color",

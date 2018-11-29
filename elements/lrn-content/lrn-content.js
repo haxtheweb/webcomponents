@@ -7,7 +7,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 
 @demo demo/index.html
 */
-Polymer({
+let LrnContent = Polymer({
   _template: html`
     <style>
       :host {
@@ -31,3 +31,4 @@ Polymer({
     }
   }
 });
+export { LrnContent };

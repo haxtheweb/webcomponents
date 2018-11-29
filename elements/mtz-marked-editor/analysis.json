@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`mtz-marked-editor`\nCreates a textarea with common editor logic and can be controlled by UI elements",
+      "description": "",
       "summary": "",
       "path": "mtz-marked-editor.js",
       "properties": [
@@ -355,17 +355,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 10,
-          "column": 8
+          "column": 30
         },
         "end": {
           "line": 142,
@@ -374,6 +369,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "MtzMarkedEditor",
       "attributes": [
         {
           "name": "autofocus",

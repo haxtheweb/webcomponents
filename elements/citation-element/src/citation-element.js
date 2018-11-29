@@ -14,7 +14,7 @@ import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
  -
 
 */
-Polymer({
+let CitationElement = Polymer({
   _template: html`
     <style>
       :host {
@@ -361,3 +361,4 @@ Polymer({
     }
   }
 });
+export { CitationElement };

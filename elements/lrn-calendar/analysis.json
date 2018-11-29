@@ -541,7 +541,7 @@
       "tagname": "lrn-calendar-date"
     },
     {
-      "description": "`lrn-calendar`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "lrn-calendar.js",
       "properties": [
@@ -1192,17 +1192,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 25,
-          "column": 8
+          "column": 26
         },
         "end": {
           "line": 885,
@@ -1211,6 +1206,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnCalendar",
       "attributes": [
         {
           "name": "list-of-events",

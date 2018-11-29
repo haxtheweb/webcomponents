@@ -369,6 +369,7 @@ Polymer({
    */
   setTracks: function(tracks) {
     this.set("tracks", tracks.slice(0));
+    this.notifyPaths("tracks");
   },
 
   /**

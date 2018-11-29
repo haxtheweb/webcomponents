@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`image-inspector`\n`Zoom, Rotate, Mirror, Download, and View image`",
+      "description": "",
       "summary": "",
       "path": "image-inspector.js",
       "properties": [
@@ -175,17 +175,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 13,
-          "column": 8
+          "column": 29
         },
         "end": {
           "line": 128,
@@ -194,6 +189,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "ImageInspector",
       "attributes": [
         {
           "name": "degrees",

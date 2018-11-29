@@ -1,5 +1,6 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import"./node_modules/@polymer/iron-list/iron-list.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/iron-image/iron-image.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icons/av-icons.js";import"./node_modules/@polymer/app-layout/app-drawer/app-drawer.js";import"./node_modules/@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";import"./node_modules/@polymer/app-layout/app-header/app-header.js";import"./node_modules/@polymer/app-layout/app-header-layout/app-header-layout.js";import"./node_modules/@polymer/app-layout/app-scroll-effects/app-scroll-effects.js";import"./node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js";import"./node_modules/@polymer/app-route/app-location.js";import"./node_modules/@polymer/app-route/app-route.js";import"./node_modules/@polymer/iron-pages/iron-pages.js";import"./node_modules/@polymer/iron-selector/iron-selector.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";Polymer({_template:html`
-    <style include="materializecss-styles">
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import"./node_modules/@polymer/iron-list/iron-list.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/iron-image/iron-image.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icons/av-icons.js";import"./node_modules/@polymer/app-layout/app-drawer/app-drawer.js";import"./node_modules/@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";import"./node_modules/@polymer/app-layout/app-header/app-header.js";import"./node_modules/@polymer/app-layout/app-header-layout/app-header-layout.js";import"./node_modules/@polymer/app-layout/app-scroll-effects/app-scroll-effects.js";import"./node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js";import"./node_modules/@polymer/app-route/app-location.js";import"./node_modules/@polymer/app-route/app-route.js";import"./node_modules/@polymer/iron-pages/iron-pages.js";import"./node_modules/@polymer/iron-selector/iron-selector.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";let ContentaPolymer=Polymer({_template:html`
+  <custom-style>
+    <style is="custom-style" include="materializecss-styles">
       :host {
         --app-primary-color: #4285f4;
         --app-secondary-color: black;
@@ -37,7 +38,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         font-weight: bold;
       }
     </style>
-
+  </custom-style>
     <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
     </app-location>
 
@@ -73,4 +74,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         </iron-pages>
       </app-header-layout>
     </app-drawer-layout>
-`,is:"contenta-polymer",properties:{},_toArray:function(obj){return Object.keys(obj).map(function(key){return obj[key]})}});
+`,is:"contenta-polymer",properties:{},_toArray:function(obj){return Object.keys(obj).map(function(key){return obj[key]})}});export{ContentaPolymer};

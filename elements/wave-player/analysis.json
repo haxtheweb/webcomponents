@@ -5,6 +5,41 @@
       "description": "`wave-player`\n`A player for visualizing a sound file`",
       "summary": "",
       "path": "wave-player.js",
+      "properties": [],
+      "methods": [],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 23,
+          "column": 17
+        },
+        "end": {
+          "line": 535,
+          "column": 2
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "WavePlayer",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "wave-player.js",
       "properties": [
         {
           "name": "schemaResourceID",
@@ -528,17 +563,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 23,
-          "column": 8
+          "column": 25
         },
         "end": {
           "line": 535,
@@ -547,6 +577,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "WavePlayer",
       "attributes": [
         {
           "name": "schema-resource-i-d",

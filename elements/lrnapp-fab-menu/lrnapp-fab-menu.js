@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-fab/paper-fab.js";
 import "@lrnwebcomponents/paper-fab-speed-dial/paper-fab-speed-dial.js";
@@ -9,7 +13,7 @@ import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
  *
  * @demo demo/index.html
  */
-Polymer({
+let LrnappFabMenu = Polymer({
   _template: html`
   <custom-style>
     <style include="materializecss-styles-colors"></style>
@@ -78,3 +82,4 @@ Polymer({
     this.opened = false;
   }
 });
+export { LrnappFabMenu };

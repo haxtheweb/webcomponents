@@ -5,6 +5,41 @@
       "description": "`a11y-gif-player`\n`Play gifs in an accessible way by having the user click to play their animation`",
       "summary": "",
       "path": "a11y-gif-player.js",
+      "properties": [],
+      "methods": [],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 21,
+          "column": 20
+        },
+        "end": {
+          "line": 225,
+          "column": 2
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "A11yGifPlayer",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "a11y-gif-player.js",
       "properties": [
         {
           "name": "schemaResourceID",
@@ -273,17 +308,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 21,
-          "column": 8
+          "column": 28
         },
         "end": {
           "line": 225,
@@ -292,6 +322,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "A11yGifPlayer",
       "attributes": [
         {
           "name": "schema-resource-i-d",

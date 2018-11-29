@@ -8,7 +8,7 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 
 @demo demo/index.html
 */
-Polymer({
+let LrndesignDrawer = Polymer({
   _template: html`
     <style>
       :host {
@@ -83,3 +83,4 @@ Polymer({
       });
   }
 });
+export { LrndesignDrawer };

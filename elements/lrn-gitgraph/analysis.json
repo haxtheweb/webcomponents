@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`lrn-gitgraph`\nA LRN element\n\nFor each branch in your repo use the following git command:\n```\ngit log [branch_name] --format='{\"refs\": \"%d\", \"commit\": \"%h\", \"tree\": \"%t\", \"parent\": \"%p\", \"subject\": \"%s\", \"date\": \"%cd\", \"author\": \"%an %ae\"},' --reverse\n```",
+      "description": "",
       "summary": "",
       "path": "lrn-gitgraph.js",
       "properties": [
@@ -206,17 +206,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 13,
-          "column": 8
+          "column": 26
         },
         "end": {
           "line": 124,
@@ -225,6 +220,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "LrnGitgraph",
       "attributes": [
         {
           "name": "commits",

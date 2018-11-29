@@ -114,6 +114,7 @@ Polymer({
       }
     }
     this.push("__items", item);
+    this.notifyPath("__items");
   },
 
   /**
@@ -150,6 +151,7 @@ Polymer({
       this._detachItem(e.detail);
     });
     this.set("__items", []);
+    this.notify("__items");
   },
 
   /**

@@ -102,7 +102,7 @@ Custom property | Description
 To get started, you can import `default-styles.html` which provides material design
 inspired styles to your `iron-data-table`.
 */
-Polymer({
+let IronDataTable = Polymer({
   _template: html`
     <style is="custom-style">
       :host {
@@ -1125,3 +1125,4 @@ Polymer({
     }
   }
 });
+export { IronDataTable };
