@@ -289,7 +289,7 @@
               "column": 2
             },
             "end": {
-              "line": 282,
+              "line": 284,
               "column": 3
             }
           },
@@ -305,11 +305,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 287,
+              "line": 289,
               "column": 2
             },
             "end": {
-              "line": 303,
+              "line": 305,
               "column": 3
             }
           },
@@ -333,7 +333,7 @@
           "column": 27
         },
         "end": {
-          "line": 304,
+          "line": 306,
           "column": 1
         }
       },

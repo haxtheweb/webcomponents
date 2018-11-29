@@ -10,7 +10,7 @@
   @apply --simple-modal-content;
 }
 
-paper-dialog-scrollable {
+.content {
   padding: 8px 24px;
   @apply --simple-modal-content-container;
 }
@@ -37,7 +37,7 @@ paper-dialog-scrollable {
   position: absolute;
   padding: 4px;
   margin: 4px;
-  color: var(--simple-modal-text, #ffffff);
+  color: var(--simple-modal-header-color, #ffffff);
   background-color: transparent;
   min-width: unset;
   line-height: 32px;
@@ -46,7 +46,7 @@ paper-dialog-scrollable {
 
 #close iron-icon {
   display: inline-block;
-  color: var(--simple-modal-text, #ffffff);
+  color: var(--simple-modal-header-color, #ffffff);
   width: 16px;
   height: 16px;
   margin-right: 4px;
@@ -57,14 +57,14 @@ paper-dialog-scrollable {
   display: flex;
   margin-top: 0;
   justify-content: space-between;
-  background-color: var(--simple-modal-background, #20427b);
-  color: var(--simple-modal-text, #ffffff);
+  background-color: var(--simple-modal-header-background, #20427b);
+  color: var(--simple-modal-header-color, #ffffff);
   padding: 8px 16px;
   @apply --simple-modal-top;
 }
 .top h2 {
   flex: auto;
-  color: var(--simple-modal-text, #ffffff);
+  color: var(--simple-modal-header-color, #ffffff);
   font-size: 32px;
   text-transform: capitalize;
   padding: 0;

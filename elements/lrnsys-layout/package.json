@@ -44,6 +44,7 @@
     "@lrnwebcomponents/paper-avatar": "^0.0.35",
     "@lrnwebcomponents/simple-colors": "^0.0.35",
     "@lrnwebcomponents/simple-modal": "^0.0.35",
+    "@lrnwebcomponents/simple-drawer": "^0.0.35",
     "@polymer/app-layout": "^3.0.0",
     "@polymer/iron-collapse": "^3.0.0",
     "@polymer/iron-image": "^3.0.0",

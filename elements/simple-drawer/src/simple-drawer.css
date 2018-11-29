@@ -1,49 +1,33 @@
 :host {
   display: block;
+  z-index: 1000;
 }
-
 :host([hidden]) {
   display: none;
 }
-:host {
-    display: block;
-    z-index: 1000;
-  }
 
 app-drawer {
-  --app-drawer-width: var(--lrnsys-drawer-width);
-
+  --app-drawer-width: var(--simple-drawer-width, 256px);
   --app-drawer-content-container: {
     padding: 0;
     overflow-y: scroll;
     position: fixed;
-    color: var(--lrnsys-drawer-color);
-    background-color: var(--lrnsys-drawer-background-color);
+    color: var(--simple-drawer-color, #222222);
+    background-color: var(--simple-drawer-background-color, #FFFFFF);
   }
 }
+:host ::slotted(*) {
+  font-size: 14px;
+  @apply --simple-drawer-content;
+}
 
-.drawer-header {
-  width: 100%;
-  padding: 0;
-  margin: 0 0 8px 0;
+.content {
   text-align: left;
-  @apply --lrnsys-drawer-header;
+  padding: 8px 24px;
+  @apply --simple-drawer-content-container;
 }
 
-.drawer-heading {
-  font-size: 24px;
-  margin: 0;
-  padding: 0 15px;
-  height: 40px;
-  line-height: 48px;
-}
-
-.drawer-content {
-  padding: 0 15px;
-  text-align: left;
-}
-
-.drawer-header-slot ::slotted(*) {
+.top ::slotted(*) {
   font-size: 24px;
   margin: 0;
   padding: 0 15px;
@@ -60,7 +44,7 @@ app-drawer {
   text-transform: none;
   float: right;
   font-size: 12px;
-  color: var(--simple-modal-color, black);
+  color: var(--simple-drawer-header-color, #ffffff);
   background-color: transparent;
   min-width: unset;
 }
@@ -70,4 +54,28 @@ app-drawer {
   width: 16px;
   height: 16px;
   margin-right: 2px;
+}
+
+.top {
+  font-size: 24px;
+  margin: 0 0 8px 0;
+  padding: 0 16px;
+  height: 40px;
+  line-height: 48px;
+  display: flex;
+  text-align: left;
+  justify-content: space-between;
+  background-color: var(--simple-drawer-header-background, #20427b);
+  color: var(--simple-drawer-header-color, #ffffff);
+  @apply --simple-drawer-header;
+}
+
+.top h2 {
+  flex: auto;
+  color: var(--simple-drawer-header-color, #ffffff);
+  font-size: 24px;
+  padding: 0;
+  line-height: 32px;
+  margin: 8px;
+  @apply --simple-drawer-heading;
 }

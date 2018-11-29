@@ -190,11 +190,8 @@ exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-
    */
   connectedCallback() {
     super.connectedCallback();
+    window.addEventListener("simple-modal-hide", this.close.bind(this));
     window.addEventListener("simple-modal-show", this.showEvent.bind(this));
-    this.$.dialog.addEventListener(
-      "iron-overlay-opened",
-      this._resizeContent.bind(this)
-    );
   }
   /**
    * Ensure everything is visible in what's been expanded.
@@ -257,6 +254,7 @@ exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-
     // minor delay to help the above happen prior to opening
     setTimeout(() => {
       this.opened = true;
+      this._resizeContent();
     }, 100);
   }
   /**
@@ -264,13 +262,12 @@ exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-
    * This keeps the DOM tiddy and allows animation to happen gracefully.
    */
   animationEnded(e) {
+    // wipe the slot of our modal
+    this.title = "";
+    while (dom(this).firstChild !== null) {
+      dom(this).removeChild(dom(this).firstChild);
+    }
     if (this.invokedBy) {
-      // wipe the slot of our modal
-      this.title = "";
-
-      while (dom(this).firstChild !== null) {
-        dom(this).removeChild(dom(this).firstChild);
-      }
       async.microTask.run(() => {
         setTimeout(() => {
           this.invokedBy.focus();
@@ -314,11 +311,8 @@ exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-
    */
   disconnectedCallback() {
     super.disconnectedCallback();
+    window.removeEventListener("simple-modal-hide", this.close.bind(this));
     window.removeEventListener("simple-modal-show", this.showEvent.bind(this));
-    this.$.dialog.removeEventListener(
-      "iron-overlay-opened",
-      this._resizeContent.bind(this)
-    );
   }
 }
 window.customElements.define(SimpleModal.tag, SimpleModal);

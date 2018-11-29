@@ -24,7 +24,7 @@
     <demo-snippet>
       <template>
         <lrnsys-drawer text="More tools" icon="network" alt="Click for more tools" header="More tools" align="right" heading-class="orange lighten-3 blue-text text-darken-4">
-          All the content of the drawer!
+          <p>All the content of the drawer!</p>
         </lrnsys-drawer>
       </template>
     </demo-snippet>
@@ -33,7 +33,7 @@
     <demo-snippet>
       <template>
         <lrnsys-drawer text="Art 100" header="Settings">
-          All the content of the drawer!
+          <p>All the content of the drawer!</p>
         </lrnsys-drawer>
       </template>
     </demo-snippet>
@@ -42,7 +42,7 @@
     <demo-snippet>
       <template>
         <lrnsys-drawer text="btopro" avatar="headshot.jpg" alt="Bryan O" header="User profile" align="right">
-          All my profile data
+          <p>All my profile data</p>
         </lrnsys-drawer>
       </template>
     </demo-snippet>
@@ -84,13 +84,13 @@
     <h3>Using Dialog with dynamic image loading</h3>
     <demo-snippet>
       <template>
-        <lrnsys-dialog dynamic-images class="circle" body-append="" raised="" hover-class="black white-text" text="btopro" avatar="headshot.jpg" alt="Bryan O" header="This is the heading">
+        <lrnsys-dialog dynamic-images class="circle" raised="" hover-class="black white-text" text="btopro" avatar="headshot.jpg" alt="Bryan O" header="This is the heading">
           <iron-image src="headshot.jpg" prevent-load style="width:100%; height:100%; background-color: lightgray;" preload fade></iron-image>
         </lrnsys-dialog>
       </template>
     </demo-snippet>
   </div><div class="vertical-section-container centered">
-    <h3>Using slots and style / stack order breaking option</h3>
+    <h3>Using slots and style</h3>
     <demo-snippet>
       <template>
         <lrnsys-drawer raised="" hover-class="grey lighten-5 red-text text-darken-3" text="btopro" avatar="headshot.jpg" alt="Bryan O" align="right">
@@ -131,7 +131,7 @@
     <h3>Using Dialog</h3>
     <demo-snippet>
       <template>
-        <lrnsys-dialog id="dialog" class="circle" body-append="" raised="" hover-class="black white-text" text="btopro2" avatar="headshot.jpg" alt="Bryan O">
+        <lrnsys-dialog id="dialog" class="circle" raised="" hover-class="black white-text" text="btopro2" avatar="headshot.jpg" alt="Bryan O">
           <span slot="toolbar-secondary">
             <lrnsys-dialog-toolbar-button title="Zoom In" icon="zoom-in" id="zoom-in"></lrnsys-dialog-toolbar-button>
             <lrnsys-dialog-toolbar-button title="Zoom Out" icon="zoom-out" id="zoom-out"></lrnsys-dialog-toolbar-button>
@@ -191,7 +191,7 @@
     <h3>A last example to prove it works against target that invoked it</h3>
     <demo-snippet>
       <template>
-        <lrnsys-dialog id="dialog" class="circle" body-append="" raised="" hover-class="black white-text" text="btopro3" avatar="headshot.jpg" alt="Bryan O">
+        <lrnsys-dialog id="dialog" class="circle" raised="" hover-class="black white-text" text="btopro3" avatar="headshot.jpg" alt="Bryan O">
           <span slot="toolbar-secondary">
             <lrnsys-dialog-toolbar-button title="Zoom In" icon="zoom-in" id="zoom-in"></lrnsys-dialog-toolbar-button>
             <lrnsys-dialog-toolbar-button title="Zoom Out" icon="zoom-out" id="zoom-out"></lrnsys-dialog-toolbar-button>
