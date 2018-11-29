@@ -21,7 +21,8 @@ A grid plate based on a layout that manipulates it.
 */
 let GridPlate = Polymer({
   _template: html`
-    <style>
+  <custom-style>
+    <style is="custom-style" include="simple-colors">
       :host {
         display: block;
       }
@@ -45,22 +46,22 @@ let GridPlate = Polymer({
         background-color: #d1d1d1;
       }
 
-      :host ::slotted(*) .mover,
+      :host responsive-grid-row ::slotted(*) .mover,
       :host responsive-grid-col[data-draggable].mover {
         outline: 2px dotted #d1d1d1;
         outline-offset: 2px;
         background-color: rgba(240, 240, 240, .2);
       }
 
-      :host ::slotted(*) .active-item {
+      :host responsive-grid-row ::slotted(*) .active-item {
         outline: 2px dashed #aaaaaa !important;
         outline-offset: 2px;
         background-color: rgba(220, 220, 220, .6) !important;
       }
 
-      :host ::slotted(*) [data-draggable]:focus,
-      :host ::slotted(*) [data-draggable]:hover,
-      :host ::slotted(*) [data-draggable]:active {
+      :host responsive-grid-row ::slotted(*) [data-draggable]:focus,
+      :host responsive-grid-row ::slotted(*) [data-draggable]:hover,
+      :host responsive-grid-row ::slotted(*) [data-draggable]:active {
         outline: 2px dotted #d1d1d1;
         outline-offset: 2px;
         background-color: rgba(240, 240, 240, .2);
@@ -94,6 +95,7 @@ let GridPlate = Polymer({
         position: relative;
       }
     </style>
+    </custom-style>
     <div class="button-holding-pen">
       <paper-button title="move item up" id="up" on-tap="moveActiveElement">
         <iron-icon icon="icons:arrow-upward"></iron-icon>
@@ -143,7 +145,7 @@ let GridPlate = Polymer({
     focusin: "_focusIn"
   },
 
-  behaviors: [HAXBehaviors.PropertiesBehaviors, window.simpleColorsBehaviors],
+  behaviors: [HAXBehaviors.PropertiesBehaviors],
 
   properties: {
     /**

@@ -90,11 +90,7 @@ Polymer({
     </div>
     </div>
   `,
-  behaviors: [
-    SchemaBehaviors.Schema,
-    window.simpleColorsBehaviors,
-    HAXCMSBehaviors.Theme
-  ],
+  behaviors: [SchemaBehaviors.Schema, HAXCMSBehaviors.Theme],
   properties: {
     // The behavior gives you editMode, activeItem and manifest
     // You can add whatever else you need here

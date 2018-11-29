@@ -42,7 +42,7 @@ for more information.)
 */
 Polymer({
   _template: html`
-    <style is="custom-style" include="editable-table-styles">
+    <style is="custom-style" include="editable-table-styles simple-colors">
       :host([dark]) .caption {
         padding: 4px 4px 0;
       }
@@ -139,7 +139,6 @@ Polymer({
 
   behaviors: [
     ResponsiveUtilityBehaviors,
-    simpleColorsBehaviors,
     editableTableBehaviors.displayBehaviors
   ],
 

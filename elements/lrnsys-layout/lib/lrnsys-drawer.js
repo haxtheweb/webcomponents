@@ -41,8 +41,6 @@ Polymer({
     mouseout: "tapEventOff"
   },
 
-  behaviors: [simpleColorsBehaviors],
-
   properties: {
     /**
      * State for if it is currently open.

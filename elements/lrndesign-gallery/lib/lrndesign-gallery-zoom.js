@@ -2,6 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog-toolbar-button.js";
 import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
@@ -21,7 +22,7 @@ A LRN element that renders the zoom feature for the gallery.
 */
 Polymer({
   _template: html`
-    <style is="custom-style">
+    <style is="custom-style" include="simple-colors">
       :host #lrnsysdialog ::slotted(#dialogtrigger){
         --app-toolbar-primary-color: var(--lrndesign-gallery-focus-color);
         --app-toolbar-secondary-color: rgba(0, 0, 0, 0.7);
@@ -84,8 +85,6 @@ Polymer({
   listeners: {
     navTap: "_onNavTapped"
   },
-
-  behaviors: [simpleColorsBehaviors],
 
   properties: {
     /**

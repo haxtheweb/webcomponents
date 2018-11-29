@@ -21,7 +21,7 @@ A simple blog and associated elements
 */
 let SimpleBlog = Polymer({
   _template: html`
-    <style is="custom-style">
+    <style is="custom-style" include="simple-colors">
       :host {
         display: block;
         font-family: 'Roboto', 'Noto', sans-serif;
@@ -98,11 +98,7 @@ let SimpleBlog = Polymer({
 
   is: "simple-blog",
 
-  behaviors: [
-    SchemaBehaviors.Schema,
-    window.simpleColorsBehaviors,
-    HAXCMSBehaviors.Theme
-  ],
+  behaviors: [SchemaBehaviors.Schema, HAXCMSBehaviors.Theme],
 
   listeners: {
     "active-item-selected": "_itemSelected",

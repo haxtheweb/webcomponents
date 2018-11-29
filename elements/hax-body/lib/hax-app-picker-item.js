@@ -26,7 +26,7 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 Polymer({
   _template: html`
   <custom-style>
-    <style is="custom-style" include="materializecss-styles">
+    <style is="custom-style" include="materializecss-styles simple-colors">
       :host {
         display: inline-block;
         color: var(--hax-app-picker-dialog-text-color, #FFFFFF);
@@ -106,9 +106,6 @@ Polymer({
     focusin: "tapEventOn",
     focusout: "tapEventOff"
   },
-
-  behaviors: [simpleColorsBehaviors],
-
   properties: {
     /**
      * Color

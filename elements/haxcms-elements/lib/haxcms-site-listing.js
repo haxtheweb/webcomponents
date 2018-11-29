@@ -26,7 +26,7 @@ import "@lrnwebcomponents/paper-icon-picker/paper-icon-picker.js";
 import "@lrnwebcomponents/map-menu/map-menu.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
+import "@lrnwebcomponents/hax-body/lib/simple-colors-picker.js";
 import "@lrnwebcomponents/magazine-cover/magazine-cover.js";
 import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
 import "@lrnwebcomponents/sites-listing/sites-listing.js";
@@ -37,7 +37,7 @@ import "@lrnwebcomponents/sites-listing/sites-listing.js";
 Polymer({
   is: "haxcms-site-listing",
   _template: html`
-    <style is="custom-style">
+    <style is="custom-style" include="simple-colors">
       app-toolbar {
         background-color: #3a0063;
         color: #ffffff;
@@ -180,7 +180,6 @@ Polymer({
     </paper-dialog>
     <paper-toast id="toast"></paper-toast>
 `,
-  behaviors: [window.simpleColorsBehaviors],
   properties: {
     /**
      * Title

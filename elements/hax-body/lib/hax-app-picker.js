@@ -29,10 +29,10 @@ import "./hax-app-picker-item.js";
 */
 Polymer({
   _template: html`
-    <style is="custom-style" include="materializecss-styles">
+    <style is="custom-style" include="materializecss-styles simple-colors">
       :host {
         display: block;
-        --hax-app-picker-dialog-background-color: var(--simple-colors-light-green-background1);
+        --hax-app-picker-dialog-background-color: var(--simple-colors-default-theme-light-green-1);
       };
       hax-app-picker-item {
         -webkit-transition: .3s all linear;
@@ -46,7 +46,7 @@ Polymer({
         position: absolute;
         padding: 4px;
         margin: 0;
-        color: var(--simple-colors-light-green-background1, green);
+        color: var(--simple-colors-default-theme-light-green-1, green);
         background-color: transparent;
         width: 40px;
         height: 40px;
@@ -66,7 +66,7 @@ Polymer({
         background-color: rgba(0,0,0,.9);
         border-radius: 16px;
         z-index: 1000000;
-        border: 2px solid var(--simple-colors-light-green-background1);
+        border: 2px solid var(--simple-colors-default-theme-light-green-1);
         @apply --hax-app-picker-dialog;
       }
       #title, .element-button > div {
@@ -74,7 +74,7 @@ Polymer({
       }
       #title {
         padding: 16px;
-        border-bottom: 2px solid var(--simple-colors-light-green-background1);
+        border-bottom: 2px solid var(--simple-colors-default-theme-light-green-1);
         margin: 0;
         width: calc(100% - 32px);
         color: var(--hax-app-picker-dialog-text-color, #FFFFFF);
@@ -150,8 +150,6 @@ Polymer({
     "iron-overlay-canceled": "close",
     "iron-overlay-closed": "close"
   },
-
-  behaviors: [simpleColorsBehaviors],
 
   properties: {
     /**

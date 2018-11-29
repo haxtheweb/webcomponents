@@ -1,6 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "./hax-stax-browser.js";
@@ -18,7 +19,7 @@ import "./hax-stax-browser.js";
 */
 Polymer({
   _template: html`
-    <style>
+    <style include="simple-colors">
       :host {
         display: block;
       }
@@ -35,7 +36,7 @@ Polymer({
         position: absolute;
         padding: 4px;
         margin: 0;
-        color: var(--simple-colors-light-green-background1, green);
+        color: var(--simple-colors-default-theme-light-green-1, green);
         background-color: transparent;
         width: 40px;
         height: 40px;
@@ -51,7 +52,7 @@ Polymer({
         font-weight: bold;
         font-family: sans-serif;
         text-transform: uppercase;
-        color: var(--simple-colors-light-green-background1);
+        color: var(--simple-colors-default-theme-light-green-1);
       }
       app-drawer {
         --app-drawer-content-container: {
@@ -76,8 +77,6 @@ Polymer({
 `,
 
   is: "hax-stax-picker",
-
-  behaviors: [simpleColorsBehaviors],
 
   properties: {
     /**

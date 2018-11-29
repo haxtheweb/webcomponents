@@ -62,11 +62,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 90,
               "column": 4
             },
             "end": {
-              "line": 96,
+              "line": 93,
               "column": 5
             }
           },
@@ -84,11 +84,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 100,
+              "line": 97,
               "column": 4
             },
             "end": {
-              "line": 102,
+              "line": 99,
               "column": 5
             }
           },
@@ -105,11 +105,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 107,
+              "line": 104,
               "column": 4
             },
             "end": {
-              "line": 110,
+              "line": 107,
               "column": 5
             }
           },
@@ -127,11 +127,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 114,
+              "line": 111,
               "column": 4
             },
             "end": {
-              "line": 117,
+              "line": 114,
               "column": 5
             }
           },
@@ -149,11 +149,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 121,
+              "line": 118,
               "column": 4
             },
             "end": {
-              "line": 124,
+              "line": 121,
               "column": 5
             }
           },
@@ -171,11 +171,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 128,
+              "line": 125,
               "column": 4
             },
             "end": {
-              "line": 131,
+              "line": 128,
               "column": 5
             }
           },
@@ -193,11 +193,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 135,
+              "line": 132,
               "column": 4
             },
             "end": {
-              "line": 139,
+              "line": 136,
               "column": 5
             }
           },
@@ -215,11 +215,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 143,
+              "line": 140,
               "column": 4
             },
             "end": {
-              "line": 147,
+              "line": 144,
               "column": 5
             }
           },
@@ -237,11 +237,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 151,
+              "line": 148,
               "column": 4
             },
             "end": {
-              "line": 154,
+              "line": 151,
               "column": 5
             }
           },
@@ -259,11 +259,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 158,
+              "line": 155,
               "column": 4
             },
             "end": {
-              "line": 162,
+              "line": 159,
               "column": 5
             }
           },
@@ -281,11 +281,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 166,
+              "line": 163,
               "column": 4
             },
             "end": {
-              "line": 168,
+              "line": 165,
               "column": 5
             }
           },
@@ -302,11 +302,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 172,
+              "line": 169,
               "column": 4
             },
             "end": {
-              "line": 176,
+              "line": 173,
               "column": 5
             }
           },
@@ -324,11 +324,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 180,
+              "line": 177,
               "column": 4
             },
             "end": {
-              "line": 183,
+              "line": 180,
               "column": 5
             }
           },
@@ -395,11 +395,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 189,
+              "line": 186,
               "column": 2
             },
             "end": {
-              "line": 234,
+              "line": 231,
               "column": 3
             }
           },
@@ -415,11 +415,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 239,
+              "line": 236,
               "column": 2
             },
             "end": {
-              "line": 241,
+              "line": 238,
               "column": 3
             }
           },
@@ -436,11 +436,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 246,
+              "line": 243,
               "column": 2
             },
             "end": {
-              "line": 273,
+              "line": 270,
               "column": 3
             }
           },
@@ -457,11 +457,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 278,
+              "line": 275,
               "column": 2
             },
             "end": {
-              "line": 289,
+              "line": 286,
               "column": 3
             }
           },
@@ -493,11 +493,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 294,
+              "line": 291,
               "column": 2
             },
             "end": {
-              "line": 297,
+              "line": 294,
               "column": 3
             }
           },
@@ -517,11 +517,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 302,
+              "line": 299,
               "column": 2
             },
             "end": {
-              "line": 387,
+              "line": 384,
               "column": 3
             }
           },
@@ -542,7 +542,7 @@
           "column": 28
         },
         "end": {
-          "line": 388,
+          "line": 385,
           "column": 1
         }
       },
@@ -591,11 +591,11 @@
           "description": "An array of completed values",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 90,
               "column": 4
             },
             "end": {
-              "line": 96,
+              "line": 93,
               "column": 5
             }
           },
@@ -607,11 +607,11 @@
           "description": "The thickness of the donut from 0-100",
           "sourceRange": {
             "start": {
-              "line": 100,
+              "line": 97,
               "column": 4
             },
             "end": {
-              "line": 102,
+              "line": 99,
               "column": 5
             }
           },
@@ -623,11 +623,11 @@
           "description": "An array of hex codes to use as colors for each section.\nIf null, colors are determined by accentColor & dark properties",
           "sourceRange": {
             "start": {
-              "line": 107,
+              "line": 104,
               "column": 4
             },
             "end": {
-              "line": 110,
+              "line": 107,
               "column": 5
             }
           },
@@ -639,11 +639,11 @@
           "description": "An array of data for the donut chart",
           "sourceRange": {
             "start": {
-              "line": 114,
+              "line": 111,
               "column": 4
             },
             "end": {
-              "line": 117,
+              "line": 114,
               "column": 5
             }
           },
@@ -655,11 +655,11 @@
           "description": "Accessible long description",
           "sourceRange": {
             "start": {
-              "line": 121,
+              "line": 118,
               "column": 4
             },
             "end": {
-              "line": 124,
+              "line": 121,
               "column": 5
             }
           },
@@ -671,11 +671,11 @@
           "description": "An array of data for the donut chart",
           "sourceRange": {
             "start": {
-              "line": 128,
+              "line": 125,
               "column": 4
             },
             "end": {
-              "line": 131,
+              "line": 128,
               "column": 5
             }
           },
@@ -687,11 +687,11 @@
           "description": "The source of the image in the center of the object.",
           "sourceRange": {
             "start": {
-              "line": 135,
+              "line": 132,
               "column": 4
             },
             "end": {
-              "line": 139,
+              "line": 136,
               "column": 5
             }
           },
@@ -703,11 +703,11 @@
           "description": "The alt text for the image.",
           "sourceRange": {
             "start": {
-              "line": 143,
+              "line": 140,
               "column": 4
             },
             "end": {
-              "line": 147,
+              "line": 144,
               "column": 5
             }
           },
@@ -719,11 +719,11 @@
           "description": "The style for the image based on the size of the donut",
           "sourceRange": {
             "start": {
-              "line": 151,
+              "line": 148,
               "column": 4
             },
             "end": {
-              "line": 154,
+              "line": 151,
               "column": 5
             }
           },
@@ -735,11 +735,11 @@
           "description": "The size of the progress-donut: sx, sm, md, lg, or xl. Default is md",
           "sourceRange": {
             "start": {
-              "line": 158,
+              "line": 155,
               "column": 4
             },
             "end": {
-              "line": 162,
+              "line": 159,
               "column": 5
             }
           },
@@ -751,11 +751,11 @@
           "description": "Title",
           "sourceRange": {
             "start": {
-              "line": 166,
+              "line": 163,
               "column": 4
             },
             "end": {
-              "line": 168,
+              "line": 165,
               "column": 5
             }
           },
@@ -767,11 +767,11 @@
           "description": "a selected accent-color: grey, red, pink, purple, etc.",
           "sourceRange": {
             "start": {
-              "line": 172,
+              "line": 169,
               "column": 4
             },
             "end": {
-              "line": 176,
+              "line": 173,
               "column": 5
             }
           },
@@ -783,11 +783,11 @@
           "description": "An array of incomplete values",
           "sourceRange": {
             "start": {
-              "line": 180,
+              "line": 177,
               "column": 4
             },
             "end": {
-              "line": 183,
+              "line": 180,
               "column": 5
             }
           },

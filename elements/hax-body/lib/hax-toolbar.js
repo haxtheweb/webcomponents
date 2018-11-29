@@ -12,7 +12,7 @@ import "./hax-context-item.js";
 import "./hax-context-item-menu.js";
 Polymer({
   _template: html`
-    <style is="custom-style" include="materializecss-styles-colors">
+    <style is="custom-style" include="materializecss-styles-colors simple-colors">
       :host {
         display: flex;
         font-family: "Roboto", sans-serif;
@@ -24,7 +24,10 @@ Polymer({
         height: 32px;
         pointer-events: all;
       }
-      :host ::slotted(*) {
+      .wrapper {
+        display: flex;
+      }
+      :host .wrapper ::slotted(*) {
         font-family: "Roboto", sans-serif;
         pointer-events: all;
       }
@@ -52,14 +55,15 @@ Polymer({
         height: 32px;
         min-width: 100px;
         --paper-slider-font-color: #000000;
-        --paper-slider-active-color: var(--simple-colors-light-green-background1);
-        --paper-slider-knob-color: var(--simple-colors-light-green-background1);
-        --paper-slider-pin-color: var(--simple-colors-light-green-background1);
+        --paper-slider-active-color: var(--simple-colors-default-theme-light-green-1);
+        --paper-slider-knob-color: var(--simple-colors-default-theme-light-green-1);
+        --paper-slider-pin-color: var(--simple-colors-default-theme-light-green-1);
       }
       .convert-button {
         border-top: 1px solid #d3d3d3;
       }
     </style>
+    <div class="wrapper">
     <hax-context-item hidden$="[[inline]]" mini="" light="" icon="close" label="Close" event-name="close-menu" class="close-cap" direction="left"></hax-context-item>
     <hax-context-item-menu hidden$="[[!haxProperties.canPosition]]" selected-value="{{justifyValue}}" id="justify" icon="[[justifyIcon]]" label="Alignment">
       <hax-context-item menu icon="editor:format-align-left" event-name="hax-align-left">Left</hax-context-item>
@@ -78,6 +82,7 @@ Polymer({
       <hax-context-item menu icon="icons:content-copy" icon-class="green-text" event-name="grid-plate-duplicate">Duplicate</hax-context-item>
       <hax-context-item hidden$="[[hideTransform]]" menu icon="image:transform" class="convert-button" icon-class="orange-text" event-name="grid-plate-convert">Transform to..</hax-context-item>
     </hax-context-item-menu>
+    </div>
 `,
 
   is: "hax-toolbar",
@@ -85,8 +90,6 @@ Polymer({
   listeners: {
     "hax-context-item-selected": "_haxContextOperation"
   },
-
-  behaviors: [simpleColorsBehaviors],
 
   properties: {
     /**

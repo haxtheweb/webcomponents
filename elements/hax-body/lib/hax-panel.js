@@ -2,7 +2,8 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
+import "@lrnwebcomponents/hax-body/lib/simple-colors-picker.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-panel-item.js";
 import "./hax-preferences-dialog.js";
 import "./hax-stax-picker.js";
@@ -22,7 +23,7 @@ as the events being bubbled up include HTML nodes to inject into something
 */
 Polymer({
   _template: html`
-    <style>
+    <style include="simple-colors">
       :host {
         display: block;
         position: absolute;
@@ -129,8 +130,6 @@ Polymer({
   },
 
   observers: ["_globalPreferencesChanged(globalPreferences.*)"],
-
-  behaviors: [simpleColorsBehaviors],
 
   properties: {
     /**

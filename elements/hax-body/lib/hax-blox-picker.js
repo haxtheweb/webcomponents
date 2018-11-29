@@ -19,7 +19,7 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 */
 Polymer({
   _template: html`
-    <style>
+    <style include="simple-colors">
       :host {
         display: block;
       }
@@ -36,7 +36,7 @@ Polymer({
         position: absolute;
         padding: 4px;
         margin: 0;
-        color: var(--simple-colors-light-green-background1, green);
+        color: var(--simple-colors-default-theme-light-green-1, green);
         background-color: transparent;
         width: 40px;
         height: 40px;
@@ -52,7 +52,7 @@ Polymer({
         font-weight: bold;
         font-family: sans-serif;
         text-transform: uppercase;
-        color: var(--simple-colors-light-green-background1);
+        color: var(--simple-colors-default-theme-light-green-1);
       }
       app-drawer {
         --app-drawer-content-container: {
@@ -77,8 +77,6 @@ Polymer({
 `,
 
   is: "hax-blox-picker",
-
-  behaviors: [simpleColorsBehaviors],
 
   properties: {
     /**

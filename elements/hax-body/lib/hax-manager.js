@@ -31,12 +31,12 @@ A LRN element for brokering the UI for api endpoints both in querying and upload
 Polymer({
   _template: html`
   <custom-style>
-    <style is="custom-style" include="materializecss-styles">
+    <style is="custom-style" include="materializecss-styles simple-colors">
       :host {
         display: block;
         --hax-manager-steps-color: #FFFFFF;
         --hax-manager-ink-color: #FFFFFF;
-        --hax-accent: var(--simple-colors-light-green-background1);
+        --hax-accent: var(--simple-colors-default-theme-light-green-1);
         color: #FFFFFF;
       }
       #dialog {
@@ -56,7 +56,7 @@ Polymer({
         position: absolute;
         padding: 4px;
         margin: 0;
-        color: var(--simple-colors-light-green-background1, green);
+        color: var(--simple-colors-default-theme-light-green-1, green);
         background-color: transparent;
         width: 40px;
         height: 40px;
@@ -86,7 +86,7 @@ Polymer({
         font-weight: bold;
         font-family: sans-serif;
         text-transform: uppercase;
-        color: var(--simple-colors-light-green-background1);
+        color: var(--simple-colors-default-theme-light-green-1);
       }
       #activepage {
       }
@@ -165,7 +165,7 @@ Polymer({
         width: 100%;
         margin: 0;
         padding: 16px;
-        background-color: var(--simple-colors-light-green-background1);
+        background-color: var(--simple-colors-default-theme-light-green-1);
         color: #000000;
       }
       paper-input {
@@ -175,7 +175,7 @@ Polymer({
         --primary-text-color: #FFFFFF;
         --paper-input-container-input-color: #FFFFFF;
         --paper-input-container-color: #FFFFFF;
-        --paper-input-container-focus-color: var(--simple-colors-light-green-background1);
+        --paper-input-container-focus-color: var(--simple-colors-default-theme-light-green-1);
       }
       @media screen and (max-width: 550px) {
         .hide-on-mobile {
@@ -230,8 +230,6 @@ Polymer({
 `,
 
   is: "hax-manager",
-
-  behaviors: [simpleColorsBehaviors],
 
   properties: {
     /**

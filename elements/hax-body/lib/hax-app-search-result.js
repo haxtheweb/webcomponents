@@ -14,7 +14,7 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 */
 Polymer({
   _template: html`
-    <style>
+    <style include="simple-colors">
       :host {
         display: inline-flex;
         width: 50%;
@@ -38,7 +38,7 @@ Polymer({
       paper-button:hover,
       paper-button:focus,
       paper-button:active {
-        border: 2px solid var(--simple-colors-light-green-background1);
+        border: 2px solid var(--simple-colors-default-theme-light-green-1);
         background-color:rgba(0, 0, 0, .7);
       }
       .detail-wrapper {
@@ -102,8 +102,6 @@ Polymer({
 `,
 
   is: "hax-app-search-result",
-
-  behaviors: [simpleColorsBehaviors],
 
   properties: {
     /**

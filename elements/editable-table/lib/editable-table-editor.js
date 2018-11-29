@@ -53,7 +53,7 @@ An editor interface for editable-table (editable-table.html).
 */
 Polymer({
   _template: html`
-    <style is="custom-style" include="editable-table-styles">
+    <style is="custom-style" include="editable-table-styles simple-colors">
       :host {
         --a11y-collapse-border: 1px solid #ddd;
         --a11y-collapse-horizontal-padding: 0;
@@ -308,7 +308,6 @@ Polymer({
 
   behaviors: [
     ResponsiveUtilityBehaviors,
-    simpleColorsBehaviors,
     editableTableBehaviors.displayBehaviors,
     editableTableBehaviors.editBehaviors
   ],

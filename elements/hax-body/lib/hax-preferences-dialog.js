@@ -17,7 +17,7 @@ Export dialog with all export options and settings provided.
 */
 Polymer({
   _template: html`
-    <style is="custom-style">
+    <style is="custom-style" include="simple-colors">
       :host {
         display: block;
       }
@@ -32,7 +32,7 @@ Polymer({
         position: absolute;
         padding: 4px;
         margin: 0;
-        color: var(--simple-colors-light-green-background1, green);
+        color: var(--simple-colors-default-theme-light-green-1, green);
         background-color: transparent;
         width: 40px;
         height: 40px;
@@ -95,8 +95,6 @@ Polymer({
   is: "hax-preferences-dialog",
 
   observers: ["_preferencesChanged(preferences.*)"],
-
-  behaviors: [simpleColorsBehaviors],
 
   properties: {
     /**
