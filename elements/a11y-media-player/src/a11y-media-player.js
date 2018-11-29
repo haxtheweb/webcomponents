@@ -63,23 +63,23 @@ export { A11yMediaPlayer };
  *   </a11y-media-player>
  *
  * Intermediate customization of player:
- * --a11y-media-text-color: text color, default is --simple-colors-foreground2
- * --a11y-media-bg-color: background color, default is --simple-colors-background2
- * --a11y-media-hover-color: text color on hover, default is --simple-colors-foreground1
- * --a11y-media-hover-bg-color: background color, default is --simple-colors-background2
- * --a11y-media-accent-color: an accent color, default is --simple-colors-accent-foreground4
- * --a11y-media-faded-accent-color: a subtler version of accent color, default is --simple-colors-accent-foreground5
+ * --a11y-media-text-color: text color, default is --simple-colors-default-theme-grey-11
+ * --a11y-media-bg-color: background color, default is --simple-colors-default-theme-grey-2
+ * --a11y-media-hover-color: text color on hover, default is --simple-colors-default-theme-grey-12
+ * --a11y-media-hover-bg-color: background color, default is --simple-colors-default-theme-grey-2
+ * --a11y-media-accent-color: an accent color, default is --simple-colors-default-theme-accent-9
+ * --a11y-media-faded-accent-color: a subtler version of accent color, default is --simple-colors-default-theme-accent-8
  * --a11y-media-outline-color: border-color of group, default is --a11y-media-bg-color
  *
  * Intermediate customization of transcript:
- * --a11y-media-transcript-color: transcript color, default is --simple-colors-foreground1
- * --a11y-media-transcript-bg-color: transcript background color, default is --simple-colors-background1
- * --a11y-media-transcript-active-cue-color: transcript active cue color, default is --simple-colors-foreground1
- * --a11y-media-transcript-active-cue-bg-color: transcript active cue background color, default is --simple-colors-background1
- * --a11y-media-transcript-focused-cue-color: transcript focused cue color, default is --simple-colors-foreground1
- * --a11y-media-transcript-focused-cue-br-color: transcript focused cue background color, default is --simple-colors-accent-background1
- * --a11y-media-transcript-match-color: transcript match color, default is --simple-colors-accent-background1
- * --a11y-media-transcript-match-bg-color: transcript match background color, default is --simple-colors-foreground1
+ * --a11y-media-transcript-color: transcript color, default is --simple-colors-default-theme-grey-12
+ * --a11y-media-transcript-bg-color: transcript background color, default is --simple-colors-default-theme-grey-1
+ * --a11y-media-transcript-active-cue-color: transcript active cue color, default is --simple-colors-default-theme-grey-12
+ * --a11y-media-transcript-active-cue-bg-color: transcript active cue background color, default is --simple-colors-default-theme-grey-1
+ * --a11y-media-transcript-focused-cue-color: transcript focused cue color, default is --simple-colors-default-theme-grey-12
+ * --a11y-media-transcript-focused-cue-br-color: transcript focused cue background color, default is --simple-colors-default-theme-accent-1
+ * --a11y-media-transcript-match-color: transcript match color, default is --simple-colors-default-theme-accent-1
+ * --a11y-media-transcript-match-bg-color: transcript match background color, default is --simple-colors-default-theme-grey-12
  *
  * Advanced styles for settings menu:
  * --a11y-media-settings-menu-color: settings menu text color, default is --a11y-media-text-color
@@ -121,24 +121,24 @@ export { A11yMediaPlayer };
 let A11yMediaPlayer = Polymer({
   _template: html`
   <custom-style>
-    <style is="custom-style">
+    <style is="custom-style" include="simple-colors">
       :host {  
         width: 100%;
         display: block;
-        color: var(--simple-colors-foreground1);
-        background-color: var(--simple-colors-background2);
-        outline: 1px solid var(--simple-colors-background3);
+        color: var(--simple-colors-default-theme-grey-12);
+        background-color: var(--simple-colors-default-theme-grey-2);
+        outline: 1px solid var(--simple-colors-default-theme-grey-3);
       }
       :host([dark]) {  
-        outline: 1px solid var(--simple-colors-background1);
+        outline: 1px solid var(--simple-colors-default-theme-grey-1);
       }
       :host #outerplayer, :host #outerplayer * {
-        --a11y-media-color: var(--simple-colors-foreground2);
-        --a11y-media-bg-color: var(--simple-colors-background2);
-        --a11y-media-hover-color: var(--simple-colors-foreground1);
-        --a11y-media-hover-bg-color: var(--simple-colors-background2);
-        --a11y-media-accent-color: var(--simple-colors-accent-foreground4);
-        --a11y-media-faded-accent-color: var(--simple-colors-accent-foreground5);
+        --a11y-media-color: var(--simple-colors-default-theme-grey-11);
+        --a11y-media-bg-color: var(--simple-colors-default-theme-grey-2);
+        --a11y-media-hover-color: var(--simple-colors-default-theme-grey-12);
+        --a11y-media-hover-bg-color: var(--simple-colors-default-theme-grey-2);
+        --a11y-media-accent-color: var(--simple-colors-default-theme-accent-9);
+        --a11y-media-faded-accent-color: var(--simple-colors-default-theme-accent-8);
 
         /* settings */
         --a11y-media-settings-menu-color: var(--a11y-media-color);
@@ -173,25 +173,25 @@ let A11yMediaPlayer = Polymer({
         --paper-slider-knob-end-border-color: var(--a11y-media-bg-color);
       }
       :host #outertranscript, :host #outertranscript *, :host #transcript {
-        --a11y-media-transcript-color: var(--simple-colors-foreground1);
-        --a11y-media-transcript-bg-color: var(--simple-colors-background1);
-        --a11y-media-transcript-accent-color: var(--simple-colors-accent-foreground5);
-        --a11y-media-transcript-faded-accent-color: var(--simple-colors-accent-foreground3);
-        --a11y-media-transcript-active-cue-color: var(--simple-colors-foreground1);
-        --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-accent-background1);
-        --a11y-media-transcript-focused-cue-color: var(--simple-colors-foreground1);
-        --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-background2);
-        --a11y-media-transcript-match-color: var(--simple-colors-background1);
-        --a11y-media-transcript-match-bg-color: var(--simple-colors-accent-foreground3);
-        --a11y-media-transcript-match-border-color: var(--simple-colors-accent-foreground1);
-        --a11y-media-hover-color: var(--simple-colors-foreground1);
-        --a11y-media-hover-bg-color: var(--simple-colors-background2);
+        --a11y-media-transcript-color: var(--simple-colors-default-theme-grey-12);
+        --a11y-media-transcript-bg-color: var(--simple-colors-default-theme-grey-1);
+        --a11y-media-transcript-accent-color: var(--simple-colors-default-theme-accent-8);
+        --a11y-media-transcript-faded-accent-color: var(--simple-colors-default-theme-accent-10);
+        --a11y-media-transcript-active-cue-color: var(--simple-colors-default-theme-grey-12);
+        --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-default-theme-accent-1);
+        --a11y-media-transcript-focused-cue-color: var(--simple-colors-default-theme-grey-12);
+        --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-default-theme-grey-2);
+        --a11y-media-transcript-match-color: var(--simple-colors-default-theme-grey-1);
+        --a11y-media-transcript-match-bg-color: var(--simple-colors-default-theme-accent-10);
+        --a11y-media-transcript-match-border-color: var(--simple-colors-default-theme-accent-12);
+        --a11y-media-hover-color: var(--simple-colors-default-theme-grey-12);
+        --a11y-media-hover-bg-color: var(--simple-colors-default-theme-grey-2);
       }
       :host #player {
         display: block;
         max-width: 100%;
         transition: position 0.5s ease, max-width 1s ease;
-        background-color: var(--simple-colors-background2);
+        background-color: var(--simple-colors-default-theme-grey-2);
       }
       :host #innerplayer {
         z-index: 1;
@@ -294,13 +294,13 @@ let A11yMediaPlayer = Polymer({
           display: inline-flex;
           align-items: stretch;
           outline: 1px solid;
-          color: var(--simple-colors-foreground1);
-          background-color: var(--simple-colors-background2);
-          outline-color: var(--simple-colors-background3);
+          color: var(--simple-colors-default-theme-grey-12);
+          background-color: var(--simple-colors-default-theme-grey-2);
+          outline-color: var(--simple-colors-default-theme-grey-3);
           padding: 0;
         }
         :host([dark][flex-layout]:not([responsive-size*="s"])) {
-          outline-color: var(--simple-colors-background1);
+          outline-color: var(--simple-colors-default-theme-grey-1);
         }
         :host > div {
           transition: all 0.5s;
@@ -382,8 +382,8 @@ let A11yMediaPlayer = Polymer({
           display: none;
         }
         :host .media-caption:not(:empty) {
-          color: var(--simple-colors-background1);
-          background-color: var(--simple-colors-accent-foreground1);
+          color: var(--simple-colors-default-theme-grey-1);
+          background-color: var(--simple-colors-default-theme-accent-12);
         }
       }
 

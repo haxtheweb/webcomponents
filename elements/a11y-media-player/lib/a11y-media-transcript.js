@@ -30,7 +30,7 @@ A transcript element to pair with a11y-media-player
 */
 Polymer({
   _template: html`
-    <style is="custom-style">
+    <style is="custom-style" include="simple-colors">
       :host {
         display: block;
         padding: 15px;
