@@ -9,7 +9,6 @@ import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
-import "./lib/lrn-vocab-dialog.js";
 /**
 `lrn-vocab`
 Vocabulary term with visual treatment and semantic meaning.
