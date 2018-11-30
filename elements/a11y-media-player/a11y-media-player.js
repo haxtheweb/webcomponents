@@ -519,13 +519,12 @@ let A11yMediaPlayer = Polymer({
       root.disableInteractive = true;
       this._youTubeRequest();
     } else {
-      root.$.loader.$.video.innerHTML = "HTML5 video not supported";
       root
         .$$("slot")
         .assignedNodes()
         .forEach(function(node) {
           if (node.nodeName === "TRACK" || node.nodeName === "SOURCE") {
-            if (audioOnly) {
+            if (root.audioOnly) {
               root.$.loader.$.audio.appendChild(node);
             } else {
               root.$.loader.$.video.appendChild(node);

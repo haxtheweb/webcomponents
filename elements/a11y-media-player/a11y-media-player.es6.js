@@ -1,4 +1,4 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-slider/paper-slider.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icons/av-icons.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./lib/screenfull-lib.js";import"./lib/a11y-media-behaviors.js";import"./lib/a11y-media-video-loader.js";import"./lib/a11y-media-play-button.js";import"./lib/a11y-media-controls.js";import"./lib/a11y-media-transcript.js";import"./lib/a11y-media-transcript-controls.js";import"./lib/a11y-media-utility.js";import"./lib/a11y-media-youtube-utility.js";let A11yMediaPlayer=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/paper-slider/paper-slider.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icons/av-icons.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./lib/screenfull-lib.js";import"./lib/a11y-media-behaviors.js";import"./lib/a11y-media-loader.js";import"./lib/a11y-media-play-button.js";import"./lib/a11y-media-controls.js";import"./lib/a11y-media-transcript.js";import"./lib/a11y-media-transcript-controls.js";import"./lib/a11y-media-utility.js";import"./lib/a11y-media-youtube-utility.js";let A11yMediaPlayer=Polymer({_template:html`
   <custom-style>
     <style is="custom-style">
       :host {  
@@ -308,9 +308,9 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
           <div id="sources" hidden\$="[[noHeight]]">
             <a11y-media-play-button id="playbutton" audio-only\$="[[audioOnly]]" disabled="true" hidden\$="[[noPlayButton]]" disabled\$="[[noPlayButton]]" pause-label\$="[[pauseLabel]]" playing\$="[[__playing]]" play-label\$="[[playLabel]]">
             </a11y-media-play-button>
-            <a11y-media-video-loader id="loader" autoplay\$="[[autoplay]]" cc\$="[[cc]]" crossorigin\$="[[crossorigin]]" hidden\$="[[isYoutube]]" lang\$="[[lang]]" loop\$="[[loop]]" muted\$="[[muted]]" manifest\$="[[manifest]]" playback-rate\$="[[playbackRate]]" style\$="[[_getThumbnailCSS(thumbnailSrc)]]" preload\$="[[preload]]" volume\$="[[volume]]">
+            <a11y-media-loader id="loader" autoplay\$="[[autoplay]]" cc\$="[[cc]]" crossorigin\$="[[crossorigin]]" hidden\$="[[isYoutube]]" lang\$="[[lang]]" loop\$="[[loop]]" muted\$="[[muted]]" manifest\$="[[manifest]]" playback-rate\$="[[playbackRate]]" style\$="[[_getThumbnailCSS(thumbnailSrc)]]" preload\$="[[preload]]" volume\$="[[volume]]">
               <slot></slot>
-            </a11y-media-video-loader>
+            </a11y-media-loader>
             <div id="youtube" hidden\$="[[!isYoutube]]" video-id\$="[[videoId]]"></div>
             <div id="customcc" hidden\$="[[!showCustomCaptions]]"><span id="customcctxt"></span></div>
           </div>
