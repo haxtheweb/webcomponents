@@ -7,7 +7,7 @@ cd ../elements/
 # walk each directory and update it's demo automatically
 for project in */ ; do
   cd ${project}
-  p=${project::-1}
+  p="$(basename -- $project)"
   rm -rf node_modules
   ln -s ../../node_modules
   DIRECTORY="../../node_modules/@lrnwebcomponents/${p}"
