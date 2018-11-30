@@ -22,7 +22,7 @@ $ yarn start
 
 - `$ yarn start`
     - Launch a demo server. This should be continuously running as you develop.
-- `$ yarn run new`
+- `$ wcf element`
     -  Create a new component.
 - `$ yarn run rebuild-wcfcache`
     - Rebuild caches as to what web component libraries can be used
@@ -37,6 +37,8 @@ $ yarn start
 - `$ lerna publish`
     - Publish ALL lrnwebcomponents' elements to npmjs.com
 
+- `$ lerna run build --no-bail`
+    - Run `build` command in all projects in the repo, don't bail if there's an issue
 
 ## Web Component development
 
