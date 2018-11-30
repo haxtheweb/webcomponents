@@ -14,7 +14,7 @@ import "@polymer/iron-collapse/iron-collapse.js";
 */
 Polymer({
   _template: html`
-    <style is="custom-style">
+    <style is="custom-style" include="simple-colors">
       :host {
         display: block;
         background-color: var(--simple-colors-background1);
@@ -77,7 +77,6 @@ Polymer({
 `,
 
   is: "lrnsys-collapselist",
-  behaviors: [simpleColorsBehaviors],
 
   properties: {
     /**

@@ -14,7 +14,7 @@ A card with optional accent styling
 */
 let AccentCard = Polymer({
   _template: html`
-    <style is="custom-style">
+    <style is="custom-style" include="simple-colors">
        :host {
         display: block;
         margin: var(--accent-card-margin, 20px) 0;
@@ -136,11 +136,7 @@ let AccentCard = Polymer({
 `,
 
   is: "accent-card",
-  behaviors: [
-    HAXBehaviors.PropertiesBehaviors,
-    simpleColorsBehaviors,
-    SchemaBehaviors.Schema
-  ],
+  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
   listeners: { tap: "_handleTap" },
 
   properties: {

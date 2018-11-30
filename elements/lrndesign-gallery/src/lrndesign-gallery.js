@@ -33,7 +33,7 @@ A LRN element that renders a collection of gallery items into a carousel or a si
 */
 let LrndesignGallery = Polymer({
   _template: html`
-    <style is="custom-style">
+    <style is="custom-style" include="simple-colors">
       :host {
         display: block;
       }
@@ -84,7 +84,6 @@ let LrndesignGallery = Polymer({
 `,
 
   is: "lrndesign-gallery",
-  behaviors: [simpleColorsBehaviors],
 
   properties: {
     /**

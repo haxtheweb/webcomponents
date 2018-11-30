@@ -4,6 +4,7 @@ import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nod
 import { flush } from "@polymer/polymer/lib/utils/flush.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/paper-item/paper-item.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/grid-plate/grid-plate.js";
 import "./lib/hax-text-context.js";
@@ -15,7 +16,7 @@ $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<dom-module id="hax-body">
   <template strip-whitespace="">
-    <style>
+    <style include="simple-colors">
       :host {
         display: block;
         min-height: 32px;
@@ -197,7 +198,6 @@ let HaxBody = Polymer({
     "hax-input-mixer-update": "_haxInputMixerOperation",
     "place-holder-replace": "replacePlaceholder"
   },
-  behaviors: [simpleColorsBehaviors],
   properties: {
     /**
      * State of if we are editing or not.

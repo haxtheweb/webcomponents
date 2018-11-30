@@ -399,6 +399,7 @@ class SimpleSearch extends PolymerElement {
         if (temp[i] === "") temp.splice(i, 1);
       }
     }
+    this.set("searchTerms", []);
     this.set("searchTerms", temp.slice(0));
   }
 

@@ -17,7 +17,7 @@ Export dialog with all export options and settings provided.
 */
 Polymer({
   _template: html`
-    <style>
+    <style include="simple-colors">
       :host {
         display: block;
       }
@@ -35,7 +35,7 @@ Polymer({
         font-weight: bold;
         font-family: sans-serif;
         text-transform: uppercase;
-        color: var(--simple-colors-light-green-background1);
+        color: var(--simple-colors-default-theme-light-green-1);
       }
       .pref-container {
         text-align: left;
@@ -49,9 +49,9 @@ Polymer({
       }
       .buttons paper-button:focus,
       .buttons paper-button:hover {
-        background-color: var(--simple-colors-light-green-background1);
-        border-color: var(--simple-colors-light-green-background1);
-        outline: 2px solid var(--simple-colors-light-green-background1);
+        background-color: var(--simple-colors-default-theme-light-green-1);
+        border-color: var(--simple-colors-default-theme-light-green-1);
+        outline: 2px solid var(--simple-colors-default-theme-light-green-1);
       }
       .buttons paper-button {
         color: #222222;
@@ -73,7 +73,7 @@ Polymer({
         position: absolute;
         padding: 4px;
         margin: 0;
-        color: var(--simple-colors-light-green-background1, green);
+        color: var(--simple-colors-default-theme-light-green-1, green);
         background-color: transparent;
         width: 40px;
         height: 40px;
@@ -112,7 +112,7 @@ Polymer({
 
   is: "hax-export-dialog",
 
-  behaviors: [mtz.FileDownloadBehaviors, simpleColorsBehaviors],
+  behaviors: [mtz.FileDownloadBehaviors],
 
   properties: {
     /**

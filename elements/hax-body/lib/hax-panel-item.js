@@ -29,7 +29,7 @@ Polymer({
         display: inline-flex;
         margin: 0;
         padding: 0;
-        --hax-panel-hover: var(--simple-colors-light-green-background1);
+        --hax-panel-hover: var(--simple-colors-default-theme-light-green-1);
       }
       paper-button {
         color: rgba(0,0,0,0.66);

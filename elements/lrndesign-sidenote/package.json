@@ -30,7 +30,7 @@
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/lrndesign-sidenote/test/",
     "start": "yarn run dev",
     "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
-    "dev": "open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "../../node_modules/.bin/gulp dev",
     "serve": "polymer serve --npm --module-resolution=node --open",
     "lighthouse": "../../node_modules/.bin/gulp lighthouse"

@@ -4,9 +4,9 @@ import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/paper-input/paper-textarea.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-checkbox/paper-checkbox.js";
-import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
 import "@polymer/paper-slider/paper-slider.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
+import "./simple-colors-picker.js";
 import "./hax-context-item-menu.js";
 import "./hax-context-item.js";
 /**
@@ -23,57 +23,57 @@ required for populating input.
 Polymer({
   _template: html`
     <custom-style>
-    <style is="custom-style">
-      :host {
-        display: block;
-        color: #FFFFFF;
-      }
-      app-toolbar {
-        background-color: #3e3e3e;
-        color: white;
-        padding: 0 0 0 16px;
-      }
-      hax-context-item {
-        margin: 0;
-        width: 40px;
-        height: 40px;
-      }
-      #elementoptions {
-        height: inherit;
-      }
-      #input {
-        color: #FFFFFF;
-      }
-      paper-checkbox {
-        --paper-checkbox-label-color: #FFFFFF;
-      }
-      .input-mixer-label {
-        padding-left: 4px;
-      }
-      paper-textarea,
-      paper-input {
-        --paper-input-container-color: #BBBBFF;
-        --paper-input-container-focus-color: #FFFFFF;
-        --paper-input-container-invalid-color: #FFAAAA;
-        --paper-input-container-input-color: #FFFFFF;
-        --paper-input-container-shared-input-style: {
-          color: #FFFFFF;
-          background: transparent;
-          margin: 0;
-          padding: 0;
-          min-width: 320px;
-          line-height: 16px;
-          font-size: 16px;
-          margin-top: -8px;
-          margin-bottom: 8px;
-          outline: none;
-          border: none;
+      <style is="custom-style">
+        :host {
+          display: block;
+          color: #ffffff;
         }
-      }
-      .input-method {
-        color: #FFFFFF;
-      }
-    </style>
+        app-toolbar {
+          background-color: #3e3e3e;
+          color: white;
+          padding: 0 0 0 16px;
+        }
+        hax-context-item {
+          margin: 0;
+          width: 40px;
+          height: 40px;
+        }
+        #elementoptions {
+          height: inherit;
+        }
+        #input {
+          color: #ffffff;
+        }
+        paper-checkbox {
+          --paper-checkbox-label-color: #ffffff;
+        }
+        .input-mixer-label {
+          padding-left: 4px;
+        }
+        paper-textarea,
+        paper-input {
+          --paper-input-container-color: #bbbbff;
+          --paper-input-container-focus-color: #ffffff;
+          --paper-input-container-invalid-color: #ffaaaa;
+          --paper-input-container-input-color: #ffffff;
+          --paper-input-container-shared-input-style: {
+            color: #ffffff;
+            background: transparent;
+            margin: 0;
+            padding: 0;
+            min-width: 320px;
+            line-height: 16px;
+            font-size: 16px;
+            margin-top: -8px;
+            margin-bottom: 8px;
+            outline: none;
+            border: none;
+          }
+        }
+        .input-method {
+          color: #ffffff;
+        }
+      </style>
     </custom-style>
     <app-toolbar>
       <template is="dom-if" if="[[__inputselect]]">
@@ -83,29 +83,56 @@ Polymer({
         </hax-context-item-menu>
       </template>
       <span class="input-method">
-      <template is="dom-if" if="[[__inputtextarea]]">
-        <paper-textarea id="input" label="[[label]]" value="{{value}}" auto-validate="" pattern="[[validation]]" required="[[required]]"></paper-textarea>
-      </template>
-      <template is="dom-if" if="[[__inputtextfield]]">
-        <paper-input id="input" type="[[validationType]]" label="[[label]]" value="{{value}}" auto-validate="" pattern="[[validation]]" required="[[required]]"></paper-input>
-      </template>
-      <template is="dom-if" if="[[__inputboolean]]">
-        <paper-checkbox id="input" checked="{{value}}">[[label]]</paper-checkbox>
-      </template>
-      <template is="dom-if" if="[[__inputflipboolean]]">
-        <paper-checkbox id="input" checked="{{value}}">[[label]]</paper-checkbox>
-      </template>
-      <template is="dom-if" if="[[__inputcolorpicker]]">
-        <span>[[label]]</span>
-        <simple-colors-picker id="input" value="{{value}}"></simple-colors-picker>
-      </template>
+        <template is="dom-if" if="[[__inputtextarea]]">
+          <paper-textarea
+            id="input"
+            label="[[label]]"
+            value="{{value}}"
+            auto-validate=""
+            pattern="[[validation]]"
+            required="[[required]]"
+          ></paper-textarea>
+        </template>
+        <template is="dom-if" if="[[__inputtextfield]]">
+          <paper-input
+            id="input"
+            type="[[validationType]]"
+            label="[[label]]"
+            value="{{value}}"
+            auto-validate=""
+            pattern="[[validation]]"
+            required="[[required]]"
+          ></paper-input>
+        </template>
+        <template is="dom-if" if="[[__inputboolean]]">
+          <paper-checkbox id="input" checked="{{value}}"
+            >[[label]]</paper-checkbox
+          >
+        </template>
+        <template is="dom-if" if="[[__inputflipboolean]]">
+          <paper-checkbox id="input" checked="{{value}}"
+            >[[label]]</paper-checkbox
+          >
+        </template>
+        <template is="dom-if" if="[[__inputcolorpicker]]">
+          <span>[[label]]</span>
+          <simple-colors-picker
+            id="input"
+            value="{{value}}"
+          ></simple-colors-picker>
+        </template>
       </span>
       <paper-tooltip for="input" position="top" offset="14">
         [[description]]
       </paper-tooltip>
-      <hax-context-item id="updatebutton" icon="subdirectory-arrow-right" label\$="Update [[label]]" event-name="hax-update-tap"></hax-context-item>
+      <hax-context-item
+        id="updatebutton"
+        icon="subdirectory-arrow-right"
+        label\$="Update [[label]]"
+        event-name="hax-update-tap"
+      ></hax-context-item>
     </app-toolbar>
-`,
+  `,
 
   is: "hax-input-mixer",
 

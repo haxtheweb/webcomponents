@@ -46,13 +46,13 @@ Polymer({
         --primary-color: #FFFFFF;
         --paper-input-container-input-color: #FFFFFF;
         --paper-input-container-color: #FFFFFF !important;
-        --paper-input-container-focus-color: var(--simple-colors-light-green-background1, green) !important;
+        --paper-input-container-focus-color: var(--simple-colors-default-theme-light-green-1, green) !important;
         --paper-listbox-color: #000000;
         color: white;
       }
       .search-label {
         font-size: 24px;
-        color: var(--simple-colors-light-green-background1, green);
+        color: var(--simple-colors-default-theme-light-green-1, green);
         font-weight: bold;
         margin: 0;
         padding: 0;

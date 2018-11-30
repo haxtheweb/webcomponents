@@ -2,7 +2,7 @@ var $_documentContainer = document.createElement("div");
 $_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<style is="custom-style">
-  :root {
+  :host > * {
     --iron-data-table: {
       font: 400 100%/1.5 Roboto, sans-serif;
       font-size: 13px;

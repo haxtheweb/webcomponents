@@ -111,7 +111,7 @@ Polymer({
         border-bottom: 1px #e5e5e5 solid;
         display: block;
         justify-content: space-evenly;
-        --paper-tabs-selection-bar-color: var(--simple-colors-light-green-background1);
+        --paper-tabs-selection-bar-color: var(--simple-colors-default-theme-light-green-1);
         --paper-tabs: {
           background: transparent;
         }
@@ -120,7 +120,7 @@ Polymer({
       #modetabs paper-tab {
         display: inline-flex;
         height:100%;
-        --paper-tab-ink: var(--simple-colors-light-green-background1);
+        --paper-tab-ink: var(--simple-colors-default-theme-light-green-1);
         --paper-tab: {
           font-size: 16px;
         }
@@ -176,7 +176,7 @@ Polymer({
         --primary-color: #FFFFFF;
         --paper-input-container-input-color: #FFFFFF;
         --paper-input-container-color: #FFFFFF !important;
-        --paper-input-container-focus-color: var(--simple-colors-light-green-background1) !important;
+        --paper-input-container-focus-color: var(--simple-colors-default-theme-light-green-1) !important;
         --paper-listbox-color: #000000;
       }
       .preview-buttons paper-button {
@@ -184,7 +184,7 @@ Polymer({
         width: 40%;
         color: #000000;
         display: inline-block;
-        background-color: var(--simple-colors-light-green-background1);
+        background-color: var(--simple-colors-default-theme-light-green-1);
       }
     </style>
   </custom-style>
@@ -212,8 +212,6 @@ Polymer({
 `,
 
   is: "hax-preview",
-
-  behaviors: [simpleColorsBehaviors],
 
   observers: ["_valueChanged(value.*, formKey)"],
 

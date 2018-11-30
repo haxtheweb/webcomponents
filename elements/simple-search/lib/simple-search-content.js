@@ -77,18 +77,18 @@ class SimpleSearchContent extends PolymerElement {
       content = [{ matched: false, text: root.content }];
     if (content[0].text === null) content[0].text = root.innerHTML;
     // set rendered content to default unsearched content
-    root.setContent(content);
+    this.setContent(content);
     // listen for changes to search
     searchObject.addEventListener("simple-search", function() {
       // set rendered content to default unsearched content to clear old results
-      root.setContent(content);
+      this.setContent(content);
       // set rendered content to default search results
-      root.setContent(searchObject.findMatches(content));
+      this.setContent(searchObject.findMatches(content));
     });
 
     // listen for navigation through results
-    searchObject.addEventListener("goto-result", function(e) {
-      root.focus(e.detail);
+    searchObject.addEventListener("goto-result", e => {
+      this.focus(e.detail);
     });
   }
   /**

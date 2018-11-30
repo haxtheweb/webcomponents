@@ -52,8 +52,6 @@ Polymer({
     mouseout: "tapEventOff"
   },
 
-  behaviors: [simpleColorsBehaviors],
-
   properties: {
     /**
      * Icon to present for clicking.

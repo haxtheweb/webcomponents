@@ -1,22 +1,25 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/chartist-render/chartist-render.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
-`progress-donut`
-A LRN element
-
-@demo demo/index.html
-
-@microcopy - the mental model for this element
- -
-
-*/
+ * `progress-donut`
+ * `Showing progression in a circle shape w/ hollow middle`
+ *
+ * @demo demo/index.html
+ *
+ * @microcopy - the mental model for this element
+ *  -
+ */
 let ProgressDonut = Polymer({
   _template: html`
-    <style is="custom-style">
+    <style is="custom-style" include="simple-colors">
       :host {
         background-color: var(--simple-colors-background1, #ffffff);
         overflow: visible;
@@ -75,11 +78,7 @@ let ProgressDonut = Polymer({
 `,
 
   is: "progress-donut",
-  behaviors: [
-    HAXBehaviors.PropertiesBehaviors,
-    simpleColorsBehaviors,
-    SchemaBehaviors.Schema
-  ],
+  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
 
   listeners: {
     "chartist-render-draw": "_onCreated"
@@ -156,13 +155,22 @@ let ProgressDonut = Polymer({
      */
     size: {
       type: String,
-      value: "md"
+      value: "md",
+      reflectToAttribute: true
     },
     /**
      * Title
      */
     title: {
       type: String
+    },
+    /**
+     * a selected accent-color: grey, red, pink, purple, etc.
+     */
+    accentColor: {
+      type: String,
+      value: "grey",
+      reflectToAttribute: true
     },
     /**
      * An array of incomplete values
@@ -293,7 +301,7 @@ let ProgressDonut = Polymer({
     if (chart !== undefined) {
       let colors = this.colors,
         strokeWidth = "10%",
-        hex = window.SimpleColorsUtility.hexCodes,
+        hex = SimpleColors.colors,
         accent =
           this.accentColor !== null
             ? this.accentColor.replace(/-([a-z])/g, function(g) {

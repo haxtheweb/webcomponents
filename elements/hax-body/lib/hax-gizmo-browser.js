@@ -17,7 +17,7 @@ Browse a list of gizmos. This provides a listing of custom elements for people t
 */
 Polymer({
   _template: html`
-    <style is="custom-style">
+    <style is="custom-style"include="simple-colors">
       :host {
         display: block;
       }
@@ -36,7 +36,7 @@ Polymer({
         margin: 0 64px 0 0;
         font-size: 32px;
         font-weight: bold;
-        color: var(--simple-colors-light-green-background1);
+        color: var(--simple-colors-default-theme-light-green-1);
         font-family: sans-serif;
         text-transform: uppercase;
         display: inline-flex;
@@ -46,7 +46,7 @@ Polymer({
         --paper-input-container-invalid-color: var(--simple-colors-red-foreground3);
         --paper-input-container-input-color: #FFFFFF;
         --paper-input-container-color: #FFFFFF;
-        --paper-input-container-focus-color: var(--simple-colors-light-green-background1);
+        --paper-input-container-focus-color: var(--simple-colors-default-theme-light-green-1);
         --paper-listbox-color: #000000;
       }
       paper-item {
@@ -60,7 +60,7 @@ Polymer({
         --primary-text-color: #FFFFFF;
         --paper-input-container-input-color: #FFFFFF;
         --paper-input-container-color: #FFFFFF;
-        --paper-input-container-focus-color: var(--simple-colors-light-green-background1);
+        --paper-input-container-focus-color: var(--simple-colors-default-theme-light-green-1);
       }
       app-toolbar {
         background-color: rgba(0,0,0,.5);
@@ -93,8 +93,6 @@ Polymer({
 `,
 
   is: "hax-gizmo-browser",
-
-  behaviors: [simpleColorsBehaviors],
 
   properties: {
     /**

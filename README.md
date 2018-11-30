@@ -22,7 +22,7 @@ $ yarn start
 
 - `$ yarn start`
     - Launch a demo server. This should be continuously running as you develop.
-- `$ yarn run new`
+- `$ wcf element`
     -  Create a new component.
 - `$ yarn run rebuild-wcfcache`
     - Rebuild caches as to what web component libraries can be used
@@ -37,6 +37,8 @@ $ yarn start
 - `$ lerna publish`
     - Publish ALL lrnwebcomponents' elements to npmjs.com
 
+- `$ lerna run build --no-bail`
+    - Run `build` command in all projects in the repo, don't bail if there's an issue
 
 ## Web Component development
 
@@ -45,32 +47,7 @@ Because this is a monorepo, each web component will need to be independently bui
 While still running `yarn start` in one terminal window (which runs the local server), you will need to open another terminal window, drill into the directory of the web component you'd like to work on, and execute the `yarn run dev` command. This command will use gulp tasks to watch the files within that web component directory and will automatically re-run the build command and refresh the browser when you make changes to the web component.
 
 ### Working on elements (new-element)
-Run `yarn run new` to make a new element. Go to the new element `cd elements/new-element` and run `yarn start` to do development on the element. If you are pulling in another element to use, run `yarn add reponame --save`.
-
-*Special Note:* If you are referencing elements from another repo you may need to update the mono-repo's package.json to ensure that this dependency is pulled up to the local element node_modules correctly. Example of what would need modified:
-
-```
-"workspaces": {
-    "packages": [
-      "elements/*",
-      "themes/*"
-    ],
-    "nohoist": [
-      "**/@polymer",
-      "**/@polymer/**",
-      "**/@webcomponents",
-      "**/@webcomponents/**",
-      "**/@rhelements",
-      "**/@rhelements/**",
-      "**/@skatejs",
-      "**/@skatejs/**",
-      "**/slim-js",
-      "**/slim-js/**",
-      "**/lit-html",
-      "**/lit-html/**"
-    ]
-  },
-```
+Run `wcf element` to make a new element. Go to the new element following the directions generated at the end of the element's creation. To work on the new-element run `yarn start` from it's directory. If you are pulling in another element to use, run `yarn add projectname --save`.
 
 ### Example development on a web component
 
