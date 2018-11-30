@@ -1,3 +1,7 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
@@ -10,16 +14,10 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
  *
  * @demo demo/index.html
  */
-
 let LrnMath = Polymer({
   _template: html`
-    <style>
-       :host {
-        display: inline;
-      }
-    </style>
-    [[prefix]] [[math]] [[suffix]]
-`,
+    [[math]]
+  `,
 
   is: "lrn-math",
 
@@ -71,7 +69,12 @@ let LrnMath = Polymer({
       this.suffix = "\\)";
     }
   },
-
+  /**
+   * highjack shadowDom
+   */
+  _attachDom(dom) {
+    this.appendChild(dom);
+  },
   /**
    * Notice math changed, update slot.
    */
@@ -84,7 +87,17 @@ let LrnMath = Polymer({
       dom(this).appendChild(frag);
     }
   },
-
+  created: function() {
+    const name = "mathjax";
+    const basePath = pathFromUrl(import.meta.url);
+    const location = `${basePath}lib/mathjax/latest.js`;
+    window.addEventListener(
+      `es-bridge-${name}-loaded`,
+      this._mathjaxLoaded.bind(this)
+    );
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load(name, location);
+  },
   /**
    * Attached life cycle
    */
@@ -144,15 +157,6 @@ let LrnMath = Polymer({
       }
     };
     this.setHaxProperties(props);
-    const name = "mathjax";
-    const basePath = pathFromUrl(import.meta.url);
-    const location = `${basePath}lib/mathjax/latest.js`;
-    window.addEventListener(
-      `es-bridge-${name}-loaded`,
-      this._mathjaxLoaded.bind(this)
-    );
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(name, location);
   },
   /**
    * Notice changes to the slot and reflect these to the math value
