@@ -10,18 +10,33 @@ A LRN element
 */
 let AframePlayer = Polymer({
   _template: html`
-    <style>
-      :host {
-        display: block;
-        position: relative;
-      }
-    </style>
-    <a-scene id="scene" class="embedded" embedded arjs$="[[ar]]" style$="height:[[height]];width:[[width]];">
+    <custom-style>
+      <style is="custom-style">
+        :host {
+          display: block;
+          position: relative;
+        }
+        .a-hidden {
+          display: hidden;
+        }
+      </style>
+    </custom-style>
+    <a-scene
+      id="scene"
+      class="embedded"
+      embedded
+      arjs$="[[ar]]"
+      style$="height:[[height]];width:[[width]];"
+    >
       <a-sky color\$="[[skyColor]]"></a-sky>
       <a-marker-camera preset="hiro"></a-marker-camera>
-      <a-entity id="entity" gltf-model\$="[[source]]" position="0 0 0"></a-entity>
+      <a-entity
+        id="entity"
+        gltf-model\$="[[source]]"
+        position="0 0 0"
+      ></a-entity>
     </a-scene>
-`,
+  `,
 
   is: "aframe-player",
   behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
@@ -92,7 +107,12 @@ let AframePlayer = Polymer({
       observer: "_positionChanged"
     }
   },
-
+  /**
+   * highjack shadowDom
+   */
+  _attachDom(dom) {
+    this.appendChild(dom);
+  },
   /**
    * Attached.
    */
