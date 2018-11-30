@@ -12,15 +12,15 @@ export { SimpleSearchContent };
  *
  * @microcopy - the mental model for this element
  *
- * <simple-search-content
- *  content="[[content]]"                // inline content to be searched
- * </simple-search-content>
+ * `<simple-search-content
+ *   content="[[content]]"                // inline content to be searched
+ * </simple-search-content>`
  *
  * CSS Variables for matched content:
- * color: var(--simple-search-match-text-color, #000);
+ * `color: var(--simple-search-match-text-color, #000);
  * background-color: var(--simple-search-match-background-color, #f0f0f0);
  * border-color: var(--simple-search-match-border-color, #ddd);
- * @apply --simple-search-match;
+ * @apply --simple-search-match;`
  *
  * @polymer
  * @customElement
