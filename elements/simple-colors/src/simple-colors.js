@@ -106,8 +106,9 @@ class SimpleColors extends PolymerElement {
 
   // render function
   static get template() {
-    return html`<style is="custom-style" include="simple-colors"></style>
-  <slot></slot>`;
+    return html`
+      <style is="custom-style" include="simple-colors"></style> <slot></slot>
+    `;
   }
 
   /**
@@ -573,28 +574,28 @@ const addCssVariables = function() {
     str = [];
   str.push(
     addStyle(
-      ":host, :host ::slotted(*)",
+      ":host, :host * ::slotted(*)",
       addColorLevels("default", "accent", greys, false) +
         addThemeVariables("default", false)
     )
   );
   str.push(
     addStyle(
-      ":host, :host ::slotted(*)",
+      ":host, :host * ::slotted(*)",
       addColorLevels("light", "accent", greys, false) +
         addThemeVariables("light", false)
     )
   );
   str.push(
     addStyle(
-      ":host, :host ::slotted(*)",
+      ":host, :host * ::slotted(*)",
       addColorLevels("dark", "accent", greys, true) +
         addThemeVariables("dark", true)
     )
   );
   str.push(
     addStyle(
-      ":host([dark]), :host([dark]) ::slotted(*)",
+      ":host([dark]), :host([dark]) * ::slotted(*)",
       addColorLevels("default", "accent", greys, true) +
         addThemeVariables("default", true)
     )
@@ -698,5 +699,9 @@ const addStyle = function(selector, style) {
 const styleElement = document.createElement("dom-module"),
   template = document.createElement("template");
 template.innerHTML = addCssVariables() + addAccentVariables() + addClasses();
-styleElement.appendChild(html`${template}`);
+styleElement.appendChild(
+  html`
+    ${template}
+  `
+);
 styleElement.register("simple-colors");

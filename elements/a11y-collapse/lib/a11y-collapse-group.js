@@ -33,17 +33,16 @@ Polymer({
         font-weight: bold;
         @apply --a11y-collapse-group-heading;
       }
-      :host ::slotted(a11y-collapse){
+      :host .wrapper::slotted(a11y-collapse) {
         margin: 0;
         border-radius: 0;
       }
-      :host ::slotted(a11y-collapse):not(:first-of-type) {
+      :host .wrapper::slotted(a11y-collapse):not(:first-of-type) {
         border-top: none;
       }
     </style>
-    <slot id="heading"></slot>
-    <slot></slot>
-`,
+    <div class="wrapper"><slot id="heading"></slot> <slot></slot></div>
+  `,
 
   is: "a11y-collapse-group",
   behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

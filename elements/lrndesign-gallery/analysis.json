@@ -399,11 +399,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 94,
+              "line": 92,
               "column": 4
             },
             "end": {
-              "line": 98,
+              "line": 96,
               "column": 5
             }
           },
@@ -422,11 +422,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 102,
+              "line": 100,
               "column": 4
             },
             "end": {
-              "line": 105,
+              "line": 103,
               "column": 5
             }
           },
@@ -444,11 +444,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 109,
+              "line": 107,
               "column": 4
             },
             "end": {
-              "line": 112,
+              "line": 110,
               "column": 5
             }
           },
@@ -466,11 +466,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 116,
+              "line": 114,
               "column": 4
             },
             "end": {
-              "line": 120,
+              "line": 118,
               "column": 5
             }
           },
@@ -489,11 +489,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 124,
+              "line": 122,
               "column": 4
             },
             "end": {
-              "line": 127,
+              "line": 125,
               "column": 5
             }
           },
@@ -511,11 +511,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 131,
+              "line": 129,
               "column": 4
             },
             "end": {
-              "line": 134,
+              "line": 132,
               "column": 5
             }
           },
@@ -532,11 +532,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 138,
+              "line": 136,
               "column": 4
             },
             "end": {
-              "line": 141,
+              "line": 139,
               "column": 5
             }
           },
@@ -554,11 +554,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 145,
+              "line": 143,
               "column": 4
             },
             "end": {
-              "line": 148,
+              "line": 146,
               "column": 5
             }
           },
@@ -577,11 +577,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 154,
+              "line": 152,
               "column": 2
             },
             "end": {
-              "line": 160,
+              "line": 158,
               "column": 3
             }
           },
@@ -597,11 +597,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 231,
+              "line": 229,
               "column": 2
             },
             "end": {
-              "line": 233,
+              "line": 231,
               "column": 3
             }
           },
@@ -618,11 +618,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 172,
+              "line": 170,
               "column": 2
             },
             "end": {
-              "line": 178,
+              "line": 176,
               "column": 3
             }
           },
@@ -642,11 +642,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 183,
+              "line": 181,
               "column": 2
             },
             "end": {
-              "line": 185,
+              "line": 183,
               "column": 3
             }
           },
@@ -662,11 +662,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 190,
+              "line": 188,
               "column": 2
             },
             "end": {
-              "line": 192,
+              "line": 190,
               "column": 3
             }
           },
@@ -686,11 +686,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 197,
+              "line": 195,
               "column": 2
             },
             "end": {
-              "line": 211,
+              "line": 209,
               "column": 3
             }
           },
@@ -710,11 +710,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 216,
+              "line": 214,
               "column": 2
             },
             "end": {
-              "line": 226,
+              "line": 224,
               "column": 3
             }
           },
@@ -735,11 +735,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 21,
+          "line": 22,
           "column": 8
         },
         "end": {
-          "line": 234,
+          "line": 232,
           "column": 1
         }
       },
@@ -751,11 +751,11 @@
           "description": "optional: details for zooming",
           "sourceRange": {
             "start": {
-              "line": 94,
+              "line": 92,
               "column": 4
             },
             "end": {
-              "line": 98,
+              "line": 96,
               "column": 5
             }
           },
@@ -767,11 +767,11 @@
           "description": "heading for the zoom modal",
           "sourceRange": {
             "start": {
-              "line": 102,
+              "line": 100,
               "column": 4
             },
             "end": {
-              "line": 105,
+              "line": 103,
               "column": 5
             }
           },
@@ -783,11 +783,11 @@
           "description": "optional: name for iron-icon used to indicate zoom",
           "sourceRange": {
             "start": {
-              "line": 109,
+              "line": 107,
               "column": 4
             },
             "end": {
-              "line": 112,
+              "line": 110,
               "column": 5
             }
           },
@@ -799,11 +799,11 @@
           "description": "heading for the zoom modal",
           "sourceRange": {
             "start": {
-              "line": 116,
+              "line": 114,
               "column": 4
             },
             "end": {
-              "line": 120,
+              "line": 118,
               "column": 5
             }
           },
@@ -815,11 +815,11 @@
           "description": "tooltip for the zoom button",
           "sourceRange": {
             "start": {
-              "line": 124,
+              "line": 122,
               "column": 4
             },
             "end": {
-              "line": 127,
+              "line": 125,
               "column": 5
             }
           },
@@ -831,11 +831,11 @@
           "description": "Image source.",
           "sourceRange": {
             "start": {
-              "line": 131,
+              "line": 129,
               "column": 4
             },
             "end": {
-              "line": 134,
+              "line": 132,
               "column": 5
             }
           },
@@ -847,11 +847,11 @@
           "description": "Carousel or grid",
           "sourceRange": {
             "start": {
-              "line": 138,
+              "line": 136,
               "column": 4
             },
             "end": {
-              "line": 141,
+              "line": 139,
               "column": 5
             }
           },
@@ -863,11 +863,11 @@
           "description": "gallery item's alt text",
           "sourceRange": {
             "start": {
-              "line": 145,
+              "line": 143,
               "column": 4
             },
             "end": {
-              "line": 148,
+              "line": 146,
               "column": 5
             }
           },
@@ -3013,11 +3013,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 92,
+              "line": 91,
               "column": 4
             },
             "end": {
-              "line": 95,
+              "line": 94,
               "column": 5
             }
           },
@@ -3035,11 +3035,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 99,
+              "line": 98,
               "column": 4
             },
             "end": {
-              "line": 102,
+              "line": 101,
               "column": 5
             }
           },
@@ -3057,11 +3057,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 106,
+              "line": 105,
               "column": 4
             },
             "end": {
-              "line": 109,
+              "line": 108,
               "column": 5
             }
           },
@@ -3079,11 +3079,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 113,
+              "line": 112,
               "column": 4
             },
             "end": {
-              "line": 117,
+              "line": 116,
               "column": 5
             }
           },
@@ -3101,11 +3101,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 121,
+              "line": 120,
               "column": 4
             },
             "end": {
-              "line": 126,
+              "line": 125,
               "column": 5
             }
           },
@@ -3124,11 +3124,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 131,
+              "line": 130,
               "column": 4
             },
             "end": {
-              "line": 134,
+              "line": 133,
               "column": 5
             }
           },
@@ -3146,11 +3146,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 138,
+              "line": 137,
               "column": 4
             },
             "end": {
-              "line": 141,
+              "line": 140,
               "column": 5
             }
           },
@@ -3168,11 +3168,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 145,
+              "line": 144,
               "column": 4
             },
             "end": {
-              "line": 148,
+              "line": 147,
               "column": 5
             }
           },
@@ -3191,11 +3191,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 151,
+              "line": 150,
               "column": 2
             },
             "end": {
-              "line": 158,
+              "line": 157,
               "column": 3
             }
           },
@@ -3211,11 +3211,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 163,
+              "line": 162,
               "column": 2
             },
             "end": {
-              "line": 202,
+              "line": 201,
               "column": 3
             }
           },
@@ -3235,11 +3235,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 207,
+              "line": 206,
               "column": 2
             },
             "end": {
-              "line": 209,
+              "line": 208,
               "column": 3
             }
           },
@@ -3260,7 +3260,7 @@
           "column": 31
         },
         "end": {
-          "line": 210,
+          "line": 209,
           "column": 1
         }
       },
@@ -3273,11 +3273,11 @@
           "description": "thumbnail grid layout, default is false (carousel layout)",
           "sourceRange": {
             "start": {
-              "line": 92,
+              "line": 91,
               "column": 4
             },
             "end": {
-              "line": 95,
+              "line": 94,
               "column": 5
             }
           },
@@ -3289,11 +3289,11 @@
           "description": "array of carousel/grid items",
           "sourceRange": {
             "start": {
-              "line": 99,
+              "line": 98,
               "column": 4
             },
             "end": {
-              "line": 102,
+              "line": 101,
               "column": 5
             }
           },
@@ -3305,11 +3305,11 @@
           "description": "array of carousel/grid items",
           "sourceRange": {
             "start": {
-              "line": 106,
+              "line": 105,
               "column": 4
             },
             "end": {
-              "line": 109,
+              "line": 108,
               "column": 5
             }
           },
@@ -3321,11 +3321,11 @@
           "description": "parent size for responsive styling",
           "sourceRange": {
             "start": {
-              "line": 113,
+              "line": 112,
               "column": 4
             },
             "end": {
-              "line": 117,
+              "line": 116,
               "column": 5
             }
           },
@@ -3337,11 +3337,11 @@
           "description": "data for the selected item",
           "sourceRange": {
             "start": {
-              "line": 121,
+              "line": 120,
               "column": 4
             },
             "end": {
-              "line": 126,
+              "line": 125,
               "column": 5
             }
           },
@@ -3353,11 +3353,11 @@
           "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
           "sourceRange": {
             "start": {
-              "line": 131,
+              "line": 130,
               "column": 4
             },
             "end": {
-              "line": 134,
+              "line": 133,
               "column": 5
             }
           },
@@ -3369,11 +3369,11 @@
           "description": "carousel's title",
           "sourceRange": {
             "start": {
-              "line": 138,
+              "line": 137,
               "column": 4
             },
             "end": {
-              "line": 141,
+              "line": 140,
               "column": 5
             }
           },
