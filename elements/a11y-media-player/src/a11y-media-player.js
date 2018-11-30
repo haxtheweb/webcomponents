@@ -122,30 +122,35 @@ export { A11yMediaPlayer };
 let A11yMediaPlayer = Polymer({
   _template: html`
     <style is="custom-style" include="simple-colors">
-      :host {  
+      :host {
         width: 100%;
         display: block;
         color: var(--simple-colors-default-theme-grey-12);
         background-color: var(--simple-colors-default-theme-grey-2);
         outline: 1px solid var(--simple-colors-default-theme-grey-3);
       }
-      :host([dark]) {  
+      :host([dark]) {
         outline: 1px solid var(--simple-colors-default-theme-grey-1);
       }
-      :host #outerplayer, :host #outerplayer * {
+      :host #outerplayer,
+      :host #outerplayer * {
         --a11y-media-color: var(--simple-colors-default-theme-grey-11);
         --a11y-media-bg-color: var(--simple-colors-default-theme-grey-2);
         --a11y-media-hover-color: var(--simple-colors-default-theme-grey-12);
         --a11y-media-hover-bg-color: var(--simple-colors-default-theme-grey-2);
         --a11y-media-accent-color: var(--simple-colors-default-theme-accent-9);
-        --a11y-media-faded-accent-color: var(--simple-colors-default-theme-accent-8);
+        --a11y-media-faded-accent-color: var(
+          --simple-colors-default-theme-accent-8
+        );
 
         /* settings */
         --a11y-media-settings-menu-color: var(--a11y-media-color);
         --a11y-media-settings-menu-bg-color: var(--a11y-media-bg-color);
         --a11y-media-settings-menu-hover-color: var(--a11y-media-hover-color);
-        --a11y-media-settings-menu-hover-bg-color: var(--a11y-media-hover-bg-color);
-        
+        --a11y-media-settings-menu-hover-bg-color: var(
+          --a11y-media-hover-bg-color
+        );
+
         /* buttons */
         --a11y-media-button-color: var(--a11y-media-color);
         --a11y-media-button-bg-color: var(--a11y-media-bg-color);
@@ -157,11 +162,13 @@ let A11yMediaPlayer = Polymer({
         --paper-toggle-button-unchecked-bar-color: var(--a11y-media-color);
         --paper-toggle-button-unchecked-button-color: var(--a11y-media-color);
         --paper-toggle-button-checked-bar-color: var(--a11y-media-accent-color);
-        --paper-toggle-button-checked-button-color: var(--a11y-media-accent-color);
-        
+        --paper-toggle-button-checked-button-color: var(
+          --a11y-media-accent-color
+        );
+
         /* slider */
         --paper-slider-active-color: var(--a11y-media-accent-color);
-        --paper-slider-secondary-color:  var(--a11y-media-faded-accent-color);
+        --paper-slider-secondary-color: var(--a11y-media-faded-accent-color);
         --paper-slider-pin-color: var(--a11y-media-faded-bg-color);
         --paper-slider-pin-start-color: var(--a11y-media-faded-bg-color);
         --paper-slider-pin-end-color: var(--a11y-media-faded-bg-color);
@@ -172,18 +179,42 @@ let A11yMediaPlayer = Polymer({
         --paper-slider-knob-start-border-color: var(--a11y-media-bg-color);
         --paper-slider-knob-end-border-color: var(--a11y-media-bg-color);
       }
-      :host #outertranscript, :host #outertranscript *, :host #transcript {
-        --a11y-media-transcript-color: var(--simple-colors-default-theme-grey-12);
-        --a11y-media-transcript-bg-color: var(--simple-colors-default-theme-grey-1);
-        --a11y-media-transcript-accent-color: var(--simple-colors-default-theme-accent-8);
-        --a11y-media-transcript-faded-accent-color: var(--simple-colors-default-theme-accent-10);
-        --a11y-media-transcript-active-cue-color: var(--simple-colors-default-theme-grey-12);
-        --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-default-theme-accent-1);
-        --a11y-media-transcript-focused-cue-color: var(--simple-colors-default-theme-grey-12);
-        --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-default-theme-grey-2);
-        --a11y-media-transcript-match-color: var(--simple-colors-default-theme-grey-1);
-        --a11y-media-transcript-match-bg-color: var(--simple-colors-default-theme-accent-10);
-        --a11y-media-transcript-match-border-color: var(--simple-colors-default-theme-accent-12);
+      :host #outertranscript,
+      :host #outertranscript *,
+      :host #transcript {
+        --a11y-media-transcript-color: var(
+          --simple-colors-default-theme-grey-12
+        );
+        --a11y-media-transcript-bg-color: var(
+          --simple-colors-default-theme-grey-1
+        );
+        --a11y-media-transcript-accent-color: var(
+          --simple-colors-default-theme-accent-8
+        );
+        --a11y-media-transcript-faded-accent-color: var(
+          --simple-colors-default-theme-accent-10
+        );
+        --a11y-media-transcript-active-cue-color: var(
+          --simple-colors-default-theme-grey-12
+        );
+        --a11y-media-transcript-active-cue-bg-color: var(
+          --simple-colors-default-theme-accent-1
+        );
+        --a11y-media-transcript-focused-cue-color: var(
+          --simple-colors-default-theme-grey-12
+        );
+        --a11y-media-transcript-focused-cue-bg-color: var(
+          --simple-colors-default-theme-grey-2
+        );
+        --a11y-media-transcript-match-color: var(
+          --simple-colors-default-theme-grey-1
+        );
+        --a11y-media-transcript-match-bg-color: var(
+          --simple-colors-default-theme-accent-10
+        );
+        --a11y-media-transcript-match-border-color: var(
+          --simple-colors-default-theme-accent-12
+        );
         --a11y-media-hover-color: var(--simple-colors-default-theme-grey-12);
         --a11y-media-hover-bg-color: var(--simple-colors-default-theme-grey-2);
       }
@@ -205,12 +236,12 @@ let A11yMediaPlayer = Polymer({
         display: none;
       }
       :host #controls,
-      :host #slider, 
+      :host #slider,
       :host #sources,
       :host #sources > * {
         width: 100%;
       }
-      :host #loader, 
+      :host #loader,
       :host #youtube,
       :host #customcc,
       :host #customcctxt {
@@ -276,7 +307,7 @@ let A11yMediaPlayer = Polymer({
         width: 100%;
         margin: 0;
         display: block;
-        border-top: 1px solid #aaaaaa; 
+        border-top: 1px solid #aaaaaa;
       }
       :host .sr-only {
         position: absolute;
@@ -313,8 +344,8 @@ let A11yMediaPlayer = Polymer({
           max-width: 200px;
           z-index: 999999;
           border: 1px solid;
-          box-shadow: 1px 1px 20px 1px rgba(125,125,125);
-          border-radius: 3.2px; 
+          box-shadow: 1px 1px 20px 1px rgba(125, 125, 125);
+          border-radius: 3.2px;
           border-color: var(--a11y-media-bg-color);
         }
         :host([dark][sticky]:not([sticky-corner="none"])) #player {
@@ -343,17 +374,19 @@ let A11yMediaPlayer = Polymer({
         :host #transcript {
           padding-top: 48px;
         }
-        :host(:not([no-height]):not([stacked-layout]):not([responsive-size*="s"])) #transcript {
+        :host(:not([no-height]):not([stacked-layout]):not([responsive-size*="s"]))
+          #transcript {
           position: absolute;
-          top: 0; 
+          top: 0;
           left: 0;
-          right: 0; 
+          right: 0;
           bottom: 0;
           overflow-y: scroll;
         }
-        :host(:not([no-height]):not([stacked-layout]):not([responsive-size*="s"])) #player.totop {
+        :host(:not([no-height]):not([stacked-layout]):not([responsive-size*="s"]))
+          #player.totop {
           position: absolute;
-          top:0;
+          top: 0;
           left: 0;
           width: 200px !important;
           z-index: 9999;
@@ -375,7 +408,8 @@ let A11yMediaPlayer = Polymer({
           top: unset;
           bottom: 5px;
         }
-        :host([sticky]:not([sticky-corner="none"]):not([no-height]):not([stacked-layout]):not([responsive-size*="s"])) #controls {
+        :host([sticky]:not([sticky-corner="none"]):not([no-height]):not([stacked-layout]):not([responsive-size*="s"]))
+          #controls {
           display: none;
         }
         :host .print-only {
@@ -388,21 +422,22 @@ let A11yMediaPlayer = Polymer({
       }
 
       @media print {
-        :host, :host([dark]) {
-          outline: 1px solid #aaaaaa; 
+        :host,
+        :host([dark]) {
+          outline: 1px solid #aaaaaa;
           background-color: #ffffff;
         }
         :host([sticky]:not([sticky-corner="none"])) #outerplayer {
           height: unset !important;
         }
         :host .screen-only,
-        :host #player, 
+        :host #player,
         :host #printthumb:not([src]) {
           display: none;
         }
-        :host(:not([thumbnail-src])) #sources, 
-        :host #slider, 
-        :host #loader, 
+        :host(:not([thumbnail-src])) #sources,
+        :host #slider,
+        :host #loader,
         :host #youtube,
         :host #controls {
           display: none;
@@ -426,33 +461,141 @@ let A11yMediaPlayer = Polymer({
       <div id="player">
         <div id="innerplayer">
           <div id="sources" hidden\$="[[noHeight]]">
-            <a11y-media-play-button id="playbutton" audio-only\$="[[audioOnly]]" disabled="true" hidden\$="[[noPlayButton]]" disabled\$="[[noPlayButton]]" pause-label\$="[[pauseLabel]]" playing\$="[[__playing]]" play-label\$="[[playLabel]]">
+            <a11y-media-play-button
+              id="playbutton"
+              audio-only\$="[[audioOnly]]"
+              disabled="true"
+              hidden\$="[[noPlayButton]]"
+              disabled\$="[[noPlayButton]]"
+              pause-label\$="[[pauseLabel]]"
+              playing\$="[[__playing]]"
+              play-label\$="[[playLabel]]"
+            >
             </a11y-media-play-button>
-            <a11y-media-loader id="loader" autoplay\$="[[autoplay]]" cc\$="[[cc]]" crossorigin\$="[[crossorigin]]" hidden\$="[[isYoutube]]" lang\$="[[lang]]" loop\$="[[loop]]" muted\$="[[muted]]" manifest\$="[[manifest]]" playback-rate\$="[[playbackRate]]" style\$="[[_getThumbnailCSS(thumbnailSrc)]]" preload\$="[[preload]]" volume\$="[[volume]]">
+            <a11y-media-loader
+              id="loader"
+              autoplay\$="[[autoplay]]"
+              cc\$="[[cc]]"
+              crossorigin\$="[[crossorigin]]"
+              hidden\$="[[isYoutube]]"
+              lang\$="[[lang]]"
+              loop\$="[[loop]]"
+              muted\$="[[muted]]"
+              manifest\$="[[manifest]]"
+              playback-rate\$="[[playbackRate]]"
+              style\$="[[_getThumbnailCSS(thumbnailSrc)]]"
+              preload\$="[[preload]]"
+              volume\$="[[volume]]"
+            >
               <slot></slot>
             </a11y-media-loader>
-            <div id="youtube" hidden\$="[[!isYoutube]]" video-id\$="[[videoId]]"></div>
-            <div id="customcc" hidden\$="[[!showCustomCaptions]]"><span id="customcctxt"></span></div>
+            <div
+              id="youtube"
+              hidden\$="[[!isYoutube]]"
+              video-id\$="[[videoId]]"
+            ></div>
+            <div id="customcc" hidden\$="[[!showCustomCaptions]]">
+              <span id="customcctxt"></span>
+            </div>
           </div>
         </div>
-        <paper-slider id="slider" max\$="[[__duration]]" pin="" secondary-progress\$="[[__buffered]]" value\$="[[__elapsed]]">
+        <paper-slider
+          id="slider"
+          max\$="[[__duration]]"
+          pin=""
+          secondary-progress\$="[[__buffered]]"
+          value\$="[[__elapsed]]"
+        >
         </paper-slider>
       </div>
-      <a11y-media-controls id="controls" audio-only\$="[[audioOnly]]" audio-label\$="[[audioLabel]]" captions-icon\$="[[captionsIcon]]" captions-label\$="[[captionsLabel]]" captions-menu-label\$="[[captionsMenuLabel]]" captions-menu-off\$="[[captionsMenuOff]]" cc\$="[[cc]]" forward-icon\$="[[forwardIcon]]" forward-label\$="[[forwardLabel]]" fullscreen-icon\$="[[fullscreenIcon]]" fullscreen-label\$="[[fullscreenLabel]]" has-captions\$="[[hasCaptions]]" has-transcript\$="[[hasTranscript]]" lang\$="[[uiLanguage]]" loop-icon\$="[[loopIcon]]" loop-label\$="[[loopLabel]]" mute-icon\$="[[muteIcon]]" mute-label\$="[[muteLabel]]" muted\$="[[muted]]" pause-icon\$="[[pauseIcon]]" pause-label\$="[[pauseLabel]]" play-icon\$="[[playIcon]]" play-label\$="[[playLabel]]" playing\$="[[__playing]]" restart-icon\$="[[restartIcon]]" restart-label\$="[[restartLabel]]" rewind-icon\$="[[rewindIcon]]" rewind-label\$="[[rewindLabel]]" search-transcript\$="[[searchTranscript]]" settings-icon\$="[[settingsIcon]]" settings-label\$="[[settingsLabel]]" speed-label\$="[[speedLabel]]" stand-alone\$="[[standAlone]]" transcript-icon\$="[[transcriptIcon]]" transcript-label\$="[[transcriptLabel]]" transcript-menu-label\$="[[transcriptMenuLabel]]" unmute-icon\$="[[unmuteIcon]]" unmute-label\$="[[unmuteLabel]]" video-label\$="[[videoLabel]]" volume="[[__volume]]" volume-icon\$="[[volumeIcon]]" volume-label\$="[[volumeLabel]]">
+      <a11y-media-controls
+        id="controls"
+        audio-only\$="[[audioOnly]]"
+        audio-label\$="[[audioLabel]]"
+        captions-icon\$="[[captionsIcon]]"
+        captions-label\$="[[captionsLabel]]"
+        captions-menu-label\$="[[captionsMenuLabel]]"
+        captions-menu-off\$="[[captionsMenuOff]]"
+        cc\$="[[cc]]"
+        forward-icon\$="[[forwardIcon]]"
+        forward-label\$="[[forwardLabel]]"
+        fullscreen-icon\$="[[fullscreenIcon]]"
+        fullscreen-label\$="[[fullscreenLabel]]"
+        has-captions\$="[[hasCaptions]]"
+        has-transcript\$="[[hasTranscript]]"
+        lang\$="[[uiLanguage]]"
+        loop-icon\$="[[loopIcon]]"
+        loop-label\$="[[loopLabel]]"
+        mute-icon\$="[[muteIcon]]"
+        mute-label\$="[[muteLabel]]"
+        muted\$="[[muted]]"
+        pause-icon\$="[[pauseIcon]]"
+        pause-label\$="[[pauseLabel]]"
+        play-icon\$="[[playIcon]]"
+        play-label\$="[[playLabel]]"
+        playing\$="[[__playing]]"
+        restart-icon\$="[[restartIcon]]"
+        restart-label\$="[[restartLabel]]"
+        rewind-icon\$="[[rewindIcon]]"
+        rewind-label\$="[[rewindLabel]]"
+        search-transcript\$="[[searchTranscript]]"
+        settings-icon\$="[[settingsIcon]]"
+        settings-label\$="[[settingsLabel]]"
+        speed-label\$="[[speedLabel]]"
+        stand-alone\$="[[standAlone]]"
+        transcript-icon\$="[[transcriptIcon]]"
+        transcript-label\$="[[transcriptLabel]]"
+        transcript-menu-label\$="[[transcriptMenuLabel]]"
+        unmute-icon\$="[[unmuteIcon]]"
+        unmute-label\$="[[unmuteLabel]]"
+        video-label\$="[[videoLabel]]"
+        volume="[[__volume]]"
+        volume-icon\$="[[volumeIcon]]"
+        volume-label\$="[[volumeLabel]]"
+      >
       </a11y-media-controls>
-      <div class="screen-only media-caption" aria-hidden="true">[[mediaCaption]]</div>
+      <div class="screen-only media-caption" aria-hidden="true">
+        [[mediaCaption]]
+      </div>
       <div class="print-only media-caption">[[printCaption]]</div>
     </div>
-    <img id="printthumb" aria-hidden="true" src\$="[[thumbnailSrc]]">
+    <img id="printthumb" aria-hidden="true" src\$="[[thumbnailSrc]]" />
     <div id="outertranscript" hidden\$="[[standAlone]]" lang\$="[[uiLanguage]]">
       <div id="innertranscript">
-        <a11y-media-transcript-controls id="tcontrols" accent-color\$="[[accentColor]]" auto-scroll-icon\$="[[autoScrollIcon]]" auto-scroll-label\$="[[autoScrollLabel]]" dark\$="[[darkTranscript]]" disable-print-button\$="[[disablePrintButton]]" disable-scroll\$="[[disableScroll]]" disable-search\$="[[disableSearch]]" lang\$="[[uiLanguage]]" print-icon\$="[[printIcon]]" print-label\$="[[printLabel]]" search-label\$="[[searchLabel]]" search-prev-label\$="[[searchPrevLabel]]" search-prev-icon\$="[[searchPrevIcon]]" search-next-label\$="[[searchNextLabel]]" search-next-icon\$="[[searchNextIcon]]" skip-transcript-link\$="[[skipTranscriptLink]]">
+        <a11y-media-transcript-controls
+          id="tcontrols"
+          accent-color\$="[[accentColor]]"
+          auto-scroll-icon\$="[[autoScrollIcon]]"
+          auto-scroll-label\$="[[autoScrollLabel]]"
+          dark\$="[[darkTranscript]]"
+          disable-print-button\$="[[disablePrintButton]]"
+          disable-scroll\$="[[disableScroll]]"
+          disable-search\$="[[disableSearch]]"
+          lang\$="[[uiLanguage]]"
+          print-icon\$="[[printIcon]]"
+          print-label\$="[[printLabel]]"
+          search-label\$="[[searchLabel]]"
+          search-prev-label\$="[[searchPrevLabel]]"
+          search-prev-icon\$="[[searchPrevIcon]]"
+          search-next-label\$="[[searchNextLabel]]"
+          search-next-icon\$="[[searchNextIcon]]"
+          skip-transcript-link\$="[[skipTranscriptLink]]"
+        >
         </a11y-media-transcript-controls>
-        <a11y-media-transcript id="transcript" accent-color\$="[[accentColor]]" dark\$="[[darkTranscript]]" disable-scroll\$="[[disableScroll]]" disable-search\$="[[disableSearch]]" disable-interactive\$="[[disableInteractive]]" hide-timestamps\$="[[hideTimestamps]]" search="[[search]]">
+        <a11y-media-transcript
+          id="transcript"
+          accent-color\$="[[accentColor]]"
+          dark\$="[[darkTranscript]]"
+          disable-scroll\$="[[disableScroll]]"
+          disable-search\$="[[disableSearch]]"
+          disable-interactive\$="[[disableInteractive]]"
+          hide-timestamps\$="[[hideTimestamps]]"
+          search="[[search]]"
+        >
         </a11y-media-transcript>
       </div>
     </div>
-`,
+  `,
 
   is: "a11y-media-player",
 
@@ -519,13 +662,12 @@ let A11yMediaPlayer = Polymer({
       root.disableInteractive = true;
       this._youTubeRequest();
     } else {
-      root.$.loader.$.video.innerHTML = "HTML5 video not supported";
       root
         .$$("slot")
         .assignedNodes()
         .forEach(function(node) {
           if (node.nodeName === "TRACK" || node.nodeName === "SOURCE") {
-            if (audioOnly) {
+            if (root.audioOnly) {
               root.$.loader.$.audio.appendChild(node);
             } else {
               root.$.loader.$.video.appendChild(node);
@@ -932,8 +1074,8 @@ let A11yMediaPlayer = Polymer({
             label !== undefined
               ? label
               : lang !== undefined
-                ? lang
-                : "Track " + i,
+              ? lang
+              : "Track " + i,
           cues,
           loadCueData = setInterval(() => {
             track.mode = "showing";
