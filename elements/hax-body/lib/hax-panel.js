@@ -2,7 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "@lrnwebcomponents/hax-body/lib/simple-colors-picker.js";
+import "./simple-colors-picker.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-panel-item.js";
 import "./hax-preferences-dialog.js";
@@ -40,8 +40,8 @@ Polymer({
         display: flex;
         --app-drawer-width: 100%;
         --app-drawer-content-container: {
-        --app-drawer-content-container_-_height: 64px;
-        --app-drawer-content-container_-_padding: 0;
+          --app-drawer-content-container_-_height: 64px;
+          --app-drawer-content-container_-_padding: 0;
           width: 100%;
           left: 0;
           right: 0;
@@ -61,8 +61,8 @@ Polymer({
       }
       :host([edit-mode]) app-drawer {
         visibility: visible;
-        transition: .6s ease opacity;
-        opacity: .9;
+        transition: 0.6s ease opacity;
+        opacity: 0.9;
         right: 0;
         left: 0;
         top: 0;
@@ -78,13 +78,13 @@ Polymer({
         z-index: 10000;
         margin-left: 0;
         transition: all 0;
-        opacity: .9;
+        opacity: 0.9;
         border-radius: 50%;
       }
       :host([edit-mode]) #button {
         visibility: hidden;
         opacity: 0;
-        transition: all .8s ease;
+        transition: all 0.8s ease;
       }
       #button:hover {
         opacity: 1;
@@ -100,28 +100,122 @@ Polymer({
       }
     </style>
     <div hidden$="[[hidePanelOps]]">
-      <hax-panel-item light="[[light]]" data-opened$="[[editMode]]" on-tap="_clickEditButton" icon="create" id="button" edged="[[align]]" label="[[__tipText]]"></hax-panel-item>
+      <hax-panel-item
+        light="[[light]]"
+        data-opened$="[[editMode]]"
+        on-tap="_clickEditButton"
+        icon="create"
+        id="button"
+        edged="[[align]]"
+        label="[[__tipText]]"
+      ></hax-panel-item>
     </div>
-    <app-drawer id="drawer" opened="{{editMode}}" disable-swipe persistent transition-duration="800" align="[[align]]">
-      <hax-panel-item hidden$="[[hidePanelOps]]" on-tap="_clickSaveButton" icon="save" id="haxsavebutton" label="[[__tipText]]" event-name="save" voice-command="save content"></hax-panel-item>
-      <hax-panel-item icon="image:add-to-photos" icon-class="amber-text" label="Add" event-name="hax-manager-open" value="0"></hax-panel-item>
-      <hax-panel-item icon="search" icon-class="amber-text" label="Find" event-name="hax-manager-open" value="1"></hax-panel-item>
-      <hax-panel-item icon="hardware:toys" icon-class="amber-text" label="Make" event-name="hax-manager-open" value="2"></hax-panel-item>
-      <hax-panel-item icon="view-quilt" icon-class="amber-text" label="Layouts" event-name="hax-blox-picker-open" voice-command="insert block"></hax-panel-item>
-      <hax-panel-item icon="view-agenda" icon-class="amber-text" label="Templates" event-name="hax-stax-picker-open" voice-command="insert stack"></hax-panel-item>
-      <hax-panel-item icon="editor:text-fields" icon-class="light-blue-text" label="Text" event-name="text" voice-command="insert text"></hax-panel-item>
-      <hax-panel-item icon="editor:title" icon-class="light-blue-text" label="Heading" event-name="header" voice-command="insert heading"></hax-panel-item>
-      <hax-panel-item icon="image:transform" icon-class="light-blue-text" label="Placeholder" event-name="placeholder" voice-command="insert placeholder"></hax-panel-item>
-      <hax-panel-item icon="editor:space-bar" icon-class="light-blue-text text-darken-1" label="Divider" event-name="divider" voice-command="insert divider"></hax-panel-item>
+    <app-drawer
+      id="drawer"
+      opened="{{editMode}}"
+      disable-swipe
+      persistent
+      transition-duration="800"
+      align="[[align]]"
+    >
+      <hax-panel-item
+        hidden$="[[hidePanelOps]]"
+        on-tap="_clickSaveButton"
+        icon="save"
+        id="haxsavebutton"
+        label="[[__tipText]]"
+        event-name="save"
+        voice-command="save content"
+      ></hax-panel-item>
+      <hax-panel-item
+        icon="image:add-to-photos"
+        icon-class="amber-text"
+        label="Add"
+        event-name="hax-manager-open"
+        value="0"
+      ></hax-panel-item>
+      <hax-panel-item
+        icon="search"
+        icon-class="amber-text"
+        label="Find"
+        event-name="hax-manager-open"
+        value="1"
+      ></hax-panel-item>
+      <hax-panel-item
+        icon="hardware:toys"
+        icon-class="amber-text"
+        label="Make"
+        event-name="hax-manager-open"
+        value="2"
+      ></hax-panel-item>
+      <hax-panel-item
+        icon="view-quilt"
+        icon-class="amber-text"
+        label="Layouts"
+        event-name="hax-blox-picker-open"
+        voice-command="insert block"
+      ></hax-panel-item>
+      <hax-panel-item
+        icon="view-agenda"
+        icon-class="amber-text"
+        label="Templates"
+        event-name="hax-stax-picker-open"
+        voice-command="insert stack"
+      ></hax-panel-item>
+      <hax-panel-item
+        icon="editor:text-fields"
+        icon-class="light-blue-text"
+        label="Text"
+        event-name="text"
+        voice-command="insert text"
+      ></hax-panel-item>
+      <hax-panel-item
+        icon="editor:title"
+        icon-class="light-blue-text"
+        label="Heading"
+        event-name="header"
+        voice-command="insert heading"
+      ></hax-panel-item>
+      <hax-panel-item
+        icon="image:transform"
+        icon-class="light-blue-text"
+        label="Placeholder"
+        event-name="placeholder"
+        voice-command="insert placeholder"
+      ></hax-panel-item>
+      <hax-panel-item
+        icon="editor:space-bar"
+        icon-class="light-blue-text text-darken-1"
+        label="Divider"
+        event-name="divider"
+        voice-command="insert divider"
+      ></hax-panel-item>
       <slot></slot>
-      <hax-panel-item hidden$="[[hidePreferencesButton]]" on-tap="_preferencesDialog" icon="settings" label="Preferences"></hax-panel-item>
-      <hax-panel-item hidden$="[[hideExportButton]]" on-tap="_htmlExportDialog" icon="code" label="Export"></hax-panel-item>
-      <hax-panel-item hidden$="[[hidePanelOps]]" icon="cancel" id="haxcancelbutton" label="Cancel" event-name="cancel" voice-command="cancel hax"></hax-panel-item>
+      <hax-panel-item
+        hidden$="[[hidePreferencesButton]]"
+        on-tap="_preferencesDialog"
+        icon="settings"
+        label="Preferences"
+      ></hax-panel-item>
+      <hax-panel-item
+        hidden$="[[hideExportButton]]"
+        on-tap="_htmlExportDialog"
+        icon="code"
+        label="Export"
+      ></hax-panel-item>
+      <hax-panel-item
+        hidden$="[[hidePanelOps]]"
+        icon="cancel"
+        id="haxcancelbutton"
+        label="Cancel"
+        event-name="cancel"
+        voice-command="cancel hax"
+      ></hax-panel-item>
     </app-drawer>
     <hax-stax-picker></hax-stax-picker>
     <hax-blox-picker></hax-blox-picker>
     <hax-preferences-dialog></hax-preferences-dialog>
-`,
+  `,
 
   is: "hax-panel",
 

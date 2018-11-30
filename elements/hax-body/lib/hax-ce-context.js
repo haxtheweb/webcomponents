@@ -4,7 +4,7 @@ import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/paper-input/paper-textarea.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-checkbox/paper-checkbox.js";
-import "@lrnwebcomponents/hax-body/lib/simple-colors-picker.js";
+import "./simple-colors-picker.js";
 import "./hax-context-item-menu.js";
 import "./hax-context-item.js";
 import "./hax-toolbar.js";
@@ -55,8 +55,8 @@ Polymer({
         width: fit-content;
         background-color: black;
         color: white;
-        opacity: .4;
-        transition: .6s all ease;
+        opacity: 0.4;
+        transition: 0.6s all ease;
       }
       :host(:hover) .human-name-inner {
         opacity: 1;
@@ -64,12 +64,12 @@ Polymer({
       :host(.hax-context-pin-top) hax-toolbar {
         position: fixed;
         top: 64px;
-        opacity: .95;
+        opacity: 0.95;
       }
       :host(.hax-context-pin-bottom) hax-toolbar {
         position: fixed;
         bottom: 0;
-        opacity: .95;
+        opacity: 0.95;
       }
     </style>
     <div class="human-name">
@@ -77,10 +77,22 @@ Polymer({
     </div>
     <hax-toolbar hax-properties="[[haxProperties]]" size="{{ceSize}}">
       <slot slot="primary"></slot>
-      <hax-context-item slot="primary" icon="icons:settings" label="Settings" event-name="hax-manager-configure" hidden$="[[!__hasSettingsForm]]"></hax-context-item>
-      <hax-context-item slot="primary" icon="icons:view-quilt" label="[[__parentName]]" event-name="hax-manager-configure-container" hidden$="[[!__hasParentSettingsForm]]"></hax-context-item>
+      <hax-context-item
+        slot="primary"
+        icon="icons:settings"
+        label="Settings"
+        event-name="hax-manager-configure"
+        hidden$="[[!__hasSettingsForm]]"
+      ></hax-context-item>
+      <hax-context-item
+        slot="primary"
+        icon="icons:view-quilt"
+        label="[[__parentName]]"
+        event-name="hax-manager-configure-container"
+        hidden$="[[!__hasParentSettingsForm]]"
+      ></hax-context-item>
     </hax-toolbar>
-`,
+  `,
 
   is: "hax-ce-context",
 
