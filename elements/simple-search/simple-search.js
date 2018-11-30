@@ -324,6 +324,9 @@ class SimpleSearch extends PolymerElement {
 
   /**
    * are there any results to navigate?
+   *
+   * @param {number} total number of results
+   * @returns {boolean} whether or not there are results
    */
   _hasNoResults(resultCount) {
     return resultCount < 1;
@@ -331,6 +334,9 @@ class SimpleSearch extends PolymerElement {
 
   /**
    * are there any results to navigate?
+   *
+   * @param {array} array of search terms
+   * @returns {boolean} whether or not there are search terms
    */
   _hasNoSearch(searchTerms) {
     return searchTerms.length < 1;
@@ -338,6 +344,11 @@ class SimpleSearch extends PolymerElement {
 
   /**
    * get results span text
+   *
+   * @param {boolean} whether or not there are search terms
+   * @param {number} the current search result's position
+   * @param {number} the total number of search results
+   * @returns {string} "y results" or "x/y" text
    */
   _getResultsSpan(noSearch, resultPointer, resultCount) {
     let html = "";
@@ -376,6 +387,8 @@ class SimpleSearch extends PolymerElement {
 
   /**
    * gets the tab-index of cues based on whether or not interactive cues are disabled
+   *
+   * @param {string} a string of search text
    */
   _getSearchText(find) {
     let temp = new Array();
@@ -434,6 +447,9 @@ class SimpleSearch extends PolymerElement {
    *     "searchObject": root
    *   }
    * ]
+   *
+   * @param {array} an array of search terms
+   * @returns {array} an array of search results
    */
   findMatches(content) {
     let root = this,

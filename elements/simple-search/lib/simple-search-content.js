@@ -69,6 +69,8 @@ class SimpleSearchContent extends PolymerElement {
 
   /**
    * associates simple-search-content with a simple-search
+   *
+   * @param {object} the simple-search element
    */
   enableSearch(searchObject) {
     let root = this,
@@ -91,6 +93,8 @@ class SimpleSearchContent extends PolymerElement {
   }
   /**
    * sets array of content to be rendered
+   *
+   * @param {array} an array of searchable content
    */
   setContent(newContent) {
     this._searchedContent = newContent;
@@ -98,6 +102,8 @@ class SimpleSearchContent extends PolymerElement {
 
   /**
    * sets focus on a matched result based on match number
+   *
+   * @param {number} the number of a search result
    */
   focus(matchNumber) {
     let result = this.$.content.querySelector(
@@ -107,6 +113,8 @@ class SimpleSearchContent extends PolymerElement {
   }
   /**
    * gets tab index based on whether item is a match that can be focused on
+   *
+   * @param {number} the number of a search result
    */
   _getTabIndex(matchNumber) {
     return matchNumber !== undefined && matchNumber !== null ? "1" : "";
