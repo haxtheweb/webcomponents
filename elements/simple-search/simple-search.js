@@ -16,17 +16,17 @@ export { SimpleSearch };
  *
  * @microcopy - the mental model for this element
  *
- * `<simple-search
+ * ```<simple-search
  *   case-sensitive$="[[caseSensitive]]"     // is search case sensitive?
  *   controls$="[[controls]]">
- * </simple-search>`
+ * </simple-search>```
  *
  *   The searchTerms property provides an array of search terms entered in to the input.
  *   The findMatches function returns an array of parsed results.
  *   For example if I searched for the with
  *   `findMatches("The quick brown fox jumps over the lazy dog.")`,
  *   the array would be:
- *   `[
+ *   ``[
  *     {
  *       "matched": true,
  *       "matchNumber": 1,
@@ -42,10 +42,10 @@ export { SimpleSearch };
  *       "matched": false,
  *       "text": " lazy dog."
  *     }
- *   ]`
+ *   ]```
  *   or `findMatches("The quick brown fox jumps over the lazy dog.",true)`,
  *   the array would be:
- *   `[
+ *   ```[
  *     {
  *       "matched": false,
  *       "text": "The quick brown fox jumps over "
@@ -57,32 +57,32 @@ export { SimpleSearch };
  *       "matched": false,
  *       "text": " lazy dog."
  *     }
- *   ]`
+ *   ]```
  *
  *   CSS Variables:
  *   For the input field...
- *   `--paper-input-container-input-color: var(--simple-search-input-color, #111);
+ *   ```--paper-input-container-input-color: var(--simple-search-input-color, #111);
  *   --paper-input-container-focus-color: var(--simple-search-input-placeholder-color, #000);
  *   --paper-input-container-color: var(--simple-search-input-line-color, #fff);
- *   @apply --simple-search-container;`
+ *   @apply --simple-search-container;```
  *
  *   For buttons:
- *   `color: var(--simple-search-button-color, #111);
+ *   ```color: var(--simple-search-button-color, #111);
  *   background-color: var(--simple-search-button-bg-color, #eee);
  *   border-color: var(--simple-search-button-border-color, #ccc);
  *   @apply --simple-search-button;`
  *
  *   For buttons on hover:
- *   `color: var(--simple-search-button-hover-color, #000);
+ *   ```color: var(--simple-search-button-hover-color, #000);
  *   background-color: var(--simple-search-button-hover-bg-color, #fff);
  *   border-color: var(--simple-search-button-hover-border-color, #ddd);
- *   @apply --simple-search-button-hover;`
+ *   @apply --simple-search-button-hover;```
  *
  *   For disabled buttons:
- *   `color: var(--simple-search-button-disabled-color, #666);
+ *   ```color: var(--simple-search-button-disabled-color, #666);
  *   background-color: var(--simple-search-button-disabled-bg-color, #ccc);
  *   border-color: var(--simple-search-button-disabled-border-color, #aaa);
- *   @apply --simple-search-button-disabled;`
+ *   @apply --simple-search-button-disabled;```
  *
  * @polymer
  * @customElement
@@ -407,7 +407,7 @@ class SimpleSearch extends PolymerElement {
    * For example if I searched for the with
    * `findMatches("The quick brown fox jumps over the lazy dog.")`,
    * the array would be:
-   * `[
+   * ```[
    *   {
    *     "matched": true,
    *     "matchNumber": 1,
@@ -427,11 +427,11 @@ class SimpleSearch extends PolymerElement {
    *     "text": " lazy dog.",
    *     "searchObject": root
    *   }
-   * ]`
+   * ]```
    *
    * or `findMatches("The quick brown fox jumps over the lazy dog.",true)`,
    * the array would be:
-   * `[
+   * ```[
    *   {
    *     "matched": false,
    *     "text": "The quick brown fox jumps over ",
@@ -446,7 +446,7 @@ class SimpleSearch extends PolymerElement {
    *     "text": " lazy dog.",
    *     "searchObject": root
    *   }
-   * ]`
+   * ]```
    *
    * @param {array} an array of search terms
    * @returns {array} an array of search results
