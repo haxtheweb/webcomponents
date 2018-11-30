@@ -9,7 +9,7 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "./lib/screenfull-lib.js";
 import "./lib/a11y-media-behaviors.js";
-import "./lib/a11y-media-media-loader.js";
+import "./lib/a11y-media-loader.js";
 import "./lib/a11y-media-play-button.js";
 import "./lib/a11y-media-controls.js";
 import "./lib/a11y-media-transcript.js";
@@ -24,7 +24,7 @@ export { A11yMediaPlayer };
  *
  * @microcopy - the mental model for this element
  *
- *   <a11y-media-player
+ *   ```<a11y-media-player
  *     accent-color$="[[accentColor]]"             // Optional accent color for controls,
  *                                                 // using the following materialize colors:
  *                                                 // red, pink, purple, deep-purple, indigo, blue,
@@ -60,48 +60,48 @@ export { A11yMediaPlayer };
  *     <track label="English" kind="subtitles" srclang="en" src="path/to/subtitles/en.vtt" default>
  *     <track label="Deutsch" kind="subtitles" srclang="de" src="path/to/subtitles/de.vtt">
  *     <track label="Español" kind="subtitles" srclang="es" src="path/to/subtitles/es.vtt">
- *   </a11y-media-player>
+ *   </a11y-media-player>```
  *
  * Intermediate customization of player:
- * --a11y-media-text-color: text color, default is --simple-colors-default-theme-grey-11
+ * ```--a11y-media-text-color: text color, default is --simple-colors-default-theme-grey-11
  * --a11y-media-bg-color: background color, default is --simple-colors-default-theme-grey-2
  * --a11y-media-hover-color: text color on hover, default is --simple-colors-default-theme-grey-12
  * --a11y-media-hover-bg-color: background color, default is --simple-colors-default-theme-grey-2
  * --a11y-media-accent-color: an accent color, default is --simple-colors-default-theme-accent-9
  * --a11y-media-faded-accent-color: a subtler version of accent color, default is --simple-colors-default-theme-accent-8
- * --a11y-media-outline-color: border-color of group, default is --a11y-media-bg-color
+ * --a11y-media-outline-color: border-color of group, default is --a11y-media-bg-color```
  *
  * Intermediate customization of transcript:
- * --a11y-media-transcript-color: transcript color, default is --simple-colors-default-theme-grey-12
+ * ```--a11y-media-transcript-color: transcript color, default is --simple-colors-default-theme-grey-12
  * --a11y-media-transcript-bg-color: transcript background color, default is --simple-colors-default-theme-grey-1
  * --a11y-media-transcript-active-cue-color: transcript active cue color, default is --simple-colors-default-theme-grey-12
  * --a11y-media-transcript-active-cue-bg-color: transcript active cue background color, default is --simple-colors-default-theme-grey-1
  * --a11y-media-transcript-focused-cue-color: transcript focused cue color, default is --simple-colors-default-theme-grey-12
  * --a11y-media-transcript-focused-cue-br-color: transcript focused cue background color, default is --simple-colors-default-theme-accent-1
  * --a11y-media-transcript-match-color: transcript match color, default is --simple-colors-default-theme-accent-1
- * --a11y-media-transcript-match-bg-color: transcript match background color, default is --simple-colors-default-theme-grey-12
+ * --a11y-media-transcript-match-bg-color: transcript match background color, default is --simple-colors-default-theme-grey-12```
  *
  * Advanced styles for settings menu:
- * --a11y-media-settings-menu-color: settings menu text color, default is --a11y-media-text-color
+ * ```--a11y-media-settings-menu-color: settings menu text color, default is --a11y-media-text-color
  * --a11y-media-settings-menu-bg-color: settings menu background color, default is --a11y-media-bg-color
  * --a11y-media-settings-menu-hover-color: settings menu text color on hover, default is --a11y-media-hover-color
- * --a11y-media-settings-menu-hover-bg-color: settings menu background color on hover, default is --a11y-media-hover-bg-color
+ * --a11y-media-settings-menu-hover-bg-color: settings menu background color on hover, default is --a11y-media-hover-bg-color```
  *
  * Advanced styles for buttons:
- * --a11y-media-button-color: button text color, default is --a11y-media-text-color
+ * ```--a11y-media-button-color: button text color, default is --a11y-media-text-color
  * --a11y-media-button-bg-color: button background color, default is --a11y-media-bg-color
  * --a11y-media-button-hover-color: button text color when focused/hovered, default is --a11y-media-hover-color
  * --a11y-media-button-hover-bg-color: button background color when focused/hovered, default is --a11y-media-bg-color
- * --a11y-media-button-toggle-color: button text color when tggled on, default is --a11y-media-faded-accent-color
+ * --a11y-media-button-toggle-color: button text color when tggled on, default is --a11y-media-faded-accent-color```
  *
  * Advanced styles for toggles:
- * --paper-toggle-button-unchecked-bar-color: color of toggle button when off, default is --a11y-media-color
+ * ```--paper-toggle-button-unchecked-bar-color: color of toggle button when off, default is --a11y-media-color
  * --paper-toggle-button-unchecked-button-color: color of toggle button when off, default is --a11y-media-color
  * --paper-toggle-button-checked-bar-color: color of toggle button when on, default is --a11y-media-accent-color
- * --paper-toggle-button-checked-button-color: color of toggle button when on, default is --a11y-media-accent-color
+ * --paper-toggle-button-checked-button-color: color of toggle button when on, default is --a11y-media-accent-color```
  *
  * Advanced styles for sliders:
- * --a11y-media-slider-primary-color: primary slider color, default is --a11y-media-accent-color
+ * ```--a11y-media-slider-primary-color: primary slider color, default is --a11y-media-accent-color
  * --a11y-media-slider-secondary-color: slider buffer color, default is --a11y-media-faded-accent-color
  * --a11y-media-slider-pin-color: color of the pin that shows slider value, default is --a11y-media-faded-bg-color
  * --a11y-media-slider-pin-start-color: color of the pin at start default is --a11y-media-faded-bg-color
@@ -111,16 +111,16 @@ export { A11yMediaPlayer };
  * --a11y-media-slider-knob-end-color: slider knob color at end, default is --a11y-media-accent-color
  * --a11y-media-slider-knob-border-color: slider knob bordercolor, default is --a11y-media-accent-color
  * --a11y-media-slider-knob-start-border-color: slider knob border color at start, default is --a11y-media-accent-color
- * --a11y-media-slider-knob-end-border-color: slider knob border color at end, default is --a11y-media-accent-color
+ * --a11y-media-slider-knob-end-border-color: slider knob border color at end, default is --a11y-media-accent-color```
  *
  * @polmyer
  * @customElement
+ * @extends SimpleColors
  * @demo demo/index.html
  */
 
 let A11yMediaPlayer = Polymer({
   _template: html`
-  <custom-style>
     <style is="custom-style" include="simple-colors">
       :host {  
         width: 100%;
@@ -421,7 +421,6 @@ let A11yMediaPlayer = Polymer({
         }
       }
     </style>
-  </custom-style>
     <div class="sr-only">[[mediaCaption]]</div>
     <div id="outerplayer" lang\$="[[uiLanguage]]">
       <div id="player">
@@ -429,9 +428,9 @@ let A11yMediaPlayer = Polymer({
           <div id="sources" hidden\$="[[noHeight]]">
             <a11y-media-play-button id="playbutton" audio-only\$="[[audioOnly]]" disabled="true" hidden\$="[[noPlayButton]]" disabled\$="[[noPlayButton]]" pause-label\$="[[pauseLabel]]" playing\$="[[__playing]]" play-label\$="[[playLabel]]">
             </a11y-media-play-button>
-            <a11y-media-media-loader id="loader" autoplay\$="[[autoplay]]" cc\$="[[cc]]" crossorigin\$="[[crossorigin]]" hidden\$="[[isYoutube]]" lang\$="[[lang]]" loop\$="[[loop]]" muted\$="[[muted]]" manifest\$="[[manifest]]" playback-rate\$="[[playbackRate]]" style\$="[[_getThumbnailCSS(thumbnailSrc)]]" preload\$="[[preload]]" volume\$="[[volume]]">
+            <a11y-media-loader id="loader" autoplay\$="[[autoplay]]" cc\$="[[cc]]" crossorigin\$="[[crossorigin]]" hidden\$="[[isYoutube]]" lang\$="[[lang]]" loop\$="[[loop]]" muted\$="[[muted]]" manifest\$="[[manifest]]" playback-rate\$="[[playbackRate]]" style\$="[[_getThumbnailCSS(thumbnailSrc)]]" preload\$="[[preload]]" volume\$="[[volume]]">
               <slot></slot>
-            </a11y-media-media-loader>
+            </a11y-media-loader>
             <div id="youtube" hidden\$="[[!isYoutube]]" video-id\$="[[videoId]]"></div>
             <div id="customcc" hidden\$="[[!showCustomCaptions]]"><span id="customcctxt"></span></div>
           </div>
