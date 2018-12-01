@@ -1,180 +1,187 @@
-/**
- * Copyright 2018 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
- */
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
-import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-/**
- * `lrn-math`
- * `An element for presenting Math based content.`
- *
- * @demo demo/index.html
- */
-let LrnMath = Polymer({
-  _template: html`
-    [[math]]
-  `,
+// forked from https://github.com/janmarthedal/math-tex
+const document = window.document,
+  states = { start: 1, loading: 2, ready: 3, typesetting: 4, error: 5 };
+let mathjaxHub,
+  typesets = [],
+  state = states.start,
+  styleNode,
+  src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js";
 
-  is: "lrn-math",
-
-  behaviors: [HAXBehaviors.PropertiesBehaviors],
-
-  properties: {
-    /**
-     * Styling for targeting the math pre and post
-     */
-    prefix: {
-      type: String,
-      value: "$$"
-    },
-    suffix: {
-      type: String,
-      value: "$$"
-    },
-    /**
-     * display the math inline
-     */
-    inline: {
-      type: Boolean,
-      value: true,
-      reflectToAttribute: true
-    },
-    /**
-     * The math to get rendered.
-     */
-    math: {
-      type: String
-    },
-    /**
-     * backdown to inject text
-     */
-    mathText: {
-      type: String,
-      observer: "_mathChanged"
-    }
-  },
-
-  observers: ["_inlineChanged(inline)"],
-
-  /**
-   * Modify pre and suffix if inline is set
-   */
-  _inlineChanged: function(inline) {
-    if (inline) {
-      this.prefix = "\\(";
-      this.suffix = "\\)";
-    }
-  },
-  /**
-   * highjack shadowDom
-   */
-  _attachDom(dom) {
-    this.appendChild(dom);
-  },
-  /**
-   * Notice math changed, update slot.
-   */
-  _mathChanged: function(newValue, oldValue) {
-    if (newValue !== oldValue) {
-      while (dom(this).firstChild !== null) {
-        dom(this).removeChild(dom(this).firstChild);
-      }
-      let frag = document.createTextNode(newValue);
-      dom(this).appendChild(frag);
-    }
-  },
-  created: function() {
-    const name = "mathjax";
-    const basePath = pathFromUrl(import.meta.url);
-    const location = `${basePath}lib/mathjax/latest.js`;
-    window.addEventListener(
-      `es-bridge-${name}-loaded`,
-      this._mathjaxLoaded.bind(this)
+function getStyleNode() {
+  const styleNodes = document.querySelectorAll("style");
+  const sn = Array.prototype.filter.call(styleNodes, function(n) {
+    return (
+      n.sheet &&
+      n.sheet.cssRules.length > 100 &&
+      n.sheet.cssRules[0].selectorText === ".mjx-chtml"
     );
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(name, location);
-  },
-  /**
-   * Attached life cycle
-   */
-  attached: function() {
-    // Establish hax properties if they exist
-    let props = {
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Math",
-        description: "Present math in a nice looking way.",
-        icon: "places:all-inclusive",
-        color: "grey",
-        groups: ["Content"],
-        handles: [
-          {
-            type: "math",
-            math: "mathText"
-          },
-          {
-            type: "inline",
-            text: "mathText"
-          }
-        ],
-        meta: {
-          author: "LRNWebComponents"
-        }
-      },
-      settings: {
-        quick: [
-          {
-            property: "inline",
-            title: "Inline",
-            description: "Display this math inline",
-            inputMethod: "boolean",
-            icon: "remove"
-          }
-        ],
-        configure: [
-          {
-            property: "mathText",
-            title: "Math",
-            description: "Math",
-            inputMethod: "textfield",
-            icon: "editor:format-quote"
-          },
-          {
-            property: "inline",
-            title: "Inline",
-            description: "Display this math inline",
-            inputMethod: "boolean",
-            icon: "remove"
-          }
-        ],
-        advanced: []
-      }
-    };
-    this.setHaxProperties(props);
-  },
-  /**
-   * Notice changes to the slot and reflect these to the math value
-   * so that we can render it to the page.
-   */
-  _mathjaxLoaded: function() {
-    this._observer = new FlattenedNodesObserver(this, info => {
-      this.math = info.addedNodes.map(node => node.textContent).toString();
-      window.MathJax.Hub.Config({
-        skipStartupTypeset: true,
-        jax: ["input/TeX", "output/HTML-CSS"],
-        messageStyle: "none",
-        tex2jax: {
-          preview: "none"
-        }
+  });
+  styleNode = sn[0];
+}
+
+// precondition: state === states.ready
+function flush_typesets() {
+  if (!typesets.length) return;
+  const jaxs = [],
+    items = [];
+  typesets.forEach(function(item) {
+    const script = document.createElement("script"),
+      div = document.createElement("div");
+    script.type = item[1] ? "math/tex; mode=display" : "math/tex";
+    script.text = item[0];
+    div.style.position = "fixed";
+    div.style.top = 0;
+    div.style.left = "99999px";
+    div.appendChild(script);
+    document.body.appendChild(div);
+    jaxs.push(script);
+    items.push([div, item[2]]);
+  });
+  typesets = [];
+  state = states.typesetting;
+  mathjaxHub.Queue(["Typeset", mathjaxHub, jaxs]);
+  mathjaxHub.Queue(function() {
+    if (!styleNode) getStyleNode();
+    items.forEach(function(item) {
+      const div = item[0];
+      const result =
+        div.firstElementChild.tagName === "SPAN" ? div.firstElementChild : null;
+      item[1](result, styleNode);
+      document.body.removeChild(div);
+    });
+    state = states.ready;
+    flush_typesets();
+  });
+}
+
+function load_library() {
+  state = states.loading;
+  window.MathJax = {
+    skipStartupTypeset: true,
+    showMathMenu: false,
+    jax: ["input/TeX", "output/CommonHTML"],
+    TeX: {
+      extensions: [
+        "AMSmath.js",
+        "AMSsymbols.js",
+        "noErrors.js",
+        "noUndefined.js"
+      ]
+    },
+    AuthorInit: function() {
+      mathjaxHub = window.MathJax.Hub;
+      mathjaxHub.Register.StartupHook("End", function() {
+        state = states.ready;
+        flush_typesets();
       });
-      window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, "lrn-math"]);
+    }
+  };
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src = src;
+  script.async = true;
+  script.onerror = function() {
+    console.warn("Error loading MathJax library " + src);
+    state = states.error;
+    typesets = [];
+  };
+  document.head.appendChild(script);
+}
+
+class MathTexController extends HTMLElement {
+  connectedCallback() {
+    if (this.hasAttribute("src")) src = this.getAttribute("src");
+    if (!this.hasAttribute("lazy")) load_library();
+  }
+
+  typeset(math, displayMode, cb) {
+    if (state === states.error) return;
+    typesets.push([math, displayMode, cb]);
+    if (state === states.start) load_library();
+    else if (state === states.ready) flush_typesets();
+  }
+}
+
+window.customElements.define("math-tex-controller", MathTexController);
+/*
+Typesets math written in (La)TeX, using [MathJax](http://mathjax.org).
+##### Example
+    <math-tex>c = \sqrt{a^2 + b^2}</math-tex>
+##### Example
+    <math-tex mode="display">\sum_{k=1}^n k = \frac{n (n + 1)}{2}</math-tex>
+@element math-tex
+@version 0.3.2
+@homepage http://github.com/janmarthedal/math-tex/
+*/
+const TAG_NAME = "lrn-math",
+  CONTROLLER_TAG_NAME = "math-tex-controller",
+  mutation_config = {
+    childList: true,
+    characterData: true,
+    attributes: true,
+    subtree: true
+  };
+let handler;
+
+function check_handler() {
+  if (handler) return;
+  handler =
+    document.querySelector(CONTROLLER_TAG_NAME) ||
+    document.createElement(CONTROLLER_TAG_NAME);
+  if (!handler || typeof handler.typeset !== "function") {
+    console.warn(
+      "no %s element defined; %s element will not work",
+      CONTROLLER_TAG_NAME,
+      TAG_NAME
+    );
+    handler = undefined;
+  } else if (!document.contains(handler)) document.head.appendChild(handler);
+}
+
+function update(elem) {
+  const sdom = elem.shadowRoot,
+    math = elem.textContent.trim(),
+    isBlock = elem.getAttribute("mode") === "display",
+    check = (isBlock ? "D" : "I") + math;
+  if (check !== elem._private.check) {
+    while (sdom.firstChild) sdom.removeChild(sdom.firstChild);
+    elem._private.check = check;
+    if (math.length) {
+      handler.typeset(math, isBlock, function(melem, styleNode) {
+        sdom.appendChild(styleNode.cloneNode(true));
+        sdom.appendChild(melem);
+      });
+    }
+  }
+}
+
+class MathTex extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+    check_handler();
+  }
+
+  connectedCallback() {
+    const elem = this;
+    window.requestAnimationFrame(function() {
+      elem._private = {
+        check: "",
+        observer: new MutationObserver(function() {
+          update(elem);
+        })
+      };
+      update(elem);
+      elem._private.observer.observe(elem, mutation_config);
     });
   }
-});
-export { LrnMath };
+
+  disconnectedCallback() {
+    if (this._private) {
+      this._private.observer.disconnect();
+      delete this._private;
+    }
+  }
+}
+
+window.customElements.define(TAG_NAME, MathTex);
