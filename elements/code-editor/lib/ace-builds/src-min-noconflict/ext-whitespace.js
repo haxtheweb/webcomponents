@@ -122,8 +122,8 @@ ace.define(
           ? typeof e == "string"
             ? t.$parseStringArg(e)
             : typeof e.text == "string"
-              ? t.$parseStringArg(e.text)
-              : e
+            ? t.$parseStringArg(e.text)
+            : e
           : {};
       }),
       (t.commands = [

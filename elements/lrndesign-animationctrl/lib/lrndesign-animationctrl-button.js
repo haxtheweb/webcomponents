@@ -18,10 +18,10 @@ Polymer({
       }
     </style>
     <paper-button raised="" id="[[name]]" on-tap="_tap">
-      [[name]] 
+      [[name]]
       <iron-icon icon="[[icon]]" hidden$="[[!icon]]"></iron-icon>
     </paper-button>
-`,
+  `,
 
   is: "lrndesign-animationctrl-button",
 

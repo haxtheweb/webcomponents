@@ -130,52 +130,65 @@ let LrndesignContactcard = Polymer({
       }
     </style>
     <paper-card>
-      <div id="img_wrap"><img class="profile-image" src="[[image]]"></div>
+      <div id="img_wrap"><img class="profile-image" src="[[image]]" /></div>
       <div class="name">
         <template is="dom-if" if="[[name]]">
-        <div>[[name]]</div>
+          <div>[[name]]</div>
         </template>
       </div>
       <div class="position">[[position]]</div>
       <div class="organization">[[organization]]</div>
       <div id="group_icons">
         <div class="icons">
-        <template is="dom-if" if="[[email]]">
-          <a tabindex="-1" href\$="mailto:[[email]]">
-            <paper-button id="mail" title$="Email address [[email]]">
-              <iron-icon icon="mail" class="mail_icon"></iron-icon>
-            </paper-button>
-          </a>
-          <paper-tooltip for="mail" position="bottom">Email</paper-tooltip>
-        </template>
-        <template is="dom-if" if="[[phone]]">
-          <a tabindex="-1" href\$="tel:[[phone]]">
-            <paper-button id="phone" title$="Phone number [[phone]]">
-              <iron-icon icon="maps:local-phone" class="phone_icon"></iron-icon>
+          <template is="dom-if" if="[[email]]">
+            <a tabindex="-1" href\$="mailto:[[email]]">
+              <paper-button id="mail" title$="Email address [[email]]">
+                <iron-icon icon="mail" class="mail_icon"></iron-icon>
               </paper-button>
-          </a>
-          <paper-tooltip for="phone" position="bottom">Call</paper-tooltip>
-        </template>
-        <template is="dom-if" if="[[website]]">
-          <a tabindex="-1" href\$="[[website]]">
-            <paper-button id="website" title$="Website address [[website]]">
-              <iron-icon icon="hardware:desktop-windows" class="computer_icon"></iron-icon>
+            </a>
+            <paper-tooltip for="mail" position="bottom">Email</paper-tooltip>
+          </template>
+          <template is="dom-if" if="[[phone]]">
+            <a tabindex="-1" href\$="tel:[[phone]]">
+              <paper-button id="phone" title$="Phone number [[phone]]">
+                <iron-icon
+                  icon="maps:local-phone"
+                  class="phone_icon"
+                ></iron-icon>
               </paper-button>
-          </a>
-          <paper-tooltip for="website" position="bottom">Visit</paper-tooltip>
-        </template>
-        <template is="dom-if" if="[[twitter]]">
-          <a tabindex="-1" href$="[[twitter]]">
-            <paper-button id="twitter" title$="Twitter name [[twitter]]">
-              <social-media-icons icon="twitter" color="#aeaeae" size="35" class="twitter_icon"></social-media-icons>
+            </a>
+            <paper-tooltip for="phone" position="bottom">Call</paper-tooltip>
+          </template>
+          <template is="dom-if" if="[[website]]">
+            <a tabindex="-1" href\$="[[website]]">
+              <paper-button id="website" title$="Website address [[website]]">
+                <iron-icon
+                  icon="hardware:desktop-windows"
+                  class="computer_icon"
+                ></iron-icon>
               </paper-button>
-          </a>
-          <paper-tooltip for="twitter" position="bottom">Connect</paper-tooltip>
-        </template>
+            </a>
+            <paper-tooltip for="website" position="bottom">Visit</paper-tooltip>
+          </template>
+          <template is="dom-if" if="[[twitter]]">
+            <a tabindex="-1" href$="[[twitter]]">
+              <paper-button id="twitter" title$="Twitter name [[twitter]]">
+                <social-media-icons
+                  icon="twitter"
+                  color="#aeaeae"
+                  size="35"
+                  class="twitter_icon"
+                ></social-media-icons>
+              </paper-button>
+            </a>
+            <paper-tooltip for="twitter" position="bottom"
+              >Connect</paper-tooltip
+            >
+          </template>
         </div>
       </div>
     </paper-card>
-`,
+  `,
 
   is: "lrndesign-contactcard",
 

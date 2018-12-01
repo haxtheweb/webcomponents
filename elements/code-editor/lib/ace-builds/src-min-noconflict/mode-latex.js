@@ -136,8 +136,8 @@ ace.define(
                 return i[1]
                   ? this.latexBlock(e, n, i[0].length - 1)
                   : i[2]
-                    ? this.latexSection(e, n, i[0].length - 1)
-                    : this.openingBracketBlock(e, "{", n, i.index);
+                  ? this.latexSection(e, n, i[0].length - 1)
+                  : this.openingBracketBlock(e, "{", n, i.index);
               var i = this.foldingStopMarker.exec(r);
               if (i)
                 return i[1]

@@ -85,18 +85,19 @@ let PaperIconPicker = Polymer({
        * An easy workaround is to use an :after pseudo element instead. */
       .icon:after {
         @apply --layout-fit;
-        content: '';
+        content: "";
         -webkit-transition: -webkit-transform 0.2s;
-        transition: transform .2s;
+        transition: transform 0.2s;
         z-index: 0;
       }
 
-      .icon:hover, .icon:focus {
+      .icon:hover,
+      .icon:focus {
         -webkit-transform: scale(1.8, 1.8);
         transform: scale(1.8, 1.8);
         outline: none;
         z-index: 1;
-        background-color: #FFFFFF;
+        background-color: #ffffff;
         border-radius: 0;
         border: 1px solid #888888;
         color: orange !important;
@@ -107,11 +108,11 @@ let PaperIconPicker = Polymer({
           margin: 0;
           padding: 0;
           min-height: 0;
-        };
+        }
 
         --paper-item-focused-before: {
           opacity: 0;
-        };
+        }
       }
 
       paper-listbox {
@@ -181,11 +182,33 @@ let PaperIconPicker = Polymer({
         color: var(--google-blue-700);
       }
     </style>
-    <paper-menu-button id="iconpicker" on-tap="_onOpen" vertical-align="[[verticalAlign]]" horizontal-align="[[horizontalAlign]]" opened="{{opened}}">
-      <paper-icon-button id="iconButton" icon="swatch:perm-media" class="dropdown-trigger" alt="icon picker" noink$="[[noink]]" slot="dropdown-trigger"></paper-icon-button>
-      <iron-list grid items="[[renderIconList]]" id="container" slot="dropdown-content">
+    <paper-menu-button
+      id="iconpicker"
+      on-tap="_onOpen"
+      vertical-align="[[verticalAlign]]"
+      horizontal-align="[[horizontalAlign]]"
+      opened="{{opened}}"
+    >
+      <paper-icon-button
+        id="iconButton"
+        icon="swatch:perm-media"
+        class="dropdown-trigger"
+        alt="icon picker"
+        noink$="[[noink]]"
+        slot="dropdown-trigger"
+      ></paper-icon-button>
+      <iron-list
+        grid
+        items="[[renderIconList]]"
+        id="container"
+        slot="dropdown-content"
+      >
         <template>
-          <paper-item on-tap="_onIconTap" class$="icon-group-[[item.index]] icon" value="[[item.icon]]">
+          <paper-item
+            on-tap="_onIconTap"
+            class$="icon-group-[[item.index]] icon"
+            value="[[item.icon]]"
+          >
             <iron-icon icon="[[item.icon]]" value="[[item.icon]]"></iron-icon>
           </paper-item>
         </template>
@@ -194,8 +217,13 @@ let PaperIconPicker = Polymer({
     <paper-tooltip for="iconpicker" position="bottom" offset="14">
       [[iconText]]
     </paper-tooltip>
-    <iron-a11y-keys target="[[iconpicker]]" keys="escape" on-keys-pressed="close" stop-keyboard-event-propagation></iron-a11y-keys>
-`,
+    <iron-a11y-keys
+      target="[[iconpicker]]"
+      keys="escape"
+      on-keys-pressed="close"
+      stop-keyboard-event-propagation
+    ></iron-a11y-keys>
+  `,
 
   is: "paper-icon-picker",
   /**

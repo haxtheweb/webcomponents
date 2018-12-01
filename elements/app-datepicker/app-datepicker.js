@@ -101,7 +101,8 @@ Custom property | Description | Default
 @demo demo/index.html
 */
 let AppDatepicker = Polymer({
-  _template: html`<style>
+  _template: html`
+    <style>
       :host {
         display: block;
         position: relative;
@@ -327,29 +328,47 @@ let AppDatepicker = Polymer({
         color: var(--app-datepicker-disabled-color, #9e9e9e);
       }
 
-
       /* outline: none for non-selectable and disabled days */
       .days-of-month > .each-days-of-month.is-disabled-day,
       .days-of-month > .each-days-of-month.is-non-selectable {
         outline: none;
       }
       /* Date hover styling */
-      .days-of-month > .each-days-of-month:hover:not(.is-disabled-day):not(.is-non-selectable):not(.chosen-days-of-month),
-      .days-of-month > .each-days-of-month:focus:not(.is-disabled-day):not(.is-non-selectable):not(.chosen-days-of-month) {
+      .days-of-month
+        > .each-days-of-month:hover:not(.is-disabled-day):not(.is-non-selectable):not(.chosen-days-of-month),
+      .days-of-month
+        > .each-days-of-month:focus:not(.is-disabled-day):not(.is-non-selectable):not(.chosen-days-of-month) {
         color: var(--app-datepicker-date-hover-color, #f5f5f5);
-        background-color: var(--app-datepicker-date-hover-background-color, #80cbc4);
+        background-color: var(
+          --app-datepicker-date-hover-background-color,
+          #80cbc4
+        );
         border-radius: 50%;
         cursor: pointer;
       }
-      :host(.dark-theme) .days-of-month >  .each-days-of-month:hover:not(.is-disabled-day):not(.is-non-selectable):not(.chosen-days-of-month),
-      :host(.dark-theme) .days-of-month >  .each-days-of-month:focus:not(.is-disabled-day):not(.is-non-selectable):not(.chosen-days-of-month) {
+      :host(.dark-theme)
+        .days-of-month
+        > .each-days-of-month:hover:not(.is-disabled-day):not(.is-non-selectable):not(.chosen-days-of-month),
+      :host(.dark-theme)
+        .days-of-month
+        > .each-days-of-month:focus:not(.is-disabled-day):not(.is-non-selectable):not(.chosen-days-of-month) {
         color: var(--app-datepicker-date-hover-color, #777);
-        background-color: var(--app-datepicker-date-hover-background-color, #b2dfdb);
+        background-color: var(
+          --app-datepicker-date-hover-background-color,
+          #b2dfdb
+        );
       }
-      :host(.goog-theme) .days-of-month > .each-days-of-month:hover:not(.is-disabled-day):not(.is-non-selectable):not(.chosen-days-of-month),
-      :host(.goog-theme) .days-of-month > .each-days-of-month:focus:not(.is-disabled-day):not(.is-non-selectable):not(.chosen-days-of-month) {
+      :host(.goog-theme)
+        .days-of-month
+        > .each-days-of-month:hover:not(.is-disabled-day):not(.is-non-selectable):not(.chosen-days-of-month),
+      :host(.goog-theme)
+        .days-of-month
+        > .each-days-of-month:focus:not(.is-disabled-day):not(.is-non-selectable):not(.chosen-days-of-month) {
         color: var(--app-datepicker-date-hover-color, #f5f5f5);
-        background-color: var(--app-datepicker-date-hover-background-color, #e57373);
+        background-color: var(
+          --app-datepicker-date-hover-background-color,
+          #e57373
+        );
       }
 
       /* Focus ring styling - replace outline with background-color */
@@ -362,7 +381,10 @@ let AppDatepicker = Polymer({
       .each-list-of-years.is-selected:focus,
       .each-list-of-years.is-selected:hover {
         font-weight: 700;
-        background-color: var(--app-datepicker-year-hover-background-color, #e0e0e0);
+        background-color: var(
+          --app-datepicker-year-hover-background-color,
+          #e0e0e0
+        );
 
         @apply --app-datepicker-year-hover;
       }
@@ -371,7 +393,10 @@ let AppDatepicker = Polymer({
       :host(.dark-theme) .each-list-of-years.is-selected:focus,
       :host(.dark-theme) .each-list-of-years.is-selected:hover {
         font-weight: 700;
-        background-color: var(--app-datepicker-year-hover-background-color, #616161);
+        background-color: var(
+          --app-datepicker-year-hover-background-color,
+          #616161
+        );
 
         @apply --app-datepicker-year-hover;
       }
@@ -380,7 +405,10 @@ let AppDatepicker = Polymer({
       :host(.goog-theme) .each-list-of-years.is-selected:focus,
       :host(.goog-theme) .each-list-of-years.is-selected:hover {
         font-weight: 700;
-        background-color: var(--app-datepicker-year-hover-background-color, #424242);
+        background-color: var(
+          --app-datepicker-year-hover-background-color,
+          #424242
+        );
 
         @apply --app-datepicker-year-hover;
       }
@@ -419,7 +447,10 @@ let AppDatepicker = Polymer({
       /* paper-icon-button */
       paper-icon-button {
         color: var(--app-datepicker-icon-button-color, #737373);
-        --paper-icon-button-ink-color: var(--app-datepicker-icon-button-ink-color, #737373);
+        --paper-icon-button-ink-color: var(
+          --app-datepicker-icon-button-ink-color,
+          #737373
+        );
       }
 
       /* content tag selector */
@@ -441,7 +472,10 @@ let AppDatepicker = Polymer({
         font-size: 12px;
         font-weight: 500;
 
-        --paper-button-ink-color: var(--app-datepicker-button-ink-color, #737373);
+        --paper-button-ink-color: var(
+          --app-datepicker-button-ink-color,
+          #737373
+        );
 
         @apply --app-datepicker-buttons;
       }
@@ -452,9 +486,9 @@ let AppDatepicker = Polymer({
       .days-of-month {
         will-change: transform;
         -webkit-transform: translate3d(0px, 0px, 0px);
-                transform: translate3d(0px, 0px, 0px);
+        transform: translate3d(0px, 0px, 0px);
         -webkit-backface-visibility: hidden;
-                backface-visibility: hidden;
+        backface-visibility: hidden;
       }
 
       iron-list {
@@ -463,7 +497,7 @@ let AppDatepicker = Polymer({
           transform: translate3d(0px, 0px, 0px);
           -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-        };
+        }
       }
 
       /* landscape */
@@ -512,7 +546,7 @@ let AppDatepicker = Polymer({
           word-wrap: break-word;
         }
         /* Hack for Edge 12+ */
-        @supports (-ms-accelerator:true) {
+        @supports (-ms-accelerator: true) {
           :host(:not(.vertical-view)) .selected-date > div {
             white-space: pre-wrap;
           }
@@ -570,7 +604,10 @@ let AppDatepicker = Polymer({
       :host(.dark-theme) .days-of-week {
         color: var(--app-datepicker-weekdays-color, #7c7c7c);
       }
-      :host(.dark-theme) div > .days-of-month > .each-days-of-month.chosen-days-of-month {
+      :host(.dark-theme)
+        div
+        > .days-of-month
+        > .each-days-of-month.chosen-days-of-month {
         color: var(--app-datepicker-selected-day-color, #555);
         background-color: var(--app-datepicker-selected-day-bg, #80cbc4);
       }
@@ -581,18 +618,27 @@ let AppDatepicker = Polymer({
         color: var(--app-datepicker-disabled-color, #ffff00);
       }
       :host(.dark-theme) .each-list-of-years.is-selected {
-        background-color: var(--app-datepicker-selected-year-bg, rgba(0, 0, 0, 0));
+        background-color: var(
+          --app-datepicker-selected-year-bg,
+          rgba(0, 0, 0, 0)
+        );
         color: var(--app-datepicker-selected-year-color, #80cbc4);
         font-size: 26px;
         font-weight: 500;
       }
       :host(.dark-theme) paper-icon-button {
         color: var(--app-datepicker-icon-button-color, #ffff00);
-        --paper-icon-button-ink-color: var(--app-datepicker-icon-button-ink-color, #212121);
+        --paper-icon-button-ink-color: var(
+          --app-datepicker-icon-button-ink-color,
+          #212121
+        );
       }
       :host(.dark-theme) ::slotted(paper-button) {
         color: var(--app-datepicker-button-color, #80cbc4);
-        --paper-button-ink-color: var(--app-datepicker-button-ink-color, #bcbcbc);
+        --paper-button-ink-color: var(
+          --app-datepicker-button-ink-color,
+          #bcbcbc
+        );
       }
 
       /* goog theme */
@@ -606,7 +652,7 @@ let AppDatepicker = Polymer({
       }
       :host(.goog-theme) .selected-year.iron-selected,
       :host(.goog-theme) .selected-date.iron-selected {
-        color: var(--app-datepicker-iron-selected, #DA4336);
+        color: var(--app-datepicker-iron-selected, #da4336);
       }
       :host(.goog-theme) neon-animated-pages.fullcalendar {
         color: var(--app-datepicker-calendar-color, #fff);
@@ -615,35 +661,59 @@ let AppDatepicker = Polymer({
       :host(.goog-theme) .days-of-week {
         color: var(--app-datepicker-weekdays-color, #9e9e9e);
       }
-      :host(.goog-theme) div > .days-of-month > .each-days-of-month.chosen-days-of-month {
+      :host(.goog-theme)
+        div
+        > .days-of-month
+        > .each-days-of-month.chosen-days-of-month {
         color: var(--app-datepicker-selected-day-color, #fff);
-        background-color: var(--app-datepicker-selected-day-bg, #DA4336);
+        background-color: var(--app-datepicker-selected-day-bg, #da4336);
       }
       :host(.goog-theme) .days-of-month > .each-days-of-month.is-today {
-        color: var(--app-datepicker-today-color, #DA4336);
+        color: var(--app-datepicker-today-color, #da4336);
       }
       :host(.goog-theme) .days-of-month > .each-days-of-month.is-disabled-day {
         color: var(--app-datepicker-disabled-color, #646464);
       }
       :host(.goog-theme) .each-list-of-years.is-selected {
-        background-color: var(--app-datepicker-selected-year-bg, rgba(0, 0, 0, 0));
-        color: var(--app-datepicker-selected-year-color, #DA4336);
+        background-color: var(
+          --app-datepicker-selected-year-bg,
+          rgba(0, 0, 0, 0)
+        );
+        color: var(--app-datepicker-selected-year-color, #da4336);
         font-size: 26px;
         font-weight: 500;
       }
       :host(.goog-theme) paper-icon-button {
-        color: var(--app-datepicker-icon-button-color, #DA4336);
-        --paper-icon-button-ink-color: var(--app-datepicker-icon-button-ink-color, #616161);
+        color: var(--app-datepicker-icon-button-color, #da4336);
+        --paper-icon-button-ink-color: var(
+          --app-datepicker-icon-button-ink-color,
+          #616161
+        );
       }
       :host(.goog-theme) ::slotted(paper-button) {
-        color: var(--app-datepicker-button-color, #DA4336);
-        --paper-button-ink-color: var(--app-datepicker-button-ink-color, #616161);
+        color: var(--app-datepicker-button-color, #da4336);
+        --paper-button-ink-color: var(
+          --app-datepicker-button-ink-color,
+          #616161
+        );
       }
     </style>
 
     <div id="dp" class="datepicker">
-      <iron-selector class="selected-fulldate" selected="{{_activeView}}" attr-for-selected="view" on-selected-changed="_onIronSelectorSelectedChanged" fallback-selection="calendar">
-        <div id="showSelectedYear" class="selected-year" tabindex="0" view="year" aria-label="year view">
+      <iron-selector
+        class="selected-fulldate"
+        selected="{{_activeView}}"
+        attr-for-selected="view"
+        on-selected-changed="_onIronSelectorSelectedChanged"
+        fallback-selection="calendar"
+      >
+        <div
+          id="showSelectedYear"
+          class="selected-year"
+          tabindex="0"
+          view="year"
+          aria-label="year view"
+        >
           [[_showSelectedYear]]
         </div>
         <div class="selected-date" view="calendar" tabindex="0">
@@ -651,27 +721,61 @@ let AppDatepicker = Polymer({
         </div>
       </iron-selector>
 
-      <neon-animated-pages class="fullcalendar" selected="[[_activeView]]" attr-for-selected="view" entry-animation="[[pageEntryAnimation]]" exit-animation="[[pageExitAnimation]]" on-neon-animation-finish="_onAnimationFinish">
+      <neon-animated-pages
+        class="fullcalendar"
+        selected="[[_activeView]]"
+        attr-for-selected="view"
+        entry-animation="[[pageEntryAnimation]]"
+        exit-animation="[[pageExitAnimation]]"
+        on-neon-animation-finish="_onAnimationFinish"
+      >
         <div class="calendar-view" view="calendar">
           <div class="navigator">
-            <paper-icon-button icon="datepicker:chevron-left" on-tap="_decrementMonth" noink="[[noAnimation]]"></paper-icon-button>
+            <paper-icon-button
+              icon="datepicker:chevron-left"
+              on-tap="_decrementMonth"
+              noink="[[noAnimation]]"
+            ></paper-icon-button>
             <div id="navMonthYear" class="nav-month-year">
               [[_activeMonthYear]]
             </div>
-            <paper-icon-button icon="datepicker:chevron-right" on-tap="_incrementMonth" noink="[[noAnimation]]"></paper-icon-button>
+            <paper-icon-button
+              icon="datepicker:chevron-right"
+              on-tap="_incrementMonth"
+              noink="[[noAnimation]]"
+            ></paper-icon-button>
           </div>
 
           <div id="daysOfWeek" class="days-of-week">
-            <template is="dom-repeat" items="[[_daysOfWeek]]" index-as="index" strip-whitespace="">
-              <div class="each-days-of-week">
-                [[item]]
-              </div>
+            <template
+              is="dom-repeat"
+              items="[[_daysOfWeek]]"
+              index-as="index"
+              strip-whitespace=""
+            >
+              <div class="each-days-of-week">[[item]]</div>
             </template>
           </div>
 
-          <div id="daysOfMonth" class="days-of-month" on-tap="_chooseDaysOfMonth">
-            <template is="dom-repeat" items="[[_daysOfMonth]]" index-as="index" strip-whitespace="">
-              <div class\$="each-days-of-month[[_isToday(item.index, _activeYear, _activeMonth)]][[_isEmptyDate(item.index)]][[_isChosenDaysOfMonth(item.index, _selectedYear, _selectedMonth, _selectedDate)]][[_isDisableDays(index, firstDayOfWeek, minDate, maxDate, item.index, _shiftedDisableDays.*, disableDates.*)]]" index="[[index]]" date="[[item.index]]" tabindex\$="[[_shouldTabIndex(index, firstDayOfWeek, minDate, maxDate, item.index, _shiftedDisableDays.*, disableDates.*)]]" aria-disabled\$="[[_shouldAriaDisabled(index, firstDayOfWeek, minDate, maxDate, item.index, _shiftedDisableDays.*, disableDates.*)]]" aria-label\$="[[item.index]]">
+          <div
+            id="daysOfMonth"
+            class="days-of-month"
+            on-tap="_chooseDaysOfMonth"
+          >
+            <template
+              is="dom-repeat"
+              items="[[_daysOfMonth]]"
+              index-as="index"
+              strip-whitespace=""
+            >
+              <div
+                class\$="each-days-of-month[[_isToday(item.index, _activeYear, _activeMonth)]][[_isEmptyDate(item.index)]][[_isChosenDaysOfMonth(item.index, _selectedYear, _selectedMonth, _selectedDate)]][[_isDisableDays(index, firstDayOfWeek, minDate, maxDate, item.index, _shiftedDisableDays.*, disableDates.*)]]"
+                index="[[index]]"
+                date="[[item.index]]"
+                tabindex\$="[[_shouldTabIndex(index, firstDayOfWeek, minDate, maxDate, item.index, _shiftedDisableDays.*, disableDates.*)]]"
+                aria-disabled\$="[[_shouldAriaDisabled(index, firstDayOfWeek, minDate, maxDate, item.index, _shiftedDisableDays.*, disableDates.*)]]"
+                aria-label\$="[[item.index]]"
+              >
                 [[item.date]]
               </div>
             </template>
@@ -683,18 +787,37 @@ let AppDatepicker = Polymer({
           </div>
         </div>
 
-        <template is="dom-if" if="[[_isListRendered]]" restamp="true" on-dom-change="_onListRendered" strip-whitespace="">
-          <iron-list id="listOfYears" items="[[_listOfYears]]" view="year" on-neon-animation-finish="_onAnimationFinish" selection-enabled="">
+        <template
+          is="dom-if"
+          if="[[_isListRendered]]"
+          restamp="true"
+          on-dom-change="_onListRendered"
+          strip-whitespace=""
+        >
+          <iron-list
+            id="listOfYears"
+            items="[[_listOfYears]]"
+            view="year"
+            on-neon-animation-finish="_onAnimationFinish"
+            selection-enabled=""
+          >
             <template strip-whitespace="">
-              <div class\$="each-list-of-years[[_isListOfYearsSelected(_selectedYear, item.year)]]" tabindex\$="[[tabIndex]]" aria-label\$="[[item.year]]" label\$="[[item.year]]" on-tap="_goCalendar" on-keydown="_goCalendar">
+              <div
+                class\$="each-list-of-years[[_isListOfYearsSelected(_selectedYear, item.year)]]"
+                tabindex\$="[[tabIndex]]"
+                aria-label\$="[[item.year]]"
+                label\$="[[item.year]]"
+                on-tap="_goCalendar"
+                on-keydown="_goCalendar"
+              >
                 [[item.year]]
               </div>
             </template>
           </iron-list>
         </template>
       </neon-animated-pages>
-
-    </div>`,
+    </div>
+  `,
   is: "app-datepicker",
 
   behaviors: [NeonAnimationRunnerBehavior],

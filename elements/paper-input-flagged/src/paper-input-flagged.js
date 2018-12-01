@@ -24,7 +24,7 @@ let PaperInputFlagged = Polymer({
         display: block;
       }
       iron-icon {
-        transition: .6s all ease-in;
+        transition: 0.6s all ease-in;
         width: 24px;
         height: 24px;
         margin-right: 4px;
@@ -56,14 +56,21 @@ let PaperInputFlagged = Polymer({
         height: 1px;
       }
     </style>
-    <paper-input label="[[label]]" value="{{value}}" char-counter="[[charCounter]]" disabled="[[disabled]]" minlength="[[minlength]]" maxlength="[[minlength]]">
+    <paper-input
+      label="[[label]]"
+      value="{{value}}"
+      char-counter="[[charCounter]]"
+      disabled="[[disabled]]"
+      minlength="[[minlength]]"
+      maxlength="[[minlength]]"
+    >
       <iron-icon id="icon" icon="[[icon]]" slot="prefix"></iron-icon>
     </paper-input>
     <div class="element-invisible">[[__activeMessage]]</div>
     <paper-tooltip for="icon" position="top" offset="20" fit-to-visible-bounds>
-        [[__activeMessage]]
+      [[__activeMessage]]
     </paper-tooltip>
-`,
+  `,
 
   is: "paper-input-flagged",
   behaviors: [PaperInputBehavior],

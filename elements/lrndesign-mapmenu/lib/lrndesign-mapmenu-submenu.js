@@ -21,11 +21,15 @@ Polymer({
         margin-top: 6.4px;
       }
     </style>
-    <lrndesign-mapmenu-header on-tap="_headerClickHandler" avatar-label="[[avatarLabel]]" title="[[title]]" label="[[label]]" opened="[[opened]]"></lrndesign-mapmenu-header>
-    <iron-collapse id="container">
-      <slot id="slot"></slot>
-    </iron-collapse>
-`,
+    <lrndesign-mapmenu-header
+      on-tap="_headerClickHandler"
+      avatar-label="[[avatarLabel]]"
+      title="[[title]]"
+      label="[[label]]"
+      opened="[[opened]]"
+    ></lrndesign-mapmenu-header>
+    <iron-collapse id="container"> <slot id="slot"></slot> </iron-collapse>
+  `,
 
   is: "lrndesign-mapmenu-submenu",
 

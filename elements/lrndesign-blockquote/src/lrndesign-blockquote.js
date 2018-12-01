@@ -51,19 +51,28 @@ let LrndesignBlockquote = Polymer({
         margin-top: 4px;
         text-align: right;
       }
-      :host([depth="1"]) blockquote { @apply --shadow-elevation-2dp; }
-      :host([depth="2"]) blockquote { @apply --shadow-elevation-3dp; }
-      :host([depth="3"]) blockquote { @apply --shadow-elevation-4dp; }
-      :host([depth="4"]) blockquote { @apply --shadow-elevation-6dp; }
-      :host([depth="5"]) blockquote { @apply --shadow-elevation-8dp; }
-
+      :host([depth="1"]) blockquote {
+        @apply --shadow-elevation-2dp;
+      }
+      :host([depth="2"]) blockquote {
+        @apply --shadow-elevation-3dp;
+      }
+      :host([depth="3"]) blockquote {
+        @apply --shadow-elevation-4dp;
+      }
+      :host([depth="4"]) blockquote {
+        @apply --shadow-elevation-6dp;
+      }
+      :host([depth="5"]) blockquote {
+        @apply --shadow-elevation-8dp;
+      }
 
       /* BEGIN HYPERCARDIFY, thanks @realdlnorman */
       :host([hypercard]) ::slotted(*) {
         -webkit-filter: grayscale(1) contrast(300%);
         filter: grayscale(1) contrast(300%);
         font-family: Chikarego, Helvetica, sans-serif;
-        transition: all .6s ease;
+        transition: all 0.6s ease;
       }
       /* Disable grayscale on hover */
       :host([hypercard]:hover) ::slotted(*) {
@@ -72,12 +81,9 @@ let LrndesignBlockquote = Polymer({
       }
     </style>
     <blockquote class\$="[[generateClass(decorate, outset, color, textColor)]]">
-      <slot></slot>
-      <cite class\$="[[textColor]]">
-        [[citation]]
-      </cite>
+      <slot></slot> <cite class\$="[[textColor]]"> [[citation]] </cite>
     </blockquote>
-`,
+  `,
 
   is: "lrndesign-blockquote",
 

@@ -42,7 +42,7 @@ let LrnappCis = Polymer({
       #loading {
         width: 100%;
         z-index: 1000;
-        opacity: .8;
+        opacity: 0.8;
         text-align: center;
         align-content: center;
         justify-content: center;
@@ -77,16 +77,32 @@ let LrnappCis = Polymer({
       .iron-list-container {
         display: flex;
         flex-direction: column;
-        min-height:50vh;
+        min-height: 50vh;
       }
       iron-list {
         flex: 1 1 auto;
       }
     </style>
-    <iron-ajax auto="" url="[[sourcePath]]" params="" handle-as="json" last-response="{{cisResponse}}" on-response="_handleResponse"></iron-ajax>
+    <iron-ajax
+      auto=""
+      url="[[sourcePath]]"
+      params=""
+      handle-as="json"
+      last-response="{{cisResponse}}"
+      on-response="_handleResponse"
+    ></iron-ajax>
 
-    <app-location route="{{route}}" query-params="{{queryParams}}"></app-location>
-    <app-route route="{{route}}" pattern="[[endPoint]]/:page" data="{{data}}" tail="{{tail}}" query-params="{{queryParams}}">
+    <app-location
+      route="{{route}}"
+      query-params="{{queryParams}}"
+    ></app-location>
+    <app-route
+      route="{{route}}"
+      pattern="[[endPoint]]/:page"
+      data="{{data}}"
+      tail="{{tail}}"
+      query-params="{{queryParams}}"
+    >
     </app-route>
 
     <div id="loading">
@@ -95,48 +111,93 @@ let LrnappCis = Polymer({
     </div>
     <app-toolbar class="">
       <span main-title=""></span>
-      <span top-item="" style="text-align:right;font-size:8px;padding-right:16px;">Displaying [[courses.length]] of [[originalCourses.length]]</span>
+      <span
+        top-item=""
+        style="text-align:right;font-size:8px;padding-right:16px;"
+        >Displaying [[courses.length]] of [[originalCourses.length]]</span
+      >
       <paper-dropdown-menu label="Course" hidden\$="[[!courses]]">
-        <paper-listbox slot="dropdown-content" class="dropdown-content" selected="{{queryParams.course}}" attr-for-selected="item-id">
+        <paper-listbox
+          slot="dropdown-content"
+          class="dropdown-content"
+          selected="{{queryParams.course}}"
+          attr-for-selected="item-id"
+        >
           <paper-item></paper-item>
           <template is="dom-repeat" items="[[_toArray(courses)]]" as="course">
-          <paper-item item-id="[[course.id]]">[[course.data.name]]</paper-item>
+            <paper-item item-id="[[course.id]]"
+              >[[course.data.name]]</paper-item
+            >
           </template>
         </paper-listbox>
       </paper-dropdown-menu>
       <paper-dropdown-menu label="Program" hidden\$="[[!programs]]">
-        <paper-listbox slot="dropdown-content" class="dropdown-content" selected="{{queryParams.program}}" attr-for-selected="item-id">
+        <paper-listbox
+          slot="dropdown-content"
+          class="dropdown-content"
+          selected="{{queryParams.program}}"
+          attr-for-selected="item-id"
+        >
           <paper-item></paper-item>
-        <template is="dom-repeat" items="[[_toArray(programs)]]" as="program">
-          <paper-item item-id="[[program.id]]">[[program.data.name]]</paper-item>
-        </template>
+          <template is="dom-repeat" items="[[_toArray(programs)]]" as="program">
+            <paper-item item-id="[[program.id]]"
+              >[[program.data.name]]</paper-item
+            >
+          </template>
         </paper-listbox>
       </paper-dropdown-menu>
       <paper-dropdown-menu label="Academic home" hidden\$="[[!academics]]">
-        <paper-listbox slot="dropdown-content" class="dropdown-content" selected="{{queryParams.academic}}" attr-for-selected="item-id">
+        <paper-listbox
+          slot="dropdown-content"
+          class="dropdown-content"
+          selected="{{queryParams.academic}}"
+          attr-for-selected="item-id"
+        >
           <paper-item></paper-item>
-        <template is="dom-repeat" items="[[_toArray(academics)]]" as="academic">
-          <paper-item item-id="[[academic.id]]">[[academic.data.name]]</paper-item>
-        </template>
+          <template
+            is="dom-repeat"
+            items="[[_toArray(academics)]]"
+            as="academic"
+          >
+            <paper-item item-id="[[academic.id]]"
+              >[[academic.data.name]]</paper-item
+            >
+          </template>
         </paper-listbox>
       </paper-dropdown-menu>
     </app-toolbar>
     <div class="courses-grid">
-    <iron-pages selected="{{data.page}}" attr-for-selected="name" fallback-selection="courses" role="main">
-      <div class="iron-list-container" name="courses">
-        <iron-list id="list" items="[[courses]]" as="course" grid="">
-          <template>
-          <paper-button data-course-id$="[[course.id]]" class="coursecard-wrapper" on-tap="_loadCourseUrl">
-            <lrnapp-cis-course-card elevation="2" data-course-id$="[[course.id]]" name="[[course.data.name]]" image="[[course.data.image]]" title="[[course.data.title]]" color="[[course.data.color]]">
-            </lrnapp-cis-course-card>
-          </paper-button>
-          </template>
-        </iron-list>
-      </div>
-    </iron-pages>
+      <iron-pages
+        selected="{{data.page}}"
+        attr-for-selected="name"
+        fallback-selection="courses"
+        role="main"
+      >
+        <div class="iron-list-container" name="courses">
+          <iron-list id="list" items="[[courses]]" as="course" grid="">
+            <template>
+              <paper-button
+                data-course-id$="[[course.id]]"
+                class="coursecard-wrapper"
+                on-tap="_loadCourseUrl"
+              >
+                <lrnapp-cis-course-card
+                  elevation="2"
+                  data-course-id$="[[course.id]]"
+                  name="[[course.data.name]]"
+                  image="[[course.data.image]]"
+                  title="[[course.data.title]]"
+                  color="[[course.data.color]]"
+                >
+                </lrnapp-cis-course-card>
+              </paper-button>
+            </template>
+          </iron-list>
+        </div>
+      </iron-pages>
     </div>
     <paper-toast id="toast"></paper-toast>
-`,
+  `,
 
   is: "lrnapp-cis",
 

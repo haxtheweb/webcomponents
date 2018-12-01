@@ -10,7 +10,7 @@ Polymer({
         display: none;
       }
     </style>
-`,
+  `,
 
   is: "relative-heading-manager",
   properties: {},

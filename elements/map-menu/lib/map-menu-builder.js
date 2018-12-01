@@ -11,15 +11,28 @@ Polymer({
 
     <template id="domRepeat" is="dom-repeat" items="[[items]]" as="item">
       <template is="dom-if" if="[[__hasChildren(item)]]">
-        <map-menu-submenu title="[[item.title]]" id="[[item.id]]" url="[[item.url]]" icon="[[item.metadata.icon]]" open="[[item.active]]" avatar-label="[[item.avatarLabel]]">
+        <map-menu-submenu
+          title="[[item.title]]"
+          id="[[item.id]]"
+          url="[[item.url]]"
+          icon="[[item.metadata.icon]]"
+          open="[[item.active]]"
+          avatar-label="[[item.avatarLabel]]"
+        >
           <map-menu-builder items="[[item.children]]"></map-menu-builder>
         </map-menu-submenu>
       </template>
       <template is="dom-if" if="[[!__hasChildren(item)]]">
-        <map-menu-item title="[[item.title]]" id="[[item.id]]" url="[[item.url]]" icon="[[item.metadata.icon]]" active-path="[[activePath]]"></map-menu-item>
+        <map-menu-item
+          title="[[item.title]]"
+          id="[[item.id]]"
+          url="[[item.url]]"
+          icon="[[item.metadata.icon]]"
+          active-path="[[activePath]]"
+        ></map-menu-item>
       </template>
     </template>
-`,
+  `,
 
   is: "map-menu-builder",
 

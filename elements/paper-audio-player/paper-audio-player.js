@@ -49,14 +49,14 @@ let PaperAudioPlayer = Polymer({
       :host {
         display: block;
         box-sizing: border-box;
-        font-family: 'Roboto', 'Noto', sans-serif;
+        font-family: "Roboto", "Noto", sans-serif;
       }
 
       #wrapper {
         position: relative;
         cursor: pointer;
         height: 50px;
-        box-shadow: 0 1px 2px rgba(0,0,0,.3);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
       }
 
       #left,
@@ -67,11 +67,11 @@ let PaperAudioPlayer = Polymer({
       }
 
       #left {
-        background-color:  var(--paper-audio-player-color, blueviolet);
+        background-color: var(--paper-audio-player-color, blueviolet);
       }
 
       #right {
-        background-color: rgba(255,255,255,.75);
+        background-color: rgba(255, 255, 255, 0.75);
       }
 
       paper-icon-button,
@@ -122,7 +122,7 @@ let PaperAudioPlayer = Polymer({
       #center {
         position: relative;
         overflow: hidden;
-        background-color: rgba(255,255,255,.75);
+        background-color: rgba(255, 255, 255, 0.75);
       }
 
       #progress {
@@ -207,15 +207,40 @@ let PaperAudioPlayer = Polymer({
     <div id="wrapper" class="layout-horizontal">
       <div id="left" class="self-start" on-tap="playPause">
         <!-- Icon -->
-        <paper-icon-button id="play" icon="paper-audio-icons:play-arrow" class="fit" hidden$="[[ _hidePlayIcon(isPlaying, canBePlayed) ]]" role="button" aria-label="Play Audio" tabindex="-1"></paper-icon-button>
-        <paper-icon-button id="pause" icon="paper-audio-icons:pause" class="fit" hidden$="[[ !isPlaying ]]" role="button" aria-label="Pause Audio" tabindex="-1"></paper-icon-button>
-        <iron-icon id="error" icon="paper-audio-icons:error-outline" class="fit" hidden$="[[ !error ]]"></iron-icon>
+        <paper-icon-button
+          id="play"
+          icon="paper-audio-icons:play-arrow"
+          class="fit"
+          hidden$="[[ _hidePlayIcon(isPlaying, canBePlayed) ]]"
+          role="button"
+          aria-label="Play Audio"
+          tabindex="-1"
+        ></paper-icon-button>
+        <paper-icon-button
+          id="pause"
+          icon="paper-audio-icons:pause"
+          class="fit"
+          hidden$="[[ !isPlaying ]]"
+          role="button"
+          aria-label="Pause Audio"
+          tabindex="-1"
+        ></paper-icon-button>
+        <iron-icon
+          id="error"
+          icon="paper-audio-icons:error-outline"
+          class="fit"
+          hidden$="[[ !error ]]"
+        ></iron-icon>
       </div>
       <div id="center" class="flex" on-down="_onDown">
         <!-- Title -->
         <div id="title" class="fit" role="alert">[[title]]</div>
         <!-- Audio HTML5 element -->
-        <audio id="audio" src$="[[src]]" preload$="[[ _setPreload(autoPlay, preload) ]]"></audio>
+        <audio
+          id="audio"
+          src$="[[src]]"
+          preload$="[[ _setPreload(autoPlay, preload) ]]"
+        ></audio>
         <!-- Progress bar -->
         <div id="progress" class="fit"></div>
         <paper-ripple></paper-ripple>
@@ -227,13 +252,22 @@ let PaperAudioPlayer = Polymer({
       <div id="right" class="self-end" on-click="restart">
         <!-- Duration -->
         <div id="duration" class="fit" hidden\$="[[ended]]">
-          <span class="fit" role="timer" aria-label="Audio Track Length">[[ _convertSecToMin(timeLeft) ]]</span>
+          <span class="fit" role="timer" aria-label="Audio Track Length"
+            >[[ _convertSecToMin(timeLeft) ]]</span
+          >
         </div>
         <!-- Icon -->
-        <paper-icon-button id="replay" class="fit" icon="paper-audio-icons:replay" tabindex="-1" role="button" aria-label="Replay Audio"></paper-icon-button>
+        <paper-icon-button
+          id="replay"
+          class="fit"
+          icon="paper-audio-icons:replay"
+          tabindex="-1"
+          role="button"
+          aria-label="Replay Audio"
+        ></paper-icon-button>
       </div>
     </div>
-`,
+  `,
 
   is: "paper-audio-player",
 

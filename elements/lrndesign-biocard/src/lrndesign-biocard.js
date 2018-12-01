@@ -20,32 +20,41 @@ let LrndesignBiocard = Polymer({
       }
     </style>
     <paper-card image="[[image]]">
-  <div class="card-content">
-    <div class="cafe-header">[[instructorName]]
-    </div>
-    <p>Contact Me:<br>
- <paper-contact-list>    
-    <paper-contact-address latitude="51.5287718" longitude="-0.2416798">[[address]]</paper-contact-address>
-    <paper-contact-email>[[email]]</paper-contact-email>
-    <paper-contact-phone>[[phone]]</paper-contact-phone>
-    <paper-contact-mobile>[[phone]]</paper-contact-mobile>
-</paper-contact-list>
-    </p><p><slot></slot></p>
-      <p><iron-icon icon="icons:query-builder"></iron-icon> Office Hours: </p>
-      [[officeHours]]
-      <p><a href="mailto:[[email]]">
-  <paper-button raised><iron-icon icon="icons:today"></iron-icon> Schedule Appointment</paper-button>
-</a></p>
-<p>Social
-<paper-contact-list style="width: 300px;">
-    <paper-contact-linkedin>[[linkedin]]</paper-contact-linkedin>
-    <paper-contact-twitter>[[twitter]]</paper-contact-twitter>
-    <paper-contact-skype>[[videoConf]]</paper-contact-skype>
-</paper-contact-list>
-</p>
-</div>
-</paper-card>
-`,
+      <div class="card-content">
+        <div class="cafe-header">[[instructorName]]</div>
+        <p>
+          Contact Me:<br />
+          <paper-contact-list>
+            <paper-contact-address latitude="51.5287718" longitude="-0.2416798"
+              >[[address]]</paper-contact-address
+            >
+            <paper-contact-email>[[email]]</paper-contact-email>
+            <paper-contact-phone>[[phone]]</paper-contact-phone>
+            <paper-contact-mobile>[[phone]]</paper-contact-mobile>
+          </paper-contact-list>
+        </p>
+        <p><slot></slot></p>
+        <p><iron-icon icon="icons:query-builder"></iron-icon> Office Hours:</p>
+        [[officeHours]]
+        <p>
+          <a href="mailto:[[email]]">
+            <paper-button raised
+              ><iron-icon icon="icons:today"></iron-icon> Schedule
+              Appointment</paper-button
+            >
+          </a>
+        </p>
+        <p>
+          Social
+          <paper-contact-list style="width: 300px;">
+            <paper-contact-linkedin>[[linkedin]]</paper-contact-linkedin>
+            <paper-contact-twitter>[[twitter]]</paper-contact-twitter>
+            <paper-contact-skype>[[videoConf]]</paper-contact-skype>
+          </paper-contact-list>
+        </p>
+      </div>
+    </paper-card>
+  `,
 
   is: "lrndesign-biocard",
 

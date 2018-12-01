@@ -20,29 +20,34 @@ stories.add("simple-picker", () => {
     if (!SimplePicker.properties.hasOwnProperty(key)) continue;
     // convert typed props
     if (SimplePicker.properties[key].type.name) {
-      let method = 'text';
+      let method = "text";
       switch (SimplePicker.properties[key].type.name) {
-        case 'Boolean':
-        case 'Number':
-        case 'Object':
-        case 'Array':
-        case 'Date':
+        case "Boolean":
+        case "Number":
+        case "Object":
+        case "Array":
+        case "Date":
           method = SimplePicker.properties[key].type.name.toLowerCase();
           break;
         default:
-          method = 'text';
+          method = "text";
           break;
       }
-      binding[key] = storybookBridge[method](key, SimplePicker.properties[key].value);
+      binding[key] = storybookBridge[method](
+        key,
+        SimplePicker.properties[key].value
+      );
       // ensure ke-bab case
-      let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function (match) {
-        return '-' + match.toLowerCase();
+      let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(
+        match
+      ) {
+        return "-" + match.toLowerCase();
       });
       elementDemo += ` ${kebab}="${binding[key]}"`;
     }
   }
   const innerText = storybookBridge.text("Inner contents", "Picker");
-  elementDemo += `> ${ innerText }</simple-picker>`
+  elementDemo += `> ${innerText}</simple-picker>`;
   return `
   <h1>Live demo</h1>
   ${elementDemo}

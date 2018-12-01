@@ -20,34 +20,39 @@ Please see the `eco-json-schema-object` documentation for further information.
 Polymer({
   is: "eco-json-schema-input",
   _template: html`
-  <custom-style>
-    <style is="custom-style" include="iron-flex iron-flex-alignment">
-      paper-input {
-        padding: 2px;
-        --paper-input-container-label: {
-          white-space: normal;
-          position: static;
-          font-size: 16px;
-          color: #212121;
+    <custom-style>
+      <style is="custom-style" include="iron-flex iron-flex-alignment">
+        paper-input {
+          padding: 2px;
+          --paper-input-container-label: {
+            white-space: normal;
+            position: static;
+            font-size: 16px;
+            color: #212121;
+          }
+          --paper-input-container: {
+            width: 100%;
+          }
+          --paper-input-container-input: {
+            width: 100% !important;
+            background-color: transparent !important;
+            border: none !important;
+          }
+          --paper-input-container-shared-input-style: {
+            width: 100% !important;
+            background-color: transparent !important;
+            border: none !important;
+          }
         }
-        --paper-input-container: {
-          width: 100%;
-        };
-        --paper-input-container-input: {
-          width: 100% !important;
-          background-color: transparent !important;
-          border: none !important;
-        };
-        --paper-input-container-shared-input-style: {
-          width: 100% !important;
-          background-color: transparent !important;
-          border: none !important;
-        };
-      }
-    </style>
+      </style>
     </custom-style>
-    <paper-input id="input" class="flex" value="{{value}}" auto-validate></paper-input>  
-`,
+    <paper-input
+      id="input"
+      class="flex"
+      value="{{value}}"
+      auto-validate
+    ></paper-input>
+  `,
   behaviors: [AppLocalizeBehavior],
 
   properties: {

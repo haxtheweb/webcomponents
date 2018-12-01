@@ -10,7 +10,7 @@ Polymer({
         display: block;
       }
 
-      :host([collapsable])>map-menu-header {
+      :host([collapsable]) > map-menu-header {
         cursor: pointer;
         display: block;
       }
@@ -20,14 +20,20 @@ Polymer({
       }
 
       #container ::slotted(map-menu-item) {
-        margin-top: .4em;
+        margin-top: 0.4em;
       }
     </style>
-    <map-menu-header avatar-label="[[avatarLabel]]" id="[[id]]" title="[[title]]" label="[[label]]" opened="[[opened]]" url="[[url]]" icon="[[icon]]"></map-menu-header>
-    <iron-collapse id="container">
-      <slot></slot>
-    </iron-collapse>
-`,
+    <map-menu-header
+      avatar-label="[[avatarLabel]]"
+      id="[[id]]"
+      title="[[title]]"
+      label="[[label]]"
+      opened="[[opened]]"
+      url="[[url]]"
+      icon="[[icon]]"
+    ></map-menu-header>
+    <iron-collapse id="container"> <slot></slot> </iron-collapse>
+  `,
 
   is: "map-menu-submenu",
 

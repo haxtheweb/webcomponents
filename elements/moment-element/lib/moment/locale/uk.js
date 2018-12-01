@@ -6,8 +6,8 @@
   typeof require === "function"
     ? factory(require("../moment"))
     : typeof define === "function" && define.amd
-      ? define(["../moment"], factory)
-      : factory(global.moment);
+    ? define(["../moment"], factory)
+    : factory(global.moment);
 })(this, function(moment) {
   "use strict";
 
@@ -16,8 +16,8 @@
     return num % 10 === 1 && num % 100 !== 11
       ? forms[0]
       : num % 10 >= 2 && num % 10 <= 4 && (num % 100 < 10 || num % 100 >= 20)
-        ? forms[1]
-        : forms[2];
+      ? forms[1]
+      : forms[2];
   }
   function relativeTimeWithPlural(number, withoutSuffix, key) {
     var format = {
@@ -56,8 +56,8 @@
     var nounCase = /(\[[ВвУу]\]) ?dddd/.test(format)
       ? "accusative"
       : /\[?(?:минулої|наступної)? ?\] ?dddd/.test(format)
-        ? "genitive"
-        : "nominative";
+      ? "genitive"
+      : "nominative";
     return weekdays[nounCase][m.day()];
   }
   function processHoursFunction(str) {

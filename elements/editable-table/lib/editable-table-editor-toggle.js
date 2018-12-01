@@ -40,11 +40,16 @@ Polymer({
     </style>
     <div class="setting">
       <div class="setting-control">
-        <paper-toggle-button id="button" checked\$="[[value]]" disabled\$="[[disabled]]">[[label]]</paper-toggle-button>
+        <paper-toggle-button
+          id="button"
+          checked\$="[[value]]"
+          disabled\$="[[disabled]]"
+          >[[label]]</paper-toggle-button
+        >
         <paper-tooltip id="tooltip" for="button">[[tooltip]]</paper-tooltip>
       </div>
     </div>
-`,
+  `,
 
   is: "editable-table-editor-toggle",
   listeners: { change: "_onChange" },

@@ -21,15 +21,17 @@ class BeakerBroker extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
-  display: block;
-}
+      <style>
+        :host {
+          display: block;
+        }
 
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`;
+        :host([hidden]) {
+          display: none;
+        }
+      </style>
+      <slot></slot>
+    `;
   }
 
   // haxProperty definition

@@ -148,8 +148,14 @@ let SelfCheck = Polymer({
     </style>
 
     <paper-card image="[[image]]" alt="[[alt]]">
-      <div class="triangle" style\$="border-bottom-color:[[backgroundColor]];"></div>
-      <div id="header_wrap" class\$="[[backgroundColorClass]] [[textColorClass]]">
+      <div
+        class="triangle"
+        style\$="border-bottom-color:[[backgroundColor]];"
+      ></div>
+      <div
+        id="header_wrap"
+        class\$="[[backgroundColorClass]] [[textColorClass]]"
+      >
         <iron-icon id="questionmark" icon="icons:help"></iron-icon>
         <div class="heading">[[title]]</div>
       </div>
@@ -157,8 +163,15 @@ let SelfCheck = Polymer({
         <div class="question">
           <slot name="question"></slot>
           <div class="check_button">
-            <paper-icon-button id="checkBtn" icon="icons:check-circle" on-click="openAnswer" noink=""></paper-icon-button>
-            <paper-tooltip for="checkBtn" position="left">Reveal Answer</paper-tooltip>
+            <paper-icon-button
+              id="checkBtn"
+              icon="icons:check-circle"
+              on-click="openAnswer"
+              noink=""
+            ></paper-icon-button>
+            <paper-tooltip for="checkBtn" position="left"
+              >Reveal Answer</paper-tooltip
+            >
           </div>
         </div>
 
@@ -169,13 +182,18 @@ let SelfCheck = Polymer({
               <a href="[[link]]" target="_blank">More info...</a>
             </div>
             <div class="close_button">
-              <paper-icon-button id="closeBtn" icon="icons:close" on-click="openAnswer" noink=""></paper-icon-button>
+              <paper-icon-button
+                id="closeBtn"
+                icon="icons:close"
+                on-click="openAnswer"
+                noink=""
+              ></paper-icon-button>
             </div>
           </div>
         </div>
       </div>
     </paper-card>
-`,
+  `,
 
   is: "self-check",
 

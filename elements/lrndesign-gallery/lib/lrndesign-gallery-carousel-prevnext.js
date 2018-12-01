@@ -21,7 +21,10 @@ Polymer({
     <style is="custom-style">
       :host {
         display: inline-block;
-        --lrndesign-gallery-rgba: var(--lrndesign-gallery-rgba-none) 0%, var(--lrndesign-gallery-rgba-mid) 50%, var(--lrndesign-gallery-rgba-high) 70%, var(--lrndesign-gallery-rgba-high) 100%
+        --lrndesign-gallery-rgba: var(--lrndesign-gallery-rgba-none) 0%,
+          var(--lrndesign-gallery-rgba-mid) 50%,
+          var(--lrndesign-gallery-rgba-high) 70%,
+          var(--lrndesign-gallery-rgba-high) 100%;
       }
       :host([item="-1"]) {
         display: none;
@@ -37,17 +40,17 @@ Polymer({
       }
       :host #lrnsysbutton ::slotted(a > paper-button) {
         width: 100%;
-        height: 100%;  
+        height: 100%;
         opacity: 0;
-        transition: opacity 1s;   
+        transition: opacity 1s;
         color: var(--lrndesign-gallery-color);
         background-color: var(--lrndesign-gallery-background-color);
-        background: linear-gradient(to left, var(--lrndesign-gallery-rgba)); 
+        background: linear-gradient(to left, var(--lrndesign-gallery-rgba));
       }
       :host([type="next"]) #lrnsysbutton ::slotted(a > paper-button) {
         background: linear-gradient(to right, var(--lrndesign-gallery-rgba));
       }
-      :host #lrnsysbutton ::slotted(a > paper-button):focus, 
+      :host #lrnsysbutton ::slotted(a > paper-button):focus,
       :host #lrnsysbutton ::slotted(a > paper-button):hover {
         opacity: 1;
       }
@@ -60,18 +63,35 @@ Polymer({
         top: 45%;
         position: absolute;
       }
-      :host([type="previous"]) #lrnsysbutton ::slotted(a > paper-button > div.inner > iron-icon) {
+      :host([type="previous"])
+        #lrnsysbutton
+        ::slotted(a > paper-button > div.inner > iron-icon) {
         left: 10%;
       }
-      :host([type="next"]) #lrnsysbutton ::slotted(a > paper-button > div.inner > iron-icon) {
+      :host([type="next"])
+        #lrnsysbutton
+        ::slotted(a > paper-button > div.inner > iron-icon) {
         right: 10%;
       }
     </style>
-    <lrnsys-button icon\$="[[chevron]]" id="lrnsysbutton" item\$="[[item]]" aria-controls\$="[[controls]]" target\$="[[target]]" title\$="[[type]]" tabindex="-1">
+    <lrnsys-button
+      icon\$="[[chevron]]"
+      id="lrnsysbutton"
+      item\$="[[item]]"
+      aria-controls\$="[[controls]]"
+      target\$="[[target]]"
+      title\$="[[type]]"
+      tabindex="-1"
+    >
     </lrnsys-button>
-    <iron-a11y-keys id="a11y" keys="enter" target\$="[[__button]]" on-keys-pressed="_tapped">
+    <iron-a11y-keys
+      id="a11y"
+      keys="enter"
+      target\$="[[__button]]"
+      on-keys-pressed="_tapped"
+    >
     </iron-a11y-keys>
-`,
+  `,
 
   is: "lrndesign-gallery-carousel-prevnext",
 

@@ -22,25 +22,31 @@ class SimpleColorsDemoSelect extends SimpleColors {
   // render function
   static get template() {
     return html`
-<style>
-:host {
-  display: inline-block;
-}
-:host([hidden]){
-  display: none;
-}
-:host, 
-:host label, 
-:host select, 
-:host option {
-  font-family: monospace;
-}
-</style>
-<slot name="prefix"></slot><select id="accent" on-change="_handleSelectChange">
-  <template is="dom-repeat" items="[[_getOptions(options)]]" as="option">
-    <option value="[[option.value]]" selected$="[[_optionSelected(option.name,value)]]">[[option.name]]</option>
-  </template>
-</select><slot name="suffix"></slot>`;
+      <style>
+        :host {
+          display: inline-block;
+        }
+        :host([hidden]) {
+          display: none;
+        }
+        :host,
+        :host label,
+        :host select,
+        :host option {
+          font-family: monospace;
+        }
+      </style>
+      <slot name="prefix"></slot
+      ><select id="accent" on-change="_handleSelectChange">
+        <template is="dom-repeat" items="[[_getOptions(options)]]" as="option">
+          <option
+            value="[[option.value]]"
+            selected$="[[_optionSelected(option.name,value)]]"
+            >[[option.name]]</option
+          >
+        </template> </select
+      ><slot name="suffix"></slot>
+    `;
   }
 
   // properties available to the custom element for data binding

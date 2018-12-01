@@ -17,13 +17,18 @@ import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 Polymer({
   is: "haxcms-jwt",
   _template: html`
-  <style>
-    :host {
-      display: block;
-    }
-  </style>
-  <jwt-login id="jwt" url="[[jwtLoginLocation]]" url-logout="[[jwtLogoutLocation]]" jwt="{{jwt}}"></jwt-login>      
-`,
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <jwt-login
+      id="jwt"
+      url="[[jwtLoginLocation]]"
+      url-logout="[[jwtLogoutLocation]]"
+      jwt="{{jwt}}"
+    ></jwt-login>
+  `,
   properties: {
     /**
      * Location of what endpoint to hit for

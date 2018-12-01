@@ -398,8 +398,8 @@ define("ace/range", [], function(require, exports, module) {
           return column < this.start.column
             ? -1
             : column > this.end.column
-              ? 1
-              : 0;
+            ? 1
+            : 0;
         }
       }
 
@@ -2253,8 +2253,8 @@ define("ace/mode/javascript/jshint", [], function(require, exports, module) {
                     return cloneableTags[tag]
                       ? initCloneByTag(value, tag, isDeep)
                       : object
-                        ? value
-                        : {};
+                      ? value
+                      : {};
                   }
                 }
                 stackA || (stackA = []);
@@ -2650,14 +2650,14 @@ define("ace/mode/javascript/jshint", [], function(require, exports, module) {
                     result = isArray(value)
                       ? value
                       : getLength(value)
-                        ? arrayCopy(value)
-                        : [];
+                      ? arrayCopy(value)
+                      : [];
                   } else if (isPlainObject(srcValue) || isArguments(srcValue)) {
                     result = isArguments(value)
                       ? toPlainObject(value)
                       : isPlainObject(value)
-                        ? value
-                        : {};
+                      ? value
+                      : {};
                   } else {
                     isCommon = false;
                   }
@@ -3026,8 +3026,8 @@ define("ace/mode/javascript/jshint", [], function(require, exports, module) {
                     return object != +object
                       ? other != +other
                       : object == 0
-                        ? 1 / object == 1 / other
-                        : object == +other;
+                      ? 1 / object == 1 / other
+                      : object == +other;
 
                   case regexpTag:
                   case stringTag:
@@ -3754,10 +3754,10 @@ define("ace/mode/javascript/jshint", [], function(require, exports, module) {
             typeof global !== "undefined"
               ? global
               : typeof self !== "undefined"
-                ? self
-                : typeof window !== "undefined"
-                  ? window
-                  : {}
+              ? self
+              : typeof window !== "undefined"
+              ? window
+              : {}
           ));
         },
         {}

@@ -23,7 +23,10 @@ Style                                                   | Description
 */
 Polymer({
   _template: html`
-    <style is="custom-style" include="iron-flex iron-flex-alignment materializecss-styles-colors"></style>
+    <style
+      is="custom-style"
+      include="iron-flex iron-flex-alignment materializecss-styles-colors"
+    ></style>
     <style>
       :host {
         @apply --layout-horizontal;
@@ -45,17 +48,22 @@ Polymer({
 
       .fab {
         --lrnapp-fab-background: var(--lrnapp-fab-speed-dial-action-background);
-        --lrnapp-fab-keyboard-focus-background: var(--lrnapp-fab-speed-dial-action-keyboard-focus-background);
+        --lrnapp-fab-keyboard-focus-background: var(
+          --lrnapp-fab-speed-dial-action-keyboard-focus-background
+        );
       }
 
-      .label,.fab {
+      .label,
+      .fab {
         display: inline-block;
       }
     </style>
 
-    <div class="flex"><span class="label"><slot></slot></span></div>
+    <div class="flex">
+      <span class="label"><slot></slot></span>
+    </div>
     <paper-fab class$="fab [[color]]" icon="[[icon]]" mini></paper-fab>
-`,
+  `,
   is: "lrnapp-fab-speed-dial-action",
   properties: {
     /**

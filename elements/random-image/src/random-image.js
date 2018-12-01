@@ -12,14 +12,20 @@ let RandomImage = Polymer({
       :host {
         display: block;
       }
-      .is-circle{
+      .is-circle {
         border: 1px solid grey;
-border-radius: 50%;
-box-shadow: 0px 5px 10px #CCC;
+        border-radius: 50%;
+        box-shadow: 0px 5px 10px #ccc;
       }
     </style>
-    <iron-image style="width:200px; height:200px;" class$="[[mode]]" sizing="contain" src$="[[imgSrc]]" title$="[[imgTitle]]"></iron-image>
-`,
+    <iron-image
+      style="width:200px; height:200px;"
+      class$="[[mode]]"
+      sizing="contain"
+      src$="[[imgSrc]]"
+      title$="[[imgTitle]]"
+    ></iron-image>
+  `,
 
   is: "random-image",
 

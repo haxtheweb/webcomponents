@@ -21,7 +21,7 @@ Polymer({
         clear: both;
       }
     </style>
-`,
+  `,
 
   is: "responsive-grid-clear",
 

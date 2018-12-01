@@ -69,17 +69,36 @@ Polymer({
         }
       }
     </style>
-    <a id="transcript-desc" href="#bottom" class="sr-only">[[skipTranscriptLink]]</a>
+    <a id="transcript-desc" href="#bottom" class="sr-only"
+      >[[skipTranscriptLink]]</a
+    >
     <template id="tracks" is="dom-repeat" items="{{tracks}}" as="track">
-      <div id="inner" class="transcript-from-track" lang="{{track.language}}" active\$="[[track.active]]">
+      <div
+        id="inner"
+        class="transcript-from-track"
+        lang="{{track.language}}"
+        active\$="[[track.active]]"
+      >
         <template is="dom-repeat" items="{{track.cues}}" as="cue">
-          <a11y-media-transcript-cue accent-color\$="[[accentColor]]" active-cues\$="[[activeCues]]" controls\$="[[mediaId]]" cue\$="{{cue}}" disabled\$="[[disableInteractive]]" disable-search\$="[[disableSearch]]" hide-timestamps\$="[[hideTimestamps]]" order\$="{{cue.order}}" role="button" search="[[search]]" tabindex="0">
+          <a11y-media-transcript-cue
+            accent-color\$="[[accentColor]]"
+            active-cues\$="[[activeCues]]"
+            controls\$="[[mediaId]]"
+            cue\$="{{cue}}"
+            disabled\$="[[disableInteractive]]"
+            disable-search\$="[[disableSearch]]"
+            hide-timestamps\$="[[hideTimestamps]]"
+            order\$="{{cue.order}}"
+            role="button"
+            search="[[search]]"
+            tabindex="0"
+          >
           </a11y-media-transcript-cue>
         </template>
       </div>
     </template>
     <div id="bottom" class="sr-only"></div>
-`,
+  `,
 
   is: "a11y-media-transcript",
 

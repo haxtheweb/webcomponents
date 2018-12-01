@@ -22,16 +22,25 @@ Polymer({
         --lrnsys-drawer-background-color: var(--simple-colors-background1);
       }
       paper-button {
-        display:inline-block;
+        display: inline-block;
       }
     </style>
-    <paper-button class\$="[[class]]" id="flyouttrigger" on-tap="toggleDrawer" raised="[[raised]]" disabled\$="[[disabled]]" title="[[alt]]">
+    <paper-button
+      class\$="[[class]]"
+      id="flyouttrigger"
+      on-tap="toggleDrawer"
+      raised="[[raised]]"
+      disabled\$="[[disabled]]"
+      title="[[alt]]"
+    >
       <lrnsys-button-inner avatar="[[avatar]]" icon="[[icon]]" text="[[text]]">
         <slot name="button"></slot>
       </lrnsys-button-inner>
     </paper-button>
-    <paper-tooltip for="flyouttrigger" animation-delay="0">[[alt]]</paper-tooltip>
-`,
+    <paper-tooltip for="flyouttrigger" animation-delay="0"
+      >[[alt]]</paper-tooltip
+    >
+  `,
 
   is: "lrnsys-drawer",
 

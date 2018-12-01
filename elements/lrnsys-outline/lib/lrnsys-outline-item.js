@@ -91,33 +91,113 @@ Polymer({
       }
     </style>
     <div id="wrapper" data-indent\$="[[indentLevel]]">
-      <iron-icon id="move" title="Move" icon="drawing:move" role="presentation"></iron-icon>
-      <paper-input id="input" label="Enter a page title" value\$="[[title]]" no-label-float="">
+      <iron-icon
+        id="move"
+        title="Move"
+        icon="drawing:move"
+        role="presentation"
+      ></iron-icon>
+      <paper-input
+        id="input"
+        label="Enter a page title"
+        value\$="[[title]]"
+        no-label-float=""
+      >
       </paper-input>
-      <paper-icon-button id="add" title="Add Item" icon="icons:add" on-tap="add"></paper-icon-button>
-      <paper-icon-button id="delete" title="Delete" icon="icons:delete" on-tap="delete"></paper-icon-button>
+      <paper-icon-button
+        id="add"
+        title="Add Item"
+        icon="icons:add"
+        on-tap="add"
+      ></paper-icon-button>
+      <paper-icon-button
+        id="delete"
+        title="Delete"
+        icon="icons:delete"
+        on-tap="delete"
+      ></paper-icon-button>
     </div>
     <div id="down-action" gesture-disabled\$="[[disableDown]]">
-      <paper-icon-button id="down" title="Move downwards" icon="icons:arrow-downward" on-tap="move(1)"></paper-icon-button>
+      <paper-icon-button
+        id="down"
+        title="Move downwards"
+        icon="icons:arrow-downward"
+        on-tap="move(1)"
+      ></paper-icon-button>
     </div>
     <div id="left-action" gesture-disabled\$="[[disableLeft]]">
-      <paper-icon-button id="left" title="Outdent" icon="icons:arrow-backward" on-tap="setIndent(-1)"></paper-icon-button>
+      <paper-icon-button
+        id="left"
+        title="Outdent"
+        icon="icons:arrow-backward"
+        on-tap="setIndent(-1)"
+      ></paper-icon-button>
     </div>
     <div id="right-action" gesture-disabled\$="[[disableRight]]">
-      <paper-icon-button id="right" title="Indent" icon="icons:arrow-forward" on-tap="setIndent(1)"></paper-icon-button>
+      <paper-icon-button
+        id="right"
+        title="Indent"
+        icon="icons:arrow-forward"
+        on-tap="setIndent(1)"
+      ></paper-icon-button>
     </div>
-    <div id="up-action"gesture-disabled\$="[[disableUp]]">
-      <paper-icon-button id="up" title="Move upwards" icon="icons:arrow-upward" on-tap="move(-1)"></paper-icon-button>
+    <div id="up-action" gesture-disabled\$="[[disableUp]]">
+      <paper-icon-button
+        id="up"
+        title="Move upwards"
+        icon="icons:arrow-upward"
+        on-tap="move(-1)"
+      ></paper-icon-button>
     </div>
-    <iron-a11y-keys id="a11y" target="[[target]]" keys="enter" on-keys-pressed="_onEnter"></iron-a11y-keys>
-    <iron-a11y-keys id="a11y" target="[[target]]" keys="backspace" on-keys-pressed="_onBackspace"></iron-a11y-keys>
-    <iron-a11y-keys id="a11y" target="[[target]]" keys="up" on-keys-pressed="_onArrowUp"></iron-a11y-keys>
-    <iron-a11y-keys id="a11y" target="[[target]]" keys="down" on-keys-pressed="_onArrowDown"></iron-a11y-keys>
-    <iron-a11y-keys id="a11y" target="[[target]]" keys="tab" on-keys-pressed="_onTab"></iron-a11y-keys>
-    <iron-a11y-keys id="a11y" target="[[target]]" keys="shift+tab" on-keys-pressed="_onShiftTab"></iron-a11y-keys>
-    <iron-a11y-keys id="a11y" target="[[target]]" keys="shift+up" on-keys-pressed="_onShiftArrowUp"></iron-a11y-keys>
-    <iron-a11y-keys id="a11y" target="[[target]]" keys="shift+down" on-keys-pressed="_onShiftArrowDown"></iron-a11y-keys>
-`,
+    <iron-a11y-keys
+      id="a11y"
+      target="[[target]]"
+      keys="enter"
+      on-keys-pressed="_onEnter"
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      id="a11y"
+      target="[[target]]"
+      keys="backspace"
+      on-keys-pressed="_onBackspace"
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      id="a11y"
+      target="[[target]]"
+      keys="up"
+      on-keys-pressed="_onArrowUp"
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      id="a11y"
+      target="[[target]]"
+      keys="down"
+      on-keys-pressed="_onArrowDown"
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      id="a11y"
+      target="[[target]]"
+      keys="tab"
+      on-keys-pressed="_onTab"
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      id="a11y"
+      target="[[target]]"
+      keys="shift+tab"
+      on-keys-pressed="_onShiftTab"
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      id="a11y"
+      target="[[target]]"
+      keys="shift+up"
+      on-keys-pressed="_onShiftArrowUp"
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      id="a11y"
+      target="[[target]]"
+      keys="shift+down"
+      on-keys-pressed="_onShiftArrowDown"
+    ></iron-a11y-keys>
+  `,
 
   is: "lrnsys-outline-item",
 

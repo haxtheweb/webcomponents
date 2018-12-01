@@ -99,14 +99,14 @@ ace.define(
                   return r == "this"
                     ? "variable.language"
                     : r == "function"
-                      ? "storage.type"
-                      : e.hasOwnProperty(r) || n.hasOwnProperty(r)
-                        ? "keyword"
-                        : t.hasOwnProperty(r)
-                          ? "constant.language"
-                          : /^_?[A-Z][a-zA-Z0-9_]*$/.test(r)
-                            ? "language.support.class"
-                            : "identifier";
+                    ? "storage.type"
+                    : e.hasOwnProperty(r) || n.hasOwnProperty(r)
+                    ? "keyword"
+                    : t.hasOwnProperty(r)
+                    ? "constant.language"
+                    : /^_?[A-Z][a-zA-Z0-9_]*$/.test(r)
+                    ? "language.support.class"
+                    : "identifier";
                 },
                 regex: r
               },

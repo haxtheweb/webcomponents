@@ -102,65 +102,81 @@ Polymer({
         background-color: var(--paper-orange-500);
       }
     </style>
-    <iron-ajax id="dataajax" url="[[sourcePath]]" params="[[requestParams]]" handle-as="json" on-response="handleDataResponse" last-response="{{readTimeData}}"></iron-ajax>
+    <iron-ajax
+      id="dataajax"
+      url="[[sourcePath]]"
+      params="[[requestParams]]"
+      handle-as="json"
+      on-response="handleDataResponse"
+      last-response="{{readTimeData}}"
+    ></iron-ajax>
 
     <div id="bodyloading" class="loading">
       <elmsln-loading color="grey-text" size="large"></elmsln-loading>
       <h3 class="loading-text">Loading content..</h3>
     </div>
     <div>
-    <material-progress-bars max="128" bar-height="22" animated="">
-      <div class="bar" data-value="21">
-        <iron-icon icon="av:video-library"></iron-icon>
-      </div>
-      <div class="bar run" data-value="13">
-        <iron-icon icon="maps:directions-run"></iron-icon>
-      </div>
-      <div class="bar hello" data-value="50">
-        <iron-icon icon="maps:directions-bike"></iron-icon>
-        <span>Hello</span>
-      </div>
-      <div class="bar world" data-value="30">
-        <span>World</span>
-      </div>
-    </material-progress-bars>
-    <material-progress-histo bar-height="22" animated="">
-      <div class="bar" data-value="21">
-        <iron-icon icon="maps:directions-walk"></iron-icon>
-      </div>
-      <div class="bar run" data-value="13">
-        <iron-icon icon="maps:directions-run"></iron-icon>
-      </div>
-      <div class="bar hello" data-value="50">
-        <iron-icon icon="maps:directions-bike"></iron-icon>
-        <span>Hello</span>
-      </div>
-      <div class="bar world" data-value="30">
-        <span>World</span>
-      </div>
-    </material-progress-histo>
-    <template is="dom-repeat" items="[[dashboardItems]]" as="item">
-      <div class="progress-row">
-        <div class="progress-left">
-          <lrnsys-progress-circle status="disabled" class="flex" icon="[[item.meta.icon]]"></lrnsys-progress-circle>
+      <material-progress-bars max="128" bar-height="22" animated="">
+        <div class="bar" data-value="21">
+          <iron-icon icon="av:video-library"></iron-icon>
         </div>
-        <div class="progress-right">
-          <h3 class="progress-item-title">[[item.attributes.title]]</h3>
-          <div class="description-content">
-            <div>
-              <lrn-icon icon="network" class="progress-icon"></lrn-icon>
-              <paper-progress value="70" secondary-progress="80"></paper-progress>
-            </div>
-            <div>
-              <lrndesign-avatar src="[[userData.user.avatar]]" label="[[userData.user.display_name]]"></lrndesign-avatar>
-              <paper-progress value="70" secondary-progress="80"></paper-progress>
+        <div class="bar run" data-value="13">
+          <iron-icon icon="maps:directions-run"></iron-icon>
+        </div>
+        <div class="bar hello" data-value="50">
+          <iron-icon icon="maps:directions-bike"></iron-icon>
+          <span>Hello</span>
+        </div>
+        <div class="bar world" data-value="30"><span>World</span></div>
+      </material-progress-bars>
+      <material-progress-histo bar-height="22" animated="">
+        <div class="bar" data-value="21">
+          <iron-icon icon="maps:directions-walk"></iron-icon>
+        </div>
+        <div class="bar run" data-value="13">
+          <iron-icon icon="maps:directions-run"></iron-icon>
+        </div>
+        <div class="bar hello" data-value="50">
+          <iron-icon icon="maps:directions-bike"></iron-icon>
+          <span>Hello</span>
+        </div>
+        <div class="bar world" data-value="30"><span>World</span></div>
+      </material-progress-histo>
+      <template is="dom-repeat" items="[[dashboardItems]]" as="item">
+        <div class="progress-row">
+          <div class="progress-left">
+            <lrnsys-progress-circle
+              status="disabled"
+              class="flex"
+              icon="[[item.meta.icon]]"
+            ></lrnsys-progress-circle>
+          </div>
+          <div class="progress-right">
+            <h3 class="progress-item-title">[[item.attributes.title]]</h3>
+            <div class="description-content">
+              <div>
+                <lrn-icon icon="network" class="progress-icon"></lrn-icon>
+                <paper-progress
+                  value="70"
+                  secondary-progress="80"
+                ></paper-progress>
+              </div>
+              <div>
+                <lrndesign-avatar
+                  src="[[userData.user.avatar]]"
+                  label="[[userData.user.display_name]]"
+                ></lrndesign-avatar>
+                <paper-progress
+                  value="70"
+                  secondary-progress="80"
+                ></paper-progress>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </template>
+      </template>
     </div>
-`,
+  `,
 
   is: "lrnapp-book-progress-dashboard",
 

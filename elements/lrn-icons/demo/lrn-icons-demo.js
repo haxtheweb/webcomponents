@@ -3,15 +3,15 @@ import "@polymer/iron-icon/iron-icon.js";
 import "../lrn-icons.js";
 Polymer({
   _template: html`
-  <ul>
-  <template is="dom-repeat" items="[[iconList]]">
-    <li>
-    <iron-icon icon\$="lrn:[[item.icon]]"></iron-icon>
-    <strong>&lt;iron-icon icon="lrn:[[item.icon]]"&gt;</strong>
-    </li>
-  </template>
-  </ul>
-`,
+    <ul>
+      <template is="dom-repeat" items="[[iconList]]">
+        <li>
+          <iron-icon icon\$="lrn:[[item.icon]]"></iron-icon>
+          <strong>&lt;iron-icon icon="lrn:[[item.icon]]"&gt;</strong>
+        </li>
+      </template>
+    </ul>
+  `,
 
   is: "lrn-icons-demo",
 

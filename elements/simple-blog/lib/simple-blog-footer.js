@@ -30,25 +30,25 @@ Polymer({
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
-        opacity: .4;
-        transition: all .6s linear;
+        opacity: 0.4;
+        transition: all 0.6s linear;
       }
       .background-closer-image-wrap {
         position: absolute;
-        background-color: rgba(0, 0, 0, .9);
+        background-color: rgba(0, 0, 0, 0.9);
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
         text-indent: -9999px;
-        transition: all .6s linear;
+        transition: all 0.6s linear;
         opacity: 1;
       }
       :host([active]) .background-closer-image {
-        opacity: .8;
+        opacity: 0.8;
       }
       :host([active]) .background-closer-image-wrap {
-        background-color: rgba(0, 0, 0, .2);
+        background-color: rgba(0, 0, 0, 0.2);
       }
       .inner {
         width: 100%;
@@ -70,7 +70,7 @@ Polymer({
         line-height: 50px;
         word-break: break-word;
         color: white;
-        text-shadow: 0 1px 16px rgba(0,0,0,.5), 0 0 1px rgba(0,0,0,.5);
+        text-shadow: 0 1px 16px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 0, 0, 0.5);
       }
       .blog-description {
         margin: 0 0 50px;
@@ -80,12 +80,12 @@ Polymer({
         color: white;
         text-align: center;
         font-weight: 400;
-        text-shadow: 0 1px 16px rgba(0,0,0,.5), 0 0 1px rgba(0,0,0,.5);
+        text-shadow: 0 1px 16px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 0, 0, 0.5);
       }
       .back {
         display: inline-block;
         text-align: center;
-        letter-spacing: -.32px;
+        letter-spacing: -0.32px;
         font-size: 15px;
         font-weight: 400;
         font-style: normal;
@@ -102,15 +102,23 @@ Polymer({
       }
     </style>
     <div class="background-closer-image-wrap">
-      <div class="background-closer-image" style\$="background-image: url([[manifest.metadata.image]])">
-      </div>
+      <div
+        class="background-closer-image"
+        style\$="background-image: url([[manifest.metadata.image]])"
+      ></div>
     </div>
     <div class="inner">
       <h1 class="blog-title">[[manifest.title]]</h1>
       <h2 class="blog-description">[[manifest.description]]</h2>
-      <paper-button id="backbutton" class="back" raised="[[active]]" on-tap="_backButtonTap">Back to main site</paper-button>
+      <paper-button
+        id="backbutton"
+        class="back"
+        raised="[[active]]"
+        on-tap="_backButtonTap"
+        >Back to main site</paper-button
+      >
     </div>
-`,
+  `,
 
   is: "simple-blog-footer",
 

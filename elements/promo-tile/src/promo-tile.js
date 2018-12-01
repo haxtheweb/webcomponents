@@ -21,7 +21,7 @@ let PromoTile = Polymer({
     <style>
       :host {
         display: block;
-        --tile-image: '';
+        --tile-image: "";
         --font-color: #fff;
         --hover-background-color: #e2801e;
         --hover-link: #e0e0e0;
@@ -40,17 +40,16 @@ let PromoTile = Polymer({
         background-color: var(--hover-background-color);
         height: 460px;
         opacity: 0;
-
       }
 
       :host([hover]) #container .back_card {
         opacity: 0.9;
-        transition: all .3s ease-in-out;
+        transition: all 0.3s ease-in-out;
       }
 
       :host([hover]) #container .front_card .front_title {
         opacity: 0;
-        transition: all .3s ease-in-out;
+        transition: all 0.3s ease-in-out;
       }
 
       .image {
@@ -114,12 +113,16 @@ let PromoTile = Polymer({
         <div id="front_image" class="image" alt="[[alt]]">
           <div class="back_card" id="cardBack" on-click="activateBtn">
             <div class="back_title">[[title]]</div>
-            <div class="back_content">
-              <slot></slot>
-            </div>
+            <div class="back_content"><slot></slot></div>
             <div class="learn_more">
-              <a tabindex="-1" href="[[url]]" id="link" target$="[[_urlTarget(url)]]">
-                <paper-button no-ink>Learn More
+              <a
+                tabindex="-1"
+                href="[[url]]"
+                id="link"
+                target$="[[_urlTarget(url)]]"
+              >
+                <paper-button no-ink
+                  >Learn More
                   <iron-icon icon="chevron-right"></iron-icon>
                 </paper-button>
               </a>
@@ -128,7 +131,7 @@ let PromoTile = Polymer({
         </div>
       </div>
     </div>
-`,
+  `,
 
   is: "promo-tile",
   behaviors: [

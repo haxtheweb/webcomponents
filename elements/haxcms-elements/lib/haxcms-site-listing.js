@@ -58,7 +58,7 @@ Polymer({
       app-drawer {
         --app-drawer-scrim-background: rgba(0, 0, 0, 0.6);
         --app-drawer-content-container: {
-          background-color: rgba(93, 0, 159, .8);
+          background-color: rgba(93, 0, 159, 0.8);
           overflow: scroll;
           color: #ffffff;
           padding-left: 8px;
@@ -99,50 +99,125 @@ Polymer({
         --simple-colors-picker-preview-size: 20px;
       }
     </style>
-    <jwt-login id="jwt" url="[[basePath]]system/login.php"  logout-url="[[basePath]]system/logout.php" jwt="{{jwt}}"></jwt-login>
+    <jwt-login
+      id="jwt"
+      url="[[basePath]]system/login.php"
+      logout-url="[[basePath]]system/logout.php"
+      jwt="{{jwt}}"
+    ></jwt-login>
     <iron-ajax
       id="createrequest"
       method="POST"
       body="[[createParams]]"
-      headers='{"Authorization": "Bearer [[jwt]]"}'
+      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
       content-type="application/json"
       url="[[basePath]]system/createNewSite.php"
       handle-as="json"
-      on-response="handleCreateResponse"></iron-ajax>
+      on-response="handleCreateResponse"
+    ></iron-ajax>
     <iron-ajax
       id="downloadrequest"
       method="POST"
       body="[[downloadParams]]"
-      headers='{"Authorization": "Bearer [[jwt]]"}'
+      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
       content-type="application/json"
       url="[[basePath]]system/downloadSite.php"
       handle-as="json"
-      on-response="handleDownloadResponse"></iron-ajax>
-    <sites-listing id="siteslisting" sites-response="{{__sitesResponse}}" sites="{{__sites}}" data-source="[[dataSource]]" edit-mode="[[editMode]]"></sites-listing>
+      on-response="handleDownloadResponse"
+    ></iron-ajax>
+    <sites-listing
+      id="siteslisting"
+      sites-response="{{__sitesResponse}}"
+      sites="{{__sites}}"
+      data-source="[[dataSource]]"
+      edit-mode="[[editMode]]"
+    ></sites-listing>
     <app-header reveals>
       <app-toolbar>
-        <paper-icon-button icon="menu" on-tap="drawerToggle"></paper-icon-button>
+        <paper-icon-button
+          icon="menu"
+          on-tap="drawerToggle"
+        ></paper-icon-button>
         <div main-title>[[title]]</div>
-        <paper-icon-button on-tap="_editTap" id="edit" icon="[[__editIcon]]" hidden$="[[!loggedIn]]"></paper-icon-button>
-        <paper-icon-button on-tap="_loginUserRoutine" id="login" icon="[[__loginIcon]]"></paper-icon-button>
-        <paper-tooltip for="login" position="bottom" offset="12" animation-delay="200">[[__loginText]]</paper-tooltip>
+        <paper-icon-button
+          on-tap="_editTap"
+          id="edit"
+          icon="[[__editIcon]]"
+          hidden$="[[!loggedIn]]"
+        ></paper-icon-button>
+        <paper-icon-button
+          on-tap="_loginUserRoutine"
+          id="login"
+          icon="[[__loginIcon]]"
+        ></paper-icon-button>
+        <paper-tooltip
+          for="login"
+          position="bottom"
+          offset="12"
+          animation-delay="200"
+          >[[__loginText]]</paper-tooltip
+        >
       </app-toolbar>
     </app-header>
     <app-drawer id="drawer" swipe-open>
-      <paper-icon-button id="closedrawer" icon="icons:close" on-tap="drawerToggle"></paper-icon-button>
-      <paper-tooltip for="closedrawer" position="bottom" offset="12" animation-delay="200">Close</paper-tooltip>
-      <paper-icon-button on-tap="_addTap" id="add" icon="icons:add"></paper-icon-button>
-      <paper-tooltip for="add" position="bottom" offset="12" animation-delay="200">Add site</paper-tooltip>
-      <h3 style="margin: 18px; padding: 6px; border-bottom: 1px solid #ffffff; text-align: center; font-weight: normal;">Site list</h3>
-      <map-menu id="mapmenu" items="{{outline}}" data="[[__sites]]" selected="{{activeItemID}}"></map-menu>
+      <paper-icon-button
+        id="closedrawer"
+        icon="icons:close"
+        on-tap="drawerToggle"
+      ></paper-icon-button>
+      <paper-tooltip
+        for="closedrawer"
+        position="bottom"
+        offset="12"
+        animation-delay="200"
+        >Close</paper-tooltip
+      >
+      <paper-icon-button
+        on-tap="_addTap"
+        id="add"
+        icon="icons:add"
+      ></paper-icon-button>
+      <paper-tooltip
+        for="add"
+        position="bottom"
+        offset="12"
+        animation-delay="200"
+        >Add site</paper-tooltip
+      >
+      <h3
+        style="margin: 18px; padding: 6px; border-bottom: 1px solid #ffffff; text-align: center; font-weight: normal;"
+      >
+        Site list
+      </h3>
+      <map-menu
+        id="mapmenu"
+        items="{{outline}}"
+        data="[[__sites]]"
+        selected="{{activeItemID}}"
+      ></map-menu>
     </app-drawer>
     <paper-dialog id="newdialog" with-backdrop>
       <h3>Create new site</h3>
       <paper-dialog-scrollable>
-        <paper-input id="newsitetitle" label="Title" required autofocus value="{{siteTitle}}"></paper-input>
-        <paper-input id="domain" label="Domain" required value="[[domainName]]"></paper-input>
+        <paper-input
+          id="newsitetitle"
+          label="Title"
+          required
+          autofocus
+          value="{{siteTitle}}"
+        ></paper-input>
+        <paper-input
+          id="domain"
+          label="Domain"
+          required
+          value="[[domainName]]"
+        ></paper-input>
         <paper-input id="newsitedescription" label="Description"></paper-input>
-        <paper-input id="newsiteimage" label="Image" value="[[activeItem.metadata.image]]"></paper-input>
+        <paper-input
+          id="newsiteimage"
+          label="Image"
+          value="[[activeItem.metadata.image]]"
+        ></paper-input>
         <label for="newsitecolor">Select a color:</label>
         <simple-colors-picker id="newsitecolor"></simple-colors-picker>
         <dropdown-select id="newsitetheme" label="Theme" value="simple-blog">
@@ -152,34 +227,81 @@ Polymer({
           <paper-item value="infinite-scroll">Infinite scroll</paper-item>
         </dropdown-select>
         <label for="newsiteicon">Select an icon:</label>
-        <paper-icon-picker id="newsiteicon" icon="[[activeItem.metadata.icon]]"></paper-icon-picker>
+        <paper-icon-picker
+          id="newsiteicon"
+          icon="[[activeItem.metadata.icon]]"
+        ></paper-icon-picker>
       </paper-dialog-scrollable>
       <div class="buttons">
-        <paper-button on-tap="_createSite" dialog-confirm id="create" raised>Let's go!</paper-button>
+        <paper-button on-tap="_createSite" dialog-confirm id="create" raised
+          >Let's go!</paper-button
+        >
         <paper-button dialog-dismiss>cancel</paper-button>
       </div>
     </paper-dialog>
     <paper-dialog id="itemdialog" with-backdrop>
       <paper-dialog-scrollable>
-      <magazine-cover
-       image="[[activeItem.metadata.image]]"
-       header="[[activeItem.title]]" subheader="[[activeItem.description]]"
-      action="Access site" icon="[[activeItem.metadata.icon]]" event-data="[[activeItem]]" event-name="haxcms-load-site">
-      </magazine-cover>
+        <magazine-cover
+          image="[[activeItem.metadata.image]]"
+          header="[[activeItem.title]]"
+          subheader="[[activeItem.description]]"
+          action="Access site"
+          icon="[[activeItem.metadata.icon]]"
+          event-data="[[activeItem]]"
+          event-name="haxcms-load-site"
+        >
+        </magazine-cover>
       </paper-dialog-scrollable>
       <div class="buttons">
-        <iron-icon icon="editor:format-color-fill" style$="color:[[activeItem.metadata.hexCode]]"></iron-icon>[[activeItem.metadata.hexCode]]
-        <iron-icon icon="av:web"></iron-icon>Theme: [[activeItem.metadata.theme]]
-        <paper-icon-button id="editsite" icon="icons:settings" style="color:black"></paper-icon-button>
-        <paper-tooltip for="edit" position="bottom" offset="12" animation-delay="200">change details</paper-tooltip>
-        <paper-icon-button id="archivesite" icon="icons:archive" dialog-dismiss style="color:grey"></paper-icon-button>
-        <paper-tooltip for="archivesite" position="top" offset="12" animation-delay="200">archive site</paper-tooltip>
-        <paper-icon-button on-tap="_downloadSite" id="download" icon="icons:file-download" style="color:black"></paper-icon-button>
-        <paper-tooltip for="download" position="top" offset="12" animation-delay="200">Download zip</paper-tooltip>
+        <iron-icon
+          icon="editor:format-color-fill"
+          style$="color:[[activeItem.metadata.hexCode]]"
+        ></iron-icon
+        >[[activeItem.metadata.hexCode]]
+        <iron-icon icon="av:web"></iron-icon>Theme:
+        [[activeItem.metadata.theme]]
+        <paper-icon-button
+          id="editsite"
+          icon="icons:settings"
+          style="color:black"
+        ></paper-icon-button>
+        <paper-tooltip
+          for="edit"
+          position="bottom"
+          offset="12"
+          animation-delay="200"
+          >change details</paper-tooltip
+        >
+        <paper-icon-button
+          id="archivesite"
+          icon="icons:archive"
+          dialog-dismiss
+          style="color:grey"
+        ></paper-icon-button>
+        <paper-tooltip
+          for="archivesite"
+          position="top"
+          offset="12"
+          animation-delay="200"
+          >archive site</paper-tooltip
+        >
+        <paper-icon-button
+          on-tap="_downloadSite"
+          id="download"
+          icon="icons:file-download"
+          style="color:black"
+        ></paper-icon-button>
+        <paper-tooltip
+          for="download"
+          position="top"
+          offset="12"
+          animation-delay="200"
+          >Download zip</paper-tooltip
+        >
       </div>
     </paper-dialog>
     <paper-toast id="toast"></paper-toast>
-`,
+  `,
   properties: {
     /**
      * Title

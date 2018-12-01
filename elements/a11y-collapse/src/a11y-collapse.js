@@ -63,7 +63,7 @@ let A11yCollapse = Polymer({
         max-height: 0;
         overflow: hidden;
         padding: 0 var(--a11y-collapse-horizontal-padding, 16px);
-        border-top: 0px solid rgba(255,255,255,0);
+        border-top: 0px solid rgba(255, 255, 255, 0);
         transition: all 0.5s ease-in-out;
         @apply --a11y-collapse-content;
       }
@@ -81,7 +81,8 @@ let A11yCollapse = Polymer({
       :host([expanded]) #content {
         max-height: unset;
         overflow: hidden;
-        padding: var(--a11y-collapse-vertical-padding, 16px) var(--a11y-collapse-horizontal-padding, 16px);
+        padding: var(--a11y-collapse-vertical-padding, 16px)
+          var(--a11y-collapse-horizontal-padding, 16px);
         border-top: var(--a11y-collapse-border, 1px solid);
         @apply --a11y-collapse-content-expanded;
       }
@@ -90,19 +91,40 @@ let A11yCollapse = Polymer({
       }
     </style>
     <template is="dom-if" if="[[!accordion]]">
-      <a11y-collapse-icon-button id="iconbutton" disabled$="[[disabled]]" expanded$="[[_setAriaExpanded(expanded)]]" label$="[[_getExpandCollapse(expanded,label,labelExpanded)]]" icon$="[[_getExpandCollapse(expanded,icon,iconExpanded)]]" rotated$="[[__rotateIcon]]" tooltip$="[[_getExpandCollapse(expanded,tooltip,tooltipExpanded)]]">
+      <a11y-collapse-icon-button
+        id="iconbutton"
+        disabled$="[[disabled]]"
+        expanded$="[[_setAriaExpanded(expanded)]]"
+        label$="[[_getExpandCollapse(expanded,label,labelExpanded)]]"
+        icon$="[[_getExpandCollapse(expanded,icon,iconExpanded)]]"
+        rotated$="[[__rotateIcon]]"
+        tooltip$="[[_getExpandCollapse(expanded,tooltip,tooltipExpanded)]]"
+      >
         <slot name="heading"></slot>
       </a11y-collapse-icon-button>
     </template>
     <template is="dom-if" if="[[accordion]]">
-      <a11y-collapse-accordion-button id="accordionbutton" disabled$="[[disabled]]" expanded$="[[_setAriaExpanded(expanded)]]" label$="[[_getExpandCollapse(expanded,label,labelExpanded)]]" icon$="[[_getExpandCollapse(expanded,icon,iconExpanded)]]" rotated$="[[__rotateIcon]]" tooltip$="[[_getExpandCollapse(expanded,tooltip,tooltipExpanded)]]">
+      <a11y-collapse-accordion-button
+        id="accordionbutton"
+        disabled$="[[disabled]]"
+        expanded$="[[_setAriaExpanded(expanded)]]"
+        label$="[[_getExpandCollapse(expanded,label,labelExpanded)]]"
+        icon$="[[_getExpandCollapse(expanded,icon,iconExpanded)]]"
+        rotated$="[[__rotateIcon]]"
+        tooltip$="[[_getExpandCollapse(expanded,tooltip,tooltipExpanded)]]"
+      >
         <slot name="heading"></slot>
       </a11y-collapse-accordion-button>
     </template>
-    <div id="content" aria-hidden\$="{{!expanded}}" aria-labelledby="heading" aria-live="polite">
+    <div
+      id="content"
+      aria-hidden\$="{{!expanded}}"
+      aria-labelledby="heading"
+      aria-live="polite"
+    >
       <div id="content-inner"><slot name="content"></slot><slot></slot></div>
     </div>
-`,
+  `,
 
   is: "a11y-collapse",
   behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

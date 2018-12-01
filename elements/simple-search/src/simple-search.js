@@ -248,9 +248,18 @@ class SimpleSearch extends PolymerElement {
         :host #input {
           flex-grow: 2;
           margin-right: 4px;
-          --paper-input-container-input-color: var(--simple-search-input-text-color, #000);
-          --paper-input-container-focus-color: var(--simple-search-input-line-color, #000);
-          --paper-input-container-color: var(--simple-search-input-placeholder-color, #222);
+          --paper-input-container-input-color: var(
+            --simple-search-input-text-color,
+            #000
+          );
+          --paper-input-container-focus-color: var(
+            --simple-search-input-line-color,
+            #000
+          );
+          --paper-input-container-color: var(
+            --simple-search-input-placeholder-color,
+            #222
+          );
           color: var(--simple-search-input-placeholder-color, #222);
           @apply --simple-search-container;
         }
@@ -286,20 +295,43 @@ class SimpleSearch extends PolymerElement {
           display: none;
         }
       </style>
-      <paper-input id="input" always-float-label\$="[[alwaysFloatLabel]]" label="[[searchInputLabel]]" no-label-float\$="[[noLabelFloat]]" on-change="_handleChange">
+      <paper-input
+        id="input"
+        always-float-label\$="[[alwaysFloatLabel]]"
+        label="[[searchInputLabel]]"
+        no-label-float\$="[[noLabelFloat]]"
+        on-change="_handleChange"
+      >
         <iron-icon icon="[[searchInputIcon]]" slot="prefix"></iron-icon>
       </paper-input>
       <div id="xofy" shrink-hide\$="[[noSearch]]"></div>
       <div shrink-hide\$="[[noResults]]">
-        <button id="prev" aria-label="[[prevButtonLabel]]" aria-role="button" controls\$="[[controls]]" disabled\$="[[prevButtonDisabled]]" on-tap="_navigateResults" tabindex="0">
+        <button
+          id="prev"
+          aria-label="[[prevButtonLabel]]"
+          aria-role="button"
+          controls\$="[[controls]]"
+          disabled\$="[[prevButtonDisabled]]"
+          on-tap="_navigateResults"
+          tabindex="0"
+        >
           <iron-icon icon="[[prevButtonIcon]]"></iron-icon>
         </button>
         <paper-tooltip for="prev">[[prevButtonLabel]]</paper-tooltip>
-        <button id="next" aria-label="[[nextButtonLabel]]" aria-role="button" controls\$="[[controls]]" disabled\$="[[nextButtonDisabled]]" on-tap="_navigateResults" tabindex="0">
+        <button
+          id="next"
+          aria-label="[[nextButtonLabel]]"
+          aria-role="button"
+          controls\$="[[controls]]"
+          disabled\$="[[nextButtonDisabled]]"
+          on-tap="_navigateResults"
+          tabindex="0"
+        >
           <iron-icon icon\$="[[nextButtonIcon]]"></iron-icon>
         </button>
         <paper-tooltip for="next">[[nextButtonLabel]]</paper-tooltip>
-      </div>`;
+      </div>
+    `;
   }
 
   ready() {

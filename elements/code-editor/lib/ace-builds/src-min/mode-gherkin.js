@@ -102,8 +102,8 @@ define("ace/mode/gherkin_highlight_rules", [
                     (t.match("Scenario:|Feature:|Scenario Outline:|Background:")
                       ? (r += i)
                       : t.match("(Given|Then).+(:)$|Examples:")
-                        ? (r += i)
-                        : t.match("\\*.+") && (r += "* ")),
+                      ? (r += i)
+                      : t.match("\\*.+") && (r += "* ")),
                   r)
             );
           });

@@ -23,31 +23,38 @@ let SimpleConceptNetwork = Polymer({
       :host([visualization="network"]) simple-concept-network-node {
         position: relative;
       }
-      :host([visualization="network"]) simple-concept-network-node:nth-child(1) {
+      :host([visualization="network"])
+        simple-concept-network-node:nth-child(1) {
         top: 150px;
         left: 176px;
       }
-      :host([visualization="network"]) simple-concept-network-node:nth-child(2) {
+      :host([visualization="network"])
+        simple-concept-network-node:nth-child(2) {
         top: 0px;
         left: 60px;
       }
-      :host([visualization="network"]) simple-concept-network-node:nth-child(3) {
+      :host([visualization="network"])
+        simple-concept-network-node:nth-child(3) {
         top: 75px;
         left: 60px;
       }
-      :host([visualization="network"]) simple-concept-network-node:nth-child(4) {
+      :host([visualization="network"])
+        simple-concept-network-node:nth-child(4) {
         top: 230px;
         left: -56px;
       }
-      :host([visualization="network"]) simple-concept-network-node:nth-child(5) {
+      :host([visualization="network"])
+        simple-concept-network-node:nth-child(5) {
         top: 300px;
         left: -282px;
       }
-      :host([visualization="network"]) simple-concept-network-node:nth-child(6) {
+      :host([visualization="network"])
+        simple-concept-network-node:nth-child(6) {
         top: 230px;
         left: -515px;
       }
-      :host([visualization="network"]) simple-concept-network-node:nth-child(7) {
+      :host([visualization="network"])
+        simple-concept-network-node:nth-child(7) {
         top: 75px;
         left: -630px;
       }
@@ -57,9 +64,18 @@ let SimpleConceptNetwork = Polymer({
       }
     </style>
     <template is="dom-repeat" items="[[nodes]]" as="node">
-      <simple-concept-network-node visualization="[[visualization]]" src="[[node.src]]" icon="[[node.icon]]" icon-color="[[node.iconColor]]" image="[[node.image]]" label="[[node.label]]" color="[[node.color]]" disabled="[[node.disabled]]"></simple-concept-network-node>
+      <simple-concept-network-node
+        visualization="[[visualization]]"
+        src="[[node.src]]"
+        icon="[[node.icon]]"
+        icon-color="[[node.iconColor]]"
+        image="[[node.image]]"
+        label="[[node.label]]"
+        color="[[node.color]]"
+        disabled="[[node.disabled]]"
+      ></simple-concept-network-node>
     </template>
-`,
+  `,
 
   is: "simple-concept-network",
 

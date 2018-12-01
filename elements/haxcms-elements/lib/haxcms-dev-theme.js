@@ -48,11 +48,12 @@ Polymer({
       :host([edit-mode]) #slot {
         display: none;
       }
-      .manifest,.activeitem {
+      .manifest,
+      .activeitem {
         width: 48%;
         margin: 0;
         padding: 0;
-        display:inline-block;
+        display: inline-block;
         vertical-align: text-top;
       }
     </style>
@@ -60,34 +61,42 @@ Polymer({
     <iron-list id="list" items="[[manifest.items]]" grid>
       <template>
         <div style="padding:16px;">
-        <paper-card heading="[[item.title]]" image="[[item.metadata.image]]" elevation="1" animated-shadow="false">
-          <div class="card-content">
-            <div>description: [[item.description]]</div>
-            <div>location: [[item.location]]</div>
-            <div>changed: [[item.metadata.updated]]</div>
-          </div>
-          <div class="card-actions">
-            <paper-button data-id$="[[item.id]]">Click to set activeItem</paper-button>
-          </div>
-        </paper-card>
+          <paper-card
+            heading="[[item.title]]"
+            image="[[item.metadata.image]]"
+            elevation="1"
+            animated-shadow="false"
+          >
+            <div class="card-content">
+              <div>description: [[item.description]]</div>
+              <div>location: [[item.location]]</div>
+              <div>changed: [[item.metadata.updated]]</div>
+            </div>
+            <div class="card-actions">
+              <paper-button data-id$="[[item.id]]"
+                >Click to set activeItem</paper-button
+              >
+            </div>
+          </paper-card>
         </div>
       </template>
     </iron-list>
     <div class="manifest">
-    <h2>title: [[manifest.title]]</h2>
-    <div>description: [[manifest.description]]</div>
-    <div>icon: <iron-icon icon="[[manifest.metadata.icon]]"></iron-icon></div>
-    <div>image: <img src$="[[manifest.metadata.image]]" height="200px" width="200px" /></div>
-    </div>
-    <div class="activeitem">
-    <paper-button id="unset">Unset activeItem</paper-button>
-    <h2>ACTIVE ITEM</h2>
-    <div>[[activeItem.title]]</div>
-    <div id="contentcontainer">
-      <div id="slot">
-        <slot></slot>
+      <h2>title: [[manifest.title]]</h2>
+      <div>description: [[manifest.description]]</div>
+      <div>icon: <iron-icon icon="[[manifest.metadata.icon]]"></iron-icon></div>
+      <div>
+        image:
+        <img src$="[[manifest.metadata.image]]" height="200px" width="200px" />
       </div>
     </div>
+    <div class="activeitem">
+      <paper-button id="unset">Unset activeItem</paper-button>
+      <h2>ACTIVE ITEM</h2>
+      <div>[[activeItem.title]]</div>
+      <div id="contentcontainer">
+        <div id="slot"><slot></slot></div>
+      </div>
     </div>
   `,
   behaviors: [SchemaBehaviors.Schema, HAXCMSBehaviors.Theme],

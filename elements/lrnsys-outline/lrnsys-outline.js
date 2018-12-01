@@ -30,30 +30,62 @@ let LrnsysOutline = Polymer({
         margin: 4px 4px 4px 0;
         padding: 8px;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
-        font-size:85%;
+        font-size: 85%;
       }
     </style>
-    <h1>[[title]]<paper-icon-button title="Keyboard directions" id="dialogtrigger" icon="icons:help" on-tap="openDirections"></paper-icon-button></h1>
+    <h1>
+      [[title]]<paper-icon-button
+        title="Keyboard directions"
+        id="dialogtrigger"
+        icon="icons:help"
+        on-tap="openDirections"
+      ></paper-icon-button>
+    </h1>
     <paper-dialog id="modal" with-backdrop="">
       <h2>Keyboard shortcuts</h2>
       <div>
-        <paper-icon-button title="close directions" style="position: absolute;top: 0; right:0;" icon="icons:cancel" on-tap="closeDirections"></paper-icon-button>
+        <paper-icon-button
+          title="close directions"
+          style="position: absolute;top: 0; right:0;"
+          icon="icons:cancel"
+          on-tap="closeDirections"
+        ></paper-icon-button>
         <ul>
           <li><kbd>Enter</kbd> to <strong>add</strong> an item</li>
-          <li><kbd>Backspace</kbd> <em>with entire item selected</em> to <strong>delete</strong> an item.</li>
-          <li><kbd>↑</kbd> / <kbd>↓</kbd> / <kbd>←</kbd> / <kbd>→</kbd> to <strong>navigate</strong> through items</li>
-          <li><kbd>Tab</kbd> / <kbd>Shift+Tab</kbd> <em>at the beginning of a line</em> to <strong>indent/outdent</strong></li>
+          <li>
+            <kbd>Backspace</kbd> <em>with entire item selected</em> to
+            <strong>delete</strong> an item.
+          </li>
+          <li>
+            <kbd>↑</kbd> / <kbd>↓</kbd> / <kbd>←</kbd> / <kbd>→</kbd> to
+            <strong>navigate</strong> through items
+          </li>
+          <li>
+            <kbd>Tab</kbd> / <kbd>Shift+Tab</kbd>
+            <em>at the beginning of a line</em> to
+            <strong>indent/outdent</strong>
+          </li>
           <li><kbd>Shift+↑</kbd> / <kbd>Shift+↓</kbd> to items up/down</li>
         </ul>
       </div>
     </paper-dialog>
     <div id="itemslist">
       <template is="dom-repeat" items="{{items}}" as="item">
-        <lrnsys-outline-item disable-down$="[[item.disableDown]]" disable-left$="[[item.disableLeft]]" disable-right$="[[item.disableRight]]" disable-up$="[[item.disableUp]]" id$="[[item.id]]" index$="[[item.index]]" indent-level$="{{item.indent}}" parent\$="{{item.parent}}" title\$="{{item.title}}">
+        <lrnsys-outline-item
+          disable-down$="[[item.disableDown]]"
+          disable-left$="[[item.disableLeft]]"
+          disable-right$="[[item.disableRight]]"
+          disable-up$="[[item.disableUp]]"
+          id$="[[item.id]]"
+          index$="[[item.index]]"
+          indent-level$="{{item.indent}}"
+          parent\$="{{item.parent}}"
+          title\$="{{item.title}}"
+        >
         </lrnsys-outline-item>
       </template>
     </div>
-`,
+  `,
 
   is: "lrnsys-outline",
 

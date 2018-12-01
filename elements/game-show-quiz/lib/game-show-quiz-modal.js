@@ -66,7 +66,7 @@ Polymer({
       }
       .buttons ::slotted(#continue) {
         color: #004400;
-        background-color: #EEFFEE;
+        background-color: #eeffee;
       }
       @media screen and (max-width: 600px) {
         #dialog {
@@ -91,14 +91,10 @@ Polymer({
     </style>
     <paper-dialog id="dialog" modal="">
       <h2>[[title]]</h2>
-      <div class="content">
-        <slot name="content"></slot>
-      </div>
-      <div class="buttons">
-        <slot name="buttons"></slot>
-      </div>
+      <div class="content"><slot name="content"></slot></div>
+      <div class="buttons"><slot name="buttons"></slot></div>
     </paper-dialog>
-`,
+  `,
 
   is: "game-show-quiz-modal",
 

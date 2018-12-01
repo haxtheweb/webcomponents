@@ -1968,10 +1968,10 @@ define("ace/mode/css_highlight_rules", [
             : !r.tagName ||
               r.selfClosing ||
               this.voidElements.hasOwnProperty(r.tagName.toLowerCase())
-              ? ""
-              : this._findEndTagInLine(e, n, r.tagName, r.end.column)
-                ? ""
-                : "start"
+            ? ""
+            : this._findEndTagInLine(e, n, r.tagName, r.end.column)
+            ? ""
+            : "start"
           : this.getCommentFoldWidget(e, n);
       }),
         (this.getCommentFoldWidget = function(e, t) {

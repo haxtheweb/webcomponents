@@ -103,11 +103,11 @@ Polymer({
       }
       :host paper-item {
         min-height: 40;
-      } 
+      }
       :host paper-slider {
         @apply --a11y-media-slider;
       }
-      :host .play-status, 
+      :host .play-status,
       :host paper-icon-button {
         border: none;
         position: relative;
@@ -198,26 +198,80 @@ Polymer({
       }
     </style>
     <div id="controls-left">
-      <a11y-media-button icon="[[playPause.icon]]" label="[[playPause.label]]"></a11y-media-button>
-      <a11y-media-button disabled\$="[[compactControls]]" hidden\$="[[compactControls]]" icon="[[rewindIcon]]" label="[[rewindLabel]]"></a11y-media-button>
-      <a11y-media-button disabled\$="[[compactControls]]" hidden\$="[[compactControls]]" icon="[[forwardIcon]]" label="[[forwardLabel]]"></a11y-media-button>
-      <a11y-media-button disabled\$="[[compactControls]]" hidden\$="[[compactControls]]" icon="[[restartIcon]]" label="[[restartLabel]]"></a11y-media-button>
+      <a11y-media-button
+        icon="[[playPause.icon]]"
+        label="[[playPause.label]]"
+      ></a11y-media-button>
+      <a11y-media-button
+        disabled\$="[[compactControls]]"
+        hidden\$="[[compactControls]]"
+        icon="[[rewindIcon]]"
+        label="[[rewindLabel]]"
+      ></a11y-media-button>
+      <a11y-media-button
+        disabled\$="[[compactControls]]"
+        hidden\$="[[compactControls]]"
+        icon="[[forwardIcon]]"
+        label="[[forwardLabel]]"
+      ></a11y-media-button>
+      <a11y-media-button
+        disabled\$="[[compactControls]]"
+        hidden\$="[[compactControls]]"
+        icon="[[restartIcon]]"
+        label="[[restartLabel]]"
+      ></a11y-media-button>
       <div id="showvolume">
-        <a11y-media-button id="mute" icon="[[muteUnmute.icon]]" label="[[muteUnmute.label]]"></a11y-media-button>
+        <a11y-media-button
+          id="mute"
+          icon="[[muteUnmute.icon]]"
+          label="[[muteUnmute.label]]"
+        ></a11y-media-button>
         <span id="volume-slider-label" class="sr-only">[[volumeLabel]]</span>
-        <paper-slider aria-labelledby="volume-slider-label" id="volume" min="0" max="100" pin="" step="10" value\$="[[volume]]"></paper-slider>
+        <paper-slider
+          aria-labelledby="volume-slider-label"
+          id="volume"
+          min="0"
+          max="100"
+          pin=""
+          step="10"
+          value\$="[[volume]]"
+        ></paper-slider>
       </div>
       <span class="play-status control-bar" hidden\$="[[compactControls]]">
         <span id="statbar"></span>
       </span>
     </div>
     <div id="controls-right">
-      <a11y-media-button class="captions" hidden="[[audioOnly]]" icon="[[captionsIcon]]" label="[[captionsLabel]]" toggle="[[cc]]">
+      <a11y-media-button
+        class="captions"
+        hidden="[[audioOnly]]"
+        icon="[[captionsIcon]]"
+        label="[[captionsLabel]]"
+        toggle="[[cc]]"
+      >
       </a11y-media-button>
-      <a11y-media-button class="transcript" controls="transcript" hidden\$="[[compactControls]]" disabled\$="[[compactControls]]" icon="[[transcriptIcon]]" label="[[transcriptLabel]]" toggle="[[!hideTranscript]]">
+      <a11y-media-button
+        class="transcript"
+        controls="transcript"
+        hidden\$="[[compactControls]]"
+        disabled\$="[[compactControls]]"
+        icon="[[transcriptIcon]]"
+        label="[[transcriptLabel]]"
+        toggle="[[!hideTranscript]]"
+      >
       </a11y-media-button>
-      <paper-menu-button id="settings" allow-outside-scroll="" vertical-align="bottom" horizontal-align="right" ignore-select="">
-        <paper-icon-button icon\$="[[settingsIcon]]" slot="dropdown-trigger" alt="[[settingsLabel]]"></paper-icon-button>
+      <paper-menu-button
+        id="settings"
+        allow-outside-scroll=""
+        vertical-align="bottom"
+        horizontal-align="right"
+        ignore-select=""
+      >
+        <paper-icon-button
+          icon\$="[[settingsIcon]]"
+          slot="dropdown-trigger"
+          alt="[[settingsLabel]]"
+        ></paper-icon-button>
         <paper-listbox id="settingslist" slot="dropdown-content">
           <paper-item class="captions">
             <div class="setting">
@@ -226,7 +280,9 @@ Polymer({
                 <dropdown-select id="tracks" no-label-float="" value="">
                   <paper-item value="">[[captionsMenuOff]]</paper-item>
                   <template is="dom-repeat" items="{{tracks}}" as="option">
-                    <paper-item value\$="{{option.value}}">{{option.text}}</paper-item>
+                    <paper-item value\$="{{option.value}}"
+                      >{{option.text}}</paper-item
+                    >
                   </template>
                 </dropdown-select>
               </div>
@@ -238,7 +294,13 @@ Polymer({
                 [[transcriptMenuLabel]]
               </div>
               <div class="setting-control">
-                <paper-toggle-button id="transcript-toggle" aria-labelledby="transcript-label" checked\$="[[!hideTranscript]]" controls="transcript" disabled\$="[[!compactControls]]">
+                <paper-toggle-button
+                  id="transcript-toggle"
+                  aria-labelledby="transcript-label"
+                  checked\$="[[!hideTranscript]]"
+                  controls="transcript"
+                  disabled\$="[[!compactControls]]"
+                >
                 </paper-toggle-button>
               </div>
             </div>
@@ -247,7 +309,18 @@ Polymer({
             <div class="setting">
               <div id="speed-label" class="setting-text">[[speedLabel]]</div>
               <div class="setting-control">
-                <paper-slider id="speed" aria-labelledby="speed-label" class="setting-slider" label="tracks" min="0.5" max="4" pin="" step="0.5" tab-index="-1" value\$="[[playbackRate]]"></paper-slider>
+                <paper-slider
+                  id="speed"
+                  aria-labelledby="speed-label"
+                  class="setting-slider"
+                  label="tracks"
+                  min="0.5"
+                  max="4"
+                  pin=""
+                  step="0.5"
+                  tab-index="-1"
+                  value\$="[[playbackRate]]"
+                ></paper-slider>
               </div>
             </div>
           </paper-item>
@@ -255,7 +328,11 @@ Polymer({
             <div class="setting">
               <div id="loop-label" class="setting-text">[[loopLabel]]</div>
               <div class="setting-control">
-                <paper-toggle-button id="loop" aria-labelledby="loop-label" checked\$="[[loop]]"></paper-toggle-button>
+                <paper-toggle-button
+                  id="loop"
+                  aria-labelledby="loop-label"
+                  checked\$="[[loop]]"
+                ></paper-toggle-button>
               </div>
             </div>
           </paper-item>
@@ -269,12 +346,17 @@ Polymer({
       <paper-tooltip for="settings">[[settingsLabel]]</paper-tooltip>
       <template is="dom-if" if="[[fullscreenButton]]">
         <template is="dom-if" if="[[!noHeight]]">
-          <a11y-media-button icon="[[fullscreenIcon]]" label="[[fullscreenLabel]]" toggle="[[fullscreen]]" step="1">
+          <a11y-media-button
+            icon="[[fullscreenIcon]]"
+            label="[[fullscreenLabel]]"
+            toggle="[[fullscreen]]"
+            step="1"
+          >
           </a11y-media-button>
         </template>
       </template>
     </div>
-`,
+  `,
 
   is: "a11y-media-controls",
 

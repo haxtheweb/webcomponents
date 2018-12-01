@@ -22,10 +22,10 @@ let PlaceHolder = Polymer({
       :host {
         display: block;
         border: none;
-        transition: .6s border ease-in-out;
+        transition: 0.6s border ease-in-out;
       }
       :host([drag-over]) {
-        border: 4px dashed #2196F3;
+        border: 4px dashed #2196f3;
       }
       .placeholder-inner {
         text-align: center;
@@ -47,7 +47,7 @@ let PlaceHolder = Polymer({
       <iron-icon icon="[[iconFromType]]" class="placeholder-icon"></iron-icon>
       <span class="placeholder-text">[[calcText]]</span>
     </div>
-`,
+  `,
 
   is: "place-holder",
 

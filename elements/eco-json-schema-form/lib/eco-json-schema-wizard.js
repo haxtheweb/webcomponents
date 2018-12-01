@@ -294,8 +294,8 @@ Polymer({
   is: "eco-json-schema-wizard",
   behaviors: [AppLocalizeBehavior],
   _template: html`
-  <style is="custom-style" include="iron-flex iron-flex-alignment">
-       :host {
+    <style is="custom-style" include="iron-flex iron-flex-alignment">
+      :host {
         display: block;
         @apply --layout-vertical;
       }
@@ -336,29 +336,69 @@ Polymer({
         --app-toolbar-color: var(--dark-theme-text-color);
         --app-toolbar-background: var(--app-primary-color);
       }
-
     </style>
     <div class="vertical flex layout fullbleed">
-      <!--paper-icon-button id="camButton" icon="editor:insert-photo" raised>add photo</paper-icon-button-->
+      <!--
+        paper-icon-button id="camButton" icon="editor:insert-photo" raised>add photo</paper-icon-button
+      -->
       <app-toolbar>
-        <paper-icon-button id="prevButton" icon="arrow-back" hidden\$="{{!hasPrev}}" on-tap="prev" raised="">{{localize('prev')}}</paper-icon-button><span class="title layout horizontal flex" style="white-space: normal">[[title]]</span>
-        <paper-icon-button id="nextButton" icon="arrow-forward" hidden\$="{{!hasNext}}" on-tap="next" raised="">{{localize('next')}}</paper-icon-button>
-        <paper-icon-button id="submitButton" icon="cloud-upload" on-tap="submit" raised="">{{localize('submit')}}</paper-icon-button>
+        <paper-icon-button
+          id="prevButton"
+          icon="arrow-back"
+          hidden\$="{{!hasPrev}}"
+          on-tap="prev"
+          raised=""
+          >{{localize('prev')}}</paper-icon-button
+        ><span class="title layout horizontal flex" style="white-space: normal"
+          >[[title]]</span
+        >
+        <paper-icon-button
+          id="nextButton"
+          icon="arrow-forward"
+          hidden\$="{{!hasNext}}"
+          on-tap="next"
+          raised=""
+          >{{localize('next')}}</paper-icon-button
+        >
+        <paper-icon-button
+          id="submitButton"
+          icon="cloud-upload"
+          on-tap="submit"
+          raised=""
+          >{{localize('submit')}}</paper-icon-button
+        >
       </app-toolbar>
-      <iron-pages id="form" class="layout horizontal flex start-justified" role="main" selected="[[page]]" attr-for-selected="name"></iron-pages>
+      <iron-pages
+        id="form"
+        class="layout horizontal flex start-justified"
+        role="main"
+        selected="[[page]]"
+        attr-for-selected="name"
+      ></iron-pages>
       <app-toolbar class="bottom">
         <div hidden\$="{{!hasPrev}}" on-tap="prev">
-          <paper-icon-button id="prevButton" icon="arrow-back" raised="">{{localize('prev')}}</paper-icon-button>
-          <span class="title layout" style="white-space: normal">{{localize('prev')}}</span>
+          <paper-icon-button id="prevButton" icon="arrow-back" raised=""
+            >{{localize('prev')}}</paper-icon-button
+          >
+          <span class="title layout" style="white-space: normal"
+            >{{localize('prev')}}</span
+          >
         </div>
-        <span class="title layout horizontal flex" style="white-space: normal"></span>
+        <span
+          class="title layout horizontal flex"
+          style="white-space: normal"
+        ></span>
         <div hidden\$="{{!hasNext}}" on-tap="next">
-          <span class="title layout" style="white-space: normal">{{localize('next')}}</span>
-          <paper-icon-button id="nextButton" icon="arrow-forward" raised="">{{localize('next')}}</paper-icon-button>
+          <span class="title layout" style="white-space: normal"
+            >{{localize('next')}}</span
+          >
+          <paper-icon-button id="nextButton" icon="arrow-forward" raised=""
+            >{{localize('next')}}</paper-icon-button
+          >
         </div>
       </app-toolbar>
     </div>
-`,
+  `,
 
   properties: {
     language: {

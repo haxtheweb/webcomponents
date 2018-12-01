@@ -17,18 +17,22 @@ let LrnAssignment = Polymer({
         width: 100%;
       }
     </style>
-    <paper-card heading="[[title]]" image="[[image]]" elevation="1" animated-shadow="false">
-      <div class="card-content">
-        [[details]]
-        <slot></slot>
-      </div>  
+    <paper-card
+      heading="[[title]]"
+      image="[[image]]"
+      elevation="1"
+      animated-shadow="false"
+    >
+      <div class="card-content">[[details]] <slot></slot></div>
       <div class="card-actions">
         <template is="dom-repeat" items="[[actions]]">
-          <a href$="[[item.url]]"><paper-button raised>[[item.label]]</paper-button></a>
+          <a href$="[[item.url]]"
+            ><paper-button raised>[[item.label]]</paper-button></a
+          >
         </template>
       </div>
     </paper-card>
-`,
+  `,
 
   is: "lrn-assignment",
 
@@ -92,13 +96,21 @@ let LrnAssignments = Polymer({
       }
     </style>
     <template is="dom-repeat" items="[[assignments]]">
-      <lrn-assignment title="[[item.title]]" actions="[[item.actions]]"></lrn-assignment>
+      <lrn-assignment
+        title="[[item.title]]"
+        actions="[[item.actions]]"
+      ></lrn-assignment>
     </template>
 
     <template is="dom-if" if="[[url]]">
-      <iron-ajax auto="" url="[[url]]" handle-as="json" on-response="handleResponse"></iron-ajax>
+      <iron-ajax
+        auto=""
+        url="[[url]]"
+        handle-as="json"
+        on-response="handleResponse"
+      ></iron-ajax>
     </template>
-`,
+  `,
 
   is: "lrn-assignments",
 

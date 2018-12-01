@@ -17,7 +17,7 @@ Polymer({
       <iron-icon icon="[[icon]]"></iron-icon>
     </template>
     <span id="title">[[title]]</span>
-`,
+  `,
 
   is: "lrndesign-mapmenu-item",
 

@@ -4,10 +4,14 @@ import "./data-table-column-filter.js";
 Polymer({
   _template: html`
     <template id="header">
-      <data-table-column-filter label="[[column.name]]" value="{{column.filterValue}}" hidden\$="[[!column.filterBy]]"></data-table-column-filter>
+      <data-table-column-filter
+        label="[[column.name]]"
+        value="{{column.filterValue}}"
+        hidden\$="[[!column.filterBy]]"
+      ></data-table-column-filter>
       <div hidden\$="[[column.filterBy]]">[[column.name]]</div>
     </template>
-`,
+  `,
 
   is: "data-table-column",
 

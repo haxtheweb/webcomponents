@@ -17,31 +17,34 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-flex-layout/iron-flex-layout.js";
 const styleElement = document.createElement("dom-module");
 
-const css = html`<style include="iron-flex-layout">
-  lrn-icon, iron-icon {
-    --layout-inline: {
-      display: inline-flex;
-    }; 
-  }
-  .sr-only {
-    position: absolute;
-    left: -9999999px;
-    top: 0;
-    height: 0;
-    width: 0;
-    overflow: hidden;
-  }
-  @media screen {
-    .print-only {
-      display: none;
+const css = html`
+  <style include="iron-flex-layout">
+    lrn-icon,
+    iron-icon {
+      --layout-inline: {
+        display: inline-flex;
+      }
     }
-  }
-  @media print {
-    .screen-only {
-      display: none;
+    .sr-only {
+      position: absolute;
+      left: -9999999px;
+      top: 0;
+      height: 0;
+      width: 0;
+      overflow: hidden;
     }
-  }
-</style>`;
+    @media screen {
+      .print-only {
+        display: none;
+      }
+    }
+    @media print {
+      .screen-only {
+        display: none;
+      }
+    }
+  </style>
+`;
 styleElement.appendChild(css);
 
 styleElement.register("lrn-shared-styles");

@@ -19,7 +19,7 @@ let CitationElement = Polymer({
     <style>
       :host {
         display: block;
-        color: var('--license-text-color');
+        color: var("--license-text-color");
       }
       :host([display-method="footnote"]) {
         visibility: hidden;
@@ -44,11 +44,34 @@ let CitationElement = Polymer({
         margin-right: 8px;
       }
     </style>
-    <meta about\$="[[relatedResource]]" property="cc:attributionUrl" content\$="[[source]]">
-    <meta about\$="[[relatedResource]]" property="cc:attributionName" typeof="oer:Text" content\$="[[title]]">
-    <meta rel="cc:license" href\$="[[licenseLink]]" content\$="License: [[licenseName]]">
-    <cite><a target="_blank" href="[[source]]">[[title]]</a> by [[creator]], licensed under <a class="license-link" target="_blank" href="[[licenseLink]]"><img alt="[[licenseName]] graphic" src="[[licenseImage]]" hidden&="[[!licenseImage]]">[[licenseName]]</a>. Accessed <span class="citation-date">[[date]]</span>.</cite>
-`,
+    <meta
+      about\$="[[relatedResource]]"
+      property="cc:attributionUrl"
+      content\$="[[source]]"
+    />
+    <meta
+      about\$="[[relatedResource]]"
+      property="cc:attributionName"
+      typeof="oer:Text"
+      content\$="[[title]]"
+    />
+    <meta
+      rel="cc:license"
+      href\$="[[licenseLink]]"
+      content\$="License: [[licenseName]]"
+    />
+    <cite
+      ><a target="_blank" href="[[source]]">[[title]]</a> by [[creator]],
+      licensed under
+      <a class="license-link" target="_blank" href="[[licenseLink]]"
+        ><img
+          alt="[[licenseName]] graphic"
+          src="[[licenseImage]]"
+          hidden&="[[!licenseImage]]"
+        />[[licenseName]]</a
+      >. Accessed <span class="citation-date">[[date]]</span>.</cite
+    >
+  `,
 
   is: "citation-element",
 

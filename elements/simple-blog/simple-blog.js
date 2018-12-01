@@ -24,22 +24,23 @@ let SimpleBlog = Polymer({
     <style is="custom-style" include="simple-colors">
       :host {
         display: block;
-        font-family: 'Roboto', 'Noto', sans-serif;
+        font-family: "Roboto", "Noto", sans-serif;
         -webkit-font-smoothing: antialiased;
         font-size: 14px;
         margin: 0;
         padding: 24px;
         background-color: #fafafa;
-        font-family: Open Sans,MundoSans,helvetica neue,Arial,Helvetica,sans-serif;
+        font-family: Open Sans, MundoSans, helvetica neue, Arial, Helvetica,
+          sans-serif;
         margin: 0;
         padding: 0;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         -moz-font-feature-settings: "liga=1, dlig=1";
-        -ms-font-feature-settings: "liga","dlig";
-        -webkit-font-feature-settings: "liga","dlig";
-        -o-font-feature-settings: "liga","dlig";
-        font-feature-settings: "liga","dlig";
+        -ms-font-feature-settings: "liga", "dlig";
+        -webkit-font-feature-settings: "liga", "dlig";
+        -o-font-feature-settings: "liga", "dlig";
+        font-feature-settings: "liga", "dlig";
       }
       #backbutton {
         position: fixed;
@@ -51,10 +52,10 @@ let SimpleBlog = Polymer({
         margin: 8px;
         z-index: 1000;
         color: black;
-        background-color: rgba( 250, 250, 250, .5);
-        opacity: .5;
+        background-color: rgba(250, 250, 250, 0.5);
+        opacity: 0.5;
         border-radius: 50%;
-        transition: all .6s linear;
+        transition: all 0.6s linear;
       }
       #backbutton:focus,
       #backbutton:hover {
@@ -62,12 +63,13 @@ let SimpleBlog = Polymer({
         color: white;
         background-color: var(--haxcms-color, black);
       }
-      iron-pages, iron-pages section {
+      iron-pages,
+      iron-pages section {
         width: 100vw;
         height: 100vh;
       }
       #post {
-        transition: all .6s ease-in-out;
+        transition: all 0.6s ease-in-out;
         visibility: hidden;
       }
       :host([selected-page="0"]) #post {
@@ -83,18 +85,38 @@ let SimpleBlog = Polymer({
     <iron-pages selected="[[selectedPage]]">
       <section>
         <simple-blog-header manifest="[[manifest]]"></simple-blog-header>
-        <simple-blog-listing id="listing" items="[[manifest.items]]"></simple-blog-listing>
+        <simple-blog-listing
+          id="listing"
+          items="[[manifest.items]]"
+        ></simple-blog-listing>
       </section>
       <section>
-        <paper-icon-button id="backbutton" icon="icons:arrow-back" on-tap="_resetActiveItem"></paper-icon-button>
-        <paper-tooltip for="backbutton" position="right" offset="14" animation-delay="100">
-        Back to main site
+        <paper-icon-button
+          id="backbutton"
+          icon="icons:arrow-back"
+          on-tap="_resetActiveItem"
+        ></paper-icon-button>
+        <paper-tooltip
+          for="backbutton"
+          position="right"
+          offset="14"
+          animation-delay="100"
+        >
+          Back to main site
         </paper-tooltip>
-        <simple-blog-post id="post" active-item="[[activeItem]]" edit-mode="[[editMode]]"><slot></slot></simple-blog-post>
-        <simple-blog-footer id="footer" manifest="[[manifest]]"></simple-blog-footer>
+        <simple-blog-post
+          id="post"
+          active-item="[[activeItem]]"
+          edit-mode="[[editMode]]"
+          ><slot></slot
+        ></simple-blog-post>
+        <simple-blog-footer
+          id="footer"
+          manifest="[[manifest]]"
+        ></simple-blog-footer>
       </section>
     </iron-pages>
-`,
+  `,
 
   is: "simple-blog",
 

@@ -23,18 +23,17 @@ A LRN element that renders the zoom feature for the gallery.
 Polymer({
   _template: html`
     <style is="custom-style" include="simple-colors">
-      :host #lrnsysdialog ::slotted(#dialogtrigger){
+      :host #lrnsysdialog ::slotted(#dialogtrigger) {
         --app-toolbar-primary-color: var(--lrndesign-gallery-focus-color);
         --app-toolbar-secondary-color: rgba(0, 0, 0, 0.7);
       }
 
       :host #lrnsysdialog ::slotted(#dialogtrigger) {
-        
       }
       :host #lrnsysdialog ::slotted(#dialogtrigger) {
-        text-align: center; 
+        text-align: center;
         padding: 6px;
-        min-width: 30px; 
+        min-width: 30px;
         color: var(--lrndesign-gallery-color);
       }
       :host #inspector ::slotted(app-toolbar) {
@@ -49,8 +48,10 @@ Polymer({
         background-color: var(--lrndesign-gallery-rgba-low);
         border-radius: 3px;
       }
-      :host #lrnsysdialog ::slotted(#dialogtrigger > lrnsys-button-inner):focus, 
-      :host #lrnsysdialog ::slotted(#dialogtrigger > lrnsys-button-inner):hover {
+      :host #lrnsysdialog ::slotted(#dialogtrigger > lrnsys-button-inner):focus,
+      :host
+        #lrnsysdialog
+        ::slotted(#dialogtrigger > lrnsys-button-inner):hover {
         color: var(--lrndesign-gallery-focus-color);
         background-color: var(--lrndesign-gallery-background-color);
       }
@@ -60,25 +61,53 @@ Polymer({
         width: 24px;
       }
     </style>
-    <lrnsys-dialog id="lrnsysdialog" dark$="[[dark]]" dynamic-images body-append title$="[[tooltip]]">
-      <span slot="button"><iron-icon icon="[[icon]]" hidden$="[[!_isAttrSet(icon)]]"></iron-icon></span>
-      <div slot="toolbar-primary"><span aria-hidden="true">[[heading]]</span></div>
+    <lrnsys-dialog
+      id="lrnsysdialog"
+      dark$="[[dark]]"
+      dynamic-images
+      body-append
+      title$="[[tooltip]]"
+    >
+      <span slot="button"
+        ><iron-icon icon="[[icon]]" hidden$="[[!_isAttrSet(icon)]]"></iron-icon
+      ></span>
+      <div slot="toolbar-primary">
+        <span aria-hidden="true">[[heading]]</span>
+      </div>
       <span slot="toolbar-secondary">
-        <lrnsys-dialog-toolbar-button title="Zoom In" icon="zoom-in" id="in"></lrnsys-dialog-toolbar-button>
-        <lrnsys-dialog-toolbar-button title="Zoom Out" icon="zoom-out" id="out"></lrnsys-dialog-toolbar-button>
+        <lrnsys-dialog-toolbar-button
+          title="Zoom In"
+          icon="zoom-in"
+          id="in"
+        ></lrnsys-dialog-toolbar-button>
+        <lrnsys-dialog-toolbar-button
+          title="Zoom Out"
+          icon="zoom-out"
+          id="out"
+        ></lrnsys-dialog-toolbar-button>
       </span>
       <div slot="header">
-        <h1 style="position: absolute; left: -99999px; top:-1px; height: 0; width: 0; overflow: auto;">
+        <h1
+          style="position: absolute; left: -99999px; top:-1px; height: 0; width: 0; overflow: auto;"
+        >
           [[heading]]
         </h1>
       </div>
       <div>
-        <img-pan-zoom id="img" alt\$="[[zoomAlt]]" src\$="[[src]]" max-zoom-pixel-ratio="1.5" min-zoom-image-ratio="0.5" zoom-per-click="1.2" zoom-per-scroll="0.6">
+        <img-pan-zoom
+          id="img"
+          alt\$="[[zoomAlt]]"
+          src\$="[[src]]"
+          max-zoom-pixel-ratio="1.5"
+          min-zoom-image-ratio="0.5"
+          zoom-per-click="1.2"
+          zoom-per-scroll="0.6"
+        >
         </img-pan-zoom>
-        <div id="details"></div> 
+        <div id="details"></div>
       </div>
     </lrnsys-dialog>
-`,
+  `,
 
   is: "lrndesign-gallery-zoom",
 

@@ -55,7 +55,7 @@ Polymer({
       }
       .assignment-row {
         border: 1px solid #000000;
-        background-color: #FFFFFF;
+        background-color: #ffffff;
       }
       .assignment-row .assignment-row-button.active {
         background-color: var(--paper-amber-50);
@@ -85,55 +85,109 @@ Polymer({
       .assignment-operations .operation {
         display: inline-flex;
       }
-
     </style>
-    <iron-ajax auto="" url="projects.json" last-response="{{projects}}" on-response="handleProjectResponse">
+    <iron-ajax
+      auto=""
+      url="projects.json"
+      last-response="{{projects}}"
+      on-response="handleProjectResponse"
+    >
     </iron-ajax>
-    <iron-ajax auto="" url="assignments.json" last-response="{{assignments}}" on-response="handleAssignmentResponse">
+    <iron-ajax
+      auto=""
+      url="assignments.json"
+      last-response="{{assignments}}"
+      on-response="handleAssignmentResponse"
+    >
     </iron-ajax>
-    <iron-list items="[[_toArray(projects)]]" as="project" class="projects-container" grid="">
+    <iron-list
+      items="[[_toArray(projects)]]"
+      as="project"
+      class="projects-container"
+      grid=""
+    >
       <template class="projects-container-items">
-      <paper-card id\$="project-[[project.id]]" class="project-card grey lighten-4" heading="{{project.title}}" elevation="2">
-        <div class="project-operations">
-          <lrnsys-dialog body-append="" id\$="project-[[project.id]]-add" alt="Add assignment" class="circle operation" hover-class="amber lighten-2" header="Add assignment">
-            <iron-icon slot="button" icon="add"></iron-icon>
-            <div slot="content">
-              Add another assignment
-            </div>
-          </lrnsys-dialog>
-          <lrnsys-dialog body-append="" id\$="project-[[project.id]]-delete" alt="Delete project!" class="circle operation" hover-class="red darken-2 white-text" header="Delete project!">
-            <iron-icon slot="button" icon="delete-forever"></iron-icon>
-            <div slot="content">
-              Delete form here
-            </div>
-          </lrnsys-dialog>
-        </div>
-        <div class="card-content">
-          <iron-list items="[[_toArray(assignments)]]" as="assignment">
-            <template>
-            <div class="assignment-row">
-              <lrnsys-dialog body-append="" on-focusin="assignmentFocusIn" class="assignment-row-button" id\$="assignment-[[project.id]]-[[assignment.id]]" header="[[assignment.title]]" hover-class="amber lighten-5">
-                <span slot="button">
-                  <iron-icon icon="[[assignment.icon]]"></iron-icon>
-                  <span>[[assignment.title]]</span>
-                </span>
-                <div slot="content">
-                  Body of the assignment would go here
+        <paper-card
+          id\$="project-[[project.id]]"
+          class="project-card grey lighten-4"
+          heading="{{project.title}}"
+          elevation="2"
+        >
+          <div class="project-operations">
+            <lrnsys-dialog
+              body-append=""
+              id\$="project-[[project.id]]-add"
+              alt="Add assignment"
+              class="circle operation"
+              hover-class="amber lighten-2"
+              header="Add assignment"
+            >
+              <iron-icon slot="button" icon="add"></iron-icon>
+              <div slot="content">Add another assignment</div>
+            </lrnsys-dialog>
+            <lrnsys-dialog
+              body-append=""
+              id\$="project-[[project.id]]-delete"
+              alt="Delete project!"
+              class="circle operation"
+              hover-class="red darken-2 white-text"
+              header="Delete project!"
+            >
+              <iron-icon slot="button" icon="delete-forever"></iron-icon>
+              <div slot="content">Delete form here</div>
+            </lrnsys-dialog>
+          </div>
+          <div class="card-content">
+            <iron-list items="[[_toArray(assignments)]]" as="assignment">
+              <template>
+                <div class="assignment-row">
+                  <lrnsys-dialog
+                    body-append=""
+                    on-focusin="assignmentFocusIn"
+                    class="assignment-row-button"
+                    id\$="assignment-[[project.id]]-[[assignment.id]]"
+                    header="[[assignment.title]]"
+                    hover-class="amber lighten-5"
+                  >
+                    <span slot="button">
+                      <iron-icon icon="[[assignment.icon]]"></iron-icon>
+                      <span>[[assignment.title]]</span>
+                    </span>
+                    <div slot="content">
+                      Body of the assignment would go here
+                    </div>
+                  </lrnsys-dialog>
+                  <span class="assignment-operations">
+                    <lrnsys-button
+                      id\$="assignment-[[project.id]]-[[assignment.id]]-add-critique"
+                      icon="editor:insert-comment"
+                      alt="Add critique"
+                      class="circle operation"
+                      hover-class="green lighten-2"
+                    ></lrnsys-button>
+                    <lrnsys-button
+                      id\$="assignment-[[project.id]]-[[assignment.id]]-edit"
+                      icon="editor:mode-edit"
+                      alt="Edit"
+                      class="circle operation"
+                      hover-class="amber lighten-2"
+                    ></lrnsys-button>
+                    <lrnsys-button
+                      id\$="assignment-[[project.id]]-[[assignment.id]]-delete"
+                      icon="delete"
+                      alt="Delete"
+                      class="circle operation"
+                      hover-class="red darken-2 white-text"
+                    ></lrnsys-button>
+                  </span>
                 </div>
-              </lrnsys-dialog>
-              <span class="assignment-operations">
-                <lrnsys-button id\$="assignment-[[project.id]]-[[assignment.id]]-add-critique" icon="editor:insert-comment" alt="Add critique" class="circle operation" hover-class="green lighten-2"></lrnsys-button>
-                <lrnsys-button id\$="assignment-[[project.id]]-[[assignment.id]]-edit" icon="editor:mode-edit" alt="Edit" class="circle operation" hover-class="amber lighten-2"></lrnsys-button>
-                <lrnsys-button id\$="assignment-[[project.id]]-[[assignment.id]]-delete" icon="delete" alt="Delete" class="circle operation" hover-class="red darken-2 white-text"></lrnsys-button>
-              </span>
-            </div>
-            </template>
-          </iron-list>
-        </div>
-      </paper-card>
+              </template>
+            </iron-list>
+          </div>
+        </paper-card>
       </template>
     </iron-list>
-`,
+  `,
   is: "lrnapp-studio-kanban",
   properties: { activeAssignment: { type: String, value: null } },
   handleProjectResponse: function(response) {

@@ -18,7 +18,7 @@ let ParallaxImage = Polymer({
     <style>
       :host {
         display: block;
-        --parallax-image-background: '';
+        --parallax-image-background: "";
         --parallax-title-background: rgba(0, 0, 0, 0.3);
         --parallax-title-font: #fff;
       }
@@ -75,7 +75,7 @@ let ParallaxImage = Polymer({
         </div>
       </div>
     </a>
-`,
+  `,
 
   is: "parallax-image",
 

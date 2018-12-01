@@ -16,77 +16,97 @@ import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 */
 let LrnsysButton = Polymer({
   _template: html`
-  <custom-style>
-    <style include="materializecss-styles-colors">
-      :host {
-        display: block;
-        @apply --paper-font-common-base;
-        @apply --paper-button;
-        --lrnsys-button-height: 48px;
-      }
-      a {
-        text-decoration: none;
-        display: block;
-        color: #000000;
-        display: flex;
-      }
-      paper-button {
-        padding: 0;
-        margin: 0;
-        min-width: .16px;
-        height: inherit;
-        -webkit-justify-content: flex-start;
-        justify-content: flex-start;
-        align-items: center;
-        width: 100%;
-        text-transform: unset;
-        border-radius: unset;
-        display: flex;
-      }
-      paper-button iron-icon {
-        height: var(--lrnsys-button-height);
-        margin: 0 4px;
-      }
-      paper-button iron-icon:first-child {
-        margin: 0 4px 0 0;
-      }
-      paper-button iron-icon:last-child {
-        margin: 0 0 0 4px;
-      }
-      paper-button div.inner {
-        height: var(--lrnsys-button-height);
-        line-height: var(--lrnsys-button-height);
-        display: flex;
-        padding: 0 16px;
-      }
-      paper-button span.label {
-        height: var(--lrnsys-button-height);
-        line-height: var(--lrnsys-button-height);
-      }
-      .no-margin {
-        margin: 0 !important;
-      }
-      .no-right-padding {
-        padding-right: 0 !important;
-      }
-      .no-left-padding {
-        padding-left: 0 !important;
-      }
-    </style>
+    <custom-style>
+      <style include="materializecss-styles-colors">
+        :host {
+          display: block;
+          @apply --paper-font-common-base;
+          @apply --paper-button;
+          --lrnsys-button-height: 48px;
+        }
+        a {
+          text-decoration: none;
+          display: block;
+          color: #000000;
+          display: flex;
+        }
+        paper-button {
+          padding: 0;
+          margin: 0;
+          min-width: 0.16px;
+          height: inherit;
+          -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+          align-items: center;
+          width: 100%;
+          text-transform: unset;
+          border-radius: unset;
+          display: flex;
+        }
+        paper-button iron-icon {
+          height: var(--lrnsys-button-height);
+          margin: 0 4px;
+        }
+        paper-button iron-icon:first-child {
+          margin: 0 4px 0 0;
+        }
+        paper-button iron-icon:last-child {
+          margin: 0 0 0 4px;
+        }
+        paper-button div.inner {
+          height: var(--lrnsys-button-height);
+          line-height: var(--lrnsys-button-height);
+          display: flex;
+          padding: 0 16px;
+        }
+        paper-button span.label {
+          height: var(--lrnsys-button-height);
+          line-height: var(--lrnsys-button-height);
+        }
+        .no-margin {
+          margin: 0 !important;
+        }
+        .no-right-padding {
+          padding-right: 0 !important;
+        }
+        .no-left-padding {
+          padding-left: 0 !important;
+        }
+      </style>
     </custom-style>
-    <a tabindex="-1" id="lrnsys-button-link" href\$="[[showHref]]" data-prefetch-hover\$="[[prefetch]]" target\$="[[target]]">
-      <paper-button id="button" title="[[alt]]" raised="[[raised]]" class\$="[[buttonClass]] [[color]] [[textColor]]" disabled\$="[[disabled]]">
+    <a
+      tabindex="-1"
+      id="lrnsys-button-link"
+      href\$="[[showHref]]"
+      data-prefetch-hover\$="[[prefetch]]"
+      target\$="[[target]]"
+    >
+      <paper-button
+        id="button"
+        title="[[alt]]"
+        raised="[[raised]]"
+        class\$="[[buttonClass]] [[color]] [[textColor]]"
+        disabled\$="[[disabled]]"
+      >
         <div class\$="inner [[innerClass]]">
-          <iron-icon icon="[[icon]]" id="icon" class\$="[[iconClass]]" hidden\$="[[!icon]]"></iron-icon>
-          <span class="label" hidden\$="[[!label]]">
-            [[label]]
-          </span>
+          <iron-icon
+            icon="[[icon]]"
+            id="icon"
+            class\$="[[iconClass]]"
+            hidden\$="[[!icon]]"
+          ></iron-icon>
+          <span class="label" hidden\$="[[!label]]"> [[label]] </span>
           <slot></slot>
         </div>
       </paper-button>
     </a>
-    <paper-tooltip for="lrnsys-button-link" animation-delay="0" hidden\$="[[!alt]]">[[alt]]</paper-tooltip>
-`,
+    <paper-tooltip
+      for="lrnsys-button-link"
+      animation-delay="0"
+      hidden\$="[[!alt]]"
+      >[[alt]]</paper-tooltip
+    >
+  `,
 
   is: "lrnsys-button",
 

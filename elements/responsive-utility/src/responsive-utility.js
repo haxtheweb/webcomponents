@@ -12,7 +12,7 @@ let ResponsiveUtility = Polymer({
       }
     </style>
     <slot></slot>
-`,
+  `,
 
   is: "responsive-utility",
 

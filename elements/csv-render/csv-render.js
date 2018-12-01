@@ -39,7 +39,7 @@ let CsvRender = Polymer({
         background-color: rgb(255, 255, 255);
       }
       .mdl-data-table thead {
-        padding-bottom: .16px;
+        padding-bottom: 0.16px;
         position: sticky;
       }
       .mdl-data-table caption {
@@ -137,46 +137,59 @@ let CsvRender = Polymer({
         width: 36px;
         height: 36px;
         min-width: unset;
-        padding:0;
-        margin:0;
+        padding: 0;
+        margin: 0;
         display: inline-flex;
       }
       iron-icon {
         display: inline-flex;
-        margin:0;
-        padding:0;
+        margin: 0;
+        padding: 0;
       }
       #download paper-button:focus,
       #download paper-button:active {
         outline: 2px solid grey;
       }
     </style>
-    <iron-ajax auto="" url="[[dataSource]]" handle-as="text" last-response="{{tableData}}" on-response="handleResponse"></iron-ajax>
+    <iron-ajax
+      auto=""
+      url="[[dataSource]]"
+      handle-as="text"
+      last-response="{{tableData}}"
+      on-response="handleResponse"
+    ></iron-ajax>
     <paper-spinner id="loading" active=""></paper-spinner>
     <a href="[[dataSource]]" id="download" tabindex="-1">
-        <paper-button class="grey-text"><iron-icon icon="file-download"></iron-icon></paper-button>
-    </a><paper-tooltip for="download" animation-delay="200" offset="14">Download table data</paper-tooltip><table class="mdl-data-table" summary="[[summary]]">
-    <template is="dom-if" if="[[caption]]">
-      <caption>[[caption]]</caption>
-    </template>
-    <thead>
-      <tr>
-      <template is="dom-repeat" items="[[tableHeadings]]" as="heading">
-        <th scope="col">[[heading]]</th>
+      <paper-button class="grey-text"
+        ><iron-icon icon="file-download"></iron-icon
+      ></paper-button> </a
+    ><paper-tooltip for="download" animation-delay="200" offset="14"
+      >Download table data</paper-tooltip
+    >
+    <table class="mdl-data-table" summary="[[summary]]">
+      <template is="dom-if" if="[[caption]]">
+        <caption>
+          [[caption]]
+        </caption>
       </template>
-      </tr>
-    </thead>
-    <tbody>
-      <template is="dom-repeat" items="[[table]]" as="row">
-      <tr>
-        <template is="dom-repeat" items="[[row]]" as="col">
-        <td>[[col]]</td>
+      <thead>
+        <tr>
+          <template is="dom-repeat" items="[[tableHeadings]]" as="heading">
+            <th scope="col">[[heading]]</th>
+          </template>
+        </tr>
+      </thead>
+      <tbody>
+        <template is="dom-repeat" items="[[table]]" as="row">
+          <tr>
+            <template is="dom-repeat" items="[[row]]" as="col">
+              <td>[[col]]</td>
+            </template>
+          </tr>
         </template>
-      </tr>
-      </template>
-    </tbody>
+      </tbody>
     </table>
-`,
+  `,
 
   is: "csv-render",
 

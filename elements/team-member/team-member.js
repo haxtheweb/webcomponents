@@ -19,7 +19,7 @@ let TeamMember = Polymer({
     <style is="custom-style">
       :host {
         display: block;
-        --team-member-circle: #1E407D;
+        --team-member-circle: #1e407d;
         --team-member-border: white;
       }
       .team-member {
@@ -65,20 +65,44 @@ let TeamMember = Polymer({
       <div hidden\$="[[!firstLine]]" class="line1">[[firstLine]]</div>
       <div hidden\$="[[!secondLine]]" class="line2">[[secondLine]]</div>
       <div class="social">
-        <a tabindex="-1" href\$="[[dribble]]" hidden\$="[[!dribble]]"><paper-icon-button icon="mdi-social:dribble"></paper-icon-button></a>
-        <a tabindex="-1" href\$="[[facebook]]" hidden\$="[[!facebook]]"><paper-icon-button icon="mdi-social:facebook-box"></paper-icon-button></a>
-        <a tabindex="-1" href\$="[[github]]" hidden\$="[[!github]]"><paper-icon-button icon="mdi-social:github-circle"></paper-icon-button></a>
-        <a tabindex="-1" href\$="[[google]]" hidden\$="[[!google]]"><paper-icon-button icon="mdi-social:google-plus"></paper-icon-button></a>
-        <a tabindex="-1" href\$="[[instagram]]" hidden\$="[[!instagram]]"><paper-icon-button icon="mdi-social:instagram"></paper-icon-button></a>
-        <a tabindex="-1" href\$="[[linkedin]]" hidden\$="[[!linkedin]]"><paper-icon-button icon="mdi-social:linkedin"></paper-icon-button></a>
-        <a tabindex="-1" href\$="[[pinterest]]" hidden\$="[[!pinterest]]"><paper-icon-button icon="mdi-social:pinterest"></paper-icon-button></a>
-        <a tabindex="-1" href\$="[[tumblr]]" hidden\$="[[!tumblr]]"><paper-icon-button icon="mdi-social:tumblr"></paper-icon-button></a>
-        <a tabindex="-1" href\$="[[twitch]]" hidden\$="[[!twitch]]"><paper-icon-button icon="mdi-social:twitch"></paper-icon-button></a>
-        <a tabindex="-1" href\$="[[twitter]]" hidden\$="[[!twitter]]"><paper-icon-button icon="mdi-social:twitter"></paper-icon-button></a>
-        <a tabindex="-1" href\$="[[whatsapp]]" hidden\$="[[!whatsapp]]"><paper-icon-button icon="mdi-social:whatsapp"></paper-icon-button></a>
+        <a tabindex="-1" href\$="[[dribble]]" hidden\$="[[!dribble]]"
+          ><paper-icon-button icon="mdi-social:dribble"></paper-icon-button
+        ></a>
+        <a tabindex="-1" href\$="[[facebook]]" hidden\$="[[!facebook]]"
+          ><paper-icon-button icon="mdi-social:facebook-box"></paper-icon-button
+        ></a>
+        <a tabindex="-1" href\$="[[github]]" hidden\$="[[!github]]"
+          ><paper-icon-button
+            icon="mdi-social:github-circle"
+          ></paper-icon-button
+        ></a>
+        <a tabindex="-1" href\$="[[google]]" hidden\$="[[!google]]"
+          ><paper-icon-button icon="mdi-social:google-plus"></paper-icon-button
+        ></a>
+        <a tabindex="-1" href\$="[[instagram]]" hidden\$="[[!instagram]]"
+          ><paper-icon-button icon="mdi-social:instagram"></paper-icon-button
+        ></a>
+        <a tabindex="-1" href\$="[[linkedin]]" hidden\$="[[!linkedin]]"
+          ><paper-icon-button icon="mdi-social:linkedin"></paper-icon-button
+        ></a>
+        <a tabindex="-1" href\$="[[pinterest]]" hidden\$="[[!pinterest]]"
+          ><paper-icon-button icon="mdi-social:pinterest"></paper-icon-button
+        ></a>
+        <a tabindex="-1" href\$="[[tumblr]]" hidden\$="[[!tumblr]]"
+          ><paper-icon-button icon="mdi-social:tumblr"></paper-icon-button
+        ></a>
+        <a tabindex="-1" href\$="[[twitch]]" hidden\$="[[!twitch]]"
+          ><paper-icon-button icon="mdi-social:twitch"></paper-icon-button
+        ></a>
+        <a tabindex="-1" href\$="[[twitter]]" hidden\$="[[!twitter]]"
+          ><paper-icon-button icon="mdi-social:twitter"></paper-icon-button
+        ></a>
+        <a tabindex="-1" href\$="[[whatsapp]]" hidden\$="[[!whatsapp]]"
+          ><paper-icon-button icon="mdi-social:whatsapp"></paper-icon-button
+        ></a>
       </div>
     </div>
-`,
+  `,
 
   is: "team-member",
   behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

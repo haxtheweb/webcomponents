@@ -14,11 +14,11 @@ visualization of steps
 Polymer({
   _template: html`
     <style>
-       :host {
+      :host {
         display: block;
         --lrndesign-icon-button-color: #abacae;
         --lrndesign-stepper-btn-title-color: #000;
-        --lrndesign-stepper-btn-active: #F6F7F7;
+        --lrndesign-stepper-btn-active: #f6f7f7;
         --lrndesign-border-color: #abacae;
       }
 
@@ -105,7 +105,7 @@ Polymer({
       }
 
       paper-button:after {
-        content: '';
+        content: "";
         display: block;
         position: absolute;
         width: 100%;
@@ -151,29 +151,27 @@ Polymer({
         </div>
       </paper-button>
       <iron-collapse>
-      <div>
-        <slot></slot>
-      </div>
+        <div><slot></slot></div>
       </iron-collapse>
     </template>
     <template is="dom-if" if="{{hasCollapse(collapsible, 0)}}">
       <a tabindex="-1" href="[[url]]" class="url-style">
-      <paper-button class="btn" noink="">
-        <div class="box-container">
-          <div class="top-line"></div>
-          <div class="stepper-btn">
-            <iron-icon icon="[[icon]]" class="btn-icon"></iron-icon>
+        <paper-button class="btn" noink="">
+          <div class="box-container">
+            <div class="top-line"></div>
+            <div class="stepper-btn">
+              <iron-icon icon="[[icon]]" class="btn-icon"></iron-icon>
+            </div>
+            <div class="bottom-line"></div>
           </div>
-          <div class="bottom-line"></div>
-        </div>
-        <div class="title-container">
-          <div class="node-title">[[title]]</div>
-        </div>
-      </paper-button>
+          <div class="title-container">
+            <div class="node-title">[[title]]</div>
+          </div>
+        </paper-button>
       </a>
       <slot></slot>
     </template>
-`,
+  `,
 
   is: "lrndesign-stepper-button",
 

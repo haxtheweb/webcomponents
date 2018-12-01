@@ -1721,10 +1721,10 @@ define("ace/mode/doc_comment_highlight_rules", [
             : !r.tagName ||
               r.selfClosing ||
               this.voidElements.hasOwnProperty(r.tagName.toLowerCase())
-              ? ""
-              : this._findEndTagInLine(e, n, r.tagName, r.end.column)
-                ? ""
-                : "start"
+            ? ""
+            : this._findEndTagInLine(e, n, r.tagName, r.end.column)
+            ? ""
+            : "start"
           : this.getCommentFoldWidget(e, n);
       }),
         (this.getCommentFoldWidget = function(e, t) {
@@ -2871,10 +2871,10 @@ define("ace/mode/doc_comment_highlight_rules", [
                 return e[n]
                   ? "keyword"
                   : t[n]
-                    ? "constant.language"
-                    : n == "..." || n.match(/^\.\.\d+$/)
-                      ? "variable.language"
-                      : "identifier";
+                  ? "constant.language"
+                  : n == "..." || n.match(/^\.\.\d+$/)
+                  ? "variable.language"
+                  : "identifier";
               },
               regex: "[a-zA-Z.][a-zA-Z0-9._]*\\b"
             },

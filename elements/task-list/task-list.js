@@ -26,7 +26,7 @@ let TaskList = Polymer({
         <li><span property="oer:task">[[task.name]]</span></li>
       </template>
     </ol>
-`,
+  `,
 
   is: "task-list",
 

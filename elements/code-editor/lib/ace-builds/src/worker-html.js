@@ -585,8 +585,8 @@ define("ace/range", [], function(require, exports, module) {
           return column < this.start.column
             ? -1
             : column > this.end.column
-              ? 1
-              : 0;
+            ? 1
+            : 0;
         }
       }
 
@@ -11706,8 +11706,8 @@ define("ace/mode/html/saxparser", [], function(require, exports, module) {
             typeof self !== "undefined"
               ? self
               : typeof window !== "undefined"
-                ? window
-                : {}
+              ? window
+              : {}
           ));
         },
         {

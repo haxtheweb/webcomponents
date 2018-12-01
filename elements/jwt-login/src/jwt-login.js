@@ -17,9 +17,15 @@ let JwtLogin = Polymer({
         visibility: hidden;
       }
     </style>
-    <iron-ajax id="loginrequest" method="GET" url="[[url]]" handle-as="json" on-response="loginResponse">
+    <iron-ajax
+      id="loginrequest"
+      method="GET"
+      url="[[url]]"
+      handle-as="json"
+      on-response="loginResponse"
+    >
     </iron-ajax>
-`,
+  `,
 
   is: "jwt-login",
 

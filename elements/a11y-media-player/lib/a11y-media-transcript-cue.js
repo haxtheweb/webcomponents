@@ -79,17 +79,24 @@ Polymer({
         display: none;
       }
       :host simple-search-content {
-        --simple-search-match-text-color: var(--a11y-media-transcript-match-color);
-        --simple-search-match-bg-color: var(--a11y-media-transcript-match-bg-color);
-        --simple-search-match-border-color:  var(--a11y-media-transcript-match-border-color);
+        --simple-search-match-text-color: var(
+          --a11y-media-transcript-match-color
+        );
+        --simple-search-match-bg-color: var(
+          --a11y-media-transcript-match-bg-color
+        );
+        --simple-search-match-border-color: var(
+          --a11y-media-transcript-match-border-color
+        );
         --simple-search-match: {
           border: none;
           border-radius: 4px;
           font-weight: normal;
-        };
+        }
       }
       @media print {
-        :host, :host([active]),
+        :host,
+        :host([active]),
         :host(:not([active]):not([disabled]):active),
         :host(:not([active]):not([disabled]):focus),
         :host(:not([active]):not([disabled]):hover) {
@@ -100,11 +107,19 @@ Polymer({
     </style>
     <span id="time">[[cue.start]] - [[cue.end]]</span>
     <span id="text">
-      <simple-search-content id="content" content="[[cue.text]]"></simple-search-content>
+      <simple-search-content
+        id="content"
+        content="[[cue.text]]"
+      ></simple-search-content>
     </span>
-    <iron-a11y-keys id="a11y" keys="enter" target\$="[[__target]]" on-keys-pressed="_onClick">
+    <iron-a11y-keys
+      id="a11y"
+      keys="enter"
+      target\$="[[__target]]"
+      on-keys-pressed="_onClick"
+    >
     </iron-a11y-keys>
-`,
+  `,
 
   is: "a11y-media-transcript-cue",
 

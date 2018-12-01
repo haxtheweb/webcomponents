@@ -25,7 +25,7 @@ let FancyCarousel = Polymer({
 
       :host(:after) {
         display: block;
-        content: '';
+        content: "";
         padding-top: 75%; /* 4:3 = height is 75% of width */
       }
 
@@ -40,13 +40,11 @@ let FancyCarousel = Polymer({
       }
     </style>
 
-    <div id="content-wrapper">
-      <slot></slot>
-    </div>
+    <div id="content-wrapper"><slot></slot></div>
 
     <button id="prevBtn" on-click="previous">❮</button>
     <button id="nextBtn" on-click="next">❯</button>
-`,
+  `,
 
   is: "fancy-carousel",
 

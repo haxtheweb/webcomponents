@@ -28,7 +28,7 @@ let LrnsysButton = Polymer({
         color: #000000;
       }
       paper-button {
-        transition: .3s;
+        transition: 0.3s;
         margin: 0;
         max-width: 50%;
         height: inherit;
@@ -64,19 +64,35 @@ let LrnsysButton = Polymer({
         margin: 0 auto;
       }
     </style>
-    <a tabindex="-1" id="lrnsys-button-link" href\$="[[showHref]]" data-prefetch-hover\$="[[prefetch]]" target\$="[[target]]">
-      <paper-button id="button" raised="[[raised]]" class\$="[[class]] [[color]] [[textColor]]" disabled\$="[[disabled]]">
+    <a
+      tabindex="-1"
+      id="lrnsys-button-link"
+      href\$="[[showHref]]"
+      data-prefetch-hover\$="[[prefetch]]"
+      target\$="[[target]]"
+    >
+      <paper-button
+        id="button"
+        raised="[[raised]]"
+        class\$="[[class]] [[color]] [[textColor]]"
+        disabled\$="[[disabled]]"
+      >
         <div class\$="inner [[innerClass]]">
-          <iron-icon icon\$="[[icon]]" id="icon" class\$="[[iconClass]]" hidden\$="[[!icon]]"></iron-icon>
-          <span class="label" hidden\$="[[!label]]">
-            [[label]]
-          </span>
+          <iron-icon
+            icon\$="[[icon]]"
+            id="icon"
+            class\$="[[iconClass]]"
+            hidden\$="[[!icon]]"
+          ></iron-icon>
+          <span class="label" hidden\$="[[!label]]"> [[label]] </span>
           <slot></slot>
         </div>
       </paper-button>
     </a>
-    <paper-tooltip for="lrnsys-button-link" animation-delay="0">[[alt]]</paper-tooltip>
-`,
+    <paper-tooltip for="lrnsys-button-link" animation-delay="0"
+      >[[alt]]</paper-tooltip
+    >
+  `,
 
   is: "lrn-button",
 

@@ -25,7 +25,7 @@ Polymer({
         display: block;
         z-index: 2;
         opacity: 1;
-        transition: opacity 0.5s; 
+        transition: opacity 0.5s;
         position: absolute;
         height: 100%;
       }
@@ -33,27 +33,27 @@ Polymer({
       :host([playing]:not([audio-only])) {
         opacity: 0;
       }
-      :host, 
-      :host #thumbnail, 
-      :host #background, 
+      :host,
+      :host #thumbnail,
+      :host #background,
       :host #button {
         width: 100%;
         max-height: 80vh;
         top: 0;
         left: 0;
         opacity: 1;
-        transition: opacity 0.5s; 
-      } 
-      :host #thumbnail, 
-      :host #background, 
+        transition: opacity 0.5s;
+      }
+      :host #thumbnail,
+      :host #background,
       :host #button {
         position: absolute;
         height: 100%;
-        padding:0;
+        padding: 0;
         margin: 0;
         border: none;
       }
-      :host([audio-only][thumbnail-src][playing]) #button > *:not(#thumbnail), 
+      :host([audio-only][thumbnail-src][playing]) #button > *:not(#thumbnail),
       :host([audio-only][thumbnail-src][disabled]) #button > *:not(#thumbnail) {
         opacity: 0;
       }
@@ -63,7 +63,7 @@ Polymer({
       }
       :host #button {
         overflow: hidden;
-        background: transparent; 
+        background: transparent;
       }
       :host #button:hover {
         cursor: pointer;
@@ -89,22 +89,52 @@ Polymer({
       }
       @media print {
         :host(:not([thumbnail-src])),
-        :host #background, 
+        :host #background,
         :host #svg {
           display: none;
         }
       }
     </style>
-    <button id="button" aria-pressed\$="[[playing]]" aria-hidden\$="[[disabled]]" tabindex="0" disabled\$="[[disabled]]" controls="video" title\$="[[label]]">
+    <button
+      id="button"
+      aria-pressed\$="[[playing]]"
+      aria-hidden\$="[[disabled]]"
+      tabindex="0"
+      disabled\$="[[disabled]]"
+      controls="video"
+      title\$="[[label]]"
+    >
       <div id="background"></div>
-      <svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="30%" height="30%" opacity="0.7">
+      <svg
+        id="svg"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 200 200"
+        width="30%"
+        height="30%"
+        opacity="0.7"
+      >
         <g>
-          <polygon id="arrow" points="30,20 30,180 170,100" fill="#000000" stroke="#ffffff" stroke-width="15px"></polygon>
-          <text id="text" class="sr-only" x="50" y="115" fill="#ffffff" font-size="30px">[[label]]</text>
+          <polygon
+            id="arrow"
+            points="30,20 30,180 170,100"
+            fill="#000000"
+            stroke="#ffffff"
+            stroke-width="15px"
+          ></polygon>
+          <text
+            id="text"
+            class="sr-only"
+            x="50"
+            y="115"
+            fill="#ffffff"
+            font-size="30px"
+          >
+            [[label]]
+          </text>
         </g>
       </svg>
     </button>
-`,
+  `,
 
   is: "a11y-media-play-button",
 

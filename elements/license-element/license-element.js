@@ -18,17 +18,17 @@ let LicenseElement = Polymer({
         font-size: 16px;
         line-height: 32px;
         --license-text-color: #222222;
-        --license-background-color: #F2F2F2;
+        --license-background-color: #f2f2f2;
         background-color: var(--license-background-color);
       }
       :host:after {
-        content: 'License';
+        content: "License";
         position: relative;
         float: right;
         bottom: 36px;
         right: 8px;
         font-size: 28px;
-        color: #DDDDDD;
+        color: #dddddd;
         font-style: italic;
       }
       .license-body {
@@ -61,17 +61,51 @@ let LicenseElement = Polymer({
         font-weight: bold;
       }
     </style>
-    <meta rel="cc:license" href\$="[[licenseLink]]" content\$="License: [[licenseName]]">
-    <div class="license-body" xmlns:cc\$="[[licenseLink]]" xmlns:dc="http://purl.org/dc/elements/1.1/">
-      <a class="big-license-link" target="_blank" href="[[licenseLink]]"><img alt="[[licenseName]] graphic" src="[[licenseImage]]" hidden\$="[[!licenseImage]]"></a>
-        <span class="work-title" rel="dc:type" href="http://purl.org/dc/dcmitype/Text" property="dc:title">[[title]]</span> by <a rel="cc:attributionURL" property="cc:attributionName" href\$="[[source]]">[[creator]]</a> is licensed under a <a class="license-link" target="_blank" href="[[licenseLink]]">[[licenseName]]</a>.
-        <span rel="dc:source" href\$="[[source]]"></span>
+    <meta
+      rel="cc:license"
+      href\$="[[licenseLink]]"
+      content\$="License: [[licenseName]]"
+    />
+    <div
+      class="license-body"
+      xmlns:cc\$="[[licenseLink]]"
+      xmlns:dc="http://purl.org/dc/elements/1.1/"
+    >
+      <a class="big-license-link" target="_blank" href="[[licenseLink]]"
+        ><img
+          alt="[[licenseName]] graphic"
+          src="[[licenseImage]]"
+          hidden\$="[[!licenseImage]]"
+      /></a>
+      <span
+        class="work-title"
+        rel="dc:type"
+        href="http://purl.org/dc/dcmitype/Text"
+        property="dc:title"
+        >[[title]]</span
+      >
+      by
+      <a
+        rel="cc:attributionURL"
+        property="cc:attributionName"
+        href\$="[[source]]"
+        >[[creator]]</a
+      >
+      is licensed under a
+      <a class="license-link" target="_blank" href="[[licenseLink]]"
+        >[[licenseName]]</a
+      >. <span rel="dc:source" href\$="[[source]]"></span>
 
-        <template is="dom-if" if="[[hasMore]]">
-          <span>Permissions beyond the scope of this license are available <a rel="cc:morePermissions" target="_blank" href="[[moreLink]]">[[moreLabel]]</a>.</span>
-        </template>
+      <template is="dom-if" if="[[hasMore]]">
+        <span
+          >Permissions beyond the scope of this license are available
+          <a rel="cc:morePermissions" target="_blank" href="[[moreLink]]"
+            >[[moreLabel]]</a
+          >.</span
+        >
+      </template>
     </div>
-`,
+  `,
 
   is: "license-element",
 

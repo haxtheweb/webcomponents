@@ -22,7 +22,7 @@ let SimpleDatetime = Polymer({
       }
     </style>
     <time datetime$="[[date]]">[[date]]</time>
-`,
+  `,
 
   is: "simple-datetime",
 

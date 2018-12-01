@@ -104,10 +104,10 @@ define("ace/mode/tex_highlight_rules", [
                 return e[n]
                   ? "keyword"
                   : t[n]
-                    ? "constant.language"
-                    : n == "..." || n.match(/^\.\.\d+$/)
-                      ? "variable.language"
-                      : "identifier";
+                  ? "constant.language"
+                  : n == "..." || n.match(/^\.\.\d+$/)
+                  ? "variable.language"
+                  : "identifier";
               },
               regex: "[a-zA-Z.][a-zA-Z0-9._]*\\b"
             },

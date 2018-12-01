@@ -1174,9 +1174,9 @@
                     this.fireEvent("disable-drag-selection");
                   }
                   /* Get current region
-     *  The smallest region that contains the current time.
-     *  If several such regions exist, we take the first.
-     *  Return null if none exist. */
+                   *  The smallest region that contains the current time.
+                   *  If several such regions exist, we take the first.
+                   *  Return null if none exist. */
                 },
                 {
                   key: "getCurrentRegion",

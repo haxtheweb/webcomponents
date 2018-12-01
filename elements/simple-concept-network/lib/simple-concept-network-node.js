@@ -21,18 +21,32 @@ Polymer({
       :host {
         display: inline-flex;
         --simple-concept-network-color: #220066;
-        --simple-concept-network-bg: #FFFFFF;
+        --simple-concept-network-bg: #ffffff;
       }
       paper-button {
-        -webkit-transition: .6s transform ease-in-out;
-        transition: .6s transform ease-in-out;
-        -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-        clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        -webkit-transition: 0.6s transform ease-in-out;
+        transition: 0.6s transform ease-in-out;
+        -webkit-clip-path: polygon(
+          50% 0%,
+          100% 25%,
+          100% 75%,
+          50% 100%,
+          0% 75%,
+          0% 25%
+        );
+        clip-path: polygon(
+          50% 0%,
+          100% 25%,
+          100% 75%,
+          50% 100%,
+          0% 75%,
+          0% 25%
+        );
         color: var(--simple-concept-network-color);
       }
       :host([visualization="network"]) paper-button:hover,
       :host([visualization="network"]) paper-button:focus {
-        opacity: .8;
+        opacity: 0.8;
       }
       :host([visualization="3d"]) paper-button {
         -webkit-transform: perspective(600px) rotateX(60deg);
@@ -56,10 +70,10 @@ Polymer({
         position: relative;
         width: 88px;
         height: 50.81px;
-        margin: 25.40px 0;
+        margin: 25.4px 0;
         background-size: auto 101.6136px;
         background-position: center;
-        box-shadow: 0 0 20px rgba(0,0,0,0.6);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
         background-color: var(--simple-concept-network-bg);
       }
 
@@ -75,7 +89,7 @@ Polymer({
         transform: scaleY(0.5774) rotate(-45deg);
         background: inherit;
         left: 12.89px;
-        box-shadow: 0 0 20px rgba(0,0,0,0.6);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
       }
 
       /*counter transform the bg image on the caps*/
@@ -83,11 +97,11 @@ Polymer({
       .hexBottom:after {
         content: "";
         position: absolute;
-        width: 88.0000px;
+        width: 88px;
         height: 50.80682368868707px;
-        -webkit-transform:  rotate(45deg) scaleY(1.7321) translateY(-25.4034px);
-        -ms-transform:      rotate(45deg) scaleY(1.7321) translateY(-25.4034px);
-        transform:          rotate(45deg) scaleY(1.7321) translateY(-25.4034px);
+        -webkit-transform: rotate(45deg) scaleY(1.7321) translateY(-25.4034px);
+        -ms-transform: rotate(45deg) scaleY(1.7321) translateY(-25.4034px);
+        transform: rotate(45deg) scaleY(1.7321) translateY(-25.4034px);
         -webkit-transform-origin: 0 0;
         -ms-transform-origin: 0 0;
         transform-origin: 0 0;
@@ -113,9 +127,9 @@ Polymer({
       .hexagon:after {
         content: "";
         position: absolute;
-        top: 0.0000px;
+        top: 0px;
         left: 0;
-        width: 88.0000px;
+        width: 88px;
         height: 50.8068px;
         z-index: 2;
         background: inherit;
@@ -123,17 +137,22 @@ Polymer({
     </style>
     <a tabindex="-1" href="[[src]]" disabled\$="[[disabled]]">
       <paper-button disabled\$="[[disabled]]" id="button">
-      <div class="hexagon" style\$="background-image: url([[image]]); background-color:[[color]];">
-        <div class="hexTop"></div>
-        <div class="hexBottom"></div>
-        <iron-icon icon="[[icon]]" style\$="color:[[iconColor]];">&gt;</iron-icon>
-      </div>
+        <div
+          class="hexagon"
+          style\$="background-image: url([[image]]); background-color:[[color]];"
+        >
+          <div class="hexTop"></div>
+          <div class="hexBottom"></div>
+          <iron-icon icon="[[icon]]" style\$="color:[[iconColor]];"
+            >&gt;</iron-icon
+          >
+        </div>
       </paper-button>
     </a>
     <paper-tooltip for="button" position="bottom" offset="45">
       [[label]]
     </paper-tooltip>
-`,
+  `,
 
   is: "simple-concept-network-node",
 

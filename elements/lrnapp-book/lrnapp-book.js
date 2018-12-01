@@ -59,7 +59,7 @@ let LrnappBook = Polymer({
         margin: 0;
         height: auto;
         box-sizing: content-box;
-        transition: all .4s ease;
+        transition: all 0.4s ease;
       }
       paper-button {
         padding: 0;
@@ -105,7 +105,7 @@ let LrnappBook = Polymer({
         font-size: 12.8px;
       }
       hax-panel {
-      --app-drawer-content-container: {
+        --app-drawer-content-container: {
           background-color: #fafafa;
           padding: 0;
           border-right: 1px solid #c8c8c8;
@@ -125,7 +125,9 @@ let LrnappBook = Polymer({
         margin: 0;
         height: 48px;
       }
-      lrndesign-stepper-button ::shadow .title-container.lrndesign-stepper-button {
+      lrndesign-stepper-button
+        ::shadow
+        .title-container.lrndesign-stepper-button {
         padding: 0;
         width: 100%;
         right: unset;
@@ -138,7 +140,7 @@ let LrnappBook = Polymer({
       .loading {
         width: 100%;
         z-index: 1000;
-        opacity: .9;
+        opacity: 0.9;
         text-align: center;
         align-content: space-around;
         justify-content: center;
@@ -161,7 +163,7 @@ let LrnappBook = Polymer({
         justify-content: center;
       }
       #bodyloading .loading,
-      #bodyloading elmsln-loading{
+      #bodyloading elmsln-loading {
         display: block;
         height: 80px;
       }
@@ -172,7 +174,7 @@ let LrnappBook = Polymer({
       .content-nav-buttons {
         top: 60%;
         position: fixed;
-        opacity: .8;
+        opacity: 0.8;
         padding: 0 4px;
         height: 40%;
         padding-top: 15%;
@@ -187,7 +189,7 @@ let LrnappBook = Polymer({
       }
       .next {
         right: 0;
-        transition: right .2s ease;
+        transition: right 0.2s ease;
         order: 2;
       }
       app-header {
@@ -206,28 +208,23 @@ let LrnappBook = Polymer({
         padding: 0;
         margin: -48px 64px 80px 64px;
         font-size: 16px;
-        transition:
-          margin .4s ease,
-          width .4s ease;
+        transition: margin 0.4s ease, width 0.4s ease;
       }
 
       .content-nav-buttons paper-icon-button {
         width: 64px;
         height: 64px;
-        opacity: .4;
+        opacity: 0.4;
         display: block;
         visibility: visible;
-        transition:
-          opacity .4s linear,
-          visibility 1s linear,
-          height .4s ease,
-          width .4s ease;
+        transition: opacity 0.4s linear, visibility 1s linear, height 0.4s ease,
+          width 0.4s ease;
       }
       .content-nav-buttons paper-icon-button:hover {
         opacity: 1;
       }
       paper-tooltip {
-        --paper-tooltip-opacity: .96;
+        --paper-tooltip-opacity: 0.96;
       }
       :host([drawer-opened]) .content-nav-buttons paper-icon-button {
         width: 40px;
@@ -251,7 +248,7 @@ let LrnappBook = Polymer({
       }
       .content-next {
         background-color: grey;
-        opacity: .8;
+        opacity: 0.8;
       }
       #header {
         position: sticky;
@@ -265,7 +262,7 @@ let LrnappBook = Polymer({
         margin: 0;
         opacity: 1;
         box-sizing: content-box;
-        transition: all .4s ease;
+        transition: all 0.4s ease;
       }
       app-drawer-layout {
         font-family: sans-serif;
@@ -289,7 +286,7 @@ let LrnappBook = Polymer({
 
       [main-title] {
         font-weight: lighter;
-        padding: .6em 0 0 0;
+        padding: 0.6em 0 0 0;
         margin: 0;
         height: 48px;
         overflow-y: scroll;
@@ -366,7 +363,7 @@ let LrnappBook = Polymer({
           display: flex;
           top: unset;
           padding: 0;
-          opacity: .8;
+          opacity: 0.8;
           height: unset;
           margin: 0;
         }
@@ -399,7 +396,7 @@ let LrnappBook = Polymer({
         height: 25.6px;
         visibility: visible;
         opacity: 1;
-        transition: all .4s ease;
+        transition: all 0.4s ease;
       }
       :host([edit-mode]) #editbutton {
         width: 100%;
@@ -415,7 +412,7 @@ let LrnappBook = Polymer({
         background-color: var(--paper-grey-500);
       }
       :host([edit-mode]) #toolbar {
-        opacity: .5;
+        opacity: 0.5;
       }
       .your-progress-button {
         padding-right: 16px;
@@ -430,43 +427,158 @@ let LrnappBook = Polymer({
     </style>
     <page-scroll-position value="{{scrollPosition}}"></page-scroll-position>
     <div id="anchor"></div>
-    <iron-ajax id="outlineajax" params="[[requestParams]]" url="[[outlinePath]]" handle-as="json" on-response="handleOutlineResponse" last-response="{{outlineData}}"></iron-ajax>
-    <iron-ajax id="bookajax" params="[[requestParams]]" url="[[bookPath]]" handle-as="json" on-response="handleBookResponse" last-response="{{bookData}}"></iron-ajax>
-    <iron-ajax id="pageajax" url="[[pagePath]]" params="[[pageParams]]" handle-as="json" on-response="handlePageResponse" last-response="{{pageData}}"></iron-ajax>
-    <iron-ajax id="pageupdateajax" url="[[pageUpdatePath]]" params="[[pageParams]]" method="PUT" body="[[updatePageData]]" content-type="application/json" handle-as="json" on-response="_handleUpdateResponse"></iron-ajax>
-    <iron-ajax id="pagedeleteajax" url="[[pageDeletePath]]" params="[[pageParams]]" method="DELETE" content-type="application/json" handle-as="json" on-response="_handleDeleteResponse"></iron-ajax>
-    <iron-ajax id="pagecreateajax" url="[[pageCreatePath]]" method="POST" body="[[createRequestBody]]" handle-as="json" on-response="_ajaxCreateStubHandler"></iron-ajax>
+    <iron-ajax
+      id="outlineajax"
+      params="[[requestParams]]"
+      url="[[outlinePath]]"
+      handle-as="json"
+      on-response="handleOutlineResponse"
+      last-response="{{outlineData}}"
+    ></iron-ajax>
+    <iron-ajax
+      id="bookajax"
+      params="[[requestParams]]"
+      url="[[bookPath]]"
+      handle-as="json"
+      on-response="handleBookResponse"
+      last-response="{{bookData}}"
+    ></iron-ajax>
+    <iron-ajax
+      id="pageajax"
+      url="[[pagePath]]"
+      params="[[pageParams]]"
+      handle-as="json"
+      on-response="handlePageResponse"
+      last-response="{{pageData}}"
+    ></iron-ajax>
+    <iron-ajax
+      id="pageupdateajax"
+      url="[[pageUpdatePath]]"
+      params="[[pageParams]]"
+      method="PUT"
+      body="[[updatePageData]]"
+      content-type="application/json"
+      handle-as="json"
+      on-response="_handleUpdateResponse"
+    ></iron-ajax>
+    <iron-ajax
+      id="pagedeleteajax"
+      url="[[pageDeletePath]]"
+      params="[[pageParams]]"
+      method="DELETE"
+      content-type="application/json"
+      handle-as="json"
+      on-response="_handleDeleteResponse"
+    ></iron-ajax>
+    <iron-ajax
+      id="pagecreateajax"
+      url="[[pageCreatePath]]"
+      method="POST"
+      body="[[createRequestBody]]"
+      handle-as="json"
+      on-response="_ajaxCreateStubHandler"
+    ></iron-ajax>
 
-    <app-location route="{{route}}" query-params="{{queryParams}}"></app-location>
-    <app-route route="{{route}}" pattern="[[endPoint]]/:type/:id" data="{{data}}" tail="{{tail}}" query-params="{{queryParams}}">
+    <app-location
+      route="{{route}}"
+      query-params="{{queryParams}}"
+    ></app-location>
+    <app-route
+      route="{{route}}"
+      pattern="[[endPoint]]/:type/:id"
+      data="{{data}}"
+      tail="{{tail}}"
+      query-params="{{queryParams}}"
+    >
     </app-route>
-  <!-- body where most of the heavy lifting happens -->
+    <!-- body where most of the heavy lifting happens -->
     <app-drawer-layout>
       <hax-panel id="haxpanel">
         <span slot="post">
           <lrnsys-collapselist-item>
-          <span slot="label"><div class="label">Engagements</div></span>
-          <span slot="content">
-            <hax-panel-item icon="touch-app" icon-class="blue-text" label="Interactive video" event-name="h5p-interactive-video" voice-command="insert interactive video"></hax-panel-item>
-            <hax-panel-item icon="hardware:videogame-asset" icon-class="red-text" label="Self-check" event-name="h5p-multiple-choice" voice-command="insert self check"></hax-panel-item>
-            <hax-panel-item icon="timeline" icon-class="yellow-text text-darken-4" label="Timeline" event-name="timeline" voice-command="insert timeline"></hax-panel-item>
-            <hax-panel-item icon="maps:place" icon-class="green-text" label="Map" event-name="map" voice-command="insert map"></hax-panel-item>
-            <hax-panel-item icon="social:share" icon-class="pink-text" label="JMOL" event-name="jmol" voice-command="insert molecule"></hax-panel-item>
-            <hax-panel-item icon="social:poll" icon-class="orange-text" label="Poll" event-name="poll" voice-command="insert poll"></hax-panel-item>
-          </span>
-        </lrnsys-collapselist-item>
-        <lrnsys-collapselist-item>
-          <span slot="label"><div class="label">Assessments</div></span>
-          <span slot="content">
-            <hax-panel-item icon="assignment" icon-class="yellow-text text-darken-2" label="Assignment" event-name="assignment" voice-command="insert assignment"></hax-panel-item>
-            <hax-panel-item icon="assessment" icon-class="purple-text text-darken-2" label="Quiz" event-name="quiz" voice-command="insert quiz"></hax-panel-item>
-          </span>
-        </lrnsys-collapselist-item>
-      </span>
+            <span slot="label"><div class="label">Engagements</div></span>
+            <span slot="content">
+              <hax-panel-item
+                icon="touch-app"
+                icon-class="blue-text"
+                label="Interactive video"
+                event-name="h5p-interactive-video"
+                voice-command="insert interactive video"
+              ></hax-panel-item>
+              <hax-panel-item
+                icon="hardware:videogame-asset"
+                icon-class="red-text"
+                label="Self-check"
+                event-name="h5p-multiple-choice"
+                voice-command="insert self check"
+              ></hax-panel-item>
+              <hax-panel-item
+                icon="timeline"
+                icon-class="yellow-text text-darken-4"
+                label="Timeline"
+                event-name="timeline"
+                voice-command="insert timeline"
+              ></hax-panel-item>
+              <hax-panel-item
+                icon="maps:place"
+                icon-class="green-text"
+                label="Map"
+                event-name="map"
+                voice-command="insert map"
+              ></hax-panel-item>
+              <hax-panel-item
+                icon="social:share"
+                icon-class="pink-text"
+                label="JMOL"
+                event-name="jmol"
+                voice-command="insert molecule"
+              ></hax-panel-item>
+              <hax-panel-item
+                icon="social:poll"
+                icon-class="orange-text"
+                label="Poll"
+                event-name="poll"
+                voice-command="insert poll"
+              ></hax-panel-item>
+            </span>
+          </lrnsys-collapselist-item>
+          <lrnsys-collapselist-item>
+            <span slot="label"><div class="label">Assessments</div></span>
+            <span slot="content">
+              <hax-panel-item
+                icon="assignment"
+                icon-class="yellow-text text-darken-2"
+                label="Assignment"
+                event-name="assignment"
+                voice-command="insert assignment"
+              ></hax-panel-item>
+              <hax-panel-item
+                icon="assessment"
+                icon-class="purple-text text-darken-2"
+                label="Quiz"
+                event-name="quiz"
+                voice-command="insert quiz"
+              ></hax-panel-item>
+            </span>
+          </lrnsys-collapselist-item>
+        </span>
       </hax-panel>
-      <app-drawer slot="drawer" id="bookdrawer" opened="{{drawerOpened}}" swipe-open="" transition-duration="150">
-        <div id="bookdrawercontent" style="height: 100%; overflow: auto;" hidden\$="[[!bookItems]]">
-          <paper-search-bar hide-filter-button="" hidden\$="[[!showSearch]]"></paper-search-bar>
+      <app-drawer
+        slot="drawer"
+        id="bookdrawer"
+        opened="{{drawerOpened}}"
+        swipe-open=""
+        transition-duration="150"
+      >
+        <div
+          id="bookdrawercontent"
+          style="height: 100%; overflow: auto;"
+          hidden\$="[[!bookItems]]"
+        >
+          <paper-search-bar
+            hide-filter-button=""
+            hidden\$="[[!showSearch]]"
+          ></paper-search-bar>
           <lrndesign-mapmenu id="mapmenu" on-tap="_bookOutlineTap">
             <!-- Server response will populate this -->
           </lrndesign-mapmenu>
@@ -481,19 +593,48 @@ let LrnappBook = Polymer({
           </div>
           <app-toolbar id="toolbar" sticky="" class="tall">
             <div style="pointer-events: auto;" class="menu-btn-wrap">
-              <paper-icon-button style="pointer-events: auto;" title="Content outline" id="menubutton" icon="menu" on-tap="toggleBook"></paper-icon-button>
+              <paper-icon-button
+                style="pointer-events: auto;"
+                title="Content outline"
+                id="menubutton"
+                icon="menu"
+                on-tap="toggleBook"
+              ></paper-icon-button>
             </div>
             <div spacer="" class="outline-title">[[outlineTitle]]</div>
             <div spacer="" main-title="" style="pointer-events: auto;">
               <div class="progress-container">
-                <lrnsys-progress sound-finish="[[soundFinish]]" sound="[[sound]]" complete-sound="[[completeSound]]" finished-sound="[[finishedSound]]" title="The steps to complete this lesson" id="progress" active="{{activePage}}" items="{{outlineItems}}" progressive-unlock="" size="small"></lrnsys-progress>
+                <lrnsys-progress
+                  sound-finish="[[soundFinish]]"
+                  sound="[[sound]]"
+                  complete-sound="[[completeSound]]"
+                  finished-sound="[[finishedSound]]"
+                  title="The steps to complete this lesson"
+                  id="progress"
+                  active="{{activePage}}"
+                  items="{{outlineItems}}"
+                  progressive-unlock=""
+                  size="small"
+                ></lrnsys-progress>
               </div>
             </div>
             <div class="your-progress-button">
-              <lrnsys-dialog body-append="" modal="" on-tap="progressdashboardopen" header="Your progress" alt="Your progress">
-                <span slot="button"><iron-icon icon="av:equalizer"></iron-icon></span>
+              <lrnsys-dialog
+                body-append=""
+                modal=""
+                on-tap="progressdashboardopen"
+                header="Your progress"
+                alt="Your progress"
+              >
+                <span slot="button"
+                  ><iron-icon icon="av:equalizer"></iron-icon
+                ></span>
                 <div>
-                  <lrnapp-book-progress-dashboard id="progressdashboard" source-path="[[progressDashboardPath]]" route-data="[[data]]"></lrnapp-book-progress-dashboard>
+                  <lrnapp-book-progress-dashboard
+                    id="progressdashboard"
+                    source-path="[[progressDashboardPath]]"
+                    route-data="[[data]]"
+                  ></lrnapp-book-progress-dashboard>
                 </div>
               </lrnsys-dialog>
             </div>
@@ -507,22 +648,44 @@ let LrnappBook = Polymer({
               <h3 class="loading-text">Loading content..</h3>
             </div>
             <div>
-              <hax-body id="haxbody">
-                <slot id="slottedarea"></slot>
-              </hax-body>
+              <hax-body id="haxbody"> <slot id="slottedarea"></slot> </hax-body>
             </div>
           </div>
         </div>
         <div class="content-nav">
           <div class="content-nav-buttons next">
-            <paper-icon-button id="next" title="[[nextLabel]]" on-tap="_nextBtn" icon="hardware:keyboard-arrow-right" data-voicecommand="next page" hidden\$="[[!hasNextPage]]"></paper-icon-button>
-            <paper-tooltip for="next" position="left" offset="0" animation-delay="100">
+            <paper-icon-button
+              id="next"
+              title="[[nextLabel]]"
+              on-tap="_nextBtn"
+              icon="hardware:keyboard-arrow-right"
+              data-voicecommand="next page"
+              hidden\$="[[!hasNextPage]]"
+            ></paper-icon-button>
+            <paper-tooltip
+              for="next"
+              position="left"
+              offset="0"
+              animation-delay="100"
+            >
               [[nextLabel]]
             </paper-tooltip>
           </div>
           <div class="content-nav-buttons prev">
-            <paper-icon-button id="prev" title="[[prevLabel]]" on-tap="_prevBtn" icon="hardware:keyboard-arrow-left" data-voicecommand="previous page" hidden\$="[[!hasPrevPage]]"></paper-icon-button>
-            <paper-tooltip for="prev" position="right" offset="0" animation-delay="100">
+            <paper-icon-button
+              id="prev"
+              title="[[prevLabel]]"
+              on-tap="_prevBtn"
+              icon="hardware:keyboard-arrow-left"
+              data-voicecommand="previous page"
+              hidden\$="[[!hasPrevPage]]"
+            ></paper-icon-button>
+            <paper-tooltip
+              for="prev"
+              position="right"
+              offset="0"
+              animation-delay="100"
+            >
               [[prevLabel]]
             </paper-tooltip>
           </div>
@@ -530,12 +693,25 @@ let LrnappBook = Polymer({
       </app-header-layout>
     </app-drawer-layout>
     <!-- edit mode if they have permissions -->
-    <paper-fab id="editbutton" icon="editor:mode-edit" class="red white-text" hidden\$="[[!currentPageData.page.meta.canUpdate]]" data-voicecommand="Edit content" on-tap="_toggleEditMode" title="Tap to place content in edit mode."></paper-fab>
-    <paper-tooltip for="editbutton" position="bottom" offset="8" animation-delay="100">
+    <paper-fab
+      id="editbutton"
+      icon="editor:mode-edit"
+      class="red white-text"
+      hidden\$="[[!currentPageData.page.meta.canUpdate]]"
+      data-voicecommand="Edit content"
+      on-tap="_toggleEditMode"
+      title="Tap to place content in edit mode."
+    ></paper-fab>
+    <paper-tooltip
+      for="editbutton"
+      position="bottom"
+      offset="8"
+      animation-delay="100"
+    >
       <span id="fablabel">edit mode</span>
     </paper-tooltip>
     <paper-toast id="toast" horizontal-align="left"></paper-toast>
-`,
+  `,
 
   is: "lrnapp-book",
 

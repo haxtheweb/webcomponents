@@ -86,16 +86,43 @@ Polymer({
     </style>
     <p class="sr-only navigation">A list of thumbnail buttons items:</p>
     <div id="gallery" tabindex="-1" aria-live="polite">
-      <iron-list id="thumbslist" items="[[__items]]" as="item" grid="" selection-enabled="">
+      <iron-list
+        id="thumbslist"
+        items="[[__items]]"
+        as="item"
+        grid=""
+        selection-enabled=""
+      >
         <template>
-          <lrndesign-gallery-thumb alt\$="[[item.alt]]" class="navigation" controls="zoom" item="[[item.id]]" rounded-edges="false" selected\$="[[_isSelected(selected)]]" image-style\$="[[imageStyle]]" theme\$="[[theme]]" thumbnail="[[item.thumbnail]]" target\$="[[item.target]]">
+          <lrndesign-gallery-thumb
+            alt\$="[[item.alt]]"
+            class="navigation"
+            controls="zoom"
+            item="[[item.id]]"
+            rounded-edges="false"
+            selected\$="[[_isSelected(selected)]]"
+            image-style\$="[[imageStyle]]"
+            theme\$="[[theme]]"
+            thumbnail="[[item.thumbnail]]"
+            target\$="[[item.target]]"
+          >
           </lrndesign-gallery-thumb>
         </template>
       </iron-list>
     </div>
-    <lrndesign-gallery-zoom dark\$="[[dark]]" details\$="[[selected.details]]" heading\$="[[selected.heading]]" hidden\$="[[!selected.zoom]]" id="gallery-zoom" item-id="[[selected.id]]" src\$="[[selected.large]]" tooltip\$="[[selected.tooltip]]" zoom-alt\$="[[selected.alt]]">
+    <lrndesign-gallery-zoom
+      dark\$="[[dark]]"
+      details\$="[[selected.details]]"
+      heading\$="[[selected.heading]]"
+      hidden\$="[[!selected.zoom]]"
+      id="gallery-zoom"
+      item-id="[[selected.id]]"
+      src\$="[[selected.large]]"
+      tooltip\$="[[selected.tooltip]]"
+      zoom-alt\$="[[selected.alt]]"
+    >
     </lrndesign-gallery-zoom>
-`,
+  `,
 
   is: "lrndesign-gallery-grid",
 

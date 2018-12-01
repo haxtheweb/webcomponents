@@ -58,7 +58,7 @@ Polymer({
           padding: 0;
           margin: 0;
         }
-        :host #xy-start, 
+        :host #xy-start,
         :host #xy-end {
           position: absolute;
           right: 20px;
@@ -107,36 +107,88 @@ Polymer({
     </style>
     <p class="sr-only navigation">A carousel of items:</p>
     <a id\$="[[__timestamp]]"></a>
-    <div id="gallery" tabindex="-1" aria-live="polite" hide-navigation\$="[[__hideNav]]">
-      <lrndesign-gallery-carousel-item id="carousel-item" aspect-ratio\$="[[aspectRatio]]" dark\$="[[dark]]" extra-wide\$="[[extraWide]]" image-style\$="[[imageStyle]]" item="[[selected]]" responsive-size\$="[[responsiveSize]]" theme\$="[[theme]]">
+    <div
+      id="gallery"
+      tabindex="-1"
+      aria-live="polite"
+      hide-navigation\$="[[__hideNav]]"
+    >
+      <lrndesign-gallery-carousel-item
+        id="carousel-item"
+        aspect-ratio\$="[[aspectRatio]]"
+        dark\$="[[dark]]"
+        extra-wide\$="[[extraWide]]"
+        image-style\$="[[imageStyle]]"
+        item="[[selected]]"
+        responsive-size\$="[[responsiveSize]]"
+        theme\$="[[theme]]"
+      >
         <div id="xy-start" slot="xy-start">
-          <p class="x-of-y navigation" hidden\$="[[__hideNav]">
-            </p><p class="sr-only">Slide [[__xOfY]] selected.</p> 
-            <p></p>
+          <p class="x-of-y navigation" hidden\$="[[__hideNav]"></p>
+          <p class="sr-only">Slide [[__xOfY]] selected.</p>
+          <p></p>
         </div>
         <div id="xy-end" slot="xy-end">
           <p class="x-of-y navigation" hidden\$="[[__hideNav]">
-            (<span class="sr-only"> End of slide </span> [[__xOfY]]<span class="sr-only">.</span>) 
+            (<span class="sr-only"> End of slide </span> [[__xOfY]]<span
+              class="sr-only"
+              >.</span
+            >)
           </p>
         </div>
         <div id="prevnextnav" slot="prevnextnav">
-          <lrndesign-gallery-carousel-prevnext class="navigation" controls\$="[[__gallery.id]]" hidden\$="[[__hideNav]" id="carousel-prev" item="[[selected.prev]]" target\$="[[__gallery]]" theme\$="[[theme]]" type="previous">
+          <lrndesign-gallery-carousel-prevnext
+            class="navigation"
+            controls\$="[[__gallery.id]]"
+            hidden\$="[[__hideNav]"
+            id="carousel-prev"
+            item="[[selected.prev]]"
+            target\$="[[__gallery]]"
+            theme\$="[[theme]]"
+            type="previous"
+          >
           </lrndesign-gallery-carousel-prevnext>
-          <lrndesign-gallery-carousel-prevnext class="navigation" controls="[[__gallery.id]]" hidden\$="[[__hideNav]" id="carousel-next" item\$="[[selected.next]]" target\$="[[__gallery]]" theme\$="[[theme]]" type="next">
+          <lrndesign-gallery-carousel-prevnext
+            class="navigation"
+            controls="[[__gallery.id]]"
+            hidden\$="[[__hideNav]"
+            id="carousel-next"
+            item\$="[[selected.next]]"
+            target\$="[[__gallery]]"
+            theme\$="[[theme]]"
+            type="next"
+          >
           </lrndesign-gallery-carousel-prevnext>
         </div>
         <div slot="thumbnails">
           <p class="sr-only navigation" hidden\$="[[__hideNav]">Slides list:</p>
-          <iron-list id="thumbslist" items="[[__items]]" as="item" grid="" selection-enabled="">
+          <iron-list
+            id="thumbslist"
+            items="[[__items]]"
+            as="item"
+            grid=""
+            selection-enabled=""
+          >
             <template>
-              <lrndesign-gallery-thumb alt\$="[[item.alt]]" class="navigation" controls\$="[[__gallery]]" item="[[item.id]]" id="gallery-thumb" rounded-edges="false" selected\$="[[_isSelected(selected)]]" theme\$="[[theme]]" thumbnail="[[item.thumbnail]]" target\$="[[item.target]]">
+              <lrndesign-gallery-thumb
+                alt\$="[[item.alt]]"
+                class="navigation"
+                controls\$="[[__gallery]]"
+                item="[[item.id]]"
+                id="gallery-thumb"
+                rounded-edges="false"
+                selected\$="[[_isSelected(selected)]]"
+                theme\$="[[theme]]"
+                thumbnail="[[item.thumbnail]]"
+                target\$="[[item.target]]"
+              >
               </lrndesign-gallery-thumb>
             </template>
           </iron-list>
         </div>
       </lrndesign-gallery-carousel-item>
     </div>
-`,
+  `,
 
   is: "lrndesign-gallery-carousel",
 

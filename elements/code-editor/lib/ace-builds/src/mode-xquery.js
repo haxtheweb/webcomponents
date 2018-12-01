@@ -42315,8 +42315,8 @@ define("ace/mode/xquery/xquery_lexer", [
                       info === null
                         ? "text"
                         : typeof info.token === "function"
-                          ? info.token(token.value)
-                          : info.token,
+                        ? info.token(token.value)
+                        : info.token,
                     value: token.value
                   });
 

@@ -19,16 +19,29 @@ let SillyHaxGame = Polymer({
       }
     </style>
     <paper-card heading="[[haxText]]" elevation="1">
-      <simple-timer id="timer" start-time="60" count-up="" hidden="" current-time="{{timer}}"></simple-timer>
+      <simple-timer
+        id="timer"
+        start-time="60"
+        count-up=""
+        hidden=""
+        current-time="{{timer}}"
+      ></simple-timer>
       <div class="card-content">
-        <to-do items="{{tasks}}" hide-form="" id="todo" name="Hax Challenge"></to-do>
+        <to-do
+          items="{{tasks}}"
+          hide-form=""
+          id="todo"
+          name="Hax Challenge"
+        ></to-do>
       </div>
       <div class="card-actions">
-        <paper-button id="play" raised="" on-tap="_playButton">Play</paper-button>
+        <paper-button id="play" raised="" on-tap="_playButton"
+          >Play</paper-button
+        >
         <paper-button raised="" on-tap="_resetTimer">Reset</paper-button>
       </div>
     </paper-card>
-`,
+  `,
 
   is: "silly-hax-game",
 

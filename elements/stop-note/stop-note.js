@@ -95,23 +95,21 @@ let StopNote = Polymer({
 
     <div class="container">
       <div class="svg_wrap">
-        <div class="svg">
-          <iron-icon icon="[[icon]]"></iron-icon>
-        </div>
+        <div class="svg"><iron-icon icon="[[icon]]"></iron-icon></div>
       </div>
       <div class="message_wrap">
         <div class="main_message">[[title]]</div>
-        <div class="secondary_message">
-          <slot name="message"></slot>
-        </div>
+        <div class="secondary_message"><slot name="message"></slot></div>
         <template is="dom-if" if="[[url]]">
           <div class="link">
-            <a href="[[url]]" target\$="[[_urlTarget(url)]]">More Information &gt;</a>
+            <a href="[[url]]" target\$="[[_urlTarget(url)]]"
+              >More Information &gt;</a
+            >
           </div>
         </template>
       </div>
-  </div>
-`,
+    </div>
+  `,
 
   is: "stop-note",
 

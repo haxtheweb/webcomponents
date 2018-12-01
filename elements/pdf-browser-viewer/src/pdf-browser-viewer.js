@@ -50,38 +50,50 @@ Card example:
 */
 let PdfBrowserViewer = Polymer({
   _template: html`
-        <style>
-            :host {
-                display: none;
-            }
-            :host([file]) {
-                display: inherit;
-            }
-        </style>
+    <style>
+      :host {
+        display: none;
+      }
+      :host([file]) {
+        display: inherit;
+      }
+    </style>
 
-        <template is="dom-if" if="[[card]]">
-            <paper-card heading="[[heading]]" elevation="[[elevation]]">
-                <div class="card-content">
-                    <object data="[[file]]" type="application/pdf" width="[[width]]" height="[[height]]">
-                        <p>
-                            {{notSupportedMessage}} <a href="[[file]]">{{notSupportedLinkMessage}}</a>
-                        </p>
-                    </object>
-                </div>
-                <div class="card-actions">
-                    <paper-button on-click="_download">[[downloadLabel]]</paper-button>
-                </div>
-            </paper-card>
-        </template>
+    <template is="dom-if" if="[[card]]">
+      <paper-card heading="[[heading]]" elevation="[[elevation]]">
+        <div class="card-content">
+          <object
+            data="[[file]]"
+            type="application/pdf"
+            width="[[width]]"
+            height="[[height]]"
+          >
+            <p>
+              {{notSupportedMessage}}
+              <a href="[[file]]">{{notSupportedLinkMessage}}</a>
+            </p>
+          </object>
+        </div>
+        <div class="card-actions">
+          <paper-button on-click="_download">[[downloadLabel]]</paper-button>
+        </div>
+      </paper-card>
+    </template>
 
-        <template is="dom-if" if="[[!card]]">
-            <object data="[[file]]" type="application/pdf" width="[[width]]" height="[[height]]">
-                <p>
-                    {{notSupportedMessage}} <a href="[[file]]">{{notSupportedLinkMessage}}</a>
-                </p>
-            </object>
-        </template>
-`,
+    <template is="dom-if" if="[[!card]]">
+      <object
+        data="[[file]]"
+        type="application/pdf"
+        width="[[width]]"
+        height="[[height]]"
+      >
+        <p>
+          {{notSupportedMessage}}
+          <a href="[[file]]">{{notSupportedLinkMessage}}</a>
+        </p>
+      </object>
+    </template>
+  `,
 
   is: "pdf-browser-viewer",
 

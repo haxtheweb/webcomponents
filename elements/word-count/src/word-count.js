@@ -15,11 +15,11 @@ let WordCount = Polymer({
         --word-count-color: #888888;
         --word-count-color-hover: #000000;
       }
-      :host:after{
+      :host:after {
         content: attr(words-text);
         font-size: 10px;
         position: relative;
-        transition: .3s font-size,color ease;
+        transition: 0.3s font-size, color ease;
         display: flex;
         line-height: 16px;
         flex-direction: row-reverse;
@@ -47,7 +47,7 @@ let WordCount = Polymer({
       }
     </style>
     <slot></slot>
-`,
+  `,
 
   is: "word-count",
 

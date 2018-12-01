@@ -67,7 +67,7 @@ let GameShowQuiz = Polymer({
         color: var(--game-show-text-color, white);
         --app-header-background-rear-layer: {
           background-color: #ef6c00;
-        };
+        }
       }
       responsive-grid-row {
         --responsive-grid-row-inner: {
@@ -96,7 +96,7 @@ let GameShowQuiz = Polymer({
       .status-icon {
         width: 64px;
         height: 64px;
-        opacity: .25;
+        opacity: 0.25;
         position: absolute;
       }
       .correct {
@@ -137,77 +137,133 @@ let GameShowQuiz = Polymer({
     </style>
     <app-header>
       <app-toolbar>
-        <paper-button id="helpbutton" on-tap="directionsToggle"><iron-icon icon="help"></iron-icon> Directions</paper-button>
+        <paper-button id="helpbutton" on-tap="directionsToggle"
+          ><iron-icon icon="help"></iron-icon> Directions</paper-button
+        >
         <div main-title="">[[title]]</div>
       </app-toolbar>
     </app-header>
     <div id="contentcontainer">
       <template is="dom-repeat" items="[[gameBoard]]" as="row">
         <responsive-grid-row gutter="0" class\$="row row-[[index]]">
-        <template is="dom-repeat" items="[[row.cols]]" as="col">
-          <responsive-grid-col xl="3" lg="3" md="3" sm="3" xs="3">
-            <paper-button class="grid-button" raised="[[!col.notRaised]]" data-question-data\$="[[col.question]]" data-value\$="[[col.points]]" data-type\$="[[col.type]]" disabled\$="[[col.disabled]]">[[col.title]]<br>[[col.points]]</paper-button>
-          </responsive-grid-col>
-        </template>
-      </responsive-grid-row>
+          <template is="dom-repeat" items="[[row.cols]]" as="col">
+            <responsive-grid-col xl="3" lg="3" md="3" sm="3" xs="3">
+              <paper-button
+                class="grid-button"
+                raised="[[!col.notRaised]]"
+                data-question-data\$="[[col.question]]"
+                data-value\$="[[col.points]]"
+                data-type\$="[[col.type]]"
+                disabled\$="[[col.disabled]]"
+                >[[col.title]]<br />[[col.points]]</paper-button
+              >
+            </responsive-grid-col>
+          </template>
+        </responsive-grid-row>
       </template>
       <div>
         <h3>Scoreboard</h3>
         <table>
-          <tbody><tr>
-            <th></th>
-            <th>Slide ID</th>
-            <th>Terms</th>
-            <th>Reading</th>
-            <th>Lecture</th>
-            <th>Bonus</th>
-            <th>Total</th>
-          </tr>
-          <tr>
-            <th>Points Attempted</th>
-            <td>[[points.slide.attempted]]</td>
-            <td>[[points.terms.attempted]]</td>
-            <td>[[points.reading.attempted]]</td>
-            <td>[[points.lecture.attempted]]</td>
-            <td>[[points.bonus.attempted]]</td>
-            <td>[[points.total.attempted]]</td>
-          </tr>
-          <tr>
-            <th>Points Earned</th>
-            <td>[[points.slide.earned]]</td>
-            <td>[[points.terms.earned]]</td>
-            <td>[[points.reading.earned]]</td>
-            <td>[[points.lecture.earned]]</td>
-            <td>[[points.bonus.earned]]</td>
-            <td>[[points.total.earned]]</td>
-          </tr>
-          <tr>
-            <th>Category Percentage</th>
-            <td>[[points.slide.percent]]</td>
-            <td>[[points.terms.percent]]</td>
-            <td>[[points.reading.percent]]</td>
-            <td>[[points.lecture.percent]]</td>
-            <td>[[points.bonus.percent]]</td>
-            <td>[[points.total.percent]]</td>
-          </tr>
-        </tbody></table>
-      <div>Points Remaining to Attempt: [[remainingAttempts]]</div>
+          <tbody>
+            <tr>
+              <th></th>
+              <th>Slide ID</th>
+              <th>Terms</th>
+              <th>Reading</th>
+              <th>Lecture</th>
+              <th>Bonus</th>
+              <th>Total</th>
+            </tr>
+            <tr>
+              <th>Points Attempted</th>
+              <td>[[points.slide.attempted]]</td>
+              <td>[[points.terms.attempted]]</td>
+              <td>[[points.reading.attempted]]</td>
+              <td>[[points.lecture.attempted]]</td>
+              <td>[[points.bonus.attempted]]</td>
+              <td>[[points.total.attempted]]</td>
+            </tr>
+            <tr>
+              <th>Points Earned</th>
+              <td>[[points.slide.earned]]</td>
+              <td>[[points.terms.earned]]</td>
+              <td>[[points.reading.earned]]</td>
+              <td>[[points.lecture.earned]]</td>
+              <td>[[points.bonus.earned]]</td>
+              <td>[[points.total.earned]]</td>
+            </tr>
+            <tr>
+              <th>Category Percentage</th>
+              <td>[[points.slide.percent]]</td>
+              <td>[[points.terms.percent]]</td>
+              <td>[[points.reading.percent]]</td>
+              <td>[[points.lecture.percent]]</td>
+              <td>[[points.bonus.percent]]</td>
+              <td>[[points.total.percent]]</td>
+            </tr>
+          </tbody>
+        </table>
+        <div>Points Remaining to Attempt: [[remainingAttempts]]</div>
       </div>
     </div>
     <paper-toast id="toast"></paper-toast>
     <game-show-quiz-modal id="directions" title="[[directionsTitle]]">
       <div slot="content"><slot name="directions"></slot></div>
-      <paper-button slot="buttons" id="dismiss" dialog-confirm="" raised="">Good luck!</paper-button>
+      <paper-button slot="buttons" id="dismiss" dialog-confirm="" raised=""
+        >Good luck!</paper-button
+      >
     </game-show-quiz-modal>
     <game-show-quiz-modal id="dialog" title="[[activeQuestion.title]]">
-      <iron-image slot="content" style="min-width:100px; width:100%; min-height:25vh; height:40vh; background-color: lightgray;" sizing="contain" preload="" src\$="[[activeQuestion.image]]"></iron-image>
-      <multiple-choice disabled\$="[[activeQuestion.submitted]]" slot="content" id="question" hide-buttons="" title="[[activeQuestion.title]]" answers="[[activeQuestion.data]]"></multiple-choice>
-      <paper-button slot="buttons" hidden\$="[[activeQuestion.submitted]]" id="submit" raised="" disabled\$="[[__submitDisabled]]">Submit answer <iron-icon hidden$="[[__submitDisabled]]" icon="icons:touch-app"></iron-icon></paper-button>
-      <paper-button slot="buttons" id="continue" hidden\$="[[!activeQuestion.submitted]]" dialog-confirm="" raised="">Continue <iron-icon icon="icons:arrow-forward"></iron-icon></paper-button>
+      <iron-image
+        slot="content"
+        style="min-width:100px; width:100%; min-height:25vh; height:40vh; background-color: lightgray;"
+        sizing="contain"
+        preload=""
+        src\$="[[activeQuestion.image]]"
+      ></iron-image>
+      <multiple-choice
+        disabled\$="[[activeQuestion.submitted]]"
+        slot="content"
+        id="question"
+        hide-buttons=""
+        title="[[activeQuestion.title]]"
+        answers="[[activeQuestion.data]]"
+      ></multiple-choice>
+      <paper-button
+        slot="buttons"
+        hidden\$="[[activeQuestion.submitted]]"
+        id="submit"
+        raised=""
+        disabled\$="[[__submitDisabled]]"
+        >Submit answer
+        <iron-icon
+          hidden$="[[__submitDisabled]]"
+          icon="icons:touch-app"
+        ></iron-icon
+      ></paper-button>
+      <paper-button
+        slot="buttons"
+        id="continue"
+        hidden\$="[[!activeQuestion.submitted]]"
+        dialog-confirm=""
+        raised=""
+        >Continue <iron-icon icon="icons:arrow-forward"></iron-icon
+      ></paper-button>
     </game-show-quiz-modal>
-    <iron-ajax auto="" id="gamedata" url="[[gameData]]" handle-as="json" last-response="{{gameBoard}}"></iron-ajax>
-    <iron-ajax id="questiondata" url="[[__questionEndpoint]]" handle-as="json" last-response="{{activeQuestion}}"></iron-ajax>
-`,
+    <iron-ajax
+      auto=""
+      id="gamedata"
+      url="[[gameData]]"
+      handle-as="json"
+      last-response="{{gameBoard}}"
+    ></iron-ajax>
+    <iron-ajax
+      id="questiondata"
+      url="[[__questionEndpoint]]"
+      handle-as="json"
+      last-response="{{activeQuestion}}"
+    ></iron-ajax>
+  `,
 
   is: "game-show-quiz",
 

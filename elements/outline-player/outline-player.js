@@ -30,10 +30,10 @@ let OutlinePlayer = Polymer({
         font-family: libre baskerville;
         position: relative;
         overflow: hidden;
-        --outline-player-min-height: '';
+        --outline-player-min-height: "";
         --app-drawer-width: 300px;
         --outline-player-dark: #222222;
-        --outline-player-light: #F8F8F8;
+        --outline-player-light: #f8f8f8;
         --outline-player-arrow-margin-top: 50px;
       }
 
@@ -91,8 +91,8 @@ let OutlinePlayer = Polymer({
 
       app-drawer-layout {
         min-height: 100%;
-        min-height: -moz-available;          /* WebKit-based browsers will ignore this. */
-        min-height: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+        min-height: -moz-available; /* WebKit-based browsers will ignore this. */
+        min-height: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
         min-height: fill-available;
         /* if the user has set a specific value then override the defaults */
         min-height: var(--outline-player-min-height);
@@ -113,7 +113,7 @@ let OutlinePlayer = Polymer({
         --outline-player-dark: var(--outline-player-dark);
       }
 
-      paper-icon-button+[main-title] {
+      paper-icon-button + [main-title] {
         margin-left: 24px;
       }
 
@@ -160,7 +160,7 @@ let OutlinePlayer = Polymer({
         justify-content: center;
       }
 
-      #content>* {
+      #content > * {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -181,55 +181,99 @@ let OutlinePlayer = Polymer({
       }
 
       #desktopNavLeft {
-        order: 0
+        order: 0;
       }
 
       #desktopNavRight {
-        order: 2
+        order: 2;
       }
     </style>
-    <iron-ajax auto="[[auto]]" url="[[outlineLocation]][[outlineFile]]" handle-as="json" last-response="{{_outlineData}}"></iron-ajax>
-    <iron-ajax auto="[[auto]]" url="[[outlineLocation]][[activeItem.location]]" handle-as="text" loading="{{__loadingContent}}" last-response="{{_activeItemContent}}"></iron-ajax>
+    <iron-ajax
+      auto="[[auto]]"
+      url="[[outlineLocation]][[outlineFile]]"
+      handle-as="json"
+      last-response="{{_outlineData}}"
+    ></iron-ajax>
+    <iron-ajax
+      auto="[[auto]]"
+      url="[[outlineLocation]][[activeItem.location]]"
+      handle-as="text"
+      loading="{{__loadingContent}}"
+      last-response="{{_activeItemContent}}"
+    ></iron-ajax>
     <app-drawer-layout>
       <app-drawer id="drawer" swipe-open="" slot="drawer">
         <template is="dom-if" if="[[__hasTitle(outlineTitle)]]">
           <h2 class="outline-title">[[outlineTitle]]</h2>
         </template>
-        <map-menu id="menu" items="{{outline}}" data="[[_outlineData.items]]" selected="{{selected}}" active-indicator="" auto-scroll=""></map-menu>
+        <map-menu
+          id="menu"
+          items="{{outline}}"
+          data="[[_outlineData.items]]"
+          selected="{{selected}}"
+          active-indicator=""
+          auto-scroll=""
+        ></map-menu>
       </app-drawer>
       <app-header-layout>
         <app-header reveals="" slot="header">
           <app-toolbar>
-            <paper-icon-button icon="menu" on-click="_toggleMenu"></paper-icon-button>
+            <paper-icon-button
+              icon="menu"
+              on-click="_toggleMenu"
+            ></paper-icon-button>
             <div main-title="">
               [[activeItem.title]]
-              <div id="slotTitle">
-                <slot name="title"></slot>
-              </div>
+              <div id="slotTitle"><slot name="title"></slot></div>
             </div>
             <template is="dom-if" if="[[!breakpointDesktop]]">
-              <outline-player-arrow id="prevpage" disabled="[[disablePrevPage(__activeIndex)]]" icon="icons:arrow-back" on-click="prevPage">
+              <outline-player-arrow
+                id="prevpage"
+                disabled="[[disablePrevPage(__activeIndex)]]"
+                icon="icons:arrow-back"
+                on-click="prevPage"
+              >
                 Previous page
               </outline-player-arrow>
-              <outline-player-arrow id="nextpage" disabled="[[disableNextPage(__activeIndex)]]" icon="icons:arrow-forward" on-click="nextPage">
+              <outline-player-arrow
+                id="nextpage"
+                disabled="[[disableNextPage(__activeIndex)]]"
+                icon="icons:arrow-forward"
+                on-click="nextPage"
+              >
                 Next page
               </outline-player-arrow>
             </template>
-            <paper-progress hidden\$="[[!__loadingContent]]" value="10" indeterminate="" bottom-item=""></paper-progress>
+            <paper-progress
+              hidden\$="[[!__loadingContent]]"
+              value="10"
+              indeterminate=""
+              bottom-item=""
+            ></paper-progress>
           </app-toolbar>
         </app-header>
         <div id="content">
-          <div id="slot">
-            <slot></slot>
-          </div>
+          <div id="slot"><slot></slot></div>
           <template is="dom-if" if="[[breakpointDesktop]]">
             <div class="desktopNav" id="desktopNavLeft">
-              <outline-player-arrow sticky="" id="prevpage" disabled="[[disablePrevPage(__activeIndex)]]" icon="icons:arrow-back" on-click="prevPage">
+              <outline-player-arrow
+                sticky=""
+                id="prevpage"
+                disabled="[[disablePrevPage(__activeIndex)]]"
+                icon="icons:arrow-back"
+                on-click="prevPage"
+              >
                 Previous page
               </outline-player-arrow>
             </div>
             <div class="desktopNav" id="desktopNavRight">
-              <outline-player-arrow sticky="" id="nextpage" disabled="[[disableNextPage(__activeIndex)]]" icon="icons:arrow-forward" on-click="nextPage">
+              <outline-player-arrow
+                sticky=""
+                id="nextpage"
+                disabled="[[disableNextPage(__activeIndex)]]"
+                icon="icons:arrow-forward"
+                on-click="nextPage"
+              >
                 Next page
               </outline-player-arrow>
             </div>
@@ -237,8 +281,11 @@ let OutlinePlayer = Polymer({
         </div>
       </app-header-layout>
     </app-drawer-layout>
-    <iron-media-query query="(min-width: 700px)" query-matches="{{breakpointDesktop}}"></iron-media-query>
-`,
+    <iron-media-query
+      query="(min-width: 700px)"
+      query-matches="{{breakpointDesktop}}"
+    ></iron-media-query>
+  `,
 
   is: "outline-player",
 

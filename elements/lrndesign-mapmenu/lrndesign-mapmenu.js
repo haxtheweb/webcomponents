@@ -25,7 +25,7 @@ let LrndesignMapmenu = Polymer({
       }
     </style>
     <slot></slot>
-`,
+  `,
 
   is: "lrndesign-mapmenu",
 

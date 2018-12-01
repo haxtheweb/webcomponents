@@ -1,13 +1,17 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "aframe/dist/aframe-master.js";
 /**
-`aframe-player`
-A LRN element
-
-@demo demo/index.html
-*/
+ * `aframe-player`
+ * `A wrapper to do data binding into aframe`
+ *
+ * @demo demo/index.html
+ */
 let AframePlayer = Polymer({
   _template: html`
     <custom-style>

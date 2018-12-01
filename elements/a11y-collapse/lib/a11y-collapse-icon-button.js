@@ -53,11 +53,20 @@ Polymer({
     </style>
     <div id="heading">
       <div id="text"><slot></slot></div>
-      <paper-icon-button id="expand" alt\$="[[label]]" aria-controls="content" aria-expanded\$="[[exanded]]" disabled\$="[[disabled]]" label\$="[[label]]" icon\$="[[icon]]" rotated\$="[[rotated]]">
+      <paper-icon-button
+        id="expand"
+        alt\$="[[label]]"
+        aria-controls="content"
+        aria-expanded\$="[[exanded]]"
+        disabled\$="[[disabled]]"
+        label\$="[[label]]"
+        icon\$="[[icon]]"
+        rotated\$="[[rotated]]"
+      >
       </paper-icon-button>
       <paper-tooltip for="expand">[[tooltip]]</paper-tooltip>
     </div>
-`,
+  `,
 
   is: "a11y-collapse-icon-button",
   behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

@@ -21,96 +21,125 @@ import "./lib/lrnsys-progress-circle.js";
 let LrnsysProgress = Polymer({
   _template: html`
     <custom-style>
-    <style is="custom-style" include="paper-material-styles">
-      :host {
-        display: block;
-        margin-top: 24px;
-      }
-      :host([size="tiny"]) {
-        font-size: 12.8px;
-      }
-      :host([size="small"]) {
-        font-size: 19.2px;
-      }
-      :host([size="medium"]) {
-        font-size: 25.6px;
-      }
-      :host([size="large"]) {
-        font-size: 44.8px;
-      }
-      :host([size="x-large"]) {
-        font-size: 64px;
-      }
-      :host([size="epic"]) {
-        font-size: 96px;
-      }
-      #circle-container {
-        display: flex;
-        justify-content:space-between;
-        margin: -24px 0 0 0;
-        padding: 0;
-        list-style: none;
-      }
-      .progress-title {
-        position: absolute !important;
-        clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-        clip: rect(1px, 1px, 1px, 1px);
-        overflow: hidden;
-        height: 1px;
-      }
-      paper-progress {
-        --paper-progress-height: 8px;
-        --paper-progress-transition-duration: 0.5s;
-        --paper-progress-transition-timing-function: ease;
-        --paper-progress-transition-delay: .4s;
-        width: 100%;
-      }
-      /* required to get the box shadow above the progress bar */
-      .circle-node {
-        z-index: 1;
-      }
-      ul#circle-container li.circle-node {
-        list-style-type: none;
-      }
+      <style is="custom-style" include="paper-material-styles">
+        :host {
+          display: block;
+          margin-top: 24px;
+        }
+        :host([size="tiny"]) {
+          font-size: 12.8px;
+        }
+        :host([size="small"]) {
+          font-size: 19.2px;
+        }
+        :host([size="medium"]) {
+          font-size: 25.6px;
+        }
+        :host([size="large"]) {
+          font-size: 44.8px;
+        }
+        :host([size="x-large"]) {
+          font-size: 64px;
+        }
+        :host([size="epic"]) {
+          font-size: 96px;
+        }
+        #circle-container {
+          display: flex;
+          justify-content: space-between;
+          margin: -24px 0 0 0;
+          padding: 0;
+          list-style: none;
+        }
+        .progress-title {
+          position: absolute !important;
+          clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+          clip: rect(1px, 1px, 1px, 1px);
+          overflow: hidden;
+          height: 1px;
+        }
+        paper-progress {
+          --paper-progress-height: 8px;
+          --paper-progress-transition-duration: 0.5s;
+          --paper-progress-transition-timing-function: ease;
+          --paper-progress-transition-delay: 0.4s;
+          width: 100%;
+        }
+        /* required to get the box shadow above the progress bar */
+        .circle-node {
+          z-index: 1;
+        }
+        ul#circle-container li.circle-node {
+          list-style-type: none;
+        }
 
-      :host([vertical]) {
-        width: max-content;
-      }
-      :host([vertical]) #circle-container {
-        display: block;
-      }
-      :host([vertical]) paper-progress {
-        display: none !important;
-      }
-      :host([vertical]) lrnsys-progress-circle {
-        margin: 16px 0;
-        padding: 0;
-        width: 100%;
-      }
+        :host([vertical]) {
+          width: max-content;
+        }
+        :host([vertical]) #circle-container {
+          display: block;
+        }
+        :host([vertical]) paper-progress {
+          display: none !important;
+        }
+        :host([vertical]) lrnsys-progress-circle {
+          margin: 16px 0;
+          padding: 0;
+          width: 100%;
+        }
 
-      lrnsys-progress-circle {
-        width: 40px;
-        height: 40px;
-        --lrnsys-progress-circle-size: 40px;
-        --lrnsys-progress-spinner-size: 32px;
-        --lrnsys-progress-icon-size: 24px;
-        --paper-spinner-stroke-width: 1.2px;
-      }
-    </style>
+        lrnsys-progress-circle {
+          width: 40px;
+          height: 40px;
+          --lrnsys-progress-circle-size: 40px;
+          --lrnsys-progress-spinner-size: 32px;
+          --lrnsys-progress-icon-size: 24px;
+          --paper-spinner-stroke-width: 1.2px;
+        }
+      </style>
     </custom-style>
-    <iron-ajax id="ajax" url="[[activeNodeURL]]" handle-as="json" last-response="{{nodeData}}" last-error="{{nodeDataError}}" on-response="handleNodeResponse"></iron-ajax>
+    <iron-ajax
+      id="ajax"
+      url="[[activeNodeURL]]"
+      handle-as="json"
+      last-response="{{nodeData}}"
+      last-error="{{nodeDataError}}"
+      on-response="handleNodeResponse"
+    ></iron-ajax>
     <h3 class="progress-title">[[title]]</h3>
-    <paper-progress id="progress" value="[[overallPercentage]]"></paper-progress>
+    <paper-progress
+      id="progress"
+      value="[[overallPercentage]]"
+    ></paper-progress>
     <ul id="circle-container">
       <template is="dom-repeat" items="[[items]]" as="item">
         <li class="circle-node">
-          <lrnsys-progress-circle play-finish-sound="[[soundFinish]]" play-sound="[[sound]]" complete-sound="[[completeSound]]" finished-sound="[[finishedSound]]" active="[[_isActive(index, active)]]" step="[[index]]" label="[[item.title]]" icon="[[item.icon]]" icon-complete="[[item.iconComplete]]" data-url="[[item.dataUrl]]" url="[[item.url]]" status="[[item.status]]" value="[[item.value]]" max="[[item.max]]" stroke-width="[[strokeWidth]]" tool-tip="[[!vertical]]" list-view="[[vertical]]" class\$="[[size]]">
+          <lrnsys-progress-circle
+            play-finish-sound="[[soundFinish]]"
+            play-sound="[[sound]]"
+            complete-sound="[[completeSound]]"
+            finished-sound="[[finishedSound]]"
+            active="[[_isActive(index, active)]]"
+            step="[[index]]"
+            label="[[item.title]]"
+            icon="[[item.icon]]"
+            icon-complete="[[item.iconComplete]]"
+            data-url="[[item.dataUrl]]"
+            url="[[item.url]]"
+            status="[[item.status]]"
+            value="[[item.value]]"
+            max="[[item.max]]"
+            stroke-width="[[strokeWidth]]"
+            tool-tip="[[!vertical]]"
+            list-view="[[vertical]]"
+            class\$="[[size]]"
+          >
             <span slot="description">[[item.description]]</span>
           </lrnsys-progress-circle>
         </li>
       </template>
     </ul>
-`,
+  `,
 
   is: "lrnsys-progress",
 

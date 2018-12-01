@@ -68,27 +68,27 @@ Polymer({
         width: 100%;
         position: absolute;
       }
-      :host([responsive-size="sm"]:not([extra-wide]))  #gallery-item, 
+      :host([responsive-size="sm"]:not([extra-wide])) #gallery-item,
       :host([responsive-size="sm"]:not([extra-wide])) #prevnext,
-      :host([responsive-size="md"]:not([extra-wide])) #gallery-item, 
-      :host([responsive-size="md"]:not([extra-wide])) #prevnext{
+      :host([responsive-size="md"]:not([extra-wide])) #gallery-item,
+      :host([responsive-size="md"]:not([extra-wide])) #prevnext {
         height: 200px;
         max-height: 200px;
       }
-      :host([responsive-size="lg"]:not([extra-wide])) #gallery-item, 
-      :host([responsive-size="lg"]:not([extra-wide])) #prevnext{
+      :host([responsive-size="lg"]:not([extra-wide])) #gallery-item,
+      :host([responsive-size="lg"]:not([extra-wide])) #prevnext {
         height: 300px;
         max-height: 300px;
       }
-      :host([responsive-size="xl"]:not([extra-wide])) #gallery-item, 
-      :host([responsive-size="xl"]:not([extra-wide])) #prevnext{
+      :host([responsive-size="xl"]:not([extra-wide])) #gallery-item,
+      :host([responsive-size="xl"]:not([extra-wide])) #prevnext {
         height: 400px;
         max-height: 400px;
       }
       :host lrndesign-gallery-zoom {
         left: 0;
         bottom: 0px;
-        z-index: 2; 
+        z-index: 2;
         position: absolute;
       }
       :host #details {
@@ -110,7 +110,7 @@ Polymer({
         align-items: stretch;
         align-content: stretch;
       }
-      :host #itemdetails, 
+      :host #itemdetails,
       :host #thumbnails {
         padding: 20px;
         flex-basis: 100%;
@@ -131,30 +131,47 @@ Polymer({
     <div id="gallery-item">
       <slot name="xy-start"></slot>
       <div id="gallery-image">
-        <iron-image alt\$="[[item.alt]]" fade="" id\$="[[item.id]]" placeholder\$="[[item.thumbnail]]" sizing\$="[[item.sizing]]" src\$="[[item.src]]" style\$="[[imageStyle]]">
+        <iron-image
+          alt\$="[[item.alt]]"
+          fade=""
+          id\$="[[item.id]]"
+          placeholder\$="[[item.thumbnail]]"
+          sizing\$="[[item.sizing]]"
+          src\$="[[item.src]]"
+          style\$="[[imageStyle]]"
+        >
         </iron-image>
-        <lrndesign-gallery-zoom dark\$="[[dark]]" details\$="[[item.details]]" heading\$="[[item.heading]]" hidden\$="[[!item.zoom]]" icon="zoom-in" id="gallery-zoom" item-id="[[item.id]]" src\$="[[item.large]]" tooltip\$="[[item.tooltip]]" zoom-alt\$="[[item.alt]]">
+        <lrndesign-gallery-zoom
+          dark\$="[[dark]]"
+          details\$="[[item.details]]"
+          heading\$="[[item.heading]]"
+          hidden\$="[[!item.zoom]]"
+          icon="zoom-in"
+          id="gallery-zoom"
+          item-id="[[item.id]]"
+          src\$="[[item.large]]"
+          tooltip\$="[[item.tooltip]]"
+          zoom-alt\$="[[item.alt]]"
+        >
         </lrndesign-gallery-zoom>
-        <div id="prevnext">
-          <slot name="prevnextnav"></slot>
-        </div>
+        <div id="prevnext"><slot name="prevnextnav"></slot></div>
       </div>
       <div id="details" class="item-info">
         <div id="details-inner">
           <div id="itemdetails">
-            <h2 id="itemtitle" hidden="[[!_isAttrSet(item.title)]]">[[item.title]]</h2>
+            <h2 id="itemtitle" hidden="[[!_isAttrSet(item.title)]]">
+              [[item.title]]
+            </h2>
             <div id="itembody"></div>
           </div>
           <slot id="xyend" name="xy-end"></slot>
           <div id="thumbnails" class="item-info">
-            <div id="thumbnails-inner">
-              <slot name="thumbnails"></slot>
-            </div>
+            <div id="thumbnails-inner"><slot name="thumbnails"></slot></div>
           </div>
         </div>
       </div>
     </div>
-`,
+  `,
 
   is: "lrndesign-gallery-carousel-item",
 

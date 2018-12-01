@@ -36,13 +36,29 @@ Polymer({
         max-height: 80vh;
       }
     </style>
-    <video id="video" autoplay\$="[[autoplay]]" crossorigin\$="[[crossorigin]]" hidden\$="[[audioOnly]]" lang\$="[[lang]]" src\$="[[manifest]]" preload="metadata">
-      HTML5 video not supported 
+    <video
+      id="video"
+      autoplay\$="[[autoplay]]"
+      crossorigin\$="[[crossorigin]]"
+      hidden\$="[[audioOnly]]"
+      lang\$="[[lang]]"
+      src\$="[[manifest]]"
+      preload="metadata"
+    >
+      HTML5 video not supported
     </video>
-    <audio id="audio" autoplay\$="[[autoplay]]" crossorigin\$="[[crossorigin]]" hidden\$="[[!audioOnly]]" lang\$="[[lang]]" src\$="[[manifest]]" preload="metadata">
-      HTML5 audio not supported 
+    <audio
+      id="audio"
+      autoplay\$="[[autoplay]]"
+      crossorigin\$="[[crossorigin]]"
+      hidden\$="[[!audioOnly]]"
+      lang\$="[[lang]]"
+      src\$="[[manifest]]"
+      preload="metadata"
+    >
+      HTML5 audio not supported
     </audio>
-`,
+  `,
 
   is: "a11y-media-loader",
 

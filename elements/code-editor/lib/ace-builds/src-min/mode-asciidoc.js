@@ -269,11 +269,11 @@ define("ace/mode/asciidoc_highlight_rules", [
                 ? this.singleLineHeadingRe.test(r)
                   ? "start"
                   : e.getLine(n - 1).length != e.getLine(n).length
-                    ? ""
-                    : "start"
-                : e.bgTokenizer.getState(n) == "dissallowDelimitedBlock"
-                  ? "end"
+                  ? ""
                   : "start"
+                : e.bgTokenizer.getState(n) == "dissallowDelimitedBlock"
+                ? "end"
+                : "start"
               : "";
           }),
           (this.getFoldWidgetRange = function(e, t, n) {

@@ -42166,8 +42166,8 @@ ace.define(
                           l === null
                             ? "text"
                             : typeof l.token == "function"
-                              ? l.token(c.value)
-                              : l.token,
+                            ? l.token(c.value)
+                            : l.token,
                         value: c.value
                       }),
                         l && l.next && l.next(s);

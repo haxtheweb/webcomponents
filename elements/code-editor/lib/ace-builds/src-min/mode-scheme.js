@@ -145,16 +145,16 @@ define("ace/mode/scheme_highlight_rules", [
                 s === "("
                   ? (r--, (i = !0))
                   : s === "(" || s === "[" || s === "{"
-                    ? (r--, (i = !1))
-                    : (s === ")" || s === "]" || s === "}") && r++;
+                  ? (r--, (i = !1))
+                  : (s === ")" || s === "]" || s === "}") && r++;
               if (r < 0) break;
             }
             if (!(r < 0 && i))
               return r < 0 && !i
                 ? this.$toIndent(e.substring(0, o + 1))
                 : r > 0
-                  ? ((n = n.substring(0, n.length - t.length)), n)
-                  : n;
+                ? ((n = n.substring(0, n.length - t.length)), n)
+                : n;
             o += 1;
             var u = o,
               a = "";

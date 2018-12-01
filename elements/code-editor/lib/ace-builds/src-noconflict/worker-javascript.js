@@ -398,8 +398,8 @@ ace.define("ace/range", [], function(require, exports, module) {
           return column < this.start.column
             ? -1
             : column > this.end.column
-              ? 1
-              : 0;
+            ? 1
+            : 0;
         }
       }
 
@@ -2257,8 +2257,8 @@ ace.define("ace/mode/javascript/jshint", [], function(
                     return cloneableTags[tag]
                       ? initCloneByTag(value, tag, isDeep)
                       : object
-                        ? value
-                        : {};
+                      ? value
+                      : {};
                   }
                 }
                 stackA || (stackA = []);
@@ -2654,14 +2654,14 @@ ace.define("ace/mode/javascript/jshint", [], function(
                     result = isArray(value)
                       ? value
                       : getLength(value)
-                        ? arrayCopy(value)
-                        : [];
+                      ? arrayCopy(value)
+                      : [];
                   } else if (isPlainObject(srcValue) || isArguments(srcValue)) {
                     result = isArguments(value)
                       ? toPlainObject(value)
                       : isPlainObject(value)
-                        ? value
-                        : {};
+                      ? value
+                      : {};
                   } else {
                     isCommon = false;
                   }
@@ -3030,8 +3030,8 @@ ace.define("ace/mode/javascript/jshint", [], function(
                     return object != +object
                       ? other != +other
                       : object == 0
-                        ? 1 / object == 1 / other
-                        : object == +other;
+                      ? 1 / object == 1 / other
+                      : object == +other;
 
                   case regexpTag:
                   case stringTag:
@@ -3758,10 +3758,10 @@ ace.define("ace/mode/javascript/jshint", [], function(
             typeof global !== "undefined"
               ? global
               : typeof self !== "undefined"
-                ? self
-                : typeof window !== "undefined"
-                  ? window
-                  : {}
+              ? self
+              : typeof window !== "undefined"
+              ? window
+              : {}
           ));
         },
         {}

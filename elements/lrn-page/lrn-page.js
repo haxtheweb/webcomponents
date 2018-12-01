@@ -14,10 +14,8 @@ let LrnPage = Polymer({
         display: block;
       }
     </style>
-    <oer-schema>
-      <slot></slot>
-    </oer-schema>
-`,
+    <oer-schema> <slot></slot> </oer-schema>
+  `,
 
   is: "lrn-page"
 });

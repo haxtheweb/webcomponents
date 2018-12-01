@@ -52,10 +52,8 @@ Polymer({
       <slot name="data-table-checkbox"></slot>
       <slot name="data-table-cell"></slot>
     </div>
-    <div class="details">
-      <slot name="data-table-row-detail"></slot>
-    </div>
-`,
+    <div class="details"><slot name="data-table-row-detail"></slot></div>
+  `,
 
   is: "data-table-row",
 

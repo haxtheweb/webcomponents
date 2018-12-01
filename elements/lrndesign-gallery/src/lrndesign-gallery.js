@@ -40,48 +40,78 @@ let LrndesignGallery = Polymer({
       :host * {
         --lrndesign-gallery-color: var(--simple-colors-foreground1);
         --lrndesign-gallery-background-color: var(--simple-colors-background3);
-        --lrndesign-gallery-focus-color: var(--simple-colors-accent-foreground3);
+        --lrndesign-gallery-focus-color: var(
+          --simple-colors-accent-foreground3
+        );
         --lrndesign-gallery-border-color: var(--simple-colors-background5);
-        --lrndesign-gallery-rgba-high: rgba(255,255,255,0.7);
-        --lrndesign-gallery-rgba-mid: rgba(255,255,255,0.5);
-        --lrndesign-gallery-rgba-low: rgba(255,255,255,0.3);
-        --lrndesign-gallery-rgba-none: rgba(255,255,255,0);
+        --lrndesign-gallery-rgba-high: rgba(255, 255, 255, 0.7);
+        --lrndesign-gallery-rgba-mid: rgba(255, 255, 255, 0.5);
+        --lrndesign-gallery-rgba-low: rgba(255, 255, 255, 0.3);
+        --lrndesign-gallery-rgba-none: rgba(255, 255, 255, 0);
         --lrndesign-gallery-thumbnail-size: 100px;
         --lrndesign-gallery-thumbnail-size-sm: 150px;
         --lrndesign-gallery-thumbnail-size-md: 200px;
         --lrndesign-gallery-thumbnail-size-lg: 250px;
         --lrndesign-gallery-thumbnail-size-xl: 300px;
-      } 
+      }
       :host([dark]) * {
         --lrndesign-gallery-border-color: var(--simple-colors-background1);
-        --lrndesign-gallery-rgba-high: rgba(0,0,0,0.7);
-        --lrndesign-gallery-rgba-mid: rgba(0,0,0,0.5);
-        --lrndesign-gallery-rgba-low: rgba(0,0,0,0.3);
-        --lrndesign-gallery-rgba-none: rgba(0,0,0,0);
+        --lrndesign-gallery-rgba-high: rgba(0, 0, 0, 0.7);
+        --lrndesign-gallery-rgba-mid: rgba(0, 0, 0, 0.5);
+        --lrndesign-gallery-rgba-low: rgba(0, 0, 0, 0.3);
+        --lrndesign-gallery-rgba-none: rgba(0, 0, 0, 0);
       }
     </style>
     <article>
       <template is="dom-if" if="[[_isAttrSet(title)]]">
         <h1 id="gallery-title">[[title]]</h1>
       </template>
-      <div id="gallery-description">
-        <slot name="description"></slot>
-      </div>
+      <div id="gallery-description"><slot name="description"></slot></div>
       <template is="dom-if" if="[[grid]]">
-        <lrndesign-gallery-grid aspect\$="[[aspect]]" dark\$="[[dark]]" class="gallery-type" id="gallery-grid" items\$="[[__items]]" modal-open\$="[[__modalOpen]]" responsive-size\$="[[responsiveSize]]" selected\$="[[selected]]" sizing\$="[[sizing]]" theme\$="[[theme]]">
+        <lrndesign-gallery-grid
+          aspect\$="[[aspect]]"
+          dark\$="[[dark]]"
+          class="gallery-type"
+          id="gallery-grid"
+          items\$="[[__items]]"
+          modal-open\$="[[__modalOpen]]"
+          responsive-size\$="[[responsiveSize]]"
+          selected\$="[[selected]]"
+          sizing\$="[[sizing]]"
+          theme\$="[[theme]]"
+        >
         </lrndesign-gallery-grid>
       </template>
       <template is="dom-if" if="[[!grid]]">
-        <lrndesign-gallery-carousel aspect\$="[[aspect]]" dark\$="[[dark]]" class="gallery-type" hide-navigation\$="[[__hideNav]]" id="gallery-carousel" items\$="[[__items]]" modal-open\$="[[__modalOpen]]" responsive-size\$="[[responsiveSize]]" selected\$="[[selected]]" sizing\$="[[sizing]]" theme\$="[[theme]]">
+        <lrndesign-gallery-carousel
+          aspect\$="[[aspect]]"
+          dark\$="[[dark]]"
+          class="gallery-type"
+          hide-navigation\$="[[__hideNav]]"
+          id="gallery-carousel"
+          items\$="[[__items]]"
+          modal-open\$="[[__modalOpen]]"
+          responsive-size\$="[[responsiveSize]]"
+          selected\$="[[selected]]"
+          sizing\$="[[sizing]]"
+          theme\$="[[theme]]"
+        >
         </lrndesign-gallery-carousel>
       </template>
-      
+
       <template id="printlist" is="dom-repeat" items="[[items]]" as="item">
-        <lrndesign-gallery-print alt\$="[[item.alt]]" details\$="[[item.details]]" heading\$="[[item.heading]]" id="gallery-print" src\$="[[item.src]]" title\$="[[item.title]]">
+        <lrndesign-gallery-print
+          alt\$="[[item.alt]]"
+          details\$="[[item.details]]"
+          heading\$="[[item.heading]]"
+          id="gallery-print"
+          src\$="[[item.src]]"
+          title\$="[[item.title]]"
+        >
         </lrndesign-gallery-print>
       </template>
     </article>
-`,
+  `,
 
   is: "lrndesign-gallery",
 

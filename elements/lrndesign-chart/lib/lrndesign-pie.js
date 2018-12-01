@@ -22,9 +22,24 @@ Polymer({
         display: block;
       }
     </style>
-    <iron-ajax auto="" url="{{dataSource}}" handle-as="text" last-response="{{rawData}}" on-response="handleResponse"></iron-ajax>
-    <chartist-render id="chartist" type="pie" scale\$="[[scale]]" chart-title\$="[[chartTitle]]" chart-desc\$="[[chartDesc]]" data\$="[[data]]" options\$="{{options}}" responsive-options\$="[[responsiveOptions]]"></chartist-render>
-`,
+    <iron-ajax
+      auto=""
+      url="{{dataSource}}"
+      handle-as="text"
+      last-response="{{rawData}}"
+      on-response="handleResponse"
+    ></iron-ajax>
+    <chartist-render
+      id="chartist"
+      type="pie"
+      scale\$="[[scale]]"
+      chart-title\$="[[chartTitle]]"
+      chart-desc\$="[[chartDesc]]"
+      data\$="[[data]]"
+      options\$="{{options}}"
+      responsive-options\$="[[responsiveOptions]]"
+    ></chartist-render>
+  `,
 
   is: "lrndesign-pie",
   behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

@@ -15,8 +15,8 @@ Polymer({
 
       paper-icon-button {
         position: relative;
-        opacity: .84;
-        transition: all .2s;
+        opacity: 0.84;
+        transition: all 0.2s;
       }
 
       paper-icon-button:hover,
@@ -25,10 +25,10 @@ Polymer({
       }
 
       paper-icon-button:not([direction]) {
-        opacity: .16;
+        opacity: 0.16;
       }
 
-      paper-icon-button[direction='desc'] {
+      paper-icon-button[direction="desc"] {
         transform: rotate(-180deg);
       }
 
@@ -46,11 +46,16 @@ Polymer({
     </style>
 
     <div style="position: relative">
-      <paper-icon-button id="sortIcon" on-tap="_sort" icon="data-table:arrow-upward" direction\$="[[direction]]">
+      <paper-icon-button
+        id="sortIcon"
+        on-tap="_sort"
+        icon="data-table:arrow-upward"
+        direction\$="[[direction]]"
+      >
       </paper-icon-button>
       <div class="order">[[order]]</div>
     </div>
-`,
+  `,
 
   is: "data-table-column-sort",
 

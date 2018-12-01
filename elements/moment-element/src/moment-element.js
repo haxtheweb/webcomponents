@@ -19,7 +19,7 @@ Examples:
 let MomentElement = Polymer({
   _template: html`
     [[output]]
-`,
+  `,
 
   is: "moment-element",
 

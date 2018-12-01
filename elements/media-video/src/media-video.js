@@ -18,7 +18,7 @@ let MediaVideo = Polymer({
       }
     </style>
     <slot></slot>
-`,
+  `,
 
   is: "media-video",
   behaviors: [],

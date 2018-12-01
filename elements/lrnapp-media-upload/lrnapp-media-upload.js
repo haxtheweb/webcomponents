@@ -36,8 +36,12 @@ let LrnappMediaUpload = Polymer({
         border-color: #396;
       }
     </style>
-    <vaadin-upload target\$="{{uploadPath}}" method="POST" form-data-name="file-upload"></vaadin-upload>
-`,
+    <vaadin-upload
+      target\$="{{uploadPath}}"
+      method="POST"
+      form-data-name="file-upload"
+    ></vaadin-upload>
+  `,
 
   is: "lrnapp-media-upload",
 

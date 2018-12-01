@@ -62,11 +62,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 37,
+              "line": 51,
               "column": 4
             },
             "end": {
-              "line": 40,
+              "line": 54,
               "column": 5
             }
           },
@@ -84,11 +84,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 44,
+              "line": 58,
               "column": 4
             },
             "end": {
-              "line": 47,
+              "line": 61,
               "column": 5
             }
           },
@@ -106,11 +106,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 51,
+              "line": 65,
               "column": 4
             },
             "end": {
-              "line": 54,
+              "line": 68,
               "column": 5
             }
           },
@@ -128,11 +128,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 58,
+              "line": 72,
               "column": 4
             },
             "end": {
-              "line": 61,
+              "line": 75,
               "column": 5
             }
           },
@@ -150,11 +150,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 65,
+              "line": 79,
               "column": 4
             },
             "end": {
-              "line": 68,
+              "line": 82,
               "column": 5
             }
           },
@@ -169,50 +169,6 @@
           "name": "x",
           "type": "string | null | undefined",
           "description": "x position for the AR element.",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 72,
-              "column": 4
-            },
-            "end": {
-              "line": 75,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"0\""
-        },
-        {
-          "name": "y",
-          "type": "string | null | undefined",
-          "description": "y position for the AR element.",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 79,
-              "column": 4
-            },
-            "end": {
-              "line": 82,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"0\""
-        },
-        {
-          "name": "z",
-          "type": "string | null | undefined",
-          "description": "z position for the AR element.",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -232,9 +188,9 @@
           "defaultValue": "\"0\""
         },
         {
-          "name": "position",
-          "type": "Object | null | undefined",
-          "description": "Generate a position object when coordinates change.",
+          "name": "y",
+          "type": "string | null | undefined",
+          "description": "y position for the AR element.",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -242,7 +198,51 @@
               "column": 4
             },
             "end": {
-              "line": 97,
+              "line": 96,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"0\""
+        },
+        {
+          "name": "z",
+          "type": "string | null | undefined",
+          "description": "z position for the AR element.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 100,
+              "column": 4
+            },
+            "end": {
+              "line": 103,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"0\""
+        },
+        {
+          "name": "position",
+          "type": "Object | null | undefined",
+          "description": "Generate a position object when coordinates change.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 107,
+              "column": 4
+            },
+            "end": {
+              "line": 111,
               "column": 5
             }
           },
@@ -310,11 +310,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 102,
+              "line": 116,
               "column": 2
             },
             "end": {
-              "line": 104,
+              "line": 118,
               "column": 3
             }
           },
@@ -334,11 +334,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 122,
               "column": 2
             },
             "end": {
-              "line": 202,
+              "line": 216,
               "column": 3
             }
           },
@@ -354,11 +354,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 207,
+              "line": 221,
               "column": 2
             },
             "end": {
-              "line": 213,
+              "line": 227,
               "column": 3
             }
           },
@@ -387,11 +387,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 218,
+              "line": 232,
               "column": 2
             },
             "end": {
-              "line": 220,
+              "line": 234,
               "column": 3
             }
           },
@@ -411,11 +411,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 10,
+          "line": 14,
           "column": 27
         },
         "end": {
-          "line": 221,
+          "line": 235,
           "column": 1
         }
       },
@@ -464,38 +464,6 @@
           "description": "Source to reference for the 3D object",
           "sourceRange": {
             "start": {
-              "line": 37,
-              "column": 4
-            },
-            "end": {
-              "line": 40,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "height",
-          "description": "height of the element",
-          "sourceRange": {
-            "start": {
-              "line": 44,
-              "column": 4
-            },
-            "end": {
-              "line": 47,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "width",
-          "description": "width of the element",
-          "sourceRange": {
-            "start": {
               "line": 51,
               "column": 4
             },
@@ -508,8 +476,8 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "sky-color",
-          "description": "Color of the sky / background.",
+          "name": "height",
+          "description": "height of the element",
           "sourceRange": {
             "start": {
               "line": 58,
@@ -524,8 +492,8 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "ar",
-          "description": "If this is for augmented reality or not.",
+          "name": "width",
+          "description": "width of the element",
           "sourceRange": {
             "start": {
               "line": 65,
@@ -537,11 +505,11 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "string | null | undefined"
         },
         {
-          "name": "x",
-          "description": "x position for the AR element.",
+          "name": "sky-color",
+          "description": "Color of the sky / background.",
           "sourceRange": {
             "start": {
               "line": 72,
@@ -556,8 +524,8 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "y",
-          "description": "y position for the AR element.",
+          "name": "ar",
+          "description": "If this is for augmented reality or not.",
           "sourceRange": {
             "start": {
               "line": 79,
@@ -569,11 +537,11 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "boolean | null | undefined"
         },
         {
-          "name": "z",
-          "description": "z position for the AR element.",
+          "name": "x",
+          "description": "x position for the AR element.",
           "sourceRange": {
             "start": {
               "line": 86,
@@ -588,15 +556,47 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "position",
-          "description": "Generate a position object when coordinates change.",
+          "name": "y",
+          "description": "y position for the AR element.",
           "sourceRange": {
             "start": {
               "line": 93,
               "column": 4
             },
             "end": {
-              "line": 97,
+              "line": 96,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "z",
+          "description": "z position for the AR element.",
+          "sourceRange": {
+            "start": {
+              "line": 100,
+              "column": 4
+            },
+            "end": {
+              "line": 103,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "position",
+          "description": "Generate a position object when coordinates change.",
+          "sourceRange": {
+            "start": {
+              "line": 107,
+              "column": 4
+            },
+            "end": {
+              "line": 111,
               "column": 5
             }
           },

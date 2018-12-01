@@ -22,77 +22,105 @@ class SimpleColorsDemoTable extends SimpleColors {
   //render function
   static get template() {
     return html`
-<style is="custom-style" include="simple-colors">
-  :host {
-    display: block;
-    margin: 15px 0;
-  }
-  :host([hidden]) {
-    display: none;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  table, table caption {
-    border: 2px solid #000;
-  }
-  table caption {
-    border-bottom: none;
-  }
-  table td, table th, table caption {
-    padding: 3px;
-    text-align: left;
-  }
-  table td, table th {
-    font-size: 12px;
-    border: 1px solid #000;
-  }
-</style>
-<table border-spacing="0">
-  <caption>
-    --simple-colors-[[theme]]-theme when <label>accent-color is
-      <simple-colors-demo-select id="accent"
-        label="accent-color"
-        value$="[[accentColor]]" 
-        as-code 
-        on-accent-color-change="_handleAccentChange"
-        options$=[[_getOptions(colors)]]>
-        <span slot="prefix">="</span>
-        <span slot="suffix">" </span>
-      </simple-colors-demo-select>
-    </label>
-    <label>and dark is
-      <simple-colors-demo-select id="dark"
-        label="dark"
-        value$="[[dark]]" 
-        as-code 
-        on-dark-change="_handleDarkChange"
-        options='["","dark"]'>
-        <span slot="prefix">="</span>
-        <span slot="suffix">" </span>
-      </simple-colors-demo-select>
-    </label>
-  </caption>
-  <thead>
-    <tr>
-      <th scope="column">accent</th>
-      <template is="dom-repeat" items="[[_getOptions(colors)]]" as="color">
-        <th scope="column">[[color]]</th>
-      </template>
-    </tr>
-  </thead>
-  <tbody>
-    <template is="dom-repeat" items="[[colors.grey]]" index-as="level">
-      <tr>
-        <td title="--simple-colors-[[theme]]-theme-accent-[[_getLevel(level)]]" style="[[_getStyle(theme,'accent',level)]]">accent-[[_getLevel(level)]]</td>
-        <template is="dom-repeat" items="[[_getOptions(colors)]]" as="color">
-          <td title="--simple-colors-[[theme]]-theme-[[color]]-[[_getLevel(level)]]" style="[[_getStyle(theme,color,level)]]">[[color]]-[[_getLevel(level)]]</td>
-        </template>
-      </tr>
-    </template>
-  </tbody>
-</table>`;
+      <style is="custom-style" include="simple-colors">
+        :host {
+          display: block;
+          margin: 15px 0;
+        }
+        :host([hidden]) {
+          display: none;
+        }
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+        table,
+        table caption {
+          border: 2px solid #000;
+        }
+        table caption {
+          border-bottom: none;
+        }
+        table td,
+        table th,
+        table caption {
+          padding: 3px;
+          text-align: left;
+        }
+        table td,
+        table th {
+          font-size: 12px;
+          border: 1px solid #000;
+        }
+      </style>
+      <table border-spacing="0">
+        <caption>
+          --simple-colors-[[theme]]-theme when
+          <label
+            >accent-color is
+            <simple-colors-demo-select
+              id="accent"
+              label="accent-color"
+              value$="[[accentColor]]"
+              as-code
+              on-accent-color-change="_handleAccentChange"
+              options$="[[_getOptions(colors)]]"
+            >
+              <span slot="prefix">="</span> <span slot="suffix">" </span>
+            </simple-colors-demo-select>
+          </label>
+          <label
+            >and dark is
+            <simple-colors-demo-select
+              id="dark"
+              label="dark"
+              value$="[[dark]]"
+              as-code
+              on-dark-change="_handleDarkChange"
+              options="[&quot;&quot;,&quot;dark&quot;]"
+            >
+              <span slot="prefix">="</span> <span slot="suffix">" </span>
+            </simple-colors-demo-select>
+          </label>
+        </caption>
+        <thead>
+          <tr>
+            <th scope="column">accent</th>
+            <template
+              is="dom-repeat"
+              items="[[_getOptions(colors)]]"
+              as="color"
+            >
+              <th scope="column">[[color]]</th>
+            </template>
+          </tr>
+        </thead>
+        <tbody>
+          <template is="dom-repeat" items="[[colors.grey]]" index-as="level">
+            <tr>
+              <td
+                title="--simple-colors-[[theme]]-theme-accent-[[_getLevel(level)]]"
+                style="[[_getStyle(theme,'accent',level)]]"
+              >
+                accent-[[_getLevel(level)]]
+              </td>
+              <template
+                is="dom-repeat"
+                items="[[_getOptions(colors)]]"
+                as="color"
+              >
+                <td
+                  title="--simple-colors-[[theme]]-theme-[[color]]-[[_getLevel(level)]]"
+                  style="[[_getStyle(theme,color,level)]]"
+                >
+                  [[color]]-[[_getLevel(level)]]
+                </td>
+              </template>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    `;
   }
 
   /**

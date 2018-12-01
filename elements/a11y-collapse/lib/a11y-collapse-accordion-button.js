@@ -33,26 +33,38 @@ An accessible expand collapse.
 Polymer({
   _template: html`
     <style include="a11y-collapse-button-styles">
-      :host #heading:focus, 
+      :host #heading:focus,
       :host #heading:hover {
         @apply --a11y-collapse-heading-focus;
       }
-      :host #heading:focus #text, 
+      :host #heading:focus #text,
       :host #heading:hover #text {
         @apply --a11y-collapse-heading-text-focus;
       }
-      :host #heading:focus #expand, 
+      :host #heading:focus #expand,
       :host #heading:hover #expand {
         @apply --a11y-collapse-icon-focus;
-      } 
+      }
     </style>
-    <div id="heading" aria-controls="content" aria-expanded\$="[[expanded]]" disabled\$="[[disabled]]" label\$="[[label]]" role="button">
+    <div
+      id="heading"
+      aria-controls="content"
+      aria-expanded\$="[[expanded]]"
+      disabled\$="[[disabled]]"
+      label\$="[[label]]"
+      role="button"
+    >
       <div id="text"><slot></slot></div>
-      <iron-icon id="expand" aria-hidden="true" icon\$="[[icon]]" rotated\$="[[rotated]]">
+      <iron-icon
+        id="expand"
+        aria-hidden="true"
+        icon\$="[[icon]]"
+        rotated\$="[[rotated]]"
+      >
       </iron-icon>
     </div>
     <paper-tooltip for="heading">[[tooltip]]</paper-tooltip>
-`,
+  `,
 
   is: "a11y-collapse-accordion-button",
   listeners: {

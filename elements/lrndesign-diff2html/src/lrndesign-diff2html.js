@@ -13,7 +13,7 @@ let LrndesignDiff2html = Polymer({
       }
     </style>
     <h2>[[title]]</h2>
-`,
+  `,
 
   is: "lrndesign-diff2html",
 

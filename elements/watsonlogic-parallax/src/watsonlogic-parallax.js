@@ -15,7 +15,7 @@ let WatsonlogicParallax = Polymer({
         display: block;
         --parallax-background-height: 300px;
         --parallax-slogan-top: 150px;
-        --parallax-background-image: url('https://static.pexels.com/photos/2324/skyline-buildings-new-york-skyscrapers.jpg');
+        --parallax-background-image: url("https://static.pexels.com/photos/2324/skyline-buildings-new-york-skyscrapers.jpg");
       }
 
       .parallax-background {
@@ -25,7 +25,7 @@ let WatsonlogicParallax = Polymer({
         background-repeat: no-repeat;
         background-size: cover;
         height: var(--parallax-background-height);
-        position:relative;
+        position: relative;
       }
 
       .slogan {
@@ -43,7 +43,7 @@ let WatsonlogicParallax = Polymer({
     <div class="parallax-background">
       <div id="slogan" class="slogan">[[parallaxText]]</div>
     </div>
-`,
+  `,
 
   is: "watsonlogic-parallax",
 

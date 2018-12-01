@@ -20,35 +20,35 @@ let RelativeHeading = Polymer({
       }
     </style>
     <div id="html"></div>
-`,
+  `,
 
   is: "relative-heading",
 
   properties: {
-    /* 
-     * id of the heading element that this heading is a subtopic of 
+    /*
+     * id of the heading element that this heading is a subtopic of
      */
     subtopicOf: {
       type: String,
       value: null,
       reflectToAttribute: true
     },
-    /* 
-     * text of the heading 
+    /*
+     * text of the heading
      */
     text: {
       type: String,
       value: null,
       reflectToAttribute: true
     },
-    /* 
-     * the id of the heading element that this heading is a subtopic of 
+    /*
+     * the id of the heading element that this heading is a subtopic of
      */
     parentHeading: {
       type: Object,
       value: {}
     },
-    /* 
+    /*
      * the heading tag, eg. <h1/>, <h2/> ...
      */
     tag: {
@@ -58,21 +58,21 @@ let RelativeHeading = Polymer({
     }
   },
 
-  /* 
-   * make sure the heading manager is ready to listen 
+  /*
+   * make sure the heading manager is ready to listen
    */
   created: function() {
     window.RelativeHeadingManager.requestAvailability();
   },
 
-  /* 
+  /*
    * fire a heading created event for the heading manager
    */
   attached: function() {
     this.fire("heading-created", this);
   },
 
-  /* 
+  /*
    * fired if the subtopic changes
    */
   attributeChanged: function(name, type) {
@@ -85,7 +85,7 @@ let RelativeHeading = Polymer({
     }
   },
 
-  /* 
+  /*
    * sets the parent of the heading
    */
   _setParent: function(el) {
@@ -104,7 +104,7 @@ let RelativeHeading = Polymer({
     this._setTag();
   },
 
-  /* 
+  /*
    * gets the  heading tag name
    */
   _setTag: function() {

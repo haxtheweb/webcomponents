@@ -287,11 +287,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 85,
+              "line": 84,
               "column": 4
             },
             "end": {
-              "line": 87,
+              "line": 86,
               "column": 5
             }
           },
@@ -317,7 +317,7 @@
           "column": 8
         },
         "end": {
-          "line": 89,
+          "line": 88,
           "column": 1
         }
       },
@@ -329,11 +329,11 @@
           "description": "Array of items to present with label and content for the list of collapses.",
           "sourceRange": {
             "start": {
-              "line": 85,
+              "line": 84,
               "column": 4
             },
             "end": {
-              "line": 87,
+              "line": 86,
               "column": 5
             }
           },
@@ -647,11 +647,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 60,
+              "line": 58,
               "column": 4
             },
             "end": {
-              "line": 62,
+              "line": 60,
               "column": 5
             }
           },
@@ -668,11 +668,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 66,
+              "line": 64,
               "column": 4
             },
             "end": {
-              "line": 68,
+              "line": 66,
               "column": 5
             }
           },
@@ -689,11 +689,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 72,
+              "line": 70,
               "column": 4
             },
             "end": {
-              "line": 74,
+              "line": 72,
               "column": 5
             }
           },
@@ -710,11 +710,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 78,
+              "line": 76,
               "column": 4
             },
             "end": {
-              "line": 80,
+              "line": 78,
               "column": 5
             }
           },
@@ -731,11 +731,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 84,
+              "line": 82,
               "column": 4
             },
             "end": {
-              "line": 87,
+              "line": 85,
               "column": 5
             }
           },
@@ -752,11 +752,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 91,
+              "line": 89,
               "column": 4
             },
             "end": {
-              "line": 93,
+              "line": 91,
               "column": 5
             }
           },
@@ -773,11 +773,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 97,
+              "line": 95,
               "column": 4
             },
             "end": {
-              "line": 100,
+              "line": 98,
               "column": 5
             }
           },
@@ -795,11 +795,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 104,
+              "line": 102,
               "column": 4
             },
             "end": {
-              "line": 106,
+              "line": 104,
               "column": 5
             }
           },
@@ -816,11 +816,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 110,
+              "line": 108,
               "column": 4
             },
             "end": {
-              "line": 113,
+              "line": 111,
               "column": 5
             }
           },
@@ -838,11 +838,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 117,
+              "line": 115,
               "column": 4
             },
             "end": {
-              "line": 120,
+              "line": 118,
               "column": 5
             }
           },
@@ -860,11 +860,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 124,
+              "line": 122,
               "column": 4
             },
             "end": {
-              "line": 127,
+              "line": 125,
               "column": 5
             }
           },
@@ -883,11 +883,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 134,
+              "line": 132,
               "column": 2
             },
             "end": {
-              "line": 144,
+              "line": 142,
               "column": 3
             }
           },
@@ -907,11 +907,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 150,
+              "line": 148,
               "column": 2
             },
             "end": {
-              "line": 160,
+              "line": 158,
               "column": 3
             }
           },
@@ -931,11 +931,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 165,
+              "line": 163,
               "column": 2
             },
             "end": {
-              "line": 208,
+              "line": 206,
               "column": 3
             }
           },
@@ -951,11 +951,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 213,
+              "line": 211,
               "column": 2
             },
             "end": {
-              "line": 232,
+              "line": 230,
               "column": 3
             }
           },
@@ -975,11 +975,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 237,
+              "line": 235,
               "column": 2
             },
             "end": {
-              "line": 239,
+              "line": 237,
               "column": 3
             }
           },
@@ -995,11 +995,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 244,
+              "line": 242,
               "column": 2
             },
             "end": {
-              "line": 249,
+              "line": 247,
               "column": 3
             }
           },
@@ -1015,11 +1015,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 253,
+              "line": 251,
               "column": 2
             },
             "end": {
-              "line": 258,
+              "line": 256,
               "column": 3
             }
           },
@@ -1044,7 +1044,7 @@
           "column": 8
         },
         "end": {
-          "line": 259,
+          "line": 257,
           "column": 1
         }
       },
@@ -1056,11 +1056,11 @@
           "description": "Icon to present for clicking.",
           "sourceRange": {
             "start": {
-              "line": 60,
+              "line": 58,
               "column": 4
             },
             "end": {
-              "line": 62,
+              "line": 60,
               "column": 5
             }
           },
@@ -1072,11 +1072,11 @@
           "description": "If the button should be visually lifted off the UI.",
           "sourceRange": {
             "start": {
-              "line": 66,
+              "line": 64,
               "column": 4
             },
             "end": {
-              "line": 68,
+              "line": 66,
               "column": 5
             }
           },
@@ -1088,11 +1088,11 @@
           "description": "Icon to present for clicking.",
           "sourceRange": {
             "start": {
-              "line": 72,
+              "line": 70,
               "column": 4
             },
             "end": {
-              "line": 74,
+              "line": 72,
               "column": 5
             }
           },
@@ -1104,11 +1104,11 @@
           "description": "Text to present for clicking.",
           "sourceRange": {
             "start": {
-              "line": 78,
+              "line": 76,
               "column": 4
             },
             "end": {
-              "line": 80,
+              "line": 78,
               "column": 5
             }
           },
@@ -1120,11 +1120,11 @@
           "description": "Alt / hover text for this link",
           "sourceRange": {
             "start": {
-              "line": 84,
+              "line": 82,
               "column": 4
             },
             "end": {
-              "line": 87,
+              "line": 85,
               "column": 5
             }
           },
@@ -1136,11 +1136,11 @@
           "description": "Header for the dialog",
           "sourceRange": {
             "start": {
-              "line": 91,
+              "line": 89,
               "column": 4
             },
             "end": {
-              "line": 93,
+              "line": 91,
               "column": 5
             }
           },
@@ -1152,11 +1152,11 @@
           "description": "Disabled state.",
           "sourceRange": {
             "start": {
-              "line": 97,
+              "line": 95,
               "column": 4
             },
             "end": {
-              "line": 100,
+              "line": 98,
               "column": 5
             }
           },
@@ -1168,11 +1168,11 @@
           "description": "Classes to add / subtract based on the item being hovered",
           "sourceRange": {
             "start": {
-              "line": 104,
+              "line": 102,
               "column": 4
             },
             "end": {
-              "line": 106,
+              "line": 104,
               "column": 5
             }
           },
@@ -1184,11 +1184,11 @@
           "description": "Default heading classes.",
           "sourceRange": {
             "start": {
-              "line": 110,
+              "line": 108,
               "column": 4
             },
             "end": {
-              "line": 113,
+              "line": 111,
               "column": 5
             }
           },
@@ -1200,11 +1200,11 @@
           "description": "Support for dynamic loading of iron-image elements that are in the content slot.",
           "sourceRange": {
             "start": {
-              "line": 117,
+              "line": 115,
               "column": 4
             },
             "end": {
-              "line": 120,
+              "line": 118,
               "column": 5
             }
           },
@@ -1216,11 +1216,11 @@
           "description": "Tracks if focus state is applied",
           "sourceRange": {
             "start": {
-              "line": 124,
+              "line": 122,
               "column": 4
             },
             "end": {
-              "line": 127,
+              "line": 125,
               "column": 5
             }
           },
@@ -1248,11 +1248,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 55,
+              "line": 47,
               "column": 4
             },
             "end": {
-              "line": 59,
+              "line": 51,
               "column": 5
             }
           },
@@ -1270,11 +1270,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 63,
+              "line": 55,
               "column": 4
             },
             "end": {
-              "line": 66,
+              "line": 58,
               "column": 5
             }
           },
@@ -1291,11 +1291,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 70,
+              "line": 62,
               "column": 4
             },
             "end": {
-              "line": 72,
+              "line": 64,
               "column": 5
             }
           },
@@ -1312,11 +1312,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 76,
+              "line": 68,
               "column": 4
             },
             "end": {
-              "line": 78,
+              "line": 70,
               "column": 5
             }
           },
@@ -1333,11 +1333,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 82,
+              "line": 74,
               "column": 4
             },
             "end": {
-              "line": 84,
+              "line": 76,
               "column": 5
             }
           },
@@ -1354,11 +1354,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 88,
+              "line": 80,
               "column": 4
             },
             "end": {
-              "line": 91,
+              "line": 83,
               "column": 5
             }
           },
@@ -1376,11 +1376,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 95,
+              "line": 87,
               "column": 4
             },
             "end": {
-              "line": 98,
+              "line": 90,
               "column": 5
             }
           },
@@ -1397,11 +1397,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 102,
+              "line": 94,
               "column": 4
             },
             "end": {
-              "line": 104,
+              "line": 96,
               "column": 5
             }
           },
@@ -1418,11 +1418,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 100,
               "column": 4
             },
             "end": {
-              "line": 112,
+              "line": 104,
               "column": 5
             }
           },
@@ -1440,11 +1440,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 116,
+              "line": 108,
               "column": 4
             },
             "end": {
-              "line": 118,
+              "line": 110,
               "column": 5
             }
           },
@@ -1461,11 +1461,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 122,
+              "line": 114,
               "column": 4
             },
             "end": {
-              "line": 125,
+              "line": 117,
               "column": 5
             }
           },
@@ -1483,11 +1483,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 129,
+              "line": 121,
               "column": 4
             },
             "end": {
-              "line": 132,
+              "line": 124,
               "column": 5
             }
           },
@@ -1506,11 +1506,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 138,
+              "line": 130,
               "column": 2
             },
             "end": {
-              "line": 140,
+              "line": 132,
               "column": 3
             }
           },
@@ -1526,11 +1526,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 145,
+              "line": 137,
               "column": 2
             },
             "end": {
-              "line": 154,
+              "line": 142,
               "column": 3
             }
           },
@@ -1546,11 +1546,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 158,
+              "line": 146,
               "column": 2
             },
             "end": {
-              "line": 167,
+              "line": 151,
               "column": 3
             }
           },
@@ -1561,9 +1561,33 @@
           }
         },
         {
-          "name": "_accessibleFocus",
-          "description": "Set ourselves as having focus after the modal closes.",
-          "privacy": "protected",
+          "name": "tapEventOn",
+          "description": "Handle a mouse on event and add the hoverclasses\nto the classList array for paper-button.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 157,
+              "column": 2
+            },
+            "end": {
+              "line": 166,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "tapEventOff",
+          "description": "Handle a mouse out event and remove the hoverclasses\nfrom the classList array for paper-button.",
+          "privacy": "public",
           "sourceRange": {
             "start": {
               "line": 172,
@@ -1585,64 +1609,16 @@
           }
         },
         {
-          "name": "tapEventOn",
-          "description": "Handle a mouse on event and add the hoverclasses\nto the classList array for paper-button.",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 187,
-              "column": 2
-            },
-            "end": {
-              "line": 197,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "tapEventOff",
-          "description": "Handle a mouse out event and remove the hoverclasses\nfrom the classList array for paper-button.",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 203,
-              "column": 2
-            },
-            "end": {
-              "line": 213,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
           "name": "toggleDrawer",
           "description": "Toggle the drawer to open / close.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 218,
+              "line": 186,
               "column": 2
             },
             "end": {
-              "line": 220,
+              "line": 216,
               "column": 3
             }
           },
@@ -1658,11 +1634,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 225,
+              "line": 221,
               "column": 2
             },
             "end": {
-              "line": 244,
+              "line": 239,
               "column": 3
             }
           },
@@ -1682,11 +1658,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 250,
+              "line": 245,
               "column": 2
             },
             "end": {
-              "line": 255,
+              "line": 250,
               "column": 3
             }
           },
@@ -1704,11 +1680,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 14,
+          "line": 15,
           "column": 8
         },
         "end": {
-          "line": 256,
+          "line": 251,
           "column": 1
         }
       },
@@ -1720,11 +1696,11 @@
           "description": "State for if it is currently open.",
           "sourceRange": {
             "start": {
-              "line": 55,
+              "line": 47,
               "column": 4
             },
             "end": {
-              "line": 59,
+              "line": 51,
               "column": 5
             }
           },
@@ -1736,11 +1712,11 @@
           "description": "If the button should be visually lifted off the UI.",
           "sourceRange": {
             "start": {
-              "line": 63,
+              "line": 55,
               "column": 4
             },
             "end": {
-              "line": 66,
+              "line": 58,
               "column": 5
             }
           },
@@ -1752,11 +1728,11 @@
           "description": "Icon to present for clicking.",
           "sourceRange": {
             "start": {
-              "line": 70,
+              "line": 62,
               "column": 4
             },
             "end": {
-              "line": 72,
+              "line": 64,
               "column": 5
             }
           },
@@ -1768,11 +1744,11 @@
           "description": "Icon to present for clicking.",
           "sourceRange": {
             "start": {
-              "line": 76,
+              "line": 68,
               "column": 4
             },
             "end": {
-              "line": 78,
+              "line": 70,
               "column": 5
             }
           },
@@ -1784,11 +1760,11 @@
           "description": "Text to present for clicking.",
           "sourceRange": {
             "start": {
-              "line": 82,
+              "line": 74,
               "column": 4
             },
             "end": {
-              "line": 84,
+              "line": 76,
               "column": 5
             }
           },
@@ -1800,11 +1776,11 @@
           "description": "Side of the screen to align the flyout (right or left)",
           "sourceRange": {
             "start": {
-              "line": 88,
+              "line": 80,
               "column": 4
             },
             "end": {
-              "line": 91,
+              "line": 83,
               "column": 5
             }
           },
@@ -1816,11 +1792,11 @@
           "description": "Alt / hover text for this link",
           "sourceRange": {
             "start": {
-              "line": 95,
+              "line": 87,
               "column": 4
             },
             "end": {
-              "line": 98,
+              "line": 90,
               "column": 5
             }
           },
@@ -1832,11 +1808,11 @@
           "description": "Header for the drawer",
           "sourceRange": {
             "start": {
-              "line": 102,
+              "line": 94,
               "column": 4
             },
             "end": {
-              "line": 104,
+              "line": 96,
               "column": 5
             }
           },
@@ -1848,11 +1824,11 @@
           "description": "Disabled state.",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 100,
               "column": 4
             },
             "end": {
-              "line": 112,
+              "line": 104,
               "column": 5
             }
           },
@@ -1864,11 +1840,11 @@
           "description": "Classes to add / subtract based on the item being hovered",
           "sourceRange": {
             "start": {
-              "line": 116,
+              "line": 108,
               "column": 4
             },
             "end": {
-              "line": 118,
+              "line": 110,
               "column": 5
             }
           },
@@ -1880,11 +1856,11 @@
           "description": "Heading classes to apply downstream.",
           "sourceRange": {
             "start": {
-              "line": 122,
+              "line": 114,
               "column": 4
             },
             "end": {
-              "line": 125,
+              "line": 117,
               "column": 5
             }
           },
@@ -1896,11 +1872,11 @@
           "description": "Tracks if focus state is applied",
           "sourceRange": {
             "start": {
-              "line": 129,
+              "line": 121,
               "column": 4
             },
             "end": {
-              "line": 132,
+              "line": 124,
               "column": 5
             }
           },

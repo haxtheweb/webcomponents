@@ -42,19 +42,19 @@ let ToDo = Polymer({
         padding: 8px;
       }
       .task-list-wrapper li:nth-child(even) {
-        background-color: #F5F5F5;
+        background-color: #f5f5f5;
       }
       .task-list-wrapper li:nth-child(odd) {
-        background-color: #E5E5E5;
+        background-color: #e5e5e5;
       }
       .task-list-wrapper li:hover {
-        background-color: #FFFFFF;
+        background-color: #ffffff;
       }
       .task-list-wrapper li:active {
-        background-color: #FFFFFF;
+        background-color: #ffffff;
       }
       .task-list-wrapper li:focus {
-        background-color: #FFFFFF;
+        background-color: #ffffff;
       }
       h3 {
         margin: 4px;
@@ -66,16 +66,24 @@ let ToDo = Polymer({
       <div class="card-content">
         <div hidden\$="[[hideForm]]">
           <paper-input label="Task to accomplish" id="itemtext"></paper-input>
-          <paper-button raised="" id="itembutton" on-tap="_addItemToList">Add item</paper-button>
+          <paper-button raised="" id="itembutton" on-tap="_addItemToList"
+            >Add item</paper-button
+          >
         </div>
         <ul class="task-list-wrapper">
           <template is="dom-repeat" items="[[items]]" as="item">
-            <li data-item-id\$="[[item.id]]"><paper-checkbox checked="{{item.value}}" disabled="[[item.disabled]]">[[item.label]]</paper-checkbox></li>
+            <li data-item-id\$="[[item.id]]">
+              <paper-checkbox
+                checked="{{item.value}}"
+                disabled="[[item.disabled]]"
+                >[[item.label]]</paper-checkbox
+              >
+            </li>
           </template>
         </ul>
       </div>
     </paper-card>
-`,
+  `,
 
   is: "to-do",
 

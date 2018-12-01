@@ -182,10 +182,8 @@ by the regular expression engine.
 */
 let GrafittoFilter = Polymer({
   _template: html`
-    <div id="dom">
-      <slot></slot>
-    </div>
-`,
+    <div id="dom"><slot></slot></div>
+  `,
 
   is: "grafitto-filter",
   behaviors: [Templatizer, OptionalMutableDataBehavior],

@@ -12,14 +12,14 @@ Polymer({
   _template: html`
     <style include="materializecss-styles"></style>
     <style>
-       :host {
+      :host {
         display: inline-flex;
       }
       :host([size="micro"]) {
-        transform: scale(.5);
+        transform: scale(0.5);
       }
       :host([size="small"]) {
-        transform: scale(.8);
+        transform: scale(0.8);
       }
 
       paper-card {
@@ -33,7 +33,7 @@ Polymer({
         border-radius: 0 0 4px 4px;
         padding: 0 8px;
       }
-      .card-actions .card-action-details{
+      .card-actions .card-action-details {
         display: inline-block;
         vertical-align: middle;
         vertical-align: -webkit-baseline-middle;
@@ -42,7 +42,7 @@ Polymer({
       #avatar {
         display: inline-block;
         vertical-align: text-top;
-        transform: scale(.8);
+        transform: scale(0.8);
       }
 
       .card-control-height {
@@ -50,7 +50,7 @@ Polymer({
       }
 
       [elevation="0"] {
-        border: solid 1px #EEEEEE;
+        border: solid 1px #eeeeee;
       }
 
       .text-right {
@@ -61,7 +61,8 @@ Polymer({
         text-align: left;
       }
 
-      .name, .title {
+      .name,
+      .title {
         color: #222;
         font-size: 12.8px;
         font-weight: 600;
@@ -126,15 +127,29 @@ Polymer({
       .inline {
         display: inline;
       }
-
     </style>
     <paper-card elevation="[[elevation]]">
       <div class="card-content card-control-height card-control-center">
         <div class="course-preview">
-          <iron-icon class="course-icon" icon="[[icon]]" hidden\$="[[!icon]]"></iron-icon>
-          <iron-image style="width:100%; height:100%; background-color: lightgray;" sizing="cover" preload="" fade="" src="[[image]]" hidden\$="[[!image]]"></iron-image>
+          <iron-icon
+            class="course-icon"
+            icon="[[icon]]"
+            hidden\$="[[!icon]]"
+          ></iron-icon>
+          <iron-image
+            style="width:100%; height:100%; background-color: lightgray;"
+            sizing="cover"
+            preload=""
+            fade=""
+            src="[[image]]"
+            hidden\$="[[!image]]"
+          ></iron-image>
         </div>
-        <lrndesign-avatar label="[[name]]" jdenticon="" color="[[color]] darken-4">
+        <lrndesign-avatar
+          label="[[name]]"
+          jdenticon=""
+          color="[[color]] darken-4"
+        >
         </lrndesign-avatar>
         <div class="course-info">
           <div class="divider"></div>
@@ -143,11 +158,10 @@ Polymer({
         </div>
       </div>
       <div class="card-actions" hidden="">
-        <div class="card-action-details">
-        </div>
+        <div class="card-action-details"></div>
       </div>
     </paper-card>
-`,
+  `,
 
   is: "lrnapp-cis-course-card",
 

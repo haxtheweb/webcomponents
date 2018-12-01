@@ -27,7 +27,7 @@ Polymer({
         opacity: 0;
         z-index: 1000;
         background-color: var(--haxcms-color, #ff4081);
-        transition: all .6s linear;
+        transition: all 0.6s linear;
       }
       :host([page-allowed]) #editbutton,
       :host([outline-allowed]) #outlinebutton,
@@ -55,14 +55,32 @@ Polymer({
         padding: 8px;
         background-color: var(--paper-blue-500) !important;
       }
-    </style>    
-    <paper-fab id="editbutton" icon="[[__editIcon]]" on-tap="_editButtonTap"></paper-fab>
-    <paper-tooltip for="editbutton" position="top" offset="14">[[__editText]]</paper-tooltip>
-    <paper-fab id="manifestbutton" icon="icons:settings" on-tap="_manifestButtonTap"></paper-fab>
-    <paper-tooltip for="manifestbutton" position="top" offset="14">site details</paper-tooltip>
-    <paper-fab id="outlinebutton" icon="icons:list" on-tap="_outlineButtonTap"></paper-fab>
-    <paper-tooltip for="outlinebutton" position="top" offset="14">edit outline</paper-tooltip>
-`,
+    </style>
+    <paper-fab
+      id="editbutton"
+      icon="[[__editIcon]]"
+      on-tap="_editButtonTap"
+    ></paper-fab>
+    <paper-tooltip for="editbutton" position="top" offset="14"
+      >[[__editText]]</paper-tooltip
+    >
+    <paper-fab
+      id="manifestbutton"
+      icon="icons:settings"
+      on-tap="_manifestButtonTap"
+    ></paper-fab>
+    <paper-tooltip for="manifestbutton" position="top" offset="14"
+      >site details</paper-tooltip
+    >
+    <paper-fab
+      id="outlinebutton"
+      icon="icons:list"
+      on-tap="_outlineButtonTap"
+    ></paper-fab>
+    <paper-tooltip for="outlinebutton" position="top" offset="14"
+      >edit outline</paper-tooltip
+    >
+  `,
 
   is: "haxcms-site-editor-ui",
 

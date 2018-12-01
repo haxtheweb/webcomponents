@@ -29,7 +29,7 @@ let MediaImage = Polymer({
       }
 
       :host([box]) {
-        background-color:var(--box-background-color);
+        background-color: var(--box-background-color);
         padding: 20px;
       }
 
@@ -76,10 +76,14 @@ let MediaImage = Polymer({
       }
     </style>
 
-    <iron-image resource\$="[[schemaResourceID]]-image" src\$="[[source]]" alt\$="[[alt]]"></iron-image>
+    <iron-image
+      resource\$="[[schemaResourceID]]-image"
+      src\$="[[source]]"
+      alt\$="[[alt]]"
+    ></iron-image>
     <div class="citation">[[citation]]<slot name="citation"></slot></div>
     <div class="caption">[[caption]]<slot name="caption"></slot></div>
-`,
+  `,
 
   is: "media-image",
   behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

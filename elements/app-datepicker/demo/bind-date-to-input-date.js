@@ -26,12 +26,19 @@ Polymer({
     </style>
 
     <div class="container">
-      <paper-button raised="" on-tap="openStartDate">[[planDate.startDate]]</paper-button>
+      <paper-button raised="" on-tap="openStartDate"
+        >[[planDate.startDate]]</paper-button
+      >
       <div>Selected date: [[planDate.startDate]]</div>
 
-      <app-datepicker-dialog id="startDatePicker" date="{{planDate.startDate}}" input-date="[[planDate.startDate]]" with-backdrop=""></app-datepicker-dialog>
+      <app-datepicker-dialog
+        id="startDatePicker"
+        date="{{planDate.startDate}}"
+        input-date="[[planDate.startDate]]"
+        with-backdrop=""
+      ></app-datepicker-dialog>
     </div>
-`,
+  `,
   is: "bind-date-to-input-date",
   properties: {
     planDate: {

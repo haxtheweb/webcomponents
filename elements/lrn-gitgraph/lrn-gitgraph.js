@@ -20,7 +20,7 @@ let LrnGitgraph = Polymer({
       }
     </style>
     <canvas id="gitGraph"></canvas>
-`,
+  `,
 
   is: "lrn-gitgraph",
 

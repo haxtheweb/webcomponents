@@ -25,7 +25,7 @@ Polymer({
         background-color: var(--haxcms-color, black);
       }
       .teaserimage-image {
-        transition: all .6s linear;
+        transition: all 0.6s linear;
         background-size: cover;
         background-position: center;
         position: absolute;
@@ -55,9 +55,9 @@ Polymer({
         text-indent: -9999px;
         border: 3px solid #fff;
         background-color: #fff;
-        -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.3);
-        -moz-box-shadow: 0 1px 1px rgba(0,0,0,.3);
-        box-shadow: 0 1px 1px rgba(0,0,0,.3);
+        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
       }
       .blog-title {
         margin: 0;
@@ -87,16 +87,21 @@ Polymer({
       }
     </style>
     <div class="teaserimage">
-      <div class="teaserimage-image" style\$="background-image: url([[manifest.metadata.image]]);"></div>
+      <div
+        class="teaserimage-image"
+        style\$="background-image: url([[manifest.metadata.image]]);"
+      ></div>
     </div>
     <header class="blog-header">
-      <iron-icon class="blog-logo" icon="[[manifest.metadata.icon]]"></iron-icon>
+      <iron-icon
+        class="blog-logo"
+        icon="[[manifest.metadata.icon]]"
+      ></iron-icon>
       <h1 class="blog-title">[[manifest.title]]</h1>
       <h2 class="blog-description">[[manifest.description]]</h2>
-      <div class="custom-links">
-      </div>
+      <div class="custom-links"></div>
     </header>
-`,
+  `,
 
   is: "simple-blog-header",
 

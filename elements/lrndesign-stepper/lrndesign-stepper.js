@@ -13,16 +13,13 @@ visualization of steps
 let LrndesignStepper = Polymer({
   _template: html`
     <style>
-       :host {
+      :host {
         display: block;
       }
     </style>
 
-    <div class="buttons">
-      <slot id="stepper-children">
-      </slot>
-    </div>
-`,
+    <div class="buttons"><slot id="stepper-children"> </slot></div>
+  `,
 
   is: "lrndesign-stepper",
 

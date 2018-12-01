@@ -18,7 +18,7 @@ Polymer({
         height: 48px;
         padding: 0;
         margin: 0;
-        min-width: .16px;
+        min-width: 0.16px;
         -webkit-justify-content: flex-start;
         justify-content: flex-start;
         align-items: center;
@@ -47,17 +47,17 @@ Polymer({
         padding: 16px;
       }
     </style>
-    <paper-button on-tap="collapseToggle" id="collapse-trigger" aria-controls="collapse">
-      <span class="collapse-label">
-        <slot name="label"></slot>
-      </span>
+    <paper-button
+      on-tap="collapseToggle"
+      id="collapse-trigger"
+      aria-controls="collapse"
+    >
+      <span class="collapse-label"> <slot name="label"></slot> </span>
     </paper-button>
     <iron-collapse id="collapse" opened="{{opened}}">
-      <div class="collapse-content">
-        <slot name="content"></slot>
-      </div>
+      <div class="collapse-content"><slot name="content"></slot></div>
     </iron-collapse>
-`,
+  `,
 
   is: "lrnsys-collapselist-item",
 

@@ -90,8 +90,8 @@ ace.define(
               return i[1]
                 ? this.openingBracketBlock(e, i[1], n, i.index)
                 : i[2]
-                  ? this.indentationBlock(e, n, i.index + i[2].length)
-                  : this.indentationBlock(e, n);
+                ? this.indentationBlock(e, n, i.index + i[2].length)
+                : this.indentationBlock(e, n);
           };
         }.call(s.prototype);
     }

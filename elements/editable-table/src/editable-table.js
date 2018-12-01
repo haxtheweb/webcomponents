@@ -56,14 +56,52 @@ let EditableTable = Polymer({
     </style>
     <paper-tooltip for="button" position="left">Edit this table.</paper-tooltip>
     <template id="display" is="dom-if" if="[[!editMode]]" restamp="true">
-      <editable-table-display accent-color\$="[[accentColor]]" bordered\$="[[bordered]]" caption\$="[[caption]]" column-header\$="[[columnHeader]]" dark\$="[[dark]]" data\$="[[data]]" condensed\$="[[condensed]]" filter\$="[[filter]]" footer\$="[[footer]]" row-header\$="[[rowHeader]]" scroll\$="[[scroll]]" sort\$="[[sort]]" striped\$="[[striped]]" summary\$="[[summary]]">
+      <editable-table-display
+        accent-color\$="[[accentColor]]"
+        bordered\$="[[bordered]]"
+        caption\$="[[caption]]"
+        column-header\$="[[columnHeader]]"
+        dark\$="[[dark]]"
+        data\$="[[data]]"
+        condensed\$="[[condensed]]"
+        filter\$="[[filter]]"
+        footer\$="[[footer]]"
+        row-header\$="[[rowHeader]]"
+        scroll\$="[[scroll]]"
+        sort\$="[[sort]]"
+        striped\$="[[striped]]"
+        summary\$="[[summary]]"
+      >
       </editable-table-display>
     </template>
     <template id="editor" is="dom-if" if="[[editMode]]" restamp="true">
-      <editable-table-editor accent-color\$="[[accentColor]]" bordered\$="[[bordered]]" caption\$="[[caption]]" column-header\$="[[columnHeader]]" condensed\$="[[condensed]]" dark\$="[[dark]]" data\$="[[data]]" filter\$="[[filter]]" footer\$="[[footer]]" hide-accent-color\$="[[hideAccentColor]]" hide-dark-theme\$="[[hideDarkTheme]]" hide-bordered\$="[[hideBordered]]" hide-condensed\$="[[hideCondensed]]" hide-filter\$="[[hideFilter]]" hide-sort\$="[[hideSort]]" hide-scroll\$="[[hideScroll]]" hide-striped\$="[[hideStriped]]" row-header\$="[[rowHeader]]" scroll\$="[[scroll]]" sort\$="[[sort]]" striped\$="[[striped]]" summary\$="[[summary]]">
+      <editable-table-editor
+        accent-color\$="[[accentColor]]"
+        bordered\$="[[bordered]]"
+        caption\$="[[caption]]"
+        column-header\$="[[columnHeader]]"
+        condensed\$="[[condensed]]"
+        dark\$="[[dark]]"
+        data\$="[[data]]"
+        filter\$="[[filter]]"
+        footer\$="[[footer]]"
+        hide-accent-color\$="[[hideAccentColor]]"
+        hide-dark-theme\$="[[hideDarkTheme]]"
+        hide-bordered\$="[[hideBordered]]"
+        hide-condensed\$="[[hideCondensed]]"
+        hide-filter\$="[[hideFilter]]"
+        hide-sort\$="[[hideSort]]"
+        hide-scroll\$="[[hideScroll]]"
+        hide-striped\$="[[hideStriped]]"
+        row-header\$="[[rowHeader]]"
+        scroll\$="[[scroll]]"
+        sort\$="[[sort]]"
+        striped\$="[[striped]]"
+        summary\$="[[summary]]"
+      >
       </editable-table-editor>
     </template>
-`,
+  `,
 
   is: "editable-table",
 

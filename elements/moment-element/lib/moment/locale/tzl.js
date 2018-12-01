@@ -6,8 +6,8 @@
   typeof require === "function"
     ? factory(require("../moment"))
     : typeof define === "function" && define.amd
-      ? define(["../moment"], factory)
-      : factory(global.moment);
+    ? define(["../moment"], factory)
+    : factory(global.moment);
 })(this, function(moment) {
   "use strict";
 
@@ -90,8 +90,8 @@
     return isFuture
       ? format[key][0]
       : withoutSuffix
-        ? format[key][0]
-        : format[key][1];
+      ? format[key][0]
+      : format[key][1];
   }
 
   return tzl;

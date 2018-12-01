@@ -46,7 +46,7 @@ Polymer({
       }
     </style>
     <div id="col-inner"><slot></slot></div>
-`,
+  `,
 
   is: "responsive-grid-col",
 

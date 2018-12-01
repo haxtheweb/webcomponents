@@ -20,12 +20,12 @@ let PerSpecTive = Polymer({
     <style>
       :host {
         display: block;
-        transition: .6s all linear;
+        transition: 0.6s all linear;
         background-color: transparent;
         opacity: 1;
       }
       :host([outline-loading]) {
-        opacity: .6;
+        opacity: 0.6;
         background-color: #999999;
       }
       paper-card {
@@ -37,13 +37,24 @@ let PerSpecTive = Polymer({
         width: 100%;
       }
     </style>
-    <iron-ajax auto="" id="endpoint" url="[[endPoint]]" loading="{{outlineLoading}}" handle-as="json" last-response="{{_outlineData}}" debounce-duration="300"></iron-ajax>
+    <iron-ajax
+      auto=""
+      id="endpoint"
+      url="[[endPoint]]"
+      loading="{{outlineLoading}}"
+      handle-as="json"
+      last-response="{{_outlineData}}"
+      debounce-duration="300"
+    ></iron-ajax>
     <iron-list grid="" id="list" items="[[outline]]">
       <template>
-        <paper-card heading="[[item.title]]" image="" elevation="1" animated-shadow="true">
-          <div class="card-content">
-            A card
-          </div>
+        <paper-card
+          heading="[[item.title]]"
+          image=""
+          elevation="1"
+          animated-shadow="true"
+        >
+          <div class="card-content">A card</div>
           <div class="card-actions">
             <paper-icon-button icon="add"></paper-icon-button>
             <paper-icon-button icon="delete"></paper-icon-button>
@@ -51,7 +62,7 @@ let PerSpecTive = Polymer({
         </paper-card>
       </template>
     </iron-list>
-`,
+  `,
 
   is: "per-spec-tive",
 

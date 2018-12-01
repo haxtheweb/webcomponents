@@ -41,14 +41,26 @@ let LrndesignImagemap = Polymer({
         }*/
       }
     </style>
-    <relative-heading hidden\$="[[!label]]" id="heading" subtopic-of\$="[[subtopicOf]]" tag\$="[[tag]]" text\$="[[label]]">
+    <relative-heading
+      hidden\$="[[!label]]"
+      id="heading"
+      subtopic-of\$="[[subtopicOf]]"
+      tag\$="[[tag]]"
+      text\$="[[label]]"
+    >
     </relative-heading>
     <div id="desc"><slot name="desc"></slot></div>
     <div id="svg"></div>
     <div id="buttons"></div>
     <slot></slot>
-    <iron-ajax auto="" id="get_svg" url="[[src]]" handle-as="text" on-response="_getSVGHandler"></iron-ajax>
-`,
+    <iron-ajax
+      auto=""
+      id="get_svg"
+      url="[[src]]"
+      handle-as="text"
+      on-response="_getSVGHandler"
+    ></iron-ajax>
+  `,
 
   is: "lrndesign-imagemap",
 
@@ -74,15 +86,15 @@ let LrndesignImagemap = Polymer({
       type: Array,
       value: []
     },
-    /* 
-     * optional: the id of the heading element that this imagemap is a subtopic of 
+    /*
+     * optional: the id of the heading element that this imagemap is a subtopic of
      */
     subtopicOf: {
       type: String,
       value: null,
       reflectToAttribute: true
     },
-    /* 
+    /*
      * optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...
      */
     tag: {

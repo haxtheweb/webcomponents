@@ -20,7 +20,7 @@ Polymer({
       <iron-icon icon="[[icon]]"></iron-icon> [[title]]
     </paper-button>
     <paper-tooltip for$="[[id]]" animation-delay="200">[[title]]</paper-tooltip>
-`,
+  `,
 
   is: "lrnsys-dialog-toolbar-button",
 

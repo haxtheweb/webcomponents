@@ -19,8 +19,15 @@ let LrnsysPdf = Polymer({
       }
     </style>
     <h2>[[title]]</h2>
-    <pdf-browser-viewer id="pdfViewer" file="[[file]]#page=[[page]]" width="100%" card="[[card]]" elevation="2" download-label="[[downloadLabel]]"></pdf-browser-viewer>
-`,
+    <pdf-browser-viewer
+      id="pdfViewer"
+      file="[[file]]#page=[[page]]"
+      width="100%"
+      card="[[card]]"
+      elevation="2"
+      download-label="[[downloadLabel]]"
+    ></pdf-browser-viewer>
+  `,
 
   is: "lrnsys-pdf",
   behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

@@ -398,8 +398,8 @@ define("ace/range", [], function(require, exports, module) {
           return column < this.start.column
             ? -1
             : column > this.end.column
-              ? 1
-              : 0;
+            ? 1
+            : 0;
         }
       }
 
@@ -1685,10 +1685,10 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                       a.test(l)
                         ? ((n = !1), i.push(l))
                         : n || s.test(l)
-                          ? ((n = !0), i.push("# " + l))
-                          : !n && o.test(l)
-                            ? i.push(l)
-                            : ((n = !0), i.push("# " + l));
+                        ? ((n = !0), i.push("# " + l))
+                        : !n && o.test(l)
+                        ? i.push(l)
+                        : ((n = !0), i.push("# " + l));
                   return i.join("\n");
                 }),
                 (t = function(e, a) {
@@ -1859,12 +1859,12 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                   return " " === e
                     ? "space"
                     : "\n" === e
-                      ? "newline"
-                      : "\r" === e
-                        ? "carriage return"
-                        : "\t" === e
-                          ? "tab"
-                          : e;
+                    ? "newline"
+                    : "\r" === e
+                    ? "carriage return"
+                    : "\t" === e
+                    ? "tab"
+                    : e;
                 });
             }.call(this),
             { exports: e }.exports
@@ -3536,67 +3536,63 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                                 ((C = this.tag()), 0 <= a.call(L, C))
                                   ? (F = "LEADING_WHEN")
                                   : "FOR" === F
-                                    ? (this.seenFor = !0)
-                                    : "UNLESS" === F
-                                      ? (F = "IF")
-                                      : "IMPORT" === F
-                                        ? (this.seenImport = !0)
-                                        : "EXPORT" === F
-                                          ? (this.seenExport = !0)
-                                          : 0 <= a.call(le, F)
-                                            ? (F = "UNARY")
-                                            : 0 <= a.call(Y, F) &&
-                                              ("INSTANCEOF" !== F &&
-                                              this.seenFor
-                                                ? ((F = "FOR" + F),
-                                                  (this.seenFor = !1))
-                                                : ((F = "RELATION"),
-                                                  "!" === this.value() &&
-                                                    ((h = this.tokens.pop()),
-                                                    (r = "!" + r)))))
+                                  ? (this.seenFor = !0)
+                                  : "UNLESS" === F
+                                  ? (F = "IF")
+                                  : "IMPORT" === F
+                                  ? (this.seenImport = !0)
+                                  : "EXPORT" === F
+                                  ? (this.seenExport = !0)
+                                  : 0 <= a.call(le, F)
+                                  ? (F = "UNARY")
+                                  : 0 <= a.call(Y, F) &&
+                                    ("INSTANCEOF" !== F && this.seenFor
+                                      ? ((F = "FOR" + F), (this.seenFor = !1))
+                                      : ((F = "RELATION"),
+                                        "!" === this.value() &&
+                                          ((h = this.tokens.pop()),
+                                          (r = "!" + r)))))
                               : "IDENTIFIER" === F &&
                                 this.seenFor &&
                                 "from" === r &&
                                 fe(f)
-                                ? ((F = "FORFROM"), (this.seenFor = !1))
-                                : "PROPERTY" === F &&
-                                  f &&
-                                  (f.spaced &&
-                                  ((E = f[0]), 0 <= a.call(l, E)) &&
-                                  /^[gs]et$/.test(f[1]) &&
-                                  1 < this.tokens.length &&
-                                  "." !==
-                                    (x = this.tokens[
-                                      this.tokens.length - 2
-                                    ][0]) &&
-                                  "?." !== x &&
-                                  "@" !== x
-                                    ? this.error(
+                              ? ((F = "FORFROM"), (this.seenFor = !1))
+                              : "PROPERTY" === F &&
+                                f &&
+                                (f.spaced &&
+                                ((E = f[0]), 0 <= a.call(l, E)) &&
+                                /^[gs]et$/.test(f[1]) &&
+                                1 < this.tokens.length &&
+                                "." !==
+                                  (x = this.tokens[
+                                    this.tokens.length - 2
+                                  ][0]) &&
+                                "?." !== x &&
+                                "@" !== x
+                                  ? this.error(
+                                      "'" +
+                                        f[1] +
+                                        "' cannot be used as a keyword, or as a function call without parentheses",
+                                      f[2]
+                                    )
+                                  : 2 < this.tokens.length &&
+                                    ((y = this.tokens[this.tokens.length - 2]),
+                                    ("@" === (I = f[0]) || "THIS" === I) &&
+                                      y &&
+                                      y.spaced &&
+                                      /^[gs]et$/.test(y[1]) &&
+                                      "." !==
+                                        (N = this.tokens[
+                                          this.tokens.length - 3
+                                        ][0]) &&
+                                      "?." !== N &&
+                                      "@" !== N &&
+                                      this.error(
                                         "'" +
-                                          f[1] +
+                                          y[1] +
                                           "' cannot be used as a keyword, or as a function call without parentheses",
-                                        f[2]
-                                      )
-                                    : 2 < this.tokens.length &&
-                                      ((y = this.tokens[
-                                        this.tokens.length - 2
-                                      ]),
-                                      ("@" === (I = f[0]) || "THIS" === I) &&
-                                        y &&
-                                        y.spaced &&
-                                        /^[gs]et$/.test(y[1]) &&
-                                        "." !==
-                                          (N = this.tokens[
-                                            this.tokens.length - 3
-                                          ][0]) &&
-                                        "?." !== N &&
-                                        "@" !== N &&
-                                        this.error(
-                                          "'" +
-                                            y[1] +
-                                            "' cannot be used as a keyword, or as a function call without parentheses",
-                                          y[2]
-                                        ))),
+                                        y[2]
+                                      ))),
                             "IDENTIFIER" === F &&
                               0 <= a.call(q, r) &&
                               this.error("reserved word '" + r + "'", {
@@ -3609,16 +3605,16 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                                 return "!" === r
                                   ? "UNARY"
                                   : "==" === r || "!=" === r
-                                    ? "COMPARE"
-                                    : "true" === r || "false" === r
-                                      ? "BOOL"
-                                      : "break" === r ||
-                                        "continue" === r ||
-                                        "debugger" === r
-                                        ? "STATEMENT"
-                                        : "&&" === r || "||" === r
-                                          ? r
-                                          : F;
+                                  ? "COMPARE"
+                                  : "true" === r || "false" === r
+                                  ? "BOOL"
+                                  : "break" === r ||
+                                    "continue" === r ||
+                                    "debugger" === r
+                                  ? "STATEMENT"
+                                  : "&&" === r || "||" === r
+                                  ? r
+                                  : F;
                               })())),
                             (w = this.token(F, r, 0, s)),
                             e && (w.origin = [F, e, w[2]]),
@@ -3732,12 +3728,12 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                               return "'" === h
                                 ? te
                                 : '"' === h
-                                  ? Q
-                                  : "'''" === h
-                                    ? b
-                                    : '"""' === h
-                                      ? N
-                                      : void 0;
+                                ? Q
+                                : "'''" === h
+                                ? b
+                                : '"""' === h
+                                ? N
+                                : void 0;
                             })()),
                             (d = 3 === h.length);
                           var T = this.matchWithInterpolations(f, h);
@@ -4381,13 +4377,13 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                             ("{" === y && this.seenImport
                               ? (this.importSpecifierList = !0)
                               : this.importSpecifierList && "}" === y
-                                ? (this.importSpecifierList = !1)
-                                : "{" === y &&
-                                  "EXPORT" === (null == n ? void 0 : n[0])
-                                  ? (this.exportSpecifierList = !0)
-                                  : this.exportSpecifierList &&
-                                    "}" === y &&
-                                    (this.exportSpecifierList = !1),
+                              ? (this.importSpecifierList = !1)
+                              : "{" === y &&
+                                "EXPORT" === (null == n ? void 0 : n[0])
+                              ? (this.exportSpecifierList = !0)
+                              : this.exportSpecifierList &&
+                                "}" === y &&
+                                (this.exportSpecifierList = !1),
                             ";" === y)
                           )
                             ((d = null == n ? void 0 : n[0]),
@@ -4433,8 +4429,8 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                             "(" === y || "{" === y || "[" === y
                               ? this.ends.push({ tag: S[y], origin: f })
                               : ")" === y || "}" === y || "]" === y
-                                ? this.pair(y)
-                                : void 0,
+                              ? this.pair(y)
+                              : void 0,
                             this.tokens.push(this.makeToken(g, y)),
                             y.length
                           );
@@ -4835,8 +4831,8 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                                 ? void 0
                                 : r[1]
                               : null == l
-                                ? void 0
-                                : l[1]
+                              ? void 0
+                              : l[1]
                           );
                         }
                       },
@@ -24934,9 +24930,9 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                               this.positions,
                               e
                             )
-                            ? (this.variables[this.positions[e]].type = a)
-                            : (this.positions[e] =
-                                this.variables.push({ name: e, type: a }) - 1);
+                          ? (this.variables[this.positions[e]].type = a)
+                          : (this.positions[e] =
+                              this.variables.push({ name: e, type: a }) - 1);
                       }
                     },
                     {
@@ -26218,8 +26214,8 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                                       1 === i && /^\s+$/.test(e[0].code)
                                         ? ""
                                         : _
-                                          ? " "
-                                          : "\n" + s,
+                                        ? " "
+                                        : "\n" + s,
                                       t += (function() {
                                         var e, a, t, r;
                                         for (
@@ -27135,12 +27131,12 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                                   ((l = new R(e.scope.freeVariable("base"))),
                                   (r = new a(new de(new d(l, r))))),
                                 !s)
-                                ? [r, l]
-                                : (s.shouldCache() &&
-                                    ((i = new R(e.scope.freeVariable("name"))),
-                                    (s = new V(new d(i, s.index))),
-                                    (i = new V(i))),
-                                  [r.add(s), new a(l || r.base, [i || s])]);
+                              ? [r, l]
+                              : (s.shouldCache() &&
+                                  ((i = new R(e.scope.freeVariable("name"))),
+                                  (s = new V(new d(i, s.index))),
+                                  (i = new V(i))),
+                                [r.add(s), new a(l || r.base, [i || s])]);
                           }
                         },
                         {
@@ -27227,10 +27223,10 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                             return this.hasProperties()
                               ? e(this)
                               : this.base.isAssignable()
-                                ? this.base.eachName(e)
-                                : this.error(
-                                    "tried to assign to unassignable value"
-                                  );
+                              ? this.base.eachName(e)
+                              : this.error(
+                                  "tried to assign to unassignable value"
+                                );
                           }
                         }
                       ]),
@@ -28050,16 +28046,16 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                               (u = this.stepVar
                                 ? r + " += " + this.stepVar
                                 : s
-                                  ? c
-                                    ? o <= m
-                                      ? "++" + r
-                                      : "--" + r
-                                    : o <= m
-                                      ? r + "++"
-                                      : r + "--"
-                                  : c
-                                    ? a + " ? ++" + r + " : --" + r
-                                    : a + " ? " + r + "++ : " + r + "--"),
+                                ? c
+                                  ? o <= m
+                                    ? "++" + r
+                                    : "--" + r
+                                  : o <= m
+                                  ? r + "++"
+                                  : r + "--"
+                                : c
+                                ? a + " ? ++" + r + " : --" + r
+                                : a + " ? " + r + "++ : " + r + "--"),
                               c && (g = l + " = " + g),
                               c && (u = l + " = " + u),
                               [this.makeCode(g + "; " + t + "; " + u)]
@@ -28213,9 +28209,9 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                                     (this.range.exclusive
                                       ? o
                                       : l.isNumber()
-                                        ? "" + (+o + 1)
-                                        : ((t = l.compileToFragments(e, H)),
-                                          "+" + We(t) + " + 1 || 9e9")))),
+                                      ? "" + (+o + 1)
+                                      : ((t = l.compileToFragments(e, H)),
+                                        "+" + We(t) + " + 1 || 9e9")))),
                               [
                                 this.makeCode(
                                   ".slice(" + We(r) + (s || "") + ")"
@@ -28369,23 +28365,23 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                                   o === b.length - 1
                                     ? ""
                                     : i
-                                      ? ", "
-                                      : v === l
-                                        ? "\n"
-                                        : ",\n"),
+                                    ? ", "
+                                    : v === l
+                                    ? "\n"
+                                    : ",\n"),
                                 (r = i ? "" : n),
                                 (m =
                                   v instanceof d && "object" === v.context
                                     ? v.variable
                                     : v instanceof d
-                                      ? (this.lhs
-                                          ? void 0
-                                          : v.operatorToken.error(
-                                              "unexpected " +
-                                                v.operatorToken.value
-                                            ),
-                                        v.variable)
-                                      : v),
+                                    ? (this.lhs
+                                        ? void 0
+                                        : v.operatorToken.error(
+                                            "unexpected " +
+                                              v.operatorToken.value
+                                          ),
+                                      v.variable)
+                                    : v),
                                 m instanceof Le &&
                                   m.hasProperties() &&
                                   (("object" === v.context || !m.this) &&
@@ -28945,8 +28941,8 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                                         ),
                                       (this.ctor = f))
                                     : f.isStatic && f.bound
-                                      ? (f.context = this.name)
-                                      : f.bound && this.boundMethods.push(f));
+                                    ? (f.context = this.name)
+                                    : f.bound && this.boundMethods.push(f));
                             if (i.length !== r.length)
                               return (
                                 (this.body.expressions = (function() {
@@ -28965,8 +28961,8 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                             return e.unwrapAll() instanceof ce
                               ? e
                               : this.validInitializerMethod(e)
-                                ? this.addInitializerMethod(e)
-                                : null;
+                              ? this.addInitializerMethod(e)
+                              : null;
                           }
                         },
                         {
@@ -29210,8 +29206,8 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                               return a instanceof Ie
                                 ? (a.value = e.name)
                                 : a instanceof h && a.bound && a.isStatic
-                                  ? (a.context = e.name)
-                                  : void 0;
+                                ? (a.context = e.name)
+                                : void 0;
                             });
                           }
                         },
@@ -29238,14 +29234,12 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                                           s
                                         )))
                                       : a.variable.this
-                                        ? a.value instanceof h &&
-                                          (a.value.isStatic = !0)
-                                        : ((o = new (t.shouldCache() ? V : r)(
-                                            t
-                                          )),
-                                          (n = new r(new pe("prototype"))),
-                                          (i = new Le(new Ie(), [n, o])),
-                                          (a.variable = i)),
+                                      ? a.value instanceof h &&
+                                        (a.value.isStatic = !0)
+                                      : ((o = new (t.shouldCache() ? V : r)(t)),
+                                        (n = new r(new pe("prototype"))),
+                                        (i = new Le(new Ie(), [n, o])),
+                                        (a.variable = i)),
                                     p.push(a);
                                 return p;
                               }.call(this)),
@@ -29900,25 +29894,25 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                                           a.moduleDeclaration
                                         )
                                       : a.param
-                                        ? e.scope.add(
-                                            t.value,
-                                            "alwaysDeclare" === a.param
-                                              ? "var"
-                                              : "param"
-                                          )
-                                        : (e.scope.find(t.value),
-                                          t.comments &&
-                                            !e.scope.comments[t.value] &&
-                                            !(a.value instanceof m) &&
-                                            t.comments.every(function(e) {
-                                              return e.here && !e.multiline;
-                                            }))
-                                          ? ((n = new R(t.value)),
-                                            (n.comments = t.comments),
-                                            (o = []),
-                                            a.compileCommentFragments(e, n, o),
-                                            (e.scope.comments[t.value] = o))
-                                          : void 0;
+                                      ? e.scope.add(
+                                          t.value,
+                                          "alwaysDeclare" === a.param
+                                            ? "var"
+                                            : "param"
+                                        )
+                                      : (e.scope.find(t.value),
+                                        t.comments &&
+                                          !e.scope.comments[t.value] &&
+                                          !(a.value instanceof m) &&
+                                          t.comments.every(function(e) {
+                                            return e.here && !e.multiline;
+                                          }))
+                                      ? ((n = new R(t.value)),
+                                        (n.comments = t.comments),
+                                        (o = []),
+                                        a.compileCommentFragments(e, n, o),
+                                        (e.scope.comments[t.value] = o))
+                                      : void 0;
                                 })),
                               this.value instanceof h)
                             )
@@ -30742,13 +30736,13 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                                       : ((w = I.shouldCache()
                                           ? I.asReference(e)
                                           : null == I.value || I.assignedInBody
-                                            ? I
-                                            : new d(
-                                                new Le(I.name),
-                                                I.value,
-                                                null,
-                                                { param: !0 }
-                                              )),
+                                          ? I
+                                          : new d(
+                                              new Le(I.name),
+                                              I.value,
+                                              null,
+                                              { param: !0 }
+                                            )),
                                         I.name instanceof s ||
                                         I.name instanceof le
                                           ? ((I.name.lhs = !0),
@@ -30969,8 +30963,8 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                               this.isMethod
                                 ? Ye(n, this)
                                 : this.front || e.level >= H
-                                  ? this.wrapInParentheses(n)
-                                  : n
+                                ? this.wrapInParentheses(n)
+                                : n
                             );
                           }
                         },
@@ -31228,20 +31222,17 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                                         : i.value),
                                     this.eachName(e, i.unwrap()))
                                   : i instanceof Te
-                                    ? ((s = i.name.unwrap()),
-                                      e(s.value, s, this))
-                                    : i instanceof Le
-                                      ? i.isArray() || i.isObject()
-                                        ? this.eachName(e, i.base)
-                                        : i.this
-                                          ? o(i, l)
-                                          : e(i.base.value, i.base, this)
-                                      : i instanceof y
-                                        ? i
-                                        : !(i instanceof N) &&
-                                          i.error(
-                                            "illegal parameter " + i.compile()
-                                          );
+                                  ? ((s = i.name.unwrap()), e(s.value, s, this))
+                                  : i instanceof Le
+                                  ? i.isArray() || i.isObject()
+                                    ? this.eachName(e, i.base)
+                                    : i.this
+                                    ? o(i, l)
+                                    : e(i.base.value, i.base, this)
+                                  : i instanceof y
+                                  ? i
+                                  : !(i instanceof N) &&
+                                    i.error("illegal parameter " + i.compile());
                           }
                         },
                         {
@@ -31652,14 +31643,14 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                                     this.first.invert(),
                                   this)
                                 : this.second
-                                  ? new de(this).invert()
-                                  : "!" === this.operator &&
-                                    (t = this.first.unwrap()) instanceof n &&
-                                    ("!" === (l = t.operator) ||
-                                      "in" === l ||
-                                      "instanceof" === l)
-                                    ? t
-                                    : new n("!", this);
+                                ? new de(this).invert()
+                                : "!" === this.operator &&
+                                  (t = this.first.unwrap()) instanceof n &&
+                                  ("!" === (l = t.operator) ||
+                                    "in" === l ||
+                                    "instanceof" === l)
+                                ? t
+                                : new n("!", this);
                             }
                           },
                           {
@@ -31796,22 +31787,22 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                                 ? ((this.first.negated = !this.first.negated),
                                   this.first.compileToFragments(e))
                                 : e.level >= H
-                                  ? new de(this).compileToFragments(e)
-                                  : ((o = "+" === a || "-" === a),
-                                    ("new" === a ||
-                                      "typeof" === a ||
-                                      "delete" === a ||
-                                      (o &&
-                                        this.first instanceof n &&
-                                        this.first.operator === a)) &&
-                                      t.push([this.makeCode(" ")]),
-                                    ((o && this.first instanceof n) ||
-                                      ("new" === a &&
-                                        this.first.isStatement(e))) &&
-                                      (this.first = new de(this.first)),
-                                    t.push(this.first.compileToFragments(e, Y)),
-                                    this.flip && t.reverse(),
-                                    this.joinFragmentArrays(t, ""));
+                                ? new de(this).compileToFragments(e)
+                                : ((o = "+" === a || "-" === a),
+                                  ("new" === a ||
+                                    "typeof" === a ||
+                                    "delete" === a ||
+                                    (o &&
+                                      this.first instanceof n &&
+                                      this.first.operator === a)) &&
+                                    t.push([this.makeCode(" ")]),
+                                  ((o && this.first instanceof n) ||
+                                    ("new" === a &&
+                                      this.first.isStatement(e))) &&
+                                    (this.first = new de(this.first)),
+                                  t.push(this.first.compileToFragments(e, Y)),
+                                  this.flip && t.reverse(),
+                                  this.joinFragmentArrays(t, ""));
                             }
                           },
                           {
@@ -32137,11 +32128,11 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                                     this.makeCode("\n" + this.tab + "}")
                                   ))
                                 : this.ensure || this.recovery
-                                  ? []
-                                  : ((o = e.scope.freeVariable("error", {
-                                      reserve: !1
-                                    })),
-                                    [this.makeCode(" catch (" + o + ") {}")])),
+                                ? []
+                                : ((o = e.scope.freeVariable("error", {
+                                    reserve: !1
+                                  })),
+                                  [this.makeCode(" catch (" + o + ") {}")])),
                               (t = this.ensure
                                 ? [].concat(
                                     this.makeCode(" finally {\n"),
@@ -32282,8 +32273,8 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                                     ? "=="
                                     : "!="
                                   : this.negated
-                                    ? "==="
-                                    : "!=="),
+                                  ? "==="
+                                  : "!=="),
                                 (o = o + " " + a + " " + this.comparisonTarget);
                             return [
                               this.makeCode(e.level <= W ? o : "(" + o + ")")
@@ -32353,8 +32344,8 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                                 this.csxAttribute
                                   ? this.wrapInBraces(o)
                                   : a
-                                    ? o
-                                    : this.wrapInParentheses(o));
+                                  ? o
+                                  : this.wrapInParentheses(o));
                           }
                         }
                       ]),
@@ -32555,13 +32546,13 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                         ((null == (s = o.index)
                           ? void 0
                           : "function" == typeof s.isArray
-                            ? s.isArray()
-                            : void 0) ||
+                          ? s.isArray()
+                          : void 0) ||
                           (null == (i = o.index)
                             ? void 0
                             : "function" == typeof i.isObject
-                              ? i.isObject()
-                              : void 0)) &&
+                            ? i.isObject()
+                            : void 0)) &&
                           o.index.error(
                             "index cannot be a pattern matching expression"
                           ),
@@ -33111,24 +33102,24 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                                 )),
                                 n || s.unshift(this.makeCode(this.tab)),
                                 !this.elseBody)
-                                ? s
-                                : ((t = s.concat(this.makeCode(" else "))),
-                                  this.isChain
-                                    ? ((e.chainChild = !0),
-                                      (t = t.concat(
-                                        this.elseBody
-                                          .unwrap()
-                                          .compileToFragments(e, z)
-                                      )))
-                                    : (t = t.concat(
-                                        this.makeCode("{\n"),
-                                        this.elseBody.compileToFragments(
-                                          Ze(e, { indent: i }),
-                                          z
-                                        ),
-                                        this.makeCode("\n" + this.tab + "}")
-                                      )),
-                                  t);
+                              ? s
+                              : ((t = s.concat(this.makeCode(" else "))),
+                                this.isChain
+                                  ? ((e.chainChild = !0),
+                                    (t = t.concat(
+                                      this.elseBody
+                                        .unwrap()
+                                        .compileToFragments(e, z)
+                                    )))
+                                  : (t = t.concat(
+                                      this.makeCode("{\n"),
+                                      this.elseBody.compileToFragments(
+                                        Ze(e, { indent: i }),
+                                        z
+                                      ),
+                                      this.makeCode("\n" + this.tab + "}")
+                                    )),
+                                t);
                           }
                         },
                         {
@@ -33433,8 +33424,8 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                                 (f = e.sourceFiles
                                   ? e.sourceFiles
                                   : e.filename
-                                    ? [e.filename]
-                                    : ["<anonymous>"]),
+                                  ? [e.filename]
+                                  : ["<anonymous>"]),
                                 (y = {
                                   version: 3,
                                   file: e.generatedFile || "",
@@ -33800,10 +33791,10 @@ define("ace/mode/coffee/coffee", [], function(require, exports, module) {
                             "" + u + l + t + " (" + n + ")")
                           : m + "." + (c || "<anonymous>") + " (" + n + ")")
                       : s
-                        ? "new " + (l || "<anonymous>") + " (" + n + ")"
-                        : l
-                          ? l + " (" + n + ")"
-                          : n
+                      ? "new " + (l || "<anonymous>") + " (" + n + ")"
+                      : l
+                      ? l + " (" + n + ")"
+                      : n
                   );
                 }),
                 (i = function(e, t, n) {

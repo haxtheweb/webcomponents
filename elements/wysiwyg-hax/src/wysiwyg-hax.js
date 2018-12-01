@@ -12,9 +12,22 @@ let WysiwygHax = Polymer({
         display: block;
       }
     </style>
-    <textarea id\$="[[fieldId]]" name="[[fieldName]]" hidden="">[[bodyValue]]</textarea>
-    <cms-hax open-default="[[openDefault]]" hide-message="" body-offset-left="[[bodyOffsetLeft]]" update-page-data="[[updatePageData]]" end-point="[[endPoint]]" app-store-connection="[[appStoreConnection]]" hide-export-button="[[hideExportButton]]" align="[[align]]"></cms-hax>
-`,
+    <textarea
+      id\$="[[fieldId]]"
+      name="[[fieldName]]"
+      hidden=""
+    >[[bodyValue]]</textarea>
+    <cms-hax
+      open-default="[[openDefault]]"
+      hide-message=""
+      body-offset-left="[[bodyOffsetLeft]]"
+      update-page-data="[[updatePageData]]"
+      end-point="[[endPoint]]"
+      app-store-connection="[[appStoreConnection]]"
+      hide-export-button="[[hideExportButton]]"
+      align="[[align]]"
+    ></cms-hax>
+  `,
 
   is: "wysiwyg-hax",
 
