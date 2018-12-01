@@ -128,11 +128,11 @@ class SimpleColors extends PolymerElement {
   /**
    * for a given simple-colors variable and WCAG 2.0AA-defined text size (large or small),
    * returns an array with variable names and and hex codes of WCAG 2.0AA-compliant contrasting colors, eg:
-   * [
+   * ```[
    *    { "color": "--simple-colors-light-theme-grey-2", "hex": "#eeeeee" },
    *    { "color": "--simple-colors-light-theme-red-2", "hex": "#ffaeae" },
    *    ...
-   * ]
+   * ]```
    *
    * @param {string} the css variable for which contrasting colors are needed, eg. "--simple-colors-light-theme-grey-12"
    * @param {boolean} contrast with WCAG 2.0AA-defined large text (bold >= 14pt or normal >= 18pt)
@@ -167,11 +167,11 @@ customElements.define(SimpleColors.is, SimpleColors);
 
 /**
  * a constant used by both the simple-colors element and the simple-colors shared styles, eg.:
- * {
+ * ```{
  *    "grey": [ "#ffffff", "#eeeeee", ... "#111111","#000000" ],
  *    "red": [ "#ffdddd", "#ffaeae", ... "#520000", "#3f0000" ],
  *    ...
- * }
+ * }```
  */
 const colors = {
   grey: [
