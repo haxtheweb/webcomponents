@@ -1,6 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/simple-search/simple-search.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./a11y-media-behaviors.js";
 import "./a11y-media-button.js";
 /**
@@ -26,7 +25,7 @@ A controls for the transcript element
 */
 Polymer({
   _template: html`
-    <style is="custom-style">
+    <style is="custom-style" include="simple-colors">
         :host { 
           background-color: var(--a11y-media-transcript-bg-color);
           color: var(--a11y-media-transcript-text-color);
@@ -43,9 +42,9 @@ Polymer({
           --simple-search-button-bg-color: var(--a11y-media-transcript-bg-color);
           --simple-search-button-border-color: var(--a11y-media-transcript-bg-color);
           --simple-search-button-hover-border-color: var(--a11y-media-transcript-bg-color);
-          --simple-search-button-disabled-color: var(--simple-colors-background5);
-          --simple-search-button-disabled-bg-color: var(--simple-colors-background2);
-          --simple-search-button-disabled-border-color: var(--simple-colors-background3);
+          --simple-search-button-disabled-color: var(--simple-colors-default-theme-grey-5);
+          --simple-search-button-disabled-bg-color: var(--simple-colors-default-theme-grey-2);
+          --simple-search-button-disabled-border-color: var(--simple-colors-default-theme-grey-3);
           --simple-search-container: {
             padding: 0 15px;
           };
@@ -92,7 +91,6 @@ Polymer({
   is: "a11y-media-transcript-controls",
 
   behaviors: [
-    simpleColorsBehaviors,
     a11yMediaBehaviors.GeneralFunctions,
     a11yMediaBehaviors.TranscriptBehaviors
   ],
@@ -120,7 +118,6 @@ Polymer({
    */
   attached: function() {
     let root = this;
-    window.SimpleColorsUtility.requestAvailability();
     root.search = root.$.search;
     root.fire("searchbar-added", root.$.search);
     root.$.scroll.addEventListener("button-clicked", function(e) {

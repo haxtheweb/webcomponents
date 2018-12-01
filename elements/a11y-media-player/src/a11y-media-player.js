@@ -1,142 +1,156 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/paper-slider/paper-slider.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./lib/screenfull-lib.js";
 import "./lib/a11y-media-behaviors.js";
-import "./lib/a11y-media-video-loader.js";
+import "./lib/a11y-media-loader.js";
 import "./lib/a11y-media-play-button.js";
 import "./lib/a11y-media-controls.js";
 import "./lib/a11y-media-transcript.js";
 import "./lib/a11y-media-transcript-controls.js";
 import "./lib/a11y-media-utility.js";
 import "./lib/a11y-media-youtube-utility.js";
+
+export { A11yMediaPlayer };
 /**
-`a11y-media-player`
-A LRN element
+ * `a11y-media-player`
+ * `An accessible video player`
+ *
+ * @microcopy - the mental model for this element
+ *
+ *   ```<a11y-media-player
+ *     accent-color$="[[accentColor]]"             // Optional accent color for controls,
+ *                                                 // using the following materialize colors:
+ *                                                 // red, pink, purple, deep-purple, indigo, blue,
+ *                                                 // light blue, cyan, teal, green, light green, lime,
+ *                                                 // yellow, amber, orange, deep-orange, and brown.
+ *                                                 // Default is null.
+ *     audio-only$="[[audioOnly]]"                 // Is media audio only?
+ *     autoplay$="[[autoplay]]"                    // Is player set to autoplay (not recommended for a11y)?
+ *     cc$="[[cc]]"                                // Are closed captions toggled?
+ *     custom-microcopy$="[[customMicrocopy]]"     // Optional customization or text and icons
+ *     dark$="[[dark]]"                            // Is the color scheme dark? Default is light.
+ *     dark-transcript$="[[darkTranscript]]"       // Use dark theme on transcript? Default is false, even when player is dark.
+ *     disable-fullscreen$="[[disableFullscreen]]" // Is full screen mode disabled?
+ *     disable-interactive$="[[disableInteractive]]" // Disable interactive cues?
+ *     fullscreen$="[[fullscreen]]"                // Is full screen mode toggled on?
+ *     height$="[[height]]"                        // The height of player
+ *     hide-elapsed-time$="[[hideElapsedTime]]"    // Is elapsed time hidden?
+ *     hide-timestamps$="[[hideTimestamps]]"       // Hide cue timestamps?
+ *     lang$="[[lang]]"                            // The language of the media
+ *     loop$="[[loop]]"                            // Is video on a loop?
+ *     muted$="[[muted]]"                          // Is video muted?
+ *     media-title$="[[mediaTitle]]"               // The title of the media
+ *     playback-rate$="[[playbackRate]]"           // The speed that video plays, default is 1 (for 100%)
+ *     sticky-corner$="[[stickyCorner]]"           // When user scrolls a playing video off-screen,
+ *                                                    which corner will it stick to? Values are:
+ *                                                    top-right (default), top-left, bottom-left, bottom-right,
+ *                                                    and none (to turn sticky off)
+ *     thumbnail-src$="[[thumbnailSrc]]"           // Optional thumbanil/cover image url
+ *     volume$="[[volume]]">                       // The initial volume of the video
+ *                                                 // video source and tracks
+ *     <source src="/path/to/video.mp4" type="video/mp4">
+ *     <source src="/path/to/video.webm" type="video/webm">
+ *     <track label="English" kind="subtitles" srclang="en" src="path/to/subtitles/en.vtt" default>
+ *     <track label="Deutsch" kind="subtitles" srclang="de" src="path/to/subtitles/de.vtt">
+ *     <track label="Español" kind="subtitles" srclang="es" src="path/to/subtitles/es.vtt">
+ *   </a11y-media-player>```
+ *
+ * Intermediate customization of player:
+ * ```--a11y-media-text-color: text color, default is --simple-colors-default-theme-grey-11
+ * --a11y-media-bg-color: background color, default is --simple-colors-default-theme-grey-2
+ * --a11y-media-hover-color: text color on hover, default is --simple-colors-default-theme-grey-12
+ * --a11y-media-hover-bg-color: background color, default is --simple-colors-default-theme-grey-2
+ * --a11y-media-accent-color: an accent color, default is --simple-colors-default-theme-accent-9
+ * --a11y-media-faded-accent-color: a subtler version of accent color, default is --simple-colors-default-theme-accent-8
+ * --a11y-media-outline-color: border-color of group, default is --a11y-media-bg-color```
+ *
+ * Intermediate customization of transcript:
+ * ```--a11y-media-transcript-color: transcript color, default is --simple-colors-default-theme-grey-12
+ * --a11y-media-transcript-bg-color: transcript background color, default is --simple-colors-default-theme-grey-1
+ * --a11y-media-transcript-active-cue-color: transcript active cue color, default is --simple-colors-default-theme-grey-12
+ * --a11y-media-transcript-active-cue-bg-color: transcript active cue background color, default is --simple-colors-default-theme-grey-1
+ * --a11y-media-transcript-focused-cue-color: transcript focused cue color, default is --simple-colors-default-theme-grey-12
+ * --a11y-media-transcript-focused-cue-br-color: transcript focused cue background color, default is --simple-colors-default-theme-accent-1
+ * --a11y-media-transcript-match-color: transcript match color, default is --simple-colors-default-theme-accent-1
+ * --a11y-media-transcript-match-bg-color: transcript match background color, default is --simple-colors-default-theme-grey-12```
+ *
+ * Advanced styles for settings menu:
+ * ```--a11y-media-settings-menu-color: settings menu text color, default is --a11y-media-text-color
+ * --a11y-media-settings-menu-bg-color: settings menu background color, default is --a11y-media-bg-color
+ * --a11y-media-settings-menu-hover-color: settings menu text color on hover, default is --a11y-media-hover-color
+ * --a11y-media-settings-menu-hover-bg-color: settings menu background color on hover, default is --a11y-media-hover-bg-color```
+ *
+ * Advanced styles for buttons:
+ * ```--a11y-media-button-color: button text color, default is --a11y-media-text-color
+ * --a11y-media-button-bg-color: button background color, default is --a11y-media-bg-color
+ * --a11y-media-button-hover-color: button text color when focused/hovered, default is --a11y-media-hover-color
+ * --a11y-media-button-hover-bg-color: button background color when focused/hovered, default is --a11y-media-bg-color
+ * --a11y-media-button-toggle-color: button text color when tggled on, default is --a11y-media-faded-accent-color```
+ *
+ * Advanced styles for toggles:
+ * ```--paper-toggle-button-unchecked-bar-color: color of toggle button when off, default is --a11y-media-color
+ * --paper-toggle-button-unchecked-button-color: color of toggle button when off, default is --a11y-media-color
+ * --paper-toggle-button-checked-bar-color: color of toggle button when on, default is --a11y-media-accent-color
+ * --paper-toggle-button-checked-button-color: color of toggle button when on, default is --a11y-media-accent-color```
+ *
+ * Advanced styles for sliders:
+ * ```--a11y-media-slider-primary-color: primary slider color, default is --a11y-media-accent-color
+ * --a11y-media-slider-secondary-color: slider buffer color, default is --a11y-media-faded-accent-color
+ * --a11y-media-slider-pin-color: color of the pin that shows slider value, default is --a11y-media-faded-bg-color
+ * --a11y-media-slider-pin-start-color: color of the pin at start default is --a11y-media-faded-bg-color
+ * --a11y-media-slider-pin-end-color: color of the pin at end, default is --a11y-media-faded-bg-color
+ * --a11y-media-slider-knob-color: slider knob color, default is --a11y-media-accent-color
+ * --a11y-media-slider-knob-start-color: slider knob color at start, default is --a11y-media-accent-color
+ * --a11y-media-slider-knob-end-color: slider knob color at end, default is --a11y-media-accent-color
+ * --a11y-media-slider-knob-border-color: slider knob bordercolor, default is --a11y-media-accent-color
+ * --a11y-media-slider-knob-start-border-color: slider knob border color at start, default is --a11y-media-accent-color
+ * --a11y-media-slider-knob-end-border-color: slider knob border color at end, default is --a11y-media-accent-color```
+ *
+ * @polmyer
+ * @customElement
+ * @extends SimpleColors
+ * @demo demo/index.html
+ */
 
-@demo demo/index.html
-
-@microcopy - the mental model for this element
-
-  <a11y-media-player 
-    accent-color$="[[accentColor]]"             // Optional accent color for controls, 
-                                                // using the following materialize colors: 
-                                                // red, pink, purple, deep-purple, indigo, blue, 
-                                                // light blue, cyan, teal, green, light green, lime, 
-                                                // yellow, amber, orange, deep-orange, and brown. 
-                                                // Default is null. 
-    audio-only$="[[audioOnly]]"                 // Is media audio only?
-    autoplay$="[[autoplay]]"                    // Is player set to autoplay (not recommended for a11y)?
-    cc$="[[cc]]"                                // Are closed captions toggled?
-    custom-microcopy$="[[customMicrocopy]]"     // Optional customization or text and icons
-    dark$="[[dark]]"                            // Is the color scheme dark? Default is light. 
-    dark-transcript$="[[darkTranscript]]"       // Use dark theme on transcript? Default is false, even when player is dark.   
-    disable-fullscreen$="[[disableFullscreen]]" // Is full screen mode disabled?
-    disable-interactive$="[[disableInteractive]]" // Disable interactive cues?
-    fullscreen$="[[fullscreen]]"                // Is full screen mode toggled on?
-    height$="[[height]]"                        // The height of player
-    hide-elapsed-time$="[[hideElapsedTime]]"    // Is elapsed time hidden?
-    hide-timestamps$="[[hideTimestamps]]"       // Hide cue timestamps?
-    lang$="[[lang]]"                            // The language of the media
-    loop$="[[loop]]"                            // Is video on a loop?
-    muted$="[[muted]]"                          // Is video muted?
-    media-title$="[[mediaTitle]]"               // The title of the media
-    playback-rate$="[[playbackRate]]"           // The speed that video plays, default is 1 (for 100%)
-    sticky-corner$="[[stickyCorner]]"           // When user scrolls a playing video off-screen, 
-                                                   which corner will it stick to? Values are: 
-                                                   top-right (default), top-left, bottom-left, bottom-right, 
-                                                   and none (to turn sticky off)
-    thumbnail-src$="[[thumbnailSrc]]"           // Optional thumbanil/cover image url
-    volume$="[[volume]]">                       // The initial volume of the video
-                                                // video source and tracks 
-    <source src="/path/to/video.mp4" type="video/mp4">
-    <source src="/path/to/video.webm" type="video/webm">
-    <track label="English" kind="subtitles" srclang="en" src="path/to/subtitles/en.vtt" default>
-    <track label="Deutsch" kind="subtitles" srclang="de" src="path/to/subtitles/de.vtt">
-    <track label="Español" kind="subtitles" srclang="es" src="path/to/subtitles/es.vtt">
-  </a11y-media-player>
-
-Intermediate customization of player:
---a11y-media-text-color: text color, default is --simple-colors-foreground2
---a11y-media-bg-color: background color, default is --simple-colors-background2
---a11y-media-hover-color: text color on hover, default is --simple-colors-foreground1
---a11y-media-hover-bg-color: background color, default is --simple-colors-background2
---a11y-media-accent-color: an accent color, default is --simple-colors-accent-foreground4
---a11y-media-faded-accent-color: a subtler version of accent color, default is --simple-colors-accent-foreground5
---a11y-media-outline-color: border-color of group, default is --a11y-media-bg-color 
-
-Intermediate customization of transcript:
---a11y-media-transcript-color: transcript color, default is --simple-colors-foreground1
---a11y-media-transcript-bg-color: transcript background color, default is --simple-colors-background1
---a11y-media-transcript-active-cue-color: transcript active cue color, default is --simple-colors-foreground1
---a11y-media-transcript-active-cue-bg-color: transcript active cue background color, default is --simple-colors-background1
---a11y-media-transcript-focused-cue-color: transcript focused cue color, default is --simple-colors-foreground1
---a11y-media-transcript-focused-cue-br-color: transcript focused cue background color, default is --simple-colors-accent-background1
---a11y-media-transcript-match-color: transcript match color, default is --simple-colors-accent-background1
---a11y-media-transcript-match-bg-color: transcript match background color, default is --simple-colors-foreground1
- 
-Advanced styles for settings menu:
---a11y-media-settings-menu-color: settings menu text color, default is --a11y-media-text-color
---a11y-media-settings-menu-bg-color: settings menu background color, default is --a11y-media-bg-color
---a11y-media-settings-menu-hover-color: settings menu text color on hover, default is --a11y-media-hover-color
---a11y-media-settings-menu-hover-bg-color: settings menu background color on hover, default is --a11y-media-hover-bg-color
- 
-Advanced styles for buttons:
---a11y-media-button-color: button text color, default is --a11y-media-text-color
---a11y-media-button-bg-color: button background color, default is --a11y-media-bg-color
---a11y-media-button-hover-color: button text color when focused/hovered, default is --a11y-media-hover-color
---a11y-media-button-hover-bg-color: button background color when focused/hovered, default is --a11y-media-bg-color
---a11y-media-button-toggle-color: button text color when tggled on, default is --a11y-media-faded-accent-color
- 
-Advanced styles for toggles:
---paper-toggle-button-unchecked-bar-color: color of toggle button when off, default is --a11y-media-color
---paper-toggle-button-unchecked-button-color: color of toggle button when off, default is --a11y-media-color
---paper-toggle-button-checked-bar-color: color of toggle button when on, default is --a11y-media-accent-color
---paper-toggle-button-checked-button-color: color of toggle button when on, default is --a11y-media-accent-color
- 
-Advanced styles for sliders:
---a11y-media-slider-primary-color: primary slider color, default is --a11y-media-accent-color
---a11y-media-slider-secondary-color: slider buffer color, default is --a11y-media-faded-accent-color
---a11y-media-slider-pin-color: color of the pin that shows slider value, default is --a11y-media-faded-bg-color
---a11y-media-slider-pin-start-color: color of the pin at start default is --a11y-media-faded-bg-color
---a11y-media-slider-pin-end-color: color of the pin at end, default is --a11y-media-faded-bg-color
---a11y-media-slider-knob-color: slider knob color, default is --a11y-media-accent-color
---a11y-media-slider-knob-start-color: slider knob color at start, default is --a11y-media-accent-color
---a11y-media-slider-knob-end-color: slider knob color at end, default is --a11y-media-accent-color
---a11y-media-slider-knob-border-color: slider knob bordercolor, default is --a11y-media-accent-color
---a11y-media-slider-knob-start-border-color: slider knob border color at start, default is --a11y-media-accent-color
---a11y-media-slider-knob-end-border-color: slider knob border color at end, default is --a11y-media-accent-color
-*/
 let A11yMediaPlayer = Polymer({
   _template: html`
-  <custom-style>
-    <style is="custom-style">
-      :host {  
+    <style is="custom-style" include="simple-colors">
+      :host {
         width: 100%;
         display: block;
-        color: var(--simple-colors-foreground1);
-        background-color: var(--simple-colors-background2);
-        outline: 1px solid var(--simple-colors-background3);
+        color: var(--simple-colors-default-theme-grey-12);
+        background-color: var(--simple-colors-default-theme-grey-2);
+        outline: 1px solid var(--simple-colors-default-theme-grey-3);
       }
-      :host([dark]) {  
-        outline: 1px solid var(--simple-colors-background1);
+      :host([dark]) {
+        outline: 1px solid var(--simple-colors-default-theme-grey-1);
       }
-      :host #outerplayer, :host #outerplayer * {
-        --a11y-media-color: var(--simple-colors-foreground2);
-        --a11y-media-bg-color: var(--simple-colors-background2);
-        --a11y-media-hover-color: var(--simple-colors-foreground1);
-        --a11y-media-hover-bg-color: var(--simple-colors-background2);
-        --a11y-media-accent-color: var(--simple-colors-accent-foreground4);
-        --a11y-media-faded-accent-color: var(--simple-colors-accent-foreground5);
+      :host #outerplayer,
+      :host #outerplayer * {
+        --a11y-media-color: var(--simple-colors-default-theme-grey-11);
+        --a11y-media-bg-color: var(--simple-colors-default-theme-grey-2);
+        --a11y-media-hover-color: var(--simple-colors-default-theme-grey-12);
+        --a11y-media-hover-bg-color: var(--simple-colors-default-theme-grey-2);
+        --a11y-media-accent-color: var(--simple-colors-default-theme-accent-9);
+        --a11y-media-faded-accent-color: var(
+          --simple-colors-default-theme-accent-8
+        );
 
         /* settings */
         --a11y-media-settings-menu-color: var(--a11y-media-color);
         --a11y-media-settings-menu-bg-color: var(--a11y-media-bg-color);
         --a11y-media-settings-menu-hover-color: var(--a11y-media-hover-color);
-        --a11y-media-settings-menu-hover-bg-color: var(--a11y-media-hover-bg-color);
-        
+        --a11y-media-settings-menu-hover-bg-color: var(
+          --a11y-media-hover-bg-color
+        );
+
         /* buttons */
         --a11y-media-button-color: var(--a11y-media-color);
         --a11y-media-button-bg-color: var(--a11y-media-bg-color);
@@ -148,11 +162,13 @@ let A11yMediaPlayer = Polymer({
         --paper-toggle-button-unchecked-bar-color: var(--a11y-media-color);
         --paper-toggle-button-unchecked-button-color: var(--a11y-media-color);
         --paper-toggle-button-checked-bar-color: var(--a11y-media-accent-color);
-        --paper-toggle-button-checked-button-color: var(--a11y-media-accent-color);
-        
+        --paper-toggle-button-checked-button-color: var(
+          --a11y-media-accent-color
+        );
+
         /* slider */
         --paper-slider-active-color: var(--a11y-media-accent-color);
-        --paper-slider-secondary-color:  var(--a11y-media-faded-accent-color);
+        --paper-slider-secondary-color: var(--a11y-media-faded-accent-color);
         --paper-slider-pin-color: var(--a11y-media-faded-bg-color);
         --paper-slider-pin-start-color: var(--a11y-media-faded-bg-color);
         --paper-slider-pin-end-color: var(--a11y-media-faded-bg-color);
@@ -163,26 +179,50 @@ let A11yMediaPlayer = Polymer({
         --paper-slider-knob-start-border-color: var(--a11y-media-bg-color);
         --paper-slider-knob-end-border-color: var(--a11y-media-bg-color);
       }
-      :host #outertranscript, :host #outertranscript *, :host #transcript {
-        --a11y-media-transcript-color: var(--simple-colors-foreground1);
-        --a11y-media-transcript-bg-color: var(--simple-colors-background1);
-        --a11y-media-transcript-accent-color: var(--simple-colors-accent-foreground5);
-        --a11y-media-transcript-faded-accent-color: var(--simple-colors-accent-foreground3);
-        --a11y-media-transcript-active-cue-color: var(--simple-colors-foreground1);
-        --a11y-media-transcript-active-cue-bg-color: var(--simple-colors-accent-background1);
-        --a11y-media-transcript-focused-cue-color: var(--simple-colors-foreground1);
-        --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-background2);
-        --a11y-media-transcript-match-color: var(--simple-colors-background1);
-        --a11y-media-transcript-match-bg-color: var(--simple-colors-accent-foreground3);
-        --a11y-media-transcript-match-border-color: var(--simple-colors-accent-foreground1);
-        --a11y-media-hover-color: var(--simple-colors-foreground1);
-        --a11y-media-hover-bg-color: var(--simple-colors-background2);
+      :host #outertranscript,
+      :host #outertranscript *,
+      :host #transcript {
+        --a11y-media-transcript-color: var(
+          --simple-colors-default-theme-grey-12
+        );
+        --a11y-media-transcript-bg-color: var(
+          --simple-colors-default-theme-grey-1
+        );
+        --a11y-media-transcript-accent-color: var(
+          --simple-colors-default-theme-accent-8
+        );
+        --a11y-media-transcript-faded-accent-color: var(
+          --simple-colors-default-theme-accent-10
+        );
+        --a11y-media-transcript-active-cue-color: var(
+          --simple-colors-default-theme-grey-12
+        );
+        --a11y-media-transcript-active-cue-bg-color: var(
+          --simple-colors-default-theme-accent-1
+        );
+        --a11y-media-transcript-focused-cue-color: var(
+          --simple-colors-default-theme-grey-12
+        );
+        --a11y-media-transcript-focused-cue-bg-color: var(
+          --simple-colors-default-theme-grey-2
+        );
+        --a11y-media-transcript-match-color: var(
+          --simple-colors-default-theme-grey-1
+        );
+        --a11y-media-transcript-match-bg-color: var(
+          --simple-colors-default-theme-accent-10
+        );
+        --a11y-media-transcript-match-border-color: var(
+          --simple-colors-default-theme-accent-12
+        );
+        --a11y-media-hover-color: var(--simple-colors-default-theme-grey-12);
+        --a11y-media-hover-bg-color: var(--simple-colors-default-theme-grey-2);
       }
       :host #player {
         display: block;
         max-width: 100%;
         transition: position 0.5s ease, max-width 1s ease;
-        background-color: var(--simple-colors-background2);
+        background-color: var(--simple-colors-default-theme-grey-2);
       }
       :host #innerplayer {
         z-index: 1;
@@ -196,12 +236,12 @@ let A11yMediaPlayer = Polymer({
         display: none;
       }
       :host #controls,
-      :host #slider, 
+      :host #slider,
       :host #sources,
       :host #sources > * {
         width: 100%;
       }
-      :host #loader, 
+      :host #loader,
       :host #youtube,
       :host #customcc,
       :host #customcctxt {
@@ -267,7 +307,7 @@ let A11yMediaPlayer = Polymer({
         width: 100%;
         margin: 0;
         display: block;
-        border-top: 1px solid #aaaaaa; 
+        border-top: 1px solid #aaaaaa;
       }
       :host .sr-only {
         position: absolute;
@@ -285,13 +325,13 @@ let A11yMediaPlayer = Polymer({
           display: inline-flex;
           align-items: stretch;
           outline: 1px solid;
-          color: var(--simple-colors-foreground1);
-          background-color: var(--simple-colors-background2);
-          outline-color: var(--simple-colors-background3);
+          color: var(--simple-colors-default-theme-grey-12);
+          background-color: var(--simple-colors-default-theme-grey-2);
+          outline-color: var(--simple-colors-default-theme-grey-3);
           padding: 0;
         }
         :host([dark][flex-layout]:not([responsive-size*="s"])) {
-          outline-color: var(--simple-colors-background1);
+          outline-color: var(--simple-colors-default-theme-grey-1);
         }
         :host > div {
           transition: all 0.5s;
@@ -304,8 +344,8 @@ let A11yMediaPlayer = Polymer({
           max-width: 200px;
           z-index: 999999;
           border: 1px solid;
-          box-shadow: 1px 1px 20px 1px rgba(125,125,125);
-          border-radius: 3.2px; 
+          box-shadow: 1px 1px 20px 1px rgba(125, 125, 125);
+          border-radius: 3.2px;
           border-color: var(--a11y-media-bg-color);
         }
         :host([dark][sticky]:not([sticky-corner="none"])) #player {
@@ -334,17 +374,19 @@ let A11yMediaPlayer = Polymer({
         :host #transcript {
           padding-top: 48px;
         }
-        :host(:not([no-height]):not([stacked-layout]):not([responsive-size*="s"])) #transcript {
+        :host(:not([no-height]):not([stacked-layout]):not([responsive-size*="s"]))
+          #transcript {
           position: absolute;
-          top: 0; 
+          top: 0;
           left: 0;
-          right: 0; 
+          right: 0;
           bottom: 0;
           overflow-y: scroll;
         }
-        :host(:not([no-height]):not([stacked-layout]):not([responsive-size*="s"])) #player.totop {
+        :host(:not([no-height]):not([stacked-layout]):not([responsive-size*="s"]))
+          #player.totop {
           position: absolute;
-          top:0;
+          top: 0;
           left: 0;
           width: 200px !important;
           z-index: 9999;
@@ -366,34 +408,36 @@ let A11yMediaPlayer = Polymer({
           top: unset;
           bottom: 5px;
         }
-        :host([sticky]:not([sticky-corner="none"]):not([no-height]):not([stacked-layout]):not([responsive-size*="s"])) #controls {
+        :host([sticky]:not([sticky-corner="none"]):not([no-height]):not([stacked-layout]):not([responsive-size*="s"]))
+          #controls {
           display: none;
         }
         :host .print-only {
           display: none;
         }
         :host .media-caption:not(:empty) {
-          color: var(--simple-colors-background1);
-          background-color: var(--simple-colors-accent-foreground1);
+          color: var(--simple-colors-default-theme-grey-1);
+          background-color: var(--simple-colors-default-theme-accent-12);
         }
       }
 
       @media print {
-        :host, :host([dark]) {
-          outline: 1px solid #aaaaaa; 
+        :host,
+        :host([dark]) {
+          outline: 1px solid #aaaaaa;
           background-color: #ffffff;
         }
         :host([sticky]:not([sticky-corner="none"])) #outerplayer {
           height: unset !important;
         }
         :host .screen-only,
-        :host #player, 
+        :host #player,
         :host #printthumb:not([src]) {
           display: none;
         }
-        :host(:not([thumbnail-src])) #sources, 
-        :host #slider, 
-        :host #loader, 
+        :host(:not([thumbnail-src])) #sources,
+        :host #slider,
+        :host #loader,
         :host #youtube,
         :host #controls {
           display: none;
@@ -412,39 +456,146 @@ let A11yMediaPlayer = Polymer({
         }
       }
     </style>
-  </custom-style>
     <div class="sr-only">[[mediaCaption]]</div>
     <div id="outerplayer" lang\$="[[uiLanguage]]">
       <div id="player">
         <div id="innerplayer">
           <div id="sources" hidden\$="[[noHeight]]">
-            <a11y-media-play-button id="playbutton" audio-only\$="[[audioOnly]]" disabled="true" hidden\$="[[noPlayButton]]" disabled\$="[[noPlayButton]]" pause-label\$="[[pauseLabel]]" playing\$="[[__playing]]" play-label\$="[[playLabel]]">
+            <a11y-media-play-button
+              id="playbutton"
+              audio-only\$="[[audioOnly]]"
+              disabled="true"
+              hidden\$="[[noPlayButton]]"
+              disabled\$="[[noPlayButton]]"
+              pause-label\$="[[pauseLabel]]"
+              playing\$="[[__playing]]"
+              play-label\$="[[playLabel]]"
+            >
             </a11y-media-play-button>
-            <a11y-media-video-loader id="loader" autoplay\$="[[autoplay]]" cc\$="[[cc]]" crossorigin\$="[[crossorigin]]" hidden\$="[[isYoutube]]" lang\$="[[lang]]" loop\$="[[loop]]" muted\$="[[muted]]" manifest\$="[[manifest]]" playback-rate\$="[[playbackRate]]" style\$="[[_getThumbnailCSS(thumbnailSrc)]]" preload\$="[[preload]]" volume\$="[[volume]]">
+            <a11y-media-loader
+              id="loader"
+              autoplay\$="[[autoplay]]"
+              cc\$="[[cc]]"
+              crossorigin\$="[[crossorigin]]"
+              hidden\$="[[isYoutube]]"
+              lang\$="[[lang]]"
+              loop\$="[[loop]]"
+              muted\$="[[muted]]"
+              manifest\$="[[manifest]]"
+              playback-rate\$="[[playbackRate]]"
+              style\$="[[_getThumbnailCSS(thumbnailSrc)]]"
+              preload\$="[[preload]]"
+              volume\$="[[volume]]"
+            >
               <slot></slot>
-            </a11y-media-video-loader>
-            <div id="youtube" hidden\$="[[!isYoutube]]" video-id\$="[[videoId]]"></div>
-            <div id="customcc" hidden\$="[[!showCustomCaptions]]"><span id="customcctxt"></span></div>
+            </a11y-media-loader>
+            <div
+              id="youtube"
+              hidden\$="[[!isYoutube]]"
+              video-id\$="[[videoId]]"
+            ></div>
+            <div id="customcc" hidden\$="[[!showCustomCaptions]]">
+              <span id="customcctxt"></span>
+            </div>
           </div>
         </div>
-        <paper-slider id="slider" max\$="[[__duration]]" pin="" secondary-progress\$="[[__buffered]]" value\$="[[__elapsed]]">
+        <paper-slider
+          id="slider"
+          max\$="[[__duration]]"
+          pin=""
+          secondary-progress\$="[[__buffered]]"
+          value\$="[[__elapsed]]"
+        >
         </paper-slider>
       </div>
-      <a11y-media-controls id="controls" audio-only\$="[[audioOnly]]" audio-label\$="[[audioLabel]]" captions-icon\$="[[captionsIcon]]" captions-label\$="[[captionsLabel]]" captions-menu-label\$="[[captionsMenuLabel]]" captions-menu-off\$="[[captionsMenuOff]]" cc\$="[[cc]]" forward-icon\$="[[forwardIcon]]" forward-label\$="[[forwardLabel]]" fullscreen-icon\$="[[fullscreenIcon]]" fullscreen-label\$="[[fullscreenLabel]]" has-captions\$="[[hasCaptions]]" has-transcript\$="[[hasTranscript]]" lang\$="[[uiLanguage]]" loop-icon\$="[[loopIcon]]" loop-label\$="[[loopLabel]]" mute-icon\$="[[muteIcon]]" mute-label\$="[[muteLabel]]" muted\$="[[muted]]" pause-icon\$="[[pauseIcon]]" pause-label\$="[[pauseLabel]]" play-icon\$="[[playIcon]]" play-label\$="[[playLabel]]" playing\$="[[__playing]]" restart-icon\$="[[restartIcon]]" restart-label\$="[[restartLabel]]" rewind-icon\$="[[rewindIcon]]" rewind-label\$="[[rewindLabel]]" search-transcript\$="[[searchTranscript]]" settings-icon\$="[[settingsIcon]]" settings-label\$="[[settingsLabel]]" speed-label\$="[[speedLabel]]" stand-alone\$="[[standAlone]]" transcript-icon\$="[[transcriptIcon]]" transcript-label\$="[[transcriptLabel]]" transcript-menu-label\$="[[transcriptMenuLabel]]" unmute-icon\$="[[unmuteIcon]]" unmute-label\$="[[unmuteLabel]]" video-label\$="[[videoLabel]]" volume="[[__volume]]" volume-icon\$="[[volumeIcon]]" volume-label\$="[[volumeLabel]]">
+      <a11y-media-controls
+        id="controls"
+        audio-only\$="[[audioOnly]]"
+        audio-label\$="[[audioLabel]]"
+        captions-icon\$="[[captionsIcon]]"
+        captions-label\$="[[captionsLabel]]"
+        captions-menu-label\$="[[captionsMenuLabel]]"
+        captions-menu-off\$="[[captionsMenuOff]]"
+        cc\$="[[cc]]"
+        forward-icon\$="[[forwardIcon]]"
+        forward-label\$="[[forwardLabel]]"
+        fullscreen-icon\$="[[fullscreenIcon]]"
+        fullscreen-label\$="[[fullscreenLabel]]"
+        has-captions\$="[[hasCaptions]]"
+        has-transcript\$="[[hasTranscript]]"
+        lang\$="[[uiLanguage]]"
+        loop-icon\$="[[loopIcon]]"
+        loop-label\$="[[loopLabel]]"
+        mute-icon\$="[[muteIcon]]"
+        mute-label\$="[[muteLabel]]"
+        muted\$="[[muted]]"
+        pause-icon\$="[[pauseIcon]]"
+        pause-label\$="[[pauseLabel]]"
+        play-icon\$="[[playIcon]]"
+        play-label\$="[[playLabel]]"
+        playing\$="[[__playing]]"
+        restart-icon\$="[[restartIcon]]"
+        restart-label\$="[[restartLabel]]"
+        rewind-icon\$="[[rewindIcon]]"
+        rewind-label\$="[[rewindLabel]]"
+        search-transcript\$="[[searchTranscript]]"
+        settings-icon\$="[[settingsIcon]]"
+        settings-label\$="[[settingsLabel]]"
+        speed-label\$="[[speedLabel]]"
+        stand-alone\$="[[standAlone]]"
+        transcript-icon\$="[[transcriptIcon]]"
+        transcript-label\$="[[transcriptLabel]]"
+        transcript-menu-label\$="[[transcriptMenuLabel]]"
+        unmute-icon\$="[[unmuteIcon]]"
+        unmute-label\$="[[unmuteLabel]]"
+        video-label\$="[[videoLabel]]"
+        volume="[[__volume]]"
+        volume-icon\$="[[volumeIcon]]"
+        volume-label\$="[[volumeLabel]]"
+      >
       </a11y-media-controls>
-      <div class="screen-only media-caption" aria-hidden="true">[[mediaCaption]]</div>
+      <div class="screen-only media-caption" aria-hidden="true">
+        [[mediaCaption]]
+      </div>
       <div class="print-only media-caption">[[printCaption]]</div>
     </div>
-    <img id="printthumb" aria-hidden="true" src\$="[[thumbnailSrc]]">
+    <img id="printthumb" aria-hidden="true" src\$="[[thumbnailSrc]]" />
     <div id="outertranscript" hidden\$="[[standAlone]]" lang\$="[[uiLanguage]]">
       <div id="innertranscript">
-        <a11y-media-transcript-controls id="tcontrols" accent-color\$="[[accentColor]]" auto-scroll-icon\$="[[autoScrollIcon]]" auto-scroll-label\$="[[autoScrollLabel]]" dark\$="[[darkTranscript]]" disable-print-button\$="[[disablePrintButton]]" disable-scroll\$="[[disableScroll]]" disable-search\$="[[disableSearch]]" lang\$="[[uiLanguage]]" print-icon\$="[[printIcon]]" print-label\$="[[printLabel]]" search-label\$="[[searchLabel]]" search-prev-label\$="[[searchPrevLabel]]" search-prev-icon\$="[[searchPrevIcon]]" search-next-label\$="[[searchNextLabel]]" search-next-icon\$="[[searchNextIcon]]" skip-transcript-link\$="[[skipTranscriptLink]]">
+        <a11y-media-transcript-controls
+          id="tcontrols"
+          accent-color\$="[[accentColor]]"
+          auto-scroll-icon\$="[[autoScrollIcon]]"
+          auto-scroll-label\$="[[autoScrollLabel]]"
+          dark\$="[[darkTranscript]]"
+          disable-print-button\$="[[disablePrintButton]]"
+          disable-scroll\$="[[disableScroll]]"
+          disable-search\$="[[disableSearch]]"
+          lang\$="[[uiLanguage]]"
+          print-icon\$="[[printIcon]]"
+          print-label\$="[[printLabel]]"
+          search-label\$="[[searchLabel]]"
+          search-prev-label\$="[[searchPrevLabel]]"
+          search-prev-icon\$="[[searchPrevIcon]]"
+          search-next-label\$="[[searchNextLabel]]"
+          search-next-icon\$="[[searchNextIcon]]"
+          skip-transcript-link\$="[[skipTranscriptLink]]"
+        >
         </a11y-media-transcript-controls>
-        <a11y-media-transcript id="transcript" accent-color\$="[[accentColor]]" dark\$="[[darkTranscript]]" disable-scroll\$="[[disableScroll]]" disable-search\$="[[disableSearch]]" disable-interactive\$="[[disableInteractive]]" hide-timestamps\$="[[hideTimestamps]]" search="[[search]]">
+        <a11y-media-transcript
+          id="transcript"
+          accent-color\$="[[accentColor]]"
+          dark\$="[[darkTranscript]]"
+          disable-scroll\$="[[disableScroll]]"
+          disable-search\$="[[disableSearch]]"
+          disable-interactive\$="[[disableInteractive]]"
+          hide-timestamps\$="[[hideTimestamps]]"
+          search="[[search]]"
+        >
         </a11y-media-transcript>
       </div>
     </div>
-`,
+  `,
 
   is: "a11y-media-player",
 
@@ -465,7 +616,7 @@ let A11yMediaPlayer = Polymer({
   },
 
   behaviors: [
-    simpleColorsBehaviors,
+    SimpleColors,
     a11yMediaBehaviors.MediaProps,
     a11yMediaBehaviors.GeneralFunctions,
     a11yMediaBehaviors.PlayerBehaviors,
@@ -477,7 +628,6 @@ let A11yMediaPlayer = Polymer({
    */
   attached: function() {
     this.__playerAttached = true;
-    window.SimpleColorsUtility.requestAvailability();
     window.A11yMediaUtility.requestAvailability();
     this._addResponsiveUtility();
     this.fire("a11y-player", this);
@@ -512,6 +662,18 @@ let A11yMediaPlayer = Polymer({
       root.disableInteractive = true;
       this._youTubeRequest();
     } else {
+      root
+        .$$("slot")
+        .assignedNodes()
+        .forEach(function(node) {
+          if (node.nodeName === "TRACK" || node.nodeName === "SOURCE") {
+            if (root.audioOnly) {
+              root.$.loader.$.audio.appendChild(node);
+            } else {
+              root.$.loader.$.video.appendChild(node);
+            }
+          }
+        });
       root.__media = root.$.loader;
       // handles loaded metadata
       root.__media.addEventListener("media-loaded", function() {
@@ -912,8 +1074,8 @@ let A11yMediaPlayer = Polymer({
             label !== undefined
               ? label
               : lang !== undefined
-                ? lang
-                : "Track " + i,
+              ? lang
+              : "Track " + i,
           cues,
           loadCueData = setInterval(() => {
             track.mode = "showing";
@@ -1038,4 +1200,3 @@ let A11yMediaPlayer = Polymer({
     }
   }
 });
-export { A11yMediaPlayer };
