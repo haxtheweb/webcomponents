@@ -16,7 +16,7 @@
       "hax": "src/progress-donut-hax.json"
     }
   },
-  "version": "0.0.35",
+  "version": "0.0.36",
   "description": "Start of progress-donut",
   "repository": {
     "type": "git",
@@ -40,16 +40,16 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/chartist-render": "^0.0.35",
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.35",
-    "@lrnwebcomponents/materializecss-styles": "^0.0.35",
-    "@lrnwebcomponents/schema-behaviors": "^0.0.35",
-    "@lrnwebcomponents/simple-colors": "^0.0.35",
+    "@lrnwebcomponents/chartist-render": "^0.0.36",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.36",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.36",
+    "@lrnwebcomponents/schema-behaviors": "^0.0.36",
+    "@lrnwebcomponents/simple-colors": "^0.0.36",
     "@polymer/polymer": "^3.0.5",
     "chartist": "^0.11.0"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.0.35",
+    "@lrnwebcomponents/deduping-fix": "^0.0.36",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.1.3",

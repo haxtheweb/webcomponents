@@ -16,7 +16,7 @@
       "hax": "src/license-element-hax.json"
     }
   },
-  "version": "0.0.35",
+  "version": "0.0.36",
   "description": "Automated conversion of license-element/",
   "repository": {
     "type": "git",
@@ -40,12 +40,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.35",
-    "@lrnwebcomponents/schema-behaviors": "^0.0.35",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.36",
+    "@lrnwebcomponents/schema-behaviors": "^0.0.36",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.0.35",
+    "@lrnwebcomponents/deduping-fix": "^0.0.36",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.1.3",
