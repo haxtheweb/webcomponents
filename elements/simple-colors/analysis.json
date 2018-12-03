@@ -611,11 +611,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 32,
+              "line": 30,
               "column": 6
             },
             "end": {
-              "line": 38,
+              "line": 36,
               "column": 7
             }
           },
@@ -633,11 +633,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 42,
+              "line": 40,
               "column": 6
             },
             "end": {
-              "line": 48,
+              "line": 46,
               "column": 7
             }
           },
@@ -655,11 +655,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 57,
+              "line": 55,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 61,
               "column": 7
             }
           },
@@ -677,11 +677,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 96,
+              "line": 94,
               "column": 6
             },
             "end": {
-              "line": 102,
+              "line": 100,
               "column": 7
             }
           },
@@ -2781,11 +2781,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 116,
+              "line": 114,
               "column": 2
             },
             "end": {
-              "line": 125,
+              "line": 123,
               "column": 3
             }
           },
@@ -2914,11 +2914,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 140,
+              "line": 138,
               "column": 2
             },
             "end": {
-              "line": 163,
+              "line": 161,
               "column": 3
             }
           },
@@ -3896,11 +3896,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 22,
+          "line": 20,
           "column": 0
         },
         "end": {
-          "line": 164,
+          "line": 162,
           "column": 1
         }
       },
@@ -3913,11 +3913,11 @@
           "description": "a selected accent-color: grey, red, pink, purple, etc.",
           "sourceRange": {
             "start": {
-              "line": 32,
+              "line": 30,
               "column": 6
             },
             "end": {
-              "line": 38,
+              "line": 36,
               "column": 7
             }
           },
@@ -3928,11 +3928,11 @@
           "description": "make the default theme dark?",
           "sourceRange": {
             "start": {
-              "line": 42,
+              "line": 40,
               "column": 6
             },
             "end": {
-              "line": 48,
+              "line": 46,
               "column": 7
             }
           },
@@ -3943,11 +3943,11 @@
           "description": "the colors object, eg.:\n{\n   \"grey\": [ \"#ffffff\", \"#eeeeee\", ... \"#111111\",\"#000000\" ],\n   \"red\": [ \"#ffdddd\", \"#ffaeae\", ... \"#520000\", \"#3f0000\" ],\n   ...\n}",
           "sourceRange": {
             "start": {
-              "line": 57,
+              "line": 55,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 61,
               "column": 7
             }
           },
@@ -4573,11 +4573,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 32,
+              "line": 30,
               "column": 6
             },
             "end": {
-              "line": 38,
+              "line": 36,
               "column": 7
             }
           },
@@ -4597,11 +4597,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 42,
+              "line": 40,
               "column": 6
             },
             "end": {
-              "line": 48,
+              "line": 46,
               "column": 7
             }
           },
@@ -4621,11 +4621,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 57,
+              "line": 55,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 61,
               "column": 7
             }
           },
@@ -4645,11 +4645,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 96,
+              "line": 94,
               "column": 6
             },
             "end": {
-              "line": 102,
+              "line": 100,
               "column": 7
             }
           },
@@ -4668,11 +4668,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 51,
+              "line": 57,
               "column": 6
             },
             "end": {
-              "line": 57,
+              "line": 63,
               "column": 7
             }
           },
@@ -4690,11 +4690,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 62,
+              "line": 68,
               "column": 6
             },
             "end": {
-              "line": 68,
+              "line": 74,
               "column": 7
             }
           },
@@ -4712,11 +4712,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 73,
+              "line": 79,
               "column": 6
             },
             "end": {
-              "line": 79,
+              "line": 85,
               "column": 7
             }
           },
@@ -4734,11 +4734,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 84,
+              "line": 90,
               "column": 6
             },
             "end": {
-              "line": 90,
+              "line": 96,
               "column": 7
             }
           },
@@ -5000,11 +5000,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 177,
+              "line": 183,
               "column": 2
             },
             "end": {
-              "line": 179,
+              "line": 185,
               "column": 3
             }
           },
@@ -6836,11 +6836,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 184,
+              "line": 190,
               "column": 2
             },
             "end": {
-              "line": 186,
+              "line": 192,
               "column": 3
             }
           },
@@ -6970,11 +6970,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 140,
+              "line": 138,
               "column": 2
             },
             "end": {
-              "line": 163,
+              "line": 161,
               "column": 3
             }
           },
@@ -6998,11 +6998,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 114,
               "column": 2
             },
             "end": {
-              "line": 110,
+              "line": 116,
               "column": 3
             }
           },
@@ -7022,11 +7022,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 117,
+              "line": 123,
               "column": 2
             },
             "end": {
-              "line": 119,
+              "line": 125,
               "column": 3
             }
           },
@@ -7043,11 +7043,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 127,
+              "line": 133,
               "column": 2
             },
             "end": {
-              "line": 139,
+              "line": 145,
               "column": 3
             }
           },
@@ -7067,11 +7067,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 146,
+              "line": 152,
               "column": 2
             },
             "end": {
-              "line": 159,
+              "line": 165,
               "column": 3
             }
           },
@@ -7088,11 +7088,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 167,
+              "line": 173,
               "column": 2
             },
             "end": {
-              "line": 172,
+              "line": 178,
               "column": 3
             }
           },
@@ -8050,7 +8050,7 @@
           "column": 0
         },
         "end": {
-          "line": 191,
+          "line": 197,
           "column": 1
         }
       },
@@ -8064,11 +8064,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 32,
+              "line": 30,
               "column": 6
             },
             "end": {
-              "line": 38,
+              "line": 36,
               "column": 7
             }
           },
@@ -8081,11 +8081,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 42,
+              "line": 40,
               "column": 6
             },
             "end": {
-              "line": 48,
+              "line": 46,
               "column": 7
             }
           },
@@ -8098,11 +8098,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 57,
+              "line": 55,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 61,
               "column": 7
             }
           },
@@ -8114,11 +8114,11 @@
           "description": "Can the element inherit attributes from a parent?",
           "sourceRange": {
             "start": {
-              "line": 51,
+              "line": 57,
               "column": 6
             },
             "end": {
-              "line": 57,
+              "line": 63,
               "column": 7
             }
           },
@@ -8129,11 +8129,11 @@
           "description": "the `<label>` for the `<select>`",
           "sourceRange": {
             "start": {
-              "line": 62,
+              "line": 68,
               "column": 6
             },
             "end": {
-              "line": 68,
+              "line": 74,
               "column": 7
             }
           },
@@ -8144,11 +8144,11 @@
           "description": "the options array, eg.: `[ {\"name\": \"dark\", \"value\": \"true\"}, ...]`",
           "sourceRange": {
             "start": {
-              "line": 73,
+              "line": 79,
               "column": 6
             },
             "end": {
-              "line": 79,
+              "line": 85,
               "column": 7
             }
           },
@@ -8159,11 +8159,11 @@
           "description": "the value of the `<select>`",
           "sourceRange": {
             "start": {
-              "line": 84,
+              "line": 90,
               "column": 6
             },
             "end": {
-              "line": 90,
+              "line": 96,
               "column": 7
             }
           },
@@ -8795,11 +8795,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 32,
+              "line": 30,
               "column": 6
             },
             "end": {
-              "line": 38,
+              "line": 36,
               "column": 7
             }
           },
@@ -8819,11 +8819,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 42,
+              "line": 40,
               "column": 6
             },
             "end": {
-              "line": 48,
+              "line": 46,
               "column": 7
             }
           },
@@ -8843,11 +8843,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 57,
+              "line": 55,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 61,
               "column": 7
             }
           },
@@ -8867,11 +8867,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 96,
+              "line": 94,
               "column": 6
             },
             "end": {
-              "line": 102,
+              "line": 100,
               "column": 7
             }
           },
@@ -8890,11 +8890,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 91,
               "column": 6
             },
             "end": {
-              "line": 93,
+              "line": 97,
               "column": 7
             }
           },
@@ -8912,11 +8912,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 97,
+              "line": 101,
               "column": 6
             },
             "end": {
-              "line": 103,
+              "line": 107,
               "column": 7
             }
           },
@@ -8934,11 +8934,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 107,
+              "line": 111,
               "column": 6
             },
             "end": {
-              "line": 113,
+              "line": 117,
               "column": 7
             }
           },
@@ -9200,11 +9200,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 203,
+              "line": 207,
               "column": 2
             },
             "end": {
-              "line": 205,
+              "line": 209,
               "column": 3
             }
           },
@@ -11036,11 +11036,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 209,
+              "line": 213,
               "column": 2
             },
             "end": {
-              "line": 211,
+              "line": 215,
               "column": 3
             }
           },
@@ -11170,11 +11170,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 140,
+              "line": 138,
               "column": 2
             },
             "end": {
-              "line": 163,
+              "line": 161,
               "column": 3
             }
           },
@@ -11198,11 +11198,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 135,
+              "line": 139,
               "column": 2
             },
             "end": {
-              "line": 137,
+              "line": 141,
               "column": 3
             }
           },
@@ -11219,11 +11219,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 142,
+              "line": 146,
               "column": 2
             },
             "end": {
-              "line": 144,
+              "line": 148,
               "column": 3
             }
           },
@@ -11243,11 +11243,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 149,
+              "line": 153,
               "column": 2
             },
             "end": {
-              "line": 151,
+              "line": 155,
               "column": 3
             }
           },
@@ -11267,11 +11267,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 158,
+              "line": 162,
               "column": 2
             },
             "end": {
-              "line": 160,
+              "line": 164,
               "column": 3
             }
           },
@@ -11288,11 +11288,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 165,
+              "line": 169,
               "column": 2
             },
             "end": {
-              "line": 168,
+              "line": 172,
               "column": 3
             }
           },
@@ -11308,11 +11308,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 173,
+              "line": 177,
               "column": 2
             },
             "end": {
-              "line": 176,
+              "line": 180,
               "column": 3
             }
           },
@@ -11328,11 +11328,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 181,
+              "line": 185,
               "column": 2
             },
             "end": {
-              "line": 187,
+              "line": 191,
               "column": 3
             }
           },
@@ -11348,11 +11348,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 192,
+              "line": 196,
               "column": 2
             },
             "end": {
-              "line": 198,
+              "line": 202,
               "column": 3
             }
           },
@@ -12306,7 +12306,7 @@
           "column": 0
         },
         "end": {
-          "line": 216,
+          "line": 220,
           "column": 1
         }
       },
@@ -12320,11 +12320,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 32,
+              "line": 30,
               "column": 6
             },
             "end": {
-              "line": 38,
+              "line": 36,
               "column": 7
             }
           },
@@ -12337,11 +12337,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 42,
+              "line": 40,
               "column": 6
             },
             "end": {
-              "line": 48,
+              "line": 46,
               "column": 7
             }
           },
@@ -12354,11 +12354,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 57,
+              "line": 55,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 61,
               "column": 7
             }
           },
@@ -12370,11 +12370,11 @@
           "description": "show a nested child element in this custom element?",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 91,
               "column": 6
             },
             "end": {
-              "line": 93,
+              "line": 97,
               "column": 7
             }
           },
@@ -12999,11 +12999,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 32,
+              "line": 30,
               "column": 6
             },
             "end": {
-              "line": 38,
+              "line": 36,
               "column": 7
             }
           },
@@ -13023,11 +13023,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 42,
+              "line": 40,
               "column": 6
             },
             "end": {
-              "line": 48,
+              "line": 46,
               "column": 7
             }
           },
@@ -13047,11 +13047,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 57,
+              "line": 55,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 61,
               "column": 7
             }
           },
@@ -13071,11 +13071,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 96,
+              "line": 94,
               "column": 6
             },
             "end": {
-              "line": 102,
+              "line": 100,
               "column": 7
             }
           },
@@ -13338,11 +13338,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 179,
+              "line": 219,
               "column": 2
             },
             "end": {
-              "line": 182,
+              "line": 222,
               "column": 3
             }
           },
@@ -15174,11 +15174,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 186,
+              "line": 226,
               "column": 2
             },
             "end": {
-              "line": 188,
+              "line": 228,
               "column": 3
             }
           },
@@ -15308,11 +15308,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 140,
+              "line": 138,
               "column": 2
             },
             "end": {
-              "line": 163,
+              "line": 161,
               "column": 3
             }
           },
@@ -15336,11 +15336,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 150,
+              "line": 190,
               "column": 2
             },
             "end": {
-              "line": 154,
+              "line": 194,
               "column": 3
             }
           },
@@ -15357,11 +15357,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 159,
+              "line": 199,
               "column": 2
             },
             "end": {
-              "line": 174,
+              "line": 214,
               "column": 3
             }
           },
@@ -16315,7 +16315,7 @@
           "column": 0
         },
         "end": {
-          "line": 193,
+          "line": 233,
           "column": 1
         }
       },
@@ -16329,11 +16329,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 32,
+              "line": 30,
               "column": 6
             },
             "end": {
-              "line": 38,
+              "line": 36,
               "column": 7
             }
           },
@@ -16346,11 +16346,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 42,
+              "line": 40,
               "column": 6
             },
             "end": {
-              "line": 48,
+              "line": 46,
               "column": 7
             }
           },
@@ -16363,11 +16363,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 57,
+              "line": 55,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 61,
               "column": 7
             }
           },
@@ -16993,11 +16993,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 32,
+              "line": 30,
               "column": 6
             },
             "end": {
-              "line": 38,
+              "line": 36,
               "column": 7
             }
           },
@@ -17017,11 +17017,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 42,
+              "line": 40,
               "column": 6
             },
             "end": {
-              "line": 48,
+              "line": 46,
               "column": 7
             }
           },
@@ -17041,11 +17041,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 57,
+              "line": 55,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 61,
               "column": 7
             }
           },
@@ -17065,11 +17065,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 96,
+              "line": 94,
               "column": 6
             },
             "end": {
-              "line": 102,
+              "line": 100,
               "column": 7
             }
           },
@@ -17332,11 +17332,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 182,
+              "line": 219,
               "column": 2
             },
             "end": {
-              "line": 185,
+              "line": 222,
               "column": 3
             }
           },
@@ -19168,11 +19168,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 189,
+              "line": 226,
               "column": 2
             },
             "end": {
-              "line": 191,
+              "line": 228,
               "column": 3
             }
           },
@@ -19302,11 +19302,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 140,
+              "line": 138,
               "column": 2
             },
             "end": {
-              "line": 163,
+              "line": 161,
               "column": 3
             }
           },
@@ -19330,11 +19330,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 152,
+              "line": 189,
               "column": 2
             },
             "end": {
-              "line": 156,
+              "line": 193,
               "column": 3
             }
           },
@@ -19351,11 +19351,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 161,
+              "line": 198,
               "column": 2
             },
             "end": {
-              "line": 177,
+              "line": 214,
               "column": 3
             }
           },
@@ -20309,7 +20309,7 @@
           "column": 0
         },
         "end": {
-          "line": 196,
+          "line": 233,
           "column": 1
         }
       },
@@ -20323,11 +20323,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 32,
+              "line": 30,
               "column": 6
             },
             "end": {
-              "line": 38,
+              "line": 36,
               "column": 7
             }
           },
@@ -20340,11 +20340,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 42,
+              "line": 40,
               "column": 6
             },
             "end": {
-              "line": 48,
+              "line": 46,
               "column": 7
             }
           },
@@ -20357,11 +20357,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 57,
+              "line": 55,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 61,
               "column": 7
             }
           },
@@ -20987,11 +20987,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 32,
+              "line": 30,
               "column": 6
             },
             "end": {
-              "line": 38,
+              "line": 36,
               "column": 7
             }
           },
@@ -21011,11 +21011,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 42,
+              "line": 40,
               "column": 6
             },
             "end": {
-              "line": 48,
+              "line": 46,
               "column": 7
             }
           },
@@ -21035,11 +21035,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 57,
+              "line": 55,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 61,
               "column": 7
             }
           },
@@ -21059,11 +21059,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 96,
+              "line": 94,
               "column": 6
             },
             "end": {
-              "line": 102,
+              "line": 100,
               "column": 7
             }
           },
@@ -21082,11 +21082,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 106,
+              "line": 134,
               "column": 6
             },
             "end": {
-              "line": 112,
+              "line": 140,
               "column": 7
             }
           },
@@ -23186,11 +23186,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 182,
+              "line": 210,
               "column": 2
             },
             "end": {
-              "line": 184,
+              "line": 212,
               "column": 3
             }
           },
@@ -23320,11 +23320,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 140,
+              "line": 138,
               "column": 2
             },
             "end": {
-              "line": 163,
+              "line": 161,
               "column": 3
             }
           },
@@ -23348,11 +23348,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 134,
+              "line": 162,
               "column": 2
             },
             "end": {
-              "line": 136,
+              "line": 164,
               "column": 3
             }
           },
@@ -23369,11 +23369,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 141,
+              "line": 169,
               "column": 2
             },
             "end": {
-              "line": 157,
+              "line": 185,
               "column": 3
             }
           },
@@ -23396,11 +23396,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 162,
+              "line": 190,
               "column": 2
             },
             "end": {
-              "line": 164,
+              "line": 192,
               "column": 3
             }
           },
@@ -23417,11 +23417,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 169,
+              "line": 197,
               "column": 2
             },
             "end": {
-              "line": 171,
+              "line": 199,
               "column": 3
             }
           },
@@ -23441,11 +23441,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 176,
+              "line": 204,
               "column": 2
             },
             "end": {
-              "line": 178,
+              "line": 206,
               "column": 3
             }
           },
@@ -24403,7 +24403,7 @@
           "column": 0
         },
         "end": {
-          "line": 189,
+          "line": 217,
           "column": 1
         }
       },
@@ -24417,11 +24417,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 32,
+              "line": 30,
               "column": 6
             },
             "end": {
-              "line": 38,
+              "line": 36,
               "column": 7
             }
           },
@@ -24434,11 +24434,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 42,
+              "line": 40,
               "column": 6
             },
             "end": {
-              "line": 48,
+              "line": 46,
               "column": 7
             }
           },
@@ -24451,11 +24451,11 @@
           "sourceRange": {
             "file": "../../simple-colors.js",
             "start": {
-              "line": 57,
+              "line": 55,
               "column": 6
             },
             "end": {
-              "line": 63,
+              "line": 61,
               "column": 7
             }
           },
@@ -24467,11 +24467,11 @@
           "description": "Theme to demo",
           "sourceRange": {
             "start": {
-              "line": 106,
+              "line": 134,
               "column": 6
             },
             "end": {
-              "line": 112,
+              "line": 140,
               "column": 7
             }
           },

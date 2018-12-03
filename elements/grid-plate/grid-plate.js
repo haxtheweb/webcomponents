@@ -2,11 +2,10 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "@polymer/paper-button/paper-button.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
 /**
@@ -68,7 +67,7 @@ let GridPlate = Polymer({
           cursor: move !important;
         }
 
-        paper-button {
+        paper-icon-button {
           display: none;
           position: absolute;
           margin: 0;
@@ -84,10 +83,7 @@ let GridPlate = Polymer({
           min-width: unset;
         }
 
-        paper-button.active {
-          display: block;
-        }
-        paper-button iron-icon {
+        paper-icon-button.active {
           display: block;
         }
 
@@ -97,22 +93,33 @@ let GridPlate = Polymer({
       </style>
     </custom-style>
     <div class="button-holding-pen">
-      <paper-button title="move item up" id="up" on-tap="moveActiveElement">
-        <iron-icon icon="icons:arrow-upward"></iron-icon>
-      </paper-button>
-      <paper-button
+      <paper-icon-button
+        icon="icons:arrow-upward"
+        title="move item up"
+        id="up"
+        on-tap="moveActiveElement"
+      >
+      </paper-icon-button>
+      <paper-icon-button
+        icon="icons:arrow-forward"
         title="move item right"
         id="right"
         on-tap="moveActiveElement"
+      ></paper-icon-button>
+      <paper-icon-button
+        icon="icons:arrow-downward"
+        title="move item down"
+        id="down"
+        on-tap="moveActiveElement"
       >
-        <iron-icon icon="icons:arrow-forward"></iron-icon>
-      </paper-button>
-      <paper-button title="move item down" id="down" on-tap="moveActiveElement">
-        <iron-icon icon="icons:arrow-downward"></iron-icon>
-      </paper-button>
-      <paper-button title="move item left" id="left" on-tap="moveActiveElement">
-        <iron-icon icon="icons:arrow-back"></iron-icon>
-      </paper-button>
+      </paper-icon-button>
+      <paper-icon-button
+        icon="icons:arrow-back"
+        title="move item left"
+        id="left"
+        on-tap="moveActiveElement"
+      >
+      </paper-icon-button>
     </div>
     <responsive-grid-row gutter="0">
       <template is="dom-if" if="[[!hideCol1]]" strip-whitespace>
@@ -187,7 +194,8 @@ let GridPlate = Polymer({
   is: "grid-plate",
 
   listeners: {
-    focusin: "_focusIn"
+    focusin: "_focusIn",
+    focusout: "_focusOut"
   },
 
   behaviors: [HAXBehaviors.PropertiesBehaviors],
@@ -363,7 +371,24 @@ let GridPlate = Polymer({
       }
     }
   },
-
+  /**
+   * Focus / tab / click event normalization
+   */
+  _focusOut: function(e) {
+    if (this.editMode) {
+      var normalizedEvent = dom(e);
+      var local = normalizedEvent.localTarget;
+      // @todo need to correctly de-focus when the element loses focus entirely
+      if (
+        local.parentNode === this ||
+        document.activeElement.parentNode === this ||
+        document.activeElement === this
+      ) {
+      } else {
+        //this.__activeItem = null;
+      }
+    }
+  },
   /**
    * Position the arrows to change directions around something
    */
@@ -636,8 +661,8 @@ let GridPlate = Polymer({
    * as color-number for name of the color hypthen numberical array position
    */
   splitColor: function(value) {
-    if (value != "" && typeof this.__hexCodes[value] !== typeof undefined) {
-      return this.__hexCodes[value][this.__hexCodes[value].length - 1];
+    if (value != "" && typeof SimpleColors.colors[value] !== typeof undefined) {
+      return SimpleColors.colors[value][0];
     }
     return value;
   },
@@ -697,7 +722,6 @@ let GridPlate = Polymer({
       this["col" + col + "_xs"] = items[i];
     }
   },
-
   /**
    * Attached to the DOM, now fire.
    */
@@ -714,7 +738,7 @@ let GridPlate = Polymer({
     );
     // quickly build a basic selection array from known color names
     var colorOptions = [];
-    for (var i in this.__hexCodes) {
+    for (var i in SimpleColors.colors) {
       colorOptions[i] = i;
     }
     // Establish hax property binding
