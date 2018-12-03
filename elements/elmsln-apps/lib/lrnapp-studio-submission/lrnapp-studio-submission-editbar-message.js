@@ -9,5 +9,5 @@ Polymer({
     <slot></slot>
 `,
 
-  is: 'lrnapp-studio-submission-editbar-message'
+  is: "lrnapp-studio-submission-editbar-message"
 });

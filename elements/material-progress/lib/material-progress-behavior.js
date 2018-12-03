@@ -228,11 +228,11 @@ window.MaterialProgressBehaviorImpl = {
   },
   _playFirstAnimation: function(node, index, animationDelay) {
     this.toggleClass("entry", true, node);
-    ((node, index, animationDelay) => {
+    (node, index, animationDelay) => {
       async.microTask.run(() => {
         this.toggleClass("entry", false, node);
       }, 500 + animationDelay * index);
-    });
+    };
   },
   _computeLegendNeeded: function(legendItems) {
     return legendItems && legendItems.length > 0;
@@ -240,6 +240,4 @@ window.MaterialProgressBehaviorImpl = {
 };
 
 /** @polymerBehavior */
-window.MaterialProgressBehavior = [
-  window.MaterialProgressBehaviorImpl
-];
+window.MaterialProgressBehavior = [window.MaterialProgressBehaviorImpl];

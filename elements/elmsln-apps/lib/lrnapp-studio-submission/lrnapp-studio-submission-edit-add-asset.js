@@ -13,7 +13,7 @@ Polymer({
         display: flex;
         align-items: center;
         justify-content: center;
-        position: relative
+        position: relative;
       }
 
       :host([display="pill"]) {
@@ -41,14 +41,14 @@ Polymer({
       <iron-icon icon="[[icon]]"></iron-icon>
       <paper-ripple></paper-ripple>
     </paper-button>
-`,
+  `,
 
-  is: 'lrnapp-studio-submission-edit-add-asset',
+  is: "lrnapp-studio-submission-edit-add-asset",
 
   properties: {
     icon: {
       type: String,
-      value: 'add'
+      value: "add"
     },
     /**
      * Change the display of the add asset element
@@ -57,7 +57,7 @@ Polymer({
      */
     display: {
       type: String,
-      value: 'box',
+      value: "box",
       reflectToAttribute: true
     }
   }

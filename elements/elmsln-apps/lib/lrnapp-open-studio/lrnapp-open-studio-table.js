@@ -226,7 +226,7 @@ Polymer({
     </vaadin-grid>
 `,
 
-  is: 'lrnapp-open-studio-table',
+  is: "lrnapp-open-studio-table",
 
   properties: {
     /**
@@ -234,25 +234,25 @@ Polymer({
      */
     submissions: {
       type: Array,
-      notify: true,
+      notify: true
     },
     _numWidth: {
       type: String,
-      value: '2.25em'
+      value: "2.25em"
     },
     /**
      * Endpoint for submission data.
      */
     sourcePath: {
       type: String,
-      notify: true,
+      notify: true
     },
     /**
      * base path for the app
      */
     basePath: {
       type: String,
-      notify: true,
+      notify: true
     },
     /**
      * Active / clicked submission.
@@ -260,18 +260,21 @@ Polymer({
     activeSubmission: {
       type: String,
       value: null,
-      notify: true,
-    },
+      notify: true
+    }
   },
 
   _loadProjectRoute: function(e) {
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     // this will have the id of the current submission
-    var project = local.getAttribute('data-project-id');
-    var author = local.getAttribute('data-author-id');
+    var project = local.getAttribute("data-project-id");
+    var author = local.getAttribute("data-author-id");
     // fire event w/ parts of the route to changes
-    this.fire('route-change', {'data': {'page': 'projects'}, 'queryParams': {'author': author, 'project': project}});
+    this.fire("route-change", {
+      data: { page: "projects" },
+      queryParams: { author: author, project: project }
+    });
   },
 
   /**
@@ -282,9 +285,10 @@ Polymer({
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     // this will have the id of the current submission
-    var active = local.getAttribute('data-submission-id');
+    var active = local.getAttribute("data-submission-id");
     // @todo need a cleaner integration but this at least goes the right place for now
-    window.location.href = this.basePath + 'lrnapp-studio-submission/submissions/' + active;
+    window.location.href =
+      this.basePath + "lrnapp-studio-submission/submissions/" + active;
   },
 
   /**

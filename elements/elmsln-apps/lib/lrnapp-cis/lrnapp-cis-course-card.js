@@ -143,50 +143,50 @@ Polymer({
     </paper-card>
 `,
 
-  is: 'lrnapp-cis-course-card',
+  is: "lrnapp-cis-course-card",
 
   listeners: {
-    'mouseenter': '_mouseEnter',
-    'mouseleave': '_mouseLeave',
+    mouseenter: "_mouseEnter",
+    mouseleave: "_mouseLeave"
   },
 
   properties: {
     size: {
-      type: String,
+      type: String
     },
     /**
      * Cover image src.
      */
     image: {
-      type: String,
+      type: String
     },
     /**
      * Icon to use if image isn't there.
      */
     icon: {
       type: String,
-      value: false,
+      value: false
     },
     /**
      * name of the course like sing100
      */
     name: {
       type: String,
-      value: '',
+      value: ""
     },
     /**
      * title of the course like Intro to studies
      */
     title: {
       type: String,
-      value: '',
+      value: ""
     },
     /**
      * color of the course item
      */
     color: {
       type: String,
-      value: 'grey',
+      value: "grey"
     },
     /**
      * Visual elevation of the item off the UI via paper element height
@@ -194,27 +194,26 @@ Polymer({
     elevation: {
       type: Number,
       value: 1,
-      reflectToAttribute: true,
+      reflectToAttribute: true
     }
   },
 
   /**
    * Increase elevation while hovering.
    */
-  _mouseEnter: function (e) {
+  _mouseEnter: function(e) {
     this.__oldElevation = this.elevation;
-    if ((this.elevation+2) > 5) {
+    if (this.elevation + 2 > 5) {
       this.elevation = 5;
-    }
-    else {
+    } else {
       this.elevation += 2;
-   }
+    }
   },
 
   /**
    * Reset the elevation.
    */
-  _mouseLeave: function (e) {
+  _mouseLeave: function(e) {
     this.elevation = this.__oldElevation;
   }
 });

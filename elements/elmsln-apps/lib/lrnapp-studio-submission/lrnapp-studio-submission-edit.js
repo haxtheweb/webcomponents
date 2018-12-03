@@ -1,9 +1,9 @@
-import './lrnapp-studio-submission-media-editoverlay.js';
-import './lrnapp-studio-submission-edit-images.js';
-import './lrnapp-studio-submission-edit-files.js';
-import './lrnapp-studio-submission-edit-video.js';
-import './lrnapp-studio-submission-edit-links.js';
-import './lrnapp-studio-submission-edit-textarea.js';
+import "./lrnapp-studio-submission-media-editoverlay.js";
+import "./lrnapp-studio-submission-edit-images.js";
+import "./lrnapp-studio-submission-edit-files.js";
+import "./lrnapp-studio-submission-edit-video.js";
+import "./lrnapp-studio-submission-edit-links.js";
+import "./lrnapp-studio-submission-edit-textarea.js";
 Polymer({
   _template: `
     <style>
@@ -93,7 +93,7 @@ Polymer({
     </template>
 `,
 
-  is: 'lrnapp-studio-submission-edit',
+  is: "lrnapp-studio-submission-edit",
 
   properties: {
     submission: {
@@ -118,33 +118,30 @@ Polymer({
     }
   },
 
-  observers: [
-    '_bodyChanged(title)'
-  ],
+  observers: ["_bodyChanged(title)"],
 
-  _publishClicked: function (e) {
-    this.set('submission.attributes.state', 'submission_ready');
-    this.fire('submissionPublishClicked');
+  _publishClicked: function(e) {
+    this.set("submission.attributes.state", "submission_ready");
+    this.fire("submissionPublishClicked");
   },
 
-  _saveDraftClicked: function (e) {
-    this.set('submission.attributes.state', 'submission_in_progress');
-    this.fire('submissionSaveDraftClicked');
+  _saveDraftClicked: function(e) {
+    this.set("submission.attributes.state", "submission_in_progress");
+    this.fire("submissionSaveDraftClicked");
   },
 
-  _deleteClicked: function (e) {
-    this.fire('submissionDeleteClicked');
+  _deleteClicked: function(e) {
+    this.fire("submissionDeleteClicked");
   },
 
   /**
    * Simple way to convert from object to array.
    */
-  _toArray: function (obj) {
-    return Object.keys(obj).map(function (key) {
+  _toArray: function(obj) {
+    return Object.keys(obj).map(function(key) {
       return obj[key];
     });
   },
 
-  ready: function () {
-  }
+  ready: function() {}
 });

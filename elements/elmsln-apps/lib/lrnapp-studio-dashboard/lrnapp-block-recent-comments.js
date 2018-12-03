@@ -1,4 +1,4 @@
-import './lrnapp-block-recent-comments-comment.js';
+import "./lrnapp-block-recent-comments-comment.js";
 Polymer({
   _template: `
     <style include="paper-item-styles">
@@ -18,16 +18,16 @@ Polymer({
     </template>
 `,
 
-  is: 'lrnapp-block-recent-comments',
+  is: "lrnapp-block-recent-comments",
 
   properties: {
     sourcePath: {
       type: String,
-      notify: true,
+      notify: true
     },
     response: {
       type: Array,
-      notify: true,
+      notify: true
     }
   },
 
@@ -36,7 +36,7 @@ Polymer({
   },
 
   _getViewLink: function(nid) {
-    return this.basePath + 'lrnapp-studio-submission/submissions/' + nid;
+    return this.basePath + "lrnapp-studio-submission/submissions/" + nid;
   },
 
   _toArray: function(obj) {

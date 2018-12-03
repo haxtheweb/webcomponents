@@ -1,4 +1,4 @@
-import './lrnapp-studio-submission-comment.js';
+import "./lrnapp-studio-submission-comment.js";
 Polymer({
   _template: `
     <style>
@@ -13,19 +13,19 @@ Polymer({
     </template>
 `,
 
-  is: 'lrnapp-studio-submission-comments',
+  is: "lrnapp-studio-submission-comments",
 
   properties: {
     submission: {
       type: Object
-    },
+    }
   },
 
   /**
    * Simple way to convert from object to array.
    */
-  _toArray: function (obj) {
-    return Object.keys(obj).map(function (key) {
+  _toArray: function(obj) {
+    return Object.keys(obj).map(function(key) {
       return obj[key];
     });
   }

@@ -54,11 +54,11 @@ Polymer({
       #toolbar {
         color: gray;
         background-color: white;
-        padding: 0 .5em;
+        padding: 0 0.5em;
         margin: 0;
         height: auto;
         box-sizing: content-box;
-        transition: all .4s ease;
+        transition: all 0.4s ease;
       }
       paper-button {
         padding: 0;
@@ -91,20 +91,22 @@ Polymer({
         margin: 0;
         height: 3em;
       }
-      lrndesign-stepper-button ::shadow .title-container.lrndesign-stepper-button {
+      lrndesign-stepper-button
+        ::shadow
+        .title-container.lrndesign-stepper-button {
         padding: 0;
         width: 100%;
         right: unset;
       }
       lrndesign-stepper-button ::shadow .node-title.lrndesign-stepper-button {
-        font-size: .9em;
+        font-size: 0.9em;
         line-height: 1.5em;
       }
 
       .loading {
         width: 100%;
         z-index: 1000;
-        opacity: .9;
+        opacity: 0.9;
         text-align: center;
         align-content: space-around;
         justify-content: center;
@@ -127,19 +129,19 @@ Polymer({
         justify-content: center;
       }
       #bodyloading .loading,
-      #bodyloading elmsln-loading{
+      #bodyloading elmsln-loading {
         display: block;
         height: 5em;
       }
       .outline-title {
-        margin-left: .5em;
+        margin-left: 0.5em;
         max-width: 50%;
       }
       .content-nav-buttons {
         top: 60%;
         position: fixed;
-        opacity: .8;
-        padding: 0 .25em;
+        opacity: 0.8;
+        padding: 0 0.25em;
         height: 40%;
         padding-top: 15%;
         margin-top: -15%;
@@ -153,7 +155,7 @@ Polymer({
       }
       .next {
         right: 0;
-        transition: right .2s ease;
+        transition: right 0.2s ease;
         order: 2;
       }
       app-header {
@@ -172,28 +174,23 @@ Polymer({
         padding: 0;
         margin: -3em 4em 5em 4em;
         font-size: 1.1em;
-        transition:
-          margin .4s ease,
-          width .4s ease;
+        transition: margin 0.4s ease, width 0.4s ease;
       }
 
       .content-nav-buttons paper-icon-button {
         width: 4em;
         height: 4em;
-        opacity: .4;
+        opacity: 0.4;
         display: block;
         visibility: visible;
-        transition:
-          opacity .4s linear,
-          visibility 1s linear,
-          height .4s ease,
-          width .4s ease;
+        transition: opacity 0.4s linear, visibility 1s linear, height 0.4s ease,
+          width 0.4s ease;
       }
       .content-nav-buttons paper-icon-button:hover {
         opacity: 1;
       }
       paper-tooltip {
-        --paper-tooltip-opacity: .96;
+        --paper-tooltip-opacity: 0.96;
       }
       :host([drawer-opened]) .content-nav-buttons paper-icon-button {
         width: 2.5em;
@@ -207,7 +204,7 @@ Polymer({
       .content-title {
         font-size: 1.4em;
         margin: 0;
-        padding: .25em 0;
+        padding: 0.25em 0;
         background-color: white;
         top: 70px;
         position: sticky;
@@ -217,7 +214,7 @@ Polymer({
       }
       .content-next {
         background-color: grey;
-        opacity: .8;
+        opacity: 0.8;
       }
       #header {
         position: sticky;
@@ -231,7 +228,7 @@ Polymer({
         margin: 0;
         opacity: 1;
         box-sizing: content-box;
-        transition: all .4s ease;
+        transition: all 0.4s ease;
       }
       app-drawer-layout {
         font-family: sans-serif;
@@ -255,7 +252,7 @@ Polymer({
 
       [main-title] {
         font-weight: lighter;
-        padding: .6em 0 0 0;
+        padding: 0.6em 0 0 0;
         margin: 0;
         height: 3em;
         overflow-y: scroll;
@@ -269,8 +266,8 @@ Polymer({
         display: none !important;
       }
       lrnsys-progress {
-        margin-top: .5em;
-        padding: .2em 0 0 0;
+        margin-top: 0.5em;
+        padding: 0.2em 0 0 0;
         box-sizing: content-box;
       }
       lrnsys-progress lrnsys-progress-circle {
@@ -287,22 +284,22 @@ Polymer({
       }
       @media (max-width: 1200px) {
         :host .content-body {
-          font-size: .94em;
+          font-size: 0.94em;
         }
       }
       @media (max-width: 960px) {
         :host .content-body {
-          font-size: .92em;
+          font-size: 0.92em;
         }
       }
       @media (max-width: 820px) {
         :host .content-body {
-          font-size: .9em;
+          font-size: 0.9em;
         }
       }
       @media (max-width: 700px) {
         :host .content-body {
-          font-size: .9em;
+          font-size: 0.9em;
         }
       }
       @media (max-width: 639px) {
@@ -310,7 +307,7 @@ Polymer({
           top: 0;
         }
         [main-title] {
-          font-size: .8em;
+          font-size: 0.8em;
         }
         .content-title {
           font-size: 1.1em;
@@ -323,8 +320,8 @@ Polymer({
           height: 1px;
         }
         :host .content-body {
-          margin: 0 .5em;
-          font-size: .9em;
+          margin: 0 0.5em;
+          font-size: 0.9em;
           width: 85%;
         }
         .content-nav-buttons {
@@ -332,7 +329,7 @@ Polymer({
           display: flex;
           top: unset;
           padding: 0;
-          opacity: .8;
+          opacity: 0.8;
           height: unset;
           margin: 0;
         }
@@ -349,7 +346,7 @@ Polymer({
       }
       @media (max-width: 500px) {
         [main-title] {
-          font-size: .7em;
+          font-size: 0.7em;
         }
       }
       /**
@@ -360,12 +357,12 @@ Polymer({
         bottom: 0;
         right: 0;
         margin: 2em;
-        padding: .5em;
+        padding: 0.5em;
         width: 1.6em;
         height: 1.6em;
         visibility: visible;
         opacity: 1;
-        transition: all .4s ease;
+        transition: all 0.4s ease;
       }
       :host([edit-mode]) #editbutton {
         width: 100%;
@@ -381,7 +378,7 @@ Polymer({
         background-color: var(--paper-grey-500);
       }
       :host([edit-mode]) #toolbar {
-        opacity: .5;
+        opacity: 0.5;
       }
       .your-progress-button {
         padding-right: 1em;
@@ -399,26 +396,97 @@ Polymer({
     </style>
     <page-scroll-position value="{{scrollPosition}}"></page-scroll-position>
     <div id="anchor"></div>
-    <iron-ajax id="outlineajax" params="[[requestParams]]" url="[[outlinePath]]" handle-as="json" on-response="handleOutlineResponse" last-response="{{outlineData}}"></iron-ajax>
-    <iron-ajax id="bookajax" params="[[requestParams]]" url="[[bookPath]]" handle-as="json" on-response="handleBookResponse" last-response="{{bookData}}"></iron-ajax>
-    <iron-ajax id="pageajax" url="[[pagePath]]" params="[[pageParams]]" handle-as="json" on-response="handlePageResponse" last-response="{{pageData}}"></iron-ajax>
-    <iron-ajax id="pageupdateajax" url="[[pageUpdatePath]]" params="[[pageParams]]" method="PUT" body="[[updatePageData]]" content-type="application/json" handle-as="json" on-response="_handleUpdateResponse"></iron-ajax>
-    <iron-ajax id="pagedeleteajax" url="[[pageDeletePath]]" params="[[pageParams]]" method="DELETE" content-type="application/json" handle-as="json" on-response="_handleDeleteResponse"></iron-ajax>
-    <iron-ajax id="pagecreateajax" url="[[pageCreatePath]]" method="POST" body="[[createRequestBody]]" handle-as="json" on-response="_ajaxCreateStubHandler"></iron-ajax>
+    <iron-ajax
+      id="outlineajax"
+      params="[[requestParams]]"
+      url="[[outlinePath]]"
+      handle-as="json"
+      on-response="handleOutlineResponse"
+      last-response="{{outlineData}}"
+    ></iron-ajax>
+    <iron-ajax
+      id="bookajax"
+      params="[[requestParams]]"
+      url="[[bookPath]]"
+      handle-as="json"
+      on-response="handleBookResponse"
+      last-response="{{bookData}}"
+    ></iron-ajax>
+    <iron-ajax
+      id="pageajax"
+      url="[[pagePath]]"
+      params="[[pageParams]]"
+      handle-as="json"
+      on-response="handlePageResponse"
+      last-response="{{pageData}}"
+    ></iron-ajax>
+    <iron-ajax
+      id="pageupdateajax"
+      url="[[pageUpdatePath]]"
+      params="[[pageParams]]"
+      method="PUT"
+      body="[[updatePageData]]"
+      content-type="application/json"
+      handle-as="json"
+      on-response="_handleUpdateResponse"
+    ></iron-ajax>
+    <iron-ajax
+      id="pagedeleteajax"
+      url="[[pageDeletePath]]"
+      params="[[pageParams]]"
+      method="DELETE"
+      content-type="application/json"
+      handle-as="json"
+      on-response="_handleDeleteResponse"
+    ></iron-ajax>
+    <iron-ajax
+      id="pagecreateajax"
+      url="[[pageCreatePath]]"
+      method="POST"
+      body="[[createRequestBody]]"
+      handle-as="json"
+      on-response="_ajaxCreateStubHandler"
+    ></iron-ajax>
 
-    <app-location route="{{route}}" query-params="{{queryParams}}"></app-location>
-    <app-route route="{{route}}" pattern="[[endPoint]]/:type/:id" data="{{data}}" tail="{{tail}}" query-params="{{queryParams}}">
+    <app-location
+      route="{{route}}"
+      query-params="{{queryParams}}"
+    ></app-location>
+    <app-route
+      route="{{route}}"
+      pattern="[[endPoint]]/:type/:id"
+      data="{{data}}"
+      tail="{{tail}}"
+      query-params="{{queryParams}}"
+    >
     </app-route>
     <hax-store app-store="[[appStoreConnection]]"></hax-store>
-    <hax-panel id="haxpanel" hide-panel-ops="" hide-export-button=""></hax-panel>
+    <hax-panel
+      id="haxpanel"
+      hide-panel-ops=""
+      hide-export-button=""
+    ></hax-panel>
     <hax-app-picker></hax-app-picker>
     <hax-export-dialog></hax-export-dialog>
-  <!-- body where most of the heavy lifting happens -->
+    <!-- body where most of the heavy lifting happens -->
     <app-drawer-layout>
       <!-- LRNApp book we expect to navigate -->
-      <app-drawer slot="drawer" id="bookdrawer" opened="{{drawerOpened}}" swipe-open="" transition-duration="300">
-        <div id="bookdrawercontent" style="height: 100%; overflow: auto;" hidden\$="[[!bookItems]]">
-          <paper-search-bar hide-filter-button="" hidden\$="[[!showSearch]]"></paper-search-bar>
+      <app-drawer
+        slot="drawer"
+        id="bookdrawer"
+        opened="{{drawerOpened}}"
+        swipe-open=""
+        transition-duration="300"
+      >
+        <div
+          id="bookdrawercontent"
+          style="height: 100%; overflow: auto;"
+          hidden\$="[[!bookItems]]"
+        >
+          <paper-search-bar
+            hide-filter-button=""
+            hidden\$="[[!showSearch]]"
+          ></paper-search-bar>
           <lrndesign-mapmenu id="mapmenu" on-tap="_bookOutlineTap">
             <!-- Server response will populate this -->
           </lrndesign-mapmenu>
@@ -433,12 +501,28 @@ Polymer({
           </div>
           <app-toolbar id="toolbar" sticky="" class="tall">
             <div style="pointer-events: auto;" class="menu-btn-wrap">
-              <paper-icon-button style="pointer-events: auto;" title="Content outline" id="menubutton" icon="menu"></paper-icon-button>
+              <paper-icon-button
+                style="pointer-events: auto;"
+                title="Content outline"
+                id="menubutton"
+                icon="menu"
+              ></paper-icon-button>
             </div>
             <div spacer="" class="outline-title">[[outlineTitle]]</div>
             <div spacer="" main-title="" style="pointer-events: auto;">
               <div class="progress-container">
-                <lrnsys-progress sound-finish="[[soundFinish]]" sound="[[sound]]" complete-sound="[[completeSound]]" finished-sound="[[finishedSound]]" title="The steps to complete this lesson" id="progress" active="{{activePage}}" items="{{outlineItems}}" progressive-unlock="" size="small"></lrnsys-progress>
+                <lrnsys-progress
+                  sound-finish="[[soundFinish]]"
+                  sound="[[sound]]"
+                  complete-sound="[[completeSound]]"
+                  finished-sound="[[finishedSound]]"
+                  title="The steps to complete this lesson"
+                  id="progress"
+                  active="{{activePage}}"
+                  items="{{outlineItems}}"
+                  progressive-unlock=""
+                  size="small"
+                ></lrnsys-progress>
               </div>
             </div>
             <!-- <div class="your-progress-button">
@@ -459,22 +543,44 @@ Polymer({
               <h3 class="loading-text">Loading content..</h3>
             </div>
             <div>
-              <hax-body id="haxbody">
-                <slot id="slottedarea"></slot>
-              </hax-body>
+              <hax-body id="haxbody"> <slot id="slottedarea"></slot> </hax-body>
             </div>
           </div>
         </div>
         <div class="content-nav">
           <div class="content-nav-buttons next">
-            <paper-icon-button id="next" title="[[nextLabel]]" on-tap="_nextBtn" icon="hardware:keyboard-arrow-right" data-voicecommand="next page" hidden\$="[[!hasNextPage]]"></paper-icon-button>
-            <paper-tooltip for="next" position="left" offset="0" animation-delay="100">
+            <paper-icon-button
+              id="next"
+              title="[[nextLabel]]"
+              on-tap="_nextBtn"
+              icon="hardware:keyboard-arrow-right"
+              data-voicecommand="next page"
+              hidden\$="[[!hasNextPage]]"
+            ></paper-icon-button>
+            <paper-tooltip
+              for="next"
+              position="left"
+              offset="0"
+              animation-delay="100"
+            >
               [[nextLabel]]
             </paper-tooltip>
           </div>
           <div class="content-nav-buttons prev">
-            <paper-icon-button id="prev" title="[[prevLabel]]" on-tap="_prevBtn" icon="hardware:keyboard-arrow-left" data-voicecommand="previous page" hidden\$="[[!hasPrevPage]]"></paper-icon-button>
-            <paper-tooltip for="prev" position="right" offset="0" animation-delay="100">
+            <paper-icon-button
+              id="prev"
+              title="[[prevLabel]]"
+              on-tap="_prevBtn"
+              icon="hardware:keyboard-arrow-left"
+              data-voicecommand="previous page"
+              hidden\$="[[!hasPrevPage]]"
+            ></paper-icon-button>
+            <paper-tooltip
+              for="prev"
+              position="right"
+              offset="0"
+              animation-delay="100"
+            >
               [[prevLabel]]
             </paper-tooltip>
           </div>
@@ -483,8 +589,21 @@ Polymer({
     </app-drawer-layout>
     <hax-manager></hax-manager>
     <!-- edit mode if they have permissions -->
-    <paper-fab id="editbutton" icon="editor:mode-edit" class="red white-text" hidden\$="[[!currentPageData.page.meta.canUpdate]]" data-voicecommand="Edit content" on-tap="_toggleEditMode" title="Tap to place content in edit mode."></paper-fab>
-    <paper-tooltip for="editbutton" position="bottom" offset="8" animation-delay="100">
+    <paper-fab
+      id="editbutton"
+      icon="editor:mode-edit"
+      class="red white-text"
+      hidden\$="[[!currentPageData.page.meta.canUpdate]]"
+      data-voicecommand="Edit content"
+      on-tap="_toggleEditMode"
+      title="Tap to place content in edit mode."
+    ></paper-fab>
+    <paper-tooltip
+      for="editbutton"
+      position="bottom"
+      offset="8"
+      animation-delay="100"
+    >
       <span id="fablabel">edit mode</span>
     </paper-tooltip>
     <paper-toast id="toast" horizontal-align="left"></paper-toast>
@@ -506,34 +625,35 @@ Polymer({
       <lrn-math></lrn-math>
       <citation-element></citation-element>
     </hax-autoloader>
-`,
+  `,
 
-  is: 'lrnapp-book',
+  is: "lrnapp-book",
 
   listeners: {
-    'menubutton.tap': 'toggleBook',
-    'progress.node-percent-milestone': 'testMilestone',
-    'route-change': '_routeChange',
-    'haxpanel.hax-content-insert': '_haxContentInsert',
+    "menubutton.tap": "toggleBook",
+    "progress.node-percent-milestone": "testMilestone",
+    "route-change": "_routeChange",
+    "haxpanel.hax-content-insert": "_haxContentInsert"
   },
 
-  observers: [
-    '_routeChanged(data, route, endPoint)',
-  ],
+  observers: ["_routeChanged(data, route, endPoint)"],
 
   properties: {
     /**
      * App store connection.
      */
     appStoreConnection: {
-        type: Object,
-        value: {"url":"/sing100/sites/all/libraries/webcomponents/polymer/apps-src/lrnapp-book/appstore.json"},
+      type: Object,
+      value: {
+        url:
+          "/sing100/sites/all/libraries/webcomponents/polymer/apps-src/lrnapp-book/appstore.json"
+      }
     },
     /**
      * Path for getting progress dashboard data
      */
     progressDashboardPath: {
-      type: String,
+      type: String
     },
     /**
      * Option to display the search bar.
@@ -541,14 +661,14 @@ Polymer({
     showSearch: {
       type: Boolean,
       reflectToAttribute: true,
-      value: false,
+      value: false
     },
     /**
      * Request body parameters for creating a new item.
      */
     createRequestBody: {
       type: Object,
-      computed: '_computeCreateRequestBody(currentPageData)',
+      computed: "_computeCreateRequestBody(currentPageData)"
     },
     /**
      * Data to be shipped off to the update endpoint.
@@ -559,20 +679,20 @@ Polymer({
         id: null,
         type: null,
         attributes: {}
-      },
+      }
     },
     /**
      * Path for updating content.
      */
     pageUpdatePath: {
       type: String,
-      computed: '_computePageUpdatePath(data, sourcePath)'
+      computed: "_computePageUpdatePath(data, sourcePath)"
     },
     /**
      * Source path to the 'find one' end point
      */
     sourcePath: {
-      type: String,
+      type: String
     },
     /**
      * Edit / authoring mode.
@@ -581,7 +701,7 @@ Polymer({
       type: Boolean,
       value: false,
       reflectToAttribute: true,
-      observer: '_editModeChanged',
+      observer: "_editModeChanged"
     },
     /**
      * Binding so we can style based on drawer status
@@ -590,61 +710,61 @@ Polymer({
     drawerOpened: {
       type: Boolean,
       value: true,
-      reflectToAttribute: true,
+      reflectToAttribute: true
     },
     /**
      * App route tracking.
      */
     route: {
       type: Object,
-      notify: true,
+      notify: true
     },
     /**
      * Title for the content
      */
     currentTitle: {
-      type: String,
+      type: String
     },
     /**
      * Title for the top of the bar
      */
     outlineTitle: {
-      type: String,
+      type: String
     },
     /**
      * Title for the top of the bar
      */
     bookTitle: {
       type: String,
-      value: 'Course outline',
+      value: "Course outline"
     },
     /**
      * If the sound should play on finish.
      */
     soundFinish: {
       type: Boolean,
-      value: true,
+      value: true
     },
     /**
      * If the sound should play on complete.
      */
     sound: {
       type: Boolean,
-      value: true,
+      value: true
     },
     /**
      * Completing a step sound.
      */
     completeSound: {
       type: String,
-      value: '',
+      value: ""
     },
     /**
      * Finished sound file.
      */
     finishedSound: {
       type: String,
-      value: '',
+      value: ""
     },
     /**
      * Distance through the present document so we can visualize
@@ -652,7 +772,7 @@ Polymer({
     scrollPosition: {
       type: Number,
       value: 0,
-      observer: '_scrollChanged',
+      observer: "_scrollChanged"
     },
     /**
      * Track the active page exposed from the progress bar.
@@ -660,7 +780,7 @@ Polymer({
     activePage: {
       type: Number,
       value: 0,
-      observer: '_activePageChanged',
+      observer: "_activePageChanged"
     },
     /**
      * Track the active outline to load data for the progress bar.
@@ -668,7 +788,7 @@ Polymer({
     activeOutline: {
       type: Number,
       value: 0,
-      observer: '_activeOutlineChanged',
+      observer: "_activeOutlineChanged"
     },
     /**
      * List of items in our outline presently.
@@ -677,7 +797,7 @@ Polymer({
       type: Array,
       value: [],
       notify: true,
-      observer: '_outlineItemsChanged',
+      observer: "_outlineItemsChanged"
     },
     /**
      * List of items in our book presently.
@@ -685,14 +805,14 @@ Polymer({
     bookItems: {
       type: Array,
       value: [],
-      notify: true,
+      notify: true
     },
     /**
      * Item responses.
      */
     itemResponses: {
       type: Array,
-      value: [],
+      value: []
     },
     /**
      * Params for the request for outline/book to load.
@@ -701,8 +821,8 @@ Polymer({
       type: Object,
       notify: true,
       value: {
-        "node": null
-      },
+        node: null
+      }
     },
     /**
      * Params for the request for content to load.
@@ -711,80 +831,80 @@ Polymer({
       type: Object,
       notify: true,
       value: {
-        "load": false
-      },
+        load: false
+      }
     },
     /**
      * Returned data for processing.
      */
     outlineData: {
       type: Object,
-      notify: true,
+      notify: true
     },
     /**
      * Returned data for processing.
      */
     bookData: {
       type: Object,
-      notify: true,
+      notify: true
     },
     /**
      * Returned data for processing.
      */
     pageData: {
       type: Object,
-      notify: true,
+      notify: true
     },
     /**
      * data pathway that expects the present outline returned.
      */
     outlinePath: {
-      type: String,
+      type: String
     },
     /**
      * data pathway that expects the book chapters returned.
      */
     bookPath: {
-      type: String,
+      type: String
     },
     /**
      * data pathway that expects the book chapters returned.
      */
     pagePath: {
-      type: String,
+      type: String
     },
     /**
      * Simple flag for having the previous button show.
      */
     hasPrevPage: {
       type: Boolean,
-      notify: true,
+      notify: true
     },
     /**
      * Previous page title.
      */
     prevLabel: {
-      type: String,
+      type: String
     },
     /**
      * Simple flag for having the next button show.
      */
     hasNextPage: {
       type: Boolean,
-      notify: true,
+      notify: true
     },
     /**
      * Next page title.
      */
     nextLabel: {
-      type: String,
+      type: String
     },
     /**
      * Ensure scrolling doesn't influence during a transition.
      */
     resetScroll: {
       type: Boolean,
-      value: false,
+      value: false
     },
     /**
      * Store current page data.
@@ -792,21 +912,21 @@ Polymer({
     currentPageData: {
       type: Object,
       value: {},
-      observer: '_currentPageDataUpdated',
+      observer: "_currentPageDataUpdated"
     },
     /**
      * Store current page data.
      */
     responseData: {
       type: Object,
-      value: {},
+      value: {}
     },
     /**
      * Rebuild outline flag so we know to call it on page build.
      */
     rebuildOutline: {
       type: Boolean,
-      value: false,
+      value: false
     },
     /**
      * Track if we should go full width or not.
@@ -815,8 +935,8 @@ Polymer({
       type: Boolean,
       reflectToAttribute: true,
       value: false,
-      observer: "_fullWidthChanged",
-    },
+      observer: "_fullWidthChanged"
+    }
   },
 
   /**
@@ -828,7 +948,7 @@ Polymer({
     this.$.outlineajax.generateRequest();
 
     // scroll top into view
-    setTimeout( () => {
+    setTimeout(() => {
       this._resetScroll();
     }, 500);
   },
@@ -836,28 +956,28 @@ Polymer({
   /**
    * When element is told to be full width it'll close things.
    */
-  _fullWidthChanged: function (newValue, oldValue) {
+  _fullWidthChanged: function(newValue, oldValue) {
     this.updateStyles();
   },
 
   /**
    * Handle click on dashboard to trigger loading data.
    */
-  progressdashboardopen: function (e) {
+  progressdashboardopen: function(e) {
     this.$.progressdashboard.showProgress = true;
   },
 
   /**
    * Generate path to point to the right endpoint for updating items.
    */
-  _computePageUpdatePath: function (data, sourcePath) {
-    return sourcePath.replace('%', data.id);
+  _computePageUpdatePath: function(data, sourcePath) {
+    return sourcePath.replace("%", data.id);
   },
 
   /**
    * HAX Content Insert.
    */
-  _haxContentInsert: function (e) {
+  _haxContentInsert: function(e) {
     var properties = {};
     // support for properties to be set automatically optionally
     if (typeof e.detail.properties !== typeof undefined) {
@@ -869,11 +989,11 @@ Polymer({
   /**
    * Calculate what would happen if we added a page here.
    */
-  _computeCreateRequestBody: function (currentPageData) {
+  _computeCreateRequestBody: function(currentPageData) {
     if (typeof currentPageData.page !== typeof undefined) {
       return {
-        'bid': currentPageData.page.relationships.book.id,
-        'pid': currentPageData.page.relationships.parent.id
+        bid: currentPageData.page.relationships.book.id,
+        pid: currentPageData.page.relationships.parent.id
       };
     }
   },
@@ -881,36 +1001,35 @@ Polymer({
   /**
    * Simple state toggle for edit button being pressed.
    */
-  _toggleEditMode: function (e) {
+  _toggleEditMode: function(e) {
     this.editMode = !this.editMode;
   },
 
   /**
    * React when state changes for editMode
    */
-  _editModeChanged: function (newValue, oldValue) {
+  _editModeChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
       if (newValue === true) {
         // update the button to be for saving state
-        this.$.editbutton.icon = 'save';
-        this.$.editbutton.title = 'Tap to save content and exit edit mode';
-        this.$.fablabel = 'save changes';
+        this.$.editbutton.icon = "save";
+        this.$.editbutton.title = "Tap to save content and exit edit mode";
+        this.$.fablabel = "save changes";
         // open the haxpanel
-        window.HaxStore.write('editMode', this.editMode, this);
+        window.HaxStore.write("editMode", this.editMode, this);
         // play things in an editable state and let hax take over from here
         this.$.currenttitle.contentEditable = true;
         // block scroll tracking during edit mode
         this.resetScroll = true;
         // notification to user
-        this.$.toast.show('Authoring mode active');
-      }
-      else {
+        this.$.toast.show("Authoring mode active");
+      } else {
         // reset visuals
-        this.$.editbutton.icon = 'editor:mode-edit';
-        this.$.editbutton.title = 'Tap to place content in edit mode.';
-        this.$.fablabel = 'edit mode';
+        this.$.editbutton.icon = "editor:mode-edit";
+        this.$.editbutton.title = "Tap to place content in edit mode.";
+        this.$.fablabel = "edit mode";
         // open the haxpanel
-        window.HaxStore.write('editMode', this.editMode, this);
+        window.HaxStore.write("editMode", this.editMode, this);
         // play things in an editable state and let hax take over from here
         this.$.currenttitle.contentEditable = false;
         // allow scrolling to take place now
@@ -936,7 +1055,7 @@ Polymer({
             // set type and id data from routing and ship this off!
             this.updatePageData.type = this.data.type;
             this.updatePageData.id = this.data.id;
-            this.$.toast.show('Saving...');
+            this.$.toast.show("Saving...");
             this.$.pageupdateajax.generateRequest();
           }
         }
@@ -947,20 +1066,20 @@ Polymer({
   /**
    * Get response back from the server on updating this content.
    */
-  _handleUpdateResponse: function (e) {
+  _handleUpdateResponse: function(e) {
     // @todo error checking here
-    this.$.toast.show('Saved!');
+    this.$.toast.show("Saved!");
   },
 
   /**
    * Change the activeOutline
    */
-  _bookOutlineTap: function (e) {
+  _bookOutlineTap: function(e) {
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     // support switching if the thing clicked has a book index associated
-    if (typeof local.getAttribute('data-book-parent') !== typeof undefined) {
-      this.activeOutline = local.getAttribute('data-book-parent');
+    if (typeof local.getAttribute("data-book-parent") !== typeof undefined) {
+      this.activeOutline = local.getAttribute("data-book-parent");
     }
   },
 
@@ -969,7 +1088,10 @@ Polymer({
    * content as well as outline.
    */
   _activeOutlineChanged: function(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined && typeof oldValue !== typeof undefined) {
+    if (
+      typeof newValue !== typeof undefined &&
+      typeof oldValue !== typeof undefined
+    ) {
       // trigger loading state
       this.rebuildOutline = true;
     }
@@ -980,18 +1102,26 @@ Polymer({
    * the website to break out of the single page application routing.
    */
   _routeChanged: function(data, route, endPoint) {
-    if (typeof route.path === 'string') {
-      if (typeof endPoint === 'string') {
+    if (typeof route.path === "string") {
+      if (typeof endPoint === "string") {
         if (route.path.startsWith(endPoint)) {
           // trigger change if data location changed
-          if (this.pageParams.load != false && typeof data.type !== typeof undefined && typeof data.id !== typeof undefined) {
+          if (
+            this.pageParams.load != false &&
+            typeof data.type !== typeof undefined &&
+            typeof data.id !== typeof undefined
+          ) {
             // prime the page request parameters
             this.pageParams[data.type] = data.id;
             // test if we already have this request
-            if (typeof this.responseData[data.type + data.id] !== typeof undefined) {
-              this.set('currentPageData', this.responseData[data.type + data.id]);
-            }
-            else {
+            if (
+              typeof this.responseData[data.type + data.id] !== typeof undefined
+            ) {
+              this.set(
+                "currentPageData",
+                this.responseData[data.type + data.id]
+              );
+            } else {
               // trigger loading state
               this.$.bodyloading.hidden = false;
               // send request out the door to the actual end point
@@ -1000,17 +1130,30 @@ Polymer({
             // support for being told to rebuild the outline
             if (this.rebuildOutline) {
               // dirty rebuild of params
-              this.set('requestParams', []);
+              this.set("requestParams", []);
               // our page params have the current page in scope
-              this.set('requestParams', this.pageParams);
+              this.set("requestParams", this.pageParams);
               // test if we already have this request
-              if (typeof this.responseData[data.type + '.' + data.id + '.outline'] !== typeof undefined) {
+              if (
+                typeof this.responseData[
+                  data.type + "." + data.id + ".outline"
+                ] !== typeof undefined
+              ) {
                 this.activePage = 0;
-                this.set('outlineItems', []);
-                this.set('outlineItems', this._toArray(this.responseData[data.type + '.' + data.id + '.outline'].items));
-                this.set('outlineTitle', this.responseData[data.type + '.' + data.id + '.outline'].items.outlineTitle);
-              }
-              else {
+                this.set("outlineItems", []);
+                this.set(
+                  "outlineItems",
+                  this._toArray(
+                    this.responseData[data.type + "." + data.id + ".outline"]
+                      .items
+                  )
+                );
+                this.set(
+                  "outlineTitle",
+                  this.responseData[data.type + "." + data.id + ".outline"]
+                    .items.outlineTitle
+                );
+              } else {
                 this.$.outlineloading.hidden = false;
                 this.pageParams.load = false;
                 // send request out the door to the actual end point
@@ -1030,19 +1173,23 @@ Polymer({
   /**
    * Reset scroll position visually and internally data wise.
    */
-  _resetScroll: function () {
+  _resetScroll: function() {
     this.resetScroll = true;
     this.scrollPosition = 0;
-    this.$.anchor.scrollIntoView({block: "start", behavior: "smooth", inline: "nearest"});
+    this.$.anchor.scrollIntoView({
+      block: "start",
+      behavior: "smooth",
+      inline: "nearest"
+    });
   },
 
   /**
    * React to active page being changed.
    */
-  _activePageChanged: function (newValue, oldValue) {
+  _activePageChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
       if (typeof this.outlineItems !== typeof undefined) {
-        this.set('route.path', this.outlineItems[newValue].url);
+        this.set("route.path", this.outlineItems[newValue].url);
         // ensure that we clear any previously set update data
         this.updatePageData.attributes = {};
         this.updatePageData.id = null;
@@ -1050,29 +1197,29 @@ Polymer({
       }
       // scroll into view the container that's about to be swapped out
       if (typeof oldValue !== typeof undefined) {
-
       }
       // ensure that scrolling percentage doesn't increase the next item
       // while active is being changed
-      setTimeout( () => {
+      setTimeout(() => {
         this.resetScroll = false;
       }, 1000);
 
       // manage the previous page button on the UI
       if (newValue == 0) {
         this.hasPrevPage = false;
-      }
-      else {
+      } else {
         this.hasPrevPage = true;
         if (typeof this.outlineItems !== typeof undefined) {
-          this.prevLabel = this.outlineItems[newValue- 1].title;
+          this.prevLabel = this.outlineItems[newValue - 1].title;
         }
       }
       // manage next page button on the UI
-      if (typeof this.outlineItems !== typeof undefined && (newValue + 1) == this.outlineItems.length) {
+      if (
+        typeof this.outlineItems !== typeof undefined &&
+        newValue + 1 == this.outlineItems.length
+      ) {
         this.hasNextPage = false;
-      }
-      else {
+      } else {
         this.hasNextPage = true;
         if (typeof this.outlineItems !== typeof undefined) {
           this.nextLabel = this.outlineItems[newValue + 1].title;
@@ -1084,7 +1231,7 @@ Polymer({
   /**
    * React to items being changed.
    */
-  _outlineItemsChanged: function (newValue, oldValue) {
+  _outlineItemsChanged: function(newValue, oldValue) {
     // these need set immediately
     if (typeof newValue !== typeof undefined && newValue.length != 0) {
       // manage the previous page button on the UI
@@ -1092,7 +1239,7 @@ Polymer({
         this.prevLabel = newValue[this.activePage - 1].title;
       }
       // manage next page button on the UI
-      if ((this.activePage + 1) != newValue.length) {
+      if (this.activePage + 1 != newValue.length) {
         this.nextLabel = newValue[this.activePage + 1].title;
       }
     }
@@ -1102,27 +1249,38 @@ Polymer({
    * Test what milestone has been hit and if we should start to preload
    * items as a result of it!
    */
-  testMilestone: function (e) {
-   // we should preload the next page
-   if (e.detail.percentage == 75) {
-     console.log('@todo preload the next page and present grayed out right of UI.');
-   }
+  testMilestone: function(e) {
+    // we should preload the next page
+    if (e.detail.percentage == 75) {
+      console.log(
+        "@todo preload the next page and present grayed out right of UI."
+      );
+    }
   },
 
   /**
    * Pass down scroll change to the element for progress visualization.
    */
-  _scrollChanged: function (newValue, oldValue) {
+  _scrollChanged: function(newValue, oldValue) {
     // only evaluate scroll if value is greater then previous
-    if (typeof this.outlineItems !== typeof undefined && typeof this.outlineItems[this.activePage] !== typeof undefined && newValue > this.outlineItems[this.activePage].value && !this.resetScroll) {
+    if (
+      typeof this.outlineItems !== typeof undefined &&
+      typeof this.outlineItems[this.activePage] !== typeof undefined &&
+      newValue > this.outlineItems[this.activePage].value &&
+      !this.resetScroll
+    ) {
       // once we get 90% of the way through the material consider it finished
       if (newValue >= 75) {
-        this.outlineItems[this.activePage].value = this.outlineItems[this.activePage].max;
-        this.set('outlineItems.' + this.activePage + '.value', this.outlineItems[this.activePage].max);
-      }
-      else {
+        this.outlineItems[this.activePage].value = this.outlineItems[
+          this.activePage
+        ].max;
+        this.set(
+          "outlineItems." + this.activePage + ".value",
+          this.outlineItems[this.activePage].max
+        );
+      } else {
         this.outlineItems[this.activePage].value = newValue;
-        this.set('outlineItems.' + this.activePage + '.value', newValue);
+        this.set("outlineItems." + this.activePage + ".value", newValue);
       }
     }
   },
@@ -1130,10 +1288,13 @@ Polymer({
   /**
    * Pass down the click to the next page if we have one
    */
-  _nextBtn: function (e) {
+  _nextBtn: function(e) {
     // make sure we are able to move forward more
     if (this.activePage < this.outlineItems.length - 1) {
-      this.set('outlineItems.' + this.activePage + '.value', this.outlineItems[this.activePage].max);
+      this.set(
+        "outlineItems." + this.activePage + ".value",
+        this.outlineItems[this.activePage].max
+      );
       this.activePage = this.activePage + 1;
     }
   },
@@ -1141,7 +1302,7 @@ Polymer({
   /**
    * Pass down the click to the prev page if we have one
    */
-  _prevBtn: function (e) {
+  _prevBtn: function(e) {
     if (this.activePage > 0) {
       this.activePage = this.activePage - 1;
     }
@@ -1150,7 +1311,7 @@ Polymer({
   /**
    * Toggle the book drawer
    */
-  toggleBook: function (e) {
+  toggleBook: function(e) {
     // if we are in edit mode then we ned to close this
     this.$.bookdrawer.toggle();
     this.fullWidth = !this.$.bookdrawer.opened;
@@ -1159,7 +1320,7 @@ Polymer({
   /**
    * Handle the response.
    */
-  handleOutlineResponse: function (obj) {
+  handleOutlineResponse: function(obj) {
     if (typeof obj !== typeof undefined) {
       const response = obj.detail.response.data;
       const items = this._toArray(obj.detail.response.data.items);
@@ -1170,17 +1331,24 @@ Polymer({
         this.activePage = 0;
       }
       // store the response for the outline object data to skip future calls
-      this.set('responseData.' + this.data.type + '.' + this.data.id + '.outline', response);
+      this.set(
+        "responseData." + this.data.type + "." + this.data.id + ".outline",
+        response
+      );
       // set outline items to repaint, aggressively
-      this.set('outlineItems', []);
-      this.set('outlineItems', items);
+      this.set("outlineItems", []);
+      this.set("outlineItems", items);
       // set title to match new parent title
-      this.set('outlineTitle', outlineTitle);
+      this.set("outlineTitle", outlineTitle);
       var activePage = 0;
       // see if we can find a match of routing for an active page
       for (var i in items) {
         // we have a match; usually this would only happen on initial page load
-        if (this.data.type === items[i].type && this.data.id === items[i].id && i !== 0) {
+        if (
+          this.data.type === items[i].type &&
+          this.data.id === items[i].id &&
+          i !== 0
+        ) {
           activePage = parseInt(i);
         }
       }
@@ -1190,7 +1358,7 @@ Polymer({
       this.$.outlineloading.hidden = true;
       this.pageParams.load = true;
       // only repopulate the first time
-      if (this.bookItems.length === 0 ) {
+      if (this.bookItems.length === 0) {
         this.$.bookajax.generateRequest();
         // kick off page request to since we paint it into slot early
         // this allows us to do admin user perm checking on initial load
@@ -1203,9 +1371,9 @@ Polymer({
   /**
    * Handle the response.
    */
-  handleBookResponse: function (obj) {
+  handleBookResponse: function(obj) {
     const response = obj.detail.response.data;
-    this.set('bookItems', this._toArray(response.items));
+    this.set("bookItems", this._toArray(response.items));
     // rip the items into the DOM
     // @todo might need to do the append HTML trick
     this.$.mapmenu.innerHTML = response.render;
@@ -1214,11 +1382,11 @@ Polymer({
   /**
    * Page response callback.
    */
-  handlePageResponse: function (obj) {
+  handlePageResponse: function(obj) {
     if (typeof obj !== typeof undefined) {
       const response = obj.detail.response.data;
-      this.set('responseData.' + this.data.type + this.data.id, response);
-      this.set('currentPageData', response);
+      this.set("responseData." + this.data.type + this.data.id, response);
+      this.set("currentPageData", response);
     }
   },
 
@@ -1227,10 +1395,13 @@ Polymer({
    * for updating parts of the page either from the localcache
    * or from the ajax call.
    */
-  _currentPageDataUpdated: function (newValue, oldValue) {
-    if (typeof newValue !== typeof undefined && typeof newValue.content !== typeof undefined) {
+  _currentPageDataUpdated: function(newValue, oldValue) {
+    if (
+      typeof newValue !== typeof undefined &&
+      typeof newValue.content !== typeof undefined
+    ) {
       // set page title; easiest for sure
-      this.set('currentTitle', newValue.title);
+      this.set("currentTitle", newValue.title);
       // when updating data we need to clear the slot's content
       // while maintaining the data model correctly
       let slot = dom(this.$.haxbody);
@@ -1238,20 +1409,21 @@ Polymer({
         slot.removeChild(slot.firstChild);
       }
       // add HTML to a div which makes it's DOM unpack
-      var tmp = document.createElement('div');
-      let frag = document.createRange().createContextualFragment(newValue.content);
+      var tmp = document.createElement("div");
+      let frag = document
+        .createRange()
+        .createContextualFragment(newValue.content);
       tmp.appendChild(frag);
       // trap for text without wrapping HTML tags
       if (tmp.firstChild == null) {
-        var tmp2 = document.createElement('p');
+        var tmp2 = document.createElement("p");
         tmp2.innerHTML = tmp.innerHTML;
-        tmp = document.createElement('div');
+        tmp = document.createElement("div");
         tmp.innerHTML = tmp2.outerHTML;
-      }
-      else if (typeof tmp.firstChild.length !== typeof undefined) {
-        var tmp2 = document.createElement('p');
+      } else if (typeof tmp.firstChild.length !== typeof undefined) {
+        var tmp2 = document.createElement("p");
         tmp2.innerHTML = tmp.innerHTML;
-        tmp = document.createElement('div');
+        tmp = document.createElement("div");
         tmp.innerHTML = tmp2.outerHTML;
       }
       // same as above but in reverse; now take stuf from what

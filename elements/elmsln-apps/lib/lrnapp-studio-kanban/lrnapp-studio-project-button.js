@@ -22,14 +22,14 @@ Polymer({
       </template>
 `,
 
-  is: 'lrnapp-studio-project-button',
+  is: "lrnapp-studio-project-button",
 
   properties: {
     auto: {
       type: Boolean,
       reflectToAttribute: true,
       value: false,
-      notify: true,
+      notify: true
     },
     displayErrors: {
       type: Boolean,
@@ -41,39 +41,40 @@ Polymer({
     },
     classes: {
       type: String,
-      value: ''
+      value: ""
     },
     icon: {
       type: String,
-      value: ''
+      value: ""
     }
   },
 
   ready: function(e) {
-    this.createProjectsUrl = this.endPoint + '/api/projects/create-stub?token=' + this.csrfToken;
+    this.createProjectsUrl =
+      this.endPoint + "/api/projects/create-stub?token=" + this.csrfToken;
   },
 
-  _createProject: function () {
-    this.shadowRoot.querySelector('#ajaxCreateStub').generateRequest();
+  _createProject: function() {
+    this.shadowRoot.querySelector("#ajaxCreateStub").generateRequest();
   },
 
-  _ajaxCreateStubHandler: function (e) {
+  _ajaxCreateStubHandler: function(e) {
     var status = e.detail.response.status;
     var response = e.detail.response;
     if (status === 201) {
       var project = e.detail.response.data;
       if (project) {
-        this.fire('project-created', {project: project});
+        this.fire("project-created", { project: project });
       }
     }
     // if we have errors to display
-    if (typeof response.errors !== 'undefined') {
-      var ul = document.createElement('ul');
-      var text = '';
+    if (typeof response.errors !== "undefined") {
+      var ul = document.createElement("ul");
+      var text = "";
       response.errors.forEach(function(error) {
-        text = text + ' ' + error;
+        text = text + " " + error;
       });
-      this.shadowRoot.querySelector('#toast').show(text);
+      this.shadowRoot.querySelector("#toast").show(text);
     }
   }
 });

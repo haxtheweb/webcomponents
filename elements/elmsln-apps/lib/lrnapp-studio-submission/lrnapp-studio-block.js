@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import '@polymer/iron-icon/iron-icon.js';
+import "@polymer/iron-icon/iron-icon.js";
 Polymer({
   _template: html`
     <style>
@@ -34,12 +34,10 @@ Polymer({
       </div>
       <h3 hidden\$="[[!title]]">[[title]]</h3>
     </div>
-    <div class="studio-block__content">
-      <slot></slot>
-    </div>
-`,
+    <div class="studio-block__content"><slot></slot></div>
+  `,
 
-  is: 'lrnapp-studio-block',
+  is: "lrnapp-studio-block",
 
   properties: {
     title: {

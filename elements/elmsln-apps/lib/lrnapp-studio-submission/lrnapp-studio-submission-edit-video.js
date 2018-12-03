@@ -1,4 +1,4 @@
-import './lrnapp-studio-submission-edit-add-asset.js';
+import "./lrnapp-studio-submission-edit-add-asset.js";
 Polymer({
   _template: `
     <style>
@@ -57,8 +57,8 @@ Polymer({
     </template>
 `,
 
-  is: 'lrnapp-studio-submission-edit-video',
-  behaviors: [ SecureRequest.xhr ],
+  is: "lrnapp-studio-submission-edit-video",
+  behaviors: [SecureRequest.xhr],
 
   properties: {
     videos: {
@@ -68,11 +68,11 @@ Polymer({
     },
     selectedPage: {
       type: String,
-      value: '0'
+      value: "0"
     },
     newvideo: {
       type: String,
-      value: ''
+      value: ""
     },
     videoGenerateSourceUrl: {
       type: String,
@@ -80,12 +80,12 @@ Polymer({
     }
   },
 
-  _openDialog: function (e) {
+  _openDialog: function(e) {
     document.body.appendChild(this.$.dialog);
     this.$.dialog.open();
   },
 
-  _addImage: function (e) {
+  _addImage: function(e) {
     var root = this;
     var video_url = root.newvideo;
     var normalizedEvent = dom(e);
@@ -93,31 +93,33 @@ Polymer({
     // find out if the component that called this function
     // if it's the iron-ajax then that means we have what we
     // need to add this new video to the array.
-    if (tagname === 'IRON-AJAX') {
+    if (tagname === "IRON-AJAX") {
       var video_src = e.detail.response.data;
       // make sure we upgrade from NULL to an array if needed
-      if (Object.prototype.toString.call(root.videos) != '[object Array]') {
+      if (Object.prototype.toString.call(root.videos) != "[object Array]") {
         this.videos = [];
       }
-      root.push('videos', { video_url: root.newvideo, video_src: video_src });
-      root.newvideo = '';
+      root.push("videos", { video_url: root.newvideo, video_src: video_src });
+      root.newvideo = "";
     }
     // if it wasn't iron ajax, then we need to go get the
     // newvideo's source url from the api
     else {
-      this.shadowRoot.querySelector('#videoGenerateSourceUrl').generateRequest();
+      this.shadowRoot
+        .querySelector("#videoGenerateSourceUrl")
+        .generateRequest();
     }
   },
 
-  _videoDelete: function (e) {
+  _videoDelete: function(e) {
     var root = this;
     var normalizedEvent = dom(e);
-    var deleteIndex = normalizedEvent.localTarget.getAttribute('data-index');
-    root.splice('videos', deleteIndex, 1);
+    var deleteIndex = normalizedEvent.localTarget.getAttribute("data-index");
+    root.splice("videos", deleteIndex, 1);
   },
 
-  ready: function () {
-    const url = this.generateUrl('/api/video/generate-source-url');
-    this.set('videoGenerateSourceUrl', url);
+  ready: function() {
+    const url = this.generateUrl("/api/video/generate-source-url");
+    this.set("videoGenerateSourceUrl", url);
   }
 });

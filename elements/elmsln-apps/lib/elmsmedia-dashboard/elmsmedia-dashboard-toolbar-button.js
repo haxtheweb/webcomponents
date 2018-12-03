@@ -8,12 +8,12 @@ let ElmsmediaDashboardToolbarButton = Polymer({
         display: flex;
         align-items: center;
         justify-content: center;
-        opacity: .7;
+        opacity: 0.7;
       }
       #title {
         font-size: 1em;
         margin: 0;
-        margin-right: .3em;
+        margin-right: 0.3em;
         padding: 0;
       }
     </style>
@@ -21,19 +21,19 @@ let ElmsmediaDashboardToolbarButton = Polymer({
       <h3 id="title">[[title]]</h3>
       <iron-icon id="icon" icon="[[icon]]"></iron-icon>
     </paper-button>
-`,
+  `,
 
-  is: 'elmsmedia-dashboard-toolbar-button',
+  is: "elmsmedia-dashboard-toolbar-button",
 
   properties: {
     title: {
       type: String,
-      value: '',
+      value: ""
     },
     icon: {
       type: String,
-      value: '',
-    },
+      value: ""
+    }
   }
 });
 export { ElmsmediaDashboardToolbarButton };

@@ -1,7 +1,6 @@
-
-  {
-    "data": {
-      "items": [
+{
+  "data": {
+    "items": [
       {
         "title": "Introduction",
         "url": "data/about-elmsln.md",
@@ -93,5 +92,5 @@
         "iconComplete": "check"
       }
     ]
-    }
   }
+}

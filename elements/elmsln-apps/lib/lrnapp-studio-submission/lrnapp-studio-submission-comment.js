@@ -94,27 +94,25 @@ Polymer({
       </paper-card>
 `,
 
-  is: 'lrnapp-studio-submission-comment',
+  is: "lrnapp-studio-submission-comment",
 
   properties: {
-      comment: {
-          type: Object
-      }
+    comment: {
+      type: Object
+    }
   },
 
-  ready: function () {
-      var root = this;
-      var comment = root.shadowRoot.querySelector('#body');
-      console.log(comment);
-      comment.addEventListener('click', function (e) {
-          // var normalizedEvent = dom(e);
-          // console.info('localTarget is:', normalizedEvent.localTarget);
-          var target = e.target
-          if (target) {
-              comment.classList.toggle('nowrap');
-          }
-      });
-
-
+  ready: function() {
+    var root = this;
+    var comment = root.shadowRoot.querySelector("#body");
+    console.log(comment);
+    comment.addEventListener("click", function(e) {
+      // var normalizedEvent = dom(e);
+      // console.info('localTarget is:', normalizedEvent.localTarget);
+      var target = e.target;
+      if (target) {
+        comment.classList.toggle("nowrap");
+      }
+    });
   }
 });

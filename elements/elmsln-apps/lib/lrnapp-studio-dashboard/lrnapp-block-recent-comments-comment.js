@@ -3,7 +3,7 @@ import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-res
 Polymer({
   _template: html`
     <style>
-       :host {
+      :host {
         display: block;
       }
 
@@ -63,12 +63,13 @@ Polymer({
     </style>
     <paper-card elevation="3" class="flex-wrap">
       <div class="card-content">
-        <lrndesign-avatar label="{{commentUser.name}}" src="{{commentUser.avatar}}"></lrndesign-avatar>
+        <lrndesign-avatar
+          label="{{commentUser.name}}"
+          src="{{commentUser.avatar}}"
+        ></lrndesign-avatar>
         <h3>{{commentUser.display_name}}</h3>
         <div class="button-wrapper">
-          <div id="comment" class="inactive">
-            <content></content>
-          </div>
+          <div id="comment" class="inactive"><content></content></div>
           <paper-button id="btn" class="hidden">
             <lrn-icon icon="chevron-down" id="icon"></lrn-icon>
           </paper-button>
@@ -82,59 +83,60 @@ Polymer({
         </template>
       </div>
     </paper-card>
-`,
+  `,
 
-  is: 'lrnapp-block-recent-comments-comment',
+  is: "lrnapp-block-recent-comments-comment",
   behaviors: [IronResizableBehavior],
 
   listeners: {
     "iron-resize": "onHeightChange"
   },
 
-  onHeightChange: function () {
+  onHeightChange: function() {
     var root = this;
-    var height = root.shadowRoot.querySelector('#comment').offsetHeight;
-    var btn = root.shadowRoot.querySelector('#btn');
+    var height = root.shadowRoot.querySelector("#comment").offsetHeight;
+    var btn = root.shadowRoot.querySelector("#btn");
 
-    if (height > 80)
-      btn.classList.toggle('hidden', this.hidden)
+    if (height > 80) btn.classList.toggle("hidden", this.hidden);
   },
 
   properties: {
     commentTitle: {
       type: String,
-      value: 'Comment title',
+      value: "Comment title",
       reflectToAttribute: true,
-      notify: true,
+      notify: true
     },
     actionView: {
       type: String,
       reflectToAttribute: true,
-      notify: true,
+      notify: true
     },
     dateUpdated: {
       type: String,
       reflectToAttribute: true,
-      notify: true,
+      notify: true
     },
     commentUser: {
       type: Object,
       value: {},
       reflectToAttribute: true,
-      notify: true,
-    },
+      notify: true
+    }
   },
 
-  ready: function () {
+  ready: function() {
     var root = this;
-    var comment = root.shadowRoot.querySelector('#comment');
-    var btn = root.shadowRoot.querySelector('#btn');
+    var comment = root.shadowRoot.querySelector("#comment");
+    var btn = root.shadowRoot.querySelector("#btn");
 
-    root.shadowRoot.querySelector('.button-wrapper').addEventListener('click', function (e) {
-      var target = e.target
-      if (target) {
-        comment.classList.toggle('inactive', this.inactive)
-      }
-    });
+    root.shadowRoot
+      .querySelector(".button-wrapper")
+      .addEventListener("click", function(e) {
+        var target = e.target;
+        if (target) {
+          comment.classList.toggle("inactive", this.inactive);
+        }
+      });
   }
 });

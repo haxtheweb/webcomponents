@@ -1,4 +1,18 @@
-import{html,Polymer}from"../node_modules/@polymer/polymer/polymer-legacy.js";import{dom}from"../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import"../node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js";import"../node_modules/@polymer/paper-input/paper-textarea.js";import"../node_modules/@polymer/paper-input/paper-input.js";import"../node_modules/@polymer/paper-checkbox/paper-checkbox.js";import"./simple-colors-picker.js";import"./hax-context-item-menu.js";import"./hax-context-item.js";import"./hax-toolbar.js";Polymer({_template:html`
+import {
+  html,
+  Polymer
+} from "../node_modules/@polymer/polymer/polymer-legacy.js";
+import { dom } from "../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
+import "../node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js";
+import "../node_modules/@polymer/paper-input/paper-textarea.js";
+import "../node_modules/@polymer/paper-input/paper-input.js";
+import "../node_modules/@polymer/paper-checkbox/paper-checkbox.js";
+import "./simple-colors-picker.js";
+import "./hax-context-item-menu.js";
+import "./hax-context-item.js";
+import "./hax-toolbar.js";
+Polymer({
+  _template: html`
     <style>
       :host {
         display: block;
@@ -70,4 +84,105 @@ import{html,Polymer}from"../node_modules/@polymer/polymer/polymer-legacy.js";imp
         hidden$="[[!__hasParentSettingsForm]]"
       ></hax-context-item>
     </hax-toolbar>
-  `,is:"hax-ce-context",properties:{ceSize:{type:Number,value:100,observer:"_ceSizeChanged"},haxProperties:{type:Object,value:{},observer:"_haxPropertiesChanged"},humanName:{type:String}},setHaxProperties:function(props){this.set("haxProperties",{});this.set("haxProperties",props)},_ceSizeChanged:function(newValue,oldValue){if(typeof newValue!==typeof void 0&&typeof oldValue!==typeof void 0){this.fire("hax-context-item-selected",{eventName:"hax-size-change",value:newValue})}},_haxPropertiesChanged:function(newValue,oldValue){if(typeof oldValue!==typeof void 0&&typeof newValue.settings!==typeof void 0){let slot=dom(this);while(null!==slot.firstChild){slot.removeChild(slot.firstChild)}let settings=newValue.settings.quick,configure=newValue.settings.configure,advanced=newValue.settings.advanced;if((configure.length||advanced.length)&&"HR"!==newValue.element.tagName){this.__hasSettingsForm=!0}else{this.__hasSettingsForm=!1}this.__hasParentSettingsForm=!1;if(window.HaxStore.instance.activeContainerNode!==window.HaxStore.instance.activeNode){this.__hasParentSettingsForm=!0;switch(window.HaxStore.instance.activeContainerNode.tagName){case"P":case"UL":case"OL":case"DIV":this.__parentName="Text block settings";break;case"GRID-PLATE":this.__parentName="Layout settings";break;default:this.__parentName=window.HaxStore.instance.activeContainerNode.tagName.replace("-"," ").toLowerCase();+" settings";break;}}if(typeof newValue.gizmo.title===typeof void 0){this.humanName=window.HaxStore.instance.activeNode.tagName.replace("-"," ").toLowerCase()}else{this.humanName=newValue.gizmo.title}for(var item,i=0;i<settings.length;i++){let setting=settings[i];item=document.createElement("hax-context-item");item.eventName="hax-edit-property";item.label=setting.title;item.options=setting.options;item.icon=setting.icon;item.inputMethod=setting.inputMethod;item.required=setting.required;item.options=setting.options;item.validation=setting.validation;item.validationType=setting.validationType;item.description=setting.description;if(typeof setting.property!==typeof void 0){item.propertyToBind=setting.property}else if(typeof setting.attribute!==typeof void 0){item.propertyToBind=setting.attribute}else{item.slotToBind=setting.slot}slot.appendChild(item)}}}});
+  `,
+  is: "hax-ce-context",
+  properties: {
+    ceSize: { type: Number, value: 100, observer: "_ceSizeChanged" },
+    haxProperties: {
+      type: Object,
+      value: {},
+      observer: "_haxPropertiesChanged"
+    },
+    humanName: { type: String }
+  },
+  setHaxProperties: function(props) {
+    this.set("haxProperties", {});
+    this.set("haxProperties", props);
+  },
+  _ceSizeChanged: function(newValue, oldValue) {
+    if (
+      typeof newValue !== typeof void 0 &&
+      typeof oldValue !== typeof void 0
+    ) {
+      this.fire("hax-context-item-selected", {
+        eventName: "hax-size-change",
+        value: newValue
+      });
+    }
+  },
+  _haxPropertiesChanged: function(newValue, oldValue) {
+    if (
+      typeof oldValue !== typeof void 0 &&
+      typeof newValue.settings !== typeof void 0
+    ) {
+      let slot = dom(this);
+      while (null !== slot.firstChild) {
+        slot.removeChild(slot.firstChild);
+      }
+      let settings = newValue.settings.quick,
+        configure = newValue.settings.configure,
+        advanced = newValue.settings.advanced;
+      if (
+        (configure.length || advanced.length) &&
+        "HR" !== newValue.element.tagName
+      ) {
+        this.__hasSettingsForm = !0;
+      } else {
+        this.__hasSettingsForm = !1;
+      }
+      this.__hasParentSettingsForm = !1;
+      if (
+        window.HaxStore.instance.activeContainerNode !==
+        window.HaxStore.instance.activeNode
+      ) {
+        this.__hasParentSettingsForm = !0;
+        switch (window.HaxStore.instance.activeContainerNode.tagName) {
+          case "P":
+          case "UL":
+          case "OL":
+          case "DIV":
+            this.__parentName = "Text block settings";
+            break;
+          case "GRID-PLATE":
+            this.__parentName = "Layout settings";
+            break;
+          default:
+            this.__parentName = window.HaxStore.instance.activeContainerNode.tagName
+              .replace("-", " ")
+              .toLowerCase();
+            +" settings";
+            break;
+        }
+      }
+      if (typeof newValue.gizmo.title === typeof void 0) {
+        this.humanName = window.HaxStore.instance.activeNode.tagName
+          .replace("-", " ")
+          .toLowerCase();
+      } else {
+        this.humanName = newValue.gizmo.title;
+      }
+      for (var item, i = 0; i < settings.length; i++) {
+        let setting = settings[i];
+        item = document.createElement("hax-context-item");
+        item.eventName = "hax-edit-property";
+        item.label = setting.title;
+        item.options = setting.options;
+        item.icon = setting.icon;
+        item.inputMethod = setting.inputMethod;
+        item.required = setting.required;
+        item.options = setting.options;
+        item.validation = setting.validation;
+        item.validationType = setting.validationType;
+        item.description = setting.description;
+        if (typeof setting.property !== typeof void 0) {
+          item.propertyToBind = setting.property;
+        } else if (typeof setting.attribute !== typeof void 0) {
+          item.propertyToBind = setting.attribute;
+        } else {
+          item.slotToBind = setting.slot;
+        }
+        slot.appendChild(item);
+      }
+    }
+  }
+});

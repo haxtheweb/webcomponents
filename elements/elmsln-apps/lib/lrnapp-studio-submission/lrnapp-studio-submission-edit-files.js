@@ -1,5 +1,5 @@
-import './lrnapp-studio-submission-edit-add-asset.js';
-import './lrnapp-studio-submission-edit-file.js';
+import "./lrnapp-studio-submission-edit-add-asset.js";
+import "./lrnapp-studio-submission-edit-file.js";
 Polymer({
   _template: `
     <style>
@@ -61,8 +61,8 @@ Polymer({
     </paper-dialog>
 `,
 
-  is: 'lrnapp-studio-submission-edit-files',
-  behaviors: [ SecureRequest.xhr ],
+  is: "lrnapp-studio-submission-edit-files",
+  behaviors: [SecureRequest.xhr],
 
   properties: {
     files: {
@@ -77,36 +77,33 @@ Polymer({
     uploadUrl: {
       type: String,
       value: null,
-      observer: 'log'
+      observer: "log"
     },
     fileTypes: {
       type: String,
-      value: ''
+      value: ""
     }
   },
 
-  observers: [
-    '_filesChanged(files)'
-  ],
+  observers: ["_filesChanged(files)"],
 
-  _filesChanged: function (files) {
-  },
+  _filesChanged: function(files) {},
 
-  _addImage: function (e) {
+  _addImage: function(e) {
     document.body.appendChild(this.$.dialog);
     this.$.dialog.open();
   },
 
-  _selectPage: function (e) {
+  _selectPage: function(e) {
     var root = this;
     var normalizedEvent = dom(e);
-    var page = normalizedEvent.localTarget.getAttribute('data-page');
-    root.set('selectedPage', page);
+    var page = normalizedEvent.localTarget.getAttribute("data-page");
+    root.set("selectedPage", page);
   },
 
-  _handleImageUploadSuccess: function (e) {
+  _handleImageUploadSuccess: function(e) {
     var root = this;
-    root.set('selectedPage', 0);
+    root.set("selectedPage", 0);
     var files = [];
     var response = e.detail.xhr.response;
     // normalize response string
@@ -115,37 +112,35 @@ Polymer({
     if (response.data.file) {
       var file = response.data.file;
       if (root.files === null) {
-        this.set('files', []);
+        this.set("files", []);
       }
-      root.push('files', file);
+      root.push("files", file);
       this.$.dialog.close();
     }
   },
 
-  _deleteImage: function (e) {
+  _deleteImage: function(e) {
     var root = this;
     var normalizedEvent = dom(e);
-    var deleteIndex = normalizedEvent.localTarget.getAttribute('data-index');
-    root.splice('files', Number(deleteIndex), 1);
+    var deleteIndex = normalizedEvent.localTarget.getAttribute("data-index");
+    root.splice("files", Number(deleteIndex), 1);
   },
 
-  _canUpload: function () {
+  _canUpload: function() {
     const uploadUrl = this.uploadUrl;
     if (uploadUrl !== null) {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   },
 
-  log: function (property) {
-  },
+  log: function(property) {},
 
-  ready: function () {
-    const uploadUrl = this.generateUrl('/api/files');
+  ready: function() {
+    const uploadUrl = this.generateUrl("/api/files");
     if (uploadUrl !== null) {
-      this.set('uploadUrl', uploadUrl);
+      this.set("uploadUrl", uploadUrl);
     }
   }
 });

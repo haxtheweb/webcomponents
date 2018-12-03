@@ -9,7 +9,7 @@ Polymer({
     <lrn-markdown-editor content="{{content}}"></lrn-markdown-editor>
 `,
 
-  is: 'lrnapp-studio-submission-edit-textarea',
+  is: "lrnapp-studio-submission-edit-textarea",
 
   properties: {
     content: {

@@ -1,4 +1,4 @@
-import './lrnapp-studio-submission-media-editoverlay.js';
+import "./lrnapp-studio-submission-media-editoverlay.js";
 Polymer({
   _template: `
     <style>
@@ -27,7 +27,7 @@ Polymer({
     </lrnapp-studio-submission-media-editoverlay>
 `,
 
-  is: 'lrnapp-studio-submission-edit-file',
+  is: "lrnapp-studio-submission-edit-file",
 
   properties: {
     file: {
@@ -35,18 +35,17 @@ Polymer({
     },
     embedcode: {
       type: String,
-      computed: '_computeEmbedCode(file)'
+      computed: "_computeEmbedCode(file)"
     }
   },
 
-  observers: [
-  ],
+  observers: [],
 
-  _computeEmbedCode: function (file) {
-    return '[Alternative Text Here](' + file.url + ')';
+  _computeEmbedCode: function(file) {
+    return "[Alternative Text Here](" + file.url + ")";
   },
 
-  _delete: function (e) {
-    this.fire('deleted');
+  _delete: function(e) {
+    this.fire("deleted");
   }
 });

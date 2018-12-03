@@ -58,36 +58,36 @@ Polymer({
     </paper-dialog>
 `,
 
-  is: 'lrnapp-media-grid',
+  is: "lrnapp-media-grid",
 
   listeners: {
-    'click': '_triggerDialog',
+    click: "_triggerDialog"
   },
 
   properties: {
     sourcePath: {
       type: String,
-      notify: true,
+      notify: true
     },
     images: {
       type: Array,
-      notify: true,
+      notify: true
     },
     activeImage: {
       type: String,
       reflectToAttribute: true,
-      notify: true,
+      notify: true
     },
     activeTitle: {
       type: String,
       reflectToAttribute: true,
-      notify: true,
+      notify: true
     },
     activeUrl: {
       type: String,
       reflectToAttribute: true,
-      notify: true,
-    },
+      notify: true
+    }
   },
 
   /**
@@ -97,18 +97,18 @@ Polymer({
   _triggerDialog: function(e) {
     let root = this;
     // make sure we found an image as we're going through here
-    if (e.target.nextElementSibling.nodeName == 'IMG') {
+    if (e.target.nextElementSibling.nodeName == "IMG") {
       root.activeImage = e.target.nextElementSibling.src;
       root.activeTitle = e.target.parentElement.title;
       root.activeUrl = e.target.parentElement.openUrl;
-      this.shadowRoot.querySelector('#dialog').toggle();
+      this.shadowRoot.querySelector("#dialog").toggle();
     }
   },
 
   _loadMoreData: function(e) {
     let root = this;
-    root.shadowRoot.querySelector('#ajax').generateRequest();
-    root.shadowRoot.querySelector('#threshold').clearTriggers();
+    root.shadowRoot.querySelector("#ajax").generateRequest();
+    root.shadowRoot.querySelector("#threshold").clearTriggers();
   },
 
   /**

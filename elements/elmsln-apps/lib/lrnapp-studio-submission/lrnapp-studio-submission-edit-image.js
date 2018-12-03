@@ -1,4 +1,4 @@
-import './lrnapp-studio-submission-media-editoverlay.js';
+import "./lrnapp-studio-submission-media-editoverlay.js";
 Polymer({
   _template: `
     <style>
@@ -20,33 +20,33 @@ Polymer({
     </lrnapp-studio-submission-media-editoverlay>
 `,
 
-  is: 'lrnapp-studio-submission-edit-image',
+  is: "lrnapp-studio-submission-edit-image",
 
   properties: {
     image: {
       type: Object,
-      notify: true,
+      notify: true
     },
     thumbnail: {
       type: String,
       notify: true,
-      computed: '_getThumbnail(image)'
+      computed: "_getThumbnail(image)"
     },
     embedcode: {
       type: String,
-      computed: '_computeEmbedCode(image)'
+      computed: "_computeEmbedCode(image)"
     }
   },
 
-  _getThumbnail: function (image) {
+  _getThumbnail: function(image) {
     return image.url;
   },
 
-  _computeEmbedCode: function (image) {
-    return '![Alternative Text Here](' + image.url + ')';
+  _computeEmbedCode: function(image) {
+    return "![Alternative Text Here](" + image.url + ")";
   },
 
-  _delete: function (e) {
-    this.fire('deleted');
+  _delete: function(e) {
+    this.fire("deleted");
   }
 });

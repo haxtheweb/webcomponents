@@ -28,10 +28,10 @@
       }
     },
     "slots": {
-      "content" : {
+      "content": {
         "callback": "_mooc_content_render_content"
       },
-      "blocks" : {
+      "blocks": {
         "callback": "_mooc_content_get_blocks"
       }
     }

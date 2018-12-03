@@ -113,27 +113,27 @@ Polymer({
     </template>
 `,
 
-  is: 'lrnapp-block-recent-project',
+  is: "lrnapp-block-recent-project",
 
   properties: {
     sourcePath: {
       type: String,
-      notify: true,
+      notify: true
     },
     response: {
       type: Object,
-      notify: true,
+      notify: true
     },
     project: {
       type: Object,
-      notify: true,
+      notify: true
     },
     hasProject: {
       type: Boolean,
       notify: true,
       reflectToAttribute: true,
-      computed: '_getHasProject(project)',
-    },
+      computed: "_getHasProject(project)"
+    }
   },
 
   /**

@@ -24,23 +24,48 @@ let ElmsmediaDashboard = Polymer({
     </style>
 
     <app-location route="{{route}}"></app-location>
-    <app-route route="{{route}}" pattern="/:page" data="{{data}}" tail="{{tail}}" query-params="{{queryParams}}"></app-route>
+    <app-route
+      route="{{route}}"
+      pattern="/:page"
+      data="{{data}}"
+      tail="{{tail}}"
+      query-params="{{queryParams}}"
+    ></app-route>
 
     <div id="toolbar">
-      <elmsmedia-dashboard-toolbar-filters filters="[[queryParams]]"></elmsmedia-dashboard-toolbar-filters>
-      <elmsmedia-dashboard-toolbar-button icon="filter-list" title="Filter" on-click="toggleFilters"></elmsmedia-dashboard-toolbar-button>
-      <elmsmedia-dashboard-toolbar-button icon="search" title="Search" on-click="toggleSearch"></elmsmedia-dashboard-toolbar-button>
+      <elmsmedia-dashboard-toolbar-filters
+        filters="[[queryParams]]"
+      ></elmsmedia-dashboard-toolbar-filters>
+      <elmsmedia-dashboard-toolbar-button
+        icon="filter-list"
+        title="Filter"
+        on-click="toggleFilters"
+      ></elmsmedia-dashboard-toolbar-button>
+      <elmsmedia-dashboard-toolbar-button
+        icon="search"
+        title="Search"
+        on-click="toggleSearch"
+      ></elmsmedia-dashboard-toolbar-button>
     </div>
 
     <paper-dialog id="filterDialog" with-backdrop="">
       <h3>Filter Media</h3>
-      <elmsmedia-dashboard-filters form="{{queryParams}}" on-filter-changed="_filterChanged"></elmsmedia-dashboard-filters>
+      <elmsmedia-dashboard-filters
+        form="{{queryParams}}"
+        on-filter-changed="_filterChanged"
+      ></elmsmedia-dashboard-filters>
       <div class="buttons">
         <paper-button dialog-dismiss="">Dismiss dialog</paper-button>
       </div>
     </paper-dialog>
 
-    <hax-app id="haxSource" auto="" query-param="title" request-end-point="[[requestEndPoint]]" request-params="{{queryParams}}" data="{
+    <hax-app
+      id="haxSource"
+      auto=""
+      query-param="title"
+      request-end-point="[[requestEndPoint]]"
+      request-params="{{queryParams}}"
+      data="{
       &quot;root&quot;: &quot;list&quot;,
       &quot;gizmoType&quot;: &quot;video&quot;,
       &quot;url&quot;: &quot;http://media.elmsln.local/entity_iframe/node/&quot;,
@@ -48,50 +73,50 @@ let ElmsmediaDashboard = Polymer({
       &quot;title&quot;: &quot;attributes.title&quot;,
       &quot;description&quot;: &quot;attributes.body&quot;,
       &quot;image&quot;: &quot;display.image&quot;,
-      &quot;customGizmoType&quot;: &quot;type&quot;}"></hax-app>
-`,
+      &quot;customGizmoType&quot;: &quot;type&quot;}"
+    ></hax-app>
+  `,
 
-  is: 'elmsmedia-dashboard',
+  is: "elmsmedia-dashboard",
 
   properties: {
     requestEndPoint: {
       type: String,
-      value: ''
+      value: ""
     },
     queryParams: {
       type: Object,
-      value: {},
+      value: {}
     }
   },
 
-  _computeRequestEndPoint: function (endPoint, csrfToken) {
-    return `${endPoint}/api/data?token=${csrfToken}`
+  _computeRequestEndPoint: function(endPoint, csrfToken) {
+    return `${endPoint}/api/data?token=${csrfToken}`;
   },
 
   /**
    * Listen for filter changes and reset the page count
    * @todo unsetting this object does not always work
    */
-  _filterChanged: function (e) {
+  _filterChanged: function(e) {
     let newParams = Object.assign({}, e.detail);
     newParams = this._cleanParams(newParams);
-    this.set('queryParams', {});
-    this.set('queryParams', newParams);
+    this.set("queryParams", {});
+    this.set("queryParams", newParams);
   },
 
   /**
    * Helper function to prepare parameters object for the url
    * @todo this is horribly written
    */
-  _cleanParams: function (params) {
+  _cleanParams: function(params) {
     let newParams = {};
     for (x in params) {
       const prop = x;
       const value = params[x];
-      if (value === '' || value === null || value === undefined) {
+      if (value === "" || value === null || value === undefined) {
         // do nothing
-      }
-      else {
+      } else {
         // add the clean property to the new params object
         newParams[prop] = value;
       }
@@ -99,37 +124,40 @@ let ElmsmediaDashboard = Polymer({
     return newParams;
   },
 
-  toggleSearch: function (e) {
+  toggleSearch: function(e) {
     const searchEnabled = this.$.haxSource.search;
     this.$.haxSource.search = !searchEnabled;
   },
 
-  toggleFilters: function (e) {
+  toggleFilters: function(e) {
     this.$.filterDialog.toggle();
   },
 
-  removeFilter: function (path, propValue) {
+  removeFilter: function(path, propValue) {
     const currentParams = Object.assign({}, this.queryParams);
     // get the current value of the filter
     const currentValue = _.get(currentParams, path);
     // remove the specified filter from the current value
     // by converting to an array and filtering it
-    const newValue = currentValue.split(',').filter(v => v !== propValue).join(',');
+    const newValue = currentValue
+      .split(",")
+      .filter(v => v !== propValue)
+      .join(",");
     const newParams = _.set(currentParams, path, newValue);
     const newCleanParams = this._cleanParams(newParams);
-    this.set('queryParams', {});
-    this.set('queryParams', newCleanParams);
+    this.set("queryParams", {});
+    this.set("queryParams", newCleanParams);
   },
 
-  ready: function () {
-    this.addEventListener('remove-filter', (e) => {
+  ready: function() {
+    this.addEventListener("remove-filter", e => {
       this.removeFilter(e.detail.path, e.detail.propValue);
     });
   },
-  detached: function () {
-    this.removeEventListener('remove-filter', (e) => {
+  detached: function() {
+    this.removeEventListener("remove-filter", e => {
       this.removeFilter(e.detail.path, e.detail.propValue);
     });
-  },
+  }
 });
 export { ElmsmediaDashboard };

@@ -1,6 +1,6 @@
-import './lrnapp-studio-submission-display.js';
-import './lrnapp-studio-submission-edit.js';
-import './lrnapp-studio-submission-critique.js';
+import "./lrnapp-studio-submission-display.js";
+import "./lrnapp-studio-submission-edit.js";
+import "./lrnapp-studio-submission-critique.js";
 Polymer({
   _template: `
     <style>
@@ -15,7 +15,7 @@ Polymer({
       </iron-pages>
 `,
 
-  is: 'lrnapp-studio-submission-object',
+  is: "lrnapp-studio-submission-object",
 
   properties: {
     submission: {
@@ -33,32 +33,29 @@ Polymer({
     }
   },
 
-  observers: [
-    '_selectedPageChanged(edit, submission.meta.submissionType)'
-  ],
+  observers: ["_selectedPageChanged(edit, submission.meta.submissionType)"],
 
-  _selectedPageChanged: function (edit, type) {
+  _selectedPageChanged: function(edit, type) {
     var selected = 0;
     if (edit) {
       switch (type) {
-        case 'default':
+        case "default":
           selected = 1;
           break;
-        case 'critique':
+        case "critique":
           selected = 2;
           break;
       }
-    }
-    else {
+    } else {
       switch (type) {
-        case 'default':
+        case "default":
           selected = 0;
           break;
-        case 'critique':
+        case "critique":
           selected = 2;
           break;
       }
     }
-    this.set('selectedPage', selected);
+    this.set("selectedPage", selected);
   }
 });

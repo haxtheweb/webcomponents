@@ -23,16 +23,16 @@ Polymer({
     </iron-list>
 `,
 
-  is: 'lrnapp-block-need-feedback',
+  is: "lrnapp-block-need-feedback",
 
   properties: {
     sourcePath: {
       type: String,
-      notify: true,
+      notify: true
     },
     response: {
       type: Array,
-      notify: true,
+      notify: true
     }
   },
 
@@ -44,9 +44,10 @@ Polymer({
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     // this will have the id of the current submission
-    var active = local.getAttribute('data-submission-id');
+    var active = local.getAttribute("data-submission-id");
     // @todo need a cleaner integration but this at least goes the right place for now
-    window.location.href = this.basePath + 'lrnapp-studio-submission/submissions/' + active;
+    window.location.href =
+      this.basePath + "lrnapp-studio-submission/submissions/" + active;
   },
 
   handleResponse: function(e) {

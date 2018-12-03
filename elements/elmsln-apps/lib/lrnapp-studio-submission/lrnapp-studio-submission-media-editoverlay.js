@@ -65,7 +65,7 @@ Polymer({
     </template>
 `,
 
-  is: 'lrnapp-studio-submission-media-editoverlay',
+  is: "lrnapp-studio-submission-media-editoverlay",
 
   properties: {
     embedcode: {
@@ -73,12 +73,12 @@ Polymer({
     }
   },
 
-  _embedClicked: function (e) {
+  _embedClicked: function(e) {
     document.body.appendChild(this.shadowRoot.querySelector("#dialog"));
-    this.shadowRoot.querySelector('#dialog').open();
+    this.shadowRoot.querySelector("#dialog").open();
   },
 
-  _deleteClicked: function (e) {
-    this.fire('delete');
+  _deleteClicked: function(e) {
+    this.fire("delete");
   }
 });

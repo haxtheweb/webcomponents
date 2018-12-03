@@ -21,14 +21,14 @@ Polymer({
     </template>
 `,
 
-  is: 'lrnapp-studio-assignment-button',
+  is: "lrnapp-studio-assignment-button",
 
   properties: {
     auto: {
       type: Boolean,
       reflectToAttribute: true,
       value: false,
-      notify: true,
+      notify: true
     },
     displayErrors: {
       type: Boolean,
@@ -65,32 +65,33 @@ Polymer({
     csrfToken: String
   },
 
-  ready: function (e) {
+  ready: function(e) {
     // @todo need to load a assignment if one exists ahead of time
-    this.createAssignmentUrl = this.endPoint + '/api/assignments/create-stub?token=' + this.csrfToken;
+    this.createAssignmentUrl =
+      this.endPoint + "/api/assignments/create-stub?token=" + this.csrfToken;
   },
 
-  _createAssignment: function () {
-    this.shadowRoot.querySelector('#ajaxCreateStub').generateRequest();
+  _createAssignment: function() {
+    this.shadowRoot.querySelector("#ajaxCreateStub").generateRequest();
   },
 
-  _ajaxCreateStubHandler: function (e) {
+  _ajaxCreateStubHandler: function(e) {
     var status = e.detail.response.status;
     var response = e.detail.response;
     if (status === 201) {
       var assignment = e.detail.response.data;
       if (assignment) {
-        this.fire('assignment-created', { assignment: assignment });
+        this.fire("assignment-created", { assignment: assignment });
       }
     }
     // if we have errors to display
-    if (typeof response.errors !== 'undefined') {
-      var ul = document.createElement('ul');
-      var text = '';
-      response.errors.forEach(function (error) {
-        text = text + ' ' + error;
+    if (typeof response.errors !== "undefined") {
+      var ul = document.createElement("ul");
+      var text = "";
+      response.errors.forEach(function(error) {
+        text = text + " " + error;
       });
-      this.shadowRoot.querySelector('#toast').show(text);
+      this.shadowRoot.querySelector("#toast").show(text);
     }
   }
 });

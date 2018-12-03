@@ -1,5 +1,5 @@
-import './lrnapp-studio-submission-edit-add-asset.js';
-import './lrnapp-studio-submission-edit-image.js';
+import "./lrnapp-studio-submission-edit-add-asset.js";
+import "./lrnapp-studio-submission-edit-image.js";
 Polymer({
   _template: `
     <style>
@@ -61,8 +61,8 @@ Polymer({
     </paper-dialog>
 `,
 
-  is: 'lrnapp-studio-submission-edit-images',
-  behaviors: [ SecureRequest.xhr ],
+  is: "lrnapp-studio-submission-edit-images",
+  behaviors: [SecureRequest.xhr],
 
   properties: {
     images: {
@@ -80,21 +80,21 @@ Polymer({
     }
   },
 
-  _addImage: function (e) {
+  _addImage: function(e) {
     document.body.appendChild(this.$.dialog);
     this.$.dialog.open();
   },
 
-  _selectPage: function (e) {
+  _selectPage: function(e) {
     var root = this;
     var normalizedEvent = dom(e);
-    var page = normalizedEvent.localTarget.getAttribute('data-page');
-    root.set('selectedPage', page);
+    var page = normalizedEvent.localTarget.getAttribute("data-page");
+    root.set("selectedPage", page);
   },
 
-  _handleImageUploadSuccess: function (e) {
+  _handleImageUploadSuccess: function(e) {
     var root = this;
-    root.set('selectedPage', 0);
+    root.set("selectedPage", 0);
     var images = [];
     var response = e.detail.xhr.response;
     // normalize response string
@@ -107,12 +107,11 @@ Polymer({
       // images array and if it is replace it.
       var replacement = false;
       if (root.images) {
-        images = root.images.map(function (image) {
+        images = root.images.map(function(image) {
           if (image.fid === file.fid) {
             replacement = true;
             return file;
-          }
-          else {
+          } else {
             return image;
           }
         });
@@ -121,24 +120,24 @@ Polymer({
       if (!replacement) {
         images.push(file);
       }
-      this.set('images', images);
+      this.set("images", images);
       this.$.dialog.close();
     }
   },
 
-  _deleteImage: function (e) {
+  _deleteImage: function(e) {
     var root = this;
     var normalizedEvent = dom(e);
     // console.log(normalizedEvent.localTarget);
-    var deleteIndex = normalizedEvent.localTarget.getAttribute('data-index');
+    var deleteIndex = normalizedEvent.localTarget.getAttribute("data-index");
     // console.log(deleteIndex);
-    root.splice('images', deleteIndex, 1);
+    root.splice("images", deleteIndex, 1);
   },
 
   ready: function() {
-    const uploadUrl = this.generateUrl('/api/files');
+    const uploadUrl = this.generateUrl("/api/files");
     if (uploadUrl !== null) {
-      this.set('uploadUrl', uploadUrl);
+      this.set("uploadUrl", uploadUrl);
     }
   }
 });

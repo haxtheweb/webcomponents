@@ -1,4 +1,4 @@
-import './lrnapp-studio-submission-edit-add-asset.js';
+import "./lrnapp-studio-submission-edit-add-asset.js";
 Polymer({
   _template: `
     <style>
@@ -55,7 +55,7 @@ Polymer({
     </paper-dialog>
 `,
 
-  is: 'lrnapp-studio-submission-edit-links',
+  is: "lrnapp-studio-submission-edit-links",
 
   properties: {
     links: {
@@ -65,29 +65,29 @@ Polymer({
     },
     newlink: {
       type: String,
-      value: ''
+      value: ""
     }
   },
 
-  _openDialog: function () {
+  _openDialog: function() {
     document.body.appendChild(this.$.dialog);
     this.$.dialog.open();
   },
 
-  _createLink: function (e) {
+  _createLink: function(e) {
     var root = this;
     var links = root.links;
     if (links === null) {
-      root.set('links', []);
+      root.set("links", []);
     }
-    root.push('links', { url: root.newlink });
-    root.newlink = '';
+    root.push("links", { url: root.newlink });
+    root.newlink = "";
   },
 
-  _deleteLink: function (e) {
+  _deleteLink: function(e) {
     var root = this;
     var normalizedEvent = dom(e);
-    var deleteIndex = normalizedEvent.localTarget.getAttribute('data-index');
-    root.splice('links', deleteIndex, 1);
+    var deleteIndex = normalizedEvent.localTarget.getAttribute("data-index");
+    root.splice("links", deleteIndex, 1);
   }
 });

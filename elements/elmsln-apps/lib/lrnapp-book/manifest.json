@@ -33,22 +33,22 @@
       }
     },
     "properties": {
-      "request-params" : {
+      "request-params": {
         "callback": "_lrnapp_book_render_active_params"
       },
-      "current-title" : {
+      "current-title": {
         "callback": "_lrnapp_book_render_active_title"
       },
-      "outline-title" : {
+      "outline-title": {
         "callback": "_lrnapp_book_render_outline_title"
       },
-      "book-title" : {
+      "book-title": {
         "callback": "_lrnapp_book_render_book_title"
       },
-      "complete-sound" : {
+      "complete-sound": {
         "callback": "_lrnapp_book_complete_sound"
       },
-      "finished-sound" : {
+      "finished-sound": {
         "callback": "_lrnapp_book_finish_sound"
       },
       "app-store-connection": {
@@ -56,7 +56,7 @@
       }
     },
     "slots": {
-      "content" : {
+      "content": {
         "callback": "_lrnapp_book_render_active_node"
       }
     }

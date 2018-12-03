@@ -1,4 +1,4 @@
-import './lrnapp-cis-course-card.js';
+import "./lrnapp-cis-course-card.js";
 /**
  `lrnapp-cis`
  A learning application for visualizing course information and listing.
@@ -245,26 +245,26 @@ Polymer({
     <paper-toast id="toast"></paper-toast>
 `,
 
-  is: 'lrnapp-cis',
+  is: "lrnapp-cis",
 
   properties: {
     /**
      * The load initial data
      */
     _cisResponse: {
-      type: Object,
+      type: Object
     },
     /**
      * Load individual course data
      */
     _courseResponse: {
-      type: Object,
+      type: Object
     },
     /**
      * Load service creation response
      */
     _makeServiceResponse: {
-      type: Object,
+      type: Object
     },
     /**
      * The courses to render; potentially filtered
@@ -272,7 +272,7 @@ Polymer({
     courses: {
       type: Array,
       value: [],
-      computed: '_coursesCompute(originalCourses, queryParams)'
+      computed: "_coursesCompute(originalCourses, queryParams)"
     },
     /**
      * The original courses array; used to filter against
@@ -280,83 +280,81 @@ Polymer({
     originalCourses: {
       type: Array,
       value: [],
-      notify: true,
+      notify: true
     },
     /**
      * The programs to render
      */
     programs: {
       type: Array,
-      value: [],
+      value: []
     },
     /**
      * The academics to render
      */
     academics: {
       type: Array,
-      value: [],
+      value: []
     },
     /**
      * sourcePath for data.
      */
     sourcePath: {
-      type: String,
+      type: String
     },
     /**
      * pathway to access info about a single course.
      */
     courseDataPath: {
-      type: String,
+      type: String
     },
     /**
      * pathway to creating new service instances
      */
     makeServicePath: {
-      type: String,
+      type: String
     },
     /**
      * Endpoint for data.
      */
     endPoint: {
       type: String,
-      value: '/',
+      value: "/"
     },
     /**
      * base path for the app
      */
     basePath: {
       type: String,
-      value: '/',
+      value: "/"
     },
     /**
      * Active / clicked course.
      */
     activeCourse: {
       type: Array,
-      value: null,
+      value: null
     },
     queryParams: {
       type: Object,
-      notify: true,
-    },
+      notify: true
+    }
   },
 
   listeners: {
-    'route-change': '_routeChange',
+    "route-change": "_routeChange"
   },
 
-  observers: [
-    '_routeChanged(route, endPoint)',
-  ],
+  observers: ["_routeChanged(route, endPoint)"],
 
   // If the current route is outside the scope of our app
   // then allow the website to break out of the single page
   // application routing
   _routeChanged: function(route, endPoint) {
-    if (typeof route.path === 'string') {
-      if (typeof endPoint === 'string') {
+    if (typeof route.path === "string") {
+      if (typeof endPoint === "string") {
         // ignore "home page" as well since that's our path
-        if (route.path.startsWith(endPoint) || route.path == '/') {
+        if (route.path.startsWith(endPoint) || route.path == "/") {
           return;
         }
       }
@@ -372,16 +370,16 @@ Polymer({
   _routeChange: function(e) {
     var details = e.detail;
     if (typeof details.queryParams.course !== typeof undefined) {
-      this.set('queryParams.course', details.queryParams.course);
+      this.set("queryParams.course", details.queryParams.course);
     }
     if (typeof details.queryParams.academic !== typeof undefined) {
-      this.set('queryParams.academic', details.queryParams.academic);
+      this.set("queryParams.academic", details.queryParams.academic);
     }
     if (typeof details.queryParams.program !== typeof undefined) {
-      this.set('queryParams.program', details.queryParams.program);
+      this.set("queryParams.program", details.queryParams.program);
     }
     if (typeof details.data.page !== typeof undefined) {
-      this.set('data.page', details.data.page);
+      this.set("data.page", details.data.page);
     }
   },
 
@@ -401,8 +399,8 @@ Polymer({
     // get the CIS response's data and convert to array ahead of time
     var response = this._makeServiceResponse;
     let activeCourse = this.__addServiceLinks(response.data.course);
-    this.set('activeCourse', []);
-    this.set('activeCourse', activeCourse);
+    this.set("activeCourse", []);
+    this.set("activeCourse", activeCourse);
     this.$.toast.show(response.message);
   },
 
@@ -413,8 +411,8 @@ Polymer({
     // get the CIS response's data and convert to array ahead of time
     var activeCourse = this._courseResponse.data.course;
     this.__addServiceLinks(activeCourse);
-    this.set('activeCourse', []);
-    this.set('activeCourse', activeCourse);
+    this.set("activeCourse", []);
+    this.set("activeCourse", activeCourse);
     this.$.loadingCourse.hidden = true;
   },
 
@@ -429,22 +427,30 @@ Polymer({
     // loop our services to see what we should add as options
     for (var key in this.services) {
       // if it's not in the topology that means it can be added
-      if (typeof courseObject.topology.Network[this.services[key].attributes.machine_name] === typeof undefined) {
+      if (
+        typeof courseObject.topology.Network[
+          this.services[key].attributes.machine_name
+        ] === typeof undefined
+      ) {
         // if we get a miss that means we should add a "Add this" version
-        courseObject.topology.Network[this.services[key].attributes.machine_name] = {
-          'color': this.services[key].attributes.color,
-          'distro': this.services[key].attributes.distro,
-          'icon': this.services[key].attributes.icon,
-          'machine_name': this.services[key].attributes.machine_name,
-          'title': this.services[key].attributes.title,
-          'url': this.services[key].attributes.url,
-          'weight': this.services[key].attributes.weight,
-          '_exists': false,
+        courseObject.topology.Network[
+          this.services[key].attributes.machine_name
+        ] = {
+          color: this.services[key].attributes.color,
+          distro: this.services[key].attributes.distro,
+          icon: this.services[key].attributes.icon,
+          machine_name: this.services[key].attributes.machine_name,
+          title: this.services[key].attributes.title,
+          url: this.services[key].attributes.url,
+          weight: this.services[key].attributes.weight,
+          _exists: false
         };
       }
     }
     // convert to array after keys in place for the object
-    courseObject.topology.Network = this._toArray(courseObject.topology.Network);
+    courseObject.topology.Network = this._toArray(
+      courseObject.topology.Network
+    );
     // sort items based on weight of the things in the network
     // so we have a consistent order to things
     courseObject.topology.Network.sort(function(a, b) {
@@ -461,17 +467,17 @@ Polymer({
     var program = {};
     var academic = {};
     var tmp = {
-      "courses": [],
-      "programs": [],
-      "academics": [],
+      courses: [],
+      programs: [],
+      academics: []
     };
     var programs = [];
     var academics = [];
     // get the CIS response's data and convert to array ahead of time
     var courses = this._toArray(this._cisResponse.data.courses);
-    this.set('services', this._toArray(this._cisResponse.data.services));
+    this.set("services", this._toArray(this._cisResponse.data.services));
     // original = active off the bat then we apply filters later to chang this
-    this.set('originalCourses', courses);
+    this.set("originalCourses", courses);
     // figure out courses, programs and academics
     for (var index = 0; index < courses.length; index++) {
       course = courses[index];
@@ -490,8 +496,8 @@ Polymer({
       academics.push(element);
     });
     this.$.loading.hidden = true;
-    this.set('academics', academics);
-    this.set('programs', programs);
+    this.set("academics", academics);
+    this.set("programs", programs);
   },
 
   /**
@@ -499,7 +505,7 @@ Polymer({
    */
   _makeService: function(e) {
     var normalizedEvent = dom(e);
-    let active = normalizedEvent.localTarget.getAttribute('data-machine-name');
+    let active = normalizedEvent.localTarget.getAttribute("data-machine-name");
     const network = this.activeCourse.topology.Network;
     let service = network.filter(service => {
       if (service.machine_name !== active) {
@@ -511,15 +517,14 @@ Polymer({
     if (service.length > 0) {
       service = service.pop();
       this.$.makeservice.params = {
-        'course': this.activeCourse.attributes.machine_name,
-        'service': service.machine_name,
+        course: this.activeCourse.attributes.machine_name,
+        service: service.machine_name
       };
       this._activeService = service;
       // confirm via paper prompt
       this.$.confirm.toggleDialog();
-    }
-    else {
-      console.log('that was not a valid service..');
+    } else {
+      console.log("that was not a valid service..");
     }
   },
 
@@ -535,7 +540,10 @@ Polymer({
    */
   attached: function() {
     // listen for focus event to have fired
-    document.body.addEventListener('lrnsys-dialog-modal-closed', this._accessibleFocus.bind(this));
+    document.body.addEventListener(
+      "lrnsys-dialog-modal-closed",
+      this._accessibleFocus.bind(this)
+    );
   },
 
   /**
@@ -556,7 +564,7 @@ Polymer({
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     // this will have the id of the current course
-    var active = local.getAttribute('data-course-id');
+    var active = local.getAttribute("data-course-id");
     // find the course by it's unique id and filter just to it
     let findCourse = this.originalCourses.filter(course => {
       if (course.id !== active) {
@@ -571,7 +579,7 @@ Polymer({
     this.activeCourse = findCourse;
     // formulate the post data
     this._courseDataParams = {
-      "id": this.activeCourse.id
+      id: this.activeCourse.id
     };
     // @todo look at query cache mechanism to skip calls
     // if they've already happened. lrnapp-book has some stuff to do this
@@ -584,7 +592,7 @@ Polymer({
    */
   _coursesCompute: function(originalCourses, queryParams) {
     // if we don't have an original courses object to work with then we need to bail
-    if (typeof originalCourses === 'undefined') {
+    if (typeof originalCourses === "undefined") {
       return [];
     }
     // define vars
@@ -592,17 +600,17 @@ Polymer({
     let filteredCourses = [];
     // filter the courses by the query params
     filteredCourses = originalCourses.filter(course => {
-      if (typeof root.queryParams.course !== 'undefined') {
+      if (typeof root.queryParams.course !== "undefined") {
         if (course.id !== root.queryParams.course) {
           return false;
         }
       }
-      if (typeof root.queryParams.program !== 'undefined') {
+      if (typeof root.queryParams.program !== "undefined") {
         if (course.relationships.program.id !== root.queryParams.program) {
           return false;
         }
       }
-      if (typeof root.queryParams.academic !== 'undefined') {
+      if (typeof root.queryParams.academic !== "undefined") {
         if (course.relationships.academic.id !== root.queryParams.academic) {
           return false;
         }
@@ -610,9 +618,9 @@ Polymer({
       return true;
     });
     // delay and repaint, can help with refresh issues
-    (setTimeout(() => {
-        document.querySelector('iron-list').fire('iron-resize');
-      }, 200));
+    setTimeout(() => {
+      document.querySelector("iron-list").fire("iron-resize");
+    }, 200);
     return filteredCourses;
   }
 });

@@ -61,7 +61,7 @@ Polymer({
     </template>
 `,
 
-  is: 'lrnapp-open-studio-assignments',
+  is: "lrnapp-open-studio-assignments",
 
   properties: {
     /**
@@ -69,7 +69,7 @@ Polymer({
      */
     assignments: {
       type: Array,
-      notify: true,
+      notify: true
     },
     /**
      * The submissions that exist so we can make other calls for data
@@ -82,38 +82,38 @@ Polymer({
       type: String,
       reflectToAttribute: true,
       value: null,
-      notify: true,
+      notify: true
     },
     activeAssignment: {
       type: Object,
       notify: true,
-      computed: '_activeAssignmentCompute(activeAssignmentId, assignments)'
+      computed: "_activeAssignmentCompute(activeAssignmentId, assignments)"
     },
     activeAuthorId: {
       type: String,
       reflectToAttribute: true,
       value: null,
-      notify: true,
+      notify: true
     },
     showSubmissions: {
       type: Boolean,
-      computed: '_showSubmissions(activeAssignmentId)',
+      computed: "_showSubmissions(activeAssignmentId)",
       value: false,
-      notify: true,
+      notify: true
     },
     /**
      * Endpoint for submission data.
      */
     sourcePath: {
       type: String,
-      notify: true,
+      notify: true
     },
     /**
      * base path for the app
      */
     basePath: {
       type: String,
-      notify: true,
+      notify: true
     }
   },
 
@@ -125,12 +125,13 @@ Polymer({
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     // this will have the id of the current submission
-    var active = local.getAttribute('data-submission-id');
+    var active = local.getAttribute("data-submission-id");
     // @todo need a cleaner integration but this at least goes the right place for now
-    window.location.href = this.basePath + 'lrnapp-studio-submission/submissions/' + active;
+    window.location.href =
+      this.basePath + "lrnapp-studio-submission/submissions/" + active;
   },
 
-  _activeAssignmentCompute: function (activeAssignmentId, assignments) {
+  _activeAssignmentCompute: function(activeAssignmentId, assignments) {
     let activeAssignment = null;
     if (assignments) {
       activeAssignment = assignments.find(assignment => {
@@ -140,7 +141,7 @@ Polymer({
     return activeAssignment;
   },
 
-  _showSubmissions: function (activeAssignmentId) {
+  _showSubmissions: function(activeAssignmentId) {
     if (activeAssignmentId) {
       return true;
     }
@@ -151,8 +152,10 @@ Polymer({
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     // this will have the id of the current submission
-    var active = local.getAttribute('data-submission-id');
-    this.shadowRoot.querySelector('#submission-' + active).scrollIntoView({block: "start", behavior: "smooth"});
+    var active = local.getAttribute("data-submission-id");
+    this.shadowRoot
+      .querySelector("#submission-" + active)
+      .scrollIntoView({ block: "start", behavior: "smooth" });
   },
 
   /**

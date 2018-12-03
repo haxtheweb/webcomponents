@@ -1,11 +1,11 @@
-import './lrnapp-studio-submission-media-editoverlay.js';
-import './lrnapp-studio-submission-edit-images.js';
-import './lrnapp-studio-submission-edit-files.js';
-import './lrnapp-studio-submission-edit-video.js';
-import './lrnapp-studio-submission-edit-links.js';
-import './lrnapp-studio-submission-edit-textarea.js';
-import './lrnapp-studio-block.js';
-import './lrnapp-studio-submission-critique-panel.js';
+import "./lrnapp-studio-submission-media-editoverlay.js";
+import "./lrnapp-studio-submission-edit-images.js";
+import "./lrnapp-studio-submission-edit-files.js";
+import "./lrnapp-studio-submission-edit-video.js";
+import "./lrnapp-studio-submission-edit-links.js";
+import "./lrnapp-studio-submission-edit-textarea.js";
+import "./lrnapp-studio-block.js";
+import "./lrnapp-studio-submission-critique-panel.js";
 Polymer({
   _template: `
     <style>
@@ -53,7 +53,7 @@ Polymer({
     </template>
 `,
 
-  is: 'lrnapp-studio-submission-critique',
+  is: "lrnapp-studio-submission-critique",
 
   properties: {
     submission: {
@@ -70,12 +70,11 @@ Polymer({
   /**
    * Simple way to convert from object to array.
    */
-  _toArray: function (obj) {
-    return Object.keys(obj).map(function (key) {
+  _toArray: function(obj) {
+    return Object.keys(obj).map(function(key) {
       return obj[key];
     });
   },
 
-  ready: function () {
-  }
+  ready: function() {}
 });

@@ -1,4 +1,12 @@
-import{html,Polymer}from"../node_modules/@polymer/polymer/polymer-legacy.js";import"../node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"../node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"../node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js";Polymer({_template:html`
+import {
+  html,
+  Polymer
+} from "../node_modules/@polymer/polymer/polymer-legacy.js";
+import "../node_modules/@polymer/paper-icon-button/paper-icon-button.js";
+import "../node_modules/@polymer/paper-tooltip/paper-tooltip.js";
+import "../node_modules/@lrnwebcomponents/materializecss-styles/lib/colors.js";
+Polymer({
+  _template: html`
     <style include="materializecss-styles-colors">
       :host {
         display: flex;
@@ -18,13 +26,13 @@ import{html,Polymer}from"../node_modules/@polymer/polymer/polymer-legacy.js";imp
         flex-direction: row;
         -webkit-justify-content: flex-start;
         justify-content: flex-start;
-        font-family: 'Roboto', 'Noto', sans-serif;
+        font-family: "Roboto", "Noto", sans-serif;
         -webkit-font-smoothing: antialiased;
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;
         --hax-item-color: #2e2e2e;
-        --hax-item-background: #FFFFFF;
+        --hax-item-background: #ffffff;
       }
       :host([menu]) paper-button {
         -webkit-justify-content: flex-start;
@@ -45,7 +53,7 @@ import{html,Polymer}from"../node_modules/@polymer/polymer/polymer-legacy.js";imp
         border-radius: 0;
         font-size: 12px;
         height: 32px;
-        transition: .1s all;
+        transition: 0.1s all;
         @apply --hax-toolbar-item-container;
       }
       paper-button:hover {
@@ -101,11 +109,48 @@ import{html,Polymer}from"../node_modules/@polymer/polymer/polymer-legacy.js";imp
       }
     </style>
 
-    <paper-button disabled="[[disabled]]" id="buttoncontainer" tabindex="0" title\$="[[tooltip]]">
-      <iron-icon id="button" icon="[[icon]]" class\$="[[iconClass]]"></iron-icon> <span id="label" hidden\$="[[!label]]">[[label]]</span>
-      <slot></slot>
+    <paper-button
+      disabled="[[disabled]]"
+      id="buttoncontainer"
+      tabindex="0"
+      title\$="[[tooltip]]"
+    >
+      <iron-icon
+        id="button"
+        icon="[[icon]]"
+        class\$="[[iconClass]]"
+      ></iron-icon>
+      <span id="label" hidden\$="[[!label]]">[[label]]</span> <slot></slot>
     </paper-button>
-    <paper-tooltip id="tooltip" for\$="[[this]]" offset="14" position="[[tooltipDirection]]" animation-delay="100">
+    <paper-tooltip
+      id="tooltip"
+      for\$="[[this]]"
+      offset="14"
+      position="[[tooltipDirection]]"
+      animation-delay="100"
+    >
       [[tooltip]]
     </paper-tooltip>
-`,is:"hax-toolbar-item",properties:{corner:{type:String,reflectToAttribute:!0,value:""},disabled:{type:Boolean,value:!1,reflectToAttribute:!0},light:{type:Boolean,reflectToAttribute:!0,value:!1},menu:{type:Boolean,value:!1,reflectToAttribute:!0},mini:{type:Boolean,reflectToAttribute:!0,value:!1},icon:{type:String,value:""},label:{type:String,value:""},tooltip:{type:String,value:"",observer:"_tooltipChanged"},tooltipDirection:{type:String,value:"top"},default:{type:Boolean,value:!1,reflectToAttribute:!0},iconClass:{type:String,value:"",reflectToAttribute:!0}},_tooltipChanged:function(newValue,oldValue){if(""==newValue||null==newValue){this.$.tooltip.setAttribute("aria-hidden","true")}else{this.$.tooltip.setAttribute("aria-hidden","false")}}});
+  `,
+  is: "hax-toolbar-item",
+  properties: {
+    corner: { type: String, reflectToAttribute: !0, value: "" },
+    disabled: { type: Boolean, value: !1, reflectToAttribute: !0 },
+    light: { type: Boolean, reflectToAttribute: !0, value: !1 },
+    menu: { type: Boolean, value: !1, reflectToAttribute: !0 },
+    mini: { type: Boolean, reflectToAttribute: !0, value: !1 },
+    icon: { type: String, value: "" },
+    label: { type: String, value: "" },
+    tooltip: { type: String, value: "", observer: "_tooltipChanged" },
+    tooltipDirection: { type: String, value: "top" },
+    default: { type: Boolean, value: !1, reflectToAttribute: !0 },
+    iconClass: { type: String, value: "", reflectToAttribute: !0 }
+  },
+  _tooltipChanged: function(newValue, oldValue) {
+    if ("" == newValue || null == newValue) {
+      this.$.tooltip.setAttribute("aria-hidden", "true");
+    } else {
+      this.$.tooltip.setAttribute("aria-hidden", "false");
+    }
+  }
+});

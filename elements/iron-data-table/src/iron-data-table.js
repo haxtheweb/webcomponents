@@ -779,14 +779,13 @@ let IronDataTable = Polymer({
     this.$.container.style.width = "";
 
     async.microTask.run(() => {
-        this.$.container.style.width =
-          Math.min(this.scrollWidth, this.clientWidth + this.scrollLeft) + "px";
+      this.$.container.style.width =
+        Math.min(this.scrollWidth, this.clientWidth + this.scrollLeft) + "px";
 
-        // add scrollbar width as padding
-        this.$.header.style.paddingRight =
-          this.$.list.offsetWidth - this.$.list.clientWidth + "px";
-      }
-    );
+      // add scrollbar width as padding
+      this.$.header.style.paddingRight =
+        this.$.list.offsetWidth - this.$.list.clientWidth + "px";
+    });
   },
 
   _onHorizontalScroll: function() {

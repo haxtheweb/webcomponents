@@ -1,5 +1,5 @@
-import './lrnapp-studio-project-button.js';
-import './lrnapp-studio-assignment-button.js';
+import "./lrnapp-studio-project-button.js";
+import "./lrnapp-studio-assignment-button.js";
 Polymer({
   _template: `
     <style include="materializecss-styles"></style>
@@ -273,7 +273,7 @@ Polymer({
     </paper-dialog>
 `,
 
-  is: 'lrnapp-studio-kanban',
+  is: "lrnapp-studio-kanban",
 
   properties: {
     /**
@@ -282,61 +282,61 @@ Polymer({
     activeAssignment: {
       type: String,
       value: null,
-      notify: true,
+      notify: true
     },
     projectToDelete: {
       type: String,
       value: null,
-      notify: true,
+      notify: true
     },
     assignmentToDelete: {
       type: String,
       value: null,
-      notify: true,
+      notify: true
     },
     sourcePath: {
       type: String,
-      notify: true,
+      notify: true
     },
     /**
      * Submission for two-way data binding on return from the button being pushed
      */
     submission: {
       type: Object,
-      notify: true,
+      notify: true
     },
     /**
      * Response from the server.
      */
     projectResponse: {
       type: Object,
-      notify: true,
+      notify: true
     },
     /**
      * Response from the server for non-project requests.
      */
     backendResponse: {
       type: Object,
-      notify: true,
-    },
+      notify: true
+    }
   },
 
   listeners: {
-    'project-created': '_handleProjectCreated',
-    'assignment-created': '_handleAssignmentCreated',
+    "project-created": "_handleProjectCreated",
+    "assignment-created": "_handleAssignmentCreated"
   },
 
   observers: [
-    '_routeChanged(route, endPoint)',
-    '_deleteToast(queryParams.deletetoast)',
+    "_routeChanged(route, endPoint)",
+    "_deleteToast(queryParams.deletetoast)"
   ],
 
   // If the current route is outside the scope of our app
   // then allow the website to break out of the single page
   // application routing
-  _routeChanged: function (route, endPoint) {
-    if (typeof route.path === 'string') {
-      if (typeof endPoint === 'string') {
+  _routeChanged: function(route, endPoint) {
+    if (typeof route.path === "string") {
+      if (typeof endPoint === "string") {
         if (route.path.startsWith(endPoint)) {
           return;
         }
@@ -348,67 +348,84 @@ Polymer({
   /**
    * Support having a toast message because of delete or error elsewhere.
    */
-  _deleteToast: function (deletetoast, old) {
+  _deleteToast: function(deletetoast, old) {
     if (typeof deletetoast !== typeof undefined) {
-      if (deletetoast == 'error') {
-        this.$.toast.show('That submission on longer exists!');
+      if (deletetoast == "error") {
+        this.$.toast.show("That submission on longer exists!");
       } else {
-        this.$.toast.show('Submission deleted successfully!');
+        this.$.toast.show("Submission deleted successfully!");
       }
-      this.set('queryParams.deletetoast', undefined);
+      this.set("queryParams.deletetoast", undefined);
     }
   },
 
   /**
    * @todo  remove this once we have a modal for it
    */
-  _makeProjectEditLink: function (e) {
+  _makeProjectEditLink: function(e) {
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
-    var parts = local.id.split('-');
-    window.location.href = this.basePath + '../node/' + parts[1] +
-      '/edit?destination=apps/lrnapp-studio-kanban';
+    var parts = local.id.split("-");
+    window.location.href =
+      this.basePath +
+      "../node/" +
+      parts[1] +
+      "/edit?destination=apps/lrnapp-studio-kanban";
   },
 
   /**
    * @todo  remove this once we have a modal for it
    */
-  _makeAssignmentEditLink: function (e) {
+  _makeAssignmentEditLink: function(e) {
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
-    var parts = local.id.split('-');
-    window.location.href = this.basePath + '../node/' + parts[2] +
-      '/edit?destination=apps/lrnapp-studio-kanban';
+    var parts = local.id.split("-");
+    window.location.href =
+      this.basePath +
+      "../node/" +
+      parts[2] +
+      "/edit?destination=apps/lrnapp-studio-kanban";
   },
 
   /**
    * Handle the push to delete a project, pop up the modal.
    */
-  _deleteProjectDialog: function (e) {
+  _deleteProjectDialog: function(e) {
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
-    var parts = local.id.split('-');
+    var parts = local.id.split("-");
     // set values so we know what to drop
     this.projectToDelete = parts[1];
-    this._deleteTitle = 'Delete project';
-    this._deleteText = 'Are you sure you want to delete this project and all related assignments!?';
-    this._deleteType = 'project';
+    this._deleteTitle = "Delete project";
+    this._deleteText =
+      "Are you sure you want to delete this project and all related assignments!?";
+    this._deleteType = "project";
     this.$.delete.open();
   },
 
   /**
    * Handle the call to delete the assignment specified.
    */
-  _handleDelete: function () {
-    if (this._deleteType == 'project') {
-      this.$.backend.method = 'DELETE';
+  _handleDelete: function() {
+    if (this._deleteType == "project") {
+      this.$.backend.method = "DELETE";
       this.$.backend.body = this.projectToDelete;
-      this.$.backend.url = this.endPoint + '/api/projects/' + this.projectToDelete + '?token=' + this.csrfToken;
+      this.$.backend.url =
+        this.endPoint +
+        "/api/projects/" +
+        this.projectToDelete +
+        "?token=" +
+        this.csrfToken;
       this.$.backend.generateRequest();
-    } else if (this._deleteType == 'assignment') {
-      this.$.backend.method = 'DELETE';
+    } else if (this._deleteType == "assignment") {
+      this.$.backend.method = "DELETE";
       this.$.backend.body = this.assignmentToDelete;
-      this.$.backend.url = this.endPoint + '/api/assignments/' + this.assignmentToDelete + '?token=' + this.csrfToken;
+      this.$.backend.url =
+        this.endPoint +
+        "/api/assignments/" +
+        this.assignmentToDelete +
+        "?token=" +
+        this.csrfToken;
       this.$.backend.generateRequest();
     }
   },
@@ -416,22 +433,22 @@ Polymer({
   /**
    * Handle the push to delete an assignment, pop up the modal.
    */
-  _deleteAssignmentDialog: function (e) {
+  _deleteAssignmentDialog: function(e) {
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
-    var parts = local.id.split('-');
+    var parts = local.id.split("-");
     this.assignmentToDelete = parts[2];
     // set values so we know what to drop
-    this._deleteTitle = 'Delete assignment';
-    this._deleteText = 'Are you sure you want to delete this assignment?';
-    this._deleteType = 'assignment';
+    this._deleteTitle = "Delete assignment";
+    this._deleteText = "Are you sure you want to delete this assignment?";
+    this._deleteType = "assignment";
     this.$.delete.open();
   },
 
   /**
    * if we should show new badge based on new comment count.
    */
-  displayNewBadge: function (count) {
+  displayNewBadge: function(count) {
     if (count == 0) {
       return true;
     }
@@ -441,22 +458,28 @@ Polymer({
   /**
    * Handle toggling the status for the submission.
    */
-  statusToggle: function (e) {
+  statusToggle: function(e) {
     // find our xhr for callbacks
     var xhr = this.$.backend;
     // break the id out into project and assignment
-    var parts = this.activeAssignment.split('-');
+    var parts = this.activeAssignment.split("-");
     // focus in on the submissions / assignment meta
-    var submission = this.projectResponse.data.projects['project-' + parts[1]].relationships.assignments[
-      'assignment-' + parts[2]].meta.relatedSubmissions.complete;
+    var submission = this.projectResponse.data.projects["project-" + parts[1]]
+      .relationships.assignments["assignment-" + parts[2]].meta
+      .relatedSubmissions.complete;
     // ensure this isn't disabled though it shouldn't be possible
-    if (!this.shadowRoot.querySelector('#' + this.activeAssignment + '-toggle').disabled) {
+    if (
+      !this.shadowRoot.querySelector("#" + this.activeAssignment + "-toggle")
+        .disabled
+    ) {
       // hide the loading screen
       this.$.loading.hidden = false;
       // queue of the request parameters
       xhr.params = {
-        'submissionid': submission.submission.id,
-        'status': this.shadowRoot.querySelector('#' + this.activeAssignment + '-toggle').checked
+        submissionid: submission.submission.id,
+        status: this.shadowRoot.querySelector(
+          "#" + this.activeAssignment + "-toggle"
+        ).checked
       };
       // send the request
       xhr.generateRequest();
@@ -466,23 +489,27 @@ Polymer({
   /**
    * Handle toggle for mouse class and manage classList array for paper-button.
    */
-  assignmentFocusIn: function (e) {
+  assignmentFocusIn: function(e) {
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     if (this.activeAssignment != null && this.activeAssignment != local.id) {
-      this.shadowRoot.querySelector('#' + this.activeAssignment).nextElementSibling.classList.remove('show');
-      this.shadowRoot.querySelector('#' + this.activeAssignment).classList.remove('active');
+      this.shadowRoot
+        .querySelector("#" + this.activeAssignment)
+        .nextElementSibling.classList.remove("show");
+      this.shadowRoot
+        .querySelector("#" + this.activeAssignment)
+        .classList.remove("active");
     }
     this.activeAssignment = local.id;
     this._setToggle(false);
-    local.nextElementSibling.classList.add('show');
-    local.classList.add('active');
+    local.nextElementSibling.classList.add("show");
+    local.classList.add("active");
   },
 
   /**
    * Handle response for the whole projects object.
    */
-  _handleProjectResponse: function (event) {
+  _handleProjectResponse: function(event) {
     this.$.loading.hidden = true;
     this._setToggle(true);
   },
@@ -490,16 +517,16 @@ Polymer({
   /**
    * buildSubmissionPath for generating a new submission or linking to existing.
    */
-  buildSubmissionPath: function (path) {
-    return path + 'lrnapp-studio-submission';
+  buildSubmissionPath: function(path) {
+    return path + "lrnapp-studio-submission";
   },
 
   /**
    * Handle a response from updating an item
    */
-  _handleUpdateResponse: function (event) {
+  _handleUpdateResponse: function(event) {
     if (this.backendResponse.status == 200) {
-      this.$.toast.text = 'Updated successfully';
+      this.$.toast.text = "Updated successfully";
       this.$.toast.toggle();
       this.$.projectbackend.generateRequest();
     } else {
@@ -511,34 +538,59 @@ Polymer({
   /**
    * set the toggle state when assignment gets focus
    */
-  _setToggle: function (update) {
+  _setToggle: function(update) {
     if (this.activeAssignment != null) {
-      var parts = this.activeAssignment.split('-');
+      var parts = this.activeAssignment.split("-");
       // focus in on the submissions / assignment meta
-      var submission = this.projectResponse.data.projects['project-' + parts[1]].relationships.assignments[
-        'assignment-' + parts[2]].meta.relatedSubmissions.complete;
+      var submission = this.projectResponse.data.projects["project-" + parts[1]]
+        .relationships.assignments["assignment-" + parts[2]].meta
+        .relatedSubmissions.complete;
       // not finished but also not started
       if (submission.status == 0 && submission.submission.length == 0) {
         if (!update) {
-          this.shadowRoot.querySelector('#' + this.activeAssignment + '-toggle').disabled = true;
-          this.shadowRoot.querySelector('#' + this.activeAssignment + '-toggle').checked = false;
+          this.shadowRoot.querySelector(
+            "#" + this.activeAssignment + "-toggle"
+          ).disabled = true;
+          this.shadowRoot.querySelector(
+            "#" + this.activeAssignment + "-toggle"
+          ).checked = false;
         }
-        this.shadowRoot.querySelector('#' + this.activeAssignment + '-toggle').title = 'Submission not started';
-        this.shadowRoot.querySelector('#' + this.activeAssignment + '-toggle-text').textContent = 'Submission not started';
+        this.shadowRoot.querySelector(
+          "#" + this.activeAssignment + "-toggle"
+        ).title = "Submission not started";
+        this.shadowRoot.querySelector(
+          "#" + this.activeAssignment + "-toggle-text"
+        ).textContent = "Submission not started";
       } else if (submission.status == 0) {
         if (!update) {
-          this.shadowRoot.querySelector('#' + this.activeAssignment + '-toggle').disabled = false;
-          this.shadowRoot.querySelector('#' + this.activeAssignment + '-toggle').checked = false;
+          this.shadowRoot.querySelector(
+            "#" + this.activeAssignment + "-toggle"
+          ).disabled = false;
+          this.shadowRoot.querySelector(
+            "#" + this.activeAssignment + "-toggle"
+          ).checked = false;
         }
-        this.shadowRoot.querySelector('#' + this.activeAssignment + '-toggle').title = 'Submission started';
-        this.shadowRoot.querySelector('#' + this.activeAssignment + '-toggle-text').textContent = 'Submission in progress';
+        this.shadowRoot.querySelector(
+          "#" + this.activeAssignment + "-toggle"
+        ).title = "Submission started";
+        this.shadowRoot.querySelector(
+          "#" + this.activeAssignment + "-toggle-text"
+        ).textContent = "Submission in progress";
       } else {
         if (!update) {
-          this.shadowRoot.querySelector('#' + this.activeAssignment + '-toggle').disabled = false;
-          this.shadowRoot.querySelector('#' + this.activeAssignment + '-toggle').checked = true;
+          this.shadowRoot.querySelector(
+            "#" + this.activeAssignment + "-toggle"
+          ).disabled = false;
+          this.shadowRoot.querySelector(
+            "#" + this.activeAssignment + "-toggle"
+          ).checked = true;
         }
-        this.shadowRoot.querySelector('#' + this.activeAssignment + '-toggle').title = 'Submission ready';
-        this.shadowRoot.querySelector('#' + this.activeAssignment + '-toggle-text').textContent = 'Submission ready';
+        this.shadowRoot.querySelector(
+          "#" + this.activeAssignment + "-toggle"
+        ).title = "Submission ready";
+        this.shadowRoot.querySelector(
+          "#" + this.activeAssignment + "-toggle-text"
+        ).textContent = "Submission ready";
       }
     }
   },
@@ -546,8 +598,8 @@ Polymer({
   /**
    * Event came from the project button to indicate it was successful.
    */
-  _handleProjectCreated: function (e) {
-    this.$.toast.text = 'Project added';
+  _handleProjectCreated: function(e) {
+    this.$.toast.text = "Project added";
     this.$.toast.toggle();
     this.$.projectbackend.generateRequest();
   },
@@ -555,8 +607,8 @@ Polymer({
   /**
    * Event came from the assignment button to indicate it was successful.
    */
-  _handleAssignmentCreated: function (e) {
-    this.$.toast.text = 'Assignment added';
+  _handleAssignmentCreated: function(e) {
+    this.$.toast.text = "Assignment added";
     this.$.toast.toggle();
     this.$.projectbackend.generateRequest();
   },
@@ -564,8 +616,8 @@ Polymer({
   /*
    * Simple way to convert from object to array.
    */
-  _toArray: function (obj) {
-    return Object.keys(obj).map(function (key) {
+  _toArray: function(obj) {
+    return Object.keys(obj).map(function(key) {
       return obj[key];
     });
   }

@@ -1,6 +1,6 @@
-import './lrnapp-book.js';
-const $_documentContainer = document.createElement('div');
-$_documentContainer.setAttribute('style', 'display: none;');
+import "./lrnapp-book.js";
+const $_documentContainer = document.createElement("div");
+$_documentContainer.setAttribute("style", "display: none;");
 
 $_documentContainer.innerHTML = `<title>lrnapp-book demo</title><lrnapp-book outline-path="demo/data.json" book-path="demo/data.json" title="Lesson 2">
       <img src="https://courses.aanda.psu.edu/dmd100/system/files/dmd100sp17/assets/dmd100-bg-compressed-cropped.jpg" alt="dmd 100 course background art" width="100%">

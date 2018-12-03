@@ -1,4 +1,15 @@
-import{html,Polymer}from"../node_modules/@polymer/polymer/polymer-legacy.js";import"../node_modules/@polymer/iron-icons/iron-icons.js";import"../node_modules/@polymer/iron-icon/iron-icon.js";import"../node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"../node_modules/@polymer/paper-button/paper-button.js";import"../node_modules/@polymer/app-layout/app-drawer/app-drawer.js";import"./hax-stax-browser.js";Polymer({_template:html`
+import {
+  html,
+  Polymer
+} from "../node_modules/@polymer/polymer/polymer-legacy.js";
+import "../node_modules/@polymer/iron-icons/iron-icons.js";
+import "../node_modules/@polymer/iron-icon/iron-icon.js";
+import "../node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";
+import "../node_modules/@polymer/paper-button/paper-button.js";
+import "../node_modules/@polymer/app-layout/app-drawer/app-drawer.js";
+import "./hax-stax-browser.js";
+Polymer({
+  _template: html`
     <style include="simple-colors">
       :host {
         display: block;
@@ -37,7 +48,7 @@ import{html,Polymer}from"../node_modules/@polymer/polymer/polymer-legacy.js";imp
       app-drawer {
         --app-drawer-content-container: {
           background-color: rgba(0, 0, 0, 0.7);
-        };
+        }
         --app-drawer-width: 320px;
       }
       .pref-container {
@@ -54,4 +65,27 @@ import{html,Polymer}from"../node_modules/@polymer/polymer/polymer-legacy.js";imp
         <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
       </paper-button>
     </app-drawer>
-`,is:"hax-stax-picker",properties:{title:{type:String,value:"Templates"}},ready:function(){document.body.appendChild(this)},attached:function(){this.fire("hax-register-stax-picker",this)},open:function(){this.$.staxbrowser.resetBrowser();this.$.dialog.open()},close:function(){this.$.dialog.close()},toggleDialog:function(){if(this.$.dialog.opened){this.close()}else{window.HaxStore.instance.closeAllDrawers(this)}}});
+  `,
+  is: "hax-stax-picker",
+  properties: { title: { type: String, value: "Templates" } },
+  ready: function() {
+    document.body.appendChild(this);
+  },
+  attached: function() {
+    this.fire("hax-register-stax-picker", this);
+  },
+  open: function() {
+    this.$.staxbrowser.resetBrowser();
+    this.$.dialog.open();
+  },
+  close: function() {
+    this.$.dialog.close();
+  },
+  toggleDialog: function() {
+    if (this.$.dialog.opened) {
+      this.close();
+    } else {
+      window.HaxStore.instance.closeAllDrawers(this);
+    }
+  }
+});
