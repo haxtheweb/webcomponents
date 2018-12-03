@@ -68,7 +68,7 @@ class ExampleHaxElement extends HTMLElement {
       this._processQueue();
     }
     this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
+    this.HAXWiring.setup(
       ExampleHaxElement.haxProperties,
       ExampleHaxElement.tag,
       this

@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 91,
+              "line": 92,
               "column": 2
             },
             "end": {
-              "line": 94,
+              "line": 95,
               "column": 3
             }
           },
@@ -33,11 +33,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 96,
+              "line": 97,
               "column": 2
             },
             "end": {
-              "line": 101,
+              "line": 102,
               "column": 3
             }
           },
@@ -63,11 +63,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 90,
+          "line": 91,
           "column": 0
         },
         "end": {
-          "line": 102,
+          "line": 103,
           "column": 1
         }
       },
@@ -82,9 +82,7 @@
       },
       "slots": [],
       "tagname": "math-tex-controller"
-    }
-  ],
-  "classes": [
+    },
     {
       "description": "",
       "summary": "",
@@ -97,11 +95,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 164,
+              "line": 165,
               "column": 2
             },
             "end": {
-              "line": 176,
+              "line": 222,
               "column": 3
             }
           },
@@ -117,11 +115,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 178,
+              "line": 224,
               "column": 2
             },
             "end": {
-              "line": 183,
+              "line": 229,
               "column": 3
             }
           },
@@ -137,17 +135,25 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 157,
+          "line": 158,
           "column": 0
         },
         "end": {
-          "line": 184,
+          "line": 230,
           "column": 1
         }
       },
       "privacy": "public",
       "superclass": "HTMLElement",
-      "name": "MathTex"
+      "name": "MathTex",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "lrn-math"
     }
   ]
 }

@@ -83,7 +83,7 @@ class ExampleHaxElement extends HTMLElement {
    */
   connectedCallback() {
     this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
+    this.HAXWiring.setup(
       ExampleHaxElement.haxProperties,
       ExampleHaxElement.tag,
       this

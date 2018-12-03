@@ -1,3 +1,4 @@
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 // forked from https://github.com/janmarthedal/math-tex
 const document = window.document,
   states = { start: 1, loading: 2, ready: 3, typesetting: 4, error: 5 };
@@ -174,6 +175,47 @@ class MathTex extends HTMLElement {
       update(elem);
       elem._private.observer.observe(elem, mutation_config);
     });
+    // Establish hax properties if they exist
+    let props = {
+      canScale: true,
+      canPosition: true,
+      canEditSource: true,
+      gizmo: {
+        title: "Math",
+        description: "Present math in a nice looking way.",
+        icon: "places:all-inclusive",
+        color: "grey",
+        groups: ["Content"],
+        handles: [
+          {
+            type: "math",
+            math: "mathText"
+          },
+          {
+            type: "inline",
+            text: "mathText"
+          }
+        ],
+        meta: {
+          author: "LRNWebComponents"
+        }
+      },
+      settings: {
+        quick: [],
+        configure: [
+          {
+            slot: "",
+            title: "Math",
+            description: "Math",
+            inputMethod: "code-editor",
+            icon: "editor:format-quote"
+          }
+        ],
+        advanced: []
+      }
+    };
+    let wiring = new HAXWiring();
+    wiring.setup(props, "lrn-math", this);
   }
 
   disconnectedCallback() {
@@ -184,4 +226,4 @@ class MathTex extends HTMLElement {
   }
 }
 
-window.customElements.define(TAG_NAME, MathTex);
+window.customElements.define("lrn-math", MathTex);
