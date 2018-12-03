@@ -1,22 +1,29 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/iron-pages/iron-pages.js";
 import "./lrnapp-studio-submission-display.js";
 import "./lrnapp-studio-submission-edit.js";
 import "./lrnapp-studio-submission-critique.js";
 Polymer({
-  _template: `
+  _template: html`
     <style>
       :host {
         display: block;
       }
     </style>
-      <iron-pages selected="[[selectedPage]]">
-        <lrnapp-studio-submission-display submission="{{submission}}"></lrnapp-studio-submission-display>
-        <lrnapp-studio-submission-edit submission="{{submission}}"></lrnapp-studio-submission-edit>
-        <lrnapp-studio-submission-critique submission="{{submission}}" edit="[[edit]]"></lrnapp-studio-submission-critique>
-      </iron-pages>
-`,
-
+    <iron-pages selected="[[selectedPage]]">
+      <lrnapp-studio-submission-display
+        submission="{{submission}}"
+      ></lrnapp-studio-submission-display>
+      <lrnapp-studio-submission-edit
+        submission="{{submission}}"
+      ></lrnapp-studio-submission-edit>
+      <lrnapp-studio-submission-critique
+        submission="{{submission}}"
+        edit="[[edit]]"
+      ></lrnapp-studio-submission-critique>
+    </iron-pages>
+  `,
   is: "lrnapp-studio-submission-object",
-
   properties: {
     submission: {
       type: Object,

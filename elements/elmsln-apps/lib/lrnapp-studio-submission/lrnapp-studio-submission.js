@@ -1,10 +1,13 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/app-route/app-location.js";
+import "@polymer/app-route/app-route.js";
+import "@polymer/paper-toast/paper-toast.js";
 import "./lrnapp-studio-submission-page.js";
 import "./lrnapp-studio-submission-button.js";
 /*<link rel="import" href="../../bower_components/build/build/default/build.html">*/
 Polymer({
-  _template: `
-    <style include="materializecss-styles"></style>
-    <style>
+  _template: html`
+    <style include="materializecss-styles">
       :host {
         display: block;
       }
@@ -15,18 +18,30 @@ Polymer({
       }
     </style>
     <app-location route="{{route}}"></app-location>
-    <app-route route="{{route}}" pattern="[[endPoint]]/submissions/:submission" data="{{data}}" tail="{{tail}}">
+    <app-route
+      route="{{route}}"
+      pattern="[[endPoint]]/submissions/:submission"
+      data="{{data}}"
+      tail="{{tail}}"
+    >
     </app-route>
 
     <template is="dom-if" if="[[data.submission]]">
-      <lrnapp-studio-submission-page base-path="{{basePath}}" route="{{tail}}" id="[[data.submission]]" end-point="[[endPoint]]" csrf-token="[[csrfToken]]" data="{{data}}"></lrnapp-studio-submission-page>
+      <lrnapp-studio-submission-page
+        base-path="{{basePath}}"
+        route="{{tail}}"
+        id="[[data.submission]]"
+        end-point="[[endPoint]]"
+        csrf-token="[[csrfToken]]"
+        data="{{data}}"
+      ></lrnapp-studio-submission-page>
     </template>
     <template is="dom-if" if="[[!data.submission]]">
       This is the lrnapp-studio-submission page.
     </template>
 
     <paper-toast id="toast"></paper-toast>
-`,
+  `,
 
   is: "lrnapp-studio-submission",
   behaviors: [SecureRequest.xhr],
@@ -60,6 +75,7 @@ Polymer({
     var path = event.detail.path;
     if (path) {
       this.set("route.path", path);
+      this.notifyPath("route.path");
     }
   },
 
@@ -82,6 +98,7 @@ Polymer({
     var submission = e.detail.submission;
     if (submission) {
       this.set("route.path", this.endPoint);
+      this.notifyPath("route.path");
       this.$.toast.show("Submission has been deleted.");
     }
   },

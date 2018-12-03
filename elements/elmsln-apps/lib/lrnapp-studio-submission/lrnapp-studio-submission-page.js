@@ -1,23 +1,23 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
-import '@polymer/app-route/app-route.js";
-import '@polymer/iron-ajax/iron-ajax.js";
-import '@polymer/app-toolbar/app-toolbar.js";
-import '@polymer/marked-element/marked-element.js";
-import '@lrnwebcomponents/lrnsys-dialog/lrnsys-dialog.js";
-import '@polymer/paper-badge/paper-badge.js";
-import '@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-import '@lrnwebcomponents/lrnsys-co/lrnsys-co.js";mment-list
-import '@polymer/iron-icon/iron-icon.js";
-import '@vaadin/vaadin-split-layout/vaadin-split-layout.js";
-import '@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
-import '@polymer/paper-dialog/paper-dialog.js";
-import '@polymer/paper-button/paper-button.js";
-import '@polymer/paper-toast/paper-toast.js";
-import './lrnapp-studio-submission-object.js';
-import './lrnapp-studio-submission-comments.js';
-import './lrnapp-studio-submission-comment.js';
+import "@polymer/app-route/app-route.js";
+import "@polymer/iron-ajax/iron-ajax.js";
+import "@polymer/app-layout/app-toolbar/app-toolbar.js";
+import "@polymer/marked-element/marked-element.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/paper-dialog/paper-dialog.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/paper-badge/paper-badge.js";
+import "@polymer/paper-toast/paper-toast.js";
+import "@vaadin/vaadin-split-layout/vaadin-split-layout.js";
+import "@lrnwebcomponents/lrnsys-dialog/lrnsys-dialog.js";
+import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
+import "@lrnwebcomponents/lrnsys-comment/lib/lrnsys-comment-list.js";
+import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
+import "./lrnapp-studio-submission-object.js";
+import "./lrnapp-studio-submission-comments.js";
+import "./lrnapp-studio-submission-comment.js";
 Polymer({
   _template: html`
     <style>
@@ -45,7 +45,7 @@ Polymer({
       }
 
       iron-image {
-        margin: 0 .5em;
+        margin: 0 0.5em;
       }
 
       lrnsys-dialog {
@@ -97,9 +97,9 @@ Polymer({
       .submission-page-wrapper {
         padding: 0;
         --vaadin-split-layout-splitter: {
-          min-width: .4em;
+          min-width: 0.4em;
           background: var(--paper-amber-200);
-        };
+        }
       }
 
       .submission-page {
@@ -131,11 +131,11 @@ Polymer({
         justify-content: center;
       }
 
-       :host([saving]) elmsln-loading {
+      :host([saving]) elmsln-loading {
         display: block;
       }
 
-      elmsln-loading ::shadow>lrn-icon {
+      elmsln-loading ::shadow > lrn-icon {
         top: calc(50% - 5vmax);
         left: calc(50% - 5vmax);
         position: fixed;
@@ -168,85 +168,183 @@ Polymer({
       }
 
       iron-icon {
-        margin: .2em;
+        margin: 0.2em;
       }
     </style>
 
-    <app-route route="{{route}}" pattern="/edit" tail="{{tail}}" active="{{editPage}}">
+    <app-route
+      route="{{route}}"
+      pattern="/edit"
+      tail="{{tail}}"
+      active="{{editPage}}"
+    >
     </app-route>
 
-    <iron-ajax id="ajaxRequest" auto="" url="[[reqUrl]]" method="GET" params="[[reqParams]]" content-type="application/json" handle-as="json" on-response="_handleResponse"></iron-ajax>
+    <iron-ajax
+      id="ajaxRequest"
+      auto=""
+      url="[[reqUrl]]"
+      method="GET"
+      params="[[reqParams]]"
+      content-type="application/json"
+      handle-as="json"
+      on-response="_handleResponse"
+    ></iron-ajax>
     <!-- Update Submission Node -->
-    <iron-ajax id="ajaxUpdateRequest" url="[[reqUrl]]" method="PUT" body="[[submission]]" params="[[reqParams]]" content-type="application/json" handle-as="json" on-response="_handleUpdateResponse"></iron-ajax>    <!-- Delete Submission Node -->
-    <iron-ajax id="ajaxDeleteRequest" url="[[reqUrl]]" method="DELETE" params="[[reqParams]]" content-type="application/json" handle-as="json" on-response="_handleDeleteResponse"></iron-ajax>
+    <iron-ajax
+      id="ajaxUpdateRequest"
+      url="[[reqUrl]]"
+      method="PUT"
+      body="[[submission]]"
+      params="[[reqParams]]"
+      content-type="application/json"
+      handle-as="json"
+      on-response="_handleUpdateResponse"
+    ></iron-ajax>
+    <!-- Delete Submission Node -->
+    <iron-ajax
+      id="ajaxDeleteRequest"
+      url="[[reqUrl]]"
+      method="DELETE"
+      params="[[reqParams]]"
+      content-type="application/json"
+      handle-as="json"
+      on-response="_handleDeleteResponse"
+    ></iron-ajax>
 
     <app-toolbar class="amber lighten-3" hidden\$="[[hideMenuBar]]">
       <template is="dom-if" if="[[showComments]]">
-        <lrnsys-button on-tap="_backToStudio" icon="arrow-back" label="See in studio" hover-class="amber darken-4 white-text"></lrnsys-button>
+        <lrnsys-button
+          on-tap="_backToStudio"
+          icon="arrow-back"
+          label="See in studio"
+          hover-class="amber darken-4 white-text"
+        ></lrnsys-button>
       </template>
       <template is="dom-if" if="[[!showComments]]">
-        <lrnsys-button on-tap="_backToKanban" icon="arrow-back" label="Back to project management" hover-class="amber darken-4 white-text"></lrnsys-button>
+        <lrnsys-button
+          on-tap="_backToKanban"
+          icon="arrow-back"
+          label="Back to project management"
+          hover-class="amber darken-4 white-text"
+        ></lrnsys-button>
       </template>
       <div spacer="" main-title="">[[submission.attributes.title]]</div>
       <div spacer="">
-        <lrnsys-dialog body-append="" header="[[submission.relationships.assignment.attributes.title]]">
-        <span slot="button"><iron-icon icon="icons:assignment"></iron-icon>Assignment Details</span>
+        <lrnsys-dialog
+          body-append=""
+          header="[[submission.relationships.assignment.attributes.title]]"
+        >
+          <span slot="button"
+            ><iron-icon icon="icons:assignment"></iron-icon>Assignment
+            Details</span
+          >
           <div class="assignment-body">
-          <marked-element id="assignment-body" markdown="[[submission.relationships.assignment.attributes.body]]"></marked-element>
+            <marked-element
+              id="assignment-body"
+              markdown="[[submission.relationships.assignment.attributes.body]]"
+            ></marked-element>
           </div>
         </lrnsys-dialog>
       </div>
       <div>
-        <paper-button id="comment-count" style="margin:0;padding:.25em;text-transform:none;">
+        <paper-button
+          id="comment-count"
+          style="margin:0;padding:.25em;text-transform:none;"
+        >
           <iron-icon icon="communication:forum"></iron-icon>
           [[submission.meta.comment_count]] Comments
         </paper-button>
-        <paper-badge hidden\$="[[displayNewBadge(submission.meta.comment_new)]]" for="comment-count" label\$="[[submission.meta.comment_new]]"></paper-badge>
+        <paper-badge
+          hidden\$="[[displayNewBadge(submission.meta.comment_new)]]"
+          for="comment-count"
+          label\$="[[submission.meta.comment_new]]"
+        ></paper-badge>
       </div>
       <div hidden\$="[[editPage]]">
-        <lrnsys-button on-tap="_setEditRoute" icon="create" label="Edit" hover-class="amber darken-4 white-text" hidden\$="[[!submission.meta.canUpdate]]"></lrnsys-button>
+        <lrnsys-button
+          on-tap="_setEditRoute"
+          icon="create"
+          label="Edit"
+          hover-class="amber darken-4 white-text"
+          hidden\$="[[!submission.meta.canUpdate]]"
+        ></lrnsys-button>
       </div>
       <div hidden\$="[[!editPage]]">
-        <lrnsys-button on-tap="_resetRoute" icon="cancel" label="Cancel" hover-class="amber darken-4 white-text" hidden\$="[[!submission.meta.canUpdate]]"></lrnsys-button>
+        <lrnsys-button
+          on-tap="_resetRoute"
+          icon="cancel"
+          label="Cancel"
+          hover-class="amber darken-4 white-text"
+          hidden\$="[[!submission.meta.canUpdate]]"
+        ></lrnsys-button>
       </div>
     </app-toolbar>
 
     <vaadin-split-layout class="submission-page-wrapper">
-      <div id="commentcolumn" class="submission-comments" style="min-width: 25%; max-width: 40%; width:30%;">
+      <div
+        id="commentcolumn"
+        class="submission-comments"
+        style="min-width: 25%; max-width: 40%; width:30%;"
+      >
         <template is="dom-if" if="[[showComments]]">
-            <lrnsys-comment-list comment-ops-base="{{commentOpsBase}}" csrf-token="[[csrfToken]]" source-path="{{commentsUrl}}" create-stub-url="{{createStubUrl}}"></lrnsys-comment-list>
+          <lrnsys-comment-list
+            comment-ops-base="{{commentOpsBase}}"
+            csrf-token="[[csrfToken]]"
+            source-path="{{commentsUrl}}"
+            create-stub-url="{{createStubUrl}}"
+          ></lrnsys-comment-list>
         </template>
       </div>
       <div id="submissioncolumn" style="width:70%;">
-        <lrnapp-studio-submission-object submission="{{submission}}" edit="[[editPage]]"></lrnapp-studio-submission-object>
+        <lrnapp-studio-submission-object
+          submission="{{submission}}"
+          edit="[[editPage]]"
+        ></lrnapp-studio-submission-object>
       </div>
       <iron-icon class="splitter-handle" icon="more-vert"></iron-icon>
     </vaadin-split-layout>
 
     <elmsln-loading></elmsln-loading>
 
-
-    <paper-dialog id="deletedialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="">
+    <paper-dialog
+      id="deletedialog"
+      entry-animation="scale-up-animation"
+      exit-animation="fade-out-animation"
+      with-backdrop=""
+    >
       <h2>Delete submission?</h2>
       <p>Are you sure you want to delete this submission?</p>
       <div class="buttons">
         <paper-button dialog-dismiss="">Cancel</paper-button>
-        <paper-button dialog-confirm="" on-click="_submissionDeleteConfirmed">Delete</paper-button>
+        <paper-button dialog-confirm="" on-click="_submissionDeleteConfirmed"
+          >Delete</paper-button
+        >
       </div>
     </paper-dialog>
-    <paper-dialog id="publishdialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop="">
+    <paper-dialog
+      id="publishdialog"
+      entry-animation="scale-up-animation"
+      exit-animation="fade-out-animation"
+      with-backdrop=""
+    >
       <h2>Ready to publish?</h2>
-      <p>By publishing, the author of this submission will be able to view your feedback.  Are you ready to publish?</p>
+      <p>
+        By publishing, the author of this submission will be able to view your
+        feedback. Are you ready to publish?
+      </p>
       <div class="buttons">
         <paper-button dialog-dismiss="">Cancel</paper-button>
-        <paper-button dialog-confirm="" on-click="_submissionPublishConfirmed">Yes Publish</paper-button>
+        <paper-button dialog-confirm="" on-click="_submissionPublishConfirmed"
+          >Yes Publish</paper-button
+        >
       </div>
     </paper-dialog>
 
     <paper-toast id="toast"></paper-toast>
-`,
+  `,
 
-  is: 'lrnapp-studio-submission-page',
+  is: "lrnapp-studio-submission-page",
 
   properties: {
     id: {
@@ -254,13 +352,13 @@ Polymer({
     },
     hideMenuBar: {
       type: Boolean,
-      value: false,
+      value: false
     },
     endPoint: {
       type: String
     },
     basePath: {
-      type: String,
+      type: String
     },
     csrfToken: {
       type: String
@@ -276,15 +374,15 @@ Polymer({
     },
     commentsUrl: {
       type: String,
-      computed: '_computeCommentsUrl(id, endPoint, csrfToken)'
+      computed: "_computeCommentsUrl(id, endPoint, csrfToken)"
     },
     createStubUrl: {
       type: String,
-      computed: '_computeCommentsStubUrl(id, endPoint, csrfToken)'
+      computed: "_computeCommentsStubUrl(id, endPoint, csrfToken)"
     },
     commentOpsBase: {
       type: String,
-      computed: '_computeCommentsOpsUrl(id, endPoint, csrfToken)'
+      computed: "_computeCommentsOpsUrl(id, endPoint, csrfToken)"
     },
     editPage: {
       type: Boolean,
@@ -298,164 +396,174 @@ Polymer({
     },
     showComments: {
       type: Boolean,
-      computed: '_computeShowComments(submission)'
+      computed: "_computeShowComments(submission)"
     }
   },
 
   observers: [
-    '_urlVarsChanged(id, endPoint)',
-    '_paramsChanged(csrfToken)',
-    '_bodyChanged(title)',
+    "_urlVarsChanged(id, endPoint)",
+    "_paramsChanged(csrfToken)",
+    "_bodyChanged(title)"
   ],
 
   listeners: {
-    'submissionDeleteClicked': '_submissionDeleteClicked',
-    'submissionPublishClicked': '_submissionPublishClicked',
-    'submissionSaveDraftClicked': '_submissionSaveDraftClicked'
+    submissionDeleteClicked: "_submissionDeleteClicked",
+    submissionPublishClicked: "_submissionPublishClicked",
+    submissionSaveDraftClicked: "_submissionSaveDraftClicked"
   },
 
   /**
    * Go back to the studio relative to the app's path.
    */
-  _backToStudio: function (e) {
-    window.location.href = this.basePath + 'lrnapp-open-studio';
+  _backToStudio: function(e) {
+    window.location.href = this.basePath + "lrnapp-open-studio";
   },
 
   /**
    * Go back to the studio relative to the app's path.
    */
-  _backToKanban: function (e) {
-    window.location.href = this.basePath + 'lrnapp-studio-kanban';
+  _backToKanban: function(e) {
+    window.location.href = this.basePath + "lrnapp-studio-kanban";
   },
 
   /**
    * Trigger the page router to invoke edit state.
    */
-  _setEditRoute: function (e) {
-    this.set('route.path', 'edit');
+  _setEditRoute: function(e) {
+    this.set("route.path", "edit");
+    this.notifyPath("route.path");
   },
 
   /**
    * Trigger the page router to invoke edit state.
    */
-  _resetRoute: function (e) {
-    this.set('route.path', '');
+  _resetRoute: function(e) {
+    this.set("route.path", "");
+    this.notifyPath("route.path");
   },
 
   /**
    * if we should show new badge based on new comment count.
    */
-  displayNewBadge: function (count) {
+  displayNewBadge: function(count) {
     if (count == 0) {
       return true;
     }
     return false;
   },
 
-  _computeCommentsUrl: function (id, endPoint, csrfToken) {
-    return endPoint + '/api/submissions/' + id + '/comments?token=' + csrfToken;
+  _computeCommentsUrl: function(id, endPoint, csrfToken) {
+    return endPoint + "/api/submissions/" + id + "/comments?token=" + csrfToken;
   },
 
-  _computeCommentsOpsUrl: function (id, endPoint, csrfToken) {
-    return endPoint + '/api/submissions/' + id + '/comments';
+  _computeCommentsOpsUrl: function(id, endPoint, csrfToken) {
+    return endPoint + "/api/submissions/" + id + "/comments";
   },
 
-  _computeCommentsStubUrl: function (id, endPoint, csrfToken) {
-    return endPoint + '/api/submissions/' + id + '/comments/create-stub?token=' + csrfToken;
+  _computeCommentsStubUrl: function(id, endPoint, csrfToken) {
+    return (
+      endPoint +
+      "/api/submissions/" +
+      id +
+      "/comments/create-stub?token=" +
+      csrfToken
+    );
   },
 
-  _urlVarsChanged: function (id, endPoint) {
-    this.reqUrl = endPoint + '/api/submissions/' + id;
+  _urlVarsChanged: function(id, endPoint) {
+    this.reqUrl = endPoint + "/api/submissions/" + id;
   },
 
-  _paramsChanged: function (csrfToken) {
+  _paramsChanged: function(csrfToken) {
     var params = this.reqParams || {};
     params.token = csrfToken;
     this.reqParams = params;
   },
 
-  _handleResponse: function (data) {
+  _handleResponse: function(data) {
     // empty response means no access or deleted item
     if (data.detail.response.data) {
-      this.set('submission', []);
-      this.set('submission', data.detail.response.data);
+      this.set("submission", []);
+      this.set("submission", data.detail.response.data);
       async.microTask.run(() => {
-        window.dispatchEvent(new Event('resize'));
+        window.dispatchEvent(new Event("resize"));
       });
     }
   },
 
-  _isReply: function (data) {
+  _isReply: function(data) {
     this.thread = submission.relationships.comments.data.attributes.thread;
   },
 
-  _submissionSaveDraftClicked: function (e) {
+  _submissionSaveDraftClicked: function(e) {
     this.saving = true;
-    this.shadowRoot.querySelector('#ajaxUpdateRequest').generateRequest();
+    this.shadowRoot.querySelector("#ajaxUpdateRequest").generateRequest();
   },
 
-  _submissionPublishClicked: function (e) {
-    this.shadowRoot.querySelector('#publishdialog').open();
+  _submissionPublishClicked: function(e) {
+    this.shadowRoot.querySelector("#publishdialog").open();
   },
 
-  _submissionPublishConfirmed: function (e) {
+  _submissionPublishConfirmed: function(e) {
     this.saving = true;
-    this.shadowRoot.querySelector('#ajaxUpdateRequest').generateRequest();
+    this.shadowRoot.querySelector("#ajaxUpdateRequest").generateRequest();
   },
 
-  _submissionDeleteClicked: function (e) {
-    this.shadowRoot.querySelector('#deletedialog').open();
+  _submissionDeleteClicked: function(e) {
+    this.shadowRoot.querySelector("#deletedialog").open();
   },
 
-  _submissionDeleteConfirmed: function (e) {
+  _submissionDeleteConfirmed: function(e) {
     this.saving = true;
     this.$.ajaxDeleteRequest.generateRequest();
   },
 
-  _handleUpdateResponse: function (res) {
+  _handleUpdateResponse: function(res) {
     var root = this;
     var status = res.detail.response.status;
     var submission = res.detail.response.data;
     root.saving = false;
     if (status === 200) {
-      root.set('submission', {});
-      root.set('submission', submission);
-      root.set('route.path', '');
+      root.set("submission", {});
+      root.set("submission", submission);
+      root.set("route.path", "");
       // display a submission published notification
-      if (submission.attributes.state === 'submission_ready') {
-        this.$.toast.show('Published!');
+      if (submission.attributes.state === "submission_ready") {
+        this.$.toast.show("Published!");
       }
       // @todo replace this with the page just being there once we fix the lazy load dilema
       window.location.href = this.endPoint + "/submissions/" + submission.id;
     }
   },
 
-  _handleDeleteResponse: function (res) {
+  _handleDeleteResponse: function(res) {
     var root = this;
     var status = res.detail.response.status;
     root.saving = false;
     if (status === 200) {
-      window.location.href = this.basePath + 'lrnapp-studio-kanban?deletetoast';
+      window.location.href = this.basePath + "lrnapp-studio-kanban?deletetoast";
     }
   },
 
-  _computeShowComments: function (submission) {
+  _computeShowComments: function(submission) {
     try {
       var type = submission.meta.submissionType;
-      if (type !== 'critique' && submission.attributes.state == 'submission_ready') {
+      if (
+        type !== "critique" &&
+        submission.attributes.state == "submission_ready"
+      ) {
         return true;
       }
-    } catch (error) {
-    }
+    } catch (error) {}
     return false;
   },
 
   /**
-  * Simple way to convert from object to array.
-  */
-  _toArray: function (obj) {
-    if (typeof obj === 'object' && obj !== null) {
-      return Object.keys(obj).map(function (key) {
+   * Simple way to convert from object to array.
+   */
+  _toArray: function(obj) {
+    if (typeof obj === "object" && obj !== null) {
+      return Object.keys(obj).map(function(key) {
         return obj[key];
       });
     }
