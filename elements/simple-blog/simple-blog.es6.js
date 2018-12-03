@@ -2,22 +2,23 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
     <style is="custom-style" include="simple-colors">
       :host {
         display: block;
-        font-family: 'Roboto', 'Noto', sans-serif;
+        font-family: "Roboto", "Noto", sans-serif;
         -webkit-font-smoothing: antialiased;
         font-size: 14px;
         margin: 0;
         padding: 24px;
         background-color: #fafafa;
-        font-family: Open Sans,MundoSans,helvetica neue,Arial,Helvetica,sans-serif;
+        font-family: Open Sans, MundoSans, helvetica neue, Arial, Helvetica,
+          sans-serif;
         margin: 0;
         padding: 0;
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         -moz-font-feature-settings: "liga=1, dlig=1";
-        -ms-font-feature-settings: "liga","dlig";
-        -webkit-font-feature-settings: "liga","dlig";
-        -o-font-feature-settings: "liga","dlig";
-        font-feature-settings: "liga","dlig";
+        -ms-font-feature-settings: "liga", "dlig";
+        -webkit-font-feature-settings: "liga", "dlig";
+        -o-font-feature-settings: "liga", "dlig";
+        font-feature-settings: "liga", "dlig";
       }
       #backbutton {
         position: fixed;
@@ -29,10 +30,10 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         margin: 8px;
         z-index: 1000;
         color: black;
-        background-color: rgba( 250, 250, 250, .5);
-        opacity: .5;
+        background-color: rgba(250, 250, 250, 0.5);
+        opacity: 0.5;
         border-radius: 50%;
-        transition: all .6s linear;
+        transition: all 0.6s linear;
       }
       #backbutton:focus,
       #backbutton:hover {
@@ -40,12 +41,13 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         color: white;
         background-color: var(--haxcms-color, black);
       }
-      iron-pages, iron-pages section {
+      iron-pages,
+      iron-pages section {
         width: 100vw;
         height: 100vh;
       }
       #post {
-        transition: all .6s ease-in-out;
+        transition: all 0.6s ease-in-out;
         visibility: hidden;
       }
       :host([selected-page="0"]) #post {
@@ -61,15 +63,35 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
     <iron-pages selected="[[selectedPage]]">
       <section>
         <simple-blog-header manifest="[[manifest]]"></simple-blog-header>
-        <simple-blog-listing id="listing" items="[[manifest.items]]"></simple-blog-listing>
+        <simple-blog-listing
+          id="listing"
+          items="[[manifest.items]]"
+        ></simple-blog-listing>
       </section>
       <section>
-        <paper-icon-button id="backbutton" icon="icons:arrow-back" on-tap="_resetActiveItem"></paper-icon-button>
-        <paper-tooltip for="backbutton" position="right" offset="14" animation-delay="100">
-        Back to main site
+        <paper-icon-button
+          id="backbutton"
+          icon="icons:arrow-back"
+          on-tap="_resetActiveItem"
+        ></paper-icon-button>
+        <paper-tooltip
+          for="backbutton"
+          position="right"
+          offset="14"
+          animation-delay="100"
+        >
+          Back to main site
         </paper-tooltip>
-        <simple-blog-post id="post" active-item="[[activeItem]]" edit-mode="[[editMode]]"><slot></slot></simple-blog-post>
-        <simple-blog-footer id="footer" manifest="[[manifest]]"></simple-blog-footer>
+        <simple-blog-post
+          id="post"
+          active-item="[[activeItem]]"
+          edit-mode="[[editMode]]"
+          ><slot></slot
+        ></simple-blog-post>
+        <simple-blog-footer
+          id="footer"
+          manifest="[[manifest]]"
+        ></simple-blog-footer>
       </section>
     </iron-pages>
-`,is:"simple-blog",behaviors:[SchemaBehaviors.Schema,HAXCMSBehaviors.Theme],listeners:{"active-item-selected":"_itemSelected","active-item-reset":"_resetActiveItem"},properties:{selectedPage:{type:Number,reflectToAttribute:!0,value:0}},ready:function(){this.setupHAXTheme(!0,this.$.post.$.contentcontainer);document.body.addEventListener("haxcms-trigger-update",this._dataRefreshed.bind(this));document.body.addEventListener("json-outline-schema-active-item-changed",this._activeItemEvent.bind(this))},detached:function(){this.setupHAXTheme(!1);document.body.removeEventListener("haxcms-trigger-update",this._dataRefreshed.bind(this));document.body.removeEventListener("json-outline-schema-active-item-changed",this._activeItemEvent.bind(this))},_itemSelected:function(e){var id=e.detail;let find=this.manifest.items.filter(item=>{if(item.id!==id){return!1}return!0});if(0<find.length){this.fire("json-outline-schema-active-item-changed",find.pop())}},_activeItemEvent:function(e){if(typeof e.detail.id!==typeof void 0){this.selectedPage=1;window.scrollTo(0,0);this.$.post.set("activeItem",e.detail)}else{this.selectedPage=0}},_resetActiveItem:function(e){this.fire("json-outline-schema-active-item-changed",{})},_dataRefreshed:function(e){this.fire("json-outline-schema-active-item-changed",{})}});export{SimpleBlog};
+  `,is:"simple-blog",behaviors:[SchemaBehaviors.Schema,HAXCMSBehaviors.Theme],listeners:{"active-item-selected":"_itemSelected","active-item-reset":"_resetActiveItem"},properties:{selectedPage:{type:Number,reflectToAttribute:!0,value:0}},ready:function(){this.setupHAXTheme(!0,this.$.post.$.contentcontainer);document.body.addEventListener("haxcms-trigger-update",this._dataRefreshed.bind(this));document.body.addEventListener("json-outline-schema-active-item-changed",this._activeItemEvent.bind(this))},detached:function(){this.setupHAXTheme(!1);document.body.removeEventListener("haxcms-trigger-update",this._dataRefreshed.bind(this));document.body.removeEventListener("json-outline-schema-active-item-changed",this._activeItemEvent.bind(this))},_itemSelected:function(e){var id=e.detail;let find=this.manifest.items.filter(item=>{if(item.id!==id){return!1}return!0});if(0<find.length){this.fire("json-outline-schema-active-item-changed",find.pop())}},_activeItemEvent:function(e){if(typeof e.detail.id!==typeof void 0){this.selectedPage=1;window.scrollTo(0,0);this.$.post.set("activeItem",e.detail)}else{this.selectedPage=0}},_resetActiveItem:function(e){this.fire("json-outline-schema-active-item-changed",{})},_dataRefreshed:function(e){this.fire("json-outline-schema-active-item-changed",{})}});export{SimpleBlog};

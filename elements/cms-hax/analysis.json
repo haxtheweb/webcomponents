@@ -2088,11 +2088,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 57,
+              "line": 75,
               "column": 4
             },
             "end": {
-              "line": 60,
+              "line": 78,
               "column": 5
             }
           },
@@ -2110,11 +2110,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 65,
+              "line": 83,
               "column": 4
             },
             "end": {
-              "line": 68,
+              "line": 86,
               "column": 5
             }
           },
@@ -2132,11 +2132,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 72,
+              "line": 90,
               "column": 4
             },
             "end": {
-              "line": 75,
+              "line": 93,
               "column": 5
             }
           },
@@ -2154,11 +2154,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 79,
+              "line": 97,
               "column": 4
             },
             "end": {
-              "line": 82,
+              "line": 100,
               "column": 5
             }
           },
@@ -2176,11 +2176,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 86,
+              "line": 104,
               "column": 4
             },
             "end": {
-              "line": 89,
+              "line": 107,
               "column": 5
             }
           },
@@ -2198,11 +2198,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 97,
+              "line": 115,
               "column": 4
             },
             "end": {
-              "line": 99,
+              "line": 117,
               "column": 5
             }
           },
@@ -2219,11 +2219,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 103,
+              "line": 121,
               "column": 4
             },
             "end": {
-              "line": 105,
+              "line": 123,
               "column": 5
             }
           },
@@ -2240,11 +2240,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 109,
+              "line": 127,
               "column": 4
             },
             "end": {
-              "line": 112,
+              "line": 130,
               "column": 5
             }
           },
@@ -2262,11 +2262,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 116,
+              "line": 134,
               "column": 4
             },
             "end": {
-              "line": 118,
+              "line": 136,
               "column": 5
             }
           },
@@ -2283,11 +2283,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 122,
+              "line": 140,
               "column": 4
             },
             "end": {
-              "line": 124,
+              "line": 142,
               "column": 5
             }
           },
@@ -2304,11 +2304,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 128,
+              "line": 146,
               "column": 4
             },
             "end": {
-              "line": 131,
+              "line": 149,
               "column": 5
             }
           },
@@ -2326,11 +2326,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 135,
+              "line": 153,
               "column": 4
             },
             "end": {
-              "line": 138,
+              "line": 156,
               "column": 5
             }
           },
@@ -2347,11 +2347,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 142,
+              "line": 160,
               "column": 4
             },
             "end": {
-              "line": 145,
+              "line": 163,
               "column": 5
             }
           },
@@ -2369,11 +2369,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 149,
+              "line": 167,
               "column": 4
             },
             "end": {
-              "line": 152,
+              "line": 170,
               "column": 5
             }
           },
@@ -2391,11 +2391,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 156,
+              "line": 174,
               "column": 4
             },
             "end": {
-              "line": 159,
+              "line": 177,
               "column": 5
             }
           },
@@ -2413,11 +2413,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 163,
+              "line": 181,
               "column": 4
             },
             "end": {
-              "line": 165,
+              "line": 183,
               "column": 5
             }
           },
@@ -2434,11 +2434,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 169,
+              "line": 187,
               "column": 4
             },
             "end": {
-              "line": 172,
+              "line": 190,
               "column": 5
             }
           },
@@ -2456,11 +2456,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 176,
+              "line": 194,
               "column": 4
             },
             "end": {
-              "line": 179,
+              "line": 197,
               "column": 5
             }
           },
@@ -2478,11 +2478,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 180,
+              "line": 198,
               "column": 4
             },
             "end": {
-              "line": 183,
+              "line": 201,
               "column": 5
             }
           },
@@ -2501,11 +2501,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 189,
+              "line": 207,
               "column": 2
             },
             "end": {
-              "line": 201,
+              "line": 219,
               "column": 3
             }
           },
@@ -2528,11 +2528,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 206,
+              "line": 224,
               "column": 2
             },
             "end": {
-              "line": 211,
+              "line": 229,
               "column": 3
             }
           },
@@ -2549,11 +2549,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 216,
+              "line": 234,
               "column": 2
             },
             "end": {
-              "line": 221,
+              "line": 239,
               "column": 3
             }
           },
@@ -2569,11 +2569,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 227,
+              "line": 245,
               "column": 2
             },
             "end": {
-              "line": 249,
+              "line": 267,
               "column": 3
             }
           },
@@ -2589,11 +2589,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 254,
+              "line": 272,
               "column": 2
             },
             "end": {
-              "line": 266,
+              "line": 284,
               "column": 3
             }
           },
@@ -2613,11 +2613,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 271,
+              "line": 289,
               "column": 2
             },
             "end": {
-              "line": 276,
+              "line": 294,
               "column": 3
             }
           },
@@ -2637,11 +2637,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 281,
+              "line": 299,
               "column": 2
             },
             "end": {
-              "line": 295,
+              "line": 313,
               "column": 3
             }
           },
@@ -2665,7 +2665,7 @@
           "column": 21
         },
         "end": {
-          "line": 296,
+          "line": 314,
           "column": 1
         }
       },
@@ -2678,11 +2678,11 @@
           "description": "Default the panel to open",
           "sourceRange": {
             "start": {
-              "line": 57,
+              "line": 75,
               "column": 4
             },
             "end": {
-              "line": 60,
+              "line": 78,
               "column": 5
             }
           },
@@ -2694,11 +2694,11 @@
           "description": "Hide the export button, showing it is good for developers\nor those doing QA testing of new elements.",
           "sourceRange": {
             "start": {
-              "line": 65,
+              "line": 83,
               "column": 4
             },
             "end": {
-              "line": 68,
+              "line": 86,
               "column": 5
             }
           },
@@ -2710,11 +2710,11 @@
           "description": "Hide the panel operations (save and cancel),",
           "sourceRange": {
             "start": {
-              "line": 72,
+              "line": 90,
               "column": 4
             },
             "end": {
-              "line": 75,
+              "line": 93,
               "column": 5
             }
           },
@@ -2726,11 +2726,11 @@
           "description": "Hide preferences button",
           "sourceRange": {
             "start": {
-              "line": 79,
+              "line": 97,
               "column": 4
             },
             "end": {
-              "line": 82,
+              "line": 100,
               "column": 5
             }
           },
@@ -2742,11 +2742,11 @@
           "description": "Direction to align the hax edit panel",
           "sourceRange": {
             "start": {
-              "line": 86,
+              "line": 104,
               "column": 4
             },
             "end": {
-              "line": 89,
+              "line": 107,
               "column": 5
             }
           },
@@ -2758,11 +2758,11 @@
           "description": "allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.",
           "sourceRange": {
             "start": {
-              "line": 97,
+              "line": 115,
               "column": 4
             },
             "end": {
-              "line": 99,
+              "line": 117,
               "column": 5
             }
           },
@@ -2774,11 +2774,11 @@
           "description": "Location to save content to.",
           "sourceRange": {
             "start": {
-              "line": 103,
+              "line": 121,
               "column": 4
             },
             "end": {
-              "line": 105,
+              "line": 123,
               "column": 5
             }
           },
@@ -2790,11 +2790,11 @@
           "description": "Method to save content.",
           "sourceRange": {
             "start": {
-              "line": 109,
+              "line": 127,
               "column": 4
             },
             "end": {
-              "line": 112,
+              "line": 130,
               "column": 5
             }
           },
@@ -2806,11 +2806,11 @@
           "description": "Page data, body of text as a string.",
           "sourceRange": {
             "start": {
-              "line": 116,
+              "line": 134,
               "column": 4
             },
             "end": {
-              "line": 118,
+              "line": 136,
               "column": 5
             }
           },
@@ -2822,11 +2822,11 @@
           "description": "Connection object for talking to an app store.",
           "sourceRange": {
             "start": {
-              "line": 122,
+              "line": 140,
               "column": 4
             },
             "end": {
-              "line": 124,
+              "line": 142,
               "column": 5
             }
           },
@@ -2838,11 +2838,11 @@
           "description": "Offset from the left of the body field",
           "sourceRange": {
             "start": {
-              "line": 128,
+              "line": 146,
               "column": 4
             },
             "end": {
-              "line": 131,
+              "line": 149,
               "column": 5
             }
           },
@@ -2854,11 +2854,11 @@
           "description": "State of the panel",
           "sourceRange": {
             "start": {
-              "line": 135,
+              "line": 153,
               "column": 4
             },
             "end": {
-              "line": 138,
+              "line": 156,
               "column": 5
             }
           },
@@ -2870,11 +2870,11 @@
           "description": "syncBody",
           "sourceRange": {
             "start": {
-              "line": 142,
+              "line": 160,
               "column": 4
             },
             "end": {
-              "line": 145,
+              "line": 163,
               "column": 5
             }
           },
@@ -2886,11 +2886,11 @@
           "description": "Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag",
           "sourceRange": {
             "start": {
-              "line": 149,
+              "line": 167,
               "column": 4
             },
             "end": {
-              "line": 152,
+              "line": 170,
               "column": 5
             }
           },
@@ -2902,11 +2902,11 @@
           "description": "Flag to hide the toast.",
           "sourceRange": {
             "start": {
-              "line": 156,
+              "line": 174,
               "column": 4
             },
             "end": {
-              "line": 159,
+              "line": 177,
               "column": 5
             }
           },
@@ -2918,11 +2918,11 @@
           "description": "Optional URL to redirect to once we save.",
           "sourceRange": {
             "start": {
-              "line": 163,
+              "line": 181,
               "column": 4
             },
             "end": {
-              "line": 165,
+              "line": 183,
               "column": 5
             }
           },
@@ -2934,11 +2934,11 @@
           "description": "Option to redirect once we save successfully",
           "sourceRange": {
             "start": {
-              "line": 169,
+              "line": 187,
               "column": 4
             },
             "end": {
-              "line": 172,
+              "line": 190,
               "column": 5
             }
           },
@@ -2950,11 +2950,11 @@
           "description": "Reference to activeBody.",
           "sourceRange": {
             "start": {
-              "line": 176,
+              "line": 194,
               "column": 4
             },
             "end": {
-              "line": 179,
+              "line": 197,
               "column": 5
             }
           },

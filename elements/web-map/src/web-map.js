@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "./lib/map-layer.js";
 import "./lib/map-area.js";
 import "./lib/map-styles.js";
@@ -211,7 +212,7 @@ let WebMap = Polymer({
   },
 
   attached: function() {
-    this.async(function() {
+    async.microTask.run(() => {
       // the dimension attributes win, if they're there. A map does not
       // have an intrinsic size, unlike an image or video, and so must
       // have a defined width and height.

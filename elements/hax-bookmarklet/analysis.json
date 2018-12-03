@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 27,
+              "line": 31,
               "column": 4
             },
             "end": {
-              "line": 32,
+              "line": 36,
               "column": 5
             }
           },
@@ -39,7 +39,7 @@
           "column": 29
         },
         "end": {
-          "line": 34,
+          "line": 38,
           "column": 1
         }
       },
@@ -52,11 +52,11 @@
           "description": "Store data with path resolved.",
           "sourceRange": {
             "start": {
-              "line": 27,
+              "line": 31,
               "column": 4
             },
             "end": {
-              "line": 32,
+              "line": 36,
               "column": 5
             }
           },

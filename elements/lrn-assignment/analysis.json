@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 38,
+              "line": 42,
               "column": 4
             },
             "end": {
-              "line": 40,
+              "line": 44,
               "column": 5
             }
           },
@@ -34,11 +34,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 44,
+              "line": 48,
               "column": 4
             },
             "end": {
-              "line": 46,
+              "line": 50,
               "column": 5
             }
           },
@@ -55,11 +55,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 50,
+              "line": 54,
               "column": 4
             },
             "end": {
-              "line": 52,
+              "line": 56,
               "column": 5
             }
           },
@@ -76,11 +76,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 56,
+              "line": 60,
               "column": 4
             },
             "end": {
-              "line": 58,
+              "line": 62,
               "column": 5
             }
           },
@@ -92,28 +92,6 @@
         },
         {
           "name": "open",
-          "type": "boolean | null | undefined",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 59,
-              "column": 4
-            },
-            "end": {
-              "line": 62,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "complete",
           "type": "boolean | null | undefined",
           "description": "",
           "privacy": "public",
@@ -135,8 +113,8 @@
           "defaultValue": "false"
         },
         {
-          "name": "actions",
-          "type": "Object | null | undefined",
+          "name": "complete",
+          "type": "boolean | null | undefined",
           "description": "",
           "privacy": "public",
           "sourceRange": {
@@ -145,7 +123,29 @@
               "column": 4
             },
             "end": {
-              "line": 69,
+              "line": 70,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "actions",
+          "type": "Object | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 71,
+              "column": 4
+            },
+            "end": {
+              "line": 73,
               "column": 5
             }
           },
@@ -166,7 +166,7 @@
           "column": 28
         },
         "end": {
-          "line": 71,
+          "line": 75,
           "column": 1
         }
       },
@@ -179,11 +179,11 @@
           "description": "Title",
           "sourceRange": {
             "start": {
-              "line": 38,
+              "line": 42,
               "column": 4
             },
             "end": {
-              "line": 40,
+              "line": 44,
               "column": 5
             }
           },
@@ -195,11 +195,11 @@
           "description": "Image url",
           "sourceRange": {
             "start": {
-              "line": 44,
+              "line": 48,
               "column": 4
             },
             "end": {
-              "line": 46,
+              "line": 50,
               "column": 5
             }
           },
@@ -211,11 +211,11 @@
           "description": "Details of the assignment",
           "sourceRange": {
             "start": {
-              "line": 50,
+              "line": 54,
               "column": 4
             },
             "end": {
-              "line": 52,
+              "line": 56,
               "column": 5
             }
           },
@@ -227,23 +227,7 @@
           "description": "url",
           "sourceRange": {
             "start": {
-              "line": 56,
-              "column": 4
-            },
-            "end": {
-              "line": 58,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "open",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 59,
+              "line": 60,
               "column": 4
             },
             "end": {
@@ -252,10 +236,10 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "string | null | undefined"
         },
         {
-          "name": "complete",
+          "name": "open",
           "description": "",
           "sourceRange": {
             "start": {
@@ -271,7 +255,7 @@
           "type": "boolean | null | undefined"
         },
         {
-          "name": "actions",
+          "name": "complete",
           "description": "",
           "sourceRange": {
             "start": {
@@ -279,7 +263,23 @@
               "column": 4
             },
             "end": {
-              "line": 69,
+              "line": 70,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "actions",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 71,
+              "column": 4
+            },
+            "end": {
+              "line": 73,
               "column": 5
             }
           },
@@ -307,11 +307,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 105,
+              "line": 117,
               "column": 4
             },
             "end": {
-              "line": 109,
+              "line": 121,
               "column": 5
             }
           },
@@ -329,11 +329,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 110,
+              "line": 122,
               "column": 4
             },
             "end": {
-              "line": 113,
+              "line": 125,
               "column": 5
             }
           },
@@ -350,11 +350,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 114,
+              "line": 126,
               "column": 4
             },
             "end": {
-              "line": 116,
+              "line": 128,
               "column": 5
             }
           },
@@ -372,11 +372,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 119,
+              "line": 131,
               "column": 2
             },
             "end": {
-              "line": 127,
+              "line": 139,
               "column": 3
             }
           },
@@ -396,11 +396,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 129,
+              "line": 141,
               "column": 2
             },
             "end": {
-              "line": 129,
+              "line": 141,
               "column": 37
             }
           },
@@ -420,11 +420,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 131,
+              "line": 143,
               "column": 2
             },
             "end": {
-              "line": 133,
+              "line": 145,
               "column": 3
             }
           },
@@ -444,11 +444,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 73,
+          "line": 77,
           "column": 29
         },
         "end": {
-          "line": 134,
+          "line": 146,
           "column": 1
         }
       },
@@ -461,11 +461,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 105,
+              "line": 117,
               "column": 4
             },
             "end": {
-              "line": 109,
+              "line": 121,
               "column": 5
             }
           },
@@ -477,11 +477,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 110,
+              "line": 122,
               "column": 4
             },
             "end": {
-              "line": 113,
+              "line": 125,
               "column": 5
             }
           },
@@ -493,11 +493,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 114,
+              "line": 126,
               "column": 4
             },
             "end": {
-              "line": 116,
+              "line": 128,
               "column": 5
             }
           },
@@ -525,11 +525,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 37,
+              "line": 42,
               "column": 4
             },
             "end": {
-              "line": 37,
+              "line": 42,
               "column": 17
             }
           },
@@ -546,11 +546,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 38,
+              "line": 43,
               "column": 4
             },
             "end": {
-              "line": 38,
+              "line": 43,
               "column": 15
             }
           },
@@ -567,11 +567,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 39,
+              "line": 44,
               "column": 4
             },
             "end": {
-              "line": 42,
+              "line": 47,
               "column": 5
             }
           },
@@ -589,11 +589,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 43,
+              "line": 48,
               "column": 4
             },
             "end": {
-              "line": 46,
+              "line": 51,
               "column": 5
             }
           },
@@ -615,7 +615,7 @@
           "column": 8
         },
         "end": {
-          "line": 48,
+          "line": 53,
           "column": 1
         }
       },
@@ -627,11 +627,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 37,
+              "line": 42,
               "column": 4
             },
             "end": {
-              "line": 37,
+              "line": 42,
               "column": 17
             }
           },
@@ -643,11 +643,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 38,
+              "line": 43,
               "column": 4
             },
             "end": {
-              "line": 38,
+              "line": 43,
               "column": 15
             }
           },
@@ -659,11 +659,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 39,
+              "line": 44,
               "column": 4
             },
             "end": {
-              "line": 42,
+              "line": 47,
               "column": 5
             }
           },
@@ -675,11 +675,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 43,
+              "line": 48,
               "column": 4
             },
             "end": {
-              "line": 46,
+              "line": 51,
               "column": 5
             }
           },

@@ -61,11 +61,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 58,
+              "line": 75,
               "column": 4
             },
             "end": {
-              "line": 61,
+              "line": 78,
               "column": 5
             }
           },
@@ -83,11 +83,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 66,
+              "line": 83,
               "column": 4
             },
             "end": {
-              "line": 69,
+              "line": 86,
               "column": 5
             }
           },
@@ -105,11 +105,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 74,
+              "line": 91,
               "column": 4
             },
             "end": {
-              "line": 77,
+              "line": 94,
               "column": 5
             }
           },
@@ -127,11 +127,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 82,
+              "line": 99,
               "column": 4
             },
             "end": {
-              "line": 85,
+              "line": 102,
               "column": 5
             }
           },
@@ -149,11 +149,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 104,
               "column": 4
             },
             "end": {
-              "line": 90,
+              "line": 107,
               "column": 5
             }
           },
@@ -171,11 +171,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 92,
+              "line": 109,
               "column": 4
             },
             "end": {
-              "line": 95,
+              "line": 112,
               "column": 5
             }
           },
@@ -193,11 +193,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 97,
+              "line": 114,
               "column": 4
             },
             "end": {
-              "line": 100,
+              "line": 117,
               "column": 5
             }
           },
@@ -215,11 +215,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 102,
+              "line": 119,
               "column": 4
             },
             "end": {
-              "line": 105,
+              "line": 122,
               "column": 5
             }
           },
@@ -237,11 +237,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 107,
+              "line": 124,
               "column": 4
             },
             "end": {
-              "line": 110,
+              "line": 127,
               "column": 5
             }
           },
@@ -259,11 +259,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 112,
+              "line": 129,
               "column": 4
             },
             "end": {
-              "line": 115,
+              "line": 132,
               "column": 5
             }
           },
@@ -677,11 +677,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 122,
+              "line": 139,
               "column": 2
             },
             "end": {
-              "line": 124,
+              "line": 141,
               "column": 3
             }
           },
@@ -698,11 +698,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 126,
+              "line": 143,
               "column": 2
             },
             "end": {
-              "line": 128,
+              "line": 145,
               "column": 3
             }
           },
@@ -725,11 +725,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 130,
+              "line": 147,
               "column": 2
             },
             "end": {
-              "line": 132,
+              "line": 149,
               "column": 3
             }
           },
@@ -752,11 +752,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 134,
+              "line": 151,
               "column": 2
             },
             "end": {
-              "line": 136,
+              "line": 153,
               "column": 3
             }
           },
@@ -779,11 +779,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 138,
+              "line": 155,
               "column": 2
             },
             "end": {
-              "line": 144,
+              "line": 161,
               "column": 3
             }
           },
@@ -803,7 +803,7 @@
           "column": 29
         },
         "end": {
-          "line": 145,
+          "line": 162,
           "column": 1
         }
       },
@@ -816,11 +816,11 @@
           "description": "Value of circular progress bar.",
           "sourceRange": {
             "start": {
-              "line": 58,
+              "line": 75,
               "column": 4
             },
             "end": {
-              "line": 61,
+              "line": 78,
               "column": 5
             }
           },
@@ -832,11 +832,11 @@
           "description": "Maximum of value.",
           "sourceRange": {
             "start": {
-              "line": 66,
+              "line": 83,
               "column": 4
             },
             "end": {
-              "line": 69,
+              "line": 86,
               "column": 5
             }
           },
@@ -848,11 +848,11 @@
           "description": "Stroke width of circle.",
           "sourceRange": {
             "start": {
-              "line": 74,
+              "line": 91,
               "column": 4
             },
             "end": {
-              "line": 77,
+              "line": 94,
               "column": 5
             }
           },
@@ -864,11 +864,11 @@
           "description": "Starting angle of the progress.",
           "sourceRange": {
             "start": {
-              "line": 82,
+              "line": 99,
               "column": 4
             },
             "end": {
-              "line": 85,
+              "line": 102,
               "column": 5
             }
           },

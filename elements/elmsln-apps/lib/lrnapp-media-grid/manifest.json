@@ -1,0 +1,18 @@
+{
+  "name": "lrnapp-media-grid",
+  "short_name": "lrnapp-media-grid",
+  "title": "Images",
+  "description": "Media elements presented as a visual grid",
+  "start_url": "/",
+  "display": "standalone",
+  "drupal": {
+    "menu": {
+      "menu_name": "menu-elmsln-navigation",
+      "weight": 11
+    },
+    "data": {
+      "callback": "_webcomponent_app_lrnapp_media_grid",
+      "property": "source-path"
+    }
+  }
+}

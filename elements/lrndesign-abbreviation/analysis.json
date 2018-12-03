@@ -62,11 +62,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 55,
+              "line": 57,
               "column": 4
             },
             "end": {
-              "line": 59,
+              "line": 61,
               "column": 5
             }
           },
@@ -84,11 +84,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 63,
+              "line": 65,
               "column": 4
             },
             "end": {
-              "line": 67,
+              "line": 69,
               "column": 5
             }
           },
@@ -155,11 +155,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 72,
+              "line": 74,
               "column": 2
             },
             "end": {
-              "line": 131,
+              "line": 133,
               "column": 3
             }
           },
@@ -179,7 +179,7 @@
           "column": 36
         },
         "end": {
-          "line": 132,
+          "line": 134,
           "column": 1
         }
       },
@@ -228,11 +228,11 @@
           "description": "Abbreviation text.",
           "sourceRange": {
             "start": {
-              "line": 55,
+              "line": 57,
               "column": 4
             },
             "end": {
-              "line": 59,
+              "line": 61,
               "column": 5
             }
           },
@@ -244,11 +244,11 @@
           "description": "The thing the abbreviation represents.",
           "sourceRange": {
             "start": {
-              "line": 63,
+              "line": 65,
               "column": 4
             },
             "end": {
-              "line": 67,
+              "line": 69,
               "column": 5
             }
           },

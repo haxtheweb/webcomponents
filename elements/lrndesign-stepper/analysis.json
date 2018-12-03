@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 183,
+              "line": 181,
               "column": 4
             },
             "end": {
-              "line": 187,
+              "line": 185,
               "column": 5
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 192,
+              "line": 190,
               "column": 4
             },
             "end": {
-              "line": 196,
+              "line": 194,
               "column": 5
             }
           },
@@ -57,11 +57,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 201,
+              "line": 199,
               "column": 4
             },
             "end": {
-              "line": 205,
+              "line": 203,
               "column": 5
             }
           },
@@ -79,11 +79,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 209,
+              "line": 207,
               "column": 4
             },
             "end": {
-              "line": 213,
+              "line": 211,
               "column": 5
             }
           },
@@ -101,11 +101,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 217,
+              "line": 215,
               "column": 4
             },
             "end": {
-              "line": 222,
+              "line": 220,
               "column": 5
             }
           },
@@ -124,11 +124,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 223,
+              "line": 221,
               "column": 4
             },
             "end": {
-              "line": 226,
+              "line": 224,
               "column": 5
             }
           },
@@ -147,11 +147,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 229,
+              "line": 227,
               "column": 2
             },
             "end": {
-              "line": 238,
+              "line": 236,
               "column": 3
             }
           },
@@ -167,11 +167,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 243,
+              "line": 241,
               "column": 2
             },
             "end": {
-              "line": 245,
+              "line": 243,
               "column": 3
             }
           },
@@ -191,11 +191,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 250,
+              "line": 248,
               "column": 2
             },
             "end": {
-              "line": 256,
+              "line": 254,
               "column": 3
             }
           },
@@ -224,7 +224,7 @@
           "column": 8
         },
         "end": {
-          "line": 257,
+          "line": 255,
           "column": 1
         }
       },
@@ -236,11 +236,11 @@
           "description": "The button title.",
           "sourceRange": {
             "start": {
-              "line": 183,
+              "line": 181,
               "column": 4
             },
             "end": {
-              "line": 187,
+              "line": 185,
               "column": 5
             }
           },
@@ -252,11 +252,11 @@
           "description": "The button icon.",
           "sourceRange": {
             "start": {
-              "line": 192,
+              "line": 190,
               "column": 4
             },
             "end": {
-              "line": 196,
+              "line": 194,
               "column": 5
             }
           },
@@ -268,11 +268,11 @@
           "description": "The url for button.",
           "sourceRange": {
             "start": {
-              "line": 201,
+              "line": 199,
               "column": 4
             },
             "end": {
-              "line": 205,
+              "line": 203,
               "column": 5
             }
           },
@@ -284,11 +284,11 @@
           "description": "The tab location position (start / middle / end).",
           "sourceRange": {
             "start": {
-              "line": 209,
+              "line": 207,
               "column": 4
             },
             "end": {
-              "line": 213,
+              "line": 211,
               "column": 5
             }
           },
@@ -300,11 +300,11 @@
           "description": "Allow for collapsible content with the items inside",
           "sourceRange": {
             "start": {
-              "line": 217,
+              "line": 215,
               "column": 4
             },
             "end": {
-              "line": 222,
+              "line": 220,
               "column": 5
             }
           },
@@ -316,11 +316,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 223,
+              "line": 221,
               "column": 4
             },
             "end": {
-              "line": 226,
+              "line": 224,
               "column": 5
             }
           },
@@ -379,11 +379,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 30,
+              "line": 27,
               "column": 2
             },
             "end": {
-              "line": 45,
+              "line": 42,
               "column": 3
             }
           },
@@ -403,7 +403,7 @@
           "column": 31
         },
         "end": {
-          "line": 46,
+          "line": 43,
           "column": 1
         }
       },

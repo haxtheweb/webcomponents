@@ -1,0 +1,45 @@
+{
+  "name": "lrnapp-studio-submission",
+  "short_name": "lrnapp-studio-submission",
+  "title": "Studio Submission",
+  "description": "A Studio Submission",
+  "start_url": "/",
+  "display": "standalone",
+  "app_integration": {
+    "title": "Submissions",
+    "endpoints": {
+      "api/submissions": {
+        "callback": "_cle_open_studio_app_submission_index",
+        "property": "source-path"
+      },
+      "api/submissions/create-stub": {
+        "callback": "_cle_open_studio_app_submission_create_stub",
+        "property": "source-path"
+      },
+      "api/submissions/%": {
+        "callback": "_cle_open_studio_app_submission_findone",
+        "property": "source-path"
+      },
+      "api/submissions/%/comments": {
+        "callback": "_cle_open_studio_app_submission_comments",
+        "property": "source-path"
+      },
+      "api/submissions/%/comments/%": {
+        "callback": "_cle_open_studio_app_submission_comments_findone",
+        "property": "source-path"
+      },
+      "api/files": {
+        "callback": "_cle_open_studio_app_file_index",
+        "property": "source-path"
+      },
+      "api/video": {
+        "callback": "_cle_open_studio_app_video_index",
+        "property": "source-path"
+      },
+      "api/video/generate-source-url": {
+        "callback": "_cle_open_studio_app_video_generate_source_url",
+        "property": "source-path"
+      }
+    }
+  }
+}

@@ -63,16 +63,16 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
 
       .egletter:before {
         background: #fafafa;
-        box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.2);
-        left: -.32px;
-        top: .32px;
+        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+        left: -0.32px;
+        top: 0.32px;
         transform: rotate(-2.5deg);
       }
 
       .egletter:after {
         background: #ffffff;
-        box-shadow: 0 0 .32px rgba(0, 0, 0, 0.2);
-        right: -.32px;
+        box-shadow: 0 0 0.32px rgba(0, 0, 0, 0.2);
+        right: -0.32px;
         top: 1.6px;
         transform: rotate(1.4deg);
       }
@@ -84,4 +84,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       <span>[[title]]</span>
       <p><slot></slot></p>
     </div>
-`,is:"lrndesign-paperstack",behaviors:[HAXBehaviors.PropertiesBehaviors,A11yBehaviors.A11y,MaterializeCSSBehaviors.ColorBehaviors],properties:{title:{type:String,value:"Title"},icon:{type:String,value:"lrn:assignment"},colorCode:{type:String,value:"#000000",observer:"_colorCodeChange"},color:{type:String,computed:"_computeColorClass(colorCode, \"bg\")"},textCodeColor:{type:String,value:"#ffffff"},textColor:{type:String,computed:"_computeColorClass(textCodeColor)"}},attached:function(){let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Paper stack",description:"A stack of papers",icon:"icons:content-copy",color:"grey",groups:["Video","Media"],handles:[],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"title",title:"Title",description:"Title of the cards",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"title",title:"Title",description:"Title of the cards",inputMethod:"boolean"},{property:"colorCode",title:"Color",description:"Color of the card",inputMethod:"colorpicker"},{property:"icon",title:"Icon",description:"Icon for the card",inputMethod:"iconpicker"},{slot:"",title:"Contents",description:"card contents",inputMethod:"code-editor"}],advanced:[]}};this.setHaxProperties(props)},_computeColorClass:function(color,bg){if(null!=color&&"#ffffff"==color.toLowerCase()){if("bg"==bg){return"white"}return"white-text"}else if(null!=color&&"#000000"==color){if("bg"==bg){return"black"}return"black-text"}else if(null!=color&&"#"==color.substring(0,1)){return this._colorTransform(color.toLowerCase(),"","")}},_colorCodeChange:function(newValue,oldValue){if(typeof newValue!==typeof void 0&&null!=newValue){this.computeTextPropContrast("textCodeColor","colorCode")}}});export{LrndesignPaperstack};
+  `,is:"lrndesign-paperstack",behaviors:[HAXBehaviors.PropertiesBehaviors,A11yBehaviors.A11y,MaterializeCSSBehaviors.ColorBehaviors],properties:{title:{type:String,value:"Title"},icon:{type:String,value:"lrn:assignment"},colorCode:{type:String,value:"#000000",observer:"_colorCodeChange"},color:{type:String,computed:"_computeColorClass(colorCode, \"bg\")"},textCodeColor:{type:String,value:"#ffffff"},textColor:{type:String,computed:"_computeColorClass(textCodeColor)"}},attached:function(){let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Paper stack",description:"A stack of papers",icon:"icons:content-copy",color:"grey",groups:["Video","Media"],handles:[],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"title",title:"Title",description:"Title of the cards",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"title",title:"Title",description:"Title of the cards",inputMethod:"boolean"},{property:"colorCode",title:"Color",description:"Color of the card",inputMethod:"colorpicker"},{property:"icon",title:"Icon",description:"Icon for the card",inputMethod:"iconpicker"},{slot:"",title:"Contents",description:"card contents",inputMethod:"code-editor"}],advanced:[]}};this.setHaxProperties(props)},_computeColorClass:function(color,bg){if(null!=color&&"#ffffff"==color.toLowerCase()){if("bg"==bg){return"white"}return"white-text"}else if(null!=color&&"#000000"==color){if("bg"==bg){return"black"}return"black-text"}else if(null!=color&&"#"==color.substring(0,1)){return this._colorTransform(color.toLowerCase(),"","")}},_colorCodeChange:function(newValue,oldValue){if(typeof newValue!==typeof void 0&&null!=newValue){this.computeTextPropContrast("textCodeColor","colorCode")}}});export{LrndesignPaperstack};

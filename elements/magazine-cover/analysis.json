@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 165,
+              "line": 178,
               "column": 4
             },
             "end": {
-              "line": 167,
+              "line": 180,
               "column": 5
             }
           },
@@ -34,11 +34,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 171,
+              "line": 184,
               "column": 4
             },
             "end": {
-              "line": 173,
+              "line": 186,
               "column": 5
             }
           },
@@ -55,11 +55,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 177,
+              "line": 190,
               "column": 4
             },
             "end": {
-              "line": 179,
+              "line": 192,
               "column": 5
             }
           },
@@ -76,11 +76,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 183,
+              "line": 196,
               "column": 4
             },
             "end": {
-              "line": 185,
+              "line": 198,
               "column": 5
             }
           },
@@ -97,11 +97,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 189,
+              "line": 202,
               "column": 4
             },
             "end": {
-              "line": 192,
+              "line": 205,
               "column": 5
             }
           },
@@ -119,11 +119,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 196,
+              "line": 209,
               "column": 4
             },
             "end": {
-              "line": 199,
+              "line": 212,
               "column": 5
             }
           },
@@ -141,11 +141,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 203,
+              "line": 216,
               "column": 4
             },
             "end": {
-              "line": 206,
+              "line": 219,
               "column": 5
             }
           },
@@ -163,11 +163,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 210,
+              "line": 223,
               "column": 4
             },
             "end": {
-              "line": 213,
+              "line": 226,
               "column": 5
             }
           },
@@ -185,11 +185,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 217,
+              "line": 230,
               "column": 4
             },
             "end": {
-              "line": 220,
+              "line": 233,
               "column": 5
             }
           },
@@ -208,11 +208,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 226,
+              "line": 239,
               "column": 2
             },
             "end": {
-              "line": 232,
+              "line": 245,
               "column": 3
             }
           },
@@ -232,11 +232,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 237,
+              "line": 250,
               "column": 2
             },
             "end": {
-              "line": 380,
+              "line": 393,
               "column": 3
             }
           },
@@ -256,7 +256,7 @@
           "column": 28
         },
         "end": {
-          "line": 381,
+          "line": 394,
           "column": 1
         }
       },
@@ -269,11 +269,11 @@
           "description": "Title / heading",
           "sourceRange": {
             "start": {
-              "line": 165,
+              "line": 178,
               "column": 4
             },
             "end": {
-              "line": 167,
+              "line": 180,
               "column": 5
             }
           },
@@ -285,11 +285,11 @@
           "description": "A secondary title",
           "sourceRange": {
             "start": {
-              "line": 171,
+              "line": 184,
               "column": 4
             },
             "end": {
-              "line": 173,
+              "line": 186,
               "column": 5
             }
           },
@@ -301,39 +301,7 @@
           "description": "Internal text.",
           "sourceRange": {
             "start": {
-              "line": 177,
-              "column": 4
-            },
-            "end": {
-              "line": 179,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "image",
-          "description": "Title / heading",
-          "sourceRange": {
-            "start": {
-              "line": 183,
-              "column": 4
-            },
-            "end": {
-              "line": 185,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "action",
-          "description": "Call to action",
-          "sourceRange": {
-            "start": {
-              "line": 189,
+              "line": 190,
               "column": 4
             },
             "end": {
@@ -345,15 +313,47 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "icon",
-          "description": "Call to action icon",
+          "name": "image",
+          "description": "Title / heading",
           "sourceRange": {
             "start": {
               "line": 196,
               "column": 4
             },
             "end": {
-              "line": 199,
+              "line": 198,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "action",
+          "description": "Call to action",
+          "sourceRange": {
+            "start": {
+              "line": 202,
+              "column": 4
+            },
+            "end": {
+              "line": 205,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "icon",
+          "description": "Call to action icon",
+          "sourceRange": {
+            "start": {
+              "line": 209,
+              "column": 4
+            },
+            "end": {
+              "line": 212,
               "column": 5
             }
           },
@@ -365,11 +365,11 @@
           "description": "Link to go to on click.",
           "sourceRange": {
             "start": {
-              "line": 203,
+              "line": 216,
               "column": 4
             },
             "end": {
-              "line": 206,
+              "line": 219,
               "column": 5
             }
           },
@@ -381,11 +381,11 @@
           "description": "Optional event binding for the button press.",
           "sourceRange": {
             "start": {
-              "line": 210,
+              "line": 223,
               "column": 4
             },
             "end": {
-              "line": 213,
+              "line": 226,
               "column": 5
             }
           },
@@ -397,11 +397,11 @@
           "description": "Optional event data to send along",
           "sourceRange": {
             "start": {
-              "line": 217,
+              "line": 230,
               "column": 4
             },
             "end": {
-              "line": 220,
+              "line": 233,
               "column": 5
             }
           },

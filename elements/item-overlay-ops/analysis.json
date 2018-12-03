@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 156,
+              "line": 197,
               "column": 4
             },
             "end": {
-              "line": 160,
+              "line": 201,
               "column": 5
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 164,
+              "line": 205,
               "column": 4
             },
             "end": {
-              "line": 168,
+              "line": 209,
               "column": 5
             }
           },
@@ -57,11 +57,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 172,
+              "line": 213,
               "column": 4
             },
             "end": {
-              "line": 174,
+              "line": 215,
               "column": 5
             }
           },
@@ -78,11 +78,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 178,
+              "line": 219,
               "column": 4
             },
             "end": {
-              "line": 180,
+              "line": 221,
               "column": 5
             }
           },
@@ -99,11 +99,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 184,
+              "line": 225,
               "column": 4
             },
             "end": {
-              "line": 187,
+              "line": 228,
               "column": 5
             }
           },
@@ -121,11 +121,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 191,
+              "line": 232,
               "column": 4
             },
             "end": {
-              "line": 194,
+              "line": 235,
               "column": 5
             }
           },
@@ -143,11 +143,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 198,
+              "line": 239,
               "column": 4
             },
             "end": {
-              "line": 201,
+              "line": 242,
               "column": 5
             }
           },
@@ -165,11 +165,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 205,
+              "line": 246,
               "column": 4
             },
             "end": {
-              "line": 208,
+              "line": 249,
               "column": 5
             }
           },
@@ -187,11 +187,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 212,
+              "line": 253,
               "column": 4
             },
             "end": {
-              "line": 215,
+              "line": 256,
               "column": 5
             }
           },
@@ -209,11 +209,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 148,
+              "line": 189,
               "column": 2
             },
             "end": {
-              "line": 150,
+              "line": 191,
               "column": 3
             }
           },
@@ -231,11 +231,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 221,
+              "line": 262,
               "column": 2
             },
             "end": {
-              "line": 230,
+              "line": 271,
               "column": 3
             }
           },
@@ -251,11 +251,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 232,
+              "line": 273,
               "column": 2
             },
             "end": {
-              "line": 237,
+              "line": 278,
               "column": 3
             }
           },
@@ -275,11 +275,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 242,
+              "line": 283,
               "column": 2
             },
             "end": {
-              "line": 276,
+              "line": 317,
               "column": 3
             }
           },
@@ -299,11 +299,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 281,
+              "line": 322,
               "column": 2
             },
             "end": {
-              "line": 285,
+              "line": 326,
               "column": 3
             }
           },
@@ -323,11 +323,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 290,
+              "line": 331,
               "column": 2
             },
             "end": {
-              "line": 294,
+              "line": 335,
               "column": 3
             }
           },
@@ -347,11 +347,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 299,
+              "line": 340,
               "column": 2
             },
             "end": {
-              "line": 314,
+              "line": 355,
               "column": 3
             }
           },
@@ -371,11 +371,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 319,
+              "line": 360,
               "column": 2
             },
             "end": {
-              "line": 325,
+              "line": 366,
               "column": 3
             }
           },
@@ -395,7 +395,7 @@
           "column": 29
         },
         "end": {
-          "line": 326,
+          "line": 367,
           "column": 1
         }
       },
@@ -408,103 +408,7 @@
           "description": "Edit mode whether it is shown or not",
           "sourceRange": {
             "start": {
-              "line": 156,
-              "column": 4
-            },
-            "end": {
-              "line": 160,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined"
-        },
-        {
-          "name": "focused",
-          "description": "Edit mode whether it is shown or not",
-          "sourceRange": {
-            "start": {
-              "line": 164,
-              "column": 4
-            },
-            "end": {
-              "line": 168,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined"
-        },
-        {
-          "name": "active-title",
-          "description": "Title to present of active option",
-          "sourceRange": {
-            "start": {
-              "line": 172,
-              "column": 4
-            },
-            "end": {
-              "line": 174,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "active-op",
-          "description": "Active operation",
-          "sourceRange": {
-            "start": {
-              "line": 178,
-              "column": 4
-            },
-            "end": {
-              "line": 180,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "add",
-          "description": "Add opertaions",
-          "sourceRange": {
-            "start": {
-              "line": 184,
-              "column": 4
-            },
-            "end": {
-              "line": 187,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined"
-        },
-        {
-          "name": "edit",
-          "description": "Edit opertaions",
-          "sourceRange": {
-            "start": {
-              "line": 191,
-              "column": 4
-            },
-            "end": {
-              "line": 194,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined"
-        },
-        {
-          "name": "move",
-          "description": "Move opertaions",
-          "sourceRange": {
-            "start": {
-              "line": 198,
+              "line": 197,
               "column": 4
             },
             "end": {
@@ -516,15 +420,111 @@
           "type": "boolean | null | undefined"
         },
         {
-          "name": "remove",
-          "description": "Remove opertaions",
+          "name": "focused",
+          "description": "Edit mode whether it is shown or not",
           "sourceRange": {
             "start": {
               "line": 205,
               "column": 4
             },
             "end": {
-              "line": 208,
+              "line": 209,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "active-title",
+          "description": "Title to present of active option",
+          "sourceRange": {
+            "start": {
+              "line": 213,
+              "column": 4
+            },
+            "end": {
+              "line": 215,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "active-op",
+          "description": "Active operation",
+          "sourceRange": {
+            "start": {
+              "line": 219,
+              "column": 4
+            },
+            "end": {
+              "line": 221,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "add",
+          "description": "Add opertaions",
+          "sourceRange": {
+            "start": {
+              "line": 225,
+              "column": 4
+            },
+            "end": {
+              "line": 228,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "edit",
+          "description": "Edit opertaions",
+          "sourceRange": {
+            "start": {
+              "line": 232,
+              "column": 4
+            },
+            "end": {
+              "line": 235,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "move",
+          "description": "Move opertaions",
+          "sourceRange": {
+            "start": {
+              "line": 239,
+              "column": 4
+            },
+            "end": {
+              "line": 242,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "remove",
+          "description": "Remove opertaions",
+          "sourceRange": {
+            "start": {
+              "line": 246,
+              "column": 4
+            },
+            "end": {
+              "line": 249,
               "column": 5
             }
           },
@@ -536,11 +536,11 @@
           "description": "Duplicate opertaions",
           "sourceRange": {
             "start": {
-              "line": 212,
+              "line": 253,
               "column": 4
             },
             "end": {
-              "line": 215,
+              "line": 256,
               "column": 5
             }
           },

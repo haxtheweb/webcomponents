@@ -1,0 +1,23 @@
+{
+  "name": "lrnapp-canvas-listing",
+  "short_name": "lrnapp-canvas-listing",
+  "description": "Courses that this system can bind with.",
+  "start_url": "/",
+  "display": "standalone",
+  "app_integration": {
+    "title": "Canvas course list",
+    "menu": {
+      "menu_name": "menu-elmsln-navigation",
+      "weight": 10
+    },
+    "endpoints": {
+      "data": {
+        "callback": "_elmsln_canvas_course_list",
+        "property": "source-path"
+      }
+    },
+    "context": {
+      "distro": "cis"
+    }
+  }
+}

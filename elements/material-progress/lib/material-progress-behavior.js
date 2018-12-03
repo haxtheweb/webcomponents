@@ -1,4 +1,5 @@
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 
 /**
  * `window.MaterialProgressBehavior` is the base behavior for all `material-progress`
@@ -227,11 +228,11 @@ window.MaterialProgressBehaviorImpl = {
   },
   _playFirstAnimation: function(node, index, animationDelay) {
     this.toggleClass("entry", true, node);
-    (function(node, index, animationDelay) {
-      this.async(function() {
+    ((node, index, animationDelay) => {
+      async.microTask.run(() => {
         this.toggleClass("entry", false, node);
       }, 500 + animationDelay * index);
-    }.bind(this)(node, index, animationDelay));
+    });
   },
   _computeLegendNeeded: function(legendItems) {
     return legendItems && legendItems.length > 0;
@@ -240,6 +241,5 @@ window.MaterialProgressBehaviorImpl = {
 
 /** @polymerBehavior */
 window.MaterialProgressBehavior = [
-  window.MaterialProgressBehaviorImpl,
-  window.MutationObserverBehavior
+  window.MaterialProgressBehaviorImpl
 ];

@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 29,
+              "line": 35,
               "column": 4
             },
             "end": {
-              "line": 31,
+              "line": 37,
               "column": 5
             }
           },
@@ -34,11 +34,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 35,
+              "line": 41,
               "column": 4
             },
             "end": {
-              "line": 38,
+              "line": 44,
               "column": 5
             }
           },
@@ -56,11 +56,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 42,
+              "line": 48,
               "column": 4
             },
             "end": {
-              "line": 45,
+              "line": 51,
               "column": 5
             }
           },
@@ -79,11 +79,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 51,
+              "line": 57,
               "column": 2
             },
             "end": {
-              "line": 55,
+              "line": 61,
               "column": 3
             }
           },
@@ -99,11 +99,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 60,
+              "line": 66,
               "column": 2
             },
             "end": {
-              "line": 69,
+              "line": 75,
               "column": 3
             }
           },
@@ -119,11 +119,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 74,
+              "line": 80,
               "column": 2
             },
             "end": {
-              "line": 84,
+              "line": 90,
               "column": 3
             }
           },
@@ -147,7 +147,7 @@
           "column": 23
         },
         "end": {
-          "line": 85,
+          "line": 91,
           "column": 1
         }
       },
@@ -160,11 +160,11 @@
           "description": "url",
           "sourceRange": {
             "start": {
-              "line": 29,
+              "line": 35,
               "column": 4
             },
             "end": {
-              "line": 31,
+              "line": 37,
               "column": 5
             }
           },
@@ -176,11 +176,11 @@
           "description": "Key that contains the token in local storage",
           "sourceRange": {
             "start": {
-              "line": 35,
+              "line": 41,
               "column": 4
             },
             "end": {
-              "line": 38,
+              "line": 44,
               "column": 5
             }
           },
@@ -192,11 +192,11 @@
           "description": "JSON Web token to securely pass around",
           "sourceRange": {
             "start": {
-              "line": 42,
+              "line": 48,
               "column": 4
             },
             "end": {
-              "line": 45,
+              "line": 51,
               "column": 5
             }
           },

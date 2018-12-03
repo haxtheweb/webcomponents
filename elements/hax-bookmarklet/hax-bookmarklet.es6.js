@@ -5,7 +5,11 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         font-size: 16px;
       }
     </style>
-    <cms-hax open-default app-store-connection="[[appStoreConnection]]" body-offset-left>
+    <cms-hax
+      open-default
+      app-store-connection="[[appStoreConnection]]"
+      body-offset-left
+    >
       <slot></slot>
     </cms-hax>
-`,is:"hax-bookmarklet",properties:{appStoreConnection:{type:Object,value:{url:"appstore.json"}}}});export{HaxBookmarklet};
+  `,is:"hax-bookmarklet",properties:{appStoreConnection:{type:Object,value:{url:"appstore.json"}}}});export{HaxBookmarklet};

@@ -21,7 +21,7 @@
           "column": 20
         },
         "end": {
-          "line": 90,
+          "line": 105,
           "column": 2
         }
       },
@@ -48,11 +48,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 77,
+              "line": 92,
               "column": 4
             },
             "end": {
-              "line": 80,
+              "line": 95,
               "column": 5
             }
           },
@@ -69,11 +69,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 84,
+              "line": 99,
               "column": 4
             },
             "end": {
-              "line": 88,
+              "line": 103,
               "column": 5
             }
           },
@@ -95,7 +95,7 @@
           "column": 28
         },
         "end": {
-          "line": 90,
+          "line": 105,
           "column": 1
         }
       },
@@ -108,11 +108,11 @@
           "description": "materialize class names for color",
           "sourceRange": {
             "start": {
-              "line": 77,
+              "line": 92,
               "column": 4
             },
             "end": {
-              "line": 80,
+              "line": 95,
               "column": 5
             }
           },
@@ -124,11 +124,11 @@
           "description": "tiny, small, medium, large, epic sizing.",
           "sourceRange": {
             "start": {
-              "line": 84,
+              "line": 99,
               "column": 4
             },
             "end": {
-              "line": 88,
+              "line": 103,
               "column": 5
             }
           },

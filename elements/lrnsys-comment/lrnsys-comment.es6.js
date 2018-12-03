@@ -5,7 +5,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         padding: 10px 10px 10px 0px;
       }
       :host([disabled]) {
-        opacity: .5;
+        opacity: 0.5;
         background-color: #cccccc;
         pointer-events: none;
       }
@@ -146,7 +146,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         top: 0px;
       }
       .like-icon-color {
-        color: #2196F3;
+        color: #2196f3;
       }
       .element-invisible {
         position: absolute;
@@ -159,49 +159,150 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
     </style>
     <div class\$="comment-outer [[commentNew]]">
       <div class="comment-inner">
-        <div class\$="comment-depth comment-depth-[[comment.attributes.threadDepth]] grey lighten-3"></div>
+        <div
+          class\$="comment-depth comment-depth-[[comment.attributes.threadDepth]] grey lighten-3"
+        ></div>
         <div class="comment-avatar">
-          <lrndesign-avatar id="avatar" label="[[comment.relationships.author.data.name]]" src="[[comment.relationships.author.data.avatar]]" class="float-left ferpa-protect"></lrndesign-avatar>
-          <paper-tooltip for="avatar" animation-delay="0" class="ferpa-protect">[[displayName]]</paper-tooltip>
+          <lrndesign-avatar
+            id="avatar"
+            label="[[comment.relationships.author.data.name]]"
+            src="[[comment.relationships.author.data.avatar]]"
+            class="float-left ferpa-protect"
+          ></lrndesign-avatar>
+          <paper-tooltip for="avatar" animation-delay="0" class="ferpa-protect"
+            >[[displayName]]</paper-tooltip
+          >
         </div>
         <div class="comment-content">
           <div class="comment-body">
             <div id="bodyarea" class="nowrap-me">
               <h4 class="ferpa-protect comment-heading">
-                <span class="element-invisible">At </span><moment-element datetime\$="[[comment.attributes.created]]" output-format="MMM DD[,] YYYY"></moment-element>
-                [[comment.relationships.author.data.display_name]] <span class="element-invisible">[[comment.relationships.author.data.visual.label]]</span> said:
+                <span class="element-invisible">At </span
+                ><moment-element
+                  datetime\$="[[comment.attributes.created]]"
+                  output-format="MMM DD[,] YYYY"
+                ></moment-element>
+                [[comment.relationships.author.data.display_name]]
+                <span class="element-invisible"
+                  >[[comment.relationships.author.data.visual.label]]</span
+                >
+                said:
               </h4>
-              <marked-element smartypants id="renderedcomment" markdown="[[comment.attributes.body]]">
-                <word-count class="markdown-html-slot" slot="markdown-html"></word-count>
+              <marked-element
+                smartypants
+                id="renderedcomment"
+                markdown="[[comment.attributes.body]]"
+              >
+                <word-count
+                  class="markdown-html-slot"
+                  slot="markdown-html"
+                ></word-count>
               </marked-element>
             </div>
             <mtz-marked-editor id="commenteditor" hidden>
               <div slot="controls">
-                <mtz-marked-control-generic-wrap icon="editor:format-bold" title="Bold" syntax-prefix="**" syntax-suffix="**" keys="ctrl+b"></mtz-marked-control-generic-wrap>
-                <mtz-marked-control-generic-wrap icon="editor:format-italic" title="Italic" syntax-prefix="_" syntax-suffix="_" keys="ctrl+i"></mtz-marked-control-generic-wrap>
-                <mtz-marked-control-generic-line icon="editor:format-size" title="Heading 3" syntax-prefix="### "></mtz-marked-control-generic-line>
-                <mtz-marked-control-generic-line icon="editor:format-list-numbered" title="Ordered List" syntax-prefix="1. "></mtz-marked-control-generic-line>
-                <mtz-marked-control-generic-line icon="editor:format-list-bulleted" title="Unordered List" syntax-prefix="- "></mtz-marked-control-generic-line>
-                <mtz-marked-control-link icon="editor:insert-link" title="Link"></mtz-marked-control-link>
+                <mtz-marked-control-generic-wrap
+                  icon="editor:format-bold"
+                  title="Bold"
+                  syntax-prefix="**"
+                  syntax-suffix="**"
+                  keys="ctrl+b"
+                ></mtz-marked-control-generic-wrap>
+                <mtz-marked-control-generic-wrap
+                  icon="editor:format-italic"
+                  title="Italic"
+                  syntax-prefix="_"
+                  syntax-suffix="_"
+                  keys="ctrl+i"
+                ></mtz-marked-control-generic-wrap>
+                <mtz-marked-control-generic-line
+                  icon="editor:format-size"
+                  title="Heading 3"
+                  syntax-prefix="### "
+                ></mtz-marked-control-generic-line>
+                <mtz-marked-control-generic-line
+                  icon="editor:format-list-numbered"
+                  title="Ordered List"
+                  syntax-prefix="1. "
+                ></mtz-marked-control-generic-line>
+                <mtz-marked-control-generic-line
+                  icon="editor:format-list-bulleted"
+                  title="Unordered List"
+                  syntax-prefix="- "
+                ></mtz-marked-control-generic-line>
+                <mtz-marked-control-link
+                  icon="editor:insert-link"
+                  title="Link"
+                ></mtz-marked-control-link>
               </div>
-              <paper-textarea char-counter autofocus id="editcomment" label="Comment" value="{{comment.attributes.body}}" slot="textarea"></paper-textarea>
+              <paper-textarea
+                char-counter
+                autofocus
+                id="editcomment"
+                label="Comment"
+                value="{{comment.attributes.body}}"
+                slot="textarea"
+              ></paper-textarea>
             </mtz-marked-editor>
           </div>
           <div class="comment-actions">
             <div class="comment-actions-group left-actions">
-              <lrnsys-button on-tap="actionHandler" id="reply" data-commentid="[[comment.id]]" alt="Reply" icon="reply" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.reply]]"></lrnsys-button>
-              <lrnsys-button on-tap="actionHandler" id="like" data-commentid="[[comment.id]]" alt="Like" icon="thumb-up" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.like]]"></lrnsys-button>
+              <lrnsys-button
+                on-tap="actionHandler"
+                id="reply"
+                data-commentid="[[comment.id]]"
+                alt="Reply"
+                icon="reply"
+                hover-class="[[hoverClass]]"
+                icon-class="grey-text no-margin"
+                hidden\$="[[!comment.actions.reply]]"
+              ></lrnsys-button>
+              <lrnsys-button
+                on-tap="actionHandler"
+                id="like"
+                data-commentid="[[comment.id]]"
+                alt="Like"
+                icon="thumb-up"
+                hover-class="[[hoverClass]]"
+                icon-class="grey-text no-margin"
+                hidden\$="[[!comment.actions.like]]"
+              ></lrnsys-button>
             </div>
             <div class="comment-actions-group right-actions">
-              <lrnsys-button on-tap="actionHandler" id="edit" data-commentid="[[comment.id]]" icon="create" alt="Edit" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.edit]]"></lrnsys-button>
-              <lrnsys-button on-tap="actionHandler" id="delete" data-commentid="[[comment.id]]" icon="delete-forever" alt="Delete" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.delete]]"></lrnsys-button>
+              <lrnsys-button
+                on-tap="actionHandler"
+                id="edit"
+                data-commentid="[[comment.id]]"
+                icon="create"
+                alt="Edit"
+                hover-class="[[hoverClass]]"
+                icon-class="grey-text no-margin"
+                hidden\$="[[!comment.actions.edit]]"
+              ></lrnsys-button>
+              <lrnsys-button
+                on-tap="actionHandler"
+                id="delete"
+                data-commentid="[[comment.id]]"
+                icon="delete-forever"
+                alt="Delete"
+                hover-class="[[hoverClass]]"
+                icon-class="grey-text no-margin"
+                hidden\$="[[!comment.actions.delete]]"
+              ></lrnsys-button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <template is="dom-if" if="[[comment.relationships.author.data.visual.icon]]">
-      <paper-badge icon="[[comment.relationships.author.data.visual.icon]]" for="papercard" label="[[comment.relationships.author.data.visual.label]]">
+    <template
+      is="dom-if"
+      if="[[comment.relationships.author.data.visual.icon]]"
+    >
+      <paper-badge
+        icon="[[comment.relationships.author.data.visual.icon]]"
+        for="papercard"
+        label="[[comment.relationships.author.data.visual.label]]"
+      >
       </paper-badge>
     </template>
-`,is:"lrnsys-comment",properties:{comment:{type:Object,notify:!0,observer:"_commentLoaded"},displayName:{type:String,notify:!0,computed:"_generateName(comment.relationships.author.data.display_name, comment.relationships.author.data.visual)"},commentNew:{type:String,notify:!0,computed:"_isCommentNew(comment.relationships.author.data.visual)"},hoverClass:{type:String,reflectToAttribute:!0},editform:{type:Boolean,notify:!0,observer:"_editTrigger",reflectToAttribute:!0},disabled:{type:Boolean,notify:!0,reflectToAttribute:!0}},attached:function(){this.$.bodyarea.addEventListener("tap",this.bodyToggle.bind(this));this.$.bodyarea.addEventListener("dblclick",this.bodyToggleOn.bind(this))},detached:function(){this.$.bodyarea.removeEventListener("tap",this.bodyToggle.bind(this));this.$.bodyarea.removeEventListener("dblclick",this.bodyToggleOn.bind(this))},_generateName:function(name,visual){if(typeof visual!==typeof void 0&&!1!==visual.label){return name+" ("+visual.label+")"}return name},_isCommentNew:function(visual){if(typeof visual!==typeof void 0&&!1!==visual.label){return"new-comment"}return""},_commentLoaded:function(e){this.editform=this.comment.metadata.editing;this.disabled=this.comment.metadata.disabled;this.blockFirstState=!0},actionHandler:function(e){var normalizedEvent=dom(e),target=normalizedEvent.localTarget,comment=null;if(null!=target.dataCommentid&&!target.disabled){comment=target.dataCommentid;if("reply"==target.id){this.fire("comment-reply",{comment:this.comment,target:target})}else if("like"==target.id){this.$.like.classList.toggle("like-icon-color");this.fire("comment-like",{comment:this.comment,target:target})}else if("edit"==target.id){this.editform=!this.editform}else if("delete"==target.id){this.fire("comment-delete-dialog",{comment:this.comment,target:target})}}},_editTrigger:function(e){if(typeof this.comment!==typeof void 0&&this.comment.actions.edit){async.microTask.run(()=>{this.$.renderedcomment.hidden=this.editform;this.$.commenteditor.hidden=!this.editform;if(this.editform){this.$.edit.icon="save";this.$.edit.alt="Save";this.$.reply.disabled=!0;this.$.editcomment.focus();this.fire("comment-editing",{comment:this.comment});this.blockFirstState=!1}else{if(!this.blockFirstState){this.fire("comment-save",{comment:this.comment})}else{this.blockFirstState=!1}this.$.edit.icon="create";this.$.edit.alt="Edit";this.$.reply.disabled=!1}this.fire("iron-resize")})}},bodyToggle:function(e){this.$.bodyarea.classList.remove("nowrap-me");this.fire("iron-resize")},bodyToggleOn:function(e){this.$.bodyarea.classList.toggle("nowrap-me");this.fire("iron-resize")}});export{LrnsysComment};
+  `,is:"lrnsys-comment",properties:{comment:{type:Object,notify:!0,observer:"_commentLoaded"},displayName:{type:String,notify:!0,computed:"_generateName(comment.relationships.author.data.display_name, comment.relationships.author.data.visual)"},commentNew:{type:String,notify:!0,computed:"_isCommentNew(comment.relationships.author.data.visual)"},hoverClass:{type:String,reflectToAttribute:!0},editform:{type:Boolean,notify:!0,observer:"_editTrigger",reflectToAttribute:!0},disabled:{type:Boolean,notify:!0,reflectToAttribute:!0}},attached:function(){this.$.bodyarea.addEventListener("tap",this.bodyToggle.bind(this));this.$.bodyarea.addEventListener("dblclick",this.bodyToggleOn.bind(this))},detached:function(){this.$.bodyarea.removeEventListener("tap",this.bodyToggle.bind(this));this.$.bodyarea.removeEventListener("dblclick",this.bodyToggleOn.bind(this))},_generateName:function(name,visual){if(typeof visual!==typeof void 0&&!1!==visual.label){return name+" ("+visual.label+")"}return name},_isCommentNew:function(visual){if(typeof visual!==typeof void 0&&!1!==visual.label){return"new-comment"}return""},_commentLoaded:function(e){this.editform=this.comment.metadata.editing;this.disabled=this.comment.metadata.disabled;this.blockFirstState=!0},actionHandler:function(e){var normalizedEvent=dom(e),target=normalizedEvent.localTarget,comment=null;if(null!=target.dataCommentid&&!target.disabled){comment=target.dataCommentid;if("reply"==target.id){this.fire("comment-reply",{comment:this.comment,target:target})}else if("like"==target.id){this.$.like.classList.toggle("like-icon-color");this.fire("comment-like",{comment:this.comment,target:target})}else if("edit"==target.id){this.editform=!this.editform}else if("delete"==target.id){this.fire("comment-delete-dialog",{comment:this.comment,target:target})}}},_editTrigger:function(e){if(typeof this.comment!==typeof void 0&&this.comment.actions.edit){async.microTask.run(()=>{this.$.renderedcomment.hidden=this.editform;this.$.commenteditor.hidden=!this.editform;if(this.editform){this.$.edit.icon="save";this.$.edit.alt="Save";this.$.reply.disabled=!0;this.$.editcomment.focus();this.fire("comment-editing",{comment:this.comment});this.blockFirstState=!1}else{if(!this.blockFirstState){this.fire("comment-save",{comment:this.comment})}else{this.blockFirstState=!1}this.$.edit.icon="create";this.$.edit.alt="Edit";this.$.reply.disabled=!1}this.fire("iron-resize")})}},bodyToggle:function(e){this.$.bodyarea.classList.remove("nowrap-me");this.fire("iron-resize")},bodyToggleOn:function(e){this.$.bodyarea.classList.toggle("nowrap-me");this.fire("iron-resize")}});export{LrnsysComment};

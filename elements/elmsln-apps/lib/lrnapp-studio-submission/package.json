@@ -1,0 +1,15 @@
+{
+  "name": "@polymer/lrnapp-studio-submission",
+  "flat": true,
+  "version": "",
+  "description": "A LRN app",
+  "main": "lrnapp-studio-submission.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/paper-spinner": "^3.0.0-pre.1",
+    "@polymer/paper-tooltip": "^3.0.0-pre.1",
+    "@polymer/paper-tabs": "^3.0.0-pre.1",
+    "@polymer/iron-pages": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}

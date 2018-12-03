@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 96,
+              "line": 116,
               "column": 4
             },
             "end": {
-              "line": 100,
+              "line": 120,
               "column": 5
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 101,
+              "line": 121,
               "column": 4
             },
             "end": {
-              "line": 106,
+              "line": 126,
               "column": 5
             }
           },
@@ -58,11 +58,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 110,
+              "line": 130,
               "column": 4
             },
             "end": {
-              "line": 113,
+              "line": 133,
               "column": 5
             }
           },
@@ -79,11 +79,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 117,
+              "line": 137,
               "column": 4
             },
             "end": {
-              "line": 120,
+              "line": 140,
               "column": 5
             }
           },
@@ -101,11 +101,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 124,
+              "line": 144,
               "column": 4
             },
             "end": {
-              "line": 127,
+              "line": 147,
               "column": 5
             }
           },
@@ -123,11 +123,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 131,
+              "line": 151,
               "column": 4
             },
             "end": {
-              "line": 134,
+              "line": 154,
               "column": 5
             }
           },
@@ -145,11 +145,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 138,
+              "line": 158,
               "column": 4
             },
             "end": {
-              "line": 140,
+              "line": 160,
               "column": 5
             }
           },
@@ -166,11 +166,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 144,
+              "line": 164,
               "column": 4
             },
             "end": {
-              "line": 146,
+              "line": 166,
               "column": 5
             }
           },
@@ -187,11 +187,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 150,
+              "line": 170,
               "column": 4
             },
             "end": {
-              "line": 152,
+              "line": 172,
               "column": 5
             }
           },
@@ -208,11 +208,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 156,
+              "line": 176,
               "column": 4
             },
             "end": {
-              "line": 158,
+              "line": 178,
               "column": 5
             }
           },
@@ -229,11 +229,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 162,
+              "line": 182,
               "column": 4
             },
             "end": {
-              "line": 164,
+              "line": 184,
               "column": 5
             }
           },
@@ -250,11 +250,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 168,
+              "line": 188,
               "column": 4
             },
             "end": {
-              "line": 170,
+              "line": 190,
               "column": 5
             }
           },
@@ -271,11 +271,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 174,
+              "line": 194,
               "column": 4
             },
             "end": {
-              "line": 176,
+              "line": 196,
               "column": 5
             }
           },
@@ -292,11 +292,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 180,
+              "line": 200,
               "column": 4
             },
             "end": {
-              "line": 182,
+              "line": 202,
               "column": 5
             }
           },
@@ -313,11 +313,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 186,
+              "line": 206,
               "column": 4
             },
             "end": {
-              "line": 189,
+              "line": 209,
               "column": 5
             }
           },
@@ -335,11 +335,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 193,
+              "line": 213,
               "column": 4
             },
             "end": {
-              "line": 196,
+              "line": 216,
               "column": 5
             }
           },
@@ -358,11 +358,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 201,
+              "line": 221,
               "column": 2
             },
             "end": {
-              "line": 209,
+              "line": 229,
               "column": 3
             }
           },
@@ -378,11 +378,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 213,
+              "line": 233,
               "column": 2
             },
             "end": {
-              "line": 221,
+              "line": 241,
               "column": 3
             }
           },
@@ -398,11 +398,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 228,
+              "line": 248,
               "column": 2
             },
             "end": {
-              "line": 232,
+              "line": 252,
               "column": 3
             }
           },
@@ -419,30 +419,6 @@
         {
           "name": "tapEventOn",
           "description": "Class processing on un-tap / hover",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 237,
-              "column": 2
-            },
-            "end": {
-              "line": 252,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "tapEventOff",
-          "description": "Undo class processing on un-tap / hover",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -465,8 +441,8 @@
           }
         },
         {
-          "name": "focusToggle",
-          "description": "Handle toggle for mouse class and manage classList array for paper-button.",
+          "name": "tapEventOff",
+          "description": "Undo class processing on un-tap / hover",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -474,7 +450,31 @@
               "column": 2
             },
             "end": {
-              "line": 300,
+              "line": 292,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "focusToggle",
+          "description": "Handle toggle for mouse class and manage classList array for paper-button.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 297,
+              "column": 2
+            },
+            "end": {
+              "line": 320,
               "column": 3
             }
           },
@@ -498,7 +498,7 @@
           "column": 27
         },
         "end": {
-          "line": 301,
+          "line": 321,
           "column": 1
         }
       },
@@ -511,55 +511,7 @@
           "description": "Standard href pass down",
           "sourceRange": {
             "start": {
-              "line": 96,
-              "column": 4
-            },
-            "end": {
-              "line": 100,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "show-href",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 101,
-              "column": 4
-            },
-            "end": {
-              "line": 106,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "raised",
-          "description": "If the button should be visually lifted off the UI.",
-          "sourceRange": {
-            "start": {
-              "line": 110,
-              "column": 4
-            },
-            "end": {
-              "line": 113,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined"
-        },
-        {
-          "name": "label",
-          "description": "Label to place in the text area",
-          "sourceRange": {
-            "start": {
-              "line": 117,
+              "line": 116,
               "column": 4
             },
             "end": {
@@ -571,15 +523,15 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "target",
-          "description": "Support for target to open in new windows.",
+          "name": "show-href",
+          "description": "",
           "sourceRange": {
             "start": {
-              "line": 124,
+              "line": 121,
               "column": 4
             },
             "end": {
-              "line": 127,
+              "line": 126,
               "column": 5
             }
           },
@@ -587,27 +539,27 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "icon",
-          "description": "iron-icon to use (with iconset if needed)",
+          "name": "raised",
+          "description": "If the button should be visually lifted off the UI.",
           "sourceRange": {
             "start": {
-              "line": 131,
+              "line": 130,
               "column": 4
             },
             "end": {
-              "line": 134,
+              "line": 133,
               "column": 5
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "boolean | null | undefined"
         },
         {
-          "name": "hover-class",
-          "description": "Classes to add / subtract based on the item being hovered.",
+          "name": "label",
+          "description": "Label to place in the text area",
           "sourceRange": {
             "start": {
-              "line": 138,
+              "line": 137,
               "column": 4
             },
             "end": {
@@ -619,15 +571,63 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "button-class",
-          "description": "Button class.",
+          "name": "target",
+          "description": "Support for target to open in new windows.",
           "sourceRange": {
             "start": {
               "line": 144,
               "column": 4
             },
             "end": {
-              "line": 146,
+              "line": 147,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "icon",
+          "description": "iron-icon to use (with iconset if needed)",
+          "sourceRange": {
+            "start": {
+              "line": 151,
+              "column": 4
+            },
+            "end": {
+              "line": 154,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "hover-class",
+          "description": "Classes to add / subtract based on the item being hovered.",
+          "sourceRange": {
+            "start": {
+              "line": 158,
+              "column": 4
+            },
+            "end": {
+              "line": 160,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "button-class",
+          "description": "Button class.",
+          "sourceRange": {
+            "start": {
+              "line": 164,
+              "column": 4
+            },
+            "end": {
+              "line": 166,
               "column": 5
             }
           },
@@ -639,11 +639,11 @@
           "description": "Icon class in the event you want it to look different from the text.",
           "sourceRange": {
             "start": {
-              "line": 150,
+              "line": 170,
               "column": 4
             },
             "end": {
-              "line": 152,
+              "line": 172,
               "column": 5
             }
           },
@@ -655,11 +655,11 @@
           "description": "Inner container classes.",
           "sourceRange": {
             "start": {
-              "line": 156,
+              "line": 176,
               "column": 4
             },
             "end": {
-              "line": 158,
+              "line": 178,
               "column": 5
             }
           },
@@ -671,11 +671,11 @@
           "description": "materializeCSS color class",
           "sourceRange": {
             "start": {
-              "line": 162,
+              "line": 182,
               "column": 4
             },
             "end": {
-              "line": 164,
+              "line": 184,
               "column": 5
             }
           },
@@ -687,11 +687,11 @@
           "description": "materializeCSS color class for text",
           "sourceRange": {
             "start": {
-              "line": 168,
+              "line": 188,
               "column": 4
             },
             "end": {
-              "line": 170,
+              "line": 190,
               "column": 5
             }
           },
@@ -703,11 +703,11 @@
           "description": "Allow for prefetch data on hover",
           "sourceRange": {
             "start": {
-              "line": 174,
+              "line": 194,
               "column": 4
             },
             "end": {
-              "line": 176,
+              "line": 196,
               "column": 5
             }
           },
@@ -719,11 +719,11 @@
           "description": "Alt via tooltip.",
           "sourceRange": {
             "start": {
-              "line": 180,
+              "line": 200,
               "column": 4
             },
             "end": {
-              "line": 182,
+              "line": 202,
               "column": 5
             }
           },
@@ -735,11 +735,11 @@
           "description": "Disabled state.",
           "sourceRange": {
             "start": {
-              "line": 186,
+              "line": 206,
               "column": 4
             },
             "end": {
-              "line": 189,
+              "line": 209,
               "column": 5
             }
           },
@@ -751,11 +751,11 @@
           "description": "Tracks if focus state is applied",
           "sourceRange": {
             "start": {
-              "line": 193,
+              "line": 213,
               "column": 4
             },
             "end": {
-              "line": 196,
+              "line": 216,
               "column": 5
             }
           },

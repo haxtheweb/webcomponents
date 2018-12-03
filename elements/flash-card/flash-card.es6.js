@@ -28,7 +28,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         margin: 0;
         cursor: pointer;
         position: absolute;
-        -webkit-backface-visibility: hidden ;
+        -webkit-backface-visibility: hidden;
         z-index: 2;
         font-family: Georgia;
         font-size: 48px;
@@ -44,11 +44,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
     </style>
     <paper-card id="card" animated-shadow="true">
-      <div class="face front white black-text">
-        Front
-      </div>
-      <div class="face back black white-text">
-          Back
-      </div>
+      <div class="face front white black-text">Front</div>
+      <div class="face back black white-text">Back</div>
     </paper-card>
-`,is:"flash-card",behaviors:[HAXBehaviors.PropertiesBehaviors,MaterializeCSSBehaviors.ColorBehaviors,SchemaBehaviors.Schema],listeners:{mouseenter:"_flipup",mouseleave:"_flipback"},properties:{title:{type:String}},attached:function(){let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Sample gizmo",description:"The user will be able to see this for selection in a UI.",icon:"av:play-circle-filled",color:"grey",groups:["Video","Media"],handles:[{type:"video",url:"source"}],meta:{author:"Your organization on github"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],advanced:[]}};this.setHaxProperties(props)},_flipup:function(e){this.$.card.classList.add("flipped")},_flipback:function(e){this.$.card.classList.remove("flipped")}});export{FlashCard};
+  `,is:"flash-card",behaviors:[HAXBehaviors.PropertiesBehaviors,MaterializeCSSBehaviors.ColorBehaviors,SchemaBehaviors.Schema],listeners:{mouseenter:"_flipup",mouseleave:"_flipback"},properties:{title:{type:String}},attached:function(){let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Sample gizmo",description:"The user will be able to see this for selection in a UI.",icon:"av:play-circle-filled",color:"grey",groups:["Video","Media"],handles:[{type:"video",url:"source"}],meta:{author:"Your organization on github"}},settings:{quick:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"title",title:"Title",description:"The title of the element",inputMethod:"textfield",icon:"editor:title"}],advanced:[]}};this.setHaxProperties(props)},_flipup:function(e){this.$.card.classList.add("flipped")},_flipback:function(e){this.$.card.classList.remove("flipped")}});export{FlashCard};

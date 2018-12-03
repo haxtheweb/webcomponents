@@ -159,7 +159,7 @@
           "column": 24
         },
         "end": {
-          "line": 253,
+          "line": 265,
           "column": 2
         }
       },
@@ -186,11 +186,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 58,
+              "line": 70,
               "column": 4
             },
             "end": {
-              "line": 61,
+              "line": 73,
               "column": 5
             }
           },
@@ -208,11 +208,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 65,
+              "line": 77,
               "column": 4
             },
             "end": {
-              "line": 68,
+              "line": 80,
               "column": 5
             }
           },
@@ -230,11 +230,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 72,
+              "line": 84,
               "column": 4
             },
             "end": {
-              "line": 75,
+              "line": 87,
               "column": 5
             }
           },
@@ -252,11 +252,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 79,
+              "line": 91,
               "column": 4
             },
             "end": {
-              "line": 83,
+              "line": 95,
               "column": 5
             }
           },
@@ -274,11 +274,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 99,
               "column": 4
             },
             "end": {
-              "line": 91,
+              "line": 103,
               "column": 5
             }
           },
@@ -297,11 +297,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 97,
+              "line": 109,
               "column": 2
             },
             "end": {
-              "line": 104,
+              "line": 116,
               "column": 3
             }
           },
@@ -317,11 +317,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 120,
               "column": 2
             },
             "end": {
-              "line": 114,
+              "line": 126,
               "column": 3
             }
           },
@@ -337,11 +337,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 119,
+              "line": 131,
               "column": 2
             },
             "end": {
-              "line": 203,
+              "line": 215,
               "column": 3
             }
           },
@@ -361,11 +361,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 208,
+              "line": 220,
               "column": 2
             },
             "end": {
-              "line": 234,
+              "line": 246,
               "column": 3
             }
           },
@@ -388,11 +388,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 239,
+              "line": 251,
               "column": 2
             },
             "end": {
-              "line": 242,
+              "line": 254,
               "column": 3
             }
           },
@@ -408,11 +408,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 247,
+              "line": 259,
               "column": 2
             },
             "end": {
-              "line": 252,
+              "line": 264,
               "column": 3
             }
           },
@@ -432,7 +432,7 @@
           "column": 32
         },
         "end": {
-          "line": 253,
+          "line": 265,
           "column": 1
         }
       },
@@ -445,11 +445,11 @@
           "description": "Label for the imagemap",
           "sourceRange": {
             "start": {
-              "line": 58,
+              "line": 70,
               "column": 4
             },
             "end": {
-              "line": 61,
+              "line": 73,
               "column": 5
             }
           },
@@ -461,11 +461,11 @@
           "description": "The path of the SVG",
           "sourceRange": {
             "start": {
-              "line": 65,
+              "line": 77,
               "column": 4
             },
             "end": {
-              "line": 68,
+              "line": 80,
               "column": 5
             }
           },
@@ -477,11 +477,11 @@
           "description": "The path of the SVG",
           "sourceRange": {
             "start": {
-              "line": 72,
+              "line": 84,
               "column": 4
             },
             "end": {
-              "line": 75,
+              "line": 87,
               "column": 5
             }
           },
@@ -493,11 +493,11 @@
           "description": "optional: the id of the heading element that this imagemap is a subtopic of",
           "sourceRange": {
             "start": {
-              "line": 79,
+              "line": 91,
               "column": 4
             },
             "end": {
-              "line": 83,
+              "line": 95,
               "column": 5
             }
           },
@@ -509,11 +509,11 @@
           "description": "optional: if subtopicOf is not set, start the content at a heading tag, eg. <h1/>, <h2/> ...",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 99,
               "column": 4
             },
             "end": {
-              "line": 91,
+              "line": 103,
               "column": 5
             }
           },

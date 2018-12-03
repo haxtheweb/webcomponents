@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 63,
+              "line": 71,
               "column": 4
             },
             "end": {
-              "line": 66,
+              "line": 74,
               "column": 5
             }
           },
@@ -34,11 +34,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 70,
+              "line": 78,
               "column": 4
             },
             "end": {
-              "line": 74,
+              "line": 82,
               "column": 5
             }
           },
@@ -65,7 +65,7 @@
           "column": 8
         },
         "end": {
-          "line": 76,
+          "line": 84,
           "column": 1
         }
       },
@@ -77,11 +77,11 @@
           "description": "Icon that is shown next to the content",
           "sourceRange": {
             "start": {
-              "line": 63,
+              "line": 71,
               "column": 4
             },
             "end": {
-              "line": 66,
+              "line": 74,
               "column": 5
             }
           },
@@ -93,11 +93,11 @@
           "description": "Color class work to apply",
           "sourceRange": {
             "start": {
-              "line": 70,
+              "line": 78,
               "column": 4
             },
             "end": {
-              "line": 74,
+              "line": 82,
               "column": 5
             }
           },
@@ -125,11 +125,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 51,
+              "line": 64,
               "column": 4
             },
             "end": {
-              "line": 54,
+              "line": 67,
               "column": 5
             }
           },
@@ -147,11 +147,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 55,
+              "line": 68,
               "column": 4
             },
             "end": {
-              "line": 58,
+              "line": 71,
               "column": 5
             }
           },
@@ -169,11 +169,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 59,
+              "line": 72,
               "column": 4
             },
             "end": {
-              "line": 62,
+              "line": 75,
               "column": 5
             }
           },
@@ -192,11 +192,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 66,
+              "line": 79,
               "column": 2
             },
             "end": {
-              "line": 73,
+              "line": 86,
               "column": 3
             }
           },
@@ -216,11 +216,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 75,
+              "line": 88,
               "column": 2
             },
             "end": {
-              "line": 82,
+              "line": 95,
               "column": 3
             }
           },
@@ -244,7 +244,7 @@
           "column": 28
         },
         "end": {
-          "line": 83,
+          "line": 96,
           "column": 1
         }
       },
@@ -257,11 +257,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 51,
+              "line": 64,
               "column": 4
             },
             "end": {
-              "line": 54,
+              "line": 67,
               "column": 5
             }
           },
@@ -273,11 +273,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 55,
+              "line": 68,
               "column": 4
             },
             "end": {
-              "line": 58,
+              "line": 71,
               "column": 5
             }
           },
@@ -289,11 +289,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 59,
+              "line": 72,
               "column": 4
             },
             "end": {
-              "line": 62,
+              "line": 75,
               "column": 5
             }
           },

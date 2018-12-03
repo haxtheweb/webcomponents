@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 import "./lib/data-table-column.js";
@@ -777,15 +778,14 @@ let IronDataTable = Polymer({
     // reset header width first to make the cells and scroll width to reset their widths.
     this.$.container.style.width = "";
 
-    this.async(
-      function() {
+    async.microTask.run(() => {
         this.$.container.style.width =
           Math.min(this.scrollWidth, this.clientWidth + this.scrollLeft) + "px";
 
         // add scrollbar width as padding
         this.$.header.style.paddingRight =
           this.$.list.offsetWidth - this.$.list.clientWidth + "px";
-      }.bind(this)
+      }
     );
   },
 

@@ -1,0 +1,11 @@
+{
+  "name": "@polymer/elmsmedia-dashboard",
+  "flat": true,
+  "version": "",
+  "description": "A LRN app",
+  "main": "elmsmedia-dashboard.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}

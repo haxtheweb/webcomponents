@@ -1,14 +1,14 @@
 import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";import"./node_modules/@polymer/iron-image/iron-image.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";let LrndesignGallerycard=Polymer({_template:html`
     <style include="materializecss-styles"></style>
     <style>
-       :host {
+      :host {
         display: inline-flex;
       }
       :host([size="micro"]) {
-        transform: scale(.5);
+        transform: scale(0.5);
       }
       :host([size="small"]) {
-        transform: scale(.8);
+        transform: scale(0.8);
       }
 
       paper-card {
@@ -22,7 +22,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         border-radius: 0 0 4px 4px;
         padding: 0 8px;
       }
-      .card-actions .card-action-details{
+      .card-actions .card-action-details {
         display: inline-block;
         vertical-align: middle;
         vertical-align: -webkit-baseline-middle;
@@ -31,7 +31,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       #avatar {
         display: inline-block;
         vertical-align: text-top;
-        transform: scale(.8);
+        transform: scale(0.8);
       }
 
       .card-control-height {
@@ -39,7 +39,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
 
       [elevation="0"] {
-        border: solid 1px #EEEEEE;
+        border: solid 1px #eeeeee;
       }
 
       .text-right {
@@ -110,13 +110,23 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       .inline {
         display: inline;
       }
-
     </style>
     <paper-card elevation="[[elevation]]">
       <div class="card-content card-control-height card-control-center">
         <div class="submission-preview">
-          <iron-icon class="project-icon" icon="[[icon]]" hidden\$="[[!icon]]"></iron-icon>
-          <iron-image style="width:100%; height:100%; background-color: lightgray;" sizing="cover" preload="" fade="" src="[[image]]" hidden\$="[[!image]]"></iron-image>
+          <iron-icon
+            class="project-icon"
+            icon="[[icon]]"
+            hidden\$="[[!icon]]"
+          ></iron-icon>
+          <iron-image
+            style="width:100%; height:100%; background-color: lightgray;"
+            sizing="cover"
+            preload=""
+            fade=""
+            src="[[image]]"
+            hidden\$="[[!image]]"
+          ></iron-image>
         </div>
         <div class="submission-info">
           <div class="divider"></div>
@@ -124,11 +134,15 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         </div>
       </div>
       <div class="card-actions">
-        <lrndesign-avatar id="avatar" label="[[author.name]]" src="[[author.avatar]]"></lrndesign-avatar>
+        <lrndesign-avatar
+          id="avatar"
+          label="[[author.name]]"
+          src="[[author.avatar]]"
+        ></lrndesign-avatar>
         <div class="card-action-details">
           <span class="text-left author">[[author.display_name]]</span>
           <span class="comments text-right">Comments: [[comments]]</span>
         </div>
       </div>
     </paper-card>
-`,is:"lrndesign-gallerycard",listeners:{mouseenter:"_mouseEnter",mouseleave:"_mouseLeave"},properties:{size:{type:String,notify:!0,reflectToAttribute:!0},image:{type:String,notify:!0,reflectToAttribute:!0},icon:{type:String,notify:!0,reflectToAttribute:!0},title:{type:String,value:"Project",notify:!0},author:{type:Object,value:{name:"author",display_name:"Author"},notify:!0},elevation:{type:Number,value:1,reflectToAttribute:!0,notify:!0},comments:{type:Number,value:0,reflectToAttribute:!0,notify:!0}},_mouseEnter:function(e){this.elevation+=2},_mouseLeave:function(e){this.elevation-=2}});export{LrndesignGallerycard};
+  `,is:"lrndesign-gallerycard",listeners:{mouseenter:"_mouseEnter",mouseleave:"_mouseLeave"},properties:{size:{type:String,notify:!0,reflectToAttribute:!0},image:{type:String,notify:!0,reflectToAttribute:!0},icon:{type:String,notify:!0,reflectToAttribute:!0},title:{type:String,value:"Project",notify:!0},author:{type:Object,value:{name:"author",display_name:"Author"},notify:!0},elevation:{type:Number,value:1,reflectToAttribute:!0,notify:!0},comments:{type:Number,value:0,reflectToAttribute:!0,notify:!0}},_mouseEnter:function(e){this.elevation+=2},_mouseLeave:function(e){this.elevation-=2}});export{LrndesignGallerycard};

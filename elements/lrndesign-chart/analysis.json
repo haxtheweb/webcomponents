@@ -62,11 +62,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 35,
+              "line": 50,
               "column": 4
             },
             "end": {
-              "line": 38,
+              "line": 53,
               "column": 5
             }
           },
@@ -84,11 +84,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 42,
+              "line": 57,
               "column": 4
             },
             "end": {
-              "line": 45,
+              "line": 60,
               "column": 5
             }
           },
@@ -106,11 +106,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 49,
+              "line": 64,
               "column": 4
             },
             "end": {
-              "line": 52,
+              "line": 67,
               "column": 5
             }
           },
@@ -128,11 +128,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 56,
+              "line": 71,
               "column": 4
             },
             "end": {
-              "line": 59,
+              "line": 74,
               "column": 5
             }
           },
@@ -150,11 +150,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 63,
+              "line": 78,
               "column": 4
             },
             "end": {
-              "line": 67,
+              "line": 82,
               "column": 5
             }
           },
@@ -173,11 +173,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 71,
+              "line": 86,
               "column": 4
             },
             "end": {
-              "line": 75,
+              "line": 90,
               "column": 5
             }
           },
@@ -196,11 +196,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 79,
+              "line": 94,
               "column": 4
             },
             "end": {
-              "line": 82,
+              "line": 97,
               "column": 5
             }
           },
@@ -217,11 +217,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 86,
+              "line": 101,
               "column": 4
             },
             "end": {
-              "line": 89,
+              "line": 104,
               "column": 5
             }
           },
@@ -238,11 +238,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 108,
               "column": 4
             },
             "end": {
-              "line": 96,
+              "line": 111,
               "column": 5
             }
           },
@@ -260,11 +260,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 100,
+              "line": 115,
               "column": 4
             },
             "end": {
-              "line": 103,
+              "line": 118,
               "column": 5
             }
           },
@@ -282,11 +282,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 107,
+              "line": 122,
               "column": 4
             },
             "end": {
-              "line": 110,
+              "line": 125,
               "column": 5
             }
           },
@@ -304,11 +304,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 114,
+              "line": 129,
               "column": 4
             },
             "end": {
-              "line": 117,
+              "line": 132,
               "column": 5
             }
           },
@@ -326,11 +326,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 122,
+              "line": 137,
               "column": 4
             },
             "end": {
-              "line": 125,
+              "line": 140,
               "column": 5
             }
           },
@@ -347,11 +347,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 130,
+              "line": 145,
               "column": 4
             },
             "end": {
-              "line": 133,
+              "line": 148,
               "column": 5
             }
           },
@@ -368,11 +368,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 138,
+              "line": 153,
               "column": 4
             },
             "end": {
-              "line": 141,
+              "line": 156,
               "column": 5
             }
           },
@@ -390,11 +390,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 145,
+              "line": 160,
               "column": 4
             },
             "end": {
-              "line": 148,
+              "line": 163,
               "column": 5
             }
           },
@@ -412,11 +412,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 154,
+              "line": 169,
               "column": 4
             },
             "end": {
-              "line": 157,
+              "line": 172,
               "column": 5
             }
           },
@@ -434,11 +434,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 166,
+              "line": 181,
               "column": 4
             },
             "end": {
-              "line": 169,
+              "line": 184,
               "column": 5
             }
           },
@@ -456,11 +456,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 176,
+              "line": 191,
               "column": 4
             },
             "end": {
-              "line": 179,
+              "line": 194,
               "column": 5
             }
           },
@@ -475,50 +475,6 @@
           "name": "distributeSeries",
           "type": "boolean | null | undefined",
           "description": "If set to true then each bar will represent a series and\nthe data array is expected to be a one dimensional array\nof data values rather than a series array of series.\nThis is useful if the bar chart should represent\na profile rather than some data over time.",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 187,
-              "column": 4
-            },
-            "end": {
-              "line": 190,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "reverseData",
-          "type": "boolean | null | undefined",
-          "description": "Reverse data including labels, the series order as well as\nthe whole series data arrays.",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 195,
-              "column": 4
-            },
-            "end": {
-              "line": 198,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "Boolean"
-            }
-          },
-          "defaultValue": "false"
-        },
-        {
-          "name": "showGridBackground",
-          "type": "boolean | null | undefined",
-          "description": "If the bar chart should add a background fill to the .ct-grids group.",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -538,17 +494,61 @@
           "defaultValue": "false"
         },
         {
+          "name": "reverseData",
+          "type": "boolean | null | undefined",
+          "description": "Reverse data including labels, the series order as well as\nthe whole series data arrays.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 210,
+              "column": 4
+            },
+            "end": {
+              "line": 213,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "showGridBackground",
+          "type": "boolean | null | undefined",
+          "description": "If the bar chart should add a background fill to the .ct-grids group.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 217,
+              "column": 4
+            },
+            "end": {
+              "line": 220,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
           "name": "axisXOffset",
           "type": "number | null | undefined",
           "description": "The offset of the chart drawing area to the border of the container.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 209,
+              "line": 224,
               "column": 4
             },
             "end": {
-              "line": 212,
+              "line": 227,
               "column": 5
             }
           },
@@ -566,11 +566,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 216,
+              "line": 231,
               "column": 4
             },
             "end": {
-              "line": 219,
+              "line": 234,
               "column": 5
             }
           },
@@ -588,11 +588,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 223,
+              "line": 238,
               "column": 4
             },
             "end": {
-              "line": 226,
+              "line": 241,
               "column": 5
             }
           },
@@ -610,11 +610,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 230,
+              "line": 245,
               "column": 4
             },
             "end": {
-              "line": 233,
+              "line": 248,
               "column": 5
             }
           },
@@ -632,11 +632,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 237,
+              "line": 252,
               "column": 4
             },
             "end": {
-              "line": 240,
+              "line": 255,
               "column": 5
             }
           },
@@ -654,11 +654,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 244,
+              "line": 259,
               "column": 4
             },
             "end": {
-              "line": 247,
+              "line": 262,
               "column": 5
             }
           },
@@ -676,11 +676,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 251,
+              "line": 266,
               "column": 4
             },
             "end": {
-              "line": 254,
+              "line": 269,
               "column": 5
             }
           },
@@ -698,11 +698,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 258,
+              "line": 273,
               "column": 4
             },
             "end": {
-              "line": 261,
+              "line": 276,
               "column": 5
             }
           },
@@ -720,11 +720,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 265,
+              "line": 280,
               "column": 4
             },
             "end": {
-              "line": 268,
+              "line": 283,
               "column": 5
             }
           },
@@ -742,11 +742,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 272,
+              "line": 287,
               "column": 4
             },
             "end": {
-              "line": 275,
+              "line": 290,
               "column": 5
             }
           },
@@ -764,11 +764,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 279,
+              "line": 294,
               "column": 4
             },
             "end": {
-              "line": 282,
+              "line": 297,
               "column": 5
             }
           },
@@ -786,11 +786,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 286,
+              "line": 301,
               "column": 4
             },
             "end": {
-              "line": 289,
+              "line": 304,
               "column": 5
             }
           },
@@ -808,11 +808,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 293,
+              "line": 308,
               "column": 4
             },
             "end": {
-              "line": 296,
+              "line": 311,
               "column": 5
             }
           },
@@ -830,11 +830,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 300,
+              "line": 315,
               "column": 4
             },
             "end": {
-              "line": 303,
+              "line": 318,
               "column": 5
             }
           },
@@ -852,11 +852,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 308,
+              "line": 323,
               "column": 4
             },
             "end": {
-              "line": 311,
+              "line": 326,
               "column": 5
             }
           },
@@ -874,11 +874,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 315,
+              "line": 330,
               "column": 4
             },
             "end": {
-              "line": 319,
+              "line": 334,
               "column": 5
             }
           },
@@ -897,11 +897,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 323,
+              "line": 338,
               "column": 4
             },
             "end": {
-              "line": 327,
+              "line": 342,
               "column": 5
             }
           },
@@ -969,11 +969,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 336,
+              "line": 351,
               "column": 2
             },
             "end": {
-              "line": 340,
+              "line": 355,
               "column": 3
             }
           },
@@ -996,11 +996,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 345,
+              "line": 360,
               "column": 2
             },
             "end": {
-              "line": 352,
+              "line": 367,
               "column": 3
             }
           },
@@ -1020,11 +1020,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 357,
+              "line": 372,
               "column": 2
             },
             "end": {
-              "line": 363,
+              "line": 378,
               "column": 3
             }
           },
@@ -1047,11 +1047,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 368,
+              "line": 383,
               "column": 2
             },
             "end": {
-              "line": 621,
+              "line": 636,
               "column": 3
             }
           },
@@ -1067,11 +1067,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 626,
+              "line": 641,
               "column": 2
             },
             "end": {
-              "line": 669,
+              "line": 684,
               "column": 3
             }
           },
@@ -1084,11 +1084,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 674,
+              "line": 689,
               "column": 2
             },
             "end": {
-              "line": 703,
+              "line": 718,
               "column": 3
             }
           },
@@ -1114,7 +1114,7 @@
           "column": 8
         },
         "end": {
-          "line": 704,
+          "line": 719,
           "column": 1
         }
       },
@@ -1162,11 +1162,11 @@
           "description": "The unique identifier of the chart.",
           "sourceRange": {
             "start": {
-              "line": 35,
+              "line": 50,
               "column": 4
             },
             "end": {
-              "line": 38,
+              "line": 53,
               "column": 5
             }
           },
@@ -1178,11 +1178,11 @@
           "description": "The chart title used for accessibility.",
           "sourceRange": {
             "start": {
-              "line": 42,
+              "line": 57,
               "column": 4
             },
             "end": {
-              "line": 45,
+              "line": 60,
               "column": 5
             }
           },
@@ -1194,11 +1194,11 @@
           "description": "The chart description used for accessibility.",
           "sourceRange": {
             "start": {
-              "line": 49,
+              "line": 64,
               "column": 4
             },
             "end": {
-              "line": 52,
+              "line": 67,
               "column": 5
             }
           },
@@ -1210,11 +1210,11 @@
           "description": "Scale of the chart.",
           "sourceRange": {
             "start": {
-              "line": 56,
+              "line": 71,
               "column": 4
             },
             "end": {
-              "line": 59,
+              "line": 74,
               "column": 5
             }
           },
@@ -1226,11 +1226,11 @@
           "description": "Data as an array.",
           "sourceRange": {
             "start": {
-              "line": 63,
+              "line": 78,
               "column": 4
             },
             "end": {
-              "line": 67,
+              "line": 82,
               "column": 5
             }
           },
@@ -1242,11 +1242,11 @@
           "description": "Options as an array.",
           "sourceRange": {
             "start": {
-              "line": 71,
+              "line": 86,
               "column": 4
             },
             "end": {
-              "line": 75,
+              "line": 90,
               "column": 5
             }
           },
@@ -1258,11 +1258,11 @@
           "description": "Fixed width for the chart as a string (i.e. '100px' or '50%').",
           "sourceRange": {
             "start": {
-              "line": 79,
+              "line": 94,
               "column": 4
             },
             "end": {
-              "line": 82,
+              "line": 97,
               "column": 5
             }
           },
@@ -1274,11 +1274,11 @@
           "description": "Fixed height for the chart as a string (i.e. '100px' or '50%').",
           "sourceRange": {
             "start": {
-              "line": 86,
+              "line": 101,
               "column": 4
             },
             "end": {
-              "line": 89,
+              "line": 104,
               "column": 5
             }
           },
@@ -1290,11 +1290,11 @@
           "description": "Padding-top for chart.",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 108,
               "column": 4
             },
             "end": {
-              "line": 96,
+              "line": 111,
               "column": 5
             }
           },
@@ -1306,11 +1306,11 @@
           "description": "Padding-right for chart.",
           "sourceRange": {
             "start": {
-              "line": 100,
+              "line": 115,
               "column": 4
             },
             "end": {
-              "line": 103,
+              "line": 118,
               "column": 5
             }
           },
@@ -1320,38 +1320,6 @@
         {
           "name": "padding-bottom",
           "description": "Padding-bottom for chart.",
-          "sourceRange": {
-            "start": {
-              "line": 107,
-              "column": 4
-            },
-            "end": {
-              "line": 110,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "number | null | undefined"
-        },
-        {
-          "name": "padding-left",
-          "description": "Padding-left for chart.",
-          "sourceRange": {
-            "start": {
-              "line": 114,
-              "column": 4
-            },
-            "end": {
-              "line": 117,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "number | null | undefined"
-        },
-        {
-          "name": "high",
-          "description": "Overriding the natural high of the chart allows you to zoom in\nor limit the charts highest displayed value.",
           "sourceRange": {
             "start": {
               "line": 122,
@@ -1366,40 +1334,40 @@
           "type": "number | null | undefined"
         },
         {
+          "name": "padding-left",
+          "description": "Padding-left for chart.",
+          "sourceRange": {
+            "start": {
+              "line": 129,
+              "column": 4
+            },
+            "end": {
+              "line": 132,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        },
+        {
+          "name": "high",
+          "description": "Overriding the natural high of the chart allows you to zoom in\nor limit the charts highest displayed value.",
+          "sourceRange": {
+            "start": {
+              "line": 137,
+              "column": 4
+            },
+            "end": {
+              "line": 140,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        },
+        {
           "name": "low",
           "description": "Overriding the natural low of the chart allows you to zoom in\nor limit the charts lowest displayed value.",
-          "sourceRange": {
-            "start": {
-              "line": 130,
-              "column": 4
-            },
-            "end": {
-              "line": 133,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "number | null | undefined"
-        },
-        {
-          "name": "reference-value",
-          "description": "Unless low/high are explicitly set, bar chart will be\ncentered at zero by default. Set referenceValue to null to auto scale.",
-          "sourceRange": {
-            "start": {
-              "line": 138,
-              "column": 4
-            },
-            "end": {
-              "line": 141,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "number | null | undefined"
-        },
-        {
-          "name": "series-bar-distance",
-          "description": "Specify the distance in pixel of bars in a group.",
           "sourceRange": {
             "start": {
               "line": 145,
@@ -1414,15 +1382,47 @@
           "type": "number | null | undefined"
         },
         {
+          "name": "reference-value",
+          "description": "Unless low/high are explicitly set, bar chart will be\ncentered at zero by default. Set referenceValue to null to auto scale.",
+          "sourceRange": {
+            "start": {
+              "line": 153,
+              "column": 4
+            },
+            "end": {
+              "line": 156,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        },
+        {
+          "name": "series-bar-distance",
+          "description": "Specify the distance in pixel of bars in a group.",
+          "sourceRange": {
+            "start": {
+              "line": 160,
+              "column": 4
+            },
+            "end": {
+              "line": 163,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        },
+        {
           "name": "stack-bars",
           "description": "If set to true this property will cause the series bars\nto be stacked. Check the \"stackMode\" option\nfor further stacking options.",
           "sourceRange": {
             "start": {
-              "line": 154,
+              "line": 169,
               "column": 4
             },
             "end": {
-              "line": 157,
+              "line": 172,
               "column": 5
             }
           },
@@ -1434,11 +1434,11 @@
           "description": "If set to \"true\" this property will form a total\nfor each series point. This will also influence\nthe y-axis and the overall bounds of the chart.\nIf set to \"false\" this property will force\nthe stacked bars to draw from the zero line.\nIn stacked mode the \"seriesBarDistance\" property will have no effect.",
           "sourceRange": {
             "start": {
-              "line": 166,
+              "line": 181,
               "column": 4
             },
             "end": {
-              "line": 169,
+              "line": 184,
               "column": 5
             }
           },
@@ -1450,11 +1450,11 @@
           "description": "Inverts the axes of the bar chart in order to draw\na horizontal bar chart. Be aware that you also need\nto invert your axis settings as the Y Axis will now display\nthe labels and the X Axis the values.",
           "sourceRange": {
             "start": {
-              "line": 176,
+              "line": 191,
               "column": 4
             },
             "end": {
-              "line": 179,
+              "line": 194,
               "column": 5
             }
           },
@@ -1464,38 +1464,6 @@
         {
           "name": "distribute-series",
           "description": "If set to true then each bar will represent a series and\nthe data array is expected to be a one dimensional array\nof data values rather than a series array of series.\nThis is useful if the bar chart should represent\na profile rather than some data over time.",
-          "sourceRange": {
-            "start": {
-              "line": 187,
-              "column": 4
-            },
-            "end": {
-              "line": 190,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined"
-        },
-        {
-          "name": "reverse-data",
-          "description": "Reverse data including labels, the series order as well as\nthe whole series data arrays.",
-          "sourceRange": {
-            "start": {
-              "line": 195,
-              "column": 4
-            },
-            "end": {
-              "line": 198,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "boolean | null | undefined"
-        },
-        {
-          "name": "show-grid-background",
-          "description": "If the bar chart should add a background fill to the .ct-grids group.",
           "sourceRange": {
             "start": {
               "line": 202,
@@ -1510,15 +1478,47 @@
           "type": "boolean | null | undefined"
         },
         {
+          "name": "reverse-data",
+          "description": "Reverse data including labels, the series order as well as\nthe whole series data arrays.",
+          "sourceRange": {
+            "start": {
+              "line": 210,
+              "column": 4
+            },
+            "end": {
+              "line": 213,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "show-grid-background",
+          "description": "If the bar chart should add a background fill to the .ct-grids group.",
+          "sourceRange": {
+            "start": {
+              "line": 217,
+              "column": 4
+            },
+            "end": {
+              "line": 220,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
           "name": "axis-x-offset",
           "description": "The offset of the chart drawing area to the border of the container.",
           "sourceRange": {
             "start": {
-              "line": 209,
+              "line": 224,
               "column": 4
             },
             "end": {
-              "line": 212,
+              "line": 227,
               "column": 5
             }
           },
@@ -1530,11 +1530,11 @@
           "description": "The offset of the chart drawing area to the border of the container.",
           "sourceRange": {
             "start": {
-              "line": 216,
+              "line": 231,
               "column": 4
             },
             "end": {
-              "line": 219,
+              "line": 234,
               "column": 5
             }
           },
@@ -1546,11 +1546,11 @@
           "description": "Position labels at top-left of axis?",
           "sourceRange": {
             "start": {
-              "line": 223,
+              "line": 238,
               "column": 4
             },
             "end": {
-              "line": 226,
+              "line": 241,
               "column": 5
             }
           },
@@ -1562,11 +1562,11 @@
           "description": "Position labels at top-left of axis?",
           "sourceRange": {
             "start": {
-              "line": 230,
+              "line": 245,
               "column": 4
             },
             "end": {
-              "line": 233,
+              "line": 248,
               "column": 5
             }
           },
@@ -1578,11 +1578,11 @@
           "description": "Offset X of labels for X-axis",
           "sourceRange": {
             "start": {
-              "line": 237,
+              "line": 252,
               "column": 4
             },
             "end": {
-              "line": 240,
+              "line": 255,
               "column": 5
             }
           },
@@ -1594,11 +1594,11 @@
           "description": "Offset Y of labels for X-axis",
           "sourceRange": {
             "start": {
-              "line": 244,
+              "line": 259,
               "column": 4
             },
             "end": {
-              "line": 247,
+              "line": 262,
               "column": 5
             }
           },
@@ -1610,11 +1610,11 @@
           "description": "Offset X of labels for Y-axis",
           "sourceRange": {
             "start": {
-              "line": 251,
+              "line": 266,
               "column": 4
             },
             "end": {
-              "line": 254,
+              "line": 269,
               "column": 5
             }
           },
@@ -1626,11 +1626,11 @@
           "description": "Offset Y of labels for Y-axis",
           "sourceRange": {
             "start": {
-              "line": 258,
+              "line": 273,
               "column": 4
             },
             "end": {
-              "line": 261,
+              "line": 276,
               "column": 5
             }
           },
@@ -1642,11 +1642,11 @@
           "description": "Show axis X labels?",
           "sourceRange": {
             "start": {
-              "line": 265,
+              "line": 280,
               "column": 4
             },
             "end": {
-              "line": 268,
+              "line": 283,
               "column": 5
             }
           },
@@ -1658,11 +1658,11 @@
           "description": "Show axis Y labels?",
           "sourceRange": {
             "start": {
-              "line": 272,
+              "line": 287,
               "column": 4
             },
             "end": {
-              "line": 275,
+              "line": 290,
               "column": 5
             }
           },
@@ -1674,11 +1674,11 @@
           "description": "Show axis X grid?",
           "sourceRange": {
             "start": {
-              "line": 279,
+              "line": 294,
               "column": 4
             },
             "end": {
-              "line": 282,
+              "line": 297,
               "column": 5
             }
           },
@@ -1690,11 +1690,11 @@
           "description": "Show axis Y grid?",
           "sourceRange": {
             "start": {
-              "line": 286,
+              "line": 301,
               "column": 4
             },
             "end": {
-              "line": 289,
+              "line": 304,
               "column": 5
             }
           },
@@ -1706,11 +1706,11 @@
           "description": "Use only integer values (whole numbers) for the scale steps",
           "sourceRange": {
             "start": {
-              "line": 293,
+              "line": 308,
               "column": 4
             },
             "end": {
-              "line": 296,
+              "line": 311,
               "column": 5
             }
           },
@@ -1722,11 +1722,11 @@
           "description": "Use only integer values (whole numbers) for the scale steps",
           "sourceRange": {
             "start": {
-              "line": 300,
+              "line": 315,
               "column": 4
             },
             "end": {
-              "line": 303,
+              "line": 318,
               "column": 5
             }
           },
@@ -1738,11 +1738,11 @@
           "description": "The responsive options.\n(See https://gionkunz.github.io/chartist-js/api-documentation.html.)",
           "sourceRange": {
             "start": {
-              "line": 308,
+              "line": 323,
               "column": 4
             },
             "end": {
-              "line": 311,
+              "line": 326,
               "column": 5
             }
           },
@@ -1754,11 +1754,11 @@
           "description": "Location of the CSV file.",
           "sourceRange": {
             "start": {
-              "line": 315,
+              "line": 330,
               "column": 4
             },
             "end": {
-              "line": 319,
+              "line": 334,
               "column": 5
             }
           },
@@ -1770,11 +1770,11 @@
           "description": "Raw data pulled in from the csv file.",
           "sourceRange": {
             "start": {
-              "line": 323,
+              "line": 338,
               "column": 4
             },
             "end": {
-              "line": 327,
+              "line": 342,
               "column": 5
             }
           },
@@ -1876,11 +1876,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 35,
+              "line": 50,
               "column": 4
             },
             "end": {
-              "line": 38,
+              "line": 53,
               "column": 5
             }
           },
@@ -1898,11 +1898,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 42,
+              "line": 57,
               "column": 4
             },
             "end": {
-              "line": 45,
+              "line": 60,
               "column": 5
             }
           },
@@ -1920,11 +1920,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 49,
+              "line": 64,
               "column": 4
             },
             "end": {
-              "line": 52,
+              "line": 67,
               "column": 5
             }
           },
@@ -1942,11 +1942,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 56,
+              "line": 71,
               "column": 4
             },
             "end": {
-              "line": 60,
+              "line": 75,
               "column": 5
             }
           },
@@ -1965,11 +1965,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 64,
+              "line": 79,
               "column": 4
             },
             "end": {
-              "line": 68,
+              "line": 83,
               "column": 5
             }
           },
@@ -1988,11 +1988,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 72,
+              "line": 87,
               "column": 4
             },
             "end": {
-              "line": 76,
+              "line": 91,
               "column": 5
             }
           },
@@ -2011,11 +2011,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 80,
+              "line": 95,
               "column": 4
             },
             "end": {
-              "line": 83,
+              "line": 98,
               "column": 5
             }
           },
@@ -2032,11 +2032,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 102,
               "column": 4
             },
             "end": {
-              "line": 90,
+              "line": 105,
               "column": 5
             }
           },
@@ -2053,11 +2053,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 94,
+              "line": 109,
               "column": 4
             },
             "end": {
-              "line": 97,
+              "line": 112,
               "column": 5
             }
           },
@@ -2075,11 +2075,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 101,
+              "line": 116,
               "column": 4
             },
             "end": {
-              "line": 104,
+              "line": 119,
               "column": 5
             }
           },
@@ -2097,11 +2097,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 123,
               "column": 4
             },
             "end": {
-              "line": 111,
+              "line": 126,
               "column": 5
             }
           },
@@ -2119,11 +2119,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 116,
+              "line": 131,
               "column": 4
             },
             "end": {
-              "line": 119,
+              "line": 134,
               "column": 5
             }
           },
@@ -2141,11 +2141,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 133,
+              "line": 148,
               "column": 4
             },
             "end": {
-              "line": 136,
+              "line": 151,
               "column": 5
             }
           },
@@ -2163,11 +2163,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 140,
+              "line": 155,
               "column": 4
             },
             "end": {
-              "line": 143,
+              "line": 158,
               "column": 5
             }
           },
@@ -2185,11 +2185,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 148,
+              "line": 163,
               "column": 4
             },
             "end": {
-              "line": 151,
+              "line": 166,
               "column": 5
             }
           },
@@ -2206,11 +2206,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 156,
+              "line": 171,
               "column": 4
             },
             "end": {
-              "line": 159,
+              "line": 174,
               "column": 5
             }
           },
@@ -2227,11 +2227,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 163,
+              "line": 178,
               "column": 4
             },
             "end": {
-              "line": 166,
+              "line": 181,
               "column": 5
             }
           },
@@ -2249,11 +2249,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 170,
+              "line": 185,
               "column": 4
             },
             "end": {
-              "line": 173,
+              "line": 188,
               "column": 5
             }
           },
@@ -2271,11 +2271,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 177,
+              "line": 192,
               "column": 4
             },
             "end": {
-              "line": 180,
+              "line": 195,
               "column": 5
             }
           },
@@ -2293,11 +2293,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 184,
+              "line": 199,
               "column": 4
             },
             "end": {
-              "line": 187,
+              "line": 202,
               "column": 5
             }
           },
@@ -2315,11 +2315,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 196,
+              "line": 211,
               "column": 4
             },
             "end": {
-              "line": 199,
+              "line": 214,
               "column": 5
             }
           },
@@ -2337,11 +2337,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 204,
+              "line": 219,
               "column": 4
             },
             "end": {
-              "line": 207,
+              "line": 222,
               "column": 5
             }
           },
@@ -2359,11 +2359,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 211,
+              "line": 226,
               "column": 4
             },
             "end": {
-              "line": 214,
+              "line": 229,
               "column": 5
             }
           },
@@ -2381,11 +2381,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 218,
+              "line": 233,
               "column": 4
             },
             "end": {
-              "line": 221,
+              "line": 236,
               "column": 5
             }
           },
@@ -2403,11 +2403,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 225,
+              "line": 240,
               "column": 4
             },
             "end": {
-              "line": 228,
+              "line": 243,
               "column": 5
             }
           },
@@ -2425,11 +2425,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 232,
+              "line": 247,
               "column": 4
             },
             "end": {
-              "line": 235,
+              "line": 250,
               "column": 5
             }
           },
@@ -2447,11 +2447,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 239,
+              "line": 254,
               "column": 4
             },
             "end": {
-              "line": 242,
+              "line": 257,
               "column": 5
             }
           },
@@ -2469,11 +2469,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 246,
+              "line": 261,
               "column": 4
             },
             "end": {
-              "line": 249,
+              "line": 264,
               "column": 5
             }
           },
@@ -2491,11 +2491,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 253,
+              "line": 268,
               "column": 4
             },
             "end": {
-              "line": 256,
+              "line": 271,
               "column": 5
             }
           },
@@ -2513,11 +2513,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 260,
+              "line": 275,
               "column": 4
             },
             "end": {
-              "line": 263,
+              "line": 278,
               "column": 5
             }
           },
@@ -2535,11 +2535,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 267,
+              "line": 282,
               "column": 4
             },
             "end": {
-              "line": 270,
+              "line": 285,
               "column": 5
             }
           },
@@ -2557,11 +2557,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 274,
+              "line": 289,
               "column": 4
             },
             "end": {
-              "line": 277,
+              "line": 292,
               "column": 5
             }
           },
@@ -2579,11 +2579,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 281,
+              "line": 296,
               "column": 4
             },
             "end": {
-              "line": 284,
+              "line": 299,
               "column": 5
             }
           },
@@ -2601,11 +2601,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 288,
+              "line": 303,
               "column": 4
             },
             "end": {
-              "line": 291,
+              "line": 306,
               "column": 5
             }
           },
@@ -2623,11 +2623,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 295,
+              "line": 310,
               "column": 4
             },
             "end": {
-              "line": 298,
+              "line": 313,
               "column": 5
             }
           },
@@ -2645,11 +2645,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 303,
+              "line": 318,
               "column": 4
             },
             "end": {
-              "line": 306,
+              "line": 321,
               "column": 5
             }
           },
@@ -2667,11 +2667,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 310,
+              "line": 325,
               "column": 4
             },
             "end": {
-              "line": 313,
+              "line": 328,
               "column": 5
             }
           },
@@ -2689,11 +2689,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 317,
+              "line": 332,
               "column": 4
             },
             "end": {
-              "line": 321,
+              "line": 336,
               "column": 5
             }
           },
@@ -2761,11 +2761,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 327,
+              "line": 342,
               "column": 2
             },
             "end": {
-              "line": 336,
+              "line": 351,
               "column": 3
             }
           },
@@ -2785,11 +2785,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 341,
+              "line": 356,
               "column": 2
             },
             "end": {
-              "line": 595,
+              "line": 610,
               "column": 3
             }
           },
@@ -2805,11 +2805,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 600,
+              "line": 615,
               "column": 2
             },
             "end": {
-              "line": 632,
+              "line": 647,
               "column": 3
             }
           },
@@ -2822,11 +2822,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 637,
+              "line": 652,
               "column": 2
             },
             "end": {
-              "line": 666,
+              "line": 681,
               "column": 3
             }
           },
@@ -2852,7 +2852,7 @@
           "column": 8
         },
         "end": {
-          "line": 667,
+          "line": 682,
           "column": 1
         }
       },
@@ -2900,11 +2900,11 @@
           "description": "The unique identifier of the chart.",
           "sourceRange": {
             "start": {
-              "line": 35,
+              "line": 50,
               "column": 4
             },
             "end": {
-              "line": 38,
+              "line": 53,
               "column": 5
             }
           },
@@ -2916,39 +2916,7 @@
           "description": "The chart title used for accessibility.",
           "sourceRange": {
             "start": {
-              "line": 42,
-              "column": 4
-            },
-            "end": {
-              "line": 45,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "chart-desc",
-          "description": "The chart description used for accessibility.",
-          "sourceRange": {
-            "start": {
-              "line": 49,
-              "column": 4
-            },
-            "end": {
-              "line": 52,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "scale",
-          "description": "Scale of the chart.",
-          "sourceRange": {
-            "start": {
-              "line": 56,
+              "line": 57,
               "column": 4
             },
             "end": {
@@ -2960,15 +2928,47 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "data",
-          "description": "Data as an array.",
+          "name": "chart-desc",
+          "description": "The chart description used for accessibility.",
           "sourceRange": {
             "start": {
               "line": 64,
               "column": 4
             },
             "end": {
-              "line": 68,
+              "line": 67,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "scale",
+          "description": "Scale of the chart.",
+          "sourceRange": {
+            "start": {
+              "line": 71,
+              "column": 4
+            },
+            "end": {
+              "line": 75,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "data",
+          "description": "Data as an array.",
+          "sourceRange": {
+            "start": {
+              "line": 79,
+              "column": 4
+            },
+            "end": {
+              "line": 83,
               "column": 5
             }
           },
@@ -2980,11 +2980,11 @@
           "description": "Options as an array.",
           "sourceRange": {
             "start": {
-              "line": 72,
+              "line": 87,
               "column": 4
             },
             "end": {
-              "line": 76,
+              "line": 91,
               "column": 5
             }
           },
@@ -2996,11 +2996,11 @@
           "description": "Fixed width for the chart as a string (i.e. '100px' or '50%').",
           "sourceRange": {
             "start": {
-              "line": 80,
+              "line": 95,
               "column": 4
             },
             "end": {
-              "line": 83,
+              "line": 98,
               "column": 5
             }
           },
@@ -3012,11 +3012,11 @@
           "description": "Fixed height for the chart as a string (i.e. '100px' or '50%').",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 102,
               "column": 4
             },
             "end": {
-              "line": 90,
+              "line": 105,
               "column": 5
             }
           },
@@ -3028,11 +3028,11 @@
           "description": "If the line should be drawn or not.",
           "sourceRange": {
             "start": {
-              "line": 94,
+              "line": 109,
               "column": 4
             },
             "end": {
-              "line": 97,
+              "line": 112,
               "column": 5
             }
           },
@@ -3044,11 +3044,11 @@
           "description": "If the line should be drawn or not.",
           "sourceRange": {
             "start": {
-              "line": 101,
+              "line": 116,
               "column": 4
             },
             "end": {
-              "line": 104,
+              "line": 119,
               "column": 5
             }
           },
@@ -3060,11 +3060,11 @@
           "description": "If the line chart should draw an area.",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 123,
               "column": 4
             },
             "end": {
-              "line": 111,
+              "line": 126,
               "column": 5
             }
           },
@@ -3076,11 +3076,11 @@
           "description": "The base for the area chart that will be used\nto close the area shape (is normally 0).",
           "sourceRange": {
             "start": {
-              "line": 116,
+              "line": 131,
               "column": 4
             },
             "end": {
-              "line": 119,
+              "line": 134,
               "column": 5
             }
           },
@@ -3092,11 +3092,11 @@
           "description": "Specify if the lines should be smoothed.\nThis value can be true or false where true\nwill result in smoothing using the default\nsmoothing interpolation function Chartist.\nInterpolation.cardinal and false results in\nChartist.Interpolation.none.\nYou can also choose other smoothing /\ninterpolation functions available in the Chartist.\nInterpolation module, or write your own\ninterpolation function. Check the examples\nfor a brief description..",
           "sourceRange": {
             "start": {
-              "line": 133,
+              "line": 148,
               "column": 4
             },
             "end": {
-              "line": 136,
+              "line": 151,
               "column": 5
             }
           },
@@ -3108,11 +3108,11 @@
           "description": "If the bar chart should add a background fill to the .ct-grids group.",
           "sourceRange": {
             "start": {
-              "line": 140,
+              "line": 155,
               "column": 4
             },
             "end": {
-              "line": 143,
+              "line": 158,
               "column": 5
             }
           },
@@ -3122,38 +3122,6 @@
         {
           "name": "high",
           "description": "Overriding the natural high of the chart allows you to zoom in\nor limit the charts highest displayed value.",
-          "sourceRange": {
-            "start": {
-              "line": 148,
-              "column": 4
-            },
-            "end": {
-              "line": 151,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "number | null | undefined"
-        },
-        {
-          "name": "low",
-          "description": "Overriding the natural low of the chart allows you to zoom in\nor limit the charts lowest displayed value.",
-          "sourceRange": {
-            "start": {
-              "line": 156,
-              "column": 4
-            },
-            "end": {
-              "line": 159,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "number | null | undefined"
-        },
-        {
-          "name": "padding-top",
-          "description": "Padding-top for chart.",
           "sourceRange": {
             "start": {
               "line": 163,
@@ -3168,15 +3136,47 @@
           "type": "number | null | undefined"
         },
         {
+          "name": "low",
+          "description": "Overriding the natural low of the chart allows you to zoom in\nor limit the charts lowest displayed value.",
+          "sourceRange": {
+            "start": {
+              "line": 171,
+              "column": 4
+            },
+            "end": {
+              "line": 174,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        },
+        {
+          "name": "padding-top",
+          "description": "Padding-top for chart.",
+          "sourceRange": {
+            "start": {
+              "line": 178,
+              "column": 4
+            },
+            "end": {
+              "line": 181,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        },
+        {
           "name": "padding-right",
           "description": "Padding-right for chart.",
           "sourceRange": {
             "start": {
-              "line": 170,
+              "line": 185,
               "column": 4
             },
             "end": {
-              "line": 173,
+              "line": 188,
               "column": 5
             }
           },
@@ -3188,11 +3188,11 @@
           "description": "Padding-bottom for chart.",
           "sourceRange": {
             "start": {
-              "line": 177,
+              "line": 192,
               "column": 4
             },
             "end": {
-              "line": 180,
+              "line": 195,
               "column": 5
             }
           },
@@ -3204,11 +3204,11 @@
           "description": "Padding-left for chart.",
           "sourceRange": {
             "start": {
-              "line": 184,
+              "line": 199,
               "column": 4
             },
             "end": {
-              "line": 187,
+              "line": 202,
               "column": 5
             }
           },
@@ -3220,11 +3220,11 @@
           "description": "When set to true, the last grid line on the x-axis\nis not drawn and the chart elements will expand\nto the full available width of the chart.\nFor the last label to be drawn correctly\nyou might need to add chart padding or offset the\nlast label with a draw event handler.",
           "sourceRange": {
             "start": {
-              "line": 196,
+              "line": 211,
               "column": 4
             },
             "end": {
-              "line": 199,
+              "line": 214,
               "column": 5
             }
           },
@@ -3236,11 +3236,11 @@
           "description": "Reverse data including labels, the series order as well as\nthe whole series data arrays.",
           "sourceRange": {
             "start": {
-              "line": 204,
+              "line": 219,
               "column": 4
             },
             "end": {
-              "line": 207,
+              "line": 222,
               "column": 5
             }
           },
@@ -3252,11 +3252,11 @@
           "description": "The offset of the chart drawing area to the border of the container.",
           "sourceRange": {
             "start": {
-              "line": 211,
+              "line": 226,
               "column": 4
             },
             "end": {
-              "line": 214,
+              "line": 229,
               "column": 5
             }
           },
@@ -3268,11 +3268,11 @@
           "description": "The offset of the chart drawing area to the border of the container.",
           "sourceRange": {
             "start": {
-              "line": 218,
+              "line": 233,
               "column": 4
             },
             "end": {
-              "line": 221,
+              "line": 236,
               "column": 5
             }
           },
@@ -3284,11 +3284,11 @@
           "description": "Position labels at top-left of axis?",
           "sourceRange": {
             "start": {
-              "line": 225,
+              "line": 240,
               "column": 4
             },
             "end": {
-              "line": 228,
+              "line": 243,
               "column": 5
             }
           },
@@ -3300,11 +3300,11 @@
           "description": "Position labels at top-left of axis?",
           "sourceRange": {
             "start": {
-              "line": 232,
+              "line": 247,
               "column": 4
             },
             "end": {
-              "line": 235,
+              "line": 250,
               "column": 5
             }
           },
@@ -3316,11 +3316,11 @@
           "description": "Offset X of labels for X-axis",
           "sourceRange": {
             "start": {
-              "line": 239,
+              "line": 254,
               "column": 4
             },
             "end": {
-              "line": 242,
+              "line": 257,
               "column": 5
             }
           },
@@ -3332,11 +3332,11 @@
           "description": "Offset Y of labels for X-axis",
           "sourceRange": {
             "start": {
-              "line": 246,
+              "line": 261,
               "column": 4
             },
             "end": {
-              "line": 249,
+              "line": 264,
               "column": 5
             }
           },
@@ -3348,11 +3348,11 @@
           "description": "Offset X of labels for Y-axis",
           "sourceRange": {
             "start": {
-              "line": 253,
+              "line": 268,
               "column": 4
             },
             "end": {
-              "line": 256,
+              "line": 271,
               "column": 5
             }
           },
@@ -3364,11 +3364,11 @@
           "description": "Offset Y of labels for Y-axis",
           "sourceRange": {
             "start": {
-              "line": 260,
+              "line": 275,
               "column": 4
             },
             "end": {
-              "line": 263,
+              "line": 278,
               "column": 5
             }
           },
@@ -3380,11 +3380,11 @@
           "description": "Show axis X labels?",
           "sourceRange": {
             "start": {
-              "line": 267,
+              "line": 282,
               "column": 4
             },
             "end": {
-              "line": 270,
+              "line": 285,
               "column": 5
             }
           },
@@ -3396,11 +3396,11 @@
           "description": "Show axis Y labels?",
           "sourceRange": {
             "start": {
-              "line": 274,
+              "line": 289,
               "column": 4
             },
             "end": {
-              "line": 277,
+              "line": 292,
               "column": 5
             }
           },
@@ -3412,11 +3412,11 @@
           "description": "Show axis X grid?",
           "sourceRange": {
             "start": {
-              "line": 281,
+              "line": 296,
               "column": 4
             },
             "end": {
-              "line": 284,
+              "line": 299,
               "column": 5
             }
           },
@@ -3428,11 +3428,11 @@
           "description": "Show axis Y grid?",
           "sourceRange": {
             "start": {
-              "line": 288,
+              "line": 303,
               "column": 4
             },
             "end": {
-              "line": 291,
+              "line": 306,
               "column": 5
             }
           },
@@ -3444,11 +3444,11 @@
           "description": "Use only integer values (whole numbers) for the scale steps",
           "sourceRange": {
             "start": {
-              "line": 295,
+              "line": 310,
               "column": 4
             },
             "end": {
-              "line": 298,
+              "line": 313,
               "column": 5
             }
           },
@@ -3460,11 +3460,11 @@
           "description": "The responsive options.\n(See https://gionkunz.github.io/chartist-js/api-documentation.html.)",
           "sourceRange": {
             "start": {
-              "line": 303,
+              "line": 318,
               "column": 4
             },
             "end": {
-              "line": 306,
+              "line": 321,
               "column": 5
             }
           },
@@ -3476,11 +3476,11 @@
           "description": "Location of the CSV file.",
           "sourceRange": {
             "start": {
-              "line": 310,
+              "line": 325,
               "column": 4
             },
             "end": {
-              "line": 313,
+              "line": 328,
               "column": 5
             }
           },
@@ -3492,11 +3492,11 @@
           "description": "Raw data pulled in from the csv file.",
           "sourceRange": {
             "start": {
-              "line": 317,
+              "line": 332,
               "column": 4
             },
             "end": {
-              "line": 321,
+              "line": 336,
               "column": 5
             }
           },
@@ -3604,11 +3604,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 35,
+              "line": 50,
               "column": 4
             },
             "end": {
-              "line": 38,
+              "line": 53,
               "column": 5
             }
           },
@@ -3626,11 +3626,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 42,
+              "line": 57,
               "column": 4
             },
             "end": {
-              "line": 45,
+              "line": 60,
               "column": 5
             }
           },
@@ -3648,11 +3648,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 49,
+              "line": 64,
               "column": 4
             },
             "end": {
-              "line": 53,
+              "line": 68,
               "column": 5
             }
           },
@@ -3671,11 +3671,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 57,
+              "line": 72,
               "column": 4
             },
             "end": {
-              "line": 61,
+              "line": 76,
               "column": 5
             }
           },
@@ -3694,11 +3694,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 65,
+              "line": 80,
               "column": 4
             },
             "end": {
-              "line": 69,
+              "line": 84,
               "column": 5
             }
           },
@@ -3717,11 +3717,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 73,
+              "line": 88,
               "column": 4
             },
             "end": {
-              "line": 76,
+              "line": 91,
               "column": 5
             }
           },
@@ -3738,11 +3738,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 80,
+              "line": 95,
               "column": 4
             },
             "end": {
-              "line": 83,
+              "line": 98,
               "column": 5
             }
           },
@@ -3759,11 +3759,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 102,
               "column": 4
             },
             "end": {
-              "line": 90,
+              "line": 105,
               "column": 5
             }
           },
@@ -3781,11 +3781,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 94,
+              "line": 109,
               "column": 4
             },
             "end": {
-              "line": 97,
+              "line": 112,
               "column": 5
             }
           },
@@ -3803,11 +3803,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 101,
+              "line": 116,
               "column": 4
             },
             "end": {
-              "line": 104,
+              "line": 119,
               "column": 5
             }
           },
@@ -3825,11 +3825,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 123,
               "column": 4
             },
             "end": {
-              "line": 111,
+              "line": 126,
               "column": 5
             }
           },
@@ -3847,11 +3847,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 116,
+              "line": 131,
               "column": 4
             },
             "end": {
-              "line": 119,
+              "line": 134,
               "column": 5
             }
           },
@@ -3869,11 +3869,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 126,
+              "line": 141,
               "column": 4
             },
             "end": {
-              "line": 129,
+              "line": 144,
               "column": 5
             }
           },
@@ -3890,11 +3890,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 133,
+              "line": 148,
               "column": 4
             },
             "end": {
-              "line": 136,
+              "line": 151,
               "column": 5
             }
           },
@@ -3912,11 +3912,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 140,
+              "line": 155,
               "column": 4
             },
             "end": {
-              "line": 143,
+              "line": 158,
               "column": 5
             }
           },
@@ -3934,11 +3934,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 150,
+              "line": 165,
               "column": 4
             },
             "end": {
-              "line": 153,
+              "line": 168,
               "column": 5
             }
           },
@@ -3956,11 +3956,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 163,
+              "line": 178,
               "column": 4
             },
             "end": {
-              "line": 166,
+              "line": 181,
               "column": 5
             }
           },
@@ -3978,11 +3978,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 175,
+              "line": 190,
               "column": 4
             },
             "end": {
-              "line": 178,
+              "line": 193,
               "column": 5
             }
           },
@@ -4000,11 +4000,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 183,
+              "line": 198,
               "column": 4
             },
             "end": {
-              "line": 186,
+              "line": 201,
               "column": 5
             }
           },
@@ -4022,11 +4022,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 191,
+              "line": 206,
               "column": 4
             },
             "end": {
-              "line": 194,
+              "line": 209,
               "column": 5
             }
           },
@@ -4044,11 +4044,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 199,
+              "line": 214,
               "column": 4
             },
             "end": {
-              "line": 202,
+              "line": 217,
               "column": 5
             }
           },
@@ -4066,11 +4066,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 206,
+              "line": 221,
               "column": 4
             },
             "end": {
-              "line": 209,
+              "line": 224,
               "column": 5
             }
           },
@@ -4088,11 +4088,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 213,
+              "line": 228,
               "column": 4
             },
             "end": {
-              "line": 217,
+              "line": 232,
               "column": 5
             }
           },
@@ -4160,11 +4160,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 223,
+              "line": 238,
               "column": 2
             },
             "end": {
-              "line": 232,
+              "line": 247,
               "column": 3
             }
           },
@@ -4184,11 +4184,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 237,
+              "line": 252,
               "column": 2
             },
             "end": {
-              "line": 416,
+              "line": 431,
               "column": 3
             }
           },
@@ -4204,11 +4204,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 421,
+              "line": 436,
               "column": 2
             },
             "end": {
-              "line": 444,
+              "line": 459,
               "column": 3
             }
           },
@@ -4221,11 +4221,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 449,
+              "line": 464,
               "column": 2
             },
             "end": {
-              "line": 478,
+              "line": 493,
               "column": 3
             }
           },
@@ -4251,7 +4251,7 @@
           "column": 8
         },
         "end": {
-          "line": 479,
+          "line": 494,
           "column": 1
         }
       },
@@ -4299,39 +4299,7 @@
           "description": "The chart title used for accessibility.",
           "sourceRange": {
             "start": {
-              "line": 35,
-              "column": 4
-            },
-            "end": {
-              "line": 38,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "chart-desc",
-          "description": "The chart description used for accessibility.",
-          "sourceRange": {
-            "start": {
-              "line": 42,
-              "column": 4
-            },
-            "end": {
-              "line": 45,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "scale",
-          "description": "Scale of the chart.",
-          "sourceRange": {
-            "start": {
-              "line": 49,
+              "line": 50,
               "column": 4
             },
             "end": {
@@ -4343,15 +4311,47 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "data",
-          "description": "Data as an array.",
+          "name": "chart-desc",
+          "description": "The chart description used for accessibility.",
           "sourceRange": {
             "start": {
               "line": 57,
               "column": 4
             },
             "end": {
-              "line": 61,
+              "line": 60,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "scale",
+          "description": "Scale of the chart.",
+          "sourceRange": {
+            "start": {
+              "line": 64,
+              "column": 4
+            },
+            "end": {
+              "line": 68,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "data",
+          "description": "Data as an array.",
+          "sourceRange": {
+            "start": {
+              "line": 72,
+              "column": 4
+            },
+            "end": {
+              "line": 76,
               "column": 5
             }
           },
@@ -4363,11 +4363,11 @@
           "description": "Options as an array.",
           "sourceRange": {
             "start": {
-              "line": 65,
+              "line": 80,
               "column": 4
             },
             "end": {
-              "line": 69,
+              "line": 84,
               "column": 5
             }
           },
@@ -4379,11 +4379,11 @@
           "description": "Fixed width for the chart as a string (i.e. '100px' or '50%').",
           "sourceRange": {
             "start": {
-              "line": 73,
+              "line": 88,
               "column": 4
             },
             "end": {
-              "line": 76,
+              "line": 91,
               "column": 5
             }
           },
@@ -4395,11 +4395,11 @@
           "description": "Fixed height for the chart as a string (i.e. '100px' or '50%').",
           "sourceRange": {
             "start": {
-              "line": 80,
+              "line": 95,
               "column": 4
             },
             "end": {
-              "line": 83,
+              "line": 98,
               "column": 5
             }
           },
@@ -4411,11 +4411,11 @@
           "description": "Padding-top for chart.",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 102,
               "column": 4
             },
             "end": {
-              "line": 90,
+              "line": 105,
               "column": 5
             }
           },
@@ -4427,11 +4427,11 @@
           "description": "Padding-right for chart.",
           "sourceRange": {
             "start": {
-              "line": 94,
+              "line": 109,
               "column": 4
             },
             "end": {
-              "line": 97,
+              "line": 112,
               "column": 5
             }
           },
@@ -4441,38 +4441,6 @@
         {
           "name": "padding-bottom",
           "description": "Padding-bottom for chart.",
-          "sourceRange": {
-            "start": {
-              "line": 101,
-              "column": 4
-            },
-            "end": {
-              "line": 104,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "number | null | undefined"
-        },
-        {
-          "name": "padding-left",
-          "description": "Padding-left for chart.",
-          "sourceRange": {
-            "start": {
-              "line": 108,
-              "column": 4
-            },
-            "end": {
-              "line": 111,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "number | null | undefined"
-        },
-        {
-          "name": "start-angle",
-          "description": "Start angle of the pie chart in degrees where 0 points north.\nA higher value offsets the start angle clockwise..",
           "sourceRange": {
             "start": {
               "line": 116,
@@ -4487,15 +4455,47 @@
           "type": "number | null | undefined"
         },
         {
+          "name": "padding-left",
+          "description": "Padding-left for chart.",
+          "sourceRange": {
+            "start": {
+              "line": 123,
+              "column": 4
+            },
+            "end": {
+              "line": 126,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        },
+        {
+          "name": "start-angle",
+          "description": "Start angle of the pie chart in degrees where 0 points north.\nA higher value offsets the start angle clockwise..",
+          "sourceRange": {
+            "start": {
+              "line": 131,
+              "column": 4
+            },
+            "end": {
+              "line": 134,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        },
+        {
           "name": "total",
           "description": "Optional total you can specify. By specifying a total value,\nthe sum of the values in the series must be this total in order\nto draw a full pie. You can use this parameter to draw only parts\nof a pie or gauge charts.",
           "sourceRange": {
             "start": {
-              "line": 126,
+              "line": 141,
               "column": 4
             },
             "end": {
-              "line": 129,
+              "line": 144,
               "column": 5
             }
           },
@@ -4507,11 +4507,11 @@
           "description": "Displays chart as donut instead of pie.",
           "sourceRange": {
             "start": {
-              "line": 133,
+              "line": 148,
               "column": 4
             },
             "end": {
-              "line": 136,
+              "line": 151,
               "column": 5
             }
           },
@@ -4523,11 +4523,11 @@
           "description": "If a label should be shown.",
           "sourceRange": {
             "start": {
-              "line": 140,
+              "line": 155,
               "column": 4
             },
             "end": {
-              "line": 143,
+              "line": 158,
               "column": 5
             }
           },
@@ -4539,11 +4539,11 @@
           "description": "Label position offset from the standard position\nwhich is half distance of the radius.\nThis value can be either positive or negative.\nPositive values will position the label away from the center.",
           "sourceRange": {
             "start": {
-              "line": 150,
+              "line": 165,
               "column": 4
             },
             "end": {
-              "line": 153,
+              "line": 168,
               "column": 5
             }
           },
@@ -4555,11 +4555,11 @@
           "description": "This option can be set to 'inside', 'outside' or 'center'.\nPositioned with 'inside' the labels will be placed on half the distance\nof the radius to the border of the Pie by respecting the 'labelOffset'.\nThe 'outside' option will place the labels at the border of the pie\nand 'center' will place the labels in the absolute center point\nof the chart. The 'center' option only makes sense\nin conjunction with the 'labelOffset' option.",
           "sourceRange": {
             "start": {
-              "line": 163,
+              "line": 178,
               "column": 4
             },
             "end": {
-              "line": 166,
+              "line": 181,
               "column": 5
             }
           },
@@ -4571,11 +4571,11 @@
           "description": "Label direction can be 'neutral', 'explode' or 'implode'.\nThe labels anchor will be positioned based on those settings\nas well as the fact if the labels are on the right or\nleft side of the center of the chart.\nUsually explode is useful when labels are positioned\nfar away from the center.",
           "sourceRange": {
             "start": {
-              "line": 175,
+              "line": 190,
               "column": 4
             },
             "end": {
-              "line": 178,
+              "line": 193,
               "column": 5
             }
           },
@@ -4587,11 +4587,11 @@
           "description": "Reverse data including labels, the series order as well as\nthe whole series data arrays.",
           "sourceRange": {
             "start": {
-              "line": 183,
+              "line": 198,
               "column": 4
             },
             "end": {
-              "line": 186,
+              "line": 201,
               "column": 5
             }
           },
@@ -4603,11 +4603,11 @@
           "description": "Empty values will be ignored to avoid drawing\nunncessary slices and labels",
           "sourceRange": {
             "start": {
-              "line": 191,
+              "line": 206,
               "column": 4
             },
             "end": {
-              "line": 194,
+              "line": 209,
               "column": 5
             }
           },
@@ -4619,11 +4619,11 @@
           "description": "The responsive options.\n(See https://gionkunz.github.io/chartist-js/api-documentation.html.)",
           "sourceRange": {
             "start": {
-              "line": 199,
+              "line": 214,
               "column": 4
             },
             "end": {
-              "line": 202,
+              "line": 217,
               "column": 5
             }
           },
@@ -4635,11 +4635,11 @@
           "description": "Location of the CSV file.",
           "sourceRange": {
             "start": {
-              "line": 206,
+              "line": 221,
               "column": 4
             },
             "end": {
-              "line": 209,
+              "line": 224,
               "column": 5
             }
           },
@@ -4651,11 +4651,11 @@
           "description": "Raw data pulled in from the csv file.",
           "sourceRange": {
             "start": {
-              "line": 213,
+              "line": 228,
               "column": 4
             },
             "end": {
-              "line": 217,
+              "line": 232,
               "column": 5
             }
           },
