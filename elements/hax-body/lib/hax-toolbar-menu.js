@@ -50,7 +50,7 @@ Polymer({
         border-radius: 0;
       }
 
-      paper-icon-button ::shadow iron-icon {
+      paper-icon-button {
         padding: 8px;
         margin: 0;
         box-sizing: border-box;
@@ -72,12 +72,24 @@ Polymer({
       }
     </style>
     <paper-menu-button>
-      <hax-toolbar-item corner="[[corner]]" id="button" slot="dropdown-trigger" icon="[[icon]]" hidden\$="[[!icon]]" class\$="[[iconClass]]" tooltip="[[tooltip]]"></hax-toolbar-item>
-      <paper-listbox id="listbox" slot="dropdown-content" selected="{{selected}}">
+      <hax-toolbar-item
+        corner="[[corner]]"
+        id="button"
+        slot="dropdown-trigger"
+        icon="[[icon]]"
+        hidden\$="[[!icon]]"
+        class\$="[[iconClass]]"
+        tooltip="[[tooltip]]"
+      ></hax-toolbar-item>
+      <paper-listbox
+        id="listbox"
+        slot="dropdown-content"
+        selected="{{selected}}"
+      >
         <slot></slot>
       </paper-listbox>
     </paper-menu-button>
-`,
+  `,
 
   is: "hax-toolbar-menu",
 

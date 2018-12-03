@@ -1,3 +1,13 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/paper-card/paper-card.js";
+import "@polymer/marked-element/marked-element.js";
+import "@polymer/image-inspector/image-inspector.js";
+import "@polymer/iron-image/iron-image.js";
+import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
+import "@lrnwebcomponents/word-count/word-count.js";
+import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
+import "@lrnwebcomponents/lrndesign-contentblock/lrndesign-contentblock.js";
+import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
 Polymer({
   _template: html`
     <style>
@@ -220,9 +230,7 @@ Polymer({
       </paper-card>
     </div>
   `,
-
   is: "lrnapp-studio-submission-display",
-
   properties: {
     /**
      * Object that has all the details of a submission that
@@ -233,7 +241,6 @@ Polymer({
       notify: true
     }
   },
-
   date: function(time) {
     if (time) {
       var parts = time.split("-");
@@ -243,7 +250,6 @@ Polymer({
       return parts[1] + "/" + month[0] + " - " + times[0];
     }
   },
-
   /**
    * Simple way to convert from object to array.
    */
@@ -255,7 +261,6 @@ Polymer({
     }
     return [];
   },
-
   /**
    * See if this is a GIF, if it is then report back so we
    * know which player to display.

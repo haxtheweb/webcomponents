@@ -1,5 +1,12 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@polymer/iron-ajax/iron-ajax.js";
+import "@polymer/iron-list/iron-list.js";
+import "@polymer/paper-button/paper-button.js";
+import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
+import "@lrnwebcomponents/lrndesign-gallerycard/lrndesign-gallerycard.js";
 Polymer({
-  _template: `
+  _template: html`
     <style include="paper-item-styles">
       :host {
         display: block;
@@ -8,7 +15,13 @@ Polymer({
         width: 100%;
       }
     </style>
-    <iron-ajax auto="" url="{{sourcePath}}" handle-as="json" last-response="{{response}}" on-response="handleResponse"></iron-ajax>
+    <iron-ajax
+      auto=""
+      url="{{sourcePath}}"
+      handle-as="json"
+      last-response="{{response}}"
+      on-response="handleResponse"
+    ></iron-ajax>
     <div id="loading">
       <h3>Loading..</h3>
       <elmsln-loading color="grey-text" size="large"></elmsln-loading>
@@ -16,12 +29,20 @@ Polymer({
     <iron-list items="[[_toArray(response.data)]]" as="item">
       <template>
         <paper-button on-tap="_loadSubmissionUrl">
-          <lrndesign-gallerycard data-submission-id\$="[[item.id]]" title="[[item.attributes.title]]" author="[[item.relationships.author.data]]" comments="[[item.meta.comment_count]]" image="[[item.display.image]]" icon="[[item.display.icon]]" class="ferpa-protect">
+          <lrndesign-gallerycard
+            data-submission-id\$="[[item.id]]"
+            title="[[item.attributes.title]]"
+            author="[[item.relationships.author.data]]"
+            comments="[[item.meta.comment_count]]"
+            image="[[item.display.image]]"
+            icon="[[item.display.icon]]"
+            class="ferpa-protect"
+          >
           </lrndesign-gallerycard>
         </paper-button>
       </template>
     </iron-list>
-`,
+  `,
 
   is: "lrnapp-block-need-feedback",
 

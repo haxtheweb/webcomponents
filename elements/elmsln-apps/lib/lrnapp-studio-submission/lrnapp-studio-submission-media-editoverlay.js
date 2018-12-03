@@ -1,5 +1,8 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-
+import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@polymer/paper-ripple/paper-ripple.js";
+import "@polymer/paper-dialog/paper-dialog.js";
+import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 Polymer({
   _template: html`
     <style>
@@ -89,7 +92,7 @@ Polymer({
   },
 
   _embedClicked: function(e) {
-    document.body.appendChild(this.shadowRoot.querySelector("#dialog"));
+    // @todo switch to singleton
     this.shadowRoot.querySelector("#dialog").open();
   },
 

@@ -1,5 +1,12 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@polymer/paper-button/paper-button.js";
+import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
+import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import "./lrnapp-studio-submission-display.js";
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles"></style>
     <style>
       :host {
@@ -9,7 +16,7 @@ Polymer({
       #loading {
         width: 100%;
         z-index: 1000;
-        opacity: .8;
+        opacity: 0.8;
         text-align: center;
         align-content: center;
         justify-content: center;
@@ -40,29 +47,57 @@ Polymer({
       }
     </style>
     <template is="dom-if" if="[[!showSubmissions]]">
-      <h1 class="empty-title black-text">Please select an Assignment in order to view all submissions</h1>
+      <h1 class="empty-title black-text">
+        Please select an Assignment in order to view all submissions
+      </h1>
     </template>
     <template is="dom-if" if="[[showSubmissions]]">
-      <h1 class="assignment-title black-text">[[activeAssignment.attributes.title]]</h1>
+      <h1 class="assignment-title black-text">
+        [[activeAssignment.attributes.title]]
+      </h1>
       <div class="submission-list">
         <template is="dom-repeat" items="[[submissions]]" as="submission">
-        <lrnsys-button on-tap="_scrollToTarget" raised="" class="submission-list-item" button-class="submission-list-item" hover-class="blue white-text" data-submission-id\$="[[submission.id]]">
-          <span slot="button">
-            <lrndesign-avatar src="[[submission.relationships.author.data.avatar]]" label="[[submission.relationships.author.data.name]]" style="display:inline-block;" data-submission-id\$="[[submission.id]]"></lrndesign-avatar>
-          </span>
-          <span slot="label">[[submission.relationships.author.data.display_name]]</span>
-        </lrnsys-button>
+          <lrnsys-button
+            on-tap="_scrollToTarget"
+            raised=""
+            class="submission-list-item"
+            button-class="submission-list-item"
+            hover-class="blue white-text"
+            data-submission-id\$="[[submission.id]]"
+          >
+            <span slot="button">
+              <lrndesign-avatar
+                src="[[submission.relationships.author.data.avatar]]"
+                label="[[submission.relationships.author.data.name]]"
+                style="display:inline-block;"
+                data-submission-id\$="[[submission.id]]"
+              ></lrndesign-avatar>
+            </span>
+            <span slot="label"
+              >[[submission.relationships.author.data.display_name]]</span
+            >
+          </lrnsys-button>
         </template>
       </div>
       <template is="dom-repeat" items="[[submissions]]" as="submission">
-        <lrnapp-studio-submission-display id\$="submission-[[submission.id]]" submission="[[submission]]" class="ferpa-protect"></lrnapp-studio-submission-display>
-        <a tabindex="-1"><paper-button class="submission-title ferpa-protect" on-tap="_loadSubmissionUrl" data-submission-id\$="[[submission.id]]">Tap to comment on[[submission.attributes.title]] by [[submission.relationships.author.data.display_name]]</paper-button></a>
+        <lrnapp-studio-submission-display
+          id\$="submission-[[submission.id]]"
+          submission="[[submission]]"
+          class="ferpa-protect"
+        ></lrnapp-studio-submission-display>
+        <a tabindex="-1"
+          ><paper-button
+            class="submission-title ferpa-protect"
+            on-tap="_loadSubmissionUrl"
+            data-submission-id\$="[[submission.id]]"
+            >Tap to comment on[[submission.attributes.title]] by
+            [[submission.relationships.author.data.display_name]]</paper-button
+          ></a
+        >
       </template>
     </template>
-`,
-
+  `,
   is: "lrnapp-open-studio-assignments",
-
   properties: {
     /**
      * The assignments that exist so we can make other calls for data
@@ -116,7 +151,6 @@ Polymer({
       notify: true
     }
   },
-
   /**
    * Handle tap on paper-button above to redirect to the correct submission url.
    */
@@ -130,7 +164,6 @@ Polymer({
     window.location.href =
       this.basePath + "lrnapp-studio-submission/submissions/" + active;
   },
-
   _activeAssignmentCompute: function(activeAssignmentId, assignments) {
     let activeAssignment = null;
     if (assignments) {
@@ -140,14 +173,12 @@ Polymer({
     }
     return activeAssignment;
   },
-
   _showSubmissions: function(activeAssignmentId) {
     if (activeAssignmentId) {
       return true;
     }
     return false;
   },
-
   _scrollToTarget: function(e) {
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
@@ -157,14 +188,12 @@ Polymer({
       .querySelector("#submission-" + active)
       .scrollIntoView({ block: "start", behavior: "smooth" });
   },
-
   /**
    * Handle response for the whole assignments object.
    */
   _handleResponse: function(event) {
     this.$.loading.hidden = true;
   },
-
   /**
    * Simple way to convert from object to array.
    */

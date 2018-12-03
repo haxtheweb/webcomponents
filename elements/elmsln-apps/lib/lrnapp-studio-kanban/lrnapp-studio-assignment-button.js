@@ -1,3 +1,7 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/iron-ajax/iron-ajax.js";
+import "@polymer/paper-toast/paper-toast.js";
+import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 /*
 `lrnapp-studio-assignment-button`
 Allows users to either start a assignment or link to a assignment.
@@ -7,19 +11,33 @@ Usage:
 <lrnapp-studio-assignment-button assignment-id="[[id]]" assignment-id="{{assignmentId}}" end-point="[[endPoint]]" csrf-token=[[csrfToken]]></lrnapp-studio-assignment-button>
 */
 Polymer({
-  _template: `
+  _template: html`
     <style>
-       :host {
+      :host {
         display: block;
       }
     </style>
-
-    <lrnsys-button on-tap="_createAssignment" icon-class="[[iconClass]]" alt="[[alt]]" class\$="[[classes]]" button-class\$="[[classes]]" hover-class="[[hoverClass]]" icon="[[icon]]"></lrnsys-button>
-    <iron-ajax id="ajaxCreateStub" url="[[createAssignmentUrl]]" method="POST" body="[[projectId]]" handle-as="json" on-response="_ajaxCreateStubHandler"></iron-ajax>
+    <lrnsys-button
+      on-tap="_createAssignment"
+      icon-class="[[iconClass]]"
+      alt="[[alt]]"
+      class\$="[[classes]]"
+      button-class\$="[[classes]]"
+      hover-class="[[hoverClass]]"
+      icon="[[icon]]"
+    ></lrnsys-button>
+    <iron-ajax
+      id="ajaxCreateStub"
+      url="[[createAssignmentUrl]]"
+      method="POST"
+      body="[[projectId]]"
+      handle-as="json"
+      on-response="_ajaxCreateStubHandler"
+    ></iron-ajax>
     <template is="dom-if" if="[[displayErrors]]">
       <paper-toast id="toast"></paper-toast>
     </template>
-`,
+  `,
 
   is: "lrnapp-studio-assignment-button",
 
@@ -64,17 +82,14 @@ Polymer({
     endPoint: String,
     csrfToken: String
   },
-
   ready: function(e) {
     // @todo need to load a assignment if one exists ahead of time
     this.createAssignmentUrl =
       this.endPoint + "/api/assignments/create-stub?token=" + this.csrfToken;
   },
-
   _createAssignment: function() {
     this.shadowRoot.querySelector("#ajaxCreateStub").generateRequest();
   },
-
   _ajaxCreateStubHandler: function(e) {
     var status = e.detail.response.status;
     var response = e.detail.response;

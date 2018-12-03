@@ -45,355 +45,355 @@ A LRN element
 */
 Polymer({
   _template: html`
-    <style include="materializecss-styles">
-      :host {
-        display: block;
-        font-size: 1em;
-        box-sizing: content-box;
-      }
-      #toolbar {
-        color: gray;
-        background-color: white;
-        padding: 0 0.5em;
-        margin: 0;
-        height: auto;
-        box-sizing: content-box;
-        transition: all 0.4s ease;
-      }
-      paper-button {
-        padding: 0;
-        margin: 0;
-        min-width: 1em;
-      }
-      app-drawer {
-        padding: 0;
-        top: 0;
-        bottom: 0;
-        z-index: 1;
-        position: absolute;
-        box-sizing: content-box;
-        --app-drawer-content-container: {
-          background-color: #fafafa;
-          padding: 0;
-          border-right: 1px solid #c8c8c8;
-          overflow-y: scroll;
-          width: 300px !important;
-          box-shadow: 0 76px 8px 0 rgba(0, 0, 0, 0.4);
-          height: 100vh;
-          top: 0;
-          position: sticky;
+    <custom-style>
+      <style is="custom-style" include="materializecss-styles">
+        :host {
+          display: block;
+          font-size: 16px;
+          box-sizing: content-box;
         }
-      }
-      lrndesign-stepper-button {
-        --lrndesign-stepper-btn-active: #f6f7f7;
-      }
-      lrndesign-stepper-button ::shadow paper-button {
-        margin: 0;
-        height: 3em;
-      }
-      lrndesign-stepper-button
-        ::shadow
-        .title-container.lrndesign-stepper-button {
-        padding: 0;
-        width: 100%;
-        right: unset;
-      }
-      lrndesign-stepper-button ::shadow .node-title.lrndesign-stepper-button {
-        font-size: 0.9em;
-        line-height: 1.5em;
-      }
-
-      .loading {
-        width: 100%;
-        z-index: 1000;
-        opacity: 0.9;
-        text-align: center;
-        align-content: space-around;
-        justify-content: center;
-        position: absolute;
-        background-color: white;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        margin: 0 auto;
-        visibility: visible;
-        transition: visibility 1s, opacity 1s ease;
-      }
-      .loading elmsln-loading {
-        margin: 0 5em;
-        display: inline-flex;
-      }
-      #bodyloading {
-        height: 100%;
-        display: flex;
-        justify-content: center;
-      }
-      #bodyloading .loading,
-      #bodyloading elmsln-loading {
-        display: block;
-        height: 5em;
-      }
-      .outline-title {
-        margin-left: 0.5em;
-        max-width: 50%;
-      }
-      .content-nav-buttons {
-        top: 60%;
-        position: fixed;
-        opacity: 0.8;
-        padding: 0 0.25em;
-        height: 40%;
-        padding-top: 15%;
-        margin-top: -15%;
-      }
-      .content-nav-buttons:hover {
-        opacity: 1;
-      }
-      .prev {
-        left: 0;
-        order: 1;
-      }
-      .next {
-        right: 0;
-        transition: right 0.2s ease;
-        order: 2;
-      }
-      app-header {
-        width: 100%;
-        left: 0 !important;
-        z-index: 2 !important;
-        position: sticky !important;
-      }
-      app-header-layout {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-      }
-      .content-body {
-        position: relative;
-        padding: 0;
-        margin: -3em 4em 5em 4em;
-        font-size: 1.1em;
-        transition: margin 0.4s ease, width 0.4s ease;
-      }
-
-      .content-nav-buttons paper-icon-button {
-        width: 4em;
-        height: 4em;
-        opacity: 0.4;
-        display: block;
-        visibility: visible;
-        transition: opacity 0.4s linear, visibility 1s linear, height 0.4s ease,
-          width 0.4s ease;
-      }
-      .content-nav-buttons paper-icon-button:hover {
-        opacity: 1;
-      }
-      paper-tooltip {
-        --paper-tooltip-opacity: 0.96;
-      }
-      :host([drawer-opened]) .content-nav-buttons paper-icon-button {
-        width: 2.5em;
-        height: 2.5em;
-      }
-      :host([edit-mode]) .content-nav-buttons {
-        opacity: 0;
-        pointer-events: none;
-        visibility: hidden;
-      }
-      .content-title {
-        font-size: 1.4em;
-        margin: 0;
-        padding: 0.25em 0;
-        background-color: white;
-        top: 70px;
-        position: sticky;
-      }
-      .content-current {
-        min-height: 100vh;
-      }
-      .content-next {
-        background-color: grey;
-        opacity: 0.8;
-      }
-      #header {
-        position: sticky;
-        top: 0;
-        left: 0;
-        width: 100%;
-        color: black;
-        background-color: white;
-        z-index: 2;
-        padding: 0;
-        margin: 0;
-        opacity: 1;
-        box-sizing: content-box;
-        transition: all 0.4s ease;
-      }
-      app-drawer-layout {
-        font-family: sans-serif;
-      }
-      :host {
-        --app-drawer-width: 300px;
-      }
-      :host([full-width]) {
-        --app-drawer-width: 0px;
-      }
-      :host([drawer-opened]) .prev,
-      :host([edit-mode]) .prev {
-        left: 17em;
-      }
-      .progress-container {
-        width: 90%;
-        padding: 0;
-        margin: 0 0 0 1em;
-        overflow: visible;
-      }
-
-      [main-title] {
-        font-weight: lighter;
-        padding: 0.6em 0 0 0;
-        margin: 0;
-        height: 3em;
-        overflow-y: scroll;
-      }
-      [hidden] {
-        visibility: hidden !important;
-        opacity: 0 !important;
-        display: block !important;
-      }
-      paper-search-bar[hidden] {
-        display: none !important;
-      }
-      lrnsys-progress {
-        margin-top: 0.5em;
-        padding: 0.2em 0 0 0;
-        box-sizing: content-box;
-      }
-      lrnsys-progress lrnsys-progress-circle {
-        list-style-type: none;
-        box-sizing: content-box;
-      }
-
-      #bookdrawercontent {
-        overflow: scroll;
-        visibility: visible;
-        display: block;
-        opacity: 1;
-        transition: visibility 1s linear, opacity 1s linear;
-      }
-      @media (max-width: 1200px) {
-        :host .content-body {
-          font-size: 0.94em;
-        }
-      }
-      @media (max-width: 960px) {
-        :host .content-body {
-          font-size: 0.92em;
-        }
-      }
-      @media (max-width: 820px) {
-        :host .content-body {
-          font-size: 0.9em;
-        }
-      }
-      @media (max-width: 700px) {
-        :host .content-body {
-          font-size: 0.9em;
-        }
-      }
-      @media (max-width: 639px) {
-        app-drawer-layout {
-          top: 0;
-        }
-        [main-title] {
-          font-size: 0.8em;
-        }
-        .content-title {
-          font-size: 1.1em;
-        }
-        .outline-title {
-          position: absolute !important;
-          clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-          clip: rect(1px, 1px, 1px, 1px);
-          overflow: hidden;
-          height: 1px;
-        }
-        :host .content-body {
-          margin: 0 0.5em;
-          font-size: 0.9em;
-          width: 85%;
-        }
-        .content-nav-buttons {
-          position: relative;
-          display: flex;
-          top: unset;
-          padding: 0;
-          opacity: 0.8;
-          height: unset;
+        #toolbar {
+          color: gray;
+          background-color: white;
+          padding: 0 8px;
           margin: 0;
+          height: auto;
+          box-sizing: content-box;
+          transition: all 0.4s ease;
         }
-        .content-nav {
+        paper-button {
+          padding: 0;
+          margin: 0;
+          min-width: 16px;
+        }
+        app-drawer {
+          padding: 0;
+          top: 0;
+          bottom: 0;
+          z-index: 1;
+          position: absolute;
+          box-sizing: content-box;
+          --app-drawer-content-container: {
+            background-color: #fafafa;
+            padding: 0;
+            border-right: 1px solid #c8c8c8;
+            overflow-y: scroll;
+            width: 300px !important;
+            box-shadow: 0 76px 8px 0 rgba(0, 0, 0, 0.4);
+            height: 100vh;
+            top: 0;
+            position: sticky;
+          }
+        }
+        lrndesign-stepper-button {
+          --lrndesign-stepper-btn-active: #f6f7f7;
+        }
+        lrndesign-stepper-button ::slotted(paper-button) {
+          margin: 0;
+          height: 48px;
+        }
+        lrndesign-stepper-button ::slotted(.title-container) {
+          padding: 0;
           width: 100%;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          vertical-align: middle;
-        }
-        .next {
           right: unset;
         }
-      }
-      @media (max-width: 500px) {
-        [main-title] {
-          font-size: 0.7em;
+        lrndesign-stepper-button ::slotted(.node-title) {
+          font-size: 15px;
+          line-height: 24px;
         }
-      }
-      /**
+
+        .loading {
+          width: 100%;
+          z-index: 1000;
+          opacity: 0.9;
+          text-align: center;
+          align-content: space-around;
+          justify-content: center;
+          position: absolute;
+          background-color: white;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          margin: 0 auto;
+          visibility: visible;
+          transition: visibility 1s, opacity 1s ease;
+        }
+        .loading elmsln-loading {
+          margin: 0 5em;
+          display: inline-flex;
+        }
+        #bodyloading {
+          height: 100%;
+          display: flex;
+          justify-content: center;
+        }
+        #bodyloading .loading,
+        #bodyloading elmsln-loading {
+          display: block;
+          height: 5em;
+        }
+        .outline-title {
+          margin-left: 0.5em;
+          max-width: 50%;
+        }
+        .content-nav-buttons {
+          top: 60%;
+          position: fixed;
+          opacity: 0.8;
+          padding: 0 0.25em;
+          height: 40%;
+          padding-top: 15%;
+          margin-top: -15%;
+        }
+        .content-nav-buttons:hover {
+          opacity: 1;
+        }
+        .prev {
+          left: 0;
+          order: 1;
+        }
+        .next {
+          right: 0;
+          transition: right 0.2s ease;
+          order: 2;
+        }
+        app-header {
+          width: 100%;
+          left: 0 !important;
+          z-index: 2 !important;
+          position: sticky !important;
+        }
+        app-header-layout {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+        }
+        .content-body {
+          position: relative;
+          padding: 0;
+          margin: -3em 4em 5em 4em;
+          font-size: 1.1em;
+          transition: margin 0.4s ease, width 0.4s ease;
+        }
+
+        .content-nav-buttons paper-icon-button {
+          width: 4em;
+          height: 4em;
+          opacity: 0.4;
+          display: block;
+          visibility: visible;
+          transition: opacity 0.4s linear, visibility 1s linear,
+            height 0.4s ease, width 0.4s ease;
+        }
+        .content-nav-buttons paper-icon-button:hover {
+          opacity: 1;
+        }
+        paper-tooltip {
+          --paper-tooltip-opacity: 0.96;
+        }
+        :host([drawer-opened]) .content-nav-buttons paper-icon-button {
+          width: 2.5em;
+          height: 2.5em;
+        }
+        :host([edit-mode]) .content-nav-buttons {
+          opacity: 0;
+          pointer-events: none;
+          visibility: hidden;
+        }
+        .content-title {
+          font-size: 1.4em;
+          margin: 0;
+          padding: 0.25em 0;
+          background-color: white;
+          top: 70px;
+          position: sticky;
+        }
+        .content-current {
+          min-height: 100vh;
+        }
+        .content-next {
+          background-color: grey;
+          opacity: 0.8;
+        }
+        #header {
+          position: sticky;
+          top: 0;
+          left: 0;
+          width: 100%;
+          color: black;
+          background-color: white;
+          z-index: 2;
+          padding: 0;
+          margin: 0;
+          opacity: 1;
+          box-sizing: content-box;
+          transition: all 0.4s ease;
+        }
+        app-drawer-layout {
+          font-family: sans-serif;
+        }
+        :host {
+          --app-drawer-width: 300px;
+        }
+        :host([full-width]) {
+          --app-drawer-width: 0px;
+        }
+        :host([drawer-opened]) .prev,
+        :host([edit-mode]) .prev {
+          left: 17em;
+        }
+        .progress-container {
+          width: 90%;
+          padding: 0;
+          margin: 0 0 0 1em;
+          overflow: visible;
+        }
+
+        [main-title] {
+          font-weight: lighter;
+          padding: 0.6em 0 0 0;
+          margin: 0;
+          height: 3em;
+          overflow-y: scroll;
+        }
+        [hidden] {
+          visibility: hidden !important;
+          opacity: 0 !important;
+          display: block !important;
+        }
+        paper-search-bar[hidden] {
+          display: none !important;
+        }
+        lrnsys-progress {
+          margin-top: 0.5em;
+          padding: 0.2em 0 0 0;
+          box-sizing: content-box;
+        }
+        lrnsys-progress lrnsys-progress-circle {
+          list-style-type: none;
+          box-sizing: content-box;
+        }
+
+        #bookdrawercontent {
+          overflow: scroll;
+          visibility: visible;
+          display: block;
+          opacity: 1;
+          transition: visibility 1s linear, opacity 1s linear;
+        }
+        @media (max-width: 1200px) {
+          :host .content-body {
+            font-size: 0.94em;
+          }
+        }
+        @media (max-width: 960px) {
+          :host .content-body {
+            font-size: 0.92em;
+          }
+        }
+        @media (max-width: 820px) {
+          :host .content-body {
+            font-size: 0.9em;
+          }
+        }
+        @media (max-width: 700px) {
+          :host .content-body {
+            font-size: 0.9em;
+          }
+        }
+        @media (max-width: 639px) {
+          app-drawer-layout {
+            top: 0;
+          }
+          [main-title] {
+            font-size: 0.8em;
+          }
+          .content-title {
+            font-size: 1.1em;
+          }
+          .outline-title {
+            position: absolute !important;
+            clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+            clip: rect(1px, 1px, 1px, 1px);
+            overflow: hidden;
+            height: 1px;
+          }
+          :host .content-body {
+            margin: 0 0.5em;
+            font-size: 0.9em;
+            width: 85%;
+          }
+          .content-nav-buttons {
+            position: relative;
+            display: flex;
+            top: unset;
+            padding: 0;
+            opacity: 0.8;
+            height: unset;
+            margin: 0;
+          }
+          .content-nav {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            vertical-align: middle;
+          }
+          .next {
+            right: unset;
+          }
+        }
+        @media (max-width: 500px) {
+          [main-title] {
+            font-size: 0.7em;
+          }
+        }
+        /**
        * Authoring section
        */
-      #editbutton {
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        margin: 2em;
-        padding: 0.5em;
-        width: 1.6em;
-        height: 1.6em;
-        visibility: visible;
-        opacity: 1;
-        transition: all 0.4s ease;
-      }
-      :host([edit-mode]) #editbutton {
-        width: 100%;
-        z-index: 100;
-        right: 0;
-        bottom: 0;
-        border-radius: 0;
-        margin: 0;
-        padding: 1em;
-        background-color: var(--paper-blue-500) !important;
-      }
-      :host([edit-mode]) #header {
-        background-color: var(--paper-grey-500);
-      }
-      :host([edit-mode]) #toolbar {
-        opacity: 0.5;
-      }
-      .your-progress-button {
-        padding-right: 1em;
-      }
-      #mapmenu {
-        padding: 1em 0;
-        overflow-x: hidden;
-      }
-      .course-title-drawer {
-        font-size: 1.2em;
-      }
-      hax-autoloader {
-        display: none;
-      }
-    </style>
+        #editbutton {
+          position: fixed;
+          bottom: 0;
+          right: 0;
+          margin: 2em;
+          padding: 0.5em;
+          width: 1.6em;
+          height: 1.6em;
+          visibility: visible;
+          opacity: 1;
+          transition: all 0.4s ease;
+        }
+        :host([edit-mode]) #editbutton {
+          width: 100%;
+          z-index: 100;
+          right: 0;
+          bottom: 0;
+          border-radius: 0;
+          margin: 0;
+          padding: 1em;
+          background-color: var(--paper-blue-500) !important;
+        }
+        :host([edit-mode]) #header {
+          background-color: var(--paper-grey-500);
+        }
+        :host([edit-mode]) #toolbar {
+          opacity: 0.5;
+        }
+        .your-progress-button {
+          padding-right: 1em;
+        }
+        #mapmenu {
+          padding: 1em 0;
+          overflow-x: hidden;
+        }
+        .course-title-drawer {
+          font-size: 1.2em;
+        }
+        hax-autoloader {
+          display: none;
+        }
+      </style>
+    </custom-style>
     <page-scroll-position value="{{scrollPosition}}"></page-scroll-position>
     <div id="anchor"></div>
     <iron-ajax
@@ -506,6 +506,7 @@ Polymer({
                 title="Content outline"
                 id="menubutton"
                 icon="menu"
+                on-tap="toggleBook"
               ></paper-icon-button>
             </div>
             <div spacer="" class="outline-title">[[outlineTitle]]</div>
@@ -628,16 +629,7 @@ Polymer({
   `,
 
   is: "lrnapp-book",
-
-  listeners: {
-    "menubutton.tap": "toggleBook",
-    "progress.node-percent-milestone": "testMilestone",
-    "route-change": "_routeChange",
-    "haxpanel.hax-content-insert": "_haxContentInsert"
-  },
-
   observers: ["_routeChanged(data, route, endPoint)"],
-
   properties: {
     /**
      * App store connection.
@@ -952,14 +944,40 @@ Polymer({
       this._resetScroll();
     }, 500);
   },
-
+  /**
+   * attached life cycle
+   */
+  attached: function() {
+    this.$.progress.addEventListener(
+      "node-percent-milestone",
+      this.testMilestone.bind(this)
+    );
+    this.$.haxpanel.addEventListener(
+      "hax-content-insert",
+      this._haxContentInsert.bind(this)
+    );
+    this.addEventListener("route-change", this._routeChange.bind(this));
+  },
+  /**
+   * detached life cycle
+   */
+  detached: function() {
+    this.$.progress.removeEventListener(
+      "node-percent-milestone",
+      this.testMilestone.bind(this)
+    );
+    this.$.haxpanel.removeEventListener(
+      "hax-content-insert",
+      this._haxContentInsert.bind(this)
+    );
+    this.removeEventListener("route-change", this._routeChange.bind(this));
+  },
   /**
    * When element is told to be full width it'll close things.
    */
   _fullWidthChanged: function(newValue, oldValue) {
     this.updateStyles();
   },
-
   /**
    * Handle click on dashboard to trigger loading data.
    */

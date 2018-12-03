@@ -1,13 +1,12 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 Polymer({
-  _template: `
+  _template: html`
     <style>
-       :host {
+      :host {
         display: block;
       }
     </style>
-
     <slot></slot>
-`,
-
+  `,
   is: "lrnapp-studio-submission-editbar-message"
 });

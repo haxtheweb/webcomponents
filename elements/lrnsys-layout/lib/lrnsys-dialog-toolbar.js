@@ -45,7 +45,7 @@ Polymer({
       .secondary-buttons {
         display: flex;
       }
-      .secondary-buttons ::shadow * {
+      .secondary-buttons ::slotted(*) {
         display: inline-flex;
       }
     </style>

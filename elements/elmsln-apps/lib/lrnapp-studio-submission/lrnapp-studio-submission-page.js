@@ -135,7 +135,7 @@ Polymer({
         display: block;
       }
 
-      elmsln-loading ::shadow > lrn-icon {
+      elmsln-loading {
         top: calc(50% - 5vmax);
         left: calc(50% - 5vmax);
         position: fixed;
@@ -157,10 +157,6 @@ Polymer({
 
       lrnapp-studio-submission-object {
         width: 100%;
-      }
-
-      .paper-button-0 {
-        text-transform: capitalize;
       }
 
       .assignment-body {

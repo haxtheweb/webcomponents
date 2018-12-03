@@ -1,3 +1,8 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/iron-ajax/iron-ajax.js";
+import "@polymer/paper-toast/paper-toast.js";
+import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
+
 /*
 `lrnapp-studio-project-button`
 Allows users to create new projects.
@@ -7,20 +12,33 @@ Usage:
 <lrnapp-studio-project-button classes="amber white-text" icon="add" display-errors="true" end-point="[[endPoint]]" csrf-token=[[csrfToken]]></lrnapp-studio-project-button>
 */
 Polymer({
-  _template: `
-      <style>
-        :host {
-          display: block;
-        }
-      </style>
-      <template is="dom-if" if="[[createProjectsUrl]]">
-        <lrnsys-button raised="" class\$="[[classes]]" button-class\$="[[classes]]" icon="[[icon]]" on-tap="_createProject" label="Create project"></lrnsys-button>
-        <iron-ajax id="ajaxCreateStub" url="[[createProjectsUrl]]" method="POST" handle-as="json" on-response="_ajaxCreateStubHandler"></iron-ajax>
-      </template>
-      <template is="dom-if" if="[[displayErrors]]">
-        <paper-toast id="toast"></paper-toast>
-      </template>
-`,
+  _template: html`
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <template is="dom-if" if="[[createProjectsUrl]]">
+      <lrnsys-button
+        raised=""
+        class\$="[[classes]]"
+        button-class\$="[[classes]]"
+        icon="[[icon]]"
+        on-tap="_createProject"
+        label="Create project"
+      ></lrnsys-button>
+      <iron-ajax
+        id="ajaxCreateStub"
+        url="[[createProjectsUrl]]"
+        method="POST"
+        handle-as="json"
+        on-response="_ajaxCreateStubHandler"
+      ></iron-ajax>
+    </template>
+    <template is="dom-if" if="[[displayErrors]]">
+      <paper-toast id="toast"></paper-toast>
+    </template>
+  `,
 
   is: "lrnapp-studio-project-button",
 

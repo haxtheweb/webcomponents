@@ -1,23 +1,23 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/lrndesign-gallerycard/lrndesign-gallerycard.html">
-<link rel="import" href="../../bower_components/elmsln-loading/elmsln-loading.html">
-<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
-<link rel="import" href="../../bower_components/iron-list/iron-list.html">
-<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
-<link rel="import" href="../../bower_components/iron-selector/iron-selector.html">
-<link rel="import" href="../../bower_components/app-layout/app-toolbar/app-toolbar.html">
-<link rel="import" href="../../bower_components/app-route/app-location.html">
-<link rel="import" href="../../bower_components/app-route/app-route.html">
-<link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
-<link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
-<link rel="import" href="../../bower_components/paper-item/paper-item.html">
-<link rel="import" href="../../bower_components/paper-toast/paper-toast.html">
-<script type="module" src="./lrnapp-open-studio-table.js"></script>
-<script type="module" src="./lrnapp-open-studio-projects.js"></script>
-<script type="module" src="./lrnapp-open-studio-assignments.js"></script>
-
-<dom-module id="lrnapp-open-studio">
-  <template>
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@polymer/iron-ajax/iron-ajax.js";
+import "@polymer/iron-list/iron-list.js";
+import "@polymer/iron-pages/iron-pages.js";
+import "@polymer/iron-selector/iron-selector.js";
+import "@polymer/app-layout/app-toolbar/app-toolbar.js";
+import "@polymer/app-route/app-location.js";
+import "@polymer/app-route/app-route.js";
+import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
+import "@polymer/paper-listbox/paper-listbox.js";
+import "@polymer/paper-item/paper-item.js";
+import "@polymer/paper-toast/paper-toast.js";
+import "@lrnwebcomponents/lrndesign-gallerycard/lrndesign-gallerycard.js";
+import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
+import "./lrnapp-open-studio-table.js";
+import "./lrnapp-open-studio-projects.js";
+import "./lrnapp-open-studio-assignments.js";
+Polymer({
+  _template: html`
     <style include="materializecss-styles">
       :host {
         display: block;
@@ -26,7 +26,7 @@
       #loading {
         width: 100%;
         z-index: 1000;
-        opacity: .8;
+        opacity: 0.8;
         text-align: center;
         align-content: center;
         justify-content: center;
@@ -61,26 +61,32 @@
       .iron-list-container {
         display: flex;
         flex-direction: column;
-        min-height:50vh;
+        min-height: 50vh;
       }
       iron-list {
         flex: 1 1 auto;
       }
     </style>
-    <iron-ajax auto
+    <iron-ajax
+      auto
       url="[[sourcePath]]"
-      params=''
+      params=""
       handle-as="json"
       last-response="{{studioResponse}}"
-      on-response="_handleResponse"></iron-ajax>
+      on-response="_handleResponse"
+    ></iron-ajax>
 
-    <app-location route="{{route}}" query-params="{{queryParams}}"></app-location>
+    <app-location
+      route="{{route}}"
+      query-params="{{queryParams}}"
+    ></app-location>
     <app-route
-        route="{{route}}"
-        pattern="[[endPoint]]/:page"
-        data="{{data}}"
-        tail="{{tail}}"
-        query-params="{{queryParams}}">
+      route="{{route}}"
+      pattern="[[endPoint]]/:page"
+      data="{{data}}"
+      tail="{{tail}}"
+      query-params="{{queryParams}}"
+    >
     </app-route>
 
     <div id="loading">
@@ -88,76 +94,168 @@
       <elmsln-loading color="grey-text" size="large"></elmsln-loading>
     </div>
     <app-toolbar class="amber lighten-3">
-      <iron-selector selected="{{data.page}}" attr-for-selected="name" role="navigation">
-        <a tabindex="-1" name="submissions" on-tap="_submissionsClicked"><lrnsys-button icon="apps" label="Submission display" hover-class="amber darken-4 white-text" class="display-mode" button-class="display-mode style-scope lrnapp-open-studio x-scope lrnsys-button-0"></lrnsys-button></a>
-        <a tabindex="-1" name="projects" on-tap="_projectsClicked"><lrnsys-button icon="folder" label="Project board" hover-class="amber darken-4 white-text" class="display-mode" button-class="display-mode style-scope lrnapp-open-studio x-scope lrnsys-button-0"></lrnsys-button></a>
-        <a tabindex="-1" name="assignments" on-tap="_assignmentsClicked"><lrnsys-button icon="list" label="Assignment centric" hover-class="amber darken-4 white-text" class="display-mode" button-class="display-mode style-scope lrnapp-open-studio x-scope lrnsys-button-0"></lrnsys-button></a>
-        <a tabindex="-1" name="table" on-tap="_tableClicked"><lrnsys-button icon="view-list" label="Table view" hover-class="amber darken-4 white-text" class="display-mode" button-class="display-mode style-scope lrnapp-open-studio x-scope lrnsys-button-0"></lrnsys-button></a>
+      <iron-selector
+        selected="{{data.page}}"
+        attr-for-selected="name"
+        role="navigation"
+      >
+        <a tabindex="-1" name="submissions" on-tap="_submissionsClicked"
+          ><lrnsys-button
+            icon="apps"
+            label="Submission display"
+            hover-class="amber darken-4 white-text"
+            class="display-mode"
+            button-class="display-mode style-scope lrnapp-open-studio x-scope lrnsys-button-0"
+          ></lrnsys-button
+        ></a>
+        <a tabindex="-1" name="projects" on-tap="_projectsClicked"
+          ><lrnsys-button
+            icon="folder"
+            label="Project board"
+            hover-class="amber darken-4 white-text"
+            class="display-mode"
+            button-class="display-mode style-scope lrnapp-open-studio x-scope lrnsys-button-0"
+          ></lrnsys-button
+        ></a>
+        <a tabindex="-1" name="assignments" on-tap="_assignmentsClicked"
+          ><lrnsys-button
+            icon="list"
+            label="Assignment centric"
+            hover-class="amber darken-4 white-text"
+            class="display-mode"
+            button-class="display-mode style-scope lrnapp-open-studio x-scope lrnsys-button-0"
+          ></lrnsys-button
+        ></a>
+        <a tabindex="-1" name="table" on-tap="_tableClicked"
+          ><lrnsys-button
+            icon="view-list"
+            label="Table view"
+            hover-class="amber darken-4 white-text"
+            class="display-mode"
+            button-class="display-mode style-scope lrnapp-open-studio x-scope lrnsys-button-0"
+          ></lrnsys-button
+        ></a>
       </iron-selector>
       <span main-title></span>
-      <span top-item style="text-align:right;font-size:.5em;padding-right:1em;">Displaying [[submissions.length]] of [[originalSubmissions.length]]</span>
+      <span top-item style="text-align:right;font-size:.5em;padding-right:1em;"
+        >Displaying [[submissions.length]] of
+        [[originalSubmissions.length]]</span
+      >
       <paper-dropdown-menu label="Author" hidden$="[[!authors]]">
-        <paper-listbox slot="dropdown-content" class="dropdown-content" selected="{{queryParams.author}}" attr-for-selected="item-id">
+        <paper-listbox
+          slot="dropdown-content"
+          class="dropdown-content"
+          selected="{{queryParams.author}}"
+          attr-for-selected="item-id"
+        >
           <paper-item></paper-item>
           <template is="dom-repeat" items="[[_toArray(authors)]]" as="author">
-          <paper-item item-id="[[author.id]]">[[author.display_name]]</paper-item>
+            <paper-item item-id="[[author.id]]"
+              >[[author.display_name]]</paper-item
+            >
           </template>
         </paper-listbox>
       </paper-dropdown-menu>
       <paper-dropdown-menu label="Project" hidden$="[[!projects]]">
-        <paper-listbox slot="dropdown-content" class="dropdown-content" selected="{{queryParams.project}}" attr-for-selected="item-id">
+        <paper-listbox
+          slot="dropdown-content"
+          class="dropdown-content"
+          selected="{{queryParams.project}}"
+          attr-for-selected="item-id"
+        >
           <paper-item></paper-item>
-        <template is="dom-repeat" items="[[_toArray(projects)]]" as="project">
-          <paper-item item-id="[[project.id]]">[[project.attributes.title]]</paper-item>
-        </template>
+          <template is="dom-repeat" items="[[_toArray(projects)]]" as="project">
+            <paper-item item-id="[[project.id]]"
+              >[[project.attributes.title]]</paper-item
+            >
+          </template>
         </paper-listbox>
       </paper-dropdown-menu>
       <paper-dropdown-menu label="Assignment" hidden$="[[!assignments]]">
-        <paper-listbox slot="dropdown-content" class="dropdown-content" selected="{{queryParams.assignment}}" attr-for-selected="item-id">
+        <paper-listbox
+          slot="dropdown-content"
+          class="dropdown-content"
+          selected="{{queryParams.assignment}}"
+          attr-for-selected="item-id"
+        >
           <paper-item></paper-item>
-        <template is="dom-repeat" items="[[_toArray(assignments)]]" as="assignment">
-          <paper-item item-id="[[assignment.id]]">[[assignment.attributes.title]]</paper-item>
-        </template>
+          <template
+            is="dom-repeat"
+            items="[[_toArray(assignments)]]"
+            as="assignment"
+          >
+            <paper-item item-id="[[assignment.id]]"
+              >[[assignment.attributes.title]]</paper-item
+            >
+          </template>
         </paper-listbox>
       </paper-dropdown-menu>
     </app-toolbar>
     <div class="gallery-grid">
-    <iron-pages
-      selected="{{data.page}}"
-      attr-for-selected="name"
-      fallback-selection="submissions"
-      role="main">
-      <div class="iron-list-container" name="submissions">
-        <iron-list items="[[submissions]]" as="item" grid>
-          <template>
-          <paper-button data-submission-id$="[[item.id]]" class="gallerycard-wrapper" on-tap="_loadSubmissionUrl">
-            <lrndesign-gallerycard elevation="2" data-submission-id$="[[item.id]]" title="[[item.attributes.title]]" author="[[item.relationships.author.data]]" comments="[[item.meta.comment_count]]" image="[[item.display.image]]" icon="[[item.display.icon]]" date="[[item.meta.humandate]]" class="ferpa-protect">
-            </lrndesign-gallerycard>
-          </paper-button>
-          </template>
-        </iron-list>
-      </div>
-      <lrnapp-open-studio-assignments name="assignments" base-path="[[basePath]]" submissions="[[submissions]]" assignments="[[assignments]]" active-author-id="[[queryParams.author]]" active-assignment-id="[[queryParams.assignment]]"></lrnapp-open-studio-assignments>
-      <lrnapp-open-studio-projects name="projects" base-path="[[basePath]]" projects="[[projects]]" submissions="[[submissions]]" assignments="[[assignments]]" active-author-id="[[queryParams.author]]" active-project-id="[[queryParams.project]]"></lrnapp-open-studio-projects>
-      <lrnapp-open-studio-table name="table" base-path="[[basePath]]" submissions="{{submissions}}"></lrnapp-open-studio-table>
-    </iron-pages>
+      <iron-pages
+        selected="{{data.page}}"
+        attr-for-selected="name"
+        fallback-selection="submissions"
+        role="main"
+      >
+        <div class="iron-list-container" name="submissions">
+          <iron-list id="ironlist" items="[[submissions]]" as="item" grid>
+            <template>
+              <paper-button
+                data-submission-id$="[[item.id]]"
+                class="gallerycard-wrapper"
+                on-tap="_loadSubmissionUrl"
+              >
+                <lrndesign-gallerycard
+                  elevation="2"
+                  data-submission-id$="[[item.id]]"
+                  title="[[item.attributes.title]]"
+                  author="[[item.relationships.author.data]]"
+                  comments="[[item.meta.comment_count]]"
+                  image="[[item.display.image]]"
+                  icon="[[item.display.icon]]"
+                  date="[[item.meta.humandate]]"
+                  class="ferpa-protect"
+                >
+                </lrndesign-gallerycard>
+              </paper-button>
+            </template>
+          </iron-list>
+        </div>
+        <lrnapp-open-studio-assignments
+          name="assignments"
+          base-path="[[basePath]]"
+          submissions="[[submissions]]"
+          assignments="[[assignments]]"
+          active-author-id="[[queryParams.author]]"
+          active-assignment-id="[[queryParams.assignment]]"
+        ></lrnapp-open-studio-assignments>
+        <lrnapp-open-studio-projects
+          name="projects"
+          base-path="[[basePath]]"
+          projects="[[projects]]"
+          submissions="[[submissions]]"
+          assignments="[[assignments]]"
+          active-author-id="[[queryParams.author]]"
+          active-project-id="[[queryParams.project]]"
+        ></lrnapp-open-studio-projects>
+        <lrnapp-open-studio-table
+          name="table"
+          base-path="[[basePath]]"
+          submissions="{{submissions}}"
+        ></lrnapp-open-studio-table>
+      </iron-pages>
     </div>
     <paper-toast id="toast"></paper-toast>
-  </template>
-
-  <script type="module">
-import './lrnapp-open-studio-table.js';
-import './lrnapp-open-studio-projects.js';
-import './lrnapp-open-studio-assignments.js';
-Polymer({
-  is: 'lrnapp-open-studio',
+  `,
+  is: "lrnapp-open-studio",
   properties: {
     /**
      * The studioResponse from server
      */
     studioResponse: {
       type: Object,
-      notify: true,
+      notify: true
     },
     /**
      * The submissions to render; potentially filtered
@@ -165,14 +263,14 @@ Polymer({
     submissions: {
       type: Object,
       notify: true,
-      computed: '_submissionsCompute(originalSubmissions, queryParams)'
+      computed: "_submissionsCompute(originalSubmissions, queryParams)"
     },
     /**
      * The original submissions array; used to filter against
      */
     originalSubmissions: {
       type: Object,
-      notify: true,
+      notify: true
     },
     /**
      * The submissions to render
@@ -180,7 +278,7 @@ Polymer({
     projects: {
       type: Array,
       notify: true,
-      value: [],
+      value: []
     },
     /**
      * The assignments to render
@@ -188,7 +286,7 @@ Polymer({
     assignments: {
       type: Array,
       notify: true,
-      value: [],
+      value: []
     },
     /**
      * The authors to render
@@ -196,28 +294,28 @@ Polymer({
     authors: {
       type: Array,
       notify: true,
-      value: [],
+      value: []
     },
     /**
      * sourcePath for submission data.
      */
     sourcePath: {
       type: String,
-      notify: true,
+      notify: true
     },
     /**
      * Endpoint for submission data.
      */
     endPoint: {
       type: String,
-      notify: true,
+      notify: true
     },
     /**
      * base path for the app
      */
     basePath: {
       type: String,
-      notify: true,
+      notify: true
     },
     /**
      * Active / clicked submission.
@@ -229,28 +327,28 @@ Polymer({
     },
     queryParams: {
       type: Object,
-      notify: true,
+      notify: true
     },
     _blockcycle: {
       type: Boolean,
-      value: false,
-    },
+      value: false
+    }
   },
   listeners: {
-    'route-change': '_routeChange',
+    "route-change": "_routeChange"
   },
   observers: [
-    '_routeChanged(route, endPoint)',
-    '_deleteToast(queryParams.deletetoast)',
-    '_assignmentFilterChanged(queryParams.assignment)',
-    '_projectFilterChanged(queryParams.project)',
+    "_routeChanged(route, endPoint)",
+    "_deleteToast(queryParams.deletetoast)",
+    "_assignmentFilterChanged(queryParams.assignment)",
+    "_projectFilterChanged(queryParams.project)"
   ],
   // If the current route is outside the scope of our app
   // then allow the website to break out of the single page
   // application routing
   _routeChanged: function(route, endPoint) {
-    if (typeof route.path === 'string') {
-      if (typeof endPoint === 'string') {
+    if (typeof route.path === "string") {
+      if (typeof endPoint === "string") {
         if (route.path.startsWith(endPoint)) {
           return;
         }
@@ -265,21 +363,21 @@ Polymer({
   _routeChange: function(e) {
     var details = e.detail;
     if (typeof details.queryParams.assignment !== typeof undefined) {
-      this.set('queryParams.assignment', details.queryParams.assignment);
+      this.set("queryParams.assignment", details.queryParams.assignment);
     }
     if (typeof details.queryParams.project !== typeof undefined) {
-      this.set('queryParams.project', details.queryParams.project);
+      this.set("queryParams.project", details.queryParams.project);
     }
     if (typeof details.queryParams.author !== typeof undefined) {
-      this.set('queryParams.author', details.queryParams.author);
+      this.set("queryParams.author", details.queryParams.author);
     }
     if (typeof details.data.page !== typeof undefined) {
-      this.set('data.page', details.data.page);
+      this.set("data.page", details.data.page);
     }
   },
-  _submissionsCompute: function (originalSubmissions, queryParams) {
+  _submissionsCompute: function(originalSubmissions, queryParams) {
     // if we don't have an original submissions object to work with then we need to bail
-    if (typeof originalSubmissions === 'undefined') {
+    if (typeof originalSubmissions === "undefined") {
       return [];
     }
     // define vars
@@ -287,62 +385,70 @@ Polymer({
     let filteredSubmissions = [];
     // filter the submissions by the query params
     filteredSubmissions = originalSubmissions.filter(submission => {
-      if (typeof root.queryParams.author !== 'undefined') {
-        if (submission.relationships.author.data.id !== root.queryParams.author) {
+      if (typeof root.queryParams.author !== "undefined") {
+        if (
+          submission.relationships.author.data.id !== root.queryParams.author
+        ) {
           return false;
         }
       }
-      if (typeof root.queryParams.project !== 'undefined') {
-        if (submission.relationships.project.data.id !== root.queryParams.project) {
+      if (typeof root.queryParams.project !== "undefined") {
+        if (
+          submission.relationships.project.data.id !== root.queryParams.project
+        ) {
           return false;
         }
       }
-      if (typeof root.queryParams.assignment !== 'undefined') {
-        if (submission.relationships.assignment.id !== root.queryParams.assignment) {
+      if (typeof root.queryParams.assignment !== "undefined") {
+        if (
+          submission.relationships.assignment.id !== root.queryParams.assignment
+        ) {
           return false;
         }
       }
       return true;
     });
     // delay and repaint, can help with refresh issues
-    (setTimeout(() => {
-        document.querySelector('iron-list').fire('iron-resize');
-      }, 200));
+    setTimeout(() => {
+      this.$.ironlist.fire("iron-resize");
+    }, 200);
     return filteredSubmissions;
   },
   /**
    * Support having a toast message because of delete or error elsewhere.
    */
-  _deleteToast: function (deletetoast, old) {
+  _deleteToast: function(deletetoast, old) {
     if (typeof deletetoast !== typeof undefined) {
-      if (deletetoast == 'error') {
-        this.$.toast.show('That submission on longer exists!');
+      if (deletetoast == "error") {
+        this.$.toast.show("That submission on longer exists!");
+      } else {
+        this.$.toast.show("Submission deleted successfully!");
       }
-      else {
-        this.$.toast.show('Submission deleted successfully!');
-      }
-      this.set('queryParams.deletetoast', undefined);
+      this.set("queryParams.deletetoast", undefined);
+      this.notifyPath("queryParams.deletetoast");
     }
   },
-  _assignmentFilterChanged: function (assignment) {
+  _assignmentFilterChanged: function(assignment) {
     // if we have a assignment then we need to uncheck project
     if (typeof assignment !== typeof undefined && !this._blockcycle) {
       this._blockcycle = true;
-      this.set('queryParams.project', undefined);
-      this.set('queryParams.assignment', assignment);
-    }
-    else {
+      this.set("queryParams.project", undefined);
+      this.notifyPath("queryParams.project");
+      this.set("queryParams.assignment", assignment);
+      this.notifyPath("queryParams.assignment");
+    } else {
       this._blockcycle = false;
     }
   },
-  _projectFilterChanged: function (project) {
+  _projectFilterChanged: function(project) {
     // if we have a project then we need to uncheck assignment
     if (typeof project !== typeof undefined && !this._blockcycle) {
       this._blockcycle = true;
-      this.set('queryParams.project', project);
-      this.set('queryParams.assignment', undefined);
-    }
-    else {
+      this.set("queryParams.project", project);
+      this.notifyPath("queryParams.project");
+      this.set("queryParams.assignment", undefined);
+      this.notifyPath("queryParams.assignment");
+    } else {
       this._blockcycle = false;
     }
   },
@@ -354,9 +460,10 @@ Polymer({
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
     // this will have the id of the current submission
-    var active = local.getAttribute('data-submission-id');
+    var active = local.getAttribute("data-submission-id");
     // @todo need a cleaner integration but this at least goes the right place for now
-    window.location.href = this.basePath + 'lrnapp-studio-submission/submissions/' + active;
+    window.location.href =
+      this.basePath + "lrnapp-studio-submission/submissions/" + active;
   },
   /**
    * Handle response for the whole projects object.
@@ -366,8 +473,8 @@ Polymer({
     var author = {};
     var project = {};
     var tmp = {
-      "authors": [],
-      "assignments": [],
+      authors: [],
+      assignments: []
     };
     var assignment = {};
     var assignments = [];
@@ -375,9 +482,9 @@ Polymer({
     // get the submission response's data and convert to array ahead of time
     var submissions = this._toArray(root.studioResponse.data.submissions);
     var projects = this._toArray(root.studioResponse.data.projects);
-    this.set('projects', projects);
+    this.set("projects", projects);
     // original = active off the bat then we apply filters later to chang this
-    this.set('originalSubmissions', submissions);
+    this.set("originalSubmissions", submissions);
     // figure out authors and assignments
     for (var index = 0; index < submissions.length; index++) {
       author = submissions[index].relationships.author.data;
@@ -389,27 +496,31 @@ Polymer({
     }
     // this is stupid but we have to normalize the IDs or else dom repeats will be screwed up
     tmp.authors.forEach(function(element) {
-        authors.push(element);
+      authors.push(element);
     });
     // this is stupid but we have to normalize the IDs or else dom repeats will be screwed up
     tmp.assignments.forEach(function(element) {
-        assignments.push(element);
+      assignments.push(element);
     });
     root.$.loading.hidden = true;
-    this.set('assignments', assignments);
-    this.set('authors', authors);
+    this.set("assignments", assignments);
+    this.set("authors", authors);
   },
-  _submissionsClicked: function (e) {
-    this.set('route.path', this.endPoint + '/submissions');
+  _submissionsClicked: function(e) {
+    this.set("route.path", this.endPoint + "/submissions");
+    this.notifyPath("route.path");
   },
-  _projectsClicked: function (e) {
-    this.set('route.path', this.endPoint + '/projects');
+  _projectsClicked: function(e) {
+    this.set("route.path", this.endPoint + "/projects");
+    this.notifyPath("route.path");
   },
-  _assignmentsClicked: function (e) {
-    this.set('route.path', this.endPoint + '/assignments');
+  _assignmentsClicked: function(e) {
+    this.set("route.path", this.endPoint + "/assignments");
+    this.notifyPath("route.path");
   },
-  _tableClicked: function (e) {
-    this.set('route.path', this.endPoint + '/table');
+  _tableClicked: function(e) {
+    this.set("route.path", this.endPoint + "/table");
+    this.notifyPath("route.path");
   },
   /**
    * Simple way to convert from object to array.
@@ -420,5 +531,3 @@ Polymer({
     });
   }
 });
-</script>
-</dom-module>

@@ -53,7 +53,7 @@ Polymer({
         border-radius: 0;
       }
 
-      paper-icon-button ::shadow iron-icon {
+      paper-icon-button {
         padding: 8px;
         margin: 0;
         box-sizing: border-box;

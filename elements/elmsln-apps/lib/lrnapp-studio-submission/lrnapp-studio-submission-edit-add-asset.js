@@ -1,10 +1,13 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/paper-ripple/paper-ripple.js";
 Polymer({
   _template: html`
     <style>
       :host {
         cursor: pointer;
       }
-
       :host([display="box"]) {
         display: block;
         width: 200px;
@@ -15,7 +18,6 @@ Polymer({
         justify-content: center;
         position: relative;
       }
-
       :host([display="pill"]) {
         display: block;
         background: lightgray;
@@ -24,19 +26,16 @@ Polymer({
         justify-content: center;
         position: relative;
       }
-
       iron-icon {
         color: gray;
         --iron-icon-height: 50px;
         --iron-icon-width: 50px;
       }
-
       :host([display="pill"]) iron-icon {
         --iron-icon-height: 50px;
         --iron-icon-width: 50px;
       }
     </style>
-
     <paper-button>
       <iron-icon icon="[[icon]]"></iron-icon>
       <paper-ripple></paper-ripple>

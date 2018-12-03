@@ -262,7 +262,6 @@ Polymer({
     // split the data into two sets
     this.userData = response.userdata;
     this.dashboardItems = this._toArray(response.items);
-    console.log(response);
   },
 
   /**

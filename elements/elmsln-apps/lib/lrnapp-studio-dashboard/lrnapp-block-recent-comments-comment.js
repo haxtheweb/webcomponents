@@ -1,5 +1,9 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
+import "@polymer/paper-card/paper-card.js";
+import "@polymer/paper-button/paper-button.js";
+import "@lrnwebcomponents/lrn-icon/lrn-icon.js";
+import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 Polymer({
   _template: html`
     <style>
@@ -64,20 +68,20 @@ Polymer({
     <paper-card elevation="3" class="flex-wrap">
       <div class="card-content">
         <lrndesign-avatar
-          label="{{commentUser.name}}"
-          src="{{commentUser.avatar}}"
+          label="[[commentUser.name]]"
+          src="[[commentUser.avatar]]"
         ></lrndesign-avatar>
-        <h3>{{commentUser.display_name}}</h3>
-        <div class="button-wrapper">
-          <div id="comment" class="inactive"><content></content></div>
+        <h3>[[commentUser.display_name]]</h3>
+        <div id="wrapper" class="button-wrapper">
+          <div id="comment" class="inactive"><slot></slot></div>
           <paper-button id="btn" class="hidden">
             <lrn-icon icon="chevron-down" id="icon"></lrn-icon>
           </paper-button>
         </div>
       </div>
       <div class="card-actions">
-        <template is="dom-if" if="{{actionView}}">
-          <a href="{{actionView}}" tabindex="-1">
+        <template is="dom-if" if="[[actionView]]">
+          <a href$="[[actionView]]" tabindex="-1">
             <paper-button raised="" id="view">View thread</paper-button>
           </a>
         </template>
@@ -93,13 +97,11 @@ Polymer({
   },
 
   onHeightChange: function() {
-    var root = this;
-    var height = root.shadowRoot.querySelector("#comment").offsetHeight;
-    var btn = root.shadowRoot.querySelector("#btn");
-
-    if (height > 80) btn.classList.toggle("hidden", this.hidden);
+    var height = this.$.comment.offsetHeight;
+    if (height > 80) {
+      this.$.btn.classList.toggle("hidden", this.hidden);
+    }
   },
-
   properties: {
     commentTitle: {
       type: String,
@@ -124,19 +126,20 @@ Polymer({
       notify: true
     }
   },
-
-  ready: function() {
-    var root = this;
-    var comment = root.shadowRoot.querySelector("#comment");
-    var btn = root.shadowRoot.querySelector("#btn");
-
-    root.shadowRoot
-      .querySelector(".button-wrapper")
-      .addEventListener("click", function(e) {
-        var target = e.target;
-        if (target) {
-          comment.classList.toggle("inactive", this.inactive);
-        }
-      });
+  /**
+   * attached life cycle
+   */
+  attached: function() {
+    this.$.wrapper.addEventListener("click", function(e) {
+      this.$.comment.classList.toggle("inactive", this.inactive);
+    });
+  },
+  /**
+   * detached life cycle
+   */
+  detached: function() {
+    this.$.wrapper.removeEventListener("click", function(e) {
+      this.$.comment.classList.toggle("inactive", this.inactive);
+    });
   }
 });

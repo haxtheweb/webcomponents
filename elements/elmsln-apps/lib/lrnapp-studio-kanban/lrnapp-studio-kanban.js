@@ -1,9 +1,27 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@polymer/iron-ajax/iron-ajax.js";
+import "@polymer/app-route/app-location.js";
+import "@polymer/app-route/app-route.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/paper-badge/paper-badge.js";
+import "@polymer/paper-toggle-button/paper-toggle-button.js";
+import "@polymer/app-layouy/app-toolbar/app-toolbar.js";
+import "@polymer/paper-card/paper-card.js";
+import "@polymer/iron-list/iron-list.js";
+import "@polymer/paper-toast/paper-toast.js";
+import "@polymer/paper-button/paper-button.js";
+import "@polymer/paper-dialog/paper-dialog.js";
+import "@lrnwebcomponents/lrnsys-render-html/lrnsys-render-html.js";
+import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
+import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
+import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./lrnapp-studio-project-button.js";
 import "./lrnapp-studio-assignment-button.js";
 Polymer({
-  _template: `
-    <style include="materializecss-styles"></style>
-    <style>
+  _template: html`
+    <style include="materializecss-styles">
       :host {
         display: block;
       }
@@ -11,7 +29,7 @@ Polymer({
       #loading {
         width: 100%;
         z-index: 1000;
-        opacity: .8;
+        opacity: 0.8;
         text-align: center;
         align-content: center;
         justify-content: center;
@@ -86,7 +104,7 @@ Polymer({
         min-height: 10em;
       }
       .project-container {
-        padding:1em;
+        padding: 1em;
       }
       .project-card .card-content {
         height: 100%;
@@ -113,7 +131,7 @@ Polymer({
 
       .assignment-row {
         border: 1px solid #000000;
-        background-color: #FFFFFF;
+        background-color: #ffffff;
       }
 
       .assignment-row .assignment-row-button.active {
@@ -124,7 +142,7 @@ Polymer({
       .assignment-row:hover .assignment-operations {
         display: block;
         overflow: visible;
-        margin: .2em;
+        margin: 0.2em;
       }
 
       .assignment-row-button {
@@ -136,8 +154,8 @@ Polymer({
 
       .status-indicator {
         border-right: 1px solid grey;
-        padding: .5em;
-        margin: 0 .5em 0 0;
+        padding: 0.5em;
+        margin: 0 0.5em 0 0;
         display: inline-flex;
         line-height: 2em;
         height: 2em;
@@ -184,75 +202,222 @@ Polymer({
         margin: 0em auto 1em;
         max-width: 20em;
       }
-
     </style>
-    <iron-ajax auto="" id="projectbackend" url="[[sourcePath]]" handle-as="json" last-response="{{projectResponse}}" on-response="_handleProjectResponse">
+    <iron-ajax
+      auto=""
+      id="projectbackend"
+      url="[[sourcePath]]"
+      handle-as="json"
+      last-response="{{projectResponse}}"
+      on-response="_handleProjectResponse"
+    >
     </iron-ajax>
-    <iron-ajax id="backend" url="[[sourcePath]]" params="" handle-as="json" last-response="{{backendResponse}}" on-response="_handleUpdateResponse">
+    <iron-ajax
+      id="backend"
+      url="[[sourcePath]]"
+      params=""
+      handle-as="json"
+      last-response="{{backendResponse}}"
+      on-response="_handleUpdateResponse"
+    >
     </iron-ajax>
 
-    <app-location route="{{route}}" query-params="{{queryParams}}"></app-location>
-    <app-route route="{{route}}" pattern="[[endPoint]]/:page" data="{{data}}" tail="{{tail}}" query-params="{{queryParams}}">
+    <app-location
+      route="{{route}}"
+      query-params="{{queryParams}}"
+    ></app-location>
+    <app-route
+      route="{{route}}"
+      pattern="[[endPoint]]/:page"
+      data="{{data}}"
+      tail="{{tail}}"
+      query-params="{{queryParams}}"
+    >
     </app-route>
     <div id="loading">
       <h3>Loading..</h3>
       <elmsln-loading color="grey-text" size="large"></elmsln-loading>
     </div>
-    <lrnapp-studio-project-button hidden\$="[[!projectResponse.data.canCreateProjects]]" classes="amber darken-3 white-text" end-point="[[endPoint]]" csrf-token="[[csrfToken]]" icon="add"></lrnapp-studio-project-button>
+    <lrnapp-studio-project-button
+      hidden\$="[[!projectResponse.data.canCreateProjects]]"
+      classes="amber darken-3 white-text"
+      end-point="[[endPoint]]"
+      csrf-token="[[csrfToken]]"
+      icon="add"
+    ></lrnapp-studio-project-button>
     <div class="projects-window">
-      <iron-list items="[[_toArray(projectResponse.data.projects)]]" as="project" class="projects-container" grid="">
+      <iron-list
+        items="[[_toArray(projectResponse.data.projects)]]"
+        as="project"
+        class="projects-container"
+        grid=""
+      >
         <template class="projects-container-items">
           <div class="project-container">
-            <paper-card id\$="project-[[project.id]]" class="project-card grey lighten-3" heading="{{project.attributes.title}}" elevation="2">
+            <paper-card
+              id\$="project-[[project.id]]"
+              class="project-card grey lighten-3"
+              heading="{{project.attributes.title}}"
+              elevation="2"
+            >
               <div class="project-operations">
-                <lrnsys-button icon-class="no-margin" id\$="project-[[project.id]]-edit" alt="Edit project" class="circle operation" hover-class="amber lighten-2" hidden="[[!project.meta.canUpdate]]" icon="create" on-tap="_makeProjectEditLink">
+                <lrnsys-button
+                  icon-class="no-margin"
+                  id\$="project-[[project.id]]-edit"
+                  alt="Edit project"
+                  class="circle operation"
+                  hover-class="amber lighten-2"
+                  hidden="[[!project.meta.canUpdate]]"
+                  icon="create"
+                  on-tap="_makeProjectEditLink"
+                >
                 </lrnsys-button>
-                <lrnapp-studio-assignment-button project-id="[[project.id]]" icon-class="no-margin" id\$="project-[[project.id]]-add" alt="Add assignment" class="circle operation" hover-class="amber lighten-2" hidden="[[!project.meta.canUpdate]]" icon="add" end-point="[[endPoint]]" csrf-token="[[csrfToken]]">
+                <lrnapp-studio-assignment-button
+                  project-id="[[project.id]]"
+                  icon-class="no-margin"
+                  id\$="project-[[project.id]]-add"
+                  alt="Add assignment"
+                  class="circle operation"
+                  hover-class="amber lighten-2"
+                  hidden="[[!project.meta.canUpdate]]"
+                  icon="add"
+                  end-point="[[endPoint]]"
+                  csrf-token="[[csrfToken]]"
+                >
                 </lrnapp-studio-assignment-button>
-                <lrnsys-button id\$="project-[[project.id]]-delete" alt="Delete project!" class="circle operation" hover-class="red darken-2 white-text" header="Delete project!" hidden="[[!project.meta.canDelete]]" icon="delete-forever" on-tap="_deleteProjectDialog" icon-class="no-margin">
-                  </lrnsys-button>
+                <lrnsys-button
+                  id\$="project-[[project.id]]-delete"
+                  alt="Delete project!"
+                  class="circle operation"
+                  hover-class="red darken-2 white-text"
+                  header="Delete project!"
+                  hidden="[[!project.meta.canDelete]]"
+                  icon="delete-forever"
+                  on-tap="_deleteProjectDialog"
+                  icon-class="no-margin"
+                >
+                </lrnsys-button>
               </div>
               <div class="card-content">
-                <iron-list items="[[_toArray(project.relationships.assignments)]]" as="assignment">
+                <iron-list
+                  items="[[_toArray(project.relationships.assignments)]]"
+                  as="assignment"
+                >
                   <template>
                     <div class="assignment-row" id="assignment">
-                      <lrnsys-dialog body-append="" on-focusin="assignmentFocusIn" class="assignment-row-button" id\$="assignment-[[project.id]]-[[assignment.id]]" header="[[assignment.attributes.title]]" hover-class="amber lighten-5">
+                      <lrnsys-dialog
+                        body-append=""
+                        on-focusin="assignmentFocusIn"
+                        class="assignment-row-button"
+                        id\$="assignment-[[project.id]]-[[assignment.id]]"
+                        header="[[assignment.attributes.title]]"
+                        hover-class="amber lighten-5"
+                      >
                         <span slot="button" class="button-contents">
-                  <div class\$="status-indicator [[assignment.meta.relatedSubmissions.complete.color]]">
-                    <iron-icon icon="[[assignment.meta.relatedSubmissions.complete.icon]]" disabled\$="[[!assignment.meta.relatedSubmissions.canCreate]]"></iron-icon>
-                  </div>
-                  <div class="assignment-title">[[assignment.attributes.title]]</div>
-                </span>
+                          <div
+                            class\$="status-indicator [[assignment.meta.relatedSubmissions.complete.color]]"
+                          >
+                            <iron-icon
+                              icon="[[assignment.meta.relatedSubmissions.complete.icon]]"
+                              disabled\$="[[!assignment.meta.relatedSubmissions.canCreate]]"
+                            ></iron-icon>
+                          </div>
+                          <div class="assignment-title">
+                            [[assignment.attributes.title]]
+                          </div>
+                        </span>
                         <div slot="content">
-                          <app-toolbar class\$="[[assignment.meta.relatedSubmissions.complete.color]]">
+                          <app-toolbar
+                            class\$="[[assignment.meta.relatedSubmissions.complete.color]]"
+                          >
                             <div>
-                              <iron-icon icon="[[assignment.meta.relatedSubmissions.complete.icon]]" disabled\$="[[!assignment.meta.relatedSubmissions.canCreate]]"></iron-icon>
+                              <iron-icon
+                                icon="[[assignment.meta.relatedSubmissions.complete.icon]]"
+                                disabled\$="[[!assignment.meta.relatedSubmissions.canCreate]]"
+                              ></iron-icon>
                               [[assignment.meta.relatedSubmissions.complete.submission.title]]
                             </div>
-                            <div spacer="" class="comment-box" hidden\$="[[!assignment.meta.relatedSubmissions.complete.submission.id]]">
-                              <paper-button id\$="assignment-[[project.id]]-[[assignment.id]]-comments" style="margin:0;padding:.25em;text-transform:none;">
-                                <iron-icon icon="communication:forum"></iron-icon>
-                                [[assignment.meta.relatedSubmissions.complete.submission.meta.comments.count]] Comments
+                            <div
+                              spacer=""
+                              class="comment-box"
+                              hidden\$="[[!assignment.meta.relatedSubmissions.complete.submission.id]]"
+                            >
+                              <paper-button
+                                id\$="assignment-[[project.id]]-[[assignment.id]]-comments"
+                                style="margin:0;padding:.25em;text-transform:none;"
+                              >
+                                <iron-icon
+                                  icon="communication:forum"
+                                ></iron-icon>
+                                [[assignment.meta.relatedSubmissions.complete.submission.meta.comments.count]]
+                                Comments
                               </paper-button>
-                              <paper-badge hidden\$="[[displayNewBadge(assignment.meta.relatedSubmissions.complete.submission.meta.new)]]" for\$="assignment-[[project.id]]-[[assignment.id]]-comments" label\$="[[assignment.meta.relatedSubmissions.complete.submission.meta.comments.new]]"></paper-badge>
+                              <paper-badge
+                                hidden\$="[[displayNewBadge(assignment.meta.relatedSubmissions.complete.submission.meta.new)]]"
+                                for\$="assignment-[[project.id]]-[[assignment.id]]-comments"
+                                label\$="[[assignment.meta.relatedSubmissions.complete.submission.meta.comments.new]]"
+                              ></paper-badge>
                             </div>
 
-                            <lrnapp-studio-submission-button spacer="" auto="" assignment-id="[[assignment.id]]" submission="{{submission}}" end-point="[[buildSubmissionPath(basePath)]]" csrf-token="[[csrfToken]]" submission-id="[[assignment.meta.relatedSubmissions.complete.submission.id]]"></lrnapp-studio-submission-button>
+                            <lrnapp-studio-submission-button
+                              spacer=""
+                              auto=""
+                              assignment-id="[[assignment.id]]"
+                              submission="{{submission}}"
+                              end-point="[[buildSubmissionPath(basePath)]]"
+                              csrf-token="[[csrfToken]]"
+                              submission-id="[[assignment.meta.relatedSubmissions.complete.submission.id]]"
+                            ></lrnapp-studio-submission-button>
                             <div main-title=""></div>
-                            <paper-toggle-button id\$="assignment-[[project.id]]-[[assignment.id]]-toggle" on-tap="statusToggle"></paper-toggle-button>
-                            <span id\$="assignment-[[project.id]]-[[assignment.id]]-toggle-text"></span>
+                            <paper-toggle-button
+                              id\$="assignment-[[project.id]]-[[assignment.id]]-toggle"
+                              on-tap="statusToggle"
+                            ></paper-toggle-button>
+                            <span
+                              id\$="assignment-[[project.id]]-[[assignment.id]]-toggle-text"
+                            ></span>
                             <div bottom-item="" class="status-rationale">
                               [[assignment.meta.relatedSubmissions.complete.rationale.text]]
                             </div>
                           </app-toolbar>
-                          <lrnsys-render-html style="padding:2em;" html="[[assignment.attributes.body]]"></lrnsys-render-html>
+                          <lrnsys-render-html
+                            style="padding:2em;"
+                            html="[[assignment.attributes.body]]"
+                          ></lrnsys-render-html>
                         </div>
                       </lrnsys-dialog>
                       <span class="assignment-operations">
-                <lrnsys-button id\$="assignment-[[project.id]]-[[assignment.id]]-add-critique" icon="editor:insert-comment" alt="Add critique" class="circle operation" hover-class="green lighten-2" hidden="[[!assignment.meta.canCritique]]" href\$="[[assignment.meta.critiqueLink]]" icon-class="no-margin"></lrnsys-button>
-                <lrnsys-button id\$="assignment-[[project.id]]-[[assignment.id]]-edit" icon="editor:mode-edit" alt="Edit" class="circle operation" hover-class="amber lighten-4" hidden="[[!assignment.meta.canUpdate]]" on-tap="_makeAssignmentEditLink" icon-class="no-margin green-text text-darken-4"></lrnsys-button>
-                <lrnsys-button id\$="assignment-[[project.id]]-[[assignment.id]]-delete" icon="delete" alt="Delete" class="circle operation" hover-class="amber lighten-4" hidden="[[!assignment.meta.canDelete]]" on-tap="_deleteAssignmentDialog" icon-class="no-margin red-text text-darken-4"></lrnsys-button>
-              </span>
+                        <lrnsys-button
+                          id\$="assignment-[[project.id]]-[[assignment.id]]-add-critique"
+                          icon="editor:insert-comment"
+                          alt="Add critique"
+                          class="circle operation"
+                          hover-class="green lighten-2"
+                          hidden="[[!assignment.meta.canCritique]]"
+                          href\$="[[assignment.meta.critiqueLink]]"
+                          icon-class="no-margin"
+                        ></lrnsys-button>
+                        <lrnsys-button
+                          id\$="assignment-[[project.id]]-[[assignment.id]]-edit"
+                          icon="editor:mode-edit"
+                          alt="Edit"
+                          class="circle operation"
+                          hover-class="amber lighten-4"
+                          hidden="[[!assignment.meta.canUpdate]]"
+                          on-tap="_makeAssignmentEditLink"
+                          icon-class="no-margin green-text text-darken-4"
+                        ></lrnsys-button>
+                        <lrnsys-button
+                          id\$="assignment-[[project.id]]-[[assignment.id]]-delete"
+                          icon="delete"
+                          alt="Delete"
+                          class="circle operation"
+                          hover-class="amber lighten-4"
+                          hidden="[[!assignment.meta.canDelete]]"
+                          on-tap="_deleteAssignmentDialog"
+                          icon-class="no-margin red-text text-darken-4"
+                        ></lrnsys-button>
+                      </span>
                     </div>
                   </template>
                 </iron-list>
@@ -268,10 +433,16 @@ Polymer({
       <p>[[_deleteText]]</p>
       <div class="buttons">
         <paper-button dialog-dismiss="">Decline</paper-button>
-        <paper-button id="deleteaccept" on-tap="_handleDelete" dialog-confirm="" autofocus="">Accept</paper-button>
+        <paper-button
+          id="deleteaccept"
+          on-tap="_handleDelete"
+          dialog-confirm=""
+          autofocus=""
+          >Accept</paper-button
+        >
       </div>
     </paper-dialog>
-`,
+  `,
 
   is: "lrnapp-studio-kanban",
 
@@ -356,6 +527,7 @@ Polymer({
         this.$.toast.show("Submission deleted successfully!");
       }
       this.set("queryParams.deletetoast", undefined);
+      this.notifyPath("queryParams.deletetoast");
     }
   },
 

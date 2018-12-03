@@ -1,3 +1,8 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@polymer/marked-element/marked-element.js";
+import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
+import "./lrnapp-studio-block.js";
+import "./lrnapp-studio-submission-edit-textarea.js";
 Polymer({
   _template: html`
     <style>
@@ -5,15 +10,15 @@ Polymer({
         display: block;
       }
       .field {
-        padding-top: 2em;
-        padding-bottom: 2em;
+        padding-top: 32px;
+        padding-bottom: 32px;
       }
 
       .actions {
         display: flex;
         border-top: 2px solid gainsboro;
-        margin-top: 1em;
-        font-size: 0.85em;
+        margin-top: 16px;
+        font-size: 14px;
       }
 
       .actions .spacer {
@@ -21,14 +26,10 @@ Polymer({
       }
 
       .submission-critique-outline + .submission-critique-outline {
-        margin-top: 1em;
+        margin-top: 16px;
       }
 
-      :host([edit])
-        .submission-critique-outline--feedback
-        lrnapp-studio-block
-        ::shadow
-        .studio-block__content {
+      :host([edit]) .submission-critique-outline--feedback lrnapp-studio-block {
         padding: 0;
       }
     </style>
@@ -89,9 +90,7 @@ Polymer({
       </div>
     </template>
   `,
-
   is: "lrnapp-studio-submission-critique-panel",
-
   properties: {
     submission: {
       type: Object,
@@ -103,17 +102,16 @@ Polymer({
       reflectToAttribute: true
     }
   },
-
   _publishClicked: function(e) {
     this.set("submission.attributes.state", "submission_ready");
+    this.notifyPath("submission.attributes.state");
     this.fire("submissionPublishClicked");
   },
-
   _saveDraftClicked: function(e) {
     this.set("submission.attributes.state", "submission_in_progress");
+    this.notifyPath("submission.attributes.state");
     this.fire("submissionSaveDraftClicked");
   },
-
   _deleteClicked: function(e) {
     this.fire("submissionDeleteClicked");
   }

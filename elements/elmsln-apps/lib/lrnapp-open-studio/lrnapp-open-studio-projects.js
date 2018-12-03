@@ -1,5 +1,10 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
+import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import "./lrnapp-studio-submission-display.js";
 Polymer({
-  _template: `
+  _template: html`
     <style include="materializecss-styles"></style>
     <style>
       :host {
@@ -9,7 +14,7 @@ Polymer({
       #loading {
         width: 100%;
         z-index: 1000;
-        opacity: .8;
+        opacity: 0.8;
         text-align: center;
         align-content: center;
         justify-content: center;
@@ -39,21 +44,48 @@ Polymer({
       }
     </style>
     <template is="dom-if" if="[[!showSubmissions]]">
-      <h1 class="empty-title black-text">Please select an Author and Project in order to review their portfolio</h1>
+      <h1 class="empty-title black-text">
+        Please select an Author and Project in order to review their portfolio
+      </h1>
     </template>
     <template is="dom-if" if="[[showSubmissions]]">
-      <h1 class="project-title black-text">[[activeProject.attributes.title]]</h1>
+      <h1 class="project-title black-text">
+        [[activeProject.attributes.title]]
+      </h1>
       <div class="project-steps">
-        <template is="dom-repeat" items="[[activeProject.attributes.steps]]" as="assignment">
-          <lrnsys-button icon\$="[[_getSubmissionIcon(assignment.id)]]" icon-class\$="[[_getSubmissionClass(assignment.id)]]" on-tap="_scrollToTarget" label="[[assignment.title]]" data-assignment-id\$="[[assignment.id]]" class="project-step" hover-class="blue white-text" raised="" hidden\$="[[!assignment.title]]"></lrnsys-button>
+        <template
+          is="dom-repeat"
+          items="[[activeProject.attributes.steps]]"
+          as="assignment"
+        >
+          <lrnsys-button
+            icon\$="[[_getSubmissionIcon(assignment.id)]]"
+            icon-class\$="[[_getSubmissionClass(assignment.id)]]"
+            on-tap="_scrollToTarget"
+            label="[[assignment.title]]"
+            data-assignment-id\$="[[assignment.id]]"
+            class="project-step"
+            hover-class="blue white-text"
+            raised=""
+            hidden\$="[[!assignment.title]]"
+          ></lrnsys-button>
         </template>
       </div>
       <template is="dom-repeat" items="[[renderSubmissions]]" as="submission">
-        <a name="[[submission.relationships.assignment.title]]" class\$="assignment-[[submission.relationships.assignment.id]]"><h2 class="assignment-title">[[submission.relationships.assignment.title]]</h2></a>
-        <lrnapp-studio-submission-display submission="[[submission]]" class="ferpa-protect"></lrnapp-studio-submission-display>
+        <a
+          name="[[submission.relationships.assignment.title]]"
+          class\$="assignment-[[submission.relationships.assignment.id]]"
+          ><h2 class="assignment-title">
+            [[submission.relationships.assignment.title]]
+          </h2></a
+        >
+        <lrnapp-studio-submission-display
+          submission="[[submission]]"
+          class="ferpa-protect"
+        ></lrnapp-studio-submission-display>
       </template>
     </template>
-`,
+  `,
 
   is: "lrnapp-open-studio-projects",
 

@@ -1,13 +1,14 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import "@lrnwebcomponents/lrn-markdown-editor/lrn-markdown-editor.js";
 Polymer({
-  _template: `
+  _template: html`
     <style>
-       :host {
+      :host {
         display: block;
       }
     </style>
-
     <lrn-markdown-editor content="{{content}}"></lrn-markdown-editor>
-`,
+  `,
 
   is: "lrnapp-studio-submission-edit-textarea",
 

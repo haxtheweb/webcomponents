@@ -37,9 +37,6 @@ Polymer({
         padding: 2px;
         position: relative;
         margin-top: -2px;
-      }
-
-      lrndesign-avatar ::shadow > * {
         transform: translateY(2px);
       }
 

@@ -1,8 +1,9 @@
+import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "./lrnapp-studio-submission-media-editoverlay.js";
 Polymer({
-  _template: `
+  _template: html`
     <style>
-       :host {
+      :host {
         display: inline-flex;
         justify-content: space-around;
         align-items: stretch;
@@ -22,10 +23,14 @@ Polymer({
       }
     </style>
 
-    <lrnapp-studio-submission-media-editoverlay on-delete="_delete" data-index\$="[[index]]" embedcode="{{embedcode}}">
+    <lrnapp-studio-submission-media-editoverlay
+      on-delete="_delete"
+      data-index\$="[[index]]"
+      embedcode="{{embedcode}}"
+    >
       <div class="file_url">[[file.filename]]</div>
     </lrnapp-studio-submission-media-editoverlay>
-`,
+  `,
 
   is: "lrnapp-studio-submission-edit-file",
 
