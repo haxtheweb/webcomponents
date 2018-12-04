@@ -1,0 +1,32 @@
+<iron-ajax
+  auto
+  url="[[outlineSchemaUrl]]"
+  handle-as="json"
+  on-response="handleResponse"
+  last-response="{{manifest}}">
+</iron-ajax>
+<app-header reveals>
+  <app-toolbar>
+    <paper-icon-button id="module" icon="icons:view-module"></paper-icon-button>
+    <paper-tooltip for="module">Card view</paper-tooltip>
+    <paper-icon-button id="list" icon="icons:view-list"></paper-icon-button>
+    <paper-tooltip for="list">Outline view</paper-tooltip>
+    <div main-title="">[[manifest.title]]</div>
+    <paper-progress value="10" indeterminate bottom-item></paper-progress>
+  </app-toolbar>
+</app-header>
+
+<app-drawer id="drawer" swipe-open></app-drawer>
+<sample-content size="10"></sample-content>
+<slot></slot>
+<iron-list items="[[manifest.items]]" as="item">
+  <template>
+    <paper-card heading="[[item.title]]" image="" elevation="1" animated-shadow="false">
+      <div class="card-content"></div>
+      <div class="card-actions">
+        
+      </div>
+    </paper-card>
+    
+  </template>
+</iron-list>

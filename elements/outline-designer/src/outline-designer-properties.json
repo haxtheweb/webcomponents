@@ -1,0 +1,37 @@
+{
+  /**
+   * Which layout to display
+   */
+  "layoutMode": {
+    "name": "layoutMode",
+    "type": "String",
+    "value": "outline",
+    "reflectToAttribute": false,
+    "observer": "_layoutModeChanged"
+  },
+  /**
+   * Whether or not we are in an editing state
+   */
+  "editMode": {
+    "name": "editMode",
+    "type": "String",
+    "value": false,
+    "reflectToAttribute": true,
+    "observer": "_editModeChanged"
+  },
+  /**
+   * end point / JSON to load
+   */
+  "outlineSchemaUrl": {
+    "name": "outlineSchemaUrl",
+    "type": "String"
+  },
+  /**
+   * JSON outline schema manifest
+   */
+  "manifest": {
+    "name": "manifest",
+    "type": "Object",
+    "notify": true
+  }
+}
