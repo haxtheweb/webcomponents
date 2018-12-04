@@ -115,7 +115,9 @@
     "lit-html": "0.14.0",
     "skatejs": "5.2.4",
     "slim-js": "4.0.5",
-    "twig": "1.12.0"
+    "twig": "1.12.0",
+    "@lrnwebcomponents/deduping-fix": "0.0.37",
+    "@lrnwebcomponents/hax-body-behaviors": "0.0.37"
   },
   "lint-staged": {
     "linters": {
