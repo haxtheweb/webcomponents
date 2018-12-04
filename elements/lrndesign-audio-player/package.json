@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-audio-player-hax.json"
     }
   },
-  "version": "0.0.36",
+  "version": "0.0.37",
   "description": "Automated conversion of lrndesign-audio-player/",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.36",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.37",
     "@polymer/iron-a11y-keys-behavior": "^3.0.0",
     "@polymer/iron-icons": "^3.0.0",
     "@polymer/paper-icon-button": "^3.0.0",
@@ -51,7 +51,7 @@
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.0.36",
+    "@lrnwebcomponents/deduping-fix": "^0.0.37",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.2.1",

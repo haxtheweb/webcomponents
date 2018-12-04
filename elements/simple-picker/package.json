@@ -15,7 +15,7 @@
       "properties": "src/simple-picker-properties.json"
     }
   },
-  "version": "0.0.36",
+  "version": "0.0.37",
   "description": "a simple picker for swatches, icons, etc.",
   "repository": {
     "type": "git",

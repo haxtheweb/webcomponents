@@ -16,7 +16,7 @@
       "hax": "src/simple-drawer-hax.json"
     }
   },
-  "version": "0.0.36",
+  "version": "0.0.37",
   "description": "a singleton drawer element",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^0.0.36",
+    "@lrnwebcomponents/simple-colors": "^0.0.37",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",

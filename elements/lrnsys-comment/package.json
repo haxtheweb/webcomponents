@@ -16,7 +16,7 @@
       "hax": "src/lrnsys-comment-hax.json"
     }
   },
-  "version": "0.0.36",
+  "version": "0.0.37",
   "description": "Automated conversion of lrnsys-comment/",
   "repository": {
     "type": "git",
@@ -40,13 +40,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrndesign-avatar": "^0.0.36",
-    "@lrnwebcomponents/lrnsys-button": "^0.0.36",
-    "@lrnwebcomponents/materializecss-styles": "^0.0.36",
-    "@lrnwebcomponents/moment-element": "^0.0.36",
-    "@lrnwebcomponents/mtz-marked-editor": "^0.0.36",
-    "@lrnwebcomponents/simple-modal": "^0.0.36",
-    "@lrnwebcomponents/word-count": "^0.0.36",
+    "@lrnwebcomponents/lrndesign-avatar": "^0.0.37",
+    "@lrnwebcomponents/lrnsys-button": "^0.0.37",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.37",
+    "@lrnwebcomponents/moment-element": "^0.0.37",
+    "@lrnwebcomponents/mtz-marked-editor": "^0.0.37",
+    "@lrnwebcomponents/simple-modal": "^0.0.37",
+    "@lrnwebcomponents/word-count": "^0.0.37",
     "@polymer/app-layout": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-demo-helpers": "^3.0.0",
@@ -67,7 +67,7 @@
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.0.36",
+    "@lrnwebcomponents/deduping-fix": "^0.0.37",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.2.1",
