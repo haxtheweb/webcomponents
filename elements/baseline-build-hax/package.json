@@ -1,0 +1,99 @@
+{
+  "name": "@lrnwebcomponents/baseline-build-hax",
+  "wcfactory": {
+    "className": "BaselineBuildHax",
+    "customElementClass": "HTMLElement",
+    "elementName": "baseline-build-hax",
+    "generator-wcfactory-version": "0.6.3",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/baseline-build-hax.css",
+      "scss": "src/baseline-build-hax.scss",
+      "html": "src/baseline-build-hax.html",
+      "js": "src/baseline-build-hax.js",
+      "properties": "src/baseline-build-hax-properties.json",
+      "hax": "src/baseline-build-hax-hax.json"
+    }
+  },
+  "version": "0.0.37",
+  "description": "create an inflexible baseline build of hax with all elements",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "baseline-build-hax.js",
+  "module": "baseline-build-hax.es6.js",
+  "umd": "baseline-build-hax.umd.js",
+  "amd": "baseline-build-hax.amd.js",
+  "scripts": {
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/baseline-build-hax/test/",
+    "start":"yarn run dev","build":"../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'","dev":"concurrently --kill-others \"yarn run watch\" \"yarn run serve\"","watch":"../../node_modules/.bin/gulp dev","serve":"polymer serve --npm --module-resolution=node --open","lighthouse":"../../node_modules/.bin/gulp lighthouse"
+  },
+  "author": {
+    "name": "btopro"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@lrnwebcomponents/wysiwyg-hax": "^0.0.37",
+    "@lrnwebcomponents/cms-hax": "^0.0.37",
+    "@lrnwebcomponents/hax-body": "^0.0.37",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.37",
+    "@lrnwebcomponents/a11y-gif-player": "^0.0.37",
+    "@lrnwebcomponents/aframe-player": "^0.0.37",
+    "@lrnwebcomponents/citation-element": "^0.0.37",
+    "@lrnwebcomponents/deduping-fix": "^0.0.37",
+    "@lrnwebcomponents/hero-banner": "^0.0.37",
+    "@lrnwebcomponents/image-compare-slider": "^0.0.37",
+    "@lrnwebcomponents/license-element": "^0.0.37",
+    "@lrnwebcomponents/lrn-aside": "^0.0.37",
+    "@lrnwebcomponents/lrn-calendar": "^0.0.37",
+    "@lrnwebcomponents/lrn-math": "^0.0.37",
+    "@lrnwebcomponents/lrn-table": "^0.0.37",
+    "@lrnwebcomponents/lrn-vocab": "^0.0.37",
+    "@lrnwebcomponents/lrndesign-blockquote": "^0.0.37",
+    "@lrnwebcomponents/magazine-cover": "^0.0.37",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.37",
+    "@lrnwebcomponents/media-behaviors": "^0.0.37",
+    "@lrnwebcomponents/media-image": "^0.0.37",
+    "@lrnwebcomponents/meme-maker": "^0.0.37",
+    "@lrnwebcomponents/multiple-choice": "^0.0.37",
+    "@lrnwebcomponents/paper-audio-player": "^0.0.37",
+    "@lrnwebcomponents/pdf-element": "^0.0.37",
+    "@lrnwebcomponents/person-testimonial": "^0.0.37",
+    "@lrnwebcomponents/place-holder": "^0.0.37",
+    "@lrnwebcomponents/q-r": "^0.0.37",
+    "@lrnwebcomponents/self-check": "^0.0.37",
+    "@lrnwebcomponents/silly-hax-game": "^0.0.37",
+    "@lrnwebcomponents/simple-colors": "^0.0.37",
+    "@lrnwebcomponents/simple-concept-network": "^0.0.37",
+    "@lrnwebcomponents/stop-note": "^0.0.37",
+    "@lrnwebcomponents/tab-list": "^0.0.37",
+    "@lrnwebcomponents/task-list": "^0.0.37",
+    "@lrnwebcomponents/video-player": "^0.0.37",
+    "@lrnwebcomponents/wave-player": "^0.0.37",
+    "@lrnwebcomponents/wikipedia-query": "^0.0.37",
+    "@webcomponents/webcomponentsjs": "2.2.1",
+    "web-animations-js": "2.3.1"
+  },
+  "devDependencies": {
+    "@lrnwebcomponents/deduping-fix":"0.0.35",
+    "@polymer/iron-demo-helpers":"3.0.2",
+    "@polymer/iron-component-page":"github:PolymerElements/iron-component-page",
+    "concurrently":"4.1.0",
+    "gulp-babel":"8.0.0",
+    "gulp-sourcemaps":"2.6.4",
+    "lodash":"4.17.11",
+    "polymer-cli":"1.9.1",
+    "polymer-build":"3.1.1",
+    "wct-browser-legacy":"1.0.2"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}
