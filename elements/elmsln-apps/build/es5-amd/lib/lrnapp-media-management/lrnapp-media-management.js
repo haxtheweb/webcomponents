@@ -18,18 +18,18 @@ define([
   _materializecssStyles
 ) {
   "use strict";
-  function _templateObject_50a09fc0f76d11e89310d7f0fbc64afe() {
+  function _templateObject_5f2f66e0f77011e8b89b0519890f95da() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style include="materializecss-styles">\n      :host {\n        display: block;\n      }\n      paper-button {\n        padding: 0;\n        margin: 0;\n        min-width: 16px;\n      }\n      #details {\n        opacity: 0.5;\n        position: absolute;\n        bottom: 0;\n        right: 0;\n        margin: 0 16px 0 0;\n        background-color: white;\n        padding: 8px;\n      }\n      #details:hover {\n        opacity: 1;\n      }\n      #details span {\n        font-size: 10px;\n        font-weight: normal;\n      }\n      #details .comment-on-work {\n        font-size: 12px;\n        background-color: white;\n      }\n    </style>\n    <iron-ajax\n      id="ajax"\n      url="[[source-path]]"\n      params=""\n      handle-as="json"\n      last-response="{{submissions}}"\n    ></iron-ajax>\n    <iron-scroll-threshold on-lower-threshold="_loadMoreData" id="threshold">\n      <iron-list grid items="[[_toArray(submissions.data)]]" as="item">\n        <template>\n          <paper-card\n            heading="{{item.title}}"\n            image=""\n            elevation="2"\n            animated-shadow="true"\n          >\n            <div class="card-content"></div>\n            <div class="card-actions">\n              <a href="{{item.url}}"\n                ><paper-button raised>View</paper-button></a\n              >\n              <a href="{{item.edit_url}}"\n                ><paper-button raised>Edit</paper-button></a\n              >\n            </div>\n          </paper-card>\n        </template>\n      </iron-list>\n    </iron-scroll-threshold>\n    <paper-dialog\n      id="dialog"\n      entry-animation="scale-up-animation"\n      exit-animation="fade-out-animation"\n    >\n      <paper-dialog-scrollable id="dialogResponse">\n        <iron-image src="{{activeImage}}"></iron-image>\n        <div id="details">\n          <div class="title">\n            <span>Title:</span> <span>{{activeTitle}}</span>\n          </div>\n          <div class="author">\n            <span>Author:</span> <span>{{activeAuthor}}</span>\n          </div>\n          <div class="comments">\n            <span>Comments:</span> <span>{{activeComments}}</span>\n          </div>\n          <div class="comment-on-work">\n            <a href="{{activeUrl}}">\n              <paper-button raised>Comment on this work</paper-button>\n            </a>\n          </div>\n        </div>\n      </paper-dialog-scrollable>\n    </paper-dialog>\n  '
     ]);
-    _templateObject_50a09fc0f76d11e89310d7f0fbc64afe = function _templateObject_50a09fc0f76d11e89310d7f0fbc64afe() {
+    _templateObject_5f2f66e0f77011e8b89b0519890f95da = function _templateObject_5f2f66e0f77011e8b89b0519890f95da() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_50a09fc0f76d11e89310d7f0fbc64afe()
+      _templateObject_5f2f66e0f77011e8b89b0519890f95da()
     ),
     is: "lrnapp-media-management",
     listeners: { click: "_triggerDialog" },

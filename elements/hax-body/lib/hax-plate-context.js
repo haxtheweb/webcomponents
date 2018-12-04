@@ -30,19 +30,33 @@ Polymer({
       .area {
         width: 32px;
         float: left;
-        opacity: .5;
+        opacity: 0.5;
         visibility: visible;
-        transition: .8s all ease;
+        transition: 0.8s all ease;
       }
       .area:hover {
         opacity: 1;
       }
     </style>
     <div class="area">
-      <hax-context-item light="" mini="" icon="arrow-upward" label="Move up" event-name="grid-plate-up" direction="left"></hax-context-item>
-      <hax-context-item light="" mini="" icon="arrow-downward" label="Move down" event-name="grid-plate-down" direction="left"></hax-context-item>
+      <hax-context-item
+        light=""
+        mini=""
+        icon="arrow-upward"
+        label="Move up"
+        event-name="grid-plate-up"
+        direction="left"
+      ></hax-context-item>
+      <hax-context-item
+        light=""
+        mini=""
+        icon="arrow-downward"
+        label="Move down"
+        event-name="grid-plate-down"
+        direction="left"
+      ></hax-context-item>
     </div>
-`,
+  `,
 
   is: "hax-plate-context"
 });

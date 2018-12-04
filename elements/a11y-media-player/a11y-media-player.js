@@ -662,8 +662,8 @@ let A11yMediaPlayer = Polymer({
       root.disableInteractive = true;
       this._youTubeRequest();
     } else {
-      root
-        .$$("slot")
+      root.shadowRoot
+        .querySelector("#slot")
         .assignedNodes()
         .forEach(function(node) {
           if (node.nodeName === "TRACK" || node.nodeName === "SOURCE") {

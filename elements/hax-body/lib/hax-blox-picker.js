@@ -57,7 +57,7 @@ Polymer({
       app-drawer {
         --app-drawer-content-container: {
           background-color: rgba(0, 0, 0, 0.7);
-        };
+        }
         --app-drawer-width: 320px;
       }
       .pref-container {
@@ -74,7 +74,7 @@ Polymer({
         <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
       </paper-button>
     </app-drawer>
-`,
+  `,
 
   is: "hax-blox-picker",
 

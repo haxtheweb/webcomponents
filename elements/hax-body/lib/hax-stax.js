@@ -45,12 +45,12 @@ Register a stax with HAX store.
 */
 Polymer({
   _template: html`
-  <style>
-    :host {
-      display:none;
-    }
-  </style>
-`,
+    <style>
+      :host {
+        display: none;
+      }
+    </style>
+  `,
   is: "hax-stax",
   properties: {
     /**

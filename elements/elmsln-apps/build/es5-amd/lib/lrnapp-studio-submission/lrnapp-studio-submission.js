@@ -14,18 +14,18 @@ define([
   _lrnappStudioSubmissionButton
 ) {
   "use strict";
-  function _templateObject_514ac270f76d11e89310d7f0fbc64afe() {
+  function _templateObject_606f39e0f77011e8b89b0519890f95da() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style include="materializecss-styles">\n      :host {\n        display: block;\n      }\n      paper-button {\n        padding: 0;\n        margin: 0;\n        min-width: 1rem;\n      }\n    </style>\n    <app-location route="{{route}}"></app-location>\n    <app-route\n      route="{{route}}"\n      pattern="[[endPoint]]/submissions/:submission"\n      data="{{data}}"\n      tail="{{tail}}"\n    >\n    </app-route>\n\n    <template is="dom-if" if="[[data.submission]]">\n      <lrnapp-studio-submission-page\n        base-path="{{basePath}}"\n        route="{{tail}}"\n        id="[[data.submission]]"\n        end-point="[[endPoint]]"\n        csrf-token="[[csrfToken]]"\n        data="{{data}}"\n      ></lrnapp-studio-submission-page>\n    </template>\n    <template is="dom-if" if="[[!data.submission]]">\n      This is the lrnapp-studio-submission page.\n    </template>\n\n    <paper-toast id="toast"></paper-toast>\n  '
     ]);
-    _templateObject_514ac270f76d11e89310d7f0fbc64afe = function _templateObject_514ac270f76d11e89310d7f0fbc64afe() {
+    _templateObject_606f39e0f77011e8b89b0519890f95da = function _templateObject_606f39e0f77011e8b89b0519890f95da() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_514ac270f76d11e89310d7f0fbc64afe()
+      _templateObject_606f39e0f77011e8b89b0519890f95da()
     ),
     is: "lrnapp-studio-submission",
     behaviors: [SecureRequest.xhr],

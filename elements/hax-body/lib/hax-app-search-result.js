@@ -27,7 +27,7 @@ Polymer({
         height: 168px;
         border-radius: 0;
         width: 100%;
-        border: 2px solid #CCCCCC;
+        border: 2px solid #cccccc;
         justify-content: flex-start;
         background-color: transparent;
         background-image: none;
@@ -39,7 +39,7 @@ Polymer({
       paper-button:focus,
       paper-button:active {
         border: 2px solid var(--simple-colors-default-theme-light-green-1);
-        background-color:rgba(0, 0, 0, .7);
+        background-color: rgba(0, 0, 0, 0.7);
       }
       .detail-wrapper {
         padding: 0 8px;
@@ -93,13 +93,20 @@ Polymer({
     </style>
 
     <paper-button on-tap="_itemSelected" class="button">
-      <iron-image alt="" class="image" src="[[resultData.image]]" preload="" fade="" sizing="cover"></iron-image>
+      <iron-image
+        alt=""
+        class="image"
+        src="[[resultData.image]]"
+        preload=""
+        fade=""
+        sizing="cover"
+      ></iron-image>
       <div class="detail-wrapper">
         <div class="title">[[resultData.title]]</div>
         <div class="details">[[resultData.details]]</div>
       </div>
     </paper-button>
-`,
+  `,
 
   is: "hax-app-search-result",
 

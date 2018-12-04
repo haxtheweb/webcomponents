@@ -30,182 +30,213 @@ A LRN element for brokering the UI for api endpoints both in querying and upload
 */
 Polymer({
   _template: html`
-  <custom-style>
-    <style is="custom-style" include="materializecss-styles simple-colors">
-      :host {
-        display: block;
-        --hax-manager-steps-color: #FFFFFF;
-        --hax-manager-ink-color: #FFFFFF;
-        --hax-accent: var(--simple-colors-default-theme-light-green-1);
-        color: #FFFFFF;
-      }
-      #dialog {
-        color: #FFFFFF;
-        z-index: 10000;
-        padding: 56px 0;
-        margin-top: 64px;
-        --app-drawer-width: 400px;
-        --app-drawer-content-container: {
-          background-color: rgba(0, 0, 0, 0.7);
-        };
-      }
-      #closedialog {
-        float: right;
-        top: 135px;
-        right: 0;
-        position: absolute;
-        padding: 4px;
-        margin: 0;
-        color: var(--simple-colors-default-theme-light-green-1, green);
-        background-color: transparent;
-        width: 40px;
-        height: 40px;
-        min-width: unset;
-      }
-      :host([active-page="0"]) #dialog {
-        --app-drawer-width: 400px;
-      }
-      :host([active-page="1"]) #dialog {
-        --app-drawer-width: 800px;
-      }
-      :host([active-page="2"]) #dialog {
-        --app-drawer-width: 800px;
-      }
-      :host([active-step]) #dialog {
-        --app-drawer-width: 1000px;
-      }
-      :host([searching]) #dialog {
-        --app-drawer-width: 1000px;
-      }
-      .title {
-        text-align: center;
-        padding: 16px;
-        margin: 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        font-size: 32px;
-        font-weight: bold;
-        font-family: sans-serif;
-        text-transform: uppercase;
-        color: var(--simple-colors-default-theme-light-green-1);
-      }
-      #activepage {
-      }
-      #preview {
-        height: 100%;
-      }
-      vaadin-upload {
-        --primary-color: var(--hax-accent);
-        --primary-font-color: #FFFFFF;
-        --dark-primary-color: #FFFFFF;
-        --light-primary-color: var(--hax-accent);
-        --error-color: darkred;
-        color: #FFFFFF;
-        display: block;
-        padding: 32px !important;
-        --vaadin-upload-button-add-wrapper: {
-          border: 2px solid #FFFFFF;
-          background-color: var(--hax-accent);
-          color: #FFFFFF;
+    <custom-style>
+      <style is="custom-style" include="materializecss-styles simple-colors">
+        :host {
           display: block;
-        };
-        --vaadin-upload-buttons-primary: {
-          display: block;
-          width: 100%;
-          flex: unset;
-          -webkit-flex: unset;
-        };
-        --vaadin-upload-button-add: {
-          color: #000000;
-          display: block;
-          flex: unset;
-          -webkit-flex: unset;
+          --hax-manager-steps-color: #ffffff;
+          --hax-manager-ink-color: #ffffff;
+          --hax-accent: var(--simple-colors-default-theme-light-green-1);
+          color: #ffffff;
+        }
+        #dialog {
+          color: #ffffff;
+          z-index: 10000;
+          padding: 56px 0;
+          margin-top: 64px;
+          --app-drawer-width: 400px;
+          --app-drawer-content-container: {
+            background-color: rgba(0, 0, 0, 0.7);
+          }
+        }
+        #closedialog {
+          float: right;
+          top: 135px;
+          right: 0;
+          position: absolute;
+          padding: 4px;
+          margin: 0;
+          color: var(--simple-colors-default-theme-light-green-1, green);
+          background-color: transparent;
+          width: 40px;
+          height: 40px;
+          min-width: unset;
+        }
+        :host([active-page="0"]) #dialog {
+          --app-drawer-width: 400px;
+        }
+        :host([active-page="1"]) #dialog {
+          --app-drawer-width: 800px;
+        }
+        :host([active-page="2"]) #dialog {
+          --app-drawer-width: 800px;
+        }
+        :host([active-step]) #dialog {
+          --app-drawer-width: 1000px;
+        }
+        :host([searching]) #dialog {
+          --app-drawer-width: 1000px;
+        }
+        .title {
           text-align: center;
-        };
-        --vaadin-upload-drop-label: {
-          color: #FFFFFF;
-          display: block;
-          padding: 16px;
-        };
-        --vaadin-upload-drop-label-dragover: {
-          color: #FFFFFF;
-        };
-        --vaadin-upload-file-list: {
           padding: 16px;
           margin: 0;
-          color: #FFFFFF;
-        };
-        --vaadin-upload-file: {
-          color: #FFFFFF;
-        };
-      }
-      vaadin-upload[dragover] {
-        border-color: #396;
-      }
-      vaadin-upload-file {
-        --disabled-text-color: #222222;
-      }
-      .add-area-content-wrapper {
-        padding: 0 16px;
-      }
-      .add-url-are,
-      .add-upload-area {
-        margin: 16px 0;
-      }
-      .url-description {
-        font-size: 18px;
-        color: #FFFFFF;
-        line-height: 22px;
-        font-family: sans-serif;
-        letter-spacing: 1px;
-      }
-      #steppages {
-        height: 100%;
-      }
-      #newassetconfigure {
-        width: 100%;
-        margin: 0;
-        padding: 16px;
-        background-color: var(--simple-colors-default-theme-light-green-1);
-        color: #000000;
-      }
-      paper-input {
-        color: #FFFFFF;
-        --paper-input-container-invalid-color: var(--simple-colors-red-foreground3);
-        --secondary-text-color: #FFFFFF;
-        --primary-text-color: #FFFFFF;
-        --paper-input-container-input-color: #FFFFFF;
-        --paper-input-container-color: #FFFFFF;
-        --paper-input-container-focus-color: var(--simple-colors-default-theme-light-green-1);
-      }
-      @media screen and (max-width: 550px) {
-        .hide-on-mobile {
-          opacity: 0;
-          visibility: hidden;
-          position: absolute;
-          left: -9999px;
+          background-color: rgba(0, 0, 0, 0.5);
+          font-size: 32px;
+          font-weight: bold;
+          font-family: sans-serif;
+          text-transform: uppercase;
+          color: var(--simple-colors-default-theme-light-green-1);
         }
-        .page-area.hax-manager {
-          padding: 6px;
+        #activepage {
         }
-      }
-    </style>
-  </custom-style>
+        #preview {
+          height: 100%;
+        }
+        vaadin-upload {
+          --primary-color: var(--hax-accent);
+          --primary-font-color: #ffffff;
+          --dark-primary-color: #ffffff;
+          --light-primary-color: var(--hax-accent);
+          --error-color: darkred;
+          color: #ffffff;
+          display: block;
+          padding: 32px !important;
+          --vaadin-upload-button-add-wrapper: {
+            border: 2px solid #ffffff;
+            background-color: var(--hax-accent);
+            color: #ffffff;
+            display: block;
+          }
+          --vaadin-upload-buttons-primary: {
+            display: block;
+            width: 100%;
+            flex: unset;
+            -webkit-flex: unset;
+          }
+          --vaadin-upload-button-add: {
+            color: #000000;
+            display: block;
+            flex: unset;
+            -webkit-flex: unset;
+            text-align: center;
+          }
+          --vaadin-upload-drop-label: {
+            color: #ffffff;
+            display: block;
+            padding: 16px;
+          }
+          --vaadin-upload-drop-label-dragover: {
+            color: #ffffff;
+          }
+          --vaadin-upload-file-list: {
+            padding: 16px;
+            margin: 0;
+            color: #ffffff;
+          }
+          --vaadin-upload-file: {
+            color: #ffffff;
+          }
+        }
+        vaadin-upload[dragover] {
+          border-color: #396;
+        }
+        vaadin-upload-file {
+          --disabled-text-color: #222222;
+        }
+        .add-area-content-wrapper {
+          padding: 0 16px;
+        }
+        .add-url-are,
+        .add-upload-area {
+          margin: 16px 0;
+        }
+        .url-description {
+          font-size: 18px;
+          color: #ffffff;
+          line-height: 22px;
+          font-family: sans-serif;
+          letter-spacing: 1px;
+        }
+        #steppages {
+          height: 100%;
+        }
+        #newassetconfigure {
+          width: 100%;
+          margin: 0;
+          padding: 16px;
+          background-color: var(--simple-colors-default-theme-light-green-1);
+          color: #000000;
+        }
+        paper-input {
+          color: #ffffff;
+          --paper-input-container-invalid-color: var(
+            --simple-colors-red-foreground3
+          );
+          --secondary-text-color: #ffffff;
+          --primary-text-color: #ffffff;
+          --paper-input-container-input-color: #ffffff;
+          --paper-input-container-color: #ffffff;
+          --paper-input-container-focus-color: var(
+            --simple-colors-default-theme-light-green-1
+          );
+        }
+        @media screen and (max-width: 550px) {
+          .hide-on-mobile {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            left: -9999px;
+          }
+          .page-area.hax-manager {
+            padding: 6px;
+          }
+        }
+      </style>
+    </custom-style>
     <app-drawer id="dialog" opened="{{opened}}" disable-swipe="">
-      <div class="dialog-contents" id="dialogcontent" style="height: 100%; overflow: auto;">
-        <iron-pages id="steppages" selected="{{activeStep}}" fallback-selection="select" role="main">
+      <div
+        class="dialog-contents"
+        id="dialogcontent"
+        style="height: 100%; overflow: auto;"
+      >
+        <iron-pages
+          id="steppages"
+          selected="{{activeStep}}"
+          fallback-selection="select"
+          role="main"
+        >
           <div data-value="select">
-            <iron-pages id="activepage" selected="{{activePage}}" fallback-selection="link">
+            <iron-pages
+              id="activepage"
+              selected="{{activePage}}"
+              fallback-selection="link"
+            >
               <div class="page-area add-area">
                 <h3 class="title">[[addTitle]]</h3>
                 <div class="add-area-content-wrapper">
                   <div class="add-url-area">
-                    <paper-input id="url" label="URL" type="url" auto-validate=""></paper-input>
-                  <div class="url-description">A full URL with https:// referencing a link that already exists on the web.</div>
+                    <paper-input
+                      id="url"
+                      label="URL"
+                      type="url"
+                      auto-validate=""
+                    ></paper-input>
+                    <div class="url-description">
+                      A full URL with https:// referencing a link that already
+                      exists on the web.
+                    </div>
                   </div>
                   <div class="add-upload-area">
-                    <vaadin-upload form-data-name="file-upload" id="fileupload" hidden\$="[[!canSupportUploads]]"></vaadin-upload>
+                    <vaadin-upload
+                      form-data-name="file-upload"
+                      id="fileupload"
+                      hidden\$="[[!canSupportUploads]]"
+                    ></vaadin-upload>
                   </div>
-                  <paper-button id="newassetconfigure" raised="">Configure item</paper-button>
+                  <paper-button id="newassetconfigure" raised=""
+                    >Configure item</paper-button
+                  >
                 </div>
               </div>
               <div class="page-area">
@@ -219,7 +250,10 @@ Polymer({
             </iron-pages>
           </div>
           <div style="height:100%;">
-            <hax-preview id="preview" element="{{activeHaxElement}}"></hax-preview>
+            <hax-preview
+              id="preview"
+              element="{{activeHaxElement}}"
+            ></hax-preview>
           </div>
         </iron-pages>
         <paper-button id="closedialog" on-tap="cancel">
@@ -227,7 +261,7 @@ Polymer({
         </paper-button>
       </div>
     </app-drawer>
-`,
+  `,
 
   is: "hax-manager",
 

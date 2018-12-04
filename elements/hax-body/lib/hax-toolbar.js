@@ -12,14 +12,17 @@ import "./hax-context-item.js";
 import "./hax-context-item-menu.js";
 Polymer({
   _template: html`
-    <style is="custom-style" include="materializecss-styles-colors simple-colors">
+    <style
+      is="custom-style"
+      include="materializecss-styles-colors simple-colors"
+    >
       :host {
         display: flex;
         font-family: "Roboto", sans-serif;
         justify-content: flex-start;
-        opacity: .4;
+        opacity: 0.4;
         visibility: visible;
-        transition: .6s all ease;
+        transition: 0.6s all ease;
         box-sizing: border-box;
         height: 32px;
         pointer-events: all;
@@ -55,35 +58,112 @@ Polymer({
         height: 32px;
         min-width: 100px;
         --paper-slider-font-color: #000000;
-        --paper-slider-active-color: var(--simple-colors-default-theme-light-green-1);
-        --paper-slider-knob-color: var(--simple-colors-default-theme-light-green-1);
-        --paper-slider-pin-color: var(--simple-colors-default-theme-light-green-1);
+        --paper-slider-active-color: var(
+          --simple-colors-default-theme-light-green-1
+        );
+        --paper-slider-knob-color: var(
+          --simple-colors-default-theme-light-green-1
+        );
+        --paper-slider-pin-color: var(
+          --simple-colors-default-theme-light-green-1
+        );
       }
       .convert-button {
         border-top: 1px solid #d3d3d3;
       }
     </style>
     <div class="wrapper">
-    <hax-context-item hidden$="[[inline]]" mini="" light="" icon="close" label="Close" event-name="close-menu" class="close-cap" direction="left"></hax-context-item>
-    <hax-context-item-menu hidden$="[[!haxProperties.canPosition]]" selected-value="{{justifyValue}}" id="justify" icon="[[justifyIcon]]" label="Alignment">
-      <hax-context-item menu icon="editor:format-align-left" event-name="hax-align-left">Left</hax-context-item>
-      <hax-context-item menu icon="editor:format-align-center" event-name="hax-align-center">Center</hax-context-item>
-      <hax-context-item menu icon="editor:format-align-right" event-name="hax-align-right">Right</hax-context-item>
-    </hax-context-item-menu>
-    <paper-slider hidden$="[[!haxProperties.canScale]]" id="slider" pin="" min="25" step="25" max="100" value="{{size}}"></paper-slider>
-    <paper-tooltip hidden$="[[inline]]" for="slider" position="top" offset="10">
-      Resize
-    </paper-tooltip>
-    <slot name="primary"></slot>
-    <hax-context-item hidden$="[[inline]]" icon="delete" icon-class="red-text text-darken-1" label="Remove" event-name="grid-plate-delete"></hax-context-item>
-    <hax-context-item-menu corner="right" hidden$="[[hideMore]]" icon="more-vert" label="More" id="moremenu" event-name="grid-plate-op" reset-on-select="">
-      <paper-item value="" hidden></paper-item>
-      <slot name="more"></slot>
-      <hax-context-item menu icon="icons:content-copy" icon-class="green-text" event-name="grid-plate-duplicate">Duplicate</hax-context-item>
-      <hax-context-item hidden$="[[hideTransform]]" menu icon="image:transform" class="convert-button" icon-class="orange-text" event-name="grid-plate-convert">Transform to..</hax-context-item>
-    </hax-context-item-menu>
+      <hax-context-item
+        hidden$="[[inline]]"
+        mini=""
+        light=""
+        icon="close"
+        label="Close"
+        event-name="close-menu"
+        class="close-cap"
+        direction="left"
+      ></hax-context-item>
+      <hax-context-item-menu
+        hidden$="[[!haxProperties.canPosition]]"
+        selected-value="{{justifyValue}}"
+        id="justify"
+        icon="[[justifyIcon]]"
+        label="Alignment"
+      >
+        <hax-context-item
+          menu
+          icon="editor:format-align-left"
+          event-name="hax-align-left"
+          >Left</hax-context-item
+        >
+        <hax-context-item
+          menu
+          icon="editor:format-align-center"
+          event-name="hax-align-center"
+          >Center</hax-context-item
+        >
+        <hax-context-item
+          menu
+          icon="editor:format-align-right"
+          event-name="hax-align-right"
+          >Right</hax-context-item
+        >
+      </hax-context-item-menu>
+      <paper-slider
+        hidden$="[[!haxProperties.canScale]]"
+        id="slider"
+        pin=""
+        min="25"
+        step="25"
+        max="100"
+        value="{{size}}"
+      ></paper-slider>
+      <paper-tooltip
+        hidden$="[[inline]]"
+        for="slider"
+        position="top"
+        offset="10"
+      >
+        Resize
+      </paper-tooltip>
+      <slot name="primary"></slot>
+      <hax-context-item
+        hidden$="[[inline]]"
+        icon="delete"
+        icon-class="red-text text-darken-1"
+        label="Remove"
+        event-name="grid-plate-delete"
+      ></hax-context-item>
+      <hax-context-item-menu
+        corner="right"
+        hidden$="[[hideMore]]"
+        icon="more-vert"
+        label="More"
+        id="moremenu"
+        event-name="grid-plate-op"
+        reset-on-select=""
+      >
+        <paper-item value="" hidden></paper-item>
+        <slot name="more"></slot>
+        <hax-context-item
+          menu
+          icon="icons:content-copy"
+          icon-class="green-text"
+          event-name="grid-plate-duplicate"
+          >Duplicate</hax-context-item
+        >
+        <hax-context-item
+          hidden$="[[hideTransform]]"
+          menu
+          icon="image:transform"
+          class="convert-button"
+          icon-class="orange-text"
+          event-name="grid-plate-convert"
+          >Transform to..</hax-context-item
+        >
+      </hax-context-item-menu>
     </div>
-`,
+  `,
 
   is: "hax-toolbar",
 

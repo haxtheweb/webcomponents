@@ -6,127 +6,187 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 
 Polymer({
   _template: html`
-  <custom-style>
-    <style is="custom-style">
-      :host {
-        display: inline-block;
-        position: relative;
-      }
-      :host, :host #button, :host #palette {
-        margin: 0;
-        padding: 0;
-      }
-      :host #collapse {
-        position: absolute;
-        top: var(--simple-colors-picker-preview-size, 20px);
-        margin-top: 12px;
-      }
-      :host([disabled]) #collapse,
-      :host([collapsed]) #collapse {
-        height: 0;
-        overflow: hidden;
-        transition: all 0.25s;
-        transition-delay: 0.25s;
-      }
-      :host #palette {
-        position: absolute;
-        left: 0;
-        right: 0;
-        display: table;
-        border-collapse: collapse;
-        z-index: 1000;
-        border: 1px solid;
-        border-color: var(--simple-colors-picker-button-border-color, --simple-colors-background3);
-      }
-      :host .row {
-        display: table-row;
-      }
-      :host simple-colors-picker-swatch {
-        display: table-cell;
-        padding-top: var(--simple-colors-picker-swatch-size, 20px);
-        padding-left: var(--simple-colors-picker-swatch-size, 20px);
-      }
-      :host simple-colors-picker-swatch[disabled] {
-        display: none;
-      }
-      :host .sr-only {
-        display: table-cell;
-        font-size: 0;
-      }
-      :host #button {
-        display: flex;
-        align-items: center;
-        border: 1px solid;
-        border-radius: 4px;
-        color: var(--simple-colors-picker-button-color, --simple-colors-foreground2);
-        border-color: var(--simple-colors-picker-button-border-color, --simple-colors-background3);
-        background-color: var(--simple-colors-picker-button-bg-color, --simple-colors-background2);
-      }
-      :host([disabled]) #button, 
-      :host #button[disabled] {
-        color: var(--simple-colors-picker-button-disabled-color, --simple-colors-foreground4);
-        border-color: var(--simple-colors-picker-button-disabled-border-color, --simple-colors-background5);
-        background-color: var(--simple-colors-picker-button-disabled-bg-color, --simple-colors-background4);
-        cursor: not-allowed;
-      }
-      :host(:not([disabled])) #button:focus,
-      :host(:not([disabled])) #button:hover {
-        color: var(--simple-colors-picker-button-hover-color, --simple-colors-foreground1);
-        border-color: var(--simple-colors-picker-button-hover-color, --simple-colors-background5);
-        background-color: var(--simple-colors-picker-button-hover-bg-color, --simple-colors-background1);
-      }
-      :host #button > div {
-        margin: 5px;
-        border: 1px solid;
-        flex-grow: 1;
-        border-color: var(--simple-colors-picker-button-hover-color, --simple-colors-background5);
-        display: inline-block;
-      }
-      :host #button > div, :host #button > div iron-icon {
-        width: var(--simple-colors-picker-preview-size, 20px);
-        height: var(--simple-colors-picker-preview-size, 20px);
-      }
-      :host(:not([collapsed])) #icon {
-        transform: rotate(-90deg);
-        transition: transform 0.25s;
-      }
-      :host #empty {
-        padding: 15px;
-      }
-      @media screen and (max-width: 600px) {
+    <custom-style>
+      <style is="custom-style">
         :host {
-          position: static;
+          display: inline-block;
+          position: relative;
+        }
+        :host,
+        :host #button,
+        :host #palette {
+          margin: 0;
+          padding: 0;
         }
         :host #collapse {
-          top: 0;
-          margin-top: 0;
-          position: relative;
-        } 
+          position: absolute;
+          top: var(--simple-colors-picker-preview-size, 20px);
+          margin-top: 12px;
+        }
+        :host([disabled]) #collapse,
+        :host([collapsed]) #collapse {
+          height: 0;
+          overflow: hidden;
+          transition: all 0.25s;
+          transition-delay: 0.25s;
+        }
         :host #palette {
-          position: sticky;
-        }  
-      }
-    </style>
-  </custom-style>
-  <button id="button" label="[[label]]" disabled\$="[[disabled]]">
-    <div id="swatch" style="[[selectedStyle]]"><iron-icon id="texture" icon="image:texture"></iron-icon></div>
-    <span id="icon"><iron-icon icon="arrow-drop-down"></iron-icon></span>
-  </button>
-  <div id="collapse" aria-collapsed="[[collapse]]">
-    <div id="palette">
-      <div id="empty">No colors available.</div>
-      <template id="rows" is="dom-repeat" items="[[swatches]]" as="row" index-as="level">
-        <div class="row">
-          <span id="level" class="sr-only">lightness level [[level]]</span>
-          <template id="swatches" is="dom-repeat" items="[[row]]" as="swatch" index-as="order">
-            <simple-colors-picker-swatch aria-describedby="level" disabled="[[disabled]]" hex="[[swatch.hex]]" label="[[swatch.label]]" level="[[swatch.level]]" order="[[order]]" role="button" selected="[[swatch.selected]]" tabindex="0">
-            </simple-colors-picker-swatch>
-          </template>
-        </div>
-      </template>
+          position: absolute;
+          left: 0;
+          right: 0;
+          display: table;
+          border-collapse: collapse;
+          z-index: 1000;
+          border: 1px solid;
+          border-color: var(
+            --simple-colors-picker-button-border-color,
+            --simple-colors-background3
+          );
+        }
+        :host .row {
+          display: table-row;
+        }
+        :host simple-colors-picker-swatch {
+          display: table-cell;
+          padding-top: var(--simple-colors-picker-swatch-size, 20px);
+          padding-left: var(--simple-colors-picker-swatch-size, 20px);
+        }
+        :host simple-colors-picker-swatch[disabled] {
+          display: none;
+        }
+        :host .sr-only {
+          display: table-cell;
+          font-size: 0;
+        }
+        :host #button {
+          display: flex;
+          align-items: center;
+          border: 1px solid;
+          border-radius: 4px;
+          color: var(
+            --simple-colors-picker-button-color,
+            --simple-colors-foreground2
+          );
+          border-color: var(
+            --simple-colors-picker-button-border-color,
+            --simple-colors-background3
+          );
+          background-color: var(
+            --simple-colors-picker-button-bg-color,
+            --simple-colors-background2
+          );
+        }
+        :host([disabled]) #button,
+        :host #button[disabled] {
+          color: var(
+            --simple-colors-picker-button-disabled-color,
+            --simple-colors-foreground4
+          );
+          border-color: var(
+            --simple-colors-picker-button-disabled-border-color,
+            --simple-colors-background5
+          );
+          background-color: var(
+            --simple-colors-picker-button-disabled-bg-color,
+            --simple-colors-background4
+          );
+          cursor: not-allowed;
+        }
+        :host(:not([disabled])) #button:focus,
+        :host(:not([disabled])) #button:hover {
+          color: var(
+            --simple-colors-picker-button-hover-color,
+            --simple-colors-foreground1
+          );
+          border-color: var(
+            --simple-colors-picker-button-hover-color,
+            --simple-colors-background5
+          );
+          background-color: var(
+            --simple-colors-picker-button-hover-bg-color,
+            --simple-colors-background1
+          );
+        }
+        :host #button > div {
+          margin: 5px;
+          border: 1px solid;
+          flex-grow: 1;
+          border-color: var(
+            --simple-colors-picker-button-hover-color,
+            --simple-colors-background5
+          );
+          display: inline-block;
+        }
+        :host #button > div,
+        :host #button > div iron-icon {
+          width: var(--simple-colors-picker-preview-size, 20px);
+          height: var(--simple-colors-picker-preview-size, 20px);
+        }
+        :host(:not([collapsed])) #icon {
+          transform: rotate(-90deg);
+          transition: transform 0.25s;
+        }
+        :host #empty {
+          padding: 15px;
+        }
+        @media screen and (max-width: 600px) {
+          :host {
+            position: static;
+          }
+          :host #collapse {
+            top: 0;
+            margin-top: 0;
+            position: relative;
+          }
+          :host #palette {
+            position: sticky;
+          }
+        }
+      </style>
+    </custom-style>
+    <button id="button" label="[[label]]" disabled\$="[[disabled]]">
+      <div id="swatch" style="[[selectedStyle]]">
+        <iron-icon id="texture" icon="image:texture"></iron-icon>
+      </div>
+      <span id="icon"><iron-icon icon="arrow-drop-down"></iron-icon></span>
+    </button>
+    <div id="collapse" aria-collapsed="[[collapse]]">
+      <div id="palette">
+        <div id="empty">No colors available.</div>
+        <template
+          id="rows"
+          is="dom-repeat"
+          items="[[swatches]]"
+          as="row"
+          index-as="level"
+        >
+          <div class="row">
+            <span id="level" class="sr-only">lightness level [[level]]</span>
+            <template
+              id="swatches"
+              is="dom-repeat"
+              items="[[row]]"
+              as="swatch"
+              index-as="order"
+            >
+              <simple-colors-picker-swatch
+                aria-describedby="level"
+                disabled="[[disabled]]"
+                hex="[[swatch.hex]]"
+                label="[[swatch.label]]"
+                level="[[swatch.level]]"
+                order="[[order]]"
+                role="button"
+                selected="[[swatch.selected]]"
+                tabindex="0"
+              >
+              </simple-colors-picker-swatch>
+            </template>
+          </div>
+        </template>
+      </div>
     </div>
-  </div>
-`,
+  `,
 
   is: "simple-colors-picker",
 

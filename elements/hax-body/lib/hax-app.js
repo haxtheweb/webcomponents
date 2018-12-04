@@ -125,11 +125,11 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 */
 Polymer({
   _template: html`
-  <style>
-    :host {
-      display:none;
-    }
-  </style>
+    <style>
+      :host {
+        display: none;
+      }
+    </style>
   `,
   is: "hax-app",
   properties: {

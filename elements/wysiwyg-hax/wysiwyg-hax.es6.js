@@ -4,11 +4,9 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         display: block;
       }
     </style>
-    <textarea
-      id\$="[[fieldId]]"
-      name="[[fieldName]]"
-      hidden=""
-    >[[bodyValue]]</textarea>
+    <textarea id\$="[[fieldId]]" name="[[fieldName]]" hidden="">
+[[bodyValue]]</textarea
+    >
     <cms-hax
       open-default="[[openDefault]]"
       hide-message=""

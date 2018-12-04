@@ -24,18 +24,18 @@ define([
   "use strict";
   Object.defineProperty(_exports, "__esModule", { value: !0 });
   _exports.ElmsmediaDashboard = void 0;
-  function _templateObject_4ffd5ae0f76d11e89310d7f0fbc64afe() {
+  function _templateObject_5ddb2180f77011e8b89b0519890f95da() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n      paper-dialog {\n        padding: 1em;\n      }\n      #toolbar {\n        display: flex;\n        justify-content: flex-end;\n        align-items: center;\n      }\n    </style>\n\n    <app-location route="{{route}}"></app-location>\n    <app-route\n      route="{{route}}"\n      pattern="/:page"\n      data="{{data}}"\n      tail="{{tail}}"\n      query-params="{{queryParams}}"\n    ></app-route>\n\n    <div id="toolbar">\n      <elmsmedia-dashboard-toolbar-filters\n        filters="[[queryParams]]"\n      ></elmsmedia-dashboard-toolbar-filters>\n      <elmsmedia-dashboard-toolbar-button\n        icon="filter-list"\n        title="Filter"\n        on-click="toggleFilters"\n      ></elmsmedia-dashboard-toolbar-button>\n      <elmsmedia-dashboard-toolbar-button\n        icon="search"\n        title="Search"\n        on-click="toggleSearch"\n      ></elmsmedia-dashboard-toolbar-button>\n    </div>\n\n    <paper-dialog id="filterDialog" with-backdrop="">\n      <h3>Filter Media</h3>\n      <elmsmedia-dashboard-filters\n        form="{{queryParams}}"\n        on-filter-changed="_filterChanged"\n      ></elmsmedia-dashboard-filters>\n      <div class="buttons">\n        <paper-button dialog-dismiss="">Dismiss dialog</paper-button>\n      </div>\n    </paper-dialog>\n\n    <hax-app\n      id="haxSource"\n      auto=""\n      query-param="title"\n      request-end-point="[[requestEndPoint]]"\n      request-params="{{queryParams}}"\n      data="{\n      &quot;root&quot;: &quot;list&quot;,\n      &quot;gizmoType&quot;: &quot;video&quot;,\n      &quot;url&quot;: &quot;http://media.elmsln.local/entity_iframe/node/&quot;,\n      &quot;id&quot;: &quot;id&quot;,\n      &quot;title&quot;: &quot;attributes.title&quot;,\n      &quot;description&quot;: &quot;attributes.body&quot;,\n      &quot;image&quot;: &quot;display.image&quot;,\n      &quot;customGizmoType&quot;: &quot;type&quot;}"\n    ></hax-app>\n  '
     ]);
-    _templateObject_4ffd5ae0f76d11e89310d7f0fbc64afe = function _templateObject_4ffd5ae0f76d11e89310d7f0fbc64afe() {
+    _templateObject_5ddb2180f77011e8b89b0519890f95da = function _templateObject_5ddb2180f77011e8b89b0519890f95da() {
       return data;
     };
     return data;
   }
   var ElmsmediaDashboard = (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_4ffd5ae0f76d11e89310d7f0fbc64afe()
+      _templateObject_5ddb2180f77011e8b89b0519890f95da()
     ),
     is: "elmsmedia-dashboard",
     properties: {

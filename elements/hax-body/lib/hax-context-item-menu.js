@@ -25,15 +25,23 @@ Polymer({
       }
       :host hax-toolbar-menu ::slotted(*):hover {
         background-color: #cccccc;
-      };
+      }
       :host hax-toolbar-menu ::slotted(*) {
         height: 32px;
-      };
+      }
     </style>
-    <hax-toolbar-menu corner="[[corner]]" id="menu" icon="[[icon]]" tooltip="[[label]]" tooltip-direction="[[direction]]" selected="{{selectedValue}}" reset-on-select="[[resetOnSelect]]">
+    <hax-toolbar-menu
+      corner="[[corner]]"
+      id="menu"
+      icon="[[icon]]"
+      tooltip="[[label]]"
+      tooltip-direction="[[direction]]"
+      selected="{{selectedValue}}"
+      reset-on-select="[[resetOnSelect]]"
+    >
       <slot></slot>
     </hax-toolbar-menu>
-`,
+  `,
 
   is: "hax-context-item-menu",
 

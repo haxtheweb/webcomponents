@@ -30,18 +30,18 @@ define([
   _lrnappOpenStudio
 ) {
   "use strict";
-  function _templateObject_51432150f76d11e89310d7f0fbc64afe() {
+  function _templateObject_605b3cb0f77011e8b89b0519890f95da() {
     var data = babelHelpers.taggedTemplateLiteral([
       '\n    <style>\n      :host {\n        display: block;\n      }\n    </style>\n\n    <app-location\n      route="{{route}}"\n      query-params="{{queryParams}}"\n    ></app-location>\n    <app-route\n      route="{{route}}"\n      pattern="[[basePath]]/:page"\n      data="{{data}}"\n      tail="{{tail}}"\n      query-params="{{queryParams}}"\n    >\n    </app-route>\n\n    <iron-selector\n      selected="{{data.page}}"\n      attr-for-selected="name"\n      role="navigation"\n    >\n      <a tabindex="-1" name="lrnapp-studio-dashboard" on-tap="_dashboardClicked"\n        >A</a\n      >\n      <a tabindex="-1" name="lrnapp-studio-kanban" on-tap="_kanbanClicked">B</a>\n      <a tabindex="-1" name="lrnapp-open-studio" on-tap="_openstudioClicked"\n        >C</a\n      >\n    </iron-selector>\n\n    <iron-pages\n      selected="{{data.page}}"\n      attr-for-selected="name"\n      fallback-selection="lrnapp-studio-dashboard"\n      role="main"\n    >\n      <lrnapp-studio-dashboard\n        name="lrnapp-studio-dashboard"\n        csrf-token="[[csrfToken]]"\n        end-point="[[_endPoint(\'lrnapp-studio-dashboard\')]]"\n        base-path="[[basePath]]"\n        elmsln-course="[[elmslnCourse]]"\n        elmsln-section="[[elmslnSection]]"\n        route="[[tail]]"\n      >\n      </lrnapp-studio-dashboard>\n      <lrnapp-studio-kanban\n        name="lrnapp-studio-kanban"\n        csrf-token="[[csrfToken]]"\n        end-point="[[_endPoint(\'lrnapp-studio-dashboard\')]]"\n        base-path="[[basePath]]"\n        source-path="[[_sourcePath(\'lrnapp-studio-kanban/kanban-data\')]]"\n        elmsln-course="[[elmslnCourse]]"\n        elmsln-section="[[elmslnSection]]"\n        route="[[tail]]"\n      ></lrnapp-studio-kanban>\n      <lrnapp-open-studio\n        name="lrnapp-open-studio"\n        csrf-token="[[csrfToken]]"\n        end-point="[[_endPoint(\'lrnapp-open-studio\')]]"\n        base-path="[[basePath]]"\n        source-path="[[_sourcePath(\'lrnapp-open-studio/data\')]]"\n        elmsln-course="[[elmslnCourse]]"\n        elmsln-section="[[elmslnSection]]"\n        route="[[tail]]"\n      >\n      </lrnapp-open-studio>\n    </iron-pages>\n  '
     ]);
-    _templateObject_51432150f76d11e89310d7f0fbc64afe = function _templateObject_51432150f76d11e89310d7f0fbc64afe() {
+    _templateObject_605b3cb0f77011e8b89b0519890f95da = function _templateObject_605b3cb0f77011e8b89b0519890f95da() {
       return data;
     };
     return data;
   }
   (0, _polymerLegacy.Polymer)({
     _template: (0, _polymerLegacy.html)(
-      _templateObject_51432150f76d11e89310d7f0fbc64afe()
+      _templateObject_605b3cb0f77011e8b89b0519890f95da()
     ),
     is: "lrnapp-studio-root",
     properties: {

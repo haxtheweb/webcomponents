@@ -20,7 +20,7 @@ Polymer({
       }
     </style>
     <slot></slot>
-`,
+  `,
 
   is: "hax-autoloader",
 

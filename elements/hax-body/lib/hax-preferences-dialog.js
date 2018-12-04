@@ -57,7 +57,7 @@ Polymer({
       app-drawer {
         --app-drawer-content-container: {
           background-color: rgba(0, 0, 0, 0.7);
-        };
+        }
         --app-drawer-width: 320px;
       }
       eco-json-schema-object {
@@ -67,30 +67,41 @@ Polymer({
           flex: unset;
           -webkit-flex-basis: unset;
           flex-basis: unset;
-        };
+        }
         --paper-checkbox-size: 22px;
-        --paper-checkbox-unchecked-color: var(--simple-colors-blue-grey-background1) !important;
-        --paper-checkbox-checked-color: var(--simple-colors-light-green-foreground3) !important;
-        --paper-checkbox-checked-ink-color: #FFFFFF !important;
-        --paper-checkbox-unchecked-ink-color: #FFFFFF !important;
-        --paper-checkbox-label-color: var(--simple-colors-blue-grey-background1) !important;
-        --paper-checkbox-label-checked-color: var(--simple-colors-accent-background1) !important;
+        --paper-checkbox-unchecked-color: var(
+          --simple-colors-blue-grey-background1
+        ) !important;
+        --paper-checkbox-checked-color: var(
+          --simple-colors-light-green-foreground3
+        ) !important;
+        --paper-checkbox-checked-ink-color: #ffffff !important;
+        --paper-checkbox-unchecked-ink-color: #ffffff !important;
+        --paper-checkbox-label-color: var(
+          --simple-colors-blue-grey-background1
+        ) !important;
+        --paper-checkbox-label-checked-color: var(
+          --simple-colors-accent-background1
+        ) !important;
         --paper-checkbox-label: {
           font-size: 22px;
           line-height: 32px;
-        };
+        }
       }
     </style>
     <app-drawer id="dialog" align="right">
       <h3 class="title">[[title]]</h3>
       <div style="height: 100%; overflow: auto;" class="pref-container">
-        <eco-json-schema-object schema="[[schema]]" value="{{preferences}}"></eco-json-schema-object>
+        <eco-json-schema-object
+          schema="[[schema]]"
+          value="{{preferences}}"
+        ></eco-json-schema-object>
       </div>
       <paper-button id="closedialog" on-tap="close">
         <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
       </paper-button>
     </app-drawer>
-`,
+  `,
 
   is: "hax-preferences-dialog",
 
