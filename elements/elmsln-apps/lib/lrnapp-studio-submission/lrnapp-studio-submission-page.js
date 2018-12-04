@@ -11,7 +11,7 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-badge/paper-badge.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "@vaadin/vaadin-split-layout/vaadin-split-layout.js";
-import "@lrnwebcomponents/lrnsys-dialog/lrnsys-dialog.js";
+import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/lrnsys-comment/lib/lrnsys-comment-list.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";

@@ -1,10 +1,1 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";class ElmslnApps extends PolymerElement{static get template(){return html`
-<style>:host {
-  display: block;
-}
-
-:host([hidden]) {
-  display: none;
-}
-</style>
-<slot></slot>`}static get properties(){return{}}static get tag(){return"elmsln-apps"}connectedCallback(){super.connectedCallback()}}window.customElements.define(ElmslnApps.tag,ElmslnApps);export{ElmslnApps};
+import"./lib/elmsmedia-dashboard/elmsmedia-dashboard.js";import"./lib/elmsmedia-upload/elmsmedia-upload.js";import"./lib/lrnapp-book/lrnapp-book.js";import"./lib/lrnapp-canvas-listing/lrnapp-canvas-listing.js";import"./lib/lrnapp-cis/lrnapp-cis.js";import"./lib/lrnapp-gallery-grid/lrnapp-gallery-grid.js";import"./lib/lrnapp-media-grid/lrnapp-media-grid.js";import"./lib/lrnapp-media-management/lrnapp-media-management.js";import"./lib/lrnapp-media-upload/lrnapp-media-upload.js";import"./lib/lrnapp-open-studio/lrnapp-open-studio.js";import"./lib/lrnapp-studio-dashboard/lrnapp-studio-dashboard.js";import"./lib/lrnapp-studio-instructor/lrnapp-studio-instructor.js";import"./lib/lrnapp-studio-kanban/lrnapp-studio-kanban.js";import"./lib/lrnapp-studio-root/lrnapp-studio-root.js";import"./lib/lrnapp-studio-submission/lrnapp-studio-submission.js";import"./lib/mooc-content/mooc-content.js";

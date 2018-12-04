@@ -1,10 +1,9 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@polymer/scary-gallery/scary-gallery.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-scroll-threshold/iron-scroll-threshold.js";
-import "@polymer/elmsln-loading/elmsln-loading.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/paper-button/paper-button.js";
+import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 Polymer({
   _template: html`

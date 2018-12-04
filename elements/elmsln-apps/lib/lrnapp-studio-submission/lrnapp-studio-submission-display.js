@@ -1,8 +1,8 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/marked-element/marked-element.js";
-import "@polymer/image-inspector/image-inspector.js";
 import "@polymer/iron-image/iron-image.js";
+import "@lrnwebcomponents/image-inspector/image-inspector.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import "@lrnwebcomponents/word-count/word-count.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";

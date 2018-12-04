@@ -4,7 +4,7 @@ import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-import "./lrnapp-studio-submission-display.js";
+import "@lrnwebcomponents/elmsln-apps/lib/lrnapp-studio-submission/lrnapp-studio-submission-display.js";
 Polymer({
   _template: html`
     <style include="materializecss-styles"></style>

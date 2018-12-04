@@ -9,9 +9,9 @@ import "@polymer/iron-selector/iron-selector.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
-import "./lrnapp-studio-dashboard.js";
-import "./lrnapp-studio-kanban.js";
-import "./lrnapp-open-studio.js";
+import "@lrnwebcomponents/elmsln-apps/lib/lrnapp-studio-dashboard/lrnapp-studio-dashboard.js";
+import "@lrnwebcomponents/elmsln-apps/lib/lrnapp-studio-kanban/lrnapp-studio-kanban.js";
+import "@lrnwebcomponents/elmsln-apps/lib/lrnapp-open-studio/lrnapp-open-studio.js";
 Polymer({
   _template: html`
     <style>

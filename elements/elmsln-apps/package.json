@@ -41,7 +41,10 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@polymer/polymer": "^3.0.5",
-    "@vaadin/vaadin-grid": "^5.2.5"
+    "@vaadin/vaadin-grid": "^5.2.5",
+    "@vaadin/vaadin-upload": "^4.2.1",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.36",
+    "@lrnwebcomponents/elmsln-loading": "^0.0.36"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^0.0.36",

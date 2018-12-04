@@ -2,7 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
-import "@lrnwebcomponents/paper-/word-count.js";
+import "@lrnwebcomponents/word-count/word-count.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 Polymer({
   _template: html`

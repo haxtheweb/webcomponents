@@ -4,7 +4,6 @@ import "@polymer/app-route/app-route.js";
 import "@polymer/paper-toast/paper-toast.js";
 import "./lrnapp-studio-submission-page.js";
 import "./lrnapp-studio-submission-button.js";
-/*<link rel="import" href="../../bower_components/build/build/default/build.html">*/
 Polymer({
   _template: html`
     <style include="materializecss-styles">

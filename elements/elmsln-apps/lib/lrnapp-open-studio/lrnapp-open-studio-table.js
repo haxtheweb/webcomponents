@@ -7,7 +7,7 @@ import "@vaadin/vaadin-grid/vaadin-grid-sorter.js";
 import "@vaadin/vaadin-grid/vaadin-grid-filter.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-import "./lrnapp-studio-submission-display.js";
+import "@lrnwebcomponents/elmsln-apps/lib/lrnapp-studio-submission/lrnapp-studio-submission-display.js";
 Polymer({
   _template: html`
     <custom-style>

@@ -23,7 +23,7 @@ import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
-import "./lrnapp-studio-submission.js";
+import "@lrnwebcomponents/elmsln-apps/lib/lrnapp-studio-submission/lrnapp-studio-submission.js";
 Polymer({
   _template: html`
   <style include="materializecss-styles">

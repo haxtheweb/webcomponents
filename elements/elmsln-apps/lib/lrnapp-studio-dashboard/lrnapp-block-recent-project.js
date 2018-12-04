@@ -3,7 +3,7 @@ import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/paper-card/paper-card.js";
-import "@polymer/paper-item/paper-item-styles.js";
+import "@polymer/paper-item/paper-item-shared-styles.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
