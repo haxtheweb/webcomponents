@@ -1,17 +1,17 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "@vaadin/vaadin-grid/vaadin-grid.js";
-import "@vaadin/vaadin-grid/vaadin-grid.js";
-import "@vaadin/vaadin-grid/vaadin-grid-column-group.js";
-import "@vaadin/vaadin-grid/vaadin-grid-filter.js";
-import "@vaadin/vaadin-grid/vaadin-grid-sorter.js";
-import "@vaadin/vaadin-grid/vaadin-grid-selection-column.js";
-import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/iron-image/iron-image.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
-import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
-import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
-import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
+import '@vaadin/vaadin-grid/vaadin-grid.js";
+import '@vaadin/vaadin-grid/vaadin-grid.js";
+import '@vaadin/vaadin-grid/vaadin-grid-column-group.js";
+import '@vaadin/vaadin-grid/vaadin-grid-filter.js";
+import '@vaadin/vaadin-grid/vaadin-grid-sorter.js";
+import '@vaadin/vaadin-grid/vaadin-grid-selection-column.js";
+import '@polymer/iron-ajax/iron-ajax.js";
+import '@polymer/iron-image/iron-image.js";
+import '@polymer/paper-tooltip/paper-tooltip.js";
+import '@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
+import '@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
+import '@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 
 Polymer({
   _template: html`

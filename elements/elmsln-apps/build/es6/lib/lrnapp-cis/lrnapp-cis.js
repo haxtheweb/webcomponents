@@ -1,37 +1,29 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/paper-item/paper-item.js";
-import "@polymer/paper-listbox/paper-listbox.js";
-import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
-import "@polymer/app-layout/app-toolbar/app-toolbar.js";
-import "@polymer/iron-list/iron-list.js";
-import "@polymer/iron-pages/iron-pages.js";
-import "@polymer/app-route/app-location.js";
-import "@polymer/app-route/app-route.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-toast/paper-toast.js";
-import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
-import "@lrnwebcomponents/lrndesign-course-banner/lrndesign-course-banner.js";
-import "@lrnwebcomponents/lrn-icon/lrn-icon.js";
-import "@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
-import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
-import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
-import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
-import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import {
+  html,
+  Polymer
+} from "../../node_modules/@polymer/polymer/polymer-legacy.js";
+import { dom } from "../../node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";
+import "../../node_modules/@polymer/iron-ajax/iron-ajax.js";
+import "../../node_modules/@polymer/paper-item/paper-item.js";
+import "../../node_modules/@polymer/paper-listbox/paper-listbox.js";
+import "../../node_modules/@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
+import "../../node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js";
+import "../../node_modules/@polymer/iron-list/iron-list.js";
+import "../../node_modules/@polymer/iron-pages/iron-pages.js";
+import "../../node_modules/@polymer/app-route/app-location.js";
+import "../../node_modules/@polymer/app-route/app-route.js";
+import "../../node_modules/@polymer/paper-button/paper-button.js";
+import "../../node_modules/@polymer/paper-toast/paper-toast.js";
+import "../../node_modules/@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
+import "../../node_modules/@lrnwebcomponents/lrndesign-course-banner/lrndesign-course-banner.js";
+import "../../node_modules/@lrnwebcomponents/lrn-icon/lrn-icon.js";
+import "../../node_modules/@lrnwebcomponents/lrnsys-button/lrnsys-button.js";
+import "../../node_modules/@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
+import "../../node_modules/@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
+import "../../node_modules/@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
+import "../../node_modules/@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
+import "../../node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./lrnapp-cis-course-card.js";
-/**
- `lrnapp-cis`
- A learning application for visualizing course information and listing.
-
-@demo ../../demo/index.html
-
-@microcopy - the mental model for this app
- - cis - Course Information System
- -
-
-*/
 Polymer({
   _template: html`
     <style include="materializecss-styles">
@@ -477,195 +469,84 @@ Polymer({
     </lrnsys-dialog>
     <paper-toast id="toast"></paper-toast>
   `,
-
   is: "lrnapp-cis",
-
   properties: {
-    /**
-     * The load initial data
-     */
-    _cisResponse: {
-      type: Object
-    },
-    /**
-     * Load individual course data
-     */
-    _courseResponse: {
-      type: Object
-    },
-    /**
-     * Load service creation response
-     */
-    _makeServiceResponse: {
-      type: Object
-    },
-    /**
-     * The courses to render; potentially filtered
-     */
+    _cisResponse: { type: Object },
+    _courseResponse: { type: Object },
+    _makeServiceResponse: { type: Object },
     courses: {
       type: Array,
       value: [],
       computed: "_coursesCompute(originalCourses, queryParams)"
     },
-    /**
-     * The original courses array; used to filter against
-     */
-    originalCourses: {
-      type: Array,
-      value: [],
-      notify: true
-    },
-    /**
-     * The programs to render
-     */
-    programs: {
-      type: Array,
-      value: []
-    },
-    /**
-     * The academics to render
-     */
-    academics: {
-      type: Array,
-      value: []
-    },
-    /**
-     * sourcePath for data.
-     */
-    sourcePath: {
-      type: String
-    },
-    /**
-     * pathway to access info about a single course.
-     */
-    courseDataPath: {
-      type: String
-    },
-    /**
-     * pathway to creating new service instances
-     */
-    makeServicePath: {
-      type: String
-    },
-    /**
-     * Endpoint for data.
-     */
-    endPoint: {
-      type: String,
-      value: "/"
-    },
-    /**
-     * base path for the app
-     */
-    basePath: {
-      type: String,
-      value: "/"
-    },
-    /**
-     * Active / clicked course.
-     */
-    activeCourse: {
-      type: Array,
-      value: null
-    },
-    queryParams: {
-      type: Object,
-      notify: true
-    }
+    originalCourses: { type: Array, value: [], notify: !0 },
+    programs: { type: Array, value: [] },
+    academics: { type: Array, value: [] },
+    sourcePath: { type: String },
+    courseDataPath: { type: String },
+    makeServicePath: { type: String },
+    endPoint: { type: String, value: "/" },
+    basePath: { type: String, value: "/" },
+    activeCourse: { type: Array, value: null },
+    queryParams: { type: Object, notify: !0 }
   },
-
-  listeners: {
-    "route-change": "_routeChange"
-  },
-
+  listeners: { "route-change": "_routeChange" },
   observers: ["_routeChanged(route, endPoint)"],
-
-  // If the current route is outside the scope of our app
-  // then allow the website to break out of the single page
-  // application routing
   _routeChanged: function(route, endPoint) {
-    if (typeof route.path === "string") {
-      if (typeof endPoint === "string") {
-        // ignore "home page" as well since that's our path
-        if (route.path.startsWith(endPoint) || route.path == "/") {
+    if ("string" === typeof route.path) {
+      if ("string" === typeof endPoint) {
+        if (route.path.startsWith(endPoint) || "/" == route.path) {
           return;
         }
       }
-      this.$.loading.hidden = false;
-      // reload the page which since route changed will load that page
+      this.$.loading.hidden = !1;
       window.location.reload();
     }
   },
-
-  /**
-   * Change route from deeper in the app.
-   */
   _routeChange: function(e) {
     var details = e.detail;
-    if (typeof details.queryParams.course !== typeof undefined) {
+    if (typeof details.queryParams.course !== typeof void 0) {
       this.set("queryParams.course", details.queryParams.course);
     }
-    if (typeof details.queryParams.academic !== typeof undefined) {
+    if (typeof details.queryParams.academic !== typeof void 0) {
       this.set("queryParams.academic", details.queryParams.academic);
     }
-    if (typeof details.queryParams.program !== typeof undefined) {
+    if (typeof details.queryParams.program !== typeof void 0) {
       this.set("queryParams.program", details.queryParams.program);
     }
-    if (typeof details.data.page !== typeof undefined) {
+    if (typeof details.data.page !== typeof void 0) {
       this.set("data.page", details.data.page);
     }
   },
-
-  /**
-   * Simple way to convert from object to array.
-   */
   _toArray: function(obj) {
     return Object.keys(obj).map(function(key) {
       return obj[key];
     });
   },
-
-  /**
-   * Handle course response for additional details about the item
-   */
   _handleMakeServiceResponse: function(event) {
-    // get the CIS response's data and convert to array ahead of time
     var response = this._makeServiceResponse;
     let activeCourse = this.__addServiceLinks(response.data.course);
     this.set("activeCourse", []);
     this.set("activeCourse", activeCourse);
     this.$.toast.show(response.message);
   },
-
-  /**
-   * Handle course response for additional details about the item
-   */
   _handleCourseResponse: function(event) {
-    // get the CIS response's data and convert to array ahead of time
     var activeCourse = this._courseResponse.data.course;
     this.__addServiceLinks(activeCourse);
     this.set("activeCourse", []);
     this.set("activeCourse", activeCourse);
-    this.$.loadingCourse.hidden = true;
+    this.$.loadingCourse.hidden = !0;
   },
-
-  /**
-   * Helper to mash up services that exist with those that could.
-   */
   __addServiceLinks: function(courseObject) {
-    // ensure there's a part for the Network people can request
-    if (typeof courseObject.topology.Network === typeof undefined) {
+    if (typeof courseObject.topology.Network === typeof void 0) {
       courseObject.topology.Network = {};
     }
-    // loop our services to see what we should add as options
     for (var key in this.services) {
-      // if it's not in the topology that means it can be added
       if (
         typeof courseObject.topology.Network[
           this.services[key].attributes.machine_name
-        ] === typeof undefined
+        ] === typeof void 0
       ) {
-        // if we get a miss that means we should add a "Add this" version
         courseObject.topology.Network[
           this.services[key].attributes.machine_name
         ] = {
@@ -676,42 +557,28 @@ Polymer({
           title: this.services[key].attributes.title,
           url: this.services[key].attributes.url,
           weight: this.services[key].attributes.weight,
-          _exists: false
+          _exists: !1
         };
       }
     }
-    // convert to array after keys in place for the object
     courseObject.topology.Network = this._toArray(
       courseObject.topology.Network
     );
-    // sort items based on weight of the things in the network
-    // so we have a consistent order to things
     courseObject.topology.Network.sort(function(a, b) {
       return a.weight - b.weight;
     });
     return courseObject;
   },
-
-  /**
-   * Handle response for the whole courses object.
-   */
   _handleResponse: function(event) {
-    var course = {};
-    var program = {};
-    var academic = {};
-    var tmp = {
-      courses: [],
-      programs: [],
-      academics: []
-    };
-    var programs = [];
-    var academics = [];
-    // get the CIS response's data and convert to array ahead of time
-    var courses = this._toArray(this._cisResponse.data.courses);
+    var course = {},
+      program = {},
+      academic = {},
+      tmp = { courses: [], programs: [], academics: [] },
+      programs = [],
+      academics = [],
+      courses = this._toArray(this._cisResponse.data.courses);
     this.set("services", this._toArray(this._cisResponse.data.services));
-    // original = active off the bat then we apply filters later to chang this
     this.set("originalCourses", courses);
-    // figure out courses, programs and academics
     for (var index = 0; index < courses.length; index++) {
       course = courses[index];
       program = courses[index].relationships.program;
@@ -720,137 +587,94 @@ Polymer({
       tmp.academics[academic.id] = academic;
       tmp.courses[course.id] = course;
     }
-    // this is stupid but we have to normalize the IDs or else dom repeats will be screwed up
     tmp.programs.forEach(function(element) {
       programs.push(element);
     });
-    // this is stupid but we have to normalize the IDs or else dom repeats will be screwed up
     tmp.academics.forEach(function(element) {
       academics.push(element);
     });
-    this.$.loading.hidden = true;
+    this.$.loading.hidden = !0;
     this.set("academics", academics);
     this.set("programs", programs);
   },
-
-  /**
-   * Request a new service to kick off.
-   */
   _makeService: function(e) {
     var normalizedEvent = dom(e);
     let active = normalizedEvent.localTarget.getAttribute("data-machine-name");
     const network = this.activeCourse.topology.Network;
     let service = network.filter(service => {
       if (service.machine_name !== active) {
-        return false;
+        return !1;
       }
-      return true;
+      return !0;
     });
-    // if we found one, make it the top level item
-    if (service.length > 0) {
+    if (0 < service.length) {
       service = service.pop();
       this.$.makeservice.params = {
         course: this.activeCourse.attributes.machine_name,
         service: service.machine_name
       };
       this._activeService = service;
-      // confirm via paper prompt
       this.$.confirm.toggleDialog();
     } else {
       console.log("that was not a valid service..");
     }
   },
-
-  /**
-   * Confirm of build.
-   */
   _confirmBuild: function(e) {
     this.$.makeservice.generateRequest();
   },
-
-  /**
-   * Attached lifecycle
-   */
   attached: function() {
-    // listen for focus event to have fired
     document.body.addEventListener(
       "lrnsys-dialog-modal-closed",
       this._accessibleFocus.bind(this)
     );
   },
-
-  /**
-   * Set ourselves as having focus after the modal closes.
-   */
   _accessibleFocus: function(e) {
-    // focus on our dialog triggering button
     this.__rememberClick.focus();
   },
-
-  /**
-   * Handle tap on paper-button above to redirect to the correct course url.
-   */
   _loadCourseUrl: function(e) {
     this.__rememberClick = e.target;
-    // reset dialog to appear to be loading
-    this.$.loadingCourse.hidden = false;
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
-    // this will have the id of the current course
-    var active = local.getAttribute("data-course-id");
-    // find the course by it's unique id and filter just to it
+    this.$.loadingCourse.hidden = !1;
+    var normalizedEvent = dom(e),
+      local = normalizedEvent.localTarget,
+      active = local.getAttribute("data-course-id");
     let findCourse = this.originalCourses.filter(course => {
       if (course.id !== active) {
-        return false;
+        return !1;
       }
-      return true;
+      return !0;
     });
-    // if we found one, make it the top level item
-    if (findCourse.length > 0) {
+    if (0 < findCourse.length) {
       findCourse = findCourse.pop();
     }
     this.activeCourse = findCourse;
-    // formulate the post data
-    this._courseDataParams = {
-      id: this.activeCourse.id
-    };
-    // @todo look at query cache mechanism to skip calls
-    // if they've already happened. lrnapp-book has some stuff to do this
+    this._courseDataParams = { id: this.activeCourse.id };
     this.$.courserequest.generateRequest();
     this.$.dialog.toggleDialog();
   },
-
-  /**
-   * Compute the active list of courses
-   */
   _coursesCompute: function(originalCourses, queryParams) {
-    // if we don't have an original courses object to work with then we need to bail
-    if (typeof originalCourses === "undefined") {
+    if ("undefined" === typeof originalCourses) {
       return [];
     }
-    // define vars
     const root = this;
     let filteredCourses = [];
-    // filter the courses by the query params
     filteredCourses = originalCourses.filter(course => {
-      if (typeof root.queryParams.course !== "undefined") {
+      if ("undefined" !== typeof root.queryParams.course) {
         if (course.id !== root.queryParams.course) {
-          return false;
+          return !1;
         }
       }
-      if (typeof root.queryParams.program !== "undefined") {
+      if ("undefined" !== typeof root.queryParams.program) {
         if (course.relationships.program.id !== root.queryParams.program) {
-          return false;
+          return !1;
         }
       }
-      if (typeof root.queryParams.academic !== "undefined") {
+      if ("undefined" !== typeof root.queryParams.academic) {
         if (course.relationships.academic.id !== root.queryParams.academic) {
-          return false;
+          return !1;
         }
       }
-      return true;
+      return !0;
     });
-    // delay and repaint, can help with refresh issues
     setTimeout(() => {
       this.$.ironlist.fire("iron-resize");
     }, 200);

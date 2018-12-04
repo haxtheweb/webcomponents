@@ -224,7 +224,9 @@ Polymer({
   attached: function(e) {
     window.simpleModal.requestAvailability();
     async.microTask.run(() => {
-      this.$.filteredcomments.querySelector("iron-list").fire("iron-resize");
+      if (this.$.filteredcomments.querySelector("iron-list")) {
+        this.$.filteredcomments.querySelector("iron-list").fire("iron-resize");
+      }
       window.dispatchEvent(new Event("resize"));
     });
     this.$.filtercomments.addEventListener("value-changed", e => {
