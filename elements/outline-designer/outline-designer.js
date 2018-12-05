@@ -8,6 +8,7 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/social-icons.js";
 import "@polymer/iron-pages/iron-pages.js";
+import "@polymer/iron-image/iron-image.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-ajax/iron-ajax.js";
@@ -179,10 +180,12 @@ class OutlineDesigner extends PolymerElement {
         }
 
         .tf-tree {
+          transition: 0.3s all ease;
           font-size: 16px;
           overflow: auto;
         }
         .tf-tree * {
+          transition: 0.3s all ease;
           box-sizing: border-box;
           margin: 0;
           padding: 0;
@@ -333,6 +336,46 @@ class OutlineDesigner extends PolymerElement {
         .tf-tree li.tf-dashed-children > .tf-node-content:before {
           border-left-style: solid;
         }
+        .tf-label {
+          transition: 0.3s all ease;
+          cursor: pointer;
+        }
+
+        .node-high-detail li iron-image {
+          height: 50px;
+          position: static;
+        }
+        .node-high-detail li .tf-label {
+          z-index: 1;
+          position: relative;
+          font-size: 1.75em;
+          padding: 8px;
+          background-color: rgba(250, 250, 250, 0.8);
+        }
+
+        .node-low-detail .tf-nc {
+          height: 32px;
+          width: 32px;
+          background-color: dodgerblue;
+          border-color: dodgerblue;
+          padding: 0;
+          border-radius: 50%;
+          overflow: hidden;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          -ms-border-radius: 50%;
+          -o-border-radius: 50%;
+        }
+
+        .node-low-detail .tf-nc:before,
+        .node-low-detail .tf-nc:after {
+          border-left-color: dodgerblue;
+          border-left-width: 2px;
+        }
+        .node-low-detail li li:before {
+          border-top-color: dodgerblue;
+          border-top-width: 2px;
+        }
       </style>
       <style is="custom-style" include="simple-colors"></style>
       <iron-ajax
@@ -440,10 +483,25 @@ class OutlineDesigner extends PolymerElement {
           ></lrnsys-outline>
         </section>
         <section id="treepage">
-          <div class="tf-tree">
+          <div class$="node-[[detailsMode]]-detail tf-tree">
             <ul>
               <template is="dom-repeat" items="{{manifest.items}}" as="item">
-                <li><span class="tf-nc">[[item.title]]</span></li>
+                <li>
+                  <span class="tf-nc">
+                    <div class="tf-label" id$="item-tip-[[item.id]]">
+                      [[item.title]]
+                    </div>
+                    <paper-tooltip for$="item-tip-[[item.id]]"
+                      >[[item.title]]</paper-tooltip
+                    >
+                    <iron-image
+                      src="[[item.metadata.image]]"
+                      preload
+                      sizing="cover"
+                      class="high-detail"
+                    ></iron-image>
+                  </span>
+                </li>
               </template>
             </ul>
           </div>
@@ -458,14 +516,17 @@ class OutlineDesigner extends PolymerElement {
             <template is="dom-repeat" items="{{manifest.items}}" as="item">
               <div class="card-wrapper">
                 <paper-card
+                  class$="card-[[detailsMode]]-detail"
                   data-item-id$="[[item.id]]"
                   heading="[[item.title]]"
                   image="[[item.metadata.image]]"
                   elevation="2"
                   animated-shadow="false"
                 >
-                  <div class="card-content">[[item.description]]</div>
-                  <div class="card-actions"></div>
+                  <div class="card-content mid-detail">
+                    [[item.description]]
+                  </div>
+                  <div class="card-actions high-detail"></div>
                 </paper-card>
               </div>
             </template>

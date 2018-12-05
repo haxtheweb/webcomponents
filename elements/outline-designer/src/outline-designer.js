@@ -8,6 +8,7 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/social-icons.js";
 import "@polymer/iron-pages/iron-pages.js";
+import "@polymer/iron-image/iron-image.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-ajax/iron-ajax.js";

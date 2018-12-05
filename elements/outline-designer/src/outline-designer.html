@@ -57,10 +57,16 @@
     <lrnsys-outline id="outline" items="{{manifest.items}}" title="[[manifest.title]]"></lrnsys-outline>
   </section>
   <section id="treepage">
-    <div class="tf-tree">
+    <div class$="node-[[detailsMode]]-detail tf-tree">
       <ul>
         <template is="dom-repeat" items="{{manifest.items}}" as="item">
-        <li><span class="tf-nc">[[item.title]]</span></li>
+        <li>
+          <span class="tf-nc">
+            <div class="tf-label" id$="item-tip-[[item.id]]">[[item.title]]</div>
+            <paper-tooltip for$="item-tip-[[item.id]]">[[item.title]]</paper-tooltip>
+            <iron-image src="[[item.metadata.image]]" preload sizing="cover" class="high-detail"></iron-image>
+          </span>
+        </li>
         </template>
       </ul>
     </div>
@@ -69,10 +75,10 @@
     <sortable-list id="sort" sortable=".card-wrapper" on-sort-finish="_onSortFinish" dragging="{{dragging}}">
       <template is="dom-repeat" items="{{manifest.items}}" as="item">
         <div class="card-wrapper">
-          <paper-card data-item-id$="[[item.id]]" heading="[[item.title]]" image="[[item.metadata.image]]" elevation="2"
+          <paper-card class$="card-[[detailsMode]]-detail" data-item-id$="[[item.id]]" heading="[[item.title]]" image="[[item.metadata.image]]" elevation="2"
             animated-shadow="false">
-            <div class="card-content">[[item.description]]</div>
-            <div class="card-actions"></div>
+            <div class="card-content mid-detail">[[item.description]]</div>
+            <div class="card-actions high-detail"></div>
           </paper-card>
         </div>
       </template>
