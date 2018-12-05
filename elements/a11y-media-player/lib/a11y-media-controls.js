@@ -4,14 +4,14 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { A11yMediaPlayerProperties } from "./a11y-media-player-properties.js";
-import "@polymer/paper-slider/paper-slider.js";
+import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
-import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
+import "@polymer/paper-slider/paper-slider.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
 import "./a11y-media-button.js";
 
 export { A11yMediaControls };
