@@ -12,7 +12,7 @@ let ResponsiveUtility = Polymer({
       }
     </style>
     <slot></slot>
-`,
+  `,
 
   is: "responsive-utility",
 
@@ -59,7 +59,7 @@ let ResponsiveUtility = Polymer({
       window.ResponsiveUtility.instance = root;
     }
     /* handle element registration */
-    document.body.addEventListener("responsive-element", function(e) {
+    window.addEventListener("responsive-element", function(e) {
       let relative =
         e.detail.relativeToParent !== undefined &&
         e.detail.relativeToParent !== null
@@ -79,7 +79,7 @@ let ResponsiveUtility = Polymer({
       window.ResponsiveUtility.setSize(e.detail);
     });
     /* handle element deregistration */
-    document.body.addEventListener("delete-responsive-element", function(e) {
+    window.addEventListener("delete-responsive-element", function(e) {
       for (let i = 0; i < this.targets.length; i++) {
         if (e.detail === target[i]) root.splice("targets", i, 1);
       }

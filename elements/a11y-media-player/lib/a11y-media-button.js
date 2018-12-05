@@ -16,9 +16,9 @@ export { A11yMediaButton };
  * @microcopy - language worth noting:
  *  -
  *
+ * @extends A11yMediaPlayerProperties
  * @customElement
  * @polymer
- * @demo demo/index.html
  */
 class A11yMediaButton extends A11yMediaPlayerProperties {
   // properties available to the custom element for data binding

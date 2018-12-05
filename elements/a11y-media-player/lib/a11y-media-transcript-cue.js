@@ -36,9 +36,9 @@ export { A11yMediaTranscriptCue };
 --a11y-media-transcript-active-cue-bg: background color of the active cue, default is #ccfffd
 --a11y-media-transcript-active-cue-weight: font-weight of the active cue, default is normal```
  *
+ * @extends A11yMediaPlayerProperties
  * @customElement
  * @polymer
- * @demo demo/index.html
  */
 class A11yMediaTranscriptCue extends A11yMediaPlayerProperties {
   // properties available to the custom element for data binding

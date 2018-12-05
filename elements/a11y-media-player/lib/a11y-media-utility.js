@@ -28,7 +28,6 @@ window.A11yMediaUtility.requestAvailability = () => {
  *
  * @customElement
  * @polymer
- * @demo demo/index.html
  */
 class A11yMediaUtility extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */

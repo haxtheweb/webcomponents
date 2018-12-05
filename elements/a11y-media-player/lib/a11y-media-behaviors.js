@@ -14,9 +14,9 @@ export { A11yMediaBehaviors };
  * @microcopy - language worth noting:
  *  -
  *
+ * @extends SimpleColors
  * @customElement
  * @polymer
- * @demo demo/index.html
  */
 class A11yMediaBehaviors extends SimpleColors {
   /**
@@ -186,7 +186,7 @@ class A11yMediaBehaviors extends SimpleColors {
    */
   _addResponsiveUtility(data) {
     let root = this,
-      data2 =
+      options =
         data !== undefined
           ? data
           : {
@@ -195,8 +195,8 @@ class A11yMediaBehaviors extends SimpleColors {
               relativeToParent: true
             };
     window.ResponsiveUtility.requestAvailability();
-    root.dispatchEvent(
-      new CustomEvent("responsive-element", { detail: data2 })
+    window.dispatchEvent(
+      new CustomEvent("responsive-element", { detail: options })
     );
   }
 

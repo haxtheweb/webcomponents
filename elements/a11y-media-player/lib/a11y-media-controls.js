@@ -27,7 +27,7 @@ export { A11yMediaControls };
                                               // light blue, cyan, teal, green, light green, lime, 
                                               // yellow, amber, orange, deep-orange, and brown. 
                                               // Default is null. 
-  allow-fullscreen$="[[allowFullscreen]]"         // Allow fullscreen mode?
+  allow-fullscreen$="[[allowFullscreen]]"     // Allow fullscreen mode?
   audio-only$="[[audioOnly]]"                 // Is media audio only?
   autoplay$="[[autoplay]]"                    // Is player set to autoplay (not recommended for a11y)?
   cc$="[[cc]]"                                // Are closed captions toggled?
@@ -36,15 +36,15 @@ export { A11yMediaControls };
   fullscreen$="[[fullscreen]]"                // Is full screen mode toggled on?
   hide-elapsed-time$="[[hideElapsedTime]]"    // Is elapsed time hidden?
   loop$="[[loop]]"                            // Is video on a loop?
-  microcopy$="[[microcopy]]"                      // Optional customization or text and icons
+  microcopy$="[[microcopy]]"                  // Optional customization or text and icons
   muted$="[[muted]]"                          // Is video muted?
   responsive-size$="[[responsiveSize]]"       // The size of the player determines how controls are displayed
   volume$="[[volume]]">                       // The initial volume of the video
 </a11y-media-button>```
  *
+ * @extends A11yMediaPlayerProperties
  * @customElement
  * @polymer
- * @demo demo/index.html
  */
 class A11yMediaControls extends A11yMediaPlayerProperties {
   // properties available to the custom element for data binding

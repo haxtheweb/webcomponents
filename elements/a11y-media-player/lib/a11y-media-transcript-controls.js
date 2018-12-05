@@ -26,9 +26,9 @@ export { A11yMediaTranscriptControls };
   disable-search$="[[disableSearch]]"             // Disable transcript search? 
 </a11y-media-transcript-controls>```
  *
+ * @extends A11yMediaPlayerProperties
  * @customElement
  * @polymer
- * @demo demo/index.html
  */
 class A11yMediaTranscriptControls extends A11yMediaPlayerProperties {
   // properties available to the custom element for data binding

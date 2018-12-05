@@ -21,9 +21,9 @@ Custom styles:
 --a11y-play-button-bg-color: overlay background color, default is #000000
 --a11y-play-button-focus-bg-color: overlay background color, default is --a11y-play-button-bg-color```
  *
+ * @extends A11yMediaPlayerProperties
  * @customElement
  * @polymer
- * @demo demo/index.html
  */
 class A11yMediaPlayButton extends A11yMediaPlayerProperties {
   // properties available to the custom element for data binding
@@ -213,7 +213,7 @@ class A11yMediaPlayButton extends A11yMediaPlayerProperties {
       let root = this,
         img = this.$.thumbnail,
         check = setInterval(function() {
-          if (img.naturalWidth) {
+          if (img !== null && img !== undefined && img.naturalWidth) {
             clearInterval(check);
             let aspect = (img.naturalHeight / img.naturalWidth) * 100;
             root.style.height = aspect + "%";

@@ -28,9 +28,9 @@ export { A11yMediaTranscript };
   selected-transcript$="[[selectedTranscript]]">  // The index of the current track
 </a11y-media-transcript>```
  *
+ * @extends A11yMediaPlayerProperties
  * @customElement
  * @polymer
- * @demo demo/index.html
  */
 class A11yMediaTranscript extends A11yMediaPlayerProperties {
   // properties available to the custom element for data binding

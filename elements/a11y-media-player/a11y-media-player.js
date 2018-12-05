@@ -19,11 +19,10 @@ import "./lib/a11y-media-youtube-utility.js";
 export { A11yMediaPlayer };
 /**
  * `a11y-media-player`
- * `An accessible video player`
+ * An accessible video player
  *
  * @microcopy - the mental model for this element
- *
-   ```
+ * ```
 <a11y-media-player
   accent-color$="[[accentColor]]"              // Optional accent color for controls,
                                                // using the following materialize colors:
@@ -124,7 +123,9 @@ export { A11yMediaPlayer };
  * @extends A11yMediaPlayerProperties
  * @polymer
  * @customElement
- * @demo demo/index.html
+ * @demo demo/index.html video demo
+ * @demo demo/audio.html audio demo
+ * @demo demo/youtube.html YouTube demo
  *
  */
 class A11yMediaPlayer extends A11yMediaPlayerProperties {
@@ -318,9 +319,6 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           background-color: rgba(0, 0, 0, 0.8);
           padding: 0.15em 4px;
         }
-        :host #customcctxt:empty {
-          display: none;
-        }
         :host #innerplayer,
         :host #sources > * {
           max-height: 80vh;
@@ -450,9 +448,9 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           :host .print-only {
             display: none;
           }
-          :host .media-caption:not(:empty) {
+          :host .media-caption {
             color: var(--simple-colors-default-theme-grey-1);
-            background-color: var(--simple-colors-default-theme-accent-12);
+            background-color: var(--simple-colors-default-theme-accent-10);
           }
         }
 
@@ -483,7 +481,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           :host #searchbar {
             display: none;
           }
-          :host .media-caption:not(:empty) {
+          :host .media-caption {
             background-color: #cccccc;
             color: #000000;
             font-size: 120%;
@@ -594,7 +592,11 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           volume-label$="[[volumeLabel]]"
         >
         </a11y-media-controls>
-        <div class="screen-only media-caption" aria-hidden="true">
+        <div
+          class="screen-only media-caption"
+          aria-hidden="true"
+          hidden$="[[!_hasAttribute(mediaCaption)]]"
+        >
           [[mediaCaption]]
         </div>
         <div class="print-only media-caption">[[printCaption]]</div>
