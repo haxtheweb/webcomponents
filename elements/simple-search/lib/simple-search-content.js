@@ -38,33 +38,51 @@ class SimpleSearchContent extends PolymerElement {
        */
       content: {
         type: String,
-        value: null
+        value: null,
+        reflectToAttribute: true
+      },
+      /**
+       * Is it currently in search mode?
+       */
+      inSearchMode: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
       }
     };
   }
 
   // render function
   static get template() {
-    return html`<style>
-      :host #content {
-        @apply --simple-search-content;
-      }
-      :host #content[match-number]{
-        color: var(--simple-search-match-text-color, #000);
-        background-color: var(--simple-search-match-bg-color, #f0f0f0);
-        border: 1px solid; 
-        border-color: var(--simple-search-match-border-color, #ddd);
-        padding: 0.16px 4px;
-        border-radius: 0.16px;
-        font-weight: bold;
-        @apply --simple-search-match;
-      }
-    </style>
-    <span id="content">
-      <template is="dom-repeat" items="[[_searchedContent]]">
-        <span match-number\$="[[item.matchNumber]]" tabindex\$="[[_getTabIndex(item.matchNumber)]]">[[item.text]]</span>
-      </template>
-    </span>`;
+    return html`
+      <style>
+        :host #content {
+          @apply --simple-search-content;
+        }
+        :host #content[match-number] {
+          color: var(--simple-search-match-text-color, #000);
+          background-color: var(--simple-search-match-bg-color, #f0f0f0);
+          border: 1px solid;
+          border-color: var(--simple-search-match-border-color, #ddd);
+          padding: 0.16px 4px;
+          border-radius: 0.16px;
+          font-weight: bold;
+          @apply --simple-search-match;
+        }
+      </style>
+      <span id="content">
+        <span class="initialcontent" hidden$="[[inSearchMode]]"
+          >[[content]]</span
+        >
+        <template is="dom-repeat" items="[[__searchedContent]]">
+          <span
+            match-number\$="[[item.matchNumber]]"
+            tabindex\$="[[_getTabIndex(item.matchNumber)]]"
+            >[[item.text]]</span
+          >
+        </template>
+      </span>
+    `;
   }
 
   /**
@@ -81,9 +99,9 @@ class SimpleSearchContent extends PolymerElement {
     // listen for changes to search
     searchObject.addEventListener("simple-search", function() {
       // set rendered content to default unsearched content to clear old results
-      this.setContent(content);
+      root.setContent(content);
       // set rendered content to default search results
-      this.setContent(searchObject.findMatches(content));
+      root.setContent(searchObject.findMatches(content));
     });
 
     // listen for navigation through results
@@ -97,7 +115,8 @@ class SimpleSearchContent extends PolymerElement {
    * @param {array} an array of searchable content
    */
   setContent(newContent) {
-    this._searchedContent = newContent;
+    this.inSearchMode = true;
+    this.__searchedContent = newContent;
   }
 
   /**

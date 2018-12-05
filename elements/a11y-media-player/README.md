@@ -15,7 +15,7 @@ import '@lrnwebcomponents/a-11-y-media-player.js';
 <script type="module">
   import '@lrnwebcomponents/a-11-y-media-player.js';
 
-  import {A11YMediaPlayer} from '@lrnwebcomponents/a-11-y-media-player';
+  import {A11yMediaPlayer} from '@lrnwebcomponents/a-11-y-media-player';
 </script>
 ```
 

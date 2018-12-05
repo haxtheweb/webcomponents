@@ -1,15 +1,17 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "./a11y-media-behaviors.js";
-/*link rel="import" href="dashjs-lib.html"*/
 /**
-`a11y-media-loader`
-A LRN element
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 
-@demo demo/index.html
-
-@microcopy - the mental model for this element
-
-  ```<a11y-media-loader 
+export { A11yMediaLoader };
+/**
+ * `a11y-media-loader`
+ * `Loads HTML5 audio or video. `
+ *
+ * @microcopy - language worth noting:
+```<a11y-media-loader 
     autoplay$="[[autoplay]]"                    // Is player set to autoplay (not recommended for a11y)?
     cc$="[[cc]]"                                // Are closed captions toggled? 
     height$="[[height]]"                        // The height of player
@@ -26,32 +28,116 @@ A LRN element
     <track label="Deutsch" kind="subtitles" srclang="de" src="path/to/subtitles/de.vtt">
     <track label="Español" kind="subtitles" srclang="es" src="path/to/subtitles/es.vtt">
   </a11y-media-loader>```
-*/
-Polymer({
-  _template: html`
-    <style>
-      #video {
-        width: 100%;
-        max-width: 100%;
-        max-height: 80vh;
+ *
+ * @customElement
+ * @polymer
+ * @demo demo/index.html
+ */
+class A11yMediaLoader extends A11yMediaBehaviors {
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      /*
+       * id of element button controls
+       */
+      controls: {
+        type: String,
+        value: "video"
+      },
+      /*
+       * iron-icon type
+       */
+      icon: {
+        type: String,
+        value: null
+      },
+      /*
+       * button label
+       */
+      label: {
+        type: String,
+        value: null
+      },
+      /*
+       * Is it toggled on?
+       */
+      toggle: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /*
+       * Is it disabled?
+       */
+      disabled: {
+        type: Boolean,
+        value: null
       }
-    </style>
-    <video id="video" autoplay\$="[[autoplay]]" crossorigin\$="[[crossorigin]]" hidden\$="[[audioOnly]]" lang\$="[[lang]]" src\$="[[manifest]]" preload="metadata">
-      HTML5 video not supported 
-    </video>
-    <audio id="audio" autoplay\$="[[autoplay]]" crossorigin\$="[[crossorigin]]" hidden\$="[[!audioOnly]]" lang\$="[[lang]]" src\$="[[manifest]]" preload="metadata">
-      HTML5 audio not supported 
-    </audio>
-`,
+    };
+  }
 
-  is: "a11y-media-loader",
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "a11y-media-loader";
+  }
 
-  behaviors: [
-    a11yMediaBehaviors.MediaProps,
-    a11yMediaBehaviors.GeneralFunctions
-  ],
+  //get player-specifc properties
+  static get behaviors() {
+    return [A11yMediaBehaviors];
+  }
 
-  ready: function() {
+  //render function
+  static get template() {
+    return html`
+      <style>
+        #video {
+          width: 100%;
+          max-width: 100%;
+          max-height: 80vh;
+        }
+      </style>
+      <video
+        id="video"
+        autoplay$="[[autoplay]]"
+        crossorigin$="[[crossorigin]]"
+        hidden$="[[audioOnly]]"
+        lang$="[[lang]]"
+        on-loadedmetadata="_handleMetadata"
+        src$="[[manifest]]"
+        preload="metadata"
+      >
+        HTML5 video not supported
+      </video>
+      <audio
+        id="audio"
+        autoplay$="[[autoplay]]"
+        crossorigin$="[[crossorigin]]"
+        hidden$="[[!audioOnly]]"
+        lang$="[[lang]]"
+        on-loadedmetadata="_handleMetadata"
+        src$="[[manifest]]"
+        preload="metadata"
+      >
+        HTML5 audio not supported
+      </audio>
+    `;
+  }
+
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  connectedCallback() {
+    super.connectedCallback();
+  }
+
+  /**
+   * sets target for a11y keys
+   */
+  ready() {
+    super.ready();
     let root = this;
     root.media = root.$.video !== undefined ? root.$.video : root.$.audio;
     /*
@@ -63,45 +149,48 @@ Polymer({
       console.log('manifest',this.manifest);
       dash.initialize(root.$.video, this.manifest, true);
     }*/
+  }
 
-    // handles loaded metadata
-    root.media.addEventListener("loadedmetadata", function() {
-      root.duration = root.media.duration > 0 ? root.media.duration : 0;
-      root.tracks = [];
-      root.volume = root.muted ? 0 : Math.max(this.volume, 10);
-      root.seekable = root.media.seekable;
-      root.setVolume(root.volume);
-      root.setMute(root.muted, root.volume);
-      root.setCC(root.cc);
-      root.setLoop(root.loop);
-      root.setPlaybackRate(root.playbackRate);
+  /**
+   * handles the loaded metadata
+   */
+  _handleMetadata() {
+    let root = this;
+    root.duration = root.media.duration > 0 ? root.media.duration : 0;
+    root.tracks = [];
+    root.volume = root.muted ? 0 : Math.max(this.volume, 10);
+    root.seekable = root.media.seekable;
+    root.setVolume(root.volume);
+    root.setMute(root.muted, root.volume);
+    root.setCC(root.cc);
+    root.setLoop(root.loop);
+    root.setPlaybackRate(root.playbackRate);
 
-      // adjusts aspect ratio
-      root.aspectRatio = root.media.videoWidth / root.media.videoHeight;
-      root.fire("media-loaded", this);
-    });
-  },
+    // adjusts aspect ratio
+    root.aspectRatio = root.media.videoWidth / root.media.videoHeight;
+    root.dispatchEvent(new CustomEvent("media-loaded", { detail: root }));
+  }
 
   /**
    * gets the buffered time
    */
-  getBufferedTime: function() {
+  getBufferedTime() {
     return this.media.buffered.length > 0
       ? this.media.buffered.end(0)
       : this.getCurrentTime();
-  },
+  }
 
   /**
    * gets the current time
    */
-  getCurrentTime: function() {
+  getCurrentTime() {
     return this.media.currentTime;
-  },
+  }
 
   /**
    * selects a specific track by index
    */
-  selectTrack: function(index) {
+  selectTrack(index) {
     this.selectedTrack = this.media.textTracks[index];
     for (let i = 0; i < this.media.textTracks.length; i++) {
       if (parseInt(index) === i) {
@@ -110,49 +199,49 @@ Polymer({
         this.media.textTracks[i].mode = "hidden";
       }
     }
-  },
+  }
 
   /**
    * plays the media
    */
-  play: function() {
+  play() {
     this.media.play();
-  },
+  }
 
   /**
    * pauses the media
    */
-  pause: function() {
+  pause() {
     this.media.pause();
-  },
+  }
 
   /**
    * stops the media
    */
-  stop: function() {
+  stop() {
     this.pause();
     this.seek(0);
-  },
+  }
 
   /**
    * restarts the media
    */
-  restart: function() {
+  restart() {
     this.seek(0);
     this.play();
-  },
+  }
 
   /**
    * seeks to a specific time
    */
-  seek: function(time) {
+  seek(time) {
     this.media.currentTime = time;
-  },
+  }
 
   /**
    * sets captions
    */
-  setCC: function(mode) {
+  setCC(mode) {
     this.media.cc = mode;
     if (this.selectedTrack !== undefined && mode == true) {
       this.selectedTrack.mode = "showing";
@@ -164,40 +253,41 @@ Polymer({
       this.selectedTrack.mode = "hidden";
       this.$.video.textTracks.value = "";
     }
-  },
+  }
 
   /**
    * sets volume of media
    */
-  setVolume: function(value) {
+  setVolume(value) {
     this.media.volume = value / 100;
-  },
+  }
 
   /**
    * sets speed/playback rate of media
    */
-  setPlaybackRate: function(value) {
+  setPlaybackRate(value) {
     this.media.playbackRate = value !== null ? value : 1;
-  },
+  }
 
   /**
    * sets autoplay
    */
-  setAutoplay: function(mode) {
+  setAutoplay(mode) {
     this.media.autoplay = mode;
-  },
+  }
 
   /**
    * sets looping
    */
-  setLoop: function(mode) {
+  setLoop(mode) {
     this.media.loop = mode;
-  },
+  }
 
   /**
    * sets mute
    */
-  setMute: function(mode, value) {
+  setMute(mode, value) {
     this.media.muted = mode;
   }
-});
+}
+window.customElements.define(A11yMediaLoader.tag, A11yMediaLoader);

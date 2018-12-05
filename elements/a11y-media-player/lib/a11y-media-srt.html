@@ -36,7 +36,7 @@ Polymer({
 
   is: 'a11y-media-srt',
   
-  behaviors: [a11yMediaBehaviors.PlayerBehaviors],
+  behaviors: [A11yMediaBehaviors.PlayerBehaviors],
 
   listeners: {
     'tap': '_buttonTap'
@@ -82,7 +82,7 @@ Polymer({
     * handle button tap
     */
   _buttonTap: function(){
-    this.fire('controls-change',this);
+    this.dispatchEvent( new CustomEvent("controls-change", { detail: this }) );
   },
 });
 </script>
