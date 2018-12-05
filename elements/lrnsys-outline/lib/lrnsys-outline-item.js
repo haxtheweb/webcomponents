@@ -2,6 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/paper-input/paper-input.js";
+import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@lrnwebcomponents/drawing-icons/drawing-icons.js";
 /**
@@ -66,7 +67,6 @@ Polymer({
         color: var(--lrnsys-outline-move-icon-color, #aaaaaa);
       }
       paper-icon-button {
-        position: static;
         font-size: 16px;
         height: 36px;
         padding: 10px;
@@ -121,25 +121,25 @@ Polymer({
       id="down"
       title="Move downwards"
       icon="icons:arrow-downward"
-      on-tap="move(1)"
+      on-tap="moveDown"
     ></paper-icon-button>
     <paper-icon-button
       id="left"
       title="Outdent"
-      icon="icons:arrow-backward"
-      on-tap="setIndent(-1)"
+      icon="icons:arrow-back"
+      on-tap="moveOut"
     ></paper-icon-button>
     <paper-icon-button
       id="right"
       title="Indent"
       icon="icons:arrow-forward"
-      on-tap="setIndent(1)"
+      on-tap="moveIn"
     ></paper-icon-button>
     <paper-icon-button
       id="up"
       title="Move upwards"
       icon="icons:arrow-upward"
-      on-tap="move(-1)"
+      on-tap="moveUp"
     ></paper-icon-button>
     <iron-a11y-keys
       id="a11y"
@@ -288,7 +288,18 @@ Polymer({
   move: function(amount) {
     this.fire("move-item", { item: this, moveUp: amount < 0 });
   },
-
+  moveUp: function(e) {
+    this.move(-1);
+  },
+  moveDown: function(e) {
+    this.move(1);
+  },
+  moveOut: function(e) {
+    this.setIndent(-1);
+  },
+  moveIn: function(e) {
+    this.setIndent(1);
+  },
   setSelection: function(start, end) {
     let s = start !== undefined ? start : 0,
       n = end !== undefined ? end : s;
@@ -316,7 +327,7 @@ Polymer({
 
   _onBackspace: function(e) {
     if (window.getSelection().toString() == this.$.input.value) {
-      event.detail.keyboardEvent.preventDefault();
+      e.detail.keyboardEvent.preventDefault();
       this.fire("delete-item", { item: this });
     } else if (this.$.input.selectionStart == 0) {
       this.fire("indent-item", { item: this, increase: false });

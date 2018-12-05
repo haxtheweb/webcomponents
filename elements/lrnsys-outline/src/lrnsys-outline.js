@@ -228,7 +228,9 @@ let LrnsysOutline = Polymer({
     });
     this._refreshData();
     this.__focusedItem = item.nextElementSibling;
-    this.__focusedItem.focus();
+    if (this.__focusedItem !== undefined && this.__focusedItem !== null) {
+      this.__focusedItem.focus();
+    }
   },
 
   /**
@@ -239,14 +241,16 @@ let LrnsysOutline = Polymer({
       items;
     if (confirm("Do you really want to delete " + this.items[i].title + "?")) {
       this.__focusedItem = item.previousElementSibling;
-      for (k in this.items) {
+      for (var k in this.items) {
         if (this.items[k].parent == this.items[i].id) {
           this.items[k].parent = this.items[i].parent;
         }
       }
       this.items.splice(i, 1);
       this._refreshData();
-      this.__focusedItem.focus();
+      if (this.__focusedItem !== undefined && this.__focusedItem !== null) {
+        this.__focusedItem.focus();
+      }
     }
   },
 
@@ -274,7 +278,9 @@ let LrnsysOutline = Polymer({
         this.__focusedItem = this.$.itemslist.querySelectorAll(
           "lrnsys-outline-item"
         )[target];
-        this.__focusedItem.focus();
+        if (this.__focusedItem !== undefined && this.__focusedItem !== null) {
+          this.__focusedItem.focus();
+        }
       }
     }
   },
@@ -286,8 +292,9 @@ let LrnsysOutline = Polymer({
     let data = this.items;
     this.items = [];
     this.items = data;
-    if (this.__focusedItem !== undefined && this.__focusedItem !== null)
+    if (this.__focusedItem !== undefined && this.__focusedItem !== null) {
       this.__focusedItem.focus();
+    }
   },
 
   /**
@@ -451,7 +458,9 @@ let LrnsysOutline = Polymer({
    * listener to handle changes to text inputs
    */
   _handleChangeItem: function(e) {
-    this._getItemById(e.detail.item.id).title = e.detail.value;
+    if (this._getItemById(e.detail.item.id) != null) {
+      this._getItemById(e.detail.item.id).title = e.detail.value;
+    }
     this._refreshData();
   },
 
