@@ -56,7 +56,7 @@ Polymer({
       :host(:hover) #wrapper {
         cursor: pointer;
       }
-      :host #move {
+      #move {
         font-size: 16px;
         padding: 10px;
         color: transparent;
@@ -65,7 +65,7 @@ Polymer({
       :host(:hover) #move {
         color: var(--lrnsys-outline-move-icon-color, #aaaaaa);
       }
-      :host paper-icon-button {
+      paper-icon-button {
         position: static;
         font-size: 16px;
         height: 36px;
@@ -77,20 +77,20 @@ Polymer({
       :host(:focus) paper-icon-button,
       :host(:hover) paper-icon-button {
         width: 36px;
-        display: block;
+        display: inline-flex;
       }
-      :host paper-icon-button#add {
+      paper-icon-button#add {
         width: 36px;
         margin-right: 2px;
         color: white;
         background-color: var(--lrnsys-outline-add-button-color, #018dff);
       }
-      :host paper-icon-button#delete {
+      paper-icon-button#delete {
         color: white;
         background-color: var(--lrnsys-outline-delete-button-color, #cc0000);
       }
     </style>
-    <div id="wrapper" data-indent\$="[[indentLevel]]">
+    <div id="wrapper" data-indent$="[[indentLevel]]">
       <iron-icon
         id="move"
         title="Move"
@@ -100,7 +100,7 @@ Polymer({
       <paper-input
         id="input"
         label="Enter a page title"
-        value\$="[[title]]"
+        value="{{title}}"
         no-label-float=""
       >
       </paper-input>
@@ -117,115 +117,84 @@ Polymer({
         on-tap="delete"
       ></paper-icon-button>
     </div>
-    <div id="down-action" gesture-disabled\$="[[disableDown]]">
-      <paper-icon-button
-        id="down"
-        title="Move downwards"
-        icon="icons:arrow-downward"
-        on-tap="move(1)"
-      ></paper-icon-button>
-    </div>
-    <div id="left-action" gesture-disabled\$="[[disableLeft]]">
-      <paper-icon-button
-        id="left"
-        title="Outdent"
-        icon="icons:arrow-backward"
-        on-tap="setIndent(-1)"
-      ></paper-icon-button>
-    </div>
-    <div id="right-action" gesture-disabled\$="[[disableRight]]">
-      <paper-icon-button
-        id="right"
-        title="Indent"
-        icon="icons:arrow-forward"
-        on-tap="setIndent(1)"
-      ></paper-icon-button>
-    </div>
-    <div id="up-action" gesture-disabled\$="[[disableUp]]">
-      <paper-icon-button
-        id="up"
-        title="Move upwards"
-        icon="icons:arrow-upward"
-        on-tap="move(-1)"
-      ></paper-icon-button>
-    </div>
+    <paper-icon-button
+      id="down"
+      title="Move downwards"
+      icon="icons:arrow-downward"
+      on-tap="move(1)"
+    ></paper-icon-button>
+    <paper-icon-button
+      id="left"
+      title="Outdent"
+      icon="icons:arrow-backward"
+      on-tap="setIndent(-1)"
+    ></paper-icon-button>
+    <paper-icon-button
+      id="right"
+      title="Indent"
+      icon="icons:arrow-forward"
+      on-tap="setIndent(1)"
+    ></paper-icon-button>
+    <paper-icon-button
+      id="up"
+      title="Move upwards"
+      icon="icons:arrow-upward"
+      on-tap="move(-1)"
+    ></paper-icon-button>
     <iron-a11y-keys
       id="a11y"
-      target="[[target]]"
+      target="[[__inputTarget]]"
       keys="enter"
       on-keys-pressed="_onEnter"
     ></iron-a11y-keys>
     <iron-a11y-keys
       id="a11y"
-      target="[[target]]"
+      target="[[__inputTarget]]"
       keys="backspace"
       on-keys-pressed="_onBackspace"
     ></iron-a11y-keys>
     <iron-a11y-keys
       id="a11y"
-      target="[[target]]"
+      target="[[__inputTarget]]"
       keys="up"
       on-keys-pressed="_onArrowUp"
     ></iron-a11y-keys>
     <iron-a11y-keys
       id="a11y"
-      target="[[target]]"
+      target="[[__inputTarget]]"
       keys="down"
       on-keys-pressed="_onArrowDown"
     ></iron-a11y-keys>
     <iron-a11y-keys
       id="a11y"
-      target="[[target]]"
+      target="[[__inputTarget]]"
       keys="tab"
       on-keys-pressed="_onTab"
     ></iron-a11y-keys>
     <iron-a11y-keys
       id="a11y"
-      target="[[target]]"
+      target="[[__inputTarget]]"
       keys="shift+tab"
       on-keys-pressed="_onShiftTab"
     ></iron-a11y-keys>
     <iron-a11y-keys
       id="a11y"
-      target="[[target]]"
+      target="[[__inputTarget]]"
       keys="shift+up"
       on-keys-pressed="_onShiftArrowUp"
     ></iron-a11y-keys>
     <iron-a11y-keys
       id="a11y"
-      target="[[target]]"
+      target="[[__inputTarget]]"
       keys="shift+down"
       on-keys-pressed="_onShiftArrowDown"
     ></iron-a11y-keys>
   `,
-
   is: "lrnsys-outline-item",
-
   listeners: {
     change: "_onChange"
   },
-
   properties: {
-    disableDown: {
-      type: Boolean,
-      value: false
-    },
-    disableLeft: {
-      type: Boolean,
-      value: false
-    },
-    disableRight: {
-      type: Boolean,
-      value: false
-    },
-    disableUp: {
-      type: Boolean,
-      value: false
-    },
-    id: {
-      type: String,
-      value: null
-    },
     indentLevel: {
       type: Number,
       value: 0
@@ -238,36 +207,53 @@ Polymer({
       type: String,
       value: null
     },
-    target: {
-      type: Object,
-      value: null
-    },
     value: {
       type: String,
       value: null,
+      notify: true,
       reflectToAttribute: true
     }
   },
-
+  /**
+   * attached life cycle
+   */
   attached: function() {
     this.fire("attached-item", { item: this });
   },
-
+  /**
+   * ready life cycle
+   */
   ready: function() {
-    let root = this;
-    this.target = this.$.input;
-    root.fire("focus-item", root);
-    root.addEventListener("focus", function(e) {
-      root.fire("focus-item", root);
+    this.__inputTarget = this.$.input;
+    this.fire("focus-item", this);
+    this.addEventListener("focus", e => {
+      this.fire("focus-item", this);
     });
-    root.addEventListener("mouseover", function(e) {
-      root.fire("focus-item", root);
+    this.addEventListener("mouseover", e => {
+      this.fire("focus-item", this);
     });
-    root.addEventListener("blur", function(e) {
-      root.fire("blur-item", root);
+    this.addEventListener("blur", e => {
+      this.fire("blur-item", this);
     });
-    root.addEventListener("mouseout", function(e) {
-      root.fire("blur-item", root);
+    this.addEventListener("mouseout", e => {
+      this.fire("blur-item", this);
+    });
+  },
+  /**
+   * detached life cycle
+   */
+  detached: function() {
+    this.removeEventListener("focus", e => {
+      this.fire("focus-item", this);
+    });
+    this.removeEventListener("mouseover", e => {
+      this.fire("focus-item", this);
+    });
+    this.removeEventListener("blur", e => {
+      this.fire("blur-item", this);
+    });
+    this.removeEventListener("mouseout", e => {
+      this.fire("blur-item", this);
     });
   },
 

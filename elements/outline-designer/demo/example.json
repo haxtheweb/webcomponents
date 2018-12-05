@@ -15,7 +15,8 @@
       "title": "Outline",
       "description": "Our outline, we love thee",
       "metadata": {
-        "icon": "icons:view-quilt"
+        "icon": "icons:view-quilt",
+        "image": "stock.jpg"
       }
     },
     {
@@ -26,7 +27,10 @@
       "parent": "item-1",
       "title": "Introduction",
       "description": "An introduction to outlines",
-      "metadata": {}
+      "metadata": {
+        "icon": "icons:view-quilt",
+        "image": "stock.jpg"
+      }
     },
     {
       "id": "item-3",
@@ -36,7 +40,26 @@
       "parent": "item-1",
       "title": "An item in an outline",
       "description": "One item of many in the universe",
-      "metadata": {}
+      "metadata": {
+        "icon": "icons:view-quilt",
+        "image": "stock.jpg"
+      }
+    },
+    {
+      "id": "item-new",
+      "indent": 0,
+      "location": "",
+      "order": 10000000000,
+      "parent": null,
+      "title": "Add item",
+      "description": "Tap to get started!",
+      "metadata": {
+        "siteName": "",
+        "theme": "simple-blog",
+        "image": "stock.jpg",
+        "color": "blue",
+        "icon": "icons:add-circle-outline"
+      }
     }
   ]
 }

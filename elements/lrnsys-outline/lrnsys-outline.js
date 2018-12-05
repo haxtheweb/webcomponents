@@ -72,15 +72,15 @@ let LrnsysOutline = Polymer({
     <div id="itemslist">
       <template is="dom-repeat" items="{{items}}" as="item">
         <lrnsys-outline-item
-          disable-down$="[[item.disableDown]]"
-          disable-left$="[[item.disableLeft]]"
-          disable-right$="[[item.disableRight]]"
-          disable-up$="[[item.disableUp]]"
+          disable-down="[[item.disableDown]]"
+          disable-left="[[item.disableLeft]]"
+          disable-right="[[item.disableRight]]"
+          disable-up="[[item.disableUp]]"
           id$="[[item.id]]"
           index$="[[item.index]]"
-          indent-level$="{{item.indent}}"
-          parent\$="{{item.parent}}"
-          title\$="{{item.title}}"
+          indent-level="{{item.indent}}"
+          parent="{{item.parent}}"
+          title="{{item.title}}"
         >
         </lrnsys-outline-item>
       </template>

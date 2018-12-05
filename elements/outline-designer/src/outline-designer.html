@@ -1,32 +1,82 @@
+<style is="custom-style" include="simple-colors"></style>
 <iron-ajax
   auto
   url="[[outlineSchemaUrl]]"
   handle-as="json"
   on-response="handleResponse"
-  last-response="{{manifest}}">
+  last-response="{{manifest}}"
+  loading="{{__loading}}">
 </iron-ajax>
 <app-header reveals>
   <app-toolbar>
-    <paper-icon-button id="module" icon="icons:view-module"></paper-icon-button>
-    <paper-tooltip for="module">Card view</paper-tooltip>
-    <paper-icon-button id="list" icon="icons:view-list"></paper-icon-button>
-    <paper-tooltip for="list">Outline view</paper-tooltip>
-    <div main-title="">[[manifest.title]]</div>
-    <paper-progress value="10" indeterminate bottom-item></paper-progress>
+    View: [[viewModeLabel]]
+    <paper-icon-button on-tap="_toggleViewMode" id="viewmode" icon="[[viewModeIcon]]"></paper-icon-button>
+    <paper-tooltip for="viewmode">[[viewModeLabel]]</paper-tooltip>
+    Detail: [[detailsModeLabel]]
+    <paper-icon-button on-tap="_toggleDetailsMode" id="detailsmode" icon="[[detailsModeIcon]]"></paper-icon-button>
+    <paper-tooltip for="detailsmode">[[detailsModeLabel]]</paper-tooltip>
+    <div main-title class="flex layout breadcrumb_layout">
+      <iron-icon class="breadcrumb-arrow" icon="icons:chevron-right"></iron-icon>
+      <a class="breadcrumb" id="main">[[manifest.title]]</a>
+    
+      <iron-icon class="breadcrumb-arrow" icon="icons:chevron-right"></iron-icon>
+      <a class="breadcrumb" id="second">Lesson 2</a>
+    
+      <iron-icon class="breadcrumb-arrow" icon="icons:chevron-right"></iron-icon>
+      <a class="breadcrumb" id="third">Math Basics</a>
+    </div>
+    <div>
+      <paper-icon-button id="helpbutton" icon="icons:help" title="help"></paper-icon-button>
+      <paper-tooltip for="helpbutton">Help</paper-tooltip>
+    </div>
+    <paper-progress value="10" indeterminate bottom-item hidden$="[[!__loading]]"></paper-progress>
   </app-toolbar>
 </app-header>
-
-<app-drawer id="drawer" swipe-open></app-drawer>
-<sample-content size="10"></sample-content>
-<slot></slot>
-<iron-list items="[[manifest.items]]" as="item">
-  <template>
-    <paper-card heading="[[item.title]]" image="" elevation="1" animated-shadow="false">
-      <div class="card-content"></div>
-      <div class="card-actions">
-        
+<iron-pages selected="[[selectedView]]">
+  <section id="listpage">
+    <iron-list id="ironlist" items="[[manifest.items]]" as="item" grid>
+    <template>
+      <div class="card-wrapper">
+      <item-overlay-ops data-item-id$="[[item.id]]" add="" edit="" remove="" duplicate="" move="" edit-mode="">
+        <paper-card class$="card-[[detailsMode]]-detail" heading="[[item.title]]" image="[[item.metadata.image]]" elevation="2" animated-shadow="false">
+          <div class="card-content mid-detail">[[item.description]]</div>
+          <div class="card-actions high-detail">
+            <ul>
+              <li>Page 1</li>
+              <li>Page 2</li>
+              <li>Page 3</li>
+            </ul>
+          </div>
+        </paper-card>
+      </item-overlay-ops>
       </div>
-    </paper-card>
-    
-  </template>
-</iron-list>
+    </template>
+    </iron-list>
+  </section>
+  <section id="outlinepage">
+    <lrnsys-outline id="outline" items="{{manifest.items}}" title="[[manifest.title]]"></lrnsys-outline>
+  </section>
+  <section id="treepage">
+    <div class="tf-tree">
+      <ul>
+        <template is="dom-repeat" items="{{manifest.items}}" as="item">
+        <li><span class="tf-nc">[[item.title]]</span></li>
+        </template>
+      </ul>
+    </div>
+  </section>
+  <section id="sortpage">
+    <sortable-list id="sort" sortable=".card-wrapper" on-sort-finish="_onSortFinish" dragging="{{dragging}}">
+      <template is="dom-repeat" items="{{manifest.items}}" as="item">
+        <div class="card-wrapper">
+          <paper-card data-item-id$="[[item.id]]" heading="[[item.title]]" image="[[item.metadata.image]]" elevation="2"
+            animated-shadow="false">
+            <div class="card-content">[[item.description]]</div>
+            <div class="card-actions"></div>
+          </paper-card>
+        </div>
+      </template>
+    </sortable-list>
+  </section>
+</iron-pages>
+<slot></slot>

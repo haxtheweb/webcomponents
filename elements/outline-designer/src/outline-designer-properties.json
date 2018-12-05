@@ -1,13 +1,57 @@
 {
   /**
-   * Which layout to display
+   * Which layout to the outline to display
    */
-  "layoutMode": {
-    "name": "layoutMode",
+  "viewMode": {
+    "name": "viewMode",
     "type": "String",
-    "value": "outline",
-    "reflectToAttribute": false,
-    "observer": "_layoutModeChanged"
+    "value": "cards",
+    "observer": "_viewModeChanged"
+  },
+  /**
+   * Icon for the selected view mode
+   */
+  "viewModeIcon": {
+    "name": "viewModeIcon",
+    "type": "String"
+  },
+  /**
+   * Label for the selected view mode
+   */
+  "viewModeLabel": {
+    "name": "viewModeLabel",
+    "type": "String"
+  },
+  /**
+   * Which layout to the outline to display
+   */
+  "detailsMode": {
+    "name": "detailsMode",
+    "type": "String",
+    "value": "mid",
+    "reflectToAttribute": true,
+    "observer": "_detailsModeChanged"
+  },
+  /**
+   * Icon for the selected view mode
+   */
+  "detailsModeIcon": {
+    "name": "detailsModeIcon",
+    "type": "String"
+  },
+  /**
+   * Label for the selected view mode
+   */
+  "detailsModeLabel": {
+    "name": "detailsModeLabel",
+    "type": "String"
+  },
+  /**
+   * Data binding to show the selected view
+   */
+  "selectedView": {
+    "name": "selectedView",
+    "type": "Number"
   },
   /**
    * Whether or not we are in an editing state
@@ -31,6 +75,14 @@
    */
   "manifest": {
     "name": "manifest",
+    "type": "Object",
+    "notify": true
+  },
+  /**
+   * Data in outline format
+   */
+  "outlineData": {
+    "name": "outlineData",
     "type": "Object",
     "notify": true
   }

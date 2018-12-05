@@ -1,17 +1,20 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
-`item-overlay-ops`
-Overlayed editing ops on whatever the current item slotted in is
-
-@demo demo/index.html
-
-@microcopy - the mental model for this element
-
-*/
+ * `item-overlay-ops`
+ * `Overlayed editing ops on whatever the current item slotted in is`
+ *
+ * @demo demo/index.html
+ *
+ * @microcopy - the mental model for this element
+ */
 let ItemOverlayOps = Polymer({
   _template: html`
     <style>
@@ -258,7 +261,7 @@ let ItemOverlayOps = Polymer({
   },
 
   /**
-   * Attached life cycle
+   * attached life cycle
    */
   attached: function() {
     // delay is enough to get the height correct
@@ -271,6 +274,15 @@ let ItemOverlayOps = Polymer({
     window.addEventListener("resize", this._windowResize.bind(this));
   },
 
+  /**
+   * detached life cycle
+   */
+  detached: function() {
+    window.removeEventListener("resize", this._windowResize.bind(this));
+  },
+  /**
+   * react to window resizing
+   */
   _windowResize: function(e) {
     let rect = this.getBoundingClientRect();
     this.$.container.style.width = rect.width + "px";
