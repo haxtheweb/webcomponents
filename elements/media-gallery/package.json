@@ -20,7 +20,7 @@
   "description": "Automated conversion of media-gallery/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "media-gallery.js",
   "module": "media-gallery.es6.js",

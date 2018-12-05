@@ -20,7 +20,7 @@
   "description": "Start of accent-card",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "accent-card.js",
   "module": "accent-card.es6.js",

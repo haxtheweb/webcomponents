@@ -20,7 +20,7 @@
   "description": "Automated conversion of word-count/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "word-count.js",
   "module": "word-count.es6.js",

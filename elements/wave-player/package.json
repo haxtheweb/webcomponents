@@ -20,7 +20,7 @@
   "description": "Automated conversion of wave-player/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "wave-player.js",
   "module": "wave-player.es6.js",

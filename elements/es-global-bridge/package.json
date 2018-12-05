@@ -4,7 +4,7 @@
   "description": "A very simple class to help bridge global scoped code with ES Modules",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "es-global-bridge.js",
   "author": {

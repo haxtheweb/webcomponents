@@ -20,7 +20,7 @@
   "description": "Start of pdf-browser-viewer",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "pdf-browser-viewer.js",
   "module": "pdf-browser-viewer.es6.js",

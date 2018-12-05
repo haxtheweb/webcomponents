@@ -15,7 +15,7 @@
   "description": "Automated conversion of dropdown-select/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "dropdown-select.js",
   "module": "dropdown-select.es6.js",

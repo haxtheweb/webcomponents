@@ -20,7 +20,7 @@
   "description": "Automated conversion of hax-bookmarklet/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "hax-bookmarklet.js",
   "module": "hax-bookmarklet.es6.js",

@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrn-content/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrn-content.js",
   "module": "lrn-content.es6.js",

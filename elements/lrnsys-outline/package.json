@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrnsys-outline/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrnsys-outline.js",
   "module": "lrnsys-outline.es6.js",

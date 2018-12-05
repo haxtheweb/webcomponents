@@ -20,7 +20,7 @@
   "description": "Automated conversion of self-check/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "self-check.js",
   "module": "self-check.es6.js",

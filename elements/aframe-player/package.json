@@ -15,7 +15,7 @@
   "description": "Automated conversion of aframe-player/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "aframe-player.js",
   "module": "aframe-player.es6.js",

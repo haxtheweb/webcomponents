@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrndesign-panelcard/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrndesign-panelcard.js",
   "module": "lrndesign-panelcard.es6.js",

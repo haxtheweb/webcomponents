@@ -20,7 +20,7 @@
   "description": "Automated conversion of simple-image/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "simple-image.js",
   "module": "simple-image.es6.js",

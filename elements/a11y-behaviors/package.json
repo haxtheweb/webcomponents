@@ -15,7 +15,7 @@
   "description": "Automated conversion of a11y-behaviors",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "a11y-behaviors.js",
   "module": "a11y-behaviors.es6.js",

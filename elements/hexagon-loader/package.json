@@ -20,7 +20,7 @@
   "description": "a simple VJS element that is for showing something is loading",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "hexagon-loader.js",
   "module": "hexagon-loader.es6.js",

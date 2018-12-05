@@ -20,7 +20,7 @@
   "description": "Automated conversion of license-element/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "license-element.js",
   "module": "license-element.es6.js",

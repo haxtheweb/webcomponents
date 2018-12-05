@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrndesign-contactcard/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrndesign-contactcard.js",
   "module": "lrndesign-contactcard.es6.js",

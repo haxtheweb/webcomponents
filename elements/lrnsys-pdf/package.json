@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrnsys-pdf/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrnsys-pdf.js",
   "module": "lrnsys-pdf.es6.js",

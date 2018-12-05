@@ -20,7 +20,7 @@
   "description": "Automated conversion of outline-player/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "outline-player.js",
   "module": "outline-player.es6.js",

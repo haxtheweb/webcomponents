@@ -15,7 +15,7 @@
   "description": "Automated conversion of contenta-polymer/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "contenta-polymer.js",
   "module": "contenta-polymer.es6.js",

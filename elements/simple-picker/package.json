@@ -19,7 +19,7 @@
   "description": "a simple picker for swatches, icons, etc.",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "simple-picker.js",
   "module": "simple-picker.es6.js",

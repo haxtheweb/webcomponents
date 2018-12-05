@@ -20,7 +20,7 @@
   "description": "create an inflexible baseline build of hax with all elements",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "baseline-build-hax.js",
   "module": "baseline-build-hax.es6.js",

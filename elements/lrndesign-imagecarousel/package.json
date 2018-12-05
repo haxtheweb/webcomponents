@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrndesign-imagecarousel/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrndesign-imagecarousel.js",
   "module": "lrndesign-imagecarousel.es6.js",

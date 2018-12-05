@@ -20,7 +20,7 @@
   "description": "Automated conversion of multiple-choice/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "multiple-choice.js",
   "module": "multiple-choice.es6.js",

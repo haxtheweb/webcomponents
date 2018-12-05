@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrn-vocab/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrn-vocab.js",
   "module": "lrn-vocab.es6.js",

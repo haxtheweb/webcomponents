@@ -20,7 +20,7 @@
   "description": "A simple modal that ensures accessibility and stack order context appropriately",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "simple-modal.js",
   "module": "simple-modal.es6.js",

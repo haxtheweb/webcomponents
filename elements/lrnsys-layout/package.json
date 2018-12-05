@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrnsys-layout/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrnsys-layout.js",
   "module": "lrnsys-layout.es6.js",

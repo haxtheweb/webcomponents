@@ -20,7 +20,7 @@
   "description": "Automated conversion of haxcms-elements/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "haxcms-elements.js",
   "module": "haxcms-elements.es6.js",

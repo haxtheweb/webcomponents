@@ -20,7 +20,7 @@
   "description": "iconset for drawing toolbar buttons",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "drawing-icons.js",
   "module": "drawing-icons.es6.js",

@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrndesign-sidenote/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrndesign-sidenote.js",
   "module": "lrndesign-sidenote.es6.js",

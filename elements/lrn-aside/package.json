@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrn-aside/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrn-aside.js",
   "module": "lrn-aside.es6.js",

@@ -20,7 +20,7 @@
   "description": "a shared set of styles for all @lrnwebcomponents",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrn-shared-styles.js",
   "module": "lrn-shared-styles.es6.js",

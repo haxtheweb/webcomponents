@@ -15,7 +15,7 @@
   "description": "Automated conversion of chartist-render/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "chartist-render.js",
   "module": "chartist-render.es6.js",

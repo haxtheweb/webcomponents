@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrndesign-mapmenu/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrndesign-mapmenu.js",
   "module": "lrndesign-mapmenu.es6.js",

@@ -20,7 +20,7 @@
   "description": "Automated conversion of pdf-element/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "pdf-element.js",
   "module": "pdf-element.es6.js",

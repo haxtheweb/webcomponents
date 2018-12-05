@@ -20,7 +20,7 @@
   "description": "Automated conversion of team-member/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "team-member.js",
   "module": "team-member.es6.js",

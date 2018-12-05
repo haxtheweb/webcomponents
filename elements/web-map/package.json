@@ -31,7 +31,7 @@
   "description": "Start of web-map",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "web-map.js",
   "module": "web-map.es6.js",

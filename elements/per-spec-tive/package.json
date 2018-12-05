@@ -20,7 +20,7 @@
   "description": "Automated conversion of per-spec-tive/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "per-spec-tive.js",
   "module": "per-spec-tive.es6.js",

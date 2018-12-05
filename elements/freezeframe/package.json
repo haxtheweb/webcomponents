@@ -4,7 +4,7 @@
   "description": "Ported over from freezeframe.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "build/js/freezeframe.js",
   "author": {

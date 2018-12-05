@@ -20,7 +20,7 @@
   "description": "Automated conversion of simple-timer/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "simple-timer.js",
   "module": "simple-timer.es6.js",

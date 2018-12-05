@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrndesign-imagemap/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrndesign-imagemap.js",
   "module": "lrndesign-imagemap.es6.js",

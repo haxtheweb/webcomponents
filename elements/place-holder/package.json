@@ -20,7 +20,7 @@
   "description": "Automated conversion of place-holder/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "place-holder.js",
   "module": "place-holder.es6.js",

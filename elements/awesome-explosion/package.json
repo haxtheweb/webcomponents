@@ -15,7 +15,7 @@
   "description": "An awesome, explosion.",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "awesome-explosion.js",
   "module": "awesome-explosion.es6.js",

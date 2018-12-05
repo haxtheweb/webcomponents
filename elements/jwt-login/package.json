@@ -20,7 +20,7 @@
   "description": "Automated conversion of jwt-login/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "jwt-login.js",
   "module": "jwt-login.es6.js",

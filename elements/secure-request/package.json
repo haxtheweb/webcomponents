@@ -20,7 +20,7 @@
   "description": "Automated conversion of secure-request/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "secure-request.js",
   "module": "secure-request.es6.js",

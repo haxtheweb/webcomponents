@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrndesign-blockquote/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrndesign-blockquote.js",
   "module": "lrndesign-blockquote.es6.js",

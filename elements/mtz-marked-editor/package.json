@@ -20,7 +20,7 @@
   "description": "Automated conversion of mtz-marked-editor",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "mtz-marked-editor.js",
   "module": "mtz-marked-editor.es6.js",

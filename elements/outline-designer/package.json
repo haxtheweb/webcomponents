@@ -20,7 +20,7 @@
   "description": "tools to modify and visualize JSON Outline Schema for editing",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "outline-designer.js",
   "module": "outline-designer.es6.js",

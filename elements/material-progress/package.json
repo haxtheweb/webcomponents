@@ -20,7 +20,7 @@
   "description": "Start of material-progress",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "material-progress.js",
   "module": "material-progress.es6.js",

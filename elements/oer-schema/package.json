@@ -20,7 +20,7 @@
   "description": "Automated conversion of oer-schema/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "oer-schema.js",
   "module": "oer-schema.es6.js",

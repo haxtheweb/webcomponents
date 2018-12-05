@@ -20,7 +20,7 @@
   "description": "Automated conversion of media-video/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "media-video.js",
   "module": "media-video.es6.js",

@@ -15,7 +15,7 @@
   "description": "Apply schema helper behaviors to existing Polymer (Legacy) based elements",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "schema-behaviors.js",
   "module": "schema-behaviors.es6.js",

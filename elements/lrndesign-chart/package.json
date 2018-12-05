@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrndesign-chart/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrndesign-chart.js",
   "module": "lrndesign-chart.es6.js",

@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrndesign-course-banner/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrndesign-course-banner.js",
   "module": "lrndesign-course-banner.es6.js",

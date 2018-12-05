@@ -20,7 +20,7 @@
   "description": "Start of relative-heading",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "relative-heading.js",
   "module": "relative-heading.es6.js",

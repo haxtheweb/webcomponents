@@ -20,7 +20,7 @@
   "description": "Automated conversion of md-extra-icons/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "md-extra-icons.js",
   "module": "md-extra-icons.es6.js",

@@ -20,7 +20,7 @@
   "description": "Provide an example to pick apart of a working HAX element",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "example-hax-element.js",
   "module": "example-hax-element.es6.js",

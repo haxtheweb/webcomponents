@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrnsys-button/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrnsys-button.js",
   "module": "lrnsys-button.es6.js",

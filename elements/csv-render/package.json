@@ -15,7 +15,7 @@
   "description": "Remote render a CSV file in place as an accessible table.",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "csv-render.js",
   "module": "csv-render.es6.js",

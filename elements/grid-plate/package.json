@@ -15,7 +15,7 @@
   "description": "Automated conversion of grid-plate/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "grid-plate.js",
   "module": "grid-plate.es6.js",

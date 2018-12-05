@@ -20,7 +20,7 @@
   "description": "Automated conversion of map-element/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "map-element.js",
   "module": "map-element.es6.js",

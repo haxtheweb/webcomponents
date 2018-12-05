@@ -15,7 +15,7 @@
   "description": "Start of app-datepicker fork",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "app-datepicker.js",
   "module": "app-datepicker.es6.js",

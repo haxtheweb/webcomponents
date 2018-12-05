@@ -20,7 +20,7 @@
   "description": "Automated conversion of app-editor-hax/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "app-editor-hax.js",
   "module": "app-editor-hax.es6.js",

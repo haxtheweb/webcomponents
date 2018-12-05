@@ -23,7 +23,7 @@
   "description": "A icon picker element using all the Material Design icons",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "paper-icon-picker.js",
   "module": "paper-icon-picker.es6.js",

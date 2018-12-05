@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrnsys-render-html/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrnsys-render-html.js",
   "module": "lrnsys-render-html.es6.js",

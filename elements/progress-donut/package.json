@@ -20,7 +20,7 @@
   "description": "Start of progress-donut",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "progress-donut.js",
   "module": "progress-donut.es6.js",

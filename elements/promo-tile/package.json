@@ -20,7 +20,7 @@
   "description": "Start of promo-tile",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "promo-tile.js",
   "module": "promo-tile.es6.js",

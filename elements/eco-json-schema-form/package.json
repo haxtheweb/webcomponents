@@ -15,7 +15,7 @@
   "description": "Automated conversion of eco-json-schema-form/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "eco-json-schema-form.js",
   "module": "eco-json-schema-form.es6.js",

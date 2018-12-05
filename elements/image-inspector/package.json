@@ -20,7 +20,7 @@
   "description": "Automated conversion of image-inspector/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "image-inspector.js",
   "module": "image-inspector.es6.js",

@@ -15,7 +15,7 @@
   "description": "Play gifs in an accessible way by having the user click to play their animation",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "a11y-gif-player.js",
   "module": "a11y-gif-player.es6.js",

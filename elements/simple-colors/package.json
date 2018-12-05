@@ -20,7 +20,7 @@
   "description": "Automated conversion of simple-colors/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "simple-colors.js",
   "module": "simple-colors.es6.js",

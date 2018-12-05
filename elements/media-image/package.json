@@ -20,7 +20,7 @@
   "description": "Automated conversion of media-image/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "media-image.js",
   "module": "media-image.es6.js",

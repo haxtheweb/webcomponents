@@ -20,7 +20,7 @@
   "description": "Automated conversion of code-editor/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "code-editor.js",
   "module": "code-editor.es6.js",

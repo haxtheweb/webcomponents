@@ -20,7 +20,7 @@
   "description": "Automated conversion of simple-datetime/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "simple-datetime.js",
   "module": "simple-datetime.es6.js",

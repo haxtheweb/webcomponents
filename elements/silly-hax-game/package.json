@@ -15,7 +15,7 @@
   "description": "Automated conversion of silly-hax-game",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "silly-hax-game.js",
   "module": "silly-hax-game.es6.js",

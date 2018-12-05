@@ -20,7 +20,7 @@
   "description": "The applications of ELMSLN in one place to make it easier to work on",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "elmsln-apps.js",
   "module": "elmsln-apps.es6.js",

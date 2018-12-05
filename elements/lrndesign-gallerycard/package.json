@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrndesign-gallerycard/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrndesign-gallerycard.js",
   "module": "lrndesign-gallerycard.es6.js",

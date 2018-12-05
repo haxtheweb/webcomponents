@@ -4,7 +4,7 @@
   "description": "A very simple fix for Failed to execute 'define' on 'CustomElementRegistry'",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "deduping-fix.js",
   "author": {

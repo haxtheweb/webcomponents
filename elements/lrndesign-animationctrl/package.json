@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrndesign-animationctrl/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrndesign-animationctrl.js",
   "module": "lrndesign-animationctrl.es6.js",

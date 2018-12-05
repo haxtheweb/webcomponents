@@ -20,7 +20,7 @@
   "description": "Start of paper-contact",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "paper-contact.js",
   "module": "paper-contact.es6.js",

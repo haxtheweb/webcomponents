@@ -20,7 +20,7 @@
   "description": "Automated conversion of paper-audio-player/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "paper-audio-player.js",
   "module": "paper-audio-player.es6.js",

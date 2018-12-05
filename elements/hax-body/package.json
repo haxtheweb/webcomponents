@@ -15,7 +15,7 @@
   "description": "Automated conversion of hax-body",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "hax-body.js",
   "module": "hax-body.es6.js",

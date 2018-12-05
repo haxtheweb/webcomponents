@@ -20,7 +20,7 @@
   "description": "iterates through an iconset array to generate a demo of all of the icons",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "iconset-demo.js",
   "module": "iconset-demo.es6.js",

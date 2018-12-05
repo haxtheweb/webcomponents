@@ -20,7 +20,7 @@
   "description": "Automated conversion of q-r/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "q-r.js",
   "module": "q-r.es6.js",

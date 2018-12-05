@@ -20,7 +20,7 @@
   "description": "Automated conversion of beaker-broker",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "beaker-broker.js",
   "module": "beaker-broker.es6.js",

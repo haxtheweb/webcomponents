@@ -20,7 +20,7 @@
   "description": "Start of fancy-carousel fork",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "fancy-carousel.js",
   "module": "fancy-carousel.es6.js",

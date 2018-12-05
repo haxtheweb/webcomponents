@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrnsys-chartjs/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrnsys-chartjs.js",
   "module": "lrnsys-chartjs.es6.js",

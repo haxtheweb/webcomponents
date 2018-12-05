@@ -10,7 +10,7 @@
   "description": "Materialize CSS style class names",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "materializecss-styles.js",
   "module": "materializecss-styles.es6.js",

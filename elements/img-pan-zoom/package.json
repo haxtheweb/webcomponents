@@ -20,7 +20,7 @@
   "description": "Start of img-pan-zoom",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "img-pan-zoom.js",
   "module": "img-pan-zoom.es6.js",

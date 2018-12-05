@@ -20,7 +20,7 @@
   "description": "Start of iron-data-table",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "iron-data-table.js",
   "module": "iron-data-table.es6.js",

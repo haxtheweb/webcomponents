@@ -20,7 +20,7 @@
   "description": "a singleton drawer element",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "simple-drawer.js",
   "module": "simple-drawer.es6.js",

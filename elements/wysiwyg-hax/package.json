@@ -20,7 +20,7 @@
   "description": "Start of wysiwyg-hax fork",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "wysiwyg-hax.js",
   "module": "wysiwyg-hax.es6.js",

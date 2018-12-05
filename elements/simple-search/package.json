@@ -15,7 +15,7 @@
   "description": "Automated conversion of simple-search",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "simple-search.js",
   "module": "simple-search.es6.js",

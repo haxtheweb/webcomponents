@@ -15,7 +15,7 @@
   "description": "Accessibly render a HTML table from a csv file",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrn-table.js",
   "module": "lrn-table.es6.js",

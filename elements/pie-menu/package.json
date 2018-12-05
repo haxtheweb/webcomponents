@@ -20,7 +20,7 @@
   "description": "Automated conversion of pie-menu/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "pie-menu.js",
   "module": "pie-menu.es6.js",

@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrndesign-comment/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrndesign-comment.js",
   "module": "lrndesign-comment.es6.js",

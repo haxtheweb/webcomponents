@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrnsys-progress/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrnsys-progress.js",
   "module": "lrnsys-progress.es6.js",

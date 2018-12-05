@@ -20,7 +20,7 @@
   "description": "Start of random-image",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "random-image.js",
   "module": "random-image.es6.js",

@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrndesign-diff2html/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrndesign-diff2html.js",
   "module": "lrndesign-diff2html.es6.js",

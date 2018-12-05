@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrnapp-fab-menu/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrnapp-fab-menu.js",
   "module": "lrnapp-fab-menu.es6.js",

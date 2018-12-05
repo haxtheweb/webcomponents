@@ -20,7 +20,7 @@
   "description": "Start of social-media-icons",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "social-media-icons.js",
   "module": "social-media-icons.es6.js",

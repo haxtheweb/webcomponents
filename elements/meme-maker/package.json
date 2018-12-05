@@ -20,7 +20,7 @@
   "description": "Automated conversion of meme-maker/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "meme-maker.js",
   "module": "meme-maker.es6.js",

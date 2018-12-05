@@ -20,7 +20,7 @@
   "description": "Automated conversion of wikipedia-query/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "wikipedia-query.js",
   "module": "wikipedia-query.es6.js",

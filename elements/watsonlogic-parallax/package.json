@@ -20,7 +20,7 @@
   "description": "Automated conversion of watsonlogic-parallax/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "watsonlogic-parallax.js",
   "module": "watsonlogic-parallax.es6.js",

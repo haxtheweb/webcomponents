@@ -20,7 +20,7 @@
   "description": "Automated conversion of select-menu/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "select-menu.js",
   "module": "select-menu.es6.js",

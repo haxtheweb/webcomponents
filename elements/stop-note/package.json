@@ -20,7 +20,7 @@
   "description": "Automated conversion of stop-note/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "stop-note.js",
   "module": "stop-note.es6.js",

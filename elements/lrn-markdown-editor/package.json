@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrn-markdown-editor/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrn-markdown-editor.js",
   "module": "lrn-markdown-editor.es6.js",

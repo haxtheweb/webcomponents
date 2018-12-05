@@ -20,7 +20,7 @@
   "description": "Automated conversion of flash-card/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "flash-card.js",
   "module": "flash-card.es6.js",

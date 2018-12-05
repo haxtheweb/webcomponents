@@ -20,7 +20,7 @@
   "description": "Automated conversion of lrn-gitgraph/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrn-gitgraph.js",
   "module": "lrn-gitgraph.es6.js",
