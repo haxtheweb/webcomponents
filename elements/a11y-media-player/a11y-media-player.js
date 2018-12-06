@@ -297,6 +297,13 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
         :host #innerplayer {
           z-index: 1;
         }
+        :host #outeraudiocc:not([hidden]) {
+          display: flex;
+          align-items: center;
+          padding: 5px 16px;
+          min-height: 4em;
+          transition: all 0.5s;
+        }
         :host #sources {
           display: flex;
           align-items: stretch;
@@ -499,6 +506,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           }
           :host .screen-only,
           :host #player,
+          :host #outeraudiocc,
           :host #printthumb:not([src]) {
             display: none;
           }
@@ -525,6 +533,9 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
       </style>
       <div class="sr-only">[[mediaCaption]]</div>
       <div id="outerplayer" lang$="[[uiLanguage]]">
+        <div id="outeraudiocc" hidden$="[[!showCustomCaptions]]">
+          <div id="audiocc" hidden$="[[!noHeight]]"></div>
+        </div>
         <div id="player">
           <div id="innerplayer">
             <div id="sources" hidden$="[[noHeight]]">
@@ -565,7 +576,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
                 video-id$="[[videoId]]"
               ></div>
               <div id="customcc" hidden$="[[!showCustomCaptions]]">
-                <span id="customcctxt"></span>
+                <span id="customcctxt" hidden$="[[noHeight]]"></span>
               </div>
             </div>
           </div>
@@ -827,6 +838,14 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   }
 
   /**
+   * hide the sources section?
+   */
+
+  _hideSources(noHeight, hasCaptions) {
+    return noHeight && !hasCaptions;
+  }
+
+  /**
    * handles slider seeking via mouse or keyboard
    */
   _toggleSliderSeek(seeking, value) {
@@ -909,6 +928,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           }
         }
         root.$.customcctxt.innerText = caption;
+        root.$.audiocc.innerText = caption;
         root.$.transcript.setActiveCues(active);
       }
     }

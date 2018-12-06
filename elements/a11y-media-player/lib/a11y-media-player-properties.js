@@ -597,6 +597,7 @@ class A11yMediaPlayerProperties extends A11yMediaBehaviors {
   _getNoHeight(audioOnly, thumbnailSrc) {
     return audioOnly && (thumbnailSrc === null || thumbnailSrc === undefined);
   }
+
   /**
    * returns true if the player has no giant play button
    */
