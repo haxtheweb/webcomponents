@@ -1,21 +1,21 @@
 # &lt;lrn-gitgraph&gt;
 
 Gitgraph
-> Automated conversion of lrn-gitgraph/
+> Render git data in a graphing tree format
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/lrn-gitgraph.js';
+import '@lrnwebcomponents/lrn-gitgraph/lrn-gitgraph.js';
 /* At top of an application */
-<script type="module" src="lrn-gitgraph.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/lrn-gitgraph/lrn-gitgraph.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/lrn-gitgraph.js';
+  import '@lrnwebcomponents/lrn-gitgraph/lrn-gitgraph.js';
 
-  import {LrnGitgraph} from '@lrnwebcomponents/lrn-gitgraph';
+  import {LrnGitgraph} from '@lrnwebcomponents/lrn-gitgraph/lrn-gitgraph.js';
 </script>
 ```
 

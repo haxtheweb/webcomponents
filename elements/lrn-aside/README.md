@@ -1,21 +1,21 @@
 # &lt;lrn-aside&gt;
 
 Aside
-> Automated conversion of lrn-aside/
+> A simple textual aside
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/lrn-aside.js';
+import '@lrnwebcomponents/lrn-aside/lrn-aside.js';
 /* At top of an application */
-<script type="module" src="lrn-aside.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/lrn-aside/lrn-aside.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/lrn-aside.js';
+  import '@lrnwebcomponents/lrn-aside/lrn-aside.js';
 
-  import {LrnAside} from '@lrnwebcomponents/lrn-aside';
+  import {LrnAside} from '@lrnwebcomponents/lrn-aside/lrn-aside.js';
 </script>
 ```
 

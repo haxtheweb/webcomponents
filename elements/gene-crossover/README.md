@@ -1,21 +1,21 @@
 # &lt;gene-crossover&gt;
 
 Crossover
-> Automated conversion of gene-crossover/
+> genes
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/gene-crossover.js';
+import '@lrnwebcomponents/gene-crossover/gene-crossover.js';
 /* At top of an application */
-<script type="module" src="gene-crossover.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/gene-crossover/gene-crossover.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/gene-crossover.js';
+  import '@lrnwebcomponents/gene-crossover/gene-crossover.js';
 
-  import {GeneCrossover} from '@lrnwebcomponents/gene-crossover';
+  import {GeneCrossover} from '@lrnwebcomponents/gene-crossover/gene-crossover.js';
 </script>
 ```
 

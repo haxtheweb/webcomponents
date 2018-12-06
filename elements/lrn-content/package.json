@@ -17,7 +17,7 @@
     }
   },
   "version": "0.0.38",
-  "description": "Automated conversion of lrn-content/",
+  "description": "Simple content wrapper for OER Schema meta-data",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"

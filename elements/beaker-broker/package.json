@@ -17,7 +17,7 @@
     }
   },
   "version": "0.0.38",
-  "description": "Automated conversion of beaker-broker",
+  "description": "A broker element to make working with Beaker Browser's API even easier.",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"

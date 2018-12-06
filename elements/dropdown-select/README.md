@@ -1,21 +1,21 @@
 # &lt;dropdown-select&gt;
 
 Select
-> Automated conversion of dropdown-select/
+> dropdown that provides selection capabilities
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/dropdown-select.js';
+import '@lrnwebcomponents/dropdown-select/dropdown-select.js';
 /* At top of an application */
-<script type="module" src="dropdown-select.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/dropdown-select/dropdown-select.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/dropdown-select.js';
+  import '@lrnwebcomponents/dropdown-select/dropdown-select.js';
 
-  import {DropdownSelect} from '@lrnwebcomponents/dropdown-select';
+  import {DropdownSelect} from '@lrnwebcomponents/dropdown-select/dropdown-select.js';
 </script>
 ```
 

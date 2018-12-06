@@ -1,21 +1,21 @@
 # &lt;word-count&gt;
 
 Count
-> Automated conversion of word-count/
+> Counts the words in the slotted text and provides a small text badge
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/word-count.js';
+import '@lrnwebcomponents/word-count/word-count.js';
 /* At top of an application */
-<script type="module" src="word-count.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/word-count/word-count.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/word-count.js';
+  import '@lrnwebcomponents/word-count/word-count.js';
 
-  import {WordCount} from '@lrnwebcomponents/word-count';
+  import {WordCount} from '@lrnwebcomponents/word-count/word-count.js';
 </script>
 ```
 

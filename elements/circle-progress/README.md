@@ -1,21 +1,21 @@
 # &lt;circle-progress&gt;
 
 Progress
-> Automated conversion of circle-progress/
+> Progress as tracked around the outside of a circle
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/circle-progress.js';
+import '@lrnwebcomponents/circle-progress/circle-progress.js';
 /* At top of an application */
-<script type="module" src="circle-progress.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/circle-progress/circle-progress.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/circle-progress.js';
+  import '@lrnwebcomponents/circle-progress/circle-progress.js';
 
-  import {CircleProgress} from '@lrnwebcomponents/circle-progress';
+  import {CircleProgress} from '@lrnwebcomponents/circle-progress/circle-progress.js';
 </script>
 ```
 

@@ -17,7 +17,7 @@
     }
   },
   "version": "0.0.38",
-  "description": "Automated conversion of lrn-gitgraph/",
+  "description": "Render git data in a graphing tree format",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"

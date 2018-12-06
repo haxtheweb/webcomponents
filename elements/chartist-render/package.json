@@ -12,7 +12,7 @@
     }
   },
   "version": "0.0.38",
-  "description": "Automated conversion of chartist-render/",
+  "description": "Rendering Chartist",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"

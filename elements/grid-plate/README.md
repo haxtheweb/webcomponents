@@ -1,21 +1,21 @@
 # &lt;grid-plate&gt;
 
 Plate
-> Automated conversion of grid-plate/
+> a grid element with 1 to 4 columns via slots
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/grid-plate.js';
+import '@lrnwebcomponents/grid-plate/grid-plate.js';
 /* At top of an application */
-<script type="module" src="grid-plate.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/grid-plate/grid-plate.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/grid-plate.js';
+  import '@lrnwebcomponents/grid-plate/grid-plate.js';
 
-  import {GridPlate} from '@lrnwebcomponents/grid-plate';
+  import {GridPlate} from '@lrnwebcomponents/grid-plate/grid-plate.js';
 </script>
 ```
 

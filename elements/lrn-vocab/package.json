@@ -17,7 +17,7 @@
     }
   },
   "version": "0.0.38",
-  "description": "Automated conversion of lrn-vocab/",
+  "description": "A simple vocabulary term highlighted with pop up for more details",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"

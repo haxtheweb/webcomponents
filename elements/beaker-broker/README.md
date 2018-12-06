@@ -1,21 +1,21 @@
 # &lt;beaker-broker&gt;
 
 Broker
-> Automated conversion of beaker-broker
+> A broker element that can play nicely with Beaker Browser and make the API even easier to work with then it already is.
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/beaker-broker.js';
+import '@lrnwebcomponents/beaker-broker/beaker-broker.js';
 /* At top of an application */
-<script type="module" src="beaker-broker.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/beaker-broker/beaker-broker.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/beaker-broker.js';
+  import '@lrnwebcomponents/beaker-broker/beaker-broker.js';
 
-  import {BeakerBroker} from '@lrnwebcomponents/beaker-broker';
+  import {BeakerBroker} from '@lrnwebcomponents/beaker-broker/beaker-broker.js';
 </script>
 ```
 

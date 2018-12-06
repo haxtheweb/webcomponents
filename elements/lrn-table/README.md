@@ -1,21 +1,21 @@
 # &lt;lrn-table&gt;
 
 Table
-> Automated conversion of lrn-table/
+> Generate a table that can be downloaded by users from a csv file
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/lrn-table.js';
+import '@lrnwebcomponents/lrn-table/lrn-table.js';
 /* At top of an application */
-<script type="module" src="lrn-table.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/lrn-table/lrn-table.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/lrn-table.js';
+  import '@lrnwebcomponents/lrn-table/lrn-table.js';
 
-  import {LrnTable} from '@lrnwebcomponents/lrn-table';
+  import {LrnTable} from '@lrnwebcomponents/lrn-table/lrn-table.js';
 </script>
 ```
 

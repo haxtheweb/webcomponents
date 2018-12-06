@@ -1,7 +1,7 @@
 # &lt;a-11-y-behaviors&gt;
 
 11
-> Automated conversion of a11y-behaviors/
+> Behaviors / mixins to improve A11y in elements
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.

@@ -17,7 +17,7 @@
     }
   },
   "version": "0.0.38",
-  "description": "Automated conversion of item-overlay-ops/",
+  "description": "A wrapper that provides an overlay of operations to any element, usually a card.",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"

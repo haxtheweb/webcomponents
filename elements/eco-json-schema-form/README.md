@@ -1,21 +1,21 @@
 # &lt;eco-json-schema-form&gt;
 
 Json
-> Automated conversion of eco-json-schema-form/
+> JSON Schema data bound form
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/eco-json-schema-form.js';
+import '@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js';
 /* At top of an application */
-<script type="module" src="eco-json-schema-form.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/eco-json-schema-form.js';
+  import '@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js';
 
-  import {EcoJsonSchemaForm} from '@lrnwebcomponents/eco-json-schema-form';
+  import {EcoJsonSchemaForm} from '@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js';
 </script>
 ```
 

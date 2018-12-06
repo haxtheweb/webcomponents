@@ -12,7 +12,7 @@
     }
   },
   "version": "0.0.38",
-  "description": "Automated conversion of dropdown-select/",
+  "description": "A dropdown element with better event and data binding",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"

@@ -1,21 +1,21 @@
 # &lt;game-show-quiz&gt;
 
 Show
-> Automated conversion of game-show-quiz/
+> Game show style quizzing system
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/game-show-quiz.js';
+import '@lrnwebcomponents/game-show-quiz/game-show-quiz.js';
 /* At top of an application */
-<script type="module" src="game-show-quiz.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/game-show-quiz/game-show-quiz.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/game-show-quiz.js';
+  import '@lrnwebcomponents/game-show-quiz/game-show-quiz.js';
 
-  import {GameShowQuiz} from '@lrnwebcomponents/game-show-quiz';
+  import {GameShowQuiz} from '@lrnwebcomponents/game-show-quiz/game-show-quiz.js';
 </script>
 ```
 

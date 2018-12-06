@@ -1,21 +1,21 @@
 # &lt;citation-element&gt;
 
 Element
-> Automated conversion of citation-element/
+> Correctly cite a resource on the internet
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/citation-element.js';
+import '@lrnwebcomponents/citation-element/citation-element.js';
 /* At top of an application */
-<script type="module" src="citation-element.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/citation-element/citation-element.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/citation-element.js';
+  import '@lrnwebcomponents/citation-element/citation-element.js';
 
-  import {CitationElement} from '@lrnwebcomponents/citation-element';
+  import {CitationElement} from '@lrnwebcomponents/citation-element/citation-element.js'';
 </script>
 ```
 

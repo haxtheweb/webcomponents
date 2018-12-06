@@ -1,21 +1,21 @@
 # &lt;lrn-calendar&gt;
 
 Calendar
-> Automated conversion of lrn-calendar/
+> Render a calendar from an ical file
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/lrn-calendar.js';
+import '@lrnwebcomponents/lrn-calendar/lrn-calendar.js';
 /* At top of an application */
-<script type="module" src="lrn-calendar.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/lrn-calendar/lrn-calendar.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/lrn-calendar.js';
+  import '@lrnwebcomponents/lrn-calendar/lrn-calendar.js';
 
-  import {LrnCalendar} from '@lrnwebcomponents/lrn-calendar';
+  import {LrnCalendar} from '@lrnwebcomponents/lrn-calendar/lrn-calendar.js';
 </script>
 ```
 

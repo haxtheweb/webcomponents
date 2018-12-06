@@ -1,21 +1,21 @@
 # &lt;editable-table&gt;
 
 Table
-> Automated conversion of editable-table/
+> A table that can be edited on the front end
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/editable-table.js';
+import '@lrnwebcomponents/editable-table/editable-table.js';
 /* At top of an application */
-<script type="module" src="editable-table.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/editable-table/editable-table.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/editable-table.js';
+  import '@lrnwebcomponents/editable-table/editable-table.js';
 
-  import {EditableTable} from '@lrnwebcomponents/editable-table';
+  import {EditableTable} from '@lrnwebcomponents/editable-table/editable-table.js';
 </script>
 ```
 

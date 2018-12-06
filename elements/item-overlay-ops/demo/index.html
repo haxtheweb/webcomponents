@@ -8,33 +8,48 @@
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../item-overlay-ops.js';
       import '@polymer/paper-card/paper-card.js';
+      import '../item-overlay-ops.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+    .wrapper {
+      margin:16px; padding:16px;
+    }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic item-overlay-ops demo</h3>
       <demo-snippet>
         <template>
-          <item-overlay-ops add="" edit="" remove="" duplicate="" move="" edit-mode="">
-            <paper-card heading="Title of the thing" image="stock.jpg" elevation="2" animated-shadow="false">
-              <div class="card-content"></div>
+          <div class="wrapper">
+          <item-overlay-ops add="" edit="" remove="" duplicate="" move="" edit-mode="" disable-auto-height>
+            <paper-card heading="Disable auto height" image="stock.jpg" elevation="2" animated-shadow="false">
+              <div class="card-content">This makes the top options only as tall as they actually are. Good for placing editing on the top of an item only or using CSS variables to set it via style</div>
             </paper-card>
           </item-overlay-ops>
-    
-          <item-overlay-ops add="" edit="" remove="" duplicate="" move="">
-            <paper-card heading="Title of the thing" image="stock.jpg" elevation="2" animated-shadow="false">
-              <div class="card-content"></div>
+          </div>
+          <div class="wrapper">
+          <item-overlay-ops add="" edit="" remove="" duplicate="" move="" edit-mode="" fixed-height="200">
+            <paper-card heading="Fixed height of 200px" image="stock.jpg" elevation="2" animated-shadow="false">
+              <div class="card-content">Good for making editing area a specific height</div>
             </paper-card>
           </item-overlay-ops>
-    
+          </div>
+          <div class="wrapper">
           <item-overlay-ops edit="" duplicate="" move="" edit-mode="">
-            <paper-card heading="Title of the thing" image="stock.jpg" elevation="2" animated-shadow="false">
+            <paper-card heading="Edit mode on, fill whole area" image="stock.jpg" elevation="2" animated-shadow="false">
+              <div class="card-content">This is the default behaviors when editing</div>
+            </paper-card>
+          </item-overlay-ops>
+          </div>
+          <div class="wrapper">
+          <item-overlay-ops edit="" duplicate="" move="">
+            <paper-card heading="Edit mode disabled" image="stock.jpg" elevation="2" animated-shadow="false">
               <div class="card-content"></div>
             </paper-card>
           </item-overlay-ops>
+          </div>
         </template>
       </demo-snippet>
     </div>

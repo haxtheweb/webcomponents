@@ -1,21 +1,21 @@
 # &lt;lrn-vocab&gt;
 
 Vocab
-> Automated conversion of lrn-vocab/
+> A simple vocabulary term highlighted with pop up for more details
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/lrn-vocab.js';
+import '@lrnwebcomponents/lrn-vocab/lrn-vocab.js';
 /* At top of an application */
-<script type="module" src="lrn-vocab.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/lrn-vocab/lrn-vocab.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/lrn-vocab.js';
+  import '@lrnwebcomponents/lrn-vocab/lrn-vocab.js';
 
-  import {LrnVocab} from '@lrnwebcomponents/lrn-vocab';
+  import {LrnVocab} from '@lrnwebcomponents/lrn-vocab/lrn-vocab.js';
 </script>
 ```
 

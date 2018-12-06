@@ -37,6 +37,7 @@ let ItemOverlayOps = Polymer({
         background-color: var(--item-overlay-ops, #999999);
         position: absolute;
         z-index: 1;
+        @apply --item-overlay-ops-container;
       }
       :host([edit-mode]) #container:hover,
       :host([edit-mode]) #container:focus,
@@ -54,11 +55,18 @@ let ItemOverlayOps = Polymer({
       }
       .ops paper-icon-button {
         display: inline-flex;
-        width: 30px;
-        height: 30px;
-        padding: 2px;
-        margin: 5px 8px;
+        width: 26px;
+        height: 26px;
+        padding: 1px;
+        margin: 6px;
         color: #999999;
+      }
+      .ops paper-icon-button#cancel {
+        width: 16px;
+        height: 16px;
+        padding: 0px;
+        margin: 4px;
+        position: absolute;
       }
       .ops paper-icon-button.active {
         color: #000000;
@@ -163,6 +171,13 @@ let ItemOverlayOps = Polymer({
           hidden\$="[[!duplicate]]"
           title="Duplicate this"
         ></paper-icon-button>
+        <paper-icon-button
+          on-tap="_opTap"
+          icon="icons:cancel"
+          id="cancel"
+          hidden\$="[[!__anyOp]]"
+          title="Cancel"
+        ></paper-icon-button>
       </div>
       <div class="active-op">[[activeTitle]]</div>
       <div id="workingarea" class\$="[[activeOp]]">
@@ -245,6 +260,20 @@ let ItemOverlayOps = Polymer({
       value: false
     },
     /**
+     * Allow height to be defined rather than calculated
+     */
+    fixedHeight: {
+      type: Number,
+      observer: "fixedHeightChanged"
+    },
+    /**
+     * Ability to disable height setting. Useful if using CSS vars.
+     */
+    disableAutoHeight: {
+      type: Boolean,
+      value: false
+    },
+    /**
      * Remove opertaions
      */
     remove: {
@@ -257,6 +286,10 @@ let ItemOverlayOps = Polymer({
     duplicate: {
       type: Boolean,
       value: false
+    },
+    __anyOp: {
+      type: Boolean,
+      value: false
     }
   },
 
@@ -266,11 +299,8 @@ let ItemOverlayOps = Polymer({
   attached: function() {
     // delay is enough to get the height correct
     setTimeout(() => {
-      let rect = this.getBoundingClientRect();
-      this.$.container.style.width = rect.width + "px";
-      this.$.container.style.height = rect.height + "px";
-      this.$.workingarea.style.height = rect.height - 80 + "px";
-    }, 1);
+      this._windowResize();
+    }, 5);
     window.addEventListener("resize", this._windowResize.bind(this));
   },
 
@@ -281,13 +311,33 @@ let ItemOverlayOps = Polymer({
     window.removeEventListener("resize", this._windowResize.bind(this));
   },
   /**
+   * Fixed height changed, update.
+   */
+  fixedHeightChanged: function(newValue, oldValue) {
+    if (newValue) {
+      if (!this.disableAutoHeight) {
+        this.$.container.style.height = this.fixedHeight + "px";
+        this.$.workingarea.style.height = this.fixedHeight - 80 + "px";
+      }
+    }
+  },
+  /**
    * react to window resizing
    */
   _windowResize: function(e) {
     let rect = this.getBoundingClientRect();
     this.$.container.style.width = rect.width + "px";
-    this.$.container.style.height = rect.height + "px";
-    this.$.workingarea.style.height = rect.height - 80 + "px";
+    if (!this.disableAutoHeight) {
+      if (!this.fixedHeight || typeof this.fixedHeight === typeof undefined) {
+        this.$.container.style.height = rect.height + "px";
+        this.$.workingarea.style.height = rect.height - 80 + "px";
+      } else {
+        this.$.container.style.height = this.fixedHeight + "px";
+        this.$.workingarea.style.height = this.fixedHeight - 80 + "px";
+      }
+    } else {
+      this.$.workingarea.style.height = rect.height - 80 + "px";
+    }
   },
 
   /**
@@ -299,9 +349,16 @@ let ItemOverlayOps = Polymer({
     this.activeTitle = local.getAttribute("id");
     this.activeOp = local.getAttribute("id");
     this._resetActive();
+    this.__anyOp = true;
     local.classList.add("active");
     // we switch icons for these
     switch (this.activeOp) {
+      case "cancel":
+        local.classList.remove("active");
+        this.activeTitle = null;
+        this.activeOp = null;
+        this.__anyOp = false;
+        break;
       case "remove":
         this.__option1Icon = "icons:check";
         this.__option1Text = "Confirm deleting this";

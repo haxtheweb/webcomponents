@@ -1,21 +1,21 @@
 # &lt;chartist-render&gt;
 
 Render
-> Automated conversion of chartist-render/
+> Chartist render wrapper
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/chartist-render.js';
+import '@lrnwebcomponents/chartist-render/chartist-render.js';
 /* At top of an application */
-<script type="module" src="chartist-render.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/chartist-render/chartist-render.js"></script>
 /* Alternatives for top of application */
 <script type="module">
   import '@lrnwebcomponents/chartist-render.js';
 
-  import {ChartistRender} from '@lrnwebcomponents/chartist-render';
+  import {ChartistRender} from '@lrnwebcomponents/chartist-render/chartist-render.js';
 </script>
 ```
 

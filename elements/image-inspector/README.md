@@ -1,21 +1,21 @@
 # &lt;image-inspector&gt;
 
 Inspector
-> Automated conversion of image-inspector/
+> Inspector tools on an image wrapping open seadragon library
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/image-inspector.js';
+import '@lrnwebcomponents/image-inspector/image-inspector.js';
 /* At top of an application */
-<script type="module" src="image-inspector.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/image-inspector/image-inspector.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/image-inspector.js';
+  import '@lrnwebcomponents/image-inspector/image-inspector.js';
 
-  import {ImageInspector} from '@lrnwebcomponents/image-inspector';
+  import {ImageInspector} from '@lrnwebcomponents/image-inspector/image-inspector.js';
 </script>
 ```
 

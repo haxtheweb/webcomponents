@@ -1,21 +1,21 @@
 # &lt;app-editor-hax&gt;
 
 Editor
-> Automated conversion of app-editor-hax/
+> HAX geared toward application development
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/app-editor-hax.js';
+import '@lrnwebcomponents/app-editor-hax/app-editor-hax.js';
 /* At top of an application */
-<script type="module" src="app-editor-hax.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/app-editor-hax/app-editor-hax.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/app-editor-hax.js';
+  import '@lrnwebcomponents/app-editor-hax/app-editor-hax.js';
 
-  import {AppEditorHax} from '@lrnwebcomponents/app-editor-hax';
+  import {AppEditorHax} from '@lrnwebcomponents/app-editor-hax/app-editor-hax.js';
 </script>
 ```
 

@@ -1,21 +1,21 @@
 # &lt;lrn-content&gt;
 
 Content
-> Automated conversion of lrn-content/
+> Simple content wrapper for OER Schema meta-data
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/lrn-content.js';
+import '@lrnwebcomponents/lrn-content/lrn-content.js';
 /* At top of an application */
-<script type="module" src="lrn-content.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/lrn-content/lrn-content.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/lrn-content.js';
+  import '@lrnwebcomponents/lrn-content/lrn-content.js';
 
-  import {LrnContent} from '@lrnwebcomponents/lrn-content';
+  import {LrnContent} from '@lrnwebcomponents/lrn-content/lrn-content.js';
 </script>
 ```
 

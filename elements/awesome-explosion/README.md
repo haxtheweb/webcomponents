@@ -1,21 +1,21 @@
 # &lt;awesome-explosion&gt;
 
 Explosion
-> Automated conversion of awesome-explosion/
+> A stinking awesome, explosion.
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/awesome-explosion.js';
+import '@lrnwebcomponents/awesome-explosion/awesome-explosion.js';
 /* At top of an application */
-<script type="module" src="awesome-explosion.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/awesome-explosion/awesome-explosion.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/awesome-explosion.js';
+  import '@lrnwebcomponents/awesome-explosion/awesome-explosion.js';
 
-  import {AwesomeExplosion} from '@lrnwebcomponents/awesome-explosion';
+  import {AwesomeExplosion} from '@lrnwebcomponents/awesome-explosion/awesome-explosion.js';
 </script>
 ```
 

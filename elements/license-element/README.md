@@ -1,21 +1,21 @@
 # &lt;license-element&gt;
 
 Element
-> Automated conversion of license-element/
+> Semantically accurate license for a work
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/license-element.js';
+import '@lrnwebcomponents/license-element/license-element.js';
 /* At top of an application */
-<script type="module" src="license-element.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/license-element/license-element.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/license-element.js';
+  import '@lrnwebcomponents/license-element/license-element.js';
 
-  import {LicenseElement} from '@lrnwebcomponents/license-element';
+  import {LicenseElement} from '@lrnwebcomponents/license-element/license-element.js';
 </script>
 ```
 

@@ -1,21 +1,21 @@
 # &lt;a-11-y-media-player&gt;
 
 11
-> Automated conversion of a11y-media-player/
+> A highly accessible media player
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/a-11-y-media-player.js';
+import '@lrnwebcomponents/a-11-y-media-player/a-11-y-media-player.js';
 /* At top of an application */
-<script type="module" src="a-11-y-media-player.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/a-11-y-media-player/a-11-y-media-player.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/a-11-y-media-player.js';
+  import '@lrnwebcomponents/a-11-y-media-player/a-11-y-media-player.js';
 
-  import {A11YMediaPlayer} from '@lrnwebcomponents/a-11-y-media-player';
+  import {A11YMediaPlayer} from '@lrnwebcomponents/a-11-y-media-player/a-11-y-media-player.js';
 </script>
 ```
 

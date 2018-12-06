@@ -1,21 +1,21 @@
 # &lt;lrn-icons&gt;
 
 Icons
-> Automated conversion of lrn-icons/
+> Some icons related to education concepts
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/lrn-icons.js';
+import '@lrnwebcomponents/lrn-icons/lrn-icons.js';
 /* At top of an application */
-<script type="module" src="lrn-icons.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/lrn-icons/lrn-icons.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/lrn-icons.js';
+  import '@lrnwebcomponents/lrn-icons/lrn-icons.js';
 
-  import {LrnIcons} from '@lrnwebcomponents/lrn-icons';
+  import {LrnIcons} from '@lrnwebcomponents/lrn-icons/lrn-icons.js';
 </script>
 ```
 

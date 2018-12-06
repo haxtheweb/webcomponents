@@ -1,21 +1,21 @@
 # &lt;jwt-login&gt;
 
 Login
-> Automated conversion of jwt-login/
+> JSON Web Token login broker / manager
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/jwt-login.js';
+import '@lrnwebcomponents/jwt-login/jwt-login.js';
 /* At top of an application */
-<script type="module" src="jwt-login.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/jwt-login/jwt-login.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/jwt-login.js';
+  import '@lrnwebcomponents/jwt-login/jwt-login.js';
 
-  import {JwtLogin} from '@lrnwebcomponents/jwt-login';
+  import {JwtLogin} from '@lrnwebcomponents/jwt-login/jwt-login.js';
 </script>
 ```
 

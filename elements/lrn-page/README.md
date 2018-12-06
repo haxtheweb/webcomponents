@@ -1,21 +1,21 @@
 # &lt;lrn-page&gt;
 
 Page
-> Automated conversion of lrn-page/
+> OER Schema wrapping for a page
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/lrn-page.js';
+import '@lrnwebcomponents/lrn-page/lrn-page.js';
 /* At top of an application */
-<script type="module" src="lrn-page.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/lrn-page/lrn-page.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/lrn-page.js';
+  import '@lrnwebcomponents/lrn-page/lrn-page.js';
 
-  import {LrnPage} from '@lrnwebcomponents/lrn-page';
+  import {LrnPage} from '@lrnwebcomponents/lrn-page/lrn-page.js';
 </script>
 ```
 

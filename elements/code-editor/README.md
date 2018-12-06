@@ -1,21 +1,21 @@
 # &lt;code-editor&gt;
 
 Editor
-> Automated conversion of code-editor/
+> Code editor element with data binding
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/code-editor.js';
+import '@lrnwebcomponents/code-editor/code-editor.js';
 /* At top of an application */
-<script type="module" src="code-editor.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/code-editor/code-editor.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/code-editor.js';
+  import '@lrnwebcomponents/code-editor/code-editor.js';
 
-  import {CodeEditor} from '@lrnwebcomponents/code-editor';
+  import {CodeEditor} from '@lrnwebcomponents/code-editor.js';
 </script>
 ```
 

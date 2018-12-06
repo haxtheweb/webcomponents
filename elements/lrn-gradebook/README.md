@@ -1,21 +1,21 @@
 # &lt;lrn-gradebook&gt;
 
 Gradebook
-> Automated conversion of lrn-gradebook/
+> Makings of a gradebook
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/lrn-gradebook.js';
+import '@lrnwebcomponents/lrn-gradebook/lrn-gradebook.js';
 /* At top of an application */
-<script type="module" src="lrn-gradebook.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/lrn-gradebook/lrn-gradebook.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/lrn-gradebook.js';
+  import '@lrnwebcomponents/lrn-gradebook/lrn-gradebook.js';
 
-  import {LrnGradebook} from '@lrnwebcomponents/lrn-gradebook';
+  import {LrnGradebook} from '@lrnwebcomponents/lrn-gradebook/lrn-gradebook.js';
 </script>
 ```
 

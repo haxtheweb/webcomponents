@@ -12,7 +12,7 @@
     }
   },
   "version": "0.0.38",
-  "description": "Automated conversion of grid-plate/",
+  "description": "a grid element with 1 to 4 columns via slots",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"

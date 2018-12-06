@@ -6,7 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 export { HaxcmsElements };
 /**
  * `haxcms-elements`
- * `Automated conversion of haxcms-elements/`
+ * `HAX CMS series of elements to provide a full on CMS`
  *
  * @microcopy - language worth noting:
  *  -

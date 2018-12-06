@@ -445,6 +445,7 @@ class OutlineDesigner extends PolymerElement {
             <template>
               <div class="card-wrapper">
                 <item-overlay-ops
+                  fixed-height="140"
                   data-item-id$="[[item.id]]"
                   add=""
                   edit=""
@@ -465,13 +466,13 @@ class OutlineDesigner extends PolymerElement {
                     </div>
                     <div class="card-actions high-detail">
                       <ul>
-                        <iron-swipeable-container
+                        <iron-swipeable-container swipe-style="curve"
                           ><li>Page 1</li></iron-swipeable-container
                         >
-                        <iron-swipeable-container
+                        <iron-swipeable-container swipe-style="curve"
                           ><li>Page 2</li></iron-swipeable-container
                         >
-                        <iron-swipeable-container
+                        <iron-swipeable-container swipe-style="curve"
                           ><li>Page 3</li></iron-swipeable-container
                         >
                       </ul>
@@ -492,7 +493,12 @@ class OutlineDesigner extends PolymerElement {
         <section id="treepage">
           <div class$="node-[[detailsMode]]-detail tf-tree">
             <ul>
-              <template is="dom-repeat" items="{{manifest.items}}" as="item">
+              <template
+                is="dom-repeat"
+                items="{{manifest.items}}"
+                as="item"
+                mutable-data
+              >
                 <li>
                   <span class="tf-nc">
                     <div class="tf-label" id$="item-tip-[[item.id]]">
@@ -520,7 +526,12 @@ class OutlineDesigner extends PolymerElement {
             on-sort-finish="_onSortFinish"
             dragging="{{dragging}}"
           >
-            <template is="dom-repeat" items="{{manifest.items}}" as="item">
+            <template
+              is="dom-repeat"
+              items="{{manifest.items}}"
+              as="item"
+              mutable-data
+            >
               <div class="card-wrapper">
                 <paper-card
                   class$="card-[[detailsMode]]-detail"

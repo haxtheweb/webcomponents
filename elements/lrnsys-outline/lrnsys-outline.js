@@ -3,19 +3,19 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "./lib/lrnsys-outline-item.js";
 /**
-`lrnsys-outline`
-A LRN element
-
-@demo demo/index.html
-
-@microcopy - the mental model for this element
- -
-*/
+ * `lrnsys-outline`
+ * `Outline that items can be shuffled around in`
+ *
+ * @demo demo/index.html
+ * @microcopy - the mental model for this element
+ *  -
+ */
 let LrnsysOutline = Polymer({
   _template: html`
     <style>
@@ -33,14 +33,12 @@ let LrnsysOutline = Polymer({
         font-size: 85%;
       }
     </style>
-    <h1>
-      [[title]]<paper-icon-button
-        title="Keyboard directions"
-        id="dialogtrigger"
-        icon="icons:help"
-        on-tap="openDirections"
-      ></paper-icon-button>
-    </h1>
+    <paper-icon-button
+      title="Keyboard directions"
+      id="dialogtrigger"
+      icon="icons:help"
+      on-tap="openDirections"
+    ></paper-icon-button>
     <paper-dialog id="modal" with-backdrop="">
       <h2>Keyboard shortcuts</h2>
       <div>
@@ -101,10 +99,6 @@ let LrnsysOutline = Polymer({
   },
 
   properties: {
-    title: {
-      type: String,
-      value: "Content Outline"
-    },
     data: {
       type: Array,
       value: null
@@ -128,7 +122,11 @@ let LrnsysOutline = Polymer({
    */
   closeDirections: function(e) {
     this.$.modal.opened = false;
-    this.$.dialogtrigger.focus();
+    async.microTask.run(() => {
+      setTimeout(() => {
+        this.$.dialogtrigger.focus();
+      }, 50);
+    });
   },
 
   /**
@@ -154,7 +152,11 @@ let LrnsysOutline = Polymer({
     // again (until the next time you open).
     if (e.detail === this.__modal) {
       // focus on our dialog triggering button
-      this.$.dialogtrigger.focus();
+      async.microTask.run(() => {
+        setTimeout(() => {
+          this.$.dialogtrigger.focus();
+        }, 50);
+      });
     }
   },
 
@@ -177,8 +179,6 @@ let LrnsysOutline = Polymer({
    * gets a nested array of items to convert & updates the dom-repeat
    */
   setData: function(data) {
-    this.items = [];
-    this.items = data;
     if (data !== undefined && data.length > 0) {
       let prevIndent = -1;
       for (var i in data) {
@@ -199,8 +199,8 @@ let LrnsysOutline = Polymer({
         prevIndent = indent;
       }
     }
-    this.items = [];
-    this.items = data;
+    this.set("items", []);
+    this.set("items", data);
   },
 
   /**
@@ -209,6 +209,7 @@ let LrnsysOutline = Polymer({
   getData: function() {
     for (var i in this.items) {
       this.items[i].order = this._getOrder(this.items[i]);
+      this.notifyPath(`items.${i}.order`);
     }
     return this.items;
   },
@@ -216,20 +217,36 @@ let LrnsysOutline = Polymer({
   /**
    * adds a new item
    */
-  addItem: function(item) {
-    let items = this.items,
-      i = item.index;
+  addItem: function(detail) {
+    let item = detail.item;
+    let title = detail.new;
+    let spliceIndex = this.items.findIndex(j => j.id === item.id) + 1;
     this.__tempid = this.__tempid + 1;
-    items.splice(i + 1, 0, {
+    this.items.splice(spliceIndex, 0, {
       id: "outline-item-" + this.__tempid,
-      title: "",
+      title: title,
       indent: item.indent,
       parent: item.parent
     });
-    this._refreshData();
-    this.__focusedItem = item.nextElementSibling;
+    this.notifySplices("items", [
+      {
+        index: spliceIndex,
+        removed: [],
+        addedCount: 1,
+        object: this.items,
+        type: "splice"
+      }
+    ]);
+    this.items[spliceIndex].indentLevel = item.indent;
+    this.notifyPath(`items.${spliceIndex}.indentLevel`);
+    this.setData(this.items);
     if (this.__focusedItem !== undefined && this.__focusedItem !== null) {
-      this.__focusedItem.focus();
+      async.microTask.run(() => {
+        setTimeout(() => {
+          this.__focusedItem = item.nextElementSibling;
+          this.__focusedItem.focus();
+        }, 50);
+      });
     }
   },
 
@@ -237,20 +254,37 @@ let LrnsysOutline = Polymer({
    * removes an item
    */
   removeItem: function(item) {
-    let i = item.index,
-      items;
+    let i = this.items.findIndex(j => j.id === item.id);
     if (confirm("Do you really want to delete " + this.items[i].title + "?")) {
-      this.__focusedItem = item.previousElementSibling;
-      for (var k in this.items) {
-        if (this.items[k].parent == this.items[i].id) {
-          this.items[k].parent = this.items[i].parent;
+      console.log("?");
+      item.classList.add("collapse-to-remove");
+      setTimeout(() => {
+        this.__focusedItem = item.previousElementSibling;
+        for (var k in this.items) {
+          if (this.items[k].parent == this.items[i].id) {
+            this.items[k].parent = this.items[i].parent;
+          }
         }
-      }
-      this.items.splice(i, 1);
-      this._refreshData();
-      if (this.__focusedItem !== undefined && this.__focusedItem !== null) {
-        this.__focusedItem.focus();
-      }
+        const tmpItem = this.items[i];
+        item.classList.remove("collapse-to-remove");
+        this.items.splice(i, 1);
+        this.notifySplices("items", [
+          {
+            index: i,
+            removed: [tmpItem],
+            addedCount: 0,
+            object: this.items,
+            type: "splice"
+          }
+        ]);
+        if (this.__focusedItem !== undefined && this.__focusedItem !== null) {
+          async.microTask.run(() => {
+            setTimeout(() => {
+              this.__focusedItem.focus();
+            }, 50);
+          });
+        }
+      }, 300);
     }
   },
 
@@ -258,45 +292,45 @@ let LrnsysOutline = Polymer({
    * moves an grop of items down
    */
   moveItem: function(item, moveUp) {
-    let root = this,
-      sourceStart = item.index,
+    let sourceStart = item.index,
       sourceEnd = this._getLastChild(item),
       sourceCount = sourceEnd - sourceStart + 1;
     let target = moveUp
       ? this.items[sourceStart].prevSibling
       : this._getLastChild(this.items[sourceEnd + 1]) - sourceCount + 1;
-    let items = this.items,
-      items2;
     if (target > -1 && target < this.items.length) {
       if ((moveUp && !item.disableUp) || (!moveUp && !item.disableDown)) {
-        items2 = items.splice(
-          target,
-          0,
-          items.splice(sourceStart, sourceCount)
-        );
-        this.setData(items);
+        let item2 = this.items.splice(sourceStart, sourceCount);
+        this.items.splice(target, 0, item2);
+        this.notifySplices("items", [
+          {
+            index: sourceStart,
+            removed: [],
+            addedCount: sourceCount,
+            object: this.items,
+            type: "splice"
+          },
+          {
+            index: target,
+            removed: [item2],
+            addedCount: 1,
+            object: this.items,
+            type: "splice"
+          }
+        ]);
         this.__focusedItem = this.$.itemslist.querySelectorAll(
           "lrnsys-outline-item"
         )[target];
         if (this.__focusedItem !== undefined && this.__focusedItem !== null) {
-          this.__focusedItem.focus();
+          async.microTask.run(() => {
+            setTimeout(() => {
+              this.__focusedItem.focus();
+            }, 50);
+          });
         }
       }
     }
   },
-
-  /**
-   * refresh the array
-   */
-  _refreshData: function() {
-    let data = this.items;
-    this.items = [];
-    this.items = data;
-    if (this.__focusedItem !== undefined && this.__focusedItem !== null) {
-      this.__focusedItem.focus();
-    }
-  },
-
   /**
    * adjust indent
    */
@@ -309,7 +343,11 @@ let LrnsysOutline = Polymer({
         oldIndent = item.indent,
         indent = item.indent + amount,
         n = i + 1;
-      let prevParent = item.prevSibling !== null ? item.prevSibling.id : null;
+      let prevParent =
+        item.prevSibling !== null &&
+        typeof item.prevSibling !== typeof undefined
+          ? item.prevSibling.id
+          : null;
       let grandParent =
         this._getItemById(item.parent) && this._getItemById(item.parent).parent
           ? this._getItemById(item.parent).parent.id
@@ -322,17 +360,19 @@ let LrnsysOutline = Polymer({
       item.disableDown = item.nextSibling === null;
       item.disableLeft = indent === 0;
       item.disableRight =
-        this.items[i - 1] === null || indent > this.items[i - 1].indent;
+        this.items[i - 1] === null ||
+        typeof this.items[i - 1] === typeof undefined ||
+        indent > this.items[i - 1].indentLevel;
       while (
         this.items[n] !== null &&
         this.items[n] !== undefined &&
-        oldIndent < this.items[n].indent
+        oldIndent < this.items[n].indentLevel
       ) {
-        this.items[n].indent = this.items[n].indent + amount;
+        this.items[n].indentLevel = this.items[n].indentLevel + amount;
+        this.notifyPath(`items.${n}.indentLevel`);
         n++;
         next = this.items[n];
       }
-      this._refreshData();
     }
   },
 
@@ -347,6 +387,7 @@ let LrnsysOutline = Polymer({
     if (next !== null && next !== undefined) {
       return next - 1;
     } else if (
+      typeof item !== typeof undefined &&
       item.parent !== null &&
       item.parent !== null &&
       this._getItemById(item.parent) !== null
@@ -361,9 +402,13 @@ let LrnsysOutline = Polymer({
    * converts a nested array of items and returns a flat list with indents
    */
   _getIndent: function(data, i) {
-    if (data[i].parent !== undefined) {
+    if (typeof data[i].parent !== typeof undefined) {
       let k = data.findIndex(j => j.id === data[i].parent);
-      if (data[k] !== undefined && data[k].indent !== undefined) {
+      if (
+        k !== -1 &&
+        typeof data[k] !== typeof undefined &&
+        data[k].indent !== undefined
+      ) {
         return data[k].indent + 1;
       }
     }
@@ -393,11 +438,18 @@ let LrnsysOutline = Polymer({
     let inc = prev ? -1 : 1,
       i = index + inc,
       sib = null;
-    while (i < this.items.length && i > -1) {
-      if (sib === null && this.items[i].parent === this.items[index].parent) {
-        sib = i;
+    if (this.items !== null) {
+      while (i < this.items.length && i > -1) {
+        if (
+          sib === null &&
+          typeof this.items[i] !== typeof undefined &&
+          typeof this.items[index] !== typeof undefined &&
+          this.items[i].parent === this.items[index].parent
+        ) {
+          sib = i;
+        }
+        i += inc;
       }
-      i += inc;
     }
     return sib;
   },
@@ -419,7 +471,7 @@ let LrnsysOutline = Polymer({
    * listener to add an item
    */
   _handleAddItem: function(e) {
-    this.addItem(e.detail.item);
+    this.addItem(e.detail);
   },
 
   /**
@@ -459,9 +511,12 @@ let LrnsysOutline = Polymer({
    */
   _handleChangeItem: function(e) {
     if (this._getItemById(e.detail.item.id) != null) {
-      this._getItemById(e.detail.item.id).title = e.detail.value;
+      let i = this.items.findIndex(j => j.id === e.detail.item.id);
+      if (typeof this.items[i] !== typeof undefined) {
+        this.items[i].title = e.detail.value;
+        this.notifyPath(`items.${i}.title`);
+      }
     }
-    this._refreshData();
   },
 
   /**

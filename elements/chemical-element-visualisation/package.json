@@ -12,7 +12,7 @@
     }
   },
   "version": "0.0.38",
-  "description": "Automated conversion of chemical-element-visualisation/",
+  "description": "Visualization of some different chemistry elements",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"

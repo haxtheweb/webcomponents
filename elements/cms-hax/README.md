@@ -1,21 +1,21 @@
 # &lt;cms-hax&gt;
 
 Hax
-> Automated conversion of cms-hax/
+> HAX integration for CMSs
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/cms-hax.js';
+import '@lrnwebcomponents/cms-hax/cms-hax.js';
 /* At top of an application */
-<script type="module" src="cms-hax.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/cms-hax/cms-hax.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/cms-hax.js';
+  import '@lrnwebcomponents/cms-hax/cms-hax.js';
 
-  import {CmsHax} from '@lrnwebcomponents/cms-hax';
+  import {CmsHax} from '@lrnwebcomponents/cms-hax/cms-hax.js';
 </script>
 ```
 

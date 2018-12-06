@@ -12,7 +12,7 @@
     }
   },
   "version": "0.0.38",
-  "description": "Automated conversion of contenta-polymer/",
+  "description": "Contenta integration with Polymer",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"

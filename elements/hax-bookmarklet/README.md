@@ -1,21 +1,21 @@
 # &lt;hax-bookmarklet&gt;
 
 Bookmarklet
-> Automated conversion of hax-bookmarklet/
+> HAX as a bookmarklet script
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/hax-bookmarklet.js';
+import '@lrnwebcomponents/hax-bookmarklet/hax-bookmarklet.js';
 /* At top of an application */
-<script type="module" src="hax-bookmarklet.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/hax-bookmarklet/hax-bookmarklet.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/hax-bookmarklet.js';
+  import '@lrnwebcomponents/hax-bookmarklet/hax-bookmarklet.js';
 
-  import {HaxBookmarklet} from '@lrnwebcomponents/hax-bookmarklet';
+  import {HaxBookmarklet} from '@lrnwebcomponents/hax-bookmarklet/hax-bookmarklet.js';
 </script>
 ```
 

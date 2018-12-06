@@ -1,21 +1,21 @@
 # &lt;item-overlay-ops&gt;
 
 Overlay
-> Automated conversion of item-overlay-ops/
+> A wrapper that provides an overlay of operations to any element, usually a card.
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/item-overlay-ops.js';
+import '@lrnwebcomponents/item-overlay-ops/item-overlay-ops.js';
 /* At top of an application */
-<script type="module" src="item-overlay-ops.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/item-overlay-ops/item-overlay-ops.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/item-overlay-ops.js';
+  import '@lrnwebcomponents/item-overlay-ops/item-overlay-ops.js';
 
-  import {ItemOverlayOps} from '@lrnwebcomponents/item-overlay-ops';
+  import {ItemOverlayOps} from '@lrnwebcomponents/item-overlay-ops/item-overlay-ops.js';
 </script>
 ```
 

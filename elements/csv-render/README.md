@@ -1,21 +1,21 @@
 # &lt;csv-render&gt;
 
 Render
-> Automated conversion of csv-render/
+> Render a CSV file as a highly accessible table element
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/csv-render.js';
+import '@lrnwebcomponents/csv-render/csv-render.js';
 /* At top of an application */
-<script type="module" src="csv-render.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/csv-render/csv-render.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/csv-render.js';
+  import '@lrnwebcomponents/csv-render/csv-render.js';
 
-  import {CsvRender} from '@lrnwebcomponents/csv-render';
+  import {CsvRender} from '@lrnwebcomponents/csv-render/csv-render.js';
 </script>
 ```
 

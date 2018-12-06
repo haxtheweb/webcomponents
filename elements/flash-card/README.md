@@ -1,21 +1,21 @@
 # &lt;flash-card&gt;
 
 Card
-> Automated conversion of flash-card/
+> Flash card that can be flipped to show definition
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/flash-card.js';
+import '@lrnwebcomponents/flash-card/flash-card.js';
 /* At top of an application */
-<script type="module" src="flash-card.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/flash-card/flash-card.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/flash-card.js';
+  import '@lrnwebcomponents/flash-card/flash-card.js';
 
-  import {FlashCard} from '@lrnwebcomponents/flash-card';
+  import {FlashCard} from '@lrnwebcomponents/flash-card/flash-card.js';
 </script>
 ```
 

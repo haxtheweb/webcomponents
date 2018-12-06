@@ -1,21 +1,21 @@
 # &lt;hero-banner&gt;
 
 Banner
-> Automated conversion of hero-banner/
+> The evil yet always requested hero banner
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/hero-banner.js';
+import '@lrnwebcomponents/hero-banner/hero-banner.js';
 /* At top of an application */
-<script type="module" src="hero-banner.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/hero-banner/hero-banner.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/hero-banner.js';
+  import '@lrnwebcomponents/hero-banner/hero-banner.js';
 
-  import {HeroBanner} from '@lrnwebcomponents/hero-banner';
+  import {HeroBanner} from '@lrnwebcomponents/hero-banner/hero-banner.js';
 </script>
 ```
 

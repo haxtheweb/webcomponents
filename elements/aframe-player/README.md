@@ -1,21 +1,21 @@
 # &lt;aframe-player&gt;
 
 Player
-> Automated conversion of aframe-player/
+> 3D Player and data binding for a-frame elements
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/aframe-player.js';
+import '@lrnwebcomponents/aframe-player/aframe-player.js';
 /* At top of an application */
-<script type="module" src="aframe-player.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/aframe-player/aframe-player.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/aframe-player.js';
+  import '@lrnwebcomponents/aframe-player/aframe-player.js';
 
-  import {AframePlayer} from '@lrnwebcomponents/aframe-player';
+  import {AframePlayer} from '@lrnwebcomponents/aframe-player/aframe-player.js';
 </script>
 ```
 

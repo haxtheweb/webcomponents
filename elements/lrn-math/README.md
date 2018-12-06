@@ -1,21 +1,21 @@
 # &lt;lrn-math&gt;
 
 Math
-> Automated conversion of lrn-math/
+> MathJAX element with HAX capabilities baked in
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/lrn-math.js';
+import '@lrnwebcomponents/lrn-math/lrn-math.js';
 /* At top of an application */
-<script type="module" src="lrn-math.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/lrn-math/lrn-math.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/lrn-math.js';
+  import '@lrnwebcomponents/lrn-math/lrn-math.js';
 
-  import {LrnMath} from '@lrnwebcomponents/lrn-math';
+  import {LrnMath} from '@lrnwebcomponents/lrn-math/lrn-math.js';
 </script>
 ```
 

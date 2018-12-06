@@ -1,21 +1,21 @@
 # &lt;wikipedia-query&gt;
 
 Query
-> Automated conversion of wikipedia-query/
+> Query and present information from wikipedia with correct citation
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/wikipedia-query.js';
+import '@lrnwebcomponents/wikipedia-query/wikipedia-query.js';
 /* At top of an application */
-<script type="module" src="wikipedia-query.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/wikipedia-query/wikipedia-query.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/wikipedia-query.js';
+  import '@lrnwebcomponents/wikipedia-query/wikipedia-query.js';
 
-  import {WikipediaQuery} from '@lrnwebcomponents/wikipedia-query';
+  import {WikipediaQuery} from '@lrnwebcomponents/wikipedia-query/wikipedia-query.js';
 </script>
 ```
 

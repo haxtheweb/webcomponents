@@ -1,21 +1,21 @@
 # &lt;chemical-element-visualisation&gt;
 
 Element
-> Automated conversion of chemical-element-visualisation/
+> Visualization of chemical elements
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/chemical-element-visualisation.js';
+import '@lrnwebcomponents/chemical-element-visualisation/chemical-element-visualisation.js';
 /* At top of an application */
-<script type="module" src="chemical-element-visualisation.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/chemical-element-visualisation/chemical-element-visualisation.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/chemical-element-visualisation.js';
+  import '@lrnwebcomponents/chemical-element-visualisation/chemical-element-visualisation.js';
 
-  import {ChemicalElementVisualisation} from '@lrnwebcomponents/chemical-element-visualisation';
+  import {ChemicalElementVisualisation} from '@lrnwebcomponents/chemical-element-visualisation/chemical-element-visualisation.js';
 </script>
 ```
 

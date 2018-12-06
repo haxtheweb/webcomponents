@@ -1,7 +1,7 @@
 # &lt;a-11-y-gif-player&gt;
 
 11
-> Automated conversion of a11y-gif-player/
+> An accessible animated gif "player"
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.

@@ -1,21 +1,21 @@
 # &lt;image-compare-slider&gt;
 
 Compare
-> Automated conversion of image-compare-slider/
+> Slider that allows comparison of two images
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/image-compare-slider.js';
+import '@lrnwebcomponents/image-compare-slider/image-compare-slider.js';
 /* At top of an application */
-<script type="module" src="image-compare-slider.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/image-compare-slider/image-compare-slider.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/image-compare-slider.js';
+  import '@lrnwebcomponents/image-compare-slider/image-compare-slider.js';
 
-  import {ImageCompareSlider} from '@lrnwebcomponents/image-compare-slider';
+  import {ImageCompareSlider} from '@lrnwebcomponents/image-compare-slider/image-compare-slider.js';
 </script>
 ```
 

@@ -1,21 +1,21 @@
 # &lt;contenta-polymer&gt;
 
 Polymer
-> Automated conversion of contenta-polymer/
+> Contenta integration with polymer
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/contenta-polymer.js';
+import '@lrnwebcomponents/contenta-polymer/contenta-polymer.js';
 /* At top of an application */
-<script type="module" src="contenta-polymer.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/contenta-polymer/contenta-polymer.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/contenta-polymer.js';
+  import '@lrnwebcomponents/contenta-polymer/contenta-polymer.js';
 
-  import {ContentaPolymer} from '@lrnwebcomponents/contenta-polymer';
+  import {ContentaPolymer} from '@lrnwebcomponents/contenta-polymer/contenta-polymer.js';
 </script>
 ```
 

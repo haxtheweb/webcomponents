@@ -1,4 +1,4 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icons/social-icons.js";import"./node_modules/@polymer/iron-pages/iron-pages.js";import"./node_modules/@polymer/iron-image/iron-image.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import"./node_modules/@polymer/iron-list/iron-list.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"./node_modules/@polymer/paper-progress/paper-progress.js";import"./node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js";import"./node_modules/@polymer/app-layout/app-header/app-header.js";import"./node_modules/@lrnwebcomponents/item-overlay-ops/item-overlay-ops.js";import"./node_modules/@lrnwebcomponents/lrnsys-outline/lrnsys-outline.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/simple-modal/simple-modal.js";import"./lib/sortable-list.js";class OutlineDesigner extends PolymerElement{static get template(){return html`
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import"./node_modules/@polymer/paper-icon-button/paper-icon-button.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icons/social-icons.js";import"./node_modules/@polymer/iron-pages/iron-pages.js";import"./node_modules/@polymer/iron-image/iron-image.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/paper-card/paper-card.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import"./node_modules/@polymer/iron-list/iron-list.js";import"./node_modules/@polymer/iron-swipeable-container/iron-swipeable-container.js";import"./node_modules/@polymer/paper-tooltip/paper-tooltip.js";import"./node_modules/@polymer/paper-progress/paper-progress.js";import"./node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js";import"./node_modules/@polymer/app-layout/app-header/app-header.js";import"./node_modules/@lrnwebcomponents/item-overlay-ops/item-overlay-ops.js";import"./node_modules/@lrnwebcomponents/lrnsys-outline/lrnsys-outline.js";import"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/simple-modal/simple-modal.js";import"./lib/sortable-list.js";class OutlineDesigner extends PolymerElement{static get template(){return html`
 <style>:host {
   display: block;
 }
@@ -216,9 +216,9 @@ paper-card.card-high-detail {
           <div class="card-content mid-detail">[[item.description]]</div>
           <div class="card-actions high-detail">
             <ul>
-              <li>Page 1</li>
-              <li>Page 2</li>
-              <li>Page 3</li>
+              <iron-swipeable-container><li>Page 1</li></iron-swipeable-container>
+              <iron-swipeable-container><li>Page 2</li></iron-swipeable-container>
+              <iron-swipeable-container><li>Page 3</li></iron-swipeable-container>
             </ul>
           </div>
         </paper-card>

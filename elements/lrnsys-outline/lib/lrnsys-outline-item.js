@@ -20,28 +20,43 @@ Polymer({
     <style>
       :host {
         display: block;
-        --indent-multiplier: 20px;
+        --indent-multiplier: 36px;
       }
-      :host [data-indent="0"] #move {
+      :host(.collapse-to-remove) #wrapper {
+        height: 0px;
+        background-color: var(--lrnsys-outline-gap-color, #eeeeee);
+        border: 1px solid #999999;
+        overflow: hidden;
+      }
+      :host #wrapper[data-indent="0"] #gap {
         margin-right: calc(var(--indent-multiplier) * 0);
       }
-      :host [data-indent="1"] #move {
+      :host #wrapper[data-indent="1"] #gap {
         margin-right: calc(var(--indent-multiplier) * 1);
       }
-      :host [data-indent="2"] #move {
+      :host #wrapper[data-indent="2"] #gap {
         margin-right: calc(var(--indent-multiplier) * 2);
       }
-      :host [data-indent="3"] #move {
+      :host #wrapper[data-indent="3"] #gap {
         margin-right: calc(var(--indent-multiplier) * 3);
       }
-      :host [data-indent="4"] #move {
+      :host #wrapper[data-indent="4"] #gap {
         margin-right: calc(var(--indent-multiplier) * 4);
       }
-      :host [data-indent="5"] #move {
+      :host #wrapper[data-indent="5"] #gap {
         margin-right: calc(var(--indent-multiplier) * 5);
       }
-      :host [data-indent="6"] #move {
+      :host #wrapper[data-indent="6"] #gap {
         margin-right: calc(var(--indent-multiplier) * 6);
+      }
+      :host #wrapper[data-indent="7"] #gap {
+        margin-right: calc(var(--indent-multiplier) * 7);
+      }
+      :host #wrapper[data-indent="8"] #gap {
+        margin-right: calc(var(--indent-multiplier) * 8);
+      }
+      :host #wrapper[data-indent="9"] #gap {
+        margin-right: calc(var(--indent-multiplier) * 9);
       }
       :host #input {
         flex-grow: 1;
@@ -50,21 +65,29 @@ Polymer({
       :host #wrapper {
         display: flex;
         height: 40px;
-        border-radius: 0.16px;
-        background-color: white;
+        border-radius: 16px;
+        transition: 0.1s all ease;
+        background-color: transparent;
+        border: 1px solid transparent;
+        padding: 8px;
+        transition: 0.3s all linear;
       }
+      :host([focus-state]) #wrapper,
       :host(:focus) #wrapper,
       :host(:hover) #wrapper {
         cursor: pointer;
+        background-color: var(--lrnsys-outline-gap-color, #eeeeee);
+        border: 1px solid #999999;
       }
-      #move {
-        font-size: 16px;
-        padding: 10px;
-        color: transparent;
+      #gap {
+        padding: 2px;
+        transition: 0.3s all ease;
+        border-left: solid 4px transparent;
       }
-      :host(:focus) #move,
-      :host(:hover) #move {
-        color: var(--lrnsys-outline-move-icon-color, #aaaaaa);
+      :host([focus-state]) #gap,
+      :host(:focus) #gap,
+      :host(:hover) #gap {
+        border-left: solid 4px var(--lrnsys-outline-gap-color, #aaaaaa);
       }
       paper-icon-button {
         font-size: 16px;
@@ -74,6 +97,7 @@ Polymer({
         display: none;
         border-radius: 0.16px;
       }
+      :host([focus-state]) paper-icon-button,
       :host(:focus) paper-icon-button,
       :host(:hover) paper-icon-button {
         width: 36px;
@@ -91,12 +115,7 @@ Polymer({
       }
     </style>
     <div id="wrapper" data-indent$="[[indentLevel]]">
-      <iron-icon
-        id="move"
-        title="Move"
-        icon="drawing:move"
-        role="presentation"
-      ></iron-icon>
+      <div id="gap"></div>
       <paper-input
         id="input"
         label="Enter a page title"
@@ -104,6 +123,30 @@ Polymer({
         no-label-float=""
       >
       </paper-input>
+      <paper-icon-button
+        id="down"
+        title="Move downwards"
+        icon="icons:arrow-downward"
+        on-tap="moveDown"
+      ></paper-icon-button>
+      <paper-icon-button
+        id="left"
+        title="Outdent"
+        icon="icons:arrow-back"
+        on-tap="moveOut"
+      ></paper-icon-button>
+      <paper-icon-button
+        id="right"
+        title="Indent"
+        icon="icons:arrow-forward"
+        on-tap="moveIn"
+      ></paper-icon-button>
+      <paper-icon-button
+        id="up"
+        title="Move upwards"
+        icon="icons:arrow-upward"
+        on-tap="moveUp"
+      ></paper-icon-button>
       <paper-icon-button
         id="add"
         title="Add Item"
@@ -117,74 +160,47 @@ Polymer({
         on-tap="delete"
       ></paper-icon-button>
     </div>
-    <paper-icon-button
-      id="down"
-      title="Move downwards"
-      icon="icons:arrow-downward"
-      on-tap="moveDown"
-    ></paper-icon-button>
-    <paper-icon-button
-      id="left"
-      title="Outdent"
-      icon="icons:arrow-back"
-      on-tap="moveOut"
-    ></paper-icon-button>
-    <paper-icon-button
-      id="right"
-      title="Indent"
-      icon="icons:arrow-forward"
-      on-tap="moveIn"
-    ></paper-icon-button>
-    <paper-icon-button
-      id="up"
-      title="Move upwards"
-      icon="icons:arrow-upward"
-      on-tap="moveUp"
-    ></paper-icon-button>
     <iron-a11y-keys
-      id="a11y"
+      target="[[__inputTarget]]"
+      keys="esc"
+      on-keys-pressed="_onEsc"
+    ></iron-a11y-keys>
+    <iron-a11y-keys
       target="[[__inputTarget]]"
       keys="enter"
       on-keys-pressed="_onEnter"
     ></iron-a11y-keys>
     <iron-a11y-keys
-      id="a11y"
       target="[[__inputTarget]]"
       keys="backspace"
       on-keys-pressed="_onBackspace"
     ></iron-a11y-keys>
     <iron-a11y-keys
-      id="a11y"
       target="[[__inputTarget]]"
       keys="up"
       on-keys-pressed="_onArrowUp"
     ></iron-a11y-keys>
     <iron-a11y-keys
-      id="a11y"
       target="[[__inputTarget]]"
       keys="down"
       on-keys-pressed="_onArrowDown"
     ></iron-a11y-keys>
     <iron-a11y-keys
-      id="a11y"
       target="[[__inputTarget]]"
       keys="tab"
       on-keys-pressed="_onTab"
     ></iron-a11y-keys>
     <iron-a11y-keys
-      id="a11y"
       target="[[__inputTarget]]"
       keys="shift+tab"
       on-keys-pressed="_onShiftTab"
     ></iron-a11y-keys>
     <iron-a11y-keys
-      id="a11y"
       target="[[__inputTarget]]"
       keys="shift+up"
       on-keys-pressed="_onShiftArrowUp"
     ></iron-a11y-keys>
     <iron-a11y-keys
-      id="a11y"
       target="[[__inputTarget]]"
       keys="shift+down"
       on-keys-pressed="_onShiftArrowDown"
@@ -207,12 +223,26 @@ Polymer({
       type: String,
       value: null
     },
-    value: {
+    title: {
       type: String,
       value: null,
       notify: true,
       reflectToAttribute: true
+    },
+    /**
+     * Tracks if focus state is applied
+     */
+    focusState: {
+      type: Boolean,
+      value: false,
+      reflectToAttribute: true
     }
+  },
+  _focusin: function(e) {
+    this.focusState = true;
+  },
+  _focusout: function(e) {
+    this.focusState = false;
   },
   /**
    * attached life cycle
@@ -238,6 +268,9 @@ Polymer({
     this.addEventListener("mouseout", e => {
       this.fire("blur-item", this);
     });
+    this.$.input.addEventListener("focused-changed", this._focusin.bind(this));
+    this.addEventListener("focusin", this._focusin.bind(this));
+    this.addEventListener("focusout", this._focusout.bind(this));
   },
   /**
    * detached life cycle
@@ -255,6 +288,12 @@ Polymer({
     this.removeEventListener("mouseout", e => {
       this.fire("blur-item", this);
     });
+    this.$.input.removeEventListener(
+      "focused-changed",
+      this._focusin.bind(this)
+    );
+    this.removeEventListener("focusin", this._focusin.bind(this));
+    this.removeEventListener("focusout", this._focusout.bind(this));
   },
 
   focus: function() {
@@ -276,13 +315,15 @@ Polymer({
   },
 
   add: function() {
-    let i = this.$.input.selectionStart,
-      j = this.$.input.value;
+    let i = this.$.input.shadowRoot.querySelector("#" + this.$.input._inputId)
+        .inputElement.selectionStart,
+      j = this.title;
     this.fire("add-item", {
       item: this,
       value: j.slice(0, i),
       new: j.slice(i, j.length)
     });
+    this.title = j.slice(0, i);
   },
 
   move: function(amount) {
@@ -312,36 +353,51 @@ Polymer({
   },
 
   _onChange: function() {
-    this.fire("change-item", { item: this, value: this.$.input.value });
+    this.fire("change-item", { item: this, value: this.title });
   },
-
+  _onEsc: function() {
+    this.focus();
+    this._focusout();
+  },
   _onEnter: function() {
-    let i = this.$.input.selectionStart,
-      j = this.$.input.value;
+    let i = this.$.input.shadowRoot.querySelector("#" + this.$.input._inputId)
+        .inputElement.selectionStart,
+      j = this.title;
     this.fire("add-item", {
       item: this,
       value: j.slice(0, i),
       new: j.slice(i, j.length)
     });
+    this.title = j.slice(0, i);
+    this._focusout();
   },
 
   _onBackspace: function(e) {
-    if (window.getSelection().toString() == this.$.input.value) {
+    if (window.getSelection().toString() == this.title) {
       e.detail.keyboardEvent.preventDefault();
       this.fire("delete-item", { item: this });
-    } else if (this.$.input.selectionStart == 0) {
+    } else if (
+      this.$.input.shadowRoot.querySelector("#" + this.$.input._inputId)
+        .inputElement.selectionStart == 0
+    ) {
       this.fire("indent-item", { item: this, increase: false });
     }
   },
 
   _onArrowUp: function() {
-    if (this.$.input.selectionStart == 0) {
+    if (
+      this.$.input.shadowRoot.querySelector("#" + this.$.input._inputId)
+        .inputElement.selectionStart == 0
+    ) {
       this.fire("focus-item", { item: this, moveUp: true });
     }
   },
 
   _onArrowDown: function() {
-    if (this.$.input.selectionStart == this.$.input.value.length) {
+    if (
+      this.$.input.shadowRoot.querySelector("#" + this.$.input._inputId)
+        .inputElement.selectionStart == this.title.length
+    ) {
       this.fire("focus-item", { item: this, moveUp: false });
     }
   },
@@ -351,7 +407,10 @@ Polymer({
   },
 
   _onTab: function(e) {
-    if (this.$.input.selectionStart == 0) {
+    if (
+      this.$.input.shadowRoot.querySelector("#" + this.$.input._inputId)
+        .inputElement.selectionStart == 0
+    ) {
       e.preventDefault();
       this.setIndent(1);
     }

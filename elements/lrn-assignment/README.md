@@ -1,21 +1,21 @@
 # &lt;lrn-assignment&gt;
 
 Assignment
-> Automated conversion of lrn-assignment/
+> A basic OER schema semantic assignment wrapper
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/lrn-assignment.js';
+import '@lrnwebcomponents/lrn-assignment/lrn-assignment.js';
 /* At top of an application */
-<script type="module" src="lrn-assignment.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/lrn-assignment/lrn-assignment.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/lrn-assignment.js';
+  import '@lrnwebcomponents/lrn-assignment/lrn-assignment.js';
 
-  import {LrnAssignment} from '@lrnwebcomponents/lrn-assignment';
+  import {LrnAssignment} from '@lrnwebcomponents/lrn-assignment/lrn-assignment.js';
 </script>
 ```
 

@@ -1,19 +1,19 @@
 language: node_js
 sudo: false
 node_js:
-    - "9"
+  - 8
+  - 10
+  - 11
 os:
-    - linux
-    - osx
+  - windows
+  - linux
+  - osx
 addons:
     firefox: latest
     chrome: stable
+install:
+  - npm install --global yarn lerna
+  - lerna bootstrap
+  - lerna exec -- yarn link
 script:
     - npm test -- --verbose
-cache:
-    directories:
-        - node_modules
-# matrix:
-#     exclude:
-#         - os: osx # skip this because on Travis, node.js segfaults on osx+node 9
-#           node_js: "9"

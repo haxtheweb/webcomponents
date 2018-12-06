@@ -1,21 +1,21 @@
 # &lt;haxcms-elements&gt;
 
 Elements
-> Automated conversion of haxcms-elements/
+> HAX CMS series of elements to provide a full on CMS
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@lrnwebcomponents/haxcms-elements.js';
+import '@lrnwebcomponents/haxcms-elements/haxcms-elements.js';
 /* At top of an application */
-<script type="module" src="haxcms-elements.js"></script>
+<script type="module" src="node_modules/@lrnwebcomponents/haxcms-elements/haxcms-elements.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/haxcms-elements.js';
+  import '@lrnwebcomponents/haxcms-elements/haxcms-elements.js';
 
-  import {HaxcmsElements} from '@lrnwebcomponents/haxcms-elements';
+  import {HaxcmsElements} from '@lrnwebcomponents/haxcms-elements/haxcms-elements.js';
 </script>
 ```
 
