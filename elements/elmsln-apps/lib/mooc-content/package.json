@@ -1,0 +1,19 @@
+{
+  "name": "@polymer/lrnapp-book",
+  "flat": true,
+  "version": "",
+  "description": "A LRN app",
+  "main": "lrnapp-book.html",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@polymer/paper-button": "^3.0.0-pre.1",
+    "@polymer/iron-ajax": "^3.0.0-pre.1",
+    "@polymer/iron-icons": "^3.0.0-pre.1",
+    "@polymer/app-layout": "^3.0.0-pre.1",
+    "@polymer/paper-styles": "^3.0.0-pre.1",
+    "@polymer/paper-icon-button": "^3.0.0-pre.1",
+    "@polymer/app-route": "^3.0.0-pre.1",
+    "@polymer/paper-slider": "^3.0.0-pre.1"
+  },
+  "devDependencies": {}
+}

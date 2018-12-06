@@ -18,12 +18,12 @@ let LrnsysChartjs = Polymer({
       }
     </style>
     <div>
-    <!-- 
-    Use the logic from the logic of the template dom-if's to allow for abstraction for all the chart types
-    -->
-        <chart-line labels="{{labels}}" data="[[data]]"></chart-line>
+      <!--
+        Use the logic from the logic of the template dom-if's to allow for abstraction for all the chart types
+      -->
+      <chart-line labels="{{labels}}" data="[[data]]"></chart-line>
     </div>
-`,
+  `,
 
   is: "lrnsys-chartjs",
 

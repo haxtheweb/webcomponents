@@ -45,11 +45,17 @@ let CodeEditor = Polymer({
       }
     </style>
     <h3>[[title]]</h3>
-    <juicy-ace-editor id="codeeditor" theme\$="[[theme]]" mode\$="[[mode]]" font-size\$="[[fontSize]]" readonly\$="[[readOnly]]"></juicy-ace-editor>
+    <juicy-ace-editor
+      id="codeeditor"
+      theme\$="[[theme]]"
+      mode\$="[[mode]]"
+      font-size\$="[[fontSize]]"
+      readonly\$="[[readOnly]]"
+    ></juicy-ace-editor>
     <div class="code-pen-container" hidden\$="[[!showCodePen]]">
       <code-pen-button data="[[codePenData]]"></code-pen-button>
     </div>
-`,
+  `,
 
   is: "code-editor",
 

@@ -7,7 +7,7 @@ An incredibly basic content block
 */
 let LrndesignContentblock = Polymer({
   _template: html`
-  <style>
+    <style>
       :host {
         display: inline-block;
         position: relative;
@@ -16,7 +16,7 @@ let LrndesignContentblock = Polymer({
     </style>
     <h3>[[title]]</h3>
     <slot></slot>
-`,
+  `,
 
   is: "lrndesign-contentblock",
 

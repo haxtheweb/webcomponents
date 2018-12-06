@@ -14,8 +14,14 @@ let LrndesignAvatar = Polymer({
         display: block;
       }
     </style>
-    <paper-avatar label="[[label]]" src="[[src]]" two-chars="[[twoChars]]" class$="[[color]]" jdenticon="[[jdenticon]]"></paper-avatar>
-`,
+    <paper-avatar
+      label="[[label]]"
+      src="[[src]]"
+      two-chars="[[twoChars]]"
+      class$="[[color]]"
+      jdenticon="[[jdenticon]]"
+    ></paper-avatar>
+  `,
 
   is: "lrndesign-avatar",
 

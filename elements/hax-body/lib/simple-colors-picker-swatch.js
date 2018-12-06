@@ -23,7 +23,7 @@ Polymer({
       :host([selected]) {
         outline: 1px solid white;
       }
-      :host([dark][selected]){
+      :host([dark][selected]) {
         outline: 1px solid black;
       }
       :host(:focus),
@@ -35,7 +35,7 @@ Polymer({
         outline: 1px dotted black;
       }
     </style>
-`,
+  `,
 
   is: "simple-colors-picker-swatch",
 

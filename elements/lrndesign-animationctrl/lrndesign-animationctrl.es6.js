@@ -17,7 +17,5 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         display: flex;
       }
     </style>
-    <div class="buttons">
-      <slot></slot>
-    </div>
-`,is:"lrndesign-animationctrl",properties:{},listeners:{"lrndesign-animationctrl-button-click":"_buttonClicked"},_buttonClicked:function(e){},ready:function(){}});export{LrndesignAnimationctrl};
+    <div class="buttons"><slot></slot></div>
+  `,is:"lrndesign-animationctrl",properties:{},listeners:{"lrndesign-animationctrl-button-click":"_buttonClicked"},_buttonClicked:function(e){},ready:function(){}});export{LrndesignAnimationctrl};

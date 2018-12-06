@@ -42,23 +42,38 @@ let MultipleChoice = Polymer({
         display: inline-flex;
       }
     </style>
-    <meta property="oer:assessing" content\$="[[relatedResource]]">
+    <meta property="oer:assessing" content\$="[[relatedResource]]" />
     <h3 hidden\$="[[hideTitle]]"><span property="oer:name">[[title]]</span></h3>
     <div>[[question]]</div>
     <ul>
       <template is="dom-repeat" items="[[displayedAnswers]]" as="answer">
-        <li><paper-checkbox disabled\$="[[disabled]]" property="oer:answer" checked="{{answer.userGuess}}">[[answer.label]]</paper-checkbox></li>
+        <li>
+          <paper-checkbox
+            disabled\$="[[disabled]]"
+            property="oer:answer"
+            checked="{{answer.userGuess}}"
+            >[[answer.label]]</paper-checkbox
+          >
+        </li>
       </template>
     </ul>
     <div hidden\$="[[hideButtons]]">
-      <paper-button disabled\$="[[disabled]]" raised="" on-tap="_verifyAnswers">[[checkLabel]]</paper-button>
-      <paper-button disabled\$="[[disabled]]" raised="" on-tap="_resetAnswers">[[resetLabel]]</paper-button>
+      <paper-button disabled\$="[[disabled]]" raised="" on-tap="_verifyAnswers"
+        >[[checkLabel]]</paper-button
+      >
+      <paper-button disabled\$="[[disabled]]" raised="" on-tap="_resetAnswers"
+        >[[resetLabel]]</paper-button
+      >
     </div>
-    <paper-toast id="toast" duration="6000" class\$="fit-bottom [[__toastColor]]">
-    [[__toastText]]
-    <iron-icon icon="[[__toastIcon]]" style="margin-left:16px;"></iron-icon>
+    <paper-toast
+      id="toast"
+      duration="6000"
+      class\$="fit-bottom [[__toastColor]]"
+    >
+      [[__toastText]]
+      <iron-icon icon="[[__toastIcon]]" style="margin-left:16px;"></iron-icon>
     </paper-toast>
-`,
+  `,
 
   is: "multiple-choice",
 

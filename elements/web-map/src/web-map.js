@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "./lib/map-layer.js";
 import "./lib/map-area.js";
 import "./lib/map-styles.js";
@@ -8,31 +9,32 @@ import "./lib/map-styles.js";
 /* web-map is an HTML &lt;map&gt; customized built-in element */
 let WebMap = Polymer({
   _template: html`
-  <!-- use the leaflet-styles style module -->
-  <style include="map-styles">
-    /* make sure the map element doesn't get selected and styled by document styles */
-    :host {
+    <!-- use the leaflet-styles style module -->
+    <style include="map-styles">
+      /* make sure the map element doesn't get selected and styled by document styles */
+      :host {
         display: inline-block !important;
         position: relative !important;
-    }
-    /* try to constrain the map and the leaflet div#map to the size of the container */
-        :host, :host #map {
-         max-width: 100%;
-         min-width: 100%;
-    }
-    /* this is a hack for shady DOM, as max-width messes with Leaflet tiles */
-    :host img {
+      }
+      /* try to constrain the map and the leaflet div#map to the size of the container */
+      :host,
+      :host #map {
+        max-width: 100%;
+        min-width: 100%;
+      }
+      /* this is a hack for shady DOM, as max-width messes with Leaflet tiles */
+      :host img {
         max-width: none !important;
-    }
-    #map:focus {
-        outline: 2px  double lightskyblue;
-    }
-  </style>
-  <!-- giving the map div a tabindex allows the map to display its focus. -->
-  <!-- see the #map:focus selector in styles, above. -->
-  <div id="map" tabindex="0"></div>
-  <slot></slot>
-`,
+      }
+      #map:focus {
+        outline: 2px double lightskyblue;
+      }
+    </style>
+    <!-- giving the map div a tabindex allows the map to display its focus. -->
+    <!-- see the #map:focus selector in styles, above. -->
+    <div id="map" tabindex="0"></div>
+    <slot></slot>
+  `,
 
   is: "web-map",
   extends: "map",
@@ -210,7 +212,7 @@ let WebMap = Polymer({
   },
 
   attached: function() {
-    this.async(function() {
+    async.microTask.run(() => {
       // the dimension attributes win, if they're there. A map does not
       // have an intrinsic size, unlike an image or video, and so must
       // have a defined width and height.

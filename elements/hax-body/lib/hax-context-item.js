@@ -34,10 +34,23 @@ Polymer({
         width: 100%;
       }
     </style>
-    <hax-toolbar-item disabled="[[disabled]]" light="[[light]]" mini="[[mini]]" id="button" icon="[[icon]]" hidden\$="[[!icon]]" icon-class="[[iconClass]]" on-tap="_fireEvent" tooltip="[[label]]" tooltip-direction="[[direction]]" default="[[default]]" menu="[[menu]]">
+    <hax-toolbar-item
+      disabled="[[disabled]]"
+      light="[[light]]"
+      mini="[[mini]]"
+      id="button"
+      icon="[[icon]]"
+      hidden\$="[[!icon]]"
+      icon-class="[[iconClass]]"
+      on-tap="_fireEvent"
+      tooltip="[[label]]"
+      tooltip-direction="[[direction]]"
+      default="[[default]]"
+      menu="[[menu]]"
+    >
       <slot></slot>
     </hax-toolbar-item>
-`,
+  `,
 
   is: "hax-context-item",
 

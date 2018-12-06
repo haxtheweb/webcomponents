@@ -37,9 +37,6 @@ Polymer({
         padding: 2px;
         position: relative;
         margin-top: -2px;
-      }
-
-      lrndesign-avatar ::shadow>* {
         transform: translateY(2px);
       }
 
@@ -73,26 +70,41 @@ Polymer({
         </div>
       </template>
       <template is="dom-if" if="[[icon]]">
-        <div id="icon">
-          <iron-icon icon="[[icon]]"></iron-icon>
-        </div>
+        <div id="icon"><iron-icon icon="[[icon]]"></iron-icon></div>
       </template>
       <div id="center">
-        <paper-button id="title" noink="" role\$="[[__titleRole()]]" on-tap="__linkClickHandler">
+        <paper-button
+          id="title"
+          noink=""
+          role\$="[[__titleRole()]]"
+          on-tap="__linkClickHandler"
+        >
           <div id="label">[[label]]</div>
           <div id="title">[[title]]</div>
         </paper-button>
       </div>
       <div id="right">
         <template is="dom-if" if="[[!opened]]">
-          <iron-icon id="toggle" icon="arrow-drop-down" aria-role="button" aria-label="expand menu" tabindex="0"></iron-icon>
+          <iron-icon
+            id="toggle"
+            icon="arrow-drop-down"
+            aria-role="button"
+            aria-label="expand menu"
+            tabindex="0"
+          ></iron-icon>
         </template>
         <template is="dom-if" if="[[opened]]">
-          <iron-icon id="toggle" icon="arrow-drop-up" aria-role="button" aria-label="collapse menu" tabindex="0"></iron-icon>
+          <iron-icon
+            id="toggle"
+            icon="arrow-drop-up"
+            aria-role="button"
+            aria-label="collapse menu"
+            tabindex="0"
+          ></iron-icon>
         </template>
       </div>
     </div>
-`,
+  `,
 
   is: "map-menu-header",
 

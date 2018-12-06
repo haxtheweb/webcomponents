@@ -16,11 +16,11 @@
       "hax": "src/lrndesign-diff2html-hax.json"
     }
   },
-  "version": "0.0.35",
+  "version": "0.0.38",
   "description": "Automated conversion of lrndesign-diff2html/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrndesign-diff2html.js",
   "module": "lrndesign-diff2html.es6.js",
@@ -40,20 +40,20 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.35",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.38",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.0.35",
+    "@lrnwebcomponents/deduping-fix": "^0.0.38",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
-    "@webcomponents/webcomponentsjs": "2.1.3",
-    "concurrently": "4.0.1",
+    "@webcomponents/webcomponentsjs": "2.2.1",
+    "concurrently": "4.1.0",
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.4",
     "lodash": "4.17.11",
-    "polymer-build": "3.1.0",
-    "polymer-cli": "1.8.1",
+    "polymer-build": "3.1.1",
+    "polymer-cli": "1.9.1",
     "wct-browser-legacy": "1.0.2"
   },
   "private": false,
@@ -64,5 +64,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "71dcc2b61045070a009e654226e6c0892f11a854"
+  "gitHead": "35f47726572af9570c3a4e6f8a784cc3183aa203"
 }

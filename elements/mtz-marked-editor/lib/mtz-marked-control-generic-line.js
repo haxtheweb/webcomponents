@@ -10,10 +10,19 @@ Polymer({
       }
     </style>
 
-    <paper-icon-button icon="[[icon]]" noink="[[noink]]" on-click="_handleCommand" alt="[[title]]"></paper-icon-button>
+    <paper-icon-button
+      icon="[[icon]]"
+      noink="[[noink]]"
+      on-click="_handleCommand"
+      alt="[[title]]"
+    ></paper-icon-button>
 
-    <iron-a11y-keys keys="[[keys]]" on-keys-pressed="_handleCommand" target="[[__editor]]"></iron-a11y-keys>
-`,
+    <iron-a11y-keys
+      keys="[[keys]]"
+      on-keys-pressed="_handleCommand"
+      target="[[__editor]]"
+    ></iron-a11y-keys>
+  `,
 
   is: "mtz-marked-control-generic-line",
 

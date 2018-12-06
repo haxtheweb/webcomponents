@@ -33,8 +33,8 @@ Polymer({
       }
       hax-app-browser-item {
         margin: 10px;
-        -webkit-transition: .3s all linear;
-        transition: .3s all linear;
+        -webkit-transition: 0.3s all linear;
+        transition: 0.3s all linear;
       }
       .title {
         text-align: center;
@@ -42,17 +42,21 @@ Polymer({
         margin: 0 64px 0 0;
         font-size: 32px;
         font-weight: bold;
-        color:var(--simple-colors-default-theme-light-green-1);
+        color: var(--simple-colors-default-theme-light-green-1);
         font-family: sans-serif;
         text-transform: uppercase;
         display: inline-flex;
       }
       dropdown-select {
-        color: #FFFFFF;
-        --paper-input-container-invalid-color: var(--simple-colors-red-foreground3);
-        --paper-input-container-input-color: #FFFFFF;
-        --paper-input-container-color: #FFFFFF;
-        --paper-input-container-focus-color: var(--simple-colors-default-theme-light-green-1);
+        color: #ffffff;
+        --paper-input-container-invalid-color: var(
+          --simple-colors-red-foreground3
+        );
+        --paper-input-container-input-color: #ffffff;
+        --paper-input-container-color: #ffffff;
+        --paper-input-container-focus-color: var(
+          --simple-colors-default-theme-light-green-1
+        );
         --paper-listbox-color: #000000;
       }
       paper-item {
@@ -60,16 +64,20 @@ Polymer({
         --primary-text-color: #000000;
       }
       paper-input {
-        color: #FFFFFF;
-        --paper-input-container-invalid-color: var(--simple-colors-red-foreground3);
-        --secondary-text-color: #FFFFFF;
-        --primary-text-color: #FFFFFF;
-        --paper-input-container-input-color: #FFFFFF;
-        --paper-input-container-color: #FFFFFF;
-        --paper-input-container-focus-color: var(--simple-colors-default-theme-light-green-1);
+        color: #ffffff;
+        --paper-input-container-invalid-color: var(
+          --simple-colors-red-foreground3
+        );
+        --secondary-text-color: #ffffff;
+        --primary-text-color: #ffffff;
+        --paper-input-container-input-color: #ffffff;
+        --paper-input-container-color: #ffffff;
+        --paper-input-container-focus-color: var(
+          --simple-colors-default-theme-light-green-1
+        );
       }
       app-toolbar {
-        background-color: rgba(0,0,0,.5);
+        background-color: rgba(0, 0, 0, 0.5);
       }
       .toolbar-inner {
         width: 100%;
@@ -78,19 +86,47 @@ Polymer({
     </style>
     <app-toolbar>
       <div class="toolbar-inner">
-      <h3 class="title">[[title]]</h3>
-      <dropdown-select id="filtertype" label="Filter by" value="details.title">
-        <paper-item value="details.title">Title</paper-item>
-      </dropdown-select>
-      <paper-input label="Filter" id="inputfilter" aria-controls="filter" value="" always-float-label=""></paper-input>
+        <h3 class="title">[[title]]</h3>
+        <dropdown-select
+          id="filtertype"
+          label="Filter by"
+          value="details.title"
+        >
+          <paper-item value="details.title">Title</paper-item>
+        </dropdown-select>
+        <paper-input
+          label="Filter"
+          id="inputfilter"
+          aria-controls="filter"
+          value=""
+          always-float-label=""
+        ></paper-input>
       </div>
     </app-toolbar>
-    <grafitto-filter id="filter" items="[[__appList]]" like="" where="details.title" as="filtered">
+    <grafitto-filter
+      id="filter"
+      items="[[__appList]]"
+      like=""
+      where="details.title"
+      as="filtered"
+    >
       <template>
         <iron-list id="ironlist" items="[[filtered]]" as="app" grid="">
           <template>
             <div class="app-container">
-              <hax-app-browser-item index="[[app.index]]" title="[[app.details.title]]" icon="[[app.details.icon]]" image="[[app.details.tag]]" color="[[app.details.color]]" meta="[[app.details.meta]]" groups="[[app.details.groups]]" handles="[[app.details.handles]]" description="[[app.details.description]]" rating="[[app.details.rating]]" tags="[[app.details.tags]]"></hax-app-browser-item>
+              <hax-app-browser-item
+                index="[[app.index]]"
+                title="[[app.details.title]]"
+                icon="[[app.details.icon]]"
+                image="[[app.details.tag]]"
+                color="[[app.details.color]]"
+                meta="[[app.details.meta]]"
+                groups="[[app.details.groups]]"
+                handles="[[app.details.handles]]"
+                description="[[app.details.description]]"
+                rating="[[app.details.rating]]"
+                tags="[[app.details.tags]]"
+              ></hax-app-browser-item>
             </div>
           </template>
         </iron-list>
@@ -98,7 +134,7 @@ Polymer({
     </grafitto-filter>
     <hax-app-search id="haxappsearch" hidden$="[[!searching]]"></hax-app-search>
     <slot></slot>
-`,
+  `,
 
   is: "hax-app-browser",
 

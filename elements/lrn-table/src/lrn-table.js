@@ -33,10 +33,14 @@ let LrnTable = Polymer({
       <div class="hidden-title" property="oer:name">[[title]]</div>
       <div property="oer:description">
         <slot></slot>
-        <csv-render data-source="[[csvFile]]" caption="[[title]]" summary="[[description]]"></csv-render>
+        <csv-render
+          data-source="[[csvFile]]"
+          caption="[[title]]"
+          summary="[[description]]"
+        ></csv-render>
       </div>
     </div>
-`,
+  `,
 
   is: "lrn-table",
 

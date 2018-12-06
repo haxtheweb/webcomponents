@@ -41,25 +41,29 @@ Custom property | Description | Default
 (function(Polymer) {
   Polymer({
     _template: html`
-    <custom-style>
-    <style>
-      :host .vertical ::content .dropdown-content {
-        @apply --layout-vertical;
-      }
-      :host .horizontal ::content .dropdown-content {
-        @apply --layout-horizontal;
-      }
-      :host ::content .dropdown-content > * {
-        margin: 8px;
-        @apply --paper-fab-speed-dial-option;
-      }
-    </style>
-    </custom-style>
-    <slot id="fabContainer" name="dropdown-trigger"></slot>
-    <iron-dropdown id="dropdown" open-animation-config="[[openAnimationConfig]]" close-animation-config="[[closeAnimationConfig]]">
-      <slot id="contentContainer" name="dropdown-content"></slot>
-    </iron-dropdown>
-`,
+      <custom-style>
+        <style>
+          :host .vertical ::content .dropdown-content {
+            @apply --layout-vertical;
+          }
+          :host .horizontal ::content .dropdown-content {
+            @apply --layout-horizontal;
+          }
+          :host ::content .dropdown-content > * {
+            margin: 8px;
+            @apply --paper-fab-speed-dial-option;
+          }
+        </style>
+      </custom-style>
+      <slot id="fabContainer" name="dropdown-trigger"></slot>
+      <iron-dropdown
+        id="dropdown"
+        open-animation-config="[[openAnimationConfig]]"
+        close-animation-config="[[closeAnimationConfig]]"
+      >
+        <slot id="contentContainer" name="dropdown-content"></slot>
+      </iron-dropdown>
+    `,
 
     is: "paper-fab-speed-dial",
 

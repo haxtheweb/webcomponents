@@ -33,13 +33,13 @@ Polymer({
       paper-button {
         color: #222222;
         text-transform: none;
-        margin:0;
-        background-color: #FFFFFF;
+        margin: 0;
+        background-color: #ffffff;
         height: 80px !important;
         width: 200px !important;
         display: flex;
         border-radius: 10px;
-        border: 4px solid #CCCCCC;
+        border: 4px solid #cccccc;
         min-width: unset;
       }
       paper-button .item-title {
@@ -61,14 +61,18 @@ Polymer({
       }
     </style>
     <paper-card id="card" elevation="[[elevation]]">
-      <paper-button id="button" on-tap="_fireEvent" data-voicecommand\$="select [[title]]">
+      <paper-button
+        id="button"
+        on-tap="_fireEvent"
+        data-voicecommand\$="select [[title]]"
+      >
         <div class="button-inner">
           <iron-icon icon="[[icon]]"></iron-icon>
           <div class="item-title">[[title]]</div>
         </div>
       </paper-button>
     </paper-card>
-`,
+  `,
 
   is: "hax-blox-browser-item",
 

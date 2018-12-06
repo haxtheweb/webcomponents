@@ -33,7 +33,7 @@ Polymer({
         :host .print-image {
           max-width: 400px;
           max-height: 400px;
-          display:block;
+          display: block;
           border: 1px solid #ddd;
           page-break-inside: avoid;
         }
@@ -44,9 +44,9 @@ Polymer({
         <h2>[[title]]</h2>
       </template>
       <div><span id="details"></span></div>
-      <img class="print-image" alt\$="[[alt]]" src\$="[[src]]">
+      <img class="print-image" alt\$="[[alt]]" src\$="[[src]]" />
     </section>
-`,
+  `,
 
   is: "lrndesign-gallery-print",
 

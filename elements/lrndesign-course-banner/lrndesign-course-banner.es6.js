@@ -7,11 +7,10 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
        * Dialog
        */
       .course-image {
-
       }
       .course-heading {
         position: relative;
-        background-color: rgba(30, 30, 30, .8);
+        background-color: rgba(30, 30, 30, 0.8);
         text-align: left;
         margin: -5em 0 0 0;
         padding: 16px;
@@ -47,13 +46,25 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         }
       }
     </style>
-    <iron-image class="course-image" style="width:100%; height:200px; background-color: lightgray;" sizing="cover" preload="" fade="" src\$="[[image]]"></iron-image>
+    <iron-image
+      class="course-image"
+      style="width:100%; height:200px; background-color: lightgray;"
+      sizing="cover"
+      preload=""
+      fade=""
+      src\$="[[image]]"
+    ></iron-image>
     <div class="course-heading">
-      <lrndesign-avatar class="course-avatar" label="[[name]]" jdenticon="" color="[[color]]">
+      <lrndesign-avatar
+        class="course-avatar"
+        label="[[name]]"
+        jdenticon=""
+        color="[[color]]"
+      >
       </lrndesign-avatar>
       <div class="name-wrapper">
         <div class="course-name">[[name]]</div>
         <div class="course-title">[[title]]</div>
       </div>
     </div>
-`,is:"lrndesign-course-banner",properties:{color:{type:String},image:{type:String},name:{type:String},title:{type:String}}});export{LrndesignCourseBanner};
+  `,is:"lrndesign-course-banner",properties:{color:{type:String},image:{type:String},name:{type:String},title:{type:String}}});export{LrndesignCourseBanner};

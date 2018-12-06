@@ -1,0 +1,9 @@
+{
+  "name": "@polymer/lrnapp-media-upload",
+  "flat": true,
+  "version": "",
+  "description": "Media management application",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {}
+}

@@ -129,8 +129,8 @@
           (hasYear
             ? p2(y) + (hasMonth || hasDay ? "-" : "")
             : hasMonth || hasDay
-              ? "--"
-              : "") +
+            ? "--"
+            : "") +
           (hasMonth ? p2(m) : "") +
           (hasDay ? "-" + p2(d) : "");
         var timepart =
@@ -200,36 +200,36 @@
         hasDashDate && (dtlen == 4 || dtlen == 7)
           ? part(dt, 2, 2)
           : dtlen == 7
-            ? part(dt, 5, 2)
-            : dtlen == 10
-              ? part(dt, 5, 2)
-              : null,
+          ? part(dt, 5, 2)
+          : dtlen == 10
+          ? part(dt, 5, 2)
+          : null,
       day:
         dtlen == 5
           ? part(dt, 3, 2)
           : dtlen == 7 && hasDashDate
-            ? part(dt, 5, 2)
-            : dtlen == 10
-              ? part(dt, 8, 2)
-              : null,
+          ? part(dt, 5, 2)
+          : dtlen == 10
+          ? part(dt, 8, 2)
+          : null,
 
       hour: hasDashTime ? null : part(tm, 0, 2),
       minute:
         hasDashTime && tmlen == 3
           ? part(tm, 1, 2)
           : tmlen > 4
-            ? hasDashTime
-              ? part(tm, 1, 2)
-              : part(tm, 3, 2)
-            : null,
+          ? hasDashTime
+            ? part(tm, 1, 2)
+            : part(tm, 3, 2)
+          : null,
       second:
         tmlen == 4
           ? part(tm, 2, 2)
           : tmlen == 6
-            ? part(tm, 4, 2)
-            : tmlen == 8
-              ? part(tm, 6, 2)
-              : null
+          ? part(tm, 4, 2)
+          : tmlen == 8
+          ? part(tm, 6, 2)
+          : null
     };
 
     if (zone == "Z") {

@@ -80,16 +80,16 @@ let LrndesignPaperstack = Polymer({
 
       .egletter:before {
         background: #fafafa;
-        box-shadow: 0 0 .5rem rgba(0, 0, 0, 0.2);
-        left: -.32px;
-        top: .32px;
+        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+        left: -0.32px;
+        top: 0.32px;
         transform: rotate(-2.5deg);
       }
 
       .egletter:after {
         background: #ffffff;
-        box-shadow: 0 0 .32px rgba(0, 0, 0, 0.2);
-        right: -.32px;
+        box-shadow: 0 0 0.32px rgba(0, 0, 0, 0.2);
+        right: -0.32px;
         top: 1.6px;
         transform: rotate(1.4deg);
       }
@@ -101,7 +101,7 @@ let LrndesignPaperstack = Polymer({
       <span>[[title]]</span>
       <p><slot></slot></p>
     </div>
-`,
+  `,
 
   is: "lrndesign-paperstack",
 

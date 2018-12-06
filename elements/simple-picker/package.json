@@ -15,11 +15,11 @@
       "properties": "src/simple-picker-properties.json"
     }
   },
-  "version": "0.0.31",
+  "version": "0.0.38",
   "description": "a simple picker for swatches, icons, etc.",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "simple-picker.js",
   "module": "simple-picker.es6.js",
@@ -39,7 +39,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.31",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.38",
     "@lrnwebcomponents/lrn-shared-styles": "^0.0.33",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/polymer": "^3.0.5"
@@ -47,13 +47,13 @@
   "devDependencies": {
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
-    "@webcomponents/webcomponentsjs": "2.1.3",
-    "concurrently": "4.0.1",
+    "@webcomponents/webcomponentsjs": "2.2.1",
+    "concurrently": "4.1.0",
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.4",
     "lodash": "4.17.11",
-    "polymer-build": "3.1.0",
-    "polymer-cli": "1.8.1",
+    "polymer-build": "3.1.1",
+    "polymer-cli": "1.9.1",
     "wct-browser-legacy": "1.0.2"
   },
   "private": false,
@@ -63,5 +63,6 @@
   "keywords": [
     "web-components",
     "html"
-  ]
+  ],
+  "gitHead": "35f47726572af9570c3a4e6f8a784cc3183aa203"
 }

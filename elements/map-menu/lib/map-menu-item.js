@@ -24,13 +24,19 @@ Polymer({
         text-transform: none;
       }
     </style>
-      <paper-button id="wrapper" href$="[[url]]" role="link" noink on-tap="_click">
-        <template is="dom-if" if="[[__hasIcon(icon)]]">
-          <iron-icon icon="[[icon]]"></iron-icon>
-        </template>
-        <span id="title">[[title]]</span>
-      </paper-button>
-`,
+    <paper-button
+      id="wrapper"
+      href$="[[url]]"
+      role="link"
+      noink
+      on-tap="_click"
+    >
+      <template is="dom-if" if="[[__hasIcon(icon)]]">
+        <iron-icon icon="[[icon]]"></iron-icon>
+      </template>
+      <span id="title">[[title]]</span>
+    </paper-button>
+  `,
 
   is: "map-menu-item",
 

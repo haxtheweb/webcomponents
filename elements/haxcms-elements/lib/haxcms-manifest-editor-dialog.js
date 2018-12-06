@@ -34,13 +34,13 @@ Polymer({
         right: 0;
         height: 50px;
         background-color: var(--haxcms-color, #ff4081);
-        color: #FFFFFF;
+        color: #ffffff;
         border-bottom-right-radius: 16px;
         border-bottom-left-radius: 16px;
       }
       #save,
       #cancel {
-        margin-bottom:80px;
+        margin-bottom: 80px;
       }
       iron-icon {
         margin-right: 8px;
@@ -48,20 +48,48 @@ Polymer({
     </style>
     <paper-dialog id="editor" opened="{{opened}}" with-backdrop="">
       <paper-dialog-scrollable>
-        <paper-input id="sitetitle" label="Title" required="" autofocus="" value="[[manifest.title]]"></paper-input>
-        <paper-input id="domain" label="Domain" value="[[manifest.metadata.domain]]"></paper-input>
-        <paper-input id="sitedescription" label="Description" value="[[manifest.description]]"></paper-input>
-        <paper-input id="siteimage" label="Image" value="[[manifest.metadata.image]]"></paper-input>
+        <paper-input
+          id="sitetitle"
+          label="Title"
+          required=""
+          autofocus=""
+          value="[[manifest.title]]"
+        ></paper-input>
+        <paper-input
+          id="domain"
+          label="Domain"
+          value="[[manifest.metadata.domain]]"
+        ></paper-input>
+        <paper-input
+          id="sitedescription"
+          label="Description"
+          value="[[manifest.description]]"
+        ></paper-input>
+        <paper-input
+          id="siteimage"
+          label="Image"
+          value="[[manifest.metadata.image]]"
+        ></paper-input>
         <label for="sitecolor">Select a color:</label>
-        <simple-colors-picker id="sitecolor" hex-code="[[manifest.metadata.hexCode]]"></simple-colors-picker>
-        <dropdown-select id="sitetheme" label="Theme" value="[[manifest.metadata.theme]]">
+        <simple-colors-picker
+          id="sitecolor"
+          hex-code="[[manifest.metadata.hexCode]]"
+        ></simple-colors-picker>
+        <dropdown-select
+          id="sitetheme"
+          label="Theme"
+          value="[[manifest.metadata.theme]]"
+        >
           <paper-item value="simple-blog">Simple blog</paper-item>
           <paper-item value="outline-player">Basic outline</paper-item>
           <paper-item value="haxcms-dev-theme">DEVELOPER THEME</paper-item>
           <paper-item value="infinite-scroll">Infinite scroll</paper-item>
         </dropdown-select>
         <label for="siteicon">Select an icon:</label>
-        <paper-icon-picker id="siteicon" icon="[[manifest.metadata.icon]]"></paper-icon-picker>
+        <paper-icon-picker
+          id="siteicon"
+          icon="[[manifest.metadata.icon]]"
+        ></paper-icon-picker>
       </paper-dialog-scrollable>
       <div class="buttons">
         <paper-button id="save" dialog-confirm="" raised="" on-tap="_saveTap">
@@ -75,7 +103,7 @@ Polymer({
         </paper-button>
       </div>
     </paper-dialog>
-`,
+  `,
 
   is: "haxcms-manifest-editor-dialog",
 

@@ -17,13 +17,13 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
  */
 let SimpleTimer = Polymer({
   _template: html`
-  <style>
-    :host {
-      display: block;
-    }
-  </style>
-  {{_formattedTime}}
-`,
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    {{_formattedTime}}
+  `,
   is: "simple-timer",
   properties: {
     /**

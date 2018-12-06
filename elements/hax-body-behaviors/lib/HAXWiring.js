@@ -156,6 +156,92 @@ export class HAXWiring {
      * This is to then be implemented by the ready state of whatever is supplying the
      * properties in order to be able to bubble up the properties for a tag.
      */
+    this.setup = (props, tag = "", context = this) => {
+      if (typeof this.tagName !== typeof undefined) {
+        tag = this.tagName.toLowerCase();
+      }
+      window.addEventListener(
+        "hax-store-ready",
+        this._haxStoreReady.bind(this)
+      );
+      if (
+        typeof window.HaxStore !== typeof undefined &&
+        window.HaxStore.instance != null &&
+        window.HaxStore.ready
+      ) {
+        return this.setHaxProperties(props, tag, context, true);
+      } else {
+        return this.setHaxProperties(props, tag, context, false);
+      }
+    };
+    /**
+     * HAX store is ready so now we can fire events
+     */
+    this._haxStoreReady = e => {
+      if (
+        e.detail &&
+        typeof this.tagName !== typeof undefined &&
+        typeof this.haxProperties !== typeof undefined
+      ) {
+        let tag = this.tagName;
+        let props = this.haxProperties;
+        let context = this;
+        if (tag !== "" && typeof window.HaxStore === typeof undefined) {
+          const evt = new CustomEvent("hax-register-properties", {
+            bubbles: true,
+            cancelable: true,
+            detail: {
+              tag: tag.toLowerCase(),
+              properties: props,
+              polymer: false
+            }
+          });
+          context.dispatchEvent(evt);
+        } else if (
+          tag !== "" &&
+          typeof window.HaxStore !== typeof undefined &&
+          typeof window.HaxStore.instance !== typeof undefined &&
+          window.HaxStore.instance != null &&
+          typeof window.HaxStore.instance.elementList !== typeof undefined &&
+          typeof window.HaxStore.instance.elementList[tag.toLowerCase()] ===
+            typeof undefined
+        ) {
+          const evt = new CustomEvent("hax-register-properties", {
+            bubbles: true,
+            cancelable: true,
+            detail: {
+              tag: tag.toLowerCase(),
+              properties: props
+            }
+          });
+          context.dispatchEvent(evt);
+        } else if (
+          typeof this.tagName !== typeof undefined &&
+          typeof window.HaxStore !== typeof undefined &&
+          typeof window.HaxStore.instance !== typeof undefined &&
+          window.HaxStore.instance != null &&
+          typeof window.HaxStore.instance.elementList !== typeof undefined &&
+          typeof window.HaxStore.instance.elementList[
+            this.tagName.toLowerCase()
+          ] === typeof undefined
+        ) {
+          const evt = new CustomEvent("hax-register-properties", {
+            bubbles: true,
+            cancelable: true,
+            detail: {
+              tag: this.tagName.toLowerCase(),
+              properties: props
+            }
+          });
+          context.dispatchEvent(evt);
+        }
+      }
+    };
+    /**
+     * Setter to bridge private haxProperties setter.
+     * This is to then be implemented by the ready state of whatever is supplying the
+     * properties in order to be able to bubble up the properties for a tag.
+     */
     this.setHaxProperties = (
       props,
       tag = "",
@@ -981,64 +1067,7 @@ window.HAXBehaviors.PropertiesBehaviors = {
    * Private function to fire off props when ready
    */
   _haxStoreReady: function(e) {
-    if (
-      e.detail &&
-      typeof this.tagName !== typeof undefined &&
-      typeof this.haxProperties !== typeof undefined
-    ) {
-      let tag = this.tagName;
-      let props = this.haxProperties;
-      let context = this;
-      if (tag !== "" && typeof window.HaxStore === typeof undefined) {
-        const evt = new CustomEvent("hax-register-properties", {
-          bubbles: true,
-          cancelable: true,
-          detail: {
-            tag: tag.toLowerCase(),
-            properties: props,
-            polymer: false
-          }
-        });
-        context.dispatchEvent(evt);
-      } else if (
-        tag !== "" &&
-        typeof window.HaxStore !== typeof undefined &&
-        typeof window.HaxStore.instance !== typeof undefined &&
-        window.HaxStore.instance != null &&
-        typeof window.HaxStore.instance.elementList !== typeof undefined &&
-        typeof window.HaxStore.instance.elementList[tag.toLowerCase()] ===
-          typeof undefined
-      ) {
-        const evt = new CustomEvent("hax-register-properties", {
-          bubbles: true,
-          cancelable: true,
-          detail: {
-            tag: tag.toLowerCase(),
-            properties: props
-          }
-        });
-        context.dispatchEvent(evt);
-      } else if (
-        typeof this.tagName !== typeof undefined &&
-        typeof window.HaxStore !== typeof undefined &&
-        typeof window.HaxStore.instance !== typeof undefined &&
-        window.HaxStore.instance != null &&
-        typeof window.HaxStore.instance.elementList !== typeof undefined &&
-        typeof window.HaxStore.instance.elementList[
-          this.tagName.toLowerCase()
-        ] === typeof undefined
-      ) {
-        const evt = new CustomEvent("hax-register-properties", {
-          bubbles: true,
-          cancelable: true,
-          detail: {
-            tag: this.tagName.toLowerCase(),
-            properties: props
-          }
-        });
-        context.dispatchEvent(evt);
-      }
-    }
+    return window.HAXWiring._haxStoreReady(e);
   },
   /**
    * Validate settings object.

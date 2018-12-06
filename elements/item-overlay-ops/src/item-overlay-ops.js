@@ -1,17 +1,20 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
-`item-overlay-ops`
-Overlayed editing ops on whatever the current item slotted in is
-
-@demo demo/index.html
-
-@microcopy - the mental model for this element
-
-*/
+ * `item-overlay-ops`
+ * `Overlayed editing ops on whatever the current item slotted in is`
+ *
+ * @demo demo/index.html
+ *
+ * @microcopy - the mental model for this element
+ */
 let ItemOverlayOps = Polymer({
   _template: html`
     <style>
@@ -23,12 +26,13 @@ let ItemOverlayOps = Polymer({
         display: none;
         opacity: 0;
         background-color: transparent;
-        transition: background-color .6s linear, visibility .6s linear, opacity .6s linear;
+        transition: background-color 0.6s linear, visibility 0.6s linear,
+          opacity 0.6s linear;
         visibility: hidden;
       }
       :host([edit-mode]) #container {
         display: block;
-        opacity: .4;
+        opacity: 0.4;
         visibility: visible;
         background-color: var(--item-overlay-ops, #999999);
         position: absolute;
@@ -37,7 +41,7 @@ let ItemOverlayOps = Polymer({
       :host([edit-mode]) #container:hover,
       :host([edit-mode]) #container:focus,
       :host([focused]) #container {
-        opacity: .8;
+        opacity: 0.8;
         background-color: var(--item-overlay-ops, #ffffff);
       }
       .ops {
@@ -45,7 +49,7 @@ let ItemOverlayOps = Polymer({
         height: 39px;
         padding: 0;
         margin: 0;
-        border-bottom: 1px solid rgba(100, 100, 100, .4);
+        border-bottom: 1px solid rgba(100, 100, 100, 0.4);
         text-align: center;
       }
       .ops paper-icon-button {
@@ -58,11 +62,11 @@ let ItemOverlayOps = Polymer({
       }
       .ops paper-icon-button.active {
         color: #000000;
-        background-color: rgba(255, 255, 255, .6);
+        background-color: rgba(255, 255, 255, 0.6);
         border-radius: 50%;
       }
       .active-op {
-        text-transform:capitalize;
+        text-transform: capitalize;
         margin: 0;
         height: 40px;
         line-height: 40px;
@@ -86,10 +90,10 @@ let ItemOverlayOps = Polymer({
         border-radius: 0;
       }
       #workingarea #option1 {
-        background-color: rgba(100, 255, 100, .6);
+        background-color: rgba(100, 255, 100, 0.6);
       }
       #workingarea #option2 {
-        background-color: rgba(255, 100, 100, .6);
+        background-color: rgba(255, 100, 100, 0.6);
       }
       #workingarea #option1:hover,
       #workingarea #option1:focus {
@@ -107,7 +111,7 @@ let ItemOverlayOps = Polymer({
       }
       #workingarea.move #option1,
       #workingarea.move #option2 {
-        background-color: rgba(200, 200, 200, .5);
+        background-color: rgba(200, 200, 200, 0.5);
       }
       #workingarea.move #option1:hover,
       #workingarea.move #option1:focus,
@@ -124,20 +128,60 @@ let ItemOverlayOps = Polymer({
     </style>
     <div id="container">
       <div class="ops">
-        <paper-icon-button on-tap="_opTap" icon="icons:add" id="add" hidden\$="[[!add]]" title="Add to this"></paper-icon-button>
-        <paper-icon-button on-tap="_opTap" icon="icons:create" id="edit" hidden\$="[[!edit]]" title="Edit this"></paper-icon-button>
-        <paper-icon-button on-tap="_opTap" icon="icons:swap-horiz" id="move" hidden\$="[[!move]]" title="Move this"></paper-icon-button>
-        <paper-icon-button on-tap="_opTap" icon="icons:delete" id="remove" hidden\$="[[!remove]]" title="Delete this"></paper-icon-button>
-        <paper-icon-button on-tap="_opTap" icon="icons:content-copy" id="duplicate" hidden\$="[[!duplicate]]" title="Duplicate this"></paper-icon-button>
+        <paper-icon-button
+          on-tap="_opTap"
+          icon="icons:add"
+          id="add"
+          hidden\$="[[!add]]"
+          title="Add to this"
+        ></paper-icon-button>
+        <paper-icon-button
+          on-tap="_opTap"
+          icon="icons:create"
+          id="edit"
+          hidden\$="[[!edit]]"
+          title="Edit this"
+        ></paper-icon-button>
+        <paper-icon-button
+          on-tap="_opTap"
+          icon="icons:swap-horiz"
+          id="move"
+          hidden\$="[[!move]]"
+          title="Move this"
+        ></paper-icon-button>
+        <paper-icon-button
+          on-tap="_opTap"
+          icon="icons:delete"
+          id="remove"
+          hidden\$="[[!remove]]"
+          title="Delete this"
+        ></paper-icon-button>
+        <paper-icon-button
+          on-tap="_opTap"
+          icon="icons:content-copy"
+          id="duplicate"
+          hidden\$="[[!duplicate]]"
+          title="Duplicate this"
+        ></paper-icon-button>
       </div>
       <div class="active-op">[[activeTitle]]</div>
       <div id="workingarea" class\$="[[activeOp]]">
-        <paper-icon-button on-tap="_optionSelected" id="option1" title="[[__option1Text]]" icon="[[__option1Icon]]"></paper-icon-button>
-        <paper-icon-button on-tap="_optionSelected" id="option2" title="[[__option2Text]]" icon="[[__option2Icon]]"></paper-icon-button>
+        <paper-icon-button
+          on-tap="_optionSelected"
+          id="option1"
+          title="[[__option1Text]]"
+          icon="[[__option1Icon]]"
+        ></paper-icon-button>
+        <paper-icon-button
+          on-tap="_optionSelected"
+          id="option2"
+          title="[[__option2Text]]"
+          icon="[[__option2Icon]]"
+        ></paper-icon-button>
       </div>
     </div>
     <slot></slot>
-`,
+  `,
 
   is: "item-overlay-ops",
 
@@ -217,7 +261,7 @@ let ItemOverlayOps = Polymer({
   },
 
   /**
-   * Attached life cycle
+   * attached life cycle
    */
   attached: function() {
     // delay is enough to get the height correct
@@ -230,6 +274,15 @@ let ItemOverlayOps = Polymer({
     window.addEventListener("resize", this._windowResize.bind(this));
   },
 
+  /**
+   * detached life cycle
+   */
+  detached: function() {
+    window.removeEventListener("resize", this._windowResize.bind(this));
+  },
+  /**
+   * react to window resizing
+   */
   _windowResize: function(e) {
     let rect = this.getBoundingClientRect();
     this.$.container.style.width = rect.width + "px";

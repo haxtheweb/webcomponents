@@ -18,11 +18,9 @@ let LrnsysRandomimage = Polymer({
         display: block;
       }
     </style>
-    <div id="list">
-      <random-image images-list$="{{images}}"></random-image>
-  </div>
-  <paper-button raised on-click="reload">Reload</paper-button>
-`,
+    <div id="list"><random-image images-list$="{{images}}"></random-image></div>
+    <paper-button raised on-click="reload">Reload</paper-button>
+  `,
 
   is: "lrnsys-randomimage",
 

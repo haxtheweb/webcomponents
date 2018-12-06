@@ -24,7 +24,7 @@ Polymer({
       }
     </style>
     <slot></slot>
-`,
+  `,
 
   is: "data-table-cell",
   behaviors: [saulis.DataTableTemplatizerBehavior],

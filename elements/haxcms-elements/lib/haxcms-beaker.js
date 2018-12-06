@@ -15,7 +15,9 @@ import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
  */
 Polymer({
   is: "haxcms-beaker",
-  _template: html`<beaker-broker id="beaker"></beaker-broker>`,
+  _template: html`
+    <beaker-broker id="beaker"></beaker-broker>
+  `,
   properties: {
     /**
      * JSON Web token, it'll come from a global call if it's available

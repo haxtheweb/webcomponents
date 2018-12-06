@@ -62,11 +62,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 58,
+              "line": 75,
               "column": 4
             },
             "end": {
-              "line": 60,
+              "line": 77,
               "column": 5
             }
           },
@@ -83,11 +83,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 64,
+              "line": 81,
               "column": 4
             },
             "end": {
-              "line": 66,
+              "line": 83,
               "column": 5
             }
           },
@@ -104,11 +104,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 70,
+              "line": 87,
               "column": 4
             },
             "end": {
-              "line": 72,
+              "line": 89,
               "column": 5
             }
           },
@@ -125,11 +125,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 76,
+              "line": 93,
               "column": 4
             },
             "end": {
-              "line": 79,
+              "line": 96,
               "column": 5
             }
           },
@@ -147,11 +147,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 100,
               "column": 4
             },
             "end": {
-              "line": 86,
+              "line": 103,
               "column": 5
             }
           },
@@ -169,11 +169,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 90,
+              "line": 107,
               "column": 4
             },
             "end": {
-              "line": 93,
+              "line": 110,
               "column": 5
             }
           },
@@ -189,11 +189,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 104,
+              "line": 121,
               "column": 4
             },
             "end": {
-              "line": 107,
+              "line": 124,
               "column": 5
             }
           },
@@ -211,11 +211,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 111,
+              "line": 128,
               "column": 4
             },
             "end": {
-              "line": 119,
+              "line": 136,
               "column": 5
             }
           },
@@ -282,11 +282,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 122,
+              "line": 139,
               "column": 2
             },
             "end": {
-              "line": 128,
+              "line": 145,
               "column": 3
             }
           },
@@ -302,11 +302,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 130,
+              "line": 147,
               "column": 2
             },
             "end": {
-              "line": 141,
+              "line": 158,
               "column": 3
             }
           },
@@ -332,11 +332,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 146,
+              "line": 163,
               "column": 2
             },
             "end": {
-              "line": 207,
+              "line": 224,
               "column": 3
             }
           },
@@ -356,7 +356,7 @@
           "column": 33
         },
         "end": {
-          "line": 208,
+          "line": 225,
           "column": 1
         }
       },
@@ -405,11 +405,11 @@
           "description": "Title",
           "sourceRange": {
             "start": {
-              "line": 58,
+              "line": 75,
               "column": 4
             },
             "end": {
-              "line": 60,
+              "line": 77,
               "column": 5
             }
           },
@@ -421,11 +421,11 @@
           "description": "src for top image",
           "sourceRange": {
             "start": {
-              "line": 64,
+              "line": 81,
               "column": 4
             },
             "end": {
-              "line": 66,
+              "line": 83,
               "column": 5
             }
           },
@@ -437,11 +437,11 @@
           "description": "src for top image",
           "sourceRange": {
             "start": {
-              "line": 70,
+              "line": 87,
               "column": 4
             },
             "end": {
-              "line": 72,
+              "line": 89,
               "column": 5
             }
           },
@@ -453,11 +453,11 @@
           "description": "crop or contain",
           "sourceRange": {
             "start": {
-              "line": 76,
+              "line": 93,
               "column": 4
             },
             "end": {
-              "line": 79,
+              "line": 96,
               "column": 5
             }
           },
@@ -469,11 +469,11 @@
           "description": "width of images",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 100,
               "column": 4
             },
             "end": {
-              "line": 86,
+              "line": 103,
               "column": 5
             }
           },
@@ -485,11 +485,11 @@
           "description": "height of images",
           "sourceRange": {
             "start": {
-              "line": 90,
+              "line": 107,
               "column": 4
             },
             "end": {
-              "line": 93,
+              "line": 110,
               "column": 5
             }
           },
@@ -501,11 +501,11 @@
           "description": "percent position of slider",
           "sourceRange": {
             "start": {
-              "line": 104,
+              "line": 121,
               "column": 4
             },
             "end": {
-              "line": 107,
+              "line": 124,
               "column": 5
             }
           },
@@ -517,11 +517,11 @@
           "description": "calculated styles",
           "sourceRange": {
             "start": {
-              "line": 111,
+              "line": 128,
               "column": 4
             },
             "end": {
-              "line": 119,
+              "line": 136,
               "column": 5
             }
           },

@@ -27,7 +27,7 @@ Polymer({
     <relative-heading hidden\$="[[!label]]" id="heading" text\$="[[label]]">
     </relative-heading>
     <div id="desc"><slot></slot></div>
-`,
+  `,
 
   is: "lrndesign-imagemap-hotspot",
 

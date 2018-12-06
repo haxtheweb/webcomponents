@@ -15,17 +15,17 @@
   }
 })(this, "QRCode", function() {
   /* Quick overview: QR code composed of 2D array of modules (a rectangular
- * area that conveys one bit of information); some modules are fixed to help
- * the recognition of the code, and remaining data modules are further divided
- * into 8-bit code words which are augumented by Reed-Solomon error correcting
- * codes (ECC). There could be multiple ECCs, in the case the code is so large
- * that it is helpful to split the raw data into several chunks.
- *
- * The number of modules is determined by the code's "version", ranging from 1
- * (21x21) to 40 (177x177). How many ECC bits are used is determined by the
- * ECC level (L/M/Q/H). The number and size (and thus the order of generator
- * polynomial) of ECCs depend to the version and ECC level.
- */
+   * area that conveys one bit of information); some modules are fixed to help
+   * the recognition of the code, and remaining data modules are further divided
+   * into 8-bit code words which are augumented by Reed-Solomon error correcting
+   * codes (ECC). There could be multiple ECCs, in the case the code is so large
+   * that it is helpful to split the raw data into several chunks.
+   *
+   * The number of modules is determined by the code's "version", ranging from 1
+   * (21x21) to 40 (177x177). How many ECC bits are used is determined by the
+   * ECC level (L/M/Q/H). The number and size (and thus the order of generator
+   * polynomial) of ECCs depend to the version and ECC level.
+   */
 
   // per-version information (cf. JIS X 0510:2004 pp. 30--36, 71)
   //
@@ -176,38 +176,38 @@
   // returns the number of bits available for code words in this version.
   var nfullbits = function(ver) {
     /*
-	 * |<--------------- n --------------->|
-	 * |        |<----- n-17 ---->|        |
-	 * +-------+                ///+-------+ ----
-	 * |       |                ///|       |    ^
-	 * |  9x9  |       @@@@@    ///|  9x8  |    |
-	 * |       | # # # @5x5@ # # # |       |    |
-	 * +-------+       @@@@@       +-------+    |
-	 *       #                               ---|
-	 *                                        ^ |
-	 *       #                                |
-	 *     @@@@@       @@@@@       @@@@@      | n
-	 *     @5x5@       @5x5@       @5x5@   n-17
-	 *     @@@@@       @@@@@       @@@@@      | |
-	 *       #                                | |
-	 * //////                                 v |
-	 * //////#                               ---|
-	 * +-------+       @@@@@       @@@@@        |
-	 * |       |       @5x5@       @5x5@        |
-	 * |  8x9  |       @@@@@       @@@@@        |
-	 * |       |                                v
-	 * +-------+                             ----
-	 *
-	 * when the entire code has n^2 modules and there are m^2-3 alignment
-	 * patterns, we have:
-	 * - 225 (= 9x9 + 9x8 + 8x9) modules for finder patterns and
-	 *   format information;
-	 * - 2n-34 (= 2(n-17)) modules for timing patterns;
-	 * - 36 (= 3x6 + 6x3) modules for version information, if any;
-	 * - 25m^2-75 (= (m^2-3)(5x5)) modules for alignment patterns
-	 *   if any, but 10m-20 (= 2(m-2)x5) of them overlaps with
-	 *   timing patterns.
-	 */
+     * |<--------------- n --------------->|
+     * |        |<----- n-17 ---->|        |
+     * +-------+                ///+-------+ ----
+     * |       |                ///|       |    ^
+     * |  9x9  |       @@@@@    ///|  9x8  |    |
+     * |       | # # # @5x5@ # # # |       |    |
+     * +-------+       @@@@@       +-------+    |
+     *       #                               ---|
+     *                                        ^ |
+     *       #                                |
+     *     @@@@@       @@@@@       @@@@@      | n
+     *     @5x5@       @5x5@       @5x5@   n-17
+     *     @@@@@       @@@@@       @@@@@      | |
+     *       #                                | |
+     * //////                                 v |
+     * //////#                               ---|
+     * +-------+       @@@@@       @@@@@        |
+     * |       |       @5x5@       @5x5@        |
+     * |  8x9  |       @@@@@       @@@@@        |
+     * |       |                                v
+     * +-------+                             ----
+     *
+     * when the entire code has n^2 modules and there are m^2-3 alignment
+     * patterns, we have:
+     * - 225 (= 9x9 + 9x8 + 8x9) modules for finder patterns and
+     *   format information;
+     * - 2n-34 (= 2(n-17)) modules for timing patterns;
+     * - 36 (= 3x6 + 6x3) modules for version information, if any;
+     * - 25m^2-75 (= (m^2-3)(5x5)) modules for alignment patterns
+     *   if any, but 10m-20 (= 2(m-2)x5) of them overlaps with
+     *   timing patterns.
+     */
     var v = VERSIONS[ver];
     var nbits = 16 * ver * ver + 128 * ver + 64; // finder, timing and format info.
     if (needsverinfo(ver)) nbits -= 36; // version information

@@ -585,8 +585,8 @@ define("ace/range", [], function(require, exports, module) {
           return column < this.start.column
             ? -1
             : column > this.end.column
-              ? 1
-              : 0;
+            ? 1
+            : 0;
         }
       }
 
@@ -6906,8 +6906,8 @@ define("ace/mode/css/csslint", [], function(require, exports, module) {
                     actual.length === 1
                       ? actual[0]
                       : actual.length === 2
-                        ? actual.join(" and ")
-                        : actual.join(", ");
+                      ? actual.join(" and ")
+                      : actual.join(", ");
                   reporter.report(
                     "The property " +
                       item +

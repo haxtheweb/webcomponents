@@ -14,26 +14,45 @@ A card with optional accent styling
 */
 let AccentCard = Polymer({
   _template: html`
-    <style is="custom-style">
-       :host {
+    <style is="custom-style" include="simple-colors">
+      :host {
         display: block;
         margin: var(--accent-card-margin, 20px) 0;
         --accent-card-color: var(--simple-colors-foreground3, #222);
         --accent-card-background-color: var(--simple-colors-background1, #fff);
-        --accent-card-border-color: var(--simple-colors-accent-background5, #ddd);
-        --accent-card-heading-color: var(--simple-colors-accent-foreground5, #000);
-        --accent-card-footer-border-color: var(--simple-colors-background3, #ddd);
-        --accent-card-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        --accent-card-border-color: var(
+          --simple-colors-accent-background5,
+          #ddd
+        );
+        --accent-card-heading-color: var(
+          --simple-colors-accent-foreground5,
+          #000
+        );
+        --accent-card-footer-border-color: var(
+          --simple-colors-background3,
+          #ddd
+        );
+        --accent-card-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+          0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
         --accent-card-flat: none;
         @apply --accent-card;
       }
       :host([dark]) {
         --accent-card-color: var(--simple-colors-foreground1, #fff);
-        --accent-card-border-color: var(--simple-colors-accent-foreground5, #fff);
-        --accent-card-footer-border-color: var(--simple-colors-background5, #666);
+        --accent-card-border-color: var(
+          --simple-colors-accent-foreground5,
+          #fff
+        );
+        --accent-card-footer-border-color: var(
+          --simple-colors-background5,
+          #666
+        );
       }
       :host([accent-background]) {
-        --accent-card-background-color: var(--simple-colors-accent-background1, #fff);
+        --accent-card-background-color: var(
+          --simple-colors-accent-background1,
+          #fff
+        );
         --accent-card-footer-border-color: var(--accent-card-border-color);
       }
       :host section {
@@ -50,12 +69,12 @@ let AccentCard = Polymer({
         justify-content: space-between;
         align-items: stretch;
       }
-      :host section[aria-role][disabled]{
+      :host section[aria-role][disabled] {
         opacity: 0.7;
       }
       :host section[aria-role]:not([disabled]):focus,
       :host section[aria-role]:not([disabled]):hover {
-        cursor: pointer; 
+        cursor: pointer;
         border-radius: 0px;
         outline: 1px solid var(--accent-card-border-color);
         @apply --accent-card-focus-heading;
@@ -79,8 +98,8 @@ let AccentCard = Polymer({
         @apply --accent-card-body;
       }
       :host .image {
-        background-size: cover; 
-        background-position-x: var(--accent-card-image-x, center); 
+        background-size: cover;
+        background-position-x: var(--accent-card-image-x, center);
         background-position-y: var(--accent-card-image-y, center);
       }
       :host(:not([horizontal])) .image {
@@ -88,7 +107,7 @@ let AccentCard = Polymer({
         @apply --accent-card-vertical-image;
       }
       :host([horizontal]) .image {
-        width: var(--accent-card-image-width, 100px);;
+        width: var(--accent-card-image-width, 100px);
         @apply --accent-card-horizontal-image;
       }
       :host .heading {
@@ -121,7 +140,12 @@ let AccentCard = Polymer({
         border-bottom: 1px solid var(--accent-card-footer-border-color);
       }
     </style>
-    <section id="card" aria-role\$="[[button]]" disabled\$="[[disabled]]" tabindex\$="[[__tabindex]]">
+    <section
+      id="card"
+      aria-role\$="[[button]]"
+      disabled\$="[[disabled]]"
+      tabindex\$="[[__tabindex]]"
+    >
       <div class="image" style\$="[[__backgroundStyle]]"></div>
       <div class="body">
         <template is="dom-if" if="[[__hasHeading]]" restamp="">
@@ -132,15 +156,16 @@ let AccentCard = Polymer({
         <slot name="footer"></slot>
       </div>
     </section>
-    <iron-a11y-keys id="a11y" target\$="[[__target]]" keys="enter space" on-keys-pressed="_handleTap"></iron-a11y-keys>
-`,
+    <iron-a11y-keys
+      id="a11y"
+      target\$="[[__target]]"
+      keys="enter space"
+      on-keys-pressed="_handleTap"
+    ></iron-a11y-keys>
+  `,
 
   is: "accent-card",
-  behaviors: [
-    HAXBehaviors.PropertiesBehaviors,
-    simpleColorsBehaviors,
-    SchemaBehaviors.Schema
-  ],
+  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
   listeners: { tap: "_handleTap" },
 
   properties: {

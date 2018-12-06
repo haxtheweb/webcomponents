@@ -111,8 +111,8 @@ ace.define(
                   return e.hasOwnProperty(n.toLowerCase())
                     ? "keyword"
                     : t.hasOwnProperty(n.toLowerCase())
-                      ? "variable"
-                      : "text";
+                    ? "variable"
+                    : "text";
                 },
                 regex: "\\-?[a-zA-Z_][a-zA-Z0-9_\\-]*"
               }

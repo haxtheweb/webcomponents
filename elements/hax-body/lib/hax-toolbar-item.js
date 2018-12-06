@@ -23,13 +23,13 @@ Polymer({
         flex-direction: row;
         -webkit-justify-content: flex-start;
         justify-content: flex-start;
-        font-family: 'Roboto', 'Noto', sans-serif;
+        font-family: "Roboto", "Noto", sans-serif;
         -webkit-font-smoothing: antialiased;
         font-size: 16px;
         font-weight: 400;
         line-height: 24px;
         --hax-item-color: #2e2e2e;
-        --hax-item-background: #FFFFFF;
+        --hax-item-background: #ffffff;
       }
       :host([menu]) paper-button {
         -webkit-justify-content: flex-start;
@@ -50,7 +50,7 @@ Polymer({
         border-radius: 0;
         font-size: 12px;
         height: 32px;
-        transition: .1s all;
+        transition: 0.1s all;
         @apply --hax-toolbar-item-container;
       }
       paper-button:hover {
@@ -106,14 +106,29 @@ Polymer({
       }
     </style>
 
-    <paper-button disabled="[[disabled]]" id="buttoncontainer" tabindex="0" title\$="[[tooltip]]">
-      <iron-icon id="button" icon="[[icon]]" class\$="[[iconClass]]"></iron-icon> <span id="label" hidden\$="[[!label]]">[[label]]</span>
-      <slot></slot>
+    <paper-button
+      disabled="[[disabled]]"
+      id="buttoncontainer"
+      tabindex="0"
+      title\$="[[tooltip]]"
+    >
+      <iron-icon
+        id="button"
+        icon="[[icon]]"
+        class\$="[[iconClass]]"
+      ></iron-icon>
+      <span id="label" hidden\$="[[!label]]">[[label]]</span> <slot></slot>
     </paper-button>
-    <paper-tooltip id="tooltip" for\$="[[this]]" offset="14" position="[[tooltipDirection]]" animation-delay="100">
+    <paper-tooltip
+      id="tooltip"
+      for\$="[[this]]"
+      offset="14"
+      position="[[tooltipDirection]]"
+      animation-delay="100"
+    >
       [[tooltip]]
     </paper-tooltip>
-`,
+  `,
 
   is: "hax-toolbar-item",
 

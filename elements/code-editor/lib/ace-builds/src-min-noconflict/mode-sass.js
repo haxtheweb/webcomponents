@@ -87,16 +87,16 @@ ace.define(
                 return e.hasOwnProperty(i.toLowerCase())
                   ? "support.type"
                   : s.hasOwnProperty(i)
-                    ? "keyword"
-                    : n.hasOwnProperty(i)
-                      ? "constant.language"
-                      : t.hasOwnProperty(i)
-                        ? "support.function"
-                        : r.hasOwnProperty(i.toLowerCase())
-                          ? "support.constant.color"
-                          : o.hasOwnProperty(i.toLowerCase())
-                            ? "variable.language"
-                            : "text";
+                  ? "keyword"
+                  : n.hasOwnProperty(i)
+                  ? "constant.language"
+                  : t.hasOwnProperty(i)
+                  ? "support.function"
+                  : r.hasOwnProperty(i.toLowerCase())
+                  ? "support.constant.color"
+                  : o.hasOwnProperty(i.toLowerCase())
+                  ? "variable.language"
+                  : "text";
               },
               regex: "\\-?[@a-z_][@a-z0-9_\\-]*"
             },

@@ -23,81 +23,98 @@ export { LrnButton };
 class LrnButton extends PolymerElement {
   static get template() {
     return html`
-<style>
-:host {
-    display: block;
-    @apply --paper-font-common-base;
-    @apply --paper-button;
-    --lrnsys-button-height: 48px;
-  }
+      <style>
+        :host {
+          display: block;
+          @apply --paper-font-common-base;
+          @apply --paper-button;
+          --lrnsys-button-height: 48px;
+        }
 
-  :host(.center) {
-    text-align: center;
-  }
+        :host(.center) {
+          text-align: center;
+        }
 
-  a {
-    text-decoration: none;
-    display: block;
-    color: #000000;
-  }
+        a {
+          text-decoration: none;
+          display: block;
+          color: #000000;
+        }
 
-  paper-button {
-    transition: .3s;
-    margin: 0;
-    max-width: 50%;
-    height: inherit;
-    -webkit-justify-content: flex-start;
-    justify-content: flex-start;
-    align-items: center;
-    border-radius: unset;
-  }
+        paper-button {
+          transition: 0.3s;
+          margin: 0;
+          max-width: 50%;
+          height: inherit;
+          -webkit-justify-content: flex-start;
+          justify-content: flex-start;
+          align-items: center;
+          border-radius: unset;
+        }
 
-  paper-button iron-icon {
-    height: var(--lrnsys-button-height);
-    margin: 0 12px;
-  }
+        paper-button iron-icon {
+          height: var(--lrnsys-button-height);
+          margin: 0 12px;
+        }
 
-  paper-button div.inner {
-    height: var(--lrnsys-button-height);
-    line-height: var(--lrnsys-button-height);
-    padding: 0 12px;
-  }
+        paper-button div.inner {
+          height: var(--lrnsys-button-height);
+          line-height: var(--lrnsys-button-height);
+          padding: 0 12px;
+        }
 
-  paper-button span.label {
-    height: var(--lrnsys-button-height);
-    line-height: var(--lrnsys-button-height);
-  }
+        paper-button span.label {
+          height: var(--lrnsys-button-height);
+          line-height: var(--lrnsys-button-height);
+        }
 
-  .no-margin {
-    margin: 0 !important;
-  }
+        .no-margin {
+          margin: 0 !important;
+        }
 
-  .no-right-padding {
-    padding-right: 0 !important;
-  }
+        .no-right-padding {
+          padding-right: 0 !important;
+        }
 
-  .no-left-padding {
-    padding-left: 0 !important;
-  }
+        .no-left-padding {
+          padding-left: 0 !important;
+        }
 
-  .center {
-    text-align: center;
-    margin: 0 auto;
-  }
-</style>
-<style include="materializecss-styles-colors"></style>
-<a tabindex="-1" id="lrnsys-button-link" href$="[[showHref]]" data-prefetch-hover$="[[prefetch]]" target$="[[target]]">
-  <paper-button id="button" raised="[[raised]]" class$="[[class]] [[color]] [[textColor]]" disabled$="[[disabled]]">
-    <div class$="inner [[innerClass]]">
-      <iron-icon icon$="[[icon]]" id="icon" class$="[[iconClass]]" hidden$="[[!icon]]"></iron-icon>
-      <span class="label" hidden$="[[!label]]">
-        [[label]]
-      </span>
-      <slot></slot>
-    </div>
-  </paper-button>
-</a>
-<paper-tooltip for="lrnsys-button-link" animation-delay="0">[[alt]]</paper-tooltip>`;
+        .center {
+          text-align: center;
+          margin: 0 auto;
+        }
+      </style>
+      <style include="materializecss-styles-colors"></style>
+      <a
+        tabindex="-1"
+        id="lrnsys-button-link"
+        href$="[[showHref]]"
+        data-prefetch-hover$="[[prefetch]]"
+        target$="[[target]]"
+      >
+        <paper-button
+          id="button"
+          raised="[[raised]]"
+          class$="[[class]] [[color]] [[textColor]]"
+          disabled$="[[disabled]]"
+        >
+          <div class$="inner [[innerClass]]">
+            <iron-icon
+              icon$="[[icon]]"
+              id="icon"
+              class$="[[iconClass]]"
+              hidden$="[[!icon]]"
+            ></iron-icon>
+            <span class="label" hidden$="[[!label]]"> [[label]] </span>
+            <slot></slot>
+          </div>
+        </paper-button>
+      </a>
+      <paper-tooltip for="lrnsys-button-link" animation-delay="0"
+        >[[alt]]</paper-tooltip
+      >
+    `;
   }
   // properties available to the custom element for data binding
   static get properties() {

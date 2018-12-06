@@ -109,10 +109,10 @@ define("ace/ext/beautify", [
                 d === "</" &&
                   (_ && !l && N < 1 && N++, M && (N = 1), (w = 1), (_ = !1)))
               : i(s, "tag-close")
-                ? (O = !1)
-                : i(s, "comment.start")
-                  ? (_ = !0)
-                  : i(s, "comment.end") && (_ = !1),
+              ? (O = !1)
+              : i(s, "comment.start")
+              ? (_ = !0)
+              : i(s, "comment.end") && (_ = !1),
             !O &&
               !N &&
               s.type === "paren.rparen" &&
@@ -137,48 +137,47 @@ define("ace/ext/beautify", [
                   p.match(/\}[\s]*$/) &&
                   (j(), (c = !0)))
               : s.type === "paren.lparen"
-                ? (H(),
-                  d.substr(-1) === "{" && ((h = !0), (A = !1), O || (N = 1)),
-                  d.substr(0, 1) === "{" &&
-                    ((c = !0),
-                    p.substr(-1) !== "[" && p.trimRight().substr(-1) === "["
-                      ? (j(), (c = !1))
-                      : p.trimRight().substr(-1) === ")"
-                        ? j()
-                        : B()))
-                : s.type === "paren.rparen"
-                  ? ((w = 1),
-                    d.substr(0, 1) === "}" &&
-                      (P[m - 1] === "case" && w++,
-                      p.trimRight().substr(-1) === "{"
-                        ? j()
-                        : ((c = !0), M && (N += 2))),
-                    d.substr(0, 1) === "]" &&
-                      p.substr(-1) !== "}" &&
-                      p.trimRight().substr(-1) === "}" &&
-                      ((c = !1), b++, j()),
-                    d.substr(0, 1) === ")" &&
-                      p.substr(-1) !== "(" &&
-                      p.trimRight().substr(-1) === "(" &&
-                      ((c = !1), b++, j()),
-                    B())
-                  : (s.type !== "keyword.operator" && s.type !== "keyword") ||
-                    !d.match(
-                      /^(=|==|===|!=|!==|&&|\|\||and|or|xor|\+=|.=|>|>=|<|<=|=>)$/
-                    )
-                    ? s.type === "punctuation.operator" && d === ";"
-                      ? (j(), H(), (h = !0), M && N++)
-                      : s.type === "punctuation.operator" && d.match(/^(:|,)$/)
-                        ? (j(), H(), (h = !0), (l = !1))
-                        : s.type === "support.php_tag" && d === "?>" && !l
-                          ? (j(), (c = !0))
-                          : i(s, "attribute-name") && p.substr(-1).match(/^\s$/)
-                            ? (c = !0)
-                            : i(s, "attribute-equals")
-                              ? (B(), H())
-                              : i(s, "tag-close") &&
-                                (B(), d === "/>" && (c = !0))
-                    : (j(), H(), (c = !0), (h = !0));
+              ? (H(),
+                d.substr(-1) === "{" && ((h = !0), (A = !1), O || (N = 1)),
+                d.substr(0, 1) === "{" &&
+                  ((c = !0),
+                  p.substr(-1) !== "[" && p.trimRight().substr(-1) === "["
+                    ? (j(), (c = !1))
+                    : p.trimRight().substr(-1) === ")"
+                    ? j()
+                    : B()))
+              : s.type === "paren.rparen"
+              ? ((w = 1),
+                d.substr(0, 1) === "}" &&
+                  (P[m - 1] === "case" && w++,
+                  p.trimRight().substr(-1) === "{"
+                    ? j()
+                    : ((c = !0), M && (N += 2))),
+                d.substr(0, 1) === "]" &&
+                  p.substr(-1) !== "}" &&
+                  p.trimRight().substr(-1) === "}" &&
+                  ((c = !1), b++, j()),
+                d.substr(0, 1) === ")" &&
+                  p.substr(-1) !== "(" &&
+                  p.trimRight().substr(-1) === "(" &&
+                  ((c = !1), b++, j()),
+                B())
+              : (s.type !== "keyword.operator" && s.type !== "keyword") ||
+                !d.match(
+                  /^(=|==|===|!=|!==|&&|\|\||and|or|xor|\+=|.=|>|>=|<|<=|=>)$/
+                )
+              ? s.type === "punctuation.operator" && d === ";"
+                ? (j(), H(), (h = !0), M && N++)
+                : s.type === "punctuation.operator" && d.match(/^(:|,)$/)
+                ? (j(), H(), (h = !0), (l = !1))
+                : s.type === "support.php_tag" && d === "?>" && !l
+                ? (j(), (c = !0))
+                : i(s, "attribute-name") && p.substr(-1).match(/^\s$/)
+                ? (c = !0)
+                : i(s, "attribute-equals")
+                ? (B(), H())
+                : i(s, "tag-close") && (B(), d === "/>" && (c = !0))
+              : (j(), H(), (c = !0), (h = !0));
             if (
               l &&
               (!s.type.match(/^(comment)$/) ||
@@ -225,13 +224,10 @@ define("ace/ext/beautify", [
             i(s, "tag-open") && d === "</"
               ? m--
               : i(s, "tag-open") && d === "<" && u.indexOf(f.value) === -1
-                ? m++
-                : i(s, "tag-name")
-                  ? (v = d)
-                  : i(s, "tag-close") &&
-                    d === "/>" &&
-                    u.indexOf(v) === -1 &&
-                    m--,
+              ? m++
+              : i(s, "tag-name")
+              ? (v = d)
+              : i(s, "tag-close") && d === "/>" && u.indexOf(v) === -1 && m--,
               (x = T);
           }
         }

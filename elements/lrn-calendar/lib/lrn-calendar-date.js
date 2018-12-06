@@ -19,8 +19,8 @@ Polymer({
         display: block;
       }
       ::-webkit-scrollbar {
-        width: 0px;  /* remove scrollbar space */
-        background: transparent;  /* optional: just make scrollbar invisible */
+        width: 0px; /* remove scrollbar space */
+        background: transparent; /* optional: just make scrollbar invisible */
       }
 
       .month {
@@ -29,13 +29,13 @@ Polymer({
         vertical-align: top;
         overflow: scroll;
       }
-      .week{
+      .week {
         width: 100%;
         height: 40vh;
         vertical-align: top;
         overflow: scroll;
       }
-      .card-content{
+      .card-content {
         position: relative;
         bottom: 10px;
         white-space: nowrap;
@@ -43,31 +43,36 @@ Polymer({
         padding: 0px 5px;
         line-height: 7px;
       }
-      .label{
-        width: 100%
+      .label {
+        width: 100%;
       }
     </style>
-  
-      <div id="test">
-        <div>
-          <template is="dom-if" if="[[firstWeek]]">
-            <paper-card class="label">
-              <h3>[[getWeek(date)]]</h3>
-            </paper-card>
-          </template>
-        </div>
-        <paper-card class$="[[view]]" id="dateHeader">
-          <h5>[[getMonth(date)]]</h5>
-          <template is="dom-repeat" items="{{events}}">
-              <div class="card-content">
-                <lrnsys-drawer text="[[timeString(item.event.startDate._time.hour, item.event.startDate._time.minute, item.event.endDate._time.hour,item.event.endDate._time.minute)]] {{item.event.summary}}" header="[[getDateString(date)]]" align="left" heading-class="orange lighten-3 blue-text text-darken-4" style$="[[computeStyle(item)]];overflow:auto;">
-                [[displayActivity(item)]] <br/><br/>[[displayStart(item)]]<br><br>[[displayEnd(item)]]<br><br>[[displayDuration(item)]]<br><br>[[displayDescription(item)]]<br><br>[[displayLocation(item)]]
-                </lrnsys-drawer>
-              </div>
-          </template>
-        </paper-card>
+
+    <div id="test">
+      <div>
+        <template is="dom-if" if="[[firstWeek]]">
+          <paper-card class="label"> <h3>[[getWeek(date)]]</h3> </paper-card>
+        </template>
       </div>
-`,
+      <paper-card class$="[[view]]" id="dateHeader">
+        <h5>[[getMonth(date)]]</h5>
+        <template is="dom-repeat" items="{{events}}">
+          <div class="card-content">
+            <lrnsys-drawer
+              text="[[timeString(item.event.startDate._time.hour, item.event.startDate._time.minute, item.event.endDate._time.hour,item.event.endDate._time.minute)]] {{item.event.summary}}"
+              header="[[getDateString(date)]]"
+              align="left"
+              heading-class="orange lighten-3 blue-text text-darken-4"
+              style$="[[computeStyle(item)]];overflow:auto;"
+            >
+              [[displayActivity(item)]]
+              <br /><br />[[displayStart(item)]]<br /><br />[[displayEnd(item)]]<br /><br />[[displayDuration(item)]]<br /><br />[[displayDescription(item)]]<br /><br />[[displayLocation(item)]]
+            </lrnsys-drawer>
+          </div>
+        </template>
+      </paper-card>
+    </div>
+  `,
 
   is: "lrn-calendar-date",
 
@@ -98,8 +103,8 @@ Polymer({
   },
 
   /*
-  * Displays the month in the heading
-  */
+   * Displays the month in the heading
+   */
 
   getMonth: function(date) {
     var monthInt = date.getMonth();
@@ -128,8 +133,8 @@ Polymer({
   },
 
   /*
-  * Displays the weekday for in the column for the first week
-  */
+   * Displays the weekday for in the column for the first week
+   */
   getWeek: function(date) {
     var weekdays = date.getDay();
     var weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -137,8 +142,8 @@ Polymer({
   },
 
   /*
-  * Creates the string that displays the time of the event
-  */
+   * Creates the string that displays the time of the event
+   */
   timeString: function(startHour, startMinute, endHour, endMinute) {
     var amPM = startHour > 11 ? "pm" : "am";
     if (startHour > 12) {
@@ -162,8 +167,8 @@ Polymer({
   },
 
   /*
-  * If an event occurs the whole day the background color is yellow
-  */
+   * If an event occurs the whole day the background color is yellow
+   */
   computeStyle: function(item) {
     if (item.event.startDate._time.hour == 0)
       var s = "background-color:" + " yellow";
@@ -172,8 +177,8 @@ Polymer({
   },
 
   /*
-  * When click for more info, this gives the full date of the event
-  */
+   * When click for more info, this gives the full date of the event
+   */
   getDateString: function(date) {
     var monthInt = date.getMonth();
     var day = date.getDate();
@@ -198,16 +203,16 @@ Polymer({
   },
 
   /*
-  * Displayes the name of the activity in the more info slideout
-  */
+   * Displayes the name of the activity in the more info slideout
+   */
   displayActivity: function(e) {
     var activity = e.event.summary;
     return "Activity: " + activity;
   },
 
   /*
-  * Displays the start time in the more info slideout
-  */
+   * Displays the start time in the more info slideout
+   */
   displayStart: function(e) {
     var startTime = this.timeString(
       e.event.startDate._time.hour,
@@ -224,8 +229,8 @@ Polymer({
   },
 
   /*
-  * Displays the end time in the more info slideout
-  */
+   * Displays the end time in the more info slideout
+   */
   displayEnd: function(e) {
     var endTime = this.timeString(
       e.event.endDate._time.hour,
@@ -235,8 +240,8 @@ Polymer({
   },
 
   /*
-  * Displays the duration in the more info slideout
-  */
+   * Displays the duration in the more info slideout
+   */
   displayDuration: function(e) {
     var duration = e.event.duration;
     var days = duration.days;
@@ -272,8 +277,8 @@ Polymer({
   },
 
   /*
-  * Displays the description in the more info slideout
-  */
+   * Displays the description in the more info slideout
+   */
   displayDescription: function(e) {
     var description = e.event.description;
     if (!description) {
@@ -283,8 +288,8 @@ Polymer({
   },
 
   /*
-  * Displays the location in the more info slideout
-  */
+   * Displays the location in the more info slideout
+   */
   displayLocation: function(e) {
     var location = e.event.location;
     location = String(location);

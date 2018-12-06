@@ -37,18 +37,37 @@ Polymer({
         height: 100%;
       }
       :host > paper-button:focus iron-image,
-      :host > paper-button:hover iron-image{
+      :host > paper-button:hover iron-image {
         opacity: 0.7;
         outline: 2px solid var(--lrndesign-gallery-focus-color);
       }
     </style>
-    <paper-button id="lrnsysbutton" item\$="[[item]]" aria-controls\$="[[controls]]" target\$="[[target]]" title\$="[[alt]]" tabindex="-1">
-      <iron-image alt\$="[[alt]]" class="lrndesign-gallery-thumb-image" fade="" sizing="cover" src\$="[[thumbnail]]" style\$="[[imageStyle]]">
+    <paper-button
+      id="lrnsysbutton"
+      item\$="[[item]]"
+      aria-controls\$="[[controls]]"
+      target\$="[[target]]"
+      title\$="[[alt]]"
+      tabindex="-1"
+    >
+      <iron-image
+        alt\$="[[alt]]"
+        class="lrndesign-gallery-thumb-image"
+        fade=""
+        sizing="cover"
+        src\$="[[thumbnail]]"
+        style\$="[[imageStyle]]"
+      >
       </iron-image>
     </paper-button>
-    <iron-a11y-keys id="a11y" keys="enter" target\$="[[button]]" on-keys-pressed="_tapped">
+    <iron-a11y-keys
+      id="a11y"
+      keys="enter"
+      target\$="[[button]]"
+      on-keys-pressed="_tapped"
+    >
     </iron-a11y-keys>
-`,
+  `,
 
   is: "lrndesign-gallery-thumb",
 

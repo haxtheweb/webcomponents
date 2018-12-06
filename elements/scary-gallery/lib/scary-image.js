@@ -55,9 +55,14 @@ Polymer({
     </style>
 
     <a id="baseURIAnchor" href="#"></a>
-    <div id="sizedImgDiv" role="img" aria-hidden$="[[_computeImgDivARIAHidden(alt)]]" aria-label$="[[_computeImgDivARIALabel(alt, src)]]"></div>
-    <img id="img" on-load="_imgOnLoad" on-error="_imgOnError">
-`,
+    <div
+      id="sizedImgDiv"
+      role="img"
+      aria-hidden$="[[_computeImgDivARIAHidden(alt)]]"
+      aria-label$="[[_computeImgDivARIALabel(alt, src)]]"
+    ></div>
+    <img id="img" on-load="_imgOnLoad" on-error="_imgOnError" />
+  `,
 
   is: "scary-image",
   properties: {

@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { ExampleHaxElement };
 /**
  * `example-hax-element`
  * `Provide an example to pick apart of a working HAX element`
@@ -145,7 +144,7 @@ class ExampleHaxElement extends HTMLElement {
       this._processQueue();
     }
     this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
+    this.HAXWiring.setup(
       ExampleHaxElement.haxProperties,
       ExampleHaxElement.tag,
       this
@@ -194,3 +193,4 @@ class ExampleHaxElement extends HTMLElement {
   // attributeChangedCallback(attr, oldValue, newValue) {}
 }
 window.customElements.define(ExampleHaxElement.tag, ExampleHaxElement);
+export { ExampleHaxElement };

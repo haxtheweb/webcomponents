@@ -45,12 +45,31 @@ let DropdownSelect = Polymer({
         @apply --dropdown-listbox;
       }
     </style>
-    <paper-dropdown-menu id="menu" allow-outside-scroll\$="[[allowOutsideScroll]]" always-float-label\$="[[alwaysFloatLabel]]" dynamic-align\$="[[dynamicAlign]]" error-message\$="[[errorMessage]]" horizontal-align\$="[[horizontalAlign]]" label\$="[[label]]" no-animations\$="[[noAnimations]]" no-label-float\$="[[noLabelFloat]]" on-selected-item-changed="_getSelectedValue" placeholder\$="[[placeholder]]" restore-focus-on-close\$="[[restoreFocusOnClose]]" vertical-align\$="[[verticalAlign]]" vertical-offset\$="[[verticalOffset]]">
-      <paper-listbox id="listbox" slot="dropdown-content" class="dropdown-content">
+    <paper-dropdown-menu
+      id="menu"
+      allow-outside-scroll\$="[[allowOutsideScroll]]"
+      always-float-label\$="[[alwaysFloatLabel]]"
+      dynamic-align\$="[[dynamicAlign]]"
+      error-message\$="[[errorMessage]]"
+      horizontal-align\$="[[horizontalAlign]]"
+      label\$="[[label]]"
+      no-animations\$="[[noAnimations]]"
+      no-label-float\$="[[noLabelFloat]]"
+      on-selected-item-changed="_getSelectedValue"
+      placeholder\$="[[placeholder]]"
+      restore-focus-on-close\$="[[restoreFocusOnClose]]"
+      vertical-align\$="[[verticalAlign]]"
+      vertical-offset\$="[[verticalOffset]]"
+    >
+      <paper-listbox
+        id="listbox"
+        slot="dropdown-content"
+        class="dropdown-content"
+      >
         <slot id="content"></slot>
       </paper-listbox>
     </paper-dropdown-menu>
-`,
+  `,
 
   is: "dropdown-select",
 

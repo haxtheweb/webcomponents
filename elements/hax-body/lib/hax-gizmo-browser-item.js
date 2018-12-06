@@ -43,7 +43,7 @@ Polymer({
       paper-button {
         color: #000000;
         text-transform: none;
-        margin:0;
+        margin: 0;
         background-color: #ffffff;
         height: 72px !important;
         width: 72px !important;
@@ -69,15 +69,29 @@ Polymer({
       }
     </style>
     <paper-card id="card" elevation="2">
-      <paper-button id="button" on-tap="_fireEvent" data-voicecommand\$="select [[title]]" class\$="[[color]] lighten-5 [[color]]-border">
+      <paper-button
+        id="button"
+        on-tap="_fireEvent"
+        data-voicecommand\$="select [[title]]"
+        class\$="[[color]] lighten-5 [[color]]-border"
+      >
         <div class="button-inner">
-          <iron-icon icon="[[icon]]" class\$="[[color]]-text text-darken-3" hidden\$="[[!icon]]"></iron-icon>
-          <iron-image src="[[image]]" preload="" sizing="cover" hidden\$="[[!image]]"></iron-image>
+          <iron-icon
+            icon="[[icon]]"
+            class\$="[[color]]-text text-darken-3"
+            hidden\$="[[!icon]]"
+          ></iron-icon>
+          <iron-image
+            src="[[image]]"
+            preload=""
+            sizing="cover"
+            hidden\$="[[!image]]"
+          ></iron-image>
           <div class="item-title">[[title]]</div>
         </div>
       </paper-button>
     </paper-card>
-`,
+  `,
 
   is: "hax-gizmo-browser-item",
 

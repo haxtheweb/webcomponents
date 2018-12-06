@@ -6,8 +6,8 @@
   typeof require === "function"
     ? factory(require("../moment"))
     : typeof define === "function" && define.amd
-      ? define(["../moment"], factory)
-      : factory(global.moment);
+    ? define(["../moment"], factory)
+    : factory(global.moment);
 })(this, function(moment) {
   "use strict";
 
@@ -42,8 +42,8 @@
         var affix = /сехет$/i.exec(output)
           ? "рен"
           : /ҫул$/i.exec(output)
-            ? "тан"
-            : "ран";
+          ? "тан"
+          : "ран";
         return output + affix;
       },
       past: "%s каялла",

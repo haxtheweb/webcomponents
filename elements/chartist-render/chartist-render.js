@@ -19,7 +19,7 @@ let ChartistRender = Polymer({
       }
     </style>
     <div id="chart" chart$="[[__chartId]]" class$="ct-chart [[scale]]"></div>
-`,
+  `,
 
   is: "chartist-render",
 

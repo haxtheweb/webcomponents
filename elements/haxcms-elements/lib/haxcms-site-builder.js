@@ -23,12 +23,12 @@ Polymer({
       }
       :host #slot {
         background-color: white;
-        opacity: .2;
+        opacity: 0.2;
         transition: all 1s linear;
         visibility: hidden;
       }
       :host([loading]) #slot {
-        opacity: .8;
+        opacity: 0.8;
       }
       :host([theme-loaded]) #slot {
         opacity: 1;
@@ -42,16 +42,41 @@ Polymer({
       }
     </style>
     <haxcms-editor-builder></haxcms-editor-builder>
-    <paper-progress hidden\$="[[!loading]]" value="100" indeterminate="" bottom-item=""></paper-progress>
-    <app-location route="{{route}}" query-params="{{queryParams}}"></app-location>
-    <app-route route="{{route}}" pattern=":page" data="{{data}}" tail="{{tail}}" query-params="{{queryParams}}">
+    <paper-progress
+      hidden\$="[[!loading]]"
+      value="100"
+      indeterminate=""
+      bottom-item=""
+    ></paper-progress>
+    <app-location
+      route="{{route}}"
+      query-params="{{queryParams}}"
+    ></app-location>
+    <app-route
+      route="{{route}}"
+      pattern=":page"
+      data="{{data}}"
+      tail="{{tail}}"
+      query-params="{{queryParams}}"
+    >
     </app-route>
-    <iron-ajax id="manifest" url="[[outlineLocation]][[file]][[__timeStamp]]" handle-as="json" debounce-duration="250" last-response="{{manifest}}"></iron-ajax>
-    <iron-ajax id="activecontent" url="[[outlineLocation]][[activeItem.location]][[__timeStamp]]" handle-as="text" loading="{{loading}}" debounce-duration="250" last-response="{{_activeItemContent}}"></iron-ajax>
-    <div id="slot">
-      <slot></slot>
-    </div>
-`,
+    <iron-ajax
+      id="manifest"
+      url="[[outlineLocation]][[file]][[__timeStamp]]"
+      handle-as="json"
+      debounce-duration="250"
+      last-response="{{manifest}}"
+    ></iron-ajax>
+    <iron-ajax
+      id="activecontent"
+      url="[[outlineLocation]][[activeItem.location]][[__timeStamp]]"
+      handle-as="text"
+      loading="{{loading}}"
+      debounce-duration="250"
+      last-response="{{_activeItemContent}}"
+    ></iron-ajax>
+    <div id="slot"><slot></slot></div>
+  `,
 
   is: "haxcms-site-builder",
 

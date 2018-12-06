@@ -398,8 +398,8 @@ ace.define("ace/range", [], function(require, exports, module) {
           return column < this.start.column
             ? -1
             : column > this.end.column
-              ? 1
-              : 0;
+            ? 1
+            : 0;
         }
       }
 
@@ -1644,12 +1644,12 @@ ace.define("ace/mode/lua/luaparse", [], function(require, exports, module) {
           type === StringLiteral
             ? "StringLiteral"
             : type === NumericLiteral
-              ? "NumericLiteral"
-              : type === BooleanLiteral
-                ? "BooleanLiteral"
-                : type === NilLiteral
-                  ? "NilLiteral"
-                  : "VarargLiteral";
+            ? "NumericLiteral"
+            : type === BooleanLiteral
+            ? "BooleanLiteral"
+            : type === NilLiteral
+            ? "NilLiteral"
+            : "VarargLiteral";
 
         return {
           type: type,

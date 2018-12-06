@@ -20,7 +20,9 @@ Polymer({
         background-color: var(--simple-colors-background1);
         --lrnsys-collapselist-text-color: var(--simple-colors-foreground1);
         --lrnsys-collapselist-item-color: var(--simple-colors-background1);
-        --lrnsys-collapselist-item-active-color: var(--simple-colors-background2);
+        --lrnsys-collapselist-item-active-color: var(
+          --simple-colors-background2
+        );
         --lrnsys-collapselist-item-border: var(--simple-colors-background5);
       }
       ul {
@@ -37,7 +39,7 @@ Polymer({
         height: 32px;
         padding: 8px;
         margin: 0;
-        min-width: .16px;
+        min-width: 0.16px;
         -webkit-justify-content: flex-start;
         justify-content: flex-start;
         align-items: center;
@@ -60,21 +62,19 @@ Polymer({
       }
     </style>
     <ul>
-    <template is="dom-repeat" items="{{items}}" as="row">
-      <li>
-        <lrnsys-collapselist-item>
-          <span slot="label">
-            <iron-icon icon="[[row.icon]]"></iron-icon>
-            <span class="collapse-label">[[row.label]]</span>
-          </span>
-          <span slot="content">
-            [[row.content]]
-          </span>
-        </lrnsys-collapselist-item>
-      </li>
-    </template>
+      <template is="dom-repeat" items="{{items}}" as="row">
+        <li>
+          <lrnsys-collapselist-item>
+            <span slot="label">
+              <iron-icon icon="[[row.icon]]"></iron-icon>
+              <span class="collapse-label">[[row.label]]</span>
+            </span>
+            <span slot="content"> [[row.content]] </span>
+          </lrnsys-collapselist-item>
+        </li>
+      </template>
     </ul>
-`,
+  `,
 
   is: "lrnsys-collapselist",
 

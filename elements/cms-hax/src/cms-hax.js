@@ -34,11 +34,29 @@ let CmsHax = Polymer({
         box-sizing: content-box;
       }
     </style>
-    <iron-ajax id="pageupdateajax" url="[[endPoint]]" method="[[method]]" body="[[updatePageData]]" content-type="application/json" handle-as="json" on-response="_handleUpdateResponse"></iron-ajax>
+    <iron-ajax
+      id="pageupdateajax"
+      url="[[endPoint]]"
+      method="[[method]]"
+      body="[[updatePageData]]"
+      content-type="application/json"
+      handle-as="json"
+      on-response="_handleUpdateResponse"
+    ></iron-ajax>
     <paper-toast id="toast" horizontal-align="left"></paper-toast>
-    <hax-store hidden="" app-store="[[appStoreConnection]]" valid-tag-list="[[allowedTags]]"></hax-store>
+    <hax-store
+      hidden=""
+      app-store="[[appStoreConnection]]"
+      valid-tag-list="[[allowedTags]]"
+    ></hax-store>
     <hax-autoloader id="loader" hidden=""></hax-autoloader>
-    <hax-panel id="panel" hide-export-button="{{hideExportButton}}" hide-panel-ops="[[hidePanelOps]]" hide-preferences-button="[[hidePreferencesButton]]" align="[[align]]"></hax-panel>
+    <hax-panel
+      id="panel"
+      hide-export-button="{{hideExportButton}}"
+      hide-panel-ops="[[hidePanelOps]]"
+      hide-preferences-button="[[hidePreferencesButton]]"
+      align="[[align]]"
+    ></hax-panel>
     <hax-body id="body" context-offset-left="[[bodyOffsetLeft]]"></hax-body>
     <hax-manager></hax-manager>
     <hax-app-picker></hax-app-picker>
@@ -47,7 +65,7 @@ let CmsHax = Polymer({
     <cms-views></cms-views>
     <cms-block></cms-block>
     <cms-entity></cms-entity>
-`,
+  `,
 
   is: "cms-hax",
 

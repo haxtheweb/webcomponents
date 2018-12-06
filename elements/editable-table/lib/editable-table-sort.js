@@ -31,7 +31,7 @@ Polymer({
         min-width: unset;
         display: inline-flex;
         justify-content: space-between;
-        align-items:center;
+        align-items: center;
         align-content: stretch;
         text-transform: unset;
       }
@@ -60,15 +60,14 @@ Polymer({
       }
     </style>
     <paper-button id="button" class="container">
-      [[text]]
-      <span class="sr-only asc">(ascending)</span>
+      [[text]] <span class="sr-only asc">(ascending)</span>
       <span class="sr-only desc">(descending)</span>
       <span class="sr-only"> Toggle sort mode.</span>
       <iron-icon id="asc" icon="arrow-drop-up"></iron-icon>
       <iron-icon id="desc" icon="arrow-drop-down"></iron-icon>
       <iron-icon id="none" icon="editable-table:sortable"></iron-icon>
     </paper-button>
-`,
+  `,
 
   is: "editable-table-sort",
 

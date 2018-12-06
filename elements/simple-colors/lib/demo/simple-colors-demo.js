@@ -23,60 +23,64 @@ class SimpleColorsDemo extends SimpleColors {
   // render function
   static get template() {
     return html`
-<style is="custom-style" include="simple-colors">
-:host {
-  background-color: var(--simple-colors-default-theme-grey-1); 
-  color: var(--simple-colors-default-theme-grey-12); 
-  border: 1px solid var(--simple-colors-default-theme-grey-6);
-  margin: 15px 0;
-  padding: 0px;
-  display: block;
-}
-:host([hidden]){
-  display: none;
-}
-:host .selectors {
-  background-color: var(--simple-colors-default-theme-grey-2); 
-  padding: 2px;
-  margin: 0 0 15px;
-  font-family: monospace;
-}
-:host .slot {
-  padding: var(--simple-colors-demo-padding, 0);
-}
-a, a[link] {
-  color: var(--simple-colors-default-theme-blue-8); 
-}
-a[visited] {
-  color: var(--simple-colors-default-theme-purple-8); 
-}
-</style>
-<div class="selectors">
-  &lt;<em>parent-element</em> 
-  <label>
-    accent-color<simple-colors-demo-select id="accent"
-      label="accent-color"
-      value$="[[accentColor]]" 
-      as-code 
-      on-accent-color-change="_handleAccentChange"
-      options$=[[_getOptions(colors)]]>
-      <span slot="prefix">="</span>
-      <span slot="suffix">" </span>
-    </simple-colors-demo-select>
-  </label>
-  <label>
-    dark<simple-colors-demo-select id="dark"
-      label="dark"
-      value$="[[dark]]" 
-      as-code 
-      on-dark-change="_handleDarkChange"
-      options='["","dark"]'>
-      <span slot="prefix">="</span>
-      <span slot="suffix">" </span>
-    </simple-colors-demo-select>
-  </label>&gt; 
-</div>
-<div class="slot"><slot></slot></div>`;
+      <style is="custom-style" include="simple-colors">
+        :host {
+          background-color: var(--simple-colors-default-theme-grey-1);
+          color: var(--simple-colors-default-theme-grey-12);
+          border: 1px solid var(--simple-colors-default-theme-grey-6);
+          margin: 15px 0;
+          padding: 0px;
+          display: block;
+        }
+        :host([hidden]) {
+          display: none;
+        }
+        :host .selectors {
+          background-color: var(--simple-colors-default-theme-grey-2);
+          padding: 2px;
+          margin: 0 0 15px;
+          font-family: monospace;
+        }
+        :host .slot {
+          padding: var(--simple-colors-demo-padding, 0);
+        }
+        a,
+        a[link] {
+          color: var(--simple-colors-default-theme-blue-8);
+        }
+        a[visited] {
+          color: var(--simple-colors-default-theme-purple-8);
+        }
+      </style>
+      <div class="selectors">
+        &lt;<em>parent-element</em>
+        <label>
+          accent-color<simple-colors-demo-select
+            id="accent"
+            label="accent-color"
+            value$="[[accentColor]]"
+            as-code
+            on-accent-color-change="_handleAccentChange"
+            options$="[[_getOptions(colors)]]"
+          >
+            <span slot="prefix">="</span> <span slot="suffix">" </span>
+          </simple-colors-demo-select>
+        </label>
+        <label>
+          dark<simple-colors-demo-select
+            id="dark"
+            label="dark"
+            value$="[[dark]]"
+            as-code
+            on-dark-change="_handleDarkChange"
+            options="[&quot;&quot;,&quot;dark&quot;]"
+          >
+            <span slot="prefix">="</span> <span slot="suffix">" </span>
+          </simple-colors-demo-select> </label
+        >&gt;
+      </div>
+      <div class="slot"><slot></slot></div>
+    `;
   }
 
   // properties available to the custom element for data binding

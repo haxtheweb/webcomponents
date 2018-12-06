@@ -14,12 +14,9 @@ let OerSchema = Polymer({
         display: inline-block;
       }
     </style>
-    <link property="oer:forComponent" content\$="[[relatedResource]]">
-    <span property\$="oer:[[oerProperty]]">
-      <slot></slot>
-      [[text]]
-    </span>
-`,
+    <link property="oer:forComponent" content\$="[[relatedResource]]" />
+    <span property\$="oer:[[oerProperty]]"> <slot></slot> [[text]] </span>
+  `,
 
   is: "oer-schema",
 

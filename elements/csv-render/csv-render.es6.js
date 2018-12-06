@@ -14,7 +14,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         background-color: rgb(255, 255, 255);
       }
       .mdl-data-table thead {
-        padding-bottom: .16px;
+        padding-bottom: 0.16px;
         position: sticky;
       }
       .mdl-data-table caption {
@@ -112,43 +112,56 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         width: 36px;
         height: 36px;
         min-width: unset;
-        padding:0;
-        margin:0;
+        padding: 0;
+        margin: 0;
         display: inline-flex;
       }
       iron-icon {
         display: inline-flex;
-        margin:0;
-        padding:0;
+        margin: 0;
+        padding: 0;
       }
       #download paper-button:focus,
       #download paper-button:active {
         outline: 2px solid grey;
       }
     </style>
-    <iron-ajax auto="" url="[[dataSource]]" handle-as="text" last-response="{{tableData}}" on-response="handleResponse"></iron-ajax>
+    <iron-ajax
+      auto=""
+      url="[[dataSource]]"
+      handle-as="text"
+      last-response="{{tableData}}"
+      on-response="handleResponse"
+    ></iron-ajax>
     <paper-spinner id="loading" active=""></paper-spinner>
     <a href="[[dataSource]]" id="download" tabindex="-1">
-        <paper-button class="grey-text"><iron-icon icon="file-download"></iron-icon></paper-button>
-    </a><paper-tooltip for="download" animation-delay="200" offset="14">Download table data</paper-tooltip><table class="mdl-data-table" summary="[[summary]]">
-    <template is="dom-if" if="[[caption]]">
-      <caption>[[caption]]</caption>
-    </template>
-    <thead>
-      <tr>
-      <template is="dom-repeat" items="[[tableHeadings]]" as="heading">
-        <th scope="col">[[heading]]</th>
+      <paper-button class="grey-text"
+        ><iron-icon icon="file-download"></iron-icon
+      ></paper-button> </a
+    ><paper-tooltip for="download" animation-delay="200" offset="14"
+      >Download table data</paper-tooltip
+    >
+    <table class="mdl-data-table" summary="[[summary]]">
+      <template is="dom-if" if="[[caption]]">
+        <caption>
+          [[caption]]
+        </caption>
       </template>
-      </tr>
-    </thead>
-    <tbody>
-      <template is="dom-repeat" items="[[table]]" as="row">
-      <tr>
-        <template is="dom-repeat" items="[[row]]" as="col">
-        <td>[[col]]</td>
+      <thead>
+        <tr>
+          <template is="dom-repeat" items="[[tableHeadings]]" as="heading">
+            <th scope="col">[[heading]]</th>
+          </template>
+        </tr>
+      </thead>
+      <tbody>
+        <template is="dom-repeat" items="[[table]]" as="row">
+          <tr>
+            <template is="dom-repeat" items="[[row]]" as="col">
+              <td>[[col]]</td>
+            </template>
+          </tr>
         </template>
-      </tr>
-      </template>
-    </tbody>
+      </tbody>
     </table>
-`,is:"csv-render",properties:{dataSource:{type:String},caption:{type:String,reflectToAttribute:!0},summary:{type:String,reflectToAttribute:!0},table:{type:Array,value:[]},tableHeadings:{type:Array,value:[]},tableData:{type:String,value:""}},handleResponse:function(e){this.table=this.CSVtoArray(this.tableData);this.tableHeadings=this.table.shift();this.$.loading.active=!1},CSVtoArray:function(text){let p="",row=[""],ret=[row],i=0,r=0,s=!0,l;for(l in text){l=text[l];if("\""===l){if(s&&l===p)row[i]+=l;s=!s}else if(","===l&&s)l=row[++i]="";else if("\n"===l&&s){if("\r"===p)row[i]=row[i].slice(0,-1);row=ret[++r]=[l=""];i=0}else row[i]+=l;p=l}return ret}});export{CsvRender};
+  `,is:"csv-render",properties:{dataSource:{type:String},caption:{type:String,reflectToAttribute:!0},summary:{type:String,reflectToAttribute:!0},table:{type:Array,value:[]},tableHeadings:{type:Array,value:[]},tableData:{type:String,value:""}},handleResponse:function(e){this.table=this.CSVtoArray(this.tableData);this.tableHeadings=this.table.shift();this.$.loading.active=!1},CSVtoArray:function(text){let p="",row=[""],ret=[row],i=0,r=0,s=!0,l;for(l in text){l=text[l];if("\""===l){if(s&&l===p)row[i]+=l;s=!s}else if(","===l&&s)l=row[++i]="";else if("\n"===l&&s){if("\r"===p)row[i]=row[i].slice(0,-1);row=ret[++r]=[l=""];i=0}else row[i]+=l;p=l}return ret}});export{CsvRender};

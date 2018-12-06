@@ -23,7 +23,7 @@ Polymer({
         display: inline-block;
         background: #fff;
         border-radius: 50%;
-        box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
         padding: 2px;
         position: relative;
         margin-top: -2px;
@@ -58,7 +58,7 @@ Polymer({
         </template>
       </div>
     </div>
-`,
+  `,
 
   is: "lrndesign-mapmenu-header",
   behaviors: [IronButtonState],

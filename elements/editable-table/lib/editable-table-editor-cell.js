@@ -31,7 +31,7 @@ Polymer({
         min-width: unset;
         display: inline-flex;
         justify-content: space-between;
-        align-items:center;
+        align-items: center;
         align-content: stretch;
       }
       :host iron-autogrow-textarea {
@@ -65,18 +65,43 @@ Polymer({
         -mozilla-appearance: none;
       }
     </style>
-    <iron-autogrow-textarea autofocus="" id="cell" label\$="[[label]]" value\$="{{value}}">
+    <iron-autogrow-textarea
+      autofocus=""
+      id="cell"
+      label\$="[[label]]"
+      value\$="{{value}}"
+    >
     </iron-autogrow-textarea>
     <div id="icons"><slot></slot></div>
-    <iron-a11y-keys id="down" keys="down" target\$="[[cell]]" on-keys-pressed="_onCellBelow">
+    <iron-a11y-keys
+      id="down"
+      keys="down"
+      target\$="[[cell]]"
+      on-keys-pressed="_onCellBelow"
+    >
     </iron-a11y-keys>
-    <iron-a11y-keys id="up" keys="up" target\$="[[cell]]" on-keys-pressed="_onCellAbove">
+    <iron-a11y-keys
+      id="up"
+      keys="up"
+      target\$="[[cell]]"
+      on-keys-pressed="_onCellAbove"
+    >
     </iron-a11y-keys>
-    <iron-a11y-keys id="left" keys="left" target\$="[[cell]]" on-keys-pressed="_onCellLeft">
+    <iron-a11y-keys
+      id="left"
+      keys="left"
+      target\$="[[cell]]"
+      on-keys-pressed="_onCellLeft"
+    >
     </iron-a11y-keys>
-    <iron-a11y-keys id="right" keys="right" target\$="[[cell]]" on-keys-pressed="_onCellRight">
+    <iron-a11y-keys
+      id="right"
+      keys="right"
+      target\$="[[cell]]"
+      on-keys-pressed="_onCellRight"
+    >
     </iron-a11y-keys>
-`,
+  `,
 
   is: "editable-table-editor-cell",
   listeners: { "bind-value-changed": "_onValueChanged" },

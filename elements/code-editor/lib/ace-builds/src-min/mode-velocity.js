@@ -1721,10 +1721,10 @@ define("ace/mode/doc_comment_highlight_rules", [
             : !r.tagName ||
               r.selfClosing ||
               this.voidElements.hasOwnProperty(r.tagName.toLowerCase())
-              ? ""
-              : this._findEndTagInLine(e, n, r.tagName, r.end.column)
-                ? ""
-                : "start"
+            ? ""
+            : this._findEndTagInLine(e, n, r.tagName, r.end.column)
+            ? ""
+            : "start"
           : this.getCommentFoldWidget(e, n);
       }),
         (this.getCommentFoldWidget = function(e, t) {
@@ -2814,16 +2814,16 @@ define("ace/mode/doc_comment_highlight_rules", [
               return r.hasOwnProperty(i)
                 ? "keyword"
                 : e.hasOwnProperty(i)
-                  ? "constant.language"
-                  : n.hasOwnProperty(i)
-                    ? "variable.language"
-                    : t.hasOwnProperty(i) || t.hasOwnProperty(i.substring(1))
-                      ? "support.function"
-                      : i == "debugger"
-                        ? "invalid.deprecated"
-                        : i.match(/^(\$[a-zA-Z_][a-zA-Z0-9_]*)$/)
-                          ? "variable"
-                          : "identifier";
+                ? "constant.language"
+                : n.hasOwnProperty(i)
+                ? "variable.language"
+                : t.hasOwnProperty(i) || t.hasOwnProperty(i.substring(1))
+                ? "support.function"
+                : i == "debugger"
+                ? "invalid.deprecated"
+                : i.match(/^(\$[a-zA-Z_][a-zA-Z0-9_]*)$/)
+                ? "variable"
+                : "identifier";
             },
             regex: "[a-zA-Z$#][a-zA-Z0-9_]*\\b"
           },
@@ -2859,16 +2859,16 @@ define("ace/mode/doc_comment_highlight_rules", [
                 return r.hasOwnProperty(i)
                   ? "keyword"
                   : e.hasOwnProperty(i)
-                    ? "constant.language"
-                    : n.hasOwnProperty(i)
-                      ? "variable.language"
-                      : t.hasOwnProperty(i) || t.hasOwnProperty(i.substring(1))
-                        ? "support.function"
-                        : i == "debugger"
-                          ? "invalid.deprecated"
-                          : i.match(/^(\$[a-zA-Z_$][a-zA-Z0-9_]*)$/)
-                            ? "variable"
-                            : "identifier";
+                  ? "constant.language"
+                  : n.hasOwnProperty(i)
+                  ? "variable.language"
+                  : t.hasOwnProperty(i) || t.hasOwnProperty(i.substring(1))
+                  ? "support.function"
+                  : i == "debugger"
+                  ? "invalid.deprecated"
+                  : i.match(/^(\$[a-zA-Z_$][a-zA-Z0-9_]*)$/)
+                  ? "variable"
+                  : "identifier";
               },
               regex: "[a-zA-Z_$][a-zA-Z0-9_$]*\\b"
             },

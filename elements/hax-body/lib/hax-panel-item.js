@@ -32,7 +32,7 @@ Polymer({
         --hax-panel-hover: var(--simple-colors-default-theme-light-green-1);
       }
       paper-button {
-        color: rgba(0,0,0,0.66);
+        color: rgba(0, 0, 0, 0.66);
         margin: 0;
         text-transform: none;
         background-color: #2e2e2e !important;
@@ -85,7 +85,7 @@ Polymer({
         color: var(--hax-panel-hover) !important;
       }
       paper-button[disabled] {
-        opacity: .5;
+        opacity: 0.5;
       }
       .flip-icon {
         transform: rotateY(180deg);
@@ -111,26 +111,29 @@ Polymer({
         margin-top: 8px;
         margin-left: 8px;
         border: solid #2196f3 2px;
-        background-color:#ffffff !important;
+        background-color: #ffffff !important;
         color: #2196f3;
-        text-transform:uppercase;
-        font-weight:800;
+        text-transform: uppercase;
+        font-weight: 800;
       }
       :host([light]) paper-button iron-icon {
         display: none;
       }
-      :host([light]) paper-button:hover{
+      :host([light]) paper-button:hover {
         border: solid #1e88e5 2px;
-        background-color:#f5f5f5 !important;
+        background-color: #f5f5f5 !important;
       }
     </style>
-    <paper-button disabled="[[disabled]]" data-voicecommand\$="[[voiceCommand]]">
+    <paper-button
+      disabled="[[disabled]]"
+      data-voicecommand\$="[[voiceCommand]]"
+    >
       <div class="button-inner">
         <iron-icon icon="[[icon]]" class\$="[[iconClass]]"></iron-icon>
         <div class="label">[[label]]</div>
       </div>
     </paper-button>
-`,
+  `,
 
   is: "hax-panel-item",
 

@@ -14,12 +14,12 @@ let LrndesignImagecarousel = Polymer({
       }
     </style>
     <fancy-carousel>
-  <img src="https://app-layout-assets.appspot.com/assets/bg1.jpg">
-  <img src="https://app-layout-assets.appspot.com/assets/bg2.jpg">
-  <img src="https://app-layout-assets.appspot.com/assets/bg3.jpg">
-  <img src="https://app-layout-assets.appspot.com/assets/bg4.jpg">
-</fancy-carousel>
-`,
+      <img src="https://app-layout-assets.appspot.com/assets/bg1.jpg" />
+      <img src="https://app-layout-assets.appspot.com/assets/bg2.jpg" />
+      <img src="https://app-layout-assets.appspot.com/assets/bg3.jpg" />
+      <img src="https://app-layout-assets.appspot.com/assets/bg4.jpg" />
+    </fancy-carousel>
+  `,
 
   is: "lrndesign-imagecarousel",
 

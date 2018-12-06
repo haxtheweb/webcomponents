@@ -22,14 +22,20 @@ export { SimplePickerOption };
 class SimplePickerOption extends PolymerElement {
   // render function
   static get template() {
-    return html`<style is="custom-style" include="lrn-shared-styles">
-  :host .label {
-    padding: 5px 10px;
-    @apply --simple-picker-option-label;
-  }
-</style>
-<iron-icon aria-hidden="true" hidden$="[[_hideIcon(icon)]]" icon$="[[icon]]"></iron-icon> 
-<span class$="[[_getSrOnly(hideOptionLabels)]]">[[title]]</span>`;
+    return html`
+      <style is="custom-style" include="lrn-shared-styles">
+        :host .label {
+          padding: 5px 10px;
+          @apply --simple-picker-option-label;
+        }
+      </style>
+      <iron-icon
+        aria-hidden="true"
+        hidden$="[[_hideIcon(icon)]]"
+        icon$="[[icon]]"
+      ></iron-icon>
+      <span class$="[[_getSrOnly(hideOptionLabels)]]">[[title]]</span>
+    `;
   }
 
   // properties available to the custom element for data binding

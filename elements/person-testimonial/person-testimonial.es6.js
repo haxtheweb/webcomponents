@@ -16,7 +16,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         height: 100%;
       }
       .image {
-        padding-right:5px;
+        padding-right: 5px;
       }
 
       iron-icon {
@@ -87,24 +87,37 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         .arrow_right {
           display: none;
         }
-        .name, .position {
+        .name,
+        .position {
           text-align: center;
         }
       }
     </style>
     <paper-card elevation="[[elevation]]">
       <div class\$="[[accentColorClass]] image">
-        <iron-image style\$="background-color: [[accentColor]];" src="[[image]]" sizing="cover" preload="" fade=""></iron-image>
+        <iron-image
+          style\$="background-color: [[accentColor]];"
+          src="[[image]]"
+          sizing="cover"
+          preload=""
+          fade=""
+        ></iron-image>
       </div>
       <div class\$="arrow_right [[accentColorClass]]"></div>
       <div class="wrap">
         <div class="testimonial">
-          <iron-icon id="quotestart" icon="persontestimonial:format-quote"></iron-icon>
+          <iron-icon
+            id="quotestart"
+            icon="persontestimonial:format-quote"
+          ></iron-icon>
           <slot></slot>
-          <iron-icon id="quoteend" icon="persontestimonial:format-quote"></iron-icon>
+          <iron-icon
+            id="quoteend"
+            icon="persontestimonial:format-quote"
+          ></iron-icon>
         </div>
         <div class="name">[[name]]</div>
         <div class="position">[[position]]</div>
       </div>
     </paper-card>
-`,is:"person-testimonial",behaviors:[HAXBehaviors.PropertiesBehaviors,MaterializeCSSBehaviors.ColorBehaviors],properties:{accentColor:{type:String,value:"#e65100"},accentColorClass:{type:String,reflectToAttribute:!0,computed:"_computeColorClass(accentColor)"},elevation:{type:Number,value:1,reflectToAttribute:!0},image:{type:String},name:{type:String},position:{type:String}},attached:function(){let props={canScale:!0,canPosition:!0,canEditSource:!0,gizmo:{title:"Testimonial",description:"A person saying a nice thing about us",icon:"editor:format-quote",color:"orange",groups:["Content","Presentation"],handles:[{type:"image",source:"image",title:"name",caption:"position"}],meta:{author:"EberlyODL / LRNWebComponents"}},settings:{quick:[{property:"image",title:"Image",description:"Adds image to this testimonial",inputMethod:"textfield",icon:"editor:insert-photo"},{property:"name",title:"Full Name",description:"Credit the person making the testimonial",inputMethod:"textfield",icon:"account-circle"},{property:"position",title:"Position or Job Title",description:"List the position and job title",inputMethod:"textfield",icon:"icons:work"},{property:"accentColor",title:"Accent color",description:"Select the color for the edge of the photo.",inputMethod:"colorpicker",icon:"editor:format-color-fill"}],configure:[{property:"image",title:"Image",description:"Adds image to testimonial",inputMethod:"textfield",icon:"editor:insert-photo"},{property:"accentColor",title:"Accent color",description:"Select the color for the edge of the photo.",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{slot:"",title:"User's testimonial:",description:"This is where you enter your testimonial.",inputMethod:"code-editor",required:!0},{property:"name",title:"Full Name",description:"Credit the person making the testimonial",inputMethod:"textfield",icon:"account-circle"},{property:"position",title:"Position or Job Title",description:"List the position and job title",inputMethod:"textfield",icon:"icons:work"}],advanced:[]}};this.setHaxProperties(props)},_computeColorClass:function(color){if(null!=color&&"#"==color.substring(0,1)){return this._colorTransform(color.toLowerCase(),"","")}}});export{PersonTestimonial};
+  `,is:"person-testimonial",behaviors:[HAXBehaviors.PropertiesBehaviors,MaterializeCSSBehaviors.ColorBehaviors],properties:{accentColor:{type:String,value:"#e65100"},accentColorClass:{type:String,reflectToAttribute:!0,computed:"_computeColorClass(accentColor)"},elevation:{type:Number,value:1,reflectToAttribute:!0},image:{type:String},name:{type:String},position:{type:String}},attached:function(){let props={canScale:!0,canPosition:!0,canEditSource:!0,gizmo:{title:"Testimonial",description:"A person saying a nice thing about us",icon:"editor:format-quote",color:"orange",groups:["Content","Presentation"],handles:[{type:"image",source:"image",title:"name",caption:"position"}],meta:{author:"EberlyODL / LRNWebComponents"}},settings:{quick:[{property:"image",title:"Image",description:"Adds image to this testimonial",inputMethod:"textfield",icon:"editor:insert-photo"},{property:"name",title:"Full Name",description:"Credit the person making the testimonial",inputMethod:"textfield",icon:"account-circle"},{property:"position",title:"Position or Job Title",description:"List the position and job title",inputMethod:"textfield",icon:"icons:work"},{property:"accentColor",title:"Accent color",description:"Select the color for the edge of the photo.",inputMethod:"colorpicker",icon:"editor:format-color-fill"}],configure:[{property:"image",title:"Image",description:"Adds image to testimonial",inputMethod:"textfield",icon:"editor:insert-photo"},{property:"accentColor",title:"Accent color",description:"Select the color for the edge of the photo.",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{slot:"",title:"User's testimonial:",description:"This is where you enter your testimonial.",inputMethod:"code-editor",required:!0},{property:"name",title:"Full Name",description:"Credit the person making the testimonial",inputMethod:"textfield",icon:"account-circle"},{property:"position",title:"Position or Job Title",description:"List the position and job title",inputMethod:"textfield",icon:"icons:work"}],advanced:[]}};this.setHaxProperties(props)},_computeColorClass:function(color){if(null!=color&&"#"==color.substring(0,1)){return this._colorTransform(color.toLowerCase(),"","")}}});export{PersonTestimonial};

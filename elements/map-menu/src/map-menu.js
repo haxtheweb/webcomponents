@@ -16,7 +16,7 @@ let MapMenu = Polymer({
   _template: html`
     <style>
       :host {
-        --map-menu-active-color: rgba(0,0,0, .1);
+        --map-menu-active-color: rgba(0, 0, 0, 0.1);
         display: block;
         overflow-y: scroll;
         position: relative;
@@ -25,8 +25,8 @@ let MapMenu = Polymer({
 
       #activeIndicator {
         background: var(--map-menu-active-color);
-        transition: all .3s ease-in-out;
-        position: absolute
+        transition: all 0.3s ease-in-out;
+        position: absolute;
       }
 
       map-menu-container {
@@ -35,7 +35,7 @@ let MapMenu = Polymer({
       }
 
       /* turn default active color if indicator is on */
-      :host([active-indicator]) map-menu-builder { 
+      :host([active-indicator]) map-menu-builder {
         --map-menu-active-color: transparent;
       }
     </style>
@@ -46,7 +46,7 @@ let MapMenu = Polymer({
       </map-menu-container>
     </div>
     <smooth-scroll id="smoothScroll"></smooth-scroll>
-`,
+  `,
 
   is: "map-menu",
 

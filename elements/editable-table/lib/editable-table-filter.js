@@ -28,7 +28,7 @@ Polymer({
         min-width: unset;
         display: inline-flex;
         justify-content: space-between;
-        align-items:center;
+        align-items: center;
         align-content: stretch;
         text-transform: unset;
       }
@@ -48,10 +48,10 @@ Polymer({
       }
       :host(:not([filtered])) .filtered,
       :host(:not([filtered]):not(:focus):not(:hover)) #filter,
-      :host(:not([filtered]):focus) #filter-off, 
+      :host(:not([filtered]):focus) #filter-off,
       :host(:not([filtered]):hover) #filter-off,
       :host([filtered]:not(:focus):not(:hover)) #filter-off,
-      :host([filtered]:focus) #filter, 
+      :host([filtered]:focus) #filter,
       :host([filtered]:hover) #filter {
         display: none;
       }
@@ -64,7 +64,7 @@ Polymer({
       <iron-icon id="filter-off" icon="editable-table:filter-off"></iron-icon>
     </paper-button>
     <paper-tooltip for="button">Toggle filter for "[[text]]"</paper-tooltip>
-`,
+  `,
 
   is: "editable-table-filter",
 

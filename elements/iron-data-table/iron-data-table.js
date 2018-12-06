@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { IronResizableBehavior } from "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 import "./lib/data-table-column.js";
@@ -134,7 +135,8 @@ let IronDataTable = Polymer({
       }
 
       #header.scrolled {
-        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06), 0 2px 0 rgba(0, 0, 0, 0.075), 0 3px 0 rgba(0, 0, 0, 0.05), 0 4px 0 rgba(0, 0, 0, 0.015);
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06), 0 2px 0 rgba(0, 0, 0, 0.075),
+          0 3px 0 rgba(0, 0, 0, 0.05), 0 4px 0 rgba(0, 0, 0, 0.015);
       }
 
       #list {
@@ -163,25 +165,97 @@ let IronDataTable = Polymer({
     <div id="container">
       <div id="header">
         <data-table-row header="">
-          <data-table-checkbox header="" hidden\$="[[!multiSelection]]" on-tap="_toggleSelectAll" checked="[[_isSelectAllChecked(selectedItems.length, selectedItems.inverted, size)]]" indeterminate="[[_isSelectAllIndeterminate(selectedItems.length, size)]]"></data-table-checkbox>
+          <data-table-checkbox
+            header=""
+            hidden\$="[[!multiSelection]]"
+            on-tap="_toggleSelectAll"
+            checked="[[_isSelectAllChecked(selectedItems.length, selectedItems.inverted, size)]]"
+            indeterminate="[[_isSelectAllIndeterminate(selectedItems.length, size)]]"
+          ></data-table-checkbox>
           <template is="dom-repeat" items="[[columns]]" as="column">
-            <data-table-cell header="" align-right="[[column.alignRight]]" before-bind="[[beforeCellBind]]" column="[[column]]" flex="[[column.flex]]" hidden="[[column.hidden]]" order="[[column.order]]" table="[[_this]]" template="[[column.headerTemplate]]" width="[[column.width]]">
-              <data-table-column-sort sort-order="[[sortOrder]]" path="[[column.sortBy]]" on-sort-direction-changed="_sortDirectionChanged" hidden\$="[[!column.sortBy]]"></data-table-column-sort>
+            <data-table-cell
+              header=""
+              align-right="[[column.alignRight]]"
+              before-bind="[[beforeCellBind]]"
+              column="[[column]]"
+              flex="[[column.flex]]"
+              hidden="[[column.hidden]]"
+              order="[[column.order]]"
+              table="[[_this]]"
+              template="[[column.headerTemplate]]"
+              width="[[column.width]]"
+            >
+              <data-table-column-sort
+                sort-order="[[sortOrder]]"
+                path="[[column.sortBy]]"
+                on-sort-direction-changed="_sortDirectionChanged"
+                hidden\$="[[!column.sortBy]]"
+              ></data-table-column-sort>
             </data-table-cell>
           </template>
         </data-table-row>
       </div>
 
-      <iron-list id="list" as="item" items="[[_cachedItems]]" on-scroll="_onVerticalScroll">
+      <iron-list
+        id="list"
+        as="item"
+        items="[[_cachedItems]]"
+        on-scroll="_onVerticalScroll"
+      >
         <template>
           <div class="item">
-            <data-table-row before-bind="[[beforeRowBind]]" even\$="[[!_isEven(index)]]" expanded="[[_isExpanded(item, _expandedItems, _expandedItems.*)]]" index="[[index]]" item="[[item]]" tabindex="-1" selected="[[_isSelected(item, selectedItems, selectedItems.*)]]">
-              <data-table-checkbox hidden\$="[[!multiSelection]]" tabindex="0" checked="[[_isSelected(item, selectedItems, selectedItems.*)]]" on-tap="_onCheckBoxTap"></data-table-checkbox>
-              <template is="dom-repeat" items="[[columns]]" as="column" index-as="colIndex">
-                <data-table-cell template="[[column.template]]" table="[[_this]]" align-right="[[column.alignRight]]" column="[[column]]" expanded="[[_isExpanded(item, _expandedItems, _expandedItems.*)]]" flex="[[column.flex]]" hidden="[[column.hidden]]" index="[[index]]" item="[[item]]" on-click="_onCellClick" order="[[column.order]]" selected="[[_isSelected(item, selectedItems, selectedItems.*)]]" width="[[column.width]]" before-bind="[[beforeCellBind]]"></data-table-cell>
+            <data-table-row
+              before-bind="[[beforeRowBind]]"
+              even\$="[[!_isEven(index)]]"
+              expanded="[[_isExpanded(item, _expandedItems, _expandedItems.*)]]"
+              index="[[index]]"
+              item="[[item]]"
+              tabindex="-1"
+              selected="[[_isSelected(item, selectedItems, selectedItems.*)]]"
+            >
+              <data-table-checkbox
+                hidden\$="[[!multiSelection]]"
+                tabindex="0"
+                checked="[[_isSelected(item, selectedItems, selectedItems.*)]]"
+                on-tap="_onCheckBoxTap"
+              ></data-table-checkbox>
+              <template
+                is="dom-repeat"
+                items="[[columns]]"
+                as="column"
+                index-as="colIndex"
+              >
+                <data-table-cell
+                  template="[[column.template]]"
+                  table="[[_this]]"
+                  align-right="[[column.alignRight]]"
+                  column="[[column]]"
+                  expanded="[[_isExpanded(item, _expandedItems, _expandedItems.*)]]"
+                  flex="[[column.flex]]"
+                  hidden="[[column.hidden]]"
+                  index="[[index]]"
+                  item="[[item]]"
+                  on-click="_onCellClick"
+                  order="[[column.order]]"
+                  selected="[[_isSelected(item, selectedItems, selectedItems.*)]]"
+                  width="[[column.width]]"
+                  before-bind="[[beforeCellBind]]"
+                ></data-table-cell>
               </template>
-              <template is="dom-if" if="[[_isExpanded(item, _expandedItems)]]" on-dom-change="_updateSizeForItem">
-                <data-table-row-detail index="[[index]]" item="[[item]]" expanded="[[_isExpanded(item, _expandedItems, _expandedItems.*)]]" selected="[[_isSelected(item, selectedItems, selectedItems.*)]]" before-bind="[[beforeDetailsBind]]" table="[[_this]]" template="[[rowDetail]]"></data-table-row-detail>
+              <template
+                is="dom-if"
+                if="[[_isExpanded(item, _expandedItems)]]"
+                on-dom-change="_updateSizeForItem"
+              >
+                <data-table-row-detail
+                  index="[[index]]"
+                  item="[[item]]"
+                  expanded="[[_isExpanded(item, _expandedItems, _expandedItems.*)]]"
+                  selected="[[_isSelected(item, selectedItems, selectedItems.*)]]"
+                  before-bind="[[beforeDetailsBind]]"
+                  table="[[_this]]"
+                  template="[[rowDetail]]"
+                ></data-table-row-detail>
               </template>
             </data-table-row>
           </div>
@@ -191,7 +265,7 @@ let IronDataTable = Polymer({
     <paper-spinner-lite active=""></paper-spinner-lite>
     <slot name="data-table-column"></slot>
     <slot name="template[is=row-detail]"></slot>
-`,
+  `,
 
   is: "iron-data-table",
 
@@ -704,16 +778,14 @@ let IronDataTable = Polymer({
     // reset header width first to make the cells and scroll width to reset their widths.
     this.$.container.style.width = "";
 
-    this.async(
-      function() {
-        this.$.container.style.width =
-          Math.min(this.scrollWidth, this.clientWidth + this.scrollLeft) + "px";
+    async.microTask.run(() => {
+      this.$.container.style.width =
+        Math.min(this.scrollWidth, this.clientWidth + this.scrollLeft) + "px";
 
-        // add scrollbar width as padding
-        this.$.header.style.paddingRight =
-          this.$.list.offsetWidth - this.$.list.clientWidth + "px";
-      }.bind(this)
-    );
+      // add scrollbar width as padding
+      this.$.header.style.paddingRight =
+        this.$.list.offsetWidth - this.$.list.clientWidth + "px";
+    });
   },
 
   _onHorizontalScroll: function() {

@@ -1221,10 +1221,10 @@ define("ace/mode/slim_highlight_rules", [
             : !r.tagName ||
               r.selfClosing ||
               this.voidElements.hasOwnProperty(r.tagName.toLowerCase())
-              ? ""
-              : this._findEndTagInLine(e, n, r.tagName, r.end.column)
-                ? ""
-                : "start"
+            ? ""
+            : this._findEndTagInLine(e, n, r.tagName, r.end.column)
+            ? ""
+            : "start"
           : this.getCommentFoldWidget(e, n);
       }),
         (this.getCommentFoldWidget = function(e, t) {
@@ -3937,16 +3937,16 @@ define("ace/mode/slim_highlight_rules", [
                 return e.hasOwnProperty(i.toLowerCase())
                   ? "support.type"
                   : s.hasOwnProperty(i)
-                    ? "keyword"
-                    : n.hasOwnProperty(i)
-                      ? "constant.language"
-                      : t.hasOwnProperty(i)
-                        ? "support.function"
-                        : r.hasOwnProperty(i.toLowerCase())
-                          ? "support.constant.color"
-                          : o.hasOwnProperty(i.toLowerCase())
-                            ? "variable.language"
-                            : "text";
+                  ? "keyword"
+                  : n.hasOwnProperty(i)
+                  ? "constant.language"
+                  : t.hasOwnProperty(i)
+                  ? "support.function"
+                  : r.hasOwnProperty(i.toLowerCase())
+                  ? "support.constant.color"
+                  : o.hasOwnProperty(i.toLowerCase())
+                  ? "variable.language"
+                  : "text";
               },
               regex: "\\-?[@a-z_][@a-z0-9_\\-]*"
             },

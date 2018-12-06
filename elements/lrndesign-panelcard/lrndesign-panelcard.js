@@ -20,12 +20,12 @@ let LrndesignPanelcard = Polymer({
         display: inline-block;
         position: relative;
         box-sizing: border-box;
-        --secondary-text-color: #FFFFFF;
-        --paper-input-container-color: #FFFFFF;
+        --secondary-text-color: #ffffff;
+        --paper-input-container-color: #ffffff;
       }
 
       .card-panel {
-        transition: box-shadow .25s;
+        transition: box-shadow 0.25s;
         padding: 24px;
         margin: 0;
         border-radius: 2px;
@@ -41,13 +41,11 @@ let LrndesignPanelcard = Polymer({
       <paper-card elevation="[[elevation]]">
         <div class\$="card-panel [[color]]">
           <h3 class\$="[[textColor]]">[[title]]</h3>
-          <span class\$="[[textColor]]">
-            <slot></slot>
-          </span>
+          <span class\$="[[textColor]]"> <slot></slot> </span>
         </div>
       </paper-card>
     </aside>
-`,
+  `,
 
   is: "lrndesign-panelcard",
 

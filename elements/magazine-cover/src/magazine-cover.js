@@ -28,28 +28,28 @@ let MagazineCover = Polymer({
         display: block;
         background-color: #222222;
         overflow: hidden;
-        --magazine-cover-text-color: #EEEEEE;
+        --magazine-cover-text-color: #eeeeee;
       }
       .overlay {
         left: 0;
         right: 0;
         min-height: 30vh;
         margin: -38vh 0 0 0;
-        background-color:rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.8);
         padding: 32px;
         position: relative;
       }
       #image {
-        opacity: .5;
+        opacity: 0.5;
         filter: alpha(opacity=50);
         transition: opacity 0.3s linear;
-        width:100%;
-        height:80vh;
+        width: 100%;
+        height: 80vh;
         background-color: #222222;
         @apply --magazine-cover-image;
       }
       #image:hover {
-        opacity: .9;
+        opacity: 0.9;
         filter: alpha(opacity=90);
       }
       #header {
@@ -91,10 +91,11 @@ let MagazineCover = Polymer({
         width: 100%;
         margin: 0;
       }
-      #action:hover,#action:focus {
-        border-color: #FFFFFF;
-        color: #FFFFFF;
-        background-color:rgba(255, 255, 255, 0.2);
+      #action:hover,
+      #action:focus {
+        border-color: #ffffff;
+        color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.2);
       }
       #actionlink {
         color: var(--magazine-cover-text-color);
@@ -137,9 +138,15 @@ let MagazineCover = Polymer({
           margin: -50vh 0 0 0;
           padding: 16px;
         }
-      }      
+      }
     </style>
-    <iron-image src="[[image]]" preload="" fade="" sizing="cover" id="image"></iron-image>
+    <iron-image
+      src="[[image]]"
+      preload=""
+      fade=""
+      sizing="cover"
+      id="image"
+    ></iron-image>
     <div class="overlay">
       <h2 id="header" hidden$="[[!header]]">[[header]]</h2>
       <div id="subheader" hidden$="[[!subheader]]">[[subheader]]</div>
@@ -149,11 +156,17 @@ let MagazineCover = Polymer({
       </div>
       <a tabindex="-1" href$="[[link]]" id="actionlink" on-tap="_linkTapped">
         <paper-button raised="" id="action">
-        <span id="label">[[action]]<iron-icon id="icon" icon="[[icon]]" hidden$="[[!icon]]"></iron-icon></span>
+          <span id="label"
+            >[[action]]<iron-icon
+              id="icon"
+              icon="[[icon]]"
+              hidden$="[[!icon]]"
+            ></iron-icon
+          ></span>
         </paper-button>
       </a>
     </div>
-`,
+  `,
 
   is: "magazine-cover",
 

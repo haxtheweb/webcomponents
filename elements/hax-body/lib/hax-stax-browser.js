@@ -19,8 +19,8 @@ Polymer({
       }
       hax-stax-browser-item {
         margin: 10px;
-        -webkit-transition: .3s all linear;
-        transition: .3s all linear;
+        -webkit-transition: 0.3s all linear;
+        transition: 0.3s all linear;
       }
       #ironlist {
         min-height: 50vh;
@@ -29,11 +29,22 @@ Polymer({
     <iron-list id="ironlist" items="[[__staxList]]" as="stax" grid="">
       <template>
         <div class="stax-container">
-          <hax-stax-browser-item index="[[stax.index]]" title="[[stax.details.title]]" tag="[[stax.details.tag]]" image="[[stax.details.image]]" author="[[stax.details.author]]" teaser="[[stax.details.teaser]]" description="[[stax.details.description]]" examples="[[stax.details.examples]]" status="[[stax.details.status]]" stax="[[stax.stax]]"></hax-stax-browser-item>
+          <hax-stax-browser-item
+            index="[[stax.index]]"
+            title="[[stax.details.title]]"
+            tag="[[stax.details.tag]]"
+            image="[[stax.details.image]]"
+            author="[[stax.details.author]]"
+            teaser="[[stax.details.teaser]]"
+            description="[[stax.details.description]]"
+            examples="[[stax.details.examples]]"
+            status="[[stax.details.status]]"
+            stax="[[stax.stax]]"
+          ></hax-stax-browser-item>
         </div>
       </template>
     </iron-list>
-`,
+  `,
 
   is: "hax-stax-browser",
 

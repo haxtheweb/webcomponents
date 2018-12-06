@@ -467,11 +467,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 196,
+              "line": 204,
               "column": 4
             },
             "end": {
-              "line": 199,
+              "line": 207,
               "column": 5
             }
           },
@@ -489,11 +489,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 203,
+              "line": 211,
               "column": 4
             },
             "end": {
-              "line": 206,
+              "line": 214,
               "column": 5
             }
           },
@@ -511,11 +511,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 210,
+              "line": 218,
               "column": 4
             },
             "end": {
-              "line": 213,
+              "line": 221,
               "column": 5
             }
           },
@@ -533,11 +533,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 217,
+              "line": 225,
               "column": 4
             },
             "end": {
-              "line": 220,
+              "line": 228,
               "column": 5
             }
           },
@@ -555,11 +555,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 224,
+              "line": 232,
               "column": 4
             },
             "end": {
-              "line": 227,
+              "line": 235,
               "column": 5
             }
           },
@@ -577,11 +577,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 231,
+              "line": 239,
               "column": 4
             },
             "end": {
-              "line": 235,
+              "line": 243,
               "column": 5
             }
           },
@@ -599,11 +599,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 239,
+              "line": 247,
               "column": 4
             },
             "end": {
-              "line": 244,
+              "line": 252,
               "column": 5
             }
           },
@@ -623,11 +623,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 247,
+              "line": 255,
               "column": 2
             },
             "end": {
-              "line": 255,
+              "line": 263,
               "column": 3
             }
           },
@@ -652,7 +652,7 @@
           "column": 8
         },
         "end": {
-          "line": 256,
+          "line": 264,
           "column": 1
         }
       },
@@ -664,11 +664,11 @@
           "description": "Custom small breakpoint",
           "sourceRange": {
             "start": {
-              "line": 196,
+              "line": 204,
               "column": 4
             },
             "end": {
-              "line": 199,
+              "line": 207,
               "column": 5
             }
           },
@@ -680,11 +680,11 @@
           "description": "Custom medium breakpoint",
           "sourceRange": {
             "start": {
-              "line": 203,
+              "line": 211,
               "column": 4
             },
             "end": {
-              "line": 206,
+              "line": 214,
               "column": 5
             }
           },
@@ -696,11 +696,11 @@
           "description": "Custom large breakpoint",
           "sourceRange": {
             "start": {
-              "line": 210,
+              "line": 218,
               "column": 4
             },
             "end": {
-              "line": 213,
+              "line": 221,
               "column": 5
             }
           },
@@ -712,11 +712,11 @@
           "description": "Custom extra-large breakpoint",
           "sourceRange": {
             "start": {
-              "line": 217,
+              "line": 225,
               "column": 4
             },
             "end": {
-              "line": 220,
+              "line": 228,
               "column": 5
             }
           },
@@ -728,11 +728,11 @@
           "description": "the gutter-level for the columns from 0-4",
           "sourceRange": {
             "start": {
-              "line": 224,
+              "line": 232,
               "column": 4
             },
             "end": {
-              "line": 227,
+              "line": 235,
               "column": 5
             }
           },
@@ -744,11 +744,11 @@
           "description": "make responsive based on a container instead of the window",
           "sourceRange": {
             "start": {
-              "line": 231,
+              "line": 239,
               "column": 4
             },
             "end": {
-              "line": 235,
+              "line": 243,
               "column": 5
             }
           },
@@ -760,11 +760,11 @@
           "description": "screen size: xs, sm, md, lg, or xl",
           "sourceRange": {
             "start": {
-              "line": 239,
+              "line": 247,
               "column": 4
             },
             "end": {
-              "line": 244,
+              "line": 252,
               "column": 5
             }
           },

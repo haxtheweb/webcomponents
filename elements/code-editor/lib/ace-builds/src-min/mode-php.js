@@ -1000,20 +1000,20 @@ define("ace/mode/doc_comment_highlight_rules", [
                 return n.hasOwnProperty(e)
                   ? "keyword"
                   : o.hasOwnProperty(e)
-                    ? "constant.language"
-                    : u.hasOwnProperty(e)
-                      ? "variable.language"
-                      : l.hasOwnProperty(e)
-                        ? "invalid.illegal"
-                        : t.hasOwnProperty(e)
-                          ? "support.function"
-                          : e == "debugger"
-                            ? "invalid.deprecated"
-                            : e.match(
-                                /^(\$[a-zA-Z_\x7f-\uffff][a-zA-Z0-9_\x7f-\uffff]*|self|parent)$/
-                              )
-                              ? "variable"
-                              : "identifier";
+                  ? "constant.language"
+                  : u.hasOwnProperty(e)
+                  ? "variable.language"
+                  : l.hasOwnProperty(e)
+                  ? "invalid.illegal"
+                  : t.hasOwnProperty(e)
+                  ? "support.function"
+                  : e == "debugger"
+                  ? "invalid.deprecated"
+                  : e.match(
+                      /^(\$[a-zA-Z_\x7f-\uffff][a-zA-Z0-9_\x7f-\uffff]*|self|parent)$/
+                    )
+                  ? "variable"
+                  : "identifier";
               },
               regex: /[a-zA-Z_$\x7f-\uffff][a-zA-Z0-9_\x7f-\uffff]*/
             },
@@ -10951,10 +10951,10 @@ define("ace/mode/doc_comment_highlight_rules", [
             : !r.tagName ||
               r.selfClosing ||
               this.voidElements.hasOwnProperty(r.tagName.toLowerCase())
-              ? ""
-              : this._findEndTagInLine(e, n, r.tagName, r.end.column)
-                ? ""
-                : "start"
+            ? ""
+            : this._findEndTagInLine(e, n, r.tagName, r.end.column)
+            ? ""
+            : "start"
           : this.getCommentFoldWidget(e, n);
       }),
         (this.getCommentFoldWidget = function(e, t) {

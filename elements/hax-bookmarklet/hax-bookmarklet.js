@@ -14,10 +14,14 @@ let HaxBookmarklet = Polymer({
         font-size: 16px;
       }
     </style>
-    <cms-hax open-default app-store-connection="[[appStoreConnection]]" body-offset-left>
+    <cms-hax
+      open-default
+      app-store-connection="[[appStoreConnection]]"
+      body-offset-left
+    >
       <slot></slot>
     </cms-hax>
-`,
+  `,
 
   is: "hax-bookmarklet",
 

@@ -31,18 +31,19 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
        * An easy workaround is to use an :after pseudo element instead. */
       .icon:after {
         @apply --layout-fit;
-        content: '';
+        content: "";
         -webkit-transition: -webkit-transform 0.2s;
-        transition: transform .2s;
+        transition: transform 0.2s;
         z-index: 0;
       }
 
-      .icon:hover, .icon:focus {
+      .icon:hover,
+      .icon:focus {
         -webkit-transform: scale(1.8, 1.8);
         transform: scale(1.8, 1.8);
         outline: none;
         z-index: 1;
-        background-color: #FFFFFF;
+        background-color: #ffffff;
         border-radius: 0;
         border: 1px solid #888888;
         color: orange !important;
@@ -53,11 +54,11 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
           margin: 0;
           padding: 0;
           min-height: 0;
-        };
+        }
 
         --paper-item-focused-before: {
           opacity: 0;
-        };
+        }
       }
 
       paper-listbox {
@@ -127,11 +128,33 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         color: var(--google-blue-700);
       }
     </style>
-    <paper-menu-button id="iconpicker" on-tap="_onOpen" vertical-align="[[verticalAlign]]" horizontal-align="[[horizontalAlign]]" opened="{{opened}}">
-      <paper-icon-button id="iconButton" icon="swatch:perm-media" class="dropdown-trigger" alt="icon picker" noink$="[[noink]]" slot="dropdown-trigger"></paper-icon-button>
-      <iron-list grid items="[[renderIconList]]" id="container" slot="dropdown-content">
+    <paper-menu-button
+      id="iconpicker"
+      on-tap="_onOpen"
+      vertical-align="[[verticalAlign]]"
+      horizontal-align="[[horizontalAlign]]"
+      opened="{{opened}}"
+    >
+      <paper-icon-button
+        id="iconButton"
+        icon="swatch:perm-media"
+        class="dropdown-trigger"
+        alt="icon picker"
+        noink$="[[noink]]"
+        slot="dropdown-trigger"
+      ></paper-icon-button>
+      <iron-list
+        grid
+        items="[[renderIconList]]"
+        id="container"
+        slot="dropdown-content"
+      >
         <template>
-          <paper-item on-tap="_onIconTap" class$="icon-group-[[item.index]] icon" value="[[item.icon]]">
+          <paper-item
+            on-tap="_onIconTap"
+            class$="icon-group-[[item.index]] icon"
+            value="[[item.icon]]"
+          >
             <iron-icon icon="[[item.icon]]" value="[[item.icon]]"></iron-icon>
           </paper-item>
         </template>
@@ -140,5 +163,10 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
     <paper-tooltip for="iconpicker" position="bottom" offset="14">
       [[iconText]]
     </paper-tooltip>
-    <iron-a11y-keys target="[[iconpicker]]" keys="escape" on-keys-pressed="close" stop-keyboard-event-propagation></iron-a11y-keys>
-`,is:"paper-icon-picker",properties:{opened:{type:Boolean},icon:{type:String,notify:!0,observer:"_iconChanged"},iconText:{type:String,computed:"_computedIconText(icon)"},iconList:{type:Array,notify:!0,value:function(){return[]}},renderIconList:{type:Array,computed:"_computeRenderIconList(iconList)"},columnCount:{type:Number,value:8},maxRows:{type:Number,value:6},horizontalAlign:{type:String,value:"left",reflectToAttribute:!0},verticalAlign:{type:String,value:"top",reflectToAttribute:!0},noink:{type:Boolean}},_onOpen:function(e){setTimeout(()=>{try{this.shadowRoot.querySelector("paper-item").focus()}catch(error){}},500)},close:function(){this.opened=!1},_computeRenderIconList:function(list){var renderList=[],item={};for(var i in list){item={};if(typeof list[i].icon===typeof void 0){item.icon=list[i]}else{item.icon=list[i].icon}if(typeof list[i].index===typeof void 0){item.index=0}else{item.index=list[i].index}renderList.push(item)}return renderList},_computedIconText:function(icon){if(""==icon){return"Select an icon"}return icon},created:function(){this._renderedIcons=!1},attached:function(){const iconSets=new IronMeta({type:"iconset"});if(0===this.iconList.length&&typeof iconSets!==typeof void 0&&iconSets.list&&iconSets.list.length){var iconList=[],index=0;iconSets.list.forEach(function(item){index++;item.getIconNames().forEach(icon=>{iconList.push({icon:icon,index:index})})});this.set("iconList",iconList)}var sizeOfAIconDiv;if(window.ShadyCSS){sizeOfAIconDiv=ShadyCSS.getComputedStyleValue(this,"--paper-icon-picker-icon-size")}else{sizeOfAIconDiv=getComputedStyle(this).getPropertyValue("--paper-icon-picker-icon-size")}if(!sizeOfAIconDiv||""==sizeOfAIconDiv){sizeOfAIconDiv=26}else{sizeOfAIconDiv=sizeOfAIconDiv.replace("px","")}var rowCount=Math.round(this.iconList.length/this.columnCount)+1;if(rowCount>this.maxRows){rowCount=this.maxRows}this.$.container.style.height=rowCount*sizeOfAIconDiv+"px";this.$.container.style.width=this.columnCount*sizeOfAIconDiv+"px"},_addOverflowClass:function(){this.$.container.toggleClass("opened",!0)},_removeOverflowClass:function(){this.$.container.toggleClass("opened",!1)},_onIconTap:function(e){this.icon=e.target.value;this.fire("icon-picker-selected",{icon:this.icon});this.$.container.fire("iron-select",this.icon);this.close()},_iconChanged:function(){if(this.icon){this.$.iconButton.icon=this.icon}else{this.$.iconButton.icon="swatch:perm-media"}}});export{PaperIconPicker};
+    <iron-a11y-keys
+      target="[[iconpicker]]"
+      keys="escape"
+      on-keys-pressed="close"
+      stop-keyboard-event-propagation
+    ></iron-a11y-keys>
+  `,is:"paper-icon-picker",properties:{opened:{type:Boolean},icon:{type:String,notify:!0,observer:"_iconChanged"},iconText:{type:String,computed:"_computedIconText(icon)"},iconList:{type:Array,notify:!0,value:function(){return[]}},renderIconList:{type:Array,computed:"_computeRenderIconList(iconList)"},columnCount:{type:Number,value:8},maxRows:{type:Number,value:6},horizontalAlign:{type:String,value:"left",reflectToAttribute:!0},verticalAlign:{type:String,value:"top",reflectToAttribute:!0},noink:{type:Boolean}},_onOpen:function(e){setTimeout(()=>{try{this.shadowRoot.querySelector("paper-item").focus()}catch(error){}},500)},close:function(){this.opened=!1},_computeRenderIconList:function(list){var renderList=[],item={};for(var i in list){item={};if(typeof list[i].icon===typeof void 0){item.icon=list[i]}else{item.icon=list[i].icon}if(typeof list[i].index===typeof void 0){item.index=0}else{item.index=list[i].index}renderList.push(item)}return renderList},_computedIconText:function(icon){if(""==icon){return"Select an icon"}return icon},created:function(){this._renderedIcons=!1},attached:function(){const iconSets=new IronMeta({type:"iconset"});if(0===this.iconList.length&&typeof iconSets!==typeof void 0&&iconSets.list&&iconSets.list.length){var iconList=[],index=0;iconSets.list.forEach(function(item){index++;item.getIconNames().forEach(icon=>{iconList.push({icon:icon,index:index})})});this.set("iconList",iconList)}var sizeOfAIconDiv;if(window.ShadyCSS){sizeOfAIconDiv=ShadyCSS.getComputedStyleValue(this,"--paper-icon-picker-icon-size")}else{sizeOfAIconDiv=getComputedStyle(this).getPropertyValue("--paper-icon-picker-icon-size")}if(!sizeOfAIconDiv||""==sizeOfAIconDiv){sizeOfAIconDiv=26}else{sizeOfAIconDiv=sizeOfAIconDiv.replace("px","")}var rowCount=Math.round(this.iconList.length/this.columnCount)+1;if(rowCount>this.maxRows){rowCount=this.maxRows}this.$.container.style.height=rowCount*sizeOfAIconDiv+"px";this.$.container.style.width=this.columnCount*sizeOfAIconDiv+"px"},_addOverflowClass:function(){this.$.container.toggleClass("opened",!0)},_removeOverflowClass:function(){this.$.container.toggleClass("opened",!1)},_onIconTap:function(e){this.icon=e.target.value;this.fire("icon-picker-selected",{icon:this.icon});this.$.container.fire("iron-select",this.icon);this.close()},_iconChanged:function(){if(this.icon){this.$.iconButton.icon=this.icon}else{this.$.iconButton.icon="swatch:perm-media"}}});export{PaperIconPicker};

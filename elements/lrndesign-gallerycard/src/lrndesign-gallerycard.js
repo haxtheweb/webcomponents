@@ -14,14 +14,14 @@ let LrndesignGallerycard = Polymer({
   _template: html`
     <style include="materializecss-styles"></style>
     <style>
-       :host {
+      :host {
         display: inline-flex;
       }
       :host([size="micro"]) {
-        transform: scale(.5);
+        transform: scale(0.5);
       }
       :host([size="small"]) {
-        transform: scale(.8);
+        transform: scale(0.8);
       }
 
       paper-card {
@@ -35,7 +35,7 @@ let LrndesignGallerycard = Polymer({
         border-radius: 0 0 4px 4px;
         padding: 0 8px;
       }
-      .card-actions .card-action-details{
+      .card-actions .card-action-details {
         display: inline-block;
         vertical-align: middle;
         vertical-align: -webkit-baseline-middle;
@@ -44,7 +44,7 @@ let LrndesignGallerycard = Polymer({
       #avatar {
         display: inline-block;
         vertical-align: text-top;
-        transform: scale(.8);
+        transform: scale(0.8);
       }
 
       .card-control-height {
@@ -52,7 +52,7 @@ let LrndesignGallerycard = Polymer({
       }
 
       [elevation="0"] {
-        border: solid 1px #EEEEEE;
+        border: solid 1px #eeeeee;
       }
 
       .text-right {
@@ -123,13 +123,23 @@ let LrndesignGallerycard = Polymer({
       .inline {
         display: inline;
       }
-
     </style>
     <paper-card elevation="[[elevation]]">
       <div class="card-content card-control-height card-control-center">
         <div class="submission-preview">
-          <iron-icon class="project-icon" icon="[[icon]]" hidden\$="[[!icon]]"></iron-icon>
-          <iron-image style="width:100%; height:100%; background-color: lightgray;" sizing="cover" preload="" fade="" src="[[image]]" hidden\$="[[!image]]"></iron-image>
+          <iron-icon
+            class="project-icon"
+            icon="[[icon]]"
+            hidden\$="[[!icon]]"
+          ></iron-icon>
+          <iron-image
+            style="width:100%; height:100%; background-color: lightgray;"
+            sizing="cover"
+            preload=""
+            fade=""
+            src="[[image]]"
+            hidden\$="[[!image]]"
+          ></iron-image>
         </div>
         <div class="submission-info">
           <div class="divider"></div>
@@ -137,14 +147,18 @@ let LrndesignGallerycard = Polymer({
         </div>
       </div>
       <div class="card-actions">
-        <lrndesign-avatar id="avatar" label="[[author.name]]" src="[[author.avatar]]"></lrndesign-avatar>
+        <lrndesign-avatar
+          id="avatar"
+          label="[[author.name]]"
+          src="[[author.avatar]]"
+        ></lrndesign-avatar>
         <div class="card-action-details">
           <span class="text-left author">[[author.display_name]]</span>
           <span class="comments text-right">Comments: [[comments]]</span>
         </div>
       </div>
     </paper-card>
-`,
+  `,
 
   is: "lrndesign-gallerycard",
 

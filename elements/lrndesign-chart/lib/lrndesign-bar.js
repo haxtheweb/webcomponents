@@ -22,9 +22,24 @@ Polymer({
         display: block;
       }
     </style>
-    <iron-ajax id="datasource" url="{{dataSource}}" handle-as="text" last-response="{{rawData}}" on-response="handleResponse"></iron-ajax>
-    <chartist-render id="chartist" type="bar" scale\$="[[scale]]" chart-title\$="[[chartTitle]]" chart-desc\$="[[chartDesc]]" data\$="[[data]]" options\$="{{options}}" responsive-options\$="[[responsiveOptions]]"></chartist-render>
-`,
+    <iron-ajax
+      id="datasource"
+      url="{{dataSource}}"
+      handle-as="text"
+      last-response="{{rawData}}"
+      on-response="handleResponse"
+    ></iron-ajax>
+    <chartist-render
+      id="chartist"
+      type="bar"
+      scale\$="[[scale]]"
+      chart-title\$="[[chartTitle]]"
+      chart-desc\$="[[chartDesc]]"
+      data\$="[[data]]"
+      options\$="{{options}}"
+      responsive-options\$="[[responsiveOptions]]"
+    ></chartist-render>
+  `,
 
   is: "lrndesign-bar",
   behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

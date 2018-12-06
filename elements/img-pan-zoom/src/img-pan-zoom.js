@@ -50,7 +50,7 @@ let ImgPanZoom = Polymer({
         z-index: 1;
         height: 70px;
         width: 70px;
-        --paper-spinner-color: var(--img-pan-zoom-spinner-color, #2196F3);
+        --paper-spinner-color: var(--img-pan-zoom-spinner-color, #2196f3);
         --paper-spinner-stroke-width: var(--img-pan-zoom-spinner-width, 5px);
         @apply --img-pan-zoom-spinner;
       }
@@ -61,13 +61,20 @@ let ImgPanZoom = Polymer({
 
     <!-- Only preload regular images -->
     <template is="dom-if" if="[[!dzi]]">
-      <paper-spinner-lite hidden$="[[hideSpinner]]" active="[[loading]]"></paper-spinner-lite>
-      <img-loader loaded="{{loaded}}" loading="{{loading}}" src="[[src]]"></img-loader>
+      <paper-spinner-lite
+        hidden$="[[hideSpinner]]"
+        active="[[loading]]"
+      ></paper-spinner-lite>
+      <img-loader
+        loaded="{{loaded}}"
+        loading="{{loading}}"
+        src="[[src]]"
+      ></img-loader>
     </template>
 
     <!-- Openseadragon -->
     <div id="viewer"></div>
-`,
+  `,
 
   is: "img-pan-zoom",
 

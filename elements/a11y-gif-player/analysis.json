@@ -21,7 +21,7 @@
           "column": 20
         },
         "end": {
-          "line": 225,
+          "line": 245,
           "column": 2
         }
       },
@@ -97,11 +97,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 71,
+              "line": 91,
               "column": 4
             },
             "end": {
-              "line": 74,
+              "line": 94,
               "column": 5
             }
           },
@@ -119,11 +119,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 78,
+              "line": 98,
               "column": 4
             },
             "end": {
-              "line": 81,
+              "line": 101,
               "column": 5
             }
           },
@@ -141,11 +141,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 85,
+              "line": 105,
               "column": 4
             },
             "end": {
-              "line": 88,
+              "line": 108,
               "column": 5
             }
           },
@@ -212,11 +212,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 94,
+              "line": 114,
               "column": 2
             },
             "end": {
-              "line": 97,
+              "line": 117,
               "column": 3
             }
           },
@@ -232,11 +232,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 102,
+              "line": 122,
               "column": 2
             },
             "end": {
-              "line": 105,
+              "line": 125,
               "column": 3
             }
           },
@@ -252,11 +252,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 110,
+              "line": 130,
               "column": 2
             },
             "end": {
-              "line": 113,
+              "line": 133,
               "column": 3
             }
           },
@@ -272,11 +272,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 118,
+              "line": 138,
               "column": 2
             },
             "end": {
-              "line": 134,
+              "line": 154,
               "column": 3
             }
           },
@@ -292,11 +292,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 139,
+              "line": 159,
               "column": 2
             },
             "end": {
-              "line": 224,
+              "line": 244,
               "column": 3
             }
           },
@@ -316,7 +316,7 @@
           "column": 28
         },
         "end": {
-          "line": 225,
+          "line": 245,
           "column": 1
         }
       },
@@ -365,11 +365,11 @@
           "description": "Source of the animated gif",
           "sourceRange": {
             "start": {
-              "line": 71,
+              "line": 91,
               "column": 4
             },
             "end": {
-              "line": 74,
+              "line": 94,
               "column": 5
             }
           },
@@ -381,11 +381,11 @@
           "description": "Source of a version that is not animated",
           "sourceRange": {
             "start": {
-              "line": 78,
+              "line": 98,
               "column": 4
             },
             "end": {
-              "line": 81,
+              "line": 101,
               "column": 5
             }
           },
@@ -397,11 +397,11 @@
           "description": "Alt text of the gif",
           "sourceRange": {
             "start": {
-              "line": 85,
+              "line": 105,
               "column": 4
             },
             "end": {
-              "line": 88,
+              "line": 108,
               "column": 5
             }
           },

@@ -239,10 +239,10 @@ define("ace/mode/logiql_highlight_rules", [
             return this.$outdent.checkOutdent(t, n)
               ? !0
               : n !== "\n" && n !== "\r\n"
-                ? !1
-                : /^\s+/.test(t)
-                  ? !0
-                  : !1;
+              ? !1
+              : /^\s+/.test(t)
+              ? !0
+              : !1;
           }),
           (this.autoOutdent = function(e, t, n) {
             if (this.$outdent.autoOutdent(t, n)) return;

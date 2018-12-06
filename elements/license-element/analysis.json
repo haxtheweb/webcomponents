@@ -62,11 +62,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 117,
               "column": 4
             },
             "end": {
-              "line": 85,
+              "line": 119,
               "column": 5
             }
           },
@@ -83,11 +83,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 89,
+              "line": 123,
               "column": 4
             },
             "end": {
-              "line": 91,
+              "line": 125,
               "column": 5
             }
           },
@@ -104,11 +104,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 95,
+              "line": 129,
               "column": 4
             },
             "end": {
-              "line": 97,
+              "line": 131,
               "column": 5
             }
           },
@@ -125,11 +125,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 101,
+              "line": 135,
               "column": 4
             },
             "end": {
-              "line": 103,
+              "line": 137,
               "column": 5
             }
           },
@@ -146,11 +146,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 107,
+              "line": 141,
               "column": 4
             },
             "end": {
-              "line": 109,
+              "line": 143,
               "column": 5
             }
           },
@@ -167,11 +167,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 113,
+              "line": 147,
               "column": 4
             },
             "end": {
-              "line": 116,
+              "line": 150,
               "column": 5
             }
           },
@@ -189,11 +189,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 120,
+              "line": 154,
               "column": 4
             },
             "end": {
-              "line": 123,
+              "line": 157,
               "column": 5
             }
           },
@@ -211,11 +211,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 127,
+              "line": 161,
               "column": 4
             },
             "end": {
-              "line": 129,
+              "line": 163,
               "column": 5
             }
           },
@@ -232,11 +232,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 133,
+              "line": 167,
               "column": 4
             },
             "end": {
-              "line": 136,
+              "line": 170,
               "column": 5
             }
           },
@@ -303,11 +303,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 142,
+              "line": 176,
               "column": 2
             },
             "end": {
-              "line": 231,
+              "line": 265,
               "column": 3
             }
           },
@@ -323,11 +323,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 236,
+              "line": 270,
               "column": 2
             },
             "end": {
-              "line": 242,
+              "line": 276,
               "column": 3
             }
           },
@@ -344,11 +344,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 247,
+              "line": 281,
               "column": 2
             },
             "end": {
-              "line": 290,
+              "line": 324,
               "column": 3
             }
           },
@@ -366,11 +366,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 295,
+              "line": 329,
               "column": 2
             },
             "end": {
-              "line": 304,
+              "line": 338,
               "column": 3
             }
           },
@@ -397,7 +397,7 @@
           "column": 29
         },
         "end": {
-          "line": 305,
+          "line": 339,
           "column": 1
         }
       },
@@ -446,11 +446,11 @@
           "description": "Title of the work.",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 117,
               "column": 4
             },
             "end": {
-              "line": 85,
+              "line": 119,
               "column": 5
             }
           },
@@ -462,11 +462,11 @@
           "description": "Person or group that owns / created the work.",
           "sourceRange": {
             "start": {
-              "line": 89,
+              "line": 123,
               "column": 4
             },
             "end": {
-              "line": 91,
+              "line": 125,
               "column": 5
             }
           },
@@ -478,11 +478,11 @@
           "description": "Original Source of the work in question",
           "sourceRange": {
             "start": {
-              "line": 95,
+              "line": 129,
               "column": 4
             },
             "end": {
-              "line": 97,
+              "line": 131,
               "column": 5
             }
           },
@@ -494,11 +494,11 @@
           "description": "License name, calculated or supplied by the end user if we don't have them.",
           "sourceRange": {
             "start": {
-              "line": 101,
+              "line": 135,
               "column": 4
             },
             "end": {
-              "line": 103,
+              "line": 137,
               "column": 5
             }
           },
@@ -510,11 +510,11 @@
           "description": "License link for more details",
           "sourceRange": {
             "start": {
-              "line": 107,
+              "line": 141,
               "column": 4
             },
             "end": {
-              "line": 109,
+              "line": 143,
               "column": 5
             }
           },
@@ -526,11 +526,11 @@
           "description": "License short hand. Options cc0,",
           "sourceRange": {
             "start": {
-              "line": 113,
+              "line": 147,
               "column": 4
             },
             "end": {
-              "line": 116,
+              "line": 150,
               "column": 5
             }
           },
@@ -542,11 +542,11 @@
           "description": "More details label",
           "sourceRange": {
             "start": {
-              "line": 120,
+              "line": 154,
               "column": 4
             },
             "end": {
-              "line": 123,
+              "line": 157,
               "column": 5
             }
           },
@@ -558,11 +558,11 @@
           "description": "More details link",
           "sourceRange": {
             "start": {
-              "line": 127,
+              "line": 161,
               "column": 4
             },
             "end": {
-              "line": 129,
+              "line": 163,
               "column": 5
             }
           },
@@ -574,11 +574,11 @@
           "description": "See if we have more things to point to",
           "sourceRange": {
             "start": {
-              "line": 133,
+              "line": 167,
               "column": 4
             },
             "end": {
-              "line": 136,
+              "line": 170,
               "column": 5
             }
           },

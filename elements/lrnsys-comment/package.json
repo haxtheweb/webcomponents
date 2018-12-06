@@ -16,11 +16,11 @@
       "hax": "src/lrnsys-comment-hax.json"
     }
   },
-  "version": "0.0.35",
+  "version": "0.0.38",
   "description": "Automated conversion of lrnsys-comment/",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "lrnsys-comment.js",
   "module": "lrnsys-comment.es6.js",
@@ -40,12 +40,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrndesign-avatar": "^0.0.35",
-    "@lrnwebcomponents/lrnsys-button": "^0.0.35",
-    "@lrnwebcomponents/materializecss-styles": "^0.0.35",
-    "@lrnwebcomponents/moment-element": "^0.0.35",
-    "@lrnwebcomponents/mtz-marked-editor": "^0.0.35",
-    "@lrnwebcomponents/word-count": "^0.0.35",
+    "@lrnwebcomponents/lrndesign-avatar": "^0.0.38",
+    "@lrnwebcomponents/lrnsys-button": "^0.0.38",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.38",
+    "@lrnwebcomponents/moment-element": "^0.0.38",
+    "@lrnwebcomponents/mtz-marked-editor": "^0.0.38",
+    "@lrnwebcomponents/simple-modal": "^0.0.38",
+    "@lrnwebcomponents/word-count": "^0.0.38",
     "@polymer/app-layout": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-demo-helpers": "^3.0.0",
@@ -63,22 +64,21 @@
     "@polymer/paper-listbox": "^3.0.0",
     "@polymer/paper-toast": "^3.0.0",
     "@polymer/paper-tooltip": "^3.0.0",
-    "@polymer/polymer": "^3.0.5",
-    "@lrnwebcomponents/simple-modal": "^0.0.35"
+    "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "web-animations-js": "^2.3.1",
-    "@lrnwebcomponents/deduping-fix": "^0.0.35",
+    "@lrnwebcomponents/deduping-fix": "^0.0.38",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
-    "@webcomponents/webcomponentsjs": "2.1.3",
-    "concurrently": "4.0.1",
+    "@webcomponents/webcomponentsjs": "2.2.1",
+    "concurrently": "4.1.0",
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.4",
     "lodash": "4.17.11",
-    "polymer-build": "3.1.0",
-    "polymer-cli": "1.8.1",
-    "wct-browser-legacy": "1.0.2"
+    "polymer-build": "3.1.1",
+    "polymer-cli": "1.9.1",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "^2.3.1"
   },
   "private": false,
   "publishConfig": {
@@ -88,5 +88,5 @@
     "web-components",
     "html"
   ],
-  "gitHead": "71dcc2b61045070a009e654226e6c0892f11a854"
+  "gitHead": "35f47726572af9570c3a4e6f8a784cc3183aa203"
 }

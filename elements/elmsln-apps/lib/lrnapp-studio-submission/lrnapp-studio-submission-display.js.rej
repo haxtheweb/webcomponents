@@ -1,0 +1,16 @@
+diff a/elements/elmsln-apps/lib/lrnapp-studio-submission/lrnapp-studio-submission-display.js b/elements/elmsln-apps/lib/lrnapp-studio-submission/lrnapp-studio-submission-display.js	(rejected hunks)
+@@ -123 +123 @@ Polymer({
+-          <!-- ----- Text Submission -----  -->
++          <!-- ----- Text Submission ----- -->
+@@ -131 +131 @@ Polymer({
+-          <!-- ----- Images Submission -----  -->
++          <!-- ----- Images Submission ----- -->
+@@ -179 +179 @@ Polymer({
+-          <!-- ----- Video Submission -----  -->
++          <!-- ----- Video Submission ----- -->
+@@ -195 +195 @@ Polymer({
+-          <!-- ----- Links Submission -----  -->
++          <!-- ----- Links Submission ----- -->
+@@ -212 +212 @@ Polymer({
+-          <!-- ----- Files Submission -----  -->
++          <!-- ----- Files Submission ----- -->

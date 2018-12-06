@@ -7,8 +7,8 @@ all `img-loader` code comes from <a href="https://github.com/PolymerElements/iro
 */
 Polymer({
   _template: html`
-    <img id="img" hidden="" src="[[src]]">
-`,
+    <img id="img" hidden="" src="[[src]]" />
+  `,
 
   is: "img-loader",
 

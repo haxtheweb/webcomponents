@@ -46,28 +46,80 @@ Polymer({
       :host(.hax-context-pin-top) hax-toolbar {
         position: fixed;
         top: 64px;
-        opacity: .95;
+        opacity: 0.95;
       }
       :host(.hax-context-pin-bottom) hax-toolbar {
         position: fixed;
         bottom: 0;
-        opacity: .95;
+        opacity: 0.95;
       }
     </style>
     <hax-toolbar selected="[[selection]]" hide-transform="">
-      <hax-context-item-menu corner="left" slot="primary" selected-value="{{selectedValue}}" id="formatsize" icon="text-format" label="Format" event-name="text-tag">
-        <paper-item value="p"><iron-icon icon="editor:format-textdirection-l-to-r"></iron-icon>Normal text <strong>&lt;P&gt;</strong></paper-item>
-        <paper-item value="h2"><iron-icon icon="editor:title"></iron-icon>Title <strong>&lt;H2&gt;</strong></paper-item>
-        <paper-item value="h3"><iron-icon icon="editor:title"></iron-icon>Content heading <strong>&lt;H3&gt;</strong></paper-item>
-        <paper-item value="h4"><iron-icon icon="editor:text-fields"></iron-icon>Subheading <strong>&lt;H4&gt;</strong></paper-item>
-        <paper-item value="h5"><iron-icon icon="editor:text-fields"></iron-icon>Deeper subheading <strong>&lt;H5&gt;</strong></paper-item>
-        <paper-item value="blockquote"><iron-icon icon="editor:format-quote"></iron-icon>Quote<strong>&lt;blockquote&gt;</strong></paper-item>
-        <paper-item value="code"><iron-icon icon="icons:code"></iron-icon>Code block<strong>&lt;code&gt;</strong></paper-item>
+      <hax-context-item-menu
+        corner="left"
+        slot="primary"
+        selected-value="{{selectedValue}}"
+        id="formatsize"
+        icon="text-format"
+        label="Format"
+        event-name="text-tag"
+      >
+        <paper-item value="p"
+          ><iron-icon icon="editor:format-textdirection-l-to-r"></iron-icon
+          >Normal text <strong>&lt;P&gt;</strong></paper-item
+        >
+        <paper-item value="h2"
+          ><iron-icon icon="editor:title"></iron-icon>Title
+          <strong>&lt;H2&gt;</strong></paper-item
+        >
+        <paper-item value="h3"
+          ><iron-icon icon="editor:title"></iron-icon>Content heading
+          <strong>&lt;H3&gt;</strong></paper-item
+        >
+        <paper-item value="h4"
+          ><iron-icon icon="editor:text-fields"></iron-icon>Subheading
+          <strong>&lt;H4&gt;</strong></paper-item
+        >
+        <paper-item value="h5"
+          ><iron-icon icon="editor:text-fields"></iron-icon>Deeper subheading
+          <strong>&lt;H5&gt;</strong></paper-item
+        >
+        <paper-item value="blockquote"
+          ><iron-icon icon="editor:format-quote"></iron-icon>Quote<strong
+            >&lt;blockquote&gt;</strong
+          ></paper-item
+        >
+        <paper-item value="code"
+          ><iron-icon icon="icons:code"></iron-icon>Code block<strong
+            >&lt;code&gt;</strong
+          ></paper-item
+        >
       </hax-context-item-menu>
-      <hax-context-item-textop slot="primary" icon="editor:format-bold" label="Bold" event-name="text-bold"></hax-context-item-textop>
-      <hax-context-item-textop slot="primary" icon="editor:format-italic" label="Italic" event-name="text-italic"></hax-context-item-textop>
-      <hax-context-item-textop slot="primary" icon="editor:insert-link" label="Link" event-name="text-link"></hax-context-item-textop>
-      <hax-context-item-menu slot="primary" selected-value="{{justifyValue}}" id="justify" icon="[[justifyIcon]]" label="Alignment">
+      <hax-context-item-textop
+        slot="primary"
+        icon="editor:format-bold"
+        label="Bold"
+        event-name="text-bold"
+      ></hax-context-item-textop>
+      <hax-context-item-textop
+        slot="primary"
+        icon="editor:format-italic"
+        label="Italic"
+        event-name="text-italic"
+      ></hax-context-item-textop>
+      <hax-context-item-textop
+        slot="primary"
+        icon="editor:insert-link"
+        label="Link"
+        event-name="text-link"
+      ></hax-context-item-textop>
+      <hax-context-item-menu
+        slot="primary"
+        selected-value="{{justifyValue}}"
+        id="justify"
+        icon="[[justifyIcon]]"
+        label="Alignment"
+      >
         <paper-item value="" hidden=""></paper-item>
         <paper-item value="text-align-left">
           <iron-icon icon="editor:format-align-left"></iron-icon>
@@ -76,18 +128,76 @@ Polymer({
           <iron-icon icon="editor:format-align-right"></iron-icon>
         </paper-item>
       </hax-context-item-menu>
-      <hax-context-item-textop slot="primary" icon="editor:format-list-numbered" label="Numbered list" event-name="text-list-numbered" hidden\$="[[!polyfillSafe]]"></hax-context-item-textop>
-      <hax-context-item-textop slot="primary" icon="editor:format-list-bulleted" label="Bulleted list" event-name="text-list-bulleted" hidden\$="[[!polyfillSafe]]"></hax-context-item-textop>
-      <hax-context-item-textop slot="primary" icon="editor:format-indent-increase" label="Indent" event-name="text-indent" hidden\$="[[!polyfillSafe]]"></hax-context-item-textop>
-      <hax-context-item-textop slot="primary" icon="editor:format-indent-decrease" label="Outdent" event-name="text-outdent" hidden\$="[[!polyfillSafe]]"></hax-context-item-textop>
-      <hax-context-item-textop slot="primary" icon="editor:format-clear" label="Remove format" event-name="text-remove-format"></hax-context-item-textop>
-      <hax-context-item slot="primary" icon="device:graphic-eq" label="Advanced item" event-name="insert-inline-gizmo"></hax-context-item>
-      <hax-context-item-textop menu="" slot="more" icon="mdextra:unlink" event-name="text-unlink">Remove link</hax-context-item-textop>
-      <hax-context-item-textop menu="" slot="more" icon="mdextra:subscript" event-name="text-subscript">Subscript</hax-context-item-textop>
-      <hax-context-item-textop menu="" slot="more" icon="mdextra:superscript" event-name="text-superscript">Superscript</hax-context-item-textop>
-      <hax-context-item-textop menu="" slot="more" icon="editor:format-strikethrough" event-name="text-strikethrough">Cross out</hax-context-item-textop>
+      <hax-context-item-textop
+        slot="primary"
+        icon="editor:format-list-numbered"
+        label="Numbered list"
+        event-name="text-list-numbered"
+        hidden\$="[[!polyfillSafe]]"
+      ></hax-context-item-textop>
+      <hax-context-item-textop
+        slot="primary"
+        icon="editor:format-list-bulleted"
+        label="Bulleted list"
+        event-name="text-list-bulleted"
+        hidden\$="[[!polyfillSafe]]"
+      ></hax-context-item-textop>
+      <hax-context-item-textop
+        slot="primary"
+        icon="editor:format-indent-increase"
+        label="Indent"
+        event-name="text-indent"
+        hidden\$="[[!polyfillSafe]]"
+      ></hax-context-item-textop>
+      <hax-context-item-textop
+        slot="primary"
+        icon="editor:format-indent-decrease"
+        label="Outdent"
+        event-name="text-outdent"
+        hidden\$="[[!polyfillSafe]]"
+      ></hax-context-item-textop>
+      <hax-context-item-textop
+        slot="primary"
+        icon="editor:format-clear"
+        label="Remove format"
+        event-name="text-remove-format"
+      ></hax-context-item-textop>
+      <hax-context-item
+        slot="primary"
+        icon="device:graphic-eq"
+        label="Advanced item"
+        event-name="insert-inline-gizmo"
+      ></hax-context-item>
+      <hax-context-item-textop
+        menu=""
+        slot="more"
+        icon="mdextra:unlink"
+        event-name="text-unlink"
+        >Remove link</hax-context-item-textop
+      >
+      <hax-context-item-textop
+        menu=""
+        slot="more"
+        icon="mdextra:subscript"
+        event-name="text-subscript"
+        >Subscript</hax-context-item-textop
+      >
+      <hax-context-item-textop
+        menu=""
+        slot="more"
+        icon="mdextra:superscript"
+        event-name="text-superscript"
+        >Superscript</hax-context-item-textop
+      >
+      <hax-context-item-textop
+        menu=""
+        slot="more"
+        icon="editor:format-strikethrough"
+        event-name="text-strikethrough"
+        >Cross out</hax-context-item-textop
+      >
     </hax-toolbar>
-`,
+  `,
 
   is: "hax-text-context",
 

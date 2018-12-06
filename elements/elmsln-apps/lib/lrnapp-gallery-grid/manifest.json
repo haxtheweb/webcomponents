@@ -1,0 +1,16 @@
+{
+  "name": "lrnapp-gallery-grid",
+  "short_name": "lrnapp-gallery-grid",
+  "description": "An open studio gallery of media presented as a grid.",
+  "start_url": "/",
+  "display": "standalone",
+  "app_integration": {
+    "title": "Gallery",
+    "endpoints": {
+      "data": {
+        "callback": "_cle_open_studio_app_gallery_data",
+        "property": "source-path"
+      }
+    }
+  }
+}

@@ -21,16 +21,16 @@ define("ace/keyboard/vim", [
       return typeof e != "object"
         ? e + ""
         : "line" in e
-          ? e.line + ":" + e.ch
-          : "anchor" in e
-            ? t(e.anchor) + "->" + t(e.head)
-            : Array.isArray(e)
-              ? "[" +
-                e.map(function(e) {
-                  return t(e);
-                }) +
-                "]"
-              : JSON.stringify(e);
+        ? e.line + ":" + e.ch
+        : "anchor" in e
+        ? t(e.anchor) + "->" + t(e.head)
+        : Array.isArray(e)
+        ? "[" +
+          e.map(function(e) {
+            return t(e);
+          }) +
+          "]"
+        : JSON.stringify(e);
     }
     var e = "";
     for (var n = 0; n < arguments.length; n++) {
@@ -312,8 +312,8 @@ define("ace/keyboard/vim", [
       return r == i && e.length > n
         ? "full"
         : i.indexOf(r) == 0
-          ? "partial"
-          : !1;
+        ? "partial"
+        : !1;
     }
     return e == t ? "full" : t.indexOf(e) == 0 ? "partial" : !1;
   }
@@ -400,8 +400,8 @@ define("ace/keyboard/vim", [
     m > 0 && g <= 0
       ? (d++, s || v--)
       : m < 0 && g >= 0
-        ? (d--, a || v++)
-        : m < 0 && g == -1 && (d--, v++);
+      ? (d--, a || v++)
+      : m < 0 && g == -1 && (d--, v++);
     for (var y = h; y <= p; y++) {
       var b = { anchor: new E(y, d), head: new E(y, v) };
       n.push(b);
@@ -703,11 +703,11 @@ define("ace/keyboard/vim", [
       ? (!h && (p.from != o.ch || p.line != o.line) && (d = u.pop()),
         E(d.line, d.from))
       : r && i
-        ? E(d.line, d.to - 1)
-        : !r && i
-          ? (!h && (p.to != o.ch || p.line != o.line) && (d = u.pop()),
-            E(d.line, d.to))
-          : E(d.line, d.from);
+      ? E(d.line, d.to - 1)
+      : !r && i
+      ? (!h && (p.to != o.ch || p.line != o.line) && (d = u.pop()),
+        E(d.line, d.to))
+      : E(d.line, d.from);
   }
   function on(e, t, n, r) {
     var i = e.getCursor(),
@@ -876,10 +876,10 @@ define("ace/keyboard/vim", [
       r
         ? ((o !== "\\" || !a) && i.push(o), (r = !1))
         : o === "\\"
-          ? ((r = !0),
-            u && n.indexOf(u) != -1 && (a = !0),
-            (!a || u === "\\") && i.push(o))
-          : (i.push(o), a && u !== "\\" && i.push("\\"));
+        ? ((r = !0),
+          u && n.indexOf(u) != -1 && (a = !0),
+          (!a || u === "\\") && i.push(o))
+        : (i.push(o), a && u !== "\\" && i.push("\\"));
     }
     return i.join("");
   }
@@ -892,13 +892,13 @@ define("ace/keyboard/vim", [
       En[i + s]
         ? (n.push(En[i + s]), r++)
         : t
-          ? (n.push(i), (t = !1))
-          : i === "\\"
-            ? ((t = !0),
-              W(s) || s === "$"
-                ? n.push("$")
-                : s !== "/" && s !== "\\" && n.push("\\"))
-            : (i === "$" && n.push("$"), n.push(i), s === "/" && n.push("\\"));
+        ? (n.push(i), (t = !1))
+        : i === "\\"
+        ? ((t = !0),
+          W(s) || s === "$"
+            ? n.push("$")
+            : s !== "/" && s !== "\\" && n.push("\\"))
+        : (i === "$" && n.push("$"), n.push(i), s === "/" && n.push("\\"));
     }
     return n.join("");
   }
@@ -1597,8 +1597,8 @@ define("ace/keyboard/vim", [
                   ? t.lead
                   : t.anchor
                 : e == "head" || !e
-                  ? t.lead
-                  : t.getRange()[e];
+                ? t.lead
+                : t.getRange()[e];
           return g(n);
         }),
         (this.listSelections = function(e) {
@@ -3146,27 +3146,26 @@ define("ace/keyboard/vim", [
           f === !1
             ? undefined
             : f === !0
-              ? function() {
+            ? function() {
+                return !0;
+              }
+            : function() {
+                if ((f.operator || f.isEdit) && e.getOption("readOnly")) return;
+                return e.operation(function() {
+                  e.curOp.isVimOp = !0;
+                  try {
+                    f.type == "keyToKey"
+                      ? o(f.toKeys)
+                      : ht.processCommand(e, r, f);
+                  } catch (t) {
+                    throw ((e.state.vim = undefined),
+                    tt(e),
+                    v.Vim.suppressErrorLogging || console.log(t),
+                    t);
+                  }
                   return !0;
-                }
-              : function() {
-                  if ((f.operator || f.isEdit) && e.getOption("readOnly"))
-                    return;
-                  return e.operation(function() {
-                    e.curOp.isVimOp = !0;
-                    try {
-                      f.type == "keyToKey"
-                        ? o(f.toKeys)
-                        : ht.processCommand(e, r, f);
-                    } catch (t) {
-                      throw ((e.state.vim = undefined),
-                      tt(e),
-                      v.Vim.suppressErrorLogging || console.log(t),
-                      t);
-                    }
-                    return !0;
-                  });
-                }
+                });
+              }
         );
       },
       handleEx: function(e, t) {
@@ -3437,8 +3436,8 @@ define("ace/keyboard/vim", [
               r(),
               e.focus())
             : i == "Up" || i == "Down"
-              ? v.e_stop(t)
-              : i == "Ctrl-U" && (v.e_stop(t), r(""));
+            ? v.e_stop(t)
+            : i == "Ctrl-U" && (v.e_stop(t), r(""));
         }
         if (!e.getSearchCursor) return;
         var r = n.searchArgs.forward,
@@ -3509,25 +3508,25 @@ define("ace/keyboard/vim", [
                   t.target.value.length
                 )))
             : i == "Ctrl-U"
-              ? (v.e_stop(t), r(""))
-              : i != "Left" &&
-                i != "Right" &&
-                i != "Ctrl" &&
-                i != "Alt" &&
-                i != "Shift" &&
-                nt.exCommandHistoryController.reset();
+            ? (v.e_stop(t), r(""))
+            : i != "Left" &&
+              i != "Right" &&
+              i != "Ctrl" &&
+              i != "Alt" &&
+              i != "Shift" &&
+              nt.exCommandHistoryController.reset();
         }
         n.type == "keyToEx"
           ? Rn.processCommand(e, n.exArgs.input)
           : t.visualMode
-            ? An(e, {
-                onClose: r,
-                prefix: ":",
-                value: "'<,'>",
-                onKeyDown: i,
-                selectValueOnOpen: !1
-              })
-            : An(e, { onClose: r, prefix: ":", onKeyDown: i });
+          ? An(e, {
+              onClose: r,
+              prefix: ":",
+              value: "'<,'>",
+              onKeyDown: i,
+              selectValueOnOpen: !1
+            })
+          : An(e, { onClose: r, prefix: ":", onKeyDown: i });
       },
       evalInput: function(e, t) {
         var n = t.inputState,
@@ -3590,10 +3589,10 @@ define("ace/keyboard/vim", [
             b.visualLine
               ? (p = E(h.line + w, h.ch))
               : b.visualBlock
-                ? (p = E(h.line + w, h.ch + S))
-                : b.head.line == b.anchor.line
-                  ? (p = E(h.line, h.ch + S))
-                  : (p = E(h.line + w, h.ch)),
+              ? (p = E(h.line + w, h.ch + S))
+              : b.head.line == b.anchor.line
+              ? (p = E(h.line, h.ch + S))
+              : (p = E(h.line + w, h.ch)),
               (t.visualMode = !0),
               (t.visualLine = b.visualLine),
               (t.visualBlock = b.visualBlock),
@@ -4000,10 +3999,10 @@ define("ace/keyboard/vim", [
             : !e.state.vim.visualMode &&
               t.linewise &&
               n[0].anchor.line + 1 == n[0].head.line
-              ? pt.moveToFirstNonWhiteSpaceCharacter(e, r)
-              : t.linewise
-                ? r
-                : Mt(n[0].anchor, n[0].head)
+            ? pt.moveToFirstNonWhiteSpaceCharacter(e, r)
+            : t.linewise
+            ? r
+            : Mt(n[0].anchor, n[0].head)
         );
       },
       yank: function(e, t, n, r) {
@@ -4123,8 +4122,8 @@ define("ace/keyboard/vim", [
               )),
               (o = Math.abs(i.head.line - i.anchor.line) + 1))
             : i.head.line < i.anchor.line
-              ? (s = i.head)
-              : (s = E(i.anchor.line, 0));
+            ? (s = i.head)
+            : (s = E(i.anchor.line, 0));
         else if (r == "endOfSelectedArea")
           n.visualBlock
             ? ((s = E(
@@ -4133,8 +4132,8 @@ define("ace/keyboard/vim", [
               )),
               (o = Math.abs(i.head.line - i.anchor.line) + 1))
             : i.head.line >= i.anchor.line
-              ? (s = St(i.head, 0, 1))
-              : (s = E(i.anchor.line, 0));
+            ? (s = St(i.head, 0, 1))
+            : (s = E(i.anchor.line, 0));
         else if (r == "inplace" && n.visualMode) return;
         e.setOption("disableInput", !1),
           t && t.replace
@@ -4162,8 +4161,8 @@ define("ace/keyboard/vim", [
                 subMode: n.visualLine
                   ? "linewise"
                   : n.visualBlock
-                    ? "blockwise"
-                    : ""
+                  ? "blockwise"
+                  : ""
               }),
               Wt(e))
             : $t(e)
@@ -4177,8 +4176,8 @@ define("ace/keyboard/vim", [
               subMode: n.visualLine
                 ? "linewise"
                 : n.visualBlock
-                  ? "blockwise"
-                  : ""
+                ? "blockwise"
+                : ""
             }),
             Wt(e),
             an(e, n, "<", Mt(i, s)),
@@ -4203,8 +4202,8 @@ define("ace/keyboard/vim", [
               subMode: n.visualLine
                 ? "linewise"
                 : n.visualBlock
-                  ? "blockwise"
-                  : ""
+                ? "blockwise"
+                : ""
             });
         }
       },
@@ -4285,8 +4284,8 @@ define("ace/keyboard/vim", [
                 ? s.slice(0, -1)
                 : "\n" + s.slice(0, s.length - 1) + "\n")
             : t.after
-              ? ((s = "\n" + s.slice(0, s.length - 1)), (r.ch = Pt(e, r.line)))
-              : (r.ch = 0);
+            ? ((s = "\n" + s.slice(0, s.length - 1)), (r.ch = Pt(e, r.line)))
+            : (r.ch = 0);
         else {
           if (d) {
             s = s.split("\n");
@@ -4314,12 +4313,12 @@ define("ace/keyboard/vim", [
                 e.replaceSelections(s),
                 (m = w))
               : n.visualBlock
-                ? (e.replaceSelections(N),
-                  e.setCursor(w),
-                  e.replaceRange(s, w, w),
-                  (m = w))
-                : (e.replaceRange(s, w, S),
-                  (m = e.posFromIndex(e.indexFromPos(w) + s.length - 1))),
+              ? (e.replaceSelections(N),
+                e.setCursor(w),
+                e.replaceRange(s, w, w),
+                (m = w))
+              : (e.replaceRange(s, w, S),
+                (m = e.posFromIndex(e.indexFromPos(w) + s.length - 1))),
             y && (n.lastSelection.headMark = e.setBookmark(y)),
             p && (m.ch = 0);
         } else if (d) {
@@ -4339,12 +4338,11 @@ define("ace/keyboard/vim", [
             p && t.after
               ? (m = E(r.line + 1, Qt(e.getLine(r.line + 1))))
               : p && !t.after
-                ? (m = E(r.line, Qt(e.getLine(r.line))))
-                : !p && t.after
-                  ? ((g = e.indexFromPos(r)),
-                    (m = e.posFromIndex(g + s.length - 1)))
-                  : ((g = e.indexFromPos(r)),
-                    (m = e.posFromIndex(g + s.length)));
+              ? (m = E(r.line, Qt(e.getLine(r.line))))
+              : !p && t.after
+              ? ((g = e.indexFromPos(r)),
+                (m = e.posFromIndex(g + s.length - 1)))
+              : ((g = e.indexFromPos(r)), (m = e.posFromIndex(g + s.length)));
         n.visualMode && $t(e, !1), e.setCursor(m);
       },
       undo: function(e, t) {
@@ -4764,8 +4762,8 @@ define("ace/keyboard/vim", [
           f instanceof Error
             ? Cn(e, f.message)
             : f === !0 || f === !1
-              ? Cn(e, " " + (f ? "" : "no") + s)
-              : Cn(e, "  " + s + "=" + f);
+            ? Cn(e, " " + (f ? "" : "no") + s)
+            : Cn(e, "  " + s + "=" + f);
         } else {
           var l = Q(s, o, e, r);
           l instanceof Error && Cn(e, l.message);
@@ -4832,8 +4830,8 @@ define("ace/keyboard/vim", [
               (u = parseInt((u[1] + u[2]).toLowerCase(), m)),
               o - u)
             : e < t
-              ? -1
-              : 1;
+            ? -1
+            : 1;
         }
         function x(e, t) {
           if (n) {
@@ -4864,12 +4862,12 @@ define("ace/keyboard/vim", [
           d = o
             ? o
             : s == "decimal"
-              ? /(-?)([\d]+)/
-              : s == "hex"
-                ? /(-?)(?:0x)?([0-9a-f]+)/i
-                : s == "octal"
-                  ? /([0-7]+)/
-                  : null,
+            ? /(-?)([\d]+)/
+            : s == "hex"
+            ? /(-?)(?:0x)?([0-9a-f]+)/i
+            : s == "octal"
+            ? /([0-7]+)/
+            : null,
           m = s == "decimal" ? 10 : s == "hex" ? 16 : s == "octal" ? 8 : null,
           g = [],
           y = [];
@@ -4879,8 +4877,8 @@ define("ace/keyboard/vim", [
             w && w[0] != ""
               ? g.push(w)
               : !o && d.exec(p[b])
-                ? g.push(p[b])
-                : y.push(p[b]);
+              ? g.push(p[b])
+              : y.push(p[b]);
           }
         else y = p;
         g.sort(o ? x : S);
@@ -5131,10 +5129,10 @@ define("ace/keyboard/vim", [
               n && e.inputHash == 4 && (n = n.toUpperCase())),
             (e.inputChar = n))
           : t == 4 || t == 0
-            ? e.inputKey == n && e.inputHash == t && e.inputChar
-              ? ((n = e.inputChar), (t = -1))
-              : ((e.inputChar = null), (e.inputKey = n), (e.inputHash = t))
-            : (e.inputChar = e.inputKey = null));
+          ? e.inputKey == n && e.inputHash == t && e.inputChar
+            ? ((n = e.inputChar), (t = -1))
+            : ((e.inputChar = null), (e.inputKey = n), (e.inputHash = t))
+          : (e.inputChar = e.inputKey = null));
       if (n == "c" && t == 1 && !c.isMac && s.getCopyText())
         return (
           s.once("copy", function() {

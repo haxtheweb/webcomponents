@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 136,
+              "line": 149,
               "column": 4
             },
             "end": {
-              "line": 139,
+              "line": 152,
               "column": 5
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 143,
+              "line": 156,
               "column": 4
             },
             "end": {
-              "line": 147,
+              "line": 160,
               "column": 5
             }
           },
@@ -57,11 +57,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 151,
+              "line": 164,
               "column": 4
             },
             "end": {
-              "line": 155,
+              "line": 168,
               "column": 5
             }
           },
@@ -79,11 +79,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 159,
+              "line": 172,
               "column": 4
             },
             "end": {
-              "line": 161,
+              "line": 174,
               "column": 5
             }
           },
@@ -100,11 +100,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 165,
+              "line": 178,
               "column": 4
             },
             "end": {
-              "line": 167,
+              "line": 180,
               "column": 5
             }
           },
@@ -121,11 +121,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 171,
+              "line": 184,
               "column": 4
             },
             "end": {
-              "line": 173,
+              "line": 186,
               "column": 5
             }
           },
@@ -143,11 +143,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 179,
+              "line": 192,
               "column": 2
             },
             "end": {
-              "line": 275,
+              "line": 288,
               "column": 3
             }
           },
@@ -163,11 +163,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 280,
+              "line": 293,
               "column": 2
             },
             "end": {
-              "line": 284,
+              "line": 297,
               "column": 3
             }
           },
@@ -188,7 +188,7 @@
           "column": 32
         },
         "end": {
-          "line": 285,
+          "line": 298,
           "column": 1
         }
       },
@@ -201,11 +201,11 @@
           "description": "Accent Color.",
           "sourceRange": {
             "start": {
-              "line": 136,
+              "line": 149,
               "column": 4
             },
             "end": {
-              "line": 139,
+              "line": 152,
               "column": 5
             }
           },
@@ -217,11 +217,11 @@
           "description": "Accent color class.",
           "sourceRange": {
             "start": {
-              "line": 143,
+              "line": 156,
               "column": 4
             },
             "end": {
-              "line": 147,
+              "line": 160,
               "column": 5
             }
           },
@@ -233,11 +233,11 @@
           "description": "Visual height of the card.",
           "sourceRange": {
             "start": {
-              "line": 151,
+              "line": 164,
               "column": 4
             },
             "end": {
-              "line": 155,
+              "line": 168,
               "column": 5
             }
           },
@@ -249,11 +249,11 @@
           "description": "The profile image to display to the left of the quote.",
           "sourceRange": {
             "start": {
-              "line": 159,
+              "line": 172,
               "column": 4
             },
             "end": {
-              "line": 161,
+              "line": 174,
               "column": 5
             }
           },
@@ -265,11 +265,11 @@
           "description": "Name of the person making the quote.",
           "sourceRange": {
             "start": {
-              "line": 165,
+              "line": 178,
               "column": 4
             },
             "end": {
-              "line": 167,
+              "line": 180,
               "column": 5
             }
           },
@@ -281,11 +281,11 @@
           "description": "The title / position of the person in question.",
           "sourceRange": {
             "start": {
-              "line": 171,
+              "line": 184,
               "column": 4
             },
             "end": {
-              "line": 173,
+              "line": 186,
               "column": 5
             }
           },

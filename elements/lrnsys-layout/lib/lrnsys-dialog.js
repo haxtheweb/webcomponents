@@ -18,31 +18,49 @@ import "./lrnsys-button-inner.js";
 Polymer({
   _template: html`
     <custom-style>
-    <style is="custom-style" include="simple-colors">
-      :host {
-        display: inline-block;
-        --lrnsys-dialog-color: var(--simple-colors-foreground1,#000);
-        --lrnsys-dialog-background-color: var(--simple-colors-background1);
-        --lrnsys-dialog-toolbar-background-color: var(--simple-colors-background3);
-        --lrnsys-dialog-secondary-background-color: rgba(255,255,255, 0.7);
-      }
-      :host([dark]) {
-        --lrnsys-dialog-toolbar-background-color: var(--simple-colors-background1);
-        --lrnsys-dialog-background-color: var(--simple-colors-background3);
-        --lrnsys-dialog-secondary-background-color: rgba(0, 0, 0, 0.7);
-      }
-      #dialogtrigger {
-        display:inline-block;
-      }
-    </style>
+      <style is="custom-style" include="simple-colors">
+        :host {
+          display: inline-block;
+          --lrnsys-dialog-color: var(--simple-colors-foreground1, #000);
+          --lrnsys-dialog-background-color: var(--simple-colors-background1);
+          --lrnsys-dialog-toolbar-background-color: var(
+            --simple-colors-background3
+          );
+          --lrnsys-dialog-secondary-background-color: rgba(255, 255, 255, 0.7);
+        }
+        :host([dark]) {
+          --lrnsys-dialog-toolbar-background-color: var(
+            --simple-colors-background1
+          );
+          --lrnsys-dialog-background-color: var(--simple-colors-background3);
+          --lrnsys-dialog-secondary-background-color: rgba(0, 0, 0, 0.7);
+        }
+        #dialogtrigger {
+          display: inline-block;
+        }
+      </style>
     </custom-style>
-    <paper-button class$="[[class]]" id="dialogtrigger" on-tap="openDialog" raised="[[raised]]" disabled$="[[disabled]]" title="[[alt]]" aria-label$="[[alt]]">
-      <lrnsys-button-inner avatar$="[[avatar]]" icon$="[[icon]]" text$="[[text]]">
+    <paper-button
+      class$="[[class]]"
+      id="dialogtrigger"
+      on-tap="openDialog"
+      raised="[[raised]]"
+      disabled$="[[disabled]]"
+      title="[[alt]]"
+      aria-label$="[[alt]]"
+    >
+      <lrnsys-button-inner
+        avatar$="[[avatar]]"
+        icon$="[[icon]]"
+        text$="[[text]]"
+      >
         <slot name="button" slot="button"></slot>
       </lrnsys-button-inner>
     </paper-button>
-    <paper-tooltip for="dialogtrigger" animation-delay="0" hidden$="[[!alt]]">[[alt]]</paper-tooltip>
-`,
+    <paper-tooltip for="dialogtrigger" animation-delay="0" hidden$="[[!alt]]"
+      >[[alt]]</paper-tooltip
+    >
+  `,
 
   is: "lrnsys-dialog",
 

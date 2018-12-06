@@ -31,8 +31,16 @@ Polymer({
       }
     </style>
     <slot></slot>
-    <iron-ajax id="appstore" url="[[appStore.url]]" params="[[appStore.params]]" method="GET" content-type="application/json" handle-as="json" last-response="{{__appStoreData}}"></iron-ajax>
-`,
+    <iron-ajax
+      id="appstore"
+      url="[[appStore.url]]"
+      params="[[appStore.params]]"
+      method="GET"
+      content-type="application/json"
+      handle-as="json"
+      last-response="{{__appStoreData}}"
+    ></iron-ajax>
+  `,
 
   is: "hax-store",
 

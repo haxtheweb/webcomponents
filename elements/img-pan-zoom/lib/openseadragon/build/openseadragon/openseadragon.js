@@ -1408,8 +1408,8 @@ function OpenSeadragon(options) {
           doc == doc.window
             ? doc
             : doc.nodeType === 9
-              ? doc.defaultView || doc.parentWindow
-              : false;
+            ? doc.defaultView || doc.parentWindow
+            : false;
 
         return new $.Point(
           boundingRect.left +
@@ -4175,8 +4175,8 @@ function OpenSeadragon(options) {
     "onwheel" in document.createElement("div")
       ? "wheel" // Modern browsers support 'wheel'
       : document.onmousewheel !== undefined
-        ? "mousewheel" // Webkit and IE support at least 'mousewheel'
-        : "DOMMouseScroll"; // Assume old Firefox
+      ? "mousewheel" // Webkit and IE support at least 'mousewheel'
+      : "DOMMouseScroll"; // Assume old Firefox
 
   /**
    * Detect legacy mouse capture support.
@@ -12076,10 +12076,10 @@ function OpenSeadragon(options) {
         undefined !== options.maxLevel && null !== options.maxLevel
           ? options.maxLevel
           : options.width && options.height
-            ? Math.ceil(
-                Math.log(Math.max(options.width, options.height)) / Math.log(2)
-              )
-            : 0;
+          ? Math.ceil(
+              Math.log(Math.max(options.width, options.height)) / Math.log(2)
+            )
+          : 0;
       if (this.success && $.isFunction(this.success)) {
         this.success(this);
       }
@@ -16529,8 +16529,8 @@ function OpenSeadragon(options) {
         typeof this.initial == "number"
           ? this.initial
           : this._exponential
-            ? 0
-            : 1,
+          ? 0
+          : 1,
       time: $.now() // always work in milliseconds
     };
 

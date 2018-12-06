@@ -49,15 +49,32 @@ Polymer({
     </style>
     <paper-menu-button id="menu">
       <paper-button slot="dropdown-trigger">
-        <span id="label">[[label]]</span> <iron-icon icon="arrow-drop-down"></iron-icon>
+        <span id="label">[[label]]</span>
+        <iron-icon icon="arrow-drop-down"></iron-icon>
       </paper-button>
       <paper-listbox slot="dropdown-content" label\$="[[label]]">
-        <editable-table-editor-insdel action="insert" index\$="[[index]]" type\$="[[type]]" before="true">Insert [[type]] Before</editable-table-editor-insdel>
-        <editable-table-editor-insdel action="insert" index\$="[[index]]" type\$="[[type]]">Insert [[type]] After</editable-table-editor-insdel>
-        <editable-table-editor-insdel action="delete" index\$="[[index]]" type\$="[[type]]">Delete [[type]]</editable-table-editor-insdel>
+        <editable-table-editor-insdel
+          action="insert"
+          index\$="[[index]]"
+          type\$="[[type]]"
+          before="true"
+          >Insert [[type]] Before</editable-table-editor-insdel
+        >
+        <editable-table-editor-insdel
+          action="insert"
+          index\$="[[index]]"
+          type\$="[[type]]"
+          >Insert [[type]] After</editable-table-editor-insdel
+        >
+        <editable-table-editor-insdel
+          action="delete"
+          index\$="[[index]]"
+          type\$="[[type]]"
+          >Delete [[type]]</editable-table-editor-insdel
+        >
       </paper-listbox>
     </paper-menu-button>
-`,
+  `,
 
   is: "editable-table-editor-rowcol",
 

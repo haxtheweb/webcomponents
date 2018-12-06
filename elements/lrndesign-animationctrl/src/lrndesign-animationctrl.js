@@ -26,10 +26,8 @@ let LrndesignAnimationctrl = Polymer({
         display: flex;
       }
     </style>
-    <div class="buttons">
-      <slot></slot>
-    </div>
-`,
+    <div class="buttons"><slot></slot></div>
+  `,
 
   is: "lrndesign-animationctrl",
 

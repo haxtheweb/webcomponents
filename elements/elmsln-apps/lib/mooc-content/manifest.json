@@ -1,0 +1,39 @@
+{
+  "name": "mooc-content",
+  "short_name": "mooc-content",
+  "description": "Drop in MOOC content replacement but AJAX driven",
+  "start_url": "/",
+  "display": "standalone",
+  "app_integration": {
+    "title": "",
+    "endpoints": {
+      "data": {
+        "callback": "_mooc_content_data",
+        "property": "source-path"
+      },
+      "full-outline": {
+        "callback": "_mooc_content_get_outline_data",
+        "property": "full-outline-path"
+      }
+    },
+    "properties": {
+      "outline-title": {
+        "callback": "_mooc_content_outline_title"
+      },
+      "aliases": {
+        "callback": "_mooc_content_get_alias"
+      },
+      "nid": {
+        "callback": "_mooc_content_get_nid"
+      }
+    },
+    "slots": {
+      "content": {
+        "callback": "_mooc_content_render_content"
+      },
+      "blocks": {
+        "callback": "_mooc_content_get_blocks"
+      }
+    }
+  }
+}

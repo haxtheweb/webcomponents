@@ -2077,8 +2077,8 @@ ace.define("ace/range", ["require", "exports", "module"], function(
           return column < this.start.column
             ? -1
             : column > this.end.column
-              ? 1
-              : 0;
+            ? 1
+            : 0;
         }
       }
 
@@ -18822,8 +18822,8 @@ ace.define(
             row + 1 < end
               ? session.getScreenLastRowColumn(row + 1)
               : row == end
-                ? 0
-                : range.end.column;
+              ? 0
+              : range.end.column;
           this.drawSingleLineMarker(
             stringBuilder,
             lineRange,
@@ -21346,8 +21346,8 @@ left: -100000px !important;\
           composition && composition.useTextareaForIME
             ? this.lineHeight
             : HIDE_TEXTAREA
-              ? 0
-              : 1;
+            ? 0
+            : 1;
         if (posTop < 0 || posTop > config.height - h) {
           dom.translate(this.textarea, 0, 0);
           return;
@@ -22232,8 +22232,8 @@ left: -100000px !important;\
             "padding" in module
               ? module.padding
               : "padding" in (_self.theme || {})
-                ? 4
-                : _self.$padding;
+              ? 4
+              : _self.$padding;
           if (_self.$padding && padding != _self.$padding)
             _self.setPadding(padding);
           _self.$theme = module.cssClass;
@@ -23896,10 +23896,10 @@ ace.define(
             forceLeft
               ? alignLeft
               : isLeftAligned
-                ? isRightAligned
-                  ? alignRight
-                  : alignLeft
-                : unAlign
+              ? isRightAligned
+                ? alignRight
+                : alignLeft
+              : unAlign
           );
 
         function spaces(n) {

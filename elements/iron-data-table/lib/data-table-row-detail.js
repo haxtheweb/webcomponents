@@ -10,7 +10,7 @@ Polymer({
       }
     </style>
     <slot></slot>
-`,
+  `,
 
   is: "data-table-row-detail",
 

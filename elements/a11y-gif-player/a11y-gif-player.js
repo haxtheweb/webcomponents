@@ -45,18 +45,38 @@ let A11yGifPlayer = Polymer({
     </style>
     <div id="gifbutton" aria-role="button" aria-controls="gif" tabindex="0">
       <div>
-        <img id="gif" alt\$="[[alt]]" src\$="[[srcWithoutAnimation]]" style="width:100%;height:100%;">
-        <svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="30%" height="30%">
+        <img
+          id="gif"
+          alt\$="[[alt]]"
+          src\$="[[srcWithoutAnimation]]"
+          style="width:100%;height:100%;"
+        />
+        <svg
+          id="svg"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 200 200"
+          width="30%"
+          height="30%"
+        >
           <g opacity=".5">
-            <polygon points="30,20 30,180 170,100" fill="#000000" stroke="#ffffff" stroke-width="15px"></polygon>
+            <polygon
+              points="30,20 30,180 170,100"
+              fill="#000000"
+              stroke="#ffffff"
+              stroke-width="15px"
+            ></polygon>
             <text x="50" y="115" fill="#ffffff" font-size="40px">GIF</text>
           </g>
         </svg>
       </div>
     </div>
     <iron-image id="preload" src\$="[[src]]" hidden=""></iron-image>
-    <iron-a11y-keys id="a11y" keys="enter space" on-keys-pressed="toggleAnimation"></iron-a11y-keys>
-`,
+    <iron-a11y-keys
+      id="a11y"
+      keys="enter space"
+      on-keys-pressed="toggleAnimation"
+    ></iron-a11y-keys>
+  `,
 
   is: "a11y-gif-player",
   behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

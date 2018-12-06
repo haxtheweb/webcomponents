@@ -62,23 +62,27 @@ Custom property | Description | Default
 (function(Polymer) {
   Polymer({
     _template: html`
-    <style>
-      iron-dropdown {
-        @apply --paper-morph-dropdown;
-      }
-      .dropdown-content {
-        @apply --paper-morph-content;
-      }
-      #morpher {
-        position: fixed;
-        display: none;
-        background-color: var(--paper-morph-background, #fff);
-      }
-    </style>
-    <span id="fabContainer" class="dropdown-trigger"><slot name="dropdown-trigger"></slot></span>
-    <span id="contentContainer" class="dropdown-content"><slot name="dropdown-content"></slot></span>
-    <paper-material id="morpher"></paper-material>
-`,
+      <style>
+        iron-dropdown {
+          @apply --paper-morph-dropdown;
+        }
+        .dropdown-content {
+          @apply --paper-morph-content;
+        }
+        #morpher {
+          position: fixed;
+          display: none;
+          background-color: var(--paper-morph-background, #fff);
+        }
+      </style>
+      <span id="fabContainer" class="dropdown-trigger"
+        ><slot name="dropdown-trigger"></slot
+      ></span>
+      <span id="contentContainer" class="dropdown-content"
+        ><slot name="dropdown-content"></slot
+      ></span>
+      <paper-material id="morpher"></paper-material>
+    `,
 
     is: "paper-fab-morph",
 

@@ -101,10 +101,8 @@ Polymer({
       }
     </style>
 
-    <div id="container">
-      <div class="checkmark"></div>
-    </div>
-`,
+    <div id="container"><div class="checkmark"></div></div>
+  `,
 
   is: "data-table-checkbox",
 

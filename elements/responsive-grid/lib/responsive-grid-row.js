@@ -63,11 +63,11 @@ Polymer({
         -moz-box-sizing: border-box;
         box-sizing: border-box;
       }
-      #row-inner[screen="xs"] ::slotted(responsive-grid-clear[xs]), 
-      #row-inner[screen="sm"] ::slotted(responsive-grid-clear[sm]), 
-      #row-inner[screen="md"] ::slotted(responsive-grid-clear[md]), 
-      #row-inner[screen="lg"] ::slotted(responsive-grid-clear[lg]), 
-      #row-inner[screen="xl"] ::slotted(responsive-grid-clear[xl]){
+      #row-inner[screen="xs"] ::slotted(responsive-grid-clear[xs]),
+      #row-inner[screen="sm"] ::slotted(responsive-grid-clear[sm]),
+      #row-inner[screen="md"] ::slotted(responsive-grid-clear[md]),
+      #row-inner[screen="lg"] ::slotted(responsive-grid-clear[lg]),
+      #row-inner[screen="xl"] ::slotted(responsive-grid-clear[xl]) {
         display: block;
       }
       #row-inner[screen="sm"] ::slotted(responsive-grid-col[xs="0"]),
@@ -183,10 +183,18 @@ Polymer({
         padding: 20px;
       }
     </style>
-    <responsive-utility sm\$="[[sm]]" md\$="[[sm]]" lg\$="[[lg]]" xl\$="[[xl]]" responsive-to-parent\$="[[responsiveToParent]]">
+    <responsive-utility
+      sm\$="[[sm]]"
+      md\$="[[sm]]"
+      lg\$="[[lg]]"
+      xl\$="[[xl]]"
+      responsive-to-parent\$="[[responsiveToParent]]"
+    >
     </responsive-utility>
-    <div id="row-inner" screen\$="[[screen]]" gutter\$="[[gutter]]"><slot></slot></div>
-`,
+    <div id="row-inner" screen\$="[[screen]]" gutter\$="[[gutter]]">
+      <slot></slot>
+    </div>
+  `,
 
   is: "responsive-grid-row",
 

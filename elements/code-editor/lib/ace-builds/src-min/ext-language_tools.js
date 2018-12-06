@@ -57,14 +57,14 @@ define("ace/snippets", [
                     r == "}" && n.length
                       ? (e = r)
                       : "`$\\".indexOf(r) != -1
-                        ? (e = r)
-                        : n.inFormatString &&
-                          (r == "n"
-                            ? (e = "\n")
-                            : r == "t"
-                              ? (e = "\n")
-                              : "ulULE".indexOf(r) != -1 &&
-                                (e = { changeCase: r, local: r > "a" })),
+                      ? (e = r)
+                      : n.inFormatString &&
+                        (r == "n"
+                          ? (e = "\n")
+                          : r == "t"
+                          ? (e = "\n")
+                          : "ulULE".indexOf(r) != -1 &&
+                            (e = { changeCase: r, local: r > "a" })),
                     [e]
                   );
                 }
@@ -242,8 +242,8 @@ define("ace/snippets", [
                   i.expectIf == null
                     ? s && (n.push(s), o(i))
                     : s
-                      ? (i.skip = i.elseBranch)
-                      : o(i);
+                    ? (i.skip = i.elseBranch)
+                    : o(i);
               } else
                 i.tabstopId != null
                   ? n.push(i)
@@ -279,8 +279,8 @@ define("ace/snippets", [
             return e == "\n"
               ? e + s
               : typeof e == "string"
-                ? e.replace(/\t/g, i)
-                : e;
+              ? e.replace(/\t/g, i)
+              : e;
           }));
         var u = [];
         o.forEach(function(e, t) {
@@ -365,8 +365,8 @@ define("ace/snippets", [
               (r.substring(0, 3) == "js-"
                 ? (t = "javascript")
                 : r.substring(0, 4) == "css-"
-                  ? (t = "css")
-                  : r.substring(0, 4) == "php-" && (t = "php"));
+                ? (t = "css")
+                : r.substring(0, 4) == "php-" && (t = "php"));
         }
         return t;
       }),

@@ -102,7 +102,7 @@ let LrnIcon = Polymer({
       }
     </style>
     <iron-icon icon$="[[icon]]"></iron-icon>
-`,
+  `,
 
   is: "lrn-icon",
 

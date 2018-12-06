@@ -1,0 +1,96 @@
+{
+  "data": {
+    "items": [
+      {
+        "title": "Introduction",
+        "dataUrl": "data/about-elmsln.md",
+        "status": "available",
+        "value": 25,
+        "max": 100,
+        "icon": "gif",
+        "iconComplete": "check"
+      },
+      {
+        "title": "Introduction",
+        "dataUrl": "data/intro.json",
+        "status": "disabled",
+        "value": 25,
+        "max": 100,
+        "icon": "gif",
+        "iconComplete": "check"
+      },
+      {
+        "title": "Introduction",
+        "url": "#",
+        "status": "available",
+        "value": 25,
+        "max": 100,
+        "icon": "gif",
+        "iconComplete": "check"
+      },
+      {
+        "title": "Introduction",
+        "url": "#",
+        "status": "available",
+        "value": 25,
+        "max": 100,
+        "icon": "gif",
+        "iconComplete": "check"
+      },
+      {
+        "title": "ELMSLN",
+        "url": "#",
+        "status": "available",
+        "value": 0,
+        "max": 100,
+        "icon": "3d-rotation",
+        "iconComplete": "check"
+      },
+      {
+        "title": "Stuff",
+        "url": "#",
+        "status": "available",
+        "value": 0,
+        "max": 100,
+        "icon": "flag",
+        "iconComplete": "check"
+      },
+      {
+        "title": "Things",
+        "url": "#",
+        "status": "available",
+        "value": 0,
+        "max": 100,
+        "icon": "forward",
+        "iconComplete": "check"
+      },
+      {
+        "title": "Things",
+        "url": "#",
+        "status": "available",
+        "value": 0,
+        "max": 100,
+        "icon": "forward",
+        "iconComplete": "check"
+      },
+      {
+        "title": "Things",
+        "url": "#",
+        "status": "available",
+        "value": 0,
+        "max": 100,
+        "icon": "forward",
+        "iconComplete": "check"
+      },
+      {
+        "title": "Things",
+        "url": "#",
+        "status": "available",
+        "value": 0,
+        "max": 100,
+        "icon": "forward",
+        "iconComplete": "check"
+      }
+    ]
+  }
+}

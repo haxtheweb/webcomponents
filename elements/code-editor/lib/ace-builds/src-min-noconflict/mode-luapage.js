@@ -1805,10 +1805,10 @@ ace.define(
               : !r.tagName ||
                 r.selfClosing ||
                 this.voidElements.hasOwnProperty(r.tagName.toLowerCase())
-                ? ""
-                : this._findEndTagInLine(e, n, r.tagName, r.end.column)
-                  ? ""
-                  : "start"
+              ? ""
+              : this._findEndTagInLine(e, n, r.tagName, r.end.column)
+              ? ""
+              : "start"
             : this.getCommentFoldWidget(e, n);
         }),
           (this.getCommentFoldWidget = function(e, t) {
@@ -3027,21 +3027,16 @@ ace.define(
                 return i[1]
                   ? this.luaBlock(e, n, i.index + 1)
                   : i[2]
-                    ? e.getCommentFoldRange(n, i.index + 1)
-                    : this.openingBracketBlock(e, "{", n, i.index);
+                  ? e.getCommentFoldRange(n, i.index + 1)
+                  : this.openingBracketBlock(e, "{", n, i.index);
               var i = this.foldingStopMarker.exec(r);
               if (i)
                 return i[0] === "end" &&
                   e.getTokenAt(n, i.index + 1).type === "keyword"
                   ? this.luaBlock(e, n, i.index + 1)
                   : i[0][0] === "]"
-                    ? e.getCommentFoldRange(n, i.index + 1)
-                    : this.closingBracketBlock(
-                        e,
-                        "}",
-                        n,
-                        i.index + i[0].length
-                      );
+                  ? e.getCommentFoldRange(n, i.index + 1)
+                  : this.closingBracketBlock(e, "}", n, i.index + i[0].length);
             }),
             (this.luaBlock = function(e, t, n) {
               var r = new o(e, t, n),
@@ -3117,8 +3112,8 @@ ace.define(
               i.type == "keyword"
                 ? i.value in e && (n += e[i.value])
                 : i.type == "paren.lparen"
-                  ? (n += i.value.length)
-                  : i.type == "paren.rparen" && (n -= i.value.length);
+                ? (n += i.value.length)
+                : i.type == "paren.rparen" && (n -= i.value.length);
             }
             return n < 0 ? -1 : n > 0 ? 1 : 0;
           }
@@ -3147,8 +3142,8 @@ ace.define(
                 : s < 0 &&
                   i.substr(i.length - r.length) == r &&
                   !this.checkOutdent(e, t, "\n")
-                  ? i.substr(0, i.length - r.length)
-                  : i
+                ? i.substr(0, i.length - r.length)
+                : i
             );
           }),
             (this.checkOutdent = function(e, n, r) {

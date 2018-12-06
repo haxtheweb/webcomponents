@@ -20,9 +20,15 @@ let QR = Polymer({
         opacity: 0;
       }
     </style>
-    <qr-code id="qr" data$="[[data]]" modulesize$="[[modulesize]]" margin$="[[margin]]" format$="[[format]]"></qr-code>
+    <qr-code
+      id="qr"
+      data$="[[data]]"
+      modulesize$="[[modulesize]]"
+      margin$="[[margin]]"
+      format$="[[format]]"
+    ></qr-code>
     <a href$="[[data]]" id="link">[[title]]</a>
-`,
+  `,
 
   is: "q-r",
   behaviors: [HAXBehaviors.PropertiesBehaviors],

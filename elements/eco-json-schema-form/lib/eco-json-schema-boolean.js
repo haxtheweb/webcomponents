@@ -4,18 +4,24 @@ import "@polymer/paper-checkbox/paper-checkbox.js";
 Polymer({
   is: "eco-json-schema-boolean",
   _template: html`
-<style is="custom-style" include="iron-flex iron-flex-alignment">
+    <style is="custom-style" include="iron-flex iron-flex-alignment">
       paper-checkbox {
         color: #737373;
         padding: 2px;
         display: block;
         font-size: 16px;
         white-space: normal;
-    }
+      }
     </style>
 
-    <paper-checkbox id="checkbox" class="flex" checked="{{value}}" invalid="[[error]]">[[_label]]</paper-checkbox>  
-`,
+    <paper-checkbox
+      id="checkbox"
+      class="flex"
+      checked="{{value}}"
+      invalid="[[error]]"
+      >[[_label]]</paper-checkbox
+    >
+  `,
   properties: {
     schema: {
       type: Object,

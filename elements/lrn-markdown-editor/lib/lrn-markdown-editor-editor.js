@@ -11,7 +11,7 @@ import "@polymer/paper-input/paper-input.js";
 Polymer({
   _template: html`
     <style>
-       :host {
+      :host {
         display: block;
       }
 
@@ -23,20 +23,50 @@ Polymer({
       .mtz-toolbar {
         flex-grow: 5;
       }
-
     </style>
     <mtz-marked-editor id="markededitor">
       <div slot="controls" class="mtz-controls">
-        <mtz-marked-control-generic-wrap icon="editor:format-bold" title="Bold" syntax-prefix="**" syntax-suffix="**" keys="ctrl+b"></mtz-marked-control-generic-wrap>
-        <mtz-marked-control-generic-wrap icon="editor:format-italic" title="Italic" syntax-prefix="_" syntax-suffix="_" keys="ctrl+i"></mtz-marked-control-generic-wrap>
-        <mtz-marked-control-generic-line icon="editor:format-size" title="Heading" syntax-prefix="# "></mtz-marked-control-generic-line>
-        <mtz-marked-control-generic-line icon="editor:format-list-numbered" title="Ordered List" syntax-prefix="1. "></mtz-marked-control-generic-line>
-        <mtz-marked-control-generic-line icon="editor:format-list-bulleted" title="Unordered List" syntax-prefix="- "></mtz-marked-control-generic-line>
-        <mtz-marked-control-link icon="editor:insert-link" title="Link"></mtz-marked-control-link>
+        <mtz-marked-control-generic-wrap
+          icon="editor:format-bold"
+          title="Bold"
+          syntax-prefix="**"
+          syntax-suffix="**"
+          keys="ctrl+b"
+        ></mtz-marked-control-generic-wrap>
+        <mtz-marked-control-generic-wrap
+          icon="editor:format-italic"
+          title="Italic"
+          syntax-prefix="_"
+          syntax-suffix="_"
+          keys="ctrl+i"
+        ></mtz-marked-control-generic-wrap>
+        <mtz-marked-control-generic-line
+          icon="editor:format-size"
+          title="Heading"
+          syntax-prefix="# "
+        ></mtz-marked-control-generic-line>
+        <mtz-marked-control-generic-line
+          icon="editor:format-list-numbered"
+          title="Ordered List"
+          syntax-prefix="1. "
+        ></mtz-marked-control-generic-line>
+        <mtz-marked-control-generic-line
+          icon="editor:format-list-bulleted"
+          title="Unordered List"
+          syntax-prefix="- "
+        ></mtz-marked-control-generic-line>
+        <mtz-marked-control-link
+          icon="editor:insert-link"
+          title="Link"
+        ></mtz-marked-control-link>
       </div>
-      <paper-textarea slot="textarea" label="Start typing..." value="{{content}}"></paper-textarea>
+      <paper-textarea
+        slot="textarea"
+        label="Start typing..."
+        value="{{content}}"
+      ></paper-textarea>
     </mtz-marked-editor>
-`,
+  `,
 
   is: "lrn-markdown-editor-editor",
 

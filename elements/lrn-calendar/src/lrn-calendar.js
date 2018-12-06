@@ -43,7 +43,7 @@ let LrnCalendar = Polymer({
       .calendar {
         color: var(--my-toolbar-title-color);
       }
-      .header{
+      .header {
         padding-bottom: 15px;
       }
     </style>
@@ -51,13 +51,23 @@ let LrnCalendar = Polymer({
     <div class="calendar">
       <div class="header">
         <div style="float: left">
-          <paper-button raised type="button" on-tap="monthView">Month</paper-button>
-          <paper-button raised type="button" on-tap="weekView">Week</paper-button>
+          <paper-button raised type="button" on-tap="monthView"
+            >Month</paper-button
+          >
+          <paper-button raised type="button" on-tap="weekView"
+            >Week</paper-button
+          >
         </div>
         <div style="float: right">
-          <paper-button raised type="button" on-tap="showDate">Today</paper-button>
-          <paper-button on-tap="showPrev"><iron-icon icon="arrow-back"></iron-icon></paper-button>
-          <paper-button on-tap="showNext"><iron-icon icon="arrow-forward"></iron-icon></paper-button>
+          <paper-button raised type="button" on-tap="showDate"
+            >Today</paper-button
+          >
+          <paper-button on-tap="showPrev"
+            ><iron-icon icon="arrow-back"></iron-icon
+          ></paper-button>
+          <paper-button on-tap="showNext"
+            ><iron-icon icon="arrow-forward"></iron-icon
+          ></paper-button>
         </div>
         <div style="margin: 0 auto; width: 200px; text-align: center">
           <h2>[[getDisplayDate(date)]]</h2>
@@ -66,7 +76,7 @@ let LrnCalendar = Polymer({
 
       <div class="calendarView" id="calView"></div>
     </div>
-`,
+  `,
 
   is: "lrn-calendar",
 
@@ -269,8 +279,8 @@ let LrnCalendar = Polymer({
   },
 
   /*
-  * Is called to show the previous month/week depending on option selected
-  */
+   * Is called to show the previous month/week depending on option selected
+   */
   showPrev: function() {
     var current;
     this.startIndex = 0;
@@ -313,8 +323,8 @@ let LrnCalendar = Polymer({
   },
 
   /*
-  * Is called to show the next month/week
-  */
+   * Is called to show the next month/week
+   */
   showNext: function() {
     var current;
     if (this.view == "month") {
@@ -400,10 +410,10 @@ let LrnCalendar = Polymer({
   },
 
   /*
-  * Determines the view and then calls lrn-calendar-date to 
-  * create the individual date blocks
-  * Does the math required to get all the days correct. Ex: Oct 31 -> Nov 1
-  */
+   * Determines the view and then calls lrn-calendar-date to
+   * create the individual date blocks
+   * Does the math required to get all the days correct. Ex: Oct 31 -> Nov 1
+   */
   createCalendar: function() {
     if (this.view != "month") {
       if (this.view != "week") {
@@ -703,9 +713,9 @@ let LrnCalendar = Polymer({
   },
 
   /*
-  * Get events gets the events that are within the calendar corresponding to the specific event
-  * 
-  */
+   * Get events gets the events that are within the calendar corresponding to the specific event
+   *
+   */
   getEvents: function(date, text) {
     if (text == "Not Found") {
       return "";
@@ -733,9 +743,9 @@ let LrnCalendar = Polymer({
   },
 
   /*
-  * Determines what type of recurrence is occuring and calls createRepeatedEvent
-  * The int in the function call is the max number of recurrences
-  */
+   * Determines what type of recurrence is occuring and calls createRepeatedEvent
+   * The int in the function call is the max number of recurrences
+   */
   createRecurrence: function(events) {
     if (events.getRecurrenceTypes().WEEKLY) {
       this.createRepeatedEvent(events, 156);
@@ -749,11 +759,11 @@ let LrnCalendar = Polymer({
   },
 
   /*
-  * Iterates through the recurring event.  Each time it creates a new event.  
-  * Currently it sets the summary and description the same since that will not change
-  * That will need to be adjusted, only info in new Event is start time, end time, summary, and description
-  * The new event is loaded into the array of all the events
-  */
+   * Iterates through the recurring event.  Each time it creates a new event.
+   * Currently it sets the summary and description the same since that will not change
+   * That will need to be adjusted, only info in new Event is start time, end time, summary, and description
+   * The new event is loaded into the array of all the events
+   */
   createRepeatedEvent: function(events, maxRepeat) {
     var iter = events.iterator(events.startDate);
 
@@ -780,8 +790,8 @@ let LrnCalendar = Polymer({
   },
 
   /*
-  * Called from eventCheck, gets the start time of an event and returns it
-  */
+   * Called from eventCheck, gets the start time of an event and returns it
+   */
   createDate: function(event) {
     var year = event.startDate._time.year;
     var month = event.startDate._time.month;
@@ -791,12 +801,12 @@ let LrnCalendar = Polymer({
   },
 
   /*
-  * Check if the event occurs on this date and then includes it in the event array that is returned
-  * this.startIndex determines the index of the event array that it should start looking for the events that occur
-  * on that day.  This is to increase efficiency to not keep scrolling through the list
-  * Once an event is found after the date, it exits the for loop
-  * This is all because the event array is sorted by date
-  */
+   * Check if the event occurs on this date and then includes it in the event array that is returned
+   * this.startIndex determines the index of the event array that it should start looking for the events that occur
+   * on that day.  This is to increase efficiency to not keep scrolling through the list
+   * Once an event is found after the date, it exits the for loop
+   * This is all because the event array is sorted by date
+   */
   eventCheck: function(events, date) {
     var eventsOnDay = [];
     var end = events.length;
@@ -816,8 +826,8 @@ let LrnCalendar = Polymer({
   },
 
   /*
-  * Organizes the events on a certain day in order based on start time
-  */
+   * Organizes the events on a certain day in order based on start time
+   */
   sortByTime: function(eventList) {
     var swapped;
     do {
@@ -847,8 +857,8 @@ let LrnCalendar = Polymer({
   },
 
   /*
-  * Creates an event array that gets all of the events for that certain day
-  */
+   * Creates an event array that gets all of the events for that certain day
+   */
   createReturn: function(event) {
     var EventArray = [];
 
@@ -859,8 +869,8 @@ let LrnCalendar = Polymer({
   },
 
   /*
-  * Gets the date to display on the header, currently the month and year. Returns it as a String
-  */
+   * Gets the date to display on the header, currently the month and year. Returns it as a String
+   */
   getDisplayDate: function(date) {
     if (typeof date.getMonth === "function") {
       var monthInt = date.getMonth();

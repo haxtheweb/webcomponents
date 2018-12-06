@@ -246,8 +246,8 @@ define("ace/keyboard/vim", [
             ? sel.lead
             : sel.anchor
           : p == "head" || !p
-            ? sel.lead
-            : sel.getRange()[p];
+          ? sel.lead
+          : sel.getRange()[p];
       return toCmPos(pos);
     };
     this.listSelections = function(p) {
@@ -3862,8 +3862,8 @@ define("ace/keyboard/vim", [
           subMode: vim.visualLine
             ? "linewise"
             : vim.visualBlock
-              ? "blockwise"
-              : ""
+            ? "blockwise"
+            : ""
         });
         updateCmSelection(cm);
         updateMark(cm, vim, "<", cursorMin(anchor, head));
@@ -3879,8 +3879,8 @@ define("ace/keyboard/vim", [
           subMode: vim.visualLine
             ? "linewise"
             : vim.visualBlock
-              ? "blockwise"
-              : ""
+            ? "blockwise"
+            : ""
         });
         updateCmSelection(cm);
       } else {
@@ -3913,8 +3913,8 @@ define("ace/keyboard/vim", [
           subMode: vim.visualLine
             ? "linewise"
             : vim.visualBlock
-              ? "blockwise"
-              : ""
+            ? "blockwise"
+            : ""
         });
       }
     },
@@ -4299,14 +4299,14 @@ define("ace/keyboard/vim", [
       return pressedPrefix == mappedPrefix && pressed.length > prefixLen
         ? "full"
         : mappedPrefix.indexOf(pressedPrefix) == 0
-          ? "partial"
-          : false;
+        ? "partial"
+        : false;
     } else {
       return pressed == mapped
         ? "full"
         : mapped.indexOf(pressed) == 0
-          ? "partial"
-          : false;
+        ? "partial"
+        : false;
     }
   }
   function lastChar(keys) {
@@ -5972,20 +5972,20 @@ define("ace/keyboard/vim", [
       var numberRegex = pattern
         ? pattern
         : number == "decimal"
-          ? /(-?)([\d]+)/
-          : number == "hex"
-            ? /(-?)(?:0x)?([0-9a-f]+)/i
-            : number == "octal"
-              ? /([0-7]+)/
-              : null;
+        ? /(-?)([\d]+)/
+        : number == "hex"
+        ? /(-?)(?:0x)?([0-9a-f]+)/i
+        : number == "octal"
+        ? /([0-7]+)/
+        : null;
       var radix =
         number == "decimal"
           ? 10
           : number == "hex"
-            ? 16
-            : number == "octal"
-              ? 8
-              : null;
+          ? 16
+          : number == "octal"
+          ? 8
+          : null;
       var numPart = [],
         textPart = [];
       if (number || pattern) {

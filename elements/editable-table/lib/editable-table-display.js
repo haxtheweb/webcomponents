@@ -60,7 +60,7 @@ Polymer({
       :host([row-header]) .table .tbody .tr .th {
         @apply --editable-table-style-row-header;
       }
-      :host([footer]) .table .tfoot .tr .th, 
+      :host([footer]) .table .tfoot .tr .th,
       :host([footer]) .table .tfoot .tr .td {
         @apply --editable-table-style-footer;
       }
@@ -70,9 +70,16 @@ Polymer({
         <div>
           <div>[[caption]]</div>
           <dropdown-select id="column" label\$="[[tables.0.label]]" value="1">
-            <template is="dom-repeat" items\$="[[thead.0]]" as="col" index-as="index">
+            <template
+              is="dom-repeat"
+              items\$="[[thead.0]]"
+              as="col"
+              index-as="index"
+            >
               <template is="dom-if" if="[[columnHeader]]">
-                <paper-item id\$="[[index]]" value\$="[[index]]">[[col]]</paper-item>
+                <paper-item id\$="[[index]]" value\$="[[index]]"
+                  >[[col]]</paper-item
+                >
               </template>
               <template is="dom-if" if="[[!columnHeader]]">
                 <paper-item id\$="[[index]]">Column [[index]]</paper-item>
@@ -81,53 +88,117 @@ Polymer({
           </dropdown-select>
         </div>
       </caption>
-      <thead class="thead" hidden="[[!columnHeader]]"> 
+      <thead class="thead" hidden="[[!columnHeader]]">
         <tr class="tr">
-          <template is="dom-repeat" items\$="[[thead.0]]" as="th" index-as="index">
+          <template
+            is="dom-repeat"
+            items\$="[[thead.0]]"
+            as="th"
+            index-as="index"
+          >
             <th class="th" scope="col" numeric\$="[[_isNumericColumn(index)]]">
-              <template is="dom-if" if="[[sort]]" restamp=""> 
-                <editable-table-sort sort-column\$="[[sortColumn]]" column-number="[[index]]" text\$="[[th]]"></editable-table-sort>
+              <template is="dom-if" if="[[sort]]" restamp="">
+                <editable-table-sort
+                  sort-column\$="[[sortColumn]]"
+                  column-number="[[index]]"
+                  text\$="[[th]]"
+                ></editable-table-sort>
               </template>
-              <template is="dom-if" if="[[!sort]]" restamp="">[[th]]</template>
+              <template is="dom-if" if="[[!sort]]" restamp=""
+                >[[th]]</template
+              >
             </th>
           </template>
-        </tr> 
+        </tr>
       </thead>
-      <tbody id="tbody" class="tbody"> 
-        <template is="dom-repeat" items\$="[[tbody]]" as="tr" filter="{{filterRows(filterColumn,filterText)}}" restamp="">
+      <tbody id="tbody" class="tbody">
+        <template
+          is="dom-repeat"
+          items\$="[[tbody]]"
+          as="tr"
+          filter="{{filterRows(filterColumn,filterText)}}"
+          restamp=""
+        >
           <tr class="tr">
-            <template is="dom-repeat" items\$="[[tr]]" as="cell" index-as="index" restamp="">
-              <template is="dom-if" if="[[_isRowHeader(rowHeader,index)]]" restamp="">
-                <th class="th" scope="row" numeric\$="[[_isNumericColumn(index)]]">[[cell]]</th>
+            <template
+              is="dom-repeat"
+              items\$="[[tr]]"
+              as="cell"
+              index-as="index"
+              restamp=""
+            >
+              <template
+                is="dom-if"
+                if="[[_isRowHeader(rowHeader,index)]]"
+                restamp=""
+              >
+                <th
+                  class="th"
+                  scope="row"
+                  numeric\$="[[_isNumericColumn(index)]]"
+                >
+                  [[cell]]
+                </th>
               </template>
-              <template is="dom-if" if="[[!_isRowHeader(rowHeader,index)]]" restamp="">
-                <td class="td" numeric\$="[[_isNumericColumn(index)]]" negative\$="[[_isNegative(cell)]]">
+              <template
+                is="dom-if"
+                if="[[!_isRowHeader(rowHeader,index)]]"
+                restamp=""
+              >
+                <td
+                  class="td"
+                  numeric\$="[[_isNumericColumn(index)]]"
+                  negative\$="[[_isNegative(cell)]]"
+                >
                   <template is="dom-if" if="[[filter]]" restamp="">
-                    <editable-table-filter column-number="[[index]]" text\$="[[cell]]" filtered\$="[[_isFiltered(index,filterColumn,filtered)]]"></editable-table-filter>                      
+                    <editable-table-filter
+                      column-number="[[index]]"
+                      text\$="[[cell]]"
+                      filtered\$="[[_isFiltered(index,filterColumn,filtered)]]"
+                    ></editable-table-filter>
                   </template>
-                  <template is="dom-if" if="[[!filter]]" restamp=""><span class="cell">[[cell]]</span></template>
+                  <template is="dom-if" if="[[!filter]]" restamp=""
+                    ><span class="cell">[[cell]]</span></template
+                  >
                 </td>
               </template>
             </template>
-          </tr> 
+          </tr>
         </template>
       </tbody>
       <template is="dom-if" if="[[footer]]">
         <tfoot class="tfoot">
           <tr class="tr">
-            <template is="dom-repeat" items\$="[[__tfoot.0]]" as="cell" index-as="index">
+            <template
+              is="dom-repeat"
+              items\$="[[__tfoot.0]]"
+              as="cell"
+              index-as="index"
+            >
               <template is="dom-if" if="[[_isRowHeader(rowHeader,index)]]">
-                <th class="th" scope="row" numeric\$="[[_isNumericColumn(index)]]">[[cell]]</th>
+                <th
+                  class="th"
+                  scope="row"
+                  numeric\$="[[_isNumericColumn(index)]]"
+                >
+                  [[cell]]
+                </th>
               </template>
               <template is="dom-if" if="[[!_isRowHeader(rowHeader,index)]]">
-                <td class="td" numeric\$="[[_isNumericColumn(index)]]" negative\$="[[_isNegative(cell)]]">[[cell]]</td>
+                <td
+                  class="td"
+                  numeric\$="[[_isNumericColumn(index)]]"
+                  negative\$="[[_isNegative(cell)]]"
+                >
+                  [[cell]]
+                </td>
               </template>
             </template>
-          </tr> 
+          </tr>
         </tfoot>
       </template>
     </table>
-`,
+  `,
 
   is: "editable-table-display",
 

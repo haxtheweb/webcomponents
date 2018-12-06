@@ -32,9 +32,13 @@ let LrndesignDrawer = Polymer({
         <slot></slot>
       </app-drawer>
     </app-header>
-    <paper-icon-button icon="[[icon]]" alt="[[alt]]" id="flyout-drawer"></paper-icon-button>
+    <paper-icon-button
+      icon="[[icon]]"
+      alt="[[alt]]"
+      id="flyout-drawer"
+    ></paper-icon-button>
     <paper-tooltip for="flyout-drawer">[[alt]]</paper-tooltip>
-`,
+  `,
 
   is: "lrndesign-drawer",
 

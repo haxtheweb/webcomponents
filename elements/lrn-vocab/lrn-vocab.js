@@ -17,32 +17,32 @@ Vocabulary term with visual treatment and semantic meaning.
 */
 let LrnVocab = Polymer({
   _template: html`
-  <custom-style>
-    <style is="custom-style">
-      :host {
-        display: inline-flex;
-        --lrn-vocab-border: 1px dashed #ccc;
-      }
-      paper-button {
-        text-transform: none;
-        padding: 0;
-        margin: 0;
-        position: relative;
-        top:0px;
-        border-radius:0;
-        border-bottom: var(--lrn-vocab-border);
-        background:#f5f5f5;
-        @apply --lrn-vocab-button
-      }
-      paper-button:hover {
-        background:#bbdefb;
-        border-bottom: 1px dashed #2196f3;
-        @apply --lrn-vocab-button-hover
-      }
-    </style>
-  </custom-style>
-  <paper-button id="button" noink on-tap="openDialog">[[term]]</paper-button>
-`,
+    <custom-style>
+      <style is="custom-style">
+        :host {
+          display: inline-flex;
+          --lrn-vocab-border: 1px dashed #ccc;
+        }
+        paper-button {
+          text-transform: none;
+          padding: 0;
+          margin: 0;
+          position: relative;
+          top: 0px;
+          border-radius: 0;
+          border-bottom: var(--lrn-vocab-border);
+          background: #f5f5f5;
+          @apply --lrn-vocab-button;
+        }
+        paper-button:hover {
+          background: #bbdefb;
+          border-bottom: 1px dashed #2196f3;
+          @apply --lrn-vocab-button-hover;
+        }
+      </style>
+    </custom-style>
+    <paper-button id="button" noink on-tap="openDialog">[[term]]</paper-button>
+  `,
 
   is: "lrn-vocab",
 

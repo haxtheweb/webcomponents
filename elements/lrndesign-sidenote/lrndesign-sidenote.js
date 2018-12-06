@@ -57,7 +57,7 @@ let LrndesignSidenote = Polymer({
       </div>
       <slot></slot>
     </div>
-`,
+  `,
 
   is: "lrndesign-sidenote",
 

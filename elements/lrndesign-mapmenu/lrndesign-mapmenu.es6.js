@@ -11,4 +11,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
     </style>
     <slot></slot>
-`,is:"lrndesign-mapmenu",properties:{}});export{LrndesignMapmenu};
+  `,is:"lrndesign-mapmenu",properties:{}});export{LrndesignMapmenu};

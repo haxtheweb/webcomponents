@@ -52,32 +52,31 @@ let MemeMaker = Polymer({
         font-size: 36px;
 
         color: white;
-        text-shadow:
-          -1px -1px 0 #000,
-          1px -1px 0 #000,
-          -1px 1px 0 #000,
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
           1px 1px 0 #000;
         letter-spacing: 2px;
       }
 
-      .top-text { top: 0; }
-      .bottom-text { bottom: 0; }
+      .top-text {
+        top: 0;
+      }
+      .bottom-text {
+        bottom: 0;
+      }
 
       @media (max-width: 600px) {
-
         .top-text,
         .bottom-text {
           font-size: 20px;
         }
-
       }
     </style>
     <figure>
-      <img src="[[imageUrl]]" alt="[[alt]]">
+      <img src="[[imageUrl]]" alt="[[alt]]" />
       <figcaption class="top-text">[[topText]]</figcaption>
       <figcaption class="bottom-text">[[bottomText]]</figcaption>
     </figure>
-`,
+  `,
 
   is: "meme-maker",
 

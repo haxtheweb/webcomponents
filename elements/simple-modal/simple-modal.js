@@ -39,96 +39,103 @@ class SimpleModal extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
-  display: block;
-}
+      <style>
+        :host {
+          display: block;
+        }
 
-:host([hidden]) {
-  display: none;
-}
-:host ::slotted(*) {
-  font-size: 14px;
-  @apply --simple-modal-content;
-}
+        :host([hidden]) {
+          display: none;
+        }
+        :host ::slotted(*) {
+          font-size: 14px;
+          @apply --simple-modal-content;
+        }
 
-paper-dialog-scrollable {
-  padding: 8px 24px;
-  @apply --simple-modal-content-container;
-}
-#dialog {
-  display: block;
-  margin: auto;
-  width: auto;
-  height: auto;
-  z-index: 1000;
-  min-width: 50vw;
-  min-height: 50vh;
-  @apply --simple-modal-dialog;
-}
-.buttons {
-  padding: 8px 24px;
-  @apply --simple-modal-buttons;
-}
+        .content {
+          padding: 8px 24px;
+          @apply --simple-modal-content-container;
+        }
+        #dialog {
+          display: block;
+          margin: auto;
+          width: auto;
+          height: auto;
+          z-index: 1000;
+          min-width: 50vw;
+          min-height: 50vh;
+          @apply --simple-modal-dialog;
+        }
+        .buttons {
+          padding: 8px 24px;
+          @apply --simple-modal-buttons;
+        }
 
-#close {
-  top: 0;
-  font-size: 14px;
-  text-transform: none;
-  right: 0;
-  position: absolute;
-  padding: 4px;
-  margin: 4px;
-  color: var(--simple-modal-text, #ffffff);
-  background-color: transparent;
-  min-width: unset;
-  line-height: 32px;
-  @apply --simple-modal-close;
-}
+        #close {
+          top: 0;
+          font-size: 14px;
+          text-transform: none;
+          right: 0;
+          position: absolute;
+          padding: 4px;
+          margin: 4px;
+          color: var(--simple-modal-header-color, #ffffff);
+          background-color: transparent;
+          min-width: unset;
+          line-height: 32px;
+          @apply --simple-modal-close;
+        }
 
-#close iron-icon {
-  display: inline-block;
-  color: var(--simple-modal-text, #ffffff);
-  width: 16px;
-  height: 16px;
-  margin-right: 4px;
-  @apply --simple-modal-close-icon;
-}
+        #close iron-icon {
+          display: inline-block;
+          color: var(--simple-modal-header-color, #ffffff);
+          width: 16px;
+          height: 16px;
+          margin-right: 4px;
+          @apply --simple-modal-close-icon;
+        }
 
-.top {
-  display: flex;
-  margin-top: 0;
-  justify-content: space-between;
-  background-color: var(--simple-modal-background, #20427b);
-  color: var(--simple-modal-text, #ffffff);
-  padding: 8px 16px;
-  @apply --simple-modal-top;
-}
-.top h2 {
-  flex: auto;
-  color: var(--simple-modal-text, #ffffff);
-  font-size: 32px;
-  text-transform: capitalize;
-  padding: 0;
-  line-height: 32px;
-  margin: 8px;
-  @apply --simple-modal-heading;
-}</style>
-<paper-dialog id="dialog" entry-animation="scale-up-animation"
-exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-top>
-  <div class="top">
-    <slot name="header"></slot>
-    <h2 hidden$="[[!title]]">[[title]]</h2>
-    <paper-button id="close" dialog-dismiss hidden$="[[!opened]]">
-      <iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]
-    </paper-button>
-  </div>
-  <paper-dialog-scrollable>
-    <slot name="content"></slot>
-  </paper-dialog-scrollable>
-  <div class="buttons">
-    <slot name="buttons"></slot>
-  </div>
-</paper-dialog>`;
+        .top {
+          display: flex;
+          margin-top: 0;
+          justify-content: space-between;
+          background-color: var(--simple-modal-header-background, #20427b);
+          color: var(--simple-modal-header-color, #ffffff);
+          padding: 8px 16px;
+          @apply --simple-modal-top;
+        }
+        .top h2 {
+          flex: auto;
+          color: var(--simple-modal-header-color, #ffffff);
+          font-size: 32px;
+          text-transform: capitalize;
+          padding: 0;
+          line-height: 32px;
+          margin: 8px;
+          @apply --simple-modal-heading;
+        }
+      </style>
+      <paper-dialog
+        id="dialog"
+        entry-animation="scale-up-animation"
+        exit-animation="fade-out-animation"
+        opened="{{opened}}"
+        with-backdrop
+        always-on-top
+      >
+        <div class="top">
+          <h2 hidden$="[[!title]]">[[title]]</h2>
+          <slot name="header"></slot>
+          <paper-button id="close" dialog-dismiss hidden$="[[!opened]]">
+            <iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]
+          </paper-button>
+        </div>
+        <paper-dialog-scrollable>
+          <slot name="content"></slot>
+        </paper-dialog-scrollable>
+        <div class="buttons"><slot name="buttons"></slot></div>
+      </paper-dialog>
+    `;
   }
 
   // properties available to the custom element for data binding

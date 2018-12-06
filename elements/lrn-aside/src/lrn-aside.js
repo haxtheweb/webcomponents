@@ -12,17 +12,17 @@ let LrnAside = Polymer({
     <style>
       :host {
         display: flex;
-		    padding: 8px;
+        padding: 8px;
       }
       :host([sticky]) {
-        top:0;
+        top: 0;
         position: sticky;
       }
-      :host([direction='left']) {
+      :host([direction="left"]) {
         float: left;
         max-width: 480px;
       }
-      :host([direction='right']) {
+      :host([direction="right"]) {
         float: right;
         max-width: 480px;
       }
@@ -32,7 +32,7 @@ let LrnAside = Polymer({
         <slot></slot>
       </lrndesign-panelcard>
     </aside>
-`,
+  `,
 
   is: "lrn-aside",
 

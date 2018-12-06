@@ -44,7 +44,7 @@ Polymer({
       app-drawer {
         --app-drawer-content-container: {
           background-color: rgba(0, 0, 0, 0.7);
-        };
+        }
         --app-drawer-width: 320px;
       }
       .buttons paper-button:focus,
@@ -56,8 +56,8 @@ Polymer({
       .buttons paper-button {
         color: #222222;
         text-transform: none;
-        margin:0;
-        background-color: #F8F8F8;
+        margin: 0;
+        background-color: #f8f8f8;
         display: flex;
         border-radius: 0px;
         border-style: solid;
@@ -88,7 +88,7 @@ Polymer({
         width: 80%;
         width: -webkit-fill-available;
         background-color: transparent;
-        color: #EEEEEE;
+        color: #eeeeee;
         font-family: monospace;
       }
     </style>
@@ -97,18 +97,32 @@ Polymer({
       <div style="height: 100%; overflow: auto;" class="pref-container">
         <textarea id="textarea" rows="20"></textarea>
         <div class="buttons">
-          <paper-button id="downloadfull" raised="">Download as full file</paper-button>
-          <paper-button id="download" raised="">Download HTML contents only</paper-button>
+          <paper-button id="downloadfull" raised=""
+            >Download as full file</paper-button
+          >
+          <paper-button id="download" raised=""
+            >Download HTML contents only</paper-button
+          >
           <paper-button id="copy" raised="">Copy to clipboard</paper-button>
-          <paper-button id="import" raised="" hidden\$="[[!globalPreferences.haxDeveloperMode]]">Import textarea into HAX</paper-button>
-          <paper-button id="elementexport" raised="" hidden\$="[[!globalPreferences.haxDeveloperMode]]">Copy as HAX schema to clipboard</paper-button>
+          <paper-button
+            id="import"
+            raised=""
+            hidden\$="[[!globalPreferences.haxDeveloperMode]]"
+            >Import textarea into HAX</paper-button
+          >
+          <paper-button
+            id="elementexport"
+            raised=""
+            hidden\$="[[!globalPreferences.haxDeveloperMode]]"
+            >Copy as HAX schema to clipboard</paper-button
+          >
         </div>
       </div>
       <paper-button id="closedialog" on-tap="close">
         <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
       </paper-button>
     </app-drawer>
-`,
+  `,
 
   is: "hax-export-dialog",
 

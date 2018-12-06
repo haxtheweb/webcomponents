@@ -25,93 +25,101 @@ Please see the `eco-json-schema-object` documentation for further information.
 Polymer({
   is: "eco-json-schema-array",
   _template: html`
-  <custom-style>
-  <style is="custom-style" include="iron-flex iron-flex-alignment">
-      paper-input {
-        padding: 2px;
+    <custom-style>
+      <style is="custom-style" include="iron-flex iron-flex-alignment">
+        paper-input {
+          padding: 2px;
 
-        --paper-input-container-label: {
+          --paper-input-container-label: {
+            white-space: normal;
+            position: static;
+            font-size: 22px;
+            color: #212121;
+          }
+        }
+
+        paper-collapse-item {
+          --paper-collapse-item-header: {
+            font-weight: bold;
+            padding: 8px 0 0 8px;
+          }
+        }
+
+        #form {
+          border: 1px solid #aaaaaa;
+        }
+
+        #form div:nth-child(odd) {
+          background-color: #f2f2f2;
+          padding: 4px;
+        }
+
+        #form div:nth-child(even) {
+          background-color: #e2e2e2;
+          border-top: 1px solid #aaaaaa;
+          border-bottom: 1px solid #aaaaaa;
+          padding: 4px;
+        }
+
+        #form div:focus,
+        #form div:hover,
+        #form div:active {
+          background-color: #ffffff !important;
+        }
+
+        paper-icon-button {
+          float: right;
+          border-radius: 50%;
+        }
+
+        .array-add {
+          color: #34e79a;
+          background-color: #f8f8f8;
+        }
+
+        .array-remove-element {
+          color: #f44336;
+          background-color: #f8f8f8;
+        }
+
+        .label {
+          @apply --paper-input-container-label;
           white-space: normal;
           position: static;
           font-size: 22px;
           color: #212121;
         }
-      }
 
-      paper-collapse-item {
-        --paper-collapse-item-header: {
-          font-weight: bold;
-          padding: 8px 0 0 8px;
+        :host {
+          display: block;
         }
-
-        ;
-      }
-
-      #form {
-        border: 1px solid #AAAAAA;
-      }
-
-      #form div:nth-child(odd) {
-        background-color: #F2F2F2;
-        padding: 4px;
-      }
-
-      #form div:nth-child(even) {
-        background-color: #E2E2E2;
-        border-top: 1px solid #AAAAAA;
-        border-bottom: 1px solid #AAAAAA;
-        padding: 4px;
-      }
-
-      #form div:focus,
-      #form div:hover,
-      #form div:active {
-        background-color: #FFFFFF !important;
-      }
-
-      paper-icon-button {
-        float: right;
-        border-radius: 50%;
-      }
-
-      .array-add {
-        color: #34e79a;
-        background-color: #f8f8f8;
-      }
-
-      .array-remove-element {
-        color: #f44336;
-        background-color: #f8f8f8;
-      }
-
-      .label {
-        @apply --paper-input-container-label;
-        white-space: normal;
-        position: static;
-        font-size: 22px;
-        color: #212121;
-      }
-
-      :host {
-        display: block;
-      }
-      .label {
-        white-space: normal;
-        position: static;
-        font-size: 22px;
-        color: #212121;
-        @apply --paper-input-container-label;
-      }
-    </style>
+        .label {
+          white-space: normal;
+          position: static;
+          font-size: 22px;
+          color: #212121;
+          @apply --paper-input-container-label;
+        }
+      </style>
     </custom-style>
     <div class="horizontal layout">
       <div class="flex" hidden\$="[[!label]]">[[label]]</div>
-      <paper-icon-button id="addarray" title="Add another item" class="array-add" icon="add" on-click="_onAddItem" role="button" aria-label="Add another item"></paper-icon-button>
+      <paper-icon-button
+        id="addarray"
+        title="Add another item"
+        class="array-add"
+        icon="add"
+        on-click="_onAddItem"
+        role="button"
+        aria-label="Add another item"
+      ></paper-icon-button>
     </div>
 
-    <paper-collapse-group id="form" class="vertical flex layout"></paper-collapse-group>
-  
-`,
+    <paper-collapse-group
+      id="form"
+      class="vertical flex layout"
+    ></paper-collapse-group>
+  `,
   properties: {
     schema: {
       type: Object,

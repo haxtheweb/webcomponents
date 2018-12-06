@@ -38,102 +38,109 @@ class SimpleDrawer extends PolymerElement {
   // render function
   static get template() {
     return html`
-<style>:host {
-  display: block;
-  z-index: 1000;
-}
-:host([hidden]) {
-  display: none;
-}
+      <style>
+        :host {
+          display: block;
+          z-index: 1000;
+        }
+        :host([hidden]) {
+          display: none;
+        }
 
-app-drawer {
-  --app-drawer-width: var(--simple-drawer-width, 256px);
-  --app-drawer-content-container: {
-    padding: 0;
-    overflow-y: scroll;
-    position: fixed;
-    color: var(--simple-drawer-color, #222222);
-    background-color: var(--simple-drawer-background-color, #FFFFFF);
-  }
-}
-:host ::slotted(*) {
-  font-size: 14px;
-  @apply --simple-drawer-content;
-}
+        app-drawer {
+          --app-drawer-width: var(--simple-drawer-width, 256px);
+          --app-drawer-content-container: {
+            padding: 0;
+            overflow-y: scroll;
+            position: fixed;
+            color: var(--simple-drawer-color, #222222);
+            background-color: var(--simple-drawer-background-color, #ffffff);
+          }
+        }
+        :host ::slotted(*) {
+          font-size: 14px;
+          @apply --simple-drawer-content;
+        }
 
-.content {
-  text-align: left;
-  padding: 8px 24px;
-  @apply --simple-drawer-content-container;
-}
+        .content {
+          text-align: left;
+          padding: 8px 24px;
+          @apply --simple-drawer-content-container;
+        }
 
-.top ::slotted(*) {
-  font-size: 24px;
-  margin: 0;
-  padding: 0 15px;
-  height: 40px;
-  line-height: 48px;
-}
+        .top ::slotted(*) {
+          font-size: 24px;
+          margin: 0;
+          padding: 0 15px;
+          height: 40px;
+          line-height: 48px;
+        }
 
-#close {
-  position: absolute;
-  right: 8px;
-  top: 8px;
-  padding: 4px;
-  margin: 0;
-  text-transform: none;
-  float: right;
-  font-size: 12px;
-  color: var(--simple-drawer-header-color, #ffffff);
-  background-color: transparent;
-  min-width: unset;
-}
+        #close {
+          position: absolute;
+          right: 8px;
+          top: 8px;
+          padding: 4px;
+          margin: 0;
+          text-transform: none;
+          float: right;
+          font-size: 12px;
+          color: var(--simple-drawer-header-color, #ffffff);
+          background-color: transparent;
+          min-width: unset;
+        }
 
-#close iron-icon {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  margin-right: 2px;
-}
+        #close iron-icon {
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          margin-right: 2px;
+        }
 
-.top {
-  font-size: 24px;
-  margin: 0 0 8px 0;
-  padding: 0 16px;
-  height: 40px;
-  line-height: 48px;
-  display: flex;
-  text-align: left;
-  justify-content: space-between;
-  background-color: var(--simple-drawer-header-background, #20427b);
-  color: var(--simple-drawer-header-color, #ffffff);
-  @apply --simple-drawer-header;
-}
+        .top {
+          font-size: 24px;
+          margin: 0 0 8px 0;
+          padding: 0 16px;
+          height: 40px;
+          line-height: 48px;
+          display: flex;
+          text-align: left;
+          justify-content: space-between;
+          background-color: var(--simple-drawer-header-background, #20427b);
+          color: var(--simple-drawer-header-color, #ffffff);
+          @apply --simple-drawer-header;
+        }
 
-.top h2 {
-  flex: auto;
-  color: var(--simple-drawer-header-color, #ffffff);
-  font-size: 24px;
-  padding: 0;
-  line-height: 32px;
-  margin: 8px;
-  @apply --simple-drawer-heading;
-}</style>
-<style is="custom-style" include="simple-colors"></style>
-<app-drawer tabindex="0" id="drawer" opened="{{opened}}" align="[[align]]" role="dialog">
-  <div class="wrapper">
-    <div class="top">
-      <h2 hidden$="[[!title]]">[[title]]</h2>
-      <slot name="header"></slot>
-    </div>
-    <div class="content">
-      <slot name="content"></slot>
-    </div>
-    <paper-button id="close" on-tap="close">
-      <iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]
-    </paper-button>
-  </div>
-</app-drawer>`;
+        .top h2 {
+          flex: auto;
+          color: var(--simple-drawer-header-color, #ffffff);
+          font-size: 24px;
+          padding: 0;
+          line-height: 32px;
+          margin: 8px;
+          @apply --simple-drawer-heading;
+        }
+      </style>
+      <style is="custom-style" include="simple-colors"></style>
+      <app-drawer
+        tabindex="0"
+        id="drawer"
+        opened="{{opened}}"
+        align="[[align]]"
+        role="dialog"
+      >
+        <div class="wrapper">
+          <div class="top">
+            <h2 hidden$="[[!title]]">[[title]]</h2>
+            <slot name="header"></slot>
+          </div>
+          <div class="content"><slot name="content"></slot></div>
+          <paper-button id="close" on-tap="close">
+            <iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]
+          </paper-button>
+        </div>
+      </app-drawer>
+    `;
   }
 
   // properties available to the custom element for data binding

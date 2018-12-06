@@ -34,7 +34,7 @@ let LrnsysComment = Polymer({
         padding: 10px 10px 10px 0px;
       }
       :host([disabled]) {
-        opacity: .5;
+        opacity: 0.5;
         background-color: #cccccc;
         pointer-events: none;
       }
@@ -175,7 +175,7 @@ let LrnsysComment = Polymer({
         top: 0px;
       }
       .like-icon-color {
-        color: #2196F3;
+        color: #2196f3;
       }
       .element-invisible {
         position: absolute;
@@ -188,52 +188,153 @@ let LrnsysComment = Polymer({
     </style>
     <div class\$="comment-outer [[commentNew]]">
       <div class="comment-inner">
-        <div class\$="comment-depth comment-depth-[[comment.attributes.threadDepth]] grey lighten-3"></div>
+        <div
+          class\$="comment-depth comment-depth-[[comment.attributes.threadDepth]] grey lighten-3"
+        ></div>
         <div class="comment-avatar">
-          <lrndesign-avatar id="avatar" label="[[comment.relationships.author.data.name]]" src="[[comment.relationships.author.data.avatar]]" class="float-left ferpa-protect"></lrndesign-avatar>
-          <paper-tooltip for="avatar" animation-delay="0" class="ferpa-protect">[[displayName]]</paper-tooltip>
+          <lrndesign-avatar
+            id="avatar"
+            label="[[comment.relationships.author.data.name]]"
+            src="[[comment.relationships.author.data.avatar]]"
+            class="float-left ferpa-protect"
+          ></lrndesign-avatar>
+          <paper-tooltip for="avatar" animation-delay="0" class="ferpa-protect"
+            >[[displayName]]</paper-tooltip
+          >
         </div>
         <div class="comment-content">
           <div class="comment-body">
             <div id="bodyarea" class="nowrap-me">
               <h4 class="ferpa-protect comment-heading">
-                <span class="element-invisible">At </span><moment-element datetime\$="[[comment.attributes.created]]" output-format="MMM DD[,] YYYY"></moment-element>
-                [[comment.relationships.author.data.display_name]] <span class="element-invisible">[[comment.relationships.author.data.visual.label]]</span> said:
+                <span class="element-invisible">At </span
+                ><moment-element
+                  datetime\$="[[comment.attributes.created]]"
+                  output-format="MMM DD[,] YYYY"
+                ></moment-element>
+                [[comment.relationships.author.data.display_name]]
+                <span class="element-invisible"
+                  >[[comment.relationships.author.data.visual.label]]</span
+                >
+                said:
               </h4>
-              <marked-element smartypants id="renderedcomment" markdown="[[comment.attributes.body]]">
-                <word-count class="markdown-html-slot" slot="markdown-html"></word-count>
+              <marked-element
+                smartypants
+                id="renderedcomment"
+                markdown="[[comment.attributes.body]]"
+              >
+                <word-count
+                  class="markdown-html-slot"
+                  slot="markdown-html"
+                ></word-count>
               </marked-element>
             </div>
             <mtz-marked-editor id="commenteditor" hidden>
               <div slot="controls">
-                <mtz-marked-control-generic-wrap icon="editor:format-bold" title="Bold" syntax-prefix="**" syntax-suffix="**" keys="ctrl+b"></mtz-marked-control-generic-wrap>
-                <mtz-marked-control-generic-wrap icon="editor:format-italic" title="Italic" syntax-prefix="_" syntax-suffix="_" keys="ctrl+i"></mtz-marked-control-generic-wrap>
-                <mtz-marked-control-generic-line icon="editor:format-size" title="Heading 3" syntax-prefix="### "></mtz-marked-control-generic-line>
-                <mtz-marked-control-generic-line icon="editor:format-list-numbered" title="Ordered List" syntax-prefix="1. "></mtz-marked-control-generic-line>
-                <mtz-marked-control-generic-line icon="editor:format-list-bulleted" title="Unordered List" syntax-prefix="- "></mtz-marked-control-generic-line>
-                <mtz-marked-control-link icon="editor:insert-link" title="Link"></mtz-marked-control-link>
+                <mtz-marked-control-generic-wrap
+                  icon="editor:format-bold"
+                  title="Bold"
+                  syntax-prefix="**"
+                  syntax-suffix="**"
+                  keys="ctrl+b"
+                ></mtz-marked-control-generic-wrap>
+                <mtz-marked-control-generic-wrap
+                  icon="editor:format-italic"
+                  title="Italic"
+                  syntax-prefix="_"
+                  syntax-suffix="_"
+                  keys="ctrl+i"
+                ></mtz-marked-control-generic-wrap>
+                <mtz-marked-control-generic-line
+                  icon="editor:format-size"
+                  title="Heading 3"
+                  syntax-prefix="### "
+                ></mtz-marked-control-generic-line>
+                <mtz-marked-control-generic-line
+                  icon="editor:format-list-numbered"
+                  title="Ordered List"
+                  syntax-prefix="1. "
+                ></mtz-marked-control-generic-line>
+                <mtz-marked-control-generic-line
+                  icon="editor:format-list-bulleted"
+                  title="Unordered List"
+                  syntax-prefix="- "
+                ></mtz-marked-control-generic-line>
+                <mtz-marked-control-link
+                  icon="editor:insert-link"
+                  title="Link"
+                ></mtz-marked-control-link>
               </div>
-              <paper-textarea char-counter autofocus id="editcomment" label="Comment" value="{{comment.attributes.body}}" slot="textarea"></paper-textarea>
+              <paper-textarea
+                char-counter
+                autofocus
+                id="editcomment"
+                label="Comment"
+                value="{{comment.attributes.body}}"
+                slot="textarea"
+              ></paper-textarea>
             </mtz-marked-editor>
           </div>
           <div class="comment-actions">
             <div class="comment-actions-group left-actions">
-              <lrnsys-button on-tap="actionHandler" id="reply" data-commentid="[[comment.id]]" alt="Reply" icon="reply" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.reply]]"></lrnsys-button>
-              <lrnsys-button on-tap="actionHandler" id="like" data-commentid="[[comment.id]]" alt="Like" icon="thumb-up" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.like]]"></lrnsys-button>
+              <lrnsys-button
+                on-tap="actionHandler"
+                id="reply"
+                data-commentid="[[comment.id]]"
+                alt="Reply"
+                icon="reply"
+                hover-class="[[hoverClass]]"
+                icon-class="grey-text no-margin"
+                hidden\$="[[!comment.actions.reply]]"
+              ></lrnsys-button>
+              <lrnsys-button
+                on-tap="actionHandler"
+                id="like"
+                data-commentid="[[comment.id]]"
+                alt="Like"
+                icon="thumb-up"
+                hover-class="[[hoverClass]]"
+                icon-class="grey-text no-margin"
+                hidden\$="[[!comment.actions.like]]"
+              ></lrnsys-button>
             </div>
             <div class="comment-actions-group right-actions">
-              <lrnsys-button on-tap="actionHandler" id="edit" data-commentid="[[comment.id]]" icon="create" alt="Edit" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.edit]]"></lrnsys-button>
-              <lrnsys-button on-tap="actionHandler" id="delete" data-commentid="[[comment.id]]" icon="delete-forever" alt="Delete" hover-class="[[hoverClass]]" icon-class="grey-text no-margin" hidden\$="[[!comment.actions.delete]]"></lrnsys-button>
+              <lrnsys-button
+                on-tap="actionHandler"
+                id="edit"
+                data-commentid="[[comment.id]]"
+                icon="create"
+                alt="Edit"
+                hover-class="[[hoverClass]]"
+                icon-class="grey-text no-margin"
+                hidden\$="[[!comment.actions.edit]]"
+              ></lrnsys-button>
+              <lrnsys-button
+                on-tap="actionHandler"
+                id="delete"
+                data-commentid="[[comment.id]]"
+                icon="delete-forever"
+                alt="Delete"
+                hover-class="[[hoverClass]]"
+                icon-class="grey-text no-margin"
+                hidden\$="[[!comment.actions.delete]]"
+              ></lrnsys-button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <template is="dom-if" if="[[comment.relationships.author.data.visual.icon]]">
-      <paper-badge icon="[[comment.relationships.author.data.visual.icon]]" for="papercard" label="[[comment.relationships.author.data.visual.label]]">
+    <template
+      is="dom-if"
+      if="[[comment.relationships.author.data.visual.icon]]"
+    >
+      <paper-badge
+        icon="[[comment.relationships.author.data.visual.icon]]"
+        for="papercard"
+        label="[[comment.relationships.author.data.visual.label]]"
+      >
       </paper-badge>
     </template>
-`,
+  `,
 
   is: "lrnsys-comment",
 

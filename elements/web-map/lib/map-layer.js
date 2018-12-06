@@ -6,13 +6,13 @@ import "./map-styles.js";
 Polymer({
   _template: html`
     <style include="map-styles">
-     :host {
-       display: none;
-     }
+      :host {
+        display: none;
+      }
     </style>
     <!-- hide any feature, image or tile elements the author includes -->
     <slot></slot>
-`,
+  `,
 
   is: "layer-",
 

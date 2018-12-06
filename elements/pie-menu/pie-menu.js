@@ -16,7 +16,7 @@ SVG Menu based on the excellent resource at : https://sarasoueidan.com/tools/cir
 let PieMenu = Polymer({
   _template: html`
     <style>
-      :host, 
+      :host,
       :host > div {
         width: 200px;
         height: 200px;
@@ -102,11 +102,38 @@ let PieMenu = Polymer({
     </style>
     <div data-hide-label-text\$="[[hideLabelText]]">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 193.95 193.94">
-        <path id="right-shape" data-button="right" class="outer-shapes" d="M165.54 28.4a97 97 0 0 1 0 137.14l-46-46a31.86 31.86 0 0 0 0-45z"></path>
-        <path id="bottom-shape" data-button="bottom" class="outer-shapes" d="M165.54 165.54a97 97 0 0 1-137.14 0l46.05-46a31.84 31.84 0 0 0 45 0z"></path>
-        <path id="left-shape" data-button="left" class="outer-shapes" d="M28.4 165.54a97 97 0 0 1 0-137.14l46.05 46.05a31.84 31.84 0 0 0 0 45z"></path>
-        <path id="top-shape" data-button="top" class="outer-shapes" d="M28.4 28.4a97 97 0 0 1 137.14 0l-46 46.05a31.84 31.84 0 0 0-45 0z"></path>
-        <circle id="center-shape" data-button="center" class="inner-shape" cx="96.97" cy="96.97" r="31.67"></circle>
+        <path
+          id="right-shape"
+          data-button="right"
+          class="outer-shapes"
+          d="M165.54 28.4a97 97 0 0 1 0 137.14l-46-46a31.86 31.86 0 0 0 0-45z"
+        ></path>
+        <path
+          id="bottom-shape"
+          data-button="bottom"
+          class="outer-shapes"
+          d="M165.54 165.54a97 97 0 0 1-137.14 0l46.05-46a31.84 31.84 0 0 0 45 0z"
+        ></path>
+        <path
+          id="left-shape"
+          data-button="left"
+          class="outer-shapes"
+          d="M28.4 165.54a97 97 0 0 1 0-137.14l46.05 46.05a31.84 31.84 0 0 0 0 45z"
+        ></path>
+        <path
+          id="top-shape"
+          data-button="top"
+          class="outer-shapes"
+          d="M28.4 28.4a97 97 0 0 1 137.14 0l-46 46.05a31.84 31.84 0 0 0-45 0z"
+        ></path>
+        <circle
+          id="center-shape"
+          data-button="center"
+          class="inner-shape"
+          cx="96.97"
+          cy="96.97"
+          r="31.67"
+        ></circle>
       </svg>
       <div id="center-icon" data-button="center" class="icon-container">
         <iron-icon icon\$="[[centerIcon]]"></iron-icon>
@@ -129,14 +156,61 @@ let PieMenu = Polymer({
         <div class="icon-label" aria-hidden="true">[[leftLabel]]</div>
       </div>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 193.95 193.94">
-        <circle id="center-button" xlink:title\$="[[centerLabel]]" data-button="center" tabindex="0" on-tap="_itemTapped" on-keydown="_itemTapped" role="button" cx="96.97" cy="96.97" r="31.67"></circle>
-        <path id="top-button" xlink:title\$="[[topLabel]]" data-button="top" role="button" tabindex="0" on-tap="_itemTapped" on-keydown="_itemTapped" d="M28.4 28.4a97 97 0 0 1 137.14 0l-46 46.05a31.84 31.84 0 0 0-45 0z"></path>
-        <path id="right-button" xlink:title\$="[[rightLabel]]" data-button="right" role="button" tabindex="0" on-tap="_itemTapped" on-keydown="_itemTapped" d="M165.54 28.4a97 97 0 0 1 0 137.14l-46-46a31.86 31.86 0 0 0 0-45z"></path>
-        <path id="bottom-button" xlink:title\$="[[bottomLabel]]" data-button="bottom" role="button" tabindex="0" on-tap="_itemTapped" on-keydown="_itemTapped" d="M165.54 165.54a97 97 0 0 1-137.14 0l46.05-46a31.84 31.84 0 0 0 45 0z"></path>
-        <path id="left-button" xlink:title\$="[[leftLabel]]" data-button="left" role="button" tabindex="0" on-tap="_itemTapped" on-keydown="_itemTapped" d="M28.4 165.54a97 97 0 0 1 0-137.14l46.05 46.05a31.84 31.84 0 0 0 0 45z"></path>
+        <circle
+          id="center-button"
+          xlink:title\$="[[centerLabel]]"
+          data-button="center"
+          tabindex="0"
+          on-tap="_itemTapped"
+          on-keydown="_itemTapped"
+          role="button"
+          cx="96.97"
+          cy="96.97"
+          r="31.67"
+        ></circle>
+        <path
+          id="top-button"
+          xlink:title\$="[[topLabel]]"
+          data-button="top"
+          role="button"
+          tabindex="0"
+          on-tap="_itemTapped"
+          on-keydown="_itemTapped"
+          d="M28.4 28.4a97 97 0 0 1 137.14 0l-46 46.05a31.84 31.84 0 0 0-45 0z"
+        ></path>
+        <path
+          id="right-button"
+          xlink:title\$="[[rightLabel]]"
+          data-button="right"
+          role="button"
+          tabindex="0"
+          on-tap="_itemTapped"
+          on-keydown="_itemTapped"
+          d="M165.54 28.4a97 97 0 0 1 0 137.14l-46-46a31.86 31.86 0 0 0 0-45z"
+        ></path>
+        <path
+          id="bottom-button"
+          xlink:title\$="[[bottomLabel]]"
+          data-button="bottom"
+          role="button"
+          tabindex="0"
+          on-tap="_itemTapped"
+          on-keydown="_itemTapped"
+          d="M165.54 165.54a97 97 0 0 1-137.14 0l46.05-46a31.84 31.84 0 0 0 45 0z"
+        ></path>
+        <path
+          id="left-button"
+          xlink:title\$="[[leftLabel]]"
+          data-button="left"
+          role="button"
+          tabindex="0"
+          on-tap="_itemTapped"
+          on-keydown="_itemTapped"
+          d="M28.4 165.54a97 97 0 0 1 0-137.14l46.05 46.05a31.84 31.84 0 0 0 0 45z"
+        ></path>
       </svg>
     </div>
-`,
+  `,
 
   is: "pie-menu",
 

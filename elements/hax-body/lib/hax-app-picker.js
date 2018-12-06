@@ -32,11 +32,13 @@ Polymer({
     <style is="custom-style" include="materializecss-styles simple-colors">
       :host {
         display: block;
-        --hax-app-picker-dialog-background-color: var(--simple-colors-default-theme-light-green-1);
-      };
+        --hax-app-picker-dialog-background-color: var(
+          --simple-colors-default-theme-light-green-1
+        );
+      }
       hax-app-picker-item {
-        -webkit-transition: .3s all linear;
-        transition: .3s all linear;
+        -webkit-transition: 0.3s all linear;
+        transition: 0.3s all linear;
         display: inline-flex;
       }
       #closedialog {
@@ -63,21 +65,23 @@ Polymer({
         width: 30vh;
         padding: 8px;
         overflow: hidden;
-        background-color: rgba(0,0,0,.9);
+        background-color: rgba(0, 0, 0, 0.9);
         border-radius: 16px;
         z-index: 1000000;
         border: 2px solid var(--simple-colors-default-theme-light-green-1);
         @apply --hax-app-picker-dialog;
       }
-      #title, .element-button > div {
-        color: var(--hax-app-picker-dialog-text-color, #FFFFFF);
+      #title,
+      .element-button > div {
+        color: var(--hax-app-picker-dialog-text-color, #ffffff);
       }
       #title {
         padding: 16px;
-        border-bottom: 2px solid var(--simple-colors-default-theme-light-green-1);
+        border-bottom: 2px solid
+          var(--simple-colors-default-theme-light-green-1);
         margin: 0;
         width: calc(100% - 32px);
-        color: var(--hax-app-picker-dialog-text-color, #FFFFFF);
+        color: var(--hax-app-picker-dialog-text-color, #ffffff);
         @apply --paper-font-title;
         @apply --hax-app-picker-dialog-title;
       }
@@ -133,7 +137,15 @@ Polymer({
         <iron-list id="ironlist" items="[[selectionList]]" as="element" grid>
           <template>
             <div>
-              <hax-app-picker-item id$="picker-item-[[index]]" class="element-button" on-tap="_selected" data-selected\$="[[index]]" label="[[element.title]]" icon="[[element.icon]]" color="[[element.color]]"></hax-app-picker-item>
+              <hax-app-picker-item
+                id$="picker-item-[[index]]"
+                class="element-button"
+                on-tap="_selected"
+                data-selected\$="[[index]]"
+                label="[[element.title]]"
+                icon="[[element.icon]]"
+                color="[[element.color]]"
+              ></hax-app-picker-item>
             </div>
           </template>
         </iron-list>
@@ -142,7 +154,7 @@ Polymer({
         <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
       </paper-button>
     </paper-dialog>
-`,
+  `,
 
   is: "hax-app-picker",
 

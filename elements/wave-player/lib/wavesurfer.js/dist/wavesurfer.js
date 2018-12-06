@@ -3472,8 +3472,8 @@
           }
 
           /*
- * This work is licensed under a BSD-3-Clause License.
- */
+           * This work is licensed under a BSD-3-Clause License.
+           */
 
           /** @external {HTMLElement} https://developer.mozilla.org/en/docs/Web/API/HTMLElement */
 
@@ -3870,18 +3870,21 @@
                 // timeout for the debounce function.
 
                 var prevWidth = 0;
-                _this._onResize = util.debounce(function() {
-                  if (
-                    prevWidth != _this.drawer.wrapper.clientWidth &&
-                    !_this.params.scrollParent
-                  ) {
-                    prevWidth = _this.drawer.wrapper.clientWidth;
+                _this._onResize = util.debounce(
+                  function() {
+                    if (
+                      prevWidth != _this.drawer.wrapper.clientWidth &&
+                      !_this.params.scrollParent
+                    ) {
+                      prevWidth = _this.drawer.wrapper.clientWidth;
 
-                    _this.drawer.fireEvent("redraw");
-                  }
-                }, typeof _this.params.responsive === "number"
-                  ? _this.params.responsive
-                  : 100);
+                      _this.drawer.fireEvent("redraw");
+                    }
+                  },
+                  typeof _this.params.responsive === "number"
+                    ? _this.params.responsive
+                    : 100
+                );
                 return _possibleConstructorReturn(
                   _this,
                   _assertThisInitialized(_assertThisInitialized(_this))

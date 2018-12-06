@@ -25,7 +25,7 @@ Polymer({
     <style is="custom-style">
       :host {
         display: block;
-      };
+      }
       paper-button.item-wrapper {
         margin: 0;
         padding: 0;
@@ -52,7 +52,7 @@ Polymer({
       .loading {
         width: calc(100% - 32px);
         z-index: 1000;
-        opacity: .9;
+        opacity: 0.9;
         text-align: center;
         align-content: space-around;
         justify-content: center;
@@ -62,7 +62,7 @@ Polymer({
         display: flex;
         margin: 0 auto;
         visibility: visible;
-        transition: visibility .5s, opacity .5s ease;
+        transition: visibility 0.5s, opacity 0.5s ease;
       }
       .loading elmsln-loading {
         margin: 0 80px;
@@ -74,12 +74,12 @@ Polymer({
         justify-content: center;
       }
       #loading .loading,
-      #loading elmsln-loading{
+      #loading elmsln-loading {
         display: block;
         height: 80px;
       }
       .card-content {
-        padding: .16px;
+        padding: 0.16px;
       }
       .card-content p {
         padding: 0;
@@ -109,19 +109,44 @@ Polymer({
       }
     </style>
 
-    <iron-ajax auto="[[auto]]" id="request" method="[[method]]" url="[[requestEndPoint]]" handle-as="json" headers="[[headers]]" params="[[requestParams]]" last-response="{{requestData}}" hidden="" loading="{{loading}}" debounce-duration="250"></iron-ajax>
-    <hax-app-search-inputs label="[[label]]" schema="{{searchSchema}}" values="{{searchValues}}"></hax-app-search-inputs>
-    <hax-app-pagination id="pagerbottom" request-data="[[requestData]]" pagination="[[pagination]]"></hax-app-pagination>
+    <iron-ajax
+      auto="[[auto]]"
+      id="request"
+      method="[[method]]"
+      url="[[requestEndPoint]]"
+      handle-as="json"
+      headers="[[headers]]"
+      params="[[requestParams]]"
+      last-response="{{requestData}}"
+      hidden=""
+      loading="{{loading}}"
+      debounce-duration="250"
+    ></iron-ajax>
+    <hax-app-search-inputs
+      label="[[label]]"
+      schema="{{searchSchema}}"
+      values="{{searchValues}}"
+    ></hax-app-search-inputs>
+    <hax-app-pagination
+      id="pagerbottom"
+      request-data="[[requestData]]"
+      pagination="[[pagination]]"
+    ></hax-app-pagination>
     <div id="loading" class="loading" hidden\$="[[!loading]]">
-      <elmsln-loading color="light-green-text text-accent-3" size="large"></elmsln-loading>
+      <elmsln-loading
+        color="light-green-text text-accent-3"
+        size="large"
+      ></elmsln-loading>
       <div class="loading-text">Loading content..</div>
     </div>
     <iron-list grid="" id="itemlist" items="[[media]]" as="resultData">
       <template>
-        <hax-app-search-result result-data="[[resultData]]"></hax-app-search-result>
+        <hax-app-search-result
+          result-data="[[resultData]]"
+        ></hax-app-search-result>
       </template>
     </iron-list>
-`,
+  `,
 
   is: "hax-app-search",
 

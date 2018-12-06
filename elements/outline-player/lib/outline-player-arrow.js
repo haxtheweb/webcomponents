@@ -17,7 +17,7 @@ Polymer({
         width: 48px;
         --app-drawer-width: 300px;
         --outline-player-dark: #222222;
-        --outline-player-light: #F8F8F8;
+        --outline-player-light: #f8f8f8;
       }
 
       paper-icon-button {
@@ -26,12 +26,16 @@ Polymer({
     </style>
 
     <div id="container">
-      <paper-icon-button id="button" disabled="[[disabled]]" icon="[[icon]]"></paper-icon-button>
+      <paper-icon-button
+        id="button"
+        disabled="[[disabled]]"
+        icon="[[icon]]"
+      ></paper-icon-button>
       <paper-tooltip for="button" position="bottom" offset="14">
         <slot></slot>
       </paper-tooltip>
     </div>
-`,
+  `,
 
   is: "outline-player-arrow",
 

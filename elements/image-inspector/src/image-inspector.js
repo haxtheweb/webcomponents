@@ -40,17 +40,48 @@ let ImageInspector = Polymer({
       </style>
     </custom-style>
     <app-toolbar>
-      <lrnsys-button alt="Zoom in" icon="zoom-in" on-tap="zoomIn" hover-class="[[hoverClass]]"></lrnsys-button>
-      <lrnsys-button alt="Zoom out" icon="zoom-out" on-tap="zoomOut" hover-class="[[hoverClass]]"></lrnsys-button>
-      <lrnsys-button alt="Rotate right" icon="image:rotate-right" on-tap="rotateRight" hover-class="[[hoverClass]]"></lrnsys-button>
-      <lrnsys-button alt="Rotate left" icon="image:rotate-left" on-tap="rotateLeft" hover-class="[[hoverClass]]"></lrnsys-button>
-      <lrnsys-button alt="Mirror image" icon="image:flip" on-tap="mirrorImage" hover-class="[[hoverClass]]"></lrnsys-button>
-      <lrnsys-button alt="Open in new window" icon="launch" href="[[src]]" target="_blank" hover-class="[[hoverClass]]"></lrnsys-button>
+      <lrnsys-button
+        alt="Zoom in"
+        icon="zoom-in"
+        on-tap="zoomIn"
+        hover-class="[[hoverClass]]"
+      ></lrnsys-button>
+      <lrnsys-button
+        alt="Zoom out"
+        icon="zoom-out"
+        on-tap="zoomOut"
+        hover-class="[[hoverClass]]"
+      ></lrnsys-button>
+      <lrnsys-button
+        alt="Rotate right"
+        icon="image:rotate-right"
+        on-tap="rotateRight"
+        hover-class="[[hoverClass]]"
+      ></lrnsys-button>
+      <lrnsys-button
+        alt="Rotate left"
+        icon="image:rotate-left"
+        on-tap="rotateLeft"
+        hover-class="[[hoverClass]]"
+      ></lrnsys-button>
+      <lrnsys-button
+        alt="Mirror image"
+        icon="image:flip"
+        on-tap="mirrorImage"
+        hover-class="[[hoverClass]]"
+      ></lrnsys-button>
+      <lrnsys-button
+        alt="Open in new window"
+        icon="launch"
+        href="[[src]]"
+        target="_blank"
+        hover-class="[[hoverClass]]"
+      ></lrnsys-button>
       <slot name="toolbar"></slot>
     </app-toolbar>
     <img-pan-zoom id="img" src="[[src]]"></img-pan-zoom>
     <slot></slot>
-`,
+  `,
 
   is: "image-inspector",
 

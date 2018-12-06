@@ -4,8 +4,8 @@
   typeof exports === "object" && typeof module !== "undefined"
     ? (module.exports = factory())
     : typeof define === "function" && define.amd
-      ? define(factory)
-      : (global.moment = factory());
+    ? define(factory)
+    : (global.moment = factory());
 })(this, function() {
   "use strict";
 
@@ -2208,19 +2208,19 @@
         a[MONTH] < 0 || a[MONTH] > 11
           ? MONTH
           : a[DATE] < 1 || a[DATE] > daysInMonth(a[YEAR], a[MONTH])
-            ? DATE
-            : a[HOUR] < 0 ||
-              a[HOUR] > 24 ||
-              (a[HOUR] === 24 &&
-                (a[MINUTE] !== 0 || a[SECOND] !== 0 || a[MILLISECOND] !== 0))
-              ? HOUR
-              : a[MINUTE] < 0 || a[MINUTE] > 59
-                ? MINUTE
-                : a[SECOND] < 0 || a[SECOND] > 59
-                  ? SECOND
-                  : a[MILLISECOND] < 0 || a[MILLISECOND] > 999
-                    ? MILLISECOND
-                    : -1;
+          ? DATE
+          : a[HOUR] < 0 ||
+            a[HOUR] > 24 ||
+            (a[HOUR] === 24 &&
+              (a[MINUTE] !== 0 || a[SECOND] !== 0 || a[MILLISECOND] !== 0))
+          ? HOUR
+          : a[MINUTE] < 0 || a[MINUTE] > 59
+          ? MINUTE
+          : a[SECOND] < 0 || a[SECOND] > 59
+          ? SECOND
+          : a[MILLISECOND] < 0 || a[MILLISECOND] > 999
+          ? MILLISECOND
+          : -1;
 
       if (
         getParsingFlags(m)._overflowDayOfYear &&
@@ -3517,16 +3517,16 @@
     return diff < -6
       ? "sameElse"
       : diff < -1
-        ? "lastWeek"
-        : diff < 0
-          ? "lastDay"
-          : diff < 1
-            ? "sameDay"
-            : diff < 2
-              ? "nextDay"
-              : diff < 7
-                ? "nextWeek"
-                : "sameElse";
+      ? "lastWeek"
+      : diff < 0
+      ? "lastDay"
+      : diff < 1
+      ? "sameDay"
+      : diff < 2
+      ? "nextDay"
+      : diff < 7
+      ? "nextWeek"
+      : "sameElse";
   }
 
   function calendar$1(time, formats) {
@@ -4513,12 +4513,12 @@
           toInt((number % 100) / 10) === 1
             ? "th"
             : b === 1
-              ? "st"
-              : b === 2
-                ? "nd"
-                : b === 3
-                  ? "rd"
-                  : "th";
+            ? "st"
+            : b === 2
+            ? "nd"
+            : b === 3
+            ? "rd"
+            : "th";
       return number + output;
     }
   });

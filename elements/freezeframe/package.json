@@ -1,10 +1,10 @@
 {
   "name": "@lrnwebcomponents/freezeframe",
-  "version": "0.0.35",
+  "version": "0.0.38",
   "description": "Ported over from freezeframe.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com/elmsln/lrnwebcomponents.git"
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
   },
   "main": "build/js/freezeframe.js",
   "author": {
@@ -18,5 +18,5 @@
   "keywords": [
     "html"
   ],
-  "gitHead": "71dcc2b61045070a009e654226e6c0892f11a854"
+  "gitHead": "35f47726572af9570c3a4e6f8a784cc3183aa203"
 }

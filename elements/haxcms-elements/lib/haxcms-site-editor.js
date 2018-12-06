@@ -44,7 +44,7 @@ Polymer({
         height: 40px;
         visibility: visible;
         opacity: 1;
-        transition: all .4s ease;
+        transition: all 0.4s ease;
         z-index: 1000;
       }
       #outlinebutton {
@@ -57,7 +57,7 @@ Polymer({
         height: 40px;
         visibility: visible;
         opacity: 1;
-        transition: all .4s ease;
+        transition: all 0.4s ease;
         z-index: 1000;
       }
       :host([edit-mode]) #editbutton {
@@ -83,42 +83,46 @@ Polymer({
       }
     </style>
     <iron-ajax
-     headers='{"Authorization": "Bearer [[jwt]]"}'
-     id="pageupdateajax"
-     url="[[savePagePath]]"
-     method="POST"
-     body="[[updatePageData]]"
-     content-type="application/json"
-     handle-as="json"
-     on-response="_handlePageResponse"></iron-ajax>
+      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
+      id="pageupdateajax"
+      url="[[savePagePath]]"
+      method="POST"
+      body="[[updatePageData]]"
+      content-type="application/json"
+      handle-as="json"
+      on-response="_handlePageResponse"
+    ></iron-ajax>
     <iron-ajax
-     headers='{"Authorization": "Bearer [[jwt]]"}'
-     id="outlineupdateajax"
-     url="[[saveOutlinePath]]"
-     method="POST"
-     body="[[updateOutlineData]]"
-     content-type="application/json"
-     handle-as="json"
-     on-response="_handleOutlineResponse"></iron-ajax>
+      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
+      id="outlineupdateajax"
+      url="[[saveOutlinePath]]"
+      method="POST"
+      body="[[updateOutlineData]]"
+      content-type="application/json"
+      handle-as="json"
+      on-response="_handleOutlineResponse"
+    ></iron-ajax>
     <iron-ajax
-     headers='{"Authorization": "Bearer [[jwt]]"}'
-     id="manifestupdateajax"
-     url="[[saveManifestPath]]"
-     method="POST"
-     body="[[updateManifestData]]"
-     content-type="application/json"
-     handle-as="json"
-     on-response="_handleManifestResponse"></iron-ajax>
+      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
+      id="manifestupdateajax"
+      url="[[saveManifestPath]]"
+      method="POST"
+      body="[[updateManifestData]]"
+      content-type="application/json"
+      handle-as="json"
+      on-response="_handleManifestResponse"
+    ></iron-ajax>
     <iron-ajax
-     headers='{"Authorization": "Bearer [[jwt]]"}'
-     id="publishajax"
-     loading="{{publishing}}"
-     url="[[publishPath]]"
-     method="POST"
-     body="[[publishSiteData]]"
-     content-type="application/json"
-     handle-as="json"
-     on-response="_handlePublishResponse"></iron-ajax>
+      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
+      id="publishajax"
+      loading="{{publishing}}"
+      url="[[publishPath]]"
+      method="POST"
+      body="[[publishSiteData]]"
+      content-type="application/json"
+      handle-as="json"
+      on-response="_handlePublishResponse"
+    ></iron-ajax>
     <hax-store app-store="[[appStore]]"></hax-store>
     <hax-app-picker></hax-app-picker>
     <hax-body id="body"></hax-body>
@@ -126,15 +130,31 @@ Polymer({
     <hax-panel align="left" hide-panel-ops></hax-panel>
     <hax-manager append-jwt="jwt" id="haxmanager"></hax-manager>
     <hax-export-dialog></hax-export-dialog>
-    <haxcms-site-editor-ui id="ui" active-item="[[activeItem]]" manifest="[[manifest]]" edit-mode="{{editMode}}" outline-edit-mode="{{outlineEditMode}}" manifest-edit-mode="{{manifestEditMode}}"></haxcms-site-editor-ui>
-    <haxcms-outline-editor-dialog id="outlineeditor"></haxcms-outline-editor-dialog>
-    <haxcms-manifest-editor-dialog id="manifesteditor"></haxcms-manifest-editor-dialog>
-    <paper-toast id="toast">
-    </paper-toast>
+    <haxcms-site-editor-ui
+      id="ui"
+      active-item="[[activeItem]]"
+      manifest="[[manifest]]"
+      edit-mode="{{editMode}}"
+      outline-edit-mode="{{outlineEditMode}}"
+      manifest-edit-mode="{{manifestEditMode}}"
+    ></haxcms-site-editor-ui>
+    <haxcms-outline-editor-dialog
+      id="outlineeditor"
+    ></haxcms-outline-editor-dialog>
+    <haxcms-manifest-editor-dialog
+      id="manifesteditor"
+    ></haxcms-manifest-editor-dialog>
+    <paper-toast id="toast"> </paper-toast>
     <paper-toast id="publishtoast" duration="0">
-      <a href$="[[__publishLink]]" target="_blank"><paper-button raised style="color:yellow;text-transform: none;font-weight: bold;">[[__publishLabel]]</paper-button></a>
+      <a href$="[[__publishLink]]" target="_blank"
+        ><paper-button
+          raised
+          style="color:yellow;text-transform: none;font-weight: bold;"
+          >[[__publishLabel]]</paper-button
+        ></a
+      >
     </paper-toast>
-`,
+  `,
   listeners: {
     "haxcms-save-outline": "saveOutline", // from outlineeditor
     "haxcms-save-site-data": "saveManifest", // from manifesteditor

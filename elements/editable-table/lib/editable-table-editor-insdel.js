@@ -32,7 +32,7 @@ Polymer({
       }
     </style>
     <paper-button><slot></slot></paper-button>
-`,
+  `,
 
   is: "editable-table-editor-insdel",
 

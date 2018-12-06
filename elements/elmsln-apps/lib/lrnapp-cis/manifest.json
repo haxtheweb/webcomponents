@@ -1,0 +1,30 @@
+{
+  "name": "lrnapp-cis",
+  "short_name": "lrnapp-cis",
+  "title": "New app",
+  "description": "A new app",
+  "start_url": "/",
+  "display": "standalone",
+  "app_integration": {
+    "title": "",
+    "menu": {
+      "title": "Courses",
+      "menu_name": "menu-elmsln-navigation",
+      "weight": -100
+    },
+    "endpoints": {
+      "data": {
+        "callback": "_lrnapp_cis_app_data",
+        "property": "source-path"
+      },
+      "course": {
+        "callback": "_lrnapp_cis_course_data",
+        "property": "course-data-path"
+      },
+      "make-service": {
+        "callback": "_lrnapp_cis_make_service",
+        "property": "make-service-path"
+      }
+    }
+  }
+}

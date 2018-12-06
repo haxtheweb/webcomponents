@@ -7,7 +7,7 @@ import { IronValidatableBehavior } from "@polymer/iron-validatable-behavior/iron
 
 Polymer({
   _template: html`
-  <style is="custom-style" include="iron-flex iron-flex-alignment">
+    <style is="custom-style" include="iron-flex iron-flex-alignment">
       paper-input {
         --paper-input-container-label: {
           white-space: normal;
@@ -15,7 +15,7 @@ Polymer({
           font-size: 22px;
           color: #212121;
         }
-      };
+      }
 
       paper-dropdown-menu {
         --paper-input-container-label: {
@@ -30,16 +30,21 @@ Polymer({
       }
     </style>
 
-    <paper-dropdown-menu id="dropdown" class="layout horizontal vertical" value="{{value}}" required="">
+    <paper-dropdown-menu
+      id="dropdown"
+      class="layout horizontal vertical"
+      value="{{value}}"
+      required=""
+    >
       <paper-dropdown-menu class="dropdown-content">
         <paper-listbox slot="dropdown-content" selected="0">
-        <template is="dom-repeat" items="[[_items]]">
-          <paper-item class="flex" label="[[item]]">[[item]]</paper-item>
-        </template>
+          <template is="dom-repeat" items="[[_items]]">
+            <paper-item class="flex" label="[[item]]">[[item]]</paper-item>
+          </template>
         </paper-listbox>
       </paper-dropdown-menu>
     </paper-dropdown-menu>
-`,
+  `,
   is: "eco-json-schema-enum",
   behaviors: [IronValidatableBehavior],
   properties: {

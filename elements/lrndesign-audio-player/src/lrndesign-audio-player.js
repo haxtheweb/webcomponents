@@ -42,20 +42,19 @@ Custom property                             | Description                       
 let LrndesignAudioPlayer = Polymer({
   _template: html`
     <style>
-
       :host {
         display: block;
         /*margin: auto 10px;
         width: 100%;*/
         box-sizing: border-box;
-        font-family: 'Roboto Mono', 'Helvetica Neue', Arial, sans-serif;
+        font-family: "Roboto Mono", "Helvetica Neue", Arial, sans-serif;
       }
 
       #wrapper {
         position: relative;
         cursor: pointer;
         height: 50px;
-        box-shadow: 0 1px 2px rgba(0,0,0,.3);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
       }
 
       #left,
@@ -66,11 +65,11 @@ let LrndesignAudioPlayer = Polymer({
       }
 
       #left {
-        background-color:  var(--lrndesign-audio-player-color, blueviolet);
+        background-color: var(--lrndesign-audio-player-color, blueviolet);
       }
 
       #right {
-        background-color: rgba(255,255,255,.75);
+        background-color: rgba(255, 255, 255, 0.75);
       }
 
       paper-icon-button,
@@ -121,7 +120,7 @@ let LrndesignAudioPlayer = Polymer({
       #center {
         position: relative;
         overflow: hidden;
-        background-color: rgba(255,255,255,.75);
+        background-color: rgba(255, 255, 255, 0.75);
       }
 
       #progress {
@@ -205,13 +204,32 @@ let LrndesignAudioPlayer = Polymer({
     </style>
 
     <div id="wrapper" class="layout-horizontal">
-
       <div id="left" class="self-start" on-tap="playPause">
-
         <!-- Icon -->
-        <paper-icon-button id="play" icon="lrndesign-audio-player-icons:play-arrow" class="fit" hidden\$="{{ _hidePlayIcon(isPlaying, canBePlayed) }}" role="button" aria-label="Play Audio" tabindex="-1"></paper-icon-button>
-        <paper-icon-button id="pause" icon="lrndesign-audio-player-icons:pause" class="fit" hidden\$="{{ !isPlaying }}" role="button" aria-label="Pause Audio" tabindex="-1"></paper-icon-button>
-        <iron-icon id="error" icon="lrndesign-audio-player-icons:error-outline" class="fit" hidden\$="{{ !error }}"></iron-icon>
+        <paper-icon-button
+          id="play"
+          icon="lrndesign-audio-player-icons:play-arrow"
+          class="fit"
+          hidden\$="{{ _hidePlayIcon(isPlaying, canBePlayed) }}"
+          role="button"
+          aria-label="Play Audio"
+          tabindex="-1"
+        ></paper-icon-button>
+        <paper-icon-button
+          id="pause"
+          icon="lrndesign-audio-player-icons:pause"
+          class="fit"
+          hidden\$="{{ !isPlaying }}"
+          role="button"
+          aria-label="Pause Audio"
+          tabindex="-1"
+        ></paper-icon-button>
+        <iron-icon
+          id="error"
+          icon="lrndesign-audio-player-icons:error-outline"
+          class="fit"
+          hidden\$="{{ !error }}"
+        ></iron-icon>
       </div>
 
       <div id="center" class="flex" on-down="_onDown">
@@ -219,7 +237,11 @@ let LrndesignAudioPlayer = Polymer({
         <div id="title" class="fit" role="alert">{{ title }}</div>
 
         <!-- Audio HTML5 element -->
-        <audio id="audio" src="{{ src }}" preload="{{ _setPreload(autoPlay, preload) }}"></audio>
+        <audio
+          id="audio"
+          src="{{ src }}"
+          preload="{{ _setPreload(autoPlay, preload) }}"
+        ></audio>
 
         <!-- Progress bar -->
         <div id="progress" class="fit"></div>
@@ -233,17 +255,25 @@ let LrndesignAudioPlayer = Polymer({
       </div>
 
       <div id="right" class="self-end" on-click="restart">
-
         <!-- Duration -->
         <div id="duration" class="fit" hidden\$="{{ ended }}">
-          <span class="fit" role="timer" aria-label="Audio Track Length">{{ _convertSecToMin(timeLeft) }}</span>
+          <span class="fit" role="timer" aria-label="Audio Track Length"
+            >{{ _convertSecToMin(timeLeft) }}</span
+          >
         </div>
 
         <!-- Icon -->
-        <paper-icon-button id="replay" class="fit" icon="lrndesign-audio-player-icons:replay" tabindex="-1" role="button" aria-label="Replay Audio"></paper-icon-button>
+        <paper-icon-button
+          id="replay"
+          class="fit"
+          icon="lrndesign-audio-player-icons:replay"
+          tabindex="-1"
+          role="button"
+          aria-label="Replay Audio"
+        ></paper-icon-button>
       </div>
     </div>
-`,
+  `,
 
   is: "lrndesign-audio-player",
 

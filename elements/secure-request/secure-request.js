@@ -1,9 +1,11 @@
 /**
-`secure-request`
-A LRN element
-
-@demo demo/index.html
-*/
+ * `secure-request`
+ * `Wrapper behavior to provide the basis for a secure XHR`
+ *
+ * @demo demo/index.html
+ * @polymerBehavior
+ * @polymer
+ */
 window.SecureRequest = window.SecureRequest || {};
 window.SecureRequest.xhr = {
   // Call this function in your root component.

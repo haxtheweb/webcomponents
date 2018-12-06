@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 64,
+              "line": 76,
               "column": 4
             },
             "end": {
-              "line": 68,
+              "line": 80,
               "column": 5
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 72,
+              "line": 84,
               "column": 4
             },
             "end": {
-              "line": 76,
+              "line": 88,
               "column": 5
             }
           },
@@ -57,11 +57,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 80,
+              "line": 92,
               "column": 4
             },
             "end": {
-              "line": 83,
+              "line": 95,
               "column": 5
             }
           },
@@ -79,11 +79,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 99,
               "column": 4
             },
             "end": {
-              "line": 90,
+              "line": 102,
               "column": 5
             }
           },
@@ -101,11 +101,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 94,
+              "line": 106,
               "column": 4
             },
             "end": {
-              "line": 97,
+              "line": 109,
               "column": 5
             }
           },
@@ -123,11 +123,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 101,
+              "line": 113,
               "column": 4
             },
             "end": {
-              "line": 104,
+              "line": 116,
               "column": 5
             }
           },
@@ -146,11 +146,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 110,
+              "line": 122,
               "column": 2
             },
             "end": {
-              "line": 115,
+              "line": 127,
               "column": 3
             }
           },
@@ -179,7 +179,7 @@
           "column": 8
         },
         "end": {
-          "line": 116,
+          "line": 128,
           "column": 1
         }
       },
@@ -191,11 +191,11 @@
           "description": "is disabled?",
           "sourceRange": {
             "start": {
-              "line": 64,
+              "line": 76,
               "column": 4
             },
             "end": {
-              "line": 68,
+              "line": 80,
               "column": 5
             }
           },
@@ -207,11 +207,11 @@
           "description": "icon when expanded",
           "sourceRange": {
             "start": {
-              "line": 72,
+              "line": 84,
               "column": 4
             },
             "end": {
-              "line": 76,
+              "line": 88,
               "column": 5
             }
           },
@@ -223,11 +223,11 @@
           "description": "icon for the button",
           "sourceRange": {
             "start": {
-              "line": 80,
+              "line": 92,
               "column": 4
             },
             "end": {
-              "line": 83,
+              "line": 95,
               "column": 5
             }
           },
@@ -239,11 +239,11 @@
           "description": "label for the button",
           "sourceRange": {
             "start": {
-              "line": 87,
+              "line": 99,
               "column": 4
             },
             "end": {
-              "line": 90,
+              "line": 102,
               "column": 5
             }
           },
@@ -255,11 +255,11 @@
           "description": "tooltip for the button",
           "sourceRange": {
             "start": {
-              "line": 94,
+              "line": 106,
               "column": 4
             },
             "end": {
-              "line": 97,
+              "line": 109,
               "column": 5
             }
           },
@@ -271,11 +271,11 @@
           "description": "If no expanded icon is set, the default icon will rotate when expanded",
           "sourceRange": {
             "start": {
-              "line": 101,
+              "line": 113,
               "column": 4
             },
             "end": {
-              "line": 104,
+              "line": 116,
               "column": 5
             }
           },
@@ -352,11 +352,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 68,
+              "line": 77,
               "column": 4
             },
             "end": {
-              "line": 72,
+              "line": 81,
               "column": 5
             }
           },
@@ -374,11 +374,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 76,
+              "line": 85,
               "column": 4
             },
             "end": {
-              "line": 80,
+              "line": 89,
               "column": 5
             }
           },
@@ -396,11 +396,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 84,
+              "line": 93,
               "column": 4
             },
             "end": {
-              "line": 87,
+              "line": 96,
               "column": 5
             }
           },
@@ -418,11 +418,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 91,
+              "line": 100,
               "column": 4
             },
             "end": {
-              "line": 94,
+              "line": 103,
               "column": 5
             }
           },
@@ -440,11 +440,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 98,
+              "line": 107,
               "column": 4
             },
             "end": {
-              "line": 101,
+              "line": 110,
               "column": 5
             }
           },
@@ -462,11 +462,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 105,
+              "line": 114,
               "column": 4
             },
             "end": {
-              "line": 108,
+              "line": 117,
               "column": 5
             }
           },
@@ -533,11 +533,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 114,
+              "line": 123,
               "column": 2
             },
             "end": {
-              "line": 119,
+              "line": 128,
               "column": 3
             }
           },
@@ -553,11 +553,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 124,
+              "line": 133,
               "column": 2
             },
             "end": {
-              "line": 126,
+              "line": 135,
               "column": 3
             }
           },
@@ -573,11 +573,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 132,
+              "line": 141,
               "column": 2
             },
             "end": {
-              "line": 136,
+              "line": 145,
               "column": 3
             }
           },
@@ -606,7 +606,7 @@
           "column": 8
         },
         "end": {
-          "line": 137,
+          "line": 146,
           "column": 1
         }
       },
@@ -654,11 +654,11 @@
           "description": "is disabled?",
           "sourceRange": {
             "start": {
-              "line": 68,
+              "line": 77,
               "column": 4
             },
             "end": {
-              "line": 72,
+              "line": 81,
               "column": 5
             }
           },
@@ -670,11 +670,11 @@
           "description": "icon when expanded",
           "sourceRange": {
             "start": {
-              "line": 76,
+              "line": 85,
               "column": 4
             },
             "end": {
-              "line": 80,
+              "line": 89,
               "column": 5
             }
           },
@@ -686,11 +686,11 @@
           "description": "icon for the button",
           "sourceRange": {
             "start": {
-              "line": 84,
+              "line": 93,
               "column": 4
             },
             "end": {
-              "line": 87,
+              "line": 96,
               "column": 5
             }
           },
@@ -702,11 +702,11 @@
           "description": "label for the button",
           "sourceRange": {
             "start": {
-              "line": 91,
+              "line": 100,
               "column": 4
             },
             "end": {
-              "line": 94,
+              "line": 103,
               "column": 5
             }
           },
@@ -718,11 +718,11 @@
           "description": "tooltip for the button",
           "sourceRange": {
             "start": {
-              "line": 98,
+              "line": 107,
               "column": 4
             },
             "end": {
-              "line": 101,
+              "line": 110,
               "column": 5
             }
           },
@@ -734,11 +734,11 @@
           "description": "If no expanded icon is set, the default icon will rotate when expanded",
           "sourceRange": {
             "start": {
-              "line": 105,
+              "line": 114,
               "column": 4
             },
             "end": {
-              "line": 108,
+              "line": 117,
               "column": 5
             }
           },
@@ -815,11 +815,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 114,
+              "line": 136,
               "column": 4
             },
             "end": {
-              "line": 119,
+              "line": 141,
               "column": 5
             }
           },
@@ -838,11 +838,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 123,
+              "line": 145,
               "column": 4
             },
             "end": {
-              "line": 127,
+              "line": 149,
               "column": 5
             }
           },
@@ -860,11 +860,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 131,
+              "line": 153,
               "column": 4
             },
             "end": {
-              "line": 135,
+              "line": 157,
               "column": 5
             }
           },
@@ -882,11 +882,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 139,
+              "line": 161,
               "column": 4
             },
             "end": {
-              "line": 142,
+              "line": 164,
               "column": 5
             }
           },
@@ -904,11 +904,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 146,
+              "line": 168,
               "column": 4
             },
             "end": {
-              "line": 149,
+              "line": 171,
               "column": 5
             }
           },
@@ -926,11 +926,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 153,
+              "line": 175,
               "column": 4
             },
             "end": {
-              "line": 156,
+              "line": 178,
               "column": 5
             }
           },
@@ -948,11 +948,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 160,
+              "line": 182,
               "column": 4
             },
             "end": {
-              "line": 163,
+              "line": 185,
               "column": 5
             }
           },
@@ -970,11 +970,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 167,
+              "line": 189,
               "column": 4
             },
             "end": {
-              "line": 170,
+              "line": 192,
               "column": 5
             }
           },
@@ -992,11 +992,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 174,
+              "line": 196,
               "column": 4
             },
             "end": {
-              "line": 177,
+              "line": 199,
               "column": 5
             }
           },
@@ -1014,11 +1014,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 181,
+              "line": 203,
               "column": 4
             },
             "end": {
-              "line": 184,
+              "line": 206,
               "column": 5
             }
           },
@@ -1085,11 +1085,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 189,
+              "line": 211,
               "column": 2
             },
             "end": {
-              "line": 249,
+              "line": 271,
               "column": 3
             }
           },
@@ -1105,11 +1105,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 254,
+              "line": 276,
               "column": 2
             },
             "end": {
-              "line": 256,
+              "line": 278,
               "column": 3
             }
           },
@@ -1125,11 +1125,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 261,
+              "line": 283,
               "column": 2
             },
             "end": {
-              "line": 264,
+              "line": 286,
               "column": 3
             }
           },
@@ -1149,11 +1149,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 269,
+              "line": 291,
               "column": 2
             },
             "end": {
-              "line": 271,
+              "line": 293,
               "column": 3
             }
           },
@@ -1176,11 +1176,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 276,
+              "line": 298,
               "column": 2
             },
             "end": {
-              "line": 278,
+              "line": 300,
               "column": 3
             }
           },
@@ -1203,11 +1203,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 283,
+              "line": 305,
               "column": 2
             },
             "end": {
-              "line": 285,
+              "line": 307,
               "column": 3
             }
           },
@@ -1227,11 +1227,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 290,
+              "line": 312,
               "column": 2
             },
             "end": {
-              "line": 296,
+              "line": 318,
               "column": 3
             }
           },
@@ -1251,11 +1251,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 301,
+              "line": 323,
               "column": 2
             },
             "end": {
-              "line": 303,
+              "line": 325,
               "column": 3
             }
           },
@@ -1276,7 +1276,7 @@
           "column": 27
         },
         "end": {
-          "line": 304,
+          "line": 326,
           "column": 1
         }
       },
@@ -1325,11 +1325,11 @@
           "description": "accordion-style: whole header acts as button? default is just icon.",
           "sourceRange": {
             "start": {
-              "line": 114,
+              "line": 136,
               "column": 4
             },
             "end": {
-              "line": 119,
+              "line": 141,
               "column": 5
             }
           },
@@ -1341,11 +1341,11 @@
           "description": "is disabled?",
           "sourceRange": {
             "start": {
-              "line": 123,
+              "line": 145,
               "column": 4
             },
             "end": {
-              "line": 127,
+              "line": 149,
               "column": 5
             }
           },
@@ -1357,11 +1357,11 @@
           "description": "icon when expanded",
           "sourceRange": {
             "start": {
-              "line": 131,
+              "line": 153,
               "column": 4
             },
             "end": {
-              "line": 135,
+              "line": 157,
               "column": 5
             }
           },
@@ -1373,11 +1373,11 @@
           "description": "icon for the button",
           "sourceRange": {
             "start": {
-              "line": 139,
+              "line": 161,
               "column": 4
             },
             "end": {
-              "line": 142,
+              "line": 164,
               "column": 5
             }
           },
@@ -1389,11 +1389,11 @@
           "description": "icon when expanded",
           "sourceRange": {
             "start": {
-              "line": 146,
+              "line": 168,
               "column": 4
             },
             "end": {
-              "line": 149,
+              "line": 171,
               "column": 5
             }
           },
@@ -1405,11 +1405,11 @@
           "description": "label for the button",
           "sourceRange": {
             "start": {
-              "line": 153,
+              "line": 175,
               "column": 4
             },
             "end": {
-              "line": 156,
+              "line": 178,
               "column": 5
             }
           },
@@ -1421,11 +1421,11 @@
           "description": "optional label for the button when expanded",
           "sourceRange": {
             "start": {
-              "line": 160,
+              "line": 182,
               "column": 4
             },
             "end": {
-              "line": 163,
+              "line": 185,
               "column": 5
             }
           },
@@ -1437,11 +1437,11 @@
           "description": "tooltip for the button",
           "sourceRange": {
             "start": {
-              "line": 167,
+              "line": 189,
               "column": 4
             },
             "end": {
-              "line": 170,
+              "line": 192,
               "column": 5
             }
           },
@@ -1453,11 +1453,11 @@
           "description": "optional tooltip for the button when expanded",
           "sourceRange": {
             "start": {
-              "line": 174,
+              "line": 196,
               "column": 4
             },
             "end": {
-              "line": 177,
+              "line": 199,
               "column": 5
             }
           },
@@ -1534,11 +1534,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 54,
+              "line": 53,
               "column": 4
             },
             "end": {
-              "line": 58,
+              "line": 57,
               "column": 5
             }
           },
@@ -1556,11 +1556,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 62,
+              "line": 61,
               "column": 4
             },
             "end": {
-              "line": 66,
+              "line": 65,
               "column": 5
             }
           },
@@ -1578,11 +1578,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 71,
+              "line": 70,
               "column": 4
             },
             "end": {
-              "line": 74,
+              "line": 73,
               "column": 5
             }
           },
@@ -1600,11 +1600,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 78,
+              "line": 77,
               "column": 4
             },
             "end": {
-              "line": 81,
+              "line": 80,
               "column": 5
             }
           },
@@ -1622,11 +1622,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 85,
+              "line": 84,
               "column": 4
             },
             "end": {
-              "line": 88,
+              "line": 87,
               "column": 5
             }
           },
@@ -1693,11 +1693,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 94,
+              "line": 93,
               "column": 2
             },
             "end": {
-              "line": 104,
+              "line": 103,
               "column": 3
             }
           },
@@ -1713,11 +1713,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 109,
+              "line": 108,
               "column": 2
             },
             "end": {
-              "line": 117,
+              "line": 116,
               "column": 3
             }
           },
@@ -1737,11 +1737,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 122,
+              "line": 121,
               "column": 2
             },
             "end": {
-              "line": 126,
+              "line": 125,
               "column": 3
             }
           },
@@ -1761,11 +1761,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 131,
+              "line": 130,
               "column": 2
             },
             "end": {
-              "line": 137,
+              "line": 136,
               "column": 3
             }
           },
@@ -1785,11 +1785,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 142,
+              "line": 141,
               "column": 2
             },
             "end": {
-              "line": 154,
+              "line": 153,
               "column": 3
             }
           },
@@ -1805,11 +1805,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 159,
+              "line": 158,
               "column": 2
             },
             "end": {
-              "line": 204,
+              "line": 203,
               "column": 3
             }
           },
@@ -1834,7 +1834,7 @@
           "column": 8
         },
         "end": {
-          "line": 205,
+          "line": 204,
           "column": 1
         }
       },
@@ -1882,11 +1882,11 @@
           "description": "accordion-style: whole header of every a11y-collapse item acts as button? default is just icon.",
           "sourceRange": {
             "start": {
-              "line": 54,
+              "line": 53,
               "column": 4
             },
             "end": {
-              "line": 58,
+              "line": 57,
               "column": 5
             }
           },
@@ -1898,11 +1898,11 @@
           "description": "is every each a11y-collapse item disabled?",
           "sourceRange": {
             "start": {
-              "line": 62,
+              "line": 61,
               "column": 4
             },
             "end": {
-              "line": 66,
+              "line": 65,
               "column": 5
             }
           },
@@ -1914,11 +1914,11 @@
           "description": "an array of globalProperties to override every a11y-collapse item\nFor example, {\"icon\": \"arrow-drop-down\"} would set every item's icon to \"arrow-drop-down\"",
           "sourceRange": {
             "start": {
-              "line": 71,
+              "line": 70,
               "column": 4
             },
             "end": {
-              "line": 74,
+              "line": 73,
               "column": 5
             }
           },
@@ -1930,11 +1930,11 @@
           "description": "is every a11y-collapse item radio button?",
           "sourceRange": {
             "start": {
-              "line": 78,
+              "line": 77,
               "column": 4
             },
             "end": {
-              "line": 81,
+              "line": 80,
               "column": 5
             }
           },

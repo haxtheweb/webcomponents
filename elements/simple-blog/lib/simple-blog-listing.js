@@ -39,10 +39,16 @@ Polymer({
     </style>
     <iron-list items="[[items]]">
       <template>
-        <simple-blog-overview item-id="[[item.id]]" title="[[item.title]]" description="[[item.description]]" link="[[item.location]]" changed="[[item.metadata.updated]]"></simple-blog-overview>
+        <simple-blog-overview
+          item-id="[[item.id]]"
+          title="[[item.title]]"
+          description="[[item.description]]"
+          link="[[item.location]]"
+          changed="[[item.metadata.updated]]"
+        ></simple-blog-overview>
       </template>
     </iron-list>
-`,
+  `,
 
   is: "simple-blog-listing",
 

@@ -14,11 +14,11 @@
   }
 })(this, function() {
   /* Chartist.js 0.11.0
- * Copyright © 2017 Gion Kunz
- * Free to use under either the WTFPL license or the MIT license.
- * https://raw.githubusercontent.com/gionkunz/chartist-js/master/LICENSE-WTFPL
- * https://raw.githubusercontent.com/gionkunz/chartist-js/master/LICENSE-MIT
- */
+   * Copyright © 2017 Gion Kunz
+   * Free to use under either the WTFPL license or the MIT license.
+   * https://raw.githubusercontent.com/gionkunz/chartist-js/master/LICENSE-WTFPL
+   * https://raw.githubusercontent.com/gionkunz/chartist-js/master/LICENSE-MIT
+   */
   /**
    * The core module of Chartist that is mainly providing static functions and higher level functions for chart modules.
    *
@@ -3903,8 +3903,8 @@
             typeof seriesOptions.lineSmooth === "function"
               ? seriesOptions.lineSmooth
               : seriesOptions.lineSmooth
-                ? Chartist.Interpolation.monotoneCubic()
-                : Chartist.Interpolation.none();
+              ? Chartist.Interpolation.monotoneCubic()
+              : Chartist.Interpolation.none();
           // Interpolating path where pathData will be used to annotate each path element so we can trace back the original
           // index, value and meta data
           var path = smoothing(pathCoordinates, pathData);

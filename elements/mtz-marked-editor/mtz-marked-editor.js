@@ -16,10 +16,9 @@ let MtzMarkedEditor = Polymer({
       }
     </style>
 
-      <slot name="controls"></slot>
-      <slot name="textarea"></slot>
-      <slot name="footer"></slot>
-`,
+    <slot name="controls"></slot> <slot name="textarea"></slot>
+    <slot name="footer"></slot>
+  `,
 
   is: "mtz-marked-editor",
 

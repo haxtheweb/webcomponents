@@ -44,30 +44,49 @@ A simple responsive video player with ridiculously powerful backing
 */
 let VideoPlayer = Polymer({
   _template: html`
-   <custom-style>
-    <style>
-      :host {
-        display: block;
-        margin: 0 0 15px;
-      }
-      .video-caption {
-        font-style: italic;
-        margin: 0;
-        padding: 8px;
-        @apply --video-player-caption-theme;
-      }
-    </style>
+    <custom-style>
+      <style>
+        :host {
+          display: block;
+          margin: 0 0 15px;
+        }
+        .video-caption {
+          font-style: italic;
+          margin: 0;
+          padding: 8px;
+          @apply --video-player-caption-theme;
+        }
+      </style>
     </custom-style>
-    
+
     <template is="dom-if" if="[[isA11yMedia]]" restamp="">
-      <a11y-media-player accent-color\$="[[accentColor]]" dark\$="[[dark]]" dark-transcript\$="[[darkTranscript]]" disable-interactive\$="[[disableInteractive]]" hide-timestamps\$="[[hideTimestamps]]" lang\$="[[lang]]" media-type\$="[[sourceType]]" preload\$="[[preload]]" media-title\$="[[mediaTitle]]" stand-alone\$="[[__standAlone]]" sticky-corner\$="[[stickyCorner]]" thumbnail-src\$="[[thumbnailSrc]]" crossorigin\$="[[crossorigin]]" youtube-id\$="[[youtubeId]]">
-        <slot name="source"></slot>
-        <slot name="track"></slot>
+      <a11y-media-player
+        accent-color\$="[[accentColor]]"
+        dark\$="[[dark]]"
+        dark-transcript\$="[[darkTranscript]]"
+        disable-interactive\$="[[disableInteractive]]"
+        hide-timestamps\$="[[hideTimestamps]]"
+        lang\$="[[lang]]"
+        media-type\$="[[sourceType]]"
+        preload\$="[[preload]]"
+        media-title\$="[[mediaTitle]]"
+        stand-alone\$="[[__standAlone]]"
+        sticky-corner\$="[[stickyCorner]]"
+        thumbnail-src\$="[[thumbnailSrc]]"
+        crossorigin\$="[[crossorigin]]"
+        youtube-id\$="[[youtubeId]]"
+      >
+        <slot name="source"></slot> <slot name="track"></slot>
         <template id="sources" is="dom-repeat" items="[[sourceData]]" as="sd">
-          <source src\$="[[sd.src]]" type\$="[[sd.type]]">
+          <source src\$="[[sd.src]]" type\$="[[sd.type]]" />
         </template>
         <template id="tracks" is="dom-repeat" items="[[tracks]]" as="track">
-          <track src\$="[[track.src]]" kind\$="[[track.kind]]" label\$="[[track.label]]" srclang\$="[[track.lang]]">
+          <track
+            src\$="[[track.src]]"
+            kind\$="[[track.kind]]"
+            label\$="[[track.label]]"
+            srclang\$="[[track.lang]]"
+          />
         </template>
         <slot name="caption"></slot>
       </a11y-media-player>
@@ -75,22 +94,40 @@ let VideoPlayer = Polymer({
     <template is="dom-if" if="[[!isA11yMedia]]">
       <template is="dom-if" if="[[sandboxed]]">
         <div class="responsive-video-container" lang\$="[[lang]]">
-          <webview resource\$="[[schemaResourceID]]-video" src\$="[[sourceData.0.src]]" width\$="[[width]]" height\$="[[height]]" frameborder="0"></webview>
+          <webview
+            resource\$="[[schemaResourceID]]-video"
+            src\$="[[sourceData.0.src]]"
+            width\$="[[width]]"
+            height\$="[[height]]"
+            frameborder="0"
+          ></webview>
         </div>
       </template>
       <template is="dom-if" if="[[!sandboxed]]">
         <template is="dom-if" if="[[iframed]]">
           <div class="responsive-video-container" lang\$="[[lang]]">
-            <iframe resource\$="[[schemaResourceID]]-video" src\$="[[sourceData.0.src]]" width\$="[[width]]" height\$="[[height]]" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+            <iframe
+              resource\$="[[schemaResourceID]]-video"
+              src\$="[[sourceData.0.src]]"
+              width\$="[[width]]"
+              height\$="[[height]]"
+              frameborder="0"
+              webkitallowfullscreen=""
+              mozallowfullscreen=""
+              allowfullscreen=""
+            ></iframe>
           </div>
         </template>
       </template>
       <div id="videocaption" class\$="video-caption">
-        <p>[[mediaTitle]] <span class="media-type print-only">(embedded media)</span></p>
+        <p>
+          [[mediaTitle]]
+          <span class="media-type print-only">(embedded media)</span>
+        </p>
         <slot name="caption"></slot>
       </div>
     </template>
-`,
+  `,
 
   is: "video-player",
 

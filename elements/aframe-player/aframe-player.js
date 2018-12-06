@@ -1,27 +1,46 @@
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "aframe/dist/aframe-master.js";
 /**
-`aframe-player`
-A LRN element
-
-@demo demo/index.html
-*/
+ * `aframe-player`
+ * `A wrapper to do data binding into aframe`
+ *
+ * @demo demo/index.html
+ */
 let AframePlayer = Polymer({
   _template: html`
-    <style>
-      :host {
-        display: block;
-        position: relative;
-      }
-    </style>
-    <a-scene id="scene" class="embedded" embedded arjs$="[[ar]]" style$="height:[[height]];width:[[width]];">
+    <custom-style>
+      <style is="custom-style">
+        :host {
+          display: block;
+          position: relative;
+        }
+        .a-hidden {
+          display: hidden;
+        }
+      </style>
+    </custom-style>
+    <a-scene
+      id="scene"
+      class="embedded"
+      embedded
+      arjs$="[[ar]]"
+      style$="height:[[height]];width:[[width]];"
+    >
       <a-sky color\$="[[skyColor]]"></a-sky>
       <a-marker-camera preset="hiro"></a-marker-camera>
-      <a-entity id="entity" gltf-model\$="[[source]]" position="0 0 0"></a-entity>
+      <a-entity
+        id="entity"
+        gltf-model\$="[[source]]"
+        position="0 0 0"
+      ></a-entity>
     </a-scene>
-`,
+  `,
 
   is: "aframe-player",
   behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
@@ -92,7 +111,12 @@ let AframePlayer = Polymer({
       observer: "_positionChanged"
     }
   },
-
+  /**
+   * highjack shadowDom
+   */
+  _attachDom(dom) {
+    this.appendChild(dom);
+  },
   /**
    * Attached.
    */

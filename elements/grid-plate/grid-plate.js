@@ -2,11 +2,10 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "@polymer/paper-button/paper-button.js";
+import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
 import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
 /**
@@ -21,113 +20,157 @@ A grid plate based on a layout that manipulates it.
 */
 let GridPlate = Polymer({
   _template: html`
-  <custom-style>
-    <style is="custom-style" include="simple-colors">
-      :host {
-        display: block;
-      }
-
-      responsive-grid-col {
-        --responsive-grid-col-inner: {
-          padding-left: 0;
-          padding-right: 0;
+    <custom-style>
+      <style is="custom-style" include="simple-colors">
+        :host {
+          display: block;
         }
-      }
 
-      responsive-grid-row {
-        --responsive-grid-row-inner: {
-          margin-left: 0;
-          margin-right: 0;
+        responsive-grid-col {
+          --responsive-grid-col-inner: {
+            padding-left: 0;
+            padding-right: 0;
+          }
         }
-      }
 
-      :host([edit-mode]) responsive-grid-col.mover {
-        min-height: 150px;
-        background-color: #d1d1d1;
-      }
+        responsive-grid-row {
+          --responsive-grid-row-inner: {
+            margin-left: 0;
+            margin-right: 0;
+          }
+        }
 
-      :host responsive-grid-row ::slotted(*) .mover,
-      :host responsive-grid-col[data-draggable].mover {
-        outline: 2px dotted #d1d1d1;
-        outline-offset: 2px;
-        background-color: rgba(240, 240, 240, .2);
-      }
+        :host([edit-mode]) responsive-grid-col.mover {
+          min-height: 150px;
+          background-color: #d1d1d1;
+        }
 
-      :host responsive-grid-row ::slotted(*) .active-item {
-        outline: 2px dashed #aaaaaa !important;
-        outline-offset: 2px;
-        background-color: rgba(220, 220, 220, .6) !important;
-      }
+        :host responsive-grid-row ::slotted(*) .mover,
+        :host responsive-grid-col[data-draggable].mover {
+          outline: 2px dotted #d1d1d1;
+          outline-offset: 2px;
+          background-color: rgba(240, 240, 240, 0.2);
+        }
 
-      :host responsive-grid-row ::slotted(*) [data-draggable]:focus,
-      :host responsive-grid-row ::slotted(*) [data-draggable]:hover,
-      :host responsive-grid-row ::slotted(*) [data-draggable]:active {
-        outline: 2px dotted #d1d1d1;
-        outline-offset: 2px;
-        background-color: rgba(240, 240, 240, .2);
-        cursor: move !important;
-      }
+        :host responsive-grid-row ::slotted(*) .active-item {
+          outline: 2px dashed #aaaaaa !important;
+          outline-offset: 2px;
+          background-color: rgba(220, 220, 220, 0.6) !important;
+        }
 
-      paper-button {
-        display: none;
-        position: absolute;
-        margin: 0;
-        padding: 0;
-        outline: none;
-        width: 20px;
-        height: 20px;
-        color: black;
-        background-color: #EEEEEE;
-        border-radius: 50%;
-        box-sizing: content-box !important;
-        z-index: 1;
-        min-width: unset;
-      }
+        :host responsive-grid-row ::slotted(*) [data-draggable]:focus,
+        :host responsive-grid-row ::slotted(*) [data-draggable]:hover,
+        :host responsive-grid-row ::slotted(*) [data-draggable]:active {
+          outline: 2px dotted #d1d1d1;
+          outline-offset: 2px;
+          background-color: rgba(240, 240, 240, 0.2);
+          cursor: move !important;
+        }
 
-      paper-button.active {
-        display: block;
-      }
-      paper-button iron-icon {
-        display: block;
-      }
+        paper-icon-button {
+          display: none;
+          position: absolute;
+          margin: 0;
+          padding: 0;
+          outline: none;
+          width: 20px;
+          height: 20px;
+          color: black;
+          background-color: #eeeeee;
+          border-radius: 50%;
+          box-sizing: content-box !important;
+          z-index: 1;
+          min-width: unset;
+        }
 
-      .button-holding-pen {
-        position: relative;
-      }
-    </style>
+        paper-icon-button.active {
+          display: block;
+        }
+
+        .button-holding-pen {
+          position: relative;
+        }
+      </style>
     </custom-style>
     <div class="button-holding-pen">
-      <paper-button title="move item up" id="up" on-tap="moveActiveElement">
-        <iron-icon icon="icons:arrow-upward"></iron-icon>
-      </paper-button>
-      <paper-button title="move item right" id="right" on-tap="moveActiveElement">
-        <iron-icon icon="icons:arrow-forward"></iron-icon>
-      </paper-button>
-      <paper-button title="move item down" id="down" on-tap="moveActiveElement">
-        <iron-icon icon="icons:arrow-downward"></iron-icon>
-      </paper-button>
-      <paper-button title="move item left" id="left" on-tap="moveActiveElement">
-        <iron-icon icon="icons:arrow-back"></iron-icon>
-      </paper-button>
+      <paper-icon-button
+        icon="icons:arrow-upward"
+        title="move item up"
+        id="up"
+        on-tap="moveActiveElement"
+      >
+      </paper-icon-button>
+      <paper-icon-button
+        icon="icons:arrow-forward"
+        title="move item right"
+        id="right"
+        on-tap="moveActiveElement"
+      ></paper-icon-button>
+      <paper-icon-button
+        icon="icons:arrow-downward"
+        title="move item down"
+        id="down"
+        on-tap="moveActiveElement"
+      >
+      </paper-icon-button>
+      <paper-icon-button
+        icon="icons:arrow-back"
+        title="move item left"
+        id="left"
+        on-tap="moveActiveElement"
+      >
+      </paper-icon-button>
     </div>
     <responsive-grid-row gutter="0">
       <template is="dom-if" if="[[!hideCol1]]" strip-whitespace>
-        <responsive-grid-col id="col1" style\$="background-color:[[__col1Color]];" xl\$="[[col1_xl]]" lg\$="[[col1_lg]]" md\$="[[col1_md]]" sm\$="[[col1_sm]]" xs\$="[[col1_xs]]">
+        <responsive-grid-col
+          id="col1"
+          style\$="background-color:[[__col1Color]];"
+          xl\$="[[col1_xl]]"
+          lg\$="[[col1_lg]]"
+          md\$="[[col1_md]]"
+          sm\$="[[col1_sm]]"
+          xs\$="[[col1_xs]]"
+        >
           <slot name="col-1"></slot>
         </responsive-grid-col>
       </template>
       <template is="dom-if" if="[[!hideCol2]]" strip-whitespace>
-        <responsive-grid-col id="col2" style\$="background-color:[[__col2Color]];" xl\$="[[col2_xl]]" lg\$="[[col2_lg]]" md\$="[[col2_md]]" sm\$="[[col2_sm]]" xs\$="[[col2_xs]]">
+        <responsive-grid-col
+          id="col2"
+          style\$="background-color:[[__col2Color]];"
+          xl\$="[[col2_xl]]"
+          lg\$="[[col2_lg]]"
+          md\$="[[col2_md]]"
+          sm\$="[[col2_sm]]"
+          xs\$="[[col2_xs]]"
+        >
           <slot name="col-2"></slot>
         </responsive-grid-col>
       </template>
       <template is="dom-if" if="[[!hideCol3]]" strip-whitespace>
-        <responsive-grid-col id="col3" style\$="background-color:[[__col3Color]];" xl\$="[[col3_xl]]" lg\$="[[col3_lg]]" md\$="[[col3_md]]" sm\$="[[col3_sm]]" xs\$="[[col3_xs]]">
+        <responsive-grid-col
+          id="col3"
+          style\$="background-color:[[__col3Color]];"
+          xl\$="[[col3_xl]]"
+          lg\$="[[col3_lg]]"
+          md\$="[[col3_md]]"
+          sm\$="[[col3_sm]]"
+          xs\$="[[col3_xs]]"
+        >
           <slot name="col-3"></slot>
         </responsive-grid-col>
       </template>
       <template is="dom-if" if="[[!hideCol4]]" strip-whitespace>
-        <responsive-grid-col id="col4" style\$="background-color:[[__col4Color]];" xl\$="[[col4_xl]]" lg\$="[[col4_lg]]" md\$="[[col4_md]]" sm\$="[[col4_sm]]" xs\$="[[col4_xs]]">
+        <responsive-grid-col
+          id="col4"
+          style\$="background-color:[[__col4Color]];"
+          xl\$="[[col4_xl]]"
+          lg\$="[[col4_lg]]"
+          md\$="[[col4_md]]"
+          sm\$="[[col4_sm]]"
+          xs\$="[[col4_xs]]"
+        >
           <slot name="col-4"></slot>
         </responsive-grid-col>
       </template>
@@ -135,14 +178,24 @@ let GridPlate = Polymer({
         <slot></slot>
       </responsive-grid-col>
     </responsive-grid-row>
-    <iron-a11y-keys stop-keyboard-event-propagation target="[[__activeItem]]" keys="enter" on-keys-pressed="setActiveElement"></iron-a11y-keys>
-    <iron-a11y-keys target="[[__activeItem]]" keys="esc" on-keys-pressed="cancelActive"></iron-a11y-keys>
-`,
+    <iron-a11y-keys
+      stop-keyboard-event-propagation
+      target="[[__activeItem]]"
+      keys="enter"
+      on-keys-pressed="setActiveElement"
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      target="[[__activeItem]]"
+      keys="esc"
+      on-keys-pressed="cancelActive"
+    ></iron-a11y-keys>
+  `,
 
   is: "grid-plate",
 
   listeners: {
-    focusin: "_focusIn"
+    focusin: "_focusIn",
+    focusout: "_focusOut"
   },
 
   behaviors: [HAXBehaviors.PropertiesBehaviors],
@@ -318,7 +371,24 @@ let GridPlate = Polymer({
       }
     }
   },
-
+  /**
+   * Focus / tab / click event normalization
+   */
+  _focusOut: function(e) {
+    if (this.editMode) {
+      var normalizedEvent = dom(e);
+      var local = normalizedEvent.localTarget;
+      // @todo need to correctly de-focus when the element loses focus entirely
+      if (
+        local.parentNode === this ||
+        document.activeElement.parentNode === this ||
+        document.activeElement === this
+      ) {
+      } else {
+        //this.__activeItem = null;
+      }
+    }
+  },
   /**
    * Position the arrows to change directions around something
    */
@@ -591,8 +661,8 @@ let GridPlate = Polymer({
    * as color-number for name of the color hypthen numberical array position
    */
   splitColor: function(value) {
-    if (value != "" && typeof this.__hexCodes[value] !== typeof undefined) {
-      return this.__hexCodes[value][this.__hexCodes[value].length - 1];
+    if (value != "" && typeof SimpleColors.colors[value] !== typeof undefined) {
+      return SimpleColors.colors[value][0];
     }
     return value;
   },
@@ -652,7 +722,6 @@ let GridPlate = Polymer({
       this["col" + col + "_xs"] = items[i];
     }
   },
-
   /**
    * Attached to the DOM, now fire.
    */
@@ -669,7 +738,7 @@ let GridPlate = Polymer({
     );
     // quickly build a basic selection array from known color names
     var colorOptions = [];
-    for (var i in this.__hexCodes) {
+    for (var i in SimpleColors.colors) {
       colorOptions[i] = i;
     }
     // Establish hax property binding

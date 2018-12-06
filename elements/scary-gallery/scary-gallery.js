@@ -35,7 +35,7 @@ let ScaryGallery = Polymer({
       }
     </style>
     <slot></slot>
-`,
+  `,
 
   is: "scary-gallery",
 

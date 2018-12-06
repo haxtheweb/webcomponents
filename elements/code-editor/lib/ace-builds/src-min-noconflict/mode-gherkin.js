@@ -111,8 +111,8 @@ ace.define(
                       )
                         ? (r += i)
                         : t.match("(Given|Then).+(:)$|Examples:")
-                          ? (r += i)
-                          : t.match("\\*.+") && (r += "* ")),
+                        ? (r += i)
+                        : t.match("\\*.+") && (r += "* ")),
                     r)
               );
             });

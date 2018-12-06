@@ -40,34 +40,100 @@ Polymer({
       }
     </style>
     <!-- Load all comments on load of element -->
-    <iron-ajax auto url="[[sourcePath]]" handle-as="json" method="[[opsRequestMethod.list]]" last-response="{{comments}}"></iron-ajax>
+    <iron-ajax
+      auto
+      url="[[sourcePath]]"
+      handle-as="json"
+      method="[[opsRequestMethod.list]]"
+      last-response="{{comments}}"
+    ></iron-ajax>
     <!-- Create stub-comment -->
-     <iron-ajax id="ajaxcreatestub" url="[[createStubUrl]]" method="[[opsRequestMethod.create]]" body="[[activeComment.id]]" on-response="_updateReply" handle-as="json" last-response="{{newComment}}"></iron-ajax>
-     <!-- Update comment -->
-    <iron-ajax id="ajaxupdaterequest" url="[[reqUrl]]" method="[[opsRequestMethod.update]]" body="[[activeComment]]" content-type="application/json" handle-as="json" on-response="_handleUpdateResponse"></iron-ajax>
+    <iron-ajax
+      id="ajaxcreatestub"
+      url="[[createStubUrl]]"
+      method="[[opsRequestMethod.create]]"
+      body="[[activeComment.id]]"
+      on-response="_updateReply"
+      handle-as="json"
+      last-response="{{newComment}}"
+    ></iron-ajax>
+    <!-- Update comment -->
+    <iron-ajax
+      id="ajaxupdaterequest"
+      url="[[reqUrl]]"
+      method="[[opsRequestMethod.update]]"
+      body="[[activeComment]]"
+      content-type="application/json"
+      handle-as="json"
+      on-response="_handleUpdateResponse"
+    ></iron-ajax>
     <!-- Delete comment -->
-    <iron-ajax id="ajaxdeleterequest" url="[[reqUrl]]" method="[[opsRequestMethod.delete]]" body="[[activeComment]]" content-type="application/json" handle-as="json" on-response="_handleDeleteResponse"></iron-ajax>
+    <iron-ajax
+      id="ajaxdeleterequest"
+      url="[[reqUrl]]"
+      method="[[opsRequestMethod.delete]]"
+      body="[[activeComment]]"
+      content-type="application/json"
+      handle-as="json"
+      on-response="_handleDeleteResponse"
+    ></iron-ajax>
     <!-- Like comment -->
-    <iron-ajax id="ajaxlikerequest" url="[[reqUrl]]" method="[[opsRequestMethod.like]]" body="[[activeComment]]" content-type="application/json" handle-as="json" on-response="_handleLikeResponse"></iron-ajax>
+    <iron-ajax
+      id="ajaxlikerequest"
+      url="[[reqUrl]]"
+      method="[[opsRequestMethod.like]]"
+      body="[[activeComment]]"
+      content-type="application/json"
+      handle-as="json"
+      on-response="_handleLikeResponse"
+    ></iron-ajax>
     <app-toolbar>
-      <lrnsys-button class="comment-button" raised="" on-click="handleTopReply" id="leavecomment" hover-class="blue white-text" label="Add Comment"></lrnsys-button>
-      <dropdown-select id="filtertype" label="Filter Comments by" value="attributes.body">
+      <lrnsys-button
+        class="comment-button"
+        raised=""
+        on-click="handleTopReply"
+        id="leavecomment"
+        hover-class="blue white-text"
+        label="Add Comment"
+      ></lrnsys-button>
+      <dropdown-select
+        id="filtertype"
+        label="Filter Comments by"
+        value="attributes.body"
+      >
         <paper-item value="attributes.body">Body</paper-item>
-        <paper-item value="relationships.author.data.name">User Name</paper-item>
+        <paper-item value="relationships.author.data.name"
+          >User Name</paper-item
+        >
       </dropdown-select>
-      <paper-input label="Filter Text" id="filtercomments" aria-controls="filteredcomments" value="" always-float-label=""></paper-input>   
+      <paper-input
+        label="Filter Text"
+        id="filtercomments"
+        aria-controls="filteredcomments"
+        value=""
+        always-float-label=""
+      ></paper-input>
     </app-toolbar>
-    <grafitto-filter id="filteredcomments" items\$="[[_toArray(comments.data)]]" where="" as="filtered" like="">
+    <grafitto-filter
+      id="filteredcomments"
+      items\$="[[_toArray(comments.data)]]"
+      where=""
+      as="filtered"
+      like=""
+    >
       <template>
         <iron-list id="commentlist" items="[[filtered]]" as="item">
           <template>
-          <lrnsys-comment comment="{{item}}" hover-class="blue white-text"></lrnsys-comment>
+            <lrnsys-comment
+              comment="{{item}}"
+              hover-class="blue white-text"
+            ></lrnsys-comment>
           </template>
         </iron-list>
       </template>
     </grafitto-filter>
     <paper-toast text="Updated" id="toast"></paper-toast>
-`,
+  `,
 
   is: "lrnsys-comment-list",
 
@@ -158,7 +224,9 @@ Polymer({
   attached: function(e) {
     window.simpleModal.requestAvailability();
     async.microTask.run(() => {
-      this.$.filteredcomments.querySelector("iron-list").fire("iron-resize");
+      if (this.$.filteredcomments.querySelector("iron-list")) {
+        this.$.filteredcomments.querySelector("iron-list").fire("iron-resize");
+      }
       window.dispatchEvent(new Event("resize"));
     });
     this.$.filtercomments.addEventListener("value-changed", e => {

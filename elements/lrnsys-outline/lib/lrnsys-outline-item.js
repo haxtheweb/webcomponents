@@ -2,6 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/paper-input/paper-input.js";
+import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@lrnwebcomponents/drawing-icons/drawing-icons.js";
 /**
@@ -56,7 +57,7 @@ Polymer({
       :host(:hover) #wrapper {
         cursor: pointer;
       }
-      :host #move {
+      #move {
         font-size: 16px;
         padding: 10px;
         color: transparent;
@@ -65,8 +66,7 @@ Polymer({
       :host(:hover) #move {
         color: var(--lrnsys-outline-move-icon-color, #aaaaaa);
       }
-      :host paper-icon-button {
-        position: static;
+      paper-icon-button {
         font-size: 16px;
         height: 36px;
         padding: 10px;
@@ -77,75 +77,124 @@ Polymer({
       :host(:focus) paper-icon-button,
       :host(:hover) paper-icon-button {
         width: 36px;
-        display: block;
+        display: inline-flex;
       }
-      :host paper-icon-button#add {
+      paper-icon-button#add {
         width: 36px;
         margin-right: 2px;
         color: white;
         background-color: var(--lrnsys-outline-add-button-color, #018dff);
       }
-      :host paper-icon-button#delete {
+      paper-icon-button#delete {
         color: white;
         background-color: var(--lrnsys-outline-delete-button-color, #cc0000);
       }
     </style>
-    <div id="wrapper" data-indent\$="[[indentLevel]]">
-      <iron-icon id="move" title="Move" icon="drawing:move" role="presentation"></iron-icon>
-      <paper-input id="input" label="Enter a page title" value\$="[[title]]" no-label-float="">
+    <div id="wrapper" data-indent$="[[indentLevel]]">
+      <iron-icon
+        id="move"
+        title="Move"
+        icon="drawing:move"
+        role="presentation"
+      ></iron-icon>
+      <paper-input
+        id="input"
+        label="Enter a page title"
+        value="{{title}}"
+        no-label-float=""
+      >
       </paper-input>
-      <paper-icon-button id="add" title="Add Item" icon="icons:add" on-tap="add"></paper-icon-button>
-      <paper-icon-button id="delete" title="Delete" icon="icons:delete" on-tap="delete"></paper-icon-button>
+      <paper-icon-button
+        id="add"
+        title="Add Item"
+        icon="icons:add"
+        on-tap="add"
+      ></paper-icon-button>
+      <paper-icon-button
+        id="delete"
+        title="Delete"
+        icon="icons:delete"
+        on-tap="delete"
+      ></paper-icon-button>
     </div>
-    <div id="down-action" gesture-disabled\$="[[disableDown]]">
-      <paper-icon-button id="down" title="Move downwards" icon="icons:arrow-downward" on-tap="move(1)"></paper-icon-button>
-    </div>
-    <div id="left-action" gesture-disabled\$="[[disableLeft]]">
-      <paper-icon-button id="left" title="Outdent" icon="icons:arrow-backward" on-tap="setIndent(-1)"></paper-icon-button>
-    </div>
-    <div id="right-action" gesture-disabled\$="[[disableRight]]">
-      <paper-icon-button id="right" title="Indent" icon="icons:arrow-forward" on-tap="setIndent(1)"></paper-icon-button>
-    </div>
-    <div id="up-action"gesture-disabled\$="[[disableUp]]">
-      <paper-icon-button id="up" title="Move upwards" icon="icons:arrow-upward" on-tap="move(-1)"></paper-icon-button>
-    </div>
-    <iron-a11y-keys id="a11y" target="[[target]]" keys="enter" on-keys-pressed="_onEnter"></iron-a11y-keys>
-    <iron-a11y-keys id="a11y" target="[[target]]" keys="backspace" on-keys-pressed="_onBackspace"></iron-a11y-keys>
-    <iron-a11y-keys id="a11y" target="[[target]]" keys="up" on-keys-pressed="_onArrowUp"></iron-a11y-keys>
-    <iron-a11y-keys id="a11y" target="[[target]]" keys="down" on-keys-pressed="_onArrowDown"></iron-a11y-keys>
-    <iron-a11y-keys id="a11y" target="[[target]]" keys="tab" on-keys-pressed="_onTab"></iron-a11y-keys>
-    <iron-a11y-keys id="a11y" target="[[target]]" keys="shift+tab" on-keys-pressed="_onShiftTab"></iron-a11y-keys>
-    <iron-a11y-keys id="a11y" target="[[target]]" keys="shift+up" on-keys-pressed="_onShiftArrowUp"></iron-a11y-keys>
-    <iron-a11y-keys id="a11y" target="[[target]]" keys="shift+down" on-keys-pressed="_onShiftArrowDown"></iron-a11y-keys>
-`,
-
+    <paper-icon-button
+      id="down"
+      title="Move downwards"
+      icon="icons:arrow-downward"
+      on-tap="moveDown"
+    ></paper-icon-button>
+    <paper-icon-button
+      id="left"
+      title="Outdent"
+      icon="icons:arrow-back"
+      on-tap="moveOut"
+    ></paper-icon-button>
+    <paper-icon-button
+      id="right"
+      title="Indent"
+      icon="icons:arrow-forward"
+      on-tap="moveIn"
+    ></paper-icon-button>
+    <paper-icon-button
+      id="up"
+      title="Move upwards"
+      icon="icons:arrow-upward"
+      on-tap="moveUp"
+    ></paper-icon-button>
+    <iron-a11y-keys
+      id="a11y"
+      target="[[__inputTarget]]"
+      keys="enter"
+      on-keys-pressed="_onEnter"
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      id="a11y"
+      target="[[__inputTarget]]"
+      keys="backspace"
+      on-keys-pressed="_onBackspace"
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      id="a11y"
+      target="[[__inputTarget]]"
+      keys="up"
+      on-keys-pressed="_onArrowUp"
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      id="a11y"
+      target="[[__inputTarget]]"
+      keys="down"
+      on-keys-pressed="_onArrowDown"
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      id="a11y"
+      target="[[__inputTarget]]"
+      keys="tab"
+      on-keys-pressed="_onTab"
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      id="a11y"
+      target="[[__inputTarget]]"
+      keys="shift+tab"
+      on-keys-pressed="_onShiftTab"
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      id="a11y"
+      target="[[__inputTarget]]"
+      keys="shift+up"
+      on-keys-pressed="_onShiftArrowUp"
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      id="a11y"
+      target="[[__inputTarget]]"
+      keys="shift+down"
+      on-keys-pressed="_onShiftArrowDown"
+    ></iron-a11y-keys>
+  `,
   is: "lrnsys-outline-item",
-
   listeners: {
     change: "_onChange"
   },
-
   properties: {
-    disableDown: {
-      type: Boolean,
-      value: false
-    },
-    disableLeft: {
-      type: Boolean,
-      value: false
-    },
-    disableRight: {
-      type: Boolean,
-      value: false
-    },
-    disableUp: {
-      type: Boolean,
-      value: false
-    },
-    id: {
-      type: String,
-      value: null
-    },
     indentLevel: {
       type: Number,
       value: 0
@@ -158,36 +207,53 @@ Polymer({
       type: String,
       value: null
     },
-    target: {
-      type: Object,
-      value: null
-    },
     value: {
       type: String,
       value: null,
+      notify: true,
       reflectToAttribute: true
     }
   },
-
+  /**
+   * attached life cycle
+   */
   attached: function() {
     this.fire("attached-item", { item: this });
   },
-
+  /**
+   * ready life cycle
+   */
   ready: function() {
-    let root = this;
-    this.target = this.$.input;
-    root.fire("focus-item", root);
-    root.addEventListener("focus", function(e) {
-      root.fire("focus-item", root);
+    this.__inputTarget = this.$.input;
+    this.fire("focus-item", this);
+    this.addEventListener("focus", e => {
+      this.fire("focus-item", this);
     });
-    root.addEventListener("mouseover", function(e) {
-      root.fire("focus-item", root);
+    this.addEventListener("mouseover", e => {
+      this.fire("focus-item", this);
     });
-    root.addEventListener("blur", function(e) {
-      root.fire("blur-item", root);
+    this.addEventListener("blur", e => {
+      this.fire("blur-item", this);
     });
-    root.addEventListener("mouseout", function(e) {
-      root.fire("blur-item", root);
+    this.addEventListener("mouseout", e => {
+      this.fire("blur-item", this);
+    });
+  },
+  /**
+   * detached life cycle
+   */
+  detached: function() {
+    this.removeEventListener("focus", e => {
+      this.fire("focus-item", this);
+    });
+    this.removeEventListener("mouseover", e => {
+      this.fire("focus-item", this);
+    });
+    this.removeEventListener("blur", e => {
+      this.fire("blur-item", this);
+    });
+    this.removeEventListener("mouseout", e => {
+      this.fire("blur-item", this);
     });
   },
 
@@ -222,7 +288,18 @@ Polymer({
   move: function(amount) {
     this.fire("move-item", { item: this, moveUp: amount < 0 });
   },
-
+  moveUp: function(e) {
+    this.move(-1);
+  },
+  moveDown: function(e) {
+    this.move(1);
+  },
+  moveOut: function(e) {
+    this.setIndent(-1);
+  },
+  moveIn: function(e) {
+    this.setIndent(1);
+  },
   setSelection: function(start, end) {
     let s = start !== undefined ? start : 0,
       n = end !== undefined ? end : s;
@@ -250,7 +327,7 @@ Polymer({
 
   _onBackspace: function(e) {
     if (window.getSelection().toString() == this.$.input.value) {
-      event.detail.keyboardEvent.preventDefault();
+      e.detail.keyboardEvent.preventDefault();
       this.fire("delete-item", { item: this });
     } else if (this.$.input.selectionStart == 0) {
       this.fire("indent-item", { item: this, increase: false });

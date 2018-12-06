@@ -1,0 +1,24 @@
+{
+  "name": "lrnapp-open-studio",
+  "short_name": "lrnapp-open-studio",
+  "description": "The open studio for exploring other students work.",
+  "start_url": "/",
+  "display": "standalone",
+  "app_integration": {
+    "title": "View studio projects",
+    "menu": {
+      "menu_name": "menu-elmsln-navigation",
+      "weight": 10
+    },
+    "endpoints": {
+      "data": {
+        "callback": "_cle_open_studio_app_data",
+        "property": "source-path"
+      }
+    },
+    "context": {
+      "distro": "cle",
+      "module": "cle_open_studio_app"
+    }
+  }
+}

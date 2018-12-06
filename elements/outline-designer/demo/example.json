@@ -1,0 +1,65 @@
+{
+  "id": "123-ddc-d321d-d2e-dd2",
+  "title": "My outline",
+  "author": "LRNWebComponents",
+  "description": "A series of related material to teach you about the structure of content.",
+  "license": "by-sa",
+  "metadata": {},
+  "items": [
+    {
+      "id": "item-1",
+      "indent": "1",
+      "location": "outline.html",
+      "order": "0",
+      "parent": null,
+      "title": "Outline",
+      "description": "Our outline, we love thee",
+      "metadata": {
+        "icon": "icons:view-quilt",
+        "image": "stock.jpg"
+      }
+    },
+    {
+      "id": "item-2",
+      "indent": "2",
+      "location": "introduction.html",
+      "order": "0",
+      "parent": "item-1",
+      "title": "Introduction",
+      "description": "An introduction to outlines",
+      "metadata": {
+        "icon": "icons:view-quilt",
+        "image": "stock.jpg"
+      }
+    },
+    {
+      "id": "item-3",
+      "indent": "2",
+      "location": "files/a-2nd-page-item.html",
+      "order": "1",
+      "parent": "item-1",
+      "title": "An item in an outline",
+      "description": "One item of many in the universe",
+      "metadata": {
+        "icon": "icons:view-quilt",
+        "image": "stock.jpg"
+      }
+    },
+    {
+      "id": "item-new",
+      "indent": 0,
+      "location": "",
+      "order": 10000000000,
+      "parent": null,
+      "title": "Add item",
+      "description": "Tap to get started!",
+      "metadata": {
+        "siteName": "",
+        "theme": "simple-blog",
+        "image": "stock.jpg",
+        "color": "blue",
+        "icon": "icons:add-circle-outline"
+      }
+    }
+  ]
+}

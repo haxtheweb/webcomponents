@@ -283,34 +283,36 @@ el.error = {
 Polymer({
   is: "eco-json-schema-object",
   _template: html`
-  <custom-style>
-    <style is="custom-style" include="iron-flex iron-flex-alignment">
-      div.layout {
-        height: auto;
-      }
-      #form {
-        display: block;
-        @apply --eco-json-schema-object-form;
-        @apply --layout-vertical;
-        @apply --layout-wrap;
-      }
-      #form ::slotted(paper-input) {
-        --paper-input-container-shared-input-style: {
-          border: none !important;
-          width: 100% !important;
-          background-color: transparent !important;
-        };
-      }
-    </style>
-  </custom-style>
+    <custom-style>
+      <style is="custom-style" include="iron-flex iron-flex-alignment">
+        div.layout {
+          height: auto;
+        }
+        #form {
+          display: block;
+          @apply --eco-json-schema-object-form;
+          @apply --layout-vertical;
+          @apply --layout-wrap;
+        }
+        #form ::slotted(paper-input) {
+          --paper-input-container-shared-input-style: {
+            border: none !important;
+            width: 100% !important;
+            background-color: transparent !important;
+          }
+        }
+      </style>
+    </custom-style>
 
     <template is="dom-if" if="{{!wizard}}">
       <div class="header" hidden\$="[[!label]]">[[label]]</div>
     </template>
     <div class="layout vertical flex start-justified">
-      <div id="form" class="layout horizontal flex start-justified"><slot></slot></div>
-    </div>  
-`,
+      <div id="form" class="layout horizontal flex start-justified">
+        <slot></slot>
+      </div>
+    </div>
+  `,
   behaviors: [AppLocalizeBehavior],
   properties: {
     language: {

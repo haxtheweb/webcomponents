@@ -21,7 +21,7 @@ Polymer({
       }
     </style>
     <slot></slot>
-`,
+  `,
 
   is: "map-menu-container",
 

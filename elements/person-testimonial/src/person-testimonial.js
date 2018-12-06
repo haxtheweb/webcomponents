@@ -30,7 +30,7 @@ let PersonTestimonial = Polymer({
         height: 100%;
       }
       .image {
-        padding-right:5px;
+        padding-right: 5px;
       }
 
       iron-icon {
@@ -101,27 +101,40 @@ let PersonTestimonial = Polymer({
         .arrow_right {
           display: none;
         }
-        .name, .position {
+        .name,
+        .position {
           text-align: center;
         }
       }
     </style>
     <paper-card elevation="[[elevation]]">
       <div class\$="[[accentColorClass]] image">
-        <iron-image style\$="background-color: [[accentColor]];" src="[[image]]" sizing="cover" preload="" fade=""></iron-image>
+        <iron-image
+          style\$="background-color: [[accentColor]];"
+          src="[[image]]"
+          sizing="cover"
+          preload=""
+          fade=""
+        ></iron-image>
       </div>
       <div class\$="arrow_right [[accentColorClass]]"></div>
       <div class="wrap">
         <div class="testimonial">
-          <iron-icon id="quotestart" icon="persontestimonial:format-quote"></iron-icon>
+          <iron-icon
+            id="quotestart"
+            icon="persontestimonial:format-quote"
+          ></iron-icon>
           <slot></slot>
-          <iron-icon id="quoteend" icon="persontestimonial:format-quote"></iron-icon>
+          <iron-icon
+            id="quoteend"
+            icon="persontestimonial:format-quote"
+          ></iron-icon>
         </div>
         <div class="name">[[name]]</div>
         <div class="position">[[position]]</div>
       </div>
     </paper-card>
-`,
+  `,
 
   is: "person-testimonial",
 

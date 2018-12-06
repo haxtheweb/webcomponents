@@ -363,9 +363,9 @@
               ? ((t = this.compare(r.row, r.column)),
                 t == 1 ? 2 : t == 0 ? 1 : 0)
               : t == -1
-                ? -2
-                : ((t = this.compare(r.row, r.column)),
-                  t == -1 ? -1 : t == 1 ? 42 : 0)
+              ? -2
+              : ((t = this.compare(r.row, r.column)),
+                t == -1 ? -1 : t == 1 ? 42 : 0)
           );
         }),
         (this.comparePoint = function(e) {
@@ -414,21 +414,21 @@
             ? t < this.start.column
               ? -1
               : t > this.end.column
-                ? 1
-                : 0
+              ? 1
+              : 0
             : e < this.start.row
-              ? -1
-              : e > this.end.row
-                ? 1
-                : this.start.row === e
-                  ? t >= this.start.column
-                    ? 0
-                    : -1
-                  : this.end.row === e
-                    ? t <= this.end.column
-                      ? 0
-                      : 1
-                    : 0;
+            ? -1
+            : e > this.end.row
+            ? 1
+            : this.start.row === e
+            ? t >= this.start.column
+              ? 0
+              : -1
+            : this.end.row === e
+            ? t <= this.end.column
+              ? 0
+              : 1
+            : 0;
         }),
         (this.compareStart = function(e, t) {
           return this.start.row == e && this.start.column == t
@@ -444,8 +444,8 @@
           return this.end.row == e && this.end.column == t
             ? 1
             : this.start.row == e && this.start.column == t
-              ? -1
-              : this.compare(e, t);
+            ? -1
+            : this.compare(e, t);
         }),
         (this.clipRows = function(e, t) {
           if (this.end.row > t) var n = { row: t + 1, column: 0 };
@@ -666,8 +666,8 @@
         return e(n, u, r)
           ? { row: n.row, column: n.column }
           : e(a, n, !r)
-            ? { row: n.row + s, column: n.column + (n.row == a.row ? o : 0) }
-            : { row: u.row, column: u.column };
+          ? { row: n.row + s, column: n.column + (n.row == a.row ? o : 0) }
+          : { row: u.row, column: u.column };
       }
       r.implement(this, i),
         (this.getPosition = function() {
@@ -712,12 +712,12 @@
               ? ((n.row = Math.max(0, this.document.getLength() - 1)),
                 (n.column = this.document.getLine(n.row).length))
               : e < 0
-                ? ((n.row = 0), (n.column = 0))
-                : ((n.row = e),
-                  (n.column = Math.min(
-                    this.document.getLine(n.row).length,
-                    Math.max(0, t)
-                  ))),
+              ? ((n.row = 0), (n.column = 0))
+              : ((n.row = e),
+                (n.column = Math.min(
+                  this.document.getLine(n.row).length,
+                  Math.max(0, t)
+                ))),
             t < 0 && (n.column = 0),
             n
           );
@@ -736,8 +736,8 @@
           e.length === 0
             ? (this.$lines = [""])
             : Array.isArray(e)
-              ? this.insertMergedLines({ row: 0, column: 0 }, e)
-              : this.insert({ row: 0, column: 0 }, e);
+            ? this.insertMergedLines({ row: 0, column: 0 }, e)
+            : this.insert({ row: 0, column: 0 }, e);
       };
     (function() {
       r.implement(this, s),
@@ -862,8 +862,8 @@
           e === undefined
             ? (e = n)
             : e < 0
-              ? (e = 0)
-              : e >= n && ((e = n - 1), (t = undefined));
+            ? (e = 0)
+            : e >= n && ((e = n - 1), (t = undefined));
           var r = this.getLine(e);
           return (
             t == undefined && (t = r.length),
@@ -1443,10 +1443,10 @@
             /^\s+$/.test(e)
               ? (this.type = "descendant")
               : e == ">"
-                ? (this.type = "child")
-                : e == "+"
-                  ? (this.type = "adjacent-sibling")
-                  : e == "~" && (this.type = "sibling");
+              ? (this.type = "child")
+              : e == "+"
+              ? (this.type = "adjacent-sibling")
+              : e == "~" && (this.type = "sibling");
         }
         function MediaFeature(e, t) {
           SyntaxUnit.call(
@@ -1545,106 +1545,80 @@
             /^([+\-]?[\d\.]+)%$/i.test(text)
               ? ((this.type = "percentage"), (this.value = +RegExp.$1))
               : /^([+\-]?\d+)$/i.test(text)
-                ? ((this.type = "integer"), (this.value = +RegExp.$1))
-                : /^([+\-]?[\d\.]+)$/i.test(text)
-                  ? ((this.type = "number"), (this.value = +RegExp.$1))
-                  : /^#([a-f0-9]{3,6})/i.test(text)
-                    ? ((this.type = "color"),
-                      (temp = RegExp.$1),
-                      temp.length == 3
-                        ? ((this.red = parseInt(
-                            temp.charAt(0) + temp.charAt(0),
-                            16
-                          )),
-                          (this.green = parseInt(
-                            temp.charAt(1) + temp.charAt(1),
-                            16
-                          )),
-                          (this.blue = parseInt(
-                            temp.charAt(2) + temp.charAt(2),
-                            16
-                          )))
-                        : ((this.red = parseInt(temp.substring(0, 2), 16)),
-                          (this.green = parseInt(temp.substring(2, 4), 16)),
-                          (this.blue = parseInt(temp.substring(4, 6), 16))))
-                    : /^rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/i.test(text)
-                      ? ((this.type = "color"),
-                        (this.red = +RegExp.$1),
-                        (this.green = +RegExp.$2),
-                        (this.blue = +RegExp.$3))
-                      : /^rgb\(\s*(\d+)%\s*,\s*(\d+)%\s*,\s*(\d+)%\s*\)/i.test(
-                          text
-                        )
-                        ? ((this.type = "color"),
-                          (this.red = (+RegExp.$1 * 255) / 100),
-                          (this.green = (+RegExp.$2 * 255) / 100),
-                          (this.blue = (+RegExp.$3 * 255) / 100))
-                        : /^rgba\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*([\d\.]+)\s*\)/i.test(
-                            text
-                          )
-                          ? ((this.type = "color"),
-                            (this.red = +RegExp.$1),
-                            (this.green = +RegExp.$2),
-                            (this.blue = +RegExp.$3),
-                            (this.alpha = +RegExp.$4))
-                          : /^rgba\(\s*(\d+)%\s*,\s*(\d+)%\s*,\s*(\d+)%\s*,\s*([\d\.]+)\s*\)/i.test(
-                              text
-                            )
-                            ? ((this.type = "color"),
-                              (this.red = (+RegExp.$1 * 255) / 100),
-                              (this.green = (+RegExp.$2 * 255) / 100),
-                              (this.blue = (+RegExp.$3 * 255) / 100),
-                              (this.alpha = +RegExp.$4))
-                            : /^hsl\(\s*(\d+)\s*,\s*(\d+)%\s*,\s*(\d+)%\s*\)/i.test(
-                                text
-                              )
-                              ? ((this.type = "color"),
-                                (this.hue = +RegExp.$1),
-                                (this.saturation = +RegExp.$2 / 100),
-                                (this.lightness = +RegExp.$3 / 100))
-                              : /^hsla\(\s*(\d+)\s*,\s*(\d+)%\s*,\s*(\d+)%\s*,\s*([\d\.]+)\s*\)/i.test(
-                                  text
-                                )
-                                ? ((this.type = "color"),
-                                  (this.hue = +RegExp.$1),
-                                  (this.saturation = +RegExp.$2 / 100),
-                                  (this.lightness = +RegExp.$3 / 100),
-                                  (this.alpha = +RegExp.$4))
-                                : /^url\(["']?([^\)"']+)["']?\)/i.test(text)
-                                  ? ((this.type = "uri"),
-                                    (this.uri = RegExp.$1))
-                                  : /^([^\(]+)\(/i.test(text)
-                                    ? ((this.type = "function"),
-                                      (this.name = RegExp.$1),
-                                      (this.value = text))
-                                    : /^["'][^"']*["']/.test(text)
-                                      ? ((this.type = "string"),
-                                        (this.value = eval(text)))
-                                      : Colors[text.toLowerCase()]
-                                        ? ((this.type = "color"),
-                                          (temp = Colors[
-                                            text.toLowerCase()
-                                          ].substring(1)),
-                                          (this.red = parseInt(
-                                            temp.substring(0, 2),
-                                            16
-                                          )),
-                                          (this.green = parseInt(
-                                            temp.substring(2, 4),
-                                            16
-                                          )),
-                                          (this.blue = parseInt(
-                                            temp.substring(4, 6),
-                                            16
-                                          )))
-                                        : /^[\,\/]$/.test(text)
-                                          ? ((this.type = "operator"),
-                                            (this.value = text))
-                                          : /^[a-z\-_\u0080-\uFFFF][a-z0-9\-_\u0080-\uFFFF]*$/i.test(
-                                              text
-                                            ) &&
-                                            ((this.type = "identifier"),
-                                            (this.value = text));
+              ? ((this.type = "integer"), (this.value = +RegExp.$1))
+              : /^([+\-]?[\d\.]+)$/i.test(text)
+              ? ((this.type = "number"), (this.value = +RegExp.$1))
+              : /^#([a-f0-9]{3,6})/i.test(text)
+              ? ((this.type = "color"),
+                (temp = RegExp.$1),
+                temp.length == 3
+                  ? ((this.red = parseInt(temp.charAt(0) + temp.charAt(0), 16)),
+                    (this.green = parseInt(
+                      temp.charAt(1) + temp.charAt(1),
+                      16
+                    )),
+                    (this.blue = parseInt(temp.charAt(2) + temp.charAt(2), 16)))
+                  : ((this.red = parseInt(temp.substring(0, 2), 16)),
+                    (this.green = parseInt(temp.substring(2, 4), 16)),
+                    (this.blue = parseInt(temp.substring(4, 6), 16))))
+              : /^rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/i.test(text)
+              ? ((this.type = "color"),
+                (this.red = +RegExp.$1),
+                (this.green = +RegExp.$2),
+                (this.blue = +RegExp.$3))
+              : /^rgb\(\s*(\d+)%\s*,\s*(\d+)%\s*,\s*(\d+)%\s*\)/i.test(text)
+              ? ((this.type = "color"),
+                (this.red = (+RegExp.$1 * 255) / 100),
+                (this.green = (+RegExp.$2 * 255) / 100),
+                (this.blue = (+RegExp.$3 * 255) / 100))
+              : /^rgba\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*([\d\.]+)\s*\)/i.test(
+                  text
+                )
+              ? ((this.type = "color"),
+                (this.red = +RegExp.$1),
+                (this.green = +RegExp.$2),
+                (this.blue = +RegExp.$3),
+                (this.alpha = +RegExp.$4))
+              : /^rgba\(\s*(\d+)%\s*,\s*(\d+)%\s*,\s*(\d+)%\s*,\s*([\d\.]+)\s*\)/i.test(
+                  text
+                )
+              ? ((this.type = "color"),
+                (this.red = (+RegExp.$1 * 255) / 100),
+                (this.green = (+RegExp.$2 * 255) / 100),
+                (this.blue = (+RegExp.$3 * 255) / 100),
+                (this.alpha = +RegExp.$4))
+              : /^hsl\(\s*(\d+)\s*,\s*(\d+)%\s*,\s*(\d+)%\s*\)/i.test(text)
+              ? ((this.type = "color"),
+                (this.hue = +RegExp.$1),
+                (this.saturation = +RegExp.$2 / 100),
+                (this.lightness = +RegExp.$3 / 100))
+              : /^hsla\(\s*(\d+)\s*,\s*(\d+)%\s*,\s*(\d+)%\s*,\s*([\d\.]+)\s*\)/i.test(
+                  text
+                )
+              ? ((this.type = "color"),
+                (this.hue = +RegExp.$1),
+                (this.saturation = +RegExp.$2 / 100),
+                (this.lightness = +RegExp.$3 / 100),
+                (this.alpha = +RegExp.$4))
+              : /^url\(["']?([^\)"']+)["']?\)/i.test(text)
+              ? ((this.type = "uri"), (this.uri = RegExp.$1))
+              : /^([^\(]+)\(/i.test(text)
+              ? ((this.type = "function"),
+                (this.name = RegExp.$1),
+                (this.value = text))
+              : /^["'][^"']*["']/.test(text)
+              ? ((this.type = "string"), (this.value = eval(text)))
+              : Colors[text.toLowerCase()]
+              ? ((this.type = "color"),
+                (temp = Colors[text.toLowerCase()].substring(1)),
+                (this.red = parseInt(temp.substring(0, 2), 16)),
+                (this.green = parseInt(temp.substring(2, 4), 16)),
+                (this.blue = parseInt(temp.substring(4, 6), 16)))
+              : /^[\,\/]$/.test(text)
+              ? ((this.type = "operator"), (this.value = text))
+              : /^[a-z\-_\u0080-\uFFFF][a-z0-9\-_\u0080-\uFFFF]*$/i.test(
+                  text
+                ) && ((this.type = "identifier"), (this.value = text));
         }
         function Selector(e, t, n) {
           SyntaxUnit.call(this, e.join(" "), t, n, Parser.SELECTOR_TYPE),
@@ -2789,45 +2763,42 @@
                           ((o = t.token().startLine), (u = t.token().startCol)))
                       : e &&
                         t.match([Tokens.LPAREN, Tokens.LBRACE, Tokens.LBRACKET])
-                        ? ((s = t.token()),
-                          (i = s.endChar),
-                          (r = s.value + this._expr(e).text),
-                          n === null &&
-                            ((o = t.token().startLine),
-                            (u = t.token().startCol)),
-                          t.mustMatch(Tokens.type(i)),
-                          (r += i),
-                          this._readWhitespace())
-                        : t.match([
-                            Tokens.NUMBER,
-                            Tokens.PERCENTAGE,
-                            Tokens.LENGTH,
-                            Tokens.ANGLE,
-                            Tokens.TIME,
-                            Tokens.FREQ,
-                            Tokens.STRING,
-                            Tokens.IDENT,
-                            Tokens.URI,
-                            Tokens.UNICODE_RANGE
-                          ])
-                          ? ((r = t.token().value),
+                      ? ((s = t.token()),
+                        (i = s.endChar),
+                        (r = s.value + this._expr(e).text),
+                        n === null &&
+                          ((o = t.token().startLine), (u = t.token().startCol)),
+                        t.mustMatch(Tokens.type(i)),
+                        (r += i),
+                        this._readWhitespace())
+                      : t.match([
+                          Tokens.NUMBER,
+                          Tokens.PERCENTAGE,
+                          Tokens.LENGTH,
+                          Tokens.ANGLE,
+                          Tokens.TIME,
+                          Tokens.FREQ,
+                          Tokens.STRING,
+                          Tokens.IDENT,
+                          Tokens.URI,
+                          Tokens.UNICODE_RANGE
+                        ])
+                      ? ((r = t.token().value),
+                        n === null &&
+                          ((o = t.token().startLine), (u = t.token().startCol)),
+                        this._readWhitespace())
+                      : ((s = this._hexcolor()),
+                        s === null
+                          ? (n === null &&
+                              ((o = t.LT(1).startLine), (u = t.LT(1).startCol)),
+                            r === null &&
+                              (t.LA(3) == Tokens.EQUALS &&
+                              this.options.ieFilters
+                                ? (r = this._ie_function())
+                                : (r = this._function())))
+                          : ((r = s.value),
                             n === null &&
-                              ((o = t.token().startLine),
-                              (u = t.token().startCol)),
-                            this._readWhitespace())
-                          : ((s = this._hexcolor()),
-                            s === null
-                              ? (n === null &&
-                                  ((o = t.LT(1).startLine),
-                                  (u = t.LT(1).startCol)),
-                                r === null &&
-                                  (t.LA(3) == Tokens.EQUALS &&
-                                  this.options.ieFilters
-                                    ? (r = this._ie_function())
-                                    : (r = this._function())))
-                              : ((r = s.value),
-                                n === null &&
-                                  ((o = s.startLine), (u = s.startCol)))),
+                              ((o = s.startLine), (u = s.startCol)))),
                     r !== null
                       ? new PropertyValuePart(n !== null ? n + r : r, o, u)
                       : null
@@ -3802,8 +3773,8 @@
                   n.peek() == "-"
                     ? (r = this.htmlCommentEndToken(t, i, s))
                     : isNameStart(n.peek())
-                      ? (r = this.identOrFunctionToken(t, i, s))
-                      : (r = this.charToken(t, i, s));
+                    ? (r = this.identOrFunctionToken(t, i, s))
+                    : (r = this.charToken(t, i, s));
                   break;
                 case "!":
                   r = this.importantToken(t, i, s);
@@ -3827,10 +3798,10 @@
                   isDigit(t)
                     ? (r = this.numberToken(t, i, s))
                     : isWhitespace(t)
-                      ? (r = this.whitespaceToken(t, i, s))
-                      : isIdentStart(t)
-                        ? (r = this.identOrFunctionToken(t, i, s))
-                        : (r = this.charToken(t, i, s));
+                    ? (r = this.whitespaceToken(t, i, s))
+                    : isIdentStart(t)
+                    ? (r = this.identOrFunctionToken(t, i, s))
+                    : (r = this.charToken(t, i, s));
               }
               break;
             }
@@ -3995,14 +3966,14 @@
                   )
                     ? (o = Tokens.LENGTH)
                     : /^deg|^rad$|^grad$/i.test(s)
-                      ? (o = Tokens.ANGLE)
-                      : /^ms$|^s$/i.test(s)
-                        ? (o = Tokens.TIME)
-                        : /^hz$|^khz$/i.test(s)
-                          ? (o = Tokens.FREQ)
-                          : /^dpi$|^dpcm$/i.test(s)
-                            ? (o = Tokens.RESOLUTION)
-                            : (o = Tokens.DIMENSION))
+                    ? (o = Tokens.ANGLE)
+                    : /^ms$|^s$/i.test(s)
+                    ? (o = Tokens.TIME)
+                    : /^hz$|^khz$/i.test(s)
+                    ? (o = Tokens.FREQ)
+                    : /^dpi$|^dpcm$/i.test(s)
+                    ? (o = Tokens.RESOLUTION)
+                    : (o = Tokens.DIMENSION))
                 : u == "%" && ((i += r.read()), (o = Tokens.PERCENTAGE)),
               this.createToken(o, i, t, n)
             );
@@ -4305,8 +4276,8 @@
                     ? this.groupProperty(s, i)
                     : this.singleProperty(s, i, 1)
                   : s.multi
-                    ? this.multiProperty(s.multi, i, s.comma, s.max || Infinity)
-                    : typeof s == "function" && s(i));
+                  ? this.multiProperty(s.multi, i, s.comma, s.max || Infinity)
+                  : typeof s == "function" && s(i));
           },
           singleProperty: function(e, t, n, r) {
             var i = !1,
@@ -4462,8 +4433,8 @@
               t.charAt(0) != "<"
                 ? ((r = this.isLiteral(n, t)), r && e.next())
                 : this.simple[t]
-                  ? ((r = this.simple[t](n)), r && e.next())
-                  : (r = this.complex[t](e)),
+                ? ((r = this.simple[t](n)), r && e.next())
+                : (r = this.complex[t](e)),
               r
             );
           },
@@ -4621,22 +4592,22 @@
                     : ValidationTypes.isAny(e, s) &&
                       ((n = !0), ValidationTypes.isAny(e, i + " | center"))
                   : ValidationTypes.isAny(e, i)
-                    ? ValidationTypes.isAny(e, s)
-                      ? ((n = !0), ValidationTypes.isAny(e, r))
-                      : ValidationTypes.isAny(e, r) &&
-                        (ValidationTypes.isAny(e, s)
-                          ? ((n = !0), ValidationTypes.isAny(e, r))
-                          : ValidationTypes.isAny(e, "center") && (n = !0))
-                    : ValidationTypes.isAny(e, s)
-                      ? ValidationTypes.isAny(e, i)
+                  ? ValidationTypes.isAny(e, s)
+                    ? ((n = !0), ValidationTypes.isAny(e, r))
+                    : ValidationTypes.isAny(e, r) &&
+                      (ValidationTypes.isAny(e, s)
                         ? ((n = !0), ValidationTypes.isAny(e, r))
-                        : ValidationTypes.isAny(e, r) &&
-                          (ValidationTypes.isAny(e, i)
-                            ? ((n = !0), ValidationTypes.isAny(e, r))
-                            : ValidationTypes.isAny(e, "center") && (n = !0))
-                      : ValidationTypes.isAny(e, "center") &&
-                        ValidationTypes.isAny(e, i + " | " + s) &&
-                        ((n = !0), ValidationTypes.isAny(e, r)),
+                        : ValidationTypes.isAny(e, "center") && (n = !0))
+                  : ValidationTypes.isAny(e, s)
+                  ? ValidationTypes.isAny(e, i)
+                    ? ((n = !0), ValidationTypes.isAny(e, r))
+                    : ValidationTypes.isAny(e, r) &&
+                      (ValidationTypes.isAny(e, i)
+                        ? ((n = !0), ValidationTypes.isAny(e, r))
+                        : ValidationTypes.isAny(e, "center") && (n = !0))
+                  : ValidationTypes.isAny(e, "center") &&
+                    ValidationTypes.isAny(e, i + " | " + s) &&
+                    ((n = !0), ValidationTypes.isAny(e, r)),
                 n
               );
             },
@@ -4704,15 +4675,15 @@
               ValidationTypes.isAny(e, "none | inherit")
                 ? (n = !0)
                 : ValidationTypes.isType(e, "<flex-grow>")
-                  ? e.peek()
-                    ? ValidationTypes.isType(e, "<flex-shrink>")
-                      ? e.peek()
-                        ? (n = ValidationTypes.isType(e, "<flex-basis>"))
-                        : (n = !0)
-                      : ValidationTypes.isType(e, "<flex-basis>") &&
-                        (n = e.peek() === null)
-                    : (n = !0)
-                  : ValidationTypes.isType(e, "<flex-basis>") && (n = !0);
+                ? e.peek()
+                  ? ValidationTypes.isType(e, "<flex-shrink>")
+                    ? e.peek()
+                      ? (n = ValidationTypes.isType(e, "<flex-basis>"))
+                      : (n = !0)
+                    : ValidationTypes.isType(e, "<flex-basis>") &&
+                      (n = e.peek() === null)
+                  : (n = !0)
+                : ValidationTypes.isType(e, "<flex-basis>") && (n = !0);
               if (!n)
                 throw ((t = e.peek()),
                 new ValidationError(
@@ -4873,8 +4844,8 @@
               return e.rollup && !t.rollup
                 ? 1
                 : !e.rollup && t.rollup
-                  ? -1
-                  : e.line - t.line;
+                ? -1
+                : e.line - t.line;
             }),
             a
           );
@@ -5069,8 +5040,8 @@
                   })
                 : /^(width|height)/i.test(t) &&
                   /^(length|percentage)/.test(e.value.parts[0].type)
-                  ? (s[t] = 1)
-                  : t === "box-sizing" && (o = !0);
+                ? (s[t] = 1)
+                : t === "box-sizing" && (o = !0);
             }),
             e.addListener("endrule", a),
             e.addListener("endfontface", a),
@@ -5279,8 +5250,8 @@
                             h.length === 1
                               ? h[0]
                               : h.length === 2
-                                ? h.join(" and ")
-                                : h.join(", ")),
+                              ? h.join(" and ")
+                              : h.join(", ")),
                           t.report(
                             "The property " +
                               p +
@@ -6942,8 +6913,8 @@
           e > 0
             ? e > n && (e = n)
             : e == void 0
-              ? (e = 0)
-              : e < 0 && (e = Math.max(n + e, 0)),
+            ? (e = 0)
+            : e < 0 && (e = Math.max(n + e, 0)),
             e + t < n || (t = n - e);
           var r = this.slice(e, e + t),
             i = u.call(arguments, 2),

@@ -20,7 +20,7 @@ import "./lib/lrn-markdown-editor-editor.js";
 let LrnMarkdownEditor = Polymer({
   _template: html`
     <style>
-       :host {
+      :host {
         display: block;
       }
 
@@ -28,7 +28,7 @@ let LrnMarkdownEditor = Polymer({
         display: flex;
       }
 
-      .split-pane>* {
+      .split-pane > * {
         flex: 1 1 auto;
         min-height: 160px;
       }
@@ -43,9 +43,9 @@ let LrnMarkdownEditor = Polymer({
       }
 
       paper-tabs {
-        background: #F5F5F5;
+        background: #f5f5f5;
         border-style: solid;
-        border-color: #DCDCDC;
+        border-color: #dcdcdc;
         border-width: 1px;
         min-width: 500px;
       }
@@ -60,7 +60,7 @@ let LrnMarkdownEditor = Polymer({
         flex-wrap: nowrap;
       }
 
-      .split-pane .container-flex>* {
+      .split-pane .container-flex > * {
         width: 50%;
       }
 
@@ -69,8 +69,8 @@ let LrnMarkdownEditor = Polymer({
         min-width: 150px;
         margin: 0 16px;
         padding: 0 16px;
-        background: #FFF;
-        border-left: solid #DCDCDC 1px;
+        background: #fff;
+        border-left: solid #dcdcdc 1px;
       }
     </style>
 
@@ -83,10 +83,11 @@ let LrnMarkdownEditor = Polymer({
     </div>
 
     <iron-pages selected="{{selected}}">
-
       <section>
         <paper-card>
-          <lrn-markdown-editor-editor content="{{content}}"></lrn-markdown-editor-editor>
+          <lrn-markdown-editor-editor
+            content="{{content}}"
+          ></lrn-markdown-editor-editor>
         </paper-card>
       </section>
 
@@ -99,14 +100,18 @@ let LrnMarkdownEditor = Polymer({
       <section class="split-pane">
         <paper-card>
           <div class="container-flex">
-            <lrn-markdown-editor-editor content="{{content}}"></lrn-markdown-editor-editor>
-            <marked-element class="preview-pane" markdown="{{content}}"></marked-element>
+            <lrn-markdown-editor-editor
+              content="{{content}}"
+            ></lrn-markdown-editor-editor>
+            <marked-element
+              class="preview-pane"
+              markdown="{{content}}"
+            ></marked-element>
           </div>
         </paper-card>
       </section>
-
     </iron-pages>
-`,
+  `,
 
   is: "lrn-markdown-editor",
 

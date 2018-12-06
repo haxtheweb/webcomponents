@@ -30,30 +30,62 @@ let LrnsysOutline = Polymer({
         margin: 4px 4px 4px 0;
         padding: 8px;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
-        font-size:85%;
+        font-size: 85%;
       }
     </style>
-    <h1>[[title]]<paper-icon-button title="Keyboard directions" id="dialogtrigger" icon="icons:help" on-tap="openDirections"></paper-icon-button></h1>
+    <h1>
+      [[title]]<paper-icon-button
+        title="Keyboard directions"
+        id="dialogtrigger"
+        icon="icons:help"
+        on-tap="openDirections"
+      ></paper-icon-button>
+    </h1>
     <paper-dialog id="modal" with-backdrop="">
       <h2>Keyboard shortcuts</h2>
       <div>
-        <paper-icon-button title="close directions" style="position: absolute;top: 0; right:0;" icon="icons:cancel" on-tap="closeDirections"></paper-icon-button>
+        <paper-icon-button
+          title="close directions"
+          style="position: absolute;top: 0; right:0;"
+          icon="icons:cancel"
+          on-tap="closeDirections"
+        ></paper-icon-button>
         <ul>
           <li><kbd>Enter</kbd> to <strong>add</strong> an item</li>
-          <li><kbd>Backspace</kbd> <em>with entire item selected</em> to <strong>delete</strong> an item.</li>
-          <li><kbd>↑</kbd> / <kbd>↓</kbd> / <kbd>←</kbd> / <kbd>→</kbd> to <strong>navigate</strong> through items</li>
-          <li><kbd>Tab</kbd> / <kbd>Shift+Tab</kbd> <em>at the beginning of a line</em> to <strong>indent/outdent</strong></li>
+          <li>
+            <kbd>Backspace</kbd> <em>with entire item selected</em> to
+            <strong>delete</strong> an item.
+          </li>
+          <li>
+            <kbd>↑</kbd> / <kbd>↓</kbd> / <kbd>←</kbd> / <kbd>→</kbd> to
+            <strong>navigate</strong> through items
+          </li>
+          <li>
+            <kbd>Tab</kbd> / <kbd>Shift+Tab</kbd>
+            <em>at the beginning of a line</em> to
+            <strong>indent/outdent</strong>
+          </li>
           <li><kbd>Shift+↑</kbd> / <kbd>Shift+↓</kbd> to items up/down</li>
         </ul>
       </div>
     </paper-dialog>
     <div id="itemslist">
       <template is="dom-repeat" items="{{items}}" as="item">
-        <lrnsys-outline-item disable-down$="[[item.disableDown]]" disable-left$="[[item.disableLeft]]" disable-right$="[[item.disableRight]]" disable-up$="[[item.disableUp]]" id$="[[item.id]]" index$="[[item.index]]" indent-level$="{{item.indent}}" parent\$="{{item.parent}}" title\$="{{item.title}}">
+        <lrnsys-outline-item
+          disable-down="[[item.disableDown]]"
+          disable-left="[[item.disableLeft]]"
+          disable-right="[[item.disableRight]]"
+          disable-up="[[item.disableUp]]"
+          id$="[[item.id]]"
+          index$="[[item.index]]"
+          indent-level="{{item.indent}}"
+          parent="{{item.parent}}"
+          title="{{item.title}}"
+        >
         </lrnsys-outline-item>
       </template>
     </div>
-`,
+  `,
 
   is: "lrnsys-outline",
 
@@ -196,7 +228,9 @@ let LrnsysOutline = Polymer({
     });
     this._refreshData();
     this.__focusedItem = item.nextElementSibling;
-    this.__focusedItem.focus();
+    if (this.__focusedItem !== undefined && this.__focusedItem !== null) {
+      this.__focusedItem.focus();
+    }
   },
 
   /**
@@ -207,14 +241,16 @@ let LrnsysOutline = Polymer({
       items;
     if (confirm("Do you really want to delete " + this.items[i].title + "?")) {
       this.__focusedItem = item.previousElementSibling;
-      for (k in this.items) {
+      for (var k in this.items) {
         if (this.items[k].parent == this.items[i].id) {
           this.items[k].parent = this.items[i].parent;
         }
       }
       this.items.splice(i, 1);
       this._refreshData();
-      this.__focusedItem.focus();
+      if (this.__focusedItem !== undefined && this.__focusedItem !== null) {
+        this.__focusedItem.focus();
+      }
     }
   },
 
@@ -242,7 +278,9 @@ let LrnsysOutline = Polymer({
         this.__focusedItem = this.$.itemslist.querySelectorAll(
           "lrnsys-outline-item"
         )[target];
-        this.__focusedItem.focus();
+        if (this.__focusedItem !== undefined && this.__focusedItem !== null) {
+          this.__focusedItem.focus();
+        }
       }
     }
   },
@@ -254,8 +292,9 @@ let LrnsysOutline = Polymer({
     let data = this.items;
     this.items = [];
     this.items = data;
-    if (this.__focusedItem !== undefined && this.__focusedItem !== null)
+    if (this.__focusedItem !== undefined && this.__focusedItem !== null) {
       this.__focusedItem.focus();
+    }
   },
 
   /**
@@ -419,7 +458,9 @@ let LrnsysOutline = Polymer({
    * listener to handle changes to text inputs
    */
   _handleChangeItem: function(e) {
-    this._getItemById(e.detail.item.id).title = e.detail.value;
+    if (this._getItemById(e.detail.item.id) != null) {
+      this._getItemById(e.detail.item.id).title = e.detail.value;
+    }
     this._refreshData();
   },
 

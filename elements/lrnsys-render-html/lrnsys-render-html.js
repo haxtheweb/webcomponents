@@ -23,7 +23,7 @@ let LrnsysRenderHtml = Polymer({
       }
     </style>
     <div id="container"></div>
-`,
+  `,
 
   is: "lrnsys-render-html",
 

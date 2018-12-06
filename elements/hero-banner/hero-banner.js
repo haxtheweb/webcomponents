@@ -43,28 +43,28 @@ let HeroBanner = Polymer({
         width: 50%;
       }
       .title {
-        background-color: rgba(0,0,0,0.5);
+        background-color: rgba(0, 0, 0, 0.5);
         padding: 10px 16px;
         font-size: 32px;
-        color: #FFFFFF;
+        color: #ffffff;
         margin: 4px 0;
-        font-family: 'Roboto';
+        font-family: "Roboto";
         font-weight: 500;
       }
       .details {
-        background-color: rgba(0,0,0,0.5);
+        background-color: rgba(0, 0, 0, 0.5);
         padding: 10px 16px;
         font-size: 16px;
-        color: #FFFFFF;
+        color: #ffffff;
         margin: 4px 0;
-        font-family: 'Roboto';
+        font-family: "Roboto";
       }
       .linkbutton {
         padding: 0;
         margin: 8px 0;
-        color: #FFFFFF;
+        color: #ffffff;
         text-decoration: none;
-        font-family: 'Roboto';
+        font-family: "Roboto";
       }
       .linkbutton paper-button {
         text-transform: none;
@@ -94,15 +94,27 @@ let HeroBanner = Polymer({
           width: 300px;
         }
       }
-
     </style>
-    <iron-image class="image" src\$="[[image]]" fade="" preload="" sizing="cover" style="background-color:grey;width: 100%;height: 100%;"></iron-image>
+    <iron-image
+      class="image"
+      src\$="[[image]]"
+      fade=""
+      preload=""
+      sizing="cover"
+      style="background-color:grey;width: 100%;height: 100%;"
+    ></iron-image>
     <div class="itemwrapper">
       <div class="title">[[title]]</div>
       <div class="details">[[details]]</div>
-      <a class="linkbutton" href\$="[[buttonLink]]"><paper-button raised="" class\$="[[buttonColorClass]] [[textColorClass]]">[[buttonText]]</paper-button></a>
+      <a class="linkbutton" href\$="[[buttonLink]]"
+        ><paper-button
+          raised=""
+          class\$="[[buttonColorClass]] [[textColorClass]]"
+          >[[buttonText]]</paper-button
+        ></a
+      >
     </div>
-`,
+  `,
 
   is: "hero-banner",
 

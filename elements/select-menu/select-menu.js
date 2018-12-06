@@ -13,24 +13,34 @@ import "@polymer/paper-listbox/paper-listbox.js";
  */
 let SelectMenu = Polymer({
   _template: html`
-  <custom-style>
-    <style is="custom-style">
-      paper-dropdown-menu, paper-listbox {
-        width: 250px;
-      }
-      paper-dropdown-menu {
-        height: 200px;
-        margin: auto;
-        display: block;
-      }
-    </style>
-  </custom-style>
-  <paper-dropdown-menu id="menu" label\$="[[label]]" on-tap="_menubuttonTap" on-selected-item-changed="_setSelectedValue">
-    <paper-listbox id="listbox" slot="dropdown-content" selected="{{selectedIndex}}">
-      <slot></slot>
-    </paper-listbox>
-  </paper-dropdown-menu>
-`,
+    <custom-style>
+      <style is="custom-style">
+        paper-dropdown-menu,
+        paper-listbox {
+          width: 250px;
+        }
+        paper-dropdown-menu {
+          height: 200px;
+          margin: auto;
+          display: block;
+        }
+      </style>
+    </custom-style>
+    <paper-dropdown-menu
+      id="menu"
+      label\$="[[label]]"
+      on-tap="_menubuttonTap"
+      on-selected-item-changed="_setSelectedValue"
+    >
+      <paper-listbox
+        id="listbox"
+        slot="dropdown-content"
+        selected="{{selectedIndex}}"
+      >
+        <slot></slot>
+      </paper-listbox>
+    </paper-dropdown-menu>
+  `,
 
   is: "select-menu",
   properties: {

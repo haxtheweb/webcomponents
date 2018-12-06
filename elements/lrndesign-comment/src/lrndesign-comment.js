@@ -22,24 +22,17 @@ let LrndesignComment = Polymer({
       }
     </style>
     <div class="comment-container">
-      <div class="comment-left">
-        <lrndesign-avatar></lrndesign-avatar>
-      </div>
+      <div class="comment-left"><lrndesign-avatar></lrndesign-avatar></div>
       <div class="comment-right">
         <div class="row-1">
           <span>{{name}}</span>
-          <relative-time datetime\$="{{date}}">
-          </relative-time>
+          <relative-time datetime\$="{{date}}"> </relative-time>
         </div>
-        <div class="row-2">
-          <slot></slot>
-        </div>
-        <div class="row-3">
-          {{links}}
-        </div>
+        <div class="row-2"><slot></slot></div>
+        <div class="row-3">{{links}}</div>
       </div>
     </div>
-`,
+  `,
 
   is: "lrndesign-comment",
 

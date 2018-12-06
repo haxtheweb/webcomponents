@@ -114,7 +114,6 @@ class A11yMediaTranscript extends A11yMediaPlayerProperties {
           color: var(--a11y-media-transcript-color);
           background-color: var(--a11y-media-transcript-bg-color);
         }
-
         :host([hidden]) {
           display: none;
         }

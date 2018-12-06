@@ -20,17 +20,22 @@ Polymer({
       }
       iron-icon {
         margin-left: 8px;
-        opacity: .8;
+        opacity: 0.8;
       }
     </style>
     <a href$="[[url]]">
       <template is="dom-if" if="[[open]]">
-        <paper-button raised open>[[title]] <iron-icon icon="lrn-icons:input"></iron-icon></paper-button>
+        <paper-button raised open
+          >[[title]] <iron-icon icon="lrn-icons:input"></iron-icon
+        ></paper-button>
       </template>
       <template is="dom-if" if="[[complete]]">
-        <paper-button raised complete>[[title]] <iron-icon icon="lrn-icons:done"></iron-icon></paper-button>
+        <paper-button raised complete
+          >[[title]] <iron-icon icon="lrn-icons:done"></iron-icon
+        ></paper-button>
       </template>
-    </a>`,
+    </a>
+  `,
 
   is: "lrn-assignment-button",
 

@@ -4,7 +4,5 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         display: block;
       }
     </style>
-    <oer-schema>
-      <slot></slot>
-    </oer-schema>
-`,is:"lrn-page"});export{LrnPage};
+    <oer-schema> <slot></slot> </oer-schema>
+  `,is:"lrn-page"});export{LrnPage};

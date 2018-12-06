@@ -36,7 +36,7 @@ Polymer({
       </template>
     </div>
     <div><slot name="button"></slot><slot></slot></div>
-`,
+  `,
 
   is: "lrnsys-button-inner",
 

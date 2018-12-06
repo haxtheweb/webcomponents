@@ -71,11 +71,27 @@ let ProgressDonut = Polymer({
       }
     </style>
     <div id="wrapper">
-      <img id="image" alt\$="[[imageAlt]]" aria-hidden="true" hidden\$="[[!imageSrc]]" src\$="[[imageSrc]]" style\$="[[imageStyle]]">
-      <chartist-render id="chart" data\$="[[data]]" chart-desc\$="[[desc]]" chart-title="[[title]]" scale="ct-square" options\$="[[options]]" title\$="[[title]]" type="pie">
+      <img
+        id="image"
+        alt\$="[[imageAlt]]"
+        aria-hidden="true"
+        hidden\$="[[!imageSrc]]"
+        src\$="[[imageSrc]]"
+        style\$="[[imageStyle]]"
+      />
+      <chartist-render
+        id="chart"
+        data\$="[[data]]"
+        chart-desc\$="[[desc]]"
+        chart-title="[[title]]"
+        scale="ct-square"
+        options\$="[[options]]"
+        title\$="[[title]]"
+        type="pie"
+      >
       </chartist-render>
     </div>
-`,
+  `,
 
   is: "progress-donut",
   behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

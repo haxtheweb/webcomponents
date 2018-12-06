@@ -24,7 +24,7 @@ import "./lib/gene-crossover-5.js";
 let GeneCrossover = Polymer({
   _template: html`
     <style is="custom-style" include="animation-shared-styles">
-       :host {
+      :host {
         display: block;
       }
       h1,
@@ -33,30 +33,39 @@ let GeneCrossover = Polymer({
       h4,
       h5,
       h6 {
-        font-family: 'Open Sans', sans-serif;
+        font-family: "Open Sans", sans-serif;
         text-transform: uppercase;
         letter-spacing: 2px;
-        color: #6D6E71;
+        color: #6d6e71;
         text-align: center;
         font-size: 19.2px;
       }
 
       p {
-        font-family: 'Open Sans', sans-serif;
+        font-family: "Open Sans", sans-serif;
       }
     </style>
 
-    <!--Pages-->
+    <!-- Pages -->
     <iron-pages selected="[[activePage]]">
-      <gene-crossover-1 selected="[[_isActive(activePage, 0)]]"></gene-crossover-1>
-      <gene-crossover-2 selected="[[_isActive(activePage, 1)]]"></gene-crossover-2>
-      <gene-crossover-3 selected="[[_isActive(activePage, 2)]]"></gene-crossover-3>
-      <gene-crossover-4 selected="[[_isActive(activePage, 3)]]"></gene-crossover-4>
-      <!-- <gene-crossover-5 selected="[[_isActive(activePage, 4)]]"></gene-crossover-5> -->
+      <gene-crossover-1
+        selected="[[_isActive(activePage, 0)]]"
+      ></gene-crossover-1>
+      <gene-crossover-2
+        selected="[[_isActive(activePage, 1)]]"
+      ></gene-crossover-2>
+      <gene-crossover-3
+        selected="[[_isActive(activePage, 2)]]"
+      ></gene-crossover-3>
+      <gene-crossover-4
+        selected="[[_isActive(activePage, 3)]]"
+      ></gene-crossover-4>
+      <!--
+        <gene-crossover-5 selected="[[_isActive(activePage, 4)]]"></gene-crossover-5>
+      -->
     </iron-pages>
 
-
-    <!--Counter-->
+    <!-- Counter -->
     <template is="dom-if" if="[[count]]">
       <paper-stepper selected="{{activePage}}" progress-bar="">
         <template is="dom-repeat" items="[[_countToArray(count)]]">
@@ -64,7 +73,7 @@ let GeneCrossover = Polymer({
         </template>
       </paper-stepper>
     </template>
-`,
+  `,
 
   is: "gene-crossover",
 

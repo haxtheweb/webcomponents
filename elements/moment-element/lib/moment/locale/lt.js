@@ -6,8 +6,8 @@
   typeof require === "function"
     ? factory(require("../moment"))
     : typeof define === "function" && define.amd
-      ? define(["../moment"], factory)
-      : factory(global.moment);
+    ? define(["../moment"], factory)
+    : factory(global.moment);
 })(this, function(moment) {
   "use strict";
 
@@ -35,8 +35,8 @@
     return withoutSuffix
       ? forms(key)[0]
       : isFuture
-        ? forms(key)[1]
-        : forms(key)[2];
+      ? forms(key)[1]
+      : forms(key)[2];
   }
   function special(number) {
     return number % 10 === 0 || (number > 10 && number < 20);

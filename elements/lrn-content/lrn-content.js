@@ -16,11 +16,9 @@ let LrnContent = Polymer({
     </style>
     <div typeof="oer:SupportingMaterial">
       <h2 property="oer:name" hidden$="[[!title]]">[[title]]</h2>
-      <div property="oer:description">
-        <slot></slot>
-      </div>
+      <div property="oer:description"><slot></slot></div>
     </div>
-`,
+  `,
 
   is: "lrn-content",
 

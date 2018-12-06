@@ -49,7 +49,7 @@ let FlashCard = Polymer({
         margin: 0;
         cursor: pointer;
         position: absolute;
-        -webkit-backface-visibility: hidden ;
+        -webkit-backface-visibility: hidden;
         z-index: 2;
         font-family: Georgia;
         font-size: 48px;
@@ -65,14 +65,10 @@ let FlashCard = Polymer({
       }
     </style>
     <paper-card id="card" animated-shadow="true">
-      <div class="face front white black-text">
-        Front
-      </div>
-      <div class="face back black white-text">
-          Back
-      </div>
+      <div class="face front white black-text">Front</div>
+      <div class="face back black white-text">Back</div>
     </paper-card>
-`,
+  `,
 
   is: "flash-card",
   behaviors: [

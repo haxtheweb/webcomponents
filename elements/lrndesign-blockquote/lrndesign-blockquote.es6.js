@@ -37,19 +37,28 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         margin-top: 4px;
         text-align: right;
       }
-      :host([depth="1"]) blockquote { @apply --shadow-elevation-2dp; }
-      :host([depth="2"]) blockquote { @apply --shadow-elevation-3dp; }
-      :host([depth="3"]) blockquote { @apply --shadow-elevation-4dp; }
-      :host([depth="4"]) blockquote { @apply --shadow-elevation-6dp; }
-      :host([depth="5"]) blockquote { @apply --shadow-elevation-8dp; }
-
+      :host([depth="1"]) blockquote {
+        @apply --shadow-elevation-2dp;
+      }
+      :host([depth="2"]) blockquote {
+        @apply --shadow-elevation-3dp;
+      }
+      :host([depth="3"]) blockquote {
+        @apply --shadow-elevation-4dp;
+      }
+      :host([depth="4"]) blockquote {
+        @apply --shadow-elevation-6dp;
+      }
+      :host([depth="5"]) blockquote {
+        @apply --shadow-elevation-8dp;
+      }
 
       /* BEGIN HYPERCARDIFY, thanks @realdlnorman */
       :host([hypercard]) ::slotted(*) {
         -webkit-filter: grayscale(1) contrast(300%);
         filter: grayscale(1) contrast(300%);
         font-family: Chikarego, Helvetica, sans-serif;
-        transition: all .6s ease;
+        transition: all 0.6s ease;
       }
       /* Disable grayscale on hover */
       :host([hypercard]:hover) ::slotted(*) {
@@ -58,12 +67,9 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
     </style>
     <blockquote class\$="[[generateClass(decorate, outset, color, textColor)]]">
-      <slot></slot>
-      <cite class\$="[[textColor]]">
-        [[citation]]
-      </cite>
+      <slot></slot> <cite class\$="[[textColor]]"> [[citation]] </cite>
     </blockquote>
-`,is:"lrndesign-blockquote",behaviors:[HAXBehaviors.PropertiesBehaviors,MaterializeCSSBehaviors.ColorBehaviors,SchemaBehaviors.Schema,A11yBehaviors.A11y],properties:{citation:{type:String},depth:{type:String,value:"0",reflectToAttribute:!0},decorate:{type:Boolean,value:!1,reflectToAttribute:!0},outset:{type:Boolean,value:!1,reflectToAttribute:!0},colorCode:{type:String,value:"#fff9c4",observer:"_bgColorChanged"},color:{type:String,computed:"_computeColorClass(colorCode)"},textColorCode:{type:String,value:"#000000"},textColor:{type:String,computed:"_computeColorClass(textColorCode)"},hypercard:{type:Boolean,reflectToAttribute:!0,value:!1,observer:"_applyChikarego"}},_applyChikarego:function(newValue,oldValue){if(!0===newValue){let style=document.createElement("style"),basePath=pathFromUrl(import.meta.url);style.innerHTML=`@font-face {
+  `,is:"lrndesign-blockquote",behaviors:[HAXBehaviors.PropertiesBehaviors,MaterializeCSSBehaviors.ColorBehaviors,SchemaBehaviors.Schema,A11yBehaviors.A11y],properties:{citation:{type:String},depth:{type:String,value:"0",reflectToAttribute:!0},decorate:{type:Boolean,value:!1,reflectToAttribute:!0},outset:{type:Boolean,value:!1,reflectToAttribute:!0},colorCode:{type:String,value:"#fff9c4",observer:"_bgColorChanged"},color:{type:String,computed:"_computeColorClass(colorCode)"},textColorCode:{type:String,value:"#000000"},textColor:{type:String,computed:"_computeColorClass(textColorCode)"},hypercard:{type:Boolean,reflectToAttribute:!0,value:!1,observer:"_applyChikarego"}},_applyChikarego:function(newValue,oldValue){if(!0===newValue){let style=document.createElement("style"),basePath=pathFromUrl(import.meta.url);style.innerHTML=`@font-face {
         font-family: 'Chikarego';
         src: url('${basePath}lib/chikarego2-webfont.woff2') format('woff2'),
              url('${basePath}lib/chikarego2-webfont.woff') format('woff');

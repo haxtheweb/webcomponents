@@ -19,7 +19,7 @@ Polymer({
         min-height: 80vh;
       }
       main {
-        transition: opacity 1s linear, visibility .6s linear;
+        transition: opacity 1s linear, visibility 0.6s linear;
         width: 100%;
         max-width: 640px;
         margin: 0 auto;
@@ -75,7 +75,8 @@ Polymer({
         z-index: 1;
       }
       .post-meta {
-        font-family: Open Sans,MundoSans,"Helvetica Neue",Arial,Helvetica,sans-serif;
+        font-family: Open Sans, MundoSans, "Helvetica Neue", Arial, Helvetica,
+          sans-serif;
         padding-top: 60px;
       }
       :host([has-image]) .post-meta {
@@ -84,7 +85,8 @@ Polymer({
         left: 30%;
         right: 30%;
         z-index: 9;
-        font-family: Open Sans,MundoSans,"Helvetica Neue",Arial,Helvetica,sans-serif;
+        font-family: Open Sans, MundoSans, "Helvetica Neue", Arial, Helvetica,
+          sans-serif;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
@@ -92,7 +94,7 @@ Polymer({
       .post-title {
         font-weight: 700;
         font-style: normal;
-        letter-spacing: -.04em;
+        letter-spacing: -0.04em;
         font-size: 50px;
         line-height: 1.1;
         color: black;
@@ -100,7 +102,7 @@ Polymer({
       :host([has-image]) .post-title {
         color: white;
         margin-bottom: 16px;
-        text-shadow: 0 1px 16px rgba(0,0,0,.5), 0 0 1px rgba(0,0,0,.5);
+        text-shadow: 0 1px 16px rgba(0, 0, 0, 0.5), 0 0 1px rgba(0, 0, 0, 0.5);
       }
       /**
        * Hide the slotted content during edit mode
@@ -112,21 +114,23 @@ Polymer({
     <main>
       <article>
         <div class="article-image">
-        <template is="dom-if" if="[[hasImage]]">
-          <div id="image" class="post-image-image" style\$="background-image: url(&quot;[[activeItem.metadata.image]]&quot;);"></div>
-        </template>
+          <template is="dom-if" if="[[hasImage]]">
+            <div
+              id="image"
+              class="post-image-image"
+              style\$="background-image: url(&quot;[[activeItem.metadata.image]]&quot;);"
+            ></div>
+          </template>
           <div class="post-meta">
             <h1 class="post-title">[[activeItem.title]]</h1>
           </div>
         </div>
         <section id="contentcontainer">
-          <div id="slot">
-            <slot></slot>
-          </div>
+          <div id="slot"><slot></slot></div>
         </section>
       </article>
     </main>
-`,
+  `,
 
   is: "simple-blog-post",
 

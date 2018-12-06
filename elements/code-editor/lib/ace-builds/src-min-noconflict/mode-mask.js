@@ -1231,8 +1231,8 @@ ace.define(
           arguments.length === 4
             ? ((r = n), (i = arguments[3]))
             : typeof n == "string"
-              ? (i = n)
-              : (r = n),
+            ? (i = n)
+            : (r = n),
           typeof e == "function" && ((s = e), (e = "empty")),
           { token: e, regex: t, push: r, next: i, onMatch: s }
         );
@@ -1314,12 +1314,12 @@ ace.define(
               return void 0 !== S[e]
                 ? h
                 : void 0 !== x[e]
-                  ? p
-                  : void 0 !== E[e]
-                    ? "support.function"
-                    : void 0 !== T[e.toLowerCase()]
-                      ? l
-                      : c;
+                ? p
+                : void 0 !== E[e]
+                ? "support.function"
+                : void 0 !== T[e.toLowerCase()]
+                ? l
+                : c;
             },
             regex: /([@\w\-_:+]+)|((^|\s)(?=\s*(\.|#)))/,
             push: [

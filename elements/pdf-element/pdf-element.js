@@ -87,16 +87,16 @@ let PdfElement = Polymer({
       }
 
       .pageselector {
-          width: 3ch;
-          background-color : black; 
-          font-size: 17px;
-          background-color:transparent;
-          border: 0px solid;
-        }
+        width: 3ch;
+        background-color: black;
+        font-size: 17px;
+        background-color: transparent;
+        border: 0px solid;
+      }
 
-        .pageselector:focus{
-          outline:none;
-        }
+      .pageselector:focus {
+        outline: none;
+      }
 
       #input {
         -webkit-margin-start: -3px;
@@ -135,32 +135,70 @@ let PdfElement = Polymer({
         <paper-card class="paperCard" style="width: {{width}}px">
           <div class="pdf-viewer">
             <app-toolbar class="pdf-toolbar">
-              <paper-icon-button icon="menu" on-click="sideBar"></paper-icon-button>
-              <paper-icon-button icon="arrow-back" on-click="showPrev"></paper-icon-button>
-              <input class="pageselector" id="input" is="iron-input" value="{{currentPage}}" prevent-invalid-input="" allowed-pattern="\\d" on-change="pageNumSearch">
+              <paper-icon-button
+                icon="menu"
+                on-click="sideBar"
+              ></paper-icon-button>
+              <paper-icon-button
+                icon="arrow-back"
+                on-click="showPrev"
+              ></paper-icon-button>
+              <input
+                class="pageselector"
+                id="input"
+                is="iron-input"
+                value="{{currentPage}}"
+                prevent-invalid-input=""
+                allowed-pattern="\\d"
+                on-change="pageNumSearch"
+              />
               <span id="slash">/</span><span id="totalPages"></span>
-              <paper-icon-button icon="arrow-forward" on-click="showNext"></paper-icon-button>
+              <paper-icon-button
+                icon="arrow-forward"
+                on-click="showNext"
+              ></paper-icon-button>
               <span class="title" hidden="{{!showFileName}}">Testing</span>
               <span class="title" hidden="{{showFileName}}"></span>
               <span class="pageRendering"></span>
-              <paper-icon-button icon="zoom-in" on-click="zoomIn"></paper-icon-button>
-              <paper-icon-button icon="zoom-out" on-click="zoomOut"></paper-icon-button>
-              <paper-icon-button id="zoomIcon" icon="fullscreen" on-click="zoomFit"></paper-icon-button>
-              <paper-icon-button icon="file-download" hidden\$="{{!downloadable}}" on-click="download"></paper-icon-button>
+              <paper-icon-button
+                icon="zoom-in"
+                on-click="zoomIn"
+              ></paper-icon-button>
+              <paper-icon-button
+                icon="zoom-out"
+                on-click="zoomOut"
+              ></paper-icon-button>
+              <paper-icon-button
+                id="zoomIcon"
+                icon="fullscreen"
+                on-click="zoomFit"
+              ></paper-icon-button>
+              <paper-icon-button
+                icon="file-download"
+                hidden\$="{{!downloadable}}"
+                on-click="download"
+              ></paper-icon-button>
             </app-toolbar>
             <div id="container" class="sidebar" style="width:25%"></div>
             <div id="main">
-            <div id="test" class="pdf-viewport-out">
-              <canvas class="pdf-viewport"></canvas>
-              <div id="text-layer" class="textLayer" hidden\$="{{!enableTextSelection}}"></div>
+              <div id="test" class="pdf-viewport-out">
+                <canvas class="pdf-viewport"></canvas>
+                <div
+                  id="text-layer"
+                  class="textLayer"
+                  hidden\$="{{!enableTextSelection}}"
+                ></div>
+              </div>
+              <paper-spinner
+                class="spinner"
+                hidden\$="{{!showSpinner}}"
+              ></paper-spinner>
             </div>
-            <paper-spinner class="spinner" hidden\$="{{!showSpinner}}"></paper-spinner>
           </div>
-        </div>
         </paper-card>
       </div>
     </paper-material>
-`,
+  `,
 
   is: "pdf-element",
   behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
@@ -217,8 +255,8 @@ let PdfElement = Polymer({
       value: false
     },
     /*
-    * If provided then the width will be set.
-    */
+     * If provided then the width will be set.
+     */
     width: {
       type: Number,
       value: 500
@@ -306,10 +344,10 @@ let PdfElement = Polymer({
     this.setHaxProperties(props);
   },
 
-  /* 
-  * For the first time the pdf is loaded.
-  * The inital page is set to 1 and it sets the total Pages
-  */
+  /*
+   * For the first time the pdf is loaded.
+   * The inital page is set to 1 and it sets the total Pages
+   */
   loadPDF: function() {
     if (!this.getAttribute("src")) return;
     this.instance.changePDFSource(this.getAttribute("src"));
@@ -321,8 +359,8 @@ let PdfElement = Polymer({
   },
 
   /*
-  * When a new pdf is selected and loaded, this sets the properties for the switch
-  */
+   * When a new pdf is selected and loaded, this sets the properties for the switch
+   */
   attributeChanged: function(name, type) {
     if (name === "src") {
       if (typeof this.instance == "undefined") this._initializeReader();
@@ -348,8 +386,8 @@ let PdfElement = Polymer({
   },
 
   /*
-  * Is called from zoomIn function to control the zoom in
-  */
+   * Is called from zoomIn function to control the zoom in
+   */
   zoomInOut: function(step) {
     if (this.instance.currentZoomVal >= 2) {
       this.instance.currentZoomVal = 2;
@@ -362,8 +400,8 @@ let PdfElement = Polymer({
   },
 
   /*
-  * Zoom in to the pdf as long as it is loaded
-  */
+   * Zoom in to the pdf as long as it is loaded
+   */
   zoomIn: function() {
     if (this.instance.pdfExists) {
       this.zoomInOut(0.1);
@@ -371,8 +409,8 @@ let PdfElement = Polymer({
   },
 
   /*
-  * Zoom out of the pdf as long as it is loaded
-  */
+   * Zoom out of the pdf as long as it is loaded
+   */
   zoomOut: function() {
     if (this.instance.pdfExists) {
       this.instance.zoomInOut(-0.1);
@@ -380,8 +418,8 @@ let PdfElement = Polymer({
   },
 
   /*
-  * When the zoom in/out button is selected. Reformats the pdf to the original display
-  */
+   * When the zoom in/out button is selected. Reformats the pdf to the original display
+   */
   zoomFit: function() {
     if (this.instance.pdfExists) {
       if (this.instance.currentZoomVal == this.instance.widthZoomVal) {
@@ -395,11 +433,11 @@ let PdfElement = Polymer({
   },
 
   /*
-  * Controls the page search functionality.
-  * When a number is input it checks to see if it is a valid page
-  * If it is valid then it will change the view to that page 
-  * as well as update the page number
-  */
+   * Controls the page search functionality.
+   * When a number is input it checks to see if it is a valid page
+   * If it is valid then it will change the view to that page
+   * as well as update the page number
+   */
   pageNumSearch: function() {
     var page = parseInt(this.$.input.value);
 
@@ -415,10 +453,10 @@ let PdfElement = Polymer({
   },
 
   /*
-  * Is called when a page is selected from the sidebar
-  * Checks to make sure a valid page is selected, then changes the page
-  * The currentInstance is passed in to make sure it is changing the proper pdf if multiple are loaded
-  */
+   * Is called when a page is selected from the sidebar
+   * Checks to make sure a valid page is selected, then changes the page
+   * The currentInstance is passed in to make sure it is changing the proper pdf if multiple are loaded
+   */
   sideBarClick: function(page, currentInstance, currentThis) {
     //this.instance = currentInstance;
     var parsedFileName = currentThis.src.split("/").pop();
@@ -437,8 +475,8 @@ let PdfElement = Polymer({
   },
 
   /*
-  * Is called to show the previous page and update page number
-  */
+   * Is called to show the previous page and update page number
+   */
   showPrev: function() {
     if (1 < this.instance.currentPage) {
       this.instance.currentPage--;
@@ -448,8 +486,8 @@ let PdfElement = Polymer({
   },
 
   /*
-  * Is called to show the next page and update page number
-  */
+   * Is called to show the next page and update page number
+   */
   showNext: function() {
     if (this.instance.totalPagesNum > this.instance.currentPage) {
       this.instance.currentPage++;
@@ -459,11 +497,11 @@ let PdfElement = Polymer({
   },
 
   /*
-  * The sidebar is a scrollable bar on the side of the page that allows you to scroll and select a page to change to
-  * Checks if the pdf loaded changed
-  * Then checks if the sidebar is open or not
-  * If it is open, close. Else open sidebar. Set sidebarOpen to either T or F
-  */
+   * The sidebar is a scrollable bar on the side of the page that allows you to scroll and select a page to change to
+   * Checks if the pdf loaded changed
+   * Then checks if the sidebar is open or not
+   * If it is open, close. Else open sidebar. Set sidebarOpen to either T or F
+   */
   sideBar: function() {
     if (this.instance.pdfExists) {
       if (!this.fromChange) {
@@ -490,8 +528,8 @@ let PdfElement = Polymer({
   },
 
   /*
-  * Is called when the download pdf button is selected
-  */
+   * Is called when the download pdf button is selected
+   */
   download: function() {
     if (this.instance.pdfExists) {
       this.instance.download();

@@ -30,14 +30,24 @@ let AppEditorHax = Polymer({
         box-sizing: content-box;
       }
     </style>
-    <hax-store skip-exit-trap="" hidden="" app-store="[[appStoreConnection]]"></hax-store>
+    <hax-store
+      skip-exit-trap=""
+      hidden=""
+      app-store="[[appStoreConnection]]"
+    ></hax-store>
     <hax-autoloader hidden=""></hax-autoloader>
-    <hax-panel id="panel" hide-panel-ops="" hide-export-button="" hide-preferences-button\$="[[hidePreferencesButton]]" align="right"></hax-panel>
+    <hax-panel
+      id="panel"
+      hide-panel-ops=""
+      hide-export-button=""
+      hide-preferences-button\$="[[hidePreferencesButton]]"
+      align="right"
+    ></hax-panel>
     <hax-body id="body"></hax-body>
     <hax-manager></hax-manager>
     <hax-export-dialog></hax-export-dialog>
     <hax-app-picker></hax-app-picker>
-`,
+  `,
 
   is: "app-editor-hax",
 

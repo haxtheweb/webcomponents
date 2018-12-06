@@ -38,11 +38,28 @@ let ImageCompareSlider = Polymer({
     </style>
     <h2>[[title]]</h2>
     <div class="container" style\$="[[styles.container]]">
-      <div id="bottom"><iron-image src\$="[[bottomSrc]]" sizing\$="[[sizing]]" style\$="[[styles.image]]"></iron-image></div>
-      <div id="top" style\$="[[styles.top]]"><iron-image src\$="[[topSrc]]" sizing\$="[[sizing]]" style\$="[[styles.image]]"></iron-image></div>
+      <div id="bottom">
+        <iron-image
+          src\$="[[bottomSrc]]"
+          sizing\$="[[sizing]]"
+          style\$="[[styles.image]]"
+        ></iron-image>
+      </div>
+      <div id="top" style\$="[[styles.top]]">
+        <iron-image
+          src\$="[[topSrc]]"
+          sizing\$="[[sizing]]"
+          style\$="[[styles.image]]"
+        ></iron-image>
+      </div>
     </div>
-    <paper-slider id="slider" value="50" class="max-width-no-padding" style\$="[[styles.slider]]"></paper-slider>
-`,
+    <paper-slider
+      id="slider"
+      value="50"
+      class="max-width-no-padding"
+      style\$="[[styles.slider]]"
+    ></paper-slider>
+  `,
 
   is: "image-compare-slider",
   behaviors: [

@@ -805,9 +805,9 @@ export default class RegionsPlugin {
   }
 
   /* Get current region
-     *  The smallest region that contains the current time.
-     *  If several such regions exist, we take the first.
-     *  Return null if none exist. */
+   *  The smallest region that contains the current time.
+   *  If several such regions exist, we take the first.
+   *  Return null if none exist. */
   getCurrentRegion() {
     const time = this.wavesurfer.getCurrentTime();
     let min = null;

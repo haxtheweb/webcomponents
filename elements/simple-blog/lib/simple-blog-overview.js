@@ -34,7 +34,7 @@ Polymer({
         background-color: transparent;
       }
       .post-title {
-        letter-spacing: -.32px;
+        letter-spacing: -0.32px;
         font-weight: 700;
         font-style: normal;
         display: block;
@@ -47,7 +47,7 @@ Polymer({
         color: #333332;
       }
       .post-excerpt {
-        letter-spacing: -.32px;
+        letter-spacing: -0.32px;
         font-weight: 300;
         font-style: normal;
         font-size: 16px;
@@ -68,24 +68,32 @@ Polymer({
       }
     </style>
     <paper-button>
-    <paper-card elevation="[[elevation]]">
-    <article class="post" itemtype="http://schema.org/BlogPosting" role="article">
-      <div class="article-item">
-        <header class="post-header">
-          <a tabindex="-1" href\$="[[link]]" itemprop="url"></a>
-          <h2 class="post-title" itemprop="name">[[title]]</h2>
-        </header>
-        <section class="post-excerpt" itemprop="description">
-          <p>[[description]]</p>
-        </section>
-        <div class="post-meta">
-          <simple-datetime format="M jS, Y" timestamp="[[changed]]" unix=""></simple-datetime>
-        </div>
-      </div>
-    </article>
-    </paper-card>
+      <paper-card elevation="[[elevation]]">
+        <article
+          class="post"
+          itemtype="http://schema.org/BlogPosting"
+          role="article"
+        >
+          <div class="article-item">
+            <header class="post-header">
+              <a tabindex="-1" href\$="[[link]]" itemprop="url"></a>
+              <h2 class="post-title" itemprop="name">[[title]]</h2>
+            </header>
+            <section class="post-excerpt" itemprop="description">
+              <p>[[description]]</p>
+            </section>
+            <div class="post-meta">
+              <simple-datetime
+                format="M jS, Y"
+                timestamp="[[changed]]"
+                unix=""
+              ></simple-datetime>
+            </div>
+          </div>
+        </article>
+      </paper-card>
     </paper-button>
-`,
+  `,
 
   is: "simple-blog-overview",
 

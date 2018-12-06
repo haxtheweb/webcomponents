@@ -36,7 +36,7 @@ let WavePlayer = Polymer({
 
       .title,
       .subtitle {
-        transition: all .5s ease;
+        transition: all 0.5s ease;
         padding: 10px 10px 10px 0;
         left: 160px;
         position: absolute;
@@ -51,11 +51,11 @@ let WavePlayer = Polymer({
         width: 100%;
         top: 0;
         background: var(--accent-color);
-        z-index: 20
+        z-index: 20;
       }
 
       paper-fab {
-        transition: all .5s ease;
+        transition: all 0.5s ease;
         top: -25px;
         z-index: 25;
         border-radius: 0;
@@ -63,12 +63,12 @@ let WavePlayer = Polymer({
 
       .albuminfo {
         position: relative;
-        transition: all .5s ease;
+        transition: all 0.5s ease;
         top: -156px;
         margin-bottom: -150px;
         z-index: 20;
         height: 150px;
-        background-color: rgba(0, 0, 0, .4);
+        background-color: rgba(0, 0, 0, 0.4);
         color: #fff;
         font-family: Roboto, sans-serif;
       }
@@ -82,32 +82,32 @@ let WavePlayer = Polymer({
 
       .waveContainer {
         top: -31px;
-        transition: all .5s ease;
+        transition: all 0.5s ease;
         background-color: var(--dark-primary-color);
-        transform: scaleY(1.5)
+        transform: scaleY(1.5);
       }
 
       .circleAnimation {
         border-radius: 50%;
         overflow: auto;
-        -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .4);
-        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .4)
+        -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.4);
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.4);
       }
 
       .circleAnimation:active {
-        -moz-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2);
-        box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2)
+        -moz-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+        box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
       }
 
       .playActive {
         top: 0;
         width: 100%;
-        height: 50px
+        height: 50px;
       }
 
       .waveActive {
         top: 0px;
-        transform: scaleY(1)
+        transform: scaleY(1);
       }
 
       .centred,
@@ -120,13 +120,13 @@ let WavePlayer = Polymer({
       }
 
       #playbutton {
-        transition: all .5s ease
+        transition: all 0.5s ease;
       }
 
       .coverart {
-        transition: all .5s ease;
+        transition: all 0.5s ease;
         width: 150px;
-        height: 150px
+        height: 150px;
       }
 
       .title {
@@ -135,37 +135,37 @@ let WavePlayer = Polymer({
 
       .coverartActive {
         width: 25px;
-        height: 25px
+        height: 25px;
       }
 
       .nameActive {
         font-size: 19px;
         padding: 3px 3px 3px 0;
-        left: 30px
+        left: 30px;
       }
 
       .centred {
         top: calc(50% - 20px);
         left: calc(50% - 20px);
-        transition: all .3s ease
+        transition: all 0.3s ease;
       }
 
       .left,
       .middle,
       .right {
-        transform: scale(1)
+        transform: scale(1);
       }
 
       .left {
-        left: calc(25% - 20px)
+        left: calc(25% - 20px);
       }
 
       .right {
-        left: calc(75% - 20px)
+        left: calc(75% - 20px);
       }
 
       .hidden {
-        display: none
+        display: none;
       }
 
       @media only screen and (max-width: 500px) {
@@ -174,19 +174,42 @@ let WavePlayer = Polymer({
         }
       }
     </style>
-    <paper-fab id="playbutton" class="circleAnimation" disabled="" icon="av:play-arrow" on-click="togglePlay"></paper-fab>
+    <paper-fab
+      id="playbutton"
+      class="circleAnimation"
+      disabled=""
+      icon="av:play-arrow"
+      on-click="togglePlay"
+    ></paper-fab>
     <paper-material id="controls" class="controls hidden" elevation="2">
-      <paper-icon-button class="centred middle" style="color: white;" icon="av:pause" on-click="togglePlay"></paper-icon-button>
-      <paper-icon-button id="replay" class="centred" style="color: white;" icon="av:replay-30" on-click="throwBack"></paper-icon-button>
-      <paper-icon-button id="mute" class="centred" style="color: white;" icon="av:volume-up" on-click="toggleMute"></paper-icon-button>
+      <paper-icon-button
+        class="centred middle"
+        style="color: white;"
+        icon="av:pause"
+        on-click="togglePlay"
+      ></paper-icon-button>
+      <paper-icon-button
+        id="replay"
+        class="centred"
+        style="color: white;"
+        icon="av:replay-30"
+        on-click="throwBack"
+      ></paper-icon-button>
+      <paper-icon-button
+        id="mute"
+        class="centred"
+        style="color: white;"
+        icon="av:volume-up"
+        on-click="toggleMute"
+      ></paper-icon-button>
     </paper-material>
     <div id="container" class="waveContainer" elevation="0"></div>
     <div id="albuminfo" class="albuminfo">
-      <img class="coverart" src="[[coverart]]">
+      <img class="coverart" src="[[coverart]]" />
       <span class="title">[[title]]</span>
       <span class="subtitle">[[subtitle]]</span>
     </div>
-`,
+  `,
 
   is: "wave-player",
   behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],

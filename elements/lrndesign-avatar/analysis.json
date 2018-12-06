@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 25,
+              "line": 31,
               "column": 4
             },
             "end": {
-              "line": 28,
+              "line": 34,
               "column": 5
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 32,
+              "line": 38,
               "column": 4
             },
             "end": {
-              "line": 34,
+              "line": 40,
               "column": 5
             }
           },
@@ -56,11 +56,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 38,
+              "line": 44,
               "column": 4
             },
             "end": {
-              "line": 41,
+              "line": 47,
               "column": 5
             }
           },
@@ -78,11 +78,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 45,
+              "line": 51,
               "column": 4
             },
             "end": {
-              "line": 48,
+              "line": 54,
               "column": 5
             }
           },
@@ -99,11 +99,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 52,
+              "line": 58,
               "column": 4
             },
             "end": {
-              "line": 55,
+              "line": 61,
               "column": 5
             }
           },
@@ -125,7 +125,7 @@
           "column": 30
         },
         "end": {
-          "line": 57,
+          "line": 63,
           "column": 1
         }
       },
@@ -138,23 +138,7 @@
           "description": "text to use for avatar",
           "sourceRange": {
             "start": {
-              "line": 25,
-              "column": 4
-            },
-            "end": {
-              "line": 28,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "src",
-          "description": "link to an image, optional",
-          "sourceRange": {
-            "start": {
-              "line": 32,
+              "line": 31,
               "column": 4
             },
             "end": {
@@ -166,15 +150,31 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "two-chars",
-          "description": "Mode for presenting 1st two letters",
+          "name": "src",
+          "description": "link to an image, optional",
           "sourceRange": {
             "start": {
               "line": 38,
               "column": 4
             },
             "end": {
-              "line": 41,
+              "line": 40,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "two-chars",
+          "description": "Mode for presenting 1st two letters",
+          "sourceRange": {
+            "start": {
+              "line": 44,
+              "column": 4
+            },
+            "end": {
+              "line": 47,
               "column": 5
             }
           },
@@ -186,11 +186,11 @@
           "description": "Materialize CSS color class names",
           "sourceRange": {
             "start": {
-              "line": 45,
+              "line": 51,
               "column": 4
             },
             "end": {
-              "line": 48,
+              "line": 54,
               "column": 5
             }
           },
@@ -202,11 +202,11 @@
           "description": "Form abstract art from hash of label",
           "sourceRange": {
             "start": {
-              "line": 52,
+              "line": 58,
               "column": 4
             },
             "end": {
-              "line": 55,
+              "line": 61,
               "column": 5
             }
           },

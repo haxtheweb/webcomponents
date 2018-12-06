@@ -23,120 +23,149 @@ Please see the `eco-json-schema-object` documentation for further information.
 Polymer({
   is: "eco-json-schema-file",
   _template: html`
-  <style is="custom-style" include="iron-flex iron-flex-alignment">
-			paper-input {
-				padding: 2px;
-				--paper-input-container-label: {
-					white-space: normal;
-					position: static;
-					font-size: 22px;
-					color: #212121;
-				}
-			}
+    <style is="custom-style" include="iron-flex iron-flex-alignment">
+      paper-input {
+        padding: 2px;
+        --paper-input-container-label: {
+          white-space: normal;
+          position: static;
+          font-size: 22px;
+          color: #212121;
+        }
+      }
 
-			:host {
-				display: inline-block;
-			}
+      :host {
+        display: inline-block;
+      }
 
-			.enabled {
-				border: 1px dashed #555;
-				@apply --file-upload-upload-border-enabled;
-			}
+      .enabled {
+        border: 1px dashed #555;
+        @apply --file-upload-upload-border-enabled;
+      }
 
-			.hover {
-				opacity: .7;
-				border: 1px dashed #111;
-				@apply --file-upload-upload-border-hover;
-			}
+      .hover {
+        opacity: 0.7;
+        border: 1px dashed #111;
+        @apply --file-upload-upload-border-hover;
+      }
 
-			#UploadBorder {
-				vertical-align: middle;
-				color: #555;
-				padding: 20px;
-				max-height: 300px;
-				overflow-y: auto;
-				display: inline-block;
-				@apply --file-upload-upload-border;
-			}
+      #UploadBorder {
+        vertical-align: middle;
+        color: #555;
+        padding: 20px;
+        max-height: 300px;
+        overflow-y: auto;
+        display: inline-block;
+        @apply --file-upload-upload-border;
+      }
 
-			#dropArea {
-				text-align: center;
-				@apply --file-upload-drop-area;
-			}
+      #dropArea {
+        text-align: center;
+        @apply --file-upload-drop-area;
+      }
 
-			paper-button#button {
-				margin-bottom: 20px;
-				@apply --file-upload-button;
-			}
+      paper-button#button {
+        margin-bottom: 20px;
+        @apply --file-upload-button;
+      }
 
-			.file {
-				padding: 10px 0px;
-				@apply --file-upload-file;
-			}
+      .file {
+        padding: 10px 0px;
+        @apply --file-upload-file;
+      }
 
-			.commands {
-				float: right;
-				@apply --file-upload-commands;
-			}
+      .commands {
+        float: right;
+        @apply --file-upload-commands;
+      }
 
-			.commands iron-icon:not([icon="check-circle"]) {
-				cursor: pointer;
-				opacity: .9;
-				@apply --file-upload-commands-faded;
-			}
+      .commands iron-icon:not([icon="check-circle"]) {
+        cursor: pointer;
+        opacity: 0.9;
+        @apply --file-upload-commands-faded;
+      }
 
-			.commands iron-icon:hover {
-				opacity: 1;
-				@apply --file-upload-commands-hovered;
-			}
+      .commands iron-icon:hover {
+        opacity: 1;
+        @apply --file-upload-commands-hovered;
+      }
 
-			[hidden] {
-				display: none;
-			}
+      [hidden] {
+        display: none;
+      }
 
-			.error {
-				color: #f40303;
-				font-size: 11px;
-				margin-top: 2px;
-				@apply --file-upload-error;
-			}
+      .error {
+        color: #f40303;
+        font-size: 11px;
+        margin-top: 2px;
+        @apply --file-upload-error;
+      }
 
-			.progress-bar {
-				margin-top: 2px;
-			}
+      .progress-bar {
+        margin-top: 2px;
+      }
 
-			paper-progress {
-				--paper-progress-active-color: #03a9f4;
-			}
+      paper-progress {
+        --paper-progress-active-color: #03a9f4;
+      }
 
-			paper-progress[error] {
-				--paper-progress-active-color: #f40303;
-			}
-		</style>
+      paper-progress[error] {
+        --paper-progress-active-color: #f40303;
+      }
+    </style>
 
-		<div class="layout horizontal nowrap">
-			<div>
-				<paper-button id="button" on-click="_fileClick" alt="{{paperButtonAlt}}" raised="">
-					<iron-icon icon="editor:attach-file"></iron-icon>{{paperButtonTitle}}</paper-button>
-				<div id="UploadBorder">
-					<div id="dropArea" hidden\$="{{!_shownDropText}}">{{dropText}}</div>
-					<template is="dom-repeat" items="{{files}}">
-						<div class="file">
-							<div class="name"><span>{{item.name}}</span>
-								<div class="commands">
-									<iron-icon icon="autorenew" title="{{retryText}}" on-click="_retryUpload" hidden\$="{{!item.error}}"></iron-icon>
-									<iron-icon icon="cancel" title="{{removeText}}" on-click="_cancelUpload" hidden\$="{{item.complete}}"></iron-icon>
-									<iron-icon icon="check-circle" title="{{successText}}" hidden\$="{{!item.complete}}"></iron-icon>
-								</div>
-							</div>
-							<div class="error" hidden\$="{{!item.error}}">{{errorText}}</div>
-						</div>
-					</template>
-				</div>
-			</div>
-			<input type="file" id="fileInput" on-change="_fileChange" hidden="" multiple="{{multi}}" accept="{{accept}}">
+    <div class="layout horizontal nowrap">
+      <div>
+        <paper-button
+          id="button"
+          on-click="_fileClick"
+          alt="{{paperButtonAlt}}"
+          raised=""
+        >
+          <iron-icon icon="editor:attach-file"></iron-icon
+          >{{paperButtonTitle}}</paper-button
+        >
+        <div id="UploadBorder">
+          <div id="dropArea" hidden\$="{{!_shownDropText}}">{{dropText}}</div>
+          <template is="dom-repeat" items="{{files}}">
+            <div class="file">
+              <div class="name">
+                <span>{{item.name}}</span>
+                <div class="commands">
+                  <iron-icon
+                    icon="autorenew"
+                    title="{{retryText}}"
+                    on-click="_retryUpload"
+                    hidden\$="{{!item.error}}"
+                  ></iron-icon>
+                  <iron-icon
+                    icon="cancel"
+                    title="{{removeText}}"
+                    on-click="_cancelUpload"
+                    hidden\$="{{item.complete}}"
+                  ></iron-icon>
+                  <iron-icon
+                    icon="check-circle"
+                    title="{{successText}}"
+                    hidden\$="{{!item.complete}}"
+                  ></iron-icon>
+                </div>
+              </div>
+              <div class="error" hidden\$="{{!item.error}}">{{errorText}}</div>
+            </div>
+          </template>
+        </div>
+      </div>
+      <input
+        type="file"
+        id="fileInput"
+        on-change="_fileChange"
+        hidden=""
+        multiple="{{multi}}"
+        accept="{{accept}}"
+      />
     </div>
-`,
+  `,
   behaviors: [AppLocalizeBehavior],
 
   properties: {
