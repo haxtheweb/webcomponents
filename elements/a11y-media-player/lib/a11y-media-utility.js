@@ -120,23 +120,6 @@ class A11yMediaUtility extends PolymerElement {
   }
 
   /**
-   * if a player disallows concurrent players, pauses other players
-   */
-  checkConcurrentPlayers() {
-    let root = this,
-      player = root.stickyPlayer;
-    for (let i = 0; i < root.players.length; i++) {
-      let playeri = root.players[i];
-      if (
-        playeri !== player &&
-        (!player.allowConcurrent || !playeri.allowConcurrent)
-      ) {
-        playeri.pause();
-      }
-    }
-  }
-
-  /**
    * stops all other players on the page
    */
   setStickyPlayer(player) {

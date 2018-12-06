@@ -842,18 +842,17 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
    * gets YouTube iframe
    */
   _youTubeRequest() {
-    let root = this;
+    let root = this,
+      ytUtil = window.A11yMediaYoutubeUtility.instance;
+    console.log("_youTubeRequest", root.youtubeId);
     if (root.__playerAttached && root.__playerReady) {
-      let options = {
-          width: "100%",
-          height: "100%",
-          videoId: root.youtubeId
-        },
-        ytInit = function() {
-          root.media = window.A11yMediaYoutubeUtility.initYoutubePlayer(
-            root.$.youtube,
-            options
-          );
+      let ytInit = function() {
+          root.media = ytUtil.initYoutubePlayer({
+            width: "100%",
+            height: "100%",
+            videoId: root.youtubeId
+          });
+          root.$.youtube.appendChild(root.media.a);
           root._getTrackData(root.$.loader.media);
           root._updateCustomTacks();
           // youtube API doesn't immediately give length of a video
@@ -871,12 +870,12 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           }, 100);
         },
         checkApi = function(e) {
-          if (window.A11yMediaYoutubeUtility.apiReady) {
+          if (ytUtil.apiReady) {
             document.removeEventListener("youtube-api-ready", checkApi);
             ytInit();
           }
         };
-      if (window.A11yMediaYoutubeUtility.apiReady) {
+      if (ytUtil.apiReady) {
         ytInit();
       } else {
         document.addEventListener("youtube-api-ready", checkApi);
