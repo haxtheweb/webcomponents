@@ -8,7 +8,7 @@
     "monorepo": "lrnwebcomponents",
     "orgNpm": "@lrnwebcomponents",
     "orgGit": "elmsln",
-    "gitRepo": "git@github.com/elmsln/lrnwebcomponents.git",
+    "gitRepo": "https://github.com/elmsln/lrnwebcomponents.git",
     "sass": {
       "name": "rh-sass",
       "pkg": "@rhelements/rh-sass",
