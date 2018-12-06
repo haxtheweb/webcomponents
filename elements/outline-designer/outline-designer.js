@@ -13,6 +13,7 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-list/iron-list.js";
+import "@polymer/iron-swipeable-container/iron-swipeable-container.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
@@ -464,9 +465,15 @@ class OutlineDesigner extends PolymerElement {
                     </div>
                     <div class="card-actions high-detail">
                       <ul>
-                        <li>Page 1</li>
-                        <li>Page 2</li>
-                        <li>Page 3</li>
+                        <iron-swipeable-container
+                          ><li>Page 1</li></iron-swipeable-container
+                        >
+                        <iron-swipeable-container
+                          ><li>Page 2</li></iron-swipeable-container
+                        >
+                        <iron-swipeable-container
+                          ><li>Page 3</li></iron-swipeable-container
+                        >
                       </ul>
                     </div>
                   </paper-card>

@@ -44,6 +44,7 @@
     "@lrnwebcomponents/simple-colors": "^0.0.38",
     "@lrnwebcomponents/simple-modal": "^0.0.38",
     "@lrnwebcomponents/lrnsys-outline": "^0.0.38",
+    "@polymer/iron-swipeable-container": "^3.0.1",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.1",
     "@polymer/iron-list": "^3.0.1",
