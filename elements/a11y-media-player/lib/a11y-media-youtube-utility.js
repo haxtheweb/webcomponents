@@ -72,7 +72,6 @@ class A11yMediaYoutubeUtility extends PolymerElement {
     api.setAttribute("type", "text/javascript");
     document.body.appendChild(api);
     window.onYouTubeIframeAPIReady = function() {
-      console.log("youtube-api-ready", YT, window.YT !== undefined);
       var event = new CustomEvent("youtube-api-ready");
       root.apiReady = true;
       document.dispatchEvent(event);
