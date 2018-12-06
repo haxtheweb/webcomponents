@@ -120,7 +120,7 @@ Polymer({
           <div class="date center">
             Last updated: [[date(submission.meta.changed)]]
           </div>
-          <!-- ----- Text Submission -----  -->
+          <!-- ----- Text Submission ----- -->
           <template is="dom-if" if="[[submission.attributes.body]]">
             <word-count
               ><marked-element
@@ -128,7 +128,7 @@ Polymer({
               ></marked-element
             ></word-count>
           </template>
-          <!-- ----- Images Submission -----  -->
+          <!-- ----- Images Submission ----- -->
           <template is="dom-if" if="[[submission.attributes.images]]">
             <lrndesign-contentblock class="center">
               <template
@@ -176,7 +176,7 @@ Polymer({
               </template>
             </lrndesign-contentblock>
           </template>
-          <!-- ----- Video Submission -----  -->
+          <!-- ----- Video Submission ----- -->
           <template is="dom-if" if="[[submission.attributes.video]]">
             <lrndesign-contentblock class="center">
               <template
@@ -192,7 +192,7 @@ Polymer({
               </template>
             </lrndesign-contentblock>
           </template>
-          <!-- ----- Links Submission -----  -->
+          <!-- ----- Links Submission ----- -->
           <template is="dom-if" if="[[submission.attributes.links]]">
             <lrndesign-contentblock>
               <template
@@ -209,7 +209,7 @@ Polymer({
               </template>
             </lrndesign-contentblock>
           </template>
-          <!-- ----- Files Submission -----  -->
+          <!-- ----- Files Submission ----- -->
           <template is="dom-if" if="[[submission.attributes.files]]">
             <lrndesign-contentblock title="Files Submitted">
               <template

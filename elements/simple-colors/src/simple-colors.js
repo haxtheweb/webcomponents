@@ -514,12 +514,10 @@ SimpleColors.wcagContrast = {
 };
 
 SimpleColors.requestAvailability = function(element) {
-  document.addEventListener("DOMContentLoaded", function(event) {
-    if (!SimpleColors.instance) {
-      SimpleColors.instance = document.createElement("simple-colors");
-    }
-    document.body.appendChild(SimpleColors.instance);
-  });
+  if (!SimpleColors.instance) {
+    SimpleColors.instance = document.createElement("simple-colors");
+  }
+  document.body.appendChild(SimpleColors.instance);
 };
 
 /**

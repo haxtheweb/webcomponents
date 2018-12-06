@@ -1,32 +1,72 @@
-import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
-window.A11yMediaUtility = {};
-Polymer({
-  is: "a11y-media-utility",
 
-  properties: {
-    /**
-     * Stores an array of all the players on the page.
-     */
-    players: {
-      type: Array,
-      value: []
-    },
-    /**
-     * Manages which player is sticky.
-     */
-    stickyPlayer: {
-      type: Object,
-      value: null
-    }
-  },
+// register globally so we can make sure there is only one
+window.A11yMediaUtility = window.A11yMediaUtility || {};
+// request if this exists. This helps invoke the element existing in the dom
+// as well as that there is only one of them. That way we can ensure everything
+// is rendered through the same modal
+window.A11yMediaUtility.requestAvailability = () => {
+  if (!window.A11yMediaUtility.instance) {
+    window.A11yMediaUtility.instance = document.createElement(
+      "a11y-media-utility"
+    );
+    document.body.appendChild(window.A11yMediaUtility.instance);
+  }
+  return window.A11yMediaUtility.instance;
+};
+/**
+ * `a11y-media-utility`
+ * `A utility that manages multiple instances of a11y-media-player on a single page.`
+ *
+ * @microcopy - language worth noting:
+ *  -
+ *
+ * @customElement
+ * @polymer
+ */
+class A11yMediaUtility extends PolymerElement {
+  /* REQUIRED FOR TOOLING DO NOT TOUCH */
+
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "a11y-media-utility";
+  }
+
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      /**
+       * Stores an array of all the players on the page.
+       */
+      players: {
+        type: Array,
+        value: []
+      },
+      /**
+       * Manages which player is sticky.
+       */
+      stickyPlayer: {
+        type: Object,
+        value: null
+      }
+    };
+  }
 
   /**
    * Makes sure there is a utility ready and listening for elements.
    */
-  created: function() {
+  constructor() {
+    super();
     let root = this;
-    this.__playerLoader = function(e) {
+    root.__playerLoader = function(e) {
       root.players.push(e.detail);
     };
 
@@ -35,14 +75,16 @@ Polymer({
       window.A11yMediaUtility.instance = this;
 
       // listen for a players added to the page
-      document.body.addEventListener("a11y-player", root.__playerLoader);
+      window.addEventListener("a11y-player", root.__playerLoader);
     }
-  },
+  }
 
   /**
+   * life cycle, element is afixed to the DOM
    * Makes sure there is a utility ready and listening for elements.
    */
-  attached: function() {
+  connectedCallback() {
+    super.connectedCallback();
     let root = this;
     this.__stickyManager = function(e) {
       root.setStickyPlayer(e.detail);
@@ -54,29 +96,16 @@ Polymer({
     // listen for a player that starts playing,
     // make it the player that can be sticky,
     // and check for concurrent players
-    document.body.addEventListener("a11y-player-playing", root.__stickyManager);
+    window.addEventListener("a11y-player-playing", root.__stickyManager);
 
     // listen for scrolling and find out if a player is off-screen
     window.addEventListener("scroll", root.__scrollChecker);
-  },
+  }
 
-  /**
-   * Clean up.
-   */
-  detached: function() {
-    let root = this;
-    document.body.removeEventListener("a11y-player", root.__playerLoader);
-    document.body.removeEventListener(
-      "a11y-player-playing",
-      root.__stickyManager
-    );
-    window.removeEventListener("scroll", root.__scrollChecker);
-  },
   /**
    * if a player disallows concurrent players, pauses other players
    */
-
-  checkConcurrentPlayers: function() {
+  checkConcurrentPlayers() {
     let root = this,
       player = root.stickyPlayer;
     for (let i = 0; i < root.players.length; i++) {
@@ -88,29 +117,14 @@ Polymer({
         playeri.pause();
       }
     }
-  },
-  /**
-   * if a player disallows concurrent players, pauses other players
-   */
+  }
 
-  checkConcurrentPlayers: function() {
-    let root = this,
-      player = root.stickyPlayer;
-    for (let i = 0; i < root.players.length; i++) {
-      let playeri = root.players[i];
-      if (
-        playeri !== player &&
-        (!player.allowConcurrent || !playeri.allowConcurrent)
-      ) {
-        playeri.pause();
-      }
-    }
-  },
   /**
    * stops all other players on the page
+   *
+   * @param {object} the player to set stickiness
    */
-
-  setStickyPlayer: function(player) {
+  setStickyPlayer(player) {
     let root = this,
       parent = root._getParentNode(player);
     root.__playerTop = parent.offsetTop;
@@ -129,12 +143,12 @@ Polymer({
     root.stickyPlayer = player;
     if (!player.allowConcurrent) root.checkConcurrentPlayers();
     root._checkScroll();
-  },
+  }
+
   /**
    * checks the wondow's scroll position and compares it to active player to set sticky attribute
    */
-
-  _checkScroll: function() {
+  _checkScroll() {
     let root = this,
       wintop = window.pageYOffset,
       winbottom = wintop + window.innerHeight;
@@ -149,12 +163,14 @@ Polymer({
         root.stickyPlayer.toggleSticky(false);
       }
     }
-  },
+  }
+
   /**
    * gets parent node in light DOM
+   *
+   * @param {object} the node
    */
-
-  _getParentNode: function(node) {
+  _getParentNode(node) {
     let parent = node.parentNode;
     if (
       parent !== undefined &&
@@ -165,20 +181,17 @@ Polymer({
     }
     return parent;
   }
-});
 
-window.A11yMediaUtility.instance = null;
-
-/**
- * Checks to see if there is an instance available, and if not appends one
- */
-window.A11yMediaUtility.requestAvailability = function() {
-  //only create an instance if there isn't one
-  if (!window.A11yMediaUtility.instance) {
-    window.A11yMediaUtility.instance = document.createElement(
-      "a11y-media-utility"
-    );
+  /**
+   * life cycle, element is removed from the DOM
+   */
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    let root = this;
+    window.removeEventListener("a11y-player", root.__playerLoader);
+    window.removeEventListener("a11y-player-playing", root.__stickyManager);
+    window.removeEventListener("scroll", root.__scrollChecker);
   }
-
-  document.body.appendChild(window.A11yMediaUtility.instance);
-};
+}
+window.customElements.define(A11yMediaUtility.tag, A11yMediaUtility);
+export { A11yMediaUtility };
