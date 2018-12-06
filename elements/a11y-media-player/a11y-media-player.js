@@ -343,7 +343,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
         :host([sticky]:not([sticky-corner="none"])) #customcc {
           display: none;
         }
-        :host #customcctxt {
+        :host #customcctxt:not(:empty) {
           top: unset;
           bottom: 8px;
           display: inline-block;
@@ -855,7 +855,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           });
           root.$.youtube.appendChild(root.media.a);
           root._getTrackData(root.$.loader.media);
-          root._updateCustomTacks();
+          root._updateCustomTracks();
           // youtube API doesn't immediately give length of a video
           let int = setInterval(() => {
             if (root.media.getDuration !== undefined) {
@@ -887,8 +887,8 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   /**
    * updates custom tracks for youTube
    */
-  _updateCustomTacks() {
-    if (this.isYoutube && this.tracks !== undefined && this.tracks !== null) {
+  _updateCustomTracks() {
+    if (this._hasCustomCaptions(this.isYoutube, this.audioOnly, this.tracks)) {
       let root = this,
         track = root.tracks[this.$.transcript.selectedTranscript],
         active = [],
@@ -927,7 +927,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
         root.__elapsed =
           root.media.getCurrentTime() > 0 ? root.media.getCurrentTime() : 0;
         root.__duration = root.media.duration > 0 ? root.media.duration : 0;
-        root._updateCustomTacks();
+        root._updateCustomTracks();
         root.__status =
           root._getHHMMSS(root.media.getCurrentTime(), root.__duration) +
           "/" +
@@ -1013,7 +1013,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
         "/" +
         this._getHHMMSS(this.__duration);
       this.$.controls.setStatus(this.__status);
-      this._updateCustomTacks();
+      this._updateCustomTracks();
       if (this.__resumePlaying) this.play();
     }
   }

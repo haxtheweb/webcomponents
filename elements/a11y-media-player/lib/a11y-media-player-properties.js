@@ -465,7 +465,7 @@ class A11yMediaPlayerProperties extends A11yMediaBehaviors {
        */
       showCustomCaptions: {
         type: Boolean,
-        computed: "_showCustomCaptions(isYoutube,audioOnly,cc)"
+        computed: "_showCustomCaptions(isYoutube,audioOnly,hasCaptions,cc)"
       },
       /**
        * label for skip the transcript link before the transcript
@@ -642,8 +642,15 @@ class A11yMediaPlayerProperties extends A11yMediaBehaviors {
   /**
    * show youtube closed captions layer?
    */
-  _showCustomCaptions(isYoutube, audioOnly, cc) {
-    return (isYoutube || audioOnly) && cc;
+  _showCustomCaptions(isYoutube, audioOnly, hasCaptions, cc) {
+    return this._hasCustomCaptions(isYoutube, audioOnly, hasCaptions) && cc;
+  }
+
+  /**
+   * Does the player have custom tracks?
+   */
+  _hasCustomCaptions(isYoutube, audioOnly, hasCaptions) {
+    return (isYoutube || audioOnly) && hasCaptions;
   }
 
   /**

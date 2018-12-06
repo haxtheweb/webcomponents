@@ -292,7 +292,7 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
       <div id="controls-right">
         <a11y-media-button
           class="captions"
-          hidden="[[audioOnly]]"
+          hidden="[[!hasCaptions]]"
           icon="[[captionsIcon]]"
           label="[[captionsLabel]]"
           on-tap="_onButtonTap"
