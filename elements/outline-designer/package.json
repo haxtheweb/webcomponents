@@ -43,13 +43,18 @@
     "@lrnwebcomponents/item-overlay-ops": "^0.0.38",
     "@lrnwebcomponents/simple-colors": "^0.0.38",
     "@lrnwebcomponents/simple-modal": "^0.0.38",
+    "@lrnwebcomponents/lrnsys-outline": "^0.0.38",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.1",
     "@polymer/iron-list": "^3.0.1",
     "@polymer/paper-card": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.1",
     "@polymer/paper-tooltip": "^3.0.1",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.0.5",
+    "@polymer/iron-icons": "^3.0.1",
+    "@polymer/iron-pages": "^3.0.1",
+    "@polymer/paper-button": "^3.0.1",
+    "@polymer/paper-progress": "^3.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "0.0.35",
