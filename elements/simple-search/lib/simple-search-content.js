@@ -71,14 +71,10 @@ class SimpleSearchContent extends PolymerElement {
         }
       </style>
       <span id="content">
-<<<<<<< HEAD
         <span class="initialcontent" hidden$="[[inSearchMode]]"
           >[[content]]</span
         >
-        <template is="dom-repeat" items="[[__searchedContent]]">
-=======
         <template is="dom-repeat" items="[[_searchedContent]]">
->>>>>>> da2bfb9c0c950407ca1f09ac3ddf39e7607d4dd0
           <span
             match-number\$="[[item.matchNumber]]"
             tabindex\$="[[_getTabIndex(item.matchNumber)]]"
