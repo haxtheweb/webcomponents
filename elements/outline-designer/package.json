@@ -16,7 +16,7 @@
       "hax": "src/outline-designer-hax.json"
     }
   },
-  "version": "0.0.38",
+  "version": "0.0.39",
   "description": "tools to modify and visualize JSON Outline Schema for editing",
   "repository": {
     "type": "git",
@@ -40,22 +40,22 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/item-overlay-ops": "^0.0.38",
-    "@lrnwebcomponents/simple-colors": "^0.0.38",
-    "@lrnwebcomponents/simple-modal": "^0.0.38",
-    "@lrnwebcomponents/lrnsys-outline": "^0.0.38",
-    "@polymer/iron-swipeable-container": "^3.0.1",
+    "@lrnwebcomponents/item-overlay-ops": "^0.0.39",
+    "@lrnwebcomponents/lrnsys-outline": "^0.0.39",
+    "@lrnwebcomponents/simple-colors": "^0.0.39",
+    "@lrnwebcomponents/simple-modal": "^0.0.39",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.1",
+    "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-list": "^3.0.1",
+    "@polymer/iron-pages": "^3.0.1",
+    "@polymer/iron-swipeable-container": "^3.0.1",
+    "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-card": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.1",
+    "@polymer/paper-progress": "^3.0.1",
     "@polymer/paper-tooltip": "^3.0.1",
-    "@polymer/polymer": "^3.0.5",
-    "@polymer/iron-icons": "^3.0.1",
-    "@polymer/iron-pages": "^3.0.1",
-    "@polymer/paper-button": "^3.0.1",
-    "@polymer/paper-progress": "^3.0.1"
+    "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "0.0.35",

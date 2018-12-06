@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-paperstack-hax.json"
     }
   },
-  "version": "0.0.38",
+  "version": "0.0.39",
   "description": "Automated conversion of lrndesign-paperstack/",
   "repository": {
     "type": "git",
@@ -40,15 +40,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-behaviors": "^0.0.38",
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.38",
-    "@lrnwebcomponents/lrn-icons": "^0.0.38",
-    "@lrnwebcomponents/materializecss-styles": "^0.0.38",
+    "@lrnwebcomponents/a11y-behaviors": "^0.0.39",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.39",
+    "@lrnwebcomponents/lrn-icons": "^0.0.39",
+    "@lrnwebcomponents/materializecss-styles": "^0.0.39",
     "@polymer/iron-icon": "^3.0.0",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.0.38",
+    "@lrnwebcomponents/deduping-fix": "^0.0.39",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.2.1",
