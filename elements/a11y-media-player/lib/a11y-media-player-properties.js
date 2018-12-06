@@ -592,24 +592,32 @@ class A11yMediaPlayerProperties extends A11yMediaBehaviors {
 
   /**
    * returns true if an attribute is set to a value
+   *
+   * @param {boolean} Is the media audio only?
+   * @param {string} optional: the source URL of the thumbnail image
+   * @returns {boolean} Should height of video/thumbnail area be set to 0?
    */
-
   _getNoHeight(audioOnly, thumbnailSrc) {
     return audioOnly && (thumbnailSrc === null || thumbnailSrc === undefined);
   }
 
   /**
    * returns true if the player has no giant play button
+   *
+   * @param {boolean} Should height of video/thumbnail area be set to 0?
+   * @param {boolean} Is the media a YouTube video?
+   * @returns {boolean} Should the play button be displayed?
    */
-
   _noPlayButton(noHeight, isYoutube) {
     return noHeight || isYoutube;
   }
 
   /**
-   * returns true if an attribute is set to a value
+   * returns whether or not the fullscreen mode should be disabled
+   *
+   * @param {boolean} Is fullscreen mode set to disabled?
+   * @returns {boolean} Should fullscreen disabled?
    */
-
   _getFullscreenButton(disableFullscreen) {
     if (
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -625,6 +633,9 @@ class A11yMediaPlayerProperties extends A11yMediaBehaviors {
 
   /**
    * returns true if player is xs or sm and needs to use compact controls
+   *
+   * @param {string} the size of the player: `xs`,`sm`,`md`,`lg`, or `xl`
+   * @returns {boolean} Should the player use compact controls?
    */
   _getCompactControls(responsiveSize) {
     return (
@@ -634,21 +645,25 @@ class A11yMediaPlayerProperties extends A11yMediaBehaviors {
   }
 
   /**
-   * returns true if an attribute is set to a value
-   */
-  _testAttribute(attr, val) {
-    return attr === val;
-  }
-
-  /**
-   * show youtube closed captions layer?
+   * Show custom CC (for audio and YouTube)?
+   *
+   * @param {boolean} Is the media from YouTube?
+   * @param {boolean} Is the media audio only?
+   * @param {boolean} Does the media have CC tracks?
+   * @param {boolean} Are the CC turned on?
+   * @returns {boolean} Should the player show custom CC?
    */
   _showCustomCaptions(isYoutube, audioOnly, hasCaptions, cc) {
     return this._hasCustomCaptions(isYoutube, audioOnly, hasCaptions) && cc;
   }
 
   /**
-   * Does the player have custom tracks?
+   * Does the player have custom CC tracks?
+   *
+   * @param {boolean} Is the media from YouTube?
+   * @param {boolean} Is the media audio only?
+   * @param {boolean} Does the media have CC tracks?
+   * @returns {boolean} Does the player have custom CC?
    */
   _hasCustomCaptions(isYoutube, audioOnly, hasCaptions) {
     return (isYoutube || audioOnly) && hasCaptions;
@@ -656,6 +671,12 @@ class A11yMediaPlayerProperties extends A11yMediaBehaviors {
 
   /**
    * Determines if video and transcript are in a flex layout
+   *
+   * @param {boolean} Is the player in stand-alone mode?
+   * @param {boolean} Is the transcript hidden?
+   * @param {boolean} Does the media no video or thumbnail image?
+   * @param {boolean} Is the layout stacked?
+   * @returns {boolean} Is the video in flex layout mode?
    */
   _isFlexLayout(standAlone, hideTranscript, noHeight, stackedLayout) {
     return !standAlone && !hideTranscript && !noHeight && !stackedLayout;

@@ -196,6 +196,8 @@ class A11yMediaTranscript extends A11yMediaPlayerProperties {
 
   /**
    * fires an event when media is associated with the player
+   *
+   * @param {object} the player
    */
   setMedia(player) {
     this.media = player;
@@ -204,6 +206,8 @@ class A11yMediaTranscript extends A11yMediaPlayerProperties {
 
   /**
    * fires an event when media is associated with the player
+   *
+   * @param {boolean} Hide transcript? `true` is hidden, `false` is visible, and `null` toggles based on current state.
    */
   toggleHidden(mode) {
     let root = this,
@@ -222,6 +226,8 @@ class A11yMediaTranscript extends A11yMediaPlayerProperties {
 
   /**
    * prints the active transcript
+   *
+   * @param {string} the title of the media
    */
   print(mediaTitle) {
     let root = this,
@@ -282,6 +288,8 @@ class A11yMediaTranscript extends A11yMediaPlayerProperties {
 
   /**
    * loads tracks from array
+   *
+   * @param {array} an array of tracks
    */
   setTracks(tracks) {
     this.set("tracks", tracks.slice(0));
@@ -292,6 +300,8 @@ class A11yMediaTranscript extends A11yMediaPlayerProperties {
 
   /**
    * updates activeCues array and scrolls to position
+   *
+   * @param {array} an array of cues
    */
   setActiveCues(cues) {
     let root = this,
@@ -323,13 +333,19 @@ class A11yMediaTranscript extends A11yMediaPlayerProperties {
 
   /**
    * gets the tab-index of cues based on whether or not interactive cues are disabled
+   *
+   * @param {boolean} Is the interactive transcript mode disabled?
+   * @returns {integer} the tabindex of the cue
    */
   _getTabIndex(disableInteractive) {
     return disableInteractive ? -1 : 0;
   }
 
   /**
-   * gets the tab-index of cues based on whether or not interactive cues are disabled
+   * gets the role of cues based on whether or not interactive cues are disabled
+   *
+   * @param {boolean} Is the interactive transcript mode disabled?
+   * @returns {string} the role of the cue, `button` or `null`
    */
   _getRole(disableInteractive) {
     return disableInteractive ? null : "button";
@@ -346,6 +362,8 @@ class A11yMediaTranscript extends A11yMediaPlayerProperties {
 
   /**
    * determines if this is the currently selected transcript to show or hide
+   *
+   * @param {integer} the index of the transcript
    */
   setActiveTranscript(index) {
     if (this.tracks !== undefined && this.tracks !== null) {

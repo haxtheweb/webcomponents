@@ -213,14 +213,11 @@ class A11yMediaTranscriptCue extends A11yMediaPlayerProperties {
   }
 
   /**
-   * prints the active cue
-   */
-  print() {
-    //console.log(this,this.getComputedStyle());
-  }
-
-  /**
    * gets the active cue for styling
+   *
+   * @param {object} the current cue object
+   * @param {array} an array of all active cues
+   * @returns {boolean} Is the cue active?
    */
   _getActiveCue(cue, activeCues) {
     return activeCues !== null && activeCues.includes(cue.order.toString())

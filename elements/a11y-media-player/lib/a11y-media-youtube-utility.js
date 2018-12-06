@@ -43,26 +43,19 @@ class A11yMediaYoutubeUtility extends PolymerElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      /**
+       * whether or not the YouTube API is ready
+       */
       apiReady: {
         type: "Boolean",
         value: window.YT !== undefined
       },
+      /**
+       * a counter for creating unique ideas for each YouTube player container
+       */
       counter: {
         type: "Number",
         value: 0
-      },
-      iframes: {
-        type: "Object",
-        value: {
-          content: null,
-          push: function(fn) {
-            this.content = fn;
-          },
-          pop: function() {
-            this.content.call();
-            this.content = null;
-          }
-        }
       }
     };
   }
@@ -88,6 +81,9 @@ class A11yMediaYoutubeUtility extends PolymerElement {
 
   /**
    * initializes the youtube player for a given element
+   *
+   * @param {options} the YouTube options object, eg. `{ "width": "100%", "height": "100%", "videoId": "NP0mQeLWCCo" }`
+   * @returns {options} the YouTube player object
    */
   initYoutubePlayer(options) {
     //get unique id for each youtube iframe

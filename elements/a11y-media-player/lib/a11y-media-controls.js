@@ -454,15 +454,19 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
   }
 
   /**
-   * updates the time/length
+   * updates the play status of the media
+   *
+   * @param {string} the status, eg., `Loading...` or `00:02:01/00:11:43`
    */
-  setStatus(time) {
-    this.$.statbar.innerText = time;
-    this.$.statmenu.innerText = time;
+  setStatus(status) {
+    this.$.statbar.innerText = status;
+    this.$.statmenu.innerText = status;
   }
 
   /**
    * loads tracks from array
+   *
+   * @param {object} the tracks of the media
    */
   setTracks(tracks) {
     this.set("tracks", []);
@@ -471,6 +475,13 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
 
   /**
    * set play/pause button
+   *
+   * @param {boolean} Is the media playing?
+   * @param {string} label if button pauses media
+   * @param {string} icon if button pauses media
+   * @param {string} label if button plays media
+   * @param {string} icon if button plays media
+   * @returns {object} an object containing the current state of the play/pause button, eg., `{"label": "Pause", "icon": "av:pause"}`
    */
   _getPlayPause(playing, pauseLabel, pauseIcon, playLabel, playIcon) {
     return playing
@@ -480,6 +491,13 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
 
   /**
    * set play/pause button
+   *
+   * @param {boolean} Is the media muted?
+   * @param {string} label if button mutes media
+   * @param {string} icon if button mutes media
+   * @param {string} label if button unmutes media
+   * @param {string} icon if button unmutes media
+   * @returns {object} an object containing the current state of the play/pause button, eg., `{"label": "mute", "icon": "av:volume-off"}`
    */
   _getMuteUnmute(muted, muteLabel, muteIcon, unmuteLabel, unmuteIcon) {
     return muted
@@ -546,7 +564,11 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
     );
   }
   /**
-   * determine which button was clicked and act accordingly
+   * Determines if the transcript button should be shown.
+   *
+   * @param {boolean} Is the player too small to fit the extra controls?
+   * @param {boolean} Is the player in stand-alone mode?
+   * @returns {boolean} Show the transcript button?
    */
   _showTranscriptButton(compactControls, standAlone) {
     return compactControls || standAlone;

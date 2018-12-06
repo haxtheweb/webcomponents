@@ -84,7 +84,7 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
     return "a11y-media-loader";
   }
 
-  //get player-specifc properties
+  //get player-specific behaviors
   static get behaviors() {
     return [A11yMediaBehaviors];
   }
@@ -146,15 +146,6 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
       root.$.video !== undefined && !root.audioOnly
         ? root.$.video
         : root.$.audio;
-    /*
-    //handles multibitrate manifests
-    console.log('manifest null?',this.manifest);
-    if(this.manifest !== null){
-      var dash = dashjs.MediaPlayer().create();
-      
-      console.log('manifest',this.manifest);
-      dash.initialize(root.$.video, this.manifest, true);
-    }*/
   }
 
   /**
@@ -167,7 +158,7 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
     root.volume = root.muted ? 0 : Math.max(this.volume, 10);
     root.seekable = root.media.seekable;
     root.setVolume(root.volume);
-    root.setMute(root.muted, root.volume);
+    root.setMute(root.muted);
     root.setCC(root.cc);
     root.setLoop(root.loop);
     root.setPlaybackRate(root.playbackRate);
@@ -188,13 +179,31 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
 
   /**
    * gets the current time
+   *
+   * @returns {float} the elapsed time, in seconds
    */
   getCurrentTime() {
     return this.media.currentTime;
   }
 
   /**
+   * plays the media
+   */
+  play() {
+    this.media.play();
+  }
+
+  /**
+   * pauses the media
+   */
+  pause() {
+    this.media.pause();
+  }
+
+  /**
    * selects a specific track by index
+   *
+   * @param {float} the index of the track
    */
   selectTrack(index) {
     this.selectedTrack = this.media.textTracks[index];
@@ -205,21 +214,6 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
         this.media.textTracks[i].mode = "hidden";
       }
     }
-  }
-
-  /**
-   * plays the media
-   */
-  play() {
-    console.log("loader play", this.media);
-    this.media.play();
-  }
-
-  /**
-   * pauses the media
-   */
-  pause() {
-    this.media.pause();
   }
 
   /**
@@ -247,9 +241,12 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
 
   /**
    * sets captions
+   *
+   * @param {boolean} Turn CC on? `true` is on; `false` or `null` is off.
+   *
    */
   setCC(mode) {
-    this.media.cc = mode;
+    this.media.cc = mode === true;
     if (this.selectedTrack !== undefined && mode == true) {
       this.selectedTrack.mode = "showing";
       this.$.video.textTracks.value = this.selectedTrackId;
@@ -264,6 +261,8 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
 
   /**
    * sets volume of media
+   *
+   * @param {integer} the volume level from 0-100
    */
   setVolume(value) {
     this.media.volume = value / 100;
@@ -271,29 +270,28 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
 
   /**
    * sets speed/playback rate of media
+   *
+   * @param {float} the playback rate, where 1 = 100%
    */
   setPlaybackRate(value) {
     this.media.playbackRate = value !== null ? value : 1;
   }
 
   /**
-   * sets autoplay
-   */
-  setAutoplay(mode) {
-    this.media.autoplay = mode;
-  }
-
-  /**
    * sets looping
+   *
+   * @param {boolean} Turn looping on? `true` is on; `false` or `null` is off.
    */
   setLoop(mode) {
-    this.media.loop = mode;
+    this.media.loop = mode === true;
   }
 
   /**
    * sets mute
+   *
+   * @param {boolean} Turn mute on? `true` is on; `false` or `null` is off.
    */
-  setMute(mode, value) {
+  setMute(mode) {
     this.media.muted = mode;
   }
 }

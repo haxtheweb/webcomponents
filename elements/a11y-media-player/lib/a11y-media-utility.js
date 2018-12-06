@@ -121,6 +121,8 @@ class A11yMediaUtility extends PolymerElement {
 
   /**
    * stops all other players on the page
+   *
+   * @param {object} the player to set stickiness
    */
   setStickyPlayer(player) {
     let root = this,
@@ -165,6 +167,8 @@ class A11yMediaUtility extends PolymerElement {
 
   /**
    * gets parent node in light DOM
+   *
+   * @param {object} the node
    */
   _getParentNode(node) {
     let parent = node.parentNode;

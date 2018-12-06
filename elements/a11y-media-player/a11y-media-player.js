@@ -129,10 +129,15 @@ export { A11yMediaPlayer };
  *
  */
 class A11yMediaPlayer extends A11yMediaPlayerProperties {
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
   static get tag() {
     return "a11y-media-player";
   }
 
+  // properties available to the custom element for data binding
   static get properties() {
     return {
       /**
@@ -169,6 +174,13 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
       }
     };
   }
+
+  //get player-specific behaviors
+  static get behaviors() {
+    return [A11yMediaPlayerProperties];
+  }
+
+  //render function
   static get template() {
     return html`
       <style is="custom-style" include="simple-colors">
@@ -691,10 +703,6 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
     `;
   }
 
-  static get behaviors() {
-    return [A11yMediaPlayerProperties];
-  }
-
   /**
    * life cycle, element is afixed to the DOM
    */
@@ -752,194 +760,10 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   }
 
   /**
-   * get label based on whether or not the video is playing
-   */
-  _getThumbnailCSS(thumbnailSrc) {
-    return thumbnailSrc != null
-      ? "background-image: url(" + thumbnailSrc + "); background-size: cover;"
-      : null;
-  }
-
-  /**
-   * handles the seek function when a transcript cue is activated
-   */
-  _handleCueSeek(e) {
-    let root = this;
-    if (
-      !root.standAlone &&
-      root.$.transcript !== undefined &&
-      root.$.transcript !== null
-    ) {
-      root.__resumePlaying = root.__playing;
-      root.seek(e.detail);
-    }
-  }
-
-  /**
-   * handles media metadata when media is loaded
-   */
-  _handleMediaLoaded(e) {
-    let root = this,
-      aspect = root.media.aspectRatio;
-    root.$.sources.style.paddingTop = 100 / aspect + "%";
-    root.$.playbutton.removeAttribute("disabled");
-
-    // gets and converts video duration
-    root.__duration = root.media.duration > 0 ? root.media.duration : 0;
-    root.__status =
-      root._getHHMMSS(0, root.media.duration) +
-      "/" +
-      root._getHHMMSS(root.media.duration);
-    root.$.controls.setStatus(root.__status);
-    root._getTrackData(root.$.loader.media);
-  }
-
-  /**
-   * handles transcript printing
-   */
-  _handlePrinting(e) {
-    let root = this;
-    root.dispatchEvent(
-      new CustomEvent("printing-transcript", { detail: root })
-    );
-    root.$.transcript.print(root.mediaTitle);
-  }
-
-  /**
-   * sets search the simple-search element
-   */
-  _handleSearchAdded(e) {
-    this.search = e.detail;
-  }
-  /**
-   * handles duration slider dragging with a mouse
-   */
-  _handleSliderDragging(e) {
-    let root = this;
-    root._toggleSliderSeek(
-      root.$.slider.dragging,
-      root.$.slider.immediateValue
-    );
-  }
-
-  /**
-   * handles duration slider dragging with a keyboard
-   */
-  _handleSliderKeyboard(e) {
-    let root = this;
-    root._toggleSliderSeek(root.$.slider.focused, root.$.slider.value);
-  }
-
-  /**
-   * handles transcript scroll toggle
-   */
-  _handleTranscriptScrollToggle(e) {
-    this.disableScroll = !this.disableScroll;
-  }
-
-  /**
-   * hide the sources section?
-   */
-
-  _hideSources(noHeight, hasCaptions) {
-    return noHeight && !hasCaptions;
-  }
-
-  /**
-   * handles slider seeking via mouse or keyboard
-   */
-  _toggleSliderSeek(seeking, value) {
-    if (seeking) {
-      if (this.__playing) this.__resumePlaying = true;
-      this.pause();
-    } else {
-      this.seek(value);
-      this.__resumePlaying = false;
-    }
-  }
-
-  /**
-   * gets YouTube iframe
-   */
-  _youTubeRequest() {
-    let root = this,
-      ytUtil = window.A11yMediaYoutubeUtility.instance;
-    console.log("_youTubeRequest", root.youtubeId);
-    if (root.__playerAttached && root.__playerReady) {
-      let ytInit = function() {
-          root.media = ytUtil.initYoutubePlayer({
-            width: "100%",
-            height: "100%",
-            videoId: root.youtubeId
-          });
-          root.$.youtube.appendChild(root.media.a);
-          root._getTrackData(root.$.loader.media);
-          root._updateCustomTracks();
-          // youtube API doesn't immediately give length of a video
-          let int = setInterval(() => {
-            if (root.media.getDuration !== undefined) {
-              clearInterval(int);
-              root.__duration = root.media.duration = root.media.getDuration();
-              root.__status =
-                root._getHHMMSS(0, root.media.duration) +
-                "/" +
-                root._getHHMMSS(root.media.duration);
-              root.$.controls.setStatus(root.__status);
-              root.disableInteractive = !root.__interactive;
-            }
-          }, 100);
-        },
-        checkApi = function(e) {
-          if (ytUtil.apiReady) {
-            document.removeEventListener("youtube-api-ready", checkApi);
-            ytInit();
-          }
-        };
-      if (ytUtil.apiReady) {
-        ytInit();
-      } else {
-        document.addEventListener("youtube-api-ready", checkApi);
-      }
-    }
-  }
-
-  /**
-   * updates custom tracks for youTube
-   */
-  _updateCustomTracks() {
-    if (this._hasCustomCaptions(this.isYoutube, this.audioOnly, this.tracks)) {
-      let root = this,
-        track = root.tracks[this.$.transcript.selectedTranscript],
-        active = [],
-        caption = "";
-      if (
-        track !== undefined &&
-        track !== null &&
-        track.cues !== undefined &&
-        track.cues !== null
-      ) {
-        for (let i = 0; i < track.cues.length; i++) {
-          if (
-            track.cues[i].seek < root.__elapsed &&
-            track.cues[i].seekEnd > root.__elapsed
-          ) {
-            active.push(track.cues[i].order);
-            caption = caption === "" ? track.cues[i].text : caption;
-          }
-        }
-        root.$.customcctxt.innerText = caption;
-        root.$.audiocc.innerText = caption;
-        root.$.transcript.setActiveCues(active);
-      }
-    }
-  }
-
-  /**
    * plays the media
    */
   play(e) {
     let root = this;
-    console.log("play", e, root.audioOnly, root.media);
     root.__playing = true;
     if (e === undefined || e.detail === root.$.playbutton) {
       // while playing, update the slider and length
@@ -999,6 +823,8 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
 
   /**
    * seeks media backward at a set increment
+   *
+   * @param {float} the elepsed time, in seconds
    */
   rewind(amt) {
     amt = amt !== undefined ? amt : 1;
@@ -1007,6 +833,8 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
 
   /**
    * seeks media forward at a set increment
+   *
+   * @param {float} the elepsed time, in seconds
    */
   forward(amt) {
     amt = amt !== undefined ? amt : 1;
@@ -1015,6 +843,8 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
 
   /**
    * seeks to a specific time
+   *
+   * @param {float} the time, in seconds, to seek
    */
   seek(time) {
     let seekable =
@@ -1039,16 +869,19 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   }
 
   /**
-   * toggles captions:
-   * toggleCC(true) to check the toggle, toggleCC(false) for unchecking, and toggleCC to toggle
+   * selects a specific track by index
+   *
+   * @param {integer} the index of the track
    */
-  toggleCC(mode) {
-    this.cc = mode === undefined ? !this.cc : mode;
-    this.$.loader.setCC(this.cc);
+  selectTrack(index) {
+    this.$.loader.selectTrack(index);
+    this.$.transcript.setActiveTranscript(index);
   }
 
   /**
    * set volume of media
+   *
+   * @param {integer} the volume level from 0-100
    */
   setVolume(value) {
     this.volume = value !== null ? value : 70;
@@ -1058,6 +891,8 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
 
   /**
    * set speed/playback rate of media
+   *
+   * @param {float} the playback rate, where 1 = 100%
    */
   setPlaybackRate(value) {
     value = value !== null ? value : 1;
@@ -1065,24 +900,19 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   }
 
   /**
-   * toggles autoplay:
-   * toggleAutoplay(true) to check the toggle,
-   * toggleAutoplay(false) for unchecking, and
-   * toggleAutoplay to toggle
+   * toggles captions
+   *
+   * @param {boolean} Toggle CC on? `true` is on, `false` is off, and `null` toggles based on current state.
    */
-  toggleAutoplay(mode) {
-    if (this.isYoutube) {
-    } else {
-      this.autoplay = mode === undefined ? !this.muted : mode;
-      this.media.setAutoplay(this.autoplay);
-    }
+  toggleCC(mode) {
+    this.cc = mode === undefined ? !this.cc : mode;
+    this.$.loader.setCC(this.cc);
   }
 
   /**
-   * toggles looping:
-   * toggleLoop(true) to check the toggle,
-   * toggleLoop(false) for unchecking,
-   * and toggleLoop to toggle
+   * toggles looping
+   *
+   * @param {boolean} Toggle looping on? `true` is on, `false` is off, and `null` toggles based on current state.
    */
   toggleLoop(mode) {
     if (this.isYoutube) {
@@ -1093,10 +923,9 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   }
 
   /**
-   * toggles mute:
-   * toggleMute(true) to check the toggle,
-   * toggleMute(false) for unchecking, and
-   * toggleMute to toggle
+   * toggles mute
+   *
+   * @param {boolean} Toggle mute on? `true` is on, `false` is off, and `null` toggles based on current state.
    */
   toggleMute(mode) {
     this.muted = mode === undefined ? !this.muted : mode;
@@ -1105,8 +934,9 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   }
 
   /**
-   * toggles sticky attribute:
-   * toggleSticky(true) to stick, toggleSticky(false) for unstick, and toggleSticky to toggle sticky
+   * toggles sticky attribute
+   *
+   * @param {boolean} Toggle sticky mode on? `true` is on, `false` is off, and `null` toggles based on current state.
    */
   toggleSticky(mode) {
     mode = mode === undefined ? !this.sticky : mode;
@@ -1115,8 +945,9 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   }
 
   /**
-   * toggles transcript:
-   * toggleTranscript(true) to check the toggle, toggleTranscript(false) for unchecking, and toggleTranscript to toggle
+   * toggles transcript
+   *
+   * @param {boolean} Toggle transcript on? `true` is on, `false` is off, and `null` toggles based on current state.
    */
   toggleTranscript(mode) {
     mode = mode === undefined ? this.hideTranscript : mode;
@@ -1130,15 +961,12 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   }
 
   /**
-   * selects a specific track by index
-   */
-  selectTrack(index) {
-    this.$.loader.selectTrack(index);
-    this.$.transcript.setActiveTranscript(index);
-  }
-
-  /**
    * gets media caption
+   *
+   * @param {boolean} Is the player set to audio-only?
+   * @param {string} the text that indicates this player is audio-only
+   * @param {string} the title of the media
+   * @returns {string} the media caption
    */
   _getMediaCaption(audioOnly, audioLabel, mediaTitle) {
     let hasMediaTitle =
@@ -1156,6 +984,12 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
 
   /**
    * gets print caption
+   *
+   * @param {boolean} Is the player set to audio-only?
+   * @param {string} the text that indicates this player is audio-only
+   * @param {string} the text that indicates this player is for video
+   * @param {string} the title of the media
+   * @returns {string} the media caption when the page is printed
    */
   _getPrintCaption(audioOnly, audioLabel, videoLabel, mediaTitle) {
     let hasMediaTitle =
@@ -1169,6 +1003,18 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
     } else {
       return videoLabel;
     }
+  }
+
+  /**
+   * get label based on whether or not the video is playing
+   *
+   * @param {string} the url for the thumbnail image
+   * @returns {string} the string for the style attribute
+   */
+  _getThumbnailCSS(thumbnailSrc) {
+    return thumbnailSrc != null
+      ? "background-image: url(" + thumbnailSrc + "); background-size: cover;"
+      : null;
   }
 
   /**
@@ -1255,6 +1101,83 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   }
 
   /**
+   * handles the seek function when a transcript cue is activated
+   */
+  _handleCueSeek(e) {
+    let root = this;
+    if (
+      !root.standAlone &&
+      root.$.transcript !== undefined &&
+      root.$.transcript !== null
+    ) {
+      root.__resumePlaying = root.__playing;
+      root.seek(e.detail);
+    }
+  }
+
+  /**
+   * handles media metadata when media is loaded
+   */
+  _handleMediaLoaded(e) {
+    let root = this,
+      aspect = root.media.aspectRatio;
+    root.$.sources.style.paddingTop = 100 / aspect + "%";
+    root.$.playbutton.removeAttribute("disabled");
+
+    // gets and converts video duration
+    root.__duration = root.media.duration > 0 ? root.media.duration : 0;
+    root.__status =
+      root._getHHMMSS(0, root.media.duration) +
+      "/" +
+      root._getHHMMSS(root.media.duration);
+    root.$.controls.setStatus(root.__status);
+    root._getTrackData(root.$.loader.media);
+  }
+
+  /**
+   * handles transcript printing
+   */
+  _handlePrinting(e) {
+    let root = this;
+    root.dispatchEvent(
+      new CustomEvent("printing-transcript", { detail: root })
+    );
+    root.$.transcript.print(root.mediaTitle);
+  }
+
+  /**
+   * sets search the simple-search element
+   */
+  _handleSearchAdded(e) {
+    this.search = e.detail;
+  }
+  /**
+   * handles duration slider dragging with a mouse
+   */
+  _handleSliderDragging(e) {
+    let root = this;
+    root._toggleSliderSeek(
+      root.$.slider.dragging,
+      root.$.slider.immediateValue
+    );
+  }
+
+  /**
+   * handles duration slider dragging with a keyboard
+   */
+  _handleSliderKeyboard(e) {
+    let root = this;
+    root._toggleSliderSeek(root.$.slider.focused, root.$.slider.value);
+  }
+
+  /**
+   * handles transcript scroll toggle
+   */
+  _handleTranscriptScrollToggle(e) {
+    this.disableScroll = !this.disableScroll;
+  }
+
+  /**
    * determine which button was clicked and act accordingly
    */
   _onControlsChanged(e) {
@@ -1308,6 +1231,99 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
       root.setPlaybackRate(e.detail.value);
     } else if (action === "volume" || action === root.volumeLabel) {
       root.setVolume(e.detail.value);
+    }
+  }
+
+  /**
+   * handles slider seeking via mouse or keyboard
+   *
+   * @param {boolean} Is the slider currently being used to seek?
+   * @param {number} the value of the slider
+   */
+  _toggleSliderSeek(seeking, value) {
+    if (seeking) {
+      if (this.__playing) this.__resumePlaying = true;
+      this.pause();
+    } else {
+      this.seek(value);
+      this.__resumePlaying = false;
+    }
+  }
+
+  /**
+   * gets YouTube iframe
+   */
+  _youTubeRequest() {
+    let root = this,
+      ytUtil = window.A11yMediaYoutubeUtility.instance;
+    if (root.__playerAttached && root.__playerReady) {
+      let ytInit = function() {
+          // initialize the YouTube player
+          root.media = ytUtil.initYoutubePlayer({
+            width: "100%",
+            height: "100%",
+            videoId: root.youtubeId
+          });
+          // move the YouTube iframe to the media player's YouTube container
+          root.$.youtube.appendChild(root.media.a);
+          root._getTrackData(root.$.loader.media);
+          root._updateCustomTracks();
+          // youtube API doesn't immediately give length of a video
+          let int = setInterval(() => {
+            if (root.media.getDuration !== undefined) {
+              clearInterval(int);
+              root.__duration = root.media.duration = root.media.getDuration();
+              root.__status =
+                root._getHHMMSS(0, root.media.duration) +
+                "/" +
+                root._getHHMMSS(root.media.duration);
+              root.$.controls.setStatus(root.__status);
+              root.disableInteractive = !root.__interactive;
+            }
+          }, 100);
+        },
+        checkApi = function(e) {
+          if (ytUtil.apiReady) {
+            document.removeEventListener("youtube-api-ready", checkApi);
+            ytInit();
+          }
+        };
+      if (ytUtil.apiReady) {
+        ytInit();
+      } else {
+        document.addEventListener("youtube-api-ready", checkApi);
+      }
+    }
+  }
+
+  /**
+   * updates custom tracks for youTube
+   */
+  _updateCustomTracks() {
+    if (this._hasCustomCaptions(this.isYoutube, this.audioOnly, this.tracks)) {
+      let root = this,
+        track = root.tracks[this.$.transcript.selectedTranscript],
+        active = [],
+        caption = "";
+      if (
+        track !== undefined &&
+        track !== null &&
+        track.cues !== undefined &&
+        track.cues !== null
+      ) {
+        for (let i = 0; i < track.cues.length; i++) {
+          if (
+            track.cues[i].seek < root.__elapsed &&
+            track.cues[i].seekEnd > root.__elapsed
+          ) {
+            active.push(track.cues[i].order);
+            caption = caption === "" ? track.cues[i].text : caption;
+          }
+        }
+        root.$.customcctxt.innerText = caption;
+        root.$.audiocc.innerText = caption;
+        root.$.transcript.setActiveCues(active);
+      }
     }
   }
 }

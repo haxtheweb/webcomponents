@@ -159,6 +159,7 @@ class A11yMediaBehaviors extends SimpleColors {
   static get behaviors() {
     return [SimpleColors, ResponsiveUtility];
   }
+
   /**
    * life cycle, element is afixed to the DOM
    */
@@ -168,13 +169,20 @@ class A11yMediaBehaviors extends SimpleColors {
 
   /**
    * returns true if an attribute is not null
+   *
+   * @param {object} the attribute to check
+   * @returns {boolean} attr !== undefined && attr !== null
    */
-
   _hasAttribute(attr) {
     return attr !== undefined && attr !== null;
   }
+
   /**
    * returns true if an attribute is set to a value
+   *
+   * @param {object} the attribute to check
+   * @param {object} the value to check
+   * @returns {boolean} attr === val
    */
 
   _testAttribute(attr, val) {
@@ -183,25 +191,33 @@ class A11yMediaBehaviors extends SimpleColors {
 
   /**
    * calls responsive-utility to get parent's responsive size
+   *
+   * @param {object} a set of responsive for options, eg: `{element: root, attribute: "responsive-size", relativeToParent: true}`
    */
-  _addResponsiveUtility(data) {
-    let root = this,
-      options =
-        data !== undefined
-          ? data
-          : {
-              element: root,
-              attribute: "responsive-size",
-              relativeToParent: true
-            };
+  _addResponsiveUtility(options) {
+    let root = this;
     window.ResponsiveUtility.requestAvailability();
     window.dispatchEvent(
-      new CustomEvent("responsive-element", { detail: options })
+      new CustomEvent("responsive-element", {
+        detail:
+          options !== undefined
+            ? options
+            : {
+                element: root,
+                attribute: "responsive-size",
+                relativeToParent: true
+              }
+      })
     );
   }
 
   /**
    * converts time in millesconds to HH:MM:SS
+   *
+   * @param {float} the elapsed time, in seconds
+   * @param {float} the duration, in seconds
+   * @returns {string} a human-readable string of elapsed time/duration in HH:MM:SS
+   *
    */
   _getHHMMSS(val, max) {
     max = max === undefined ? val : max;
@@ -217,19 +233,6 @@ class A11yMediaBehaviors extends SimpleColors {
     return (
       b(val, 3600, "") + b(val % 3600, 60, "00:") + a(Math.round(val % 60))
     );
-  }
-
-  /**
-   * converts time in millesconds to HH:MM:SS
-   */
-  _getSeconds(val) {
-    let total = 0,
-      units = val.split(":").reverse();
-    total = units[0] !== undefined && units[0] !== null ? units[0] / 1000 : 0; //ms
-    total += units[1] !== undefined && units[1] !== null ? units[1] : 0; //ss
-    total += units[2] !== undefined && units[2] !== null ? units[2] * 60 : 0; //mm
-    total += units[3] !== undefined && units[3] !== null ? units[3] * 3600 : 0; //hh
-    return total;
   }
 }
 window.customElements.define(A11yMediaBehaviors.tag, A11yMediaBehaviors);

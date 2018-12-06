@@ -235,6 +235,10 @@ class A11yMediaPlayButton extends A11yMediaPlayerProperties {
 
   /**
    * get label based on whether or not the video is playing
+   *
+   * @param {boolean} Is the media playing?
+   * @param {string} label if button pauses media
+   * @param {string} label if button plays media
    */
   _getPlaying(playing, pauseLabel, playLabel) {
     return playing ? pauseLabel : playLabel;
