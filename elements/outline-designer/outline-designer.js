@@ -466,9 +466,7 @@ class OutlineDesigner extends PolymerElement {
                     </div>
                     <div class="card-actions high-detail">
                       <ul>
-                        <iron-swipeable-container
-                          width-ratio="1"
-                          swipe-style="curve"
+                        <iron-swipeable-container swipe-style="curve"
                           ><li>Page 1</li></iron-swipeable-container
                         >
                         <iron-swipeable-container swipe-style="curve"
