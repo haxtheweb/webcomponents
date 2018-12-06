@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "`haxcms-elements`\n`Automated conversion of haxcms-elements/`",
+      "description": "`haxcms-elements`\n`HAX CMS series of elements to provide a full on CMS`",
       "summary": "",
       "path": "haxcms-elements.js",
       "properties": [

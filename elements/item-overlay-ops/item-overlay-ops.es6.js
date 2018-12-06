@@ -19,6 +19,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         background-color: var(--item-overlay-ops, #999999);
         position: absolute;
         z-index: 1;
+        @apply --item-overlay-ops-container;
       }
       :host([edit-mode]) #container:hover,
       :host([edit-mode]) #container:focus,
@@ -36,11 +37,18 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
       .ops paper-icon-button {
         display: inline-flex;
-        width: 30px;
-        height: 30px;
-        padding: 2px;
-        margin: 5px 8px;
+        width: 26px;
+        height: 26px;
+        padding: 1px;
+        margin: 6px;
         color: #999999;
+      }
+      .ops paper-icon-button#cancel {
+        width: 16px;
+        height: 16px;
+        padding: 0px;
+        margin: 4px;
+        position: absolute;
       }
       .ops paper-icon-button.active {
         color: #000000;
@@ -145,6 +153,13 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
           hidden\$="[[!duplicate]]"
           title="Duplicate this"
         ></paper-icon-button>
+        <paper-icon-button
+          on-tap="_opTap"
+          icon="icons:cancel"
+          id="cancel"
+          hidden\$="[[!__anyOp]]"
+          title="Cancel"
+        ></paper-icon-button>
       </div>
       <div class="active-op">[[activeTitle]]</div>
       <div id="workingarea" class\$="[[activeOp]]">
@@ -163,4 +178,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       </div>
     </div>
     <slot></slot>
-  `,is:"item-overlay-ops",listeners:{focusin:"_inFocus",focusout:"_outFocus"},hostAttributes:{tabindex:"0"},properties:{editMode:{type:Boolean,reflectToAttribute:!0,value:!1},focused:{type:Boolean,reflectToAttribute:!0,value:!1},activeTitle:{type:String},activeOp:{type:String},add:{type:Boolean,value:!1},edit:{type:Boolean,value:!1},move:{type:Boolean,value:!1},remove:{type:Boolean,value:!1},duplicate:{type:Boolean,value:!1}},attached:function(){setTimeout(()=>{let rect=this.getBoundingClientRect();this.$.container.style.width=rect.width+"px";this.$.container.style.height=rect.height+"px";this.$.workingarea.style.height=rect.height-80+"px"},1);window.addEventListener("resize",this._windowResize.bind(this))},detached:function(){window.removeEventListener("resize",this._windowResize.bind(this))},_windowResize:function(e){let rect=this.getBoundingClientRect();this.$.container.style.width=rect.width+"px";this.$.container.style.height=rect.height+"px";this.$.workingarea.style.height=rect.height-80+"px"},_opTap:function(e){let normalizedEvent=dom(e),local=normalizedEvent.localTarget;this.activeTitle=local.getAttribute("id");this.activeOp=local.getAttribute("id");this._resetActive();local.classList.add("active");switch(this.activeOp){case"remove":this.__option1Icon="icons:check";this.__option1Text="Confirm deleting this";this.__option2Icon="icons:clear";this.__option2Text="Cancel";break;case"duplicate":this.__option1Icon="icons:check";this.__option1Text="Confirm duplicating this";this.__option2Icon="icons:clear";this.__option2Text="Cancel";break;case"move":this.__option1Icon="icons:arrow-back";this.__option1Text="Move item left";this.__option2Icon="icons:arrow-forward";this.__option2Text="Move item right";break;}let op={element:this,operation:this.activeOp};this.fire("item-overlay-op-changed",op)},_inFocus:function(e){if(this.editMode){this.focused=!0}},_outFocus:function(e){if(this.editMode){this.focused=!1}},_optionSelected:function(e){let normalizedEvent=dom(e),local=normalizedEvent.localTarget,ops={element:this,operation:this.activeOp,option:local.getAttribute("id")};this.fire("item-overlay-option-selected",ops);if("move"!=this.activeOp){this._resetActive();this.activeOp=null}},_resetActive:function(){this.$.add.classList.remove("active");this.$.edit.classList.remove("active");this.$.move.classList.remove("active");this.$.remove.classList.remove("active");this.$.duplicate.classList.remove("active")}});export{ItemOverlayOps};
+  `,is:"item-overlay-ops",listeners:{focusin:"_inFocus",focusout:"_outFocus"},hostAttributes:{tabindex:"0"},properties:{editMode:{type:Boolean,reflectToAttribute:!0,value:!1},focused:{type:Boolean,reflectToAttribute:!0,value:!1},activeTitle:{type:String},activeOp:{type:String},add:{type:Boolean,value:!1},edit:{type:Boolean,value:!1},move:{type:Boolean,value:!1},fixedHeight:{type:Number,observer:"fixedHeightChanged"},disableAutoHeight:{type:Boolean,value:!1},remove:{type:Boolean,value:!1},duplicate:{type:Boolean,value:!1},__anyOp:{type:Boolean,value:!1}},attached:function(){setTimeout(()=>{this._windowResize()},5);window.addEventListener("resize",this._windowResize.bind(this))},detached:function(){window.removeEventListener("resize",this._windowResize.bind(this))},fixedHeightChanged:function(newValue,oldValue){if(newValue){if(!this.disableAutoHeight){this.$.container.style.height=this.fixedHeight+"px";this.$.workingarea.style.height=this.fixedHeight-80+"px"}}},_windowResize:function(e){let rect=this.getBoundingClientRect();this.$.container.style.width=rect.width+"px";if(!this.disableAutoHeight){if(!this.fixedHeight||typeof this.fixedHeight===typeof void 0){this.$.container.style.height=rect.height+"px";this.$.workingarea.style.height=rect.height-80+"px"}else{this.$.container.style.height=this.fixedHeight+"px";this.$.workingarea.style.height=this.fixedHeight-80+"px"}}else{this.$.workingarea.style.height=rect.height-80+"px"}},_opTap:function(e){let normalizedEvent=dom(e),local=normalizedEvent.localTarget;this.activeTitle=local.getAttribute("id");this.activeOp=local.getAttribute("id");this._resetActive();this.__anyOp=!0;local.classList.add("active");switch(this.activeOp){case"cancel":local.classList.remove("active");this.activeTitle=null;this.activeOp=null;this.__anyOp=!1;break;case"remove":this.__option1Icon="icons:check";this.__option1Text="Confirm deleting this";this.__option2Icon="icons:clear";this.__option2Text="Cancel";break;case"duplicate":this.__option1Icon="icons:check";this.__option1Text="Confirm duplicating this";this.__option2Icon="icons:clear";this.__option2Text="Cancel";break;case"move":this.__option1Icon="icons:arrow-back";this.__option1Text="Move item left";this.__option2Icon="icons:arrow-forward";this.__option2Text="Move item right";break;}let op={element:this,operation:this.activeOp};this.fire("item-overlay-op-changed",op)},_inFocus:function(e){if(this.editMode){this.focused=!0}},_outFocus:function(e){if(this.editMode){this.focused=!1}},_optionSelected:function(e){let normalizedEvent=dom(e),local=normalizedEvent.localTarget,ops={element:this,operation:this.activeOp,option:local.getAttribute("id")};this.fire("item-overlay-option-selected",ops);if("move"!=this.activeOp){this._resetActive();this.activeOp=null}},_resetActive:function(){this.$.add.classList.remove("active");this.$.edit.classList.remove("active");this.$.move.classList.remove("active");this.$.remove.classList.remove("active");this.$.duplicate.classList.remove("active")}});export{ItemOverlayOps};
