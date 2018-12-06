@@ -1,0 +1,10 @@
+diff a/elements/wysiwyg-hax/wysiwyg-hax.js b/elements/wysiwyg-hax/wysiwyg-hax.js	(rejected hunks)
+@@ -15,3 +15,5 @@ let WysiwygHax = Polymer({
+-    <textarea id\$="[[fieldId]]" name="[[fieldName]]" hidden="">
+-[[bodyValue]]</textarea
+-    >
++    <textarea
++      id\$="[[fieldId]]"
++      name="[[fieldName]]"
++      hidden=""
++    >[[bodyValue]]</textarea>

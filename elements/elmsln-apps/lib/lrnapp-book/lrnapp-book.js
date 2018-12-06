@@ -526,14 +526,16 @@ Polymer({
                 ></lrnsys-progress>
               </div>
             </div>
-            <!-- <div class="your-progress-button">
-              <lrnsys-dialog body-append modal on-tap="progressdashboardopen" header="Your progress" alt="Your progress">
-                <span slot="button"><iron-icon icon="av:equalizer"></iron-icon></span>
-                <div>
-                  <lrnapp-book-progress-dashboard id="progressdashboard" source-path="[[progressDashboardPath]]" route-data="[[data]]"></lrnapp-book-progress-dashboard>
-                </div>
-              </lrnsys-dialog>
-            </div> -->
+            <!--
+              <div class="your-progress-button">
+                <lrnsys-dialog body-append modal on-tap="progressdashboardopen" header="Your progress" alt="Your progress">
+                  <span slot="button"><iron-icon icon="av:equalizer"></iron-icon></span>
+                  <div>
+                    <lrnapp-book-progress-dashboard id="progressdashboard" source-path="[[progressDashboardPath]]" route-data="[[data]]"></lrnapp-book-progress-dashboard>
+                  </div>
+                </lrnsys-dialog>
+              </div>
+            -->
           </app-toolbar>
         </app-header>
         <div class="content-body">

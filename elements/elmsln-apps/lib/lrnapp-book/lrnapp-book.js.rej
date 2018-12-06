@@ -1,0 +1,20 @@
+diff a/elements/elmsln-apps/lib/lrnapp-book/lrnapp-book.js b/elements/elmsln-apps/lib/lrnapp-book/lrnapp-book.js	(rejected hunks)
+@@ -529,8 +529,10 @@ Polymer({
+-            <!-- <div class="your-progress-button">
+-              <lrnsys-dialog body-append modal on-tap="progressdashboardopen" header="Your progress" alt="Your progress">
+-                <span slot="button"><iron-icon icon="av:equalizer"></iron-icon></span>
+-                <div>
+-                  <lrnapp-book-progress-dashboard id="progressdashboard" source-path="[[progressDashboardPath]]" route-data="[[data]]"></lrnapp-book-progress-dashboard>
+-                </div>
+-              </lrnsys-dialog>
+-            </div> -->
++            <!--
++              <div class="your-progress-button">
++                <lrnsys-dialog body-append modal on-tap="progressdashboardopen" header="Your progress" alt="Your progress">
++                  <span slot="button"><iron-icon icon="av:equalizer"></iron-icon></span>
++                  <div>
++                    <lrnapp-book-progress-dashboard id="progressdashboard" source-path="[[progressDashboardPath]]" route-data="[[data]]"></lrnapp-book-progress-dashboard>
++                  </div>
++                </lrnsys-dialog>
++              </div>
++            -->

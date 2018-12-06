@@ -12,9 +12,11 @@ let WysiwygHax = Polymer({
         display: block;
       }
     </style>
-    <textarea id\$="[[fieldId]]" name="[[fieldName]]" hidden="">
-[[bodyValue]]</textarea
-    >
+    <textarea
+      id\$="[[fieldId]]"
+      name="[[fieldName]]"
+      hidden=""
+    >[[bodyValue]]</textarea>
     <cms-hax
       open-default="[[openDefault]]"
       hide-message=""
