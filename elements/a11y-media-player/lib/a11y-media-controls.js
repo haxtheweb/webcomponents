@@ -302,8 +302,8 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
         <a11y-media-button
           class="transcript"
           controls="transcript"
-          hidden$="[[compactControls]]"
-          disabled$="[[compactControls]]"
+          hidden$="[[_showTranscriptButton(compactControls,standAlone)]]"
+          disabled$="[[_showTranscriptButton(compactControls,standAlone)]]"
           icon="[[transcriptIcon]]"
           label="[[transcriptLabel]]"
           on-tap="_onButtonTap"
@@ -544,6 +544,12 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
     this.dispatchEvent(
       new CustomEvent("controls-change", { detail: e.target })
     );
+  }
+  /**
+   * determine which button was clicked and act accordingly
+   */
+  _showTranscriptButton(compactControls, standAlone) {
+    return compactControls || standAlone;
   }
 }
 window.customElements.define(A11yMediaControls.tag, A11yMediaControls);

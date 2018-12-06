@@ -93,6 +93,9 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
   static get template() {
     return html`
       <style>
+        :host {
+          height: 100%;
+        }
         #video {
           width: 100%;
           max-width: 100%;

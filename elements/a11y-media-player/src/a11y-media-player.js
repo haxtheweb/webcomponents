@@ -654,6 +654,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
             on-print-transcript="_handlePrinting"
             print-icon$="[[printIcon]]"
             print-label$="[[printLabel]]"
+            stand-alone$="[[standAlone]]"
             search-label$="[[searchLabel]]"
             search-prev-label$="[[searchPrevLabel]]"
             search-prev-icon$="[[searchPrevIcon]]"
@@ -720,14 +721,14 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
     root.width = root.width !== null ? root.width : "100%";
     root.style.maxWidth = root.width !== null ? root.width : "100%";
     root.$.sources.style.paddingTop = 100 / aspect + "%";
+    root.querySelectorAll("source,track").forEach(function(node) {
+      root.$.loader.media.appendChild(node);
+    });
     if (this.isYoutube) {
       root.disableInteractive = true;
       this._youTubeRequest();
     } else {
       root.media = root.$.loader;
-      root.querySelectorAll("source,track").forEach(function(node) {
-        root.media.media.appendChild(node);
-      });
     }
     root.$.transcript.setMedia(root.$.player);
 
