@@ -225,26 +225,54 @@ class A11yMediaTranscript extends A11yMediaPlayerProperties {
    */
   print(mediaTitle) {
     let root = this,
-      track = root.shadowRoot.querySelector("#inner[active]"),
-      css =
-        "a11y-media-transcript-cue{display:table-row;background-color:#fff;color:#000}a11y-media-transcript-cue[hide-timestamps],a11y-media-transcript-cue[hide-timestamps] #text{display:inline}a11y-media-transcript-cue #text{display:table-cell;line-height:200%}a11y-media-transcript-cue #time{display:table-cell;font-size:80%;padding:0 16px;white-space:nowrap;font-family:monospace}a11y-media-transcript-cue[hide-timestamps] #time{display:none}a11y-media-transcript-cue [matched]{background-color:#fff;color:#eee;padding:.16px 4px;border-radius:.16px}";
-    mediaTitle = mediaTitle !== undefined ? mediaTitle : "Transcript";
+      track = root.shadowRoot.querySelector("#inner[active]").cloneNode(true),
+      css = html`
+        <style>
+          a11y-media-transcript-cue {
+            display: table-row;
+            background-color: #fff;
+            color: #000;
+          }
+          a11y-media-transcript-cue[hide-timestamps],
+          a11y-media-transcript-cue[hide-timestamps] #text {
+            display: inline;
+          }
+          a11y-media-transcript-cue #text {
+            display: table-cell;
+            line-height: 200%;
+          }
+          a11y-media-transcript-cue #time {
+            display: table-cell;
+            font-size: 80%;
+            padding: 0 16px;
+            white-space: nowrap;
+            font-family: monospace;
+          }
+          a11y-media-transcript-cue[hide-timestamps] #time {
+            display: none;
+          }
+          a11y-media-transcript-cue [matched] {
+            background-color: #fff;
+            color: #eee;
+            padding: 3px 4px;
+            border-radius: 3px;
+          }
+        </style>
+      `,
+      h1 = html`
+        <h1>Transcript</h1>
+      `;
+    if (mediaTitle !== undefined) h1.innerHTML = mediaTitle;
     if ((track !== null) & (track !== undefined)) {
       //From https://stackoverflow.com/questions/1071962/how-do-i-print-part-of-a-rendered-html-page-in-javascript#answer-1072151
       let print = window.open(
-          "",
-          "",
-          "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status =0"
-        ),
-        node = dom(root).node;
-      print.document.write(
-        "<style>" +
-          css +
-          "</style><h1>" +
-          mediaTitle +
-          "</h1>" +
-          track.innerHTML
+        "",
+        "",
+        "left=0,top=0,width=552,height=477,toolbar=0,scrollbars=0,status =0"
       );
+      print.document.body.appendChild(css);
+      print.document.body.appendChild(h1);
+      print.document.body.appendChild(track);
       print.document.close();
       print.focus();
       print.print();

@@ -241,11 +241,11 @@ class A11yMediaPlayerProperties extends A11yMediaBehaviors {
         value: "Loop Playback"
       },
       /**
-       * show cue's start and end time
+       * the media to be manipulated
        */
       media: {
         type: Object,
-        value: {}
+        value: null
       },
       /**
        * optional title of media (shows when printed)
@@ -494,24 +494,6 @@ class A11yMediaPlayerProperties extends A11yMediaBehaviors {
       standAlone: {
         type: Boolean,
         value: false,
-        reflectToAttribute: true
-      },
-      /**
-       * Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?
-       */
-      sticky: {
-        type: Boolean,
-        value: false,
-        reflectToAttribute: true
-      },
-      /**
-       * When playing but scrolled off screen, to which corner does it stick:
-       * top-left, top-right, bottom-left, bottom-right, or none?
-       * Default is "top-right". "None" disables stickiness.
-       */
-      stickyCorner: {
-        type: String,
-        value: "top-right",
         reflectToAttribute: true
       },
       /**

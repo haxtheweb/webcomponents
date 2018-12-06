@@ -199,15 +199,16 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
         :host #volume {
           z-index: 1;
           position: absolute;
-          left: 0px;
-          top: -8px;
+          left: 30px;
+          top: -5px;
           width: 0;
           overflow: hidden;
           transition: width 0.5s;
           z-index: 3;
-          background-color: var(--a11y-media-controls-bg-color);
+          background-color: var(--a11y-media-bg-color);
           --paper-slider-knob-end-color: var(--a11y-media-accent-color);
           --paper-slider-knob-end-border-color: var(--a11y-media-accent-color);
+
         }
         :host #volume:active,
         :host #volume:focus,

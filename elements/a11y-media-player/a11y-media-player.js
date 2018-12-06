@@ -135,13 +135,37 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
 
   static get properties() {
     return {
+      /**
+       * The default media caption if none is given.
+       */
       mediaCaption: {
         type: String,
         computed: "_getMediaCaption(audioOnly,audioLabel,mediaTitle)"
       },
+      /**
+       * The media caption that displays when the page is printed.
+       */
       printCaption: {
         type: String,
         computed: "_getPrintCaption(audioOnly,audioLabel,videoLabel,mediaTitle)"
+      },
+      /**
+       * Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?
+       */
+      sticky: {
+        type: Boolean,
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * When playing but scrolled off screen, to which corner does it stick:
+       * top-left, top-right, bottom-left, bottom-right, or none?
+       * Default is "top-right". "None" disables stickiness.
+       */
+      stickyCorner: {
+        type: String,
+        value: "top-right",
+        reflectToAttribute: true
       }
     };
   }
@@ -252,6 +276,16 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           --a11y-media-hover-color: var(--simple-colors-default-theme-grey-12);
           --a11y-media-hover-bg-color: var(
             --simple-colors-default-theme-grey-2
+          );
+        }
+        :host([dark-transcript]) #outertranscript,
+        :host([dark-transcript]) #outertranscript *,
+        :host([dark-transcript]) #transcript {
+          --a11y-media-transcript-active-cue-color: var(
+            --simple-colors-default-theme-accent-10
+          );
+          --a11y-media-transcript-active-cue-bg-color: var(
+            --simple-colors-default-theme-grey-1
           );
         }
         :host #player {
@@ -508,6 +542,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
               </a11y-media-play-button>
               <a11y-media-loader
                 id="loader"
+                audio-only$="[[audioOnly]]"
                 autoplay$="[[autoplay]]"
                 cc$="[[cc]]"
                 crossorigin$="[[crossorigin]]"
@@ -689,14 +724,10 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
       root.disableInteractive = true;
       this._youTubeRequest();
     } else {
+      root.media = root.$.loader;
       root.querySelectorAll("source,track").forEach(function(node) {
-        if (root.audioOnly) {
-          root.$.loader.$.audio.appendChild(node);
-        } else {
-          root.$.loader.$.video.appendChild(node);
-        }
+        root.media.media.appendChild(node);
       });
-      root.__media = root.$.loader;
     }
     root.$.transcript.setMedia(root.$.player);
 
@@ -737,16 +768,16 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
    */
   _handleMediaLoaded(e) {
     let root = this,
-      aspect = root.__media.aspectRatio;
+      aspect = root.media.aspectRatio;
     root.$.sources.style.paddingTop = 100 / aspect + "%";
     root.$.playbutton.removeAttribute("disabled");
 
     // gets and converts video duration
-    root.__duration = root.__media.duration > 0 ? root.__media.duration : 0;
+    root.__duration = root.media.duration > 0 ? root.media.duration : 0;
     root.__status =
-      root._getHHMMSS(0, root.__media.duration) +
+      root._getHHMMSS(0, root.media.duration) +
       "/" +
-      root._getHHMMSS(root.__media.duration);
+      root._getHHMMSS(root.media.duration);
     root.$.controls.setStatus(root.__status);
     root._getTrackData(root.$.loader.media);
   }
@@ -819,7 +850,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           videoId: root.youtubeId
         },
         ytInit = function() {
-          root.__media = window.A11yMediaYoutubeUtility.initYoutubePlayer(
+          root.media = window.A11yMediaYoutubeUtility.initYoutubePlayer(
             root.$.youtube,
             options
           );
@@ -827,13 +858,13 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           root._updateCustomTacks();
           // youtube API doesn't immediately give length of a video
           let int = setInterval(() => {
-            if (root.__media.getDuration !== undefined) {
+            if (root.media.getDuration !== undefined) {
               clearInterval(int);
-              root.__duration = root.__media.duration = root.__media.getDuration();
+              root.__duration = root.media.duration = root.media.getDuration();
               root.__status =
-                root._getHHMMSS(0, root.__media.duration) +
+                root._getHHMMSS(0, root.media.duration) +
                 "/" +
-                root._getHHMMSS(root.__media.duration);
+                root._getHHMMSS(root.media.duration);
               root.$.controls.setStatus(root.__status);
               root.disableInteractive = !root.__interactive;
             }
@@ -888,16 +919,17 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
    */
   play(e) {
     let root = this;
+    console.log("play", e, root.audioOnly, root.media);
     root.__playing = true;
     if (e === undefined || e.detail === root.$.playbutton) {
       // while playing, update the slider and length
       root.__playProgress = setInterval(() => {
         root.__elapsed =
-          root.__media.getCurrentTime() > 0 ? root.__media.getCurrentTime() : 0;
-        root.__duration = root.__media.duration > 0 ? root.__media.duration : 0;
+          root.media.getCurrentTime() > 0 ? root.media.getCurrentTime() : 0;
+        root.__duration = root.media.duration > 0 ? root.media.duration : 0;
         root._updateCustomTacks();
         root.__status =
-          root._getHHMMSS(root.__media.getCurrentTime(), root.__duration) +
+          root._getHHMMSS(root.media.getCurrentTime(), root.__duration) +
           "/" +
           root._getHHMMSS(root.__duration);
         root.$.controls.setStatus(root.__status);
@@ -908,12 +940,12 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
         }
 
         //updated buffered section of the slider
-        root.__buffered = root.__media.getBufferedTime;
+        root.__buffered = root.media.getBufferedTime;
       }, 1);
       window.dispatchEvent(
         new CustomEvent("a11y-player-playing", { detail: root })
       );
-      root.__media.play();
+      root.media.play();
     }
   }
 
@@ -923,7 +955,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   pause() {
     let root = this;
     root.__playing = false;
-    root.__media.pause();
+    root.media.pause();
 
     //stop updating the slider and length
     clearInterval(root.__playProgress);
@@ -950,7 +982,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
    */
   rewind(amt) {
     amt = amt !== undefined ? amt : 1;
-    this.seek(Math.max(this.__media.getCurrentTime() - amt, 0));
+    this.seek(Math.max(this.media.getCurrentTime() - amt, 0));
   }
 
   /**
@@ -958,23 +990,26 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
    */
   forward(amt) {
     amt = amt !== undefined ? amt : 1;
-    this.seek(Math.min(this.__media.getCurrentTime() + amt, this.__duration));
+    this.seek(Math.min(this.media.getCurrentTime() + amt, this.__duration));
   }
 
   /**
    * seeks to a specific time
    */
   seek(time) {
-    let seekable = this.__media !== undefined ? this.__media.seekable : -1;
+    let seekable =
+      this.media !== undefined && this.media !== null
+        ? this.media.seekable
+        : [];
     if (
       seekable.length > 0 &&
       time >= seekable.start(0) &&
       time <= seekable.end(0)
     ) {
-      this.__media.seek(time);
+      this.media.seek(time);
       this.__elapsed = time;
       this.__status =
-        this._getHHMMSS(this.__media.getCurrentTime(), this.__duration) +
+        this._getHHMMSS(this.media.getCurrentTime(), this.__duration) +
         "/" +
         this._getHHMMSS(this.__duration);
       this.$.controls.setStatus(this.__status);
@@ -997,7 +1032,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
    */
   setVolume(value) {
     this.volume = value !== null ? value : 70;
-    this.__media.setVolume(this.volume);
+    this.media.setVolume(this.volume);
     this.muted = this.volume === 0;
   }
 
@@ -1006,7 +1041,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
    */
   setPlaybackRate(value) {
     value = value !== null ? value : 1;
-    this.__media.setPlaybackRate(value);
+    this.media.setPlaybackRate(value);
   }
 
   /**
@@ -1019,7 +1054,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
     if (this.isYoutube) {
     } else {
       this.autoplay = mode === undefined ? !this.muted : mode;
-      this.__media.setAutoplay(this.autoplay);
+      this.media.setAutoplay(this.autoplay);
     }
   }
 
@@ -1033,7 +1068,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
     if (this.isYoutube) {
     } else {
       this.loop = mode === undefined ? !this.loop : mode;
-      this.__media.setLoop(this.loop);
+      this.media.setLoop(this.loop);
     }
   }
 
@@ -1046,7 +1081,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   toggleMute(mode) {
     this.muted = mode === undefined ? !this.muted : mode;
     this.__volume = this.muted ? 0 : Math.max(this.volume, 10);
-    this.__media.setMute(this.muted);
+    this.media.setMute(this.muted);
   }
 
   /**
