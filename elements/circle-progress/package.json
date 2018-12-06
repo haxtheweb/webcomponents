@@ -11,7 +11,7 @@
       "js": "src/circle-progress.js"
     }
   },
-  "version": "0.0.37",
+  "version": "0.0.38",
   "description": "Automated conversion of circle-progress/",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.0.37",
+    "@lrnwebcomponents/deduping-fix": "^0.0.38",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.2.1",

@@ -16,7 +16,7 @@
       "hax": "src/lrn-shared-styles-hax.json"
     }
   },
-  "version": "0.0.37",
+  "version": "0.0.38",
   "description": "a shared set of styles for all @lrnwebcomponents",
   "repository": {
     "type": "git",
