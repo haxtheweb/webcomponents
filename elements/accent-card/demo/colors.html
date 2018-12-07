@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>AccentCard: accent-card Colors</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../accent-card.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      accent-card {
+        display: inline-flex;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>accent-card Colors</h1>
+      <h2>Accent Color</h2>
+      <demo-snippet>
+        <template>
+          <accent-card>
+            <div slot="heading">Default Accent</div>
+            <div slot="content">This card has the default accent.</div>
+          </accent-card>
+          <accent-card accent-color="deep-orange">
+            <div slot="heading">Deep Orange Accent</div>
+            <div slot="content">This card has a deep-orange accent.</div>
+          </accent-card>
+          <accent-card dark>
+            <div slot="heading">Dark Card</div>
+            <div slot="content">This card is dark with the default accent.</div>
+          </accent-card>
+          <accent-card accent-color="teal">
+            <div slot="heading">Dark with Teal Accent</div>
+            <div slot="content">This card is dark with a teal accent.</div>
+          </accent-card>
+        </template>
+      </demo-snippet>
+
+      <h2>Background Color</h2>
+      <demo-snippet>
+        <template>
+          <accent-card accent-background accent-color="yellow">
+            <div slot="heading">Yellow Background</div>
+            <div slot="content">
+              This is a card with yellow accent and background.
+            </div>
+          </accent-card>
+          <accent-card accent-background accent-color="blue" dark>
+            <div slot="heading">Dark with Blue Background</div>
+            <div slot="content">
+              This is a dark card with blue accent and background.
+            </div>
+          </accent-card>
+          <accent-card accent-background accent-color="brown">
+            <div slot="heading">Brown Background</div>
+            <div slot="content">
+              This is a card with brown accent and background.
+            </div>
+          </accent-card>
+          <accent-card accent-background accent-color="lime" dark>
+            <div slot="heading">Lime Background</div>
+            <div slot="content">
+              This is a dark card with lime accent and background.
+            </div>
+          </accent-card>
+        </template>
+      </demo-snippet>
+
+      <h2>Heading Color</h2>
+      <demo-snippet>
+        <template>
+          <accent-card accent-color="pink" accent-heading>
+            <div slot="heading">Pink Heading</div>
+            <div slot="content">This is a card with pink accent and matching heading.</div>
+          </accent-card>
+          <accent-card accent-color="amber" accent-heading dark>
+            <div slot="heading">Dark with Amber Heading</div>
+            <div slot="content">This is a dark card with amber accent and matching heading.</div>
+          </accent-card>
+          <accent-card accent-color="orange" accent-heading>
+            <div slot="heading">Orange Heading</div>
+            <div slot="content">This is a card with pink accent and matching heading.</div>
+          </accent-card>
+          <accent-card accent-color="cyan" accent-heading dark>
+            <div slot="heading">Dark with Cyan Heading</div>
+            <div slot="content">This is a dark card with amber accent and matching heading.</div>
+          </accent-card>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
