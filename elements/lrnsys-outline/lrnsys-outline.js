@@ -222,21 +222,12 @@ let LrnsysOutline = Polymer({
     let title = detail.new;
     let spliceIndex = this.items.findIndex(j => j.id === item.id) + 1;
     this.__tempid = this.__tempid + 1;
-    this.items.splice(spliceIndex, 0, {
+    this.splice("items", spliceIndex, 0, {
       id: "outline-item-" + this.__tempid,
       title: title,
       indent: item.indent,
       parent: item.parent
     });
-    this.notifySplices("items", [
-      {
-        index: spliceIndex,
-        removed: [],
-        addedCount: 1,
-        object: this.items,
-        type: "splice"
-      }
-    ]);
     this.items[spliceIndex].indentLevel = item.indent;
     this.notifyPath(`items.${spliceIndex}.indentLevel`);
     this.setData(this.items);
@@ -267,16 +258,7 @@ let LrnsysOutline = Polymer({
         }
         const tmpItem = this.items[i];
         item.classList.remove("collapse-to-remove");
-        this.items.splice(i, 1);
-        this.notifySplices("items", [
-          {
-            index: i,
-            removed: [tmpItem],
-            addedCount: 0,
-            object: this.items,
-            type: "splice"
-          }
-        ]);
+        this.splice("items", i, 1);
         if (this.__focusedItem !== undefined && this.__focusedItem !== null) {
           async.microTask.run(() => {
             setTimeout(() => {
@@ -300,27 +282,12 @@ let LrnsysOutline = Polymer({
       : this._getLastChild(this.items[sourceEnd + 1]) - sourceCount + 1;
     if (target > -1 && target < this.items.length) {
       if ((moveUp && !item.disableUp) || (!moveUp && !item.disableDown)) {
-        let item2 = this.items.splice(sourceStart, sourceCount);
-        this.items.splice(target, 0, item2);
-        this.notifySplices("items", [
-          {
-            index: sourceStart,
-            removed: [],
-            addedCount: sourceCount,
-            object: this.items,
-            type: "splice"
-          },
-          {
-            index: target,
-            removed: [item2],
-            addedCount: 1,
-            object: this.items,
-            type: "splice"
-          }
-        ]);
+        let item2 = this.splice("items", sourceStart, sourceCount);
+        this.splice("items", target, 0, item2);
         this.__focusedItem = this.$.itemslist.querySelectorAll(
           "lrnsys-outline-item"
         )[target];
+        this.setData(this.items);
         if (this.__focusedItem !== undefined && this.__focusedItem !== null) {
           async.microTask.run(() => {
             setTimeout(() => {
@@ -502,8 +469,10 @@ let LrnsysOutline = Polymer({
    * listener to increase or decrease indent
    */
   _handleIndentItem: function(e) {
+    console.log(e);
     let amt = e.detail.increase ? 1 : -1;
     this._adjustIndent(this._getItemById(e.detail.item.id), amt);
+    this.setData(this.items);
   },
 
   /**
