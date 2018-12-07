@@ -97,8 +97,8 @@ class EditableList extends PolymerElement {
     if (typeof newValue !== typeof undefined) {
       this._itemsChanged(this.items);
       for (var i in this.items) {
-        this.items[i].metadata.edit = newValue;
-        this.notifyPath(`items.${i}.metadata.edit`);
+        this.items[i].metadata.canEdit = newValue;
+        this.notifyPath(`items.${i}.metadata.canEdit`);
       }
     }
   }

@@ -16,7 +16,9 @@
       "description": "Our outline, we love thee",
       "metadata": {
         "icon": "icons:view-quilt",
-        "image": "stock.jpg"
+        "image": "stock.jpg",
+        "canEdit": true,
+        "canDelete": true
       }
     },
     {

@@ -37,9 +37,9 @@ class EditableList extends PolymerElement {
       <iron-list id="list" items="[[items]]" as="item" mutable-data>
         <template>
           <editable-list-item
-            edit-mode="[[item.metadata.edit]]"
-            can-edit="[[item.metadata.edit]]"
-            can-delete="[[item.metadata.edit]]"
+            edit-mode="[[item.metadata.canEdit]]"
+            can-edit="[[item.metadata.canEdit]]"
+            can-delete="[[item.metadata.canDelete]]"
             value="[[item.title]]"
           ></editable-list-item>
         </template>
@@ -157,8 +157,8 @@ class EditableList extends PolymerElement {
     if (typeof newValue !== typeof undefined) {
       this._itemsChanged(this.items);
       for (var i in this.items) {
-        this.items[i].metadata.edit = newValue;
-        this.notifyPath(`items.${i}.metadata.edit`);
+        this.items[i].metadata.canEdit = newValue;
+        this.notifyPath(`items.${i}.metadata.canEdit`);
       }
     }
   }
