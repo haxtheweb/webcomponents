@@ -1,0 +1,556 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "`accent-card`\n`A card with optional accent stylings.`",
+      "summary": "",
+      "path": "accent-card.js",
+      "properties": [
+        {
+          "name": "accentBackground",
+          "type": "boolean | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 304,
+              "column": 6
+            },
+            "end": {
+              "line": 308,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "accentHeading",
+          "type": "boolean | null | undefined",
+          "description": "Apply accent color to heading",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 312,
+              "column": 6
+            },
+            "end": {
+              "line": 316,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "button",
+          "type": "boolean | null | undefined",
+          "description": "Is the card a button? Default is false.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 320,
+              "column": 6
+            },
+            "end": {
+              "line": 324,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean | null | undefined",
+          "description": "Is the card a disabled button? Default is false.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 328,
+              "column": 6
+            },
+            "end": {
+              "line": 332,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "flat",
+          "type": "boolean | null | undefined",
+          "description": "Display the card as flat (no box shadow);",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 336,
+              "column": 6
+            },
+            "end": {
+              "line": 340,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "horizontal",
+          "type": "boolean | null | undefined",
+          "description": "Display the card as a horizontal layout? Default is vertical.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 344,
+              "column": 6
+            },
+            "end": {
+              "line": 348,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "imageSrc",
+          "type": "string | null | undefined",
+          "description": "Optional: The source for an image on the card",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 352,
+              "column": 6
+            },
+            "end": {
+              "line": 355,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "null"
+        },
+        {
+          "name": "noBorder",
+          "type": "boolean | null | undefined",
+          "description": "Removes the think accent border",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 359,
+              "column": 6
+            },
+            "end": {
+              "line": 363,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        },
+        {
+          "name": "__backgroundStyle",
+          "type": "string | null | undefined",
+          "description": "The style for the image if there is an image",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 367,
+              "column": 6
+            },
+            "end": {
+              "line": 370,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "__hasHeading",
+          "type": "string | null | undefined",
+          "description": "Includes a heading if there is one.",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 374,
+              "column": 6
+            },
+            "end": {
+              "line": 377,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "__tabindex",
+          "type": "number | null | undefined",
+          "description": "The style for the image if there is an image",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 381,
+              "column": 6
+            },
+            "end": {
+              "line": 384,
+              "column": 7
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "Number"
+            }
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "connectedCallback",
+          "description": "life cycle, element is afixed to the DOM",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 391,
+              "column": 2
+            },
+            "end": {
+              "line": 401,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "ready",
+          "description": "sets target for a11y keys",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 406,
+              "column": 2
+            },
+            "end": {
+              "line": 409,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_buttonTap",
+          "description": "lets player know this button was clicked",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 414,
+              "column": 2
+            },
+            "end": {
+              "line": 420,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_hasProp",
+          "description": "Determine if the component has a property.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 425,
+              "column": 2
+            },
+            "end": {
+              "line": 427,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "prop"
+            }
+          ]
+        },
+        {
+          "name": "_getTabindex",
+          "description": "Get tabindex if card is a button.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 432,
+              "column": 2
+            },
+            "end": {
+              "line": 438,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "button"
+            }
+          ]
+        },
+        {
+          "name": "_getBackgroundStyle",
+          "description": "Determine if there is an image and style accordingly.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 443,
+              "column": 2
+            },
+            "end": {
+              "line": 449,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "imageSrc"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": "demo"
+        },
+        {
+          "url": "demo/layout.html",
+          "description": "layout"
+        },
+        {
+          "url": "demo/colors.html",
+          "description": "colors"
+        },
+        {
+          "url": "demo/buttons.html",
+          "description": "as buttons"
+        },
+        {
+          "url": "demo/css.html",
+          "description": "css variables"
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 26,
+          "column": 0
+        },
+        "end": {
+          "line": 450,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "A11yMediaPlayerProperties",
+      "name": "AccentCard",
+      "attributes": [
+        {
+          "name": "accent-background",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 304,
+              "column": 6
+            },
+            "end": {
+              "line": 308,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "accent-heading",
+          "description": "Apply accent color to heading",
+          "sourceRange": {
+            "start": {
+              "line": 312,
+              "column": 6
+            },
+            "end": {
+              "line": 316,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "button",
+          "description": "Is the card a button? Default is false.",
+          "sourceRange": {
+            "start": {
+              "line": 320,
+              "column": 6
+            },
+            "end": {
+              "line": 324,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "disabled",
+          "description": "Is the card a disabled button? Default is false.",
+          "sourceRange": {
+            "start": {
+              "line": 328,
+              "column": 6
+            },
+            "end": {
+              "line": 332,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "flat",
+          "description": "Display the card as flat (no box shadow);",
+          "sourceRange": {
+            "start": {
+              "line": 336,
+              "column": 6
+            },
+            "end": {
+              "line": 340,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "horizontal",
+          "description": "Display the card as a horizontal layout? Default is vertical.",
+          "sourceRange": {
+            "start": {
+              "line": 344,
+              "column": 6
+            },
+            "end": {
+              "line": 348,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "image-src",
+          "description": "Optional: The source for an image on the card",
+          "sourceRange": {
+            "start": {
+              "line": 352,
+              "column": 6
+            },
+            "end": {
+              "line": 355,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "no-border",
+          "description": "Removes the think accent border",
+          "sourceRange": {
+            "start": {
+              "line": 359,
+              "column": 6
+            },
+            "end": {
+              "line": 363,
+              "column": 7
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    }
+  ]
+}
