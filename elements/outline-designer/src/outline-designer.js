@@ -22,6 +22,7 @@ import "@lrnwebcomponents/item-overlay-ops/item-overlay-ops.js";
 import "@lrnwebcomponents/lrnsys-outline/lrnsys-outline.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@lrnwebcomponents/editable-list/editable-list.js";
 import "./lib/sortable-list.js";
 /**
  * `outline-designer`

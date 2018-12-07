@@ -1,0 +1,11 @@
+:host {
+  display: block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+iron-list {
+  height: 100%;
+}

@@ -1,0 +1,5 @@
+<iron-list id="list" items="[[items]]" as="item" mutable-data>
+  <template>
+    <editable-list-item edit-mode="[[item.metadata.edit]]" can-edit="[[item.metadata.edit]]" can-delete="[[item.metadata.edit]]" value="[[item.title]]"></editable-list-item>
+  </template>
+</iron-list>

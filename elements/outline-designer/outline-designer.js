@@ -22,6 +22,7 @@ import "@lrnwebcomponents/item-overlay-ops/item-overlay-ops.js";
 import "@lrnwebcomponents/lrnsys-outline/lrnsys-outline.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@lrnwebcomponents/editable-list/editable-list.js";
 import "./lib/sortable-list.js";
 /**
  * `outline-designer`
@@ -465,14 +466,18 @@ class OutlineDesigner extends PolymerElement {
                       [[item.description]]
                     </div>
                     <div class="card-actions high-detail">
+                      <editable-list
+                        edit-mode="[[editMode]]"
+                        items="[[manifest.items]]"
+                      >
+                        <editable-list-item>[[item.title]]</editable-list-item>
+                      </editable-list>
                       <ul>
-                        <iron-swipeable-container swipe-style="curve"
-                          ><li>Page 1</li></iron-swipeable-container
-                        >
-                        <iron-swipeable-container swipe-style="curve"
+                        <li>Page 1</li>
+                        <iron-swipeable-container
                           ><li>Page 2</li></iron-swipeable-container
                         >
-                        <iron-swipeable-container swipe-style="curve"
+                        <iron-swipeable-container
                           ><li>Page 3</li></iron-swipeable-container
                         >
                       </ul>
@@ -615,9 +620,10 @@ class OutlineDesigner extends PolymerElement {
       /**
        * Whether or not we are in an editing state
        */
+
       editMode: {
         name: "editMode",
-        type: "String",
+        type: "Boolean",
         value: false,
         reflectToAttribute: true,
         observer: "_editModeChanged"

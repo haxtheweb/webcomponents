@@ -56,9 +56,10 @@
   /**
    * Whether or not we are in an editing state
    */
+
   "editMode": {
     "name": "editMode",
-    "type": "String",
+    "type": "Boolean",
     "value": false,
     "reflectToAttribute": true,
     "observer": "_editModeChanged"

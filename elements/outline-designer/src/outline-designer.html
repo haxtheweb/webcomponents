@@ -41,10 +41,13 @@
         <paper-card class$="card-[[detailsMode]]-detail" heading="[[item.title]]" image="[[item.metadata.image]]" elevation="2" animated-shadow="false">
           <div class="card-content mid-detail">[[item.description]]</div>
           <div class="card-actions high-detail">
+            <editable-list edit-mode="[[editMode]]" items="[[manifest.items]]">
+              <editable-list-item>[[item.title]]</editable-list-item>
+            </editable-list>
             <ul>
-              <iron-swipeable-container swipe-style="curve"><li>Page 1</li></iron-swipeable-container>
-              <iron-swipeable-container swipe-style="curve"><li>Page 2</li></iron-swipeable-container>
-              <iron-swipeable-container swipe-style="curve"><li>Page 3</li></iron-swipeable-container>
+              <li>Page 1</li>
+              <iron-swipeable-container><li>Page 2</li></iron-swipeable-container>
+              <iron-swipeable-container><li>Page 3</li></iron-swipeable-container>
             </ul>
           </div>
         </paper-card>
