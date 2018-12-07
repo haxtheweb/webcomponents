@@ -175,10 +175,9 @@ class A11yMediaTranscriptCue extends A11yMediaPlayerProperties {
       </style>
       <span id="time">[[cue.start]] - [[cue.end]]</span>
       <span id="text">
-        <simple-search-content
-          id="content"
-          content="[[cue.text]]"
-        ></simple-search-content>
+        <simple-search-content id="content" content="[[cue.text]]"
+          >[[cue.text]]</simple-search-content
+        >
       </span>
     `;
   }
