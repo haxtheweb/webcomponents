@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>AccentCard: accent-card CSS Variables</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../accent-card.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      accent-card {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>accent-card with CSS Variables</h1>
+      <h2>Aligning Images Horizontally</h2>
+      <demo-snippet>
+        <template>
+          <accent-card accent-color="blue-grey" accent-heading horizontal image-src="images/image4.jpg">
+            <div slot="heading">Accent Card, Default Image Alignment</div>
+            <div slot="content">This is an accent card with the default image positioning.</div>
+          </accent-card>
+          <accent-card id="example1a" accent-color="blue-grey" accent-heading horizontal image-src="images/image4.jpg">
+            <div slot="heading">Accent Card, Image Aligned to Left</div>
+            <div slot="content">This is an accent card with the <tt>left</tt> of the image in position.</div>
+          </accent-card>
+          <accent-card id="example1b" accent-color="blue-grey" accent-heading horizontal image-src="images/image4.jpg">
+            <div slot="heading">Accent Card, Image Aligned to Right</div>
+            <div slot="content">This is an accent card with the <tt>right</tt> of the image in position.</div>
+          </accent-card>
+          <style is="custom-style">
+            #example1a {
+              --accent-card-image-x: left;
+            }
+            #example1b {
+              --accent-card-image-x: right;
+            }
+          </style>
+        </template>
+      </demo-snippet>
+
+      <h2>Aligning Images Vertically</h2>
+      <demo-snippet>
+      <template>
+          <accent-card accent-color="pink" heading="Accent Card, Default Image Alignment" horizontal image-src="images/image3a.jpg">
+            <div slot="heading">Accent Card, Default Image Alignment</div>
+            <div slot="content">This is an accent card with the default image positioning.</div>
+          </accent-card>
+          <accent-card id="example2a" accent-color="pink" horizontal image-src="images/image3a.jpg">
+            <div slot="heading">Accent Card, Image Aligned to Top</div>
+            <div slot="content">This is an accent card with the <tt>top</tt> of the image in position.</div>
+          </accent-card>
+          <accent-card id="example2b" accent-color="pink" horizontal image-src="images/image3a.jpg">
+            <div slot="heading">Accent Card, Image Aligned to Bottom</div>
+            <div slot="content">This is an accent card with the <tt>bottom</tt> of the image in position.</div>
+          </accent-card>
+          <style is="custom-style">
+            #example2a {
+              --accent-card-image-y: top;
+            }
+            #example2b {
+              --accent-card-image-y: bottom;
+            }
+          </style>
+        </template>
+      </demo-snippet>
+      
+      <h2>Adjusting Vertical Images Height</h2>
+      <demo-snippet>
+        <template>
+          <accent-card accent-color="lime" accent-heading image-src="images/image7.jpg">
+            <div slot="heading">Accent Card, Default Height</div>
+            <div slot="content">This is an accent card with the default image height.</div>
+          </accent-card>
+          <accent-card id="example4" accent-color="lime" accent-heading image-src="images/image7.jpg">
+            <div slot="heading">Accent Card, Height Set to 50px</div>
+            <div slot="content">This is an accent card with the image height set to <tt>50px</tt>.</div>
+          </accent-card>
+          <style is="custom-style">
+            #example4 {
+              --accent-card-image-height: 50px;
+            }
+          </style>
+        </template>
+      </demo-snippet>
+
+      <h2>Adjusting Horizontal Images Width</h2>
+      <demo-snippet>
+        <template>
+          <accent-card accent-color="red" dark horizontal image-src="images/image1.jpg">
+            <div slot="heading">Accent Card, Default Width</div>
+            <div slot="content">This is a horizontal accent card with the default image width.</div>
+          </accent-card>
+          <accent-card id="example3" accent-color="red" dark horizontal image-src="images/image1.jpg">
+            <div slot="heading">Accent Card, Width Set to 200px</div>
+            <div slot="content">This is a horizontal accent card with image width set to <tt>200px</tt>.</div>
+          </accent-card>
+          <style is="custom-style">
+            #example3 {
+              --accent-card-image-width: 200px;
+            }
+          </style>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

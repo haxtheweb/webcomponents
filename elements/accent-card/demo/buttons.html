@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>AccentCard: accent-card Buttons</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../accent-card.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      accent-card {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>accent-card as a Button</h1>
+      <demo-snippet>
+        <template>
+          <accent-card id="button1" accent-color="purple" button>
+            <div slot="heading">Accent Card Button</div>
+            <div slot="content">This card is clickable.</div>
+          </accent-card>
+          <accent-card id="button2" accent-color="deep-purple" button disabled>
+            <div slot="heading">Disabled Accent Card Button</div>
+            <div slot="content">This card is <em><strong>not</strong></em> clickable.</div>
+          </accent-card>
+          <script>
+            Array.from(document.getElementsByTagName('accent-card')).forEach(function(card) {
+              card.addEventListener('tap',function(e){ handleTap(e); });
+            });
+            function handleTap(e){
+              alert("You tapped "+e.detail.id+"!");
+              console.log(e);
+            }
+          </script>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
