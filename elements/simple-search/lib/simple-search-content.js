@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import "@polymer/polymer/lib/elements/dom-repeat.js";
 
 export { SimpleSearchContent };
 /**
@@ -11,10 +12,10 @@ export { SimpleSearchContent };
  *
  *
  * @microcopy - the mental model for this element
- *
- * ```<simple-search-content
- *   content="[[content]]"                // inline content to be searched
- * </simple-search-content>```
+ * ```
+ <simple-search-content
+  content="[[content]]"                // inline content to be searched
+</simple-search-content>```
  *
  * CSS Variables for matched content:
  * ```color: var(--simple-search-match-text-color, #000);
@@ -74,10 +75,10 @@ class SimpleSearchContent extends PolymerElement {
         <span class="initialcontent" hidden$="[[inSearchMode]]"
           >[[content]]</span
         >
-        <template is="dom-repeat" items="[[_searchedContent]]">
+        <template is="dom-repeat" items="[[__searchedContent]]">
           <span
-            match-number\$="[[item.matchNumber]]"
-            tabindex\$="[[_getTabIndex(item.matchNumber)]]"
+            match-number$="[[item.matchNumber]]"
+            tabindex$="[[_getTabIndex(item.matchNumber)]]"
             >[[item.text]]</span
           >
         </template>

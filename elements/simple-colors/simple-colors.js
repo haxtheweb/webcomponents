@@ -516,8 +516,8 @@ SimpleColors.wcagContrast = {
 SimpleColors.requestAvailability = function(element) {
   if (!SimpleColors.instance) {
     SimpleColors.instance = document.createElement("simple-colors");
+    document.body.appendChild(SimpleColors.instance);
   }
-  document.body.appendChild(SimpleColors.instance);
 };
 
 /**
