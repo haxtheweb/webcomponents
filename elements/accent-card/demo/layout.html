@@ -27,9 +27,18 @@
         cursor: pointer;
         background-color: transparent;
       }
+      accent-card[image-src] {
+        --accent-card-border-color: #00aacc;
+      }
+      accent-card[image-src]:not([horizontal]) {
+        --accent-card-image-height: 75px;
+      }
       accent-card[image-src][horizontal] {
         --accent-card-image-x: right;
+        --accent-card-image-width: 30%;
+        width: 100%;
       }
+
     </style>
   </head>
   <body>
@@ -43,7 +52,7 @@
             <div slot="content">This card has the default orientation.</div>
           </accent-card>
           <accent-card horizontal>
-            <div slot="heading">Horizotnal Accent Card</div>
+            <div slot="heading">Horizontal Accent Card</div>
             <div slot="content">This card has horizontal orientation.</div>
           </accent-card>
         </template>
@@ -59,7 +68,7 @@
             <div slot="footer"><button>Read more...</button></div>
           </accent-card>
           <accent-card horizontal image-src="images/image8.jpg">
-            <div slot="heading">Horizotnal Accent Card with Content</div>
+            <div slot="heading">Horizontal Accent Card with Content</div>
             <div slot="subheading">Includes image, subheading, and footer.</div>
             <div slot="content">This is the content section of a card with horizontal orientation.</div>
             <div slot="footer"><button>Read more...</button></div>
@@ -69,6 +78,7 @@
       
       <h2>Borders and Shading</h2>
       <demo-snippet>
+        <template>
           <accent-card no-border>
             <div slot="heading">Accent Card, No Border</div>
             <div slot="content">This card has no accent border.</div>
