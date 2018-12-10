@@ -67,7 +67,7 @@
     "jasmine-jquery": "^2.1.1",
     "jquery": "^3.0.0",
     "jshint-stylish": "^2.2.0",
-    "load-grunt-config": "^0.19.2",
+    "load-grunt-config": "^1.0.0",
     "lodash": "^4.13.1",
     "seed-random": "^2.2.0",
     "time-grunt": "^1.0.0"
