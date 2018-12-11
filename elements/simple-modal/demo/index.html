@@ -12,6 +12,7 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '@polymer/paper-button/paper-button.js';
       import '../simple-modal.js';
+      import "../lib/simple-modal-template.js";
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -22,9 +23,33 @@
       <demo-snippet>
         <template>
           <paper-button id="button1">Open 1</paper-button>
+          <simple-modal-template id="smt1" title="Button 1 Modal">
+            <div slot="title">Button 1 Modal</div>
+            <div slot="header">Button 1 Header</div>
+            <p slot="content">This is Button 1 content.</p>
+            <div slot="buttons"><button>Button 1 buttons</button></div>
+          </simple-modal-template>
           <paper-button id="button2">Pull some div in</paper-button>
+          <simple-modal-template id="smt2">
+            <p slot="content">This is Button 2 content.</p>
+          </simple-modal-template>
           <paper-button id="button3">Fire an event</paper-button>
-        <script>
+          <simple-modal-template id="smt3" title="Button 3 Modal">
+            <div slot="header">Button 3 Header</div>
+            <div slot="buttons"><button>Button 3 buttons</button></div>
+          </simple-modal-template>
+          <script>
+            let btn1 = document.getElementById('button1'), 
+              smt1 = document.getElementById('smt1'),
+              btn2 = document.getElementById('button2'), 
+              smt2 = document.getElementById('smt2')
+              btn3 = document.getElementById('button3'), 
+              smt3 = document.getElementById('smt3');
+            smt1.associateEvents(btn1);
+            smt2.associateEvents(btn2);
+            smt3.associateEvents(btn3);
+          </script>
+        <!--script>
           // this is how you prep the modal
           const modal = window.simpleModal.requestAvailability();
           document.getElementById('button1').addEventListener('tap', () => {
@@ -87,7 +112,7 @@
             });
             document.getElementById('button3').dispatchEvent(evt);
           });
-        </script>
+        </script-->
         </template>
       </demo-snippet>
     </div>

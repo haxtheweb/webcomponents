@@ -1,13 +1,23 @@
-<paper-dialog id="dialog" entry-animation="scale-up-animation"
-exit-animation="fade-out-animation" opened="{{opened}}" with-backdrop always-on-top>
-  <div class="top">
-    <h2 hidden$="[[!title]]">[[title]]</h2>
-    <slot name="header"></slot>
-    <paper-button id="close" dialog-dismiss hidden$="[[!opened]]">
-      <iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]
+<paper-dialog id="dialog" 
+  always-on-top
+  aria-describedby="simple-modal-content"
+  aria-label$="[[_getAriaLabel(title)]]"
+  aria-labelledby$="[[_getAriaLabelledby(title)]]"
+  aria-modal="true"
+  entry-animation="scale-up-animation" 
+  exit-animation="fade-out-animation" 
+  role="dialog"
+  opened="{{opened}}" 
+  with-backdrop>
+  <div id="titlebar">
+    <h2 id="simple-modal-title" hidden$="[[!title]]">[[title]]</h2>
+    <div></div>
+    <paper-button id="close" dialog-dismiss hidden$="[[!opened]]" label="[[closeLabel]]">
+      <iron-icon aria-hidden="true" icon="[[closeIcon]]"></iron-icon>
     </paper-button>
   </div>
-  <paper-dialog-scrollable>
+  <div id="headerbar"><slot name="header"></slot></div>
+  <paper-dialog-scrollable id="simple-modal-content">
     <slot name="content"></slot>
   </paper-dialog-scrollable>
   <div class="buttons">

@@ -33,7 +33,8 @@ window.simpleModal.requestAvailability = () => {
  *
  * @customElement
  * @polymer
- * @demo demo/index.html
+ * @demo demo/index.html demo
+ * @demo demo/template.html using simple-modal-template
  */
 class SimpleModal extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
@@ -165,6 +166,18 @@ class SimpleModal extends PolymerElement {
       });
       this.dispatchEvent(evt);
     }
+  }
+  /**
+   * If there is a title, aria-labelledby should point to #simple-modal-title
+   */
+  _getAriaLabelledBy(title) {
+    return !title ? null : "simple-modal-title";
+  }
+  /**
+   * If there is no title, supply a generic aria-label
+   */
+  _getAriaLabel(title) {
+    return !title ? "Modal Dialog" : null;
   }
   /**
    * life cycle, element is removed from the DOM

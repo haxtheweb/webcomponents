@@ -1,20 +1,21 @@
 :host {
   display: block;
+  --simple-modal-titlebar-color: #444;
+  --simple-modal-titlebar-background: #ddd;
+  --simple-modal-header-color: #222;
+  --simple-modal-header-background: #ccc;
 }
 
 :host([hidden]) {
   display: none;
 }
+
 :host ::slotted(*) {
   font-size: 14px;
   @apply --simple-modal-content;
 }
 
-.content {
-  padding: 8px 24px;
-  @apply --simple-modal-content-container;
-}
-#dialog {
+:host #dialog {
   display: block;
   margin: auto;
   width: auto;
@@ -22,53 +23,64 @@
   z-index: 1000;
   min-width: 50vw;
   min-height: 50vh;
+  border-radius: 3px;
   @apply --simple-modal-dialog;
 }
-.buttons {
-  padding: 8px 24px;
-  @apply --simple-modal-buttons;
+
+:host #titlebar {
+  margin-top: 0;
+  padding: 0px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--simple-modal-titlebar-color);
+  background-color: var(--simple-modal-titlebar-background);
+  border-radius: 3px 3px 0 0;
+  @apply --simple-modal-top;
 }
 
-#close {
+:host #headerbar {
+  margin: 0;
+  padding: 0 16px;
+  color: var(--simple-modal-header-color);
+  background-color: var(--simple-modal-header-background);
+  @apply --simple-modal-headerbar;
+}
+
+:host h2 {
+  margin-right: 8px;
+  padding: 0;
+  flex: auto;
+  font-size: 18px;
+  line-height: 18px;
+  @apply --simple-modal-title;
+}
+
+:host #close {
   top: 0;
-  font-size: 14px;
-  text-transform: none;
-  right: 0;
-  position: absolute;
-  padding: 4px;
-  margin: 4px;
-  color: var(--simple-modal-header-color, #ffffff);
-  background-color: transparent;
+  padding: 10px 0;
   min-width: unset;
-  line-height: 32px;
+  text-transform: none;
+  color: var(--simple-modal-titlebar-color);
+  background-color: transparent;
   @apply --simple-modal-close;
 }
 
-#close iron-icon {
-  display: inline-block;
-  color: var(--simple-modal-header-color, #ffffff);
+:host #close iron-icon {
   width: 16px;
   height: 16px;
-  margin-right: 4px;
+  color: var(--simple-modal-titlebar-color);
   @apply --simple-modal-close-icon;
 }
 
-.top {
-  display: flex;
-  margin-top: 0;
-  justify-content: space-between;
-  background-color: var(--simple-modal-header-background, #20427b);
-  color: var(--simple-modal-header-color, #ffffff);
+.content {
   padding: 8px 16px;
-  @apply --simple-modal-top;
+  @apply --simple-modal-content-container;
 }
-.top h2 {
-  flex: auto;
-  color: var(--simple-modal-header-color, #ffffff);
-  font-size: 32px;
-  text-transform: capitalize;
-  padding: 0;
-  line-height: 32px;
-  margin: 8px;
-  @apply --simple-modal-heading;
+
+.buttons {
+  position: absolute;
+  bottom: 0;
+  padding: 8px 16px;
+  @apply --simple-modal-buttons;
 }

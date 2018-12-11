@@ -31,7 +31,7 @@
   "closeIcon": {
     "name": "closeIcon",
     "type": String,
-    "value": "cancel"
+    "value": "close"
   },
   /**
    * The element that invoked this. This way we can track our way back accessibly
