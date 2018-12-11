@@ -7,7 +7,7 @@ import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
 /**
 `lrndesign-gallery-zoom`
-A LRN element that renders the zoom feature for the gallery.
+An element that renders the zoom feature for the gallery.
 
 @demo demo/index.html
 
