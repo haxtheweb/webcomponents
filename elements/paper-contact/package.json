@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@polymer/iron-icon": "^3.0.0",
-    "@polymer/iron-icons": "^3.0.0",
+    "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-item": "^3.0.0",
     "@polymer/paper-ripple": "^3.0.0",
     "@polymer/paper-styles": "^3.0.0",

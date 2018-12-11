@@ -42,7 +42,7 @@
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^0.0.39",
     "@polymer/iron-a11y-keys-behavior": "^3.0.0",
-    "@polymer/iron-icons": "^3.0.0",
+    "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.0",
     "@polymer/paper-progress": "^3.0.0",
     "@polymer/paper-ripple": "^3.0.0",

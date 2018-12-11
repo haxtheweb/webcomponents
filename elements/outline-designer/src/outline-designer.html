@@ -26,6 +26,8 @@
       <a class="breadcrumb" id="third">Math Basics</a>
     </div>
     <div>
+      <paper-icon-button on-tap="_toggleMiniMap" id="minimap" icon="device:gps-fixed" title="Toggle outline mini map"></paper-icon-button>
+      <paper-tooltip for="helpbutton">Toggle mini-map</paper-tooltip>
       <paper-icon-button id="helpbutton" icon="icons:help" title="help"></paper-icon-button>
       <paper-tooltip for="helpbutton">Help</paper-tooltip>
     </div>
@@ -88,4 +90,5 @@
     </sortable-list>
   </section>
 </iron-pages>
+<canvas id="minimaparea"></canvas>
 <slot></slot>

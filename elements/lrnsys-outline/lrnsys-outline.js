@@ -107,6 +107,10 @@ let LrnsysOutline = Polymer({
       type: Array,
       value: null,
       notify: true
+    },
+    activeItem: {
+      type: Object,
+      notify: true
     }
   },
 
@@ -246,28 +250,47 @@ let LrnsysOutline = Polymer({
    */
   removeItem: function(item) {
     let i = this.items.findIndex(j => j.id === item.id);
-    if (confirm("Do you really want to delete " + this.items[i].title + "?")) {
-      console.log("?");
-      item.classList.add("collapse-to-remove");
-      setTimeout(() => {
-        this.__focusedItem = item.previousElementSibling;
-        for (var k in this.items) {
-          if (this.items[k].parent == this.items[i].id) {
-            this.items[k].parent = this.items[i].parent;
-          }
+    let b = document.createElement("paper-button");
+    b.raised = true;
+    b.addEventListener("click", this._deleteItemConfirm().bind(this));
+    b.appendChild(document.createTextNode("Yes, delete"));
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        title: `Do you really want to delete ${this.items[i].title}?`,
+        elements: {
+          buttons: b
+        },
+        invokedBy: item.$.delete,
+        clone: false
+      }
+    });
+    this.dispatchEvent(evt);
+  },
+  /**
+   * Delete item confirmation
+   */
+  _deleteItemConfirm: function(e) {
+    let i = this.items.findIndex(j => j.id === item.id);
+    this.activeItem.classList.add("collapse-to-remove");
+    setTimeout(() => {
+      this.__focusedItem = this.activeItem.previousElementSibling;
+      for (var k in this.items) {
+        if (this.items[k].parent == this.items[i].id) {
+          this.items[k].parent = this.items[i].parent;
         }
-        const tmpItem = this.items[i];
-        item.classList.remove("collapse-to-remove");
-        this.splice("items", i, 1);
-        if (this.__focusedItem !== undefined && this.__focusedItem !== null) {
-          async.microTask.run(() => {
-            setTimeout(() => {
-              this.__focusedItem.focus();
-            }, 50);
-          });
-        }
-      }, 300);
-    }
+      }
+      this.activeItem.classList.remove("collapse-to-remove");
+      this.splice("items", i, 1);
+      if (this.__focusedItem !== undefined && this.__focusedItem !== null) {
+        async.microTask.run(() => {
+          setTimeout(() => {
+            this.__focusedItem.focus();
+          }, 50);
+        });
+      }
+    }, 300);
   },
 
   /**
@@ -445,6 +468,7 @@ let LrnsysOutline = Polymer({
    * listener to delete an item
    */
   _handleRemoveItem: function(e) {
+    this.activeItem = e.detail.item;
     this.removeItem(e.detail.item);
   },
 
@@ -452,6 +476,7 @@ let LrnsysOutline = Polymer({
    * listener to move an item
    */
   _handleMoveItem: function(e) {
+    this.activeItem = e.detail.item;
     this.moveItem(e.detail.item, e.detail.moveUp, e.detail.byGroup);
   },
 
@@ -469,7 +494,6 @@ let LrnsysOutline = Polymer({
    * listener to increase or decrease indent
    */
   _handleIndentItem: function(e) {
-    console.log(e);
     let amt = e.detail.increase ? 1 : -1;
     this._adjustIndent(this._getItemById(e.detail.item.id), amt);
     this.setData(this.items);

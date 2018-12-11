@@ -42,7 +42,7 @@
   "dependencies": {
     "@lrnwebcomponents/mtz-marked-editor": "^0.0.39",
     "@polymer/iron-icon": "^3.0.0",
-    "@polymer/iron-icons": "^3.0.0",
+    "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-pages": "^3.0.0",
     "@polymer/marked-element": "^3.0.0",
     "@polymer/paper-card": "^3.0.0",

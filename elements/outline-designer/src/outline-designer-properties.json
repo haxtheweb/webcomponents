@@ -56,13 +56,22 @@
   /**
    * Whether or not we are in an editing state
    */
-
   "editMode": {
     "name": "editMode",
     "type": "Boolean",
     "value": false,
     "reflectToAttribute": true,
     "observer": "_editModeChanged"
+  },
+  /**
+   * Whether or to show the mini map
+   */
+  "miniMap": {
+    "name": "miniMap",
+    "type": "Boolean",
+    "value": true,
+    "reflectToAttribute": true,
+    "observer": "_miniMapChanged"
   },
   /**
    * end point / JSON to load
