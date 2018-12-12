@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/simple-dialog/lib/simple-dialog-template.js";
+import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
 import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-icon/iron-icon.js";
