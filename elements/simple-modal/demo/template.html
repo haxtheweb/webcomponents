@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>SimpleModal: simple-modal Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '@polymer/paper-button/paper-button.js';
+      import '../simple-modal.js';
+      import "../lib/simple-modal-template.js";
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div id="somediv"><p>This is to illustrate the notion of some DIV being handed off to the modal but just a clone, not the real thing.</p></div>
+    <div class="vertical-section-container centered">
+      <h3>Basic simple-modal demo</h3>
+      <demo-snippet>
+        <template>
+          <paper-button id="button1">Button 1</paper-button>
+          <simple-modal-template id="smt1" title="simple-modal-template 1">
+            <div slot="header">Simple Modal 1 Header</div>
+            <p slot="content">Button 1 opens the first simple-modal-template template.</p>
+            <div slot="buttons"><paper-button dialog-dismiss>Close Modal 1</paper-button></div>
+          </simple-modal-template>
+          <paper-button id="button2">Button 2</paper-button>
+          <simple-modal-template id="smt2">
+            <p slot="content">Button 2 opens the second simple-modal-template template.</p>
+          </simple-modal-template>
+          <script>
+            let btn1 = document.getElementById('button1'), 
+              smt1 = document.getElementById('smt1'),
+              btn2 = document.getElementById('button2'), 
+              smt2 = document.getElementById('smt2');
+            smt1.associateEvents(btn1);
+            smt2.associateEvents(btn2);;
+          </script>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

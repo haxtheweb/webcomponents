@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>AccentCard: accent-card Layout</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../accent-card.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      accent-card {
+        display: inline-flex;
+        margin: 10px;
+      }
+
+      button {
+        width: 100%;
+        display: block;
+        margin: 0;
+        padding: 15px;
+        border: none;
+        color: blue;
+        text-align: right;
+        cursor: pointer;
+        background-color: transparent;
+      }
+      accent-card[image-src] {
+        --accent-card-border-color: #00aacc;
+      }
+      accent-card[image-src]:not([horizontal]) {
+        --accent-card-image-height: 75px;
+      }
+      accent-card[image-src][horizontal] {
+        --accent-card-image-x: right;
+        --accent-card-image-width: 30%;
+        width: 100%;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>accent-card Layout</h1>
+      <h2>Orientation</h2>
+      <demo-snippet>
+        <template>
+          <accent-card>
+            <div slot="heading">Default Orientation</div>
+            <div slot="content">This card has the default orientation.</div>
+          </accent-card>
+          <accent-card horizontal>
+            <div slot="heading">Horizontal Accent Card</div>
+            <div slot="content">This card has horizontal orientation.</div>
+          </accent-card>
+        </template>
+      </demo-snippet>
+
+      <h2>Content</h2>
+      <demo-snippet>
+        <template>
+          <accent-card image-src="images/image6.jpg">
+            <div slot="heading">Vertical Accent Card with Content</div>
+            <div slot="subheading">Includes image, subheading, and footer.</div>
+            <div slot="content">This is the content section of a card with the default orientation.</div>
+            <div slot="footer"><button>Read more...</button></div>
+          </accent-card>
+          <accent-card horizontal image-src="images/image8.jpg">
+            <div slot="heading">Horizontal Accent Card with Content</div>
+            <div slot="subheading">Includes image, subheading, and footer.</div>
+            <div slot="content">This is the content section of a card with horizontal orientation.</div>
+            <div slot="footer"><button>Read more...</button></div>
+          </accent-card>
+        </template>
+      </demo-snippet>
+      
+      <h2>Borders and Shading</h2>
+      <demo-snippet>
+        <template>
+          <accent-card no-border>
+            <div slot="heading">Accent Card, No Border</div>
+            <div slot="content">This card has no accent border.</div>
+          </accent-card>
+          <accent-card flat>
+            <div slot="heading">Flat Accent Card</div>
+            <div slot="content">This is a flat accent card. (It has no box-shadow.)</div>
+          </accent-card>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
