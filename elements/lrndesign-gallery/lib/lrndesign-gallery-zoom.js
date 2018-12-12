@@ -1,6 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog.js";
-import "@lrnwebcomponents/lrnsys-layout/lib/lrnsys-dialog-toolbar-button.js";
+import "@lrnwebcomponents/simple-dialog/lib/simple-dialog-template.js";
 import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-icon/iron-icon.js";
@@ -23,14 +22,14 @@ An element that renders the zoom feature for the gallery.
 Polymer({
   _template: html`
     <style is="custom-style" include="simple-colors">
-      :host #lrnsysdialog ::slotted(#dialogtrigger) {
+      :host #zoomdialog ::slotted(#dialogtrigger) {
         --app-toolbar-primary-color: var(--lrndesign-gallery-focus-color);
         --app-toolbar-secondary-color: rgba(0, 0, 0, 0.7);
       }
 
-      :host #lrnsysdialog ::slotted(#dialogtrigger) {
+      :host #zoomdialog ::slotted(#dialogtrigger) {
       }
-      :host #lrnsysdialog ::slotted(#dialogtrigger) {
+      :host #zoomdialog ::slotted(#dialogtrigger) {
         text-align: center;
         padding: 6px;
         min-width: 30px;
@@ -40,7 +39,7 @@ Polymer({
         padding: 0;
         margin: 0;
       }
-      :host #lrnsysdialog ::slotted(#dialogtrigger > lrnsys-button-inner) {
+      :host #zoomdialog ::slotted(#dialogtrigger > lrnsys-button-inner) {
         width: 30px;
         line-height: 30px;
         transition: background-color 1s;
@@ -48,10 +47,8 @@ Polymer({
         background-color: var(--lrndesign-gallery-rgba-low);
         border-radius: 3px;
       }
-      :host #lrnsysdialog ::slotted(#dialogtrigger > lrnsys-button-inner):focus,
-      :host
-        #lrnsysdialog
-        ::slotted(#dialogtrigger > lrnsys-button-inner):hover {
+      :host #zoomdialog ::slotted(#dialogtrigger > lrnsys-button-inner):focus,
+      :host #zoomdialog ::slotted(#dialogtrigger > lrnsys-button-inner):hover {
         color: var(--lrndesign-gallery-focus-color);
         background-color: var(--lrndesign-gallery-background-color);
       }
@@ -61,20 +58,10 @@ Polymer({
         width: 24px;
       }
     </style>
-    <lrnsys-dialog
-      id="lrnsysdialog"
-      dark$="[[dark]]"
-      dynamic-images
-      body-append
-      title$="[[tooltip]]"
-    >
-      <span slot="button"
-        ><iron-icon icon="[[icon]]" hidden$="[[!_isAttrSet(icon)]]"></iron-icon
-      ></span>
-      <div slot="toolbar-primary">
-        <span aria-hidden="true">[[heading]]</span>
-      </div>
-      <span slot="toolbar-secondary">
+    <iron-icon icon="[[icon]]" hidden$="[[!_isAttrSet(icon)]]"></iron-icon>
+    <simple-modal-template id="zoomdialog" title$="[[tooltip]]">
+      <div slot="header">[[heading]]</div>
+      <div slot="subheading">
         <lrnsys-dialog-toolbar-button
           title="Zoom In"
           icon="zoom-in"
@@ -85,15 +72,8 @@ Polymer({
           icon="zoom-out"
           id="out"
         ></lrnsys-dialog-toolbar-button>
-      </span>
-      <div slot="header">
-        <h1
-          style="position: absolute; left: -99999px; top:-1px; height: 0; width: 0; overflow: auto;"
-        >
-          [[heading]]
-        </h1>
       </div>
-      <div>
+      <div slot="content">
         <img-pan-zoom
           id="img"
           alt\$="[[zoomAlt]]"
@@ -104,9 +84,9 @@ Polymer({
           zoom-per-scroll="0.6"
         >
         </img-pan-zoom>
-        <div id="details"></div>
+        <div id="details">[[details]]</div>
       </div>
-    </lrnsys-dialog>
+    </simple-modal-template>
   `,
 
   is: "lrndesign-gallery-zoom",
@@ -209,7 +189,7 @@ Polymer({
    * Toggles the dialog.
    */
   toggleDialog: function() {
-    this.$.lrnsysdialog.openDialog();
+    this.$.zoomdialog.openDialog();
   },
 
   /**
@@ -223,7 +203,7 @@ Polymer({
    * Toggles the dialog.
    */
   _dialogChanged: function(e) {
-    if (e.detail === this.$.lrnsysdialog) {
+    if (e.detail === this.$.zoomdialog) {
       if (e.detail.$.modal.opened) {
         document.body.addEventListener(
           "dialog-toolbar-button-tapped",

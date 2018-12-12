@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-/*import "./lrndesign-gallery-zoom.js";*/
+import "./lrndesign-gallery-zoom.js";
 
 export { LrndesignGalleryGrid };
 /**
