@@ -35,7 +35,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/iron-icons": "^3.0.0",
+    "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-input": "^3.0.0",
     "@polymer/paper-tooltip": "^3.0.0",
     "@polymer/polymer": "^3.0.5"
@@ -50,7 +50,7 @@
     "gulp-sourcemaps": "2.6.4",
     "lodash": "4.17.11",
     "polymer-build": "3.1.1",
-    "polymer-cli": "1.9.1",
+    "polymer-cli": "1.9.2",
     "wct-browser-legacy": "1.0.2"
   },
   "private": false,

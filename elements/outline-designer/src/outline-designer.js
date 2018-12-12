@@ -7,6 +7,7 @@ import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/social-icons.js";
+import "@polymer/iron-icons/device-icons.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/paper-button/paper-button.js";
@@ -22,7 +23,9 @@ import "@lrnwebcomponents/item-overlay-ops/item-overlay-ops.js";
 import "@lrnwebcomponents/lrnsys-outline/lrnsys-outline.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@lrnwebcomponents/editable-list/editable-list.js";
 import "./lib/sortable-list.js";
+import { pagemap } from "./lib/pagemap.js";
 /**
  * `outline-designer`
  * `tools to modify and visualize JSON Outline Schema for editing`
@@ -62,6 +65,19 @@ class OutlineDesigner extends PolymerElement {
       "item-overlay-option-selected",
       this._overlayOpSelected.bind(this)
     );
+    pagemap(this.$.minimaparea, {
+      viewport: null,
+      styles: {
+        "ul,ol,li": "rgba(0, 0, 0, 0.08)",
+        "h1,h2,h3,h4,h5,h6,a": "rgba(0, 0, 0, 0.10)",
+        "lrnsys-outline-item": "rgba(0, 0, 0, 0.08)",
+        "p,section": "rgba(0, 0, 0, 0.02)"
+      },
+      back: "rgba(0, 0, 0, 0.02)",
+      view: "rgba(0, 0, 0, 0.05)",
+      drag: "rgba(0, 0, 0, 0.10)",
+      interval: null
+    });
   }
   /**
    * life cycle, element is removed from the DOM
@@ -76,6 +92,21 @@ class OutlineDesigner extends PolymerElement {
       "item-overlay-option-selected",
       this._overlayOpSelected.bind(this)
     );
+  }
+  _toggleMiniMap(e) {
+    this.miniMap = !this.miniMap;
+  }
+
+  _miniMapChanged(newValue, oldValue) {
+    if (typeof newValue !== typeof undefined) {
+      if (newValue) {
+        this.$.minimap.icon = "device:gps-fixed";
+        this.$.minimaparea.classList.add("show-minimap");
+      } else {
+        this.$.minimap.icon = "device:gps-off";
+        this.$.minimaparea.classList.remove("show-minimap");
+      }
+    }
   }
   /**
    * toggle between view modes
@@ -243,4 +274,5 @@ class OutlineDesigner extends PolymerElement {
   }
 }
 window.customElements.define("outline-designer", OutlineDesigner);
+
 export { OutlineDesigner };

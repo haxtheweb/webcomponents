@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>EditableList: editable-list Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../editable-list.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles">
+    editable-list {
+      height: 400px;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic editable-list demo</h3>
+      <demo-snippet>
+        <template>
+          <editable-list items='[{"title": "Stuff", "metadata": { "edit": true, "delete": true}},{"title": "What do we want", "metadata": { "edit": true, "delete": true}},{"title": "Things", "metadata": { "edit": true, "delete": true}}]' edit-mode="edit-mode">
+            This is editable-list
+          </editable-list>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

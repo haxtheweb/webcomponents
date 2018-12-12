@@ -51,7 +51,7 @@
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-demo-helpers": "^3.0.0",
     "@polymer/iron-form-element-behavior": "^3.0.0",
-    "@polymer/iron-icons": "^3.0.0",
+    "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-list": "^3.0.0",
     "@polymer/marked-element": "^3.0.0",
     "@polymer/neon-animation": "^3.0.0",
@@ -76,7 +76,7 @@
     "gulp-sourcemaps": "2.6.4",
     "lodash": "4.17.11",
     "polymer-build": "3.1.1",
-    "polymer-cli": "1.9.1",
+    "polymer-cli": "1.9.2",
     "wct-browser-legacy": "1.0.2",
     "web-animations-js": "^2.3.1"
   },

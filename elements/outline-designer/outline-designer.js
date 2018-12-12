@@ -7,6 +7,7 @@ import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/social-icons.js";
+import "@polymer/iron-icons/device-icons.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/paper-button/paper-button.js";
@@ -22,7 +23,9 @@ import "@lrnwebcomponents/item-overlay-ops/item-overlay-ops.js";
 import "@lrnwebcomponents/lrnsys-outline/lrnsys-outline.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
+import "@lrnwebcomponents/editable-list/editable-list.js";
 import "./lib/sortable-list.js";
+import { pagemap } from "./lib/pagemap.js";
 /**
  * `outline-designer`
  * `tools to modify and visualize JSON Outline Schema for editing`
@@ -178,6 +181,31 @@ class OutlineDesigner extends PolymerElement {
         paper-card.card-high-detail {
           width: 250px;
           height: 300px;
+        }
+
+        #minimaparea {
+          position: fixed;
+          top: 125px;
+          right: 0;
+          width: 100px;
+          height: 100%;
+          z-index: 100;
+          visibility: hidden;
+          opacity: 0;
+          transition: 0.3s all linear;
+          background-color: transparent;
+          -webkit-transition: 0.3s all linear;
+          -moz-transition: 0.3s all linear;
+          -ms-transition: 0.3s all linear;
+          -o-transition: 0.3s all linear;
+        }
+        #minimaparea.show-minimap {
+          background-color: white;
+          opacity: 0.5;
+          visibility: visible;
+        }
+        #minimaparea.show-minimap:hover {
+          opacity: 0.9;
         }
 
         .tf-tree {
@@ -425,6 +453,13 @@ class OutlineDesigner extends PolymerElement {
           </div>
           <div>
             <paper-icon-button
+              on-tap="_toggleMiniMap"
+              id="minimap"
+              icon="device:gps-fixed"
+              title="Toggle outline mini map"
+            ></paper-icon-button>
+            <paper-tooltip for="helpbutton">Toggle mini-map</paper-tooltip>
+            <paper-icon-button
               id="helpbutton"
               icon="icons:help"
               title="help"
@@ -465,14 +500,18 @@ class OutlineDesigner extends PolymerElement {
                       [[item.description]]
                     </div>
                     <div class="card-actions high-detail">
+                      <editable-list
+                        edit-mode="[[editMode]]"
+                        items="[[manifest.items]]"
+                      >
+                        <editable-list-item>[[item.title]]</editable-list-item>
+                      </editable-list>
                       <ul>
-                        <iron-swipeable-container swipe-style="curve"
-                          ><li>Page 1</li></iron-swipeable-container
-                        >
-                        <iron-swipeable-container swipe-style="curve"
+                        <li>Page 1</li>
+                        <iron-swipeable-container
                           ><li>Page 2</li></iron-swipeable-container
                         >
-                        <iron-swipeable-container swipe-style="curve"
+                        <iron-swipeable-container
                           ><li>Page 3</li></iron-swipeable-container
                         >
                       </ul>
@@ -551,7 +590,7 @@ class OutlineDesigner extends PolymerElement {
           </sortable-list>
         </section>
       </iron-pages>
-      <slot></slot>
+      <canvas id="minimaparea"></canvas> <slot></slot>
     `;
   }
 
@@ -617,10 +656,20 @@ class OutlineDesigner extends PolymerElement {
        */
       editMode: {
         name: "editMode",
-        type: "String",
+        type: "Boolean",
         value: false,
         reflectToAttribute: true,
         observer: "_editModeChanged"
+      },
+      /**
+       * Whether or to show the mini map
+       */
+      miniMap: {
+        name: "miniMap",
+        type: "Boolean",
+        value: true,
+        reflectToAttribute: true,
+        observer: "_miniMapChanged"
       },
       /**
        * end point / JSON to load
@@ -667,6 +716,19 @@ class OutlineDesigner extends PolymerElement {
       "item-overlay-option-selected",
       this._overlayOpSelected.bind(this)
     );
+    pagemap(this.$.minimaparea, {
+      viewport: null,
+      styles: {
+        "ul,ol,li": "rgba(0, 0, 0, 0.08)",
+        "h1,h2,h3,h4,h5,h6,a": "rgba(0, 0, 0, 0.10)",
+        "lrnsys-outline-item": "rgba(0, 0, 0, 0.08)",
+        "p,section": "rgba(0, 0, 0, 0.02)"
+      },
+      back: "rgba(0, 0, 0, 0.02)",
+      view: "rgba(0, 0, 0, 0.05)",
+      drag: "rgba(0, 0, 0, 0.10)",
+      interval: null
+    });
   }
   /**
    * life cycle, element is removed from the DOM
@@ -681,6 +743,21 @@ class OutlineDesigner extends PolymerElement {
       "item-overlay-option-selected",
       this._overlayOpSelected.bind(this)
     );
+  }
+  _toggleMiniMap(e) {
+    this.miniMap = !this.miniMap;
+  }
+
+  _miniMapChanged(newValue, oldValue) {
+    if (typeof newValue !== typeof undefined) {
+      if (newValue) {
+        this.$.minimap.icon = "device:gps-fixed";
+        this.$.minimaparea.classList.add("show-minimap");
+      } else {
+        this.$.minimap.icon = "device:gps-off";
+        this.$.minimaparea.classList.remove("show-minimap");
+      }
+    }
   }
   /**
    * toggle between view modes
@@ -848,4 +925,5 @@ class OutlineDesigner extends PolymerElement {
   }
 }
 window.customElements.define("outline-designer", OutlineDesigner);
+
 export { OutlineDesigner };

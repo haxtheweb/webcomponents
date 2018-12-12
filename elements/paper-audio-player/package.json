@@ -45,7 +45,7 @@
     "@lrnwebcomponents/schema-behaviors": "^0.0.39",
     "@polymer/iron-a11y-keys-behavior": "^3.0.0",
     "@polymer/iron-icon": "^3.0.0",
-    "@polymer/iron-icons": "^3.0.0",
+    "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.0",
     "@polymer/paper-progress": "^3.0.0",
     "@polymer/paper-ripple": "^3.0.0",
@@ -61,7 +61,7 @@
     "gulp-sourcemaps": "2.6.4",
     "lodash": "4.17.11",
     "polymer-build": "3.1.1",
-    "polymer-cli": "1.9.1",
+    "polymer-cli": "1.9.2",
     "wct-browser-legacy": "1.0.2"
   },
   "private": false,
