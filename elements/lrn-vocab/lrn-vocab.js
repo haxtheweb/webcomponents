@@ -13,7 +13,7 @@ import "@lrnwebcomponents/simple-modal/simple-modal.js";
 `lrn-vocab`
 Vocabulary term with visual treatment and semantic meaning.
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrnVocab = Polymer({
   _template: html`

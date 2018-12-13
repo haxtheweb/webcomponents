@@ -12,7 +12,7 @@ import "@lrnwebcomponents/a11y-media-player/a11y-media-player.js";
 `video-player`
 A simple responsive video player with ridiculously powerful backing
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - video source - url / link to the video file

@@ -5,7 +5,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
   This is to improve accessibility, consistency, and tag things
   with OER schema.
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrnContent = Polymer({
   _template: html`

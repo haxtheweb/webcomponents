@@ -12,7 +12,7 @@ import "./hax-toolbar.js";
 `hax-text-context`
 A context menu that provides common text based authoring options.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - context menu - this is a menu of text based buttons and events for use in a larger solution.

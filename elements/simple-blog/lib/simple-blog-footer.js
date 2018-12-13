@@ -4,7 +4,7 @@ import "@polymer/paper-button/paper-button.js";
 `simple-blog-footer`
 A simple blog and associated elements
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - footer of the page for blog posts relating back to the main overview page

@@ -18,7 +18,7 @@ document.head.appendChild($_documentContainer);
 
 An icon set of sort and filter icons specifically for editable-table.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
 

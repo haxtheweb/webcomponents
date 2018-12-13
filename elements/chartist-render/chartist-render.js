@@ -6,7 +6,7 @@ import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 `chartist-render`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  -

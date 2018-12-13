@@ -9,7 +9,7 @@ import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 `lrnsys-pdf`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrnsysPdf = Polymer({
   _template: html`

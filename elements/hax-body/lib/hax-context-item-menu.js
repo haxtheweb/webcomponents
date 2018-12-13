@@ -8,7 +8,7 @@ import "./hax-toolbar-menu.js";
 `hax-context-item-menu`
 An icon / button that has support for multiple options via drop down.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - panel - the flyout from left or right side that has elements that can be placed

@@ -23,7 +23,7 @@ import "./lib/game-show-quiz-modal.js";
 `game-show-quiz`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - game show - a display board in the style of Jeopardy

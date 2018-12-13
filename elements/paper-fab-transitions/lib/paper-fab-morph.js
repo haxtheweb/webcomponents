@@ -57,7 +57,7 @@ Custom property | Description | Default
 `--paper-morph-content` | Mixin applied to the dropdown's content | `{}`
 
 @hero hero.svg
-@demo demo/index.html
+* @demo demo/index.html
 */
 (function(Polymer) {
   Polymer({

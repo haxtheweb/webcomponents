@@ -18,7 +18,7 @@ Please see the `eco-json-schema-object` documentation for further information.
 
 @group eco Elements
 @element eco-json-schema-file
-@demo demo/index.html
+* @demo demo/index.html
 */
 Polymer({
   is: "eco-json-schema-file",

@@ -14,7 +14,7 @@ Examples:
     <moment-element></moment-element>
     <moment-element datetime="1991-12-31" output-format="MMM DD[,] YYYY"></moment-element>
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let MomentElement = Polymer({
   _template: html`

@@ -14,7 +14,7 @@ A LRN element that provides a panel / pallet of options to choose from.
 This is intended to be placed in a larger system for creating content quickly
 as the events being bubbled up include HTML nodes to inject into something
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - panel - the flyout from left or right side that has elements that can be placed

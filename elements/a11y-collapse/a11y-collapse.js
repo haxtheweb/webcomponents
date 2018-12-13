@@ -8,7 +8,7 @@ import "./lib/a11y-collapse-icon-button.js";
 `a11y-collapse`
 An accessible expand collapse.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
 

@@ -27,7 +27,7 @@ import "@lrnwebcomponents/lrndesign-mapmenu/lrndesign-mapmenu.js";
 `lrnapp-book-progress-dashboard`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy
   progress - the amount the student has moved through the active item(s)

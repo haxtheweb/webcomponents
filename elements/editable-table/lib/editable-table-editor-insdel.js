@@ -7,7 +7,7 @@ A button in the editable-table-editor-rowcol menu
 (editable-table-editor-rowcol.html) that inserts or 
 deletes a row or column .
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
 <editable-table-editor-insdel 

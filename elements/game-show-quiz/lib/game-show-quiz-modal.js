@@ -6,7 +6,7 @@ import "@polymer/paper-button/paper-button.js";
 `game-show-quiz-modal`
 Modal for the quiz show
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - game show - a display board in the style of Jeopardy

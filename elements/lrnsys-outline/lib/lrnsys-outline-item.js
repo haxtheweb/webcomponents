@@ -9,7 +9,7 @@ import "@lrnwebcomponents/drawing-icons/drawing-icons.js";
 `lrnsys-outline-item`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  -

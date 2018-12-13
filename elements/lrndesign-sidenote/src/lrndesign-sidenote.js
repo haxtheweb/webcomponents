@@ -9,7 +9,7 @@ import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 `lrndesign-sidenote`
 A basic side note
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrndesignSidenote = Polymer({
   _template: html`

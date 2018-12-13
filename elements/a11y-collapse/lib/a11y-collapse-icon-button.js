@@ -9,7 +9,7 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 `a11y-collapse-icon-button`
 An accessible expand collapse.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
   <ally-collapse-icon-button id="iconbutton" 

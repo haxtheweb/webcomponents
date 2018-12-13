@@ -35,7 +35,7 @@ Another awesome feature is dynamically load PDF file. So you can change the `src
 <pdf-element src="[[pdfFile]]" width=800 height=600></pdf-element>
 ```
 
-@demo demo/index.html
+* @demo demo/index.html
 @hero hero.svg
 */
 let PdfElement = Polymer({

@@ -2,7 +2,7 @@ import { Polymer } from "@polymer/polymer/polymer-legacy.js";
 /**
 `smooth-scroll`
 
-@demo demo/index.html
+* @demo demo/index.html
 Smooth scroll an element
 
 @microcopy - this is element provides methods to be called for smooth scrolling

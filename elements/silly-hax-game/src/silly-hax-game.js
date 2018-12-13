@@ -8,7 +8,7 @@ import "@polymer/paper-button/paper-button.js";
 `silly-hax-game`
 An example web component of gamifying HAX to make it more fun and challenging.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 */
 let SillyHaxGame = Polymer({

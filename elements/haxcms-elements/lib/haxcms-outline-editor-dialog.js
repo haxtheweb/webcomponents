@@ -4,7 +4,7 @@ import "@polymer/paper-button/paper-button.js";
 `haxcms-outline-editor-dialog`
 Dialog for presenting an editable outline
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
 

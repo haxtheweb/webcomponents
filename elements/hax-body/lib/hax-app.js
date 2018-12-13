@@ -6,7 +6,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
  It also expresses how to take that data and wire it up to gizmos making it able to
  utilize multiple display methods.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - data - this is the app data model for an element which expresses itself to hax

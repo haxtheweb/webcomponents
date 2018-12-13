@@ -8,7 +8,7 @@ import "@polymer/iron-icons/iron-icons.js";
 `lrndesign-gallery-zoom`
 An element that renders the zoom feature for the gallery.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
   <lrndesign-gallery-zoom 

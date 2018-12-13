@@ -9,7 +9,7 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 A toggle button for an property in the editable-table 
 interface (editable-table.html).
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
 

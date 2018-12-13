@@ -19,7 +19,7 @@ Example:
   </magazine-cover>
   ```
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let MagazineCover = Polymer({
   _template: html`

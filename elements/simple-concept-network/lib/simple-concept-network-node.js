@@ -9,7 +9,7 @@ import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 A small but effective little data visualizer for topics surrounding
 a central concept, much like the ELMS:LN snowflake icon.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - ELMS:LN - The ELMS: Learning Network "snowflake" is a network diagram

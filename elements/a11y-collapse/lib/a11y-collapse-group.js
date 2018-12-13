@@ -6,7 +6,7 @@ import "../a11y-collapse.js";
 `a11y-collapse-group`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  

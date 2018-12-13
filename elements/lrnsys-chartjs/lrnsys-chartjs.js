@@ -8,7 +8,7 @@ import "@vowo/chart-elements/chart-elements.js";
 `lrnsys-chartjs`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrnsysChartjs = Polymer({
   _template: html`

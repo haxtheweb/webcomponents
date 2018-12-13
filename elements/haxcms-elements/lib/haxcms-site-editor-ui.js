@@ -4,7 +4,7 @@ import "@polymer/iron-icons/editor-icons.js";
 `haxcms-site-editor-ui`
 haxcms editor element buttons that you see
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
 

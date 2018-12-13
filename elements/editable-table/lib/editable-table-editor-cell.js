@@ -8,7 +8,7 @@ import "./editable-table-behaviors.js";
 An editable cell in the editable-table-editor 
 (editable-table-editor.html) interface.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
 

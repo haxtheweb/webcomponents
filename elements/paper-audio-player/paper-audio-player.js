@@ -41,7 +41,7 @@ Custom property                             | Description                       
 --paper-audio-player-color                  | Color of the element                        | blueviolet
 
 @element paper-audio-player
-@demo demo/index.html
+* @demo demo/index.html
 */
 let PaperAudioPlayer = Polymer({
   _template: html`

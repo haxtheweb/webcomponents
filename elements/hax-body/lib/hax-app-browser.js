@@ -14,7 +14,7 @@ import "./hax-app-search.js";
 `hax-app-browser`
 Browse a list of apps. This provides a listing of our gizmos that we've integrated with.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - hax-app - expression of how to communicate and visualize a data source

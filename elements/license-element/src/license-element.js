@@ -5,7 +5,7 @@ import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 `license-element`
 A simple way of applying a semantically accurate license to work.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
 

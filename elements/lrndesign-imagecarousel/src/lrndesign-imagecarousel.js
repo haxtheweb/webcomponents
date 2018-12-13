@@ -4,7 +4,7 @@ import "@lrnwebcomponents/fancy-carousel/fancy-carousel.js";
 `lrndesign-imagecarousel`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrndesignImagecarousel = Polymer({
   _template: html`

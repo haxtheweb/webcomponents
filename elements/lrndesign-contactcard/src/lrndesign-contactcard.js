@@ -11,7 +11,7 @@ import "@lrnwebcomponents/social-media-icons/social-media-icons.js";
 `lrndesign-contactcard`
 lrndesign-contactcard
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrndesignContactcard = Polymer({
   _template: html`

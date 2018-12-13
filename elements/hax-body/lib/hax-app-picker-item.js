@@ -21,7 +21,7 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
  `hax-app-picker-item`
  An item for displaying in a picker
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 Polymer({
   _template: html`

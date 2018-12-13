@@ -19,7 +19,7 @@ Style                                                   | Description
 <lrnapp-fab-speed-dial-action icon="icons:content-copy">Copy</lrnapp-fab-speed-dial-action>
 ```
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 Polymer({
   _template: html`

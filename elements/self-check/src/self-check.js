@@ -12,7 +12,7 @@ import "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 `self-check`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  -

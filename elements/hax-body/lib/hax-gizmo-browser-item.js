@@ -17,7 +17,7 @@ import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 `hax-gizmo-browser-item`
 A button on the hax-gizmo-browser app display
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - 

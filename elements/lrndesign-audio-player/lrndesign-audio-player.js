@@ -37,7 +37,7 @@ Custom property                             | Description                       
 --lrndesign-audio-player-color                  | Color of the element                        | blueviolet
 
 @element lrndesign-audio-player
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrndesignAudioPlayer = Polymer({
   _template: html`

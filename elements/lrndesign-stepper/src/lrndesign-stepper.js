@@ -8,7 +8,7 @@ import "./lib/lrndesign-stepper-button.js";
 `lrndesign-stepper`
 visualization of steps
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrndesignStepper = Polymer({
   _template: html`

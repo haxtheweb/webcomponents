@@ -20,7 +20,7 @@ document.head.appendChild($_documentContainer);
  `hax-blox`
 Register a blox with HAX store.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - blox - A definition for a grid plate element

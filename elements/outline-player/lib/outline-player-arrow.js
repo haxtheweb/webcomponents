@@ -4,7 +4,7 @@ import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 `outline-player`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 
 */
 Polymer({

@@ -6,7 +6,7 @@ import "./hax-icons.js";
 `hax-blox-browser`
 List of layout blox to select from
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - blox - silly name for the general public when talking about custom elements and what it provides in the end.

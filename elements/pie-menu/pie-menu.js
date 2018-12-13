@@ -5,7 +5,7 @@ import "@polymer/iron-icons/iron-icons.js";
 `pie-menu`
 SVG Menu based on the excellent resource at : https://sarasoueidan.com/tools/circulus
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - pie - a delicious circle shaped container used to house berries or fruit filling. Best served with <ice-cream> or <boiled-apples>.

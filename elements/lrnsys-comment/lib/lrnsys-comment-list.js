@@ -21,7 +21,7 @@ import "../lrnsys-comment.js";
 `lrnsys-comment-list`
 A listing and event handling for comments.
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 Polymer({
   _template: html`

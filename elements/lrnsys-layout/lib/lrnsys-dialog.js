@@ -13,7 +13,7 @@ import "./lrnsys-button-inner.js";
 /**
 `lrnsys-dialog`
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 Polymer({
   _template: html`

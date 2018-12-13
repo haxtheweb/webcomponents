@@ -12,7 +12,7 @@ import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 `hero-banner`
 That thing no one wants to make over and over again yet always does...
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  -

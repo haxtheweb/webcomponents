@@ -6,7 +6,7 @@ import "@polymer/iron-validatable-behavior/iron-validatable-behavior.js";
 `mtz-marked-editor`
 Creates a textarea with common editor logic and can be controlled by UI elements
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let MtzMarkedEditor = Polymer({
   _template: html`

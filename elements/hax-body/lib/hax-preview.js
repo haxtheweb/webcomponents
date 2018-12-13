@@ -19,7 +19,7 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 `hax-preview`
 An element that can generate a form
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - element - the element to work against. an object that expresses enough information to create an element in the DOM. This is useful for remixing a tag via the json-form

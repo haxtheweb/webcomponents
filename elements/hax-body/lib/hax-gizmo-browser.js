@@ -10,7 +10,7 @@ import "./hax-gizmo-browser-item.js";
 `hax-gizmo-browser`
 Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - gizmo - silly name for the general public when talking about custom elements and what it provides in the end.

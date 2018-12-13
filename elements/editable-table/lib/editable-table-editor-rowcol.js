@@ -11,7 +11,7 @@ import "./editable-table-behaviors.js";
 A header label and menu for inserting and deleting a row or a column 
 of the editable-table interface (editable-table.html).
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
 

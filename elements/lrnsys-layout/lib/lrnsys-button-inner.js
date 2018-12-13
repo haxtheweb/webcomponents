@@ -6,7 +6,7 @@ import "@polymer/iron-icons/iron-icons.js";
 `lrnsys-button-inner`
 
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 Polymer({
   _template: html`

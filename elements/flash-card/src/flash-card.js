@@ -11,7 +11,7 @@ import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 `flash-card`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  -

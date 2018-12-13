@@ -8,7 +8,7 @@ import "@polymer/iron-icon/iron-icon.js";
 `lrndesign-gallerycard`
 A LRN element for presenting a gallery of items as cards
 that can pop up to display more info
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrndesignGallerycard = Polymer({
   _template: html`

@@ -9,7 +9,7 @@ import "./lib/person-testimonial-icon.js";
 `person-testimonial`
  Leaving a testimonial from a person to say your company rocks!
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let PersonTestimonial = Polymer({
   _template: html`

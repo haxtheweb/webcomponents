@@ -8,7 +8,7 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 `lrnsys-button`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrnsysButton = Polymer({
   _template: html`

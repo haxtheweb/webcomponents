@@ -5,7 +5,7 @@ import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 `oer-schema`
 A LRN element to wrap an oer schema prefix onto materials.
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let OerSchema = Polymer({
   _template: html`
