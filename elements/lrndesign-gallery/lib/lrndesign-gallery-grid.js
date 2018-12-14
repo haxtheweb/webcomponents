@@ -207,14 +207,7 @@ class LrndesignGalleryGrid extends PolymerElement {
     super.connectedCallback();
     this.__gallery = this.$.gallery;
   }
-
-  /**
-   * gets unique id for carousel and sets it as a target
-   */
-  _itemsLoaded() {
-    this.__items = this.items;
-  }
-
+  
   /**
    * go to item by id, or index
    */
@@ -228,19 +221,47 @@ class LrndesignGalleryGrid extends PolymerElement {
       //this.shadowRoot.querySelector("#gallery-zoom").toggleDialog();
     }
   }
+  
+  /**
+   * returns the proper padding to maintain image aspect ratio and updates
+   */
+  _getImageStyle(items) {
+    let img = new Image(),
+      padding = 75;
+    if (items !== undefined && items.length > 0) {
+      img.src = items[0].src;
+      if (img.naturalWidth > 0 && img.naturalHeight > 0)
+        padding = (100 * img.naturalHeight) / img.naturalWidth;
+    }
+    return "padding-bottom: " + padding + "%;";
+  }
+
+  /**
+   * gets unique id for carousel and sets it as a target
+   */
+  _itemsLoaded() {
+    this.__items = this.items;
+  }
+  
+  /**
+   * returns true if the given attribute is not null
+   */
+  _isAttrSet(attr) {
+    return attr !== null && attr !== undefined;
+  }
+  
+  /**
+   * sets selected attribute of thumbnail
+   */
+  _isSelected(selected) {
+    return selected ? "selected" : "";
+  }
 
   /**
    * when a thumbnail is tapped, goes to that item
    */
   _onNavTapped(e) {
     this.goToItem(e.model.item.id);
-  }
-
-  /**
-   * sets selected attribute of thumbnail
-   */
-  _isSelected(selected) {
-    return selected ? "selected" : "";
   }
 
   /**
@@ -256,27 +277,6 @@ class LrndesignGalleryGrid extends PolymerElement {
         this.$.itembody.innerHTML = this.selected.details;
       }
     }
-  }
-
-  /**
-   * returns true if the given attribute is not null
-   */
-  _isAttrSet(attr) {
-    return attr !== null && attr !== undefined;
-  }
-
-  /**
-   * returns the proper padding to maintain image aspect ratio and updates
-   */
-  _getImageStyle(items) {
-    let img = new Image(),
-      padding = 75;
-    if (items !== undefined && items.length > 0) {
-      img.src = items[0].src;
-      if (img.naturalWidth > 0 && img.naturalHeight > 0)
-        padding = (100 * img.naturalHeight) / img.naturalWidth;
-    }
-    return "padding-bottom: " + padding + "%;";
   }
 }
 window.customElements.define(LrndesignGalleryGrid.tag, LrndesignGalleryGrid);
