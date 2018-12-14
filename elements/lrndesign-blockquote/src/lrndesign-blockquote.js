@@ -506,6 +506,13 @@ let LrndesignBlockquote = Polymer({
           font-family: "Dr Sugiyama", cursive;
           transform: rotate(-4deg);
           color: #070d5f;
+          text-align: center;
+          min-height: 40px;
+          line-height: 40px;
+        }
+        :host([display-mode="photo"]) .mb-wrap cite {
+          display: block;
+          text-align: center;
         }
         :host([display-mode="photo"]) .mb-wrap cite a {
           color: #999;

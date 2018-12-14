@@ -78,7 +78,11 @@ Polymer({
     <app-toolbar>
       <template is="dom-if" if="[[__inputselect]]">
         <span class="input-mixer-label">[[label]]</span>
-        <hax-context-item-menu selected="{{value}}" icon="[[icon]]" id="input">
+        <hax-context-item-menu
+          selected-value="{{__selectedValue}}"
+          icon="[[icon]]"
+          id="input"
+        >
           <slot></slot>
         </hax-context-item-menu>
       </template>
@@ -254,11 +258,12 @@ Polymer({
         // select needs to inject settings into the slot
         if (method === "select" && typeof this.options !== typeof undefined) {
           // this hits the key => value relationship correctly
-          for (val in this.options) {
+          var item;
+          for (var val in this.options) {
             item = document.createElement("paper-item");
             item.attributes.value = val;
             item.innerHTML = this.options[val];
-            slot.appendChild(item);
+            slot.appendChild(item.cloneNode(true));
           }
         }
         // try and force cursor to focus on this element
@@ -321,10 +326,9 @@ Polymer({
         } else if (this.inputMethod == "select") {
           var count = 0;
           // convert value into key value
-          for (val in this.options) {
-            if (count == this.value) {
+          for (var val in this.options) {
+            if (count == this.__selectedValue) {
               this.value = val;
-              continue;
             }
             count++;
           }

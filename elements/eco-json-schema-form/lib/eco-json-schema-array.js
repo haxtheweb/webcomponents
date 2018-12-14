@@ -115,9 +115,8 @@ Polymer({
       ></paper-icon-button>
     </div>
 
-    <paper-collapse-group
-      id="form"
-      class="vertical flex layout"
+    <paper-collapse-group id="form" class="vertical flex layout"
+      ><slot></slot
     ></paper-collapse-group>
   `,
   properties: {
@@ -186,6 +185,7 @@ Polymer({
     if (!detail) {
       return console.warn("detail is undefined");
     }
+    console.log(detail);
 
     var ctx = this;
 
@@ -202,7 +202,7 @@ Polymer({
           i < ii;
           i++
         ) {
-          ctx._removeArrayEl(ctx.$.form.children[i]);
+          ctx._removeArrayEl(this.children[i]);
         }
       }
 
@@ -233,12 +233,12 @@ Polymer({
           dom(containerEl).appendChild(componentEl);
           dom(containerEl).appendChild(buttonEl);
 
-          var beforeEl = ctx.$.form.children[i];
+          var beforeEl = this.children[i];
 
           if (beforeEl) {
-            dom(ctx.$.form).insertBefore(containerEl, beforeEl);
+            dom(this).insertBefore(containerEl, beforeEl);
           } else {
-            dom(ctx.$.form).appendChild(containerEl);
+            dom(this).appendChild(containerEl);
           }
 
           ctx.listen(
@@ -287,7 +287,7 @@ Polymer({
     } else if (detail.path) {
       path = path.concat(detail.path.split(".").slice(1));
       this.set(path, this._deepClone(detail.value));
-      this.notifyPath("path");
+      this.notifyPath(path);
     } else {
       this.splice("value", index, 1, this._deepClone(detail.value));
       this.notifyPath("value.1");
@@ -308,10 +308,10 @@ Polymer({
       }
     }
     el.schemaArrayItem = null;
-    dom(this.$.form).removeChild(el);
+    dom(this).removeChild(el);
   },
   _clearForm: function() {
-    var formEl = dom(this.$.form);
+    var formEl = dom(this);
     while (formEl.firstChild) {
       this._removeArrayEl(formEl.firstChild);
     }
@@ -323,7 +323,7 @@ Polymer({
   },
   _errorChanged: function() {
     var ctx = this;
-    dom(this.$.form).childNodes.forEach(function(rowEl, idx) {
+    dom(this).childNodes.forEach(function(rowEl, idx) {
       if (ctx.error && ctx.error[idx]) {
         dom(rowEl).childNodes[0].error = ctx.error[idx];
       } else {
@@ -388,12 +388,12 @@ Polymer({
     dom(containerEl).appendChild(componentEl);
     dom(containerEl).appendChild(buttonEl);
 
-    var beforeEl = ctx.$.form.children[i];
+    var beforeEl = this.children[i];
 
     if (beforeEl) {
-      dom(ctx.$.form).insertBefore(containerEl, beforeEl);
+      dom(this).insertBefore(containerEl, beforeEl);
     } else {
-      dom(ctx.$.form).appendChild(containerEl);
+      dom(this).appendChild(containerEl);
     }
     ctx.listen(
       componentEl,

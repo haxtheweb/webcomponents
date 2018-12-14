@@ -666,7 +666,6 @@ Polymer({
    * Value in the form has changed, reflect to the preview.
    */
   _valueChanged: function() {
-    console.log(this.value);
     let node = this.previewNode;
     // sanity check and then get props and mesh with form value response
     if (

@@ -62,11 +62,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 566,
+              "line": 573,
               "column": 4
             },
             "end": {
-              "line": 569,
+              "line": 576,
               "column": 5
             }
           },
@@ -84,11 +84,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 573,
+              "line": 580,
               "column": 4
             },
             "end": {
-              "line": 577,
+              "line": 584,
               "column": 5
             }
           },
@@ -104,28 +104,6 @@
           "name": "author",
           "type": "string | null | undefined",
           "description": "Optional author of the quote",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 581,
-              "column": 4
-            },
-            "end": {
-              "line": 584,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "notify": true,
-              "attributeType": "String"
-            }
-          }
-        },
-        {
-          "name": "sourceLink",
-          "type": "string | null | undefined",
-          "description": "Optional source that links to where the quote is from",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -145,9 +123,9 @@
           }
         },
         {
-          "name": "displayMode",
+          "name": "sourceLink",
           "type": "string | null | undefined",
-          "description": "Funny 1900s vision.",
+          "description": "Optional source that links to where the quote is from",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -155,7 +133,29 @@
               "column": 4
             },
             "end": {
-              "line": 601,
+              "line": 598,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "displayMode",
+          "type": "string | null | undefined",
+          "description": "Funny 1900s vision.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 602,
+              "column": 4
+            },
+            "end": {
+              "line": 608,
               "column": 5
             }
           },
@@ -224,11 +224,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 606,
+              "line": 613,
               "column": 2
             },
             "end": {
-              "line": 619,
+              "line": 626,
               "column": 3
             }
           },
@@ -251,11 +251,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 623,
+              "line": 630,
               "column": 2
             },
             "end": {
-              "line": 646,
+              "line": 653,
               "column": 3
             }
           },
@@ -278,11 +278,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 651,
+              "line": 658,
               "column": 2
             },
             "end": {
-              "line": 773,
+              "line": 780,
               "column": 3
             }
           },
@@ -302,7 +302,7 @@
           "column": 34
         },
         "end": {
-          "line": 774,
+          "line": 781,
           "column": 1
         }
       },
@@ -351,11 +351,11 @@
           "description": "Source being cited",
           "sourceRange": {
             "start": {
-              "line": 566,
+              "line": 573,
               "column": 4
             },
             "end": {
-              "line": 569,
+              "line": 576,
               "column": 5
             }
           },
@@ -367,23 +367,7 @@
           "description": "Optional image to use",
           "sourceRange": {
             "start": {
-              "line": 573,
-              "column": 4
-            },
-            "end": {
-              "line": 577,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "author",
-          "description": "Optional author of the quote",
-          "sourceRange": {
-            "start": {
-              "line": 581,
+              "line": 580,
               "column": 4
             },
             "end": {
@@ -395,8 +379,8 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "source-link",
-          "description": "Optional source that links to where the quote is from",
+          "name": "author",
+          "description": "Optional author of the quote",
           "sourceRange": {
             "start": {
               "line": 588,
@@ -411,15 +395,31 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "display-mode",
-          "description": "Funny 1900s vision.",
+          "name": "source-link",
+          "description": "Optional source that links to where the quote is from",
           "sourceRange": {
             "start": {
               "line": 595,
               "column": 4
             },
             "end": {
-              "line": 601,
+              "line": 598,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "display-mode",
+          "description": "Funny 1900s vision.",
+          "sourceRange": {
+            "start": {
+              "line": 602,
+              "column": 4
+            },
+            "end": {
+              "line": 608,
               "column": 5
             }
           },
