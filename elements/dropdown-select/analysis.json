@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 85,
+              "line": 86,
               "column": 4
             },
             "end": {
-              "line": 88,
+              "line": 89,
               "column": 5
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 94,
               "column": 4
             },
             "end": {
-              "line": 96,
+              "line": 97,
               "column": 5
             }
           },
@@ -57,11 +57,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 104,
+              "line": 105,
               "column": 4
             },
             "end": {
-              "line": 106,
+              "line": 107,
               "column": 5
             }
           },
@@ -78,11 +78,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 111,
+              "line": 112,
               "column": 4
             },
             "end": {
-              "line": 113,
+              "line": 114,
               "column": 5
             }
           },
@@ -99,11 +99,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 119,
+              "line": 120,
               "column": 4
             },
             "end": {
-              "line": 122,
+              "line": 123,
               "column": 5
             }
           },
@@ -121,11 +121,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 127,
+              "line": 128,
               "column": 4
             },
             "end": {
-              "line": 130,
+              "line": 131,
               "column": 5
             }
           },
@@ -143,11 +143,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 136,
+              "line": 137,
               "column": 4
             },
             "end": {
-              "line": 139,
+              "line": 140,
               "column": 5
             }
           },
@@ -165,11 +165,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 144,
+              "line": 145,
               "column": 4
             },
             "end": {
-              "line": 147,
+              "line": 148,
               "column": 5
             }
           },
@@ -187,11 +187,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 152,
+              "line": 153,
               "column": 4
             },
             "end": {
-              "line": 155,
+              "line": 156,
               "column": 5
             }
           },
@@ -209,11 +209,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 160,
+              "line": 161,
               "column": 4
             },
             "end": {
-              "line": 162,
+              "line": 163,
               "column": 5
             }
           },
@@ -230,11 +230,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 167,
+              "line": 168,
               "column": 4
             },
             "end": {
-              "line": 170,
+              "line": 171,
               "column": 5
             }
           },
@@ -252,11 +252,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 175,
+              "line": 176,
               "column": 4
             },
             "end": {
-              "line": 177,
+              "line": 178,
               "column": 5
             }
           },
@@ -273,11 +273,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 182,
+              "line": 183,
               "column": 4
             },
             "end": {
-              "line": 185,
+              "line": 186,
               "column": 5
             }
           },
@@ -295,11 +295,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 190,
+              "line": 191,
               "column": 4
             },
             "end": {
-              "line": 193,
+              "line": 194,
               "column": 5
             }
           },
@@ -317,16 +317,18 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 198,
+              "line": 199,
               "column": 4
             },
             "end": {
-              "line": 201,
+              "line": 205,
               "column": 5
             }
           },
           "metadata": {
             "polymer": {
+              "notify": true,
+              "observer": "\"_valueChanged\"",
               "attributeType": "String"
             }
           },
@@ -339,11 +341,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 207,
+              "line": 211,
               "column": 4
             },
             "end": {
-              "line": 210,
+              "line": 214,
               "column": 5
             }
           },
@@ -361,11 +363,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 216,
+              "line": 220,
               "column": 4
             },
             "end": {
-              "line": 218,
+              "line": 222,
               "column": 5
             }
           },
@@ -383,11 +385,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 224,
+              "line": 228,
               "column": 2
             },
             "end": {
-              "line": 231,
+              "line": 235,
               "column": 3
             }
           },
@@ -407,11 +409,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 236,
+              "line": 240,
               "column": 2
             },
             "end": {
-              "line": 238,
+              "line": 242,
               "column": 3
             }
           },
@@ -431,11 +433,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 243,
+              "line": 247,
               "column": 2
             },
             "end": {
-              "line": 245,
+              "line": 249,
               "column": 3
             }
           },
@@ -455,11 +457,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 250,
+              "line": 253,
               "column": 2
             },
             "end": {
-              "line": 254,
+              "line": 257,
               "column": 3
             }
           },
@@ -471,20 +473,47 @@
         },
         {
           "name": "attached",
-          "description": "Set the index of the selected item.",
+          "description": "Set the index of the selected item, only on initial setup though",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 259,
+              "line": 261,
               "column": 2
             },
             "end": {
-              "line": 269,
+              "line": 263,
               "column": 3
             }
           },
           "metadata": {},
           "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_valueChanged",
+          "description": "Notice value has changed and ensure data model is accurate",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 267,
+              "column": 2
+            },
+            "end": {
+              "line": 277,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
           "return": {
             "type": "void"
           }
@@ -495,11 +524,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 29,
+          "line": 30,
           "column": 29
         },
         "end": {
-          "line": 270,
+          "line": 278,
           "column": 1
         }
       },
@@ -512,11 +541,11 @@
           "description": "Set to true in order to prevent scroll from being constrained\nto the dropdown when it opens.",
           "sourceRange": {
             "start": {
-              "line": 85,
+              "line": 86,
               "column": 4
             },
             "end": {
-              "line": 88,
+              "line": 89,
               "column": 5
             }
           },
@@ -528,11 +557,11 @@
           "description": "Set to true to always float the label.",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 94,
               "column": 4
             },
             "end": {
-              "line": 96,
+              "line": 97,
               "column": 5
             }
           },
@@ -544,11 +573,11 @@
           "description": "If true, the `horizontalAlign` and `verticalAlign` properties will\nbe considered preferences instead of strict requirements when\npositioning the dropdown and may be changed if doing so reduces\nthe area of the dropdown falling outside of `fitInto`.",
           "sourceRange": {
             "start": {
-              "line": 104,
+              "line": 105,
               "column": 4
             },
             "end": {
-              "line": 106,
+              "line": 107,
               "column": 5
             }
           },
@@ -560,11 +589,11 @@
           "description": "The error message to display when invalid.",
           "sourceRange": {
             "start": {
-              "line": 111,
+              "line": 112,
               "column": 4
             },
             "end": {
-              "line": 113,
+              "line": 114,
               "column": 5
             }
           },
@@ -576,11 +605,11 @@
           "description": "The orientation against which to align the menu dropdown\nhorizontally relative to the dropdown trigger.",
           "sourceRange": {
             "start": {
-              "line": 119,
+              "line": 120,
               "column": 4
             },
             "end": {
-              "line": 122,
+              "line": 123,
               "column": 5
             }
           },
@@ -592,11 +621,11 @@
           "description": "The label of the select menu",
           "sourceRange": {
             "start": {
-              "line": 127,
+              "line": 128,
               "column": 4
             },
             "end": {
-              "line": 130,
+              "line": 131,
               "column": 5
             }
           },
@@ -608,11 +637,11 @@
           "description": "Set to true to disable animations when opening and closing the\ndropdown.",
           "sourceRange": {
             "start": {
-              "line": 136,
+              "line": 137,
               "column": 4
             },
             "end": {
-              "line": 139,
+              "line": 140,
               "column": 5
             }
           },
@@ -624,11 +653,11 @@
           "description": "Set to true to disable the floating label.",
           "sourceRange": {
             "start": {
-              "line": 144,
+              "line": 145,
               "column": 4
             },
             "end": {
-              "line": 147,
+              "line": 148,
               "column": 5
             }
           },
@@ -640,11 +669,11 @@
           "description": "True if the dropdown is open. Otherwise, false.",
           "sourceRange": {
             "start": {
-              "line": 152,
+              "line": 153,
               "column": 4
             },
             "end": {
-              "line": 155,
+              "line": 156,
               "column": 5
             }
           },
@@ -656,11 +685,11 @@
           "description": "The placeholder for the dropdown.",
           "sourceRange": {
             "start": {
-              "line": 160,
+              "line": 161,
               "column": 4
             },
             "end": {
-              "line": 162,
+              "line": 163,
               "column": 5
             }
           },
@@ -672,11 +701,11 @@
           "description": "Whether focus should be restored to the dropdown when the menu closes.",
           "sourceRange": {
             "start": {
-              "line": 167,
+              "line": 168,
               "column": 4
             },
             "end": {
-              "line": 170,
+              "line": 171,
               "column": 5
             }
           },
@@ -688,11 +717,11 @@
           "description": "The last selected item.",
           "sourceRange": {
             "start": {
-              "line": 175,
+              "line": 176,
               "column": 4
             },
             "end": {
-              "line": 177,
+              "line": 178,
               "column": 5
             }
           },
@@ -704,11 +733,11 @@
           "description": "The index of the selected item",
           "sourceRange": {
             "start": {
-              "line": 182,
+              "line": 183,
               "column": 4
             },
             "end": {
-              "line": 185,
+              "line": 186,
               "column": 5
             }
           },
@@ -720,11 +749,11 @@
           "description": "The label of the selected item",
           "sourceRange": {
             "start": {
-              "line": 190,
+              "line": 191,
               "column": 4
             },
             "end": {
-              "line": 193,
+              "line": 194,
               "column": 5
             }
           },
@@ -736,11 +765,11 @@
           "description": "The default value",
           "sourceRange": {
             "start": {
-              "line": 198,
+              "line": 199,
               "column": 4
             },
             "end": {
-              "line": 201,
+              "line": 205,
               "column": 5
             }
           },
@@ -752,11 +781,11 @@
           "description": "The orientation against which to align the menu dropdown\nvertically relative to the dropdown trigger.",
           "sourceRange": {
             "start": {
-              "line": 207,
+              "line": 211,
               "column": 4
             },
             "end": {
-              "line": 210,
+              "line": 214,
               "column": 5
             }
           },
@@ -768,11 +797,11 @@
           "description": "Overrides the vertical offset computed in\n_computeMenuVerticalOffset.",
           "sourceRange": {
             "start": {
-              "line": 216,
+              "line": 220,
               "column": 4
             },
             "end": {
-              "line": 218,
+              "line": 222,
               "column": 5
             }
           },
@@ -780,7 +809,14 @@
           "type": "number | null | undefined"
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "value-changed",
+          "description": "Fired when the `value` property changes.",
+          "metadata": {}
+        }
+      ],
       "styling": {
         "cssVariables": [],
         "selectors": []

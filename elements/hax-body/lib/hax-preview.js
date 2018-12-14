@@ -460,6 +460,7 @@ Polymer({
               }
             }
             this.set("value." + property, element.properties[property]);
+            this.notifyPath("value." + property);
           }
         }
         for (var prop in props.settings[newValue]) {
@@ -489,6 +490,9 @@ Polymer({
                   this.set(
                     "value." + props.settings[this.formKey][prop].slot,
                     dom(previewNode).getEffectiveChildNodes()[i].innerHTML
+                  );
+                  this.notifyPath(
+                    "value." + props.settings[this.formKey][prop].slot
                   );
                 }
               }
@@ -561,6 +565,7 @@ Polymer({
               } catch (e) {}
             }
             this.set("value." + property, element.properties[property]);
+            this.notifyPath("value." + property);
           }
         }
         // then, let the node itself dictate defaults if things are not set
@@ -581,6 +586,7 @@ Polymer({
                 newValue.properties[property].value;
             }
             this.set("value." + property, newValue.properties[property].value);
+            this.notifyPath("value." + property);
           }
         }
         // need to specifically walk through slots if there is anything
@@ -609,6 +615,9 @@ Polymer({
                   this.set(
                     "value." + props.settings[this.formKey][prop].slot,
                     dom(newValue).getEffectiveChildNodes()[i].innerHTML
+                  );
+                  this.notifyPath(
+                    "value." + props.settings[this.formKey][prop].slot
                   );
                 }
               }
@@ -657,6 +666,7 @@ Polymer({
    * Value in the form has changed, reflect to the preview.
    */
   _valueChanged: function() {
+    console.log(this.value);
     let node = this.previewNode;
     // sanity check and then get props and mesh with form value response
     if (
@@ -723,6 +733,9 @@ Polymer({
               props.settings[this.formKey][value].property,
             this.value[props.settings[this.formKey][value].property]
           );
+          this.notifyPath(
+            "element.properties." + props.settings[this.formKey][value].property
+          );
         } else if (
           props.settings[this.formKey].hasOwnProperty(value) &&
           typeof props.settings[this.formKey][value].attribute !==
@@ -775,6 +788,10 @@ Polymer({
                 props.settings[this.formKey][value].attribute,
               this.value[props.settings[this.formKey][value].attribute]
             );
+            this.notifyPath(
+              "element.properties." +
+                props.settings[this.formKey][value].attribute
+            );
           }
         } else if (
           typeof props.settings[this.formKey][value].slot !==
@@ -807,6 +824,7 @@ Polymer({
             "element.content",
             "<template>" + tmpel.innerHTML + "</template>"
           );
+          this.notifyPath("element.content");
         } else {
           // @todo add support for disabling based on not having advanced
         }

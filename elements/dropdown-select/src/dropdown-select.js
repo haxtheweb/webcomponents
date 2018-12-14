@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-dropdown-menu/paper-dropdown-menu.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-listbox/paper-listbox.js";
@@ -198,7 +199,10 @@ let DropdownSelect = Polymer({
      */
     value: {
       type: String,
-      value: null
+      value: null,
+      notify: true,
+      reflectToAttribute: true,
+      observer: "_valueChanged"
     },
 
     /**
@@ -244,7 +248,6 @@ let DropdownSelect = Polymer({
   _onClose: function(e) {
     this.opened = false;
   },
-
   /**
    * Get the value of the selected item.
    */
@@ -253,12 +256,17 @@ let DropdownSelect = Polymer({
     this.selectedItemLabel = this.$.menu.selectedItemLabel;
     this.selectedItemIndex = this.$.listbox.selected;
   },
-
   /**
-   * Set the index of the selected item.
+   * Set the index of the selected item, only on initial setup though
    */
   attached: function() {
-    let children = this.$.listbox.querySelectorAll("paper-item");
+    this._valueChanged(this.value);
+  },
+  /**
+   * Notice value has changed and ensure data model is accurate
+   */
+  _valueChanged: function(newValue, oldValue) {
+    let children = dom(this).querySelectorAll("paper-item");
     if (children !== undefined && children !== null) {
       for (let i = 0; i < children.length; i++) {
         if (this.value === children[i].getAttribute("value")) {
