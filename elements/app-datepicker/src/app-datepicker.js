@@ -98,7 +98,7 @@ Custom property | Description | Default
 
 @author motss
 @element app-datepicker, app-datepicker-dialog
-@demo demo/index.html
+* @demo demo/index.html
 */
 let AppDatepicker = Polymer({
   _template: html`

@@ -5,7 +5,7 @@ import "@polymer/iron-collapse/iron-collapse.js";
 `lrnsys-collapselist-item`
 
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 Polymer({
   _template: html`

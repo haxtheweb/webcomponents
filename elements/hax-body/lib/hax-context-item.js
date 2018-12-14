@@ -16,7 +16,7 @@ import "./hax-toolbar-item.js";
 `hax-context-item`
 A single button in the hax context menu for consistency.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - context - menu in the page the user can select an item from, this being 1 option in that list

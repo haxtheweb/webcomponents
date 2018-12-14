@@ -18,7 +18,7 @@ import "./hax-gizmo-browser.js";
 `hax-manager`
 A LRN element for brokering the UI for api endpoints both in querying and uploading of new media to eventually bubble up an event for hax-body to have content inserted into it. This is a wiring closet of sorts to ensure we can talk to any backend that's returning a slew of widgets / media to insert.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - hax-manager - the modal for selecting a app for getting something added to hax-body. This will bubble an event up to an app which will then invoke the haxInsert function on hax-body in order to get the selected item onto the body area for usage.

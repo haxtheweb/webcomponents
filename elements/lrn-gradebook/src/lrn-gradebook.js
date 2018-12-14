@@ -30,7 +30,7 @@ document.head.appendChild($_documentContainer);
 `lrn-gradebook`
 A LRN element
 
-@demo demo/index.html 
+* @demo demo/index.html 
 */
 let LrnGradebook = Polymer({
   is: "lrn-gradebook",

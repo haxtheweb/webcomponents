@@ -4,7 +4,7 @@ import "./lib/date.format.js";
 `simple-datetime`
 A simple datetime element that takes in unix timestamp and outputs a date.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - passing in a timestamp from unix and having it be php based date formatting to render is super helpful

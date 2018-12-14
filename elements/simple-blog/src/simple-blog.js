@@ -12,7 +12,7 @@ import "./lib/simple-blog-post.js";
 `simple-blog`
 A simple blog and associated elements
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  -

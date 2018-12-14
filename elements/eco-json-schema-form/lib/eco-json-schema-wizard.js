@@ -288,7 +288,7 @@ el.error = {
 
 @group eco Elements
 @element eco-json-schema-wizard
-@demo demo/index.html
+* @demo demo/index.html
 */
 Polymer({
   is: "eco-json-schema-wizard",

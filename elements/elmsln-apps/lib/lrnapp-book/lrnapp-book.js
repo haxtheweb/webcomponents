@@ -33,7 +33,7 @@ import "./lrnapp-book-progress-dashboard.js";
 `lrnapp-book`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy
   node / circle - A progress circle on the line

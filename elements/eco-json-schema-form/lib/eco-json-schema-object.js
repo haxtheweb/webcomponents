@@ -278,7 +278,7 @@ el.error = {
 
 @group eco Elements
 @element eco-json-schema-object
-@demo demo/index.html
+* @demo demo/index.html
 */
 Polymer({
   is: "eco-json-schema-object",

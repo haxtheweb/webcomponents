@@ -4,7 +4,7 @@ import "./lib/lrndesign-animationctrl-button.js";
 `lrndesign-animationctrl`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrndesignAnimationctrl = Polymer({
   _template: html`

@@ -5,7 +5,7 @@ import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 `lrndesign-avatar`
 Visualize a user account eitehr with an image, a label, or as abstract art.
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrndesignAvatar = Polymer({
   _template: html`

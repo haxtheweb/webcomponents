@@ -13,7 +13,7 @@ as the editor. It is like cms-hax in that it's prepackaged
 the way HAX will be integrated but the connotation is that there
 is no edit state and that it is always editing effectively.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - app - an application desktop or mobile that's deployed this

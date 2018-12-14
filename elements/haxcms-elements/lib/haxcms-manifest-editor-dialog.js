@@ -10,7 +10,7 @@ import "@polymer/iron-icons/image-icons.js";
 `haxcms-manifest-editor-dialog`
 Dialog for presenting an editable manifest of core settings
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
 

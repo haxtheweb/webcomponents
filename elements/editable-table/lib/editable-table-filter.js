@@ -8,7 +8,7 @@ import "./editable-table-iconset.js";
 Displays a cell in the editable-table-display mode 
 (editable-table-display.html) as a filter button.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
 

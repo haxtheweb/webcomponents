@@ -12,7 +12,7 @@ view mode (editable-table-display.html) and
 edit mode (editable-table-editor.html). 
 (See editable-table-behaviors.html for more information.)
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
 

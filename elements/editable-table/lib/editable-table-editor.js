@@ -18,7 +18,7 @@ import "./editable-table-styles.js";
 An editor interface for editable-table (editable-table.html). 
 (See editable-table-behaviors.html for more information.)
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
 

@@ -5,7 +5,7 @@ import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 `simple-image`
 A minimalist image that modals and presents info cleanly.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  -

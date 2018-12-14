@@ -5,7 +5,7 @@ import "./map-menu-submenu.js";
 `map-menu`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 Polymer({
   _template: html`

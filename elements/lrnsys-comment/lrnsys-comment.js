@@ -24,7 +24,7 @@ import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 `lrnsys-comment`
 A well styled comment for a user with markdown support.
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrnsysComment = Polymer({
   _template: html`

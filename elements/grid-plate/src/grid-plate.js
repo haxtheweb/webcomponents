@@ -12,7 +12,7 @@ import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
 `grid-plate`
 A grid plate based on a layout that manipulates it.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  -

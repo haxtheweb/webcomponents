@@ -19,5 +19,5 @@ document.head.appendChild($_documentContainer);
 `materializecss-styles`
 Some styling helpers from the materializecss project
 
-@demo demo/index.html
+* @demo demo/index.html
 */

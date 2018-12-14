@@ -5,7 +5,7 @@ import "@lrnwebcomponents/simple-datetime/simple-datetime.js";
 `simple-blog-overview`
 Overview / preview of the text of the post with title
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - this is one post in a listing of many most likely

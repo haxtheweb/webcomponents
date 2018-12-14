@@ -27,7 +27,7 @@ Custom property | Description | Default
 `--paper-avatar-color` | Background color of the avatar image | 
 
 
-@demo demo/index.html 
+* @demo demo/index.html 
 */
 let PaperAvatar = Polymer({
   is: "paper-avatar",

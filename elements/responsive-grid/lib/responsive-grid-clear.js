@@ -3,7 +3,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 `responsive-grid-clear`
 A clearumn for the responsive grid
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
   Example: 

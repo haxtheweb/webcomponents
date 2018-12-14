@@ -3,7 +3,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 `lrndesign-contentblock`
 An incredibly basic content block
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrndesignContentblock = Polymer({
   _template: html`

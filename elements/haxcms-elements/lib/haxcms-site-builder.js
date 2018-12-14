@@ -7,7 +7,7 @@ import "@polymer/iron-ajax/iron-ajax.js";
 `haxcms-site-builder`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - This is a factory element, it doesn't do much on its own visually

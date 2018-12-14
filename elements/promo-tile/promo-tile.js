@@ -9,7 +9,7 @@ import "@polymer/iron-icons/iron-icons.js";
 `promo-tile`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  -

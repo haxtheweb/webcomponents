@@ -6,7 +6,7 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 `lrndesign-drawer`
 
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrndesignDrawer = Polymer({
   _template: html`

@@ -46,7 +46,7 @@ Card example:
     </pdf-browser-viewer>
 ```
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let PdfBrowserViewer = Polymer({
   _template: html`

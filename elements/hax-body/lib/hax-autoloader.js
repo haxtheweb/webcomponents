@@ -7,7 +7,7 @@ import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 `hax-autoloader`
 Automatically load elements based on the most logical location with future fallback support for CDNs.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - hax-autoloader - autoloading of custom element imports which can then emmit events as needed

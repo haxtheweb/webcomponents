@@ -7,7 +7,7 @@ import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
  An element dedicated to presenting and managing a correct citation on the web
  both visually as well as semantically with simple inputs.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  -

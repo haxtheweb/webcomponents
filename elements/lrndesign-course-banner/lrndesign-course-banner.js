@@ -6,7 +6,7 @@ import "@lrnwebcomponents/lrndesign-avatar/lrndesign-avatar.js";
 `lrndesign-course-banner`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  -

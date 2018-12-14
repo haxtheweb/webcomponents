@@ -9,7 +9,7 @@ A column header that functions as a three-state sort button
 (no sort, sort ascending, sort descending) for the 
 table-editor-display mode (table-editor-display.html).
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
 

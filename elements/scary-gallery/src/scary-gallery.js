@@ -23,7 +23,7 @@ Disclaimer:
 
 Work in progress, the algorithm to layout the images is far from perfect.
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let ScaryGallery = Polymer({
   _template: html`

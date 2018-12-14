@@ -9,7 +9,7 @@ import "@polymer/iron-collapse/iron-collapse.js";
 `lrndesign-stepper-button`
 visualization of steps
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 Polymer({
   _template: html`

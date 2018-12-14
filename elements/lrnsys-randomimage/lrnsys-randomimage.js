@@ -9,7 +9,7 @@ import "@polymer/paper-button/paper-button.js";
 `lrnsys-randomimage`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrnsysRandomimage = Polymer({
   _template: html`

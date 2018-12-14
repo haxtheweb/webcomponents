@@ -10,7 +10,7 @@ import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 `lrndesign-panelcard`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrndesignPanelcard = Polymer({
   _template: html`

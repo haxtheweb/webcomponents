@@ -49,7 +49,7 @@ Custom property | Description | Default
 `--paper-icon-picker-size` | The size of the icon picker | `24px`
 
 @element paper-icon-picker
-@demo demo/index.html
+* @demo demo/index.html
 */
 let PaperIconPicker = Polymer({
   _template: html`

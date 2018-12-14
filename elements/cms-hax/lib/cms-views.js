@@ -53,7 +53,7 @@ document.head.appendChild($_documentContainer);
 `cms-views`
 Render and process a  / views from a content management system.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  -

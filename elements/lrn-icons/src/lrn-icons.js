@@ -582,7 +582,7 @@ See [iron-iconset](#iron-iconset) and [iron-iconset-svg](#iron-iconset-svg) for 
 
 @group LRN Elements
 @pseudoElement lrn-icons
-@demo demo/index.html
+* @demo demo/index.html
 */
 /* explore */
 /* save */

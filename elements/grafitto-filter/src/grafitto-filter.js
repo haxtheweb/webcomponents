@@ -178,7 +178,7 @@ The function receives a single `item` of the items provided and should return a 
 by the regular expression engine.
 
 @element grafitto-filter
-@demo demo/index.html
+* @demo demo/index.html
 */
 let GrafittoFilter = Polymer({
   _template: html`

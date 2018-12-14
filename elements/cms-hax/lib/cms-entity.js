@@ -53,7 +53,7 @@ document.head.appendChild($_documentContainer);
 `cms-entity`
 Render and process a  / entity from a content management system.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  -

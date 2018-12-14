@@ -14,7 +14,7 @@ Displays a table with theming, styling, sorting, resonsive, and
 filtering features.  (See editable-table-behaviors.html 
 for more information.)
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
 <editable-table-display 

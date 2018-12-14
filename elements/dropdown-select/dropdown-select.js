@@ -24,7 +24,7 @@ An easy to use, works as expected dropdown menu. Add slotted items like follows:
   <paper-item value="10">Value is 10, but you will see this text</paper-item>
 </dropdown-select>
 
-@demo demo/index.html
+* @demo demo/index.html
 
 */
 let DropdownSelect = Polymer({

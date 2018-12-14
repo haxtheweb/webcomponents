@@ -4,7 +4,7 @@ import "@polymer/iron-image/iron-image.js";
 `random-image`
 Element to show random image from a given group.
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let RandomImage = Polymer({
   _template: html`

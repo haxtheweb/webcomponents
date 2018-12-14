@@ -10,7 +10,7 @@ import "./lib/fancy-carousel-shared-styles.js";
 `fancy-carousel`
 Carousel which gives you options for multiple fancy transistions and different ways to include images.
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let FancyCarousel = Polymer({
   _template: html`

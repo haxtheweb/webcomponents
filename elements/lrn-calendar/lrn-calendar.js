@@ -21,7 +21,7 @@ import "./lib/lrn-calendar-date.js";
 `lrn-calendar`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrnCalendar = Polymer({
   _template: html`

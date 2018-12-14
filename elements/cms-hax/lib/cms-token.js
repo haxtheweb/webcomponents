@@ -72,7 +72,7 @@ document.head.appendChild($_documentContainer);
 `cms-token`
 Render and process a shortcode / token from a content management system.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - cms - Content management system, while writen against Drupal should be

@@ -12,7 +12,7 @@ import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 `lrnsys-button`
 `A simple button for use in system`
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrnsysButton = Polymer({
   _template: html`

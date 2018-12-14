@@ -4,7 +4,7 @@ import "@polymer/paper-button/paper-button.js";
 /**
 `lrn-assignment`
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrnAssignment = Polymer({
   _template: html`

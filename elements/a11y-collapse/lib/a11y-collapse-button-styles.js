@@ -51,5 +51,5 @@ document.head.appendChild($_documentContainer);
 `a11y-collapse-button-styles`
 Styling for buttons on a11y-collapse
 
-@demo demo/index.html
+* @demo demo/index.html
 */

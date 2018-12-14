@@ -36,7 +36,7 @@ Custom property | Description | Default
 `--paper-fab-speed-dial-option` | Mixin applied to each option element | `{}`
 
 @hero hero.svg
-@demo demo/index.html
+* @demo demo/index.html
 */
 (function(Polymer) {
   Polymer({

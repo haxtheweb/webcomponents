@@ -10,7 +10,7 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 `hax-export-dialog`
 Export dialog with all export options and settings provided.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  -

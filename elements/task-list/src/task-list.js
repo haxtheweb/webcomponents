@@ -7,7 +7,7 @@ import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 Visual listing of tasks with different design components that is
 OER Schema capable!
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - task - a singular thing to accomplish

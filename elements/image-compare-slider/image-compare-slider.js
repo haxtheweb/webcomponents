@@ -8,7 +8,7 @@ import "@polymer/paper-slider/paper-slider.js";
 `image-compare-slider`
 Layers images over each other with a slider interface to compare them
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  -

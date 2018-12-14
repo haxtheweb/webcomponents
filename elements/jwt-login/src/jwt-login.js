@@ -4,7 +4,7 @@ import "@polymer/iron-ajax/iron-ajax.js";
 `jwt-login`
 a simple element to check for and fetch JWTs
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
 - jwt - a json web token which is an encrypted security token to talk

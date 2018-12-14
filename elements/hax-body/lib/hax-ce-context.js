@@ -14,7 +14,7 @@ A context menu that provides common custom-element based authoring options. Whil
 trying to call for haxProperties which can automatically generate the buttons
 required for populating input.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - context menu - this is a menu of custom-element based buttons and events for use in a larger solution.

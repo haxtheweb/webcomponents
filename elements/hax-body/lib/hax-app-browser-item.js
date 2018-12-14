@@ -17,7 +17,7 @@ import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 `hax-app-browser-item`
 A button on the hax-app-browser display
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - hax-app - data wiring for an app, this element uses the visual side of this

@@ -19,7 +19,7 @@ import "./lib/outline-player-arrow.js";
 `outline-player`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 
 */
 let OutlinePlayer = Polymer({

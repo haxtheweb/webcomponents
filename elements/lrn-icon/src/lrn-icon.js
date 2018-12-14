@@ -79,7 +79,7 @@ Custom property | Description | Default
 
 @group Iron Elements
 @element lrn-icon
-@demo demo/index.html
+* @demo demo/index.html
 @hero hero.svg
 @homepage polymer.github.io
 */

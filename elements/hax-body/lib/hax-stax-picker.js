@@ -12,7 +12,7 @@ import "./hax-stax-browser.js";
  in the add operation of the app or in the stax selection to render through,
  such as having multiple ways of presenting an image.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - data - this is the app data model for an element which expresses itself to hax

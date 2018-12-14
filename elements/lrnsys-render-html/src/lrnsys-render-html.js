@@ -13,7 +13,7 @@ Polymer will, by design, not render html for security reasons. This element gets
 that. Do not render raw user input through this element! This would allow XSS attacks for
 your users.
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrnsysRenderHtml = Polymer({
   _template: html`

@@ -9,7 +9,7 @@ For each branch in your repo use the following git command:
 git log [branch_name] --format='{"refs": "%d", "commit": "%h", "tree": "%t", "parent": "%p", "subject": "%s", "date": "%cd", "author": "%an %ae"},' --reverse
 ```
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrnGitgraph = Polymer({
   _template: html`

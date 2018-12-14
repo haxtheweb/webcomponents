@@ -16,7 +16,7 @@ Configuration:
 ```
 
 @hero hero.svg
-@demo demo/index.html
+* @demo demo/index.html
 */
 Polymer({
   is: "paper-square-grow-animation",

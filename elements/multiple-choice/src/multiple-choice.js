@@ -11,7 +11,7 @@ import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 `multiple-choice`
 Ask the user a question from a set of possible answers.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  -

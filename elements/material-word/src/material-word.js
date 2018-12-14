@@ -7,7 +7,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 `material-word`
 Outputs word in material alphabet
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let MaterialWord = Polymer({
   _template: html`

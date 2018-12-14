@@ -7,7 +7,7 @@ import "@lrnwebcomponents/paper-contact/paper-contact.js";
 `lrndesign-biocard`
 A LRN element
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let LrndesignBiocard = Polymer({
   _template: html`

@@ -3,7 +3,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
  `hax-stax`
 Register a stax with HAX store.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  - stax - a stack of haxElement definitions that are named. Similar to a template in WYSIWYGs.

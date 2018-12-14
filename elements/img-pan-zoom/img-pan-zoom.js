@@ -21,7 +21,7 @@ Custom property | Description | Default
 <a href="https://openseadragon.github.io">openSeadragon</a>
 
 
-@demo demo/index.html
+* @demo demo/index.html
 */
 let ImgPanZoom = Polymer({
   _template: html`

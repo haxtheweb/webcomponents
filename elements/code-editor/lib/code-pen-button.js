@@ -3,7 +3,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 `code-pen-button`
 A LRN element to do a post of data to codepen
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
  -

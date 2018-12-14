@@ -5,7 +5,7 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 `a11y-collapse-accordion-button`
 An accessible expand collapse.
 
-@demo demo/index.html
+* @demo demo/index.html
 
 @microcopy - the mental model for this element
 
