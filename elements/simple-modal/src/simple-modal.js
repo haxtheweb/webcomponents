@@ -170,7 +170,7 @@ class SimpleModal extends PolymerElement {
   /**
    * If there is a title, aria-labelledby should point to #simple-modal-title
    */
-  _getAriaLabelledBy(title) {
+  _getAriaLabelledby(title) {
     return !title ? null : "simple-modal-title";
   }
   /**
