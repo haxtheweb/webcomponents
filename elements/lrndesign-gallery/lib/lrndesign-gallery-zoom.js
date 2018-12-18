@@ -4,9 +4,9 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@lrnwebcomponents/simple-modal/lib/simple-modal-template.js";
-import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/img-pan-zoom/img-pan-zoom.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
 
 export { LrndesignGalleryZoom };
 /**
@@ -15,13 +15,23 @@ export { LrndesignGalleryZoom };
  *
  * @microcopy - language worth noting:```
 <lrndesign-gallery-zoom 
-  controls = "GALLERY-OR-DIALOG-ID"    //required
-  heading = "IMAGE NAME">              //required, "next" (default) or "previous"
-  item = "0"                           //required, index of the item to view
-  target = "DIALOG OBJECT"             //required
-  tooltip="ZOOM"                       //optional, text for tooltip
+  details="Text details about the image." //optional text about the image
+  heading$="Image title"                  //required, image dialog title
+  item-id="0"                             //required, index of the item to view
+  src$="[[item.large]]"                   //required, full-sized image
+  tooltip$="[[item.tooltip]]"             //required, tooltip text
+  zoom-alt$="[[item.alt]]"                //required, alt text for the image
+  tooltip="ZOOM"                       
 </lrndesign-gallery-zoom>```
  *
+ * CSS Variables: ```
+--lrndesign-gallery-dialog-color                        //text color of dialog
+--lrndesign-gallery-dialog-background-color             //background-color of dialog
+--lrndesign-gallery-dialog-titlebar-color               //text color of dialog titlebar
+--lrndesign-gallery-dialog-titlebar-background-color    //background-color of dialog titlebar
+--lrndesign-gallery-dialog-header-color                 //text color of dialog header
+--lrndesign-gallery-dialog-header-background-color      //background-color of dialog header```
+ * 
  * @customElement
  * @polymer
  */
@@ -34,38 +44,57 @@ class LrndesignGalleryZoom extends PolymerElement {
     return "lrndesign-gallery-zoom";
   }
 
+  //get gallery behaviors
+  static get behaviors() {
+    return [LrnDesignGalleryBehaviors];
+  }
+
   // render function
   static get template() {
     return html`
-      <style is="custom-style">
+      <style is="custom-style" include="simple-colors">
+        :host([hidden]) {
+          display: none;
+        }
+        #zoomdialog {
+          --simple-modal-width: 75vw;
+          --simple-modal-height: 75vh;
+          --simple-modal-titlebar-color: var(
+            --lrndesign-gallery-dialog-titlebar-color
+          );
+          --simple-modal-titlebar-background: var(
+            --lrndesign-gallery-dialog-titlebar-background-color
+          );
+          --simple-modal-header-color: var(
+            --lrndesign-gallery-dialog-header-color
+          );
+          --simple-modal-header-background: var(
+            --lrndesign-gallery-dialog-header-background-color
+          );
+          --simple-modal-content-container-color: var(
+            --lrndesign-gallery-dialog-color
+          );
+          --simple-modal-content-container-background: var(
+            --lrndesign-gallery-dialog-background-color
+          );
+        }
         #zoombtn {
-          padding: 0;
+          padding: 0px;
           margin: 0;
           min-width: unset;
         }
-        #zoombtn iron-icon {
-          width: 24px;
-          height: 24px;
-        }
       </style>
-      <paper-button id="zoombtn" label$="[[tooltip]]">
-        <iron-icon icon="[[icon]]" hidden$="[[!_isAttrSet(icon)]]"></iron-icon>
+      <paper-button id="zoombtn" label$="[[tooltip]]" title="">
+        <slot></slot>
       </paper-button>
-      <simple-modal-template id="zoomdialog" title$="[[tooltip]]">
-        <div slot="header">[[heading]]</div>
-        <div slot="subheading">
-          <lrnsys-dialog-toolbar-button
-            title="Zoom In"
-            icon="zoom-in"
-            id="in"
-          ></lrnsys-dialog-toolbar-button>
-          <lrnsys-dialog-toolbar-button
-            title="Zoom Out"
-            icon="zoom-out"
-            id="out"
-          ></lrnsys-dialog-toolbar-button>
-        </div>
-        <div slot="content">
+      <paper-tooltip for="zoombtn" position="right">[[tooltip]]</paper-tooltip>
+      <simple-modal-template id="zoomdialog" title$="[[heading]]">
+        <div
+          id="details"
+          slot="header"
+          hidden$="[[!_isAttrSet(details)]]"
+        ></div>
+        <div slot="content" hidden$="[[!_isAttrSet(src)]]">
           <img-pan-zoom
             id="img"
             alt$="[[zoomAlt]]"
@@ -76,9 +105,13 @@ class LrndesignGalleryZoom extends PolymerElement {
             zoom-per-scroll="0.6"
           >
           </img-pan-zoom>
-          <div id="details">[[details]]</div>
+          <div>
+            Swipe, use a mouse or use the +/- and arrow keys to zoom and pan the
+            image above.
+          </div>
         </div>
-      </simple-modal-template>`;
+      </simple-modal-template>
+    `;
   }
 
   // properties available to the custom element for data binding
@@ -89,8 +122,8 @@ class LrndesignGalleryZoom extends PolymerElement {
        */
       details: {
         type: String,
-        value: null
-        //observer: "_detailsChanged"
+        value: null,
+        observer: "_detailsChanged"
       },
       /**
        * heading for the zoom modal
@@ -98,13 +131,6 @@ class LrndesignGalleryZoom extends PolymerElement {
       heading: {
         type: String,
         value: "Image Zoom"
-      },
-      /**
-       * optional: name for iron-icon used to indicate zoom
-       */
-      icon: {
-        type: String,
-        value: null
       },
       /**
        * heading for the zoom modal
@@ -115,11 +141,18 @@ class LrndesignGalleryZoom extends PolymerElement {
         //observer: "_itemChanged"
       },
       /**
-       * tooltip for the zoom button
+       * The zoom modal
        */
-      tooltip: {
-        type: String,
-        value: "Zoom In"
+      modal: {
+        type: Object,
+        value: null
+      },
+      /**
+       * scrolled to by default (for grid)?
+       */
+      scrolled: {
+        type: Boolean,
+        value: false
       },
       /**
        * Image source.
@@ -129,11 +162,11 @@ class LrndesignGalleryZoom extends PolymerElement {
         reflectToAttribute: true
       },
       /**
-       * Carousel or grid
+       * tooltip for the zoom button
        */
-      type: {
+      tooltip: {
         type: String,
-        value: "carousel"
+        value: "Zoom In"
       },
       /**
        * gallery item's alt text
@@ -141,103 +174,59 @@ class LrndesignGalleryZoom extends PolymerElement {
       zoomAlt: {
         type: String,
         value: null
+      },
+      /**
+       * zoomed by default?
+       */
+      zoomed: {
+        type: Boolean,
+        value: false
       }
     };
   }
-  
+
   /**
-   * life cycle, element is afixed to the DOM
+   * life cycle, element is ready
    */
-  connectedCallback() {
-    super.connectedCallback();
-    this.$.zoomdialog.associateEvents(this.$.zoombtn);
-  }
-  
-  /**
-   * returns true if the given attribute is not null
-   */
-  _isAttrSet(attr) {
-    return attr !== null && attr !== undefined;
-  }
-
-  /**
-   * attached
-   * /
-  attached: function() {
-    this.$.details.innerHTML = this.details;
-    document.body.addEventListener(
-      "lrnsys-dialog-changed",
-      this._dialogChanged.bind(this)
-    );
-  },
-
-  /**
-   * returns true if the given attribute is not null
-   * /
-  _isAttrSet: function(attr) {
-    return attr !== null && attr !== undefined;
-  },
-
-  /**
-   * Zoom in by calling  downstream function.
-   * /
-  imgZoom: function(e) {
-    if (e.detail.id == "in") {
-      this.$.img.zoomIn();
-    } else {
-      this.$.img.zoomOut();
+  ready() {
+    super.ready();
+    this._detailsChanged();
+    this.modal = this.$.zoomdialog.associateEvents(this.$.zoombtn);
+    this.$.zoomdialog.associateEvents(this.$.zoombtn, "gallery-zoom");
+    if (this.scrolled) {
+      this.dispatchEvent(new CustomEvent("gallery-scroll"));
+      if (!this.zoomed) this.$.zoombtn.focus();
     }
-  },
+    if (this.zoomed) {
+      this.zoom();
+    }
+  }
 
   /**
-   * Toggles the dialog.
-   * /
-  toggleDialog: function() {
-    this.$.zoomdialog.openDialog();
-  },
+   * opens the modal
+   */
+  zoom() {
+    let root = this;
+    root.$.zoombtn.dispatchEvent(
+      new CustomEvent("gallery-zoom", { detail: { root } })
+    );
+  }
 
   /**
    * updates the details.
-   * /
-  _detailsChanged: function(e) {
+   */
+  _detailsChanged(e) {
     this.$.details.innerHTML = this.details;
-  },
+  }
 
   /**
-   * Toggles the dialog.
-   * /
-  _dialogChanged: function(e) {
-    if (e.detail === this.$.zoomdialog) {
-      if (e.detail.$.modal.opened) {
-        document.body.addEventListener(
-          "dialog-toolbar-button-tapped",
-          this.imgZoom.bind(this)
-        );
-      } else {
-        document.body.removeEventListener(
-          "dialog-toolbar-button-tapped",
-          this.imgZoom.bind(this)
-        );
-      }
-    }
-  },
-
-  /**
-   * Toggles dialog based on anchor
-   * /
-  _itemChanged: function() {
-    if (this.__init !== true) {
-      let anchor = window.location.hash.replace("#", ""),
-        item = anchor.replace("-zoom", ""),
-        zoom = anchor.endsWith("-zoom");
-      if (this.itemId == item && zoom) {
-        this.__init = true;
-        this.toggleDialog();
-      }
-    }
-  },*/
+   * returns true if the given attribute is not null
+   *
+   * @param {string} the attribute to test
+   * @returns {boolean} if there is a non-null value for the attribute
+   */
+  _isAttrSet(attr = null) {
+    return attr !== null && attr !== undefined;
+  }
 }
-window.customElements.define(
-  LrndesignGalleryZoom.tag,
-  LrndesignGalleryZoom
-);
+window.customElements.define(LrndesignGalleryZoom.tag, LrndesignGalleryZoom);

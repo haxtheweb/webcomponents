@@ -3,11 +3,9 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
+import { LrnDesignGalleryBehaviors } from "./lib/lrndesign-gallery-behaviors.js";
 import "./lib/lrndesign-gallery-details.js";
-import "./lib/lrndesign-gallery-carousel.js";
-import "./lib/lrndesign-gallery-grid.js";
+import "./lib/lrndesign-gallery-zoom.js";
 
 export { LrndesignGallery };
 /**
@@ -15,33 +13,33 @@ export { LrndesignGallery };
  * `An element that renders a collection of gallery items into a carousel or a single media item into a layout.`
  *
  * @microcopy - language worth noting:```
-  <lrndesign-gallery 
-    sources = ""                                    //required array of source data
-    sizing = "contain"                              //optional, "cover" for cropping (default) or "contain" for letterboxing
-    title = "My Carousel">                          //optional
-    OPTIONAL TEXT ABOUT THE CAROUSEL OR GRID HERE.
-  </lrndesign-gallery>```
- * where `sources` array is:```
+ <lrndesign-gallery 
+  items = "[]"                      //required, array of items
+  sizing = "contain">               //optional, "cover" for cropping (default) or "contain" for letterboxing
+</lrndesign-gallery>```
+ * where `items` array is:```
 [{
   "alt": "IMAGE ALT TEXT",                          //required
   "details": "TEXT ABOUT IMAGE HERE",               //optional 
+  "heading": "IMAGE HEADING HERE",                  //required, the image heading when in zoom mode
   "id": "123"                                       //required, unique id  
   "sizing": "contain",                              //optional, "cover" for cropping (default) or "contain" for letterboxing, default is parent's sizing
   "large": "PATH/TO/LARGE/IMAGE/HERE.JPG",          //optional, larger image for zoom instead of src 
+  "next": "3",                                      //required, the index of the next item
+  "prev": "1",                                      //required, the index of the previous item
   "src": "PATH/TO/FULL/IMAGE/HERE.JPG",             //required
   "thumbnail": "PATH/TO/THUMBAIL/IMAGE/HERE.JPG",   //required
-  "title": "IMAGE TITLE HERE",                      //optional
+  "tooltip": "IMAGE TOOLTIP HERE",                  //required, the tooltip for the image thumbnail
+  "title": "IMAGE TITLE HERE",                      //optional, the image title when viewed
   "type": "image",                                  //required, "image", "video", "audio", etc.
   "zoom": false                                     //optional, false item should have no zoom option, default is true 
 }]```
- *  -
  *
- * @extends SimpleColors
  * @customElement
  * @polymer
  * @demo demo/index.html demo
  */
-class LrndesignGallery extends SimpleColors {
+class LrndesignGallery extends LrnDesignGalleryBehaviors {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -50,282 +48,430 @@ class LrndesignGallery extends SimpleColors {
     return "lrndesign-gallery";
   }
 
-  //get player-specifc properties
+  //get gallery behaviors
   static get behaviors() {
-    return [SimpleColors];
+    return [LrnDesignGalleryBehaviors];
   }
 
   // render function
   static get template() {
     return html`
-      <style is="custom-style" include="simple-colors">
+      <style is="custom-style" include="lrndesign-gallery-shared-styles">
         :host {
-          display: block;
+          margin: 15px 0 0;
+          padding: 0;
         }
-        :host {
-          --lrndesign-gallery-color: var(--simple-colors-default-theme-grey-12);
-          --lrndesign-gallery-background-color: var(
-            --simple-colors-default-theme-grey-2
-          );
-          --lrndesign-gallery-focus-color: var(
-            --simple-colors-default-theme-accent-9
-          );
-          --lrndesign-gallery-border-color: var(
-            --simple-colors-default-theme-grey-4
-          );
-          --lrndesign-gallery-thumbnail-outline: 1px solid
-            var(--simple-colors-default-theme-grey-12);
-          --lrndesign-gallery-carousel-next-bg: linear-gradient(
-            to right,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.5) 50%,
-            rgba(255, 255, 255, 0.7) 70%,
-            rgba(255, 255, 255, 0.9) 90%
-          );
-          --lrndesign-gallery-carousel-prev-bg: linear-gradient(
-            to right,
-            rgba(255, 255, 255, 0.9) 10%,
-            rgba(255, 255, 255, 0.7) 30%,
-            rgba(255, 255, 255, 0.5) 50%,
-            rgba(255, 255, 255, 0) 100%
-          );
-          --lrndesign-gallery-thumbnail-size: 100px;
-          --lrndesign-gallery-thumbnail-size-sm: 150px;
-          --lrndesign-gallery-thumbnail-size-md: 200px;
-          --lrndesign-gallery-thumbnail-size-lg: 250px;
-          --lrndesign-gallery-thumbnail-size-xl: 300px;
-          --lrndesign-gallery-thumbnail-image: {
-            display: block;
-            border-radius: 3px;
-            border: 2px solid transparent;
-          }
-          --lrndesign-gallery-thumbnail-image-focus: {
-            opacity: 0.7;
-            border: 2px solid var(--lrndesign-gallery-focus-color);
-          }
-          --lrndesign-gallery-thumbnail-image-selected: {
-            opacity: 0.5;
-            cursor: default;
-          }
+        :host #carouselitem {
+          width: 100%;
+          color: var(--lrndesign-gallery-color);
+          background-color: var(--lrndesign-gallery-background-color);
+          border: 1px solid var(--lrndesign-gallery-border-color);
         }
-        :host([dark]) {
-          --lrndesign-gallery-border-color: var(
-            --simple-colors-default-theme-grey-1
-          );
-          --lrndesign-gallery-carousel-next-bg: linear-gradient(
-            to right,
-            rgba(0, 0, 0, 0) 0%,
-            rgba(0, 0, 0, 0.5) 50%,
-            rgba(0, 0, 0, 0.7) 70%,
-            rgba(0, 0, 0, 0.9) 90%
-          );
-          --lrndesign-gallery-carousel-prev-bg: linear-gradient(
-            to right,
-            rgba(0, 0, 0, 0.9) 10%,
-            rgba(0, 0, 0, 0.7) 30%,
-            rgba(0, 0, 0, 0.5) 50%,
-            rgba(0, 0, 0, 0) 100%
-          );
+        :host(:not([responsive-size="xs"]):not([extra-wide])) #carouselitem {
+          display: flex;
+          justify-content: space-between;
+          align-items: stretch;
+          border-top: 4px solid var(--lrndesign-gallery-focus-color);
         }
-        :host .gallery-print {
+        :host([responsive-size="sm"]:not([extra-wide])) #carouselitem,
+        :host([responsive-size="sm"]:not([extra-wide])) #prevnextnav,
+        :host([responsive-size="md"]:not([extra-wide])) #carouselitem,
+        :host([responsive-size="md"]:not([extra-wide])) #prevnextnav {
+          height: 200px;
+          max-height: 200px;
+        }
+        :host([responsive-size="lg"]:not([extra-wide])) #carouselitem,
+        :host([responsive-size="lg"]:not([extra-wide])) #prevnextnav {
+          height: 300px;
+          max-height: 300px;
+        }
+        :host([responsive-size="xl"]:not([extra-wide])) #carouselitem,
+        :host([responsive-size="xl"]:not([extra-wide])) #prevnextnav {
+          height: 400px;
+          max-height: 400px;
+        }
+        :host #carouselimage {
+          position: relative;
+        }
+        :host #carouselimage iron-image {
+          width: 100%;
+          height: 100%;
+        }
+        :host #prevnextnav {
+          left: 0;
+          top: 0;
+          height: 100%;
+          width: 100%;
+          position: absolute;
+        }
+        :host #prevnextnav paper-button {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          left: 50%;
+          top: 0;
+          width: 50%;
+          height: 100%;
+          opacity: 0;
+          margin: 0;
+          border-radius: 0;
+          color: var(--lrndesign-gallery-color);
+          background-color: var(--lrndesign-gallery-background-color);
+          --paper-button-ink-color: var(--lrndesign-gallery-background-color);
+          background: var(--lrndesign-gallery-next-bg);
+          transition: opacity 0.5s;
+        }
+        :host #prevnextnav paper-button#carouselprev {
+          left: 0;
+          justify-content: flex-start;
+          background: var(--lrndesign-gallery-prev-bg);
+        }
+        :host #prevnextnav paper-button[item="-1"] {
           display: none;
         }
-        @media print {
-          :host .gallery-print {
-            margin-top: 15px;
-            margin-bottom: 15px;
-            display: block;
-          }
-          :host .gallery-print .print-image {
-            max-width: 400px;
-            max-height: 400px;
-            display: block;
-            border: 1px solid #ddd;
-            page-break-inside: avoid;
-          }
+        :host #prevnextnav paper-button:focus,
+        :host #prevnextnav paper-button:hover {
+          opacity: 0.8;
+        }
+        :host #prevnextnav iron-icon {
+          margin: 10%;
+        }
+        :host lrndesign-gallery-zoom {
+          left: 3px;
+          bottom: 0;
+          z-index: 2;
+          position: absolute;
+        }
+        :host #details {
+          flex-grow: 1;
+          flex-shrink: 1;
+          overflow-y: scroll;
+        }
+        :host([responsive-size="xs"]) #details,
+        :host([extra-wide]) #details {
+          margin-top: -4px;
+          border-top: 4px solid var(--lrndesign-gallery-focus-color);
+        }
+        :host #details-inner {
+          height: 100%;
+          display: flex;
+          position: relative;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          align-items: stretch;
+          align-content: stretch;
+        }
+        :host #itemdetails,
+        :host #thumbnails {
+          padding: 20px;
+          flex-basis: 100%;
+        }
+        :host #itemdetails {
+          align-self: flex-start;
+          flex-grow: 1;
+          flex-shrink: 1;
+          overflow: scroll;
+        }
+        :host #thumbnails {
+          align-self: flex-end;
+        }
+        :host .gallerythumb[disabled] {
+          @apply --lrndesign-gallery-thumbnail-image-selected;
+        }
+        :host([responsive-size="xs"]) .gallerythumb iron-image {
+          display: none;
+        }
+        :host([responsive-size="md"]) .gallerythumb iron-image {
+          width: 45px;
+          height: 45px;
+        }
+        :host([responsive-size="lg"]) .gallerythumb iron-image,
+        :host([responsive-size="xl"]) .gallerythumb iron-image {
+          width: 50px;
+          height: 50px;
+        }
+        :host #itemtitle {
+          margin-top: 0;
+        }
+        :host .x-of-y {
+          font-size: 85%;
+          font-style: italic;
+          text-align: right;
+          padding: 0;
+          margin: 0;
+        }
+        :host #xystart,
+        :host #xyend {
+          position: absolute;
+          right: 20px;
+          top: 20px;
         }
       </style>
-      <article>
+      <article id="gallery">
         <template is="dom-if" if="[[_isAttrSet(title)]]">
-          <h1 id="gallery-title">[[title]]</h1>
+          <h1 id="gallerytitle">[[title]]</h1>
         </template>
-        <div id="gallery-description"><slot name="description"></slot></div>
-        <template is="dom-if" if="[[grid]]">
-          <lrndesign-gallery-grid
-            aspect$="[[aspect]]"
-            class="gallery-type"
-            id="gallery-grid"
-            items$="[[__items]]"
-            modal-open$="[[__modalOpen]]"
+        <div id="gallerydescription"><slot name="description"></slot></div>
+        <p class="sr-only">A carousel of items:</p>
+        <div id="galleryscreen">
+          <div
+            id="carouselitem"
+            aspect-ratio$="[[aspectRatio]]"
+            dark$="[[dark]]"
+            extra-wide$="[[extraWide]]"
+            image-style$="[[imageStyle]]"
+            item="[[selected]]"
             responsive-size$="[[responsiveSize]]"
-            selected$="[[selected]]"
-            sizing$="[[sizing]]"
           >
-          </lrndesign-gallery-grid>
-        </template>
-        <template is="dom-if" if="[[!grid]]">
-          <lrndesign-gallery-carousel
-            aspect$="[[aspect]]"
-            class="gallery-type"
-            hide-navigation$="[[__hideNav]]"
-            id="gallery-carousel"
-            items$="[[__items]]"
-            modal-open$="[[__modalOpen]]"
-            responsive-size$="[[responsiveSize]]"
-            selected$="[[selected]]"
-            sizing$="[[sizing]]"
-          >
-          </lrndesign-gallery-carousel>
-        </template>
-
-        <template id="printlist" is="dom-repeat" items="[[items]]" as="item">
-          <section class="gallery-print">
-            <template is="dom-if" if="[[hasTitle]]">
-              <h2>[[item.title]]</h2>
-            </template>
-            <lrndesign-gallery-details
-              details$="[[item.details]]"
-            ></lrndesign-gallery-details>
-            <img class="print-image" alt$="[[item.alt]]" src$="[[item.src]]" />
-          </section>
-        </template>
+            <p id="xystart" class="sr-only">Slide [[__xOfY]] selected.</p>
+            <div id="carouselimage">
+              <iron-image
+                alt$="[[selected.alt]]"
+                fade=""
+                id$="[[selected.id]]"
+                placeholder$="[[selected.thumbnail]]"
+                sizing$="[[selected.sizing]]"
+                src$="[[selected.src]]"
+                style$="[[imageStyle]]"
+              >
+              </iron-image>
+              <lrndesign-gallery-zoom
+                details$="[[selected.details]]"
+                heading$="[[selected.heading]]"
+                hidden$="[[!selected.zoom]]"
+                id="galleryzoom"
+                item-id="[[selected.id]]"
+                src$="[[selected.large]]"
+                tooltip$="[[selected.tooltip]]"
+                zoom-alt$="[[selected.alt]]"
+                zoomed$="[[selected.zoom]]"
+              >
+                <iron-icon
+                  icon="zoom-in"
+                  hidden$="[[!_isAttrSet(icon)]]"
+                ></iron-icon>
+              </lrndesign-gallery-zoom>
+              <div id="prevnextnav">
+                <paper-button
+                  id="carouselprev"
+                  aria-controls$="[[__gallery.id]]"
+                  aria-label="prev"
+                  hidden$="[[_hideNav(items)]]"
+                  index$="[[selected.prev]]"
+                  on-tap="_onPrev"
+                  target$="[[__gallery]]"
+                  tabindex="-1"
+                  title=""
+                >
+                  <iron-icon icon="chevron-left"></iron-icon>
+                </paper-button>
+                <paper-tooltip for="carouselprev" position="top"
+                  >previous</paper-tooltip
+                >
+                <paper-button
+                  id="carouselnext"
+                  aria-controls$="[[__gallery.id]]"
+                  aria-label="next"
+                  hidden$="[[_hideNav(items)]]"
+                  index$="[[selected.next]]"
+                  on-tap="_onNext"
+                  target="[[__gallery]]"
+                  tabindex="-1"
+                  title=""
+                >
+                  <iron-icon icon="chevron-right"></iron-icon>
+                </paper-button>
+                <paper-tooltip for="carouselnext" position="top"
+                  >next</paper-tooltip
+                >
+              </div>
+            </div>
+            <div id="details" class="item-info">
+              <div id="details-inner">
+                <div id="itemdetails">
+                  <h2 id="itemtitle" hidden="[[!_isAttrSet(selected.title)]]">
+                    [[selected.title]]
+                  </h2>
+                  <div id="itembody">
+                    <lrndesign-gallery-details
+                      details$="[[selected.details]]"
+                    ></lrndesign-gallery-details>
+                  </div>
+                </div>
+                <div id="xyend">
+                  <p class="x-of-y" hidden$="[[_hideNav(items)]">
+                    (<span class="sr-only"> End of slide </span> [[__xOfY]]<span
+                      class="sr-only"
+                      >.</span
+                    >)
+                  </p>
+                </div>
+                <div id="thumbnails" class="item-info">
+                  <div id="thumbnails-inner">
+                    <div>
+                      <p class="sr-only" hidden$="[[_hideNav(items)]">
+                        Slides list:
+                      </p>
+                      <template is="dom-repeat" items="[[items]]" as="item">
+                        <paper-button
+                          id$="[[item.id]]"
+                          aria-controls$="[[__gallery.id]]"
+                          class="gallerythumb"
+                          hidden$="[[_hideNav(items)]]"
+                          index$="[[item.index]]"
+                          on-tap="_onNavTapped"
+                          disabled$="[[_isSelected(selected,item)]]"
+                          target$="[[item.target]]"
+                          title=""
+                        >
+                          <iron-image
+                            alt$="[[item.alt]]"
+                            fade
+                            sizing="cover"
+                            src$="[[item.thumbnail]]"
+                          >
+                          </iron-image>
+                        </paper-button>
+                        <paper-tooltip
+                          for$="[[item.id]]"
+                          hidden$="[[_isSelected(selected,item)]]"
+                          position="top"
+                        >
+                          [[item.alt]]
+                        </paper-tooltip>
+                      </template>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="galleryprint">
+          <template id="printlist" is="dom-repeat" items="[[items]]" as="item">
+            <section>
+              <template is="dom-if" if="[[_isAttrSet(item.title)]]">
+                <h2>[[item.title]]</h2>
+              </template>
+              <lrndesign-gallery-details
+                details$="[[item.details]]"
+              ></lrndesign-gallery-details>
+              <img
+                class="print-image"
+                alt$="[[item.alt]]"
+                src$="[[item.src]]"
+              />
+            </section>
+          </template>
+        </div>
       </article>
     `;
   }
-
   // properties available to the custom element for data binding
   static get properties() {
     return {
       /**
-       * thumbnail grid layout, default is false (carousel layout)
+       * height css of iron image (sets aspect ratio in xs or extraWide)
        */
-      grid: {
-        type: Boolean,
-        value: false
-      },
-      /**
-       * array of carousel/grid items
-       */
-      sources: {
-        type: Array,
-        value: []
-      },
-      /**
-       * array of carousel/grid items
-       */
-      items: {
-        type: Array,
-        computed: "_itemsLoaded(sources,sizing)"
-      },
-      /*
-       * parent size for responsive styling
-       */
-      responsiveSize: {
+      imageStyle: {
         type: String,
-        value: "xs",
-        reflectToAttribute: true
-      },
-      /*
-       * data for the selected item
-       */
-      selected: {
-        type: Object,
-        value: {},
-        notify: true,
-        reflectToAttribute: true
-      },
-      /**
-       * default sizing: fit screen by cropping (cover)
-       * or with letterboxing (contain)
-       */
-      sizing: {
-        type: String,
-        value: "cover"
-      },
-      /**
-       * carousel's title
-       */
-      title: {
-        type: String,
-        value: null
-      },
-      /*
-       * open modal based on anchor
-       */
-      __modalOpen: {
-        type: Boolean,
-        value: false
+        computed: "_getImageStyle(extraWide,responsiveSize)"
       }
     };
   }
 
   /**
-   * life cycle, element is afixed to the DOM
+   * life cycle, element is ready
    */
-  connectedCallback() {
-    super.connectedCallback();
-    let root = this;
-    window.ResponsiveUtility.requestAvailability();
-    window.dispatchEvent(
-      new CustomEvent("responsive-element", {
-        detail: {
-          element: root,
-          attribute: "responsive-size",
-          relativeToParent: true
-        }
-      })
-    );
-  }
-
-  /*
-   * adds additional properties to gallery
-   */
-  _itemsLoaded(sources, sizing) {
-    let temp = sources.slice(),
-      anchor = window.location.hash,
-      index = sources.findIndex(
-        i => "#" + i.id === anchor.replace("-zoom", "")
-      );
-    if (sources !== undefined && this.items !== null && sources.length > 0) {
-      for (var i in temp) {
-        temp[i].index = parseInt(i);
-        temp[i].large =
-          temp[i].large !== undefined ? temp[i].large : temp[i].src;
-        temp[i].next = parseInt(i) + 1 < sources.length ? parseInt(i) + 1 : -1;
-        temp[i].prev = parseInt(i) - 1 > -1 ? parseInt(i) - 1 : -1;
-        temp[i].sizing = temp[i].sizing !== undefined ? temp[i].sizing : sizing;
-        temp[i].tooltip =
-          temp[i].title !== undefined ? "Zoom In" : temp[i].title + " Zoom";
-        temp[i].thumbnail =
-          temp[i].thumbnail !== undefined ? temp[i].thumbnail : temp[i].src;
-        temp[i].zoom = temp[i].zoom !== undefined ? temp[i].zoom : true;
-        if (!temp[i].zoom) {
-          temp[i].heading =
-            temp[i].title === undefined ? "Image Information" : temp[i].title;
-          temp[i].tooltip =
-            temp[i].title === undefined
-              ? "View Image Information"
-              : temp[i].title + " Information";
-        } else {
-          temp[i].heading =
-            temp[i].title === undefined
-              ? "Image Zoom"
-              : temp[i].title + " (Image Zoom)";
-          temp[i].tooltip =
-            temp[i].title === undefined ? "Zoom In" : temp[i].title + " Zoom";
-        }
-      }
-      this.__items = temp;
-      this.selected = index > -1 ? this.__items[index] : this.__items[0];
-      return this.__items;
+  ready() {
+    super.ready();
+    if (this.selected.scroll) {
+      let target = this.$.carouselitem;
+      this._scrollIntoView([this._getParentOffset(target)]);
+      if (!this.selected.zoomed) target.focus();
     }
   }
 
   /**
-   * returns true if the given attribute is not null
+   * go to item by id, or index
+   *
+   * @param {o}
    */
-  _isAttrSet(attr) {
-    return attr !== null && attr !== undefined;
+  goToItem(index) {
+    let root = this;
+    if (typeof index === "number" && index >= 0 && index < root.items.length) {
+      root.selected = root.items[index];
+      root.__xOfY =
+        parseInt(root.selected.index + 1) + " of " + root.items.length;
+    }
+  }
+
+  /**
+   * returns the proper padding to maintain image aspect ratio and
+   *
+   * @param {boolean} whether on not the first image is extra wide
+   * @param {string} the responsive size of the gallery, as in 'xs','sm','md','lg', or 'xl'
+   * @returns {string} the style for the image
+   */
+  _getImageStyle(extraWide, responsiveSize) {
+    if (extraWide || responsiveSize === "xs") {
+      return "padding-bottom: " + 100 / this.aspectRatio + "%;";
+    } else {
+      if (responsiveSize === "xl") {
+        return "width: " + this.aspectRatio * 400 + "px; height: 400px;";
+      } else if (responsiveSize === "lg") {
+        return "width: " + this.aspectRatio * 300 + "px; height: 300px;";
+      } else if (responsiveSize === "md") {
+        return "width: " + this.aspectRatio * 200 + "px; height: 200px;";
+      } else {
+        return "width: " + this.aspectRatio * 200 + "px; height: 200px;";
+      }
+    }
+  }
+
+  /**
+   * returns index of the previous or next item
+   *
+   *
+   */
+  _getIndex(index, step) {
+    return index + step;
+  }
+
+  /**
+   * gets unique id for carousel and sets it as a target
+   */
+  _hideNav(items) {
+    return items !== undefined ? items.length < 2 : true;
+  }
+
+  /**
+   * when a prev is tapped, goes to the prev item
+   */
+  _onPrev(e) {
+    this.goToItem(parseInt(this.$.carouselprev.getAttribute("index")));
+  }
+
+  /**
+   * when a next is tapped, goes to the next item
+   */
+  _onNext(e) {
+    this.goToItem(parseInt(this.$.carouselnext.getAttribute("index")));
+  }
+
+  /**
+   * when a thumbnail is tapped, goes to that item
+   */
+  _onNavTapped(e) {
+    this.goToItem(e.model.item.index);
+  }
+
+  /**
+   * updates the item details
+   */
+  _updateDetails() {
+    this.$.itembody.innerHTML = this.item.details;
   }
 }
 window.customElements.define(LrndesignGallery.tag, LrndesignGallery);

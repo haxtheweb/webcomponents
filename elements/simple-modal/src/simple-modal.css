@@ -1,9 +1,5 @@
 :host {
   display: block;
-  --simple-modal-titlebar-color: #444;
-  --simple-modal-titlebar-background: #ddd;
-  --simple-modal-header-color: #222;
-  --simple-modal-header-background: #ccc;
 }
 
 :host([hidden]) {
@@ -21,8 +17,8 @@
   width: auto;
   height: auto;
   z-index: 1000;
-  min-width: 50vw;
-  min-height: 50vh;
+  min-width: var(--simple-modal-width, 50vw);
+  min-height: var(--simple-modal-height, 50vh);
   border-radius: 3px;
   @apply --simple-modal-dialog;
 }
@@ -33,8 +29,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: var(--simple-modal-titlebar-color);
-  background-color: var(--simple-modal-titlebar-background);
+  color: var(--simple-modal-titlebar-color,#444);
+  background-color: var(--simple-modal-titlebar-background,#ddd);
   border-radius: 3px 3px 0 0;
   @apply --simple-modal-top;
 }
@@ -42,8 +38,8 @@
 :host #headerbar {
   margin: 0;
   padding: 0 16px;
-  color: var(--simple-modal-header-color);
-  background-color: var(--simple-modal-header-background);
+  color: var(--simple-modal-header-color, #222);
+  background-color: var(--simple-modal-header-background, #ccc);
   @apply --simple-modal-headerbar;
 }
 
@@ -61,7 +57,7 @@
   padding: 10px 0;
   min-width: unset;
   text-transform: none;
-  color: var(--simple-modal-titlebar-color);
+  color: var(--simple-modal-titlebar-color,#444);
   background-color: transparent;
   @apply --simple-modal-close;
 }
@@ -69,18 +65,31 @@
 :host #close iron-icon {
   width: 16px;
   height: 16px;
-  color: var(--simple-modal-titlebar-color);
+  color: var(--simple-modal-titlebar-color,#444);
   @apply --simple-modal-close-icon;
 }
 
-.content {
+#simple-modal-content {
   padding: 8px 16px;
+  margin: 0;
+  color: var(--simple-modal-content-container-color, #222);
+  background-color: var(--simple-modal-content-container-background, #fff);
+  --paper-dialog-scrollable: {
+    padding: 0;
+  }
   @apply --simple-modal-content-container;
 }
-
 .buttons {
-  position: absolute;
-  bottom: 0;
-  padding: 8px 16px;
+  padding: 0;
+  margin: 0;
+  color: var(--simple-modal-buttons-color, unset);
+  background-color: var(--simple-modal-buttons-background,unset);
   @apply --simple-modal-buttons;
+}
+.buttons ::slotted(*) {
+  padding: 0;
+  margin: 0;
+  color: var(--simple-modal-button-color,--simple-modal-buttons-color);
+  background-color: var(--simple-modal-button-background,--simple-modal-buttons-background);
+  @apply --simple-modal-button;
 }
