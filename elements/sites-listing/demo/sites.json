@@ -1,26 +1,228 @@
-[
-  {
-    "id": "123-dd1-dd-22",
-    "indent": 0,
-    "location": "projects/jordan",
-    "order": 0,
-    "parent": null,
-    "title": "Jordan's Project"
-  },
-  {
-    "id": "abds-asd-asd2",
-    "indent": 0,
-    "location": "https://google.com/",
-    "order": 1,
-    "parent": null,
-    "title": "Joe's ramblings"
-  },
-  {
-    "id": "asd-ee-ffde2",
-    "indent": 0,
-    "location": "projects/ben",
-    "order": 2,
-    "parent": null,
-    "title": "Ben's quick tips"
-  }
-]
+{
+  "id": "123-ddc-d321d-d2e-dd2",
+  "title": "My site list",
+  "author": "btopro",
+  "description": "All of my mini sites I know and love.",
+  "license": "by-sa",
+  "metadata": {},
+  "items": [
+    {
+      "id": "item-new",
+      "indent": 0,
+      "location": "",
+      "order": 10000000000,
+      "parent": null,
+      "title": "Add new site",
+      "description": "Tap to get started!",
+      "metadata": {
+        "siteName": "",
+        "theme": "simple-blog",
+        "image": "assets/banner.jpg",
+        "color": "blue",
+        "icon": "icons:add-circle-outline"
+      }
+    },
+    {
+      "id": "018ecb40-e516-4159-a644-0599bbe9156f",
+      "indent": 0,
+      "location": "",
+      "order": 0,
+      "parent": "",
+      "title": "haxcmstotheworld",
+      "description": "Lets do this now!",
+      "metadata": {
+        "siteName": "haxcmstotheworld",
+        "image": "assets/banner.jpg",
+        "theme": "haxcms-dev-theme",
+        "icon": "icons:assessment",
+        "domain": "https://haxcmstotheworld.surge.sh",
+        "hexCode": "#00f961",
+        "created": 1534366808,
+        "updated": 1534617125,
+        "cssVariable": "--simple-colors-green-background5",
+        "lastPublished": 1534608119
+      }
+    },
+    {
+      "id": "c78e6646-a291-47d1-9971-16e5b1c11576",
+      "indent": 0,
+      "location": "/_sites/boilerplate/index.html",
+      "order": 0,
+      "parent": "",
+      "title": "boilerplate",
+      "description": "ddfsdsfdsf",
+      "metadata": {
+        "siteName": "boilerplate",
+        "image": "assets/banner.jpg",
+        "theme": "simple-blog",
+        "icon": "icons:add-circle-outline",
+        "domain": "https://boilerplate.surge.sh",
+        "hexCode": "#aeff00",
+        "created": 1534367003,
+        "updated": 1534367003,
+        "cssVariable": "--simple-colors-lime-background5"
+      }
+    },
+    {
+      "id": "02cbc805-250f-41bb-981e-193b3631f1cf",
+      "indent": 0,
+      "location": "",
+      "order": 0,
+      "parent": "",
+      "title": "transform edtech",
+      "description": "Change edtech",
+      "metadata": {
+        "siteName": "transformedtech",
+        "image": "assets/banner.jpg",
+        "theme": "outline-player",
+        "icon": "icons:assignment-return",
+        "domain": "https://edtech.surge.sh",
+        "hexCode": "#0059ff",
+        "created": 1534385046,
+        "updated": 1535492867,
+        "cssVariable": "--simple-colors-blue-foreground5",
+        "lastPublished": 1535492843
+      }
+    },
+    {
+      "id": "0fa9e83a-6d25-4a42-9c68-38eea65d0e02",
+      "indent": 0,
+      "location": "/_sites/test/index.html",
+      "order": 0,
+      "parent": "",
+      "title": "test",
+      "description": "test",
+      "metadata": {
+        "siteName": "test",
+        "image": "assets/banner.jpg",
+        "theme": "simple-blog",
+        "icon": "icons:add-circle-outline",
+        "domain": "https://test.surge.sh",
+        "hexCode": "#aeff00",
+        "created": 1534608173,
+        "updated": 1534608173,
+        "cssVariable": "--simple-colors-lime-background5"
+      }
+    },
+    {
+      "id": "74ad5976-1752-476e-b970-f0bea54fb65f",
+      "indent": 0,
+      "location": "/_sites/testets/index.html",
+      "order": 0,
+      "parent": "",
+      "title": "testets",
+      "description": "test",
+      "metadata": {
+        "siteName": "testets",
+        "image": "assets/banner.jpg",
+        "theme": "simple-blog",
+        "icon": "icons:add-circle-outline",
+        "domain": "https://testets.surge.sh",
+        "hexCode": "#aeff00",
+        "created": 1534608179,
+        "updated": 1534608179,
+        "cssVariable": "--simple-colors-lime-background5"
+      }
+    },
+    {
+      "id": "4c33b664-70f4-44a3-beaa-1465097030e6",
+      "indent": 0,
+      "location": "",
+      "order": 0,
+      "parent": "",
+      "title": "Beakering 2",
+      "description": "Again!",
+      "metadata": {
+        "siteName": "beakerme",
+        "image": "assets/banner.jpg",
+        "theme": "simple-blog",
+        "icon": "icons:android",
+        "domain": "https://beakerme.surge.sh",
+        "hexCode": "#00ff9c",
+        "created": 1535488915,
+        "updated": 1539138484,
+        "cssVariable": "--simple-colors-teal-background5"
+      }
+    },
+    {
+      "id": "c1921c80-10a3-4c7b-9c80-43ca46d68fd7",
+      "indent": 0,
+      "location": "",
+      "order": 0,
+      "parent": "",
+      "title": "Another namedsadsasaddsa",
+      "description": "",
+      "metadata": {
+        "siteName": "newsite",
+        "image": "assets/banner.jpg",
+        "theme": "simple-blog",
+        "icon": "",
+        "domain": "https://newsite.surge.sh",
+        "hexCode": "#296100",
+        "created": 1539120530,
+        "updated": 1543593472,
+        "cssVariable": "--simple-colors-light-green-foreground3"
+      }
+    },
+    {
+      "id": "c1921c80-10a3-4c7b-9c80-43ca46d68fd7",
+      "indent": 0,
+      "location": "/_sites/newsite/index.html",
+      "order": 0,
+      "parent": "",
+      "title": "newsite",
+      "description": "",
+      "metadata": {
+        "siteName": "newsite",
+        "image": "assets/banner.jpg",
+        "theme": "simple-blog",
+        "icon": null,
+        "domain": "https://newsite.surge.sh",
+        "hexCode": "#296100",
+        "created": 1539120530,
+        "updated": 1539120530,
+        "cssVariable": "--simple-colors-light-green-foreground3"
+      }
+    },
+    {
+      "id": "a9362414-6b1f-474b-aaff-ede3c38cf716",
+      "indent": 0,
+      "location": "/_sites/whatishax/index.html",
+      "order": 0,
+      "parent": "",
+      "title": "What is HAX",
+      "description": "what is hax?",
+      "metadata": {
+        "siteName": "whatishax",
+        "image": "assets/banner.jpg",
+        "theme": "simple-blog",
+        "icon": "icons:bug-report",
+        "domain": "https://whatishax.surge.sh",
+        "hexCode": "#8a009b",
+        "created": 1539223950,
+        "updated": 1539223950,
+        "cssVariable": "--simple-colors-purple-foreground4"
+      }
+    },
+    {
+      "id": "5cd54177-698f-44e4-88b4-1133f4547bb4",
+      "indent": 0,
+      "location": "",
+      "order": 0,
+      "parent": "",
+      "title": "complex",
+      "description": "My new site",
+      "metadata": {
+        "siteName": "complex",
+        "image": "assets/banner.jpg",
+        "theme": "outline-player",
+        "icon": "icons:add-circle-outline",
+        "domain": "https://complex.surge.sh",
+        "hexCode": "#ac0000",
+        "created": 1539364117,
+        "updated": 1540827689,
+        "cssVariable": "--simple-colors-red-foreground4"
+      }
+    }
+  ]
+}

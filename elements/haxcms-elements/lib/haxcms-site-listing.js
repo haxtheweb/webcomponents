@@ -505,13 +505,16 @@ Polymer({
    */
   _themeChanged: function(e) {
     this.set("activeItem.metadata.theme", e.detail.value);
+    this.notifyPath("activeItem.metadata.theme");
   },
   /**
    * Use events for real value in color area.
    */
   _colorChanged: function(e) {
     this.set("activeItem.metadata.cssVariable", e.detail.cssVariable);
+    this.notifyPath("activeItem.metadata.cssVariable");
     this.set("activeItem.metadata.hexCode", e.detail.hexCode);
+    this.notifyPath("activeItem.metadata.hexCode");
   },
   /**
    * Add button clicked, trick DOM into clicking the add new site item.
@@ -545,6 +548,7 @@ Polymer({
     if (findSite.length > 0) {
       this.set("activeItem", {});
       this.set("activeItem", findSite.pop());
+      this.notifyPath("activeItem.*");
     }
   },
   /**
@@ -681,6 +685,7 @@ Polymer({
   _itemSelected: function(e) {
     this.set("activeItem", {});
     this.set("activeItem", e.detail);
+    this.notifyPath("activeItem.*");
   },
   /**
    * Create a new site button was clicked
@@ -688,16 +693,25 @@ Polymer({
   _createSite: function(e) {
     // ship off a new call
     this.set("createParams.domain", this.$.domain.value);
+    this.notifyPath("createParams.domain");
     this.set("createParams.siteName", this.$.newsitetitle.value);
+    this.notifyPath("createParams.siteName");
     this.set("createParams.description", this.$.newsitedescription.value);
+    this.notifyPath("createParams.description");
     // need to pull this from the active item bc of data binding silly
     this.set("createParams.theme", this.activeItem.metadata.theme);
+    this.notifyPath("createParams.theme");
     this.set("createParams.hexCode", this.activeItem.metadata.hexCode);
+    this.notifyPath("createParams.hexCode");
     this.set("createParams.cssVariable", this.activeItem.metadata.cssVariable);
+    this.notifyPath("createParams.cssVariable");
     this.set("createParams.image", this.$.newsiteimage.value);
+    this.notifyPath("createParams.image");
     this.set("createParams.icon", this.$.newsiteicon.icon);
+    this.notifyPath("createParams.icon");
     // pass along the jwt for user "session" purposes
     this.set("createParams.jwt", this.jwt);
+    this.notifyPath("createParams.jwt");
     this.$.newsitetitle.value = "";
     this.$.newsitedescription.value = null;
     this.$.createrequest.generateRequest();
@@ -708,8 +722,10 @@ Polymer({
   _downloadSite: function(e) {
     // ship off a new call
     this.set("downloadParams.siteName", this.activeItem.metadata.siteName);
+    this.notifyPath("downloadParams.siteName");
     // pass along the jwt for user "session" purposes
     this.set("downloadParams.jwt", this.jwt);
+    this.notifyPath("downloadParams.jwt");
     this.$.downloadrequest.generateRequest();
   },
   /**
@@ -778,6 +794,7 @@ Polymer({
       if (findSite.length > 0) {
         this.set("activeItem", {});
         this.set("activeItem", findSite.pop());
+        this.notifyPath("activeItem.*");
         // simulate clicking on the edit button that's in this tab
         this.$.edit.click();
       }
