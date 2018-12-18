@@ -224,7 +224,9 @@ class LrndesignGallery extends LrnDesignGalleryBehaviors {
             item="[[selected]]"
             responsive-size$="[[responsiveSize]]"
           >
-            <p id="xystart" class="sr-only">Slide [[__xOfY]] selected.</p>
+            <p id="xystart" class="sr-only" hidden$="[[_hideNav(items)]]">
+              Slide [[__xOfY]] selected.
+            </p>
             <div id="carouselimage">
               <iron-image
                 alt$="[[selected.alt]]"
@@ -239,7 +241,6 @@ class LrndesignGallery extends LrnDesignGalleryBehaviors {
               <lrndesign-gallery-zoom
                 details$="[[selected.details]]"
                 heading$="[[selected.heading]]"
-                hidden$="[[!selected.zoom]]"
                 id="galleryzoom"
                 item-id="[[selected.id]]"
                 src$="[[selected.large]]"

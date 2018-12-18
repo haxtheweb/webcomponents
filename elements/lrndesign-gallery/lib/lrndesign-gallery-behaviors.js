@@ -220,14 +220,6 @@ class LrnDesignGalleryBehaviors extends SimpleColors {
   }
 
   /**
-   * returns the proper padding to maintain image aspect ratio and updates
-   *
-   * @param {array} the array of items
-   * @returns {boolean} whether on not the first image is extra wide
-   */
-  _getExtraWide(items) {}
-
-  /**
    * gets parent node's offset in light DOM
    *
    * @param {object} the node
@@ -246,11 +238,11 @@ class LrnDesignGalleryBehaviors extends SimpleColors {
   }
 
   /**
-   * scrolls the node into view
+   * tallies the offsets (item and parent) and scrolls to the item
    *
-   * @param {object} the node
+   * @param {array} an array of offsets
    */
-  _scrollIntoView(offsets) {
+  _scrollIntoView(offsets = [0]) {
     window.scrollTo({
       top: offsets.reduce((total, num) => {
         return total + num;

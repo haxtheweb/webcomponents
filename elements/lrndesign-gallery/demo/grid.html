@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>LrndesignGallery: lrndesign-gallery Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../lib/lrndesign-gallery-grid.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>lrndesign-gallery-grid Demos</h1>
+      <h2>Basic lrndesign-gallery-grid</h2>
+      <demo-snippet>
+        <template>
+          <lrndesign-gallery-grid id="gallery4" title="Regular Thumbnails" accent-color="indigo" sources="[{ &quot;alt&quot;: &quot;A picture of an apple&quot;, &quot;details&quot;: &quot;This is an <em>apple</em> picture.&quot;, &quot;id&quot;: &quot;apple&quot;, &quot;src&quot;: &quot;images/apple.jpg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/apple.jpg&quot;, &quot;title&quot;: &quot;Apple&quot; }, { &quot;alt&quot;: &quot;A picture of bananas&quot;, &quot;details&quot;: &quot;This is a picture of <em>bananas</em>.&quot;, &quot;id&quot;: &quot;bananas&quot;, &quot;src&quot;: &quot;images/banana.jpg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/banana.jpg&quot;, &quot;title&quot;: &quot;Bananas&quot; }, { &quot;alt&quot;: &quot;A picture of carrots&quot;, &quot;details&quot;: &quot;This is a picture of <em>carrots</em>.&quot;, &quot;id&quot;: &quot;carrots&quot;, &quot;src&quot;: &quot;images/carrot.jpeg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/carrot.jpeg&quot;, &quot;title&quot;: &quot;Carrots&quot; }]">
+            <div slot="description">This is a <em>regular</em> <strong>grid</strong>.</div>
+          </lrndesign-gallery-grid>
+          <p>Link to this page with carrots dialog automatically open using the anchor <a href="#gallery4---carrots" target="_blank">#carrots</a>.</p>
+        </template>
+      </demo-snippet>
+    
+      <h2>Single lrndesign-gallery-grid Thumbnail with Custom Styles</h2>
+      <demo-snippet>
+        <template>
+          <lrndesign-gallery-grid id="gallery5" title="Full-Sized Thumbnail with custom sizing" accent-color="cyan"
+            dark grid-size="extra-large" sources="[{ &quot;alt&quot;: &quot;A picture of dice&quot;, &quot;details&quot;: &quot;This is a picture of <em>dice</em> with a caption.&quot;, &quot;id&quot;: &quot;dice&quot;, &quot;src&quot;: &quot;images/dice.jpg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/dice.jpg&quot;, &quot;title&quot;: &quot;Dice&quot; }]">
+          </lrndesign-gallery-grid>
+          <style is="custom-style">
+            #gallery5 {
+              --lrndesign-gallery-grid-thumbnail-xs: 100%;
+              --lrndesign-gallery-grid-thumbnail-sm: 100%;
+              --lrndesign-gallery-grid-thumbnail-md: 400px;
+              --lrndesign-gallery-grid-thumbnail-lg: 500px;
+              --lrndesign-gallery-grid-thumbnail-xl: 600px;
+            }
+          </style>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

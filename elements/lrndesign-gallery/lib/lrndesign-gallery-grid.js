@@ -37,7 +37,7 @@ export { LrndesignGalleryGrid };
  *
  * @customElement
  * @polymer
- * @demo demo/index.html demo
+ * @demo demo/grid.html demo
  */
 class LrndesignGalleryGrid extends LrnDesignGalleryBehaviors {
   /**
