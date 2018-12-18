@@ -3,7 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import {} from "@polymer/polymer/lib/utils/render-status.js";
+import { LrnDesignGalleryBehaviors } from "./lrndesign-gallery-behaviors.js";
 import "./lrndesign-gallery-zoom.js";
+import "./lrndesign-gallery-details.js";
 
 export { LrndesignGalleryGrid };
 /**
@@ -36,9 +39,9 @@ export { LrndesignGalleryGrid };
  *
  * @customElement
  * @polymer
- * @demo demo/index.html demo
+ * @demo demo/grid.html demo
  */
-class LrndesignGalleryGrid extends PolymerElement {
+class LrndesignGalleryGrid extends LrnDesignGalleryBehaviors {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -50,92 +53,94 @@ class LrndesignGalleryGrid extends PolymerElement {
   // render function
   static get template() {
     return html`
-      <style is="custom-style">
+      <style is="custom-style" include="lrndesign-gallery-shared-styles">
         :host {
-          display: block;
           margin: 15px 0 0;
           padding: 0;
           max-width: 100%;
         }
-        :host .sr-only {
+        :host .gallerythumb iron-icon {
           position: absolute;
-          left: -999999;
-          height: 0;
-          width: 0;
-          overflow: hidden;
+          bottom: 7px;
+          left: 7px;
         }
-        :host .lrndesign-gallery-thumb {
-          min-width: unset;
-          max-width: 100%;
-          padding: 0;
-          margin: 0;
-          display: inline-block;
-          transform: none !important;
-          position: static !important;
-          cursor: pointer;
+        :host .gallerythumb > div {
+          position: relative;
         }
-        :host .lrndesign-gallery-thumb iron-image {
-          width: var(--lrndesign-gallery-thumbnail-size);
-          @apply --lrndesign-gallery-thumbnail-image;
+        :host .gallerythumb iron-image {
+          width: var(--lrndesign-gallery-grid-thumbnail-xs, 100px);
         }
-        :host([responsive-size="sm"]) .lrndesign-gallery-thumb iron-image {
-          width: var(--lrndesign-gallery-thumbnail-size-sm, 150px);
+        :host([responsive-size="sm"]) .gallerythumb iron-image {
+          width: var(--lrndesign-gallery-grid-thumbnail-sm, 150px);
         }
-        :host([responsive-size="md"]) .lrndesign-gallery-thumb iron-image {
-          width: var(--lrndesign-gallery-thumbnail-size-md, 200px);
+        :host([responsive-size="md"]) .gallerythumb iron-image {
+          width: var(--lrndesign-gallery-grid-thumbnail-md, 200px);
         }
-        :host([responsive-size="lg"]) .lrndesign-gallery-thumb iron-image {
-          width: var(--lrndesign-gallery-thumbnail-size-lg, 250px);
+        :host([responsive-size="lg"]) .gallerythumb iron-image {
+          width: var(--lrndesign-gallery-grid-thumbnail-lg, 250px);
         }
-        :host([responsive-size="xl"]) .lrndesign-gallery-thumb iron-image {
-          width: var(--lrndesign-gallery-thumbnail-size-lg, 300px);
-        }
-        :host .lrndesign-gallery-thumb:focus iron-image,
-        :host .lrndesign-gallery-thumb:hover iron-image {
-          @apply --lrndesign-gallery-thumbnail-image-focus;
+        :host([responsive-size="xl"]) .gallerythumb iron-image {
+          width: var(--lrndesign-gallery-grid-thumbnail-lg, 300px);
         }
         @media print {
-          :host #gallery {
+          :host #gallerycarousel {
             display: none;
           }
         }
       </style>
-      <p class="sr-only navigation">A list of thumbnail buttons items:</p>
-      <div id="gallery" tabindex="-1" aria-live="polite">
-        <template is="dom-repeat" items="[[__items]]" as="item">
-          <paper-button
-            class="lrndesign-gallery-thumb"
-            aria-controls="gallery-zoom"
-            class="navigation"
-            item$="[[item.id]]"
-            on-click="_onNavTapped"
-            selected$="[[_isSelected(selected)]]"
-            target$="[[item.target]]"
-            title$="[[item.alt]]"
-          >
-            <iron-image
-              alt$="[[item.alt]]"
-              class="lrndesign-gallery-thumb-image"
-              fade
-              sizing="cover"
-              src$="[[item.thumbnail]]"
-              style$="[[imageStyle]]"
-            >
-            </iron-image>
-          </paper-button>
+      <article id="gallery">
+        <template is="dom-if" if="[[_isAttrSet(title)]]">
+          <h1 id="gallery-title">[[title]]</h1>
         </template>
-      </div>
-      <lrndesign-gallery-zoom
-        details$="[[selected.details]]"
-        heading$="[[selected.heading]]"
-        hidden$="[[!selected.zoom]]"
-        id="gallery-zoom"
-        item-id="[[selected.id]]"
-        src$="[[selected.large]]"
-        tooltip$="[[selected.tooltip]]"
-        zoom-alt$="[[selected.alt]]"
-      >
-      </lrndesign-gallery-zoom>
+        <div id="gallery-description"><slot name="description"></slot></div>
+        <p class="sr-only">A list of thumbnail buttons items:</p>
+        <div id="galleryscreen">
+          <template id="screenlist" is="dom-repeat" items="[[items]]" as="item">
+            <lrndesign-gallery-zoom
+              anchored-item="[[__anchoredItem]]"
+              class="gallerythumb"
+              details$="[[item.details]]"
+              heading$="[[item.heading]]"
+              item-id="[[item.id]]"
+              on-gallery-scroll="_handleScroll"
+              scrolled$="[[item.scroll]]"
+              src$="[[item.large]]"
+              tooltip$="[[item.tooltip]]"
+              zoom-alt$="[[item.zoomAlt]]"
+              zoomed$="[[item.zoom]]"
+            >
+              <div>
+                <iron-image
+                  alt$="[[item.zoomAlt]]"
+                  fade
+                  sizing="cover"
+                  src$="[[item.thumbnail]]"
+                  style$="[[_getImageStyle(items)]]"
+                >
+                </iron-image>
+                <iron-icon icon="zoom-in"></iron-icon>
+              </div>
+            </lrndesign-gallery-zoom>
+          </template>
+        </div>
+        <div id="galleryprint">
+          <template id="printlist" is="dom-repeat" items="[[items]]" as="item">
+            <section>
+              <template is="dom-if" if="[[_isAttrSet(item.title)]]">
+                <h2>[[item.title]]</h2>
+              </template>
+              <lrndesign-gallery-details
+                details$="[[item.details]]"
+              ></lrndesign-gallery-details>
+              <img
+                class="print-image"
+                alt$="[[item.alt]]"
+                src$="[[item.src]]"
+              />
+            </section>
+          </template>
+        </div>
+      </article>
     `;
   }
 
@@ -145,130 +150,28 @@ class LrndesignGalleryGrid extends PolymerElement {
       /**
        * aspect ratio of media
        */
-      aspectRatio: {
-        type: Number,
-        value: "1.33333333"
-      },
-      /**
-       * aspect ratio of media
-       */
       imageStyle: {
         type: String,
         computed: "_getImageStyle(items)",
         reflectToAttribute: true
-      },
-      /**
-       * array of carousel items
-       */
-      items: {
-        type: Array,
-        value: [],
-        notify: true,
-        observer: "_itemsLoaded"
-      },
-      /**
-       * the parent item
-       */
-      parent: {
-        type: Object,
-        value: {}
-      },
-      /**
-       * data for the selected item
-       */
-      selected: {
-        type: Object,
-        notify: true,
-        value: {},
-        observer: "_selectionChanged"
-      },
-      /**
-       * default sizing: fit container by cropping (cover)
-       * or with letterboxing (contain)
-       */
-      sizing: {
-        type: String,
-        value: "cover"
-      },
-      /**
-       * carousel's title
-       */
-      title: {
-        type: String,
-        value: null
       }
     };
   }
 
   /**
-   * life cycle, element is afixed to the DOM
+   * handles gallery-scroll event
    */
-  connectedCallback() {
-    super.connectedCallback();
-    this.__gallery = this.$.gallery;
-  }
-
-  /**
-   * gets unique id for carousel and sets it as a target
-   */
-  _itemsLoaded() {
-    this.__items = this.items;
-  }
-
-  /**
-   * go to item by id, or index
-   */
-  goToItem(selection) {
-    let index =
-      typeof selection === "string"
-        ? this.items.findIndex(i => i.id === selection)
-        : selection;
-    if (typeof index === "number" && index >= 0 && index < this.items.length) {
-      this.selected = this.items[index];
-      //this.shadowRoot.querySelector("#gallery-zoom").toggleDialog();
-    }
-  }
-
-  /**
-   * when a thumbnail is tapped, goes to that item
-   */
-  _onNavTapped(e) {
-    this.goToItem(e.model.item.id);
-  }
-
-  /**
-   * sets selected attribute of thumbnail
-   */
-  _isSelected(selected) {
-    return selected ? "selected" : "";
-  }
-
-  /**
-   * allows a grid item to be opened based on an anchor
-   */
-  _selectionChanged() {
-    if (this.__init !== true) {
-      let anchor = window.location.hash.replace("#", ""),
-        item = anchor.replace("-zoom", "");
-      if (this.selected && this.selected.id == item) {
-        this.__init = true;
-        this.shadowRoot.querySelector("#gallery-zoom").toggleDialog();
-        this.$.itembody.innerHTML = this.selected.details;
-      }
-    }
-  }
-
-  /**
-   * returns true if the given attribute is not null
-   */
-  _isAttrSet(attr) {
-    return attr !== null && attr !== undefined;
+  _handleScroll(e) {
+    this._scrollIntoView([this._getParentOffset(this), e.path[0].offsetTop]);
   }
 
   /**
    * returns the proper padding to maintain image aspect ratio and updates
+   *
+   * @param {array} an array of items
+   * @returns {string} the style based on the first item
    */
-  _getImageStyle(items) {
+  _getImageStyle(items = []) {
     let img = new Image(),
       padding = 75;
     if (items !== undefined && items.length > 0) {

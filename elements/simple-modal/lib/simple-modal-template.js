@@ -51,6 +51,20 @@ class SimpleModalTemplate extends PolymerElement {
       <style>
         :host {
           display: none;
+          --simple-modal-width: 50vw;
+          --simple-modal-height: 50vh;
+          --simple-modal-titlebar-color: #444;
+          --simple-modal-titlebar-background: #ddd;
+          --simple-modal-header-color: #222;
+          --simple-modal-header-background: #ccc;
+          --simple-modal-content-container-color: #222;
+          --simple-modal-content-container-background: #fff;
+          --simple-modal-buttons-color: blue;
+          --simple-modal-buttons-background: #fff;
+          --simple-modal-button-color: var(--simple-modal-buttons-color);
+          --simple-modal-button-background: var(
+            --simple-modal-buttons-background-color
+          );
         }
       </style>
       <slot name="header"></slot> <slot name="content"></slot>
@@ -64,12 +78,14 @@ class SimpleModalTemplate extends PolymerElement {
    * @param {string} the event name
    * @param {boolean} whether the event bubbles (default is true)
    * @param {boolean} whether the event can be canceled (default is true)
+   * @returns {object} the modal object
    */
   associateEvents(target, evt = "tap", bubbles = true, cancelable = true) {
     let root = this;
     target.addEventListener(evt, e => {
       root.openModal(target, bubbles, cancelable);
     });
+    return root.modal;
   }
   /**
    * gets the simple-modal
@@ -100,7 +116,26 @@ class SimpleModalTemplate extends PolymerElement {
         invokedBy: target
       }
     });
-    target.dispatchEvent(evt);
+    [
+      "--simple-modal-width",
+      "--simple-modal-height",
+      "--simple-modal-titlebar-color",
+      "--simple-modal-titlebar-background",
+      "--simple-modal-header-color",
+      "--simple-modal-header-background",
+      "--simple-modal-content-container-color",
+      "--simple-modal-content-container-background",
+      "--simple-modal-buttons-color",
+      "--simple-modal-buttons-background",
+      "--simple-modal-button-color",
+      "--simple-modal-button-background"
+    ].forEach(prop => {
+      this.modal.style.setProperty(
+        prop,
+        getComputedStyle(this).getPropertyValue(prop)
+      );
+    });
+    window.dispatchEvent(evt);
   }
   /**
    * clones content in a named slot

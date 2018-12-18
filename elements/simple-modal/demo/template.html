@@ -30,6 +30,7 @@
           </simple-modal-template>
           <paper-button id="button2">Button 2</paper-button>
           <simple-modal-template id="smt2">
+            <p slot="precontent">Button 2 opens the second simple-modal-template template.</p>
             <p slot="content">Button 2 opens the second simple-modal-template template.</p>
           </simple-modal-template>
           <script>
@@ -38,7 +39,7 @@
               btn2 = document.getElementById('button2'), 
               smt2 = document.getElementById('smt2');
             smt1.associateEvents(btn1);
-            smt2.associateEvents(btn2);;
+            smt2.associateEvents(btn2);
           </script>
         </template>
       </demo-snippet>

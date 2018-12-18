@@ -30,6 +30,19 @@ window.simpleModal.requestAvailability = () => {
  *
  * @microcopy - language worth noting:
  *  -
+ * 
+ * CSS Variables: ```
+--simple-modal-titlebar-color: #444;
+--simple-modal-titlebar-background: #ddd;
+--simple-modal-header-color: #222;
+--simple-modal-header-background: #ccc;
+--simple-modal-content-container-color: #222;
+--simple-modal-content-container-background: #fff;
+--simple-modal-buttons-color: unset;
+--simple-modal-buttons-background: unset;
+--simple-modal-button-color: var(--simple-modal-buttons-color);
+--simple-modal-button-background: var(--simple-modal-buttons-background-color);
+```
  *
  * @customElement
  * @polymer
@@ -170,7 +183,7 @@ class SimpleModal extends PolymerElement {
   /**
    * If there is a title, aria-labelledby should point to #simple-modal-title
    */
-  _getAriaLabelledBy(title) {
+  _getAriaLabelledby(title) {
     return !title ? null : "simple-modal-title";
   }
   /**

@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "./lrndesign-gallery-zoom.js";
 
 export { LrndesignGalleryDetails };
 /**
@@ -34,6 +33,9 @@ class LrndesignGalleryDetails extends PolymerElement {
         :host {
           display: block;
         }
+        :host([hidden]) {
+          display: none;
+        }
       </style>
       <div id="details"></div>
     `;
@@ -47,23 +49,27 @@ class LrndesignGalleryDetails extends PolymerElement {
        */
       details: {
         type: String,
-        value: null
-      },
-      /**
-       * image's details in as a string of HTML
-       */
-      __details: {
-        type: String,
-        computed: "_getDetails(details)"
+        value: null,
+        observer: "_detailsChanged"
       }
     };
   }
 
   /**
-   * updates the details
+   * life cycle, element is afixed to the DOM
    */
-  _getDetails(details) {
-    this.$.details.innerHTML = details;
+  connectedCallback() {
+    super.connectedCallback();
+    this._detailsChanged();
+  }
+
+  /**
+   * updates the details
+   *
+   * @param {details} the details to be updated
+   */
+  _detailsChanged() {
+    this.$.details.innerHTML = this.details;
   }
 }
 window.customElements.define(

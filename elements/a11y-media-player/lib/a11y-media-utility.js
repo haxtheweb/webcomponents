@@ -169,6 +169,7 @@ class A11yMediaUtility extends PolymerElement {
    * gets parent node in light DOM
    *
    * @param {object} the node
+   * @returns {object} the parent node
    */
   _getParentNode(node) {
     let parent = node.parentNode;
