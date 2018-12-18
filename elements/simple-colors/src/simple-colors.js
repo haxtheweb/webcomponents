@@ -536,7 +536,7 @@ const getHex = function(hexcodes, index, dark) {
  */
 const addThemeVariables = function(theme, dark) {
   let str = [];
-  for (name in colors) {
+  for (var name in colors) {
     str.push(addColorLevels(theme, name, colors[name], dark));
   }
   return str.join("");

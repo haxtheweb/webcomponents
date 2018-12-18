@@ -863,8 +863,7 @@ export class HAXWiring {
                 }
               }
             }
-            props[settings[value].slot].component.slot =
-              "<template>" + slot + "</template>";
+            props[settings[value].slot].component.slot = slot;
           }
         }
       }

@@ -1,7 +1,8 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { AppLocalizeBehavior } from "@polymer/app-localize-behavior/app-localize-behavior.js";
+import "@polymer/iron-flex-layout/iron-flex-layout-classes.js";
 import "./eco-json-schema-array.js";
 import "./eco-json-schema-boolean.js";
 import "./eco-json-schema-enum.js";
@@ -534,9 +535,12 @@ Polymer({
       }
       // support for slot injection too!
       if (property.component.slot != "") {
-        var temp = document.createElement("template");
+        let temp = document.createElement("div");
         temp.innerHTML = property.component.slot;
-        dom(el).appendChild(temp);
+        let cloneDiv = temp.cloneNode(true);
+        while (dom(cloneDiv).firstChild !== null) {
+          dom(el).appendChild(dom(cloneDiv).firstChild);
+        }
       }
     });
   },

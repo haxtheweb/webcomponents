@@ -1,0 +1,44 @@
+{
+  /**
+   * Opened state of the toast, use event to change
+   */
+  "opened": {
+    "name": "opened",
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": true
+  },
+  /**
+   * Plain text based message to display
+   */
+  "text": {
+    "name": "text",
+    "type": "String",
+    "value": "Saved"
+  },
+  /**
+   * Text for the close button
+   */
+  "closeText": {
+    "name": "closeText",
+    "type": "String",
+    "value": "Close"
+  },
+  /**
+   * How long the toast message should be displayed
+   */
+  "duration": {
+    "name": "duration",
+    "type": "Number",
+    "value": 600
+  },
+  /**
+   * If there should be a close button shown
+   */
+  "closeButton": {
+    "name": "closeButton",
+    "type": "Boolean",
+    "value": true,
+    "reflectToAttribute": true
+  }
+}

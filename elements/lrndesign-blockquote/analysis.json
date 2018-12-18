@@ -1,0 +1,470 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "",
+      "summary": "",
+      "path": "lrndesign-blockquote.js",
+      "properties": [
+        {
+          "name": "schemaResourceID",
+          "type": "string | null | undefined",
+          "description": "Unique Resource ID, generated when schemaMap processes.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 26,
+              "column": 4
+            },
+            "end": {
+              "line": 29,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\"",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "schemaMap",
+          "type": "Object | null | undefined",
+          "description": "Schema Map for this element.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 33,
+              "column": 4
+            },
+            "end": {
+              "line": 46,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_schemaMapChanged\"",
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "citation",
+          "type": "string | null | undefined",
+          "description": "Source being cited",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 573,
+              "column": 4
+            },
+            "end": {
+              "line": 576,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "image",
+          "type": "string | null | undefined",
+          "description": "Optional image to use",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 580,
+              "column": 4
+            },
+            "end": {
+              "line": 584,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_imageChanged\"",
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "author",
+          "type": "string | null | undefined",
+          "description": "Optional author of the quote",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 588,
+              "column": 4
+            },
+            "end": {
+              "line": 591,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "sourceLink",
+          "type": "string | null | undefined",
+          "description": "Optional source that links to where the quote is from",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 595,
+              "column": 4
+            },
+            "end": {
+              "line": 598,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "displayMode",
+          "type": "string | null | undefined",
+          "description": "Funny 1900s vision.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 602,
+              "column": 4
+            },
+            "end": {
+              "line": 608,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_displayModeChanged\"",
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"default\""
+        }
+      ],
+      "methods": [
+        {
+          "name": "generateResourceID",
+          "description": "Generate a uinque ID",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 51,
+              "column": 2
+            },
+            "end": {
+              "line": 68,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "_schemaMapChanged",
+          "description": "Notice the schema map has changed, reprocess attributes.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 72,
+              "column": 2
+            },
+            "end": {
+              "line": 94,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "_imageChanged",
+          "description": "Notice display mode change activated so load the font",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 613,
+              "column": 2
+            },
+            "end": {
+              "line": 626,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_displayModeChanged",
+          "description": "Notice display mode change activated so load the font",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 630,
+              "column": 2
+            },
+            "end": {
+              "line": 653,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "attached",
+          "description": "Attached.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 658,
+              "column": 2
+            },
+            "end": {
+              "line": 780,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 15,
+          "column": 34
+        },
+        "end": {
+          "line": 781,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "LrndesignBlockquote",
+      "attributes": [
+        {
+          "name": "schema-resource-i-d",
+          "description": "Unique Resource ID, generated when schemaMap processes.",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 26,
+              "column": 4
+            },
+            "end": {
+              "line": 29,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "schema-map",
+          "description": "Schema Map for this element.",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 33,
+              "column": 4
+            },
+            "end": {
+              "line": 46,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "citation",
+          "description": "Source being cited",
+          "sourceRange": {
+            "start": {
+              "line": 573,
+              "column": 4
+            },
+            "end": {
+              "line": 576,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "image",
+          "description": "Optional image to use",
+          "sourceRange": {
+            "start": {
+              "line": 580,
+              "column": 4
+            },
+            "end": {
+              "line": 584,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "author",
+          "description": "Optional author of the quote",
+          "sourceRange": {
+            "start": {
+              "line": 588,
+              "column": 4
+            },
+            "end": {
+              "line": 591,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "source-link",
+          "description": "Optional source that links to where the quote is from",
+          "sourceRange": {
+            "start": {
+              "line": 595,
+              "column": 4
+            },
+            "end": {
+              "line": 598,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "display-mode",
+          "description": "Funny 1900s vision.",
+          "sourceRange": {
+            "start": {
+              "line": 602,
+              "column": 4
+            },
+            "end": {
+              "line": 608,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "citation-changed",
+          "description": "Fired when the `citation` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "image-changed",
+          "description": "Fired when the `image` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "author-changed",
+          "description": "Fired when the `author` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "source-link-changed",
+          "description": "Fired when the `sourceLink` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "display-mode-changed",
+          "description": "Fired when the `displayMode` property changes.",
+          "metadata": {}
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "lrndesign-blockquote"
+    }
+  ]
+}
