@@ -5,6 +5,8 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import {} from "@polymer/polymer/lib/utils/render-status.js";
 import { LrnDesignGalleryBehaviors } from "./lrndesign-gallery-behaviors.js";
+import "./lrndesign-gallery-zoom.js";
+import "./lrndesign-gallery-details.js";
 
 export { LrndesignGalleryGrid };
 /**
