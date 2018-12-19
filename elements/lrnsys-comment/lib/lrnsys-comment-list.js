@@ -5,7 +5,7 @@ import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-form-element-behavior/iron-form-element-behavior.js";
 import "@polymer/app-layout/app-layout.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
-import "@polymer/paper-toast/paper-toast.js";
+import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-button/paper-button.js";
@@ -132,7 +132,6 @@ Polymer({
         </iron-list>
       </template>
     </grafitto-filter>
-    <paper-toast text="Updated" id="toast"></paper-toast>
   `,
 
   is: "lrnsys-comment-list",
@@ -317,8 +316,15 @@ Polymer({
    * Handle editing response
    */
   handleEditing: function(e) {
-    this.$.toast.text = "Be awesome to each other";
-    this.$.toast.toggle();
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        text: "Be awesome to each other",
+        duration: 4000
+      }
+    });
+    this.dispatchEvent(evt);
   },
 
   /**
@@ -376,6 +382,7 @@ Polymer({
     // force tree to notice element updated
     this.set("comments.data", []);
     this.set("comments.data", comments);
+    this.notifyPath("comments.data");
   },
 
   /**
@@ -396,9 +403,17 @@ Polymer({
         // force tree to notice element updated
         this.set("comments.data", []);
         this.set("comments.data", comments);
+        this.notifyPath("comments.data");
         // force tree to notice element updated
-        this.$.toast.text = "Comment deleted";
-        this.$.toast.toggle();
+        const evt = new CustomEvent("simple-toast-show", {
+          bubbles: true,
+          cancelable: true,
+          detail: {
+            text: "Comment deleted",
+            duration: 4000
+          }
+        });
+        this.dispatchEvent(evt);
         // bail early
         return true;
       }
@@ -414,8 +429,15 @@ Polymer({
   },
 
   _handleUpdateResponse: function(e) {
-    this.$.toast.text = "Comment saved!";
-    this.$.toast.toggle();
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        text: "Comment saved!",
+        duration: 4000
+      }
+    });
+    this.dispatchEvent(evt);
   },
 
   /**

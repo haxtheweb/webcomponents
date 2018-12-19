@@ -408,10 +408,9 @@ class OutlineDesigner extends PolymerElement {
       </style>
       <style is="custom-style" include="simple-colors"></style>
       <iron-ajax
-        auto
+        auto="[[outlineSchemaUrl]]"
         url="[[outlineSchemaUrl]]"
         handle-as="json"
-        on-response="handleResponse"
         last-response="{{manifest}}"
         loading="{{__loading}}"
       >
@@ -676,7 +675,8 @@ class OutlineDesigner extends PolymerElement {
        */
       outlineSchemaUrl: {
         name: "outlineSchemaUrl",
-        type: "String"
+        type: "String",
+        value: false
       },
       /**
        * JSON outline schema manifest
@@ -915,12 +915,6 @@ class OutlineDesigner extends PolymerElement {
           this.viewModeLabel = "Draggable cards";
           break;
       }
-    }
-  }
-  // Observer editMode for changes
-  _editModeChanged(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined) {
-      console.log(newValue);
     }
   }
 }

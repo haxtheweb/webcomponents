@@ -44,137 +44,141 @@ export { MediaGallery };
  * @demo demo/grid.html gallery grid
  */
 class MediaGallery extends PolymerElement {
-  
   // render function
   static get template() {
     return html`
-<style>:host {
-  display: block;
-}
-:host([hidden]) {
-  display: none;
-}</style>
-<template is="dom-if" if="[[!grid]]" restamp>
-  <lrndesign-gallery
-    accent-color$="[[accentColor]]"
-    dark$="[[dark]]"
-    id$="[[galleryId]]"
-    sizing$="[[sizing]]"
-    sources$="[[sources]]"
-    title$="[[title]]"
-  >
-    <slot slot="description" name="description"></slot>
-  </lrndesign-gallery>
-</template>
-<template is="dom-if" if="[[grid]]" restamp>
-  <lrndesign-gallery-grid
-    accent-color$="[[accentColor]]"
-    dark$="[[dark]]"
-    id$="[[galleryId]]"
-    sizing$="[[sizing]]"
-    sources$="[[sources]]"
-    title$="[[title]]"
-  >
-    <slot slot="description" name="description"></slot>
-  </lrndesign-gallery-grid>
-</template>`;
+      <style>
+        :host {
+          display: block;
+        }
+        :host([hidden]) {
+          display: none;
+        }
+      </style>
+      <template is="dom-if" if="[[!grid]]" restamp>
+        <lrndesign-gallery
+          accent-color$="[[accentColor]]"
+          dark$="[[dark]]"
+          id$="[[galleryId]]"
+          sizing$="[[sizing]]"
+          sources$="[[sources]]"
+          title$="[[title]]"
+        >
+          <slot slot="description" name="description"></slot>
+        </lrndesign-gallery>
+      </template>
+      <template is="dom-if" if="[[grid]]" restamp>
+        <lrndesign-gallery-grid
+          accent-color$="[[accentColor]]"
+          dark$="[[dark]]"
+          id$="[[galleryId]]"
+          sizing$="[[sizing]]"
+          sources$="[[sources]]"
+          title$="[[title]]"
+        >
+          <slot slot="description" name="description"></slot>
+        </lrndesign-gallery-grid>
+      </template>
+    `;
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
-  "canScale": false,
-  "canPosition": false,
-  "canEditSource": false,
-  "gizmo": {
-    "title": "Image Gallery",
-    "description": "Displays carousels, grids, thumbnails, and images with captions.",
-    "icon": "image:photo-library",
-    "color": "deep-purple",
-    "groups": ["Images", "Media"],
-    "handles": [
-      {
-        "type": "image",
-        "url": "source"
-      }
-    ],
-    "meta": {
-      "author": "Your organization on github"
-    }
-  },
-  "settings": {
-    "quick": [
-      {
-        "property": "title",
-        "title": "Title",
-        "description": "The title of the gallery",
-        "inputMethod": "textfield",
-        "icon": "editor:title"
-      },
-      {
-        "property": "grid",
-        "title": "Thumbnails/Grid",
-        "description": "Display as thumbnails.",
-        "inputMethod": "boolean",
-        "icon": "image:grid-on"
-      },
-      {
-        "property": "accentColor",
-        "title": "Accent color",
-        "description": "Select the accent color for the player.",
-        "inputMethod": "colorpicker",
-        "icon": "editor:format-color-fill"
-      },
-      {
-        "property": "dark",
-        "title": "Dark",
-        "description": "Use dark theme.",
-        "inputMethod": "boolean",
-        "icon": "invert-colors"
-      }
-    ],
-    "configure": [
-      {
-        "property": "sizing",
-        "title": "Sizing",
-        "description": "How images will fit into the gallery.",
-        "inputMethod": "select",
-        "options": {
-          "cover": "Cover (cropping)",
-          "contain": "Contain (letterboxing)"
+      canScale: false,
+      canPosition: false,
+      canEditSource: false,
+      gizmo: {
+        title: "Image Gallery",
+        description:
+          "Displays carousels, grids, thumbnails, and images with captions.",
+        icon: "image:photo-library",
+        color: "deep-purple",
+        groups: ["Images", "Media"],
+        handles: [
+          {
+            type: "image",
+            url: "source"
+          }
+        ],
+        meta: {
+          author: "Your organization on github"
         }
       },
-      {
-        "property": "sources",
-        "title": "Image(s)",
-        "description": "Tracks of different languages of closed captions",
-        "inputMethod": "array",
-        "properties": [
+      settings: {
+        quick: [
           {
-            "property": "title",
-            "title": "Title",
-            "description": "Title of the image.",
-            "inputMethod": "textfield"
+            property: "title",
+            title: "Title",
+            description: "The title of the gallery",
+            inputMethod: "textfield",
+            icon: "editor:title"
           },
           {
-            "property": "src",
-            "title": "Source/URL",
-            "description": "Source of the image",
-            "inputMethod": "textfield"
+            property: "grid",
+            title: "Thumbnails/Grid",
+            description: "Display as thumbnails.",
+            inputMethod: "boolean",
+            icon: "image:grid-on"
           },
           {
-            "property": "alt",
-            "title": "Alt text",
-            "description": "Alternative text of this image (for accessibility).",
-            "inputMethod": "textfield"
+            property: "accentColor",
+            title: "Accent color",
+            description: "Select the accent color for the player.",
+            inputMethod: "colorpicker",
+            icon: "editor:format-color-fill"
           },
           {
-            "property": "details",
-            "title": "Details/long description about this image",
-            "description": "Alternative text for accessibility.",
-            "inputMethod": "textfield"
+            property: "dark",
+            title: "Dark",
+            description: "Use dark theme.",
+            inputMethod: "boolean",
+            icon: "invert-colors"
           }
-          /* future feature 
+        ],
+        configure: [
+          {
+            property: "sizing",
+            title: "Sizing",
+            description: "How images will fit into the gallery.",
+            inputMethod: "select",
+            options: {
+              cover: "Cover (cropping)",
+              contain: "Contain (letterboxing)"
+            }
+          },
+          {
+            property: "sources",
+            title: "Image(s)",
+            description: "Tracks of different languages of closed captions",
+            inputMethod: "array",
+            properties: [
+              {
+                property: "title",
+                title: "Title",
+                description: "Title of the image.",
+                inputMethod: "textfield"
+              },
+              {
+                property: "src",
+                title: "Source/URL",
+                description: "Source of the image",
+                inputMethod: "textfield"
+              },
+              {
+                property: "alt",
+                title: "Alt text",
+                description:
+                  "Alternative text of this image (for accessibility).",
+                inputMethod: "textfield"
+              },
+              {
+                property: "details",
+                title: "Details/long description about this image",
+                description: "Alternative text for accessibility.",
+                inputMethod: "textfield"
+              }
+              /* future feature 
           {
             "property": "large",
             "title": "Source/URL (Zoom)",
@@ -194,69 +198,68 @@ class MediaGallery extends PolymerElement {
             "inputMethod": "boolean",
             "icon": "zoom-in"
           }*/
-        ]
+            ]
+          }
+        ],
+        advanced: []
       }
-    ],
-    "advanced": []
-  }
-}
-;
+    };
   }
   // properties available to the custom element for data binding
   static get properties() {
     return {
-  /**
-    * accent color for gallery
-    */
-  "accentColor": {
-    "type": "String",
-    "value": null
-  },
-  /**
-    * use dark theme (default is light)?
-    */
-  "dark": {
-    "type": "Boolean",
-    "value": false
-  },
-  /**
-    * gallery's unique id
-    */
-  "galleryId": {
-    "type": "String",
-    "value": null
-  },
-  /**
-    * thumbnail grid layout, default is false (carousel layout)
-    */
-  "grid": {
-    "type": "Boolean",
-    "value": false,
-    "reflectToAttribute": true
-  },
-  /**
-    * array of carousel/grid items
-    */
-  "sources": {
-    "type": "Array",
-    "value": []
-  },
-  /**
-    * default sizing: fit screen by cropping (cover)
-    * or with letterboxing (contain)
-    */
-  "sizing": {
-    "type": "String",
-    "value": "cover"
-  },
-  /**
-    * carousel's title
-    */
-  "title": {
-    "type": "String",
-    "value": null
-  }
-};
+      /**
+       * accent color for gallery
+       */
+      accentColor: {
+        type: "String",
+        value: null
+      },
+      /**
+       * use dark theme (default is light)?
+       */
+      dark: {
+        type: "Boolean",
+        value: false
+      },
+      /**
+       * gallery's unique id
+       */
+      galleryId: {
+        type: "String",
+        value: null
+      },
+      /**
+       * thumbnail grid layout, default is false (carousel layout)
+       */
+      grid: {
+        type: "Boolean",
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * array of carousel/grid items
+       */
+      sources: {
+        type: "Array",
+        value: []
+      },
+      /**
+       * default sizing: fit screen by cropping (cover)
+       * or with letterboxing (contain)
+       */
+      sizing: {
+        type: "String",
+        value: "cover"
+      },
+      /**
+       * carousel's title
+       */
+      title: {
+        type: "String",
+        value: null
+      }
+    };
   }
 
   /**

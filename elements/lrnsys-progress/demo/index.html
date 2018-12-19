@@ -59,13 +59,23 @@
       // add an item
       add.addEventListener('click', function (e) {
         const item = {
+          "id": "item-123-4749-4ba4-8a57-078d3b8fc376",
+          "indent": 0,
+          "location": "pages\/item-bf8aef4b-4749-4ba4-8a57-078d3b8fc376\/index.html",
+          "order": 0,
+          "parent": null,
           "title": "New item",
-          "url": "#",
-          "status": "disabled",
-          "value": 0,
-          "max": 100,
-          "icon": "forward",
-          "iconComplete": "check"
+          "description": "My great new content!\n\n\nHeader\nHeader\n\n\nHeader\nHeader\n",
+          "metadata": {
+            "created": 1545151191,
+            "updated": 1545185712,
+            "dataUrl": "data/callback.json",
+            "status": "disabled",
+            "value": 0,
+            "max": 100,
+            "icon": "forward",
+            "iconComplete": "check"
+          }
         };
         p.updateItems('splice', item);
         document.querySelector('#toast').show('Item added');
@@ -78,7 +88,7 @@
         }
       });
       ajax.addEventListener('last-response-changed', (e) => {
-        p.items = ajax.lastResponse;
+        p.items = ajax.lastResponse.items;
       });
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>

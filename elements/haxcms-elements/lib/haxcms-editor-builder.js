@@ -4,6 +4,7 @@
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 
 window.cmsSiteEditor = window.cmsSiteEditor || {};
 // store reference to the instance as a global
@@ -19,14 +20,6 @@ window.cmsSiteEditor.instance = null;
  */
 Polymer({
   is: "haxcms-editor-builder",
-  properties: {
-    /**
-     * Outline data file location
-     */
-    outlineLocation: {
-      type: String
-    }
-  },
   /**
    * created life cycle
    */
@@ -39,34 +32,31 @@ Polymer({
   getContext: function() {
     var context = "";
     const basePath = pathFromUrl(import.meta.url);
-    // @todo add support for a demo mode as well as other context definitions
-    // figure out if we need to load the PHP or beaker
+    // figure out the context we need to apply for where the editing creds
+    // and API might come from
     if (typeof DatArchive !== typeof undefined) {
-      import(`${basePath}haxcms-beaker.js`);
-      window.cmsSiteEditor.tag = "haxcms-beaker";
       context = "beaker";
     } else if (window.__haxCMSContextNode === true) {
       // @todo add support for node js based back end
       context = "nodejs";
-      //import(`${basePath}haxcms-node-js.js`);
-      //window.cmsSiteEditor.tag = "haxcms-nodejs";
     } else if (window.__haxCMSContextDemo === true) {
-      // @todo add support for demo mode that has no real backend
       context = "demo";
-      //import(`${basePath}haxcms-demo.js`);
-      //window.cmsSiteEditor.tag = "haxcms-demo";
     } else {
+      context = "php";
       // append the php for global scope to show up via window
+      // this is a unique case since it's server side generated in HAXCMS/PHP
       let script = document.createElement("script");
       script.src = `/haxcms-jwt.php`;
       document.documentElement.appendChild(script);
-      // delay import slightly to ensure global scope is there
-      setTimeout(() => {
-        import(`${basePath}haxcms-jwt-php.js`);
-      }, 100);
-      window.cmsSiteEditor.tag = "haxcms-jwt";
-      context = "php";
     }
+    // import and set the tag based on the context
+    window.cmsSiteEditor.tag = `haxcms-backend-${context}`;
+    // delay import slightly to ensure global scope is there
+    async.microTask.run(() => {
+      setTimeout(() => {
+        import(`${basePath}${window.cmsSiteEditor.tag}.js`);
+      }, 50);
+    });
     return context;
   }
 });
@@ -77,7 +67,6 @@ window.cmsSiteEditor.requestAvailability = function(
   location = document.body
 ) {
   if (!window.cmsSiteEditor.instance) {
-    window.cmsSiteEditor.outlineLocation = this.outlineLocation;
     window.cmsSiteEditor.instance = document.createElement(
       window.cmsSiteEditor.tag
     );

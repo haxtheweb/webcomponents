@@ -198,43 +198,41 @@ Polymer({
     >
       [[label]]
     </paper-tooltip>
-    <a href="[[url]]" tabindex="-1" class="link">
-      <paper-button
-        id="button"
-        class="button"
-        disabled$="[[disabled]]"
-        title="[[label]]"
-      >
-        <span class="circle-wrapper">
-          <paper-spinner
-            active$="[[loading]]"
-            hidden$="[[!loading]]"
-            class="multi"
-            alt$="Loading content for [[label]]"
-          ></paper-spinner>
-          <circle-progress
-            class$="[[status]]"
-            value="[[value]]"
-            max="[[max]]"
-            stroke-width="[[strokeWidth]]"
-            angle="180"
-          >
-            <iron-icon
-              id="icon"
-              icon="[[activeIcon]]"
-              hidden$="[[!activeIcon]]"
-            ></iron-icon>
-            <slot name="image"></slot>
-          </circle-progress>
-        </span>
-        <span hidden$="[[!listView]]" id="listview" class="listview">
-          <h3 class="listview-title">[[label]]</h3>
-          <div class="description-content">
-            <slot name="description"></slot> <slot></slot>
-          </div>
-        </span>
-      </paper-button>
-    </a>
+    <paper-button
+      id="button"
+      class="button"
+      disabled$="[[disabled]]"
+      title="[[label]]"
+    >
+      <span class="circle-wrapper">
+        <paper-spinner
+          active$="[[loading]]"
+          hidden$="[[!loading]]"
+          class="multi"
+          alt$="Loading content for [[label]]"
+        ></paper-spinner>
+        <circle-progress
+          class$="[[status]]"
+          value="[[value]]"
+          max="[[max]]"
+          stroke-width="[[strokeWidth]]"
+          angle="180"
+        >
+          <iron-icon
+            id="icon"
+            icon="[[activeIcon]]"
+            hidden$="[[!activeIcon]]"
+          ></iron-icon>
+          <slot name="image"></slot>
+        </circle-progress>
+      </span>
+      <span hidden$="[[!listView]]" id="listview" class="listview">
+        <h3 class="listview-title">[[label]]</h3>
+        <div class="description-content">
+          <slot name="description"></slot> <slot></slot>
+        </div>
+      </span>
+    </paper-button>
   `,
 
   is: "lrnsys-progress-circle",
@@ -278,7 +276,7 @@ Polymer({
      */
     icon: {
       type: String,
-      value: 0,
+      value: "icons:description",
       reflectToAttribute: true
     },
     /**
@@ -286,7 +284,7 @@ Polymer({
      */
     iconComplete: {
       type: String,
-      value: 0,
+      value: "icons:description",
       reflectToAttribute: true
     },
     /**
@@ -557,7 +555,8 @@ Polymer({
    * Tapped on the item.
    */
   tapEventOn: function(e) {
-    this.fire("node-is-active", { node: e });
+    let target = e.target;
+    this.fire("node-is-active", { target });
   },
 
   /**

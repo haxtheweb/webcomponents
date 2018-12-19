@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/outline-designer/outline-designer.js";
 /**
@@ -24,9 +25,7 @@ Polymer({
     </style>
     <paper-dialog id="outlineeditor" opened="{{opened}}" with-backdrop="">
       <paper-dialog-scrollable>
-        <outline-designer
-          outline-schema-url="[[outlineLocation]]"
-        ></outline-designer>
+        <outline-designer manifest="{{manifest}}" edit-mode></outline-designer>
       </paper-dialog-scrollable>
       <div class="buttons">
         <paper-button id="save" dialog-confirm="" on-tap="_saveTap"
@@ -47,16 +46,12 @@ Polymer({
       type: Boolean,
       notify: true
     },
-    outlineLocation: {
-      type: String
-    },
     /**
      * Outline of items in json outline schema format
      */
-    items: {
-      type: Array,
-      notify: true,
-      value: []
+    manifest: {
+      type: Object,
+      notify: true
     }
   },
 
@@ -73,11 +68,13 @@ Polymer({
    * attached life cycle
    */
   attached: function() {
-    // state issue but it can miss in timing othewise on first event
-    if (typeof window.cmsSiteEditor.jsonOutlineSchema !== typeof undefined) {
-      this.set("items", window.cmsSiteEditor.jsonOutlineSchema.items);
-      this.notifyPath("items.*");
-    }
+    async.microTask.run(() => {
+      // state issue but it can miss in timing othewise on first event
+      if (typeof window.cmsSiteEditor.jsonOutlineSchema !== typeof undefined) {
+        this.set("manifest", window.cmsSiteEditor.jsonOutlineSchema);
+        this.notifyPath("manifest.*");
+      }
+    });
   },
   /**
    * detached life cycle
@@ -93,11 +90,9 @@ Polymer({
    */
   _manifestChanged: function(e) {
     if (typeof e.detail.items !== typeof undefined) {
-      this.set("items", []);
-      this.set("items", e.detail.items);
-      this.notifyPath("items.*");
-      // set this to kick off building out the whole outline designer from manifest
-      this.outlineLocation = window.cmsSiteEditor.outlineLocation;
+      this.set("manifest", []);
+      this.set("manifest", e.detail);
+      this.notifyPath("manifest.*");
     }
   },
 
@@ -105,6 +100,6 @@ Polymer({
    * Save hit, send the message to push up the outline changes.
    */
   _saveTap: function(e) {
-    this.fire("haxcms-save-outline", this.items);
+    this.fire("haxcms-save-outline", this.manifest.items);
   }
 });

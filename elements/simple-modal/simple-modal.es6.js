@@ -1,10 +1,6 @@
 import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import"./node_modules/@polymer/paper-dialog/paper-dialog.js";import"./node_modules/@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";import"./node_modules/@polymer/paper-button/paper-button.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/neon-animation/animations/scale-up-animation.js";import"./node_modules/@polymer/neon-animation/animations/fade-out-animation.js";window.simpleModal=window.simpleModal||{};window.simpleModal.requestAvailability=()=>{if(!window.simpleModal.instance){window.simpleModal.instance=document.createElement("simple-modal");document.body.appendChild(window.simpleModal.instance)}return window.simpleModal.instance};class SimpleModal extends PolymerElement{static get template(){return html`
 <style>:host {
   display: block;
-  --simple-modal-titlebar-color: #444;
-  --simple-modal-titlebar-background: #ddd;
-  --simple-modal-header-color: #222;
-  --simple-modal-header-background: #ccc;
 }
 
 :host([hidden]) {
@@ -22,8 +18,8 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
   width: auto;
   height: auto;
   z-index: 1000;
-  min-width: 50vw;
-  min-height: 50vh;
+  min-width: var(--simple-modal-width, 50vw);
+  min-height: var(--simple-modal-height, 50vh);
   border-radius: 3px;
   @apply --simple-modal-dialog;
 }
@@ -34,8 +30,8 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: var(--simple-modal-titlebar-color);
-  background-color: var(--simple-modal-titlebar-background);
+  color: var(--simple-modal-titlebar-color,#444);
+  background-color: var(--simple-modal-titlebar-background,#ddd);
   border-radius: 3px 3px 0 0;
   @apply --simple-modal-top;
 }
@@ -43,8 +39,8 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
 :host #headerbar {
   margin: 0;
   padding: 0 16px;
-  color: var(--simple-modal-header-color);
-  background-color: var(--simple-modal-header-background);
+  color: var(--simple-modal-header-color, #222);
+  background-color: var(--simple-modal-header-background, #ccc);
   @apply --simple-modal-headerbar;
 }
 
@@ -62,7 +58,7 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
   padding: 10px 0;
   min-width: unset;
   text-transform: none;
-  color: var(--simple-modal-titlebar-color);
+  color: var(--simple-modal-titlebar-color,#444);
   background-color: transparent;
   @apply --simple-modal-close;
 }
@@ -70,20 +66,33 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
 :host #close iron-icon {
   width: 16px;
   height: 16px;
-  color: var(--simple-modal-titlebar-color);
+  color: var(--simple-modal-titlebar-color,#444);
   @apply --simple-modal-close-icon;
 }
 
-.content {
+#simple-modal-content {
   padding: 8px 16px;
+  margin: 0;
+  color: var(--simple-modal-content-container-color, #222);
+  background-color: var(--simple-modal-content-container-background, #fff);
+  --paper-dialog-scrollable: {
+    padding: 0;
+  }
   @apply --simple-modal-content-container;
 }
-
 .buttons {
-  position: absolute;
-  bottom: 0;
-  padding: 8px 16px;
+  padding: 0;
+  margin: 0;
+  color: var(--simple-modal-buttons-color, unset);
+  background-color: var(--simple-modal-buttons-background,unset);
   @apply --simple-modal-buttons;
+}
+.buttons ::slotted(*) {
+  padding: 0;
+  margin: 0;
+  color: var(--simple-modal-button-color,--simple-modal-buttons-color);
+  background-color: var(--simple-modal-button-background,--simple-modal-buttons-background);
+  @apply --simple-modal-button;
 }</style>
 <paper-dialog id="dialog" 
   always-on-top
@@ -110,4 +119,4 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
   <div class="buttons">
     <slot name="buttons"></slot>
   </div>
-</paper-dialog>`}static get properties(){return{title:{name:"title",type:String,value:""},opened:{name:"opened",type:Boolean,value:!1,reflectToAttribute:!0,observer:"_openedChanged"},closeLabel:{name:"closeLabel",type:String,value:"Close"},closeIcon:{name:"closeIcon",type:String,value:"close"},invokedBy:{name:"invokedBy",type:Object}}}static get tag(){return"simple-modal"}connectedCallback(){super.connectedCallback();window.addEventListener("simple-modal-hide",this.close.bind(this));window.addEventListener("simple-modal-show",this.showEvent.bind(this))}_resizeContent(e){async.microTask.run(()=>{window.dispatchEvent(new Event("resize"))})}showEvent(e){if(this.opened){while(null!==dom(this).firstChild){dom(this).removeChild(dom(this).firstChild)}setTimeout(()=>{this.show(e.detail.title,e.detail.elements,e.detail.invokedBy,e.detail.clone)},100)}else{this.show(e.detail.title,e.detail.elements,e.detail.invokedBy,e.detail.clone)}}show(title,elements,invokedBy,clone=!1){this.set("invokedBy",invokedBy);this.title=title;let element,slots=["header","content","buttons"];for(var i in slots){if(elements[slots[i]]){if(clone){element=elements[slots[i]].cloneNode(!0)}else{element=elements[slots[i]]}element.setAttribute("slot",slots[i]);dom(this).appendChild(element)}}setTimeout(()=>{this.opened=!0;this._resizeContent()},100)}animationEnded(e){this.title="";while(null!==dom(this).firstChild){dom(this).removeChild(dom(this).firstChild)}if(this.invokedBy){async.microTask.run(()=>{setTimeout(()=>{this.invokedBy.focus()},500)})}}close(){this.$.dialog.close()}_openedChanged(newValue,oldValue){if(typeof newValue!==typeof void 0&&!newValue){this.animationEnded();const evt=new CustomEvent("simple-modal-closed",{bubbles:!0,cancelable:!0,detail:{opened:!1,invokedBy:this.invokedBy}});this.dispatchEvent(evt)}else if(newValue){const evt=new CustomEvent("simple-modal-opened",{bubbles:!0,cancelable:!0,detail:{opened:!0,invokedBy:this.invokedBy}});this.dispatchEvent(evt)}}_getAriaLabelledBy(title){return!title?null:"simple-modal-title"}_getAriaLabel(title){return!title?"Modal Dialog":null}disconnectedCallback(){super.disconnectedCallback();window.removeEventListener("simple-modal-hide",this.close.bind(this));window.removeEventListener("simple-modal-show",this.showEvent.bind(this))}}window.customElements.define(SimpleModal.tag,SimpleModal);export{SimpleModal};
+</paper-dialog>`}static get properties(){return{title:{name:"title",type:String,value:""},opened:{name:"opened",type:Boolean,value:!1,reflectToAttribute:!0,observer:"_openedChanged"},closeLabel:{name:"closeLabel",type:String,value:"Close"},closeIcon:{name:"closeIcon",type:String,value:"close"},invokedBy:{name:"invokedBy",type:Object}}}static get tag(){return"simple-modal"}connectedCallback(){super.connectedCallback();window.addEventListener("simple-modal-hide",this.close.bind(this));window.addEventListener("simple-modal-show",this.showEvent.bind(this))}_resizeContent(e){async.microTask.run(()=>{window.dispatchEvent(new Event("resize"))})}showEvent(e){if(this.opened){while(null!==dom(this).firstChild){dom(this).removeChild(dom(this).firstChild)}setTimeout(()=>{this.show(e.detail.title,e.detail.elements,e.detail.invokedBy,e.detail.clone)},100)}else{this.show(e.detail.title,e.detail.elements,e.detail.invokedBy,e.detail.clone)}}show(title,elements,invokedBy,clone=!1){this.set("invokedBy",invokedBy);this.title=title;let element,slots=["header","content","buttons"];for(var i in slots){if(elements[slots[i]]){if(clone){element=elements[slots[i]].cloneNode(!0)}else{element=elements[slots[i]]}element.setAttribute("slot",slots[i]);dom(this).appendChild(element)}}setTimeout(()=>{this.opened=!0;this._resizeContent()},100)}animationEnded(e){this.title="";while(null!==dom(this).firstChild){dom(this).removeChild(dom(this).firstChild)}if(this.invokedBy){async.microTask.run(()=>{setTimeout(()=>{this.invokedBy.focus()},500)})}}close(){this.$.dialog.close()}_openedChanged(newValue,oldValue){if(typeof newValue!==typeof void 0&&!newValue){this.animationEnded();const evt=new CustomEvent("simple-modal-closed",{bubbles:!0,cancelable:!0,detail:{opened:!1,invokedBy:this.invokedBy}});this.dispatchEvent(evt)}else if(newValue){const evt=new CustomEvent("simple-modal-opened",{bubbles:!0,cancelable:!0,detail:{opened:!0,invokedBy:this.invokedBy}});this.dispatchEvent(evt)}}_getAriaLabelledby(title){return!title?null:"simple-modal-title"}_getAriaLabel(title){return!title?"Modal Dialog":null}disconnectedCallback(){super.disconnectedCallback();window.removeEventListener("simple-modal-hide",this.close.bind(this));window.removeEventListener("simple-modal-show",this.showEvent.bind(this))}}window.customElements.define(SimpleModal.tag,SimpleModal);export{SimpleModal};

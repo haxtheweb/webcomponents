@@ -3,9 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/paper-fab/paper-fab.js";
-import "@polymer/paper-toast/paper-toast.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
@@ -18,6 +19,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-app.js";
 import "@lrnwebcomponents/hax-body/lib/hax-panel.js";
 import "@lrnwebcomponents/hax-body/lib/hax-export-dialog.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
+import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "./haxcms-outline-editor-dialog.js";
 import "./haxcms-manifest-editor-dialog.js";
 import "./haxcms-site-editor-ui.js";
@@ -140,20 +142,11 @@ Polymer({
     ></haxcms-site-editor-ui>
     <haxcms-outline-editor-dialog
       id="outlineeditor"
+      manifest="[[manifest]]"
     ></haxcms-outline-editor-dialog>
     <haxcms-manifest-editor-dialog
       id="manifesteditor"
     ></haxcms-manifest-editor-dialog>
-    <paper-toast id="toast"> </paper-toast>
-    <paper-toast id="publishtoast" duration="0">
-      <a href$="[[__publishLink]]" target="_blank"
-        ><paper-button
-          raised
-          style="color:yellow;text-transform: none;font-weight: bold;"
-          >[[__publishLabel]]</paper-button
-        ></a
-      >
-    </paper-toast>
   `,
   listeners: {
     "haxcms-save-outline": "saveOutline", // from outlineeditor
@@ -279,6 +272,7 @@ Polymer({
    * created life cycle
    */
   created: function() {
+    window.SimpleToast.requestAvailability();
     document.body.addEventListener(
       "json-outline-schema-active-item-changed",
       this._newActiveItem.bind(this)
@@ -296,8 +290,6 @@ Polymer({
    * ready life cycle
    */
   ready: function() {
-    document.body.appendChild(this.$.toast);
-    document.body.appendChild(this.$.publishtoast);
     document.body.appendChild(this.$.ui);
     document.body.appendChild(this.$.outlineeditor);
     document.body.appendChild(this.$.manifesteditor);
@@ -306,21 +298,30 @@ Polymer({
    * attached life cycle
    */
   attached: function() {
-    this.$.toast.show("You are logged in, edit tools shown.");
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        text: "You are logged in, edit tools shown."
+      }
+    });
+    this.dispatchEvent(evt);
     // get around initial setup state management
     if (typeof this.__body !== typeof undefined) {
       this.$.body.importContent(this.__body);
     }
-    // allow for initial setting since this editor gets injected basically
-    if (typeof window.cmsSiteEditor.jsonOutlineSchema !== typeof undefined) {
-      this.set("manifest", window.cmsSiteEditor.jsonOutlineSchema);
-      this.notifyPath("manifest.*");
-    }
-    if (typeof window.cmsSiteEditor.initialActiveItem !== typeof undefined) {
-      this.set("activeItem", window.cmsSiteEditor.initialActiveItem);
-      this.notifyPath("activeItem.*");
-    }
-    this.updateStyles();
+    async.microTask.run(() => {
+      // allow for initial setting since this editor gets injected basically
+      if (typeof window.cmsSiteEditor.jsonOutlineSchema !== typeof undefined) {
+        this.set("manifest", window.cmsSiteEditor.jsonOutlineSchema);
+        this.notifyPath("manifest.*");
+      }
+      if (typeof window.cmsSiteEditor.initialActiveItem !== typeof undefined) {
+        this.set("activeItem", window.cmsSiteEditor.initialActiveItem);
+        this.notifyPath("activeItem.*");
+      }
+      this.updateStyles();
+    });
   },
   /**
    * Detatched life cycle
@@ -344,10 +345,24 @@ Polymer({
    */
   _publishingChanged: function(newValue, oldValue) {
     if (newValue) {
-      this.$.toast.duration = 0;
-      this.$.toast.show("Publishing...");
+      const evt = new CustomEvent("simple-toast-show", {
+        bubbles: true,
+        cancelable: true,
+        detail: {
+          text: "Publishing...",
+          duration: 0
+        }
+      });
+      this.dispatchEvent(evt);
     } else if (!newValue && oldValue) {
-      this.$.toast.duration = 3000;
+      const evt = new CustomEvent("simple-toast-show", {
+        bubbles: true,
+        cancelable: true,
+        detail: {
+          text: "Publishing...",
+          duration: 3000
+        }
+      });
     }
   },
   /**
@@ -357,6 +372,7 @@ Polymer({
     this.set("manifest", {});
     this.set("manifest", e.detail);
     this.notifyPath("manifest.*");
+    console.log(e.detail);
   },
   /**
    * update the internal active item
@@ -382,26 +398,64 @@ Polymer({
    * handle update responses for pages and outlines
    */
   _handlePageResponse: function(e) {
-    this.$.toast.show("Page saved!");
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        text: "Page saved!",
+        duration: 3000
+      }
+    });
+    this.dispatchEvent(evt);
     this.fire("haxcms-trigger-update-page", true);
   },
   _handleOutlineResponse: function(e) {
     // trigger a refresh of the data in page
-    this.$.toast.show("Outline saved!");
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        text: "Outline saved!",
+        duration: 3000
+      }
+    });
+    this.dispatchEvent(evt);
     this.fire("haxcms-trigger-update", true);
   },
   _handleManifestResponse: function(e) {
     // trigger a refresh of the data in page
-    this.$.toast.show("Site details saved!");
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        text: "Site details saved!",
+        duration: 3000
+      }
+    });
+    this.dispatchEvent(evt);
     this.fire("haxcms-trigger-update", true);
   },
   _handlePublishResponse: function(e) {
     console.log(e.detail.response);
     let data = e.detail.response;
     // show the published response
-    this.__publishLink = data.url;
-    this.__publishLabel = data.label;
-    this.$.publishtoast.show(data.response);
+    let content = document.createElement("span");
+    content.innerHTML = `
+    <a href="${data.url}" target="_blank">
+      <paper-button raised style="color:yellow;text-transform: none;font-weight: bold;">
+      ${data.label}
+      </paper-button>
+    </a>`;
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        text: data.response,
+        duration: 0,
+        slot: content.cloneNode(true)
+      }
+    });
+    this.dispatchEvent(evt);
   },
   /**
    * Edit state has changed.

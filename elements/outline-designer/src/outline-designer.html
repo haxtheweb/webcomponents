@@ -1,9 +1,8 @@
 <style is="custom-style" include="simple-colors"></style>
 <iron-ajax
-  auto
+  auto="[[outlineSchemaUrl]]"
   url="[[outlineSchemaUrl]]"
   handle-as="json"
-  on-response="handleResponse"
   last-response="{{manifest}}"
   loading="{{__loading}}">
 </iron-ajax>

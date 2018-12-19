@@ -2048,21 +2048,24 @@ window.HaxStore.wipeSlot = (element, slot = "") => {
  * HTML encapsulation of a string on script and style tags
  */
 window.HaxStore.encapScript = html => {
-  html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
-  html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
-  html = html.replace(/<style[\s\S]*?>/gi, "&lt;style&gt;");
-  html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
-  // special case, it's inside a template tag
-  html = html.replace(
-    /<template[\s\S]*?>[\s\S]*?&lt;script[\s\S]*?&gt;[\s\S]*?&lt;\/script&gt;/gi,
-    function(match, contents, offset, input_string) {
-      match = match.replace("&lt;script&gt;", "<script>");
-      match = match.replace("&lt;/script&gt;", "</script>");
-      match = match.replace("&lt;style&gt;", "<style>");
-      match = match.replace("&lt;/style&gt;", "</style>");
-      return match;
-    }
-  );
+  // ensure this is a string to then do replacements on, rare but possible w/ null
+  if (typeof html.replace === "function") {
+    html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
+    html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
+    html = html.replace(/<style[\s\S]*?>/gi, "&lt;style&gt;");
+    html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
+    // special case, it's inside a template tag
+    html = html.replace(
+      /<template[\s\S]*?>[\s\S]*?&lt;script[\s\S]*?&gt;[\s\S]*?&lt;\/script&gt;/gi,
+      function(match, contents, offset, input_string) {
+        match = match.replace("&lt;script&gt;", "<script>");
+        match = match.replace("&lt;/script&gt;", "</script>");
+        match = match.replace("&lt;style&gt;", "<style>");
+        match = match.replace("&lt;/style&gt;", "</style>");
+        return match;
+      }
+    );
+  }
   return html;
 };
 /**

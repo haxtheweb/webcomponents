@@ -18,7 +18,7 @@ import "@polymer/iron-icons/device-icons.js";
 import "@polymer/iron-icons/image-icons.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-input/paper-input.js";
-import "@polymer/paper-toast/paper-toast.js";
+import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
@@ -300,7 +300,6 @@ Polymer({
         >
       </div>
     </paper-dialog>
-    <paper-toast id="toast"></paper-toast>
   `,
   properties: {
     /**
@@ -461,7 +460,15 @@ Polymer({
     if (newValue) {
       this.__loginText = "Log out";
       this.__loginIcon = "icons:account-circle";
-      this.$.toast.show("Welcome, log in successful!");
+      const evt = new CustomEvent("simple-toast-show", {
+        bubbles: true,
+        cancelable: true,
+        detail: {
+          text: "Welcome, log in successful!",
+          duration: 4000
+        }
+      });
+      this.dispatchEvent(evt);
       this.$.add.hidden = false;
       this.$.siteslisting.$.list.querySelector(
         '[data-site-id="item-new"]'
@@ -472,7 +479,15 @@ Polymer({
     } else {
       this.__loginText = "Log in";
       this.__loginIcon = "icons:power-settings-new";
-      this.$.toast.show("You logged out");
+      const evt = new CustomEvent("simple-toast-show", {
+        bubbles: true,
+        cancelable: true,
+        detail: {
+          text: "You logged out",
+          duration: 4000
+        }
+      });
+      this.dispatchEvent(evt);
       this.$.add.hidden = true;
       this.$.siteslisting.$.list.querySelector(
         '[data-site-id="item-new"]'
@@ -658,6 +673,7 @@ Polymer({
    * Ready life cycle
    */
   ready: function() {
+    window.SimpleToast.requestAvailability();
     // set jwt from local storage bin
     this.jwt = localStorage.getItem("jwt");
   },
@@ -734,7 +750,15 @@ Polymer({
   handleCreateResponse: function(e) {
     // update the listing data
     this.fire("update-sites-listing-data", e.detail.response);
-    this.$.toast.show(e.detail.response.title + " created successfully!");
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        text: e.detail.response.title + " created successfully!",
+        duration: 4000
+      }
+    });
+    this.dispatchEvent(evt);
   },
   /**
    * Download a site
@@ -748,7 +772,15 @@ Polymer({
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
-    this.$.toast.show(this.activeItem.title + " downloaded successfully!");
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        text: this.activeItem.title + " downloaded successfully!",
+        duration: 4000
+      }
+    });
+    this.dispatchEvent(evt);
   },
   /**
    * Option selected in an operation in context
@@ -758,21 +790,53 @@ Polymer({
     switch (e.detail.operation) {
       case "remove":
         if (e.detail.option === "option1") {
-          this.$.toast.show("Deleting this");
+          const evt = new CustomEvent("simple-toast-show", {
+            bubbles: true,
+            cancelable: true,
+            detail: {
+              text: "Deleting this",
+              duration: 4000
+            }
+          });
+          this.dispatchEvent(evt);
           // @todo send call out the door to delete callback
         }
         break;
       case "duplicate":
         if (e.detail.option === "option1") {
-          this.$.toast.show("Duplicating this");
+          const evt = new CustomEvent("simple-toast-show", {
+            bubbles: true,
+            cancelable: true,
+            detail: {
+              text: "Duplicating this",
+              duration: 4000
+            }
+          });
+          this.dispatchEvent(evt);
           // @todo send call out the door to duplicate callback
         }
         break;
       case "move":
         if (e.detail.option === "option1") {
-          this.$.toast.show("Move this item left");
+          const evt = new CustomEvent("simple-toast-show", {
+            bubbles: true,
+            cancelable: true,
+            detail: {
+              text: "Move this item left",
+              duration: 4000
+            }
+          });
+          this.dispatchEvent(evt);
         } else {
-          this.$.toast.show("Move this item right");
+          const evt = new CustomEvent("simple-toast-show", {
+            bubbles: true,
+            cancelable: true,
+            detail: {
+              text: "Move this item right",
+              duration: 4000
+            }
+          });
+          this.dispatchEvent(evt);
         }
         // @todo send call out the door to commit the move callback
         break;

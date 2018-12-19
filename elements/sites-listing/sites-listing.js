@@ -55,6 +55,7 @@ let SitesListing = Polymer({
       }
       site-card {
         padding: 16px;
+        font-size: 16px;
       }
       paper-button.site-card-wrapper {
         margin: 0;
@@ -67,10 +68,10 @@ let SitesListing = Polymer({
       url="[[dataSource]]"
       handle-as="json"
       debounce-duration="250"
-      last-response="{{sites}}"
+      last-response="{{sitesResponse}}"
     ></iron-ajax>
     <div id="loading" data-loading\$="[[!__loading]]">
-      <elmsln-loading></elmsln-loading>
+      <elmsln-loading size="large"></elmsln-loading>
       <div>Loading..</div>
     </div>
     <iron-list id="list" items="[[sites]]" as="site" grid="">
@@ -85,10 +86,10 @@ let SitesListing = Polymer({
           <site-card
             data-site-id\$="[[site.id]]"
             size="[[size]]"
-            image="[[site.image]]"
-            icon="[[site.icon]]"
-            name="[[site.name]]"
-            title="[[site.title]]"
+            image="[[site.metadata.image]]"
+            icon="[[site.metadata.icon]]"
+            name="[[site.title]]"
+            title="[[site.description]]"
             elevation="2"
           ></site-card>
         </paper-button>
@@ -98,10 +99,19 @@ let SitesListing = Polymer({
   is: "sites-listing",
   properties: {
     /**
+     * Object, JSON Outline Schema format
+     */
+    sitesResponse: {
+      type: Object,
+      notify: true,
+      observer: "_sitesResponseChanged"
+    },
+    /**
      * Array of site objects
      */
     sites: {
-      type: Array
+      type: Array,
+      notify: true
     },
     /**
      * Size of the cards
@@ -115,6 +125,25 @@ let SitesListing = Polymer({
      */
     dataSource: {
       type: String
+    },
+    /**
+     * Allow for loading the location in the array rather than firing an event
+     */
+    loadLocation: {
+      type: Boolean,
+      value: false
+    }
+  },
+  /**
+   * Parse JSON Outline Schema for the items and bind that to sites
+   */
+  _sitesResponseChanged: function(newValue, oldValue) {
+    if (newValue) {
+      if (typeof newValue.items !== typeof undefined) {
+        this.set("sites", []);
+        this.set("sites", newValue.items);
+        this.notifyPath("sites.*");
+      }
     }
   },
   /**
@@ -137,9 +166,10 @@ let SitesListing = Polymer({
       findSite = findSite.pop();
     }
     // double check we have a URI
-    if (typeof findSite.location !== typeof undefined) {
+    if (this.loadLocation && typeof findSite.location !== typeof undefined) {
       window.location.href = findSite.location;
     }
+    this.fire("sites-listing-item-selected", findSite);
   },
   /**
    * Increase elevation while hovering.

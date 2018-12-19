@@ -6,7 +6,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/beaker-broker/beaker-broker.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 /**
- * `haxcms-beaker`
+ * `haxcms-backend-beaker`
  * `a simple element to check for and fetch JWTs`
  *
  * @demo demo/index.html
@@ -14,7 +14,7 @@ import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
  * - jwt - a json web token which is an encrypted security token to talk
  */
 Polymer({
-  is: "haxcms-beaker",
+  is: "haxcms-backend-beaker",
   _template: html`
     <beaker-broker id="beaker"></beaker-broker>
   `,

@@ -2,7 +2,11 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
+import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@polymer/iron-ajax/iron-ajax.js";
+import "@polymer/paper-progress/paper-progress.js";
+import "@polymer/app-route/app-route.js";
+import "@polymer/app-route/app-location.js";
 /**
 `haxcms-site-builder`
 A LRN element
@@ -41,9 +45,7 @@ Polymer({
         --paper-progress-container-color: transparent;
       }
     </style>
-    <haxcms-editor-builder
-      outline-location="[[outlineLocation]]"
-    ></haxcms-editor-builder>
+    <haxcms-editor-builder outline-="[[file]]"></haxcms-editor-builder>
     <paper-progress
       hidden\$="[[!loading]]"
       value="100"
@@ -101,7 +103,9 @@ Polymer({
      * support for alternate locations.
      */
     outlineLocation: {
-      type: String
+      type: String,
+      notify: true,
+      reflectToAttribute: true
     },
     /**
      * Manifest from file
@@ -133,6 +137,8 @@ Polymer({
       value: {
         "outline-player":
           "../../../@lrnwebcomponents/outline-player/outline-player.js",
+        "lrnapp-book":
+          "../../../@lrnwebcomponents/elmsln-apps/lib/lrnapp-book/lrnapp-book.js",
         "simple-blog": "../../../@lrnwebcomponents/simple-blog/simple-blog.js",
         "haxcms-dev-theme": "haxcms-dev-theme.js"
       }
@@ -180,6 +186,7 @@ Polymer({
    * ready life cycle
    */
   created: function() {
+    window.SimpleToast.requestAvailability();
     document.body.addEventListener(
       "haxcms-trigger-update",
       this._triggerUpdatedData.bind(this)
@@ -192,6 +199,14 @@ Polymer({
       "json-outline-schema-active-item-changed",
       this._setActiveItem.bind(this)
     );
+  },
+  attached: function() {
+    // prep simple toast notification
+    async.microTask.run(() => {
+      if (window.cmsSiteEditor && this.manifest) {
+        window.cmsSiteEditor.jsonOutlineSchema = this.manifest;
+      }
+    });
   },
   /**
    * Detached life cycle
@@ -228,13 +243,14 @@ Polymer({
       // if we found one, make it the active page
       if (find.length > 0) {
         let found = find.pop();
-        if (typeof window.cmsSiteEditor !== typeof undefined) {
-          window.cmsSiteEditor.initialActiveItem = found;
-        }
-        // @todo figure out why this is required in order for all timing to line up
-        setTimeout(() => {
-          this.fire("haxcms-active-item-changed", found);
-        }, 250);
+        async.microTask.run(() => {
+          setTimeout(() => {
+            if (typeof window.cmsSiteEditor !== typeof undefined) {
+              window.cmsSiteEditor.initialActiveItem = found;
+            }
+            this.fire("haxcms-active-item-changed", found);
+          }, 150);
+        });
       }
     }
   },
@@ -298,10 +314,7 @@ Polymer({
       this.$.activecontent.generateRequest();
     }
     // we had something, now we don't. wipe out the content area of the theme
-    else if (
-      typeof newValue.id === typeof undefined &&
-      typeof oldValue.id !== typeof undefined
-    ) {
+    else if (typeof newValue.id === typeof undefined) {
       async.microTask.run(() => {
         this.wipeSlot(this.themeElement, "*");
       });
@@ -341,16 +354,9 @@ Polymer({
    * notice manifest changes and ensure slot is rebuilt.
    */
   _manifestChanged: function(newValue, oldValue) {
-    if (
-      typeof newValue !== typeof undefined &&
-      newValue != null &&
-      typeof newValue.id !== typeof undefined
-    ) {
+    if (newValue) {
+      window.cmsSiteEditor.jsonOutlineSchema = newValue;
       this.themeElementName = newValue.metadata.theme;
-      // account for editor not being there
-      if (typeof window.cmsSiteEditor !== typeof undefined) {
-        window.cmsSiteEditor.jsonOutlineSchema = newValue;
-      }
       this.fire("json-outline-schema-changed", newValue);
     }
   },

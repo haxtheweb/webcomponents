@@ -2,7 +2,6 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/paper-toast/paper-toast.js";
 import "@lrnwebcomponents/hax-body/lib/hax-store.js";
 import "@lrnwebcomponents/hax-body/hax-body.js";
 import "@lrnwebcomponents/hax-body/lib/hax-autoloader.js";
@@ -10,6 +9,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-manager.js";
 import "@lrnwebcomponents/hax-body/lib/hax-panel.js";
 import "@lrnwebcomponents/hax-body/lib/hax-app-picker.js";
 import "@lrnwebcomponents/hax-body/lib/hax-export-dialog.js";
+import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "./lib/cms-token.js";
 import "./lib/cms-block.js";
 import "./lib/cms-views.js";
@@ -43,7 +43,6 @@ let CmsHax = Polymer({
       handle-as="json"
       on-response="_handleUpdateResponse"
     ></iron-ajax>
-    <paper-toast id="toast" horizontal-align="left"></paper-toast>
     <hax-store
       hidden=""
       app-store="[[appStoreConnection]]"
@@ -299,7 +298,15 @@ let CmsHax = Polymer({
    */
   _handleUpdateResponse: function(e) {
     if (!this.hideMessage) {
-      this.$.toast.show("Saved!");
+      const evt = new CustomEvent("simple-toast-show", {
+        bubbles: true,
+        cancelable: true,
+        detail: {
+          text: "Saved!",
+          duration: 3000
+        }
+      });
+      this.dispatchEvent(evt);
       // support auto redirecting on save if that's been requested
       // in the integration point
       if (this.redirectOnSave) {

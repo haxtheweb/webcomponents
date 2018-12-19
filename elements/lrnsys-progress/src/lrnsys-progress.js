@@ -102,7 +102,6 @@ let LrnsysProgress = Polymer({
       id="ajax"
       url="[[activeNodeURL]]"
       handle-as="json"
-      last-response="{{nodeData}}"
       last-error="{{nodeDataError}}"
       on-response="handleNodeResponse"
     ></iron-ajax>
@@ -122,13 +121,13 @@ let LrnsysProgress = Polymer({
             active="[[_isActive(index, active)]]"
             step="[[index]]"
             label="[[item.title]]"
-            icon="[[item.icon]]"
-            icon-complete="[[item.iconComplete]]"
-            data-url="[[item.dataUrl]]"
-            url="[[item.url]]"
-            status="[[item.status]]"
-            value="[[item.value]]"
-            max="[[item.max]]"
+            icon="[[item.metadata.icon]]"
+            icon-complete="[[item.metadata.iconComplete]]"
+            data-url="[[item.metadata.dataUrl]]"
+            url="[[item.location]]"
+            status="[[item.metadata.status]]"
+            value="[[item.metadata.value]]"
+            max="[[item.metadata.max]]"
             stroke-width="[[strokeWidth]]"
             tool-tip="[[!vertical]]"
             list-view="[[vertical]]"
@@ -270,14 +269,16 @@ let LrnsysProgress = Polymer({
     activeNodeResponse: {
       type: String,
       value: "",
-      observer: "_activeResponseChange"
+      observer: "_activeResponseChanged"
     },
     /**
      * Active response from the node selected.
      */
-    nodeData: {
+    manifest: {
       type: Object,
-      value: []
+      value: {},
+      notify: true,
+      observer: "_manifestChanged"
     },
     /**
      * Error.
@@ -344,7 +345,7 @@ let LrnsysProgress = Polymer({
    */
   _reportState: function(newValue, oldValue) {
     // help avoid initial ready state being null
-    if (typeof newValue !== typeof null) {
+    if (newValue != null && this.items.length > 0) {
       this.fire("progress-state-change", {
         state: this.state,
         active: this.items[this.active]
@@ -362,12 +363,13 @@ let LrnsysProgress = Polymer({
     // match a case where there was no values and now we have one
     if (
       typeof oldValue !== typeof undefined &&
+      typeof newValue !== typeof undefined &&
       newValue.length != oldValue.length &&
       typeof this._responseList[this.active] === typeof undefined
     ) {
-      newValue[this.active].status = "loading";
-      this.set("items." + this.active + ".status", "loading");
-      this.notifyPath("items." + this.active + ".status");
+      newValue[this.active].metadata.status = "loading";
+      this.set("items." + this.active + ".metadata.status", "loading");
+      this.notifyPath("items." + this.active + ".metadata.status");
       // becasue this is so early in bootstrap of the element we
       // won't be able to detect the initial loading event
       if (
@@ -378,9 +380,9 @@ let LrnsysProgress = Polymer({
         this.$.ajax.generateRequest();
       } else {
         setTimeout(() => {
-          newValue[this.active].status = "available";
-          this.set("items." + this.active + ".status", "available");
-          this.notifyPath("items." + this.active + ".status");
+          newValue[this.active].metadata.status = "available";
+          this.set("items." + this.active + ".metadata.status", "available");
+          this.notifyPath("items." + this.active + ".metadata.status");
           this._responseList[this.active] = {};
           this.activeNodeResponse = this._responseList[this.active];
         }, 1200);
@@ -398,7 +400,7 @@ let LrnsysProgress = Polymer({
   /**
    * Active Response changed; bubble it up.
    */
-  _activeResponseChange: function(value) {
+  _activeResponseChanged: function(value) {
     this.fire("progress-response-loaded", { response: value });
   },
 
@@ -409,9 +411,21 @@ let LrnsysProgress = Polymer({
    */
   _bubbleUpChangeActive: function(e) {
     // changing active will kick off events internally
-    this.active = e.target.step;
+    this.active = e.detail.target.step;
+    this.fire(
+      "json-outline-schema-active-item-changed",
+      this.items[this.active]
+    );
   },
-
+  /**
+   * Allow for JSON Outline Schema manifest structure changes
+   */
+  _manifestChanged: function(newValue, oldValue) {
+    if (newValue) {
+      this.set("items", newValue.items);
+      this.notifyPath("items.*");
+    }
+  },
   /**
    * Active item has changed, set the rest of the data to match.
    */
@@ -420,53 +434,55 @@ let LrnsysProgress = Polymer({
     this.state = "active item is " + this.active;
     this.items.forEach((element, index, array) => {
       // if the current item is disabled, check the 1 prior to it if we can
-      if (this.items[index].status == "disabled") {
+      if (this.items[index].metadata.status == "disabled") {
         // do nothing, it's disabled unless....
         if (
           index != 0 &&
           this.progressiveUnlock &&
-          this.items[index - 1].status == "complete"
+          this.items[index - 1].metadata.status == "complete"
         ) {
-          this.items[index].status = "loading";
-          this.set("items." + index + ".status", "loading");
-          this.notifyPath("items." + index + ".status");
+          this.items[index].metadata.status = "loading";
+          this.set("items." + index + ".metadata.status", "loading");
+          this.notifyPath("items." + index + ".metadata.status");
         }
       }
       // or if our value is at max AND it's the last item in the list
       else if (
-        this.items[index].value >= this.items[index].max &&
+        this.items[index].metadata.value >= this.items[index].metadata.max &&
         index == this.items.length - 1
       ) {
-        this.items[index].status = "finished";
-        this.set("items." + index + ".status", "finished");
-        this.notifyPath("items." + index + ".status");
+        this.items[index].metadata.status = "finished";
+        this.set("items." + index + ".metadata.status", "finished");
+        this.notifyPath("items." + index + ".metadata.status");
       }
       // or if we're just at max then mark us complete
-      else if (this.items[index].value >= this.items[index].max) {
-        this.items[index].status = "complete";
-        this.set("items." + index + ".status", "complete");
-        this.notifyPath("items." + index + ".status");
+      else if (
+        this.items[index].metadata.value >= this.items[index].metadata.max
+      ) {
+        this.items[index].metadata.status = "complete";
+        this.set("items." + index + ".metadata.status", "complete");
+        this.notifyPath("items." + index + ".metadata.status");
       }
       // or if the index is the currently active item
       else if (index == this.active) {
         // see if we have the data for it already otherwise trigger loading
         if (typeof this._responseList[index] === typeof undefined) {
-          this.items[index].status = "loading";
-          this.set("items." + index + ".status", "loading");
-          this.notifyPath("items." + index + ".status");
+          this.items[index].metadata.status = "loading";
+          this.set("items." + index + ".metadata.status", "loading");
+          this.notifyPath("items." + index + ".metadata.status");
         }
         // if we already had a response, then mark available
         else {
           this.activeNodeResponse = this._responseList[index];
-          this.items[index].status = "available";
-          this.set("items." + index + ".status", "available");
-          this.notifyPath("items." + index + ".status");
+          this.items[index].metadata.status = "available";
+          this.set("items." + index + ".metadata.status", "available");
+          this.notifyPath("items." + index + ".metadata.status");
         }
       } else {
         // we didn't match any cases, just leave it active
-        this.items[index].status = "available";
-        this.set("items." + index + ".status", "available");
-        this.notifyPath("items." + index + ".status");
+        this.items[index].metadata.status = "available";
+        this.set("items." + index + ".metadata.status", "available");
+        this.notifyPath("items." + index + ".metadata.status");
       }
     });
   },
@@ -479,16 +495,16 @@ let LrnsysProgress = Polymer({
     // dictate what state we reach after that
     if (e.target.status == "loading") {
       if (
-        typeof this.items[this.active].dataUrl !== typeof undefined &&
+        typeof this.items[this.active].metadata.dataUrl !== typeof undefined &&
         !this.disableAjaxCalls
       ) {
-        this.$.ajax.url = this.items[this.active].dataUrl;
+        this.$.ajax.url = this.items[this.active].metadata.dataUrl;
         this.$.ajax.generateRequest();
       } else {
         setTimeout(() => {
-          this.items[this.active].status = "available";
-          this.set("items." + this.active + ".status", "available");
-          this.notifyPath("items." + this.active + ".status");
+          this.items[this.active].metadata.status = "available";
+          this.set("items." + this.active + ".metadata.status", "available");
+          this.notifyPath("items." + this.active + ".metadata.status");
           this._responseList[this.active] = {};
           this.activeNodeResponse = this._responseList[this.active];
         }, 1500);
@@ -498,9 +514,9 @@ let LrnsysProgress = Polymer({
       this.items.length === this.active + 1
     ) {
       setTimeout(() => {
-        this.items[this.active].status = "finished";
-        this.set("items." + this.active + ".status", "finished");
-        this.notifyPath("items." + this.active + ".status");
+        this.items[this.active].metadata.status = "finished";
+        this.set("items." + this.active + ".metadata.status", "finished");
+        this.notifyPath("items." + this.active + ".metadata.status");
       }, 100);
     }
   },
@@ -513,18 +529,18 @@ let LrnsysProgress = Polymer({
     // this means that it was an internal path, fake "loading"
     if (typeof detail.response === typeof null) {
       setTimeout(() => {
-        this.items[this.active].status = "available";
-        this.set("items." + this.active + ".status", "available");
-        this.notifyPath("items." + this.active + ".status");
+        this.items[this.active].metadata.status = "available";
+        this.set("items." + this.active + ".metadata.status", "available");
+        this.notifyPath("items." + this.active + ".metadata.status");
         this._responseList[this.active] = detail.response;
         this.activeNodeResponse = this._responseList[this.active];
       }, 1500);
     }
     // valid response, pass it along for other things to use
     else {
-      this.items[this.active].status = "available";
-      this.set("items." + this.active + ".status", "available");
-      this.notifyPath("items." + this.active + ".status");
+      this.items[this.active].metadata.status = "available";
+      this.set("items." + this.active + ".metadata.status", "available");
+      this.notifyPath("items." + this.active + ".metadata.status");
       this._responseList[this.active] = detail.response;
       this.activeNodeResponse = this._responseList[this.active];
     }
@@ -544,9 +560,9 @@ let LrnsysProgress = Polymer({
       this._responseList[this.active] = newValue;
       this.activeNodeResponse = this._responseList[this.active];
       // set available because we don't have a failed state
-      this.items[this.active].status = "available";
-      this.set("items." + this.active + ".status", "available");
-      this.notifyPath("items." + this.active + ".status");
+      this.items[this.active].metadata.status = "available";
+      this.set("items." + this.active + ".metadata.status", "available");
+      this.notifyPath("items." + this.active + ".metadata.status");
       // fire an event that this isn't really available so we know an issue occured
       this.fire("node-load-failed", {
         message: newValue,
@@ -560,8 +576,11 @@ let LrnsysProgress = Polymer({
    * This forms the line that's connecting the steps.
    */
   _overallPercentageCompute: function(items, active) {
-    this.$.progress.classList.add("transiting");
-    return (active / (items.length - 1)) * 100;
+    if (typeof items !== typeof undefined) {
+      this.$.progress.classList.add("transiting");
+      return (active / (items.length - 1)) * 100;
+    }
+    return 0;
   },
 
   /**
@@ -571,37 +590,41 @@ let LrnsysProgress = Polymer({
     var newp = 0;
     // support for adding and removing percentage as well as setting
     if (mode == "add") {
-      newp = this.items[this.active].value + percentage;
+      newp = this.items[this.active].metadata.value + percentage;
     } else if (mode == "subtract") {
-      newp = this.items[this.active].value - percentage;
+      newp = this.items[this.active].metadata.value - percentage;
     } else {
       newp = percentage;
     }
     // after establishing the new percentage, make sure it's less then max
     // if it's at or over max then we need to trigger events and state to change
-    if (newp >= this.items[this.active].max) {
+    if (newp >= this.items[this.active].metadata.max) {
       if (this.items.length == this.active + 1) {
         // fire an event change to indicate that this happened
         this.state = "finished";
-        this.items[this.active].status = "finished";
-        this.set("items." + this.active + ".status", "finished");
-        this.notifyPath("items." + this.active + ".status");
+        this.items[this.active].metadata.status = "finished";
+        this.set("items." + this.active + ".metadata.status", "finished");
+        this.notifyPath("items." + this.active + ".metadata.status");
         // need to make sure finished happens prior to value set to 100
         // otherwise this will kick off the circle to complete itself
-        this.items[this.active].value = this.items[this.active].max;
+        this.items[this.active].metadata.value = this.items[
+          this.active
+        ].metadata.max;
         this.set(
-          "items." + this.active + ".value",
-          this.items[this.active].max
+          "items." + this.active + ".metadata.value",
+          this.items[this.active].metadata.max
         );
-        this.notifyPath("items." + this.active + ".value");
+        this.notifyPath("items." + this.active + ".metadata.value");
       } else {
         // set value = max which will automatically trigger complete in the circle
-        this.items[this.active].value = this.items[this.active].max;
+        this.items[this.active].metadata.value = this.items[
+          this.active
+        ].metadata.max;
         this.set(
-          "items." + this.active + ".value",
-          this.items[this.active].max
+          "items." + this.active + ".metadata.value",
+          this.items[this.active].metadata.max
         );
-        this.notifyPath("items." + this.active + ".value");
+        this.notifyPath("items." + this.active + ".metadata.value");
       }
       // ensure we still have more items to go in the list
       if (this.items.length > this.active + 1) {
@@ -611,13 +634,16 @@ let LrnsysProgress = Polymer({
         // item in local storage then let's mark loading to kick off the calls
         if (
           (this.progressiveUnlock &&
-            this.items[this.active].status == "complete" &&
-            this.items[this.active + 1].status == "disabled") ||
+            this.items[this.active].metadata.status == "complete" &&
+            this.items[this.active + 1].metadata.status == "disabled") ||
           typeof this._responseList[this.active + 1] === typeof undefined
         ) {
-          this.items[this.active + 1].status = "loading";
-          this.set("items." + (this.active + 1) + ".status", "loading");
-          this.notifyPath("items." + (this.active + 1) + ".status");
+          this.items[this.active + 1].metadata.status = "loading";
+          this.set(
+            "items." + (this.active + 1) + ".metadata.status",
+            "loading"
+          );
+          this.notifyPath("items." + (this.active + 1) + ".metadata.status");
         }
         // set state so it gets reported upstream in events
         this.state = "active item is " + (this.active + 1);
@@ -625,9 +651,9 @@ let LrnsysProgress = Polymer({
         this.active = this.active + 1;
       }
     } else {
-      this.items[this.active].value = newp;
-      this.set("items." + this.active + ".value", newp);
-      this.notifyPath("items." + this.active + ".value");
+      this.items[this.active].metadata.value = newp;
+      this.set("items." + this.active + ".metadata.value", newp);
+      this.notifyPath("items." + this.active + ".metadata.value");
     }
   },
 

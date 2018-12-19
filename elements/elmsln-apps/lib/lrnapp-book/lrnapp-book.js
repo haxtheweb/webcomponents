@@ -4,30 +4,27 @@
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/hardware-icons.js";
-import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-styles/color.js";
 import "@lrnwebcomponents/paper-search/lib/paper-search-bar.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";
 import "@polymer/paper-slider/paper-slider.js";
+import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@polymer/app-layout/app-layout.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/app-layout/app-scroll-effects/app-scroll-effects.js";
-import "@polymer/app-route/app-location.js";
-import "@polymer/app-route/app-route.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/lrndesign-stepper/lrndesign-stepper.js";
 import "@lrnwebcomponents/lrnsys-progress/lrnsys-progress.js";
 import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
 import "@lrnwebcomponents/page-scroll-position/page-scroll-position.js";
-import "@lrnwebcomponents/hax-body/hax-body.js";
 import "@lrnwebcomponents/material-progress/material-progress.js";
-import "@lrnwebcomponents/lrndesign-mapmenu/lrndesign-mapmenu.js";
+import "@lrnwebcomponents/map-menu/map-menu.js";
 import "./lrnapp-book-progress-dashboard.js";
 /**
 `lrnapp-book`
@@ -240,7 +237,7 @@ Polymer({
         }
         :host([drawer-opened]) .prev,
         :host([edit-mode]) .prev {
-          left: 17em;
+          left: 19em;
         }
         .progress-container {
           width: 90%;
@@ -348,31 +345,7 @@ Polymer({
             font-size: 0.7em;
           }
         }
-        /**
-       * Authoring section
-       */
-        #editbutton {
-          position: fixed;
-          bottom: 0;
-          right: 0;
-          margin: 2em;
-          padding: 0.5em;
-          width: 1.6em;
-          height: 1.6em;
-          visibility: visible;
-          opacity: 1;
-          transition: all 0.4s ease;
-        }
-        :host([edit-mode]) #editbutton {
-          width: 100%;
-          z-index: 100;
-          right: 0;
-          bottom: 0;
-          border-radius: 0;
-          margin: 0;
-          padding: 1em;
-          background-color: var(--paper-blue-500) !important;
-        }
+
         :host([edit-mode]) #header {
           background-color: var(--paper-grey-500);
         }
@@ -389,85 +362,16 @@ Polymer({
         .course-title-drawer {
           font-size: 1.2em;
         }
-        hax-autoloader {
+        /**
+         * Hide the slotted content during edit mode. This must be here to work.
+         */
+        :host([edit-mode]) #slot {
           display: none;
         }
       </style>
     </custom-style>
     <page-scroll-position value="{{scrollPosition}}"></page-scroll-position>
     <div id="anchor"></div>
-    <iron-ajax
-      id="outlineajax"
-      params="[[requestParams]]"
-      url="[[outlinePath]]"
-      handle-as="json"
-      on-response="handleOutlineResponse"
-      last-response="{{outlineData}}"
-    ></iron-ajax>
-    <iron-ajax
-      id="bookajax"
-      params="[[requestParams]]"
-      url="[[bookPath]]"
-      handle-as="json"
-      on-response="handleBookResponse"
-      last-response="{{bookData}}"
-    ></iron-ajax>
-    <iron-ajax
-      id="pageajax"
-      url="[[pagePath]]"
-      params="[[pageParams]]"
-      handle-as="json"
-      on-response="handlePageResponse"
-      last-response="{{pageData}}"
-    ></iron-ajax>
-    <iron-ajax
-      id="pageupdateajax"
-      url="[[pageUpdatePath]]"
-      params="[[pageParams]]"
-      method="PUT"
-      body="[[updatePageData]]"
-      content-type="application/json"
-      handle-as="json"
-      on-response="_handleUpdateResponse"
-    ></iron-ajax>
-    <iron-ajax
-      id="pagedeleteajax"
-      url="[[pageDeletePath]]"
-      params="[[pageParams]]"
-      method="DELETE"
-      content-type="application/json"
-      handle-as="json"
-      on-response="_handleDeleteResponse"
-    ></iron-ajax>
-    <iron-ajax
-      id="pagecreateajax"
-      url="[[pageCreatePath]]"
-      method="POST"
-      body="[[createRequestBody]]"
-      handle-as="json"
-      on-response="_ajaxCreateStubHandler"
-    ></iron-ajax>
-
-    <app-location
-      route="{{route}}"
-      query-params="{{queryParams}}"
-    ></app-location>
-    <app-route
-      route="{{route}}"
-      pattern="[[endPoint]]/:type/:id"
-      data="{{data}}"
-      tail="{{tail}}"
-      query-params="{{queryParams}}"
-    >
-    </app-route>
-    <hax-store app-store="[[appStoreConnection]]"></hax-store>
-    <hax-panel
-      id="haxpanel"
-      hide-panel-ops=""
-      hide-export-button=""
-    ></hax-panel>
-    <hax-app-picker></hax-app-picker>
-    <hax-export-dialog></hax-export-dialog>
     <!-- body where most of the heavy lifting happens -->
     <app-drawer-layout>
       <!-- LRNApp book we expect to navigate -->
@@ -487,9 +391,9 @@ Polymer({
             hide-filter-button=""
             hidden\$="[[!showSearch]]"
           ></paper-search-bar>
-          <lrndesign-mapmenu id="mapmenu" on-tap="_bookOutlineTap">
+          <map-menu id="mapmenu" manifest="[[manifest]]">
             <!-- Server response will populate this -->
-          </lrndesign-mapmenu>
+          </map-menu>
         </div>
       </app-drawer>
       <app-header-layout>
@@ -520,7 +424,7 @@ Polymer({
                   title="The steps to complete this lesson"
                   id="progress"
                   active="{{activePage}}"
-                  items="{{outlineItems}}"
+                  manifest="{{manifest}}"
                   progressive-unlock=""
                   size="small"
                 ></lrnsys-progress>
@@ -545,8 +449,8 @@ Polymer({
               <elmsln-loading color="grey-text" size="large"></elmsln-loading>
               <h3 class="loading-text">Loading content..</h3>
             </div>
-            <div>
-              <hax-body id="haxbody"> <slot id="slottedarea"></slot> </hax-body>
+            <div id="contentcontainer">
+              <div id="slot"><slot></slot></div>
             </div>
           </div>
         </div>
@@ -590,48 +494,10 @@ Polymer({
         </div>
       </app-header-layout>
     </app-drawer-layout>
-    <hax-manager></hax-manager>
-    <!-- edit mode if they have permissions -->
-    <paper-fab
-      id="editbutton"
-      icon="editor:mode-edit"
-      class="red white-text"
-      hidden\$="[[!currentPageData.page.meta.canUpdate]]"
-      data-voicecommand="Edit content"
-      on-tap="_toggleEditMode"
-      title="Tap to place content in edit mode."
-    ></paper-fab>
-    <paper-tooltip
-      for="editbutton"
-      position="bottom"
-      offset="8"
-      animation-delay="100"
-    >
-      <span id="fablabel">edit mode</span>
-    </paper-tooltip>
-    <paper-toast id="toast" horizontal-align="left"></paper-toast>
-    <hax-autoloader>
-      <magazine-cover></magazine-cover>
-      <video-player></video-player>
-      <lrn-table></lrn-table>
-      <media-image></media-image>
-      <lrndesign-blockquote></lrndesign-blockquote>
-      <meme-maker></meme-maker>
-      <a11y-gif-player></a11y-gif-player>
-      <paper-audio-player></paper-audio-player>
-      <wikipedia-query></wikipedia-query>
-      <wave-player></wave-player>
-      <pdf-element></pdf-element>
-      <place-holder></place-holder>
-      <lrn-vocab></lrn-vocab>
-      <code-editor></code-editor>
-      <lrn-math></lrn-math>
-      <citation-element></citation-element>
-    </hax-autoloader>
   `,
 
   is: "lrnapp-book",
-  observers: ["_routeChanged(data, route, endPoint)"],
+  behaviors: [HAXCMSBehaviors.Theme],
   properties: {
     /**
      * App store connection.
@@ -658,31 +524,6 @@ Polymer({
       value: false
     },
     /**
-     * Request body parameters for creating a new item.
-     */
-    createRequestBody: {
-      type: Object,
-      computed: "_computeCreateRequestBody(currentPageData)"
-    },
-    /**
-     * Data to be shipped off to the update endpoint.
-     */
-    updatePageData: {
-      type: Object,
-      value: {
-        id: null,
-        type: null,
-        attributes: {}
-      }
-    },
-    /**
-     * Path for updating content.
-     */
-    pageUpdatePath: {
-      type: String,
-      computed: "_computePageUpdatePath(data, sourcePath)"
-    },
-    /**
      * Source path to the 'find one' end point
      */
     sourcePath: {
@@ -693,8 +534,9 @@ Polymer({
      */
     editMode: {
       type: Boolean,
-      value: false,
       reflectToAttribute: true,
+      value: false,
+      notify: true,
       observer: "_editModeChanged"
     },
     /**
@@ -705,13 +547,6 @@ Polymer({
       type: Boolean,
       value: true,
       reflectToAttribute: true
-    },
-    /**
-     * App route tracking.
-     */
-    route: {
-      type: Object,
-      notify: true
     },
     /**
      * Title for the content
@@ -798,7 +633,6 @@ Polymer({
      */
     bookItems: {
       type: Array,
-      value: [],
       notify: true
     },
     /**
@@ -911,9 +745,10 @@ Polymer({
     /**
      * Store current page data.
      */
-    responseData: {
+    manifest: {
       type: Object,
-      value: {}
+      value: {},
+      observer: "_manifestChanged"
     },
     /**
      * Rebuild outline flag so we know to call it on page build.
@@ -937,10 +772,9 @@ Polymer({
    * Ready event.
    */
   ready: function(e) {
+    this.setupHAXTheme(true, this.$.contentcontainer);
+    window.SimpleToast.requestAvailability();
     this.$.bodyloading.hidden = true;
-    // fire an outline request to kick things off!
-    this.$.outlineajax.generateRequest();
-
     // scroll top into view
     setTimeout(() => {
       this._resetScroll();
@@ -954,25 +788,28 @@ Polymer({
       "node-percent-milestone",
       this.testMilestone.bind(this)
     );
-    this.$.haxpanel.addEventListener(
-      "hax-content-insert",
-      this._haxContentInsert.bind(this)
+    this.$.mapmenu.addEventListener(
+      "link-clicked",
+      this._menuItemClicked.bind(this)
     );
-    this.addEventListener("route-change", this._routeChange.bind(this));
   },
   /**
    * detached life cycle
    */
   detached: function() {
+    this.setupHAXTheme(false);
     this.$.progress.removeEventListener(
       "node-percent-milestone",
       this.testMilestone.bind(this)
     );
-    this.$.haxpanel.removeEventListener(
-      "hax-content-insert",
-      this._haxContentInsert.bind(this)
+    this.$.mapmenu.removeEventListener(
+      "link-clicked",
+      this._menuItemClicked.bind(this)
     );
-    this.removeEventListener("route-change", this._routeChange.bind(this));
+  },
+  _menuItemClicked: function(e) {
+    let i = this.manifest.items.findIndex(j => j.id === e.detail.id);
+    this.activePage = i;
   },
   /**
    * When element is told to be full width it'll close things.
@@ -995,18 +832,6 @@ Polymer({
   },
 
   /**
-   * HAX Content Insert.
-   */
-  _haxContentInsert: function(e) {
-    var properties = {};
-    // support for properties to be set automatically optionally
-    if (typeof e.detail.properties !== typeof undefined) {
-      properties = e.detail.properties;
-    }
-    this.$.haxbody.haxInsert(e.detail.tag, e.detail.content, properties);
-  },
-
-  /**
    * Calculate what would happen if we added a page here.
    */
   _computeCreateRequestBody: function(currentPageData) {
@@ -1019,87 +844,44 @@ Polymer({
   },
 
   /**
-   * Simple state toggle for edit button being pressed.
-   */
-  _toggleEditMode: function(e) {
-    this.editMode = !this.editMode;
-  },
-
-  /**
    * React when state changes for editMode
    */
   _editModeChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
       if (newValue === true) {
-        // update the button to be for saving state
-        this.$.editbutton.icon = "save";
-        this.$.editbutton.title = "Tap to save content and exit edit mode";
-        this.$.fablabel = "save changes";
-        // open the haxpanel
-        window.HaxStore.write("editMode", this.editMode, this);
-        // play things in an editable state and let hax take over from here
         this.$.currenttitle.contentEditable = true;
         // block scroll tracking during edit mode
         this.resetScroll = true;
         // notification to user
-        this.$.toast.show("Authoring mode active");
+        const evt = new CustomEvent("simple-toast-show", {
+          bubbles: true,
+          cancelable: true,
+          detail: {
+            text: "Editor mode active",
+            duration: 5000
+          }
+        });
       } else {
-        // reset visuals
-        this.$.editbutton.icon = "editor:mode-edit";
-        this.$.editbutton.title = "Tap to place content in edit mode.";
-        this.$.fablabel = "edit mode";
-        // open the haxpanel
-        window.HaxStore.write("editMode", this.editMode, this);
-        // play things in an editable state and let hax take over from here
         this.$.currenttitle.contentEditable = false;
         // allow scrolling to take place now
         this.resetScroll = false;
         // we were in edit mode, now time to save for real
         if (oldValue === true) {
-          let updated = false;
-          // get computed / cleaned up content area
-          let haxcontent = this.$.haxbody.haxToContent();
           // see if title changed
           if (this.$.currenttitle.innerHTML !== this.currentPageData.title) {
             this.currentPageData.title = this.$.currenttitle.innerHTML;
-            this.updatePageData.attributes.title = this.currentPageData.title;
           }
-          // see if content updated
-          if (this.currentPageData.content !== haxcontent) {
-            this.currentPageData.content = haxcontent;
-            this.updatePageData.attributes.body = this.currentPageData.content;
-            updated = true;
-          }
-          // see if we've changed anything in order to ship off
-          if (updated) {
-            // set type and id data from routing and ship this off!
-            this.updatePageData.type = this.data.type;
-            this.updatePageData.id = this.data.id;
-            this.$.toast.show("Saving...");
-            this.$.pageupdateajax.generateRequest();
-          }
+          const evt = new CustomEvent("simple-toast-show", {
+            bubbles: true,
+            cancelable: true,
+            detail: {
+              text: "Saved",
+              duration: 0
+            }
+          });
+          this.dispatchEvent(evt);
         }
       }
-    }
-  },
-
-  /**
-   * Get response back from the server on updating this content.
-   */
-  _handleUpdateResponse: function(e) {
-    // @todo error checking here
-    this.$.toast.show("Saved!");
-  },
-
-  /**
-   * Change the activeOutline
-   */
-  _bookOutlineTap: function(e) {
-    var normalizedEvent = dom(e);
-    var local = normalizedEvent.localTarget;
-    // support switching if the thing clicked has a book index associated
-    if (typeof local.getAttribute("data-book-parent") !== typeof undefined) {
-      this.activeOutline = local.getAttribute("data-book-parent");
     }
   },
 
@@ -1114,79 +896,6 @@ Polymer({
     ) {
       // trigger loading state
       this.rebuildOutline = true;
-    }
-  },
-
-  /**
-   * If the current route is outside the scope of our app then allow
-   * the website to break out of the single page application routing.
-   */
-  _routeChanged: function(data, route, endPoint) {
-    if (typeof route.path === "string") {
-      if (typeof endPoint === "string") {
-        if (route.path.startsWith(endPoint)) {
-          // trigger change if data location changed
-          if (
-            this.pageParams.load != false &&
-            typeof data.type !== typeof undefined &&
-            typeof data.id !== typeof undefined
-          ) {
-            // prime the page request parameters
-            this.pageParams[data.type] = data.id;
-            // test if we already have this request
-            if (
-              typeof this.responseData[data.type + data.id] !== typeof undefined
-            ) {
-              this.set(
-                "currentPageData",
-                this.responseData[data.type + data.id]
-              );
-            } else {
-              // trigger loading state
-              this.$.bodyloading.hidden = false;
-              // send request out the door to the actual end point
-              this.$.pageajax.generateRequest();
-            }
-            // support for being told to rebuild the outline
-            if (this.rebuildOutline) {
-              // dirty rebuild of params
-              this.set("requestParams", []);
-              // our page params have the current page in scope
-              this.set("requestParams", this.pageParams);
-              // test if we already have this request
-              if (
-                typeof this.responseData[
-                  data.type + "." + data.id + ".outline"
-                ] !== typeof undefined
-              ) {
-                this.activePage = 0;
-                this.set("outlineItems", []);
-                this.set(
-                  "outlineItems",
-                  this._toArray(
-                    this.responseData[data.type + "." + data.id + ".outline"]
-                      .items
-                  )
-                );
-                this.set(
-                  "outlineTitle",
-                  this.responseData[data.type + "." + data.id + ".outline"]
-                    .items.outlineTitle
-                );
-              } else {
-                this.$.outlineloading.hidden = false;
-                this.pageParams.load = false;
-                // send request out the door to the actual end point
-                this.$.outlineajax.generateRequest();
-              }
-              this.rebuildOutline = false;
-            }
-          }
-          return;
-        }
-      }
-      // reload the page which since route changed will load that page
-      window.location.reload();
     }
   },
 
@@ -1208,12 +917,14 @@ Polymer({
    */
   _activePageChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
-      if (typeof this.outlineItems !== typeof undefined) {
-        this.set("route.path", this.outlineItems[newValue].url);
-        // ensure that we clear any previously set update data
-        this.updatePageData.attributes = {};
-        this.updatePageData.id = null;
-        this.updatePageData.type = null;
+      if (
+        typeof this.outlineItems !== typeof undefined &&
+        this.outlineItems.length > 0
+      ) {
+        this.fire(
+          "json-outline-schema-active-item-changed",
+          this.outlineItems[newValue]
+        );
       }
       // scroll into view the container that's about to be swapped out
       if (typeof oldValue !== typeof undefined) {
@@ -1286,21 +997,24 @@ Polymer({
     if (
       typeof this.outlineItems !== typeof undefined &&
       typeof this.outlineItems[this.activePage] !== typeof undefined &&
-      newValue > this.outlineItems[this.activePage].value &&
+      newValue > this.outlineItems[this.activePage].metadata.value &&
       !this.resetScroll
     ) {
       // once we get 90% of the way through the material consider it finished
       if (newValue >= 75) {
-        this.outlineItems[this.activePage].value = this.outlineItems[
+        this.outlineItems[this.activePage].metadata.value = this.outlineItems[
           this.activePage
-        ].max;
+        ].metadata.max;
         this.set(
-          "outlineItems." + this.activePage + ".value",
-          this.outlineItems[this.activePage].max
+          "outlineItems." + this.activePage + ".metadata.value",
+          this.outlineItems[this.activePage].metadata.max
         );
       } else {
-        this.outlineItems[this.activePage].value = newValue;
-        this.set("outlineItems." + this.activePage + ".value", newValue);
+        this.outlineItems[this.activePage].metadata.value = newValue;
+        this.set(
+          "outlineItems." + this.activePage + ".metadata.value",
+          newValue
+        );
       }
     }
   },
@@ -1312,8 +1026,8 @@ Polymer({
     // make sure we are able to move forward more
     if (this.activePage < this.outlineItems.length - 1) {
       this.set(
-        "outlineItems." + this.activePage + ".value",
-        this.outlineItems[this.activePage].max
+        "outlineItems." + this.activePage + ".metadata.value",
+        this.outlineItems[this.activePage].metadata.max
       );
       this.activePage = this.activePage + 1;
     }
@@ -1340,76 +1054,28 @@ Polymer({
   /**
    * Handle the response.
    */
-  handleOutlineResponse: function(obj) {
-    if (typeof obj !== typeof undefined) {
-      const response = obj.detail.response.data;
-      const items = this._toArray(obj.detail.response.data.items);
-      const outlineTitle = obj.detail.response.data.outlineTitle;
+  _manifestChanged: function(newValue, oldValue) {
+    if (typeof newValue !== typeof undefined) {
+      const items = newValue.items;
+      const outlineTitle = newValue.title;
       // set active to 0 because once we update the outlineItems it will try to
       // pick a title and be out of sync for a moment in time
       if (this.activePage !== 0) {
         this.activePage = 0;
       }
-      // store the response for the outline object data to skip future calls
-      this.set(
-        "responseData." + this.data.type + "." + this.data.id + ".outline",
-        response
-      );
       // set outline items to repaint, aggressively
       this.set("outlineItems", []);
       this.set("outlineItems", items);
+      this.notifyPath("outlineItems.*");
+      this.set("bookItems", []);
+      this.set("bookItems", items);
+      this.notifyPath("bookItems.*");
       // set title to match new parent title
       this.set("outlineTitle", outlineTitle);
-      var activePage = 0;
-      // see if we can find a match of routing for an active page
-      for (var i in items) {
-        // we have a match; usually this would only happen on initial page load
-        if (
-          this.data.type === items[i].type &&
-          this.data.id === items[i].id &&
-          i !== 0
-        ) {
-          activePage = parseInt(i);
-        }
-      }
-      if (activePage !== 0) {
-        this.activePage = activePage;
-      }
       this.$.outlineloading.hidden = true;
       this.pageParams.load = true;
-      // only repopulate the first time
-      if (this.bookItems.length === 0) {
-        this.$.bookajax.generateRequest();
-        // kick off page request to since we paint it into slot early
-        // this allows us to do admin user perm checking on initial load
-        this.pageParams = this.requestParams;
-        this.$.pageajax.generateRequest();
-      }
     }
   },
-
-  /**
-   * Handle the response.
-   */
-  handleBookResponse: function(obj) {
-    const response = obj.detail.response.data;
-    this.set("bookItems", this._toArray(response.items));
-    // rip the items into the DOM
-    // @todo might need to do the append HTML trick
-    this.$.mapmenu.innerHTML = response.render;
-  },
-
-  /**
-   * Page response callback.
-   */
-  handlePageResponse: function(obj) {
-    if (typeof obj !== typeof undefined) {
-      const response = obj.detail.response.data;
-      this.set("responseData." + this.data.type + this.data.id, response);
-      this.set("currentPageData", response);
-    }
-  },
-
   /**
    * Handle page object getting updated. This allows
    * for updating parts of the page either from the localcache
@@ -1424,7 +1090,7 @@ Polymer({
       this.set("currentTitle", newValue.title);
       // when updating data we need to clear the slot's content
       // while maintaining the data model correctly
-      let slot = dom(this.$.haxbody);
+      let slot = dom(this);
       while (slot.firstChild !== null) {
         slot.removeChild(slot.firstChild);
       }
@@ -1449,7 +1115,7 @@ Polymer({
       // same as above but in reverse; now take stuf from what
       // came across and correctly add it into the slot
       while (tmp.firstChild) {
-        dom(this.$.haxbody).appendChild(tmp.firstChild);
+        dom(this).appendChild(tmp.firstChild);
       }
       // reset scroll position back to top of this content
       this._resetScroll();

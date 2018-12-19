@@ -11,7 +11,7 @@ import "@polymer/iron-flex-layout/iron-flex-layout.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-toast/paper-toast.js";
+import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-image/iron-image.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
@@ -206,7 +206,6 @@ let GameShowQuiz = Polymer({
         <div>Points Remaining to Attempt: [[remainingAttempts]]</div>
       </div>
     </div>
-    <paper-toast id="toast"></paper-toast>
     <game-show-quiz-modal id="directions" title="[[directionsTitle]]">
       <div slot="content"><slot name="directions"></slot></div>
       <paper-button slot="buttons" id="dismiss" dialog-confirm="" raised=""
@@ -394,6 +393,7 @@ let GameShowQuiz = Polymer({
   submitAnswer: function(e) {
     // flip submitted status
     this.set("activeQuestion.submitted", true);
+    this.notifyPath("activeQuestion.submitted");
     this.$.continue.focus();
     // maker this disabled on the board
     this.__activeTap.disabled = true;
@@ -405,23 +405,34 @@ let GameShowQuiz = Polymer({
       parseInt(this.points[this.__activeType].attempted) +
       parseInt(this.__activeValue);
     this.set("points." + this.__activeType + ".attempted", num);
+    this.notifyPath("points." + this.__activeType + ".attempted");
     // update the global totals for attempt
     let total =
       parseInt(this.points.total.attempted) + parseInt(this.__activeValue);
     this.set("points.total.attempted", total);
+    this.notifyPath("points.total.attempted");
     // update remaining attempts
     this.remainingAttempts =
       this.remainingAttempts - parseInt(this.__activeValue);
     // if current answer is correct
     if (this.$.question.checkAnswers()) {
       // show correct
-      this.$.toast.show("Correct!");
+      const evt = new CustomEvent("simple-toast-show", {
+        bubbles: true,
+        cancelable: true,
+        detail: {
+          text: "Correct!",
+          duration: 4000
+        }
+      });
+      this.dispatchEvent(evt);
       // @todo need an area for placing feedback
       // update the earned column
       let num =
         parseInt(this.points[this.__activeType].earned) +
         parseInt(this.__activeValue);
       this.set("points." + this.__activeType + ".earned", num);
+      this.notifyPath("points." + this.__activeType + ".earned");
       // set icon to correct
       icon.icon = "icons:check-circle";
       icon.classList.add("correct");
@@ -429,9 +440,18 @@ let GameShowQuiz = Polymer({
       let total =
         parseInt(this.points.total.earned) + parseInt(this.__activeValue);
       this.set("points.total.earned", total);
+      this.notifyPath("points.total.earned");
     } else {
       // show wrong
-      this.$.toast.show(":( You got it wrong");
+      const evt = new CustomEvent("simple-toast-show", {
+        bubbles: true,
+        cancelable: true,
+        detail: {
+          text: ":( You got it wrong",
+          duration: 4000
+        }
+      });
+      this.dispatchEvent(evt);
       // @todo show feedback for wrong answer as to why
       // set icon to incorrect
       icon.icon = "icons:cancel";
@@ -444,6 +464,7 @@ let GameShowQuiz = Polymer({
       100
     ).toFixed(1);
     this.set("points." + this.__activeType + ".percent", percent);
+    this.notifyPath("points." + this.__activeType + ".percent");
     // update the percent
     total = (
       (parseInt(this.points.total.earned) /
@@ -451,6 +472,7 @@ let GameShowQuiz = Polymer({
       100
     ).toFixed(1);
     this.set("points.total.percent", total);
+    this.notifyPath("points.total.percent");
     // append child via polymer so we can style it correctly in shadow dom
     dom(this.__activeTap).appendChild(icon);
   },
@@ -492,6 +514,7 @@ let GameShowQuiz = Polymer({
    * Attached to the DOM, now fire.
    */
   attached: function() {
+    window.SimpleToast.requestAvailability();
     // Establish hax property binding
     let props = {
       canScale: true,

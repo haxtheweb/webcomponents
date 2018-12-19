@@ -12,168 +12,106 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../map-menu.js';
       window.onload = function () {
-        const menus = ['menu1', 'menu2']
-        menus.forEach(selector => {
-          document.getElementById(selector).data = [
+        const manifest = {
+          "id": "67231b96-d065-4a47-89bf-f7375e1dcfb8",
+          "title": "things and stuff",
+          "author": "",
+          "description": "Something else",
+          "license": "by-sa",
+          "metadata": {
+            "siteName": "thingsandstuff",
+            "image": "assets\/banner.jpg",
+            "theme": "lrnapp-book",
+            "icon": "icons:attachment",
+            "domain": "https:\/\/thingsandstuff.surge.sh",
+            "hexCode": "#aeff00",
+            "created": 1545151191,
+            "updated": 1545151191,
+            "cssVariable": "--simple-colors-lime-background5"
+          },
+          "items": [
             {
-              id: 'unique-id-001',
-              title: 'The Transcendentalists',
-              parent: null,
-              order: 0,
-              url: '#',
-            }, {
-              id: 'unique-id-002',
-              title: 'Ralph Waldo Emerson',
-              parent: 'unique-id-001',
-              order: 0,
-              url: '#',
-            }, {
-              id: 'unique-id-003',
-              title: 'Overview',
-              parent: 'unique-id-002',
-              order: 0,
-              url: '#',
-            }, {
-              id: 'unique-id-004',
-              title: 'Readings',
-              parent: 'unique-id-002',
-              order: 1,
-              url: '#',
-            }, {
-              id: 'unique-id-005',
-              title: 'Self-Reliance',
-              parent: 'unique-id-004',
-              order: 0,
-              url: '#',
-            }, {
-              id: 'unique-id-006',
-              title: 'Nature',
-              parent: 'unique-id-004',
-              order: 1,
-              url: '#',
-            }, {
-              id: 'unique-id-007',
-              title: 'Summary',
-              parent: 'unique-id-002',
-              order: 2,
-              url: '#',
-            }, {
-              id: 'unique-id-008',
-              title: 'Henry David Thoreau',
-              parent: 'unique-id-001',
-              order: 2,
-              url: '#',
-            }, {
-              id: 'unique-id-009',
-              title: 'Overview',
-              parent: 'unique-id-008',
-              order: 0,
-              url: '#',
-            }, {
-              id: 'unique-id-010',
-              title: 'Readings',
-              parent: 'unique-id-008',
-              order: 1,
-              url: '#',
-            }, {
-              id: 'unique-id-011',
-              title: 'Civil Disobedience',
-              parent: 'unique-id-010',
-              order: 0,
-              url: '#',
-            }, {
-              id: 'unique-id-012',
-              title: 'Walden',
-              parent: 'unique-id-010',
-              order: 1,
-              url: '#',
-            }, {
-              id: 'unique-id-013',
-              title: 'Summary',
-              parent: 'unique-id-008',
-              order: 2,
-              url: '#',
-            }, {
-              id: 'unique-id-014',
-              title: 'The Anti-Transcendentalists',
-              parent: null,
-              order: 1,
-              url: '#',
-            }, {
-              id: 'unique-id-015',
-              title: 'Herman Melville',
-              parent: 'unique-id-014',
-              order: 0,
-              url: '#',
-            }, {
-              id: 'unique-id-016',
-              title: 'Overview',
-              parent: 'unique-id-015',
-              order: 0,
-              url: '#',
-            }, {
-              id: 'unique-id-017',
-              title: 'Readings',
-              parent: 'unique-id-015',
-              order: 1,
-              url: '#',
-            }, {
-              id: 'unique-id-018',
-              title: 'Bartleby the Scrivener',
-              parent: 'unique-id-017',
-              order: 0,
-              url: '#',
-            }, {
-              id: 'unique-id-019',
-              title: 'Moby Dick',
-              parent: 'unique-id-017',
-              order: 1,
-              url: '#',
-            }, {
-              id: 'unique-id-020',
-              title: 'Summary',
-              parent: 'unique-id-015',
-              order: 2,
-              url: '#',
-            }, {
-              id: 'unique-id-021',
-              title: 'Nathaniel Hawthorne',
-              parent: 'unique-id-014',
-              order: 1,
-              url: '#',
-            }, {
-              id: 'unique-id-022',
-              title: 'Overview',
-              parent: 'unique-id-021',
-              order: 0,
-              url: '#',
-            }, {
-              id: 'unique-id-023',
-              title: 'Readings',
-              parent: 'unique-id-021',
-              order: 1,
-              url: '#',
-            }, {
-              id: 'unique-id-024',
-              title: 'The Scarlet Letter',
-              parent: 'unique-id-023',
-              order: 0,
-              url: '#',
-            }, {
-              id: 'unique-id-025',
-              title: 'Rappaccini\'s Daughter',
-              parent: 'unique-id-023',
-              order: 1,
-              url: '#',
-            }, {
-              id: 'unique-id-026',
-              title: 'Summary',
-              parent: 'unique-id-021',
-              order: 2,
-              url: '#',
+              "id": "item-123-4749-4ba4-8a57-078d3b8fc376",
+              "indent": 0,
+              "location": "pages\/item-bf8aef4b-4749-4ba4-8a57-078d3b8fc376\/index.html",
+              "order": 0,
+              "parent": null,
+              "title": "Introduction",
+              "description": "My great new content!\n\n\nHeader\nHeader\n\n\nHeader\nHeader\n",
+              "metadata": {
+                "created": 1545151191,
+                "updated": 1545185712,
+                "dataUrl": "data.json",
+                "status": "available",
+                "value": 25,
+                "max": 100,
+                "icon": "gif",
+                "iconComplete": "check"
+              }
+            },
+            {
+              "id": "item-6453-4749-4ba4-8a57-078d3b8fc376",
+              "indent": 0,
+              "location": "pages\/item-bf8aef4b-4749-4ba4-8a57-078d3b8fc376\/index.html",
+              "order": 0,
+              "parent": null,
+              "title": "ELMSLN",
+              "description": "Rome wasn't built in a day; let's explore just how long this empire took to mature to what we know today.",
+              "metadata": {
+                "created": 1545151191,
+                "updated": 1545185712,
+                "dataUrl": "data.json",
+                "status": "disabled",
+                "value": 0,
+                "max": 100,
+                "icon": "3d-rotation",
+                "iconComplete": "check"
+              }
+            },
+            {
+              "id": "item-987-4749-4ba4-8a57-078d3b8fc376",
+              "indent": 0,
+              "location": "pages\/item-bf8aef4b-4749-4ba4-8a57-078d3b8fc376\/index.html",
+              "order": 0,
+              "parent": null,
+              "title": "Stuff",
+              "description": "My great new content!\n\n\nHeader\nHeader\n\n\nHeader\nHeader\n",
+              "metadata": {
+                "created": 1545151191,
+                "updated": 1545185712,
+                "dataUrl": "data/callback.json",
+                "status": "disabled",
+                "value": 0,
+                "max": 100,
+                "icon": "flag",
+                "iconComplete": "check"
+              }
+            },
+            {
+              "id": "item-123-4749-4ba4-8a57-078d3b8fc376",
+              "indent": 0,
+              "location": "pages\/item-bf8aef4b-4749-4ba4-8a57-078d3b8fc376\/index.html",
+              "order": 0,
+              "parent": null,
+              "title": "Things",
+              "description": "My great new content!\n\n\nHeader\nHeader\n\n\nHeader\nHeader\n",
+              "metadata": {
+                "created": 1545151191,
+                "updated": 1545185712,
+                "dataUrl": "data/callback.json",
+                "status": "disabled",
+                "value": 0,
+                "max": 100,
+                "icon": "forward",
+                "iconComplete": "check"
+              }
             }
-          ];
-        })
+          ]
+        };
+        const menus = ['menu1', 'menu2'];
+        menus.forEach(selector => {
+          document.getElementById(selector).manifest = manifest;
+        });
       };
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>

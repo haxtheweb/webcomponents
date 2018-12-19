@@ -266,12 +266,6 @@ class OutlineDesigner extends PolymerElement {
       }
     }
   }
-  // Observer editMode for changes
-  _editModeChanged(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined) {
-      console.log(newValue);
-    }
-  }
 }
 window.customElements.define("outline-designer", OutlineDesigner);
 

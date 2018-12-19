@@ -6,7 +6,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 /**
- * `haxcms-jwt`
+ * `haxcms-backend-demo`
  * `a simple element to check for and fetch JWTs`
  *
  * @demo demo/index.html
@@ -15,7 +15,7 @@ import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
  * - jwt - a json web token which is an encrypted security token to talk
  */
 Polymer({
-  is: "haxcms-jwt",
+  is: "haxcms-backend-demo",
   _template: html`
     <style>
       :host {

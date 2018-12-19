@@ -94,7 +94,7 @@ class SimpleToast extends PolymerElement {
       duration: {
         name: "duration",
         type: "Number",
-        value: 600
+        value: 4000
       },
       /**
        * If there should be a close button shown

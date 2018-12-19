@@ -1,5 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
+import { IronA11yKeysBehavior } from "@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js";
+
 Polymer({
   is: "paper-search-bar",
 

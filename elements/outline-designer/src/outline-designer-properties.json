@@ -78,7 +78,8 @@
    */
   "outlineSchemaUrl": {
     "name": "outlineSchemaUrl",
-    "type": "String"
+    "type": "String",
+    "value": false
   },
   /**
    * JSON outline schema manifest

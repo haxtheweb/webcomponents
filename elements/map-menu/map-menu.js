@@ -59,6 +59,14 @@ let MapMenu = Polymer({
       type: Array,
       value: null
     },
+    /**
+     * Support for JSON Outline Schema manifest format
+     */
+    manifest: {
+      type: Object,
+      notify: true,
+      observer: "_manifestChanged"
+    },
     items: {
       type: Array,
       value: null,
@@ -136,6 +144,11 @@ let MapMenu = Polymer({
     }
   },
 
+  _manifestChanged: function(newValue, oldValue) {
+    if (newValue) {
+      this.set("data", newValue.items);
+    }
+  },
   /**
    * Set data property
    */

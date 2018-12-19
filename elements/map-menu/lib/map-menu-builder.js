@@ -14,10 +14,10 @@ Polymer({
         <map-menu-submenu
           title="[[item.title]]"
           id="[[item.id]]"
-          url="[[item.url]]"
+          url="[[item.location]]"
           icon="[[item.metadata.icon]]"
-          open="[[item.active]]"
-          avatar-label="[[item.avatarLabel]]"
+          open="[[item.metadata.active]]"
+          avatar-label="[[item.metadata.avatarLabel]]"
         >
           <map-menu-builder items="[[item.children]]"></map-menu-builder>
         </map-menu-submenu>
@@ -26,7 +26,7 @@ Polymer({
         <map-menu-item
           title="[[item.title]]"
           id="[[item.id]]"
-          url="[[item.url]]"
+          url="[[item.location]]"
           icon="[[item.metadata.icon]]"
           active-path="[[activePath]]"
         ></map-menu-item>

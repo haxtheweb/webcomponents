@@ -34,6 +34,7 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       }
       site-card {
         padding: 16px;
+        font-size: 16px;
       }
       paper-button.site-card-wrapper {
         margin: 0;
@@ -46,10 +47,10 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       url="[[dataSource]]"
       handle-as="json"
       debounce-duration="250"
-      last-response="{{sites}}"
+      last-response="{{sitesResponse}}"
     ></iron-ajax>
     <div id="loading" data-loading\$="[[!__loading]]">
-      <elmsln-loading></elmsln-loading>
+      <elmsln-loading size="large"></elmsln-loading>
       <div>Loading..</div>
     </div>
     <iron-list id="list" items="[[sites]]" as="site" grid="">
@@ -64,13 +65,13 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
           <site-card
             data-site-id\$="[[site.id]]"
             size="[[size]]"
-            image="[[site.image]]"
-            icon="[[site.icon]]"
-            name="[[site.name]]"
-            title="[[site.title]]"
+            image="[[site.metadata.image]]"
+            icon="[[site.metadata.icon]]"
+            name="[[site.title]]"
+            title="[[site.description]]"
             elevation="2"
           ></site-card>
         </paper-button>
       </template>
     </iron-list>
-  `,is:"sites-listing",properties:{sites:{type:Array},size:{type:String,value:"large"},dataSource:{type:String}},_siteClicked:function(e){var normalizedEvent=dom(e),local=normalizedEvent.localTarget,active=local.getAttribute("data-site-id");let findSite=this.sites.filter(site=>{if(site.id!==active){return!1}return!0});if(0<findSite.length){findSite=findSite.pop()}if(typeof findSite.location!==typeof void 0){window.location.href=findSite.location}},_mouseEnter:function(e){let card=dom(e.target).querySelectorAll("site-card")[0];card.__oldElevation=card.elevation;if(5<card.elevation+2){card.elevation=5}else{card.elevation+=2}},_mouseLeave:function(e){let card=dom(e.target).querySelectorAll("site-card")[0];card.elevation=card.__oldElevation}});export{SitesListing};
+  `,is:"sites-listing",properties:{sitesResponse:{type:Object,notify:!0,observer:"_sitesResponseChanged"},sites:{type:Array,notify:!0},size:{type:String,value:"large"},dataSource:{type:String},loadLocation:{type:Boolean,value:!1}},_sitesResponseChanged:function(newValue,oldValue){if(newValue){if(typeof newValue.items!==typeof void 0){this.set("sites",[]);this.set("sites",newValue.items);this.notifyPath("sites.*")}}},_siteClicked:function(e){var normalizedEvent=dom(e),local=normalizedEvent.localTarget,active=local.getAttribute("data-site-id");let findSite=this.sites.filter(site=>{if(site.id!==active){return!1}return!0});if(0<findSite.length){findSite=findSite.pop()}if(this.loadLocation&&typeof findSite.location!==typeof void 0){window.location.href=findSite.location}this.fire("sites-listing-item-selected",findSite)},_mouseEnter:function(e){let card=dom(e.target).querySelectorAll("site-card")[0];card.__oldElevation=card.elevation;if(5<card.elevation+2){card.elevation=5}else{card.elevation+=2}},_mouseLeave:function(e){let card=dom(e.target).querySelectorAll("site-card")[0];card.elevation=card.__oldElevation}});export{SitesListing};
