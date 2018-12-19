@@ -1,0 +1,210 @@
+{
+  /**
+   * Optional accent color for controls,
+   * using the following materialize "colors":
+   * red, pink, purple, deep-purple, indigo, blue,
+   * light blue, cyan, teal, green, light green, lime,
+   * yellow, amber, orange, deep-orange, and brown.
+   * Default is null.
+   */
+  "accentColor": {
+    "type": "String",
+    "value": null,
+    "reflectToAttribute": true
+  },
+  /**
+   * Cross origin flag for transcripts to load
+   */
+  "crossorigin": {
+    "type": "Boolean",
+    "value": false
+  },
+  /**
+   * Enables darker player.
+   */
+  "dark": {
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": true
+  },
+  /**
+   * Use dark theme on transcript? Default is false, even when player is dark.
+   */
+  "darkTranscript": {
+    "type": "Boolean",
+    "value": false
+  },
+  /**
+   * disable interactive mode that makes the transcript clickable
+   */
+  "disableInteractive": {
+    "type": "Boolean",
+    "value": false
+  },
+  /**
+   * The height of the media player for non-a11y-media.
+   */
+  "height": {
+    "type": "String",
+    "value": null
+  },
+  /**
+   * show cue's start and end time
+   */
+  "hideTimestamps": {
+    "type": "Boolean",
+    "value": false
+  },
+  /**
+   * Computed if this should be in an iframe or not.
+   */
+  "iframed": {
+    "type": "Boolean",
+    "computed": "_computeIframed(sourceData, sandboxed)"
+  },
+  /**
+   * Computed if this should be in a11y-media-player.
+   */
+  "isA11yMedia": {
+    "type": "Boolean",
+    "computed": "_computeA11yMedia(sourceType, sandboxed)"
+  },
+  /**
+   * The type of source, i.e. "local", "vimeo", "youtube", etc.
+   */
+  "isYoutube": {
+    "type": "Boolean",
+    "computed": "_computeYoutube(sourceType)"
+  },
+  /**
+   * The language of the media
+   */
+  "lang": {
+    "type": "String",
+    "value": "en"
+  },
+  /**
+   * Simple caption for the video
+   */
+  "mediaTitle": {
+    "type": "String"
+  },
+  /**
+   * What to preload for a11y-media-player: auto, metadata (default), or none.
+   */
+  "preload": {
+    "type": "String",
+    "value": "metadata"
+  },
+  /* *
+     * Responsive video, calculated from not-responsive.
+     * /
+    "responsive": {
+      "type": "Boolean",
+      "reflectToAttribute": true,
+      "value": true,
+    },*/
+  /**
+   * Compute if this is a sandboxed system or not
+   */
+  "sandboxed": {
+    "type": "Boolean",
+    "computed": "_computeSandboxed(sourceData)"
+  },
+  /**
+   * Source of the video
+   */
+  "source": {
+    "type": "String",
+    "value": null
+  },
+  /**
+   * Source of the video
+   */
+  "sources": {
+    "type": "Array",
+    "value": []
+  },
+  /**
+   * List of source objects
+   */
+  "sourceData": {
+    "type": "Array",
+    "computed": "_getSourceData(source,sources,trackData)",
+    "reflectToAttribute": true
+  },
+  /**
+   * The type of source, i.e. "local", "vimeo", "youtube", etc.
+   */
+  "sourceType": {
+    "type": "String",
+    "computed": "_computeSourceType(sourceData)"
+  },
+  /**
+   * When playing but scrolled off screen, to which corner does it "stick":
+   * top-left, top-right, bottom-left, bottom-right, or none?
+   * Default is "top-right". "None" disables stickiness.
+   */
+  "stickyCorner": {
+    "type": "String",
+    "value": "top-right",
+    "reflectToAttribute": true
+  },
+  /**
+   * Array of text tracks
+   * [{
+   *  "src": "path/to/track.vtt",
+   *  "label": "English",
+   *  "srclang": "en",
+   *  "kind": "subtitles",
+   * }]
+   */
+  "tracks": {
+    "type": "Array",
+    "value": []
+  },
+  /**
+   * Cleaned array of text tracks
+   * [{
+   *  "src": "path/to/track.vtt",
+   *  "label": "English",
+   *  "srclang": "en",
+   *  "kind": "subtitles",
+   * }]
+   */
+  "trackData": {
+    "type": "Array",
+    "computed": "_getTrackData(tracks)",
+    "reflectToAttribute": true
+  },
+  /**
+   * Source of optional thumbnail image
+   */
+  "thumbnailSrc": {
+    "type": "String",
+    "value": null,
+    "reflectToAttribute": true
+  },
+  /* *
+     * Calculate vimeo color based on accent color.
+     * /
+    "vimeoColor": {
+      "type": "String",
+      "computed": getVimeoColor(dark,accentColor),
+    }, 
+    */
+  /**
+   * The width of the media player for non-a11y-media.
+   */
+  "width": {
+    "type": "String",
+    "value": null
+  },
+  /**
+   * The type of source, i.e. "local", "vimeo", "youtube", etc.
+   */
+  "youtubeId": {
+    "type": "String",
+    "computed": "_computeYoutubeId(source,sourceType)"
+  }
+}

@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-    <title>MediaGallery: media-gallery Demo</title>
+    <title>LrndesignGallery: media-gallery Demo</title>
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../media-gallery.js';
@@ -14,56 +15,37 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic media-gallery demo</h3>
-    
-      <h4>Carousels</h4>
+      <h1>media-gallery Demo</h1>
+      <h2>Basic media-gallery</h2>
       <demo-snippet>
         <template>
-          <media-gallery accent-color="green" dark="" title="Dark Carousel" sources="[{ &quot;alt&quot;: &quot;A picture of an Atari console&quot;, &quot;details&quot;: &quot;This console was made by <em>Atari</em>.&quot;, &quot;id&quot;: &quot;atari&quot;, &quot;src&quot;: &quot;images/atari.jpg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/atari.jpg&quot;, &quot;title&quot;: &quot;Atari&quot; }, { &quot;alt&quot;: &quot;A picture of an Microsoft console&quot;, &quot;details&quot;: &quot;This console was made by <em>Microsoft</em>.&quot;, &quot;id&quot;: &quot;microsoft&quot;, &quot;src&quot;: &quot;images/xbox.png&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/xbox.png&quot;, &quot;title&quot;: &quot;Microsoft&quot; }, { &quot;alt&quot;: &quot;A picture of an Nintendo console&quot;, &quot;details&quot;: &quot;This console was made by <em>Nintendo</em>.&quot;, &quot;id&quot;: &quot;nintendo&quot;, &quot;src&quot;: &quot;images/nintendo.png&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/nintendo.png&quot;, &quot;title&quot;: &quot;Nintendo&quot; }, { &quot;alt&quot;: &quot;A picture of an Sega console&quot;, &quot;details&quot;: &quot;This console was made by <em>Sega</em>.&quot;, &quot;id&quot;: &quot;sega&quot;, &quot;src&quot;: &quot;images/sega.jpg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/sega.jpg&quot;, &quot;title&quot;: &quot;Sega&quot; }, { &quot;alt&quot;: &quot;A picture of an Sony console&quot;, &quot;details&quot;: &quot;This console was made by <em>Sony</em>.&quot;, &quot;id&quot;: &quot;sony&quot;, &quot;src&quot;: &quot;images/ps4.jpg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/ps4.jpg&quot;, &quot;title&quot;: &quot;Sony&quot; }]">
-            <div slot="description">This is a <strong>carousel</strong> of game consoles with the <em>dark</em> theme.</div>
-          </media-gallery>
-          <p>Link to this page with sega automatically selected and its dialog open using the anchor <a href="#atari-zoom"
-              target="_blank">#atari-zoom</a>.</p>
-        </template>
-      </demo-snippet>
-    
-      <demo-snippet>
-        <template>
-          <media-gallery accent-color="blue" title="Light Carousel" sources="[{ &quot;alt&quot;: &quot;A picture of a cat&quot;, &quot;details&quot;: &quot;This is a <em>cat</em> picture that is in <strong>landscape</strong>.&quot;, &quot;id&quot;: &quot;cat&quot;, &quot;src&quot;: &quot;images/cat.jpeg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/cat.jpeg&quot;, &quot;title&quot;: &quot;Cat&quot; }, { &quot;alt&quot;: &quot;A picture of a dog&quot;, &quot;details&quot;: &quot;This is a <em>dog</em> picture that is in <strong>portrait</strong>.&quot;, &quot;id&quot;: &quot;dog&quot;, &quot;sizing&quot;: &quot;contain&quot;, &quot;src&quot;: &quot;images/dog.jpg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/dog.jpg&quot;, &quot;title&quot;: &quot;Dog&quot; }, { &quot;alt&quot;: &quot;A picture of a bird&quot;, &quot;details&quot;: &quot;This is a <em>bird</em> picture that is almost a <strong>square</strong>.&quot;, &quot;id&quot;: &quot;bird&quot;, &quot;src&quot;: &quot;images/bird.jpg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/bird.jpg&quot;, &quot;title&quot;: &quot;Bird&quot; }, { &quot;alt&quot;: &quot;A picture of fish&quot;, &quot;details&quot;: &quot;This is a <em>fish</em> picture in <strong>landscape</strong> orientation.&quot;, &quot;id&quot;: &quot;fish&quot;, &quot;src&quot;: &quot;images/fish.jpg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/fish.jpg&quot;, &quot;title&quot;: &quot;Fish&quot; }]">
+          <media-gallery gallery-id="gallery1" accent-color="blue" title="Carousel" sources="[{ &quot;alt&quot;: &quot;A picture of a cat&quot;, &quot;details&quot;: &quot;This is a <em>cat</em> picture that is in <strong>landscape</strong>.&quot;, &quot;id&quot;: &quot;cat&quot;, &quot;src&quot;: &quot;images/cat.jpeg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/cat.jpeg&quot;, &quot;title&quot;: &quot;Cat&quot; }, { &quot;alt&quot;: &quot;A picture of a dog&quot;, &quot;details&quot;: &quot;This is a <em>dog</em> picture that is in <strong>portrait</strong>.&quot;, &quot;id&quot;: &quot;dog&quot;, &quot;sizing&quot;: &quot;contain&quot;, &quot;src&quot;: &quot;images/dog.jpg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/dog.jpg&quot;, &quot;title&quot;: &quot;Dog&quot; }, { &quot;alt&quot;: &quot;A picture of a bird&quot;, &quot;details&quot;: &quot;This is a <em>bird</em> picture that is almost a <strong>square</strong>.&quot;, &quot;id&quot;: &quot;bird&quot;, &quot;src&quot;: &quot;images/bird.jpg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/bird.jpg&quot;, &quot;title&quot;: &quot;Bird&quot; }, { &quot;alt&quot;: &quot;A picture of fish&quot;, &quot;details&quot;: &quot;This is a <em>fish</em> picture in <strong>landscape</strong> orientation.&quot;, &quot;id&quot;: &quot;fish&quot;, &quot;src&quot;: &quot;images/fish.jpg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/fish.jpg&quot;, &quot;title&quot;: &quot;Fish&quot; }]">
             <div slot="description">This is an <strong>carousel</strong> of animal images.</div>
           </media-gallery>
-          <p>Link to this page with bird automatically selected using the anchor <a href="#bird" target="_blank">#bird</a>.</p>
-        </template>
-      </demo-snippet>
-      <demo-snippet>
-        <template>
-          <media-gallery title="Image with Caption" accent-color="purple" dark="" sources="[{ &quot;alt&quot;: &quot;A picture of dice&quot;, &quot;details&quot;: &quot;This is a picture of <em>dice</em> with a caption.&quot;, &quot;id&quot;: &quot;dice&quot;, &quot;src&quot;: &quot;images/dice.jpg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/dice.jpg&quot;, &quot;title&quot;: &quot;Dice&quot; }]">
-          </media-gallery>
+          <p>Link to this page with bird automatically selected using the anchor <a href="#gallery1---bird" target="_blank">#gallery1---bird</a>.</p>
         </template>
       </demo-snippet>
     
-      <h4>Thumbnail Grids</h4>
+      <h2>Dark media-gallery</h2>
       <demo-snippet>
         <template>
-          <media-gallery title="Regular Thumbnails" accent-color="indigo" grid="true" sources="[{ &quot;alt&quot;: &quot;A picture of an apple&quot;, &quot;details&quot;: &quot;This is an <em>apple</em> picture.&quot;, &quot;id&quot;: &quot;apple&quot;, &quot;src&quot;: &quot;images/apple.jpg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/apple.jpg&quot;, &quot;title&quot;: &quot;Apple&quot; }, { &quot;alt&quot;: &quot;A picture of bananas&quot;, &quot;details&quot;: &quot;This is a picture of <em>bananas</em>.&quot;, &quot;id&quot;: &quot;bananas&quot;, &quot;src&quot;: &quot;images/banana.jpg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/banana.jpg&quot;, &quot;title&quot;: &quot;Bananas&quot; }, { &quot;alt&quot;: &quot;A picture of carrots&quot;, &quot;details&quot;: &quot;This is a picture of <em>carrots</em>.&quot;, &quot;id&quot;: &quot;carrots&quot;, &quot;src&quot;: &quot;images/carrot.jpeg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/carrot.jpeg&quot;, &quot;title&quot;: &quot;Carrots&quot; }]">
-            <div slot="description">This is a <em>regular</em> <strong>grid</strong>.</div>
+          <media-gallery gallery-id="gallery2" accent-color="green" dark title="Dark Carousel" sources="[{ &quot;alt&quot;: &quot;A picture of an Atari console&quot;, &quot;details&quot;: &quot;This console was made by <em>Atari</em>.&quot;, &quot;id&quot;: &quot;atari&quot;, &quot;src&quot;: &quot;images/atari.jpg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/atari.jpg&quot;, &quot;title&quot;: &quot;Atari&quot; }, { &quot;alt&quot;: &quot;A picture of an Microsoft console&quot;, &quot;details&quot;: &quot;This console was made by <em>Microsoft</em>.&quot;, &quot;id&quot;: &quot;microsoft&quot;, &quot;src&quot;: &quot;images/xbox.png&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/xbox.png&quot;, &quot;title&quot;: &quot;Microsoft&quot; }, { &quot;alt&quot;: &quot;A picture of an Nintendo console&quot;, &quot;details&quot;: &quot;This console was made by <em>Nintendo</em>.&quot;, &quot;id&quot;: &quot;nintendo&quot;, &quot;src&quot;: &quot;images/nintendo.png&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/nintendo.png&quot;, &quot;title&quot;: &quot;Nintendo&quot; }, { &quot;alt&quot;: &quot;A picture of an Sega console&quot;, &quot;details&quot;: &quot;This console was made by <em>Sega</em>.&quot;, &quot;id&quot;: &quot;sega&quot;, &quot;src&quot;: &quot;images/sega.jpg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/sega.jpg&quot;, &quot;title&quot;: &quot;Sega&quot; }, { &quot;alt&quot;: &quot;A picture of an Sony console&quot;, &quot;details&quot;: &quot;This console was made by <em>Sony</em>.&quot;, &quot;id&quot;: &quot;sony&quot;, &quot;src&quot;: &quot;images/ps4.jpg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/ps4.jpg&quot;, &quot;title&quot;: &quot;Sony&quot; }]">
+            <div slot="description">This is a <strong>carousel</strong> of game consoles with the <em>dark</em> theme.</div>
           </media-gallery>
-          <p>Link to this page with carrots dialog automatically open using the anchor <a href="#carrots" target="_blank">#carrots</a>.</p>
+          <p>Link to this page with sega automatically selected and its dialog open using the anchor <a href="#gallery2---atari---zoom"
+              target="_blank">#gallery2---atari---zoom</a>.</p>
         </template>
       </demo-snippet>
-    
+      
+      <h2>Single media-gallery Image with Custom Styles</h2>
       <demo-snippet>
         <template>
-          <media-gallery id="custom-styled-thumb" title="Full-Sized Thumbnail with custom sizing" accent-color="cyan" dark=""
-            grid-size="extra-large" grid="true" sources="[{ &quot;alt&quot;: &quot;A picture of dice&quot;, &quot;details&quot;: &quot;This is a picture of <em>dice</em> with a caption.&quot;, &quot;id&quot;: &quot;dice&quot;, &quot;src&quot;: &quot;images/dice.jpg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/dice.jpg&quot;, &quot;title&quot;: &quot;Dice&quot; }]">
+          <media-gallery id="media-gallery3" gallery-id="gallery3" title="Image with Caption" accent-color="purple" dark sources="[{ &quot;alt&quot;: &quot;A picture of dice&quot;, &quot;details&quot;: &quot;This is a picture of <em>dice</em> with a caption.&quot;, &quot;id&quot;: &quot;dice&quot;, &quot;src&quot;: &quot;images/dice.jpg&quot;, &quot;thumbnail&quot;: &quot;images/thumbnails/dice.jpg&quot;, &quot;title&quot;: &quot;Dice&quot; }]">
           </media-gallery>
-          <style is="custom-style">
-            #custom-styled-thumb {
-              --media-gallery-thumbnail-size: 100%;
-              --media-gallery-thumbnail-size-sm: 100%;
-              --media-gallery-thumbnail-size-md: 400px;
-              --media-gallery-thumbnail-size-lg: 500px;
-              --media-gallery-thumbnail-size-xl: 600px;
+          <style is="custom-style" include="lrndesign-gallery-shared-styles">
+            #media-gallery3 {
+              --lrndesign-gallery-dialog-titlebar-color: #ffffff;
+              --lrndesign-gallery-dialog-titlebar-background-color: #6c0079;
             }
           </style>
         </template>

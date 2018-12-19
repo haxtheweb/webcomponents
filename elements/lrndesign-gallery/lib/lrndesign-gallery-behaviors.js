@@ -71,13 +71,6 @@ class LrnDesignGalleryBehaviors extends SimpleColors {
         type: Array,
         computed: "_itemsLoaded(sources,sizing)"
       },
-      /**
-       * the parent item
-       */
-      parent: {
-        type: Object,
-        value: {}
-      },
       /*
        * parent size for responsive styling
        */

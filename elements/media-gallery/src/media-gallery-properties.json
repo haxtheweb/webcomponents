@@ -1,0 +1,53 @@
+{
+  /**
+   * accent color for gallery
+   */
+  "accentColor": {
+    "type": "String",
+    "value": null
+  },
+  /**
+   * use dark theme (default is light)?
+   */
+  "dark": {
+    "type": "Boolean",
+    "value": false
+  },
+  /**
+   * gallery's unique id
+   */
+  "galleryId": {
+    "type": "String",
+    "value": null
+  },
+  /**
+   * thumbnail grid layout, default is false (carousel layout)
+   */
+  "grid": {
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": true
+  },
+  /**
+   * array of carousel/grid items
+   */
+  "sources": {
+    "type": "Array",
+    "value": []
+  },
+  /**
+   * default sizing: fit screen by cropping (cover)
+   * or with letterboxing (contain)
+   */
+  "sizing": {
+    "type": "String",
+    "value": "cover"
+  },
+  /**
+   * carousel's title
+   */
+  "title": {
+    "type": "String",
+    "value": null
+  }
+}

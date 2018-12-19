@@ -1,0 +1,118 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Image Gallery",
+    "description": "Displays carousels, grids, thumbnails, and images with captions.",
+    "icon": "image:photo-library",
+    "color": "deep-purple",
+    "groups": ["Images", "Media"],
+    "handles": [
+      {
+        "type": "image",
+        "url": "source"
+      }
+    ],
+    "meta": {
+      "author": "Your organization on github"
+    }
+  },
+  "settings": {
+    "quick": [
+      {
+        "property": "title",
+        "title": "Title",
+        "description": "The title of the gallery",
+        "inputMethod": "textfield",
+        "icon": "editor:title"
+      },
+      {
+        "property": "grid",
+        "title": "Thumbnails/Grid",
+        "description": "Display as thumbnails.",
+        "inputMethod": "boolean",
+        "icon": "image:grid-on"
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent color",
+        "description": "Select the accent color for the player.",
+        "inputMethod": "colorpicker",
+        "icon": "editor:format-color-fill"
+      },
+      {
+        "property": "dark",
+        "title": "Dark",
+        "description": "Use dark theme.",
+        "inputMethod": "boolean",
+        "icon": "invert-colors"
+      }
+    ],
+    "configure": [
+      {
+        "property": "sizing",
+        "title": "Sizing",
+        "description": "How images will fit into the gallery.",
+        "inputMethod": "select",
+        "options": {
+          "cover": "Cover (cropping)",
+          "contain": "Contain (letterboxing)"
+        }
+      },
+      {
+        "property": "sources",
+        "title": "Image(s)",
+        "description": "Tracks of different languages of closed captions",
+        "inputMethod": "array",
+        "properties": [
+          {
+            "property": "title",
+            "title": "Title",
+            "description": "Title of the image.",
+            "inputMethod": "textfield"
+          },
+          {
+            "property": "src",
+            "title": "Source/URL",
+            "description": "Source of the image",
+            "inputMethod": "textfield"
+          },
+          {
+            "property": "alt",
+            "title": "Alt text",
+            "description": "Alternative text of this image (for accessibility).",
+            "inputMethod": "textfield"
+          },
+          {
+            "property": "details",
+            "title": "Details/long description about this image",
+            "description": "Alternative text for accessibility.",
+            "inputMethod": "textfield"
+          }
+          /* future feature 
+          {
+            "property": "large",
+            "title": "Source/URL (Zoom)",
+            "description": "A larger version of the image (for zooming)",
+            "inputMethod": "textfield",
+          },
+          {
+            "property": "thumbnail",
+            "title": "Source/URL (Thumbnail)",
+            "description": "A smaller version of the image (for thumbnails)",
+            "inputMethod": "textfield",
+          },
+          {
+            "property": "zoom",
+            "title": "Zoom",
+            "description": "Allow zooming.",
+            "inputMethod": "boolean",
+            "icon": "zoom-in"
+          }*/
+        ]
+      }
+    ],
+    "advanced": []
+  }
+}
