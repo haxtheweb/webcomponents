@@ -109,6 +109,7 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
         hidden$="[[audioOnly]]"
         lang$="[[lang]]"
         on-loadedmetadata="_handleMetadata"
+        poster$="[[thumbnailSrc]]"
         src$="[[manifest]]"
         preload="metadata"
       >
@@ -121,6 +122,7 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
         hidden$="[[!audioOnly]]"
         lang$="[[lang]]"
         on-loadedmetadata="_handleMetadata"
+        poster$="[[thumbnailSrc]]"
         src$="[[manifest]]"
         preload="metadata"
       >

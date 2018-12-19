@@ -155,6 +155,13 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
         computed: "_getPrintCaption(audioOnly,audioLabel,videoLabel,mediaTitle)"
       },
       /**
+       * Optional array ouf sources.
+       */
+      sources: {
+        type: Array,
+        value: []
+      },
+      /**
        * Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?
        */
       sticky: {
@@ -171,6 +178,13 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
         type: String,
         value: "top-right",
         reflectToAttribute: true
+      },
+      /**
+       * Optional array ouf tracks.
+       */
+      tracks: {
+        type: Array,
+        value: []
       }
     };
   }
@@ -576,7 +590,8 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
                 manifest$="[[manifest]]"
                 on-media-loaded="_handleMediaLoaded"
                 playback-rate$="[[playbackRate]]"
-                style$="[[_getThumbnailCSS(thumbnailSrc)]]"
+                thumbnail-src$="[[thumbnailSrc]]"
+                style$="[[_getThumbnailCSS(thumbnailSrc,isYoutube)]]"
                 preload$="[[preload]]"
                 volume$="[[volume]]"
               >
@@ -743,6 +758,8 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
     root.querySelectorAll("source,track").forEach(function(node) {
       root.$.loader.media.appendChild(node);
     });
+    this._appendToPlayer(this.sources, "source");
+    this._appendToPlayer(this.tracks, "track");
     if (this.isYoutube) {
       root.disableInteractive = true;
       this._youTubeRequest();
@@ -755,6 +772,24 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
     if (root.__showFullscreen) {
       screenfull.on("change", () => {
         this.fullscreen = screenfull.isFullscreen;
+      });
+    }
+  }
+
+  /**
+   * dynamically adds source and track data
+   * from the sources and tracks properties
+   * (needed for media-player)
+   */
+  _appendToPlayer(data, type) {
+    let root = this;
+    if (data !== undefined && data !== null && data.length > 0) {
+      data.forEach(item => {
+        let el = document.createElement(type);
+        for (let key in item) {
+          el.setAttribute(key, item[key]);
+        }
+        root.$.loader.media.appendChild(el);
       });
     }
   }
@@ -1011,8 +1046,8 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
    * @param {string} the url for the thumbnail image
    * @returns {string} the string for the style attribute
    */
-  _getThumbnailCSS(thumbnailSrc) {
-    return thumbnailSrc != null
+  _getThumbnailCSS(thumbnailSrc, isYoutube) {
+    return thumbnailSrc != null && isYoutube
       ? "background-image: url(" + thumbnailSrc + "); background-size: cover;"
       : null;
   }
