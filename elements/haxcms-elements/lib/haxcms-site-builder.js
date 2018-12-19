@@ -41,7 +41,9 @@ Polymer({
         --paper-progress-container-color: transparent;
       }
     </style>
-    <haxcms-editor-builder></haxcms-editor-builder>
+    <haxcms-editor-builder
+      outline-location="[[outlineLocation]]"
+    ></haxcms-editor-builder>
     <paper-progress
       hidden\$="[[!loading]]"
       value="100"
@@ -191,7 +193,6 @@ Polymer({
       this._setActiveItem.bind(this)
     );
   },
-
   /**
    * Detached life cycle
    */

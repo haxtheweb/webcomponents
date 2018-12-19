@@ -314,9 +314,11 @@ Polymer({
     // allow for initial setting since this editor gets injected basically
     if (typeof window.cmsSiteEditor.jsonOutlineSchema !== typeof undefined) {
       this.set("manifest", window.cmsSiteEditor.jsonOutlineSchema);
+      this.notifyPath("manifest.*");
     }
     if (typeof window.cmsSiteEditor.initialActiveItem !== typeof undefined) {
       this.set("activeItem", window.cmsSiteEditor.initialActiveItem);
+      this.notifyPath("activeItem.*");
     }
     this.updateStyles();
   },
@@ -411,18 +413,21 @@ Polymer({
       parts.pop();
       let site = parts.pop();
       this.set("updatePageData.siteName", site);
+      this.notifyPath("updatePageData.siteName");
       this.set(
         "updatePageData.body",
         window.HaxStore.instance.activeHaxBody.haxToContent()
       );
+      this.notifyPath("updatePageData.body");
       this.set("updatePageData.page", this.activeItem.id);
+      this.notifyPath("updatePageData.page");
       this.set("updatePageData.jwt", this.jwt);
+      this.notifyPath("updatePageData.jwt");
       // send the request
       if (this.savePagePath) {
         this.$.pageupdateajax.generateRequest();
       }
       this.fire("haxcms-save-page", this.activeItem);
-      this.notifyPath("updatePageData.*");
     }
   },
   /**
@@ -454,12 +459,14 @@ Polymer({
     let site = parts.pop();
     // now let's work on the outline
     this.set("updateOutlineData.siteName", site);
+    this.notifyPath("updateOutlineData.siteName");
     this.set("updateOutlineData.items", e.detail);
+    this.notifyPath("updateOutlineData.items");
     this.set("updateOutlineData.jwt", this.jwt);
+    this.notifyPath("updateOutlineData.jwt");
     if (this.saveOutlinePath) {
       this.$.outlineupdateajax.generateRequest();
     }
-    this.notifyPath("updateOutlineData.*");
   },
   /**
    * Save the outline based on an event firing.
@@ -470,12 +477,14 @@ Polymer({
     let site = parts.pop();
     // now let's work on the outline
     this.set("updateManifestData.siteName", site);
+    this.notifyPath("updateManifestData.siteName");
     this.set("updateManifestData.manifest", e.detail);
+    this.notifyPath("updateManifestData.manifest");
     this.set("updateManifestData.jwt", this.jwt);
+    this.notifyPath("updateManifestData.jwt");
     if (this.saveManifestPath) {
       this.$.manifestupdateajax.generateRequest();
     }
-    this.notifyPath("updateManifestData.*");
   },
   /**
    * Save the outline based on an event firing.
@@ -485,11 +494,12 @@ Polymer({
     parts.pop();
     let site = parts.pop();
     this.set("publishSiteData.siteName", site);
+    this.notifyPath("publishSiteData.siteName");
     this.set("publishSiteData.jwt", this.jwt);
+    this.notifyPath("publishSiteData.jwt");
     if (this.publishPath) {
       this.$.publishajax.generateRequest();
     }
-    this.notifyPath("publishSiteData.*");
   },
   /**
    * Notice body of content has changed and import into HAX

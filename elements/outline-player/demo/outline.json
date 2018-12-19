@@ -1,16 +1,19 @@
 {
-  "id": "2a307fdb-87c8-466e-907d-730c6b53ea31",
-  "title": "testsite1",
+  "id": "67231b96-d065-4a47-89bf-f7375e1dcfb8",
+  "title": "things and stuff",
   "author": "",
-  "description": "",
+  "description": "Something else",
   "license": "by-sa",
   "metadata": {
-    "siteName": "testsite1",
+    "siteName": "thingsandstuff",
     "image": "assets/banner.jpg",
-    "theme": "default",
-    "icon": "icons:add-circle-outline",
-    "hexCode": null,
-    "cssVariable": null
+    "theme": "outline-player",
+    "icon": "icons:attachment",
+    "domain": "https://thingsandstuff.surge.sh",
+    "hexCode": "#aeff00",
+    "created": 1545151191,
+    "updated": 1545151191,
+    "cssVariable": "--simple-colors-lime-background5"
   },
   "items": [
     {
@@ -20,8 +23,10 @@
       "order": 0,
       "parent": null,
       "title": "Page 1",
+      "description": "",
       "metadata": {
-        "icon": "bookmark"
+        "created": 1545151191,
+        "updated": 1545151191
       }
     },
     {
@@ -31,8 +36,11 @@
       "order": 0,
       "parent": "item-85527fdd-e7aa-4179-8aab-6ecc255236a1",
       "title": "Page 2",
+      "description": "",
       "metadata": {
-        "icon": "bookmark"
+        "icon": "icons:visibility-off",
+        "created": 1545151191,
+        "updated": 1545151191
       }
     },
     {
@@ -42,8 +50,11 @@
       "order": 2,
       "parent": null,
       "title": "Page 3",
+      "description": "",
       "metadata": {
-        "icon": "icons:visibility-off"
+        "icon": "icons:visibility-off",
+        "created": 1545151191,
+        "updated": 1545151191
       }
     },
     {
@@ -53,7 +64,12 @@
       "order": 3,
       "parent": null,
       "title": "Page 4",
-      "metadata": {}
+      "description": "",
+      "metadata": {
+        "icon": "icons:visibility-off",
+        "created": 1545151191,
+        "updated": 1545151191
+      }
     },
     {
       "id": "item-asdf6ea32d2d-f2c7-41dc-a7a5-bd6b8f5f1ba2",
@@ -62,7 +78,13 @@
       "order": 4,
       "parent": null,
       "title": "Page 5",
-      "metadata": {}
+      "description": "",
+      "metadata": {
+        "icon": "icons:visibility-off",
+        "created": 1545151191,
+        "updated": 1545151191
+      }
     }
-  ]
+  ],
+  "location": "/_sites/thingsandstuff/index.html"
 }

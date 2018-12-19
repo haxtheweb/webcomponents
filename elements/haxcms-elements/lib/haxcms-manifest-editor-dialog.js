@@ -134,6 +134,7 @@ Polymer({
     );
     // state issue but it can miss in timing othewise on first event
     this.set("manifest", window.cmsSiteEditor.jsonOutlineSchema);
+    this.notifyPath("manifest.*");
   },
   /**
    * attached life cycle
@@ -166,6 +167,7 @@ Polymer({
   _manifestSet: function(e) {
     if (typeof e.detail.id !== typeof undefined) {
       this.set("manifest", e.detail);
+      this.notifyPath("manifest.*");
     }
   },
 
@@ -174,6 +176,7 @@ Polymer({
    */
   _themeChanged: function(e) {
     this.set("manifest.metadata.theme", e.detail.value);
+    this.notifyPath("manifest.metadata.theme");
   },
 
   /**
@@ -181,7 +184,9 @@ Polymer({
    */
   _colorChanged: function(e) {
     this.set("manifest.metadata.cssVariable", e.detail.cssVariable);
+    this.notifyPath("manifest.metadata.cssVariable");
     this.set("manifest.metadata.hexCode", e.detail.hexCode);
+    this.notifyPath("manifest.metadata.hexCode");
   },
 
   /**
@@ -196,10 +201,15 @@ Polymer({
    */
   _saveTap: function(e) {
     this.set("manifest.title", this.$.sitetitle.value);
+    this.notifyPath("manifest.title");
     this.set("manifest.description", this.$.sitedescription.value);
+    this.notifyPath("manifest.description");
     this.set("manifest.metadata.image", this.$.siteimage.value);
+    this.notifyPath("manifest.metadata.image");
     this.set("manifest.metadata.domain", this.$.domain.value);
+    this.notifyPath("manifest.metadata.domain");
     this.set("manifest.metadata.icon", this.$.siteicon.icon);
+    this.notifyPath("manifest.metadata.icon");
     this.fire("haxcms-save-site-data", this.manifest);
   }
 });

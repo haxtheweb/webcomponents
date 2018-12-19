@@ -13,6 +13,7 @@ import "@polymer/paper-progress/paper-progress.js";
 import "@polymer/iron-media-query/iron-media-query.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import "@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";
 import "@lrnwebcomponents/map-menu/map-menu.js";
 import "./lib/outline-player-arrow.js";
 /**
@@ -289,7 +290,11 @@ let OutlinePlayer = Polymer({
 
   is: "outline-player",
 
-  behaviors: [MaterializeCSSBehaviors.ColorBehaviors, SchemaBehaviors.Schema],
+  behaviors: [
+    MaterializeCSSBehaviors.ColorBehaviors,
+    SchemaBehaviors.Schema,
+    HAXCMSBehaviors.Theme
+  ],
 
   properties: {
     /**
@@ -297,6 +302,7 @@ let OutlinePlayer = Polymer({
      */
     auto: {
       type: Boolean,
+      notify: true,
       value: false
     },
     /**
@@ -304,25 +310,29 @@ let OutlinePlayer = Polymer({
      */
     outlineFile: {
       type: String,
-      value: "outline.json"
+      value: "outline.json",
+      notify: true
     },
     /**
      * Outline JSON location
      */
     outlineLocation: {
-      type: String
+      type: String,
+      notify: true
     },
     /**
      * Title of the outline.
      */
     outlineTitle: {
-      type: String
+      type: String,
+      notify: true
     },
     /**
      * acitvely selected item
      */
     selected: {
       type: String,
+      notify: true,
       observer: "_selectedPageChanged"
     },
     /**
@@ -330,6 +340,7 @@ let OutlinePlayer = Polymer({
      */
     closed: {
       type: Boolean,
+      notify: true,
       reflectToAttribute: true,
       value: false
     },
