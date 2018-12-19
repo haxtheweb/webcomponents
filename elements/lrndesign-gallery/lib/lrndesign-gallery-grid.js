@@ -15,11 +15,15 @@ export { LrndesignGalleryGrid };
  *
  * @microcopy - language worth noting:```
 <lrndesign-gallery-grid 
-  grid-size = "small"               //optional, can be small, medium, or large.
-  items = "[]"                      //required, array of items
-  sizing = "contain">               //optional, "cover" for cropping (default) or "contain" for letterboxing
+  accent-color="grey"               //optional, the accent color from simple-colors; default is grey
+  dark                              //optional, if true, gallery will use the simple-colors dark theme; default is false (light-theme)
+  id="mygallery1"                   //optional, a unique id for the gallery; if true, you can use the id in anchors to access gallery items on page load
+  sources="[]"                      //required, array of image sources
+  sizing="contain"                  //optional, "cover" for cropping (default) or "contain" for letterboxing
+  title="My Gallery">               //optional, the title of the gallery
+  Optional description of the gallery.
 </lrndesign-gallery-grid>```
- * where `items` array is:```
+ * where `sources` array is:```
 [{
   "alt": "IMAGE ALT TEXT",                          //required
   "details": "TEXT ABOUT IMAGE HERE",               //optional 
@@ -27,14 +31,11 @@ export { LrndesignGalleryGrid };
   "id": "123"                                       //required, unique id  
   "sizing": "contain",                              //optional, "cover" for cropping (default) or "contain" for letterboxing, default is parent's sizing
   "large": "PATH/TO/LARGE/IMAGE/HERE.JPG",          //optional, larger image for zoom instead of src 
-  "next": "3",                                      //required, the index of the next item
-  "prev": "1",                                      //required, the index of the previous item
   "src": "PATH/TO/FULL/IMAGE/HERE.JPG",             //required
   "thumbnail": "PATH/TO/THUMBAIL/IMAGE/HERE.JPG",   //required
   "tooltip": "IMAGE TOOLTIP HERE",                  //required, the tooltip for the image thumbnail
   "title": "IMAGE TITLE HERE",                      //optional, the image title when viewed
   "type": "image",                                  //required, "image", "video", "audio", etc.
-  "zoom": false                                     //optional, false item should have no zoom option, default is true 
 }]```
  *
  * @customElement
