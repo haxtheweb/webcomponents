@@ -19,6 +19,14 @@ window.cmsSiteEditor.instance = null;
  */
 Polymer({
   is: "haxcms-editor-builder",
+  properties: {
+    /**
+     * Outline data file location
+     */
+    outlineLocation: {
+      type: String
+    }
+  },
   /**
    * created life cycle
    */
@@ -69,6 +77,7 @@ window.cmsSiteEditor.requestAvailability = function(
   location = document.body
 ) {
   if (!window.cmsSiteEditor.instance) {
+    window.cmsSiteEditor.outlineLocation = this.outlineLocation;
     window.cmsSiteEditor.instance = document.createElement(
       window.cmsSiteEditor.tag
     );

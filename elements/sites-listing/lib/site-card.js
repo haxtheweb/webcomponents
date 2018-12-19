@@ -99,6 +99,12 @@ Polymer({
         margin: -16px 8px 0 0;
         position: absolute;
         right: 0;
+        font-size: 16px;
+        padding: 4px;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        background-color: white;
       }
 
       .site-icon:hover,
@@ -110,11 +116,6 @@ Polymer({
         margin: auto;
         width: 80%;
         padding: 16px;
-      }
-
-      .link {
-        font-size: 16px;
-        line-height: 16px;
       }
 
       .site-info {

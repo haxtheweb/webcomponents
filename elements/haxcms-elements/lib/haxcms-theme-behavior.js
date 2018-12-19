@@ -66,6 +66,7 @@ window.HAXCMSBehaviors.Theme = {
    */
   _activeItemUpdate: function(e) {
     this.set("activeItem", e.detail);
+    this.notifyPath("activeItem.*");
   },
   /**
    * Setup HAX theme common design needs at a data layer
@@ -122,6 +123,7 @@ window.HAXCMSBehaviors.Theme = {
    */
   _manifestUpdate: function(e) {
     this.set("manifest", e.detail);
+    this.notifyPath("manifest.*");
   },
   /**
    * Manifest has changed
