@@ -51,7 +51,7 @@
     "@polymer/paper-toggle-button": "^3.0.0",
     "@polymer/paper-tooltip": "^3.0.0",
     "@polymer/polymer": "^3.0.5",
-    "screenfull": "^3.3.3"
+    "screenfull": "^4.0.0"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^0.0.39",
