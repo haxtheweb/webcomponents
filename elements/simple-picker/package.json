@@ -15,7 +15,7 @@
       "properties": "src/simple-picker-properties.json"
     }
   },
-  "version": "0.0.39",
+  "version": "0.0.40",
   "description": "a simple picker for swatches, icons, etc.",
   "repository": {
     "type": "git",
@@ -39,8 +39,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.39",
-    "@lrnwebcomponents/lrn-shared-styles": "^0.0.39",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.40",
+    "@lrnwebcomponents/lrn-shared-styles": "^0.0.40",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/polymer": "^3.0.5"
   },

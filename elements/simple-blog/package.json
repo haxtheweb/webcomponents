@@ -16,7 +16,7 @@
       "hax": "src/simple-blog-hax.json"
     }
   },
-  "version": "0.0.39",
+  "version": "0.0.40",
   "description": "Automated conversion of simple-blog/",
   "repository": {
     "type": "git",
@@ -40,10 +40,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/haxcms-elements": "^0.0.39",
-    "@lrnwebcomponents/schema-behaviors": "^0.0.39",
-    "@lrnwebcomponents/simple-colors": "^0.0.39",
-    "@lrnwebcomponents/simple-datetime": "^0.0.39",
+    "@lrnwebcomponents/haxcms-elements": "^0.0.40",
+    "@lrnwebcomponents/schema-behaviors": "^0.0.40",
+    "@lrnwebcomponents/simple-colors": "^0.0.40",
+    "@lrnwebcomponents/simple-datetime": "^0.0.40",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-list": "^3.0.0",
     "@polymer/iron-pages": "^3.0.0",
@@ -53,7 +53,7 @@
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.0.39",
+    "@lrnwebcomponents/deduping-fix": "^0.0.40",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.2.1",

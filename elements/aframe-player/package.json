@@ -11,7 +11,7 @@
       "js": "src/aframe-player.js"
     }
   },
-  "version": "0.0.39",
+  "version": "0.0.40",
   "description": "A-frame 3D player in the browser via data binding w/ polymer",
   "repository": {
     "type": "git",
@@ -35,15 +35,15 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.39",
-    "@lrnwebcomponents/schema-behaviors": "^0.0.39",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.0.40",
+    "@lrnwebcomponents/schema-behaviors": "^0.0.40",
     "@polymer/paper-spinner": "^3.0.0",
     "@polymer/paper-tooltip": "^3.0.0",
     "@polymer/polymer": "^3.0.5",
     "aframe": "^0.8.2"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.0.39",
+    "@lrnwebcomponents/deduping-fix": "^0.0.40",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.2.1",
