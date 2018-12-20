@@ -285,7 +285,7 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
             value$="[[volume]]"
           ></paper-slider>
         </div>
-        <span class="play-status control-bar" hidden$="[[compactControls]]">
+        <span class="play-status control-bar">
           <span id="statbar"></span>
         </span>
       </div>
