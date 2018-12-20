@@ -30,8 +30,8 @@ Polymer({
         transition: all 0.6s linear;
       }
       :host([page-allowed]) #editbutton,
-      :host([outline-allowed]) #outlinebutton,
-      :host([outline-allowed]) #manifestbutton {
+      #outlinebutton,
+      #manifestbutton {
         visibility: visible;
         opacity: 1;
       }
@@ -46,7 +46,7 @@ Polymer({
       }
       :host([edit-mode]) #editbutton {
         width: 100%;
-        z-index: 100;
+        z-index: 1001;
         right: 0;
         bottom: 0;
         border-radius: 0;
@@ -81,9 +81,7 @@ Polymer({
       >edit outline</paper-tooltip
     >
   `,
-
   is: "haxcms-site-editor-ui",
-
   properties: {
     /**
      * Active item of the page being worked on, JSON outline schema item format
@@ -103,14 +101,6 @@ Polymer({
      * page allowed
      */
     pageAllowed: {
-      type: Boolean,
-      value: false,
-      reflectToAttribute: true
-    },
-    /**
-     * outline allowed
-     */
-    outlineAllowed: {
       type: Boolean,
       value: false,
       reflectToAttribute: true
@@ -153,10 +143,8 @@ Polymer({
   _activeItemChanged: function(newValue, oldValue) {
     if (newValue.id) {
       this.pageAllowed = true;
-      this.outlineAllowed = false;
     } else {
       this.pageAllowed = false;
-      this.outlineAllowed = true;
     }
   },
 

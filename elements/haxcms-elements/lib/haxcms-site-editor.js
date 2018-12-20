@@ -272,16 +272,15 @@ Polymer({
    * created life cycle
    */
   created: function() {
-    window.SimpleToast.requestAvailability();
-    document.body.addEventListener(
+    window.addEventListener(
       "json-outline-schema-active-item-changed",
       this._newActiveItem.bind(this)
     );
-    document.body.addEventListener(
+    window.addEventListener(
       "json-outline-schema-changed",
       this._manifestChanged.bind(this)
     );
-    document.body.addEventListener(
+    window.addEventListener(
       "json-outline-schema-active-body-changed",
       this._bodyChanged.bind(this)
     );
@@ -290,6 +289,7 @@ Polymer({
    * ready life cycle
    */
   ready: function() {
+    window.SimpleToast.requestAvailability();
     document.body.appendChild(this.$.ui);
     document.body.appendChild(this.$.outlineeditor);
     document.body.appendChild(this.$.manifesteditor);
@@ -327,15 +327,15 @@ Polymer({
    * Detatched life cycle
    */
   detached: function() {
-    document.body.removeEventListener(
+    window.removeEventListener(
       "json-outline-schema-active-item-changed",
       this._newActiveItem.bind(this)
     );
-    document.body.removeEventListener(
+    window.removeEventListener(
       "json-outline-schema-changed",
       this._manifestChanged.bind(this)
     );
-    document.body.removeEventListener(
+    window.removeEventListener(
       "json-outline-schema-active-body-changed",
       this._bodyChanged.bind(this)
     );
@@ -372,7 +372,6 @@ Polymer({
     this.set("manifest", {});
     this.set("manifest", e.detail);
     this.notifyPath("manifest.*");
-    console.log(e.detail);
   },
   /**
    * update the internal active item
@@ -436,7 +435,6 @@ Polymer({
     this.fire("haxcms-trigger-update", true);
   },
   _handlePublishResponse: function(e) {
-    console.log(e.detail.response);
     let data = e.detail.response;
     // show the published response
     let content = document.createElement("span");

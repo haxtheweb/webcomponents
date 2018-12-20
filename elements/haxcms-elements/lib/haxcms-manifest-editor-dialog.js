@@ -82,6 +82,7 @@ Polymer({
         >
           <paper-item value="simple-blog">Simple blog</paper-item>
           <paper-item value="outline-player">Basic outline</paper-item>
+          <paper-item value="lrnapp-book">Course outline</paper-item>
           <paper-item value="haxcms-dev-theme">DEVELOPER THEME</paper-item>
           <paper-item value="infinite-scroll">Infinite scroll</paper-item>
         </dropdown-select>

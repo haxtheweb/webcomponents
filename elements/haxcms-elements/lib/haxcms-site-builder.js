@@ -77,7 +77,7 @@ Polymer({
       handle-as="text"
       loading="{{loading}}"
       debounce-duration="250"
-      last-response="{{_activeItemContent}}"
+      last-response="{{activeItemContent}}"
     ></iron-ajax>
     <div id="slot"><slot></slot></div>
   `,
@@ -169,8 +169,9 @@ Polymer({
     /**
      * Active item content
      */
-    _activeItemContent: {
+    activeItemContent: {
       type: String,
+      notify: true,
       observer: "_activeItemContentChanged"
     },
     /**
