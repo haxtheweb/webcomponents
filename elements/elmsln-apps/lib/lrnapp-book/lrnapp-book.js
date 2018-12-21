@@ -500,16 +500,6 @@ Polymer({
   behaviors: [HAXCMSBehaviors.Theme],
   properties: {
     /**
-     * App store connection.
-     */
-    appStoreConnection: {
-      type: Object,
-      value: {
-        url:
-          "/sing100/sites/all/libraries/webcomponents/polymer/apps-src/lrnapp-book/appstore.json"
-      }
-    },
-    /**
      * Path for getting progress dashboard data
      */
     progressDashboardPath: {
@@ -832,18 +822,6 @@ Polymer({
   },
 
   /**
-   * Calculate what would happen if we added a page here.
-   */
-  _computeCreateRequestBody: function(currentPageData) {
-    if (typeof currentPageData.page !== typeof undefined) {
-      return {
-        bid: currentPageData.page.relationships.book.id,
-        pid: currentPageData.page.relationships.parent.id
-      };
-    }
-  },
-
-  /**
    * React when state changes for editMode
    */
   _editModeChanged: function(newValue, oldValue) {
@@ -1088,35 +1066,6 @@ Polymer({
     ) {
       // set page title; easiest for sure
       this.set("currentTitle", newValue.title);
-      // when updating data we need to clear the slot's content
-      // while maintaining the data model correctly
-      let slot = dom(this);
-      while (slot.firstChild !== null) {
-        slot.removeChild(slot.firstChild);
-      }
-      // add HTML to a div which makes it's DOM unpack
-      var tmp = document.createElement("div");
-      let frag = document
-        .createRange()
-        .createContextualFragment(newValue.content);
-      tmp.appendChild(frag);
-      // trap for text without wrapping HTML tags
-      if (tmp.firstChild == null) {
-        var tmp2 = document.createElement("p");
-        tmp2.innerHTML = tmp.innerHTML;
-        tmp = document.createElement("div");
-        tmp.innerHTML = tmp2.outerHTML;
-      } else if (typeof tmp.firstChild.length !== typeof undefined) {
-        var tmp2 = document.createElement("p");
-        tmp2.innerHTML = tmp.innerHTML;
-        tmp = document.createElement("div");
-        tmp.innerHTML = tmp2.outerHTML;
-      }
-      // same as above but in reverse; now take stuf from what
-      // came across and correctly add it into the slot
-      while (tmp.firstChild) {
-        dom(this).appendChild(tmp.firstChild);
-      }
       // reset scroll position back to top of this content
       this._resetScroll();
       // hide the loading area

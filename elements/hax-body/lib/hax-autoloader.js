@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
@@ -50,7 +51,11 @@ Polymer({
     this._observer = new FlattenedNodesObserver(this, info => {
       // if we've got new nodes, we have to react to that
       if (info.addedNodes.length > 0) {
-        this.processNewElements(info.addedNodes);
+        async.microTask.run(() => {
+          setTimeout(() => {
+            this.processNewElements(info.addedNodes);
+          }, 500);
+        });
       }
     });
   },
@@ -73,13 +78,40 @@ Polymer({
         // attempt a dynamic import with graceful failure / fallback
         try {
           let name = effectiveChildren[i].tagName.toLowerCase();
+          // see if we already have this definition
+          if (typeof effectiveChildren[i].HAXWiring === "function") {
+            const evt = new CustomEvent("hax-register-properties", {
+              bubbles: true,
+              cancelable: true,
+              detail: {
+                tag: name,
+                properties: effectiveChildren[i].HAXWiring.getHaxProperties(),
+                polymer: false
+              }
+            });
+            context.dispatchEvent(evt);
+          } else if (
+            typeof effectiveChildren[i].getHaxProperties === "function"
+          ) {
+            const evt = new CustomEvent("hax-register-properties", {
+              bubbles: true,
+              cancelable: true,
+              detail: {
+                tag: name,
+                properties: effectiveChildren[i].getHaxProperties(),
+                polymer: true
+              }
+            });
+            context.dispatchEvent(evt);
+          } else {
+            // @todo support CDN failover or a flag of some kind to ensure
+            // this delivers locally or from remote
+            // @todo need to support name spacing of packages so that we
+            // don't assume they are all relative to lrnwebcomponents
+            const basePath = pathFromUrl(import.meta.url);
+            import(`${basePath}../../${name}/${name}.js`);
+          }
           this.processedList[name] = name;
-          // @todo support CDN failover or a flag of some kind to ensure
-          // this delivers locally or from remote
-          // @todo need to support name spacing of packages so that we
-          // don't assume they are all relative to lrnwebcomponents
-          const basePath = pathFromUrl(import.meta.url);
-          import(`../../${name}/${name}.js`);
         } catch (err) {
           // error in the event this is a double registration
         }

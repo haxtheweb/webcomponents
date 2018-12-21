@@ -353,6 +353,8 @@ let LrnsysOutline = Polymer({
         this.items[i - 1] === null ||
         typeof this.items[i - 1] === typeof undefined ||
         indent > this.items[i - 1].indentLevel;
+      this.set(`items.${i}`, item);
+      this.notifyPath(`items.${i}.*`);
       while (
         this.items[n] !== null &&
         this.items[n] !== undefined &&

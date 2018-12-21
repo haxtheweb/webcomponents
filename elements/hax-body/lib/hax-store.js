@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import "@polymer/paper-toast/paper-toast.js";
+import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import "@polymer/iron-ajax/iron-ajax.js";
@@ -46,7 +46,7 @@ Polymer({
 
   behaviors: [MediaBehaviors.Video, HAXBehaviors.PropertiesBehaviors],
 
-  observers: ["_loadAppStoreData(__appStoreData, haxAutoloader)"],
+  observers: ["_loadAppStoreData(__ready, __appStoreData, haxAutoloader)"],
 
   properties: {
     /**
@@ -314,6 +314,9 @@ Polymer({
      */
     __appStoreData: {
       type: Object
+    },
+    __ready: {
+      type: Boolean
     }
   },
 
@@ -400,7 +403,7 @@ Polymer({
   /**
    * Load and attach items from the app store.
    */
-  _loadAppStoreData: function(appDataResponse, haxAutoloader) {
+  _loadAppStoreData: function(ready, appDataResponse, haxAutoloader) {
     if (
       typeof appDataResponse !== typeof undefined &&
       appDataResponse != null
@@ -643,12 +646,13 @@ Polymer({
         }
       }
     });
-    this._injectToast();
+    this.haxToast = window.SimpleToast.requestAvailability();
     // register built in primitive definitions
     this._buildPrimitiveDefinitions();
     // fire that hax store is ready to go so now we can setup the rest
     this.fire("hax-store-ready", true);
     window.HaxStore.ready = true;
+    this.__ready = true;
   },
 
   /**
@@ -1089,19 +1093,6 @@ Polymer({
       }
     };
     this.setHaxProperties(hr, "hr");
-  },
-
-  /**
-   * Inject a toast element to manage our messages
-   */
-  _injectToast: function() {
-    var toast = document.createElement("paper-toast");
-    toast.id = "haxtoast";
-    toast.duration = 3000;
-    // move this object to the body level so it doesn't
-    // run into stack order context issues
-    document.body.appendChild(toast);
-    this.haxToast = toast;
   },
 
   /**
@@ -2072,6 +2063,12 @@ window.HaxStore.encapScript = html => {
  * Global toast
  */
 window.HaxStore.toast = (message, duration = 3000) => {
-  window.HaxStore.instance.haxToast.duration = duration;
-  window.HaxStore.instance.haxToast.show(message);
+  const evt = new CustomEvent("simple-toast-show", {
+    bubbles: true,
+    cancelable: true,
+    detail: {
+      text: message,
+      duration: duration
+    }
+  });
 };
