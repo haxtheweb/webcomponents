@@ -221,7 +221,7 @@ Polymer({
    * attached life cycle
    */
   attached: function(e) {
-    window.simpleModal.requestAvailability();
+    window.SimpleModal.requestAvailability();
     async.microTask.run(() => {
       if (this.$.filteredcomments.querySelector("iron-list")) {
         this.$.filteredcomments.querySelector("iron-list").fire("iron-resize");

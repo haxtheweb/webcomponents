@@ -1,6 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/paper-button/paper-button.js";
+import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@lrnwebcomponents/outline-designer/outline-designer.js";
 /**
  * `haxcms-outline-editor-dialog`
@@ -16,24 +17,16 @@ Polymer({
       :host {
         display: block;
       }
-      paper-dialog {
-        width: 60%;
-        min-height: 60%;
-        top: 5%;
-        border-radius: 16px;
-      }
     </style>
-    <paper-dialog id="outlineeditor" opened="{{opened}}" with-backdrop="">
-      <paper-dialog-scrollable>
-        <outline-designer manifest="{{manifest}}" edit-mode></outline-designer>
-      </paper-dialog-scrollable>
-      <div class="buttons">
-        <paper-button id="save" dialog-confirm="" on-tap="_saveTap"
-          >Save</paper-button
-        >
-        <paper-button id="cancel" dialog-dismiss="">Cancel</paper-button>
-      </div>
-    </paper-dialog>
+    <paper-dialog-scrollable>
+      <outline-designer manifest="{{manifest}}" edit-mode></outline-designer>
+    </paper-dialog-scrollable>
+    <div class="buttons">
+      <paper-button id="save" dialog-confirm="" on-tap="_saveTap"
+        >Save</paper-button
+      >
+      <paper-button id="cancel" dialog-dismiss="">Cancel</paper-button>
+    </div>
   `,
 
   is: "haxcms-outline-editor-dialog",

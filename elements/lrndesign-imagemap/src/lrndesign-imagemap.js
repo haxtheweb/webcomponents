@@ -108,7 +108,7 @@ let LrndesignImagemap = Polymer({
    * attached life cycle
    */
   attached: function() {
-    window.simpleModal.requestAvailability();
+    window.SimpleModal.requestAvailability();
     window.addEventListener("simple-modal-closed", e => {
       if (e.detail.invokedBy === this) {
         this.closeHotspot();

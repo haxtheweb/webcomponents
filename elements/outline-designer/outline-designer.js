@@ -524,7 +524,7 @@ class OutlineDesigner extends PolymerElement {
         <section id="outlinepage">
           <lrnsys-outline
             id="outline"
-            items="{{manifest.items}}"
+            items="[[manifest.items]]"
             title="[[manifest.title]]"
           ></lrnsys-outline>
         </section>
@@ -533,7 +533,7 @@ class OutlineDesigner extends PolymerElement {
             <ul>
               <template
                 is="dom-repeat"
-                items="{{manifest.items}}"
+                items="[[manifest.items]]"
                 as="item"
                 mutable-data
               >
@@ -566,7 +566,7 @@ class OutlineDesigner extends PolymerElement {
           >
             <template
               is="dom-repeat"
-              items="{{manifest.items}}"
+              items="[[manifest.items]]"
               as="item"
               mutable-data
             >

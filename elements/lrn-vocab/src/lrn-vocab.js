@@ -85,7 +85,7 @@ let LrnVocab = Polymer({
    * Attached life cycle
    */
   attached: function() {
-    window.simpleModal.requestAvailability();
+    window.SimpleModal.requestAvailability();
     // Establish hax properties if they exist
     let props = {
       canScale: false,

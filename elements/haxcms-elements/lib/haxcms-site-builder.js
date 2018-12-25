@@ -3,22 +3,20 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
+import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "@polymer/app-route/app-route.js";
 import "@polymer/app-route/app-location.js";
 /**
-`haxcms-site-builder`
-A LRN element
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- - This is a factory element, it doesn't do much on its own visually
- - it loads a site.json file and then utilizes this data in order to construct
-   what theme it should load (element) in order to get everything off and running
-
-*/
+ * `haxcms-site-builder`
+ * `build the site and everything off of this`
+ * @demo demo/index.html
+ * @microcopy - the mental model for this element
+ * - This is a factory element, it doesn't do much on its own visually
+ * - it loads a site.json file and then utilizes this data in order to construct
+ *   what theme it should load (element) in order to get everything off and running
+ */
 Polymer({
   _template: html`
     <style>
@@ -187,16 +185,17 @@ Polymer({
    * ready life cycle
    */
   created: function() {
+    window.SimpleModal.requestAvailability();
     window.SimpleToast.requestAvailability();
-    document.body.addEventListener(
+    window.addEventListener(
       "haxcms-trigger-update",
       this._triggerUpdatedData.bind(this)
     );
-    document.body.addEventListener(
+    window.addEventListener(
       "haxcms-trigger-update-page",
       this._triggerUpdatedPage.bind(this)
     );
-    document.body.addEventListener(
+    window.addEventListener(
       "json-outline-schema-active-item-changed",
       this._setActiveItem.bind(this)
     );
@@ -213,15 +212,15 @@ Polymer({
    * Detached life cycle
    */
   detached: function() {
-    document.body.removeEventListener(
+    window.removeEventListener(
       "haxcms-trigger-update",
       this._triggerUpdatedData.bind(this)
     );
-    document.body.removeEventListener(
+    window.removeEventListener(
       "haxcms-trigger-update-page",
       this._triggerUpdatedPage.bind(this)
     );
-    document.body.removeEventListener(
+    window.removeEventListener(
       "json-outline-schema-active-item-changed",
       this._setActiveItem.bind(this)
     );

@@ -227,7 +227,12 @@ let CmsHax = Polymer({
     }
     return false;
   },
-
+  /**
+   * Break the shadow root for this element (by design)
+   */
+  _attachDom(dom) {
+    this.appendChild(dom);
+  },
   /**
    * Created life cycle
    */

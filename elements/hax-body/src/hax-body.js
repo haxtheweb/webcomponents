@@ -285,6 +285,35 @@ let HaxBody = Polymer({
    * we exist and are the thing being edited.
    */
   attached: function() {
+    this.shadowRoot.querySelector("slot").addEventListener("paste", e => {
+      // only perform this on a text element that is active
+      if (
+        this.isTextElement(window.HaxStore.instance.activeNode) &&
+        !this.haxManager.opened
+      ) {
+        e.preventDefault();
+        let text = "";
+        console.log(e);
+        console.log(this.shadowRoot.getSelection());
+        // intercept paste event
+        if (e.clipboardData || e.originalEvent.clipboardData) {
+          text = (e.originalEvent || e).clipboardData.getData("text/plain");
+        } else if (window.clipboardData) {
+          text = window.clipboardData.getData("Text");
+        }
+        let sel, range, html;
+        if (window.HaxStore.instance.activeHaxBody.shadowRoot.getSelection) {
+          sel = window.HaxStore.instance.activeHaxBody.shadowRoot.getSelection();
+          if (sel.getRangeAt && sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            range.deleteContents();
+            range.insertNode(document.createTextNode(text));
+          }
+        } else if (document.selection && document.selection.createRange) {
+          document.selection.createRange().text = text;
+        }
+      }
+    });
     this.__tabTrap = false;
     this.fire("hax-register-body", this);
     document.body.addEventListener(

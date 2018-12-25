@@ -227,7 +227,9 @@ let CmsHax = Polymer({
     }
     return false;
   },
-
+  _attachDom(dom) {
+    this.appendChild(dom);
+  },
   /**
    * Created life cycle
    */

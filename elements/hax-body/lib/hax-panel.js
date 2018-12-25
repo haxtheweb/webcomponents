@@ -2,12 +2,9 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "./simple-colors-picker.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "./simple-colors-picker.js";
 import "./hax-panel-item.js";
-import "./hax-preferences-dialog.js";
-import "./hax-stax-picker.js";
-import "./hax-blox-picker.js";
 /**
 `hax-panel`
 A LRN element that provides a panel / pallet of options to choose from.
@@ -212,9 +209,6 @@ Polymer({
         voice-command="cancel hax"
       ></hax-panel-item>
     </app-drawer>
-    <hax-stax-picker></hax-stax-picker>
-    <hax-blox-picker></hax-blox-picker>
-    <hax-preferences-dialog></hax-preferences-dialog>
   `,
 
   is: "hax-panel",
@@ -284,14 +278,6 @@ Polymer({
       type: Object
     }
   },
-
-  /**
-   * Created life cycle.
-   */
-  ready: function() {
-    document.body.appendChild(this);
-  },
-
   /**
    * Attached to the DOM; now we can fire event to the store that
    * we exist and are the thing being edited.

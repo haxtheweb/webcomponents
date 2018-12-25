@@ -140,13 +140,6 @@ Polymer({
   },
 
   /**
-   * ready life cycle.
-   */
-  ready: function() {
-    document.body.appendChild(this);
-  },
-
-  /**
    * Attached to the DOM, now fire that we exist.
    */
   attached: function() {

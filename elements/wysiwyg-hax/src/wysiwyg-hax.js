@@ -140,7 +140,6 @@ let WysiwygHax = Polymer({
       }
     }
   },
-
   /**
    * Created life cycle
    */

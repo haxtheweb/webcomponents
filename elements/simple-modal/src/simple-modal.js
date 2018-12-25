@@ -13,16 +13,16 @@ import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/neon-animation/animations/scale-up-animation.js";
 import "@polymer/neon-animation/animations/fade-out-animation.js";
 // register globally so we can make sure there is only one
-window.simpleModal = window.simpleModal || {};
+window.SimpleModal = window.SimpleModal || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
-window.simpleModal.requestAvailability = () => {
-  if (!window.simpleModal.instance) {
-    window.simpleModal.instance = document.createElement("simple-modal");
-    document.body.appendChild(window.simpleModal.instance);
+window.SimpleModal.requestAvailability = () => {
+  if (!window.SimpleModal.instance) {
+    window.SimpleModal.instance = document.createElement("simple-modal");
+    document.body.appendChild(window.SimpleModal.instance);
   }
-  return window.simpleModal.instance;
+  return window.SimpleModal.instance;
 };
 /**
  * `simple-modal`
@@ -66,6 +66,12 @@ class SimpleModal extends PolymerElement {
     super.connectedCallback();
     window.addEventListener("simple-modal-hide", this.close.bind(this));
     window.addEventListener("simple-modal-show", this.showEvent.bind(this));
+    this.shadowRoot
+      .querySelector("#simple-modal-content")
+      .addEventListener(
+        "neon-animation-finish",
+        this._ironOverlayClosed.bind(this)
+      );
   }
   /**
    * Ensure everything is visible in what's been expanded.
@@ -192,6 +198,11 @@ class SimpleModal extends PolymerElement {
   _getAriaLabel(title) {
     return !title ? "Modal Dialog" : null;
   }
+  _ironOverlayClosed(e) {
+    console.log("i got here..");
+    e.preventDefault();
+    e.stopPropagation();
+  }
   /**
    * life cycle, element is removed from the DOM
    */
@@ -199,6 +210,12 @@ class SimpleModal extends PolymerElement {
     super.disconnectedCallback();
     window.removeEventListener("simple-modal-hide", this.close.bind(this));
     window.removeEventListener("simple-modal-show", this.showEvent.bind(this));
+    this.shadowRoot
+      .querySelector("#simple-modal-content")
+      .removeEventListener(
+        "neon-animation-finish",
+        this._ironOverlayClosed.bind(this)
+      );
   }
 }
 window.customElements.define(SimpleModal.tag, SimpleModal);

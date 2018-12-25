@@ -210,13 +210,6 @@ Polymer({
   },
 
   /**
-   * Attached life cycle
-   */
-  ready: function() {
-    document.body.appendChild(this);
-  },
-
-  /**
    * Close the picker and ensure body locking is off.
    */
   close: function() {

@@ -368,59 +368,47 @@ Polymer({
   },
 
   /**
-   * Created life cycle.
-   */
-  created: function() {
-    this.__attached = false;
-  },
-
-  /**
    * Attached to the DOM, now fire that we exist.
    */
   attached: function() {
-    if (!this.__attached) {
-      this.__attached = true;
-      document.body.appendChild(this);
-    } else {
-      // fire an event that this is the manager
-      this.fire("hax-register-manager", this);
-      // add event listeners
-      document.body.addEventListener(
-        "hax-store-property-updated",
-        this._haxStorePropertyUpdated.bind(this)
-      );
-      document.body.addEventListener(
-        "hax-app-picker-selection",
-        this._haxAppPickerSelection.bind(this)
-      );
-      // specialized support for the place-holder tag
-      // and a drag and drop event
-      document.body.addEventListener(
-        "place-holder-file-drop",
-        this._placeHolderFileDrop.bind(this)
-      );
-      this.$.dialog.addEventListener(
-        "iron-overlay-canceled",
-        this.close.bind(this)
-      );
-      this.$.dialog.addEventListener(
-        "iron-overlay-closed",
-        this.close.bind(this)
-      );
-      this.$.closedialog.addEventListener("tap", this.close.bind(this));
-      this.$.newassetconfigure.addEventListener(
-        "tap",
-        this.newAssetConfigure.bind(this)
-      );
-      this.$.fileupload.addEventListener(
-        "upload-before",
-        this._fileAboutToUpload.bind(this)
-      );
-      this.$.fileupload.addEventListener(
-        "upload-response",
-        this._fileUploadResponse.bind(this)
-      );
-    }
+    // fire an event that this is the manager
+    this.fire("hax-register-manager", this);
+    // add event listeners
+    document.body.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+    document.body.addEventListener(
+      "hax-app-picker-selection",
+      this._haxAppPickerSelection.bind(this)
+    );
+    // specialized support for the place-holder tag
+    // and a drag and drop event
+    document.body.addEventListener(
+      "place-holder-file-drop",
+      this._placeHolderFileDrop.bind(this)
+    );
+    this.$.dialog.addEventListener(
+      "iron-overlay-canceled",
+      this.close.bind(this)
+    );
+    this.$.dialog.addEventListener(
+      "iron-overlay-closed",
+      this.close.bind(this)
+    );
+    this.$.closedialog.addEventListener("tap", this.close.bind(this));
+    this.$.newassetconfigure.addEventListener(
+      "tap",
+      this.newAssetConfigure.bind(this)
+    );
+    this.$.fileupload.addEventListener(
+      "upload-before",
+      this._fileAboutToUpload.bind(this)
+    );
+    this.$.fileupload.addEventListener(
+      "upload-response",
+      this._fileUploadResponse.bind(this)
+    );
   },
 
   /**

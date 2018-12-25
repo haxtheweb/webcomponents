@@ -2544,16 +2544,40 @@
           ]
         },
         {
+          "name": "_attachDom",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 229,
+              "column": 2
+            },
+            "end": {
+              "line": 231,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "dom"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
           "name": "created",
           "description": "Created life cycle",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 233,
+              "line": 235,
               "column": 2
             },
             "end": {
-              "line": 238,
+              "line": 240,
               "column": 3
             }
           },
@@ -2569,11 +2593,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 244,
+              "line": 246,
               "column": 2
             },
             "end": {
-              "line": 266,
+              "line": 268,
               "column": 3
             }
           },
@@ -2589,11 +2613,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 271,
+              "line": 273,
               "column": 2
             },
             "end": {
-              "line": 283,
+              "line": 285,
               "column": 3
             }
           },
@@ -2613,11 +2637,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 288,
+              "line": 290,
               "column": 2
             },
             "end": {
-              "line": 293,
+              "line": 295,
               "column": 3
             }
           },
@@ -2637,11 +2661,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 298,
+              "line": 300,
               "column": 2
             },
             "end": {
-              "line": 320,
+              "line": 322,
               "column": 3
             }
           },
@@ -2665,7 +2689,7 @@
           "column": 21
         },
         "end": {
-          "line": 321,
+          "line": 323,
           "column": 1
         }
       },

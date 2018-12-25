@@ -11,11 +11,20 @@
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '@polymer/paper-button/paper-button.js';
+      import '@polymer/paper-item/paper-item.js';
+      import '@lrnwebcomponents/dropdown-select/dropdown-select.js';
       import '../simple-modal.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
+    <dropdown-select id="sitetheme" label="Theme" value="simple-blog">
+      <paper-item value="simple-blog">Simple blog</paper-item>
+      <paper-item value="outline-player">Basic outline</paper-item>
+      <paper-item value="lrnapp-book">Course outline</paper-item>
+      <paper-item value="haxcms-dev-theme">DEVELOPER THEME</paper-item>
+      <paper-item value="infinite-scroll">Infinite scroll</paper-item>
+    </dropdown-select>
     <div id="somediv"><p>This is to illustrate the notion of some DIV being handed off to the modal but just a clone, not the real thing.</p></div>
     <div class="vertical-section-container centered">
       <h3>Basic simple-modal demo</h3>
@@ -26,7 +35,7 @@
           <paper-button id="button3">Fire an event</paper-button>
         <script>
           // this is how you prep the modal
-          const modal = window.simpleModal.requestAvailability();
+          const modal = window.SimpleModal.requestAvailability();
           document.getElementById('button1').addEventListener('tap', () => {
             let p = document.createElement("div");
             p.innerHTML = '<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.<em>Lets see how emphasized this is</em> or is not.';
@@ -44,6 +53,7 @@
           document.getElementById('button2').addEventListener('tap', () => {
             let p = document.createElement("p");
             p.appendChild(document.getElementById('somediv').cloneNode(true));
+            p.appendChild(document.getElementById('sitetheme').cloneNode(true));
             const evt = new CustomEvent("simple-modal-show", {
               bubbles: true,
               cancelable: true,

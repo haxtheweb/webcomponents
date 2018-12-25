@@ -93,7 +93,7 @@ class SimpleModalTemplate extends PolymerElement {
    * @returns {object} the modal object
    */
   _getModal() {
-    return window.simpleModal.requestAvailability();
+    return window.SimpleModal.requestAvailability();
   }
   /**
    * dispatches event to populate and open the simple modal based template values

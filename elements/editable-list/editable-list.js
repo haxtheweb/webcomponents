@@ -93,7 +93,7 @@ class EditableList extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    const modal = window.simpleModal.requestAvailability();
+    const modal = window.SimpleModal.requestAvailability();
     this.$.list.addEventListener(
       "editable-list-item-delete",
       this.triggerDeleteModal.bind(this)
@@ -158,8 +158,10 @@ class EditableList extends PolymerElement {
     if (typeof newValue !== typeof undefined) {
       this._itemsChanged(this.items);
       for (var i in this.items) {
-        this.items[i].metadata.canEdit = newValue;
-        this.notifyPath(`items.${i}.metadata.canEdit`);
+        if (this.items[i].metadata) {
+          this.items[i].metadata.canEdit = newValue;
+          this.notifyPath(`items.${i}.metadata.canEdit`);
+        }
       }
     }
   }

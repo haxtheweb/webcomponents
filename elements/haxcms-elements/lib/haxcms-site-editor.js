@@ -20,8 +20,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-panel.js";
 import "@lrnwebcomponents/hax-body/lib/hax-export-dialog.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
-import "./haxcms-outline-editor-dialog.js";
-import "./haxcms-manifest-editor-dialog.js";
+import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "./haxcms-site-editor-ui.js";
 /**
  * `haxcms-site-editor`
@@ -137,22 +136,8 @@ Polymer({
       active-item="[[activeItem]]"
       manifest="[[manifest]]"
       edit-mode="{{editMode}}"
-      outline-edit-mode="{{outlineEditMode}}"
-      manifest-edit-mode="{{manifestEditMode}}"
     ></haxcms-site-editor-ui>
-    <haxcms-outline-editor-dialog
-      id="outlineeditor"
-      manifest="[[manifest]]"
-    ></haxcms-outline-editor-dialog>
-    <haxcms-manifest-editor-dialog
-      id="manifesteditor"
-    ></haxcms-manifest-editor-dialog>
   `,
-  listeners: {
-    "haxcms-save-outline": "saveOutline", // from outlineeditor
-    "haxcms-save-site-data": "saveManifest", // from manifesteditor
-    "haxcms-publish-site": "publishSite" // from manifesteditor
-  },
   properties: {
     /**
      * JSON Web token, it'll come from a global call if it's available
@@ -207,24 +192,6 @@ Polymer({
       value: false
     },
     /**
-     * Outline editing state
-     */
-    outlineEditMode: {
-      type: Boolean,
-      reflectToAttribute: true,
-      observer: "_outlineEditModeChanged",
-      value: false
-    },
-    /**
-     * manifest editing state
-     */
-    manifestEditMode: {
-      type: Boolean,
-      reflectToAttribute: true,
-      observer: "_manifestEditModeChanged",
-      value: false
-    },
-    /**
      * data as part of the POST to the backend
      */
     updatePageData: {
@@ -269,9 +236,17 @@ Polymer({
     }
   },
   /**
-   * created life cycle
+   * Break the shadow root for this element (by design)
    */
-  created: function() {
+  _attachDom(dom) {
+    this.appendChild(dom);
+  },
+  /**
+   * ready life cycle
+   */
+  ready: function() {
+    window.SimpleToast.requestAvailability();
+    window.SimpleModal.requestAvailability();
     window.addEventListener(
       "json-outline-schema-active-item-changed",
       this._newActiveItem.bind(this)
@@ -284,15 +259,12 @@ Polymer({
       "json-outline-schema-active-body-changed",
       this._bodyChanged.bind(this)
     );
-  },
-  /**
-   * ready life cycle
-   */
-  ready: function() {
-    window.SimpleToast.requestAvailability();
-    document.body.appendChild(this.$.ui);
-    document.body.appendChild(this.$.outlineeditor);
-    document.body.appendChild(this.$.manifesteditor);
+    window.addEventListener("haxcms-save-outline", this.saveOutline.bind(this));
+    window.addEventListener(
+      "haxcms-save-site-data",
+      this.saveManifest.bind(this)
+    );
+    window.addEventListener("haxcms-publish-site", this.publishSite.bind(this));
   },
   /**
    * attached life cycle
@@ -327,6 +299,18 @@ Polymer({
    * Detatched life cycle
    */
   detached: function() {
+    window.removeEventListener(
+      "haxcms-save-outline",
+      this.saveOutline.bind(this)
+    );
+    window.removeEventListener(
+      "haxcms-save-site-data",
+      this.saveManifest.bind(this)
+    );
+    window.removeEventListener(
+      "haxcms-publish-site",
+      this.publishSite.bind(this)
+    );
     window.removeEventListener(
       "json-outline-schema-active-item-changed",
       this._newActiveItem.bind(this)
@@ -480,26 +464,6 @@ Polymer({
         this.$.pageupdateajax.generateRequest();
       }
       this.fire("haxcms-save-page", this.activeItem);
-    }
-  },
-  /**
-   * Note changes to the outline / structure of the page's items
-   */
-  _outlineEditModeChanged: function(newValue, oldValue) {
-    if (newValue) {
-      this.$.outlineeditor.opened = true;
-    } else {
-      this.$.outlineeditor.opened = false;
-    }
-  },
-  /**
-   * Note changes to the outline / structure of the page's items
-   */
-  _manifestEditModeChanged: function(newValue, oldValue) {
-    if (newValue) {
-      this.$.manifesteditor.opened = true;
-    } else {
-      this.$.manifesteditor.opened = false;
     }
   },
   /**

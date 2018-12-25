@@ -1,14 +1,16 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-icons/editor-icons.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@polymer/paper-fab/paper-fab.js";
+import "./haxcms-outline-editor-dialog.js";
+import "./haxcms-manifest-editor-dialog.js";
 /**
-`haxcms-site-editor-ui`
-haxcms editor element buttons that you see
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
-
-*/
+ * `haxcms-site-editor-ui`
+ * `haxcms editor element buttons that you see`
+ *
+ * @demo demo/index.html
+ * @microcopy - the mental model for this element
+ */
 Polymer({
   _template: html`
     <style is="custom-style">
@@ -95,7 +97,8 @@ Polymer({
      * Outline of items in json outline schema format
      */
     manifest: {
-      type: Object
+      type: Object,
+      notify: true
     },
     /**
      * page allowed
@@ -112,16 +115,6 @@ Polymer({
       type: Boolean,
       reflectToAttribute: true,
       observer: "_editModeChanged",
-      value: false,
-      notify: true
-    },
-    /**
-     * Outline editing state
-     */
-    outlineEditMode: {
-      type: Boolean,
-      reflectToAttribute: true,
-      observer: "_outlineEditModeChanged",
       value: false,
       notify: true
     },
@@ -159,14 +152,37 @@ Polymer({
    * toggle state on button tap
    */
   _outlineButtonTap: function(e) {
-    this.outlineEditMode = !this.outlineEditMode;
+    let c = document.createElement("haxcms-outline-editor-dialog");
+    c.set("manifest", this.manifest);
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      cancelable: false,
+      detail: {
+        title: "Edit site outline",
+        elements: { content: c },
+        invokedBy: this.$.outlinebutton,
+        clone: false
+      }
+    });
+    window.dispatchEvent(evt);
   },
 
   /**
    * toggle state on button tap
    */
   _manifestButtonTap: function(e) {
-    this.manifestEditMode = !this.manifestEditMode;
+    let c = document.createElement("haxcms-manifest-editor-dialog");
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      cancelable: false,
+      detail: {
+        title: "Edit site settings",
+        elements: { content: c },
+        invokedBy: this.$.manifestbutton,
+        clone: false
+      }
+    });
+    window.dispatchEvent(evt);
   },
 
   /**

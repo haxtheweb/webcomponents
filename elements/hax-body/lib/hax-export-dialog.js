@@ -145,36 +145,25 @@ Polymer({
     }
   },
   /**
-   * Created life cycle.
-   */
-  created: function() {
-    this.__attached = false;
-  },
-  /**
    * Attached to the DOM, now fire that we exist.
    */
   attached: function() {
-    if (!this.__attached) {
-      this.__attached = true;
-      document.body.appendChild(this);
-    } else {
-      // fire an event that this is the manager
-      this.fire("hax-register-export", this);
-      // add event listeners
-      document.body.addEventListener(
-        "hax-store-property-updated",
-        this._haxStorePropertyUpdated.bind(this)
-      );
-      this.$.download.addEventListener("tap", this.download.bind(this));
-      this.$.downloadfull.addEventListener("tap", this.downloadfull.bind(this));
-      this.$.import.addEventListener("tap", this.importContent.bind(this));
-      this.$.copy.addEventListener("tap", this.selectBody.bind(this));
-      this.$.closedialog.addEventListener("tap", this.close.bind(this));
-      this.$.elementexport.addEventListener(
-        "tap",
-        this.htmlToHaxElements.bind(this)
-      );
-    }
+    // fire an event that this is the manager
+    this.fire("hax-register-export", this);
+    // add event listeners
+    document.body.addEventListener(
+      "hax-store-property-updated",
+      this._haxStorePropertyUpdated.bind(this)
+    );
+    this.$.download.addEventListener("tap", this.download.bind(this));
+    this.$.downloadfull.addEventListener("tap", this.downloadfull.bind(this));
+    this.$.import.addEventListener("tap", this.importContent.bind(this));
+    this.$.copy.addEventListener("tap", this.selectBody.bind(this));
+    this.$.closedialog.addEventListener("tap", this.close.bind(this));
+    this.$.elementexport.addEventListener(
+      "tap",
+      this.htmlToHaxElements.bind(this)
+    );
   },
   /**
    * Detached life cycle

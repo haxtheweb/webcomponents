@@ -89,13 +89,6 @@ Polymer({
   },
 
   /**
-   * Ready life cycle.
-   */
-  ready: function() {
-    document.body.appendChild(this);
-  },
-
-  /**
    * Attached life cycle
    */
   attached: function() {

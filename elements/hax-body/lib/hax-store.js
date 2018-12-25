@@ -22,6 +22,7 @@ window.HaxStore.requestAvailability = function() {
     window.HaxStore.instance = document.createElement("hax-store");
   }
   document.body.appendChild(window.HaxStore.instance);
+  return window.HaxStore.instance;
 };
 Polymer({
   _template: html`
@@ -568,6 +569,10 @@ Polymer({
           text = window.clipboardData.getData("Text");
         }
         let sel, range, html;
+        // @todo need to select the element JUST above us this came from
+        // and possibly query the shadowDom there
+        // we may need to have something in HaxStore that keeps track of
+        // what's above here
         if (window.getSelection) {
           sel = window.getSelection();
           if (sel.getRangeAt && sel.rangeCount) {

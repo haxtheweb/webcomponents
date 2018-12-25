@@ -252,7 +252,7 @@ Polymer({
    * Ready lifecycle
    */
   ready: function() {
-    this.__modal = window.simpleModal.requestAvailability();
+    this.__modal = window.SimpleModal.requestAvailability();
   },
 
   /**
