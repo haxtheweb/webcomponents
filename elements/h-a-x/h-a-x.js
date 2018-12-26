@@ -2,6 +2,17 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
+import "@lrnwebcomponents/hax-body/lib/hax-store.js";
+import "@lrnwebcomponents/hax-body/lib/hax-panel.js";
+import "@lrnwebcomponents/hax-body/lib/hax-manager.js";
+import "@lrnwebcomponents/hax-body/lib/hax-autoloader.js";
+import "@lrnwebcomponents/hax-body/hax-body.js";
+import "@lrnwebcomponents/hax-body/lib/hax-app-picker.js";
+import "@lrnwebcomponents/hax-body/lib/hax-app.js";
+import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
+import "@lrnwebcomponents/hax-body/lib/hax-preferences-dialog.js";
+import "@lrnwebcomponents/hax-body/lib/hax-stax-picker.js";
+import "@lrnwebcomponents/hax-body/lib/hax-blox-picker.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/device-icons.js";
@@ -13,18 +24,7 @@ import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/places-icons.js";
 import "@polymer/iron-icons/maps-icons.js";
 import "@polymer/iron-image/iron-image.js";
-import "@lrnwebcomponents/hax-body/lib/hax-store.js";
-import "@lrnwebcomponents/hax-body/lib/hax-autoloader.js";
-import "@lrnwebcomponents/hax-body/lib/hax-manager.js";
-import "@lrnwebcomponents/hax-body/lib/hax-app-picker.js";
-import "@lrnwebcomponents/hax-body/lib/hax-app.js";
-import "@lrnwebcomponents/hax-body/lib/hax-panel.js";
 import "@lrnwebcomponents/hax-body/lib/hax-export-dialog.js";
-import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
-import "@lrnwebcomponents/hax-body/lib/hax-preferences-dialog.js";
-import "@lrnwebcomponents/hax-body/lib/hax-stax-picker.js";
-import "@lrnwebcomponents/hax-body/lib/hax-blox-picker.js";
-import "@lrnwebcomponents/hax-body/hax-body.js";
 /**
  * `h-a-x`
  * `Single tag to transform authoring`
@@ -98,8 +98,8 @@ class HAX extends HTMLElement {
     this.template = document.createElement("template");
 
     this.attachShadow({ mode: "open" });
-
-    if (!delayRender) {
+    // if we shouldn't delay rendering OR the store is already ready...
+    if (!delayRender || window.HaxStore.ready) {
       this.render();
     }
     window.addEventListener("hax-store-ready", this.render.bind(this));
@@ -147,13 +147,26 @@ class HAX extends HTMLElement {
   }
 
   render() {
-    this.shadowRoot.innerHTML = null;
-    this.template.innerHTML = this.html;
-
-    if (window.ShadyCSS) {
-      window.ShadyCSS.prepareTemplate(this.template, this.tag);
+    if (!this.__rendered) {
+      this.__rendered = true;
+      this.shadowRoot.innerHTML = null;
+      this.template.innerHTML = this.html;
+      this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+      // obtain the nodes that have been assigned to the slot of our element
+      const nodes = this.shadowRoot.querySelector("slot").assignedNodes();
+      let body = "";
+      // loop the nodes and if it has an outerHTML attribute, append as string
+      for (let i in nodes) {
+        if (typeof nodes[i].outerHTML !== typeof undefined) {
+          body += nodes[i].outerHTML;
+        }
+      }
+      // import into the active body
+      window.HaxStore.instance.activeHaxBody.importContent(body);
+      window.HaxStore.instance.appStore = JSON.parse(
+        this.getAttribute("app-store")
+      );
     }
-    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }
 
   /**
@@ -161,25 +174,16 @@ class HAX extends HTMLElement {
    */
   applyHAX() {
     // store needs to come before anyone else, use it's availability request mechanism
-    let store = window.HaxStore.requestAvailability();
-    store.appStore = this.appStore;
+    window.HaxStore.requestAvailability();
     // now everyone else
-    let a = document.createElement("hax-autoloader");
-    document.body.appendChild(a);
-    a = document.createElement("hax-panel");
-    document.body.appendChild(a);
-    a = document.createElement("hax-manager");
-    document.body.appendChild(a);
-    a = document.createElement("hax-app-picker");
-    document.body.appendChild(a);
-    a = document.createElement("hax-export-dialog");
-    document.body.appendChild(a);
-    a = document.createElement("hax-stax-picker");
-    document.body.appendChild(a);
-    a = document.createElement("hax-blox-picker");
-    document.body.appendChild(a);
-    a = document.createElement("hax-preferences-dialog");
-    document.body.appendChild(a);
+    document.body.appendChild(document.createElement("hax-panel"));
+    document.body.appendChild(document.createElement("hax-manager"));
+    document.body.appendChild(document.createElement("hax-app-picker"));
+    document.body.appendChild(document.createElement("hax-stax-picker"));
+    document.body.appendChild(document.createElement("hax-blox-picker"));
+    document.body.appendChild(document.createElement("hax-preferences-dialog"));
+    document.body.appendChild(document.createElement("hax-export-dialog"));
+    document.body.appendChild(document.createElement("hax-autoloader"));
     return true;
   }
   //static get observedAttributes() {
@@ -187,8 +191,9 @@ class HAX extends HTMLElement {
   //}
   disconnectedCallback() {
     super.disconnectedCallback();
+    window.removeEventListener("hax-store-ready", this.render.bind(this));
   }
   attributeChangedCallback(attr, oldValue, newValue) {}
 }
-window.customElements.define(HAX.tag, HAX);
+window.customElements.define("h-a-x", HAX);
 export { HAX };
