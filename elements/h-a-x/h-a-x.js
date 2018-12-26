@@ -112,9 +112,6 @@ class HAX extends HTMLElement {
     if (!this.__HAXApplied && !window.__HAXApplied) {
       window.__HAXApplied = this.__HAXApplied = this.applyHAX();
     }
-    if (window.ShadyCSS) {
-      window.ShadyCSS.styleElement(this);
-    }
 
     if (this._queue.length) {
       this._processQueue();
