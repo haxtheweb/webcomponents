@@ -557,8 +557,10 @@ Polymer({
     window.addEventListener("paste", e => {
       // only perform this on a text element that is active
       if (
-        this.isTextElement(window.HaxStore.instance.activeNode) &&
-        !this.haxManager.opened
+        window.HaxStore.instance.isTextElement(
+          window.HaxStore.instance.activeNode
+        ) &&
+        !window.HaxStore.instance.haxManager.opened
       ) {
         e.preventDefault();
         let text = "";
@@ -568,20 +570,12 @@ Polymer({
         } else if (window.clipboardData) {
           text = window.clipboardData.getData("Text");
         }
-        let sel, range, html;
-        // @todo need to select the element JUST above us this came from
-        // and possibly query the shadowDom there
-        // we may need to have something in HaxStore that keeps track of
-        // what's above here
-        if (window.getSelection) {
-          sel = window.getSelection();
-          if (sel.getRangeAt && sel.rangeCount) {
-            range = sel.getRangeAt(0);
-            range.deleteContents();
-            range.insertNode(document.createTextNode(text));
-          }
-        } else if (document.selection && document.selection.createRange) {
-          document.selection.createRange().text = text;
+        // find the correct selection object
+        let sel = window.HaxStore.getSelection();
+        if (sel.getRangeAt && sel.rangeCount) {
+          let range = sel.getRangeAt(0);
+          range.deleteContents();
+          range.insertNode(document.createTextNode(text));
         }
       }
     });
@@ -602,7 +596,7 @@ Polymer({
       ) {
         const activeNodeTagName =
           window.HaxStore.instance.activeContainerNode.tagName;
-        var selection = window.getSelection();
+        var selection = window.HaxStore.getSelection();
         const range = selection.getRangeAt(0).cloneRange();
         var tagTest = range.commonAncestorContainer.tagName;
         if (typeof tagTest === typeof undefined) {
@@ -2076,4 +2070,21 @@ window.HaxStore.toast = (message, duration = 3000) => {
       duration: duration
     }
   });
+};
+
+/**
+ * Selection normalizer
+ */
+window.HaxStore.getSelection = () => {
+  // try and obtain the selection from the nearest shadow
+  // which would give us the selection object when running native ShadowDOM
+  // with fallback support for the entire window which would imply Shady
+  if (
+    window.HaxStore.instance.activeHaxBody.parentNode &&
+    window.HaxStore.instance.activeHaxBody.parentNode.getSelection
+  ) {
+    return window.HaxStore.instance.activeHaxBody.parentNode.getSelection();
+  }
+  ßß;
+  return window.getSelection();
 };

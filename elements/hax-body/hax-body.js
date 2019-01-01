@@ -288,13 +288,13 @@ let HaxBody = Polymer({
     this.shadowRoot.querySelector("slot").addEventListener("paste", e => {
       // only perform this on a text element that is active
       if (
-        this.isTextElement(window.HaxStore.instance.activeNode) &&
-        !this.haxManager.opened
+        window.HaxStore.instance.isTextElement(
+          window.HaxStore.instance.activeNode
+        ) &&
+        !window.HaxStore.instance.haxManager.opened
       ) {
         e.preventDefault();
         let text = "";
-        console.log(e);
-        console.log(this.shadowRoot.getSelection());
         // intercept paste event
         if (e.clipboardData || e.originalEvent.clipboardData) {
           text = (e.originalEvent || e).clipboardData.getData("text/plain");
@@ -406,7 +406,7 @@ let HaxBody = Polymer({
   _selectionMouseUp: function(e) {
     if (window.__startedSelection && this.editMode) {
       try {
-        let selection = window.getSelection();
+        let selection = window.HaxStore.getSelection();
         let range = selection.getRangeAt(0);
         let newRange = range.cloneRange();
         window.__startedSelection = false;
@@ -954,7 +954,7 @@ let HaxBody = Polymer({
       ) {
         try {
           var range = document.createRange();
-          var sel = window.getSelection();
+          var sel = window.HaxStore.getSelection();
           range.setStart(this.activeContainerNode, 1);
           range.collapse(true);
           sel.removeAllRanges();
@@ -1605,7 +1605,7 @@ let HaxBody = Polymer({
       ) {
         // test selection to see if we are at beginning of
         // whatever element this is
-        var selection = window.getSelection();
+        var selection = window.HaxStore.getSelection();
         let range = selection.getRangeAt(0).cloneRange();
         // ensure our range is not inside of a list item
         let tagTest = range.commonAncestorContainer.tagName;
@@ -1673,7 +1673,7 @@ let HaxBody = Polymer({
       const activeNodeTagName = this.activeContainerNode.tagName;
       // try selection / tab block since range can cause issues
       try {
-        var selection = window.getSelection();
+        var selection = window.HaxStore.getSelection();
         let range = selection.getRangeAt(0).cloneRange();
         var tagTest = range.commonAncestorContainer.tagName;
         if (typeof tagTest === typeof undefined) {
@@ -1713,7 +1713,7 @@ let HaxBody = Polymer({
       e.stopImmediatePropagation();
       let node = dom(this.activeContainerNode).previousSibling;
       const activeNodeTagName = this.activeContainerNode.tagName;
-      var selection = window.getSelection();
+      var selection = window.HaxStore.getSelection();
       try {
         let range = selection.getRangeAt(0).cloneRange();
         if (

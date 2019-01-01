@@ -257,7 +257,7 @@ Polymer({
    */
   _haxContextOperation: function(e) {
     let detail = e.detail;
-    let selection = window.getSelection();
+    let selection = window.HaxStore.getSelection();
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
       // wow these are way too easy
