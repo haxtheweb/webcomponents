@@ -6,7 +6,9 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-dialog/paper-dialog.js";
+import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
+import "@polymer/paper-button/paper-button.js";
 import "./lib/lrnsys-outline-item.js";
 /**
  * `lrnsys-outline`
@@ -137,6 +139,7 @@ let LrnsysOutline = Polymer({
    * Attached lifecycle
    */
   attached: function() {
+    window.SimpleModal.requestAvailability();
     this.__modal = this.$.modal;
     document.body.addEventListener(
       "iron-overlay-canceled",
@@ -252,7 +255,7 @@ let LrnsysOutline = Polymer({
     let i = this.items.findIndex(j => j.id === item.id);
     let b = document.createElement("paper-button");
     b.raised = true;
-    b.addEventListener("click", this._deleteItemConfirm().bind(this));
+    b.addEventListener("click", this._deleteItemConfirm.bind(this));
     b.appendChild(document.createTextNode("Yes, delete"));
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
@@ -272,8 +275,14 @@ let LrnsysOutline = Polymer({
    * Delete item confirmation
    */
   _deleteItemConfirm: function(e) {
-    let i = this.items.findIndex(j => j.id === item.id);
+    let i = this.items.findIndex(j => j.id === this.activeItem.id);
     this.activeItem.classList.add("collapse-to-remove");
+    const evt = new CustomEvent("simple-modal-hide", {
+      bubbles: true,
+      cancelable: true,
+      detail: {}
+    });
+    this.dispatchEvent(evt);
     setTimeout(() => {
       this.__focusedItem = this.activeItem.previousElementSibling;
       for (var k in this.items) {

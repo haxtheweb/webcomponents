@@ -10,15 +10,7 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
-import "@lrnwebcomponents/hax-body/lib/hax-store.js";
-import "@lrnwebcomponents/hax-body/hax-body.js";
-import "@lrnwebcomponents/hax-body/lib/hax-autoloader.js";
-import "@lrnwebcomponents/hax-body/lib/hax-manager.js";
-import "@lrnwebcomponents/hax-body/lib/hax-app-picker.js";
-import "@lrnwebcomponents/hax-body/lib/hax-app.js";
-import "@lrnwebcomponents/hax-body/lib/hax-panel.js";
-import "@lrnwebcomponents/hax-body/lib/hax-export-dialog.js";
-import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
+import "@lrnwebcomponents/h-a-x/h-a-x.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "./haxcms-site-editor-ui.js";
@@ -72,13 +64,13 @@ Polymer({
         padding: 8px;
         background-color: var(--paper-blue-500) !important;
       }
-      hax-body {
+      h-a-x {
         padding: 48px;
         max-width: 1040px;
         margin: auto;
         display: none;
       }
-      :host([edit-mode]) hax-body {
+      :host([edit-mode]) h-a-x {
         display: block;
         padding: 0 !important;
       }
@@ -124,13 +116,7 @@ Polymer({
       handle-as="json"
       on-response="_handlePublishResponse"
     ></iron-ajax>
-    <hax-store app-store="[[appStore]]"></hax-store>
-    <hax-app-picker></hax-app-picker>
-    <hax-body id="body"></hax-body>
-    <hax-autoloader hidden></hax-autoloader>
-    <hax-panel align="left" hide-panel-ops></hax-panel>
-    <hax-manager append-jwt="jwt" id="haxmanager"></hax-manager>
-    <hax-export-dialog></hax-export-dialog>
+    <h-a-x app-store$="[[appStore]]"></h-a-x>
     <haxcms-site-editor-ui
       id="ui"
       active-item="[[activeItem]]"
@@ -247,6 +233,7 @@ Polymer({
   ready: function() {
     window.SimpleToast.requestAvailability();
     window.SimpleModal.requestAvailability();
+    window.addEventListener("hax-store-ready", this._storeReadyToGo.bind(this));
     window.addEventListener(
       "json-outline-schema-active-item-changed",
       this._newActiveItem.bind(this)
@@ -280,7 +267,7 @@ Polymer({
     this.dispatchEvent(evt);
     // get around initial setup state management
     if (typeof this.__body !== typeof undefined) {
-      this.$.body.importContent(this.__body);
+      window.HaxStore.instance.activeHaxBody.importContent(this.__body);
     }
     async.microTask.run(() => {
       // allow for initial setting since this editor gets injected basically
@@ -293,12 +280,22 @@ Polymer({
         this.notifyPath("activeItem.*");
       }
       this.updateStyles();
+      if (window.HaxStore.ready) {
+        let detail = {
+          detail: true
+        };
+        this._storeReadyToGo(detail);
+      }
     });
   },
   /**
    * Detatched life cycle
    */
   detached: function() {
+    window.removeEventListener(
+      "hax-store-ready",
+      this._storeReadyToGo.bind(this)
+    );
     window.removeEventListener(
       "haxcms-save-outline",
       this.saveOutline.bind(this)
@@ -323,6 +320,16 @@ Polymer({
       "json-outline-schema-active-body-changed",
       this._bodyChanged.bind(this)
     );
+  },
+  /**
+   * Establish certain global settings in HAX once it claims to be ready to go
+   */
+  _storeReadyToGo: function(event) {
+    if (event.detail) {
+      window.HaxStore.instance.haxManager.appendJwt = "jwt";
+      window.HaxStore.instance.haxPanel.align = "left";
+      window.HaxStore.instance.haxPanel.hidePanelOps = true;
+    }
   },
   /**
    * notice publishing callback changing state
@@ -373,7 +380,7 @@ Polymer({
       parts.pop();
       let site = parts.pop();
       // set upload manager to point to this location in a more dynamic fashion
-      this.$.haxmanager.appendUploadEndPoint =
+      window.HaxStore.instance.haxManager.appendUploadEndPoint =
         "siteName=" + site + "&page=" + newValue.id;
     }
   },

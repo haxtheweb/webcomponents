@@ -41,19 +41,21 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/drawing-icons": "^0.0.40",
+    "@lrnwebcomponents/simple-modal": "^0.0.40",
     "@polymer/iron-a11y-keys": "^3.0.1",
     "@polymer/iron-list": "^3.0.1",
     "@polymer/paper-dialog": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.1",
+    "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-input": "^3.0.1",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^0.0.40",
+    "web-animations-js": "2.3.1",
     "@polymer/iron-ajax": "^3.0.1",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
-    "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-toast": "^3.0.1",
     "@webcomponents/webcomponentsjs": "2.2.1",
     "concurrently": "4.1.0",

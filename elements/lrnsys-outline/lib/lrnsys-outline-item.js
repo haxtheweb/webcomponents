@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/paper-input/paper-input.js";
@@ -373,7 +374,7 @@ Polymer({
   },
 
   _onBackspace: function(e) {
-    if (window.getSelection().toString() == this.title) {
+    if (this._getSelection().toString() == this.title) {
       e.detail.keyboardEvent.preventDefault();
       this.fire("delete-item", { item: this });
     } else if (
@@ -382,6 +383,23 @@ Polymer({
     ) {
       this.fire("indent-item", { item: this, increase: false });
     }
+  },
+
+  /**
+   * Selection normalizer
+   */
+  _getSelection: function() {
+    // try and obtain the selection from the nearest shadow
+    // which would give us the selection object when running native ShadowDOM
+    // with fallback support for the entire window which would imply Shady
+    if (
+      this.parentNode &&
+      this.parentNode.parentNode &&
+      this.parentNode.parentNode.getSelection
+    ) {
+      return this.parentNode.parentNode.getSelection();
+    }
+    return window.getSelection();
   },
 
   _onArrowUp: function() {

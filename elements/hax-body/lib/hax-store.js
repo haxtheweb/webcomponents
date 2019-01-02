@@ -390,7 +390,7 @@ Polymer({
    */
   _appStoreChanged: function(newValue, oldValue) {
     // if we have an endpoint defined, pull it
-    if (typeof newValue !== typeof undefined) {
+    if (typeof newValue !== typeof undefined && newValue != null) {
       // support having the request or remote loading
       // depending on the integration type
       if (typeof newValue.apps === typeof undefined) {
@@ -539,112 +539,26 @@ Polymer({
       "hax-insert-content",
       this._haxStoreInsertContent.bind(this)
     );
+    // capture events and intercept them globally
+    window.removeEventListener(
+      "onbeforeunload",
+      this._onBeforeUnload.bind(this)
+    );
+    window.removeEventListener("paste", this._onPaste.bind(this));
+    window.removeEventListener("keypress", this._onKeyPress.bind(this));
+    // fire that hax store is ready to go so now we can setup the rest
+    this.fire("hax-store-ready", false);
+    window.HaxStore.ready = false;
   },
 
   /**
    * attached.
    */
   attached: function() {
-    window.onbeforeunload = function() {
-      // ensure we don't leave DURING edit mode
-      if (
-        !window.HaxStore.instance.skipExitTrap &&
-        window.HaxStore.instance.editMode
-      ) {
-        return "Are you sure you want to leave? Your work will not be saved!";
-      }
-    };
-    window.addEventListener("paste", e => {
-      // only perform this on a text element that is active
-      if (
-        window.HaxStore.instance.isTextElement(
-          window.HaxStore.instance.activeNode
-        ) &&
-        !window.HaxStore.instance.haxManager.opened
-      ) {
-        e.preventDefault();
-        let text = "";
-        // intercept paste event
-        if (e.clipboardData || e.originalEvent.clipboardData) {
-          text = (e.originalEvent || e).clipboardData.getData("text/plain");
-        } else if (window.clipboardData) {
-          text = window.clipboardData.getData("Text");
-        }
-        // find the correct selection object
-        let sel = window.HaxStore.getSelection();
-        if (sel.getRangeAt && sel.rangeCount) {
-          let range = sel.getRangeAt(0);
-          range.deleteContents();
-          range.insertNode(document.createTextNode(text));
-        }
-      }
-    });
     // capture events and intercept them globally
-    window.addEventListener("keypress", event => {
-      const keyName = event.key;
-      // if we are editing and enter is pressed see if we should
-      // process it or inject a new p tag
-      if (
-        typeof window.HaxStore.instance.activeContainerNode !==
-          typeof undefined &&
-        keyName === "Enter" &&
-        window.HaxStore.instance.editMode &&
-        window.HaxStore.instance.activeNode !== null &&
-        window.HaxStore.instance.activeContainerNode ===
-          window.HaxStore.instance.activeNode &&
-        !window.HaxStore.instance.haxAppPicker.opened
-      ) {
-        const activeNodeTagName =
-          window.HaxStore.instance.activeContainerNode.tagName;
-        var selection = window.HaxStore.getSelection();
-        const range = selection.getRangeAt(0).cloneRange();
-        var tagTest = range.commonAncestorContainer.tagName;
-        if (typeof tagTest === typeof undefined) {
-          tagTest = range.commonAncestorContainer.parentNode.tagName;
-        }
-        // test if we want to touch Enter based on tag name and range
-        // we ignore Enter for our purposes when in a list
-        if (
-          ["P", "H1", "H2", "H3", "H4", "H5", "H6"].includes(
-            activeNodeTagName
-          ) &&
-          !["UL", "OL", "LI"].includes(tagTest)
-        ) {
-          // we need to do goofy stuff for p tags since people
-          // will expect to be able to split them mid typing
-          if (range.endOffset !== this.activeContainerNode.textContent.length) {
-            event.preventDefault();
-            // create a cloned range where it's sitting
-            range.setStart(selection.focusNode, range.startOffset);
-            // generate a completely fake element and insert it so we
-            // track it's position as a "split point"
-            var frag = document
-              .createRange()
-              .createContextualFragment("<hax-split-point></hax-split-point>");
-            range.insertNode(frag);
-            // force this to be a constant since activeNode will
-            // change mid operation but we want limit to remain
-            // as a pointer to it's position in the DOM
-            const limit = window.HaxStore.instance.activeContainerNode;
-            var node = dom(
-              window.HaxStore.instance.activeContainerNode
-            ).querySelector("hax-split-point");
-            // run a split node function as modified from stackoverflow
-            if (node != null) {
-              try {
-                this.__splitNode(node, limit);
-              } catch (e) {}
-            }
-          } else {
-            event.preventDefault();
-            window.HaxStore.instance.fire("hax-insert-content", {
-              tag: "p",
-              content: ""
-            });
-          }
-        }
-      }
-    });
+    window.addEventListener("onbeforeunload", this._onBeforeUnload.bind(this));
+    window.addEventListener("paste", this._onPaste.bind(this));
+    window.addEventListener("keypress", this._onKeyPress.bind(this));
     this.haxToast = window.SimpleToast.requestAvailability();
     // register built in primitive definitions
     this._buildPrimitiveDefinitions();
@@ -653,7 +567,112 @@ Polymer({
     window.HaxStore.ready = true;
     this.__ready = true;
   },
-
+  /**
+   * Before the browser closes / changes paths, ask if they are sure they want to leave
+   */
+  _onBeforeUnload: function(e) {
+    // ensure we don't leave DURING edit mode
+    if (
+      !window.HaxStore.instance.skipExitTrap &&
+      window.HaxStore.instance.editMode
+    ) {
+      return "Are you sure you want to leave? Your work will not be saved!";
+    }
+  },
+  /**
+   * Intercept paste event and clean it up before inserting the contents
+   */
+  _onPaste: function(e) {
+    // only perform this on a text element that is active
+    if (
+      window.HaxStore.instance.isTextElement(
+        window.HaxStore.instance.activeNode
+      ) &&
+      !window.HaxStore.instance.haxManager.opened
+    ) {
+      e.preventDefault();
+      let text = "";
+      // intercept paste event
+      if (e.clipboardData || e.originalEvent.clipboardData) {
+        text = (e.originalEvent || e).clipboardData.getData("text/plain");
+      } else if (window.clipboardData) {
+        text = window.clipboardData.getData("Text");
+      }
+      // find the correct selection object
+      let sel = window.HaxStore.getSelection();
+      if (sel.getRangeAt && sel.rangeCount) {
+        let range = sel.getRangeAt(0);
+        range.deleteContents();
+        range.insertNode(document.createTextNode(text));
+      }
+    }
+  },
+  /**
+   * Account for return and escape to ensure they are applied nicely in context
+   */
+  _onKeyPress: function(e) {
+    const keyName = e.key;
+    // if we are editing and enter is pressed see if we should
+    // process it or inject a new p tag
+    if (
+      typeof window.HaxStore.instance.activeContainerNode !==
+        typeof undefined &&
+      keyName === "Enter" &&
+      window.HaxStore.instance.editMode &&
+      window.HaxStore.instance.activeNode !== null &&
+      window.HaxStore.instance.activeContainerNode ===
+        window.HaxStore.instance.activeNode &&
+      !window.HaxStore.instance.haxAppPicker.opened
+    ) {
+      const activeNodeTagName =
+        window.HaxStore.instance.activeContainerNode.tagName;
+      var selection = window.HaxStore.getSelection();
+      const range = selection.getRangeAt(0).cloneRange();
+      var tagTest = range.commonAncestorContainer.tagName;
+      if (typeof tagTest === typeof undefined) {
+        tagTest = range.commonAncestorContainer.parentNode.tagName;
+      }
+      // test if we want to touch Enter based on tag name and range
+      // we ignore Enter for our purposes when in a list
+      if (
+        ["P", "H1", "H2", "H3", "H4", "H5", "H6"].includes(activeNodeTagName) &&
+        !["UL", "OL", "LI"].includes(tagTest)
+      ) {
+        // we need to do goofy stuff for p tags since people
+        // will expect to be able to split them mid typing
+        if (range.endOffset !== this.activeContainerNode.textContent.length) {
+          e.preventDefault();
+          // create a cloned range where it's sitting
+          range.setStart(selection.focusNode, range.startOffset);
+          // generate a completely fake element and insert it so we
+          // track it's position as a "split point"
+          var frag = document
+            .createRange()
+            .createContextualFragment("<hax-split-point></hax-split-point>");
+          range.insertNode(frag);
+          // force this to be a constant since activeNode will
+          // change mid operation but we want limit to remain
+          // as a pointer to it's position in the DOM
+          const limit = window.HaxStore.instance.activeContainerNode;
+          var node = dom(
+            window.HaxStore.instance.activeContainerNode
+          ).querySelector("hax-split-point");
+          // run a split node function as modified from stackoverflow
+          if (node != null) {
+            try {
+              this.__splitNode(node, limit);
+            } catch (e) {}
+          }
+        } else {
+          e.preventDefault();
+          window.HaxStore.instance.fire("hax-insert-content", {
+            tag: "p",
+            content: ""
+          });
+        }
+      }
+    }
+  },
   /**
    * Magic node splitting function
    */
@@ -2085,6 +2104,5 @@ window.HaxStore.getSelection = () => {
   ) {
     return window.HaxStore.instance.activeHaxBody.parentNode.getSelection();
   }
-  ßß;
   return window.getSelection();
 };
