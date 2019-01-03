@@ -2,6 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@polymer/paper-tabs/paper-tabs.js";
 import "@polymer/paper-tabs/paper-tab.js";
+import "@polymer/paper-button/paper-button.js";
 /**
  * `tab-list`
  * `A simple listing of tabed links / items`
@@ -18,24 +19,43 @@ let TabList = Polymer({
         display: block;
         margin: 0 auto;
         list-style: none;
-        display: flex;
+        display: block;
         padding: 16px;
         border-bottom: 1px solid black;
       }
+      paper-tabs {
+        align-items: center;
+        justify-items: center;
+      }
       paper-tab a {
         text-decoration: none;
+        flex: unset;
+        height: unset;
+        width: 100%;
+        text-align: center;
       }
       paper-button {
         text-transform: unset;
+        width: 100%;
+        display: block;
+        min-width: unset;
+        margin: 0;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      @media screen and (max-width: 600px) {
+        paper-tab {
+          display: block;
+        }
       }
     </style>
     <paper-tabs>
       <template is="dom-repeat" items="[[tabs]]" as="tab">
-        <paper-tab
-          ><a target="_blank" href="[[tab.link]]" tabindex="-1"
-            ><paper-button raised>[[tab.label]]</paper-button></a
-          ></paper-tab
-        >
+        <paper-tab>
+          <a target="_blank" href="[[tab.link]]" tabindex="-1">
+            <paper-button raised>[[tab.label]]</paper-button>
+          </a>
+        </paper-tab>
       </template>
     </paper-tabs>
   `,
