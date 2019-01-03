@@ -118,15 +118,16 @@ Polymer({
       notify: true
     }
   },
-
+  created: function() {
+    window.addEventListener(
+      "json-outline-schema-changed",
+      this._manifestSet.bind(this)
+    );
+  },
   /**
    * Ready life cycle
    */
   ready: function() {
-    document.body.addEventListener(
-      "json-outline-schema-changed",
-      this._manifestSet.bind(this)
-    );
     // state issue but it can miss in timing othewise on first event
     this.set("manifest", window.cmsSiteEditor.jsonOutlineSchema);
     this.notifyPath("manifest.*");
@@ -142,7 +143,7 @@ Polymer({
    * detached life cycle
    */
   detached: function() {
-    document.body.removeEventListener(
+    window.removeEventListener(
       "json-outline-schema-changed",
       this._manifestSet.bind(this)
     );
