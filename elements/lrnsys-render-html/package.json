@@ -16,7 +16,7 @@
       "hax": "src/lrnsys-render-html-hax.json"
     }
   },
-  "version": "0.0.40",
+  "version": "0.1.0",
   "description": "Automated conversion of lrnsys-render-html/",
   "repository": {
     "type": "git",
@@ -40,11 +40,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.0.40",
+    "@lrnwebcomponents/hax-body-behaviors": "^0.1.0",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.0.40",
+    "@lrnwebcomponents/deduping-fix": "^0.1.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@polymer/paper-input": "^3.0.1",

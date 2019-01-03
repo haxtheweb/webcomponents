@@ -16,7 +16,7 @@
       "hax": "src/per-spec-tive-hax.json"
     }
   },
-  "version": "0.0.40",
+  "version": "0.1.0",
   "description": "Automated conversion of per-spec-tive/",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^0.0.40",
+    "@lrnwebcomponents/simple-colors": "^0.1.0",
     "@polymer/app-layout": "^3.0.0",
     "@polymer/app-route": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",
@@ -57,7 +57,7 @@
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.0.40",
+    "@lrnwebcomponents/deduping-fix": "^0.1.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.2.1",

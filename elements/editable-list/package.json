@@ -16,7 +16,7 @@
       "hax": "src/editable-list-hax.json"
     }
   },
-  "version": "0.0.40",
+  "version": "0.1.0",
   "description": "a listing of items that can be edited in place with operations",
   "repository": {
     "type": "git",
@@ -40,8 +40,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-colors": "^0.0.40",
-    "@lrnwebcomponents/simple-modal": "^0.0.40",
+    "@lrnwebcomponents/simple-colors": "^0.1.0",
+    "@lrnwebcomponents/simple-modal": "^0.1.0",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-list": "^3.0.1",
     "@polymer/paper-icon-button": "^3.0.1",
