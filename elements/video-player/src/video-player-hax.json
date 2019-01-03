@@ -24,13 +24,6 @@
   },
   "settings": {
     "quick": [
-      /*{
-        'property': 'responsive',
-        'title': 'Responsive',
-        'description': 'The video automatically fills the available area.',
-        'inputMethod': 'boolean',
-        'icon': 'image:photo-size-select-small',
-      },*/
       {
         "property": "accentColor",
         "title": "Accent color",
@@ -39,7 +32,7 @@
         "icon": "editor:format-color-fill"
       },
       {
-        "property": "dark",
+        "attribute": "dark",
         "title": "Dark theme",
         "description": "Enable dark theme for the player.",
         "inputMethod": "boolean",
@@ -91,7 +84,7 @@
         "icon": "editor:format-color-fill"
       },
       {
-        "property": "dark",
+        "attribute": "dark",
         "title": "Dark theme",
         "description": "Enable dark theme for the player.",
         "inputMethod": "boolean",

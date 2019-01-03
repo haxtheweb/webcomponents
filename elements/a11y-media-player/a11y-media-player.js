@@ -1301,6 +1301,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           });
           // move the YouTube iframe to the media player's YouTube container
           root.$.youtube.appendChild(root.media.a);
+          root.__ytAppended = true;
           root._getTrackData(root.$.loader.media);
           root._updateCustomTracks();
           // youtube API doesn't immediately give length of a video
@@ -1320,11 +1321,15 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
         checkApi = function(e) {
           if (ytUtil.apiReady) {
             document.removeEventListener("youtube-api-ready", checkApi);
-            ytInit();
+            if (!root.__ytAppended) {
+              ytInit();
+            }
           }
         };
       if (ytUtil.apiReady) {
-        ytInit();
+        if (!root.__ytAppended) {
+          ytInit();
+        }
       } else {
         document.addEventListener("youtube-api-ready", checkApi);
       }

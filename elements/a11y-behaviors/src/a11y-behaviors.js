@@ -7,7 +7,7 @@ window.A11yBehaviors = window.A11yBehaviors || {};
  * dark. It also has a helper for setting a property relative to this change.
  *
  * @polymerBehavior A11yBehaviors.A11y
- **/
+ */
 window.A11yBehaviors.A11y = {
   /**
    * Get a a11y safe text color based on background color

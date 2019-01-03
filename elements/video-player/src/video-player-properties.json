@@ -17,7 +17,8 @@
    */
   "crossorigin": {
     "type": "Boolean",
-    "value": false
+    "value": false,
+    "reflectToAttribute": true
   },
   /**
    * Enables darker player.
@@ -116,7 +117,8 @@
    */
   "source": {
     "type": "String",
-    "value": null
+    "value": null,
+    "reflectToAttribute": true
   },
   /**
    * Source of the video
@@ -130,8 +132,7 @@
    */
   "sourceData": {
     "type": "Array",
-    "computed": "_getSourceData(source,sources,trackData)",
-    "reflectToAttribute": true
+    "computed": "_getSourceData(source,sources,trackData)"
   },
   /**
    * The type of source, i.e. "local", "vimeo", "youtube", etc.
@@ -174,8 +175,7 @@
    */
   "trackData": {
     "type": "Array",
-    "computed": "_getTrackData(tracks)",
-    "reflectToAttribute": true
+    "computed": "_getTrackData(tracks)"
   },
   /**
    * Source of optional thumbnail image
