@@ -32,8 +32,8 @@
     <slot name="caption"></slot>
   </a11y-media-player>
 </template>
-<template is="dom-if" if="[[!isA11yMedia]]">
-  <template is="dom-if" if="[[sandboxed]]">
+<template is="dom-if" if="[[!isA11yMedia]]" restamp>
+  <template is="dom-if" if="[[sandboxed]]" restamp>
     <div class="responsive-video-container" lang$="[[lang]]">
       <webview
         resource$="[[schemaResourceID]]-video"
@@ -44,7 +44,7 @@
       ></webview>
     </div>
   </template>
-  <template is="dom-if" if="[[!sandboxed]]">
+  <template is="dom-if" if="[[!sandboxed]]" restamp>
     <template is="dom-if" if="[[iframed]]">
       <div class="responsive-video-container" lang$="[[lang]]">
         <iframe

@@ -611,11 +611,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 210,
+              "line": 209,
               "column": 2
             },
             "end": {
-              "line": 213,
+              "line": 212,
               "column": 3
             }
           },
@@ -631,11 +631,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 217,
+              "line": 216,
               "column": 2
             },
             "end": {
-              "line": 220,
+              "line": 219,
               "column": 3
             }
           },
@@ -651,11 +651,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 224,
+              "line": 223,
               "column": 2
             },
             "end": {
-              "line": 227,
+              "line": 226,
               "column": 3
             }
           },
@@ -671,11 +671,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 231,
+              "line": 230,
               "column": 2
             },
             "end": {
-              "line": 235,
+              "line": 234,
               "column": 3
             }
           },
@@ -691,11 +691,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 239,
+              "line": 238,
               "column": 2
             },
             "end": {
-              "line": 242,
+              "line": 241,
               "column": 3
             }
           },
@@ -711,11 +711,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 247,
+              "line": 246,
               "column": 2
             },
             "end": {
-              "line": 250,
+              "line": 249,
               "column": 3
             }
           },
@@ -731,11 +731,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 254,
+              "line": 253,
               "column": 2
             },
             "end": {
-              "line": 257,
+              "line": 256,
               "column": 3
             }
           },
@@ -2833,11 +2833,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 273,
+              "line": 272,
               "column": 2
             },
             "end": {
-              "line": 281,
+              "line": 280,
               "column": 3
             }
           },
@@ -3909,11 +3909,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 45,
+          "line": 44,
           "column": 0
         },
         "end": {
-          "line": 286,
+          "line": 285,
           "column": 1
         }
       },
@@ -3926,11 +3926,11 @@
           "description": "accent color for gallery",
           "sourceRange": {
             "start": {
-              "line": 210,
+              "line": 209,
               "column": 2
             },
             "end": {
-              "line": 213,
+              "line": 212,
               "column": 3
             }
           },
@@ -3941,11 +3941,11 @@
           "description": "use dark theme (default is light)?",
           "sourceRange": {
             "start": {
-              "line": 217,
+              "line": 216,
               "column": 2
             },
             "end": {
-              "line": 220,
+              "line": 219,
               "column": 3
             }
           },
@@ -3956,11 +3956,11 @@
           "description": "gallery's unique id",
           "sourceRange": {
             "start": {
-              "line": 224,
+              "line": 223,
               "column": 2
             },
             "end": {
-              "line": 227,
+              "line": 226,
               "column": 3
             }
           },
@@ -3971,11 +3971,11 @@
           "description": "thumbnail grid layout, default is false (carousel layout)",
           "sourceRange": {
             "start": {
-              "line": 231,
+              "line": 230,
               "column": 2
             },
             "end": {
-              "line": 235,
+              "line": 234,
               "column": 3
             }
           },
@@ -3986,11 +3986,11 @@
           "description": "array of carousel/grid items",
           "sourceRange": {
             "start": {
-              "line": 239,
+              "line": 238,
               "column": 2
             },
             "end": {
-              "line": 242,
+              "line": 241,
               "column": 3
             }
           },
@@ -4001,11 +4001,11 @@
           "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
           "sourceRange": {
             "start": {
-              "line": 247,
+              "line": 246,
               "column": 2
             },
             "end": {
-              "line": 250,
+              "line": 249,
               "column": 3
             }
           },
@@ -4016,11 +4016,11 @@
           "description": "carousel's title",
           "sourceRange": {
             "start": {
-              "line": 254,
+              "line": 253,
               "column": 2
             },
             "end": {
-              "line": 257,
+              "line": 256,
               "column": 3
             }
           },

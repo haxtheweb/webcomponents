@@ -6,7 +6,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/lrndesign-gallery/lrndesign-gallery.js";
 import "@lrnwebcomponents/lrndesign-gallery/lib/lrndesign-gallery-grid.js";
-export { MediaGallery };
 /**
  * `media-gallery`
  * `Connects lrndesign-gallery to HAX`
@@ -60,11 +59,7 @@ class MediaGallery extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      MediaGallery.haxProperties,
-      MediaGallery.tag,
-      this
-    );
+    this.HAXWiring.setup(MediaGallery.haxProperties, MediaGallery.tag, this);
   }
   /**
    * life cycle, element is removed from the DOM
@@ -72,3 +67,4 @@ class MediaGallery extends PolymerElement {
   //disconnectedCallback() {}
 }
 window.customElements.define(MediaGallery.tag, MediaGallery);
+export { MediaGallery };

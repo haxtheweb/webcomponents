@@ -104,8 +104,8 @@ class VideoPlayer extends PolymerElement {
             <slot name="caption"></slot>
           </a11y-media-player>
         </template>
-        <template is="dom-if" if="[[!isA11yMedia]]">
-          <template is="dom-if" if="[[sandboxed]]">
+        <template is="dom-if" if="[[!isA11yMedia]]" restamp>
+          <template is="dom-if" if="[[sandboxed]]" restamp>
             <div class="responsive-video-container" lang$="[[lang]]">
               <webview
                 resource$="[[schemaResourceID]]-video"
@@ -116,7 +116,7 @@ class VideoPlayer extends PolymerElement {
               ></webview>
             </div>
           </template>
-          <template is="dom-if" if="[[!sandboxed]]">
+          <template is="dom-if" if="[[!sandboxed]]" restamp>
             <template is="dom-if" if="[[iframed]]">
               <div class="responsive-video-container" lang$="[[lang]]">
                 <iframe
@@ -602,11 +602,7 @@ class VideoPlayer extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      VideoPlayer.haxProperties,
-      VideoPlayer.tag,
-      this
-    );
+    this.HAXWiring.setup(VideoPlayer.haxProperties, VideoPlayer.tag, this);
   }
 
   /**

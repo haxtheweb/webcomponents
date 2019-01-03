@@ -186,7 +186,7 @@ export class HAXWiring {
         let tag = this.tagName;
         let props = this.haxProperties;
         let context = this;
-        if (tag !== "" && typeof window.HaxStore === typeof undefined) {
+        if (tag != "" && typeof window.HaxStore === typeof undefined) {
           const evt = new CustomEvent("hax-register-properties", {
             bubbles: true,
             cancelable: true,
@@ -198,11 +198,7 @@ export class HAXWiring {
           });
           context.dispatchEvent(evt);
         } else if (
-          tag !== "" &&
-          typeof window.HaxStore !== typeof undefined &&
-          typeof window.HaxStore.instance !== typeof undefined &&
-          window.HaxStore.instance != null &&
-          typeof window.HaxStore.instance.elementList !== typeof undefined &&
+          tag != "" &&
           typeof window.HaxStore.instance.elementList[tag.toLowerCase()] ===
             typeof undefined
         ) {
@@ -217,10 +213,6 @@ export class HAXWiring {
           context.dispatchEvent(evt);
         } else if (
           typeof this.tagName !== typeof undefined &&
-          typeof window.HaxStore !== typeof undefined &&
-          typeof window.HaxStore.instance !== typeof undefined &&
-          window.HaxStore.instance != null &&
-          typeof window.HaxStore.instance.elementList !== typeof undefined &&
           typeof window.HaxStore.instance.elementList[
             this.tagName.toLowerCase()
           ] === typeof undefined
@@ -374,7 +366,7 @@ export class HAXWiring {
         // if there's no global HaxStore then this means it is a custom
         // implementation of the schema
         if (isReady) {
-          if (tag !== "" && typeof window.HaxStore === typeof undefined) {
+          if (tag != "" && typeof window.HaxStore === typeof undefined) {
             const evt = new CustomEvent("hax-register-properties", {
               bubbles: true,
               cancelable: true,
@@ -385,15 +377,7 @@ export class HAXWiring {
               }
             });
             context.dispatchEvent(evt);
-          } else if (
-            tag !== "" &&
-            typeof window.HaxStore !== typeof undefined &&
-            typeof window.HaxStore.instance !== typeof undefined &&
-            window.HaxStore.instance != null &&
-            typeof window.HaxStore.instance.elementList !== typeof undefined &&
-            typeof window.HaxStore.instance.elementList[tag.toLowerCase()] ===
-              typeof undefined
-          ) {
+          } else if (tag != "") {
             const evt = new CustomEvent("hax-register-properties", {
               bubbles: true,
               cancelable: true,
@@ -403,16 +387,7 @@ export class HAXWiring {
               }
             });
             context.dispatchEvent(evt);
-          } else if (
-            typeof this.tagName !== typeof undefined &&
-            typeof window.HaxStore !== typeof undefined &&
-            typeof window.HaxStore.instance !== typeof undefined &&
-            window.HaxStore.instance != null &&
-            typeof window.HaxStore.instance.elementList !== typeof undefined &&
-            typeof window.HaxStore.instance.elementList[
-              this.tagName.toLowerCase()
-            ] === typeof undefined
-          ) {
+          } else if (typeof this.tagName !== typeof undefined) {
             const evt = new CustomEvent("hax-register-properties", {
               bubbles: true,
               cancelable: true,
@@ -422,6 +397,10 @@ export class HAXWiring {
               }
             });
             context.dispatchEvent(evt);
+          } else {
+            console.warn(
+              `${tag} missed our checks and has an issue in implementation with HAX`
+            );
           }
         }
         // only set these when tag hasn't been force fed

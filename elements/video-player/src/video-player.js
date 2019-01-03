@@ -68,11 +68,7 @@ class VideoPlayer extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      VideoPlayer.haxProperties,
-      VideoPlayer.tag,
-      this
-    );
+    this.HAXWiring.setup(VideoPlayer.haxProperties, VideoPlayer.tag, this);
   }
 
   /**

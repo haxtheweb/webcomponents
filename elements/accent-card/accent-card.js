@@ -7,7 +7,6 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 
-export { AccentCard };
 /**
  * `accent-card`
  * `A card with optional accent stylings.`
@@ -356,11 +355,7 @@ class AccentCard extends SimpleColors {
     super.connectedCallback();
     // Establish hax property binding
     this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      AccentCard.haxProperties,
-      AccentCard.tag,
-      this
-    );
+    this.HAXWiring.setup(AccentCard.haxProperties, AccentCard.tag, this);
   }
 
   /**
@@ -395,3 +390,4 @@ class AccentCard extends SimpleColors {
   }
 }
 window.customElements.define(AccentCard.tag, AccentCard);
+export { AccentCard };

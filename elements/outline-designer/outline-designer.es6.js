@@ -257,12 +257,12 @@ paper-card.card-high-detail {
     </iron-list>
   </section>
   <section id="outlinepage">
-    <lrnsys-outline id="outline" items="{{manifest.items}}" title="[[manifest.title]]"></lrnsys-outline>
+    <lrnsys-outline id="outline" items="[[manifest.items]]" title="[[manifest.title]]"></lrnsys-outline>
   </section>
   <section id="treepage">
     <div class$="node-[[detailsMode]]-detail tf-tree">
       <ul>
-        <template is="dom-repeat" items="{{manifest.items}}" as="item" mutable-data>
+        <template is="dom-repeat" items="[[manifest.items]]" as="item" mutable-data>
         <li>
           <span class="tf-nc">
             <div class="tf-label" id$="item-tip-[[item.id]]">[[item.title]]</div>
@@ -276,7 +276,7 @@ paper-card.card-high-detail {
   </section>
   <section id="sortpage">
     <sortable-list id="sort" sortable=".card-wrapper" on-sort-finish="_onSortFinish" dragging="{{dragging}}">
-      <template is="dom-repeat" items="{{manifest.items}}" as="item" mutable-data>
+      <template is="dom-repeat" items="[[manifest.items]]" as="item" mutable-data>
         <div class="card-wrapper">
           <paper-card class$="card-[[detailsMode]]-detail" data-item-id$="[[item.id]]" heading="[[item.title]]" image="[[item.metadata.image]]" elevation="2"
             animated-shadow="false">

@@ -1,14 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/hax-body/lib/hax-store.js";
-import "@lrnwebcomponents/hax-body/hax-body.js";
-import "@lrnwebcomponents/hax-body/lib/hax-autoloader.js";
-import "@lrnwebcomponents/hax-body/lib/hax-manager.js";
-import "@lrnwebcomponents/hax-body/lib/hax-panel.js";
-import "@lrnwebcomponents/hax-body/lib/hax-app-picker.js";
-import "@lrnwebcomponents/hax-body/lib/hax-export-dialog.js";
+import "@lrnwebcomponents/h-a-x/h-a-x.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "./lib/cms-token.js";
 import "./lib/cms-block.js";
@@ -43,31 +36,13 @@ let CmsHax = Polymer({
       handle-as="json"
       on-response="_handleUpdateResponse"
     ></iron-ajax>
-    <hax-store
-      hidden=""
-      app-store="[[appStoreConnection]]"
-      valid-tag-list="[[allowedTags]]"
-    ></hax-store>
-    <hax-autoloader id="loader" hidden=""></hax-autoloader>
-    <hax-panel
-      id="panel"
-      hide-export-button="{{hideExportButton}}"
-      hide-panel-ops="[[hidePanelOps]]"
-      hide-preferences-button="[[hidePreferencesButton]]"
-      align="[[align]]"
-    ></hax-panel>
-    <hax-body id="body" context-offset-left="[[bodyOffsetLeft]]"></hax-body>
-    <hax-manager></hax-manager>
-    <hax-app-picker></hax-app-picker>
-    <hax-export-dialog></hax-export-dialog>
-    <cms-token></cms-token>
-    <cms-views></cms-views>
-    <cms-block></cms-block>
-    <cms-entity></cms-entity>
+    <h-a-x app-store$="[[appStoreConnection]]"></h-a-x>
   `,
 
   is: "cms-hax",
-
+  observers: [
+    "_noticeTagChanges(allowedTags, hideExportButton, hidePanelOps, hidePreferencesButton, align, bodyOffsetLeft)"
+  ],
   properties: {
     /**
      * Default the panel to open
@@ -234,29 +209,74 @@ let CmsHax = Polymer({
     this.appendChild(dom);
   },
   /**
+   * Set certain data bound values to the store once it's ready
+   */
+  _noticeTagChanges: function(
+    allowedTags,
+    hideExportButton,
+    hidePanelOps,
+    hidePreferencesButton,
+    align,
+    bodyOffsetLeft
+  ) {
+    if (window.HaxStore.ready) {
+      // double check because this can cause issues
+      if (allowedTags) {
+        window.HaxStore.instance.validTagList = allowedTags;
+      }
+      window.HaxStore.instance.haxPanel.hideExportButton = hideExportButton;
+      window.HaxStore.instance.haxPanel.hidePanelOps = hidePanelOps;
+      window.HaxStore.instance.haxPanel.hidePreferencesButton = hidePreferencesButton;
+      window.HaxStore.instance.haxPanel.align = align;
+      window.HaxStore.instance.activeHaxBody.contextOffsetLeft = bodyOffsetLeft;
+    }
+  },
+  /**
+   * Set certain data bound values to the store once it's ready
+   */
+  _storeReady: function(e) {
+    // trigger the update of different parts of the global state
+    this._noticeTagChanges(
+      this.allowedTags,
+      this.hideExportButton,
+      this.hidePanelOps,
+      this.hidePreferencesButton,
+      this.align,
+      this.bodyOffsetLeft
+    );
+  },
+  /**
    * Created life cycle
    */
   created: function() {
-    document.body.addEventListener(
+    window.addEventListener(
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
     );
+    window.addEventListener("hax-store-ready", this._storeReady.bind(this));
   },
-
+  /**
+   * detached life cycle
+   */
+  detached: function() {
+    window.removeEventListener("hax-store-ready", this._storeReady.bind(this));
+    window.removeEventListener("hax-save", this._saveFired.bind(this));
+  },
   /**
    * Attached to the DOM; now we can fire event to the store that
    * we exist and are the thing being edited.
    */
   attached: function() {
+    window.SimpleToast.requestAvailability();
     this.__lock = false;
-    document.body.addEventListener("hax-save", this._saveFired.bind(this));
+    window.addEventListener("hax-save", this._saveFired.bind(this));
     // open things by default and set state for edit mode
     if (this.openDefault) {
       window.HaxStore.write("editMode", true, this);
     }
     // notice ANY change to body and bubble up, only when we are attached though
     if (this.syncBody) {
-      FlattenedNodesObserver(this.$.body, info => {
+      FlattenedNodesObserver(window.HaxStore.instance.activeHaxBody, info => {
         if (!this.__lock) {
           this.__lock = true;
           this.fire(
@@ -317,7 +337,7 @@ let CmsHax = Polymer({
       if (this.redirectOnSave) {
         setTimeout(() => {
           // toggle so state is correct when we go to save
-          this.$.panel.toggle();
+          window.HaxStore.instance.haxPanel.toggle();
           // trigger redirect
           window.location = this.redirectLocation;
         }, 1000);

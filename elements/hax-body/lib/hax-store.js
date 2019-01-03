@@ -458,7 +458,7 @@ Polymer({
    */
   detached: function() {
     // notice hax property definitions coming from anywhere
-    document.body.removeEventListener(
+    window.removeEventListener(
       "hax-register-properties",
       this._haxStoreRegisterProperties.bind(this)
     );
@@ -560,12 +560,12 @@ Polymer({
     window.addEventListener("paste", this._onPaste.bind(this));
     window.addEventListener("keypress", this._onKeyPress.bind(this));
     this.haxToast = window.SimpleToast.requestAvailability();
-    // register built in primitive definitions
-    this._buildPrimitiveDefinitions();
     // fire that hax store is ready to go so now we can setup the rest
     this.fire("hax-store-ready", true);
     window.HaxStore.ready = true;
     this.__ready = true;
+    // register built in primitive definitions
+    this._buildPrimitiveDefinitions();
   },
   /**
    * Before the browser closes / changes paths, ask if they are sure they want to leave
@@ -737,7 +737,7 @@ Polymer({
       window.HaxStore.instance = this;
     }
     // notice hax property definitions coming from anywhere
-    document.body.addEventListener(
+    window.addEventListener(
       "hax-register-properties",
       this._haxStoreRegisterProperties.bind(this)
     );
@@ -1320,7 +1320,7 @@ Polymer({
     if (document.head.createShadowRoot || document.head.attachShadow) {
       return true;
     } else {
-      console.log("Shadow DOM missing, can't safely use list operations.");
+      console.log("Shadow DOM missing, certain operations hidden");
       return false;
     }
   },
