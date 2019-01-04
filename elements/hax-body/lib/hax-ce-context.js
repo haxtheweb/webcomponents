@@ -22,6 +22,9 @@ required for populating input.
 Polymer({
   _template: html`
     <style>
+      :host *[hidden] {
+        display: none;
+      }
       :host {
         display: block;
         height: 32px;

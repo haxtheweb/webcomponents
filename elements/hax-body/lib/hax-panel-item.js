@@ -27,12 +27,12 @@ Polymer({
     <style is="custom-style" include="materializecss-styles-colors">
       :host {
         display: inline-flex;
-        margin: 0;
-        padding: 0;
         --hax-panel-hover: var(--simple-colors-default-theme-light-green-1);
       }
       paper-button {
-        color: rgba(0, 0, 0, 0.66);
+        height: 40px;
+        width: 64px;
+        overflow: hidden;
         margin: 0;
         text-transform: none;
         background-color: #2e2e2e !important;
@@ -41,8 +41,6 @@ Polymer({
         padding: 0;
         border-radius: 0;
         border: none;
-        height: 64px;
-        width: 80px;
         min-width: unset;
       }
       :host([edged="left"]) paper-button {
@@ -52,9 +50,9 @@ Polymer({
         border-bottom-left-radius: 16px;
       }
       paper-button .label {
-        font-size: 14px;
+        max-height: 8px;
+        font-size: 10px;
         margin: 0;
-        max-height: 16px;
         background: transparent;
         vertical-align: unset;
         border-radius: unset;
@@ -72,8 +70,8 @@ Polymer({
         margin: 0 auto;
       }
       paper-button iron-icon {
-        height: 32px;
-        width: 24px;
+        height: 20px;
+        width: 20px;
         display: inline-flex;
       }
       paper-button:hover .label,
@@ -89,21 +87,6 @@ Polymer({
       }
       .flip-icon {
         transform: rotateY(180deg);
-      }
-      @media screen and (max-width: 550px) {
-        paper-button {
-          height: 40px;
-          width: 48px;
-          overflow: hidden;
-        }
-        paper-button iron-icon {
-          height: 20px;
-          width: 20px;
-        }
-        paper-button .label {
-          max-height: 8px;
-          font-size: 11px;
-        }
       }
       :host([light]) paper-button {
         height: 32px !important;

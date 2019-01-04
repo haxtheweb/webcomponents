@@ -27,14 +27,14 @@ Polymer({
     <style include="materializecss-styles-colors">
       :host {
         display: inline-flex;
+        height: 58px;
+        width: 58px;
       }
       :host([elevation="1"]) {
-        -webkit-transform: scale(1, 1);
-        transform: scale(1, 1);
+        transform: scale(0.8, 0.8);
       }
       :host([elevation="2"]) {
-        -webkit-transform: scale(1.4, 1.4);
-        transform: scale(1.4, 1.4);
+        transform: scale(1, 1);
       }
       paper-card {
         margin: 4px 0;
@@ -54,7 +54,7 @@ Polymer({
         font-weight: normal;
       }
       paper-button .item-title {
-        font-size: 10px;
+        font-size: 12px;
       }
       paper-button .button-inner {
         text-align: center;

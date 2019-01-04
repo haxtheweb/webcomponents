@@ -65,7 +65,7 @@ Polymer({
         padding: 16px;
       }
     </style>
-    <app-drawer id="dialog" align="left">
+    <app-drawer id="dialog" align="left" transition-duration="300">
       <h3 class="title">[[title]]</h3>
       <div style="height: 100%; overflow: auto;" class="pref-container">
         <hax-blox-browser id="bloxbrowser"></hax-blox-browser>

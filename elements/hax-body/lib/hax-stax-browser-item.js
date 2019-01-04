@@ -165,9 +165,7 @@ Polymer({
    * Fire an event that includes the eventName of what was just pressed.
    */
   _fireEvent: function(e) {
-    for (var i = 0; i < this.stax.length; i++) {
-      this.fire("hax-insert-content", this.stax[i]);
-    }
+    this.fire("hax-insert-content-array", this.stax);
     window.HaxStore.instance.haxStaxPicker.close();
   }
 });

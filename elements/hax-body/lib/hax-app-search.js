@@ -4,7 +4,7 @@ import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-styles/paper-styles.js";
 import "@polymer/iron-list/iron-list.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/elmsln-loading/elmsln-loading.js";
+import "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-app-search-inputs.js";
 import "./hax-app-search-result.js";
@@ -50,10 +50,10 @@ Polymer({
         display: block !important;
       }
       .loading {
+        transition: 0.3s linear opacity, 0.3s linear visibility;
         width: calc(100% - 32px);
         z-index: 1000;
-        opacity: 0.9;
-        text-align: center;
+        opacity: 1;
         align-content: space-around;
         justify-content: center;
         position: absolute;
@@ -62,9 +62,9 @@ Polymer({
         display: flex;
         margin: 0 auto;
         visibility: visible;
-        transition: visibility 0.5s, opacity 0.5s ease;
+        transition: visibility 0.3s, opacity 0.3s ease;
       }
-      .loading elmsln-loading {
+      .loading hexagon-loader {
         margin: 0 80px;
         display: inline-flex;
       }
@@ -74,7 +74,7 @@ Polymer({
         justify-content: center;
       }
       #loading .loading,
-      #loading elmsln-loading {
+      #loading hexagon-loader {
         display: block;
         height: 80px;
       }
@@ -86,7 +86,7 @@ Polymer({
         margin: 0;
       }
       #itemlist {
-        min-height: 150px;
+        min-height: 172px;
         border: 1px solid #222222;
       }
       hax-app-search-inputs {
@@ -102,11 +102,6 @@ Polymer({
         justify-content: center;
         color: #222222;
       }
-      .loading-text {
-        font-size: 32px;
-        padding: 16px 0;
-        color: var(--simple-colors-light-green-background3);
-      }
     </style>
 
     <iron-ajax
@@ -120,9 +115,10 @@ Polymer({
       last-response="{{requestData}}"
       hidden=""
       loading="{{loading}}"
-      debounce-duration="250"
+      debounce-duration="300"
     ></iron-ajax>
     <hax-app-search-inputs
+      id="searchinput"
       label="[[label]]"
       schema="{{searchSchema}}"
       values="{{searchValues}}"
@@ -133,13 +129,19 @@ Polymer({
       pagination="[[pagination]]"
     ></hax-app-pagination>
     <div id="loading" class="loading" hidden\$="[[!loading]]">
-      <elmsln-loading
-        color="light-green-text text-accent-3"
-        size="large"
-      ></elmsln-loading>
-      <div class="loading-text">Loading content..</div>
+      <hexagon-loader
+        loading="[[loading]]"
+        color="grey"
+        aria-roledescription="Loading"
+      ></hexagon-loader>
     </div>
-    <iron-list grid="" id="itemlist" items="[[media]]" as="resultData">
+    <iron-list
+      grid
+      id="itemlist"
+      items="[[media]]"
+      as="resultData"
+      hidden\$="[[loading]]"
+    >
       <template>
         <hax-app-search-result
           result-data="[[resultData]]"
@@ -169,8 +171,7 @@ Polymer({
      * Search schema for presenting a form of input.
      */
     searchSchema: {
-      type: Object,
-      value: {}
+      type: Object
     },
     /**
      * Search values for data binding between search input
@@ -199,7 +200,8 @@ Polymer({
      */
     loading: {
       type: Boolean,
-      value: false
+      value: false,
+      observer: "_loadingChanged"
     },
     /**
      * Media request data updated
@@ -218,7 +220,6 @@ Polymer({
       observer: "_mediaChanged"
     }
   },
-
   /**
    * Search input was added.
    */
@@ -458,6 +459,15 @@ Polymer({
     }
   },
 
+  _loadingChanged: function(newValue, oldValue) {
+    if (newValue) {
+      this.set("media", []);
+      this.notifyPath("media.*");
+      setTimeout(() => {
+        this.$.itemlist.fire("iron-resize");
+      }, 10);
+    }
+  },
   /**
    * Callback for when media has been processed for display
    */
@@ -465,7 +475,7 @@ Polymer({
     if (typeof oldValue !== typeof undefined) {
       setTimeout(() => {
         this.$.itemlist.fire("iron-resize");
-      }, 200);
+      }, 325);
     }
   },
 

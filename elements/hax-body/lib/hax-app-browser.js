@@ -27,13 +27,15 @@ Polymer({
         display: block;
         --hax-accent: #34e79a;
       }
+      :host *[hidden] {
+        display: none;
+      }
       #ironlist {
-        min-height: 72px;
+        min-height: 132px;
         margin: 0;
       }
       hax-app-browser-item {
-        margin: 10px;
-        -webkit-transition: 0.3s all linear;
+        margin: 8px;
         transition: 0.3s all linear;
       }
       .title {
@@ -167,6 +169,14 @@ Polymer({
       type: Object,
       value: null,
       observer: "_activeAppChanged"
+    },
+    /**
+     * If we have an active, scale everything
+     */
+    hasActive: {
+      reflectToAttribute: true,
+      value: false,
+      type: Boolean
     }
   },
 
@@ -225,10 +235,9 @@ Polymer({
   _activeAppChanged: function(newValue, oldValue) {
     if (typeof oldValue !== typeof undefined && newValue != null) {
       window.HaxStore.instance.haxManager.searching = true;
-      setTimeout(() => {
-        window.HaxStore.instance.haxManager.updateStyles();
-        window.dispatchEvent(new Event("resize"));
-      }, 100);
+      this.hasActive = true;
+    } else {
+      this.hasActive = false;
     }
   },
 

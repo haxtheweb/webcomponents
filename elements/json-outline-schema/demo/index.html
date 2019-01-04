@@ -10,23 +10,27 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '@polymer/paper-button/paper-button.js';
       import '../json-outline-schema.js';
     </script>
     <script>
       window.addEventListener('json-outline-schema-ready', () => {
+        document.getElementById('button').addEventListener('tap', () => {
         const evt = new CustomEvent("json-outline-schema-debug-toggle", {
           bubbles: true,
           cancelable: true,
           detail: true
         });
-        document.body.dispatchEvent(evt);
+        this.dispatchEvent(evt);
       });
+    });
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic json-outline-schema demo</h3>
+      <paper-button id="button" raised>Toggle debug mode</paper-button>
       <demo-snippet>
         <template>
           <json-outline-schema></json-outline-schema>

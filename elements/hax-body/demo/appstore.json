@@ -945,7 +945,7 @@
         {
           "tag": "self-check",
           "properties": {
-            "style": "width: 50%; float: right;",
+            "style": "width: 50%;",
             "title": "Self-Check",
             "image": "https://farm1.staticflickr.com/642/21641107852_3602f9c1a8_b.jpg",
             "alt": "A few stickers associated with ELMS:LN are shown presented on the back of a laptop.",

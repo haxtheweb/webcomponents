@@ -20,57 +20,54 @@ Polymer({
       <style is="custom-style">
         :host {
           display: block;
+          color: white !important;
         }
         eco-json-schema-object {
+          color: white !important;
+          --paper-input-container-label: {
+            color: white !important;
+          }
+          --paper-input-container-label-floating: {
+            color: white !important;
+          }
           --eco-json-schema-object-form : {
             -ms-flex: unset;
             -webkit-flex: unset;
             flex: unset;
             -webkit-flex-basis: unset;
             flex-basis: unset;
+            color: white;
           }
+          --paper-icon-button: {
+            background-color: rgba(0, 0, 0, 0.9) !important;
+            border-radius: 50%;
+          }
+          --code-pen-title-color: #ffffff;
           --paper-checkbox-size: 22px;
-          --paper-checkbox-unchecked-color: var(
-            --simple-colors-blue-grey-background1,
-            grey
-          );
-          --paper-checkbox-checked-color: var(
-            --simple-colors-light-green-foreground3,
-            green
-          );
           --paper-checkbox-checked-ink-color: #ffffff;
           --paper-checkbox-unchecked-ink-color: #ffffff;
           --paper-checkbox-label-color: var(
-            --simple-colors-blue-grey-background1,
-            blue
-          );
-          --paper-checkbox-label-checked-color: var(
-            --simple-colors-accent-background1,
-            green
+            --simple-colors-blue-grey-background1
           );
           --paper-checkbox-label: {
             font-size: 22px;
             line-height: 32px;
           }
           --paper-input-container-invalid-color: var(
-            --simple-colors-red-foreground3,
-            red
+            --simple-colors-red-foreground3
           );
-          --secondary-text-color: #ffffff;
-          --primary-text-color: #ffffff;
-          --primary-color: #ffffff;
-          --paper-input-container-input-color: #ffffff;
+          --secondary-text-color: #ffffff !important;
+          --primary-text-color: #ffffff !important;
+          --paper-input-container-input-color: #ffffff !important;
           --paper-input-container-color: #ffffff !important;
           --paper-input-container-focus-color: var(
-            --simple-colors-default-theme-light-green-1,
-            green
+            --simple-colors-default-theme-light-green-1
           ) !important;
           --paper-listbox-color: #000000;
-          color: white;
         }
         .search-label {
           font-size: 24px;
-          color: var(--simple-colors-default-theme-light-green-1, green);
+          color: #ffffff;
           font-weight: bold;
           margin: 0;
           padding: 0;

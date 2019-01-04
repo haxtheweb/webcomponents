@@ -53,17 +53,17 @@ Polymer({
           cursor: pointer;
           width: 50px;
           height: 50px;
-          padding: 4px;
-          margin: 0;
+          padding: 5px;
+          margin: 10px;
           color: white;
           border-radius: 50%;
           box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
             0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-          -webkit-transition: box-shadow 0.2s;
-          -moz-transition: box-shadow 0.2s;
-          -ms-transition: box-shadow 0.2s;
-          -o-transition: box-shadow 0.2s;
-          transition: box-shadow 0.2s;
+          -webkit-transition: box-shadow 0.3s;
+          -moz-transition: box-shadow 0.3s;
+          -ms-transition: box-shadow 0.3s;
+          -o-transition: box-shadow 0.3s;
+          transition: box-shadow 0.3s;
           @apply --hax-app-picker-hax-element--icon;
         }
         .icon:hover,
@@ -85,13 +85,6 @@ Polymer({
           margin: 0;
           width: 40px;
           height: 40px;
-        }
-        @media screen and (max-width: 550px) {
-          .icon {
-            width: 32px;
-            height: 32px;
-            padding: 4px;
-          }
         }
       </style>
     </custom-style>

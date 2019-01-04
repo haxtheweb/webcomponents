@@ -162,19 +162,10 @@ Polymer({
           }
           --code-pen-title-color: #ffffff;
           --paper-checkbox-size: 22px;
-          --paper-checkbox-unchecked-color: var(
-            --simple-colors-blue-grey-background1
-          );
-          --paper-checkbox-checked-color: var(
-            --simple-colors-light-green-foreground3
-          );
           --paper-checkbox-checked-ink-color: #ffffff;
           --paper-checkbox-unchecked-ink-color: #ffffff;
           --paper-checkbox-label-color: var(
             --simple-colors-blue-grey-background1
-          );
-          --paper-checkbox-label-checked-color: var(
-            --simple-colors-accent-background1
           );
           --paper-checkbox-label: {
             font-size: 22px;
@@ -185,7 +176,6 @@ Polymer({
           );
           --secondary-text-color: #ffffff;
           --primary-text-color: #ffffff;
-          --primary-color: #ffffff;
           --paper-input-container-input-color: #ffffff;
           --paper-input-container-color: #ffffff !important;
           --paper-input-container-focus-color: var(

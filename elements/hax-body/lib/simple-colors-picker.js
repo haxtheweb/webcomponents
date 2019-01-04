@@ -27,8 +27,8 @@ Polymer({
         :host([collapsed]) #collapse {
           height: 0;
           overflow: hidden;
-          transition: all 0.25s;
-          transition-delay: 0.25s;
+          transition: all 0.3s;
+          transition-delay: 0.3s;
         }
         :host #palette {
           position: absolute;

@@ -145,6 +145,10 @@ class HAX extends HTMLElement {
 
   render() {
     if (!this.__rendered) {
+      // import into the active body
+      window.HaxStore.instance.appStore = JSON.parse(
+        this.getAttribute("app-store")
+      );
       this.__rendered = true;
       this.shadowRoot.innerHTML = null;
       this.template.innerHTML = this.html;
@@ -158,11 +162,7 @@ class HAX extends HTMLElement {
           body += nodes[i].outerHTML;
         }
       }
-      // import into the active body
       window.HaxStore.instance.activeHaxBody.importContent(body);
-      window.HaxStore.instance.appStore = JSON.parse(
-        this.getAttribute("app-store")
-      );
     }
   }
 

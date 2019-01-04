@@ -26,9 +26,12 @@ Polymer({
         position: absolute;
         z-index: 1000000;
       }
+      :host *[hidden] {
+        display: none;
+      }
       app-drawer {
         z-index: 100001;
-        height: 64px;
+        height: 40px;
         left: 0;
         top: 0;
         touch-action: auto;
@@ -37,7 +40,7 @@ Polymer({
         display: flex;
         --app-drawer-width: 100%;
         --app-drawer-content-container: {
-          --app-drawer-content-container_-_height: 64px;
+          --app-drawer-content-container_-_height: 40px;
           --app-drawer-content-container_-_padding: 0;
           width: 100%;
           left: 0;
@@ -52,36 +55,35 @@ Polymer({
           white-space: nowrap;
         }
       }
+      hax-panel-item {
+        margin: 0 auto;
+      }
       :host([align="right"]) app-drawer {
         right: 0;
         left: unset;
       }
       :host([edit-mode]) app-drawer {
         visibility: visible;
-        transition: 0.6s ease opacity;
-        opacity: 0.9;
+        transition: 0.3s ease opacity;
+        opacity: 1;
         right: 0;
         left: 0;
         top: 0;
       }
-      app-drawer[opened]:hover {
-        opacity: 1;
-      }
+
       #button {
         position: fixed;
         top: 0;
         left: 0;
         visibility: visible;
         z-index: 10000;
+        transition: all 0.3s ease;
         margin-left: 0;
-        transition: all 0;
-        opacity: 0.9;
         border-radius: 50%;
       }
       :host([edit-mode]) #button {
         visibility: hidden;
         opacity: 0;
-        transition: all 0.8s ease;
       }
       #button:hover {
         opacity: 1;
@@ -89,11 +91,6 @@ Polymer({
       :host([align="right"]) #button {
         right: 0;
         left: unset;
-      }
-      @media screen and (max-width: 550px) {
-        app-drawer {
-          height: 40px;
-        }
       }
     </style>
     <div hidden$="[[hidePanelOps]]">
@@ -112,7 +109,7 @@ Polymer({
       opened="{{editMode}}"
       disable-swipe
       persistent
-      transition-duration="800"
+      transition-duration="300"
       align="[[align]]"
     >
       <hax-panel-item

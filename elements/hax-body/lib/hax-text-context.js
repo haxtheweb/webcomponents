@@ -113,21 +113,6 @@ Polymer({
         label="Link"
         event-name="text-link"
       ></hax-context-item-textop>
-      <hax-context-item-menu
-        slot="primary"
-        selected-value="{{justifyValue}}"
-        id="justify"
-        icon="[[justifyIcon]]"
-        label="Alignment"
-      >
-        <paper-item value="" hidden=""></paper-item>
-        <paper-item value="text-align-left">
-          <iron-icon icon="editor:format-align-left"></iron-icon>
-        </paper-item>
-        <paper-item value="text-align-right">
-          <iron-icon icon="editor:format-align-right"></iron-icon>
-        </paper-item>
-      </hax-context-item-menu>
       <hax-context-item-textop
         slot="primary"
         icon="editor:format-list-numbered"
@@ -207,13 +192,6 @@ Polymer({
 
   properties: {
     /**
-     * Justify icon to reflect state.
-     */
-    justifyIcon: {
-      type: String,
-      value: "editor:format-align-left"
-    },
-    /**
      * Polyfill safe; this helps remove options from polyfilled platforms
      * as far as text manipulation operations.
      */
@@ -226,14 +204,6 @@ Polymer({
     selectedValue: {
       type: String,
       value: "p",
-      notify: true
-    },
-    /**
-     * Selected value to match text direction currently.
-     */
-    justifyValue: {
-      type: String,
-      value: "text-align-left",
       notify: true
     },
     /**
@@ -260,21 +230,7 @@ Polymer({
     let selection = window.HaxStore.getSelection();
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
-      // wow these are way too easy
-      case "text-align-left":
-        this.justifyIcon = detail.target.children[0].attributes[0].value;
-        break;
-      case "text-align-center":
-        this.justifyIcon = detail.target.children[0].attributes[0].value;
-        break;
-      case "text-align-right":
-        this.justifyIcon = detail.target.children[0].attributes[0].value;
-        break;
-      case "text-justify-full":
-        this.justifyIcon = detail.target.children[0].attributes[0].value;
-        break;
       case "close-menu":
-        this.$.justify.$.menu.hideMenu();
         this.$.formatsize.$.menu.hideMenu();
         break;
       case "insert-inline-gizmo":

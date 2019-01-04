@@ -32,7 +32,7 @@ Polymer({
         float: left;
         opacity: 0.5;
         visibility: visible;
-        transition: 0.8s all ease;
+        transition: 0.3s all ease;
       }
       .area:hover {
         opacity: 1;

@@ -1,7 +1,7 @@
 # &lt;json-outline-schema&gt;
 
 Outline
-> JS based state management helper for the json outline schema spec
+> 
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.

@@ -50,7 +50,7 @@ Polymer({
         border-radius: 0;
         font-size: 12px;
         height: 32px;
-        transition: 0.1s all;
+        transition: 0.3s all;
         @apply --hax-toolbar-item-container;
       }
       paper-button:hover {

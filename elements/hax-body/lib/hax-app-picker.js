@@ -59,8 +59,8 @@ Polymer({
         height: 30vh;
       }
       #dialog {
-        min-width: 30vw;
-        min-height: 30vh;
+        min-width: 350px;
+        min-height: 350px;
         height: 30vw;
         width: 30vh;
         padding: 8px;
@@ -96,25 +96,9 @@ Polymer({
           padding: 0 0 78px 0;
         }
       }
-      @media (orientation: landscape) {
-        #buttonlist,
-        #ironlist,
-        #dialog {
-          width: 40vw;
-          height: 50vh;
-        }
-      }
-      @media (orientation: portrait) {
-        #buttonlist,
-        #ironlist,
-        #dialog {
-          width: 50vw;
-          height: 60vh;
-        }
-      }
       .element-button {
         display: inline-block;
-        width: 72px;
+        width: 70px;
         margin: 8px 4px;
         text-align: center;
       }
@@ -124,10 +108,6 @@ Polymer({
         #dialog {
           max-width: 80%;
           overflow: auto;
-        }
-        .element-button {
-          width: 54px;
-          margin: 0px;
         }
       }
     </style>

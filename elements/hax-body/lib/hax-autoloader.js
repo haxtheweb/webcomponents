@@ -41,12 +41,6 @@ Polymer({
   attached: function() {
     // fire an event that this is the manager
     this.fire("hax-register-autoloader", this);
-  },
-
-  /**
-   * Ready.
-   */
-  ready: function() {
     // notice elements when they update
     this._observer = new FlattenedNodesObserver(this, info => {
       // if we've got new nodes, we have to react to that
@@ -54,18 +48,17 @@ Polymer({
         async.microTask.run(() => {
           setTimeout(() => {
             this.processNewElements(info.addedNodes);
-          }, 500);
+          }, 10);
         });
       }
     });
   },
-
   /**
    * Process new elements
    */
   processNewElements: function(e) {
     // when new nodes show up in the slots then fire the needed pieces
-    var effectiveChildren = FlattenedNodesObserver.getFlattenedNodes(
+    let effectiveChildren = FlattenedNodesObserver.getFlattenedNodes(
       this
     ).filter(n => n.nodeType === Node.ELEMENT_NODE);
     for (var i = 0; i < effectiveChildren.length; i++) {
@@ -79,20 +72,7 @@ Polymer({
         try {
           let name = effectiveChildren[i].tagName.toLowerCase();
           // see if we already have this definition
-          if (typeof effectiveChildren[i].HAXWiring === "function") {
-            const evt = new CustomEvent("hax-register-properties", {
-              bubbles: true,
-              cancelable: true,
-              detail: {
-                tag: name,
-                properties: effectiveChildren[i].HAXWiring.getHaxProperties(),
-                polymer: false
-              }
-            });
-            context.dispatchEvent(evt);
-          } else if (
-            typeof effectiveChildren[i].getHaxProperties === "function"
-          ) {
+          if (typeof effectiveChildren[i].getHaxProperties === "function") {
             const evt = new CustomEvent("hax-register-properties", {
               bubbles: true,
               cancelable: true,
@@ -100,6 +80,17 @@ Polymer({
                 tag: name,
                 properties: effectiveChildren[i].getHaxProperties(),
                 polymer: true
+              }
+            });
+            context.dispatchEvent(evt);
+          } else if (typeof effectiveChildren[i].HAXWiring === "function") {
+            const evt = new CustomEvent("hax-register-properties", {
+              bubbles: true,
+              cancelable: true,
+              detail: {
+                tag: name,
+                properties: effectiveChildren[i].HAXWiring.getHaxProperties(),
+                polymer: false
               }
             });
             context.dispatchEvent(evt);

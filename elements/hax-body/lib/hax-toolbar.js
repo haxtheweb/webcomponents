@@ -22,10 +22,13 @@ Polymer({
         justify-content: flex-start;
         opacity: 0.4;
         visibility: visible;
-        transition: 0.6s all ease;
+        transition: 0.3s all ease;
         box-sizing: border-box;
         height: 32px;
         pointer-events: all;
+      }
+      :host *[hidden] {
+        display: none;
       }
       .wrapper {
         display: flex;
@@ -101,12 +104,6 @@ Polymer({
           icon="editor:format-align-center"
           event-name="hax-align-center"
           >Center</hax-context-item
-        >
-        <hax-context-item
-          menu
-          icon="editor:format-align-right"
-          event-name="hax-align-right"
-          >Right</hax-context-item
         >
       </hax-context-item-menu>
       <paper-slider
@@ -251,10 +248,7 @@ Polymer({
         this.size = 100;
       }
 
-      if (window.HaxStore.instance.activeNode.style.float == "right") {
-        this.justifyValue = "hax-align-right";
-        this.justifyIcon = "editor:format-align-right";
-      } else if (
+      if (
         window.HaxStore.instance.activeNode.style.margin == "0px auto" &&
         window.HaxStore.instance.activeNode.style.display == "block"
       ) {
@@ -276,7 +270,6 @@ Polymer({
     switch (detail.eventName) {
       case "hax-align-left":
       case "hax-align-center":
-      case "hax-align-right":
         this.justifyIcon = detail.target.icon;
         break;
       case "close-menu":

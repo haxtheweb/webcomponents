@@ -61,6 +61,7 @@ Polymer({
         --app-drawer-width: 320px;
       }
       eco-json-schema-object {
+        color: white;
         --eco-json-schema-object-form : {
           -ms-flex: unset;
           -webkit-flex: unset;
@@ -68,28 +69,35 @@ Polymer({
           -webkit-flex-basis: unset;
           flex-basis: unset;
         }
+        --paper-icon-button: {
+          background-color: rgba(0, 0, 0, 0.9) !important;
+          border-radius: 50%;
+        }
+        --code-pen-title-color: #ffffff;
         --paper-checkbox-size: 22px;
-        --paper-checkbox-unchecked-color: var(
-          --simple-colors-blue-grey-background1
-        ) !important;
-        --paper-checkbox-checked-color: var(
-          --simple-colors-light-green-foreground3
-        ) !important;
-        --paper-checkbox-checked-ink-color: #ffffff !important;
-        --paper-checkbox-unchecked-ink-color: #ffffff !important;
+        --paper-checkbox-checked-ink-color: #ffffff;
+        --paper-checkbox-unchecked-ink-color: #ffffff;
         --paper-checkbox-label-color: var(
           --simple-colors-blue-grey-background1
-        ) !important;
-        --paper-checkbox-label-checked-color: var(
-          --simple-colors-accent-background1
-        ) !important;
+        );
         --paper-checkbox-label: {
           font-size: 22px;
           line-height: 32px;
         }
+        --paper-input-container-invalid-color: var(
+          --simple-colors-red-foreground3
+        );
+        --secondary-text-color: #ffffff;
+        --primary-text-color: #ffffff;
+        --paper-input-container-input-color: #ffffff;
+        --paper-input-container-color: #ffffff !important;
+        --paper-input-container-focus-color: var(
+          --simple-colors-default-theme-light-green-1
+        ) !important;
+        --paper-listbox-color: #000000;
       }
     </style>
-    <app-drawer id="dialog" align="right">
+    <app-drawer id="dialog" align="right" transition-duration="300">
       <h3 class="title">[[title]]</h3>
       <div style="height: 100%; overflow: auto;" class="pref-container">
         <eco-json-schema-object
@@ -144,50 +152,49 @@ Polymer({
    */
   attached: function() {
     // JSON schema object needs delayed to ensure page repaints the form
-    setTimeout(() => {
-      var schema = {
-        $schema: "http://json-schema.org/schema#",
-        title: "HAX preferences",
-        type: "object",
-        properties: {
-          haxRayMode: {
-            title: "X-Ray vision",
-            type: "boolean",
-            value: false
-          },
-          haxDeveloperMode: {
-            title: "Developer mode",
-            type: "boolean",
-            value: false
-          },
-          haxShowExportButton: {
-            title: "Show Export Panel",
-            type: "boolean",
-            value: false
-          },
-          haxGithubReport: {
-            title: "Report issue",
-            type: "string",
-            value: false,
-            component: {
-              name: "a",
-              properties: {
-                style:
-                  "color: #81a3a9;font-size: 18px;top: 100vh;position: fixed;right: 0;padding: 16px;font-style: italic;",
-                id: "reportghissue",
-                href:
-                  "https://github.com/LRNWebComponents/hax-body/issues/new?body=URL%20base:%20" +
-                  window.location.pathname +
-                  "&title=HAX%20bug%20report%20from%20preference%20panel",
-                target: "_blank"
-              },
-              slot: "Report an issue with HAX"
-            }
+    var schema = {
+      $schema: "http://json-schema.org/schema#",
+      title: "HAX preferences",
+      type: "object",
+      properties: {
+        haxRayMode: {
+          title: "X-Ray vision",
+          type: "boolean",
+          value: false
+        },
+        haxDeveloperMode: {
+          title: "Developer mode",
+          type: "boolean",
+          value: false
+        },
+        haxShowExportButton: {
+          title: "Show Export Panel",
+          type: "boolean",
+          value: false
+        },
+        haxGithubReport: {
+          title: "Report issue",
+          type: "string",
+          value: false,
+          component: {
+            name: "a",
+            properties: {
+              style:
+                "color: #81a3a9;font-size: 18px;top: 100vh;position: fixed;right: 0;padding: 16px;font-style: italic;",
+              id: "reportghissue",
+              href:
+                "https://github.com/LRNWebComponents/hax-body/issues/new?body=URL%20base:%20" +
+                window.location.pathname +
+                "&title=HAX%20bug%20report%20from%20preference%20panel",
+              target: "_blank"
+            },
+            slot: "Report an issue with HAX"
           }
         }
-      };
-      this.set("schema", schema);
-    }, 1000);
+      }
+    };
+    this.set("schema", {});
+    this.set("schema", schema);
     // register this with hax as the preference pane
     this.fire("hax-register-preferences", this);
     // add event listener

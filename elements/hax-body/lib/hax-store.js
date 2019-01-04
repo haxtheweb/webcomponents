@@ -539,6 +539,10 @@ Polymer({
       "hax-insert-content",
       this._haxStoreInsertContent.bind(this)
     );
+    document.body.removeEventListener(
+      "hax-insert-content-array",
+      this._haxStoreInsertMultiple.bind(this)
+    );
     // capture events and intercept them globally
     window.removeEventListener(
       "onbeforeunload",
@@ -555,17 +559,17 @@ Polymer({
    * attached.
    */
   attached: function() {
-    // capture events and intercept them globally
-    window.addEventListener("onbeforeunload", this._onBeforeUnload.bind(this));
-    window.addEventListener("paste", this._onPaste.bind(this));
-    window.addEventListener("keypress", this._onKeyPress.bind(this));
-    this.haxToast = window.SimpleToast.requestAvailability();
     // fire that hax store is ready to go so now we can setup the rest
     this.fire("hax-store-ready", true);
     window.HaxStore.ready = true;
     this.__ready = true;
     // register built in primitive definitions
     this._buildPrimitiveDefinitions();
+    // capture events and intercept them globally
+    window.addEventListener("onbeforeunload", this._onBeforeUnload.bind(this));
+    window.addEventListener("paste", this._onPaste.bind(this));
+    window.addEventListener("keypress", this._onKeyPress.bind(this));
+    this.haxToast = window.SimpleToast.requestAvailability();
   },
   /**
    * Before the browser closes / changes paths, ask if they are sure they want to leave
@@ -817,6 +821,10 @@ Polymer({
     document.body.addEventListener(
       "hax-insert-content",
       this._haxStoreInsertContent.bind(this)
+    );
+    document.body.addEventListener(
+      "hax-insert-content-array",
+      this._haxStoreInsertMultiple.bind(this)
     );
 
     document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
@@ -1191,7 +1199,7 @@ Polymer({
                 .querySelector("#activepage .iron-selected paper-input")
                 .focus();
             }
-          }, 200);
+          }, 325);
         } else {
           setTimeout(() => {
             if (
@@ -1205,7 +1213,7 @@ Polymer({
                 )
                 .focus();
             }
-          }, 100);
+          }, 325);
         }
       } else {
         this[drawers[i]].close();
@@ -1262,6 +1270,30 @@ Polymer({
           properties
         );
       }
+    }
+  },
+  /**
+   * Optional send array, to improve performance and event bubbling better
+   */
+  _haxStoreInsertMultiple: function(e) {
+    if (e.detail) {
+      var properties;
+      for (var i in e.detail) {
+        properties = {};
+        // support for properties to be set automatically optionally
+        if (typeof e.detail[i].properties !== typeof undefined) {
+          properties = e.detail[i].properties;
+        }
+        this.activeHaxBody.haxInsert(
+          e.detail[i].tag,
+          e.detail[i].content,
+          properties,
+          false
+        );
+      }
+      setTimeout(() => {
+        this.activeHaxBody.breakUpdateLock();
+      }, 300);
     }
   },
 
@@ -1413,14 +1445,6 @@ Polymer({
           let gizmos = this.gizmoList;
           gizmos.push(gizmo);
           window.HaxStore.write("gizmoList", gizmos, this);
-          // delete this tag if it was in the autoloader
-          // as it has served it's purpose.
-          if (
-            typeof e.target.parentElement !== typeof undefined &&
-            e.target.parentElement.tagName === "HAX-AUTOLOADER"
-          ) {
-            dom(this.haxAutoloader).removeChild(e.target);
-          }
         }
         this.set("elementList." + e.detail.tag, e.detail.properties);
         // only push new values on if we got something new
@@ -1431,6 +1455,13 @@ Polymer({
         ) {
           this.push("validTagList", e.detail.tag);
         }
+      }
+      // delete this tag if it was in the autoloader as it has served it's purpose.
+      if (
+        typeof e.target.parentElement !== typeof undefined &&
+        e.target.parentElement.tagName === "HAX-AUTOLOADER"
+      ) {
+        dom(this.haxAutoloader).removeChild(e.target);
       }
     }
   }

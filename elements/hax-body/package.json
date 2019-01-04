@@ -40,7 +40,7 @@
     "@lrnwebcomponents/dl-behavior": "^0.1.0",
     "@lrnwebcomponents/dropdown-select": "^0.1.0",
     "@lrnwebcomponents/eco-json-schema-form": "^0.1.0",
-    "@lrnwebcomponents/elmsln-loading": "^0.1.0",
+    "@lrnwebcomponents/hexagon-loader": "^0.1.0",
     "@lrnwebcomponents/grafitto-filter": "^0.1.0",
     "@lrnwebcomponents/grid-plate": "^0.1.0",
     "@lrnwebcomponents/hax-body-behaviors": "^0.1.0",

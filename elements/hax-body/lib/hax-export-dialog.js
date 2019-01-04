@@ -92,7 +92,7 @@ Polymer({
         font-family: monospace;
       }
     </style>
-    <app-drawer id="dialog" align="right">
+    <app-drawer id="dialog" align="right" transition-duration="300">
       <h3 class="title">[[title]]</h3>
       <div style="height: 100%; overflow: auto;" class="pref-container">
         <textarea id="textarea" rows="20"></textarea>

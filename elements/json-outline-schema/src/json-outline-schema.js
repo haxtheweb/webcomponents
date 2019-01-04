@@ -18,7 +18,6 @@ window.JSONOutlineSchema.requestAvailability = () => {
   }
   return window.JSONOutlineSchema.instance;
 };
-
 /**
  * `json-outline-schema`
  * `JS based state management helper for the json outline schema spec`
@@ -27,9 +26,9 @@ window.JSONOutlineSchema.requestAvailability = () => {
  *  -
  *
  * @customElement
- * @HTMLElement
  * @demo demo/index.html
  */
+
 class JsonOutlineSchema extends HTMLElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
@@ -41,11 +40,43 @@ class JsonOutlineSchema extends HTMLElement {
     return "json-outline-schema";
   }
   /**
+   * life cycle
+   */
+  constructor(delayRender = false) {
+    super();
+    // set tag for later use
+    this.tag = JsonOutlineSchema.tag;
+    // optional queue for future use
+    this._queue = [];
+    this.template = document.createElement("template");
+
+    this.attachShadow({ mode: "open" });
+
+    if (!delayRender) {
+      this.render();
+    }
+    this.tag = JsonOutlineSchema.tag;
+    this.file = null;
+    this.id = this.generateUUID();
+    this.title = "New site";
+    this.author = "";
+    this.description = "";
+    this.license = "by-sa";
+    this.metadata = {};
+    this.items = [];
+    this.__debug = false;
+    window.JSONOutlineSchema.instance = this;
+  }
+  /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
     if (window.ShadyCSS) {
       window.ShadyCSS.styleElement(this);
+    }
+
+    if (this._queue.length) {
+      this._processQueue();
     }
     window.addEventListener(
       "json-outline-schema-debug-toggle",
@@ -57,6 +88,41 @@ class JsonOutlineSchema extends HTMLElement {
       detail: true
     });
     this.dispatchEvent(evt);
+  }
+
+  _copyAttribute(name, to) {
+    const recipients = this.shadowRoot.querySelectorAll(to);
+    const value = this.getAttribute(name);
+    const fname = value == null ? "removeAttribute" : "setAttribute";
+    for (const node of recipients) {
+      node[fname](name, value);
+    }
+  }
+
+  _queueAction(action) {
+    this._queue.push(action);
+  }
+
+  _processQueue() {
+    this._queue.forEach(action => {
+      this[`_${action.type}`](action.data);
+    });
+
+    this._queue = [];
+  }
+
+  _setProperty({ name, value }) {
+    this[name] = value;
+  }
+
+  render() {
+    this.shadowRoot.innerHTML = null;
+    this.template.innerHTML = this.html;
+
+    if (window.ShadyCSS) {
+      window.ShadyCSS.prepareTemplate(this.template, this.tag);
+    }
+    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }
   /**
    * life cycle, element is removed from the DOM
@@ -72,66 +138,6 @@ class JsonOutlineSchema extends HTMLElement {
       detail: true
     });
     this.dispatchEvent(evt);
-  }
-  /**
-   * Allow toggling of debug mode which visualizes the outline and writes it to console.
-   */
-  _toggleDebug(e) {
-    this.__debug = !this.__debug;
-    if (this.__debug) {
-      let obj = {
-        file: this.file,
-        id: this.id,
-        title: this.title,
-        author: this.author,
-        description: this.description,
-        license: this.license,
-        metadata: this.metadata,
-        items: this.items
-      };
-      let span = document.createElement("span");
-      span.innerHTML = JSON.stringify(obj, null, 2);
-      this.shadowRoot.appendChild(span.cloneNode(true));
-    }
-  }
-  /**
-   * Hide callback
-   */
-  jsonOutlineSchemaReady(e) {
-    // add your code to run when the singleton hides
-  }
-  /**
-   * Establish defaults
-   */
-  constructor(delayRender = false) {
-    super();
-    this.tag = JsonOutlineSchema.tag;
-    this.file = null;
-    this.id = this.generateUUID();
-    this.title = "New site";
-    this.author = "";
-    this.description = "";
-    this.license = "by-sa";
-    this.metadata = {};
-    this.items = [];
-    this.__debug = false;
-    window.JSONOutlineSchema.instance = this;
-    this.template = document.createElement("template");
-
-    this.attachShadow({ mode: "open" });
-    if (!delayRender) {
-      this.render();
-    }
-  }
-
-  render() {
-    this.shadowRoot.innerHTML = null;
-    this.template.innerHTML = this.html;
-
-    if (window.ShadyCSS) {
-      window.ShadyCSS.prepareTemplate(this.template, this.tag);
-    }
-    this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }
   /**
    * Get a new item matching schema standards
@@ -265,6 +271,99 @@ class JsonOutlineSchema extends HTMLElement {
     return Math.floor((1 + Math.random()) * 0x10000)
       .toString(16)
       .substring(1);
+  }
+  /**
+   * Allow toggling of debug mode which visualizes the outline and writes it to console.
+   */
+  _toggleDebug(e) {
+    this.__debug = !this.__debug;
+    this._triggerDebugPaint(this.__debug);
+  }
+  /**
+   * Paint the slot in order to debug the object inside
+   */
+  _triggerDebugPaint(debug) {
+    if (debug) {
+      let obj = {
+        file: this.file,
+        id: this.id,
+        title: this.title,
+        author: this.author,
+        description: this.description,
+        license: this.license,
+        metadata: this.metadata,
+        items: this.items
+      };
+      let span = document.createElement("span");
+      span.innerHTML = JSON.stringify(obj, null, 2);
+      this.shadowRoot.appendChild(span.cloneNode(true));
+    } else {
+      this.render();
+    }
+  }
+  static get observedAttributes() {
+    return [
+      "file",
+      "id",
+      "title",
+      "author",
+      "description",
+      "license",
+      "metadata"
+    ];
+  }
+
+  attributeChangedCallback(attr, oldValue, newValue) {
+    if (this.__debug) {
+      this.render();
+      this._triggerDebugPaint(this.__debug);
+    }
+  }
+  get file() {
+    return this.getAttribute("file");
+  }
+  set file(newValue) {
+    this.setAttribute("file", newValue);
+  }
+  get id() {
+    return this.getAttribute("id");
+  }
+  set id(newValue) {
+    this.setAttribute("id", newValue);
+  }
+  get title() {
+    return this.getAttribute("title");
+  }
+  set title(newValue) {
+    this.setAttribute("title", newValue);
+  }
+  get author() {
+    return this.getAttribute("author");
+  }
+  set author(newValue) {
+    this.setAttribute("author", newValue);
+  }
+  get description() {
+    return this.getAttribute("description");
+  }
+  set description(newValue) {
+    this.setAttribute("description", newValue);
+  }
+  get license() {
+    return this.getAttribute("license");
+  }
+  set license(newValue) {
+    this.setAttribute("license", newValue);
+  }
+  get metadata() {
+    console.log(JSON.parse(this.getAttribute("metadata")));
+    return JSON.parse(this.getAttribute("metadata"));
+  }
+  set metadata(newValue) {
+    this.setAttribute("metadata", JSON.stringify(newValue));
+  }
+  updateMetadata(key, value) {
+    this.metadata[key] = value;
   }
 }
 window.customElements.define(JsonOutlineSchema.tag, JsonOutlineSchema);

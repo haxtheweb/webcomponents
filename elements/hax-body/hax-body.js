@@ -67,7 +67,7 @@ $_documentContainer.innerHTML = `<dom-module id="hax-body">
         left: 0;
         bottom: 0;
         width: 32px;
-        transition: .6s all ease;
+        transition: .3s all ease;
       }
       :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]):hover:before {
         content: '';
@@ -77,7 +77,7 @@ $_documentContainer.innerHTML = `<dom-module id="hax-body">
         left: 0;
         bottom: 0;
         width: 32px;
-        transition: .6s all ease;
+        transition: .3s all ease;
       }
       :host([edit-mode]) #bodycontainer ::slotted(*.hax-active[data-editable]) {
         cursor: text !important;
@@ -97,7 +97,7 @@ $_documentContainer.innerHTML = `<dom-module id="hax-body">
         left: 0;
         bottom: 0;
         width: 32px;
-        transition: .6s all ease;
+        transition: .3s all ease;
       }
       :host([edit-mode]) #bodycontainer ::slotted(code.hax-active[data-editable]) {
         display: block;
@@ -132,11 +132,11 @@ $_documentContainer.innerHTML = `<dom-module id="hax-body">
       #contextcontainer {
         display: none;
       }
-      :host([edit-mode])[hax-ray-mode] #bodycontainer ::slotted(*[data-editable]) {
+      :host([edit-mode][hax-ray-mode]) #bodycontainer ::slotted(*[data-editable]) {
         outline: 1px dashed #d3d3d3;
         outline-offset: 4px;
       }
-      :host([edit-mode])[hax-ray-mode] #bodycontainer ::slotted(*[data-editable]):before {
+      :host([edit-mode][hax-ray-mode]) #bodycontainer ::slotted(*[data-editable]):before {
         content: attr(data-hax-ray) " " attr(resource) " " attr(typeof) " " attr(property) " " attr(content);
         font-size: 10px;
         font-style: italic;
@@ -563,7 +563,7 @@ let HaxBody = Polymer({
   /**
    * Insert new tag + content into the local DOM as a node.
    */
-  haxInsert: function(tag, content, properties = {}) {
+  haxInsert: function(tag, content, properties = {}, waitForLock = true) {
     var tags = window.HaxStore.instance.validTagList;
     // verify this tag is a valid one
     if (tags.includes(tag)) {
@@ -643,22 +643,32 @@ let HaxBody = Polymer({
         dom(this).appendChild(newNode);
       }
       this.$.textcontextmenu.highlightOps = false;
+      this.__updateLockFocus = newNode;
       // wait so that the DOM can have the node to then attach to
-      setTimeout(() => {
-        window.HaxStore.write("activeContainerNode", newNode, this);
-        window.HaxStore.write("activeNode", newNode, this);
-        // attempt to focus on the new node, may not always work
-        newNode.focus();
-        // scroll to it
-        if (typeof newNode.scrollIntoViewIfNeeded === "function") {
-          newNode.scrollIntoViewIfNeeded(true);
-        } else {
-          newNode.scrollIntoView({ behavior: "smooth", inline: "center" });
-        }
-      }, 100);
+      if (waitForLock) {
+        setTimeout(() => {
+          this.breakUpdateLock();
+        }, 300);
+      }
       return true;
     }
     return false;
+  },
+
+  breakUpdateLock: function() {
+    window.HaxStore.write("activeContainerNode", this.__updateLockFocus, this);
+    window.HaxStore.write("activeNode", this.__updateLockFocus, this);
+    // attempt to focus on the new node, may not always work
+    this.__updateLockFocus.focus();
+    // scroll to it
+    if (typeof this.__updateLockFocus.scrollIntoViewIfNeeded === "function") {
+      this.__updateLockFocus.scrollIntoViewIfNeeded(true);
+    } else {
+      this.__updateLockFocus.scrollIntoView({
+        behavior: "smooth",
+        inline: "center"
+      });
+    }
   },
   /**
    * Return the current hax content area as text that could be
@@ -893,7 +903,7 @@ let HaxBody = Polymer({
       } else {
         container.scrollIntoView({ behavior: "smooth", inline: "center" });
       }
-    }, 250);
+    }, 100);
     return true;
   },
   /**
@@ -1031,7 +1041,7 @@ let HaxBody = Polymer({
           fragment.removeChild(fragment.firstChild);
         }
       }
-    }, 200);
+    }, 100);
   },
   /**
    * Respond to hax operations.
@@ -1060,10 +1070,6 @@ let HaxBody = Polymer({
         break;
       case "text-align-left":
         this.activeNode.style.textAlign = null;
-        this.positionContextMenus(this.activeNode, this.activeContainerNode);
-        break;
-      case "text-align-right":
-        this.activeNode.style.textAlign = "right";
         this.positionContextMenus(this.activeNode, this.activeContainerNode);
         break;
       // grid plate based operations
@@ -1208,7 +1214,7 @@ let HaxBody = Polymer({
         this.activeNode.style.width = detail.value + "%";
         setTimeout(() => {
           this.positionContextMenus(this.activeNode, this.activeContainerNode);
-        }, 1000);
+        }, 325);
         break;
       // settings button selected from hax-ce-context bar
       // which means we should skip to the settings page after
@@ -1231,7 +1237,7 @@ let HaxBody = Polymer({
         // accessibility enhancement to keyboard focus configure button
         setTimeout(() => {
           window.HaxStore.instance.haxManager.$.preview.$.configurebutton.focus();
-        }, 100);
+        }, 325);
         break;
       // container / layout settings button has been activated
       case "hax-manager-configure-container":
@@ -1256,7 +1262,7 @@ let HaxBody = Polymer({
         // accessibility enhancement to keyboard focus configure button
         setTimeout(() => {
           window.HaxStore.instance.haxManager.$.preview.$.configurebutton.focus();
-        }, 100);
+        }, 325);
         break;
     }
   },
@@ -1492,10 +1498,7 @@ let HaxBody = Polymer({
           window.HaxStore.instance.activeContainerNode
         );
       }, 25);
-      if (newValue.style.textAlign == "right") {
-        this.$.textcontextmenu.justifyIcon = "editor:format-align-right";
-        this.$.textcontextmenu.justifyValue = "text-align-right";
-      } else if (newValue.style.textAlign == "left") {
+      if (newValue.style.textAlign == "left") {
         this.$.textcontextmenu.justifyIcon = "editor:format-align-left";
         this.$.textcontextmenu.justifyValue = "text-align-left";
       } else if (newValue.style.float == "left") {
