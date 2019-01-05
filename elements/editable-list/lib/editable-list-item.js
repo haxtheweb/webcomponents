@@ -39,6 +39,11 @@ class EditableListItem extends PolymerElement {
           visibility: visible;
           opacity: 1;
         }
+        :host #add,
+        #duplicate {
+          visibility: visible;
+          opacity: 1;
+        }
         paper-icon-button {
           visibility: hidden;
           opacity: 0;
@@ -103,6 +108,16 @@ class EditableListItem extends PolymerElement {
           on-tap="_editToggle"
           id="edit"
           icon="icons:create"
+        ></paper-icon-button>
+        <paper-icon-button
+          on-tap="_editToggle"
+          id="add"
+          icon="icons:add"
+        ></paper-icon-button>
+        <paper-icon-button
+          on-tap="_editToggle"
+          id="duplicate"
+          icon="icons:content-copy"
         ></paper-icon-button>
         <paper-icon-button
           on-tap="_deleteModal"
