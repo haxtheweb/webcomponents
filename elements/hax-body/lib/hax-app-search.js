@@ -44,39 +44,19 @@ Polymer({
           font-size: 14px;
         }
       }
-      #loading[hidden] {
-        visibility: hidden !important;
-        opacity: 0 !important;
-        display: block !important;
-      }
-      .loading {
+      hexagon-loader {
+        height: 100%;
+        justify-content: center;
+        margin: 0 auto -200px;
+        z-index: 1000;
+        position: relative;
         transition: 0.3s linear opacity, 0.3s linear visibility;
         width: calc(100% - 32px);
-        z-index: 1000;
-        opacity: 1;
-        align-content: space-around;
-        justify-content: center;
-        position: absolute;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        margin: 0 auto;
+        opacity: 0;
         visibility: visible;
-        transition: visibility 0.3s, opacity 0.3s ease;
       }
-      .loading hexagon-loader {
-        margin: 0 80px;
-        display: inline-flex;
-      }
-      #loading {
-        height: 100%;
-        display: flex;
-        justify-content: center;
-      }
-      #loading .loading,
-      #loading hexagon-loader {
-        display: block;
-        height: 80px;
+      hexagon-loader[loading] {
+        opacity: 1;
       }
       .card-content {
         padding: 0.16px;
@@ -128,19 +108,17 @@ Polymer({
       request-data="[[requestData]]"
       pagination="[[pagination]]"
     ></hax-app-pagination>
-    <div id="loading" class="loading" hidden\$="[[!loading]]">
-      <hexagon-loader
-        loading="[[loading]]"
-        color="grey"
-        aria-roledescription="Loading"
-      ></hexagon-loader>
-    </div>
+    <hexagon-loader
+      loading$="[[loading]]"
+      color="grey"
+      aria-roledescription="Loading"
+    ></hexagon-loader>
     <iron-list
       grid
       id="itemlist"
       items="[[media]]"
       as="resultData"
-      hidden\$="[[loading]]"
+      hidden$="[[loading]]"
     >
       <template>
         <hax-app-search-result
@@ -465,7 +443,7 @@ Polymer({
       this.notifyPath("media.*");
       setTimeout(() => {
         this.$.itemlist.fire("iron-resize");
-      }, 10);
+      }, 1000);
     }
   },
   /**

@@ -231,7 +231,7 @@ Polymer({
                     <vaadin-upload
                       form-data-name="file-upload"
                       id="fileupload"
-                      hidden\$="[[!canSupportUploads]]"
+                      hidden$="[[!canSupportUploads]]"
                     ></vaadin-upload>
                   </div>
                   <paper-button id="newassetconfigure" raised=""

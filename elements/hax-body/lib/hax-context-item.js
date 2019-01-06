@@ -42,7 +42,8 @@ Polymer({
       icon="[[icon]]"
       hidden\$="[[!icon]]"
       icon-class="[[iconClass]]"
-      on-tap="_fireEvent"
+      on-mousedown="_storeSelection"
+      on-click="_fireEvent"
       tooltip="[[label]]"
       tooltip-direction="[[direction]]"
       default="[[default]]"
@@ -173,7 +174,15 @@ Polymer({
       value: ""
     }
   },
-
+  /**
+   * Store the selection object. This helps fix issues with safari
+   * and holding focus on non-text elements actually stealing
+   * the selection priority, making it impossible to know what's
+   * been selected if clicking a button to try and apply something to.
+   */
+  _storeSelection: function(e) {
+    window.HaxStore._tmpSelection = window.HaxStore.getSelection();
+  },
   /**
    * Fire an event that includes the eventName of what was just pressed.
    */

@@ -25,6 +25,9 @@ Polymer({
         pointer-events: none;
         background-color: white;
       }
+      :host [hidden] {
+        display: none;
+      }
       paper-item {
         -webkit-justify-content: flex-start;
         justify-content: flex-start;
@@ -152,7 +155,16 @@ Polymer({
         icon="device:graphic-eq"
         label="Advanced item"
         event-name="insert-inline-gizmo"
+        hidden$="[[isSafari]]"
       ></hax-context-item>
+      <hax-context-item-textop
+        slot="primary"
+        icon="device:graphic-eq"
+        label="Advanced item"
+        event-name="insert-inline-gizmo"
+        hidden$="[[!isSafari]]"
+      ></hax-context-item-textop>
+
       <hax-context-item-textop
         menu=""
         slot="more"
@@ -212,6 +224,14 @@ Polymer({
     selection: {
       type: Boolean,
       value: false
+    },
+    /**
+     * Is this safari
+     */
+    isSafari: {
+      type: Boolean,
+      notify: true,
+      computed: "_isSafari()"
     }
   },
 
@@ -234,6 +254,26 @@ Polymer({
         this.$.formatsize.$.menu.hideMenu();
         break;
       case "insert-inline-gizmo":
+        if (
+          window.HaxStore._tmpSelection &&
+          window.HaxStore.instance.editMode
+        ) {
+          try {
+            // @todo this doesn't work in safari
+            if (
+              window.HaxStore._tmpRange.startContainer.parentNode.parentNode
+                .tagName === "HAX-BODY" ||
+              window.HaxStore._tmpRange.startContainer.parentNode.parentNode
+                .parentNode.tagName === "HAX-BODY"
+            ) {
+              window.HaxStore.write(
+                "activePlaceHolder",
+                window.HaxStore._tmpRange,
+                this
+              );
+            }
+          } catch (err) {}
+        }
         if (window.HaxStore.instance.activePlaceHolder != null) {
           // store placeholder because if this all goes through we'll want
           // to kill the originating text
@@ -324,7 +364,7 @@ Polymer({
   /**
    * Test for safari, if it is don't place things in the menu
    */
-  isSafari: function(typevalue) {
+  _isSafari: function() {
     let ua = navigator.userAgent.toLowerCase();
     // test to find safari to account for it's handling
     // of what's been selected. This isn't great UX but

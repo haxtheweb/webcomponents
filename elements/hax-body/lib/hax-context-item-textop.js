@@ -62,7 +62,6 @@ Polymer({
   `,
 
   is: "hax-context-item-textop",
-
   properties: {
     /**
      * corner
@@ -174,13 +173,12 @@ Polymer({
   },
 
   /**
-   * Ready.
+   * attached life cycle
    */
-  ready: function() {
+  attached: function() {
     // bind keyboard to button press
     this.target = this.$.button;
   },
-
   /**
    * Fire an event that includes the eventName of what was just pressed.
    */

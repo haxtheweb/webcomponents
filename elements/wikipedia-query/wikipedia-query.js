@@ -90,7 +90,7 @@ let WikipediaQuery = Polymer({
   attached: function() {
     let date = new Date(Date.now());
     this.__now =
-      date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear();
+      date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
     // Establish hax properties if they exist
     let props = {
       canScale: true,

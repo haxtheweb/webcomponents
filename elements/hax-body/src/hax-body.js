@@ -285,6 +285,12 @@ let HaxBody = Polymer({
    * we exist and are the thing being edited.
    */
   attached: function() {
+    this.shadowRoot.querySelector("slot").addEventListener("mouseup", e => {
+      const tmp = window.HaxStore.getSelection();
+      window.HaxStore._tmpSelection = tmp;
+      let range = window.HaxStore._tmpSelection.getRangeAt(0);
+      window.HaxStore._tmpRange = range.cloneRange();
+    });
     this.shadowRoot.querySelector("slot").addEventListener("paste", e => {
       // only perform this on a text element that is active
       if (
@@ -320,31 +326,47 @@ let HaxBody = Polymer({
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
     );
-    document.body.addEventListener(
-      "selectstart",
-      this._selectionChange.bind(this)
-    );
-    document.body.addEventListener(
-      "mouseup",
-      this._selectionMouseUp.bind(this)
-    );
     window.addEventListener("scroll", this._keepContextVisible.bind(this));
   },
   /**
    * Detached life cycle
    */
   detached: function() {
+    this.shadowRoot.querySelector("slot").removeEventListener("mouseup", e => {
+      window.HaxStore._tmpSelection = window.HaxStore.getSelection();
+    });
+    this.shadowRoot.querySelector("slot").removeEventListener("paste", e => {
+      // only perform this on a text element that is active
+      if (
+        window.HaxStore.instance.isTextElement(
+          window.HaxStore.instance.activeNode
+        ) &&
+        !window.HaxStore.instance.haxManager.opened
+      ) {
+        e.preventDefault();
+        let text = "";
+        // intercept paste event
+        if (e.clipboardData || e.originalEvent.clipboardData) {
+          text = (e.originalEvent || e).clipboardData.getData("text/plain");
+        } else if (window.clipboardData) {
+          text = window.clipboardData.getData("Text");
+        }
+        let sel, range, html;
+        if (window.HaxStore.instance.activeHaxBody.shadowRoot.getSelection) {
+          sel = window.HaxStore.instance.activeHaxBody.shadowRoot.getSelection();
+          if (sel.getRangeAt && sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            range.deleteContents();
+            range.insertNode(document.createTextNode(text));
+          }
+        } else if (document.selection && document.selection.createRange) {
+          document.selection.createRange().text = text;
+        }
+      }
+    });
     document.body.removeEventListener(
       "hax-store-property-updated",
       this._haxStorePropertyUpdated.bind(this)
-    );
-    document.body.removeEventListener(
-      "selectstart",
-      this._selectionChange.bind(this)
-    );
-    document.body.removeEventListener(
-      "mouseup",
-      this._selectionMouseUp.bind(this)
     );
     window.removeEventListener("scroll", this._keepContextVisible.bind(this));
   },
@@ -396,30 +418,6 @@ let HaxBody = Polymer({
       top + height > window.pageYOffset &&
       left + width > window.pageXOffset
     );
-  },
-  /**
-   * Selection changed
-   */
-  _selectionChange: function(e) {
-    window.__startedSelection = true;
-  },
-  _selectionMouseUp: function(e) {
-    if (window.__startedSelection && this.editMode) {
-      try {
-        let selection = window.HaxStore.getSelection();
-        let range = selection.getRangeAt(0);
-        let newRange = range.cloneRange();
-        window.__startedSelection = false;
-        if (
-          newRange.startContainer.parentNode.parentNode.parentElement
-            .tagName === "HAX-BODY" ||
-          newRange.startContainer.parentNode.parentElement.tagName ===
-            "HAX-BODY"
-        ) {
-          window.HaxStore.write("activePlaceHolder", newRange, this);
-        }
-      } catch (err) {}
-    }
   },
   /**
    * Replace place holder after an event has called for it in the element itself

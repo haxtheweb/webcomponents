@@ -424,10 +424,8 @@ Polymer({
           app.data = apps[i];
           // see if anything coming across claims to be a backend for adding items
           // and then enable the upload button
-          if (typeof apps[i].connection.operations.add !== typeof undefined) {
-            async.microTask.run(() => {
-              window.HaxStore.write("canSupportUploads", true, this);
-            });
+          if (apps[i].connection.operations.add) {
+            window.HaxStore.write("canSupportUploads", true, this);
           }
           window.HaxStore.instance.appendChild(app);
         }
