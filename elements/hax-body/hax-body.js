@@ -288,8 +288,10 @@ let HaxBody = Polymer({
     this.shadowRoot.querySelector("slot").addEventListener("mouseup", e => {
       const tmp = window.HaxStore.getSelection();
       window.HaxStore._tmpSelection = tmp;
-      let range = window.HaxStore._tmpSelection.getRangeAt(0);
-      window.HaxStore._tmpRange = range.cloneRange();
+      try {
+        let range = window.HaxStore._tmpSelection.getRangeAt(0);
+        window.HaxStore._tmpRange = range.cloneRange();
+      } catch (e) {}
     });
     this.shadowRoot.querySelector("slot").addEventListener("paste", e => {
       // only perform this on a text element that is active
@@ -1065,6 +1067,7 @@ let HaxBody = Polymer({
           this.haxChangeTagName(this.activeContainerNode, detail.eventName),
           this
         );
+        this.positionContextMenus(this.activeNode, this.activeContainerNode);
         break;
       case "text-align-left":
         this.activeNode.style.textAlign = null;
@@ -1212,7 +1215,7 @@ let HaxBody = Polymer({
         this.activeNode.style.width = detail.value + "%";
         setTimeout(() => {
           this.positionContextMenus(this.activeNode, this.activeContainerNode);
-        }, 325);
+        }, 500);
         break;
       // settings button selected from hax-ce-context bar
       // which means we should skip to the settings page after

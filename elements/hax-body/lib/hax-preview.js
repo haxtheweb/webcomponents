@@ -438,6 +438,7 @@ Polymer({
               }
               // attempt to set the property in the preview node
               if (
+                property != "prefix" &&
                 element.properties[property] != null &&
                 !element.properties[property].readOnly
               ) {
@@ -445,8 +446,16 @@ Polymer({
                 try {
                   this.previewNode.set(property, element.properties[property]);
                 } catch (e) {
+                  console.warn(`${property} is busted some how`);
                   console.log(e);
                 }
+              } else if (property === "prefix") {
+                this.previewNode.setAttribute(
+                  "prefix",
+                  element.properties[property]
+                );
+              } else {
+                console.warn(`${property} is busted some how`);
               }
             }
             this.set("value." + property, element.properties[property]);
@@ -508,7 +517,7 @@ Polymer({
           newValue.tagName.toLowerCase()
         ] !== typeof undefined
       ) {
-        let element = this.element;
+        const element = this.element;
         let props =
           window.HaxStore.instance.elementList[newValue.tagName.toLowerCase()];
         let schema = {};
@@ -644,7 +653,7 @@ Polymer({
         // need to let append propagate, it probably takes like no time
         setTimeout(() => {
           this.set("previewNode", newNode);
-        }, 100);
+        }, 325);
       }
     } else {
       this.modeTab = "advanced";
@@ -655,7 +664,7 @@ Polymer({
   /**
    * Value in the form has changed, reflect to the preview.
    */
-  _valueChanged: function() {
+  _valueChanged: function(valueChange, pathChange) {
     let node = this.previewNode;
     // sanity check and then get props and mesh with form value response
     if (

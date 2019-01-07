@@ -57,7 +57,7 @@ Polymer({
         opacity: 0.95;
       }
     </style>
-    <hax-toolbar selected="[[selection]]" hide-transform="">
+    <hax-toolbar selected="[[selection]]" hide-transform="" id="toolbar">
       <hax-context-item-menu
         corner="left"
         slot="primary"

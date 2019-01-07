@@ -122,6 +122,7 @@ Polymer({
   properties: {
     schema: {
       type: Object,
+      notify: true,
       observer: "_schemaChanged"
     },
     label: {
@@ -141,10 +142,7 @@ Polymer({
     },
     _schemaArrayItems: {
       type: Array,
-      notify: true,
-      value: function() {
-        return [];
-      }
+      notify: true
     }
   },
   observers: ["_schemaArraySplicesChanged(_schemaArrayItems.splices)"],
@@ -165,7 +163,7 @@ Polymer({
         for (var i in newValue) {
           this._onAddItemWithValue(newValue[i], parseInt(i));
         }
-      }, 100);
+      }, 325);
     }
   },
   ready: function() {},
@@ -173,27 +171,26 @@ Polymer({
     this._clearForm();
   },
   _buildSchemaArrayItems: function() {
-    this._schemaArrayItems = [];
+    this.set("_schemaArrayItems", []);
   },
   _setValue: function() {
-    this.value = [];
-    this.value = this._schemaArrayItems.map(function(item) {
+    let newValue = this._schemaArrayItems.map(function(item) {
       return item.value;
     });
+    this.set("value", []);
+    this.set("value", newValue);
+    this.notifyPath("value.*");
   },
   _schemaArraySplicesChanged: function(detail) {
     if (!detail) {
       return console.warn("detail is undefined");
     }
-    console.log(detail);
-
-    var ctx = this;
 
     if (detail.keySplices) {
       console.warn("Got keySplices, don't know what to do with them!");
     }
 
-    detail.indexSplices.forEach(function(splice) {
+    detail.indexSplices.forEach(splice => {
       var args = ["value", splice.index, splice.removed.length];
 
       if (splice.removed && splice.removed.length) {
@@ -202,7 +199,7 @@ Polymer({
           i < ii;
           i++
         ) {
-          ctx._removeArrayEl(this.children[i]);
+          this._removeArrayEl(this.children[i]);
         }
       }
 
@@ -214,19 +211,19 @@ Polymer({
         ) {
           var item = splice.object[i];
 
-          var componentEl = ctx.create(item.component.name, {
+          var componentEl = this.create(item.component.name, {
             label: item.label,
             schema: item.schema,
             schemaArrayItem: item
           });
-          var containerEl = ctx.create("paper-collapse-item", {
+          var containerEl = this.create("paper-collapse-item", {
             header: "Item " + (i + 1)
           });
-          var buttonEl = ctx.create("paper-icon-button", {
+          var buttonEl = this.create("paper-icon-button", {
             icon: "remove",
             title: "Remove item"
           });
-          ctx.listen(buttonEl, "tap", "_onRemoveItem");
+          this.listen(buttonEl, "tap", "_onRemoveItem");
           buttonEl.classList.add("array-remove-element");
           componentEl.classList.add("flex", "horizontal", "layout");
 
@@ -241,17 +238,17 @@ Polymer({
             dom(this).appendChild(containerEl);
           }
 
-          ctx.listen(
+          this.listen(
             componentEl,
             item.component.valueProperty
               .replace(/([A-Z])/g, "-$1")
               .toLowerCase() + "-changed",
             "_schemaArrayItemChanged"
           );
-          args.push(ctx._deepClone(componentEl[item.component.valueProperty]));
+          args.push(this._deepClone(componentEl[item.component.valueProperty]));
         }
       }
-      ctx.splice.apply(ctx, args);
+      this.splice.apply(this, args);
     });
   },
   _schemaArrayItemChanged: function(event, detail) {
@@ -259,7 +256,6 @@ Polymer({
       return;
     }
 
-    var ctx = this;
     var item = event.target.schemaArrayItem;
     var index = this._schemaArrayItems.indexOf(item);
     var path = ["value", index];
@@ -271,7 +267,7 @@ Polymer({
         console.warn("Got keySplices, don't know what to do with them!");
       }
 
-      detail.value.indexSplices.forEach(function(splice) {
+      detail.value.indexSplices.forEach(splice => {
         var args = [path.join("."), splice.index, splice.removed.length];
         if (splice.addedCount) {
           for (
@@ -279,10 +275,10 @@ Polymer({
             i < ii;
             i++
           ) {
-            args.push(ctx._deepClone(splice.object[i]));
+            args.push(this._deepClone(splice.object[i]));
           }
         }
-        ctx.splice.apply(ctx, args);
+        this.splice.apply(this, args);
       });
     } else if (detail.path) {
       path = path.concat(detail.path.split(".").slice(1));
@@ -319,13 +315,11 @@ Polymer({
   _schemaChanged: function() {
     this._clearForm();
     this._buildSchemaArrayItems();
-    this._setValue();
   },
   _errorChanged: function() {
-    var ctx = this;
-    dom(this).childNodes.forEach(function(rowEl, idx) {
-      if (ctx.error && ctx.error[idx]) {
-        dom(rowEl).childNodes[0].error = ctx.error[idx];
+    dom(this).childNodes.forEach((rowEl, idx) => {
+      if (this.error && this.error[idx]) {
+        dom(rowEl).childNodes[0].error = this.error[idx];
       } else {
         dom(rowEl).childNodes[0].error = null;
       }
@@ -333,19 +327,22 @@ Polymer({
   },
   _onAddItemWithValue: function(values, pointer) {
     var schema = this.schema.items;
+    var i = 0;
     // try to set values if we have them
     if (typeof values !== typeof undefined) {
-      for (var i in values) {
+      for (i in values) {
         if (typeof schema.properties[i] !== typeof undefined) {
           schema.properties[i].value = values[i];
         }
       }
     }
     var item = {
-      label: schema.title,
       schema: schema,
       component: schema.component || {}
     };
+    if (schema.title) {
+      item.label = schema.title;
+    }
 
     if (!item.component.valueProperty) {
       item.component.valueProperty = "value";
@@ -368,34 +365,33 @@ Polymer({
         return console.error("Unknown item type %s", schema.type);
       }
     }
-    var ctx = this;
-    var componentEl = ctx.create(item.component.name, {
+    var componentEl = this.create(item.component.name, {
       label: item.label,
       schema: item.schema,
       schemaArrayItem: item
     });
-    var containerEl = ctx.create("paper-collapse-item", {
-      header: "Item " + (i + 1)
+    var containerEl = this.create("paper-collapse-item", {
+      header: "Item " + (this.children.length + 1)
     });
-    var buttonEl = ctx.create("paper-icon-button", {
+    var buttonEl = this.create("paper-icon-button", {
       icon: "remove",
       title: "Remove item"
     });
-    ctx.listen(buttonEl, "tap", "_onRemoveItem");
+    this.listen(buttonEl, "tap", "_onRemoveItem");
     buttonEl.classList.add("array-remove-element");
     componentEl.classList.add("flex", "horizontal", "layout");
 
     dom(containerEl).appendChild(componentEl);
     dom(containerEl).appendChild(buttonEl);
 
-    var beforeEl = this.children[i];
+    var beforeEl = this.children[this.children.length];
 
     if (beforeEl) {
       dom(this).insertBefore(containerEl, beforeEl);
     } else {
       dom(this).appendChild(containerEl);
     }
-    ctx.listen(
+    this.listen(
       componentEl,
       item.component.valueProperty.replace(/([A-Z])/g, "-$1").toLowerCase() +
         "-changed",
@@ -404,8 +400,8 @@ Polymer({
     // this will add it to the array but not force a splice mutation
     this._schemaArrayItems.push(item);
   },
-  _onAddItem: function() {
-    var schema = this.schema.items;
+  _onAddItem: function(e) {
+    const schema = this.schema.items;
     var item = {
       label: schema.title,
       schema: schema,
@@ -414,6 +410,9 @@ Polymer({
 
     if (!item.component.valueProperty) {
       item.component.valueProperty = "value";
+    }
+    for (var i in item.schema.properties) {
+      item.schema.properties[i].value = null;
     }
 
     if (!item.component.name) {

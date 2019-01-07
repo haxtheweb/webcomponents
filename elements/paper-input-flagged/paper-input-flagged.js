@@ -5,7 +5,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
-import { PaperInputBehavior } from "@polymer/paper-input/paper-input-behavior.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 /**
@@ -30,8 +29,8 @@ let PaperInputFlagged = Polymer({
         margin-right: 4px;
       }
       paper-tooltip {
-        font-size: 11px;
         --paper-tooltip-delay-in: 100;
+        font-size: 11px;
       }
       #icon {
         color: var(--paper-grey-400);
@@ -73,7 +72,6 @@ let PaperInputFlagged = Polymer({
   `,
 
   is: "paper-input-flagged",
-  behaviors: [PaperInputBehavior],
 
   properties: {
     /**
@@ -153,14 +151,6 @@ let PaperInputFlagged = Polymer({
         status: "info"
       }
     }
-  },
-
-  /**
-   * Created life cycle
-   */
-  ready: function() {
-    // drop what the behavior brought in
-    this.removeAttribute("tabindex");
   },
 
   /**

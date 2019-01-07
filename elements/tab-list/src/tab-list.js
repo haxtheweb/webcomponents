@@ -71,7 +71,8 @@ let TabList = Polymer({
      */
     tabs: {
       type: Array,
-      value: []
+      value: [],
+      notify: true
     }
   },
 

@@ -43,7 +43,7 @@ Polymer({
           color: #ffffff;
           z-index: 10000;
           padding: 56px 0;
-          margin-top: 64px;
+          margin-top: 40px;
           --app-drawer-width: 400px;
           --app-drawer-content-container: {
             background-color: rgba(0, 0, 0, 0.7);

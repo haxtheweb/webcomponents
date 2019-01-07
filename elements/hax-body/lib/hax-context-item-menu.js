@@ -129,7 +129,7 @@ Polymer({
       typeof oldValue !== typeof undefined &&
       typeof oldValue !== typeof null
     ) {
-      let children = dom(this).getDistributedNodes();
+      let children = dom(this).children;
       var item = new Object();
       var j = 0;
       // check for tag match since we have to filter out text nodes

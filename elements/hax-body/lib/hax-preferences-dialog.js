@@ -23,7 +23,7 @@ Polymer({
       }
       #dialog {
         z-index: 1000;
-        margin-top: 64px;
+        margin-top: 40px;
       }
       #closedialog {
         float: right;

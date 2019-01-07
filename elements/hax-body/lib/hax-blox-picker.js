@@ -26,7 +26,7 @@ Polymer({
       #dialog {
         --app-drawer-width: 320px;
         z-index: 1000;
-        margin-top: 64px;
+        margin-top: 40px;
         @apply --hax-blox-picker-dialog;
       }
       #closedialog {

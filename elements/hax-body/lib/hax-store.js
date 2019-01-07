@@ -412,6 +412,9 @@ Polymer({
       // autoload elements
       if (typeof appDataResponse.autoloader !== typeof undefined) {
         for (var i = 0; i < appDataResponse.autoloader.length; i++) {
+          // force this into the valid tag list so early paints will
+          // correctly include the tag without filtering it out incorrectly
+          this.push("validTagList", appDataResponse.autoloader[i]);
           let loader = document.createElement(appDataResponse.autoloader[i]);
           dom(haxAutoloader).appendChild(loader);
         }
@@ -448,6 +451,12 @@ Polymer({
           window.HaxStore.instance.appendChild(blox);
         }
       }
+      const evt = new CustomEvent("hax-store-app-store-loaded", {
+        bubbles: true,
+        cancelable: true,
+        detail: true
+      });
+      this.dispatchEvent(evt);
     }
   },
 
@@ -732,7 +741,6 @@ Polymer({
    * Created life-cycle to ensure a single global store.
    */
   created: function() {
-    window.__startedSelection = false;
     // claim the instance spot. This way we can easily
     // be referenced globally
     if (window.HaxStore.instance == null) {
@@ -1517,7 +1525,7 @@ window.HaxStore.htmlToHaxElements = html => {
  */
 window.HaxStore.nodeToHaxElement = (node, eventName = "insert-element") => {
   // build out the properties to send along
-  let props = {};
+  var props = {};
   // support basic styles
   if (typeof node.style !== typeof undefined) {
     props.style = node.getAttribute("style");
@@ -1553,6 +1561,7 @@ window.HaxStore.nodeToHaxElement = (node, eventName = "insert-element") => {
       // special support for false boolean
       else if (node[property] === false) {
         props[property] = node[property];
+      } else {
       }
     }
     for (var attribute in node.attributes) {
@@ -1613,6 +1622,7 @@ window.HaxStore.nodeToHaxElement = (node, eventName = "insert-element") => {
     properties: props,
     content: slotContent
   };
+
   if (eventName !== null) {
     element.eventName = eventName;
   }

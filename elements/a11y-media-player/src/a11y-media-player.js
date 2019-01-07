@@ -185,6 +185,15 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
       tracks: {
         type: Array,
         value: []
+      },
+      /**
+       * Notice if the video is playing
+       */
+      __playing: {
+        type: Boolean,
+        value: false,
+        notify: true,
+        reflectToAttribute: true
       }
     };
   }
@@ -207,6 +216,9 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
         }
         :host([dark]) {
           outline: 1px solid var(--simple-colors-default-theme-grey-1);
+        }
+        :host([__playing]) a11y-media-video-loader#loader {
+          background-image: none !important;
         }
         :host #outerplayer,
         :host #outerplayer * {
@@ -591,7 +603,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
                 on-media-loaded="_handleMediaLoaded"
                 playback-rate$="[[playbackRate]]"
                 thumbnail-src$="[[thumbnailSrc]]"
-                style$="[[_getThumbnailCSS(thumbnailSrc,isYoutube)]]"
+                style$="[[_getThumbnailCSS(thumbnailSrc,isYoutube,__playing)]]"
                 preload$="[[preload]]"
                 volume$="[[volume]]"
               >
@@ -1046,8 +1058,8 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
    * @param {string} the url for the thumbnail image
    * @returns {string} the string for the style attribute
    */
-  _getThumbnailCSS(thumbnailSrc, isYoutube) {
-    return thumbnailSrc != null && isYoutube
+  _getThumbnailCSS(thumbnailSrc, isYoutube, __playing) {
+    return thumbnailSrc != null && isYoutube && !__playing
       ? "background-image: url(" + thumbnailSrc + "); background-size: cover;"
       : null;
   }

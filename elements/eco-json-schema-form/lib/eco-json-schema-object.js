@@ -326,6 +326,7 @@ Polymer({
     },
     schema: {
       type: Object,
+      notify: true,
       observer: "_schemaChanged"
     },
     label: {
@@ -354,7 +355,7 @@ Polymer({
     var ctx = this;
 
     this._schemaProperties = Object.keys(this.schema.properties || []).map(
-      function(key) {
+      key => {
         var schema = ctx.schema.properties[key];
         var property = {
           property: key,
@@ -440,8 +441,8 @@ Polymer({
 
       if (detail.value.keySplices) {
         if (property.keyMap) {
-          detail.value.keySplices.forEach(function(splice) {
-            splice.removed.forEach(function(k) {
+          detail.value.keySplices.forEach(splice => {
+            splice.removed.forEach(k => {
               delete property.keyMap[path.concat([k]).join(".")];
             });
           });
@@ -449,7 +450,7 @@ Polymer({
       }
 
       if (detail.value) {
-        detail.value.indexSplices.forEach(function(splice) {
+        detail.value.indexSplices.forEach(splice => {
           var args = [path.join("."), splice.index, splice.removed.length];
           if (splice.addedCount) {
             for (var i = 0, ii = splice.addedCount; i < ii; i++) {
@@ -488,19 +489,18 @@ Polymer({
     }
   },
   _setValue: function() {
-    var ctx = this;
     var value = {};
-    this._schemaProperties.forEach(function(property) {
+    this._schemaProperties.forEach(property => {
       if (typeof property.value !== typeof undefined) {
-        value[property.property] = ctx._deepClone(property.value);
+        value[property.property] = this._deepClone(property.value);
       }
     });
-    this.value = value;
+    this.set("value", value);
+    this.notifyPath("value.*");
   },
   _buildForm: function() {
-    var ctx = this;
     this._schemaProperties.forEach(property => {
-      var el = ctx.create(property.component.name, {
+      var el = this.create(property.component.name, {
         label: property.label,
         schema: property.schema,
         schemaProperty: property,
@@ -523,14 +523,14 @@ Polymer({
       for (var prop in property.component.properties) {
         el[prop] = property.component.properties[prop];
       }
-      ctx.listen(
+      this.listen(
         el,
         property.component.valueProperty
           .replace(/([A-Z])/g, "-$1")
           .toLowerCase() + "-changed",
         "_schemaPropertyChanged"
       );
-      if (typeof ctx.$ !== typeof undefined) {
+      if (typeof this.$ !== typeof undefined) {
         dom(this).appendChild(el);
       }
       // support for slot injection too!
@@ -566,7 +566,7 @@ Polymer({
     }
   },
   _schemaChanged: function(newValue, oldValue) {
-    if (newValue && typeof oldValue !== typeof undefined) {
+    if (newValue) {
       this._clearForm();
       this._buildSchemaProperties();
       this._buildForm();
@@ -574,11 +574,10 @@ Polymer({
     }
   },
   _errorChanged: function() {
-    var ctx = this;
-    dom(this).childNodes.forEach(function(el) {
+    dom(this).childNodes.forEach(el => {
       var name = el.getAttribute("name");
-      if (ctx.error && ctx.error[name]) {
-        el.error = ctx.error[name];
+      if (this.error && this.error[name]) {
+        el.error = this.error[name];
       } else {
         el.error = null;
       }

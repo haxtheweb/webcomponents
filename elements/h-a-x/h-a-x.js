@@ -37,6 +37,7 @@ import "@lrnwebcomponents/hax-body/lib/hax-export-dialog.js";
  * @demo demo/index.html
  */
 class HAX extends HTMLElement {
+  
   // render function
   get html() {
     return `
@@ -56,12 +57,13 @@ class HAX extends HTMLElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      appStore: {
-        name: "appStore",
-        type: "String",
-        value: ""
-      }
-    };
+  "appStore": {
+    "name": "appStore",
+    "type": "String",
+    "value": ""
+  }
+}
+;
   }
 
   /**
@@ -103,6 +105,10 @@ class HAX extends HTMLElement {
       this.render();
     }
     window.addEventListener("hax-store-ready", this.render.bind(this));
+    window.addEventListener(
+      "hax-store-app-store-loaded",
+      this._importBodyContent.bind(this)
+    );
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -153,6 +159,14 @@ class HAX extends HTMLElement {
       this.shadowRoot.innerHTML = null;
       this.template.innerHTML = this.html;
       this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+    }
+  }
+  /**
+   * Import slotted content as body for haxActiveBody but ONLY
+   * after we've got the appstore loaded so we know tags will validate
+   */
+  _importBodyContent() {
+    setTimeout(() => {
       // obtain the nodes that have been assigned to the slot of our element
       const nodes = this.shadowRoot.querySelector("slot").assignedNodes();
       let body = "";
@@ -163,9 +177,8 @@ class HAX extends HTMLElement {
         }
       }
       window.HaxStore.instance.activeHaxBody.importContent(body);
-    }
+    }, 100);
   }
-
   /**
    * Apply tags to the screen to establish HAX
    */
@@ -188,6 +201,10 @@ class HAX extends HTMLElement {
   //}
   disconnectedCallback() {
     super.disconnectedCallback();
+    window.removeEventListener(
+      "hax-store-app-store-loaded",
+      this._importBodyContent.bind(this)
+    );
     window.removeEventListener("hax-store-ready", this.render.bind(this));
   }
   attributeChangedCallback(attr, oldValue, newValue) {}
