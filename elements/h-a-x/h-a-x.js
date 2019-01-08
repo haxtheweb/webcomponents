@@ -37,7 +37,6 @@ import "@lrnwebcomponents/hax-body/lib/hax-export-dialog.js";
  * @demo demo/index.html
  */
 class HAX extends HTMLElement {
-  
   // render function
   get html() {
     return `
@@ -57,13 +56,12 @@ class HAX extends HTMLElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-  "appStore": {
-    "name": "appStore",
-    "type": "String",
-    "value": ""
-  }
-}
-;
+      appStore: {
+        name: "appStore",
+        type: "String",
+        value: ""
+      }
+    };
   }
 
   /**
