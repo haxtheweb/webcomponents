@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>JsonEditor: json-editor Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '@lrnwebcomponents/json-outline-schema/json-outline-schema.js';
+      import '../json-editor.js';
+    </script>
+    <script defer="defer">
+      // when ready, turn on debugging
+      window.addEventListener('json-outline-schema-ready', () => {
+        const evt = new CustomEvent("json-outline-schema-debug-toggle", {
+          bubbles: true,
+          cancelable: false,
+          detail: true
+        });
+        this.dispatchEvent(evt);
+        // notice data changing
+        document.getElementById("jsoneditor").addEventListener('current-data-changed', (e) => {
+          if (e.detail.value) {
+            console.log(e.detail.value);
+            let outline = window.JSONOutlineSchema.requestAvailability();
+            // get a clone of the outline object
+            let tmp = outline.clone();
+            for ( var i in e.detail.value) {
+              // effectively validates keys
+              if (typeof outline[i] !== typeof undefined) {
+                if (i === 'metadata') {
+                  outline.updateMetadata(i, e.detail.value[i]);
+                }
+                else {
+                  outline[i] = e.detail.value[i];
+                }
+              }
+              else {
+                console.warn(`${i} is an invalid JSON Outline Schema key`);
+              }
+            }
+          }
+        });
+      });
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic json-editor demo</h3>
+      <demo-snippet>
+        <template>
+          <json-editor id="jsoneditor" label="JSON" value='{
+  "file": "null",
+  "id": "f2f300a7-5f4f-7c49-c06b-e13a754f9f82",
+  "title": "New site",
+  "author": "",
+  "description": "",
+  "license": "by-sa",
+  "metadata": {
+    "Stuff": "sdfs",
+    "notvalue": true,
+    "now": "we are talking like this"
+  },
+  "items": []
+}'></json-editor>
+          <json-outline-schema></json-outline-schema>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

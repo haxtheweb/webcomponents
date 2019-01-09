@@ -103,10 +103,6 @@ class HAX extends HTMLElement {
       this.render();
     }
     window.addEventListener("hax-store-ready", this.render.bind(this));
-    window.addEventListener(
-      "hax-store-app-store-loaded",
-      this._importBodyContent.bind(this)
-    );
   }
   /**
    * life cycle, element is afixed to the DOM
@@ -157,6 +153,7 @@ class HAX extends HTMLElement {
       this.shadowRoot.innerHTML = null;
       this.template.innerHTML = this.html;
       this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+      this._importBodyContent();
     }
   }
   /**
@@ -199,10 +196,6 @@ class HAX extends HTMLElement {
   //}
   disconnectedCallback() {
     super.disconnectedCallback();
-    window.removeEventListener(
-      "hax-store-app-store-loaded",
-      this._importBodyContent.bind(this)
-    );
     window.removeEventListener("hax-store-ready", this.render.bind(this));
   }
   attributeChangedCallback(attr, oldValue, newValue) {}

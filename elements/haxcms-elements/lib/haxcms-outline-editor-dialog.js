@@ -2,7 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
-import "@lrnwebcomponents/outline-designer/outline-designer.js";
+import "@lrnwebcomponents/json-editor/json-editor.js";
 /**
  * `haxcms-outline-editor-dialog`
  * `Dialog for presenting an editable outline`
@@ -16,16 +16,27 @@ Polymer({
     <style>
       :host {
         display: block;
+        height: 50vh;
+      }
+      .buttons {
+        position: absolute;
+        bottom: 0;
+        z-index: 1000000;
+        background-color: var(--simple-modal-titlebar-background, #ddd);
+        left: 0;
+        right: 0;
       }
     </style>
     <paper-dialog-scrollable>
-      <outline-designer manifest="{{manifest}}" edit-mode></outline-designer>
+      <json-editor
+        id="editor"
+        label="Outline data"
+        value="[[manifestItems]]"
+      ></json-editor>
     </paper-dialog-scrollable>
     <div class="buttons">
-      <paper-button id="save" dialog-confirm="" on-tap="_saveTap"
-        >Save</paper-button
-      >
-      <paper-button id="cancel" dialog-dismiss="">Cancel</paper-button>
+      <paper-button dialog-confirm on-tap="_saveTap">Save</paper-button>
+      <paper-button dialog-dismiss>Cancel</paper-button>
     </div>
   `,
 
@@ -45,6 +56,12 @@ Polymer({
     manifest: {
       type: Object,
       notify: true
+    },
+    /**
+     * Stringify'ed representation of items
+     */
+    manifestItems: {
+      type: String
     }
   },
 
@@ -56,6 +73,15 @@ Polymer({
       "json-outline-schema-changed",
       this._manifestChanged.bind(this)
     );
+    this.$.editor.addEventListener("current-data-changed", e => {
+      if (e.detail.value) {
+        let outline = window.JSONOutlineSchema.requestAvailability();
+        this.set("manifest.items", e.detail.value);
+        this.notifyPath("manifest.items.*");
+        outline.items = e.detail.value;
+        this.manifestItems = JSON.stringify(e.detail.value, null, 2);
+      }
+    });
   },
   /**
    * attached life cycle
@@ -66,6 +92,7 @@ Polymer({
       if (typeof window.cmsSiteEditor.jsonOutlineSchema !== typeof undefined) {
         this.set("manifest", window.cmsSiteEditor.jsonOutlineSchema);
         this.notifyPath("manifest.*");
+        this.manifestItems = JSON.stringify(this.manifest.items, null, 2);
       }
     });
   },
@@ -86,6 +113,7 @@ Polymer({
       this.set("manifest", []);
       this.set("manifest", e.detail);
       this.notifyPath("manifest.*");
+      this.manifestItems = JSON.stringify(this.manifest.items, null, 2);
     }
   },
 

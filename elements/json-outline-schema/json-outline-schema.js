@@ -75,7 +75,7 @@ class JsonOutlineSchema extends HTMLElement {
     if (!delayRender) {
       this.render();
     }
-    this.tag = JsonOutlineSchema.tag;
+    this.__ready = false;
     this.file = null;
     this.id = this.generateUUID();
     this.title = "New site";
@@ -108,6 +108,7 @@ class JsonOutlineSchema extends HTMLElement {
       detail: true
     });
     this.dispatchEvent(evt);
+    this.__ready = true;
   }
 
   _copyAttribute(name, to) {
@@ -158,6 +159,23 @@ class JsonOutlineSchema extends HTMLElement {
       detail: true
     });
     this.dispatchEvent(evt);
+  }
+  /**
+   * Get a clone of this JSONOutlineSchema object
+   * @return Object
+   */
+  clone() {
+    const schema = {
+      id: this.id,
+      title: this.title,
+      author: this.author,
+      description: this.description,
+      license: this.license,
+      metadata: this.metadata,
+      items: this.items
+    };
+    const obj = JSON.parse(JSON.stringify(schema));
+    return obj;
   }
   /**
    * Get a new item matching schema standards
@@ -235,7 +253,7 @@ class JsonOutlineSchema extends HTMLElement {
    * Load a schema from a file
    */
   load(location) {
-    if (file_exists(location)) {
+    if (location) {
       this.file = location;
       let fileData = json_decode(file_get_contents(location));
       for (var key in fileData) {
@@ -322,15 +340,7 @@ class JsonOutlineSchema extends HTMLElement {
     }
   }
   static get observedAttributes() {
-    return [
-      "file",
-      "id",
-      "title",
-      "author",
-      "description",
-      "license",
-      "metadata"
-    ];
+    return ["file", "id", "title", "author", "description", "license"];
   }
 
   attributeChangedCallback(attr, oldValue, newValue) {
@@ -343,47 +353,59 @@ class JsonOutlineSchema extends HTMLElement {
     return this.getAttribute("file");
   }
   set file(newValue) {
-    this.setAttribute("file", newValue);
+    if (this.__ready) {
+      this.setAttribute("file", newValue);
+    }
   }
   get id() {
     return this.getAttribute("id");
   }
   set id(newValue) {
-    this.setAttribute("id", newValue);
+    if (this.__ready) {
+      this.setAttribute("id", newValue);
+    }
   }
   get title() {
     return this.getAttribute("title");
   }
   set title(newValue) {
-    this.setAttribute("title", newValue);
+    if (this.__ready) {
+      this.setAttribute("title", newValue);
+    }
   }
   get author() {
     return this.getAttribute("author");
   }
   set author(newValue) {
-    this.setAttribute("author", newValue);
+    if (this.__ready) {
+      this.setAttribute("author", newValue);
+    }
   }
   get description() {
     return this.getAttribute("description");
   }
   set description(newValue) {
-    this.setAttribute("description", newValue);
+    if (this.__ready) {
+      this.setAttribute("description", newValue);
+    }
   }
   get license() {
     return this.getAttribute("license");
   }
   set license(newValue) {
-    this.setAttribute("license", newValue);
+    if (this.__ready) {
+      this.setAttribute("license", newValue);
+    }
   }
-  get metadata() {
-    console.log(JSON.parse(this.getAttribute("metadata")));
-    return JSON.parse(this.getAttribute("metadata"));
-  }
-  set metadata(newValue) {
-    this.setAttribute("metadata", JSON.stringify(newValue));
-  }
+  /**
+   * Set individual key values pairs on metdata so we can notice it change
+   */
   updateMetadata(key, value) {
     this.metadata[key] = value;
+    if (this.__debug) {
+      this.render();
+      this._triggerDebugPaint(this.__debug);
+    }
   }
 }
 window.customElements.define(JsonOutlineSchema.tag, JsonOutlineSchema);
