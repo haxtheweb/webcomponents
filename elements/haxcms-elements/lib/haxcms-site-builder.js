@@ -43,7 +43,7 @@ Polymer({
         --paper-progress-container-color: transparent;
       }
     </style>
-    <haxcms-editor-builder outline-="[[file]]"></haxcms-editor-builder>
+    <haxcms-editor-builder></haxcms-editor-builder>
     <paper-progress
       hidden\$="[[!loading]]"
       value="100"
