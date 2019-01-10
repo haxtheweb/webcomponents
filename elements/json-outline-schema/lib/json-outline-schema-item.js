@@ -16,13 +16,13 @@ class JSONOutlineSchemaItem {
    */
   constructor() {
     this.id = "item-" + this.generateUUID();
-    this.indent = 0;
-    this.location = "";
-    this.order = 0;
-    this.parent = "";
     this.title = "New item";
+    this.location = "";
     this.description = "";
+    this.parent = "";
     this.metadata = {};
+    this.order = 0;
+    this.indent = 0;
   }
   /**
    * Load data from the location specified

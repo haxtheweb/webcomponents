@@ -2,8 +2,6 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-fab/paper-fab.js";
-import "@polymer/app-layout/app-header/app-header.js";
-import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "./haxcms-outline-editor-dialog.js";
 import "./haxcms-manifest-editor-dialog.js";
 /**
@@ -18,10 +16,14 @@ Polymer({
     <style is="custom-style">
       :host {
         display: block;
+        position: fixed;
+        right: 0;
+        bottom: 0;
       }
       paper-fab {
-        margin: 16px;
-        padding: 2px;
+        display: inline-flex;
+        margin: 0px;
+        padding: 0px;
         width: 40px;
         height: 40px;
         z-index: 1000;
@@ -48,78 +50,83 @@ Polymer({
         background-color: var(--paper-blue-500) !important;
         position: absolute;
       }
-      app-header {
-        opacity: 0.5;
-        position: fixed;
-        right: 0;
-        bottom: 0;
+      .wrapper {
+        width: 0px;
+        height: 40px;
+        opacity: 0.2;
         background-color: pink;
         color: black;
-        margin: 0;
-        padding: 0;
         transition: all 0.6s linear;
+        display: inline-flex;
       }
-      app-header:hover,
-      app-header:active,
-      app-header:focus {
+      :host([menu-mode]) .wrapper {
+        opacity: 0.6;
+        width: auto;
+      }
+      :host([menu-mode]) .wrapper:hover,
+      :host([menu-mode]) .wrapper:active,
+      :host([menu-mode]) .wrapper:focus {
         opacity: 1;
       }
-      app-toolbar {
-        padding: 0;
-        margin: 0;
-      }
-      div[main-title] {
-        font-size: 12px;
-        width: 200px;
+      .main-title {
+        font-size: 10px;
+        width: 150px;
         text-overflow: ellipsis;
         overflow: hidden;
+        line-height: 40px;
       }
     </style>
-    <app-header>
-      <app-toolbar>
-        <paper-fab
-          id="editbutton"
-          icon="[[__editIcon]]"
-          on-tap="_editButtonTap"
-        ></paper-fab>
-        <paper-tooltip for="editbutton" position="top" offset="14"
-          >[[__editText]]</paper-tooltip
-        >
-        <paper-icon-button
-          id="deletebutton"
-          icon="icons:delete"
-          on-tap="_deleteButtonTap"
-        ></paper-icon-button>
-        <paper-tooltip for="deletebutton" position="top" offset="14"
-          >delete</paper-tooltip
-        >
-        <div main-title>[[activeItem.title]]</div>
-        <paper-icon-button
-          id="addbutton"
-          icon="icons:add"
-          on-tap="_addButtonTap"
-        ></paper-icon-button>
-        <paper-tooltip for="addbutton" position="top" offset="14"
-          >add page</paper-tooltip
-        >
-        <paper-icon-button
-          id="outlinebutton"
-          icon="icons:list"
-          on-tap="_outlineButtonTap"
-        ></paper-icon-button>
-        <paper-tooltip for="outlinebutton" position="top" offset="14"
-          >site outline</paper-tooltip
-        >
-        <paper-icon-button
-          id="manifestbutton"
-          icon="icons:settings"
-          on-tap="_manifestButtonTap"
-        ></paper-icon-button>
-        <paper-tooltip for="manifestbutton" position="top" offset="14"
-          >site details</paper-tooltip
-        >
-      </app-toolbar>
-    </app-header>
+    <paper-fab
+      id="menubutton"
+      icon="icons:menu"
+      on-tap="_menuButtonTap"
+    ></paper-fab>
+    <paper-tooltip for="menubutton" position="top" offset="14"
+      >toggle menu</paper-tooltip
+    >
+    <paper-fab
+      id="editbutton"
+      icon="[[__editIcon]]"
+      on-tap="_editButtonTap"
+    ></paper-fab>
+    <paper-tooltip for="editbutton" position="top" offset="14"
+      >[[__editText]]</paper-tooltip
+    >
+    <div class="wrapper">
+      <paper-icon-button
+        id="deletebutton"
+        icon="icons:delete"
+        on-tap="_deleteButtonTap"
+      ></paper-icon-button>
+      <paper-tooltip for="deletebutton" position="top" offset="14"
+        >delete</paper-tooltip
+      >
+      <div class="main-title">[[activeItem.title]]</div>
+      <paper-icon-button
+        id="addbutton"
+        icon="icons:add"
+        on-tap="_addButtonTap"
+      ></paper-icon-button>
+      <paper-tooltip for="addbutton" position="top" offset="14"
+        >add page</paper-tooltip
+      >
+      <paper-icon-button
+        id="outlinebutton"
+        icon="icons:list"
+        on-tap="_outlineButtonTap"
+      ></paper-icon-button>
+      <paper-tooltip for="outlinebutton" position="top" offset="14"
+        >site outline</paper-tooltip
+      >
+      <paper-icon-button
+        id="manifestbutton"
+        icon="icons:settings"
+        on-tap="_manifestButtonTap"
+      ></paper-icon-button>
+      <paper-tooltip for="manifestbutton" position="top" offset="14"
+        >site details</paper-tooltip
+      >
+    </div>
   `,
   is: "haxcms-site-editor-ui",
   properties: {
@@ -157,6 +164,16 @@ Polymer({
       notify: true
     },
     /**
+     * if the menu is open or not
+     */
+    menuMode: {
+      type: Boolean,
+      reflectToAttribute: true,
+      observer: "_menuModeChanged",
+      value: false,
+      notify: true
+    },
+    /**
      * Manifest editing state
      */
     manifestEditMode: {
@@ -184,6 +201,12 @@ Polymer({
    */
   _editButtonTap: function(e) {
     this.editMode = !this.editMode;
+  },
+  /**
+   * toggle menu state
+   */
+  _menuButtonTap: function(e) {
+    this.menuMode = !this.menuMode;
   },
 
   /**
@@ -263,7 +286,6 @@ Polymer({
     });
     window.dispatchEvent(evt);
   },
-
   /**
    * Edit state has changed.
    */
