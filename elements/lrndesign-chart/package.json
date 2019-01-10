@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-chart-hax.json"
     }
   },
-  "version": "0.2.0",
+  "version": "2.0.0-alpha1",
   "description": "Automated conversion of lrndesign-chart/",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/chartist-render": "^0.2.0",
+    "@lrnwebcomponents/chartist-render": "^2.0.0-alpha1",
     "@lrnwebcomponents/hax-body-behaviors": "^0.2.0",
     "@lrnwebcomponents/schema-behaviors": "^0.2.0",
     "@polymer/iron-ajax": "^3.0.0",

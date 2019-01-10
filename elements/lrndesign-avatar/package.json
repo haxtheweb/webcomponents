@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-avatar-hax.json"
     }
   },
-  "version": "0.2.0",
+  "version": "2.0.0-alpha1",
   "description": "Automated conversion of lrndesign-avatar/",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/materializecss-styles": "^0.2.0",
-    "@lrnwebcomponents/paper-avatar": "^0.2.0",
+    "@lrnwebcomponents/paper-avatar": "^2.0.0-alpha1",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {

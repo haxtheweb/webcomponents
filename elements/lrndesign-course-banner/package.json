@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-course-banner-hax.json"
     }
   },
-  "version": "0.2.0",
+  "version": "2.0.0-alpha1",
   "description": "Automated conversion of lrndesign-course-banner/",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrndesign-avatar": "^0.2.0",
+    "@lrnwebcomponents/lrndesign-avatar": "^2.0.0-alpha1",
     "@lrnwebcomponents/materializecss-styles": "^0.2.0",
     "@polymer/iron-image": "^3.0.0",
     "@polymer/polymer": "^3.0.5"

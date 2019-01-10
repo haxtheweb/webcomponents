@@ -16,7 +16,7 @@
       "hax": "src/fancy-carousel-hax.json"
     }
   },
-  "version": "0.2.0",
+  "version": "2.0.0-alpha1",
   "description": "Start of fancy-carousel fork",
   "repository": {
     "type": "git",

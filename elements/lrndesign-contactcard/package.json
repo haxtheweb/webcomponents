@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-contactcard-hax.json"
     }
   },
-  "version": "0.2.0",
+  "version": "2.0.0-alpha1",
   "description": "Automated conversion of lrndesign-contactcard/",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/lrn-icons": "^0.2.0",
-    "@lrnwebcomponents/social-media-icons": "^0.2.0",
+    "@lrnwebcomponents/social-media-icons": "^2.0.0-alpha1",
     "@polymer/iron-icon": "^3.0.0",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.0",

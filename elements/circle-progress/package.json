@@ -11,7 +11,7 @@
       "js": "src/circle-progress.js"
     }
   },
-  "version": "0.2.0",
+  "version": "2.0.0-alpha1",
   "description": "A circle that illustrates progression via the outline of the element",
   "repository": {
     "type": "git",
