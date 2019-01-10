@@ -2,6 +2,8 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-fab/paper-fab.js";
+import "@polymer/app-layout/app-header/app-header.js";
+import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "./haxcms-outline-editor-dialog.js";
 import "./haxcms-manifest-editor-dialog.js";
 /**
@@ -18,70 +20,106 @@ Polymer({
         display: block;
       }
       paper-fab {
-        position: fixed;
-        bottom: 0;
-        right: 0;
         margin: 16px;
         padding: 2px;
         width: 40px;
         height: 40px;
-        visibility: hidden;
-        opacity: 0;
         z-index: 1000;
         background-color: var(--haxcms-color, #ff4081);
         transition: all 0.6s linear;
       }
+      #editbutton,
+      #deletebutton {
+        visibility: hidden;
+        opacity: 0;
+      }
       :host([page-allowed]) #editbutton,
-      #outlinebutton,
-      #manifestbutton {
+      :host([page-allowed]) #deletebutton {
         visibility: visible;
         opacity: 1;
-      }
-      #editbutton {
-        right: 92px;
-      }
-      #outlinebutton {
-        right: 46px;
-      }
-      #manifestbutton {
-        right: 0px;
       }
       :host([edit-mode]) #editbutton {
         width: 100%;
         z-index: 1001;
-        right: 0;
-        bottom: 0;
         border-radius: 0;
-        height: 80px;
+        height: 64px;
         margin: 0;
         padding: 8px;
         background-color: var(--paper-blue-500) !important;
+        position: absolute;
+      }
+      app-header {
+        opacity: 0.5;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        background-color: pink;
+        color: black;
+        margin: 0;
+        padding: 0;
+        transition: all 0.6s linear;
+      }
+      app-header:hover,
+      app-header:active,
+      app-header:focus {
+        opacity: 1;
+      }
+      app-toolbar {
+        padding: 0;
+        margin: 0;
+      }
+      div[main-title] {
+        font-size: 12px;
+        width: 200px;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
     </style>
-    <paper-fab
-      id="editbutton"
-      icon="[[__editIcon]]"
-      on-tap="_editButtonTap"
-    ></paper-fab>
-    <paper-tooltip for="editbutton" position="top" offset="14"
-      >[[__editText]]</paper-tooltip
-    >
-    <paper-fab
-      id="manifestbutton"
-      icon="icons:settings"
-      on-tap="_manifestButtonTap"
-    ></paper-fab>
-    <paper-tooltip for="manifestbutton" position="top" offset="14"
-      >site details</paper-tooltip
-    >
-    <paper-fab
-      id="outlinebutton"
-      icon="icons:list"
-      on-tap="_outlineButtonTap"
-    ></paper-fab>
-    <paper-tooltip for="outlinebutton" position="top" offset="14"
-      >edit outline</paper-tooltip
-    >
+    <app-header>
+      <app-toolbar>
+        <paper-fab
+          id="editbutton"
+          icon="[[__editIcon]]"
+          on-tap="_editButtonTap"
+        ></paper-fab>
+        <paper-tooltip for="editbutton" position="top" offset="14"
+          >[[__editText]]</paper-tooltip
+        >
+        <paper-icon-button
+          id="deletebutton"
+          icon="icons:delete"
+          on-tap="_deleteButtonTap"
+        ></paper-icon-button>
+        <paper-tooltip for="deletebutton" position="top" offset="14"
+          >delete</paper-tooltip
+        >
+        <div main-title>[[activeItem.title]]</div>
+        <paper-icon-button
+          id="addbutton"
+          icon="icons:add"
+          on-tap="_addButtonTap"
+        ></paper-icon-button>
+        <paper-tooltip for="addbutton" position="top" offset="14"
+          >add page</paper-tooltip
+        >
+        <paper-icon-button
+          id="outlinebutton"
+          icon="icons:list"
+          on-tap="_outlineButtonTap"
+        ></paper-icon-button>
+        <paper-tooltip for="outlinebutton" position="top" offset="14"
+          >site outline</paper-tooltip
+        >
+        <paper-icon-button
+          id="manifestbutton"
+          icon="icons:settings"
+          on-tap="_manifestButtonTap"
+        ></paper-icon-button>
+        <paper-tooltip for="manifestbutton" position="top" offset="14"
+          >site details</paper-tooltip
+        >
+      </app-toolbar>
+    </app-header>
   `,
   is: "haxcms-site-editor-ui",
   properties: {
@@ -148,6 +186,47 @@ Polymer({
     this.editMode = !this.editMode;
   },
 
+  /**
+   * Add button hit
+   */
+  _addButtonTap: function(e) {
+    let form = document.createElement("eco-json-schema-object");
+    let outline = window.JSONOutlineSchema.requestAvailability();
+    // get a prototype schema for an item
+    form.schema = outline.getItemSchema("item");
+    // get values but assume what was passed in is the parent relationship
+    form.value = outline.getItemValues(null, this.activeItem);
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      cancelable: false,
+      detail: {
+        title: "Add a new page",
+        elements: { content: form },
+        invokedBy: this.$.addbutton,
+        clone: false
+      }
+    });
+    window.dispatchEvent(evt);
+  },
+  /**
+   * Delete button hit, confirm they want to do this
+   */
+  _deleteButtonTap: function(e) {
+    let c = document.createElement("span");
+    c.innerHTML =
+      "Page is removed from the outline but its content stays on the file system.";
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      cancelable: false,
+      detail: {
+        title: "Are you sure you want to delete this page?",
+        elements: { content: c },
+        invokedBy: this.$.deletebutton,
+        clone: false
+      }
+    });
+    window.dispatchEvent(evt);
+  },
   /**
    * toggle state on button tap
    */

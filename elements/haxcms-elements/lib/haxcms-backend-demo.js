@@ -135,7 +135,6 @@ Polymer({
               haxCmsSiteEditorElement.activeItem = this.__item;
             }
             if (typeof this.__manifest !== typeof undefined) {
-              console.log("well it was here");
               haxCmsSiteEditorElement.manifest = this.__manifest;
             }
             if (typeof this.__body !== typeof undefined) {

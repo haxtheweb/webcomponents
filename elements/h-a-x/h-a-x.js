@@ -145,7 +145,6 @@ class HAX extends HTMLElement {
 
   render() {
     if (!this.__rendered) {
-      // import into the active body
       window.HaxStore.instance.appStore = JSON.parse(
         this.getAttribute("app-store")
       );
@@ -153,7 +152,10 @@ class HAX extends HTMLElement {
       this.shadowRoot.innerHTML = null;
       this.template.innerHTML = this.html;
       this.shadowRoot.appendChild(this.template.content.cloneNode(true));
-      this._importBodyContent();
+      // import into the active body if there's content
+      if (this.shadowRoot.querySelector("slot")) {
+        this._importBodyContent();
+      }
     }
   }
   /**
@@ -161,18 +163,16 @@ class HAX extends HTMLElement {
    * after we've got the appstore loaded so we know tags will validate
    */
   _importBodyContent() {
-    setTimeout(() => {
-      // obtain the nodes that have been assigned to the slot of our element
-      const nodes = this.shadowRoot.querySelector("slot").assignedNodes();
-      let body = "";
-      // loop the nodes and if it has an outerHTML attribute, append as string
-      for (let i in nodes) {
-        if (typeof nodes[i].outerHTML !== typeof undefined) {
-          body += nodes[i].outerHTML;
-        }
+    // obtain the nodes that have been assigned to the slot of our element
+    const nodes = this.shadowRoot.querySelector("slot").assignedNodes();
+    let body = "";
+    // loop the nodes and if it has an outerHTML attribute, append as string
+    for (let i in nodes) {
+      if (typeof nodes[i].outerHTML !== typeof undefined) {
+        body += nodes[i].outerHTML;
       }
-      window.HaxStore.instance.activeHaxBody.importContent(body);
-    }, 100);
+    }
+    window.HaxStore.instance.activeHaxBody.importContent(body);
   }
   /**
    * Apply tags to the screen to establish HAX
@@ -191,12 +191,23 @@ class HAX extends HTMLElement {
     document.body.appendChild(document.createElement("hax-autoloader"));
     return true;
   }
-  //static get observedAttributes() {
-  //  return [];
-  //}
   disconnectedCallback() {
-    super.disconnectedCallback();
     window.removeEventListener("hax-store-ready", this.render.bind(this));
+  }
+  static get observedAttributes() {
+    return ["app-store"];
+  }
+  get appStore() {
+    return this.getAttribute("app-store");
+  }
+  set appStore(newValue) {
+    if (this.__rendered) {
+      this.setAttribute("app-store", newValue);
+      // bind to the hax store global on change
+      window.HaxStore.instance.appStore = JSON.parse(
+        this.getAttribute("app-store")
+      );
+    }
   }
   attributeChangedCallback(attr, oldValue, newValue) {}
 }
