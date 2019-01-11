@@ -39,7 +39,7 @@ Polymer({
   _template: html`
     <style is="custom-style" include="simple-colors">
       app-toolbar {
-        background-color: #3a0063;
+        background-color: rgba(255, 0, 116, 1);
         color: #ffffff;
       }
       paper-icon-button {
@@ -49,16 +49,16 @@ Polymer({
         margin-left: 24px;
       }
       app-header {
-        @apply --layout-fixed-top;
         color: #ffffff;
+        @apply --layout-fixed-top;
         --app-header-background-rear-layer: {
-          background-color: #ef6c00;
+          background-color: rgba(255, 0, 116, 1);
         }
       }
       app-drawer {
         --app-drawer-scrim-background: rgba(0, 0, 0, 0.6);
         --app-drawer-content-container: {
-          background-color: rgba(93, 0, 159, 0.8);
+          background-color: rgba(255, 0, 116, 0.8);
           overflow: scroll;
           color: #ffffff;
           padding-left: 8px;
@@ -222,9 +222,8 @@ Polymer({
         <simple-colors-picker id="newsitecolor"></simple-colors-picker>
         <dropdown-select id="newsitetheme" label="Theme" value="simple-blog">
           <paper-item value="simple-blog">Simple blog</paper-item>
-          <paper-item value="outline-player">Basic outline</paper-item>
+          <paper-item value="lrnapp-book">Book outline</paper-item>
           <paper-item value="haxcms-dev-theme">DEVELOPER THEME</paper-item>
-          <paper-item value="infinite-scroll">Infinite scroll</paper-item>
         </dropdown-select>
         <label for="newsiteicon">Select an icon:</label>
         <paper-icon-picker

@@ -134,11 +134,9 @@ Polymer({
     themeData: {
       type: Object,
       value: {
-        "outline-player":
-          "../../../@lrnwebcomponents/outline-player/outline-player.js",
+        "simple-blog": "../../../@lrnwebcomponents/simple-blog/simple-blog.js",
         "lrnapp-book":
           "../../../@lrnwebcomponents/elmsln-apps/lib/lrnapp-book/lrnapp-book.js",
-        "simple-blog": "../../../@lrnwebcomponents/simple-blog/simple-blog.js",
         "haxcms-dev-theme": "haxcms-dev-theme.js"
       }
     },
@@ -265,6 +263,23 @@ Polymer({
     this.notifyPath("activeItem.*");
     this.set("queryParams.page", e.detail.id);
     this.notifyPath("queryParams.page");
+    // check for authoring xp by just asking for the object
+    // timeout helps w/ some initial setup work
+    var time = 500;
+    if (window.HaxStore.ready) {
+      time = 10;
+    }
+    setTimeout(() => {
+      if (
+        window.cmsSiteEditor.instance &&
+        window.cmsSiteEditor.haxCmsSiteEditorUIElement
+      ) {
+        window.cmsSiteEditor.haxCmsSiteEditorUIElement.set(
+          "activeItem",
+          this.activeItem
+        );
+      }
+    }, time);
   },
 
   /**

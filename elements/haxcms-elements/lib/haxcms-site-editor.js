@@ -13,7 +13,6 @@ import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import "@lrnwebcomponents/h-a-x/h-a-x.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
-import "./haxcms-site-editor-ui.js";
 /**
  * `haxcms-site-editor`
  * `haxcms editor element that provides all editing capabilities`
@@ -137,12 +136,6 @@ Polymer({
       on-response="_handleDeleteResponse"
     ></iron-ajax>
     <h-a-x app-store$="[[appStore]]"></h-a-x>
-    <haxcms-site-editor-ui
-      id="ui"
-      active-item="[[activeItem]]"
-      manifest="[[manifest]]"
-      edit-mode="{{editMode}}"
-    ></haxcms-site-editor-ui>
   `,
   properties: {
     /**
@@ -297,14 +290,8 @@ Polymer({
       "haxcms-save-site-data",
       this.saveManifest.bind(this)
     );
-    this.$.ui.addEventListener(
-      "haxcms-create-page",
-      this.createPage.bind(this)
-    );
-    this.$.ui.addEventListener(
-      "haxcms-delete-page",
-      this.deletePage.bind(this)
-    );
+    window.addEventListener("haxcms-create-page", this.createPage.bind(this));
+    window.addEventListener("haxcms-delete-page", this.deletePage.bind(this));
     window.addEventListener("haxcms-publish-site", this.publishSite.bind(this));
   },
   /**
@@ -374,11 +361,11 @@ Polymer({
       "json-outline-schema-active-body-changed",
       this._bodyChanged.bind(this)
     );
-    this.$.ui.removeEventListener(
+    window.removeEventListener(
       "haxcms-create-page",
       this.createPage.bind(this)
     );
-    this.$.ui.removeEventListener(
+    window.removeEventListener(
       "haxcms-delete-page",
       this.deletePage.bind(this)
     );
@@ -396,44 +383,58 @@ Polymer({
       this.set("createData.jwt", this.jwt);
       this.notifyPath("createData.jwt");
       this.$.createajax.generateRequest();
+      const evt = new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        cancelable: true,
+        detail: {}
+      });
+      window.dispatchEvent(evt);
     }
   },
-  _handleCreateResponse: function(e) {
-    let data = e.detail.response;
+  _handleCreateResponse: function(response) {
+    let data = response;
+    console.log(response);
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
       cancelable: true,
       detail: {
-        text: data.response,
+        text: "Created!",
         duration: 3000
       }
     });
-    this.dispatchEvent(evt);
+    window.dispatchEvent(evt);
   },
   /**
    * delete the page we just got
    */
   deletePage: function(e) {
     this.set("deleteData", {});
-    this.set("deleteData.page", e.detail.item);
-    this.notifyPath("deleteData.page");
+    this.set("deleteData.pageid", e.detail.item.id);
+    this.notifyPath("deleteData.pageid");
     this.set("deleteData.siteName", this.manifest.metadata.siteName);
     this.notifyPath("deleteData.siteName");
     this.set("deleteData.jwt", this.jwt);
     this.notifyPath("deleteData.jwt");
     this.$.deleteajax.generateRequest();
+    const evt = new CustomEvent("simple-modal-hide", {
+      bubbles: true,
+      cancelable: true,
+      detail: {}
+    });
+    window.dispatchEvent(evt);
   },
-  _handleDeleteResponse: function(e) {
-    let data = e.detail.response;
+  _handleDeleteResponse: function(response) {
+    let data = response;
+    console.log(response);
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
       cancelable: true,
       detail: {
-        text: data.response,
+        text: data,
         duration: 3000
       }
     });
-    this.dispatchEvent(evt);
+    window.dispatchEvent(evt);
   },
   /**
    * Establish certain global settings in HAX once it claims to be ready to go
@@ -477,6 +478,14 @@ Polymer({
     this.set("manifest", {});
     this.set("manifest", e.detail);
     this.notifyPath("manifest.*");
+    if (this.activeItem && e.detail.metadata) {
+      // set upload manager to point to this location in a more dynamic fashion
+      window.HaxStore.instance.haxManager.appendUploadEndPoint =
+        "siteName=" +
+        e.detail.metadata.siteName +
+        "&page=" +
+        this.activeItem.id;
+    }
   },
   /**
    * update the internal active item
@@ -489,7 +498,7 @@ Polymer({
    * active item changed
    */
   _activeItemChanged: function(newValue, oldValue) {
-    if (newValue) {
+    if (newValue && this.manifest) {
       // set upload manager to point to this location in a more dynamic fashion
       window.HaxStore.instance.haxManager.appendUploadEndPoint =
         "siteName=" + this.manifest.metadata.siteName + "&page=" + newValue.id;

@@ -5,6 +5,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
+import "./haxcms-site-editor-ui.js";
 
 window.cmsSiteEditor = window.cmsSiteEditor || {};
 // store reference to the instance as a global
@@ -25,6 +26,25 @@ Polymer({
    */
   ready: function() {
     this.getContext();
+  },
+  attached: function() {
+    window.addEventListener("hax-store-ready", this.storeReady.bind(this));
+  },
+  detached: function() {
+    window.removeEventListener("hax-store-ready", this.storeReady.bind(this));
+  },
+  storeReady: function(e) {
+    // append UI element to body to avoid stack order issues
+    if (!window.cmsSiteEditor.haxCmsSiteEditorUIElement) {
+      window.cmsSiteEditor.haxCmsSiteEditorUIElement = document.createElement(
+        "haxcms-site-editor-ui"
+      );
+      document.body.appendChild(window.cmsSiteEditor.haxCmsSiteEditorUIElement);
+      // forces a nice fade in transition
+      setTimeout(() => {
+        window.cmsSiteEditor.haxCmsSiteEditorUIElement.painting = false;
+      }, 50);
+    }
   },
   /**
    * Try to get context of what backend is powering this
@@ -75,16 +95,19 @@ window.cmsSiteEditor.requestAvailability = function(
     // self append the reference to.. well.. us.
     document.body.appendChild(window.cmsSiteEditor.instance);
   } else {
-    // already exists, just alter some references
-    window.cmsSiteEditor.instance.appElement = element;
-    window.cmsSiteEditor.instance.appendTarget = location;
-    if (
-      typeof window.cmsSiteEditor.instance.haxCmsSiteEditorElement !==
-      typeof undefined
-    ) {
-      window.cmsSiteEditor.instance.appendTarget.appendChild(
-        window.cmsSiteEditor.instance.haxCmsSiteEditorElement
-      );
+    if (element) {
+      // already exists, just alter some references
+      window.cmsSiteEditor.instance.appElement = element;
+      window.cmsSiteEditor.instance.appendTarget = location;
+      if (
+        typeof window.cmsSiteEditor.instance.haxCmsSiteEditorElement !==
+        typeof undefined
+      ) {
+        window.cmsSiteEditor.instance.appendTarget.appendChild(
+          window.cmsSiteEditor.instance.haxCmsSiteEditorElement
+        );
+      }
     }
   }
+  return window.cmsSiteEditor.instance;
 };
