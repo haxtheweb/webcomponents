@@ -169,9 +169,7 @@ Polymer({
     menuMode: {
       type: Boolean,
       reflectToAttribute: true,
-      observer: "_menuModeChanged",
-      value: false,
-      notify: true
+      value: false
     },
     /**
      * Manifest editing state
@@ -213,18 +211,28 @@ Polymer({
    * Add button hit
    */
   _addButtonTap: function(e) {
-    let form = document.createElement("eco-json-schema-object");
+    this.__newForm = document.createElement("eco-json-schema-object");
     let outline = window.JSONOutlineSchema.requestAvailability();
     // get a prototype schema for an item
-    form.schema = outline.getItemSchema("item");
+    this.__newForm.schema = outline.getItemSchema("item");
     // get values but assume what was passed in is the parent relationship
-    form.value = outline.getItemValues(null, this.activeItem);
+    this.__newForm.value = outline.getItemValues(null, this.activeItem);
+    let b1 = document.createElement("paper-button");
+    b1.raised = true;
+    b1.appendChild(document.createTextNode("Create"));
+    b1.addEventListener("click", this._createNewItem.bind(this));
+    let b2 = document.createElement("paper-button");
+    b2.appendChild(document.createTextNode("cancel"));
+    b2.setAttribute("dialog-dismiss", "dialog-dismiss");
+    let b = document.createElement("span");
+    b.appendChild(b1);
+    b.appendChild(b2);
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       cancelable: false,
       detail: {
         title: "Add a new page",
-        elements: { content: form },
+        elements: { content: this.__newForm, buttons: b },
         invokedBy: this.$.addbutton,
         clone: false
       }
@@ -232,23 +240,60 @@ Polymer({
     window.dispatchEvent(evt);
   },
   /**
+   * create new item
+   */
+  _createNewItem: function(e) {
+    const evt = new CustomEvent("haxcms-create-page", {
+      bubbles: true,
+      cancelable: false,
+      detail: {
+        values: this.__newForm.value
+      }
+    });
+    this.dispatchEvent(evt);
+  },
+  /**
    * Delete button hit, confirm they want to do this
    */
   _deleteButtonTap: function(e) {
     let c = document.createElement("span");
-    c.innerHTML =
-      "Page is removed from the outline but its content stays on the file system.";
+    c.innerHTML = `"${
+      this.activeItem.title
+    }" will be removed from the outline but its content stays on the file system.`;
+    let b1 = document.createElement("paper-button");
+    b1.raised = true;
+    b1.appendChild(document.createTextNode("Confirm"));
+    b1.addEventListener("tap", this._deleteActive.bind(this));
+    let b2 = document.createElement("paper-button");
+    b2.appendChild(document.createTextNode("cancel"));
+    b2.setAttribute("dialog-dismiss", "dialog-dismiss");
+    let b = document.createElement("span");
+    b.appendChild(b1);
+    b.appendChild(b2);
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       cancelable: false,
       detail: {
         title: "Are you sure you want to delete this page?",
-        elements: { content: c },
+        elements: { content: c, buttons: b },
         invokedBy: this.$.deletebutton,
         clone: false
       }
     });
     window.dispatchEvent(evt);
+  },
+  /**
+   * delete active item
+   */
+  _deleteActive: function(e) {
+    const evt = new CustomEvent("haxcms-delete-page", {
+      bubbles: true,
+      cancelable: false,
+      detail: {
+        item: this.activeItem
+      }
+    });
+    this.dispatchEvent(evt);
   },
   /**
    * toggle state on button tap

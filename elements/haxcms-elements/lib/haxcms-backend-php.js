@@ -128,6 +128,10 @@ Polymer({
               window.appSettings.saveOutlinePath;
             haxCmsSiteEditorElement.publishPath =
               window.appSettings.publishPath;
+            haxCmsSiteEditorElement.createPagePath =
+              window.appSettings.createPagePath;
+            haxCmsSiteEditorElement.deletePagePath =
+              window.appSettings.deletePagePath;
             haxCmsSiteEditorElement.appStore = window.appSettings.appStore;
             // pass along the initial state management stuff that may be missed
             // based on timing on the initial setup

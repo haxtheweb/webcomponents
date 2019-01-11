@@ -116,6 +116,26 @@ Polymer({
       handle-as="json"
       on-response="_handlePublishResponse"
     ></iron-ajax>
+    <iron-ajax
+      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
+      id="createajax"
+      url="[[createPagePath]]"
+      method="POST"
+      body="[[createData]]"
+      content-type="application/json"
+      handle-as="json"
+      on-response="_handleCreateResponse"
+    ></iron-ajax>
+    <iron-ajax
+      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
+      id="deleteajax"
+      url="[[deletePagePath]]"
+      method="POST"
+      body="[[deleteData]]"
+      content-type="application/json"
+      handle-as="json"
+      on-response="_handleDeleteResponse"
+    ></iron-ajax>
     <h-a-x app-store$="[[appStore]]"></h-a-x>
     <haxcms-site-editor-ui
       id="ui"
@@ -132,9 +152,21 @@ Polymer({
       type: String
     },
     /**
-     * end point for saving page
+     * end point for saving pages
      */
     savePagePath: {
+      type: String
+    },
+    /**
+     * end point for create new pages
+     */
+    createPagePath: {
+      type: String
+    },
+    /**
+     * end point for delete pages
+     */
+    deletePagePath: {
       type: String
     },
     /**
@@ -185,9 +217,23 @@ Polymer({
       value: {}
     },
     /**
-     * published site data
+     * delete page data
      */
-    publishSiteData: {
+    deleteData: {
+      type: Object,
+      value: {}
+    },
+    /**
+     * create new page data
+     */
+    createData: {
+      type: Object,
+      value: {}
+    },
+    /**
+     * data as part of the POST to the backend
+     */
+    updateManifestData: {
       type: Object,
       value: {}
     },
@@ -250,6 +296,14 @@ Polymer({
     window.addEventListener(
       "haxcms-save-site-data",
       this.saveManifest.bind(this)
+    );
+    this.$.ui.addEventListener(
+      "haxcms-create-page",
+      this.createPage.bind(this)
+    );
+    this.$.ui.addEventListener(
+      "haxcms-delete-page",
+      this.deletePage.bind(this)
     );
     window.addEventListener("haxcms-publish-site", this.publishSite.bind(this));
   },
@@ -320,6 +374,66 @@ Polymer({
       "json-outline-schema-active-body-changed",
       this._bodyChanged.bind(this)
     );
+    this.$.ui.removeEventListener(
+      "haxcms-create-page",
+      this.createPage.bind(this)
+    );
+    this.$.ui.removeEventListener(
+      "haxcms-delete-page",
+      this.deletePage.bind(this)
+    );
+  },
+  /**
+   * create page event
+   */
+  createPage: function(e) {
+    if (e.detail.values) {
+      this.set("createData", {});
+      this.set("createData", e.detail.values);
+      this.notifyPath("createData.*");
+      this.set("createData.siteName", this.manifest.metadata.siteName);
+      this.notifyPath("createData.siteName");
+      this.set("createData.jwt", this.jwt);
+      this.notifyPath("createData.jwt");
+      this.$.createajax.generateRequest();
+    }
+  },
+  _handleCreateResponse: function(e) {
+    let data = e.detail.response;
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        text: data.response,
+        duration: 3000
+      }
+    });
+    this.dispatchEvent(evt);
+  },
+  /**
+   * delete the page we just got
+   */
+  deletePage: function(e) {
+    this.set("deleteData", {});
+    this.set("deleteData.page", e.detail.item);
+    this.notifyPath("deleteData.page");
+    this.set("deleteData.siteName", this.manifest.metadata.siteName);
+    this.notifyPath("deleteData.siteName");
+    this.set("deleteData.jwt", this.jwt);
+    this.notifyPath("deleteData.jwt");
+    this.$.deleteajax.generateRequest();
+  },
+  _handleDeleteResponse: function(e) {
+    let data = e.detail.response;
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        text: data.response,
+        duration: 3000
+      }
+    });
+    this.dispatchEvent(evt);
   },
   /**
    * Establish certain global settings in HAX once it claims to be ready to go
@@ -376,12 +490,9 @@ Polymer({
    */
   _activeItemChanged: function(newValue, oldValue) {
     if (newValue) {
-      let parts = window.location.pathname.split("/");
-      parts.pop();
-      let site = parts.pop();
       // set upload manager to point to this location in a more dynamic fashion
       window.HaxStore.instance.haxManager.appendUploadEndPoint =
-        "siteName=" + site + "&page=" + newValue.id;
+        "siteName=" + this.manifest.metadata.siteName + "&page=" + newValue.id;
     }
   },
   /**
@@ -452,10 +563,7 @@ Polymer({
   _editModeChanged: function(newValue, oldValue) {
     // was on, now off
     if (!newValue && oldValue) {
-      let parts = window.location.pathname.split("/");
-      parts.pop();
-      let site = parts.pop();
-      this.set("updatePageData.siteName", site);
+      this.set("updatePageData.siteName", this.manifest.metadata.siteName);
       this.notifyPath("updatePageData.siteName");
       this.set(
         "updatePageData.body",
@@ -477,11 +585,8 @@ Polymer({
    * Save the outline based on an event firing.
    */
   saveOutline: function(e) {
-    let parts = window.location.pathname.split("/");
-    parts.pop();
-    let site = parts.pop();
     // now let's work on the outline
-    this.set("updateOutlineData.siteName", site);
+    this.set("updateOutlineData.siteName", this.manifest.metadata.siteName);
     this.notifyPath("updateOutlineData.siteName");
     this.set("updateOutlineData.items", e.detail);
     this.notifyPath("updateOutlineData.items");
@@ -495,11 +600,8 @@ Polymer({
    * Save the outline based on an event firing.
    */
   saveManifest: function(e) {
-    let parts = window.location.pathname.split("/");
-    parts.pop();
-    let site = parts.pop();
     // now let's work on the outline
-    this.set("updateManifestData.siteName", site);
+    this.set("updateManifestData.siteName", this.manifest.metadata.siteName);
     this.notifyPath("updateManifestData.siteName");
     this.set("updateManifestData.manifest", e.detail);
     this.notifyPath("updateManifestData.manifest");
@@ -513,10 +615,7 @@ Polymer({
    * Save the outline based on an event firing.
    */
   publishSite: function(e) {
-    let parts = window.location.pathname.split("/");
-    parts.pop();
-    let site = parts.pop();
-    this.set("publishSiteData.siteName", site);
+    this.set("publishSiteData.siteName", this.manifest.metadata.siteName);
     this.notifyPath("publishSiteData.siteName");
     this.set("publishSiteData.jwt", this.jwt);
     this.notifyPath("publishSiteData.jwt");
