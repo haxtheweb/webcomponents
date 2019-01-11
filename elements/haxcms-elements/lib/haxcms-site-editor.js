@@ -124,6 +124,7 @@ Polymer({
       content-type="application/json"
       handle-as="json"
       on-response="_handleCreateResponse"
+      last-response="{{__createPageResponse}}"
     ></iron-ajax>
     <iron-ajax
       headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
@@ -134,6 +135,7 @@ Polymer({
       content-type="application/json"
       handle-as="json"
       on-response="_handleDeleteResponse"
+      last-response="{{__deletePageResponse}}"
     ></iron-ajax>
     <h-a-x app-store$="[[appStore]]"></h-a-x>
   `,
@@ -392,13 +394,11 @@ Polymer({
     }
   },
   _handleCreateResponse: function(response) {
-    let data = response;
-    console.log(response);
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
       cancelable: true,
       detail: {
-        text: "Created!",
+        text: `Created ${this.__createPageResponse.title}!`,
         duration: 3000
       }
     });
@@ -424,13 +424,11 @@ Polymer({
     window.dispatchEvent(evt);
   },
   _handleDeleteResponse: function(response) {
-    let data = response;
-    console.log(response);
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
       cancelable: true,
       detail: {
-        text: data,
+        text: `Deleted ${this.__deletePageResponse.title}`,
         duration: 3000
       }
     });

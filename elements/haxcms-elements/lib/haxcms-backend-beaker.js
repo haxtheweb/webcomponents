@@ -343,7 +343,7 @@ Polymer({
     this.jwt = beaker.archive.url;
     var info = await beaker.archive.getInfo();
     // test that we have a url (we'll call it jwt for now) and that we own the site
-    if (this.jwt != null && info.isOwner) {
+    if (this.jwt != null && typeof this.jwt == "string" && info.isOwner) {
       var appstore = JSON.parse(await beaker.read("appstore.json"));
       // attempt to dynamically import the hax cms site editor
       // which will appear to be injecting into the page

@@ -24,7 +24,8 @@ Polymer({
         background-color: rgba(255, 0, 116, 1);
         padding: 0px 10px;
         border-top-left-radius: 10px;
-        min-width: 80px;
+        min-width: 84px;
+        width: 84px;
         line-height: 50px;
         height: 50px;
         z-index: 10000;
@@ -76,7 +77,7 @@ Polymer({
         opacity: 1;
       }
       :host([edit-mode]) #editbutton {
-        width: 100%;
+        width: 50px;
         z-index: 1001;
         border-radius: 0;
         margin: 0;
@@ -84,6 +85,7 @@ Polymer({
         color: white;
         background-color: var(--paper-blue-500, blue) !important;
         position: absolute;
+        height: 50px;
       }
       .wrapper {
         width: 0px;
@@ -102,6 +104,10 @@ Polymer({
       }
       :host([menu-mode]) {
         opacity: 0.8;
+        width: unset;
+      }
+      :host([edit-mode][menu-mode]) #editbutton {
+        width: 100% !important;
       }
       :host(:hover),
       :host(:active),
