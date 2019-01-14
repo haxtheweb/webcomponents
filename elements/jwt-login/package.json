@@ -16,7 +16,7 @@
       "hax": "src/jwt-login-hax.json"
     }
   },
-  "version": "2.0.0-alpha1",
+  "version": "2.0.0-alpha2",
   "description": "JSON Web Token login broker / manager",
   "repository": {
     "type": "git",

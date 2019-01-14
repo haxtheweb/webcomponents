@@ -16,7 +16,7 @@
       "hax": "src/json-editor-hax.json"
     }
   },
-  "version": "2.0.0-alpha1",
+  "version": "2.0.0-alpha2",
   "description": "simple JSON blob data binding to a text area",
   "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "0.2.0",
-    "@lrnwebcomponents/json-outline-schema": "^2.0.0-alpha1",
+    "@lrnwebcomponents/json-outline-schema": "^2.0.0-alpha2",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.2.3",

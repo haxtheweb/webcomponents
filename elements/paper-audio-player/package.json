@@ -16,7 +16,7 @@
       "hax": "src/paper-audio-player-hax.json"
     }
   },
-  "version": "2.0.0-alpha1",
+  "version": "2.0.0-alpha2",
   "description": "Automated conversion of paper-audio-player/",
   "repository": {
     "type": "git",
@@ -40,9 +40,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.2.0",
-    "@lrnwebcomponents/materializecss-styles": "^0.2.0",
-    "@lrnwebcomponents/schema-behaviors": "^0.2.0",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.0.0-alpha2",
+    "@lrnwebcomponents/materializecss-styles": "^2.0.0-alpha2",
+    "@lrnwebcomponents/schema-behaviors": "^2.0.0-alpha2",
     "@polymer/iron-a11y-keys-behavior": "^3.0.0",
     "@polymer/iron-icon": "^3.0.0",
     "@polymer/iron-icons": "^3.0.1",

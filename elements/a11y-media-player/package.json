@@ -11,7 +11,7 @@
       "js": "src/a11y-media-player.js"
     }
   },
-  "version": "2.0.0-alpha1",
+  "version": "2.0.0-alpha2",
   "description": "A feature rich, highly accessible video player",
   "repository": {
     "type": "git",
@@ -35,10 +35,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/dropdown-select": "^2.0.0-alpha1",
-    "@lrnwebcomponents/responsive-utility": "^2.0.0-alpha1",
-    "@lrnwebcomponents/simple-colors": "^2.0.0-alpha1",
-    "@lrnwebcomponents/simple-search": "^2.0.0-alpha1",
+    "@lrnwebcomponents/dropdown-select": "^2.0.0-alpha2",
+    "@lrnwebcomponents/responsive-utility": "^2.0.0-alpha2",
+    "@lrnwebcomponents/simple-colors": "^2.0.0-alpha2",
+    "@lrnwebcomponents/simple-search": "^2.0.0-alpha2",
     "@polymer/iron-a11y-keys": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-icons": "^3.0.1",

@@ -11,7 +11,7 @@
       "js": "src/a11y-behaviors.js"
     }
   },
-  "version": "0.2.0",
+  "version": "2.0.0-alpha2",
   "description": "Accessibility behaviors / mix-ins to improve a11y overall",
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^0.2.0",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.0.0-alpha2",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
