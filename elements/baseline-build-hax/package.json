@@ -78,7 +78,7 @@
     "@lrnwebcomponents/wave-player": "^2.0.0-alpha1",
     "@lrnwebcomponents/wikipedia-query": "^2.0.0-alpha1",
     "@lrnwebcomponents/wysiwyg-hax": "^2.0.0-alpha1",
-    "@webcomponents/webcomponentsjs": "2.2.1",
+    "@webcomponents/webcomponentsjs": "2.2.3",
     "web-animations-js": "2.3.1"
   },
   "devDependencies": {
@@ -90,7 +90,7 @@
     "gulp-sourcemaps": "2.6.4",
     "lodash": "4.17.11",
     "polymer-build": "3.1.1",
-    "polymer-cli": "1.9.4",
+    "polymer-cli": "1.9.5",
     "wct-browser-legacy": "1.0.2"
   },
   "private": false,
