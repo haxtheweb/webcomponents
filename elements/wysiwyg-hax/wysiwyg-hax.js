@@ -24,7 +24,8 @@ let WysiwygHax = Polymer({
       app-store-connection="[[appStoreConnection]]"
       hide-export-button="[[hideExportButton]]"
       align="[[align]]"
-    ></cms-hax>
+    >
+    </cms-hax>
   `,
 
   is: "wysiwyg-hax",
@@ -115,6 +116,12 @@ let WysiwygHax = Polymer({
       type: Boolean,
       value: false
     }
+  },
+  /**
+   * highjack shadowDom
+   */
+  _attachDom(dom) {
+    this.appendChild(dom);
   },
 
   /**

@@ -10,7 +10,7 @@ import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/device-icons.js";
 import "@polymer/iron-icons/image-icons.js";
 import "@lrnwebcomponents/paper-icon-picker/paper-icon-picker.js";
-import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
+import "@lrnwebcomponents/simple-picker/simple-picker.js";
 /**
  * `haxcms-manifest-editor-dialog`
  * `Dialog for presenting an editable manifest of core settings`
@@ -72,17 +72,7 @@ Polymer({
         id="sitecolor"
         hex-code="[[manifest.metadata.hexCode]]"
       ></simple-colors-picker>
-      <dropdown-select
-        id="sitetheme"
-        label="Theme"
-        value="[[manifest.metadata.theme]]"
-      >
-        <paper-item value="simple-blog">Simple blog</paper-item>
-        <paper-item value="outline-player">Basic outline</paper-item>
-        <paper-item value="lrnapp-book">Course outline</paper-item>
-        <paper-item value="haxcms-dev-theme">DEVELOPER THEME</paper-item>
-        <paper-item value="infinite-scroll">Infinite scroll</paper-item>
-      </dropdown-select>
+      <simple-picker id="sitetheme" label="Theme"> </simple-picker>
       <label for="siteicon">Select an icon:</label>
       <paper-icon-picker
         id="siteicon"
@@ -128,6 +118,28 @@ Polymer({
    * Ready life cycle
    */
   ready: function() {
+    this.$.sitetheme.options = [
+      [
+        {
+          alt: "Simple blog site",
+          value: "simple-blog"
+        }
+      ],
+      [
+        {
+          alt: "Content outline",
+          value: "lrnapp-book"
+        }
+      ],
+      [
+        {
+          alt: "Developer Theme",
+          value: "haxcms-dev-theme"
+        }
+      ]
+    ];
+    this.$.sitetheme.value =
+      window.cmsSiteEditor.jsonOutlineSchema.metadata.theme;
     // state issue but it can miss in timing othewise on first event
     this.set("manifest", window.cmsSiteEditor.jsonOutlineSchema);
     this.notifyPath("manifest.*");
@@ -136,8 +148,8 @@ Polymer({
    * attached life cycle
    */
   attached: function() {
-    this.$.sitetheme.addEventListener("change", this._themeChanged.bind(this));
     this.$.sitecolor.addEventListener("change", this._colorChanged.bind(this));
+    this.$.sitetheme.addEventListener("change", this._themeChanged.bind(this));
   },
   /**
    * detached life cycle
