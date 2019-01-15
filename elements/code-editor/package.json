@@ -41,9 +41,9 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^2.0.0-alpha2",
-    "@lrnwebcomponents/materializecss-styles": "^2.0.0-alpha2",
     "@lrnwebcomponents/schema-behaviors": "^2.0.0-alpha2",
-    "@polymer/polymer": "^3.0.5"
+    "@polymer/polymer": "^3.0.5",
+    "monaco-element": "^0.1.5"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "^0.2.0",

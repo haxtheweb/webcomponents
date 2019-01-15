@@ -2,281 +2,6 @@
   "schema_version": "1.0.0",
   "elements": [
     {
-      "description": "Creates an object based in the HTML Element prototype",
-      "summary": "",
-      "path": "lib/juicy-ace-editor.js",
-      "properties": [
-        {
-          "name": "value",
-          "type": "?",
-          "description": " getter/setter for value property",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 7,
-              "column": 2
-            },
-            "end": {
-              "line": 9,
-              "column": 3
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": false
-            }
-          }
-        }
-      ],
-      "methods": [
-        {
-          "name": "connectedCallback",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 60,
-              "column": 2
-            },
-            "end": {
-              "line": 129,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "disconnectedCallback",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 130,
-              "column": 2
-            },
-            "end": {
-              "line": 132,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "attributeChangedCallback",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 133,
-              "column": 2
-            },
-            "end": {
-              "line": 160,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "attr"
-            },
-            {
-              "name": "oldVal"
-            },
-            {
-              "name": "newVal"
-            }
-          ]
-        },
-        {
-          "name": "onThemeLoaded",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 161,
-              "column": 2
-            },
-            "end": {
-              "line": 168,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "injectTheme",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 169,
-              "column": 2
-            },
-            "end": {
-              "line": 172,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "themeId"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        }
-      ],
-      "staticMethods": [],
-      "demos": [],
-      "metadata": {},
-      "sourceRange": {
-        "start": {
-          "line": 5,
-          "column": 0
-        },
-        "end": {
-          "line": 173,
-          "column": 1
-        }
-      },
-      "privacy": "public",
-      "superclass": "HTMLElement",
-      "name": "LRNAceEditor",
-      "attributes": [
-        {
-          "name": "theme",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 20,
-              "column": 6
-            },
-            "end": {
-              "line": 20,
-              "column": 13
-            }
-          },
-          "metadata": {}
-        },
-        {
-          "name": "mode",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 21,
-              "column": 6
-            },
-            "end": {
-              "line": 21,
-              "column": 12
-            }
-          },
-          "metadata": {}
-        },
-        {
-          "name": "fontsize",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 22,
-              "column": 6
-            },
-            "end": {
-              "line": 22,
-              "column": 16
-            }
-          },
-          "metadata": {}
-        },
-        {
-          "name": "softtabs",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 23,
-              "column": 6
-            },
-            "end": {
-              "line": 23,
-              "column": 16
-            }
-          },
-          "metadata": {}
-        },
-        {
-          "name": "tabsize",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 24,
-              "column": 6
-            },
-            "end": {
-              "line": 24,
-              "column": 15
-            }
-          },
-          "metadata": {}
-        },
-        {
-          "name": "readonly",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 25,
-              "column": 6
-            },
-            "end": {
-              "line": 25,
-              "column": 16
-            }
-          },
-          "metadata": {}
-        },
-        {
-          "name": "wrapmode",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 26,
-              "column": 6
-            },
-            "end": {
-              "line": 26,
-              "column": 16
-            }
-          },
-          "metadata": {}
-        }
-      ],
-      "events": [],
-      "styling": {
-        "cssVariables": [],
-        "selectors": []
-      },
-      "slots": [],
-      "tagname": "juicy-ace-editor"
-    },
-    {
       "description": "`code-pen-button`\nA LRN element to do a post of data to codepen",
       "summary": "",
       "path": "lib/code-pen-button.js",
@@ -510,11 +235,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 76,
+              "line": 73,
               "column": 4
             },
             "end": {
-              "line": 79,
+              "line": 76,
               "column": 5
             }
           },
@@ -532,11 +257,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 80,
               "column": 4
             },
             "end": {
-              "line": 87,
+              "line": 84,
               "column": 5
             }
           },
@@ -554,11 +279,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 91,
+              "line": 88,
               "column": 4
             },
             "end": {
-              "line": 95,
+              "line": 92,
               "column": 5
             }
           },
@@ -567,7 +292,7 @@
               "attributeType": "Boolean"
             }
           },
-          "defaultValue": "true"
+          "defaultValue": "false"
         },
         {
           "name": "codePenData",
@@ -576,11 +301,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 99,
+              "line": 96,
               "column": 4
             },
             "end": {
-              "line": 102,
+              "line": 99,
               "column": 5
             }
           },
@@ -598,11 +323,33 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 106,
+              "line": 103,
               "column": 4
             },
             "end": {
+              "line": 106,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "value",
+          "type": "string | null | undefined",
+          "description": "value of the editor after the fact",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
               "line": 110,
+              "column": 4
+            },
+            "end": {
+              "line": 113,
               "column": 5
             }
           },
@@ -611,8 +358,7 @@
               "notify": true,
               "attributeType": "String"
             }
-          },
-          "defaultValue": "\"\""
+          }
         },
         {
           "name": "theme",
@@ -621,11 +367,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 114,
+              "line": 117,
               "column": 4
             },
             "end": {
-              "line": 117,
+              "line": 120,
               "column": 5
             }
           },
@@ -634,20 +380,42 @@
               "attributeType": "String"
             }
           },
-          "defaultValue": "\"ace/theme/monokai\""
+          "defaultValue": "\"vs-dark\""
         },
         {
           "name": "mode",
           "type": "string | null | undefined",
-          "description": "Mode for the Ace editor.",
+          "description": "Mode / language for editor",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 121,
+              "line": 124,
               "column": 4
             },
             "end": {
-              "line": 124,
+              "line": 127,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_modeChanged\"",
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "language",
+          "type": "string | null | undefined",
+          "description": "Language to present color coding for",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 131,
+              "column": 4
+            },
+            "end": {
+              "line": 134,
               "column": 5
             }
           },
@@ -656,7 +424,7 @@
               "attributeType": "String"
             }
           },
-          "defaultValue": "\"ace/mode/html\""
+          "defaultValue": "\"javascript\""
         },
         {
           "name": "fontSize",
@@ -665,11 +433,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 128,
+              "line": 138,
               "column": 4
             },
             "end": {
-              "line": 131,
+              "line": 141,
               "column": 5
             }
           },
@@ -687,11 +455,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 135,
+              "line": 145,
               "column": 4
             },
             "end": {
-              "line": 138,
+              "line": 148,
               "column": 5
             }
           },
@@ -709,11 +477,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 142,
+              "line": 152,
               "column": 4
             },
             "end": {
-              "line": 145,
+              "line": 155,
               "column": 5
             }
           },
@@ -780,11 +548,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 151,
+              "line": 161,
               "column": 2
             },
             "end": {
-              "line": 156,
+              "line": 166,
               "column": 3
             }
           },
@@ -799,23 +567,23 @@
           ]
         },
         {
-          "name": "_editorReady",
-          "description": "Event for when the editor is ready so we can modify it.",
+          "name": "_modeChanged",
+          "description": "pass down mode to language if that api is used for legacy purposes",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 161,
+              "line": 170,
               "column": 2
             },
             "end": {
-              "line": 170,
+              "line": 172,
               "column": 3
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "e"
+              "name": "newValue"
             }
           ],
           "return": {
@@ -828,11 +596,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 175,
+              "line": 177,
               "column": 2
             },
             "end": {
-              "line": 177,
+              "line": 180,
               "column": 3
             }
           },
@@ -852,11 +620,31 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 182,
+              "line": 185,
               "column": 2
             },
             "end": {
-              "line": 191,
+              "line": 200,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "created",
+          "description": "created callback",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 204,
+              "column": 2
+            },
+            "end": {
+              "line": 207,
               "column": 3
             }
           },
@@ -872,11 +660,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 196,
+              "line": 211,
               "column": 2
             },
             "end": {
-              "line": 213,
+              "line": 228,
               "column": 3
             }
           },
@@ -892,11 +680,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 218,
+              "line": 233,
               "column": 2
             },
             "end": {
-              "line": 285,
+              "line": 305,
               "column": 3
             }
           },
@@ -912,11 +700,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 23,
+          "line": 20,
           "column": 25
         },
         "end": {
-          "line": 286,
+          "line": 306,
           "column": 1
         }
       },
@@ -965,11 +753,11 @@
           "description": "Title",
           "sourceRange": {
             "start": {
-              "line": 76,
+              "line": 73,
               "column": 4
             },
             "end": {
-              "line": 79,
+              "line": 76,
               "column": 5
             }
           },
@@ -981,11 +769,11 @@
           "description": "Show codePen button to fork it to there to run",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 80,
               "column": 4
             },
             "end": {
-              "line": 87,
+              "line": 84,
               "column": 5
             }
           },
@@ -997,11 +785,11 @@
           "description": "Readonly setting for the editor",
           "sourceRange": {
             "start": {
-              "line": 91,
+              "line": 88,
               "column": 4
             },
             "end": {
-              "line": 95,
+              "line": 92,
               "column": 5
             }
           },
@@ -1013,11 +801,11 @@
           "description": "Code pen data, computed based on the HTML editor",
           "sourceRange": {
             "start": {
-              "line": 99,
+              "line": 96,
               "column": 4
             },
             "end": {
-              "line": 102,
+              "line": 99,
               "column": 5
             }
           },
@@ -1029,11 +817,27 @@
           "description": "contents of the editor",
           "sourceRange": {
             "start": {
-              "line": 106,
+              "line": 103,
               "column": 4
             },
             "end": {
+              "line": 106,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "value",
+          "description": "value of the editor after the fact",
+          "sourceRange": {
+            "start": {
               "line": 110,
+              "column": 4
+            },
+            "end": {
+              "line": 113,
               "column": 5
             }
           },
@@ -1045,11 +849,11 @@
           "description": "Theme for the Ace editor.",
           "sourceRange": {
             "start": {
-              "line": 114,
+              "line": 117,
               "column": 4
             },
             "end": {
-              "line": 117,
+              "line": 120,
               "column": 5
             }
           },
@@ -1058,14 +862,30 @@
         },
         {
           "name": "mode",
-          "description": "Mode for the Ace editor.",
+          "description": "Mode / language for editor",
           "sourceRange": {
             "start": {
-              "line": 121,
+              "line": 124,
               "column": 4
             },
             "end": {
-              "line": 124,
+              "line": 127,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "language",
+          "description": "Language to present color coding for",
+          "sourceRange": {
+            "start": {
+              "line": 131,
+              "column": 4
+            },
+            "end": {
+              "line": 134,
               "column": 5
             }
           },
@@ -1077,11 +897,11 @@
           "description": "font size for the Ace editor.",
           "sourceRange": {
             "start": {
-              "line": 128,
+              "line": 138,
               "column": 4
             },
             "end": {
-              "line": 131,
+              "line": 141,
               "column": 5
             }
           },
@@ -1093,11 +913,11 @@
           "description": "Min lines of the editor to show",
           "sourceRange": {
             "start": {
-              "line": 135,
+              "line": 145,
               "column": 4
             },
             "end": {
-              "line": 138,
+              "line": 148,
               "column": 5
             }
           },
@@ -1109,11 +929,11 @@
           "description": "Max lines of the editor to show",
           "sourceRange": {
             "start": {
-              "line": 142,
+              "line": 152,
               "column": 4
             },
             "end": {
-              "line": 145,
+              "line": 155,
               "column": 5
             }
           },
@@ -1124,8 +944,8 @@
       "events": [
         {
           "type": "CustomEvent",
-          "name": "editor-value-changed",
-          "description": "Fired when the `editorValue` property changes.",
+          "name": "value-changed",
+          "description": "Fired when the `value` property changes.",
           "metadata": {}
         }
       ],
