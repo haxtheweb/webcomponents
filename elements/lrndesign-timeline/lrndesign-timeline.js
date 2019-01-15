@@ -38,29 +38,23 @@ class LrndesignTimeline extends SimpleColors {
             --simple-colors-default-theme-grey-5,
             #bbb
           );
-          --lrndesign-timeline-accent: var(
-            --simple-colors-default-theme-grey-12,
-            #000
-          );
-          --lrndesign-timeline-accent-background: var(
-            --simple-colors-default-theme-grey-0,
-            #fff
-          );
+          --lrndesign-timeline-accent: #000;
+          --lrndesign-timeline-accent-background: #fff;
           --lrndesign-timeline-accent-border: var(
             --simple-colors-default-theme-accent-8,
-            #bbb
+            #444
           );
           --lrndesign-timeline-header: var(
-            --simple-colors-default-theme-accent-0,
+            --simple-colors-default-theme-accent-1,
             #fff
           );
           --lrndesign-timeline-header-accent: var(
             --simple-colors-default-theme-accent-8,
-            #222
+            #444
           );
         }
         :host([dark]) {
-          --lrndesign-timeline-background: #0b0b0b;
+          --lrndesign-timeline-background: #1b1b1b;
         }
         :host([hidden]) {
           display: none;
@@ -69,11 +63,11 @@ class LrndesignTimeline extends SimpleColors {
           display: block;
           border-radius: 3px;
           border: 1px solid var(--lrndesign-timeline-border);
+          border-left: 3px solid var(--lrndesign-timeline-accent-border);
         }
         :host #events {
           padding: 0;
           width: 100%;
-          border-left: 3px solid var(--lrndesign-timeline-accent-border);
         }
         :host .heading {
           margin: 0;
