@@ -358,17 +358,38 @@
           "inheritedFrom": "SchemaBehaviors.Schema"
         },
         {
+          "name": "manifest",
+          "type": "Object | null | undefined",
+          "description": "Manifest from haxcms-site-builder",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 304,
+              "column": 4
+            },
+            "end": {
+              "line": 306,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          }
+        },
+        {
           "name": "auto",
           "type": "boolean | null | undefined",
           "description": "Auto call json files",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 302,
+              "line": 310,
               "column": 4
             },
             "end": {
-              "line": 306,
+              "line": 314,
               "column": 5
             }
           },
@@ -387,11 +408,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 310,
+              "line": 318,
               "column": 4
             },
             "end": {
-              "line": 314,
+              "line": 322,
               "column": 5
             }
           },
@@ -410,11 +431,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 318,
+              "line": 326,
               "column": 4
             },
             "end": {
-              "line": 321,
+              "line": 329,
               "column": 5
             }
           },
@@ -432,11 +453,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 325,
+              "line": 333,
               "column": 4
             },
             "end": {
-              "line": 328,
+              "line": 336,
               "column": 5
             }
           },
@@ -454,11 +475,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 332,
+              "line": 340,
               "column": 4
             },
             "end": {
-              "line": 336,
+              "line": 344,
               "column": 5
             }
           },
@@ -477,11 +498,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 340,
+              "line": 348,
               "column": 4
             },
             "end": {
-              "line": 345,
+              "line": 353,
               "column": 5
             }
           },
@@ -500,11 +521,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 349,
+              "line": 357,
               "column": 4
             },
             "end": {
-              "line": 352,
+              "line": 360,
               "column": 5
             }
           },
@@ -522,11 +543,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 356,
+              "line": 364,
               "column": 4
             },
             "end": {
-              "line": 360,
+              "line": 368,
               "column": 5
             }
           },
@@ -545,11 +566,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 364,
+              "line": 372,
               "column": 4
             },
             "end": {
-              "line": 367,
+              "line": 375,
               "column": 5
             }
           },
@@ -561,40 +582,17 @@
           }
         },
         {
-          "name": "autoloader",
-          "type": "Array | null | undefined",
-          "description": "Autoloader to ensure other components are there to work with",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 371,
-              "column": 4
-            },
-            "end": {
-              "line": 404,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_autoLoadChanged\"",
-              "attributeType": "Array"
-            }
-          },
-          "defaultValue": "[\"license-element\",\"grid-plate\",\"q-r\",\"self-check\",\"tab-list\",\"multiple-choice\",\"oer-schema\",\"hero-banner\",\"magazine-cover\",\"task-list\",\"video-player\",\"lrn-table\",\"media-image\",\"lrndesign-blockquote\",\"meme-maker\",\"a11y-gif-player\",\"paper-audio-player\",\"wikipedia-query\",\"wave-player\",\"pdf-element\",\"lrn-vocab\",\"lrn-math\",\"person-testimonial\",\"citation-element\",\"lrn-calendar\",\"code-editor\",\"place-holder\",\"aframe-player\"]"
-        },
-        {
           "name": "breakpointDesktop",
           "type": "string | null | undefined",
           "description": "Define desktop breakpoint for adapted navigation",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 408,
+              "line": 379,
               "column": 4
             },
             "end": {
-              "line": 411,
+              "line": 382,
               "column": 5
             }
           },
@@ -612,11 +610,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 416,
+              "line": 387,
               "column": 4
             },
             "end": {
-              "line": 420,
+              "line": 391,
               "column": 5
             }
           },
@@ -678,16 +676,36 @@
           "inheritedFrom": "SchemaBehaviors.Schema"
         },
         {
+          "name": "ready",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 394,
+              "column": 2
+            },
+            "end": {
+              "line": 396,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
           "name": "attached",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 423,
+              "line": 398,
               "column": 2
             },
             "end": {
-              "line": 431,
+              "line": 406,
               "column": 3
             }
           },
@@ -703,11 +721,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 436,
+              "line": 411,
               "column": 2
             },
             "end": {
-              "line": 452,
+              "line": 427,
               "column": 3
             }
           },
@@ -723,11 +741,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 457,
+              "line": 432,
               "column": 2
             },
             "end": {
-              "line": 470,
+              "line": 445,
               "column": 3
             }
           },
@@ -742,43 +760,16 @@
           }
         },
         {
-          "name": "_autoLoadChanged",
-          "description": "Process only new elements",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 475,
-              "column": 2
-            },
-            "end": {
-              "line": 506,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "newValue"
-            },
-            {
-              "name": "oldValue"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
           "name": "wipeSlot",
           "description": "Wipe slotted content",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 511,
+              "line": 450,
               "column": 2
             },
             "end": {
-              "line": 528,
+              "line": 467,
               "column": 3
             }
           },
@@ -802,38 +793,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 533,
+              "line": 472,
               "column": 2
             },
             "end": {
-              "line": 541,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "newValue"
-            },
-            {
-              "name": "oldValue"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_outlineChanged",
-          "description": "When outline changes let's do this.",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 546,
-              "column": 2
-            },
-            "end": {
-              "line": 556,
+              "line": 480,
               "column": 3
             }
           },
@@ -856,11 +820,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 561,
+              "line": 485,
               "column": 2
             },
             "end": {
-              "line": 566,
+              "line": 490,
               "column": 3
             }
           },
@@ -877,11 +841,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 571,
+              "line": 495,
               "column": 2
             },
             "end": {
-              "line": 576,
+              "line": 500,
               "column": 3
             }
           },
@@ -898,11 +862,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 581,
+              "line": 505,
               "column": 2
             },
             "end": {
-              "line": 583,
+              "line": 507,
               "column": 3
             }
           },
@@ -922,11 +886,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 588,
+              "line": 512,
               "column": 2
             },
             "end": {
-              "line": 590,
+              "line": 514,
               "column": 3
             }
           },
@@ -946,11 +910,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 595,
+              "line": 519,
               "column": 2
             },
             "end": {
-              "line": 609,
+              "line": 533,
               "column": 3
             }
           },
@@ -970,11 +934,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 614,
+              "line": 538,
               "column": 2
             },
             "end": {
-              "line": 628,
+              "line": 552,
               "column": 3
             }
           },
@@ -997,11 +961,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 633,
+              "line": 557,
               "column": 2
             },
             "end": {
-              "line": 635,
+              "line": 559,
               "column": 3
             }
           },
@@ -1011,6 +975,54 @@
               "name": "outlineTitle"
             }
           ]
+        },
+        {
+          "name": "__mapMenuLinkClickedHandler",
+          "description": "",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 561,
+              "column": 2
+            },
+            "end": {
+              "line": 563,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "__changePage",
+          "description": "Changes the page query parameter",
+          "privacy": "private",
+          "sourceRange": {
+            "start": {
+              "line": 569,
+              "column": 2
+            },
+            "end": {
+              "line": 575,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "id"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
         }
       ],
       "staticMethods": [],
@@ -1018,11 +1030,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 25,
+          "line": 27,
           "column": 28
         },
         "end": {
-          "line": 636,
+          "line": 576,
           "column": 1
         }
       },
@@ -1067,11 +1079,11 @@
           "inheritedFrom": "SchemaBehaviors.Schema"
         },
         {
-          "name": "auto",
-          "description": "Auto call json files",
+          "name": "manifest",
+          "description": "Manifest from haxcms-site-builder",
           "sourceRange": {
             "start": {
-              "line": 302,
+              "line": 304,
               "column": 4
             },
             "end": {
@@ -1080,11 +1092,11 @@
             }
           },
           "metadata": {},
-          "type": "boolean | null | undefined"
+          "type": "Object | null | undefined"
         },
         {
-          "name": "outline-file",
-          "description": "Outline JSON file name",
+          "name": "auto",
+          "description": "Auto call json files",
           "sourceRange": {
             "start": {
               "line": 310,
@@ -1096,6 +1108,22 @@
             }
           },
           "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "outline-file",
+          "description": "Outline JSON file name",
+          "sourceRange": {
+            "start": {
+              "line": 318,
+              "column": 4
+            },
+            "end": {
+              "line": 322,
+              "column": 5
+            }
+          },
+          "metadata": {},
           "type": "string | null | undefined"
         },
         {
@@ -1103,11 +1131,11 @@
           "description": "Outline JSON location",
           "sourceRange": {
             "start": {
-              "line": 318,
+              "line": 326,
               "column": 4
             },
             "end": {
-              "line": 321,
+              "line": 329,
               "column": 5
             }
           },
@@ -1119,23 +1147,7 @@
           "description": "Title of the outline.",
           "sourceRange": {
             "start": {
-              "line": 325,
-              "column": 4
-            },
-            "end": {
-              "line": 328,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "selected",
-          "description": "acitvely selected item",
-          "sourceRange": {
-            "start": {
-              "line": 332,
+              "line": 333,
               "column": 4
             },
             "end": {
@@ -1147,15 +1159,31 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "closed",
-          "description": "Closed status for the drawer",
+          "name": "selected",
+          "description": "acitvely selected item",
           "sourceRange": {
             "start": {
               "line": 340,
               "column": 4
             },
             "end": {
-              "line": 345,
+              "line": 344,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "closed",
+          "description": "Closed status for the drawer",
+          "sourceRange": {
+            "start": {
+              "line": 348,
+              "column": 4
+            },
+            "end": {
+              "line": 353,
               "column": 5
             }
           },
@@ -1167,11 +1195,11 @@
           "description": "Outline structured via JSON Outline Schema off the wire",
           "sourceRange": {
             "start": {
-              "line": 356,
+              "line": 364,
               "column": 4
             },
             "end": {
-              "line": 360,
+              "line": 368,
               "column": 5
             }
           },
@@ -1183,11 +1211,11 @@
           "description": "Active item which is in JSON Outline Schema",
           "sourceRange": {
             "start": {
-              "line": 364,
+              "line": 372,
               "column": 4
             },
             "end": {
-              "line": 367,
+              "line": 375,
               "column": 5
             }
           },
@@ -1195,31 +1223,15 @@
           "type": "Object | null | undefined"
         },
         {
-          "name": "autoloader",
-          "description": "Autoloader to ensure other components are there to work with",
-          "sourceRange": {
-            "start": {
-              "line": 371,
-              "column": 4
-            },
-            "end": {
-              "line": 404,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "Array | null | undefined"
-        },
-        {
           "name": "breakpoint-desktop",
           "description": "Define desktop breakpoint for adapted navigation",
           "sourceRange": {
             "start": {
-              "line": 408,
+              "line": 379,
               "column": 4
             },
             "end": {
-              "line": 411,
+              "line": 382,
               "column": 5
             }
           },
@@ -1231,11 +1243,11 @@
           "description": "Set min height of outline player to fill remaining\nspace to the bottom of the browser",
           "sourceRange": {
             "start": {
-              "line": 416,
+              "line": 387,
               "column": 4
             },
             "end": {
-              "line": 420,
+              "line": 391,
               "column": 5
             }
           },

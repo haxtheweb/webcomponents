@@ -137,7 +137,9 @@ Polymer({
         "simple-blog": "../../../@lrnwebcomponents/simple-blog/simple-blog.js",
         "lrnapp-book":
           "../../../@lrnwebcomponents/elmsln-apps/lib/lrnapp-book/lrnapp-book.js",
-        "haxcms-dev-theme": "haxcms-dev-theme.js"
+        "haxcms-dev-theme": "haxcms-dev-theme.js",
+        "outline-player":
+          "../../../@lrnwebcomponents/outline-player/outline-player.js"
       }
     },
     /**

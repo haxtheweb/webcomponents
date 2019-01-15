@@ -62,6 +62,10 @@ Polymer({
         --iron-icon-height: 16px;
         transform: translateX(10px);
       }
+
+      paper-button {
+        text-transform: none;
+      }
     </style>
     <div id="container">
       <template is="dom-if" if="[[avatarLabel]]">
@@ -135,14 +139,24 @@ Polymer({
     },
     active: {
       type: Boolean,
-      value: false,
-      observer: "__activeChanged"
+      value: false
+    },
+    selected: {
+      type: String
     }
   },
 
   listeners: {
     tap: "__tap",
     keypress: "__keypress"
+  },
+
+  observers: ["__selectedChanged(selected, id)"],
+
+  __selectedChanged: function(selected, id) {
+    if (selected === id) {
+      this.fire("active-item", this);
+    }
   },
 
   __titleRole: function() {
@@ -161,13 +175,6 @@ Polymer({
 
   attached: function() {
     this.fire("child-attached", { id: this.id });
-  },
-
-  __activeChanged: function(active, oldActive) {
-    if (active === oldActive) return;
-    if (active === true) {
-      this.fire("active-item", { id: this.id });
-    }
   },
 
   __tap: function(e) {

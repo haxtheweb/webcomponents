@@ -3,7 +3,7 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
-import "@polymer/iron-ajax/iron-ajax.js";
+import "@polymer/iron-location/iron-query-params.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
@@ -15,7 +15,9 @@ import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";
 import "@lrnwebcomponents/map-menu/map-menu.js";
+import "@lrnwebcomponents/jos-tree/jos-tree.js";
 import "./lib/outline-player-arrow.js";
+
 /**
 `outline-player`
 A LRN element
@@ -31,7 +33,7 @@ let OutlinePlayer = Polymer({
         font-family: libre baskerville;
         position: relative;
         overflow: hidden;
-        --outline-player-min-height: "";
+        --outline-player-min-height: 100vh;
         --app-drawer-width: 300px;
         --outline-player-dark: #222222;
         --outline-player-light: #f8f8f8;
@@ -189,19 +191,19 @@ let OutlinePlayer = Polymer({
         order: 2;
       }
     </style>
-    <iron-ajax
-      auto="[[auto]]"
-      url="[[outlineLocation]][[outlineFile]]"
-      handle-as="json"
-      last-response="{{_outlineData}}"
-    ></iron-ajax>
-    <iron-ajax
-      auto="[[auto]]"
-      url="[[outlineLocation]][[activeItem.location]]"
-      handle-as="text"
-      loading="{{__loadingContent}}"
-      last-response="{{_activeItemContent}}"
-    ></iron-ajax>
+    <!-- Control the sites query paremeters -->
+    <iron-location
+      id="location"
+      path="/"
+      query="{{__paramsString}}"
+    ></iron-location>
+    <iron-query-params
+      id="queryParams"
+      params-string="{{__paramsString}}"
+    ></iron-query-params>
+    <jos-tree manifest="[[manifest]]"></jos-tree>
+
+    <!-- Begin Layout -->
     <app-drawer-layout>
       <app-drawer id="drawer" swipe-open="" slot="drawer">
         <template is="dom-if" if="[[__hasTitle(outlineTitle)]]">
@@ -209,11 +211,11 @@ let OutlinePlayer = Polymer({
         </template>
         <map-menu
           id="menu"
-          items="{{outline}}"
-          data="[[_outlineData.items]]"
-          selected="{{selected}}"
+          selected="[[selected]]"
+          manifest="[[manifest]]"
           active-indicator=""
           auto-scroll=""
+          on-link-clicked="__mapMenuLinkClickedHandler"
         ></map-menu>
       </app-drawer>
       <app-header-layout>
@@ -298,6 +300,12 @@ let OutlinePlayer = Polymer({
 
   properties: {
     /**
+     * Manifest from haxcms-site-builder
+     */
+    manifest: {
+      type: Object
+    },
+    /**
      * Auto call json files
      */
     auto: {
@@ -367,43 +375,6 @@ let OutlinePlayer = Polymer({
       notify: true
     },
     /**
-     * Autoloader to ensure other components are there to work with
-     */
-    autoloader: {
-      type: Array,
-      value: [
-        "license-element",
-        "grid-plate",
-        "q-r",
-        "self-check",
-        "tab-list",
-        "multiple-choice",
-        "oer-schema",
-        "hero-banner",
-        "magazine-cover",
-        "task-list",
-        "video-player",
-        "lrn-table",
-        "media-image",
-        "lrndesign-blockquote",
-        "meme-maker",
-        "a11y-gif-player",
-        "paper-audio-player",
-        "wikipedia-query",
-        "wave-player",
-        "pdf-element",
-        "lrn-vocab",
-        "lrn-math",
-        "person-testimonial",
-        "citation-element",
-        "lrn-calendar",
-        "code-editor",
-        "place-holder",
-        "aframe-player"
-      ],
-      observer: "_autoLoadChanged"
-    },
-    /**
      * Define desktop breakpoint for adapted navigation
      */
     breakpointDesktop: {
@@ -419,6 +390,10 @@ let OutlinePlayer = Polymer({
       value: false,
       reflectToAttribute: true
     }
+  },
+
+  ready: function() {
+    this.setupHAXTheme(true, this.$.slot);
   },
 
   attached: function() {
@@ -471,42 +446,6 @@ let OutlinePlayer = Polymer({
   },
 
   /**
-   * Process only new elements
-   */
-  _autoLoadChanged: function(newValue, oldValue) {
-    if (
-      typeof newValue !== typeof undefined &&
-      newValue.constructor === Array
-    ) {
-      if (typeof this.__processedList === typeof undefined) {
-        this.__processedList = {};
-      }
-      // when new nodes show up in the slots then fire the needed pieces
-      for (var i in newValue) {
-        let tag = newValue[i].toLowerCase();
-        // see if we added this before
-        if (typeof this.__processedList[tag] === typeof undefined) {
-          // attempt a dynamic import with graceful failure / fallback
-          try {
-            this.__processedList[tag] = tag;
-            // @todo this won't find all tags
-            import(pathFromUrl(import.meta.url) + `../${tag}/${tag}.js`).then(
-              e => {
-                //e.target.import
-              },
-              e => {
-                //import failed
-              }
-            );
-          } catch (err) {
-            // error in the event this is a double registration
-          }
-        }
-      }
-    }
-  },
-
-  /**
    * Wipe slotted content
    */
   wipeSlot: function(element, slot = "*") {
@@ -538,21 +477,6 @@ let OutlinePlayer = Polymer({
         let frag = document.createRange().createContextualFragment(newValue);
         dom(this).appendChild(frag);
       }
-    }
-  },
-
-  /**
-   * When outline changes let's do this.
-   */
-  _outlineChanged: function(newValue, oldValue) {
-    if (
-      typeof newValue !== typeof undefined &&
-      typeof oldValue !== typeof undefined &&
-      newValue.constructor === Array &&
-      typeof newValue[0] !== typeof undefined
-    ) {
-      this.set("activeItem", newValue[0]);
-      this.__activeIndex = 0;
     }
   },
 
@@ -633,6 +557,22 @@ let OutlinePlayer = Polymer({
    */
   __hasTitle: function(outlineTitle) {
     return outlineTitle ? true : false;
+  },
+
+  __mapMenuLinkClickedHandler: function(e) {
+    this.__changePage(e.detail.id);
+  },
+
+  /**
+   * Changes the page query parameter
+   * @param id
+   */
+  __changePage: function(id) {
+    const queryParams = this.$.queryParams;
+    const paramsObject = queryParams.paramsObject;
+    queryParams.paramsObject = Object.assign({}, paramsObject, {
+      page: id
+    });
   }
 });
 export { OutlinePlayer };

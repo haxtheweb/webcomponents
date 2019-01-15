@@ -18,8 +18,12 @@ Polymer({
           icon="[[item.metadata.icon]]"
           open="[[item.metadata.active]]"
           avatar-label="[[item.metadata.avatarLabel]]"
+          selected="[[selected]]"
         >
-          <map-menu-builder items="[[item.children]]"></map-menu-builder>
+          <map-menu-builder
+            items="[[item.children]]"
+            selected="[[selected]]"
+          ></map-menu-builder>
         </map-menu-submenu>
       </template>
       <template is="dom-if" if="[[!__hasChildren(item)]]">
@@ -29,6 +33,7 @@ Polymer({
           url="[[item.location]]"
           icon="[[item.metadata.icon]]"
           active-path="[[activePath]]"
+          selected="[[selected]]"
         ></map-menu-item>
       </template>
     </template>
@@ -40,6 +45,9 @@ Polymer({
     items: {
       type: Array,
       value: []
+    },
+    selected: {
+      type: String
     }
   },
 

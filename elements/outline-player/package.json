@@ -41,6 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/map-menu": "^2.0.0-alpha1",
+    "@lrnwebcomponents/jos-tree": "^2.0.0-alpha1",
     "@lrnwebcomponents/materializecss-styles": "^0.2.0",
     "@lrnwebcomponents/schema-behaviors": "^0.2.0",
     "@polymer/app-layout": "^3.0.0",
