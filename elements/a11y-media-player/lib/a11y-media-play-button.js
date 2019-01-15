@@ -14,7 +14,6 @@ export { A11yMediaPlayButton };
  * @microcopy - language worth noting:
 ```<a11y-media-play-button
   playing$="[[__playing]]"            // Is the media currently playing?
-  thumbnail-css$="[[thumbnailCSS]]"   // Optional source for a thumbnail image
 </a11y-media-play-button>
 
 Custom styles:
@@ -92,8 +91,8 @@ class A11yMediaPlayButton extends A11yMediaPlayerProperties {
           position: absolute;
           height: 100%;
         }
-        :host([disabled]:not([audio-only])),
-        :host([playing]:not([audio-only])) {
+        :host([disabled]),
+        :host([elapsed]) {
           opacity: 0;
         }
         :host,
@@ -115,12 +114,6 @@ class A11yMediaPlayButton extends A11yMediaPlayerProperties {
           padding: 0;
           margin: 0;
           border: none;
-        }
-        :host([audio-only][thumbnail-src][playing]) #button > *:not(#thumbnail),
-        :host([audio-only][thumbnail-src][disabled])
-          #button
-          > *:not(#thumbnail) {
-          opacity: 0;
         }
         :host #thumbnail {
           height: auto;

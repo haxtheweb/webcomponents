@@ -123,7 +123,6 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
         lang$="[[lang]]"
         on-loadedmetadata="_handleMetadata"
         poster$="[[thumbnailSrc]]"
-        src$="[[manifest]]"
         preload="metadata"
       >
         HTML5 audio not supported

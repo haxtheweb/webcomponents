@@ -278,13 +278,6 @@ class A11yMediaPlayerProperties extends A11yMediaBehaviors {
         reflectToAttribute: true
       },
       /**
-       * Hide the giant play button?
-       */
-      noPlayButton: {
-        type: Boolean,
-        computed: "_noPlayButton(noHeight,isYoutube)"
-      },
-      /**
        * icon for pause button on player controls
        */
       pauseIcon: {
@@ -599,17 +592,6 @@ class A11yMediaPlayerProperties extends A11yMediaBehaviors {
    */
   _getNoHeight(audioOnly, thumbnailSrc) {
     return audioOnly && (thumbnailSrc === null || thumbnailSrc === undefined);
-  }
-
-  /**
-   * returns true if the player has no giant play button
-   *
-   * @param {boolean} Should height of video/thumbnail area be set to 0?
-   * @param {boolean} Is the media a YouTube video?
-   * @returns {boolean} Should the play button be displayed?
-   */
-  _noPlayButton(noHeight, isYoutube) {
-    return noHeight || isYoutube;
   }
 
   /**

@@ -366,6 +366,11 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
         }
         :host #youtube {
           height: 100%;
+          opacity: 0;
+        }
+        :host #sources[show-yt-iframe] #youtube {
+          opacity: 1;
+          transition: opacity 0.5s;
         }
         :host #customcc {
           font-size: 20px;
@@ -576,16 +581,20 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
         </div>
         <div id="player">
           <div id="innerplayer">
-            <div id="sources" hidden$="[[noHeight]]">
+            <div
+              id="sources"
+              show-yt-iframe$="[[_useYoutubeIframe(thumbnailSrc, isYoutube, __elapsed)]]"
+              style$="[[_getThumbnailCSS(thumbnailSrc,isYoutube,audioOnly)]]"
+            >
               <a11y-media-play-button
                 id="playbutton"
                 audio-only$="[[audioOnly]]"
                 disabled="true"
-                hidden$="[[noPlayButton]]"
-                disabled$="[[noPlayButton]]"
+                elapsed$="[[_hidePlayButton(__elapsed)]]"
+                hidden$="[[noHeight]]"
+                disabled$="[[noHeight]]"
                 on-controls-change="_onControlsChanged"
                 pause-label$="[[pauseLabel]]"
-                playing$="[[__playing]]"
                 play-label$="[[playLabel]]"
               >
               </a11y-media-play-button>
@@ -603,17 +612,12 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
                 on-media-loaded="_handleMediaLoaded"
                 playback-rate$="[[playbackRate]]"
                 thumbnail-src$="[[thumbnailSrc]]"
-                style$="[[_getThumbnailCSS(thumbnailSrc,isYoutube,__playing)]]"
                 preload$="[[preload]]"
                 volume$="[[volume]]"
               >
                 <slot></slot>
               </a11y-media-loader>
-              <div
-                id="youtube"
-                hidden$="[[!isYoutube]]"
-                video-id$="[[videoId]]"
-              ></div>
+              <div id="youtube" video-id$="[[videoId]]"></div>
               <div id="customcc" hidden$="[[!showCustomCaptions]]">
                 <span id="customcctxt" hidden$="[[noHeight]]"></span>
               </div>
@@ -784,24 +788,6 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
     if (root.__showFullscreen) {
       screenfull.on("change", () => {
         this.fullscreen = screenfull.isFullscreen;
-      });
-    }
-  }
-
-  /**
-   * dynamically adds source and track data
-   * from the sources and tracks properties
-   * (needed for media-player)
-   */
-  _appendToPlayer(data, type) {
-    let root = this;
-    if (data !== undefined && data !== null && data.length > 0) {
-      data.forEach(item => {
-        let el = document.createElement(type);
-        for (let key in item) {
-          el.setAttribute(key, item[key]);
-        }
-        root.$.loader.media.appendChild(el);
       });
     }
   }
@@ -1008,6 +994,24 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   }
 
   /**
+   * dynamically adds source and track data
+   * from the sources and tracks properties
+   * (needed for media-player)
+   */
+  _appendToPlayer(data, type) {
+    let root = this;
+    if (data !== undefined && data !== null && data.length > 0) {
+      data.forEach(item => {
+        let el = document.createElement(type);
+        for (let key in item) {
+          el.setAttribute(key, item[key]);
+        }
+        root.$.loader.media.appendChild(el);
+      });
+    }
+  }
+
+  /**
    * gets media caption
    *
    * @param {boolean} Is the player set to audio-only?
@@ -1053,13 +1057,13 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   }
 
   /**
-   * get label based on whether or not the video is playing
+   * get thumbanail css based on whether or not the video is playing
    *
    * @param {string} the url for the thumbnail image
    * @returns {string} the string for the style attribute
    */
-  _getThumbnailCSS(thumbnailSrc, isYoutube, __playing) {
-    return thumbnailSrc != null && isYoutube && !__playing
+  _getThumbnailCSS(thumbnailSrc, isYoutube, audioOnly) {
+    return thumbnailSrc != null && (isYoutube || audioOnly)
       ? "background-image: url(" + thumbnailSrc + "); background-size: cover;"
       : null;
   }
@@ -1282,6 +1286,17 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   }
 
   /**
+   * determines if there
+   *
+   * @param {string} the url for the thumbnail image
+   * @returns {string} the string for the style attribute
+   */
+  _hidePlayButton(__elapsed) {
+    console.log("_hidePlayButton", __elapsed);
+    return __elapsed !== undefined && __elapsed !== 0;
+  }
+
+  /**
    * handles slider seeking via mouse or keyboard
    *
    * @param {boolean} Is the slider currently being used to seek?
@@ -1295,6 +1310,16 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
       this.seek(value);
       this.__resumePlaying = false;
     }
+  }
+
+  /**
+   * determines if there
+   *
+   * @param {string} the url for the thumbnail image
+   * @returns {string} the string for the style attribute
+   */
+  _useYoutubeIframe(thumbnailSrc, isYoutube, __elapsed) {
+    return thumbnailSrc && isYoutube && this._hidePlayButton(__elapsed);
   }
 
   /**
