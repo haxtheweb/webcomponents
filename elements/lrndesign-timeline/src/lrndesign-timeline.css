@@ -8,8 +8,9 @@
   --lrndesign-timeline-border: var(--simple-colors-default-theme-grey-5, #bbb);
   --lrndesign-timeline-accent: var(--simple-colors-default-theme-grey-12, #000);
   --lrndesign-timeline-accent-background: var(--simple-colors-default-theme-grey-0, #fff);
+  --lrndesign-timeline-accent-border: var(--simple-colors-default-theme-accent-8, #bbb);
   --lrndesign-timeline-header: var(--simple-colors-default-theme-accent-0, #fff);
-  --lrndesign-timeline-header-accent: var(--simple-colors-default-theme-accent-10, #222);
+  --lrndesign-timeline-header-accent: var(--simple-colors-default-theme-accent-8, #222);
 }
 :host([dark]){
   --lrndesign-timeline-background: #0b0b0b;
@@ -26,6 +27,7 @@
 :host #events {
   padding: 0;
   width: 100%;
+  border-left: 3px solid var(--lrndesign-timeline-accent-border);
 }
 :host .heading {
   margin: 0;
@@ -74,63 +76,69 @@
 }
 :host(:not([timeline-size*="s"])) .heading {
   position: absolute;
-  top: 5px;
-  padding-bottom: 7px;
+  top: 0;
+  padding: 10px 0;
   overflow: hidden;
   background-color: transparent;
-  width: calc(50% + 32px);
+  width: calc(55% + 30px);
 }
 :host(:not([timeline-size*="s"])) .event[has-media][selected] .heading {
   z-index: 2;
 }
+:host(:not([timeline-size*="s"])) .event[has-media] .heading:after {
+  content: ' ';
+  z-index: 200;
+  position: absolute;
+  top: 7px;
+  right: 0;
+  width: 0; 
+  padding: 0; 
+  border-top: 0px solid transparent;
+  border-bottom: 0px solid transparent;
+  border-left: 0px solid transparent;
+  transition: border-color 0.5s;
+}
+:host(:not([timeline-size*="s"])) .event[has-media][selected] .heading:after {
+  border-top: 35px solid transparent;
+  border-bottom: 35px solid transparent; 
+  border-left: 35px solid var(--lrndesign-timeline-header-accent);
+}
 :host(:not([timeline-size*="s"])) .heading h2 {
-  margin: 7px 50px 0 20px;
+  margin: 7px 48px 0 20px;
   padding: 0 20px;
-  line-height: 36px;
-  height: 36px;
+  line-height: 50px;
+  height: 50px;
   background-color: var(--lrndesign-timeline-background);
   transition: background-color 0.5s;
-}
-:host(:not([timeline-size*="s"])) .event[has-media] .heading h2 {
-  margin: 7px 25px 0 20px;
-  padding: 0 40px 0 20px;
 }
 :host(:not([timeline-size*="s"])) .event[selected] .heading h2 {
   background-color: var(--lrndesign-timeline-header-accent);
   color:  var(--lrndesign-timeline-header);
+}
+:host(:not([timeline-size*="s"])) .event[has-media] .heading h2:after {
+  content: '';
+  position: absolute;
+  left: calc(100% - 48px);
+  height: 50px;
+  width: 0px;
+  transition: background-color 0.5s;
+  background-color: var(--lrndesign-timeline-background);
+}
+:host(:not([timeline-size*="s"])) .event[has-media][selected] .heading h2:after {
+  background-color: var(--lrndesign-timeline-header-accent);
+  width: 13px;
 }
 :host(:not([timeline-size*="s"])) .media-outer {
   display: flex;
   align-items: center;
   position: absolute;
   right: 0;
-  width: 50%;
+  width: 45%;
   height: 300px;
-  border-left: 3px solid var(--lrndesign-timeline-border);
-}
-:host(:not([timeline-size*="s"])) .event[has-media] .heading:after {
-  content: ' ';
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  width: 0; 
-  padding: 0; 
-  opacity: 0;
-  border-top: 0px solid transparent;
-  border-bottom: 0px solid transparent;
-  border-left: 0px solid transparent;
-  z-index: 200;
-  transition: border-left-color 0.5s;
-}
-:host(:not([timeline-size*="s"])) .event[has-media][selected] .heading:after {
-  border-top: 25px solid transparent;
-  border-bottom: 25px solid transparent; 
-  border-left: 25px solid var(--lrndesign-timeline-header-accent);
-  opacity: 1;
 }
 :host(:not([timeline-size*="s"])) .media {
   display: flex;
-  padding: 20px 20px 20px 35px;
+  padding: 20px 20px 20px 50px;
   opacity: 0;
   transition: opacity 0.8s delay 0.2s;
 }
@@ -138,9 +146,9 @@
   opacity: 1;
 }
 :host(:not([timeline-size*="s"])) .details {
-  padding: 50px 20px 40px;
+  padding: 67px 20px 20px;
   margin: 0 20px;
-  width: calc(50% - 80px);
+  width: calc(55% - 80px);
   color: var(--lrndesign-timeline-color);
   background-color: var(--lrndesign-timeline-background);
   border: 1px solid var(--lrndesign-timeline-background);
@@ -148,7 +156,7 @@
   transition: all 0.5s;
 }
 :host(:not([timeline-size*="s"])) .event:last-of-type .details {
-  min-height: 207px;
+  min-height: 180px;
 }
 :host(:not([timeline-size*="s"])) .event[selected] .details {
   color: var(--lrndesign-timeline-accent);
