@@ -13,7 +13,6 @@ import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import "@lrnwebcomponents/h-a-x/h-a-x.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
-import "./haxcms-site-editor-ui.js";
 /**
  * `haxcms-site-editor`
  * `haxcms editor element that provides all editing capabilities`
@@ -116,13 +115,29 @@ Polymer({
       handle-as="json"
       on-response="_handlePublishResponse"
     ></iron-ajax>
+    <iron-ajax
+      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
+      id="createajax"
+      url="[[createPagePath]]"
+      method="POST"
+      body="[[createData]]"
+      content-type="application/json"
+      handle-as="json"
+      on-response="_handleCreateResponse"
+      last-response="{{__createPageResponse}}"
+    ></iron-ajax>
+    <iron-ajax
+      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
+      id="deleteajax"
+      url="[[deletePagePath]]"
+      method="POST"
+      body="[[deleteData]]"
+      content-type="application/json"
+      handle-as="json"
+      on-response="_handleDeleteResponse"
+      last-response="{{__deletePageResponse}}"
+    ></iron-ajax>
     <h-a-x app-store$="[[appStore]]"></h-a-x>
-    <haxcms-site-editor-ui
-      id="ui"
-      active-item="[[activeItem]]"
-      manifest="[[manifest]]"
-      edit-mode="{{editMode}}"
-    ></haxcms-site-editor-ui>
   `,
   properties: {
     /**
@@ -132,9 +147,21 @@ Polymer({
       type: String
     },
     /**
-     * end point for saving page
+     * end point for saving pages
      */
     savePagePath: {
+      type: String
+    },
+    /**
+     * end point for create new pages
+     */
+    createPagePath: {
+      type: String
+    },
+    /**
+     * end point for delete pages
+     */
+    deletePagePath: {
       type: String
     },
     /**
@@ -185,9 +212,23 @@ Polymer({
       value: {}
     },
     /**
-     * published site data
+     * delete page data
      */
-    publishSiteData: {
+    deleteData: {
+      type: Object,
+      value: {}
+    },
+    /**
+     * create new page data
+     */
+    createData: {
+      type: Object,
+      value: {}
+    },
+    /**
+     * data as part of the POST to the backend
+     */
+    updateManifestData: {
       type: Object,
       value: {}
     },
@@ -251,6 +292,8 @@ Polymer({
       "haxcms-save-site-data",
       this.saveManifest.bind(this)
     );
+    window.addEventListener("haxcms-create-page", this.createPage.bind(this));
+    window.addEventListener("haxcms-delete-page", this.deletePage.bind(this));
     window.addEventListener("haxcms-publish-site", this.publishSite.bind(this));
   },
   /**
@@ -320,6 +363,76 @@ Polymer({
       "json-outline-schema-active-body-changed",
       this._bodyChanged.bind(this)
     );
+    window.removeEventListener(
+      "haxcms-create-page",
+      this.createPage.bind(this)
+    );
+    window.removeEventListener(
+      "haxcms-delete-page",
+      this.deletePage.bind(this)
+    );
+  },
+  /**
+   * create page event
+   */
+  createPage: function(e) {
+    if (e.detail.values) {
+      this.set("createData", {});
+      this.set("createData", e.detail.values);
+      this.notifyPath("createData.*");
+      this.set("createData.siteName", this.manifest.metadata.siteName);
+      this.notifyPath("createData.siteName");
+      this.set("createData.jwt", this.jwt);
+      this.notifyPath("createData.jwt");
+      this.$.createajax.generateRequest();
+      const evt = new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        cancelable: true,
+        detail: {}
+      });
+      window.dispatchEvent(evt);
+    }
+  },
+  _handleCreateResponse: function(response) {
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        text: `Created ${this.__createPageResponse.title}!`,
+        duration: 3000
+      }
+    });
+    window.dispatchEvent(evt);
+  },
+  /**
+   * delete the page we just got
+   */
+  deletePage: function(e) {
+    this.set("deleteData", {});
+    this.set("deleteData.pageid", e.detail.item.id);
+    this.notifyPath("deleteData.pageid");
+    this.set("deleteData.siteName", this.manifest.metadata.siteName);
+    this.notifyPath("deleteData.siteName");
+    this.set("deleteData.jwt", this.jwt);
+    this.notifyPath("deleteData.jwt");
+    this.$.deleteajax.generateRequest();
+    const evt = new CustomEvent("simple-modal-hide", {
+      bubbles: true,
+      cancelable: true,
+      detail: {}
+    });
+    window.dispatchEvent(evt);
+  },
+  _handleDeleteResponse: function(response) {
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        text: `Deleted ${this.__deletePageResponse.title}`,
+        duration: 3000
+      }
+    });
+    window.dispatchEvent(evt);
   },
   /**
    * Establish certain global settings in HAX once it claims to be ready to go
@@ -363,6 +476,14 @@ Polymer({
     this.set("manifest", {});
     this.set("manifest", e.detail);
     this.notifyPath("manifest.*");
+    if (this.activeItem && e.detail.metadata) {
+      // set upload manager to point to this location in a more dynamic fashion
+      window.HaxStore.instance.haxManager.appendUploadEndPoint =
+        "siteName=" +
+        e.detail.metadata.siteName +
+        "&page=" +
+        this.activeItem.id;
+    }
   },
   /**
    * update the internal active item
@@ -375,13 +496,10 @@ Polymer({
    * active item changed
    */
   _activeItemChanged: function(newValue, oldValue) {
-    if (newValue) {
-      let parts = window.location.pathname.split("/");
-      parts.pop();
-      let site = parts.pop();
+    if (newValue && this.manifest) {
       // set upload manager to point to this location in a more dynamic fashion
       window.HaxStore.instance.haxManager.appendUploadEndPoint =
-        "siteName=" + site + "&page=" + newValue.id;
+        "siteName=" + this.manifest.metadata.siteName + "&page=" + newValue.id;
     }
   },
   /**
@@ -452,10 +570,7 @@ Polymer({
   _editModeChanged: function(newValue, oldValue) {
     // was on, now off
     if (!newValue && oldValue) {
-      let parts = window.location.pathname.split("/");
-      parts.pop();
-      let site = parts.pop();
-      this.set("updatePageData.siteName", site);
+      this.set("updatePageData.siteName", this.manifest.metadata.siteName);
       this.notifyPath("updatePageData.siteName");
       this.set(
         "updatePageData.body",
@@ -477,11 +592,8 @@ Polymer({
    * Save the outline based on an event firing.
    */
   saveOutline: function(e) {
-    let parts = window.location.pathname.split("/");
-    parts.pop();
-    let site = parts.pop();
     // now let's work on the outline
-    this.set("updateOutlineData.siteName", site);
+    this.set("updateOutlineData.siteName", this.manifest.metadata.siteName);
     this.notifyPath("updateOutlineData.siteName");
     this.set("updateOutlineData.items", e.detail);
     this.notifyPath("updateOutlineData.items");
@@ -495,11 +607,8 @@ Polymer({
    * Save the outline based on an event firing.
    */
   saveManifest: function(e) {
-    let parts = window.location.pathname.split("/");
-    parts.pop();
-    let site = parts.pop();
     // now let's work on the outline
-    this.set("updateManifestData.siteName", site);
+    this.set("updateManifestData.siteName", this.manifest.metadata.siteName);
     this.notifyPath("updateManifestData.siteName");
     this.set("updateManifestData.manifest", e.detail);
     this.notifyPath("updateManifestData.manifest");
@@ -513,10 +622,7 @@ Polymer({
    * Save the outline based on an event firing.
    */
   publishSite: function(e) {
-    let parts = window.location.pathname.split("/");
-    parts.pop();
-    let site = parts.pop();
-    this.set("publishSiteData.siteName", site);
+    this.set("publishSiteData.siteName", this.manifest.metadata.siteName);
     this.notifyPath("publishSiteData.siteName");
     this.set("publishSiteData.jwt", this.jwt);
     this.notifyPath("publishSiteData.jwt");

@@ -109,7 +109,7 @@ Polymer({
    * Attached life cycle
    */
   attached: function() {
-    if (this.jwt != null) {
+    if (true) {
       // attempt to dynamically import the hax cms site editor
       // which will appear to be injecting into the page
       // but because of this approach it should be non-blocking
@@ -126,6 +126,10 @@ Polymer({
               window.appSettings.saveManifestPath;
             haxCmsSiteEditorElement.saveOutlinePath =
               window.appSettings.saveOutlinePath;
+            haxCmsSiteEditorElement.createPagePath =
+              window.appSettings.createPagePath;
+            haxCmsSiteEditorElement.deletePagePath =
+              window.appSettings.deletePagePath;
             haxCmsSiteEditorElement.publishPath =
               window.appSettings.publishPath;
             haxCmsSiteEditorElement.appStore = window.appSettings.appStore;
@@ -135,7 +139,6 @@ Polymer({
               haxCmsSiteEditorElement.activeItem = this.__item;
             }
             if (typeof this.__manifest !== typeof undefined) {
-              console.log("well it was here");
               haxCmsSiteEditorElement.manifest = this.__manifest;
             }
             if (typeof this.__body !== typeof undefined) {

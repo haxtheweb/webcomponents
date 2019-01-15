@@ -387,6 +387,127 @@ class JsonOutlineSchema extends HTMLElement {
       this._triggerDebugPaint(this.__debug);
     }
   }
+
+  /**
+   * Return some items populated correctly
+   */
+  getItemValues(item, parent = false) {
+    var valid;
+    if (item) {
+      valid = this.validateItem(item);
+    } else {
+      valid = new JSONOutlineSchemaItem();
+    }
+    // treat this item as the parent
+    if (parent) {
+      valid.parent = parent.id;
+    }
+    return valid;
+  }
+  /**
+   * Return valid JSON Schema relative to what asked for
+   */
+  getItemSchema(requested = "item") {
+    var schema = {
+      $schema: "http://json-schema.org/schema#",
+      title: this.title,
+      type: "object",
+      properties: {}
+    };
+    var obj;
+    if (requested == "item") {
+      obj = new JSONOutlineSchemaItem();
+    } else {
+      // current object definition but without the outline
+      obj = {
+        file: this.file,
+        id: this.id,
+        title: this.title,
+        author: this.author,
+        description: this.description,
+        license: this.license,
+        metadata: this.metadata
+      };
+      // support this as fallback
+      if (requested == "outline") {
+        obj.items = this.items;
+      }
+    }
+    for (var key in obj) {
+      let props = {
+        title: key,
+        type: "string",
+        value: obj[key]
+      };
+      switch (key) {
+        case "file":
+        case "id":
+        case "title":
+        case "author":
+        case "description":
+        case "license":
+        case "location":
+        // @todo break parent out into selector
+        case "parent":
+          props.component = {
+            name: "paper-input",
+            valueProperty: "value",
+            properties: {
+              required: true
+            }
+          };
+          break;
+        case "indent":
+        case "order":
+          props.component = {
+            name: "paper-input",
+            valueProperty: "value",
+            properties: {
+              required: true
+            },
+            attributes: {
+              type: "number"
+            }
+          };
+        case "metadata":
+        case "items":
+          props.type = "array";
+          props.items = {
+            type: "object",
+            properties: {
+              key: {
+                title: "key",
+                type: "string",
+                component: {
+                  name: "paper-input",
+                  valueProperty: "value",
+                  properties: {
+                    required: true
+                  }
+                }
+              },
+              value: {
+                title: "value",
+                type: "string",
+                component: {
+                  name: "paper-input",
+                  valueProperty: "value",
+                  properties: {
+                    required: true
+                  }
+                }
+              }
+            }
+          };
+          break;
+        default:
+          console.log(key);
+          break;
+      }
+      schema.properties[key] = props;
+    }
+    return schema;
+  }
 }
 window.customElements.define(JsonOutlineSchema.tag, JsonOutlineSchema);
 export { JsonOutlineSchema };

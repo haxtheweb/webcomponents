@@ -11,11 +11,18 @@ import "./lib/hax-text-context.js";
 import "./lib/hax-ce-context.js";
 import "./lib/hax-plate-context.js";
 import "./lib/hax-input-mixer.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
-
-$_documentContainer.innerHTML = `<dom-module id="hax-body">
-  <template strip-whitespace="">
+/**
+ * `hax-body`
+ * `Manager of the body area that can be modified`
+ * @demo demo/index.html
+ * @microcopy - the mental model for this element
+ *  - body is effectively a body of content that can be manipulated in the browser. This is for other HAX elements ultimately to interface with and reside in. It is the controller of input and output for all of HAX as it exists in a document. body is not the <body> tag but we need a similar mental model container for all our other elements.
+ *  - text-context - the context menu that shows up when an item is active so it can have text based operations performed to it.
+ *  - plate/grid plate - a plate or grid plate is a container that we can operate on in HAX. it can also have layout / "global" type of body operations performed on it such as delete, duplicate and higher level format styling.
+ */
+let HaxBody = Polymer({
+  is: "hax-body",
+  _template: html`
     <style include="simple-colors">
       :host {
         display: block;
@@ -29,7 +36,7 @@ $_documentContainer.innerHTML = `<dom-module id="hax-body">
         position: absolute;
         visibility: hidden;
         opacity: 0;
-        transition: all .3s ease;
+        transition: all 0.3s ease;
         z-index: 100;
         float: left;
         display: block;
@@ -43,10 +50,8 @@ $_documentContainer.innerHTML = `<dom-module id="hax-body">
       }
       :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
         outline: none;
-        transition:
-          .6s width ease-in-out,
-          .6s height ease-in-out,
-          .6s margin ease-in-out;
+        transition: 0.6s width ease-in-out, 0.6s height ease-in-out,
+          0.6s margin ease-in-out;
       }
       :host([edit-mode]) #bodycontainer ::slotted(p):empty {
         background: #f8f8f8;
@@ -60,67 +65,81 @@ $_documentContainer.innerHTML = `<dom-module id="hax-body">
         outline-offset: 2px;
       }
       :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]):before {
-        content: '';
+        content: "";
         display: block;
         position: absolute;
         top: 0;
         left: 0;
         bottom: 0;
         width: 32px;
-        transition: .3s all ease;
+        transition: 0.3s all ease;
       }
-      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]):hover:before {
-        content: '';
+      :host([edit-mode])
+        #bodycontainer
+        ::slotted(*[data-editable]):hover:before {
+        content: "";
         display: block;
         position: absolute;
         top: 0;
         left: 0;
         bottom: 0;
         width: 32px;
-        transition: .3s all ease;
+        transition: 0.3s all ease;
       }
       :host([edit-mode]) #bodycontainer ::slotted(*.hax-active[data-editable]) {
         cursor: text !important;
         outline: 1px dashed #c3c3c3 !important;
         outline-offset: 4px;
       }
-      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable] .hax-active) {
+      :host([edit-mode])
+        #bodycontainer
+        ::slotted(*[data-editable] .hax-active) {
         cursor: text !important;
         outline: 1px dashed #c3c3c3 !important;
         outline-offset: 4px;
       }
-      :host([edit-mode]) #bodycontainer ::slotted(*.hax-active[data-editable]):before {
-        content: '';
+      :host([edit-mode])
+        #bodycontainer
+        ::slotted(*.hax-active[data-editable]):before {
+        content: "";
         display: block;
         position: absolute;
         top: 0;
         left: 0;
         bottom: 0;
         width: 32px;
-        transition: .3s all ease;
+        transition: 0.3s all ease;
       }
-      :host([edit-mode]) #bodycontainer ::slotted(code.hax-active[data-editable]) {
+      :host([edit-mode])
+        #bodycontainer
+        ::slotted(code.hax-active[data-editable]) {
         display: block;
       }
       :host([edit-mode]) #bodycontainer ::slotted(hr[data-editable]) {
-        height:4px;
-        background-color: #EEEEEE;
+        height: 4px;
+        background-color: #eeeeee;
         padding-top: 8px;
         padding-bottom: 8px;
       }
       /** Fix to support safari as it defaults to none */
       :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
         -webkit-user-select: text;
-        cursor:pointer;
+        cursor: pointer;
       }
 
-      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]::-moz-selection),
-      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable] *::-moz-selection) {
+      :host([edit-mode])
+        #bodycontainer
+        ::slotted(*[data-editable]::-moz-selection),
+      :host([edit-mode])
+        #bodycontainer
+        ::slotted(*[data-editable] *::-moz-selection) {
         background-color: var(--hax-body-highlight, --paper-yellow-300);
         color: black;
       }
       :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]::selection),
-      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable] *::selection) {
+      :host([edit-mode])
+        #bodycontainer
+        ::slotted(*[data-editable] *::selection) {
         background-color: var(--hax-body-highlight, --paper-yellow-300);
         color: black;
       }
@@ -132,12 +151,17 @@ $_documentContainer.innerHTML = `<dom-module id="hax-body">
       #contextcontainer {
         display: none;
       }
-      :host([edit-mode][hax-ray-mode]) #bodycontainer ::slotted(*[data-editable]) {
+      :host([edit-mode][hax-ray-mode])
+        #bodycontainer
+        ::slotted(*[data-editable]) {
         outline: 1px dashed #d3d3d3;
         outline-offset: 4px;
       }
-      :host([edit-mode][hax-ray-mode]) #bodycontainer ::slotted(*[data-editable]):before {
-        content: attr(data-hax-ray) " " attr(resource) " " attr(typeof) " " attr(property) " " attr(content);
+      :host([edit-mode][hax-ray-mode])
+        #bodycontainer
+        ::slotted(*[data-editable]):before {
+        content: attr(data-hax-ray) " " attr(resource) " " attr(typeof) " "
+          attr(property) " " attr(content);
         font-size: 10px;
         font-style: italic;
         left: unset;
@@ -159,38 +183,59 @@ $_documentContainer.innerHTML = `<dom-module id="hax-body">
       <slot id="body"></slot>
     </div>
     <div id="contextcontainer">
-      <hax-text-context id="textcontextmenu" class="hax-context-menu ignore-activation"></hax-text-context>
-      <hax-ce-context id="cecontextmenu" class="hax-context-menu ignore-activation"></hax-ce-context>
-      <hax-plate-context id="platecontextmenu" class="hax-context-menu ignore-activation"></hax-plate-context>
-      <hax-input-mixer id="haxinputmixer" class="hax-context-menu ignore-activation"></hax-input-mixer>
+      <hax-text-context
+        id="textcontextmenu"
+        class="hax-context-menu ignore-activation"
+      ></hax-text-context>
+      <hax-ce-context
+        id="cecontextmenu"
+        class="hax-context-menu ignore-activation"
+      ></hax-ce-context>
+      <hax-plate-context
+        id="platecontextmenu"
+        class="hax-context-menu ignore-activation"
+      ></hax-plate-context>
+      <hax-input-mixer
+        id="haxinputmixer"
+        class="hax-context-menu ignore-activation"
+      ></hax-input-mixer>
     </div>
-    <iron-a11y-keys target="[[activeContainerNode]]" keys="esc" on-keys-pressed="_escKeyPressed" stop-keyboard-event-propagation=""></iron-a11y-keys>
-    <iron-a11y-keys target="[[activeContainerNode]]" keys="del backspace" on-keys-pressed="_delKeyPressed"></iron-a11y-keys>
-    <iron-a11y-keys target="[[activeContainerNode]]" keys="shift+tab" on-keys-pressed="_tabBackKeyPressed" stop-keyboard-event-propagation=""></iron-a11y-keys>
-    <iron-a11y-keys target="[[activeContainerNode]]" keys="tab" on-keys-pressed="_tabKeyPressed" stop-keyboard-event-propagation=""></iron-a11y-keys>
-    <iron-a11y-keys target="[[activeContainerNode]]" keys="up" on-keys-pressed="_upKeyPressed" stop-keyboard-event-propagation=""></iron-a11y-keys>
-    <iron-a11y-keys target="[[activeContainerNode]]" keys="down" on-keys-pressed="_downKeyPressed" stop-keyboard-event-propagation=""></iron-a11y-keys>
-
-  </template>
-
-  
-</dom-module>`;
-
-document.head.appendChild($_documentContainer);
-/**
-`hax-body`
-A LRN element that will change the world.
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- - body is effectively a body of content that can be manipulated in the browser. This is for other HAX elements ultimately to interface with and reside in. It is the controller of input and output for all of HAX as it exists in a document. body is not the <body> tag but we need a similar mental model container for all our other elements.
- - text-context - the context menu that shows up when an item is active so it can have text based operations performed to it.
- - plate/grid plate - a plate or grid plate is a container that we can operate on in HAX. it can also have layout / "global" type of body operations performed on it such as delete, duplicate and higher level format styling.
-
-*/
-let HaxBody = Polymer({
-  is: "hax-body",
+    <iron-a11y-keys
+      target="[[activeContainerNode]]"
+      keys="esc"
+      on-keys-pressed="_escKeyPressed"
+      stop-keyboard-event-propagation=""
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      target="[[activeContainerNode]]"
+      keys="del backspace"
+      on-keys-pressed="_delKeyPressed"
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      target="[[activeContainerNode]]"
+      keys="shift+tab"
+      on-keys-pressed="_tabBackKeyPressed"
+      stop-keyboard-event-propagation=""
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      target="[[activeContainerNode]]"
+      keys="tab"
+      on-keys-pressed="_tabKeyPressed"
+      stop-keyboard-event-propagation=""
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      target="[[activeContainerNode]]"
+      keys="up"
+      on-keys-pressed="_upKeyPressed"
+      stop-keyboard-event-propagation=""
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      target="[[activeContainerNode]]"
+      keys="down"
+      on-keys-pressed="_downKeyPressed"
+      stop-keyboard-event-propagation=""
+    ></iron-a11y-keys>
+  `,
   listeners: {
     focusin: "_focusIn",
     mousedown: "_focusIn",
@@ -1205,12 +1250,6 @@ let HaxBody = Polymer({
         this.activeNode.style.display = "block";
         this.positionContextMenus(this.activeNode, this.activeContainerNode);
         break;
-      case "hax-align-right":
-        this.activeNode.style.float = "right";
-        this.activeNode.style.margin = null;
-        this.activeNode.style.display = null;
-        this.positionContextMenus(this.activeNode, this.activeContainerNode);
-        break;
       case "hax-size-change":
         this.activeNode.style.width = detail.value + "%";
         setTimeout(() => {
@@ -1397,6 +1436,7 @@ let HaxBody = Polymer({
   _haxResolvePreviousElement: function(node) {
     node = dom(node).previousElementSibling;
     while (
+      node != null &&
       typeof node.tagName !== typeof undefined &&
       node.tagName.substring(0, 4) === "HAX-"
     ) {
@@ -1505,9 +1545,6 @@ let HaxBody = Polymer({
       } else if (newValue.style.float == "left") {
         this.$.cecontextmenu.justifyIcon = "editor:format-align-left";
         this.$.cecontextmenu.justifyValue = "hax-align-left";
-      } else if (newValue.style.float == "right") {
-        this.$.cecontextmenu.justifyIcon = "editor:format-align-right";
-        this.$.cecontextmenu.justifyValue = "hax-align-right";
       } else if (newValue.style.margin == "0 auto") {
         this.$.cecontextmenu.justifyIcon = "editor:format-align-center";
         this.$.cecontextmenu.justifyValue = "hax-align-center";

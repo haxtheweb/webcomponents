@@ -396,7 +396,11 @@ Polymer({
       if (typeof newValue.apps === typeof undefined) {
         this.$.appstore.generateRequest();
       } else {
-        this.__appStoreData = newValue;
+        // directly injected json object into the DOM, allow some time to propagate data
+        // otherwise we might not have a haxAutoloader object ready in time for the paint
+        setTimeout(() => {
+          this.__appStoreData = newValue;
+        }, 500);
       }
     }
   },
@@ -2100,6 +2104,11 @@ window.HaxStore.encapScript = html => {
   if (typeof html.replace === "function") {
     html = html.replace(/<script[\s\S]*?>/gi, "&lt;script&gt;");
     html = html.replace(/<\/script>/gi, "&lt;/script&gt;");
+    // ensure that HAX tags aren't leaking in here
+    html = html.replace(/<hax[\s\S]*?>/gi, "");
+    html = html.replace(/<\/hax[\s\S]*?>/gi, "");
+    html = html.replace(/<h-a-x[\s\S]*?>/gi, "");
+    html = html.replace(/<\/h-a-x*?>/gi, "");
     html = html.replace(/<style[\s\S]*?>/gi, "&lt;style&gt;");
     html = html.replace(/<\/style>/gi, "&lt;/style&gt;");
     // special case, it's inside a template tag

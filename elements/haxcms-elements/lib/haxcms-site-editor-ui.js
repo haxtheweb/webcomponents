@@ -16,75 +16,176 @@ Polymer({
     <style is="custom-style">
       :host {
         display: block;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        opacity: 0.6;
+        transition: 0.3s all linear;
+        background-color: rgba(255, 0, 116, 1);
+        padding: 0px 10px;
+        border-top-left-radius: 10px;
+        min-width: 84px;
+        width: 90px;
+        line-height: 50px;
+        height: 50px;
+        z-index: 10000;
+        visibility: visible;
       }
       paper-fab {
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        margin: 16px;
-        padding: 2px;
+        display: inline-flex;
         width: 40px;
         height: 40px;
+        vertical-align: middle;
+        line-height: 40px;
+        background-color: black;
+        color: rgba(255, 0, 116, 1);
+        transition: all 0.3s linear;
+        padding: 8px;
+        margin: 0;
+        position: relative;
+      }
+      :host([painting]) {
+        opacity: 0;
+        visibility: hidden;
+      }
+      paper-icon-button {
+        padding: 8px;
+        width: 40px;
+        min-width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin: 5px 2px 0 2px;
+        background-color: rgba(0, 0, 0, 0.2);
+        transition: 0.3s all linear;
+      }
+      paper-icon-button:hover,
+      paper-icon-button:focus,
+      paper-icon-button:active {
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+      #editbutton,
+      #deletebutton {
         visibility: hidden;
         opacity: 0;
-        z-index: 1000;
-        background-color: var(--haxcms-color, #ff4081);
-        transition: all 0.6s linear;
+      }
+      #deletebutton {
+        margin-right: 20px;
       }
       :host([page-allowed]) #editbutton,
-      #outlinebutton,
-      #manifestbutton {
+      :host([page-allowed]) #deletebutton {
         visibility: visible;
         opacity: 1;
       }
-      #editbutton {
-        right: 92px;
-      }
-      #outlinebutton {
-        right: 46px;
-      }
-      #manifestbutton {
-        right: 0px;
-      }
       :host([edit-mode]) #editbutton {
-        width: 100%;
+        width: 50px;
         z-index: 1001;
-        right: 0;
-        bottom: 0;
         border-radius: 0;
-        height: 80px;
         margin: 0;
-        padding: 8px;
-        background-color: var(--paper-blue-500) !important;
+        padding: 0;
+        color: white;
+        background-color: var(--paper-blue-500, blue) !important;
+        position: absolute;
+        height: 50px;
+      }
+      .wrapper {
+        width: 0px;
+        height: 50px;
+        line-height: 50px;
+        color: black;
+        display: inline-flex;
+        transition: 0.3s all ease-in-out;
+        overflow: hidden;
+        padding: 0;
+        margin: 0;
+        vertical-align: top;
+      }
+      :host([menu-mode]) .wrapper {
+        width: 275px;
+      }
+      :host([menu-mode]) {
+        opacity: 0.8;
+        width: unset;
+      }
+      :host([edit-mode][menu-mode]) #editbutton {
+        width: 100% !important;
+      }
+      :host(:hover),
+      :host(:active),
+      :host(:focus) {
+        opacity: 1;
+      }
+      .main-title {
+        font-size: 11px;
+        font-weight: bold;
+        width: 150px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        line-height: 50px;
+        padding: 0 10px;
       }
     </style>
+    <paper-fab
+      id="menubutton"
+      icon="icons:menu"
+      on-tap="_menuButtonTap"
+    ></paper-fab>
     <paper-fab
       id="editbutton"
       icon="[[__editIcon]]"
       on-tap="_editButtonTap"
     ></paper-fab>
+    <div class="wrapper">
+      <div class="main-title">[[activeItem.title]]</div>
+      <paper-icon-button
+        id="deletebutton"
+        icon="icons:delete"
+        on-tap="_deleteButtonTap"
+      ></paper-icon-button>
+      <paper-icon-button
+        id="addbutton"
+        icon="icons:add"
+        on-tap="_addButtonTap"
+      ></paper-icon-button>
+      <paper-icon-button
+        id="outlinebutton"
+        icon="icons:list"
+        on-tap="_outlineButtonTap"
+      ></paper-icon-button>
+      <paper-icon-button
+        id="manifestbutton"
+        icon="icons:settings"
+        on-tap="_manifestButtonTap"
+      ></paper-icon-button>
+    </div>
+    <paper-tooltip for="menubutton" position="top" offset="14"
+      >Menu</paper-tooltip
+    >
     <paper-tooltip for="editbutton" position="top" offset="14"
       >[[__editText]]</paper-tooltip
     >
-    <paper-fab
-      id="manifestbutton"
-      icon="icons:settings"
-      on-tap="_manifestButtonTap"
-    ></paper-fab>
-    <paper-tooltip for="manifestbutton" position="top" offset="14"
-      >site details</paper-tooltip
+    <paper-tooltip for="deletebutton" position="top" offset="14"
+      >Delete</paper-tooltip
     >
-    <paper-fab
-      id="outlinebutton"
-      icon="icons:list"
-      on-tap="_outlineButtonTap"
-    ></paper-fab>
+    <paper-tooltip for="addbutton" position="top" offset="14"
+      >Add</paper-tooltip
+    >
     <paper-tooltip for="outlinebutton" position="top" offset="14"
-      >edit outline</paper-tooltip
+      >Outline</paper-tooltip
+    >
+    <paper-tooltip for="manifestbutton" position="top" offset="14"
+      >Site details</paper-tooltip
     >
   `,
   is: "haxcms-site-editor-ui",
   properties: {
+    /**
+     * small visual lock that events break on initial paint
+     */
+    painting: {
+      type: Boolean,
+      value: true,
+      reflectToAttribute: true
+    },
     /**
      * Active item of the page being worked on, JSON outline schema item format
      */
@@ -92,13 +193,6 @@ Polymer({
       type: Object,
       value: {},
       observer: "_activeItemChanged"
-    },
-    /**
-     * Outline of items in json outline schema format
-     */
-    manifest: {
-      type: Object,
-      notify: true
     },
     /**
      * page allowed
@@ -117,6 +211,14 @@ Polymer({
       observer: "_editModeChanged",
       value: false,
       notify: true
+    },
+    /**
+     * if the menu is open or not
+     */
+    menuMode: {
+      type: Boolean,
+      reflectToAttribute: true,
+      value: false
     },
     /**
      * Manifest editing state
@@ -146,14 +248,113 @@ Polymer({
    */
   _editButtonTap: function(e) {
     this.editMode = !this.editMode;
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.editMode = this.editMode;
+  },
+  /**
+   * toggle menu state
+   */
+  _menuButtonTap: function(e) {
+    this.menuMode = !this.menuMode;
   },
 
+  /**
+   * Add button hit
+   */
+  _addButtonTap: function(e) {
+    this.__newForm = document.createElement("eco-json-schema-object");
+    let outline = window.JSONOutlineSchema.requestAvailability();
+    // get a prototype schema for an item
+    this.__newForm.schema = outline.getItemSchema("item");
+    // get values but assume what was passed in is the parent relationship
+    this.__newForm.value = outline.getItemValues(null, this.activeItem);
+    let b1 = document.createElement("paper-button");
+    b1.raised = true;
+    b1.appendChild(document.createTextNode("Create"));
+    b1.addEventListener("click", this._createNewItem.bind(this));
+    let b2 = document.createElement("paper-button");
+    b2.appendChild(document.createTextNode("cancel"));
+    b2.setAttribute("dialog-dismiss", "dialog-dismiss");
+    let b = document.createElement("span");
+    b.appendChild(b1);
+    b.appendChild(b2);
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      cancelable: false,
+      detail: {
+        title: "Add a new page",
+        elements: { content: this.__newForm, buttons: b },
+        invokedBy: this.$.addbutton,
+        clone: false
+      }
+    });
+    window.dispatchEvent(evt);
+  },
+  /**
+   * create new item
+   */
+  _createNewItem: function(e) {
+    const evt = new CustomEvent("haxcms-create-page", {
+      bubbles: true,
+      cancelable: false,
+      detail: {
+        values: this.__newForm.value
+      }
+    });
+    this.dispatchEvent(evt);
+  },
+
+  /**
+   * Delete button hit, confirm they want to do this
+   */
+  _deleteButtonTap: function(e) {
+    let c = document.createElement("span");
+    c.innerHTML = `"${
+      this.activeItem.title
+    }" will be removed from the outline but its content stays on the file system.`;
+    let b1 = document.createElement("paper-button");
+    b1.raised = true;
+    b1.appendChild(document.createTextNode("Confirm"));
+    b1.addEventListener("tap", this._deleteActive.bind(this));
+    let b2 = document.createElement("paper-button");
+    b2.appendChild(document.createTextNode("cancel"));
+    b2.setAttribute("dialog-dismiss", "dialog-dismiss");
+    let b = document.createElement("span");
+    b.appendChild(b1);
+    b.appendChild(b2);
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      cancelable: false,
+      detail: {
+        title: "Are you sure you want to delete this page?",
+        elements: { content: c, buttons: b },
+        invokedBy: this.$.deletebutton,
+        clone: false
+      }
+    });
+    window.dispatchEvent(evt);
+  },
+  /**
+   * delete active item
+   */
+  _deleteActive: function(e) {
+    const evt = new CustomEvent("haxcms-delete-page", {
+      bubbles: true,
+      cancelable: false,
+      detail: {
+        item: this.activeItem
+      }
+    });
+    this.dispatchEvent(evt);
+  },
   /**
    * toggle state on button tap
    */
   _outlineButtonTap: function(e) {
     let c = document.createElement("haxcms-outline-editor-dialog");
-    c.set("manifest", this.manifest);
+    c.set(
+      "manifest",
+      window.cmsSiteEditor.instance.haxCmsSiteEditorElement.manifest
+    );
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       cancelable: false,
@@ -184,7 +385,6 @@ Polymer({
     });
     window.dispatchEvent(evt);
   },
-
   /**
    * Edit state has changed.
    */
@@ -196,7 +396,7 @@ Polymer({
     } else {
       // disable it some how
       this.__editIcon = "editor:mode-edit";
-      this.__editText = "edit page";
+      this.__editText = "Edit";
     }
     this.fire("haxcms-edit-mode-changed", newValue);
     window.HaxStore.write("editMode", newValue, this);

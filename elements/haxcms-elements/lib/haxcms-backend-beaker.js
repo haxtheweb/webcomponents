@@ -64,6 +64,14 @@ Polymer({
       "haxcms-save-page",
       this.savePage.bind(this)
     );
+    document.body.addEventListener(
+      "haxcms-delete-page",
+      this.deletePage.bind(this)
+    );
+    document.body.addEventListener(
+      "haxcms-create-page",
+      this.createPage.bind(this)
+    );
     // listen for app being selected
     document.body.addEventListener(
       "hax-app-picker-selection",
@@ -98,6 +106,14 @@ Polymer({
     document.body.removeEventListener(
       "haxcms-save-page",
       this.savePage.bind(this)
+    );
+    document.body.removeEventListener(
+      "haxcms-delete-page",
+      this.deletePage.bind(this)
+    );
+    document.body.removeEventListener(
+      "haxcms-create-page",
+      this.createPage.bind(this)
     );
     // listen for app being selected
     document.body.removeEventListener(
@@ -196,6 +212,80 @@ Polymer({
     this.fire("json-outline-schema-changed", this.manifest);
   },
   /**
+   * Outline save event.
+   */
+  deletePage: async function(e) {
+    let page = e.detail.item;
+    // snag global to be sure we have it set first
+    this.manifest =
+      window.cmsSiteEditor.instance.haxCmsSiteEditorElement.manifest;
+    // set items specifically since it's just an outline update
+    this.manifest.items = e.detail;
+    // loop through and match the data our backend generates
+    this.manifest.items.forEach((element, index) => {
+      if (element.id === page.id) {
+        this.splice("manifest.items", index, 1);
+      }
+    });
+    this.$.beaker.write("site.json", JSON.stringify(this.manifest, null, 2));
+    // simulate save events since they wont fire
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
+      `${page.title} deleted`
+    );
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.fire(
+      "haxcms-trigger-update",
+      true
+    );
+    this.fire("json-outline-schema-changed", this.manifest);
+  },
+  /**
+   * createPage
+   */
+  createPage: async function(e) {
+    let page = e.detail.values;
+    // snag global to be sure we have it set first
+    this.manifest =
+      window.cmsSiteEditor.instance.haxCmsSiteEditorElement.manifest;
+    // set items specifically since it's just an outline update
+    this.manifest.items = e.detail;
+    // loop through and match the data our backend generates
+    this.manifest.items.forEach((element, index) => {
+      // test for things that are not set and build the whole thing out
+      if (typeof element.location === typeof undefined) {
+        if (!page.id) {
+          page.id = this.generateResourceID("item-");
+        }
+        if (!page.location) {
+          page.location = "pages/" + page.id + "/index.html";
+        }
+        let directory = page.location.replace("/index.html", "");
+        element.id = page.id;
+        element.location = page.location;
+        element.order = page.order;
+        element.indent = page.indent;
+        element.parent = page.parent;
+        element.description = page.description;
+        element.metadata.created = Math.floor(Date.now() / 1000);
+        element.metadata.updated = Math.floor(Date.now() / 1000);
+        // make a directory
+        this.$.beaker.archive.mkdir(directory);
+        // make the page
+        this.$.beaker.write(page.location, "<p>My great new content!</p>");
+        this.set(`manifest.items.${index}`, element);
+      }
+    });
+    this.$.beaker.write("site.json", JSON.stringify(this.manifest, null, 2));
+    // simulate save events since they wont fire
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.$.toast.show(
+      `${page.title} created!`
+    );
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.fire(
+      "haxcms-trigger-update",
+      true
+    );
+    this.fire("json-outline-schema-changed", this.manifest);
+  },
+  /**
    * Manifest save event.
    */
   saveManifest: async function(e) {
@@ -253,7 +343,7 @@ Polymer({
     this.jwt = beaker.archive.url;
     var info = await beaker.archive.getInfo();
     // test that we have a url (we'll call it jwt for now) and that we own the site
-    if (this.jwt != null && info.isOwner) {
+    if (this.jwt != null && typeof this.jwt == "string" && info.isOwner) {
       var appstore = JSON.parse(await beaker.read("appstore.json"));
       // attempt to dynamically import the hax cms site editor
       // which will appear to be injecting into the page
@@ -265,10 +355,6 @@ Polymer({
               "haxcms-site-editor"
             );
             haxCmsSiteEditorElement.jwt = this.jwt;
-            //haxCmsSiteEditorElement.savePagePath = "<?php print $HAXCMS->basePath . 'system/savePage.php';?>";
-            //haxCmsSiteEditorElement.saveManifestPath = "<?php print $HAXCMS->basePath . 'system/saveManifest.php';?>";
-            //haxCmsSiteEditorElement.saveOutlinePath = "<?php print $HAXCMS->basePath . 'system/saveOutline.php';?>";
-            //haxCmsSiteEditorElement.publishPath = null;
             haxCmsSiteEditorElement.appStore = appstore;
             // pass along the initial state management stuff that may be missed
             // based on timing on the initial setup
