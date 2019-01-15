@@ -1,0 +1,24 @@
+<style is="custom-style" include="simple-colors"></style>
+<article>
+  <h1 id="title">[[title]]</h1>
+  <slot></slot>
+  <div id="timeline">
+      <div id="events" on-scroll="_onScroll">
+        <template id="repeat" is="dom-repeat" items="[[eventsData]]" as="event" index-as="index" restamp>
+          <section class="event" has-media$="[[_isSet(event.image)]]">
+            <div class="event-overview">
+              <div class="heading"><h2>[[event.heading]]</h2></div>
+              <div class="media-outer">
+                <template is="dom-if" if="[[_isSet(event.image)]]" restamp>
+                  <div class="media">
+                    <image alt$="[[event.image.alt]]" src$="[[event.image.src]]"/>
+                  </div>
+                </template>
+              </div>
+            </div>
+            <div class="details">[[event.details]]</div>
+          </section>
+        </template>
+    </div>
+  </div>
+</article>
