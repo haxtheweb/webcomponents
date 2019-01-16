@@ -42,7 +42,7 @@ Polymer({
       handle-as="json"
       last-response="{{__appStoreData}}"
     ></iron-ajax>
-    <hal-9000 id="hal" debug="debug"></hal-9000>
+    <hal-9000 id="hal" debug="debug" commands="[[voiceCommands]]"></hal-9000>
   `,
 
   is: "hax-store",
@@ -321,6 +321,9 @@ Polymer({
     },
     __ready: {
       type: Boolean
+    },
+    voiceCommands: {
+      type: Object
     }
   },
 
@@ -563,6 +566,10 @@ Polymer({
       "hax-insert-content-array",
       this._haxStoreInsertMultiple.bind(this)
     );
+    window.removeEventListener(
+      "hax-add-voice-command",
+      this._addVoiceCommand.bind(this)
+    );
     // capture events and intercept them globally
     window.removeEventListener(
       "onbeforeunload",
@@ -590,7 +597,8 @@ Polymer({
     window.addEventListener("paste", this._onPaste.bind(this));
     window.addEventListener("keypress", this._onKeyPress.bind(this));
     this.haxToast = window.SimpleToast.requestAvailability();
-    this.$.hal.commands = this._initVoiceCommands();
+    // initialize voice commands
+    this.voiceCommands = this._initVoiceCommands();
   },
   /**
    * Build a list of common voice commands
@@ -620,6 +628,19 @@ Polymer({
       window.HaxStore.instance.haxManager.toggleDialog(false);
     };
     return commands;
+  },
+  /**
+   * allow uniform method of adding voice commands
+   */
+  addVoiceCommand: function(command) {
+    this.push("voiceCommands", command);
+    this.notifyPath("voiceCommands.*");
+  },
+  /**
+   * event driven version
+   */
+  _addVoiceCommand: function(e) {
+    this.addVoiceCommand(e.detail);
   },
   /**
    * Before the browser closes / changes paths, ask if they are sure they want to leave
@@ -875,7 +896,10 @@ Polymer({
       "hax-insert-content-array",
       this._haxStoreInsertMultiple.bind(this)
     );
-
+    window.addEventListener(
+      "hax-add-voice-command",
+      this._addVoiceCommand.bind(this)
+    );
     document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
   },
 

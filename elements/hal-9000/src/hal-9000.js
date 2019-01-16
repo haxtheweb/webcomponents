@@ -63,7 +63,7 @@ class Hal9000 extends PolymerElement {
   /**
    * Callback for clicking on whatever was just said
    */
-  _clickObject(phrase) {
+  clickObject(phrase) {
     this.__text = phrase;
     this.commands[phrase].object.click();
     this.commands[phrase].object.focus();
@@ -87,9 +87,6 @@ class Hal9000 extends PolymerElement {
    */
   speak(text) {
     this.__text = text;
-    this.$.button.click();
-  }
-  _speak() {
     if (this.synth) {
       this.utter = new SpeechSynthesisUtterance(this.__text);
       this.utter.pitch = this.pitch;
