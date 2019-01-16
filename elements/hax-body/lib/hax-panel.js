@@ -195,7 +195,7 @@ Polymer({
         hidden$="[[hideExportButton]]"
         on-tap="_htmlExportDialog"
         icon="code"
-        label="Export"
+        label="Source view"
       ></hax-panel-item>
       <hax-panel-item
         hidden$="[[hidePanelOps]]"

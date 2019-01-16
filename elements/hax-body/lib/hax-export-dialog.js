@@ -1,11 +1,13 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@polymer/app-layout/app-drawer/app-drawer.js";
+import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/dl-behavior/dl-behavior.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/code-editor/code-editor.js";
+import "@lrnwebcomponents/hexagon-loader/hexagon-loader.js";
 /**
 `hax-export-dialog`
 Export dialog with all export options and settings provided.
@@ -41,12 +43,6 @@ Polymer({
         text-align: left;
         padding: 16px;
       }
-      app-drawer {
-        --app-drawer-content-container: {
-          background-color: rgba(0, 0, 0, 0.7);
-        }
-        --app-drawer-width: 320px;
-      }
       .buttons paper-button:focus,
       .buttons paper-button:hover {
         background-color: var(--simple-colors-default-theme-light-green-1);
@@ -58,7 +54,7 @@ Polymer({
         text-transform: none;
         margin: 0;
         background-color: #f8f8f8;
-        display: flex;
+        display: inline-flex;
         border-radius: 0px;
         border-style: solid;
         border-width: 1px;
@@ -68,7 +64,7 @@ Polymer({
       }
       #closedialog {
         float: right;
-        top: 135px;
+        top: 5px;
         right: 0;
         position: absolute;
         padding: 4px;
@@ -91,28 +87,40 @@ Polymer({
         color: #eeeeee;
         font-family: monospace;
       }
+      paper-dialog {
+        min-width: 60vw;
+        min-height: 50vh;
+        background-color: black;
+        color: white;
+      }
+      #import {
+        margin-right: 50px;
+      }
+      #loading {
+        position: absolute;
+        margin: 0 auto;
+        width: 100%;
+      }
     </style>
-    <app-drawer id="dialog" align="right" transition-duration="300">
+    <paper-dialog id="dialog" with-backdrop always-on-top>
       <h3 class="title">[[title]]</h3>
       <div style="height: 100%; overflow: auto;" class="pref-container">
-        <textarea id="textarea" rows="20"></textarea>
-        <div class="buttons">
-          <paper-button id="downloadfull" raised=""
-            >Download as full file</paper-button
-          >
-          <paper-button id="download" raised=""
-            >Download HTML contents only</paper-button
-          >
-          <paper-button id="copy" raised="">Copy to clipboard</paper-button>
-          <paper-button
-            id="import"
-            raised=""
-            hidden\$="[[!globalPreferences.haxDeveloperMode]]"
-            >Import textarea into HAX</paper-button
-          >
+        <div id="wrapper">
+          <textarea id="hiddentextarea" hidden></textarea>
+          <hexagon-loader
+            size="small"
+            id="loading"
+            color="grey"
+          ></hexagon-loader>
+          <code-editor id="textarea" title="" theme="hc-black"></code-editor>
+        </div>
+        <div id="buttons" class="buttons">
+          <paper-button id="import" raised>Update body area</paper-button>
+          <paper-button id="copy">Copy to clipboard</paper-button>
+          <paper-button id="downloadfull">Download full file</paper-button>
+          <paper-button id="download">Download body area</paper-button>
           <paper-button
             id="elementexport"
-            raised=""
             hidden\$="[[!globalPreferences.haxDeveloperMode]]"
             >Copy as HAX schema to clipboard</paper-button
           >
@@ -121,7 +129,7 @@ Polymer({
       <paper-button id="closedialog" on-tap="close">
         <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
       </paper-button>
-    </app-drawer>
+    </paper-dialog>
   `,
 
   is: "hax-export-dialog",
@@ -134,7 +142,7 @@ Polymer({
      */
     title: {
       type: String,
-      value: "Export"
+      value: "Source view"
     },
     /**
      * Access to the global properties object.
@@ -209,6 +217,7 @@ Polymer({
   download: function(e) {
     const data = this.contentToFile(false);
     this.downloadFromData(data, "html", "my-new-code");
+    window.HaxStore.toast("HTML content downloaded");
   },
 
   /**
@@ -217,6 +226,7 @@ Polymer({
   downloadfull: function(e) {
     const data = this.contentToFile(true);
     this.downloadFromData(data, "html", "my-new-webpage");
+    window.HaxStore.toast("Working offline copy downloaded");
   },
 
   /**
@@ -225,6 +235,7 @@ Polymer({
   importContent: function(e) {
     // import contents of this text area into the activeHaxBody
     const htmlBody = this.$.textarea.value;
+    window.HaxStore.toast("Content updated");
     return window.HaxStore.instance.activeHaxBody.importContent(htmlBody);
   },
 
@@ -232,9 +243,13 @@ Polymer({
    * selectBody
    */
   selectBody: function(e) {
-    this.$.textarea.focus();
-    this.$.textarea.select();
+    this.$.hiddentextarea.value = this.$.textarea.value;
+    this.$.hiddentextarea.removeAttribute("hidden");
+    this.$.hiddentextarea.focus();
+    this.$.hiddentextarea.select();
     document.execCommand("copy");
+    this.$.hiddentextarea.setAttribute("hidden", "hidden");
+    window.HaxStore.toast("Copied HTML content");
   },
 
   /**
@@ -244,11 +259,14 @@ Polymer({
     let elements = window.HaxStore.htmlToHaxElements(this.$.textarea.value);
     var str = JSON.stringify(elements, null, 2);
     let val = this.$.textarea.value;
-    this.$.textarea.value = str;
-    this.$.textarea.focus();
-    this.$.textarea.select();
+    this.$.hiddentextarea.removeAttribute("hidden");
+    this.$.hiddentextarea.value = str;
+    this.$.hiddentextarea.focus();
+    this.$.hiddentextarea.select();
     document.execCommand("copy");
-    this.$.textarea.value = val;
+    this.$.hiddentextarea.value = val;
+    this.$.hiddentextarea.setAttribute("hidden", "hidden");
+    window.HaxStore.toast("Copied hax elements to clipboard");
   },
 
   /**
@@ -305,7 +323,7 @@ Polymer({
     if (this.$.dialog.opened) {
       this.close();
     } else {
-      this.$.textarea.value = this.contentToFile(false);
+      this.$.textarea.editorValue = this.contentToFile(false);
       window.HaxStore.instance.closeAllDrawers(this);
     }
   },
@@ -315,6 +333,14 @@ Polymer({
    */
   open: function() {
     this.$.dialog.open();
+    this.$.buttons.style.display = "none";
+    this.$.loading.setAttribute("loading", "loading");
+    this.$.wrapper.appendChild(this.$.textarea);
+    // silly but we need the code editor to figure itself out real quick as to sizing
+    setTimeout(() => {
+      this.$.loading.removeAttribute("loading");
+      this.$.buttons.style.display = "unset";
+    }, 800);
   },
 
   /**

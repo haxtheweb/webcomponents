@@ -3,6 +3,7 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
+import "@lrnwebcomponents/hal-9000/hal-9000.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "./hax-app.js";
 import "./hax-stax.js";
@@ -41,6 +42,7 @@ Polymer({
       handle-as="json"
       last-response="{{__appStoreData}}"
     ></iron-ajax>
+    <hal-9000 id="hal" debug="debug"></hal-9000>
   `,
 
   is: "hax-store",
@@ -223,7 +225,8 @@ Polymer({
      */
     globalPreferences: {
       type: Object,
-      value: {}
+      value: {},
+      observer: "_globalPreferencesChanged"
     },
     /**
      * Globally active app, used for brokering communications
@@ -463,7 +466,13 @@ Polymer({
       this.dispatchEvent(evt);
     }
   },
-
+  _globalPreferencesChanged: function(newValue, oldValue) {
+    if (newValue.haxVoiceCommands) {
+      this.$.hal.auto = true;
+    } else {
+      this.$.hal.auto = false;
+    }
+  },
   /**
    * Detached life cycle
    */
@@ -1378,6 +1387,9 @@ Polymer({
       e.detail.property &&
       e.detail.owner
     ) {
+      if (typeof e.detail.value === "object") {
+        this.set(e.detail.property, {});
+      }
       this.set(e.detail.property, e.detail.value);
       this.fire("hax-store-property-updated", {
         property: e.detail.property,
@@ -2128,7 +2140,7 @@ window.HaxStore.encapScript = html => {
 /**
  * Global toast
  */
-window.HaxStore.toast = (message, duration = 3000) => {
+window.HaxStore.toast = (message, duration = 4000) => {
   const evt = new CustomEvent("simple-toast-show", {
     bubbles: true,
     cancelable: true,
@@ -2137,6 +2149,7 @@ window.HaxStore.toast = (message, duration = 3000) => {
       duration: duration
     }
   });
+  window.HaxStore.instance.dispatchEvent(evt);
 };
 
 /**

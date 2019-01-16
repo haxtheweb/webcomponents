@@ -50,10 +50,6 @@ Polymer({
         text-transform: uppercase;
         color: var(--hax-ui-headings, #d4ff77);
       }
-      .pref-container {
-        text-align: left;
-        padding: 16px;
-      }
       app-drawer {
         --app-drawer-content-container: {
           background-color: rgba(0, 0, 0, 0.7);
@@ -95,6 +91,10 @@ Polymer({
           --simple-colors-default-theme-light-green-1
         ) !important;
         --paper-listbox-color: #000000;
+      }
+      .pref-container {
+        text-align: left;
+        padding: 16px;
       }
     </style>
     <app-drawer id="dialog" align="right" transition-duration="300">
@@ -157,6 +157,11 @@ Polymer({
       title: "HAX preferences",
       type: "object",
       properties: {
+        haxShowExportButton: {
+          title: "View source button",
+          type: "boolean",
+          value: true
+        },
         haxRayMode: {
           title: "X-Ray vision",
           type: "boolean",
@@ -167,8 +172,8 @@ Polymer({
           type: "boolean",
           value: false
         },
-        haxShowExportButton: {
-          title: "Show Export Panel",
+        haxVoiceCommands: {
+          title: "Voice commands",
           type: "boolean",
           value: false
         },

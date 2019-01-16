@@ -12,16 +12,16 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 // register globally so we can make sure there is only one
-window.simpleDrawer = window.simpleDrawer || {};
+window.SimpleDrawer = window.SimpleDrawer || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same drawer
-window.simpleDrawer.requestAvailability = () => {
-  if (!window.simpleDrawer.instance) {
-    window.simpleDrawer.instance = document.createElement("simple-drawer");
-    document.body.appendChild(window.simpleDrawer.instance);
+window.SimpleDrawer.requestAvailability = () => {
+  if (!window.SimpleDrawer.instance) {
+    window.SimpleDrawer.instance = document.createElement("simple-drawer");
+    document.body.appendChild(window.SimpleDrawer.instance);
   }
-  return window.simpleDrawer.instance;
+  return window.SimpleDrawer.instance;
 };
 /**
  * `simple-drawer`

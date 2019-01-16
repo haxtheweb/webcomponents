@@ -8,7 +8,7 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "monaco-element/monaco-element.js";
+import "./lib/monaco-element/monaco-element.js";
 import "./lib/code-pen-button.js";
 /**
  * `code-editor`
@@ -230,9 +230,11 @@ let CodeEditor = Polymer({
    */
   attached: function() {
     async.microTask.run(() => {
+      this.$.codeeditor.value = this.editorValue;
+      // delay on initial attachement to ensure that dependencies have loaded
       setTimeout(() => {
-        this.$.codeeditor.value = this.editorValue;
-      }, 100);
+        this.$.codeeditor.initIFrame();
+      }, 1000);
     });
     // Establish hax property binding
     let props = {
