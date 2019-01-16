@@ -95,11 +95,13 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
       <style>
         :host {
           height: 100%;
+          display: flex;
+          align-items: stretch;
+          position: relative;
         }
         #video {
           width: 100%;
           max-width: 100%;
-          max-height: 80vh;
         }
       </style>
       <video

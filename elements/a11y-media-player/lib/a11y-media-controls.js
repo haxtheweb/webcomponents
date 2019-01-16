@@ -90,8 +90,8 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
           display: block;
           width: 100%;
           max-width: 100%;
-          position: relative;
           height: 44px;
+          position: relative;
           color: var(--a11y-media-color);
           background-color: var(--a11y-media-bg-color);
           --paper-listbox-background-color: var(--a11y-media-controls-bg-color);

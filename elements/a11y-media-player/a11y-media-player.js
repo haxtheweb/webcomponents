@@ -1,5 +1,5 @@
 /**
- * Copyright 2018 The Pennsylvania State University
+ * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
@@ -129,84 +129,10 @@ export { A11yMediaPlayer };
  *
  */
 class A11yMediaPlayer extends A11yMediaPlayerProperties {
-  /**
-   * Store the tag name to make it easier to obtain directly.
-   * @notice function name must be here for tooling to operate correctly
-   */
-  static get tag() {
-    return "a11y-media-player";
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      /**
-       * The default media caption if none is given.
-       */
-      mediaCaption: {
-        type: String,
-        computed: "_getMediaCaption(audioOnly,audioLabel,mediaTitle)"
-      },
-      /**
-       * The media caption that displays when the page is printed.
-       */
-      printCaption: {
-        type: String,
-        computed: "_getPrintCaption(audioOnly,audioLabel,videoLabel,mediaTitle)"
-      },
-      /**
-       * Optional array ouf sources.
-       */
-      sources: {
-        type: Array,
-        value: []
-      },
-      /**
-       * Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?
-       */
-      sticky: {
-        type: Boolean,
-        value: false,
-        reflectToAttribute: true
-      },
-      /**
-       * When playing but scrolled off screen, to which corner does it stick:
-       * top-left, top-right, bottom-left, bottom-right, or none?
-       * Default is "top-right". "None" disables stickiness.
-       */
-      stickyCorner: {
-        type: String,
-        value: "top-right",
-        reflectToAttribute: true
-      },
-      /**
-       * Optional array ouf tracks.
-       */
-      tracks: {
-        type: Array,
-        value: []
-      },
-      /**
-       * Notice if the video is playing
-       */
-      __playing: {
-        type: Boolean,
-        value: false,
-        notify: true,
-        reflectToAttribute: true
-      }
-    };
-  }
-
-  //get player-specific behaviors
-  static get behaviors() {
-    return [A11yMediaPlayerProperties];
-  }
-
-  //render function
+  // render function
   static get template() {
     return html`
-      <style is="custom-style" include="simple-colors">
+      <style>
         :host {
           width: 100%;
           display: block;
@@ -219,6 +145,12 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
         }
         :host([__playing]) a11y-media-video-loader#loader {
           background-image: none !important;
+        }
+        :host #outerplayer {
+          max-height: 100vh;
+          display: flex;
+          align-content: stretch;
+          flex-flow: column;
         }
         :host #outerplayer,
         :host #outerplayer * {
@@ -235,7 +167,6 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
             --simple-colors-default-theme-accent-8
           );
 
-          /* settings */
           --a11y-media-settings-menu-color: var(--a11y-media-color);
           --a11y-media-settings-menu-bg-color: var(--a11y-media-bg-color);
           --a11y-media-settings-menu-hover-color: var(--a11y-media-hover-color);
@@ -243,7 +174,6 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
             --a11y-media-hover-bg-color
           );
 
-          /* buttons */
           --a11y-media-button-color: var(--a11y-media-color);
           --a11y-media-button-bg-color: var(--a11y-media-bg-color);
           --a11y-media-button-hover-color: var(--a11y-media-accent-color);
@@ -252,7 +182,6 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
             --a11y-media-faded-accent-color
           );
 
-          /* toggle button */
           --paper-toggle-button-unchecked-bar-color: var(--a11y-media-color);
           --paper-toggle-button-unchecked-button-color: var(--a11y-media-color);
           --paper-toggle-button-checked-bar-color: var(
@@ -262,7 +191,6 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
             --a11y-media-accent-color
           );
 
-          /* slider */
           --paper-slider-active-color: var(--a11y-media-accent-color);
           --paper-slider-secondary-color: var(--a11y-media-faded-accent-color);
           --paper-slider-pin-color: var(--a11y-media-faded-bg-color);
@@ -274,6 +202,12 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           --paper-slider-knob-border-color: var(--a11y-media-accent-color);
           --paper-slider-knob-start-border-color: var(--a11y-media-bg-color);
           --paper-slider-knob-end-border-color: var(--a11y-media-bg-color);
+        }
+        :host #sources {
+          flex: 1 1 auto;
+        }
+        :host #slider {
+          max-height: 32px;
         }
         :host #outertranscript,
         :host #outertranscript *,
@@ -326,15 +260,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
             --simple-colors-default-theme-grey-1
           );
         }
-        :host #player {
-          display: block;
-          max-width: 100%;
-          transition: position 0.5s ease, max-width 1s ease;
-          background-color: var(--simple-colors-default-theme-grey-2);
-        }
-        :host #innerplayer {
-          z-index: 1;
-        }
+
         :host #audiocctxt:not([hidden]) {
           display: flex;
           align-items: center;
@@ -410,10 +336,6 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           background-color: black;
           background-color: rgba(0, 0, 0, 0.8);
           padding: 0.15em 4px;
-        }
-        :host #innerplayer,
-        :host #sources > * {
-          max-height: 80vh;
         }
         :host #controls,
         :host #slider {
@@ -582,69 +504,67 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           }
         }
       </style>
+      <style is="custom-style" include="simple-colors"></style>
+
       <div class="sr-only">[[mediaCaption]]</div>
       <div id="outerplayer" lang$="[[uiLanguage]]">
         <div
-          id="audiocc"
-          hidden$="[[_showAudioCC(audioOnly,showCustomCaptions)]]"
+          id="sources"
+          show-yt-iframe$="[[_useYoutubeIframe(thumbnailSrc, isYoutube, __elapsed)]]"
+          style$="[[_getThumbnailCSS(thumbnailSrc,isYoutube,audioOnly)]]"
         >
-          <div id="audiocctxt" hidden$="[[!noHeight]]"></div>
-        </div>
-        <div id="player">
-          <div id="innerplayer">
-            <div
-              id="sources"
-              show-yt-iframe$="[[_useYoutubeIframe(thumbnailSrc, isYoutube, __elapsed)]]"
-              style$="[[_getThumbnailCSS(thumbnailSrc,isYoutube,audioOnly)]]"
-            >
-              <a11y-media-play-button
-                id="playbutton"
-                audio-only$="[[audioOnly]]"
-                disabled="true"
-                elapsed$="[[_hidePlayButton(thumbnailSrc, isYoutube, __elapsed)]]"
-                hidden$="[[noHeight]]"
-                disabled$="[[noHeight]]"
-                on-controls-change="_onControlsChanged"
-                pause-label$="[[pauseLabel]]"
-                play-label$="[[playLabel]]"
-              >
-              </a11y-media-play-button>
-              <a11y-media-loader
-                id="loader"
-                audio-only$="[[audioOnly]]"
-                autoplay$="[[autoplay]]"
-                cc$="[[cc]]"
-                crossorigin$="[[crossorigin]]"
-                hidden$="[[isYoutube]]"
-                lang$="[[lang]]"
-                loop$="[[loop]]"
-                muted$="[[muted]]"
-                manifest$="[[manifest]]"
-                on-media-loaded="_handleMediaLoaded"
-                playback-rate$="[[playbackRate]]"
-                thumbnail-src$="[[thumbnailSrc]]"
-                preload$="[[preload]]"
-                volume$="[[volume]]"
-              >
-                <slot></slot>
-              </a11y-media-loader>
-              <div id="youtube" video-id$="[[videoId]]"></div>
-              <div id="customcc" hidden$="[[!showCustomCaptions]]">
-                <span id="customcctxt" hidden$="[[noHeight]]"></span>
-              </div>
-            </div>
-          </div>
-          <paper-slider
-            id="slider"
-            max$="[[__duration]]"
-            on-dragging-changed="_handleSliderDragging"
-            on-focused-changed="_handleSliderKeyboard"
-            pin=""
-            secondary-progress$="[[__buffered]]"
-            value$="[[__elapsed]]"
+          <a11y-media-play-button
+            id="playbutton"
+            audio-only$="[[audioOnly]]"
+            disabled="true"
+            elapsed$="[[_hidePlayButton(thumbnailSrc, isYoutube, __elapsed)]]"
+            hidden$="[[noHeight]]"
+            disabled$="[[noHeight]]"
+            on-controls-change="_onControlsChanged"
+            pause-label$="[[pauseLabel]]"
+            play-label$="[[playLabel]]"
           >
-          </paper-slider>
+          </a11y-media-play-button>
+          <a11y-media-loader
+            id="loader"
+            audio-only$="[[audioOnly]]"
+            autoplay$="[[autoplay]]"
+            cc$="[[cc]]"
+            crossorigin$="[[crossorigin]]"
+            hidden$="[[isYoutube]]"
+            lang$="[[lang]]"
+            loop$="[[loop]]"
+            muted$="[[muted]]"
+            manifest$="[[manifest]]"
+            on-media-loaded="_handleMediaLoaded"
+            playback-rate$="[[playbackRate]]"
+            thumbnail-src$="[[thumbnailSrc]]"
+            preload$="[[preload]]"
+            volume$="[[volume]]"
+          >
+            <slot></slot>
+          </a11y-media-loader>
+          <div id="youtube" video-id$="[[videoId]]"></div>
+          <div id="customcc" hidden$="[[!showCustomCaptions]]">
+            <span id="customcctxt" hidden$="[[noHeight]]"></span>
+          </div>
+          <div
+            id="audiocc"
+            hidden$="[[_showAudioCC(audioOnly,showCustomCaptions)]]"
+          >
+            <div id="audiocctxt" hidden$="[[!noHeight]]"></div>
+          </div>
         </div>
+        <paper-slider
+          id="slider"
+          max$="[[__duration]]"
+          on-dragging-changed="_handleSliderDragging"
+          on-focused-changed="_handleSliderKeyboard"
+          pin=""
+          secondary-progress$="[[__buffered]]"
+          value$="[[__elapsed]]"
+        >
+        </paper-slider>
         <a11y-media-controls
           id="controls"
           audio-only$="[[audioOnly]]"
@@ -745,6 +665,80 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
     `;
   }
 
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      /**
+       * The default media caption if none is given.
+       */
+      mediaCaption: {
+        type: "String",
+        computed: "_getMediaCaption(audioOnly,audioLabel,mediaTitle)"
+      },
+      /**
+       * The media caption that displays when the page is printed.
+       */
+      printCaption: {
+        type: "String",
+        computed: "_getPrintCaption(audioOnly,audioLabel,videoLabel,mediaTitle)"
+      },
+      /**
+       * Optional array ouf sources.
+       */
+      sources: {
+        type: "Array",
+        value: []
+      },
+      /**
+       * Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?
+       */
+      sticky: {
+        type: "Boolean",
+        value: false,
+        reflectToAttribute: true
+      },
+      /**
+       * When playing but scrolled off screen, to which corner does it "stick":
+       * top-left, top-right, bottom-left, bottom-right, or none?
+       * Default is "top-right". "None" disables stickiness.
+       */
+      stickyCorner: {
+        type: "String",
+        value: "top-right",
+        reflectToAttribute: true
+      },
+      /**
+       * Optional array ouf tracks.
+       */
+      tracks: {
+        type: "Array",
+        value: []
+      },
+      /**
+       * Notice if the video is playing
+       */
+      __playing: {
+        type: "Boolean",
+        value: false,
+        notify: true,
+        reflectToAttribute: true
+      }
+    };
+  }
+
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "a11y-media-player";
+  }
+
+  //get player-specific behaviors
+  static get behaviors() {
+    return [A11yMediaPlayerProperties];
+  }
+
   /**
    * life cycle, element is afixed to the DOM
    */
@@ -768,8 +762,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
     super.ready();
     let root = this,
       aspect = 16 / 9,
-      tracks = new Array(),
-      height = root.height !== null ? root.height.replace(/px/, "") : "";
+      tracks = new Array();
     root.__playerReady = true;
     root.__interactive = !root.disableInteractive;
     root.target = root.shadowRoot.querySelector("#transcript");
@@ -782,10 +775,11 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
     root.$.controls.setStatus(root.__status);
     root.width = root.width !== null ? root.width : "100%";
     root.style.maxWidth = root.width !== null ? root.width : "100%";
-    root.$.sources.style.paddingTop = /^\d*\.?\d+$/.test(height)
-      ? height - 86 + "px"
-      : 100 / aspect + "%";
-    console.log(root.$.sources.style.paddingTop);
+    if (root.height === null) {
+      root.$.sources.style.paddingTop = 100 / aspect + "%";
+    } else {
+      root.$.outerplayer.style.height = root.height;
+    }
     root.querySelectorAll("source,track").forEach(function(node) {
       root.$.loader.media.appendChild(node);
     });
@@ -1436,4 +1430,8 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
     }
   }
 }
+/**
+ * life cycle, element is removed from the DOM
+ */
+//disconnectedCallback() {}
 window.customElements.define(A11yMediaPlayer.tag, A11yMediaPlayer);

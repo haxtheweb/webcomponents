@@ -70,6 +70,7 @@ class A11yMediaTranscriptControls extends A11yMediaPlayerProperties {
     return html`
       <style is="custom-style" include="simple-colors">
         :host {
+          max-height: 44px;
           background-color: var(--a11y-media-transcript-bg-color);
           color: var(--a11y-media-transcript-text-color);
           --a11y-media-button-color: var(--a11y-media-transcript-color);
