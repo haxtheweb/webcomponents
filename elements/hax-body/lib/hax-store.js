@@ -590,6 +590,36 @@ Polymer({
     window.addEventListener("paste", this._onPaste.bind(this));
     window.addEventListener("keypress", this._onKeyPress.bind(this));
     this.haxToast = window.SimpleToast.requestAvailability();
+    this.$.hal.commands = this._initVoiceCommands();
+  },
+  /**
+   * Build a list of common voice commands
+   */
+  _initVoiceCommands: function() {
+    var commands = {};
+    commands[`${this.$.hal.respondsTo} scroll up`] = () => {
+      window.scrollBy({
+        top: -(window.innerHeight * 0.5),
+        left: 0,
+        behavior: "smooth"
+      });
+    };
+    commands[`${this.$.hal.respondsTo} scroll (down)`] = () => {
+      window.scrollBy({
+        top: window.innerHeight * 0.5,
+        left: 0,
+        behavior: "smooth"
+      });
+    };
+    commands[`hey ${this.$.hal.respondsTo}`] = () => {
+      this.$.hal.speak("Yeah what do you want");
+    };
+    commands[`${this.$.hal.respondsTo} find media`] = () => {
+      window.HaxStore.write("activeHaxElement", {}, window.HaxStore.instance);
+      window.HaxStore.instance.haxManager.resetManager(1);
+      window.HaxStore.instance.haxManager.toggleDialog(false);
+    };
+    return commands;
   },
   /**
    * Before the browser closes / changes paths, ask if they are sure they want to leave

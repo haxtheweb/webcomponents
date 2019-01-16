@@ -167,8 +167,14 @@ class Hal9000 extends PolymerElement {
    * Notice new voice commands added
    */
   _commandsChanged(newValue) {
+    this.addCommands(newValue);
+  }
+  /**
+   * Just rout add commands call to the right place
+   */
+  addCommands(commands) {
     if (this.annyang) {
-      this.annyang.addCommands(this.commands);
+      this.annyang.addCommands(commands);
     }
   }
   /**
@@ -244,7 +250,7 @@ class Hal9000 extends PolymerElement {
    * React to enabled state changing
    */
   _enabledChanged(newValue) {
-    if (newValue) {
+    if (newValue && this.annyang) {
       if (this.auto) {
         this.annyang.start({
           autoRestart: true,
@@ -254,9 +260,7 @@ class Hal9000 extends PolymerElement {
         this.annyang.start();
       }
     } else {
-      if (this.annyang) {
-        this.annyang.abort();
-      }
+      this.annyang.abort();
     }
   }
   /**
