@@ -335,7 +335,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
         :host #innerplayer {
           z-index: 1;
         }
-        :host #outeraudiocc:not([hidden]) {
+        :host #audiocctxt:not([hidden]) {
           display: flex;
           align-items: center;
           padding: 5px 16px;
@@ -378,16 +378,24 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           height: 100%;
           transition: font-size 0.25s;
         }
-        :host([responsive-size*="lg"]) #customcc {
+        :host #audiocctxt,
+        :host #customcctxt {
+          font-family: sans-serif;
+        }
+        :host([responsive-size="lg"]) #customcc {
+          font-size: 16px;
+        }
+        :host([responsive-size="md"]) #customcc,
+        :host([flex-layout][responsive-size="xl"]) #customcc {
           font-size: 14px;
         }
-        :host([responsive-size*="md"]) #customcc {
-          font-size: 14px;
-        }
-        :host([responsive-size*="sm"]) #customcc {
+        :host([responsive-size="sm"]) #customcc,
+        :host([flex-layout][responsive-size="lg"]) #customcc {
           font-size: 12px;
         }
-        :host([responsive-size*="xs"]) #customcc {
+        :host([responsive-size="xs"]) #customcc,
+        :host([flex-layout][responsive-size="md"]) #customcc,
+        :host([flex-layout][responsive-size="sm"]) #customcc {
           font-size: 10px;
         }
         :host([sticky]:not([sticky-corner="none"])) #customcc {
@@ -549,7 +557,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           }
           :host .screen-only,
           :host #player,
-          :host #outeraudiocc,
+          :host #audiocctxt,
           :host #printthumb:not([src]) {
             display: none;
           }
@@ -576,8 +584,11 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
       </style>
       <div class="sr-only">[[mediaCaption]]</div>
       <div id="outerplayer" lang$="[[uiLanguage]]">
-        <div id="outeraudiocc" hidden$="[[!showCustomCaptions]]">
-          <div id="audiocc" hidden$="[[!noHeight]]"></div>
+        <div
+          id="audiocc"
+          hidden$="[[_showAudioCC(audioOnly,showCustomCaptions)]]"
+        >
+          <div id="audiocctxt" hidden$="[[!noHeight]]"></div>
         </div>
         <div id="player">
           <div id="innerplayer">
@@ -590,7 +601,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
                 id="playbutton"
                 audio-only$="[[audioOnly]]"
                 disabled="true"
-                elapsed$="[[_hidePlayButton(__elapsed)]]"
+                elapsed$="[[_hidePlayButton(thumbnailSrc, isYoutube, __elapsed)]]"
                 hidden$="[[noHeight]]"
                 disabled$="[[noHeight]]"
                 on-controls-change="_onControlsChanged"
@@ -757,7 +768,8 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
     super.ready();
     let root = this,
       aspect = 16 / 9,
-      tracks = new Array();
+      tracks = new Array(),
+      height = root.height !== null ? root.height.replace(/px/, "") : "";
     root.__playerReady = true;
     root.__interactive = !root.disableInteractive;
     root.target = root.shadowRoot.querySelector("#transcript");
@@ -770,7 +782,10 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
     root.$.controls.setStatus(root.__status);
     root.width = root.width !== null ? root.width : "100%";
     root.style.maxWidth = root.width !== null ? root.width : "100%";
-    root.$.sources.style.paddingTop = 100 / aspect + "%";
+    root.$.sources.style.paddingTop = /^\d*\.?\d+$/.test(height)
+      ? height - 86 + "px"
+      : 100 / aspect + "%";
+    console.log(root.$.sources.style.paddingTop);
     root.querySelectorAll("source,track").forEach(function(node) {
       root.$.loader.media.appendChild(node);
     });
@@ -1291,9 +1306,23 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
    * @param {string} the url for the thumbnail image
    * @returns {string} the string for the style attribute
    */
-  _hidePlayButton(__elapsed) {
-    console.log("_hidePlayButton", __elapsed);
-    return __elapsed !== undefined && __elapsed !== 0;
+  _hidePlayButton(thumbnailSrc, isYoutube, __elapsed) {
+    return (
+      (isYoutube && thumbnailSrc === null) ||
+      !(__elapsed === undefined || __elapsed === 0)
+    );
+  }
+
+  /**
+   * returns true either value is true
+   *
+   * @param {boolean}
+   * @param {boolean}
+   * @returns {boolean} returns true if both are true
+   *
+   */
+  _showAudioCC(audioOnly, showCustomCaptions) {
+    return !(audioOnly && showCustomCaptions);
   }
 
   /**
@@ -1319,7 +1348,10 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
    * @returns {string} the string for the style attribute
    */
   _useYoutubeIframe(thumbnailSrc, isYoutube, __elapsed) {
-    return thumbnailSrc && isYoutube && this._hidePlayButton(__elapsed);
+    return (
+      isYoutube &&
+      (thumbnailSrc === null || __elapsed === undefined || __elapsed === 0)
+    );
   }
 
   /**
@@ -1398,7 +1430,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           }
         }
         root.$.customcctxt.innerText = caption;
-        root.$.audiocc.innerText = caption;
+        root.$.audiocctxt.innerText = caption;
         root.$.transcript.setActiveCues(active);
       }
     }

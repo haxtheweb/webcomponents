@@ -213,6 +213,13 @@ class A11yMediaPlayerProperties extends A11yMediaBehaviors {
         value: false
       },
       /**
+       * The height of the media player.
+       */
+      height: {
+        type: String,
+        value: null
+      },
+      /**
        * Hide elapsed time?
        */
       hideElapsedTime: {
