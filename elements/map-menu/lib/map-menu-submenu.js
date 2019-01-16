@@ -31,6 +31,7 @@ Polymer({
       opened="[[opened]]"
       url="[[url]]"
       icon="[[icon]]"
+      selected="[[selected]]"
     ></map-menu-header>
     <iron-collapse id="container"> <slot></slot> </iron-collapse>
   `,
@@ -64,6 +65,9 @@ Polymer({
     expandChildren: {
       type: Boolean,
       value: false
+    },
+    selected: {
+      type: String
     }
   },
 

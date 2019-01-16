@@ -42,7 +42,11 @@ let MapMenu = Polymer({
     <div id="itemslist">
       <map-menu-container>
         <div id="activeIndicator"></div>
-        <map-menu-builder id="builder" items="[[items]]"></map-menu-builder>
+        <map-menu-builder
+          id="builder"
+          items="[[items]]"
+          selected="[[selected]]"
+        ></map-menu-builder>
       </map-menu-container>
     </div>
     <smooth-scroll id="smoothScroll"></smooth-scroll>
@@ -77,8 +81,7 @@ let MapMenu = Polymer({
      */
     selected: {
       type: String,
-      notify: true,
-      observer: "__selectedChanged"
+      notify: true
     },
     /**
      * Auto scroll an active element if not in view
@@ -100,14 +103,15 @@ let MapMenu = Polymer({
 
   listeners: {
     "link-clicked": "__linkClickedHandler",
-    "child-attached": "__childAttached",
-    "toggle-updated": "__toggleUpdated"
+    "toggle-updated": "__toggleUpdated",
+    "active-item": "__activeItemHandler"
   },
 
-  __selectedChanged: function(newSelected, oldSelected) {
-    if (newSelected !== oldSelected) {
-      this.refreshActiveChildren(newSelected);
-    }
+  ready: function() {},
+
+  __activeItemHandler: function(e) {
+    const target = e.detail;
+    this.refreshActiveChildren(target);
   },
 
   /**
@@ -116,32 +120,31 @@ let MapMenu = Polymer({
    * @param {number} timeoutTime
    */
   refreshActiveChildren: function(activeItem, timeoutTime = 100) {
-    // find active items and unactivate them
-    const oldActiveItem = this.querySelector("[active]");
+    const oldActiveItem = this._activeItem;
+    const newActiveItem = activeItem;
 
-    if (activeItem && activeItem !== "") {
-      const newActiveItem = this.querySelector(`#${activeItem}`);
-      if (newActiveItem) {
-        // set the new active attribute to the item
-        newActiveItem.setAttribute("active", true);
-        // move the highlight thingy
-        if (this.activeIndicator) {
-          this.__updateActiveIndicator(newActiveItem, timeoutTime);
-        }
-        // if auto scroll enabled then scroll element into view
-        if (this.autoScroll) {
-          // kick off smooth scroll
-          this.$.smoothScroll.scroll(newActiveItem, {
-            duration: 300,
-            scrollElement: this
-          });
-        }
+    if (newActiveItem && newActiveItem !== "") {
+      // set the new active attribute to the item
+      newActiveItem.setAttribute("active", true);
+      // move the highlight thingy
+      if (this.activeIndicator) {
+        this.__updateActiveIndicator(newActiveItem, timeoutTime);
+      }
+      // if auto scroll enabled then scroll element into view
+      if (this.autoScroll) {
+        // kick off smooth scroll
+        this.$.smoothScroll.scroll(newActiveItem, {
+          duration: 300,
+          scrollElement: this
+        });
       }
     }
 
     if (oldActiveItem) {
       oldActiveItem.removeAttribute("active");
     }
+
+    this._activeItem = newActiveItem;
   },
 
   _manifestChanged: function(newValue, oldValue) {
@@ -215,23 +218,12 @@ let MapMenu = Polymer({
   },
 
   /**
-   * When the children are attached find out if they
-   * have the same id as a selected and
-   */
-  __childAttached: function(e) {
-    const childId = e.detail.id;
-    if (childId === this.selected) {
-      this.refreshActiveChildren(this.selected);
-    }
-  },
-
-  /**
    * When a user clicks the toggle button to collapse or
    * expand a submenu, this event gets triggered after
    * the animation has been triggered
    */
   __toggleUpdated: function(e) {
-    this.refreshActiveChildren(this.selected, 300);
+    this.refreshActiveChildren(this._activeItem, 300);
   },
 
   /**
