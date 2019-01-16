@@ -590,16 +590,15 @@ export class HAXWiring {
               case "code-editor":
                 props[settings[value].property].component = {
                   name: "code-editor",
-                  valueProperty: "editorValue",
+                  valueProperty: "value",
                   attributes: {
                     id: "haxcodeeditor"
                   },
                   properties: {
+                    editorValue: settings[value].value,
                     title: settings[value].title,
-                    readOnly: false,
-                    theme: "ace/theme/monokai",
-                    mode: "ace/mode/html",
-                    fontsize: "16px",
+                    theme: "hc-black",
+                    mode: "html",
                     className: "hax-code-editor"
                   }
                 };
@@ -755,16 +754,16 @@ export class HAXWiring {
               case "code-editor":
                 props[settings[value].attribute].component = {
                   name: "code-editor",
-                  valueProperty: "editorValue",
+                  valueProperty: "value",
                   attributes: {
                     id: "haxcodeeditor"
                   },
                   properties: {
+                    editorValue: props[settings[value].attribute].value,
                     title: settings[value].title,
                     readOnly: false,
-                    theme: "ace/theme/monokai",
-                    mode: "ace/mode/html",
-                    fontsize: "16px",
+                    theme: "hc-black",
+                    mode: "html",
                     className: "hax-code-editor"
                   }
                 };
@@ -811,16 +810,15 @@ export class HAXWiring {
               value: "",
               component: {
                 name: "code-editor",
-                valueProperty: "editorValue",
+                valueProperty: "value",
                 attributes: {
                   id: "haxcodeeditor"
                 },
                 properties: {
+                  editorValue: settings[value].value,
                   title: settings[value].title,
-                  readOnly: false,
-                  theme: "ace/theme/monokai",
-                  mode: "ace/mode/html",
-                  fontsize: "16px",
+                  theme: "hc-black",
+                  mode: "html",
                   className: "hax-code-editor"
                 }
               }

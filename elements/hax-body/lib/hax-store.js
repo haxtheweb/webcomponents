@@ -396,7 +396,11 @@ Polymer({
       if (typeof newValue.apps === typeof undefined) {
         this.$.appstore.generateRequest();
       } else {
-        this.__appStoreData = newValue;
+        // directly injected json object into the DOM, allow some time to propagate data
+        // otherwise we might not have a haxAutoloader object ready in time for the paint
+        setTimeout(() => {
+          this.__appStoreData = newValue;
+        }, 500);
       }
     }
   },

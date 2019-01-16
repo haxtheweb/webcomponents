@@ -3,72 +3,67 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
-import "./lib/juicy-ace-editor.js";
+import "monaco-element/monaco-element.js";
 import "./lib/code-pen-button.js";
 /**
-`code-editor`
-A LRN element
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- -
- -
-
-*/
+ * `code-editor`
+ * `Wrapper on top of a code editor`
+ *
+ * @demo demo/index.html
+ * @microcopy - the mental model for this element
+ * - monaco is the VS code editor
+ */
 let CodeEditor = Polymer({
   _template: html`
-    <style>
-      :host {
-        display: block;
-        padding: 16px;
-        --code-pen-button-color: #222222;
-        --code-pen-title-color: #222222;
-      }
-      .code-pen-container {
-        width: 100%;
-        display: block;
-        background-color: var(--code-pen-button-color);
-        height: 40px;
-      }
-      code-pen-button {
-        float: right;
-        height: 40px;
-      }
-      h3 {
-        color: var(--code-pen-title-color);
-      }
-    </style>
+    <custom-style>
+      <style>
+        :host {
+          display: block;
+          padding: 16px;
+        }
+        .code-pen-container {
+          width: 100%;
+          display: block;
+          background-color: var(--code-pen-button-color, #222222);
+          height: 40px;
+        }
+        [hidden] {
+          display: none !important;
+        }
+        code-pen-button {
+          float: right;
+          height: 40px;
+        }
+        h3 {
+          color: var(--code-pen-title-color, #222222);
+        }
+      </style>
+    </custom-style>
     <h3>[[title]]</h3>
-    <juicy-ace-editor
+    <monaco-element
       id="codeeditor"
-      theme\$="[[theme]]"
-      mode\$="[[mode]]"
+      lib-path="[[__libPath]]"
+      value="[[editorValue]]"
+      language="[[language]]"
+      theme="[[theme]]"
+      on-value-changed="_editorDataChanged"
       font-size\$="[[fontSize]]"
       readonly\$="[[readOnly]]"
-    ></juicy-ace-editor>
-    <div class="code-pen-container" hidden\$="[[!showCodePen]]">
+    >
+    </monaco-element>
+    <div class="code-pen-container" hidden$="[[!showCodePen]]">
       <code-pen-button data="[[codePenData]]"></code-pen-button>
     </div>
   `,
 
   is: "code-editor",
 
-  behaviors: [
-    HAXBehaviors.PropertiesBehaviors,
-    MaterializeCSSBehaviors.ColorBehaviors,
-    SchemaBehaviors.Schema
-  ],
-
-  listeners: {
-    change: "_editorDataChanged",
-    "editor-ready": "_editorReady"
-  },
+  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
 
   properties: {
     /**
@@ -91,7 +86,7 @@ let CodeEditor = Polymer({
      */
     readOnly: {
       type: Boolean,
-      value: true,
+      value: false,
       reflectToAttribute: true
     },
     /**
@@ -99,14 +94,20 @@ let CodeEditor = Polymer({
      */
     codePenData: {
       type: Object,
-      computed: "_computeCodePenData(title, editorValue)"
+      computed: "_computeCodePenData(title, value)"
     },
     /**
      * contents of the editor
      */
     editorValue: {
       type: String,
-      value: "",
+      value: ""
+    },
+    /**
+     * value of the editor after the fact
+     */
+    value: {
+      type: String,
       notify: true
     },
     /**
@@ -114,14 +115,21 @@ let CodeEditor = Polymer({
      */
     theme: {
       type: String,
-      value: "ace/theme/monokai"
+      value: "vs-dark"
     },
     /**
-     * Mode for the Ace editor.
+     * Mode / language for editor
      */
     mode: {
       type: String,
-      value: "ace/mode/html"
+      observer: "_modeChanged"
+    },
+    /**
+     * Language to present color coding for
+     */
+    language: {
+      type: String,
+      value: "javascript"
     },
     /**
      * font size for the Ace editor.
@@ -155,42 +163,46 @@ let CodeEditor = Polymer({
       html: editorValue
     };
   },
-
   /**
-   * Event for when the editor is ready so we can modify it.
+   * pass down mode to language if that api is used for legacy purposes
    */
-  _editorReady: function(e) {
-    this.__editorReady = true;
-    setTimeout(() => {
-      this.$.codeeditor.editor.setOptions({
-        maxLines: this.maxLines,
-        minLines: this.minLines
-      });
-      this.updateEditorValue();
-    }, 200);
+  _modeChanged: function(newValue) {
+    this.language = this.mode;
   },
 
   /**
    * Notice code editor changes and reflect them into this element
    */
   _editorDataChanged: function(e) {
-    this.editorValue = this.$.codeeditor.value;
+    // value coming up off of thiss
+    this.value = e.detail;
   },
 
   /**
    * Calculate what's in slot currently and then inject it into the editor.
    */
   updateEditorValue: function() {
-    let children = this.queryEffectiveChildren("template");
-    if (!children) {
-      console.warn(
-        "code-editor requires a template to be provided in light-dom"
-      );
-    } else {
-      this.$.codeeditor.value = children.innerHTML;
+    var content = "";
+    var children = dom(this).getEffectiveChildNodes();
+    if (children.length > 0) {
+      // loop through everything found in the slotted area and put it back in
+      for (var j = 0, len2 = children.length; j < len2; j++) {
+        if (typeof children[j].tagName !== typeof undefined) {
+          content += children[j].outerHTML;
+        } else {
+          content += children[j].textContent;
+        }
+      }
     }
+    this.editorValue = content;
   },
-
+  /**
+   * created callback
+   */
+  created: function() {
+    // set this ahead of it being painted into the dom
+    this.__libPath = import.meta.url + "/../../../monaco-editor/min/vs";
+  },
   /**
    * Ready state to tee everything up.
    */
@@ -217,6 +229,11 @@ let CodeEditor = Polymer({
    * Attached to the DOM, now fire.
    */
   attached: function() {
+    async.microTask.run(() => {
+      setTimeout(() => {
+        this.$.codeeditor.value = this.editorValue;
+      }, 100);
+    });
     // Establish hax property binding
     let props = {
       canScale: true,

@@ -26,7 +26,6 @@ import "@lrnwebcomponents/hax-body/lib/hax-export-dialog.js";
 import "@lrnwebcomponents/hax-body/lib/hax-toolbar.js";
 import "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js";
 import "@lrnwebcomponents/citation-element/citation-element.js";
-import "@lrnwebcomponents/deduping-fix/deduping-fix.js";
 import "@lrnwebcomponents/hero-banner/hero-banner.js";
 import "@lrnwebcomponents/image-compare-slider/image-compare-slider.js";
 import "@lrnwebcomponents/license-element/license-element.js";

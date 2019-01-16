@@ -25,7 +25,7 @@ Polymer({
         padding: 0px 10px;
         border-top-left-radius: 10px;
         min-width: 84px;
-        width: 84px;
+        width: 90px;
         line-height: 50px;
         height: 50px;
         z-index: 10000;

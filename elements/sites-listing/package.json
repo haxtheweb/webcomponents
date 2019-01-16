@@ -16,7 +16,7 @@
       "hax": "src/sites-listing-hax.json"
     }
   },
-  "version": "2.0.0-alpha1",
+  "version": "2.0.0-alpha2",
   "description": "Automated conversion of sites-listing/",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/elmsln-loading": "^2.0.0-alpha1",
+    "@lrnwebcomponents/elmsln-loading": "^2.0.0-alpha2",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
@@ -54,13 +54,13 @@
     "@lrnwebcomponents/deduping-fix": "^0.2.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
-    "@webcomponents/webcomponentsjs": "2.2.1",
+    "@webcomponents/webcomponentsjs": "2.2.3",
     "concurrently": "4.1.0",
     "gulp-babel": "8.0.0",
     "gulp-sourcemaps": "2.6.4",
     "lodash": "4.17.11",
     "polymer-build": "3.1.1",
-    "polymer-cli": "1.9.4",
+    "polymer-cli": "1.9.5",
     "wct-browser-legacy": "1.0.2"
   },
   "private": false,
