@@ -155,17 +155,19 @@ class Hal9000 extends PolymerElement {
    * React to enabled state changing
    */
   _enabledChanged(newValue) {
-    if (newValue && this.annyang) {
-      if (this.auto) {
-        this.annyang.start({
-          autoRestart: true,
-          continuous: true
-        });
+    if (this.annyang) {
+      if (newValue) {
+        if (this.auto) {
+          this.annyang.start({
+            autoRestart: true,
+            continuous: true
+          });
+        } else {
+          this.annyang.start();
+        }
       } else {
-        this.annyang.start();
+        this.annyang.abort();
       }
-    } else {
-      this.annyang.abort();
     }
   }
   /**
