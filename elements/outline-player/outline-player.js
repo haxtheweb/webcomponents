@@ -15,7 +15,6 @@ import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";
 import "@lrnwebcomponents/map-menu/map-menu.js";
-import "@lrnwebcomponents/jos-tree/jos-tree.js";
 import "./lib/outline-player-arrow.js";
 
 /**
@@ -201,7 +200,6 @@ let OutlinePlayer = Polymer({
       id="queryParams"
       params-string="{{__paramsString}}"
     ></iron-query-params>
-    <jos-tree manifest="[[manifest]]"></jos-tree>
 
     <!-- Begin Layout -->
     <app-drawer-layout>
@@ -568,11 +566,20 @@ let OutlinePlayer = Polymer({
    * @param id
    */
   __changePage: function(id) {
-    const queryParams = this.$.queryParams;
-    const paramsObject = queryParams.paramsObject;
-    queryParams.paramsObject = Object.assign({}, paramsObject, {
-      page: id
-    });
+    // const queryParams = this.$.queryParams;
+    // const paramsObject = queryParams.paramsObject;
+    // queryParams.paramsObject = Object.assign({}, paramsObject, {
+    //   page: id
+    // });
+    const item = this.manifest.items.find(i => i.id === id);
+    console.log(item, this.manifest);
+    this.dispatchEvent(
+      new CustomEvent("haxcms-active-item-changed", {
+        detail: item,
+        bubbles: true,
+        cancelable: false
+      })
+    );
   }
 });
 export { OutlinePlayer };
