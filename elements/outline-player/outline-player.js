@@ -168,11 +168,25 @@ let OutlinePlayer = Polymer({
         align-items: center;
       }
 
-      #slot {
+      /* Required for HAX */
+      :host([edit-mode]) #slot {
+        display: none !important;
+      }
+      #contentcontainer {
         padding: 16px;
         max-width: 1040px;
         flex: 1 1 auto;
         order: 1;
+        display: flex;
+      }
+      #contentcontainer > * {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+      #contentcontainer h-a-x {
+        margin: 0;
       }
 
       .desktopNav {
@@ -254,7 +268,9 @@ let OutlinePlayer = Polymer({
           </app-toolbar>
         </app-header>
         <div id="content">
-          <div id="slot"><slot></slot></div>
+          <div id="contentcontainer">
+            <div id="slot"><slot></slot></div>
+          </div>
           <template is="dom-if" if="[[breakpointDesktop]]">
             <div class="desktopNav" id="desktopNavLeft">
               <outline-player-arrow
@@ -391,7 +407,7 @@ let OutlinePlayer = Polymer({
   },
 
   ready: function() {
-    this.setupHAXTheme(true, this.$.slot);
+    this.setupHAXTheme(true, this.$.contentcontainer);
   },
 
   attached: function() {

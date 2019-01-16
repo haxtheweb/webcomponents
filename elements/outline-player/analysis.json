@@ -364,11 +364,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 302,
+              "line": 321,
               "column": 4
             },
             "end": {
-              "line": 304,
+              "line": 323,
               "column": 5
             }
           },
@@ -385,11 +385,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 308,
+              "line": 327,
               "column": 4
             },
             "end": {
-              "line": 312,
+              "line": 331,
               "column": 5
             }
           },
@@ -408,11 +408,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 316,
+              "line": 335,
               "column": 4
             },
             "end": {
-              "line": 320,
+              "line": 339,
               "column": 5
             }
           },
@@ -431,11 +431,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 324,
+              "line": 343,
               "column": 4
             },
             "end": {
-              "line": 327,
+              "line": 346,
               "column": 5
             }
           },
@@ -453,11 +453,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 331,
+              "line": 350,
               "column": 4
             },
             "end": {
-              "line": 334,
+              "line": 353,
               "column": 5
             }
           },
@@ -475,11 +475,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 338,
+              "line": 357,
               "column": 4
             },
             "end": {
-              "line": 342,
+              "line": 361,
               "column": 5
             }
           },
@@ -498,11 +498,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 346,
+              "line": 365,
               "column": 4
             },
             "end": {
-              "line": 351,
+              "line": 370,
               "column": 5
             }
           },
@@ -521,11 +521,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 355,
+              "line": 374,
               "column": 4
             },
             "end": {
-              "line": 358,
+              "line": 377,
               "column": 5
             }
           },
@@ -543,11 +543,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 362,
+              "line": 381,
               "column": 4
             },
             "end": {
-              "line": 366,
+              "line": 385,
               "column": 5
             }
           },
@@ -566,11 +566,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 370,
+              "line": 389,
               "column": 4
             },
             "end": {
-              "line": 373,
+              "line": 392,
               "column": 5
             }
           },
@@ -588,11 +588,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 377,
+              "line": 396,
               "column": 4
             },
             "end": {
-              "line": 380,
+              "line": 399,
               "column": 5
             }
           },
@@ -610,11 +610,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 385,
+              "line": 404,
               "column": 4
             },
             "end": {
-              "line": 389,
+              "line": 408,
               "column": 5
             }
           },
@@ -681,11 +681,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 392,
+              "line": 411,
               "column": 2
             },
             "end": {
-              "line": 394,
+              "line": 413,
               "column": 3
             }
           },
@@ -701,11 +701,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 396,
+              "line": 415,
               "column": 2
             },
             "end": {
-              "line": 404,
+              "line": 423,
               "column": 3
             }
           },
@@ -721,11 +721,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 409,
+              "line": 428,
               "column": 2
             },
             "end": {
-              "line": 425,
+              "line": 444,
               "column": 3
             }
           },
@@ -741,11 +741,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 430,
+              "line": 449,
               "column": 2
             },
             "end": {
-              "line": 443,
+              "line": 462,
               "column": 3
             }
           },
@@ -765,11 +765,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 448,
+              "line": 467,
               "column": 2
             },
             "end": {
-              "line": 465,
+              "line": 484,
               "column": 3
             }
           },
@@ -793,11 +793,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 470,
+              "line": 489,
               "column": 2
             },
             "end": {
-              "line": 478,
+              "line": 497,
               "column": 3
             }
           },
@@ -820,11 +820,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 483,
+              "line": 502,
               "column": 2
             },
             "end": {
-              "line": 488,
+              "line": 507,
               "column": 3
             }
           },
@@ -841,11 +841,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 493,
+              "line": 512,
               "column": 2
             },
             "end": {
-              "line": 498,
+              "line": 517,
               "column": 3
             }
           },
@@ -862,11 +862,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 503,
+              "line": 522,
               "column": 2
             },
             "end": {
-              "line": 505,
+              "line": 524,
               "column": 3
             }
           },
@@ -886,11 +886,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 510,
+              "line": 529,
               "column": 2
             },
             "end": {
-              "line": 512,
+              "line": 531,
               "column": 3
             }
           },
@@ -910,11 +910,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 517,
+              "line": 536,
               "column": 2
             },
             "end": {
-              "line": 531,
+              "line": 550,
               "column": 3
             }
           },
@@ -934,11 +934,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 536,
+              "line": 555,
               "column": 2
             },
             "end": {
-              "line": 550,
+              "line": 569,
               "column": 3
             }
           },
@@ -961,11 +961,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 555,
+              "line": 574,
               "column": 2
             },
             "end": {
-              "line": 557,
+              "line": 576,
               "column": 3
             }
           },
@@ -982,11 +982,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 559,
+              "line": 578,
               "column": 2
             },
             "end": {
-              "line": 561,
+              "line": 580,
               "column": 3
             }
           },
@@ -1006,11 +1006,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 567,
+              "line": 586,
               "column": 2
             },
             "end": {
-              "line": 582,
+              "line": 601,
               "column": 3
             }
           },
@@ -1034,7 +1034,7 @@
           "column": 28
         },
         "end": {
-          "line": 583,
+          "line": 602,
           "column": 1
         }
       },
@@ -1083,11 +1083,11 @@
           "description": "Manifest from haxcms-site-builder",
           "sourceRange": {
             "start": {
-              "line": 302,
+              "line": 321,
               "column": 4
             },
             "end": {
-              "line": 304,
+              "line": 323,
               "column": 5
             }
           },
@@ -1099,11 +1099,11 @@
           "description": "Auto call json files",
           "sourceRange": {
             "start": {
-              "line": 308,
+              "line": 327,
               "column": 4
             },
             "end": {
-              "line": 312,
+              "line": 331,
               "column": 5
             }
           },
@@ -1115,11 +1115,11 @@
           "description": "Outline JSON file name",
           "sourceRange": {
             "start": {
-              "line": 316,
+              "line": 335,
               "column": 4
             },
             "end": {
-              "line": 320,
+              "line": 339,
               "column": 5
             }
           },
@@ -1131,11 +1131,11 @@
           "description": "Outline JSON location",
           "sourceRange": {
             "start": {
-              "line": 324,
+              "line": 343,
               "column": 4
             },
             "end": {
-              "line": 327,
+              "line": 346,
               "column": 5
             }
           },
@@ -1147,11 +1147,11 @@
           "description": "Title of the outline.",
           "sourceRange": {
             "start": {
-              "line": 331,
+              "line": 350,
               "column": 4
             },
             "end": {
-              "line": 334,
+              "line": 353,
               "column": 5
             }
           },
@@ -1163,11 +1163,11 @@
           "description": "acitvely selected item",
           "sourceRange": {
             "start": {
-              "line": 338,
+              "line": 357,
               "column": 4
             },
             "end": {
-              "line": 342,
+              "line": 361,
               "column": 5
             }
           },
@@ -1179,11 +1179,11 @@
           "description": "Closed status for the drawer",
           "sourceRange": {
             "start": {
-              "line": 346,
+              "line": 365,
               "column": 4
             },
             "end": {
-              "line": 351,
+              "line": 370,
               "column": 5
             }
           },
@@ -1195,11 +1195,11 @@
           "description": "Outline structured via JSON Outline Schema off the wire",
           "sourceRange": {
             "start": {
-              "line": 362,
+              "line": 381,
               "column": 4
             },
             "end": {
-              "line": 366,
+              "line": 385,
               "column": 5
             }
           },
@@ -1211,11 +1211,11 @@
           "description": "Active item which is in JSON Outline Schema",
           "sourceRange": {
             "start": {
-              "line": 370,
+              "line": 389,
               "column": 4
             },
             "end": {
-              "line": 373,
+              "line": 392,
               "column": 5
             }
           },
@@ -1227,11 +1227,11 @@
           "description": "Define desktop breakpoint for adapted navigation",
           "sourceRange": {
             "start": {
-              "line": 377,
+              "line": 396,
               "column": 4
             },
             "end": {
-              "line": 380,
+              "line": 399,
               "column": 5
             }
           },
@@ -1243,11 +1243,11 @@
           "description": "Set min height of outline player to fill remaining\nspace to the bottom of the browser",
           "sourceRange": {
             "start": {
-              "line": 385,
+              "line": 404,
               "column": 4
             },
             "end": {
-              "line": 389,
+              "line": 408,
               "column": 5
             }
           },
