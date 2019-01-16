@@ -16,7 +16,7 @@
       "hax": "src/lrnsys-outline-hax.json"
     }
   },
-  "version": "2.0.0-alpha2",
+  "version": "2.0.0-beta1",
   "description": "Automated conversion of lrnsys-outline/",
   "repository": {
     "type": "git",
@@ -40,8 +40,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/drawing-icons": "^2.0.0-alpha2",
-    "@lrnwebcomponents/simple-modal": "^2.0.0-alpha2",
+    "@lrnwebcomponents/drawing-icons": "^2.0.0-beta1",
+    "@lrnwebcomponents/simple-modal": "^2.0.0-beta1",
     "@polymer/iron-a11y-keys": "^3.0.1",
     "@polymer/iron-list": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",

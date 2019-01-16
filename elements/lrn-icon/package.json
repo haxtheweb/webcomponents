@@ -16,7 +16,7 @@
       "hax": "src/lrn-icon-hax.json"
     }
   },
-  "version": "2.0.0-alpha2",
+  "version": "2.0.0-beta1",
   "description": "Some icons related to education concepts",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/lrn-icons": "^2.0.0-alpha2",
-    "@lrnwebcomponents/lrn-shared-styles": "^2.0.0-alpha2",
+    "@lrnwebcomponents/lrn-shared-styles": "^2.0.0-beta1",
     "@polymer/iron-flex-layout": "^3.0.0",
     "@polymer/iron-iconset": "^3.0.0",
     "@polymer/iron-meta": "^3.0.0",

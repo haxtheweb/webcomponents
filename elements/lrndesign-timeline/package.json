@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-timeline-hax.json"
     }
   },
-  "version": "0.0.39",
+  "version": "2.0.0-beta1",
   "description": "an element that displays events on a timeline",
   "repository": {
     "type": "git",

@@ -16,7 +16,7 @@
       "hax": "src/item-overlay-ops-hax.json"
     }
   },
-  "version": "2.0.0-alpha2",
+  "version": "2.0.0-beta1",
   "description": "A wrapper that provides an overlay of operations to any element, usually a card.",
   "repository": {
     "type": "git",
