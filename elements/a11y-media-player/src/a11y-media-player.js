@@ -586,7 +586,8 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   _handleMediaLoaded(e) {
     let root = this,
       aspect = root.media.aspectRatio;
-    root.$.sources.style.paddingTop = 100 / aspect + "%";
+    if (root.height === null)
+      root.$.sources.style.paddingTop = 100 / aspect + "%";
     root.$.playbutton.removeAttribute("disabled");
 
     // gets and converts video duration
@@ -829,7 +830,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           }
         }
         root.$.customcctxt.innerText = caption;
-        root.$.audiocctxt.innerText = caption;
+        //root.$.audiocctxt.innerText = caption;
         root.$.transcript.setActiveCues(active);
       }
     }

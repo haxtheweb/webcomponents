@@ -110,20 +110,22 @@ class A11yMediaTranscript extends A11yMediaPlayerProperties {
       <style is="custom-style" include="simple-colors">
         :host {
           display: block;
-          padding: 15px;
           color: var(--a11y-media-transcript-color);
           background-color: var(--a11y-media-transcript-bg-color);
+          border-left: 1px solid var(--a11y-media-transcript-bg-color);
         }
         :host([hidden]) {
           display: none;
         }
         :host #inner {
-          width: 100%;
           display: none;
+          width: calc(100% - 30px);
+          padding: 0 15px 15px;
+          color: var(--a11y-media-transcript-cue-color);
+          background-color: var(--a11y-media-transcript-cue-bg-color);
         }
         :host #inner[active] {
           display: table;
-          width: 100%;
         }
         :host #inner[active][hideTimestamps] {
           display: block;

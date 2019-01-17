@@ -39,15 +39,13 @@
         <slot></slot>
       </a11y-media-loader>
       <div id="youtube" video-id$="[[videoId]]"></div>
-      <div id="customcc" hidden$="[[!showCustomCaptions]]">
+      <div id="customcc" class="screen-only"hidden$="[[!showCustomCaptions]]">
         <span id="customcctxt" hidden$="[[noHeight]]"></span>
-      </div>
-      <div id="audiocc" hidden$="[[_showAudioCC(audioOnly,showCustomCaptions)]]">
-        <div id="audiocctxt" hidden$="[[!noHeight]]"></div>
       </div>
     </div>
     <paper-slider
       id="slider"
+      class="screen-only"
       max$="[[__duration]]"
       on-dragging-changed="_handleSliderDragging"
       on-focused-changed="_handleSliderKeyboard"

@@ -134,26 +134,9 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
     return html`
       <style>
         :host {
-          width: 100%;
           display: block;
-          color: var(--simple-colors-default-theme-grey-12);
-          background-color: var(--simple-colors-default-theme-grey-2);
-          outline: 1px solid var(--simple-colors-default-theme-grey-3);
-        }
-        :host([dark]) {
-          outline: 1px solid var(--simple-colors-default-theme-grey-1);
-        }
-        :host([__playing]) a11y-media-video-loader#loader {
-          background-image: none !important;
-        }
-        :host #outerplayer {
-          max-height: 100vh;
-          display: flex;
-          align-content: stretch;
-          flex-flow: column;
-        }
-        :host #outerplayer,
-        :host #outerplayer * {
+          width: calc(100% - 2px);
+          border: 1px solid var(--simple-colors-default-theme-grey-3);
           --a11y-media-color: var(--simple-colors-default-theme-grey-11);
           --a11y-media-bg-color: var(--simple-colors-default-theme-grey-2);
           --a11y-media-hover-color: var(--simple-colors-default-theme-grey-12);
@@ -202,18 +185,9 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           --paper-slider-knob-border-color: var(--a11y-media-accent-color);
           --paper-slider-knob-start-border-color: var(--a11y-media-bg-color);
           --paper-slider-knob-end-border-color: var(--a11y-media-bg-color);
-        }
-        :host #sources {
-          flex: 1 1 auto;
-        }
-        :host #slider {
-          max-height: 32px;
-        }
-        :host #outertranscript,
-        :host #outertranscript *,
-        :host #transcript {
+
           --a11y-media-transcript-color: var(
-            --simple-colors-default-theme-grey-12
+            --simple-colors-default-theme-grey-7
           );
           --a11y-media-transcript-bg-color: var(
             --simple-colors-default-theme-grey-1
@@ -224,74 +198,121 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           --a11y-media-transcript-faded-accent-color: var(
             --simple-colors-default-theme-accent-10
           );
+          --a11y-media-transcript-cue-color: var(
+            --simple-colors-light-theme-grey-12
+          );
+          --a11y-media-transcript-cue-bg-color: var(
+            --simple-colors-light-theme-grey-1
+          );
           --a11y-media-transcript-active-cue-color: var(
-            --simple-colors-default-theme-grey-12
+            --simple-colors-light-theme-grey-12
           );
           --a11y-media-transcript-active-cue-bg-color: var(
-            --simple-colors-default-theme-accent-1
+            --simple-colors-light-theme-accent-1
           );
           --a11y-media-transcript-focused-cue-color: var(
-            --simple-colors-default-theme-grey-12
+            --simple-colors-light-theme-grey-12
           );
           --a11y-media-transcript-focused-cue-bg-color: var(
-            --simple-colors-default-theme-grey-2
+            --simple-colors-light-theme-grey-2
           );
           --a11y-media-transcript-match-color: var(
-            --simple-colors-default-theme-grey-1
+            --simple-colors-light-theme-grey-1
           );
           --a11y-media-transcript-match-bg-color: var(
-            --simple-colors-default-theme-accent-10
+            --simple-colors-light-theme-accent-10
           );
           --a11y-media-transcript-match-border-color: var(
-            --simple-colors-default-theme-accent-12
-          );
-          --a11y-media-hover-color: var(--simple-colors-default-theme-grey-12);
-          --a11y-media-hover-bg-color: var(
-            --simple-colors-default-theme-grey-2
+            --simple-colors-light-theme-accent-12
           );
         }
-        :host([dark-transcript]) #outertranscript,
-        :host([dark-transcript]) #outertranscript *,
-        :host([dark-transcript]) #transcript {
+        :host([dark]) {
+          outline: 1px solid var(--simple-colors-default-theme-grey-1);
+        }
+        :host([dark-transcript]) {
+          --a11y-media-transcript-bg-color: var(
+            --simple-colors-dark-theme-grey-1
+          );
+          --a11y-media-transcript-cue-color: var(
+            --simple-colors-dark-theme-grey-12
+          );
+          --a11y-media-transcript-cue-bg-color: var(
+            --simple-colors-dark-theme-grey-1
+          );
           --a11y-media-transcript-active-cue-color: var(
-            --simple-colors-default-theme-accent-10
+            --simple-colors-dark-theme-accent-10
           );
           --a11y-media-transcript-active-cue-bg-color: var(
-            --simple-colors-default-theme-grey-1
+            --simple-colors-dark-theme-grey-1
+          );
+          --a11y-media-transcript-match-color: var(
+            --simple-colors-dark-theme-grey-1
+          );
+          --a11y-media-transcript-match-bg-color: var(
+            --simple-colors-dark-theme-accent-10
+          );
+          --a11y-media-transcript-match-border-color: var(
+            --simple-colors-dark-theme-accent-12
+          );
+          --a11y-media-transcript-focused-cue-color: var(
+            --simple-colors-dark-theme-grey-12
+          );
+          --a11y-media-transcript-focused-cue-bg-color: var(
+            --simple-colors-dark-theme-grey-2
           );
         }
-
-        :host #audiocctxt:not([hidden]) {
-          display: flex;
-          align-items: center;
-          padding: 5px 16px;
-          min-height: 4em;
+        :host > * {
+          flex: 1 1 auto;
+          max-height: 100vh;
           transition: all 0.5s;
         }
-        :host #sources {
+        :host,
+        :host #outerplayer {
           display: flex;
           align-items: stretch;
-          position: relative;
+          align-content: stretch;
+          flex-flow: column;
+          color: var(--simple-colors-default-theme-grey-12);
+          background-color: var(--simple-colors-default-theme-grey-2);
         }
-        :host([no-height]) #sources {
-          display: none;
-        }
-        :host #controls,
-        :host #slider,
         :host #sources,
-        :host #sources > * {
+        :host #slider,
+        :host #controls {
           width: 100%;
         }
-        :host #loader,
-        :host #youtube,
-        :host #customcc,
-        :host #customcctxt {
+        :host #sources {
+          flex: 1 1 auto;
+          display: flex;
+          flex-flow: column;
+          align-items: stretch;
+          align-content: stretch;
+          position: relative;
+        }
+        :host #sources > * {
           position: absolute;
           top: 0;
           left: 0;
+          flex: 1 1 auto;
+          width: 100%;
+          height: 100%;
+        }
+        :host #playbutton {
+          z-index: 2;
+        }
+        :host #slider {
+          flex: 0 0 32px;
+          height: 32px;
+          z-index: 1000;
+        }
+        :host #controls {
+          flex: 0 0 44px;
+          z-index: 2 !important;
+        }
+
+        :host([__playing]) #loader {
+          background-image: none !important;
         }
         :host #youtube {
-          height: 100%;
           opacity: 0;
         }
         :host #sources[show-yt-iframe] #youtube {
@@ -304,51 +325,28 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           height: 100%;
           transition: font-size 0.25s;
         }
-        :host #audiocctxt,
         :host #customcctxt {
           font-family: sans-serif;
-        }
-        :host([responsive-size="lg"]) #customcc {
-          font-size: 16px;
-        }
-        :host([responsive-size="md"]) #customcc,
-        :host([flex-layout][responsive-size="xl"]) #customcc {
-          font-size: 14px;
-        }
-        :host([responsive-size="sm"]) #customcc,
-        :host([flex-layout][responsive-size="lg"]) #customcc {
-          font-size: 12px;
-        }
-        :host([responsive-size="xs"]) #customcc,
-        :host([flex-layout][responsive-size="md"]) #customcc,
-        :host([flex-layout][responsive-size="sm"]) #customcc {
-          font-size: 10px;
-        }
-        :host([sticky]:not([sticky-corner="none"])) #customcc {
-          display: none;
-        }
-        :host #customcctxt:not(:empty) {
-          top: unset;
-          bottom: 8px;
-          display: inline-block;
-          margin: 0 10px;
+          display: flex;
+          align-items: center;
+          align-content: stretch;
           color: white;
           background-color: black;
           background-color: rgba(0, 0, 0, 0.8);
+        }
+        :host([audio-only]) #customcctxt {
+          color: var(--a11y-media-color);
+          background-color: transparent;
+        }
+        :host #customcctxt:not([hidden]) {
+          top: unset;
+          bottom: 8px;
+          margin: 0 10px;
           padding: 0.15em 4px;
+          transition: all 0.5s;
         }
-        :host #controls,
-        :host #slider {
-          z-index: 2 !important;
-        }
-        :host #audio-only {
-          text-align: center;
-          font-style: italic;
-          width: 100%;
-          line-height: 160%;
-        }
-        :host .media-caption:not(:empty) {
-          padding: 5px 15px;
+        :host([audio-only]) #customcctxt:not([hidden]) {
+          padding: 5px 16px;
         }
         :host #printthumb {
           width: 100%;
@@ -364,48 +362,42 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           width: 0;
           overflow: hidden;
         }
+        :host .media-caption:not(:empty) {
+          width: calc(100% - 30px);
+          padding: 5px 15px;
+        }
+        :host .media-type {
+          font-style: italic;
+        }
         @media screen {
+          :host([flex-layout]:not([responsive-size*="s"])) {
+            flex-flow: row;
+            padding: 0;
+          }
           :host #printthumb {
             display: none;
           }
-          :host([flex-layout]:not([responsive-size*="s"])) {
-            display: inline-flex;
-            align-items: stretch;
-            outline: 1px solid;
-            color: var(--simple-colors-default-theme-grey-12);
-            background-color: var(--simple-colors-default-theme-grey-2);
-            outline-color: var(--simple-colors-default-theme-grey-3);
-            padding: 0;
-          }
-          :host([dark][flex-layout]:not([responsive-size*="s"])) {
-            outline-color: var(--simple-colors-default-theme-grey-1);
-          }
-          :host > div {
-            transition: all 0.5s;
-          }
-          :host([sticky]:not([sticky-corner="none"])) #player {
+          :host([sticky]:not([sticky-corner="none"])) #outerplayer {
             position: fixed;
             top: 5px;
             right: 5px;
             width: 200px;
             max-width: 200px;
             z-index: 999999;
-            border: 1px solid;
+            border: 1px solid var(--a11y-media-bg-color);
             box-shadow: 1px 1px 20px 1px rgba(125, 125, 125);
             border-radius: 3.2px;
-            border-color: var(--a11y-media-bg-color);
           }
-          :host([dark][sticky]:not([sticky-corner="none"])) #player {
-            border-color: var(--a11y-media-bg-color);
+          :host([dark][sticky]:not([sticky-corner="none"])) #outerplayer {
+            border: 1px solid var(--a11y-media-bg-color);
           }
-          :host([sticky][sticky-corner="top-left"]) #player {
+          :host([sticky][sticky-corner="top-left"]) #outerplayer {
             right: unset;
             left: 5px;
           }
           :host([flex-layout]:not([responsive-size*="s"])) > div {
             width: 50%;
-            flex-grow: 1;
-            flex-shrink: 1;
+            flex: 1 1 auto;
           }
           :host #innertranscript {
             position: relative;
@@ -418,13 +410,10 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           :host([hide-transcript]) #outertranscript {
             display: none;
           }
-          :host #transcript {
-            padding-top: 48px;
-          }
           :host(:not([no-height]):not([stacked-layout]):not([responsive-size*="s"]))
             #transcript {
             position: absolute;
-            top: 0;
+            top: 44px;
             left: 0;
             right: 0;
             bottom: 0;
@@ -437,14 +426,6 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
             left: 0;
             width: 200px !important;
             z-index: 9999;
-          }
-          :host #tcontrols {
-            z-index: 1000;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
           }
           :host([sticky][sticky-corner="bottom-left"]) #player {
             top: unset;
@@ -459,12 +440,37 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
             #controls {
             display: none;
           }
-          :host .print-only {
+          :host([responsive-size="lg"]) #customcc {
+            font-size: 16px;
+          }
+          :host([responsive-size="md"]) #customcc,
+          :host([flex-layout][responsive-size="xl"]) #customcc {
+            font-size: 14px;
+          }
+          :host([responsive-size="sm"]) #customcc,
+          :host([flex-layout][responsive-size="lg"]) #customcc {
+            font-size: 12px;
+          }
+          :host([responsive-size="xs"]) #customcc,
+          :host([flex-layout][responsive-size="md"]) #customcc,
+          :host([flex-layout][responsive-size="sm"]) #customcc {
+            font-size: 10px;
+          }
+          :host([sticky]:not([sticky-corner="none"])) #customcc {
             display: none;
           }
           :host .media-caption {
-            color: var(--simple-colors-default-theme-grey-1);
-            background-color: var(--simple-colors-default-theme-accent-10);
+            color: var(--a11y-media-bg-color);
+            background-color: var(--a11y-media-accent-color);
+          }
+          :host #audio-only {
+            text-align: center;
+            font-style: italic;
+            width: 100%;
+            line-height: 160%;
+          }
+          :host .print-only {
+            display: none;
           }
         }
 
@@ -474,24 +480,10 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
             outline: 1px solid #aaaaaa;
             background-color: #ffffff;
           }
-          :host([sticky]:not([sticky-corner="none"])) #outerplayer {
-            height: unset !important;
-          }
           :host .screen-only,
-          :host #player,
-          :host #audiocctxt,
-          :host #printthumb:not([src]) {
+          :host #printthumb:not([src]),
+          :host(:not([thumbnail-src])) #sources {
             display: none;
-          }
-          :host(:not([thumbnail-src])) #sources,
-          :host #slider,
-          :host #loader,
-          :host #youtube,
-          :host #controls {
-            display: none;
-          }
-          :host .media-type {
-            font-style: italic;
           }
           :host #searchbar {
             display: none;
@@ -500,7 +492,6 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
             background-color: #cccccc;
             color: #000000;
             font-size: 120%;
-            padding: 5px 15px;
           }
         }
       </style>
@@ -545,18 +536,17 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
             <slot></slot>
           </a11y-media-loader>
           <div id="youtube" video-id$="[[videoId]]"></div>
-          <div id="customcc" hidden$="[[!showCustomCaptions]]">
-            <span id="customcctxt" hidden$="[[noHeight]]"></span>
-          </div>
           <div
-            id="audiocc"
-            hidden$="[[_showAudioCC(audioOnly,showCustomCaptions)]]"
+            id="customcc"
+            class="screen-only"
+            hidden$="[[!showCustomCaptions]]"
           >
-            <div id="audiocctxt" hidden$="[[!noHeight]]"></div>
+            <span id="customcctxt" hidden$="[[noHeight]]"></span>
           </div>
         </div>
         <paper-slider
           id="slider"
+          class="screen-only"
           max$="[[__duration]]"
           on-dragging-changed="_handleSliderDragging"
           on-focused-changed="_handleSliderKeyboard"
@@ -1181,7 +1171,8 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   _handleMediaLoaded(e) {
     let root = this,
       aspect = root.media.aspectRatio;
-    root.$.sources.style.paddingTop = 100 / aspect + "%";
+    if (root.height === null)
+      root.$.sources.style.paddingTop = 100 / aspect + "%";
     root.$.playbutton.removeAttribute("disabled");
 
     // gets and converts video duration
@@ -1424,7 +1415,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           }
         }
         root.$.customcctxt.innerText = caption;
-        root.$.audiocctxt.innerText = caption;
+        //root.$.audiocctxt.innerText = caption;
         root.$.transcript.setActiveCues(active);
       }
     }

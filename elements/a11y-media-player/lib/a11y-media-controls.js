@@ -91,32 +91,32 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
           width: 100%;
           max-width: 100%;
           height: 44px;
+          max-height: 44px;
           position: relative;
           color: var(--a11y-media-color);
-          background-color: var(--a11y-media-bg-color);
-          --paper-listbox-background-color: var(--a11y-media-controls-bg-color);
-          --paper-listbox-color: var(--a11y-media-controls-color);
+          --primary-text-color: var(--a11y-media-settings-menu-color);
+          --paper-menu-button-dropdown-background: var(--a11y-media-settings-menu-bg-color);
+          --paper-listbox-background-color: var(--a11y-media-settings-menu-bg-color);
+          --paper-listbox-color: var(--a11y-media-settings-menu-color);
           --paper-listbox: {
             padding: 0;
           };
-          --paper-menu-button-dropdown-background: var(--a11y-media-controls-bg-color);
           --paper-menu-button: {
-            background-color: var(--a11y-media-controls-bg-color);
-            color: var(--a11y-media-controls-color);
+            background-color: var(--a11y-media-settings-menu-bg-color);
+            color: var(--a11y-media-settings-menu-color);
           };
           --paper-menu-button-dropdown: {
-            background-color: var(--a11y-media-controls-bg-color);
-            color: var(--a11y-media-controls-color);
+            background-color: var(--a11y-media-settings-menu-bg-color);
+            color: var(--a11y-media-settings-menu-color);
             margin-top: 0 !important;
             margin-bottom: 0 !important;
           };
           --paper-item-selected: {
-            color: var(--a11y-media-controls-hover-color);
+            color: var(--a11y-media-settings-menu-hover-color);
           };
           --paper-item-focused: {
-            color: var(--a11y-media-controls-hover-color);
+            color: var(--a11y-media-settings-menu-hover-color);
           };
-          --primary-text-color: var(--a11y-media-controls-color);
         }
         :host > #controls-left {
           position: absolute;
@@ -133,14 +133,14 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
           padding: 0;
         }
         :host paper-icon-button {
-          background-color: var(--a11y-media-controls-bg-color);
-          color: var(--a11y-media-controls-color);
+          background-color: var(--a11y-media-settings-menu-bg-color);
+          color: var(--a11y-media-settings-menu-color);
         }
         :host paper-icon-button:active,
         :host paper-icon-button:focus,
         :host paper-icon-button:hover {
-          background-color: var(--a11y-media-controls-bg-color);
-          color: var(--a11y-media-controls-color);
+          background-color: var(--a11y-media-settings-menu-bg-color);
+          color: var(--a11y-media-settings-menu-color);
         }
         :host paper-item {
           min-height: 40;

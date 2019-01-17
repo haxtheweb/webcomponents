@@ -107,8 +107,8 @@ class A11yMediaTranscriptCue extends A11yMediaPlayerProperties {
           cursor: default;
           display: table-row;
           width: 100%;
-          color: var(--a11y-media-transcript-color);
-          background-color: var(--a11y-media-transcript-bg-color);
+          color: var(--a11y-media-transcript-cue-color);
+          background-color: var(--a11y-media-transcript-cue-bg-color);
           transition: color 0.25s, background-color 0.25s;
         }
         :host([hide-timestamps]) {
