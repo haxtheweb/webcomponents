@@ -85,11 +85,8 @@ class A11yMediaPlayButton extends A11yMediaPlayerProperties {
       <style>
         :host {
           display: block;
-          z-index: 2;
           opacity: 1;
           transition: opacity 0.5s;
-          position: absolute;
-          height: 100%;
         }
         :host([disabled]),
         :host([elapsed]) {
@@ -100,7 +97,6 @@ class A11yMediaPlayButton extends A11yMediaPlayerProperties {
         :host #background,
         :host #button {
           width: 100%;
-          max-height: 80vh;
           top: 0;
           left: 0;
           opacity: 1;
@@ -163,7 +159,6 @@ class A11yMediaPlayButton extends A11yMediaPlayerProperties {
         on-tap="_buttonTap"
         title$="[[label]]"
       >
-        <div id="background"></div>
         <svg
           id="svg"
           xmlns="http://www.w3.org/2000/svg"
@@ -202,20 +197,6 @@ class A11yMediaPlayButton extends A11yMediaPlayerProperties {
   connectedCallback() {
     super.connectedCallback();
     this.$.text.innerText = this.playLabel;
-    if (this.audioOnly) {
-      let root = this,
-        img = this.$.thumbnail,
-        check = setInterval(function() {
-          if (img !== null && img !== undefined && img.naturalWidth) {
-            clearInterval(check);
-            let aspect = (img.naturalHeight / img.naturalWidth) * 100;
-            root.style.height = aspect + "%";
-            root.dispatchEvent(
-              new CustomEvent("thumbnail-aspect", { detail: aspect })
-            );
-          }
-        }, 10);
-    }
   }
 
   /**

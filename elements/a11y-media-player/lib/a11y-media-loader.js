@@ -99,6 +99,9 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
           align-items: stretch;
           position: relative;
         }
+        :host([hidden]) {
+          display: none;
+        }
         #video {
           width: 100%;
           max-width: 100%;
@@ -106,6 +109,7 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
       </style>
       <video
         id="video"
+        aria-hidden$="[[isYoutube]]"
         autoplay$="[[autoplay]]"
         crossorigin$="[[crossorigin]]"
         hidden$="[[audioOnly]]"

@@ -261,20 +261,27 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
             --simple-colors-dark-theme-grey-2
           );
         }
-        :host > * {
-          flex: 1 1 auto;
-          max-height: 100vh;
-          transition: all 0.5s;
-        }
         :host,
         :host #outerplayer {
-          display: flex;
-          align-items: stretch;
-          align-content: stretch;
-          flex-flow: column;
           color: var(--simple-colors-default-theme-grey-12);
           background-color: var(--simple-colors-default-theme-grey-2);
         }
+        :host > * {
+          flex: 1 1 auto;
+          transition: all 0.5s;
+        }
+        :host,
+        :host #outerplayer,
+        :host #sources {
+          display: flex;
+          flex-flow: column;
+          align-items: stretch;
+          align-content: stretch;
+        }
+        :host #player {
+          margin: 0 auto;
+        }
+        :host #player,
         :host #sources,
         :host #slider,
         :host #controls {
@@ -282,10 +289,6 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
         }
         :host #sources {
           flex: 1 1 auto;
-          display: flex;
-          flex-flow: column;
-          align-items: stretch;
-          align-content: stretch;
           position: relative;
         }
         :host #sources > * {
@@ -295,9 +298,13 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           flex: 1 1 auto;
           width: 100%;
           height: 100%;
+          max-height: calc(100vh - 100px);
         }
         :host #playbutton {
           z-index: 2;
+        }
+        :host([audio-only]) #playbutton {
+          opacity: 0;
         }
         :host #slider {
           flex: 0 0 32px;
@@ -309,44 +316,36 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           z-index: 2 !important;
         }
 
-        :host([__playing]) #loader {
-          background-image: none !important;
-        }
         :host #youtube {
           opacity: 0;
         }
-        :host #sources[show-yt-iframe] #youtube {
+        :host #youtube[elapsed] {
           opacity: 1;
           transition: opacity 0.5s;
         }
-        :host #customcc {
+        :host #customcc:not([hidden]) {
           font-size: 20px;
           width: 100%;
           height: 100%;
           transition: font-size 0.25s;
-        }
-        :host #customcctxt {
-          font-family: sans-serif;
           display: flex;
-          align-items: center;
-          align-content: stretch;
+        }
+        :host #customcctxt:not(:empty) {
+          width: 100%;
+          flex: 1 1 auto;
+          align-self: flex-end;
+          font-family: sans-serif;
           color: white;
+          margin: 4px 10px;
+          padding: 0.15em 4px;
+          transition: all 0.5s;
           background-color: black;
           background-color: rgba(0, 0, 0, 0.8);
         }
-        :host([audio-only]) #customcctxt {
+        :host([audio-only]:not([thumbnail-src])) #customcctxt {
+          align-self: center;
           color: var(--a11y-media-color);
           background-color: transparent;
-        }
-        :host #customcctxt:not([hidden]) {
-          top: unset;
-          bottom: 8px;
-          margin: 0 10px;
-          padding: 0.15em 4px;
-          transition: all 0.5s;
-        }
-        :host([audio-only]) #customcctxt:not([hidden]) {
-          padding: 5px 16px;
         }
         :host #printthumb {
           width: 100%;
@@ -499,49 +498,55 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
 
       <div class="sr-only">[[mediaCaption]]</div>
       <div id="outerplayer" lang$="[[uiLanguage]]">
-        <div
-          id="sources"
-          show-yt-iframe$="[[_useYoutubeIframe(thumbnailSrc, isYoutube, __elapsed)]]"
-          style$="[[_getThumbnailCSS(thumbnailSrc,isYoutube,audioOnly)]]"
-        >
-          <a11y-media-play-button
-            id="playbutton"
-            audio-only$="[[audioOnly]]"
-            disabled="true"
-            elapsed$="[[_hidePlayButton(thumbnailSrc, isYoutube, __elapsed)]]"
-            hidden$="[[noHeight]]"
-            disabled$="[[noHeight]]"
-            on-controls-change="_onControlsChanged"
-            pause-label$="[[pauseLabel]]"
-            play-label$="[[playLabel]]"
-          >
-          </a11y-media-play-button>
-          <a11y-media-loader
-            id="loader"
-            audio-only$="[[audioOnly]]"
-            autoplay$="[[autoplay]]"
-            cc$="[[cc]]"
-            crossorigin$="[[crossorigin]]"
-            hidden$="[[isYoutube]]"
-            lang$="[[lang]]"
-            loop$="[[loop]]"
-            muted$="[[muted]]"
-            manifest$="[[manifest]]"
-            on-media-loaded="_handleMediaLoaded"
-            playback-rate$="[[playbackRate]]"
-            thumbnail-src$="[[thumbnailSrc]]"
-            preload$="[[preload]]"
-            volume$="[[volume]]"
-          >
-            <slot></slot>
-          </a11y-media-loader>
-          <div id="youtube" video-id$="[[videoId]]"></div>
+        <div id="player">
           <div
-            id="customcc"
-            class="screen-only"
-            hidden$="[[!showCustomCaptions]]"
+            id="sources"
+            style$="[[_getThumbnailCSS(thumbnailSrc,isYoutube,audioOnly)]]"
           >
-            <span id="customcctxt" hidden$="[[noHeight]]"></span>
+            <a11y-media-play-button
+              id="playbutton"
+              audio-only$="[[audioOnly]]"
+              disabled="true"
+              elapsed$="[[_hidePlayButton(thumbnailSrc, isYoutube, __elapsed)]]"
+              hidden$="[[noHeight]]"
+              disabled$="[[noHeight]]"
+              on-controls-change="_onControlsChanged"
+              pause-label$="[[pauseLabel]]"
+              play-label$="[[playLabel]]"
+            >
+            </a11y-media-play-button>
+            <a11y-media-loader
+              id="loader"
+              audio-only$="[[audioOnly]]"
+              autoplay$="[[autoplay]]"
+              cc$="[[cc]]"
+              crossorigin$="[[crossorigin]]"
+              hidden$="[[isYoutube]]"
+              lang$="[[lang]]"
+              loop$="[[loop]]"
+              muted$="[[muted]]"
+              manifest$="[[manifest]]"
+              on-media-loaded="_handleMediaLoaded"
+              playing$="[[__playing]]"
+              playback-rate$="[[playbackRate]]"
+              thumbnail-src$="[[thumbnailSrc]]"
+              preload$="[[preload]]"
+              volume$="[[volume]]"
+            >
+              <slot></slot>
+            </a11y-media-loader>
+            <div
+              id="youtube"
+              elapsed$="[[__elapsed]]"
+              video-id$="[[videoId]]"
+            ></div>
+            <div
+              id="customcc"
+              class="screen-only"
+              hidden$="[[!showCustomCaptions]]"
+            >
+              <div id="customcctxt"></div>
+            </div>
           </div>
         </div>
         <paper-slider
@@ -673,6 +678,13 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
         computed: "_getPrintCaption(audioOnly,audioLabel,videoLabel,mediaTitle)"
       },
       /**
+       * is YouTube?
+       */
+      showCustomCaptions: {
+        type: "Boolean",
+        computed: "_showCustomCaptions(isYoutube,audioOnly,hasCaptions,cc)"
+      },
+      /**
        * Optional array ouf sources.
        */
       sources: {
@@ -765,11 +777,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
     root.$.controls.setStatus(root.__status);
     root.width = root.width !== null ? root.width : "100%";
     root.style.maxWidth = root.width !== null ? root.width : "100%";
-    if (root.height === null) {
-      root.$.sources.style.paddingTop = 100 / aspect + "%";
-    } else {
-      root.$.outerplayer.style.height = root.height;
-    }
+    root._setPlayerHeight(aspect);
     root.querySelectorAll("source,track").forEach(function(node) {
       root.$.loader.media.appendChild(node);
     });
@@ -1011,6 +1019,23 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   }
 
   /**
+   * sets the height of the player
+   * @param {Number} the aspect ratio of the media or its poster thumbnail
+   */
+  _setPlayerHeight(aspect) {
+    let root = this;
+    if (root.audioOnly && root.thumbnailSrc === null && root.height === null) {
+      root.$.sources.style.height = "60px";
+    } else if (root.height === null) {
+      root.$.sources.style.paddingTop = 100 / aspect + "%";
+      root.$.player.style.maxWidth =
+        "calc(" + aspect * 100 + "vh - " + aspect * 80 + "px)";
+    } else {
+      root.$.outerplayer.style.height = root.height;
+    }
+  }
+
+  /**
    * gets media caption
    *
    * @param {boolean} Is the player set to audio-only?
@@ -1171,8 +1196,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   _handleMediaLoaded(e) {
     let root = this,
       aspect = root.media.aspectRatio;
-    if (root.height === null)
-      root.$.sources.style.paddingTop = 100 / aspect + "%";
+    root._setPlayerHeight(aspect);
     root.$.playbutton.removeAttribute("disabled");
 
     // gets and converts video duration
@@ -1299,15 +1323,16 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   }
 
   /**
-   * returns true either value is true
+   * Show custom CC (for audio and YouTube)?
    *
-   * @param {boolean}
-   * @param {boolean}
-   * @returns {boolean} returns true if both are true
-   *
+   * @param {boolean} Is the media from YouTube?
+   * @param {boolean} Is the media audio only?
+   * @param {boolean} Does the media have CC tracks?
+   * @param {boolean} Are the CC turned on?
+   * @returns {boolean} Should the player show custom CC?
    */
-  _showAudioCC(audioOnly, showCustomCaptions) {
-    return !(audioOnly && showCustomCaptions);
+  _showCustomCaptions(isYoutube, audioOnly, hasCaptions, cc) {
+    return (isYoutube || audioOnly) && hasCaptions && cc;
   }
 
   /**
@@ -1415,7 +1440,6 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           }
         }
         root.$.customcctxt.innerText = caption;
-        //root.$.audiocctxt.innerText = caption;
         root.$.transcript.setActiveCues(active);
       }
     }

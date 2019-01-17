@@ -465,7 +465,8 @@ class A11yMediaPlayerProperties extends A11yMediaBehaviors {
        */
       showCustomCaptions: {
         type: Boolean,
-        computed: "_showCustomCaptions(isYoutube,audioOnly,hasCaptions,cc)"
+        computed: "_showCustomCaptions(isYoutube,audioOnly,hasCaptions,cc)",
+        reflectToAttribute: true
       },
       /**
        * label for skip the transcript link before the transcript
@@ -643,7 +644,15 @@ class A11yMediaPlayerProperties extends A11yMediaBehaviors {
    * @returns {boolean} Should the player show custom CC?
    */
   _showCustomCaptions(isYoutube, audioOnly, hasCaptions, cc) {
-    return this._hasCustomCaptions(isYoutube, audioOnly, hasCaptions) && cc;
+    console.log(
+      "_showCustomCaptions",
+      isYoutube,
+      audioOnly,
+      hasCaptions,
+      cc,
+      (isYoutube || audioOnly) && hasCaptions && cc
+    );
+    return (isYoutube || audioOnly) && hasCaptions && cc;
   }
 
   /**

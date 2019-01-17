@@ -72,20 +72,27 @@
   --a11y-media-transcript-focused-cue-color: var(--simple-colors-dark-theme-grey-12);
   --a11y-media-transcript-focused-cue-bg-color: var(--simple-colors-dark-theme-grey-2);
 }
-:host > * {
-  flex: 1 1 auto;
-  max-height: 100vh;
-  transition: all 0.5s;
-}
 :host,
 :host #outerplayer {
-  display: flex;
-  align-items: stretch;
-  align-content: stretch;
-  flex-flow: column;
   color: var(--simple-colors-default-theme-grey-12);
   background-color: var(--simple-colors-default-theme-grey-2);
 }
+:host > * {
+  flex: 1 1 auto;
+  transition: all 0.5s;
+}
+:host,
+:host #outerplayer,
+:host #sources {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  align-content: stretch;
+}
+:host #player {
+  margin: 0 auto;
+}
+:host #player,
 :host #sources, 
 :host #slider,
 :host #controls {
@@ -93,10 +100,6 @@
 }
 :host #sources {
   flex: 1 1 auto;
-  display: flex;
-  flex-flow: column;
-  align-items: stretch;
-  align-content: stretch;
   position: relative;
 }
 :host #sources > * {
@@ -106,9 +109,13 @@
   flex: 1 1 auto;
   width: 100%;
   height: 100%;
+  max-height: calc(100vh - 100px);
 }
 :host #playbutton {
   z-index: 2;
+}
+:host([audio-only]) #playbutton {
+  opacity: 0;
 }
 :host #slider {
   flex: 0 0 32px;
@@ -125,44 +132,36 @@
   transition: position 0.5s ease, max-width 1s ease;
   background-color: var(--simple-colors-default-theme-grey-2);
 }*/
-:host([__playing]) #loader {
-  background-image: none !important;
-}
 :host #youtube {
   opacity: 0;
 }
-:host #sources[show-yt-iframe] #youtube {
+:host #youtube[elapsed] {
   opacity: 1;
   transition: opacity 0.5s;
 }
-:host #customcc {
+:host #customcc:not([hidden]) {
   font-size: 20px;
   width: 100%;
   height: 100%;
   transition: font-size 0.25s;
-}
-:host #customcctxt {
-  font-family: sans-serif;
   display: flex;
-  align-items: center;
-  align-content: stretch;
+}
+:host #customcctxt:not(:empty) {
+  width: 100%;
+  flex: 1 1 auto;
+  align-self: flex-end;
+  font-family: sans-serif;
   color: white;
+  margin: 4px 10px;
+  padding: 0.15em 4px;
+  transition: all 0.5s;
   background-color: black;
   background-color: rgba(0, 0, 0, 0.8);
 }
-:host([audio-only]) #customcctxt {
+:host([audio-only]:not([thumbnail-src])) #customcctxt {
+  align-self: center;
   color: var(--a11y-media-color);
   background-color: transparent;
-}
-:host #customcctxt:not([hidden]) {
-  top: unset;
-  bottom: 8px;
-  margin: 0 10px;
-  padding: 0.15em 4px;
-  transition: all 0.5s;
-}
-:host([audio-only]) #customcctxt:not([hidden]) {
-  padding: 5px 16px;
 }
 :host #printthumb {
   width: 100%;

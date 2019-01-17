@@ -180,11 +180,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
     root.$.controls.setStatus(root.__status);
     root.width = root.width !== null ? root.width : "100%";
     root.style.maxWidth = root.width !== null ? root.width : "100%";
-    if (root.height === null) {
-      root.$.sources.style.paddingTop = 100 / aspect + "%";
-    } else {
-      root.$.outerplayer.style.height = root.height;
-    }
+    root._setPlayerHeight(aspect);
     root.querySelectorAll("source,track").forEach(function(node) {
       root.$.loader.media.appendChild(node);
     });
@@ -426,6 +422,23 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   }
 
   /**
+   * sets the height of the player
+   * @param {Number} the aspect ratio of the media or its poster thumbnail
+   */
+  _setPlayerHeight(aspect) {
+    let root = this;
+    if (root.audioOnly && root.thumbnailSrc === null && root.height === null) {
+      root.$.sources.style.height = "60px";
+    } else if (root.height === null) {
+      root.$.sources.style.paddingTop = 100 / aspect + "%";
+      root.$.player.style.maxWidth =
+        "calc(" + aspect * 100 + "vh - " + aspect * 80 + "px)";
+    } else {
+      root.$.outerplayer.style.height = root.height;
+    }
+  }
+
+  /**
    * gets media caption
    *
    * @param {boolean} Is the player set to audio-only?
@@ -586,8 +599,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   _handleMediaLoaded(e) {
     let root = this,
       aspect = root.media.aspectRatio;
-    if (root.height === null)
-      root.$.sources.style.paddingTop = 100 / aspect + "%";
+    root._setPlayerHeight(aspect);
     root.$.playbutton.removeAttribute("disabled");
 
     // gets and converts video duration
@@ -714,15 +726,16 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
   }
 
   /**
-   * returns true either value is true
+   * Show custom CC (for audio and YouTube)?
    *
-   * @param {boolean}
-   * @param {boolean}
-   * @returns {boolean} returns true if both are true
-   *
+   * @param {boolean} Is the media from YouTube?
+   * @param {boolean} Is the media audio only?
+   * @param {boolean} Does the media have CC tracks?
+   * @param {boolean} Are the CC turned on?
+   * @returns {boolean} Should the player show custom CC?
    */
-  _showAudioCC(audioOnly, showCustomCaptions) {
-    return !(audioOnly && showCustomCaptions);
+  _showCustomCaptions(isYoutube, audioOnly, hasCaptions, cc) {
+    return (isYoutube || audioOnly) && hasCaptions && cc;
   }
 
   /**
@@ -830,7 +843,6 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           }
         }
         root.$.customcctxt.innerText = caption;
-        //root.$.audiocctxt.innerText = caption;
         root.$.transcript.setActiveCues(active);
       }
     }

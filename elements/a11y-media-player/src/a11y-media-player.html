@@ -4,43 +4,50 @@
   
   <div class="sr-only">[[mediaCaption]]</div>
   <div id="outerplayer" lang$="[[uiLanguage]]">
-    <div id="sources"
-      show-yt-iframe$="[[_useYoutubeIframe(thumbnailSrc, isYoutube, __elapsed)]]"
-      style$="[[_getThumbnailCSS(thumbnailSrc,isYoutube,audioOnly)]]">
-      <a11y-media-play-button
-        id="playbutton"
-        audio-only$="[[audioOnly]]"
-        disabled="true"
-        elapsed$="[[_hidePlayButton(thumbnailSrc, isYoutube, __elapsed)]]"
-        hidden$="[[noHeight]]"
-        disabled$="[[noHeight]]"
-        on-controls-change="_onControlsChanged"
-        pause-label$="[[pauseLabel]]"
-        play-label$="[[playLabel]]"
-      >
-      </a11y-media-play-button>
-      <a11y-media-loader
-        id="loader"
-        audio-only$="[[audioOnly]]"
-        autoplay$="[[autoplay]]"
-        cc$="[[cc]]"
-        crossorigin$="[[crossorigin]]"
-        hidden$="[[isYoutube]]"
-        lang$="[[lang]]"
-        loop$="[[loop]]"
-        muted$="[[muted]]"
-        manifest$="[[manifest]]"
-        on-media-loaded="_handleMediaLoaded"
-        playback-rate$="[[playbackRate]]"
-        thumbnail-src$="[[thumbnailSrc]]"
-        preload$="[[preload]]"
-        volume$="[[volume]]"
-      >
-        <slot></slot>
-      </a11y-media-loader>
-      <div id="youtube" video-id$="[[videoId]]"></div>
-      <div id="customcc" class="screen-only"hidden$="[[!showCustomCaptions]]">
-        <span id="customcctxt" hidden$="[[noHeight]]"></span>
+    <div id="player">
+      <div id="sources"
+        style$="[[_getThumbnailCSS(thumbnailSrc,isYoutube,audioOnly)]]">
+        <a11y-media-play-button
+          id="playbutton"
+          audio-only$="[[audioOnly]]"
+          disabled="true"
+          elapsed$="[[_hidePlayButton(thumbnailSrc, isYoutube, __elapsed)]]"
+          hidden$="[[noHeight]]"
+          disabled$="[[noHeight]]"
+          on-controls-change="_onControlsChanged"
+          pause-label$="[[pauseLabel]]"
+          play-label$="[[playLabel]]"
+        >
+        </a11y-media-play-button>
+        <a11y-media-loader
+          id="loader"
+          audio-only$="[[audioOnly]]"
+          autoplay$="[[autoplay]]"
+          cc$="[[cc]]"
+          crossorigin$="[[crossorigin]]"
+          hidden$="[[isYoutube]]"
+          lang$="[[lang]]"
+          loop$="[[loop]]"
+          muted$="[[muted]]"
+          manifest$="[[manifest]]"
+          on-media-loaded="_handleMediaLoaded"
+          playing$="[[__playing]]"
+          playback-rate$="[[playbackRate]]"
+          thumbnail-src$="[[thumbnailSrc]]"
+          preload$="[[preload]]"
+          volume$="[[volume]]"
+        >
+          <slot></slot>
+        </a11y-media-loader>
+        <div id="youtube"
+          elapsed$="[[__elapsed]]" 
+          video-id$="[[videoId]]">
+        </div>
+        <div id="customcc" 
+          class="screen-only" 
+          hidden$="[[!showCustomCaptions]]">
+          <div id="customcctxt"></div>
+        </div>
       </div>
     </div>
     <paper-slider

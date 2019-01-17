@@ -14,6 +14,13 @@
     "computed": "_getPrintCaption(audioOnly,audioLabel,videoLabel,mediaTitle)"
   },
   /**
+   * is YouTube?
+   */
+  "showCustomCaptions": {
+    "type": "Boolean",
+    "computed": "_showCustomCaptions(isYoutube,audioOnly,hasCaptions,cc)"
+  },
+  /**
    * Optional array ouf sources.
    */
   "sources": {
