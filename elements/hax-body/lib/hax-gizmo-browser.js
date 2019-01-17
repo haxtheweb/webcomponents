@@ -6,6 +6,7 @@ import "@lrnwebcomponents/grafitto-filter/grafitto-filter.js";
 import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-gizmo-browser-item.js";
+import "./hax-shared-styles.js";
 /**
 `hax-gizmo-browser`
 Browse a list of gizmos. This provides a listing of custom elements for people to search and select based on what have been defined as gizmos for users to select.
@@ -17,7 +18,7 @@ Browse a list of gizmos. This provides a listing of custom elements for people t
 */
 Polymer({
   _template: html`
-    <style is="custom-style" include="simple-colors">
+    <style is="custom-style" include="simple-colors hax-shared-styles">
       :host {
         display: block;
       }
@@ -31,47 +32,20 @@ Polymer({
         margin: 0;
       }
       .title {
-        text-align: center;
-        padding: 16px 0;
-        margin: 0 64px 0 0;
-        font-size: 32px;
-        font-weight: bold;
-        color: var(--simple-colors-default-theme-light-green-1);
-        font-family: sans-serif;
-        text-transform: uppercase;
-        display: inline-flex;
-      }
-      dropdown-select {
-        color: #ffffff;
-        --paper-input-container-invalid-color: var(
-          --simple-colors-red-foreground3
-        );
-        --paper-input-container-input-color: #ffffff;
-        --paper-input-container-color: #ffffff;
-        --paper-input-container-focus-color: var(
-          --simple-colors-default-theme-light-green-1
-        );
-        --paper-listbox-color: #000000;
-      }
-      paper-item {
-        --secondary-text-color: #000000;
-        --primary-text-color: #000000;
-      }
-      paper-input {
-        color: #ffffff;
-        --paper-input-container-invalid-color: var(
-          --simple-colors-red-foreground3
-        );
-        --secondary-text-color: #ffffff;
-        --primary-text-color: #ffffff;
-        --paper-input-container-input-color: #ffffff;
-        --paper-input-container-color: #ffffff;
-        --paper-input-container-focus-color: var(
-          --simple-colors-default-theme-light-green-1
-        );
+        position: relative;
+        padding: 16px;
+        outline: 0;
+        font-weight: 600;
+        text-align: left;
+        margin: 0;
+        background-color: var(--hax-color-menu-heading-bg);
+        font-size: 18px;
+        line-height: 18px;
+        font-family: "Noto Serif", serif;
+        color: var(--hax-color-text);
       }
       app-toolbar {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: #ffffff;
       }
       .toolbar-inner {
         width: 100%;

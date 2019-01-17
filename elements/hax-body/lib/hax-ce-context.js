@@ -8,6 +8,7 @@ import "./simple-colors-picker.js";
 import "./hax-context-item-menu.js";
 import "./hax-context-item.js";
 import "./hax-toolbar.js";
+import "./hax-shared-styles.js";
 /**
 `hax-ce-context`
 A context menu that provides common custom-element based authoring options. While
@@ -21,45 +22,38 @@ required for populating input.
 */
 Polymer({
   _template: html`
-    <style>
+    <style includes="hax-shared-styles">
       :host *[hidden] {
         display: none;
       }
       :host {
         display: block;
-        height: 32px;
-        background-color: white;
+        height: 36px;
       }
       hax-context-item {
         margin: 0;
-        height: 32px;
+        height: 36px;
       }
       .human-name {
         font-size: 16px;
-        border-top-left-radius: 25%;
-        border-top-right-radius: 25%;
         line-height: 16px;
-        font-family: sans-serif;
         width: -webkit-fit-content;
         width: -moz-max-content;
         width: fit-content;
-        background-color: white;
       }
       .human-name-inner {
+        border: 1px solid var(--hax-color-border-outline);
+        font-family: "Noto Serif", serif;
         font-size: 16px;
-        border-top-left-radius: 25%;
-        border-top-right-radius: 25%;
         margin: -32px 0px 0 34px;
         line-height: 16px;
-        padding: 8px 16px 8px 8px;
-        font-family: sans-serif;
+        padding: 8px;
         width: -webkit-fit-content;
         width: -moz-max-content;
         width: fit-content;
-        background-color: black;
-        color: white;
-        opacity: 0.4;
-        transition: 0.6s all ease;
+        background-color: var(--hax-color-accent1);
+        color: var(--hax-color-accent1-text);
+        border-bottom: none;
       }
       :host(:hover) .human-name-inner {
         opacity: 1;
@@ -67,12 +61,16 @@ Polymer({
       :host(.hax-context-pin-top) hax-toolbar {
         position: fixed;
         top: 64px;
-        opacity: 0.95;
+        opacity: 0.9;
       }
       :host(.hax-context-pin-bottom) hax-toolbar {
         position: fixed;
         bottom: 0;
-        opacity: 0.95;
+        opacity: 0.9;
+      }
+      :host(.hax-context-pin-top) hax-toolbar:hover,
+      :host(.hax-context-pin-bottom) hax-toolbar:hover {
+        opacity: 1;
       }
     </style>
     <div class="human-name">

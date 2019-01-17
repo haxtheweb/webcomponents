@@ -2,12 +2,14 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/iron-icons/iron-icons.js";
-import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@lrnwebcomponents/md-extra-icons/md-extra-icons.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-context-item-menu.js";
 import "./hax-context-item.js";
 import "./hax-context-item-textop.js";
 import "./hax-toolbar.js";
+import "./hax-shared-styles.js";
+
 /**
 `hax-text-context`
 A context menu that provides common text based authoring options.
@@ -19,7 +21,7 @@ A context menu that provides common text based authoring options.
 */
 Polymer({
   _template: html`
-    <style include="materializecss-styles-colors">
+    <style include="simple-colors hax-shared-styles">
       :host {
         display: block;
         pointer-events: none;
@@ -31,9 +33,9 @@ Polymer({
       paper-item {
         -webkit-justify-content: flex-start;
         justify-content: flex-start;
-        height: 32px;
+        height: 36px;
         padding: 0 8px;
-        min-height: 32px;
+        min-height: 36px;
       }
       paper-item:hover {
         background-color: #d3d3d3;
@@ -59,7 +61,6 @@ Polymer({
     </style>
     <hax-toolbar selected="[[selection]]" hide-transform="" id="toolbar">
       <hax-context-item-menu
-        corner="left"
         slot="primary"
         selected-value="{{selectedValue}}"
         id="formatsize"

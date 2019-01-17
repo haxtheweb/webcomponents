@@ -25,7 +25,8 @@ Polymer({
       hax-context-item {
         display: block;
         margin: 6px 0;
-        width: 32px;
+        width: 28px;
+        height: 24px;
       }
       .area {
         width: 32px;
@@ -40,17 +41,17 @@ Polymer({
     </style>
     <div class="area">
       <hax-context-item
-        light=""
-        mini=""
-        icon="arrow-upward"
+        mini
+        light
+        icon="hardware:keyboard-arrow-up"
         label="Move up"
         event-name="grid-plate-up"
         direction="left"
       ></hax-context-item>
       <hax-context-item
-        light=""
-        mini=""
-        icon="arrow-downward"
+        mini
+        light
+        icon="hardware:keyboard-arrow-down"
         label="Move down"
         event-name="grid-plate-down"
         direction="left"

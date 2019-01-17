@@ -1,10 +1,19 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
+import "@polymer/iron-icons/editor-icons.js";
+import "@polymer/iron-icons/device-icons.js";
+import "@polymer/iron-icons/hardware-icons.js";
+import "@polymer/iron-icons/communication-icons.js";
+import "@polymer/iron-icons/social-icons.js";
+import "@polymer/iron-icons/av-icons.js";
+import "@polymer/iron-icons/maps-icons.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./simple-colors-picker.js";
 import "./hax-panel-item.js";
+import "./hax-shared-styles.js";
 /**
 `hax-panel`
 A LRN element that provides a panel / pallet of options to choose from.
@@ -20,7 +29,7 @@ as the events being bubbled up include HTML nodes to inject into something
 */
 Polymer({
   _template: html`
-    <style include="simple-colors">
+    <style include="simple-colors hax-shared-styles">
       :host {
         display: block;
         position: absolute;
@@ -32,6 +41,7 @@ Polymer({
       app-drawer {
         z-index: 100001;
         height: 40px;
+        padding: 8px 16px;
         left: 0;
         top: 0;
         touch-action: auto;
@@ -41,22 +51,22 @@ Polymer({
         --app-drawer-width: 100%;
         --app-drawer-content-container: {
           --app-drawer-content-container_-_height: 40px;
-          --app-drawer-content-container_-_padding: 0;
           width: 100%;
           left: 0;
           right: 0;
-          background-color: #2e2e2e;
-          padding: unset;
+          background-color: var(--hax-color-bg);
+          border: 1px solid var(--hax-color-bg-accent);
+          padding: 0 16px;
           display: flex;
           touch-action: auto;
           overflow-x: auto;
-          overflow-y: hidden;
+          overflow: visible !important;
           -webkit-overflow-scrolling: touch;
           white-space: nowrap;
         }
       }
       hax-panel-item {
-        margin: 0 auto;
+        margin: 8px 4px;
       }
       :host([align="right"]) app-drawer {
         right: 0;
@@ -78,8 +88,8 @@ Polymer({
         visibility: visible;
         z-index: 10000;
         transition: all 0.3s ease;
-        margin-left: 0;
-        border-radius: 50%;
+        margin: 0;
+        border-top-left-radius: 0;
       }
       :host([edit-mode]) #button {
         visibility: hidden;
@@ -91,11 +101,14 @@ Polymer({
       :host([align="right"]) #button {
         right: 0;
         left: unset;
+        border-top-right-radius: 0;
+        border-top-left-radius: unset;
       }
     </style>
     <div hidden$="[[hidePanelOps]]">
       <hax-panel-item
-        light="[[light]]"
+        dark
+        large
         data-opened$="[[editMode]]"
         on-tap="_clickEditButton"
         icon="create"
@@ -123,63 +136,54 @@ Polymer({
       ></hax-panel-item>
       <hax-panel-item
         icon="image:add-to-photos"
-        icon-class="amber-text"
         label="Add"
         event-name="hax-manager-open"
         value="0"
       ></hax-panel-item>
       <hax-panel-item
         icon="search"
-        icon-class="amber-text"
         label="Find"
         event-name="hax-manager-open"
         value="1"
       ></hax-panel-item>
       <hax-panel-item
         icon="hardware:toys"
-        icon-class="amber-text"
         label="Make"
         event-name="hax-manager-open"
         value="2"
       ></hax-panel-item>
       <hax-panel-item
         icon="view-quilt"
-        icon-class="amber-text"
         label="Layouts"
         event-name="hax-blox-picker-open"
         voice-command="insert block"
       ></hax-panel-item>
       <hax-panel-item
         icon="view-agenda"
-        icon-class="amber-text"
         label="Templates"
         event-name="hax-stax-picker-open"
         voice-command="insert stack"
       ></hax-panel-item>
       <hax-panel-item
         icon="editor:text-fields"
-        icon-class="light-blue-text"
-        label="Text"
+        label="Paragraph"
         event-name="text"
         voice-command="insert text"
       ></hax-panel-item>
       <hax-panel-item
         icon="editor:title"
-        icon-class="light-blue-text"
         label="Heading"
         event-name="header"
         voice-command="insert heading"
       ></hax-panel-item>
       <hax-panel-item
         icon="image:transform"
-        icon-class="light-blue-text"
         label="Placeholder"
         event-name="placeholder"
         voice-command="insert placeholder"
       ></hax-panel-item>
       <hax-panel-item
         icon="editor:space-bar"
-        icon-class="light-blue-text text-darken-1"
         label="Divider"
         event-name="divider"
         voice-command="insert divider"

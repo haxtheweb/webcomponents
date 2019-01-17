@@ -13,6 +13,8 @@ import "@polymer/iron-icons/maps-icons.js";
 import "@polymer/iron-icons/places-icons.js";
 import "@polymer/iron-image/iron-image.js";
 import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "./hax-shared-styles.js";
 /**
 `hax-gizmo-browser-item`
 A button on the hax-gizmo-browser app display
@@ -24,7 +26,9 @@ A button on the hax-gizmo-browser app display
 */
 Polymer({
   _template: html`
-    <style include="materializecss-styles-colors">
+    <style
+      include="materializecss-styles-colors simple-colors hax-shared-styles"
+    >
       :host {
         display: inline-flex;
       }
@@ -41,10 +45,10 @@ Polymer({
         border-radius: 10px;
       }
       paper-button {
-        color: #000000;
+        color: var(--hax-color-text);
         text-transform: none;
         margin: 0;
-        background-color: #ffffff;
+        background-color: var(--hax-color-bg-accent);
         height: 72px !important;
         width: 72px !important;
         display: flex;
@@ -62,6 +66,7 @@ Polymer({
       paper-button iron-icon {
         height: 32px;
         width: 32px;
+        color: var(--hax-color-text);
         display: inline-block;
       }
       .flip-icon {
@@ -73,14 +78,10 @@ Polymer({
         id="button"
         on-tap="_fireEvent"
         data-voicecommand\$="select [[title]]"
-        class\$="[[color]] lighten-5 [[color]]-border"
+        class\$="[[color]]-border"
       >
         <div class="button-inner">
-          <iron-icon
-            icon="[[icon]]"
-            class\$="[[color]]-text text-darken-3"
-            hidden\$="[[!icon]]"
-          ></iron-icon>
+          <iron-icon icon="[[icon]]" hidden\$="[[!icon]]"></iron-icon>
           <iron-image
             src="[[image]]"
             preload=""

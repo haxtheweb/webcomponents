@@ -5,6 +5,7 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "./hax-blox-browser.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "./hax-shared-styles.js";
 /**
  `hax-blox-picker`
  A picker for selecting an item from a list of apps / hax blox which require
@@ -19,44 +20,45 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 */
 Polymer({
   _template: html`
-    <style include="simple-colors">
+    <style include="simple-colors hax-shared-styles">
       :host {
         display: block;
       }
       #dialog {
         --app-drawer-width: 320px;
         z-index: 1000;
-        margin-top: 40px;
+        margin-top: 56px;
         @apply --hax-blox-picker-dialog;
       }
       #closedialog {
         float: right;
-        top: 135px;
+        top: 124px;
         right: 0;
         position: absolute;
-        padding: 4px;
+        padding: 8px;
         margin: 0;
-        color: var(--simple-colors-default-theme-light-green-1, green);
+        color: var(--hax-color-text);
         background-color: transparent;
         width: 40px;
         height: 40px;
         min-width: unset;
       }
       .title {
-        margin-top: 32px;
-        text-align: center;
+        position: relative;
         padding: 16px;
+        outline: 0;
+        font-weight: 600;
+        text-align: left;
         margin: 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        font-size: 32px;
-        font-weight: bold;
-        font-family: sans-serif;
-        text-transform: uppercase;
-        color: var(--simple-colors-default-theme-light-green-1);
+        background-color: var(--hax-color-menu-heading-bg);
+        font-size: 18px;
+        line-height: 18px;
+        font-family: "Noto Serif", serif;
+        color: var(--hax-color-text);
       }
       app-drawer {
         --app-drawer-content-container: {
-          background-color: rgba(0, 0, 0, 0.7);
+          background-color: #ffffff;
         }
         --app-drawer-width: 320px;
       }

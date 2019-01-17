@@ -10,21 +10,17 @@ import "./hax-toolbar-item.js";
 import "./hax-toolbar-menu.js";
 import "./hax-context-item.js";
 import "./hax-context-item-menu.js";
+import "./hax-shared-styles.js";
 Polymer({
   _template: html`
-    <style
-      is="custom-style"
-      include="materializecss-styles-colors simple-colors"
-    >
+    <style is="custom-style" include="simple-colors hax-shared-styles">
       :host {
         display: flex;
-        font-family: "Roboto", sans-serif;
         justify-content: flex-start;
-        opacity: 0.4;
         visibility: visible;
         transition: 0.3s all ease;
         box-sizing: border-box;
-        height: 32px;
+        height: 36px;
         pointer-events: all;
       }
       :host *[hidden] {
@@ -32,60 +28,59 @@ Polymer({
       }
       .wrapper {
         display: flex;
+        border: 1px solid var(--hax-color-border-outline);
+        height: 36px;
+        align-items: center;
       }
       :host .wrapper ::slotted(*) {
-        font-family: "Roboto", sans-serif;
         pointer-events: all;
-      }
-      :host(:hover),
-      :host([selected]) {
-        opacity: 1;
       }
       .close-cap {
         margin: 8px;
+        display: flex;
         padding: 0;
       }
+      #moremenu hax-context-item,
+      #moremenu ::slotted(paper-item),
       paper-item {
         height: 32px;
-        min-height: 32px;
-        padding: 0 8px;
-        width: 100px;
+        padding: 0;
+        min-width: 100px;
       }
+
+      #moremenu hax-context-item:hover,
+      :host #moremenu ::slotted(paper-item:hover),
       paper-item:hover {
-        background-color: #d3d3d3;
+        background-color: var(--hax-color-menu-heading-bg);
         cursor: pointer;
       }
       paper-slider {
-        background-color: #3e3e3e;
-        color: #000000;
-        height: 32px;
+        background-color: var(--hax-color-bg-accent);
+        color: #ffffff;
+        font-weight: bold;
+        height: 36px;
         min-width: 100px;
-        --paper-slider-font-color: #000000;
-        --paper-slider-active-color: var(
-          --simple-colors-default-theme-light-green-1
-        );
-        --paper-slider-knob-color: var(
-          --simple-colors-default-theme-light-green-1
-        );
-        --paper-slider-pin-color: var(
-          --simple-colors-default-theme-light-green-1
-        );
+        --paper-slider-font-color: var(--hax-color-accent1-text);
+        --paper-slider-active-color: var(--hax-color-accent1);
+        --paper-slider-knob-color: var(--hax-color-accent1);
+        --paper-slider-pin-start-color: var(--hax-color-accent1);
+        --paper-slider-pin-color: var(--hax-color-accent1);
       }
       .convert-button {
-        border-top: 1px solid #d3d3d3;
+        border-top: 1px solid var(--hax-color-bg-accent);
       }
     </style>
+    <hax-context-item
+      hidden$="[[inline]]"
+      mini
+      light
+      icon="close"
+      label="Close"
+      event-name="close-menu"
+      class="close-cap"
+      direction="left"
+    ></hax-context-item>
     <div class="wrapper">
-      <hax-context-item
-        hidden$="[[inline]]"
-        mini=""
-        light=""
-        icon="close"
-        label="Close"
-        event-name="close-menu"
-        class="close-cap"
-        direction="left"
-      ></hax-context-item>
       <hax-context-item-menu
         hidden$="[[!haxProperties.canPosition]]"
         selected-value="{{justifyValue}}"
@@ -132,7 +127,6 @@ Polymer({
         event-name="grid-plate-delete"
       ></hax-context-item>
       <hax-context-item-menu
-        corner="right"
         hidden$="[[hideMore]]"
         icon="more-vert"
         label="More"

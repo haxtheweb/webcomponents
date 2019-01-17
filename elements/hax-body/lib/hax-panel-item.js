@@ -1,47 +1,38 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/editor-icons.js";
-import "@polymer/iron-icons/device-icons.js";
-import "@polymer/iron-icons/hardware-icons.js";
-import "@polymer/iron-icons/communication-icons.js";
-import "@polymer/iron-icons/social-icons.js";
-import "@polymer/iron-icons/av-icons.js";
-import "@polymer/iron-icons/maps-icons.js";
+import "@polymer/paper-tooltip/paper-tooltip.js";
+import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+import "./hax-shared-styles.js";
 /**
-`hax-panel-item`
-A single button in the hax panel for consistency.
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- - panel - the flyout from left or right side that has elements that can be placed
- - button - an item that expresses what interaction you will have with the content.
-
-*/
+ * `hax-panel-item`
+ * `A single button in the hax panel for consistency.`
+ * @demo demo/index.html
+ * @microcopy - the mental model for this element
+ * - panel - the flyout from left or right side that has elements that can be placed
+ * - button - an item that expresses what interaction you will have with the content.
+ */
 Polymer({
   _template: html`
-    <style is="custom-style" include="materializecss-styles-colors">
+    <style include="simple-colors hax-shared-styles">
       :host {
         display: inline-flex;
-        --hax-panel-hover: var(--simple-colors-default-theme-light-green-1);
       }
       paper-button {
-        height: 40px;
-        width: 64px;
+        height: 36px;
+        width: 36px;
         overflow: hidden;
         margin: 0;
         text-transform: none;
-        background-color: #2e2e2e !important;
-        color: #eeeeee;
+        background-color: var(--hax-color-bg-accent);
+        color: var(--hax-color-accent-text);
         display: flex;
-        padding: 0;
-        border-radius: 0;
-        border: none;
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid var(--hax-color-bg-accent);
         min-width: unset;
+        --paper-button-ink-color: var(--hax-color-accent1);
       }
       :host([edged="left"]) paper-button {
         border-bottom-right-radius: 16px;
@@ -49,23 +40,7 @@ Polymer({
       :host([edged="right"]) paper-button {
         border-bottom-left-radius: 16px;
       }
-      paper-button .label {
-        max-height: 8px;
-        font-size: 10px;
-        margin: 0;
-        background: transparent;
-        vertical-align: unset;
-        border-radius: unset;
-        height: unset;
-        min-width: unset;
-        line-height: unset;
-        display: unset;
-        text-align: unset;
-        margin-right: unset;
-        display: block;
-      }
       paper-button .button-inner {
-        padding: 0;
         text-align: center;
         margin: 0 auto;
       }
@@ -74,48 +49,55 @@ Polymer({
         width: 20px;
         display: inline-flex;
       }
-      paper-button:hover .label,
-      paper-button:focus .label {
-        color: var(--hax-panel-hover);
+      paper-button:hover,
+      paper-button:focus {
+        color: var(--hax-color-text-active);
+        border: 1px solid var(--hax-color-accent1);
       }
-      paper-button:hover iron-icon,
-      paper-button:focus iron-icon {
-        color: var(--hax-panel-hover) !important;
-      }
+
       paper-button[disabled] {
         opacity: 0.5;
       }
       .flip-icon {
         transform: rotateY(180deg);
       }
-      :host([light]) paper-button {
-        height: 32px !important;
-        border-radius: 6px;
-        margin-top: 8px;
-        margin-left: 8px;
-        border: solid #2196f3 2px;
-        background-color: #ffffff !important;
-        color: #2196f3;
-        text-transform: uppercase;
-        font-weight: 800;
+      :host([dark]) paper-button {
+        border: solid 2px #000000;
+        background-color: #000000 !important;
+        color: var(--hax-color-bg-accent);
       }
-      :host([light]) paper-button iron-icon {
-        display: none;
+      :host([large]) paper-button {
+        height: 40px;
+        width: 40px;
       }
-      :host([light]) paper-button:hover {
-        border: solid #1e88e5 2px;
-        background-color: #f5f5f5 !important;
+      :host([dark]) paper-button:hover iron-icon,
+      :host([dark]) paper-button:focus iron-icon {
+        color: #ffffff !important;
+      }
+      :host([dark]) paper-button:hover {
+        border: solid #0085ba 1px;
+      }
+      paper-tooltip {
+        --paper-tooltip-background: #000000;
+        --paper-tooltip-opacity: 1;
+        --paper-tooltip-text-color: #ffffff;
+        --paper-tooltip-delay-in: 0;
+        --paper-tooltip: {
+          border-radius: 0;
+        }
       }
     </style>
-    <paper-button
-      disabled="[[disabled]]"
-      data-voicecommand\$="[[voiceCommand]]"
-    >
-      <div class="button-inner">
-        <iron-icon icon="[[icon]]" class\$="[[iconClass]]"></iron-icon>
-        <div class="label">[[label]]</div>
-      </div>
+    <paper-button raised id="button" disabled="[[disabled]]">
+      <div class="button-inner"><iron-icon icon="[[icon]]"></iron-icon></div>
     </paper-button>
+    <paper-tooltip
+      animation-delay="0"
+      for="button"
+      position="bottom"
+      offset="10"
+    >
+      [[label]]
+    </paper-tooltip>
   `,
 
   is: "hax-panel-item",
@@ -160,14 +142,6 @@ Polymer({
     icon: {
       type: String,
       value: "editor:text-fields",
-      reflectToAttribute: true
-    },
-    /**
-     * Icon for the button.
-     */
-    iconClass: {
-      type: String,
-      value: "white-text",
       reflectToAttribute: true
     },
     /**

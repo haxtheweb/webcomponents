@@ -12,9 +12,9 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/neon-animation/neon-animation.js";
 import "@polymer/neon-animation/animations/scale-up-animation.js";
 import "@polymer/neon-animation/animations/scale-down-animation.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-app-picker-item.js";
+import "./hax-shared-styles.js";
 /**
  `hax-app-picker`
  A picker for selecting an item from a list of apps / hax gizmos which require
@@ -29,12 +29,9 @@ import "./hax-app-picker-item.js";
 */
 Polymer({
   _template: html`
-    <style is="custom-style" include="materializecss-styles simple-colors">
+    <style is="custom-style" include="simple-colors hax-shared-styles">
       :host {
         display: block;
-        --hax-app-picker-dialog-background-color: var(
-          --simple-colors-default-theme-light-green-1
-        );
       }
       hax-app-picker-item {
         -webkit-transition: 0.3s all linear;
@@ -46,9 +43,9 @@ Polymer({
         top: 15px;
         right: 0;
         position: absolute;
-        padding: 4px;
+        padding: 8px;
         margin: 0;
-        color: var(--simple-colors-default-theme-light-green-1, green);
+        color: var(--hax-color-text);
         background-color: transparent;
         width: 40px;
         height: 40px;
@@ -65,23 +62,23 @@ Polymer({
         width: 30vh;
         padding: 8px;
         overflow: hidden;
-        background-color: rgba(0, 0, 0, 0.9);
         border-radius: 16px;
         z-index: 1000000;
-        border: 2px solid var(--simple-colors-default-theme-light-green-1);
+        border: 2px solid var(--hax-color-border-outline);
         @apply --hax-app-picker-dialog;
+        background-color: #ffffff;
       }
       #title,
       .element-button > div {
-        color: var(--hax-app-picker-dialog-text-color, #ffffff);
+        color: var(--hax-color-text);
       }
       #title {
         padding: 16px;
-        border-bottom: 2px solid
-          var(--simple-colors-default-theme-light-green-1);
+        border-bottom: 2px solid var(--hax-color-border-outline);
         margin: 0;
         width: calc(100% - 32px);
-        color: var(--hax-app-picker-dialog-text-color, #ffffff);
+        background-color: var(--hax-color-menu-heading-bg);
+        color: var(--hax-color-text);
         @apply --paper-font-title;
         @apply --hax-app-picker-dialog-title;
       }

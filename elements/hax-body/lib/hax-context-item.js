@@ -28,6 +28,12 @@ Polymer({
     <style>
       :host {
         display: inline-flex;
+        height: 36px;
+        width: 36px;
+      }
+      :host([mini]) {
+        height: unset;
+        width: unset;
       }
       :host([menu]) {
         display: flex;

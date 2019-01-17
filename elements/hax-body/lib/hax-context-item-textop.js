@@ -1,8 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
-import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-icon-button/paper-icon-button.js";
-import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/device-icons.js";
@@ -11,7 +8,6 @@ import "@polymer/iron-icons/social-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/image-icons.js";
 import "@polymer/iron-icons/maps-icons.js";
-import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
 import "@polymer/neon-animation/neon-animation.js";
 import "./hax-toolbar-item.js";
 /**
@@ -27,10 +23,12 @@ A single button in the hax context menus for consistency. This one uses the mous
 */
 Polymer({
   _template: html`
-    <style include="materializecss-styles-colors">
+    <style>
       :host {
         display: inline-flex;
         box-sizing: border-box;
+        height: 36px;
+        width: 36px;
       }
       :host([menu]) {
         display: flex;
@@ -44,15 +42,12 @@ Polymer({
       on-keys-pressed="_fireEvent"
     ></iron-a11y-keys>
     <hax-toolbar-item
-      corner="[[corner]]"
       id="button"
       icon="[[icon]]"
       hidden\$="[[!icon]]"
       tooltip-direction="[[direction]]"
       tooltip="[[label]]"
-      class\$="[[iconClass]]"
       on-mousedown="_fireEvent"
-      icon-class="[[iconClass]]"
       mini="[[mini]]"
       menu="[[menu]]"
       light="[[light]]"
@@ -63,13 +58,6 @@ Polymer({
 
   is: "hax-context-item-textop",
   properties: {
-    /**
-     * corner
-     */
-    corner: {
-      type: String,
-      value: ""
-    },
     /**
      * target for the iron-a11y-keys element.
      */
@@ -113,19 +101,10 @@ Polymer({
       reflectToAttribute: true
     },
     /**
-     * Icon for the button.
-     */
-    iconClass: {
-      type: String,
-      value: "",
-      reflectToAttribute: true
-    },
-    /**
      * Label for the button.
      */
     label: {
       type: String,
-      value: "editor:text-fields",
       reflectToAttribute: true
     },
     /**
