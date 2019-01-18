@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaPlayerProperties } from "./a11y-media-player-properties.js";
+import { A11yMediaPlayerBehaviors } from "./a11y-media-player-behaviors.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 
 export { A11yMediaPlayButton };
@@ -20,35 +20,14 @@ Custom styles:
 --a11y-play-button-bg-color: overlay background color, default is #000000
 --a11y-play-button-focus-bg-color: overlay background color, default is --a11y-play-button-bg-color```
  *
- * @extends A11yMediaPlayerProperties
+ * @extends A11yMediaPlayerBehaviors
  * @customElement
  * @polymer
  */
-class A11yMediaPlayButton extends A11yMediaPlayerProperties {
+class A11yMediaPlayButton extends A11yMediaPlayerBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      /**
-       * label for play button on player controls
-       */
-      label: {
-        type: String,
-        computed: "_getPlaying(playing,pauseLabel,playLabel)"
-      },
-      /**
-       * label when playing
-       */
-      pauseLabel: {
-        type: String,
-        value: "play"
-      },
-      /**
-       * label when paused
-       */
-      playLabel: {
-        type: String,
-        value: "play"
-      },
       /**
        * is button disabled
        */
@@ -76,7 +55,7 @@ class A11yMediaPlayButton extends A11yMediaPlayerProperties {
 
   //get player-specifc properties
   static get behaviors() {
-    return [A11yMediaPlayerProperties];
+    return [A11yMediaPlayerBehaviors];
   }
 
   //render function
@@ -183,7 +162,7 @@ class A11yMediaPlayButton extends A11yMediaPlayerProperties {
               fill="#ffffff"
               font-size="30px"
             >
-              [[label]]
+              [[playPause.label]]
             </text>
           </g>
         </svg>
@@ -205,17 +184,6 @@ class A11yMediaPlayButton extends A11yMediaPlayerProperties {
   ready() {
     super.ready();
     this.__target = this.$.button;
-  }
-
-  /**
-   * get label based on whether or not the video is playing
-   *
-   * @param {boolean} Is the media playing?
-   * @param {string} label if button pauses media
-   * @param {string} label if button plays media
-   */
-  _getPlaying(playing, pauseLabel, playLabel) {
-    return playing ? pauseLabel : playLabel;
   }
 
   /**

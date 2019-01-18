@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaPlayerProperties } from "./lib/a11y-media-player-properties.js";
+import { A11yMediaPlayerBehaviors } from "./lib/a11y-media-player-behaviors.js";
 import "@polymer/paper-slider/paper-slider.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
@@ -120,7 +120,7 @@ export { A11yMediaPlayer };
 --a11y-media-slider-knob-start-border-color: slider knob border color at start, default is --a11y-media-accent-color
 --a11y-media-slider-knob-end-border-color: slider knob border color at end, default is --a11y-media-accent-color```
  *
- * @extends A11yMediaPlayerProperties
+ * @extends A11yMediaPlayerBehaviors
  * @polymer
  * @customElement
  * @demo demo/index.html video demo
@@ -128,7 +128,7 @@ export { A11yMediaPlayer };
  * @demo demo/youtube.html YouTube demo
  *
  */
-class A11yMediaPlayer extends A11yMediaPlayerProperties {
+class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   // render function
   static get template() {
     return html`
@@ -227,7 +227,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           );
         }
         :host([dark]) {
-          outline: 1px solid var(--simple-colors-default-theme-grey-1);
+          border: 1px solid var(--simple-colors-default-theme-grey-1);
         }
         :host([dark-transcript]) {
           --a11y-media-transcript-bg-color: var(
@@ -267,40 +267,63 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           background-color: var(--simple-colors-default-theme-grey-2);
         }
         :host > * {
-          flex: 1 1 auto;
           transition: all 0.5s;
         }
         :host,
         :host #outerplayer,
-        :host #sources {
+        :host #sources,
+        :host #outertranscript,
+        :host #innertranscript {
           display: flex;
           flex-flow: column;
           align-items: stretch;
           align-content: stretch;
         }
         :host #player {
-          margin: 0 auto;
+          display: flex;
+        }
+        :host([hidden]),
+        :host *[hidden] {
+          display: none !important;
         }
         :host #player,
         :host #sources,
+        :host #sources > *,
+        :host #customcc,
+        :host #customcctxt,
         :host #slider,
-        :host #controls {
+        :host #controls,
+        :host #outertranscript,
+        :host #innertranscript,
+        :host #innertranscript > * {
           width: 100%;
         }
-        :host #sources {
+        :host > *,
+        :host #player,
+        :host #sources,
+        :host #sources > *,
+        :host #customcctxt {
           flex: 1 1 auto;
+        }
+        :host #controls,
+        :host #tcontrols {
+          flex: 0 0 44px;
+        }
+        :host #player {
+          margin: 0 auto;
+        }
+        :host #sources {
           position: relative;
         }
         :host #sources > * {
           position: absolute;
           top: 0;
           left: 0;
-          flex: 1 1 auto;
-          width: 100%;
           height: 100%;
           max-height: calc(100vh - 100px);
         }
-        :host #playbutton {
+        :host #playbutton,
+        :host #controls {
           z-index: 2;
         }
         :host([audio-only]) #playbutton {
@@ -311,12 +334,8 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           height: 32px;
           z-index: 1000;
         }
-        :host #controls {
-          flex: 0 0 44px;
-          z-index: 2 !important;
-        }
 
-        :host #youtube {
+        :host([thumbnail-src]) #youtube {
           opacity: 0;
         }
         :host #youtube[elapsed] {
@@ -325,22 +344,18 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
         }
         :host #customcc:not([hidden]) {
           font-size: 20px;
-          width: 100%;
-          height: 100%;
           transition: font-size 0.25s;
           display: flex;
         }
         :host #customcctxt:not(:empty) {
-          width: 100%;
-          flex: 1 1 auto;
           align-self: flex-end;
           font-family: sans-serif;
           color: white;
           margin: 4px 10px;
           padding: 0.15em 4px;
-          transition: all 0.5s;
           background-color: black;
           background-color: rgba(0, 0, 0, 0.8);
+          transition: all 0.5s;
         }
         :host([audio-only]:not([thumbnail-src])) #customcctxt {
           align-self: center;
@@ -353,6 +368,19 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           display: block;
           border-top: 1px solid #aaaaaa;
         }
+        :host .media-caption:not(:empty) {
+          width: calc(100% - 30px);
+          padding: 5px 15px;
+        }
+        :host .media-type {
+          font-style: italic;
+        }
+        :host #innertranscript {
+          flex: 1 0 194px;
+        }
+        :host #transcript {
+          flex: 1 0 150px;
+        }
         :host .sr-only {
           position: absolute;
           left: -9999px;
@@ -361,19 +389,17 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           width: 0;
           overflow: hidden;
         }
-        :host .media-caption:not(:empty) {
-          width: calc(100% - 30px);
-          padding: 5px 15px;
-        }
-        :host .media-type {
-          font-style: italic;
-        }
         @media screen {
           :host([flex-layout]:not([responsive-size*="s"])) {
             flex-flow: row;
             padding: 0;
           }
-          :host #printthumb {
+          :host([flex-layout]:not([responsive-size*="s"])) #outerplayer {
+            flex: 1 0 auto;
+          }
+          :host #printthumb,
+          :host([stand-alone]) #outertranscript,
+          :host([hide-transcript]) #outertranscript {
             display: none;
           }
           :host([sticky]:not([sticky-corner="none"])) #outerplayer {
@@ -400,7 +426,6 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           }
           :host #innertranscript {
             position: relative;
-            height: 100%;
           }
           :host([hide-transcript]) #outerplayer {
             min-width: 50%;
@@ -497,7 +522,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
       <style is="custom-style" include="simple-colors"></style>
 
       <div class="sr-only">[[mediaCaption]]</div>
-      <div id="outerplayer" lang$="[[uiLanguage]]">
+      <div id="outerplayer">
         <div id="player">
           <div
             id="sources"
@@ -508,11 +533,10 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
               audio-only$="[[audioOnly]]"
               disabled="true"
               elapsed$="[[_hidePlayButton(thumbnailSrc, isYoutube, __elapsed)]]"
-              hidden$="[[noHeight]]"
-              disabled$="[[noHeight]]"
+              hidden$="[[audioNoThumb]]"
+              disabled$="[[audioNoThumb]]"
               on-controls-change="_onControlsChanged"
-              pause-label$="[[pauseLabel]]"
-              play-label$="[[playLabel]]"
+              localization$="[[localization]]"
             >
             </a11y-media-play-button>
             <a11y-media-loader
@@ -522,7 +546,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
               cc$="[[cc]]"
               crossorigin$="[[crossorigin]]"
               hidden$="[[isYoutube]]"
-              lang$="[[lang]]"
+              media-lang$="[[mediaLang]]"
               loop$="[[loop]]"
               muted$="[[muted]]"
               manifest$="[[manifest]]"
@@ -538,6 +562,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
             <div
               id="youtube"
               elapsed$="[[__elapsed]]"
+              lang$="[[mediaLang]]"
               video-id$="[[videoId]]"
             ></div>
             <div
@@ -555,61 +580,28 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
           max$="[[__duration]]"
           on-dragging-changed="_handleSliderDragging"
           on-focused-changed="_handleSliderKeyboard"
-          pin=""
           secondary-progress$="[[__buffered]]"
           value$="[[__elapsed]]"
         >
         </paper-slider>
         <a11y-media-controls
           id="controls"
-          audio-only$="[[audioOnly]]"
-          audio-label$="[[audioLabel]]"
-          captions-icon$="[[captionsIcon]]"
-          captions-label$="[[captionsLabel]]"
-          captions-menu-label$="[[captionsMenuLabel]]"
-          captions-menu-off$="[[captionsMenuOff]]"
           cc$="[[cc]]"
-          forward-icon$="[[forwardIcon]]"
-          forward-label$="[[forwardLabel]]"
-          fullscreen-icon$="[[fullscreenIcon]]"
-          fullscreen-label$="[[fullscreenLabel]]"
           has-captions$="[[hasCaptions]]"
           has-transcript$="[[hasTranscript]]"
-          lang$="[[uiLanguage]]"
-          loop-icon$="[[loopIcon]]"
-          loop-label$="[[loopLabel]]"
-          mute-icon$="[[muteIcon]]"
-          mute-label$="[[muteLabel]]"
+          hide-transcript$="[[hideTranscript]]"
+          localization$="[[localization]]"
           muted$="[[muted]]"
           on-controls-change="_onControlsChanged"
-          pause-icon$="[[pauseIcon]]"
-          pause-label$="[[pauseLabel]]"
-          play-icon$="[[playIcon]]"
-          play-label$="[[playLabel]]"
           playing$="[[__playing]]"
-          restart-icon$="[[restartIcon]]"
-          restart-label$="[[restartLabel]]"
-          rewind-icon$="[[rewindIcon]]"
-          rewind-label$="[[rewindLabel]]"
           search-transcript$="[[searchTranscript]]"
-          settings-icon$="[[settingsIcon]]"
-          settings-label$="[[settingsLabel]]"
-          speed-label$="[[speedLabel]]"
           stand-alone$="[[standAlone]]"
-          transcript-icon$="[[transcriptIcon]]"
-          transcript-label$="[[transcriptLabel]]"
-          transcript-menu-label$="[[transcriptMenuLabel]]"
-          unmute-icon$="[[unmuteIcon]]"
-          unmute-label$="[[unmuteLabel]]"
-          video-label$="[[videoLabel]]"
           volume="[[__volume]]"
-          volume-icon$="[[volumeIcon]]"
-          volume-label$="[[volumeLabel]]"
         >
         </a11y-media-controls>
         <div
-          class="screen-only media-caption"
           aria-hidden="true"
+          class="screen-only media-caption"
           hidden$="[[!_hasAttribute(mediaCaption)]]"
         >
           [[mediaCaption]]
@@ -617,30 +609,20 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
         <div class="print-only media-caption">[[printCaption]]</div>
       </div>
       <img id="printthumb" aria-hidden="true" src$="[[thumbnailSrc]]" />
-      <div id="outertranscript" hidden$="[[standAlone]]" lang$="[[uiLanguage]]">
-        <div id="innertranscript">
+      <div id="outertranscript" hidden$="[[standAlone]]">
+        <div id="innertranscript" hidden$="[[hideTranscript]]">
           <a11y-media-transcript-controls
             id="tcontrols"
             accent-color$="[[accentColor]]"
-            auto-scroll-icon$="[[autoScrollIcon]]"
-            auto-scroll-label$="[[autoScrollLabel]]"
+            localization$="[[localization]]"
             dark$="[[darkTranscript]]"
             disable-print-button$="[[disablePrintButton]]"
             disable-scroll$="[[disableScroll]]"
             disable-search$="[[disableSearch]]"
-            lang$="[[uiLanguage]]"
             on-searchbar-added="_handleSearchAdded"
             on-toggle-scroll="_handleTranscriptScrollToggle"
             on-print-transcript="_handlePrinting"
-            print-icon$="[[printIcon]]"
-            print-label$="[[printLabel]]"
             stand-alone$="[[standAlone]]"
-            search-label$="[[searchLabel]]"
-            search-prev-label$="[[searchPrevLabel]]"
-            search-prev-icon$="[[searchPrevIcon]]"
-            search-next-label$="[[searchNextLabel]]"
-            search-next-icon$="[[searchNextIcon]]"
-            skip-transcript-link$="[[skipTranscriptLink]]"
           >
           </a11y-media-transcript-controls>
           <a11y-media-transcript
@@ -738,7 +720,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
 
   //get player-specific behaviors
   static get behaviors() {
-    return [A11yMediaPlayerProperties];
+    return [A11yMediaPlayerBehaviors];
   }
 
   /**
@@ -996,7 +978,6 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
       this.dispatchEvent(
         new CustomEvent("transcript-toggle", { detail: this })
       );
-      this.$.transcript.toggleHidden(this.hideTranscript);
     }
   }
 

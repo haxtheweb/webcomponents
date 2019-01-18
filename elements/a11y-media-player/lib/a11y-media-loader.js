@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaPlayerProperties } from "./a11y-media-player-properties.js";
+import { A11yMediaPlayerBehaviors } from "./a11y-media-player-behaviors.js";
 
 export { A11yMediaLoader };
 /**
@@ -33,7 +33,7 @@ export { A11yMediaLoader };
  * @customElement
  * @polymer
  */
-class A11yMediaLoader extends A11yMediaPlayerProperties {
+class A11yMediaLoader extends A11yMediaPlayerBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -113,7 +113,7 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
         autoplay$="[[autoplay]]"
         crossorigin$="[[crossorigin]]"
         hidden$="[[audioOnly]]"
-        lang$="[[lang]]"
+        lang$="[[mediaLang]]"
         on-loadedmetadata="_handleMetadata"
         poster$="[[thumbnailSrc]]"
         src$="[[manifest]]"
@@ -126,7 +126,7 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
         autoplay$="[[autoplay]]"
         crossorigin$="[[crossorigin]]"
         hidden$="[[!audioOnly]]"
-        lang$="[[lang]]"
+        lang$="[[mediaLang]]"
         on-loadedmetadata="_handleMetadata"
         poster$="[[thumbnailSrc]]"
         preload="metadata"

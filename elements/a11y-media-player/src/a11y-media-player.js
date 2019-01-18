@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaPlayerProperties } from "./lib/a11y-media-player-properties.js";
+import { A11yMediaPlayerBehaviors } from "./lib/a11y-media-player-behaviors.js";
 import "@polymer/paper-slider/paper-slider.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
@@ -120,7 +120,7 @@ export { A11yMediaPlayer };
 --a11y-media-slider-knob-start-border-color: slider knob border color at start, default is --a11y-media-accent-color
 --a11y-media-slider-knob-end-border-color: slider knob border color at end, default is --a11y-media-accent-color```
  *
- * @extends A11yMediaPlayerProperties
+ * @extends A11yMediaPlayerBehaviors
  * @polymer
  * @customElement
  * @demo demo/index.html video demo
@@ -128,7 +128,7 @@ export { A11yMediaPlayer };
  * @demo demo/youtube.html YouTube demo
  *
  */
-class A11yMediaPlayer extends A11yMediaPlayerProperties {
+class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -141,7 +141,7 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
 
   //get player-specific behaviors
   static get behaviors() {
-    return [A11yMediaPlayerProperties];
+    return [A11yMediaPlayerBehaviors];
   }
 
   /**
@@ -399,7 +399,6 @@ class A11yMediaPlayer extends A11yMediaPlayerProperties {
       this.dispatchEvent(
         new CustomEvent("transcript-toggle", { detail: this })
       );
-      this.$.transcript.toggleHidden(this.hideTranscript);
     }
   }
 

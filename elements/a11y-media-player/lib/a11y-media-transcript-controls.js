@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaPlayerProperties } from "./a11y-media-player-properties.js";
+import { A11yMediaPlayerBehaviors } from "./a11y-media-player-behaviors.js";
 import "@lrnwebcomponents/simple-search/simple-search.js";
 import "./a11y-media-button.js";
 
@@ -26,22 +26,14 @@ export { A11yMediaTranscriptControls };
   disable-search$="[[disableSearch]]"             // Disable transcript search? 
 </a11y-media-transcript-controls>```
  *
- * @extends A11yMediaPlayerProperties
+ * @extends A11yMediaPlayerBehaviors
  * @customElement
  * @polymer
  */
-class A11yMediaTranscriptControls extends A11yMediaPlayerProperties {
+class A11yMediaTranscriptControls extends A11yMediaPlayerBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      /**
-       * Language
-       */
-      lang: {
-        type: String,
-        value: "en",
-        reflectToAttribute: true
-      },
       /**
        * target of the controls
        */
@@ -62,7 +54,7 @@ class A11yMediaTranscriptControls extends A11yMediaPlayerProperties {
 
   //get player-specifc properties
   static get behaviors() {
-    return [A11yMediaPlayerProperties];
+    return [A11yMediaPlayerBehaviors];
   }
 
   //render function
@@ -133,16 +125,16 @@ class A11yMediaTranscriptControls extends A11yMediaPlayerProperties {
         <div id="searching">
           <simple-search
             id="simplesearch"
-            disabled$="[[disableSearch]]"
             controls="transcript"
+            disabled$="[[disableSearch]]"
             hidden$="[[disableSearch]]"
-            no-label-float=""
-            next-button-icon$="[[searchNextIcon]]"
-            next-button-label$="[[searchNextLabel]]"
-            prev-button-icon$="[[searchPrevIcon]]"
-            prev-button-label$="[[searchPrevLabel]]"
-            search-input-icon$="[[searchIcon]]"
-            search-input-label$="[[searchLabel]]"
+            no-label-float
+            next-button-icon$="[[_getLocal(localization,'nextResult','icon')]]"
+            next-button-label$="[[_getLocal(localization,'nextResult','label')]]"
+            prev-button-icon$="[[_getLocal(localization,'prevResult','icon')]]"
+            prev-button-label$="[[_getLocal(localization,'prevResult','label')]]"
+            search-input-icon$="[[_getLocal(localization,'search','icon')]]"
+            search-input-label$="[[_getLocal(localization,'search','label')]]"
             target="[[target]]"
           >
           </simple-search>
@@ -151,8 +143,8 @@ class A11yMediaTranscriptControls extends A11yMediaPlayerProperties {
           <a11y-media-button
             id="scroll"
             controls="transcript"
-            icon="[[autoScrollIcon]]"
-            label="[[autoScrollLabel]]"
+            icon="[[_getLocal(localization,'autoScroll','icon')]]"
+            label="[[_getLocal(localization,'autoScroll','label')]]"
             on-click="_handleScrollClick"
             toggle$="[[!disableScroll]]"
           >
@@ -164,11 +156,11 @@ class A11yMediaTranscriptControls extends A11yMediaPlayerProperties {
           disabled$="[[disablePrintButton]]"
         >
           <a11y-media-button
-            controls="transcript"
             id="print"
-            icon="[[printIcon]]"
+            controls="transcript"
+            icon$="[[_getLocal(localization,'print','icon')]]"
+            label="[[_getLocal(localization,'print','label')]]"
             on-click="_handlePrintClick"
-            label="[[printLabel]]"
           >
           </a11y-media-button>
         </div>

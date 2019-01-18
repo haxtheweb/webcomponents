@@ -58,7 +58,7 @@
   --a11y-media-transcript-match-border-color: var(--simple-colors-light-theme-accent-12);
 }
 :host([dark]) {
-  outline: 1px solid var(--simple-colors-default-theme-grey-1);
+  border: 1px solid var(--simple-colors-default-theme-grey-1);
 }
 :host([dark-transcript]) {
   --a11y-media-transcript-bg-color: var(--simple-colors-dark-theme-grey-1);
@@ -78,40 +78,63 @@
   background-color: var(--simple-colors-default-theme-grey-2);
 }
 :host > * {
-  flex: 1 1 auto;
   transition: all 0.5s;
 }
 :host,
 :host #outerplayer,
-:host #sources {
+:host #sources,
+:host #outertranscript,
+:host #innertranscript {
   display: flex;
   flex-flow: column;
   align-items: stretch;
   align-content: stretch;
+} 
+:host #player {
+  display: flex;
+}
+:host([hidden]),
+:host *[hidden] {
+  display: none !important;
+}
+:host #player,
+:host #sources, 
+:host #sources > *,
+:host #customcc,
+:host #customcctxt,
+:host #slider,
+:host #controls,
+:host #outertranscript,
+:host #innertranscript,
+:host #innertranscript > * {
+  width: 100%;
+}
+:host > *,
+:host #player,
+:host #sources,
+:host #sources > *,
+:host #customcctxt {
+  flex: 1 1 auto;
+}
+:host #controls,
+:host #tcontrols {
+  flex: 0 0 44px;
 }
 :host #player {
   margin: 0 auto;
 }
-:host #player,
-:host #sources, 
-:host #slider,
-:host #controls {
-  width: 100%;
-}
 :host #sources {
-  flex: 1 1 auto;
   position: relative;
 }
 :host #sources > * {
   position: absolute;
   top: 0;
   left: 0;
-  flex: 1 1 auto;
-  width: 100%;
   height: 100%;
   max-height: calc(100vh - 100px);
 }
-:host #playbutton {
+:host #playbutton,
+:host #controls {
   z-index: 2;
 }
 :host([audio-only]) #playbutton {
@@ -122,17 +145,13 @@
   height: 32px;
   z-index: 1000;
 }
-:host #controls {
-  flex: 0 0 44px;
-  z-index: 2 !important;
-}
 /*:host #player {
   display: block;
   max-width: 100%;
   transition: position 0.5s ease, max-width 1s ease;
   background-color: var(--simple-colors-default-theme-grey-2);
 }*/
-:host #youtube {
+:host([thumbnail-src]) #youtube {
   opacity: 0;
 }
 :host #youtube[elapsed] {
@@ -141,22 +160,18 @@
 }
 :host #customcc:not([hidden]) {
   font-size: 20px;
-  width: 100%;
-  height: 100%;
   transition: font-size 0.25s;
   display: flex;
 }
 :host #customcctxt:not(:empty) {
-  width: 100%;
-  flex: 1 1 auto;
   align-self: flex-end;
   font-family: sans-serif;
   color: white;
   margin: 4px 10px;
   padding: 0.15em 4px;
-  transition: all 0.5s;
   background-color: black;
   background-color: rgba(0, 0, 0, 0.8);
+  transition: all 0.5s;
 }
 :host([audio-only]:not([thumbnail-src])) #customcctxt {
   align-self: center;
@@ -169,6 +184,19 @@
   display: block;
   border-top: 1px solid #aaaaaa;
 }
+:host .media-caption:not(:empty) {
+  width: calc(100% - 30px);
+  padding: 5px 15px;
+}
+:host .media-type {
+  font-style: italic;
+}
+:host #innertranscript {
+  flex: 1 0 194px;
+}
+:host #transcript {
+  flex: 1 0 150px;
+}
 :host .sr-only {
   position: absolute;
   left: -9999px;
@@ -177,19 +205,17 @@
   width: 0;
   overflow: hidden;
 }
-:host .media-caption:not(:empty) {
-  width: calc(100% - 30px);
-  padding: 5px 15px;
-}
-:host .media-type {
-  font-style: italic;
-}
 @media screen {
   :host([flex-layout]:not([responsive-size*="s"])) {
     flex-flow: row;
     padding: 0;
   }
-  :host #printthumb {
+  :host([flex-layout]:not([responsive-size*="s"])) #outerplayer {
+    flex: 1 0 auto;
+  }
+  :host #printthumb,
+  :host([stand-alone]) #outertranscript,
+  :host([hide-transcript]) #outertranscript {
     display: none;
   }
   :host([sticky]:not([sticky-corner="none"])) #outerplayer {
@@ -216,7 +242,6 @@
   }
   :host #innertranscript {
     position: relative;
-    height: 100%;
   }
   :host([hide-transcript]) #outerplayer {
     min-width: 50%;

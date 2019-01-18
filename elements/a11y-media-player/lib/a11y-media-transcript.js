@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaPlayerProperties } from "./a11y-media-player-properties.js";
+import { A11yMediaPlayerBehaviors } from "./a11y-media-player-behaviors.js";
 import "./a11y-media-transcript-cue.js";
 
 export { A11yMediaTranscript };
@@ -28,11 +28,11 @@ export { A11yMediaTranscript };
   selected-transcript$="[[selectedTranscript]]">  // The index of the current track
 </a11y-media-transcript>```
  *
- * @extends A11yMediaPlayerProperties
+ * @extends A11yMediaPlayerBehaviors
  * @customElement
  * @polymer
  */
-class A11yMediaTranscript extends A11yMediaPlayerProperties {
+class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -101,7 +101,7 @@ class A11yMediaTranscript extends A11yMediaPlayerProperties {
 
   //get player-specifc properties
   static get behaviors() {
-    return [A11yMediaPlayerProperties];
+    return [A11yMediaPlayerBehaviors];
   }
 
   //render function
@@ -109,13 +109,12 @@ class A11yMediaTranscript extends A11yMediaPlayerProperties {
     return html`
       <style is="custom-style" include="simple-colors">
         :host {
-          display: block;
           color: var(--a11y-media-transcript-color);
           background-color: var(--a11y-media-transcript-bg-color);
           border-left: 1px solid var(--a11y-media-transcript-bg-color);
         }
         :host([hidden]) {
-          display: none;
+          display: none !important;
         }
         :host #inner {
           display: none;
@@ -147,9 +146,9 @@ class A11yMediaTranscript extends A11yMediaPlayerProperties {
           }
         }
       </style>
-      <a id="transcript-desc" href="#bottom" class="sr-only"
-        >[[skipTranscriptLink]]</a
-      >
+      <a id="transcript-desc" href="#bottom" class="sr-only">
+        [[_getLocal(localization,'skipTranscript','label')]]
+      </a>
       <template id="tracks" is="dom-repeat" items="{{tracks}}" as="track">
         <div
           id="inner"

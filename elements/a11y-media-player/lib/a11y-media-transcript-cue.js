@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaPlayerProperties } from "./a11y-media-player-properties.js";
+import { A11yMediaPlayerBehaviors } from "./a11y-media-player-behaviors.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@lrnwebcomponents/simple-search/lib/simple-search-content.js";
 
@@ -36,11 +36,11 @@ export { A11yMediaTranscriptCue };
 --a11y-media-transcript-active-cue-bg: background color of the active cue, default is #ccfffd
 --a11y-media-transcript-active-cue-weight: font-weight of the active cue, default is normal```
  *
- * @extends A11yMediaPlayerProperties
+ * @extends A11yMediaPlayerBehaviors
  * @customElement
  * @polymer
  */
-class A11yMediaTranscriptCue extends A11yMediaPlayerProperties {
+class A11yMediaTranscriptCue extends A11yMediaPlayerBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -96,7 +96,7 @@ class A11yMediaTranscriptCue extends A11yMediaPlayerProperties {
 
   //get player-specifc properties
   static get behaviors() {
-    return [A11yMediaPlayerProperties];
+    return [A11yMediaPlayerBehaviors];
   }
 
   //render function
@@ -175,9 +175,9 @@ class A11yMediaTranscriptCue extends A11yMediaPlayerProperties {
       </style>
       <span id="time">[[cue.start]] - [[cue.end]]</span>
       <span id="text">
-        <simple-search-content id="content" content="[[cue.text]]"
-          >[[cue.text]]</simple-search-content
-        >
+        <simple-search-content id="content" content="[[cue.text]]">
+          [[cue.text]]
+        </simple-search-content>
       </span>
     `;
   }
