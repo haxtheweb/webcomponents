@@ -9,11 +9,11 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "./lib/screenfull-lib.js";
 import "./lib/a11y-media-controls.js";
-import "./lib/a11y-media-loader.js";
+import "./lib/a11y-media-html5.js";
 import "./lib/a11y-media-play-button.js";
 import "./lib/a11y-media-transcript.js";
 import "./lib/a11y-media-transcript-controls.js";
-import "./lib/a11y-media-utility.js";
+import "./lib/a11y-media-state-manager.js";
 import "./lib/a11y-media-youtube-utility.js";
 
 export { A11yMediaPlayer };
@@ -151,7 +151,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     super.connectedCallback();
     let root = this;
     root.__playerAttached = true;
-    window.A11yMediaUtility.requestAvailability();
+    window.A11yMediaStateManager.requestAvailability();
     root._addResponsiveUtility();
     window.dispatchEvent(new CustomEvent("a11y-player", { detail: root }));
     if (root.isYoutube) {
@@ -182,7 +182,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     root.style.maxWidth = root.width !== null ? root.width : "100%";
     root._setPlayerHeight(aspect);
     root.querySelectorAll("source,track").forEach(function(node) {
-      root.$.loader.media.appendChild(node);
+      root.$.html5.media.appendChild(node);
     });
     this._appendToPlayer(this.sources, "source");
     this._appendToPlayer(this.tracks, "track");
@@ -190,9 +190,9 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
       root.disableInteractive = true;
       this._youTubeRequest();
     } else {
-      root.media = root.$.loader;
+      root.media = root.$.html5;
     }
-    root.$.transcript.setMedia(root.$.player);
+    root.$.transcript.setMedia(root.$.innerplayer);
 
     // handles fullscreen
     if (root.__showFullscreen) {
@@ -317,7 +317,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    * @param {integer} the index of the track
    */
   selectTrack(index) {
-    this.$.loader.selectTrack(index);
+    this.$.html5.selectTrack(index);
     this.$.transcript.setActiveTranscript(index);
   }
 
@@ -349,7 +349,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    */
   toggleCC(mode) {
     this.cc = mode === undefined ? !this.cc : mode;
-    this.$.loader.setCC(this.cc);
+    this.$.html5.setCC(this.cc);
   }
 
   /**
@@ -415,7 +415,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
         for (let key in item) {
           el.setAttribute(key, item[key]);
         }
-        root.$.loader.media.appendChild(el);
+        root.$.html5.media.appendChild(el);
       });
     }
   }
@@ -427,10 +427,10 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   _setPlayerHeight(aspect) {
     let root = this;
     if (root.audioOnly && root.thumbnailSrc === null && root.height === null) {
-      root.$.sources.style.height = "60px";
+      root.$.player.style.height = "60px";
     } else if (root.height === null) {
-      root.$.sources.style.paddingTop = 100 / aspect + "%";
-      root.$.player.style.maxWidth =
+      root.$.player.style.paddingTop = 100 / aspect + "%";
+      root.$.innerplayer.style.maxWidth =
         "calc(" + aspect * 100 + "vh - " + aspect * 80 + "px)";
     } else {
       root.$.outerplayer.style.height = root.height;
@@ -445,9 +445,10 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    * @param {string} the title of the media
    * @returns {string} the media caption
    */
-  _getMediaCaption(audioOnly, audioLabel, mediaTitle) {
-    let hasMediaTitle =
-      mediaTitle !== undefined && mediaTitle !== null && mediaTitle !== "";
+  _getMediaCaption(audioOnly, localization, mediaTitle) {
+    let audioLabel = this._getLocal(localization, "audio", "label"),
+      hasMediaTitle =
+        mediaTitle !== undefined && mediaTitle !== null && mediaTitle !== "";
     if (audioOnly && hasMediaTitle) {
       return mediaTitle + " (" + audioLabel + ")";
     } else if (audioOnly) {
@@ -468,9 +469,11 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    * @param {string} the title of the media
    * @returns {string} the media caption when the page is printed
    */
-  _getPrintCaption(audioOnly, audioLabel, videoLabel, mediaTitle) {
-    let hasMediaTitle =
-      mediaTitle !== undefined && mediaTitle !== null && mediaTitle !== "";
+  _getPrintCaption(audioOnly, localization, mediaTitle) {
+    let audioLabel = this._getLocal(localization, "audio", "label"),
+      videoLabel = this._getLocal(localization, "video", "label"),
+      hasMediaTitle =
+        mediaTitle !== undefined && mediaTitle !== null && mediaTitle !== "";
     if (audioOnly && hasMediaTitle) {
       return mediaTitle + " (" + audioLabel + ")";
     } else if (audioOnly) {
@@ -500,7 +503,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   _getTrackData() {
     // gets cues from tracks
     let root = this,
-      media = root.$.loader.media,
+      media = root.$.html5.media,
       tdata = new Array(),
       selected = 0;
     root.hasTranscript = !root.standAlone;
@@ -608,7 +611,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
       "/" +
       root._getHHMMSS(root.media.duration);
     root.$.controls.setStatus(root.__status);
-    root._getTrackData(root.$.loader.media);
+    root._getTrackData(root.$.html5.media);
   }
 
   /**
@@ -783,7 +786,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
           // move the YouTube iframe to the media player's YouTube container
           root.$.youtube.appendChild(root.media.a);
           root.__ytAppended = true;
-          root._getTrackData(root.$.loader.media);
+          root._getTrackData(root.$.html5.media);
           root._updateCustomTracks();
           // youtube API doesn't immediately give length of a video
           let int = setInterval(() => {

@@ -4,8 +4,8 @@
   
   <div class="sr-only">[[mediaCaption]]</div>
   <div id="outerplayer">
-    <div id="player">
-      <div id="sources"
+    <div id="innerplayer">
+      <div id="player"
         style$="[[_getThumbnailCSS(thumbnailSrc,isYoutube,audioOnly)]]">
         <a11y-media-play-button
           id="playbutton"
@@ -17,8 +17,8 @@
           on-controls-change="_onControlsChanged"
           localization$="[[localization]]">
         </a11y-media-play-button>
-        <a11y-media-loader
-          id="loader"
+        <a11y-media-html5
+          id="html5"
           audio-only$="[[audioOnly]]"
           autoplay$="[[autoplay]]"
           cc$="[[cc]]"
@@ -36,7 +36,7 @@
           volume$="[[volume]]"
         >
           <slot></slot>
-        </a11y-media-loader>
+        </a11y-media-html5>
         <div id="youtube" 
           elapsed$="[[__elapsed]]" 
           lang$="[[mediaLang]]"

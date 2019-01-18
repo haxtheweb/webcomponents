@@ -11,7 +11,7 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 export { A11yMediaButton };
 /**
  * `a11y-media-button`
- * `A button used in a11y-media-controls.`
+ * `A button used in a11y-media-controls and a11y-media-transcript-controls.`
  *
  * @microcopy - language worth noting:
  *  -

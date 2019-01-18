@@ -4,7 +4,7 @@
    */
   "mediaCaption": {
     "type": "String",
-    "computed": "_getMediaCaption(audioOnly,audioLabel,mediaTitle)"
+    "computed": "_getMediaCaption(audioOnly,localization,mediaTitle)"
   },
   /**
    * The media caption that displays when the page is printed.

@@ -82,7 +82,7 @@
 }
 :host,
 :host #outerplayer,
-:host #sources,
+:host #player,
 :host #outertranscript,
 :host #innertranscript {
   display: flex;
@@ -90,16 +90,16 @@
   align-items: stretch;
   align-content: stretch;
 } 
-:host #player {
+:host #innerplayer {
   display: flex;
 }
 :host([hidden]),
 :host *[hidden] {
   display: none !important;
 }
-:host #player,
-:host #sources, 
-:host #sources > *,
+:host #innerplayer,
+:host #player, 
+:host #player > *,
 :host #customcc,
 :host #customcctxt,
 :host #slider,
@@ -110,9 +110,9 @@
   width: 100%;
 }
 :host > *,
+:host #innerplayer,
 :host #player,
-:host #sources,
-:host #sources > *,
+:host #player > *,
 :host #customcctxt {
   flex: 1 1 auto;
 }
@@ -120,13 +120,13 @@
 :host #tcontrols {
   flex: 0 0 44px;
 }
-:host #player {
+:host #innerplayer {
   margin: 0 auto;
 }
-:host #sources {
+:host #player {
   position: relative;
 }
-:host #sources > * {
+:host #player > * {
   position: absolute;
   top: 0;
   left: 0;
@@ -145,7 +145,7 @@
   height: 32px;
   z-index: 1000;
 }
-/*:host #player {
+/*:host #innerplayer {
   display: block;
   max-width: 100%;
   transition: position 0.5s ease, max-width 1s ease;
@@ -260,19 +260,19 @@
     overflow-y: scroll;
   }
   :host(:not([no-height]):not([stacked-layout]):not([responsive-size*="s"]))
-    #player.totop {
+    #innerplayer.totop {
     position: absolute;
     top: 0;
     left: 0;
     width: 200px !important;
     z-index: 9999;
   }
-  :host([sticky][sticky-corner="bottom-left"]) #player {
+  :host([sticky][sticky-corner="bottom-left"]) #innerplayer {
     top: unset;
     right: unset;
     bottom: 5px;
   }
-  :host([sticky][sticky-corner="bottom-right"]) #player {
+  :host([sticky][sticky-corner="bottom-right"]) #innerplayer {
     top: unset;
     bottom: 5px;
   }
@@ -322,7 +322,7 @@
   }
   :host .screen-only,
   :host #printthumb:not([src]),
-  :host(:not([thumbnail-src])) #sources {
+  :host(:not([thumbnail-src])) #player {
     display: none;
   }
   :host #searchbar {

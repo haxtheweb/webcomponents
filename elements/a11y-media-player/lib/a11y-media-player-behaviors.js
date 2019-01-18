@@ -8,7 +8,7 @@ import { A11yMediaBehaviors } from "./a11y-media-behaviors.js";
 export { A11yMediaPlayerBehaviors };
 /**
  * `a11y-media-player-behaviors`
- * `A set of properties for a11y-media player components.`
+ * `A set of properties for a11y-media components that are NOT used in the transcript components.`
  *
  * @microcopy - language worth noting:
  *  -
@@ -173,108 +173,6 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
         value: false
       },
       /**
-       * custom localization settings
-       */
-      localization: {
-        type: Object,
-        value: {}
-      },
-      /**
-       * default localization settings
-       */
-      localizationDefaults: {
-        type: Object,
-        value: {
-          audio: { label: "Audio" },
-          autoScroll: {
-            label: "Scroll transcript with video.",
-            icon: "swap-vert"
-          },
-          captions: {
-            label: "Closed Captions",
-            icon: "av:closed-caption"
-          },
-          forward: {
-            label: "Forward",
-            icon: "av:fast-forward"
-          },
-          fullscreen: {
-            label: "Fullscreen",
-            icon: "fullscreen"
-          },
-          loading: {
-            label: "Loading..."
-          },
-          loop: {
-            label: "Loop Playback"
-          },
-          mute: {
-            label: "Mute",
-            icon: "av:volume-up"
-          },
-          nextResult: {
-            label: "Next",
-            icon: "arrow-forward"
-          },
-          off: {
-            label: "Off"
-          },
-          pause: {
-            label: "Pause",
-            icon: "av:pause"
-          },
-          play: {
-            label: "Play",
-            icon: "av:play-arrow"
-          },
-          prevResult: {
-            label: "Previous",
-            icon: "arrow-back"
-          },
-          print: {
-            label: "Print the transcript.",
-            icon: "print"
-          },
-          restart: {
-            label: "Restart",
-            icon: "av:replay"
-          },
-          rewind: {
-            label: "Backward",
-            icon: "av:fast-backward"
-          },
-          search: {
-            label: "Search the transcript.",
-            icon: "search"
-          },
-          settings: {
-            label: "Settings",
-            icon: "settings"
-          },
-          skipTranscript: {
-            label: "Skip to the transcript."
-          },
-          speed: {
-            label: "Speed %"
-          },
-          transcript: {
-            label: "Transcript",
-            icon: "description"
-          },
-          unmute: {
-            label: "Unmute",
-            icon: "av:volume-off"
-          },
-          video: {
-            label: "Video"
-          },
-          volume: {
-            label: "Volume"
-          }
-        },
-        readOnly: true
-      },
-      /**
        * the media to be manipulated
        */
       media: {
@@ -434,32 +332,6 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
       this._testAttribute(responsiveSize, "xs") ||
       this._testAttribute(responsiveSize, "sm")
     );
-  }
-
-  /**
-   * gets the localization by compaing the localization set to the defaults
-   *
-   * @param {object} the localization object
-   * @param {string} the key to search for
-   * @param {string} the subkey to search for
-   * @returns {string} the default value for [key][subkey], unless localization[key][subkey] exists
-   */
-  _getLocal(localization, key, subkey) {
-    let local = "";
-    if (
-      localization !== undefined &&
-      localization[key] !== undefined &&
-      localization[key][subkey] !== undefined
-    ) {
-      local = localization[key][subkey];
-    } else if (
-      this.localizationDefaults !== undefined &&
-      this.localizationDefaults[key] !== undefined &&
-      this.localizationDefaults[key][subkey] !== undefined
-    ) {
-      local = this.localizationDefaults[key][subkey];
-    }
-    return local;
   }
 
   /**
