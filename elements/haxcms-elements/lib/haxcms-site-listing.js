@@ -748,7 +748,7 @@ Polymer({
    */
   handleCreateResponse: function(e) {
     // update the listing data
-    this.fire("update-sites-listing-data", e.detail.response);
+    this.fire("sites-listing-refresh-data", e.detail.response);
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
       cancelable: true,

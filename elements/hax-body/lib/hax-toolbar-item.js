@@ -93,7 +93,14 @@ Polymer({
         border-radius: 50%;
         width: 18px;
         height: 18px;
-        padding: 2px;
+        padding: 1px;
+        border: 1px solid var(--hax-color-border-outline);
+      }
+      :host([mini]) paper-button:active,
+      :host([mini]) paper-button:hover,
+      :host([mini]) paper-button:focus {
+        outline: unset;
+        border: 1px solid var(--hax-color-accent1);
       }
       :host([menu]) paper-button {
         padding: 0 8px;

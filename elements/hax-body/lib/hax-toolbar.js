@@ -28,6 +28,7 @@ Polymer({
       }
       .wrapper {
         display: flex;
+        margin-top: -1px;
         border: 1px solid var(--hax-color-border-outline);
         height: 36px;
         align-items: center;
@@ -36,9 +37,17 @@ Polymer({
         pointer-events: all;
       }
       .close-cap {
-        margin: 8px;
+        margin: 10px 12px 0 8px;
         display: flex;
         padding: 0;
+      }
+      :host * ::slotted(hax-context-item:hover),
+      :host * ::slotted(hax-context-item-textop:hover),
+      :host * ::slotted(hax-context-item-menu:hover),
+      hax-context-item:hover,
+      hax-context-item-textop:hover,
+      hax-context-item-menu:hover {
+        z-index: 2;
       }
       #moremenu hax-context-item,
       #moremenu ::slotted(paper-item),

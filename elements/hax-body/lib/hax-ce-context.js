@@ -45,7 +45,7 @@ Polymer({
         border: 1px solid var(--hax-color-border-outline);
         font-family: "Noto Serif", serif;
         font-size: 16px;
-        margin: -32px 0px 0 34px;
+        margin: -33px 0px 0 38px;
         line-height: 16px;
         padding: 8px;
         width: -webkit-fit-content;

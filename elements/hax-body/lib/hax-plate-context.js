@@ -19,9 +19,6 @@ Polymer({
         display: block;
         width: 32px;
       }
-      :host(:hover) {
-        opacity: 1;
-      }
       hax-context-item {
         display: block;
         margin: 6px 0;
@@ -31,12 +28,8 @@ Polymer({
       .area {
         width: 32px;
         float: left;
-        opacity: 0.5;
         visibility: visible;
         transition: 0.3s all ease;
-      }
-      .area:hover {
-        opacity: 1;
       }
     </style>
     <div class="area">

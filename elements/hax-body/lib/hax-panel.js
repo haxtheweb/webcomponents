@@ -44,13 +44,14 @@ Polymer({
         padding: 8px 16px;
         left: 0;
         top: 0;
+        align-items: center;
         touch-action: auto;
         visibility: hidden;
         opacity: 0;
         display: flex;
         --app-drawer-width: 100%;
         --app-drawer-content-container: {
-          --app-drawer-content-container_-_height: 40px;
+          align-items: center;
           width: 100%;
           left: 0;
           right: 0;
@@ -67,6 +68,12 @@ Polymer({
       }
       hax-panel-item {
         margin: 8px 4px;
+      }
+      hax-panel-item[right] {
+        float: right;
+      }
+      #haxcancelbutton {
+        margin-right: 64px;
       }
       :host([align="right"]) app-drawer {
         right: 0;
@@ -135,6 +142,14 @@ Polymer({
         voice-command="save content"
       ></hax-panel-item>
       <hax-panel-item
+        hidden$="[[hidePanelOps]]"
+        icon="cancel"
+        id="haxcancelbutton"
+        label="Cancel"
+        event-name="cancel"
+        voice-command="cancel hax"
+      ></hax-panel-item>
+      <hax-panel-item
         icon="image:add-to-photos"
         label="Add"
         event-name="hax-manager-open"
@@ -177,23 +192,16 @@ Polymer({
         voice-command="insert heading"
       ></hax-panel-item>
       <hax-panel-item
-        icon="image:transform"
-        label="Placeholder"
-        event-name="placeholder"
-        voice-command="insert placeholder"
-      ></hax-panel-item>
-      <hax-panel-item
         icon="editor:space-bar"
         label="Divider"
         event-name="divider"
         voice-command="insert divider"
       ></hax-panel-item>
-      <slot></slot>
       <hax-panel-item
-        hidden$="[[hidePreferencesButton]]"
-        on-tap="_preferencesDialog"
-        icon="settings"
-        label="Preferences"
+        icon="image:transform"
+        label="Placeholder"
+        event-name="placeholder"
+        voice-command="insert placeholder"
       ></hax-panel-item>
       <hax-panel-item
         hidden$="[[hideExportButton]]"
@@ -201,13 +209,13 @@ Polymer({
         icon="code"
         label="Source view"
       ></hax-panel-item>
+      <slot></slot>
       <hax-panel-item
-        hidden$="[[hidePanelOps]]"
-        icon="cancel"
-        id="haxcancelbutton"
-        label="Cancel"
-        event-name="cancel"
-        voice-command="cancel hax"
+        right
+        hidden$="[[hidePreferencesButton]]"
+        on-tap="_preferencesDialog"
+        icon="settings"
+        label="Preferences"
       ></hax-panel-item>
     </app-drawer>
   `,
