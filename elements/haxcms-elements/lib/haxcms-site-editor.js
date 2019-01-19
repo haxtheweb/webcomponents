@@ -108,7 +108,7 @@ Polymer({
       headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
       id="publishajax"
       loading="{{publishing}}"
-      url="[[publishPath]]"
+      url="[[publishSitePath]]"
       method="POST"
       body="[[publishSiteData]]"
       content-type="application/json"
@@ -173,7 +173,7 @@ Polymer({
     /**
      * end point for publishing to surge
      */
-    publishPath: {
+    publishSitePath: {
       type: String
     },
     /**
@@ -222,6 +222,13 @@ Polymer({
      * create new page data
      */
     createData: {
+      type: Object,
+      value: {}
+    },
+    /**
+     * create new page data
+     */
+    publishSiteData: {
       type: Object,
       value: {}
     },
@@ -626,7 +633,7 @@ Polymer({
     this.notifyPath("publishSiteData.siteName");
     this.set("publishSiteData.jwt", this.jwt);
     this.notifyPath("publishSiteData.jwt");
-    if (this.publishPath) {
+    if (this.publishSitePath) {
       this.$.publishajax.generateRequest();
     }
   },

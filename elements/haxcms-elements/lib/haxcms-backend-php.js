@@ -126,8 +126,8 @@ Polymer({
               window.appSettings.saveManifestPath;
             haxCmsSiteEditorElement.saveOutlinePath =
               window.appSettings.saveOutlinePath;
-            haxCmsSiteEditorElement.publishPath =
-              window.appSettings.publishPath;
+            haxCmsSiteEditorElement.publishSitePath =
+              window.appSettings.publishSitePath;
             haxCmsSiteEditorElement.createPagePath =
               window.appSettings.createPagePath;
             haxCmsSiteEditorElement.deletePagePath =

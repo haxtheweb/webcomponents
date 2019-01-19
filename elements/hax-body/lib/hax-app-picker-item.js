@@ -51,6 +51,7 @@ Polymer({
         }
         .icon {
           cursor: pointer;
+          display: flex;
           width: 50px;
           height: 50px;
           padding: 5px;
@@ -80,11 +81,11 @@ Polymer({
           min-width: unset;
         }
         iron-icon {
-          display: block;
+          display: inline-flex;
           padding: 0;
           margin: 0;
-          width: 40px;
-          height: 40px;
+          width: 36px;
+          height: 36px;
         }
       </style>
     </custom-style>
