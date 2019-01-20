@@ -37,7 +37,7 @@ Polymer({
         border: 1px solid #f2f2f0;
       }
     </style>
-    <iron-list items="[[items]]">
+    <iron-list items="[[_itemsSorted]]">
       <template>
         <simple-blog-overview
           item-id="[[item.id]]"
@@ -54,10 +54,33 @@ Polymer({
 
   properties: {
     /**
-     * items
+     * items from manifest
      */
     items: {
-      type: Object
+      type: Array,
+      observer: "_itemsChanged"
+    },
+    /**
+     * sorted items
+     */
+    _itemsSorted: {
+      type: Array
     }
+  },
+  /**
+   * manifest items updated
+   */
+  _itemsChanged: function(newValue) {
+    this.set("_itemsSorted", []);
+    this.set("_itemsSorted", newValue.sort(this.compare));
+  },
+  compare: function(a, b) {
+    if (a.metadata.created < b.metadata.created) {
+      return 1;
+    }
+    if (a.metadata.created > b.metadata.created) {
+      return -1;
+    }
+    return 0;
   }
 });

@@ -261,6 +261,7 @@ Polymer({
 
   /**
    * Add button hit
+   * @todo simplify this to just what's needed; no crazy options
    */
   _addButtonTap: function(e) {
     this.__newForm = document.createElement("eco-json-schema-object");

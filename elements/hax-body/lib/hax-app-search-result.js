@@ -19,8 +19,8 @@ Polymer({
       :host {
         display: inline-flex;
         width: 50%;
-        background-color: var(--hax-color-accent1);
-        color: var(--hax-color-accent1-text);
+        background-color: var(--hax-color-bg-accent);
+        color: var(--hax-color-text);
       }
       paper-button.button {
         margin: 0;

@@ -59,7 +59,7 @@ Polymer({
         opacity: 1;
       }
       .card-content {
-        padding: 0.16px;
+        padding: 16px;
       }
       .card-content p {
         padding: 0;
@@ -71,7 +71,7 @@ Polymer({
       }
       hax-app-search-inputs {
         min-height: 150px;
-        padding: 16px 16px 0 16px;
+        padding: 0 16px;
       }
       hax-app-pagination {
         min-height: 32px;

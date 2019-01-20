@@ -34,12 +34,10 @@ Polymer({
       <style is="custom-style" include="hax-shared-styles simple-colors">
         :host {
           display: block;
-          --hax-manager-steps-color: #ffffff;
-          --hax-manager-ink-color: #ffffff;
-          color: #ffffff;
+          color: var(--hax-color-text);
         }
         #dialog {
-          color: #ffffff;
+          color: var(--hax-color-text);
           z-index: 10000;
           padding: 56px 0;
           margin-top: 56px;

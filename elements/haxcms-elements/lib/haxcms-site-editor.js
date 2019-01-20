@@ -430,6 +430,9 @@ Polymer({
     });
     window.dispatchEvent(evt);
   },
+  /**
+   * page deleted response
+   */
   _handleDeleteResponse: function(response) {
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
@@ -439,7 +442,8 @@ Polymer({
         duration: 3000
       }
     });
-    window.dispatchEvent(evt);
+    this.dispatchEvent(evt);
+    this.fire("haxcms-trigger-update", true);
   },
   /**
    * Establish certain global settings in HAX once it claims to be ready to go
@@ -522,7 +526,7 @@ Polymer({
       }
     });
     this.dispatchEvent(evt);
-    this.fire("haxcms-trigger-update-page", true);
+    this.fire("haxcms-trigger-update", true);
   },
   _handleOutlineResponse: function(e) {
     // trigger a refresh of the data in page

@@ -1,19 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/av-icons.js";
-import "@polymer/iron-icons/communication-icons.js";
-import "@polymer/iron-icons/device-icons.js";
-import "@polymer/iron-icons/editor-icons.js";
-import "@polymer/iron-icons/hardware-icons.js";
-import "@polymer/iron-icons/image-icons.js";
-import "@polymer/iron-icons/maps-icons.js";
-import "@polymer/iron-icons/notification-icons.js";
-import "@polymer/iron-icons/social-icons.js";
-import "@polymer/iron-icons/places-icons.js";
-import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
 import "@polymer/paper-dialog/paper-dialog.js";
-import "@polymer/paper-ripple/paper-ripple.js";
-import "@polymer/paper-toast/paper-toast.js";
 import "@polymer/paper-button/paper-button.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
@@ -77,7 +63,6 @@ Polymer({
             0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
         }
         paper-button {
-          display: block;
           min-width: unset;
         }
         iron-icon {

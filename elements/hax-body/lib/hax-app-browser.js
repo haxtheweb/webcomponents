@@ -1,7 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-list/iron-list.js";
-import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/iron-pages/iron-pages.js";
@@ -33,9 +32,11 @@ Polymer({
       #ironlist {
         min-height: 132px;
         margin: 0;
+        padding: 10px;
       }
       hax-app-browser-item {
-        margin: 8px;
+        margin: 10px;
+        -webkit-transition: 0.3s all linear;
         transition: 0.3s all linear;
       }
       .title {
@@ -54,33 +55,24 @@ Polymer({
       grafitto-filter {
         color: var(--hax-color-text);
       }
-      app-toolbar {
-        background-color: #ffffff;
-      }
       .toolbar-inner {
-        width: 100%;
         display: inline-flex;
+        padding: 0 16px;
       }
     </style>
-    <app-toolbar>
-      <div class="toolbar-inner">
-        <h3 class="title">[[title]]</h3>
-        <dropdown-select
-          id="filtertype"
-          label="Filter by"
-          value="details.title"
-        >
-          <paper-item value="details.title">Title</paper-item>
-        </dropdown-select>
-        <paper-input
-          label="Filter"
-          id="inputfilter"
-          aria-controls="filter"
-          value=""
-          always-float-label=""
-        ></paper-input>
-      </div>
-    </app-toolbar>
+    <h3 class="title">[[title]]</h3>
+    <div class="toolbar-inner">
+      <dropdown-select id="filtertype" label="Filter by" value="details.title">
+        <paper-item value="details.title">Title</paper-item>
+      </dropdown-select>
+      <paper-input
+        label="Filter"
+        id="inputfilter"
+        aria-controls="filter"
+        value=""
+        always-float-label=""
+      ></paper-input>
+    </div>
     <grafitto-filter
       id="filter"
       items="[[__appList]]"

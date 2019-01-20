@@ -53,6 +53,14 @@ Polymer({
 
   properties: {
     /**
+     * Local storage bridge
+     */
+    localStorage: {
+      type: Object,
+      value: {},
+      observer: "_localStorageChanged"
+    },
+    /**
      * Hax app picker element.
      */
     haxAppPicker: {
@@ -326,7 +334,12 @@ Polymer({
       type: Object
     }
   },
-
+  /**
+   * Local storage data changed; callback to store this data in user storage
+   */
+  _localStorageChanged: function(newValue) {
+    window.localStorage.setItem("haxUserData", JSON.stringify(newValue));
+  },
   /**
    * If this is a text node or not so we know if the inline context
    * operations are valid.
@@ -810,6 +823,18 @@ Polymer({
     if (window.HaxStore.instance == null) {
       window.HaxStore.instance = this;
     }
+    // check for local storage object
+    // @todo ensure they consent to this
+    // if not, then store it in sessionStorage so that all our checks
+    // and balances are the same. This could allow for storing these
+    // settings on a server in theory
+    this.set(
+      "localStorage",
+      window.localStorage.getItem("haxUserData")
+        ? JSON.parse(window.localStorage.getItem("haxUserData"))
+        : {}
+    );
+
     // notice hax property definitions coming from anywhere
     window.addEventListener(
       "hax-register-properties",

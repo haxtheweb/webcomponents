@@ -30,6 +30,7 @@ Polymer({
       #ironlist {
         min-height: 50vh;
         margin: 0;
+        padding: 16px;
       }
       .title {
         position: relative;
@@ -44,29 +45,24 @@ Polymer({
         font-family: "Noto Serif", serif;
         color: var(--hax-color-text);
       }
-      app-toolbar {
-        background-color: #ffffff;
-      }
       .toolbar-inner {
-        width: 100%;
         display: inline-flex;
+        padding: 10px;
       }
     </style>
-    <app-toolbar>
-      <div class="toolbar-inner">
-        <h3 class="title">[[title]]</h3>
-        <dropdown-select id="filtertype" label="Filter by" value="title">
-          <paper-item value="title">Title</paper-item>
-        </dropdown-select>
-        <paper-input
-          label="Filter"
-          id="inputfilter"
-          aria-controls="filter"
-          value=""
-          always-float-label=""
-        ></paper-input>
-      </div>
-    </app-toolbar>
+    <h3 class="title">[[title]]</h3>
+    <div class="toolbar-inner">
+      <dropdown-select id="filtertype" label="Filter by" value="title">
+        <paper-item value="title">Title</paper-item>
+      </dropdown-select>
+      <paper-input
+        label="Filter"
+        id="inputfilter"
+        aria-controls="filter"
+        value=""
+        always-float-label=""
+      ></paper-input>
+    </div>
     <grafitto-filter
       id="filter"
       items="[[__gizmoList]]"
