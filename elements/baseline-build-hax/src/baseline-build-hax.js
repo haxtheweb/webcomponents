@@ -34,6 +34,7 @@ import "@lrnwebcomponents/lrn-calendar/lrn-calendar.js";
 import "@lrnwebcomponents/lrn-math/lrn-math.js";
 import "@lrnwebcomponents/lrn-table/lrn-table.js";
 import "@lrnwebcomponents/lrn-vocab/lrn-vocab.js";
+import "@lrnwebcomponents/oer-schema/oer-schema.js";
 import "@lrnwebcomponents/lrndesign-blockquote/lrndesign-blockquote.js";
 import "@lrnwebcomponents/magazine-cover/magazine-cover.js";
 import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
