@@ -28,16 +28,14 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
 
       allowConcurrent: {
         type: Boolean,
-        value: false,
-        reflectToAttribute: true
+        value: false
       },
       /**
        * Is it an audio player with no thumbnail?
        */
       audioNoThumb: {
         type: Boolean,
-        computed: "_getAudioNoThumb(audioOnly,thumbnailSrc)",
-        reflectToAttribute: true
+        computed: "_getAudioNoThumb(audioOnly,thumbnailSrc)"
       },
       /**
        * Is this an audio file?
@@ -52,8 +50,7 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
        */
       compactControls: {
         type: Boolean,
-        computed: "_getCompactControls(responsiveSize)",
-        reflectToAttribute: true
+        computed: "_getCompactControls(responsiveSize)"
       },
       /**
        * crossorigin attribute for <video> and <audio> tags
@@ -191,8 +188,7 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
        */
       mediaTitle: {
         type: String,
-        value: "",
-        reflectToAttribute: true
+        value: ""
       },
       /**
        * mute/unmute button
@@ -235,8 +231,7 @@ class A11yMediaPlayerBehaviors extends A11yMediaBehaviors {
        */
       showCustomCaptions: {
         type: Boolean,
-        computed: "_showCustomCaptions(isYoutube,audioOnly,hasCaptions,cc)",
-        reflectToAttribute: true
+        computed: "_showCustomCaptions(isYoutube,audioOnly,hasCaptions,cc)"
       },
       /**
        * stacked layout instead of side-by-side?
