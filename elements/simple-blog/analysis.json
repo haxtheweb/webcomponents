@@ -341,8 +341,8 @@
       "properties": [
         {
           "name": "items",
-          "type": "Object | null | undefined",
-          "description": "items",
+          "type": "Array | null | undefined",
+          "description": "items from manifest",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -350,18 +350,89 @@
               "column": 4
             },
             "end": {
-              "line": 60,
+              "line": 61,
               "column": 5
             }
           },
           "metadata": {
             "polymer": {
-              "attributeType": "Object"
+              "observer": "\"_itemsChanged\"",
+              "attributeType": "Array"
+            }
+          }
+        },
+        {
+          "name": "_itemsSorted",
+          "type": "Array | null | undefined",
+          "description": "sorted items",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 65,
+              "column": 4
+            },
+            "end": {
+              "line": 67,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Array"
             }
           }
         }
       ],
-      "methods": [],
+      "methods": [
+        {
+          "name": "_itemsChanged",
+          "description": "manifest items updated",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 72,
+              "column": 2
+            },
+            "end": {
+              "line": 75,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "compare",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 76,
+              "column": 2
+            },
+            "end": {
+              "line": 84,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "a"
+            },
+            {
+              "name": "b"
+            }
+          ]
+        }
+      ],
       "staticMethods": [],
       "demos": [
         {
@@ -376,7 +447,7 @@
           "column": 8
         },
         "end": {
-          "line": 62,
+          "line": 85,
           "column": 1
         }
       },
@@ -385,19 +456,19 @@
       "attributes": [
         {
           "name": "items",
-          "description": "items",
+          "description": "items from manifest",
           "sourceRange": {
             "start": {
               "line": 58,
               "column": 4
             },
             "end": {
-              "line": 60,
+              "line": 61,
               "column": 5
             }
           },
           "metadata": {},
-          "type": "Object | null | undefined"
+          "type": "Array | null | undefined"
         }
       ],
       "events": [],
