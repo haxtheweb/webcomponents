@@ -44,7 +44,7 @@ let CodeEditor = Polymer({
         }
       </style>
     </custom-style>
-    <h3>[[title]]</h3>
+    <h3 hidden$="[[!title]]">[[title]]</h3>
     <monaco-element
       id="codeeditor"
       lib-path="[[__libPath]]"
@@ -70,8 +70,7 @@ let CodeEditor = Polymer({
      * Title
      */
     title: {
-      type: String,
-      value: "Code sample"
+      type: String
     },
     /**
      * Show codePen button to fork it to there to run
@@ -183,18 +182,27 @@ let CodeEditor = Polymer({
    */
   updateEditorValue: function() {
     var content = "";
-    var children = dom(this).getEffectiveChildNodes();
-    if (children.length > 0) {
-      // loop through everything found in the slotted area and put it back in
-      for (var j = 0, len2 = children.length; j < len2; j++) {
-        if (typeof children[j].tagName !== typeof undefined) {
-          content += children[j].outerHTML;
-        } else {
-          content += children[j].textContent;
+    // 1st look for a template tag
+    var children = this.queryEffectiveChildren("template");
+    if (!children) {
+      console.warn(
+        "code-editor works best with a template tag provided in light dom"
+      );
+      children = dom(this).getEffectiveChildNodes();
+      if (children.length > 0) {
+        // loop through everything found in the slotted area and put it back in
+        for (var j = 0, len2 = children.length; j < len2; j++) {
+          if (typeof children[j].tagName !== typeof undefined) {
+            content += children[j].outerHTML;
+          } else {
+            content += children[j].textContent;
+          }
         }
       }
+    } else {
+      content = children.innerHTML;
     }
-    this.editorValue = content;
+    this.editorValue = content.trim();
   },
   /**
    * created callback
@@ -250,7 +258,7 @@ let CodeEditor = Polymer({
         handles: [
           {
             type: "code",
-            code: "contents"
+            code: "editorValue"
           }
         ],
         meta: {
@@ -291,7 +299,7 @@ let CodeEditor = Polymer({
           },
           // this is trippy but actually will work.
           {
-            slot: "",
+            property: "editorValue",
             title: "Code",
             description: "The code to present to the user",
             inputMethod: "code-editor",

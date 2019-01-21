@@ -7,7 +7,6 @@
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
-      import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../code-editor.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
@@ -70,10 +69,13 @@
         <option>yaml</option>
       </select>
       <code-editor id="code" show-code-pen>
+        <template>
+
         <code-editor>things and stuff</code-editor>
         <p>
           Things and stuff
         </p>
+        </template>
       </code-editor>
     </div>
         <script defer="defer">
