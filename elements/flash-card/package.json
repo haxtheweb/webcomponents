@@ -16,7 +16,7 @@
       "hax": "src/flash-card-hax.json"
     }
   },
-  "version": "2.0.0-beta1",
+  "version": "2.0.0-2.0.0-beta2.0",
   "description": "A simple flash card that you can flip",
   "repository": {
     "type": "git",

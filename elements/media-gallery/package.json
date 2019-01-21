@@ -16,7 +16,7 @@
       "hax": "src/media-gallery-hax.json"
     }
   },
-  "version": "2.0.0-beta1",
+  "version": "2.0.0-2.0.0-beta2.0",
   "description": "Automated conversion of media-gallery/",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^2.0.0-beta1",
-    "@lrnwebcomponents/lrndesign-gallery": "^2.0.0-beta1",
+    "@lrnwebcomponents/lrndesign-gallery": "^2.0.0-2.0.0-beta2.0",
     "@lrnwebcomponents/schema-behaviors": "^2.0.0-alpha2",
     "@polymer/polymer": "^3.0.5"
   },

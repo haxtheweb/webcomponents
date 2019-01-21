@@ -16,7 +16,7 @@
       "hax": "src/lrnsys-progress-hax.json"
     }
   },
-  "version": "2.0.0-beta1",
+  "version": "2.0.0-2.0.0-beta2.0",
   "description": "Automated conversion of lrnsys-progress/",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/circle-progress": "^2.0.0-beta1",
+    "@lrnwebcomponents/circle-progress": "^2.0.0-2.0.0-beta2.0",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/neon-animation": "^3.0.1",

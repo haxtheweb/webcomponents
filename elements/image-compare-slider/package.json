@@ -16,7 +16,7 @@
       "hax": "src/image-compare-slider-hax.json"
     }
   },
-  "version": "2.0.0-beta1",
+  "version": "2.0.0-2.0.0-beta2.0",
   "description": "Slider that allows comparison of two images",
   "repository": {
     "type": "git",

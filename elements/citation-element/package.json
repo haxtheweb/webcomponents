@@ -11,7 +11,7 @@
       "js": "src/citation-element.js"
     }
   },
-  "version": "2.0.0-beta1",
+  "version": "2.0.0-2.0.0-beta2.0",
   "description": "A simple way of citing things on the web.",
   "repository": {
     "type": "git",

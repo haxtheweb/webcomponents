@@ -16,7 +16,7 @@
       "hax": "src/lrnsys-layout-hax.json"
     }
   },
-  "version": "2.0.0-beta1",
+  "version": "2.0.0-2.0.0-beta2.0",
   "description": "Automated conversion of lrnsys-layout/",
   "repository": {
     "type": "git",
@@ -41,10 +41,10 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/lrn-icons": "^2.0.0-alpha2",
-    "@lrnwebcomponents/paper-avatar": "^2.0.0-beta1",
-    "@lrnwebcomponents/simple-colors": "^2.0.0-beta1",
-    "@lrnwebcomponents/simple-drawer": "^2.0.0-beta1",
-    "@lrnwebcomponents/simple-modal": "^2.0.0-beta1",
+    "@lrnwebcomponents/paper-avatar": "^2.0.0-2.0.0-beta2.0",
+    "@lrnwebcomponents/simple-colors": "^2.0.0-2.0.0-beta2.0",
+    "@lrnwebcomponents/simple-drawer": "^2.0.0-2.0.0-beta2.0",
+    "@lrnwebcomponents/simple-modal": "^2.0.0-2.0.0-beta2.0",
     "@polymer/app-layout": "^3.0.0",
     "@polymer/iron-collapse": "^3.0.0",
     "@polymer/iron-image": "^3.0.0",
