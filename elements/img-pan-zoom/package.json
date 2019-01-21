@@ -16,7 +16,7 @@
       "hax": "src/img-pan-zoom-hax.json"
     }
   },
-  "version": "2.0.0-alpha2",
+  "version": "2.0.1",
   "description": "Start of img-pan-zoom",
   "repository": {
     "type": "git",

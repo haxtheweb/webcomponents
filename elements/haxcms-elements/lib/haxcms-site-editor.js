@@ -108,7 +108,7 @@ Polymer({
       headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
       id="publishajax"
       loading="{{publishing}}"
-      url="[[publishPath]]"
+      url="[[publishSitePath]]"
       method="POST"
       body="[[publishSiteData]]"
       content-type="application/json"
@@ -173,7 +173,7 @@ Polymer({
     /**
      * end point for publishing to surge
      */
-    publishPath: {
+    publishSitePath: {
       type: String
     },
     /**
@@ -222,6 +222,13 @@ Polymer({
      * create new page data
      */
     createData: {
+      type: Object,
+      value: {}
+    },
+    /**
+     * create new page data
+     */
+    publishSiteData: {
       type: Object,
       value: {}
     },
@@ -423,6 +430,9 @@ Polymer({
     });
     window.dispatchEvent(evt);
   },
+  /**
+   * page deleted response
+   */
   _handleDeleteResponse: function(response) {
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
@@ -432,7 +442,8 @@ Polymer({
         duration: 3000
       }
     });
-    window.dispatchEvent(evt);
+    this.dispatchEvent(evt);
+    this.fire("haxcms-trigger-update", true);
   },
   /**
    * Establish certain global settings in HAX once it claims to be ready to go
@@ -515,7 +526,7 @@ Polymer({
       }
     });
     this.dispatchEvent(evt);
-    this.fire("haxcms-trigger-update-page", true);
+    this.fire("haxcms-trigger-update", true);
   },
   _handleOutlineResponse: function(e) {
     // trigger a refresh of the data in page
@@ -626,7 +637,7 @@ Polymer({
     this.notifyPath("publishSiteData.siteName");
     this.set("publishSiteData.jwt", this.jwt);
     this.notifyPath("publishSiteData.jwt");
-    if (this.publishPath) {
+    if (this.publishSitePath) {
       this.$.publishajax.generateRequest();
     }
   },

@@ -1,22 +1,9 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/av-icons.js";
-import "@polymer/iron-icons/communication-icons.js";
-import "@polymer/iron-icons/device-icons.js";
-import "@polymer/iron-icons/editor-icons.js";
-import "@polymer/iron-icons/hardware-icons.js";
-import "@polymer/iron-icons/image-icons.js";
-import "@polymer/iron-icons/maps-icons.js";
-import "@polymer/iron-icons/notification-icons.js";
-import "@polymer/iron-icons/social-icons.js";
-import "@polymer/iron-icons/places-icons.js";
-import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
 import "@polymer/paper-dialog/paper-dialog.js";
-import "@polymer/paper-ripple/paper-ripple.js";
-import "@polymer/paper-toast/paper-toast.js";
 import "@polymer/paper-button/paper-button.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+import "./hax-shared-styles.js";
 /**
  `hax-app-picker-item`
  An item for displaying in a picker
@@ -25,11 +12,10 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 */
 Polymer({
   _template: html`
-    <custom-style>
-      <style is="custom-style" include="materializecss-styles simple-colors">
+      <style include="materializecss-styles simple-colors hax-shared-styles">
         :host {
           display: inline-block;
-          color: var(--hax-app-picker-dialog-text-color, #ffffff);
+          color: var(--hax-color-text);
         }
         :host([elevation="1"]) {
           -webkit-transform: scale(1, 1);
@@ -42,7 +28,7 @@ Polymer({
         :host > div {
           @apply --paper-font-caption;
           margin-top: 8px;
-          color: #ffffff;
+          color: var(--hax-color-text);
           width: 100%;
           white-space: nowrap;
           overflow: hidden;
@@ -51,11 +37,12 @@ Polymer({
         }
         .icon {
           cursor: pointer;
+          display: flex;
           width: 50px;
           height: 50px;
           padding: 5px;
           margin: 10px;
-          color: white;
+          color: #FFFFFF;
           border-radius: 50%;
           box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
             0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
@@ -76,15 +63,14 @@ Polymer({
             0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
         }
         paper-button {
-          display: block;
           min-width: unset;
         }
         iron-icon {
-          display: block;
+          display: inline-flex;
           padding: 0;
           margin: 0;
-          width: 40px;
-          height: 40px;
+          width: 36px;
+          height: 36px;
         }
       </style>
     </custom-style>

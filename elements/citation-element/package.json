@@ -11,7 +11,7 @@
       "js": "src/citation-element.js"
     }
   },
-  "version": "2.0.0-alpha2",
+  "version": "2.0.1",
   "description": "A simple way of citing things on the web.",
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.0.0-alpha2",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.0.0-beta1",
     "@lrnwebcomponents/schema-behaviors": "^2.0.0-alpha2",
     "@polymer/polymer": "^3.0.5"
   },

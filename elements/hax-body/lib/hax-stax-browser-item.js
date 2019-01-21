@@ -2,7 +2,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-image/iron-image.js";
-import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+import "./hax-shared-styles.js";
 /**
 `hax-stax-browser-item`
 A button on the hax-gizmo-browser app display
@@ -14,7 +14,7 @@ A button on the hax-gizmo-browser app display
 */
 Polymer({
   _template: html`
-    <style include="materializecss-styles-colors">
+    <style include="hax-shared-styles">
       :host {
         display: inline-flex;
       }
@@ -31,15 +31,15 @@ Polymer({
         border-radius: 10px;
       }
       paper-button {
-        color: #222222;
+        color: var(--hax-color-text);
+        background-color: #ffffff;
+        border: 2px solid var(--hax-color-border-outline);
         text-transform: none;
         margin: 0;
-        background-color: #ffffff;
         height: 80px !important;
         width: 200px !important;
         display: flex;
         border-radius: 10px;
-        border: 4px solid #cccccc;
         min-width: unset;
       }
       paper-button .item-title {

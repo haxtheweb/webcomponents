@@ -3,6 +3,7 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
+import "@lrnwebcomponents/hal-9000/hal-9000.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "./hax-app.js";
 import "./hax-stax.js";
@@ -41,6 +42,7 @@ Polymer({
       handle-as="json"
       last-response="{{__appStoreData}}"
     ></iron-ajax>
+    <hal-9000 id="hal" debug="debug" commands="[[voiceCommands]]"></hal-9000>
   `,
 
   is: "hax-store",
@@ -50,6 +52,14 @@ Polymer({
   observers: ["_loadAppStoreData(__ready, __appStoreData, haxAutoloader)"],
 
   properties: {
+    /**
+     * Local storage bridge
+     */
+    localStorage: {
+      type: Object,
+      value: {},
+      observer: "_localStorageChanged"
+    },
     /**
      * Hax app picker element.
      */
@@ -223,7 +233,8 @@ Polymer({
      */
     globalPreferences: {
       type: Object,
-      value: {}
+      value: {},
+      observer: "_globalPreferencesChanged"
     },
     /**
      * Globally active app, used for brokering communications
@@ -318,9 +329,17 @@ Polymer({
     },
     __ready: {
       type: Boolean
+    },
+    voiceCommands: {
+      type: Object
     }
   },
-
+  /**
+   * Local storage data changed; callback to store this data in user storage
+   */
+  _localStorageChanged: function(newValue) {
+    window.localStorage.setItem("haxUserData", JSON.stringify(newValue));
+  },
   /**
    * If this is a text node or not so we know if the inline context
    * operations are valid.
@@ -463,7 +482,13 @@ Polymer({
       this.dispatchEvent(evt);
     }
   },
-
+  _globalPreferencesChanged: function(newValue, oldValue) {
+    if (newValue.haxVoiceCommands) {
+      this.$.hal.auto = true;
+    } else {
+      this.$.hal.auto = false;
+    }
+  },
   /**
    * Detached life cycle
    */
@@ -554,6 +579,10 @@ Polymer({
       "hax-insert-content-array",
       this._haxStoreInsertMultiple.bind(this)
     );
+    window.removeEventListener(
+      "hax-add-voice-command",
+      this._addVoiceCommand.bind(this)
+    );
     // capture events and intercept them globally
     window.removeEventListener(
       "onbeforeunload",
@@ -581,6 +610,50 @@ Polymer({
     window.addEventListener("paste", this._onPaste.bind(this));
     window.addEventListener("keypress", this._onKeyPress.bind(this));
     this.haxToast = window.SimpleToast.requestAvailability();
+    // initialize voice commands
+    this.voiceCommands = this._initVoiceCommands();
+  },
+  /**
+   * Build a list of common voice commands
+   */
+  _initVoiceCommands: function() {
+    var commands = {};
+    commands[`${this.$.hal.respondsTo} scroll up`] = () => {
+      window.scrollBy({
+        top: -(window.innerHeight * 0.5),
+        left: 0,
+        behavior: "smooth"
+      });
+    };
+    commands[`${this.$.hal.respondsTo} scroll (down)`] = () => {
+      window.scrollBy({
+        top: window.innerHeight * 0.5,
+        left: 0,
+        behavior: "smooth"
+      });
+    };
+    commands[`hey ${this.$.hal.respondsTo}`] = () => {
+      this.$.hal.speak("Yeah what do you want");
+    };
+    commands[`${this.$.hal.respondsTo} find media`] = () => {
+      window.HaxStore.write("activeHaxElement", {}, window.HaxStore.instance);
+      window.HaxStore.instance.haxManager.resetManager(1);
+      window.HaxStore.instance.haxManager.toggleDialog(false);
+    };
+    return commands;
+  },
+  /**
+   * allow uniform method of adding voice commands
+   */
+  addVoiceCommand: function(command) {
+    this.push("voiceCommands", command);
+    this.notifyPath("voiceCommands.*");
+  },
+  /**
+   * event driven version
+   */
+  _addVoiceCommand: function(e) {
+    this.addVoiceCommand(e.detail);
   },
   /**
    * Before the browser closes / changes paths, ask if they are sure they want to leave
@@ -750,6 +823,18 @@ Polymer({
     if (window.HaxStore.instance == null) {
       window.HaxStore.instance = this;
     }
+    // check for local storage object
+    // @todo ensure they consent to this
+    // if not, then store it in sessionStorage so that all our checks
+    // and balances are the same. This could allow for storing these
+    // settings on a server in theory
+    this.set(
+      "localStorage",
+      window.localStorage.getItem("haxUserData")
+        ? JSON.parse(window.localStorage.getItem("haxUserData"))
+        : {}
+    );
+
     // notice hax property definitions coming from anywhere
     window.addEventListener(
       "hax-register-properties",
@@ -836,7 +921,10 @@ Polymer({
       "hax-insert-content-array",
       this._haxStoreInsertMultiple.bind(this)
     );
-
+    window.addEventListener(
+      "hax-add-voice-command",
+      this._addVoiceCommand.bind(this)
+    );
     document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
   },
 
@@ -1378,6 +1466,9 @@ Polymer({
       e.detail.property &&
       e.detail.owner
     ) {
+      if (typeof e.detail.value === "object") {
+        this.set(e.detail.property, {});
+      }
       this.set(e.detail.property, e.detail.value);
       this.fire("hax-store-property-updated", {
         property: e.detail.property,
@@ -2128,7 +2219,7 @@ window.HaxStore.encapScript = html => {
 /**
  * Global toast
  */
-window.HaxStore.toast = (message, duration = 3000) => {
+window.HaxStore.toast = (message, duration = 4000) => {
   const evt = new CustomEvent("simple-toast-show", {
     bubbles: true,
     cancelable: true,
@@ -2137,6 +2228,7 @@ window.HaxStore.toast = (message, duration = 3000) => {
       duration: duration
     }
   });
+  window.HaxStore.instance.dispatchEvent(evt);
 };
 
 /**

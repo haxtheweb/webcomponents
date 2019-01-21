@@ -11,6 +11,8 @@ import "./lib/hax-text-context.js";
 import "./lib/hax-ce-context.js";
 import "./lib/hax-plate-context.js";
 import "./lib/hax-input-mixer.js";
+import "./lib/hax-shared-styles.js";
+
 /**
  * `hax-body`
  * `Manager of the body area that can be modified`
@@ -23,12 +25,12 @@ import "./lib/hax-input-mixer.js";
 let HaxBody = Polymer({
   is: "hax-body",
   _template: html`
-    <style include="simple-colors">
+    <style include="simple-colors hax-shared-styles">
+      @import url("https://fonts.googleapis.com/css?family=Noto+Serif");
       :host {
         display: block;
         min-height: 32px;
         min-width: 32px;
-        /*font-family: sans-serif;*/
       }
       :host #bodycontainer ::slotted(.hax-context-menu) {
         padding: 0;
@@ -48,23 +50,51 @@ let HaxBody = Polymer({
         visibility: visible;
         opacity: 1;
       }
+      :host #bodycontainer ::slotted(*) {
+        font-size: 16px;
+        font-family: "Noto Serif", serif;
+        color: #444;
+        padding: 14px;
+        margin: 2px;
+      }
+
       :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
         outline: none;
         transition: 0.6s width ease-in-out, 0.6s height ease-in-out,
           0.6s margin ease-in-out;
       }
       :host([edit-mode]) #bodycontainer ::slotted(p):empty {
-        background: #f8f8f8;
+        background: #f1f1f1;
       }
-      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]):hover {
-        outline: 1px dotted #d3d3d3;
+      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]:hover) {
+        outline: 1px solid var(--hax-color-accent1);
+      }
+      :host([edit-mode])
+        #bodycontainer
+        ::slotted(*:not(.hax-active)[data-editable]:hover):after {
+        content: attr(data-hax-ray) " " attr(content);
+        font-size: 16px;
+        font-family: "Noto Serif", serif;
+        left: unset;
+        right: unset;
+        top: unset;
+        background-color: var(--hax-color-accent1);
+        color: var(--hax-color-accent1-text);
+        bottom: unset;
+        width: auto;
+        padding: 8px;
+        margin: 0;
+        z-index: 100;
+        margin: -14px -14px 0 0;
+        float: right;
+        line-height: 16px;
+      }
+
+      :host([edit-mode]) #bodycontainer ::slotted(* [data-editable]:hover) {
+        outline: 1px solid #e2e4e7;
         outline-offset: 2px;
       }
-      :host([edit-mode]) #bodycontainer ::slotted(* [data-editable]):hover {
-        outline: 1px dotted #d3d3d3;
-        outline-offset: 2px;
-      }
-      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]):before {
+      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]:before) {
         content: "";
         display: block;
         position: absolute;
@@ -76,7 +106,7 @@ let HaxBody = Polymer({
       }
       :host([edit-mode])
         #bodycontainer
-        ::slotted(*[data-editable]):hover:before {
+        ::slotted(*[data-editable]:hover:before) {
         content: "";
         display: block;
         position: absolute;
@@ -88,19 +118,17 @@ let HaxBody = Polymer({
       }
       :host([edit-mode]) #bodycontainer ::slotted(*.hax-active[data-editable]) {
         cursor: text !important;
-        outline: 1px dashed #c3c3c3 !important;
-        outline-offset: 4px;
+        outline: 1px solid rgba(145, 151, 162, 0.25);
       }
       :host([edit-mode])
         #bodycontainer
         ::slotted(*[data-editable] .hax-active) {
         cursor: text !important;
-        outline: 1px dashed #c3c3c3 !important;
-        outline-offset: 4px;
+        outline: 1px solid rgba(145, 151, 162, 0.25);
       }
       :host([edit-mode])
         #bodycontainer
-        ::slotted(*.hax-active[data-editable]):before {
+        ::slotted(*.hax-active[data-editable]:before) {
         content: "";
         display: block;
         position: absolute;
@@ -306,7 +334,14 @@ let HaxBody = Polymer({
             }
             // this does the real targetting
             node.setAttribute("data-editable", this.editMode);
-            node.setAttribute("data-hax-ray", node.tagName);
+            let haxRay = node.tagName.replace("-", " ").toLowerCase();
+            let i = window.HaxStore.instance.gizmoList.findIndex(
+              j => j.tag === node.tagName.toLowerCase()
+            );
+            if (i !== -1) {
+              haxRay = window.HaxStore.instance.gizmoList[i].title;
+            }
+            node.setAttribute("data-hax-ray", haxRay);
             this.fire("hax-body-tag-added", { node: node });
           }
         });
@@ -1229,12 +1264,7 @@ let HaxBody = Polymer({
           // @todo need to be able to support slot binding
         }
         // make input mixer show up
-        this._positionContextMenu(
-          haxInputMixer,
-          this.$.cecontextmenu,
-          -6,
-          -116
-        );
+        this._positionContextMenu(haxInputMixer, this.$.cecontextmenu, 0, 0);
         haxInputMixer.style.width = null;
         break;
       // directional / proportion operations
@@ -1486,7 +1516,14 @@ let HaxBody = Polymer({
       if (this._haxElementTest(children[i])) {
         if (status) {
           children[i].setAttribute("data-editable", status);
-          children[i].setAttribute("data-hax-ray", children[i].tagName);
+          let haxRay = children[i].tagName.replace("-", " ").toLowerCase();
+          let l = window.HaxStore.instance.gizmoList.findIndex(
+            j => j.tag === children[i].tagName.toLowerCase()
+          );
+          if (l !== -1) {
+            haxRay = window.HaxStore.instance.gizmoList[l].title;
+          }
+          children[i].setAttribute("data-hax-ray", haxRay);
         } else {
           children[i].removeAttribute("data-editable");
           children[i].removeAttribute("data-hax-ray");

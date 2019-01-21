@@ -62,8 +62,18 @@ Polymer({
     },
     active: {
       type: Boolean,
-      value: false,
-      observer: "__activeChanged"
+      value: false
+    },
+    selected: {
+      type: String
+    }
+  },
+
+  observers: ["__selectedChanged(selected, id)"],
+
+  __selectedChanged: function(selected, id) {
+    if (selected === id) {
+      this.fire("active-item", this);
     }
   },
 
@@ -73,13 +83,6 @@ Polymer({
 
   attached: function() {
     this.fire("child-attached", { id: this.id });
-  },
-
-  __activeChanged: function(active, oldActive) {
-    if (active === oldActive) return;
-    if (active === true) {
-      this.fire("active-item", { id: this.id });
-    }
   },
 
   __hasIcon: function(icon) {

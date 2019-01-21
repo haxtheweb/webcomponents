@@ -3,6 +3,7 @@ import "@polymer/iron-image/iron-image.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-styles/paper-styles.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "./hax-shared-styles.js";
 /**
 `hax-source`
  An element that brokers the visual display of a listing of material from an end point. The goal is to normalize data from some location which is media centric. This expects to get at least enough data in order to form a grid of items which are selectable. It's also generically implemented so that anything can be hooked up as a potential source for input (example: youtube API or custom in-house solution). The goal is to return enough info via fired event so that hax-manager can tell hax-body that the user selected a tag, properties, slot combination so that hax-body can turn the selection into a custom element / element injected into the hax-body slot.
@@ -14,12 +15,12 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 */
 Polymer({
   _template: html`
-    <style include="simple-colors">
+    <style include="simple-colors hax-shared-styles">
       :host {
         display: inline-flex;
         width: 50%;
-        background-color: transparent;
-        color: #ffffff;
+        background-color: var(--hax-color-bg-accent);
+        color: var(--hax-color-text);
       }
       paper-button.button {
         margin: 0;
@@ -27,19 +28,16 @@ Polymer({
         height: 168px;
         border-radius: 0;
         width: 100%;
-        border: 2px solid #cccccc;
+        border: 1px solid var(--hax-color-border-outline);
         justify-content: flex-start;
-        background-color: transparent;
         background-image: none;
-        color: #ffffff;
         text-align: unset;
         display: flex;
       }
       paper-button:hover,
       paper-button:focus,
       paper-button:active {
-        border: 2px solid var(--simple-colors-default-theme-light-green-1);
-        background-color: rgba(0, 0, 0, 0.7);
+        outline: 2px solid var(--hax-color-bg-accent1);
       }
       .detail-wrapper {
         padding: 0 8px;
@@ -47,7 +45,7 @@ Polymer({
         height: 100%;
         width: calc(80% - 16px);
         overflow: hidden;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-family: "Noto Serif", serif;
       }
       .title {
         font-size: 16px;

@@ -1,18 +1,11 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-button/paper-button.js";
-import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-icon/iron-icon.js";
-import "@polymer/iron-icons/iron-icons.js";
-import "@polymer/iron-icons/editor-icons.js";
-import "@polymer/iron-icons/device-icons.js";
-import "@polymer/iron-icons/hardware-icons.js";
-import "@polymer/iron-icons/communication-icons.js";
-import "@polymer/iron-icons/social-icons.js";
-import "@polymer/iron-icons/av-icons.js";
-import "@polymer/iron-icons/places-icons.js";
-import "@polymer/iron-icons/maps-icons.js";
 import "@polymer/iron-image/iron-image.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/materializecss-styles/lib/colors.js";
+import "./hax-shared-styles.js";
+
 /**
 `hax-app-browser-item`
 A button on the hax-app-browser display
@@ -24,72 +17,90 @@ A button on the hax-app-browser display
 */
 Polymer({
   _template: html`
-    <style include="materializecss-styles-colors">
+    <style include="materializecss-styles simple-colors hax-shared-styles">
       :host {
-        display: inline-flex;
-        height: 58px;
-        width: 58px;
+        display: block;
       }
       :host([elevation="1"]) {
-        transform: scale(0.8, 0.8);
-      }
-      :host([elevation="2"]) {
+        -webkit-transform: scale(1, 1);
         transform: scale(1, 1);
       }
-      paper-card {
-        margin: 4px 0;
-        border-radius: 10px;
+      :host([elevation="2"]) {
+        -webkit-transform: scale(1.4, 1.4);
+        transform: scale(1.4, 1.4);
       }
       paper-button {
-        color: #000000;
+        color: var(--hax-color-text);
         text-transform: none;
-        margin: 0;
-        background-color: #ffffff;
-        height: 72px !important;
-        width: 72px !important;
+        background-color: var(--hax-color-bg-accent);
+        min-width: unset;
+        cursor: pointer;
         display: flex;
-        border-radius: 10px;
-        border-style: solid;
-        border-width: 4px;
-        font-weight: normal;
+        width: 50px;
+        height: 50px;
+        padding: 5px;
+        margin: 10px;
+        color: #ffffff;
+        border-radius: 50%;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+          0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        -webkit-transition: box-shadow 0.3s;
+        -moz-transition: box-shadow 0.3s;
+        -ms-transition: box-shadow 0.3s;
+        -o-transition: box-shadow 0.3s;
+        transition: box-shadow 0.3s;
       }
-      paper-button .item-title {
-        font-size: 12px;
+      paper-button:hover,
+      paper-button:focus {
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.14),
+          0 2px 10px 0 rgba(0, 0, 0, 0.12), 0 6px 2px -4px rgba(0, 0, 0, 0.2);
       }
-      paper-button .button-inner {
-        text-align: center;
+      paper-button:active {
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+          0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
       }
       paper-button iron-icon {
         height: 32px;
         width: 32px;
+        color: white;
         display: inline-block;
+      }
+      .item-title {
+        margin-top: 8px;
+        color: var(--hax-color-text);
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 10px;
+        line-height: 12px;
+        height: 12px;
+        text-align: center;
+      }
+      .button-inner {
+        display: flex;
       }
       .flip-icon {
         transform: rotateY(180deg);
       }
     </style>
-    <paper-card id="card" elevation="[[elevation]]">
-      <paper-button
-        id="button"
-        data-voicecommand\$="select [[title]]"
-        class\$="[[color]] lighten-5 [[color]]-border"
-      >
-        <div class="button-inner">
-          <iron-icon
-            icon="[[icon]]"
-            class\$="[[color]]-text text-darken-3"
-            hidden\$="[[!icon]]"
-          ></iron-icon>
-          <iron-image
-            src="[[image]]"
-            preload=""
-            sizing="cover"
-            hidden\$="[[!image]]"
-          ></iron-image>
-          <div class="item-title">[[title]]</div>
-        </div>
-      </paper-button>
-    </paper-card>
+    <paper-button
+      id="button"
+      data-voicecommand\$="select [[title]]"
+      title="[[title]]"
+      class$="[[color]]"
+    >
+      <div class="button-inner">
+        <iron-icon icon="[[icon]]" hidden\$="[[!icon]]"></iron-icon>
+        <iron-image
+          src="[[image]]"
+          preload=""
+          sizing="cover"
+          hidden\$="[[!image]]"
+        ></iron-image>
+      </div>
+    </paper-button>
+    <div class="item-title" aria-hidden="true">[[title]]</div>
   `,
 
   is: "hax-app-browser-item",

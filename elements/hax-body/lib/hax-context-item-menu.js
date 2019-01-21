@@ -4,6 +4,8 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/neon-animation/neon-animation.js";
 import "./hax-toolbar-menu.js";
+import "./hax-shared-styles.js";
+
 /**
 `hax-context-item-menu`
 An icon / button that has support for multiple options via drop down.
@@ -17,21 +19,20 @@ An icon / button that has support for multiple options via drop down.
 */
 Polymer({
   _template: html`
-    <style>
+    <style include="hax-shared-styles">
       :host {
         display: inline-flex;
-        height: 32px;
+        height: 36px;
         box-sizing: border-box;
       }
       :host hax-toolbar-menu ::slotted(*):hover {
-        background-color: #cccccc;
+        background-color: var(--hax-color-bg-accent);
       }
       :host hax-toolbar-menu ::slotted(*) {
-        height: 32px;
+        height: 36px;
       }
     </style>
     <hax-toolbar-menu
-      corner="[[corner]]"
       id="menu"
       icon="[[icon]]"
       tooltip="[[label]]"
@@ -46,13 +47,6 @@ Polymer({
   is: "hax-context-item-menu",
 
   properties: {
-    /**
-     * corner
-     */
-    corner: {
-      type: String,
-      value: ""
-    },
     /**
      * Internal flag to allow blocking the event firing if machine selects tag.
      */
@@ -90,14 +84,6 @@ Polymer({
     icon: {
       type: String,
       value: "editor:text-fields",
-      reflectToAttribute: true
-    },
-    /**
-     * Icon for the button.
-     */
-    iconClass: {
-      type: String,
-      value: "black-text",
       reflectToAttribute: true
     },
     /**

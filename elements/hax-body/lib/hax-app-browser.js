@@ -1,7 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-list/iron-list.js";
-import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/paper-input/paper-input.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/iron-pages/iron-pages.js";
@@ -10,6 +9,7 @@ import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-app-browser-item.js";
 import "./hax-app-search.js";
+import "./hax-shared-styles.js";
 /**
 `hax-app-browser`
 Browse a list of apps. This provides a listing of our gizmos that we've integrated with.
@@ -22,10 +22,9 @@ Browse a list of apps. This provides a listing of our gizmos that we've integrat
 */
 Polymer({
   _template: html`
-    <style is="custom-style" include="simple-colors">
+    <style is="custom-style" include="simple-colors hax-shared-styles">
       :host {
         display: block;
-        --hax-accent: #34e79a;
       }
       :host *[hidden] {
         display: none;
@@ -33,78 +32,47 @@ Polymer({
       #ironlist {
         min-height: 132px;
         margin: 0;
+        padding: 10px;
       }
       hax-app-browser-item {
-        margin: 8px;
+        margin: 10px;
+        -webkit-transition: 0.3s all linear;
         transition: 0.3s all linear;
       }
       .title {
-        text-align: center;
-        padding: 16px 0;
-        margin: 0 64px 0 0;
-        font-size: 32px;
-        font-weight: bold;
-        color: var(--simple-colors-default-theme-light-green-1);
-        font-family: sans-serif;
-        text-transform: uppercase;
-        display: inline-flex;
+        position: relative;
+        padding: 16px;
+        outline: 0;
+        font-weight: 600;
+        text-align: left;
+        margin: 0;
+        background-color: var(--hax-color-menu-heading-bg);
+        font-size: 18px;
+        line-height: 18px;
+        font-family: "Noto Serif", serif;
+        color: var(--hax-color-text);
       }
-      dropdown-select {
-        color: #ffffff;
-        --paper-input-container-invalid-color: var(
-          --simple-colors-red-foreground3
-        );
-        --paper-input-container-input-color: #ffffff;
-        --paper-input-container-color: #ffffff;
-        --paper-input-container-focus-color: var(
-          --simple-colors-default-theme-light-green-1
-        );
-        --paper-listbox-color: #000000;
-      }
-      paper-item {
-        --secondary-text-color: #000000;
-        --primary-text-color: #000000;
-      }
-      paper-input {
-        color: #ffffff;
-        --paper-input-container-invalid-color: var(
-          --simple-colors-red-foreground3
-        );
-        --secondary-text-color: #ffffff;
-        --primary-text-color: #ffffff;
-        --paper-input-container-input-color: #ffffff;
-        --paper-input-container-color: #ffffff;
-        --paper-input-container-focus-color: var(
-          --simple-colors-default-theme-light-green-1
-        );
-      }
-      app-toolbar {
-        background-color: rgba(0, 0, 0, 0.5);
+      grafitto-filter {
+        color: var(--hax-color-text);
       }
       .toolbar-inner {
-        width: 100%;
         display: inline-flex;
+        padding: 0 16px;
       }
     </style>
-    <app-toolbar>
-      <div class="toolbar-inner">
-        <h3 class="title">[[title]]</h3>
-        <dropdown-select
-          id="filtertype"
-          label="Filter by"
-          value="details.title"
-        >
-          <paper-item value="details.title">Title</paper-item>
-        </dropdown-select>
-        <paper-input
-          label="Filter"
-          id="inputfilter"
-          aria-controls="filter"
-          value=""
-          always-float-label=""
-        ></paper-input>
-      </div>
-    </app-toolbar>
+    <h3 class="title">[[title]]</h3>
+    <div class="toolbar-inner">
+      <dropdown-select id="filtertype" label="Filter by" value="details.title">
+        <paper-item value="details.title">Title</paper-item>
+      </dropdown-select>
+      <paper-input
+        label="Filter"
+        id="inputfilter"
+        aria-controls="filter"
+        value=""
+        always-float-label=""
+      ></paper-input>
+    </div>
     <grafitto-filter
       id="filter"
       items="[[__appList]]"

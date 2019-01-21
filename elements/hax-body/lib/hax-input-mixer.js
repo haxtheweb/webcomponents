@@ -9,6 +9,7 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 import "./simple-colors-picker.js";
 import "./hax-context-item-menu.js";
 import "./hax-context-item.js";
+import "./hax-shared-styles.js";
 /**
 `hax-input-mixer`
 A context menu that provides common custom-element based authoring options. While
@@ -22,60 +23,71 @@ required for populating input.
 */
 Polymer({
   _template: html`
-    <custom-style>
-      <style is="custom-style">
-        :host {
-          display: block;
-          color: #ffffff;
+    <style includes="hax-shared-styles">
+      :host {
+        display: block;
+        margin: 0;
+        border: 1px solid var(--hax-color-bg-accent);
+      }
+      .wrapper {
+        background-color: var(--hax-color-bg-accent);
+        color: var(--hax-color-text);
+        display: flex;
+        align-items: center;
+      }
+      hax-context-item {
+        margin: 0;
+        width: 40px;
+        height: 40px;
+      }
+      #elementoptions {
+        height: inherit;
+      }
+      #input {
+        color: #ffffff;
+      }
+      paper-checkbox {
+        --paper-checkbox-label-color: #ffffff;
+      }
+      .input-mixer-label {
+        padding-left: 4px;
+      }
+      paper-textarea,
+      paper-input {
+        --paper-input-container: {
+          padding: 0;
         }
-        app-toolbar {
-          background-color: #3e3e3e;
-          color: white;
-          padding: 0 0 0 16px;
+        --paper-input-container-label-floating: {
+          color: var(--hax-color-text);
         }
-        hax-context-item {
+        --paper-input-container-color: var(--hax-color-text);
+        --paper-input-container-focus-color: var(--hax-color-text);
+        --paper-input-container-invalid-color: var(--hax-color-text);
+        --paper-input-container-input-color: var(--hax-color-text);
+        --paper-input-container-shared-input-style: {
+          color: var(--hax-color-text);
+          background: transparent;
           margin: 0;
-          width: 40px;
-          height: 40px;
+          padding: 0;
+          min-width: 300px;
+          line-height: 16px;
+          font-size: 16px;
+          outline: none;
+          border: none;
         }
-        #elementoptions {
-          height: inherit;
-        }
-        #input {
-          color: #ffffff;
-        }
-        paper-checkbox {
-          --paper-checkbox-label-color: #ffffff;
-        }
-        .input-mixer-label {
-          padding-left: 4px;
-        }
-        paper-textarea,
-        paper-input {
-          --paper-input-container-color: #bbbbff;
-          --paper-input-container-focus-color: #ffffff;
-          --paper-input-container-invalid-color: #ffaaaa;
-          --paper-input-container-input-color: #ffffff;
-          --paper-input-container-shared-input-style: {
-            color: #ffffff;
-            background: transparent;
-            margin: 0;
-            padding: 0;
-            min-width: 320px;
-            line-height: 16px;
-            font-size: 16px;
-            margin-top: -8px;
-            margin-bottom: 8px;
-            outline: none;
-            border: none;
-          }
-        }
-        .input-method {
-          color: #ffffff;
-        }
-      </style>
-    </custom-style>
-    <app-toolbar>
+      }
+      .input-method {
+        color: #ffffff;
+        padding: 0 8px;
+      }
+      #updatebutton {
+        border: 1px solid black;
+      }
+      #updatebutton:hover {
+        border: none;
+      }
+    </style>
+    <div class="wrapper">
       <template is="dom-if" if="[[__inputselect]]">
         <span class="input-mixer-label">[[label]]</span>
         <hax-context-item-menu
@@ -135,7 +147,7 @@ Polymer({
         label\$="Update [[label]]"
         event-name="hax-update-tap"
       ></hax-context-item>
-    </app-toolbar>
+    </div>
   `,
 
   is: "hax-input-mixer",

@@ -7,25 +7,82 @@
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
     <script type="module">
-      import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../code-editor.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
-<div class="vertical-section-container centered">
+    <div class="vertical-section-container centered">
       <h3>Basic code-editor demo</h3>
-      <demo-snippet>
+      <select id="picker" class="language-picker">
+        <option>apex</option>
+        <option>azcli</option>
+        <option>bat</option>
+        <option>c</option>
+        <option>clojure</option>
+        <option>coffeescript</option>
+        <option>cpp</option>
+        <option>csharp</option>
+        <option>csp</option>
+        <option>css</option>
+        <option>dockerfile</option>
+        <option>fsharp</option>
+        <option>go</option>
+        <option>handlebars</option>
+        <option>html</option>
+        <option>ini</option>
+        <option>java</option>
+        <option>javascript</option>
+        <option>json</option>
+        <option>less</option>
+        <option>lua</option>
+        <option>markdown</option>
+        <option>msdax</option>
+        <option>mysql</option>
+        <option>objective-c</option>
+        <option>perl</option>
+        <option>pgsql</option>
+        <option>php</option>
+        <option>plaintext</option>
+        <option>postiats</option>
+        <option>powerquery</option>
+        <option>powershell</option>
+        <option>pug</option>
+        <option>python</option>
+        <option>r</option>
+        <option>razor</option>
+        <option>redis</option>
+        <option>redshift</option>
+        <option>ruby</option>
+        <option>rust</option>
+        <option>sb</option>
+        <option>scheme</option>
+        <option>scss</option>
+        <option>shell</option>
+        <option>sol</option>
+        <option>sql</option>
+        <option>st</option>
+        <option>swift</option>
+        <option>typescript</option>
+        <option>vb</option>
+        <option>xml</option>
+        <option>yaml</option>
+      </select>
+      <code-editor id="code" show-code-pen>
         <template>
-          <code-editor show-code-pen="">
-            <template><code-editor>things and stuff</code-editor>
-<p>
-  Things and stuff
-</p>
-</template>
-          </code-editor>
+
+        <code-editor>things and stuff</code-editor>
+        <p>
+          Things and stuff
+        </p>
         </template>
-      </demo-snippet>
+      </code-editor>
     </div>
+        <script defer="defer">
+          document.getElementById('picker').addEventListener('change', (e) => {
+            console.log(e.target.value);
+            document.getElementById('code').language = e.target.value;
+          });
+        </script>
   </body>
 </html>

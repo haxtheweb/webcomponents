@@ -63,6 +63,7 @@ let SitesListing = Polymer({
       }
     </style>
     <iron-ajax
+      id="loaddata"
       auto=""
       loading="{{__loading}}"
       url="[[dataSource]]"
@@ -133,6 +134,30 @@ let SitesListing = Polymer({
       type: Boolean,
       value: false
     }
+  },
+  /**
+   * attached life cycle
+   */
+  attached: function() {
+    window.addEventListener(
+      "sites-listing-refresh-data",
+      this.refreshData.bind(this)
+    );
+  },
+  /**
+   * detached life cycle
+   */
+  detached: function() {
+    window.removeEventListener(
+      "sites-listing-refresh-data",
+      this.refreshData.bind(this)
+    );
+  },
+  /**
+   * force the request to regenerate
+   */
+  refreshData: function(e) {
+    this.$.loaddata.generateRequest();
   },
   /**
    * Parse JSON Outline Schema for the items and bind that to sites

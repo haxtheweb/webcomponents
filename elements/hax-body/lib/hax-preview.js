@@ -15,6 +15,7 @@ import "@lrnwebcomponents/app-datepicker/app-datepicker.js";
 import "@lrnwebcomponents/paper-icon-picker/paper-icon-picker.js";
 import "@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "./hax-shared-styles.js";
 /**
 `hax-preview`
 An element that can generate a form
@@ -29,14 +30,14 @@ An element that can generate a form
 Polymer({
   _template: html`
     <custom-style>
-      <style is="custom-style" include="simple-colors">
+      <style is="custom-style" include="simple-colors hax-shared-styles">
         :host {
           display: block;
-          background-color: rgba(0, 0, 0, 0.6);
+          background-color: #ffffff;
         }
         paper-card.form-wrapper {
           margin: 0;
-          padding: 8px;
+          padding: 0 24px;
           width: 100%;
           min-height: 160px;
           background-color: transparent;
@@ -46,9 +47,6 @@ Polymer({
           display: flex;
           justify-content: space-around;
           height: 100%;
-          --vaadin-split-layout-splitter: {
-            background-color: #ffffff;
-          }
         }
         eco-json-schema-object {
           width: 50%;
@@ -69,7 +67,9 @@ Polymer({
         #preview {
           padding: 16px;
           color: #000000;
-          background-color: #ffffff;
+          background-color: var(--hax-color-bg-accent);
+          max-height: 63vh;
+          overflow: scroll;
         }
         #preview ::slotted(*) {
           float: unset !important;
@@ -79,12 +79,11 @@ Polymer({
         }
         .preview-text {
           font-size: 14px;
-          font-family: sans-serif;
-          color: #ffffff;
+          color: var(--hax-color-text);
           font-style: italic;
           width: 100%;
           height: 24px;
-          border-bottom: 1px solid #ffffff;
+          border-bottom: 1px solid var(--hax-color-border-outline);
           text-align: center;
           padding: 8px 0;
           box-sizing: content-box;
@@ -95,7 +94,7 @@ Polymer({
         }
         .preview-text-bottom {
           border-bottom: unset;
-          border-top: 1px solid #ffffff;
+          border-top: 1px solid var(--hax-color-border-outline);
         }
         @media screen and (max-width: 550px) {
           .hide-on-mobile {
@@ -108,12 +107,10 @@ Polymer({
 
         #modetabs {
           height: 80px;
-          border-bottom: 1px #e5e5e5 solid;
+          border-bottom: 1px solid var(--hax-color-border-outline);
           display: block;
           justify-content: space-evenly;
-          --paper-tabs-selection-bar-color: var(
-            --simple-colors-default-theme-light-green-1
-          );
+          --paper-tabs-selection-bar-color: var(--hax-color-accent1);
           --paper-tabs: {
             background: transparent;
           }
@@ -122,7 +119,7 @@ Polymer({
         #modetabs paper-tab {
           display: inline-flex;
           height: 100%;
-          --paper-tab-ink: var(--simple-colors-default-theme-light-green-1);
+          --paper-tab-ink: var(--hax-color-accent1);
           --paper-tab: {
             font-size: 16px;
           }
@@ -130,7 +127,8 @@ Polymer({
         #modetabs paper-tab paper-button {
           min-width: unset;
           width: 100%;
-          height: 100%;
+          background-color: var(--hax-color-accent1);
+          color: var(--hax-color-accent1-text);
         }
         .human-name {
           width: 100%;
@@ -140,15 +138,15 @@ Polymer({
         .preview-buttons {
           height: 64px;
           padding: 0px;
-          color: #222222;
-          border-bottom: 1px var(--hax-manager-steps-color) solid;
+          color: var(--hax-color-text);
+          border-bottom: 1px solid var(--hax-color-border-outline);
           background-color: transparent;
           margin: 16px 0 0 0;
           text-align: center;
           box-sizing: content-box;
         }
         eco-json-schema-object {
-          color: white;
+          color: var(--hax-text-color);
           --eco-json-schema-object-form : {
             -ms-flex: unset;
             -webkit-flex: unset;
@@ -156,39 +154,13 @@ Polymer({
             -webkit-flex-basis: unset;
             flex-basis: unset;
           }
-          --paper-icon-button: {
-            background-color: rgba(0, 0, 0, 0.9) !important;
-            border-radius: 50%;
-          }
-          --code-pen-title-color: #ffffff;
-          --paper-checkbox-size: 22px;
-          --paper-checkbox-checked-ink-color: #ffffff;
-          --paper-checkbox-unchecked-ink-color: #ffffff;
-          --paper-checkbox-label-color: var(
-            --simple-colors-blue-grey-background1
-          );
-          --paper-checkbox-label: {
-            font-size: 22px;
-            line-height: 32px;
-          }
-          --paper-input-container-invalid-color: var(
-            --simple-colors-red-foreground3
-          );
-          --secondary-text-color: #ffffff;
-          --primary-text-color: #ffffff;
-          --paper-input-container-input-color: #ffffff;
-          --paper-input-container-color: #ffffff !important;
-          --paper-input-container-focus-color: var(
-            --simple-colors-default-theme-light-green-1
-          ) !important;
-          --paper-listbox-color: #000000;
         }
         .preview-buttons paper-button {
           min-width: unset;
           width: 40%;
-          color: #000000;
+          color: var(--hax-color-accent1-text);
           display: inline-block;
-          background-color: var(--simple-colors-default-theme-light-green-1);
+          background-color: var(--hax-color-accent1);
         }
       </style>
     </custom-style>

@@ -11,7 +11,7 @@
       "js": "src/elmsln-loading.js"
     }
   },
-  "version": "2.0.0-alpha2",
+  "version": "2.0.1",
   "description": "Basic loading spinner based on the ELMS:LN icon",
   "repository": {
     "type": "git",

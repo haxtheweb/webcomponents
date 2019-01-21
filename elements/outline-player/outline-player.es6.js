@@ -1,11 +1,11 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import{pathFromUrl}from"./node_modules/@polymer/polymer/lib/utils/resolve-url.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import{updateStyles}from"./node_modules/@polymer/polymer/lib/mixins/element-mixin.js";import"./node_modules/@polymer/iron-ajax/iron-ajax.js";import"./node_modules/@polymer/app-layout/app-header/app-header.js";import"./node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js";import"./node_modules/@polymer/app-layout/app-drawer/app-drawer.js";import"./node_modules/@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";import"./node_modules/@polymer/app-layout/app-header-layout/app-header-layout.js";import"./node_modules/@polymer/paper-progress/paper-progress.js";import"./node_modules/@polymer/iron-media-query/iron-media-query.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";import"./node_modules/@lrnwebcomponents/map-menu/map-menu.js";import"./lib/outline-player-arrow.js";let OutlinePlayer=Polymer({_template:html`
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import{dom}from"./node_modules/@polymer/polymer/lib/legacy/polymer.dom.js";import{pathFromUrl}from"./node_modules/@polymer/polymer/lib/utils/resolve-url.js";import*as async from"./node_modules/@polymer/polymer/lib/utils/async.js";import{updateStyles}from"./node_modules/@polymer/polymer/lib/mixins/element-mixin.js";import"./node_modules/@polymer/iron-location/iron-query-params.js";import"./node_modules/@polymer/app-layout/app-header/app-header.js";import"./node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js";import"./node_modules/@polymer/app-layout/app-drawer/app-drawer.js";import"./node_modules/@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";import"./node_modules/@polymer/app-layout/app-header-layout/app-header-layout.js";import"./node_modules/@polymer/paper-progress/paper-progress.js";import"./node_modules/@polymer/iron-media-query/iron-media-query.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import"./node_modules/@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";import"./node_modules/@lrnwebcomponents/map-menu/map-menu.js";import"./lib/outline-player-arrow.js";let OutlinePlayer=Polymer({_template:html`
     <style include="materializecss-styles">
       :host {
         display: block;
         font-family: libre baskerville;
         position: relative;
         overflow: hidden;
-        --outline-player-min-height: "";
+        --outline-player-min-height: 100vh;
         --app-drawer-width: 300px;
         --outline-player-dark: #222222;
         --outline-player-light: #f8f8f8;
@@ -141,11 +141,25 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         align-items: center;
       }
 
-      #slot {
+      /* Required for HAX */
+      :host([edit-mode]) #slot {
+        display: none !important;
+      }
+      #contentcontainer {
         padding: 16px;
         max-width: 1040px;
         flex: 1 1 auto;
         order: 1;
+        display: flex;
+      }
+      #contentcontainer > * {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+      #contentcontainer h-a-x {
+        margin: 0;
       }
 
       .desktopNav {
@@ -163,19 +177,18 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         order: 2;
       }
     </style>
-    <iron-ajax
-      auto="[[auto]]"
-      url="[[outlineLocation]][[outlineFile]]"
-      handle-as="json"
-      last-response="{{_outlineData}}"
-    ></iron-ajax>
-    <iron-ajax
-      auto="[[auto]]"
-      url="[[outlineLocation]][[activeItem.location]]"
-      handle-as="text"
-      loading="{{__loadingContent}}"
-      last-response="{{_activeItemContent}}"
-    ></iron-ajax>
+    <!-- Control the sites query paremeters -->
+    <iron-location
+      id="location"
+      path="/"
+      query="{{__paramsString}}"
+    ></iron-location>
+    <iron-query-params
+      id="queryParams"
+      params-string="{{__paramsString}}"
+    ></iron-query-params>
+
+    <!-- Begin Layout -->
     <app-drawer-layout>
       <app-drawer id="drawer" swipe-open="" slot="drawer">
         <template is="dom-if" if="[[__hasTitle(outlineTitle)]]">
@@ -183,11 +196,11 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         </template>
         <map-menu
           id="menu"
-          items="{{outline}}"
-          data="[[_outlineData.items]]"
-          selected="{{selected}}"
+          selected="[[selected]]"
+          manifest="[[manifest]]"
           active-indicator=""
           auto-scroll=""
+          on-link-clicked="__mapMenuLinkClickedHandler"
         ></map-menu>
       </app-drawer>
       <app-header-layout>
@@ -228,7 +241,9 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
           </app-toolbar>
         </app-header>
         <div id="content">
-          <div id="slot"><slot></slot></div>
+          <div id="contentcontainer">
+            <div id="slot"><slot></slot></div>
+          </div>
           <template is="dom-if" if="[[breakpointDesktop]]">
             <div class="desktopNav" id="desktopNavLeft">
               <outline-player-arrow
@@ -260,4 +275,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
       query="(min-width: 700px)"
       query-matches="{{breakpointDesktop}}"
     ></iron-media-query>
-  `,is:"outline-player",behaviors:[MaterializeCSSBehaviors.ColorBehaviors,SchemaBehaviors.Schema,HAXCMSBehaviors.Theme],properties:{auto:{type:Boolean,notify:!0,value:!1},outlineFile:{type:String,value:"outline.json",notify:!0},outlineLocation:{type:String,notify:!0},outlineTitle:{type:String,notify:!0},selected:{type:String,notify:!0,observer:"_selectedPageChanged"},closed:{type:Boolean,notify:!0,reflectToAttribute:!0,value:!1},_activeItemContent:{type:String,observer:"_activeItemContentChanged"},outline:{type:Array,notify:!0,observer:"_outlineChanged"},activeItem:{type:Object,notify:!0},autoloader:{type:Array,value:["license-element","grid-plate","q-r","self-check","tab-list","multiple-choice","oer-schema","hero-banner","magazine-cover","task-list","video-player","lrn-table","media-image","lrndesign-blockquote","meme-maker","a11y-gif-player","paper-audio-player","wikipedia-query","wave-player","pdf-element","lrn-vocab","lrn-math","person-testimonial","citation-element","lrn-calendar","code-editor","place-holder","aframe-player"],observer:"_autoLoadChanged"},breakpointDesktop:{type:String,value:"600px"},fillRemaining:{type:Boolean,value:!1,reflectToAttribute:!0}},attached:function(){this.refreshDynamicPositions();window.addEventListener("resize",e=>{this.refreshDynamicPositions()})},refreshDynamicPositions(){const boundingRect=this.getBoundingClientRect(),windowHeight=window.innerHeight,minHeight=windowHeight-boundingRect.top,arrowMargin=minHeight/2-20;let styleChanges={};if(this.fillRemaining){styleChanges["--outline-player-min-height"]=minHeight+"px"}styleChanges["--outline-player-arrow-margin-top"]=arrowMargin+"px";this.updateStyles(styleChanges)},_toggleMenu:function(e){this.$.drawer.toggle();this.closed=!this.$.drawer.opened;async.microTask.run(()=>{window.dispatchEvent(new Event("resize"));updateStyles()})},_autoLoadChanged:function(newValue,oldValue){if(typeof newValue!==typeof void 0&&newValue.constructor===Array){if(typeof this.__processedList===typeof void 0){this.__processedList={}}for(var i in newValue){let tag=newValue[i].toLowerCase();if(typeof this.__processedList[tag]===typeof void 0){try{this.__processedList[tag]=tag;import(pathFromUrl(import.meta.url)+`../${tag}/${tag}.js`).then(e=>{},e=>{})}catch(err){}}}}},wipeSlot:function(element,slot="*"){if("*"===slot){while(null!==dom(element).firstChild){dom(element).removeChild(dom(element).firstChild)}}else{for(var i in dom(element).childNodes){if(typeof dom(element).childNodes[i]!==typeof void 0&&dom(element).childNodes[i].slot===slot){dom(element).removeChild(dom(element).childNodes[i])}}}},_activeItemContentChanged:function(newValue,oldValue){if(typeof newValue!==typeof void 0){this.wipeSlot(this,"*");if(null!==newValue){let frag=document.createRange().createContextualFragment(newValue);dom(this).appendChild(frag)}}},_outlineChanged:function(newValue,oldValue){if(typeof newValue!==typeof void 0&&typeof oldValue!==typeof void 0&&newValue.constructor===Array&&typeof newValue[0]!==typeof void 0){this.set("activeItem",newValue[0]);this.__activeIndex=0}},disablePrevPage:function(index){if(0===index){return!0}return!1},disableNextPage:function(index){if(index===this._outlineData.items.length-1){return!0}return!1},prevPage:function(e){this.changePage("previous")},nextPage:function(e){this.changePage("next")},changePage:function(direction){if("next"==direction&&this.__activeIndex<this._outlineData.items.length-1){this.selected=this._outlineData.items[this.__activeIndex+1].id}else if("previous"==direction&&0<this.__activeIndex){this.selected=this._outlineData.items[this.__activeIndex-1].id}const arrows=this.querySelectorAll("outline-player-arrow");for(let arrow of arrows){arrow.resetPosition()}},_selectedPageChanged:function(newValue,oldValue){if(typeof newValue!==typeof void 0){if(typeof this._outlineData!==typeof void 0){const item=this._outlineData.items.filter((d,i)=>{if(newValue===d.id){this.__activeIndex=i;return d}}).pop();this.set("activeItem",item)}}},__hasTitle:function(outlineTitle){return outlineTitle?!0:!1}});export{OutlinePlayer};
+  `,is:"outline-player",behaviors:[MaterializeCSSBehaviors.ColorBehaviors,SchemaBehaviors.Schema,HAXCMSBehaviors.Theme],properties:{manifest:{type:Object},auto:{type:Boolean,notify:!0,value:!1},outlineFile:{type:String,value:"outline.json",notify:!0},outlineLocation:{type:String,notify:!0},outlineTitle:{type:String,notify:!0},selected:{type:String,notify:!0,observer:"_selectedPageChanged"},closed:{type:Boolean,notify:!0,reflectToAttribute:!0,value:!1},_activeItemContent:{type:String,observer:"_activeItemContentChanged"},outline:{type:Array,notify:!0,observer:"_outlineChanged"},activeItem:{type:Object,notify:!0},breakpointDesktop:{type:String,value:"600px"},fillRemaining:{type:Boolean,value:!1,reflectToAttribute:!0}},ready:function(){this.setupHAXTheme(!0,this.$.contentcontainer)},attached:function(){this.refreshDynamicPositions();window.addEventListener("resize",e=>{this.refreshDynamicPositions()})},refreshDynamicPositions(){const boundingRect=this.getBoundingClientRect(),windowHeight=window.innerHeight,minHeight=windowHeight-boundingRect.top,arrowMargin=minHeight/2-20;let styleChanges={};if(this.fillRemaining){styleChanges["--outline-player-min-height"]=minHeight+"px"}styleChanges["--outline-player-arrow-margin-top"]=arrowMargin+"px";this.updateStyles(styleChanges)},_toggleMenu:function(e){this.$.drawer.toggle();this.closed=!this.$.drawer.opened;async.microTask.run(()=>{window.dispatchEvent(new Event("resize"));updateStyles()})},wipeSlot:function(element,slot="*"){if("*"===slot){while(null!==dom(element).firstChild){dom(element).removeChild(dom(element).firstChild)}}else{for(var i in dom(element).childNodes){if(typeof dom(element).childNodes[i]!==typeof void 0&&dom(element).childNodes[i].slot===slot){dom(element).removeChild(dom(element).childNodes[i])}}}},_activeItemContentChanged:function(newValue,oldValue){if(typeof newValue!==typeof void 0){this.wipeSlot(this,"*");if(null!==newValue){let frag=document.createRange().createContextualFragment(newValue);dom(this).appendChild(frag)}}},disablePrevPage:function(index){if(0===index){return!0}return!1},disableNextPage:function(index){if(index===this._outlineData.items.length-1){return!0}return!1},prevPage:function(e){this.changePage("previous")},nextPage:function(e){this.changePage("next")},changePage:function(direction){if("next"==direction&&this.__activeIndex<this._outlineData.items.length-1){this.selected=this._outlineData.items[this.__activeIndex+1].id}else if("previous"==direction&&0<this.__activeIndex){this.selected=this._outlineData.items[this.__activeIndex-1].id}const arrows=this.querySelectorAll("outline-player-arrow");for(let arrow of arrows){arrow.resetPosition()}},_selectedPageChanged:function(newValue,oldValue){if(typeof newValue!==typeof void 0){if(typeof this._outlineData!==typeof void 0){const item=this._outlineData.items.filter((d,i)=>{if(newValue===d.id){this.__activeIndex=i;return d}}).pop();this.set("activeItem",item)}}},__hasTitle:function(outlineTitle){return outlineTitle?!0:!1},__mapMenuLinkClickedHandler:function(e){this.__changePage(e.detail.id)},__changePage:function(id){const item=this.manifest.items.find(i=>i.id===id);console.log(item,this.manifest);this.dispatchEvent(new CustomEvent("haxcms-active-item-changed",{detail:item,bubbles:!0,cancelable:!1}))}});export{OutlinePlayer};

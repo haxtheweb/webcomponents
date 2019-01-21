@@ -1,0 +1,74 @@
+{
+  /**
+   * Commands to listen for and take action on
+   */
+  "commands": {
+    "name": "commands",
+    "type": "Object",
+    "value": {},
+    "observer": "_commandsChanged"
+  },
+  /**
+   * The name that HAL 9000 should respond to.
+   */
+  "respondsTo": {
+    "name": "respondsTo",
+    "type": "String",
+    "value": "(hal)",
+    "observer": "_respondsToChanged"
+  },
+  /**
+   * Debug mode for annyang
+   */
+  "debug": {
+    "name": "debug",
+    "type": "Boolean",
+    "value": false,
+    "observer": "_debugChanged"
+  },
+  /**
+   * Start automatically
+   */
+  "auto": {
+    "name": "auto",
+    "type": "Boolean",
+    "reflectToAttribute": true,
+    "observer": "_autoChanged"
+  },
+  /**
+   * Status of listening
+   */
+  "enabled": {
+    "name": "enabled",
+    "type": "Boolean",
+    "reflectToAttribute": true,
+    "observer": "_enabledChanged"
+  },
+  /**
+   * Pitch of speech
+   */
+  "pitch": {
+    "name": "pitch",
+    "type": "Number",
+    "reflectToAttribute": true,
+    "value": 0.9
+  },
+  /**
+   * Rate of speech
+   */
+  "rate": {
+    "name": "rate",
+    "type": "Number",
+    "reflectToAttribute": true,
+    "value": 0.9
+  },
+  /**
+   * Language of the speaker
+   */
+  "language": {
+    "name": "language",
+    "type": "String",
+    "reflectToAttribute": true,
+    "value": "en-US"
+  }
+}

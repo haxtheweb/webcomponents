@@ -59,7 +59,7 @@ Polymer({
         opacity: 1;
       }
       .card-content {
-        padding: 0.16px;
+        padding: 16px;
       }
       .card-content p {
         padding: 0;
@@ -71,8 +71,7 @@ Polymer({
       }
       hax-app-search-inputs {
         min-height: 150px;
-        padding: 16px 16px 0 16px;
-        color: #222222;
+        padding: 0 16px;
       }
       hax-app-pagination {
         min-height: 32px;
@@ -80,7 +79,6 @@ Polymer({
         display: none;
         justify-content: flex-end;
         justify-content: center;
-        color: #222222;
       }
     </style>
 
@@ -109,8 +107,9 @@ Polymer({
       pagination="[[pagination]]"
     ></hax-app-pagination>
     <hexagon-loader
+      size="small"
       loading$="[[loading]]"
-      color="grey"
+      color="#0085ba"
       aria-roledescription="Loading"
     ></hexagon-loader>
     <iron-list

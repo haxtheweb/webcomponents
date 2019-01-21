@@ -6,6 +6,7 @@ import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
 import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import "./hax-shared-styles.js";
 /**
 `hax-export-dialog`
 Export dialog with all export options and settings provided.
@@ -17,46 +18,43 @@ Export dialog with all export options and settings provided.
 */
 Polymer({
   _template: html`
-    <style is="custom-style" include="simple-colors">
+    <style is="custom-style" include="simple-colors hax-shared-styles">
       :host {
         display: block;
       }
       #dialog {
         z-index: 1000;
-        margin-top: 40px;
+        margin-top: 56px;
       }
       #closedialog {
         float: right;
-        top: 135px;
+        top: 124px;
         right: 0;
         position: absolute;
-        padding: 4px;
+        padding: 8px;
         margin: 0;
-        color: var(--simple-colors-default-theme-light-green-1, green);
+        color: var(--hax-color-text);
         background-color: transparent;
         width: 40px;
         height: 40px;
         min-width: unset;
       }
       .title {
-        margin-top: 32px;
-        text-align: center;
+        position: relative;
         padding: 16px;
-        margin: 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        font-size: 32px;
-        font-weight: bold;
-        font-family: sans-serif;
-        text-transform: uppercase;
-        color: var(--hax-ui-headings, #d4ff77);
-      }
-      .pref-container {
+        outline: 0;
+        font-weight: 600;
         text-align: left;
-        padding: 16px;
+        margin: 0;
+        background-color: var(--hax-color-menu-heading-bg);
+        font-size: 18px;
+        line-height: 18px;
+        font-family: "Noto Serif", serif;
+        color: var(--hax-color-text);
       }
       app-drawer {
         --app-drawer-content-container: {
-          background-color: rgba(0, 0, 0, 0.7);
+          background-color: #ffffff;
         }
         --app-drawer-width: 320px;
       }
@@ -69,32 +67,16 @@ Polymer({
           -webkit-flex-basis: unset;
           flex-basis: unset;
         }
-        --paper-icon-button: {
-          background-color: rgba(0, 0, 0, 0.9) !important;
-          border-radius: 50%;
-        }
-        --code-pen-title-color: #ffffff;
-        --paper-checkbox-size: 22px;
-        --paper-checkbox-checked-ink-color: #ffffff;
-        --paper-checkbox-unchecked-ink-color: #ffffff;
-        --paper-checkbox-label-color: var(
-          --simple-colors-blue-grey-background1
-        );
+        --paper-checkbox-size: 16px;
+        --paper-checkbox-checked-ink-color: --hax-color-accent1;
         --paper-checkbox-label: {
-          font-size: 22px;
-          line-height: 32px;
+          font-size: 16px;
+          line-height: 16px;
         }
-        --paper-input-container-invalid-color: var(
-          --simple-colors-red-foreground3
-        );
-        --secondary-text-color: #ffffff;
-        --primary-text-color: #ffffff;
-        --paper-input-container-input-color: #ffffff;
-        --paper-input-container-color: #ffffff !important;
-        --paper-input-container-focus-color: var(
-          --simple-colors-default-theme-light-green-1
-        ) !important;
-        --paper-listbox-color: #000000;
+      }
+      .pref-container {
+        text-align: left;
+        padding: 16px;
       }
     </style>
     <app-drawer id="dialog" align="right" transition-duration="300">
@@ -157,6 +139,11 @@ Polymer({
       title: "HAX preferences",
       type: "object",
       properties: {
+        haxShowExportButton: {
+          title: "View source button",
+          type: "boolean",
+          value: true
+        },
         haxRayMode: {
           title: "X-Ray vision",
           type: "boolean",
@@ -167,8 +154,8 @@ Polymer({
           type: "boolean",
           value: false
         },
-        haxShowExportButton: {
-          title: "Show Export Panel",
+        haxVoiceCommands: {
+          title: "Voice commands",
           type: "boolean",
           value: false
         },
@@ -183,9 +170,9 @@ Polymer({
                 "color: #81a3a9;font-size: 18px;top: 100vh;position: fixed;right: 0;padding: 16px;font-style: italic;",
               id: "reportghissue",
               href:
-                "https://github.com/LRNWebComponents/hax-body/issues/new?body=URL%20base:%20" +
+                "https://github.com/elmsln/lrnwebcomponents/issues/new?body=URL%20base:%20" +
                 window.location.pathname +
-                "&title=HAX%20bug%20report%20from%20preference%20panel",
+                "&title=[hax] Bug%20report%20from%20preference%20panel",
               target: "_blank"
             },
             slot: "Report an issue with HAX"

@@ -16,8 +16,8 @@
       "hax": "src/a11y-media-player-hax.json"
     }
   },
-  "version": "2.0.0-alpha2",
-  "description": "",
+  "version": "2.0.1",
+  "description": "A feature rich, highly accessible video player",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
@@ -35,10 +35,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/dropdown-select": "^2.0.0-alpha2",
-    "@lrnwebcomponents/responsive-utility": "^2.0.0-alpha2",
-    "@lrnwebcomponents/simple-colors": "^2.0.0-alpha2",
-    "@lrnwebcomponents/simple-search": "^2.0.0-alpha2",
+    "@lrnwebcomponents/dropdown-select": "^2.0.1",
+    "@lrnwebcomponents/responsive-utility": "^2.0.1",
+    "@lrnwebcomponents/simple-colors": "^2.0.1",
+    "@lrnwebcomponents/simple-search": "^2.0.1",
     "@polymer/iron-a11y-keys": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-icons": "^3.0.1",

@@ -16,7 +16,7 @@
       "hax": "src/h-a-x-hax.json"
     }
   },
-  "version": "2.0.0-alpha2",
+  "version": "2.0.1",
   "description": "Single tag to transform authoring",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body": "^2.0.0-alpha2"
+    "@lrnwebcomponents/hax-body": "^2.0.1"
   },
   "devDependencies": {
     "@lrnwebcomponents/deduping-fix": "0.0.35",

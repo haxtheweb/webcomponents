@@ -138,7 +138,7 @@ Polymer({
    * Ready lifecycle
    */
   ready: function() {
-    this.__modal = window.simpleDrawer.requestAvailability();
+    this.__modal = window.SimpleDrawer.requestAvailability();
   },
 
   /**

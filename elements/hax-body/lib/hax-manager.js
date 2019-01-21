@@ -10,10 +10,10 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@vaadin/vaadin-upload/vaadin-upload.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "./hax-preview.js";
 import "./hax-app-browser.js";
 import "./hax-gizmo-browser.js";
+import "./hax-shared-styles.js";
 /**
 `hax-manager`
 A LRN element for brokering the UI for api endpoints both in querying and uploading of new media to eventually bubble up an event for hax-body to have content inserted into it. This is a wiring closet of sorts to ensure we can talk to any backend that's returning a slew of widgets / media to insert.
@@ -31,32 +31,29 @@ A LRN element for brokering the UI for api endpoints both in querying and upload
 Polymer({
   _template: html`
     <custom-style>
-      <style is="custom-style" include="materializecss-styles simple-colors">
+      <style is="custom-style" include="hax-shared-styles simple-colors">
         :host {
           display: block;
-          --hax-manager-steps-color: #ffffff;
-          --hax-manager-ink-color: #ffffff;
-          --hax-accent: var(--simple-colors-default-theme-light-green-1);
-          color: #ffffff;
+          color: var(--hax-color-text);
         }
         #dialog {
-          color: #ffffff;
+          color: var(--hax-color-text);
           z-index: 10000;
           padding: 56px 0;
-          margin-top: 40px;
+          margin-top: 56px;
           --app-drawer-width: 400px;
           --app-drawer-content-container: {
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: #ffffff;
           }
         }
         #closedialog {
           float: right;
-          top: 135px;
+          top: 124px;
           right: 0;
           position: absolute;
-          padding: 4px;
+          padding: 8px;
           margin: 0;
-          color: var(--simple-colors-default-theme-light-green-1, green);
+          color: var(--hax-color-text);
           background-color: transparent;
           width: 40px;
           height: 40px;
@@ -78,33 +75,34 @@ Polymer({
           --app-drawer-width: 1000px;
         }
         .title {
-          text-align: center;
+          position: relative;
           padding: 16px;
+          outline: 0;
+          font-weight: 600;
+          text-align: left;
           margin: 0;
-          background-color: rgba(0, 0, 0, 0.5);
-          font-size: 32px;
-          font-weight: bold;
-          font-family: sans-serif;
-          text-transform: uppercase;
-          color: var(--simple-colors-default-theme-light-green-1);
+          background-color: var(--hax-color-menu-heading-bg);
+          font-size: 18px;
+          line-height: 18px;
+          font-family: "Noto Serif", serif;
+          color: var(--hax-color-text);
         }
-        #activepage {
-        }
+
         #preview {
           height: 100%;
         }
         vaadin-upload {
-          --primary-color: var(--hax-accent);
+          --primary-color: var(--hax-color-accent1);
           --primary-font-color: #ffffff;
           --dark-primary-color: #ffffff;
-          --light-primary-color: var(--hax-accent);
+          --light-primary-color: var(--hax-color-accent1);
           --error-color: darkred;
           color: #ffffff;
           display: block;
           padding: 32px !important;
           --vaadin-upload-button-add-wrapper: {
             border: 2px solid #ffffff;
-            background-color: var(--hax-accent);
+            background-color: var(--hax-color-accent1);
             color: #ffffff;
             display: block;
           }
@@ -165,21 +163,11 @@ Polymer({
           width: 100%;
           margin: 0;
           padding: 16px;
-          background-color: var(--simple-colors-default-theme-light-green-1);
-          color: #000000;
+          background-color: var(--hax-color-accent1);
+          color: var(--hax-color-accent1-color);
         }
         paper-input {
-          color: #ffffff;
-          --paper-input-container-invalid-color: var(
-            --simple-colors-red-foreground3
-          );
-          --secondary-text-color: #ffffff;
-          --primary-text-color: #ffffff;
-          --paper-input-container-input-color: #ffffff;
-          --paper-input-container-color: #ffffff;
-          --paper-input-container-focus-color: var(
-            --simple-colors-default-theme-light-green-1
-          );
+          color: var(--hax-color-text);
         }
         @media screen and (max-width: 550px) {
           .hide-on-mobile {

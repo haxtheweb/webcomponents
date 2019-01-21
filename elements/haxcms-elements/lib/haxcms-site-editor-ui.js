@@ -2,6 +2,8 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/paper-fab/paper-fab.js";
+import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
+import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "./haxcms-outline-editor-dialog.js";
 import "./haxcms-manifest-editor-dialog.js";
 /**
@@ -259,6 +261,7 @@ Polymer({
 
   /**
    * Add button hit
+   * @todo simplify this to just what's needed; no crazy options
    */
   _addButtonTap: function(e) {
     this.__newForm = document.createElement("eco-json-schema-object");

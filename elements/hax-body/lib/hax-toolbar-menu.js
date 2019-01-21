@@ -73,7 +73,6 @@ Polymer({
     </style>
     <paper-menu-button>
       <hax-toolbar-item
-        corner="[[corner]]"
         id="button"
         slot="dropdown-trigger"
         icon="[[icon]]"

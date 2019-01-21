@@ -18,13 +18,17 @@ import "@polymer/iron-icons/device-icons.js";
 import "@polymer/iron-icons/image-icons.js";
 import "@polymer/paper-item/paper-item.js";
 import "@polymer/paper-input/paper-input.js";
+import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
+import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@lrnwebcomponents/paper-icon-picker/paper-icon-picker.js";
 import "@lrnwebcomponents/map-menu/map-menu.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
+import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
+import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body/lib/simple-colors-picker.js";
 import "@lrnwebcomponents/magazine-cover/magazine-cover.js";
@@ -37,7 +41,7 @@ import "@lrnwebcomponents/sites-listing/sites-listing.js";
 Polymer({
   is: "haxcms-site-listing",
   _template: html`
-    <style is="custom-style" include="simple-colors">
+    <style include="simple-colors">
       app-toolbar {
         background-color: rgba(255, 0, 116, 1);
         color: #ffffff;
@@ -98,11 +102,24 @@ Polymer({
         margin-right: 8px;
         --simple-colors-picker-preview-size: 20px;
       }
+      eco-json-schema-object {
+        --eco-json-schema-object-form : {
+          -ms-flex: unset;
+          -webkit-flex: unset;
+          flex: unset;
+          -webkit-flex-basis: unset;
+          flex-basis: unset;
+        }
+      }
+      #configform {
+      --eco-json-schema-object-form: {
+        display: block !important;
+      }
     </style>
     <jwt-login
       id="jwt"
-      url="[[basePath]]system/login.php"
-      logout-url="[[basePath]]system/logout.php"
+      url="[[__loginPath]]"
+      logout-url="[[__logoutPath]]"
       jwt="{{jwt}}"
     ></jwt-login>
     <iron-ajax
@@ -111,7 +128,7 @@ Polymer({
       body="[[createParams]]"
       headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
       content-type="application/json"
-      url="[[basePath]]system/createNewSite.php"
+      url="[[__createNewSitePath]]"
       handle-as="json"
       on-response="handleCreateResponse"
     ></iron-ajax>
@@ -121,9 +138,29 @@ Polymer({
       body="[[downloadParams]]"
       headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
       content-type="application/json"
-      url="[[basePath]]system/downloadSite.php"
+      url="[[__downloadSitePath]]"
       handle-as="json"
       on-response="handleDownloadResponse"
+    ></iron-ajax>
+    <iron-ajax
+      id="getconfigrequest"
+      method="POST"
+      body="[[configParams]]"
+      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
+      content-type="application/json"
+      url="[[__getConfigPath]]"
+      handle-as="json"
+      on-response="handleConfigResponse"
+    ></iron-ajax>
+    <iron-ajax
+      id="setconfigrequest"
+      method="POST"
+      body="[[setConfigParams]]"
+      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
+      content-type="application/json"
+      url="[[__setConfigPath]]"
+      handle-as="json"
+      on-response="handleSetConfigResponse"
     ></iron-ajax>
     <sites-listing
       id="siteslisting"
@@ -140,11 +177,18 @@ Polymer({
         ></paper-icon-button>
         <div main-title>[[title]]</div>
         <paper-icon-button
-          on-tap="_editTap"
-          id="edit"
-          icon="[[__editIcon]]"
+          on-tap="_settingsTap"
+          id="settings"
+          icon="icons:settings"
           hidden$="[[!loggedIn]]"
         ></paper-icon-button>
+        <paper-tooltip
+          for="settings"
+          position="bottom"
+          offset="12"
+          animation-delay="200"
+          >Settings</paper-tooltip
+        >
         <paper-icon-button
           on-tap="_loginUserRoutine"
           id="login"
@@ -205,12 +249,6 @@ Polymer({
           required
           autofocus
           value="{{siteTitle}}"
-        ></paper-input>
-        <paper-input
-          id="domain"
-          label="Domain"
-          required
-          value="[[domainName]]"
         ></paper-input>
         <paper-input id="newsitedescription" label="Description"></paper-input>
         <paper-input
@@ -299,6 +337,18 @@ Polymer({
         >
       </div>
     </paper-dialog>
+    <paper-dialog id="settingsdialog" with-backdrop>
+      <h3>Edit HAXCMS configuration</h3>
+      <paper-dialog-scrollable>
+        <eco-json-schema-object id="settingsform"></eco-json-schema-object>
+      </paper-dialog-scrollable>
+      <div class="buttons">
+        <paper-button on-tap="_saveConfig" dialog-confirm id="saveconfig" raised
+          >Save</paper-button
+        >
+        <paper-button dialog-dismiss>cancel</paper-button>
+      </div>
+    </paper-dialog>
   `,
   properties: {
     /**
@@ -313,13 +363,6 @@ Polymer({
      */
     siteTitle: {
       type: String
-    },
-    /**
-     * Domain name
-     */
-    domainName: {
-      type: String,
-      computed: "_computeDomainName(siteTitle)"
     },
     /**
      * Sites response change
@@ -362,6 +405,20 @@ Polymer({
       value: {}
     },
     /**
+     * Request params for loading config
+     */
+    configParams: {
+      type: Object,
+      value: {}
+    },
+    /**
+     * Request params for loading config
+     */
+    setConfigParams: {
+      type: Object,
+      value: {}
+    },
+    /**
      * Active item that's being reviewed / has bubbled up.
      */
     activeItem: {
@@ -394,16 +451,6 @@ Polymer({
    */
   drawerToggle: function(e) {
     this.$.drawer.toggle();
-  },
-  /**
-   * Generate domain from title
-   */
-  _computeDomainName: function(title) {
-    return (
-      "https://" +
-      title.replace(/[^a-zA-Z0-9]/g, "").toLowerCase() +
-      ".surge.sh"
-    );
   },
   /**
    * Site response has changed.
@@ -548,6 +595,13 @@ Polymer({
     this.editMode = !this.editMode;
   },
   /**
+   * _settingsTap
+   */
+  _settingsTap: function(e) {
+    this._loadConfig();
+    this.$.settingsdialog.opened = true;
+  },
+  /**
    * User clicked on the flyout menu, set that item to active.
    */
   _mapMenuSelection: function(e) {
@@ -596,6 +650,12 @@ Polymer({
    * Attached life cycle
    */
   attached: function() {
+    this.__loginPath = window.appSettings.login;
+    this.__logoutPath = window.appSettings.logout;
+    this.__setConfigPath = window.appSettings.setConfigPath;
+    this.__getConfigPath = window.appSettings.getConfigPath;
+    this.__createNewSitePath = window.appSettings.createNewSitePath;
+    this.__downloadSitePath = window.appSettings.downloadSitePath;
     // @todo support state routing for loadActiveSite
     document.body.addEventListener(
       "sites-listing-item-selected",
@@ -669,10 +729,18 @@ Polymer({
     );
   },
   /**
+   * created life cycle
+   */
+  created: function() {
+    window.JSONOutlineSchema.requestAvailability();
+    window.SimpleModal.requestAvailability();
+    window.SimpleToast.requestAvailability();
+    window.HAXCMS = {};
+  },
+  /**
    * Ready life cycle
    */
   ready: function() {
-    window.SimpleToast.requestAvailability();
     // set jwt from local storage bin
     this.jwt = localStorage.getItem("jwt");
   },
@@ -707,8 +775,6 @@ Polymer({
    */
   _createSite: function(e) {
     // ship off a new call
-    this.set("createParams.domain", this.$.domain.value);
-    this.notifyPath("createParams.domain");
     this.set("createParams.siteName", this.$.newsitetitle.value);
     this.notifyPath("createParams.siteName");
     this.set("createParams.description", this.$.newsitedescription.value);
@@ -744,16 +810,62 @@ Polymer({
     this.$.downloadrequest.generateRequest();
   },
   /**
+   * Load configuration
+   */
+  _loadConfig: function() {
+    // pass along the jwt for user "session" purposes
+    this.set("configParams.jwt", this.jwt);
+    this.notifyPath("configParams.jwt");
+    this.set("configParams.token", this.createParams.token);
+    this.notifyPath("configParams.token");
+
+    this.$.getconfigrequest.generateRequest();
+  },
+  /**
+   * Save configuration
+   */
+  _saveConfig: function(e) {
+    window.HAXCMS.config.values = this.$.settingsform.value;
+    console.log(window.HAXCMS.config.values);
+    // pass along the jwt for user "session" purposes
+    this.set("setConfigParams.values", {});
+    this.set("setConfigParams.values", window.HAXCMS.config.values);
+    this.notifyPath("configParams.values.*");
+    this.set("setConfigParams.jwt", this.jwt);
+    this.notifyPath("configParams.jwt");
+    this.set("setConfigParams.token", this.createParams.token);
+    this.notifyPath("setConfigParams.token");
+
+    this.$.setconfigrequest.generateRequest();
+  },
+  /**
    * Create a new site button was clicked
    */
   handleCreateResponse: function(e) {
     // update the listing data
-    this.fire("update-sites-listing-data", e.detail.response);
+    this.fire("sites-listing-refresh-data", e.detail.response);
     const evt = new CustomEvent("simple-toast-show", {
       bubbles: true,
       cancelable: true,
       detail: {
         text: e.detail.response.title + " created successfully!",
+        duration: 4000
+      }
+    });
+    this.dispatchEvent(evt);
+  },
+  handleConfigResponse: function(e) {
+    window.HAXCMS.config = e.detail.response;
+    this.$.settingsform.set("schema", window.HAXCMS.config.schema);
+    this.$.settingsform.set("value", window.HAXCMS.config.values);
+  },
+  handleSetConfigResponse: function(e) {
+    this.$.settingsdialog.opened = false;
+    const evt = new CustomEvent("simple-toast-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        text: "HAXCMS configuration updated!",
         duration: 4000
       }
     });
