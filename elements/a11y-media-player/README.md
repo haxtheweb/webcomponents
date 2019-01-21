@@ -1,22 +1,26 @@
 # &lt;a11y-media-player&gt;
 
 11
-> A highly accessible media player
+> 
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
-/* In an existing module / web component */
+/* In an existing JS module / web component */
 import '@lrnwebcomponents/a11y-media-player/a11y-media-player.js';
-/* At top of an application */
-<script type="module" src="node_modules/@lrnwebcomponents/a11y-media-player/a11y-media-player.js"></script>
+/* At top of an application with build routine */
+<script type="module" src="@lrnwebcomponents/a11y-media-player/a11y-media-player.js"></script>
 /* Alternatives for top of application */
 <script type="module">
   import '@lrnwebcomponents/a11y-media-player/a11y-media-player.js';
-
-  import {A11YMediaPlayer} from '@lrnwebcomponents/a11y-media-player/a11y-media-player.js';
+  // imperative form
+  import {A11yMediaPlayer} from '@lrnwebcomponents/a11y-media-player';
+  // if you don't have a build routine and need to reference directly
+  import './node_modules/@lrnwebcomponents/a11y-media-player/a11y-media-player.js';
 </script>
+// via unpkg CDN (good for testing)
+<script type="module" src="https://unpkg.com/@lrnwebcomponents/a11y-media-player/a11y-media-player.js"></script>
 ```
 
 ## Develop / Demo
@@ -40,7 +44,7 @@ $ yarn run build
 
 ## Contributing
 
-1. Fork it! `git clone git@github.com/elmsln/lrnwebcomponents.git`
+1. Fork it! `git clone https://github.com/elmsln/lrnwebcomponents.git`
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -m 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`

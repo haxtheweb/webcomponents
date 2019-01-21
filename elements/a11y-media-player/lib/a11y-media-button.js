@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaPlayerProperties } from "./a11y-media-player-properties.js";
+import { A11yMediaPlayerBehaviors } from "./a11y-media-player-behaviors.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
@@ -11,19 +11,26 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 export { A11yMediaButton };
 /**
  * `a11y-media-button`
- * `A button used in a11y-media-controls.`
+ * `A button used in a11y-media-controls and a11y-media-transcript-controls.`
  *
  * @microcopy - language worth noting:
  *  -
  *
- * @extends A11yMediaPlayerProperties
+ * @extends A11yMediaPlayerBehaviors
  * @customElement
  * @polymer
  */
-class A11yMediaButton extends A11yMediaPlayerProperties {
+class A11yMediaButton extends A11yMediaPlayerBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      /**
+       * is button action to send as an event
+       */
+      action: {
+        type: String,
+        value: null
+      },
       /*
        * id of element button controls
        */
@@ -73,7 +80,7 @@ class A11yMediaButton extends A11yMediaPlayerProperties {
 
   //get player-specifc properties
   static get behaviors() {
-    return [A11yMediaPlayerProperties];
+    return [A11yMediaPlayerBehaviors];
   }
 
   //render function

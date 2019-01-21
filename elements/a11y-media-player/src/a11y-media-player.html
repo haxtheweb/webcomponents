@@ -1,0 +1,113 @@
+
+  
+  <style is="custom-style" include="simple-colors"></style>
+  
+  <div class="sr-only">[[mediaCaption]]</div>
+  <div id="outerplayer">
+    <div id="innerplayer">
+      <div id="player"
+        style$="[[_getThumbnailCSS(thumbnailSrc,isYoutube,audioOnly)]]">
+        <a11y-media-play-button
+          id="playbutton"
+          action$="[[playPause.action]]"
+          audio-only$="[[audioOnly]]"
+          disabled="true"
+          elapsed$="[[_hidePlayButton(thumbnailSrc, isYoutube, __elapsed)]]"
+          hidden$="[[audioNoThumb]]"
+          disabled$="[[audioNoThumb]]"
+          on-controls-change="_onControlsChanged"
+          localization$="[[localization]]">
+        </a11y-media-play-button>
+        <a11y-media-html5
+          id="html5"
+          audio-only$="[[audioOnly]]"
+          autoplay$="[[autoplay]]"
+          cc$="[[cc]]"
+          crossorigin$="[[crossorigin]]"
+          hidden$="[[isYoutube]]"
+          media-lang$="[[mediaLang]]"
+          loop$="[[loop]]"
+          muted$="[[muted]]"
+          manifest$="[[manifest]]"
+          on-media-loaded="_handleMediaLoaded"
+          playing$="[[__playing]]"
+          playback-rate$="[[playbackRate]]"
+          thumbnail-src$="[[thumbnailSrc]]"
+          preload$="[[preload]]"
+          volume$="[[volume]]"
+        >
+          <slot></slot>
+        </a11y-media-html5>
+        <div id="youtube" 
+          elapsed$="[[__elapsed]]" 
+          lang$="[[mediaLang]]"
+          video-id$="[[videoId]]">
+        </div>
+        <div id="customcc" 
+          class="screen-only" 
+          hidden$="[[!showCustomCaptions]]">
+          <div id="customcctxt"></div>
+        </div>
+      </div>
+    </div>
+    <paper-slider id="slider"
+      class="screen-only"
+      max$="[[__duration]]"
+      on-dragging-changed="_handleSliderDragging"
+      on-focused-changed="_handleSliderKeyboard"
+      secondary-progress$="[[__buffered]]"
+      value$="[[__elapsed]]"
+    >
+    </paper-slider>
+    <a11y-media-controls id="controls"
+      cc$="[[cc]]"
+      fixed-height$="[[height]]"
+      has-captions$="[[hasCaptions]]"
+      has-transcript$="[[hasTranscript]]"
+      hide-transcript$="[[hideTranscript]]"
+      localization$="[[localization]]"
+      muted$="[[muted]]"
+      on-controls-change="_onControlsChanged"
+      on-print-transcript="_handlePrinting"
+      playing$="[[__playing]]"
+      search-transcript$="[[searchTranscript]]"
+      stand-alone$="[[standAlone]]"
+      volume="[[__volume]]">
+    </a11y-media-controls>
+    <div
+      aria-hidden="true"
+      class="screen-only media-caption"
+      hidden$="[[!_hasAttribute(mediaCaption)]]">
+      [[mediaCaption]]
+    </div>
+    <div class="print-only media-caption">[[printCaption]]</div>
+  </div>
+  <img id="printthumb" aria-hidden="true" src$="[[thumbnailSrc]]" />
+  <div id="outertranscript" hidden$="[[standAlone]]">
+    <div id="innertranscript" hidden$="[[hideTranscript]]">
+      <a11y-media-transcript-controls id="tcontrols"
+        accent-color$="[[accentColor]]"
+        localization$="[[localization]]"
+        dark$="[[darkTranscript]]"
+        disable-print-button$="[[disablePrintButton]]"
+        disable-scroll$="[[disableScroll]]"
+        disable-search$="[[disableSearch]]"
+        on-searchbar-added="_handleSearchAdded"
+        on-toggle-scroll="_handleTranscriptScrollToggle"
+        on-print-transcript="_handlePrinting"
+        stand-alone$="[[standAlone]]">
+      </a11y-media-transcript-controls>
+      <a11y-media-transcript id="transcript"
+        accent-color$="[[accentColor]]"
+        dark$="[[darkTranscript]]"
+        disable-scroll$="[[disableScroll]]"
+        disable-search$="[[disableSearch]]"
+        disable-interactive$="[[disableInteractive]]"
+        hide-timestamps$="[[hideTimestamps]]"
+        on-cue-seek="_handleCueSeek"
+        localization$="[[localization]]"
+        search="[[search]]"
+        selected-transcript$="[[__selectedTrack]]">
+      </a11y-media-transcript>
+    </div>
+  </div>

@@ -62,7 +62,18 @@
               <track label="English" kind="subtitles" srclang="en" src="samples/bueller.vtt" default>
             </a11y-media-player>
           </template>
-        </demo-snippet>
+        </demo-snippet>  
+        
+        <div class="smaller-examples"> 
+          <h2>Audio demo with height set to 165px (use this for iframes)</h2>
+          <demo-snippet>
+            <template>
+              <a11y-media-player accent-color="purple" audio-only show-custom-captions height="164px">
+                <source src="samples/bueller.mp3" type="audio/mp3">
+                <track label="English" kind="subtitles" srclang="en" src="samples/bueller.vtt" default>
+              </a11y-media-player>
+            </template>
+          </demo-snippet>
       </div>
     </div>
   </body>

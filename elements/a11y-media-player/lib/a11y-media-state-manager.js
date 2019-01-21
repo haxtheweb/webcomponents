@@ -6,22 +6,22 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/iron-resizable-behavior/iron-resizable-behavior.js";
 
 // register globally so we can make sure there is only one
-window.A11yMediaUtility = window.A11yMediaUtility || {};
+window.A11yMediaStateManager = window.A11yMediaStateManager || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
-window.A11yMediaUtility.requestAvailability = () => {
-  if (!window.A11yMediaUtility.instance) {
-    window.A11yMediaUtility.instance = document.createElement(
-      "a11y-media-utility"
+window.A11yMediaStateManager.requestAvailability = () => {
+  if (!window.A11yMediaStateManager.instance) {
+    window.A11yMediaStateManager.instance = document.createElement(
+      "a11y-media-state-manager"
     );
-    document.body.appendChild(window.A11yMediaUtility.instance);
+    document.body.appendChild(window.A11yMediaStateManager.instance);
   }
-  return window.A11yMediaUtility.instance;
+  return window.A11yMediaStateManager.instance;
 };
 /**
- * `a11y-media-utility`
- * `A utility that manages multiple instances of a11y-media-player on a single page.`
+ * `a11y-media-state-manager`
+ * `A utility that manages the state of multiple a11y-media-players on a single page.`
  *
  * @microcopy - language worth noting:
  *  -
@@ -29,7 +29,7 @@ window.A11yMediaUtility.requestAvailability = () => {
  * @customElement
  * @polymer
  */
-class A11yMediaUtility extends PolymerElement {
+class A11yMediaStateManager extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -37,7 +37,7 @@ class A11yMediaUtility extends PolymerElement {
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "a11y-media-utility";
+    return "a11y-media-state-manager";
   }
 
   // properties available to the custom element for data binding
@@ -71,8 +71,8 @@ class A11yMediaUtility extends PolymerElement {
     };
 
     // sets the instance to the current instance
-    if (!window.A11yMediaUtility.instance) {
-      window.A11yMediaUtility.instance = this;
+    if (!window.A11yMediaStateManager.instance) {
+      window.A11yMediaStateManager.instance = this;
 
       // listen for a players added to the page
       window.addEventListener("a11y-player", root.__playerLoader);
@@ -194,5 +194,5 @@ class A11yMediaUtility extends PolymerElement {
     window.removeEventListener("scroll", root.__scrollChecker);
   }
 }
-window.customElements.define(A11yMediaUtility.tag, A11yMediaUtility);
-export { A11yMediaUtility };
+window.customElements.define(A11yMediaStateManager.tag, A11yMediaStateManager);
+export { A11yMediaStateManager };

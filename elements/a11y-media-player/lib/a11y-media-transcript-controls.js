@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaPlayerProperties } from "./a11y-media-player-properties.js";
+import { A11yMediaPlayerBehaviors } from "./a11y-media-player-behaviors.js";
 import "@lrnwebcomponents/simple-search/simple-search.js";
 import "./a11y-media-button.js";
 
@@ -26,22 +26,14 @@ export { A11yMediaTranscriptControls };
   disable-search$="[[disableSearch]]"             // Disable transcript search? 
 </a11y-media-transcript-controls>```
  *
- * @extends A11yMediaPlayerProperties
+ * @extends A11yMediaPlayerBehaviors
  * @customElement
  * @polymer
  */
-class A11yMediaTranscriptControls extends A11yMediaPlayerProperties {
+class A11yMediaTranscriptControls extends A11yMediaPlayerBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      /**
-       * Language
-       */
-      lang: {
-        type: String,
-        value: "en",
-        reflectToAttribute: true
-      },
       /**
        * target of the controls
        */
@@ -62,7 +54,7 @@ class A11yMediaTranscriptControls extends A11yMediaPlayerProperties {
 
   //get player-specifc properties
   static get behaviors() {
-    return [A11yMediaPlayerProperties];
+    return [A11yMediaPlayerBehaviors];
   }
 
   //render function
@@ -70,41 +62,28 @@ class A11yMediaTranscriptControls extends A11yMediaPlayerProperties {
     return html`
       <style is="custom-style" include="simple-colors">
         :host {
+          display: flex;
+          height: 44px;
+          max-height: 44px;
+          min-height: 44px;
+          color: var(--a11y-media-color);
           background-color: var(--a11y-media-transcript-bg-color);
-          color: var(--a11y-media-transcript-text-color);
-          --a11y-media-button-color: var(--a11y-media-transcript-color);
           --a11y-media-button-bg-color: var(--a11y-media-transcript-bg-color);
-          --a11y-media-button-toggle-color: var(
-            --a11y-media-transcript-accent-color
-          );
-          --a11y-media-button-hover-color: var(
-            --a11y-media-transcript-faded-accent-color
-          );
           --a11y-media-button-hover-bg-color: var(
             --a11y-media-transcript-bg-color
           );
-          --simple-search-input-color: var(--a11y-media-transcript-color);
-          --simple-search-input-line-color: var(
-            --a11y-media-transcript-accent-color
-          );
+          --simple-search-input-text-color: var(--a11y-media-color);
+          --simple-search-input-line-color: var(--a11y-media-accent-color);
           --simple-search-input-placeholder-color: var(
             --a11y-media-transcript-color
           );
-          --simple-search-button-color: var(
-            --a11y-media-transcript-accent-color
-          );
+          --simple-search-button-color: var(--a11y-media-accent-color);
           --simple-search-button-hover-color: var(
-            --a11y-media-transcript-faded-accent-color
+            --a11y-media-faded-accent-color
           );
-          --simple-search-button-bg-color: var(
-            --a11y-media-transcript-bg-color
-          );
-          --simple-search-button-border-color: var(
-            --a11y-media-transcript-bg-color
-          );
-          --simple-search-button-hover-border-color: var(
-            --a11y-media-transcript-bg-color
-          );
+          --simple-search-button-bg-color: var(--a11y-media-bg-color);
+          --simple-search-button-border-color: var(--a11y-media-bg-color);
+          --simple-search-button-hover-border-color: var(--a11y-media-bg-color);
           --simple-search-button-disabled-color: var(
             --simple-colors-default-theme-grey-5
           );
@@ -114,6 +93,7 @@ class A11yMediaTranscriptControls extends A11yMediaPlayerProperties {
           --simple-search-button-disabled-border-color: var(
             --simple-colors-default-theme-grey-3
           );
+          --paper-input-container-input-color: var(--a11y-media-color);
           --simple-search-container: {
             padding: 0 15px;
           }
@@ -145,16 +125,16 @@ class A11yMediaTranscriptControls extends A11yMediaPlayerProperties {
         <div id="searching">
           <simple-search
             id="simplesearch"
-            disabled$="[[disableSearch]]"
             controls="transcript"
+            disabled$="[[disableSearch]]"
             hidden$="[[disableSearch]]"
-            no-label-float=""
-            next-button-icon$="[[searchNextIcon]]"
-            next-button-label$="[[searchNextLabel]]"
-            prev-button-icon$="[[searchPrevIcon]]"
-            prev-button-label$="[[searchPrevLabel]]"
-            search-input-icon$="[[searchIcon]]"
-            search-input-label$="[[searchLabel]]"
+            no-label-float
+            next-button-icon$="[[_getLocal(localization,'nextResult','icon')]]"
+            next-button-label$="[[_getLocal(localization,'nextResult','label')]]"
+            prev-button-icon$="[[_getLocal(localization,'prevResult','icon')]]"
+            prev-button-label$="[[_getLocal(localization,'prevResult','label')]]"
+            search-input-icon$="[[_getLocal(localization,'search','icon')]]"
+            search-input-label$="[[_getLocal(localization,'search','label')]]"
             target="[[target]]"
           >
           </simple-search>
@@ -163,9 +143,9 @@ class A11yMediaTranscriptControls extends A11yMediaPlayerProperties {
           <a11y-media-button
             id="scroll"
             controls="transcript"
-            icon="[[autoScrollIcon]]"
-            label="[[autoScrollLabel]]"
-            on-click="_handleScrollClick"
+            icon="[[_getLocal(localization,'autoScroll','icon')]]"
+            label="[[_getLocal(localization,'autoScroll','label')]]"
+            on-tap="_handleScrollClick"
             toggle$="[[!disableScroll]]"
           >
           </a11y-media-button>
@@ -176,11 +156,11 @@ class A11yMediaTranscriptControls extends A11yMediaPlayerProperties {
           disabled$="[[disablePrintButton]]"
         >
           <a11y-media-button
-            controls="transcript"
             id="print"
-            icon="[[printIcon]]"
-            on-click="_handlePrintClick"
-            label="[[printLabel]]"
+            controls="transcript"
+            icon$="[[_getLocal(localization,'print','icon')]]"
+            label="[[_getLocal(localization,'print','label')]]"
+            on-tap="_handlePrintClick"
           >
           </a11y-media-button>
         </div>
@@ -205,13 +185,6 @@ class A11yMediaTranscriptControls extends A11yMediaPlayerProperties {
    */
   _handleScrollClick(e) {
     this.dispatchEvent(new CustomEvent("toggle-scroll", { detail: this }));
-  }
-
-  /**
-   * handles the print transcript button
-   */
-  _handlePrintClick(e) {
-    this.dispatchEvent(new CustomEvent("print-transcript", { detail: this }));
   }
 }
 window.customElements.define(

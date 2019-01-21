@@ -3,15 +3,15 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaPlayerProperties } from "./a11y-media-player-properties.js";
+import { A11yMediaPlayerBehaviors } from "./a11y-media-player-behaviors.js";
 
-export { A11yMediaLoader };
+export { A11yMediaHtml5 };
 /**
- * `a11y-media-loader`
+ * `a11y-media-html5`
  * `Loads HTML5 audio or video. `
  *
  * @microcopy - language worth noting:
-```<a11y-media-loader 
+```<a11y-media-html5 
     autoplay$="[[autoplay]]"                    // Is player set to autoplay (not recommended for a11y)?
     cc$="[[cc]]"                                // Are closed captions toggled? 
     height$="[[height]]"                        // The height of player
@@ -27,13 +27,13 @@ export { A11yMediaLoader };
     <track label="English" kind="subtitles" srclang="en" src="path/to/subtitles/en.vtt" default>
     <track label="Deutsch" kind="subtitles" srclang="de" src="path/to/subtitles/de.vtt">
     <track label="Español" kind="subtitles" srclang="es" src="path/to/subtitles/es.vtt">
-  </a11y-media-loader>```
+  </a11y-media-html5>```
  *
  * @extends A11yMediaBehaviors
  * @customElement
  * @polymer
  */
-class A11yMediaLoader extends A11yMediaPlayerProperties {
+class A11yMediaHtml5 extends A11yMediaPlayerBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -59,14 +59,6 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
         value: null
       },
       /*
-       * Is it toggled on?
-       */
-      toggle: {
-        type: Boolean,
-        value: false,
-        reflectToAttribute: true
-      },
-      /*
        * Is it disabled?
        */
       disabled: {
@@ -81,7 +73,7 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "a11y-media-loader";
+    return "a11y-media-html5";
   }
 
   //get player-specific behaviors
@@ -95,19 +87,25 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
       <style>
         :host {
           height: 100%;
+          display: flex;
+          align-items: stretch;
+          position: relative;
+        }
+        :host([hidden]) {
+          display: none;
         }
         #video {
           width: 100%;
           max-width: 100%;
-          max-height: 80vh;
         }
       </style>
       <video
         id="video"
+        aria-hidden$="[[isYoutube]]"
         autoplay$="[[autoplay]]"
         crossorigin$="[[crossorigin]]"
         hidden$="[[audioOnly]]"
-        lang$="[[lang]]"
+        lang$="[[mediaLang]]"
         on-loadedmetadata="_handleMetadata"
         poster$="[[thumbnailSrc]]"
         src$="[[manifest]]"
@@ -120,10 +118,9 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
         autoplay$="[[autoplay]]"
         crossorigin$="[[crossorigin]]"
         hidden$="[[!audioOnly]]"
-        lang$="[[lang]]"
+        lang$="[[mediaLang]]"
         on-loadedmetadata="_handleMetadata"
         poster$="[[thumbnailSrc]]"
-        src$="[[manifest]]"
         preload="metadata"
       >
         HTML5 audio not supported
@@ -297,4 +294,4 @@ class A11yMediaLoader extends A11yMediaPlayerProperties {
     this.media.muted = mode;
   }
 }
-window.customElements.define(A11yMediaLoader.tag, A11yMediaLoader);
+window.customElements.define(A11yMediaHtml5.tag, A11yMediaHtml5);

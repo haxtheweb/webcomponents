@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaPlayerProperties } from "./a11y-media-player-properties.js";
+import { A11yMediaPlayerBehaviors } from "./a11y-media-player-behaviors.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 
 export { A11yMediaPlayButton };
@@ -14,41 +14,26 @@ export { A11yMediaPlayButton };
  * @microcopy - language worth noting:
 ```<a11y-media-play-button
   playing$="[[__playing]]"            // Is the media currently playing?
-  thumbnail-css$="[[thumbnailCSS]]"   // Optional source for a thumbnail image
 </a11y-media-play-button>
 
 Custom styles:
 --a11y-play-button-bg-color: overlay background color, default is #000000
 --a11y-play-button-focus-bg-color: overlay background color, default is --a11y-play-button-bg-color```
  *
- * @extends A11yMediaPlayerProperties
+ * @extends A11yMediaPlayerBehaviors
  * @customElement
  * @polymer
  */
-class A11yMediaPlayButton extends A11yMediaPlayerProperties {
+class A11yMediaPlayButton extends A11yMediaPlayerBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
       /**
-       * label for play button on player controls
+       * is button action to send as an event
        */
-      label: {
+      action: {
         type: String,
-        computed: "_getPlaying(playing,pauseLabel,playLabel)"
-      },
-      /**
-       * label when playing
-       */
-      pauseLabel: {
-        type: String,
-        value: "play"
-      },
-      /**
-       * label when paused
-       */
-      playLabel: {
-        type: String,
-        value: "play"
+        value: null
       },
       /**
        * is button disabled
@@ -77,7 +62,7 @@ class A11yMediaPlayButton extends A11yMediaPlayerProperties {
 
   //get player-specifc properties
   static get behaviors() {
-    return [A11yMediaPlayerProperties];
+    return [A11yMediaPlayerBehaviors];
   }
 
   //render function
@@ -86,14 +71,11 @@ class A11yMediaPlayButton extends A11yMediaPlayerProperties {
       <style>
         :host {
           display: block;
-          z-index: 2;
           opacity: 1;
           transition: opacity 0.5s;
-          position: absolute;
-          height: 100%;
         }
-        :host([disabled]:not([audio-only])),
-        :host([playing]:not([audio-only])) {
+        :host([disabled]),
+        :host([elapsed]) {
           opacity: 0;
         }
         :host,
@@ -101,7 +83,6 @@ class A11yMediaPlayButton extends A11yMediaPlayerProperties {
         :host #background,
         :host #button {
           width: 100%;
-          max-height: 80vh;
           top: 0;
           left: 0;
           opacity: 1;
@@ -115,12 +96,6 @@ class A11yMediaPlayButton extends A11yMediaPlayerProperties {
           padding: 0;
           margin: 0;
           border: none;
-        }
-        :host([audio-only][thumbnail-src][playing]) #button > *:not(#thumbnail),
-        :host([audio-only][thumbnail-src][disabled])
-          #button
-          > *:not(#thumbnail) {
-          opacity: 0;
         }
         :host #thumbnail {
           height: auto;
@@ -170,7 +145,6 @@ class A11yMediaPlayButton extends A11yMediaPlayerProperties {
         on-tap="_buttonTap"
         title$="[[label]]"
       >
-        <div id="background"></div>
         <svg
           id="svg"
           xmlns="http://www.w3.org/2000/svg"
@@ -195,7 +169,7 @@ class A11yMediaPlayButton extends A11yMediaPlayerProperties {
               fill="#ffffff"
               font-size="30px"
             >
-              [[label]]
+              [[playPause.label]]
             </text>
           </g>
         </svg>
@@ -209,20 +183,6 @@ class A11yMediaPlayButton extends A11yMediaPlayerProperties {
   connectedCallback() {
     super.connectedCallback();
     this.$.text.innerText = this.playLabel;
-    if (this.audioOnly) {
-      let root = this,
-        img = this.$.thumbnail,
-        check = setInterval(function() {
-          if (img !== null && img !== undefined && img.naturalWidth) {
-            clearInterval(check);
-            let aspect = (img.naturalHeight / img.naturalWidth) * 100;
-            root.style.height = aspect + "%";
-            root.dispatchEvent(
-              new CustomEvent("thumbnail-aspect", { detail: aspect })
-            );
-          }
-        }, 10);
-    }
   }
 
   /**
@@ -231,17 +191,6 @@ class A11yMediaPlayButton extends A11yMediaPlayerProperties {
   ready() {
     super.ready();
     this.__target = this.$.button;
-  }
-
-  /**
-   * get label based on whether or not the video is playing
-   *
-   * @param {boolean} Is the media playing?
-   * @param {string} label if button pauses media
-   * @param {string} label if button plays media
-   */
-  _getPlaying(playing, pauseLabel, playLabel) {
-    return playing ? pauseLabel : playLabel;
   }
 
   /**

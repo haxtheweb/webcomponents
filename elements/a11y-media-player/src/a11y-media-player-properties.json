@@ -1,0 +1,64 @@
+{
+  /**
+   * The default media caption if none is given.
+   */
+  "mediaCaption": {
+    "type": "String",
+    "computed": "_getMediaCaption(audioOnly,localization,mediaTitle)"
+  },
+  /**
+   * The media caption that displays when the page is printed.
+   */
+  "printCaption": {
+    "type": "String",
+    "computed": "_getPrintCaption(audioOnly,audioLabel,videoLabel,mediaTitle)"
+  },
+  /**
+   * is YouTube?
+   */
+  "showCustomCaptions": {
+    "type": "Boolean",
+    "computed": "_showCustomCaptions(isYoutube,audioOnly,hasCaptions,cc)"
+  },
+  /**
+   * Optional array ouf sources.
+   */
+  "sources": {
+    "type": "Array",
+    "value": []
+  },
+  /**
+   * Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?
+   */
+  "sticky": {
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": true
+  },
+  /**
+   * When playing but scrolled off screen, to which corner does it "stick":
+   * top-left, top-right, bottom-left, bottom-right, or none?
+   * Default is "top-right". "None" disables stickiness.
+   */
+  "stickyCorner": {
+    "type": "String",
+    "value": "top-right",
+    "reflectToAttribute": true
+  },
+  /**
+   * Optional array ouf tracks.
+   */
+  "tracks": {
+    "type": "Array",
+    "value": []
+  },
+  /**
+   * Notice if the video is playing
+   */
+  "__playing": {
+    "type": "Boolean",
+    "value": false,
+    "notify": true,
+    "reflectToAttribute": true
+  }
+}

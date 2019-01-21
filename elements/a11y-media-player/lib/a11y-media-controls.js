@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { A11yMediaPlayerProperties } from "./a11y-media-player-properties.js";
+import { A11yMediaPlayerBehaviors } from "./a11y-media-player-behaviors.js";
 import "@polymer/paper-menu-button/paper-menu-button.js";
 import "@polymer/paper-listbox/paper-listbox.js";
 import "@polymer/paper-item/paper-item.js";
@@ -42,29 +42,41 @@ export { A11yMediaControls };
   volume$="[[volume]]">                       // The initial volume of the video
 </a11y-media-button>```
  *
- * @extends A11yMediaPlayerProperties
+ * @extends A11yMediaPlayerBehaviors
  * @customElement
  * @polymer
  */
-class A11yMediaControls extends A11yMediaPlayerProperties {
+class A11yMediaControls extends A11yMediaPlayerBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
       /**
-       * play/pause button
+       * Is the player a fixed height (iframe mode) so that theure is no transcript toggle?
        */
-      playPause: {
-        type: Object,
-        computed:
-          "_getPlayPause(playing,pauseLabel,pauseIcon,playLabel,playIcon)"
+      fixedHeight: {
+        type: Boolean,
+        value: false
       },
       /**
-       * mute/unmute button
+       * hide the transcript toggle menu item?
        */
-      muteUnmute: {
-        type: Object,
-        computed:
-          "_getMuteUnmute(muted,muteLabel,muteIcon,unmuteLabel,unmuteIcon)"
+      hideTranscriptButton: {
+        type: Boolean,
+        computed: "_hideTranscriptButton(noTranscriptMenu,compactControls)"
+      },
+      /**
+       * hide the print transcript feature available?
+       */
+      noPrinting: {
+        type: Boolean,
+        computed: "_noPrinting(standalone,fixedHeight)"
+      },
+      /**
+       * Is the transctipt toggle feature available?
+       */
+      noTranscriptToggle: {
+        type: Boolean,
+        computed: "_noTranscriptToggle(standalone,fixedHeight,hasTranscript)"
       }
     };
   }
@@ -79,7 +91,7 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
 
   //get player-specifc properties
   static get behaviors() {
-    return [A11yMediaPlayerProperties];
+    return [A11yMediaPlayerBehaviors];
   }
 
   //render function
@@ -90,33 +102,33 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
           display: block;
           width: 100%;
           max-width: 100%;
-          position: relative;
           height: 44px;
+          max-height: 44px;
+          position: relative;
           color: var(--a11y-media-color);
-          background-color: var(--a11y-media-bg-color);
-          --paper-listbox-background-color: var(--a11y-media-controls-bg-color);
-          --paper-listbox-color: var(--a11y-media-controls-color);
+          --primary-text-color: var(--a11y-media-settings-menu-color);
+          --paper-menu-button-dropdown-background: var(--a11y-media-settings-menu-bg-color);
+          --paper-listbox-background-color: var(--a11y-media-settings-menu-bg-color);
+          --paper-listbox-color: var(--a11y-media-settings-menu-color);
           --paper-listbox: {
             padding: 0;
           };
-          --paper-menu-button-dropdown-background: var(--a11y-media-controls-bg-color);
           --paper-menu-button: {
-            background-color: var(--a11y-media-controls-bg-color);
-            color: var(--a11y-media-controls-color);
+            background-color: var(--a11y-media-settings-menu-bg-color);
+            color: var(--a11y-media-settings-menu-color);
           };
           --paper-menu-button-dropdown: {
-            background-color: var(--a11y-media-controls-bg-color);
-            color: var(--a11y-media-controls-color);
+            background-color: var(--a11y-media-settings-menu-bg-color);
+            color: var(--a11y-media-settings-menu-color);
             margin-top: 0 !important;
             margin-bottom: 0 !important;
           };
           --paper-item-selected: {
-            color: var(--a11y-media-controls-hover-color);
+            color: var(--a11y-media-settings-menu-hover-color);
           };
           --paper-item-focused: {
-            color: var(--a11y-media-controls-hover-color);
+            color: var(--a11y-media-settings-menu-hover-color);
           };
-          --primary-text-color: var(--a11y-media-controls-color);
         }
         :host > #controls-left {
           position: absolute;
@@ -133,14 +145,14 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
           padding: 0;
         }
         :host paper-icon-button {
-          background-color: var(--a11y-media-controls-bg-color);
-          color: var(--a11y-media-controls-color);
+          background-color: var(--a11y-media-settings-menu-bg-color);
+          color: var(--a11y-media-settings-menu-color);
         }
         :host paper-icon-button:active,
         :host paper-icon-button:focus,
         :host paper-icon-button:hover {
-          background-color: var(--a11y-media-controls-bg-color);
-          color: var(--a11y-media-controls-color);
+          background-color: var(--a11y-media-settings-menu-bg-color);
+          color: var(--a11y-media-settings-menu-color);
         }
         :host paper-item {
           min-height: 40;
@@ -162,20 +174,14 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
         :host([hide-play-status]) .play-status {
           display: none;
         }
-        :host(:not([has-captions])) .captions {
-          display: none;
-        }
-        :host(:not([has-transcript])) .transcript,
-        :host(.stand-alone) .transcript {
-          display: none;
-        }
         :host .setting {
           display: flex;
           justify-content: space-between;
+          align-items: center;
           width: 100%;
         }
         :host .setting-text {
-          min-width: 100px;
+          min-width: 125px;
         }
         :host .setting-control {
           max-width: 100px;
@@ -241,46 +247,51 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
       </style>
       <div id="controls-left">
         <a11y-media-button
-          icon="[[playPause.icon]]"
-          label="[[playPause.label]]"
+          action$="[[playPause.action]]"
+          icon$="[[playPause.icon]]"
+          label$="[[playPause.label]]"
           on-tap="_onButtonTap"
         ></a11y-media-button>
         <a11y-media-button
+          action="rewind"
           disabled$="[[compactControls]]"
           hidden$="[[compactControls]]"
-          icon="[[rewindIcon]]"
-          label="[[rewindLabel]]"
+          icon$="[[_getLocal(localization,'rewind','icon')]]"
+          label$="[[_getLocal(localization,'rewind','label')]]"
           on-tap="_onButtonTap"
         ></a11y-media-button>
         <a11y-media-button
+          action="forward"
           disabled$="[[compactControls]]"
           hidden$="[[compactControls]]"
-          icon="[[forwardIcon]]"
-          label="[[forwardLabel]]"
+          icon$="[[_getLocal(localization,'forward','icon')]]"
+          label$="[[_getLocal(localization,'forward','label')]]"
           on-tap="_onButtonTap"
         ></a11y-media-button>
         <a11y-media-button
+          action="restart"
           disabled$="[[compactControls]]"
           hidden$="[[compactControls]]"
-          icon="[[restartIcon]]"
-          label="[[restartLabel]]"
+          icon$="[[_getLocal(localization,'restart','icon')]]"
+          label$="[[_getLocal(localization,'restart','label')]]"
           on-tap="_onButtonTap"
         ></a11y-media-button>
         <div id="showvolume">
           <a11y-media-button
             id="mute"
-            icon="[[muteUnmute.icon]]"
-            label="[[muteUnmute.label]]"
+            action$="[[muteUnmute.action]]"
+            icon$="[[muteUnmute.icon]]"
+            label$="[[muteUnmute.label]]"
             on-tap="_onButtonTap"
           ></a11y-media-button>
           <span id="volume-slider-label" class="sr-only">[[volumeLabel]]</span>
           <paper-slider
-            aria-labelledby="volume-slider-label"
             id="volume"
+            aria-labelledby="volume-slider-label"
             min="0"
             max="100"
             on-change="_onSettingsChanged"
-            pin=""
+            pin
             step="10"
             value$="[[volume]]"
           ></paper-slider>
@@ -291,52 +302,69 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
       </div>
       <div id="controls-right">
         <a11y-media-button
-          class="captions"
-          hidden="[[!hasCaptions]]"
-          icon="[[captionsIcon]]"
-          label="[[captionsLabel]]"
+          action="captions"
+          disabled$="[[!hasCaptions]]"
+          hidden$="[[!hasCaptions]]"
+          icon$="[[_getLocal(localization,'captions','icon')]]"
+          label$="[[_getLocal(localization,'captions','label')]]"
           on-tap="_onButtonTap"
-          toggle="[[cc]]"
+          toggle$="[[cc]]"
         >
         </a11y-media-button>
         <a11y-media-button
-          class="transcript"
+          action="transcript"
           controls="transcript"
-          hidden$="[[_showTranscriptButton(compactControls,standAlone)]]"
-          disabled$="[[_showTranscriptButton(compactControls,standAlone)]]"
-          icon="[[transcriptIcon]]"
-          label="[[transcriptLabel]]"
+          disabled$="[[hideTranscriptButton]]"
+          hidden$="[[hideTranscriptButton]]"
+          icon$="[[_getLocal(localization,'transcript','icon')]]"
+          label$="[[_getLocal(localization,'transcript','label')]]"
           on-tap="_onButtonTap"
-          toggle="[[!hideTranscript]]"
+          toggle$="[[!hideTranscript]]"
+        >
+        </a11y-media-button>
+        <a11y-media-button
+          action="print"
+          disabled$="[[noPrinting]]"
+          hidden$="[[noPrinting]]"
+          icon$="[[_getLocal(localization,'print','icon')]]"
+          label="[[_getLocal(localization,'print','label')]]"
+          on-tap="_handlePrintClick"
         >
         </a11y-media-button>
         <paper-menu-button
           id="settings"
-          allow-outside-scroll=""
+          allow-outside-scroll
           horizontal-align="right"
-          ignore-select=""
+          ignore-select
           on-change="_onSettingsChanged"
           on-iron-activate="_handleSettingsActivate"
           on-iron-select="_handleSettingsSelect"
           vertical-align="bottom"
         >
           <paper-icon-button
-            icon$="[[settingsIcon]]"
+            action="settings"
+            alt$="[[_getLocal(localization,'settings','label')]]"
+            icon$="[[_getLocal(localization,'settings','icon')]]"
             slot="dropdown-trigger"
-            alt="[[settingsLabel]]"
-          ></paper-icon-button>
+          >
+          </paper-icon-button>
           <paper-listbox id="settingslist" slot="dropdown-content">
-            <paper-item class="captions">
+            <paper-item hidden$="[[!hasCaptions]]">
               <div class="setting">
-                <div class="setting-text">[[captionsMenuLabel]]</div>
+                <div class="setting-text">
+                  [[_getLocal(localization,'captions','label')]]
+                </div>
                 <div class="setting-control">
                   <dropdown-select
                     id="tracks"
-                    no-label-float=""
+                    disabled$="[[!hasCaptions]]"
+                    no-label-float
                     on-change="_handleTrackChange"
-                    value=""
+                    value
                   >
-                    <paper-item value="">[[captionsMenuOff]]</paper-item>
+                    <paper-item value=""
+                      >[[_getLocal(localization,'captions','off')]]</paper-item
+                    >
                     <template is="dom-repeat" items="{{tracks}}" as="option">
                       <paper-item value$="{{option.value}}"
                         >{{option.text}}</paper-item
@@ -346,10 +374,10 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
                 </div>
               </div>
             </paper-item>
-            <paper-item hidden$="[[!compactControls]]" class="transcript">
+            <paper-item hidden$="[[noTranscriptToggle]]">
               <div class="setting">
                 <div id="transcript-label" class="setting-text">
-                  [[transcriptMenuLabel]]
+                  [[_getLocal(localization,'transcript','label')]]
                 </div>
                 <div class="setting-control">
                   <paper-toggle-button
@@ -357,7 +385,7 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
                     aria-labelledby="transcript-label"
                     checked$="[[!hideTranscript]]"
                     controls="transcript"
-                    disabled$="[[!compactControls]]"
+                    disabled$="[[noTranscriptToggle]]"
                   >
                   </paper-toggle-button>
                 </div>
@@ -365,26 +393,9 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
             </paper-item>
             <paper-item>
               <div class="setting">
-                <div id="speed-label" class="setting-text">[[speedLabel]]</div>
-                <div class="setting-control">
-                  <paper-slider
-                    id="speed"
-                    aria-labelledby="speed-label"
-                    class="setting-slider"
-                    label="tracks"
-                    min="0.5"
-                    max="4"
-                    pin=""
-                    step="0.5"
-                    tab-index="-1"
-                    value$="[[playbackRate]]"
-                  ></paper-slider>
+                <div id="loop-label" class="setting-text">
+                  [[_getLocal(localization,'loop','label')]]
                 </div>
-              </div>
-            </paper-item>
-            <paper-item>
-              <div class="setting">
-                <div id="loop-label" class="setting-text">[[loopLabel]]</div>
                 <div class="setting-control">
                   <paper-toggle-button
                     id="loop"
@@ -394,21 +405,40 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
                 </div>
               </div>
             </paper-item>
-            <paper-item hidden$="[[!compactControls]]">
-              <span class="play-status settings-menu">
-                <span id="statmenu"></span>
-              </span>
+            <paper-item>
+              <div class="setting">
+                <div id="speed-label" class="setting-text">
+                  [[_getLocal(localization,'speed','label')]]
+                </div>
+                <div class="setting-control">
+                  <paper-slider
+                    id="speed"
+                    aria-labelledby="speed-label"
+                    class="setting-slider"
+                    label="tracks"
+                    min="0.5"
+                    max="4"
+                    pin
+                    step="0.5"
+                    tab-index="-1"
+                    value$="[[playbackRate]]"
+                  ></paper-slider>
+                </div>
+              </div>
             </paper-item>
           </paper-listbox>
         </paper-menu-button>
-        <paper-tooltip for="settings">[[settingsLabel]]</paper-tooltip>
+        <paper-tooltip for="settings">
+          [[_getLocal(localization,'settings','label')]]
+        </paper-tooltip>
         <template is="dom-if" if="[[fullscreenButton]]">
-          <template is="dom-if" if="[[!noHeight]]">
+          <template is="dom-if" if="[[!audioNoThumb]]">
             <a11y-media-button
-              icon="[[fullscreenIcon]]"
-              label="[[fullscreenLabel]]"
+              action="fullscreen"
+              icon$="[[_getLocal(localization,'fullscreen','icon')]]"
+              label$="[[_getLocal(localization,'fullscreen','label')]]"
               on-tap="_onButtonTap"
-              toggle="[[fullscreen]]"
+              toggle$="[[fullscreen]]"
               step="1"
             >
             </a11y-media-button>
@@ -460,7 +490,6 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
    */
   setStatus(status) {
     this.$.statbar.innerText = status;
-    this.$.statmenu.innerText = status;
   }
 
   /**
@@ -471,38 +500,6 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
   setTracks(tracks) {
     this.set("tracks", []);
     this.set("tracks", tracks.slice(0));
-  }
-
-  /**
-   * set play/pause button
-   *
-   * @param {boolean} Is the media playing?
-   * @param {string} label if button pauses media
-   * @param {string} icon if button pauses media
-   * @param {string} label if button plays media
-   * @param {string} icon if button plays media
-   * @returns {object} an object containing the current state of the play/pause button, eg., `{"label": "Pause", "icon": "av:pause"}`
-   */
-  _getPlayPause(playing, pauseLabel, pauseIcon, playLabel, playIcon) {
-    return playing
-      ? { label: pauseLabel, icon: pauseIcon }
-      : { label: playLabel, icon: playIcon };
-  }
-
-  /**
-   * set play/pause button
-   *
-   * @param {boolean} Is the media muted?
-   * @param {string} label if button mutes media
-   * @param {string} icon if button mutes media
-   * @param {string} label if button unmutes media
-   * @param {string} icon if button unmutes media
-   * @returns {object} an object containing the current state of the play/pause button, eg., `{"label": "mute", "icon": "av:volume-off"}`
-   */
-  _getMuteUnmute(muted, muteLabel, muteIcon, unmuteLabel, unmuteIcon) {
-    return muted
-      ? { label: unmuteLabel, icon: unmuteIcon }
-      : { label: muteLabel, icon: muteIcon };
   }
 
   /**
@@ -546,6 +543,7 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
   _handleSettingsActivate(e) {
     //if (e.target == this.$.settingslist) e.preventDefault();
   }
+
   /**
    * determine which button was clicked and act accordingly
    */
@@ -553,6 +551,7 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
     this.dispatchEvent(
       new CustomEvent("controls-change", { detail: e.detail })
     );
+    this.$.settings.close();
   }
 
   /**
@@ -562,16 +561,40 @@ class A11yMediaControls extends A11yMediaPlayerProperties {
     this.dispatchEvent(
       new CustomEvent("controls-change", { detail: e.target })
     );
+    this.$.settings.close();
   }
+
   /**
-   * Determines if the transcript button should be shown.
+   * Determines if the transcript button should be hidden.
    *
+   * @param {boolean} Is this feature available?
    * @param {boolean} Is the player too small to fit the extra controls?
-   * @param {boolean} Is the player in stand-alone mode?
    * @returns {boolean} Show the transcript button?
    */
-  _showTranscriptButton(compactControls, standAlone) {
-    return compactControls || standAlone;
+  _hideTranscriptButton(noTranscriptToggle, compactControls) {
+    return noTranscriptToggle || compactControls;
+  }
+
+  /**
+   * Determines if the print transcript feature is available from the controls.
+   *
+   * @param {boolean} Is the player in stand-alone mode?
+   * @param {boolean} Is the player in fixed-height/iframe mode?
+   * @returns {boolean} Should print transcript be unavailable from controls?
+   */
+  _noPrinting(standAlone, fixedHeight) {
+    return standAlone || !fixedHeight;
+  }
+
+  /**
+   * Determines if the transcript toggle feature is available.
+   *
+   * @param {boolean} Is the player in stand-alone mode?
+   * @param {boolean} Is the player in fixed-height/iframe mode?
+   * @returns {boolean} Should transcript toggle be unavailable?
+   */
+  _noTranscriptToggle(standAlone, fixedHeight, hasTranscript) {
+    return standAlone || fixedHeight || !hasTranscript;
   }
 }
 window.customElements.define(A11yMediaControls.tag, A11yMediaControls);
