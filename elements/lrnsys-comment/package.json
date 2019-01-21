@@ -16,7 +16,7 @@
       "hax": "src/lrnsys-comment-hax.json"
     }
   },
-  "version": "2.0.0-2.0.0-beta2.0",
+  "version": "2.0.1",
   "description": "Automated conversion of lrnsys-comment/",
   "repository": {
     "type": "git",
@@ -40,13 +40,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrndesign-avatar": "^2.0.0-2.0.0-beta2.0",
-    "@lrnwebcomponents/lrnsys-button": "^2.0.0-2.0.0-beta2.0",
+    "@lrnwebcomponents/lrndesign-avatar": "^2.0.1",
+    "@lrnwebcomponents/lrnsys-button": "^2.0.1",
     "@lrnwebcomponents/materializecss-styles": "^2.0.0-alpha2",
-    "@lrnwebcomponents/moment-element": "^2.0.0-2.0.0-beta2.0",
-    "@lrnwebcomponents/mtz-marked-editor": "^2.0.0-2.0.0-beta2.0",
-    "@lrnwebcomponents/simple-modal": "^2.0.0-2.0.0-beta2.0",
-    "@lrnwebcomponents/word-count": "^2.0.0-2.0.0-beta2.0",
+    "@lrnwebcomponents/moment-element": "^2.0.1",
+    "@lrnwebcomponents/mtz-marked-editor": "^2.0.1",
+    "@lrnwebcomponents/simple-modal": "^2.0.1",
+    "@lrnwebcomponents/word-count": "^2.0.1",
     "@polymer/app-layout": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-demo-helpers": "^3.0.0",

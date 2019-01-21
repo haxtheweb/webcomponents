@@ -16,7 +16,7 @@
       "hax": "src/map-menu-hax.json"
     }
   },
-  "version": "2.0.0-2.0.0-beta2.0",
+  "version": "2.0.1",
   "description": "Automated conversion of map-menu/",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrndesign-avatar": "^2.0.0-2.0.0-beta2.0",
+    "@lrnwebcomponents/lrndesign-avatar": "^2.0.1",
     "@lrnwebcomponents/smooth-scroll": "^2.0.0-beta1",
     "@polymer/iron-behaviors": "^3.0.1",
     "@polymer/iron-collapse": "^3.0.0",

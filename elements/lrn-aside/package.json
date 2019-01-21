@@ -16,7 +16,7 @@
       "hax": "src/lrn-aside-hax.json"
     }
   },
-  "version": "2.0.0-2.0.0-beta2.0",
+  "version": "2.0.1",
   "description": "A simple textual aside",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^2.0.0-beta1",
-    "@lrnwebcomponents/lrndesign-panelcard": "^2.0.0-2.0.0-beta2.0",
+    "@lrnwebcomponents/lrndesign-panelcard": "^2.0.1",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {

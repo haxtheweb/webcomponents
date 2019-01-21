@@ -16,7 +16,7 @@
       "hax": "src/progress-donut-hax.json"
     }
   },
-  "version": "2.0.0-2.0.0-beta2.0",
+  "version": "2.0.1",
   "description": "Start of progress-donut",
   "repository": {
     "type": "git",
@@ -40,11 +40,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/chartist-render": "^2.0.0-2.0.0-beta2.0",
+    "@lrnwebcomponents/chartist-render": "^2.0.1",
     "@lrnwebcomponents/hax-body-behaviors": "^2.0.0-beta1",
     "@lrnwebcomponents/materializecss-styles": "^2.0.0-alpha2",
     "@lrnwebcomponents/schema-behaviors": "^2.0.0-alpha2",
-    "@lrnwebcomponents/simple-colors": "^2.0.0-2.0.0-beta2.0",
+    "@lrnwebcomponents/simple-colors": "^2.0.1",
     "@polymer/polymer": "^3.0.5",
     "chartist": "^0.11.0"
   },

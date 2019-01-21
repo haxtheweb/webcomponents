@@ -16,7 +16,7 @@
       "hax": "src/team-member-hax.json"
     }
   },
-  "version": "2.0.0-2.0.0-beta2.0",
+  "version": "2.0.1",
   "description": "Automated conversion of team-member/",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^2.0.0-beta1",
-    "@lrnwebcomponents/mdi-iconset-svg": "^2.0.0-2.0.0-beta2.0",
+    "@lrnwebcomponents/mdi-iconset-svg": "^2.0.1",
     "@lrnwebcomponents/schema-behaviors": "^2.0.0-alpha2",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-image": "^3.0.0",

@@ -16,7 +16,7 @@
       "hax": "src/json-editor-hax.json"
     }
   },
-  "version": "2.0.0-2.0.0-beta2.0",
+  "version": "2.0.1",
   "description": "simple JSON blob data binding to a text area",
   "repository": {
     "type": "git",
