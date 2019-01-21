@@ -16,7 +16,7 @@
       "hax": "src/baseline-build-hax-hax.json"
     }
   },
-  "version": "2.0.0-2.0.0-beta2.0",
+  "version": "2.0.0",
   "description": "create an inflexible baseline build of hax with all elements",
   "repository": {
     "type": "git",
@@ -43,8 +43,8 @@
     "@lrnwebcomponents/a11y-gif-player": "^2.0.0-2.0.0-beta2.0",
     "@lrnwebcomponents/aframe-player": "^2.0.0-2.0.0-beta2.0",
     "@lrnwebcomponents/citation-element": "^2.0.0-2.0.0-beta2.0",
-    "@lrnwebcomponents/cms-hax": "^2.0.0-2.0.0-beta2.0",
-    "@lrnwebcomponents/hax-body": "^2.0.0-2.0.0-beta2.0",
+    "@lrnwebcomponents/cms-hax": "^2.0.0",
+    "@lrnwebcomponents/hax-body": "^2.0.0",
     "@lrnwebcomponents/hax-body-behaviors": "^2.0.0-beta1",
     "@lrnwebcomponents/hero-banner": "^2.0.0-2.0.0-beta2.0",
     "@lrnwebcomponents/image-compare-slider": "^2.0.0-2.0.0-beta2.0",
@@ -53,7 +53,6 @@
     "@lrnwebcomponents/lrn-calendar": "^2.0.0-2.0.0-beta2.0",
     "@lrnwebcomponents/lrn-math": "^2.0.0-beta1",
     "@lrnwebcomponents/lrn-table": "^2.0.0-2.0.0-beta2.0",
-    "@lrnwebcomponents/oer-schema": "^2.0.0-2.0.0-beta2.0",
     "@lrnwebcomponents/lrn-vocab": "^2.0.0-2.0.0-beta2.0",
     "@lrnwebcomponents/lrndesign-blockquote": "^2.0.0-2.0.0-beta2.0",
     "@lrnwebcomponents/magazine-cover": "^2.0.0-2.0.0-beta2.0",
@@ -62,6 +61,7 @@
     "@lrnwebcomponents/media-image": "^2.0.0-2.0.0-beta2.0",
     "@lrnwebcomponents/meme-maker": "^2.0.0-2.0.0-beta2.0",
     "@lrnwebcomponents/multiple-choice": "^2.0.0-2.0.0-beta2.0",
+    "@lrnwebcomponents/oer-schema": "^2.0.0-2.0.0-beta2.0",
     "@lrnwebcomponents/paper-audio-player": "^2.0.0-2.0.0-beta2.0",
     "@lrnwebcomponents/pdf-element": "^2.0.0-2.0.0-beta2.0",
     "@lrnwebcomponents/person-testimonial": "^2.0.0-2.0.0-beta2.0",
@@ -76,7 +76,7 @@
     "@lrnwebcomponents/video-player": "^2.0.0-2.0.0-beta2.0",
     "@lrnwebcomponents/wave-player": "^2.0.0-2.0.0-beta2.0",
     "@lrnwebcomponents/wikipedia-query": "^2.0.0-2.0.0-beta2.0",
-    "@lrnwebcomponents/wysiwyg-hax": "^2.0.0-2.0.0-beta2.0",
+    "@lrnwebcomponents/wysiwyg-hax": "^2.0.0",
     "@webcomponents/webcomponentsjs": "2.2.3",
     "web-animations-js": "2.3.1"
   },
