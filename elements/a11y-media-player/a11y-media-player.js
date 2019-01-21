@@ -640,6 +640,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
             disable-interactive$="[[disableInteractive]]"
             hide-timestamps$="[[hideTimestamps]]"
             on-cue-seek="_handleCueSeek"
+            localization$="[[localization]]"
             search="[[search]]"
             selected-transcript$="[[__selectedTrack]]"
           >

@@ -116,17 +116,17 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
         :host([hidden]) {
           display: none !important;
         }
-        :host #track {
+        :host .transcript-from-track {
           display: none;
           width: calc(100% - 30px);
           padding: 0 15px 15px;
           color: var(--a11y-media-transcript-cue-color);
           background-color: var(--a11y-media-transcript-cue-bg-color);
         }
-        :host #track[active] {
+        :host .transcript-from-track[active] {
           display: table;
         }
-        :host #track[active][hideTimestamps] {
+        :host .transcript-from-track[active][hideTimestamps] {
           display: block;
         }
         :host .sr-only:not(:focus) {
@@ -146,9 +146,16 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
           }
         }
       </style>
-      <a id="transcript-desc" href="#bottom" class="sr-only">
-        [[_getLocal(localization,'skipTranscript','label')]]
+      <a id="transcript-desc" class="sr-only" href="#bottom">
+        [[_getLocal(localization,'transcript','skip')]]
       </a>
+      <div
+        id="loading"
+        active$="[[_isLoading(selectedTranscript, tracks)]]"
+        class="transcript-from-track"
+      >
+        [[_getLocal(localization,'transcript','loading')]]
+      </div>
       <template id="tracks" is="dom-repeat" items="{{tracks}}" as="track">
         <div
           id="track"
@@ -192,36 +199,6 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
    */
   ready() {
     super.ready();
-  }
-
-  /**
-   * fires an event when media is associated with the player
-   *
-   * @param {object} the player
-   */
-  setMedia(player) {
-    this.media = player;
-    this.dispatchEvent(new CustomEvent("transcript-ready", { detail: this }));
-  }
-
-  /**
-   * fires an event when media is associated with the player
-   *
-   * @param {boolean} Hide transcript? `true` is hidden, `false` is visible, and `null` toggles based on current state.
-   */
-  toggleHidden(mode) {
-    let root = this,
-      inner = document.getElementById("inner"),
-      active =
-        inner !== null && inner !== undefined
-          ? inner.querySelector("a11y-media-transcript-cue[active]")
-          : null,
-      first =
-        inner !== null && inner !== undefined
-          ? inner.querySelector("a11y-media-transcript-cue")
-          : null;
-    mode = mode !== undefined ? mode : this.hidden;
-    this.hidden = mode;
   }
 
   /**
@@ -320,16 +297,13 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
   }
 
   /**
-   * determines if this is the currently selected transcript to show or hide
+   * fires an event when media is associated with the player
    *
-   * @param {integer} the index of the transcript
+   * @param {object} the player
    */
-  _isActive(selectedTranscript, index) {
-    return (
-      selectedTranscript !== undefined &&
-      selectedTranscript !== null &&
-      parseInt(selectedTranscript) === parseInt(index)
-    );
+  setMedia(player) {
+    this.media = player;
+    this.dispatchEvent(new CustomEvent("transcript-ready", { detail: this }));
   }
 
   /**
@@ -342,6 +316,26 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
     this.notifyPath("tracks");
     if (this.tracks !== undefined && this.tracks.length > 0)
       this.$.tracks.render();
+  }
+
+  /**
+   * fires an event when media is associated with the player
+   *
+   * @param {boolean} Hide transcript? `true` is hidden, `false` is visible, and `null` toggles based on current state.
+   */
+  toggleHidden(mode) {
+    let root = this,
+      inner = document.getElementById("inner"),
+      active =
+        inner !== null && inner !== undefined
+          ? inner.querySelector("a11y-media-transcript-cue[active]")
+          : null,
+      first =
+        inner !== null && inner !== undefined
+          ? inner.querySelector("a11y-media-transcript-cue")
+          : null;
+    mode = mode !== undefined ? mode : this.hidden;
+    this.hidden = mode;
   }
 
   /**
@@ -371,6 +365,39 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
     if (!this.disableInteractive) {
       this.dispatchEvent(new CustomEvent("cue-seek", { detail: e.detail }));
     }
+  }
+
+  /**
+   * determines if this is the currently selected transcript to show or hide
+   *
+   * @param {integer} the index of the transcript
+   */
+  _isActive(selectedTranscript, index) {
+    return (
+      selectedTranscript !== undefined &&
+      selectedTranscript !== null &&
+      parseInt(selectedTranscript) === parseInt(index)
+    );
+  }
+
+  /**
+   * determines if this is the currently selected transcript to show or hide
+   *
+   * @param {integer} the index of the transcript
+   */
+  _isLoading(selectedTranscript, tracks) {
+    return (
+      selectedTranscript === undefined ||
+      selectedTranscript === null ||
+      tracks === undefined ||
+      tracks === null ||
+      tracks.length === 0
+    );
+  }
+
+  _stampLocal(localization, id, key) {
+    this.$[id].innerHTML = this._getLocal(localization, "transcript", key);
+    return this._getLocal(localization, "transcript", key);
   }
 }
 window.customElements.define(A11yMediaTranscript.tag, A11yMediaTranscript);

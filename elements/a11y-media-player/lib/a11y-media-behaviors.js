@@ -86,7 +86,8 @@ class A11yMediaBehaviors extends SimpleColors {
           },
           captions: {
             label: "Closed Captions",
-            icon: "av:closed-caption"
+            icon: "av:closed-caption",
+            off: "Off"
           },
           forward: {
             label: "Forward",
@@ -109,9 +110,6 @@ class A11yMediaBehaviors extends SimpleColors {
           nextResult: {
             label: "Next",
             icon: "arrow-forward"
-          },
-          off: {
-            label: "Off"
           },
           pause: {
             label: "Pause",
@@ -145,15 +143,14 @@ class A11yMediaBehaviors extends SimpleColors {
             label: "Settings",
             icon: "settings"
           },
-          skipTranscript: {
-            label: "Skip to the transcript."
-          },
           speed: {
             label: "Speed %"
           },
           transcript: {
             label: "Transcript",
-            icon: "description"
+            icon: "description",
+            loading: "Loading the transcript(s)...",
+            skip: "Skip to the transcript."
           },
           unmute: {
             label: "Unmute",
@@ -360,6 +357,7 @@ class A11yMediaBehaviors extends SimpleColors {
     ) {
       local = this.localizationDefaults[key][subkey];
     }
+    console.log("_getLocal", localization, local);
     return local;
   }
 

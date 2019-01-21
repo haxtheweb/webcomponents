@@ -363,7 +363,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
                     value
                   >
                     <paper-item value=""
-                      >[[_getLocal(localization,'off','label')]]</paper-item
+                      >[[_getLocal(localization,'captions','off')]]</paper-item
                     >
                     <template is="dom-repeat" items="{{tracks}}" as="option">
                       <paper-item value$="{{option.value}}"
