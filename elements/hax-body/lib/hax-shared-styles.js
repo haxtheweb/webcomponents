@@ -1,3 +1,5 @@
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+
 const styleElement = document.createElement("dom-module");
 styleElement.innerHTML = `<template>
   <style>
