@@ -29,6 +29,13 @@ class A11yMediaPlayButton extends A11yMediaPlayerBehaviors {
   static get properties() {
     return {
       /**
+       * is button action to send as an event
+       */
+      action: {
+        type: String,
+        value: null
+      },
+      /**
        * is button disabled
        */
       disabled: {

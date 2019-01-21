@@ -145,7 +145,7 @@ class A11yMediaTranscriptControls extends A11yMediaPlayerBehaviors {
             controls="transcript"
             icon="[[_getLocal(localization,'autoScroll','icon')]]"
             label="[[_getLocal(localization,'autoScroll','label')]]"
-            on-click="_handleScrollClick"
+            on-tap="_handleScrollClick"
             toggle$="[[!disableScroll]]"
           >
           </a11y-media-button>
@@ -160,7 +160,7 @@ class A11yMediaTranscriptControls extends A11yMediaPlayerBehaviors {
             controls="transcript"
             icon$="[[_getLocal(localization,'print','icon')]]"
             label="[[_getLocal(localization,'print','label')]]"
-            on-click="_handlePrintClick"
+            on-tap="_handlePrintClick"
           >
           </a11y-media-button>
         </div>
@@ -185,13 +185,6 @@ class A11yMediaTranscriptControls extends A11yMediaPlayerBehaviors {
    */
   _handleScrollClick(e) {
     this.dispatchEvent(new CustomEvent("toggle-scroll", { detail: this }));
-  }
-
-  /**
-   * handles the print transcript button
-   */
-  _handlePrintClick(e) {
-    this.dispatchEvent(new CustomEvent("print-transcript", { detail: this }));
   }
 }
 window.customElements.define(

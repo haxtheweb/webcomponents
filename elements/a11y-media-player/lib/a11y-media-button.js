@@ -24,6 +24,13 @@ class A11yMediaButton extends A11yMediaPlayerBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
     return {
+      /**
+       * is button action to send as an event
+       */
+      action: {
+        type: String,
+        value: null
+      },
       /*
        * id of element button controls
        */

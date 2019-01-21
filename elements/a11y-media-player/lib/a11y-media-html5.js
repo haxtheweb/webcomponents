@@ -59,14 +59,6 @@ class A11yMediaHtml5 extends A11yMediaPlayerBehaviors {
         value: null
       },
       /*
-       * Is it toggled on?
-       */
-      toggle: {
-        type: Boolean,
-        value: false,
-        reflectToAttribute: true
-      },
-      /*
        * Is it disabled?
        */
       disabled: {

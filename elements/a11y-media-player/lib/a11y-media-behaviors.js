@@ -362,5 +362,23 @@ class A11yMediaBehaviors extends SimpleColors {
     }
     return local;
   }
+
+  /**
+   * handles the print transcript button
+   */
+  _handlePrintClick(e) {
+    this.dispatchEvent(new CustomEvent("print-transcript", { detail: this }));
+  }
+
+  /**
+   * handles transcript printing
+   */
+  _handlePrinting(e) {
+    let root = this;
+    root.dispatchEvent(
+      new CustomEvent("printing-transcript", { detail: root })
+    );
+    root.$.transcript.print(root.mediaTitle);
+  }
 }
 window.customElements.define(A11yMediaBehaviors.tag, A11yMediaBehaviors);

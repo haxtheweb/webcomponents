@@ -9,6 +9,7 @@
         style$="[[_getThumbnailCSS(thumbnailSrc,isYoutube,audioOnly)]]">
         <a11y-media-play-button
           id="playbutton"
+          action$="[[playPause.action]]"
           audio-only$="[[audioOnly]]"
           disabled="true"
           elapsed$="[[_hidePlayButton(thumbnailSrc, isYoutube, __elapsed)]]"
@@ -60,12 +61,14 @@
     </paper-slider>
     <a11y-media-controls id="controls"
       cc$="[[cc]]"
+      fixed-height$="[[height]]"
       has-captions$="[[hasCaptions]]"
       has-transcript$="[[hasTranscript]]"
       hide-transcript$="[[hideTranscript]]"
       localization$="[[localization]]"
       muted$="[[muted]]"
       on-controls-change="_onControlsChanged"
+      on-print-transcript="_handlePrinting"
       playing$="[[__playing]]"
       search-transcript$="[[searchTranscript]]"
       stand-alone$="[[standAlone]]"
@@ -102,7 +105,8 @@
         disable-interactive$="[[disableInteractive]]"
         hide-timestamps$="[[hideTimestamps]]"
         on-cue-seek="_handleCueSeek"
-        search="[[search]]">
+        search="[[search]]"
+        selected-transcript$="[[__selectedTrack]]">
       </a11y-media-transcript>
     </div>
   </div>

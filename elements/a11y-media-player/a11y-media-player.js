@@ -14,7 +14,7 @@ import "./lib/a11y-media-play-button.js";
 import "./lib/a11y-media-transcript.js";
 import "./lib/a11y-media-transcript-controls.js";
 import "./lib/a11y-media-state-manager.js";
-import "./lib/a11y-media-youtube-utility.js";
+import "./lib/a11y-media-youtube.js";
 
 export { A11yMediaPlayer };
 /**
@@ -323,6 +323,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
           max-height: calc(100vh - 100px);
         }
         :host #playbutton,
+        :host #slider,
         :host #controls {
           z-index: 2;
         }
@@ -332,9 +333,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
         :host #slider {
           flex: 0 0 32px;
           height: 32px;
-          z-index: 1000;
         }
-
         :host([thumbnail-src]) #youtube {
           opacity: 0;
         }
@@ -375,6 +374,9 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
         :host .media-type {
           font-style: italic;
         }
+        :host #outertranscript {
+          padding: 0 1px 0 0;
+        }
         :host #innertranscript {
           flex: 1 0 194px;
         }
@@ -398,6 +400,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
             flex: 1 0 auto;
           }
           :host #printthumb,
+          :host([height]) #outertranscript,
           :host([stand-alone]) #outertranscript,
           :host([hide-transcript]) #outertranscript {
             display: none;
@@ -530,6 +533,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
           >
             <a11y-media-play-button
               id="playbutton"
+              action$="[[playPause.action]]"
               audio-only$="[[audioOnly]]"
               disabled="true"
               elapsed$="[[_hidePlayButton(thumbnailSrc, isYoutube, __elapsed)]]"
@@ -587,12 +591,14 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
         <a11y-media-controls
           id="controls"
           cc$="[[cc]]"
+          fixed-height$="[[height]]"
           has-captions$="[[hasCaptions]]"
           has-transcript$="[[hasTranscript]]"
           hide-transcript$="[[hideTranscript]]"
           localization$="[[localization]]"
           muted$="[[muted]]"
           on-controls-change="_onControlsChanged"
+          on-print-transcript="_handlePrinting"
           playing$="[[__playing]]"
           search-transcript$="[[searchTranscript]]"
           stand-alone$="[[standAlone]]"
@@ -635,6 +641,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
             hide-timestamps$="[[hideTimestamps]]"
             on-cue-seek="_handleCueSeek"
             search="[[search]]"
+            selected-transcript$="[[__selectedTrack]]"
           >
           </a11y-media-transcript>
         </div>
@@ -734,7 +741,6 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     root._addResponsiveUtility();
     window.dispatchEvent(new CustomEvent("a11y-player", { detail: root }));
     if (root.isYoutube) {
-      window.A11yMediaYoutubeUtility.requestAvailability();
       root._youTubeRequest();
     }
   }
@@ -746,7 +752,9 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     super.ready();
     let root = this,
       aspect = 16 / 9,
-      tracks = new Array();
+      tracks = new Array(),
+      tdata = new Array(),
+      selected = 0;
     root.__playerReady = true;
     root.__interactive = !root.disableInteractive;
     root.target = root.shadowRoot.querySelector("#transcript");
@@ -760,16 +768,11 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     root.width = root.width !== null ? root.width : "100%";
     root.style.maxWidth = root.width !== null ? root.width : "100%";
     root._setPlayerHeight(aspect);
-    root.querySelectorAll("source,track").forEach(function(node) {
-      root.$.html5.media.appendChild(node);
-    });
-    this._appendToPlayer(this.sources, "source");
-    this._appendToPlayer(this.tracks, "track");
-    if (this.isYoutube) {
-      root.disableInteractive = true;
-      this._youTubeRequest();
+    if (root.isYoutube) {
+      root._youTubeRequest();
     } else {
       root.media = root.$.html5;
+      root._addSourcesAndTracks();
     }
     root.$.transcript.setMedia(root.$.innerplayer);
 
@@ -896,8 +899,8 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    * @param {integer} the index of the track
    */
   selectTrack(index) {
+    this.__selectedTrack = index;
     this.$.html5.selectTrack(index);
-    this.$.transcript.setActiveTranscript(index);
   }
 
   /**
@@ -1077,86 +1080,77 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   }
 
   /**
-   * loads track metadata
+   * loads a track's cue metadata
    */
-  _getTrackData() {
-    // gets cues from tracks
+  _addSourcesAndTracks() {
     let root = this,
-      media = root.$.html5.media,
-      tdata = new Array(),
-      selected = 0;
-    root.hasTranscript = !root.standAlone;
-    // hides the video subtitles and captions and adds them to the tracks dropdown-select
-    //gets and updates track metadata
-    for (let i = 0; i < media.textTracks.length; i++) {
-      if (media.textTracks[i] !== null) {
-        let track = media.textTracks[i],
-          tidata = {},
-          loaded = track.cues !== undefined,
-          complete = 0,
-          label = track.label,
-          lang = track.language,
-          text =
-            label !== undefined
-              ? label
-              : lang !== undefined
-              ? lang
-              : "Track " + i,
-          cues,
-          loadCueData = setInterval(() => {
-            track.mode = "showing";
-            if (track.cues !== undefined && track.cues.length > 0) {
-              track.mode = "hidden";
-              getCueData();
-              clearInterval(loadCueData);
-            }
-          }, 1),
-          getCueData = function() {
-            track.mode = "hidden";
-
-            let cues = Object.keys(track.cues).map(function(key) {
-              return {
-                order: track.cues[key].id !== "" ? track.cues[key].id : key,
-                seek: track.cues[key].startTime,
-                seekEnd: track.cues[key].endTime,
-                start: root._getHHMMSS(
-                  track.cues[key].startTime,
-                  root.media.duration
-                ),
-                end: root._getHHMMSS(
-                  track.cues[key].endTime,
-                  root.media.duration
-                ),
-                text: track.cues[key].text
-              };
-            });
-            tidata = {
-              text: text,
-              language: lang,
-              value: i,
-              cues: cues
-            };
-            tdata.push(tidata);
-            root.set("tracks", tdata);
-            root.$.controls.setTracks(tdata);
-            root.$.transcript.setTracks(tdata);
-            root.selectTrack(track.default ? i : 0);
-
-            track.oncuechange = function(e) {
-              root.$.transcript.setActiveCues(
-                Object.keys(e.currentTarget.activeCues).map(function(key) {
-                  return e.currentTarget.activeCues[key].id;
-                })
-              );
-            };
-          };
-      }
-    }
-    if (media.textTracks.length > 0) {
+      counter = 0;
+    root.querySelectorAll("source,track").forEach(function(node) {
+      root.$.html5.media.appendChild(node);
+    });
+    root._appendToPlayer(root.tracks, "track");
+    root._appendToPlayer(root.sources, "source");
+    root.$.html5.media.textTracks.onaddtrack = function(e) {
       root.hasCaptions = true;
-    } else {
-      root.standAlone = true;
-    }
+      root.hasTranscript = !root.standAlone;
+      root._getTrackData(e.track, counter++);
+    };
+  }
+
+  /**
+   * loads a track's cue metadata
+   */
+  _getTrackData(track, id) {
+    let root = this,
+      selected = track.default === true || root.__selectedTrack === undefined,
+      loadCueData;
+    if (selected) root.selectTrack(id);
+    track.mode = selected && this.cc === true ? "showing" : "hidden";
+    loadCueData = setInterval(() => {
+      if (
+        track.cues !== undefined &&
+        track.cues !== null &&
+        track.cues.length > 0
+      ) {
+        clearInterval(loadCueData);
+        let cues = Object.keys(track.cues).map(function(key) {
+          return {
+            order: track.cues[key].id !== "" ? track.cues[key].id : key,
+            seek: track.cues[key].startTime,
+            seekEnd: track.cues[key].endTime,
+            start: root._getHHMMSS(
+              track.cues[key].startTime,
+              root.media.duration
+            ),
+            end: root._getHHMMSS(track.cues[key].endTime, root.media.duration),
+            text: track.cues[key].text
+          };
+        });
+
+        if (root.__tracks === undefined) root.__tracks = [];
+        root.push("__tracks", {
+          value: id,
+          language: track.language,
+          text:
+            track.label !== undefined
+              ? track.label
+              : track.language !== undefined
+              ? track.language
+              : "Track " + id,
+          cues: cues
+        });
+        root.$.controls.setTracks(root.__tracks);
+        root.$.transcript.setTracks(root.__tracks);
+        root.push("__tracks");
+        track.oncuechange = function(e) {
+          root.$.transcript.setActiveCues(
+            Object.keys(e.currentTarget.activeCues).map(function(key) {
+              return e.currentTarget.activeCues[key].id;
+            })
+          );
+        };
+      }
+    }, 1);
   }
 
   /**
@@ -1241,22 +1235,12 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    */
   _onControlsChanged(e) {
     let root = this,
-      action = e.detail.label !== undefined ? e.detail.label : e.detail.id;
-    if (action === "backward" || action === root.rewindLabel) {
+      action = e.detail.action !== undefined ? e.detail.action : e.detail.id;
+    if (action === "backward") {
       root.rewind(root.__duration / 20);
-    } else if (
-      action === "closed captions" ||
-      action === "captions" ||
-      action === root.captionsLabel ||
-      action === root.captionsMenuLabel
-    ) {
+    } else if (action === "captions") {
       root.toggleCC();
-    } else if (
-      action === "transcript" ||
-      action === "transcript-toggle" ||
-      action === root.transcriptLabel ||
-      action === root.transcriptMenuLabel
-    ) {
+    } else if (action === "transcript" || action === "transcript-toggle") {
       root.toggleTranscript();
     } else if (e.detail.id === "tracks") {
       if (e.detail.value === "") {
@@ -1265,30 +1249,25 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
         root.toggleCC(true);
         root.selectTrack(e.detail.value);
       }
-    } else if (action === "forward" || action === root.forwardLabel) {
+    } else if (action === "forward") {
       root.forward(root.__duration / 20);
-    } else if (action === "full screen" || action === root.fullscreenLabel) {
+    } else if (action === "fullscreen") {
       this.toggleTranscript(this.fullscreen);
       screenfull.toggle(root.$.outerplayer);
-    } else if (action === "loop" || action === root.loopLabel) {
+    } else if (action === "loop") {
       root.toggleLoop();
-    } else if (
-      action === "mute" ||
-      action === "unmute" ||
-      action === root.muteLabel ||
-      action === root.unmuteLabel
-    ) {
+    } else if (action === "mute" || action === "unmute") {
       root.toggleMute();
-    } else if (action === "pause" || action === root.pauseLabel) {
+    } else if (action === "pause") {
       root.pause();
-    } else if (action === "play" || action === root.playLabel) {
+    } else if (action === "play") {
       root.play();
-    } else if (action === "restart" || action === root.restartLabel) {
+    } else if (action === "restart") {
       root.seek(0);
       root.play();
-    } else if (action === "speed" || action === root.speedLabel) {
+    } else if (action === "speed") {
       root.setPlaybackRate(e.detail.value);
-    } else if (action === "volume" || action === root.volumeLabel) {
+    } else if (action === "volume") {
       root.setVolume(e.detail.value);
     }
   }
@@ -1352,8 +1331,10 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    * gets YouTube iframe
    */
   _youTubeRequest() {
+    window.A11yMediaYoutube.requestAvailability();
     let root = this,
-      ytUtil = window.A11yMediaYoutubeUtility.instance;
+      ytUtil = window.A11yMediaYoutube.instance;
+    root.disableInteractive = true;
     if (root.__playerAttached && root.__playerReady) {
       let ytInit = function() {
           // initialize the YouTube player
@@ -1365,7 +1346,6 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
           // move the YouTube iframe to the media player's YouTube container
           root.$.youtube.appendChild(root.media.a);
           root.__ytAppended = true;
-          root._getTrackData(root.$.html5.media);
           root._updateCustomTracks();
           // youtube API doesn't immediately give length of a video
           let int = setInterval(() => {
@@ -1378,6 +1358,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
                 root._getHHMMSS(root.media.duration);
               root.$.controls.setStatus(root.__status);
               root.disableInteractive = !root.__interactive;
+              root._addSourcesAndTracks();
             }
           }, 100);
         },

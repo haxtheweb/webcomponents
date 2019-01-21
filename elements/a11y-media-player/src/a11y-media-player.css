@@ -134,6 +134,7 @@
   max-height: calc(100vh - 100px);
 }
 :host #playbutton,
+:host #slider,
 :host #controls {
   z-index: 2;
 }
@@ -143,14 +144,7 @@
 :host #slider {
   flex: 0 0 32px;
   height: 32px;
-  z-index: 1000;
 }
-/*:host #innerplayer {
-  display: block;
-  max-width: 100%;
-  transition: position 0.5s ease, max-width 1s ease;
-  background-color: var(--simple-colors-default-theme-grey-2);
-}*/
 :host([thumbnail-src]) #youtube {
   opacity: 0;
 }
@@ -191,6 +185,9 @@
 :host .media-type {
   font-style: italic;
 }
+:host #outertranscript {
+  padding: 0 1px 0 0;
+}
 :host #innertranscript {
   flex: 1 0 194px;
 }
@@ -214,6 +211,7 @@
     flex: 1 0 auto;
   }
   :host #printthumb,
+  :host([height]) #outertranscript,
   :host([stand-alone]) #outertranscript,
   :host([hide-transcript]) #outertranscript {
     display: none;

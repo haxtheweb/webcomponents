@@ -49,7 +49,36 @@ export { A11yMediaControls };
 class A11yMediaControls extends A11yMediaPlayerBehaviors {
   // properties available to the custom element for data binding
   static get properties() {
-    return {};
+    return {
+      /**
+       * Is the player a fixed height (iframe mode) so that theure is no transcript toggle?
+       */
+      fixedHeight: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * hide the transcript toggle menu item?
+       */
+      hideTranscriptButton: {
+        type: Boolean,
+        computed: "_hideTranscriptButton(noTranscriptMenu,compactControls)"
+      },
+      /**
+       * hide the print transcript feature available?
+       */
+      noPrinting: {
+        type: Boolean,
+        computed: "_noPrinting(standalone,fixedHeight)"
+      },
+      /**
+       * Is the transctipt toggle feature available?
+       */
+      noTranscriptToggle: {
+        type: Boolean,
+        computed: "_noTranscriptToggle(standalone,fixedHeight,hasTranscript)"
+      }
+    };
   }
 
   /**
@@ -111,12 +140,6 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
           right: 0;
           top: -2px;
         }
-
-        :host([compact-controls]) a11y-media-button.transcript[toggle],
-        :host([compact-controls]) paper-item.transcript[aria-selected],
-        :host:not([compact-controls]) paper-item.transcript {
-          display: none;
-        }
         :host paper-menu-button,
         :host dropdown-select {
           padding: 0;
@@ -151,20 +174,14 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
         :host([hide-play-status]) .play-status {
           display: none;
         }
-        :host(:not([has-captions])) .captions {
-          display: none;
-        }
-        :host(:not([has-transcript])) .transcript,
-        :host(.stand-alone) .transcript {
-          display: none;
-        }
         :host .setting {
           display: flex;
           justify-content: space-between;
+          align-items: center;
           width: 100%;
         }
         :host .setting-text {
-          min-width: 100px;
+          min-width: 125px;
         }
         :host .setting-control {
           max-width: 100px;
@@ -230,11 +247,13 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
       </style>
       <div id="controls-left">
         <a11y-media-button
+          action$="[[playPause.action]]"
           icon$="[[playPause.icon]]"
           label$="[[playPause.label]]"
           on-tap="_onButtonTap"
         ></a11y-media-button>
         <a11y-media-button
+          action="rewind"
           disabled$="[[compactControls]]"
           hidden$="[[compactControls]]"
           icon$="[[_getLocal(localization,'rewind','icon')]]"
@@ -242,6 +261,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
           on-tap="_onButtonTap"
         ></a11y-media-button>
         <a11y-media-button
+          action="forward"
           disabled$="[[compactControls]]"
           hidden$="[[compactControls]]"
           icon$="[[_getLocal(localization,'forward','icon')]]"
@@ -249,6 +269,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
           on-tap="_onButtonTap"
         ></a11y-media-button>
         <a11y-media-button
+          action="restart"
           disabled$="[[compactControls]]"
           hidden$="[[compactControls]]"
           icon$="[[_getLocal(localization,'restart','icon')]]"
@@ -258,6 +279,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
         <div id="showvolume">
           <a11y-media-button
             id="mute"
+            action$="[[muteUnmute.action]]"
             icon$="[[muteUnmute.icon]]"
             label$="[[muteUnmute.label]]"
             on-tap="_onButtonTap"
@@ -280,7 +302,8 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
       </div>
       <div id="controls-right">
         <a11y-media-button
-          class="captions"
+          action="captions"
+          disabled$="[[!hasCaptions]]"
           hidden$="[[!hasCaptions]]"
           icon$="[[_getLocal(localization,'captions','icon')]]"
           label$="[[_getLocal(localization,'captions','label')]]"
@@ -289,14 +312,23 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
         >
         </a11y-media-button>
         <a11y-media-button
-          class="transcript"
+          action="transcript"
           controls="transcript"
-          hidden$="[[standAlone]]"
-          disabled$="[[standAlone]]"
+          disabled$="[[hideTranscriptButton]]"
+          hidden$="[[hideTranscriptButton]]"
           icon$="[[_getLocal(localization,'transcript','icon')]]"
           label$="[[_getLocal(localization,'transcript','label')]]"
           on-tap="_onButtonTap"
           toggle$="[[!hideTranscript]]"
+        >
+        </a11y-media-button>
+        <a11y-media-button
+          action="print"
+          disabled$="[[noPrinting]]"
+          hidden$="[[noPrinting]]"
+          icon$="[[_getLocal(localization,'print','icon')]]"
+          label="[[_getLocal(localization,'print','label')]]"
+          on-tap="_handlePrintClick"
         >
         </a11y-media-button>
         <paper-menu-button
@@ -310,13 +342,14 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
           vertical-align="bottom"
         >
           <paper-icon-button
+            action="settings"
             alt$="[[_getLocal(localization,'settings','label')]]"
             icon$="[[_getLocal(localization,'settings','icon')]]"
             slot="dropdown-trigger"
           >
           </paper-icon-button>
           <paper-listbox id="settingslist" slot="dropdown-content">
-            <paper-item class="captions">
+            <paper-item hidden$="[[!hasCaptions]]">
               <div class="setting">
                 <div class="setting-text">
                   [[_getLocal(localization,'captions','label')]]
@@ -324,6 +357,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
                 <div class="setting-control">
                   <dropdown-select
                     id="tracks"
+                    disabled$="[[!hasCaptions]]"
                     no-label-float
                     on-change="_handleTrackChange"
                     value
@@ -340,7 +374,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
                 </div>
               </div>
             </paper-item>
-            <paper-item class="transcript">
+            <paper-item hidden$="[[noTranscriptToggle]]">
               <div class="setting">
                 <div id="transcript-label" class="setting-text">
                   [[_getLocal(localization,'transcript','label')]]
@@ -351,9 +385,23 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
                     aria-labelledby="transcript-label"
                     checked$="[[!hideTranscript]]"
                     controls="transcript"
-                    disabled$="[[!compactControls]]"
+                    disabled$="[[noTranscriptToggle]]"
                   >
                   </paper-toggle-button>
+                </div>
+              </div>
+            </paper-item>
+            <paper-item>
+              <div class="setting">
+                <div id="loop-label" class="setting-text">
+                  [[_getLocal(localization,'loop','label')]]
+                </div>
+                <div class="setting-control">
+                  <paper-toggle-button
+                    id="loop"
+                    aria-labelledby="loop-label"
+                    checked$="[[loop]]"
+                  ></paper-toggle-button>
                 </div>
               </div>
             </paper-item>
@@ -378,20 +426,6 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
                 </div>
               </div>
             </paper-item>
-            <paper-item>
-              <div class="setting">
-                <div id="loop-label" class="setting-text">
-                  [[_getLocal(localization,'loop','label')]]
-                </div>
-                <div class="setting-control">
-                  <paper-toggle-button
-                    id="loop"
-                    aria-labelledby="loop-label"
-                    checked$="[[loop]]"
-                  ></paper-toggle-button>
-                </div>
-              </div>
-            </paper-item>
           </paper-listbox>
         </paper-menu-button>
         <paper-tooltip for="settings">
@@ -400,6 +434,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
         <template is="dom-if" if="[[fullscreenButton]]">
           <template is="dom-if" if="[[!audioNoThumb]]">
             <a11y-media-button
+              action="fullscreen"
               icon$="[[_getLocal(localization,'fullscreen','icon')]]"
               label$="[[_getLocal(localization,'fullscreen','label')]]"
               on-tap="_onButtonTap"
@@ -508,6 +543,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
   _handleSettingsActivate(e) {
     //if (e.target == this.$.settingslist) e.preventDefault();
   }
+
   /**
    * determine which button was clicked and act accordingly
    */
@@ -515,6 +551,7 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
     this.dispatchEvent(
       new CustomEvent("controls-change", { detail: e.detail })
     );
+    this.$.settings.close();
   }
 
   /**
@@ -524,16 +561,40 @@ class A11yMediaControls extends A11yMediaPlayerBehaviors {
     this.dispatchEvent(
       new CustomEvent("controls-change", { detail: e.target })
     );
+    this.$.settings.close();
   }
+
   /**
-   * Determines if the transcript button should be shown.
+   * Determines if the transcript button should be hidden.
    *
+   * @param {boolean} Is this feature available?
    * @param {boolean} Is the player too small to fit the extra controls?
-   * @param {boolean} Is the player in stand-alone mode?
    * @returns {boolean} Show the transcript button?
    */
-  _hideTranscriptButton(compactControls, standAlone) {
-    return compactControls || standAlone;
+  _hideTranscriptButton(noTranscriptToggle, compactControls) {
+    return noTranscriptToggle || compactControls;
+  }
+
+  /**
+   * Determines if the print transcript feature is available from the controls.
+   *
+   * @param {boolean} Is the player in stand-alone mode?
+   * @param {boolean} Is the player in fixed-height/iframe mode?
+   * @returns {boolean} Should print transcript be unavailable from controls?
+   */
+  _noPrinting(standAlone, fixedHeight) {
+    return standAlone || !fixedHeight;
+  }
+
+  /**
+   * Determines if the transcript toggle feature is available.
+   *
+   * @param {boolean} Is the player in stand-alone mode?
+   * @param {boolean} Is the player in fixed-height/iframe mode?
+   * @returns {boolean} Should transcript toggle be unavailable?
+   */
+  _noTranscriptToggle(standAlone, fixedHeight, hasTranscript) {
+    return standAlone || fixedHeight || !hasTranscript;
   }
 }
 window.customElements.define(A11yMediaControls.tag, A11yMediaControls);

@@ -116,17 +116,17 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
         :host([hidden]) {
           display: none !important;
         }
-        :host #inner {
+        :host #track {
           display: none;
           width: calc(100% - 30px);
           padding: 0 15px 15px;
           color: var(--a11y-media-transcript-cue-color);
           background-color: var(--a11y-media-transcript-cue-bg-color);
         }
-        :host #inner[active] {
+        :host #track[active] {
           display: table;
         }
-        :host #inner[active][hideTimestamps] {
+        :host #track[active][hideTimestamps] {
           display: block;
         }
         :host .sr-only:not(:focus) {
@@ -151,10 +151,10 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
       </a>
       <template id="tracks" is="dom-repeat" items="{{tracks}}" as="track">
         <div
-          id="inner"
+          id="track"
           class="transcript-from-track"
           lang="{{track.language}}"
-          active$="[[track.active]]"
+          active$="[[_isActive(selectedTranscript,index)]]"
         >
           <template is="dom-repeat" items="{{track.cues}}" as="cue">
             <a11y-media-transcript-cue
@@ -231,7 +231,7 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
    */
   print(mediaTitle) {
     let root = this,
-      track = root.shadowRoot.querySelector("#inner[active]").cloneNode(true),
+      track = root.shadowRoot.querySelector("#track[active]").cloneNode(true),
       css = html`
         <style>
           a11y-media-transcript-cue {
@@ -287,18 +287,6 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
   }
 
   /**
-   * loads tracks from array
-   *
-   * @param {array} an array of tracks
-   */
-  setTracks(tracks) {
-    this.set("tracks", tracks.slice(0));
-    this.notifyPath("tracks");
-    if (this.tracks !== undefined && this.tracks.length > 0)
-      this.$.tracks.render();
-  }
-
-  /**
    * updates activeCues array and scrolls to position
    *
    * @param {array} an array of cues
@@ -306,12 +294,12 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
   setActiveCues(cues) {
     let root = this,
       offset =
-        root.shadowRoot.querySelector("#inner") !== null &&
-        root.shadowRoot.querySelector("#inner") !== undefined
-          ? root.shadowRoot.querySelector("#inner").offsetTop
+        root.shadowRoot.querySelector("#track") !== null &&
+        root.shadowRoot.querySelector("#track") !== undefined
+          ? root.shadowRoot.querySelector("#track").offsetTop
           : 0,
       cue = root.shadowRoot.querySelector(
-        "#inner a11y-media-transcript-cue[active]"
+        "#track a11y-media-transcript-cue[active]"
       );
     root.set("activeCues", cues.slice(0));
     if (!root.disableScroll && (cue !== null) & (cue !== undefined)) {
@@ -329,6 +317,31 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
       };
       scrollingTo(root, cue.offsetTop - offset, 250);
     }
+  }
+
+  /**
+   * determines if this is the currently selected transcript to show or hide
+   *
+   * @param {integer} the index of the transcript
+   */
+  _isActive(selectedTranscript, index) {
+    return (
+      selectedTranscript !== undefined &&
+      selectedTranscript !== null &&
+      parseInt(selectedTranscript) === parseInt(index)
+    );
+  }
+
+  /**
+   * loads tracks from array
+   *
+   * @param {array} an array of tracks
+   */
+  setTracks(tracks) {
+    this.set("tracks", tracks.slice(0));
+    this.notifyPath("tracks");
+    if (this.tracks !== undefined && this.tracks.length > 0)
+      this.$.tracks.render();
   }
 
   /**
@@ -358,26 +371,6 @@ class A11yMediaTranscript extends A11yMediaPlayerBehaviors {
     if (!this.disableInteractive) {
       this.dispatchEvent(new CustomEvent("cue-seek", { detail: e.detail }));
     }
-  }
-
-  /**
-   * determines if this is the currently selected transcript to show or hide
-   *
-   * @param {integer} the index of the transcript
-   */
-  setActiveTranscript(index) {
-    if (this.tracks !== undefined && this.tracks !== null) {
-      for (let i = 0; i < this.tracks.length; i++) {
-        if (parseInt(index) === i) {
-          this.selectedTranscript = parseInt(index);
-          this.set("tracks." + i + ".active", true);
-        } else if (this.tracks[i] !== null) {
-          this.set("tracks." + i + ".active", false);
-        }
-        this.notifyPath("tracks." + i + ".active");
-      }
-    }
-    this.$.tracks.render();
   }
 }
 window.customElements.define(A11yMediaTranscript.tag, A11yMediaTranscript);

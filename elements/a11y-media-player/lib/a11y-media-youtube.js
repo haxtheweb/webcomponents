@@ -5,22 +5,22 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 
 // register globally so we can make sure there is only one
-window.A11yMediaYoutubeUtility = window.A11yMediaYoutubeUtility || {};
+window.A11yMediaYoutube = window.A11yMediaYoutube || {};
 // request if this exists. This helps invoke the element existing in the dom
 // as well as that there is only one of them. That way we can ensure everything
 // is rendered through the same modal
 
-window.A11yMediaYoutubeUtility.requestAvailability = () => {
-  if (!window.A11yMediaYoutubeUtility.instance) {
-    window.A11yMediaYoutubeUtility.instance = document.createElement(
-      "a11y-media-youtube-utility"
+window.A11yMediaYoutube.requestAvailability = () => {
+  if (!window.A11yMediaYoutube.instance) {
+    window.A11yMediaYoutube.instance = document.createElement(
+      "a11y-media-youtube"
     );
-    document.body.appendChild(window.A11yMediaYoutubeUtility.instance);
+    document.body.appendChild(window.A11yMediaYoutube.instance);
   }
-  return window.A11yMediaYoutubeUtility.instance;
+  return window.A11yMediaYoutube.instance;
 };
 /**
- * `a11y-media-youtube-utility`
+ * `a11y-media-youtube`
  * `A utility that manages multiple instances of a11y-media-player on a single page.`
  *
  * @microcopy - language worth noting:
@@ -29,7 +29,7 @@ window.A11yMediaYoutubeUtility.requestAvailability = () => {
  * @customElement
  * @polymer
  */
-class A11yMediaYoutubeUtility extends PolymerElement {
+class A11yMediaYoutube extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -37,7 +37,7 @@ class A11yMediaYoutubeUtility extends PolymerElement {
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "a11y-media-youtube-utility";
+    return "a11y-media-youtube";
   }
 
   // properties available to the custom element for data binding
@@ -140,8 +140,5 @@ class A11yMediaYoutubeUtility extends PolymerElement {
     return iframe;
   }
 }
-window.customElements.define(
-  A11yMediaYoutubeUtility.tag,
-  A11yMediaYoutubeUtility
-);
-export { A11yMediaYoutubeUtility };
+window.customElements.define(A11yMediaYoutube.tag, A11yMediaYoutube);
+export { A11yMediaYoutube };
