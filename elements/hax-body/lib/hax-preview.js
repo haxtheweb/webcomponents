@@ -34,13 +34,16 @@ Polymer({
         :host {
           display: block;
           background-color: #ffffff;
+          overflow: hidden;
         }
         paper-card.form-wrapper {
           margin: 0;
-          padding: 0 24px;
+          padding: 0 16px 80px 16px;
           width: 100%;
           min-height: 160px;
           background-color: transparent;
+          overflow: auto;
+          height: 100%;
         }
 
         vaadin-split-layout {
@@ -58,6 +61,7 @@ Polymer({
           flex-wrap: nowrap;
           margin: 0;
           height: 100%;
+          overflow: hidden;
         }
         #form {
           --eco-json-schema-object-form: {
@@ -106,7 +110,13 @@ Polymer({
         }
 
         #modetabs {
-          height: 80px;
+          height: 64px;
+          padding: 0px;
+          margin: 16px 0 0 0;
+          box-sizing: content-box;
+          color: var(--hax-color-text);
+          text-align: center;
+          background-color: transparent;
           border-bottom: 1px solid var(--hax-color-border-outline);
           display: block;
           justify-content: space-evenly;
@@ -434,11 +444,15 @@ Polymer({
             this.notifyPath("value." + property);
           }
         }
+        var slotsApplied = false;
         for (var prop in props.settings[newValue]) {
           let previewNode = this.previewNode;
           if (
-            typeof props.settings[this.formKey][prop].slot !== typeof undefined
+            typeof props.settings[this.formKey][prop].slot !==
+              typeof undefined &&
+            !slotsApplied
           ) {
+            slotsApplied = true;
             // walk through the slots looking for the value of it
             for (var i in dom(previewNode).getEffectiveChildNodes()) {
               // test for element nodes to be safe
