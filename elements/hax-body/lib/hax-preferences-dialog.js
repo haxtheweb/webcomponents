@@ -170,9 +170,9 @@ Polymer({
                 "color: #81a3a9;font-size: 18px;top: 100vh;position: fixed;right: 0;padding: 16px;font-style: italic;",
               id: "reportghissue",
               href:
-                "https://github.com/LRNWebComponents/hax-body/issues/new?body=URL%20base:%20" +
+                "https://github.com/elmsln/lrnwebcomponents/issues/new?body=URL%20base:%20" +
                 window.location.pathname +
-                "&title=HAX%20bug%20report%20from%20preference%20panel",
+                "&title=[hax] Bug%20report%20from%20preference%20panel",
               target: "_blank"
             },
             slot: "Report an issue with HAX"
