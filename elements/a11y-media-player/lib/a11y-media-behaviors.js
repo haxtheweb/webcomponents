@@ -357,7 +357,6 @@ class A11yMediaBehaviors extends SimpleColors {
     ) {
       local = this.localizationDefaults[key][subkey];
     }
-    console.log("_getLocal", localization, local);
     return local;
   }
 
