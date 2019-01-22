@@ -1,0 +1,51 @@
+{
+  "name": "@lrnwebcomponents/timeline-tool",
+  "wcfactory": {
+    "className": "TimelineTool",
+    "customElementClass": "PolymerElement",
+    "elementName": "timeline-tool",
+    "generator-wcfactory-version": "0.6.2",
+    "useHAX": true,
+    "useSass": false,
+    "files": {
+      "css": "src/timeline-tool.css",
+      "scss": "src/timeline-tool.scss",
+      "html": "src/timeline-tool.html",
+      "js": "src/timeline-tool.js",
+      "properties": "src/timeline-tool-properties.json",
+      "hax": "src/timeline-tool-hax.json"
+    }
+  },
+  "version": "2.0.1",
+  "description": "Makes a HAX-wired timeline",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "timeline-tool.js",
+  "module": "timeline-tool.es6.js",
+  "umd": "timeline-tool.umd.js",
+  "amd": "timeline-tool.amd.js",
+  "scripts": {
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/timeline-tool/test/",
+    "start":"yarn run dev","build":"../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'","dev":"open ./src && concurrently --kill-others 'yarn run watch' 'yarn run serve'","watch":"../../node_modules/.bin/gulp dev","serve":"polymer serve --npm --module-resolution=node --open","lighthouse":"../../node_modules/.bin/gulp lighthouse"
+  },
+  "author": {
+    "name": "nikkimk"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@lrnwebcomponents/hax-body-behaviors":"^2.0.1","@polymer/polymer":"^3.0.5"
+  },
+  "devDependencies": {
+    "@polymer/iron-demo-helpers":"3.0.2","@polymer/iron-component-page":"github:PolymerElements/iron-component-page","@webcomponents/webcomponentsjs":"2.1.3","concurrently":"4.0.1","gulp-babel":"8.0.0","gulp-sourcemaps":"2.6.4","lodash":"4.17.11","polymer-cli":"1.8.1","polymer-build":"3.1.0","wct-browser-legacy":"1.0.2"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}
