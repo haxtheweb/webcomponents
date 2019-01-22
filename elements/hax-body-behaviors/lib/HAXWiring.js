@@ -1020,7 +1020,7 @@ window.HAXBehaviors.PropertiesBehaviors = {
    * properties in order to be able to bubble up the properties for a tag.
    */
   setHaxProperties: function(props, tag = "", context = this) {
-    if (typeof this.tagName !== typeof undefined) {
+    if (tag == "" && typeof this.tagName !== typeof undefined) {
       tag = this.tagName.toLowerCase();
     }
     window.addEventListener("hax-store-ready", this._haxStoreReady.bind(this));

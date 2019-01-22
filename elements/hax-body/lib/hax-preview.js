@@ -656,99 +656,126 @@ Polymer({
         node.tagName.toLowerCase()
       ] !== typeof undefined
     ) {
-      // load up the property bindings we care about from the store
-      let props =
-        window.HaxStore.instance.elementList[node.tagName.toLowerCase()];
-      // loop over the notified changes even though they should be singular
-      let path = valueChange.path.replace("value.", "");
-      // translate key name to array position
-      var propSettings = props.settings[this.formKey].filter(n => {
-        if (typeof n.attribute !== typeof undefined) {
-          return n.attribute === path;
-        } else if (typeof n.property !== typeof undefined) {
-          return n.property === path;
-        } else if (typeof n.slot !== typeof undefined) {
-          return n.slot === path;
-        }
-      });
-      // ensure we have anything before moving forward (usually we will)
-      if (propSettings.length > 0) {
-        var propData = propSettings.pop();
-        if (propData.attribute) {
-          let attributeName = window.HaxStore.camelToDash(propData.attribute);
-          // special supporting for boolean because html is weird :p
-          if (valueChange.value === true) {
-            node.setAttribute(attributeName, attributeName);
-          } else if (valueChange.value === false) {
-            node.removeAttribute(attributeName);
-          } else {
-            // special support for innerText which is an html attribute...sorta
-            if (attributeName === "inner-text") {
-              node.innerText = valueChange.value;
-              node.removeAttribute("innertext");
-            } else if (
-              valueChange.value !== null &&
-              valueChange.value !== "null"
-            ) {
-              node.setAttribute(attributeName, valueChange.value);
-            }
+      for (var path in valueChange.base) {
+        // load up the property bindings we care about from the store
+        let props =
+          window.HaxStore.instance.elementList[node.tagName.toLowerCase()];
+        // translate key name to array position
+        var propSettings = props.settings[this.formKey].filter(n => {
+          if (typeof n.attribute !== typeof undefined) {
+            return n.attribute === path;
+          } else if (typeof n.property !== typeof undefined) {
+            return n.property === path;
+          } else if (typeof n.slot !== typeof undefined) {
+            return n.slot === path;
           }
-        } else if (propData.property) {
-          if (valueChange.value === true || valueChange.value === false) {
-            node[propData.property] = valueChange.value;
-          } else {
-            // account for Array based values
-            if (
-              valueChange.value != null &&
-              valueChange.value.constructor === Array
-            ) {
-              // look for polymer setter to notify paths correctly
-              if (typeof node.set === "function") {
-                node.set(
-                  propData.property,
-                  window.HaxStore.toArray(valueChange.value)
-                );
-              } else {
-                node[propData.property] = window.HaxStore.toArray(
-                  valueChange.value
-                );
-              }
+        });
+        // ensure we have anything before moving forward (usually we will)
+        if (propSettings.length > 0) {
+          var propData = propSettings.pop();
+          if (propData.attribute) {
+            let attributeName = window.HaxStore.camelToDash(propData.attribute);
+            // special supporting for boolean because html is weird :p
+            if (valueChange.base[path] === true) {
+              node.setAttribute(attributeName, attributeName);
+            } else if (valueChange.base[path] === false) {
+              node.removeAttribute(attributeName);
             } else {
-              if (typeof node.set === "function") {
-                node.set(propData.property, valueChange.value);
-              } else {
-                node[propData.property] = valueChange.value;
+              // special support for innerText which is an html attribute...sorta
+              if (attributeName === "inner-text") {
+                node.innerText = valueChange.base[path];
+                node.removeAttribute("innertext");
+              } else if (
+                valueChange.base[path] !== null &&
+                valueChange.base[path] !== "null"
+              ) {
+                node.setAttribute(attributeName, valueChange.base[path]);
               }
             }
+            this.set(
+              "element.properties." + propData.attribute,
+              valueChange.base[path]
+            );
+            this.notifyPath("element.properties." + propData.attribute);
+          } else if (propData.property) {
+            if (
+              valueChange.base[path] === true ||
+              valueChange.base[path] === false
+            ) {
+              node[propData.property] = valueChange.base[path];
+            } else {
+              // account for a splice because... ugh
+              if (
+                valueChange.base[path] != null &&
+                valueChange.base[path].indexSplices &&
+                valueChange.base[path].indexSplices[0]
+              ) {
+                // dirty check, if this is a vanillaJS element w/ array splices
+                // it might get PO'ed but time will tell
+                if (typeof node.set === "function") {
+                  node.set(
+                    propData.property,
+                    valueChange.base[path].indexSplices[0].object
+                  );
+                  node.notifyPath(propData.property + ".*");
+                } else {
+                  node[propData.property] =
+                    valueChange.base[path].indexSplices[0].object;
+                }
+              }
+              // account for Array based values on initial set
+              else if (
+                valueChange.base[path] != null &&
+                valueChange.base[path].constructor === Array
+              ) {
+                // look for polymer setter to notify paths correctly
+                if (typeof node.set === "function") {
+                  node.set(
+                    propData.property,
+                    window.HaxStore.toArray(valueChange.base[path])
+                  );
+                } else {
+                  node[propData.property] = window.HaxStore.toArray(
+                    valueChange.base[path]
+                  );
+                }
+              } else {
+                if (typeof node.set === "function") {
+                  node.set(propData.property, valueChange.base[path]);
+                } else {
+                  node[propData.property] = valueChange.base[path];
+                }
+              }
+            }
+            this.set(
+              "element.properties." + propData.property,
+              valueChange.base[path]
+            );
+            this.notifyPath("element.properties." + propData.property);
+          } else if (typeof propData.slot !== typeof undefined) {
+            let slotTag = "span";
+            // slot binding, special support for code editor which needs a template tag
+            // @todo need a tag that implies slot wrapper if it should at all.
+            if (node.tagName.toLowerCase() === "code-editor") {
+              slotTag = "template";
+            }
+            var tmpel = document.createElement(slotTag);
+            // support unnamed slots
+            if (propData.slot !== "") {
+              tmpel.slot = propData.slot;
+            }
+            tmpel.innerHTML = valueChange.base[path];
+            // wipe just the slot in question
+            window.HaxStore.wipeSlot(node, propData.slot);
+            const cloneIt = tmpel.cloneNode(true);
+            // inject the slotted content
+            dom(node).appendChild(cloneIt);
+            this.set(
+              "element.content",
+              "<template>" + cloneIt.outerHTML + "</template>"
+            );
+            this.notifyPath("element.content");
           }
-          this.set(
-            "element.properties." + propData.property,
-            valueChange.value
-          );
-          this.notifyPath("element.properties." + propData.property);
-        } else if (typeof propData.slot !== typeof undefined) {
-          let slotTag = "span";
-          // slot binding, special support for code editor which needs a template tag
-          // @todo need a tag that implies slot wrapper if it should at all.
-          if (node.tagName.toLowerCase() === "code-editor") {
-            slotTag = "template";
-          }
-          var tmpel = document.createElement(slotTag);
-          // support unnamed slots
-          if (propData.slot !== "") {
-            tmpel.slot = propData.slot;
-          }
-          tmpel.innerHTML = valueChange.value;
-          // wipe just the slot in question
-          window.HaxStore.wipeSlot(node, propData.slot);
-          const cloneIt = tmpel.cloneNode(true);
-          // inject the slotted content
-          dom(node).appendChild(cloneIt);
-          this.set(
-            "element.content",
-            "<template>" + cloneIt.outerHTML + "</template>"
-          );
-          this.notifyPath("element.content");
         }
       }
     }

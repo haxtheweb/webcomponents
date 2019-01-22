@@ -1,15 +1,9 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 /**
-`code-pen-button`
-A LRN element to do a post of data to codepen
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- -
- -
-
-*/
+ * `code-pen-button`
+ * `Post data to codepen to form a new pen`
+ * @demo demo/index.html
+ */
 Polymer({
   _template: html`
     <style>
@@ -24,14 +18,16 @@ Polymer({
         src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-1/cp-arrow-right.svg"
         width="40"
         height="40"
-        value="Create New Pen with Prefilled Data"
+        value="Open code pen in a new window"
         class="codepen-mover-button"
       />
     </form>
   `,
 
   is: "code-pen-button",
-
+  hostAttributes: {
+    title: "Check it out on codepen"
+  },
   properties: {
     /**
      * End point for posting should it change in the future.

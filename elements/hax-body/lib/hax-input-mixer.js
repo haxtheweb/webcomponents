@@ -27,38 +27,44 @@ Polymer({
       :host {
         display: block;
         margin: 0;
-        border: 1px solid var(--hax-color-bg-accent);
+        border: none;
+        padding: 0;
+        border: 1px solid var(--hax-color-border-outline);
       }
       .wrapper {
         background-color: var(--hax-color-bg-accent);
         color: var(--hax-color-text);
         display: flex;
         align-items: center;
+        justify-content: space-between;
       }
       hax-context-item {
         margin: 0;
-        width: 40px;
-        height: 40px;
       }
       #elementoptions {
         height: inherit;
       }
       #input {
-        color: #ffffff;
+        color: var(--hax-color-text);
       }
       paper-checkbox {
-        --paper-checkbox-label-color: #ffffff;
-      }
-      .input-mixer-label {
-        padding-left: 4px;
+        --paper-checkbox-label-color: var(--hax-color-text);
       }
       paper-textarea,
       paper-input {
+        height: 40px;
+        font-size: 14px;
+        margin-bottom: 6px;
         --paper-input-container: {
           padding: 0;
+          font-size: 14px;
         }
         --paper-input-container-label-floating: {
           color: var(--hax-color-text);
+          font-size: 12px;
+        }
+        --paper-input-container-underline: {
+          margin: 0;
         }
         --paper-input-container-color: var(--hax-color-text);
         --paper-input-container-focus-color: var(--hax-color-text);
@@ -69,19 +75,19 @@ Polymer({
           background: transparent;
           margin: 0;
           padding: 0;
-          min-width: 300px;
-          line-height: 16px;
-          font-size: 16px;
+          line-height: 14px;
+          font-size: 14px;
           outline: none;
           border: none;
         }
       }
       .input-method {
-        color: #ffffff;
+        color: var(--hax-color-text);
         padding: 0 8px;
+        width: 80%;
       }
       #updatebutton {
-        border: 1px solid black;
+        outline: 1px solid black;
       }
       #updatebutton:hover {
         border: none;

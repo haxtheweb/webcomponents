@@ -72,6 +72,14 @@ Polymer({
           ><iron-icon icon="editor:format-textdirection-l-to-r"></iron-icon
           >Normal text <strong>&lt;P&gt;</strong></paper-item
         >
+        <paper-item value="ul"
+          ><iron-icon icon="editor:format-list-bulleted"></iron-icon>Bulleted
+          list <strong>&lt;UL&gt;</strong></paper-item
+        >
+        <paper-item value="ol"
+          ><iron-icon icon="editor:format-list-numbered"></iron-icon>Numbered
+          list <strong>&lt;OL&gt;</strong></paper-item
+        >
         <paper-item value="h2"
           ><iron-icon icon="editor:title"></iron-icon>Title
           <strong>&lt;H2&gt;</strong></paper-item
@@ -119,31 +127,31 @@ Polymer({
       ></hax-context-item-textop>
       <hax-context-item-textop
         slot="primary"
+        icon="editor:format-list-bulleted"
+        event-name="text-list-bulleted"
+        label="Bulleted list"
+        hidden$="[[!_showIndent]]"
+      ></hax-context-item-textop>
+      <hax-context-item-textop
+        slot="primary"
         icon="editor:format-list-numbered"
         label="Numbered list"
         event-name="text-list-numbered"
-        hidden\$="[[!polyfillSafe]]"
-      ></hax-context-item-textop>
-      <hax-context-item-textop
-        slot="primary"
-        icon="editor:format-list-bulleted"
-        label="Bulleted list"
-        event-name="text-list-bulleted"
-        hidden\$="[[!polyfillSafe]]"
-      ></hax-context-item-textop>
-      <hax-context-item-textop
-        slot="primary"
-        icon="editor:format-indent-increase"
-        label="Indent"
-        event-name="text-indent"
-        hidden\$="[[!polyfillSafe]]"
+        hidden\$="[[!_showIndent]]"
       ></hax-context-item-textop>
       <hax-context-item-textop
         slot="primary"
         icon="editor:format-indent-decrease"
         label="Outdent"
         event-name="text-outdent"
-        hidden\$="[[!polyfillSafe]]"
+        hidden$="[[!_showIndent]]"
+      ></hax-context-item-textop>
+      <hax-context-item-textop
+        slot="primary"
+        icon="editor:format-indent-increase"
+        label="Indent"
+        event-name="text-indent"
+        hidden$="[[!_showIndent]]"
       ></hax-context-item-textop>
       <hax-context-item-textop
         slot="primary"
@@ -204,6 +212,10 @@ Polymer({
   },
 
   properties: {
+    _showIndent: {
+      type: Boolean,
+      computed: "_computeShowIndent(selectedValue, polyfillSafe)"
+    },
     /**
      * Polyfill safe; this helps remove options from polyfilled platforms
      * as far as text manipulation operations.
@@ -235,11 +247,19 @@ Polymer({
       computed: "_isSafari()"
     }
   },
-
+  /**
+   *
+   */
+  _computeShowIndent(selectedValue, polyfillSafe) {
+    if (polyfillSafe && (selectedValue === "ol" || selectedValue === "ul")) {
+      return true;
+    }
+    return false;
+  },
   /**
    * Ready, figure out polyfill
    */
-  ready: function() {
+  attached: function() {
     this.polyfillSafe = window.HaxStore.instance.computePolyfillSafe();
   },
 
@@ -259,8 +279,8 @@ Polymer({
           window.HaxStore._tmpSelection &&
           window.HaxStore.instance.editMode
         ) {
+          var localRange = false;
           try {
-            // @todo this doesn't work in safari
             if (
               window.HaxStore._tmpRange.startContainer.parentNode.parentNode
                 .tagName === "HAX-BODY" ||
@@ -272,10 +292,11 @@ Polymer({
                 window.HaxStore._tmpRange,
                 this
               );
+              localRange = window.HaxStore._tmpRange;
             }
           } catch (err) {}
         }
-        if (window.HaxStore.instance.activePlaceHolder != null) {
+        if (localRange || window.HaxStore.instance.activePlaceHolder != null) {
           // store placeholder because if this all goes through we'll want
           // to kill the originating text
           let values = {
@@ -354,10 +375,14 @@ Polymer({
         document.execCommand("outdent");
         break;
       case "text-list-numbered":
-        document.execCommand("insertOrderedList");
+        try {
+          document.execCommand("insertOrderedList");
+        } catch (e) {}
         break;
       case "text-list-bulleted":
-        document.execCommand("insertUnorderedList");
+        try {
+          document.execCommand("insertUnorderedList");
+        } catch (e) {}
         break;
     }
   },

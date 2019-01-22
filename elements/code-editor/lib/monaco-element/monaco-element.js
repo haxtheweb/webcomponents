@@ -31,9 +31,10 @@ class MonacoElement extends PolymerElement {
           width: 100%;
           height: 100%;
           padding: 0;
+          margin: 0;
         }
       </style>
-      <iframe id="iframe"></iframe>
+      <iframe id="iframe" frameborder="0"></iframe>
     `;
   }
 
@@ -44,6 +45,18 @@ class MonacoElement extends PolymerElement {
         value: "",
         observer: "monacoValueChanged"
       },
+      fontSize: {
+        type: Number,
+        value: 16
+      },
+      readOnly: {
+        type: Boolean,
+        value: false
+      },
+      /**
+       * THIS MAKES MULTIPLES EDITORS WORK BECAUSE OF EVENTS
+       * DO NOT MESS WITH THIS AND IT HAS TO BE SET
+       */
       uniqueKey: {
         type: String
       },
@@ -147,6 +160,8 @@ class MonacoElement extends PolymerElement {
           language: this.language,
           scrollBeyondLastLine: false,
           automaticLayout: true,
+          fontSize: ${this.fontSize},
+          readOnly: ${this.readOnly},
           minimap: {
             enabled: true
           },
