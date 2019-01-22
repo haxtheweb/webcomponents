@@ -425,7 +425,6 @@ Polymer({
     if (detail.path && /\.length$/.test(detail.path)) {
       return;
     }
-
     var ctx = this;
     var property = event.target.schemaProperty;
     var path = ["value", property.property];

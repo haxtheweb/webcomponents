@@ -16,7 +16,7 @@ import "./hax-blox-browser.js";
  * load the store based on something else calling for it. Like
  * store lazy loading but it isn't tested.
  */
-window.HaxStore = {};
+window.HaxStore = window.HaxStore || {};
 window.HaxStore.instance = null;
 window.HaxStore.requestAvailability = function() {
   if (!window.HaxStore.instance) {
@@ -1778,7 +1778,7 @@ window.HaxStore.haxNodeToContent = node => {
   let prototype = Object.getPrototypeOf(node);
   // support for deep API call
   if (typeof prototype.preProcessHaxNodeToContent !== typeof undefined) {
-    let clone = node.cloneNode();
+    let clone = node.cloneNode(true);
     node = prototype.preProcessHaxNodeToContent(clone);
   }
   let tag = node.tagName.toLowerCase();

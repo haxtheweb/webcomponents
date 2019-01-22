@@ -591,11 +591,8 @@ export class HAXWiring {
                 props[settings[value].property].component = {
                   name: "code-editor",
                   valueProperty: "value",
-                  attributes: {
-                    id: "haxcodeeditor"
-                  },
                   properties: {
-                    editorValue: settings[value].value,
+                    //editorValue: settings[value].value,
                     title: settings[value].title,
                     theme: "hc-black",
                     mode: "html",
@@ -638,8 +635,8 @@ export class HAXWiring {
                 break;
               case "colorpicker":
                 props[settings[value].property].component = {
-                  name: "paper-swatch-picker",
-                  valueProperty: "color",
+                  name: "simple-colors-picker",
+                  valueProperty: "value",
                   properties: {
                     required: settings[value].required
                   }
@@ -755,11 +752,8 @@ export class HAXWiring {
                 props[settings[value].attribute].component = {
                   name: "code-editor",
                   valueProperty: "value",
-                  attributes: {
-                    id: "haxcodeeditor"
-                  },
                   properties: {
-                    editorValue: props[settings[value].attribute].value,
+                    //editorValue: props[settings[value].attribute].value,
                     title: settings[value].title,
                     readOnly: false,
                     theme: "hc-black",
@@ -794,8 +788,8 @@ export class HAXWiring {
                 break;
               case "colorpicker":
                 props[settings[value].attribute].component = {
-                  name: "paper-swatch-picker",
-                  valueProperty: "color",
+                  name: "simple-colors-picker",
+                  valueProperty: "value",
                   properties: {
                     required: settings[value].required
                   }
@@ -811,11 +805,8 @@ export class HAXWiring {
               component: {
                 name: "code-editor",
                 valueProperty: "value",
-                attributes: {
-                  id: "haxcodeeditor"
-                },
                 properties: {
-                  editorValue: settings[value].value,
+                  //editorValue: settings[value].value,
                   title: settings[value].title,
                   theme: "hc-black",
                   mode: "html",
@@ -829,7 +820,10 @@ export class HAXWiring {
               // this is crazy... you know that right
               if (typeof dom(target).childNodes[i] !== typeof undefined) {
                 if (dom(target).childNodes[i].nodeType === 1) {
-                  slot += dom(target).childNodes[i].innerHTML;
+                  // make sure slots that are named line up
+                  if (settings[value].slot === dom(target).childNodes[i].slot) {
+                    slot += dom(target).childNodes[i].innerHTML;
+                  }
                 } else if (
                   dom(target).childNodes[i].nodeType !== 1 &&
                   typeof dom(target).childNodes[i].textContent !==
@@ -840,7 +834,8 @@ export class HAXWiring {
                 }
               }
             }
-            props[settings[value].slot].component.slot = slot;
+            props[settings[value].slot].component.slot =
+              "<template>" + slot.trim() + "</template>";
           }
         }
       }

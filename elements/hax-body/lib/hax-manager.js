@@ -244,7 +244,7 @@ Polymer({
             ></hax-preview>
           </div>
         </iron-pages>
-        <paper-button id="closedialog" on-tap="cancel">
+        <paper-button id="closedialog" on-tap="cancel" hidden$="[[activeStep]]">
           <iron-icon icon="icons:cancel" title="Close dialog"></iron-icon>
         </paper-button>
       </div>

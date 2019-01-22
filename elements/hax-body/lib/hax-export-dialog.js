@@ -77,18 +77,18 @@ Polymer({
       #textarea {
         margin-bottom: 16px;
         padding: 10px;
-        width: 90%;
         font-size: 10px;
         resize: none;
-        width: 80%;
+        width: 90%;
+        height: 40vh;
         width: -webkit-fill-available;
         background-color: transparent;
         color: #eeeeee;
         font-family: monospace;
       }
       paper-dialog {
-        min-width: 60vw;
-        min-height: 50vh;
+        min-width: 70vw;
+        min-height: 60vh;
         background-color: #ffffff;
         color: var(--hax-color-text);
       }

@@ -42,6 +42,9 @@ let CodeEditor = Polymer({
         h3 {
           color: var(--code-pen-title-color, #222222);
         }
+        #codeeditor {
+          height: 100%;
+        }
       </style>
     </custom-style>
     <h3 hidden$="[[!title]]">[[title]]</h3>
@@ -202,7 +205,18 @@ let CodeEditor = Polymer({
     } else {
       content = children.innerHTML;
     }
-    this.editorValue = content.trim();
+    this.$.codeeditor.value = content.trim();
+  },
+  /**
+   * Ensure fields don't pass through to HAX if in that context
+   */
+  preProcessHaxNodeToContent: function(clone) {
+    clone.editorValue = null;
+    clone.codePenData = null;
+    clone.value = null;
+    clone.removeAttribute("value");
+    clone.removeAttribute("code-pen-data");
+    return clone;
   },
   /**
    * created callback
@@ -238,7 +252,6 @@ let CodeEditor = Polymer({
    */
   attached: function() {
     async.microTask.run(() => {
-      this.$.codeeditor.value = this.editorValue;
       // delay on initial attachement to ensure that dependencies have loaded
       setTimeout(() => {
         this.$.codeeditor.initIFrame();
@@ -258,7 +271,7 @@ let CodeEditor = Polymer({
         handles: [
           {
             type: "code",
-            code: "editorValue"
+            code: ""
           }
         ],
         meta: {
@@ -299,7 +312,7 @@ let CodeEditor = Polymer({
           },
           // this is trippy but actually will work.
           {
-            property: "editorValue",
+            slot: "",
             title: "Code",
             description: "The code to present to the user",
             inputMethod: "code-editor",

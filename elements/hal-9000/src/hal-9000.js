@@ -105,24 +105,26 @@ class Hal9000 extends PolymerElement {
   _annyangLoaded() {
     this.annyang = window.annyang;
     // Add our commands to annyang
-    this.annyang.addCommands(this.commands);
-    this.annyang.debug(this.debug);
-    // Start listening. You can call this here, or attach this call to an event, button, etc.
-    if (this.auto) {
-      this.annyang.start({
-        autoRestart: true,
-        continuous: true
+    if (this.annyang) {
+      this.annyang.addCommands(this.commands);
+      this.annyang.debug(this.debug);
+      // Start listening. You can call this here, or attach this call to an event, button, etc.
+      if (this.auto) {
+        this.annyang.start({
+          autoRestart: true,
+          continuous: true
+        });
+      } else if (this.enabled) {
+        this.annyang.start();
+      }
+      // alert alert we are ready
+      const evt = new CustomEvent("hal-9000-online", {
+        bubbles: true,
+        cancelable: false,
+        detail: true
       });
-    } else if (this.enabled) {
-      this.annyang.start();
+      this.dispatchEvent(evt);
     }
-    // alert alert we are ready
-    const evt = new CustomEvent("hal-9000-online", {
-      bubbles: true,
-      cancelable: false,
-      detail: true
-    });
-    this.dispatchEvent(evt);
   }
   /**
    * Change the key name that is responded to

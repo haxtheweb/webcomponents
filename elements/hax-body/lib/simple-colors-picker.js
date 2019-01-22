@@ -256,7 +256,8 @@ Polymer({
      */
     value: {
       type: Object,
-      value: null
+      value: null,
+      notify: true
     },
     /**
      * CSS to preview selected swatch

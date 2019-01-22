@@ -44,6 +44,9 @@ class MonacoElement extends PolymerElement {
         value: "",
         observer: "monacoValueChanged"
       },
+      uniqueKey: {
+        type: String
+      },
       eventTypes: {
         type: Object,
         value: {
@@ -66,10 +69,25 @@ class MonacoElement extends PolymerElement {
       libPath: {
         type: String,
         value: "node_modules/monaco-editor/min/vs"
+      },
+      editorReference: {
+        type: String,
+        reflectToAttribute: true,
+        computed: "generateUUID()"
       }
     };
   }
-
+  /**
+   * Generate a UUID
+   */
+  generateUUID() {
+    return "ss-s-s-s-sss".replace(/s/g, this._uuidPart);
+  }
+  _uuidPart() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
   get document() {
     if (this.iframe.contentWindow) {
       return this.iframe.contentWindow.document;
@@ -104,119 +122,123 @@ class MonacoElement extends PolymerElement {
       div.id = "container";
       this.document.body.appendChild(div);
       var iframeScript = `
-var eventTypes = {
-  ready: 'ready',
-  valueChanged: 'valueChanged',
-  languageChanged: 'languageChanged',
-  themeChanged: 'themeChanged',
-};
+  var eventTypes = {
+    ready: 'ready',
+    valueChanged: 'valueChanged',
+    languageChanged: 'languageChanged',
+    themeChanged: 'themeChanged',
+  };
 
-class MonacoEditor {
-  constructor() {
-    this.language = 'javascript';
-    this.value = '';
-    this.editor = null;
-    this.setupEventListener('message', this.handleMessage.bind(this));
-    this.setupEditor();
-  }
+  class MonacoEditor {
+    constructor(editorReference) {
+      this._editorReference_ = editorReference;
+      this.language = 'javascript';
+      this.value = '';
+      this.editor = null;
+      this.setupEventListener('message', this.handleMessage.bind(this));
+      this.setupEditor();
+    }
 
-  setupEditor() {
-    require.config({ paths: { vs: '${this.libPath}' } });
-    require(['vs/editor/editor.main'], () => {
-      this.editor = monaco.editor.create(document.getElementById('container'), {
-        value: this.value,
-        language: this.language,
-        scrollBeyondLastLine: false,
-        minimap: {
-          enabled: false
-        }
+    setupEditor() {
+      require.config({ paths: { vs: '${this.libPath}' } });
+      require(['vs/editor/editor.main'], () => {
+        this.editor = monaco.editor.create(document.getElementById('container'), {
+          value: this.value,
+          language: this.language,
+          scrollBeyondLastLine: false,
+          automaticLayout: true,
+          minimap: {
+            enabled: true
+          },
+          autoIndent: true,
+        });
+
+        const model = this.editor.getModel();
+        model.onDidChangeContent(() => {
+          const value = model.getValue();
+          this.onValueChanged(value);
+        });
+
+        this.ready();
       });
+    }
 
-      const model = this.editor.getModel();
-      model.onDidChangeContent(() => {
-        const value = model.getValue();
-        this.onValueChanged(value);
+    ready() {
+      setTimeout(() => {
+        this.postMessage(eventTypes.ready, null);
+        this.setupEventListener(
+          eventTypes.valueChanged,
+          this.onValueChanged.bind(this)
+        );
+      }, 100);
+    }
+
+    _handleMessage(data) {
+      switch (data.event) {
+        case eventTypes.valueChanged:
+          this.onInputValueChanged(data.payload);
+          break;
+        case eventTypes.languageChanged:
+          this.onLanguageChanged(data.payload);
+          break;
+        case eventTypes.themeChanged:
+          this.onThemeChanged(data.payload);
+          break;
+        default:
+          break;
+      }
+    }
+
+    handleMessage(message) {
+      try {
+        const data = JSON.parse(message.data);
+        this._handleMessage(data);
+      } catch (error) {
+        console.warn(error);
+        return;
+      }
+    }
+
+    postMessage(event, payload) {
+      var msg = {
+        event: event,
+        payload: payload,
+        editorReference: this._editorReference_
+      }
+      window.parent.postMessage(msg, window.parent.location.href);
+    }
+
+    setupEventListener(type, callback) {
+      window.addEventListener(type, data => {
+        callback(data);
       });
+    }
 
-      this.ready();
-    });
-  }
+    onInputValueChanged(newValue) {
+      if (newValue !== this.value) {
+        this.value = newValue;
+        this.editor.getModel().setValue(newValue);
+        this.postMessage(eventTypes.valueChanged, newValue);
+      }
+    } 
 
-  ready() {
-    setTimeout(() => {
-      this.postMessage(eventTypes.ready, null);
-      this.setupEventListener(
-        eventTypes.valueChanged,
-        this.onValueChanged.bind(this)
-      );
-    }, 100);
-  }
+    onValueChanged(newValue) {
+      if (newValue !== this.value) {
+        this.value = newValue;
+        this.postMessage(eventTypes.valueChanged, newValue);
+      }
+    }
 
-  _handleMessage(data) {
-    switch (data.event) {
-      case eventTypes.valueChanged:
-        this.onInputValueChanged(data.payload);
-        break;
-      case eventTypes.languageChanged:
-        this.onLanguageChanged(data.payload);
-        break;
-      case eventTypes.themeChanged:
-        this.onThemeChanged(data.payload);
-        break;
-      default:
-        break;
+    onLanguageChanged(newLang) {
+      monaco.editor.setModelLanguage(this.editor.getModel(), newLang);
+    }
+
+    onThemeChanged(newValue) {
+      monaco.editor.setTheme(newValue);
     }
   }
 
-  handleMessage(message) {
-    try {
-      const data = JSON.parse(message.data);
-      this._handleMessage(data);
-    } catch (error) {
-      console.warn(error);
-      return;
-    }
-  }
-
-  postMessage(event, payload) {
-    window.parent.postMessage(
-      JSON.stringify({ event, payload }),
-      window.parent.location.href
-    );
-  }
-
-  setupEventListener(type, callback) {
-    window.addEventListener(type, data => {
-      callback(data);
-    });
-  }
-
-  onInputValueChanged(newValue) {
-    if (newValue !== this.value) {
-      this.value = newValue;
-      this.editor.getModel().setValue(newValue);
-      this.postMessage(eventTypes.valueChanged, newValue);
-    }
-  } 
-
-  onValueChanged(newValue) {
-    if (newValue !== this.value) {
-      this.value = newValue;
-      this.postMessage(eventTypes.valueChanged, newValue);
-    }
-  }
-
-  onLanguageChanged(newLang) {
-    monaco.editor.setModelLanguage(this.editor.getModel(), newLang);
-  }
-
-  onThemeChanged(newValue) {
-    monaco.editor.setTheme(newValue);
-  }
-}
-
-new MonacoEditor();
-`;
+  new MonacoEditor("${this.editorReference}");`;
       this.insertScriptElement({
         src: `${this.libPath}/loader.js`,
         onload: () => {
@@ -241,10 +263,16 @@ new MonacoEditor();
   }
 
   _handleMessage(data) {
+    // bail if we don't have a valid editor reference
+    if (data.editorReference !== this.editorReference) return;
+
     if (data.event === this.eventTypes.valueChanged) {
-      this.dispatchEvent(
-        new CustomEvent("value-changed", { detail: data.payload })
-      );
+      const evt = new CustomEvent("value-changed", {
+        bubbles: true,
+        cancelable: true,
+        detail: data.payload
+      });
+      this.dispatchEvent(evt);
     } else if (data.event === this.eventTypes.ready) {
       this.onIFrameReady();
     }
@@ -321,3 +349,4 @@ new MonacoEditor();
 }
 
 window.customElements.define("monaco-element", MonacoElement);
+window.MonacoData = window.MonacoData || {};

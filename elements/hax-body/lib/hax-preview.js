@@ -1,5 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { microTask, timeOut } from "@polymer/polymer/lib/utils/async.js";
+import { Debouncer } from "@polymer/polymer/lib/utils/debounce.js";
 import "@polymer/paper-toggle-button/paper-toggle-button.js";
 import "@polymer/paper-card/paper-card.js";
 import "@polymer/paper-tabs/paper-tabs.js";
@@ -17,16 +19,13 @@ import "@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-shared-styles.js";
 /**
-`hax-preview`
-An element that can generate a form
-
-* @demo demo/index.html
-
-@microcopy - the mental model for this element
- - element - the element to work against. an object that expresses enough information to create an element in the DOM. This is useful for remixing a tag via the json-form
- - source - a json object from some place loaded in remotely which will then be in json-schema format. This will then be parsed into a form which can be used to manipulate the element.
-
-*/
+ * `hax-preview`
+ * `An element that can generate a form`
+ * @demo demo/index.html
+ * @microcopy - the mental model for this element
+ *  - element - the element to work against. an object that expresses enough information to create an element in the DOM. This is useful for remixing a tag via the json-form
+ *  - source - a json object from some place loaded in remotely which will then be in json-schema format. This will then be parsed into a form which can be used to manipulate the element.
+ */
 Polymer({
   _template: html`
     <custom-style>
@@ -193,7 +192,7 @@ Polymer({
           ><iron-icon icon="icons:arrow-drop-down"></iron-icon
           ><iron-icon icon="icons:arrow-drop-down"></iron-icon>
         </div>
-        <div id="preview"></div>
+        <div id="preview"><slot></slot></div>
         <div class="preview-text preview-text-bottom">
           <iron-icon icon="icons:arrow-drop-up"></iron-icon
           ><iron-icon icon="icons:arrow-drop-up"></iron-icon
@@ -232,7 +231,7 @@ Polymer({
 
   is: "hax-preview",
 
-  observers: ["_valueChanged(value.*, formKey)"],
+  observers: ["_valueChanged(value.*)"],
 
   properties: {
     /**
@@ -320,7 +319,6 @@ Polymer({
       type: String
     }
   },
-
   /**
    * Trigger cancel on manager as it is the parent here.
    */
@@ -624,7 +622,7 @@ Polymer({
       Object.keys(newValue).length > 0
     ) {
       // wipe the preview area and assocaited node
-      let preview = this.$.preview;
+      let preview = dom(this);
       window.HaxStore.wipeSlot(preview, "*");
       this.set("previewNode", {});
       this.modeTab = "configure";
@@ -646,12 +644,11 @@ Polymer({
       this.set("previewNode", {});
     }
   },
-
   /**
    * Value in the form has changed, reflect to the preview.
    */
-  _valueChanged: function(valueChange, pathChange) {
-    let node = this.previewNode;
+  _valueChanged: function(valueChange) {
+    var node = this.previewNode;
     // sanity check and then get props and mesh with form value response
     if (
       typeof node.tagName !== typeof undefined &&
@@ -659,130 +656,77 @@ Polymer({
         node.tagName.toLowerCase()
       ] !== typeof undefined
     ) {
+      // load up the property bindings we care about from the store
       let props =
         window.HaxStore.instance.elementList[node.tagName.toLowerCase()];
-      // loop through the properties for the form
-      for (var value in props.settings[this.formKey]) {
-        // support property binding
-        if (
-          props.settings[this.formKey].hasOwnProperty(value) &&
-          typeof props.settings[this.formKey][value].property !==
-            typeof undefined &&
-          typeof this.value[props.settings[this.formKey][value].property] !==
-            typeof undefined
-        ) {
+      // loop over the notified changes even though they should be singular
+      let path = valueChange.path.replace("value.", "");
+      // translate key name to array position
+      var propSettings = props.settings[this.formKey].filter(n => {
+        if (typeof n.attribute !== typeof undefined) {
+          return n.attribute === path;
+        } else if (typeof n.property !== typeof undefined) {
+          return n.property === path;
+        } else if (typeof n.slot !== typeof undefined) {
+          return n.slot === path;
+        }
+      });
+      // ensure we have anything before moving forward (usually we will)
+      if (propSettings.length > 0) {
+        var propData = propSettings.pop();
+        if (propData.attribute) {
+          let attributeName = window.HaxStore.camelToDash(propData.attribute);
           // special supporting for boolean because html is weird :p
-          if (
-            this.value[props.settings[this.formKey][value].property] === true
-          ) {
-            node[props.settings[this.formKey][value].property] = true;
-          } else if (
-            this.value[props.settings[this.formKey][value].property] === false
-          ) {
-            node[props.settings[this.formKey][value].property] = false;
-          } else {
-            // account for Array based values
-            if (
-              this.value[props.settings[this.formKey][value].property] !=
-                null &&
-              this.value[props.settings[this.formKey][value].property]
-                .constructor === Array
-            ) {
-              node.set(
-                props.settings[this.formKey][value].property,
-                window.HaxStore.toArray(
-                  this.value[props.settings[this.formKey][value].property]
-                )
-              );
-            } else if (
-              this.value[props.settings[this.formKey][value].property] !=
-                null &&
-              this.value[props.settings[this.formKey][value].property]
-                .constructor === Object
-            ) {
-              node.set(
-                props.settings[this.formKey][value].property,
-                this.value[props.settings[this.formKey][value].property]
-              );
-            } else {
-              // string most likely
-              node.set(
-                props.settings[this.formKey][value].property,
-                this.value[props.settings[this.formKey][value].property]
-              );
-            }
-          }
-          this.set(
-            "element.properties." +
-              props.settings[this.formKey][value].property,
-            this.value[props.settings[this.formKey][value].property]
-          );
-          this.notifyPath(
-            "element.properties." + props.settings[this.formKey][value].property
-          );
-        } else if (
-          props.settings[this.formKey].hasOwnProperty(value) &&
-          typeof props.settings[this.formKey][value].attribute !==
-            typeof undefined &&
-          typeof this.value[props.settings[this.formKey][value].attribute] !==
-            typeof undefined
-        ) {
-          let attributeName = window.HaxStore.camelToDash(
-            props.settings[this.formKey][value].attribute
-          );
-          // special supporting for boolean because html is weird :p
-          if (
-            this.value[props.settings[this.formKey][value].attribute] === true
-          ) {
+          if (valueChange.value === true) {
             node.setAttribute(attributeName, attributeName);
-          } else if (
-            this.value[props.settings[this.formKey][value].attribute] === false
-          ) {
+          } else if (valueChange.value === false) {
             node.removeAttribute(attributeName);
           } else {
             // special support for innerText which is an html attribute...sorta
             if (attributeName === "inner-text") {
-              node.innerText = this.value[
-                props.settings[this.formKey][value].attribute
-              ];
+              node.innerText = valueChange.value;
               node.removeAttribute("innertext");
             } else if (
-              this.value[props.settings[this.formKey][value].attribute] !==
-                null &&
-              this.value[props.settings[this.formKey][value].attribute] !==
-                "null"
+              valueChange.value !== null &&
+              valueChange.value !== "null"
             ) {
-              node.setAttribute(
-                attributeName,
-                this.value[props.settings[this.formKey][value].attribute]
-              );
+              node.setAttribute(attributeName, valueChange.value);
             }
           }
-          // have to specially ignore this since it's not really an
-          // attribute that we want to keep but HTML4 that brought us
-          // this was never meant to be used how developers now do it...
-          if (
-            attributeName !== "inner-text" &&
-            this.value[props.settings[this.formKey][value].attribute] !==
-              null &&
-            this.value[props.settings[this.formKey][value].attribute] !== "null"
-          ) {
-            this.set(
-              "element.properties." +
-                props.settings[this.formKey][value].attribute,
-              this.value[props.settings[this.formKey][value].attribute]
-            );
-            this.notifyPath(
-              "element.properties." +
-                props.settings[this.formKey][value].attribute
-            );
+        } else if (propData.property) {
+          if (valueChange.value === true || valueChange.value === false) {
+            node[propData.property] = valueChange.value;
+          } else {
+            // account for Array based values
+            if (
+              valueChange.value != null &&
+              valueChange.value.constructor === Array
+            ) {
+              // look for polymer setter to notify paths correctly
+              if (typeof node.set === "function") {
+                node.set(
+                  propData.property,
+                  window.HaxStore.toArray(valueChange.value)
+                );
+              } else {
+                node[propData.property] = window.HaxStore.toArray(
+                  valueChange.value
+                );
+              }
+            } else {
+              if (typeof node.set === "function") {
+                node.set(propData.property, valueChange.value);
+              } else {
+                node[propData.property] = valueChange.value;
+              }
+            }
           }
-        } else if (
-          typeof props.settings[this.formKey][value].slot !==
-            typeof undefined &&
-          typeof this.value[props.settings[this.formKey][value].slot] !==
-            typeof undefined
-        ) {
+          this.set(
+            "element.properties." + propData.property,
+            valueChange.value
+          );
+          this.notifyPath("element.properties." + propData.property);
+        } else if (typeof propData.slot !== typeof undefined) {
           let slotTag = "span";
           // slot binding, special support for code editor which needs a template tag
           // @todo need a tag that implies slot wrapper if it should at all.
@@ -791,31 +735,24 @@ Polymer({
           }
           var tmpel = document.createElement(slotTag);
           // support unnamed slots
-          if (props.settings[this.formKey][value].slot !== "") {
-            tmpel.slot = props.settings[this.formKey][value].slot;
+          if (propData.slot !== "") {
+            tmpel.slot = propData.slot;
           }
-          tmpel.innerHTML = this.value[
-            props.settings[this.formKey][value].slot
-          ];
+          tmpel.innerHTML = valueChange.value;
           // wipe just the slot in question
-          window.HaxStore.wipeSlot(
-            node,
-            props.settings[this.formKey][value].slot
-          );
+          window.HaxStore.wipeSlot(node, propData.slot);
+          const cloneIt = tmpel.cloneNode(true);
           // inject the slotted content
-          dom(node).appendChild(tmpel);
+          dom(node).appendChild(cloneIt);
           this.set(
             "element.content",
-            "<template>" + tmpel.innerHTML + "</template>"
+            "<template>" + cloneIt.outerHTML + "</template>"
           );
           this.notifyPath("element.content");
-        } else {
-          // @todo add support for disabling based on not having advanced
         }
       }
     }
   },
-
   /**
    * Editor mode changed handler
    */
