@@ -16,7 +16,7 @@
       "hax": "src/hax-bookmarklet-hax.json"
     }
   },
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "HAX as a bookmarklet script",
   "repository": {
     "type": "git",
@@ -40,8 +40,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/cms-hax": "^2.0.1",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.0.0-beta1",
+    "@lrnwebcomponents/cms-hax": "^2.0.2",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.0.2",
     "@polymer/iron-resizable-behavior": "^3.0.0",
     "@polymer/iron-selector": "^3.0.0",
     "@polymer/polymer": "^3.0.5"

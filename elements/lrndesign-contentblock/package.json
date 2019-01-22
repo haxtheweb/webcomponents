@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-contentblock-hax.json"
     }
   },
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Automated conversion of lrndesign-contentblock/",
   "repository": {
     "type": "git",

@@ -19,7 +19,7 @@
   "contributors": [
     "John Marczak <johnnyboyct@hotmail.com>"
   ],
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Start of material-word",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.0.0-beta1",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.0.2",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {

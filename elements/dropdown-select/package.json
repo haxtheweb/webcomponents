@@ -11,7 +11,7 @@
       "js": "src/dropdown-select.js"
     }
   },
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A dropdown element with better event and data binding",
   "repository": {
     "type": "git",

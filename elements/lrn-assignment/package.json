@@ -16,7 +16,7 @@
       "hax": "src/lrn-assignment-hax.json"
     }
   },
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A basic OER schema semantic assignment wrapper",
   "repository": {
     "type": "git",

@@ -16,7 +16,7 @@
       "hax": "src/lrnsys-button-hax.json"
     }
   },
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Automated conversion of lrnsys-button/",
   "repository": {
     "type": "git",

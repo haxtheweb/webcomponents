@@ -16,7 +16,7 @@
       "hax": "src/watsonlogic-parallax-hax.json"
     }
   },
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Automated conversion of watsonlogic-parallax/",
   "repository": {
     "type": "git",

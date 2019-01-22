@@ -11,7 +11,7 @@
       "js": "src/eco-json-schema-form.js"
     }
   },
-  "version": "2.0.0-alpha2",
+  "version": "2.0.2",
   "description": "JSON Schema form data binding magic",
   "repository": {
     "type": "git",

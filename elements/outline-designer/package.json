@@ -16,7 +16,7 @@
       "hax": "src/outline-designer-hax.json"
     }
   },
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "tools to modify and visualize JSON Outline Schema for editing",
   "repository": {
     "type": "git",
@@ -40,10 +40,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/item-overlay-ops": "^2.0.1",
-    "@lrnwebcomponents/lrnsys-outline": "^2.0.1",
-    "@lrnwebcomponents/simple-colors": "^2.0.1",
-    "@lrnwebcomponents/simple-modal": "^2.0.1",
+    "@lrnwebcomponents/item-overlay-ops": "^2.0.2",
+    "@lrnwebcomponents/lrnsys-outline": "^2.0.2",
+    "@lrnwebcomponents/simple-colors": "^2.0.2",
+    "@lrnwebcomponents/simple-modal": "^2.0.2",
     "@polymer/app-layout": "^3.0.2",
     "@polymer/iron-ajax": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",

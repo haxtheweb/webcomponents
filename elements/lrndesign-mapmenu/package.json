@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-mapmenu-hax.json"
     }
   },
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Automated conversion of lrndesign-mapmenu/",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/lrndesign-avatar": "^2.0.1",
+    "@lrnwebcomponents/lrndesign-avatar": "^2.0.2",
     "@polymer/iron-behaviors": "^3.0.1",
     "@polymer/iron-collapse": "^3.0.0",
     "@polymer/iron-icon": "^3.0.1",

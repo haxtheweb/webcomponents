@@ -11,7 +11,7 @@
       "js": "src/contenta-polymer.js"
     }
   },
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Contenta integration with Polymer",
   "repository": {
     "type": "git",

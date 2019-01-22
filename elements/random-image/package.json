@@ -16,7 +16,7 @@
       "hax": "src/random-image-hax.json"
     }
   },
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Start of random-image",
   "repository": {
     "type": "git",

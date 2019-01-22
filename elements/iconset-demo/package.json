@@ -16,7 +16,7 @@
       "hax": "src/iconset-demo-hax.json"
     }
   },
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "iterates through an iconset array to generate a demo of all of the icons",
   "repository": {
     "type": "git",
