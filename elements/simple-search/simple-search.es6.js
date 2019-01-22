@@ -13,6 +13,10 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
             --simple-search-input-text-color,
             #000
           );
+          --paper-input-container-shared-input-style_-_color: var(
+            --simple-search-input-text-color,
+            #000
+          );
           --paper-input-container-focus-color: var(
             --simple-search-input-line-color,
             #000

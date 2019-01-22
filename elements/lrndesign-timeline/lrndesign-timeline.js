@@ -145,7 +145,6 @@ class LrndesignTimeline extends SimpleColors {
           border-top: 35px solid transparent;
           border-bottom: 35px solid transparent;
           border-left: 35px solid var(--lrndesign-timeline-header-accent);
-          transition-delay: 0s;
         }
         :host(:not([timeline-size*="s"])) .heading h2 {
           margin: 7px 48px 0 20px;
