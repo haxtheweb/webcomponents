@@ -30,7 +30,7 @@ import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
 import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/hax-body/lib/simple-colors-picker.js";
+import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
 import "@lrnwebcomponents/magazine-cover/magazine-cover.js";
 import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
 import "@lrnwebcomponents/sites-listing/sites-listing.js";
