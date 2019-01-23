@@ -364,6 +364,12 @@ let SelfCheck = Polymer({
             validationType: "url"
           },
           {
+            property: "backgroundColor",
+            title: "Background color",
+            description: "Select the background color used",
+            inputMethod: "colorpicker"
+          },
+          {
             property: "link",
             title: "More link",
             description: "Link to additional information",
@@ -391,12 +397,6 @@ let SelfCheck = Polymer({
               "This is where you enter a question for the self-check.",
             inputMethod: "code-editor",
             required: true
-          },
-          {
-            property: "backgroundColor",
-            title: "Background color",
-            description: "Select the background color used",
-            inputMethod: "colorpicker"
           }
         ],
         advanced: []

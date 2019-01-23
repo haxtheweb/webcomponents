@@ -57,6 +57,11 @@ let HaxBody = Polymer({
         padding: 14px;
         margin: 2px;
       }
+      :host #bodycontainer ::slotted(ul),
+      :host #bodycontainer ::slotted(ol) {
+        padding-left: 20px;
+        margin-left: 20px;
+      }
 
       :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
         outline: none;

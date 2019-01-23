@@ -11,7 +11,6 @@ import "@polymer/iron-icons/social-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/maps-icons.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "./simple-colors-picker.js";
 import "./hax-panel-item.js";
 import "./hax-shared-styles.js";
 /**

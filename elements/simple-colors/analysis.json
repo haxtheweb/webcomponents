@@ -4672,11 +4672,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 58,
+              "line": 59,
               "column": 6
             },
             "end": {
-              "line": 64,
+              "line": 65,
               "column": 7
             }
           },
@@ -4695,11 +4695,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 69,
+              "line": 70,
               "column": 6
             },
             "end": {
-              "line": 75,
+              "line": 76,
               "column": 7
             }
           },
@@ -4718,11 +4718,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 80,
+              "line": 81,
               "column": 6
             },
             "end": {
-              "line": 86,
+              "line": 87,
               "column": 7
             }
           },
@@ -4741,11 +4741,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 91,
+              "line": 92,
               "column": 6
             },
             "end": {
-              "line": 97,
+              "line": 98,
               "column": 7
             }
           },
@@ -4764,11 +4764,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 110,
+              "line": 111,
               "column": 6
             },
             "end": {
-              "line": 116,
+              "line": 117,
               "column": 7
             }
           },
@@ -4787,11 +4787,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 121,
+              "line": 122,
               "column": 6
             },
             "end": {
-              "line": 127,
+              "line": 128,
               "column": 7
             }
           },
@@ -4810,11 +4810,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 132,
+              "line": 133,
               "column": 6
             },
             "end": {
-              "line": 139,
+              "line": 140,
               "column": 7
             }
           },
@@ -5077,11 +5077,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 242,
+              "line": 252,
               "column": 2
             },
             "end": {
-              "line": 245,
+              "line": 255,
               "column": 3
             }
           },
@@ -6913,11 +6913,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 250,
+              "line": 260,
               "column": 2
             },
             "end": {
-              "line": 252,
+              "line": 262,
               "column": 3
             }
           },
@@ -7075,11 +7075,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 163,
+              "line": 164,
               "column": 2
             },
             "end": {
-              "line": 197,
+              "line": 205,
               "column": 3
             }
           },
@@ -7102,11 +7102,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 205,
+              "line": 213,
               "column": 2
             },
             "end": {
-              "line": 207,
+              "line": 215,
               "column": 3
             }
           },
@@ -7127,11 +7127,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 212,
+              "line": 220,
               "column": 2
             },
             "end": {
-              "line": 215,
+              "line": 225,
               "column": 3
             }
           },
@@ -7151,11 +7151,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 220,
+              "line": 230,
               "column": 2
             },
             "end": {
-              "line": 222,
+              "line": 232,
               "column": 3
             }
           },
@@ -7175,11 +7175,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 227,
+              "line": 237,
               "column": 2
             },
             "end": {
-              "line": 230,
+              "line": 240,
               "column": 3
             }
           },
@@ -7199,11 +7199,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 235,
+              "line": 245,
               "column": 2
             },
             "end": {
-              "line": 237,
+              "line": 247,
               "column": 3
             }
           },
@@ -8166,7 +8166,7 @@
           "column": 0
         },
         "end": {
-          "line": 257,
+          "line": 267,
           "column": 1
         }
       },
@@ -8230,11 +8230,11 @@
           "description": "Optional. Sets the aria-labelledby attribute",
           "sourceRange": {
             "start": {
-              "line": 58,
+              "line": 59,
               "column": 6
             },
             "end": {
-              "line": 64,
+              "line": 65,
               "column": 7
             }
           },
@@ -8246,11 +8246,11 @@
           "description": "Is the picker disabled?",
           "sourceRange": {
             "start": {
-              "line": 69,
+              "line": 70,
               "column": 6
             },
             "end": {
-              "line": 75,
+              "line": 76,
               "column": 7
             }
           },
@@ -8262,11 +8262,11 @@
           "description": "Is it expanded?",
           "sourceRange": {
             "start": {
-              "line": 80,
+              "line": 81,
               "column": 6
             },
             "end": {
-              "line": 86,
+              "line": 87,
               "column": 7
             }
           },
@@ -8278,11 +8278,11 @@
           "description": "Optional. The label for the picker input",
           "sourceRange": {
             "start": {
-              "line": 91,
+              "line": 92,
               "column": 6
             },
             "end": {
-              "line": 97,
+              "line": 98,
               "column": 7
             }
           },
@@ -8294,11 +8294,11 @@
           "description": "An array of options for the picker, eg.: `\n[\n  {\n    \"icon\": \"editor:format-paint\",      //Optional. Used if the picker is used as an icon picker.\n    \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of the choice.\n    \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n    ...                                 //Optional. Any other properties that should be captured as part of the selected option's value\n  },...\n]`",
           "sourceRange": {
             "start": {
-              "line": 110,
+              "line": 111,
               "column": 6
             },
             "end": {
-              "line": 116,
+              "line": 117,
               "column": 7
             }
           },
@@ -8310,11 +8310,11 @@
           "description": "Show all shades instead of just main accent-colors",
           "sourceRange": {
             "start": {
-              "line": 121,
+              "line": 122,
               "column": 6
             },
             "end": {
-              "line": 127,
+              "line": 128,
               "column": 7
             }
           },
@@ -8326,11 +8326,11 @@
           "description": "An string that stores the current value for the picker",
           "sourceRange": {
             "start": {
-              "line": 132,
+              "line": 133,
               "column": 6
             },
             "end": {
-              "line": 139,
+              "line": 140,
               "column": 7
             }
           },
@@ -9299,7 +9299,7 @@
               "column": 2
             },
             "end": {
-              "line": 115,
+              "line": 119,
               "column": 3
             }
           },
@@ -11131,11 +11131,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 119,
+              "line": 123,
               "column": 2
             },
             "end": {
-              "line": 121,
+              "line": 125,
               "column": 3
             }
           },
@@ -12284,7 +12284,7 @@
           "column": 0
         },
         "end": {
-          "line": 126,
+          "line": 130,
           "column": 1
         }
       },
