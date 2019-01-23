@@ -12,7 +12,7 @@
       "scss": "src/a11y-media-player.scss",
       "html": "src/a11y-media-player.html",
       "js": "src/a11y-media-player.js",
-      "properties": "src/a11y-media-player-behaviors.json",
+      "properties": "src/a11y-media-player-properties.json",
       "hax": "src/a11y-media-player-hax.json"
     }
   },
