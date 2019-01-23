@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import {} from "@polymer/polymer/lib/elements/dom-repeat.js";
@@ -42,6 +43,12 @@ class LrndesignTimeline extends SimpleColors {
   connectedCallback() {
     let root = this;
     super.connectedCallback();
+    this.HAXWiring = new HAXWiring();
+    this.HAXWiring.setHaxProperties(
+      TimelineTool.haxProperties,
+      TimelineTool.tag,
+      this
+    );
 
     window.ResponsiveUtility.requestAvailability();
     window.dispatchEvent(
@@ -49,7 +56,11 @@ class LrndesignTimeline extends SimpleColors {
         detail: {
           element: root,
           attribute: "timeline-size",
-          relativeToParent: true
+          relativeToParent: true,
+          sm: 600,
+          md: 900,
+          lg: 1200,
+          xl: 1600
         }
       })
     );

@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import {} from "@polymer/polymer/lib/elements/dom-repeat.js";
@@ -95,24 +96,24 @@ class LrndesignTimeline extends SimpleColors {
           max-width: 100%;
           max-height: 260px;
         }
-        :host(:not([timeline-size*="s"])) #timeline {
+        :host(:not([timeline-size="xs"])) #timeline {
           background-color: var(--lrndesign-timeline-background);
         }
-        :host(:not([timeline-size*="s"])) #events {
+        :host(:not([timeline-size="xs"])) #events {
           height: 300px;
           position: relative;
           overflow-y: scroll;
         }
-        :host(:not([timeline-size*="s"])) .event {
+        :host(:not([timeline-size="xs"])) .event {
           position: static;
           top: 0;
         }
-        :host(:not([timeline-size*="s"])) .event-overview {
+        :host(:not([timeline-size="xs"])) .event-overview {
           padding: 0;
           position: sticky;
           top: 0;
         }
-        :host(:not([timeline-size*="s"])) .heading {
+        :host(:not([timeline-size="xs"])) .heading {
           position: absolute;
           top: 0;
           padding: 10px 0;
@@ -120,10 +121,10 @@ class LrndesignTimeline extends SimpleColors {
           background-color: transparent;
           width: calc(55% + 30px);
         }
-        :host(:not([timeline-size*="s"])) .event[has-media][selected] .heading {
+        :host(:not([timeline-size="xs"])) .event[has-media][selected] .heading {
           z-index: 2;
         }
-        :host(:not([timeline-size*="s"])) .event[has-media] .heading:after {
+        :host(:not([timeline-size="xs"])) .event[has-media] .heading:after {
           content: " ";
           z-index: 200;
           position: absolute;
@@ -137,7 +138,7 @@ class LrndesignTimeline extends SimpleColors {
           transition: all 0.3s;
           transition-delay: 0.2s;
         }
-        :host(:not([timeline-size*="s"]))
+        :host(:not([timeline-size="xs"]))
           .event[has-media][selected]
           .heading:after {
           top: 7px;
@@ -146,7 +147,7 @@ class LrndesignTimeline extends SimpleColors {
           border-bottom: 35px solid transparent;
           border-left: 35px solid var(--lrndesign-timeline-header-accent);
         }
-        :host(:not([timeline-size*="s"])) .heading h2 {
+        :host(:not([timeline-size="xs"])) .heading h2 {
           margin: 7px 48px 0 20px;
           padding: 0 20px;
           line-height: 50px;
@@ -155,27 +156,28 @@ class LrndesignTimeline extends SimpleColors {
           background-color: var(--lrndesign-timeline-background);
           transition: background-color 0.3s;
         }
-        :host(:not([timeline-size*="s"])) .event[selected] .heading h2 {
+        :host(:not([timeline-size="xs"])) .event[selected] .heading h2 {
           background-color: var(--lrndesign-timeline-header-accent);
           color: var(--lrndesign-timeline-header);
         }
-        :host(:not([timeline-size*="s"])) .event[has-media] .heading h2:after {
+        :host(:not([timeline-size="xs"])) .event[has-media] .heading h2:after {
           content: "";
           position: absolute;
           left: calc(100% - 48px);
+          top: 17px;
           height: 50px;
           width: 0px;
           transition: all 0.3s;
           background-color: var(--lrndesign-timeline-background);
         }
-        :host(:not([timeline-size*="s"]))
+        :host(:not([timeline-size="xs"]))
           .event[has-media][selected]
           .heading
           h2:after {
           width: 13px;
           background-color: var(--lrndesign-timeline-header-accent);
         }
-        :host(:not([timeline-size*="s"])) .media-outer {
+        :host(:not([timeline-size="xs"])) .media-outer {
           display: flex;
           align-items: center;
           position: absolute;
@@ -183,17 +185,17 @@ class LrndesignTimeline extends SimpleColors {
           width: 45%;
           height: 300px;
         }
-        :host(:not([timeline-size*="s"])) .media {
+        :host(:not([timeline-size="xs"])) .media {
           display: flex;
           padding: 20px 20px 20px 50px;
           opacity: 0;
           transition: opacity 0.3s delay 0.3s;
         }
-        :host(:not([timeline-size*="s"])) .event[selected] .media {
+        :host(:not([timeline-size="xs"])) .event[selected] .media {
           opacity: 1;
           transition-delay: 0s;
         }
-        :host(:not([timeline-size*="s"])) .details {
+        :host(:not([timeline-size="xs"])) .details {
           padding: 67px 20px 20px;
           margin: 0 20px;
           width: calc(55% - 80px);
@@ -203,21 +205,21 @@ class LrndesignTimeline extends SimpleColors {
           border-radius: 3px;
           transition: all 0.5s;
         }
-        :host(:not([timeline-size*="s"])) .event:last-of-type .details {
+        :host(:not([timeline-size="xs"])) .event:last-of-type .details {
           min-height: 180px;
         }
-        :host(:not([timeline-size*="s"])) .event[selected] .details {
+        :host(:not([timeline-size="xs"])) .event[selected] .details {
           color: var(--lrndesign-timeline-accent);
           background-color: var(--lrndesign-timeline-accent-background);
           border: 1px solid var(--lrndesign-timeline-border);
           box-shadow: 0 2px 2px var(--lrndesign-timeline-border);
         }
-        :host(:not([timeline-size*="s"]))
+        :host(:not([timeline-size="xs"]))
           .event:first-of-type[selected]
           .details {
           border-top: 1px solid var(--lrndesign-timeline-background);
         }
-        :host(:not([timeline-size*="s"]))
+        :host(:not([timeline-size="xs"]))
           .event:last-of-type[selected]
           .details {
           border-bottom: 1px solid var(--lrndesign-timeline-background);
@@ -243,10 +245,12 @@ class LrndesignTimeline extends SimpleColors {
                   <div class="media-outer">
                     <template is="dom-if" if="[[_isSet(event.image)]]" restamp>
                       <div class="media">
-                        <image
-                          alt$="[[event.image.alt]]"
-                          src$="[[event.image.src]]"
-                        />
+                        <div>
+                          <image
+                            alt$="[[event.image.alt]]"
+                            src$="[[event.image.src]]"
+                          />
+                        </div>
                       </div>
                     </template>
                   </div>
@@ -339,6 +343,12 @@ class LrndesignTimeline extends SimpleColors {
   connectedCallback() {
     let root = this;
     super.connectedCallback();
+    this.HAXWiring = new HAXWiring();
+    this.HAXWiring.setHaxProperties(
+      TimelineTool.haxProperties,
+      TimelineTool.tag,
+      this
+    );
 
     window.ResponsiveUtility.requestAvailability();
     window.dispatchEvent(
@@ -346,7 +356,11 @@ class LrndesignTimeline extends SimpleColors {
         detail: {
           element: root,
           attribute: "timeline-size",
-          relativeToParent: true
+          relativeToParent: true,
+          sm: 600,
+          md: 900,
+          lg: 1200,
+          xl: 1600
         }
       })
     );
