@@ -77,7 +77,7 @@
     "@lrnwebcomponents/wave-player": "^2.0.2",
     "@lrnwebcomponents/wikipedia-query": "^2.0.2",
     "@lrnwebcomponents/wysiwyg-hax": "^2.0.2",
-    "@webcomponents/webcomponentsjs": "2.2.3",
+    "@webcomponents/webcomponentsjs": "2.2.4",
     "web-animations-js": "2.3.1"
   },
   "devDependencies": {
