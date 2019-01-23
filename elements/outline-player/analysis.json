@@ -1023,40 +1023,16 @@
           }
         },
         {
-          "name": "__changePage",
-          "description": "Changes the page query parameter",
-          "privacy": "private",
-          "sourceRange": {
-            "start": {
-              "line": 590,
-              "column": 2
-            },
-            "end": {
-              "line": 604,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "id"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
           "name": "_haxcmsRouterManifestInit",
           "description": "",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 606,
+              "line": 586,
               "column": 2
             },
             "end": {
-              "line": 611,
+              "line": 591,
               "column": 3
             }
           },
@@ -1076,11 +1052,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 617,
+              "line": 597,
               "column": 2
             },
             "end": {
-              "line": 622,
+              "line": 601,
               "column": 3
             }
           },
@@ -1105,7 +1081,7 @@
           "column": 28
         },
         "end": {
-          "line": 623,
+          "line": 602,
           "column": 1
         }
       },

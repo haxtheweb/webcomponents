@@ -584,26 +584,6 @@ let OutlinePlayer = Polymer({
     // this.__changePage(e.detail.id);
   },
 
-  /**
-   * Changes the page query parameter
-   * @param id
-   */
-  __changePage: function(id) {
-    // const item = this.manifest.items.find(i => i.id === id);
-    // window.dispatchEvent(
-    //   new CustomEvent("vaadin-router:navigate", {
-    //     detail: { pathname: "iasdofin" }
-    //   })
-    // );
-    // // this.dispatchEvent(
-    // //   new CustomEvent("haxcms-active-item-changed", {
-    // //     detail: item,
-    // //     bubbles: true,
-    // //     cancelable: false
-    // //   })
-    // // );
-  },
-
   _haxcmsRouterManifestInit: function(manifest) {
     if (manifest) {
       this.set("_routerManifest", manifest);
@@ -616,7 +596,6 @@ let OutlinePlayer = Polymer({
    * @param {event} e
    */
   _haxcmsRouterManifestChanged: function(e) {
-    console.log("haxcms-router-manifest-changed", e);
     this._routerManifest = e.detail;
     this.set("_routerManifest", e.detail);
     this.notifyPath("_routerManifest", "*");

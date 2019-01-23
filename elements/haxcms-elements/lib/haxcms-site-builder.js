@@ -581,7 +581,6 @@ Polymer({
       subscription.scope[subscription.callback]
     );
     // if setup option is true then manually trigger the callback
-    console.log("e:", e);
     if (subscription.setup) {
       const routerManifest = this._createManifestRouterInstance(this.manifest);
       // create a synthetic event and send directly to the scope
