@@ -18,17 +18,18 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic self-check demo</h3>
+      <h1>Basic self-check demo</h1>
+      <h2>Includes an accent-color</h2>
       <demo-snippet>
         <template>
-          <self-check accent-color="light-blue" 
+          <self-check accent-color="light-blue" title="Sharks Self Check"
             image="https://kids.nationalgeographic.com/content/dam/kids/photos/animals/Fish/A-G/great-white-shark-teeth.ngsversion.1396530884408.adapt.1900.1.jpg"
             alt="Great White Shark" link="https://en.wikipedia.org/wiki/Great_white_shark">
             <span slot="question">How large can the average great white shark grow to be?</span>
             The Great White shark can grow to be 15 ft to more than 20 ft in length and weigh 2.5 tons or more.
           </self-check>
-          
-          <self-check accent-color="red" 
+
+          <self-check accent-color="red" title="Blood Type Quiz"
             image="https://media.defense.gov/2016/Mar/01/2001470412/1088/820/0/160301-F-UU298-014.jpg"
             alt="Blood Drive bus and sign" link="https://www.redcrossblood.org/donate-blood/blood-types.html">
             <span slot="question">Which blood type is the universal <em>plasma</em> donor?</span>
@@ -36,13 +37,33 @@
             If you guessed Type O, you were probably thinking about the universal 
             <em>red cell</em> donor.)
           </self-check>
+        </template>
+      </demo-snippet>
 
-          <self-check accent-color="yellow" dark 
+      <h2>Includes an accent-color and dark theme</h2>
+      <demo-snippet>
+        <template>
+          <self-check accent-color="yellow" dark title="Video Game Trivia"
             image="https://c1.staticflickr.com/5/4139/4865516413_1df74bbcc2_n.jpg"
             alt="Pac-Man screenshot" link="https://en.wikipedia.org/wiki/Pac-Man#enemies">
             <span slot="question">What are the names of the ghosts that chase Pac-Man?</span>
             The red ghost is Blinky, the pink ghost is Pinky,
             the cyan ghost is Inky, and the orange ghost is clyde.
+          </self-check>
+        </template>
+      </demo-snippet>
+
+      <h2>Default appearance</h2>
+      <demo-snippet>
+        <template>
+          <self-check title="News Knowledge"
+            image="https://upload.wikimedia.org/wikipedia/commons/9/98/Independence_Seaport_Museum_224.JPG"
+            alt="Pac-Man screenshot" link="https://en.wikipedia.org/wiki/Yellow_journalism">
+            <span slot="question">
+              What is <em>yellow journalism</em>?
+            </span>
+            Yellow journalism describes journalism that prioritizes sales 
+            &amp; sensationalism over research and accuracy
           </self-check>
         </template>
       </demo-snippet>

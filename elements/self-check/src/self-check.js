@@ -16,7 +16,13 @@ A LRN element
 
 @microcopy - the mental model for this element
  -
- -
+ CSS Variables that override accent color:
+ --self-check-question-color //overrides the question background color
+ --self-check-question-text //overrides the question text color
+ --self-check-heading-color //overrides the heading background color
+ --self-check-heading-text //overrides the heading text color
+ --self-check-answer-color //overrides the answer background color
+ --self-check-answer-text //overrides the answer text color
 
 */
 let SelfCheck = Polymer({
@@ -33,11 +39,19 @@ let SelfCheck = Polymer({
           --simple-colors-default-theme-grey-12,
           #000
         );
-        --self-check-accent-color: var(--simple-colors-default-theme-accent-8);
-        --self-check-answer-color: var(
-          --simple-colors-default-theme-light-green-8
+        --self-check-heading-color: var(
+          --simple-colors-default-theme-accent-8,
+          #444
         );
-        --self-check-contrast-text: var(
+        --self-check-heading-text: var(
+          --simple-colors-default-theme-grey-1,
+          #fff
+        );
+        --self-check-answer-color: var(
+          --simple-colors-default-theme-light-green-8,
+          #00762e
+        );
+        --self-check-answer-text: var(
           --simple-colors-default-theme-grey-1,
           #fff
         );
@@ -92,8 +106,8 @@ let SelfCheck = Polymer({
       }
 
       #header_wrap {
-        color: var(--self-check-contrast-text);
-        background-color: var(--self-check-accent-color);
+        color: var(--self-check-heading-text);
+        background-color: var(--self-check-heading-color);
         display: inline-flex;
         width: 100%;
         margin: -20px 0 0;
@@ -117,9 +131,9 @@ let SelfCheck = Polymer({
       #answer_wrap {
         visibility: hidden;
         opacity: 0;
-        color: var(--self-check-contrast-text);
+        color: var(--self-check-answer-text);
         background-color: var(--self-check-answer-color);
-        border-top: 2px solid var(--self-check-contrast-text);
+        border-top: 2px solid var(--self-check-answer-text);
         width: 100%;
         top: 0;
         transition: all 0.2s ease;
@@ -154,7 +168,7 @@ let SelfCheck = Polymer({
         height: 0;
         border-left: 20px solid transparent;
         border-right: 20px solid transparent;
-        border-bottom: 20px solid var(--self-check-accent-color);
+        border-bottom: 20px solid var(--self-check-heading-color);
         position: relative;
         top: -20px;
         left: -1px;
@@ -165,7 +179,7 @@ let SelfCheck = Polymer({
       }
 
       .more_info a {
-        color: var(--self-check-contrast-text);
+        color: var(--self-check-answer-text);
       }
 
       .more_info a:hover {
