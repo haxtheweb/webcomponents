@@ -589,19 +589,19 @@ let OutlinePlayer = Polymer({
    * @param id
    */
   __changePage: function(id) {
-    const item = this.manifest.items.find(i => i.id === id);
-    window.dispatchEvent(
-      new CustomEvent("vaadin-router:navigate", {
-        detail: { pathname: "iasdofin" }
-      })
-    );
-    // this.dispatchEvent(
-    //   new CustomEvent("haxcms-active-item-changed", {
-    //     detail: item,
-    //     bubbles: true,
-    //     cancelable: false
+    // const item = this.manifest.items.find(i => i.id === id);
+    // window.dispatchEvent(
+    //   new CustomEvent("vaadin-router:navigate", {
+    //     detail: { pathname: "iasdofin" }
     //   })
     // );
+    // // this.dispatchEvent(
+    // //   new CustomEvent("haxcms-active-item-changed", {
+    // //     detail: item,
+    // //     bubbles: true,
+    // //     cancelable: false
+    // //   })
+    // // );
   },
 
   _haxcmsRouterManifestInit: function(manifest) {

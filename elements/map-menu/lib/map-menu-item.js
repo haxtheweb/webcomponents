@@ -20,22 +20,24 @@ Polymer({
       }
 
       #title {
-        font-size: 14.4px;
         text-transform: none;
       }
+
+      a,
+      a:hover,
+      a:visited,
+      a:focus {
+        color: inherit;
+      }
     </style>
-    <paper-button
-      id="wrapper"
-      href$="[[url]]"
-      role="link"
-      noink
-      on-tap="_click"
-    >
-      <template is="dom-if" if="[[__hasIcon(icon)]]">
-        <iron-icon icon="[[icon]]"></iron-icon>
-      </template>
-      <span id="title">[[title]]</span>
-    </paper-button>
+    <a href$="[[url]]">
+      <paper-button id="wrapper" role="link" noink>
+        <template is="dom-if" if="[[__hasIcon(icon)]]">
+          <iron-icon icon="[[icon]]"></iron-icon>
+        </template>
+        <span id="title">[[title]]</span>
+      </paper-button>
+    </a>
   `,
 
   is: "map-menu-item",
