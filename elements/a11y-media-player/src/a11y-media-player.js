@@ -410,7 +410,6 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
       for (let i = 0; i < arr.length; i++) {
         let el = document.createElement(type);
         for (let key in arr[i]) {
-          console.log(key, arr[i][key]);
           el.setAttribute(key, arr[i][key]);
         }
         root.$.html5.media.appendChild(el);
