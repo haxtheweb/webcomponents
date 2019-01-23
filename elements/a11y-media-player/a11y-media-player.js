@@ -991,15 +991,17 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    * (needed for media-player)
    */
   _appendToPlayer(data, type) {
-    let root = this;
-    if (data !== undefined && data !== null && data.length > 0) {
-      data.forEach(item => {
+    let root = this,
+      arr = typeof data === Array ? data : JSON.parse(data);
+    if (arr !== undefined && arr !== null) {
+      for (let i = 0; i < arr.length; i++) {
         let el = document.createElement(type);
-        for (let key in item) {
-          el.setAttribute(key, item[key]);
+        for (let key in arr[i]) {
+          console.log(key, arr[i][key]);
+          el.setAttribute(key, arr[i][key]);
         }
         root.$.html5.media.appendChild(el);
-      });
+      }
     }
   }
 
@@ -1089,6 +1091,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     root.querySelectorAll("source,track").forEach(function(node) {
       root.$.html5.media.appendChild(node);
     });
+    console.log(root.tracks, root.sources);
     root._appendToPlayer(root.tracks, "track");
     root._appendToPlayer(root.sources, "source");
     root.$.html5.media.textTracks.onaddtrack = function(e) {
