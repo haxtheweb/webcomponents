@@ -3,7 +3,6 @@ import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
-import "@polymer/iron-location/iron-query-params.js";
 import "@polymer/app-layout/app-header/app-header.js";
 import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
@@ -205,15 +204,6 @@ let OutlinePlayer = Polymer({
       }
     </style>
     <!-- Control the sites query paremeters -->
-    <iron-location
-      id="location"
-      path="/"
-      query="{{__paramsString}}"
-    ></iron-location>
-    <iron-query-params
-      id="queryParams"
-      params-string="{{__paramsString}}"
-    ></iron-query-params>
 
     <!-- Begin Layout -->
     <app-drawer-layout>
@@ -224,10 +214,9 @@ let OutlinePlayer = Polymer({
         <map-menu
           id="menu"
           selected="[[selected]]"
-          manifest="[[manifest]]"
+          manifest="[[_routerManifest]]"
           active-indicator=""
           auto-scroll=""
-          on-link-clicked="__mapMenuLinkClickedHandler"
         ></map-menu>
       </app-drawer>
       <app-header-layout>
@@ -403,6 +392,14 @@ let OutlinePlayer = Polymer({
       type: Boolean,
       value: false,
       reflectToAttribute: true
+    },
+    /**
+     * Manifest that contains changes specific
+     * to routing.
+     */
+    _routerManifest: {
+      type: Object,
+      value: {}
     }
   },
 
@@ -418,6 +415,17 @@ let OutlinePlayer = Polymer({
     window.addEventListener("resize", e => {
       this.refreshDynamicPositions();
     });
+    // listen for router changes
+    window.addEventListener(
+      "haxcms-router-manifest-changed",
+      this._haxcmsRouterManifestChanged.bind(this)
+    ),
+      // getManifestInitial Value
+      window.dispatchEvent(
+        new CustomEvent("haxcms-router-manifest-get-current-value", {
+          detail: { callback: "_haxcmsRouterManifestInit", scope: this }
+        })
+      );
   },
 
   /**
@@ -574,7 +582,7 @@ let OutlinePlayer = Polymer({
   },
 
   __mapMenuLinkClickedHandler: function(e) {
-    this.__changePage(e.detail.id);
+    // this.__changePage(e.detail.id);
   },
 
   /**
@@ -582,20 +590,34 @@ let OutlinePlayer = Polymer({
    * @param id
    */
   __changePage: function(id) {
-    // const queryParams = this.$.queryParams;
-    // const paramsObject = queryParams.paramsObject;
-    // queryParams.paramsObject = Object.assign({}, paramsObject, {
-    //   page: id
-    // });
     const item = this.manifest.items.find(i => i.id === id);
-    console.log(item, this.manifest);
-    this.dispatchEvent(
-      new CustomEvent("haxcms-active-item-changed", {
-        detail: item,
-        bubbles: true,
-        cancelable: false
+    window.dispatchEvent(
+      new CustomEvent("vaadin-router:navigate", {
+        detail: { pathname: "iasdofin" }
       })
     );
+    // this.dispatchEvent(
+    //   new CustomEvent("haxcms-active-item-changed", {
+    //     detail: item,
+    //     bubbles: true,
+    //     cancelable: false
+    //   })
+    // );
+  },
+
+  _haxcmsRouterManifestInit: function(manifest) {
+    if (manifest) {
+      this.set("_routerManifest", manifest);
+      this.notifyPath("_routerManifest", "*");
+    }
+  },
+
+  /**
+   * Event handler for 'haxcms-router-manifest-changed'
+   * @param {event} e
+   */
+  _haxcmsRouterManifestChanged: function(e) {
+    this._routerManifest = e.detail;
   }
 });
 export { OutlinePlayer };

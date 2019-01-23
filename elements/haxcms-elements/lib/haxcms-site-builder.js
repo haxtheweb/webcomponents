@@ -8,7 +8,8 @@ import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "@polymer/app-route/app-route.js";
-import "@polymer/app-route/app-location.js";
+import { Router } from "@vaadin/router";
+// import "@polymer/app-route/app-location.js";
 /**
  * `haxcms-site-builder`
  * `build the site and everything off of this`
@@ -44,6 +45,7 @@ Polymer({
         --paper-progress-container-color: transparent;
       }
     </style>
+    <haxcms-router id="haxcmsRouter"></haxcms-router>
     <haxcms-editor-builder></haxcms-editor-builder>
     <paper-progress
       hidden\$="[[!loading]]"
@@ -51,24 +53,12 @@ Polymer({
       indeterminate=""
       bottom-item=""
     ></paper-progress>
-    <app-location
-      route="{{route}}"
-      query-params="{{queryParams}}"
-    ></app-location>
-    <app-route
-      route="{{route}}"
-      pattern=":page"
-      data="{{data}}"
-      tail="{{tail}}"
-      query-params="{{queryParams}}"
-    >
-    </app-route>
     <iron-ajax
       id="manifest"
       url="[[outlineLocation]][[file]][[__timeStamp]]"
       handle-as="json"
       debounce-duration="250"
-      last-response="{{manifest}}"
+      on-response="_loadManifestHandler"
     ></iron-ajax>
     <iron-ajax
       id="activecontent"
@@ -201,6 +191,18 @@ Polymer({
       "json-outline-schema-active-item-changed",
       this._setActiveItem.bind(this)
     );
+    window.addEventListener(
+      "vaadin-router-location-changed",
+      this._routerLocationChanged.bind(this)
+    );
+    window.addEventListener(
+      "haxcms-router-manifest-changed",
+      this._haxcmsRouterManifestChanged.bind(this)
+    );
+    window.addEventListener(
+      "haxcms-router-manifest-get-current-value",
+      this._haxcmsRouterManifestGetCurrentValue.bind(this)
+    );
   },
   attached: function() {
     // prep simple toast notification
@@ -228,34 +230,32 @@ Polymer({
     );
   },
 
+  _routerLocationChanged: function(e) {
+    const activeItem = e.detail.location.route.name;
+    let find = this.manifest.items.filter(item => {
+      if (item.id !== activeItem) {
+        return false;
+      }
+      return true;
+    });
+    // if we found one, make it the active page
+    if (find.length > 0) {
+      let found = find.pop();
+      async.microTask.run(() => {
+        setTimeout(() => {
+          if (typeof window.cmsSiteEditor !== typeof undefined) {
+            window.cmsSiteEditor.initialActiveItem = found;
+          }
+          this.fire("haxcms-active-item-changed", found);
+        }, 150);
+      });
+    }
+  },
+
   /**
    * Query params changed
    */
-  _setupActiveFromQuery: function() {
-    if (
-      typeof this.queryParams.page !== typeof undefined &&
-      typeof this.manifest.items !== typeof undefined
-    ) {
-      let find = this.manifest.items.filter(item => {
-        if (item.id !== this.queryParams.page) {
-          return false;
-        }
-        return true;
-      });
-      // if we found one, make it the active page
-      if (find.length > 0) {
-        let found = find.pop();
-        async.microTask.run(() => {
-          setTimeout(() => {
-            if (typeof window.cmsSiteEditor !== typeof undefined) {
-              window.cmsSiteEditor.initialActiveItem = found;
-            }
-            this.fire("haxcms-active-item-changed", found);
-          }, 150);
-        });
-      }
-    }
-  },
+  _setupActiveFromQuery: function() {},
 
   /**
    * set global active item
@@ -374,6 +374,9 @@ Polymer({
    */
   _manifestChanged: function(newValue, oldValue) {
     if (newValue) {
+      // update the router manifest
+      this._manifestRouterPublish(newValue);
+      // update the router with the new manifest
       window.cmsSiteEditor.jsonOutlineSchema = newValue;
       this.themeElementName = newValue.metadata.theme;
       this.fire("json-outline-schema-changed", newValue);
@@ -434,8 +437,6 @@ Polymer({
           this.themeLoaded = true;
         }
       }
-      // establish initial routing
-      this._setupActiveFromQuery();
     }
   },
 
@@ -459,5 +460,104 @@ Polymer({
         }
       }
     }
+  },
+
+  /**
+   * Event handler to load and store the manifest
+   * @param {e} e
+   */
+  _loadManifestHandler: function(e) {
+    this.manifest = e.detail.response;
+  },
+
+  /**
+   * Changes the manifest to suit the correct routing
+   * All routing displays and logic should subscribe to
+   * 'haxcms-router-manifest-changed'.
+   *
+   * @param {object} manifest
+   * @param {callback, scope} target optionally notify a single element. If null, it will
+   *    broadcast on the window.
+   */
+  _manifestRouterPublish: function(manifest, target = null) {
+    if (
+      typeof manifest !== "undefined" &&
+      typeof manifest.items !== "undefined"
+    ) {
+      const manifestItems = manifest.items.map(i => {
+        const location = i.location
+          .replace("pages", "")
+          .replace("/index.html", "");
+        return Object.assign({}, i, { location: location });
+      });
+      // create a new router manifest object
+      const routerManifest = Object.assign({}, manifest, {
+        items: manifestItems
+      });
+      console.log("routerManifest:", routerManifest);
+      // if target specified call the specific element
+      if (
+        target !== null &&
+        typeof target.callback !== "undefined" &&
+        typeof target.scope !== "undefined"
+      ) {
+        target.scope[target.callback](routerManifest);
+      } else {
+        // if no target, then broadcast the router manifest change
+        window.dispatchEvent(
+          new CustomEvent("haxcms-router-manifest-changed", {
+            detail: routerManifest
+          })
+        );
+      }
+    }
+  },
+
+  /**
+   * Event handler for 'haxcms-router-manifest-changed'
+   * Update the router
+   * @param {event} e
+   */
+  _haxcmsRouterManifestChanged: function(e) {
+    this._updateRouter(e.detail);
+  },
+
+  /**
+   * Update the router based on a manifest.
+   * This should not be called directly. Use the
+   * 'haxcms-router-manifest-changed' event
+   *
+   * @param {object} manifest
+   */
+  _updateRouter: function(manifest) {
+    console.log("manifest:", manifest);
+    const router = new Router(this.$.haxcmsRouter);
+    const routerItems = manifest.items.map(i => {
+      console.log(i);
+      return {
+        path: i.location,
+        name: i.id,
+        component: "div"
+      };
+    });
+    router.setRoutes([
+      ...routerItems,
+      { path: "/(.*)", component: "div", name: "404" }
+    ]);
+  },
+
+  /**
+   * Event Handler for 'haxcms-router-manifest-get-current-value'
+   * This custom event will provide consumers with the current
+   * router manifest.
+   *
+   * @usage () => {
+   *    window.dispatchEvent('haxcms-router-manifest-get-current-value', { detail: { callback: '_updateManifest', scope: this }})
+   * }
+   *
+   * @param {event} e
+   */
+  _haxcmsRouterManifestGetCurrentValue: function(e) {
+    this._manifestRouterPublish(this.manifest, e.detail);
   }
 });
