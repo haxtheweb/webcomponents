@@ -25,6 +25,9 @@ let SelfCheck = Polymer({
       :host {
         display: block;
       }
+      [hidden] {
+        display: none !important;
+      }
 
       paper-card {
         overflow: hidden;
@@ -178,8 +181,8 @@ let SelfCheck = Polymer({
         <div id="answer_wrap">
           <div class="answer">
             <slot></slot>
-            <div class="more_info">
-              <a href="[[link]]" target="_blank">More info...</a>
+            <div class="more_info" hidden$="[[!link]]">
+              <a href$="[[link]]" target="_blank">More info...</a>
             </div>
             <div class="close_button">
               <paper-icon-button
@@ -240,7 +243,6 @@ let SelfCheck = Polymer({
      */
     link: {
       type: String,
-      value: "",
       reflectToAttribute: true
     },
     /**
@@ -337,6 +339,14 @@ let SelfCheck = Polymer({
             description: "The image of the element",
             inputMethod: "textfield",
             icon: "editor:insert-photo"
+          },
+          {
+            property: "link",
+            title: "More link",
+            description: "Link to additional information",
+            inputMethod: "textfield",
+            validationType: "url",
+            icon: "icons:link"
           }
         ],
         configure: [
@@ -350,7 +360,15 @@ let SelfCheck = Polymer({
             property: "image",
             title: "Image",
             description: "The image of the element",
-            inputMethod: "textfield"
+            inputMethod: "textfield",
+            validationType: "url"
+          },
+          {
+            property: "link",
+            title: "More link",
+            description: "Link to additional information",
+            inputMethod: "textfield",
+            validationType: "url"
           },
           {
             property: "alt",

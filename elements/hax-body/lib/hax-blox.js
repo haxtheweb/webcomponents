@@ -1,18 +1,4 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-var $_documentContainer = document.createElement("div");
-$_documentContainer.setAttribute("style", "display: none;");
-
-$_documentContainer.innerHTML = `<dom-module id="hax-stax">
-  <template>
-    <style>
-    :host {
-      display:none;
-    }
-  </style>
-  </template>
-</dom-module>`;
-
-document.head.appendChild($_documentContainer);
 /**
  `hax-blox`
 Register a blox with HAX store.
@@ -58,6 +44,13 @@ Register a blox with HAX store.
 
 */
 Polymer({
+  _template: html`
+    <style>
+      :host {
+        display: none;
+      }
+    </style>
+  `,
   is: "hax-blox",
   properties: {
     /**

@@ -79,7 +79,7 @@ let LrnVocab = Polymer({
         invokedBy: this.$.button
       }
     });
-    this.dispatchEvent(evt);
+    window.dispatchEvent(evt);
   },
   /**
    * Attached life cycle

@@ -232,7 +232,7 @@ let HaxBody = Polymer({
       target="[[activeContainerNode]]"
       keys="esc"
       on-keys-pressed="_escKeyPressed"
-      stop-keyboard-event-propagation=""
+      stop-keyboard-event-propagation
     ></iron-a11y-keys>
     <iron-a11y-keys
       target="[[activeContainerNode]]"
@@ -243,25 +243,25 @@ let HaxBody = Polymer({
       target="[[activeContainerNode]]"
       keys="shift+tab"
       on-keys-pressed="_tabBackKeyPressed"
-      stop-keyboard-event-propagation=""
+      stop-keyboard-event-propagation
     ></iron-a11y-keys>
     <iron-a11y-keys
       target="[[activeContainerNode]]"
       keys="tab"
       on-keys-pressed="_tabKeyPressed"
-      stop-keyboard-event-propagation=""
+      stop-keyboard-event-propagation
     ></iron-a11y-keys>
     <iron-a11y-keys
       target="[[activeContainerNode]]"
       keys="up"
       on-keys-pressed="_upKeyPressed"
-      stop-keyboard-event-propagation=""
+      stop-keyboard-event-propagation
     ></iron-a11y-keys>
     <iron-a11y-keys
       target="[[activeContainerNode]]"
       keys="down"
       on-keys-pressed="_downKeyPressed"
-      stop-keyboard-event-propagation=""
+      stop-keyboard-event-propagation
     ></iron-a11y-keys>
   `,
   listeners: {
@@ -369,7 +369,7 @@ let HaxBody = Polymer({
       const tmp = window.HaxStore.getSelection();
       window.HaxStore._tmpSelection = tmp;
       try {
-        let range = window.HaxStore._tmpSelection.getRangeAt(0);
+        let range = window.HaxStore.getRange();
         window.HaxStore._tmpRange = range.cloneRange();
       } catch (e) {}
     });
@@ -392,8 +392,7 @@ let HaxBody = Polymer({
         let sel, range, html;
         if (window.HaxStore.instance.activeHaxBody.shadowRoot.getSelection) {
           sel = window.HaxStore.instance.activeHaxBody.shadowRoot.getSelection();
-          if (sel.getRangeAt && sel.rangeCount) {
-            range = sel.getRangeAt(0);
+          if ((range = window.HaxStore.getRange())) {
             range.deleteContents();
             range.insertNode(document.createTextNode(text));
           }
@@ -434,10 +433,9 @@ let HaxBody = Polymer({
           text = window.clipboardData.getData("Text");
         }
         let sel, range, html;
-        if (window.HaxStore.instance.activeHaxBody.shadowRoot.getSelection) {
-          sel = window.HaxStore.instance.activeHaxBody.shadowRoot.getSelection();
-          if (sel.getRangeAt && sel.rangeCount) {
-            range = sel.getRangeAt(0);
+        sel = window.HaxStore.instance.activeHaxBody.shadowRoot.getSelection();
+        if (sel) {
+          if ((range = window.HaxStore.getRange())) {
             range.deleteContents();
             range.insertNode(document.createTextNode(text));
           }
@@ -934,8 +932,7 @@ let HaxBody = Polymer({
       this.$.platecontextmenu,
       container,
       offsetplate,
-      0,
-      false
+      0
     );
     // special case for node not matching container
     if (!this._HTMLPrimativeTest(node) && node !== container) {
@@ -1019,9 +1016,49 @@ let HaxBody = Polymer({
       replacement.setAttribute(nodeName, value);
     }
     // Persist contents
-    replacement.innerHTML = node.innerHTML;
+    // account for empty list and ordered list items
+    replacement.innerHTML = node.innerHTML.trim();
+    if (tagName == "ul" || tagName == "ol") {
+      if (replacement.innerHTML == "") {
+        replacement.innerHTML = "<li></li>";
+      } else if (
+        !(
+          node.tagName.toLowerCase() == "ul" ||
+          node.tagName.toLowerCase() == "ol"
+        )
+      ) {
+        replacement.innerHTML =
+          "<li>" +
+          node.innerHTML
+            .trim()
+            .replace(/<br\/>/g, "</li>\n<li>")
+            .replace(/<br>/g, "</li>\n<li>") +
+          "</li>";
+      }
+    } else if (
+      node.tagName.toLowerCase() == "ul" ||
+      node.tagName.toLowerCase() == "ol"
+    ) {
+      // if we're coming from ul or ol strip out the li tags
+      replacement.innerHTML = replacement.innerHTML
+        .replace(/<ul>/g, "")
+        .replace(/<\/ul>/g, "")
+        .replace(/<li><\/li>/g, "")
+        .replace(/<li>/g, "")
+        .replace(/<\/li>/g, "<br/>");
+    }
     // Switch!
     dom(this).replaceChild(replacement, node);
+    // focus on the thing switched to
+    setTimeout(() => {
+      let children = dom(replacement).getEffectiveChildNodes();
+      // see if there's a child element and focus that instead if there is
+      if (children[0] && children.tagName) {
+        children[0].focus();
+      } else {
+        replacement.focus();
+      }
+    }, 325);
     return replacement;
   },
   /**
@@ -1133,13 +1170,15 @@ let HaxBody = Polymer({
     switch (detail.eventName) {
       // text based operations for primatives
       case "p":
+      case "ol":
+      case "ul":
       case "h2":
       case "h3":
       case "h4":
       case "h5":
       case "h6":
-      case "code":
       case "blockquote":
+      case "code":
         // trigger the default selected value in context menu to match
         this.$.textcontextmenu.selectedValue = detail.eventName;
         window.HaxStore.write(
@@ -1264,8 +1303,17 @@ let HaxBody = Polymer({
           // @todo need to be able to support slot binding
         }
         // make input mixer show up
-        this._positionContextMenu(haxInputMixer, this.$.cecontextmenu, 0, 0);
-        haxInputMixer.style.width = null;
+        this._positionContextMenu(
+          haxInputMixer,
+          this.activeContainerNode,
+          -1,
+          -38
+        );
+        let style =
+          this.$.cecontextmenu.currentStyle ||
+          window.getComputedStyle(this.$.cecontextmenu);
+        // force input mixes to match width of the ce context menu currently
+        haxInputMixer.style.width = style.width.replace("px", "") - 40 + "px";
         break;
       // directional / proportion operations
       case "hax-align-left":
@@ -1597,23 +1645,13 @@ let HaxBody = Polymer({
   /**
    * Handle display and position of the context menu
    */
-  _positionContextMenu: function(
-    menu,
-    target,
-    xoffset,
-    yoffset,
-    matchStyle = true
-  ) {
+  _positionContextMenu: function(menu, target, xoffset, yoffset) {
     try {
       dom(this).insertBefore(menu, target);
     } catch (err) {
       try {
         dom(target.parentNode).insertBefore(menu, target);
       } catch (err2) {}
-    }
-    // account for the target using these layout busters
-    if (matchStyle) {
-      menu.style.width = target.style.width;
     }
     // make it account for the offset if it's floated over to one side
     // or inside of something that's over that way
@@ -1683,8 +1721,7 @@ let HaxBody = Polymer({
       ) {
         // test selection to see if we are at beginning of
         // whatever element this is
-        var selection = window.HaxStore.getSelection();
-        let range = selection.getRangeAt(0).cloneRange();
+        let range = window.HaxStore.getRange().cloneRange();
         // ensure our range is not inside of a list item
         let tagTest = range.commonAncestorContainer.tagName;
         if (typeof tagTest === typeof undefined) {
@@ -1694,7 +1731,7 @@ let HaxBody = Polymer({
         if (
           range.startOffset === 0 &&
           range.endOffset === 0 &&
-          !["UL", "OL", "LI"].includes(tagTest)
+          tagTest !== "LI"
         ) {
           e.preventDefault();
           e.stopPropagation();
@@ -1743,6 +1780,11 @@ let HaxBody = Polymer({
    */
   _tabKeyPressed: function(e) {
     if (this.editMode) {
+      if (e.detail.keyboardEvent) {
+        e.detail.keyboardEvent.preventDefault();
+        e.detail.keyboardEvent.stopPropagation();
+        e.detail.keyboardEvent.stopImmediatePropagation();
+      }
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
@@ -1751,8 +1793,7 @@ let HaxBody = Polymer({
       const activeNodeTagName = this.activeContainerNode.tagName;
       // try selection / tab block since range can cause issues
       try {
-        var selection = window.HaxStore.getSelection();
-        let range = selection.getRangeAt(0).cloneRange();
+        let range = window.HaxStore.getRange().cloneRange();
         var tagTest = range.commonAncestorContainer.tagName;
         if (typeof tagTest === typeof undefined) {
           tagTest = range.commonAncestorContainer.parentNode.tagName;
@@ -1763,6 +1804,11 @@ let HaxBody = Polymer({
         ) {
           if (this.polyfillSafe) {
             document.execCommand("indent");
+            if (e.detail.keyboardEvent) {
+              e.detail.keyboardEvent.preventDefault();
+              e.detail.keyboardEvent.stopPropagation();
+              e.detail.keyboardEvent.stopImmediatePropagation();
+            }
             this.__tabTrap = true;
           }
         } else {
@@ -1786,19 +1832,26 @@ let HaxBody = Polymer({
    */
   _tabBackKeyPressed: function(e) {
     if (this.editMode) {
+      if (e.detail.keyboardEvent) {
+        e.detail.keyboardEvent.preventDefault();
+        e.detail.keyboardEvent.stopPropagation();
+        e.detail.keyboardEvent.stopImmediatePropagation();
+      }
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
-      let node = dom(this.activeContainerNode).previousSibling;
+      let node = this.activeContainerNode;
       const activeNodeTagName = this.activeContainerNode.tagName;
-      var selection = window.HaxStore.getSelection();
+      // try selection / tab block since range can cause issues
       try {
-        let range = selection.getRangeAt(0).cloneRange();
+        let range = window.HaxStore.getRange().cloneRange();
+        var tagTest = range.commonAncestorContainer.tagName;
+        if (typeof tagTest === typeof undefined) {
+          tagTest = range.commonAncestorContainer.parentNode.tagName;
+        }
         if (
           ["UL", "OL", "LI"].includes(activeNodeTagName) ||
-          ["UL", "OL", "LI"].includes(
-            range.commonAncestorContainer.parentElement.tagName
-          )
+          ["UL", "OL", "LI"].includes(tagTest)
         ) {
           if (this.polyfillSafe) {
             document.execCommand("outdent");

@@ -28,9 +28,18 @@ let CodeEditor = Polymer({
         }
         .code-pen-container {
           width: 100%;
-          display: block;
+          display: flex;
           background-color: var(--code-pen-button-color, #222222);
+          color: white;
           height: 40px;
+          justify-content: flex-end;
+          align-items: center;
+        }
+        .code-pen-container span {
+          display: inline-flex;
+          line-height: 16px;
+          font-size: 16px;
+          padding: 12px;
         }
         [hidden] {
           display: none !important;
@@ -44,6 +53,7 @@ let CodeEditor = Polymer({
         }
         #codeeditor {
           height: 100%;
+          display: flex;
         }
       </style>
     </custom-style>
@@ -55,12 +65,13 @@ let CodeEditor = Polymer({
       language="[[language]]"
       theme="[[theme]]"
       on-value-changed="_editorDataChanged"
-      font-size\$="[[fontSize]]"
-      readonly\$="[[readOnly]]"
+      font-size$="[[fontSize]]"
+      read-only$="[[readOnly]]"
     >
     </monaco-element>
     <div class="code-pen-container" hidden$="[[!showCodePen]]">
-      <code-pen-button data="[[codePenData]]"></code-pen-button>
+      <span>Check it out on code pen: </span
+      ><code-pen-button data="[[codePenData]]"></code-pen-button>
     </div>
   `,
 
@@ -134,25 +145,11 @@ let CodeEditor = Polymer({
       value: "javascript"
     },
     /**
-     * font size for the Ace editor.
+     * font size for the editor
      */
     fontSize: {
-      type: String,
-      value: "16px"
-    },
-    /**
-     * Min lines of the editor to show
-     */
-    minLines: {
       type: Number,
-      value: 10
-    },
-    /**
-     * Max lines of the editor to show
-     */
-    maxLines: {
-      type: Number,
-      value: 25
+      value: 16
     }
   },
 
@@ -166,7 +163,7 @@ let CodeEditor = Polymer({
     };
   },
   /**
-   * pass down mode to language if that api is used for legacy purposes
+   * LEGACY: pass down mode to language if that api is used
    */
   _modeChanged: function(newValue) {
     this.language = this.mode;
@@ -246,17 +243,10 @@ let CodeEditor = Polymer({
       }
     });
   },
-
   /**
    * Attached to the DOM, now fire.
    */
   attached: function() {
-    async.microTask.run(() => {
-      // delay on initial attachement to ensure that dependencies have loaded
-      setTimeout(() => {
-        this.$.codeeditor.initIFrame();
-      }, 1000);
-    });
     // Establish hax property binding
     let props = {
       canScale: true,
@@ -293,6 +283,13 @@ let CodeEditor = Polymer({
             description: "Play with this on code pen",
             inputMethod: "boolean",
             icon: "icons:code"
+          },
+          {
+            property: "readOnly",
+            title: "Read only",
+            description: "If the code area should be read only",
+            inputMethod: "boolean",
+            icon: "icons:code"
           }
         ],
         configure: [
@@ -307,6 +304,13 @@ let CodeEditor = Polymer({
             property: "showCodePen",
             title: "Code pen button",
             description: "Play with this on code pen",
+            inputMethod: "boolean",
+            icon: "icons:code"
+          },
+          {
+            property: "readOnly",
+            title: "Read only",
+            description: "If the code area should be read only",
             inputMethod: "boolean",
             icon: "icons:code"
           },

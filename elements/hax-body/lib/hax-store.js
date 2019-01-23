@@ -5,6 +5,7 @@ import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import "@lrnwebcomponents/hal-9000/hal-9000.js";
 import "@polymer/iron-ajax/iron-ajax.js";
+import { getRange } from "./shadows-safari.js";
 import "./hax-app.js";
 import "./hax-stax.js";
 import "./hax-stax-browser.js";
@@ -386,6 +387,7 @@ Polymer({
           "ol",
           "ul",
           "li",
+          "div",
           "h1",
           "h2",
           "h3",
@@ -688,8 +690,8 @@ Polymer({
       }
       // find the correct selection object
       let sel = window.HaxStore.getSelection();
-      if (sel.getRangeAt && sel.rangeCount) {
-        let range = sel.getRangeAt(0);
+      var range;
+      if ((range = window.HaxStore.getRange())) {
         range.deleteContents();
         range.insertNode(document.createTextNode(text));
       }
@@ -712,51 +714,74 @@ Polymer({
         window.HaxStore.instance.activeNode &&
       !window.HaxStore.instance.haxAppPicker.opened
     ) {
-      const activeNodeTagName =
-        window.HaxStore.instance.activeContainerNode.tagName;
       var selection = window.HaxStore.getSelection();
-      const range = selection.getRangeAt(0).cloneRange();
-      var tagTest = range.commonAncestorContainer.tagName;
-      if (typeof tagTest === typeof undefined) {
-        tagTest = range.commonAncestorContainer.parentNode.tagName;
-      }
-      // test if we want to touch Enter based on tag name and range
-      // we ignore Enter for our purposes when in a list
-      if (
-        ["P", "H1", "H2", "H3", "H4", "H5", "H6"].includes(activeNodeTagName) &&
-        !["UL", "OL", "LI"].includes(tagTest)
-      ) {
-        // we need to do goofy stuff for p tags since people
-        // will expect to be able to split them mid typing
-        if (range.endOffset !== this.activeContainerNode.textContent.length) {
-          e.preventDefault();
-          // create a cloned range where it's sitting
-          range.setStart(selection.focusNode, range.startOffset);
-          // generate a completely fake element and insert it so we
-          // track it's position as a "split point"
-          var frag = document
-            .createRange()
-            .createContextualFragment("<hax-split-point></hax-split-point>");
-          range.insertNode(frag);
-          // force this to be a constant since activeNode will
-          // change mid operation but we want limit to remain
-          // as a pointer to it's position in the DOM
-          const limit = window.HaxStore.instance.activeContainerNode;
-          var node = dom(
-            window.HaxStore.instance.activeContainerNode
-          ).querySelector("hax-split-point");
-          // run a split node function as modified from stackoverflow
-          if (node != null) {
-            try {
-              this.__splitNode(node, limit);
-            } catch (e) {}
+      var range = window.HaxStore.getRange().cloneRange();
+      if (e.shiftKey) {
+        e.preventDefault();
+        try {
+          if (selection.focusNode) {
+            range.setStart(selection.focusNode, range.startOffset);
+          } else {
+            range.setStart(selection.startContainer, range.startOffset);
           }
-        } else {
-          e.preventDefault();
-          window.HaxStore.instance.fire("hax-insert-content", {
-            tag: "p",
-            content: ""
-          });
+          // insert a br for spacing purposes because shift enter was hit
+          var frag = document.createRange().createContextualFragment("<br/>");
+          range.insertNode(frag);
+        } catch (e) {}
+      } else {
+        var nodeTest = window.HaxStore.instance.activeContainerNode;
+        if (!nodeTest) {
+          nodeTest = range.commonAncestorContainer;
+          if (typeof nodeTest === typeof undefined) {
+            nodeTest = range.commonAncestorContainer.parentNode;
+          }
+        }
+        // test if we want to touch Enter based on tag name and range
+        // we ignore Enter for our purposes when in a list
+        if (
+          this.isTextElement(nodeTest) &&
+          !["ul", "ol", "li"].includes(nodeTest.tagName.toLowerCase())
+        ) {
+          // we need to do goofy stuff for p tags since people
+          // will expect to be able to split them mid typing
+          if (range.endOffset !== this.activeContainerNode.textContent.length) {
+            e.preventDefault();
+            try {
+              if (selection.focusNode) {
+                range.setStart(selection.focusNode, range.startOffset);
+              } else {
+                range.setStart(selection.startContainer, range.startOffset);
+              }
+              // create a cloned range where it's sitting
+              // generate a completely fake element and insert it so we
+              // track it's position as a "split point"
+              var frag = document
+                .createRange()
+                .createContextualFragment(
+                  "<hax-split-point></hax-split-point>"
+                );
+              range.insertNode(frag);
+            } catch (e) {}
+            // force this to be a constant since activeNode will
+            // change mid operation but we want limit to remain
+            // as a pointer to it's position in the DOM
+            const limit = window.HaxStore.instance.activeContainerNode;
+            var node = dom(
+              window.HaxStore.instance.activeContainerNode
+            ).querySelector("hax-split-point");
+            // run a split node function as modified from stackoverflow
+            if (node != null) {
+              try {
+                this.__splitNode(node, limit);
+              } catch (e) {}
+            }
+          } else {
+            e.preventDefault();
+            window.HaxStore.instance.fire("hax-insert-content", {
+              tag: "p",
+              content: ""
+            });
+          }
         }
       }
     }
@@ -1022,7 +1047,7 @@ Polymer({
       canPosition: true,
       canEditSource: false,
       gizmo: {
-        title: "Basic image",
+        title: "Image",
         description: "A basic img tag",
         icon: "image:image",
         color: "grey",
@@ -1115,7 +1140,7 @@ Polymer({
     let ahref = {
       canScale: false,
       canPosition: false,
-      canEditSource: false,
+      canEditSource: true,
       gizmo: {
         title: "Basic link",
         description: "A basic a tag",
@@ -1208,7 +1233,7 @@ Polymer({
     this.setHaxProperties(p, "p");
     let hr = {
       canScale: true,
-      canPosition: false,
+      canPosition: true,
       canEditSource: false,
       settings: {
         quick: [],
@@ -2238,11 +2263,27 @@ window.HaxStore.getSelection = () => {
   // try and obtain the selection from the nearest shadow
   // which would give us the selection object when running native ShadowDOM
   // with fallback support for the entire window which would imply Shady
-  if (
-    window.HaxStore.instance.activeHaxBody.parentNode &&
-    window.HaxStore.instance.activeHaxBody.parentNode.getSelection
-  ) {
-    return window.HaxStore.instance.activeHaxBody.parentNode.getSelection();
+  if (window.HaxStore.instance.activeHaxBody.parentNode) {
+    // native API
+    if (window.HaxStore.instance.activeHaxBody.parentNode.getSelection) {
+      return window.HaxStore.instance.activeHaxBody.parentNode.getSelection();
+    }
+    // ponyfill from google
+    else if (getRange(window.HaxStore.instance.activeHaxBody.parentNode)) {
+      return getRange(window.HaxStore.instance.activeHaxBody.parentNode);
+    }
   }
+  // missed on both, hope the normal one will work
   return window.getSelection();
+};
+/**
+ * Get a normalized range based on current selection
+ */
+window.HaxStore.getRange = () => {
+  let sel = window.HaxStore.getSelection();
+  if (sel.getRangeAt && sel.rangeCount) {
+    return sel.getRangeAt(0);
+  } else if (sel) {
+    return sel;
+  } else false;
 };
