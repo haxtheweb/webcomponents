@@ -415,17 +415,16 @@ let OutlinePlayer = Polymer({
     window.addEventListener("resize", e => {
       this.refreshDynamicPositions();
     });
-    // listen for router changes
-    window.addEventListener(
-      "haxcms-router-manifest-changed",
-      this._haxcmsRouterManifestChanged.bind(this)
-    ),
-      // getManifestInitial Value
-      window.dispatchEvent(
-        new CustomEvent("haxcms-router-manifest-get-current-value", {
-          detail: { callback: "_haxcmsRouterManifestInit", scope: this }
-        })
-      );
+    // getManifestInitial Value
+    window.dispatchEvent(
+      new CustomEvent("haxcms-router-manifest-subscribe", {
+        detail: {
+          callback: "_haxcmsRouterManifestChanged",
+          scope: this,
+          setup: true
+        }
+      })
+    );
   },
 
   /**
@@ -617,7 +616,10 @@ let OutlinePlayer = Polymer({
    * @param {event} e
    */
   _haxcmsRouterManifestChanged: function(e) {
+    console.log("haxcms-router-manifest-changed", e);
     this._routerManifest = e.detail;
+    this.set("_routerManifest", e.detail);
+    this.notifyPath("_routerManifest", "*");
   }
 });
 export { OutlinePlayer };

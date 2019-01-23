@@ -8,6 +8,7 @@ import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "@polymer/app-route/app-route.js";
+import "./haxcms-site-router.js";
 import { Router } from "@vaadin/router";
 // import "@polymer/app-route/app-location.js";
 /**
@@ -45,7 +46,7 @@ Polymer({
         --paper-progress-container-color: transparent;
       }
     </style>
-    <haxcms-router id="haxcmsRouter"></haxcms-router>
+    <haxcms-site-router id="haxcmsRouter"></haxcms-site-router>
     <haxcms-editor-builder></haxcms-editor-builder>
     <paper-progress
       hidden\$="[[!loading]]"
@@ -200,8 +201,8 @@ Polymer({
       this._haxcmsRouterManifestChanged.bind(this)
     );
     window.addEventListener(
-      "haxcms-router-manifest-get-current-value",
-      this._haxcmsRouterManifestGetCurrentValue.bind(this)
+      "haxcms-router-manifest-subscribe",
+      this._haxcmsRouterManifestSubscribe.bind(this)
     );
   },
   attached: function() {
@@ -375,7 +376,7 @@ Polymer({
   _manifestChanged: function(newValue, oldValue) {
     if (newValue) {
       // update the router manifest
-      this._manifestRouterPublish(newValue);
+      this._manifestRouterChanged(newValue);
       // update the router with the new manifest
       window.cmsSiteEditor.jsonOutlineSchema = newValue;
       this.themeElementName = newValue.metadata.theme;
@@ -471,15 +472,10 @@ Polymer({
   },
 
   /**
-   * Changes the manifest to suit the correct routing
-   * All routing displays and logic should subscribe to
-   * 'haxcms-router-manifest-changed'.
-   *
    * @param {object} manifest
-   * @param {callback, scope} target optionally notify a single element. If null, it will
-   *    broadcast on the window.
+   * @return routerManifest
    */
-  _manifestRouterPublish: function(manifest, target = null) {
+  _createManifestRouterInstance: function(manifest) {
     if (
       typeof manifest !== "undefined" &&
       typeof manifest.items !== "undefined"
@@ -491,26 +487,29 @@ Polymer({
         return Object.assign({}, i, { location: location });
       });
       // create a new router manifest object
-      const routerManifest = Object.assign({}, manifest, {
+      return Object.assign({}, manifest, {
         items: manifestItems
       });
-      console.log("routerManifest:", routerManifest);
-      // if target specified call the specific element
-      if (
-        target !== null &&
-        typeof target.callback !== "undefined" &&
-        typeof target.scope !== "undefined"
-      ) {
-        target.scope[target.callback](routerManifest);
-      } else {
-        // if no target, then broadcast the router manifest change
-        window.dispatchEvent(
-          new CustomEvent("haxcms-router-manifest-changed", {
-            detail: routerManifest
-          })
-        );
-      }
     }
+  },
+
+  /**
+   * Changes the manifest to suit the correct routing
+   * All routing displays and logic should subscribe to
+   * 'haxcms-router-manifest-changed'.
+   *
+   * @param {object} manifest
+   * @event haxcms-router-manifest-changed
+   */
+  _manifestRouterChanged: function(manifest) {
+    // normalize the manifest for the router
+    const routerManifest = this._createManifestRouterInstance(manifest);
+    // disptach a change event
+    window.dispatchEvent(
+      new CustomEvent("haxcms-router-manifest-changed", {
+        detail: routerManifest
+      })
+    );
   },
 
   /**
@@ -530,10 +529,8 @@ Polymer({
    * @param {object} manifest
    */
   _updateRouter: function(manifest) {
-    console.log("manifest:", manifest);
     const router = new Router(this.$.haxcmsRouter);
     const routerItems = manifest.items.map(i => {
-      console.log(i);
       return {
         path: i.location,
         name: i.id,
@@ -547,17 +544,52 @@ Polymer({
   },
 
   /**
-   * Event Handler for 'haxcms-router-manifest-get-current-value'
-   * This custom event will provide consumers with the current
-   * router manifest.
+   * Event Handler for 'haxcms-router-manifest-subscribe'
    *
-   * @usage () => {
-   *    window.dispatchEvent('haxcms-router-manifest-get-current-value', { detail: { callback: '_updateManifest', scope: this }})
-   * }
+   * @example
+   * const options = {}
+   * options.callback = '_routerManifestChanged'
+   * options.scope = this
+   * options.setup = true
+   * window.dispatchEvent(new CustomEvent('haxcms-router-manifest-subscribe', options))
    *
-   * @param {event} e
+   *
+   *
+   * @param {string} callback function name that should be called on scope
+   * @param {DOM} scope dom element that will be called
+   * @param {boolean} setup should this callback be initial triggered (default: false)
    */
-  _haxcmsRouterManifestGetCurrentValue: function(e) {
-    this._manifestRouterPublish(this.manifest, e.detail);
+  _haxcmsRouterManifestSubscribe: function(e) {
+    const defaultOptions = {
+      setup: false
+    };
+    // combine default options and the subscription from the request
+    const subscription = Object.assign({}, defaultOptions, e.detail);
+    if (typeof subscription.callback === "undefined") {
+      console.error(
+        "No callback provided on haxcms-router-manifest-subscribe."
+      );
+      return;
+    }
+    if (typeof subscription.scope === "undefined") {
+      console.error("No scope provided on haxcms-router-manifest-subscribe.");
+      return;
+    }
+    // dynaimcally add the event listener for more router manifest changes
+    subscription.scope.addEventListener(
+      "haxcms-router-manifest-updated",
+      subscription.scope[subscription.callback]
+    );
+    // if setup option is true then manually trigger the callback
+    console.log("e:", e);
+    if (subscription.setup) {
+      const routerManifest = this._createManifestRouterInstance(this.manifest);
+      // create a synthetic event and send directly to the scope
+      const syntheticEvent = new CustomEvent("haxcms-router-manifest-changed", {
+        detail: routerManifest
+      });
+      // manually call the change event
+      subscription.scope[subscription.callback](syntheticEvent);
+    }
   }
 });
