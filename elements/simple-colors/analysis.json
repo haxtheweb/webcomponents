@@ -4676,13 +4676,12 @@
               "column": 6
             },
             "end": {
-              "line": 65,
+              "line": 63,
               "column": 7
             }
           },
           "metadata": {
             "polymer": {
-              "observer": "false",
               "attributeType": "String"
             }
           },
@@ -4695,17 +4694,16 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 70,
+              "line": 68,
               "column": 6
             },
             "end": {
-              "line": 76,
+              "line": 72,
               "column": 7
             }
           },
           "metadata": {
             "polymer": {
-              "observer": "false",
               "attributeType": "Boolean"
             }
           },
@@ -4718,17 +4716,16 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 81,
+              "line": 77,
               "column": 6
             },
             "end": {
-              "line": 87,
+              "line": 82,
               "column": 7
             }
           },
           "metadata": {
             "polymer": {
-              "observer": "false",
               "attributeType": "Boolean"
             }
           },
@@ -4741,17 +4738,16 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 92,
+              "line": 87,
               "column": 6
             },
             "end": {
-              "line": 98,
+              "line": 91,
               "column": 7
             }
           },
           "metadata": {
             "polymer": {
-              "observer": "false",
               "attributeType": "String"
             }
           },
@@ -4764,17 +4760,16 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 111,
+              "line": 104,
               "column": 6
             },
             "end": {
-              "line": 117,
+              "line": 108,
               "column": 7
             }
           },
           "metadata": {
             "polymer": {
-              "observer": "false",
               "readOnly": true,
               "attributeType": "Array"
             }
@@ -4787,17 +4782,16 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 122,
+              "line": 113,
               "column": 6
             },
             "end": {
-              "line": 128,
+              "line": 118,
               "column": 7
             }
           },
           "metadata": {
             "polymer": {
-              "observer": "false",
               "attributeType": "Boolean"
             }
           },
@@ -4810,17 +4804,17 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 133,
+              "line": 123,
               "column": 6
             },
             "end": {
-              "line": 140,
+              "line": 130,
               "column": 7
             }
           },
           "metadata": {
             "polymer": {
-              "observer": "false",
+              "notify": true,
               "readOnly": true,
               "attributeType": "Object"
             }
@@ -5077,11 +5071,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 252,
+              "line": 242,
               "column": 2
             },
             "end": {
-              "line": 255,
+              "line": 245,
               "column": 3
             }
           },
@@ -6913,11 +6907,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 260,
+              "line": 250,
               "column": 2
             },
             "end": {
-              "line": 262,
+              "line": 252,
               "column": 3
             }
           },
@@ -7075,11 +7069,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 164,
+              "line": 154,
               "column": 2
             },
             "end": {
-              "line": 205,
+              "line": 195,
               "column": 3
             }
           },
@@ -7102,11 +7096,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 213,
+              "line": 203,
               "column": 2
             },
             "end": {
-              "line": 215,
+              "line": 205,
               "column": 3
             }
           },
@@ -7127,11 +7121,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 220,
+              "line": 210,
               "column": 2
             },
             "end": {
-              "line": 225,
+              "line": 215,
               "column": 3
             }
           },
@@ -7151,11 +7145,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 230,
+              "line": 220,
               "column": 2
             },
             "end": {
-              "line": 232,
+              "line": 222,
               "column": 3
             }
           },
@@ -7175,11 +7169,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 237,
+              "line": 227,
               "column": 2
             },
             "end": {
-              "line": 240,
+              "line": 230,
               "column": 3
             }
           },
@@ -7199,11 +7193,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 245,
+              "line": 235,
               "column": 2
             },
             "end": {
-              "line": 247,
+              "line": 237,
               "column": 3
             }
           },
@@ -8166,7 +8160,7 @@
           "column": 0
         },
         "end": {
-          "line": 267,
+          "line": 257,
           "column": 1
         }
       },
@@ -8234,7 +8228,7 @@
               "column": 6
             },
             "end": {
-              "line": 65,
+              "line": 63,
               "column": 7
             }
           },
@@ -8246,11 +8240,11 @@
           "description": "Is the picker disabled?",
           "sourceRange": {
             "start": {
-              "line": 70,
+              "line": 68,
               "column": 6
             },
             "end": {
-              "line": 76,
+              "line": 72,
               "column": 7
             }
           },
@@ -8262,11 +8256,11 @@
           "description": "Is it expanded?",
           "sourceRange": {
             "start": {
-              "line": 81,
+              "line": 77,
               "column": 6
             },
             "end": {
-              "line": 87,
+              "line": 82,
               "column": 7
             }
           },
@@ -8278,11 +8272,11 @@
           "description": "Optional. The label for the picker input",
           "sourceRange": {
             "start": {
-              "line": 92,
+              "line": 87,
               "column": 6
             },
             "end": {
-              "line": 98,
+              "line": 91,
               "column": 7
             }
           },
@@ -8294,11 +8288,11 @@
           "description": "An array of options for the picker, eg.: `\n[\n  {\n    \"icon\": \"editor:format-paint\",      //Optional. Used if the picker is used as an icon picker.\n    \"alt\": \"Blue\",                      //Required for accessibility. Alt text description of the choice.\n    \"style\": \"background-color: blue;\", //Optional. Used to set an option's style.\n    ...                                 //Optional. Any other properties that should be captured as part of the selected option's value\n  },...\n]`",
           "sourceRange": {
             "start": {
-              "line": 111,
+              "line": 104,
               "column": 6
             },
             "end": {
-              "line": 117,
+              "line": 108,
               "column": 7
             }
           },
@@ -8310,11 +8304,11 @@
           "description": "Show all shades instead of just main accent-colors",
           "sourceRange": {
             "start": {
-              "line": 122,
+              "line": 113,
               "column": 6
             },
             "end": {
-              "line": 128,
+              "line": 118,
               "column": 7
             }
           },
@@ -8326,11 +8320,11 @@
           "description": "An string that stores the current value for the picker",
           "sourceRange": {
             "start": {
-              "line": 133,
+              "line": 123,
               "column": 6
             },
             "end": {
-              "line": 140,
+              "line": 130,
               "column": 7
             }
           },
@@ -8338,7 +8332,14 @@
           "type": "Object | null | undefined"
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "value-changed",
+          "description": "Fired when the `value` property changes.",
+          "metadata": {}
+        }
+      ],
       "styling": {
         "cssVariables": [],
         "selectors": []

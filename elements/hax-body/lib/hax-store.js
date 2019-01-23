@@ -54,12 +54,20 @@ Polymer({
 
   properties: {
     /**
+     * skipHAXConfirmation
+     */
+    skipHAXConfirmation: {
+      type: Boolean,
+      value: false,
+      reflectToAttribute: true
+    },
+    /**
      * Local storage bridge
      */
-    localStorage: {
+    storageData: {
       type: Object,
       value: {},
-      observer: "_localStorageChanged"
+      observer: "_storageDataChanged"
     },
     /**
      * Hax app picker element.
@@ -157,11 +165,19 @@ Polymer({
       type: Object
     },
     /**
+     * Session object bridged in from a session method of some kind
+     */
+    sessionObject: {
+      type: Object,
+      value: {}
+    },
+    /**
      * editMode
      */
     editMode: {
       type: Boolean,
-      value: false
+      value: false,
+      observer: "_editModeChanged"
     },
     /**
      * Boolean for if this instance has backends that support uploading
@@ -338,8 +354,14 @@ Polymer({
   /**
    * Local storage data changed; callback to store this data in user storage
    */
-  _localStorageChanged: function(newValue) {
-    window.localStorage.setItem("haxUserData", JSON.stringify(newValue));
+  _storageDataChanged: function(newValue) {
+    if (newValue && window.HaxStore.ready && this.__storageDataProcessed) {
+      if (window.localStorage.getItem("haxConfirm")) {
+        window.localStorage.setItem("haxUserData", JSON.stringify(newValue));
+      } else if (window.sessionStorage.getItem("haxConfirm")) {
+        window.sessionStorage.setItem("haxUserData", JSON.stringify(newValue));
+      }
+    }
   },
   /**
    * If this is a text node or not so we know if the inline context
@@ -484,11 +506,30 @@ Polymer({
       this.dispatchEvent(evt);
     }
   },
-  _globalPreferencesChanged: function(newValue, oldValue) {
-    if (newValue.haxVoiceCommands) {
+  _editModeChanged: function(newValue) {
+    if (newValue && this.globalPreferences.haxVoiceCommands) {
       this.$.hal.auto = true;
     } else {
       this.$.hal.auto = false;
+    }
+  },
+  _globalPreferencesChanged: function(newValue, oldValue) {
+    // regardless of what it is, reflect it globally but only after setup
+    if (
+      this.__storageDataProcessed &&
+      newValue &&
+      typeof newValue.haxVoiceCommands !== typeof undefined &&
+      window.HaxStore.ready
+    ) {
+      let storageData = this.storageData;
+      storageData.globalPreferences = newValue;
+      this.set("storageData", {});
+      this.set("storageData", storageData);
+      if (newValue.haxVoiceCommands && this.editMode) {
+        this.$.hal.auto = true;
+      } else {
+        this.$.hal.auto = false;
+      }
     }
   },
   /**
@@ -590,13 +631,84 @@ Polymer({
       "onbeforeunload",
       this._onBeforeUnload.bind(this)
     );
+    window.removeEventListener(
+      "hax-consent-tap",
+      this._haxConsentTap.bind(this)
+    );
     window.removeEventListener("paste", this._onPaste.bind(this));
     window.removeEventListener("keypress", this._onKeyPress.bind(this));
     // fire that hax store is ready to go so now we can setup the rest
     this.fire("hax-store-ready", false);
     window.HaxStore.ready = false;
   },
-
+  /**
+   * This only fires if they consented to storage of data locally
+   */
+  _haxConsentTap: function(e) {
+    // store for future local storage usage
+    window.localStorage.setItem("haxConfirm", true);
+    // most likely nothing but set it anyway
+    window.localStorage.setItem(
+      "haxUserData",
+      JSON.stringify(this.storageData)
+    );
+  },
+  /**
+   * ready life cycle
+   */
+  ready: function() {
+    // see if a global was used to prevent this check
+    // this is useful when in trusted environments where the statement
+    // has been consented to in the application this is utilized in
+    if (this.skipHAXConfirmation) {
+      window.sessionStorage.setItem("haxConfirm", true);
+      window.localStorage.setItem("haxConfirm", true);
+    }
+    // check for local storage object
+    // if not, then store it in sessionStorage so that all our checks
+    // and balances are the same. This could allow for storing these
+    // settings on a server in theory
+    let haxConfirm =
+      window.sessionStorage.getItem("haxConfirm") ||
+      window.localStorage.getItem("haxConfirm");
+    if (!haxConfirm) {
+      // this way it isn't shown EVERY reload, but if they didn't confirm
+      // it will show up in the future
+      window.sessionStorage.setItem("haxConfirm", true);
+      let msg = `
+      The HAX content editor keeps preferences in order to improve your experience.
+      This data is stored in your browser and is never sent anywhere.
+      Click to accept.
+      `;
+      window.HaxStore.toast(
+        msg,
+        "-1",
+        "fit-bottom",
+        "I Accept",
+        "hax-consent-tap"
+      );
+    } else {
+      if (
+        window.sessionStorage.getItem("haxConfirm") &&
+        !window.localStorage.getItem("haxConfirm")
+      ) {
+        // verify there is something there
+        try {
+          let globalData = window.sessionStorage.getItem("haxUserData")
+            ? JSON.parse(window.sessionStorage.getItem("haxUserData"))
+            : {};
+          this.set("storageData", globalData);
+        } catch (e) {}
+      } else {
+        try {
+          let globalData = window.localStorage.getItem("haxUserData")
+            ? JSON.parse(window.localStorage.getItem("haxUserData"))
+            : {};
+          this.set("storageData", globalData);
+        } catch (e) {}
+      }
+    }
+  },
   /**
    * attached.
    */
@@ -608,12 +720,24 @@ Polymer({
     // register built in primitive definitions
     this._buildPrimitiveDefinitions();
     // capture events and intercept them globally
+    window.addEventListener("hax-consent-tap", this._haxConsentTap.bind(this));
     window.addEventListener("onbeforeunload", this._onBeforeUnload.bind(this));
     window.addEventListener("paste", this._onPaste.bind(this));
     window.addEventListener("keypress", this._onKeyPress.bind(this));
-    this.haxToast = window.SimpleToast.requestAvailability();
     // initialize voice commands
     this.voiceCommands = this._initVoiceCommands();
+    // set this global flag so we know it's safe to start trusting data
+    // that is written to global preferences / storage bin
+    setTimeout(() => {
+      this.__storageDataProcessed = true;
+      if (this.storageData.globalPreferences) {
+        window.HaxStore.write(
+          "globalPreferences",
+          this.storageData.globalPreferences,
+          this
+        );
+      }
+    }, 325);
   },
   /**
    * Build a list of common voice commands
@@ -848,18 +972,7 @@ Polymer({
     if (window.HaxStore.instance == null) {
       window.HaxStore.instance = this;
     }
-    // check for local storage object
-    // @todo ensure they consent to this
-    // if not, then store it in sessionStorage so that all our checks
-    // and balances are the same. This could allow for storing these
-    // settings on a server in theory
-    this.set(
-      "localStorage",
-      window.localStorage.getItem("haxUserData")
-        ? JSON.parse(window.localStorage.getItem("haxUserData"))
-        : {}
-    );
-
+    this.haxToast = window.SimpleToast.requestAvailability();
     // notice hax property definitions coming from anywhere
     window.addEventListener(
       "hax-register-properties",
@@ -2242,18 +2355,27 @@ window.HaxStore.encapScript = html => {
   return html;
 };
 /**
- * Global toast
+ * Global toast bridge so we don't have to keep writing custom event
  */
-window.HaxStore.toast = (message, duration = 4000) => {
+window.HaxStore.toast = (
+  message,
+  duration = 4000,
+  classStyle = "",
+  closeText = null,
+  eventCallback = null
+) => {
   const evt = new CustomEvent("simple-toast-show", {
     bubbles: true,
     cancelable: true,
     detail: {
       text: message,
-      duration: duration
+      duration: duration,
+      classStyle: classStyle,
+      closeText: closeText,
+      eventCallback: eventCallback
     }
   });
-  window.HaxStore.instance.dispatchEvent(evt);
+  window.dispatchEvent(evt);
 };
 
 /**

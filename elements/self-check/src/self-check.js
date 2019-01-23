@@ -6,8 +6,7 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-import "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
 `self-check`
 A LRN element
@@ -21,7 +20,7 @@ A LRN element
 */
 let SelfCheck = Polymer({
   _template: html`
-    <style include="materializecss-styles">
+    <style include="simple-colors">
       :host {
         display: block;
       }
@@ -33,7 +32,7 @@ let SelfCheck = Polymer({
         overflow: hidden;
       }
 
-      paper-icon-button#checkBtn {
+      paper-icon-button#checkbtn {
         width: 50px;
         height: 50px;
         position: relative;
@@ -63,12 +62,14 @@ let SelfCheck = Polymer({
         width: 35px;
         height: 35px;
         padding: 5px;
+        color: #ffffff;
       }
 
       .heading {
         text-transform: uppercase;
         font-size: 22px;
         margin: 10px;
+        color: #ffffff;
       }
 
       #header_wrap {
@@ -153,12 +154,9 @@ let SelfCheck = Polymer({
     <paper-card image="[[image]]" alt="[[alt]]">
       <div
         class="triangle"
-        style\$="border-bottom-color:[[backgroundColor]];"
+        style$="border-bottom-color:[[backgroundColor]];"
       ></div>
-      <div
-        id="header_wrap"
-        class\$="[[backgroundColorClass]] [[textColorClass]]"
-      >
+      <div id="header_wrap" style$="background-color:[[backgroundColor]]">
         <iron-icon id="questionmark" icon="icons:help"></iron-icon>
         <div class="heading">[[title]]</div>
       </div>
@@ -167,12 +165,12 @@ let SelfCheck = Polymer({
           <slot name="question"></slot>
           <div class="check_button">
             <paper-icon-button
-              id="checkBtn"
+              id="checkbtn"
               icon="icons:check-circle"
               on-click="openAnswer"
               noink=""
             ></paper-icon-button>
-            <paper-tooltip for="checkBtn" position="left"
+            <paper-tooltip for="checkbtn" position="left"
               >Reveal Answer</paper-tooltip
             >
           </div>
@@ -200,12 +198,7 @@ let SelfCheck = Polymer({
 
   is: "self-check",
 
-  behaviors: [
-    HAXBehaviors.PropertiesBehaviors,
-    SchemaBehaviors.Schema,
-    A11yBehaviors.A11y,
-    MaterializeCSSBehaviors.ColorBehaviors
-  ],
+  behaviors: [HAXBehaviors.PropertiesBehaviors, SchemaBehaviors.Schema],
 
   properties: {
     /**
@@ -246,7 +239,7 @@ let SelfCheck = Polymer({
       reflectToAttribute: true
     },
     /**
-     * Property for toggling "checkBtn".
+     * Property for toggling "checkbtn".
      */
     correct: {
       type: Boolean,
@@ -254,43 +247,17 @@ let SelfCheck = Polymer({
       reflectToAttribute: true
     },
     /**
-     * Adjust text color.
-     */
-    textColor: {
-      type: String,
-      value: "#ffffff",
-      reflectToAttribute: true
-    },
-    /**
-     * Text color color.
-     */
-    textColorClass: {
-      type: String,
-      value: null,
-      reflectToAttribute: true,
-      computed: "_computeColorClass(textColor)"
-    },
-    /**
      * Background color.
      */
     backgroundColor: {
       type: String,
-      value: "#1976d2",
-      reflectToAttribute: true,
-      observer: "_backgroundColorChanged"
-    },
-    /**
-     * Text color color.
-     */
-    backgroundColorClass: {
-      type: String,
-      reflectToAttribute: true,
-      computed: "_computeColorClass(backgroundColor)"
+      value: "indigo",
+      reflectToAttribute: true
     }
   },
 
   /**
-   * Property for toggling "checkBtn".
+   * Property for toggling "checkbtn".
    */
 
   openAnswer: function() {
@@ -406,16 +373,6 @@ let SelfCheck = Polymer({
   },
 
   /**
-   * Notice background color changed
-   */
-  _backgroundColorChanged: function(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined && newValue != null) {
-      // sees if there's enough contrast and adjusts them accordingly
-      this.computeTextPropContrast("textColor", "backgroundColor");
-    }
-  },
-
-  /**
    * Primary color changed, spread into internals.
    */
   _primaryColorChanged: function(newValue, oldValue) {
@@ -426,19 +383,6 @@ let SelfCheck = Polymer({
       var source = this.source;
       this.set("source", "");
       this.set("source", source);
-    }
-  },
-
-  /**
-   * Make class from color value
-   */
-  _computeColorClass: function(color) {
-    if (color != null && color.toLowerCase() == "#ffffff") {
-      return "white-text";
-    } else if (color != null && color == "#000000") {
-      return "black-text";
-    } else if (color != null && color.substring(0, 1) == "#") {
-      return this._colorTransform(color.toLowerCase(), "", "");
     }
   }
 });

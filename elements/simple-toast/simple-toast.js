@@ -49,8 +49,9 @@ class SimpleToast extends PolymerElement {
       <paper-toast
         id="toast"
         text="[[text]]"
-        duration="[[duration]]"
+        duration$="[[duration]]"
         opened="{{opened}}"
+        class$="[[classStyle]]"
       >
         <slot></slot>
         <paper-button hidden$="[[!closeButton]]" on-tap="hide"
@@ -81,6 +82,14 @@ class SimpleToast extends PolymerElement {
         value: "Saved"
       },
       /**
+       * Class name, fit-bottom being a useful one
+       */
+      classStyle: {
+        name: "classStyle",
+        type: "String",
+        value: ""
+      },
+      /**
        * Text for the close button
        */
       closeText: {
@@ -95,6 +104,13 @@ class SimpleToast extends PolymerElement {
         name: "duration",
         type: "Number",
         value: 4000
+      },
+      /**
+       * Event callback when hide is called
+       */
+      eventCallback: {
+        name: "eventCallback",
+        type: "String"
       },
       /**
        * If there should be a close button shown
@@ -148,7 +164,7 @@ class SimpleToast extends PolymerElement {
    * Hide callback
    */
   hideSimpleToast(e) {
-    // add your code to run when the singleton hides
+    this.hide();
   }
   /**
    * Show / available callback
@@ -161,11 +177,17 @@ class SimpleToast extends PolymerElement {
     if (e.detail.text) {
       this.text = e.detail.text;
     }
+    if (e.detail.classStyle) {
+      this.classStyle = e.detail.classStyle;
+    }
     if (e.detail.closeText) {
       this.closeText = e.detail.closeText;
     }
     if (e.detail.closeButton) {
       this.closeButton = e.detail.closeButton;
+    }
+    if (e.detail.eventCallback) {
+      this.eventCallback = e.detail.eventCallback;
     }
     while (dom(this).firstChild !== null) {
       dom(this).removeChild(dom(this).firstChild);
@@ -184,27 +206,15 @@ class SimpleToast extends PolymerElement {
     this.$.toast.show();
   }
   hide() {
+    if (this.eventCallback) {
+      const evt = new CustomEvent(this.eventCallback, {
+        bubbles: true,
+        cancelable: true,
+        detail: true
+      });
+      this.dispatchEvent(evt);
+    }
     this.$.toast.hide();
-  }
-  // Observer opened for changes
-  _openedChanged(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined) {
-      console.log(newValue);
-    }
-  }
-
-  // Observer closeText for changes
-  _closeTextChanged(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined) {
-      console.log(newValue);
-    }
-  }
-
-  // Observer duration for changes
-  _durationChanged(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined) {
-      console.log(newValue);
-    }
   }
 }
 window.customElements.define(SimpleToast.tag, SimpleToast);

@@ -94,9 +94,6 @@ Polymer({
   `,
 
   is: "hax-preferences-dialog",
-
-  observers: ["_preferencesChanged(preferences.*)"],
-
   properties: {
     /**
      * Title when open.
@@ -115,10 +112,11 @@ Polymer({
      * Preferences managed for everything global about HAX.
      */
     preferences: {
-      type: Object
+      type: Object,
+      notify: true
     }
   },
-
+  observers: ["_preferencesChanged(preferences.*)"],
   /**
    * Detached life cycle
    */
@@ -128,11 +126,7 @@ Polymer({
       this._haxStorePropertyUpdated.bind(this)
     );
   },
-
-  /**
-   * Attached to the DOM, now fire that we exist.
-   */
-  attached: function() {
+  ready: function() {
     // JSON schema object needs delayed to ensure page repaints the form
     var schema = {
       $schema: "http://json-schema.org/schema#",
@@ -182,6 +176,11 @@ Polymer({
     };
     this.set("schema", {});
     this.set("schema", schema);
+  },
+  /**
+   * Attached to the DOM, now fire that we exist.
+   */
+  attached: function() {
     // register this with hax as the preference pane
     this.fire("hax-register-preferences", this);
     // add event listener
@@ -201,17 +200,24 @@ Polymer({
       e.detail &&
       typeof e.detail.value !== typeof undefined &&
       e.detail.property &&
-      typeof this[e.detail.property] !== typeof undefined
+      e.detail.property === "globalPreferences" &&
+      e.detail.owner !== this
     ) {
-      this.set(e.detail.property, e.detail.value);
+      if (typeof e.detail.value === "object") {
+        this.set("preferences", {});
+      }
+      this.set("preferences", e.detail.value);
+      this.notifyPath("preferences.*");
     }
   },
 
   /**
    * Notice preferences have changed.
    */
-  _preferencesChanged: function(prop) {
-    window.HaxStore.write("globalPreferences", this.preferences, this);
+  _preferencesChanged: function(details) {
+    if (this.schema && this.schema.properties && window.HaxStore.ready) {
+      window.HaxStore.write("globalPreferences", details.base, this);
+    }
   },
 
   /**
@@ -222,6 +228,14 @@ Polymer({
       this.close();
     } else {
       window.HaxStore.instance.closeAllDrawers(this);
+      var schema = this.schema;
+      // enforce property values to be the schema value
+      for (var key in this.preferences) {
+        this.schema.properties[key].value = this.preferences[key];
+      }
+      // force the form to rebuild
+      this.set("schema", {});
+      this.set("schema", schema);
     }
   },
 
