@@ -6,7 +6,7 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 /**
 `self-check`
@@ -21,15 +21,35 @@ A LRN element
 */
 let SelfCheck = Polymer({
   _template: html`
-    <style include="materializecss-styles">
+    <style include="simple-colors">
       :host {
         display: block;
+        margin: 15px 0;
+        --self-check-question-color: var(
+          --simple-colors-default-theme-grey-1,
+          #fff
+        );
+        --self-check-question-text: var(
+          --simple-colors-default-theme-grey-12,
+          #000
+        );
+        --self-check-accent-color: var(--simple-colors-default-theme-accent-8);
+        --self-check-answer-color: var(
+          --simple-colors-default-theme-light-green-8
+        );
+        --self-check-contrast-text: var(
+          --simple-colors-default-theme-grey-1,
+          #fff
+        );
       }
       [hidden] {
         display: none !important;
       }
 
       paper-card {
+        width: 100%;
+        color: var(--self-check-question-text);
+        background-color: var(--self-check-question-color);
         overflow: hidden;
       }
 
@@ -72,12 +92,16 @@ let SelfCheck = Polymer({
       }
 
       #header_wrap {
+        color: var(--self-check-contrast-text);
+        background-color: var(--self-check-accent-color);
         display: inline-flex;
         width: 100%;
         margin: -20px 0 0;
       }
 
       #question_wrap {
+        color: var(--self-check-question-text);
+        background-color: var(--self-check-question-color);
         position: relative;
       }
 
@@ -93,8 +117,9 @@ let SelfCheck = Polymer({
       #answer_wrap {
         visibility: hidden;
         opacity: 0;
-        background-color: #66bb6a;
-        border-top: 2px solid #fff;
+        color: var(--self-check-contrast-text);
+        background-color: var(--self-check-answer-color);
+        border-top: 2px solid var(--self-check-contrast-text);
         width: 100%;
         top: 0;
         transition: all 0.2s ease;
@@ -110,7 +135,6 @@ let SelfCheck = Polymer({
       }
 
       .answer {
-        color: #fff;
         font-size: 16px;
         padding: 15px;
         line-height: 19.2px;
@@ -130,7 +154,7 @@ let SelfCheck = Polymer({
         height: 0;
         border-left: 20px solid transparent;
         border-right: 20px solid transparent;
-        border-bottom: 20px solid;
+        border-bottom: 20px solid var(--self-check-accent-color);
         position: relative;
         top: -20px;
         left: -1px;
@@ -141,44 +165,40 @@ let SelfCheck = Polymer({
       }
 
       .more_info a {
-        text-decoration: none;
-        color: #fff;
+        color: var(--self-check-contrast-text);
       }
 
       .more_info a:hover {
-        color: #1976d2;
+        text-decoration: none;
       }
     </style>
 
-    <paper-card image="[[image]]" alt="[[alt]]">
-      <div
-        class="triangle"
-        style\$="border-bottom-color:[[backgroundColor]];"
-      ></div>
-      <div
-        id="header_wrap"
-        class\$="[[backgroundColorClass]] [[textColorClass]]"
-      >
+    <paper-card image$="[[image]]" alt$="[[alt]]">
+      <div class="triangle"></div>
+      <div id="header_wrap">
         <iron-icon id="questionmark" icon="icons:help"></iron-icon>
         <div class="heading">[[title]]</div>
       </div>
       <div id="question_wrap">
-        <div class="question">
+        <div class="question" aria-hidden$="[[correct]]">
           <slot name="question"></slot>
           <div class="check_button">
             <paper-icon-button
+              controls="answer_wrap"
+              aria-label="Reveal Answer"
               id="checkBtn"
               icon="icons:check-circle"
               on-click="openAnswer"
-              noink=""
-            ></paper-icon-button>
-            <paper-tooltip for="checkBtn" position="left"
-              >Reveal Answer</paper-tooltip
+              noink
             >
+            </paper-icon-button>
+            <paper-tooltip aria-hidden="true" for="checkBtn" position="left">
+              Reveal Answer
+            </paper-tooltip>
           </div>
         </div>
 
-        <div id="answer_wrap">
+        <div id="answer_wrap" aria-hidden$="[[!correct]]" aria-live="polite">
           <div class="answer">
             <slot></slot>
             <div class="more_info" hidden$="[[!link]]">
@@ -186,11 +206,16 @@ let SelfCheck = Polymer({
             </div>
             <div class="close_button">
               <paper-icon-button
+                aria-label="Close"
                 id="closeBtn"
                 icon="icons:close"
                 on-click="openAnswer"
-                noink=""
-              ></paper-icon-button>
+                noink
+              >
+              </paper-icon-button>
+              <paper-tooltip aria-hidden="true" for="closeBtn" position="left">
+                Close
+              </paper-tooltip>
             </div>
           </div>
         </div>
@@ -204,7 +229,7 @@ let SelfCheck = Polymer({
     HAXBehaviors.PropertiesBehaviors,
     SchemaBehaviors.Schema,
     A11yBehaviors.A11y,
-    MaterializeCSSBehaviors.ColorBehaviors
+    SimpleColors
   ],
 
   properties: {
@@ -252,40 +277,6 @@ let SelfCheck = Polymer({
       type: Boolean,
       value: false,
       reflectToAttribute: true
-    },
-    /**
-     * Adjust text color.
-     */
-    textColor: {
-      type: String,
-      value: "#ffffff",
-      reflectToAttribute: true
-    },
-    /**
-     * Text color color.
-     */
-    textColorClass: {
-      type: String,
-      value: null,
-      reflectToAttribute: true,
-      computed: "_computeColorClass(textColor)"
-    },
-    /**
-     * Background color.
-     */
-    backgroundColor: {
-      type: String,
-      value: "#1976d2",
-      reflectToAttribute: true,
-      observer: "_backgroundColorChanged"
-    },
-    /**
-     * Text color color.
-     */
-    backgroundColorClass: {
-      type: String,
-      reflectToAttribute: true,
-      computed: "_computeColorClass(backgroundColor)"
     }
   },
 
@@ -293,7 +284,7 @@ let SelfCheck = Polymer({
    * Property for toggling "checkBtn".
    */
 
-  openAnswer: function() {
+  openAnswer: function(e) {
     this.correct = !this.correct;
   },
 
@@ -393,53 +384,24 @@ let SelfCheck = Polymer({
             required: true
           },
           {
-            property: "backgroundColor",
-            title: "Background color",
-            description: "Select the background color used",
-            inputMethod: "colorpicker"
+            property: "accent-color",
+            title: "Accent-Color",
+            description: "The accent color of the self-check",
+            inputMethod: "colorpicker",
+            icon: "editor:format-color-fill"
+          },
+          {
+            property: "dark",
+            title: "Dark Theme",
+            description: "Enable Dark Theme",
+            inputMethod: "toggle",
+            icon: "icons:invert-colors"
           }
         ],
         advanced: []
       }
     };
     this.setHaxProperties(props);
-  },
-
-  /**
-   * Notice background color changed
-   */
-  _backgroundColorChanged: function(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined && newValue != null) {
-      // sees if there's enough contrast and adjusts them accordingly
-      this.computeTextPropContrast("textColor", "backgroundColor");
-    }
-  },
-
-  /**
-   * Primary color changed, spread into internals.
-   */
-  _primaryColorChanged: function(newValue, oldValue) {
-    if (newValue != null && typeof this.source !== typeof undefined) {
-      this.videoColor = newValue.substring(1);
-      // aggressive rebuild of source so vimeo picks up
-      // the color change and updates the URL to match
-      var source = this.source;
-      this.set("source", "");
-      this.set("source", source);
-    }
-  },
-
-  /**
-   * Make class from color value
-   */
-  _computeColorClass: function(color) {
-    if (color != null && color.toLowerCase() == "#ffffff") {
-      return "white-text";
-    } else if (color != null && color == "#000000") {
-      return "black-text";
-    } else if (color != null && color.substring(0, 1) == "#") {
-      return this._colorTransform(color.toLowerCase(), "", "");
-    }
   }
 });
 export { SelfCheck };
