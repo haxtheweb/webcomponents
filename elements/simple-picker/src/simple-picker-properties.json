@@ -33,6 +33,18 @@
   },
 
   /**
+   * Hide option labels? As color-picker or icon-picker, labels may be redundant.
+   * This option would move the labels off-screen so that only screen-readers will have them.
+   */
+  "hideOptionLabels": {
+    "name": "hideOptionLabels",
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": false,
+    "observer": false
+  },
+
+  /**
    * Optional. The label for the picker input
    */
   "label": {
@@ -57,31 +69,33 @@
   "options": {
     "name": "options",
     "type": "Array",
-    "value": [],
+    "value": [[]],
     "reflectToAttribute": false,
     "observer": false
   },
 
   /**
-   * Hide option labels? As color-picker or icon-picker, labels may be redundant.
-   * This option would move the labels off-screen so that only screen-readers will have them.
-   */
-  "hideOptionLabels": {
-    "name": "hideOptionLabels",
+   * position the swatches relative to the picker, where:
+   * `left` aligns the swatches to the picker's left edge
+   * `right` aligns the swatches to the picker's right edge
+   * `center` aligns the swatches to the picker's center
+  "position": {
+    "name": "position",
     "type": "Boolean",
-    "value": false,
+    "value": "left",
     "reflectToAttribute": false,
     "observer": false
   },
+   */
 
   /**
    * An string that stores the current value for the picker
    */
   "value": {
     "name": "value",
-    "type": "String",
-    "value": "_getValue(__selectedDesc)",
-    "reflectToAttribute": false,
+    "type": "Object",
+    "computed": "_getValue(options,__selectedDesc)",
+    "reflectToAttribute": true,
     "read-only": true,
     "observer": false
   },
@@ -114,7 +128,7 @@
   "__selectedOption": {
     "name": "__selectedOption",
     "type": "Object",
-    "computed": "_getOption(__selectedDesc)",
+    "computed": "_getOption(options,__selectedDesc)",
     "reflectToAttribute": false,
     "observer": false
   }

@@ -7,19 +7,22 @@ import "@polymer/polymer/lib/elements/dom-if.js";
 import { SimpleColors } from "../../simple-colors.js"; //import the shared styles
 import "./simple-colors-demo.js";
 
-export { SimpleColorsDemoVariables };
+export { SimpleColorsClassInspector };
 /**
- * `simple-colors-demo-variables`
- * `an example of how to simple-colors CSS variables work`
+ * `simple-colors-class-inspector`
+ * `A tool to show how simple-colors CSS classes work`
  *
  * @microcopy - language worth noting:
  *  -
  *
  * @customElement
  * @polymer
+ * @demo demo/classes.html demo
  * @see "../../simple-colors.js"
+ * @see "simple-colors-inspector-content.js"
+ * @see "simple-colors-inspector-select.js"
  */
-class SimpleColorsDemoVariables extends SimpleColors {
+class SimpleColorsClassInspector extends SimpleColors {
   // render function
   static get template() {
     return html`
@@ -39,15 +42,17 @@ class SimpleColorsDemoVariables extends SimpleColors {
           border-radius: 3px;
           padding: 5px 7px;
           cursor: pointer;
+          border-width: 3px;
         }
-        :host #varselectors {
+        :host #classselectors {
+          padding: 15px;
           color: black !important;
           background-color: #f5f5f5;
           font-family: monospace;
-          padding: 15px;
         }
-        :host #properties {
-          padding: 15px;
+        :host .cssclass {
+          white-space: nowrap;
+          margin: 0 7px;
         }
         :host .sr-only {
           position: absolute;
@@ -61,50 +66,16 @@ class SimpleColorsDemoVariables extends SimpleColors {
       <simple-colors-demo>
         <div id="inner">
           <div id="demo"><button id="button">Button</button></div>
-          <div id="varselectors">
-            <em>button</em> {
-            <div id="properties">
-              color: var(<label class="sr-only" for="theme">Text Theme</label
-              ><simple-colors-demo-select
-                id="theme"
-                label="theme"
-                value="--simple-colors-default-theme"
-                as-code
-                on-theme-change="_handleUpdate"
-                options="[&quot;--simple-colors-default-theme&quot;,&quot;--simple-colors-dark-theme&quot;,&quot;--simple-colors-light-theme&quot;]"
-              >
-              </simple-colors-demo-select
-              >-<label class="sr-only" for="color">Text Base Color</label
-              ><simple-colors-demo-select
-                id="color"
-                label="accent-color"
-                value="grey"
-                as-code
-                on-accent-color-change="_handleUpdate"
-                options$="[[_getOptions(colors)]]"
-              >
-              </simple-colors-demo-select
-              >-<label class="sr-only" for="level">Text Shade Level</label
-              ><simple-colors-demo-select
-                id="level"
-                label="level"
-                value="1"
-                as-code
-                on-level-change="_handleUpdate"
-                options="[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;11&quot;,&quot;12&quot;]"
-              >
-              </simple-colors-demo-select
-              >); <br />
-
-              background-color: var(<label class="sr-only" for="theme"
-                >Background Theme</label
+          <div id="classselectors">
+            <em>&lt;button</em> class="<span class="cssclass"
+              ><label class="sr-only" for="theme">Background Theme</label
               ><simple-colors-demo-select
                 id="bgtheme"
                 label="theme"
-                value="--simple-colors-default-theme"
+                value="simple-colors-default-theme"
                 as-code
                 on-theme-change="_handleUpdate"
-                options="[&quot;--simple-colors-default-theme&quot;,&quot;--simple-colors-dark-theme&quot;,&quot;--simple-colors-light-theme&quot;]"
+                options="[&quot;simple-colors-default-theme&quot;,&quot;simple-colors-dark-theme&quot;,&quot;simple-colors-light-theme&quot;]"
               >
               </simple-colors-demo-select
               >-<label class="sr-only" for="color">Background Base Color</label
@@ -127,17 +98,51 @@ class SimpleColorsDemoVariables extends SimpleColors {
                 options="[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;11&quot;,&quot;12&quot;]"
               >
               </simple-colors-demo-select
-              >); <br />
+            ></span>
 
-              border-color: var(<label class="sr-only" for="theme"
-                >Border Theme</label
+            <span class="cssclass"
+              ><label class="sr-only" for="theme">Text Theme</label
+              ><simple-colors-demo-select
+                id="theme"
+                label="theme"
+                value="simple-colors-default-theme"
+                as-code
+                on-theme-change="_handleUpdate"
+                options="[&quot;simple-colors-default-theme&quot;,&quot;simple-colors-dark-theme&quot;,&quot;simple-colors-light-theme&quot;]"
+              >
+              </simple-colors-demo-select
+              >-<label class="sr-only" for="color">Text Base Color</label
+              ><simple-colors-demo-select
+                id="color"
+                label="accent-color"
+                value="grey"
+                as-code
+                on-accent-color-change="_handleUpdate"
+                options$="[[_getOptions(colors)]]"
+              >
+              </simple-colors-demo-select
+              >-<label class="sr-only" for="level">Text Shade Level</label
+              ><simple-colors-demo-select
+                id="level"
+                label="level"
+                value="1"
+                as-code
+                on-level-change="_handleUpdate"
+                options="[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;11&quot;,&quot;12&quot;]"
+              >
+              </simple-colors-demo-select
+              >-text</span
+            >
+
+            <span class="cssclass"
+              ><label class="sr-only" for="theme">Border Theme</label
               ><simple-colors-demo-select
                 id="bdtheme"
                 label="theme"
-                value="--simple-colors-default-theme"
+                value="simple-colors-default-theme"
                 as-code
                 on-theme-change="_handleUpdate"
-                options="[&quot;--simple-colors-default-theme&quot;,&quot;--simple-colors-dark-theme&quot;,&quot;--simple-colors-light-theme&quot;]"
+                options="[&quot;simple-colors-default-theme&quot;,&quot;simple-colors-dark-theme&quot;,&quot;simple-colors-light-theme&quot;]"
               >
               </simple-colors-demo-select
               >-<label class="sr-only" for="color">Border Base Color</label
@@ -160,9 +165,8 @@ class SimpleColorsDemoVariables extends SimpleColors {
                 options="[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;11&quot;,&quot;12&quot;]"
               >
               </simple-colors-demo-select
-              >);
-            </div>
-            }
+              >-border</span
+            >"/>
           </div>
         </div>
       </simple-colors-demo>
@@ -181,7 +185,7 @@ class SimpleColorsDemoVariables extends SimpleColors {
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "simple-colors-demo-variables";
+    return "simple-colors-class-inspector";
   }
 
   /**
@@ -197,21 +201,20 @@ class SimpleColorsDemoVariables extends SimpleColors {
    * determines if the element is in nested mode
    */
   _handleUpdate() {
-    this.$.button.style = [
-      "color: var(" +
-        [this.$.theme.value, this.$.color.value, this.$.level.value].join("-") +
-        ");",
-      "background-color: var(" +
-        [this.$.bgtheme.value, this.$.bgcolor.value, this.$.bglevel.value].join(
-          "-"
-        ) +
-        ");",
-      "border: 3px solid var(" +
-        [this.$.bdtheme.value, this.$.bdcolor.value, this.$.bdlevel.value].join(
-          "-"
-        ) +
-        ");"
-    ].join("");
+    this.$.button.className = [
+      [this.$.theme.value, this.$.color.value, this.$.level.value, "text"].join(
+        "-"
+      ),
+      [this.$.bgtheme.value, this.$.bgcolor.value, this.$.bglevel.value].join(
+        "-"
+      ),
+      [
+        this.$.bdtheme.value,
+        this.$.bdcolor.value,
+        this.$.bdlevel.value,
+        "border"
+      ].join("-")
+    ].join(" ");
   }
 
   /**
@@ -233,6 +236,6 @@ class SimpleColorsDemoVariables extends SimpleColors {
   //disconnectedCallback() {}
 }
 window.customElements.define(
-  SimpleColorsDemoVariables.tag,
-  SimpleColorsDemoVariables
+  SimpleColorsClassInspector.tag,
+  SimpleColorsClassInspector
 );

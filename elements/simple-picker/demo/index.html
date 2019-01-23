@@ -50,7 +50,7 @@
               ]
             ];
           </script>
-          <simple-picker id="picker" label="Pick a Font-Family"></simple-picker>
+          <simple-picker id="picker" label="Pick a Font-Family" position="right"></simple-picker>
         </template>
       </demo-snippet>
       <h3>simple-picker as a Color-Picker</h3>
@@ -87,10 +87,11 @@
              we will set border styles for default, active, and selected options.
             */
             #colorpicker {
+              --simple-picker-selected-option-outline: 2px dashed black;
               --simple-picker-active-option-outline: 2px solid black;
             }
           </style>
-          <simple-picker id="colorpicker" hide-option-labels label="Pick a Color"></simple-picker>
+          <simple-picker id="colorpicker" hide-option-labels label="Pick a Color" position="center"></simple-picker>
         </template>
       </demo-snippet>
       <h3>simple-picker as an Icon-Picker</h3>

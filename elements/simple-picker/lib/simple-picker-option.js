@@ -24,8 +24,14 @@ class SimplePickerOption extends PolymerElement {
   static get template() {
     return html`
       <style is="custom-style" include="lrn-shared-styles">
+        :host {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
         :host .label {
-          padding: 5px 10px;
+          padding: 2px 10px;
+          line-height: 100%;
           @apply --simple-picker-option-label;
         }
       </style>
@@ -34,7 +40,7 @@ class SimplePickerOption extends PolymerElement {
         hidden$="[[_hideIcon(icon)]]"
         icon$="[[icon]]"
       ></iron-icon>
-      <span class$="[[_getSrOnly(hideOptionLabels)]]">[[title]]</span>
+      <div class$="[[_getSrOnly(hideOptionLabels)]]">[[title]]</div>
     `;
   }
 

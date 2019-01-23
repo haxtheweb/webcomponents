@@ -7,10 +7,10 @@ import "@polymer/polymer/lib/elements/dom-if.js";
 import { SimpleColors } from "../../simple-colors.js"; //import the shared styles
 import "./simple-colors-demo-select.js";
 
-export { SimpleColorsDemo };
+export { SimpleColorsInpectorContent };
 /**
  * `simple-colors-demo`
- * `an example of how to extend simple-colors within a custom element`
+ * A container element for simple-colors-class-inspector and simple-colors-variable-inspector
  *
  * @microcopy - language worth noting:
  *  -
@@ -19,7 +19,7 @@ export { SimpleColorsDemo };
  * @polymer
  * @see "../../simple-colors.js"
  */
-class SimpleColorsDemo extends SimpleColors {
+class SimpleColorsInpectorContent extends SimpleColors {
   // render function
   static get template() {
     return html`
@@ -219,4 +219,7 @@ class SimpleColorsDemo extends SimpleColors {
    */
   //disconnectedCallback() {}
 }
-window.customElements.define(SimpleColorsDemo.tag, SimpleColorsDemo);
+window.customElements.define(
+  SimpleColorsInpectorContent.tag,
+  SimpleColorsInpectorContent
+);

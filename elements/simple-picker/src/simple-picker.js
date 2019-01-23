@@ -30,24 +30,6 @@ class SimplePicker extends PolymerElement {
   }
 
   /**
-   * returns the value of the selected option
-   *
-   * @param {options} the options array
-   * @returns {object} the selected option value
-   */
-  _getValue(options) {
-    let option = null;
-    for (let i = 0; i < this.options.length; i++) {
-      let row = this.options[i];
-      for (let j = 0; j < row.length; j++) {
-        if (row[j].selected === true) option = row[j];
-      }
-    }
-    this.$.texture.style.display = option !== null ? "none" : "block";
-    return option !== null ? option.value : null;
-  }
-
-  /**
    * returns a unique id for the option based on its row and column.
    *
    * @param {number} the row number
@@ -59,13 +41,28 @@ class SimplePicker extends PolymerElement {
   }
 
   /**
+   * sets the options for the picker
+   *
+   * @param {array} the nested array of options
+   */
+  setOptions(options) {
+    this.set("options", [[]]);
+    this.set("options", options);
+  }
+
+  /**
    * returns the value of the selected option.
    *
    * @param {string} the selected option's id
    * @returns {object} the selected option's value
    */
-  _getValue(__selectedDesc) {
-    return this._getOption(__selectedDesc).value;
+  _getValue(options, __selectedDesc) {
+    return __selectedDesc !== undefined &&
+      __selectedDesc !== null &&
+      this._getOption(options, __selectedDesc) !== undefined &&
+      this._getOption(options, __selectedDesc) !== null
+      ? this._getOption(options, __selectedDesc).value
+      : null;
   }
 
   /**
@@ -74,9 +71,12 @@ class SimplePicker extends PolymerElement {
    * @param {string} the selected option's id
    * @returns {object} the selected option
    */
-  _getOption(optionId) {
-    let coords = this.__selectedDesc.split("-");
-    return this.options[coords[1]][coords[2]];
+  _getOption(options, optionId) {
+    if (options !== undefined && optionId !== undefined && optionId !== null) {
+      let coords = optionId.split("-");
+      return options[coords[1]][coords[2]];
+    }
+    return null;
   }
 
   /**
@@ -140,6 +140,22 @@ class SimplePicker extends PolymerElement {
   }
 
   /**
+   * aligns collapse to picker
+   *
+   * @param {string} the position: left, right, center
+   * @return {string} css for aligning the collapse
+  _getPosition(position,width = 0) {
+    console.log(width);
+    if(position === "right"){
+      return "left: "+(0 - width);
+    } else if(position === "center"){
+      return "left: "+(0 - width/2);
+    } 
+    return null;
+  }
+   */
+
+  /**
    * handles option focus event and sets the active descendant
    */
   _handleOptionFocus(e) {
@@ -170,6 +186,7 @@ class SimplePicker extends PolymerElement {
    */
   _setActiveOption(optionId) {
     this.__activeDesc = optionId;
+    this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
   }
 
   /**
@@ -179,6 +196,7 @@ class SimplePicker extends PolymerElement {
    */
   _setSelectedOption(optionId) {
     this.__selectedDesc = optionId;
+    this.dispatchEvent(new CustomEvent("change", { detail: this }));
   }
 
   /**
@@ -191,8 +209,10 @@ class SimplePicker extends PolymerElement {
     if (expanded) {
       let active = this.shadowRoot.querySelector("#" + this.__activeDesc);
       if (active !== null) active.focus();
+      this.dispatchEvent(new CustomEvent("expand", { detail: this }));
     } else {
       this._setSelectedOption(this.__activeDesc);
+      this.dispatchEvent(new CustomEvent("collapse", { detail: this }));
     }
   }
 
@@ -211,7 +231,6 @@ class SimplePicker extends PolymerElement {
         }
       }
     }
-    console.log(this.__activeDesc);
     this.$.listbox.addEventListener("click", function(e) {
       root._handleListboxClick(e);
     });
