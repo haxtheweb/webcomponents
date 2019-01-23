@@ -9,8 +9,10 @@
       import '../node_modules/@polymer/iron-demo-helpers/demo-snippet.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
-      demo-snippet {
-        font-size: 0;
+      simple-colors-picker-demo {
+        background-color: var(--simple-colors-default-theme-accent-1);
+        color: var(--simple-colors-default-theme-grey-12);
+        border: 1px solid var(--simple-colors-default-theme-accent-6);
       }
     </style>
   </head>
@@ -23,13 +25,12 @@
         element can be styled based on its own 
         <tt>accent-color</tt> and <tt>dark</tt> attributes.
       </p>
-      <demo-snippet>
-        <template>
-          import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+      <p>See <a href="/components/@lrnwebcomponents/simple-colors/lib/demo/simple-colors-picker-demo.js">SimpleColorsPickerDemo</a> for a real-world example.</p>
+      <pre>
           
           /**
-          * import simple-colors 
-          */
+           * import simple-colors 
+           */
           import { SimpleColors } from "../../simple-colors.js"; 
           
           export { YourCustomElement };
@@ -37,12 +38,12 @@
           /* extend SimpleColors */
           class YourCustomElement extends SimpleColors {
             /**
-            * include simple-colors in your template's <style/> tag 
-            */
+             * include simple-colors in your template's &lt;style/&gt; tag 
+             */
             static get template() {
               return html`
-              <style is="custom-style" include="simple-colors">
-                /* your styles here */
+              &lt;style is="custom-style" include="simple-colors"&gt;
+                /* Example styles using simple-colors CSS variables */
                 :host {
                   color: var(--simple-colors-default-theme-grey-12);
                   background-color: var(--simple-colors-default-theme-accent-1);
@@ -53,9 +54,27 @@
                 :host([disabled]) {
                   background-color: var(--simple-colors-default-theme-grey-6);
                 }
-              </style>
-              <!-- your custom element's template HTML here -->
-              <slot></slot>`;
+                &lt;/style&gt;
+
+                &lt;!-- Optional pickers let user select the theme and accent color. --&gt;
+                &lt;div id="controls"&gt;
+                &lt;p&gt;
+                  &lt;label&gt;Pick a Theme: &lt;/label&gt;
+                  &lt;simple-picker 
+                    id="theme" 
+                    on-change="_handleThemeChange"&gt;
+                  &lt;/simple-colors-picker&gt;
+                &lt;/p&gt;
+                &lt;p&gt;
+                  &lt;label&gt;Pick an Accent Color: &lt;/label&gt;
+                  &lt;simple-colors-picker 
+                    id="color" 
+                    on-change="_handleColorChange"&gt;
+                  &lt;/simple-colors-picker&gt;
+                &lt;/p&gt;
+              &lt;/div&gt;
+              &lt;!-- your custom element's template HTML here --&gt;
+              `;
             }
           
             /**
@@ -74,15 +93,42 @@
             }
 
             /**
-            * life cycle, element is afixed to the DOM
-            */
-            connectedCallback() {
-              super.connectedCallback();
+             * Optional. Populates a simple-picker for the element's theme.
+             */
+            ready() {
+              super.ready();
+              this.$.theme.options = [
+                [{
+                  "alt": "light",
+                  "style": "color: black; background-color: #fff;",
+                  "value": false
+                }],
+                [{
+                  "alt": "dark",
+                  "style": "color: white; background-color: #444;",
+                  "value": "dark"
+                }]
+              ]
+            }
+            
+            /**
+             * Optional. Applies a theme simple-picker's value
+             * to the dark property.
+             */
+            _handleThemeChange(e) {
+              this.dark = this.$.theme.value;
+            }
+          
+            /**
+             * Optional. Applies a simple-colors-picker's value
+             * to the accent-color property.
+             */
+            _handleColorChange(e) {
+              this.accentColor = this.$.color.value;
             }
           }
           window.customElements.define(YourCustomElement.tag, YourCustomElement);
-        </template>
-      </demo-snippet>
+        </pre>
     </div>
   </body>
 </html>

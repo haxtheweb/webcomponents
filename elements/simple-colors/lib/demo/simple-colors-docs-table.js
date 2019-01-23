@@ -4,21 +4,23 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { SimpleColors } from "../../simple-colors.js"; //import the shared styles
-import "./simple-colors-demo-select.js"; //import the selectors
+import "../simple-colors-picker.js";
 
-export { SimpleColorsDemoTable };
+export { simpleColorsDocsTable };
 /**
- * `simple-colors-demo-table`
- * `a demo of all the colors in simple-colors`
+ * `simple-colors-docs-table`
+ * `A tool to document of all the colors in simple-colors`
  *
  * @microcopy - language worth noting:
  *  -
  *
  * @customElement
  * @polymer
+ * @demo demo/colors.html demo
  * @see "../../simple-colors.js"
+ * @see "../simple-colors-picker.js"
  */
-class SimpleColorsDemoTable extends SimpleColors {
+class simpleColorsDocsTable extends SimpleColors {
   //render function
   static get template() {
     return html`
@@ -41,6 +43,16 @@ class SimpleColorsDemoTable extends SimpleColors {
         table caption {
           border-bottom: none;
         }
+        :host #controls {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 5px;
+          margin: 0;
+        }
+        :host #controls label {
+          margin-right: 5px;
+        }
         table td,
         table th,
         table caption {
@@ -55,33 +67,17 @@ class SimpleColorsDemoTable extends SimpleColors {
       </style>
       <table border-spacing="0">
         <caption>
-          --simple-colors-[[theme]]-theme when
-          <label
-            >accent-color is
-            <simple-colors-demo-select
-              id="accent"
-              label="accent-color"
-              value$="[[accentColor]]"
-              as-code
-              on-accent-color-change="_handleAccentChange"
-              options$="[[_getOptions(colors)]]"
-            >
-              <span slot="prefix">="</span> <span slot="suffix">" </span>
-            </simple-colors-demo-select>
-          </label>
-          <label
-            >and dark is
-            <simple-colors-demo-select
-              id="dark"
-              label="dark"
-              value$="[[dark]]"
-              as-code
-              on-dark-change="_handleDarkChange"
-              options="[&quot;&quot;,&quot;dark&quot;]"
-            >
-              <span slot="prefix">="</span> <span slot="suffix">" </span>
-            </simple-colors-demo-select>
-          </label>
+          <div id="controls">
+            <div>--simple-colors-[[theme]]-theme</div>
+            <div>
+              <label>Pick a Theme: </label>
+              <simple-picker id="theme" on-change="_handleThemeChange"></simple-colors-picker>
+            </div>
+            <div>
+              <label>Pick an Accent Color: </label>
+              <simple-colors-picker id="color" on-change="_handleColorChange"></simple-colors-picker>
+            </div>
+          </div>
         </caption>
         <thead>
           <tr>
@@ -154,7 +150,7 @@ class SimpleColorsDemoTable extends SimpleColors {
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "simple-colors-demo-table";
+    return "simple-colors-docs-table";
   }
 
   /**
@@ -195,16 +191,42 @@ class SimpleColorsDemoTable extends SimpleColors {
   /**
    * determines if the element is in nested mode
    */
-  _handleAccentChange(e) {
-    this.accentColor = this.$.accent.value;
+  _handleThemeChange(e) {
+    console.log(e);
+    this.dark = this.$.theme.value;
   }
 
   /**
    * determines if the element is in nested mode
    */
-  _handleDarkChange(e) {
-    this.dark = this.$.dark.value === "dark" ? "dark" : false;
+  _handleColorChange(e) {
+    console.log(e);
+    this.accentColor = this.$.color.value;
   }
+
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  ready() {
+    super.ready();
+    this.$.theme.options = [
+      [
+        {
+          alt: "light",
+          style: "color: black; background-color: #fff;",
+          value: false
+        }
+      ],
+      [
+        {
+          alt: "dark",
+          style: "color: white; background-color: #444;",
+          value: "dark"
+        }
+      ]
+    ];
+  }
+
   /**
    * life cycle, element is afixed to the DOM
    */
@@ -216,4 +238,4 @@ class SimpleColorsDemoTable extends SimpleColors {
    */
   //disconnectedCallback() {}
 }
-window.customElements.define(SimpleColorsDemoTable.tag, SimpleColorsDemoTable);
+window.customElements.define(simpleColorsDocsTable.tag, simpleColorsDocsTable);

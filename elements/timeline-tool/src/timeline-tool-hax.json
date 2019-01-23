@@ -1,0 +1,26 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Timeline tool",
+    "description": "Makes a HAX-wired timeline",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Tool"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "nikkimk",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [],
+    "advanced": []
+  }
+}
