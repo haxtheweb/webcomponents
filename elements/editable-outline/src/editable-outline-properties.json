@@ -1,0 +1,25 @@
+{
+  /**
+   * A manifest from JSON Outline Schema
+   */
+  "manifest": {
+    "name": "manifest",
+    "type": "Object",
+    "observer": "_manifestChanged"
+  },
+  /**
+   * Edit mode
+   */
+  "editMode": {
+    "name": "editMode",
+    "type": "Boolean",
+    "observer": "_editModeChanged"
+  },
+  /**
+   * Active node for keyboard key binding
+   */
+  "activeNode": {
+    "name": "activeNode",
+    "type": "Object"
+  }
+}

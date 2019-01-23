@@ -1,0 +1,9 @@
+<button on-click="buttonEvents" id="indent">Indent</button>
+<button on-click="buttonEvents" id="outdent">Outdent</button>
+<ul id="outline" contenteditable$="[[editMode]]">
+  <li></li>
+</ul>
+<iron-a11y-keys target="[[activeNode]]" keys="shift+tab" on-keys-pressed="_tabBackKeyPressed"
+  stop-keyboard-event-propagation></iron-a11y-keys>
+<iron-a11y-keys target="[[activeNode]]" keys="tab" on-keys-pressed="_tabKeyPressed"
+  stop-keyboard-event-propagation></iron-a11y-keys>
