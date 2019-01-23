@@ -6,7 +6,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import {} from "@polymer/polymer/lib/elements/dom-repeat.js";
 
 export { LrndesignTimeline };
 /**
@@ -264,6 +263,81 @@ class LrndesignTimeline extends SimpleColors {
     `;
   }
 
+  // haxProperty definition
+  static get haxProperties() {
+    return {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      gizmo: {
+        title: "Timeline",
+        description: "A timeline of events with images and text",
+        icon: "icons:timeline",
+        color: "indigo",
+        groups: ["Content", "Instructional", "Media", "Image"],
+        handles: [],
+        meta: {
+          author: "LRNWebComponents"
+        }
+      },
+      settings: {
+        quick: [],
+        configure: [
+          {
+            property: "title",
+            title: "Title",
+            description: "A title for the timeline.",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          },
+          {
+            slot: "",
+            title: "Description",
+            description: "Optional text describing the timleine.",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          },
+          {
+            property: "events",
+            title: "Events",
+            description: "The events in the timeline",
+            inputMethod: "array",
+            properties: [
+              {
+                property: "heading",
+                title: "Heading",
+                description: "The heading for the event.",
+                inputMethod: "textfield",
+                icon: "editor:title"
+              },
+              {
+                property: "details",
+                title: "Details",
+                description: "The body text with details for the event.",
+                inputMethod: "textfield",
+                icon: "editor:title"
+              },
+              {
+                property: "image.src",
+                title: "Image",
+                description: "The path of the image.",
+                inputMethod: "textfield",
+                icon: "editor:title"
+              },
+              {
+                property: "image.alt",
+                title: "Image",
+                description: "The alt text of the image (for accessibility).",
+                inputMethod: "textfield",
+                icon: "editor:title"
+              }
+            ]
+          }
+        ],
+        advanced: []
+      }
+    };
+  }
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -345,8 +419,8 @@ class LrndesignTimeline extends SimpleColors {
     super.connectedCallback();
     this.HAXWiring = new HAXWiring();
     this.HAXWiring.setHaxProperties(
-      TimelineTool.haxProperties,
-      TimelineTool.tag,
+      LrndesignTimeline.haxProperties,
+      LrndesignTimeline.tag,
       this
     );
 

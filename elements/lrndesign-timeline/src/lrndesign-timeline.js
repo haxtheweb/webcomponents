@@ -6,7 +6,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
-import {} from "@polymer/polymer/lib/elements/dom-repeat.js";
 
 export { LrndesignTimeline };
 /**
@@ -45,8 +44,8 @@ class LrndesignTimeline extends SimpleColors {
     super.connectedCallback();
     this.HAXWiring = new HAXWiring();
     this.HAXWiring.setHaxProperties(
-      TimelineTool.haxProperties,
-      TimelineTool.tag,
+      LrndesignTimeline.haxProperties,
+      LrndesignTimeline.tag,
       this
     );
 

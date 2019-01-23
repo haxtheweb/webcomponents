@@ -14,7 +14,8 @@
     }
   },
   "settings": {
-    "quick": [
+    "quick": [],
+    "configure": [
       {
         "property": "title",
         "title": "Title",
@@ -66,7 +67,6 @@
         ]
       }
     ],
-    "configure": [],
     "advanced": []
   }
 }
