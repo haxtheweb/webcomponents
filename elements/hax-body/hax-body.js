@@ -208,7 +208,7 @@ let HaxBody = Polymer({
         margin: 0;
         z-index: 1;
         margin: -16px 0 0 0;
-        float: left;
+        float: right;
         line-height: 2;
       }
     </style>

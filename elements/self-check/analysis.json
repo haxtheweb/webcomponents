@@ -167,7 +167,7 @@
         {
           "name": "correct",
           "type": "boolean | null | undefined",
-          "description": "Property for toggling \"checkBtn\".",
+          "description": "Property for toggling \"checkbtn\".",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -235,62 +235,6 @@
             "type": "void"
           },
           "inheritedFrom": "SchemaBehaviors.Schema"
-        },
-        {
-          "name": "getTextContrastColor",
-          "description": "Get a a11y safe text color based on background color",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js",
-            "start": {
-              "line": 16,
-              "column": 2
-            },
-            "end": {
-              "line": 37,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "bgColor"
-            }
-          ],
-          "return": {
-            "type": "string",
-            "desc": "hexadecimal value for the color"
-          },
-          "inheritedFrom": "A11yBehaviors.A11y"
-        },
-        {
-          "name": "computeTextPropContrast",
-          "description": "Validate and modify the text contrast to ensure the correct contrast",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "../@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js",
-            "start": {
-              "line": 42,
-              "column": 2
-            },
-            "end": {
-              "line": 49,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "textprop"
-            },
-            {
-              "name": "bgprop"
-            }
-          ],
-          "return": {
-            "type": "void"
-          },
-          "inheritedFrom": "A11yBehaviors.A11y"
         },
         {
           "name": "openAnswer",
@@ -472,7 +416,7 @@
         },
         {
           "name": "correct",
-          "description": "Property for toggling \"checkBtn\".",
+          "description": "Property for toggling \"checkbtn\".",
           "sourceRange": {
             "start": {
               "line": 289,

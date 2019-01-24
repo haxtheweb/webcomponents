@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  font-family: 'Noto Serif', serif;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+ul, ol {
+  font-size: 16px;
+  line-height: 32px;
+  padding-left: 32px;
+}
+li {
+  font-size: 16px;
+  line-height: 32px;
+}
+
+iron-icon {
+  pointer-events: none;
+}

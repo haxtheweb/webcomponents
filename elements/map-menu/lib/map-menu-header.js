@@ -29,6 +29,13 @@ Polymer({
         flex: 1 1 auto;
       }
 
+      a,
+      a:hover,
+      a:visited,
+      a:focus {
+        color: inherit;
+      }
+
       lrndesign-avatar {
         display: inline-block;
         background: #fff;
@@ -77,15 +84,12 @@ Polymer({
         <div id="icon"><iron-icon icon="[[icon]]"></iron-icon></div>
       </template>
       <div id="center">
-        <paper-button
-          id="title"
-          noink=""
-          role\$="[[__titleRole()]]"
-          on-tap="__linkClickHandler"
-        >
-          <div id="label">[[label]]</div>
-          <div id="title">[[title]]</div>
-        </paper-button>
+        <a href$="[[url]]">
+          <paper-button id="title" noink="" role\$="[[__titleRole()]]">
+            <div id="label">[[label]]</div>
+            <div id="title">[[title]]</div>
+          </paper-button>
+        </a>
       </div>
       <div id="right">
         <template is="dom-if" if="[[!opened]]">
@@ -156,20 +160,6 @@ Polymer({
   __selectedChanged: function(selected, id) {
     if (selected === id) {
       this.fire("active-item", this);
-    }
-  },
-
-  __titleRole: function() {
-    if (this.url) {
-      return "link";
-    } else {
-      return false;
-    }
-  },
-
-  __linkClickHandler: function(e) {
-    if (this.id) {
-      this.fire("link-clicked", { id: this.id });
     }
   },
 

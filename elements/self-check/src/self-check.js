@@ -67,7 +67,7 @@ let SelfCheck = Polymer({
         overflow: hidden;
       }
 
-      paper-icon-button#checkBtn {
+      paper-icon-button#checkbtn {
         width: 50px;
         height: 50px;
         position: relative;
@@ -97,12 +97,14 @@ let SelfCheck = Polymer({
         width: 35px;
         height: 35px;
         padding: 5px;
+        color: #ffffff;
       }
 
       .heading {
         text-transform: uppercase;
         font-size: 22px;
         margin: 10px;
+        color: #ffffff;
       }
 
       #header_wrap {
@@ -285,7 +287,7 @@ let SelfCheck = Polymer({
       reflectToAttribute: true
     },
     /**
-     * Property for toggling "checkBtn".
+     * Property for toggling "checkbtn".
      */
     correct: {
       type: Boolean,
@@ -295,7 +297,7 @@ let SelfCheck = Polymer({
   },
 
   /**
-   * Property for toggling "checkBtn".
+   * Property for toggling "checkbtn".
    */
 
   openAnswer: function(e) {

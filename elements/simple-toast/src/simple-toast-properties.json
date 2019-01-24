@@ -17,6 +17,14 @@
     "value": "Saved"
   },
   /**
+   * Class name, fit-bottom being a useful one
+   */
+  "classStyle": {
+    "name": "classStyle",
+    "type": "String",
+    "value": ""
+  },
+  /**
    * Text for the close button
    */
   "closeText": {
@@ -31,6 +39,13 @@
     "name": "duration",
     "type": "Number",
     "value": 4000
+  },
+  /**
+   * Event callback when hide is called
+   */
+  "eventCallback": {
+    "name": "eventCallback",
+    "type": "String"
   },
   /**
    * If there should be a close button shown

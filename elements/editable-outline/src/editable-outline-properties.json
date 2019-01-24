@@ -1,0 +1,27 @@
+{
+  /**
+   * A items list of JSON Outline Schema Items
+   */
+  "items": {
+    "name": "items",
+    "type": "Array",
+    "value": [],
+    "notify": true
+  },
+  /**
+   * Edit mode
+   */
+  "editMode": {
+    "name": "editMode",
+    "type": "Boolean",
+    "notify": true,
+    "observer": "_editModeChanged"
+  },
+  /**
+   * Outline node for keyboard key binding
+   */
+  "__outlineNode": {
+    "name": "__outlineNode",
+    "type": "Object"
+  }
+}

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>EditableOutline: editable-outline Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../editable-outline.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <script>
+      window.addEventListener('json-outline-schema-ready', () => {
+        const evt = new CustomEvent("json-outline-schema-debug-toggle", {
+          bubbles: true,
+          cancelable: true,
+          detail: true
+        });
+        window.dispatchEvent(evt);
+        document.getElementById('save').addEventListener('click', () => {
+          document.getElementById('outline').exportJsonOutlineSchemaItems(true);
+        });
+        document.getElementById('import').addEventListener('click', () => {
+          document.getElementById('outline').importJsonOutlineSchemaItems();
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <button id="save">Save to Schema</button>
+    <button id="import">Import Schema</button>
+    <div class="vertical-section-container centered">
+      <h3>Basic editable-outline demo</h3>
+      <demo-snippet>
+        <template>
+          <editable-outline id="outline" edit-mode></editable-outline>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

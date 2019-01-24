@@ -61,9 +61,7 @@ class SimpleColorsPicker extends SimpleColors {
       ariaLabelledby: {
         name: "ariaLabelledby",
         type: String,
-        value: null,
-        reflectToAttribute: false,
-        observer: false
+        value: null
       },
 
       /**
@@ -72,9 +70,7 @@ class SimpleColorsPicker extends SimpleColors {
       disabled: {
         name: "disabled",
         type: Boolean,
-        value: false,
-        reflectToAttribute: false,
-        observer: false
+        value: false
       },
 
       /**
@@ -84,8 +80,7 @@ class SimpleColorsPicker extends SimpleColors {
         name: "expanded",
         type: Boolean,
         value: false,
-        reflectToAttribute: true,
-        observer: false
+        reflectToAttribute: true
       },
 
       /**
@@ -94,9 +89,7 @@ class SimpleColorsPicker extends SimpleColors {
       label: {
         name: "label",
         type: String,
-        value: null,
-        reflectToAttribute: false,
-        observer: false
+        value: null
       },
 
       /**
@@ -125,8 +118,7 @@ class SimpleColorsPicker extends SimpleColors {
         name: "shades",
         type: Boolean,
         value: false,
-        reflectToAttribute: true,
-        observer: false
+        reflectToAttribute: true
       },
 
       /**
