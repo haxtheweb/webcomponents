@@ -8,7 +8,7 @@ import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "@polymer/app-route/app-route.js";
-import "@polymer/app-route/app-location.js";
+import "./haxcms-site-router.js";
 /**
  * `haxcms-site-builder`
  * `build the site and everything off of this`
@@ -44,6 +44,10 @@ Polymer({
         --paper-progress-container-color: transparent;
       }
     </style>
+    <haxcms-site-router
+      manifest="[[manifest]]"
+      base-uri="[[baseURI]]"
+    ></haxcms-site-router>
     <haxcms-editor-builder></haxcms-editor-builder>
     <paper-progress
       hidden\$="[[!loading]]"
@@ -51,18 +55,6 @@ Polymer({
       indeterminate=""
       bottom-item=""
     ></paper-progress>
-    <app-location
-      route="{{route}}"
-      query-params="{{queryParams}}"
-    ></app-location>
-    <app-route
-      route="{{route}}"
-      pattern=":page"
-      data="{{data}}"
-      tail="{{tail}}"
-      query-params="{{queryParams}}"
-    >
-    </app-route>
     <iron-ajax
       id="manifest"
       url="[[outlineLocation]][[file]][[__timeStamp]]"
@@ -179,6 +171,12 @@ Polymer({
     file: {
       type: String,
       observer: "_fileChanged"
+    },
+    /**
+     * Injected by HAXcms
+     */
+    baseURI: {
+      type: String
     }
   },
 
@@ -226,35 +224,6 @@ Polymer({
       "json-outline-schema-active-item-changed",
       this._setActiveItem.bind(this)
     );
-  },
-
-  /**
-   * Query params changed
-   */
-  _setupActiveFromQuery: function() {
-    if (
-      typeof this.queryParams.page !== typeof undefined &&
-      typeof this.manifest.items !== typeof undefined
-    ) {
-      let find = this.manifest.items.filter(item => {
-        if (item.id !== this.queryParams.page) {
-          return false;
-        }
-        return true;
-      });
-      // if we found one, make it the active page
-      if (find.length > 0) {
-        let found = find.pop();
-        async.microTask.run(() => {
-          setTimeout(() => {
-            if (typeof window.cmsSiteEditor !== typeof undefined) {
-              window.cmsSiteEditor.initialActiveItem = found;
-            }
-            this.fire("haxcms-active-item-changed", found);
-          }, 150);
-        });
-      }
-    }
   },
 
   /**
@@ -434,8 +403,6 @@ Polymer({
           this.themeLoaded = true;
         }
       }
-      // establish initial routing
-      this._setupActiveFromQuery();
     }
   },
 
