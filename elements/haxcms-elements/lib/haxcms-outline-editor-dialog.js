@@ -131,6 +131,12 @@ Polymer({
     );
   },
   /**
+   * Switch view
+   */
+  toggleView: function(e) {
+    this.viewMode = !this.viewMode;
+  },
+  /**
    * Get the active label
    */
   _getViewLabel: function(mode) {
@@ -148,7 +154,11 @@ Polymer({
     if (!newValue) {
       this.$.outline.importJsonOutlineSchemaItems();
     } else {
-      this.set("manifest.items", this.$.outline.exportJsonOutlineSchemaItems());
+      const items = this.$.outline.exportJsonOutlineSchemaItems();
+      this.set("manifest.items", []);
+      this.set("manifest.items", items);
+      this.notifyPath("manifest.items");
+      this.manifestItems = JSON.stringify(items, null, 2);
     }
   },
   /**
