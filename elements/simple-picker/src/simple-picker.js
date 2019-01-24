@@ -30,42 +30,6 @@ class SimplePicker extends PolymerElement {
   }
 
   /**
-   * returns a unique id for the option based on its row and column.
-   *
-   * @param {number} the row number
-   * @param {number} the column number
-   * @returns {string} a unique id
-   */
-  _getOptionId(rownum, colnum) {
-    return "option-" + rownum + "-" + colnum;
-  }
-
-  /**
-   * sets the options for the picker
-   *
-   * @param {array} the nested array of options
-   */
-  setOptions(options) {
-    this.set("options", [[]]);
-    this.set("options", options);
-  }
-
-  /**
-   * returns the value of the selected option.
-   *
-   * @param {string} the selected option's id
-   * @returns {object} the selected option's value
-   */
-  _getValue(options, __selectedDesc) {
-    return __selectedDesc !== undefined &&
-      __selectedDesc !== null &&
-      this._getOption(options, __selectedDesc) !== undefined &&
-      this._getOption(options, __selectedDesc) !== null
-      ? this._getOption(options, __selectedDesc).value
-      : null;
-  }
-
-  /**
    * returns the value of the selected option.
    *
    * @param {string} the selected option's id
@@ -80,15 +44,47 @@ class SimplePicker extends PolymerElement {
   }
 
   /**
-   * determines if an option is at a given row and column
+   * returns a unique id for the option based on its row and column.
    *
-   * @param {string} an option's id
+   * @param {number} the row number
+   * @param {number} the column number
+   * @returns {string} a unique id
+   */
+  _getOptionId(rownum, colnum) {
+    return "option-" + rownum + "-" + colnum;
+  }
+
+  /**
+   * aligns collapse to picker
+   *
+   * @param {string} the position: left, right, center
+   * @return {string} css for aligning the collapse
+  _getPosition(position,width = 0) {
+    console.log(width);
+    if(position === "right"){
+      return "left: "+(0 - width);
+    } else if(position === "center"){
+      return "left: "+(0 - width/2);
+    } 
+    return null;
+  }
+   */
+
+  /**
+   * sets a new active descendant and sets focus on it
+   *
    * @param {number} the row number to be tested
    * @param {number} the column number to be tested
-   * @returns {boolean} whether or not the option is at the given row and column
    */
-  _isMatch(match, rownum, colnum) {
-    return match === this._getOptionId(rownum, colnum);
+  _goToOption(rownum, colnum) {
+    let targetId = this._getOptionId(rownum, colnum),
+      target = this.shadowRoot.querySelector("#" + targetId),
+      active = this.shadowRoot.querySelector("#" + this.__activeDesc);
+    if (target !== null) {
+      target.tabindex = 0; //allow the item to be focusable.
+      target.focus();
+      active.tabindex = -1; //prevent tabbing between options.
+    }
   }
 
   /**
@@ -140,22 +136,6 @@ class SimplePicker extends PolymerElement {
   }
 
   /**
-   * aligns collapse to picker
-   *
-   * @param {string} the position: left, right, center
-   * @return {string} css for aligning the collapse
-  _getPosition(position,width = 0) {
-    console.log(width);
-    if(position === "right"){
-      return "left: "+(0 - width);
-    } else if(position === "center"){
-      return "left: "+(0 - width/2);
-    } 
-    return null;
-  }
-   */
-
-  /**
    * handles option focus event and sets the active descendant
    */
   _handleOptionFocus(e) {
@@ -163,20 +143,44 @@ class SimplePicker extends PolymerElement {
   }
 
   /**
-   * sets a new active descendant and sets focus on it
+   * sets the selected option to a given option's id
    *
+   * @param {string} the option id
+   */
+  _initSelectedOption(value) {
+    this.__selectedOption = null;
+    for (var i = 0; i < this.options.length; i++) {
+      for (var j = 0; j < this.options[i].length; j++) {
+        if (this.options[i][j].value === value) {
+          this.__selectedOption = this.options[i][j];
+          this.__activeDesc = this.options[i][j].value;
+        }
+      }
+    }
+  }
+
+  /**
+   * determines if an option is at a given row and column
+   *
+   * @param {string} an option's id
    * @param {number} the row number to be tested
    * @param {number} the column number to be tested
+   * @returns {boolean} whether or not the option is at the given row and column
    */
-  _goToOption(rownum, colnum) {
-    let targetId = this._getOptionId(rownum, colnum),
-      target = this.shadowRoot.querySelector("#" + targetId),
-      active = this.shadowRoot.querySelector("#" + this.__activeDesc);
-    if (target !== null) {
-      target.tabindex = 0; //allow the item to be focusable.
-      target.focus();
-      active.tabindex = -1; //prevent tabbing between options.
-    }
+  _isActive(active, rownum, colnum) {
+    return active === this._getOptionId(rownum, colnum);
+  }
+
+  /**
+   * determines if an option is at a given row and column
+   *
+   * @param {string} an option's id
+   * @param {number} the row number to be tested
+   * @param {number} the column number to be tested
+   * @returns {boolean} whether or not the option is at the given row and column
+   */
+  _isSelected(value1, value2) {
+    return value1 === value2;
   }
 
   /**
@@ -184,8 +188,8 @@ class SimplePicker extends PolymerElement {
    *
    * @param {string} the option id
    */
-  _setActiveOption(optionId) {
-    this.__activeDesc = optionId;
+  _setActiveOption(id) {
+    this.__activeDesc = id;
     this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
   }
 
@@ -194,8 +198,9 @@ class SimplePicker extends PolymerElement {
    *
    * @param {string} the option id
    */
-  _setSelectedOption(optionId) {
-    this.__selectedDesc = optionId;
+  _setSelectedOption(option) {
+    this.__selectedOption = this._getOption(this.options, option.id);
+    this.value = option.value;
     this.dispatchEvent(new CustomEvent("change", { detail: this }));
   }
 
@@ -205,13 +210,13 @@ class SimplePicker extends PolymerElement {
    * @param {boolean} expand the listbox?
    */
   _toggleListbox(expanded) {
+    let active = this.shadowRoot.querySelector("#" + this.__activeDesc);
     this.expanded = expanded;
     if (expanded) {
-      let active = this.shadowRoot.querySelector("#" + this.__activeDesc);
       if (active !== null) active.focus();
       this.dispatchEvent(new CustomEvent("expand", { detail: this }));
     } else {
-      this._setSelectedOption(this.__activeDesc);
+      if (active !== null) this._setSelectedOption(active);
       this.dispatchEvent(new CustomEvent("collapse", { detail: this }));
     }
   }
@@ -222,21 +227,23 @@ class SimplePicker extends PolymerElement {
   ready() {
     super.ready();
     let root = this;
-    for (let i = 0; i < this.options.length; i++) {
-      for (let j = 0; j < this.options[i].length; j++) {
-        let option = this.options[i][j];
-        if (option.selected) {
-          this.__activeDesc = this._getOptionId(i, j);
-          this.__selectedDesc = this._getOptionId(i, j);
-        }
-      }
-    }
+    this._initSelectedOption(this.value);
     this.$.listbox.addEventListener("click", function(e) {
       root._handleListboxClick(e);
     });
     this.$.listbox.addEventListener("keydown", function(e) {
       root._handleListboxKeydown(e);
     });
+  }
+
+  /**
+   * sets the options for the picker
+   *
+   * @param {array} the nested array of options
+   */
+  setOptions(options) {
+    this.set("options", [[]]);
+    this.set("options", options);
   }
 
   /**

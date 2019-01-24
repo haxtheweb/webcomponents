@@ -46,6 +46,7 @@ class SimpleColorsPicker extends SimpleColors {
         on-collapse="_handleCollapse"
         on-expand="_handleExpand"
         on-option-focus="_handleOptionFocus"
+        value$="{{value}}"
       >
       </simple-picker>
     `;
@@ -129,14 +130,13 @@ class SimpleColorsPicker extends SimpleColors {
       },
 
       /**
-       * An string that stores the current value for the picker
+       * The value of the option.
        */
       value: {
-        name: "value",
-        type: Object,
-        computed: "_getValue(__value)",
-        reflectToAttribute: true,
-        readOnly: true,
+        name: "label",
+        type: "String",
+        value: null,
+        reflectToAttribute: false,
         observer: false
       }
     };
@@ -193,10 +193,7 @@ class SimpleColorsPicker extends SimpleColors {
           return {
             alt: name,
             style: "background-color: var(" + cssvar + ")",
-            value: {
-              hex: colors[key][i],
-              variable: cssvar
-            }
+            value: cssvar
           };
         });
         options.push(shade);
@@ -206,20 +203,10 @@ class SimpleColorsPicker extends SimpleColors {
   }
 
   /**
-   * gets the value of the picker
-   *
-   * @param {object} the value of the picker
-   * @returns {object} the value of the picker
-   */
-  _getValue(__value) {
-    return this.__value;
-  }
-
-  /**
    * handles when the picker's value changes
    */
   _handleChange(e) {
-    this.__value = e.detail.value;
+    this.value = e.detail.value;
     this.dispatchEvent(
       new CustomEvent("change", { bubbles: true, detail: this })
     );
@@ -252,7 +239,6 @@ class SimpleColorsPicker extends SimpleColors {
    */
   ready() {
     super.ready();
-    this.__value = this.$.picker.value;
   }
 
   /**
