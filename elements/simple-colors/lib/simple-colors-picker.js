@@ -113,7 +113,7 @@ class SimpleColorsPicker extends SimpleColors {
       options: {
         name: "options",
         type: Array,
-        computed: "_getOptions(colors,shades)",
+        computed: "_getOptions(colors,shades,dark)",
         reflectToAttribute: false,
         observer: false
       },
@@ -162,15 +162,20 @@ class SimpleColorsPicker extends SimpleColors {
    *
    * @param {object} the options object to convert
    */
-  _getOptions(colors, shades) {
-    let options = [[]];
+  _getOptions(colors, shades, dark) {
+    let options = [[]],
+      theme = dark !== false ? "dark" : "default";
     if (shades === false) {
       options = Object.keys(colors).map(key => {
         return [
           {
             alt: key,
             style:
-              "color: var(--simple-colors-dark-theme-grey-12); background-color: var(--simple-colors-dark-theme-" +
+              "color: var(--simple-colors-" +
+              theme +
+              "-theme-grey-12); background-color: var(--simple-colors-" +
+              theme +
+              "-theme-" +
               key +
               "-4)",
             value: key
@@ -189,7 +194,7 @@ class SimpleColorsPicker extends SimpleColors {
       for (let i = 0; i < colors[colorNames[0]].length; i++) {
         let shade = Object.keys(colors).map(key => {
           let name = key + "-" + (i + 1),
-            cssvar = "--simple-colors-default-theme-" + name;
+            cssvar = "--simple-colors-" + theme + "-theme-" + name;
           return {
             alt: name,
             style: "background-color: var(" + cssvar + ")",
