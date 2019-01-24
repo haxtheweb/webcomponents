@@ -127,11 +127,11 @@ Polymer({
       type: Object,
       value: {
         "simple-blog": "../../../@lrnwebcomponents/simple-blog/simple-blog.js",
+        "outline-player":
+          "../../../@lrnwebcomponents/outline-player/outline-player.js",
         "lrnapp-book":
           "../../../@lrnwebcomponents/elmsln-apps/lib/lrnapp-book/lrnapp-book.js",
-        "haxcms-dev-theme": "haxcms-dev-theme.js",
-        "outline-player":
-          "../../../@lrnwebcomponents/outline-player/outline-player.js"
+        "haxcms-dev-theme": "haxcms-dev-theme.js"
       }
     },
     /**

@@ -128,7 +128,7 @@ Polymer({
       [
         {
           alt: "Content outline",
-          value: "lrnapp-book"
+          value: "outline-player"
         }
       ],
       [

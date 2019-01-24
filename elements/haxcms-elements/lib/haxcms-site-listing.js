@@ -126,7 +126,7 @@ Polymer({
       id="createrequest"
       method="POST"
       body="[[createParams]]"
-      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
+      headers='{"Authorization": "Bearer [[jwt]]"}'
       content-type="application/json"
       url="[[__createNewSitePath]]"
       handle-as="json"
@@ -136,7 +136,7 @@ Polymer({
       id="downloadrequest"
       method="POST"
       body="[[downloadParams]]"
-      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
+      headers='{"Authorization": "Bearer [[jwt]]"}'
       content-type="application/json"
       url="[[__downloadSitePath]]"
       handle-as="json"
@@ -146,7 +146,7 @@ Polymer({
       id="getconfigrequest"
       method="POST"
       body="[[configParams]]"
-      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
+      headers='{"Authorization": "Bearer [[jwt]]"}'
       content-type="application/json"
       url="[[__getConfigPath]]"
       handle-as="json"
@@ -156,7 +156,7 @@ Polymer({
       id="setconfigrequest"
       method="POST"
       body="[[setConfigParams]]"
-      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
+      headers='{"Authorization": "Bearer [[jwt]]"}'
       content-type="application/json"
       url="[[__setConfigPath]]"
       handle-as="json"
@@ -260,7 +260,7 @@ Polymer({
         <simple-colors-picker id="newsitecolor"></simple-colors-picker>
         <dropdown-select id="newsitetheme" label="Theme" value="simple-blog">
           <paper-item value="simple-blog">Simple blog</paper-item>
-          <paper-item value="lrnapp-book">Book outline</paper-item>
+          <paper-item value="outline-player">Documentation Outline</paper-item>
           <paper-item value="haxcms-dev-theme">DEVELOPER THEME</paper-item>
         </dropdown-select>
         <label for="newsiteicon">Select an icon:</label>
