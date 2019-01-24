@@ -334,7 +334,6 @@ Polymer({
    */
   _manifestChanged: function(newValue, oldValue) {
     if (newValue) {
-      // update the router with the new manifest
       window.cmsSiteEditor.jsonOutlineSchema = newValue;
       this.themeElementName = newValue.metadata.theme;
       this.fire("json-outline-schema-changed", newValue);
