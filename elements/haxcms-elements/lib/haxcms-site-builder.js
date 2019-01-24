@@ -44,7 +44,10 @@ Polymer({
         --paper-progress-container-color: transparent;
       }
     </style>
-    <haxcms-site-router manifest="[[manifest]]"></haxcms-site-router>
+    <haxcms-site-router
+      manifest="[[manifest]]"
+      base-uri="[[baseURI]]"
+    ></haxcms-site-router>
     <haxcms-editor-builder></haxcms-editor-builder>
     <paper-progress
       hidden\$="[[!loading]]"
@@ -168,6 +171,12 @@ Polymer({
     file: {
       type: String,
       observer: "_fileChanged"
+    },
+    /**
+     * Injected by HAXcms
+     */
+    baseURI: {
+      type: String
     }
   },
 

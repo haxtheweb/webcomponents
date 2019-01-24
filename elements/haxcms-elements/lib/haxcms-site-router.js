@@ -30,6 +30,9 @@ Polymer({
       type: Object,
       notify: true,
       observer: "_manifestChanged"
+    },
+    baseURI: {
+      type: String
     }
   },
 
@@ -145,10 +148,12 @@ Polymer({
       typeof manifest !== "undefined" &&
       typeof manifest.items !== "undefined"
     ) {
+      const basePath = this.baseURI ? `${this.baseURI}` : `/`;
       const manifestItems = manifest.items.map(i => {
-        const location = i.location
-          .replace("pages", "")
+        let location = i.location
+          .replace("pages/", "")
           .replace("/index.html", "");
+        location = basePath + location;
         return Object.assign({}, i, { location: location });
       });
       // create a new router manifest object
