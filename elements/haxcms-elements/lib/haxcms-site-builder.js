@@ -9,8 +9,6 @@ import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "@polymer/app-route/app-route.js";
 import "./haxcms-site-router.js";
-import "./haxcms-site-router.js";
-// import "@polymer/app-route/app-location.js";
 /**
  * `haxcms-site-builder`
  * `build the site and everything off of this`
@@ -335,7 +333,6 @@ Polymer({
    * notice manifest changes and ensure slot is rebuilt.
    */
   _manifestChanged: function(newValue, oldValue) {
-    console.log("newValue:", newValue);
     if (newValue) {
       // update the router with the new manifest
       window.cmsSiteEditor.jsonOutlineSchema = newValue;

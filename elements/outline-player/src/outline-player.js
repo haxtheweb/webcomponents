@@ -427,6 +427,10 @@ let OutlinePlayer = Polymer({
     );
   },
 
+  /**
+   * React to changes to the router manifest
+   * @param {event} e
+   */
   _haxcmsRouterManifestSubscribeHandler: function(e) {
     this.set("_routerManifest", e.detail);
     this.notifyPath("_routerMaifest", "*");

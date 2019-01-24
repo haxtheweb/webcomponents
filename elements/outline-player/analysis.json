@@ -739,22 +739,23 @@
         },
         {
           "name": "_haxcmsRouterManifestSubscribeHandler",
-          "description": "",
+          "description": "React to changes to the router manifest",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 429,
+              "line": 433,
               "column": 2
             },
             "end": {
-              "line": 432,
+              "line": 436,
               "column": 3
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "e"
+              "name": "e",
+              "type": "event"
             }
           ],
           "return": {
@@ -767,11 +768,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 437,
+              "line": 441,
               "column": 2
             },
             "end": {
-              "line": 453,
+              "line": 457,
               "column": 3
             }
           },
@@ -787,11 +788,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 458,
+              "line": 462,
               "column": 2
             },
             "end": {
-              "line": 471,
+              "line": 475,
               "column": 3
             }
           },
@@ -811,11 +812,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 476,
+              "line": 480,
               "column": 2
             },
             "end": {
-              "line": 493,
+              "line": 497,
               "column": 3
             }
           },
@@ -839,11 +840,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 498,
+              "line": 502,
               "column": 2
             },
             "end": {
-              "line": 506,
+              "line": 510,
               "column": 3
             }
           },
@@ -866,11 +867,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 511,
+              "line": 515,
               "column": 2
             },
             "end": {
-              "line": 516,
+              "line": 520,
               "column": 3
             }
           },
@@ -887,11 +888,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 521,
+              "line": 525,
               "column": 2
             },
             "end": {
-              "line": 526,
+              "line": 530,
               "column": 3
             }
           },
@@ -908,11 +909,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 531,
+              "line": 535,
               "column": 2
             },
             "end": {
-              "line": 533,
+              "line": 537,
               "column": 3
             }
           },
@@ -932,11 +933,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 538,
+              "line": 542,
               "column": 2
             },
             "end": {
-              "line": 540,
+              "line": 544,
               "column": 3
             }
           },
@@ -956,11 +957,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 545,
+              "line": 549,
               "column": 2
             },
             "end": {
-              "line": 559,
+              "line": 563,
               "column": 3
             }
           },
@@ -980,11 +981,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 564,
+              "line": 568,
               "column": 2
             },
             "end": {
-              "line": 578,
+              "line": 582,
               "column": 3
             }
           },
@@ -1007,11 +1008,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 583,
+              "line": 587,
               "column": 2
             },
             "end": {
-              "line": 585,
+              "line": 589,
               "column": 3
             }
           },
@@ -1032,7 +1033,7 @@
           "column": 28
         },
         "end": {
-          "line": 586,
+          "line": 590,
           "column": 1
         }
       },
