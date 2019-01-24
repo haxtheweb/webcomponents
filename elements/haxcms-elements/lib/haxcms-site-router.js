@@ -119,7 +119,8 @@ Polymer({
   },
 
   /**
-   * notice manifest changes and ensure slot is rebuilt.
+   * notice changes to the maifest and publish a new verion of the
+   * router manifest on the event bus.
    */
   _manifestChanged: function(newValue, oldValue) {
     if (newValue) {
@@ -135,6 +136,7 @@ Polymer({
   },
 
   /**
+   * Returns a normalized router manifest based on a manifest
    * @param {object} manifest
    * @return routerManifest
    */
@@ -158,7 +160,7 @@ Polymer({
 
   /**
    * Event handler for 'haxcms-router-manifest-changed'
-   * Update the router
+   * Update the router so it can build new routes
    * @param {event} e
    */
   _haxcmsRouterManifestChanged: function(e) {
