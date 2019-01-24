@@ -95,7 +95,7 @@ Polymer({
   ready: function() {
     document.body.addEventListener(
       "json-outline-schema-changed",
-      this._manifestChanged.bind(this)
+      this.__jsonOutlineSchemaChanged.bind(this)
     );
     this.$.editor.addEventListener("current-data-changed", e => {
       if (e.detail.value) {
@@ -127,7 +127,7 @@ Polymer({
   detached: function() {
     document.body.removeEventListener(
       "json-outline-schema-changed",
-      this._manifestChanged.bind(this)
+      this.__jsonOutlineSchemaChanged.bind(this)
     );
   },
   /**
@@ -162,14 +162,15 @@ Polymer({
     }
   },
   /**
-   * manifest changed, let's get the items only
+   * Global JSON Outline Schema changed, let's ensure the items are synced up here
    */
-  _manifestChanged: function(e) {
+  __jsonOutlineSchemaChanged: function(e) {
     if (typeof e.detail.items !== typeof undefined) {
       this.set("manifest", []);
       this.set("manifest", e.detail);
       this.notifyPath("manifest.*");
       this.manifestItems = JSON.stringify(this.manifest.items, null, 2);
+      this.$.outline.importJsonOutlineSchemaItems();
     }
   },
 
@@ -177,7 +178,11 @@ Polymer({
    * Save hit, send the message to push up the outline changes.
    */
   _saveTap: function(e) {
-    this.set("manifest.items", this.$.outline.exportJsonOutlineSchemaItems());
-    this.fire("haxcms-save-outline", this.manifest.items);
+    const items = this.$.outline.exportJsonOutlineSchemaItems();
+    this.set("manifest.items", []);
+    this.set("manifest.items", items);
+    this.notifyPath("manifest.items");
+    this.manifestItems = JSON.stringify(items, null, 2);
+    this.fire("haxcms-save-outline", items);
   }
 });
