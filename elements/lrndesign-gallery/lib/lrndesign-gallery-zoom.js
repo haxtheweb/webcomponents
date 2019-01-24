@@ -46,15 +46,21 @@ class LrndesignGalleryZoom extends PolymerElement {
 
   //get gallery behaviors
   static get behaviors() {
-    return [LrnDesignGalleryBehaviors];
+    return [LrndesignGalleryBehaviors];
   }
 
   // render function
   static get template() {
     return html`
       <style is="custom-style" include="simple-colors">
+        :host {
+          display: block;
+        }
         :host([hidden]) {
           display: none;
+        }
+        :host paper-button {
+          width: 100%;
         }
         #zoomdialog {
           --simple-modal-width: 75vw;

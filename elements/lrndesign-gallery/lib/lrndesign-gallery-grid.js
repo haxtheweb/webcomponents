@@ -4,7 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import {} from "@polymer/polymer/lib/utils/render-status.js";
-import { LrnDesignGalleryBehaviors } from "./lrndesign-gallery-behaviors.js";
+import { LrndesignGalleryBehaviors } from "./lrndesign-gallery-behaviors.js";
 import "./lrndesign-gallery-zoom.js";
 import "./lrndesign-gallery-details.js";
 
@@ -42,7 +42,7 @@ export { LrndesignGalleryGrid };
  * @polymer
  * @demo demo/grid.html demo
  */
-class LrndesignGalleryGrid extends LrnDesignGalleryBehaviors {
+class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -59,37 +59,39 @@ class LrndesignGalleryGrid extends LrnDesignGalleryBehaviors {
           margin: 15px 0 0;
           padding: 0;
           max-width: 100%;
+          display: block;
+        }
+        :host .gallerythumb div {
+          position: relative;
+          display: flex;
+          align-items: stretch;
+        }
+        :host .gallerythumb div,
+        :host .gallerythumb iron-image {
+          width: 100%;
+        }
+        :host .gallerythumb {
+          width: var(--lrndesign-gallery-grid-thumbnail-xs, 100px);
+        }
+        :host([responsive-size="sm"]) .gallerythumb {
+          width: var(--lrndesign-gallery-grid-thumbnail-sm, 150px);
+        }
+        :host([responsive-size="md"]) .gallerythumb {
+          width: var(--lrndesign-gallery-grid-thumbnail-md, 200px);
+        }
+        :host([responsive-size="lg"]) .gallerythumb {
+          width: var(--lrndesign-gallery-grid-thumbnail-lg, 250px);
+        }
+        :host([responsive-size="xl"]) .gallerythumb {
+          width: var(--lrndesign-gallery-grid-thumbnail-lg, 300px);
         }
         :host .gallerythumb iron-icon {
           position: absolute;
           bottom: 7px;
           left: 7px;
         }
-        :host .gallerythumb > div {
-          position: relative;
-        }
-        :host .gallerythumb iron-image {
-          width: var(--lrndesign-gallery-grid-thumbnail-xs, 100px);
-        }
-        :host([responsive-size="sm"]) .gallerythumb iron-image {
-          width: var(--lrndesign-gallery-grid-thumbnail-sm, 150px);
-        }
-        :host([responsive-size="md"]) .gallerythumb iron-image {
-          width: var(--lrndesign-gallery-grid-thumbnail-md, 200px);
-        }
-        :host([responsive-size="lg"]) .gallerythumb iron-image {
-          width: var(--lrndesign-gallery-grid-thumbnail-lg, 250px);
-        }
-        :host([responsive-size="xl"]) .gallerythumb iron-image {
-          width: var(--lrndesign-gallery-grid-thumbnail-lg, 300px);
-        }
-        @media print {
-          :host #gallerycarousel {
-            display: none;
-          }
-        }
       </style>
-      <article id="gallery">
+      <article id="grid">
         <template is="dom-if" if="[[_isAttrSet(title)]]">
           <h1 id="gallery-title">[[title]]</h1>
         </template>
@@ -119,8 +121,8 @@ class LrndesignGalleryGrid extends LrnDesignGalleryBehaviors {
                   style$="[[_getImageStyle(items)]]"
                 >
                 </iron-image>
-                <iron-icon icon="zoom-in"></iron-icon>
               </div>
+              <iron-icon icon="zoom-in"></iron-icon>
             </lrndesign-gallery-zoom>
           </template>
         </div>

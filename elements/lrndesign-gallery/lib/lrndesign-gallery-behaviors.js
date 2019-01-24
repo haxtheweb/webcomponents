@@ -11,7 +11,7 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "./lrndesign-gallery-shared-styles.js";
 
-export { LrnDesignGalleryBehaviors };
+export { LrndesignGalleryBehaviors };
 /**
  * `lerndesign-gallery-behaviors`
  * `A set of properties for lerndesign-gallery components.`
@@ -23,7 +23,7 @@ export { LrnDesignGalleryBehaviors };
  * @customElement
  * @polymer
  */
-class LrnDesignGalleryBehaviors extends SimpleColors {
+class LrndesignGalleryBehaviors extends SimpleColors {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -56,6 +56,20 @@ class LrnDesignGalleryBehaviors extends SimpleColors {
         type: Boolean,
         value: false,
         reflectToAttribute: true
+      },
+      /**
+       * gallery's unique id
+       */
+      galleryId: {
+        type: String,
+        value: null
+      },
+      /**
+       * size for responsive CSS
+       */
+      grid: {
+        type: Boolean,
+        value: false
       },
       /**
        * gallery's unique id
@@ -101,7 +115,8 @@ class LrnDesignGalleryBehaviors extends SimpleColors {
        */
       sources: {
         type: Array,
-        value: []
+        value: [],
+        reflectToAttribute: false
       },
       /**
        * gallery's title
@@ -118,19 +133,6 @@ class LrnDesignGalleryBehaviors extends SimpleColors {
    */
   connectedCallback() {
     super.connectedCallback();
-    let root = this;
-    root.__gallery = root.$.gallery;
-    root.anchorData = root._getAnchorData();
-    window.ResponsiveUtility.requestAvailability();
-    window.dispatchEvent(
-      new CustomEvent("responsive-element", {
-        detail: {
-          element: root,
-          attribute: "responsive-size",
-          relativeToParent: true
-        }
-      })
-    );
   }
 
   /**
@@ -326,6 +328,6 @@ class LrnDesignGalleryBehaviors extends SimpleColors {
   }
 }
 window.customElements.define(
-  LrnDesignGalleryBehaviors.tag,
-  LrnDesignGalleryBehaviors
+  LrndesignGalleryBehaviors.tag,
+  LrndesignGalleryBehaviors
 );

@@ -4,6 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
+import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 
@@ -238,16 +239,20 @@ class LrndesignTimeline extends SimpleColors {
               index-as="index"
               restamp
             >
-              <section class="event" has-media$="[[_isSet(event.image)]]">
+              <section class="event" has-media$="[[_isSet(event.image-src)]]">
                 <div class="event-overview">
                   <div class="heading"><h2>[[event.heading]]</h2></div>
                   <div class="media-outer">
-                    <template is="dom-if" if="[[_isSet(event.image)]]" restamp>
+                    <template
+                      is="dom-if"
+                      if="[[_isSet(event.image-src)]]"
+                      restamp
+                    >
                       <div class="media">
                         <div>
                           <image
-                            alt$="[[event.image.alt]]"
-                            src$="[[event.image.src]]"
+                            alt$="[[event.image-alt]]"
+                            src$="[[event.image-src]]"
                           />
                         </div>
                       </div>
@@ -266,9 +271,9 @@ class LrndesignTimeline extends SimpleColors {
   // haxProperty definition
   static get haxProperties() {
     return {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
+      canScale: false,
+      canPosition: false,
+      canEditSource: true,
       gizmo: {
         title: "Timeline",
         description: "A timeline of events with images and text",
@@ -281,52 +286,65 @@ class LrndesignTimeline extends SimpleColors {
         }
       },
       settings: {
-        quick: [],
+        quick: [
+          {
+            property: "accent-color",
+            title: "Accent Color",
+            description: "An optional accent color.",
+            inputMethod: "colorpicker",
+            icon: "editor:format-color-fill"
+          },
+          {
+            property: "dark",
+            title: "Dark Theme",
+            description: "Enable Dark Theme",
+            inputMethod: "boolean",
+            icon: "icons:invert-colors"
+          }
+        ],
         configure: [
           {
             property: "title",
-            title: "Title",
+            title: "Timeline Title",
             description: "A title for the timeline.",
-            inputMethod: "textfield",
-            icon: "editor:title"
+            inputMethod: "textfield"
           },
           {
             slot: "",
-            title: "Description",
-            description: "Optional text describing the timleine.",
-            inputMethod: "textfield",
-            icon: "editor:title"
+            title: "Timeline Description",
+            description: "Optional text describing the timeline.",
+            inputMethod: "textfield"
           },
           {
             property: "events",
-            title: "Events",
+            title: "Timeline Events",
             description: "The events in the timeline",
             inputMethod: "array",
             properties: [
               {
                 property: "heading",
-                title: "Heading",
+                title: "Event Heading",
                 description: "The heading for the event.",
                 inputMethod: "textfield",
                 icon: "editor:title"
               },
               {
                 property: "details",
-                title: "Details",
+                title: "Event Details",
                 description: "The body text with details for the event.",
                 inputMethod: "textfield",
                 icon: "editor:title"
               },
               {
-                property: "image.src",
-                title: "Image",
+                property: "image-src",
+                title: "Event Image",
                 description: "The path of the image.",
                 inputMethod: "textfield",
                 icon: "editor:title"
               },
               {
-                property: "image.alt",
-                title: "Image",
+                property: "image-alt",
+                title: "Event Image Alt Text",
                 description: "The alt text of the image (for accessibility).",
                 inputMethod: "textfield",
                 icon: "editor:title"
@@ -411,6 +429,7 @@ class LrndesignTimeline extends SimpleColors {
   static get behaviors() {
     return [SimpleColors];
   }
+
   /**
    * life cycle, element is afixed to the DOM
    */
@@ -418,7 +437,7 @@ class LrndesignTimeline extends SimpleColors {
     let root = this;
     super.connectedCallback();
     this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
+    this.HAXWiring.setup(
       LrndesignTimeline.haxProperties,
       LrndesignTimeline.tag,
       this
