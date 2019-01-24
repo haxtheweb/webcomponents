@@ -3,6 +3,7 @@ import * as async from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@lrnwebcomponents/json-editor/json-editor.js";
+import "@lrnwebcomponents/editable-outline/editable-outline.js";
 /**
  * `haxcms-outline-editor-dialog`
  * `Dialog for presenting an editable outline`
@@ -28,10 +29,18 @@ Polymer({
       }
     </style>
     <paper-dialog-scrollable>
+      <paper-button id="toggle" on-tap="toggleView">[[viewLabel]]</paper-button>
+      <editable-outline
+        id="outline"
+        edit-mode
+        hidden$="[[viewMode]]"
+        items="[[manifest.items]]"
+      ></editable-outline>
       <json-editor
         id="editor"
         label="Outline data"
         value="[[manifestItems]]"
+        hidden$="[[!viewMode]]"
       ></json-editor>
     </paper-dialog-scrollable>
     <div class="buttons">
@@ -62,6 +71,21 @@ Polymer({
      */
     manifestItems: {
       type: String
+    },
+    /**
+     * Display label, switch when hitting the toggle button
+     */
+    viewLabel: {
+      type: String,
+      computed: "_getViewLabel(viewMode)"
+    },
+    /**
+     * Which edit mode to display
+     */
+    viewMode: {
+      type: Boolean,
+      value: false,
+      observer: "_viewModeChanged"
     }
   },
 
@@ -80,6 +104,7 @@ Polymer({
         this.notifyPath("manifest.items.*");
         outline.items = e.detail.value;
         this.manifestItems = JSON.stringify(e.detail.value, null, 2);
+        this.$.outline.importJsonOutlineSchemaItems();
       }
     });
   },
@@ -106,6 +131,27 @@ Polymer({
     );
   },
   /**
+   * Get the active label
+   */
+  _getViewLabel: function(mode) {
+    if (mode) {
+      return "Outline mode";
+    } else {
+      return "Developer mode";
+    }
+  },
+  /**
+   * Ensure that data is correct between the outline and advanced view
+   */
+  _viewModeChanged: function(newValue, oldValue) {
+    // odd I know, but this is the default outline view
+    if (!newValue) {
+      this.$.outline.importJsonOutlineSchemaItems();
+    } else {
+      this.set("manifest.items", this.$.outline.exportJsonOutlineSchemaItems());
+    }
+  },
+  /**
    * manifest changed, let's get the items only
    */
   _manifestChanged: function(e) {
@@ -121,6 +167,7 @@ Polymer({
    * Save hit, send the message to push up the outline changes.
    */
   _saveTap: function(e) {
+    this.set("manifest.items", this.$.outline.exportJsonOutlineSchemaItems());
     this.fire("haxcms-save-outline", this.manifest.items);
   }
 });

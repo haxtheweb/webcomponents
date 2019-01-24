@@ -3,9 +3,11 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
+import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/editor-icons.js";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
-import { getRange } from "./lib/shadows-safari.js";
 
 /**
  * `editable-outline`
@@ -42,20 +44,30 @@ class EditableOutline extends PolymerElement {
           font-size: 16px;
           line-height: 32px;
         }
+
+        iron-icon {
+          pointer-events: none;
+        }
       </style>
-      <button on-click="buttonEvents" id="indent">Indent</button>
-      <button on-click="buttonEvents" id="outdent">Outdent</button>
+      <button on-click="buttonEvents" id="outdent">
+        <iron-icon icon="editor:format-indent-decrease"></iron-icon> Outdent
+      </button>
+      <button on-click="buttonEvents" id="indent">
+        <iron-icon icon="editor:format-indent-increase"></iron-icon> Indent
+      </button>
+
       <ul id="outline" contenteditable$="[[editMode]]">
         <li></li>
       </ul>
+
       <iron-a11y-keys
-        target="[[activeNode]]"
+        target="[[__outlineNode]]"
         keys="shift+tab"
         on-keys-pressed="_tabBackKeyPressed"
         stop-keyboard-event-propagation
       ></iron-a11y-keys>
       <iron-a11y-keys
-        target="[[activeNode]]"
+        target="[[__outlineNode]]"
         keys="tab"
         on-keys-pressed="_tabKeyPressed"
         stop-keyboard-event-propagation
@@ -67,12 +79,13 @@ class EditableOutline extends PolymerElement {
   static get properties() {
     return {
       /**
-       * A manifest from JSON Outline Schema
+       * A items list of JSON Outline Schema Items
        */
-      manifest: {
-        name: "manifest",
-        type: "Object",
-        observer: "_manifestChanged"
+      items: {
+        name: "items",
+        type: "Array",
+        value: [],
+        notify: true
       },
       /**
        * Edit mode
@@ -80,20 +93,21 @@ class EditableOutline extends PolymerElement {
       editMode: {
         name: "editMode",
         type: "Boolean",
+        notify: true,
         observer: "_editModeChanged"
       },
       /**
-       * Active node for keyboard key binding
+       * Outline node for keyboard key binding
        */
-      activeNode: {
-        name: "activeNode",
+      __outlineNode: {
+        name: "__outlineNode",
         type: "Object"
       }
     };
   }
   constructor() {
     super();
-    this.polyfillSafe = this.computePolyfillSafe();
+    this.polyfillSafe = this.__computePolyfillSafe();
     window.JSONOutlineSchema.requestAvailability();
   }
   /**
@@ -108,16 +122,36 @@ class EditableOutline extends PolymerElement {
    */
   connectedCallback() {
     super.connectedCallback();
-    this.activeNode = this.$.outline;
+    this.__outlineNode = this.$.outline;
+    window.addEventListener("paste", this._onPaste.bind(this));
+    // mutation observer that ensures state of hax applied correctly
+    this._observer = new FlattenedNodesObserver(this.__outlineNode, info => {
+      // if we've got new nodes to react to... AND they were pasted
+      if (info.addedNodes.length > 0 && this.__pasteFlag) {
+        info.addedNodes.map(node => {
+          // deep scrub the node that we just got to remove possible JOS metadata
+          window.JSONOutlineSchema.requestAvailability().scrubElementJOSData(
+            node
+          );
+        });
+        this.__pasteFlag = false;
+      }
+      // if we dropped nodes via the UI (delete event basically)
+      if (info.removedNodes.length > 0) {
+        // ensure there's always a first child node present
+        // this way people can't break the interact via mass deleting
+        if (!this.$.outline.firstChild) {
+          this.$.outline.appendChild(document.createElement("li"));
+        }
+      }
+    });
   }
   /**
-   * life cycle, element is removed from the DOM
+   * Disconnected life cycle
    */
-  //disconnectedCallback() {}
-  // Observer manifest for changes
-  _manifestChanged(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined) {
-    }
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    window.removeEventListener("paste", this._onPaste.bind(this));
   }
 
   // Observer editMode for changes
@@ -126,17 +160,54 @@ class EditableOutline extends PolymerElement {
     }
   }
   /**
+   * Set flag on paste so we know to wipe data in the mutation observer
+   */
+  _onPaste(e) {
+    this.__pasteFlag = true;
+  }
+  /**
    * Button events internally
    */
   buttonEvents(e) {
     switch (e.target.id) {
       case "indent":
-        document.execCommand("indent");
+        this._indent();
         break;
       case "outdent":
-        document.execCommand("outdent");
+        this._outdent();
         break;
     }
+  }
+
+  /**
+   * Take the current manifest and import it into an HTML outline
+   */
+  importJsonOutlineSchemaItems() {
+    // wipe out the outline
+    while (this.$.outline.firstChild !== null) {
+      this.$.outline.removeChild(this.$.outline.firstChild);
+    }
+    if (this.items.length === 0) {
+      // get from JOS items if we have none currently
+      this.set("items", window.JSONOutlineSchema.requestAvailability().items);
+    }
+    let outline = window.JSONOutlineSchema.requestAvailability().itemsToNodes(
+      this.items
+    );
+    // rebuild the outline w/ children we just found
+    while (outline.firstChild !== null) {
+      this.$.outline.appendChild(outline.firstChild);
+    }
+    return outline;
+  }
+  /**
+   * Take what's currently in the area and get JSON Outline Schema; optionally save
+   */
+  exportJsonOutlineSchemaItems(save = false) {
+    return window.JSONOutlineSchema.requestAvailability().nodesToItems(
+      this.$.outline,
+      save
+    );
   }
   /**
    * Find the next thing to tab forward to.
@@ -147,20 +218,23 @@ class EditableOutline extends PolymerElement {
     e.stopImmediatePropagation();
     // try selection / tab block since range can cause issues
     try {
-      let range = this.getDeepRange().cloneRange();
-      var tagTest = range.commonAncestorContainer.tagName;
-      if (typeof tagTest === typeof undefined) {
-        tagTest = range.commonAncestorContainer.parentNode.tagName;
-      }
-      if (this.polyfillSafe) {
-        document.execCommand("indent");
-        if (e.detail.keyboardEvent) {
-          e.detail.keyboardEvent.preventDefault();
-          e.detail.keyboardEvent.stopPropagation();
-          e.detail.keyboardEvent.stopImmediatePropagation();
-        }
+      this._indent();
+      if (e.detail.keyboardEvent) {
+        e.detail.keyboardEvent.preventDefault();
+        e.detail.keyboardEvent.stopPropagation();
+        e.detail.keyboardEvent.stopImmediatePropagation();
       }
     } catch (e) {}
+  }
+  _indent() {
+    if (this.polyfillSafe) {
+      document.execCommand("indent");
+    }
+  }
+  _outdent() {
+    if (this.polyfillSafe) {
+      document.execCommand("outdent");
+    }
   }
   /**
    * Move back through things when tab back pressed
@@ -171,49 +245,13 @@ class EditableOutline extends PolymerElement {
     e.stopImmediatePropagation();
     // try selection / tab block since range can cause issues
     try {
-      let range = this.getDeepRange().cloneRange();
-      var tagTest = range.commonAncestorContainer.tagName;
-      if (typeof tagTest === typeof undefined) {
-        tagTest = range.commonAncestorContainer.parentNode.tagName;
-      }
-      if (this.polyfillSafe) {
-        document.execCommand("outdent");
-        if (e.detail.keyboardEvent) {
-          e.detail.keyboardEvent.preventDefault();
-          e.detail.keyboardEvent.stopPropagation();
-          e.detail.keyboardEvent.stopImmediatePropagation();
-        }
+      this._outdent();
+      if (e.detail.keyboardEvent) {
+        e.detail.keyboardEvent.preventDefault();
+        e.detail.keyboardEvent.stopPropagation();
+        e.detail.keyboardEvent.stopImmediatePropagation();
       }
     } catch (e) {}
-  }
-  /**
-   * Selection normalizer
-   */
-  getDeepSelection() {
-    // try and obtain the selection from the nearest shadow
-    // which would give us the selection object when running native ShadowDOM
-    // with fallback support for the entire window which would imply Shady
-    // native API
-    if (this.shadowRoot.getSelection) {
-      return this.shadowRoot.getSelection();
-    }
-    // ponyfill from google
-    else if (getRange(this.$.outline.parentNode)) {
-      return getRange(this.$.outline.parentNode);
-    }
-    // missed on both, hope the normal one will work
-    return window.getSelection();
-  }
-  /**
-   * Get a normalized range based on current selection
-   */
-  getDeepRange() {
-    let sel = this.getDeepSelection();
-    if (sel.getRangeAt && sel.rangeCount) {
-      return sel.getRangeAt(0);
-    } else if (sel) {
-      return sel;
-    } else false;
   }
   /**
    * These are our bad actors in polyfill'ed browsers.
@@ -222,7 +260,7 @@ class EditableOutline extends PolymerElement {
    * then we can't safely execute a DOM manipulating execCommand.
    * This
    */
-  computePolyfillSafe() {
+  __computePolyfillSafe() {
     if (document.head.createShadowRoot || document.head.attachShadow) {
       return true;
     } else {

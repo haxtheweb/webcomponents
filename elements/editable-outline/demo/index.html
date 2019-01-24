@@ -13,14 +13,31 @@
       import '../editable-outline.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <script>
+      window.addEventListener('json-outline-schema-ready', () => {
+        const evt = new CustomEvent("json-outline-schema-debug-toggle", {
+          bubbles: true,
+          cancelable: true,
+          detail: true
+        });
+        window.dispatchEvent(evt);
+        document.getElementById('save').addEventListener('click', () => {
+          document.getElementById('outline').exportJsonOutlineSchemaItems(true);
+        });
+        document.getElementById('import').addEventListener('click', () => {
+          document.getElementById('outline').importJsonOutlineSchemaItems();
+        });
+      });
+    </script>
   </head>
   <body>
+    <button id="save">Save to Schema</button>
+    <button id="import">Import Schema</button>
     <div class="vertical-section-container centered">
       <h3>Basic editable-outline demo</h3>
       <demo-snippet>
         <template>
-          <editable-outline edit-mode>
-          </editable-outline>
+          <editable-outline id="outline" edit-mode></editable-outline>
         </template>
       </demo-snippet>
     </div>

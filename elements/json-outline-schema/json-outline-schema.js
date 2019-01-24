@@ -528,6 +528,142 @@ class JsonOutlineSchema extends HTMLElement {
     }
     return schema;
   }
+  /**
+   * Take the items of the manifest (or passed in) and generate an HTML list hierarchy from it
+   */
+  itemsToNodes(items) {
+    items = typeof items !== "undefined" ? items : this.items;
+    let tree = this.unflattenItems(this.items);
+    return this.treeToNodes(tree, document.createElement("ul"));
+  }
+  treeToNodes(tree, appendTarget) {
+    for (var i in tree) {
+      let li = document.createElement("li");
+      li.innerText = tree[i].title;
+      li.setAttribute("data-jos-id", tree[i].id);
+      if (tree[i].location) {
+        li.setAttribute("data-jos-location", tree[i].location);
+      }
+      appendTarget.appendChild(li);
+      if (tree[i].children && tree[i].children.length > 0) {
+        appendTarget.appendChild(
+          this.treeToNodes(tree[i].children, document.createElement("ul"))
+        );
+      }
+    }
+    return appendTarget;
+  }
+  /**
+   * Helper to unflatten an array and make it into a tree
+   */
+  unflattenItems(items, parent, tree) {
+    tree = typeof tree !== "undefined" ? tree : [];
+    parent = typeof parent !== "undefined" ? parent : { id: null };
+    let children = items.filter(child => {
+      return child.parent === parent.id;
+    });
+    if (children.length) {
+      if (!parent.id) {
+        tree = children;
+      } else {
+        parent.children = children;
+      }
+      children.forEach(child => {
+        this.unflattenItems(items, child);
+      });
+    }
+    return tree;
+  }
+  /**
+   * Scrubs data-jos metadata from node and any children of the node.
+   * Useful when dealing with text based data being turned into nodes (like a paste)
+   */
+  scrubElementJOSData(node) {
+    // attempt to replace things inside very aggressively
+    for (var i in node.children) {
+      node.removeAttribute("data-jos-id");
+      node.removeAttribute("data-jos-location");
+      // deep scrub child references
+      if (node.children[i].children) {
+        this.scrubElementJOSData(node.children[i]);
+      }
+    }
+  }
+  /**
+   * Take an HTML node and convert it into a JSON Outline Schema based
+   * on parent child relationshios found in the node. Commonly used with ul / ol
+   */
+  nodesToItems(node, save = false) {
+    const items = this.getChildOutline(node);
+    if (save) {
+      this.items = items;
+      // update if debugging is turned on
+      if (this.__debug) {
+        this.render();
+        this._triggerDebugPaint(this.__debug);
+      }
+    }
+    return items;
+  }
+  /**
+   * Generate a flat listing of items in JSON OUtline Schema format
+   * from a hierarchy of HTML nodes
+   */
+  getChildOutline(node, order = 0, indent = 0, parent = null) {
+    // deep clone the first node so we don't destroy the original
+    const clone = node.cloneNode(true);
+    let items = [];
+    let item = {};
+    while (clone.firstChild !== null) {
+      // only work on things if they are valid HTML nodes
+      if (typeof clone.firstChild.tagName !== typeof undefined) {
+        const child = clone.firstChild;
+        // walk deeper as this element has a child element
+        if (
+          child.firstChild !== null &&
+          typeof child.firstChild.tagName !== typeof undefined
+        ) {
+          // usually this will happen but it's possible to have a corrupted
+          // structure in HTML where there are lots of ULs with no immediate children
+          // in this case we defer to whoever the parent of this item was
+          // This means on a recall that the visual issue would be corrected
+          // but it also means the data will technically transform the HTML structure
+          // which for our purposes, is a good thing.
+          let parentPassdown = parent;
+          // ensure this is set
+          if (typeof item.id !== typeof undefined) {
+            parentPassdown = item.id;
+          }
+          // recursive; dive in using the current child as the starting point
+          // and merge in everything we dig up from there
+          items = items.concat(
+            this.getChildOutline(child, 0, indent + 1, parentPassdown)
+          );
+        } else {
+          item = new JSONOutlineSchemaItem();
+          // allow for DOM to have defined an id ahead of time
+          if (child.getAttribute("data-jos-id")) {
+            item.id = child.getAttribute("data-jos-id");
+          }
+          if (child.getAttribute("data-jos-location")) {
+            item.location = child.getAttribute("data-jos-location");
+          } else {
+            item.location = "";
+          }
+          item.indent = indent;
+          item.order = order;
+          order = order + 1;
+          // @todo mayyyyyy work but if nested structures may not for text
+          // @todo need to look for a textNode that has the element content
+          item.title = child.innerText;
+          item.parent = parent;
+          items.push(item);
+        }
+      }
+      clone.removeChild(clone.firstChild);
+    }
+    return items;
+  }
 }
 window.customElements.define(JsonOutlineSchema.tag, JsonOutlineSchema);
-export { JsonOutlineSchema };
+export { JsonOutlineSchema, JSONOutlineSchemaItem };

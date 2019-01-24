@@ -1,9 +1,15 @@
-<button on-click="buttonEvents" id="indent">Indent</button>
-<button on-click="buttonEvents" id="outdent">Outdent</button>
+<button on-click="buttonEvents" id="outdent">
+  <iron-icon icon="editor:format-indent-decrease"></iron-icon> Outdent
+</button>
+<button on-click="buttonEvents" id="indent">
+  <iron-icon icon="editor:format-indent-increase"></iron-icon> Indent
+</button>
+
 <ul id="outline" contenteditable$="[[editMode]]">
   <li></li>
 </ul>
-<iron-a11y-keys target="[[activeNode]]" keys="shift+tab" on-keys-pressed="_tabBackKeyPressed"
+
+<iron-a11y-keys target="[[__outlineNode]]" keys="shift+tab" on-keys-pressed="_tabBackKeyPressed"
   stop-keyboard-event-propagation></iron-a11y-keys>
-<iron-a11y-keys target="[[activeNode]]" keys="tab" on-keys-pressed="_tabKeyPressed"
+<iron-a11y-keys target="[[__outlineNode]]" keys="tab" on-keys-pressed="_tabKeyPressed"
   stop-keyboard-event-propagation></iron-a11y-keys>

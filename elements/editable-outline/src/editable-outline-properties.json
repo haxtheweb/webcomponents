@@ -1,11 +1,12 @@
 {
   /**
-   * A manifest from JSON Outline Schema
+   * A items list of JSON Outline Schema Items
    */
-  "manifest": {
-    "name": "manifest",
-    "type": "Object",
-    "observer": "_manifestChanged"
+  "items": {
+    "name": "items",
+    "type": "Array",
+    "value": [],
+    "notify": true
   },
   /**
    * Edit mode
@@ -13,13 +14,14 @@
   "editMode": {
     "name": "editMode",
     "type": "Boolean",
+    "notify": true,
     "observer": "_editModeChanged"
   },
   /**
-   * Active node for keyboard key binding
+   * Outline node for keyboard key binding
    */
-  "activeNode": {
-    "name": "activeNode",
+  "__outlineNode": {
+    "name": "__outlineNode",
     "type": "Object"
   }
 }
