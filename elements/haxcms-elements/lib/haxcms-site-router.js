@@ -148,12 +148,10 @@ Polymer({
       typeof manifest !== "undefined" &&
       typeof manifest.items !== "undefined"
     ) {
-      const basePath = this.baseURI ? `${this.baseURI}` : `/`;
       const manifestItems = manifest.items.map(i => {
         let location = i.location
           .replace("pages/", "")
           .replace("/index.html", "");
-        location = basePath + location;
         return Object.assign({}, i, { location: location });
       });
       // create a new router manifest object
@@ -180,7 +178,11 @@ Polymer({
    * @param {object} manifest
    */
   _updateRouter: function(manifest) {
-    const router = new Router(this);
+    let options = {};
+    if (this.baseURI) {
+      options.baseUrl = this.baseURI;
+    }
+    const router = new Router(this, options);
     const routerItems = manifest.items.map(i => {
       return {
         path: i.location,
@@ -201,6 +203,7 @@ Polymer({
    */
   _routerLocationChanged: function(e) {
     const activeItem = e.detail.location.route.name;
+    console.log("activeItem:", activeItem);
     let find = this.manifest.items.filter(item => {
       if (item.id !== activeItem) {
         return false;
