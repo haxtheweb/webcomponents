@@ -63,8 +63,7 @@ Polymer({
      * Outline of items in json outline schema format
      */
     manifest: {
-      type: Object,
-      notify: true
+      type: Object
     },
     /**
      * Stringify'ed representation of items

@@ -123,47 +123,112 @@ class EditableOutline extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     this.__outlineNode = this.$.outline;
-    window.addEventListener("paste", this._onPaste.bind(this));
-    // mutation observer that ensures state of hax applied correctly
-    this._observer = new FlattenedNodesObserver(this.__outlineNode, info => {
-      // if we've got new nodes to react to... AND they were pasted
-      if (info.addedNodes.length > 0 && this.__pasteFlag) {
-        info.addedNodes.map(node => {
-          // deep scrub the node that we just got to remove possible JOS metadata
-          window.JSONOutlineSchema.requestAvailability().scrubElementJOSData(
-            node
-          );
-        });
-        this.__pasteFlag = false;
-      }
-      // if we dropped nodes via the UI (delete event basically)
-      if (info.removedNodes.length > 0) {
+    this._observer = new MutationObserver(this._observer.bind(this));
+    this._observer.observe(this.__outlineNode, {
+      childList: true,
+      subtree: true
+    });
+  }
+  /**
+   * Mutation observer callback
+   * @todo current issue if you copy and paste into the same node
+   */
+  _observer(record) {
+    let reference;
+    for (var index in record) {
+      let info = record[index];
+      if (info.removedNodes.length > 0 && this.__outdent) {
+        for (let i in info.removedNodes) {
+          if (
+            info.removedNodes[i].tagName &&
+            info.removedNodes[i].tagName === "LI" &&
+            info.removedNodes[i].getAttribute("data-jos-id") !== null
+          ) {
+            reference.setAttribute(
+              "data-jos-id",
+              info.removedNodes[i].getAttribute("data-jos-id")
+            );
+            if (
+              info.removedNodes[i].getAttribute("data-jos-location") !== null
+            ) {
+              reference.setAttribute(
+                "data-jos-location",
+                info.removedNodes[i].getAttribute("data-jos-location")
+              );
+            }
+            reference = null;
+          } else if (
+            info.removedNodes[i].tagName === "UL" &&
+            info.removedNodes[i].firstChild &&
+            info.removedNodes[i].firstChild.tagName === "LI" &&
+            info.removedNodes[i].firstChild.getAttribute("data-jos-id") !== null
+          ) {
+            reference.setAttribute(
+              "data-jos-id",
+              info.removedNodes[i].firstChild.getAttribute("data-jos-id")
+            );
+            if (
+              info.removedNodes[i].firstChild.getAttribute(
+                "data-jos-location"
+              ) !== null
+            ) {
+              reference.setAttribute(
+                "data-jos-location",
+                info.removedNodes[i].firstChild.getAttribute(
+                  "data-jos-location"
+                )
+              );
+            }
+            reference = null;
+          }
+        }
         // ensure there's always a first child node present
         // this way people can't break the interact via mass deleting
         if (!this.$.outline.firstChild) {
           this.$.outline.appendChild(document.createElement("li"));
         }
       }
-    });
+      // if we've got new nodes to react to that were not imported
+      if (info.addedNodes.length > 0) {
+        // special rules for an outdent event
+        if (this.__outdent) {
+          for (let i in info.addedNodes) {
+            if (
+              info.addedNodes[i].tagName &&
+              info.addedNodes[i].tagName === "LI"
+            ) {
+              reference = info.addedNodes[i];
+            }
+          }
+        } else if (!this.__blockScrub) {
+          for (let i in info.addedNodes) {
+            if (info.addedNodes[i].tagName) {
+              // @todo need to ensure that this isn't the same exact item in the same exact position
+              window.JSONOutlineSchema.requestAvailability().scrubElementJOSData(
+                info.addedNodes[i]
+              );
+            }
+          }
+        }
+      }
+    }
+    setTimeout(() => {
+      this.__blockScrub = false;
+      this.__outdent = false;
+      this.__indent = false;
+    }, 100);
   }
   /**
    * Disconnected life cycle
    */
   disconnectedCallback() {
     super.disconnectedCallback();
-    window.removeEventListener("paste", this._onPaste.bind(this));
   }
 
   // Observer editMode for changes
   _editModeChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
     }
-  }
-  /**
-   * Set flag on paste so we know to wipe data in the mutation observer
-   */
-  _onPaste(e) {
-    this.__pasteFlag = true;
   }
   /**
    * Button events internally
@@ -183,6 +248,7 @@ class EditableOutline extends PolymerElement {
    * Take the current manifest and import it into an HTML outline
    */
   importJsonOutlineSchemaItems() {
+    this.__blockScrub = true;
     // wipe out the outline
     while (this.$.outline.firstChild !== null) {
       this.$.outline.removeChild(this.$.outline.firstChild);
@@ -196,6 +262,7 @@ class EditableOutline extends PolymerElement {
     );
     // rebuild the outline w/ children we just found
     while (outline.firstChild !== null) {
+      this.__blockScrub = true;
       this.$.outline.appendChild(outline.firstChild);
     }
     return outline;
@@ -216,24 +283,20 @@ class EditableOutline extends PolymerElement {
     e.preventDefault();
     e.stopPropagation();
     e.stopImmediatePropagation();
-    // try selection / tab block since range can cause issues
+    if (e.detail.keyboardEvent) {
+      e.detail.keyboardEvent.preventDefault();
+      e.detail.keyboardEvent.stopPropagation();
+      e.detail.keyboardEvent.stopImmediatePropagation();
+    }
     try {
       this._indent();
-      if (e.detail.keyboardEvent) {
-        e.detail.keyboardEvent.preventDefault();
-        e.detail.keyboardEvent.stopPropagation();
-        e.detail.keyboardEvent.stopImmediatePropagation();
-      }
     } catch (e) {}
   }
   _indent() {
     if (this.polyfillSafe) {
+      this.__indent = true;
+      this.__blockScrub = true;
       document.execCommand("indent");
-    }
-  }
-  _outdent() {
-    if (this.polyfillSafe) {
-      document.execCommand("outdent");
     }
   }
   /**
@@ -243,15 +306,22 @@ class EditableOutline extends PolymerElement {
     e.preventDefault();
     e.stopPropagation();
     e.stopImmediatePropagation();
+    if (e.detail.keyboardEvent) {
+      e.detail.keyboardEvent.preventDefault();
+      e.detail.keyboardEvent.stopPropagation();
+      e.detail.keyboardEvent.stopImmediatePropagation();
+    }
     // try selection / tab block since range can cause issues
     try {
       this._outdent();
-      if (e.detail.keyboardEvent) {
-        e.detail.keyboardEvent.preventDefault();
-        e.detail.keyboardEvent.stopPropagation();
-        e.detail.keyboardEvent.stopImmediatePropagation();
-      }
     } catch (e) {}
+  }
+  _outdent() {
+    if (this.polyfillSafe) {
+      this.__outdent = true;
+      this.__blockScrub = true;
+      document.execCommand("outdent");
+    }
   }
   /**
    * These are our bad actors in polyfill'ed browsers.
