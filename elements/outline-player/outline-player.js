@@ -432,8 +432,8 @@ let OutlinePlayer = Polymer({
    * @param {event} e
    */
   _haxcmsRouterManifestSubscribeHandler: function(e) {
-    this.set("_routerManifest", e.detail);
-    this.notifyPath("_routerMaifest", "*");
+    this._routerManifest = {};
+    this._routerManifest = e.detail;
   },
 
   /**
@@ -541,7 +541,8 @@ let OutlinePlayer = Polymer({
    * Advance a page
    */
   nextPage: function(e) {
-    this.changePage("next");
+    // window.JSONOutlineSchema.requestAvailability().nextPage(this.manifest, this.activeItem)
+    // this.changePage("next");
   },
 
   /**

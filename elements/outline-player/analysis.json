@@ -169,8 +169,8 @@
               "column": 2
             },
             "end": {
-              "line": 103,
-              "column": 3
+              "line": 101,
+              "column": 48
             }
           },
           "metadata": {},
@@ -189,11 +189,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 106,
               "column": 2
             },
             "end": {
-              "line": 121,
+              "line": 119,
               "column": 3
             }
           },
@@ -209,11 +209,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 126,
+              "line": 124,
               "column": 2
             },
             "end": {
-              "line": 132,
+              "line": 130,
               "column": 3
             }
           },
@@ -239,7 +239,7 @@
           "column": 8
         },
         "end": {
-          "line": 133,
+          "line": 131,
           "column": 1
         }
       },
@@ -937,7 +937,7 @@
               "column": 2
             },
             "end": {
-              "line": 544,
+              "line": 545,
               "column": 3
             }
           },
@@ -957,11 +957,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 549,
+              "line": 550,
               "column": 2
             },
             "end": {
-              "line": 563,
+              "line": 564,
               "column": 3
             }
           },
@@ -981,11 +981,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 568,
+              "line": 569,
               "column": 2
             },
             "end": {
-              "line": 582,
+              "line": 583,
               "column": 3
             }
           },
@@ -1008,11 +1008,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 587,
+              "line": 588,
               "column": 2
             },
             "end": {
-              "line": 589,
+              "line": 590,
               "column": 3
             }
           },
@@ -1033,7 +1033,7 @@
           "column": 28
         },
         "end": {
-          "line": 590,
+          "line": 591,
           "column": 1
         }
       },

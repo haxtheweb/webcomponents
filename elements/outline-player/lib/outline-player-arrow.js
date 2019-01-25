@@ -99,9 +99,7 @@ Polymer({
   /**
    * Sticky Nav has changed
    */
-  __isNavStickyChanged: function(isNavSticky) {
-    console.log("is sticky", isNavSticky);
-  },
+  __isNavStickyChanged: function(isNavSticky) {},
 
   /**
    * Calculate is nav sticky
