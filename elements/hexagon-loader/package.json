@@ -16,7 +16,7 @@
       "hax": "src/hexagon-loader-hax.json"
     }
   },
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "a simple VJS element that is for showing something is loading",
   "repository": {
     "type": "git",

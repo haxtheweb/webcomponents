@@ -16,7 +16,7 @@
       "hax": "src/pdf-element-hax.json"
     }
   },
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Automated conversion of pdf-element/",
   "repository": {
     "type": "git",
@@ -40,8 +40,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.0.2",
-    "@lrnwebcomponents/schema-behaviors": "^2.0.0-alpha2",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.0.3",
+    "@lrnwebcomponents/schema-behaviors": "^2.0.3",
     "@polymer/app-layout": "^3.0.1",
     "@polymer/iron-image": "^3.0.0",
     "@polymer/iron-input": "^3.0.0",

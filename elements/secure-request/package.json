@@ -16,7 +16,7 @@
       "hax": "src/secure-request-hax.json"
     }
   },
-  "version": "2.0.0-alpha2",
+  "version": "2.0.3",
   "description": "Automated conversion of secure-request/",
   "repository": {
     "type": "git",

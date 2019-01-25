@@ -16,7 +16,7 @@
       "hax": "src/person-testimonial-hax.json"
     }
   },
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Automated conversion of person-testimonial/",
   "repository": {
     "type": "git",
@@ -40,8 +40,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.0.2",
-    "@lrnwebcomponents/materializecss-styles": "^2.0.0-alpha2",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.0.3",
+    "@lrnwebcomponents/materializecss-styles": "^2.0.3",
     "@polymer/iron-icon": "^3.0.0",
     "@polymer/iron-iconset-svg": "^3.0.0",
     "@polymer/iron-image": "^3.0.1",

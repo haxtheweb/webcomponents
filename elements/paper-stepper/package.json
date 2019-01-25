@@ -16,7 +16,7 @@
       "hax": "src/paper-stepper-hax.json"
     }
   },
-  "version": "2.0.0-alpha2",
+  "version": "2.0.3",
   "description": "Start of paper-stepper",
   "repository": {
     "type": "git",

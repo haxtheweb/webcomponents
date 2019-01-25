@@ -6,7 +6,7 @@
     "elementName": "lrn-button",
     "generator-rhelement-version": "0.0.8"
   },
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Button element for PolymerElement",
   "repository": {
     "type": "git",
@@ -30,8 +30,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.0.2",
-    "@lrnwebcomponents/materializecss-styles": "^2.0.0-alpha2",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.0.3",
+    "@lrnwebcomponents/materializecss-styles": "^2.0.3",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
     "@polymer/paper-tooltip": "^3.0.1",
