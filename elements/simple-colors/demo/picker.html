@@ -10,7 +10,7 @@
       import '../lib/simple-colors-picker.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles">
-      #demo {
+      #demo, #demo p {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -28,8 +28,8 @@
       <demo-snippet>
         <template>
           <div id="demo">
-              <p><label>CSS Variable Swatches: </label><simple-colors-picker hide-option-labels shades></simple-colors-picker></p>
-            <p><label>Acccent-Color Names: </label><simple-colors-picker></simple-colors-picker></p>
+            <p><label>CSS Variable Swatches: </label><simple-colors-picker hide-option-labels shades></simple-colors-picker></p>
+            <p><label>Acccent-Color Names: </label><simple-colors-picker value="pink"></simple-colors-picker></p>
           </div>
         </template>
       </demo-snippet>

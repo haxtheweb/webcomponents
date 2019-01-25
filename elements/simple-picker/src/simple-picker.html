@@ -21,19 +21,20 @@
         <div class="row">
           <template is="dom-repeat" items=[[row]] as="option" index-as="colnum">
             <simple-picker-option 
-              active$="[[_isMatch(__activeDesc,rownum,colnum)]]"
-              aria-selected$="[[option.selected]]" 
+              active$="[[_isActive(__activeDesc,rownum,colnum)]]"
+              aria-selected$="[[_isSelected(value,option.value)]]"
+              data$="[[data]]"
               hide-option-labels$="[[hideOptionLabels]]"
               icon$="[[option.icon]]"
               id$="[[_getOptionId(rownum,colnum)]]"
               role="option"
-              selected$="[[_isMatch(__selectedDesc,rownum,colnum)]]"
+              selected$="[[_isSelected(value,option.value)]]"
               on-option-focus="_handleOptionFocus"
               on-set-selected-option="_handleSetSelectedOption"
               style$="[[option.style]]" 
               tabindex="-1"
               title$="[[option.alt]]"
-              value$="[[option]]">
+              value$="[[option.value]]">
             </simple-picker-option>
           </template>
         </div>

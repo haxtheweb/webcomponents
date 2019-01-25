@@ -18,11 +18,6 @@ const css = html`
   <style is="custom-style" include="simple-colors">
     :host {
       display: block;
-    }
-    :host([hidden]) {
-      display: none;
-    }
-    :host {
       --lrndesign-gallery-color: var(--simple-colors-default-theme-grey-12);
       --lrndesign-gallery-background-color: var(
         --simple-colors-default-theme-grey-2
@@ -68,11 +63,6 @@ const css = html`
         rgba(255, 255, 255, 0.5) 50%,
         rgba(255, 255, 255, 0) 100%
       );
-      --lrndesign-gallery-thumbnail-size: 100px;
-      --lrndesign-gallery-thumbnail-size-sm: 150px;
-      --lrndesign-gallery-thumbnail-size-md: 200px;
-      --lrndesign-gallery-thumbnail-size-lg: 250px;
-      --lrndesign-gallery-thumbnail-size-xl: 300px;
       --lrndesign-gallery-thumbnail-image: {
         display: block;
         border-radius: 3px;
@@ -106,6 +96,9 @@ const css = html`
         rgba(0, 0, 0, 0) 100%
       );
     }
+    :host([hidden]) {
+      display: none;
+    }
     :host .sr-only {
       position: absolute;
       left: -999999;
@@ -124,8 +117,6 @@ const css = html`
       cursor: pointer;
     }
     :host .gallerythumb iron-image {
-      width: 40px;
-      height: 40px;
       @apply --lrndesign-gallery-thumbnail-image;
     }
     :host .gallerythumb:focus iron-image,

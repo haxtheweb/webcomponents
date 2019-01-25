@@ -5,9 +5,7 @@
   "ariaLabelledby": {
     "name": "ariaLabelledby",
     "type": "String",
-    "value": null,
-    "reflectToAttribute": false,
-    "observer": false
+    "value": null
   },
 
   /**
@@ -16,9 +14,7 @@
   "disabled": {
     "name": "disabled",
     "type": "Boolean",
-    "value": false,
-    "reflectToAttribute": false,
-    "observer": false
+    "value": false
   },
 
   /**
@@ -28,8 +24,7 @@
     "name": "expanded",
     "type": "Boolean",
     "value": false,
-    "reflectToAttribute": true,
-    "observer": false
+    "reflectToAttribute": true
   },
 
   /**
@@ -39,9 +34,7 @@
   "hideOptionLabels": {
     "name": "hideOptionLabels",
     "type": "Boolean",
-    "value": false,
-    "reflectToAttribute": false,
-    "observer": false
+    "value": false
   },
 
   /**
@@ -50,9 +43,7 @@
   "label": {
     "name": "label",
     "type": "String",
-    "value": null,
-    "reflectToAttribute": false,
-    "observer": false
+    "value": null
   },
 
   /**
@@ -69,9 +60,7 @@
   "options": {
     "name": "options",
     "type": "Array",
-    "value": [[]],
-    "reflectToAttribute": false,
-    "observer": false
+    "value": [[]]
   },
 
   /**
@@ -94,10 +83,8 @@
   "value": {
     "name": "value",
     "type": "Object",
-    "computed": "_getValue(options,__selectedDesc)",
-    "reflectToAttribute": true,
-    "read-only": true,
-    "observer": false
+    "value": "null",
+    "reflectToAttribute": true
   },
 
   /**
@@ -106,30 +93,6 @@
   "__activeDesc": {
     "name": "__activeDesc",
     "type": "String",
-    "value": "option-0-0",
-    "reflectToAttribute": false,
-    "observer": false
-  },
-
-  /**
-   * The ID of the selected option
-   */
-  "__selectedDesc": {
-    "name": "__selectedDesc",
-    "type": "String",
-    "value": "option-0-0",
-    "reflectToAttribute": false,
-    "observer": false
-  },
-
-  /**
-   * The ID of the selected option
-   */
-  "__selectedOption": {
-    "name": "__selectedOption",
-    "type": "Object",
-    "computed": "_getOption(options,__selectedDesc)",
-    "reflectToAttribute": false,
-    "observer": false
+    "value": "option-0-0"
   }
 }

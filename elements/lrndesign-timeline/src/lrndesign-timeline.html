@@ -5,13 +5,13 @@
   <div id="timeline">
       <div id="events" on-scroll="_onScroll">
         <template id="repeat" is="dom-repeat" items="[[eventsData]]" as="event" index-as="index" restamp>
-          <section class="event" has-media$="[[_isSet(event.image)]]">
+          <section class="event" has-media$="[[_isSet(event.image-src)]]">
             <div class="event-overview">
               <div class="heading"><h2>[[event.heading]]</h2></div>
               <div class="media-outer">
-                <template is="dom-if" if="[[_isSet(event.image)]]" restamp>
+                <template is="dom-if" if="[[_isSet(event.image-src)]]" restamp>
                   <div class="media">
-                    <image alt$="[[event.image.alt]]" src$="[[event.image.src]]"/>
+                    <div><image alt$="[[event.image-alt]]" src$="[[event.image-src]]"/></div>
                   </div>
                 </template>
               </div>

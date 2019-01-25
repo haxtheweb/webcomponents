@@ -54,8 +54,7 @@ class SimplePickerOption extends PolymerElement {
         name: "active",
         type: "Boolean",
         value: null,
-        reflectToAttribute: true,
-        observer: false
+        reflectToAttribute: true
       },
 
       /**
@@ -65,8 +64,7 @@ class SimplePickerOption extends PolymerElement {
         name: "icon",
         type: "String",
         value: null,
-        reflectToAttribute: false,
-        observer: false
+        reflectToAttribute: false
       },
 
       /**
@@ -77,8 +75,7 @@ class SimplePickerOption extends PolymerElement {
         name: "hideOptionLabels",
         type: "Boolean",
         value: false,
-        reflectToAttribute: true,
-        observer: false
+        reflectToAttribute: true
       },
 
       /**
@@ -88,8 +85,7 @@ class SimplePickerOption extends PolymerElement {
         name: "order",
         type: "String",
         value: null,
-        reflectToAttribute: true,
-        observer: false
+        reflectToAttribute: true
       },
 
       /**
@@ -99,8 +95,16 @@ class SimplePickerOption extends PolymerElement {
         name: "selected",
         type: "Boolean",
         value: false,
-        reflectToAttribute: true,
-        observer: false
+        reflectToAttribute: true
+      },
+
+      /**
+       * The style of the option. (Required for accessibility.)
+       */
+      data: {
+        name: "data",
+        type: "Object",
+        value: null
       },
 
       /**
@@ -110,8 +114,7 @@ class SimplePickerOption extends PolymerElement {
         name: "title",
         type: "String",
         value: null,
-        reflectToAttribute: true,
-        observer: false
+        reflectToAttribute: true
       },
 
       /**
@@ -119,10 +122,9 @@ class SimplePickerOption extends PolymerElement {
        */
       value: {
         name: "label",
-        type: "Object",
+        type: "String",
         value: null,
-        reflectToAttribute: false,
-        observer: false
+        reflectToAttribute: true
       }
     };
   }

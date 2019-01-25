@@ -3,11 +3,12 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-export { TimelineTool };
+import "./lib/wysiwyg-hello.js";
+
+export { WysiwygRedux };
 /**
- * `timeline-tool`
- * `Makes a HAX-wired timeline`
+ * `wysiwyg-redux`
+ * `a simplified wysiwyg editor`
  *
  * @microcopy - language worth noting:
  *  -
@@ -16,7 +17,7 @@ export { TimelineTool };
  * @polymer
  * @demo demo/index.html
  */
-class TimelineTool extends PolymerElement {
+class WysiwygRedux extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
 
   /**
@@ -24,23 +25,27 @@ class TimelineTool extends PolymerElement {
    * @notice function name must be here for tooling to operate correctly
    */
   static get tag() {
-    return "timeline-tool";
+    return "wysiwyg-redux";
   }
   /**
    * life cycle, element is afixed to the DOM
    */
   connectedCallback() {
     super.connectedCallback();
-    this.HAXWiring = new HAXWiring();
-    this.HAXWiring.setHaxProperties(
-      TimelineTool.haxProperties,
-      TimelineTool.tag,
-      this
-    );
+    window.addEventListener("hello-world", function(e) {
+      console.log("hello window");
+    });
+    this.addEventListener("hello-world", function(e) {
+      console.log("hello element");
+    });
+  }
+
+  ready() {
+    super.ready();
   }
   /**
    * life cycle, element is removed from the DOM
    */
   //disconnectedCallback() {}
 }
-window.customElements.define(TimelineTool.tag, TimelineTool);
+window.customElements.define(WysiwygRedux.tag, WysiwygRedux);

@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/polymer";
 import * as storybookBridge from "@storybook/addon-knobs/polymer";
-import { TimelineTool } from "./timeline-tool.js";
+import { WysiwygRedux } from "./wysiwyg-redux.js";
 
 // need to account for polymer goofiness when webpack rolls this up
 var template = require("raw-loader!./demo/index.html");
@@ -8,26 +8,26 @@ let pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im;
 var array_matches = pattern.exec(template);
 // now template is just the body contents
 template = array_matches[1];
-const stories = storiesOf("Tool", module);
+const stories = storiesOf("Redux", module);
 stories.addDecorator(storybookBridge.withKnobs);
-stories.add("timeline-tool", () => {
+stories.add("wysiwyg-redux", () => {
   var binding = {};
   // start of tag for demo
-  let elementDemo = `<timeline-tool`;
+  let elementDemo = `<wysiwyg-redux`;
   // mix in properties defined on the class
-  for (var key in TimelineTool.properties) {
+  for (var key in WysiwygRedux.properties) {
     // skip prototype
-    if (!TimelineTool.properties.hasOwnProperty(key)) continue;
+    if (!WysiwygRedux.properties.hasOwnProperty(key)) continue;
     // convert typed props
-    if (TimelineTool.properties[key].type.name) {
+    if (WysiwygRedux.properties[key].type.name) {
       let method = "text";
-      switch (TimelineTool.properties[key].type.name) {
+      switch (WysiwygRedux.properties[key].type.name) {
         case "Boolean":
         case "Number":
         case "Object":
         case "Array":
         case "Date":
-          method = TimelineTool.properties[key].type.name.toLowerCase();
+          method = WysiwygRedux.properties[key].type.name.toLowerCase();
           break;
         default:
           method = "text";
@@ -35,7 +35,7 @@ stories.add("timeline-tool", () => {
       }
       binding[key] = storybookBridge[method](
         key,
-        TimelineTool.properties[key].value
+        WysiwygRedux.properties[key].value
       );
       // ensure ke-bab case
       let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(
@@ -46,8 +46,8 @@ stories.add("timeline-tool", () => {
       elementDemo += ` ${kebab}="${binding[key]}"`;
     }
   }
-  const innerText = storybookBridge.text("Inner contents", "Tool");
-  elementDemo += `> ${innerText}</timeline-tool>`;
+  const innerText = storybookBridge.text("Inner contents", "Redux");
+  elementDemo += `> ${innerText}</wysiwyg-redux>`;
   return `
   <h1>Live demo</h1>
   ${elementDemo}

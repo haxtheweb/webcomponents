@@ -1,4 +1,63 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{LrndesignGalleryBehaviors}from"./lib/lrndesign-gallery-behaviors.js";import"./lib/lrndesign-gallery-details.js";import"./lib/lrndesign-gallery-zoom.js";export{LrndesignGallery};class LrndesignGallery extends LrndesignGalleryBehaviors{static get tag(){return"lrndesign-gallery"}static get behaviors(){return[LrndesignGalleryBehaviors]}static get template(){return html`
+/**
+ * Copyright 2018 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { LrndesignGalleryBehaviors } from "./lrndesign-gallery-behaviors.js";
+import "./lrndesign-gallery-details.js";
+import "./lrndesign-gallery-zoom.js";
+
+export { LrndesignGalleryCarousel };
+/**
+ * `lrndesign-gallery-carousel`
+ * `An element that renders a collection of gallery items into a carousel or a single media item into a layout.`
+ *
+ * @microcopy - language worth noting:```
+ <lrndesign-gallery-carousel 
+  accent-color="grey"               //optional, the accent color from simple-colors; default is grey
+  dark                              //optional, if true, gallery will use the simple-colors dark theme; default is false (light-theme)
+  id="mygallery1"                   //optional, a unique id for the gallery; if true, you can use the id in anchors to access gallery items on page load
+  sources="[]"                      //required, array of image sources
+  sizing="contain"                  //optional, "cover" for cropping (default) or "contain" for letterboxing
+  title="My Gallery">               //optional, the title of the gallery
+  Optional description of the gallery.
+</lrndesign-gallery-carousel>```
+ * where `sources` array is:```
+[{
+  "alt": "IMAGE ALT TEXT",                          //required
+  "details": "TEXT ABOUT IMAGE HERE",               //optional 
+  "heading": "IMAGE HEADING HERE",                  //required, the image heading when in zoom mode
+  "id": "123"                                       //required, unique id  
+  "sizing": "contain",                              //optional, "cover" for cropping (default) or "contain" for letterboxing, default is parent's sizing
+  "large": "PATH/TO/LARGE/IMAGE/HERE.JPG",          //optional, larger image for zoom instead of src 
+  "src": "PATH/TO/FULL/IMAGE/HERE.JPG",             //required
+  "thumbnail": "PATH/TO/THUMBAIL/IMAGE/HERE.JPG",   //required
+  "tooltip": "IMAGE TOOLTIP HERE",                  //required, the tooltip for the image thumbnail
+  "title": "IMAGE TITLE HERE",                      //optional, the image title when viewed
+  "type": "image",                                  //required, "image", "video", "audio", etc.
+}]```
+ *
+ * @customElement
+ * @polymer
+ * @demo demo/index.html demo
+ */
+class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
+  /**
+   * Store the tag name to make it easier to obtain directly.
+   * @notice function name must be here for tooling to operate correctly
+   */
+  static get tag() {
+    return "lrndesign-gallery-carousel";
+  }
+
+  //get gallery behaviors
+  static get behaviors() {
+    return [LrndesignGalleryBehaviors];
+  }
+
+  // render function
+  static get template() {
+    return html`
       <style is="custom-style" include="lrndesign-gallery-shared-styles">
         :host {
           margin: 15px 0 0;
@@ -122,6 +181,10 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
         :host .gallerythumb[disabled] {
           @apply --lrndesign-gallery-thumbnail-image-selected;
         }
+        :host .gallerythumb iron-image {
+          width: 40px;
+          height: 40px;
+        }
         :host([responsive-size="xs"]) .gallerythumb iron-image {
           display: none;
         }
@@ -151,7 +214,7 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
           top: 20px;
         }
       </style>
-      <article id="gallery">
+      <article id="carousel">
         <template is="dom-if" if="[[_isAttrSet(title)]]">
           <h1 id="gallerytitle">[[title]]</h1>
         </template>
@@ -267,7 +330,7 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
                           on-tap="_onNavTapped"
                           disabled$="[[_isSelected(selected,item)]]"
                           target$="[[item.target]]"
-                          title=""
+                          title
                         >
                           <iron-image
                             alt$="[[item.alt]]"
@@ -310,4 +373,115 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
           </template>
         </div>
       </article>
-    `}static get properties(){return{__imageStyle:{type:String,computed:"_getImageStyle(extraWide,responsiveSize)"}}}ready(){super.ready();if(this.selected.scroll){let target=this.$.carouselitem;this._scrollIntoView([this._getParentOffset(target)]);if(!this.selected.zoomed)target.focus()}}goToItem(index){let root=this;if("number"===typeof index&&0<=index&&index<root.items.length){root.selected=root.items[index];root.__xOfY=parseInt(root.selected.index+1)+" of "+root.items.length}}_getImageStyle(extraWide,responsiveSize){if(extraWide||"xs"===responsiveSize){return"padding-bottom: "+100/this.aspectRatio+"%;"}else{if("xl"===responsiveSize){return"width: "+400*this.aspectRatio+"px; height: 400px;"}else if("lg"===responsiveSize){return"width: "+300*this.aspectRatio+"px; height: 300px;"}else if("md"===responsiveSize){return"width: "+200*this.aspectRatio+"px; height: 200px;"}else{return"width: "+200*this.aspectRatio+"px; height: 200px;"}}}_getIndex(index,step){return index+step}_hideNav(items){return items!==void 0?2>items.length:!0}_onPrev(e){this.goToItem(parseInt(this.$.carouselprev.getAttribute("index")))}_onNext(e){this.goToItem(parseInt(this.$.carouselnext.getAttribute("index")))}_onNavTapped(e){this.goToItem(e.model.item.index)}_updateDetails(){this.$.itembody.innerHTML=this.item.details}}window.customElements.define(LrndesignGallery.tag,LrndesignGallery);
+    `;
+  }
+  // properties available to the custom element for data binding
+  static get properties() {
+    return {
+      /**
+       * height css of iron image (sets aspect ratio in xs or extraWide)
+       */
+      __imageStyle: {
+        type: String,
+        computed: "_getImageStyle(extraWide,responsiveSize)"
+      }
+    };
+  }
+
+  /**
+   * life cycle, element is ready
+   */
+  ready() {
+    super.ready();
+    if (this.selected.scroll) {
+      let target = this.$.carouselitem;
+      this._scrollIntoView([this._getParentOffset(target)]);
+      if (!this.selected.zoomed) target.focus();
+    }
+  }
+
+  /**
+   * go to item by id, or index
+   *
+   * @param {o}
+   */
+  goToItem(index) {
+    let root = this;
+    if (typeof index === "number" && index >= 0 && index < root.items.length) {
+      root.selected = root.items[index];
+      root.__xOfY =
+        parseInt(root.selected.index + 1) + " of " + root.items.length;
+    }
+  }
+
+  /**
+   * returns the proper padding to maintain image aspect ratio and
+   *
+   * @param {boolean} whether on not the first image is extra wide
+   * @param {string} the responsive size of the gallery, as in 'xs','sm','md','lg', or 'xl'
+   * @returns {string} the style for the image
+   */
+  _getImageStyle(extraWide, responsiveSize) {
+    if (extraWide || responsiveSize === "xs") {
+      return "padding-bottom: " + 100 / this.aspectRatio + "%;";
+    } else {
+      if (responsiveSize === "xl") {
+        return "width: " + this.aspectRatio * 400 + "px; height: 400px;";
+      } else if (responsiveSize === "lg") {
+        return "width: " + this.aspectRatio * 300 + "px; height: 300px;";
+      } else if (responsiveSize === "md") {
+        return "width: " + this.aspectRatio * 200 + "px; height: 200px;";
+      } else {
+        return "width: " + this.aspectRatio * 200 + "px; height: 200px;";
+      }
+    }
+  }
+
+  /**
+   * returns index of the previous or next item
+   *
+   *
+   */
+  _getIndex(index, step) {
+    return index + step;
+  }
+
+  /**
+   * gets unique id for carousel and sets it as a target
+   */
+  _hideNav(items) {
+    return items !== undefined ? items.length < 2 : true;
+  }
+
+  /**
+   * when a prev is tapped, goes to the prev item
+   */
+  _onPrev(e) {
+    this.goToItem(parseInt(this.$.carouselprev.getAttribute("index")));
+  }
+
+  /**
+   * when a next is tapped, goes to the next item
+   */
+  _onNext(e) {
+    this.goToItem(parseInt(this.$.carouselnext.getAttribute("index")));
+  }
+
+  /**
+   * when a thumbnail is tapped, goes to that item
+   */
+  _onNavTapped(e) {
+    this.goToItem(e.model.item.index);
+  }
+
+  /**
+   * updates the item details
+   */
+  _updateDetails() {
+    this.$.itembody.innerHTML = this.item.details;
+  }
+}
+window.customElements.define(
+  LrndesignGalleryCarousel.tag,
+  LrndesignGalleryCarousel
+);

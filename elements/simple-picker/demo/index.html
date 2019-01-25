@@ -29,28 +29,32 @@
               [
                 {
                   "alt": "sans-serif",               //sets the option's font-family, so that user can preview the option
-                  "style": "font-family: sans-serif"
+                  "style": "font-family: sans-serif",
+                  "value": "sans-serif"
                 }
               ],[
                 {
                   "alt": "serif",
-                  "style": "font-family: serif"
+                  "style": "font-family: serif",
+                  "value": "serif"
                 }
               ],[
                 {
                   "alt": "monospace",
                   "selected": true,
-                  "style": "font-family: monospace"
+                  "style": "font-family: monospace",
+                  "value": "monospace"
                 }
               ],[
                 {
                   "alt": "cursive",
-                  "style": "font-family: cursive"
+                  "style": "font-family: cursive",
+                  "value": "cursive"
                 }
               ]
             ];
           </script>
-          <simple-picker id="picker" label="Pick a Font-Family" position="right"></simple-picker>
+          <simple-picker id="picker" label="Pick a Font-Family" position="right" value="monospace"></simple-picker>
         </template>
       </demo-snippet>
       <h3>simple-picker as a Color-Picker</h3>
@@ -101,37 +105,45 @@
             document.getElementById('iconpicker').options = [
               [
                 {
-                  "alt": "none"
+                  "alt": "none",
+                  "value": "none"
                 },{
                   "icon": "check",
-                  "alt": "OK"
+                  "alt": "OK",
+                  "value": "check"
                 },{
                   "icon": "clear",
-                  "alt": "Cancel"
+                  "alt": "Cancel",
+                  "value": "clear"
                 },{
                   "icon": "search",
-                  "alt": "Find"
+                  "alt": "Find",
+                  "value": "search"
                 }
               ],[
                 {
                   "icon": "arrow-back", //sets the option's iron-icon
-                  "alt": "Left"
+                  "alt": "Left",
+                  "value": "arrow-back"
                 },{
                   "icon": "arrow-downward",
-                  "alt": "Down"
+                  "alt": "Down",
+                  "value": "arrow-downward"
                 },{
                   "icon": "arrow-forward",
-                  "alt": "Right"
+                  "alt": "Right",
+                  "value": "arrow-forward"
                 },{
                   "icon": "arrow-upward",
-                  "alt": "Up"
+                  "alt": "Up",
+                  "value": "arrow-upward"
                 }
               ]
             ];
           </script>
           <div id="icondemo">
             <label id="iconpicker-label">Pick an Icon: </label> 
-            <simple-picker id="iconpicker" hide-option-labels aria-labelledby="iconpicker-label"></simple-picker>
+            <simple-picker id="iconpicker" hide-option-labels aria-labelledby="iconpicker-label" value="search"></simple-picker>
           </div>
         </template>
       </demo-snippet>

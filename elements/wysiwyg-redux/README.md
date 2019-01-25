@@ -1,26 +1,26 @@
-# &lt;timeline-tool&gt;
+# &lt;wysiwyg-redux&gt;
 
-Tool
-> Makes a HAX-wired timeline
+Redux
+> a simplified wysiwyg editor
 
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing JS module / web component */
-import '@lrnwebcomponents/timeline-tool/timeline-tool.js';
+import '@lrnwebcomponents/wysiwyg-redux/wysiwyg-redux.js';
 /* At top of an application with build routine */
-<script type="module" src="@lrnwebcomponents/timeline-tool/timeline-tool.js"></script>
+<script type="module" src="@lrnwebcomponents/wysiwyg-redux/wysiwyg-redux.js"></script>
 /* Alternatives for top of application */
 <script type="module">
-  import '@lrnwebcomponents/timeline-tool/timeline-tool.js';
+  import '@lrnwebcomponents/wysiwyg-redux/wysiwyg-redux.js';
   // imperative form
-  import {TimelineTool} from '@lrnwebcomponents/timeline-tool';
+  import {WysiwygRedux} from '@lrnwebcomponents/wysiwyg-redux';
   // if you don't have a build routine and need to reference directly
-  import './node_modules/@lrnwebcomponents/timeline-tool/timeline-tool.js';
+  import './node_modules/@lrnwebcomponents/wysiwyg-redux/wysiwyg-redux.js';
 </script>
 // via unpkg CDN (good for testing)
-<script type="module" src="https://unpkg.com/@lrnwebcomponents/timeline-tool/timeline-tool.js"></script>
+<script type="module" src="https://unpkg.com/@lrnwebcomponents/wysiwyg-redux/wysiwyg-redux.js"></script>
 ```
 
 ## Develop / Demo
@@ -52,7 +52,7 @@ $ yarn run build
 
 ## Code style
 
-Tool (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
+Redux (and all lrnwebcomponents) use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
 
 [prettier]: https://github.com/prettier/prettier/
 [prettier-ed]: https://github.com/prettier/prettier/#editor-integration

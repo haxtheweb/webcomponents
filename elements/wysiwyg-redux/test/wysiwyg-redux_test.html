@@ -5,29 +5,29 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
     <script src="../node_modules/wct-browser-legacy/browser.js"></script>
-    <script type="module" src="../timeline-tool.js"></script>
+    <script type="module" src="../wysiwyg-redux.js"></script>
   </head>
   <body>
 
-    <timeline-tool>
+    <wysiwyg-redux>
       This is the element content.
-    </timeline-tool>
+    </wysiwyg-redux>
 <test-fixture id="BasicTestFixture">
   <template>
-    <timeline-tool></timeline-tool>
+    <wysiwyg-redux></wysiwyg-redux>
   </template>
 </test-fixture>
 
 <test-fixture id="ChangedPropertyTestFixture">
   <template>
-    <timeline-tool></timeline-tool>
+    <wysiwyg-redux></wysiwyg-redux>
   </template>
 </test-fixture>
 
 <script type="module">
-  suite('<timeline-tool>', () => {
+  suite('<wysiwyg-redux>', () => {
     test('it should upgrade', () => {
-      assert.instanceOf(document.querySelector('timeline-tool'), customElements.get("timeline-tool", 'timeline-tool should be an instance of timelineTool'));
+      assert.instanceOf(document.querySelector('wysiwyg-redux'), customElements.get("wysiwyg-redux", 'wysiwyg-redux should be an instance of wysiwygRedux'));
     });
 
     /*test('setting a property on the element works', () => {

@@ -1,1 +1,85 @@
-{}
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Timeline",
+    "description": "A timeline of events with images and text",
+    "icon": "icons:timeline",
+    "color": "indigo",
+    "groups": ["Content", "Instructional", "Media", "Image"],
+    "handles": [],
+    "meta": {
+      "author": "LRNWebComponents"
+    }
+  },
+  "settings": {
+    "quick": [
+      {
+        "property": "accent-color",
+        "title": "Accent Color",
+        "description": "An optional accent color.",
+        "inputMethod": "colorpicker",
+        "icon": "editor:format-color-fill"
+      },
+      {
+        "property": "dark",
+        "title": "Dark Theme",
+        "description": "Enable Dark Theme",
+        "inputMethod": "boolean",
+        "icon": "icons:invert-colors"
+      }
+    ],
+    "configure": [
+      {
+        "property": "title",
+        "title": "Timeline Title",
+        "description": "A title for the timeline.",
+        "inputMethod": "textfield"
+      },
+      {
+        "slot": "",
+        "title": "Timeline Description",
+        "description": "Optional text describing the timeline.",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "events",
+        "title": "Timeline Events",
+        "description": "The events in the timeline",
+        "inputMethod": "array",
+        "properties": [
+          {
+            "property": "heading",
+            "title": "Event Heading",
+            "description": "The heading for the event.",
+            "inputMethod": "textfield",
+            "icon": "editor:title"
+          },
+          {
+            "property": "details",
+            "title": "Event Details",
+            "description": "The body text with details for the event.",
+            "inputMethod": "textfield",
+            "icon": "editor:title"
+          },
+          {
+            "property": "image-src",
+            "title": "Event Image",
+            "description": "The path of the image.",
+            "inputMethod": "textfield",
+            "icon": "editor:title"
+          },
+          {
+            "property": "image-alt",
+            "title": "Event Image Alt Text",
+            "description": "The alt text of the image (for accessibility).",
+            "inputMethod": "textfield",
+            "icon": "editor:title"
+          }
+        ]
+      }
+    ],
+    "advanced": []
+  }
+}
