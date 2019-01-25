@@ -391,7 +391,7 @@ Polymer({
             hide-filter-button=""
             hidden\$="[[!showSearch]]"
           ></paper-search-bar>
-          <map-menu id="mapmenu" manifest="[[manifest]]">
+          <map-menu id="mapmenu" manifest="[[_routerManifest]]">
             <!-- Server response will populate this -->
           </map-menu>
         </div>
@@ -755,6 +755,13 @@ Polymer({
       reflectToAttribute: true,
       value: false,
       observer: "_fullWidthChanged"
+    },
+    /**
+     * Private state for _routerManifest
+     */
+    _routerManifest: {
+      type: Object,
+      value: {}
     }
   },
 
@@ -763,6 +770,15 @@ Polymer({
    */
   ready: function(e) {
     this.setupHAXTheme(true, this.$.contentcontainer);
+    window.dispatchEvent(
+      new CustomEvent("haxcms-router-manifest-subscribe", {
+        detail: {
+          callback: "_haxcmsRouterManifestSubscribeHandler",
+          scope: this,
+          setup: true
+        }
+      })
+    );
     window.SimpleToast.requestAvailability();
     this.$.bodyloading.hidden = true;
     // scroll top into view
@@ -796,6 +812,10 @@ Polymer({
       "link-clicked",
       this._menuItemClicked.bind(this)
     );
+  },
+  _haxcmsRouterManifestSubscribeHandler: function(e) {
+    this._routerManifest = {};
+    this._routerManifest = e.detail;
   },
   _menuItemClicked: function(e) {
     let i = this.manifest.items.findIndex(j => j.id === e.detail.id);

@@ -84,7 +84,7 @@ Polymer({
    * options.callback = '_routerManifestChanged'
    * options.scope = this
    * options.setup = true
-   * window.dispatchEvent(new CustomEvent('haxcms-router-manifest-subscribe', options))
+   * window.dispatchEvent(new CustomEvent('haxcms-router-manifest-subscribe', { detial: options }))
    *
    *
    *
@@ -182,6 +182,7 @@ Polymer({
    * @param {object} manifest
    */
   _updateRouter: function(manifest) {
+    if (!manifest) return;
     let options = {};
     if (this.baseURI) {
       options.baseUrl = this.baseURI;
@@ -196,6 +197,7 @@ Polymer({
     });
     router.setRoutes([
       ...routerItems,
+      { path: "/", component: "haxcms-site-router-location", name: "home" },
       { path: "/(.*)", component: "haxcms-site-router-location", name: "404" }
     ]);
   },
@@ -206,8 +208,13 @@ Polymer({
    * @param {event} e
    */
   _routerLocationChanged: function(e) {
+    // dispatch a haxcms-site-router prefixed event
+    window.dispatchEvent(
+      new CustomEvent("haxcms-site-router-location-changed", {
+        detail: e.detail.location
+      })
+    );
     const activeItem = e.detail.location.route.name;
-    console.log("activeItem:", activeItem);
     let find = this.manifest.items.filter(item => {
       if (item.id !== activeItem) {
         return false;
