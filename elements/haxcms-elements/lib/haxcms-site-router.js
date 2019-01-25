@@ -52,6 +52,10 @@ Polymer({
       "haxcms-router-manifest-subscribe",
       this._haxcmsRouterManifestSubscribe.bind(this)
     );
+    window.addEventListener(
+      "json-outline-schema-changed",
+      this._jsonOutlineSchemaChangedHandler.bind(this)
+    );
   },
   attached: function() {},
   /**
@@ -222,5 +226,16 @@ Polymer({
         }, 150);
       });
     }
+  },
+
+  /**
+   * Listen to changes to the root manifest update the local
+   * state.
+   * @param {event} e
+   */
+  _jsonOutlineSchemaChangedHandler: function(e) {
+    const manifest = e.detail;
+    this.manifest = {};
+    this.manifest = manifest;
   }
 });
