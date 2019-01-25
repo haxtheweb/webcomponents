@@ -7,9 +7,6 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
  * `awesome-explosion`
  * `An awesome, explosion.`
  *
- * @microcopy - language worth noting:
- *  -
- *
  * @customElement
  * @polymer
  * @polymerLegacy
@@ -18,53 +15,51 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
  */
 let AwesomeExplosion = Polymer({
   _template: html`
-    <custom-style>
-      <style is="custom-style">
-        :host {
-          display: inline-block;
-        }
-        :host([size="tiny"]) #image {
-          width: 80px;
-          height: 80px;
-        }
-        :host([size="small"]) #image {
-          width: 160px;
-          height: 160px;
-        }
-        :host([size="medium"]) #image {
-          width: 240px;
-          height: 240px;
-        }
-        :host([size="large"]) #image {
-          width: 320px;
-          height: 320px;
-        }
-        :host([size="epic"]) #image {
-          width: 720px;
-          height: 720px;
-        }
+    <style>
+      :host {
+        display: inline-block;
+      }
+      :host([size="tiny"]) #image {
+        width: 80px;
+        height: 80px;
+      }
+      :host([size="small"]) #image {
+        width: 160px;
+        height: 160px;
+      }
+      :host([size="medium"]) #image {
+        width: 240px;
+        height: 240px;
+      }
+      :host([size="large"]) #image {
+        width: 320px;
+        height: 320px;
+      }
+      :host([size="epic"]) #image {
+        width: 720px;
+        height: 720px;
+      }
 
-        :host([color="red"]) #image {
-          filter: sepia() saturate(10000%) hue-rotate(30deg);
-        }
-        :host([color="purple"]) #image {
-          filter: sepia() saturate(10000%) hue-rotate(290deg);
-        }
-        :host([color="blue"]) #image {
-          filter: sepia() saturate(10000%) hue-rotate(210deg);
-        }
-        :host([color="orange"]) #image {
-          filter: sepia() saturate(10000%) hue-rotate(320deg);
-        }
-        :host([color="yellow"]) #image {
-          filter: sepia() saturate(10000%) hue-rotate(70deg);
-        }
-        #image {
-          width: 240px;
-          height: 240px;
-        }
-      </style>
-    </custom-style>
+      :host([color="red"]) #image {
+        filter: sepia() saturate(10000%) hue-rotate(30deg);
+      }
+      :host([color="purple"]) #image {
+        filter: sepia() saturate(10000%) hue-rotate(290deg);
+      }
+      :host([color="blue"]) #image {
+        filter: sepia() saturate(10000%) hue-rotate(210deg);
+      }
+      :host([color="orange"]) #image {
+        filter: sepia() saturate(10000%) hue-rotate(320deg);
+      }
+      :host([color="yellow"]) #image {
+        filter: sepia() saturate(10000%) hue-rotate(70deg);
+      }
+      #image {
+        width: 240px;
+        height: 240px;
+      }
+    </style>
     <img src="[[image]]" id="image" class="image-tag" alt="" />
   `,
 

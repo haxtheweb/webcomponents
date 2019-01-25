@@ -17,11 +17,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 18,
+          "line": 15,
           "column": 23
         },
         "end": {
-          "line": 230,
+          "line": 225,
           "column": 2
         }
       },
@@ -48,11 +48,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 78,
               "column": 4
             },
             "end": {
-              "line": 87,
+              "line": 82,
               "column": 5
             }
           },
@@ -70,11 +70,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 91,
+              "line": 86,
               "column": 4
             },
             "end": {
-              "line": 94,
+              "line": 89,
               "column": 5
             }
           },
@@ -92,11 +92,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 98,
+              "line": 93,
               "column": 4
             },
             "end": {
-              "line": 101,
+              "line": 96,
               "column": 5
             }
           },
@@ -114,11 +114,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 105,
+              "line": 100,
               "column": 4
             },
             "end": {
-              "line": 108,
+              "line": 103,
               "column": 5
             }
           },
@@ -136,11 +136,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 112,
+              "line": 107,
               "column": 4
             },
             "end": {
-              "line": 116,
+              "line": 111,
               "column": 5
             }
           },
@@ -158,11 +158,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 120,
+              "line": 115,
               "column": 4
             },
             "end": {
-              "line": 124,
+              "line": 119,
               "column": 5
             }
           },
@@ -180,11 +180,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 129,
+              "line": 124,
               "column": 4
             },
             "end": {
-              "line": 133,
+              "line": 128,
               "column": 5
             }
           },
@@ -202,11 +202,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 138,
+              "line": 133,
               "column": 4
             },
             "end": {
-              "line": 142,
+              "line": 137,
               "column": 5
             }
           },
@@ -224,11 +224,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 146,
+              "line": 141,
               "column": 4
             },
             "end": {
-              "line": 150,
+              "line": 145,
               "column": 5
             }
           },
@@ -247,11 +247,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 156,
+              "line": 151,
               "column": 2
             },
             "end": {
-              "line": 167,
+              "line": 162,
               "column": 3
             }
           },
@@ -274,11 +274,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 172,
+              "line": 167,
               "column": 2
             },
             "end": {
-              "line": 180,
+              "line": 175,
               "column": 3
             }
           },
@@ -301,11 +301,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 185,
+              "line": 180,
               "column": 2
             },
             "end": {
-              "line": 193,
+              "line": 188,
               "column": 3
             }
           },
@@ -328,11 +328,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 198,
+              "line": 193,
               "column": 2
             },
             "end": {
-              "line": 205,
+              "line": 200,
               "column": 3
             }
           },
@@ -348,11 +348,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 210,
+              "line": 205,
               "column": 2
             },
             "end": {
-              "line": 212,
+              "line": 207,
               "column": 3
             }
           },
@@ -372,11 +372,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 217,
+              "line": 212,
               "column": 2
             },
             "end": {
-              "line": 219,
+              "line": 214,
               "column": 3
             }
           },
@@ -396,11 +396,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 224,
+              "line": 219,
               "column": 2
             },
             "end": {
-              "line": 229,
+              "line": 224,
               "column": 3
             }
           },
@@ -416,11 +416,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 18,
+          "line": 15,
           "column": 31
         },
         "end": {
-          "line": 230,
+          "line": 225,
           "column": 1
         }
       },
@@ -433,11 +433,11 @@
           "description": "State is for setting:\nPossible values: play, pause, stop",
           "sourceRange": {
             "start": {
-              "line": 83,
+              "line": 78,
               "column": 4
             },
             "end": {
-              "line": 87,
+              "line": 82,
               "column": 5
             }
           },
@@ -449,11 +449,11 @@
           "description": "Allow for stopping the sound effect.",
           "sourceRange": {
             "start": {
-              "line": 91,
+              "line": 86,
               "column": 4
             },
             "end": {
-              "line": 94,
+              "line": 89,
               "column": 5
             }
           },
@@ -465,11 +465,11 @@
           "description": "Allow for playing the sound effect.",
           "sourceRange": {
             "start": {
-              "line": 98,
+              "line": 93,
               "column": 4
             },
             "end": {
-              "line": 101,
+              "line": 96,
               "column": 5
             }
           },
@@ -481,11 +481,11 @@
           "description": "Allow for pausing the sound effect.",
           "sourceRange": {
             "start": {
-              "line": 105,
+              "line": 100,
               "column": 4
             },
             "end": {
-              "line": 108,
+              "line": 103,
               "column": 5
             }
           },
@@ -497,11 +497,11 @@
           "description": "This allows you to swap out the image",
           "sourceRange": {
             "start": {
-              "line": 112,
+              "line": 107,
               "column": 4
             },
             "end": {
-              "line": 116,
+              "line": 111,
               "column": 5
             }
           },
@@ -513,11 +513,11 @@
           "description": "This allows you to swap out the sound.",
           "sourceRange": {
             "start": {
-              "line": 120,
+              "line": 115,
               "column": 4
             },
             "end": {
-              "line": 124,
+              "line": 119,
               "column": 5
             }
           },
@@ -529,11 +529,11 @@
           "description": "This is the size of the element. Possible values are:\ntiny, small, medium, large, epic",
           "sourceRange": {
             "start": {
-              "line": 129,
+              "line": 124,
               "column": 4
             },
             "end": {
-              "line": 133,
+              "line": 128,
               "column": 5
             }
           },
@@ -545,11 +545,11 @@
           "description": "This is to change the color of the element. Possible values are:\nred, blue, orange, yellow",
           "sourceRange": {
             "start": {
-              "line": 138,
+              "line": 133,
               "column": 4
             },
             "end": {
-              "line": 142,
+              "line": 137,
               "column": 5
             }
           },
@@ -561,11 +561,11 @@
           "description": "Allow for resetting the sound effect.",
           "sourceRange": {
             "start": {
-              "line": 146,
+              "line": 141,
               "column": 4
             },
             "end": {
-              "line": 150,
+              "line": 145,
               "column": 5
             }
           },
