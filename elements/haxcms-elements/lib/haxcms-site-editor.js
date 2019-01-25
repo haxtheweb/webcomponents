@@ -75,7 +75,7 @@ Polymer({
       }
     </style>
     <iron-ajax
-      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
+      headers='{"Authorization": "Bearer [[jwt]]"}'
       id="pageupdateajax"
       url="[[savePagePath]]"
       method="POST"
@@ -85,7 +85,7 @@ Polymer({
       on-response="_handlePageResponse"
     ></iron-ajax>
     <iron-ajax
-      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
+      headers='{"Authorization": "Bearer [[jwt]]"}'
       id="outlineupdateajax"
       url="[[saveOutlinePath]]"
       method="POST"
@@ -95,7 +95,7 @@ Polymer({
       on-response="_handleOutlineResponse"
     ></iron-ajax>
     <iron-ajax
-      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
+      headers='{"Authorization": "Bearer [[jwt]]"}'
       id="manifestupdateajax"
       url="[[saveManifestPath]]"
       method="POST"
@@ -105,7 +105,7 @@ Polymer({
       on-response="_handleManifestResponse"
     ></iron-ajax>
     <iron-ajax
-      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
+      headers='{"Authorization": "Bearer [[jwt]]"}'
       id="publishajax"
       loading="{{publishing}}"
       url="[[publishSitePath]]"
@@ -116,7 +116,7 @@ Polymer({
       on-response="_handlePublishResponse"
     ></iron-ajax>
     <iron-ajax
-      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
+      headers='{"Authorization": "Bearer [[jwt]]"}'
       id="createajax"
       url="[[createPagePath]]"
       method="POST"
@@ -127,7 +127,7 @@ Polymer({
       last-response="{{__createPageResponse}}"
     ></iron-ajax>
     <iron-ajax
-      headers="{&quot;Authorization&quot;: &quot;Bearer [[jwt]]&quot;}"
+      headers='{"Authorization": "Bearer [[jwt]]"}'
       id="deleteajax"
       url="[[deletePagePath]]"
       method="POST"

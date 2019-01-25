@@ -1,4 +1,4 @@
-import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/responsive-utility/responsive-utility.js";import"./node_modules/@polymer/polymer/lib/elements/dom-repeat.js";export{LrndesignTimeline};class LrndesignTimeline extends SimpleColors{static get template(){return html`
+import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import{HAXWiring}from"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/schema-behaviors/schema-behaviors.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/responsive-utility/responsive-utility.js";export{LrndesignTimeline};class LrndesignTimeline extends SimpleColors{static get template(){return html`
 <style>:host {
   font-size: 14px;
   font-weight: 100;
@@ -55,24 +55,24 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
   max-width: 100%;
   max-height: 260px;
 }
-:host(:not([timeline-size*="s"])) #timeline {
+:host(:not([timeline-size="xs"])) #timeline {
   background-color: var(--lrndesign-timeline-background);
 }
-:host(:not([timeline-size*="s"])) #events {
+:host(:not([timeline-size="xs"])) #events {
   height: 300px;
   position: relative;
   overflow-y: scroll;
 }
-:host(:not([timeline-size*="s"])) .event {
+:host(:not([timeline-size="xs"])) .event {
   position: static;
   top: 0;
 }
-:host(:not([timeline-size*="s"])) .event-overview {
+:host(:not([timeline-size="xs"])) .event-overview {
   padding: 0;
   position: sticky;
   top: 0;
 }
-:host(:not([timeline-size*="s"])) .heading {
+:host(:not([timeline-size="xs"])) .heading {
   position: absolute;
   top: 0;
   padding: 10px 0;
@@ -80,10 +80,10 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
   background-color: transparent;
   width: calc(55% + 30px);
 }
-:host(:not([timeline-size*="s"])) .event[has-media][selected] .heading {
+:host(:not([timeline-size="xs"])) .event[has-media][selected] .heading {
   z-index: 2;
 }
-:host(:not([timeline-size*="s"])) .event[has-media] .heading:after {
+:host(:not([timeline-size="xs"])) .event[has-media] .heading:after {
   content: ' ';
   z-index: 200;
   position: absolute;
@@ -97,14 +97,14 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
   transition: all 0.3s;
   transition-delay: 0.2s;
 }
-:host(:not([timeline-size*="s"])) .event[has-media][selected] .heading:after {
+:host(:not([timeline-size="xs"])) .event[has-media][selected] .heading:after {
   top: 7px;
   right: 0px;
   border-top: 35px solid transparent;
   border-bottom: 35px solid transparent; 
   border-left: 35px solid var(--lrndesign-timeline-header-accent);
 }
-:host(:not([timeline-size*="s"])) .heading h2 {
+:host(:not([timeline-size="xs"])) .heading h2 {
   margin: 7px 48px 0 20px;
   padding: 0 20px;
   line-height: 50px;
@@ -113,24 +113,25 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
   background-color: var(--lrndesign-timeline-background);
   transition: background-color 0.3s;
 }
-:host(:not([timeline-size*="s"])) .event[selected] .heading h2 {
+:host(:not([timeline-size="xs"])) .event[selected] .heading h2 {
   background-color: var(--lrndesign-timeline-header-accent);
   color:  var(--lrndesign-timeline-header);
 }
-:host(:not([timeline-size*="s"])) .event[has-media] .heading h2:after {
+:host(:not([timeline-size="xs"])) .event[has-media] .heading h2:after {
   content: '';
   position: absolute;
   left: calc(100% - 48px);
+  top: 17px;
   height: 50px;
   width: 0px;
   transition: all 0.3s;
   background-color: var(--lrndesign-timeline-background);
 }
-:host(:not([timeline-size*="s"])) .event[has-media][selected] .heading h2:after {
+:host(:not([timeline-size="xs"])) .event[has-media][selected] .heading h2:after {
   width: 13px;
   background-color: var(--lrndesign-timeline-header-accent);
 }
-:host(:not([timeline-size*="s"])) .media-outer {
+:host(:not([timeline-size="xs"])) .media-outer {
   display: flex;
   align-items: center;
   position: absolute;
@@ -138,17 +139,17 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
   width: 45%;
   height: 300px;
 }
-:host(:not([timeline-size*="s"])) .media {
+:host(:not([timeline-size="xs"])) .media {
   display: flex;
   padding: 20px 20px 20px 50px;
   opacity: 0;
   transition: opacity 0.3s delay 0.3s;
 }
-:host(:not([timeline-size*="s"])) .event[selected] .media {
+:host(:not([timeline-size="xs"])) .event[selected] .media {
   opacity: 1;
   transition-delay: 0s;
 }
-:host(:not([timeline-size*="s"])) .details {
+:host(:not([timeline-size="xs"])) .details {
   padding: 67px 20px 20px;
   margin: 0 20px;
   width: calc(55% - 80px);
@@ -158,19 +159,19 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
   border-radius: 3px;
   transition: all 0.5s;
 }
-:host(:not([timeline-size*="s"])) .event:last-of-type .details {
+:host(:not([timeline-size="xs"])) .event:last-of-type .details {
   min-height: 180px;
 }
-:host(:not([timeline-size*="s"])) .event[selected] .details {
+:host(:not([timeline-size="xs"])) .event[selected] .details {
   color: var(--lrndesign-timeline-accent);
   background-color:  var(--lrndesign-timeline-accent-background);
   border: 1px solid var(--lrndesign-timeline-border);
   box-shadow: 0 2px 2px var(--lrndesign-timeline-border);
 }
-:host(:not([timeline-size*="s"])) .event:first-of-type[selected] .details {
+:host(:not([timeline-size="xs"])) .event:first-of-type[selected] .details {
   border-top: 1px solid var(--lrndesign-timeline-background);
 }
-:host(:not([timeline-size*="s"])) .event:last-of-type[selected] .details {
+:host(:not([timeline-size="xs"])) .event:last-of-type[selected] .details {
   border-bottom: 1px solid var(--lrndesign-timeline-background);
 }</style>
 <style is="custom-style" include="simple-colors"></style>
@@ -180,13 +181,13 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
   <div id="timeline">
       <div id="events" on-scroll="_onScroll">
         <template id="repeat" is="dom-repeat" items="[[eventsData]]" as="event" index-as="index" restamp>
-          <section class="event" has-media$="[[_isSet(event.image)]]">
+          <section class="event" has-media$="[[_isSet(event.image-src)]]">
             <div class="event-overview">
               <div class="heading"><h2>[[event.heading]]</h2></div>
               <div class="media-outer">
-                <template is="dom-if" if="[[_isSet(event.image)]]" restamp>
+                <template is="dom-if" if="[[_isSet(event.image-src)]]" restamp>
                   <div class="media">
-                    <image alt$="[[event.image.alt]]" src$="[[event.image.src]]"/>
+                    <div><image alt$="[[event.image-alt]]" src$="[[event.image-src]]"/></div>
                   </div>
                 </template>
               </div>
@@ -196,4 +197,4 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
         </template>
     </div>
   </div>
-</article>`}static get properties(){return{title:{type:"String",value:null},events:{type:"Array",value:[]},eventsData:{type:"Array",computed:"_sanitizeEvents(events)"},timelineSize:{type:"String",value:"xs",reflectToAttribute:!0}}}static get tag(){return"lrndesign-timeline"}static get behaviors(){return[SimpleColors]}connectedCallback(){let root=this;super.connectedCallback();window.ResponsiveUtility.requestAvailability();window.dispatchEvent(new CustomEvent("responsive-element",{detail:{element:root,attribute:"timeline-size",relativeToParent:!0}}));this._checkScroll()}_checkScroll(){let root=this,events=root.shadowRoot.querySelectorAll(".event");if(1>events.length)root.$.repeat.render();events=root.shadowRoot.querySelectorAll(".event");events.forEach(event=>{let top=event.offsetTop,target=events[0].offsetTop+50+event.parentNode.scrollTop,bottom=event.offsetTop+event.offsetHeight;if(target>top&&target<bottom){event.setAttribute("selected",!0)}else{event.removeAttribute("selected")}})}_isMediaType(event,type){return this._isSet(event.media)&&this._isSet(event.media.type)?event.media.type===type:!1}_isSet(prop){return prop!==void 0&&null!==prop}_sanitizeEvents(events){if("string"===typeof events){events=JSON.parse(events)}if("object"===typeof events&&events.constructor!==Array){events=Object.keys(events).map(function(key){return events[key]})}return events}_onScroll(e){this._checkScroll()}}window.customElements.define(LrndesignTimeline.tag,LrndesignTimeline);
+</article>`}static get haxProperties(){return{canScale:!1,canPosition:!1,canEditSource:!0,gizmo:{title:"Timeline",description:"A timeline of events with images and text",icon:"icons:timeline",color:"indigo",groups:["Content","Instructional","Media","Image"],handles:[],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"accent-color",title:"Accent Color",description:"An optional accent color.",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark Theme",description:"Enable Dark Theme",inputMethod:"boolean",icon:"icons:invert-colors"}],configure:[{property:"title",title:"Timeline Title",description:"A title for the timeline.",inputMethod:"textfield"},{slot:"",title:"Timeline Description",description:"Optional text describing the timeline.",inputMethod:"textfield"},{property:"events",title:"Timeline Events",description:"The events in the timeline",inputMethod:"array",properties:[{property:"heading",title:"Event Heading",description:"The heading for the event.",inputMethod:"textfield",icon:"editor:title"},{property:"details",title:"Event Details",description:"The body text with details for the event.",inputMethod:"textfield",icon:"editor:title"},{property:"image-src",title:"Event Image",description:"The path of the image.",inputMethod:"textfield",icon:"editor:title"},{property:"image-alt",title:"Event Image Alt Text",description:"The alt text of the image (for accessibility).",inputMethod:"textfield",icon:"editor:title"}]}],advanced:[]}}}static get properties(){return{title:{type:"String",value:null},events:{type:"Array",value:[]},eventsData:{type:"Array",computed:"_sanitizeEvents(events)"},timelineSize:{type:"String",value:"xs",reflectToAttribute:!0}}}static get tag(){return"lrndesign-timeline"}static get behaviors(){return[SimpleColors]}connectedCallback(){let root=this;super.connectedCallback();this.HAXWiring=new HAXWiring;this.HAXWiring.setup(LrndesignTimeline.haxProperties,LrndesignTimeline.tag,this);window.ResponsiveUtility.requestAvailability();window.dispatchEvent(new CustomEvent("responsive-element",{detail:{element:root,attribute:"timeline-size",relativeToParent:!0,sm:600,md:900,lg:1200,xl:1600}}));this._checkScroll()}_checkScroll(){let root=this,events=root.shadowRoot.querySelectorAll(".event");if(1>events.length)root.$.repeat.render();events=root.shadowRoot.querySelectorAll(".event");events.forEach(event=>{let top=event.offsetTop,target=events[0].offsetTop+50+event.parentNode.scrollTop,bottom=event.offsetTop+event.offsetHeight;if(target>top&&target<bottom){event.setAttribute("selected",!0)}else{event.removeAttribute("selected")}})}_isMediaType(event,type){return this._isSet(event.media)&&this._isSet(event.media.type)?event.media.type===type:!1}_isSet(prop){return prop!==void 0&&null!==prop}_sanitizeEvents(events){if("string"===typeof events){events=JSON.parse(events)}if("object"===typeof events&&events.constructor!==Array){events=Object.keys(events).map(function(key){return events[key]})}return events}_onScroll(e){this._checkScroll()}}window.customElements.define(LrndesignTimeline.tag,LrndesignTimeline);

@@ -73,7 +73,7 @@ class SimpleColorsInpectorContent extends SimpleColors {
             value$="[[dark]]"
             as-code
             on-dark-change="_handleDarkChange"
-            options="[&quot;&quot;,&quot;dark&quot;]"
+            options='["","dark"]'
           >
             <span slot="prefix">="</span> <span slot="suffix">" </span>
           </simple-colors-demo-select> </label

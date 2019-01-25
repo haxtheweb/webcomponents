@@ -185,7 +185,9 @@ class SimpleModal extends PolymerElement {
         <paper-dialog-scrollable id="simple-modal-content">
           <slot name="content"></slot>
         </paper-dialog-scrollable>
-        <div class="buttons"><slot name="buttons"></slot></div>
+        <div class="buttons">
+          <slot name="buttons"></slot>
+        </div>
       </paper-dialog>
     `;
   }

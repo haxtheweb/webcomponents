@@ -118,7 +118,7 @@ Polymer({
             <div
               id="image"
               class="post-image-image"
-              style\$="background-image: url(&quot;[[activeItem.metadata.image]]&quot;);"
+              style\$='background-image: url("[[activeItem.metadata.image]]");'
             ></div>
           </template>
           <div class="post-meta">
