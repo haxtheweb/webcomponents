@@ -5078,26 +5078,6 @@
           "return": {
             "type": "void"
           }
-        },
-        {
-          "name": "attached",
-          "description": "Attached to the DOM, now fire.",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 248,
-              "column": 2
-            },
-            "end": {
-              "line": 329,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
         }
       ],
       "staticMethods": [],
@@ -5109,7 +5089,7 @@
           "column": 25
         },
         "end": {
-          "line": 330,
+          "line": 245,
           "column": 1
         }
       },

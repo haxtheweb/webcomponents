@@ -177,7 +177,8 @@ Polymer({
       // test for parent being different from child
       if (
         window.HaxStore.instance.activeContainerNode !==
-        window.HaxStore.instance.activeNode
+          window.HaxStore.instance.activeNode &&
+        window.HaxStore.instance.activeContainerNode !== null
       ) {
         this.__hasParentSettingsForm = true;
         switch (window.HaxStore.instance.activeContainerNode.tagName) {
