@@ -754,12 +754,17 @@ Polymer({
             this.notifyPath("element.properties." + propData.property);
           } else if (typeof propData.slot !== typeof undefined) {
             let slotTag = "span";
-            // slot binding, special support for code editor which needs a template tag
-            // @todo need a tag that implies slot wrapper if it should at all.
-            if (node.tagName.toLowerCase() === "code-editor") {
+            if (propData.slotWrapper) {
+              slotTag = propData.slotWrapper;
+            } else if (node.tagName.toLowerCase() === "code-editor") {
               slotTag = "template";
             }
             var tmpel = document.createElement(slotTag);
+            if (propData.slotAttributes) {
+              for (var attr in propData.slotAttributes) {
+                tmpel.setAttribute(attr, propData.slotAttributes[attr]);
+              }
+            }
             // support unnamed slots
             if (propData.slot !== "") {
               tmpel.slot = propData.slot;
