@@ -272,7 +272,9 @@ Polymer({
     // support a simple insert event to bubble up or everything else
     switch (detail.eventName) {
       case "close-menu":
-        this.$.formatsize.$.menu.hideMenu();
+        setTimeout(() => {
+          this.$.formatsize.$.menu.hideMenu();
+        }, 200);
         break;
       case "insert-inline-gizmo":
         if (

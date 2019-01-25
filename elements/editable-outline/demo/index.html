@@ -21,18 +21,18 @@
           detail: true
         });
         window.dispatchEvent(evt);
-        document.getElementById('save').addEventListener('click', () => {
+        document.getElementById('savebutton').addEventListener('click', () => {
           document.getElementById('outline').exportJsonOutlineSchemaItems(true);
         });
-        document.getElementById('import').addEventListener('click', () => {
+        document.getElementById('importbutton').addEventListener('click', () => {
           document.getElementById('outline').importJsonOutlineSchemaItems();
         });
       });
     </script>
   </head>
   <body>
-    <button id="save">Save to Schema</button>
-    <button id="import">Import Schema</button>
+    <button id="savebutton">Save to Schema</button>
+    <button id="importbutton">Import Schema</button>
     <div class="vertical-section-container centered">
       <h3>Basic editable-outline demo</h3>
       <demo-snippet>

@@ -3,9 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
+import { getRange } from "./lib/shadows-safari.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 
@@ -158,9 +159,200 @@ class EditableOutline extends PolymerElement {
       case "outdent":
         this._outdent();
         break;
+      case "up":
+        this._move("up");
+        break;
+      case "down":
+        this._move("down");
+        break;
+      case "duplicate":
+        this._duplicate();
+        break;
     }
   }
-
+  /**
+   * Duplicate whatever has selection
+   */
+  _duplicate() {
+    // get active item from where cursor is
+    try {
+      let range = this.getDeepRange();
+      if (typeof range.commonAncestorContainer === typeof undefined) {
+        return;
+      }
+      let activeItem = range.commonAncestorContainer;
+      if (
+        activeItem === null ||
+        typeof activeItem === typeof undefined ||
+        typeof activeItem.tagName === typeof undefined
+      ) {
+        activeItem = activeItem.parentNode;
+      }
+      if (activeItem) {
+        // clone the item's hierarchy as well
+        if (
+          activeItem.nextElementSibling !== null &&
+          activeItem.nextElementSibling.tagName === "UL"
+        ) {
+          // copy the UL and all children and insert it after the UL it's duplicating
+          const clone2 = activeItem.nextElementSibling.cloneNode(true);
+          activeItem.parentNode.insertBefore(
+            clone2,
+            activeItem.nextElementSibling.nextElementSibling
+          );
+          // clone the LI, placing it before the UL we just made
+          const clone = activeItem.cloneNode(true);
+          activeItem.parentNode.insertBefore(
+            clone,
+            activeItem.nextElementSibling.nextElementSibling
+          );
+        } else {
+          const clone = activeItem.cloneNode(true);
+          // insert the clone AFTER the current selection
+          activeItem.parentNode.insertBefore(
+            clone,
+            activeItem.nextElementSibling
+          );
+        }
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  /**
+   * Move whatever has selection up or down
+   */
+  _move(direction) {
+    // get active item from where cursor is
+    try {
+      let range = this.getDeepRange();
+      if (typeof range.commonAncestorContainer === typeof undefined) {
+        return;
+      }
+      let activeItem = range.commonAncestorContainer;
+      if (
+        activeItem === null ||
+        typeof activeItem === typeof undefined ||
+        typeof activeItem.tagName === typeof undefined
+      ) {
+        activeItem = activeItem.parentNode;
+      }
+      let test = activeItem;
+      let valid = false;
+      // ensure this operation is executed in scope
+      while (!valid && test.parentNode) {
+        if (test.id === "outline") {
+          valid = true;
+        }
+        test = test.parentNode;
+      }
+      // ensure from all that, we have something
+      if (valid && activeItem) {
+        // move the things above us, below us
+        if (direction === "up") {
+          // ensure there's something above us
+          if (activeItem.previousElementSibling !== null) {
+            // see if we are moving us, or us and the hierarchy
+            if (
+              activeItem.nextElementSibling &&
+              activeItem.nextElementSibling.tagName === "UL"
+            ) {
+              // see if the thing we have to move above has it's own structure
+              if (activeItem.previousElementSibling.tagName === "UL") {
+                // ensure we don't lose our metadata
+                this.__blockScrub = true;
+                // insert the element currently above us, just before 2 places back; so behind our UL
+                activeItem.parentNode.insertBefore(
+                  activeItem.previousElementSibling,
+                  activeItem.nextElementSibling.nextElementSibling
+                );
+              }
+              this.__blockScrub = true;
+              // now insert the LI above us, 2 places back so it is in front of the UL
+              activeItem.parentNode.insertBefore(
+                activeItem.previousElementSibling,
+                activeItem.nextElementSibling.nextElementSibling
+              );
+              activeItem.focus();
+            } else {
+              // easier use case, we are moving ourselves only but above us is a UL
+              if (activeItem.previousElementSibling.tagName === "UL") {
+                this.__blockScrub = true;
+                // move the UL after us
+                activeItem.parentNode.insertBefore(
+                  activeItem.previousElementSibling,
+                  activeItem.nextElementSibling
+                );
+              }
+              this.__blockScrub = true;
+              // now move the LI after us
+              activeItem.parentNode.insertBefore(
+                activeItem.previousElementSibling,
+                activeItem.nextElementSibling
+              );
+              activeItem.focus();
+            }
+          }
+        } else if (direction === "down") {
+          // if nothing after us, we can't move
+          if (activeItem.nextElementSibling !== null) {
+            // account for having to hop over children
+            if (
+              activeItem.nextElementSibling &&
+              activeItem.nextElementSibling.tagName === "UL" &&
+              activeItem.nextElementSibling.nextElementSibling !== null
+            ) {
+              // an outline is just below us
+              if (
+                activeItem.nextElementSibling.nextElementSibling.tagName ===
+                  "LI" &&
+                activeItem.nextElementSibling.nextElementSibling
+                  .nextElementSibling !== null &&
+                activeItem.nextElementSibling.nextElementSibling
+                  .nextElementSibling.tagName === "UL"
+              ) {
+                this.__blockScrub = true;
+                // move the thing 2 down to just before us; so the UL
+                activeItem.parentNode.insertBefore(
+                  activeItem.nextElementSibling.nextElementSibling,
+                  activeItem
+                );
+              }
+              this.__blockScrub = true;
+              // now move the LI that is 2 below us just above us
+              activeItem.parentNode.insertBefore(
+                activeItem.nextElementSibling.nextElementSibling,
+                activeItem
+              );
+              activeItem.focus();
+            } else if (activeItem.nextElementSibling.tagName === "LI") {
+              // just moving 1 tag, see if we need to move 2 things about us or 1
+              if (
+                activeItem.nextElementSibling.nextElementSibling !== null &&
+                activeItem.nextElementSibling.nextElementSibling.tagName ===
+                  "UL"
+              ) {
+                this.__blockScrub = true;
+                activeItem.parentNode.insertBefore(
+                  activeItem.nextElementSibling,
+                  activeItem
+                );
+              }
+              this.__blockScrub = true;
+              // work on the LI
+              activeItem.parentNode.insertBefore(
+                activeItem.nextElementSibling,
+                activeItem
+              );
+              activeItem.focus();
+            }
+          }
+        }
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
   /**
    * Take the current manifest and import it into an HTML outline
    */
@@ -239,6 +431,35 @@ class EditableOutline extends PolymerElement {
       this.__blockScrub = true;
       document.execCommand("outdent");
     }
+  }
+  /**
+   * Selection normalizer
+   */
+  getDeepSelection() {
+    // try and obtain the selection from the nearest shadow
+    // which would give us the selection object when running native ShadowDOM
+    // with fallback support for the entire window which would imply Shady
+    // native API
+    if (this.shadowRoot.getSelection) {
+      return this.shadowRoot.getSelection();
+    }
+    // ponyfill from google
+    else if (getRange(this.$.outline.parentNode)) {
+      return getRange(this.$.outline.parentNode);
+    }
+    // missed on both, hope the normal one will work
+    return window.getSelection();
+  }
+  /**
+   * Get a normalized range based on current selection
+   */
+  getDeepRange() {
+    let sel = this.getDeepSelection();
+    if (sel.getRangeAt && sel.rangeCount) {
+      return sel.getRangeAt(0);
+    } else if (sel) {
+      return sel;
+    } else false;
   }
   /**
    * These are our bad actors in polyfill'ed browsers.

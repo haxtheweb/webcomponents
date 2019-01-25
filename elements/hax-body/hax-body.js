@@ -38,7 +38,6 @@ let HaxBody = Polymer({
         position: absolute;
         visibility: hidden;
         opacity: 0;
-        transition: all 0.3s ease;
         z-index: 100;
         float: left;
         display: block;
@@ -65,8 +64,8 @@ let HaxBody = Polymer({
 
       :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
         outline: none;
-        transition: 0.6s width ease-in-out, 0.6s height ease-in-out,
-          0.6s margin ease-in-out;
+        transition: 0.2s width ease-in-out, 0.2s height ease-in-out,
+          0.2s margin ease-in-out;
       }
       :host([edit-mode]) #bodycontainer ::slotted(p):empty {
         background: #f1f1f1;
@@ -107,7 +106,7 @@ let HaxBody = Polymer({
         left: 0;
         bottom: 0;
         width: 32px;
-        transition: 0.3s all ease;
+        transition: 0.2s all ease;
       }
       :host([edit-mode])
         #bodycontainer
@@ -119,7 +118,7 @@ let HaxBody = Polymer({
         left: 0;
         bottom: 0;
         width: 32px;
-        transition: 0.3s all ease;
+        transition: 0.2s all ease;
       }
       :host([edit-mode]) #bodycontainer ::slotted(*.hax-active[data-editable]) {
         cursor: text !important;
@@ -141,7 +140,7 @@ let HaxBody = Polymer({
         left: 0;
         bottom: 0;
         width: 32px;
-        transition: 0.3s all ease;
+        transition: 0.2s all ease;
       }
       :host([edit-mode])
         #bodycontainer
@@ -370,6 +369,8 @@ let HaxBody = Polymer({
    * we exist and are the thing being edited.
    */
   attached: function() {
+    // try to normalize paragraph insert on enter
+    document.execCommand("defaultParagraphSeparator", false, "p");
     this.shadowRoot.querySelector("slot").addEventListener("mouseup", e => {
       const tmp = window.HaxStore.getSelection();
       window.HaxStore._tmpSelection = tmp;
@@ -469,8 +470,7 @@ let HaxBody = Polymer({
     // if we see it, ensure we don't have the pin
     if (el) {
       if (this.elementInViewport(el)) {
-        el.classList.remove("hax-context-pin-bottom");
-        el.classList.remove("hax-context-pin-top");
+        el.classList.remove("hax-context-pin-bottom", "hax-context-pin-top");
       } else {
         if (this.__OffBottom) {
           el.classList.add("hax-context-pin-top");
@@ -731,7 +731,7 @@ let HaxBody = Polymer({
       if (waitForLock) {
         setTimeout(() => {
           this.breakUpdateLock();
-        }, 300);
+        }, 100);
       }
       return true;
     }
@@ -1063,7 +1063,7 @@ let HaxBody = Polymer({
       } else {
         replacement.focus();
       }
-    }, 325);
+    }, 100);
     return replacement;
   },
   /**
@@ -1272,6 +1272,9 @@ let HaxBody = Polymer({
         break;
       case "close-menu":
         // this is the equivalent of hiding menus and resetting the board
+        this.set("activeNode", null);
+        this.set("activeContainerNode", null);
+        // now set globally
         window.HaxStore.write("activeContainerNode", null, this);
         window.HaxStore.write("activeNode", null, this);
         break;
@@ -1337,7 +1340,7 @@ let HaxBody = Polymer({
         this.activeNode.style.width = detail.value + "%";
         setTimeout(() => {
           this.positionContextMenus(this.activeNode, this.activeContainerNode);
-        }, 500);
+        }, 210);
         break;
       // settings button selected from hax-ce-context bar
       // which means we should skip to the settings page after
@@ -1360,7 +1363,7 @@ let HaxBody = Polymer({
         // accessibility enhancement to keyboard focus configure button
         setTimeout(() => {
           window.HaxStore.instance.haxManager.$.preview.$.configurebutton.focus();
-        }, 325);
+        }, 100);
         break;
       // container / layout settings button has been activated
       case "hax-manager-configure-container":
@@ -1385,7 +1388,7 @@ let HaxBody = Polymer({
         // accessibility enhancement to keyboard focus configure button
         setTimeout(() => {
           window.HaxStore.instance.haxManager.$.preview.$.configurebutton.focus();
-        }, 325);
+        }, 100);
         break;
     }
   },
@@ -1483,9 +1486,7 @@ let HaxBody = Polymer({
           tags.includes(containerNode.tagName.toLowerCase()) &&
           !activeNode.classList.contains("ignore-activation")
         ) {
-          setTimeout(() => {
-            window.HaxStore.write("activeNode", activeNode, this);
-          }, 50);
+          window.HaxStore.write("activeNode", activeNode, this);
           e.stopPropagation();
         }
       }
@@ -1623,12 +1624,10 @@ let HaxBody = Polymer({
       newValue.classList.add("hax-active");
       this.$.textcontextmenu.selectedValue = tag;
       // position the operations / in context element
-      setTimeout(() => {
-        this.positionContextMenus(
-          newValue,
-          window.HaxStore.instance.activeContainerNode
-        );
-      }, 25);
+      this.positionContextMenus(
+        newValue,
+        window.HaxStore.instance.activeContainerNode
+      );
       if (newValue.style.textAlign == "left") {
         this.$.textcontextmenu.justifyIcon = "editor:format-align-left";
         this.$.textcontextmenu.justifyValue = "text-align-left";
@@ -1679,9 +1678,11 @@ let HaxBody = Polymer({
    * Simple hide / reset of whatever menu it's handed.
    */
   _hideContextMenu: function(menu) {
-    menu.classList.remove("hax-context-visible");
-    menu.classList.remove("hax-context-pin-top");
-    menu.classList.remove("hax-context-pin-bottom");
+    menu.classList.remove(
+      "hax-context-visible",
+      "hax-context-pin-top",
+      "hax-context-pin-bottom"
+    );
     dom(this.$.contextcontainer).appendChild(menu);
   },
   /**
