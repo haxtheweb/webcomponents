@@ -56,6 +56,10 @@ Polymer({
       "json-outline-schema-changed",
       this._jsonOutlineSchemaChangedHandler.bind(this)
     );
+    window.addEventListener(
+      "json-outline-schema-active-item-changed",
+      this._jsonOutlineSchemaActiveItemChangedHandler.bind(this)
+    );
   },
   attached: function() {},
   /**
@@ -244,5 +248,20 @@ Polymer({
     const manifest = e.detail;
     this.manifest = {};
     this.manifest = manifest;
+  },
+
+  /**
+   * White label JSON Outline Schema Event
+   *
+   * Subscribe to Active event changes.
+   *
+   * @param {event} e
+   */
+  _jsonOutlineSchemaActiveItemChangedHandler: function(e) {
+    window.dispatchEvent(
+      new CustomEvent("haxcms-site-router-active-item-changed", {
+        detail: e.detail
+      })
+    );
   }
 });

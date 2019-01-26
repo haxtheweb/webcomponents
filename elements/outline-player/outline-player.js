@@ -415,6 +415,10 @@ let OutlinePlayer = Polymer({
     window.addEventListener("resize", e => {
       this.refreshDynamicPositions();
     });
+    window.addEventListener(
+      "haxcms-site-router-active-item-changed",
+      this._haxcmsSiteRouterActiveItemChangedHandler.bind(this)
+    );
     // Subscribe to the router manifest
     window.dispatchEvent(
       new CustomEvent("haxcms-router-manifest-subscribe", {
@@ -434,6 +438,14 @@ let OutlinePlayer = Polymer({
   _haxcmsRouterManifestSubscribeHandler: function(e) {
     this._routerManifest = {};
     this._routerManifest = e.detail;
+  },
+
+  /**
+   * Listen for the active item to change
+   * @param {event} e
+   */
+  _haxcmsSiteRouterActiveItemChangedHandler: function(e) {
+    this.selected = e.detail.id;
   },
 
   /**
