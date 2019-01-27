@@ -6,6 +6,7 @@ import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@lrnwebcomponents/smooth-scroll/smooth-scroll.js";
 import "./lib/map-menu-container.js";
 import "./lib/map-menu-builder.js";
+
 /**
  * `map-menu`
  * `A series of elements that generate a hierarchical menu`
@@ -142,6 +143,7 @@ let MapMenu = Polymer({
 
     if (oldActiveItem) {
       oldActiveItem.removeAttribute("active");
+      this.__updateActiveIndicator(newActiveItem, timeoutTime);
     }
 
     this._activeItem = newActiveItem;
@@ -152,6 +154,7 @@ let MapMenu = Polymer({
       this.set("data", newValue.items);
     }
   },
+
   /**
    * Set data property
    */
@@ -223,6 +226,7 @@ let MapMenu = Polymer({
    * the animation has been triggered
    */
   __toggleUpdated: function(e) {
+    // get the submenu that through the event
     this.refreshActiveChildren(this._activeItem, 300);
   },
 
@@ -297,6 +301,32 @@ let MapMenu = Polymer({
     // if we got all the way here then we need recursively run this
     // against the parent node
     return this.__parentsHidden(parent);
+  },
+
+  /**
+   * Event Handler for 'haxcms-router-manifest-subscribe'
+   *
+   * @example
+   * window.dispatchEvent(new CustomEvent('map-menu-toggle-subscribe', { callback, scope }))
+   */
+  _mapMenuToggleSubscribeHandler: function(e) {
+    // combine default options and the subscription from the request
+    const subscription = Object.assign({}, e.detail);
+    if (typeof subscription.callback === "undefined") {
+      console.error(
+        "No callback provided on haxcms-router-manifest-subscribe."
+      );
+      return;
+    }
+    if (typeof subscription.scope === "undefined") {
+      console.error("No scope provided on haxcms-router-manifest-subscribe.");
+      return;
+    }
+    // dynaimcally add the event listener for more router manifest changes
+    subscription.scope.addEventListener(
+      "map-menu-toggle-changed",
+      subscription.scope[subscription.callback]
+    );
   }
 });
 export { MapMenu };

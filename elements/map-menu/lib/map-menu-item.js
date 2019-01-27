@@ -64,7 +64,8 @@ Polymer({
     },
     active: {
       type: Boolean,
-      value: false
+      value: false,
+      observer: "_activeChanged"
     },
     selected: {
       type: String
@@ -72,6 +73,13 @@ Polymer({
   },
 
   observers: ["__selectedChanged(selected, id)"],
+
+  ready: function() {
+    this.fire("map-menu-toggle-subscribe", {
+      callback: "_mapMenuToggleSubscribeHandler",
+      scope: this
+    });
+  },
 
   __selectedChanged: function(selected, id) {
     if (selected === id) {

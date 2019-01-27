@@ -78,7 +78,8 @@ Polymer({
     "child-activated": "__childActivated",
     "active-item": "__activeChanged",
     "toggle-header": "__toggleHeader",
-    "link-clicked": "_headerClickHandler"
+    "link-clicked": "_headerClickHandler",
+    "map-menu-active-item-changed": "_mapMenuActiveItemChangedHandler"
   },
 
   _openChanged: function(opened) {

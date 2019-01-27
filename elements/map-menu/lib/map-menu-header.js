@@ -143,7 +143,8 @@ Polymer({
     },
     active: {
       type: Boolean,
-      value: false
+      value: false,
+      observer: "_activeChanged"
     },
     selected: {
       type: String
