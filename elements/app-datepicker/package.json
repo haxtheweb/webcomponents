@@ -11,7 +11,7 @@
       "js": "src/app-datepicker.js"
     }
   },
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Start of app-datepicker fork",
   "repository": {
     "type": "git",
