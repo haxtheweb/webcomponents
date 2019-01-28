@@ -4,7 +4,7 @@
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-card/paper-card.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
 `lrndesign-panelcard`
@@ -14,22 +14,31 @@ A LRN element
 */
 let LrndesignPanelcard = Polymer({
   _template: html`
-    <style include="materializecss-styles"></style>
+    <style include="simple-colors"></style>
     <style>
       :host {
         display: inline-block;
         position: relative;
         box-sizing: border-box;
-        --secondary-text-color: #ffffff;
-        --paper-input-container-color: #ffffff;
+        --lrndesign-panelcard-text-color: var(
+          --simple-colors-default-theme-grey-12
+        );
+        --lrndesign-panelcard-color: var(
+          --simple-colors-default-theme-accent-1
+        );
       }
-
+      :host([dark]:not([accent-color="grey"])) {
+        --lrndesign-panelcard-color: var(
+          --simple-colors-default-theme-accent-3
+        );
+      }
       .card-panel {
         transition: box-shadow 0.25s;
         padding: 24px;
         margin: 0;
         border-radius: 2px;
-        background-color: #fff;
+        color: var(--lrndesign-panelcard-text-color);
+        background-color: var(--lrndesign-panelcard-color);
       }
 
       h3 {
@@ -39,9 +48,9 @@ let LrndesignPanelcard = Polymer({
     </style>
     <aside>
       <paper-card elevation="[[elevation]]">
-        <div class\$="card-panel [[color]]">
-          <h3 class\$="[[textColor]]">[[title]]</h3>
-          <span class\$="[[textColor]]"> <slot></slot> </span>
+        <div class="card-panel">
+          <h3>[[title]]</h3>
+          <span><slot></slot></span>
         </div>
       </paper-card>
     </aside>
@@ -49,10 +58,7 @@ let LrndesignPanelcard = Polymer({
 
   is: "lrndesign-panelcard",
 
-  behaviors: [
-    HAXBehaviors.PropertiesBehaviors,
-    MaterializeCSSBehaviors.ColorBehaviors
-  ],
+  behaviors: [HAXBehaviors.PropertiesBehaviors, SimpleColors],
 
   properties: {
     /**
@@ -61,22 +67,6 @@ let LrndesignPanelcard = Polymer({
     title: {
       type: String,
       value: "Block heading",
-      reflectToAttribute: true
-    },
-    /**
-     * Color class
-     */
-    color: {
-      type: String,
-      value: "yellow lighten-4",
-      reflectToAttribute: true
-    },
-    /**
-     * Text color class
-     */
-    textColor: {
-      type: String,
-      value: "black-text",
       reflectToAttribute: true
     },
     /**
