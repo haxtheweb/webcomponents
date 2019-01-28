@@ -98,25 +98,26 @@ let GridPlate = Polymer({
       </style>
     </custom-style>
     <div class="button-holding-pen">
-      <!--paper-icon-button
+      <paper-icon-button
         icon="icons:arrow-upward"
         title="move item up"
         id="up"
         on-tap="moveActiveElement"
-      -->
+      >
       </paper-icon-button>
       <paper-icon-button
         icon="icons:arrow-forward"
         title="move item right"
         id="right"
         on-tap="moveActiveElement"
-      ></paper-icon-button>
-      <!--paper-icon-button
+      >
+      </paper-icon-button>
+      <paper-icon-button
         icon="icons:arrow-downward"
         title="move item down"
         id="down"
         on-tap="moveActiveElement"
-      -->
+      >
       </paper-icon-button>
       <paper-icon-button
         icon="icons:arrow-back"
@@ -127,17 +128,47 @@ let GridPlate = Polymer({
       </paper-icon-button>
     </div>
     <div class="row">
-      <div class="column" id="col1" style$="[[_getColumnWidth(0,columnWidths)]]">
+      <div
+        class="column"
+        id="col1"
+        style$="[[_getColumnWidth(0,columnWidths)]]"
+      >
         <slot name="col-1"></slot>
       </div>
-      <div class="column" id="col2" style$="[[_getColumnWidth(1,columnWidths)]]">
+      <div
+        class="column"
+        id="col2"
+        style$="[[_getColumnWidth(1,columnWidths)]]"
+      >
         <slot name="col-2"></slot>
       </div>
-      <div class="column" id="col3" style$="[[_getColumnWidth(2,columnWidths)]]">
+      <div
+        class="column"
+        id="col3"
+        style$="[[_getColumnWidth(2,columnWidths)]]"
+      >
         <slot name="col-3"></slot>
       </div>
-      <div class="column" id="col4" style$="[[_getColumnWidth(3,columnWidths)]]">
+      <div
+        class="column"
+        id="col4"
+        style$="[[_getColumnWidth(3,columnWidths)]]"
+      >
         <slot name="col-4"></slot>
+      </div>
+      <div
+        class="column"
+        id="col5"
+        style$="[[_getColumnWidth(4,columnWidths)]]"
+      >
+        <slot name="col-5"></slot>
+      </div>
+      <div
+        class="column"
+        id="col6"
+        style$="[[_getColumnWidth(5,columnWidths)]]"
+      >
+        <slot name="col-6"></slot>
       </div>
     </div>
     <iron-a11y-keys
@@ -307,12 +338,49 @@ let GridPlate = Polymer({
           xl: ["25%", "25%", "50%"]
         },
         "1-1-1-1": {
-          columnLayout: "3: equal width",
+          columnLayout: "4: equal width",
           xs: ["100%", "100%", "100%", "100%"],
           sm: ["50%", "50%", "50%", "50%"],
           md: ["25%", "25%", "25%", "25%"],
           lg: ["25%", "25%", "25%", "25%"],
           xl: ["25%", "25%", "25%", "25%"]
+        },
+        "1-1-1-1-1": {
+          columnLayout: "5: equal width",
+          xs: ["100%", "100%", "100%", "100%", "100%"],
+          sm: ["50%", "50%", "50%", "50%", "50%"],
+          md: ["20%", "20%", "20%", "20%", "20%"],
+          lg: ["20%", "20%", "20%", "20%", "20%"],
+          xl: ["20%", "20%", "20%", "20%", "20%"]
+        },
+        "1-1-1-1-1-1": {
+          columnLayout: "6: equal width",
+          xs: ["100%", "100%", "100%", "100%", "100%", "100%"],
+          sm: ["50%", "50%", "50%", "50%", "50%", "50%"],
+          md: [
+            "33.3333333%",
+            "33.3333333%",
+            "33.3333333%",
+            "33.3333333%",
+            "33.3333333%",
+            "33.3333333%"
+          ],
+          lg: [
+            "16.6666667%",
+            "16.6666667",
+            "16.6666667",
+            "16.6666667%",
+            "16.6666667",
+            "16.6666667"
+          ],
+          xl: [
+            "16.6666667%",
+            "16.6666667",
+            "16.6666667",
+            "16.6666667%",
+            "16.6666667",
+            "16.6666667"
+          ]
         }
       }
     },
@@ -355,14 +423,19 @@ let GridPlate = Polymer({
   moveActiveElement: function(e) {
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
-    let col = this.__activeItem.getAttribute("slot").split("-"),
+    let slot = this.__activeItem.getAttribute("slot"),
+      col = slot.split("-"),
       pos = parseInt(col[1]);
     let max = this.columns;
     // see if this was an up down left or right movement
     switch (local.id) {
-      /*case "up":
+      case "up":
         // ensure we can go up
-        if (this.__activeItem.previousElementSibling !== null) {
+        if (
+          this.__activeItem.previousElementSibling !== null &&
+          this.__activeItem.previousElementSibling.getAttribute("slot") !== slot
+        ) {
+          this.__activeItem.setAttribute("slot", slot);
           dom(this).insertBefore(
             this.__activeItem,
             this.__activeItem.previousElementSibling
@@ -370,13 +443,18 @@ let GridPlate = Polymer({
         }
         break;
       case "down":
-        if (this.__activeItem.nextElementSibling !== null) {
+        if (
+          this.__activeItem.nextElementSibling !== null &&
+          this.__activeItem.nextElementSibling.getAttribute("slot") !== slot
+        ) {
+          let slot = this.__activeItem.nextElementSibling.getAttribute("slot");
+          this.__activeItem.setAttribute("slot", slot);
           dom(this).insertBefore(
             this.__activeItem.nextElementSibling,
             this.__activeItem
           );
         }
-        break;*/
+        break;
       case "left":
         console.log("left?", pos, -1, 1);
         if (this.canMove(this.__activeItem, max, -1)) {
@@ -497,53 +575,48 @@ let GridPlate = Polymer({
    */
   positionArrows: function(item) {
     if (item == null) {
-      /*this.$.up.classList.remove("active");
-      this.$.down.classList.remove("active");*/
+      this.$.up.classList.remove("active");
+      this.$.down.classList.remove("active");
       this.$.left.classList.remove("active");
       this.$.right.classList.remove("active");
     } else {
-      /*this.$.up.classList.add("active");
-      this.$.down.classList.add("active");*/
+      this.$.up.classList.add("active");
+      this.$.down.classList.add("active");
       this.$.left.classList.add("active");
       this.$.right.classList.add("active");
-      /*this.$.up.disabled = false;
-      this.$.down.disabled = false;*/
-      this.$.left.disabled = false;
-      this.$.right.disabled = false;
+
+      // ensure we disable invalid options contextually
+      let max = this.columns,
+        slot = item.getAttribute("slot");
+      // test for an element above us
+      this.$.up.disabled =
+        item.previousElementSibling === null ||
+        item.previousElementSibling.getAttribute("slot") !== slot;
+      // test for an element below us
+      this.$.down.disabled =
+        item.nextElementSibling === null ||
+        item.nextElementSibling.getAttribute("slot") !== slot;
+      // test for a column to the left of us
+      this.$.left.disabled = !this.canMove(item, max, -1);
+      // test for a column to the right of us
+      this.$.right.disabled = !this.canMove(item, max, 1);
+
       // get coordinates of the page and active element
       let bodyRect = this.getBoundingClientRect();
       let elemRect = item.getBoundingClientRect();
       let topOffset = elemRect.top - bodyRect.top;
       let leftOffset = elemRect.left - bodyRect.left;
+
       // set the arrows to position correctly at all 4 sides
-      /*this.$.up.style.top = topOffset - 20 + "px";
-      this.$.down.style.top = topOffset + elemRect.height + "px";*/
+      this.$.up.style.top = topOffset - 20 + "px";
+      this.$.down.style.top = topOffset + elemRect.height + "px";
       this.$.left.style.top = topOffset + elemRect.height / 2 + "px";
       this.$.right.style.top = topOffset + elemRect.height / 2 + "px";
 
-      /*this.$.up.style.left = leftOffset + elemRect.width / 2 - 10 + "px";
-      this.$.down.style.left = leftOffset + elemRect.width / 2 - 10 + "px";*/
+      this.$.up.style.left = leftOffset + elemRect.width / 2 - 10 + "px";
+      this.$.down.style.left = leftOffset + elemRect.width / 2 - 10 + "px";
       this.$.left.style.left = leftOffset - 20 + "px";
       this.$.right.style.left = leftOffset + elemRect.width + "px";
-      // ensure we disable invalid options contextually
-      let col = item.getAttribute("slot").split("-");
-      let max = this.columns;
-      // test for an element above us
-      /*if (item.previousElementSibling === null) {
-        this.$.up.disabled = true;
-      }
-      // test for an element below us
-      if (item.nextElementSibling === null) {
-        this.$.down.disabled = true;
-      }*/
-      // test for a column to the left of us
-      if (parseInt(col[1]) === 1) {
-        this.$.left.disabled = true;
-      }
-      // test for a column to the right of us
-      if (parseInt(col[1]) === max) {
-        this.$.right.disabled = true;
-      }
     }
   },
 

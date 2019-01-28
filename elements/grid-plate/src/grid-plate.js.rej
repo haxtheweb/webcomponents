@@ -1,0 +1,14 @@
+diff a/elements/grid-plate/src/grid-plate.js b/elements/grid-plate/src/grid-plate.js	(rejected hunks)
+@@ -311,6 +310,6 @@ let GridPlate = Polymer({
+-          "columnLayout": "3: equal width",
+-          "xs": ["100%","100%","100%","100%"],
+-          "sm": ["50%","50%","50%","50%"],
+-          "md": ["25%","25%","25%","25%"],
+-          "lg": ["25%","25%","25%","25%"],
+-          "xl": ["25%","25%","25%","25%"]
++          columnLayout: "3: equal width",
++          xs: ["100%", "100%", "100%", "100%"],
++          sm: ["50%", "50%", "50%", "50%"],
++          md: ["25%", "25%", "25%", "25%"],
++          lg: ["25%", "25%", "25%", "25%"],
++          xl: ["25%", "25%", "25%", "25%"]
