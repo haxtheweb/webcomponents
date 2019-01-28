@@ -1275,7 +1275,7 @@
         "author": "ELMS:LN",
         "icon": "hax:6/6",
         "status": "available",
-        "layout": "6/6"
+        "layout": "1-1"
       },
       "blox": [
         {
@@ -1308,7 +1308,7 @@
         "author": "ELMS:LN",
         "icon": "hax:8/4",
         "status": "available",
-        "layout": "8/4"
+        "layout": "2-1"
       },
       "blox": [
         {
@@ -1335,7 +1335,7 @@
         "author": "ELMS:LN",
         "icon": "hax:4/4/4",
         "status": "available",
-        "layout": "4/4/4"
+        "layout": "1-1-1"
       },
       "blox": [
         {
@@ -1370,7 +1370,7 @@
         "author": "ELMS:LN",
         "icon": "hax:4/8",
         "status": "available",
-        "layout": "4/8"
+        "layout": "1-2"
       },
       "blox": [
         {
@@ -1413,7 +1413,7 @@
         "author": "ELMS:LN",
         "icon": "hax:3/3/3/3",
         "status": "available",
-        "layout": "3/3/3/3"
+        "layout": "1-1-1-1"
       },
       "blox": [
         {

@@ -441,12 +441,9 @@ let GridPlate = Polymer({
    */
   moveSlot: function(item, before) {
     let dir = before ? -1 : 1,
-      max = this.columns,
       col = item.getAttribute("slot").split("-"),
       dest = parseInt(col[1]) + dir;
-    if (this.canMoveSlot(item, dir)) {
-      item.setAttribute("slot", "col-" + dest);
-    }
+    item.setAttribute("slot", "col-" + dest);
   },
 
   /**
@@ -479,9 +476,9 @@ let GridPlate = Polymer({
           this.__activeItem.previousElementSibling
         );
       } else {
-        dom(this).insertAfter(
-          this.__activeItem,
-          this.__activeItem.nextElementSibling
+        dom(this).insertBefore(
+          this.__activeItem.nextElementSibling,
+          this.__activeItem
         );
       }
     }
@@ -905,38 +902,33 @@ let GridPlate = Polymer({
       })
     );
     // Establish hax property binding
-    let options,
-      layouts = Object.keys(root.layout),
-      getOptions = function() {
-        //loop through all the supplied layouts to get the HAX layout options & descriptions
-        for (i = 0; layouts.length; i++) {
-          options[layouts[i]] = layouts[i].columnLayout;
-        }
+    let options = {};
+    for (var key in this.layouts) {
+      options[key] = this.layouts[key].columnLayout;
+    }
+    let props = {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      settings: {
+        quick: [],
+        configure: [
+          {
+            property: "layout",
+            title: "Column Layout",
+            description:
+              "Style to present these items (may change for small screens)",
+            inputMethod: "select",
+            options: options
+          }
+        ],
+        advanced: []
       },
-      props = {
-        canScale: true,
-        canPosition: true,
-        canEditSource: false,
-        settings: {
-          quick: [],
-          configure: [
-            {
-              property: "layout",
-              title: "Column Layout",
-              description:
-                "Style to present these items (may change for small screens)",
-              inputMethod: "select",
-              options: options
-            }
-          ],
-          advanced: []
-        },
-        saveOptions: {
-          unsetAttributes: ["__active-item", "edit-mode"]
-        }
-      };
-
-    root.setHaxProperties(props);
+      saveOptions: {
+        unsetAttributes: ["__active-item", "edit-mode"]
+      }
+    };
+    this.setHaxProperties(props);
   },
 
   /**
