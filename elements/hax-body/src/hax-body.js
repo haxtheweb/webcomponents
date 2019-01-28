@@ -388,6 +388,8 @@ let HaxBody = Polymer({
         !window.HaxStore.instance.haxManager.opened
       ) {
         e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
         let text = "";
         // intercept paste event
         if (e.clipboardData || e.originalEvent.clipboardData) {
@@ -395,15 +397,20 @@ let HaxBody = Polymer({
         } else if (window.clipboardData) {
           text = window.clipboardData.getData("Text");
         }
-        let sel, range, html;
-        if (window.HaxStore.instance.activeHaxBody.shadowRoot.getSelection) {
-          sel = window.HaxStore.instance.activeHaxBody.shadowRoot.getSelection();
-          if ((range = window.HaxStore.getRange())) {
+        try {
+          let range = window.HaxStore.getRange();
+          let sel = window.HaxStore.getSelection();
+          if (range && sel) {
             range.deleteContents();
             range.insertNode(document.createTextNode(text));
+            range.setStart(sel.anchorNode, sel.anchorOffset);
+            range.setEnd(sel.focusNode, sel.focusOffset);
           }
-        } else if (document.selection && document.selection.createRange) {
-          document.selection.createRange().text = text;
+        } catch (e) {
+          // try a fallback
+          if (document.selection) {
+            document.selection.createRange().text = text;
+          }
         }
       }
     });
@@ -431,6 +438,8 @@ let HaxBody = Polymer({
         !window.HaxStore.instance.haxManager.opened
       ) {
         e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
         let text = "";
         // intercept paste event
         if (e.clipboardData || e.originalEvent.clipboardData) {
@@ -438,15 +447,20 @@ let HaxBody = Polymer({
         } else if (window.clipboardData) {
           text = window.clipboardData.getData("Text");
         }
-        let sel, range, html;
-        sel = window.HaxStore.instance.activeHaxBody.shadowRoot.getSelection();
-        if (sel) {
-          if ((range = window.HaxStore.getRange())) {
+        try {
+          let range = window.HaxStore.getRange();
+          let sel = window.HaxStore.getSelection();
+          if (range && sel) {
             range.deleteContents();
             range.insertNode(document.createTextNode(text));
+            range.setStart(sel.anchorNode, sel.anchorOffset);
+            range.setEnd(sel.focusNode, sel.focusOffset);
           }
-        } else if (document.selection && document.selection.createRange) {
-          document.selection.createRange().text = text;
+        } catch (e) {
+          // try a fallback
+          if (document.selection) {
+            document.selection.createRange().text = text;
+          }
         }
       }
     });
