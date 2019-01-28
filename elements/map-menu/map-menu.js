@@ -105,7 +105,8 @@ let MapMenu = Polymer({
   listeners: {
     "link-clicked": "__linkClickedHandler",
     "toggle-updated": "__toggleUpdated",
-    "active-item": "__activeItemHandler"
+    "active-item": "__activeItemHandler",
+    "map-meu-item-hidden-check": "_mapMeuItemHiddenCheckHandler"
   },
 
   ready: function() {},
@@ -113,6 +114,17 @@ let MapMenu = Polymer({
   __activeItemHandler: function(e) {
     const target = e.detail;
     this.refreshActiveChildren(target);
+  },
+
+  _mapMeuItemHiddenCheckHandler: function(e) {
+    const action = e.detail.action;
+    const target = e.detail.target;
+    const hiddenChild = e.detail.hiddenChild;
+    if (action === "closed" && hiddenChild === true) {
+      this.__updateActiveIndicator(this._activeItem, 100, true);
+    } else {
+      this.__updateActiveIndicator(this._activeItem, 100, false);
+    }
   },
 
   /**
@@ -226,8 +238,20 @@ let MapMenu = Polymer({
    * the animation has been triggered
    */
   __toggleUpdated: function(e) {
-    // get the submenu that through the event
-    this.refreshActiveChildren(this._activeItem, 300);
+    const action = e.detail.opened ? "opened" : "closed";
+    const target = e.path[0];
+    if (typeof this._activeItem !== "undefined") {
+      this._activeItem.fire(
+        "map-menu-item-hidden-check",
+        Object.assign(
+          {},
+          {
+            action: action,
+            target: target
+          }
+        )
+      );
+    }
   },
 
   /**
@@ -262,17 +286,20 @@ let MapMenu = Polymer({
   /**
    * Move the highlight widget over active element
    */
-  __updateActiveIndicator: function(element, timeoutTime = 100) {
+  __updateActiveIndicator: function(
+    element,
+    timeoutTime = 100,
+    hidden = false
+  ) {
     // run it through to set time just to let stuff set up
     setTimeout(() => {
       const activeIndicator = this.$.activeIndicator;
-      const elementIsHidden = this.__parentsHidden(element);
       const left = element.offsetLeft;
       const bottom = element.offsetBottom;
       const top = element.offsetTop;
       const width = element.offsetWidth;
       // if the element is hidden the set the indicator height to zero to make it disapear
-      const height = !elementIsHidden ? element.offsetHeight : 0;
+      const height = !hidden ? element.offsetHeight : 0;
       // if the height is zero then make the timeoutTime faster
       timeoutTime = height > 0 ? timeoutTime : 10;
       activeIndicator.setAttribute(
@@ -301,32 +328,6 @@ let MapMenu = Polymer({
     // if we got all the way here then we need recursively run this
     // against the parent node
     return this.__parentsHidden(parent);
-  },
-
-  /**
-   * Event Handler for 'haxcms-router-manifest-subscribe'
-   *
-   * @example
-   * window.dispatchEvent(new CustomEvent('map-menu-toggle-subscribe', { callback, scope }))
-   */
-  _mapMenuToggleSubscribeHandler: function(e) {
-    // combine default options and the subscription from the request
-    const subscription = Object.assign({}, e.detail);
-    if (typeof subscription.callback === "undefined") {
-      console.error(
-        "No callback provided on haxcms-router-manifest-subscribe."
-      );
-      return;
-    }
-    if (typeof subscription.scope === "undefined") {
-      console.error("No scope provided on haxcms-router-manifest-subscribe.");
-      return;
-    }
-    // dynaimcally add the event listener for more router manifest changes
-    subscription.scope.addEventListener(
-      "map-menu-toggle-changed",
-      subscription.scope[subscription.callback]
-    );
   }
 });
 export { MapMenu };
