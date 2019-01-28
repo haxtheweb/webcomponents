@@ -22,6 +22,11 @@ let GridPlate = Polymer({
       <style is="custom-style" include="simple-colors">
         :host {
           display: block;
+          --grid-plate-row-margin: 0px;
+          --grid-plate-row-padding: 0px;
+          --grid-plate-item-margin: 15px;
+          --grid-plate-editable-border-color: #ccc;
+          --grid-plate-active-border-color: #6cd;
         }
         :host .row {
           width: 100%;
@@ -29,39 +34,44 @@ let GridPlate = Polymer({
           flex-wrap: wrap;
           justify-content: space-between;
           align-items: stretch;
+          margin: var(--grid-plate-row-margin);
+          padding: var(--grid-plate-row-padding);
         }
         :host .column {
           width: 100%;
           flex: 0 0 auto;
           transition: all 0.5s;
         }
+        :host([edit-mode]) .column {
+          min-height: 150px;
+        }
 
         :host([edit-mode]) .column {
-          outline: 1px dotted #ccc;
+          outline: 1px dotted var(--grid-plate-editable-border-color);
+        }
+        :host ::slotted(*) {
+          margin: var(--grid-plate-item-margin);
+          padding: 0;
+        }
+        :host ::slotted(*.mover) {
+          outline: 2px dashed var(--grid-plate-editable-border-color);
+          outline-offset: 4px;
+        }
+        :host ::slotted(*.active-item) {
+          outline: 2px dashed var(--grid-plate-active-border-color);
+          outline-offset: 4px;
+        }
+        :host ::slotted(*[data-draggable]:focus),
+        :host ::slotted(*[data-draggable]:hover),
+        :host ::slotted(*[data-draggable]:active) {
+          cursor: move;
         }
 
         :host([edit-mode]) .column.mover {
-          min-height: 150px;
-          outline: 1px dotted #ccc;
+          background-color: yellow;
         }
-
-        :host .row ::slotted(*) .mover,
         :host .column[data-draggable].mover {
-          outline: 2px dotted red;
-          outline: 1px dotted #ccc;
-        }
-
-        :host .row ::slotted(*) .active-item {
-          outline: 2px dashed blue;
-          outline-offset: 2px;
-        }
-
-        :host .row ::slotted(*) [data-draggable]:focus,
-        :host .row ::slotted(*) [data-draggable]:hover,
-        :host .row ::slotted(*) [data-draggable]:active {
-          outline: 2px dotted #d1d1d1;
-          outline-offset: 2px;
-          cursor: move !important;
+          background-color: pink;
         }
 
         paper-icon-button {
