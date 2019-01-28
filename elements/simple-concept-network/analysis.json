@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 169,
+              "line": 173,
               "column": 4
             },
             "end": {
-              "line": 174,
+              "line": 178,
               "column": 5
             }
           },
@@ -36,11 +36,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 178,
+              "line": 182,
               "column": 4
             },
             "end": {
-              "line": 182,
+              "line": 186,
               "column": 5
             }
           },
@@ -58,11 +58,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 186,
+              "line": 190,
               "column": 4
             },
             "end": {
-              "line": 188,
+              "line": 192,
               "column": 5
             }
           },
@@ -79,11 +79,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 192,
+              "line": 196,
               "column": 4
             },
             "end": {
-              "line": 194,
+              "line": 198,
               "column": 5
             }
           },
@@ -100,11 +100,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 198,
+              "line": 202,
               "column": 4
             },
             "end": {
-              "line": 200,
+              "line": 204,
               "column": 5
             }
           },
@@ -121,11 +121,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 204,
+              "line": 208,
               "column": 4
             },
             "end": {
-              "line": 206,
+              "line": 210,
               "column": 5
             }
           },
@@ -142,11 +142,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 210,
+              "line": 214,
               "column": 4
             },
             "end": {
-              "line": 212,
+              "line": 216,
               "column": 5
             }
           },
@@ -163,11 +163,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 216,
+              "line": 220,
               "column": 4
             },
             "end": {
-              "line": 218,
+              "line": 222,
               "column": 5
             }
           },
@@ -193,7 +193,7 @@
           "column": 8
         },
         "end": {
-          "line": 220,
+          "line": 224,
           "column": 1
         }
       },
@@ -205,11 +205,11 @@
           "description": "make the default theme dark?",
           "sourceRange": {
             "start": {
-              "line": 169,
+              "line": 173,
               "column": 4
             },
             "end": {
-              "line": 174,
+              "line": 178,
               "column": 5
             }
           },
@@ -221,11 +221,11 @@
           "description": "Visualization reflected to attribute for styling",
           "sourceRange": {
             "start": {
-              "line": 178,
+              "line": 182,
               "column": 4
             },
             "end": {
-              "line": 182,
+              "line": 186,
               "column": 5
             }
           },
@@ -237,11 +237,11 @@
           "description": "Icon to present",
           "sourceRange": {
             "start": {
-              "line": 186,
+              "line": 190,
               "column": 4
             },
             "end": {
-              "line": 188,
+              "line": 192,
               "column": 5
             }
           },
@@ -253,11 +253,11 @@
           "description": "image to present",
           "sourceRange": {
             "start": {
-              "line": 192,
+              "line": 196,
               "column": 4
             },
             "end": {
-              "line": 194,
+              "line": 198,
               "column": 5
             }
           },
@@ -269,11 +269,11 @@
           "description": "disabled status",
           "sourceRange": {
             "start": {
-              "line": 198,
+              "line": 202,
               "column": 4
             },
             "end": {
-              "line": 200,
+              "line": 204,
               "column": 5
             }
           },
@@ -285,11 +285,11 @@
           "description": "title / label text",
           "sourceRange": {
             "start": {
-              "line": 204,
+              "line": 208,
               "column": 4
             },
             "end": {
-              "line": 206,
+              "line": 210,
               "column": 5
             }
           },
@@ -301,11 +301,11 @@
           "description": "Longer description used for more info",
           "sourceRange": {
             "start": {
-              "line": 210,
+              "line": 214,
               "column": 4
             },
             "end": {
-              "line": 212,
+              "line": 216,
               "column": 5
             }
           },
@@ -317,11 +317,11 @@
           "description": "source for a link",
           "sourceRange": {
             "start": {
-              "line": 216,
+              "line": 220,
               "column": 4
             },
             "end": {
-              "line": 218,
+              "line": 222,
               "column": 5
             }
           },
