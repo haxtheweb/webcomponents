@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 import "./lib/simple-concept-network-node.js";
@@ -16,7 +16,7 @@ a central concept, much like the ELMS:LN snowflake icon.
 */
 let SimpleConceptNetwork = Polymer({
   _template: html`
-    <style include="materializecss-styles">
+    <style include="simple-colors">
       :host {
         display: block;
       }
@@ -65,14 +65,16 @@ let SimpleConceptNetwork = Polymer({
     </style>
     <template is="dom-repeat" items="[[nodes]]" as="node">
       <simple-concept-network-node
-        visualization="[[visualization]]"
-        src="[[node.src]]"
-        icon="[[node.icon]]"
-        icon-color="[[node.iconColor]]"
-        image="[[node.image]]"
-        label="[[node.label]]"
-        color="[[node.color]]"
-        disabled="[[node.disabled]]"
+        accent-color$="[[node.color]]"
+        colored-text$="[[node.coloredText]]"
+        dark$="[[node.dark]]"
+        default-color$="[[accentColor]]"
+        visualization$="[[visualization]]"
+        src$="[[node.src]]"
+        icon$="[[node.icon]]"
+        image$="[[node.image]]"
+        label$="[[node.label]]"
+        disabled$="[[node.disabled]]"
       ></simple-concept-network-node>
     </template>
   `,
@@ -81,19 +83,13 @@ let SimpleConceptNetwork = Polymer({
 
   behaviors: [
     HAXBehaviors.PropertiesBehaviors,
-    MaterializeCSSBehaviors.ColorBehaviors,
+    SimpleColors,
     A11yBehaviors.A11y
   ],
 
   observers: ["_valueChanged(nodes.*)"],
 
   properties: {
-    /**
-     * Primary color to use as the background
-     */
-    color: {
-      type: String
-    },
     /**
      * Type of visualization
      */
@@ -153,23 +149,8 @@ let SimpleConceptNetwork = Polymer({
         }
       },
       settings: {
-        quick: [
-          {
-            property: "color",
-            title: "Color",
-            description: "Primary / background color",
-            inputMethod: "colorpicker",
-            icon: "editor:format-color-fill"
-          }
-        ],
+        quick: [],
         configure: [
-          {
-            property: "color",
-            title: "Color",
-            description: "Default background color",
-            inputMethod: "colorpicker",
-            icon: "editor:format-color-fill"
-          },
           {
             property: "visualization",
             title: "Visualization",
@@ -195,12 +176,6 @@ let SimpleConceptNetwork = Polymer({
                 options: []
               },
               {
-                property: "iconColor",
-                title: "Icon Color",
-                description: "Color for this icon",
-                inputMethod: "colorpicker"
-              },
-              {
                 property: "label",
                 title: "Label",
                 description: "Label",
@@ -221,10 +196,26 @@ let SimpleConceptNetwork = Polymer({
                 inputMethod: "textfield"
               },
               {
-                property: "color",
-                title: "Color",
-                description: "Color for this node",
-                inputMethod: "colorpicker"
+                property: "accent-color",
+                title: "Node color",
+                description: "Select the accent color for this node",
+                inputMethod: "colorpicker",
+                icon: "editor:format-color-fill"
+              },
+              {
+                property: "dark",
+                title: "Dark",
+                description: "Use dark theme",
+                inputMethod: "toggle",
+                icon: "invert-colors"
+              },
+              {
+                property: "coloredText",
+                title: "Colored Text / Icon",
+                description:
+                  "Apply color to text / icon instead of background.",
+                inputMethod: "toggle",
+                icon: "editor:format-color-text"
               },
               {
                 property: "src",

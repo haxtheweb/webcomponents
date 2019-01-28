@@ -621,7 +621,7 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
           "defaultValue": "\"grey\""
@@ -643,7 +643,7 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
           "defaultValue": "false"
@@ -3958,7 +3958,20 @@
           "metadata": {}
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "accent-color-changed",
+          "description": "Fired when the `accentColor` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "dark-changed",
+          "description": "Fired when the `dark` property changes.",
+          "metadata": {}
+        }
+      ],
       "styling": {
         "cssVariables": [],
         "selectors": []
@@ -4587,7 +4600,7 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
           "defaultValue": "\"grey\"",
@@ -4611,7 +4624,7 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
           "defaultValue": "false",
@@ -8309,7 +8322,22 @@
           "metadata": {}
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "accent-color-changed",
+          "description": "Fired when the `accentColor` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "dark-changed",
+          "description": "Fired when the `dark` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        }
+      ],
       "styling": {
         "cssVariables": [],
         "selectors": []
@@ -8937,7 +8965,7 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
           "defaultValue": "\"grey\"",
@@ -8961,7 +8989,7 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
           "defaultValue": "false",
@@ -12315,7 +12343,22 @@
           "inheritedFrom": "SimpleColors"
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "accent-color-changed",
+          "description": "Fired when the `accentColor` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "dark-changed",
+          "description": "Fired when the `dark` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        }
+      ],
       "styling": {
         "cssVariables": [],
         "selectors": []

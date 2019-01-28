@@ -3,7 +3,7 @@ import "@polymer/paper-card/paper-card.js";
 import "@polymer/iron-image/iron-image.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./lib/person-testimonial-icon.js";
 /**
 `person-testimonial`
@@ -13,15 +13,20 @@ import "./lib/person-testimonial-icon.js";
 */
 let PersonTestimonial = Polymer({
   _template: html`
-    <style include="materializecss-styles">
+    <style include="simple-colors">
       :host {
         display: block;
-        font-family: sans-serif;
-        color: darkslategray;
+        --person-testimonial-font-family: sans-serif;
+        --person-testimonial-bg: var(--simple-colors-default-theme-grey-1);
+        --person-testimonial-color: var(--simple-colors-default-theme-accent-7);
+        --person-testimonial-text: var(--simple-colors-default-theme-grey-12);
       }
 
       paper-card {
         display: inline-flex;
+        background-color: var(--person-testimonial-bg);
+        color: var(--person-testimonial-text);
+        font-family: var(--person-testimonial-font-family);
       }
 
       iron-image {
@@ -31,12 +36,13 @@ let PersonTestimonial = Polymer({
       }
       .image {
         padding-right: 5px;
+        background-color: var(--person-testimonial-color);
       }
 
       iron-icon {
-        --iron-icon-height: 15px;
-        --iron-icon-width: 15px;
-        --iron-icon-fill-color: darkslategray;
+        --iron-icon-height: 24px;
+        --iron-icon-width: 24px;
+        --iron-icon-fill-color: var(--person-testimonial-color);
       }
 
       .wrap {
@@ -64,9 +70,10 @@ let PersonTestimonial = Polymer({
       .arrow_right {
         width: 0;
         height: 0;
-        border-top: 15px solid white;
-        border-bottom: 15px solid white;
+        border-top: 15px solid var(--person-testimonial-bg);
+        border-bottom: 15px solid var(--person-testimonial-bg);
         border-left: solid 15px transparent;
+        background-color: var(--person-testimonial-color);
         position: relative;
         top: 55px;
       }
@@ -108,16 +115,15 @@ let PersonTestimonial = Polymer({
       }
     </style>
     <paper-card elevation="[[elevation]]">
-      <div class\$="[[accentColorClass]] image">
+      <div class="image">
         <iron-image
-          style\$="background-color: [[accentColor]];"
           src="[[image]]"
           sizing="cover"
           preload=""
           fade=""
         ></iron-image>
       </div>
-      <div class\$="arrow_right [[accentColorClass]]"></div>
+      <div class="arrow_right"></div>
       <div class="wrap">
         <div class="testimonial">
           <iron-icon
@@ -138,27 +144,9 @@ let PersonTestimonial = Polymer({
 
   is: "person-testimonial",
 
-  behaviors: [
-    HAXBehaviors.PropertiesBehaviors,
-    MaterializeCSSBehaviors.ColorBehaviors
-  ],
+  behaviors: [HAXBehaviors.PropertiesBehaviors, SimpleColors],
 
   properties: {
-    /**
-     * Accent Color.
-     */
-    accentColor: {
-      type: String,
-      value: "#e65100"
-    },
-    /**
-     * Accent color class.
-     */
-    accentColorClass: {
-      type: String,
-      reflectToAttribute: true,
-      computed: "_computeColorClass(accentColor)"
-    },
     /**
      * Visual height of the card.
      */
@@ -238,11 +226,18 @@ let PersonTestimonial = Polymer({
             icon: "icons:work"
           },
           {
-            property: "accentColor",
+            property: "accent-color",
             title: "Accent color",
-            description: "Select the color for the edge of the photo.",
+            description: "Select the accent color use",
             inputMethod: "colorpicker",
             icon: "editor:format-color-fill"
+          },
+          {
+            property: "dark",
+            title: "Dark",
+            description: "Use dark theme",
+            inputMethod: "toggle",
+            icon: "invert-colors"
           }
         ],
         configure: [
@@ -254,11 +249,18 @@ let PersonTestimonial = Polymer({
             icon: "editor:insert-photo"
           },
           {
-            property: "accentColor",
+            property: "accent-color",
             title: "Accent color",
-            description: "Select the color for the edge of the photo.",
+            description: "Select the accent color use",
             inputMethod: "colorpicker",
             icon: "editor:format-color-fill"
+          },
+          {
+            property: "dark",
+            title: "Dark",
+            description: "Use dark theme",
+            inputMethod: "toggle",
+            icon: "invert-colors"
           },
           {
             slot: "",

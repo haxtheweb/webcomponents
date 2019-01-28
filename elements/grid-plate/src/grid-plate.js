@@ -5,9 +5,7 @@ import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-row.js";
-import "@lrnwebcomponents/responsive-grid/lib/responsive-grid-col.js";
+import "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 /**
 `grid-plate`
 A grid plate based on a layout that manipulates it.
@@ -24,47 +22,56 @@ let GridPlate = Polymer({
       <style is="custom-style" include="simple-colors">
         :host {
           display: block;
+          --grid-plate-row-margin: 0px;
+          --grid-plate-row-padding: 0px;
+          --grid-plate-item-margin: 15px;
+          --grid-plate-editable-border-color: #ccc;
+          --grid-plate-active-border-color: #6cd;
         }
-
-        responsive-grid-col {
-          --responsive-grid-col-inner: {
-            padding-left: 0;
-            padding-right: 0;
-          }
+        :host .row {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: stretch;
+          margin: var(--grid-plate-row-margin);
+          padding: var(--grid-plate-row-padding);
         }
-
-        responsive-grid-row {
-          --responsive-grid-row-inner: {
-            margin-left: 0;
-            margin-right: 0;
-          }
+        :host .column {
+          width: 100%;
+          flex: 0 0 auto;
+          transition: all 0.5s;
         }
-
-        :host([edit-mode]) responsive-grid-col.mover {
+        :host([edit-mode]) .column {
           min-height: 150px;
-          background-color: #d1d1d1;
         }
 
-        :host responsive-grid-row ::slotted(*) .mover,
-        :host responsive-grid-col[data-draggable].mover {
-          outline: 2px dotted #d1d1d1;
-          outline-offset: 2px;
-          background-color: rgba(240, 240, 240, 0.2);
+        :host([edit-mode]) .column {
+          outline: 1px dotted var(--grid-plate-editable-border-color);
+        }
+        :host ::slotted(*) {
+          margin: var(--grid-plate-item-margin);
+          padding: 0;
+        }
+        :host ::slotted(*.mover) {
+          outline: 2px dashed var(--grid-plate-editable-border-color);
+          outline-offset: 4px;
+        }
+        :host ::slotted(*.active-item) {
+          outline: 2px dashed var(--grid-plate-active-border-color);
+          outline-offset: 4px;
+        }
+        :host ::slotted(*[data-draggable]:focus),
+        :host ::slotted(*[data-draggable]:hover),
+        :host ::slotted(*[data-draggable]:active) {
+          cursor: move;
         }
 
-        :host responsive-grid-row ::slotted(*) .active-item {
-          outline: 2px dashed #aaaaaa !important;
-          outline-offset: 2px;
-          background-color: rgba(220, 220, 220, 0.6) !important;
+        :host([edit-mode]) .column.mover {
+          background-color: yellow;
         }
-
-        :host responsive-grid-row ::slotted(*) [data-draggable]:focus,
-        :host responsive-grid-row ::slotted(*) [data-draggable]:hover,
-        :host responsive-grid-row ::slotted(*) [data-draggable]:active {
-          outline: 2px dotted #d1d1d1;
-          outline-offset: 2px;
-          background-color: rgba(240, 240, 240, 0.2);
-          cursor: move !important;
+        :host .column[data-draggable].mover {
+          background-color: pink;
         }
 
         paper-icon-button {
@@ -83,6 +90,14 @@ let GridPlate = Polymer({
           min-width: unset;
         }
 
+        paper-icon-button[disabled] {
+          color: #aaa;
+          background-color: #ddd;
+        }
+        paper-icon-button[disabled]:focus,
+        paper-icon-button[disabled]:hover {
+          cursor: not-allowed;
+        }
         paper-icon-button.active {
           display: block;
         }
@@ -105,7 +120,8 @@ let GridPlate = Polymer({
         title="move item right"
         id="right"
         on-tap="moveActiveElement"
-      ></paper-icon-button>
+      >
+      </paper-icon-button>
       <paper-icon-button
         icon="icons:arrow-downward"
         title="move item down"
@@ -121,63 +137,50 @@ let GridPlate = Polymer({
       >
       </paper-icon-button>
     </div>
-    <responsive-grid-row gutter="0">
-      <template is="dom-if" if="[[!hideCol1]]" strip-whitespace>
-        <responsive-grid-col
-          id="col1"
-          style\$="background-color:[[__col1Color]];"
-          xl\$="[[col1_xl]]"
-          lg\$="[[col1_lg]]"
-          md\$="[[col1_md]]"
-          sm\$="[[col1_sm]]"
-          xs\$="[[col1_xs]]"
-        >
-          <slot name="col-1"></slot>
-        </responsive-grid-col>
-      </template>
-      <template is="dom-if" if="[[!hideCol2]]" strip-whitespace>
-        <responsive-grid-col
-          id="col2"
-          style\$="background-color:[[__col2Color]];"
-          xl\$="[[col2_xl]]"
-          lg\$="[[col2_lg]]"
-          md\$="[[col2_md]]"
-          sm\$="[[col2_sm]]"
-          xs\$="[[col2_xs]]"
-        >
-          <slot name="col-2"></slot>
-        </responsive-grid-col>
-      </template>
-      <template is="dom-if" if="[[!hideCol3]]" strip-whitespace>
-        <responsive-grid-col
-          id="col3"
-          style\$="background-color:[[__col3Color]];"
-          xl\$="[[col3_xl]]"
-          lg\$="[[col3_lg]]"
-          md\$="[[col3_md]]"
-          sm\$="[[col3_sm]]"
-          xs\$="[[col3_xs]]"
-        >
-          <slot name="col-3"></slot>
-        </responsive-grid-col>
-      </template>
-      <template is="dom-if" if="[[!hideCol4]]" strip-whitespace>
-        <responsive-grid-col
-          id="col4"
-          style\$="background-color:[[__col4Color]];"
-          xl\$="[[col4_xl]]"
-          lg\$="[[col4_lg]]"
-          md\$="[[col4_md]]"
-          sm\$="[[col4_sm]]"
-          xs\$="[[col4_xs]]"
-        >
-          <slot name="col-4"></slot>
-        </responsive-grid-col>
-      </template>
-      <responsive-grid-col xl="12" lg="12" md="12" sm="12" xs="12">
-        <slot></slot>
-      </responsive-grid-col>
-    </responsive-grid-row>
+    <div class="row">
+      <div
+        class="column"
+        id="col1"
+        style$="[[_getColumnWidth(0,columnWidths)]]"
+      >
+        <slot name="col-1"></slot>
+      </div>
+      <div
+        class="column"
+        id="col2"
+        style$="[[_getColumnWidth(1,columnWidths)]]"
+      >
+        <slot name="col-2"></slot>
+      </div>
+      <div
+        class="column"
+        id="col3"
+        style$="[[_getColumnWidth(2,columnWidths)]]"
+      >
+        <slot name="col-3"></slot>
+      </div>
+      <div
+        class="column"
+        id="col4"
+        style$="[[_getColumnWidth(3,columnWidths)]]"
+      >
+        <slot name="col-4"></slot>
+      </div>
+      <div
+        class="column"
+        id="col5"
+        style$="[[_getColumnWidth(4,columnWidths)]]"
+      >
+        <slot name="col-5"></slot>
+      </div>
+      <div
+        class="column"
+        id="col6"
+        style$="[[_getColumnWidth(5,columnWidths)]]"
+      >
+        <slot name="col-6"></slot>
+      </div>
+    </div>
     <iron-a11y-keys
       stop-keyboard-event-propagation
       target="[[__activeItem]]"
@@ -202,12 +205,19 @@ let GridPlate = Polymer({
 
   properties: {
     /**
-     * Predefined layouts
+     * number of columns at this layout / responsive size
      */
-    layout: {
+    columns: {
+      type: Number,
+      computed: "_getColumns(columnWidths)",
+      reflectToAttribute: true
+    },
+    /**
+     * name of selected layout
+     */
+    columnWidths: {
       type: String,
-      value: "12",
-      observer: "_layoutChanged"
+      computed: "_getColumnWidths(responsiveSize,layout,layouts)"
     },
     /**
      * If the grid plate is in a state where its items
@@ -220,38 +230,177 @@ let GridPlate = Polymer({
       observer: "_editModeChanged"
     },
     /**
-     * Color handling can happen two different ways
-     * either as a whole like blue/blue/blue/blue or
-     * per column.
+     * an object with a layout's column sizes
+     * at the current responsive width
      */
-    colors: {
+    layout: {
       type: String,
-      value: ""
-    },
-    col1Color: {
-      type: String,
-      value: ""
-    },
-    col2Color: {
-      type: String,
-      value: ""
-    },
-    col3Color: {
-      type: String,
-      value: ""
-    },
-    col4Color: {
-      type: String,
-      value: ""
+      value: "1-1",
+      reflectToAttribute: true
     },
     /**
-     * Actually applies the colors correctly between the two methods
+     * Predefined layouts of column sizes and various responsive widths. 
+     * For example:```
+{
+  "1-1-1-1": {                         //the name of the layout
+    "xs": ["100%","100%","100%","100%] //the responsive width of each column when the grid is extra small
+    "sm": ["50%","50%","50%","50%"]    //the responsive width of each column when the grid is small
+    "md": ["50%","50%","50%","50%"]    //the responsive width of each column when the grid is medium
+    "lg": ["25%","25%","25%","25%"]    //the responsive width of each column when the grid is large
+    "xl": ["25%","25%","25%","25%"]    //the responsive width of each column when the grid is extra large
+  },
+  {...}
+}
+
+              "1": "1: full width",
+              "1-1": "2: equal width",
+              "2-1": "2: wide and narrow",
+              "1-2": "2: narrow and wide",
+              "3-1": "2: wider and narrower",
+              "1-3": "2: narrower and wider",
+              "1-1-1": "3: equal width",
+              "2-1-1": "3: wide, narrow, and narrow",
+              "1-2-1": "3: narrow, wide, and narrow",
+              "1-1-2": "3: narrow,  narrow, and wide",
+              "1-1-1-1": "4: equal width",
      */
-    _colors: {
+    layouts: {
+      type: Object,
+      value: {
+        "1": {
+          columnLayout: "1: full width",
+          xs: ["100%"],
+          sm: ["100%"],
+          md: ["100%"],
+          lg: ["100%"],
+          xl: ["100%"]
+        },
+        "1-1": {
+          columnLayout: "2: equal width",
+          xs: ["100%", "100%"],
+          sm: ["50%", "50%"],
+          md: ["50%", "50%"],
+          lg: ["50%", "50%"],
+          xl: ["50%", "50%"]
+        },
+        "2-1": {
+          columnLayout: "2: wide & narrow",
+          xs: ["100%", "100%"],
+          sm: ["50%", "50%"],
+          md: ["66.6666667%", "33.3333337%"],
+          lg: ["66.6666667%", "33.3333337%"],
+          xl: ["66.6666667%", "33.3333337%"]
+        },
+        "1-2": {
+          columnLayout: "2: narrow & wide",
+          xs: ["100%", "100%"],
+          sm: ["50%", "50%"],
+          md: ["33.3333333%", "66.6666667%"],
+          lg: ["33.3333333%", "66.6666667%"],
+          xl: ["33.3333333%", "66.6666667%"]
+        },
+        "3-1": {
+          columnLayout: "2: wider & narrower",
+          xs: ["100%", "100%"],
+          sm: ["50%", "50%"],
+          md: ["75%", "25%"],
+          lg: ["75%", "25%"],
+          xl: ["75%", "25%"]
+        },
+        "1-3": {
+          columnLayout: "2: narrower & wider",
+          xs: ["100%", "100%"],
+          sm: ["50%", "50%"],
+          md: ["25%", "75%"],
+          lg: ["25%", "75%"],
+          xl: ["25%", "75%"]
+        },
+        "1-1-1": {
+          columnLayout: "3: equal width",
+          xs: ["100%", "100%", "100%"],
+          sm: ["100%", "100%", "100%"],
+          md: ["33.3333333%", "33.3333333%", "33.3333333%"],
+          lg: ["33.3333333%", "33.3333333%", "33.3333333%"],
+          xl: ["33.3333333%", "33.3333333%", "33.3333333%"]
+        },
+        "2-1-1": {
+          columnLayout: "3: wide, narrow, and narrow",
+          xs: ["100%", "100%", "100%"],
+          sm: ["100%", "50%", "50%"],
+          md: ["50%", "25%", "25%"],
+          lg: ["50%", "25%", "25%"],
+          xl: ["50%", "25%", "25%"]
+        },
+        "1-2-1": {
+          columnLayout: "3: narrow, wide, and narrow",
+          xs: ["100%", "100%", "100%"],
+          sm: ["100%", "100%", "100%"],
+          md: ["25%", "50%", "25%"],
+          lg: ["25%", "50%", "25%"],
+          xl: ["25%", "50%", "25%"]
+        },
+        "1-1-2": {
+          columnLayout: "3: narrow, narrow, and wide",
+          xs: ["100%", "100%", "100%"],
+          sm: ["50%", "50%", "100%"],
+          md: ["25%", "25%", "50%"],
+          lg: ["25%", "25%", "50%"],
+          xl: ["25%", "25%", "50%"]
+        },
+        "1-1-1-1": {
+          columnLayout: "4: equal width",
+          xs: ["100%", "100%", "100%", "100%"],
+          sm: ["50%", "50%", "50%", "50%"],
+          md: ["25%", "25%", "25%", "25%"],
+          lg: ["25%", "25%", "25%", "25%"],
+          xl: ["25%", "25%", "25%", "25%"]
+        },
+        "1-1-1-1-1": {
+          columnLayout: "5: equal width",
+          xs: ["100%", "100%", "100%", "100%", "100%"],
+          sm: ["50%", "50%", "50%", "50%", "50%"],
+          md: ["20%", "20%", "20%", "20%", "20%"],
+          lg: ["20%", "20%", "20%", "20%", "20%"],
+          xl: ["20%", "20%", "20%", "20%", "20%"]
+        },
+        "1-1-1-1-1-1": {
+          columnLayout: "6: equal width",
+          xs: ["100%", "100%", "100%", "100%", "100%", "100%"],
+          sm: ["50%", "50%", "50%", "50%", "50%", "50%"],
+          md: [
+            "33.3333333%",
+            "33.3333333%",
+            "33.3333333%",
+            "33.3333333%",
+            "33.3333333%",
+            "33.3333333%"
+          ],
+          lg: [
+            "16.6666667%",
+            "16.6666667",
+            "16.6666667",
+            "16.6666667%",
+            "16.6666667",
+            "16.6666667"
+          ],
+          xl: [
+            "16.6666667%",
+            "16.6666667",
+            "16.6666667",
+            "16.6666667%",
+            "16.6666667",
+            "16.6666667"
+          ]
+        }
+      }
+    },
+    /**
+     * Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`
+     */
+    responsiveSize: {
       type: String,
-      computed:
-        "_colorCreation(colors, col1Color, col2Color, col3Color, col4Color)",
-      observer: "_colColors"
+      value: "xs",
+      reflectToAttribute: true
     },
     /**
      * Track active item
@@ -270,56 +419,97 @@ let GridPlate = Polymer({
   },
 
   /**
+   * Determines if the item can move a set number of slots.
+   *
+   * @param {object} the item
+   * @param {number} -1 for left or +1 for right
+   * @returns {boolean} if the item can move a set number of slots
+   */
+  canMoveSlot: function(item, before) {
+    let dir = before ? -1 : 1,
+      max = this.columns,
+      col = item.getAttribute("slot").split("-"),
+      dest = parseInt(col[1]) + dir;
+    return dest >= 1 && dest <= max;
+  },
+
+  /**
+   * Moves an item a set number of slots.
+   *
+   * @param {object} the item
+   * @param {number} -1 for left or +1 for right
+   */
+  moveSlot: function(item, before) {
+    let dir = before ? -1 : 1,
+      max = this.columns,
+      col = item.getAttribute("slot").split("-"),
+      dest = parseInt(col[1]) + dir;
+    if (this.canMoveSlot(item, dir)) {
+      item.setAttribute("slot", "col-" + dest);
+    }
+  },
+
+  /**
+   * Determines if the item can move a set number of slots.
+   *
+   * @param {object} the item
+   * @param {boolean} move item before previous? (false for move item after next)
+   * @returns {boolean} if the item can move a set number of slots
+   */
+  canMoveOrder: function(item, before) {
+    let target = before ? item.previousElementSibling : item.nextElementSibling;
+    return (
+      target !== null &&
+      target.getAttribute("slot") === item.getAttribute("slot")
+    );
+  },
+
+  /**
+   * Moves an item's order within a slot.
+   *
+   * @param {object} the item
+   * @param {boolean} move item before previous? (false for move item after next)
+   */
+  moveOrder: function(item, before = true) {
+    let dir = before ? -1 : 1;
+    if (this.canMoveOrder(item, before)) {
+      if (before) {
+        dom(this).insertBefore(
+          this.__activeItem,
+          this.__activeItem.previousElementSibling
+        );
+      } else {
+        dom(this).insertAfter(
+          this.__activeItem,
+          this.__activeItem.nextElementSibling
+        );
+      }
+    }
+  },
+
+  /**
    * Move the active element based on which button got pressed.
    */
   moveActiveElement: function(e) {
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
-    let col = this.__activeItem.getAttribute("slot").split("-");
-    let max = 1;
-    // calcuate max columns based on the layout defined
-    let cols = [1, 2, 3, 4];
-    for (var j in cols) {
-      if (!this["hideCol" + cols[j]]) {
-        max = cols[j];
-      }
-    }
+    let slot = this.__activeItem.getAttribute("slot"),
+      col = slot.split("-"),
+      pos = parseInt(col[1]);
+    let max = this.columns;
     // see if this was an up down left or right movement
     switch (local.id) {
       case "up":
-        // ensure we can go up
-        if (this.__activeItem.previousElementSibling !== null) {
-          dom(this).insertBefore(
-            this.__activeItem,
-            this.__activeItem.previousElementSibling
-          );
-        }
+        this.moveOrder(this.__activeItem, true);
         break;
       case "down":
-        if (this.__activeItem.nextElementSibling !== null) {
-          dom(this).insertBefore(
-            this.__activeItem.nextElementSibling,
-            this.__activeItem
-          );
-        }
+        this.moveOrder(this.__activeItem, false);
         break;
       case "left":
-        if (parseInt(col[1]) > 1) {
-          this.__activeItem.setAttribute(
-            "slot",
-            "col-" + (parseInt(col[1]) - 1)
-          );
-          dom(this).appendChild(this.__activeItem);
-        }
+        this.moveSlot(this.__activeItem, true);
         break;
       case "right":
-        if (parseInt(col[1]) < max) {
-          this.__activeItem.setAttribute(
-            "slot",
-            "col-" + (parseInt(col[1]) + 1)
-          );
-          dom(this).appendChild(this.__activeItem);
-        }
+        this.moveSlot(this.__activeItem, false);
         break;
     }
     // ensure arrows are correctly positioned after the move
@@ -353,11 +543,44 @@ let GridPlate = Polymer({
   setActiveElement: function(e) {
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
-    this.$.up.focus();
+    //this.$.up.focus();
+    this.$.right.focus();
     e.preventDefault();
     e.stopPropagation();
   },
+  /**
+   * gets the column widths based on selected layout and current responsive width
+   *
+   * @param {string} a string that describes the current responsive width
+   * @param {string} the name of selected layout
+   * @param {object} predefined layouts of column sizes and various responsive widths
+   * @returns {object} an object with a layout's column sizes at the current responsive width
+   */
+  _getColumnWidths(responsiveSize = "sm", layout = "1-1", layouts) {
+    return layouts[layout][responsiveSize];
+  },
 
+  /**
+   * gets a given column's current width based on layout and current responsive width
+   *
+   * @param {number} the index of the column
+   * @param {object} an object with a layout's column sizes at the current responsive width
+   * @returns {string} a given column's current width based on layout and current responsive width
+   */
+  _getColumnWidth(column, columnWidths) {
+    return columnWidths !== undefined && columnWidths[column] !== undefined
+      ? "width:" + columnWidths[column]
+      : "display:none";
+  },
+  /**
+   * gets a given column's current width based on layout and current responsive width
+   *
+   * @param {string} the name of selected layout
+   * @returns {number} the number of columns in this layout
+   */
+  _getColumns(columnWidths) {
+    return columnWidths.length;
+  },
   /**
    * Focus / tab / click event normalization
    */
@@ -403,15 +626,24 @@ let GridPlate = Polymer({
       this.$.down.classList.add("active");
       this.$.left.classList.add("active");
       this.$.right.classList.add("active");
-      this.$.up.disabled = false;
-      this.$.down.disabled = false;
-      this.$.left.disabled = false;
-      this.$.right.disabled = false;
+
+      // ensure we disable invalid options contextually
+      let max = this.columns;
+      // test for an element above us
+      this.$.up.disabled = !this.canMoveOrder(item, true);
+      // test for an element below us
+      this.$.down.disabled = !this.canMoveOrder(item, false);
+      // test for a column to the left of us
+      this.$.left.disabled = !this.canMoveSlot(item, true);
+      // test for a column to the right of us
+      this.$.right.disabled = !this.canMoveSlot(item, false);
+
       // get coordinates of the page and active element
       let bodyRect = this.getBoundingClientRect();
       let elemRect = item.getBoundingClientRect();
       let topOffset = elemRect.top - bodyRect.top;
       let leftOffset = elemRect.left - bodyRect.left;
+
       // set the arrows to position correctly at all 4 sides
       this.$.up.style.top = topOffset - 20 + "px";
       this.$.down.style.top = topOffset + elemRect.height + "px";
@@ -422,32 +654,6 @@ let GridPlate = Polymer({
       this.$.down.style.left = leftOffset + elemRect.width / 2 - 10 + "px";
       this.$.left.style.left = leftOffset - 20 + "px";
       this.$.right.style.left = leftOffset + elemRect.width + "px";
-      // ensure we disable invalid options contextually
-      let col = item.getAttribute("slot").split("-");
-      let max = 1;
-      // calcuate max columns based on the layout defined
-      let cols = [1, 2, 3, 4];
-      for (var j in cols) {
-        if (!this["hideCol" + cols[j]]) {
-          max = cols[j];
-        }
-      }
-      // test for an element above us
-      if (item.previousElementSibling === null) {
-        this.$.up.disabled = true;
-      }
-      // test for an element below us
-      if (item.nextElementSibling === null) {
-        this.$.down.disabled = true;
-      }
-      // test for a column to the left of us
-      if (parseInt(col[1]) === 1) {
-        this.$.left.disabled = true;
-      }
-      // test for a column to the right of us
-      if (parseInt(col[1]) === max) {
-        this.$.right.disabled = true;
-      }
     }
   },
 
@@ -478,25 +684,24 @@ let GridPlate = Polymer({
           }
         }
         async.microTask.run(() => {
-          let cols = [1, 2, 3, 4];
-          for (var j in cols) {
-            if (!this["hideCol" + cols[j]]) {
+          for (var j = 1; j <= this.columns.length; j++) {
+            if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
               this.shadowRoot
-                .querySelector("#col" + cols[j])
+                .querySelector("#col" + j)
                 .addEventListener("drop", this.dropEvent.bind(this));
               this.shadowRoot
-                .querySelector("#col" + cols[j])
+                .querySelector("#col" + j)
                 .addEventListener("dragstart", this.dragStart.bind(this));
               this.shadowRoot
-                .querySelector("#col" + cols[j])
+                .querySelector("#col" + j)
                 .addEventListener("dragend", this.dragEnd.bind(this));
               this.shadowRoot
-                .querySelector("#col" + cols[j])
+                .querySelector("#col" + j)
                 .addEventListener("dragover", function(e) {
                   e.preventDefault();
                 });
               this.shadowRoot
-                .querySelector("#col" + cols[j])
+                .querySelector("#col" + j)
                 .setAttribute("data-draggable", true);
             }
           }
@@ -522,25 +727,24 @@ let GridPlate = Polymer({
           }
         }
         async.microTask.run(() => {
-          let cols = [1, 2, 3, 4];
-          for (var j in cols) {
-            if (!this["hideCol" + cols[j]]) {
+          for (var j = 1; j <= this.columns.length; j++) {
+            if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
               this.shadowRoot
-                .querySelector("#col" + cols[j])
+                .querySelector("#col" + j)
                 .removeEventListener("drop", this.dropEvent.bind(this));
               this.shadowRoot
-                .querySelector("#col" + cols[j])
+                .querySelector("#col" + j)
                 .removeEventListener("dragstart", this.dragStart.bind(this));
               this.shadowRoot
-                .querySelector("#col" + cols[j])
+                .querySelector("#col" + j)
                 .removeEventListener("dragend", this.dragEnd.bind(this));
               this.shadowRoot
-                .querySelector("#col" + cols[j])
+                .querySelector("#col" + j)
                 .removeEventListener("dragover", function(e) {
                   e.preventDefault();
                 });
               this.shadowRoot
-                .querySelector("#col" + cols[j])
+                .querySelector("#col" + j)
                 .removeAttribute("data-draggable");
             }
           }
@@ -571,7 +775,7 @@ let GridPlate = Polymer({
     }
     // special case for dropping on an empty column or between items
     // which could involve a miss on the column
-    else if (local.tagName === "RESPONSIVE-GRID-COL") {
+    else if (local.tagName === ".column") {
       var col = local.id.replace("col", "");
       this.__activeItem.setAttribute("slot", "col-" + col);
       dom(this).appendChild(this.__activeItem);
@@ -586,12 +790,9 @@ let GridPlate = Polymer({
         children[i].classList.remove("mover");
       }
     }
-    let cols = [1, 2, 3, 4];
-    for (var j in cols) {
-      if (!this["hideCol" + cols[j]]) {
-        this.shadowRoot
-          .querySelector("#col" + cols[j])
-          .classList.remove("mover");
+    for (var j = 1; j <= this.columns.length; j++) {
+      if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
+        this.shadowRoot.querySelector("#col" + j).classList.remove("mover");
       }
     }
     // position arrows / set focus in case the DOM got updated above
@@ -599,21 +800,6 @@ let GridPlate = Polymer({
       this.positionArrows(this.__activeItem);
       this.__activeItem.focus();
     }, 100);
-  },
-
-  /**
-   * Notice colors have changed
-   */
-  _colorCreation: function(colors, col1, col2, col3, col4) {
-    let items = colors.split("/");
-    let cols = [col1, col2, col3, col4];
-    // merge the two
-    for (var i in cols) {
-      if (cols[i] != "") {
-        items[i] = cols[i];
-      }
-    }
-    return items;
   },
 
   /**
@@ -627,10 +813,9 @@ let GridPlate = Polymer({
         children[i].classList.add("mover");
       }
     }
-    let cols = [1, 2, 3, 4];
-    for (var j in cols) {
-      if (!this["hideCol" + cols[j]]) {
-        this.shadowRoot.querySelector("#col" + cols[j]).classList.add("mover");
+    for (var j = 1; j <= this.columns.length; j++) {
+      if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
+        this.shadowRoot.querySelector("#col" + j).classList.add("mover");
       }
     }
   },
@@ -646,37 +831,9 @@ let GridPlate = Polymer({
         children[i].classList.remove("mover");
       }
     }
-    let cols = [1, 2, 3, 4];
-    for (var j in cols) {
-      if (!this["hideCol" + cols[j]]) {
-        this.shadowRoot
-          .querySelector("#col" + cols[j])
-          .classList.remove("mover");
-      }
-    }
-  },
-
-  /**
-   * Split a color value based on referencing the code
-   * as color-number for name of the color hypthen numberical array position
-   */
-  splitColor: function(value) {
-    if (value != "" && typeof SimpleColors.colors[value] !== typeof undefined) {
-      return SimpleColors.colors[value][0];
-    }
-    return value;
-  },
-
-  /**
-   * Generate the correct color code form the column
-   */
-  _colColors: function(newValue, oldValue) {
-    // don't bother with things that are null
-    if (newValue != "") {
-      for (var i in newValue) {
-        this["__col" + (parseInt(i) + 1) + "Color"] = this.splitColor(
-          newValue[i]
-        );
+    for (var j = 1; j <= this.columns.length; j++) {
+      if (this.shadowRoot.querySelector("#col" + j) !== undefined) {
+        this.shadowRoot.querySelector("#col" + j).classList.remove("mover");
       }
     }
   },
@@ -726,80 +883,60 @@ let GridPlate = Polymer({
    * Attached to the DOM, now fire.
    */
   attached: function() {
+    let root = this;
     // listen for HAX if it's around
     document.body.addEventListener(
       "hax-store-property-updated",
-      this._haxStorePropertyUpdated.bind(this)
+      root._haxStorePropertyUpdated.bind(root)
     );
     // listen for HAX insert events if it exists
     document.body.addEventListener(
       "hax-insert-content",
-      this.haxInsertContent.bind(this)
+      root.haxInsertContent.bind(root)
     );
-    // quickly build a basic selection array from known color names
-    var colorOptions = [];
-    for (var i in SimpleColors.colors) {
-      colorOptions[i] = i;
-    }
+    window.ResponsiveUtility.requestAvailability();
+    window.dispatchEvent(
+      new CustomEvent("responsive-element", {
+        detail: {
+          element: root,
+          attribute: "responsive-size",
+          relativeToParent: true
+        }
+      })
+    );
     // Establish hax property binding
-    let props = {
-      canScale: true,
-      canPosition: true,
-      canEditSource: false,
-      settings: {
-        quick: [],
-        configure: [
-          {
-            property: "layout",
-            title: "Layout",
-            description: "Style to present these items",
-            inputMethod: "select",
-            options: {
-              "12": "1 col, full width",
-              "8/4": "2 cols, 66% / 33% split",
-              "6/6": "2 cols, 50% split",
-              "4/8": "2 cols, 33% / 66% split",
-              "4/4/4": "3 cols, 33% each",
-              "3/3/3/3": "4 cols, 25% each"
-            }
-          },
-          {
-            property: "col1Color",
-            title: "Col 1 color",
-            description: "Color for the 1st column",
-            inputMethod: "select",
-            options: colorOptions
-          },
-          {
-            property: "col2Color",
-            title: "Col 2 color",
-            description: "Color for the 1st column",
-            inputMethod: "select",
-            options: colorOptions
-          },
-          {
-            property: "col3Color",
-            title: "Col 3 color",
-            description: "Color for the 1st column",
-            inputMethod: "select",
-            options: colorOptions
-          },
-          {
-            property: "col4Color",
-            title: "Col 4 color",
-            description: "Color for the 1st column",
-            inputMethod: "select",
-            options: colorOptions
-          }
-        ],
-        advanced: []
+    let options,
+      layouts = Object.keys(root.layout),
+      getOptions = function() {
+        //loop through all the supplied layouts to get the HAX layout options & descriptions
+        for (i = 0; layouts.length; i++) {
+          options[layouts[i]] = layouts[i].columnLayout;
+        }
       },
-      saveOptions: {
-        unsetAttributes: ["__active-item", "_colors", "edit-mode"]
-      }
-    };
+      props = {
+        canScale: true,
+        canPosition: true,
+        canEditSource: false,
+        settings: {
+          quick: [],
+          configure: [
+            {
+              property: "layout",
+              title: "Column Layout",
+              description:
+                "Style to present these items (may change for small screens)",
+              inputMethod: "select",
+              options: options
+            }
+          ],
+          advanced: []
+        },
+        saveOptions: {
+          unsetAttributes: ["__active-item", "edit-mode"]
+        }
+      };
 
-    this.setHaxProperties(props);
+    root.setHaxProperties(props);
   },
 
   /**

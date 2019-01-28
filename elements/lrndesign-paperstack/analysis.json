@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 117,
+              "line": 144,
               "column": 4
             },
             "end": {
-              "line": 120,
+              "line": 147,
               "column": 5
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 124,
+              "line": 151,
               "column": 4
             },
             "end": {
-              "line": 127,
+              "line": 154,
               "column": 5
             }
           },
@@ -49,95 +49,6 @@
             }
           },
           "defaultValue": "\"lrn:assignment\""
-        },
-        {
-          "name": "colorCode",
-          "type": "string | null | undefined",
-          "description": "Color code",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 131,
-              "column": 4
-            },
-            "end": {
-              "line": 135,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_colorCodeChange\"",
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"#000000\""
-        },
-        {
-          "name": "color",
-          "type": "string | null | undefined",
-          "description": "Color class",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 139,
-              "column": 4
-            },
-            "end": {
-              "line": 142,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": true,
-              "attributeType": "String"
-            }
-          }
-        },
-        {
-          "name": "textCodeColor",
-          "type": "string | null | undefined",
-          "description": "Text color",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 146,
-              "column": 4
-            },
-            "end": {
-              "line": 149,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"#ffffff\""
-        },
-        {
-          "name": "textColor",
-          "type": "string | null | undefined",
-          "description": "Text color class",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 153,
-              "column": 4
-            },
-            "end": {
-              "line": 156,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": true,
-              "attributeType": "String"
-            }
-          }
         }
       ],
       "methods": [
@@ -203,67 +114,16 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 162,
+              "line": 160,
               "column": 2
             },
             "end": {
-              "line": 219,
+              "line": 239,
               "column": 3
             }
           },
           "metadata": {},
           "params": [],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_computeColorClass",
-          "description": "Notice the color change and shift it over to the class name.",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 224,
-              "column": 2
-            },
-            "end": {
-              "line": 238,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "color"
-            },
-            {
-              "name": "bg"
-            }
-          ]
-        },
-        {
-          "name": "_colorCodeChange",
-          "description": "Text color change and shift it over to the class name.",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 243,
-              "column": 2
-            },
-            "end": {
-              "line": 248,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "newValue"
-            },
-            {
-              "name": "oldValue"
-            }
-          ],
           "return": {
             "type": "void"
           }
@@ -278,7 +138,7 @@
           "column": 34
         },
         "end": {
-          "line": 249,
+          "line": 240,
           "column": 1
         }
       },
@@ -291,11 +151,11 @@
           "description": "Title",
           "sourceRange": {
             "start": {
-              "line": 117,
+              "line": 144,
               "column": 4
             },
             "end": {
-              "line": 120,
+              "line": 147,
               "column": 5
             }
           },
@@ -307,75 +167,11 @@
           "description": "icon",
           "sourceRange": {
             "start": {
-              "line": 124,
+              "line": 151,
               "column": 4
             },
             "end": {
-              "line": 127,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "color-code",
-          "description": "Color code",
-          "sourceRange": {
-            "start": {
-              "line": 131,
-              "column": 4
-            },
-            "end": {
-              "line": 135,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "color",
-          "description": "Color class",
-          "sourceRange": {
-            "start": {
-              "line": 139,
-              "column": 4
-            },
-            "end": {
-              "line": 142,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "text-code-color",
-          "description": "Text color",
-          "sourceRange": {
-            "start": {
-              "line": 146,
-              "column": 4
-            },
-            "end": {
-              "line": 149,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "text-color",
-          "description": "Text color class",
-          "sourceRange": {
-            "start": {
-              "line": 153,
-              "column": 4
-            },
-            "end": {
-              "line": 156,
+              "line": 154,
               "column": 5
             }
           },

@@ -12,14 +12,18 @@
       import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
       import '../lrndesign-paperstack.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container.centered {
+        max-width: 600px;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic lrndesign-paperstack demo</h3>
       <demo-snippet>
         <template>
-          <lrndesign-paperstack title="Example">
+          <lrndesign-paperstack accent-color="pink" title="Example">
             As we've seen previously in this lesson, assignments can come from anywhere.
           </lrndesign-paperstack>
         </template>
@@ -29,7 +33,7 @@
       <h3>Basic lrndesign-paperstack demo</h3>
       <demo-snippet>
         <template>
-          <lrndesign-paperstack title="Demo title" icon="lrn:network">
+          <lrndesign-paperstack dark accent-color="red-orange" title="Demo title" icon="lrn:network">
             This is a whole bunch of content which you might see in one of these cards.
           </lrndesign-paperstack>
         </template>

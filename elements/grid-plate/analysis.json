@@ -7,27 +7,48 @@
       "path": "grid-plate.js",
       "properties": [
         {
-          "name": "layout",
-          "type": "string | null | undefined",
-          "description": "Predefined layouts",
+          "name": "columns",
+          "type": "number | null | undefined",
+          "description": "number of columns at this layout / responsive size",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 206,
+              "line": 209,
               "column": 4
             },
             "end": {
-              "line": 210,
+              "line": 213,
               "column": 5
             }
           },
           "metadata": {
             "polymer": {
-              "observer": "\"_layoutChanged\"",
-              "attributeType": "String"
+              "readOnly": true,
+              "attributeType": "Number"
+            }
+          }
+        },
+        {
+          "name": "columnWidths",
+          "type": "string | null | undefined",
+          "description": "name of selected layout",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 217,
+              "column": 4
+            },
+            "end": {
+              "line": 220,
+              "column": 5
             }
           },
-          "defaultValue": "\"12\""
+          "metadata": {
+            "polymer": {
+              "readOnly": true,
+              "attributeType": "String"
+            }
+          }
         },
         {
           "name": "editMode",
@@ -36,11 +57,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 215,
+              "line": 225,
               "column": 4
             },
             "end": {
-              "line": 220,
+              "line": 230,
               "column": 5
             }
           },
@@ -53,17 +74,17 @@
           "defaultValue": "false"
         },
         {
-          "name": "colors",
+          "name": "layout",
           "type": "string | null | undefined",
-          "description": "Color handling can happen two different ways\neither as a whole like blue/blue/blue/blue or\nper column.",
+          "description": "an object with a layout's column sizes\nat the current responsive width",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 226,
+              "line": 235,
               "column": 4
             },
             "end": {
-              "line": 229,
+              "line": 239,
               "column": 5
             }
           },
@@ -72,42 +93,42 @@
               "attributeType": "String"
             }
           },
-          "defaultValue": "\"\""
+          "defaultValue": "\"1-1\""
         },
         {
-          "name": "col1Color",
-          "type": "string | null | undefined",
-          "description": "",
+          "name": "layouts",
+          "type": "Object | null | undefined",
+          "description": "Predefined layouts of column sizes and various responsive widths.\nFor example:```\n{\n  \"1-1-1-1\": {                         //the name of the layout\n    \"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small\n    \"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is small\n    \"md\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is medium\n    \"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is large\n    \"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is extra large\n  },\n  {...}\n}\n\n              \"1\": \"1: full width\",\n              \"1-1\": \"2: equal width\",\n              \"2-1\": \"2: wide and narrow\",\n              \"1-2\": \"2: narrow and wide\",\n              \"3-1\": \"2: wider and narrower\",\n              \"1-3\": \"2: narrower and wider\",\n              \"1-1-1\": \"3: equal width\",\n              \"2-1-1\": \"3: wide, narrow, and narrow\",\n              \"1-2-1\": \"3: narrow, wide, and narrow\",\n              \"1-1-2\": \"3: narrow,  narrow, and wide\",\n              \"1-1-1-1\": \"4: equal width\",",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 230,
+              "line": 266,
               "column": 4
             },
             "end": {
-              "line": 233,
+              "line": 395,
               "column": 5
             }
           },
           "metadata": {
             "polymer": {
-              "attributeType": "String"
+              "attributeType": "Object"
             }
           },
-          "defaultValue": "\"\""
+          "defaultValue": "{\"1\":{\"columnLayout\":\"1: full width\",\"xs\":[\"100%\"],\"sm\":[\"100%\"],\"md\":[\"100%\"],\"lg\":[\"100%\"],\"xl\":[\"100%\"]},\"1-1\":{\"columnLayout\":\"2: equal width\",\"xs\":[\"100%\",\"100%\"],\"sm\":[\"50%\",\"50%\"],\"md\":[\"50%\",\"50%\"],\"lg\":[\"50%\",\"50%\"],\"xl\":[\"50%\",\"50%\"]},\"2-1\":{\"columnLayout\":\"2: wide & narrow\",\"xs\":[\"100%\",\"100%\"],\"sm\":[\"50%\",\"50%\"],\"md\":[\"66.6666667%\",\"33.3333337%\"],\"lg\":[\"66.6666667%\",\"33.3333337%\"],\"xl\":[\"66.6666667%\",\"33.3333337%\"]},\"1-2\":{\"columnLayout\":\"2: narrow & wide\",\"xs\":[\"100%\",\"100%\"],\"sm\":[\"50%\",\"50%\"],\"md\":[\"33.3333333%\",\"66.6666667%\"],\"lg\":[\"33.3333333%\",\"66.6666667%\"],\"xl\":[\"33.3333333%\",\"66.6666667%\"]},\"3-1\":{\"columnLayout\":\"2: wider & narrower\",\"xs\":[\"100%\",\"100%\"],\"sm\":[\"50%\",\"50%\"],\"md\":[\"75%\",\"25%\"],\"lg\":[\"75%\",\"25%\"],\"xl\":[\"75%\",\"25%\"]},\"1-3\":{\"columnLayout\":\"2: narrower & wider\",\"xs\":[\"100%\",\"100%\"],\"sm\":[\"50%\",\"50%\"],\"md\":[\"25%\",\"75%\"],\"lg\":[\"25%\",\"75%\"],\"xl\":[\"25%\",\"75%\"]},\"1-1-1\":{\"columnLayout\":\"3: equal width\",\"xs\":[\"100%\",\"100%\",\"100%\"],\"sm\":[\"100%\",\"100%\",\"100%\"],\"md\":[\"33.3333333%\",\"33.3333333%\",\"33.3333333%\"],\"lg\":[\"33.3333333%\",\"33.3333333%\",\"33.3333333%\"],\"xl\":[\"33.3333333%\",\"33.3333333%\",\"33.3333333%\"]},\"2-1-1\":{\"columnLayout\":\"3: wide, narrow, and narrow\",\"xs\":[\"100%\",\"100%\",\"100%\"],\"sm\":[\"100%\",\"50%\",\"50%\"],\"md\":[\"50%\",\"25%\",\"25%\"],\"lg\":[\"50%\",\"25%\",\"25%\"],\"xl\":[\"50%\",\"25%\",\"25%\"]},\"1-2-1\":{\"columnLayout\":\"3: narrow, wide, and narrow\",\"xs\":[\"100%\",\"100%\",\"100%\"],\"sm\":[\"100%\",\"100%\",\"100%\"],\"md\":[\"25%\",\"50%\",\"25%\"],\"lg\":[\"25%\",\"50%\",\"25%\"],\"xl\":[\"25%\",\"50%\",\"25%\"]},\"1-1-2\":{\"columnLayout\":\"3: narrow, narrow, and wide\",\"xs\":[\"100%\",\"100%\",\"100%\"],\"sm\":[\"50%\",\"50%\",\"100%\"],\"md\":[\"25%\",\"25%\",\"50%\"],\"lg\":[\"25%\",\"25%\",\"50%\"],\"xl\":[\"25%\",\"25%\",\"50%\"]},\"1-1-1-1\":{\"columnLayout\":\"4: equal width\",\"xs\":[\"100%\",\"100%\",\"100%\",\"100%\"],\"sm\":[\"50%\",\"50%\",\"50%\",\"50%\"],\"md\":[\"25%\",\"25%\",\"25%\",\"25%\"],\"lg\":[\"25%\",\"25%\",\"25%\",\"25%\"],\"xl\":[\"25%\",\"25%\",\"25%\",\"25%\"]},\"1-1-1-1-1\":{\"columnLayout\":\"5: equal width\",\"xs\":[\"100%\",\"100%\",\"100%\",\"100%\",\"100%\"],\"sm\":[\"50%\",\"50%\",\"50%\",\"50%\",\"50%\"],\"md\":[\"20%\",\"20%\",\"20%\",\"20%\",\"20%\"],\"lg\":[\"20%\",\"20%\",\"20%\",\"20%\",\"20%\"],\"xl\":[\"20%\",\"20%\",\"20%\",\"20%\",\"20%\"]},\"1-1-1-1-1-1\":{\"columnLayout\":\"6: equal width\",\"xs\":[\"100%\",\"100%\",\"100%\",\"100%\",\"100%\",\"100%\"],\"sm\":[\"50%\",\"50%\",\"50%\",\"50%\",\"50%\",\"50%\"],\"md\":[\"33.3333333%\",\"33.3333333%\",\"33.3333333%\",\"33.3333333%\",\"33.3333333%\",\"33.3333333%\"],\"lg\":[\"16.6666667%\",\"16.6666667\",\"16.6666667\",\"16.6666667%\",\"16.6666667\",\"16.6666667\"],\"xl\":[\"16.6666667%\",\"16.6666667\",\"16.6666667\",\"16.6666667%\",\"16.6666667\",\"16.6666667\"]}}"
         },
         {
-          "name": "col2Color",
+          "name": "responsiveSize",
           "type": "string | null | undefined",
-          "description": "",
+          "description": "Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 234,
+              "line": 399,
               "column": 4
             },
             "end": {
-              "line": 237,
+              "line": 403,
               "column": 5
             }
           },
@@ -116,74 +137,7 @@
               "attributeType": "String"
             }
           },
-          "defaultValue": "\"\""
-        },
-        {
-          "name": "col3Color",
-          "type": "string | null | undefined",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 238,
-              "column": 4
-            },
-            "end": {
-              "line": 241,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"\""
-        },
-        {
-          "name": "col4Color",
-          "type": "string | null | undefined",
-          "description": "",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 242,
-              "column": 4
-            },
-            "end": {
-              "line": 245,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"\""
-        },
-        {
-          "name": "_colors",
-          "type": "string | null | undefined",
-          "description": "Actually applies the colors correctly between the two methods",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 249,
-              "column": 4
-            },
-            "end": {
-              "line": 254,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_colColors\"",
-              "readOnly": true,
-              "attributeType": "String"
-            }
-          }
+          "defaultValue": "\"xs\""
         },
         {
           "name": "__activeItem",
@@ -192,11 +146,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 258,
+              "line": 407,
               "column": 4
             },
             "end": {
-              "line": 261,
+              "line": 410,
               "column": 5
             }
           },
@@ -215,11 +169,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 267,
+              "line": 416,
               "column": 2
             },
             "end": {
-              "line": 269,
+              "line": 418,
               "column": 3
             }
           },
@@ -234,16 +188,127 @@
           }
         },
         {
+          "name": "canMoveSlot",
+          "description": "Determines if the item can move a set number of slots.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 427,
+              "column": 2
+            },
+            "end": {
+              "line": 433,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "item"
+            },
+            {
+              "name": "before"
+            }
+          ],
+          "return": {
+            "type": "boolean",
+            "desc": "if the item can move a set number of slots"
+          }
+        },
+        {
+          "name": "moveSlot",
+          "description": "Moves an item a set number of slots.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 441,
+              "column": 2
+            },
+            "end": {
+              "line": 449,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "item"
+            },
+            {
+              "name": "before"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "canMoveOrder",
+          "description": "Determines if the item can move a set number of slots.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 458,
+              "column": 2
+            },
+            "end": {
+              "line": 464,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "item"
+            },
+            {
+              "name": "before"
+            }
+          ],
+          "return": {
+            "type": "boolean",
+            "desc": "if the item can move a set number of slots"
+          }
+        },
+        {
+          "name": "moveOrder",
+          "description": "Moves an item's order within a slot.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 472,
+              "column": 2
+            },
+            "end": {
+              "line": 487,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "item"
+            },
+            {
+              "name": "before",
+              "defaultValue": "true"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
           "name": "moveActiveElement",
           "description": "Move the active element based on which button got pressed.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 274,
+              "line": 492,
               "column": 2
             },
             "end": {
-              "line": 329,
+              "line": 519,
               "column": 3
             }
           },
@@ -263,11 +328,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 334,
+              "line": 524,
               "column": 2
             },
             "end": {
-              "line": 347,
+              "line": 537,
               "column": 3
             }
           },
@@ -290,11 +355,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 352,
+              "line": 542,
               "column": 2
             },
             "end": {
-              "line": 358,
+              "line": 549,
               "column": 3
             }
           },
@@ -309,16 +374,102 @@
           }
         },
         {
+          "name": "_getColumnWidths",
+          "description": "gets the column widths based on selected layout and current responsive width",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 558,
+              "column": 2
+            },
+            "end": {
+              "line": 560,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "responsiveSize",
+              "defaultValue": "\"sm\""
+            },
+            {
+              "name": "layout",
+              "defaultValue": "\"1-1\""
+            },
+            {
+              "name": "layouts"
+            }
+          ],
+          "return": {
+            "type": "object",
+            "desc": "an object with a layout's column sizes at the current responsive width"
+          }
+        },
+        {
+          "name": "_getColumnWidth",
+          "description": "gets a given column's current width based on layout and current responsive width",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 569,
+              "column": 2
+            },
+            "end": {
+              "line": 573,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "column"
+            },
+            {
+              "name": "columnWidths"
+            }
+          ],
+          "return": {
+            "type": "string",
+            "desc": "a given column's current width based on layout and current responsive width"
+          }
+        },
+        {
+          "name": "_getColumns",
+          "description": "gets a given column's current width based on layout and current responsive width",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 580,
+              "column": 2
+            },
+            "end": {
+              "line": 582,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "columnWidths"
+            }
+          ],
+          "return": {
+            "type": "number",
+            "desc": "the number of columns in this layout"
+          }
+        },
+        {
           "name": "_focusIn",
           "description": "Focus / tab / click event normalization",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 363,
+              "line": 586,
               "column": 2
             },
             "end": {
-              "line": 372,
+              "line": 595,
               "column": 3
             }
           },
@@ -338,11 +489,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 376,
+              "line": 599,
               "column": 2
             },
             "end": {
-              "line": 390,
+              "line": 613,
               "column": 3
             }
           },
@@ -362,11 +513,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 394,
+              "line": 617,
               "column": 2
             },
             "end": {
-              "line": 451,
+              "line": 657,
               "column": 3
             }
           },
@@ -386,11 +537,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 456,
+              "line": 662,
               "column": 2
             },
             "end": {
-              "line": 549,
+              "line": 753,
               "column": 3
             }
           },
@@ -413,11 +564,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 554,
+              "line": 758,
               "column": 2
             },
             "end": {
-              "line": 601,
+              "line": 802,
               "column": 3
             }
           },
@@ -432,49 +583,16 @@
           }
         },
         {
-          "name": "_colorCreation",
-          "description": "Notice colors have changed",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 606,
-              "column": 2
-            },
-            "end": {
-              "line": 616,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "colors"
-            },
-            {
-              "name": "col1"
-            },
-            {
-              "name": "col2"
-            },
-            {
-              "name": "col3"
-            },
-            {
-              "name": "col4"
-            }
-          ]
-        },
-        {
           "name": "dragStart",
           "description": "Start a drag event, this is an element being dragged",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 621,
+              "line": 807,
               "column": 2
             },
             "end": {
-              "line": 635,
+              "line": 820,
               "column": 3
             }
           },
@@ -494,11 +612,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 640,
+              "line": 825,
               "column": 2
             },
             "end": {
-              "line": 656,
+              "line": 838,
               "column": 3
             }
           },
@@ -513,64 +631,16 @@
           }
         },
         {
-          "name": "splitColor",
-          "description": "Split a color value based on referencing the code\nas color-number for name of the color hypthen numberical array position",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 662,
-              "column": 2
-            },
-            "end": {
-              "line": 667,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "value"
-            }
-          ]
-        },
-        {
-          "name": "_colColors",
-          "description": "Generate the correct color code form the column",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 672,
-              "column": 2
-            },
-            "end": {
-              "line": 681,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "newValue"
-            },
-            {
-              "name": "oldValue"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
           "name": "_layoutChanged",
           "description": "See layout has changed, update all the possible data values",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 686,
+              "line": 843,
               "column": 2
             },
             "end": {
-              "line": 723,
+              "line": 880,
               "column": 3
             }
           },
@@ -590,11 +660,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 727,
+              "line": 884,
               "column": 2
             },
             "end": {
-              "line": 802,
+              "line": 939,
               "column": 3
             }
           },
@@ -610,11 +680,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 807,
+              "line": 944,
               "column": 2
             },
             "end": {
-              "line": 822,
+              "line": 959,
               "column": 3
             }
           },
@@ -634,11 +704,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 827,
+              "line": 964,
               "column": 2
             },
             "end": {
-              "line": 838,
+              "line": 975,
               "column": 3
             }
           },
@@ -658,11 +728,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 20,
+          "line": 18,
           "column": 24
         },
         "end": {
-          "line": 839,
+          "line": 976,
           "column": 1
         }
       },
@@ -671,15 +741,31 @@
       "name": "GridPlate",
       "attributes": [
         {
-          "name": "layout",
-          "description": "Predefined layouts",
+          "name": "columns",
+          "description": "number of columns at this layout / responsive size",
           "sourceRange": {
             "start": {
-              "line": 206,
+              "line": 209,
               "column": 4
             },
             "end": {
-              "line": 210,
+              "line": 213,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "number | null | undefined"
+        },
+        {
+          "name": "column-widths",
+          "description": "name of selected layout",
+          "sourceRange": {
+            "start": {
+              "line": 217,
+              "column": 4
+            },
+            "end": {
+              "line": 220,
               "column": 5
             }
           },
@@ -691,11 +777,11 @@
           "description": "If the grid plate is in a state where its items\ncan be modified as far as order or column placement.",
           "sourceRange": {
             "start": {
-              "line": 215,
+              "line": 225,
               "column": 4
             },
             "end": {
-              "line": 220,
+              "line": 230,
               "column": 5
             }
           },
@@ -703,15 +789,15 @@
           "type": "boolean | null | undefined"
         },
         {
-          "name": "colors",
-          "description": "Color handling can happen two different ways\neither as a whole like blue/blue/blue/blue or\nper column.",
+          "name": "layout",
+          "description": "an object with a layout's column sizes\nat the current responsive width",
           "sourceRange": {
             "start": {
-              "line": 226,
+              "line": 235,
               "column": 4
             },
             "end": {
-              "line": 229,
+              "line": 239,
               "column": 5
             }
           },
@@ -719,63 +805,31 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "col1-color",
-          "description": "",
+          "name": "layouts",
+          "description": "Predefined layouts of column sizes and various responsive widths.\nFor example:```\n{\n  \"1-1-1-1\": {                         //the name of the layout\n    \"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small\n    \"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is small\n    \"md\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is medium\n    \"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is large\n    \"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is extra large\n  },\n  {...}\n}\n\n              \"1\": \"1: full width\",\n              \"1-1\": \"2: equal width\",\n              \"2-1\": \"2: wide and narrow\",\n              \"1-2\": \"2: narrow and wide\",\n              \"3-1\": \"2: wider and narrower\",\n              \"1-3\": \"2: narrower and wider\",\n              \"1-1-1\": \"3: equal width\",\n              \"2-1-1\": \"3: wide, narrow, and narrow\",\n              \"1-2-1\": \"3: narrow, wide, and narrow\",\n              \"1-1-2\": \"3: narrow,  narrow, and wide\",\n              \"1-1-1-1\": \"4: equal width\",",
           "sourceRange": {
             "start": {
-              "line": 230,
+              "line": 266,
               "column": 4
             },
             "end": {
-              "line": 233,
+              "line": 395,
               "column": 5
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
+          "type": "Object | null | undefined"
         },
         {
-          "name": "col2-color",
-          "description": "",
+          "name": "responsive-size",
+          "description": "Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`",
           "sourceRange": {
             "start": {
-              "line": 234,
+              "line": 399,
               "column": 4
             },
             "end": {
-              "line": 237,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "col3-color",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 238,
-              "column": 4
-            },
-            "end": {
-              "line": 241,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "col4-color",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 242,
-              "column": 4
-            },
-            "end": {
-              "line": 245,
+              "line": 403,
               "column": 5
             }
           },

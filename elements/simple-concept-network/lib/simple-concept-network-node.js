@@ -3,7 +3,7 @@ import "@polymer/paper-button/paper-button.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@lrnwebcomponents/lrn-icons/lrn-icons.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 /**
 `simple-concept-network-node`
 A small but effective little data visualizer for topics surrounding
@@ -17,11 +17,21 @@ a central concept, much like the ELMS:LN snowflake icon.
 */
 Polymer({
   _template: html`
-    <style include="materializecss-styles">
+    <style include="simple-colors">
       :host {
         display: inline-flex;
-        --simple-concept-network-color: #220066;
-        --simple-concept-network-bg: #ffffff;
+        --simple-concept-network-color: var(
+          --simple-colors-default-theme-grey-12
+        );
+        --simple-concept-network-bg: var(
+          --simple-colors-default-theme-accent-5
+        );
+      }
+      :host([colored-text]) {
+        --simple-concept-network-bg: var(--simple-colors-default-theme-grey-12);
+        --simple-concept-network-color: var(
+          --simple-colors-default-theme-accent-5
+        );
       }
       paper-button {
         -webkit-transition: 0.6s transform ease-in-out;
@@ -135,17 +145,12 @@ Polymer({
         background: inherit;
       }
     </style>
-    <a tabindex="-1" href="[[src]]" disabled\$="[[disabled]]">
-      <paper-button disabled\$="[[disabled]]" id="button">
-        <div
-          class="hexagon"
-          style\$="background-image: url([[image]]); background-color:[[color]];"
-        >
+    <a tabindex="-1" href="[[src]]" disabled$="[[disabled]]">
+      <paper-button disabled$="[[disabled]]" id="button">
+        <div class="hexagon" style$="background-image: url([[image]]);">
           <div class="hexTop"></div>
           <div class="hexBottom"></div>
-          <iron-icon icon="[[icon]]" style\$="color:[[iconColor]];"
-            >&gt;</iron-icon
-          >
+          <iron-icon icon="[[icon]]">&gt;</iron-icon>
         </div>
       </paper-button>
     </a>
@@ -158,22 +163,19 @@ Polymer({
 
   behaviors: [
     HAXBehaviors.PropertiesBehaviors,
-    MaterializeCSSBehaviors.ColorBehaviors,
+    SimpleColors,
     A11yBehaviors.A11y
   ],
 
   properties: {
     /**
-     * Primary color to use as the background
+     * make the default theme dark?
      */
-    color: {
-      type: String
-    },
-    /**
-     * Icon color
-     */
-    iconColor: {
-      type: String
+    coloredText: {
+      type: Boolean,
+      value: false,
+      reflectToAttribute: true,
+      notify: true
     },
     /**
      * Visualization reflected to attribute for styling
