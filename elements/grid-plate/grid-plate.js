@@ -479,10 +479,14 @@ let GridPlate = Polymer({
           this.__activeItem.previousElementSibling
         );
       } else {
-        dom(this).insertAfter(
-          this.__activeItem,
-          this.__activeItem.nextElementSibling
-        );
+        if (this.__activeItem.nextElementSibling.nextElementSibling !== null) {
+          dom(this).insertBefore(
+            this.__activeItem,
+            this.__activeItem.nextElementSibling.nextElementSibling
+          );
+        } else {
+          this.__activeItem.parentNode.appendChild(this.__activeItem);
+        }
       }
     }
   },
@@ -557,6 +561,12 @@ let GridPlate = Polymer({
    * @returns {object} an object with a layout's column sizes at the current responsive width
    */
   _getColumnWidths(responsiveSize = "sm", layout = "1-1", layouts) {
+    if (
+      layouts[layout] === undefined ||
+      layouts[layout][responsiveSize] === undefined
+    ) {
+      return layouts["1-1"][responsiveSize];
+    }
     return layouts[layout][responsiveSize];
   },
 

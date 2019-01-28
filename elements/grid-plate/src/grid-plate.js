@@ -479,10 +479,14 @@ let GridPlate = Polymer({
           this.__activeItem.previousElementSibling
         );
       } else {
-        dom(this).insertAfter(
-          this.__activeItem,
-          this.__activeItem.nextElementSibling
-        );
+        if (this.__activeItem.nextElementSibling.nextElementSibling !== null) {
+          dom(this).insertBefore(
+            this.__activeItem,
+            this.__activeItem.nextElementSibling.nextElementSibling
+          );
+        } else {
+          this.__activeItem.parentNode.appendChild(this.__activeItem);
+        }
       }
     }
   },
