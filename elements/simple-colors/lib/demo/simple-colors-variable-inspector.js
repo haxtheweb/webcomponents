@@ -74,7 +74,7 @@ class SimpleColorsVariableInspector extends SimpleColors {
                 value="--simple-colors-default-theme"
                 as-code
                 on-theme-change="_handleUpdate"
-                options="[&quot;--simple-colors-default-theme&quot;,&quot;--simple-colors-dark-theme&quot;,&quot;--simple-colors-light-theme&quot;]"
+                options='["--simple-colors-default-theme","--simple-colors-dark-theme","--simple-colors-light-theme"]'
               >
               </simple-colors-demo-select
               >-<label class="sr-only" for="color">Text Base Color</label
@@ -94,7 +94,7 @@ class SimpleColorsVariableInspector extends SimpleColors {
                 value="1"
                 as-code
                 on-level-change="_handleUpdate"
-                options="[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;11&quot;,&quot;12&quot;]"
+                options='["1","2","3","4","5","6","7","8","9","10","11","12"]'
               >
               </simple-colors-demo-select
               >); <br />
@@ -107,7 +107,7 @@ class SimpleColorsVariableInspector extends SimpleColors {
                 value="--simple-colors-default-theme"
                 as-code
                 on-theme-change="_handleUpdate"
-                options="[&quot;--simple-colors-default-theme&quot;,&quot;--simple-colors-dark-theme&quot;,&quot;--simple-colors-light-theme&quot;]"
+                options='["--simple-colors-default-theme","--simple-colors-dark-theme","--simple-colors-light-theme"]'
               >
               </simple-colors-demo-select
               >-<label class="sr-only" for="color">Background Base Color</label
@@ -127,7 +127,7 @@ class SimpleColorsVariableInspector extends SimpleColors {
                 value="7"
                 as-code
                 on-level-change="_handleUpdate"
-                options="[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;11&quot;,&quot;12&quot;]"
+                options='["1","2","3","4","5","6","7","8","9","10","11","12"]'
               >
               </simple-colors-demo-select
               >); <br />
@@ -140,7 +140,7 @@ class SimpleColorsVariableInspector extends SimpleColors {
                 value="--simple-colors-default-theme"
                 as-code
                 on-theme-change="_handleUpdate"
-                options="[&quot;--simple-colors-default-theme&quot;,&quot;--simple-colors-dark-theme&quot;,&quot;--simple-colors-light-theme&quot;]"
+                options='["--simple-colors-default-theme","--simple-colors-dark-theme","--simple-colors-light-theme"]'
               >
               </simple-colors-demo-select
               >-<label class="sr-only" for="color">Border Base Color</label
@@ -160,7 +160,7 @@ class SimpleColorsVariableInspector extends SimpleColors {
                 value="9"
                 as-code
                 on-level-change="_handleUpdate"
-                options="[&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;11&quot;,&quot;12&quot;]"
+                options='["1","2","3","4","5","6","7","8","9","10","11","12"]'
               >
               </simple-colors-demo-select
               >);

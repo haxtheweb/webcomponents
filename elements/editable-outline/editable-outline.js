@@ -3,9 +3,10 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
+import { getRange } from "./lib/shadows-safari.js";
 import "@polymer/iron-a11y-keys/iron-a11y-keys.js";
 import "@polymer/iron-icon/iron-icon.js";
+import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@lrnwebcomponents/json-outline-schema/json-outline-schema.js";
 
@@ -43,21 +44,38 @@ class EditableOutline extends PolymerElement {
         li {
           font-size: 16px;
           line-height: 32px;
+          padding: 4px;
+        }
+
+        li:focus,
+        li:active,
+        li:hover {
+          background-color: #eeeeee;
+          outline: 1px solid #cccccc;
         }
 
         iron-icon {
           pointer-events: none;
         }
       </style>
+      <button on-click="buttonEvents" id="down">
+        <iron-icon icon="icons:arrow-downward"></iron-icon> Move down
+      </button>
+      <button on-click="buttonEvents" id="up">
+        <iron-icon icon="icons:arrow-upward"></iron-icon> Move up
+      </button>
       <button on-click="buttonEvents" id="outdent">
         <iron-icon icon="editor:format-indent-decrease"></iron-icon> Outdent
       </button>
       <button on-click="buttonEvents" id="indent">
         <iron-icon icon="editor:format-indent-increase"></iron-icon> Indent
       </button>
+      <button on-click="buttonEvents" id="duplicate">
+        <iron-icon icon="icons:content-copy"></iron-icon> Duplicate structure
+      </button>
 
       <ul id="outline" contenteditable$="[[editMode]]">
-        <li></li>
+        <li contenteditable="true"></li>
       </ul>
 
       <iron-a11y-keys
@@ -123,47 +141,112 @@ class EditableOutline extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     this.__outlineNode = this.$.outline;
-    window.addEventListener("paste", this._onPaste.bind(this));
-    // mutation observer that ensures state of hax applied correctly
-    this._observer = new FlattenedNodesObserver(this.__outlineNode, info => {
-      // if we've got new nodes to react to... AND they were pasted
-      if (info.addedNodes.length > 0 && this.__pasteFlag) {
-        info.addedNodes.map(node => {
-          // deep scrub the node that we just got to remove possible JOS metadata
-          window.JSONOutlineSchema.requestAvailability().scrubElementJOSData(
-            node
-          );
-        });
-        this.__pasteFlag = false;
-      }
-      // if we dropped nodes via the UI (delete event basically)
-      if (info.removedNodes.length > 0) {
+    this._observer = new MutationObserver(this._observer.bind(this));
+    this._observer.observe(this.__outlineNode, {
+      childList: true,
+      subtree: true
+    });
+  }
+  /**
+   * Mutation observer callback
+   * @todo current issue if you copy and paste into the same node
+   */
+  _observer(record) {
+    let reference;
+    for (var index in record) {
+      let info = record[index];
+      if (info.removedNodes.length > 0 && this.__outdent) {
+        for (let i in info.removedNodes) {
+          if (
+            info.removedNodes[i].tagName &&
+            info.removedNodes[i].tagName === "LI" &&
+            info.removedNodes[i].getAttribute("data-jos-id") !== null
+          ) {
+            reference.setAttribute(
+              "data-jos-id",
+              info.removedNodes[i].getAttribute("data-jos-id")
+            );
+            if (
+              info.removedNodes[i].getAttribute("data-jos-location") !== null
+            ) {
+              reference.setAttribute(
+                "data-jos-location",
+                info.removedNodes[i].getAttribute("data-jos-location")
+              );
+            }
+            reference = null;
+          } else if (
+            info.removedNodes[i].tagName === "UL" &&
+            info.removedNodes[i].firstChild &&
+            info.removedNodes[i].firstChild.tagName === "LI" &&
+            info.removedNodes[i].firstChild.getAttribute("data-jos-id") !== null
+          ) {
+            reference.setAttribute(
+              "data-jos-id",
+              info.removedNodes[i].firstChild.getAttribute("data-jos-id")
+            );
+            if (
+              info.removedNodes[i].firstChild.getAttribute(
+                "data-jos-location"
+              ) !== null
+            ) {
+              reference.setAttribute(
+                "data-jos-location",
+                info.removedNodes[i].firstChild.getAttribute(
+                  "data-jos-location"
+                )
+              );
+            }
+            reference = null;
+          }
+        }
         // ensure there's always a first child node present
         // this way people can't break the interact via mass deleting
         if (!this.$.outline.firstChild) {
           this.$.outline.appendChild(document.createElement("li"));
         }
       }
-    });
+      // if we've got new nodes to react to that were not imported
+      if (info.addedNodes.length > 0) {
+        // special rules for an outdent event
+        if (this.__outdent) {
+          for (let i in info.addedNodes) {
+            if (
+              info.addedNodes[i].tagName &&
+              info.addedNodes[i].tagName === "LI"
+            ) {
+              reference = info.addedNodes[i];
+            }
+          }
+        } else if (!this.__blockScrub) {
+          for (let i in info.addedNodes) {
+            if (info.addedNodes[i].tagName) {
+              // @todo need to ensure that this isn't the same exact item in the same exact position
+              window.JSONOutlineSchema.requestAvailability().scrubElementJOSData(
+                info.addedNodes[i]
+              );
+            }
+          }
+        }
+      }
+    }
+    setTimeout(() => {
+      this.__blockScrub = false;
+      this.__outdent = false;
+      this.__indent = false;
+    }, 100);
   }
   /**
    * Disconnected life cycle
    */
   disconnectedCallback() {
     super.disconnectedCallback();
-    window.removeEventListener("paste", this._onPaste.bind(this));
   }
 
   // Observer editMode for changes
   _editModeChanged(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
     }
-  }
-  /**
-   * Set flag on paste so we know to wipe data in the mutation observer
-   */
-  _onPaste(e) {
-    this.__pasteFlag = true;
   }
   /**
    * Button events internally
@@ -176,13 +259,205 @@ class EditableOutline extends PolymerElement {
       case "outdent":
         this._outdent();
         break;
+      case "up":
+        this._move("up");
+        break;
+      case "down":
+        this._move("down");
+        break;
+      case "duplicate":
+        this._duplicate();
+        break;
     }
   }
-
+  /**
+   * Duplicate whatever has selection
+   */
+  _duplicate() {
+    // get active item from where cursor is
+    try {
+      let range = this.getDeepRange();
+      if (typeof range.commonAncestorContainer === typeof undefined) {
+        return;
+      }
+      let activeItem = range.commonAncestorContainer;
+      if (
+        activeItem === null ||
+        typeof activeItem === typeof undefined ||
+        typeof activeItem.tagName === typeof undefined
+      ) {
+        activeItem = activeItem.parentNode;
+      }
+      if (activeItem) {
+        // clone the item's hierarchy as well
+        if (
+          activeItem.nextElementSibling !== null &&
+          activeItem.nextElementSibling.tagName === "UL"
+        ) {
+          // copy the UL and all children and insert it after the UL it's duplicating
+          const clone2 = activeItem.nextElementSibling.cloneNode(true);
+          activeItem.parentNode.insertBefore(
+            clone2,
+            activeItem.nextElementSibling.nextElementSibling
+          );
+          // clone the LI, placing it before the UL we just made
+          const clone = activeItem.cloneNode(true);
+          activeItem.parentNode.insertBefore(
+            clone,
+            activeItem.nextElementSibling.nextElementSibling
+          );
+        } else {
+          const clone = activeItem.cloneNode(true);
+          // insert the clone AFTER the current selection
+          activeItem.parentNode.insertBefore(
+            clone,
+            activeItem.nextElementSibling
+          );
+        }
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
+  /**
+   * Move whatever has selection up or down
+   */
+  _move(direction) {
+    // get active item from where cursor is
+    try {
+      let range = this.getDeepRange();
+      if (typeof range.commonAncestorContainer === typeof undefined) {
+        return;
+      }
+      let activeItem = range.commonAncestorContainer;
+      if (
+        activeItem === null ||
+        typeof activeItem === typeof undefined ||
+        typeof activeItem.tagName === typeof undefined
+      ) {
+        activeItem = activeItem.parentNode;
+      }
+      let test = activeItem;
+      let valid = false;
+      // ensure this operation is executed in scope
+      while (!valid && test.parentNode) {
+        if (test.id === "outline") {
+          valid = true;
+        }
+        test = test.parentNode;
+      }
+      // ensure from all that, we have something
+      if (valid && activeItem) {
+        // move the things above us, below us
+        if (direction === "up") {
+          // ensure there's something above us
+          if (activeItem.previousElementSibling !== null) {
+            // see if we are moving us, or us and the hierarchy
+            if (
+              activeItem.nextElementSibling &&
+              activeItem.nextElementSibling.tagName === "UL"
+            ) {
+              // see if the thing we have to move above has it's own structure
+              if (activeItem.previousElementSibling.tagName === "UL") {
+                // ensure we don't lose our metadata
+                this.__blockScrub = true;
+                // insert the element currently above us, just before 2 places back; so behind our UL
+                activeItem.parentNode.insertBefore(
+                  activeItem.previousElementSibling,
+                  activeItem.nextElementSibling.nextElementSibling
+                );
+              }
+              this.__blockScrub = true;
+              // now insert the LI above us, 2 places back so it is in front of the UL
+              activeItem.parentNode.insertBefore(
+                activeItem.previousElementSibling,
+                activeItem.nextElementSibling.nextElementSibling
+              );
+              activeItem.focus();
+            } else {
+              // easier use case, we are moving ourselves only but above us is a UL
+              if (activeItem.previousElementSibling.tagName === "UL") {
+                this.__blockScrub = true;
+                // move the UL after us
+                activeItem.parentNode.insertBefore(
+                  activeItem.previousElementSibling,
+                  activeItem.nextElementSibling
+                );
+              }
+              this.__blockScrub = true;
+              // now move the LI after us
+              activeItem.parentNode.insertBefore(
+                activeItem.previousElementSibling,
+                activeItem.nextElementSibling
+              );
+              activeItem.focus();
+            }
+          }
+        } else if (direction === "down") {
+          // if nothing after us, we can't move
+          if (activeItem.nextElementSibling !== null) {
+            // account for having to hop over children
+            if (
+              activeItem.nextElementSibling &&
+              activeItem.nextElementSibling.tagName === "UL" &&
+              activeItem.nextElementSibling.nextElementSibling !== null
+            ) {
+              // an outline is just below us
+              if (
+                activeItem.nextElementSibling.nextElementSibling.tagName ===
+                  "LI" &&
+                activeItem.nextElementSibling.nextElementSibling
+                  .nextElementSibling !== null &&
+                activeItem.nextElementSibling.nextElementSibling
+                  .nextElementSibling.tagName === "UL"
+              ) {
+                this.__blockScrub = true;
+                // move the thing 2 down to just before us; so the UL
+                activeItem.parentNode.insertBefore(
+                  activeItem.nextElementSibling.nextElementSibling,
+                  activeItem
+                );
+              }
+              this.__blockScrub = true;
+              // now move the LI that is 2 below us just above us
+              activeItem.parentNode.insertBefore(
+                activeItem.nextElementSibling.nextElementSibling,
+                activeItem
+              );
+              activeItem.focus();
+            } else if (activeItem.nextElementSibling.tagName === "LI") {
+              // just moving 1 tag, see if we need to move 2 things about us or 1
+              if (
+                activeItem.nextElementSibling.nextElementSibling !== null &&
+                activeItem.nextElementSibling.nextElementSibling.tagName ===
+                  "UL"
+              ) {
+                this.__blockScrub = true;
+                activeItem.parentNode.insertBefore(
+                  activeItem.nextElementSibling,
+                  activeItem
+                );
+              }
+              this.__blockScrub = true;
+              // work on the LI
+              activeItem.parentNode.insertBefore(
+                activeItem.nextElementSibling,
+                activeItem
+              );
+              activeItem.focus();
+            }
+          }
+        }
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
   /**
    * Take the current manifest and import it into an HTML outline
    */
   importJsonOutlineSchemaItems() {
+    this.__blockScrub = true;
     // wipe out the outline
     while (this.$.outline.firstChild !== null) {
       this.$.outline.removeChild(this.$.outline.firstChild);
@@ -196,6 +471,7 @@ class EditableOutline extends PolymerElement {
     );
     // rebuild the outline w/ children we just found
     while (outline.firstChild !== null) {
+      this.__blockScrub = true;
       this.$.outline.appendChild(outline.firstChild);
     }
     return outline;
@@ -216,24 +492,20 @@ class EditableOutline extends PolymerElement {
     e.preventDefault();
     e.stopPropagation();
     e.stopImmediatePropagation();
-    // try selection / tab block since range can cause issues
+    if (e.detail.keyboardEvent) {
+      e.detail.keyboardEvent.preventDefault();
+      e.detail.keyboardEvent.stopPropagation();
+      e.detail.keyboardEvent.stopImmediatePropagation();
+    }
     try {
       this._indent();
-      if (e.detail.keyboardEvent) {
-        e.detail.keyboardEvent.preventDefault();
-        e.detail.keyboardEvent.stopPropagation();
-        e.detail.keyboardEvent.stopImmediatePropagation();
-      }
     } catch (e) {}
   }
   _indent() {
     if (this.polyfillSafe) {
+      this.__indent = true;
+      this.__blockScrub = true;
       document.execCommand("indent");
-    }
-  }
-  _outdent() {
-    if (this.polyfillSafe) {
-      document.execCommand("outdent");
     }
   }
   /**
@@ -243,15 +515,51 @@ class EditableOutline extends PolymerElement {
     e.preventDefault();
     e.stopPropagation();
     e.stopImmediatePropagation();
+    if (e.detail.keyboardEvent) {
+      e.detail.keyboardEvent.preventDefault();
+      e.detail.keyboardEvent.stopPropagation();
+      e.detail.keyboardEvent.stopImmediatePropagation();
+    }
     // try selection / tab block since range can cause issues
     try {
       this._outdent();
-      if (e.detail.keyboardEvent) {
-        e.detail.keyboardEvent.preventDefault();
-        e.detail.keyboardEvent.stopPropagation();
-        e.detail.keyboardEvent.stopImmediatePropagation();
-      }
     } catch (e) {}
+  }
+  _outdent() {
+    if (this.polyfillSafe) {
+      this.__outdent = true;
+      this.__blockScrub = true;
+      document.execCommand("outdent");
+    }
+  }
+  /**
+   * Selection normalizer
+   */
+  getDeepSelection() {
+    // try and obtain the selection from the nearest shadow
+    // which would give us the selection object when running native ShadowDOM
+    // with fallback support for the entire window which would imply Shady
+    // native API
+    if (this.shadowRoot.getSelection) {
+      return this.shadowRoot.getSelection();
+    }
+    // ponyfill from google
+    else if (getRange(this.$.outline.parentNode)) {
+      return getRange(this.$.outline.parentNode);
+    }
+    // missed on both, hope the normal one will work
+    return window.getSelection();
+  }
+  /**
+   * Get a normalized range based on current selection
+   */
+  getDeepRange() {
+    let sel = this.getDeepSelection();
+    if (sel.getRangeAt && sel.rangeCount) {
+      return sel.getRangeAt(0);
+    } else if (sel) {
+      return sel;
+    } else false;
   }
   /**
    * These are our bad actors in polyfill'ed browsers.

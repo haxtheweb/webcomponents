@@ -134,7 +134,9 @@ class SimpleDrawer extends PolymerElement {
             <h2 hidden$="[[!title]]">[[title]]</h2>
             <slot name="header"></slot>
           </div>
-          <div class="content"><slot name="content"></slot></div>
+          <div class="content">
+            <slot name="content"></slot>
+          </div>
           <paper-button id="close" on-tap="close">
             <iron-icon icon="[[closeIcon]]"></iron-icon> [[closeLabel]]
           </paper-button>

@@ -11,7 +11,7 @@
       "js": "src/schema-behaviors.js"
     }
   },
-  "version": "2.0.0-alpha2",
+  "version": "2.0.3",
   "description": "Apply schema helper behaviors to existing Polymer (Legacy) based elements",
   "repository": {
     "type": "git",

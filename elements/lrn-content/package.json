@@ -16,7 +16,7 @@
       "hax": "src/lrn-content-hax.json"
     }
   },
-  "version": "2.0.2",
+  "version": "2.0.4",
   "description": "Simple content wrapper for OER Schema meta-data",
   "repository": {
     "type": "git",

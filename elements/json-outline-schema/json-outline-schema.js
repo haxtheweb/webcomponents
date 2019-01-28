@@ -664,6 +664,14 @@ class JsonOutlineSchema extends HTMLElement {
     }
     return items;
   }
+  /**
+   * Get Next Page
+   */
+  nextPage(manifest, activeItem) {
+    manifest.items = manifest.items
+      // top level
+      .sort((a, b) => {});
+  }
 }
 window.customElements.define(JsonOutlineSchema.tag, JsonOutlineSchema);
 export { JsonOutlineSchema, JSONOutlineSchemaItem };

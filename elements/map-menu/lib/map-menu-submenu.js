@@ -78,7 +78,9 @@ Polymer({
     "child-activated": "__childActivated",
     "active-item": "__activeChanged",
     "toggle-header": "__toggleHeader",
-    "link-clicked": "_headerClickHandler"
+    "link-clicked": "_headerClickHandler",
+    "map-menu-active-item-changed": "_mapMenuActiveItemChangedHandler",
+    "map-menu-item-hidden-check": "_mapMenuItemHiddenCheckHandler"
   },
 
   _openChanged: function(opened) {
@@ -93,11 +95,26 @@ Polymer({
     }
   },
 
+  _mapMenuItemHiddenCheckHandler: function(e) {
+    const action = e.detail.action;
+    const target = e.detail.target;
+    const hiddenChild = e.detail.hiddenChild;
+    let detail = Object.assign({}, e.detail);
+
+    if (hiddenChild !== true && this.opened === false) {
+      detail = Object.assign({}, detail, { hiddenChild: true });
+    } else {
+      detail = Object.assign({}, detail, { hiddenChild: false });
+    }
+
+    this.fire("map-meu-item-hidden-check", detail);
+  },
+
   __toggleHeader: function(e) {
     // catch the event and end propagation
     e.stopPropagation();
     this.opened = !this.opened;
-    this.fire("toggle-updated");
+    this.fire("toggle-updated", { opened: this.opened });
   },
 
   __activeChanged: function(e) {

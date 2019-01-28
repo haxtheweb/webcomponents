@@ -59,6 +59,9 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         visibility: visible;
         opacity: 1;
       }
+      a, a:* {
+        color: inherit;
+      }
     </style>
     <iron-pages selected="[[selectedPage]]">
       <section>
@@ -69,19 +72,21 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         ></simple-blog-listing>
       </section>
       <section>
-        <paper-icon-button
-          id="backbutton"
-          icon="icons:arrow-back"
-          on-tap="_resetActiveItem"
-        ></paper-icon-button>
-        <paper-tooltip
-          for="backbutton"
-          position="right"
-          offset="14"
-          animation-delay="100"
-        >
-          Back to main site
-        </paper-tooltip>
+        <a href="/">
+          <paper-icon-button
+            id="backbutton"
+            icon="icons:arrow-back"
+            on-tap="_goBack"
+          ></paper-icon-button>
+          <paper-tooltip
+            for="backbutton"
+            position="right"
+            offset="14"
+            animation-delay="100"
+          >
+            Back to main site
+          </paper-tooltip>
+        </a>
         <simple-blog-post
           id="post"
           active-item="[[activeItem]]"
@@ -94,4 +99,4 @@ import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";impo
         ></simple-blog-footer>
       </section>
     </iron-pages>
-  `,is:"simple-blog",behaviors:[SchemaBehaviors.Schema,HAXCMSBehaviors.Theme],listeners:{"active-item-selected":"_itemSelected","active-item-reset":"_resetActiveItem"},properties:{selectedPage:{type:Number,reflectToAttribute:!0,value:0}},ready:function(){this.setupHAXTheme(!0,this.$.post.$.contentcontainer);document.body.addEventListener("haxcms-trigger-update",this._dataRefreshed.bind(this));document.body.addEventListener("json-outline-schema-active-item-changed",this._activeItemEvent.bind(this))},detached:function(){this.setupHAXTheme(!1);document.body.removeEventListener("haxcms-trigger-update",this._dataRefreshed.bind(this));document.body.removeEventListener("json-outline-schema-active-item-changed",this._activeItemEvent.bind(this))},_itemSelected:function(e){var id=e.detail;let find=this.manifest.items.filter(item=>{if(item.id!==id){return!1}return!0});if(0<find.length){this.fire("json-outline-schema-active-item-changed",find.pop())}},_activeItemEvent:function(e){if(typeof e.detail.id!==typeof void 0){this.selectedPage=1;window.scrollTo(0,0);this.$.post.set("activeItem",e.detail)}else{this.selectedPage=0}},_resetActiveItem:function(e){this.fire("json-outline-schema-active-item-changed",{})},_dataRefreshed:function(e){this.fire("json-outline-schema-active-item-changed",{})}});export{SimpleBlog};
+  `,is:"simple-blog",behaviors:[SchemaBehaviors.Schema,HAXCMSBehaviors.Theme],properties:{selectedPage:{type:Number,reflectToAttribute:!0,value:0}},ready:function(){this.setupHAXTheme(!0,this.$.post.$.contentcontainer);window.dispatchEvent(new CustomEvent("haxcms-router-manifest-subscribe",{detail:{callback:"_haxcmsRouterManifestSubscribeHandler",scope:this,setup:!0}}));window.addEventListener("haxcms-site-router-location-changed",this._haxcmsSiteRouterLocationChangedHandler.bind(this));document.body.addEventListener("haxcms-trigger-update",this._dataRefreshed.bind(this));document.body.addEventListener("json-outline-schema-active-item-changed",this._activeItemEvent.bind(this))},detached:function(){this.setupHAXTheme(!1);window.addEventListener("haxcms-site-router-location-changed",this._haxcmsSiteRouterLocationChangedHandler.bind(this));document.body.addEventListener("haxcms-trigger-update",this._dataRefreshed.bind(this));document.body.addEventListener("json-outline-schema-active-item-changed",this._activeItemEvent.bind(this))},_haxcmsRouterManifestSubscribeHandler:function(e){this.manifest=e.detail},_haxcmsSiteRouterLocationChangedHandler:function(e){const location=e.detail,name=location.route.name;if("home"===name||"404"===name){this.selectedPage=0}},_activeItemEvent:function(e){if(typeof e.detail.id!==typeof void 0){this.selectedPage=1;window.scrollTo(0,0);this.$.post.set("activeItem",e.detail)}else{this.selectedPage=0}},_goBack:function(e){},_dataRefreshed:function(e){this.fire("json-outline-schema-active-item-changed",{})}});export{SimpleBlog};

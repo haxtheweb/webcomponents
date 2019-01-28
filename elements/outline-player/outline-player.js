@@ -415,11 +415,25 @@ let OutlinePlayer = Polymer({
     window.addEventListener("resize", e => {
       this.refreshDynamicPositions();
     });
+    window.addEventListener(
+      "haxcms-site-router-active-item-changed",
+      this._haxcmsSiteRouterActiveItemChangedHandler.bind(this)
+    );
     // Subscribe to the router manifest
     window.dispatchEvent(
       new CustomEvent("haxcms-router-manifest-subscribe", {
         detail: {
           callback: "_haxcmsRouterManifestSubscribeHandler",
+          scope: this,
+          setup: true
+        }
+      })
+    );
+    // Subscribe to the router manifest
+    window.dispatchEvent(
+      new CustomEvent("haxcms-site-router-location-subscribe", {
+        detail: {
+          callback: "_haxcmsSiteRouterLocationSubscribe",
           scope: this,
           setup: true
         }
@@ -432,8 +446,33 @@ let OutlinePlayer = Polymer({
    * @param {event} e
    */
   _haxcmsRouterManifestSubscribeHandler: function(e) {
-    this.set("_routerManifest", e.detail);
-    this.notifyPath("_routerMaifest", "*");
+    this._routerManifest = {};
+    this._routerManifest = e.detail;
+  },
+
+  /**
+   * Listen for the active item to change
+   * @param {event} e
+   */
+  _haxcmsSiteRouterActiveItemChangedHandler: function(e) {
+    this.selected = e.detail.id;
+  },
+
+  _haxcmsSiteRouterLocationSubscribe: function(e) {
+    const location = e.detail;
+    const name = location.route.name;
+    if (name === "home" || name === "404") {
+      // if we are on the homepage then load the first item in the manifest
+      // and set it active
+      const firstItem = this.manifest.items.find(
+        i => typeof i.id !== "undefined"
+      );
+      window.dispatchEvent(
+        new CustomEvent("json-outline-schema-active-item-changed", {
+          detail: firstItem
+        })
+      );
+    }
   },
 
   /**
@@ -541,7 +580,8 @@ let OutlinePlayer = Polymer({
    * Advance a page
    */
   nextPage: function(e) {
-    this.changePage("next");
+    // window.JSONOutlineSchema.requestAvailability().nextPage(this.manifest, this.activeItem)
+    // this.changePage("next");
   },
 
   /**

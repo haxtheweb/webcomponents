@@ -16,7 +16,7 @@
       "hax": "src/license-element-hax.json"
     }
   },
-  "version": "2.0.2",
+  "version": "2.0.4",
   "description": "Semantically accurate license for a work",
   "repository": {
     "type": "git",
@@ -40,8 +40,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors": "^2.0.2",
-    "@lrnwebcomponents/schema-behaviors": "^2.0.0-alpha2",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.0.4",
+    "@lrnwebcomponents/schema-behaviors": "^2.0.3",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {

@@ -16,7 +16,7 @@
       "hax": "src/paper-avatar-hax.json"
     }
   },
-  "version": "2.0.2",
+  "version": "2.0.4",
   "description": "Automated conversion of paper-avatar/",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/es-global-bridge": "^0.2.0",
-    "@lrnwebcomponents/hax-body-behaviors": "^2.0.2",
+    "@lrnwebcomponents/hax-body-behaviors": "^2.0.4",
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {

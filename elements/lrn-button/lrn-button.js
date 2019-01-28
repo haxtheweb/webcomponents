@@ -106,7 +106,9 @@ class LrnButton extends PolymerElement {
               class$="[[iconClass]]"
               hidden$="[[!icon]]"
             ></iron-icon>
-            <span class="label" hidden$="[[!label]]"> [[label]] </span>
+            <span class="label" hidden$="[[!label]]">
+              [[label]]
+            </span>
             <slot></slot>
           </div>
         </paper-button>

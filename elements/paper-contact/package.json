@@ -16,7 +16,7 @@
       "hax": "src/paper-contact-hax.json"
     }
   },
-  "version": "2.0.0-alpha2",
+  "version": "2.0.3",
   "description": "Start of paper-contact",
   "repository": {
     "type": "git",

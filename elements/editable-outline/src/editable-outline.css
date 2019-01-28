@@ -15,6 +15,14 @@ ul, ol {
 li {
   font-size: 16px;
   line-height: 32px;
+  padding: 4px;
+}
+
+li:focus,
+li:active,
+li:hover {
+  background-color: #EEEEEE;
+  outline: 1px solid #CCCCCC;
 }
 
 iron-icon {

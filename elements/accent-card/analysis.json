@@ -612,11 +612,11 @@
           "sourceRange": {
             "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 30,
+              "line": 31,
               "column": 6
             },
             "end": {
-              "line": 36,
+              "line": 37,
               "column": 7
             }
           },
@@ -636,11 +636,11 @@
           "sourceRange": {
             "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 40,
+              "line": 41,
               "column": 6
             },
             "end": {
-              "line": 46,
+              "line": 47,
               "column": 7
             }
           },
@@ -660,11 +660,11 @@
           "sourceRange": {
             "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 55,
+              "line": 56,
               "column": 6
             },
             "end": {
-              "line": 61,
+              "line": 62,
               "column": 7
             }
           },
@@ -684,11 +684,11 @@
           "sourceRange": {
             "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 94,
+              "line": 95,
               "column": 6
             },
             "end": {
-              "line": 100,
+              "line": 101,
               "column": 7
             }
           },
@@ -3075,11 +3075,11 @@
           "sourceRange": {
             "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 138,
+              "line": 139,
               "column": 2
             },
             "end": {
-              "line": 161,
+              "line": 162,
               "column": 3
             }
           },
@@ -4122,11 +4122,11 @@
           "sourceRange": {
             "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 30,
+              "line": 31,
               "column": 6
             },
             "end": {
-              "line": 36,
+              "line": 37,
               "column": 7
             }
           },
@@ -4139,11 +4139,11 @@
           "sourceRange": {
             "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 40,
+              "line": 41,
               "column": 6
             },
             "end": {
-              "line": 46,
+              "line": 47,
               "column": 7
             }
           },
@@ -4156,11 +4156,11 @@
           "sourceRange": {
             "file": "../@lrnwebcomponents/simple-colors/simple-colors.js",
             "start": {
-              "line": 55,
+              "line": 56,
               "column": 6
             },
             "end": {
-              "line": 61,
+              "line": 62,
               "column": 7
             }
           },

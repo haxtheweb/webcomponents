@@ -589,7 +589,8 @@ class OutlineDesigner extends PolymerElement {
           </sortable-list>
         </section>
       </iron-pages>
-      <canvas id="minimaparea"></canvas> <slot></slot>
+      <canvas id="minimaparea"></canvas>
+      <slot></slot>
     `;
   }
 

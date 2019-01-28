@@ -17,7 +17,8 @@ Polymer({
     <style>
       :host {
         display: block;
-        height: 50vh;
+        height: 60vh;
+        width: 60vw;
       }
       .buttons {
         position: absolute;
@@ -26,6 +27,9 @@ Polymer({
         background-color: var(--simple-modal-titlebar-background, #ddd);
         left: 0;
         right: 0;
+      }
+      paper-dialog-scrollable {
+        padding-bottom: 32px;
       }
     </style>
     <paper-dialog-scrollable>
@@ -63,8 +67,7 @@ Polymer({
      * Outline of items in json outline schema format
      */
     manifest: {
-      type: Object,
-      notify: true
+      type: Object
     },
     /**
      * Stringify'ed representation of items

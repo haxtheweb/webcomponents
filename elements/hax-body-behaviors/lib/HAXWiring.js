@@ -473,6 +473,15 @@ export class HAXWiring {
       if (typeof setting.validationType === typeof undefined) {
         setting.validationType = "";
       }
+      // slot can have a slot wrapper property
+      if (typeof setting.slot !== typeof undefined) {
+        if (typeof setting.slotWrapper === typeof undefined) {
+          setting.slotWrapper = "span";
+        }
+        if (typeof setting.slotAttributes === typeof undefined) {
+          setting.slotAttributes = {};
+        }
+      }
       return setting;
     };
     /**

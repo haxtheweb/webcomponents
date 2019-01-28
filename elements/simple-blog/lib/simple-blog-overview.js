@@ -66,33 +66,42 @@ Polymer({
         color: #b3b3b1;
         line-height: 30px;
       }
+      a,
+      a:visited,
+      a:hover,
+      a:focus,
+      a:active {
+        color: inherit;
+      }
     </style>
-    <paper-button>
-      <paper-card elevation="[[elevation]]">
-        <article
-          class="post"
-          itemtype="http://schema.org/BlogPosting"
-          role="article"
-        >
-          <div class="article-item">
-            <header class="post-header">
-              <a tabindex="-1" href\$="[[link]]" itemprop="url"></a>
-              <h2 class="post-title" itemprop="name">[[title]]</h2>
-            </header>
-            <section class="post-excerpt" itemprop="description">
-              <p>[[description]]</p>
-            </section>
-            <div class="post-meta">
-              <simple-datetime
-                format="M jS, Y"
-                timestamp="[[changed]]"
-                unix=""
-              ></simple-datetime>
+
+    <a href$="[[link]]" itemprop="url">
+      <paper-button>
+        <paper-card elevation="[[elevation]]">
+          <article
+            class="post"
+            itemtype="http://schema.org/BlogPosting"
+            role="article"
+          >
+            <div class="article-item">
+              <header class="post-header">
+                <h2 class="post-title" itemprop="name">[[title]]</h2>
+              </header>
+              <section class="post-excerpt" itemprop="description">
+                <p>[[description]]</p>
+              </section>
+              <div class="post-meta">
+                <simple-datetime
+                  format="M jS, Y"
+                  timestamp="[[changed]]"
+                  unix=""
+                ></simple-datetime>
+              </div>
             </div>
-          </div>
-        </article>
-      </paper-card>
-    </paper-button>
+          </article>
+        </paper-card>
+      </paper-button>
+    </a>
   `,
 
   is: "simple-blog-overview",
@@ -145,13 +154,6 @@ Polymer({
       value: 0,
       reflectToAttribute: true
     }
-  },
-
-  /**
-   * Fire an event because we got tapped.
-   */
-  _itemTap: function(e) {
-    this.fire("active-item-selected", this.itemId);
   },
 
   /**

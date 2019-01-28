@@ -276,8 +276,10 @@ Polymer({
         this.justifyIcon = detail.target.icon;
         break;
       case "close-menu":
-        this.$.moremenu.$.menu.hideMenu();
-        this.$.justify.$.menu.hideMenu();
+        setTimeout(() => {
+          this.$.moremenu.$.menu.hideMenu();
+          this.$.justify.$.menu.hideMenu();
+        }, 200);
         break;
     }
   }

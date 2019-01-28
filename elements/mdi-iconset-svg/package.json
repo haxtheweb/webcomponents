@@ -16,7 +16,7 @@
       "hax": "src/mdi-iconset-svg-hax.json"
     }
   },
-  "version": "2.0.2",
+  "version": "2.0.4",
   "description": "Start of mdi-iconset-svg fork",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/iconset-demo": "^2.0.2",
+    "@lrnwebcomponents/iconset-demo": "^2.0.4",
     "@polymer/iron-icon": "^3.0.1",
     "@polymer/iron-iconset-svg": "^3.0.1",
     "@polymer/polymer": "^3.0.5"

@@ -65,15 +65,15 @@ let ElmsmediaDashboard = Polymer({
       query-param="title"
       request-end-point="[[requestEndPoint]]"
       request-params="{{queryParams}}"
-      data="{
-      &quot;root&quot;: &quot;list&quot;,
-      &quot;gizmoType&quot;: &quot;video&quot;,
-      &quot;url&quot;: &quot;http://media.elmsln.local/entity_iframe/node/&quot;,
-      &quot;id&quot;: &quot;id&quot;,
-      &quot;title&quot;: &quot;attributes.title&quot;,
-      &quot;description&quot;: &quot;attributes.body&quot;,
-      &quot;image&quot;: &quot;display.image&quot;,
-      &quot;customGizmoType&quot;: &quot;type&quot;}"
+      data='{
+      "root": "list",
+      "gizmoType": "video",
+      "url": "http://media.elmsln.local/entity_iframe/node/",
+      "id": "id",
+      "title": "attributes.title",
+      "description": "attributes.body",
+      "image": "display.image",
+      "customGizmoType": "type"}'
     ></hax-app>
   `,
 

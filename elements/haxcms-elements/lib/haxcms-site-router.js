@@ -52,6 +52,18 @@ Polymer({
       "haxcms-router-manifest-subscribe",
       this._haxcmsRouterManifestSubscribe.bind(this)
     );
+    window.addEventListener(
+      "json-outline-schema-changed",
+      this._jsonOutlineSchemaChangedHandler.bind(this)
+    );
+    window.addEventListener(
+      "json-outline-schema-active-item-changed",
+      this._jsonOutlineSchemaActiveItemChangedHandler.bind(this)
+    );
+    window.addEventListener(
+      "haxcms-site-router-location-subscribe",
+      this._haxcmsSiteRouterLocationSubscribe.bind(this)
+    );
   },
   attached: function() {},
   /**
@@ -80,7 +92,7 @@ Polymer({
    * options.callback = '_routerManifestChanged'
    * options.scope = this
    * options.setup = true
-   * window.dispatchEvent(new CustomEvent('haxcms-router-manifest-subscribe', options))
+   * window.dispatchEvent(new CustomEvent('haxcms-router-manifest-subscribe', { detial: options }))
    *
    *
    *
@@ -178,6 +190,7 @@ Polymer({
    * @param {object} manifest
    */
   _updateRouter: function(manifest) {
+    if (!manifest) return;
     let options = {};
     if (this.baseURI) {
       options.baseUrl = this.baseURI;
@@ -192,6 +205,7 @@ Polymer({
     });
     router.setRoutes([
       ...routerItems,
+      { path: "/", component: "haxcms-site-router-location", name: "home" },
       { path: "/(.*)", component: "haxcms-site-router-location", name: "404" }
     ]);
   },
@@ -202,8 +216,15 @@ Polymer({
    * @param {event} e
    */
   _routerLocationChanged: function(e) {
+    //store local state
+    this._location = e.detail.location;
+    // dispatch a haxcms-site-router prefixed event
+    window.dispatchEvent(
+      new CustomEvent("haxcms-site-router-location-changed", {
+        detail: e.detail.location
+      })
+    );
     const activeItem = e.detail.location.route.name;
-    console.log("activeItem:", activeItem);
     let find = this.manifest.items.filter(item => {
       if (item.id !== activeItem) {
         return false;
@@ -221,6 +242,72 @@ Polymer({
           this.fire("haxcms-active-item-changed", found);
         }, 150);
       });
+    }
+  },
+
+  /**
+   * Listen to changes to the root manifest update the local
+   * state.
+   * @param {event} e
+   */
+  _jsonOutlineSchemaChangedHandler: function(e) {
+    const manifest = e.detail;
+    this.manifest = {};
+    this.manifest = manifest;
+  },
+
+  /**
+   * White label JSON Outline Schema Event
+   *
+   * Subscribe to Active event changes.
+   *
+   * @param {event} e
+   */
+  _jsonOutlineSchemaActiveItemChangedHandler: function(e) {
+    window.dispatchEvent(
+      new CustomEvent("haxcms-site-router-active-item-changed", {
+        detail: e.detail
+      })
+    );
+  },
+
+  /**
+   * Event Handler for 'haxcms-router-location-changed-subscribe'
+   */
+  _haxcmsSiteRouterLocationSubscribe: function(e) {
+    const defaultOptions = {
+      setup: false
+    };
+    // combine default options and the subscription from the request
+    const subscription = Object.assign({}, defaultOptions, e.detail);
+    if (typeof subscription.callback === "undefined") {
+      console.error(
+        "No callback provided on haxcms-site-router-location-subscribe."
+      );
+      return;
+    }
+    if (typeof subscription.scope === "undefined") {
+      console.error(
+        "No scope provided on haxcms-site-router-location-subscribe."
+      );
+      return;
+    }
+    // dynaimcally add the event listener for more router manifest changes
+    subscription.scope.addEventListener(
+      "haxcms-site-router-location-changed",
+      subscription.scope[subscription.callback]
+    );
+    // if setup option is true then manually trigger the callback
+    if (subscription.setup) {
+      // create a synthetic event and send directly to the scope
+      const syntheticEvent = new CustomEvent(
+        "haxcms-site-router-location-changed",
+        {
+          detail: this._location
+        }
+      );
+      // manually call the change event
+      subscription.scope[subscription.callback](syntheticEvent);
     }
   }
 });

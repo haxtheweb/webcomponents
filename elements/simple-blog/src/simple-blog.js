@@ -81,6 +81,9 @@ let SimpleBlog = Polymer({
         visibility: visible;
         opacity: 1;
       }
+      a, a:* {
+        color: inherit;
+      }
     </style>
     <iron-pages selected="[[selectedPage]]">
       <section>
@@ -91,19 +94,21 @@ let SimpleBlog = Polymer({
         ></simple-blog-listing>
       </section>
       <section>
-        <paper-icon-button
-          id="backbutton"
-          icon="icons:arrow-back"
-          on-tap="_resetActiveItem"
-        ></paper-icon-button>
-        <paper-tooltip
-          for="backbutton"
-          position="right"
-          offset="14"
-          animation-delay="100"
-        >
-          Back to main site
-        </paper-tooltip>
+        <a href="/">
+          <paper-icon-button
+            id="backbutton"
+            icon="icons:arrow-back"
+            on-tap="_goBack"
+          ></paper-icon-button>
+          <paper-tooltip
+            for="backbutton"
+            position="right"
+            offset="14"
+            animation-delay="100"
+          >
+            Back to main site
+          </paper-tooltip>
+        </a>
         <simple-blog-post
           id="post"
           active-item="[[activeItem]]"
@@ -122,10 +127,10 @@ let SimpleBlog = Polymer({
 
   behaviors: [SchemaBehaviors.Schema, HAXCMSBehaviors.Theme],
 
-  listeners: {
-    "active-item-selected": "_itemSelected",
-    "active-item-reset": "_resetActiveItem"
-  },
+  // listeners: {
+  //   "active-item-selected": "_itemSelected",
+  //   "active-item-reset": "_resetActiveItem"
+  // },
 
   properties: {
     /**
@@ -143,6 +148,19 @@ let SimpleBlog = Polymer({
    */
   ready: function() {
     this.setupHAXTheme(true, this.$.post.$.contentcontainer);
+    window.dispatchEvent(
+      new CustomEvent("haxcms-router-manifest-subscribe", {
+        detail: {
+          callback: "_haxcmsRouterManifestSubscribeHandler",
+          scope: this,
+          setup: true
+        }
+      })
+    );
+    window.addEventListener(
+      "haxcms-site-router-location-changed",
+      this._haxcmsSiteRouterLocationChangedHandler.bind(this)
+    );
     document.body.addEventListener(
       "haxcms-trigger-update",
       this._dataRefreshed.bind(this)
@@ -158,30 +176,37 @@ let SimpleBlog = Polymer({
    */
   detached: function() {
     this.setupHAXTheme(false);
-    document.body.removeEventListener(
+    window.addEventListener(
+      "haxcms-site-router-location-changed",
+      this._haxcmsSiteRouterLocationChangedHandler.bind(this)
+    );
+    document.body.addEventListener(
       "haxcms-trigger-update",
       this._dataRefreshed.bind(this)
     );
-    document.body.removeEventListener(
+    document.body.addEventListener(
       "json-outline-schema-active-item-changed",
       this._activeItemEvent.bind(this)
     );
   },
 
   /**
-   * An event has indicated the active item needs changed.
+   * Update the manifest with the correct urls
+   * @param {event} e
    */
-  _itemSelected: function(e) {
-    var id = e.detail;
-    let find = this.manifest.items.filter(item => {
-      if (item.id !== id) {
-        return false;
-      }
-      return true;
-    });
-    // if we found one, make it the top level item
-    if (find.length > 0) {
-      this.fire("json-outline-schema-active-item-changed", find.pop());
+  _haxcmsRouterManifestSubscribeHandler: function(e) {
+    this.manifest = e.detail;
+  },
+
+  /**
+   * Listen for router location changes
+   * @param {event} e
+   */
+  _haxcmsSiteRouterLocationChangedHandler: function(e) {
+    const location = e.detail;
+    const name = location.route.name;
+    if (name === "home" || name === "404") {
+      this.selectedPage = 0;
     }
   },
 
@@ -201,9 +226,7 @@ let SimpleBlog = Polymer({
   /**
    * Reset the active item to reset state
    */
-  _resetActiveItem: function(e) {
-    this.fire("json-outline-schema-active-item-changed", {});
-  },
+  _goBack: function(e) {},
 
   /**
    * refreshed data call

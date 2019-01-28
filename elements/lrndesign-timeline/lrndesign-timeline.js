@@ -429,7 +429,6 @@ class LrndesignTimeline extends SimpleColors {
   static get behaviors() {
     return [SimpleColors];
   }
-
   /**
    * life cycle, element is afixed to the DOM
    */

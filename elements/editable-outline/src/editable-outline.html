@@ -1,12 +1,21 @@
+<button on-click="buttonEvents" id="down">
+  <iron-icon icon="icons:arrow-downward"></iron-icon> Move down
+</button>
+<button on-click="buttonEvents" id="up">
+  <iron-icon icon="icons:arrow-upward"></iron-icon> Move up
+</button>
 <button on-click="buttonEvents" id="outdent">
   <iron-icon icon="editor:format-indent-decrease"></iron-icon> Outdent
 </button>
 <button on-click="buttonEvents" id="indent">
   <iron-icon icon="editor:format-indent-increase"></iron-icon> Indent
 </button>
+<button on-click="buttonEvents" id="duplicate">
+  <iron-icon icon="icons:content-copy"></iron-icon> Duplicate structure
+</button>
 
 <ul id="outline" contenteditable$="[[editMode]]">
-  <li></li>
+  <li contenteditable="true"></li>
 </ul>
 
 <iron-a11y-keys target="[[__outlineNode]]" keys="shift+tab" on-keys-pressed="_tabBackKeyPressed"

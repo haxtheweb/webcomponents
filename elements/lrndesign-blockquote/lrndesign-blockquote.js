@@ -670,10 +670,11 @@ let LrndesignBlockquote = Polymer({
         groups: ["Content", "Presentation"],
         handles: [
           {
-            type: "content",
-            caption: "quote",
-            title: "citation",
-            description: "quote",
+            type: "image",
+            source: "image",
+            src: "image",
+            author: "author",
+            description: "",
             citation: "citation"
           }
         ],

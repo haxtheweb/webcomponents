@@ -16,7 +16,7 @@
       "hax": "src/pdf-browser-viewer-hax.json"
     }
   },
-  "version": "2.0.2",
+  "version": "2.0.4",
   "description": "Start of pdf-browser-viewer",
   "repository": {
     "type": "git",

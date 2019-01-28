@@ -142,7 +142,7 @@ Polymer({
     <iron-ajax
       auto
       url="[[sourcePath]]"
-      params="{&quot;return&quot;: &quot;courses&quot;}"
+      params='{"return": "courses"}'
       handle-as="json"
       on-response="handleResponse"
       last-response="{{queryResponse}}"
@@ -312,7 +312,7 @@ Polymer({
     <iron-ajax
       id="request"
       url="[[sourcePath]]"
-      params="{&quot;return&quot;: &quot;users&quot;}"
+      params='{"return": "users"}'
       handle-as="json"
       on-response="handleRosterResponse"
       last-response="{{queryResponse}}"

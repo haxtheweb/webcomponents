@@ -11,7 +11,7 @@
       "js": "src/contenta-polymer.js"
     }
   },
-  "version": "2.0.2",
+  "version": "2.0.4",
   "description": "Contenta integration with Polymer",
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/materializecss-styles": "^2.0.0-alpha2",
+    "@lrnwebcomponents/materializecss-styles": "^2.0.3",
     "@polymer/app-layout": "^3.0.0",
     "@polymer/app-route": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",
