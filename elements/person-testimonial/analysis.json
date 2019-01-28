@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 155,
+              "line": 152,
               "column": 4
             },
             "end": {
-              "line": 159,
+              "line": 156,
               "column": 5
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 163,
+              "line": 160,
               "column": 4
             },
             "end": {
-              "line": 165,
+              "line": 162,
               "column": 5
             }
           },
@@ -56,11 +56,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 169,
+              "line": 166,
               "column": 4
             },
             "end": {
-              "line": 171,
+              "line": 168,
               "column": 5
             }
           },
@@ -77,11 +77,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 175,
+              "line": 172,
               "column": 4
             },
             "end": {
-              "line": 177,
+              "line": 174,
               "column": 5
             }
           },
@@ -99,11 +99,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 183,
+              "line": 180,
               "column": 2
             },
             "end": {
-              "line": 293,
+              "line": 290,
               "column": 3
             }
           },
@@ -119,11 +119,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 298,
+              "line": 295,
               "column": 2
             },
             "end": {
-              "line": 302,
+              "line": 299,
               "column": 3
             }
           },
@@ -144,7 +144,7 @@
           "column": 32
         },
         "end": {
-          "line": 303,
+          "line": 300,
           "column": 1
         }
       },
@@ -157,11 +157,11 @@
           "description": "Visual height of the card.",
           "sourceRange": {
             "start": {
-              "line": 155,
+              "line": 152,
               "column": 4
             },
             "end": {
-              "line": 159,
+              "line": 156,
               "column": 5
             }
           },
@@ -173,11 +173,11 @@
           "description": "The profile image to display to the left of the quote.",
           "sourceRange": {
             "start": {
-              "line": 163,
+              "line": 160,
               "column": 4
             },
             "end": {
-              "line": 165,
+              "line": 162,
               "column": 5
             }
           },
@@ -189,11 +189,11 @@
           "description": "Name of the person making the quote.",
           "sourceRange": {
             "start": {
-              "line": 169,
+              "line": 166,
               "column": 4
             },
             "end": {
-              "line": 171,
+              "line": 168,
               "column": 5
             }
           },
@@ -205,11 +205,11 @@
           "description": "The title / position of the person in question.",
           "sourceRange": {
             "start": {
-              "line": 175,
+              "line": 172,
               "column": 4
             },
             "end": {
-              "line": 177,
+              "line": 174,
               "column": 5
             }
           },
