@@ -557,6 +557,12 @@ let GridPlate = Polymer({
    * @returns {object} an object with a layout's column sizes at the current responsive width
    */
   _getColumnWidths(responsiveSize = "sm", layout = "1-1", layouts) {
+    if (
+      layouts[layout] === undefined ||
+      layouts[layout][responsiveSize] === undefined
+    ) {
+      return layouts["1-1"][responsiveSize];
+    }
     return layouts[layout][responsiveSize];
   },
 
