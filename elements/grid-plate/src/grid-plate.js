@@ -409,12 +409,72 @@ let GridPlate = Polymer({
   },
 
   /**
-   * Move the active element based on which button got pressed.
+   * Determines if the item can move a set number of slots.
+   *
+   * @param {object} the item
+   * @param {number} -1 for left or +1 for right
+   * @returns {boolean} if the item can move a set number of slots
    */
-  canMove: function(item, max, dir) {
-    let col = item.getAttribute("slot").split("-"),
+  canMoveSlot: function(item, before) {
+    let dir = before ? -1 : 1,
+      max = this.columns,
+      col = item.getAttribute("slot").split("-"),
       dest = parseInt(col[1]) + dir;
     return dest >= 1 && dest <= max;
+  },
+
+  /**
+   * Moves an item a set number of slots.
+   *
+   * @param {object} the item
+   * @param {number} -1 for left or +1 for right
+   */
+  moveSlot: function(item, before) {
+    let dir = before ? -1 : 1,
+      max = this.columns,
+      col = item.getAttribute("slot").split("-"),
+      dest = parseInt(col[1]) + dir;
+    if (this.canMoveSlot(item, dir)) {
+      item.setAttribute("slot", "col-" + dest);
+    }
+  },
+
+  /**
+   * Determines if the item can move a set number of slots.
+   *
+   * @param {object} the item
+   * @param {boolean} move item before previous? (false for move item after next)
+   * @returns {boolean} if the item can move a set number of slots
+   */
+  canMoveOrder: function(item, before) {
+    let target = before ? item.previousElementSibling : item.nextElementSibling;
+    return (
+      target !== null &&
+      target.getAttribute("slot") === item.getAttribute("slot")
+    );
+  },
+
+  /**
+   * Moves an item's order within a slot.
+   *
+   * @param {object} the item
+   * @param {boolean} move item before previous? (false for move item after next)
+   */
+  moveOrder: function(item, before = true) {
+    let dir = before ? -1 : 1;
+    if (this.canMoveOrder(item, before)) {
+      if (before) {
+        dom(this).insertBefore(
+          this.__activeItem,
+          this.__activeItem.previousElementSibling
+        );
+      } else {
+        dom(this).insertAfter(
+          this.__activeItem,
+          this.__activeItem.nextElementSibling
+        );
+      }
+    }
   },
 
   /**
@@ -430,44 +490,16 @@ let GridPlate = Polymer({
     // see if this was an up down left or right movement
     switch (local.id) {
       case "up":
-        // ensure we can go up
-        if (
-          this.__activeItem.previousElementSibling !== null &&
-          this.__activeItem.previousElementSibling.getAttribute("slot") !== slot
-        ) {
-          this.__activeItem.setAttribute("slot", slot);
-          dom(this).insertBefore(
-            this.__activeItem,
-            this.__activeItem.previousElementSibling
-          );
-        }
+        this.moveOrder(this.__activeItem, true);
         break;
       case "down":
-        if (
-          this.__activeItem.nextElementSibling !== null &&
-          this.__activeItem.nextElementSibling.getAttribute("slot") !== slot
-        ) {
-          let slot = this.__activeItem.nextElementSibling.getAttribute("slot");
-          this.__activeItem.setAttribute("slot", slot);
-          dom(this).insertBefore(
-            this.__activeItem.nextElementSibling,
-            this.__activeItem
-          );
-        }
+        this.moveOrder(this.__activeItem, false);
         break;
       case "left":
-        console.log("left?", pos, -1, 1);
-        if (this.canMove(this.__activeItem, max, -1)) {
-          this.__activeItem.setAttribute("slot", "col-" + (pos - 1));
-          dom(this).appendChild(this.__activeItem);
-        }
+        this.moveSlot(this.__activeItem, true);
         break;
       case "right":
-        console.log("right?", pos, 1, max);
-        if (this.canMove(this.__activeItem, max, 1)) {
-          this.__activeItem.setAttribute("slot", "col-" + (pos + 1));
-          dom(this).appendChild(this.__activeItem);
-        }
+        this.moveSlot(this.__activeItem, false);
         break;
     }
     // ensure arrows are correctly positioned after the move
@@ -586,20 +618,15 @@ let GridPlate = Polymer({
       this.$.right.classList.add("active");
 
       // ensure we disable invalid options contextually
-      let max = this.columns,
-        slot = item.getAttribute("slot");
+      let max = this.columns;
       // test for an element above us
-      this.$.up.disabled =
-        item.previousElementSibling === null ||
-        item.previousElementSibling.getAttribute("slot") !== slot;
+      this.$.up.disabled = !this.canMoveOrder(item, true);
       // test for an element below us
-      this.$.down.disabled =
-        item.nextElementSibling === null ||
-        item.nextElementSibling.getAttribute("slot") !== slot;
+      this.$.down.disabled = !this.canMoveOrder(item, false);
       // test for a column to the left of us
-      this.$.left.disabled = !this.canMove(item, max, -1);
+      this.$.left.disabled = !this.canMoveSlot(item, true);
       // test for a column to the right of us
-      this.$.right.disabled = !this.canMove(item, max, 1);
+      this.$.right.disabled = !this.canMoveSlot(item, false);
 
       // get coordinates of the page and active element
       let bodyRect = this.getBoundingClientRect();
