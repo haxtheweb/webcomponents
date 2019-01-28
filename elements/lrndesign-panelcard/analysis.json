@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 63,
+              "line": 74,
               "column": 4
             },
             "end": {
-              "line": 67,
+              "line": 78,
               "column": 5
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 71,
+              "line": 82,
               "column": 4
             },
             "end": {
-              "line": 75,
+              "line": 86,
               "column": 5
             }
           },
@@ -49,6 +49,28 @@
             }
           },
           "defaultValue": "2"
+        },
+        {
+          "name": "coloredText",
+          "type": "boolean | null | undefined",
+          "description": "Applies the color to the text instead of the background",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 90,
+              "column": 4
+            },
+            "end": {
+              "line": 94,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
         }
       ],
       "methods": [
@@ -58,11 +80,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 81,
+              "line": 100,
               "column": 2
             },
             "end": {
-              "line": 170,
+              "line": 210,
               "column": 3
             }
           },
@@ -82,7 +104,7 @@
           "column": 33
         },
         "end": {
-          "line": 171,
+          "line": 211,
           "column": 1
         }
       },
@@ -95,11 +117,11 @@
           "description": "Title of the panel",
           "sourceRange": {
             "start": {
-              "line": 63,
+              "line": 74,
               "column": 4
             },
             "end": {
-              "line": 67,
+              "line": 78,
               "column": 5
             }
           },
@@ -111,16 +133,32 @@
           "description": "Height of the paper.",
           "sourceRange": {
             "start": {
-              "line": 71,
+              "line": 82,
               "column": 4
             },
             "end": {
-              "line": 75,
+              "line": 86,
               "column": 5
             }
           },
           "metadata": {},
           "type": "number | null | undefined"
+        },
+        {
+          "name": "colored-text",
+          "description": "Applies the color to the text instead of the background",
+          "sourceRange": {
+            "start": {
+              "line": 90,
+              "column": 4
+            },
+            "end": {
+              "line": 94,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
         }
       ],
       "events": [],

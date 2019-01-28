@@ -171,53 +171,10 @@ let HeroBanner = Polymer({
       value: "Find out more"
     },
     /**
-     * Color of the button
-     */
-    buttonColor: {
-      type: String,
-      value: "red darken-4",
-      observer: "_buttonColorChanged"
-    },
-    /**
-     * Button color class.
-     */
-    buttonColorClass: {
-      type: String,
-      reflectToAttribute: true,
-      computed: "_computeColorClass(buttonColor)"
-    },
-    /**
      * url for the button
      */
     buttonLink: {
       type: String
-    },
-    /**
-     * Text color.
-     */
-    textColor: {
-      type: String,
-      value: "#FFFFFF",
-      reflectToAttribute: true
-    },
-    /**
-     * Text color class.
-     */
-    textColorClass: {
-      type: String,
-      value: null,
-      reflectToAttribute: true,
-      computed: "_computeColorClass(textColor)"
-    }
-  },
-
-  /**
-   * Notice secondary color changed
-   */
-  _buttonColorChanged: function(newValue, oldValue) {
-    if (typeof newValue !== typeof undefined && newValue != null) {
-      // sees if there's enough contrast and adjusts them accordingly
-      this.computeTextPropContrast("textColor", "buttonColor");
     }
   },
 
@@ -281,11 +238,18 @@ let HeroBanner = Polymer({
             icon: "icons:radio-button-unchecked"
           },
           {
-            property: "buttonColor",
-            title: "Button - Color",
-            description: "Color of the button",
+            property: "accent-color",
+            title: "Accent color",
+            description: "Select the accent color use",
             inputMethod: "colorpicker",
             icon: "editor:format-color-fill"
+          },
+          {
+            property: "dark",
+            title: "Dark",
+            description: "Use dark theme",
+            inputMethod: "toggle",
+            icon: "invert-colors"
           },
           {
             property: "buttonLink",
@@ -326,11 +290,18 @@ let HeroBanner = Polymer({
             icon: "icons:radio-button-unchecked"
           },
           {
-            property: "buttonColor",
-            title: "Button - Color",
-            description: "Color of the button",
+            property: "accent-color",
+            title: "Accent color",
+            description: "Select the accent color use",
             inputMethod: "colorpicker",
             icon: "editor:format-color-fill"
+          },
+          {
+            property: "dark",
+            title: "Dark",
+            description: "Use dark theme",
+            inputMethod: "toggle",
+            icon: "invert-colors"
           },
           {
             property: "buttonLink",
