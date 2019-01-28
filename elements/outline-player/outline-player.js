@@ -429,6 +429,16 @@ let OutlinePlayer = Polymer({
         }
       })
     );
+    // Subscribe to the router manifest
+    window.dispatchEvent(
+      new CustomEvent("haxcms-site-router-location-subscribe", {
+        detail: {
+          callback: "_haxcmsSiteRouterLocationSubscribe",
+          scope: this,
+          setup: true
+        }
+      })
+    );
   },
 
   /**
@@ -446,6 +456,23 @@ let OutlinePlayer = Polymer({
    */
   _haxcmsSiteRouterActiveItemChangedHandler: function(e) {
     this.selected = e.detail.id;
+  },
+
+  _haxcmsSiteRouterLocationSubscribe: function(e) {
+    const location = e.detail;
+    const name = location.route.name;
+    if (name === "home" || name === "404") {
+      // if we are on the homepage then load the first item in the manifest
+      // and set it active
+      const firstItem = this.manifest.items.find(
+        i => typeof i.id !== "undefined"
+      );
+      window.dispatchEvent(
+        new CustomEvent("json-outline-schema-active-item-changed", {
+          detail: firstItem
+        })
+      );
+    }
   },
 
   /**

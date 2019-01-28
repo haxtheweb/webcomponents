@@ -60,6 +60,10 @@ Polymer({
       "json-outline-schema-active-item-changed",
       this._jsonOutlineSchemaActiveItemChangedHandler.bind(this)
     );
+    window.addEventListener(
+      "haxcms-site-router-location-subscribe",
+      this._haxcmsSiteRouterLocationSubscribe.bind(this)
+    );
   },
   attached: function() {},
   /**
@@ -212,6 +216,8 @@ Polymer({
    * @param {event} e
    */
   _routerLocationChanged: function(e) {
+    //store local state
+    this._location = e.detail.location;
     // dispatch a haxcms-site-router prefixed event
     window.dispatchEvent(
       new CustomEvent("haxcms-site-router-location-changed", {
@@ -263,5 +269,45 @@ Polymer({
         detail: e.detail
       })
     );
+  },
+
+  /**
+   * Event Handler for 'haxcms-router-location-changed-subscribe'
+   */
+  _haxcmsSiteRouterLocationSubscribe: function(e) {
+    const defaultOptions = {
+      setup: false
+    };
+    // combine default options and the subscription from the request
+    const subscription = Object.assign({}, defaultOptions, e.detail);
+    if (typeof subscription.callback === "undefined") {
+      console.error(
+        "No callback provided on haxcms-site-router-location-subscribe."
+      );
+      return;
+    }
+    if (typeof subscription.scope === "undefined") {
+      console.error(
+        "No scope provided on haxcms-site-router-location-subscribe."
+      );
+      return;
+    }
+    // dynaimcally add the event listener for more router manifest changes
+    subscription.scope.addEventListener(
+      "haxcms-site-router-location-changed",
+      subscription.scope[subscription.callback]
+    );
+    // if setup option is true then manually trigger the callback
+    if (subscription.setup) {
+      // create a synthetic event and send directly to the scope
+      const syntheticEvent = new CustomEvent(
+        "haxcms-site-router-location-changed",
+        {
+          detail: this._location
+        }
+      );
+      // manually call the change event
+      subscription.scope[subscription.callback](syntheticEvent);
+    }
   }
 });

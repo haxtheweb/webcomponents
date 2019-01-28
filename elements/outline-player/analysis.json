@@ -727,7 +727,7 @@
               "column": 2
             },
             "end": {
-              "line": 431,
+              "line": 441,
               "column": 3
             }
           },
@@ -743,11 +743,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 437,
+              "line": 447,
               "column": 2
             },
             "end": {
-              "line": 440,
+              "line": 450,
               "column": 3
             }
           },
@@ -768,11 +768,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 446,
+              "line": 456,
               "column": 2
             },
             "end": {
-              "line": 448,
+              "line": 458,
               "column": 3
             }
           },
@@ -788,16 +788,40 @@
           }
         },
         {
+          "name": "_haxcmsSiteRouterLocationSubscribe",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 460,
+              "column": 2
+            },
+            "end": {
+              "line": 472,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
           "name": "refreshDynamicPositions",
           "description": "Update calculations for fill-remaining and arrow position",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 453,
+              "line": 477,
               "column": 2
             },
             "end": {
-              "line": 469,
+              "line": 493,
               "column": 3
             }
           },
@@ -813,11 +837,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 474,
+              "line": 498,
               "column": 2
             },
             "end": {
-              "line": 487,
+              "line": 511,
               "column": 3
             }
           },
@@ -837,11 +861,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 492,
+              "line": 516,
               "column": 2
             },
             "end": {
-              "line": 509,
+              "line": 533,
               "column": 3
             }
           },
@@ -865,11 +889,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 514,
+              "line": 538,
               "column": 2
             },
             "end": {
-              "line": 522,
+              "line": 546,
               "column": 3
             }
           },
@@ -892,11 +916,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 527,
+              "line": 551,
               "column": 2
             },
             "end": {
-              "line": 532,
+              "line": 556,
               "column": 3
             }
           },
@@ -913,11 +937,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 537,
+              "line": 561,
               "column": 2
             },
             "end": {
-              "line": 542,
+              "line": 566,
               "column": 3
             }
           },
@@ -934,11 +958,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 547,
+              "line": 571,
               "column": 2
             },
             "end": {
-              "line": 549,
+              "line": 573,
               "column": 3
             }
           },
@@ -958,11 +982,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 554,
+              "line": 578,
               "column": 2
             },
             "end": {
-              "line": 557,
+              "line": 581,
               "column": 3
             }
           },
@@ -982,11 +1006,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 562,
+              "line": 586,
               "column": 2
             },
             "end": {
-              "line": 576,
+              "line": 600,
               "column": 3
             }
           },
@@ -1006,11 +1030,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 581,
+              "line": 605,
               "column": 2
             },
             "end": {
-              "line": 595,
+              "line": 619,
               "column": 3
             }
           },
@@ -1033,11 +1057,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 600,
+              "line": 624,
               "column": 2
             },
             "end": {
-              "line": 602,
+              "line": 626,
               "column": 3
             }
           },
@@ -1058,7 +1082,7 @@
           "column": 28
         },
         "end": {
-          "line": 603,
+          "line": 627,
           "column": 1
         }
       },
