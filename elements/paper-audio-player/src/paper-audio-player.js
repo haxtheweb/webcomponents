@@ -4,7 +4,7 @@ import "@polymer/paper-progress/paper-progress.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/paper-ripple/paper-ripple.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/iron-iconset-svg/iron-iconset-svg.js";
@@ -45,20 +45,36 @@ Custom property                             | Description                       
 */
 let PaperAudioPlayer = Polymer({
   _template: html`
-    <style>
+    <style include="simple-colors">
       :host {
         display: block;
         box-sizing: border-box;
-        font-family: "Roboto", "Noto", sans-serif;
+        font-family: var(
+          --paper-audio-player-font-family,
+          "Roboto",
+          "Noto",
+          sans-serif
+        );
+        --paper-audio-player-color: var(--simple-colors-default-theme-accent-9);
+        --paper-audio-player-text-color: var(
+          --simple-colors-default-theme-grey-1
+        );
+        --paper-audio-player-shadow: var(--simple-colors-default-theme-grey-2);
+        --paper-audio-player-background: var(
+          --simple-colors-default-theme-grey-1
+        );
+        background-color: var(--paper-audio-player-background);
       }
-
       #wrapper {
         position: relative;
         cursor: pointer;
         height: 50px;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 1px 2px var(--paper-audio-player-shadow);
       }
-
+      #left,
+      #center {
+        border-right: 1px solid var(--paper-audio-player-shadow);
+      }
       #left,
       #right {
         height: 50px;
@@ -67,16 +83,22 @@ let PaperAudioPlayer = Polymer({
       }
 
       #left {
-        background-color: var(--paper-audio-player-color, blueviolet);
+        opacity: 0.8;
+        background-color: var(--paper-audio-player-color);
+        transition: opacity 0.25s;
+      }
+      #left:focus,
+      #left:hover {
+        opacity: 1;
       }
 
       #right {
-        background-color: rgba(255, 255, 255, 0.75);
+        background-color: var(--paper-audio-player-background);
       }
 
       paper-icon-button,
       iron-icon {
-        color: #fff;
+        color: var(--paper-audio-player-text-color);
       }
 
       #duration,
@@ -88,7 +110,7 @@ let PaperAudioPlayer = Polymer({
 
       #duration {
         font-size: 11px;
-        color: var(--paper-audio-player-color, blueviolet);
+        color: var(--paper-audio-player-color);
       }
 
       paper-icon-button,
@@ -98,7 +120,7 @@ let PaperAudioPlayer = Polymer({
 
       #replay {
         opacity: 0;
-        color: var(--paper-audio-player-color, blueviolet);
+        color: var(--paper-audio-player-color);
       }
 
       #title,
@@ -109,31 +131,31 @@ let PaperAudioPlayer = Polymer({
 
       #title {
         z-index: 2;
-        color: var(--paper-audio-player-color, blueviolet);
+        color: var(--paper-audio-player-color);
       }
 
       #progress2 {
         width: 0px;
         z-index: 5;
-        color: #fff;
+        color: var(--paper-audio-player-text-color);
         overflow: hidden;
       }
 
       #center {
         position: relative;
         overflow: hidden;
-        background-color: rgba(255, 255, 255, 0.75);
+        background-color: var(--paper-audio-player-background);
       }
 
       #progress {
         width: 100%;
         transform-origin: left;
         transform: scaleX(0);
-        background-color: var(--paper-audio-player-color, blueviolet);
+        background-color: var(--paper-audio-player-color);
       }
 
       paper-ripple {
-        color: var(--paper-audio-player-color, blueviolet);
+        color: var(--paper-audio-player-color);
       }
 
       /* On hover */
@@ -276,7 +298,7 @@ let PaperAudioPlayer = Polymer({
   behaviors: [
     IronA11yKeysBehavior,
     HAXBehaviors.PropertiesBehaviors,
-    MaterializeCSSBehaviors.ColorBehaviors,
+    SimpleColors,
     SchemaBehaviors.Schema
   ],
   // Define component default attributes
@@ -296,10 +318,6 @@ let PaperAudioPlayer = Polymer({
       type: String,
       value: "Click to play this audio file"
     },
-    color: {
-      type: String,
-      observer: "_changeColor"
-    },
     autoPlay: {
       type: Boolean,
       value: false
@@ -308,7 +326,6 @@ let PaperAudioPlayer = Polymer({
       type: String,
       value: "auto"
     },
-
     currentTime: {
       type: Number,
       value: 0,
@@ -392,11 +409,18 @@ let PaperAudioPlayer = Polymer({
             validationType: "text"
           },
           {
-            property: "color",
-            title: "Color",
-            description: "Select the primary color used in the video",
+            property: "accent-color",
+            title: "Accent color",
+            description: "Select the accent color use",
             inputMethod: "colorpicker",
             icon: "editor:format-color-fill"
+          },
+          {
+            property: "dark",
+            title: "Dark",
+            description: "Use dark theme",
+            inputMethod: "toggle",
+            icon: "invert-colors"
           }
         ],
         configure: [
@@ -419,11 +443,18 @@ let PaperAudioPlayer = Polymer({
             validationType: "text"
           },
           {
-            property: "color",
-            title: "Color",
-            description: "Select the primary color used in the video",
+            property: "accent-color",
+            title: "Accent color",
+            description: "Select the accent color use",
             inputMethod: "colorpicker",
             icon: "editor:format-color-fill"
+          },
+          {
+            property: "dark",
+            title: "Dark",
+            description: "Use dark theme",
+            inputMethod: "toggle",
+            icon: "invert-colors"
           }
         ],
         advanced: []

@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^2.0.4",
-    "@lrnwebcomponents/materializecss-styles": "^2.0.3",
+    "@lrnwebcomponents/simple-colors": "^2.0.4",
     "@lrnwebcomponents/schema-behaviors": "^2.0.3",
     "@polymer/iron-a11y-keys-behavior": "^3.0.0",
     "@polymer/iron-icon": "^3.0.0",
