@@ -74,12 +74,7 @@ Polymer({
 
   observers: ["__selectedChanged(selected, id)"],
 
-  ready: function() {
-    this.fire("map-menu-toggle-subscribe", {
-      callback: "_mapMenuToggleSubscribeHandler",
-      scope: this
-    });
-  },
+  ready: function() {},
 
   __selectedChanged: function(selected, id) {
     if (selected === id) {
