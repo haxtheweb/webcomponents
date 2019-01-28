@@ -49,6 +49,23 @@ let GridPlate = Polymer({
         :host([edit-mode]) .column {
           outline: 1px dotted var(--grid-plate-editable-border-color);
         }
+        :host .column[style="min-height: unset"] {
+          display: none;
+        }
+        :host([edit-mode]) .column[style="min-height: unset"]:not(:empty) {
+          display: block;
+          outline: 1px solid red;
+          width: 20%;
+          margin-top: var(--grid-plate-item-margin);
+        }
+        :host([edit-mode])
+          .column[style="min-height: unset"]:not(:empty):before {
+          content: "Hidden Column (" attr(id) ")";
+          color: red;
+          margin: var(--grid-plate-item-margin);
+          padding: 15px 0;
+          min-height: 150px;
+        }
         :host ::slotted(*) {
           margin: var(--grid-plate-item-margin);
           padding: 0;
@@ -576,7 +593,7 @@ let GridPlate = Polymer({
   _getColumnWidth(column, columnWidths) {
     return columnWidths !== undefined && columnWidths[column] !== undefined
       ? "width:" + columnWidths[column]
-      : "display:none";
+      : "min-height: unset";
   },
   /**
    * gets a given column's current width based on layout and current responsive width
