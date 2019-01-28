@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-image/iron-image.js";
 import "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
@@ -21,7 +21,7 @@ That thing no one wants to make over and over again yet always does...
 */
 let HeroBanner = Polymer({
   _template: html`
-    <style include="materializecss-styles">
+    <style include="simple-colors">
       :host {
         display: block;
         width: 100%;
@@ -43,32 +43,42 @@ let HeroBanner = Polymer({
         width: 50%;
       }
       .title {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(255, 255, 255, 0.5);
         padding: 10px 16px;
         font-size: 32px;
-        color: #ffffff;
+        color: var(--simple-colors-default-theme-grey-12);
         margin: 4px 0;
-        font-family: "Roboto";
+        font-family: var(--hero-banner-font-family,"Roboto");
         font-weight: 500;
       }
       .details {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(255, 255, 255, 0.5);
         padding: 10px 16px;
         font-size: 16px;
-        color: #ffffff;
+        color: var(--simple-colors-default-theme-grey-12);
         margin: 4px 0;
-        font-family: "Roboto";
+        font-family: var(--hero-banner-font-family,"Roboto");
+      }
+      :host([dark]) .title,
+      :host([dark]) .details {
+        background-color: rgba(0, 0, 0, 0.5);
       }
       .linkbutton {
         padding: 0;
         margin: 8px 0;
-        color: #ffffff;
         text-decoration: none;
-        font-family: "Roboto";
+        font-family: "var(--hero-banner-font-family,"Roboto");
       }
       .linkbutton paper-button {
         text-transform: none;
         font-weight: bold;
+        color: var(--simple-colors-default-theme-grey-12);
+        background-color: var(--simple-colors-default-theme-accent-5);
+        margin: 0;
+      }
+      .linkbutton:focus paper-button,
+      .linkbutton:hover paper-button {
+        background-color: var(--simple-colors-default-theme-accent-4);
       }
       @media screen and (max-width: 720px) {
         .title {
@@ -107,11 +117,7 @@ let HeroBanner = Polymer({
       <div class="title">[[title]]</div>
       <div class="details">[[details]]</div>
       <a class="linkbutton" href\$="[[buttonLink]]"
-        ><paper-button
-          raised=""
-          class\$="[[buttonColorClass]] [[textColorClass]]"
-          >[[buttonText]]</paper-button
-        ></a
+        ><paper-button raised="">[[buttonText]]</paper-button></a
       >
     </div>
   `,
@@ -121,7 +127,7 @@ let HeroBanner = Polymer({
   behaviors: [
     HAXBehaviors.PropertiesBehaviors,
     A11yBehaviors.A11y,
-    MaterializeCSSBehaviors.ColorBehaviors
+    SimpleColors
   ],
 
   properties: {
@@ -200,19 +206,6 @@ let HeroBanner = Polymer({
     if (typeof newValue !== typeof undefined && newValue != null) {
       // sees if there's enough contrast and adjusts them accordingly
       this.computeTextPropContrast("textColor", "buttonColor");
-    }
-  },
-
-  /**
-   * Make class from color value
-   */
-  _computeColorClass: function(color) {
-    if (color != null && color.toLowerCase() == "#ffffff") {
-      return "white-text";
-    } else if (color != null && color == "#000000") {
-      return "black-text";
-    } else if (color != null && color.substring(0, 1) == "#") {
-      return this._colorTransform(color.toLowerCase(), "", "");
     }
   },
 
