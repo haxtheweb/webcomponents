@@ -19,7 +19,12 @@
       <h3>Basic grid-plate demo</h3>
       <demo-snippet>
         <template>
-          <grid-plate layout="5/2/2/3" colors="blue/orange/purple/green" edit-mode="">
+          <style>
+            *[slot] {
+              margin: 15px;
+            }
+          </style>
+          <grid-plate layout="1-1-1-1" edit-mode>
             <video-player slot="col-1" resource="#d158b908-dc44-6db2-8537" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org "
               responsive="" source="https://www.youtube.com/watch?v=pKLPQ4ufo64" src="https://www.youtube-nocookie.com/embed/pKLPQ4ufo64?showinfo=0&amp;controls=1&amp;rel=0"
               iframed="" width="560" height="315" caption="What is ELMS:LN? Why is it fundamentally different from any other educational technology that's ever existed? What is sustainable innovation? Why is this so ..."
@@ -36,7 +41,7 @@
         </template>
       </demo-snippet>
     </div>
-    <grid-plate areas="2">
+    <!--grid-plate areas="2">
       <video-player slot="area1" resource="#d158b908-dc44-6db2-8537" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org "
         responsive="" style="width: 100%;" source="https://www.youtube.com/watch?v=pKLPQ4ufo64" src="https://www.youtube-nocookie.com/embed/pKLPQ4ufo64?showinfo=0&amp;controls=1&amp;rel=0"
         iframed="" width="560" height="315" caption="What is ELMS:LN? Why is it fundamentally different from any other educational technology that's ever existed? What is sustainable innovation? Why is this so ..."
@@ -59,6 +64,6 @@
         show-title="" search="Drupal" render-as="content" search-response="[object Object]"></wikipedia-query>
     
       <p slot="area3">This is a whole bunch of paragraphs of text</p>
-    </grid-plate>
+    </grid-plate-->
   </body>
 </html>
