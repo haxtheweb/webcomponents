@@ -1,6 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import { updateStyles } from "@polymer/polymer/lib/mixins/element-mixin.js";
 import "@polymer/app-layout/app-header/app-header.js";
@@ -8,10 +7,7 @@ import "@polymer/app-layout/app-toolbar/app-toolbar.js";
 import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";
 import "@polymer/app-layout/app-header-layout/app-header-layout.js";
-import "@polymer/paper-progress/paper-progress.js";
-import "@polymer/iron-media-query/iron-media-query.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
-import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";
 import "@lrnwebcomponents/map-menu/map-menu.js";
 import "./lib/outline-player-arrow.js";
@@ -25,7 +21,7 @@ A LRN element
 */
 let OutlinePlayer = Polymer({
   _template: html`
-    <style include="materializecss-styles">
+    <style include="simple-colors">
       :host {
         display: block;
         font-family: libre baskerville;
@@ -81,17 +77,8 @@ let OutlinePlayer = Polymer({
         padding-bottom: 16px;
       }
 
-      app-toolbar {
-        background-color: var(--outline-player-light);
-        color: var(--outline-player-dark);
-        font-weight: bold;
-        border-bottom: solid 1px var(--outline-player-dark);
-        -webkit-box-shadow: 0 0 6px -1px var(--outline-player-dark);
-        box-shadow: 0 0 6px -1px var(--outline-player-dark);
-      }
-
       app-drawer-layout {
-        min-height: 100%;
+        min-height: 100vh;
         min-height: -moz-available; /* WebKit-based browsers will ignore this. */
         min-height: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
         min-height: fill-available;
@@ -101,9 +88,18 @@ let OutlinePlayer = Polymer({
 
       .outline-title {
         font-size: 24px;
-        height: 64px;
+        font-weight: normal;
+        line-height: 32px;
+        vertical-align: middle;
         padding: 16px;
+        height: 32px;
         margin: 0;
+        text-align: center;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        word-break: break-word;
+        border-bottom: 1px solid #eeeeee;
+        position: sticky;
       }
 
       #menu {
@@ -114,8 +110,14 @@ let OutlinePlayer = Polymer({
         --outline-player-dark: var(--outline-player-dark);
       }
 
-      paper-icon-button + [main-title] {
-        margin-left: 24px;
+      div[main-title] {
+        margin-left: 16px;
+        font-size: 20px;
+        line-height: 20px;
+        overflow-wrap: break-word;
+        text-overflow: ellipsis;
+        display: inline-block;
+        word-break: break-word;
       }
 
       paper-progress {
@@ -129,8 +131,8 @@ let OutlinePlayer = Polymer({
         color: var(--outline-player-dark);
         /* Enable outline to be placed anywhere in the dom */
         /* This will override the app-header-layout forcing fixed mode */
-        position: absolute !important;
-        left: 0 !important;
+        /*position: absolute !important;
+        left: 0 !important;*/
         --app-header-background-rear-layer: {
           /* app-header-layout will force fixed */
           background-color: var(--outline-player-light);
@@ -138,27 +140,30 @@ let OutlinePlayer = Polymer({
       }
 
       app-toolbar {
-        box-shadow: none;
         border-bottom: none;
-        background: none;
-      }
-
-      app-drawer {
-        border-bottom: solid 1px var(--outline-player-dark);
-        -webkit-box-shadow: 0 0 6px -3px var(--outline-player-dark);
+        background-color: var(--outline-player-light);
         box-shadow: 0 0 6px -3px var(--outline-player-dark);
-        position: absolute;
-        min-height: var(--outline-play-min-height);
+      }
+      app-drawer {
+        box-shadow: 0 0 6px -3px var(--outline-player-dark);
+        overflow: hidden;
         --app-drawer-scrim-background: rgba(80, 80, 80, 0.8);
         --app-drawer-content-container: {
-          overflow: scroll;
+          overflow: hidden;
           background-color: var(--outline-player-light);
         }
       }
-
+      app-drawer-layout[narrow] app-toolbar {
+        position: fixed !important;
+        left: 0;
+        right: 0;
+      }
+      app-drawer-layout[narrow] #contentcontainer {
+        padding-top: 64px;
+      }
       #content {
-        display: flex;
         justify-content: center;
+        padding: 0 8px 8px 8px;
       }
 
       #content > * {
@@ -187,20 +192,25 @@ let OutlinePlayer = Polymer({
       #contentcontainer h-a-x {
         margin: 0;
       }
-
-      .desktopNav {
-        margin-left: 2%;
-        margin-right: 2%;
-        position: relative;
-        margin-top: var(--outline-player-arrow-margin-top);
+      map-menu {
+        height: calc(100vh - 80px);
+        --map-menu-container: {
+          padding: 0;
+        }
       }
-
-      #desktopNavLeft {
-        order: 0;
+      map-menu::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+        border-radius: none;
+        background-color: #f5f5f5;
       }
-
-      #desktopNavRight {
-        order: 2;
+      map-menu::-webkit-scrollbar {
+        width: 4px;
+        background-color: #f5f5f5;
+      }
+      map-menu::-webkit-scrollbar-thumb {
+        border-radius: none;
+        -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
+        background-color: #555;
       }
     </style>
     <!-- Control the sites query paremeters -->
@@ -208,98 +218,56 @@ let OutlinePlayer = Polymer({
     <!-- Begin Layout -->
     <app-drawer-layout>
       <app-drawer id="drawer" swipe-open="" slot="drawer">
-        <template is="dom-if" if="[[__hasTitle(outlineTitle)]]">
-          <h2 class="outline-title">[[outlineTitle]]</h2>
+        <template is="dom-if" if="[[__hasTitle(manifest.title)]]">
+          <h2 class="outline-title">[[manifest.title]]</h2>
         </template>
         <map-menu
           id="menu"
           selected="[[selected]]"
           manifest="[[_routerManifest]]"
-          active-indicator=""
-          auto-scroll=""
+          active-indicator
+          auto-scroll
         ></map-menu>
       </app-drawer>
       <app-header-layout>
-        <app-header reveals="" slot="header">
+        <app-header slot="header" reveals>
           <app-toolbar>
             <paper-icon-button
               icon="menu"
               on-click="_toggleMenu"
             ></paper-icon-button>
-            <div main-title="">
+            <div main-title>
               [[activeItem.title]]
               <div id="slotTitle"><slot name="title"></slot></div>
             </div>
-            <template is="dom-if" if="[[!breakpointDesktop]]">
-              <outline-player-arrow
-                id="prevpage"
-                disabled="[[disablePrevPage(__activeIndex)]]"
-                icon="icons:arrow-back"
-                on-click="prevPage"
-              >
-                Previous page
-              </outline-player-arrow>
-              <outline-player-arrow
-                id="nextpage"
-                disabled="[[disableNextPage(__activeIndex)]]"
-                icon="icons:arrow-forward"
-                on-click="nextPage"
-              >
-                Next page
-              </outline-player-arrow>
-            </template>
-            <paper-progress
-              hidden\$="[[!__loadingContent]]"
-              value="10"
-              indeterminate=""
-              bottom-item=""
-            ></paper-progress>
+            <outline-player-arrow
+              id="prevpage"
+              disabled="[[disablePrevPage(__activeIndex)]]"
+              icon="icons:arrow-back"
+              on-click="prevPage"
+              >Previous
+            </outline-player-arrow>
+            <outline-player-arrow
+              id="nextpage"
+              disabled="[[disableNextPage(__activeIndex)]]"
+              icon="icons:arrow-forward"
+              on-click="nextPage"
+              >Next
+            </outline-player-arrow>
           </app-toolbar>
         </app-header>
         <div id="content">
           <div id="contentcontainer">
             <div id="slot"><slot></slot></div>
           </div>
-          <template is="dom-if" if="[[breakpointDesktop]]">
-            <div class="desktopNav" id="desktopNavLeft">
-              <outline-player-arrow
-                sticky=""
-                id="prevpage"
-                disabled="[[disablePrevPage(__activeIndex)]]"
-                icon="icons:arrow-back"
-                on-click="prevPage"
-              >
-                Previous page
-              </outline-player-arrow>
-            </div>
-            <div class="desktopNav" id="desktopNavRight">
-              <outline-player-arrow
-                sticky=""
-                id="nextpage"
-                disabled="[[disableNextPage(__activeIndex)]]"
-                icon="icons:arrow-forward"
-                on-click="nextPage"
-              >
-                Next page
-              </outline-player-arrow>
-            </div>
-          </template>
         </div>
       </app-header-layout>
     </app-drawer-layout>
-    <iron-media-query
-      query="(min-width: 700px)"
-      query-matches="{{breakpointDesktop}}"
-    ></iron-media-query>
   `,
 
   is: "outline-player",
 
-  behaviors: [
-    MaterializeCSSBehaviors.ColorBehaviors,
-    SchemaBehaviors.Schema,
-    HAXCMSBehaviors.Theme
-  ],
+  behaviors: [HAXCMSBehaviors.Theme],
 
   properties: {
     /**
@@ -328,13 +296,6 @@ let OutlinePlayer = Polymer({
      * Outline JSON location
      */
     outlineLocation: {
-      type: String,
-      notify: true
-    },
-    /**
-     * Title of the outline.
-     */
-    outlineTitle: {
       type: String,
       notify: true
     },
@@ -378,13 +339,6 @@ let OutlinePlayer = Polymer({
       notify: true
     },
     /**
-     * Define desktop breakpoint for adapted navigation
-     */
-    breakpointDesktop: {
-      type: String,
-      value: "600px"
-    },
-    /**
      * Set min height of outline player to fill remaining
      * space to the bottom of the browser
      */
@@ -408,13 +362,6 @@ let OutlinePlayer = Polymer({
   },
 
   attached: function() {
-    // if the user has fill remaining selected then run it
-    this.refreshDynamicPositions();
-    // also start listening for future resizing events to
-    // re-run the code
-    window.addEventListener("resize", e => {
-      this.refreshDynamicPositions();
-    });
     window.addEventListener(
       "haxcms-site-router-active-item-changed",
       this._haxcmsSiteRouterActiveItemChangedHandler.bind(this)
@@ -474,28 +421,6 @@ let OutlinePlayer = Polymer({
       );
     }
   },
-
-  /**
-   * Update calculations for fill-remaining and arrow position
-   */
-  refreshDynamicPositions() {
-    // get bounding rect
-    const boundingRect = this.getBoundingClientRect();
-    // get windowHeight
-    const windowHeight = window.innerHeight;
-    // simple subtraction to find out what the remaining space is
-    const minHeight = windowHeight - boundingRect.top;
-    // now get where the arrows should be, and subtract 20 pixels to
-    // account for the height of the button
-    const arrowMargin = minHeight / 2 - 20;
-    let styleChanges = {};
-    if (this.fillRemaining) {
-      styleChanges["--outline-player-min-height"] = minHeight + "px";
-    }
-    styleChanges["--outline-player-arrow-margin-top"] = arrowMargin + "px";
-    this.updateStyles(styleChanges);
-  },
-
   /**
    * Link menu button to open and closing the side panel.
    */
@@ -563,7 +488,7 @@ let OutlinePlayer = Polymer({
    * disableNextPage
    */
   disableNextPage: function(index) {
-    if (index === this._outlineData.items.length - 1) {
+    if (index === this.manifest.items.length - 1) {
       return true;
     }
     return false;
@@ -580,8 +505,7 @@ let OutlinePlayer = Polymer({
    * Advance a page
    */
   nextPage: function(e) {
-    // window.JSONOutlineSchema.requestAvailability().nextPage(this.manifest, this.activeItem)
-    // this.changePage("next");
+    this.changePage("next");
   },
 
   /**
@@ -590,16 +514,11 @@ let OutlinePlayer = Polymer({
   changePage: function(direction) {
     if (
       direction == "next" &&
-      this.__activeIndex < this._outlineData.items.length - 1
+      this.__activeIndex < this.manifest.items.length - 1
     ) {
-      this.selected = this._outlineData.items[this.__activeIndex + 1].id;
+      this.selected = this.manifest.items[this.__activeIndex + 1].id;
     } else if (direction == "previous" && this.__activeIndex > 0) {
-      this.selected = this._outlineData.items[this.__activeIndex - 1].id;
-    }
-    // tell arrows to reset in case we are jumped around the page
-    const arrows = this.querySelectorAll("outline-player-arrow");
-    for (let arrow of arrows) {
-      arrow.resetPosition();
+      this.selected = this.manifest.items[this.__activeIndex - 1].id;
     }
   },
 
@@ -608,8 +527,8 @@ let OutlinePlayer = Polymer({
    */
   _selectedPageChanged: function(newValue, oldValue) {
     if (typeof newValue !== typeof undefined) {
-      if (typeof this._outlineData !== typeof undefined) {
-        const item = this._outlineData.items
+      if (typeof this.manifest !== typeof undefined) {
+        const item = this.manifest.items
           .filter((d, i) => {
             if (newValue === d.id) {
               this.__activeIndex = i;
@@ -618,6 +537,11 @@ let OutlinePlayer = Polymer({
           })
           .pop();
         this.set("activeItem", item);
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "smooth"
+        });
       }
     }
   },

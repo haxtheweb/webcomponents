@@ -112,27 +112,6 @@
           "return": {
             "type": "void"
           }
-        },
-        {
-          "name": "_computeColorClass",
-          "description": "Make class from color value",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 295,
-              "column": 2
-            },
-            "end": {
-              "line": 299,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "color"
-            }
-          ]
         }
       ],
       "staticMethods": [],
@@ -144,7 +123,7 @@
           "column": 32
         },
         "end": {
-          "line": 300,
+          "line": 291,
           "column": 1
         }
       },

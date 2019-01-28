@@ -1,87 +1,114 @@
-import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@lrnwebcomponents/materializecss-styles/materializecss-styles.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";import"./node_modules/@lrnwebcomponents/lrn-icons/lrn-icons.js";let LrndesignPaperstack=Polymer({_template:html`
-    <style include="materializecss-styles">
+import{html,Polymer}from"./node_modules/@polymer/polymer/polymer-legacy.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import{SimpleColors}from"./node_modules/@lrnwebcomponents/simple-colors/simple-colors.js";import"./node_modules/@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";import"./node_modules/@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";import"./node_modules/@lrnwebcomponents/lrn-icons/lrn-icons.js";let LrndesignPaperstack=Polymer({_template:html`
+    <style include="simple-colors">
       :host {
         display: block;
+        font-size: 14px;
+        --lrndesign-paperstack-bg: var(--simple-colors-default-theme-grey-1);
+        --lrndesign-paperstack-faded-bg: var(
+          --simple-colors-default-theme-grey-2
+        );
+        --lrndesign-paperstack-border: var(
+          --simple-colors-default-theme-grey-4
+        );
+        --lrndesign-paperstack-shadow: var(
+          --simple-colors-default-theme-grey-12
+        );
+        --lrndesign-paperstack-accent: var(
+          --simple-colors-default-theme-accent-8
+        );
+        --lrndesign-paperstack-text: var(--simple-colors-default-theme-grey-12);
+        --lrndesign-paperstack-heading-font: cursive;
       }
-      /* Example card */
-      .egletter p {
-        position: relative;
-        z-index: 3;
-        line-height: 24px;
+      :host([dark]) {
+        --lrndesign-paperstack-bg: var(--simple-colors-default-theme-accent-4);
+        --lrndesign-paperstack-faded-bg: var(
+          --simple-colors-default-theme-accent-3
+        );
+        --lrndesign-paperstack-border: var(
+          --simple-colors-default-theme-accent-1
+        );
+        --lrndesign-paperstack-shadow: var(
+          --simple-colors-default-theme-grey-1
+        );
+        --lrndesign-paperstack-accent: var(
+          --simple-colors-default-theme-grey-12
+        );
+        --lrndesign-paperstack-text: var(--simple-colors-default-theme-grey-12);
       }
-
-      .egletter ul {
-        position: relative;
-        z-index: 3;
-        line-height: 24px;
-      }
-
-      .egletter span {
-        font-family: cursive;
-        margin: 0 auto;
-        position: relative;
-        z-index: 3;
-        line-height: 64px;
-      }
-
-      iron-icon {
-        display: block;
-        font-size: 12px;
-        height: 40px;
-        width: 40px;
-        padding: 4px;
-      }
-
-      .icon-container {
-        float: left;
-        width: 48px;
-        height: 48px;
-        margin-right: 8px;
-      }
-
-      .egletter span {
-        line-height: 48px;
-      }
-
-      .egletter {
-        min-height: 160px;
-        padding: 12px 24px;
-        position: relative;
-        width: 80%;
-        z-index: 4;
-        margin-bottom: 48px;
-      }
-
-      .egletter:before,
-      .egletter:after {
-        content: "";
-        height: 98%;
-        position: absolute;
+      .stack {
         width: 100%;
-        z-index: -1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
       }
-
-      .egletter:before {
-        background: #fafafa;
-        box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+      .paper {
+        min-height: 160px;
+        width: 80%;
+        padding: 12px 24px;
+        position: absolute;
+        flex: 1 1 auto;
+        left: 0;
+        top: 0;
+        box-shadow: 0 0 1px var(--lrndesign-paperstack-shadow);
+        border: 1px solid var(--lrndesign-paperstack-border);
+      }
+      .paper:first-of-type {
         left: -0.32px;
         top: 0.32px;
         transform: rotate(-2.5deg);
+        background-color: var(--lrndesign-paperstack-faded-bg);
       }
-
-      .egletter:after {
-        background: #ffffff;
-        box-shadow: 0 0 0.32px rgba(0, 0, 0, 0.2);
+      .paper:nth-of-type(2) {
         right: -0.32px;
         top: 1.6px;
         transform: rotate(1.4deg);
+        background-color: var(--lrndesign-paperstack-faded-bg);
+      }
+      .front {
+        flex: 0 0 100%;
+        position: relative;
+        margin-bottom: 48px;
+        background-color: var(--lrndesign-paperstack-bg);
+        color: var(--lrndesign-paperstack-text);
+      }
+
+      iron-icon {
+        width: 90%;
+        height: 90%;
+        flex: 1 1 auto;
+        color: var(--lrndesign-paperstack-bg);
+      }
+      .heading {
+        display: flex;
+        align-items: center;
+      }
+      .icon-container {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background-color: var(--lrndesign-paperstack-accent);
+        margin-right: 8px;
+        display: flex;
+        align-items: center;
+      }
+      .title {
+        font-size: 16px;
+        color: var(--lrndesign-paperstack-accent);
+        font-family: var(--lrndesign-paperstack-heading-font);
       }
     </style>
-    <div class="egletter">
-      <div class$="icon-container circle [[color]]">
-        <iron-icon icon="[[icon]]" class$="[[textColor]]"></iron-icon>
+    <div class="stack">
+      <div class="paper"></div>
+      <div class="paper"></div>
+      <div class="front paper">
+        <div class="heading">
+          <div class="icon-container circle">
+            <iron-icon icon="[[icon]]"></iron-icon>
+          </div>
+          <span class="title">[[title]]</span>
+        </div>
+        <p><slot></slot></p>
       </div>
-      <span>[[title]]</span>
-      <p><slot></slot></p>
     </div>
-  `,is:"lrndesign-paperstack",behaviors:[HAXBehaviors.PropertiesBehaviors,A11yBehaviors.A11y,MaterializeCSSBehaviors.ColorBehaviors],properties:{title:{type:String,value:"Title"},icon:{type:String,value:"lrn:assignment"},colorCode:{type:String,value:"#000000",observer:"_colorCodeChange"},color:{type:String,computed:"_computeColorClass(colorCode, \"bg\")"},textCodeColor:{type:String,value:"#ffffff"},textColor:{type:String,computed:"_computeColorClass(textCodeColor)"}},attached:function(){let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Paper stack",description:"A stack of papers",icon:"icons:content-copy",color:"grey",groups:["Video","Media"],handles:[],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"title",title:"Title",description:"Title of the cards",inputMethod:"textfield",icon:"editor:title"}],configure:[{property:"title",title:"Title",description:"Title of the cards",inputMethod:"boolean"},{property:"colorCode",title:"Color",description:"Color of the card",inputMethod:"colorpicker"},{property:"icon",title:"Icon",description:"Icon for the card",inputMethod:"iconpicker"},{slot:"",title:"Contents",description:"card contents",inputMethod:"code-editor"}],advanced:[]}};this.setHaxProperties(props)},_computeColorClass:function(color,bg){if(null!=color&&"#ffffff"==color.toLowerCase()){if("bg"==bg){return"white"}return"white-text"}else if(null!=color&&"#000000"==color){if("bg"==bg){return"black"}return"black-text"}else if(null!=color&&"#"==color.substring(0,1)){return this._colorTransform(color.toLowerCase(),"","")}},_colorCodeChange:function(newValue,oldValue){if(typeof newValue!==typeof void 0&&null!=newValue){this.computeTextPropContrast("textCodeColor","colorCode")}}});export{LrndesignPaperstack};
+  `,is:"lrndesign-paperstack",behaviors:[HAXBehaviors.PropertiesBehaviors,A11yBehaviors.A11y,SimpleColors],properties:{title:{type:String,value:"Title"},icon:{type:String,value:"lrn:assignment"}},attached:function(){let props={canScale:!0,canPosition:!0,canEditSource:!1,gizmo:{title:"Paper stack",description:"A stack of papers",icon:"icons:content-copy",color:"grey",groups:["Video","Media"],handles:[],meta:{author:"LRNWebComponents"}},settings:{quick:[{property:"title",title:"Title",description:"Title of the cards",inputMethod:"textfield",icon:"editor:title"},{property:"accent-color",title:"Accent color",description:"Select the accent color use",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark",description:"Use dark theme",inputMethod:"toggle",icon:"invert-colors"}],configure:[{property:"title",title:"Title",description:"Title of the cards",inputMethod:"boolean"},{property:"accent-color",title:"Accent color",description:"Select the accent color use",inputMethod:"colorpicker",icon:"editor:format-color-fill"},{property:"dark",title:"Dark",description:"Use dark theme",inputMethod:"toggle",icon:"invert-colors"},{property:"icon",title:"Icon",description:"Icon for the card",inputMethod:"iconpicker"},{slot:"",title:"Contents",description:"card contents",inputMethod:"code-editor"}],advanced:[]}};this.setHaxProperties(props)}});export{LrndesignPaperstack};

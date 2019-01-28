@@ -288,15 +288,6 @@ let PersonTestimonial = Polymer({
       }
     };
     this.setHaxProperties(props);
-  },
-
-  /**
-   * Make class from color value
-   */
-  _computeColorClass: function(color) {
-    if (color != null && color.substring(0, 1) == "#") {
-      return this._colorTransform(color.toLowerCase(), "", "");
-    }
   }
 });
 export { PersonTestimonial };
