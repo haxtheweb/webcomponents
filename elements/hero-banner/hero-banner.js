@@ -30,11 +30,27 @@ let HeroBanner = Polymer({
         max-height: 600px;
         overflow: hidden;
         position: relative;
+        --hero-banner-font-family: "Roboto";
+        --hero-banner-title-weight: 500;
+        --hero-banner-text: var(--simple-colors-default-theme-grey-12);
+        --hero-banner-rgba: rgba(255, 255, 255, 0.65);
+        --hero-banner-image-bg: var(--simple-colors-default-theme-grey-3);
+        --hero-banner-button-weight: bold;
+        --hero-banner-button-color: var(--simple-colors-default-theme-accent-6);
+        --hero-banner-button-hover-color: var(
+          --simple-colors-default-theme-accent-5
+        );
+      }
+      :host([dark]) {
+        --hero-banner-rgba: rgba(0, 0, 0, 0.65);
       }
       .image {
         position: absolute;
         left: 0;
         right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--hero-banner-image-bg);
       }
       .itemwrapper {
         position: absolute;
@@ -43,42 +59,39 @@ let HeroBanner = Polymer({
         width: 50%;
       }
       .title {
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: var(--hero-banner-rgba);
         padding: 10px 16px;
         font-size: 32px;
-        color: var(--simple-colors-default-theme-grey-12);
+        color: var(--hero-banner-text);
         margin: 4px 0;
-        font-family: var(--hero-banner-font-family,"Roboto");
-        font-weight: 500;
+        font-family: var(--hero-banner-font-family);
+        font-weight: var(--hero-banner-title-weight);
       }
       .details {
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: var(--hero-banner-rgba);
         padding: 10px 16px;
         font-size: 16px;
-        color: var(--simple-colors-default-theme-grey-12);
+        color: var(--hero-banner-text);
         margin: 4px 0;
-        font-family: var(--hero-banner-font-family,"Roboto");
-      }
-      :host([dark]) .title,
-      :host([dark]) .details {
-        background-color: rgba(0, 0, 0, 0.5);
+        font-family: var(--hero-banner-font-family);
       }
       .linkbutton {
         padding: 0;
         margin: 8px 0;
         text-decoration: none;
-        font-family: "var(--hero-banner-font-family,"Roboto");
+        font-family: var(--hero-banner-font-family);
       }
       .linkbutton paper-button {
         text-transform: none;
-        font-weight: bold;
-        color: var(--simple-colors-default-theme-grey-12);
-        background-color: var(--simple-colors-default-theme-accent-5);
+        font-weight: var(--hero-banner-button-weight);
+        color: var(--hero-banner-text);
+        background-color: var(--hero-banner-button-color);
+        font-size: 16px;
         margin: 0;
       }
       .linkbutton:focus paper-button,
       .linkbutton:hover paper-button {
-        background-color: var(--simple-colors-default-theme-accent-4);
+        background-color: var(---hero-banner-button-hover-color);
       }
       @media screen and (max-width: 720px) {
         .title {
@@ -111,7 +124,6 @@ let HeroBanner = Polymer({
       fade=""
       preload=""
       sizing="cover"
-      style="background-color:grey;width: 100%;height: 100%;"
     ></iron-image>
     <div class="itemwrapper">
       <div class="title">[[title]]</div>
