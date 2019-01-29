@@ -76,9 +76,13 @@ Polymer({
         }
         #preview ::slotted(*) {
           float: unset !important;
-          float: unset !important;
           margin: unset !important;
           width: unset !important;
+          position: unset !important;
+          top: unset !important;
+          left: unset !important;
+          right: unset !important;
+          bottom: unset !important;
         }
         .preview-text {
           font-size: 14px;
@@ -632,6 +636,7 @@ Polymer({
         frag.innerHTML = newValue.content;
         // clone the fragment which will force an escalation to full node
         var newNode = frag.cloneNode(true);
+        newNode.setAttribute("hax-preview-mode", "hax-preview-mode");
         // send this into the root, which should filter it back down into the slot
         preview.appendChild(newNode);
         // need to let append propagate, it probably takes like no time

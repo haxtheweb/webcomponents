@@ -141,7 +141,7 @@ let OutlinePlayer = Polymer({
 
       app-toolbar {
         border-bottom: none;
-        background-color: var(--outline-player-light);
+        background-color: #ffffff;
         box-shadow: 0 0 6px -3px var(--outline-player-dark);
       }
       app-drawer {
@@ -177,8 +177,9 @@ let OutlinePlayer = Polymer({
         display: none !important;
       }
       #contentcontainer {
-        padding: 16px;
-        max-width: 1040px;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 32px 16px 32px 16px;
         flex: 1 1 auto;
         order: 1;
         display: flex;
@@ -200,17 +201,17 @@ let OutlinePlayer = Polymer({
       }
       map-menu::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
-        border-radius: none;
-        background-color: #f5f5f5;
+        border-radius: 2px;
+        background-color: #fafafa;
       }
       map-menu::-webkit-scrollbar {
         width: 4px;
-        background-color: #f5f5f5;
+        background-color: #fafafa;
       }
       map-menu::-webkit-scrollbar-thumb {
-        border-radius: none;
+        border-radius: 2px;
         -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
-        background-color: #555;
+        background-color: #222222;
       }
     </style>
     <!-- Control the sites query paremeters -->

@@ -53,13 +53,13 @@ Polymer({
       }
       #ironlist {
         width: 100%;
-        height: 30vh;
+        min-height: 280px;
       }
       #dialog {
         min-width: 350px;
         min-height: 350px;
-        height: 30vw;
-        width: 30vh;
+        height: 50vh;
+        width: 50vw;
         padding: 8px;
         overflow: hidden;
         border-radius: 16px;
