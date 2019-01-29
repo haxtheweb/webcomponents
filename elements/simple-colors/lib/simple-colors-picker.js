@@ -128,8 +128,8 @@ class SimpleColorsPicker extends SimpleColors {
         name: "label",
         type: "String",
         value: null,
-        reflectToAttribute: false,
-        observer: false
+        reflectToAttribute: true,
+        notify: true
       }
     };
   }
@@ -220,7 +220,6 @@ class SimpleColorsPicker extends SimpleColors {
    * handles when the picker expands
    */
   _handleExpand(e) {
-    console.log("_handleExpand", e);
     this.dispatchEvent(new CustomEvent("expand", { detail: this }));
   }
 
