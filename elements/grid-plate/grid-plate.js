@@ -394,19 +394,19 @@ let GridPlate = Polymer({
           ],
           lg: [
             "16.6666667%",
-            "16.6666667",
-            "16.6666667",
             "16.6666667%",
-            "16.6666667",
-            "16.6666667"
+            "16.6666667%",
+            "16.6666667%",
+            "16.6666667%",
+            "16.6666667%"
           ],
           xl: [
             "16.6666667%",
-            "16.6666667",
-            "16.6666667",
             "16.6666667%",
-            "16.6666667",
-            "16.6666667"
+            "16.6666667%",
+            "16.6666667%",
+            "16.6666667%",
+            "16.6666667%"
           ]
         }
       }
@@ -444,7 +444,7 @@ let GridPlate = Polymer({
    */
   canMoveSlot: function(item, before) {
     let dir = before ? -1 : 1,
-      max = this.columns,
+      max = this.shadowRoot.querySelectorAll(".column").length,
       col = item.getAttribute("slot").split("-"),
       dest = parseInt(col[1]) + dir;
     return dest >= 1 && dest <= max;
@@ -458,7 +458,6 @@ let GridPlate = Polymer({
    */
   moveSlot: function(item, before) {
     let dir = before ? -1 : 1,
-      max = this.columns,
       col = item.getAttribute("slot").split("-"),
       dest = parseInt(col[1]) + dir;
     if (this.canMoveSlot(item, dir)) {
@@ -510,10 +509,6 @@ let GridPlate = Polymer({
   moveActiveElement: function(e) {
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
-    let slot = this.__activeItem.getAttribute("slot"),
-      col = slot.split("-"),
-      pos = parseInt(col[1]);
-    let max = this.columns;
     // see if this was an up down left or right movement
     switch (local.id) {
       case "up":
@@ -669,7 +664,6 @@ let GridPlate = Polymer({
       this.$.right.classList.add("active");
 
       // ensure we disable invalid options contextually
-      let max = this.columns;
       // test for an element above us
       this.$.up.disabled = !this.canMoveOrder(item, true);
       // test for an element below us
@@ -878,48 +872,6 @@ let GridPlate = Polymer({
       }
     }
   },
-
-  /**
-   * See layout has changed, update all the possible data values
-   */
-  _layoutChanged: function(layout) {
-    let items = layout.split("/");
-    this.__colCount = items.length;
-    switch (items.length) {
-      case 1:
-        this.hideCol1 = false;
-        this.hideCol2 = true;
-        this.hideCol3 = true;
-        this.hideCol4 = true;
-        break;
-      case 2:
-        this.hideCol1 = false;
-        this.hideCol2 = false;
-        this.hideCol3 = true;
-        this.hideCol4 = true;
-        break;
-      case 3:
-        this.hideCol1 = false;
-        this.hideCol2 = false;
-        this.hideCol3 = false;
-        this.hideCol4 = true;
-        break;
-      case 4:
-        this.hideCol1 = false;
-        this.hideCol2 = false;
-        this.hideCol3 = false;
-        this.hideCol4 = false;
-        break;
-    }
-    for (var i in items) {
-      let col = Number(i) + 1;
-      this["col" + col + "_xl"] = items[i];
-      this["col" + col + "_lg"] = items[i];
-      this["col" + col + "_md"] = items[i];
-      this["col" + col + "_sm"] = items[i];
-      this["col" + col + "_xs"] = items[i];
-    }
-  },
   /**
    * Attached to the DOM, now fire.
    */
@@ -946,37 +898,37 @@ let GridPlate = Polymer({
       })
     );
     // Establish hax property binding
-    let options,
-      layouts = Object.keys(root.layout),
+    let options = {},
+      layouts = Object.keys(root.layouts),
       getOptions = function() {
         //loop through all the supplied layouts to get the HAX layout options & descriptions
-        for (i = 0; layouts.length; i++) {
-          options[layouts[i]] = layouts[i].columnLayout;
-        }
-      },
-      props = {
-        canScale: true,
-        canPosition: true,
-        canEditSource: false,
-        settings: {
-          quick: [],
-          configure: [
-            {
-              property: "layout",
-              title: "Column Layout",
-              description:
-                "Style to present these items (may change for small screens)",
-              inputMethod: "select",
-              options: options
-            }
-          ],
-          advanced: []
-        },
-        saveOptions: {
-          unsetAttributes: ["__active-item", "edit-mode"]
+        for (let i = 0; i < layouts.length; i++) {
+          options[layouts[i]] = root.layouts[layouts[i]].columnLayout;
         }
       };
-
+    getOptions();
+    let props = {
+      canScale: true,
+      canPosition: true,
+      canEditSource: false,
+      settings: {
+        quick: [],
+        configure: [
+          {
+            property: "layout",
+            title: "Column Layout",
+            description:
+              "Style to present these items (may change for small screens)",
+            inputMethod: "select",
+            options: options
+          }
+        ],
+        advanced: []
+      },
+      saveOptions: {
+        unsetAttributes: ["__active-item", "edit-mode"]
+      }
+    };
     root.setHaxProperties(props);
   },
 
