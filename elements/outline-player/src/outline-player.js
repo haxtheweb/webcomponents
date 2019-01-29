@@ -180,7 +180,7 @@ let OutlinePlayer = Polymer({
       #contentcontainer {
         max-width: 840px;
         margin: 0 auto;
-        padding: 16px;
+        padding: 0 16px 16px 16px;
         flex: 1 1 auto;
         order: 1;
         display: flex;
