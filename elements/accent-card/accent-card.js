@@ -242,13 +242,13 @@ class AccentCard extends SimpleColors {
             property: "dark",
             title: "Dark Theme",
             description: "Use dark theme?",
-            inputMethod: "toggle"
+            inputMethod: "boolean"
           },
           {
             property: "horizontal",
             title: "Horizontal",
             description: "Horizontal orientation?",
-            inputMethod: "toggle"
+            inputMethod: "boolean"
           }
         ],
         configure: [
@@ -256,25 +256,25 @@ class AccentCard extends SimpleColors {
             property: "accentHeading",
             title: "Heading Accent",
             description: "Apply the accent color to the heading?",
-            inputMethod: "toggle"
+            inputMethod: "boolean"
           },
           {
             property: "accentBackground",
             title: "Background Accent",
             description: "Apply the accent color to the card background?",
-            inputMethod: "toggle"
+            inputMethod: "boolean"
           },
           {
             property: "noBorder",
             title: "No Border Accent",
             description: "Remove the border accent?",
-            inputMethod: "toggle"
+            inputMethod: "boolean"
           },
           {
             property: "flat",
             title: "Flat",
             description: "Remove the box shadow?",
-            inputMethod: "toggle"
+            inputMethod: "boolean"
           }
         ],
         advanced: []

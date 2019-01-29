@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@polymer/paper-card/paper-card.js";
@@ -6,7 +7,6 @@ import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
-import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/a11y-behaviors/a11y-behaviors.js";
 /**
 `self-check`
@@ -27,7 +27,7 @@ A LRN element
 */
 let SelfCheck = Polymer({
   _template: html`
-    <style include="simple-colors">
+    <style is="custom-style" include="simple-colors">
       :host {
         display: block;
         margin: 15px 0;
@@ -364,6 +364,20 @@ let SelfCheck = Polymer({
             inputMethod: "textfield"
           },
           {
+            property: "accentColor",
+            title: "Accent Color",
+            description: "The accent color of the self-check",
+            inputMethod: "colorpicker",
+            icon: "editor:format-color-fill"
+          },
+          {
+            property: "dark",
+            title: "Dark Theme",
+            description: "Enable Dark Theme",
+            inputMethod: "boolean",
+            icon: "icons:invert-colors"
+          },
+          {
             property: "image",
             title: "Image",
             description: "The image of the element",
@@ -398,20 +412,6 @@ let SelfCheck = Polymer({
               "This is where you enter a question for the self-check.",
             inputMethod: "code-editor",
             required: true
-          },
-          {
-            property: "accent-color",
-            title: "Accent-Color",
-            description: "The accent color of the self-check",
-            inputMethod: "colorpicker",
-            icon: "editor:format-color-fill"
-          },
-          {
-            property: "dark",
-            title: "Dark Theme",
-            description: "Enable Dark Theme",
-            inputMethod: "toggle",
-            icon: "icons:invert-colors"
           }
         ],
         advanced: []

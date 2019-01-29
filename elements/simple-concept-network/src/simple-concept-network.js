@@ -196,7 +196,7 @@ let SimpleConceptNetwork = Polymer({
                 inputMethod: "textfield"
               },
               {
-                property: "accent-color",
+                property: "accentColor",
                 title: "Node color",
                 description: "Select the accent color for this node",
                 inputMethod: "colorpicker",
@@ -206,7 +206,7 @@ let SimpleConceptNetwork = Polymer({
                 property: "dark",
                 title: "Dark",
                 description: "Use dark theme",
-                inputMethod: "toggle",
+                inputMethod: "boolean",
                 icon: "invert-colors"
               },
               {
@@ -214,7 +214,7 @@ let SimpleConceptNetwork = Polymer({
                 title: "Colored Text / Icon",
                 description:
                   "Apply color to text / icon instead of background.",
-                inputMethod: "toggle",
+                inputMethod: "boolean",
                 icon: "editor:format-color-text"
               },
               {

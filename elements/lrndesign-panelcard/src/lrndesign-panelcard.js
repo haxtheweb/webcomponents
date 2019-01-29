@@ -128,7 +128,7 @@ let LrndesignPanelcard = Polymer({
             icon: "editor:title"
           },
           {
-            property: "accent-color",
+            property: "accentColor",
             title: "Accent color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",
@@ -138,7 +138,7 @@ let LrndesignPanelcard = Polymer({
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
-            inputMethod: "toggle",
+            inputMethod: "boolean",
             icon: "invert-colors"
           },
           {
@@ -167,7 +167,7 @@ let LrndesignPanelcard = Polymer({
             validationType: "text"
           },
           {
-            property: "accent-color",
+            property: "accentColor",
             title: "Accent color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",
@@ -177,14 +177,14 @@ let LrndesignPanelcard = Polymer({
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
-            inputMethod: "toggle",
+            inputMethod: "boolean",
             icon: "invert-colors"
           },
           {
             property: "coloredText",
             title: "Colored Text",
             description: "Apply color to text instead of background.",
-            inputMethod: "toggle",
+            inputMethod: "boolean",
             icon: "editor:format-color-text"
           },
           {

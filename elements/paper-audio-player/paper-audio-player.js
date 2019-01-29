@@ -409,7 +409,7 @@ let PaperAudioPlayer = Polymer({
             validationType: "text"
           },
           {
-            property: "accent-color",
+            property: "accentColor",
             title: "Accent color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",
@@ -419,7 +419,7 @@ let PaperAudioPlayer = Polymer({
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
-            inputMethod: "toggle",
+            inputMethod: "boolean",
             icon: "invert-colors"
           }
         ],
@@ -443,7 +443,7 @@ let PaperAudioPlayer = Polymer({
             validationType: "text"
           },
           {
-            property: "accent-color",
+            property: "accentColor",
             title: "Accent color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",
@@ -453,7 +453,7 @@ let PaperAudioPlayer = Polymer({
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
-            inputMethod: "toggle",
+            inputMethod: "boolean",
             icon: "invert-colors"
           }
         ],

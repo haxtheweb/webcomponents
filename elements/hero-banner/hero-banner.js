@@ -21,7 +21,7 @@ That thing no one wants to make over and over again yet always does...
 */
 let HeroBanner = Polymer({
   _template: html`
-    <style include="simple-colors">
+    <style is="custom-style" include="simple-colors">
       :host {
         display: block;
         width: 100%;
@@ -238,7 +238,7 @@ let HeroBanner = Polymer({
             icon: "icons:radio-button-unchecked"
           },
           {
-            property: "accent-color",
+            property: "accentColor",
             title: "Accent color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",
@@ -248,7 +248,7 @@ let HeroBanner = Polymer({
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
-            inputMethod: "toggle",
+            inputMethod: "boolean",
             icon: "invert-colors"
           },
           {
@@ -290,7 +290,7 @@ let HeroBanner = Polymer({
             icon: "icons:radio-button-unchecked"
           },
           {
-            property: "accent-color",
+            property: "accentColor",
             title: "Accent color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",
@@ -300,7 +300,7 @@ let HeroBanner = Polymer({
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
-            inputMethod: "toggle",
+            inputMethod: "boolean",
             icon: "invert-colors"
           },
           {
