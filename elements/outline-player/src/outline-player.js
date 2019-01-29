@@ -202,7 +202,7 @@ let OutlinePlayer = Polymer({
       }
       map-menu::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
-        border-radius: 2px;
+        border-radius: 0;
         background-color: #fafafa;
       }
       map-menu::-webkit-scrollbar {
@@ -212,7 +212,7 @@ let OutlinePlayer = Polymer({
       map-menu::-webkit-scrollbar-thumb {
         border-radius: 2px;
         -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
-        background-color: #222222;
+        background-color: #444444;
       }
     </style>
     <!-- Control the sites query paremeters -->
