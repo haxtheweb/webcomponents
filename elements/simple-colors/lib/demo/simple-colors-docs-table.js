@@ -192,7 +192,6 @@ class simpleColorsDocsTable extends SimpleColors {
    * determines if the element is in nested mode
    */
   _handleThemeChange(e) {
-    console.log(e);
     this.dark = this.$.theme.value;
   }
 
@@ -200,7 +199,6 @@ class simpleColorsDocsTable extends SimpleColors {
    * determines if the element is in nested mode
    */
   _handleColorChange(e) {
-    console.log(e);
     this.accentColor = this.$.color.value;
   }
 

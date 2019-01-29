@@ -92,7 +92,6 @@ class SimpleColorsPickerDemo extends SimpleColors {
    * sets the `accent-color` when the `simple-colors-picker` changes
    */
   _handleColorChange(e) {
-    console.log(e);
     this.accentColor = this.$.color.value;
   }
 
