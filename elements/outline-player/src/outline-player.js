@@ -516,9 +516,19 @@ let OutlinePlayer = Polymer({
       direction == "next" &&
       this.__activeIndex < this.manifest.items.length - 1
     ) {
-      this.selected = this.manifest.items[this.__activeIndex + 1].id;
+      window.history.pushState(
+        {},
+        null,
+        this._routerManifest.items[this.__activeIndex + 1].location
+      );
+      window.dispatchEvent(new PopStateEvent("popstate"));
     } else if (direction == "previous" && this.__activeIndex > 0) {
-      this.selected = this.manifest.items[this.__activeIndex - 1].id;
+      window.history.pushState(
+        {},
+        null,
+        this._routerManifest.items[this.__activeIndex - 1].location
+      );
+      window.dispatchEvent(new PopStateEvent("popstate"));
     }
   },
 
