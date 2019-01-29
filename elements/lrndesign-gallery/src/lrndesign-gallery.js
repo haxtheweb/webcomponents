@@ -111,7 +111,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
       settings: {
         quick: [
           {
-            property: "accent-color",
+            property: "accentColor",
             title: "Accent Color",
             description: "An optional accent color.",
             inputMethod: "colorpicker",

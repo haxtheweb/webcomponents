@@ -4828,7 +4828,7 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
           "defaultValue": "null"
@@ -5084,11 +5084,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 236,
+              "line": 235,
               "column": 2
             },
             "end": {
-              "line": 238,
+              "line": 237,
               "column": 3
             }
           },
@@ -6920,11 +6920,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 243,
+              "line": 242,
               "column": 2
             },
             "end": {
-              "line": 245,
+              "line": 244,
               "column": 3
             }
           },
@@ -7164,7 +7164,7 @@
               "column": 2
             },
             "end": {
-              "line": 224,
+              "line": 223,
               "column": 3
             }
           },
@@ -7184,11 +7184,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 229,
+              "line": 228,
               "column": 2
             },
             "end": {
-              "line": 231,
+              "line": 230,
               "column": 3
             }
           },
@@ -8151,7 +8151,7 @@
           "column": 0
         },
         "end": {
-          "line": 250,
+          "line": 249,
           "column": 1
         }
       },
@@ -8336,6 +8336,12 @@
           "description": "Fired when the `dark` property changes.",
           "metadata": {},
           "inheritedFrom": "SimpleColors"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "value-changed",
+          "description": "Fired when the `value` property changes.",
+          "metadata": {}
         }
       ],
       "styling": {
