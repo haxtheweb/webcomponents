@@ -49,6 +49,23 @@ let GridPlate = Polymer({
         :host([edit-mode]) .column {
           outline: 1px dotted var(--grid-plate-editable-border-color);
         }
+        :host .column[style="min-height: unset"] {
+          display: none;
+        }
+        :host([edit-mode]) .column[style="min-height: unset"]:not(:empty) {
+          display: block;
+          outline: 1px solid red;
+          width: 20%;
+          margin-top: var(--grid-plate-item-margin);
+        }
+        :host([edit-mode])
+          .column[style="min-height: unset"]:not(:empty):before {
+          content: "Hidden Column (" attr(id) ")";
+          color: red;
+          margin: var(--grid-plate-item-margin);
+          padding: 15px 0;
+          min-height: 150px;
+        }
         :host ::slotted(*) {
           margin: var(--grid-plate-item-margin);
           padding: 0;
@@ -377,19 +394,19 @@ let GridPlate = Polymer({
           ],
           lg: [
             "16.6666667%",
-            "16.6666667",
-            "16.6666667",
             "16.6666667%",
-            "16.6666667",
-            "16.6666667"
+            "16.6666667%",
+            "16.6666667%",
+            "16.6666667%",
+            "16.6666667%"
           ],
           xl: [
             "16.6666667%",
-            "16.6666667",
-            "16.6666667",
             "16.6666667%",
-            "16.6666667",
-            "16.6666667"
+            "16.6666667%",
+            "16.6666667%",
+            "16.6666667%",
+            "16.6666667%"
           ]
         }
       }
@@ -427,7 +444,7 @@ let GridPlate = Polymer({
    */
   canMoveSlot: function(item, before) {
     let dir = before ? -1 : 1,
-      max = this.columns,
+      max = this.shadowRoot.querySelectorAll(".column").length,
       col = item.getAttribute("slot").split("-"),
       dest = parseInt(col[1]) + dir;
     return dest >= 1 && dest <= max;
@@ -443,7 +460,9 @@ let GridPlate = Polymer({
     let dir = before ? -1 : 1,
       col = item.getAttribute("slot").split("-"),
       dest = parseInt(col[1]) + dir;
-    item.setAttribute("slot", "col-" + dest);
+    if (this.canMoveSlot(item, dir)) {
+      item.setAttribute("slot", "col-" + dest);
+    }
   },
 
   /**
@@ -477,8 +496,8 @@ let GridPlate = Polymer({
         );
       } else {
         dom(this).insertBefore(
-          this.__activeItem.nextElementSibling,
-          this.__activeItem
+          this.__activeItem,
+          this.__activeItem.nextElementSibling.nextElementSibling
         );
       }
     }
@@ -490,10 +509,6 @@ let GridPlate = Polymer({
   moveActiveElement: function(e) {
     var normalizedEvent = dom(e);
     var local = normalizedEvent.localTarget;
-    let slot = this.__activeItem.getAttribute("slot"),
-      col = slot.split("-"),
-      pos = parseInt(col[1]);
-    let max = this.columns;
     // see if this was an up down left or right movement
     switch (local.id) {
       case "up":
@@ -554,7 +569,31 @@ let GridPlate = Polymer({
    * @returns {object} an object with a layout's column sizes at the current responsive width
    */
   _getColumnWidths(responsiveSize = "sm", layout = "1-1", layouts) {
-    return layouts[layout][responsiveSize];
+    let newl = layouts[layout],
+      //how old layout names map to the new ones
+      oldLayouts = {
+        "12": "1",
+        "8/4": "2-1",
+        "6/6": "1-1",
+        "4/8": "1-2",
+        "4/4/4": "1-1-1",
+        "3/3/3/3": "1-1-1-1"
+      },
+      oldl = oldLayouts[layout];
+
+    if (newl !== undefined && newl[responsiveSize] !== undefined) {
+      //return the layout
+      return layouts[layout][responsiveSize];
+    } else if (
+      layouts[oldl] !== undefined &&
+      layouts[oldl][responsiveSize] !== undefined
+    ) {
+      //return new layout that maps to old one
+      return layouts[oldl][responsiveSize];
+    } else {
+      //return 2-column layout
+      return layouts["1-1"][responsiveSize];
+    }
   },
 
   /**
@@ -567,7 +606,7 @@ let GridPlate = Polymer({
   _getColumnWidth(column, columnWidths) {
     return columnWidths !== undefined && columnWidths[column] !== undefined
       ? "width:" + columnWidths[column]
-      : "display:none";
+      : "min-height: unset";
   },
   /**
    * gets a given column's current width based on layout and current responsive width
@@ -625,7 +664,6 @@ let GridPlate = Polymer({
       this.$.right.classList.add("active");
 
       // ensure we disable invalid options contextually
-      let max = this.columns;
       // test for an element above us
       this.$.up.disabled = !this.canMoveOrder(item, true);
       // test for an element below us
@@ -834,48 +872,6 @@ let GridPlate = Polymer({
       }
     }
   },
-
-  /**
-   * See layout has changed, update all the possible data values
-   */
-  _layoutChanged: function(layout) {
-    let items = layout.split("/");
-    this.__colCount = items.length;
-    switch (items.length) {
-      case 1:
-        this.hideCol1 = false;
-        this.hideCol2 = true;
-        this.hideCol3 = true;
-        this.hideCol4 = true;
-        break;
-      case 2:
-        this.hideCol1 = false;
-        this.hideCol2 = false;
-        this.hideCol3 = true;
-        this.hideCol4 = true;
-        break;
-      case 3:
-        this.hideCol1 = false;
-        this.hideCol2 = false;
-        this.hideCol3 = false;
-        this.hideCol4 = true;
-        break;
-      case 4:
-        this.hideCol1 = false;
-        this.hideCol2 = false;
-        this.hideCol3 = false;
-        this.hideCol4 = false;
-        break;
-    }
-    for (var i in items) {
-      let col = Number(i) + 1;
-      this["col" + col + "_xl"] = items[i];
-      this["col" + col + "_lg"] = items[i];
-      this["col" + col + "_md"] = items[i];
-      this["col" + col + "_sm"] = items[i];
-      this["col" + col + "_xs"] = items[i];
-    }
-  },
   /**
    * Attached to the DOM, now fire.
    */
@@ -902,10 +898,15 @@ let GridPlate = Polymer({
       })
     );
     // Establish hax property binding
-    let options = {};
-    for (var key in this.layouts) {
-      options[key] = this.layouts[key].columnLayout;
-    }
+    let options = {},
+      layouts = Object.keys(root.layouts),
+      getOptions = function() {
+        //loop through all the supplied layouts to get the HAX layout options & descriptions
+        for (let i = 0; i < layouts.length; i++) {
+          options[layouts[i]] = root.layouts[layouts[i]].columnLayout;
+        }
+      };
+    getOptions();
     let props = {
       canScale: true,
       canPosition: true,
@@ -928,7 +929,7 @@ let GridPlate = Polymer({
         unsetAttributes: ["__active-item", "edit-mode"]
       }
     };
-    this.setHaxProperties(props);
+    root.setHaxProperties(props);
   },
 
   /**

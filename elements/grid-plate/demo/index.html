@@ -13,13 +13,31 @@
       import '../grid-plate.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <script>
+      window.onload = function(){
+        let sel = document.getElementById('select'), 
+        grid = document.getElementById('grid'),
+        layouts = Object.keys(grid.layouts);
+        for (i = 0; i < layouts.length; i++) {
+          let option = document.createElement('OPTION');
+          option.setAttribute('value',layouts[i]);
+          option.innerHTML = grid.layouts[layouts[i]].columnLayout;
+          if (layouts[i] === grid.layout) option.setAttribute('selected',"selected");
+          sel.appendChild(option);
+        }
+        sel.onchange = function(){
+          grid.layout = sel.value;
+        };
+      };
+    </script>
   </head>
   <body>
     <div class="vertical-section-container">
       <h3>Basic grid-plate demo</h3>
       <demo-snippet>
+        <p><label>Grid-Plate Layout: <select id="select" on-change="setLayout"></select></label></p>
         <template>
-          <grid-plate layout="1-1-1-1" edit-mode>
+          <grid-plate id="grid" layout="1-1-1-1" edit-mode>
             <video-player slot="col-1" resource="#d158b908-dc44-6db2-8537" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org "
               responsive="" source="https://www.youtube.com/watch?v=pKLPQ4ufo64" src="https://www.youtube-nocookie.com/embed/pKLPQ4ufo64?showinfo=0&amp;controls=1&amp;rel=0"
               iframed="" width="560" height="315" caption="What is ELMS:LN? Why is it fundamentally different from any other educational technology that's ever existed? What is sustainable innovation? Why is this so ..."
@@ -51,6 +69,9 @@
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
               Suspendisse lacinia ut urna ut cursus. 
               Nunc ut maximus tellus, tincidunt ullamcorper libero. 
+            </p>
+            <p slot="col-5">
+              This content is not in the layout.
             </p>
           </grid-plate>
         </template>
