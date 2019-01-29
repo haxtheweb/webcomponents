@@ -288,7 +288,7 @@ class LrndesignTimeline extends SimpleColors {
       settings: {
         quick: [
           {
-            property: "accent-color",
+            property: "accentColor",
             title: "Accent Color",
             description: "An optional accent color.",
             inputMethod: "colorpicker",
@@ -308,6 +308,20 @@ class LrndesignTimeline extends SimpleColors {
             title: "Timeline Title",
             description: "A title for the timeline.",
             inputMethod: "textfield"
+          },
+          {
+            property: "accentColor",
+            title: "Accent Color",
+            description: "An optional accent color.",
+            inputMethod: "colorpicker",
+            icon: "editor:format-color-fill"
+          },
+          {
+            property: "dark",
+            title: "Dark Theme",
+            description: "Enable Dark Theme",
+            inputMethod: "boolean",
+            icon: "icons:invert-colors"
           },
           {
             slot: "",

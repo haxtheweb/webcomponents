@@ -226,7 +226,7 @@ let PersonTestimonial = Polymer({
             icon: "icons:work"
           },
           {
-            property: "accent-color",
+            property: "accentColor",
             title: "Accent color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",
@@ -236,7 +236,7 @@ let PersonTestimonial = Polymer({
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
-            inputMethod: "toggle",
+            inputMethod: "boolean",
             icon: "invert-colors"
           }
         ],
@@ -249,7 +249,7 @@ let PersonTestimonial = Polymer({
             icon: "editor:insert-photo"
           },
           {
-            property: "accent-color",
+            property: "accentColor",
             title: "Accent color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",
@@ -259,7 +259,7 @@ let PersonTestimonial = Polymer({
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
-            inputMethod: "toggle",
+            inputMethod: "boolean",
             icon: "invert-colors"
           },
           {

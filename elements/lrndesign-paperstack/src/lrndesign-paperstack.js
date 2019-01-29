@@ -185,8 +185,8 @@ let LrndesignPaperstack = Polymer({
             icon: "editor:title"
           },
           {
-            property: "accent-color",
-            title: "Accent color",
+            property: "accentColor",
+            title: "Accent Color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",
             icon: "editor:format-color-fill"
@@ -195,7 +195,7 @@ let LrndesignPaperstack = Polymer({
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
-            inputMethod: "toggle",
+            inputMethod: "boolean",
             icon: "invert-colors"
           }
         ],
@@ -207,8 +207,8 @@ let LrndesignPaperstack = Polymer({
             inputMethod: "boolean"
           },
           {
-            property: "accent-color",
-            title: "Accent color",
+            property: "accentColor",
+            title: "Accent Color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",
             icon: "editor:format-color-fill"
@@ -217,7 +217,7 @@ let LrndesignPaperstack = Polymer({
             property: "dark",
             title: "Dark",
             description: "Use dark theme",
-            inputMethod: "toggle",
+            inputMethod: "boolean",
             icon: "invert-colors"
           },
           {
