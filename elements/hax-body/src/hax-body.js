@@ -681,16 +681,20 @@ let HaxBody = Polymer({
             newNode.removeAttribute(attributeName);
           } else if (
             properties[property] != null &&
-            properties[property].constructor === Array &&
-            !newNode.properties[property].readOnly
+            properties[property].constructor === Array
           ) {
-            newNode.set(attributeName, properties[property]);
+            if (newNode.properties && newNode.properties[property].readOnly) {
+            } else {
+              newNode.set(attributeName, properties[property]);
+            }
           } else if (
             properties[property] != null &&
-            properties[property].constructor === Object &&
-            !newNode.properties[property].readOnly
+            properties[property].constructor === Object
           ) {
-            newNode.set(attributeName, properties[property]);
+            if (newNode.properties && newNode.properties[property].readOnly) {
+            } else {
+              newNode.set(attributeName, properties[property]);
+            }
           } else {
             newNode.setAttribute(attributeName, properties[property]);
           }

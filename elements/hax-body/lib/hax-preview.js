@@ -244,6 +244,7 @@ Polymer({
     previewNode: {
       type: Object,
       value: {},
+      notify: true,
       observer: "_previewNodeChanged"
     },
     /**
@@ -621,10 +622,7 @@ Polymer({
    * Element changed, update the preview area.
    */
   _elementChanged: function(newValue, oldValue) {
-    if (
-      typeof newValue !== typeof undefined &&
-      Object.keys(newValue).length > 0
-    ) {
+    if (typeof newValue !== typeof undefined) {
       // wipe the preview area and assocaited node
       let preview = dom(this);
       window.HaxStore.wipeSlot(preview, "*");
@@ -640,9 +638,7 @@ Polymer({
         // send this into the root, which should filter it back down into the slot
         preview.appendChild(newNode);
         // need to let append propagate, it probably takes like no time
-        setTimeout(() => {
-          this.set("previewNode", newNode);
-        }, 325);
+        this.set("previewNode", newNode);
       }
     } else {
       this.modeTab = "advanced";

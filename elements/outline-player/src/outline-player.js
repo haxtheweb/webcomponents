@@ -9,6 +9,7 @@ import "@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";
 import "@polymer/app-layout/app-header-layout/app-header-layout.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";
+import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
 import "@lrnwebcomponents/map-menu/map-menu.js";
 import "./lib/outline-player-arrow.js";
 
@@ -21,7 +22,7 @@ A LRN element
 */
 let OutlinePlayer = Polymer({
   _template: html`
-    <style include="simple-colors">
+    <style include="simple-colors hax-shared-styles">
       :host {
         display: block;
         font-family: libre baskerville;
@@ -177,9 +178,9 @@ let OutlinePlayer = Polymer({
         display: none !important;
       }
       #contentcontainer {
-        max-width: 800px;
+        max-width: 840px;
         margin: 0 auto;
-        padding: 32px 16px 32px 16px;
+        padding: 16px;
         flex: 1 1 auto;
         order: 1;
         display: flex;
@@ -355,9 +356,23 @@ let OutlinePlayer = Polymer({
     _routerManifest: {
       type: Object,
       value: {}
+    },
+    editMode: {
+      type: Boolean,
+      reflectToAttribute: true,
+      observer: "_editModeChanged"
     }
   },
-
+  _editModeChanged: function(newValue) {
+    if (typeof newValue !== typeof undefined) {
+      async.microTask.run(() => {
+        // trick browser into thinking we just reized
+        window.dispatchEvent(new Event("resize"));
+        // forcibly update styles via css variables
+        updateStyles();
+      });
+    }
+  },
   ready: function() {
     this.setupHAXTheme(true, this.$.contentcontainer);
   },
