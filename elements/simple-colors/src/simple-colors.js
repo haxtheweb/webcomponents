@@ -571,28 +571,28 @@ const addCssVariables = function() {
     str = [];
   str.push(
     addStyle(
-      ":host, :host * ::slotted(*)",
+      ":host",
       addColorLevels("default", "accent", greys, false) +
         addThemeVariables("default", false)
     )
   );
   str.push(
     addStyle(
-      ":host, :host * ::slotted(*)",
+      ":host",
       addColorLevels("light", "accent", greys, false) +
         addThemeVariables("light", false)
     )
   );
   str.push(
     addStyle(
-      ":host, :host * ::slotted(*)",
+      ":host",
       addColorLevels("dark", "accent", greys, true) +
         addThemeVariables("dark", true)
     )
   );
   str.push(
     addStyle(
-      ":host([dark]), :host([dark]) * ::slotted(*)",
+      ":host([dark])",
       addColorLevels("default", "accent", greys, true) +
         addThemeVariables("default", true)
     )
@@ -607,11 +607,7 @@ const addAccentVariables = function() {
   for (let color in colors) {
     str.push(
       addStyle(
-        ':host([accent-color="' +
-          color +
-          '"]), :host([accent-color="' +
-          color +
-          '"]) ::slotted(*)',
+        ':host([accent-color="' + color + '"])',
         [
           addColorLevels("default", "accent", colors[color], false),
           addColorLevels("light", "accent", colors[color], false),
@@ -622,11 +618,7 @@ const addAccentVariables = function() {
 
     str.push(
       addStyle(
-        ':host([dark][accent-color="' +
-          color +
-          '"]), :host([dark][accent-color="' +
-          color +
-          '"]) ::slotted(*)',
+        ':host([dark][accent-color="' + color + '"])',
         [addColorLevels("default", "accent", colors[color], true)].join("")
       )
     );
@@ -663,27 +655,9 @@ const addClasses = function() {
  */
 const addColorClasses = function(cssvar, hex) {
   return [
-    "." +
-      cssvar +
-      ", ::slotted(." +
-      cssvar +
-      ") { background-color: var(--" +
-      cssvar +
-      "); }\n",
-    "." +
-      cssvar +
-      "-text, ::slotted(." +
-      cssvar +
-      "-text) { color: var(--" +
-      cssvar +
-      "); }\n",
-    "." +
-      cssvar +
-      "-border, ::slotted(." +
-      cssvar +
-      "-border) { border: 1px solid var(--" +
-      cssvar +
-      "); }\n"
+    "." + cssvar + " { background-color: var(--" + cssvar + "); }\n",
+    "." + cssvar + "-text { color: var(--" + cssvar + "); }\n",
+    "." + cssvar + "-border { border: 1px solid var(--" + cssvar + "); }\n"
   ].join("");
 };
 const addStyle = function(selector, style) {

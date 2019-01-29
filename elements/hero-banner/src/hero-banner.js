@@ -21,7 +21,7 @@ That thing no one wants to make over and over again yet always does...
 */
 let HeroBanner = Polymer({
   _template: html`
-    <style include="simple-colors">
+    <style is="custom-style" include="simple-colors">
       :host {
         display: block;
         width: 100%;
