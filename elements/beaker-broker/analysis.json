@@ -606,49 +606,46 @@
         },
         {
           "name": "archive",
-          "type": "Object | null | undefined",
+          "type": "?",
           "description": "Archive",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 46,
+              "line": 45,
               "column": 2
             },
             "end": {
-              "line": 49,
+              "line": 48,
               "column": 3
             }
           },
           "metadata": {
             "polymer": {
-              "notify": true,
-              "attributeType": "Object"
+              "notify": true
             }
           }
         },
         {
           "name": "datUrl",
-          "type": "string | null | undefined",
+          "type": "?",
           "description": "datUrl",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 53,
+              "line": 52,
               "column": 2
             },
             "end": {
-              "line": 58,
+              "line": 57,
               "column": 3
             }
           },
           "metadata": {
             "polymer": {
               "notify": true,
-              "observer": "\"_datUrlChanged\"",
-              "attributeType": "String"
+              "observer": "\"_datUrlChanged\""
             }
-          },
-          "defaultValue": "\"window.location.host\""
+          }
         }
       ],
       "methods": [
@@ -2739,11 +2736,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 73,
+              "line": 72,
               "column": 2
             },
             "end": {
-              "line": 78,
+              "line": 77,
               "column": 3
             }
           },
@@ -2872,11 +2869,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 82,
+              "line": 81,
               "column": 2
             },
             "end": {
-              "line": 87,
+              "line": 86,
               "column": 3
             }
           },
@@ -2896,11 +2893,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 93,
+              "line": 92,
               "column": 2
             },
             "end": {
-              "line": 96,
+              "line": 95,
               "column": 3
             }
           },
@@ -2920,11 +2917,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 105,
+              "line": 104,
               "column": 2
             },
             "end": {
-              "line": 133,
+              "line": 132,
               "column": 3
             }
           },
@@ -3883,11 +3880,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 19,
+          "line": 18,
           "column": 0
         },
         "end": {
-          "line": 139,
+          "line": 138,
           "column": 1
         }
       },
@@ -3900,32 +3897,30 @@
           "description": "Archive",
           "sourceRange": {
             "start": {
-              "line": 46,
+              "line": 45,
               "column": 2
             },
             "end": {
-              "line": 49,
+              "line": 48,
               "column": 3
             }
           },
-          "metadata": {},
-          "type": "Object | null | undefined"
+          "metadata": {}
         },
         {
           "name": "dat-url",
           "description": "datUrl",
           "sourceRange": {
             "start": {
-              "line": 53,
+              "line": 52,
               "column": 2
             },
             "end": {
-              "line": 58,
+              "line": 57,
               "column": 3
             }
           },
-          "metadata": {},
-          "type": "string | null | undefined"
+          "metadata": {}
         }
       ],
       "events": [
