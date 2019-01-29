@@ -1,11 +1,12 @@
 body,html {
   padding: 0;
   margin: 0;
-  font-family: sans-serif;
+  font-size: 16px;
+  font-family: 'Noto Serif', serif;
 }
 h1 {
-  font-size: 3em;
-  line-height: 1em;
+  font-size: 2.5em;
+  line-height: 2.5em;
 }
 h2 {
   font-size: 2em;
@@ -13,9 +14,16 @@ h2 {
 h3 {
   font-size: 1.75em;
 }
+h4 {
+  font-size: 1.5em;
+}
+h5,h6 {
+  font-size: 1.25em;
+}
 p {
-  line-height: 26px;
+  line-height: 40px;
   min-height: 26px;
+  font-size: 24px;
 }
 a, a:visited, a:active {
   color: #000;
@@ -23,12 +31,16 @@ a, a:visited, a:active {
 a:hover {
   color: #2196f3;
 }
+ol,
+ul
+ol li,
 ul li {
   padding-bottom: 1.5em;
-  line-height: 1.5;
-  color: #424242;
+  line-height: 40px;
+  font-size: 24px;
   max-width: 28em;
 }
+ol li:last-child,
 ul li:last-child {
   padding-bottom: 1em;
 }

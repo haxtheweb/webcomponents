@@ -1,0 +1,13 @@
+{
+  "source": {
+    "name": "source",
+    "type": "String",
+    "reflectToAttributes": true,
+    "observer": "_sourceChanged"
+  },
+  "caption": {
+    "name": "caption",
+    "type": "String",
+    "reflectToAttributes": true
+  }
+}

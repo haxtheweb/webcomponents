@@ -496,8 +496,8 @@ let GridPlate = Polymer({
         );
       } else {
         dom(this).insertBefore(
-          this.__activeItem,
-          this.__activeItem.nextElementSibling.nextElementSibling
+          this.__activeItem.nextElementSibling,
+          this.__activeItem
         );
       }
     }

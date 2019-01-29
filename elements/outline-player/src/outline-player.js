@@ -9,6 +9,7 @@ import "@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";
 import "@polymer/app-layout/app-header-layout/app-header-layout.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";
+import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
 import "@lrnwebcomponents/map-menu/map-menu.js";
 import "./lib/outline-player-arrow.js";
 
@@ -21,7 +22,7 @@ A LRN element
 */
 let OutlinePlayer = Polymer({
   _template: html`
-    <style include="simple-colors">
+    <style include="simple-colors hax-shared-styles">
       :host {
         display: block;
         font-family: libre baskerville;
@@ -141,7 +142,7 @@ let OutlinePlayer = Polymer({
 
       app-toolbar {
         border-bottom: none;
-        background-color: var(--outline-player-light);
+        background-color: #ffffff;
         box-shadow: 0 0 6px -3px var(--outline-player-dark);
       }
       app-drawer {
@@ -177,8 +178,9 @@ let OutlinePlayer = Polymer({
         display: none !important;
       }
       #contentcontainer {
-        padding: 16px;
-        max-width: 1040px;
+        max-width: 840px;
+        margin: 0 auto;
+        padding: 0 16px 16px 16px;
         flex: 1 1 auto;
         order: 1;
         display: flex;
@@ -200,17 +202,17 @@ let OutlinePlayer = Polymer({
       }
       map-menu::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
-        border-radius: none;
-        background-color: #f5f5f5;
+        border-radius: 2px;
+        background-color: #fafafa;
       }
       map-menu::-webkit-scrollbar {
         width: 4px;
-        background-color: #f5f5f5;
+        background-color: #fafafa;
       }
       map-menu::-webkit-scrollbar-thumb {
-        border-radius: none;
+        border-radius: 2px;
         -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
-        background-color: #555;
+        background-color: #222222;
       }
     </style>
     <!-- Control the sites query paremeters -->
@@ -354,9 +356,23 @@ let OutlinePlayer = Polymer({
     _routerManifest: {
       type: Object,
       value: {}
+    },
+    editMode: {
+      type: Boolean,
+      reflectToAttribute: true,
+      observer: "_editModeChanged"
     }
   },
-
+  _editModeChanged: function(newValue) {
+    if (typeof newValue !== typeof undefined) {
+      async.microTask.run(() => {
+        // trick browser into thinking we just reized
+        window.dispatchEvent(new Event("resize"));
+        // forcibly update styles via css variables
+        updateStyles();
+      });
+    }
+  },
   ready: function() {
     this.setupHAXTheme(true, this.$.contentcontainer);
   },

@@ -1821,16 +1821,20 @@ window.HaxStore.nodeToHaxElement = (node, eventName = "insert-element") => {
   if (typeof node.attributes.id !== typeof undefined) {
     props.id = node.getAttribute("id");
   }
+  let tmpProps = node.properties;
+  if (typeof tmpProps === typeof undefined) {
+    tmpProps = node.__data;
+  }
   // complex elements need complex support
-  if (typeof node.properties !== typeof undefined) {
+  if (typeof tmpProps !== typeof undefined) {
     // run through attributes, though non-reflected props won't be here
-    // run through properties, we always defer to property values
-    for (var property in node.properties) {
+    // run through props, we always defer to property values
+    for (var property in tmpProps) {
       // make sure we only set things that have a value
       if (
         property != "class" &&
         property != "style" &&
-        node.properties.hasOwnProperty(property) &&
+        tmpProps.hasOwnProperty(property) &&
         typeof node[property] !== undefined &&
         node[property] != null &&
         node[property] != ""
@@ -1854,7 +1858,7 @@ window.HaxStore.nodeToHaxElement = (node, eventName = "insert-element") => {
         typeof node.attributes[attribute].value !== undefined &&
         node.attributes[attribute].value != null &&
         node.attributes[attribute].value != "" &&
-        !node.properties.hasOwnProperty(
+        !tmpProps.hasOwnProperty(
           window.HaxStore.dashToCamel(node.attributes[attribute].name)
         )
       ) {

@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>FullWidthImage: full-width-image Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../full-width-image.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div style="max-width: 800px;">
+      <full-width-image caption="This is the text of a caption" source="https://grav-theme-clean-blog.flatfiledeveloper.com/images/6/1/e/0/c/61e0c1c8f608f0a133dac1a3e817f380ed7410f3-post-bg.jpeg"></full-width-image>
+      <p>Stuff and things</p>
+      <p>Stuff and things</p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+{
+  "canScale": false,
+  "canPosition": false,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Full width-image",
+    "description": "full width image that flows beyond boundaries",
+    "icon": "image:image",
+    "color": "green",
+    "groups": ["Width"],
+    "handles": [
+      {
+        "type": "image",
+        "source": "source",
+        "caption": "caption",
+        "title": "caption"
+      }
+    ],
+    "meta": {
+      "author": "btopro",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "quick": [
+      {
+        "property": "source",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": true,
+        "icon": "image:image",
+        "validationType": "url"
+      }
+    ],
+    "configure": [
+      {
+        "property": "source",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": true,
+        "icon": "icons:link",
+        "validationType": "url"
+      },
+      {
+        "property": "caption",
+        "description": "",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": []
+  }
+}

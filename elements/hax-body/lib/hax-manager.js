@@ -650,6 +650,7 @@ Polymer({
   insertHaxElement: function(e) {
     // bubble up the inject event / element to the body
     let previewNode = this.$.preview.previewNode;
+    previewNode.removeAttribute("hax-preview-mode");
     let element = window.HaxStore.nodeToHaxElement(previewNode);
     element.replace = this.editExistingNode;
     if (typeof this.activeHaxElement.__type !== typeof undefined) {
