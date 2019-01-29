@@ -94,9 +94,9 @@
           "defaultValue": "\"Find out more\""
         },
         {
-          "name": "buttonColor",
+          "name": "buttonLink",
           "type": "string | null | undefined",
-          "description": "Color of the button",
+          "description": "url for the button",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -104,52 +104,7 @@
               "column": 4
             },
             "end": {
-              "line": 179,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "observer": "\"_buttonColorChanged\"",
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"red darken-4\""
-        },
-        {
-          "name": "buttonColorClass",
-          "type": "string | null | undefined",
-          "description": "Button color class.",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 183,
-              "column": 4
-            },
-            "end": {
-              "line": 187,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": true,
-              "attributeType": "String"
-            }
-          }
-        },
-        {
-          "name": "buttonLink",
-          "type": "string | null | undefined",
-          "description": "url for the button",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 191,
-              "column": 4
-            },
-            "end": {
-              "line": 193,
+              "line": 177,
               "column": 5
             }
           },
@@ -158,51 +113,6 @@
               "attributeType": "String"
             }
           }
-        },
-        {
-          "name": "textColor",
-          "type": "string | null | undefined",
-          "description": "Text color.",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 197,
-              "column": 4
-            },
-            "end": {
-              "line": 201,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "\"#FFFFFF\""
-        },
-        {
-          "name": "textColorClass",
-          "type": "string | null | undefined",
-          "description": "Text color class.",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 205,
-              "column": 4
-            },
-            "end": {
-              "line": 210,
-              "column": 5
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "readOnly": true,
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "null"
         }
       ],
       "methods": [
@@ -263,43 +173,16 @@
           "inheritedFrom": "A11yBehaviors.A11y"
         },
         {
-          "name": "_buttonColorChanged",
-          "description": "Notice secondary color changed",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 216,
-              "column": 2
-            },
-            "end": {
-              "line": 221,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "newValue"
-            },
-            {
-              "name": "oldValue"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
           "name": "attached",
           "description": "Attached to the DOM, now fire.",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 226,
+              "line": 183,
               "column": 2
             },
             "end": {
-              "line": 347,
+              "line": 318,
               "column": 3
             }
           },
@@ -319,7 +202,7 @@
           "column": 25
         },
         "end": {
-          "line": 348,
+          "line": 319,
           "column": 1
         }
       },
@@ -392,79 +275,15 @@
           "type": "string | null | undefined"
         },
         {
-          "name": "button-color",
-          "description": "Color of the button",
+          "name": "button-link",
+          "description": "url for the button",
           "sourceRange": {
             "start": {
               "line": 175,
               "column": 4
             },
             "end": {
-              "line": 179,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "button-color-class",
-          "description": "Button color class.",
-          "sourceRange": {
-            "start": {
-              "line": 183,
-              "column": 4
-            },
-            "end": {
-              "line": 187,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "button-link",
-          "description": "url for the button",
-          "sourceRange": {
-            "start": {
-              "line": 191,
-              "column": 4
-            },
-            "end": {
-              "line": 193,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "text-color",
-          "description": "Text color.",
-          "sourceRange": {
-            "start": {
-              "line": 197,
-              "column": 4
-            },
-            "end": {
-              "line": 201,
-              "column": 5
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "text-color-class",
-          "description": "Text color class.",
-          "sourceRange": {
-            "start": {
-              "line": 205,
-              "column": 4
-            },
-            "end": {
-              "line": 210,
+              "line": 177,
               "column": 5
             }
           },

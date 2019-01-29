@@ -945,7 +945,7 @@
         {
           "tag": "self-check",
           "properties": {
-            "style": "width: 50%;",
+            "style": "width: 50%; float: right;",
             "title": "Self-Check",
             "image": "https://farm1.staticflickr.com/642/21641107852_3602f9c1a8_b.jpg",
             "alt": "A few stickers associated with ELMS:LN are shown presented on the back of a laptop.",
@@ -1275,7 +1275,7 @@
         "author": "ELMS:LN",
         "icon": "hax:6/6",
         "status": "available",
-        "layout": "6/6"
+        "layout": "1-1"
       },
       "blox": [
         {
@@ -1308,7 +1308,7 @@
         "author": "ELMS:LN",
         "icon": "hax:8/4",
         "status": "available",
-        "layout": "8/4"
+        "layout": "2-1"
       },
       "blox": [
         {
@@ -1335,7 +1335,7 @@
         "author": "ELMS:LN",
         "icon": "hax:4/4/4",
         "status": "available",
-        "layout": "4/4/4"
+        "layout": "1-1-1"
       },
       "blox": [
         {
@@ -1370,7 +1370,7 @@
         "author": "ELMS:LN",
         "icon": "hax:4/8",
         "status": "available",
-        "layout": "4/8"
+        "layout": "1-2"
       },
       "blox": [
         {
@@ -1413,7 +1413,7 @@
         "author": "ELMS:LN",
         "icon": "hax:3/3/3/3",
         "status": "available",
-        "layout": "3/3/3/3"
+        "layout": "1-1-1-1"
       },
       "blox": [
         {
@@ -1469,6 +1469,7 @@
     "media-image",
     "lrndesign-blockquote",
     "lrndesign-timeline",
+    "lrndesign-gallery",
     "meme-maker",
     "a11y-gif-player",
     "paper-audio-player",
@@ -1480,9 +1481,6 @@
     "code-editor",
     "place-holder",
     "stop-note",
-    "pdf-element",
-    "aframe-player",
-    "lrn-calendar",
     "q-r",
     "wave-player"
   ]

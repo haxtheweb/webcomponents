@@ -14,7 +14,6 @@ let OerSchema = Polymer({
         display: inline-block;
       }
     </style>
-    <link property="oer:forComponent" content\$="[[relatedResource]]" />
     <span property\$="oer:[[oerProperty]]"> <slot></slot> [[text]] </span>
   `,
 
@@ -51,9 +50,26 @@ let OerSchema = Polymer({
      */
     relatedResource: {
       type: String
+    },
+    /**
+     * License link object for semantic meaning
+     */
+    _OERLink: {
+      type: Object,
+      computed: "_generateforComponentLink(relatedResource)"
     }
   },
-
+  _generateforComponentLink(source) {
+    // remove existing if this is moving around
+    if (this._OERLink) {
+      document.head.removeChild(this._OERLink);
+    }
+    let link = document.createElement("link");
+    link.setAttribute("property", "oer:forComponent");
+    link.setAttribute("content", this.relatedResource);
+    document.head.appendChild(link);
+    return link;
+  },
   /**
    * Attached to the DOM, now fire.
    */

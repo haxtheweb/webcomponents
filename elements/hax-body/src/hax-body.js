@@ -1673,17 +1673,19 @@ let HaxBody = Polymer({
     }
     // make it account for the offset if it's floated over to one side
     // or inside of something that's over that way
-    let style = target.currentStyle || window.getComputedStyle(target);
-    if (parseInt(style.marginLeft) != 0) {
-      xoffset = xoffset + parseInt(style.marginLeft);
-    } else {
-      xoffset = xoffset + parseInt(target.offsetLeft) - this.offsetLeft;
-    }
-    if (xoffset != null) {
-      menu.style["margin-left"] = xoffset + "px";
-    }
-    if (yoffset != null) {
-      menu.style["margin-top"] = yoffset + "px";
+    if (target !== null) {
+      let style = target.currentStyle || window.getComputedStyle(target);
+      if (parseInt(style.marginLeft) != 0) {
+        xoffset = xoffset + parseInt(style.marginLeft);
+      } else {
+        xoffset = xoffset + parseInt(target.offsetLeft) - this.offsetLeft;
+      }
+      if (xoffset != null) {
+        menu.style["margin-left"] = xoffset + "px";
+      }
+      if (yoffset != null) {
+        menu.style["margin-top"] = yoffset + "px";
+      }
     }
     menu.classList.add("hax-context-visible");
     async.microTask.run(this._keepContextVisible());

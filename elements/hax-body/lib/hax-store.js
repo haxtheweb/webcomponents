@@ -23,8 +23,8 @@ window.HaxStore.instance = null;
 window.HaxStore.requestAvailability = function() {
   if (!window.HaxStore.instance) {
     window.HaxStore.instance = document.createElement("hax-store");
+    document.body.appendChild(window.HaxStore.instance);
   }
-  document.body.appendChild(window.HaxStore.instance);
   return window.HaxStore.instance;
 };
 Polymer({
