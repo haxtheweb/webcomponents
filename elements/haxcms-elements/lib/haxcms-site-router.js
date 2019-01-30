@@ -1,6 +1,22 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import { Router } from "@vaadin/router";
+import { observable, set, decorate } from "https://unpkg.com/mobx?module";
+
+/**
+ * Define store for this component
+ */
+export const store = {
+  manifest: null,
+  location: null
+};
+/**
+ * Add Mobx decorator functionality
+ */
+decorate(store, {
+  manifest: observable,
+  location: observable.ref
+});
 
 /**
  * `haxcms-site-router`
@@ -218,6 +234,8 @@ Polymer({
   _routerLocationChanged: function(e) {
     //store local state
     this._location = e.detail.location;
+    // update the store
+    store.location = this._location;
     // dispatch a haxcms-site-router prefixed event
     window.dispatchEvent(
       new CustomEvent("haxcms-site-router-location-changed", {

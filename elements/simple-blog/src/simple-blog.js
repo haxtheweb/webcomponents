@@ -4,10 +4,13 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-router.js";
+import { observable, set, decorate } from "https://unpkg.com/mobx?module";
 import "./lib/simple-blog-listing.js";
 import "./lib/simple-blog-header.js";
 import "./lib/simple-blog-footer.js";
 import "./lib/simple-blog-post.js";
+import { ArgumentOutOfRangeError } from "rxjs";
 /**
 `simple-blog`
 A simple blog and associated elements
@@ -94,21 +97,19 @@ let SimpleBlog = Polymer({
         ></simple-blog-listing>
       </section>
       <section>
-        <a href="/">
-          <paper-icon-button
-            id="backbutton"
-            icon="icons:arrow-back"
-            on-tap="_goBack"
-          ></paper-icon-button>
-          <paper-tooltip
-            for="backbutton"
-            position="right"
-            offset="14"
-            animation-delay="100"
-          >
-            Back to main site
-          </paper-tooltip>
-        </a>
+        <paper-icon-button
+          id="backbutton"
+          icon="icons:arrow-back"
+          on-tap="_goBack"
+        ></paper-icon-button>
+        <paper-tooltip
+          for="backbutton"
+          position="right"
+          offset="14"
+          animation-delay="100"
+        >
+          Back to main site
+        </paper-tooltip>
         <simple-blog-post
           id="post"
           active-item="[[activeItem]]"
@@ -169,6 +170,10 @@ let SimpleBlog = Polymer({
       "json-outline-schema-active-item-changed",
       this._activeItemEvent.bind(this)
     );
+    this.addEventListener(
+      "active-item-reset",
+      this._activeItemResetHandler.bind(this)
+    );
   },
 
   /**
@@ -204,10 +209,16 @@ let SimpleBlog = Polymer({
    */
   _haxcmsSiteRouterLocationChangedHandler: function(e) {
     const location = e.detail;
+    console.log("location:", location);
     const name = location.route.name;
     if (name === "home" || name === "404") {
       this.selectedPage = 0;
     }
+  },
+
+  _activeItemResetHandler: function(e) {
+    window.history.pushState(null, null, store.location.baseUrl);
+    window.dispatchEvent(new PopStateEvent("popstate"));
   },
 
   /**
@@ -226,7 +237,10 @@ let SimpleBlog = Polymer({
   /**
    * Reset the active item to reset state
    */
-  _goBack: function(e) {},
+  _goBack: function(e) {
+    window.history.pushState(null, null, store.location.baseUrl);
+    window.dispatchEvent(new PopStateEvent("popstate"));
+  },
 
   /**
    * refreshed data call
