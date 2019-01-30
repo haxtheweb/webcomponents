@@ -1,7 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import { Router } from "@vaadin/router";
-import { observable, set, decorate } from "https://unpkg.com/mobx?module";
+import { observable, decorate } from "mobx";
 
 /**
  * Define store for this component
