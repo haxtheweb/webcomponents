@@ -1047,11 +1047,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 139,
+              "line": 138,
               "column": 4
             },
             "end": {
-              "line": 143,
+              "line": 142,
               "column": 5
             }
           },
@@ -1118,11 +1118,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 149,
+              "line": 148,
               "column": 2
             },
             "end": {
-              "line": 176,
+              "line": 170,
               "column": 3
             }
           },
@@ -1138,11 +1138,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 181,
+              "line": 175,
               "column": 2
             },
             "end": {
-              "line": 195,
+              "line": 189,
               "column": 3
             }
           },
@@ -1153,41 +1153,16 @@
           }
         },
         {
-          "name": "_haxcmsRouterManifestSubscribeHandler",
-          "description": "Update the manifest with the correct urls",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 201,
-              "column": 2
-            },
-            "end": {
-              "line": 203,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e",
-              "type": "event"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
           "name": "_haxcmsSiteRouterLocationChangedHandler",
           "description": "Listen for router location changes",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 209,
+              "line": 195,
               "column": 2
             },
             "end": {
-              "line": 216,
+              "line": 201,
               "column": 3
             }
           },
@@ -1208,11 +1183,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 218,
+              "line": 203,
               "column": 2
             },
             "end": {
-              "line": 221,
+              "line": 206,
               "column": 3
             }
           },
@@ -1232,11 +1207,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 226,
+              "line": 211,
               "column": 2
             },
             "end": {
-              "line": 234,
+              "line": 219,
               "column": 3
             }
           },
@@ -1256,11 +1231,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 239,
+              "line": 224,
               "column": 2
             },
             "end": {
-              "line": 242,
+              "line": 227,
               "column": 3
             }
           },
@@ -1280,11 +1255,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 247,
+              "line": 232,
               "column": 2
             },
             "end": {
-              "line": 249,
+              "line": 234,
               "column": 3
             }
           },
@@ -1304,11 +1279,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 24,
+          "line": 23,
           "column": 25
         },
         "end": {
-          "line": 250,
+          "line": 235,
           "column": 1
         }
       },
@@ -1357,11 +1332,11 @@
           "description": "The \"page\" to show (overview or blog post itself).",
           "sourceRange": {
             "start": {
-              "line": 139,
+              "line": 138,
               "column": 4
             },
             "end": {
-              "line": 143,
+              "line": 142,
               "column": 5
             }
           },
