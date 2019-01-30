@@ -11,6 +11,8 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";
 import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
 import "@lrnwebcomponents/map-menu/map-menu.js";
+import { store as routerStore } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-router.js";
+import { autorun, toJS } from "mobx";
 import "./lib/outline-player-arrow.js";
 
 /**
@@ -375,6 +377,9 @@ let OutlinePlayer = Polymer({
   },
   ready: function() {
     this.setupHAXTheme(true, this.$.contentcontainer);
+    autorun(() => {
+      this._routerManifest = toJS(routerStore.manifest);
+    });
   },
 
   attached: function() {
@@ -382,17 +387,6 @@ let OutlinePlayer = Polymer({
       "haxcms-site-router-active-item-changed",
       this._haxcmsSiteRouterActiveItemChangedHandler.bind(this)
     );
-    // Subscribe to the router manifest
-    window.dispatchEvent(
-      new CustomEvent("haxcms-router-manifest-subscribe", {
-        detail: {
-          callback: "_haxcmsRouterManifestSubscribeHandler",
-          scope: this,
-          setup: true
-        }
-      })
-    );
-    // Subscribe to the router manifest
     window.dispatchEvent(
       new CustomEvent("haxcms-site-router-location-subscribe", {
         detail: {
@@ -402,15 +396,6 @@ let OutlinePlayer = Polymer({
         }
       })
     );
-  },
-
-  /**
-   * React to changes to the router manifest
-   * @param {event} e
-   */
-  _haxcmsRouterManifestSubscribeHandler: function(e) {
-    this._routerManifest = {};
-    this._routerManifest = e.detail;
   },
 
   /**
