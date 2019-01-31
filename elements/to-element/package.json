@@ -2,7 +2,7 @@
   "name": "@lrnwebcomponents/to-element",
   "wcfactory": {
     "className": "ToElement",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "HTMLElement",
     "elementName": "to-element",
     "generator-wcfactory-version": "0.6.5",
     "useHAX": false,
@@ -17,7 +17,7 @@
     }
   },
   "version": "2.0.4",
-  "description": "convert an element and children into a custom element",
+  "description": "Replicate any DOM node passed in and turn it into a web component",
   "repository": {
     "type": "git",
     "url": "https://github.com/elmsln/lrnwebcomponents.git"
@@ -35,10 +35,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@polymer/polymer":"^3.0.5"
+    
   },
   "devDependencies": {
-    "web-animations-js":"2.3.1","@lrnwebcomponents/deduping-fix":"0.2.0","@polymer/iron-demo-helpers":"3.0.2","@polymer/iron-component-page":"github:PolymerElements/iron-component-page","@webcomponents/webcomponentsjs":"2.2.1","concurrently":"4.1.0","gulp-babel":"8.0.0","gulp-sourcemaps":"2.6.4","lodash":"4.17.11","polymer-cli":"1.9.4","polymer-build":"3.1.1","wct-browser-legacy":"1.0.2"
+    "@polymer/iron-demo-helpers":"3.0.2","@polymer/iron-component-page":"github:PolymerElements/iron-component-page","@webcomponents/webcomponentsjs":"2.2.1","concurrently":"4.1.0","gulp-babel":"8.0.0","gulp-sourcemaps":"2.6.4","lodash":"4.17.11","polymer-cli":"1.9.4","polymer-build":"3.1.1","wct-browser-legacy":"1.0.2"
   },
   "private": false,
   "publishConfig": {
