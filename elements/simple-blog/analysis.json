@@ -1122,7 +1122,7 @@
               "column": 2
             },
             "end": {
-              "line": 170,
+              "line": 161,
               "column": 3
             }
           },
@@ -1138,11 +1138,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 175,
+              "line": 166,
               "column": 2
             },
             "end": {
-              "line": 189,
+              "line": 172,
               "column": 3
             }
           },
@@ -1153,24 +1153,23 @@
           }
         },
         {
-          "name": "_haxcmsSiteRouterLocationChangedHandler",
+          "name": "_locationChanged",
           "description": "Listen for router location changes",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 195,
+              "line": 178,
               "column": 2
             },
             "end": {
-              "line": 201,
+              "line": 184,
               "column": 3
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "e",
-              "type": "event"
+              "name": "location"
             }
           ],
           "return": {
@@ -1183,11 +1182,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 203,
+              "line": 186,
               "column": 2
             },
             "end": {
-              "line": 206,
+              "line": 189,
               "column": 3
             }
           },
@@ -1207,11 +1206,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 211,
+              "line": 194,
               "column": 2
             },
             "end": {
-              "line": 219,
+              "line": 202,
               "column": 3
             }
           },
@@ -1231,11 +1230,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 224,
+              "line": 207,
               "column": 2
             },
             "end": {
-              "line": 227,
+              "line": 210,
               "column": 3
             }
           },
@@ -1255,11 +1254,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 232,
+              "line": 215,
               "column": 2
             },
             "end": {
-              "line": 234,
+              "line": 217,
               "column": 3
             }
           },
@@ -1283,7 +1282,7 @@
           "column": 25
         },
         "end": {
-          "line": 235,
+          "line": 218,
           "column": 1
         }
       },
