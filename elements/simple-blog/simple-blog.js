@@ -5,12 +5,10 @@ import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-router.js";
-import { observable, set, decorate } from "https://unpkg.com/mobx?module";
 import "./lib/simple-blog-listing.js";
 import "./lib/simple-blog-header.js";
 import "./lib/simple-blog-footer.js";
 import "./lib/simple-blog-post.js";
-import { ArgumentOutOfRangeError } from "rxjs";
 /**
 `simple-blog`
 A simple blog and associated elements
@@ -181,17 +179,21 @@ let SimpleBlog = Polymer({
    */
   detached: function() {
     this.setupHAXTheme(false);
-    window.addEventListener(
+    window.removeEventListener(
       "haxcms-site-router-location-changed",
       this._haxcmsSiteRouterLocationChangedHandler.bind(this)
     );
-    document.body.addEventListener(
+    document.body.removeEventListener(
       "haxcms-trigger-update",
       this._dataRefreshed.bind(this)
     );
-    document.body.addEventListener(
+    document.body.removeEventListener(
       "json-outline-schema-active-item-changed",
       this._activeItemEvent.bind(this)
+    );
+    this.removeEventListener(
+      "active-item-reset",
+      this._activeItemResetHandler.bind(this)
     );
   },
 

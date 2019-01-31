@@ -179,17 +179,21 @@ let SimpleBlog = Polymer({
    */
   detached: function() {
     this.setupHAXTheme(false);
-    window.addEventListener(
+    window.removeEventListener(
       "haxcms-site-router-location-changed",
       this._haxcmsSiteRouterLocationChangedHandler.bind(this)
     );
-    document.body.addEventListener(
+    document.body.removeEventListener(
       "haxcms-trigger-update",
       this._dataRefreshed.bind(this)
     );
-    document.body.addEventListener(
+    document.body.removeEventListener(
       "json-outline-schema-active-item-changed",
       this._activeItemEvent.bind(this)
+    );
+    this.removeEventListener(
+      "active-item-reset",
+      this._activeItemResetHandler.bind(this)
     );
   },
 
