@@ -205,10 +205,6 @@ class ToElement extends HTMLElement {
     for (var i in styles) {
       css += `      ${i}: ${styles[i]};\n`;
     }
-    console.log(before);
-    console.log(after);
-    console.log(hover);
-    console.log(focus);
     // The children are not a real array but a NodeList, we need to convert them
     // so we can map over them easily
     var children = Array.prototype.slice.call(element.children);

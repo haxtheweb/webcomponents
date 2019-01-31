@@ -244,20 +244,16 @@ class ToElement extends HTMLElement {
   recursiveExtract(element) {
     const id = this.generateUUID();
     const styles = this.getStylesWithoutDefaults(element);
-    const before = this.getStylesWithoutDefaults(element, ":before");
+    /*const before = this.getStylesWithoutDefaults(element, ":before");
     const after = this.getStylesWithoutDefaults(element, ":after");
     const hover = this.getStylesWithoutDefaults(element, ":hover");
-    const focus = this.getStylesWithoutDefaults(element, ":focus");
+    const focus = this.getStylesWithoutDefaults(element, ":focus");*/
     // Now that we get the style, we can swap the id
     element.setAttribute("id", id);
     let css = "";
     for (var i in styles) {
       css += `      ${i}: ${styles[i]};\n`;
     }
-    console.log(before);
-    console.log(after);
-    console.log(hover);
-    console.log(focus);
     // The children are not a real array but a NodeList, we need to convert them
     // so we can map over them easily
     var children = Array.prototype.slice.call(element.children);

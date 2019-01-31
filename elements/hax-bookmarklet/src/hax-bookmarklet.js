@@ -1,5 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import "@lrnwebcomponents/cms-hax/cms-hax.js";
+import "@lrnwebcomponents/h-a-x/h-a-x.js";
 /**
  * `hax-bookmarklet`
  * `Pure, Evil.`
@@ -14,13 +14,9 @@ let HaxBookmarklet = Polymer({
         font-size: 16px;
       }
     </style>
-    <cms-hax
-      open-default
-      app-store-connection="[[appStoreConnection]]"
-      body-offset-left
-    >
+    <h-a-x app-store$="[[appStoreConnection]]">
       <slot></slot>
-    </cms-hax>
+    </h-a-x>
   `,
 
   is: "hax-bookmarklet",
