@@ -152,21 +152,12 @@ let SimpleBlog = Polymer({
     autorun(() => {
       this.manifest = toJS(routerStore.manifest);
     });
-    window.addEventListener(
-      "haxcms-site-router-location-changed",
-      this._haxcmsSiteRouterLocationChangedHandler.bind(this)
-    );
+    autorun(() => {
+      this._locationChanged(routerStore.location);
+    });
     document.body.addEventListener(
       "haxcms-trigger-update",
       this._dataRefreshed.bind(this)
-    );
-    document.body.addEventListener(
-      "json-outline-schema-active-item-changed",
-      this._activeItemEvent.bind(this)
-    );
-    this.addEventListener(
-      "active-item-reset",
-      this._activeItemResetHandler.bind(this)
     );
   },
 
@@ -175,17 +166,9 @@ let SimpleBlog = Polymer({
    */
   detached: function() {
     this.setupHAXTheme(false);
-    window.addEventListener(
-      "haxcms-site-router-location-changed",
-      this._haxcmsSiteRouterLocationChangedHandler.bind(this)
-    );
     document.body.addEventListener(
       "haxcms-trigger-update",
       this._dataRefreshed.bind(this)
-    );
-    document.body.addEventListener(
-      "json-outline-schema-active-item-changed",
-      this._activeItemEvent.bind(this)
     );
   },
 
@@ -193,8 +176,8 @@ let SimpleBlog = Polymer({
    * Listen for router location changes
    * @param {event} e
    */
-  _haxcmsSiteRouterLocationChangedHandler: function(e) {
-    const location = e.detail;
+  _locationChanged: function(location) {
+    if (!location || typeof location.route === "undefined") return;
     const name = location.route.name;
     if (name === "home" || name === "404") {
       this.selectedPage = 0;
