@@ -8,14 +8,16 @@ import { observable, decorate, autorun, toJS } from "mobx";
  */
 export const store = {
   manifest: null,
-  location: null
+  location: null,
+  activeItem: null
 };
 /**
  * Add Mobx decorator functionality
  */
 decorate(store, {
   manifest: observable,
-  location: observable.ref
+  location: observable.ref,
+  activeItem: observable
 });
 
 /**
@@ -174,13 +176,13 @@ Polymer({
     store.location = this._location;
     // dispatch a haxcms-site-router prefixed event
 
-    // window.dispatchEvent(
-    //   new CustomEvent("haxcms-site-router-location-changed", {
-    //     detail: e.detail.location
-    //   })
-    // );
+    window.dispatchEvent(
+      new CustomEvent("haxcms-site-router-location-changed", {
+        detail: e.detail.location
+      })
+    );
 
-    const activeItem = e.detail.location.route.name;
+    const activeItem = store.location.route.name;
     let find = this.manifest.items.filter(item => {
       if (item.id !== activeItem) {
         return false;
@@ -196,6 +198,7 @@ Polymer({
             window.cmsSiteEditor.initialActiveItem = found;
           }
           this.fire("haxcms-active-item-changed", found);
+          store.activeItem = found;
         }, 150);
       });
     }

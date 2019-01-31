@@ -387,22 +387,17 @@ let OutlinePlayer = Polymer({
     autorun(() => {
       this._location = routerStore.location;
     });
+    autorun(() => {
+      if (
+        routerStore.activeItem &&
+        typeof routerStore.activeItem !== "undefined"
+      ) {
+        this.selected = routerStore.activeItem.id;
+      }
+    });
   },
 
-  attached: function() {
-    window.addEventListener(
-      "haxcms-site-router-active-item-changed",
-      this._haxcmsSiteRouterActiveItemChangedHandler.bind(this)
-    );
-  },
-
-  /**
-   * Listen for the active item to change
-   * @param {event} e
-   */
-  _haxcmsSiteRouterActiveItemChangedHandler: function(e) {
-    this.selected = e.detail.id;
-  },
+  attached: function() {},
 
   _locationChanged: function(newValue) {
     if (!newValue || typeof newValue.route === "undefined") return;
@@ -414,11 +409,19 @@ let OutlinePlayer = Polymer({
       const firstItem = this.manifest.items.find(
         i => typeof i.id !== "undefined"
       );
-      window.dispatchEvent(
-        new CustomEvent("json-outline-schema-active-item-changed", {
-          detail: firstItem
-        })
-      );
+      if (firstItem) {
+        // just update the local selected item locally. set a 500 mil second delay
+        // so that the map menu has time to rebuild.  This is a hack because of
+        // map menu.
+        setTimeout(() => {
+          this.selected = firstItem.id;
+        }, 500);
+        window.dispatchEvent(
+          new CustomEvent("json-outline-schema-active-item-changed", {
+            detail: firstItem
+          })
+        );
+      }
     }
   },
   /**
