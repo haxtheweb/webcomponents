@@ -1,0 +1,40 @@
+{
+  /**
+   * object in question to clone and turn into a custom element
+   */
+  "element": {
+    "name": "element",
+    "type": "Object",
+    "value": {}
+  },
+  /**
+   * valid custom element name of the new element to create
+   */
+  "name": {
+    "name": "name",
+    "type": "String",
+    "value": "new-element"
+  },
+  /**
+   * optional original location that this came from
+   */
+  "sourceUrl": {
+    "name": "sourceUrl",
+    "type": "String",
+    "value": ""
+  },
+  /**
+   * MIME type lookup for file extensions
+   */
+  "fileTypes": {
+    "type": "Object",
+    "value"() {
+      return {
+        "CSV": "text/csv",
+        "JSON": "text/json",
+        "PDF": "application/pdf",
+        "TXT": "text/plain"
+      };
+    }
+  }
+}
