@@ -173,11 +173,13 @@ Polymer({
     // update the store
     store.location = this._location;
     // dispatch a haxcms-site-router prefixed event
-    window.dispatchEvent(
-      new CustomEvent("haxcms-site-router-location-changed", {
-        detail: e.detail.location
-      })
-    );
+
+    // window.dispatchEvent(
+    //   new CustomEvent("haxcms-site-router-location-changed", {
+    //     detail: e.detail.location
+    //   })
+    // );
+
     const activeItem = e.detail.location.route.name;
     let find = this.manifest.items.filter(item => {
       if (item.id !== activeItem) {
