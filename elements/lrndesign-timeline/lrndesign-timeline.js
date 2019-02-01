@@ -81,6 +81,7 @@ class LrndesignTimeline extends SimpleColors {
         :host #events {
           padding: 0;
           width: 100%;
+          min-height: 300px;
         }
         :host .heading {
           margin: 0;
@@ -429,29 +430,8 @@ class LrndesignTimeline extends SimpleColors {
         notify: true
       },
       /**
-   * the events of the timeline, in the desired order, as in:```
-[
-  {
-    "heading": "1855 - Penn State Charter",   //required, the main heading for the media, usually a date, time, or era
-    "details": "",                            //optional, text describing the event
-    "image": {                                //optional image for the event
-      "src": "path/to/media.jpg",             //the alt text of the image
-      "alt": "path/to/media.mp3",             //the url of the image
-    },
-    {...},
-    {...},
-  }
-]```
-   * /
-  "_eventsData": {
-    "type": "Array",
-    "reflectToAttribute": true,
-    "notify": true,
-    "computed": "_sanitizeEvents"
-  },
-  /**
-   * the timline size, calculated by responsive utility
-   */
+       * the timline size, calculated by responsive utility
+       */
       timelineSize: {
         type: "String",
         value: "xs",

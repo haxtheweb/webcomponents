@@ -33,6 +33,7 @@
 :host #events {
   padding: 0;
   width: 100%;
+  min-height: 300px;
 }
 :host .heading {
   margin: 0;
