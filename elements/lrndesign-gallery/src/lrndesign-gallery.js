@@ -69,7 +69,7 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
         }
       </style>
       <div id="gallery">
-        <template is="dom-if" if="[[!grid]]">
+        <template is="dom-if" if="[[!grid]]" restamp>
           <lrndesign-gallery-carousel
             accent-color$="[[accentColor]]"
             aspect-ratio$="[[aspectRatio]]"

@@ -181,33 +181,36 @@ class LrndesignGalleryBehaviors extends SimpleColors {
   _getItemData(item, index, length) {
     if (this.galleryId === null)
       this.galleryId = "gallery-" + this._generateUUID();
-    let anchorData = this._getAnchorData();
-    item.index = index;
-    item.xofy = parseInt(index + 1) + " of " + length;
-    item.id = this._selfOrDefault(item.id, this.galleryId + "-item-" + index);
-    item.large = this._selfOrDefault(item.large, item.src);
-    item.next = index + 1 < this.sources.length ? index + 1 : -1;
-    item.prev = index - 1 > -1 ? index - 1 : -1;
-    item.sizing = this._selfOrDefault(item.sizing, this.sizing);
-    item.tooltip = this._selfOrDefault(
-      item.title,
+    let anchorData = this._getAnchorData(),
+      temp = {};
+    temp.index = index;
+    temp.id = this._selfOrDefault(item.id, this.galleryId + "-item-" + index);
+    temp.src = item.src;
+    temp.large = this._selfOrDefault(item.large, temp.src);
+    temp.thumbnail = this._selfOrDefault(item.thumbnail, temp.src);
+    temp.xofy = parseInt(index + 1) + " of " + length;
+    temp.next = index + 1 < length ? index + 1 : -1;
+    temp.prev = index - 1 > -1 ? index - 1 : -1;
+    temp.sizing = this._selfOrDefault(item.sizing, this.sizing);
+    temp.title = item.title;
+    temp.tooltip = this._selfOrDefault(
+      temp.title,
       "Full-Sized Image",
       " (Full-Sized)"
     );
-    item.thumbnail = this._selfOrDefault(item.thumbnail, item.src);
-    item.zoom = anchorData.zoom && anchorData.selectedItemId === item.id;
-    item.scroll =
-      anchorData.selectedGallery && anchorData.selectedItemId === item.id;
-    item.heading = this._selfOrDefault(
-      item.title,
+    temp.heading = this._selfOrDefault(
+      temp.title,
       "Full-Sized Image",
       " (Full-Sized)"
     );
-    item.tooltip = this._selfOrDefault(item.title, "Zoom In", " Zoom");
+    temp.zoom = anchorData.zoom && anchorData.selectedItemId === temp.id;
+    temp.scroll =
+      anchorData.selectedGallery && anchorData.selectedItemId === temp.id;
+    temp.tooltip = this._selfOrDefault(item.title, "Zoom In", " Zoom");
     if (anchorData.selectedItemIndex === index) {
-      this.set("selected", item);
+      this.set("selected", temp);
     }
-    return item;
+    return temp;
   }
 
   /**
