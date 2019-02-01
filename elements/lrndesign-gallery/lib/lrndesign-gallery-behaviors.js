@@ -72,13 +72,6 @@ class LrndesignGalleryBehaviors extends SimpleColors {
         value: false
       },
       /**
-       * gallery's unique id
-       */
-      id: {
-        type: String,
-        value: null
-      },
-      /**
        * array of carousel/grid items
        */
       items: {
@@ -99,8 +92,8 @@ class LrndesignGalleryBehaviors extends SimpleColors {
       selected: {
         type: Object,
         value: {},
-        notify: true //,
-        //reflectToAttribute: true
+        notify: true,
+        reflectToAttribute: true
       },
       /**
        * default sizing: fit screen by cropping (cover)
@@ -168,7 +161,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
       anchorGallery = temp.length > 0 ? temp[0] : -1,
       selectedItemId = temp.length > 1 ? temp[1] : -1,
       selectedItemIndex = this.sources.findIndex(i => i.id === selectedItemId),
-      selectedGallery = anchorGallery === this.id,
+      selectedGallery = anchorGallery === this.galleryId,
       zoom = scroll && temp.length > 2 && temp[2] === "zoom";
     return {
       selectedItemId: selectedItemId,
@@ -185,10 +178,13 @@ class LrndesignGalleryBehaviors extends SimpleColors {
    * @param {number} the index of the item
    * @returns {object} the reformatted gallery item
    */
-  _getItemData(item, index) {
+  _getItemData(item, index, length) {
+    if (this.galleryId === null)
+      this.galleryId = "gallery-" + this._generateUUID();
     let anchorData = this._getAnchorData();
     item.index = index;
-    item.id = this._selfOrDefault(item.id, this.id + index);
+    item.xofy = parseInt(index + 1) + " of " + length;
+    item.id = this._selfOrDefault(item.id, this.galleryId + "-item-" + index);
     item.large = this._selfOrDefault(item.large, item.src);
     item.next = index + 1 < this.sources.length ? index + 1 : -1;
     item.prev = index - 1 > -1 ? index - 1 : -1;
@@ -209,7 +205,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
     );
     item.tooltip = this._selfOrDefault(item.title, "Zoom In", " Zoom");
     if (anchorData.selectedItemIndex === index) {
-      this.selected = item;
+      this.set("selected", item);
     }
     return item;
   }
@@ -277,13 +273,16 @@ class LrndesignGalleryBehaviors extends SimpleColors {
   _itemsLoaded(sources, sizing) {
     let root = this,
       img = new Image(),
-      temp = sources.slice();
+      temp = [];
+    this.set("items", []);
+    if (this.galleryId === null) this.id = "gallery-" + this._generateUUID();
     if (sources !== undefined && sources.length > 0) {
       this._setAspectProperties(sources[0].src);
-      for (var i in temp) {
-        temp[i] = this._getItemData(temp[i], parseInt(i));
+      for (var i in sources) {
+        temp[i] = this._getItemData(sources[i], parseInt(i), sources.length);
       }
     }
+    console.log(this.galleryId, temp, this.selected);
     return temp;
   }
 
@@ -295,8 +294,16 @@ class LrndesignGalleryBehaviors extends SimpleColors {
    * @param {object} the default value
    * @returns {object} the updated value
    */
-  _selfOrDefault(val1, val2 = false, append = "") {
-    return val1 !== undefined ? val1 + append : val2;
+  _selfOrDefault(val1 = null, val2 = false, append = null) {
+    let val3 = val2;
+    if (val1 !== undefined && val1 !== null) {
+      if (append !== null) {
+        val3 = val1 + append;
+      } else {
+        val3 = val1;
+      }
+    }
+    return val3;
   }
 
   /**
@@ -306,13 +313,15 @@ class LrndesignGalleryBehaviors extends SimpleColors {
    * @param {array}
    */
   _setAspectProperties(imgSrc) {
-    let img = new Image();
-    img.src = imgSrc;
-    this.aspectRatio =
-      img.naturalWidth > 0 && img.naturalHeight > 0
-        ? img.naturalWidth / img.naturalHeight
-        : 1.33333333;
-    this.extraWide = this.aspectRatio > 2;
+    if (imgSrc !== undefined && imgSrc !== null) {
+      let img = new Image();
+      img.src = imgSrc;
+      this.aspectRatio =
+        img.naturalWidth > 0 && img.naturalHeight > 0
+          ? img.naturalWidth / img.naturalHeight
+          : 1.33333333;
+      this.extraWide = this.aspectRatio > 2;
+    }
   }
 
   /**
@@ -325,6 +334,19 @@ class LrndesignGalleryBehaviors extends SimpleColors {
 
   _testAttribute(attr = null, val = false) {
     return attr === val;
+  }
+
+  /**
+   * Generate a UUID
+   */
+  _generateUUID() {
+    return "ss-s-s-s-sss".replace(/s/g, this._uuidPart);
+  }
+
+  _uuidPart() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
   }
 }
 window.customElements.define(

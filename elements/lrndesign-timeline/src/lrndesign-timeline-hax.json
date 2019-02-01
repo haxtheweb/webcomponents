@@ -8,13 +8,25 @@
     "icon": "icons:timeline",
     "color": "indigo",
     "groups": ["Content", "Instructional", "Media", "Image"],
-    "handles": [],
+    "handles": [
+      {
+        "type": "image",
+        "source": "image"
+      }
+    ],
     "meta": {
       "author": "LRNWebComponents"
     }
   },
   "settings": {
-    "quick": [
+    "quick": [],
+    "configure": [
+      {
+        "property": "title",
+        "title": "Timeline Title",
+        "description": "A title for the timeline.",
+        "inputMethod": "textfield"
+      },
       {
         "property": "accentColor",
         "title": "Accent Color",
@@ -28,14 +40,6 @@
         "description": "Enable Dark Theme",
         "inputMethod": "boolean",
         "icon": "icons:invert-colors"
-      }
-    ],
-    "configure": [
-      {
-        "property": "title",
-        "title": "Timeline Title",
-        "description": "A title for the timeline.",
-        "inputMethod": "textfield"
       },
       {
         "slot": "",
@@ -64,14 +68,14 @@
             "icon": "editor:title"
           },
           {
-            "property": "image-src",
+            "property": "imageSrc",
             "title": "Event Image",
             "description": "The path of the image.",
             "inputMethod": "textfield",
             "icon": "editor:title"
           },
           {
-            "property": "image-alt",
+            "property": "imageAlt",
             "title": "Event Image Alt Text",
             "description": "The alt text of the image (for accessibility).",
             "inputMethod": "textfield",
