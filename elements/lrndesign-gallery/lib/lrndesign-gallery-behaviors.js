@@ -285,7 +285,6 @@ class LrndesignGalleryBehaviors extends SimpleColors {
         temp[i] = this._getItemData(sources[i], parseInt(i), sources.length);
       }
     }
-    console.log(this.galleryId, temp, this.selected);
     return temp;
   }
 

@@ -23,7 +23,8 @@
    */
   "events": {
     "type": "Array",
-    "value": []
+    "value": [],
+    "notify": true
   },
   /**
    * the events of the timeline, in the desired order, as in:```
@@ -39,10 +40,12 @@
     {...},
   }
 ]```
-   */
-  "eventsData": {
+   * /
+  "_eventsData": {
     "type": "Array",
-    "computed": "_sanitizeEvents(events)"
+    "reflectToAttribute": true,
+    "notify": true,
+    "computed": "_sanitizeEvents"
   },
   /**
    * the timline size, calculated by responsive utility
