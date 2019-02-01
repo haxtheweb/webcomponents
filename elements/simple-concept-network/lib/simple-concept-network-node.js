@@ -28,9 +28,9 @@ Polymer({
         );
       }
       :host([colored-text]) {
-        --simple-concept-network-bg: var(--simple-colors-default-theme-grey-12);
+        --simple-concept-network-bg: var(--simple-colors-default-theme-grey-1);
         --simple-concept-network-color: var(
-          --simple-colors-default-theme-accent-5
+          --simple-colors-default-theme-accent-8
         );
       }
       paper-button {

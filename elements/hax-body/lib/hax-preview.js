@@ -14,7 +14,7 @@ import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
 import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
 import "@lrnwebcomponents/code-editor/code-editor.js";
 import "@lrnwebcomponents/app-datepicker/app-datepicker.js";
-import "@lrnwebcomponents/paper-icon-picker/paper-icon-picker.js";
+import "@lrnwebcomponents/simple-picker/simple-picker.js";
 import "@lrnwebcomponents/paper-input-flagged/paper-input-flagged.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "./hax-shared-styles.js";

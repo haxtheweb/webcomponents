@@ -66,9 +66,8 @@ let SimpleConceptNetwork = Polymer({
     <template is="dom-repeat" items="[[nodes]]" as="node">
       <simple-concept-network-node
         accent-color$="[[node.color]]"
-        colored-text$="[[node.coloredText]]"
-        dark$="[[node.dark]]"
-        default-color$="[[accentColor]]"
+        colored-text$="[[coloredText]]"
+        dark$="[[dark]]"
         visualization$="[[visualization]]"
         src$="[[node.src]]"
         icon$="[[node.icon]]"
@@ -97,6 +96,20 @@ let SimpleConceptNetwork = Polymer({
       type: String,
       reflectToAttribute: true,
       value: "3d"
+    },
+    /**
+     * disabled status
+     */
+    disabled: {
+      type: Boolean
+    },
+    /**
+     * Apply color to text / icon instead of background.
+     */
+    coloredText: {
+      type: Boolean,
+      reflectToAttribute: true,
+      value: false
     },
     /**
      * List of nodes to template stamp out
@@ -163,11 +176,32 @@ let SimpleConceptNetwork = Polymer({
             }
           },
           {
+            property: "dark",
+            title: "Dark",
+            description: "Use dark theme",
+            inputMethod: "boolean",
+            icon: "invert-colors"
+          },
+          {
+            property: "coloredText",
+            title: "Colored Text / Icon",
+            description: "Apply color to text / icon instead of background.",
+            inputMethod: "boolean",
+            icon: "editor:format-color-text"
+          },
+          {
             property: "nodes",
             title: "Node list",
             description: "List of the items to present in the visual",
             inputMethod: "array",
             properties: [
+              {
+                property: "color",
+                title: "Node color",
+                description: "Select the accent color for this node",
+                inputMethod: "colorpicker",
+                icon: "editor:format-color-fill"
+              },
               {
                 property: "icon",
                 title: "Icon",
@@ -194,28 +228,6 @@ let SimpleConceptNetwork = Polymer({
                 description:
                   "A longer description that can be used as part of a modal presentation",
                 inputMethod: "textfield"
-              },
-              {
-                property: "accentColor",
-                title: "Node color",
-                description: "Select the accent color for this node",
-                inputMethod: "colorpicker",
-                icon: "editor:format-color-fill"
-              },
-              {
-                property: "dark",
-                title: "Dark",
-                description: "Use dark theme",
-                inputMethod: "boolean",
-                icon: "invert-colors"
-              },
-              {
-                property: "coloredText",
-                title: "Colored Text / Icon",
-                description:
-                  "Apply color to text / icon instead of background.",
-                inputMethod: "boolean",
-                icon: "editor:format-color-text"
               },
               {
                 property: "src",
