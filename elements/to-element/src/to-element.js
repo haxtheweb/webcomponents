@@ -195,10 +195,13 @@ class ToElement extends HTMLElement {
   recursiveExtract(element) {
     const id = this.generateUUID();
     const styles = this.getStylesWithoutDefaults(element);
+    /*
+    // keep these later if we're able to figure out they work
     const before = this.getStylesWithoutDefaults(element, ":before");
     const after = this.getStylesWithoutDefaults(element, ":after");
     const hover = this.getStylesWithoutDefaults(element, ":hover");
     const focus = this.getStylesWithoutDefaults(element, ":focus");
+    */
     // Now that we get the style, we can swap the id
     element.setAttribute("id", id);
     let css = "";

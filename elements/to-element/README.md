@@ -4,7 +4,17 @@ Element
 > Replicate any DOM node passed in and turn it into a web component
 
 ## Bookmarklet usage
-Copy the following into a bookmark
+
+1. Go to a web page
+2. Click on your bookmarklet (copy the content below into that bookark)
+3. It will tell you what its going to do, hit ok.
+4. Hover over areas on the page to see the outline of it
+5. Click on the thing you want to turn into a web component
+6. fill in a valid name for a component (like: twitter-card or my-home-block)
+7. hit ok and it'll download. You now have a Polymer based web component that should look VERY similar to the page area you clicked
+8. Use this to learn from and put it into other websites
+
+### Copy the following into a bookmark
 
 ```js
 javascript:(function(){window.__haxClickEvent=(e)=>{if(e.target.tagName!=='TO-ELEMENT'){e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();if(!window.__first){alert('You\'ll now be asked to name this element. Make sure the element name has a hypthen in it like "cool-new-things".');window.__first=true;}let name=prompt('Name for this element:','cool-new-thing');if(name){e.target.classList.remove('hax-injected-highlighter');document.getElementById('haxallthethings').downloadNewComponent(e.target,name);}else{document.body.removeEventListener('click',window.__haxClickEvent);document.body.removeEventListener('mouseover',function(e){e.target.classList.add('hax-injected-highlighter');});document.body.removeEventListener('mouseout',function(e){e.target.classList.remove('hax-injected-highlighter');});}}};let link=document.createElement('script');link.type="module";link.src="https://cdn.waxam.io/build/es6/node_modules/@lrnwebcomponents/to-element/to-element.js";document.body.appendChild(link);let toE=document.createElement('to-element');toE.setAttribute('id','haxallthethings');document.body.appendChild(toE);let style=document.createElement('style');style.innerHTML=`.hax-injected-highlighter{outline:4px dotted #34e79a!important;outline-offset:4px!important;}`;document.body.appendChild(style);alert('Welcome to HAX Element creator. To get started, click on the thing you want to make a new element.');document.body.addEventListener('click',window.__haxClickEvent);document.body.addEventListener('mouseover',function(e){e.target.classList.add('hax-injected-highlighter');});document.body.addEventListener('mouseout',function(e){e.target.classList.remove('hax-injected-highlighter');});})();
