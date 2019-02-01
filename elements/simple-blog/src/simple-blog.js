@@ -4,6 +4,8 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";
+import { store as routerStore } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-router.js";
+import { autorun, toJS } from "mobx";
 import "./lib/simple-blog-listing.js";
 import "./lib/simple-blog-header.js";
 import "./lib/simple-blog-footer.js";
@@ -94,21 +96,19 @@ let SimpleBlog = Polymer({
         ></simple-blog-listing>
       </section>
       <section>
-        <a href="/">
-          <paper-icon-button
-            id="backbutton"
-            icon="icons:arrow-back"
-            on-tap="_goBack"
-          ></paper-icon-button>
-          <paper-tooltip
-            for="backbutton"
-            position="right"
-            offset="14"
-            animation-delay="100"
-          >
-            Back to main site
-          </paper-tooltip>
-        </a>
+        <paper-icon-button
+          id="backbutton"
+          icon="icons:arrow-back"
+          on-tap="_goBack"
+        ></paper-icon-button>
+        <paper-tooltip
+          for="backbutton"
+          position="right"
+          offset="14"
+          animation-delay="100"
+        >
+          Back to main site
+        </paper-tooltip>
         <simple-blog-post
           id="post"
           active-item="[[activeItem]]"
@@ -148,26 +148,16 @@ let SimpleBlog = Polymer({
    */
   ready: function() {
     this.setupHAXTheme(true, this.$.post.$.contentcontainer);
-    window.dispatchEvent(
-      new CustomEvent("haxcms-router-manifest-subscribe", {
-        detail: {
-          callback: "_haxcmsRouterManifestSubscribeHandler",
-          scope: this,
-          setup: true
-        }
-      })
-    );
-    window.addEventListener(
-      "haxcms-site-router-location-changed",
-      this._haxcmsSiteRouterLocationChangedHandler.bind(this)
-    );
+    // subscribe to manifest changes
+    autorun(() => {
+      this.manifest = toJS(routerStore.manifest);
+    });
+    autorun(() => {
+      this._locationChanged(routerStore.location);
+    });
     document.body.addEventListener(
       "haxcms-trigger-update",
       this._dataRefreshed.bind(this)
-    );
-    document.body.addEventListener(
-      "json-outline-schema-active-item-changed",
-      this._activeItemEvent.bind(this)
     );
   },
 
@@ -176,38 +166,27 @@ let SimpleBlog = Polymer({
    */
   detached: function() {
     this.setupHAXTheme(false);
-    window.addEventListener(
-      "haxcms-site-router-location-changed",
-      this._haxcmsSiteRouterLocationChangedHandler.bind(this)
-    );
     document.body.addEventListener(
       "haxcms-trigger-update",
       this._dataRefreshed.bind(this)
     );
-    document.body.addEventListener(
-      "json-outline-schema-active-item-changed",
-      this._activeItemEvent.bind(this)
-    );
-  },
-
-  /**
-   * Update the manifest with the correct urls
-   * @param {event} e
-   */
-  _haxcmsRouterManifestSubscribeHandler: function(e) {
-    this.manifest = e.detail;
   },
 
   /**
    * Listen for router location changes
    * @param {event} e
    */
-  _haxcmsSiteRouterLocationChangedHandler: function(e) {
-    const location = e.detail;
+  _locationChanged: function(location) {
+    if (!location || typeof location.route === "undefined") return;
     const name = location.route.name;
     if (name === "home" || name === "404") {
       this.selectedPage = 0;
     }
+  },
+
+  _activeItemResetHandler: function(e) {
+    window.history.pushState(null, null, routerStore.location.baseUrl);
+    window.dispatchEvent(new PopStateEvent("popstate"));
   },
 
   /**
@@ -226,7 +205,10 @@ let SimpleBlog = Polymer({
   /**
    * Reset the active item to reset state
    */
-  _goBack: function(e) {},
+  _goBack: function(e) {
+    window.history.pushState(null, null, routerStore.location.baseUrl);
+    window.dispatchEvent(new PopStateEvent("popstate"));
+  },
 
   /**
    * refreshed data call

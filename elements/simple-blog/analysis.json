@@ -1122,7 +1122,7 @@
               "column": 2
             },
             "end": {
-              "line": 171,
+              "line": 161,
               "column": 3
             }
           },
@@ -1138,11 +1138,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 176,
+              "line": 166,
               "column": 2
             },
             "end": {
-              "line": 190,
+              "line": 172,
               "column": 3
             }
           },
@@ -1153,24 +1153,23 @@
           }
         },
         {
-          "name": "_haxcmsRouterManifestSubscribeHandler",
-          "description": "Update the manifest with the correct urls",
+          "name": "_locationChanged",
+          "description": "Listen for router location changes",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 196,
+              "line": 178,
               "column": 2
             },
             "end": {
-              "line": 198,
+              "line": 184,
               "column": 3
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "e",
-              "type": "event"
+              "name": "location"
             }
           ],
           "return": {
@@ -1178,24 +1177,23 @@
           }
         },
         {
-          "name": "_haxcmsSiteRouterLocationChangedHandler",
-          "description": "Listen for router location changes",
+          "name": "_activeItemResetHandler",
+          "description": "",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 204,
+              "line": 186,
               "column": 2
             },
             "end": {
-              "line": 210,
+              "line": 189,
               "column": 3
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "e",
-              "type": "event"
+              "name": "e"
             }
           ],
           "return": {
@@ -1208,11 +1206,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 215,
+              "line": 194,
               "column": 2
             },
             "end": {
-              "line": 223,
+              "line": 202,
               "column": 3
             }
           },
@@ -1232,12 +1230,12 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 228,
+              "line": 207,
               "column": 2
             },
             "end": {
-              "line": 228,
-              "column": 25
+              "line": 210,
+              "column": 3
             }
           },
           "metadata": {},
@@ -1256,11 +1254,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 233,
+              "line": 215,
               "column": 2
             },
             "end": {
-              "line": 235,
+              "line": 217,
               "column": 3
             }
           },
@@ -1280,11 +1278,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 21,
+          "line": 23,
           "column": 25
         },
         "end": {
-          "line": 236,
+          "line": 218,
           "column": 1
         }
       },

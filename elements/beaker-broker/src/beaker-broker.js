@@ -3,7 +3,6 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-export { BeakerBroker };
 /**
  * `beaker-broker`
  * `An element to help check for and broker calls to read and write beaker browser dat sites.
@@ -98,3 +97,4 @@ class BeakerBroker extends PolymerElement {
   //disconnectedCallback() {}
 }
 window.customElements.define(BeakerBroker.tag, BeakerBroker);
+export { BeakerBroker };

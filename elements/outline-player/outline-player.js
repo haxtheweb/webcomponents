@@ -11,6 +11,8 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";
 import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
 import "@lrnwebcomponents/map-menu/map-menu.js";
+import { store as routerStore } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-router.js";
+import { autorun, toJS } from "mobx";
 import "./lib/outline-player-arrow.js";
 
 /**
@@ -202,7 +204,7 @@ let OutlinePlayer = Polymer({
       }
       map-menu::-webkit-scrollbar-track {
         -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
-        border-radius: 2px;
+        border-radius: 0;
         background-color: #fafafa;
       }
       map-menu::-webkit-scrollbar {
@@ -212,7 +214,7 @@ let OutlinePlayer = Polymer({
       map-menu::-webkit-scrollbar-thumb {
         border-radius: 2px;
         -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
-        background-color: #222222;
+        background-color: #444444;
       }
     </style>
     <!-- Control the sites query paremeters -->
@@ -357,6 +359,10 @@ let OutlinePlayer = Polymer({
       type: Object,
       value: {}
     },
+    _location: {
+      type: Object,
+      observer: "_locationChanged"
+    },
     editMode: {
       type: Boolean,
       reflectToAttribute: true,
@@ -375,54 +381,27 @@ let OutlinePlayer = Polymer({
   },
   ready: function() {
     this.setupHAXTheme(true, this.$.contentcontainer);
+    autorun(() => {
+      this._routerManifest = toJS(routerStore.manifest);
+    });
+    autorun(() => {
+      this._location = routerStore.location;
+    });
+    autorun(() => {
+      if (
+        routerStore.activeItem &&
+        typeof routerStore.activeItem !== "undefined"
+      ) {
+        this.selected = routerStore.activeItem.id;
+      }
+    });
   },
 
-  attached: function() {
-    window.addEventListener(
-      "haxcms-site-router-active-item-changed",
-      this._haxcmsSiteRouterActiveItemChangedHandler.bind(this)
-    );
-    // Subscribe to the router manifest
-    window.dispatchEvent(
-      new CustomEvent("haxcms-router-manifest-subscribe", {
-        detail: {
-          callback: "_haxcmsRouterManifestSubscribeHandler",
-          scope: this,
-          setup: true
-        }
-      })
-    );
-    // Subscribe to the router manifest
-    window.dispatchEvent(
-      new CustomEvent("haxcms-site-router-location-subscribe", {
-        detail: {
-          callback: "_haxcmsSiteRouterLocationSubscribe",
-          scope: this,
-          setup: true
-        }
-      })
-    );
-  },
+  attached: function() {},
 
-  /**
-   * React to changes to the router manifest
-   * @param {event} e
-   */
-  _haxcmsRouterManifestSubscribeHandler: function(e) {
-    this._routerManifest = {};
-    this._routerManifest = e.detail;
-  },
-
-  /**
-   * Listen for the active item to change
-   * @param {event} e
-   */
-  _haxcmsSiteRouterActiveItemChangedHandler: function(e) {
-    this.selected = e.detail.id;
-  },
-
-  _haxcmsSiteRouterLocationSubscribe: function(e) {
-    const location = e.detail;
+  _locationChanged: function(newValue) {
+    if (!newValue || typeof newValue.route === "undefined") return;
+    const location = newValue;
     const name = location.route.name;
     if (name === "home" || name === "404") {
       // if we are on the homepage then load the first item in the manifest
@@ -430,11 +409,19 @@ let OutlinePlayer = Polymer({
       const firstItem = this.manifest.items.find(
         i => typeof i.id !== "undefined"
       );
-      window.dispatchEvent(
-        new CustomEvent("json-outline-schema-active-item-changed", {
-          detail: firstItem
-        })
-      );
+      if (firstItem) {
+        // just update the local selected item locally. set a 500 mil second delay
+        // so that the map menu has time to rebuild.  This is a hack because of
+        // map menu.
+        setTimeout(() => {
+          this.selected = firstItem.id;
+        }, 500);
+        window.dispatchEvent(
+          new CustomEvent("json-outline-schema-active-item-changed", {
+            detail: firstItem
+          })
+        );
+      }
     }
   },
   /**
