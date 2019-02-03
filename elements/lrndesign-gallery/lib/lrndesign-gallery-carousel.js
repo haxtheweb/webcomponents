@@ -231,7 +231,7 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
             responsive-size$="[[responsiveSize]]"
           >
             <p id="xystart" class="sr-only" hidden$="[[_hideNav(items)]]">
-              Slide [[__xOfY]] selected.
+              Slide [[selected.xofy]] selected.
             </p>
             <div id="carouselimage">
               <iron-image
@@ -307,17 +307,15 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
                   </div>
                 </div>
                 <div id="xyend">
-                  <p class="x-of-y" hidden$="[[_hideNav(items)]">
-                    (<span class="sr-only"> End of slide </span> [[__xOfY]]<span
-                      class="sr-only"
-                      >.</span
-                    >)
+                  <p class="x-of-y" hidden$="[[_hideNav(items)]]">
+                    (<span class="sr-only"> End of slide </span>
+                    [[selected.xofy]]<span class="sr-only">.</span>)
                   </p>
                 </div>
                 <div id="thumbnails" class="item-info">
                   <div id="thumbnails-inner">
                     <div>
-                      <p class="sr-only" hidden$="[[_hideNav(items)]">
+                      <p class="sr-only" hidden$="[[_hideNav(items)]]">
                         Slides list:
                       </p>
                       <template is="dom-repeat" items="[[items]]" as="item">
@@ -409,8 +407,6 @@ class LrndesignGalleryCarousel extends LrndesignGalleryBehaviors {
     let root = this;
     if (typeof index === "number" && index >= 0 && index < root.items.length) {
       root.selected = root.items[index];
-      root.__xOfY =
-        parseInt(root.selected.index + 1) + " of " + root.items.length;
     }
   }
 

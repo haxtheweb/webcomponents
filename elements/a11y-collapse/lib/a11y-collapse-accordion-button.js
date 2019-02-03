@@ -122,7 +122,6 @@ Polymer({
    */
   _onTap: function(e) {
     if (!this.disabled) {
-      console.log(this);
       this.fire("a11y-collapse-tap", this);
     }
   }

@@ -38,6 +38,15 @@
   },
 
   /**
+   * Whether r not a label shoudl be added
+   */
+  "hasLabel": {
+    "name": "label",
+    "type": "Boolean",
+    "computed": "_hasLabel(label)"
+  },
+
+  /**
    * Optional. The label for the picker input
    */
   "label": {
@@ -84,6 +93,7 @@
     "name": "value",
     "type": "Object",
     "value": "null",
+    "notify": true,
     "reflectToAttribute": true
   },
 

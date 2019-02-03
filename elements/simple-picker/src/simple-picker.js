@@ -143,17 +143,29 @@ class SimplePicker extends PolymerElement {
   }
 
   /**
+   * Determines if a label should be added
+   *
+   * @param {string} the label
+   * @returns {boolean} if there is a label
+   */
+  _hasLabel(label) {
+    return label !== undefined && label !== null && label.trim() !== "";
+  }
+
+  /**
    * sets the selected option to a given option's id
    *
    * @param {string} the option id
    */
-  _initSelectedOption(value) {
+  _initSelectedOption(value = null) {
     this.__selectedOption = null;
-    for (var i = 0; i < this.options.length; i++) {
-      for (var j = 0; j < this.options[i].length; j++) {
-        if (this.options[i][j].value === value) {
-          this.__selectedOption = this.options[i][j];
-          this.__activeDesc = this.options[i][j].value;
+    if (value !== null && this.options !== undefined && this.options !== null) {
+      for (var i = 0; i < this.options.length; i++) {
+        for (var j = 0; j < this.options[i].length; j++) {
+          if (this.options[i][j].value === value) {
+            this.__selectedOption = this.options[i][j];
+            this.__activeDesc = this.options[i][j].value;
+          }
         }
       }
     }
@@ -201,7 +213,9 @@ class SimplePicker extends PolymerElement {
   _setSelectedOption(option) {
     this.__selectedOption = this._getOption(this.options, option.id);
     this.value = option.value;
-    this.dispatchEvent(new CustomEvent("change", { detail: this }));
+    this.dispatchEvent(
+      new CustomEvent("change", { bubbles: true, detail: this })
+    );
   }
 
   /**

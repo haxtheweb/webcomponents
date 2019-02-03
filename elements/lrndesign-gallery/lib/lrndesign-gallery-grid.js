@@ -51,6 +51,10 @@ class LrndesignGalleryGrid extends LrndesignGalleryBehaviors {
     return "lrndesign-gallery-grid";
   }
 
+  static get behaviors() {
+    return [LrndesignGalleryBehaviors];
+  }
+
   // render function
   static get template() {
     return html`

@@ -647,23 +647,52 @@ export class HAXWiring {
                   name: "simple-colors-picker",
                   valueProperty: "value",
                   properties: {
-                    required: settings[value].required
+                    required: settings[value].required,
+                    label: settings[value].title
                   }
                 };
                 break;
               case "iconpicker":
                 props[settings[value].property].component = {
-                  name: "paper-icon-picker",
-                  valueProperty: "icon",
+                  name: "simple-picker",
+                  valueProperty: "value",
                   properties: {
-                    required: settings[value].required
+                    required: settings[value].required,
+                    hideOptionLabels: true,
+                    label: settings[value].title
                   }
                 };
+                console.log(settings, settings[value]);
                 // support options array of icons to pick from
-                if (settings[value].options.constructor === Array) {
+                let opts = settings[value].options,
+                  rows,
+                  cols;
+                if (opts.constructor === Array) {
+                  if (opts.length < 1) {
+                    let sets = document.head.querySelectorAll(
+                        'iron-iconset-svg[name="icons"] svg > defs > g, svg > g'
+                      ),
+                      cols = 15,
+                      rows = Math.floor(sets.length / cols);
+                    for (let i = 0; i < sets.length; i++) {
+                      let row = Math.floor(i / cols),
+                        col = i - row * cols,
+                        icon = sets[i].getAttribute("id");
+                      if (opts[row] === undefined || opts[row] === null)
+                        opts[row] = [];
+                      opts[row][col] = {
+                        alt: icon,
+                        icon: icon,
+                        value: icon
+                      };
+                    }
+                  }
+                  /*props[
+                    settings[value].property
+                  ].component.properties.hideOptionLabels = true;*/
                   props[
                     settings[value].property
-                  ].component.properties.iconList = settings[value].options;
+                  ].component.properties.options = opts;
                 }
                 break;
               case "datepicker":

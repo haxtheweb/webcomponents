@@ -622,7 +622,7 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
           "defaultValue": "\"grey\"",
@@ -646,7 +646,7 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
           "defaultValue": "false",
@@ -811,9 +811,9 @@
           "defaultValue": "false"
         },
         {
-          "name": "id",
-          "type": "string | null | undefined",
-          "description": "gallery's unique id",
+          "name": "items",
+          "type": "Array | null | undefined",
+          "description": "array of carousel/grid items",
           "privacy": "public",
           "sourceRange": {
             "start": {
@@ -822,28 +822,6 @@
             },
             "end": {
               "line": 79,
-              "column": 7
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "null"
-        },
-        {
-          "name": "items",
-          "type": "Array | null | undefined",
-          "description": "array of carousel/grid items",
-          "privacy": "public",
-          "sourceRange": {
-            "start": {
-              "line": 83,
-              "column": 6
-            },
-            "end": {
-              "line": 86,
               "column": 7
             }
           },
@@ -861,11 +839,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 90,
+              "line": 83,
               "column": 6
             },
             "end": {
-              "line": 94,
+              "line": 87,
               "column": 7
             }
           },
@@ -883,11 +861,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 98,
+              "line": 91,
               "column": 6
             },
             "end": {
-              "line": 103,
+              "line": 96,
               "column": 7
             }
           },
@@ -906,11 +884,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 101,
               "column": 6
             },
             "end": {
-              "line": 111,
+              "line": 104,
               "column": 7
             }
           },
@@ -928,11 +906,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 115,
+              "line": 108,
               "column": 6
             },
             "end": {
-              "line": 119,
+              "line": 112,
               "column": 7
             }
           },
@@ -950,11 +928,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 123,
+              "line": 116,
               "column": 6
             },
             "end": {
-              "line": 126,
+              "line": 119,
               "column": 7
             }
           },
@@ -3054,11 +3032,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 133,
+              "line": 126,
               "column": 2
             },
             "end": {
-              "line": 135,
+              "line": 128,
               "column": 3
             }
           },
@@ -3216,11 +3194,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 142,
+              "line": 135,
               "column": 2
             },
             "end": {
-              "line": 157,
+              "line": 150,
               "column": 3
             }
           },
@@ -3240,11 +3218,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 165,
+              "line": 158,
               "column": 2
             },
             "end": {
-              "line": 178,
+              "line": 171,
               "column": 3
             }
           },
@@ -3257,11 +3235,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 187,
+              "line": 180,
               "column": 2
             },
             "end": {
-              "line": 214,
+              "line": 212,
               "column": 3
             }
           },
@@ -3272,6 +3250,9 @@
             },
             {
               "name": "index"
+            },
+            {
+              "name": "length"
             }
           ],
           "return": {
@@ -3285,11 +3266,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 222,
+              "line": 220,
               "column": 2
             },
             "end": {
-              "line": 232,
+              "line": 230,
               "column": 3
             }
           },
@@ -3310,11 +3291,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 239,
+              "line": 237,
               "column": 2
             },
             "end": {
-              "line": 246,
+              "line": 244,
               "column": 3
             }
           },
@@ -3335,11 +3316,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 254,
+              "line": 252,
               "column": 2
             },
             "end": {
-              "line": 256,
+              "line": 254,
               "column": 3
             }
           },
@@ -3361,11 +3342,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 265,
+              "line": 263,
               "column": 2
             },
             "end": {
-              "line": 267,
+              "line": 265,
               "column": 3
             }
           },
@@ -3391,11 +3372,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 276,
+              "line": 274,
               "column": 2
             },
             "end": {
-              "line": 287,
+              "line": 288,
               "column": 3
             }
           },
@@ -3419,18 +3400,19 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 297,
+              "line": 298,
               "column": 2
             },
             "end": {
-              "line": 299,
+              "line": 308,
               "column": 3
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "val1"
+              "name": "val1",
+              "defaultValue": "null"
             },
             {
               "name": "val2",
@@ -3438,7 +3420,7 @@
             },
             {
               "name": "append",
-              "defaultValue": "\"\""
+              "defaultValue": "null"
             }
           ],
           "return": {
@@ -3452,11 +3434,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 307,
+              "line": 316,
               "column": 2
             },
             "end": {
-              "line": 315,
+              "line": 326,
               "column": 3
             }
           },
@@ -3476,11 +3458,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 325,
+              "line": 336,
               "column": 2
             },
             "end": {
-              "line": 327,
+              "line": 338,
               "column": 3
             }
           },
@@ -3495,6 +3477,40 @@
               "defaultValue": "false"
             }
           ]
+        },
+        {
+          "name": "_generateUUID",
+          "description": "Generate a UUID",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 343,
+              "column": 2
+            },
+            "end": {
+              "line": 345,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": []
+        },
+        {
+          "name": "_uuidPart",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 347,
+              "column": 2
+            },
+            "end": {
+              "line": 351,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": []
         }
       ],
       "staticMethods": [
@@ -4440,7 +4456,7 @@
           "column": 0
         },
         "end": {
-          "line": 328,
+          "line": 352,
           "column": 1
         }
       },
@@ -4580,8 +4596,8 @@
           "type": "boolean | null | undefined"
         },
         {
-          "name": "id",
-          "description": "gallery's unique id",
+          "name": "items",
+          "description": "array of carousel/grid items",
           "sourceRange": {
             "start": {
               "line": 76,
@@ -4593,22 +4609,6 @@
             }
           },
           "metadata": {},
-          "type": "string | null | undefined"
-        },
-        {
-          "name": "items",
-          "description": "array of carousel/grid items",
-          "sourceRange": {
-            "start": {
-              "line": 83,
-              "column": 6
-            },
-            "end": {
-              "line": 86,
-              "column": 7
-            }
-          },
-          "metadata": {},
           "type": "Array | null | undefined"
         },
         {
@@ -4616,11 +4616,11 @@
           "description": "parent size for responsive styling",
           "sourceRange": {
             "start": {
-              "line": 90,
+              "line": 83,
               "column": 6
             },
             "end": {
-              "line": 94,
+              "line": 87,
               "column": 7
             }
           },
@@ -4632,11 +4632,11 @@
           "description": "data for the selected item",
           "sourceRange": {
             "start": {
-              "line": 98,
+              "line": 91,
               "column": 6
             },
             "end": {
-              "line": 103,
+              "line": 96,
               "column": 7
             }
           },
@@ -4648,11 +4648,11 @@
           "description": "default sizing: fit screen by cropping (cover)\nor with letterboxing (contain)",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 101,
               "column": 6
             },
             "end": {
-              "line": 111,
+              "line": 104,
               "column": 7
             }
           },
@@ -4664,11 +4664,11 @@
           "description": "array of carousel/grid items",
           "sourceRange": {
             "start": {
-              "line": 115,
+              "line": 108,
               "column": 6
             },
             "end": {
-              "line": 119,
+              "line": 112,
               "column": 7
             }
           },
@@ -4680,11 +4680,11 @@
           "description": "gallery's title",
           "sourceRange": {
             "start": {
-              "line": 123,
+              "line": 116,
               "column": 6
             },
             "end": {
-              "line": 126,
+              "line": 119,
               "column": 7
             }
           },
@@ -4693,6 +4693,20 @@
         }
       ],
       "events": [
+        {
+          "type": "CustomEvent",
+          "name": "accent-color-changed",
+          "description": "Fired when the `accentColor` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "dark-changed",
+          "description": "Fired when the `dark` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
         {
           "type": "CustomEvent",
           "name": "selected-changed",
@@ -13356,7 +13370,7 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
           "defaultValue": "\"grey\"",
@@ -13380,7 +13394,7 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
           "defaultValue": "false",
@@ -13555,9 +13569,9 @@
           "inheritedFrom": "LrndesignGalleryBehaviors"
         },
         {
-          "name": "id",
-          "type": "string | null | undefined",
-          "description": "gallery's unique id",
+          "name": "items",
+          "type": "Array | null | undefined",
+          "description": "array of carousel/grid items",
           "privacy": "public",
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
@@ -13567,30 +13581,6 @@
             },
             "end": {
               "line": 79,
-              "column": 7
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "null",
-          "inheritedFrom": "LrndesignGalleryBehaviors"
-        },
-        {
-          "name": "items",
-          "type": "Array | null | undefined",
-          "description": "array of carousel/grid items",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "lrndesign-gallery-behaviors.js",
-            "start": {
-              "line": 83,
-              "column": 6
-            },
-            "end": {
-              "line": 86,
               "column": 7
             }
           },
@@ -13610,11 +13600,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 90,
+              "line": 83,
               "column": 6
             },
             "end": {
-              "line": 94,
+              "line": 87,
               "column": 7
             }
           },
@@ -13634,11 +13624,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 98,
+              "line": 91,
               "column": 6
             },
             "end": {
-              "line": 103,
+              "line": 96,
               "column": 7
             }
           },
@@ -13659,11 +13649,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 108,
+              "line": 101,
               "column": 6
             },
             "end": {
-              "line": 111,
+              "line": 104,
               "column": 7
             }
           },
@@ -13683,11 +13673,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 115,
+              "line": 108,
               "column": 6
             },
             "end": {
-              "line": 119,
+              "line": 112,
               "column": 7
             }
           },
@@ -13707,11 +13697,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 123,
+              "line": 116,
               "column": 6
             },
             "end": {
-              "line": 126,
+              "line": 119,
               "column": 7
             }
           },
@@ -13730,11 +13720,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 383,
+              "line": 381,
               "column": 6
             },
             "end": {
-              "line": 386,
+              "line": 384,
               "column": 7
             }
           },
@@ -13996,11 +13986,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 393,
+              "line": 391,
               "column": 2
             },
             "end": {
-              "line": 400,
+              "line": 398,
               "column": 3
             }
           },
@@ -15833,11 +15823,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 133,
+              "line": 126,
               "column": 2
             },
             "end": {
-              "line": 135,
+              "line": 128,
               "column": 3
             }
           },
@@ -15997,11 +15987,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 142,
+              "line": 135,
               "column": 2
             },
             "end": {
-              "line": 157,
+              "line": 150,
               "column": 3
             }
           },
@@ -16023,11 +16013,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 165,
+              "line": 158,
               "column": 2
             },
             "end": {
-              "line": 178,
+              "line": 171,
               "column": 3
             }
           },
@@ -16042,11 +16032,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 187,
+              "line": 180,
               "column": 2
             },
             "end": {
-              "line": 214,
+              "line": 212,
               "column": 3
             }
           },
@@ -16057,6 +16047,9 @@
             },
             {
               "name": "index"
+            },
+            {
+              "name": "length"
             }
           ],
           "return": {
@@ -16072,11 +16065,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 222,
+              "line": 220,
               "column": 2
             },
             "end": {
-              "line": 232,
+              "line": 230,
               "column": 3
             }
           },
@@ -16099,11 +16092,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 239,
+              "line": 237,
               "column": 2
             },
             "end": {
-              "line": 246,
+              "line": 244,
               "column": 3
             }
           },
@@ -16126,11 +16119,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 254,
+              "line": 252,
               "column": 2
             },
             "end": {
-              "line": 256,
+              "line": 254,
               "column": 3
             }
           },
@@ -16154,11 +16147,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 265,
+              "line": 263,
               "column": 2
             },
             "end": {
-              "line": 267,
+              "line": 265,
               "column": 3
             }
           },
@@ -16186,11 +16179,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 276,
+              "line": 274,
               "column": 2
             },
             "end": {
-              "line": 287,
+              "line": 288,
               "column": 3
             }
           },
@@ -16216,18 +16209,19 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 297,
+              "line": 298,
               "column": 2
             },
             "end": {
-              "line": 299,
+              "line": 308,
               "column": 3
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "val1"
+              "name": "val1",
+              "defaultValue": "null"
             },
             {
               "name": "val2",
@@ -16235,7 +16229,7 @@
             },
             {
               "name": "append",
-              "defaultValue": "\"\""
+              "defaultValue": "null"
             }
           ],
           "return": {
@@ -16251,11 +16245,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 307,
+              "line": 316,
               "column": 2
             },
             "end": {
-              "line": 315,
+              "line": 326,
               "column": 3
             }
           },
@@ -16277,11 +16271,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 325,
+              "line": 336,
               "column": 2
             },
             "end": {
-              "line": 327,
+              "line": 338,
               "column": 3
             }
           },
@@ -16299,16 +16293,54 @@
           "inheritedFrom": "LrndesignGalleryBehaviors"
         },
         {
+          "name": "_generateUUID",
+          "description": "Generate a UUID",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "lrndesign-gallery-behaviors.js",
+            "start": {
+              "line": 343,
+              "column": 2
+            },
+            "end": {
+              "line": 345,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "LrndesignGalleryBehaviors"
+        },
+        {
+          "name": "_uuidPart",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "lrndesign-gallery-behaviors.js",
+            "start": {
+              "line": 347,
+              "column": 2
+            },
+            "end": {
+              "line": 351,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "LrndesignGalleryBehaviors"
+        },
+        {
           "name": "goToItem",
           "description": "go to item by id, or index",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 407,
+              "line": 405,
               "column": 2
             },
             "end": {
-              "line": 414,
+              "line": 410,
               "column": 3
             }
           },
@@ -16328,11 +16360,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 423,
+              "line": 419,
               "column": 2
             },
             "end": {
-              "line": 437,
+              "line": 433,
               "column": 3
             }
           },
@@ -16356,11 +16388,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 444,
+              "line": 440,
               "column": 2
             },
             "end": {
-              "line": 446,
+              "line": 442,
               "column": 3
             }
           },
@@ -16380,11 +16412,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 451,
+              "line": 447,
               "column": 2
             },
             "end": {
-              "line": 453,
+              "line": 449,
               "column": 3
             }
           },
@@ -16401,11 +16433,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 458,
+              "line": 454,
               "column": 2
             },
             "end": {
-              "line": 460,
+              "line": 456,
               "column": 3
             }
           },
@@ -16425,11 +16457,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 465,
+              "line": 461,
               "column": 2
             },
             "end": {
-              "line": 467,
+              "line": 463,
               "column": 3
             }
           },
@@ -16449,11 +16481,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 472,
+              "line": 468,
               "column": 2
             },
             "end": {
-              "line": 474,
+              "line": 470,
               "column": 3
             }
           },
@@ -16473,11 +16505,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 479,
+              "line": 475,
               "column": 2
             },
             "end": {
-              "line": 481,
+              "line": 477,
               "column": 3
             }
           },
@@ -17436,7 +17468,7 @@
           "column": 0
         },
         "end": {
-          "line": 482,
+          "line": 478,
           "column": 1
         }
       },
@@ -17586,8 +17618,8 @@
           "inheritedFrom": "LrndesignGalleryBehaviors"
         },
         {
-          "name": "id",
-          "description": "gallery's unique id",
+          "name": "items",
+          "description": "array of carousel/grid items",
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
@@ -17596,24 +17628,6 @@
             },
             "end": {
               "line": 79,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined",
-          "inheritedFrom": "LrndesignGalleryBehaviors"
-        },
-        {
-          "name": "items",
-          "description": "array of carousel/grid items",
-          "sourceRange": {
-            "file": "lrndesign-gallery-behaviors.js",
-            "start": {
-              "line": 83,
-              "column": 6
-            },
-            "end": {
-              "line": 86,
               "column": 7
             }
           },
@@ -17627,11 +17641,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 90,
+              "line": 83,
               "column": 6
             },
             "end": {
-              "line": 94,
+              "line": 87,
               "column": 7
             }
           },
@@ -17645,11 +17659,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 98,
+              "line": 91,
               "column": 6
             },
             "end": {
-              "line": 103,
+              "line": 96,
               "column": 7
             }
           },
@@ -17663,11 +17677,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 108,
+              "line": 101,
               "column": 6
             },
             "end": {
-              "line": 111,
+              "line": 104,
               "column": 7
             }
           },
@@ -17681,11 +17695,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 115,
+              "line": 108,
               "column": 6
             },
             "end": {
-              "line": 119,
+              "line": 112,
               "column": 7
             }
           },
@@ -17699,11 +17713,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 123,
+              "line": 116,
               "column": 6
             },
             "end": {
-              "line": 126,
+              "line": 119,
               "column": 7
             }
           },
@@ -17713,6 +17727,20 @@
         }
       ],
       "events": [
+        {
+          "type": "CustomEvent",
+          "name": "accent-color-changed",
+          "description": "Fired when the `accentColor` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "dark-changed",
+          "description": "Fired when the `dark` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
         {
           "type": "CustomEvent",
           "name": "selected-changed",
@@ -18348,7 +18376,7 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
           "defaultValue": "\"grey\"",
@@ -18372,7 +18400,7 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
           "defaultValue": "false",
@@ -18547,9 +18575,9 @@
           "inheritedFrom": "LrndesignGalleryBehaviors"
         },
         {
-          "name": "id",
-          "type": "string | null | undefined",
-          "description": "gallery's unique id",
+          "name": "items",
+          "type": "Array | null | undefined",
+          "description": "array of carousel/grid items",
           "privacy": "public",
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
@@ -18559,30 +18587,6 @@
             },
             "end": {
               "line": 79,
-              "column": 7
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "null",
-          "inheritedFrom": "LrndesignGalleryBehaviors"
-        },
-        {
-          "name": "items",
-          "type": "Array | null | undefined",
-          "description": "array of carousel/grid items",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "lrndesign-gallery-behaviors.js",
-            "start": {
-              "line": 83,
-              "column": 6
-            },
-            "end": {
-              "line": 86,
               "column": 7
             }
           },
@@ -18602,11 +18606,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 90,
+              "line": 83,
               "column": 6
             },
             "end": {
-              "line": 94,
+              "line": 87,
               "column": 7
             }
           },
@@ -18626,11 +18630,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 98,
+              "line": 91,
               "column": 6
             },
             "end": {
-              "line": 103,
+              "line": 96,
               "column": 7
             }
           },
@@ -18651,11 +18655,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 108,
+              "line": 101,
               "column": 6
             },
             "end": {
-              "line": 111,
+              "line": 104,
               "column": 7
             }
           },
@@ -18675,11 +18679,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 115,
+              "line": 108,
               "column": 6
             },
             "end": {
-              "line": 119,
+              "line": 112,
               "column": 7
             }
           },
@@ -18699,11 +18703,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 123,
+              "line": 116,
               "column": 6
             },
             "end": {
-              "line": 126,
+              "line": 119,
               "column": 7
             }
           },
@@ -18722,11 +18726,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 155,
+              "line": 159,
               "column": 6
             },
             "end": {
-              "line": 159,
+              "line": 163,
               "column": 7
             }
           },
@@ -20827,11 +20831,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 133,
+              "line": 126,
               "column": 2
             },
             "end": {
-              "line": 135,
+              "line": 128,
               "column": 3
             }
           },
@@ -20991,11 +20995,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 142,
+              "line": 135,
               "column": 2
             },
             "end": {
-              "line": 157,
+              "line": 150,
               "column": 3
             }
           },
@@ -21017,11 +21021,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 165,
+              "line": 158,
               "column": 2
             },
             "end": {
-              "line": 178,
+              "line": 171,
               "column": 3
             }
           },
@@ -21036,11 +21040,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 187,
+              "line": 180,
               "column": 2
             },
             "end": {
-              "line": 214,
+              "line": 212,
               "column": 3
             }
           },
@@ -21051,6 +21055,9 @@
             },
             {
               "name": "index"
+            },
+            {
+              "name": "length"
             }
           ],
           "return": {
@@ -21066,11 +21073,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 222,
+              "line": 220,
               "column": 2
             },
             "end": {
-              "line": 232,
+              "line": 230,
               "column": 3
             }
           },
@@ -21093,11 +21100,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 239,
+              "line": 237,
               "column": 2
             },
             "end": {
-              "line": 246,
+              "line": 244,
               "column": 3
             }
           },
@@ -21120,11 +21127,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 254,
+              "line": 252,
               "column": 2
             },
             "end": {
-              "line": 256,
+              "line": 254,
               "column": 3
             }
           },
@@ -21148,11 +21155,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 265,
+              "line": 263,
               "column": 2
             },
             "end": {
-              "line": 267,
+              "line": 265,
               "column": 3
             }
           },
@@ -21180,11 +21187,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 276,
+              "line": 274,
               "column": 2
             },
             "end": {
-              "line": 287,
+              "line": 288,
               "column": 3
             }
           },
@@ -21210,18 +21217,19 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 297,
+              "line": 298,
               "column": 2
             },
             "end": {
-              "line": 299,
+              "line": 308,
               "column": 3
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "val1"
+              "name": "val1",
+              "defaultValue": "null"
             },
             {
               "name": "val2",
@@ -21229,7 +21237,7 @@
             },
             {
               "name": "append",
-              "defaultValue": "\"\""
+              "defaultValue": "null"
             }
           ],
           "return": {
@@ -21245,11 +21253,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 307,
+              "line": 316,
               "column": 2
             },
             "end": {
-              "line": 315,
+              "line": 326,
               "column": 3
             }
           },
@@ -21271,11 +21279,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 325,
+              "line": 336,
               "column": 2
             },
             "end": {
-              "line": 327,
+              "line": 338,
               "column": 3
             }
           },
@@ -21293,16 +21301,54 @@
           "inheritedFrom": "LrndesignGalleryBehaviors"
         },
         {
+          "name": "_generateUUID",
+          "description": "Generate a UUID",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "lrndesign-gallery-behaviors.js",
+            "start": {
+              "line": 343,
+              "column": 2
+            },
+            "end": {
+              "line": 345,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "LrndesignGalleryBehaviors"
+        },
+        {
+          "name": "_uuidPart",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "lrndesign-gallery-behaviors.js",
+            "start": {
+              "line": 347,
+              "column": 2
+            },
+            "end": {
+              "line": 351,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "LrndesignGalleryBehaviors"
+        },
+        {
           "name": "_handleScroll",
           "description": "handles gallery-scroll event",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 166,
+              "line": 170,
               "column": 2
             },
             "end": {
-              "line": 168,
+              "line": 172,
               "column": 3
             }
           },
@@ -21322,11 +21368,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 176,
+              "line": 180,
               "column": 2
             },
             "end": {
-              "line": 185,
+              "line": 189,
               "column": 3
             }
           },
@@ -22291,7 +22337,7 @@
           "column": 0
         },
         "end": {
-          "line": 186,
+          "line": 190,
           "column": 1
         }
       },
@@ -22441,8 +22487,8 @@
           "inheritedFrom": "LrndesignGalleryBehaviors"
         },
         {
-          "name": "id",
-          "description": "gallery's unique id",
+          "name": "items",
+          "description": "array of carousel/grid items",
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
@@ -22451,24 +22497,6 @@
             },
             "end": {
               "line": 79,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined",
-          "inheritedFrom": "LrndesignGalleryBehaviors"
-        },
-        {
-          "name": "items",
-          "description": "array of carousel/grid items",
-          "sourceRange": {
-            "file": "lrndesign-gallery-behaviors.js",
-            "start": {
-              "line": 83,
-              "column": 6
-            },
-            "end": {
-              "line": 86,
               "column": 7
             }
           },
@@ -22482,11 +22510,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 90,
+              "line": 83,
               "column": 6
             },
             "end": {
-              "line": 94,
+              "line": 87,
               "column": 7
             }
           },
@@ -22500,11 +22528,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 98,
+              "line": 91,
               "column": 6
             },
             "end": {
-              "line": 103,
+              "line": 96,
               "column": 7
             }
           },
@@ -22518,11 +22546,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 108,
+              "line": 101,
               "column": 6
             },
             "end": {
-              "line": 111,
+              "line": 104,
               "column": 7
             }
           },
@@ -22536,11 +22564,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 115,
+              "line": 108,
               "column": 6
             },
             "end": {
-              "line": 119,
+              "line": 112,
               "column": 7
             }
           },
@@ -22554,11 +22582,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 123,
+              "line": 116,
               "column": 6
             },
             "end": {
-              "line": 126,
+              "line": 119,
               "column": 7
             }
           },
@@ -22571,11 +22599,11 @@
           "description": "aspect ratio of media",
           "sourceRange": {
             "start": {
-              "line": 155,
+              "line": 159,
               "column": 6
             },
             "end": {
-              "line": 159,
+              "line": 163,
               "column": 7
             }
           },
@@ -22584,6 +22612,20 @@
         }
       ],
       "events": [
+        {
+          "type": "CustomEvent",
+          "name": "accent-color-changed",
+          "description": "Fired when the `accentColor` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "dark-changed",
+          "description": "Fired when the `dark` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
         {
           "type": "CustomEvent",
           "name": "selected-changed",
@@ -23219,7 +23261,7 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
           "defaultValue": "\"grey\"",
@@ -23243,7 +23285,7 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
           "defaultValue": "false",
@@ -23418,9 +23460,9 @@
           "inheritedFrom": "LrndesignGalleryBehaviors"
         },
         {
-          "name": "id",
-          "type": "string | null | undefined",
-          "description": "gallery's unique id",
+          "name": "items",
+          "type": "Array | null | undefined",
+          "description": "array of carousel/grid items",
           "privacy": "public",
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
@@ -23430,30 +23472,6 @@
             },
             "end": {
               "line": 79,
-              "column": 7
-            }
-          },
-          "metadata": {
-            "polymer": {
-              "attributeType": "String"
-            }
-          },
-          "defaultValue": "null",
-          "inheritedFrom": "LrndesignGalleryBehaviors"
-        },
-        {
-          "name": "items",
-          "type": "Array | null | undefined",
-          "description": "array of carousel/grid items",
-          "privacy": "public",
-          "sourceRange": {
-            "file": "lib/lrndesign-gallery-behaviors.js",
-            "start": {
-              "line": 83,
-              "column": 6
-            },
-            "end": {
-              "line": 86,
               "column": 7
             }
           },
@@ -23473,11 +23491,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 90,
+              "line": 83,
               "column": 6
             },
             "end": {
-              "line": 94,
+              "line": 87,
               "column": 7
             }
           },
@@ -23497,11 +23515,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 98,
+              "line": 91,
               "column": 6
             },
             "end": {
-              "line": 103,
+              "line": 96,
               "column": 7
             }
           },
@@ -23522,11 +23540,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 108,
+              "line": 101,
               "column": 6
             },
             "end": {
-              "line": 111,
+              "line": 104,
               "column": 7
             }
           },
@@ -23546,11 +23564,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 115,
+              "line": 108,
               "column": 6
             },
             "end": {
-              "line": 119,
+              "line": 112,
               "column": 7
             }
           },
@@ -23570,11 +23588,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 123,
+              "line": 116,
               "column": 6
             },
             "end": {
-              "line": 126,
+              "line": 119,
               "column": 7
             }
           },
@@ -23837,11 +23855,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 241,
+              "line": 262,
               "column": 2
             },
             "end": {
-              "line": 243,
+              "line": 264,
               "column": 3
             }
           },
@@ -25673,11 +25691,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 215,
+              "line": 236,
               "column": 2
             },
             "end": {
-              "line": 236,
+              "line": 257,
               "column": 3
             }
           },
@@ -25836,11 +25854,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 142,
+              "line": 135,
               "column": 2
             },
             "end": {
-              "line": 157,
+              "line": 150,
               "column": 3
             }
           },
@@ -25862,11 +25880,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 165,
+              "line": 158,
               "column": 2
             },
             "end": {
-              "line": 178,
+              "line": 171,
               "column": 3
             }
           },
@@ -25881,11 +25899,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 187,
+              "line": 180,
               "column": 2
             },
             "end": {
-              "line": 214,
+              "line": 212,
               "column": 3
             }
           },
@@ -25896,6 +25914,9 @@
             },
             {
               "name": "index"
+            },
+            {
+              "name": "length"
             }
           ],
           "return": {
@@ -25911,11 +25932,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 222,
+              "line": 220,
               "column": 2
             },
             "end": {
-              "line": 232,
+              "line": 230,
               "column": 3
             }
           },
@@ -25938,11 +25959,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 239,
+              "line": 237,
               "column": 2
             },
             "end": {
-              "line": 246,
+              "line": 244,
               "column": 3
             }
           },
@@ -25965,11 +25986,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 254,
+              "line": 252,
               "column": 2
             },
             "end": {
-              "line": 256,
+              "line": 254,
               "column": 3
             }
           },
@@ -25993,11 +26014,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 265,
+              "line": 263,
               "column": 2
             },
             "end": {
-              "line": 267,
+              "line": 265,
               "column": 3
             }
           },
@@ -26025,11 +26046,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 276,
+              "line": 274,
               "column": 2
             },
             "end": {
-              "line": 287,
+              "line": 288,
               "column": 3
             }
           },
@@ -26055,18 +26076,19 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 297,
+              "line": 298,
               "column": 2
             },
             "end": {
-              "line": 299,
+              "line": 308,
               "column": 3
             }
           },
           "metadata": {},
           "params": [
             {
-              "name": "val1"
+              "name": "val1",
+              "defaultValue": "null"
             },
             {
               "name": "val2",
@@ -26074,7 +26096,7 @@
             },
             {
               "name": "append",
-              "defaultValue": "\"\""
+              "defaultValue": "null"
             }
           ],
           "return": {
@@ -26090,11 +26112,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 307,
+              "line": 316,
               "column": 2
             },
             "end": {
-              "line": 315,
+              "line": 326,
               "column": 3
             }
           },
@@ -26116,11 +26138,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 325,
+              "line": 336,
               "column": 2
             },
             "end": {
-              "line": 327,
+              "line": 338,
               "column": 3
             }
           },
@@ -26135,6 +26157,44 @@
               "defaultValue": "false"
             }
           ],
+          "inheritedFrom": "LrndesignGalleryBehaviors"
+        },
+        {
+          "name": "_generateUUID",
+          "description": "Generate a UUID",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "lib/lrndesign-gallery-behaviors.js",
+            "start": {
+              "line": 343,
+              "column": 2
+            },
+            "end": {
+              "line": 345,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "LrndesignGalleryBehaviors"
+        },
+        {
+          "name": "_uuidPart",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "lib/lrndesign-gallery-behaviors.js",
+            "start": {
+              "line": 347,
+              "column": 2
+            },
+            "end": {
+              "line": 351,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
           "inheritedFrom": "LrndesignGalleryBehaviors"
         }
       ],
@@ -27090,7 +27150,7 @@
           "column": 0
         },
         "end": {
-          "line": 244,
+          "line": 265,
           "column": 1
         }
       },
@@ -27240,8 +27300,8 @@
           "inheritedFrom": "LrndesignGalleryBehaviors"
         },
         {
-          "name": "id",
-          "description": "gallery's unique id",
+          "name": "items",
+          "description": "array of carousel/grid items",
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
@@ -27250,24 +27310,6 @@
             },
             "end": {
               "line": 79,
-              "column": 7
-            }
-          },
-          "metadata": {},
-          "type": "string | null | undefined",
-          "inheritedFrom": "LrndesignGalleryBehaviors"
-        },
-        {
-          "name": "items",
-          "description": "array of carousel/grid items",
-          "sourceRange": {
-            "file": "lib/lrndesign-gallery-behaviors.js",
-            "start": {
-              "line": 83,
-              "column": 6
-            },
-            "end": {
-              "line": 86,
               "column": 7
             }
           },
@@ -27281,11 +27323,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 90,
+              "line": 83,
               "column": 6
             },
             "end": {
-              "line": 94,
+              "line": 87,
               "column": 7
             }
           },
@@ -27299,11 +27341,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 98,
+              "line": 91,
               "column": 6
             },
             "end": {
-              "line": 103,
+              "line": 96,
               "column": 7
             }
           },
@@ -27317,11 +27359,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 108,
+              "line": 101,
               "column": 6
             },
             "end": {
-              "line": 111,
+              "line": 104,
               "column": 7
             }
           },
@@ -27335,11 +27377,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 115,
+              "line": 108,
               "column": 6
             },
             "end": {
-              "line": 119,
+              "line": 112,
               "column": 7
             }
           },
@@ -27353,11 +27395,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 123,
+              "line": 116,
               "column": 6
             },
             "end": {
-              "line": 126,
+              "line": 119,
               "column": 7
             }
           },
@@ -27367,6 +27409,20 @@
         }
       ],
       "events": [
+        {
+          "type": "CustomEvent",
+          "name": "accent-color-changed",
+          "description": "Fired when the `accentColor` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "dark-changed",
+          "description": "Fired when the `dark` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
         {
           "type": "CustomEvent",
           "name": "selected-changed",

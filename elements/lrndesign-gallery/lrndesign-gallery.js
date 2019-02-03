@@ -53,21 +53,32 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
     return "lrndesign-gallery";
   }
 
+  static get behaviors() {
+    return [LrndesignGalleryBehaviors];
+  }
+
   // render function
   static get template() {
     return html`
-      <style is="custom-style" include="simple-colors-shared-styles"></style>
+      <style is="custom-style" include="simple-colors-shared-styles">
+        :host {
+          display: block;
+        }
+        :host([hidden]) {
+          display: none;
+        }
+      </style>
       <div id="gallery">
-        <template is="dom-if" if="[[!grid]]">
+        <template is="dom-if" if="[[!grid]]" restamp>
           <lrndesign-gallery-carousel
             accent-color$="[[accentColor]]"
             aspect-ratio$="[[aspectRatio]]"
             title$="[[title]]"
-            dark$="[[title]]"
+            dark$="[[dark]]"
             gallery-id$="[[id]]"
             responsive-size$="[[responsiveSize]]"
             sizing$="[[sizing]]"
-            sources$="[[sources]]"
+            sources="[[sources]]"
             title$="[[title]]"
           >
             <div slot="description"></div>
@@ -77,11 +88,11 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
           <lrndesign-gallery-grid
             accent-color$="[[accentColor]]"
             aspect-ratio$="[[aspectRatio]]"
-            dark$="[[title]]"
+            dark$="[[dark]]"
             gallery-id$="[[id]]"
             responsive-size$="[[responsiveSize]]"
             sizing$="[[sizing]]"
-            sources$="[[sources]]"
+            sources="[[sources]]"
             title$="[[title]]"
           >
             <div slot="description"></div>
@@ -103,13 +114,26 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
         icon: "image:collections",
         color: "cyan",
         groups: ["Content", "Instructional", "Media", "Image"],
-        handles: [],
+        handles: [
+          {
+            type: "image",
+            source: "image"
+          }
+        ],
         meta: {
           author: "LRNWebComponents"
         }
       },
       settings: {
-        quick: [
+        quick: [],
+        configure: [
+          {
+            property: "title",
+            title: "Gallery Title",
+            description: "A title for the gallery.",
+            inputMethod: "textfield",
+            icon: "editor:title"
+          },
           {
             property: "accentColor",
             title: "Accent Color",
@@ -130,15 +154,12 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
             description: "Display as grid?",
             inputMethod: "boolean",
             icon: "icons:view-module"
-          }
-        ],
-        configure: [
+          },
           {
-            property: "title",
-            title: "Gallery Title",
-            description: "A title for the gallery.",
-            inputMethod: "textfield",
-            icon: "editor:title"
+            slot: "description",
+            title: "Gallery Description",
+            description: "An optional description for the gallery.",
+            inputMethod: "textfield"
           },
           {
             property: "sources",
@@ -159,23 +180,23 @@ class LrndesignGallery extends LrndesignGalleryBehaviors {
                 inputMethod: "textfield"
               },
               {
-                property: "image",
-                title: "Image",
+                property: "src",
+                title: "Image Source",
                 description: "The path of the image.",
                 inputMethod: "textfield"
               },
               {
                 property: "thumbnail",
-                title: "Optional Thumbnail",
+                title: "Image Thumbnail Source",
                 description:
-                  "The path of the a thumbnail version of the image.",
+                  "The path of an optional thumbnail version of the image.",
                 inputMethod: "textfield"
               },
               {
                 property: "large",
-                title: "Optional Full Size",
+                title: "Image Full Size Source",
                 description:
-                  "The path of the a thumbnail version of the image.",
+                  "The path of an optional large version of the image for zooming.",
                 inputMethod: "textfield"
               }
             ]

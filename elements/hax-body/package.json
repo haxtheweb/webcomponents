@@ -49,7 +49,7 @@
     "@lrnwebcomponents/lrn-icons": "^2.0.3",
     "@lrnwebcomponents/md-extra-icons": "^2.0.4",
     "@lrnwebcomponents/oer-schema": "^2.0.4",
-    "@lrnwebcomponents/paper-icon-picker": "^2.0.4",
+    "@lrnwebcomponents/simple-picker": "^2.0.4",
     "@lrnwebcomponents/paper-input-flagged": "^2.0.4",
     "@lrnwebcomponents/responsive-grid": "^2.0.4",
     "@lrnwebcomponents/schema-behaviors": "^2.0.3",

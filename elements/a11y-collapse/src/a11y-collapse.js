@@ -311,7 +311,6 @@ let A11yCollapse = Polymer({
    * Handle tap
    */
   _onTap: function(e) {
-    console.log(e);
     if (!this.disabled) {
       this.toggle();
       this.fire("a11y-collapse-click", this);

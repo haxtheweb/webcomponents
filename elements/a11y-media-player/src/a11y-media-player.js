@@ -503,7 +503,6 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     root.querySelectorAll("source,track").forEach(function(node) {
       root.$.html5.media.appendChild(node);
     });
-    console.log(root.tracks, root.sources);
     root._appendToPlayer(root.tracks, "track");
     root._appendToPlayer(root.sources, "source");
     root.$.html5.media.textTracks.onaddtrack = function(e) {

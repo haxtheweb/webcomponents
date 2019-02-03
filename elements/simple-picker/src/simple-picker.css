@@ -1,14 +1,12 @@
 :host {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
   --simple-picker-color: black;
+  font-size: var(--paper-input-container-label_-_font-size, var(--paper-font-subhead_-_font-size, inherit));
+  margin: 8px 0;
+  height: 42px;
   @apply --simple-picker;
-}
-:host, 
-:host #sample, 
-:host .rows {
-  margin: 0;
-  padding: 0;
 }
 
 :host([disabled]) {
@@ -18,8 +16,27 @@
 :host([hidden]) {
   display: none;
 }
+
+:host label {
+  padding-right: 5px;
+  color: var(--paper-input-container-label_-_color, var(--paper-input-container-color, var(--secondary-text-color, #000)));
+  @apply --simple-picker-label;
+}
+
+:host, 
+:host #sample, 
+:host .rows {
+  margin: 0;
+  padding: 0;
+}
+
+:host #listbox {
+  display: flex;
+  flex: 1 0 auto;
+}
+
 :host #sample {
-  display: inline-flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2px;
@@ -42,8 +59,10 @@
   display: none;
   width: 100%;
   position: absolute;
-  top: calc(var(--simple-picker-swatch-size, 20px)+12px);
+  top: 36px;
+  margin-left: 1px;
   background-color: var(--simple-picker-background-color,#ddd);
+  @apply --simple-picker-collapse;
 }
 
 :host([expanded]:not([disabled])) #collapse {
@@ -74,6 +93,10 @@
   background-color: var(--simple-picker-option-background-color, white);
   outline: var(--simple-picker-option-outline, none);
   transition: max-height 2s;
+}
+
+:host #sample simple-picker-option {
+
 }
 
 :host simple-picker-option[selected] {
