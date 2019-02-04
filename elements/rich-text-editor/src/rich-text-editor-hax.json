@@ -1,0 +1,34 @@
+{
+  "canScale": true,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Rich text-editor",
+    "description": "a standalone rich text editor",
+    "icon": "icons:android",
+    "color": "green",
+    "groups": ["Text"],
+    "handles": [
+      {
+        "type": "todo:read-the-docs-for-usage"
+      }
+    ],
+    "meta": {
+      "author": "nikkimk",
+      "owner": "Penn State University"
+    }
+  },
+  "settings": {
+    "quick": [],
+    "configure": [
+      {
+        "property": "title",
+        "description": "",
+        "inputMethod": "textfield",
+        "required": false,
+        "icon": "icons:android"
+      }
+    ],
+    "advanced": []
+  }
+}

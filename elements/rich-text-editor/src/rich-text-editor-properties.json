@@ -1,0 +1,9 @@
+{
+  "label": {
+    "name": "label",
+    "type": "String",
+    "value": "\"Rich Text Editor\"",
+    "reflectToAttribute": true,
+    "observer": false
+  }
+}
