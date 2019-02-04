@@ -92,7 +92,7 @@
   "value": {
     "name": "value",
     "type": "Object",
-    "value": "null",
+    "value": null,
     "notify": true,
     "reflectToAttribute": true
   },
@@ -104,5 +104,14 @@
     "name": "__activeDesc",
     "type": "String",
     "value": "option-0-0"
+  },
+
+  /**
+   * The selected option based on the value of the picker
+   */
+  "__selectedOption": {
+    "name": "_setSelectedOption",
+    "type": "Object",
+    "computed": "_setSelectedOption(value)"
   }
 }

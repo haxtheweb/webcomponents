@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { IronMeta } from "@polymer/iron-meta/iron-meta.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/marked-element/marked-element.js";
 
@@ -28,11 +29,9 @@ class IconsetDemo extends PolymerElement {
           box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
             0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
           margin-bottom: 40px;
-        }
-        :host .demo-container {
           padding: 20px 40px;
         }
-        :host .demo-container .iconset:not(:first-of-type) {
+        :host .iconset:not(:first-of-type) {
           border-top: 1px solid #ddd;
         }
         :host ul {
@@ -44,6 +43,7 @@ class IconsetDemo extends PolymerElement {
           width: 160px;
           margin: 16px 8px;
           text-align: center;
+          font-size: 10px;
         }
         :host iron-icon {
           font-size: 14px;
@@ -74,76 +74,32 @@ class IconsetDemo extends PolymerElement {
         :host .iconset:nth-of-type(9n) iron-icon {
           color: #005f8b;
         }
-        :host #icon-text {
-          margin-top: 8px;
-          font-size: 10px;
-          color: black;
-          text-align: center;
-        }
-        :host .code-container {
-          margin: 0;
-          background-color: var(--google-grey-100, #f5f5f5);
-          border-top: 1px solid #e0e0e0;
-        }
-        :host code {
-          padding: 20px 40px;
-          display: block;
-          margin: 0;
-          font-size: 13px;
-        }
-        :host .tag {
-          color: #905;
-        }
-        :host .attr-name {
-          color: #690;
-        }
-        :host .attr-value {
-          color: #07a;
-        }
       </style>
-      <div class="demo-container">
-        <template is="dom-repeat" items="[[items]]" as="iconset">
-          <div class="iconset">
-            <p><strong>[[iconset.name]]</strong></p>
-            <ul>
-              <template is="dom-repeat" items="[[iconset.icons]]" as="icon">
-                <li>
-                  <div id="icon">
-                    <iron-icon icon\$="[[iconset.prefix]][[icon]]"></iron-icon>
-                    <div id="icon-text">[[iconset.prefix]][[icon]]</div>
-                  </div>
-                </li>
-              </template>
-            </ul>
-          </div>
-        </template>
-      </div>
-      <div class="code-container">
-        <code
-          ><span class="tag">&lt;iron-icon</span>
-          <span class="attr-name"
-            >icon="<strong
-              ><em
-                ><span class="attr-value"
-                  >optional_iconset_name:icon_name</span
-                ></em
-              ></strong
-            >"</span
-          ><span class="tag">&gt;&lt;/iron-icon&gt;</span></code
-        >
-      </div>
+      <template is="dom-repeat" items="[[__iconList]]" as="iconset">
+        <div class="iconset">
+          <p><strong>[[iconset.name]]</strong></p>
+          <ul>
+            <template is="dom-repeat" items="[[iconset.icons]]" as="icon">
+              <li>
+                <div id="icon">
+                  <iron-icon icon\$="[[icon]]"></iron-icon>
+                  <div id="icon-text">[[icon]]</div>
+                </div>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </template>
     `;
   }
 
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      items: {
-        name: "items",
+      __iconList: {
+        name: "__iconList",
         type: "Array",
-        value: [],
-        reflectToAttribute: false,
-        observer: false
+        value: []
       }
     };
   }
@@ -156,37 +112,37 @@ class IconsetDemo extends PolymerElement {
     return "iconset-demo";
   }
   /**
-   * life cycle, element is afixed to the DOM
+   * life cycle, element is ready
    */
   connectedCallback() {
-    this._getIconsFromNodeList();
     super.connectedCallback();
+    const iconSets = new IronMeta({ type: "iconset" });
+    let temp = [];
+
+    // need to access iconset imperatively now
+    if (
+      typeof iconSets !== typeof undefined &&
+      iconSets.list &&
+      iconSets.list.length
+    ) {
+      var index = 0;
+      iconSets.list.forEach(function(item) {
+        let name = item.name;
+        temp.push({
+          name: name,
+          icons: []
+        });
+        item.getIconNames().forEach(icon => {
+          temp[index].icons.push(icon);
+        });
+        index++;
+      });
+    }
+    this.__iconList = temp;
   }
   /**
    * life cycle, element is removed from the DOM
    */
   //disconnectedCallback() {}
-
-  /**
-   * gets icon data based on a query of iron-iconset-svg
-   */
-  _getIconsFromNodeList() {
-    let set = document.head.querySelectorAll("iron-iconset-svg");
-    this.set("items", []);
-    for (let i = 0; i < set.length; i++) {
-      let setName = set[i].getAttribute("name"),
-        g = set[i].querySelectorAll("svg > defs > g, svg > g"),
-        icons = [];
-      for (let j = 0; j < g.length; j++) {
-        icons.push(g[j].getAttribute("id"));
-      }
-      this.push("items", {
-        name:
-          setName !== undefined && setName !== null ? setName + " " : "Icons",
-        prefix: setName !== undefined && setName !== null ? setName + ":" : "",
-        icons: icons !== undefined && icons !== null ? icons : []
-      });
-    }
-  }
 }
 window.customElements.define(IconsetDemo.tag, IconsetDemo);

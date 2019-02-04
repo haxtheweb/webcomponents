@@ -1,0 +1,65 @@
+{
+  "name": "@lrnwebcomponents/simple-icon-picker",
+  "wcfactory": {
+    "className": "SimpleIconPicker",
+    "customElementClass": "PolymerElement",
+    "elementName": "simple-icon-picker",
+    "generator-wcfactory-version": "0.6.5",
+    "useHAX": false,
+    "useSass": false,
+    "files": {
+      "css": "src/simple-icon-picker.css",
+      "scss": "src/simple-icon-picker.scss",
+      "html": "src/simple-icon-picker.html",
+      "js": "src/simple-icon-picker.js",
+      "properties": "src/simple-icon-picker-properties.json",
+      "hax": "src/simple-icon-picker-hax.json"
+    }
+  },
+  "version": "2.0.4",
+  "description": "Uses simple-picker to create an icon picker",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elmsln/lrnwebcomponents.git"
+  },
+  "main": "simple-icon-picker.js",
+  "module": "simple-icon-picker.es6.js",
+  "umd": "simple-icon-picker.umd.js",
+  "amd": "simple-icon-picker.amd.js",
+  "scripts": {
+    "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/simple-icon-picker/test/",
+    "start":"yarn run dev","build":"../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'","dev":"concurrently --kill-others \"yarn run watch\" \"yarn run serve\"","watch":"../../node_modules/.bin/gulp dev","serve":"polymer serve --npm --module-resolution=node --open","lighthouse":"../../node_modules/.bin/gulp lighthouse"
+  },
+  "author": {
+    "name": "nikkimk"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@polymer/polymer":"^3.0.5",
+    "@polymer/iron-meta": "^3.0.1",
+    "@lrnwebcomponents/simple-picker": "^2.0.4"
+  },
+  "devDependencies": {
+    "web-animations-js":"2.3.1",
+    "@polymer/iron-icons": "^3.0.1",
+    "@lrnwebcomponents/deduping-fix":"0.2.0",
+    "@polymer/iron-demo-helpers":"3.0.2",
+    "@polymer/iron-component-page":"github:PolymerElements/iron-component-page",
+    "@webcomponents/webcomponentsjs":"2.2.3",
+    "concurrently":"4.1.0",
+    "gulp-babel":"8.0.0",
+    "gulp-sourcemaps":"2.6.4",
+    "lodash":"4.17.11",
+    "polymer-cli":"1.9.5",
+    "polymer-build":"3.1.1",
+    "wct-browser-legacy":"1.0.2"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "web-components",
+    "html"
+  ]
+}

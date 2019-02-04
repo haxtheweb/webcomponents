@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+    <script type="module" src="../simple-icon-picker.js"></script>
+  </head>
+  <body>
+
+    <simple-icon-picker>
+      This is the element content.
+    </simple-icon-picker>
+<test-fixture id="BasicTestFixture">
+  <template>
+    <simple-icon-picker></simple-icon-picker>
+  </template>
+</test-fixture>
+
+<test-fixture id="ChangedPropertyTestFixture">
+  <template>
+    <simple-icon-picker></simple-icon-picker>
+  </template>
+</test-fixture>
+
+<script type="module">
+  suite('<simple-icon-picker>', () => {
+    test('it should upgrade', () => {
+      assert.instanceOf(document.querySelector('simple-icon-picker'), customElements.get("simple-icon-picker", 'simple-icon-picker should be an instance of simpleIconPicker'));
+    });
+
+    /*test('setting a property on the element works', () => {
+      const element = fixture('AdvancedTestFixture');
+      element.title = 'my title';
+      assert.equal(element.title, 'my title');
+      const elementShadowRoot = element.shadowRoot;
+      const elementHeader = elementShadowRoot.querySelector('h2');
+      assert.equal(elementHeader.innerHTML, 'Hello my title!');
+    });*/
+  });
+    </script>
+  </body>
+</html>

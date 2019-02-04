@@ -153,25 +153,6 @@ class SimplePicker extends PolymerElement {
   }
 
   /**
-   * sets the selected option to a given option's id
-   *
-   * @param {string} the option id
-   */
-  _initSelectedOption(value = null) {
-    this.__selectedOption = null;
-    if (value !== null && this.options !== undefined && this.options !== null) {
-      for (var i = 0; i < this.options.length; i++) {
-        for (var j = 0; j < this.options[i].length; j++) {
-          if (this.options[i][j].value === value) {
-            this.__selectedOption = this.options[i][j];
-            this.__activeDesc = this.options[i][j].value;
-          }
-        }
-      }
-    }
-  }
-
-  /**
    * determines if an option is at a given row and column
    *
    * @param {string} an option's id
@@ -210,12 +191,22 @@ class SimplePicker extends PolymerElement {
    *
    * @param {string} the option id
    */
-  _setSelectedOption(option) {
-    this.__selectedOption = this._getOption(this.options, option.id);
-    this.value = option.value;
+  _setSelectedOption(value) {
+    let sel = null;
     this.dispatchEvent(
       new CustomEvent("change", { bubbles: true, detail: this })
     );
+    if (value !== null && this.options !== undefined && this.options !== null) {
+      for (var i = 0; i < this.options.length; i++) {
+        for (var j = 0; j < this.options[i].length; j++) {
+          if (this.options[i][j].value === value) {
+            this.__activeDesc = this.options[i][j].value;
+            sel = this.options[i][j];
+          }
+        }
+      }
+    }
+    return sel;
   }
 
   /**
@@ -230,7 +221,7 @@ class SimplePicker extends PolymerElement {
       if (active !== null) active.focus();
       this.dispatchEvent(new CustomEvent("expand", { detail: this }));
     } else {
-      if (active !== null) this._setSelectedOption(active);
+      if (active !== null) this.value = active.getAttribute("value");
       this.dispatchEvent(new CustomEvent("collapse", { detail: this }));
     }
   }
@@ -241,13 +232,14 @@ class SimplePicker extends PolymerElement {
   ready() {
     super.ready();
     let root = this;
-    this._initSelectedOption(this.value);
-    this.$.listbox.addEventListener("click", function(e) {
-      root._handleListboxClick(e);
-    });
-    this.$.listbox.addEventListener("keydown", function(e) {
-      root._handleListboxKeydown(e);
-    });
+    if (this.$.listbox !== undefined) {
+      this.$.listbox.addEventListener("click", function(e) {
+        root._handleListboxClick(e);
+      });
+      this.$.listbox.addEventListener("keydown", function(e) {
+        root._handleListboxKeydown(e);
+      });
+    }
   }
 
   /**

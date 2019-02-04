@@ -9,8 +9,7 @@ import "@polymer/iron-icons/notification-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/device-icons.js";
 import "@polymer/iron-icons/image-icons.js";
-import "@lrnwebcomponents/paper-icon-picker/paper-icon-picker.js";
-import "@lrnwebcomponents/simple-picker/simple-picker.js";
+import "@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js";
 /**
  * `haxcms-manifest-editor-dialog`
  * `Dialog for presenting an editable manifest of core settings`
@@ -74,10 +73,11 @@ Polymer({
       ></simple-colors-picker>
       <simple-picker id="sitetheme" label="Theme"> </simple-picker>
       <label for="siteicon">Select an icon:</label>
-      <paper-icon-picker
+      <simple-icon-picker
         id="siteicon"
-        icon="[[manifest.metadata.icon]]"
-      ></paper-icon-picker>
+        hide-option-labels
+        value="[[manifest.metadata.icon]]"
+      ></simple-icon-picker>
     </paper-dialog-scrollable>
     <div class="buttons">
       <paper-button id="save" dialog-confirm="" raised="" on-tap="_saveTap">
