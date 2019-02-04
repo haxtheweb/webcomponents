@@ -213,7 +213,7 @@ class SimpleColorsPicker extends SimpleColors {
    * handles when the picker collapses
    */
   _handleCollapse(e) {
-    this.dispatchEvent(new CustomEvent("expand", { detail: this }));
+    this.dispatchEvent(new CustomEvent("collapse", { detail: this }));
   }
 
   /**
@@ -228,20 +228,6 @@ class SimpleColorsPicker extends SimpleColors {
    */
   _handleOptionFocus(e) {
     this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
-  }
-
-  /**
-   * life cycle, element is ready
-   */
-  ready() {
-    super.ready();
-  }
-
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
   }
   /**
    * life cycle, element is removed from the DOM

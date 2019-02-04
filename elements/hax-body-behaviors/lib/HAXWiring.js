@@ -654,7 +654,7 @@ export class HAXWiring {
                 break;
               case "iconpicker":
                 props[settings[value].property].component = {
-                  name: "simple-picker",
+                  name: "simple-icon-picker",
                   valueProperty: "value",
                   properties: {
                     required: settings[value].required,
@@ -664,36 +664,14 @@ export class HAXWiring {
                 };
                 console.log(settings, settings[value]);
                 // support options array of icons to pick from
-                let opts = settings[value].options,
-                  rows,
-                  cols;
-                if (opts.constructor === Array) {
-                  if (opts.length < 1) {
-                    let sets = document.head.querySelectorAll(
-                        'iron-iconset-svg[name="icons"] svg > defs > g, svg > g'
-                      ),
-                      cols = 15,
-                      rows = Math.floor(sets.length / cols);
-                    for (let i = 0; i < sets.length; i++) {
-                      let row = Math.floor(i / cols),
-                        col = i - row * cols,
-                        icon = sets[i].getAttribute("id");
-                      if (opts[row] === undefined || opts[row] === null)
-                        opts[row] = [];
-                      opts[row][col] = {
-                        alt: icon,
-                        icon: icon,
-                        value: icon
-                      };
-                    }
-                  }
-                  /*props[
-                    settings[value].property
-                  ].component.properties.hideOptionLabels = true;*/
-                  props[
-                    settings[value].property
-                  ].component.properties.options = opts;
-                }
+                let opts =
+                  settings[value].options !== undefined &&
+                  settings[value].options !== null
+                    ? settings[value].options
+                    : [];
+                props[
+                  settings[value].property
+                ].component.properties.icons = opts;
                 break;
               case "datepicker":
                 props[settings[value].property].component = {

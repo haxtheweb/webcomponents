@@ -1,9 +1,7 @@
 {
-  "items": {
-    "name": "items",
+  "__iconList": {
+    "name": "__iconList",
     "type": "Array",
-    "value": [],
-    "reflectToAttribute": false,
-    "observer": false
+    "value": []
   }
 }

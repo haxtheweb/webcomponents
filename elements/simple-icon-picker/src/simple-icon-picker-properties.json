@@ -1,0 +1,78 @@
+{
+  /**
+   * Allow a null option to be selected?
+   */
+  "allowNull": {
+    "name": "allowNull",
+    "type": "Boolean",
+    "value": false
+  },
+
+  /**
+   * Icon picker should not have visible icon labels.
+   */
+  "hideOptionLabels": {
+    "name": "hideOptionLabels",
+    "type": "Boolean",
+    "value": true,
+    "read-only": true
+  },
+
+  /**
+    * An array of icons by name: ```
+[
+  "editor:format-paint",
+  "content-copy",
+  "av:volume-off"
+  
+]```
+  */
+  "icons": {
+    "name": "icons",
+    "type": "Array",
+    "value": []
+  },
+
+  /**
+    * An array of options for the picker, eg.: ```
+[
+  {
+    "icon": "editor:format-paint",      //Optional. Used if the picker is used as an icon picker.
+    "alt": "Blue",                      //Required for accessibility. Alt text description of the choice.
+    "style": "background-color: blue;", //Optional. Used to set an option's style.
+    ...                                 //Optional. Any other properties that should be captured as part of the selected option's value
+  },...
+]```
+    */
+  "options": {
+    "name": "options",
+    "type": "Array",
+    "computed": "_getOptions(icons,__iconList,allowNull)"
+  },
+
+  /**
+   * The value of the option.
+   */
+  "value": {
+    "name": "label",
+    "type": "String",
+    "value": null,
+    "reflectToAttribute": true,
+    "notify": true
+  },
+
+  /**
+    * An array of icons by name: ```
+[
+  "editor:format-paint",
+  "content-copy",
+  "av:volume-off"
+  
+]```
+  */
+  "__iconList": {
+    "name": "__iconList",
+    "type": "Array",
+    "read-only": true
+  }
+}

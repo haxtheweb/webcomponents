@@ -59,9 +59,8 @@
   display: none;
   width: 100%;
   position: absolute;
-  top: 36px;
-  margin-left: 1px;
-  background-color: var(--simple-picker-background-color,#ddd);
+  top: 35px;
+  padding: 1px;
   @apply --simple-picker-collapse;
 }
 
@@ -73,13 +72,17 @@
   display: block;
   position: absolute;
   z-index: 1000;
-  outline: 1px solid var(--simple-picker-border-color,black);
+  outline: 1px solid var(--simple-picker-border-color, var(--simple-picker-color));
+  background-color: var(--simple-picker-background-color,#ddd);
+  box-shadow: 0px 0px 1px #888;
+  @apply --simple-picker-rows;
 }
 
 :host .row {
   display: flex; 
   align-items: stretch;
   justify-content: space-between;
+  @apply --simple-picker-row;
 }
 
 :host simple-picker-option {
@@ -93,6 +96,7 @@
   background-color: var(--simple-picker-option-background-color, white);
   outline: var(--simple-picker-option-outline, none);
   transition: max-height 2s;
+  @apply --simple-picker-option;
 }
 
 :host #sample simple-picker-option {

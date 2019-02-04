@@ -605,24 +605,22 @@
           "inheritedFrom": "ElementMixin"
         },
         {
-          "name": "items",
+          "name": "__iconList",
           "type": "?",
           "description": "",
-          "privacy": "public",
+          "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 126,
+              "line": 96,
               "column": 2
             },
             "end": {
-              "line": 132,
+              "line": 100,
               "column": 3
             }
           },
           "metadata": {
-            "polymer": {
-              "observer": "false"
-            }
+            "polymer": {}
           },
           "defaultValue": "[]"
         }
@@ -2711,15 +2709,15 @@
         },
         {
           "name": "connectedCallback",
-          "description": "life cycle, element is afixed to the DOM",
+          "description": "life cycle, element is ready",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 147,
+              "line": 115,
               "column": 2
             },
             "end": {
-              "line": 150,
+              "line": 140,
               "column": 3
             }
           },
@@ -2841,26 +2839,6 @@
             "desc": "Rewritten URL relative to base"
           },
           "inheritedFrom": "ElementMixin"
-        },
-        {
-          "name": "_getIconsFromNodeList",
-          "description": "gets icon data based on a query of iron-iconset-svg",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 159,
-              "column": 2
-            },
-            "end": {
-              "line": 176,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
         }
       ],
       "staticMethods": [
@@ -3807,34 +3785,18 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 20,
+          "line": 21,
           "column": 0
         },
         "end": {
-          "line": 177,
+          "line": 145,
           "column": 1
         }
       },
       "privacy": "public",
       "superclass": "PolymerElement",
       "name": "IconsetDemo",
-      "attributes": [
-        {
-          "name": "items",
-          "description": "",
-          "sourceRange": {
-            "start": {
-              "line": 126,
-              "column": 2
-            },
-            "end": {
-              "line": 132,
-              "column": 3
-            }
-          },
-          "metadata": {}
-        }
-      ],
+      "attributes": [],
       "events": [],
       "styling": {
         "cssVariables": [],

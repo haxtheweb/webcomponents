@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
+import { IronMeta } from "@polymer/iron-meta/iron-meta.js";
 import "@polymer/iron-icon/iron-icon.js";
 import "@polymer/marked-element/marked-element.js";
 
@@ -29,37 +30,37 @@ class IconsetDemo extends PolymerElement {
     return "iconset-demo";
   }
   /**
-   * life cycle, element is afixed to the DOM
+   * life cycle, element is ready
    */
   connectedCallback() {
-    this._getIconsFromNodeList();
     super.connectedCallback();
+    const iconSets = new IronMeta({ type: "iconset" });
+    let temp = [];
+
+    // need to access iconset imperatively now
+    if (
+      typeof iconSets !== typeof undefined &&
+      iconSets.list &&
+      iconSets.list.length
+    ) {
+      var index = 0;
+      iconSets.list.forEach(function(item) {
+        let name = item.name;
+        temp.push({
+          name: name,
+          icons: []
+        });
+        item.getIconNames().forEach(icon => {
+          temp[index].icons.push(icon);
+        });
+        index++;
+      });
+    }
+    this.__iconList = temp;
   }
   /**
    * life cycle, element is removed from the DOM
    */
   //disconnectedCallback() {}
-
-  /**
-   * gets icon data based on a query of iron-iconset-svg
-   */
-  _getIconsFromNodeList() {
-    let set = document.head.querySelectorAll("iron-iconset-svg");
-    this.set("items", []);
-    for (let i = 0; i < set.length; i++) {
-      let setName = set[i].getAttribute("name"),
-        g = set[i].querySelectorAll("svg > defs > g, svg > g"),
-        icons = [];
-      for (let j = 0; j < g.length; j++) {
-        icons.push(g[j].getAttribute("id"));
-      }
-      this.push("items", {
-        name:
-          setName !== undefined && setName !== null ? setName + " " : "Icons",
-        prefix: setName !== undefined && setName !== null ? setName + ":" : "",
-        icons: icons !== undefined && icons !== null ? icons : []
-      });
-    }
-  }
 }
 window.customElements.define(IconsetDemo.tag, IconsetDemo);

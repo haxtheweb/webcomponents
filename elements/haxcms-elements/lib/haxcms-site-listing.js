@@ -24,7 +24,8 @@ import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/paper-dialog/paper-dialog.js";
 import "@polymer/paper-dialog-scrollable/paper-dialog-scrollable.js";
 import "@polymer/paper-tooltip/paper-tooltip.js";
-import "@lrnwebcomponents/paper-icon-picker/paper-icon-picker.js";
+import "@lrnwebcomponents/simple-picker/simple-picker.js";
+import "@lrnwebcomponents/simple-icon-picker/simple-icon-picker.js";
 import "@lrnwebcomponents/map-menu/map-menu.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
@@ -264,10 +265,11 @@ Polymer({
           <paper-item value="haxcms-dev-theme">DEVELOPER THEME</paper-item>
         </dropdown-select>
         <label for="newsiteicon">Select an icon:</label>
-        <paper-icon-picker
+        <simple-icon-picker
           id="newsiteicon"
-          icon="[[activeItem.metadata.icon]]"
-        ></paper-icon-picker>
+          hide-option-labels
+          value="[[activeItem.metadata.icon]]"
+        ></simple-icon-picker>
       </paper-dialog-scrollable>
       <div class="buttons">
         <paper-button on-tap="_createSite" dialog-confirm id="create" raised
