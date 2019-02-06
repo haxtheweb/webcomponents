@@ -18,8 +18,12 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
   width: auto;
   height: auto;
   z-index: 1000;
-  min-width: var(--simple-modal-width, 50vw);
-  min-height: var(--simple-modal-height, 50vh);
+  width: var(--simple-modal-width, 50%);
+  height: var(--simple-modal-height, 50vh);
+  min-width: var(--simple-modal-min-width, --simple-modal-width);
+  min-height: var(--simple-modal-min-height, --simple-modal-height);
+  max-width: var(--simple-modal-max-width, 100%);
+  max-height: var(--simple-modal-max-height, 75vh);
   border-radius: 3px;
   @apply --simple-modal-dialog;
 }

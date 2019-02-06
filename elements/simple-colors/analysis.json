@@ -5080,23 +5080,25 @@
         },
         {
           "name": "ready",
-          "description": "life cycle, element is ready",
+          "description": "Stamps the element template.",
           "privacy": "protected",
           "sourceRange": {
+            "file": "../../@polymer/polymer/lib/mixins/element-mixin.js",
             "start": {
-              "line": 235,
-              "column": 2
+              "line": 608,
+              "column": 4
             },
             "end": {
-              "line": 237,
-              "column": 3
+              "line": 614,
+              "column": 5
             }
           },
           "metadata": {},
           "params": [],
           "return": {
             "type": "void"
-          }
+          },
+          "inheritedFrom": "ElementMixin"
         },
         {
           "name": "_initializeProperties",
@@ -6919,12 +6921,13 @@
           "description": "life cycle, element is afixed to the DOM",
           "privacy": "public",
           "sourceRange": {
+            "file": "../simple-colors.js",
             "start": {
-              "line": 242,
+              "line": 115,
               "column": 2
             },
             "end": {
-              "line": 244,
+              "line": 124,
               "column": 3
             }
           },
@@ -6932,7 +6935,8 @@
           "params": [],
           "return": {
             "type": "void"
-          }
+          },
+          "inheritedFrom": "SimpleColors"
         },
         {
           "name": "disconnectedCallback",
@@ -8151,7 +8155,7 @@
           "column": 0
         },
         "end": {
-          "line": 249,
+          "line": 235,
           "column": 1
         }
       },
