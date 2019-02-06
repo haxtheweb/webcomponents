@@ -1,2 +1,30 @@
-<label>[[label]]</label>
-<slot></slot>
+
+<style include="rich-text-editor-styles"></style>
+<div id="toolbar" aria-hidden$="[[!controls]]" collapsed$="[[collapsed]]">
+  <template is="dom-repeat" items="[[buttons]]" as="size">
+    <template is="dom-repeat" items="[[size.groups]]" as="group">
+      <div class="group" minimum-size$="[[size.size]]">
+        <template is="dom-repeat" items="[[group.buttons]]" as="button">
+          <rich-text-editor-button
+            controls$="[[controls]]"
+            command$="[[button.command]]"
+            event$="[[button.event]]"
+            icon$="[[button.icon]]"
+            label$="[[button.label]]"
+            toggled$="[[_toggledButton(button,__trigger)]]"
+            on-rich-text-button-tap="_handleTextOperation">
+          </rich-text-editor-button> 
+        </template>
+      </div>
+    </template>
+  </template>
+  <rich-text-editor-button
+    class="more-button"
+    display-max$="[[_getMax(buttons)]]"
+    controls="toolbar"
+    icon="more-vert"
+    label="Toggle More Buttons"
+    toggled$="[[!collapsed]]"
+    on-rich-text-button-tap="_toggleMore">
+  </rich-text-editor-button>  
+</div>

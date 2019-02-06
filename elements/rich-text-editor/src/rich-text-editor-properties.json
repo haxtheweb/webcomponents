@@ -1,9 +1,224 @@
 {
-  "label": {
-    "name": "label",
+  /**
+   * The editor buttons.
+   */
+  "buttons": {
+    "name": "buttons",
+    "type": "Array",
+    "computed": "_getButtons(config)"
+  },
+  /**
+   * Is the menu collapsed.
+   */
+  "collapsed": {
+    "name": "collapsed",
+    "type": "Boolean",
+    "value": true
+  },
+  /**
+   * The button config on the toolbar.
+   */
+  "config": {
+    "name": "config",
+    "type": "Object",
+    "value": {
+      "xs": [
+        {
+          "group": "History",
+          "buttons": [
+            {
+              "label": "Undo",
+              "icon": "icons:undo",
+              "event": "history-undo",
+              "command": "undo"
+            },
+            {
+              "label": "Redo",
+              "icon": "icons:redo",
+              "event": "history-redo",
+              "command": "redo"
+            }
+          ]
+        },
+        {
+          "group": "Basic Inline Operations",
+          "buttons": [
+            {
+              "label": "Bold",
+              "icon": "editor:format-bold",
+              "event": "text-bold",
+              "command": "bold",
+              "toggles": true
+            },
+            {
+              "label": "Italics",
+              "icon": "editor:format-italic",
+              "event": "text-italic",
+              "command": "italic",
+              "toggles": true
+            },
+            {
+              "label": "Erase Format",
+              "icon": "editor:format-clear",
+              "event": "text-remove-format",
+              "command": "removeFormat"
+            }
+          ]
+        },
+        {
+          "group": "Links",
+          "buttons": [
+            {
+              "label": "Link",
+              "icon": "link",
+              "command": "link",
+              "toggles": true
+            }
+          ]
+        },
+        {
+          "group": "Clipboard Operations",
+          "buttons": [
+            {
+              "label": "Cut",
+              "icon": "icons:content-cut",
+              "event": "clipboard-cut",
+              "command": "cut"
+            },
+            {
+              "label": "Copy",
+              "icon": "icons:content-copy",
+              "event": "clipboard-copy",
+              "command": "copy"
+            },
+            {
+              "label": "Paste",
+              "icon": "icons:content-paste",
+              "event": "clipboard-paste",
+              "command": "paste"
+            }
+          ]
+        }
+      ],
+      "sm": [
+        {
+          "group": "Subscript and Superscript",
+          "buttons": [
+            {
+              "label": "Subscript",
+              "icon": "mdextra:subscript",
+              "event": "text-subscript",
+              "command": "subscript",
+              "toggles": true
+            },
+            {
+              "label": "Superscript",
+              "icon": "mdextra:superscript",
+              "event": "text-superscript",
+              "command": "superscript",
+              "toggles": true
+            }
+          ]
+        }
+      ],
+      "md": [
+        {
+          "group": "Lists and Indents",
+          "buttons": [
+            {
+              "label": "Ordered List",
+              "icon": "editor:format-list-numbered",
+              "event": "text-list-numbered",
+              "command": "insertOrderedList",
+              "toggles": true
+            },
+            {
+              "label": "Unordered List",
+              "icon": "editor:format-list-bulleted",
+              "event": "text-list-bulleted",
+              "command": "insertUnorderedList",
+              "toggles": true
+            },
+            { "label": "Blockquote", "icon": "editor:format-quote" },
+            {
+              "label": "Increase Indent",
+              "icon": "editor:format-indent-increase",
+              "event": "text-indent",
+              "command": "indent"
+            },
+            {
+              "label": "Decrease Indent",
+              "icon": "editor:format-indent-decrease",
+              "event": "text-outdent",
+              "command": "outdent"
+            }
+          ]
+        }
+      ],
+      "lg": [
+        {
+          "group": "Insertions",
+          "buttons": [
+            {
+              "label": "Insert Inline Image",
+              "icon": "editor:insert-photo",
+              "command": "insertImage"
+            },
+            { "label": "Insert Symbol", "icon": "editor:functions" },
+            { "label": "Insert Emoji", "icon": "image:tag-faces" }
+          ]
+        }
+      ]
+    }
+  },
+  /**
+   * The target element's id attribute.
+   */
+  "controls": {
+    "name": "controls",
     "type": "String",
-    "value": "\"Rich Text Editor\"",
-    "reflectToAttribute": true,
-    "observer": false
+    "value": null
+  },
+  /**
+   * The editableElement element for the editor.
+   */
+  "editableElements": {
+    "name": "editableElements",
+    "type": "Array",
+    "value": []
+  },
+  /**
+   * The editableElement element for the editor.
+   */
+  "editableElement": {
+    "name": "editableElement",
+    "type": "Object",
+    "value": null
+  },
+  /**
+   * The the size of the editor.
+   */
+  "responsiveSize": {
+    "name": "responsiveSize",
+    "type": "String",
+    "value": "xs",
+    "reflectToAttribute": true
+  },
+  /**
+   * The current text selection.
+   */
+  "selection": {
+    "name": "selection",
+    "type": "Object",
+    "value": null
+  },
+  /**
+   * Should the toolbar stick to the top so that it is always visible.
+   */
+  "sticky": {
+    "name": "sticky",
+    "type": "Boolean",
+    "value": false,
+    "reflectToAttribute": true
   }
 }

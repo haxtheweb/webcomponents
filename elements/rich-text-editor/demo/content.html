@@ -10,34 +10,21 @@
     <script type="module">
       import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
       import '@polymer/iron-demo-helpers/demo-snippet.js';
-      import '../rich-text-editor.js';
       import '../lib/rich-text-editor-content.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic rich-text-editor demo</h3>
+      <h1>Basic rich-text-editor-content demo</h1>
       <demo-snippet>
         <template>
-          <style>
-            div[contenteditable=true] {
-              min-height: 20px;
-              border-top: none;
-              overflow: hidden;
-              border: 1px solid #ddd;
-            }
-          </style>
-          <rich-text-editor id="editor" sticky></rich-text-editor>
-          <div id="content"><p>This is content</p></div>
-          <div id="more-content"><p>This is also content</p></div>
-          <script>
-            window.onload = function(){
-              let editor = document.getElementById('editor');
-              editor.addEditableRegion(document.getElementById('content'));
-              editor.addEditableRegion(document.getElementById('more-content'));
-            }     
-          </script>
+          <rich-text-editor-content>
+            <p>I'm the easiest way to implement editable rich text.</p>
+          </rich-text-editor-content>
+          <rich-text-editor-content>
+            <p>Try me!</p>
+          </rich-text-editor-content>
         </template>
       </demo-snippet>
     </div>

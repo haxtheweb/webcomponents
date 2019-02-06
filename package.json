@@ -38,11 +38,12 @@
   },
   "devDependencies": {
     "@babel/core": "7.2.2",
-    "@open-wc/webpack": "^0.1.0",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-syntax-import-meta": "^7.0.0",
     "@babel/preset-env": "7.3.1",
-    "babel-loader": "8.0.5",
+    "@emotion/core": "10.x",
+    "@emotion/styled-base": "10.0.5",
+    "@open-wc/webpack": "^0.1.0",
     "@storybook/addon-a11y": "4.1.11",
     "@storybook/addon-actions": "4.1.11",
     "@storybook/addon-knobs": "4.1.11",
@@ -53,9 +54,8 @@
     "@storybook/addons": "4.1.11",
     "@storybook/cli": "4.1.11",
     "@storybook/polymer": "4.1.11",
-    "@emotion/core": "10.x",
-    "@emotion/styled-base": "10.0.5",
     "@webcomponents/webcomponentsjs": "2.2.4",
+    "babel-loader": "8.0.5",
     "babel-plugin-external-helpers": "6.22.0",
     "babel-plugin-transform-custom-element-classes": "0.1.0",
     "babel-plugin-transform-es2015-modules-umd": "6.24.1",
@@ -109,6 +109,7 @@
     "yo": "2.0.5"
   },
   "dependencies": {
+    "@polymer/iron-fit-behavior": "^3.0.1",
     "@polymer/lit-element": "0.7.1",
     "@polymer/polymer": "3.1.0",
     "@skatejs/renderer-lit-html": "0.2.2",
