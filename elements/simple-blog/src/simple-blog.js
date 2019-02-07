@@ -129,7 +129,7 @@ let SimpleBlog = Polymer({
 
   listeners: {
     "active-item-selected": "_activeItemEvent",
-    "active-item-reset": "_dataRefreshed"
+    "active-item-reset": "_goBack"
   },
 
   properties: {
