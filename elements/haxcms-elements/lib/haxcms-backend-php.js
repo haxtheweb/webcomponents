@@ -91,7 +91,6 @@ Polymer({
     );
   },
   initialItem: function(e) {
-    console.log("e:", e);
     this.__item = e.detail;
   },
   initialManifest: function(e) {
