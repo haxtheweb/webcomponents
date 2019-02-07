@@ -150,9 +150,6 @@ let SimpleBlog = Polymer({
     autorun(() => {
       this._locationChanged(store.location);
     });
-    autorun(() => {
-      this._activeItemChanged(toJS(store.activeItem));
-    });
     document.body.addEventListener(
       "haxcms-trigger-update",
       this._dataRefreshed.bind(this)
