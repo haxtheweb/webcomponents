@@ -1,24 +1,8 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
 import { Router } from "@vaadin/router";
-import { observable, decorate } from "mobx";
-
-/**
- * Define store for this component
- */
-export const store = {
-  manifest: null,
-  location: null,
-  activeItem: null
-};
-/**
- * Add Mobx decorator functionality
- */
-decorate(store, {
-  manifest: observable,
-  location: observable.ref,
-  activeItem: observable
-});
+import { autorun } from "mobx";
+import { store } from "./haxcms-site-store";
 
 /**
  * `haxcms-site-router`
@@ -58,81 +42,57 @@ Polymer({
    * ready life cycle
    */
   created: function() {
+    autorun(() => {
+      this._manifestChanged(store.routerManifest);
+    });
     window.addEventListener(
       "vaadin-router-location-changed",
       this._routerLocationChanged.bind(this)
     );
-    window.addEventListener(
-      "json-outline-schema-changed",
-      this._jsonOutlineSchemaChangedHandler.bind(this)
-    );
-    window.addEventListener(
-      "json-outline-schema-active-item-changed",
-      this._jsonOutlineSchemaActiveItemChangedHandler.bind(this)
-    );
-    window.addEventListener(
-      "haxcms-site-router-location-subscribe",
-      this._haxcmsSiteRouterLocationSubscribe.bind(this)
-    );
+    // window.addEventListener(
+    //   "json-outline-schema-changed",
+    //   this._jsonOutlineSchemaChangedHandler.bind(this)
+    // );
+    // window.addEventListener(
+    //   "json-outline-schema-active-item-changed",
+    //   this._jsonOutlineSchemaActiveItemChangedHandler.bind(this)
+    // );
+    // window.addEventListener(
+    //   "haxcms-site-router-location-subscribe",
+    //   this._haxcmsSiteRouterLocationSubscribe.bind(this)
+    // );
   },
   attached: function() {},
   /**
    * Detached life cycle
    */
   detached: function() {
-    window.addEventListener(
+    window.removeEventListener(
       "vaadin-router-location-changed",
       this._routerLocationChanged.bind(this)
     );
-    window.addEventListener(
-      "json-outline-schema-changed",
-      this._jsonOutlineSchemaChangedHandler.bind(this)
-    );
-    window.addEventListener(
-      "json-outline-schema-active-item-changed",
-      this._jsonOutlineSchemaActiveItemChangedHandler.bind(this)
-    );
-    window.addEventListener(
-      "haxcms-site-router-location-subscribe",
-      this._haxcmsSiteRouterLocationSubscribe.bind(this)
-    );
+    // window.rem(
+    //   "json-outline-schema-changed",
+    //   this._jsonOutlineSchemaChangedHandler.bind(this)
+    // );
+    // window.addEventListener(
+    //   "json-outline-schema-active-item-changed",
+    //   this._jsonOutlineSchemaActiveItemChangedHandler.bind(this)
+    // );
+    // window.addEventListener(
+    //   "haxcms-site-router-location-subscribe",
+    //   this._haxcmsSiteRouterLocationSubscribe.bind(this)
+    // );
   },
 
   /**
    * notice changes to the maifest and publish a new verion of the
    * router manifest on the event bus.
    */
-  _manifestChanged: function(newValue, oldValue) {
-    if (newValue) {
-      // normalize the manifest for the router
-      const routerManifest = this._createManifestRouterInstance(newValue);
-      // update local state
-      store.manifest = routerManifest;
+  _manifestChanged: function(routerManifest) {
+    if (routerManifest) {
       // rebuild the router
       this._updateRouter(routerManifest);
-    }
-  },
-
-  /**
-   * Returns a normalized router manifest based on a manifest
-   * @param {object} manifest
-   * @return routerManifest
-   */
-  _createManifestRouterInstance: function(manifest) {
-    if (
-      typeof manifest !== "undefined" &&
-      typeof manifest.items !== "undefined"
-    ) {
-      const manifestItems = manifest.items.map(i => {
-        let location = i.location
-          .replace("pages/", "")
-          .replace("/index.html", "");
-        return Object.assign({}, i, { location: location });
-      });
-      // create a new router manifest object
-      return Object.assign({}, manifest, {
-        items: manifestItems
-      });
     }
   },
 
@@ -144,7 +104,7 @@ Polymer({
    * @param {object} manifest
    */
   _updateRouter: function(manifest) {
-    if (!manifest) return;
+    if (!manifest || typeof manifest.items === "undefined") return;
     let options = {};
     if (this.baseURI) {
       options.baseUrl = this.baseURI;
@@ -171,37 +131,7 @@ Polymer({
    */
   _routerLocationChanged: function(e) {
     //store local state
-    this._location = e.detail.location;
-    // update the store
-    store.location = this._location;
-    // dispatch a haxcms-site-router prefixed event
-
-    window.dispatchEvent(
-      new CustomEvent("haxcms-site-router-location-changed", {
-        detail: e.detail.location
-      })
-    );
-
-    const activeItem = store.location.route.name;
-    let find = this.manifest.items.filter(item => {
-      if (item.id !== activeItem) {
-        return false;
-      }
-      return true;
-    });
-    // if we found one, make it the active page
-    if (find.length > 0) {
-      let found = find.pop();
-      async.microTask.run(() => {
-        setTimeout(() => {
-          if (typeof window.cmsSiteEditor !== typeof undefined) {
-            window.cmsSiteEditor.initialActiveItem = found;
-          }
-          this.fire("haxcms-active-item-changed", found);
-          store.activeItem = found;
-        }, 150);
-      });
-    }
+    store.location = e.detail.location;
   },
 
   /**

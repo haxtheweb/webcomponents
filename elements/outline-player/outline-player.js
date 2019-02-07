@@ -11,7 +11,7 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";
 import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
 import "@lrnwebcomponents/map-menu/map-menu.js";
-import { store as routerStore } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-router.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "./lib/outline-player-arrow.js";
 
@@ -385,17 +385,14 @@ let OutlinePlayer = Polymer({
   ready: function() {
     this.setupHAXTheme(true, this.$.contentcontainer);
     autorun(() => {
-      this._routerManifest = toJS(routerStore.manifest);
+      this._routerManifest = toJS(store.routerManifest);
     });
     autorun(() => {
-      this._location = routerStore.location;
+      this._location = store.location;
     });
     autorun(() => {
-      if (
-        routerStore.activeItem &&
-        typeof routerStore.activeItem !== "undefined"
-      ) {
-        this.selected = routerStore.activeItem.id;
+      if (store.activeItem && typeof store.activeItem !== "undefined") {
+        this.selected = store.activeItem.id;
       }
     });
   },
