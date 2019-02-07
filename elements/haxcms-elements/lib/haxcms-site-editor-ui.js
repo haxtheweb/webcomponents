@@ -268,11 +268,17 @@ Polymer({
     let outline = window.JSONOutlineSchema.requestAvailability();
     // get a prototype schema for an item
     this.__newForm.schema = outline.getItemSchema("item");
-    // get values but assume what was passed in is the parent relationship
-    this.__newForm.value = outline.getItemValues(null, this.activeItem);
+    // drop these for now cause we just care about title
+    delete this.__newForm.schema.properties.id;
+    delete this.__newForm.schema.properties.description;
+    delete this.__newForm.schema.properties.order;
+    delete this.__newForm.schema.properties.parent;
+    delete this.__newForm.schema.properties.metadata;
+    delete this.__newForm.schema.properties.indent;
+    this.__newForm.schema.properties.title.value = "";
     let b1 = document.createElement("paper-button");
     b1.raised = true;
-    b1.appendChild(document.createTextNode("Create"));
+    b1.appendChild(document.createTextNode("Create page"));
     b1.addEventListener("click", this._createNewItem.bind(this));
     let b2 = document.createElement("paper-button");
     b2.appendChild(document.createTextNode("cancel"));

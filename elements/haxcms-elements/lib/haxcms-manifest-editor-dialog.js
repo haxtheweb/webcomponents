@@ -25,22 +25,32 @@ Polymer({
         display: block;
       }
       #publish {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
+        min-width: 100px;
         background-color: var(--haxcms-color, #ff4081);
         color: #ffffff;
-        border-bottom-right-radius: 16px;
-        border-bottom-left-radius: 16px;
       }
-      #save,
-      #cancel {
-        margin-bottom: 80px;
+      .buttons {
+        margin: 8px 0 8px 0;
+      }
+      paper-dialog-scrollable {
+        padding: 8px 8px 32px 8px;
+      }
+      paper-button {
+        margin: 0 5px;
       }
       iron-icon {
         margin-right: 8px;
+      }
+      simple-icon-picker {
+        display: inline-flex;
+      }
+      label {
+        font-size: 14px;
+        padding-right: 5px;
+        color: var(
+          --paper-input-container-label_-_color,
+          var(--paper-input-container-color, var(--secondary-text-color, #000))
+        );
       }
     </style>
     <paper-dialog-scrollable>
@@ -80,13 +90,13 @@ Polymer({
       ></simple-icon-picker>
     </paper-dialog-scrollable>
     <div class="buttons">
-      <paper-button id="save" dialog-confirm="" raised="" on-tap="_saveTap">
+      <paper-button id="save" dialog-confirm raised on-tap="_saveTap">
         <iron-icon icon="icons:save"></iron-icon>Save
       </paper-button>
-      <paper-button id="cancel" dialog-dismiss="" raised="">
+      <paper-button id="cancel" dialog-dismiss raised>
         <iron-icon icon="icons:cancel"></iron-icon>Cancel
       </paper-button>
-      <paper-button id="publish" dialog-confirm="" on-tap="_publishTap">
+      <paper-button id="publish" dialog-confirm on-tap="_publishTap" raised>
         <iron-icon icon="icons:cloud-upload"></iron-icon>Publish
       </paper-button>
     </div>

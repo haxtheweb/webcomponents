@@ -166,7 +166,7 @@ let OutlinePlayer = Polymer({
       }
       #content {
         justify-content: center;
-        padding: 0 8px 8px 8px;
+        padding: 8px 8px 8px 8px;
       }
 
       #content > * {
@@ -178,6 +178,9 @@ let OutlinePlayer = Polymer({
       /* Required for HAX */
       :host([edit-mode]) #slot {
         display: none !important;
+      }
+      :host([edit-mode]) #content {
+        padding: 32px 8px 8px 8px;
       }
       #contentcontainer {
         max-width: 840px;

@@ -315,11 +315,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 279,
+              "line": 282,
               "column": 4
             },
             "end": {
-              "line": 281,
+              "line": 284,
               "column": 5
             }
           },
@@ -336,11 +336,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 285,
+              "line": 288,
               "column": 4
             },
             "end": {
-              "line": 289,
+              "line": 292,
               "column": 5
             }
           },
@@ -359,11 +359,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 293,
+              "line": 296,
               "column": 4
             },
             "end": {
-              "line": 297,
+              "line": 300,
               "column": 5
             }
           },
@@ -382,11 +382,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 301,
+              "line": 304,
               "column": 4
             },
             "end": {
-              "line": 304,
+              "line": 307,
               "column": 5
             }
           },
@@ -404,11 +404,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 308,
+              "line": 311,
               "column": 4
             },
             "end": {
-              "line": 312,
+              "line": 315,
               "column": 5
             }
           },
@@ -427,11 +427,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 316,
+              "line": 319,
               "column": 4
             },
             "end": {
-              "line": 321,
+              "line": 324,
               "column": 5
             }
           },
@@ -450,11 +450,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 325,
+              "line": 328,
               "column": 4
             },
             "end": {
-              "line": 328,
+              "line": 331,
               "column": 5
             }
           },
@@ -472,11 +472,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 332,
+              "line": 335,
               "column": 4
             },
             "end": {
-              "line": 336,
+              "line": 339,
               "column": 5
             }
           },
@@ -495,11 +495,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 340,
+              "line": 343,
               "column": 4
             },
             "end": {
-              "line": 343,
+              "line": 346,
               "column": 5
             }
           },
@@ -517,11 +517,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 348,
+              "line": 351,
               "column": 4
             },
             "end": {
-              "line": 352,
+              "line": 355,
               "column": 5
             }
           },
@@ -539,11 +539,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 357,
+              "line": 360,
               "column": 4
             },
             "end": {
-              "line": 360,
+              "line": 363,
               "column": 5
             }
           },
@@ -561,11 +561,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 361,
+              "line": 364,
               "column": 4
             },
             "end": {
-              "line": 364,
+              "line": 367,
               "column": 5
             }
           },
@@ -583,11 +583,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 365,
+              "line": 368,
               "column": 4
             },
             "end": {
-              "line": 369,
+              "line": 372,
               "column": 5
             }
           },
@@ -606,11 +606,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 371,
+              "line": 374,
               "column": 2
             },
             "end": {
-              "line": 380,
+              "line": 383,
               "column": 3
             }
           },
@@ -630,11 +630,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 381,
+              "line": 384,
               "column": 2
             },
             "end": {
-              "line": 397,
+              "line": 400,
               "column": 3
             }
           },
@@ -650,11 +650,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 399,
+              "line": 402,
               "column": 2
             },
             "end": {
-              "line": 399,
+              "line": 402,
               "column": 25
             }
           },
@@ -670,11 +670,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 401,
+              "line": 404,
               "column": 2
             },
             "end": {
-              "line": 425,
+              "line": 428,
               "column": 3
             }
           },
@@ -694,11 +694,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 429,
+              "line": 432,
               "column": 2
             },
             "end": {
-              "line": 442,
+              "line": 445,
               "column": 3
             }
           },
@@ -718,11 +718,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 447,
+              "line": 450,
               "column": 2
             },
             "end": {
-              "line": 464,
+              "line": 467,
               "column": 3
             }
           },
@@ -746,11 +746,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 469,
+              "line": 472,
               "column": 2
             },
             "end": {
-              "line": 477,
+              "line": 480,
               "column": 3
             }
           },
@@ -773,11 +773,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 482,
+              "line": 485,
               "column": 2
             },
             "end": {
-              "line": 487,
+              "line": 490,
               "column": 3
             }
           },
@@ -794,11 +794,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 492,
+              "line": 495,
               "column": 2
             },
             "end": {
-              "line": 497,
+              "line": 500,
               "column": 3
             }
           },
@@ -815,11 +815,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 502,
+              "line": 505,
               "column": 2
             },
             "end": {
-              "line": 504,
+              "line": 507,
               "column": 3
             }
           },
@@ -839,11 +839,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 509,
+              "line": 512,
               "column": 2
             },
             "end": {
-              "line": 511,
+              "line": 514,
               "column": 3
             }
           },
@@ -863,11 +863,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 516,
+              "line": 519,
               "column": 2
             },
             "end": {
-              "line": 535,
+              "line": 538,
               "column": 3
             }
           },
@@ -887,11 +887,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 540,
+              "line": 543,
               "column": 2
             },
             "end": {
-              "line": 559,
+              "line": 562,
               "column": 3
             }
           },
@@ -914,11 +914,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 564,
+              "line": 567,
               "column": 2
             },
             "end": {
-              "line": 566,
+              "line": 569,
               "column": 3
             }
           },
@@ -939,7 +939,7 @@
           "column": 28
         },
         "end": {
-          "line": 567,
+          "line": 570,
           "column": 1
         }
       },
@@ -952,11 +952,11 @@
           "description": "Manifest from haxcms-site-builder",
           "sourceRange": {
             "start": {
-              "line": 279,
+              "line": 282,
               "column": 4
             },
             "end": {
-              "line": 281,
+              "line": 284,
               "column": 5
             }
           },
@@ -968,11 +968,11 @@
           "description": "Auto call json files",
           "sourceRange": {
             "start": {
-              "line": 285,
+              "line": 288,
               "column": 4
             },
             "end": {
-              "line": 289,
+              "line": 292,
               "column": 5
             }
           },
@@ -984,11 +984,11 @@
           "description": "Outline JSON file name",
           "sourceRange": {
             "start": {
-              "line": 293,
+              "line": 296,
               "column": 4
             },
             "end": {
-              "line": 297,
+              "line": 300,
               "column": 5
             }
           },
@@ -1000,11 +1000,11 @@
           "description": "Outline JSON location",
           "sourceRange": {
             "start": {
-              "line": 301,
+              "line": 304,
               "column": 4
             },
             "end": {
-              "line": 304,
+              "line": 307,
               "column": 5
             }
           },
@@ -1016,11 +1016,11 @@
           "description": "acitvely selected item",
           "sourceRange": {
             "start": {
-              "line": 308,
+              "line": 311,
               "column": 4
             },
             "end": {
-              "line": 312,
+              "line": 315,
               "column": 5
             }
           },
@@ -1032,11 +1032,11 @@
           "description": "Closed status for the drawer",
           "sourceRange": {
             "start": {
-              "line": 316,
+              "line": 319,
               "column": 4
             },
             "end": {
-              "line": 321,
+              "line": 324,
               "column": 5
             }
           },
@@ -1048,11 +1048,11 @@
           "description": "Outline structured via JSON Outline Schema off the wire",
           "sourceRange": {
             "start": {
-              "line": 332,
+              "line": 335,
               "column": 4
             },
             "end": {
-              "line": 336,
+              "line": 339,
               "column": 5
             }
           },
@@ -1064,11 +1064,11 @@
           "description": "Active item which is in JSON Outline Schema",
           "sourceRange": {
             "start": {
-              "line": 340,
+              "line": 343,
               "column": 4
             },
             "end": {
-              "line": 343,
+              "line": 346,
               "column": 5
             }
           },
@@ -1080,11 +1080,11 @@
           "description": "Set min height of outline player to fill remaining\nspace to the bottom of the browser",
           "sourceRange": {
             "start": {
-              "line": 348,
+              "line": 351,
               "column": 4
             },
             "end": {
-              "line": 352,
+              "line": 355,
               "column": 5
             }
           },
@@ -1096,11 +1096,11 @@
           "description": "",
           "sourceRange": {
             "start": {
-              "line": 365,
+              "line": 368,
               "column": 4
             },
             "end": {
-              "line": 369,
+              "line": 372,
               "column": 5
             }
           },
