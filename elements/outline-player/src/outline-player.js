@@ -392,7 +392,7 @@ let OutlinePlayer = Polymer({
     });
     autorun(() => {
       if (store.activeItem && typeof store.activeItem !== "undefined") {
-        this.selected = store.activeItem.id;
+        this.selected = store.activeItem;
       }
     });
   },
