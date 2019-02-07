@@ -127,11 +127,6 @@ let SimpleBlog = Polymer({
 
   behaviors: [SchemaBehaviors.Schema, HAXCMSBehaviors.Theme],
 
-  // listeners: {
-  //   "active-item-selected": "_itemSelected",
-  //   "active-item-reset": "_resetActiveItem"
-  // },
-
   properties: {
     /**
      * The "page" to show (overview or blog post itself).
@@ -188,11 +183,6 @@ let SimpleBlog = Polymer({
       this.selectedPage = 1;
       window.scrollTo(0, 0);
     }
-  },
-
-  _activeItemResetHandler: function(e) {
-    window.history.pushState(null, null, store.location.baseUrl);
-    window.dispatchEvent(new PopStateEvent("popstate"));
   },
 
   /**

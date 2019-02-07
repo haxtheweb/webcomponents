@@ -1071,11 +1071,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 138,
+              "line": 133,
               "column": 4
             },
             "end": {
-              "line": 142,
+              "line": 137,
               "column": 5
             }
           },
@@ -1142,11 +1142,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 148,
+              "line": 143,
               "column": 2
             },
             "end": {
-              "line": 164,
+              "line": 159,
               "column": 3
             }
           },
@@ -1162,11 +1162,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 169,
+              "line": 164,
               "column": 2
             },
             "end": {
-              "line": 175,
+              "line": 170,
               "column": 3
             }
           },
@@ -1182,11 +1182,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 181,
+              "line": 176,
               "column": 2
             },
             "end": {
-              "line": 190,
+              "line": 185,
               "column": 3
             }
           },
@@ -1201,40 +1201,16 @@
           }
         },
         {
-          "name": "_activeItemResetHandler",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 192,
-              "column": 2
-            },
-            "end": {
-              "line": 195,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
           "name": "_goBack",
           "description": "Reset the active item to reset state",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 200,
+              "line": 190,
               "column": 2
             },
             "end": {
-              "line": 203,
+              "line": 193,
               "column": 3
             }
           },
@@ -1254,11 +1230,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 208,
+              "line": 198,
               "column": 2
             },
             "end": {
-              "line": 210,
+              "line": 200,
               "column": 3
             }
           },
@@ -1282,7 +1258,7 @@
           "column": 25
         },
         "end": {
-          "line": 211,
+          "line": 201,
           "column": 1
         }
       },
@@ -1331,11 +1307,11 @@
           "description": "The \"page\" to show (overview or blog post itself).",
           "sourceRange": {
             "start": {
-              "line": 138,
+              "line": 133,
               "column": 4
             },
             "end": {
-              "line": 142,
+              "line": 137,
               "column": 5
             }
           },
