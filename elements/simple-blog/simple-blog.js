@@ -127,10 +127,10 @@ let SimpleBlog = Polymer({
 
   behaviors: [SchemaBehaviors.Schema, HAXCMSBehaviors.Theme],
 
-  // listeners: {
-  //   "active-item-selected": "_itemSelected",
-  //   "active-item-reset": "_resetActiveItem"
-  // },
+  listeners: {
+    "active-item-selected": "_activeItemEvent",
+    "active-item-reset": "_dataRefreshed"
+  },
 
   properties: {
     /**
@@ -193,10 +193,13 @@ let SimpleBlog = Polymer({
    * Notice active item changed state
    */
   _activeItemEvent: function(e) {
-    if (typeof e.detail.id !== typeof undefined) {
+    const firstItem = this.manifest.items.find(i => {
+      return i.id === e.detail;
+    });
+    if (firstItem) {
       this.selectedPage = 1;
       window.scrollTo(0, 0);
-      this.$.post.set("activeItem", e.detail);
+      this.$.post.set("activeItem", firstItem);
     } else {
       this.selectedPage = 0;
     }

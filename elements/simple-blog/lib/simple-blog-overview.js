@@ -168,5 +168,11 @@ Polymer({
    */
   tapEventOff: function(e) {
     this.elevation = 0;
+  },
+  /**
+   * Fire an event because we got tapped.
+   */
+  _itemTap: function(e) {
+    this.fire("active-item-selected", this.itemId);
   }
 });
