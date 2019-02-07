@@ -8,7 +8,10 @@ import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-progress/paper-progress.js";
 import "@polymer/app-route/app-route.js";
+import { observable, decorate, computed } from "mobx";
+import { store } from "./haxcms-site-store.js";
 import "./haxcms-site-router.js";
+
 /**
  * `haxcms-site-builder`
  * `build the site and everything off of this`
@@ -340,6 +343,7 @@ Polymer({
    */
   _manifestChanged: function(newValue, oldValue) {
     if (newValue) {
+      store.manifest = newValue;
       window.cmsSiteEditor.jsonOutlineSchema = newValue;
       this.themeElementName = newValue.metadata.theme;
       this.fire("json-outline-schema-changed", newValue);

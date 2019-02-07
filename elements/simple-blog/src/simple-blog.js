@@ -4,7 +4,7 @@ import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@polymer/iron-pages/iron-pages.js";
 import "@polymer/paper-icon-button/paper-icon-button.js";
 import "@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";
-import { store as routerStore } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-router.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "./lib/simple-blog-listing.js";
 import "./lib/simple-blog-header.js";
@@ -127,11 +127,6 @@ let SimpleBlog = Polymer({
 
   behaviors: [SchemaBehaviors.Schema, HAXCMSBehaviors.Theme],
 
-  listeners: {
-    "active-item-selected": "_activeItemEvent",
-    "active-item-reset": "_goBack"
-  },
-
   properties: {
     /**
      * The "page" to show (overview or blog post itself).
@@ -150,10 +145,10 @@ let SimpleBlog = Polymer({
     this.setupHAXTheme(true, this.$.post.$.contentcontainer);
     // subscribe to manifest changes
     autorun(() => {
-      this.manifest = toJS(routerStore.manifest);
+      this.manifest = toJS(store.routerManifest);
     });
     autorun(() => {
-      this._locationChanged(routerStore.location);
+      this._locationChanged(store.location);
     });
     document.body.addEventListener(
       "haxcms-trigger-update",
@@ -181,27 +176,9 @@ let SimpleBlog = Polymer({
     const name = location.route.name;
     if (name === "home" || name === "404") {
       this.selectedPage = 0;
-    }
-  },
-
-  _activeItemResetHandler: function(e) {
-    window.history.pushState(null, null, routerStore.location.baseUrl);
-    window.dispatchEvent(new PopStateEvent("popstate"));
-  },
-
-  /**
-   * Notice active item changed state
-   */
-  _activeItemEvent: function(e) {
-    const firstItem = this.manifest.items.find(i => {
-      return i.id === e.detail;
-    });
-    if (firstItem) {
+    } else {
       this.selectedPage = 1;
       window.scrollTo(0, 0);
-      this.$.post.set("activeItem", firstItem);
-    } else {
-      this.selectedPage = 0;
     }
   },
 
@@ -209,7 +186,7 @@ let SimpleBlog = Polymer({
    * Reset the active item to reset state
    */
   _goBack: function(e) {
-    window.history.pushState(null, null, routerStore.location.baseUrl);
+    window.history.pushState(null, null, store.location.baseUrl);
     window.dispatchEvent(new PopStateEvent("popstate"));
   },
 
