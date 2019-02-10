@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/polymer";
 import * as storybookBridge from "@storybook/addon-knobs/polymer";
-import { A11YGifPlayer } from "./a11y-gif-player.js";
+import { A11yGifPlayer } from "./a11y-gif-player.js";
 
 // need to account for polymer goofiness when webpack rolls this up
 var template = require("raw-loader!./demo/index.html");
@@ -15,19 +15,19 @@ stories.add("a11y-gif-player", () => {
   // start of tag for demo
   let elementDemo = `<a11y-gif-player`;
   // mix in properties defined on the class
-  for (var key in A11YGifPlayer.properties) {
+  for (var key in A11yGifPlayer.properties) {
     // skip prototype
-    if (!A11YGifPlayer.properties.hasOwnProperty(key)) continue;
+    if (!A11yGifPlayer.properties.hasOwnProperty(key)) continue;
     // convert typed props
-    if (A11YGifPlayer.properties[key].type.name) {
+    if (A11yGifPlayer.properties[key].type.name) {
       let method = "text";
-      switch (A11YGifPlayer.properties[key].type.name) {
+      switch (A11yGifPlayer.properties[key].type.name) {
         case "Boolean":
         case "Number":
         case "Object":
         case "Array":
         case "Date":
-          method = A11YGifPlayer.properties[key].type.name.toLowerCase();
+          method = A11yGifPlayer.properties[key].type.name.toLowerCase();
           break;
         default:
           method = "text";
@@ -35,7 +35,7 @@ stories.add("a11y-gif-player", () => {
       }
       binding[key] = storybookBridge[method](
         key,
-        A11YGifPlayer.properties[key].value
+        A11yGifPlayer.properties[key].value
       );
       // ensure ke-bab case
       let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(

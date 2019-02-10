@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/polymer";
 import * as storybookBridge from "@storybook/addon-knobs/polymer";
-import { ResponsiveGrid } from "./responsive-grid.js";
+import { ResponsiveGridRow } from "./lib/responsive-grid-row.js";
 
 // need to account for polymer goofiness when webpack rolls this up
 var template = require("raw-loader!./demo/index.html");
@@ -15,19 +15,19 @@ stories.add("responsive-grid", () => {
   // start of tag for demo
   let elementDemo = `<responsive-grid`;
   // mix in properties defined on the class
-  for (var key in ResponsiveGrid.properties) {
+  for (var key in ResponsiveGridRow.properties) {
     // skip prototype
-    if (!ResponsiveGrid.properties.hasOwnProperty(key)) continue;
+    if (!ResponsiveGridRow.properties.hasOwnProperty(key)) continue;
     // convert typed props
-    if (ResponsiveGrid.properties[key].type.name) {
+    if (ResponsiveGridRow.properties[key].type.name) {
       let method = "text";
-      switch (ResponsiveGrid.properties[key].type.name) {
+      switch (ResponsiveGridRow.properties[key].type.name) {
         case "Boolean":
         case "Number":
         case "Object":
         case "Array":
         case "Date":
-          method = ResponsiveGrid.properties[key].type.name.toLowerCase();
+          method = ResponsiveGridRow.properties[key].type.name.toLowerCase();
           break;
         default:
           method = "text";
@@ -35,7 +35,7 @@ stories.add("responsive-grid", () => {
       }
       binding[key] = storybookBridge[method](
         key,
-        ResponsiveGrid.properties[key].value
+        ResponsiveGridRow.properties[key].value
       );
       // ensure ke-bab case
       let kebab = key.replace(/[A-Z\u00C0-\u00D6\u00D8-\u00DE]/g, function(

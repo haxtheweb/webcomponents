@@ -1,6 +1,6 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
-import "./data-table-templatizer-behavior.js";
+import { saulis } from "./data-table-templatizer-behavior.js";
 Polymer({
   _template: html`
     <style>

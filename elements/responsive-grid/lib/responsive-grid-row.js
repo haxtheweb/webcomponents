@@ -24,7 +24,7 @@ A LRN element
   </responsive-grid-row>
 
 */
-Polymer({
+let ResponsiveGridRow = Polymer({
   _template: html`
     <style>
       :host {
@@ -263,3 +263,4 @@ Polymer({
     });
   }
 });
+export { ResponsiveGridRow };
