@@ -290,7 +290,7 @@ let HeroBanner = Polymer({
             icon: "icons:radio-button-unchecked"
           },
           {
-            property: "accentColor",
+            property: "aaccentColor",
             title: "Accent color",
             description: "Select the accent color use",
             inputMethod: "colorpicker",

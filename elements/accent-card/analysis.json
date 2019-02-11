@@ -622,7 +622,7 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
           "defaultValue": "\"grey\"",
@@ -646,7 +646,7 @@
           },
           "metadata": {
             "polymer": {
-              "observer": "false"
+              "notify": true
             }
           },
           "defaultValue": "false",
@@ -4264,7 +4264,22 @@
           "type": "boolean | null | undefined"
         }
       ],
-      "events": [],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "accent-color-changed",
+          "description": "Fired when the `accentColor` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        },
+        {
+          "type": "CustomEvent",
+          "name": "dark-changed",
+          "description": "Fired when the `dark` property changes.",
+          "metadata": {},
+          "inheritedFrom": "SimpleColors"
+        }
+      ],
       "styling": {
         "cssVariables": [],
         "selectors": []

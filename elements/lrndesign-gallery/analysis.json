@@ -3239,7 +3239,7 @@
               "column": 2
             },
             "end": {
-              "line": 212,
+              "line": 213,
               "column": 3
             }
           },
@@ -3266,11 +3266,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 220,
+              "line": 221,
               "column": 2
             },
             "end": {
-              "line": 230,
+              "line": 231,
               "column": 3
             }
           },
@@ -3291,11 +3291,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 237,
+              "line": 238,
               "column": 2
             },
             "end": {
-              "line": 244,
+              "line": 245,
               "column": 3
             }
           },
@@ -3316,11 +3316,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 252,
+              "line": 253,
               "column": 2
             },
             "end": {
-              "line": 254,
+              "line": 255,
               "column": 3
             }
           },
@@ -3342,11 +3342,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 263,
+              "line": 264,
               "column": 2
             },
             "end": {
-              "line": 265,
+              "line": 266,
               "column": 3
             }
           },
@@ -3372,7 +3372,7 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 274,
+              "line": 275,
               "column": 2
             },
             "end": {
@@ -16036,7 +16036,7 @@
               "column": 2
             },
             "end": {
-              "line": 212,
+              "line": 213,
               "column": 3
             }
           },
@@ -16065,11 +16065,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 220,
+              "line": 221,
               "column": 2
             },
             "end": {
-              "line": 230,
+              "line": 231,
               "column": 3
             }
           },
@@ -16092,11 +16092,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 237,
+              "line": 238,
               "column": 2
             },
             "end": {
-              "line": 244,
+              "line": 245,
               "column": 3
             }
           },
@@ -16119,11 +16119,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 252,
+              "line": 253,
               "column": 2
             },
             "end": {
-              "line": 254,
+              "line": 255,
               "column": 3
             }
           },
@@ -16147,11 +16147,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 263,
+              "line": 264,
               "column": 2
             },
             "end": {
-              "line": 265,
+              "line": 266,
               "column": 3
             }
           },
@@ -16179,7 +16179,7 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 274,
+              "line": 275,
               "column": 2
             },
             "end": {
@@ -21044,7 +21044,7 @@
               "column": 2
             },
             "end": {
-              "line": 212,
+              "line": 213,
               "column": 3
             }
           },
@@ -21073,11 +21073,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 220,
+              "line": 221,
               "column": 2
             },
             "end": {
-              "line": 230,
+              "line": 231,
               "column": 3
             }
           },
@@ -21100,11 +21100,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 237,
+              "line": 238,
               "column": 2
             },
             "end": {
-              "line": 244,
+              "line": 245,
               "column": 3
             }
           },
@@ -21127,11 +21127,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 252,
+              "line": 253,
               "column": 2
             },
             "end": {
-              "line": 254,
+              "line": 255,
               "column": 3
             }
           },
@@ -21155,11 +21155,11 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 263,
+              "line": 264,
               "column": 2
             },
             "end": {
-              "line": 265,
+              "line": 266,
               "column": 3
             }
           },
@@ -21187,7 +21187,7 @@
           "sourceRange": {
             "file": "lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 274,
+              "line": 275,
               "column": 2
             },
             "end": {
@@ -23855,11 +23855,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 262,
+              "line": 263,
               "column": 2
             },
             "end": {
-              "line": 264,
+              "line": 265,
               "column": 3
             }
           },
@@ -25691,11 +25691,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 236,
+              "line": 237,
               "column": 2
             },
             "end": {
-              "line": 257,
+              "line": 258,
               "column": 3
             }
           },
@@ -25903,7 +25903,7 @@
               "column": 2
             },
             "end": {
-              "line": 212,
+              "line": 213,
               "column": 3
             }
           },
@@ -25932,11 +25932,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 220,
+              "line": 221,
               "column": 2
             },
             "end": {
-              "line": 230,
+              "line": 231,
               "column": 3
             }
           },
@@ -25959,11 +25959,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 237,
+              "line": 238,
               "column": 2
             },
             "end": {
-              "line": 244,
+              "line": 245,
               "column": 3
             }
           },
@@ -25986,11 +25986,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 252,
+              "line": 253,
               "column": 2
             },
             "end": {
-              "line": 254,
+              "line": 255,
               "column": 3
             }
           },
@@ -26014,11 +26014,11 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 263,
+              "line": 264,
               "column": 2
             },
             "end": {
-              "line": 265,
+              "line": 266,
               "column": 3
             }
           },
@@ -26046,7 +26046,7 @@
           "sourceRange": {
             "file": "lib/lrndesign-gallery-behaviors.js",
             "start": {
-              "line": 274,
+              "line": 275,
               "column": 2
             },
             "end": {
@@ -27146,11 +27146,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 46,
+          "line": 47,
           "column": 0
         },
         "end": {
-          "line": 265,
+          "line": 266,
           "column": 1
         }
       },

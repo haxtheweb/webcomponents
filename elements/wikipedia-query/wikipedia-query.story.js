@@ -1,6 +1,6 @@
 import { storiesOf } from "@storybook/polymer";
 import * as storybookBridge from "@storybook/addon-knobs/polymer";
-import * as WikipediaQuery from "./wikipedia-query.js";
+import {WikipediaQuery} from "./wikipedia-query.js";
 
 // need to account for polymer goofiness when webpack rolls this up
 var template = require("raw-loader!./demo/index.html");

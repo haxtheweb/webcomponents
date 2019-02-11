@@ -274,11 +274,7 @@ class LrndesignTimeline extends SimpleColors {
               index-as="index"
               restamp
             >
-              <section
-                class="event"
-                has-media$="[[_isSet(event.imagesrc)]]"
-                event$="[[event]]"
-              >
+              <section class="event" has-media$="[[_isSet(event.imagesrc)]]">
                 <div class="event-overview">
                   <div class="heading"><h2>[[event.heading]]</h2></div>
                   <div class="media-outer">

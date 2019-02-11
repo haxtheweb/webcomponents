@@ -1,15 +1,13 @@
 import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.js";import"./node_modules/@polymer/iron-icon/iron-icon.js";import"./node_modules/@polymer/iron-icons/iron-icons.js";import"./lib/simple-picker-option.js";export{SimplePicker};class SimplePicker extends PolymerElement{static get template(){return html`
 <style>:host {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: relative;
   --simple-picker-color: black;
+  font-size: var(--paper-input-container-label_-_font-size, var(--paper-font-subhead_-_font-size, inherit));
+  margin: 8px 0;
+  height: 42px;
   @apply --simple-picker;
-}
-:host, 
-:host #sample, 
-:host .rows {
-  margin: 0;
-  padding: 0;
 }
 
 :host([disabled]) {
@@ -19,8 +17,27 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
 :host([hidden]) {
   display: none;
 }
+
+:host label {
+  padding-right: 5px;
+  color: var(--paper-input-container-label_-_color, var(--paper-input-container-color, var(--secondary-text-color, #000)));
+  @apply --simple-picker-label;
+}
+
+:host, 
+:host #sample, 
+:host .rows {
+  margin: 0;
+  padding: 0;
+}
+
+:host #listbox {
+  display: flex;
+  flex: 1 0 auto;
+}
+
 :host #sample {
-  display: inline-flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 2px;
@@ -43,8 +60,9 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
   display: none;
   width: 100%;
   position: absolute;
-  top: calc(var(--simple-picker-swatch-size, 20px)+12px);
-  background-color: var(--simple-picker-background-color,#ddd);
+  top: 35px;
+  padding: 1px;
+  @apply --simple-picker-collapse;
 }
 
 :host([expanded]:not([disabled])) #collapse {
@@ -55,13 +73,17 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
   display: block;
   position: absolute;
   z-index: 1000;
-  outline: 1px solid var(--simple-picker-border-color,black);
+  outline: 1px solid var(--simple-picker-border-color, var(--simple-picker-color));
+  background-color: var(--simple-picker-background-color,#ddd);
+  box-shadow: 0px 0px 1px #888;
+  @apply --simple-picker-rows;
 }
 
 :host .row {
   display: flex; 
   align-items: stretch;
   justify-content: space-between;
+  @apply --simple-picker-row;
 }
 
 :host simple-picker-option {
@@ -75,6 +97,11 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
   background-color: var(--simple-picker-option-background-color, white);
   outline: var(--simple-picker-option-outline, none);
   transition: max-height 2s;
+  @apply --simple-picker-option;
+}
+
+:host #sample simple-picker-option {
+
 }
 
 :host simple-picker-option[selected] {
@@ -117,11 +144,11 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
   }  
 }
 </style>
+<label for="listbox" hidden$="[[!hasLabel]]">[[label]]</label>
 <div id="listbox"
   aria-activedescendant$="[[__activeDesc]]" 
   aria-labelledby$="[[ariaLabelledby]]" 
   disabled$="[[disabled]]"
-  label$="[[label]]" 
   role="listbox" 
   tabindex="0">
   <div id="sample">
@@ -160,4 +187,4 @@ import{html,PolymerElement}from"./node_modules/@polymer/polymer/polymer-element.
       </template>
     </div>
   </div>
-</div>`}static get properties(){return{ariaLabelledby:{name:"ariaLabelledby",type:"String",value:null},disabled:{name:"disabled",type:"Boolean",value:!1},expanded:{name:"expanded",type:"Boolean",value:!1,reflectToAttribute:!0},hideOptionLabels:{name:"hideOptionLabels",type:"Boolean",value:!1},label:{name:"label",type:"String",value:null},options:{name:"options",type:"Array",value:[[]]},value:{name:"value",type:"Object",value:"null",reflectToAttribute:!0},__activeDesc:{name:"__activeDesc",type:"String",value:"option-0-0"}}}static get tag(){return"simple-picker"}_getOption(options,optionId){if(options!==void 0&&optionId!==void 0&&null!==optionId){let coords=optionId.split("-");return options[coords[1]][coords[2]]}return null}_getOptionId(rownum,colnum){return"option-"+rownum+"-"+colnum}_goToOption(rownum,colnum){let targetId=this._getOptionId(rownum,colnum),target=this.shadowRoot.querySelector("#"+targetId),active=this.shadowRoot.querySelector("#"+this.__activeDesc);if(null!==target){target.tabindex=0;target.focus();active.tabindex=-1}}_handleListboxClick(e){this._toggleListbox(!this.expanded)}_handleListboxKeydown(e){let coords=this.__activeDesc.split("-"),rownum=parseInt(coords[1]),colnum=parseInt(coords[2]);if(32===e.keyCode){e.preventDefault();this._toggleListbox(!this.expanded)}else if(this.expanded&&[9,35,36,38,40].includes(e.keyCode)){e.preventDefault();if(35===e.keyCode){let lastrow=this.options.length-1,lastcol=this.options[lastrow].length-1;this._goToOption(lastrow,lastcol)}else if(36===e.keyCode){this._goToOption(0,0)}else if(38===e.keyCode){if(0<colnum){this._goToOption(rownum,colnum-1)}else if(0<rownum){this._goToOption(rownum-1,this.options[rownum-1].length-1)}}else if(40===e.keyCode){if(colnum<this.options[rownum].length-1){this._goToOption(rownum,colnum+1)}else if(rownum<this.options.length-1){this._goToOption(rownum+1,[0])}}}}_handleOptionFocus(e){this._setActiveOption(e.detail.id)}_initSelectedOption(value){this.__selectedOption=null;for(var i=0;i<this.options.length;i++){for(var j=0;j<this.options[i].length;j++){if(this.options[i][j].value===value){this.__selectedOption=this.options[i][j];this.__activeDesc=this.options[i][j].value}}}}_isActive(active,rownum,colnum){return active===this._getOptionId(rownum,colnum)}_isSelected(value1,value2){return value1===value2}_setActiveOption(id){this.__activeDesc=id;this.dispatchEvent(new CustomEvent("option-focus",{detail:this}))}_setSelectedOption(option){this.__selectedOption=this._getOption(this.options,option.id);this.value=option.value;this.dispatchEvent(new CustomEvent("change",{detail:this}))}_toggleListbox(expanded){let active=this.shadowRoot.querySelector("#"+this.__activeDesc);this.expanded=expanded;if(expanded){if(null!==active)active.focus();this.dispatchEvent(new CustomEvent("expand",{detail:this}))}else{if(null!==active)this._setSelectedOption(active);this.dispatchEvent(new CustomEvent("collapse",{detail:this}))}}ready(){super.ready();let root=this;this._initSelectedOption(this.value);this.$.listbox.addEventListener("click",function(e){root._handleListboxClick(e)});this.$.listbox.addEventListener("keydown",function(e){root._handleListboxKeydown(e)})}setOptions(options){this.set("options",[[]]);this.set("options",options)}connectedCallback(){super.connectedCallback()}}window.customElements.define(SimplePicker.tag,SimplePicker);
+</div>`}static get properties(){return{ariaLabelledby:{name:"ariaLabelledby",type:"String",value:null},disabled:{name:"disabled",type:"Boolean",value:!1},expanded:{name:"expanded",type:"Boolean",value:!1,reflectToAttribute:!0},hideOptionLabels:{name:"hideOptionLabels",type:"Boolean",value:!1},hasLabel:{name:"label",type:"Boolean",computed:"_hasLabel(label)"},label:{name:"label",type:"String",value:null},options:{name:"options",type:"Array",value:[[]]},value:{name:"value",type:"Object",value:null,notify:!0,reflectToAttribute:!0},__activeDesc:{name:"__activeDesc",type:"String",value:"option-0-0"},__selectedOption:{name:"_setSelectedOption",type:"Object",computed:"_setSelectedOption(value)"}}}static get tag(){return"simple-picker"}_getOption(options,optionId){if(options!==void 0&&optionId!==void 0&&null!==optionId){let coords=optionId.split("-");return options[coords[1]][coords[2]]}return null}_getOptionId(rownum,colnum){return"option-"+rownum+"-"+colnum}_goToOption(rownum,colnum){let targetId=this._getOptionId(rownum,colnum),target=this.shadowRoot.querySelector("#"+targetId),active=this.shadowRoot.querySelector("#"+this.__activeDesc);if(null!==target){target.tabindex=0;target.focus();active.tabindex=-1}}_handleListboxClick(e){this._toggleListbox(!this.expanded)}_handleListboxKeydown(e){let coords=this.__activeDesc.split("-"),rownum=parseInt(coords[1]),colnum=parseInt(coords[2]);if(32===e.keyCode){e.preventDefault();this._toggleListbox(!this.expanded)}else if(this.expanded&&[9,35,36,38,40].includes(e.keyCode)){e.preventDefault();if(35===e.keyCode){let lastrow=this.options.length-1,lastcol=this.options[lastrow].length-1;this._goToOption(lastrow,lastcol)}else if(36===e.keyCode){this._goToOption(0,0)}else if(38===e.keyCode){if(0<colnum){this._goToOption(rownum,colnum-1)}else if(0<rownum){this._goToOption(rownum-1,this.options[rownum-1].length-1)}}else if(40===e.keyCode){if(colnum<this.options[rownum].length-1){this._goToOption(rownum,colnum+1)}else if(rownum<this.options.length-1){this._goToOption(rownum+1,[0])}}}}_handleOptionFocus(e){this._setActiveOption(e.detail.id)}_hasLabel(label){return label!==void 0&&null!==label&&""!==label.trim()}_isActive(active,rownum,colnum){return active===this._getOptionId(rownum,colnum)}_isSelected(value1,value2){return value1===value2}_setActiveOption(id){this.__activeDesc=id;this.dispatchEvent(new CustomEvent("option-focus",{detail:this}))}_setSelectedOption(value){let sel=null;this.dispatchEvent(new CustomEvent("change",{bubbles:!0,detail:this}));if(null!==value&&this.options!==void 0&&null!==this.options){for(var i=0;i<this.options.length;i++){for(var j=0;j<this.options[i].length;j++){if(this.options[i][j].value===value){this.__activeDesc=this.options[i][j].value;sel=this.options[i][j]}}}}return sel}_toggleListbox(expanded){let active=this.shadowRoot.querySelector("#"+this.__activeDesc);this.expanded=expanded;if(expanded){if(null!==active)active.focus();this.dispatchEvent(new CustomEvent("expand",{detail:this}))}else{if(null!==active)this.value=active.getAttribute("value");this.dispatchEvent(new CustomEvent("collapse",{detail:this}))}}ready(){super.ready();let root=this;if(this.$.listbox!==void 0){this.$.listbox.addEventListener("click",function(e){root._handleListboxClick(e)});this.$.listbox.addEventListener("keydown",function(e){root._handleListboxKeydown(e)})}}setOptions(options){this.set("options",[[]]);this.set("options",options)}connectedCallback(){super.connectedCallback()}}window.customElements.define(SimplePicker.tag,SimplePicker);

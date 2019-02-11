@@ -182,6 +182,30 @@
           "return": {
             "type": "void"
           }
+        },
+        {
+          "name": "_itemTap",
+          "description": "Fire an event because we got tapped.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 174,
+              "column": 2
+            },
+            "end": {
+              "line": 176,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
         }
       ],
       "staticMethods": [],
@@ -198,7 +222,7 @@
           "column": 8
         },
         "end": {
-          "line": 171,
+          "line": 177,
           "column": 1
         }
       },
@@ -1047,11 +1071,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 138,
+              "line": 133,
               "column": 4
             },
             "end": {
-              "line": 142,
+              "line": 137,
               "column": 5
             }
           },
@@ -1118,11 +1142,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 148,
+              "line": 143,
               "column": 2
             },
             "end": {
-              "line": 161,
+              "line": 156,
               "column": 3
             }
           },
@@ -1138,11 +1162,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 166,
+              "line": 161,
               "column": 2
             },
             "end": {
-              "line": 172,
+              "line": 167,
               "column": 3
             }
           },
@@ -1158,11 +1182,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 178,
+              "line": 173,
               "column": 2
             },
             "end": {
-              "line": 184,
+              "line": 182,
               "column": 3
             }
           },
@@ -1177,64 +1201,16 @@
           }
         },
         {
-          "name": "_activeItemResetHandler",
-          "description": "",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 186,
-              "column": 2
-            },
-            "end": {
-              "line": 189,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_activeItemEvent",
-          "description": "Notice active item changed state",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 194,
-              "column": 2
-            },
-            "end": {
-              "line": 202,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
           "name": "_goBack",
           "description": "Reset the active item to reset state",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 207,
+              "line": 187,
               "column": 2
             },
             "end": {
-              "line": 210,
+              "line": 190,
               "column": 3
             }
           },
@@ -1254,11 +1230,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 215,
+              "line": 195,
               "column": 2
             },
             "end": {
-              "line": 217,
+              "line": 197,
               "column": 3
             }
           },
@@ -1282,7 +1258,7 @@
           "column": 25
         },
         "end": {
-          "line": 218,
+          "line": 198,
           "column": 1
         }
       },
@@ -1331,11 +1307,11 @@
           "description": "The \"page\" to show (overview or blog post itself).",
           "sourceRange": {
             "start": {
-              "line": 138,
+              "line": 133,
               "column": 4
             },
             "end": {
-              "line": 142,
+              "line": 137,
               "column": 5
             }
           },

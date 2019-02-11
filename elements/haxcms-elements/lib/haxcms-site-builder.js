@@ -1,4 +1,5 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import * as async from "@polymer/polymer/lib/utils/async.js";
@@ -7,8 +8,11 @@ import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/simple-modal/simple-modal.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-progress/paper-progress.js";
-import "@polymer/app-route/app-route.js";
+import { observable, decorate, computed } from "mobx";
+import { store } from "./haxcms-site-store.js";
 import "./haxcms-site-router.js";
+import "./haxcms-editor-builder.js";
+
 /**
  * `haxcms-site-builder`
  * `build the site and everything off of this`
@@ -18,7 +22,7 @@ import "./haxcms-site-router.js";
  * - it loads a site.json file and then utilizes this data in order to construct
  *   what theme it should load (element) in order to get everything off and running
  */
-Polymer({
+let HAXCMSSiteBuilder = Polymer({
   _template: html`
     <style>
       :host {
@@ -45,7 +49,6 @@ Polymer({
       }
     </style>
     <haxcms-site-router base-uri="[[baseURI]]"></haxcms-site-router>
-    <haxcms-editor-builder></haxcms-editor-builder>
     <paper-progress
       hidden\$="[[!loading]]"
       value="100"
@@ -181,6 +184,9 @@ Polymer({
    * ready life cycle
    */
   created: function() {
+    // attempt to set polymer passive gestures globally
+    // this decreases logging and improves performance on scrolling
+    setPassiveTouchGestures(true);
     window.JSONOutlineSchema.requestAvailability();
     window.SimpleModal.requestAvailability();
     window.SimpleToast.requestAvailability();
@@ -198,6 +204,8 @@ Polymer({
     );
   },
   attached: function() {
+    // attach editor builder after we've appended to the screen
+    document.body.appendChild(document.createElement("haxcms-editor-builder"));
     // prep simple toast notification
     async.microTask.run(() => {
       if (window.cmsSiteEditor && this.manifest) {
@@ -234,7 +242,7 @@ Polymer({
     // check for authoring xp by just asking for the object
     // timeout helps w/ some initial setup work
     var time = 500;
-    if (window.HaxStore.ready) {
+    if (window.HaxStore && window.HaxStore.ready) {
       time = 10;
     }
     setTimeout(() => {
@@ -340,6 +348,7 @@ Polymer({
    */
   _manifestChanged: function(newValue, oldValue) {
     if (newValue) {
+      store.manifest = newValue;
       window.cmsSiteEditor.jsonOutlineSchema = newValue;
       this.themeElementName = newValue.metadata.theme;
       this.fire("json-outline-schema-changed", newValue);
@@ -425,3 +434,5 @@ Polymer({
     }
   }
 });
+
+export { HAXCMSSiteBuilder };
