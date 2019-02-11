@@ -23,8 +23,7 @@ class CodeSample extends PolymerElement {
   // render function
   static get template() {
     return html`
-      <style></style>
-      <style include="code-sample-theme" id="baseStyle">
+      <style>
         :host {
           display: block;
         }
@@ -93,7 +92,7 @@ class CodeSample extends PolymerElement {
           @apply --code-sample-copy-clipboard-button;
         }
       </style>
-      ${this.constructor.theme || oneDark}
+      <div id="theme">${this.constructor.theme || oneDark}</div>
       <div id="demo" class="demo"></div>
       <slot id="content"></slot>
 
@@ -218,10 +217,8 @@ class CodeSample extends PolymerElement {
   }
   _themeChanged(theme) {
     if (theme && this._themeCanBeChanged()) {
-      const previousTheme = this.shadowRoot.querySelector(
-        "style:not(#baseStyle)"
-      );
-      this.shadowRoot.replaceChild(
+      const previousTheme = this.$.theme.querySelector("style");
+      this.$.theme.replaceChild(
         document.importNode(theme.content, true),
         previousTheme
       );

@@ -61,10 +61,8 @@ class CodeSample extends PolymerElement {
   }
   _themeChanged(theme) {
     if (theme && this._themeCanBeChanged()) {
-      const previousTheme = this.shadowRoot.querySelector(
-        "style:not(#baseStyle)"
-      );
-      this.shadowRoot.replaceChild(
+      const previousTheme = this.$.theme.querySelector("style");
+      this.$.theme.replaceChild(
         document.importNode(theme.content, true),
         previousTheme
       );
