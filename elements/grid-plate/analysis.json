@@ -39,7 +39,7 @@
               "column": 4
             },
             "end": {
-              "line": 237,
+              "line": 238,
               "column": 5
             }
           },
@@ -57,11 +57,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 241,
+              "line": 242,
               "column": 4
             },
             "end": {
-              "line": 245,
+              "line": 246,
               "column": 5
             }
           },
@@ -80,11 +80,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 250,
+              "line": 251,
               "column": 4
             },
             "end": {
-              "line": 255,
+              "line": 256,
               "column": 5
             }
           },
@@ -103,11 +103,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 260,
+              "line": 261,
               "column": 4
             },
             "end": {
-              "line": 264,
+              "line": 265,
               "column": 5
             }
           },
@@ -125,11 +125,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 291,
+              "line": 292,
               "column": 4
             },
             "end": {
-              "line": 420,
+              "line": 421,
               "column": 5
             }
           },
@@ -147,11 +147,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 424,
+              "line": 425,
               "column": 4
             },
             "end": {
-              "line": 428,
+              "line": 429,
               "column": 5
             }
           },
@@ -169,11 +169,11 @@
           "privacy": "private",
           "sourceRange": {
             "start": {
-              "line": 432,
+              "line": 433,
               "column": 4
             },
             "end": {
-              "line": 435,
+              "line": 436,
               "column": 5
             }
           },
@@ -192,11 +192,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 441,
+              "line": 442,
               "column": 2
             },
             "end": {
-              "line": 443,
+              "line": 444,
               "column": 3
             }
           },
@@ -216,11 +216,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 452,
+              "line": 453,
               "column": 2
             },
             "end": {
-              "line": 458,
+              "line": 459,
               "column": 3
             }
           },
@@ -244,11 +244,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 466,
+              "line": 467,
               "column": 2
             },
             "end": {
-              "line": 473,
+              "line": 474,
               "column": 3
             }
           },
@@ -271,11 +271,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 482,
+              "line": 483,
               "column": 2
             },
             "end": {
-              "line": 488,
+              "line": 489,
               "column": 3
             }
           },
@@ -299,11 +299,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 496,
+              "line": 497,
               "column": 2
             },
             "end": {
-              "line": 511,
+              "line": 512,
               "column": 3
             }
           },
@@ -327,11 +327,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 516,
+              "line": 517,
               "column": 2
             },
             "end": {
-              "line": 539,
+              "line": 540,
               "column": 3
             }
           },
@@ -351,11 +351,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 544,
+              "line": 545,
               "column": 2
             },
             "end": {
-              "line": 557,
+              "line": 558,
               "column": 3
             }
           },
@@ -378,11 +378,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 562,
+              "line": 563,
               "column": 2
             },
             "end": {
-              "line": 569,
+              "line": 570,
               "column": 3
             }
           },
@@ -402,11 +402,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 579,
+              "line": 580,
               "column": 2
             },
             "end": {
-              "line": 606,
+              "line": 612,
               "column": 3
             }
           },
@@ -438,11 +438,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 615,
+              "line": 621,
               "column": 2
             },
             "end": {
-              "line": 619,
+              "line": 625,
               "column": 3
             }
           },
@@ -466,11 +466,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 626,
+              "line": 632,
               "column": 2
             },
             "end": {
-              "line": 628,
+              "line": 634,
               "column": 3
             }
           },
@@ -491,11 +491,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 632,
+              "line": 638,
               "column": 2
             },
             "end": {
-              "line": 641,
+              "line": 647,
               "column": 3
             }
           },
@@ -515,11 +515,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 645,
+              "line": 651,
               "column": 2
             },
             "end": {
-              "line": 659,
+              "line": 665,
               "column": 3
             }
           },
@@ -539,11 +539,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 663,
+              "line": 669,
               "column": 2
             },
             "end": {
-              "line": 702,
+              "line": 708,
               "column": 3
             }
           },
@@ -563,11 +563,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 707,
+              "line": 713,
               "column": 2
             },
             "end": {
-              "line": 798,
+              "line": 804,
               "column": 3
             }
           },
@@ -590,11 +590,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 803,
+              "line": 809,
               "column": 2
             },
             "end": {
-              "line": 847,
+              "line": 853,
               "column": 3
             }
           },
@@ -614,11 +614,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 852,
+              "line": 858,
               "column": 2
             },
             "end": {
-              "line": 865,
+              "line": 871,
               "column": 3
             }
           },
@@ -638,11 +638,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 870,
+              "line": 876,
               "column": 2
             },
             "end": {
-              "line": 883,
+              "line": 889,
               "column": 3
             }
           },
@@ -662,11 +662,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 887,
+              "line": 893,
               "column": 2
             },
             "end": {
-              "line": 942,
+              "line": 948,
               "column": 3
             }
           },
@@ -682,11 +682,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 947,
+              "line": 953,
               "column": 2
             },
             "end": {
-              "line": 962,
+              "line": 968,
               "column": 3
             }
           },
@@ -706,11 +706,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 967,
+              "line": 973,
               "column": 2
             },
             "end": {
-              "line": 978,
+              "line": 984,
               "column": 3
             }
           },
@@ -734,7 +734,7 @@
           "column": 24
         },
         "end": {
-          "line": 979,
+          "line": 985,
           "column": 1
         }
       },
@@ -767,7 +767,7 @@
               "column": 4
             },
             "end": {
-              "line": 237,
+              "line": 238,
               "column": 5
             }
           },
@@ -779,11 +779,11 @@
           "description": "disables responsive layouts for HAX preview",
           "sourceRange": {
             "start": {
-              "line": 241,
+              "line": 242,
               "column": 4
             },
             "end": {
-              "line": 245,
+              "line": 246,
               "column": 5
             }
           },
@@ -795,11 +795,11 @@
           "description": "If the grid plate is in a state where its items\ncan be modified as far as order or column placement.",
           "sourceRange": {
             "start": {
-              "line": 250,
+              "line": 251,
               "column": 4
             },
             "end": {
-              "line": 255,
+              "line": 256,
               "column": 5
             }
           },
@@ -811,11 +811,11 @@
           "description": "an object with a layout's column sizes\nat the current responsive width",
           "sourceRange": {
             "start": {
-              "line": 260,
+              "line": 261,
               "column": 4
             },
             "end": {
-              "line": 264,
+              "line": 265,
               "column": 5
             }
           },
@@ -827,11 +827,11 @@
           "description": "Predefined layouts of column sizes and various responsive widths.\nFor example:```\n{\n  \"1-1-1-1\": {                         //the name of the layout\n    \"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small\n    \"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is small\n    \"md\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is medium\n    \"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is large\n    \"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is extra large\n  },\n  {...}\n}\n\n              \"1\": \"1: full width\",\n              \"1-1\": \"2: equal width\",\n              \"2-1\": \"2: wide and narrow\",\n              \"1-2\": \"2: narrow and wide\",\n              \"3-1\": \"2: wider and narrower\",\n              \"1-3\": \"2: narrower and wider\",\n              \"1-1-1\": \"3: equal width\",\n              \"2-1-1\": \"3: wide, narrow, and narrow\",\n              \"1-2-1\": \"3: narrow, wide, and narrow\",\n              \"1-1-2\": \"3: narrow,  narrow, and wide\",\n              \"1-1-1-1\": \"4: equal width\",",
           "sourceRange": {
             "start": {
-              "line": 291,
+              "line": 292,
               "column": 4
             },
             "end": {
-              "line": 420,
+              "line": 421,
               "column": 5
             }
           },
@@ -843,11 +843,11 @@
           "description": "Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`",
           "sourceRange": {
             "start": {
-              "line": 424,
+              "line": 425,
               "column": 4
             },
             "end": {
-              "line": 428,
+              "line": 429,
               "column": 5
             }
           },
