@@ -5,7 +5,7 @@ import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import "@lrnwebcomponents/hal-9000/hal-9000.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import { CodeSample } from "@lrnwebcomponents/code-sample/code-sample.js";
+import "@lrnwebcomponents/code-sample/code-sample.js";
 import { getRange } from "./shadows-safari.js";
 import "./hax-app.js";
 import "./hax-stax.js";
@@ -1356,7 +1356,8 @@ Polymer({
       }
     };
     this.setHaxProperties(hr, "hr");
-    this.setHaxProperties(CodeSample.haxProperties, CodeSample.tag);
+    let CodeSample = window.customElements.get("code-sample");
+    this.setHaxProperties(CodeSample.haxProperties, "code-sample");
   },
 
   /**
@@ -2251,25 +2252,27 @@ window.HaxStore.guessGizmo = (guess, values, skipPropMatch = false) => {
         var props = {};
         // reset match per gizmo
         var match = false;
-        for (var i = 0; i < gizmo.handles.length; i++) {
-          // WHAT!??!?!?!?!
-          if (guess === gizmo.handles[i].type || (guess === "*" && !match)) {
-            for (var property in gizmo.handles[i]) {
-              // ignore type.. but again.. WHAT?!?!?!
-              if (property !== "type") {
-                // check the values that came across to see if there's a match
-                // of any kind, we only need one but can then bind to multiple
-                if (typeof values[property] !== typeof undefined) {
-                  match = true;
-                  props[gizmo.handles[i][property]] = values[property];
+        if (gizmo.handles) {
+          for (var i = 0; i < gizmo.handles.length; i++) {
+            // WHAT!??!?!?!?!
+            if (guess === gizmo.handles[i].type || (guess === "*" && !match)) {
+              for (var property in gizmo.handles[i]) {
+                // ignore type.. but again.. WHAT?!?!?!
+                if (property !== "type") {
+                  // check the values that came across to see if there's a match
+                  // of any kind, we only need one but can then bind to multiple
+                  if (typeof values[property] !== typeof undefined) {
+                    match = true;
+                    props[gizmo.handles[i][property]] = values[property];
+                  }
                 }
               }
-            }
-            // omg... we just found a match on a property from who knows where!
-            if (match || skipPropMatch) {
-              matches.push(
-                window.HaxStore.haxElementPrototype(gizmo, props, "")
-              );
+              // omg... we just found a match on a property from who knows where!
+              if (match || skipPropMatch) {
+                matches.push(
+                  window.HaxStore.haxElementPrototype(gizmo, props, "")
+                );
+              }
             }
           }
         }
