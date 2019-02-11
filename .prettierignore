@@ -6,3 +6,4 @@ test
 package.json
 package-lock.json
 analysis-error.json
+Elements/code-sample/lib/highlights/languages/*.js
