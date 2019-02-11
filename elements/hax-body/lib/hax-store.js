@@ -5,7 +5,7 @@ import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import "@lrnwebcomponents/hal-9000/hal-9000.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/code-sample/code-sample.js";
+import { CodeSample } from "@lrnwebcomponents/code-sample/code-sample.js";
 import { getRange } from "./shadows-safari.js";
 import "./hax-app.js";
 import "./hax-stax.js";
@@ -1356,6 +1356,7 @@ Polymer({
       }
     };
     this.setHaxProperties(hr, "hr");
+    this.setHaxProperties(CodeSample.haxProperties, CodeSample.tag);
   },
 
   /**
