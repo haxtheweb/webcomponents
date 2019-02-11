@@ -35,7 +35,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@kuscamara/code-sample": "^3.0.2",
+    "@lrnwebcomponents/code-sample": "^2.0.4",
     "@lrnwebcomponents/app-datepicker": "^2.0.4",
     "@lrnwebcomponents/code-editor": "^2.0.4",
     "@lrnwebcomponents/dl-behavior": "^2.0.3",

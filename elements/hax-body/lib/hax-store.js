@@ -5,7 +5,7 @@ import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import "@lrnwebcomponents/hal-9000/hal-9000.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@kuscamara/code-sample/code-sample.js";
+import "@lrnwebcomponents/code-sample/code-sample.js";
 import { getRange } from "./shadows-safari.js";
 import "./hax-app.js";
 import "./hax-stax.js";
@@ -1356,51 +1356,6 @@ Polymer({
       }
     };
     this.setHaxProperties(hr, "hr");
-    // code-sample, the only one we provide core definitions for
-    let codeSample = {
-      canScale: true,
-      canPosition: true,
-      canEditSource: true,
-      gizmo: {
-        title: "Code sample",
-        description: "A sample of code highlighted in the page",
-        icon: "icons:code",
-        color: "blue",
-        groups: ["Code", "Development"],
-        handles: [
-          {
-            type: "code",
-            code: ""
-          }
-        ],
-        meta: {
-          author: "kuscamara"
-        }
-      },
-      settings: {
-        quick: [],
-        configure: [
-          {
-            slot: "",
-            slotWrapper: "template",
-            slotAttributes: {
-              "preserve-content": "preserve-content"
-            },
-            title: "Source",
-            description: "The URL for this video.",
-            inputMethod: "code-editor"
-          },
-          {
-            attribute: "copy-clipboard-button",
-            title: "Copy to clipboard button",
-            description: "button in top right that says copy to clipboard",
-            inputMethod: "boolean"
-          }
-        ],
-        advanced: []
-      }
-    };
-    this.setHaxProperties(codeSample, "code-sample");
   },
 
   /**

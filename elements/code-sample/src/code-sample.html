@@ -1,0 +1,68 @@
+<style include="code-sample-theme" id="baseStyle">
+  :host {
+      display: block;
+    }
+
+    :host([hidden]),
+    [hidden] {
+      display: none;
+    }
+
+    pre {
+      margin: 0;
+      @apply --code-sample-pre;
+    }
+
+    pre, code {
+      font-family: var(--code-sample-font-family, Operator Mono, Inconsolata, Roboto Mono, monaco, consolas, monospace);
+      font-size: var(--code-sample-font-size, 0.875rem);
+    }
+
+    .hljs {
+      padding: 0 1.25rem;
+      line-height: var(--code-sample-line-height, 1.3);
+      @apply --code-sample-hljs;
+    }
+
+    .demo:not(:empty) {
+      padding: var(--code-sample-demo-padding, 0 0 1.25rem);
+      @apply --code-sample-demo-not-empty;
+    }
+
+    .demo {
+      @apply --code-sample-demo;
+    }
+
+    #code-container {
+      position: relative;
+      @apply --code-sample-code-container;
+    }
+
+    #code-container:hover {
+      @apply --code-sample-code-container-hover;
+    }
+
+    #code-container:hover > button {
+      @apply --code-sample-code-container-hover-button;
+    }
+
+    button {
+      background: var(--code-sample-copy-button-bg-color, #e0e0e0);
+      border: none;
+      cursor: pointer;
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+      text-transform: uppercase;
+      @apply --code-sample-copy-clipboard-button;
+    }
+</style>
+${this.constructor.theme || oneDark}
+<div id="demo" class="demo"></div>
+<slot id="content"></slot>
+
+<div id="code-container">
+  <button type="button" hidden="[[!copyClipboardButton]]" id="copyButton" title="Copy to clipboard" on-click="_copyToClipboard">Copy</button>
+  <pre id="code"></pre>
+</div>
