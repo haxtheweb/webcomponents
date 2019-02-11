@@ -11,6 +11,7 @@ import "@polymer/paper-progress/paper-progress.js";
 import { observable, decorate, computed } from "mobx";
 import { store } from "./haxcms-site-store.js";
 import "./haxcms-site-router.js";
+import "./haxcms-editor-builder.js";
 
 /**
  * `haxcms-site-builder`
@@ -241,7 +242,7 @@ let HAXCMSSiteBuilder = Polymer({
     // check for authoring xp by just asking for the object
     // timeout helps w/ some initial setup work
     var time = 500;
-    if (window.HaxStore.ready) {
+    if (window.HaxStore && window.HaxStore.ready) {
       time = 10;
     }
     setTimeout(() => {

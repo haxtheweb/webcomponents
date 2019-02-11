@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
+import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
 import "@polymer/iron-ajax/iron-ajax.js";
 import "@polymer/paper-button/paper-button.js";
 import "@polymer/iron-icon/iron-icon.js";
@@ -734,6 +735,7 @@ Polymer({
    * created life cycle
    */
   created: function() {
+    setPassiveTouchGestures(true);
     window.JSONOutlineSchema.requestAvailability();
     window.SimpleModal.requestAvailability();
     window.SimpleToast.requestAvailability();
