@@ -1,0 +1,65 @@
+:host {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  @apply --rich-text-editor;
+}
+:host([sticky]) {
+  position: sticky;
+  top: 0;
+}
+:host([hidden]) {
+  display: none;
+}
+:host #toolbar {
+  display: flex;
+  opacity: 1;
+  margin: 0;
+  align-items: stretch;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  background-color: var(--rich-text-editor-bg);
+  border: var(--rich-text-editor-border);
+  font-size: 12px;
+  transition: all 0.5s;
+  @apply --rich-text-editor-toolbar;
+} 
+:host #toolbar[aria-hidden]{
+  visibility: hidden;
+  opacity: 0;
+  height: 0;
+}
+:host #toolbar .group {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: stretch;
+  padding: 0 3px;
+  @apply --rich-text-editor-toolbar-group;
+}
+:host #toolbar .group:not(:last-of-type) {
+  margin-right: 3px;
+  border-right: var(--rich-text-editor-border);
+  @apply --rich-text-editor-toolbar-divider;
+}
+:host #toolbar .more-button {
+  flex: 1 0 auto;
+  justify-content: flex-end;
+}
+:host .more-button[display-max="xs"],
+:host(:not([responsive-size="xs"])) .more-button[display-max="sm"],
+:host(:not([responsive-size*="s"])) .more-button[display-max="md"],
+:host([responsive-size*="l"]) .more-button[display-max="lg"],
+:host([responsive-size="xl"]) .more-button[display-max="xl"],
+:host([responsive-size="xs"]) #toolbar[collapsed] .group:not([minimum-size="xs"]),
+:host([responsive-size="sm"]) #toolbar[collapsed] .group:not([minimum-size*="s"]),
+:host([responsive-size="md"]) #toolbar[collapsed] .group[minimum-size*="l"],
+:host([responsive-size="lg"]) #toolbar[collapsed] .group[minimum-size="xl"] {
+  display: none;
+}
+/*
+:host([responsive-size="sm"]) .more-button:not([toggles-size="sm"]),
+:host([responsive-size="md"]) .more-button:not([toggles-size="md"])
+:host([responsive-size="lg"]) .more-button:not([toggles-size="lg"]),
+:host([responsive-size="xl"]) .more-button:not([toggles-size="xl"]),*/

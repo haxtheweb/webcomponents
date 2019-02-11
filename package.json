@@ -109,6 +109,7 @@
     "yo": "2.0.5"
   },
   "dependencies": {
+    "@polymer/iron-fit-behavior": "^3.0.1",
     "@polymer/lit-element": "0.7.1",
     "@polymer/polymer": "3.1.0",
     "@skatejs/renderer-lit-html": "0.2.2",

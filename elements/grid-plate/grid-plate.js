@@ -234,7 +234,16 @@ let GridPlate = Polymer({
      */
     columnWidths: {
       type: String,
-      computed: "_getColumnWidths(responsiveSize,layout,layouts)"
+      computed:
+        "_getColumnWidths(responsiveSize,layout,layouts,disableResponsive)"
+    },
+    /**
+     * disables responsive layouts for HAX preview
+     */
+    disableResponsive: {
+      type: Boolean,
+      value: false,
+      notify: true
     },
     /**
      * If the grid plate is in a state where its items
@@ -566,9 +575,15 @@ let GridPlate = Polymer({
    * @param {string} a string that describes the current responsive width
    * @param {string} the name of selected layout
    * @param {object} predefined layouts of column sizes and various responsive widths
+   * @param {boolean} disable responsive sizing?
    * @returns {object} an object with a layout's column sizes at the current responsive width
    */
-  _getColumnWidths(responsiveSize = "sm", layout = "1-1", layouts) {
+  _getColumnWidths(
+    responsiveSize = "sm",
+    layout = "1-1",
+    layouts,
+    disableResponsive
+  ) {
     let newl = layouts[layout],
       //how old layout names map to the new ones
       oldLayouts = {
@@ -579,20 +594,21 @@ let GridPlate = Polymer({
         "4/4/4": "1-1-1",
         "3/3/3/3": "1-1-1-1"
       },
-      oldl = oldLayouts[layout];
+      oldl = oldLayouts[layout],
+      size = disableResponsive !== false ? "xl" : responsiveSize;
 
-    if (newl !== undefined && newl[responsiveSize] !== undefined) {
+    if (newl !== undefined && newl[size] !== undefined) {
       //return the layout
-      return layouts[layout][responsiveSize];
+      return layouts[layout][size];
     } else if (
       layouts[oldl] !== undefined &&
-      layouts[oldl][responsiveSize] !== undefined
+      layouts[oldl][size] !== undefined
     ) {
       //return new layout that maps to old one
-      return layouts[oldl][responsiveSize];
+      return layouts[oldl][size];
     } else {
       //return 2-column layout
-      return layouts["1-1"][responsiveSize];
+      return layouts["1-1"][size];
     }
   },
 
