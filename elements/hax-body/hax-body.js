@@ -1735,21 +1735,23 @@ let HaxBody = Polymer({
    */
   _delKeyPressed: function(e) {
     if (this.editMode) {
-      const activeNodeTextContent = dom(this.activeContainerNode).textContent;
+      const activeNodeTextContent = dom(this.activeNode).textContent;
+      // test selection to see if we are at beginning of
+      // whatever element this is
+      let range = window.HaxStore.getRange().cloneRange();
+      // ensure our range is not inside of a list item
+      let tagTest = range.commonAncestorContainer.tagName;
       if (activeNodeTextContent === "") {
-        e.preventDefault();
-        e.stopPropagation();
-        this.haxDeleteNode(this.activeContainerNode);
+        if (tagTest !== "LI") {
+          e.preventDefault();
+          e.stopPropagation();
+          this.haxDeleteNode(this.activeNode);
+        }
       } else if (
         window.HaxStore.instance.isTextElement(
-          this._haxResolvePreviousElement(this.activeContainerNode)
+          this._haxResolvePreviousElement(this.activeNode)
         )
       ) {
-        // test selection to see if we are at beginning of
-        // whatever element this is
-        let range = window.HaxStore.getRange().cloneRange();
-        // ensure our range is not inside of a list item
-        let tagTest = range.commonAncestorContainer.tagName;
         if (typeof tagTest === typeof undefined) {
           tagTest = range.commonAncestorContainer.parentNode.tagName;
         }
@@ -1757,17 +1759,18 @@ let HaxBody = Polymer({
         if (
           range.startOffset === 0 &&
           range.endOffset === 0 &&
-          tagTest !== "LI"
+          tagTest !== "LI" &&
+          range.commonAncestorContainer.parentNode === this.activeNode
         ) {
           e.preventDefault();
           e.stopPropagation();
-          while (this.activeContainerNode.firstChild) {
-            this._haxResolvePreviousElement(
-              this.activeContainerNode
-            ).appendChild(this.activeContainerNode.firstChild);
+          while (this.activeNode.firstChild) {
+            this._haxResolvePreviousElement(this.activeNode).appendChild(
+              this.activeNode.firstChild
+            );
           }
           setTimeout(() => {
-            this.haxDeleteNode(this.activeContainerNode);
+            this.haxDeleteNode(this.activeNode);
           }, 100);
         }
       }
