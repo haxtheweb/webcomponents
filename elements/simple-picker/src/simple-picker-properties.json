@@ -28,6 +28,15 @@
   },
 
   /**
+   * Renders html as title. (Good for titles with HTML in them.)
+   */
+  "titleAsHtml": {
+    "name": "titleAsHtml",
+    "type": "Boolean",
+    "value": false
+  },
+
+  /**
    * Hide option labels? As color-picker or icon-picker, labels may be redundant.
    * This option would move the labels off-screen so that only screen-readers will have them.
    */

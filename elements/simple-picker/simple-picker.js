@@ -206,6 +206,7 @@ class SimplePicker extends PolymerElement {
             icon$="[[__selectedOption.icon]]"
             style$="[[__selectedOption.style]]"
             title$="[[__selectedOption.alt]]"
+            title-as-html$="[[titleAsHtml]]"
           >
           </simple-picker-option>
           <span id="icon"
@@ -240,7 +241,8 @@ class SimplePicker extends PolymerElement {
                     on-set-selected-option="_handleSetSelectedOption"
                     style$="[[option.style]]"
                     tabindex="-1"
-                    title$="[[option.alt]]"
+                    title="[[option.alt]]"
+                    title-as-html$="[[titleAsHtml]]"
                     value$="[[option.value]]"
                   >
                   </simple-picker-option>
@@ -282,6 +284,15 @@ class SimplePicker extends PolymerElement {
         type: "Boolean",
         value: false,
         reflectToAttribute: true
+      },
+
+      /**
+       * Renders html as title. (Good for titles with HTML in them.)
+       */
+      titleAsHtml: {
+        name: "titleAsHtml",
+        type: "Boolean",
+        value: false
       },
 
       /**
@@ -444,6 +455,7 @@ class SimplePicker extends PolymerElement {
    * handles listbox click event
    */
   _handleListboxClick(e) {
+    this.dispatchEvent(new CustomEvent("toggle", { detail: this }));
     this._toggleListbox(!this.expanded);
   }
 

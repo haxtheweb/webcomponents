@@ -222,6 +222,34 @@ let GridPlate = Polymer({
 
   properties: {
     /**
+     * Custom small breakpoint for the layouts; only updated on attached
+     */
+    breakpointSm: {
+      type: Number,
+      value: 900
+    },
+    /**
+     * Custom medium breakpoint for the layouts; only updated on attached
+     */
+    breakpointMd: {
+      type: Number,
+      value: 1200
+    },
+    /**
+     * Custom large breakpoint for the layouts; only updated on attached
+     */
+    breakpointLg: {
+      type: Number,
+      value: 1500
+    },
+    /**
+     * Custom extra-large breakpoint for the layouts; only updated on attached
+     */
+    breakpointXl: {
+      type: Number,
+      value: 1800
+    },
+    /**
      * number of columns at this layout / responsive size
      */
     columns: {
@@ -276,19 +304,7 @@ let GridPlate = Polymer({
     "xl": ["25%","25%","25%","25%"]    //the responsive width of each column when the grid is extra large
   },
   {...}
-}
-
-              "1": "1: full width",
-              "1-1": "2: equal width",
-              "2-1": "2: wide and narrow",
-              "1-2": "2: narrow and wide",
-              "3-1": "2: wider and narrower",
-              "1-3": "2: narrower and wider",
-              "1-1-1": "3: equal width",
-              "2-1-1": "3: wide, narrow, and narrow",
-              "1-2-1": "3: narrow, wide, and narrow",
-              "1-1-2": "3: narrow,  narrow, and wide",
-              "1-1-1-1": "4: equal width",
+}```
      */
     layouts: {
       type: Object,
@@ -909,7 +925,11 @@ let GridPlate = Polymer({
         detail: {
           element: root,
           attribute: "responsive-size",
-          relativeToParent: true
+          relativeToParent: true,
+          sm: root.breakpointSm,
+          md: root.breakpointMd,
+          lg: root.breakpointLg,
+          xl: root.breakpointXl
         }
       })
     );
@@ -939,7 +959,40 @@ let GridPlate = Polymer({
             options: options
           }
         ],
-        advanced: []
+        advanced: [
+          {
+            property: "breakpointSm",
+            title: "Small Breakpoint",
+            description:
+              "Anything less than this number (in pixels) will render with the smallest version of this layout",
+            inputMethod: "textfield",
+            validationType: "number"
+          },
+          {
+            property: "breakpointMd",
+            title: "Medium Breakpoint",
+            description:
+              "Anything less than this number (in pixels) will render with the small version of this layout",
+            inputMethod: "textfield",
+            validationType: "number"
+          },
+          {
+            property: "breakpointLg",
+            title: "Large Breakpoint",
+            description:
+              "Anything less than this number (in pixels) will render with the medium version of this layout.",
+            inputMethod: "textfield",
+            validationType: "number"
+          },
+          {
+            property: "breakpointXl",
+            title: "Extra-Large Breakpoint",
+            description:
+              "Anything less than this number (in pixels) will render with the large version of this layout. Anything greater than or equal to this number will display with the maximum number of columns for this layout.",
+            inputMethod: "textfield",
+            validationType: "number"
+          }
+        ]
       },
       saveOptions: {
         unsetAttributes: ["__active-item", "edit-mode"]
