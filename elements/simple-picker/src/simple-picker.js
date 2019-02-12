@@ -91,6 +91,7 @@ class SimplePicker extends PolymerElement {
    * handles listbox click event
    */
   _handleListboxClick(e) {
+    this.dispatchEvent(new CustomEvent("toggle", { detail: this }));
     this._toggleListbox(!this.expanded);
   }
 

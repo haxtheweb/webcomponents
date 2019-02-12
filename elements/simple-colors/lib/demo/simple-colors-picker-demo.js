@@ -7,7 +7,6 @@ import "@polymer/polymer/lib/elements/dom-if.js";
 import { SimpleColors } from "../../simple-colors.js"; //import the shared styles
 import "../simple-colors-picker.js";
 
-export { SimpleColorsPickerDemo };
 /**
  * `simple-colors-picker-demo`
  * `an example of how to extend simple-colors within a custom element`
@@ -128,6 +127,9 @@ class SimpleColorsPickerDemo extends SimpleColors {
    */
   //disconnectedCallback() {}
 }
+
+export { SimpleColorsPickerDemo };
+
 window.customElements.define(
   SimpleColorsPickerDemo.tag,
   SimpleColorsPickerDemo

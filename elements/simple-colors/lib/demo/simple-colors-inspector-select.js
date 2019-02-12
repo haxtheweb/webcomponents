@@ -6,7 +6,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import "@polymer/polymer/lib/elements/dom-repeat.js";
 import { SimpleColors } from "../../simple-colors.js";
 
-export { SimpleColorsInspectorSelect };
 /**
  * `simple-colors-inspector-select`
  * `A select element for changing simple-colors attributes in simple-colors-class-inspector and simple-colors-variable-inspector`
@@ -196,6 +195,9 @@ class SimpleColorsInspectorSelect extends SimpleColors {
    */
   //disconnectedCallback() {}
 }
+
+export { SimpleColorsInspectorSelect };
+
 window.customElements.define(
   SimpleColorsInspectorSelect.tag,
   SimpleColorsInspectorSelect

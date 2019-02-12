@@ -40,7 +40,7 @@ class SimplePickerOption extends PolymerElement {
         hidden$="[[_hideIcon(icon)]]"
         icon$="[[icon]]"
       ></iron-icon>
-      <div class$="[[_getSrOnly(hideOptionLabels)]]">[[title]]</div>
+      <div id="title" class$="[[_getSrOnly(hideOptionLabels)]]">[[title]]</div>
     `;
   }
 
@@ -114,6 +114,17 @@ class SimplePickerOption extends PolymerElement {
         name: "title",
         type: "String",
         value: null,
+        reflectToAttribute: true,
+        observer: "_updateTitle"
+      },
+
+      /**
+       * Renders html as title. (Good for titles with HTML in them.)
+       */
+      titleAsHtml: {
+        name: "titleAsHtml",
+        type: "Boolean",
+        value: false,
         reflectToAttribute: true
       },
 
@@ -172,11 +183,24 @@ class SimplePickerOption extends PolymerElement {
   }
 
   /**
+   * updates the title
+   */
+  _updateTitle() {
+    let title = document.createElement("span");
+    if (this.titleAsHtml !== false) {
+      title.innerHTML = this.title;
+      this.$.title.innerHTML = "";
+      this.$.title.appendChild(title);
+    }
+  }
+
+  /**
    * Set event listeners
    */
   ready() {
     super.ready();
     let root = this;
+    this._updateTitle();
     this.addEventListener("focus", function(e) {
       root._handleFocus();
     });

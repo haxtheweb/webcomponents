@@ -7,7 +7,6 @@ import "@polymer/polymer/lib/elements/dom-if.js";
 import { SimpleColors } from "../../simple-colors.js"; //import the shared styles
 import "./simple-colors-demo.js";
 
-export { SimpleColorsVariableInspector };
 /**
  * `simple-colors-variable-inspector`
  * `A tool to show how simple-colors CSS variables work`
@@ -235,6 +234,9 @@ class SimpleColorsVariableInspector extends SimpleColors {
    */
   //disconnectedCallback() {}
 }
+
+export { SimpleColorsVariableInspector };
+
 window.customElements.define(
   SimpleColorsVariableInspector.tag,
   SimpleColorsVariableInspector
