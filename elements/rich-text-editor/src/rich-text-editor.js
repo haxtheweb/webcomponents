@@ -5,12 +5,12 @@
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 import { ResponsiveUtility } from "@lrnwebcomponents/responsive-utility/responsive-utility.js";
+import "./lib/rich-text-editor-button.js";
+import "./lib/rich-text-editor-more-button.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/image-icons.js";
 import "@lrnwebcomponents/md-extra-icons/md-extra-icons.js";
-import { RichTextEditorButton } from "./lib/rich-text-editor-button.js";
-import "./lib/rich-text-editor-styles.js";
 /**
  * `rich-text-editor`
  * `a standalone rich text editor`
@@ -21,7 +21,8 @@ import "./lib/rich-text-editor-styles.js";
  * @customElement
  * @polymer
  * @demo demo/index.html demo
- * @demo demo/content.html simple method
+ * @demo demo/content.html easy implementation
+ * @demo demo/config.html custom configuration
  */
 class RichTextEditor extends PolymerElement {
   /* REQUIRED FOR TOOLING DO NOT TOUCH */
@@ -39,7 +40,6 @@ class RichTextEditor extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     let root = this;
-    document.designMode = "on";
     window.ResponsiveUtility.requestAvailability();
     window.dispatchEvent(
       new CustomEvent("responsive-element", {
@@ -50,19 +50,29 @@ class RichTextEditor extends PolymerElement {
         }
       })
     );
-    document.addEventListener("selectionchange", function() {
-      root._updateToggleButtons();
+    document.designMode = "on";
+    document.addEventListener("selectionchange", function(e) {
+      root.getUpdatedSelection();
     });
   }
+
   /**
-   * life cycle, element is removed to the DOM
+   * life cycle, element is disconnected
    */
   disconnectedCallback() {
     super.disconnectedCallback();
     let root = this;
     document.removeEventListener("selectionchange", function() {
-      root._updateToggleButtons();
+      root.getUpdatedSelection();
     });
+  }
+
+  /**
+   * cancels edits to the active editableElement
+   */
+  cancel() {
+    this.editableElement.innerHTML = this.canceled;
+    this.editTarget(null);
   }
   /**
    * makes a editableElement editable
@@ -70,9 +80,7 @@ class RichTextEditor extends PolymerElement {
    * @param {object} an HTML object that can be edited
    */
   editTarget(editableElement) {
-    let root = this,
-      test = document.createElement("RichTextEditorButton");
-    console.log(RichTextEditorButton.properties, test);
+    let root = this;
     if (
       editableElement.getAttribute("id") === undefined ||
       editableElement.getAttribute("id") === null
@@ -88,10 +96,30 @@ class RichTextEditor extends PolymerElement {
       //activate the editableElement
       editableElement.parentNode.insertBefore(root, editableElement);
       root.editableElement = editableElement;
+      root.canceled = editableElement.innerHTML;
       root.editableElement.contentEditable = true;
-      root._updateToggleButtons();
       root.controls = editableElement.getAttribute("id");
+
+      console.log(editableElement);
     }
+  }
+
+  /**
+   * Gets the updated selection.
+   */
+  getUpdatedSelection(updatedSaved) {
+    let root = this;
+    root.selection =
+      root.editableElement === undefined || root.editableElement === null
+        ? null
+        : root.editableElement.getSelection
+        ? root.editableElement.getSelection()
+        : root._getRange();
+    this.buttons.forEach(function(button) {
+      button.selection = root.selection;
+      if(updatedSaved) button.savedSelection = root.selection;
+    });
+    return root.selection;
   }
 
   /**
@@ -107,6 +135,12 @@ class RichTextEditor extends PolymerElement {
         item[0].removeEventListener("click", function(e) {
           root.editTarget(editableElement);
         });
+        editableElement.removeEventListener('blur',function(){
+          root.getUpdatedSelection(true);
+        });
+        editableElement.removeEventListener('mouseout',function(){
+          root.getUpdatedSelection(true);
+        });
         item[1].disconnect();
         this.set("editableElements", this.editableElements.splice(i, 1));
       }
@@ -121,10 +155,16 @@ class RichTextEditor extends PolymerElement {
   addEditableRegion(editableElement) {
     let root = this,
       observer = new MutationObserver(function() {
-        root._updateToggleButtons();
+        root.getUpdatedSelection();
       });
     editableElement.addEventListener("click", function(e) {
       root.editTarget(editableElement);
+    });
+    editableElement.addEventListener('blur',function(){
+      root.getUpdatedSelection(true);
+    });
+    editableElement.addEventListener('mouseout',function(){
+      root.getUpdatedSelection(true);
     });
     observer.observe(editableElement, {
       attributes: false,
@@ -148,13 +188,52 @@ class RichTextEditor extends PolymerElement {
    * @param {array} an array the buttons grouped by size
    */
   _getButtons(config) {
-    let buttons = [],
-      sizes = ["xs", "sm", "md", "lg", "xl"];
-    sizes.forEach(function(size) {
-      if (config[size] !== undefined && config[size] !== null)
-        buttons.push({ size: size, groups: config[size] });
+    let root = this,
+      toolbar = root.$.toolbar,
+      more = this.$.morebutton,
+      max = 0,
+      sizes = ["xs", "sm", "md", "lg", "xl"],
+      temp = [];
+    toolbar.innerHTML = "";
+    config.forEach(function(item) {
+      let addButton = function(child, parent) {
+        let button = document.createElement(child.type);
+        for (var key in child) {
+          button.setAttribute(key, child[key]);
+        }
+        max = Math.max(max, sizes.indexOf(item.collapsedUntil));
+        button.setAttribute("class", "button");
+        parent.appendChild(button);
+        temp.push(button);
+      };
+      if (item.type === "button-group") {
+        let group = document.createElement("div");
+        group.setAttribute("class", "group");
+        if (item.collapsedUntil !== undefined && item.collapsedUntil !== null)
+          group.setAttribute("collapsed-until", item.collapsedUntil);
+        max = Math.max(max, sizes.indexOf(item.collapsedUntil));
+        item.buttons.forEach(function(button) {
+          addButton(button, group);
+        });
+        toolbar.appendChild(group);
+      } else {
+        addButton(item, toolbar);
+      }
+      toolbar.appendChild(more);
+      more.collapseMax = sizes[max];
     });
-    return buttons;
+    return temp;
+  }
+  /**
+   * Normalizes selection data.
+   */
+  _getRange() {
+    let sel = window.getSelection();
+    if (sel.getRangeAt && sel.rangeCount) {
+      return sel.getRangeAt(0);
+    } else if (sel) {
+      return sel;
+    } else false;
   }
 
   /**
@@ -170,86 +249,16 @@ class RichTextEditor extends PolymerElement {
   }
 
   /**
-   * Respond to simple modifications.
-   */
-  _getRange() {
-    let sel = window.getSelection();
-    if (sel.getRangeAt && sel.rangeCount) {
-      return sel.getRangeAt(0);
-    } else if (sel) {
-      return sel;
-    } else false;
-  }
-
-  /**
-   * Respond to simple modifications.
-   */
-  _handleTextOperation(e) {
-    this.selection = this.editableElement.getSelection
-      ? this.editableElement.getSelection()
-      : this._getRange();
-    //refresh buttons
-    // support a simple insert event to bubble up or everything else
-    if (e.detail.command !== undefined && e.detail.command !== null) {
-      document.execCommand(e.detail.command);
-    } else {
-      this.dispatchEvent(
-        new CustomEvent("rich-text-event", {
-          detail: { button: e.detail, selection: this.selection }
-        })
-      );
-    }
-    this._updateToggleButtons();
-    /*switch (detail.event) {
-      case "text-link":
-        var href = "";
-        if (typeof selection.focusNode.parentNode.href !== typeof undefined) {
-          href = selection.focusNode.parentNode.href;
-        }
-        // @todo put in a dialog instead of this
-        let url = prompt("Enter a URL:", href);
-        if (url) {
-          document.execCommand("createLink", false, url);
-        }
-        break;
-      case "text-unlink":
-        document.execCommand("unlink");
-        break;*/
-    /**
-       * Our bad actors when it comes to polyfill'ed shadowDOM.
-       * Naughty, naughty shadyDOM. Fortunately this is only IE11/Edge
-       * /
-      //catch-all for custom buttons
-      default:
-    }*/
-  }
-
-  /**
-   * Is button toggled?
-   */
-  _toggledButton(button = null, trigger) {
-    let sel = window.getSelection(),
-      state =
-        button.command !== null && button.toggles === true
-          ? document.queryCommandState(button.command)
-          : false;
-    return state;
-  }
-
-  /**
    * Toggles collapsed mode
    */
   _toggleMore(e) {
+    console.log("toggle more");
     this.collapsed = !this.collapsed;
   }
 
   /**
-   * Updates toggled buttons based on selection.
+   * Generate UUID
    */
-  _updateToggleButtons() {
-    this.__trigger = this.__trigger === false;
-  }
-
   _uuidPart() {
     return Math.floor((1 + Math.random()) * 0x10000)
       .toString(16)

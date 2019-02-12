@@ -90,15 +90,16 @@ class SimplePicker extends PolymerElement {
   /**
    * handles listbox click event
    */
-  _handleListboxClick(e) {
-    this.dispatchEvent(new CustomEvent("toggle", { detail: this }));
-    this._toggleListbox(!this.expanded);
+  _handleListboxEvent(e,type) {
+    this.dispatchEvent(new CustomEvent(type, { detail: this }));
+    if(type === 'click') this._toggleListbox(!this.expanded);
   }
 
   /**
    * handles listbox keyboard events
    */
   _handleListboxKeydown(e) {
+    this.dispatchEvent(new CustomEvent("keydown", { detail: this }));
     let coords = this.__activeDesc.split("-"),
       rownum = parseInt(coords[1]),
       colnum = parseInt(coords[2]);
@@ -201,7 +202,7 @@ class SimplePicker extends PolymerElement {
       for (var i = 0; i < this.options.length; i++) {
         for (var j = 0; j < this.options[i].length; j++) {
           if (this.options[i][j].value === value) {
-            this.__activeDesc = this.options[i][j].value;
+            this.__activeDesc = 'option-'+i+'-'+j;
             sel = this.options[i][j];
           }
         }
@@ -235,7 +236,10 @@ class SimplePicker extends PolymerElement {
     let root = this;
     if (this.$.listbox !== undefined) {
       this.$.listbox.addEventListener("click", function(e) {
-        root._handleListboxClick(e);
+        root._handleListboxEvent(e,'click');
+      });
+      this.$.listbox.addEventListener("mousedown", function(e) {
+        root._handleListboxEvent(e,'mousedown');
       });
       this.$.listbox.addEventListener("keydown", function(e) {
         root._handleListboxKeydown(e);
