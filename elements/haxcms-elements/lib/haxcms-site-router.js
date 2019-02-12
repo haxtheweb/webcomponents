@@ -33,7 +33,7 @@ Polymer({
       notify: true,
       observer: "_manifestChanged"
     },
-    baseURI: {
+    baseUri: {
       type: String
     }
   },
@@ -85,8 +85,8 @@ Polymer({
   _updateRouter: function(manifest) {
     if (!manifest || typeof manifest.items === "undefined") return;
     let options = {};
-    if (this.baseURI) {
-      options.baseUrl = this.baseURI;
+    if (this.baseUri) {
+      options.baseUrl = this.baseUri;
     }
     const router = new Router(this, options);
     const routerItems = manifest.items.map(i => {
