@@ -48,7 +48,7 @@ let HAXCMSSiteBuilder = Polymer({
         --paper-progress-container-color: transparent;
       }
     </style>
-    <haxcms-site-router base-uri="[[baseUri]]"></haxcms-site-router>
+    <haxcms-site-router base-uri="[[baseURI]]"></haxcms-site-router>
     <paper-progress
       hidden\$="[[!loading]]"
       value="100"
@@ -175,7 +175,7 @@ let HAXCMSSiteBuilder = Polymer({
     /**
      * Injected by HAXcms
      */
-    baseUri: {
+    baseURI: {
       type: String
     }
   },
@@ -263,19 +263,22 @@ let HAXCMSSiteBuilder = Polymer({
    */
   _activeItemContentChanged: function(newValue, oldValue) {
     if (newValue) {
+      var html = newValue;
       // only append if not empty
-      if (newValue !== null) {
+      if (html !== null) {
         this.wipeSlot(this.themeElement, "*");
+        html = this.encapScript(newValue);
         // insert the content as quickly as possible, then work on the dynamic imports
         async.microTask.run(() => {
-          let frag = document
-            .createRange()
-            .createContextualFragment(this.encapScript(newValue));
-          dom(this.themeElement).appendChild(frag);
+          setTimeout(() => {
+            let frag = document.createRange().createContextualFragment(html);
+            dom(this.themeElement).appendChild(frag);
+            this.fire("json-outline-schema-active-body-changed", html);
+          }, 50);
         });
         // if there are, dynamically import them
         if (this.manifest.metadata.dynamicElementLoader) {
-          let tagsFound = this.findTagsInHTML(this.encapScript(newValue));
+          let tagsFound = this.findTagsInHTML(html);
           const basePath = pathFromUrl(import.meta.url);
           for (var i in tagsFound) {
             const tagName = tagsFound[i];
@@ -297,23 +300,15 @@ let HAXCMSSiteBuilder = Polymer({
           }
         }
       }
-      this.fire("json-outline-schema-active-body-changed", html);
     }
   },
   findTagsInHTML: function(html) {
-    let tags = [];
-    let fragment = document.createElement("div");
-    fragment.insertAdjacentHTML("beforeend", html);
-    while (fragment.firstChild !== null) {
-      // we have a definition, try to autoload it
-      if (fragment.firstChild.tagName) {
-        tags.push(fragment.firstChild.tagName.toLowerCase());
-      }
-      if (fragment.firstChild.firstChild !== null) {
-        tags = tags.concat(this.findTagsInHTML(fragment.firstChild.innerHTML));
-      }
-      // remove the child either way
-      fragment.removeChild(fragment.firstChild);
+    let tags = {};
+    let tag = "";
+    var matches = html.match(/<\/(\S*?)-(\S*?)>/g);
+    for (var i in matches) {
+      tag = matches[i].replace("</", "").replace(">", "");
+      tags[tag] = tag;
     }
     return tags;
   },
