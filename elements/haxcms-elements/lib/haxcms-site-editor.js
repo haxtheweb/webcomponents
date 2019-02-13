@@ -201,7 +201,6 @@ Polymer({
     editMode: {
       type: Boolean,
       reflectToAttribute: true,
-      observer: "_editModeChanged",
       value: false
     },
     /**
@@ -295,6 +294,7 @@ Polymer({
       this._bodyChanged.bind(this)
     );
     window.addEventListener("haxcms-save-outline", this.saveOutline.bind(this));
+    window.addEventListener("haxcms-save-page", this.savePage.bind(this));
     window.addEventListener(
       "haxcms-save-site-data",
       this.saveManifest.bind(this)
@@ -350,6 +350,7 @@ Polymer({
       "haxcms-save-outline",
       this.saveOutline.bind(this)
     );
+    window.removeEventListener("haxcms-save-page", this.savePage.bind(this));
     window.removeEventListener(
       "haxcms-save-site-data",
       this.saveManifest.bind(this)
@@ -576,27 +577,23 @@ Polymer({
     this.dispatchEvent(evt);
   },
   /**
-   * Edit state has changed.
+   * Save page event
    */
-  _editModeChanged: function(newValue, oldValue) {
-    // was on, now off
-    if (!newValue && oldValue) {
-      this.set("updatePageData.siteName", this.manifest.metadata.siteName);
-      this.notifyPath("updatePageData.siteName");
-      this.set(
-        "updatePageData.body",
-        window.HaxStore.instance.activeHaxBody.haxToContent()
-      );
-      this.notifyPath("updatePageData.body");
-      this.set("updatePageData.page", this.activeItem.id);
-      this.notifyPath("updatePageData.page");
-      this.set("updatePageData.jwt", this.jwt);
-      this.notifyPath("updatePageData.jwt");
-      // send the request
-      if (this.savePagePath) {
-        this.$.pageupdateajax.generateRequest();
-      }
-      this.fire("haxcms-save-page", this.activeItem);
+  savePage: function(e) {
+    this.set("updatePageData.siteName", this.manifest.metadata.siteName);
+    this.notifyPath("updatePageData.siteName");
+    this.set(
+      "updatePageData.body",
+      window.HaxStore.instance.activeHaxBody.haxToContent()
+    );
+    this.notifyPath("updatePageData.body");
+    this.set("updatePageData.page", this.activeItem.id);
+    this.notifyPath("updatePageData.page");
+    this.set("updatePageData.jwt", this.jwt);
+    this.notifyPath("updatePageData.jwt");
+    // send the request
+    if (this.savePagePath) {
+      this.$.pageupdateajax.generateRequest();
     }
   },
   /**
