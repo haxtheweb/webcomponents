@@ -55,22 +55,15 @@ class RichTextEditorButton extends PolymerElement {
         type: "String",
         value: null
       },
+
       /**
        * Optional parameter for the command.
        */
       commandVal: {
         name: "commandVal",
         type: "Object",
-        value: null
-      },
-
-      /**
-       * The editableElement element for the editor.
-       */
-      editableElement: {
-        name: "editableElement",
-        type: "Object",
-        value: null
+        value: null,
+        notify: true
       },
 
       /**
@@ -116,9 +109,8 @@ class RichTextEditorButton extends PolymerElement {
       selection: {
         name: "selection",
         type: "Object",
-        value: null,
         notify: true,
-        reflectToAttribute: true
+        value: null
       },
 
       /**
@@ -137,8 +129,7 @@ class RichTextEditorButton extends PolymerElement {
         name: "toggled",
         type: "Boolean",
         computed: "_isToggled(selection)",
-        notify: true,
-        reflectToAttribute: true
+        notify: true
       },
 
       /**
@@ -254,9 +245,6 @@ class RichTextEditorButton extends PolymerElement {
   connectedCallback() {
     super.connectedCallback();
     this.__a11y = this.$.button;
-    this.dispatchEvent(
-      new CustomEvent("activate-rich-text-button", { detail: this })
-    );
   }
 
   /**
@@ -264,9 +252,6 @@ class RichTextEditorButton extends PolymerElement {
    */
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.dispatchEvent(
-      new CustomEvent("deactivate-rich-text-button", { detail: this })
-    );
   }
 
   /**
@@ -288,7 +273,7 @@ class RichTextEditorButton extends PolymerElement {
   }
 
   /**
-   * determins if the button is toggled
+   * determine if the button is toggled
    *
    * @param {object} the text selection
    * @returns {boolean} whether the button is toggled
@@ -310,9 +295,6 @@ class RichTextEditorButton extends PolymerElement {
   _buttonTap(e) {
     e.preventDefault();
     this.doTextOperation();
-    this.dispatchEvent(
-      new CustomEvent("rich-text-button-tap", { detail: this })
-    );
   }
   /**
    * updates a button value based on whether or not button is toggled

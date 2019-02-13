@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import { RichTextEditorPicker } from "./../rich-text-editor-picker.js";
+import { RichTextEditorPicker } from "./rich-text-editor-picker.js";
 import "@polymer/iron-icons/editor-icons.js";
 /**
  * `rich-text-editor-emoji-picker`
@@ -25,7 +25,7 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
       optionsSrc: {
         name: "optionsSrc",
         type: "String",
-        value: "custom/data/emojis.js"
+        value: "data/emojis.js"
       },
 
       /**

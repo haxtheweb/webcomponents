@@ -29,7 +29,7 @@ class RichTextEditorPicker extends RichTextEditorButton {
         tabindex="0"
         title-as-html$="[[titleAsHtml]]"
         options="[[options]]"
-        value="{{commandVal}}">
+        value="[[commandVal]]">
         <span id="label" class$="[[labelStyle]]"></span>
       </paper-button>
       <paper-tooltip id="tooltip" for="button"></paper-button>
@@ -57,14 +57,6 @@ class RichTextEditorPicker extends RichTextEditorButton {
         readOnly: true
       },
       /**
-       * An optional JSON file with default options.
-       */
-      optionsSrc: {
-        name: "optionsSrc",
-        type: "String",
-        value: null
-      },
-      /**
        * The command used for document.execCommand.
        */
       options: {
@@ -81,6 +73,24 @@ class RichTextEditorPicker extends RichTextEditorButton {
         name: "titleAsHtml",
         type: "Boolean",
         value: false
+      },
+
+      /**
+       *
+       */
+      wrap: {
+        name: "wrap",
+        type: "Boolean",
+        value: false
+      },
+
+      /**
+       *
+       */
+      block: {
+        name: "block",
+        type: "Boolean",
+        value: false
       }
     };
   }
@@ -94,20 +104,32 @@ class RichTextEditorPicker extends RichTextEditorButton {
   }
 
   /**
-   * life cycle, element is afixed to the DOM
+   * determins if the button is toggled
+   *
+   * @param {object} the text selection
+   * @returns {boolean} whether the button is toggled
+   *
    */
-  connectedCallback() {
-    super.connectedCallback();
-    const name = "data";
-    const basePath = pathFromUrl(import.meta.url);
-    const src = this.optionsSrc;
-    const location = `${basePath}${src}`;
-    window.addEventListener(
-      `es-bridge-${name}-loaded`,
-      this._setOptions.bind(this)
-    );
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(name, location);
+  _isToggled(selection) {
+    let wrap = this.wrap,
+      toggled = false;
+    if (selection !== null) {
+      if (this.command === "formatBlock") {
+        let ancestor = selection.commonAncestorContainer,
+          parent = ancestor.parentNode,
+          temp = [];
+        this.options.forEach(function(row) {
+          row.forEach(function(option) {
+            temp.push(option.value);
+          });
+        });
+        this.$.button.value =
+          parent.closest(temp.join(",")) !== null
+            ? parent.closest(temp.join(",")).tagName.toLowerCase()
+            : null;
+      }
+    }
+    return false;
   }
 
   /**
@@ -120,22 +142,26 @@ class RichTextEditorPicker extends RichTextEditorButton {
    * Picker change
    */
   _pickerChange(e) {
-    console.log("selection", this.selection);
-    if (this.selection !== undefined && this.selection !== null) {
-      let val = this.$.button.value,
-        isTextNode = typeof val === "string",
-        content = this.selection.extractContents(),
-        node = isTextNode
+    let val = this.$.button.value;
+    e.preventDefault();
+    if (
+      val !== null &&
+      this.selection !== undefined &&
+      this.selection !== null
+    ) {
+      this.commandVal = this.$.button.value;
+      if ((this.command = "formatBlock")) {
+        this.doTextOperation();
+      } else if ((this.command = "insertNode")) {
+        let node = !this.wrap
           ? document.createTextNode(val)
-          : document.createElement(val.element);
-      if (!isTextNode && !val.noWrap) node.innerHTML = val;
-      this.selection.insertNode(node);
-      console.log("val", node, this.$.button, val);
-      if (isTextNode || val.noWrap) this.$.button.value = null;
+          : document.createElement(val);
+        this.selection.extractContents();
+        this.selection.insertNode(node);
+      }
+      if (!this.wrap)
+        this.dispatchEvent(new CustomEvent("deselect", { detail: this }));
     }
-    this.dispatchEvent(
-      new CustomEvent("rich-text-button-tap", { detail: this })
-    );
   }
   /**
    * Converts option data to picker option data;

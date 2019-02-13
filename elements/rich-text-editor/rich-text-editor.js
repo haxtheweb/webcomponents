@@ -480,8 +480,6 @@ class RichTextEditor extends PolymerElement {
       root.canceled = editableElement.innerHTML;
       root.editableElement.contentEditable = true;
       root.controls = editableElement.getAttribute("id");
-
-      console.log(editableElement);
     }
   }
 
@@ -489,15 +487,17 @@ class RichTextEditor extends PolymerElement {
    * Gets the updated selection.
    */
   getUpdatedSelection() {
-    let root = this,
-      select = root.selection;
+    let root = this;
     root.selection =
       root.editableElement === undefined || root.editableElement === null
         ? null
         : root.editableElement.getSelection
         ? root.editableElement.getSelection()
         : root._getRange();
-    return root.selection;
+    this.buttons.forEach(function(button) {
+      button.selection = null;
+      button.selection = root.selection;
+    });
   }
 
   /**
@@ -574,6 +574,9 @@ class RichTextEditor extends PolymerElement {
       e.preventDefault();
       root._preserveSelection(button);
     });
+    button.addEventListener("deselect", function(e) {
+      root._getRange().collapse(false);
+    });
     parent.appendChild(button);
     return button;
   }
@@ -607,16 +610,17 @@ class RichTextEditor extends PolymerElement {
         max = Math.max(max, sizes.indexOf(item.collapsedUntil));
         item.buttons.forEach(function(button) {
           max = Math.max(max, sizes.indexOf(button.collapsedUntil));
-          root._addButton(button, group);
+          temp.push(root._addButton(button, group));
         });
         toolbar.appendChild(group);
       } else {
         max = Math.max(max, sizes.indexOf(button.collapsedUntil));
-        root._addButton(button, group);
+        temp.push(root._addButton(button, group));
       }
       toolbar.appendChild(more);
       more.collapseMax = sizes[max];
     });
+    return temp;
   }
 
   /**
@@ -632,16 +636,20 @@ class RichTextEditor extends PolymerElement {
       return sel;
     } else false;
   }
+
   /**
    * Preserves the selection when a button is pressed
    *
    * @param {object} the button
    */
-  _preserveSelection(button) {
-    button.selection = this.selection;
-    let sel = window.getSelection();
+  _preserveSelection() {
+    let sel = window.getSelection(),
+      temp = this.selection;
+    this.buttons.forEach(function(button) {
+      button.selection = temp;
+    });
     sel.removeAllRanges();
-    sel.addRange(button.selection);
+    sel.addRange(temp);
   }
 
   /**

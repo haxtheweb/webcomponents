@@ -12,7 +12,8 @@
       import '@polymer/iron-demo-helpers/demo-snippet.js';
       import '../rich-text-editor.js';
       import '../lib/rich-text-editor-content.js';
-      import '../lib/custom/rich-text-editor-emoji-picker.js'
+      import '../lib/rich-text-editor-emoji-picker.js';
+      import '../lib/rich-text-editor-heading-picker.js';
     </script>
     <style is="custom-style" include="demo-pages-shared-styles"></style>
   </head>
@@ -112,6 +113,11 @@
                   "label": "Basic Inline Operations",
                   "type": "button-group",
                   "buttons": [
+                    {
+                      "label": "Heading",
+                      "toggles": true,
+                      "type": "rich-text-editor-heading-picker" 
+                    },
                     {
                       "command": "bold",
                       "icon": "editor:format-bold",

@@ -206,7 +206,7 @@ class SimplePicker extends PolymerElement {
               tabindex="-1"
               title="[[option.alt]]"
               title-as-html$="[[titleAsHtml]]"
-              value$="[[option.value]]">
+              value="[[option.value]]">
             </simple-picker-option>
           </template>
         </div>
@@ -323,6 +323,7 @@ class SimplePicker extends PolymerElement {
     "type": "Object",
     "value": null,
     "notify": true,
+    "observer": "_setSelectedOption",
     "reflectToAttribute": true
   },
 
@@ -340,8 +341,7 @@ class SimplePicker extends PolymerElement {
    */
   "__selectedOption": {
     "name": "_setSelectedOption",
-    "type": "Object",
-    "computed": "_setSelectedOption(value)"
+    "type": "Object"
   }
 }
 ;
@@ -416,9 +416,9 @@ class SimplePicker extends PolymerElement {
   /**
    * handles listbox click event
    */
-  _handleListboxEvent(e,type) {
+  _handleListboxEvent(e, type) {
     this.dispatchEvent(new CustomEvent(type, { detail: this }));
-    if(type === 'click') this._toggleListbox(!this.expanded);
+    if (type === "click") this._toggleListbox(!this.expanded);
   }
 
   /**
@@ -521,20 +521,22 @@ class SimplePicker extends PolymerElement {
    */
   _setSelectedOption(value) {
     let sel = null;
-    this.dispatchEvent(
-      new CustomEvent("change", { bubbles: true, detail: this })
-    );
     if (value !== null && this.options !== undefined && this.options !== null) {
+      this.__activeDesc = "option-0-0";
       for (var i = 0; i < this.options.length; i++) {
         for (var j = 0; j < this.options[i].length; j++) {
           if (this.options[i][j].value === value) {
-            this.__activeDesc = 'option-'+i+'-'+j;
+            this.__activeDesc = "option-" + i + "-" + j;
             sel = this.options[i][j];
           }
         }
       }
     }
-    return sel;
+    if (sel === null) this.value = null;
+    this.__selectedOption = sel;
+    this.dispatchEvent(
+      new CustomEvent("change", { bubbles: true, detail: this })
+    );
   }
 
   /**
@@ -562,10 +564,10 @@ class SimplePicker extends PolymerElement {
     let root = this;
     if (this.$.listbox !== undefined) {
       this.$.listbox.addEventListener("click", function(e) {
-        root._handleListboxEvent(e,'click');
+        root._handleListboxEvent(e, "click");
       });
       this.$.listbox.addEventListener("mousedown", function(e) {
-        root._handleListboxEvent(e,'mousedown');
+        root._handleListboxEvent(e, "mousedown");
       });
       this.$.listbox.addEventListener("keydown", function(e) {
         root._handleListboxKeydown(e);
