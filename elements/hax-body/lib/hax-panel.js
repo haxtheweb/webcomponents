@@ -72,7 +72,7 @@ Polymer({
         float: right;
       }
       #haxcancelbutton {
-        margin-right: 64px;
+        margin-right: 48px;
       }
       :host([align="right"]) app-drawer {
         right: 0;
@@ -109,6 +109,45 @@ Polymer({
         left: unset;
         border-top-right-radius: 0;
         border-top-left-radius: unset;
+      }
+      .active-op-name {
+        display: none;
+      }
+      :host([edit-mode]) .active-op-name {
+        display: flex;
+        top: 0;
+        right: 0;
+        z-index: 1000000;
+        position: fixed;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 16px 28px 16px 16px;
+        line-height: 24px;
+        height: 24px;
+        min-width: 120px;
+        justify-content: space-evenly;
+        background-color: var(--hax-color-bg-accent);
+        color: var(--hax-color-text);
+        vertical-align: middle;
+      }
+      @media screen and (max-width: 600px) {
+        :host([edit-mode]) hax-panel-item {
+          margin: 8px 2px;
+        }
+        :host([edit-mode]) .hide-small {
+          display: none;
+        }
+        :host([edit-mode]) app-drawer {
+          padding: 0;
+        }
+      }
+      @media screen and (max-width: 800px) {
+        :host([edit-mode]) #haxcancelbutton {
+          margin-right: 2px;
+        }
+        :host([edit-mode]) .active-op-name {
+          display: none;
+        }
       }
     </style>
     <div hidden$="[[hidePanelOps]]">
@@ -183,24 +222,28 @@ Polymer({
         label="Paragraph"
         event-name="text"
         voice-command="insert text"
+        class="hide-small"
       ></hax-panel-item>
       <hax-panel-item
         icon="editor:title"
         label="Heading"
         event-name="header"
         voice-command="insert heading"
+        class="hide-small"
       ></hax-panel-item>
       <hax-panel-item
         icon="editor:space-bar"
         label="Divider"
         event-name="divider"
         voice-command="insert divider"
+        class="hide-small"
       ></hax-panel-item>
       <hax-panel-item
         icon="image:transform"
         label="Placeholder"
         event-name="placeholder"
         voice-command="insert placeholder"
+        class="hide-small"
       ></hax-panel-item>
       <hax-panel-item
         hidden$="[[hideExportButton]]"
@@ -217,6 +260,7 @@ Polymer({
         label="Preferences"
       ></hax-panel-item>
     </app-drawer>
+    <div class="active-op-name">[[activeOperationName]]</div>
   `,
 
   is: "hax-panel",
@@ -265,6 +309,12 @@ Polymer({
       value: false
     },
     /**
+     * active item name, useful to show users what they are working with
+     */
+    activeOperationName: {
+      type: String
+    },
+    /**
      * Showing preferences area.
      */
     hidePreferencesButton: {
@@ -297,6 +347,10 @@ Polymer({
       this._haxStorePropertyUpdated.bind(this)
     );
     document.body.addEventListener(
+      "hax-active-hover-name",
+      this._activeNameChange.bind(this)
+    );
+    document.body.addEventListener(
       "hax-panel-operation",
       this._processItemEvent.bind(this)
     );
@@ -311,11 +365,18 @@ Polymer({
       this._haxStorePropertyUpdated.bind(this)
     );
     document.body.removeEventListener(
+      "hax-active-hover-name",
+      this._activeNameChange.bind(this)
+    );
+    document.body.removeEventListener(
       "hax-panel-operation",
       this._processItemEvent.bind(this)
     );
   },
 
+  _activeNameChange: function(e) {
+    this.activeOperationName = e.detail;
+  },
   /**
    * Global preference changed.
    */

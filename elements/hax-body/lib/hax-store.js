@@ -861,8 +861,6 @@ Polymer({
       keyName === "Enter" &&
       window.HaxStore.instance.editMode &&
       window.HaxStore.instance.activeNode !== null &&
-      window.HaxStore.instance.activeContainerNode ===
-        window.HaxStore.instance.activeNode &&
       !window.HaxStore.instance.haxAppPicker.opened
     ) {
       var selection = window.HaxStore.getSelection();
@@ -880,7 +878,7 @@ Polymer({
           range.insertNode(frag);
         } catch (e) {}
       } else {
-        var nodeTest = window.HaxStore.instance.activeContainerNode;
+        var nodeTest = this.activeNode;
         if (!nodeTest) {
           nodeTest = range.commonAncestorContainer;
           if (typeof nodeTest === typeof undefined) {
@@ -895,7 +893,7 @@ Polymer({
         ) {
           // we need to do goofy stuff for p tags since people
           // will expect to be able to split them mid typing
-          if (range.endOffset !== this.activeContainerNode.textContent.length) {
+          if (range.endOffset !== this.activeNode.textContent.length) {
             e.preventDefault();
             try {
               if (selection.focusNode) {
@@ -1496,6 +1494,8 @@ Polymer({
       if (typeof e.detail.properties !== typeof undefined) {
         properties = e.detail.properties;
       }
+      // ensure better UX for text based operations
+      this.activeHaxBody.__activeHover = null;
       // invoke insert or replacement on body, same function so it's easier to trace
       if (e.detail.replace && e.detail.replacement) {
         let node = window.HaxStore.haxElementToNode(

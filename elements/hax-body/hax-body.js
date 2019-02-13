@@ -41,20 +41,61 @@ let HaxBody = Polymer({
         z-index: 100;
         float: left;
         display: block;
+        transition: 0.3s all linear;
       }
       :host #bodycontainer ::slotted(#haxinputmixer) {
         z-index: 10000000;
       }
-      :host #bodycontainer ::slotted(.hax-context-visible) {
+      :host #bodycontainer ::slotted(.hax-context-visible.hax-active-hover) {
         visibility: visible;
         opacity: 1;
       }
       :host #bodycontainer ::slotted(*) {
-        font-size: 16px;
         font-family: "Noto Serif", serif;
         color: #444;
-        padding: 14px;
         margin: 2px;
+      }
+      :host #bodycontainer ::slotted(h1) {
+        font-size: 2.5em;
+        line-height: 2.5em;
+      }
+      :host #bodycontainer ::slotted(h2) {
+        font-size: 2em;
+      }
+      :host #bodycontainer ::slotted(h3) {
+        font-size: 1.75em;
+      }
+      :host #bodycontainer ::slotted(h4) {
+        font-size: 1.5em;
+      }
+      :host #bodycontainer ::slotted(h5),
+      :host #bodycontainer ::slotted(h6) {
+        font-size: 1.25em;
+      }
+      :host #bodycontainer ::slotted(p) {
+        line-height: 40px;
+        min-height: 26px;
+        font-size: 24px;
+      }
+      :host #bodycontainer ::slotted(a),
+      :host #bodycontainer ::slotted(a:visited),
+      :host #bodycontainer ::slotted(a:active) {
+        color: #000;
+      }
+      :host #bodycontainer ::slotted(a:hover) {
+        color: #2196f3;
+      }
+      :host #bodycontainer ::slotted(ol),
+      :host #bodycontainer ::slotted(ul),
+      :host #bodycontainer ::slotted(li) {
+        padding-bottom: 1.5em;
+        line-height: 40px;
+        font-size: 24px;
+        max-width: 28em;
+      }
+      :host #bodycontainer ::slotted(ol > li:last-child),
+      :host #bodycontainer ::slotted(ul > li:last-child) {
+        padding-bottom: 1em;
       }
       :host #bodycontainer ::slotted(ul),
       :host #bodycontainer ::slotted(ol) {
@@ -64,83 +105,29 @@ let HaxBody = Polymer({
 
       :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
         outline: none;
+        outline-offset: 2px;
         transition: 0.2s width ease-in-out, 0.2s height ease-in-out,
           0.2s margin ease-in-out;
+        caret-color: var(--hax-color-text);
       }
-      :host([edit-mode]) #bodycontainer ::slotted(p):empty {
+      :host([edit-mode]) #bodycontainer ::slotted(p:empty) {
         background: #f1f1f1;
       }
       :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]:hover) {
         outline: 1px solid var(--hax-color-accent1);
+        caret-color: #000000;
       }
       :host([edit-mode])
         #bodycontainer
-        ::slotted(*:not(.hax-active)[data-editable]:hover):after {
-        content: attr(data-hax-ray) " " attr(content);
-        font-size: 16px;
-        font-family: "Noto Serif", serif;
-        left: unset;
-        right: unset;
-        top: unset;
-        background-color: var(--hax-color-accent1);
-        color: var(--hax-color-accent1-text);
-        bottom: unset;
-        width: auto;
-        padding: 8px;
-        margin: 0;
-        z-index: 100;
-        margin: -14px -14px 0 0;
-        float: right;
-        line-height: 16px;
-      }
-
-      :host([edit-mode]) #bodycontainer ::slotted(* [data-editable]:hover) {
-        outline: 1px solid #e2e4e7;
-        outline-offset: 2px;
-      }
-      :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]:before) {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        width: 32px;
-        transition: 0.2s all ease;
-      }
-      :host([edit-mode])
-        #bodycontainer
-        ::slotted(*[data-editable]:hover:before) {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        width: 32px;
-        transition: 0.2s all ease;
-      }
-      :host([edit-mode]) #bodycontainer ::slotted(*.hax-active[data-editable]) {
+        ::slotted(*.hax-active[data-editable]:hover) {
         cursor: text !important;
         outline: 1px solid rgba(145, 151, 162, 0.25);
       }
       :host([edit-mode])
         #bodycontainer
-        ::slotted(*[data-editable] .hax-active) {
+        ::slotted(*[data-editable] .hax-active:hover) {
         cursor: text !important;
         outline: 1px solid rgba(145, 151, 162, 0.25);
-      }
-      :host([edit-mode])
-        #bodycontainer
-        ::slotted(*.hax-active[data-editable]:before) {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        width: 32px;
-        transition: 0.2s all ease;
       }
       :host([edit-mode])
         #bodycontainer
@@ -148,10 +135,10 @@ let HaxBody = Polymer({
         display: block;
       }
       :host([edit-mode]) #bodycontainer ::slotted(hr[data-editable]) {
-        height: 4px;
+        height: 2px;
         background-color: #eeeeee;
-        padding-top: 8px;
-        padding-bottom: 8px;
+        padding-top: 4px;
+        padding-bottom: 4px;
       }
       /** Fix to support safari as it defaults to none */
       :host([edit-mode]) #bodycontainer ::slotted(*[data-editable]) {
@@ -182,12 +169,6 @@ let HaxBody = Polymer({
 
       #contextcontainer {
         display: none;
-      }
-      :host([edit-mode][hax-ray-mode])
-        #bodycontainer
-        ::slotted(*[data-editable]) {
-        outline: 1px dashed #d3d3d3;
-        outline-offset: 4px;
       }
       :host([edit-mode][hax-ray-mode])
         #bodycontainer
@@ -234,12 +215,6 @@ let HaxBody = Polymer({
     </div>
     <iron-a11y-keys
       target="[[activeContainerNode]]"
-      keys="esc"
-      on-keys-pressed="_escKeyPressed"
-      stop-keyboard-event-propagation
-    ></iron-a11y-keys>
-    <iron-a11y-keys
-      target="[[activeContainerNode]]"
       keys="del backspace"
       on-keys-pressed="_delKeyPressed"
     ></iron-a11y-keys>
@@ -259,12 +234,22 @@ let HaxBody = Polymer({
       target="[[activeContainerNode]]"
       keys="up"
       on-keys-pressed="_upKeyPressed"
-      stop-keyboard-event-propagation
     ></iron-a11y-keys>
     <iron-a11y-keys
       target="[[activeContainerNode]]"
       keys="down"
       on-keys-pressed="_downKeyPressed"
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      target="[[activeContainerNode]]"
+      keys="right"
+      on-keys-pressed="_rightKeyPressed"
+      stop-keyboard-event-propagation
+    ></iron-a11y-keys>
+    <iron-a11y-keys
+      target="[[activeContainerNode]]"
+      keys="left"
+      on-keys-pressed="_leftKeyPressed"
       stop-keyboard-event-propagation
     ></iron-a11y-keys>
   `,
@@ -369,6 +354,10 @@ let HaxBody = Polymer({
    * we exist and are the thing being edited.
    */
   attached: function() {
+    window.addEventListener("keypress", this._onKeyPress.bind(this));
+    this.shadowRoot
+      .querySelector("slot")
+      .addEventListener("mouseover", this.hoverEvent.bind(this));
     // try to normalize paragraph insert on enter
     document.execCommand("defaultParagraphSeparator", false, "p");
     this.shadowRoot.querySelector("slot").addEventListener("mouseup", e => {
@@ -400,11 +389,15 @@ let HaxBody = Polymer({
         try {
           let range = window.HaxStore.getRange();
           let sel = window.HaxStore.getSelection();
+          let newNode = document.createTextNode(text);
+          let newRange = document.createRange();
           if (range && sel) {
             range.deleteContents();
-            range.insertNode(document.createTextNode(text));
-            range.setStart(sel.anchorNode, sel.anchorOffset);
-            range.setEnd(sel.focusNode, sel.focusOffset);
+            range.insertNode(newNode);
+            newRange.setStart(newNode, text.length);
+            newRange.collapse(true);
+            sel.removeAllRanges();
+            sel.addRange(newRange);
           }
         } catch (e) {
           // try a fallback
@@ -426,8 +419,17 @@ let HaxBody = Polymer({
    * Detached life cycle
    */
   detached: function() {
+    window.removeEventListener("keypress", this._onKeyPress.bind(this));
+    this.shadowRoot
+      .querySelector("slot")
+      .removeEventListener("mouseover", this.hoverEvent.bind(this));
     this.shadowRoot.querySelector("slot").removeEventListener("mouseup", e => {
-      window.HaxStore._tmpSelection = window.HaxStore.getSelection();
+      const tmp = window.HaxStore.getSelection();
+      window.HaxStore._tmpSelection = tmp;
+      try {
+        let range = window.HaxStore.getRange();
+        window.HaxStore._tmpRange = range.cloneRange();
+      } catch (e) {}
     });
     this.shadowRoot.querySelector("slot").removeEventListener("paste", e => {
       // only perform this on a text element that is active
@@ -450,11 +452,15 @@ let HaxBody = Polymer({
         try {
           let range = window.HaxStore.getRange();
           let sel = window.HaxStore.getSelection();
+          let newNode = document.createTextNode(text);
+          let newRange = document.createRange();
           if (range && sel) {
             range.deleteContents();
-            range.insertNode(document.createTextNode(text));
-            range.setStart(sel.anchorNode, sel.anchorOffset);
-            range.setEnd(sel.focusNode, sel.focusOffset);
+            range.insertNode(newNode);
+            newRange.setStart(newNode, text.length);
+            newRange.collapse(true);
+            sel.removeAllRanges();
+            sel.addRange(newRange);
           }
         } catch (e) {
           // try a fallback
@@ -491,6 +497,52 @@ let HaxBody = Polymer({
         } else {
           el.classList.add("hax-context-pin-bottom");
         }
+      }
+    }
+  },
+  _onKeyPress: function(e) {
+    if (this.editMode && !this.__typeLock) {
+      this.$.cecontextmenu.classList.remove("hax-active-hover");
+      this.$.textcontextmenu.classList.remove("hax-active-hover");
+      this.$.platecontextmenu.classList.remove("hax-active-hover");
+      this.__typeLock = true;
+    }
+  },
+  /**
+   * on mouse over then fire the hax ray value if we have one
+   */
+  hoverEvent: function(e) {
+    if (this.editMode) {
+      if (e.target && e.target.getAttribute("data-hax-ray") !== null) {
+        this.__activeHover = e.target;
+        this.fire(
+          "hax-active-hover-name",
+          e.target.getAttribute("data-hax-ray")
+        );
+      }
+      let normalizedEvent = dom(e);
+      let local = normalizedEvent.localTarget;
+      // see if the target is relevent when showing the edit menu operations
+      if (
+        e.target === this.$.cecontextmenu ||
+        e.target === this.$.textcontextmenu ||
+        e.target === this.$.platecontextmenu ||
+        local === this.activeNode ||
+        local === this.activeContainerNode ||
+        e.target === this.activeNode ||
+        e.target === this.activeContainerNode ||
+        local.parentNode === this.activeContainerNode ||
+        local.parentNode.parentNode === this.activeContainerNode ||
+        local.parentNode.parentNode.parentNode === this.activeContainerNode
+      ) {
+        this.$.cecontextmenu.classList.add("hax-active-hover");
+        this.$.textcontextmenu.classList.add("hax-active-hover");
+        this.$.platecontextmenu.classList.add("hax-active-hover");
+        this.__typeLock = false;
+      } else {
+        this.$.cecontextmenu.classList.remove("hax-active-hover");
+        this.$.textcontextmenu.classList.remove("hax-active-hover");
+        this.$.platecontextmenu.classList.remove("hax-active-hover");
       }
     }
   },
@@ -662,6 +714,7 @@ let HaxBody = Polymer({
    */
   haxInsert: function(tag, content, properties = {}, waitForLock = true) {
     var tags = window.HaxStore.instance.validTagList;
+    this.__activeHover = null;
     // verify this tag is a valid one
     if (tags.includes(tag)) {
       // create a new element fragment w/ content in it
@@ -744,6 +797,7 @@ let HaxBody = Polymer({
         dom(this).appendChild(newNode);
       }
       this.$.textcontextmenu.highlightOps = false;
+
       this.__updateLockFocus = newNode;
       // wait so that the DOM can have the node to then attach to
       if (waitForLock) {
@@ -949,7 +1003,7 @@ let HaxBody = Polymer({
       this.__activeContextType,
       container,
       offsetmenu,
-      -37
+      -39
     );
     this._positionContextMenu(
       this.$.platecontextmenu,
@@ -1563,6 +1617,7 @@ let HaxBody = Polymer({
    */
   _HTMLPrimativeTest: function(node) {
     if (
+      node != null &&
       typeof node.tagName !== typeof undefined &&
       node.tagName.indexOf("-") == -1
     ) {
@@ -1671,18 +1726,21 @@ let HaxBody = Polymer({
     try {
       dom(this).insertBefore(menu, target);
     } catch (err) {
+      console.log(err);
       try {
         dom(target.parentNode).insertBefore(menu, target);
-      } catch (err2) {}
+      } catch (err2) {
+        console.log(err2);
+      }
     }
     // make it account for the offset if it's floated over to one side
     // or inside of something that's over that way
     if (target !== null) {
       let style = target.currentStyle || window.getComputedStyle(target);
       if (parseInt(style.marginLeft) != 0) {
-        xoffset = xoffset + parseInt(style.marginLeft);
+        xoffset = xoffset + parseInt(style.marginLeft) - 2;
       } else {
-        xoffset = xoffset + parseInt(target.offsetLeft) - this.offsetLeft;
+        xoffset = xoffset + parseInt(target.offsetLeft) - this.offsetLeft - 2;
       }
       if (xoffset != null) {
         menu.style["margin-left"] = xoffset + "px";
@@ -1692,6 +1750,11 @@ let HaxBody = Polymer({
       }
     }
     menu.classList.add("hax-context-visible");
+    // text we want to operate this way
+    if (this.__activeHover) {
+      menu.classList.add("hax-active-hover");
+      this.__typeLock = false;
+    }
     async.microTask.run(this._keepContextVisible());
   },
   /**
@@ -1704,29 +1767,6 @@ let HaxBody = Polymer({
       "hax-context-pin-bottom"
     );
     dom(this.$.contextcontainer).appendChild(menu);
-  },
-  /**
-   * When the user hits escape key, let's deselect what we have now
-   */
-  _escKeyPressed: function(e) {
-    if (this.editMode) {
-      e.preventDefault();
-      e.stopPropagation();
-      // support 1st press only closing the inline context menu
-      if (this.$.textcontextmenu.highlightOps) {
-        this.$.textcontextmenu.highlightOps = false;
-        // ensure these are the same
-        window.HaxStore.write("activeNode", this.activeContainerNode, this);
-        this.activeContainerNode.focus();
-      } else if (this.activeNode === this.activeContainerNode) {
-        window.HaxStore.write("activeContainerNode", null, this);
-        window.HaxStore.write("activeNode", null, this);
-        document.body.focus();
-      } else {
-        window.HaxStore.write("activeNode", this.activeContainerNode, this);
-        this.activeContainerNode.focus();
-      }
-    }
   },
   /**
    * When the user hits delete, test if there's any content
@@ -1745,7 +1785,10 @@ let HaxBody = Polymer({
         if (tagTest !== "LI") {
           e.preventDefault();
           e.stopPropagation();
-          this.haxDeleteNode(this.activeNode);
+          e.stopImmediatePropagation();
+          setTimeout(() => {
+            this.haxDeleteNode(this.activeNode);
+          }, 50);
         }
       } else if (
         window.HaxStore.instance.isTextElement(
@@ -1764,6 +1807,7 @@ let HaxBody = Polymer({
         ) {
           e.preventDefault();
           e.stopPropagation();
+          e.stopImmediatePropagation();
           while (this.activeNode.firstChild) {
             this._haxResolvePreviousElement(this.activeNode).appendChild(
               this.activeNode.firstChild
@@ -1771,7 +1815,7 @@ let HaxBody = Polymer({
           }
           setTimeout(() => {
             this.haxDeleteNode(this.activeNode);
-          }, 100);
+          }, 50);
         }
       }
     }
@@ -1780,29 +1824,291 @@ let HaxBody = Polymer({
    * Move between things pressing up and down if empty
    */
   _upKeyPressed: function(e) {
-    if (this.editMode && dom(this.activeContainerNode).textContent === "") {
-      let node = this._haxResolvePreviousElement(this.activeContainerNode);
-      // see if we can focus it otherwise we were at the top
-      try {
+    // make sure we are editing and we are in a text element
+    if (
+      this.editMode &&
+      window.HaxStore.instance.isTextElement(this.activeNode)
+    ) {
+      let node = this._haxResolvePreviousElement(this.activeNode);
+      this._onKeyPress(e);
+      /*if (node !== null && this.__cursorIndex() < this.__lines(node).pop().text.length) {
+        // look for a range and see if we're at the top of the window area
+        let getDistanceToCaret = this.__distanceToCaret(this.activeNode, this.__cursorIndex());
+        let lineNumber = this.__lines(this.activeNode).length;
+        let caretPosition = this.__getCaretViaWidth(this.activeNode, lineNumber, getDistanceToCaret);
+        this.__activeHover = null;
         node.focus();
-      } catch (e) {
-        // if an error then we are at the top anyway
-      }
+        setTimeout( () => {
+          this.__setCaret(node, caretPosition);
+        }, 50);
+      }*/
     }
   },
   /**
    * Move between things pressing up and down if empty
    */
   _downKeyPressed: function(e) {
-    if (this.editMode && dom(this.activeContainerNode).textContent === "") {
-      let node = dom(this.activeContainerNode);
-      // try and focus on the next thing
-      try {
-        node.nextElementSibling.focus();
-      } catch (e) {
-        // do nothing, at bottom
+    if (
+      this.editMode &&
+      window.HaxStore.instance.isTextElement(this.activeNode)
+    ) {
+      let node = dom(this.activeNode).nextElementSibling;
+      this._onKeyPress(e);
+      // empty and down pressed, just move down
+      /*if (node !== null && this.__cursorIndex() >= this.__lastLine(node).startIndex && this.__cursorIndex() <= (this.__lastLine(node).startIndex + this.__lastLine(node).text.length)) {
+        let getDistanceToCaret = this.__distanceToCaret(this.activeNode, this.__cursorIndex());
+        let caretPosition = this.__getCaretViaWidth(this.activeNode, 1, getDistanceToCaret);
+        this.__activeHover = null;
+        node.focus();
+        setTimeout( () => {
+          this.__setCaret(node, caretPosition);
+        }, 50);
+      }*/
+    }
+  },
+  /**
+   * Move right
+   */
+  _rightKeyPressed: function(e) {
+    if (
+      this.editMode &&
+      window.HaxStore.instance.isTextElement(this.activeNode)
+    ) {
+      this._onKeyPress(e);
+      if (
+        this.activeNode.nextElementSibling != null &&
+        this.__cursorIndex() == this.activeNode.textContent.length
+      ) {
+        // try and focus on the next thing
+        try {
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+          setTimeout(() => {
+            this.__activeHover = null;
+            this.activeNode.nextElementSibling.focus();
+          }, 50);
+        } catch (e) {
+          // do nothing, at bottom
+          console.log(e);
+        }
       }
     }
+  },
+  /**
+   * Move left
+   */
+  _leftKeyPressed: function(e) {
+    if (
+      this.editMode &&
+      window.HaxStore.instance.isTextElement(this.activeNode)
+    ) {
+      this._onKeyPress(e);
+      let node = this._haxResolvePreviousElement(this.activeNode);
+      if (node != null && this.__cursorIndex() == 0) {
+        try {
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+          this.__activeHover = null;
+          node.focus();
+          setTimeout(() => {
+            let sel = window.HaxStore.getSelection();
+            sel.removeAllRanges();
+            let newRange = document.createRange();
+            newRange.setStart(node, 1);
+            newRange.collapse(true);
+            sel.addRange(newRange);
+          }, 50);
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    }
+  },
+  // set cursor
+  __setSelectionByCharacterOffsets: function(containerEl, start, end) {
+    var charIndex = 0,
+      range = document.createRange();
+    range.setStart(containerEl, 0);
+    range.collapse(true);
+    var nodeStack = [containerEl],
+      node,
+      foundStart = false,
+      stop = false;
+    while (!stop && (node = nodeStack.pop())) {
+      if (node.nodeType == 3) {
+        var nextCharIndex = charIndex + node.length;
+        if (!foundStart && start >= charIndex && start <= nextCharIndex) {
+          range.setStart(node, start - charIndex);
+          foundStart = true;
+        }
+        if (foundStart && end >= charIndex && end <= nextCharIndex) {
+          range.setEnd(node, end - charIndex);
+          stop = true;
+        }
+        charIndex = nextCharIndex;
+      } else {
+        var i = node.childNodes.length;
+        while (i--) {
+          nodeStack.push(node.childNodes[i]);
+        }
+      }
+    }
+    let sel = window.HaxStore.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  },
+  __setCaret: function(element, index) {
+    setTimeout(() => {
+      this.__setSelectionByCharacterOffsets(element, index, index);
+    }, 50);
+  },
+  __cursorIndex: function() {
+    return window.HaxStore.getRange().startOffset;
+  },
+  __lines: function(node) {
+    var lineItems = [];
+    if (node !== null) {
+      var words = dom(node).textContent.split(" "); //split text into each word
+
+      var hiddenElement = node.cloneNode(true); //copies font settings and width
+      while (hiddenElement.firstChild) {
+        hiddenElement.removeChild(hiddenElement.firstChild);
+      }
+      hiddenElement.style.visibility = "hidden";
+      dom(this).appendChild(hiddenElement); // height doesn't exist until inserted into document
+      hiddenElement.innerHTML = "i";
+      var height = hiddenElement.offsetHeight;
+      while (hiddenElement.firstChild) {
+        hiddenElement.removeChild(hiddenElement.firstChild);
+      }
+      var startIndex = -1; // quick fix for now - offset by one to get the line indexes working
+      for (var i in words) {
+        var lineText = hiddenElement.textContent; // get text before new word appended
+        hiddenElement.innerHTML = lineText + " " + words[i];
+        if (hiddenElement.offsetHeight > height) {
+          // if new line
+          lineItems.push({
+            text: lineText,
+            startIndex: startIndex,
+            endIndex: lineText.length + startIndex
+          }); // push lineText not hiddenElement.textContent other wise each line will have 1 word too many
+          startIndex = startIndex + lineText.length + 1;
+          hiddenElement.innerHTML = words[i]; //first word of the next line
+        }
+      }
+      lineItems.push({
+        text: hiddenElement.textContent,
+        startIndex: startIndex,
+        endIndex: hiddenElement.textContent.length + startIndex
+      }); // push last line
+      dom(this).removeChild(hiddenElement);
+      lineItems[0].startIndex = 0; //quick fix for now - adjust first line index
+    }
+    return lineItems;
+  },
+  __lastLine: function(node) {
+    return this.__lines(node)[this.__lines(node).length - 1];
+  },
+  __findLineViaCaret: function(textElement, caretIndex) {
+    let tmp = this.__lines(textElement);
+    let r = false;
+    let notFound = true;
+    for (var i in tmp) {
+      if (
+        notFound &&
+        tmp[i].startIndex <= caretIndex &&
+        tmp[i].endIndex >= caretIndex
+      ) {
+        r = tmp[i];
+        notFound = false;
+        continue;
+      }
+    }
+    return r;
+  },
+  __distanceToCaret: function(textElement, caretIndex) {
+    let line = this.__findLineViaCaret(textElement, caretIndex);
+    let relativeIndex;
+    if (line.startIndex == 0) {
+      // +1 needed for substring to be correct but only first line?
+      relativeIndex = caretIndex - line.startIndex + 1;
+    } else {
+      relativeIndex = caretIndex - line.startIndex;
+    }
+    let textToCaret = line.text.substring(0, relativeIndex);
+    let hiddenElement = textElement.cloneNode(true); //copies font settings and width
+    while (hiddenElement.firstChild) {
+      hiddenElement.removeChild(hiddenElement.firstChild);
+    }
+    hiddenElement.style.visibility = "hidden";
+    hiddenElement.style.width = "auto"; //so width can be measured
+    hiddenElement.style.display = "inline-block"; //so width can be measured
+    dom(this).appendChild(hiddenElement); // doesn't exist until inserted into document
+    hiddenElement.innerHTML = textToCaret; //add to get width
+    let width = window
+      .getComputedStyle(hiddenElement)
+      .getPropertyValue("width")
+      .replace("px", "");
+    dom(this).removeChild(hiddenElement);
+    return parseInt(width);
+  },
+  __getCaretViaWidth(textElement, lineNo, width) {
+    let line = this.__lines(textElement)[lineNo - 1];
+    let lineCharacters = line.text.replace(/^\s+|\s+$/g, "").split("");
+    let hiddenElement = textElement.cloneNode(true); //copies font settings and width
+    while (hiddenElement.firstChild) {
+      hiddenElement.removeChild(hiddenElement.firstChild);
+    }
+    hiddenElement.style.visibility = "hidden";
+    hiddenElement.style.width = "auto"; //so width can be measured
+    hiddenElement.style.display = "inline-block"; //so width can be measured
+
+    dom(this).appendChild(hiddenElement); // doesn't exist until inserted into document
+    var caretIndex, prevWidth, elWidth, text;
+    if (width == 0) {
+      //if width is 0 index is at start
+      caretIndex = line.startIndex;
+    } else {
+      // else loop through each character until width is reached
+      while (hiddenElement.firstChild) {
+        hiddenElement.removeChild(hiddenElement.firstChild);
+      }
+      for (var i in lineCharacters) {
+        text = hiddenElement.textContent;
+        prevWidth = parseInt(
+          window
+            .getComputedStyle(hiddenElement)
+            .getPropertyValue("width")
+            .replace("px", "")
+        );
+        hiddenElement.innerHTML = text + lineCharacters[i];
+        elWidth = parseInt(
+          window
+            .getComputedStyle(hiddenElement)
+            .getPropertyValue("width")
+            .replace("px", "")
+        );
+        caretIndex = hiddenElement.textContent.length + line.startIndex;
+        if (
+          parseInt(
+            window
+              .getComputedStyle(hiddenElement)
+              .getPropertyValue("width")
+              .replace("px", "")
+          ) > width
+        ) {
+          // check whether character after width or before width is closest
+          if (Math.abs(width - prevWidth) < Math.abs(width - elWidth)) {
+            caretIndex = caretIndex - 1; // move index back one if previous is closes
+          }
+          continue;
+        }
+      }
+    }
+    dom(this).removeChild(hiddenElement);
+    return caretIndex;
   },
   /**
    * Find the next thing to tab forward to.
