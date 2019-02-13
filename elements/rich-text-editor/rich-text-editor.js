@@ -240,7 +240,12 @@ class RichTextEditor extends PolymerElement {
             {
               group: "Links",
               buttons: [
-                { label: "Link", icon: "link", command: "link", toggles: true }
+                {
+                  label: "Link",
+                  icon: "link",
+                  command: "link",
+                  toggles: true
+                }
               ]
             },
             {
