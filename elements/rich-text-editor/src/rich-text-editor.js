@@ -52,7 +52,7 @@ class RichTextEditor extends PolymerElement {
     );
     document.designMode = "on";
     document.addEventListener("selectionchange", function(e) {
-      root.getUpdatedSelection();
+      root.getUpdatedSelection(e);
     });
   }
 
@@ -63,7 +63,7 @@ class RichTextEditor extends PolymerElement {
     super.disconnectedCallback();
     let root = this;
     document.removeEventListener("selectionchange", function() {
-      root.getUpdatedSelection();
+      root.getUpdatedSelection(e);
     });
   }
 
@@ -107,7 +107,8 @@ class RichTextEditor extends PolymerElement {
   /**
    * Gets the updated selection.
    */
-  getUpdatedSelection(updatedSaved) {
+  getUpdatedSelection(e, updatedSaved = false) {
+    console.log("getUpdatedSelection", updatedSaved, this.selection, e);
     let root = this;
     root.selection =
       root.editableElement === undefined || root.editableElement === null
@@ -117,7 +118,12 @@ class RichTextEditor extends PolymerElement {
         : root._getRange();
     this.buttons.forEach(function(button) {
       button.selection = root.selection;
-      if(updatedSaved) button.savedSelection = root.selection;
+      if (updatedSaved) {
+        //button.savedSelection = root.selection;
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(root.selection);
+      }
     });
     return root.selection;
   }
@@ -135,11 +141,11 @@ class RichTextEditor extends PolymerElement {
         item[0].removeEventListener("click", function(e) {
           root.editTarget(editableElement);
         });
-        editableElement.removeEventListener('blur',function(){
-          root.getUpdatedSelection(true);
+        editableElement.removeEventListener("blur", function() {
+          root.getUpdatedSelection(e, true);
         });
-        editableElement.removeEventListener('mouseout',function(){
-          root.getUpdatedSelection(true);
+        editableElement.removeEventListener("mouseout", function() {
+          root.getUpdatedSelection(e, true);
         });
         item[1].disconnect();
         this.set("editableElements", this.editableElements.splice(i, 1));
@@ -155,16 +161,16 @@ class RichTextEditor extends PolymerElement {
   addEditableRegion(editableElement) {
     let root = this,
       observer = new MutationObserver(function() {
-        root.getUpdatedSelection();
+        root.getUpdatedSelection(e);
       });
     editableElement.addEventListener("click", function(e) {
       root.editTarget(editableElement);
     });
-    editableElement.addEventListener('blur',function(){
-      root.getUpdatedSelection(true);
+    editableElement.addEventListener("blur", function(e) {
+      root.getUpdatedSelection(e, true);
     });
-    editableElement.addEventListener('mouseout',function(){
-      root.getUpdatedSelection(true);
+    editableElement.addEventListener("mouseout", function(e) {
+      root.getUpdatedSelection(e, true);
     });
     observer.observe(editableElement, {
       attributes: false,
@@ -203,6 +209,10 @@ class RichTextEditor extends PolymerElement {
         }
         max = Math.max(max, sizes.indexOf(item.collapsedUntil));
         button.setAttribute("class", "button");
+        button.addEventListener("mousedown", function(e) {
+          console.log("button mousedown", e);
+          root.getUpdatedSelection(e, true);
+        });
         parent.appendChild(button);
         temp.push(button);
       };

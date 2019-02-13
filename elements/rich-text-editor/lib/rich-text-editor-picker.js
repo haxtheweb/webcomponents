@@ -28,9 +28,8 @@ class RichTextEditorPicker extends RichTextEditorButton {
         on-change="_pickerChange"
         tabindex="0"
         title-as-html$="[[titleAsHtml]]"
-        on-mousedown="_addSavedSelection"
-        on-keydown="_addSavedSelection"
-        on-toggle="_addSavedSelection"
+        on-mousedown="_handleMousedown"
+        on-keydown="_handleKeydown"
         options="[[options]]"
         value="{{commandVal}}">
         <span id="label" class$="[[labelStyle]]"></span>
@@ -125,8 +124,8 @@ class RichTextEditorPicker extends RichTextEditorButton {
   _pickerChange(e) {
     let node = document.createElement("span");
     node.innerHTML = this.$.button.value;
-    this._addSavedSelection();
-    if(this.savedSelection !== undefined) this.savedSelection.insertNode(node);
+    //console.log('saved selection',this.savedSelection);
+    //if(this.savedSelection !== undefined) this.savedSelection.insertNode(node);
     this.dispatchEvent(
       new CustomEvent("rich-text-button-tap", { detail: this })
     );
@@ -139,7 +138,6 @@ class RichTextEditorPicker extends RichTextEditorButton {
    * @returns {object} picker dato for the option
    */
   _getOptionData(option) {
-    console.log(option);
     return {
       alt: option.alt,
       icon: option.icon,

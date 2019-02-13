@@ -32,8 +32,8 @@ class RichTextEditorButton extends PolymerElement {
         disabled$="[[disabled]]" 
         controls="[[controls]]"
         on-tap="_buttonTap"
-        on-mousedown="_addSavedSelection"
-        on-keydown="_addSavedSelection"
+        on-mousedown="_handleMousedown"
+        on-keydown="_handleKeydown"
         tabindex="0"
         toggled$="[[toggled]]">
         <iron-icon id="icon" 
@@ -241,19 +241,13 @@ class RichTextEditorButton extends PolymerElement {
   static get tag() {
     return "rich-text-editor-button";
   }
-  
+
   /**
    * life cycle, element is ready
    */
   ready() {
     super.ready();
     let root = this;
-    /*root.$.button.addEventListener('mouseover',function(e){
-      root._addSavedSelection(e);
-    });
-    root.$.button.addEventListener('focus',function(e){
-      root._addSavedSelection(e);
-    });*/
   }
 
   /**
@@ -298,12 +292,27 @@ class RichTextEditorButton extends PolymerElement {
    * maintains the selection for the button
    */
   _addSavedSelection(e = null) {
-    console.log('_addSavedSelection',e,this.savedSelection);
-    if (this.commandVal !== null) {
+    /*this.dispatchEvent(
+      new CustomEvent("rich-text-button-tap", { detail: this })
+    );
+    if (this.savedSelection !== undefined) {
       var sel = window.getSelection();
       sel.removeAllRanges();
       sel.addRange(this.savedSelection);
-    }
+    }*/
+  }
+  /**
+   * handles keydown event
+   */
+  _handleKeydown(e) {
+    this._addSavedSelection(e);
+  }
+
+  /**
+   * handles mousdown event
+   */
+  _handleMousedown(e) {
+    this._addSavedSelection(e);
   }
 
   /**
