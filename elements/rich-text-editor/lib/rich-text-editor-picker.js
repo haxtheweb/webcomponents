@@ -28,8 +28,6 @@ class RichTextEditorPicker extends RichTextEditorButton {
         on-change="_pickerChange"
         tabindex="0"
         title-as-html$="[[titleAsHtml]]"
-        on-mousedown="_handleMousedown"
-        on-keydown="_handleKeydown"
         options="[[options]]"
         value="{{commandVal}}">
         <span id="label" class$="[[labelStyle]]"></span>
@@ -119,13 +117,22 @@ class RichTextEditorPicker extends RichTextEditorButton {
     this.set("options", this._getPickerOptions(data, this.allowNull));
   }
   /**
-   * Handles button tap
+   * Picker change
    */
   _pickerChange(e) {
-    let node = document.createElement("span");
-    node.innerHTML = this.$.button.value;
-    //console.log('saved selection',this.savedSelection);
-    //if(this.savedSelection !== undefined) this.savedSelection.insertNode(node);
+    console.log("selection", this.selection);
+    if (this.selection !== undefined && this.selection !== null) {
+      let val = this.$.button.value,
+        isTextNode = typeof val === "string",
+        content = this.selection.extractContents(),
+        node = isTextNode
+          ? document.createTextNode(val)
+          : document.createElement(val.element);
+      if (!isTextNode && !val.noWrap) node.innerHTML = val;
+      this.selection.insertNode(node);
+      console.log("val", node, this.$.button, val);
+      if (isTextNode || val.noWrap) this.$.button.value = null;
+    }
     this.dispatchEvent(
       new CustomEvent("rich-text-button-tap", { detail: this })
     );

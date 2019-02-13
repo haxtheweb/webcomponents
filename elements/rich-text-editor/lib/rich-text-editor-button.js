@@ -32,8 +32,6 @@ class RichTextEditorButton extends PolymerElement {
         disabled$="[[disabled]]" 
         controls="[[controls]]"
         on-tap="_buttonTap"
-        on-mousedown="_handleMousedown"
-        on-keydown="_handleKeydown"
         tabindex="0"
         toggled$="[[toggled]]">
         <iron-icon id="icon" 
@@ -287,32 +285,6 @@ class RichTextEditorButton extends PolymerElement {
       document.execCommand(root.command, false, root.commandVal || "");
     }
     root.selection = selection;
-  }
-  /**
-   * maintains the selection for the button
-   */
-  _addSavedSelection(e = null) {
-    /*this.dispatchEvent(
-      new CustomEvent("rich-text-button-tap", { detail: this })
-    );
-    if (this.savedSelection !== undefined) {
-      var sel = window.getSelection();
-      sel.removeAllRanges();
-      sel.addRange(this.savedSelection);
-    }*/
-  }
-  /**
-   * handles keydown event
-   */
-  _handleKeydown(e) {
-    this._addSavedSelection(e);
-  }
-
-  /**
-   * handles mousdown event
-   */
-  _handleMousedown(e) {
-    this._addSavedSelection(e);
   }
 
   /**

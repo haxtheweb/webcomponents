@@ -433,7 +433,7 @@ class RichTextEditor extends PolymerElement {
     );
     document.designMode = "on";
     document.addEventListener("selectionchange", function(e) {
-      root.getUpdatedSelection(e);
+      root.getUpdatedSelection();
     });
   }
 
@@ -443,8 +443,8 @@ class RichTextEditor extends PolymerElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     let root = this;
-    document.removeEventListener("selectionchange", function() {
-      root.getUpdatedSelection(e);
+    document.removeEventListener("selectionchange", function(e) {
+      root.getUpdatedSelection();
     });
   }
 
@@ -488,24 +488,15 @@ class RichTextEditor extends PolymerElement {
   /**
    * Gets the updated selection.
    */
-  getUpdatedSelection(e, updatedSaved = false) {
-    console.log("getUpdatedSelection", updatedSaved, this.selection, e);
-    let root = this;
+  getUpdatedSelection() {
+    let root = this,
+      select = root.selection;
     root.selection =
       root.editableElement === undefined || root.editableElement === null
         ? null
         : root.editableElement.getSelection
         ? root.editableElement.getSelection()
         : root._getRange();
-    this.buttons.forEach(function(button) {
-      button.selection = root.selection;
-      if (updatedSaved) {
-        //button.savedSelection = root.selection;
-        var sel = window.getSelection();
-        sel.removeAllRanges();
-        sel.addRange(root.selection);
-      }
-    });
     return root.selection;
   }
 
@@ -522,11 +513,11 @@ class RichTextEditor extends PolymerElement {
         item[0].removeEventListener("click", function(e) {
           root.editTarget(editableElement);
         });
-        editableElement.removeEventListener("blur", function() {
-          root.getUpdatedSelection(e, true);
+        editableElement.removeEventListener("blur", function(e) {
+          root.getUpdatedSelection();
         });
-        editableElement.removeEventListener("mouseout", function() {
-          root.getUpdatedSelection(e, true);
+        editableElement.removeEventListener("mouseout", function(e) {
+          root.getUpdatedSelection();
         });
         item[1].disconnect();
         this.set("editableElements", this.editableElements.splice(i, 1));
@@ -541,17 +532,17 @@ class RichTextEditor extends PolymerElement {
    */
   addEditableRegion(editableElement) {
     let root = this,
-      observer = new MutationObserver(function() {
-        root.getUpdatedSelection(e);
+      observer = new MutationObserver(function(e) {
+        root.getUpdatedSelection();
       });
     editableElement.addEventListener("click", function(e) {
       root.editTarget(editableElement);
     });
     editableElement.addEventListener("blur", function(e) {
-      root.getUpdatedSelection(e, true);
+      root.getUpdatedSelection();
     });
     editableElement.addEventListener("mouseout", function(e) {
-      root.getUpdatedSelection(e, true);
+      root.getUpdatedSelection();
     });
     observer.observe(editableElement, {
       attributes: false,
@@ -560,6 +551,31 @@ class RichTextEditor extends PolymerElement {
       characterData: false
     });
     root.push("editableElements", [editableElement, observer]);
+  }
+
+  /**
+   * Adds a button to the toolbar
+   *
+   * @param {object} the child object in the config object
+   * @param {object} the parent object in the config object
+   */
+  _addButton(child, parent) {
+    let root = this,
+      button = document.createElement(child.type);
+    for (var key in child) {
+      button.setAttribute(key, child[key]);
+    }
+    button.setAttribute("class", "button");
+    button.addEventListener("mousedown", function(e) {
+      e.preventDefault();
+      root._preserveSelection(button);
+    });
+    button.addEventListener("keydown", function(e) {
+      e.preventDefault();
+      root._preserveSelection(button);
+    });
+    parent.appendChild(button);
+    return button;
   }
 
   /**
@@ -583,20 +599,6 @@ class RichTextEditor extends PolymerElement {
       temp = [];
     toolbar.innerHTML = "";
     config.forEach(function(item) {
-      let addButton = function(child, parent) {
-        let button = document.createElement(child.type);
-        for (var key in child) {
-          button.setAttribute(key, child[key]);
-        }
-        max = Math.max(max, sizes.indexOf(item.collapsedUntil));
-        button.setAttribute("class", "button");
-        button.addEventListener("mousedown", function(e) {
-          console.log("button mousedown", e);
-          root.getUpdatedSelection(e, true);
-        });
-        parent.appendChild(button);
-        temp.push(button);
-      };
       if (item.type === "button-group") {
         let group = document.createElement("div");
         group.setAttribute("class", "group");
@@ -604,19 +606,23 @@ class RichTextEditor extends PolymerElement {
           group.setAttribute("collapsed-until", item.collapsedUntil);
         max = Math.max(max, sizes.indexOf(item.collapsedUntil));
         item.buttons.forEach(function(button) {
-          addButton(button, group);
+          max = Math.max(max, sizes.indexOf(button.collapsedUntil));
+          root._addButton(button, group);
         });
         toolbar.appendChild(group);
       } else {
-        addButton(item, toolbar);
+        max = Math.max(max, sizes.indexOf(button.collapsedUntil));
+        root._addButton(button, group);
       }
       toolbar.appendChild(more);
       more.collapseMax = sizes[max];
     });
-    return temp;
   }
+
   /**
    * Normalizes selection data.
+   *
+   * @returns {object} the selection
    */
   _getRange() {
     let sel = window.getSelection();
@@ -626,24 +632,22 @@ class RichTextEditor extends PolymerElement {
       return sel;
     } else false;
   }
-
   /**
-   * Determines the maximum responsive size where the more button is needed.
+   * Preserves the selection when a button is pressed
    *
-   * @param {array} an array the buttons grouped by size
-   * @returns {string} the largest size in the array
+   * @param {object} the button
    */
-  _getMax(buttons) {
-    return buttons !== undefined && buttons !== null
-      ? buttons[buttons.length - 1].size
-      : null;
+  _preserveSelection(button) {
+    button.selection = this.selection;
+    let sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(button.selection);
   }
 
   /**
    * Toggles collapsed mode
    */
   _toggleMore(e) {
-    console.log("toggle more");
     this.collapsed = !this.collapsed;
   }
 

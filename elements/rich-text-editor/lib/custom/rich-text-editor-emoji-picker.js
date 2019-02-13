@@ -4,6 +4,7 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { RichTextEditorPicker } from "./../rich-text-editor-picker.js";
+import "@polymer/iron-icons/editor-icons.js";
 /**
  * `rich-text-editor-emoji-picker`
  * `a button for rich text editor (custom buttons can extend this)`
