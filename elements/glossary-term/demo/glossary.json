@@ -1,0 +1,19 @@
+{
+  "terms": [
+    {
+      "name": "docker",
+      "definition": "The #1 container industry conference for enterprise IT professionals, developers, architects and business leaders.",
+      "id": "e7a2d2a4-dd06-4175-9e64-fca5e91ebb0a"
+    },
+    {
+      "name": "virtual_machine",
+      "definition": "In computing, a virtual machine (VM) is an emulation of a computer system. Virtual machines are based on computer architectures and provide functionality of a physical computer. Their implementations may involve specialized hardware, software, or a combination.",
+      "id": "bc594ce9-cd9f-49a5-a6c9-c73f38da92a9"
+    },
+    {
+      "name": "container_virtualization",
+      "definition": "Operating-system-level virtualization, also known as containerization, refers to an operating system feature in which the kernel allows the existence of multiple isolated user-space instances. Such instances, called containers,[1] partitions, virtual environments (VEs) or jails (FreeBSD jail or chroot jail), may look like real computers from the point of view of programs running in them. A computer program running on an ordinary operating system can see all resources (connected devices, files and folders, network shares, CPU power, quantifiable hardware capabilities) of that computer. However, programs running inside a container can only see the container's contents and devices assigned to the container.",
+      "id": "def5094b-b8ac-48f1-b5ef-6d409df983ce"
+    }
+  ]
+}

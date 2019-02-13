@@ -1,0 +1,8 @@
+<template is="dom-if" if="[[!fallback]]">
+  <lrn-vocab term="[[display]]">
+    <div>[[definition]]</div>
+  </lrn-vocab>
+</template>
+<template is="dom-if" if="[[fallback]]">
+  <slot></slot>
+</template>

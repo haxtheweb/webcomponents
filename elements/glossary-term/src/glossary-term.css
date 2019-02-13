@@ -1,0 +1,11 @@
+:host {
+  display: inline-block;
+}
+
+:host([hidden]) {
+  display: none;
+}
+
+lrn-vocab {
+  display: inline;
+}

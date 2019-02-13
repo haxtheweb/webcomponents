@@ -7,7 +7,7 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js
 import "@lrnwebcomponents/lrn-vocab/lrn-vocab.js";
 /**
  * `glossary-term`
- * `Glossary element that connects to the glossary service.`
+ * ``
  *
  * @microcopy - language worth noting:
  *  -
@@ -23,7 +23,6 @@ class GlossaryTerm extends PolymerElement {
       <style>
         :host {
           display: inline-block;
-          margin-bottom: -3px;
         }
 
         :host([hidden]) {
@@ -34,9 +33,14 @@ class GlossaryTerm extends PolymerElement {
           display: inline;
         }
       </style>
-      <lrn-vocab term="[[display]]">
-        <div>[[definition]]</div>
-      </lrn-vocab>
+      <template is="dom-if" if="[[!fallback]]">
+        <lrn-vocab term="[[display]]">
+          <div>[[definition]]</div>
+        </lrn-vocab>
+      </template>
+      <template is="dom-if" if="[[fallback]]">
+        <slot></slot>
+      </template>
     `;
   }
 
@@ -48,7 +52,7 @@ class GlossaryTerm extends PolymerElement {
       canEditSource: false,
       gizmo: {
         title: "Glossary term",
-        description: "Glossary element that connects to the glossary service.",
+        description: "",
         icon: "icons:android",
         color: "green",
         groups: ["Term"],
@@ -71,6 +75,20 @@ class GlossaryTerm extends PolymerElement {
             inputMethod: "textfield",
             required: false,
             icon: "icons:android"
+          },
+          {
+            property: "definition",
+            description: "",
+            inputMethod: "textfield",
+            required: false,
+            icon: "icons:android"
+          },
+          {
+            property: "display",
+            description: "",
+            inputMethod: "textfield",
+            required: false,
+            icon: "icons:android"
           }
         ],
         advanced: []
@@ -80,13 +98,6 @@ class GlossaryTerm extends PolymerElement {
   // properties available to the custom element for data binding
   static get properties() {
     return {
-      display: {
-        name: "display",
-        type: "String",
-        value: "",
-        reflectToAttribute: false,
-        observer: false
-      },
       name: {
         name: "name",
         type: "String",
@@ -95,9 +106,23 @@ class GlossaryTerm extends PolymerElement {
         observer: false
       },
       definition: {
-        name: "definition",
+        name: "display",
         type: "String",
         value: "",
+        reflectToAttribute: false,
+        observer: false
+      },
+      display: {
+        name: "display",
+        type: "String",
+        value: "",
+        reflectToAttribute: false,
+        observer: false
+      },
+      fallback: {
+        name: "fallback",
+        type: "Boolean",
+        value: true,
         reflectToAttribute: false,
         observer: false
       }
@@ -111,6 +136,7 @@ class GlossaryTerm extends PolymerElement {
   static get tag() {
     return "glossary-term";
   }
+
   /**
    * life cycle, element is afixed to the DOM
    */
@@ -118,7 +144,7 @@ class GlossaryTerm extends PolymerElement {
     super.connectedCallback();
     this.HAXWiring = new HAXWiring();
     this.HAXWiring.setup(GlossaryTerm.haxProperties, GlossaryTerm.tag, this);
-
+    // fetch definition
     fetch("http://localhost:4000", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -130,11 +156,10 @@ class GlossaryTerm extends PolymerElement {
       .then(r => {
         try {
           this.definition = r.data.term.definition;
-          console.log(this.definition);
+          this.fallback = false;
         } catch (error) {}
       });
   }
-
   /**
    * life cycle, element is removed from the DOM
    */
