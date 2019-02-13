@@ -1,5 +1,7 @@
 # &lt;glossary-term&gt;
 
+## UNDER DEVELOPMENT
+
 Term
 > Glossary element that connects to the glossary service.
 
