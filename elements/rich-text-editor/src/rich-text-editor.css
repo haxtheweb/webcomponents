@@ -3,14 +3,21 @@
   width: 100%;
   margin: 0;
   padding: 0;
+  --rich-text-editor-bg: #fafafa;
+  --rich-text-editor-button-color: #444;
+  --rich-text-editor-border: 1px solid #ddd;
+  --rich-text-editor-button-border: transparent;
+  --rich-text-editor-button-disabled-color: #666;
+  --rich-text-editor-button-disabled-bg: transparent;
+  --rich-text-editor-button-toggled-color: #222;
+  --rich-text-editor-button-toggled-bg: #d8d8d8;
+  --rich-text-editor-button-hover-color: #000;
+  --rich-text-editor-button-hover-bg: #f0f0f0;
   @apply --rich-text-editor;
 }
 :host([sticky]) {
   position: sticky;
   top: 0;
-}
-:host([hidden]) {
-  display: none;
 }
 :host #toolbar {
   display: flex;
@@ -43,23 +50,28 @@
   border-right: var(--rich-text-editor-border);
   @apply --rich-text-editor-toolbar-divider;
 }
-:host #toolbar .more-button {
+:host #toolbar .button {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: stretch;
+  margin: 3px;
+}
+:host #toolbar #morebutton {
   flex: 1 0 auto;
   justify-content: flex-end;
 }
-:host .more-button[display-max="xs"],
-:host(:not([responsive-size="xs"])) .more-button[display-max="sm"],
-:host(:not([responsive-size*="s"])) .more-button[display-max="md"],
-:host([responsive-size*="l"]) .more-button[display-max="lg"],
-:host([responsive-size="xl"]) .more-button[display-max="xl"],
-:host([responsive-size="xs"]) #toolbar[collapsed] .group:not([minimum-size="xs"]),
-:host([responsive-size="sm"]) #toolbar[collapsed] .group:not([minimum-size*="s"]),
-:host([responsive-size="md"]) #toolbar[collapsed] .group[minimum-size*="l"],
-:host([responsive-size="lg"]) #toolbar[collapsed] .group[minimum-size="xl"] {
+/* hide the more button if all the buttons are displayed */
+:host([responsive-size="xs"]) #morebutton[collapse-max="xs"],
+:host([responsive-size="sm"]) #morebutton[collapse-max*="s"],
+:host([responsive-size="md"]) #morebutton:not([collapse-max*="l"]),
+:host([responsive-size="lg"]) #morebutton:not([collapse-max="xl"]),
+:host([responsive-size="xl"]) #morebutton,
+/* hide the buttons if they should be collaped until */
+:host([responsive-size="xs"]) #toolbar[collapsed] *[collapsed-until*="m"],
+:host([responsive-size="xs"]) #toolbar[collapsed] *[collapsed-until*="l"],
+:host([responsive-size="sm"]) #toolbar[collapsed] *[collapsed-until="md"],
+:host([responsive-size="sm"]) #toolbar[collapsed] *[collapsed-until*="l"],
+:host([responsive-size="md"]) #toolbar[collapsed] *[collapsed-until*="l"],
+:host([responsive-size="lg"]) #toolbar[collapsed] *[collapsed-until="xl"] {
   display: none;
 }
-/*
-:host([responsive-size="sm"]) .more-button:not([toggles-size="sm"]),
-:host([responsive-size="md"]) .more-button:not([toggles-size="md"])
-:host([responsive-size="lg"]) .more-button:not([toggles-size="lg"]),
-:host([responsive-size="xl"]) .more-button:not([toggles-size="xl"]),*/

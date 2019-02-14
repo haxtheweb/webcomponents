@@ -8,6 +8,14 @@
     "computed": "_getButtons(config)"
   },
   /**
+   * The editable content, if edits are canceled.
+   */
+  "canceled": {
+    "name": "canceled",
+    "type": "Object",
+    "value": true
+  },
+  /**
    * Is the menu collapsed.
    */
   "collapsed": {
@@ -21,155 +29,156 @@
   "config": {
     "name": "config",
     "type": "Object",
-    "value": {
-      "xs": [
-        {
-          "group": "History",
-          "buttons": [
-            {
-              "label": "Undo",
-              "icon": "icons:undo",
-              "event": "history-undo",
-              "command": "undo"
-            },
-            {
-              "label": "Redo",
-              "icon": "icons:redo",
-              "event": "history-redo",
-              "command": "redo"
-            }
-          ]
-        },
-        {
-          "group": "Basic Inline Operations",
-          "buttons": [
-            {
-              "label": "Bold",
-              "icon": "editor:format-bold",
-              "event": "text-bold",
-              "command": "bold",
-              "toggles": true
-            },
-            {
-              "label": "Italics",
-              "icon": "editor:format-italic",
-              "event": "text-italic",
-              "command": "italic",
-              "toggles": true
-            },
-            {
-              "label": "Erase Format",
-              "icon": "editor:format-clear",
-              "event": "text-remove-format",
-              "command": "removeFormat"
-            }
-          ]
-        },
-        {
-          "group": "Links",
-          "buttons": [
-            {
-              "label": "Link",
-              "icon": "link",
-              "command": "link",
-              "toggles": true
-            }
-          ]
-        },
-        {
-          "group": "Clipboard Operations",
-          "buttons": [
-            {
-              "label": "Cut",
-              "icon": "icons:content-cut",
-              "event": "clipboard-cut",
-              "command": "cut"
-            },
-            {
-              "label": "Copy",
-              "icon": "icons:content-copy",
-              "event": "clipboard-copy",
-              "command": "copy"
-            },
-            {
-              "label": "Paste",
-              "icon": "icons:content-paste",
-              "event": "clipboard-paste",
-              "command": "paste"
-            }
-          ]
-        }
-      ],
-      "sm": [
-        {
-          "group": "Subscript and Superscript",
-          "buttons": [
-            {
-              "label": "Subscript",
-              "icon": "mdextra:subscript",
-              "event": "text-subscript",
-              "command": "subscript",
-              "toggles": true
-            },
-            {
-              "label": "Superscript",
-              "icon": "mdextra:superscript",
-              "event": "text-superscript",
-              "command": "superscript",
-              "toggles": true
-            }
-          ]
-        }
-      ],
-      "md": [
-        {
-          "group": "Lists and Indents",
-          "buttons": [
-            {
-              "label": "Ordered List",
-              "icon": "editor:format-list-numbered",
-              "event": "text-list-numbered",
-              "command": "insertOrderedList",
-              "toggles": true
-            },
-            {
-              "label": "Unordered List",
-              "icon": "editor:format-list-bulleted",
-              "event": "text-list-bulleted",
-              "command": "insertUnorderedList",
-              "toggles": true
-            },
-            { "label": "Blockquote", "icon": "editor:format-quote" },
-            {
-              "label": "Increase Indent",
-              "icon": "editor:format-indent-increase",
-              "event": "text-indent",
-              "command": "indent"
-            },
-            {
-              "label": "Decrease Indent",
-              "icon": "editor:format-indent-decrease",
-              "event": "text-outdent",
-              "command": "outdent"
-            }
-          ]
-        }
-      ],
-      "lg": [
-        {
-          "group": "Insertions",
-          "buttons": [
-            {
-              "label": "Insert Inline Image",
-              "icon": "editor:insert-photo",
-              "command": "insertImage"
-            },
-            { "label": "Insert Symbol", "icon": "editor:functions" },
-            { "label": "Insert Emoji", "icon": "image:tag-faces" }
-          ]
-        }
-      ]
-    }
+    "value": [
+      {
+        "label": "History",
+        "type": "button-group",
+        "buttons": [
+          {
+            "command": "undo",
+            "icon": "undo",
+            "label": "Undo",
+            "type": "rich-text-editor-button"
+          },
+          {
+            "command": "redo",
+            "icon": "redo",
+            "label": "Redo",
+            "type": "rich-text-editor-button"
+          }
+        ]
+      },
+      {
+        "label": "Basic Inline Operations",
+        "type": "button-group",
+        "buttons": [
+          {
+            "command": "bold",
+            "icon": "editor:format-bold",
+            "label": "Bold",
+            "toggles": true,
+            "type": "rich-text-editor-button"
+          },
+          {
+            "command": "italic",
+            "icon": "editor:format-italic",
+            "label": "Italics",
+            "toggles": true,
+            "type": "rich-text-editor-button"
+          },
+          {
+            "command": "removeFormat",
+            "icon": "editor:format-clear",
+            "label": "Erase Format",
+            "type": "rich-text-editor-button"
+          }
+        ]
+      },
+      {
+        "label": "Links",
+        "type": "button-group",
+        "buttons": [
+          {
+            "command": "link",
+            "icon": "link",
+            "label": "Link",
+            "toggledCommand": "unlink",
+            "toggledIcon": "mdextra:unlink",
+            "toggledLabel": "Unink",
+            "toggles": true,
+            "type": "rich-text-editor-button"
+          }
+        ]
+      },
+      {
+        "label": "Clipboard Operations",
+        "type": "button-group",
+        "buttons": [
+          {
+            "command": "cut",
+            "icon": "content-cut",
+            "label": "Cut",
+            "type": "rich-text-editor-button"
+          },
+          {
+            "command": "copy",
+            "icon": "content-copy",
+            "label": "Copy",
+            "type": "rich-text-editor-button"
+          },
+          {
+            "command": "paste",
+            "icon": "content-paste",
+            "label": "Paste",
+            "type": "rich-text-editor-button"
+          }
+        ]
+      },
+      {
+        "collapsedUntil": "md",
+        "label": "Subscript and Superscript",
+        "type": "button-group",
+        "buttons": [
+          {
+            "command": "subscript",
+            "icon": "mdextra:subscript",
+            "label": "Subscript",
+            "toggles": true,
+            "type": "rich-text-editor-button"
+          },
+          {
+            "command": "superscript",
+            "icon": "mdextra:superscript",
+            "label": "Superscript",
+            "toggles": true,
+            "type": "rich-text-editor-button"
+          }
+        ]
+      },
+      {
+        "collapsedUntil": "sm",
+        "label": "Lists and Indents",
+        "type": "button-group",
+        "buttons": [
+          {
+            "command": "insertOrderedList",
+            "icon": "editor:format-list-numbered",
+            "label": "Ordered List",
+            "toggles": true,
+            "type": "rich-text-editor-button"
+          },
+          {
+            "command": "insertUnorderedList",
+            "icon": "editor:format-list-bulleted",
+            "label": "Unordered List",
+            "toggles": true,
+            "type": "rich-text-editor-button"
+          },
+          {
+            "collapsedUntil": "lg",
+            "command": "formatBlock",
+            "commandVal": "blockquote",
+            "label": "Blockquote",
+            "icon": "editor:format-quote",
+            "type": "rich-text-editor-button"
+          },
+          {
+            "label": "Increase Indent",
+            "icon": "editor:format-indent-increase",
+            "event": "text-indent",
+            "command": "indent",
+            "type": "rich-text-editor-button"
+          },
+          {
+            "label": "Decrease Indent",
+            "icon": "editor:format-indent-decrease",
+            "event": "text-outdent",
+            "command": "outdent",
+            "type": "rich-text-editor-button"
+          }
+        ]
+      }
+    ]
   },
   /**
    * The target element's id attribute.
@@ -203,6 +212,14 @@
     "type": "String",
     "value": "xs",
     "reflectToAttribute": true
+  },
+  /**
+   * The current text selection.
+   */
+  "savedSelection": {
+    "name": "savedSelection",
+    "type": "Object",
+    "value": null
   },
   /**
    * The current text selection.

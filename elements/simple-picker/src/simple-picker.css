@@ -1,5 +1,5 @@
 :host {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   position: relative;
   --simple-picker-color: black;
