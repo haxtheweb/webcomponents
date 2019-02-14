@@ -52,6 +52,7 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
    * Handles default options loaded from an external js file
    */
   _setOptions() {
+    console.log(emojis);
     this.set(
       "options",
       this._getPickerOptions(Object.keys(emojis), this.allowNull)
@@ -66,6 +67,7 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
    * @returns {object} picker dato for the option
    */
   _getOptionData(option) {
+    console.log(option);
     return {
       value: option,
       alt: option,

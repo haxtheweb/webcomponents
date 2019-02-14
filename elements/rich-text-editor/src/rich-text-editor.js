@@ -7,6 +7,7 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js
 import { ResponsiveUtility } from "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "./lib/rich-text-editor-button.js";
 import "./lib/rich-text-editor-more-button.js";
+import "./lib/rich-text-editor-block-picker.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/image-icons.js";
@@ -182,7 +183,7 @@ class RichTextEditor extends PolymerElement {
     let root = this,
       button = document.createElement(child.type);
     for (var key in child) {
-      button.setAttribute(key, child[key]);
+      button[key] = child[key];
     }
     button.setAttribute("class", "button");
     button.addEventListener("mousedown", function(e) {

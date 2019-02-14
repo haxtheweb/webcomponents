@@ -157,7 +157,7 @@
           {
             "collapsedUntil": "lg",
             "command": "formatBlock",
-            "commandVal": "<blockquote>",
+            "commandVal": "blockquote",
             "label": "Blockquote",
             "icon": "editor:format-quote",
             "type": "rich-text-editor-button"

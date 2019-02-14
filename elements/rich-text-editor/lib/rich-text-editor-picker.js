@@ -73,24 +73,6 @@ class RichTextEditorPicker extends RichTextEditorButton {
         name: "titleAsHtml",
         type: "Boolean",
         value: false
-      },
-
-      /**
-       *
-       */
-      wrap: {
-        name: "wrap",
-        type: "Boolean",
-        value: false
-      },
-
-      /**
-       *
-       */
-      block: {
-        name: "block",
-        type: "Boolean",
-        value: false
       }
     };
   }
