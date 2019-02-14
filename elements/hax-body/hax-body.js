@@ -31,24 +31,27 @@ let HaxBody = Polymer({
         display: block;
         min-height: 32px;
         min-width: 32px;
+        outline: none;
       }
-      :host #bodycontainer ::slotted(.hax-context-menu) {
+      .hax-context-menu {
         padding: 0;
         margin: 0;
         position: absolute;
         visibility: hidden;
         opacity: 0;
-        z-index: 100;
+        z-index: 1000;
         float: left;
         display: block;
+        pointer-events: none;
         transition: 0.3s all linear;
       }
-      :host #bodycontainer ::slotted(#haxinputmixer) {
+      #haxinputmixer {
         z-index: 10000000;
       }
-      :host #bodycontainer ::slotted(.hax-context-visible.hax-active-hover) {
+      .hax-context-visible.hax-active-hover {
         visibility: visible;
         opacity: 1;
+        pointer-events: all;
       }
       :host #bodycontainer ::slotted(*) {
         font-family: "Noto Serif", serif;
@@ -166,10 +169,6 @@ let HaxBody = Polymer({
         -webkit-user-select: text;
         user-select: text;
       }
-
-      #contextcontainer {
-        display: none;
-      }
       :host([edit-mode][hax-ray-mode])
         #bodycontainer
         ::slotted(*[data-editable]):before {
@@ -195,63 +194,22 @@ let HaxBody = Polymer({
     <div id="bodycontainer" class="ignore-activation">
       <slot id="body"></slot>
     </div>
-    <div id="contextcontainer">
-      <hax-text-context
-        id="textcontextmenu"
-        class="hax-context-menu ignore-activation"
-      ></hax-text-context>
-      <hax-ce-context
-        id="cecontextmenu"
-        class="hax-context-menu ignore-activation"
-      ></hax-ce-context>
-      <hax-plate-context
-        id="platecontextmenu"
-        class="hax-context-menu ignore-activation"
-      ></hax-plate-context>
-      <hax-input-mixer
-        id="haxinputmixer"
-        class="hax-context-menu ignore-activation"
-      ></hax-input-mixer>
-    </div>
-    <iron-a11y-keys
-      target="[[activeContainerNode]]"
-      keys="del backspace"
-      on-keys-pressed="_delKeyPressed"
-    ></iron-a11y-keys>
-    <iron-a11y-keys
-      target="[[activeContainerNode]]"
-      keys="shift+tab"
-      on-keys-pressed="_tabBackKeyPressed"
-      stop-keyboard-event-propagation
-    ></iron-a11y-keys>
-    <iron-a11y-keys
-      target="[[activeContainerNode]]"
-      keys="tab"
-      on-keys-pressed="_tabKeyPressed"
-      stop-keyboard-event-propagation
-    ></iron-a11y-keys>
-    <iron-a11y-keys
-      target="[[activeContainerNode]]"
-      keys="up"
-      on-keys-pressed="_upKeyPressed"
-    ></iron-a11y-keys>
-    <iron-a11y-keys
-      target="[[activeContainerNode]]"
-      keys="down"
-      on-keys-pressed="_downKeyPressed"
-    ></iron-a11y-keys>
-    <iron-a11y-keys
-      target="[[activeContainerNode]]"
-      keys="right"
-      on-keys-pressed="_rightKeyPressed"
-      stop-keyboard-event-propagation
-    ></iron-a11y-keys>
-    <iron-a11y-keys
-      target="[[activeContainerNode]]"
-      keys="left"
-      on-keys-pressed="_leftKeyPressed"
-      stop-keyboard-event-propagation
-    ></iron-a11y-keys>
+    <hax-text-context
+      id="textcontextmenu"
+      class="hax-context-menu ignore-activation"
+    ></hax-text-context>
+    <hax-ce-context
+      id="cecontextmenu"
+      class="hax-context-menu ignore-activation"
+    ></hax-ce-context>
+    <hax-plate-context
+      id="platecontextmenu"
+      class="hax-context-menu ignore-activation"
+    ></hax-plate-context>
+    <hax-input-mixer
+      id="haxinputmixer"
+      class="hax-context-menu ignore-activation"
+    ></hax-input-mixer>
   `,
   listeners: {
     focusin: "_focusIn",
@@ -261,6 +219,10 @@ let HaxBody = Polymer({
     "place-holder-replace": "replacePlaceholder"
   },
   properties: {
+    __self: {
+      type: Object,
+      value: this
+    },
     /**
      * State of if we are editing or not.
      */
@@ -354,17 +316,23 @@ let HaxBody = Polymer({
    * we exist and are the thing being edited.
    */
   attached: function() {
+    // try to normalize paragraph insert on enter
+    try {
+      document.execCommand("enableObjectResizing", false, false);
+      document.execCommand("defaultParagraphSeparator", false, "p");
+    } catch (e) {
+      console.log(e);
+    }
+    window.addEventListener("keydown", this._onKeyDown.bind(this));
     window.addEventListener("keypress", this._onKeyPress.bind(this));
     this.shadowRoot
       .querySelector("slot")
-      .addEventListener("mouseover", this.hoverEvent.bind(this));
-    // try to normalize paragraph insert on enter
-    document.execCommand("defaultParagraphSeparator", false, "p");
+      .addEventListener("mousemove", this.hoverEvent.bind(this));
     this.shadowRoot.querySelector("slot").addEventListener("mouseup", e => {
       const tmp = window.HaxStore.getSelection();
       window.HaxStore._tmpSelection = tmp;
       try {
-        let range = window.HaxStore.getRange();
+        const range = window.HaxStore.getRange();
         window.HaxStore._tmpRange = range.cloneRange();
       } catch (e) {}
     });
@@ -419,15 +387,16 @@ let HaxBody = Polymer({
    * Detached life cycle
    */
   detached: function() {
+    window.removeEventListener("keydown", this._onKeyDown.bind(this));
     window.removeEventListener("keypress", this._onKeyPress.bind(this));
     this.shadowRoot
       .querySelector("slot")
-      .removeEventListener("mouseover", this.hoverEvent.bind(this));
+      .removeEventListener("mousemove", this.hoverEvent.bind(this));
     this.shadowRoot.querySelector("slot").removeEventListener("mouseup", e => {
       const tmp = window.HaxStore.getSelection();
       window.HaxStore._tmpSelection = tmp;
       try {
-        let range = window.HaxStore.getRange();
+        const range = window.HaxStore.getRange();
         window.HaxStore._tmpRange = range.cloneRange();
       } catch (e) {}
     });
@@ -500,19 +469,47 @@ let HaxBody = Polymer({
       }
     }
   },
-  _onKeyPress: function(e) {
-    if (this.editMode && !this.__typeLock) {
+  _onKeyDown: function(e) {
+    if (this.editMode) {
+      let rng = window.HaxStore.getRange();
+      switch (e.key) {
+        case "ArrowUp":
+        case "ArrowDown":
+        case "ArrowLeft":
+        case "ArrowRight":
+        case "Delete":
+        case "Backspace":
+        case "Enter":
+          if (
+            rng.commonAncestorContainer &&
+            rng.commonAncestorContainer.parentNode &&
+            this.activeNode !== rng.commonAncestorContainer.parentNode &&
+            typeof rng.commonAncestorContainer.parentNode.focus === "function"
+          ) {
+            rng.commonAncestorContainer.parentNode.focus();
+          }
+          break;
+      }
       this.$.cecontextmenu.classList.remove("hax-active-hover");
       this.$.textcontextmenu.classList.remove("hax-active-hover");
       this.$.platecontextmenu.classList.remove("hax-active-hover");
-      this.__typeLock = true;
+    }
+  },
+  _onKeyPress: function(e) {
+    if (this.editMode) {
+      this.$.cecontextmenu.classList.remove("hax-active-hover");
+      this.$.textcontextmenu.classList.remove("hax-active-hover");
+      this.$.platecontextmenu.classList.remove("hax-active-hover");
     }
   },
   /**
    * on mouse over then fire the hax ray value if we have one
    */
   hoverEvent: function(e) {
-    if (this.editMode) {
+    if (
+      this.editMode &&
+      !this.$.cecontextmenu.classList.contains("hax-active-hover")
+    ) {
       if (e.target && e.target.getAttribute("data-hax-ray") !== null) {
         this.__activeHover = e.target;
         this.fire(
@@ -585,7 +582,7 @@ let HaxBody = Polymer({
         window.HaxStore.write("activeNode", p, this);
         // focus on it
         p.focus();
-      }, 100);
+      }, 50);
     } else {
       this.replaceElementWorkflow();
     }
@@ -797,13 +794,12 @@ let HaxBody = Polymer({
         dom(this).appendChild(newNode);
       }
       this.$.textcontextmenu.highlightOps = false;
-
       this.__updateLockFocus = newNode;
       // wait so that the DOM can have the node to then attach to
       if (waitForLock) {
         setTimeout(() => {
           this.breakUpdateLock();
-        }, 100);
+        }, 150);
       }
       return true;
     }
@@ -830,10 +826,11 @@ let HaxBody = Polymer({
    * inserted into something.
    */
   haxToContent: function() {
-    // remove from the body area so we can generate a legit html structure
     this.hideContextMenus();
     var __active = this.activeNode;
     // null this to drop hax based classes
+    this.set("activeNode", null);
+    this.set("activeContainerNode", null);
     window.HaxStore.write("activeNode", null, this);
     window.HaxStore.write("activeContainerNode", null, this);
     let children = dom(this.$.body).getDistributedNodes();
@@ -950,7 +947,7 @@ let HaxBody = Polymer({
         window.HaxStore.write("activeContainerNode", nodeClone, this);
       }
       window.HaxStore.write("activeNode", nodeClone, this);
-    }, 100);
+    }, 50);
     return true;
   },
   /**
@@ -975,42 +972,19 @@ let HaxBody = Polymer({
       tag = "iframe";
     }
     let props = window.HaxStore.instance.elementList[tag];
-    // get width from window size and do very minor responsive inline support
-    let w = Math.max(
-      document.documentElement.clientWidth,
-      window.innerWidth || 0
-    );
-    let offsetmenu = -39;
-    let offsetplate = -31;
-    // if we go below 800 break point, change menu positioning
-    if (w < 800) {
-      offsetmenu = 0;
-      offsetplate = 0;
-    }
     // try and work against anything NOT a P tag
-    if (typeof props !== typeof undefined && node.tagName !== "P") {
+    if (
+      typeof props !== typeof undefined &&
+      !window.HaxStore.instance.isTextElement(node)
+    ) {
       this.__activeContextType = this.$.cecontextmenu;
       props.element = node;
       this.__activeContextType.setHaxProperties(props);
     } else {
-      // @todo test if this is a custom element, then if it is
-      // try and guess what the properties are based on what's
-      // currently been set. it's by no means perfect but it'll
-      // be a really good start
       this.__activeContextType = this.$.textcontextmenu;
     }
-    this._positionContextMenu(
-      this.__activeContextType,
-      container,
-      offsetmenu,
-      -39
-    );
-    this._positionContextMenu(
-      this.$.platecontextmenu,
-      container,
-      offsetplate,
-      0
-    );
+    this._positionContextMenu(this.__activeContextType, container, -39, -39);
+    this._positionContextMenu(this.$.platecontextmenu, container, -31, 0);
     // special case for node not matching container
     if (!this._HTMLPrimativeTest(node) && node !== container) {
       container.contentEditable = false;
@@ -1050,14 +1024,14 @@ let HaxBody = Polymer({
         break;
       // @todo support other directions for when inside of an element
     }
-    this.positionContextMenus(node, container);
     setTimeout(() => {
+      this.positionContextMenus(node, container);
       if (typeof container.scrollIntoViewIfNeeded === "function") {
         container.scrollIntoViewIfNeeded(true);
       } else {
         container.scrollIntoView({ behavior: "smooth", inline: "center" });
       }
-    }, 100);
+    }, 50);
     return true;
   },
   /**
@@ -1135,7 +1109,7 @@ let HaxBody = Polymer({
       } else {
         replacement.focus();
       }
-    }, 100);
+    }, 50);
     return replacement;
   },
   /**
@@ -1174,8 +1148,10 @@ let HaxBody = Polymer({
     ) {
       this.activeContainerNode.nextElementSibling.focus();
     } else {
-      window.HaxStore.write("activeContainerNode", null, this);
+      this.set("activeNode", null);
+      this.set("activeContainerNode", null);
       window.HaxStore.write("activeNode", null, this);
+      window.HaxStore.write("activeContainerNode", null, this);
     }
     // @todo figure out why this is complaining
     try {
@@ -1235,7 +1211,7 @@ let HaxBody = Polymer({
           fragment.removeChild(fragment.firstChild);
         }
       }
-    }, 100);
+    }, 50);
   },
   /**
    * Respond to hax operations.
@@ -1343,12 +1319,10 @@ let HaxBody = Polymer({
         );
         break;
       case "close-menu":
-        // this is the equivalent of hiding menus and resetting the board
         this.set("activeNode", null);
         this.set("activeContainerNode", null);
-        // now set globally
-        window.HaxStore.write("activeContainerNode", null, this);
         window.HaxStore.write("activeNode", null, this);
+        window.HaxStore.write("activeContainerNode", null, this);
         break;
       case "hax-edit-property":
         let haxInputMixer = this.$.haxinputmixer;
@@ -1400,19 +1374,23 @@ let HaxBody = Polymer({
         this.activeNode.style.float = null;
         this.activeNode.style.margin = null;
         this.activeNode.style.display = null;
-        this.positionContextMenus(this.activeNode, this.activeContainerNode);
+        setTimeout(() => {
+          this.positionContextMenus(this.activeNode, this.activeContainerNode);
+        }, 200);
         break;
       case "hax-align-center":
         this.activeNode.style.float = null;
         this.activeNode.style.margin = "0 auto";
         this.activeNode.style.display = "block";
-        this.positionContextMenus(this.activeNode, this.activeContainerNode);
+        setTimeout(() => {
+          this.positionContextMenus(this.activeNode, this.activeContainerNode);
+        }, 200);
         break;
       case "hax-size-change":
         this.activeNode.style.width = detail.value + "%";
         setTimeout(() => {
           this.positionContextMenus(this.activeNode, this.activeContainerNode);
-        }, 210);
+        }, 200);
         break;
       // settings button selected from hax-ce-context bar
       // which means we should skip to the settings page after
@@ -1559,6 +1537,7 @@ let HaxBody = Polymer({
           !activeNode.classList.contains("ignore-activation")
         ) {
           window.HaxStore.write("activeNode", activeNode, this);
+          this.positionContextMenus(activeNode, containerNode);
           e.stopPropagation();
         }
       }
@@ -1573,6 +1552,7 @@ let HaxBody = Polymer({
     // fire above that we have changed states so things can react if needed
     if (typeof oldValue !== typeof undefined) {
       this._applyContentEditable(newValue);
+      this.setAttribute("tabindex", "-1");
       if (
         newValue !== false &&
         typeof this.activeNode !== typeof undefined &&
@@ -1583,6 +1563,7 @@ let HaxBody = Polymer({
     }
     // hide menus when state changes
     if (newValue === false) {
+      this.removeAttribute("contenteditable");
       this.hideContextMenus();
     }
   },
@@ -1665,8 +1646,14 @@ let HaxBody = Polymer({
     if (
       this.editMode &&
       typeof newValue !== typeof undefined &&
-      newValue !== null
+      newValue != null &&
+      newValue.tagName != null
     ) {
+      if (window.HaxStore.instance.isTextElement(newValue)) {
+        this.setAttribute("contenteditable", true);
+      } else {
+        this.removeAttribute("contenteditable");
+      }
       let tag = newValue.tagName.toLowerCase();
       // special case for the grid plate since it brings in dom nodes
       // nested in it and needs to be put into an editMode
@@ -1695,12 +1682,19 @@ let HaxBody = Polymer({
       // the document
       // only hide if we change containers
       newValue.classList.add("hax-active");
+      if (window.HaxStore.instance.isTextElement(newValue)) {
+        this.setAttribute("contenteditable", true);
+      } else {
+        this.removeAttribute("contenteditable");
+      }
       this.$.textcontextmenu.selectedValue = tag;
       // position the operations / in context element
-      this.positionContextMenus(
-        newValue,
-        window.HaxStore.instance.activeContainerNode
-      );
+      setTimeout(() => {
+        this.positionContextMenus(
+          newValue,
+          window.HaxStore.instance.activeContainerNode
+        );
+      }, 100);
       if (newValue.style.textAlign == "left") {
         this.$.textcontextmenu.justifyIcon = "editor:format-align-left";
         this.$.textcontextmenu.justifyValue = "text-align-left";
@@ -1720,33 +1714,38 @@ let HaxBody = Polymer({
     }
   },
   /**
+   * walk parents and find the correct position from top of document
+   * https://stackoverflow.com/questions/11805955/how-to-get-the-distance-from-the-top-for-an-element
+   */
+  _getPosition(element) {
+    var xPosition = 0;
+    var yPosition = 0;
+
+    while (element) {
+      xPosition += element.offsetLeft - element.scrollLeft + element.clientLeft;
+      yPosition += element.offsetTop - element.scrollTop + element.clientTop;
+      element = element.offsetParent;
+    }
+
+    return { x: xPosition, y: yPosition };
+  },
+  /**
    * Handle display and position of the context menu
    */
   _positionContextMenu: function(menu, target, xoffset, yoffset) {
-    try {
-      dom(this).insertBefore(menu, target);
-    } catch (err) {
-      console.log(err);
-      try {
-        dom(target.parentNode).insertBefore(menu, target);
-      } catch (err2) {
-        console.log(err2);
-      }
-    }
     // make it account for the offset if it's floated over to one side
     // or inside of something that's over that way
-    if (target !== null) {
-      let style = target.currentStyle || window.getComputedStyle(target);
-      if (parseInt(style.marginLeft) != 0) {
-        xoffset = xoffset + parseInt(style.marginLeft) - 2;
-      } else {
-        xoffset = xoffset + parseInt(target.offsetLeft) - this.offsetLeft - 2;
-      }
+    if (target != null) {
+      let pos = this._getPosition(target);
       if (xoffset != null) {
-        menu.style["margin-left"] = xoffset + "px";
+        menu.style["left"] = pos.x + xoffset + "px";
+      } else {
+        menu.style["left"] = pos.x + "px";
       }
       if (yoffset != null) {
-        menu.style["margin-top"] = yoffset + "px";
+        menu.style["top"] = pos.y + yoffset + "px";
+      } else {
+        menu.style["top"] = pos.y + "px";
       }
     }
     menu.classList.add("hax-context-visible");
@@ -1766,59 +1765,6 @@ let HaxBody = Polymer({
       "hax-context-pin-top",
       "hax-context-pin-bottom"
     );
-    dom(this.$.contextcontainer).appendChild(menu);
-  },
-  /**
-   * When the user hits delete, test if there's any content
-   * left in this container. If thre isn't then delete the
-   * container itself
-   */
-  _delKeyPressed: function(e) {
-    if (this.editMode) {
-      const activeNodeTextContent = dom(this.activeNode).textContent;
-      // test selection to see if we are at beginning of
-      // whatever element this is
-      let range = window.HaxStore.getRange().cloneRange();
-      // ensure our range is not inside of a list item
-      let tagTest = range.commonAncestorContainer.tagName;
-      if (activeNodeTextContent === "") {
-        if (tagTest !== "LI") {
-          e.preventDefault();
-          e.stopPropagation();
-          e.stopImmediatePropagation();
-          setTimeout(() => {
-            this.haxDeleteNode(this.activeNode);
-          }, 50);
-        }
-      } else if (
-        window.HaxStore.instance.isTextElement(
-          this._haxResolvePreviousElement(this.activeNode)
-        )
-      ) {
-        if (typeof tagTest === typeof undefined) {
-          tagTest = range.commonAncestorContainer.parentNode.tagName;
-        }
-        // must strictly be single placement cursor at start of tag
-        if (
-          range.startOffset === 0 &&
-          range.endOffset === 0 &&
-          tagTest !== "LI" &&
-          range.commonAncestorContainer.parentNode === this.activeNode
-        ) {
-          e.preventDefault();
-          e.stopPropagation();
-          e.stopImmediatePropagation();
-          while (this.activeNode.firstChild) {
-            this._haxResolvePreviousElement(this.activeNode).appendChild(
-              this.activeNode.firstChild
-            );
-          }
-          setTimeout(() => {
-            this.haxDeleteNode(this.activeNode);
-          }, 50);
-        }
-      }
-    }
   },
   /**
    * Move between things pressing up and down if empty
@@ -1827,21 +1773,22 @@ let HaxBody = Polymer({
     // make sure we are editing and we are in a text element
     if (
       this.editMode &&
-      window.HaxStore.instance.isTextElement(this.activeNode)
+      window.HaxStore.instance.isTextElement(this.activeNode) &&
+      this._haxResolvePreviousElement(this.activeNode) != null &&
+      window.HaxStore.instance.isTextElement(
+        this._haxResolvePreviousElement(this.activeNode)
+      )
     ) {
-      let node = this._haxResolvePreviousElement(this.activeNode);
-      this._onKeyPress(e);
-      /*if (node !== null && this.__cursorIndex() < this.__lines(node).pop().text.length) {
-        // look for a range and see if we're at the top of the window area
-        let getDistanceToCaret = this.__distanceToCaret(this.activeNode, this.__cursorIndex());
-        let lineNumber = this.__lines(this.activeNode).length;
-        let caretPosition = this.__getCaretViaWidth(this.activeNode, lineNumber, getDistanceToCaret);
-        this.__activeHover = null;
-        node.focus();
-        setTimeout( () => {
-          this.__setCaret(node, caretPosition);
-        }, 50);
-      }*/
+      const evt = e;
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      this.setAttribute("contenteditable", true);
+      setTimeout(() => {
+        this.dispatchEvent(evt);
+        this.__typeLock = false;
+        this._onKeyPress(e);
+      }, 50);
     }
   },
   /**
@@ -1850,20 +1797,19 @@ let HaxBody = Polymer({
   _downKeyPressed: function(e) {
     if (
       this.editMode &&
-      window.HaxStore.instance.isTextElement(this.activeNode)
+      window.HaxStore.instance.isTextElement(this.activeNode) &&
+      this.activeNode.nextElementSibling != null &&
+      window.HaxStore.instance.isTextElement(this.activeNode.nextElementSibling)
     ) {
-      let node = dom(this.activeNode).nextElementSibling;
-      this._onKeyPress(e);
-      // empty and down pressed, just move down
-      /*if (node !== null && this.__cursorIndex() >= this.__lastLine(node).startIndex && this.__cursorIndex() <= (this.__lastLine(node).startIndex + this.__lastLine(node).text.length)) {
-        let getDistanceToCaret = this.__distanceToCaret(this.activeNode, this.__cursorIndex());
-        let caretPosition = this.__getCaretViaWidth(this.activeNode, 1, getDistanceToCaret);
-        this.__activeHover = null;
-        node.focus();
-        setTimeout( () => {
-          this.__setCaret(node, caretPosition);
-        }, 50);
-      }*/
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      this.setAttribute("contenteditable", true);
+      setTimeout(() => {
+        this.dispatchEvent(evt);
+        this.__typeLock = false;
+        this._onKeyPress(e);
+      }, 50);
     }
   },
   /**
@@ -1872,27 +1818,20 @@ let HaxBody = Polymer({
   _rightKeyPressed: function(e) {
     if (
       this.editMode &&
-      window.HaxStore.instance.isTextElement(this.activeNode)
+      window.HaxStore.instance.isTextElement(this.activeNode) &&
+      this.activeNode.nextElementSibling != null &&
+      window.HaxStore.instance.isTextElement(this.activeNode.nextElementSibling)
     ) {
-      this._onKeyPress(e);
-      if (
-        this.activeNode.nextElementSibling != null &&
-        this.__cursorIndex() == this.activeNode.textContent.length
-      ) {
-        // try and focus on the next thing
-        try {
-          e.preventDefault();
-          e.stopPropagation();
-          e.stopImmediatePropagation();
-          setTimeout(() => {
-            this.__activeHover = null;
-            this.activeNode.nextElementSibling.focus();
-          }, 50);
-        } catch (e) {
-          // do nothing, at bottom
-          console.log(e);
-        }
-      }
+      const evt = e;
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      this.setAttribute("contenteditable", true);
+      setTimeout(() => {
+        this.dispatchEvent(evt);
+        this.__typeLock = false;
+        this._onKeyPress(e);
+      }, 50);
     }
   },
   /**
@@ -1901,214 +1840,23 @@ let HaxBody = Polymer({
   _leftKeyPressed: function(e) {
     if (
       this.editMode &&
-      window.HaxStore.instance.isTextElement(this.activeNode)
+      window.HaxStore.instance.isTextElement(this.activeNode) &&
+      this._haxResolvePreviousElement(this.activeNode) != null &&
+      window.HaxStore.instance.isTextElement(
+        this._haxResolvePreviousElement(this.activeNode)
+      )
     ) {
-      this._onKeyPress(e);
-      let node = this._haxResolvePreviousElement(this.activeNode);
-      if (node != null && this.__cursorIndex() == 0) {
-        try {
-          e.preventDefault();
-          e.stopPropagation();
-          e.stopImmediatePropagation();
-          this.__activeHover = null;
-          node.focus();
-          setTimeout(() => {
-            let sel = window.HaxStore.getSelection();
-            sel.removeAllRanges();
-            let newRange = document.createRange();
-            newRange.setStart(node, 1);
-            newRange.collapse(true);
-            sel.addRange(newRange);
-          }, 50);
-        } catch (e) {
-          console.log(e);
-        }
-      }
+      const evt = e;
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      this.setAttribute("contenteditable", true);
+      setTimeout(() => {
+        this.dispatchEvent(evt);
+        this.__typeLock = false;
+        this._onKeyPress(e);
+      }, 50);
     }
-  },
-  // set cursor
-  __setSelectionByCharacterOffsets: function(containerEl, start, end) {
-    var charIndex = 0,
-      range = document.createRange();
-    range.setStart(containerEl, 0);
-    range.collapse(true);
-    var nodeStack = [containerEl],
-      node,
-      foundStart = false,
-      stop = false;
-    while (!stop && (node = nodeStack.pop())) {
-      if (node.nodeType == 3) {
-        var nextCharIndex = charIndex + node.length;
-        if (!foundStart && start >= charIndex && start <= nextCharIndex) {
-          range.setStart(node, start - charIndex);
-          foundStart = true;
-        }
-        if (foundStart && end >= charIndex && end <= nextCharIndex) {
-          range.setEnd(node, end - charIndex);
-          stop = true;
-        }
-        charIndex = nextCharIndex;
-      } else {
-        var i = node.childNodes.length;
-        while (i--) {
-          nodeStack.push(node.childNodes[i]);
-        }
-      }
-    }
-    let sel = window.HaxStore.getSelection();
-    sel.removeAllRanges();
-    sel.addRange(range);
-  },
-  __setCaret: function(element, index) {
-    setTimeout(() => {
-      this.__setSelectionByCharacterOffsets(element, index, index);
-    }, 50);
-  },
-  __cursorIndex: function() {
-    return window.HaxStore.getRange().startOffset;
-  },
-  __lines: function(node) {
-    var lineItems = [];
-    if (node !== null) {
-      var words = dom(node).textContent.split(" "); //split text into each word
-
-      var hiddenElement = node.cloneNode(true); //copies font settings and width
-      while (hiddenElement.firstChild) {
-        hiddenElement.removeChild(hiddenElement.firstChild);
-      }
-      hiddenElement.style.visibility = "hidden";
-      dom(this).appendChild(hiddenElement); // height doesn't exist until inserted into document
-      hiddenElement.innerHTML = "i";
-      var height = hiddenElement.offsetHeight;
-      while (hiddenElement.firstChild) {
-        hiddenElement.removeChild(hiddenElement.firstChild);
-      }
-      var startIndex = -1; // quick fix for now - offset by one to get the line indexes working
-      for (var i in words) {
-        var lineText = hiddenElement.textContent; // get text before new word appended
-        hiddenElement.innerHTML = lineText + " " + words[i];
-        if (hiddenElement.offsetHeight > height) {
-          // if new line
-          lineItems.push({
-            text: lineText,
-            startIndex: startIndex,
-            endIndex: lineText.length + startIndex
-          }); // push lineText not hiddenElement.textContent other wise each line will have 1 word too many
-          startIndex = startIndex + lineText.length + 1;
-          hiddenElement.innerHTML = words[i]; //first word of the next line
-        }
-      }
-      lineItems.push({
-        text: hiddenElement.textContent,
-        startIndex: startIndex,
-        endIndex: hiddenElement.textContent.length + startIndex
-      }); // push last line
-      dom(this).removeChild(hiddenElement);
-      lineItems[0].startIndex = 0; //quick fix for now - adjust first line index
-    }
-    return lineItems;
-  },
-  __lastLine: function(node) {
-    return this.__lines(node)[this.__lines(node).length - 1];
-  },
-  __findLineViaCaret: function(textElement, caretIndex) {
-    let tmp = this.__lines(textElement);
-    let r = false;
-    let notFound = true;
-    for (var i in tmp) {
-      if (
-        notFound &&
-        tmp[i].startIndex <= caretIndex &&
-        tmp[i].endIndex >= caretIndex
-      ) {
-        r = tmp[i];
-        notFound = false;
-        continue;
-      }
-    }
-    return r;
-  },
-  __distanceToCaret: function(textElement, caretIndex) {
-    let line = this.__findLineViaCaret(textElement, caretIndex);
-    let relativeIndex;
-    if (line.startIndex == 0) {
-      // +1 needed for substring to be correct but only first line?
-      relativeIndex = caretIndex - line.startIndex + 1;
-    } else {
-      relativeIndex = caretIndex - line.startIndex;
-    }
-    let textToCaret = line.text.substring(0, relativeIndex);
-    let hiddenElement = textElement.cloneNode(true); //copies font settings and width
-    while (hiddenElement.firstChild) {
-      hiddenElement.removeChild(hiddenElement.firstChild);
-    }
-    hiddenElement.style.visibility = "hidden";
-    hiddenElement.style.width = "auto"; //so width can be measured
-    hiddenElement.style.display = "inline-block"; //so width can be measured
-    dom(this).appendChild(hiddenElement); // doesn't exist until inserted into document
-    hiddenElement.innerHTML = textToCaret; //add to get width
-    let width = window
-      .getComputedStyle(hiddenElement)
-      .getPropertyValue("width")
-      .replace("px", "");
-    dom(this).removeChild(hiddenElement);
-    return parseInt(width);
-  },
-  __getCaretViaWidth(textElement, lineNo, width) {
-    let line = this.__lines(textElement)[lineNo - 1];
-    let lineCharacters = line.text.replace(/^\s+|\s+$/g, "").split("");
-    let hiddenElement = textElement.cloneNode(true); //copies font settings and width
-    while (hiddenElement.firstChild) {
-      hiddenElement.removeChild(hiddenElement.firstChild);
-    }
-    hiddenElement.style.visibility = "hidden";
-    hiddenElement.style.width = "auto"; //so width can be measured
-    hiddenElement.style.display = "inline-block"; //so width can be measured
-
-    dom(this).appendChild(hiddenElement); // doesn't exist until inserted into document
-    var caretIndex, prevWidth, elWidth, text;
-    if (width == 0) {
-      //if width is 0 index is at start
-      caretIndex = line.startIndex;
-    } else {
-      // else loop through each character until width is reached
-      while (hiddenElement.firstChild) {
-        hiddenElement.removeChild(hiddenElement.firstChild);
-      }
-      for (var i in lineCharacters) {
-        text = hiddenElement.textContent;
-        prevWidth = parseInt(
-          window
-            .getComputedStyle(hiddenElement)
-            .getPropertyValue("width")
-            .replace("px", "")
-        );
-        hiddenElement.innerHTML = text + lineCharacters[i];
-        elWidth = parseInt(
-          window
-            .getComputedStyle(hiddenElement)
-            .getPropertyValue("width")
-            .replace("px", "")
-        );
-        caretIndex = hiddenElement.textContent.length + line.startIndex;
-        if (
-          parseInt(
-            window
-              .getComputedStyle(hiddenElement)
-              .getPropertyValue("width")
-              .replace("px", "")
-          ) > width
-        ) {
-          // check whether character after width or before width is closest
-          if (Math.abs(width - prevWidth) < Math.abs(width - elWidth)) {
-            caretIndex = caretIndex - 1; // move index back one if previous is closes
-          }
-          continue;
-        }
-      }
-    }
-    dom(this).removeChild(hiddenElement);
-    return caretIndex;
   },
   /**
    * Find the next thing to tab forward to.
@@ -2202,7 +1950,7 @@ let HaxBody = Polymer({
           if (node != null) {
             setTimeout(() => {
               node.focus();
-            }, 100);
+            }, 50);
           }
         }
       } catch (e) {}
