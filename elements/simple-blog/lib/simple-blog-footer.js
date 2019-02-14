@@ -1,5 +1,7 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import "@polymer/paper-button/paper-button.js";
+import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
+
 /**
 `simple-blog-footer`
 A simple blog and associated elements
@@ -151,8 +153,8 @@ Polymer({
    * Fire event to unset the global activeItem.
    */
   _backButtonTap: function(e) {
-    // unset which will trigger a reset up above
-    this.fire("active-item-reset", null);
+    window.history.pushState(null, null, store.location.baseUrl);
+    window.dispatchEvent(new PopStateEvent("popstate"));
   },
 
   /**
