@@ -7,6 +7,7 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js
 import { ResponsiveUtility } from "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "./lib/rich-text-editor-button.js";
 import "./lib/rich-text-editor-more-button.js";
+import "./lib/rich-text-editor-block-picker.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/image-icons.js";
@@ -35,7 +36,15 @@ class RichTextEditor extends PolymerElement {
           margin: 0;
           padding: 0;
           --rich-text-editor-bg: #fafafa;
+          --rich-text-editor-button-color: #444;
           --rich-text-editor-border: 1px solid #ddd;
+          --rich-text-editor-button-border: transparent;
+          --rich-text-editor-button-disabled-color: #666;
+          --rich-text-editor-button-disabled-bg: transparent;
+          --rich-text-editor-button-toggled-color: #222;
+          --rich-text-editor-button-toggled-bg: #d8d8d8;
+          --rich-text-editor-button-hover-color: #000;
+          --rich-text-editor-button-hover-bg: #f0f0f0;
           @apply --rich-text-editor;
         }
         :host([sticky]) {
@@ -324,7 +333,7 @@ class RichTextEditor extends PolymerElement {
               {
                 collapsedUntil: "lg",
                 command: "formatBlock",
-                commandVal: "<blockquote>",
+                commandVal: "blockquote",
                 label: "Blockquote",
                 icon: "editor:format-quote",
                 type: "rich-text-editor-button"
@@ -563,7 +572,7 @@ class RichTextEditor extends PolymerElement {
     let root = this,
       button = document.createElement(child.type);
     for (var key in child) {
-      button.setAttribute(key, child[key]);
+      button[key] = child[key];
     }
     button.setAttribute("class", "button");
     button.addEventListener("mousedown", function(e) {

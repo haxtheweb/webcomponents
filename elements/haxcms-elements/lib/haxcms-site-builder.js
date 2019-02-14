@@ -263,19 +263,55 @@ let HAXCMSSiteBuilder = Polymer({
    */
   _activeItemContentChanged: function(newValue, oldValue) {
     if (newValue) {
+      var html = newValue;
       // only append if not empty
-      if (newValue !== null) {
+      if (html !== null) {
         this.wipeSlot(this.themeElement, "*");
-        newValue = this.encapScript(newValue);
+        html = this.encapScript(newValue);
+        // insert the content as quickly as possible, then work on the dynamic imports
         async.microTask.run(() => {
-          let frag = document.createRange().createContextualFragment(newValue);
-          dom(this.themeElement).appendChild(frag);
+          setTimeout(() => {
+            let frag = document.createRange().createContextualFragment(html);
+            dom(this.themeElement).appendChild(frag);
+            this.fire("json-outline-schema-active-body-changed", html);
+          }, 50);
         });
+        // if there are, dynamically import them
+        if (this.manifest.metadata.dynamicElementLoader) {
+          let tagsFound = this.findTagsInHTML(html);
+          const basePath = pathFromUrl(import.meta.url);
+          for (var i in tagsFound) {
+            const tagName = tagsFound[i];
+            if (
+              this.manifest.metadata.dynamicElementLoader[tagName] &&
+              !window.customElements.get(tagName)
+            ) {
+              import(`${basePath}../../../${
+                this.manifest.metadata.dynamicElementLoader[tagName]
+              }`)
+                .then(response => {
+                  //console.log(tagName + ' dynamic import');
+                })
+                .catch(error => {
+                  /* Error handling */
+                  console.log(error);
+                });
+            }
+          }
+        }
       }
-      this.fire("json-outline-schema-active-body-changed", newValue);
     }
   },
-
+  findTagsInHTML: function(html) {
+    let tags = {};
+    let tag = "";
+    var matches = html.match(/<\/(\S*?)-(\S*?)>/g);
+    for (var i in matches) {
+      tag = matches[i].replace("</", "").replace(">", "");
+      tags[tag] = tag;
+    }
+    return tags;
+  },
   /**
    * Encapsulate script and style tags correctly
    */
@@ -348,6 +384,52 @@ let HAXCMSSiteBuilder = Polymer({
    */
   _manifestChanged: function(newValue, oldValue) {
     if (newValue) {
+      if (!newValue.metadata.dynamicElementLoader) {
+        newValue.metadata.dynamicElementLoader = {
+          "a11y-gif-player":
+            "@lrnwebcomponents/a11y-gif-player/a11y-gif-player.js",
+          "citation-element":
+            "@lrnwebcomponents/citation-element/citation-element.js",
+          "hero-banner": "@lrnwebcomponents/hero-banner/hero-banner.js",
+          "image-compare-slider":
+            "@lrnwebcomponents/image-compare-slider/image-compare-slider.js",
+          "license-element":
+            "@lrnwebcomponents/license-element/license-element.js",
+          "lrn-aside": "@lrnwebcomponents/lrn-aside/lrn-aside.js",
+          "lrn-calendar": "@lrnwebcomponents/lrn-calendar/lrn-calendar.js",
+          "lrn-math": "@lrnwebcomponents/lrn-math/lrn-math.js",
+          "lrn-table": "@lrnwebcomponents/lrn-table/lrn-table.js",
+          "lrn-vocab": "@lrnwebcomponents/lrn-vocab/lrn-vocab.js",
+          "lrndesign-blockquote":
+            "@lrnwebcomponents/lrndesign-blockquote/lrndesign-blockquote.js",
+          "magazine-cover":
+            "@lrnwebcomponents/magazine-cover/magazine-cover.js",
+          "media-behaviors":
+            "@lrnwebcomponents/media-behaviors/media-behaviors.js",
+          "media-image": "@lrnwebcomponents/media-image/media-image.js",
+          "meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
+          "multiple-choice":
+            "@lrnwebcomponents/multiple-choice/multiple-choice.js",
+          "paper-audio-player":
+            "@lrnwebcomponents/paper-audio-player/paper-audio-player.js",
+          "person-testimonial":
+            "@lrnwebcomponents/person-testimonial/person-testimonial.js",
+          "place-holder": "@lrnwebcomponents/place-holder/place-holder.js",
+          "q-r": "@lrnwebcomponents/q-r/q-r.js",
+          "full-width-image":
+            "@lrnwebcomponents/full-width-image/full-width-image.js",
+          "self-check": "@lrnwebcomponents/self-check/self-check.js",
+          "simple-concept-network":
+            "@lrnwebcomponents/simple-concept-network/simple-concept-network.js",
+          "stop-note": "@lrnwebcomponents/stop-note/stop-note.js",
+          "tab-list": "@lrnwebcomponents/tab-list/tab-list.js",
+          "task-list": "@lrnwebcomponents/task-list/task-list.js",
+          "video-player": "@lrnwebcomponents/video-player/video-player.js",
+          "wave-player": "@lrnwebcomponents/wave-player/wave-player.js",
+          "wikipedia-query":
+            "@lrnwebcomponents/wikipedia-query/wikipedia-query.js"
+        };
+      }
       store.manifest = newValue;
       window.cmsSiteEditor.jsonOutlineSchema = newValue;
       this.themeElementName = newValue.metadata.theme;

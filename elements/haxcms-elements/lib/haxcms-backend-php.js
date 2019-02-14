@@ -35,14 +35,22 @@ Polymer({
      */
     jwtLoginLocation: {
       type: String,
-      value: window.appSettings.login
+      value: function() {
+        if (window.appSettings) {
+          return window.appSettings.login;
+        }
+      }
     },
     /**
      * Location of what endpoint to hit for logging out
      */
     jwtLogoutLocation: {
       type: String,
-      value: window.appSettings.logout
+      value: function() {
+        if (window.appSettings) {
+          return window.appSettings.logout;
+        }
+      }
     },
     /**
      * JSON Web token, it'll come from a global call if it's available

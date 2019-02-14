@@ -144,11 +144,6 @@ Polymer({
           background-color: var(--hax-color-accent1);
           color: var(--hax-color-accent1-text);
         }
-        .human-name {
-          width: 100%;
-          text-align: center;
-          font-size: 16px;
-        }
         .preview-buttons {
           height: 64px;
           padding: 0px;

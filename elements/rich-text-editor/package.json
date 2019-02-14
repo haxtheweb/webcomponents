@@ -16,7 +16,7 @@
       "hax": "src/rich-text-editor-hax.json"
     }
   },
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "a standalone rich text editor",
   "repository": {
     "type": "git",
@@ -28,23 +28,39 @@
   "amd": "rich-text-editor.amd.js",
   "scripts": {
     "test": "../../node_modules/.bin/wct --configFile ../../wct.conf.json node_modules/@lrnwebcomponents/rich-text-editor/test/",
-    "start":"yarn run dev","build":"../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'","dev":"concurrently --kill-others \"yarn run watch\" \"yarn run serve\"","watch":"../../node_modules/.bin/gulp dev","serve":"polymer serve --npm --module-resolution=node --open","lighthouse":"../../node_modules/.bin/gulp lighthouse"
+    "start": "yarn run dev",
+    "build": "../../node_modules/.bin/gulp && ../../node_modules/.bin/rollup -c && ../../node_modules/.bin/prettier --ignore-path ../../.prettierignore --write '**/*.{js,json}'",
+    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
+    "watch": "../../node_modules/.bin/gulp dev",
+    "serve": "polymer serve --npm --module-resolution=node --open",
+    "lighthouse": "../../node_modules/.bin/gulp lighthouse"
   },
   "author": {
     "name": "nikkimk"
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body-behaviors":"latest",
-    "@polymer/polymer":"^3.0.5",
+    "@lrnwebcomponents/hax-body-behaviors": "latest",
     "@polymer/iron-a11y-keys": "^3.0.0",
     "@polymer/iron-fit-behavior": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/paper-button": "^3.0.1",
-    "@polymer/paper-tooltip": "^3.0.0"
+    "@polymer/paper-tooltip": "^3.0.0",
+    "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "web-animations-js":"2.3.1","@lrnwebcomponents/deduping-fix":"0.2.0","@polymer/iron-demo-helpers":"3.0.2","@polymer/iron-component-page":"github:PolymerElements/iron-component-page","@webcomponents/webcomponentsjs":"2.2.3","concurrently":"4.1.0","gulp-babel":"8.0.0","gulp-sourcemaps":"2.6.4","lodash":"4.17.11","polymer-cli":"1.9.5","polymer-build":"3.1.1","wct-browser-legacy":"1.0.2"
+    "@lrnwebcomponents/deduping-fix": "^2.0.5",
+    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
+    "@polymer/iron-demo-helpers": "3.0.2",
+    "@webcomponents/webcomponentsjs": "2.2.3",
+    "concurrently": "4.1.0",
+    "gulp-babel": "8.0.0",
+    "gulp-sourcemaps": "2.6.4",
+    "lodash": "4.17.11",
+    "polymer-build": "3.1.1",
+    "polymer-cli": "1.9.5",
+    "wct-browser-legacy": "1.0.2",
+    "web-animations-js": "2.3.1"
   },
   "private": false,
   "publishConfig": {

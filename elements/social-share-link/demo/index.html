@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>SocialShareLink: social-share-link Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../social-share-link.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic social-share-link demo</h3>
+      <demo-snippet>
+        <template>
+          <style>
+            social-share-link[type="Pinterest"]{
+              --social-share-link-color: #dd0000;
+              --social-share-visited-link-color: #dd0000;
+              --social-share-link-hover-color: #aa0000;
+            }
+            social-share-link[type="Twitter"]{
+              --social-share-button-bg: #0088ee;
+              --social-share-visited-button-bg: #0088ee;
+              --social-share-button-hover-bg: #00aaee;
+            }
+          </style>
+          <social-share-link 
+            button-style
+            text="Tweet this!" 
+            message="I'm tweeting this! #winning"
+            type="Twitter">
+          </social-share-link>
+          <social-share-link 
+            url="http://zombo.com"
+            mode="text-only"
+            type="Facebook">
+          </social-share-link>
+          <social-share-link 
+            text="Pin It!" 
+            image="http://lorempixel.com/400/200/cats"
+            mode="icon-only"
+            type="Pinterest">
+          </social-share-link>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

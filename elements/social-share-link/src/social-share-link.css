@@ -1,0 +1,71 @@
+:host {
+  display: inline;
+}
+:host([hidden]) {
+  display: none;
+}
+:host a {
+  display: inline-flex;
+  align-items: center;
+  color: var(--social-share-link-color, inherit);
+  transition: all 0.5s;
+  margin: 5px;
+  @apply --social-share-link;
+}
+:host a:visited {
+  color: var(--social-share-visited-link-color, inherit);
+  @apply --social-share-visited-link;
+}
+:host a:focus,
+:host a:hover {
+  color: var(--social-share-link-hover-color, inherit);
+  @apply --social-share-link-hover;
+}
+:host([disabled]) a,
+:host([disabled]) a:focus,
+:host([disabled]) a:hover,
+:host([disabled]) a:visited {
+  color: var(--social-share-disabled-link-color,#ddd);
+  @apply --social-share-disabled-link;
+}
+:host([button-style]) a {
+  padding: 5px 10px;
+  border-radius: 3px;
+  color: var(--social-share-button-color, white);
+  background-color: var(--social-share-button-bg, #0066ff);
+  text-decoration: none;
+  transition: all 0.5s;
+  @apply --social-share-button;
+}
+:host([button-style]) a:visited {
+  color: var(--social-share-visited-button-color, white);
+  @apply --social-share-visited-button;
+}
+:host([button-style]) a:focus,
+:host([button-style]) a:hover {
+  color: var(--social-share-button-hover-color, white);
+  background-color: var(--social-share-button-hover-bg, #0044ee);
+  @apply --social-share-button-hover;
+}
+:host([button-style][disabled]) a,
+:host([button-style][disabled]) a:focus,
+:host([button-style][disabled]) a:hover,
+:host([button-style][disabled]) a:visited {
+  color: var(--social-share-disabled-button-color,#ddd);
+  background-color: var(--social-share-disabled-button-bg, #666);
+  @apply --social-share-disabled-button;
+}
+:host iron-icon {
+  margin-right: 5px;
+}
+:host a.text-only iron-icon {
+  display: none;
+}
+:host a.icon-only .linktext {
+  position: absolute;
+  left: -999999px;
+  top: 0;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}

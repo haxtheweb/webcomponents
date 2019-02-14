@@ -34,30 +34,6 @@ Polymer({
         margin: 0;
         height: 36px;
       }
-      .human-name {
-        font-size: 16px;
-        line-height: 16px;
-        width: -webkit-fit-content;
-        width: -moz-max-content;
-        width: fit-content;
-      }
-      .human-name-inner {
-        border: 1px solid var(--hax-color-border-outline);
-        font-family: "Noto Serif", serif;
-        font-size: 16px;
-        margin: -33px 0px 0 38px;
-        line-height: 16px;
-        padding: 8px;
-        width: -webkit-fit-content;
-        width: -moz-max-content;
-        width: fit-content;
-        background-color: var(--hax-color-accent1);
-        color: var(--hax-color-accent1-text);
-        border-bottom: none;
-      }
-      :host(:hover) .human-name-inner {
-        opacity: 1;
-      }
       :host(.hax-context-pin-top) hax-toolbar {
         position: fixed;
         top: 64px;
@@ -73,9 +49,6 @@ Polymer({
         opacity: 1;
       }
     </style>
-    <div class="human-name">
-      <div class="human-name-inner">[[humanName]]</div>
-    </div>
     <hax-toolbar hax-properties="[[haxProperties]]" size="{{ceSize}}">
       <slot slot="primary"></slot>
       <hax-context-item
@@ -113,12 +86,6 @@ Polymer({
       type: Object,
       value: {},
       observer: "_haxPropertiesChanged"
-    },
-    /**
-     * Active Name from the properties
-     */
-    humanName: {
-      type: String
     }
   },
 
@@ -198,14 +165,6 @@ Polymer({
             +" settings";
             break;
         }
-      }
-      // generate a human name for this
-      if (typeof newValue.gizmo.title === typeof undefined) {
-        this.humanName = window.HaxStore.instance.activeNode.tagName
-          .replace("-", " ")
-          .toLowerCase();
-      } else {
-        this.humanName = newValue.gizmo.title;
       }
       var item;
       // @todo kick stuff into the local dom as options

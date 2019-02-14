@@ -26,12 +26,20 @@ Polymer({
         background-color: rgba(255, 0, 116, 1);
         padding: 0px 10px;
         border-top-left-radius: 10px;
+        border-left: 2px solid black;
+        border-top: 2px solid black;
         min-width: 84px;
         width: 90px;
         line-height: 50px;
         height: 50px;
         z-index: 10000;
         visibility: visible;
+      }
+      :host([edit-mode]) {
+        min-width: 126px;
+      }
+      :host *[hidden] {
+        display: none;
       }
       paper-fab {
         display: inline-flex;
@@ -45,6 +53,7 @@ Polymer({
         padding: 8px;
         margin: 0;
         position: relative;
+        @apply --shadow-elevation-8dp;
       }
       :host([painting]) {
         opacity: 0;
@@ -132,6 +141,12 @@ Polymer({
       on-tap="_menuButtonTap"
     ></paper-fab>
     <paper-fab
+      id="cancelbutton"
+      icon="icons:cancel"
+      on-tap="_cancelButtonTap"
+      hidden$="[[!editMode]]"
+    ></paper-fab>
+    <paper-fab
       id="editbutton"
       icon="[[__editIcon]]"
       on-tap="_editButtonTap"
@@ -161,6 +176,9 @@ Polymer({
     </div>
     <paper-tooltip for="menubutton" position="top" offset="14"
       >Menu</paper-tooltip
+    >
+    <paper-tooltip for="cancelbutton" position="top" offset="14"
+      >Cancel</paper-tooltip
     >
     <paper-tooltip for="editbutton" position="top" offset="14"
       >[[__editText]]</paper-tooltip
@@ -251,6 +269,10 @@ Polymer({
   _editButtonTap: function(e) {
     this.editMode = !this.editMode;
     window.cmsSiteEditor.instance.haxCmsSiteEditorElement.editMode = this.editMode;
+    // save button shifted to edit
+    if (!this.editMode) {
+      this.fire("haxcms-save-page", this.activeItem);
+    }
   },
   /**
    * toggle menu state
@@ -258,7 +280,11 @@ Polymer({
   _menuButtonTap: function(e) {
     this.menuMode = !this.menuMode;
   },
-
+  _cancelButtonTap: function(e) {
+    this.editMode = false;
+    window.cmsSiteEditor.instance.haxCmsSiteEditorElement.editMode = false;
+    this.fire("hax-cancel", e.detail);
+  },
   /**
    * Add button hit
    * @todo simplify this to just what's needed; no crazy options

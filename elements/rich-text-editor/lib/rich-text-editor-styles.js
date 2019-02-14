@@ -23,12 +23,17 @@ const css = html`
     }
     :host #button {
       text-transform: unset;
-      color: var(--rich-text-editor-button-color);
-      border-color: var(--rich-text-editor-button-border);
       padding: 0;
       transition: all 0.5s;
       min-width: 24px;
       height: 24px;
+      color: var(--rich-text-editor-button-color);
+      border-color: var(--rich-text-editor-button-border);
+      --simple-picker-color: var(--rich-text-editor-button-color);
+      --simple-picker-background-color: var(--rich-text-editor-bg);
+      --simple-picker-border-color: var(
+        --rich-text-editor-button-disabled-color
+      );
       @apply --rich-text-editor-button;
     }
     :host([disabled]) #button {
@@ -38,14 +43,14 @@ const css = html`
       @apply --rich-text-editor-button-disabled;
     }
     :host #button[toggled] {
-      color: var(--rich-text-editor-button-toggled-color, #222);
-      background-color: var(--rich-text-editor-button-toggled-bg, #d8d8d8);
+      color: var(--rich-text-editor-button-toggled-color);
+      background-color: var(--rich-text-editor-button-toggled-bg);
       @apply --rich-text-editor-button-toggled;
     }
     :host #button:focus,
     :host #button:hover {
-      color: var(--rich-text-editor-button-hover-color, #000);
-      background-color: var(--rich-text-editor-button-hover-bg, #f0f0f0);
+      color: var(--rich-text-editor-button-hover-color);
+      background-color: var(--rich-text-editor-button-hover-bg);
     }
     :host #button #icon:not([icon]) {
       display: none;

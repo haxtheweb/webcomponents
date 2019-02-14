@@ -4,8 +4,8 @@
   margin: 0;
   padding: 0;
   --rich-text-editor-bg: #fafafa;
-  --rich-text-editor-border: 1px solid #ddd;
   --rich-text-editor-button-color: #444;
+  --rich-text-editor-border: 1px solid #ddd;
   --rich-text-editor-button-border: transparent;
   --rich-text-editor-button-disabled-color: #666;
   --rich-text-editor-button-disabled-bg: transparent;
@@ -13,17 +13,6 @@
   --rich-text-editor-button-toggled-bg: #d8d8d8;
   --rich-text-editor-button-hover-color: #000;
   --rich-text-editor-button-hover-bg: #f0f0f0;
-  --simple-picker-color: var(--rich-text-editor-button-color);
-  --simple-picker-background-color: var(--rich-text-editor-bg);
-  --simple-picker-border-color: var(--rich-text-editor-button-color);
-  --simple-picker-option-background-color: white;
-  --simple-picker-option-outline: none;
-  --simple-picker-selected-option-background-color: #e8e8e8;
-  --simple-picker-selected-option-outline: none;
-  --simple-picker-active-option-background-color: #aaddff;
-  --simple-picker-active-option-outline: none;
-  --simple-picker-sample-color: var(--rich-text-editor-button-color);
-  --simple-picker-sample-background-color: white;
   @apply --rich-text-editor;
 }
 :host([sticky]) {

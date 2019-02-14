@@ -4,8 +4,6 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { RichTextEditorPicker } from "./rich-text-editor-picker.js";
-import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
-import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@polymer/iron-icons/editor-icons.js";
 /**
  * `rich-text-editor-emoji-picker`
@@ -51,26 +49,10 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
   }
 
   /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    const name = "data";
-    const basePath = pathFromUrl(import.meta.url);
-    const src = this.optionsSrc;
-    const location = `${basePath}${src}`;
-    window.addEventListener(
-      `es-bridge-${name}-loaded`,
-      this._setOptions.bind(this)
-    );
-    window.ESGlobalBridge.requestAvailability();
-    window.ESGlobalBridge.instance.load(name, location);
-  }
-
-  /**
    * Handles default options loaded from an external js file
    */
   _setOptions() {
+    console.log(emojis);
     this.set(
       "options",
       this._getPickerOptions(Object.keys(emojis), this.allowNull)
@@ -85,6 +67,7 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
    * @returns {object} picker dato for the option
    */
   _getOptionData(option) {
+    console.log(option);
     return {
       value: option,
       alt: option,

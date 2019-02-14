@@ -456,7 +456,7 @@
       "tagname": "responsive-grid-clear"
     },
     {
-      "description": "`responsive-grid-row`\nA LRN element",
+      "description": "",
       "summary": "",
       "path": "lib/responsive-grid-row.js",
       "properties": [
@@ -639,17 +639,12 @@
         }
       ],
       "staticMethods": [],
-      "demos": [
-        {
-          "url": "demo/index.html",
-          "description": ""
-        }
-      ],
+      "demos": [],
       "metadata": {},
       "sourceRange": {
         "start": {
           "line": 26,
-          "column": 8
+          "column": 32
         },
         "end": {
           "line": 264,
@@ -658,6 +653,7 @@
       },
       "privacy": "public",
       "superclass": "HTMLElement",
+      "name": "ResponsiveGridRow",
       "attributes": [
         {
           "name": "sm",
