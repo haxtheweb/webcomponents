@@ -4,6 +4,8 @@
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { RichTextEditorPicker } from "./rich-text-editor-picker.js";
+import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@polymer/iron-icons/editor-icons.js";
 /**
  * `rich-text-editor-emoji-picker`
@@ -46,6 +48,23 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
    */
   static get tag() {
     return "rich-text-editor-emoji-picker";
+  }
+
+  /**
+   * life cycle, element is afixed to the DOM
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    const name = "data";
+    const basePath = pathFromUrl(import.meta.url);
+    const src = this.optionsSrc;
+    const location = `${basePath}${src}`;
+    window.addEventListener(
+      `es-bridge-${name}-loaded`,
+      this._setOptions.bind(this)
+    );
+    window.ESGlobalBridge.requestAvailability();
+    window.ESGlobalBridge.instance.load(name, location);
   }
 
   /**

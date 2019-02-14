@@ -23,8 +23,8 @@ const css = html`
     }
     :host #button {
       text-transform: unset;
-      color: var(--rich-text-editor-button-color, #444);
-      border-color: var(--rich-text-editor-button-border, transparent);
+      color: var(--rich-text-editor-button-color);
+      border-color: var(--rich-text-editor-button-border);
       padding: 0;
       transition: all 0.5s;
       min-width: 24px;
@@ -33,8 +33,8 @@ const css = html`
     }
     :host([disabled]) #button {
       cursor: not-allowed;
-      color: var(--rich-text-editor-button-disabled-color, #666);
-      background-color: var(--rich-text-editor-button-disabled-bg, transparent);
+      color: var(--rich-text-editor-button-disabled-color);
+      background-color: var(--rich-text-editor-button-disabled-bg);
       @apply --rich-text-editor-button-disabled;
     }
     :host #button[toggled] {
