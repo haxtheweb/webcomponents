@@ -388,6 +388,11 @@ Polymer({
           "h4",
           "h5",
           "h6",
+          "span",
+          "i",
+          "bold",
+          "em",
+          "strong",
           "blockquote",
           "code",
           "figure"

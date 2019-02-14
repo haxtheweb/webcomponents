@@ -80,7 +80,7 @@ let OerSchema = Polymer({
       canPosition: false,
       canEditSource: false,
       gizmo: {
-        title: "OER",
+        title: "Schema",
         description: "Schematized element area",
         icon: "icons:code",
         color: "blue",
