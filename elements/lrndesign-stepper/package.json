@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-stepper-hax.json"
     }
   },
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Automated conversion of lrndesign-stepper/",
   "repository": {
     "type": "git",
@@ -47,7 +47,7 @@
     "@polymer/polymer": "^3.0.5"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "^0.2.0",
+    "@lrnwebcomponents/deduping-fix": "^2.0.5",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "@webcomponents/webcomponentsjs": "2.2.4",

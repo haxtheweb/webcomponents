@@ -1,11 +1,13 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
 import { dom } from "@polymer/polymer/lib/legacy/polymer.dom.js";
+import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
+import { setPassiveTouchGestures } from "@polymer/polymer/lib/utils/settings.js";
+import "@polymer/iron-ajax/iron-ajax.js";
 import "@lrnwebcomponents/simple-toast/simple-toast.js";
 import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import "@lrnwebcomponents/hax-body-behaviors/hax-body-behaviors.js";
 import "@lrnwebcomponents/hal-9000/hal-9000.js";
-import "@polymer/iron-ajax/iron-ajax.js";
-import "@lrnwebcomponents/code-sample/code-sample.js";
+import { CodeSample } from "@lrnwebcomponents/code-sample/code-sample.js";
 import { getRange } from "./shadows-safari.js";
 import "./hax-app.js";
 import "./hax-stax.js";
@@ -463,8 +465,32 @@ Polymer({
           // force this into the valid tag list so early paints will
           // correctly include the tag without filtering it out incorrectly
           this.push("validTagList", appDataResponse.autoloader[i]);
-          let loader = document.createElement(appDataResponse.autoloader[i]);
-          dom(haxAutoloader).appendChild(loader);
+          let CEname = appDataResponse.autoloader[i];
+          const basePath = pathFromUrl(import.meta.url);
+          import(`${basePath}../../${CEname}/${CEname}.js`)
+            .then(response => {
+              // get the custom element definition we used to add that file
+              let CEClass = window.customElements.get(CEname);
+              if (typeof CEClass.getHaxProperties === "function") {
+                this.setHaxProperties(CEClass.getHaxProperties(), CEname);
+              } else if (typeof CEClass.HAXWiring === "function") {
+                this.setHaxProperties(
+                  CEClass.HAXWiring.getHaxProperties(),
+                  CEname
+                );
+              } else if (CEClass.haxProperties) {
+                this.setHaxProperties(CEClass.haxProperties, CEname);
+              } else {
+                // this is the less optimized / legacy polymer element method to inlcude
+                // this item. It's a good reason to skip on this though because you'll
+                // have a faster boot up time with newer ES6 methods then previous ones.
+                dom(haxAutoloader).appendChild(document.createElement(CEname));
+              }
+            })
+            .catch(error => {
+              /* Error handling */
+              console.log(error);
+            });
         }
       }
       // load apps automatically
@@ -835,8 +861,6 @@ Polymer({
       keyName === "Enter" &&
       window.HaxStore.instance.editMode &&
       window.HaxStore.instance.activeNode !== null &&
-      window.HaxStore.instance.activeContainerNode ===
-        window.HaxStore.instance.activeNode &&
       !window.HaxStore.instance.haxAppPicker.opened
     ) {
       var selection = window.HaxStore.getSelection();
@@ -854,7 +878,7 @@ Polymer({
           range.insertNode(frag);
         } catch (e) {}
       } else {
-        var nodeTest = window.HaxStore.instance.activeContainerNode;
+        var nodeTest = this.activeNode;
         if (!nodeTest) {
           nodeTest = range.commonAncestorContainer;
           if (typeof nodeTest === typeof undefined) {
@@ -869,7 +893,7 @@ Polymer({
         ) {
           // we need to do goofy stuff for p tags since people
           // will expect to be able to split them mid typing
-          if (range.endOffset !== this.activeContainerNode.textContent.length) {
+          if (range.endOffset !== this.activeNode.textContent.length) {
             e.preventDefault();
             try {
               if (selection.focusNode) {
@@ -968,6 +992,7 @@ Polymer({
    * Created life-cycle to ensure a single global store.
    */
   created: function() {
+    setPassiveTouchGestures(true);
     // claim the instance spot. This way we can easily
     // be referenced globally
     if (window.HaxStore.instance == null) {
@@ -1356,8 +1381,7 @@ Polymer({
       }
     };
     this.setHaxProperties(hr, "hr");
-    let CodeSample = window.customElements.get("code-sample");
-    this.setHaxProperties(CodeSample.haxProperties, "code-sample");
+    this.setHaxProperties(CodeSample.haxProperties, CodeSample.tag);
   },
 
   /**
@@ -1470,6 +1494,8 @@ Polymer({
       if (typeof e.detail.properties !== typeof undefined) {
         properties = e.detail.properties;
       }
+      // ensure better UX for text based operations
+      this.activeHaxBody.__activeHover = null;
       // invoke insert or replacement on body, same function so it's easier to trace
       if (e.detail.replace && e.detail.replacement) {
         let node = window.HaxStore.haxElementToNode(
