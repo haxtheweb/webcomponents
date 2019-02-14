@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>RichTextEditor: rich-text-editor Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/@lrnwebcomponents/deduping-fix/deduping-fix.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-pages-shared-styles.js';
+      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../rich-text-editor.js';
+      import '../lib/rich-text-editor-content.js';
+      import '../lib/rich-text-editor-emoji-picker.js';
+      import '../lib/rich-text-editor-heading-picker.js';
+    </script>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>Basic rich-text-editor custom configuration</h1>
+      <demo-snippet>
+        <template>
+          <style>
+            div[contenteditable=true] {
+              min-height: 20px;
+              border-top: none;
+              overflow: hidden;
+              border: 1px solid #ddd;
+            }
+          </style>
+          <rich-text-editor id="editor" sticky></rich-text-editor>
+          <div id="content">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+              In nec tincidunt tortor, at varius leo. Mauris varius 
+              iaculis enim in molestie. Cras semper odio id nunc 
+              convallis gravida. Curabitur ut dui non massa venenatis 
+              aliquam. Integer quis turpis ut tellus facilisis elementum. 
+              Nulla non leo dapibus, interdum ipsum imperdiet, pharetra 
+              nibh. Praesent cursus posuere varius. Sed non pellentesque 
+              massa. Morbi et purus id quam fermentum consectetur sit 
+              amet sed est. Nam convallis tellus non nisl tempor ornare. 
+              Duis maximus malesuada arcu sit amet placerat. Duis 
+              sollicitudin ex at dapibus porta. Pellentesque porta 
+              tellus at diam bibendum congue. Nam dignissim leo nec 
+              consectetur consequat.
+            </p>
+            <p>
+              Integer quis vulputate ex. Mauris a tincidunt sem, rutrum 
+              imperdiet ante. Pellentesque cursus ipsum sit amet dolor 
+              volutpat, vitae placerat arcu scelerisque. Phasellus diam 
+              massa, varius sollicitudin varius non, lacinia vitae dui. 
+              Proin quis justo tristique massa gravida blandit eget 
+              vitae elit. Duis mattis eleifend eros, ac volutpat lectus 
+              dignissim in. Nullam in placerat libero. Ut ut ligula 
+              congue, auctor nibh eu, vehicula est. Sed ornare at magna 
+              ornare tincidunt.
+            </p>
+            <p>  
+              Sed commodo est ut rutrum vestibulum. Fusce eleifend massa 
+              leo, eu fringilla urna elementum eu. Nam et erat augue. 
+              Morbi tristique nibh a tempus ultricies. Nullam molestie 
+              rutrum nisl, non scelerisque tellus placerat vitae. Ut 
+              mollis, nisl nec lobortis pretium, velit diam tempor 
+              tellus, non volutpat tortor ipsum sed lacus. Aenean 
+              porttitor aliquet dignissim. Sed non blandit felis. 
+              In viverra mauris eu pellentesque pulvinar. Sed convallis, 
+              sapien eget ornare elementum, dui metus scelerisque augue, 
+              non rutrum eros libero eget metus. Nunc quis lorem ut metus 
+              hendrerit facilisis. Vestibulum ante ipsum primis in faucibus 
+              orci luctus et ultrices posuere cubilia Curae; Proin laoreet 
+              lobortis suscipit. Pellentesque fermentum leo ut risus tincidunt lobortis. Morbi pretium ligula tempor pretium tristique. Vivamus vulputate elit dignissim mi tincidunt, non porttitor lorem condimentum.
+            </p>
+          <script>
+            window.onload = function(){
+              let editor = document.getElementById('editor');
+              editor.config = [
+                {
+                  "label": "Close Editor",
+                  "type": "button-group",
+                  "buttons": [
+                    {
+                      "command": "save",
+                      "icon": "save",
+                      "label": "Save",
+                      "type": "save-or-cancel-button"
+                    },{
+                      "command": "cancel",
+                      "icon": "cancel",
+                      "label": "Cancel",
+                      "type": "save-or-cancel-button"
+                    }
+                  ]
+                },{
+                  "label": "History",
+                  "type": "button-group",
+                  "buttons": [
+                    {
+                      "command": "undo",
+                      "icon": "undo",
+                      "label": "Undo",
+                      "type": "rich-text-editor-button"
+                    },{
+                      "command": "redo",
+                      "icon": "redo",
+                      "label": "Redo",
+                      "type": "rich-text-editor-button"
+                    }
+                  ]
+                },{
+                  "label": "Basic Inline Operations",
+                  "type": "button-group",
+                  "buttons": [
+                    {
+                      "label": "Heading",
+                      "toggles": true,
+                      "type": "rich-text-editor-heading-picker" 
+                    },
+                    {
+                      "command": "bold",
+                      "icon": "editor:format-bold",
+                      "label": "Bold",
+                      "toggles": true,
+                      "type": "rich-text-editor-button"
+                    },{
+                      "command": "italic",
+                      "icon": "editor:format-italic",
+                      "label": "Italics",
+                      "toggles": true,
+                      "type": "rich-text-editor-button"
+                    },{
+                      "command": "removeFormat",
+                      "icon": "editor:format-clear",
+                      "label": "Erase Format",
+                      "type": "rich-text-editor-button"
+                    }
+                  ]
+                },{
+                  "label": "Links",
+                  "type": "button-group",
+                  "buttons": [
+                    {
+                      "command": "link",
+                      "icon": "link",
+                      "label": "Link",
+                      "toggledCommand": "unlink",
+                      "toggledIcon": "mdextra:unlink",
+                      "toggledLabel": "Unink",
+                      "toggles": true,
+                      "type": "rich-text-editor-button"
+                    }
+                  ]
+                },{
+                  "label": "Clipboard Operations",
+                  "type": "button-group",
+                  "buttons": [
+                    {
+                      "command": "cut",
+                      "icon": "content-cut",
+                      "label": "Cut",
+                      "type": "rich-text-editor-button"
+                    },
+                    {
+                      "command": "copy",
+                      "icon": "content-copy",
+                      "label": "Copy",
+                      "type": "rich-text-editor-button"
+                    },
+                    {
+                      "command": "paste",
+                      "icon": "content-paste",
+                      "label": "Paste",
+                      "type": "rich-text-editor-button"
+                    }
+                  ]
+                },{
+                  "collapsedUntil": "sm",
+                  "label": "Lists and Indents",
+                  "type": "button-group",
+                  "buttons": [
+                    {
+                      "command": "insertOrderedList",
+                      "icon": "editor:format-list-numbered",
+                      "label": "Ordered List",
+                      "toggles": true,
+                      "type": "rich-text-editor-button"
+                    },{
+                      "command": "insertUnorderedList",
+                      "icon": "editor:format-list-bulleted",
+                      "label": "Unordered List",
+                      "toggles": true,
+                      "type": "rich-text-editor-button"
+                    },{ 
+                      "collapsedUntil": "lg",
+                      "command": "formatBlock",
+                      "commandVal": "<blockquote>",
+                      "label": "Blockquote", 
+                      "icon": "editor:format-quote",
+                      "type": "rich-text-editor-button" 
+                    },{
+                      "label": "Increase Indent",
+                      "icon": "editor:format-indent-increase",
+                      "event": "text-indent",
+                      "command": "indent",
+                      "type": "rich-text-editor-button"
+                    },{
+                      "label": "Decrease Indent",
+                      "icon": "editor:format-indent-decrease",
+                      "event": "text-outdent",
+                      "command": "outdent",
+                      "type": "rich-text-editor-button"
+                    }
+                  ]
+                },{
+                  "collapsedUntil": "lg",
+                  "label": "Insertions",
+                  "type": "button-group",
+                  "buttons": [
+                    {
+                      "command": "insertImage",
+                      "label": "Insert Inline Image",
+                      "icon": "editor:insert-photo",
+                      "type": "rich-text-editor-button"
+                    },{ 
+                      "collapsedUntil": "xl",
+                      "icon": "editor:functions",
+                      "label": "Insert Symbol", 
+                      "type": "rich-text-editor-button" 
+                    },{ 
+                      "collapsedUntil": "xl",
+                      "icon": "image:tag-faces",
+                      "label": "Insert Emoji", 
+                      "type": "rich-text-editor-emoji-picker" 
+                    }
+                  ]
+                }
+              ];
+              editor.addEditableRegion(document.getElementById('content'));
+            }     
+          </script>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

@@ -103,6 +103,7 @@
     "type": "Object",
     "value": null,
     "notify": true,
+    "observer": "_setSelectedOption",
     "reflectToAttribute": true
   },
 
@@ -120,7 +121,6 @@
    */
   "__selectedOption": {
     "name": "_setSelectedOption",
-    "type": "Object",
-    "computed": "_setSelectedOption(value)"
+    "type": "Object"
   }
 }
