@@ -1,0 +1,18 @@
+{
+  /**
+   * Heading / call to action to display
+   */
+  "heading": {
+    "name": "heading",
+    "type": "String",
+    "value": "Telling our story"
+  },
+  /**
+   * ending cap to the statement, possibly a character, icon, etc
+   */
+  "endcap": {
+    "name": "endcap",
+    "type": "String",
+    "value": "//"
+  }
+}
