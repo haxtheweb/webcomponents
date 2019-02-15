@@ -53,6 +53,19 @@
         "type": "button-group",
         "buttons": [
           {
+            "label": "Heading",
+            "type": "rich-text-editor-block-picker",
+            "blocks": [
+              { "label": "<p>", "tag": "p" },
+              { "label": "<h1>", "tag": "h1" },
+              { "label": "<h2>", "tag": "h2" },
+              { "label": "<h3>", "tag": "h3" },
+              { "label": "<h4>", "tag": "h4" },
+              { "label": "<h5>", "tag": "h5" },
+              { "label": "<h6>", "tag": "h6" }
+            ]
+          },
+          {
             "command": "bold",
             "icon": "editor:format-bold",
             "label": "Bold",

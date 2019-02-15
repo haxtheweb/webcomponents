@@ -160,10 +160,7 @@ class SimplePicker extends PolymerElement {
         }
 
         :host #sample simple-picker-option {
-          color: var(
-            --simple-picker-active-sample-color,
-            var(--simple-picker-color)
-          );
+          color: var(--simple-picker-sample-color, var(--simple-picker-color));
           background-color: var(
             --simple-picker-sample-background-color,
             transparent
