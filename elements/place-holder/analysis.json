@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 63,
+              "line": 65,
               "column": 4
             },
             "end": {
-              "line": 66,
+              "line": 68,
               "column": 5
             }
           },
@@ -35,11 +35,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 70,
+              "line": 72,
               "column": 4
             },
             "end": {
-              "line": 73,
+              "line": 75,
               "column": 5
             }
           },
@@ -57,11 +57,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 77,
+              "line": 79,
               "column": 4
             },
             "end": {
-              "line": 80,
+              "line": 82,
               "column": 5
             }
           },
@@ -79,11 +79,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 84,
+              "line": 86,
               "column": 4
             },
             "end": {
-              "line": 87,
+              "line": 89,
               "column": 5
             }
           },
@@ -101,11 +101,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 91,
+              "line": 93,
               "column": 4
             },
             "end": {
-              "line": 95,
+              "line": 97,
               "column": 5
             }
           },
@@ -124,11 +124,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 101,
+              "line": 103,
               "column": 2
             },
             "end": {
-              "line": 103,
+              "line": 105,
               "column": 3
             }
           },
@@ -148,11 +148,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 108,
+              "line": 110,
               "column": 2
             },
             "end": {
-              "line": 116,
+              "line": 118,
               "column": 3
             }
           },
@@ -175,11 +175,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 122,
+              "line": 124,
               "column": 2
             },
             "end": {
-              "line": 149,
+              "line": 151,
               "column": 3
             }
           },
@@ -194,36 +194,16 @@
           ]
         },
         {
-          "name": "ready",
-          "description": "Attached event handlers for drag and drop.",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 154,
-              "column": 2
-            },
-            "end": {
-              "line": 190,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
           "name": "attached",
           "description": "Attached to the DOM, now fire.",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 195,
+              "line": 155,
               "column": 2
             },
             "end": {
-              "line": 238,
+              "line": 230,
               "column": 3
             }
           },
@@ -243,7 +223,7 @@
           "column": 26
         },
         "end": {
-          "line": 239,
+          "line": 231,
           "column": 1
         }
       },
@@ -256,11 +236,11 @@
           "description": "calculate an icon based on the type that was used",
           "sourceRange": {
             "start": {
-              "line": 63,
+              "line": 65,
               "column": 4
             },
             "end": {
-              "line": 66,
+              "line": 68,
               "column": 5
             }
           },
@@ -272,11 +252,11 @@
           "description": "Text place holder for describing this place holder element.",
           "sourceRange": {
             "start": {
-              "line": 70,
+              "line": 72,
               "column": 4
             },
             "end": {
-              "line": 73,
+              "line": 75,
               "column": 5
             }
           },
@@ -288,11 +268,11 @@
           "description": "Calculate text based on the type in the event we have no default.",
           "sourceRange": {
             "start": {
-              "line": 77,
+              "line": 79,
               "column": 4
             },
             "end": {
-              "line": 80,
+              "line": 82,
               "column": 5
             }
           },
@@ -304,11 +284,11 @@
           "description": "A media type to visualize and also bubble events off of.",
           "sourceRange": {
             "start": {
-              "line": 84,
+              "line": 86,
               "column": 4
             },
             "end": {
-              "line": 87,
+              "line": 89,
               "column": 5
             }
           },
@@ -320,11 +300,11 @@
           "description": "Bind dragging state to a variable so we can apply CSS.",
           "sourceRange": {
             "start": {
-              "line": 91,
+              "line": 93,
               "column": 4
             },
             "end": {
-              "line": 95,
+              "line": 97,
               "column": 5
             }
           },

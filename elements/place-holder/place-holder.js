@@ -5,7 +5,7 @@ import "@polymer/iron-icons/notification-icons.js";
 import "@polymer/iron-icons/av-icons.js";
 import "@polymer/iron-icons/device-icons.js";
 import "@polymer/iron-icons/image-icons.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
+import "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
 /**
  * `place-holder`
@@ -18,11 +18,11 @@ import "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js";
  */
 let PlaceHolder = Polymer({
   _template: html`
-    <style include="materializecss-styles-colors">
+    <style include="simple-colors">
       :host {
         display: block;
         border: none;
-        transition: 0.6s border ease-in-out;
+        transition: 0.2s all linear;
       }
       :host([drag-over]) {
         border: 4px dashed #2196f3;
@@ -30,6 +30,8 @@ let PlaceHolder = Polymer({
       .placeholder-inner {
         text-align: center;
         padding: 16px;
+        color: var(--simple-colors-default-theme-grey-11, #222222);
+        background-color: var(--simple-colors-default-theme-grey-2, #eeeeee);
       }
       iron-icon.placeholder-icon {
         margin: 0 auto;
@@ -38,12 +40,12 @@ let PlaceHolder = Polymer({
         display: block;
       }
       .placeholder-text {
-        line-height: 16px;
-        font-size: 12px;
+        line-height: 24px;
+        font-size: 24px;
         font-style: italic;
       }
     </style>
-    <div class="placeholder-inner grey lighten-3 grey-text text-darken-3">
+    <div class="placeholder-inner">
       <iron-icon icon="[[iconFromType]]" class="placeholder-icon"></iron-icon>
       <span class="placeholder-text">[[calcText]]</span>
     </div>
@@ -110,7 +112,7 @@ let PlaceHolder = Polymer({
     if (dragOver) {
       return "Upload file";
     } else if (text === "") {
-      return "Place holder for future " + type + ".";
+      return "Place holder for " + type + ".";
     } else {
       return text;
     }
@@ -148,59 +150,49 @@ let PlaceHolder = Polymer({
       return "icons:file-upload";
     }
   },
-
-  /**
-   * Attached event handlers for drag and drop.
-   */
-  ready: function() {
-    if (typeof this.__dropAdded === typeof undefined) {
-      this.__dropAdded = true;
-      this.addEventListener("dragover", function(e) {
-        this.dragOver = true;
-        e.preventDefault();
-        e.stopPropagation();
-        this.classList.add("dragover");
-      });
-
-      this.addEventListener("dragleave", function(e) {
-        this.dragOver = false;
-        e.preventDefault();
-        e.stopPropagation();
-        this.classList.remove("dragover");
-      });
-      // self bind a drop event enough though something else
-      // will need to step in and do something with this.
-      // We are just making sure that this doesn't redirect the browser.
-      this.addEventListener("drop", function(e) {
-        this.dragOver = false;
-        e.preventDefault();
-        e.stopPropagation();
-        this.classList.remove("dragover");
-        // this helps ensure that what gets drag and dropped is a file
-        // this prevents issues with selecting and dragging text (which triggers drag/drop)
-        // as well as compatibility with things that are legit in a draggable state
-        try {
-          if (e.dataTransfer.items[0].kind === "file") {
-            e.placeHolderElement = this;
-            // fire this specialized event up so things like HAX can intercept
-            this.fire("place-holder-file-drop", e);
-          }
-        } catch (e) {}
-      });
-    }
-  },
-
   /**
    * Attached to the DOM, now fire.
    */
   attached: function() {
+    this.addEventListener("dragover", function(e) {
+      this.dragOver = true;
+      e.preventDefault();
+      e.stopPropagation();
+      this.classList.add("dragover");
+    });
+
+    this.addEventListener("dragleave", function(e) {
+      this.dragOver = false;
+      e.preventDefault();
+      e.stopPropagation();
+      this.classList.remove("dragover");
+    });
+    // self bind a drop event enough though something else
+    // will need to step in and do something with this.
+    // We are just making sure that this doesn't redirect the browser.
+    this.addEventListener("drop", function(e) {
+      this.dragOver = false;
+      e.preventDefault();
+      e.stopPropagation();
+      this.classList.remove("dragover");
+      // this helps ensure that what gets drag and dropped is a file
+      // this prevents issues with selecting and dragging text (which triggers drag/drop)
+      // as well as compatibility with things that are legit in a draggable state
+      try {
+        if (e.dataTransfer.items[0].kind === "file") {
+          e.placeHolderElement = this;
+          // fire this specialized event up so things like HAX can intercept
+          this.fire("place-holder-file-drop", e);
+        }
+      } catch (e) {}
+    });
     // Establish hax property binding
     let props = {
       canScale: true,
       canPosition: true,
       canEditSource: false,
       gizmo: {
-        title: "Placeholder content",
+        title: "Placeholder",
         description:
           "A place holder that can be converted into the media type that's been selected",
         icon: "image:transform",
