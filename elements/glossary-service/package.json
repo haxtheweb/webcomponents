@@ -1,7 +1,7 @@
 {
   "name": "@lrnwebcomponents/glossary-service",
   "description": "Service provider for the glossary-term web component",
-  "version": "2.0.4",
+  "version": "0.1.0",
   "author": {
     "name": "heyMP"
   },

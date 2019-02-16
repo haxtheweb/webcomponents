@@ -16,7 +16,7 @@
       "hax": "src/glossary-term-hax.json"
     }
   },
-  "version": "2.0.4",
+  "version": "0.1.0",
   "description": "Glossary element that connects to the glossary service.",
   "repository": {
     "type": "git",
