@@ -183,6 +183,7 @@ class LrndesignGalleryBehaviors extends SimpleColors {
       this.galleryId = "gallery-" + this._generateUUID();
     let anchorData = this._getAnchorData(),
       temp = {};
+    temp.details = item.details;
     temp.index = index;
     temp.id = this._selfOrDefault(item.id, this.galleryId + "-item-" + index);
     temp.src = item.src;
