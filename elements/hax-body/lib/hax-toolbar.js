@@ -28,16 +28,17 @@ Polymer({
       }
       .wrapper {
         display: flex;
-        margin-top: -1px;
         border: 1px solid var(--hax-color-border-outline);
-        height: 36px;
+        height: 35px;
         align-items: center;
+        padding: 1px;
+        margin-top: -2px;
       }
       :host .wrapper ::slotted(*) {
         pointer-events: all;
       }
       .close-cap {
-        margin: 10px 12px 0 8px;
+        margin: 10px 10px 0 8px;
         display: flex;
         padding: 0;
       }

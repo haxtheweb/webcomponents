@@ -388,6 +388,11 @@ Polymer({
           "h4",
           "h5",
           "h6",
+          "span",
+          "i",
+          "bold",
+          "em",
+          "strong",
           "blockquote",
           "code",
           "figure"
@@ -663,7 +668,6 @@ Polymer({
       this._haxConsentTap.bind(this)
     );
     window.removeEventListener("paste", this._onPaste.bind(this));
-    window.removeEventListener("keypress", this._onKeyPress.bind(this));
     // fire that hax store is ready to go so now we can setup the rest
     this.fire("hax-store-ready", false);
     window.HaxStore.ready = false;
@@ -750,7 +754,6 @@ Polymer({
     window.addEventListener("hax-consent-tap", this._haxConsentTap.bind(this));
     window.addEventListener("onbeforeunload", this._onBeforeUnload.bind(this));
     window.addEventListener("paste", this._onPaste.bind(this));
-    window.addEventListener("keypress", this._onKeyPress.bind(this));
     // initialize voice commands
     this.voiceCommands = this._initVoiceCommands();
     // set this global flag so we know it's safe to start trusting data
@@ -848,146 +851,6 @@ Polymer({
       }
     }
   },
-  /**
-   * Account for return and escape to ensure they are applied nicely in context
-   */
-  _onKeyPress: function(e) {
-    const keyName = e.key;
-    // if we are editing and enter is pressed see if we should
-    // process it or inject a new p tag
-    if (
-      typeof window.HaxStore.instance.activeContainerNode !==
-        typeof undefined &&
-      keyName === "Enter" &&
-      window.HaxStore.instance.editMode &&
-      window.HaxStore.instance.activeNode !== null &&
-      !window.HaxStore.instance.haxAppPicker.opened
-    ) {
-      var selection = window.HaxStore.getSelection();
-      var range = window.HaxStore.getRange().cloneRange();
-      if (e.shiftKey) {
-        e.preventDefault();
-        try {
-          if (selection.focusNode) {
-            range.setStart(selection.focusNode, range.startOffset);
-          } else {
-            range.setStart(selection.startContainer, range.startOffset);
-          }
-          // insert a br for spacing purposes because shift enter was hit
-          var frag = document.createRange().createContextualFragment("<br/>");
-          range.insertNode(frag);
-        } catch (e) {}
-      } else {
-        var nodeTest = this.activeNode;
-        if (!nodeTest) {
-          nodeTest = range.commonAncestorContainer;
-          if (typeof nodeTest === typeof undefined) {
-            nodeTest = range.commonAncestorContainer.parentNode;
-          }
-        }
-        // test if we want to touch Enter based on tag name and range
-        // we ignore Enter for our purposes when in a list
-        if (
-          this.isTextElement(nodeTest) &&
-          !["ul", "ol", "li"].includes(nodeTest.tagName.toLowerCase())
-        ) {
-          // we need to do goofy stuff for p tags since people
-          // will expect to be able to split them mid typing
-          if (range.endOffset !== this.activeNode.textContent.length) {
-            e.preventDefault();
-            try {
-              if (selection.focusNode) {
-                range.setStart(selection.focusNode, range.startOffset);
-              } else {
-                range.setStart(selection.startContainer, range.startOffset);
-              }
-              // create a cloned range where it's sitting
-              // generate a completely fake element and insert it so we
-              // track it's position as a "split point"
-              var frag = document
-                .createRange()
-                .createContextualFragment(
-                  "<hax-split-point></hax-split-point>"
-                );
-              range.insertNode(frag);
-            } catch (e) {}
-            // force this to be a constant since activeNode will
-            // change mid operation but we want limit to remain
-            // as a pointer to it's position in the DOM
-            const limit = window.HaxStore.instance.activeContainerNode;
-            var node = dom(
-              window.HaxStore.instance.activeContainerNode
-            ).querySelector("hax-split-point");
-            // run a split node function as modified from stackoverflow
-            if (node != null) {
-              try {
-                this.__splitNode(node, limit);
-              } catch (e) {}
-            }
-          } else {
-            e.preventDefault();
-            window.HaxStore.instance.fire("hax-insert-content", {
-              tag: "p",
-              content: ""
-            });
-          }
-        }
-      }
-    }
-  },
-  /**
-   * Magic node splitting function
-   */
-  __splitNode: function(node, limit) {
-    // kick off activeNode so that we drop classes / cruft
-    window.HaxStore.write("activeNode", null, this);
-    // allow that to have processed...
-    setTimeout(() => {
-      // find the parent of the item we are splicing
-      var parent = limit.parentNode;
-      // get the index of this selected text way down below
-      var parentOffset = this.__getNodeIndex(parent, limit);
-      var doc = node.ownerDocument;
-      // make a fake range of these section of the DOM
-      var leftRange = doc.createRange();
-      // start it at the beginning of the element and run it to
-      // just before that place holder we are targeting
-      leftRange.setStart(parent, parentOffset);
-      leftRange.setEndBefore(node);
-      // convert this front portion into a document fragment
-      var left = leftRange.extractContents();
-      // insert this fragment just before the activeNode.
-      // This probably looks weird but effectively we copy the
-      // element in these operations and then insert the thing
-      // next to itself. The extractContents function generates
-      // a node from the part of the previous one as well as
-      // deletes what was there from the DOM. This effectively
-      // lets us take 1 element and split it into two at the
-      // cursor position as triggered by an Enter press. Insane.
-      dom(this.activeHaxBody).insertBefore(left, limit);
-      // remove the place holder
-      node.parentNode.removeChild(node);
-      // set active back to what it was, technically moved down
-      // in the document order because of above
-      window.HaxStore.write("activeNode", limit, this);
-    }, 100);
-  },
-
-  /**
-   * Get node index within a parent item so we know
-   * how far down the object to look for it's position.
-   * This is a helper with no other meaningful purpose.
-   */
-  __getNodeIndex: function(parent, node) {
-    var index = parent.childNodes.length;
-    while (index--) {
-      if (node === parent.childNodes[index]) {
-        break;
-      }
-    }
-    return index;
-  },
-
   /**
    * Created life-cycle to ensure a single global store.
    */

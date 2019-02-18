@@ -37,7 +37,6 @@ import "@lrnwebcomponents/lrn-vocab/lrn-vocab.js";
 import "@lrnwebcomponents/oer-schema/oer-schema.js";
 import "@lrnwebcomponents/lrndesign-blockquote/lrndesign-blockquote.js";
 import "@lrnwebcomponents/magazine-cover/magazine-cover.js";
-import "@lrnwebcomponents/materializecss-styles/materializecss-styles.js";
 import "@lrnwebcomponents/media-behaviors/media-behaviors.js";
 import "@lrnwebcomponents/media-image/media-image.js";
 import "@lrnwebcomponents/meme-maker/meme-maker.js";

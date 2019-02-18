@@ -44,7 +44,7 @@ Polymer({
           title="[[item.title]]"
           description="[[item.description]]"
           link="[[item.location]]"
-          changed="[[item.metadata.updated]]"
+          changed="[[item.metadata.created]]"
         ></simple-blog-overview>
       </template>
     </iron-list>

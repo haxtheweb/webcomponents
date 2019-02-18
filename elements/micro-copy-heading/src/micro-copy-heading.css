@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  margin: 16px 0;
+}
+
+:host([hidden]) {
+  display: none;
+}
+span {
+  margin-left:8px;
+}
+h2 {
+  display: inline-flex;
+  margin: unset;
+  padding: unset;
+  font-size: 0.750em;
+  color: var(--simple-colors-default-theme-red-5, #DE2654);
+  border: 2px solid var(--simple-colors-default-theme-red-5, #DE2654);
+  line-height: 12px;
+  margin-right: 10px;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  padding: 6px 16px;
+}

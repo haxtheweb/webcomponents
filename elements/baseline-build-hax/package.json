@@ -81,7 +81,7 @@
     "web-animations-js": "2.3.1"
   },
   "devDependencies": {
-    "@lrnwebcomponents/deduping-fix": "0.0.35",
+    "@lrnwebcomponents/deduping-fix": "2.0.5",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.0.2",
     "concurrently": "4.1.0",
