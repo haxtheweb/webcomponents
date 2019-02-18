@@ -1,5 +1,5 @@
 /**
- * Copyright 2019 Penn State University
+ * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
@@ -228,6 +228,19 @@ class RichTextEditor extends PolymerElement {
             label: "Basic Inline Operations",
             type: "button-group",
             buttons: [
+              {
+                label: "Heading",
+                type: "rich-text-editor-block-picker",
+                blocks: [
+                  { label: "<p>", tag: "p" },
+                  { label: "<h1>", tag: "h1" },
+                  { label: "<h2>", tag: "h2" },
+                  { label: "<h3>", tag: "h3" },
+                  { label: "<h4>", tag: "h4" },
+                  { label: "<h5>", tag: "h5" },
+                  { label: "<h6>", tag: "h6" }
+                ]
+              },
               {
                 command: "bold",
                 icon: "editor:format-bold",
@@ -559,6 +572,7 @@ class RichTextEditor extends PolymerElement {
       subtree: true,
       characterData: false
     });
+    console.log(this.editableElements, editableElement);
     root.push("editableElements", [editableElement, observer]);
   }
 
@@ -623,8 +637,8 @@ class RichTextEditor extends PolymerElement {
         });
         toolbar.appendChild(group);
       } else {
-        max = Math.max(max, sizes.indexOf(button.collapsedUntil));
-        temp.push(root._addButton(button, group));
+        max = Math.max(max, sizes.indexOf(item.collapsedUntil));
+        temp.push(root._addButton(item, toolbar));
       }
       toolbar.appendChild(more);
       more.collapseMax = sizes[max];
@@ -677,5 +691,7 @@ class RichTextEditor extends PolymerElement {
       .substring(1);
   }
 }
-window.customElements.define(RichTextEditor.tag, RichTextEditor);
+
 export { RichTextEditor };
+
+window.customElements.define(RichTextEditor.tag, RichTextEditor);
