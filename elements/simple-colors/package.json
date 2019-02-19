@@ -16,7 +16,7 @@
       "hax": "src/simple-colors-hax.json"
     }
   },
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Automated conversion of simple-colors/",
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/simple-picker": "^2.0.5",
+    "@lrnwebcomponents/simple-picker": "^2.0.6",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/polymer": "^3.0.5"
   },

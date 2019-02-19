@@ -16,7 +16,7 @@
       "hax": "src/lrndesign-paperstack-hax.json"
     }
   },
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Automated conversion of lrndesign-paperstack/",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
     "@lrnwebcomponents/a11y-behaviors": "^2.0.5",
     "@lrnwebcomponents/hax-body-behaviors": "^2.0.5",
     "@lrnwebcomponents/lrn-icons": "^2.0.5",
-    "@lrnwebcomponents/simple-colors": "^2.0.5",
+    "@lrnwebcomponents/simple-colors": "^2.0.6",
     "@polymer/iron-icon": "^3.0.0",
     "@polymer/polymer": "^3.0.5"
   },

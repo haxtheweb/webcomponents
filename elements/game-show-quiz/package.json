@@ -11,7 +11,7 @@
       "js": "src/game-show-quiz.js"
     }
   },
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "A game show style quiz interaction",
   "repository": {
     "type": "git",
@@ -36,8 +36,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^2.0.5",
-    "@lrnwebcomponents/multiple-choice": "^2.0.5",
-    "@lrnwebcomponents/responsive-grid": "^2.0.5",
+    "@lrnwebcomponents/multiple-choice": "^2.0.6",
+    "@lrnwebcomponents/responsive-grid": "^2.0.6",
     "@polymer/app-layout": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-flex-layout": "^3.0.1",

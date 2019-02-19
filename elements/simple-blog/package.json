@@ -16,7 +16,7 @@
       "hax": "src/simple-blog-hax.json"
     }
   },
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Automated conversion of simple-blog/",
   "repository": {
     "type": "git",
@@ -40,10 +40,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/haxcms-elements": "^2.0.5",
+    "@lrnwebcomponents/haxcms-elements": "^2.0.6",
     "@lrnwebcomponents/schema-behaviors": "^2.0.5",
-    "@lrnwebcomponents/simple-colors": "^2.0.5",
-    "@lrnwebcomponents/simple-datetime": "^2.0.5",
+    "@lrnwebcomponents/simple-colors": "^2.0.6",
+    "@lrnwebcomponents/simple-datetime": "^2.0.6",
     "@polymer/iron-icons": "^3.0.1",
     "@polymer/iron-list": "^3.0.0",
     "@polymer/iron-pages": "^3.0.0",

@@ -11,7 +11,7 @@
       "js": "src/cms-hax.js"
     }
   },
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "HAX integration geared toward CMSs",
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/hax-body": "^2.0.5",
+    "@lrnwebcomponents/hax-body": "^2.0.6",
     "@lrnwebcomponents/hax-body-behaviors": "^2.0.5",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-resizable-behavior": "^3.0.0",

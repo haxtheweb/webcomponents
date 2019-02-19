@@ -16,7 +16,7 @@
       "hax": "src/image-compare-slider-hax.json"
     }
   },
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Slider that allows comparison of two images",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@lrnwebcomponents/hax-body-behaviors": "^2.0.5",
-    "@lrnwebcomponents/materializecss-styles": "^2.0.5",
+    "@lrnwebcomponents/materializecss-styles": "^2.0.6",
     "@lrnwebcomponents/schema-behaviors": "^2.0.5",
     "@polymer/iron-image": "^3.0.0",
     "@polymer/paper-slider": "^3.0.0",
