@@ -31,9 +31,18 @@ const css = html`
       border-color: var(--rich-text-editor-button-border);
       --simple-picker-color: var(--rich-text-editor-button-color);
       --simple-picker-background-color: var(--rich-text-editor-bg);
-      --simple-picker-border-color: var(
-        --rich-text-editor-button-disabled-color
-      );
+      --simple-picker-border-color: var(--rich-text-editor-picker-border);
+      --simple-picker-icon-tranform: rotate(0deg);
+      --simple-picker-expanded-icon-tranform: rotate(-90deg);
+      --simple-picker-option-null: {
+        display: none;
+      }
+      --simple-picker-collapse: {
+        top: 16px;
+      }
+      --simple-picker-sample-null-label: {
+        display: none;
+      }
       @apply --rich-text-editor-button;
     }
     :host([disabled]) #button {

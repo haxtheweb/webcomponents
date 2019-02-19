@@ -6,7 +6,7 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { RichTextEditorButton } from "./rich-text-editor-button.js";
 /**
  * `rich-text-editor-more-button`
- * `a more button to toggle cllapsed buttons in the rich text editor`
+ * `a more button to toggle collapsed buttons in the rich text editor`
  *
  * @microcopy - language worth noting:
  *  -

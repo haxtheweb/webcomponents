@@ -9,7 +9,7 @@ import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@lrnwebcomponents/simple-picker/simple-picker.js";
 /**
  * `rich-text-editor-picker`
- * `a button for rich text editor (custom buttons can extend this)`
+ * `a picker for rich text editor (custom buttons can extend this)`
  *
  * @microcopy - language worth noting:
  *  -
@@ -21,7 +21,10 @@ class RichTextEditorPicker extends RichTextEditorButton {
   // render function
   static get template() {
     return html`
-      <style include="rich-text-editor-styles"></style>
+      <style include="rich-text-editor-styles">
+        :host {
+        }
+      </style>
       <simple-picker id="button"
         disabled$="[[disabled]]" 
         controls="[[controls]]"
@@ -29,7 +32,7 @@ class RichTextEditorPicker extends RichTextEditorButton {
         tabindex="0"
         title-as-html$="[[titleAsHtml]]"
         options="[[options]]"
-        value="[[commandVal]]">
+        value="{{value}}">
         <span id="label" class$="[[labelStyle]]"></span>
       </paper-button>
       <paper-tooltip id="tooltip" for="button"></paper-button>
@@ -57,6 +60,14 @@ class RichTextEditorPicker extends RichTextEditorButton {
         readOnly: true
       },
       /**
+       * Optional icon for null value
+       */
+      icon: {
+        name: "icon",
+        type: "String",
+        value: null
+      },
+      /**
        * The command used for document.execCommand.
        */
       options: {
@@ -73,6 +84,15 @@ class RichTextEditorPicker extends RichTextEditorButton {
         name: "titleAsHtml",
         type: "Boolean",
         value: false
+      },
+
+      /**
+       * The value
+       */
+      value: {
+        name: "value",
+        type: "Object",
+        value: null
       }
     };
   }
@@ -93,8 +113,7 @@ class RichTextEditorPicker extends RichTextEditorButton {
    *
    */
   _isToggled(selection) {
-    let wrap = this.wrap,
-      toggled = false;
+    let toggled = false;
     if (selection !== null) {
       if (this.command === "formatBlock") {
         let ancestor = selection.commonAncestorContainer,
@@ -118,8 +137,12 @@ class RichTextEditorPicker extends RichTextEditorButton {
    * Handles default options loaded from an external js file
    */
   _setOptions() {
-    this.set("options", this._getPickerOptions(data, this.allowNull));
+    this.set(
+      "options",
+      this._getPickerOptions(data, this.allowNull, this.icon)
+    );
   }
+
   /**
    * Picker change
    */
@@ -135,14 +158,16 @@ class RichTextEditorPicker extends RichTextEditorButton {
       if ((this.command = "formatBlock")) {
         this.doTextOperation();
       } else if ((this.command = "insertNode")) {
-        let node = !this.wrap
+        let node = !this.block
           ? document.createTextNode(val)
           : document.createElement(val);
         this.selection.extractContents();
         this.selection.insertNode(node);
       }
-      if (!this.wrap)
+      if (this.block !== true) {
+        this.$.button.value = null;
         this.dispatchEvent(new CustomEvent("deselect", { detail: this }));
+      }
     }
   }
   /**
@@ -170,13 +195,17 @@ class RichTextEditorPicker extends RichTextEditorButton {
    * @param {array} default list of icons for the picker
    * @param {boolean} allow a null value for the picker
    */
-  _getPickerOptions(options = [], allowNull = false) {
-    let items = allowNull === false ? [] : [[{ alt: "null", value: null }]],
-      h = allowNull === false ? 0 : 1,
+  _getPickerOptions(options = [], allowNull = false, icon = null) {
+    let items =
+        allowNull === false && icon === null
+          ? []
+          : [[{ alt: null, icon: icon, value: null }]],
+      h = items.length,
       cols =
         Math.sqrt(options.length + h) < 16
           ? Math.ceil(Math.sqrt(options.length + h))
           : 15;
+    console.log(options);
     for (let i = 0; i < options.length; i++) {
       let j = h + i,
         row = Math.floor(j / cols),

@@ -65,22 +65,28 @@
               [
               {
                   "style": "background-color: #FF00FF", //sets the option's background color
-                  "alt": "Purple"
+                  "alt": "Purple",
+                  "value": "Purple (#FF00FF)"
                 },{
                   "style": "background-color: #2222FF",
-                  "alt": "Blue"
+                  "alt": "Blue",
+                  "value": "Blue (#2222FF)"
                 },{
                   "style": "background-color: #00FF00",
-                  "alt": "Green"
+                  "alt": "Green",
+                  "value": "Green (#00FF00)"
                 },{
                   "style": "background-color: #FFFF00",
-                  "alt": "Yellow"
+                  "alt": "Yellow",
+                  "value": "Yellow (#FFFF00)"
                 },{
                   "style": "background-color: #FF8800",
-                  "alt": "Orange"
+                  "alt": "Orange",
+                  "value": "Orange (#FF8800)"
                 },{
                   "style": "background-color: #FF0000",
-                  "alt": "Red"
+                  "alt": "Red",
+                  "value": "Red (#FF0000)"
                 }
               ]
             ];
@@ -106,7 +112,8 @@
               [
                 {
                   "alt": "none",
-                  "value": "none"
+                  "icon": "clear",
+                  "value": null
                 },{
                   "icon": "check",
                   "alt": "OK",
@@ -143,7 +150,7 @@
           </script>
           <div id="icondemo">
             <label id="iconpicker-label">Pick an Icon: </label> 
-            <simple-picker id="iconpicker" hide-option-labels aria-labelledby="iconpicker-label" value="search"></simple-picker>
+            <simple-picker id="iconpicker" hide-option-labels aria-labelledby="iconpicker-label"></simple-picker>
           </div>
         </template>
       </demo-snippet>

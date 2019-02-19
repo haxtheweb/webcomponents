@@ -7,7 +7,8 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js
 import { ResponsiveUtility } from "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "./lib/rich-text-editor-button.js";
 import "./lib/rich-text-editor-more-button.js";
-import "./lib/rich-text-editor-block-picker.js";
+import "./lib/rich-text-editor-heading-picker.js";
+import "./lib/rich-text-editor-symbol-picker.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/image-icons.js";
@@ -45,6 +46,7 @@ class RichTextEditor extends PolymerElement {
           --rich-text-editor-button-toggled-bg: #d8d8d8;
           --rich-text-editor-button-hover-color: #000;
           --rich-text-editor-button-hover-bg: #f0f0f0;
+          --rich-text-editor-picker-border: #ccc;
           @apply --rich-text-editor;
         }
         :host([sticky]) {
@@ -230,16 +232,7 @@ class RichTextEditor extends PolymerElement {
             buttons: [
               {
                 label: "Heading",
-                type: "rich-text-editor-block-picker",
-                blocks: [
-                  { label: "<p>", tag: "p" },
-                  { label: "<h1>", tag: "h1" },
-                  { label: "<h2>", tag: "h2" },
-                  { label: "<h3>", tag: "h3" },
-                  { label: "<h4>", tag: "h4" },
-                  { label: "<h5>", tag: "h5" },
-                  { label: "<h6>", tag: "h6" }
-                ]
+                type: "rich-text-editor-heading-picker"
               },
               {
                 command: "bold",
@@ -323,6 +316,13 @@ class RichTextEditor extends PolymerElement {
                 type: "rich-text-editor-button"
               }
             ]
+          },
+          {
+            collapsedUntil: "sm",
+            icon: "editor:functions",
+            label: "Insert Symbol",
+            symbolTypes: ["symbols"],
+            type: "rich-text-editor-symbol-picker"
           },
           {
             collapsedUntil: "sm",

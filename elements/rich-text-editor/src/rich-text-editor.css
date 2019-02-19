@@ -13,6 +13,7 @@
   --rich-text-editor-button-toggled-bg: #d8d8d8;
   --rich-text-editor-button-hover-color: #000;
   --rich-text-editor-button-hover-bg: #f0f0f0;
+  --rich-text-editor-picker-border: #ccc;
   @apply --rich-text-editor;
 }
 :host([sticky]) {

@@ -8,8 +8,8 @@ import "@lrnwebcomponents/es-global-bridge/es-global-bridge.js";
 import { pathFromUrl } from "@polymer/polymer/lib/utils/resolve-url.js";
 import "@polymer/iron-icons/editor-icons.js";
 /**
- * `rich-text-editor-emoji-picker`
- * `an emoji picker for the rich-text-editor`
+ * `rich-text-editor-symbol-picker`
+ * `a symbol picker for the rich-text-editor`
  *
  * @microcopy - language worth noting:
  *  -
@@ -17,7 +17,7 @@ import "@polymer/iron-icons/editor-icons.js";
  * @customElement
  * @polymer
  */
-class RichTextEditorEmojiPicker extends RichTextEditorPicker {
+class RichTextEditorSymbolPicker extends RichTextEditorPicker {
   // properties available to the custom element for data binding
   static get properties() {
     return {
@@ -27,7 +27,7 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
       icon: {
         name: "icon",
         type: "String",
-        value: "editor:insert-emoticon",
+        value: "editor:functions",
         readOnly: true
       },
 
@@ -37,7 +37,16 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
       optionsSrc: {
         name: "optionsSrc",
         type: "String",
-        value: "data/emojis.js"
+        value: "data/symbols.js"
+      },
+
+      /**
+       * Symbol types to include
+       */
+      symbolTypes: {
+        name: "symbolTypes",
+        type: "Array",
+        value: ["symbols", "math", "characters", "greek", "misc"]
       },
 
       /**
@@ -66,7 +75,7 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
    *
    */
   static get tag() {
-    return "rich-text-editor-emoji-picker";
+    return "rich-text-editor-symbol-picker";
   }
 
   /**
@@ -90,9 +99,13 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
    * Handles default options loaded from an external js file
    */
   _setOptions() {
+    let optData = [];
+    this.symbolTypes.forEach(function(type) {
+      optData = optData.concat(symbols[type]);
+    });
     this.set(
       "options",
-      this._getPickerOptions(Object.keys(emojis), this.allowNull, this.icon)
+      this._getPickerOptions(optData, this.allowNull, this.icon)
     );
   }
 
@@ -113,7 +126,7 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
   }
 }
 window.customElements.define(
-  RichTextEditorEmojiPicker.tag,
-  RichTextEditorEmojiPicker
+  RichTextEditorSymbolPicker.tag,
+  RichTextEditorSymbolPicker
 );
-export { RichTextEditorEmojiPicker };
+export { RichTextEditorSymbolPicker };

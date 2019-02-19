@@ -78,7 +78,9 @@
   "options": {
     "name": "options",
     "type": "Array",
-    "value": [[]]
+    "value": [[]],
+    "notify": true,
+    "observer": "_setSelectedOption"
   },
 
   /**

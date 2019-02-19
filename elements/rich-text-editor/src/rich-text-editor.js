@@ -7,7 +7,8 @@ import { HAXWiring } from "@lrnwebcomponents/hax-body-behaviors/lib/HAXWiring.js
 import { ResponsiveUtility } from "@lrnwebcomponents/responsive-utility/responsive-utility.js";
 import "./lib/rich-text-editor-button.js";
 import "./lib/rich-text-editor-more-button.js";
-import "./lib/rich-text-editor-block-picker.js";
+import "./lib/rich-text-editor-heading-picker.js";
+import "./lib/rich-text-editor-symbol-picker.js";
 import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-icons/editor-icons.js";
 import "@polymer/iron-icons/image-icons.js";

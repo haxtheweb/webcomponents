@@ -7,7 +7,7 @@ import { RichTextEditorPicker } from "./rich-text-editor-picker.js";
 import "@polymer/iron-icons/editor-icons.js";
 /**
  * `rich-text-editor-heading-picker`
- * `a button for rich text editor (custom buttons can extend this)`
+ * `a heading picker for the rich-text-editor`
  *
  * @microcopy - language worth noting:
  *  -
@@ -39,18 +39,28 @@ class RichTextEditorHeadingPicker extends RichTextEditorPicker {
       /**
        * The command used for document.execCommand.
        */
+      blocks: {
+        name: "blocks",
+        type: "Array",
+        notify: true,
+        value: [
+          { label: "Paragraph", tag: "p" },
+          { label: "Heading 1", tag: "h1" },
+          { label: "Heading 2", tag: "h2" },
+          { label: "Heading 3", tag: "h3" },
+          { label: "Heading 4", tag: "h4" },
+          { label: "Heading 5", tag: "h5" },
+          { label: "Heading 6", tag: "h6" },
+          { label: "Preformatted", tag: "pre" }
+        ]
+      },
+      /**
+       * The command used for document.execCommand.
+       */
       options: {
         name: "options",
         type: "Array",
-        value: [
-          [{ alt: "Paragraph", value: "p" }],
-          [{ alt: "Heading 1", value: "h1" }],
-          [{ alt: "Heading 2", value: "h2" }],
-          [{ alt: "Heading 3", value: "h3" }],
-          [{ alt: "Heading 4", value: "h4" }],
-          [{ alt: "Heading 5", value: "h5" }],
-          [{ alt: "Heading 6", value: "h6" }]
-        ],
+        computed: "_getBlockOptions(blocks)",
         notify: true
       },
 
@@ -61,16 +71,6 @@ class RichTextEditorHeadingPicker extends RichTextEditorPicker {
         name: "titleAsHtml",
         type: "Boolean",
         value: false
-      },
-
-      /**
-       *
-       */
-      wrap: {
-        name: "wrap",
-        type: "Boolean",
-        value: true,
-        readOnly: true
       },
 
       /**
@@ -91,6 +91,19 @@ class RichTextEditorHeadingPicker extends RichTextEditorPicker {
    */
   static get tag() {
     return "rich-text-editor-heading-picker";
+  }
+
+  _getBlockOptions(blocks) {
+    let temp = [];
+    blocks.forEach(function(block) {
+      temp.push([
+        {
+          alt: block.label,
+          value: block.tag
+        }
+      ]);
+    });
+    return temp;
   }
 }
 window.customElements.define(

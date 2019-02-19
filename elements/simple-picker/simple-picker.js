@@ -81,12 +81,12 @@ class SimplePicker extends PolymerElement {
         }
 
         :host #icon {
-          transform: rotate(-90deg);
+          transform: var(--simple-picker-icon-tranform, rotate(-90deg));
           transition: transform 0.25s;
         }
 
         :host([expanded]) #icon {
-          transform: rotate(0deg);
+          transform: var(--simple-picker-expanded-icon-tranform, rotate(0deg));
           transition: transform 0.25s;
         }
 
@@ -135,7 +135,16 @@ class SimplePicker extends PolymerElement {
           @apply --simple-picker-option;
         }
 
+        :host(:not([value])) #sample simple-picker-option,
+        :host([value="null"]) #sample simple-picker-option {
+          @apply --simple-picker-sample-null;
+          --simple-picker-option-label: {
+            @apply --simple-picker-sample-null-label;
+          }
+        }
+
         :host #sample simple-picker-option {
+          @apply --simple-picker-sample-option;
         }
 
         :host simple-picker-option[selected] {
@@ -171,6 +180,11 @@ class SimplePicker extends PolymerElement {
         :host(:not([expanded])) #collapse simple-picker-option {
           max-height: 0;
           transition: max-height 1.5s;
+        }
+
+        :host #collapse simple-picker-option:not([value]),
+        :host #collapse simple-picker-option[value="null"] {
+          @apply --simple-picker-option-null;
         }
 
         @media screen and (max-width: 600px) {
@@ -334,7 +348,9 @@ class SimplePicker extends PolymerElement {
       options: {
         name: "options",
         type: "Array",
-        value: [[]]
+        value: [[]],
+        notify: true,
+        observer: "_setSelectedOption"
       },
 
       /**
@@ -554,13 +570,13 @@ class SimplePicker extends PolymerElement {
    *
    * @param {string} the option id
    */
-  _setSelectedOption(value) {
+  _setSelectedOption() {
     let sel = null;
-    if (value !== null && this.options !== undefined && this.options !== null) {
+    if (this.options !== undefined && this.options !== null) {
       this.__activeDesc = "option-0-0";
       for (var i = 0; i < this.options.length; i++) {
         for (var j = 0; j < this.options[i].length; j++) {
-          if (this.options[i][j].value === value) {
+          if (this.options[i][j].value === this.value) {
             this.__activeDesc = "option-" + i + "-" + j;
             sel = this.options[i][j];
           }
