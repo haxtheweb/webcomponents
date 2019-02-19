@@ -472,10 +472,25 @@ let HaxBody = Polymer({
       switch (e.key) {
         case "Enter":
           this.setAttribute("contenteditable", true);
+          setTimeout(() => {
+            // obtain selection but don't do anything with it till a delay
+            const rng = window.HaxStore.getRange();
+            setTimeout(() => {
+              if (
+                rng.commonAncestorContainer &&
+                typeof rng.commonAncestorContainer.focus === "function"
+              ) {
+                rng.commonAncestorContainer.focus();
+                this.__focusLogic(rng.commonAncestorContainer);
+              }
+            }, 800);
+          }, 200);
           break;
         case "ArrowRight":
+        case "ArrowLeft":
+          // @todo, would be good to attempt left and right but set a timeout
+          break;
         case "ArrowDown":
-          console.log(rng);
           if (
             rng.commonAncestorContainer &&
             rng.commonAncestorContainer.nextElementSibling &&
@@ -488,7 +503,6 @@ let HaxBody = Polymer({
               rng.commonAncestorContainer.nextElementSibling.tagName !==
               "HAX-BODY"
             ) {
-              rng.commonAncestorContainer.nextElementSibling.focus();
               if (
                 window.HaxStore.instance.isTextElement(
                   rng.commonAncestorContainer.nextElementSibling
@@ -498,6 +512,12 @@ let HaxBody = Polymer({
               } else {
                 this.removeAttribute("contenteditable");
               }
+              setTimeout(() => {
+                rng.commonAncestorContainer.nextElementSibling.focus();
+                this.__focusLogic(
+                  rng.commonAncestorContainer.nextElementSibling
+                );
+              }, 1000);
             }
           }
           // need to check on the parent too if this was a text node
@@ -514,7 +534,6 @@ let HaxBody = Polymer({
               rng.commonAncestorContainer.parentNode.nextElementSibling
                 .tagName !== "HAX-BODY"
             ) {
-              rng.commonAncestorContainer.parentNode.nextElementSibling.focus();
               if (
                 window.HaxStore.instance.isTextElement(
                   rng.commonAncestorContainer.parentNode.nextElementSibling
@@ -524,11 +543,16 @@ let HaxBody = Polymer({
               } else {
                 this.removeAttribute("contenteditable");
               }
+              setTimeout(() => {
+                rng.commonAncestorContainer.parentNode.nextElementSibling.focus();
+                this.__focusLogic(
+                  rng.commonAncestorContainer.parentNode.nextElementSibling
+                );
+              }, 1000);
             }
           }
           break;
         case "ArrowUp":
-        case "ArrowLeft":
           if (
             rng.commonAncestorContainer &&
             rng.commonAncestorContainer.previousElementSibling &&
@@ -541,7 +565,6 @@ let HaxBody = Polymer({
               rng.commonAncestorContainer.previousElementSibling.tagName !==
               "HAX-BODY"
             ) {
-              rng.commonAncestorContainer.previousElementSibling.focus();
               if (
                 window.HaxStore.instance.isTextElement(
                   rng.commonAncestorContainer.previousElementSibling
@@ -551,6 +574,12 @@ let HaxBody = Polymer({
               } else {
                 this.removeAttribute("contenteditable");
               }
+              setTimeout(() => {
+                rng.commonAncestorContainer.previousElementSibling.focus();
+                this.__focusLogic(
+                  rng.commonAncestorContainer.previousElementSibling
+                );
+              }, 210);
             }
           } else if (
             rng.commonAncestorContainer &&
@@ -565,7 +594,6 @@ let HaxBody = Polymer({
               rng.commonAncestorContainer.parentNode.previousElementSibling
                 .tagName !== "HAX-BODY"
             ) {
-              rng.commonAncestorContainer.parentNode.previousElementSibling.focus();
               if (
                 window.HaxStore.instance.isTextElement(
                   rng.commonAncestorContainer.parentNode.previousElementSibling
@@ -575,6 +603,12 @@ let HaxBody = Polymer({
               } else {
                 this.removeAttribute("contenteditable");
               }
+              setTimeout(() => {
+                rng.commonAncestorContainer.parentNode.previousElementSibling.focus();
+                this.__focusLogic(
+                  rng.commonAncestorContainer.parentNode.previousElementSibling
+                );
+              }, 210);
             }
           }
       }
@@ -672,14 +706,18 @@ let HaxBody = Polymer({
     if (e.detail === "text") {
       // make sure text just escalates to a paragraph tag
       let p = document.createElement("p");
+      p.innerHTML = "<br/>";
       this.haxReplaceNode(this.activeNode, p, dom(this.activeNode).parentNode);
       // allow swap out to happen
       setTimeout(() => {
         // set active to this p tag
+        this.activeNode = p;
         window.HaxStore.write("activeNode", p, this);
+        this.activeContainerNode.setAttribute("contenteditable", true);
         // focus on it
         p.focus();
-      }, 50);
+        this.__focusLogic(p);
+      }, 210);
     } else {
       this.replaceElementWorkflow();
     }
@@ -1094,7 +1132,6 @@ let HaxBody = Polymer({
    */
   haxMoveGridPlate: function(direction, node, container) {
     // menu is actually in the element for render purposes
-    this.hideContextMenus();
     // support moving things multiple directions
     switch (direction) {
       case "first":
@@ -1486,10 +1523,15 @@ let HaxBody = Polymer({
         }, 200);
         break;
       case "hax-size-change":
-        this.activeNode.style.width = detail.value + "%";
-        setTimeout(() => {
-          this.positionContextMenus(this.activeNode, this.activeContainerNode);
-        }, 200);
+        if (this.activeNode) {
+          this.activeNode.style.width = detail.value + "%";
+          setTimeout(() => {
+            this.positionContextMenus(
+              this.activeNode,
+              this.activeContainerNode
+            );
+          }, 200);
+        }
         break;
       // settings button selected from hax-ce-context bar
       // which means we should skip to the settings page after
@@ -1569,14 +1611,22 @@ let HaxBody = Polymer({
    * Item has gained focus, change active element to match
    */
   _focusIn: function(e) {
+    var normalizedEvent = dom(e);
+    if (this.__focusLogic(normalizedEvent.localTarget)) {
+      e.stopPropagation();
+    }
+  },
+  /**
+   * Focus a target and update the data model to reflect this.
+   * This helps ensure that keyboard and non click based focusing
+   * registers the same as click events
+   */
+  __focusLogic: function(target) {
+    let stopProp = false;
     // only worry about these when we are in edit mode
     if (this.editMode && !this.__tabTrap) {
-      this.hideContextMenus();
-
-      var normalizedEvent = dom(e);
-      var local = normalizedEvent.localTarget;
       var tags = window.HaxStore.instance.validTagList;
-      let containerNode = local;
+      let containerNode = target;
       let activeNode = null;
       // ensure this is valid
       if (
@@ -1626,11 +1676,12 @@ let HaxBody = Polymer({
           tags.includes(containerNode.tagName.toLowerCase()) &&
           !containerNode.classList.contains("ignore-activation")
         ) {
+          this.hideContextMenus();
           this.activeContainerNode = containerNode;
           window.HaxStore.write("activeContainerNode", containerNode, this);
-          e.stopPropagation();
+          stopProp = true;
         } else if (containerNode.classList.contains("ignore-activation")) {
-          e.stopPropagation();
+          stopProp = true;
         }
         // test for active node changing
         if (
@@ -1641,12 +1692,13 @@ let HaxBody = Polymer({
           this.activeNode = activeNode;
           window.HaxStore.write("activeNode", activeNode, this);
           this.positionContextMenus(activeNode, containerNode);
-          e.stopPropagation();
+          stopProp = true;
         }
       }
     } else {
       this.__tabTrap = false;
     }
+    return stopProp;
   },
   /**
    * Notice the change between states for editing.
@@ -1752,7 +1804,10 @@ let HaxBody = Polymer({
       newValue != null &&
       newValue.tagName != null
     ) {
-      if (window.HaxStore.instance.isTextElement(newValue)) {
+      if (
+        window.HaxStore.instance.isTextElement(newValue) ||
+        window.HaxStore.instance.isGridPlateElement(newValue)
+      ) {
         this.setAttribute("contenteditable", true);
       } else {
         this.removeAttribute("contenteditable");
@@ -1785,7 +1840,10 @@ let HaxBody = Polymer({
       // the document
       // only hide if we change containers
       newValue.classList.add("hax-active");
-      if (window.HaxStore.instance.isTextElement(newValue)) {
+      if (
+        window.HaxStore.instance.isTextElement(newValue) ||
+        window.HaxStore.instance.isGridPlateElement(newValue)
+      ) {
         this.setAttribute("contenteditable", true);
       } else {
         this.removeAttribute("contenteditable");
