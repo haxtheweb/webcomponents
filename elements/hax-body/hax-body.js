@@ -43,7 +43,7 @@ let HaxBody = Polymer({
         float: left;
         display: block;
         pointer-events: none;
-        transition: 0.3s all linear;
+        transition: 0.2s all ease-in-out;
       }
       #haxinputmixer {
         z-index: 10000000;
@@ -330,8 +330,12 @@ let HaxBody = Polymer({
       window.HaxStore._tmpSelection = tmp;
       try {
         const range = window.HaxStore.getRange();
-        window.HaxStore._tmpRange = range.cloneRange();
-      } catch (e) {}
+        if (range.cloneRange) {
+          window.HaxStore._tmpRange = range.cloneRange();
+        }
+      } catch (e) {
+        console.log(e);
+      }
     });
     this.shadowRoot.querySelector("slot").addEventListener("paste", e => {
       // only perform this on a text element that is active
@@ -365,10 +369,7 @@ let HaxBody = Polymer({
             sel.addRange(newRange);
           }
         } catch (e) {
-          // try a fallback
-          if (document.selection) {
-            document.selection.createRange().text = text;
-          }
+          console.log(e);
         }
       }
     });
@@ -394,8 +395,12 @@ let HaxBody = Polymer({
       window.HaxStore._tmpSelection = tmp;
       try {
         const range = window.HaxStore.getRange();
-        window.HaxStore._tmpRange = range.cloneRange();
-      } catch (e) {}
+        if (range.cloneRange) {
+          window.HaxStore._tmpRange = range.cloneRange();
+        }
+      } catch (e) {
+        console.log(e);
+      }
     });
     this.shadowRoot.querySelector("slot").removeEventListener("paste", e => {
       // only perform this on a text element that is active
@@ -429,10 +434,7 @@ let HaxBody = Polymer({
             sel.addRange(newRange);
           }
         } catch (e) {
-          // try a fallback
-          if (document.selection) {
-            document.selection.createRange().text = text;
-          }
+          console.log(e);
         }
       }
     });
@@ -468,13 +470,30 @@ let HaxBody = Polymer({
   },
   _onKeyDown: function(e) {
     if (this.editMode && this.getAttribute("contenteditable")) {
-      let rng = window.HaxStore.getRange();
-      switch (e.key) {
-        case "Enter":
-          this.setAttribute("contenteditable", true);
-          setTimeout(() => {
-            // obtain selection but don't do anything with it till a delay
-            const rng = window.HaxStore.getRange();
+      setTimeout(() => {
+        const rng = window.HaxStore.getRange();
+        switch (e.key) {
+          case "Tab":
+            if (
+              window.HaxStore.instance.isTextElement(this.activeContainerNode)
+            ) {
+              if (e.detail.keyboardEvent) {
+                e.detail.keyboardEvent.preventDefault();
+                e.detail.keyboardEvent.stopPropagation();
+                e.detail.keyboardEvent.stopImmediatePropagation();
+              }
+              e.preventDefault();
+              e.stopPropagation();
+              e.stopImmediatePropagation();
+              if (e.shiftKey) {
+                this._tabBackKeyPressed();
+              } else {
+                this._tabKeyPressed();
+              }
+            }
+            break;
+          case "Enter":
+            this.setAttribute("contenteditable", true);
             setTimeout(() => {
               if (
                 rng.commonAncestorContainer &&
@@ -483,145 +502,67 @@ let HaxBody = Polymer({
                 rng.commonAncestorContainer.focus();
                 this.__focusLogic(rng.commonAncestorContainer);
               }
-            }, 800);
-          }, 200);
-          break;
-        case "ArrowRight":
-        case "ArrowLeft":
-          // @todo, would be good to attempt left and right but set a timeout
-          break;
-        case "ArrowDown":
-          if (
-            rng.commonAncestorContainer &&
-            rng.commonAncestorContainer.nextElementSibling &&
-            this.activeNode !==
-              rng.commonAncestorContainer.nextElementSibling &&
-            typeof rng.commonAncestorContainer.nextElementSibling.focus ===
-              "function"
-          ) {
+            }, 900);
+            break;
+          case "ArrowUp":
+          case "ArrowDown":
+          case "ArrowLeft":
+          case "ArrowRight":
             if (
-              rng.commonAncestorContainer.nextElementSibling.tagName !==
-              "HAX-BODY"
+              rng.commonAncestorContainer &&
+              this.activeNode !== rng.commonAncestorContainer &&
+              typeof rng.commonAncestorContainer.focus === "function"
+            ) {
+              if (rng.commonAncestorContainer.tagName !== "HAX-BODY") {
+                if (
+                  window.HaxStore.instance.isTextElement(
+                    rng.commonAncestorContainer
+                  )
+                ) {
+                  this.setAttribute("contenteditable", true);
+                } else {
+                  this.removeAttribute("contenteditable");
+                }
+                setTimeout(() => {
+                  rng.commonAncestorContainer.focus();
+                  this.__focusLogic(rng.commonAncestorContainer);
+                }, 900);
+              }
+            }
+            // need to check on the parent too if this was a text node
+            else if (
+              rng.commonAncestorContainer &&
+              rng.commonAncestorContainer.parentNode &&
+              this.activeNode !== rng.commonAncestorContainer.parentNode &&
+              typeof rng.commonAncestorContainer.parentNode.focus === "function"
             ) {
               if (
-                window.HaxStore.instance.isTextElement(
-                  rng.commonAncestorContainer.nextElementSibling
-                )
+                rng.commonAncestorContainer.parentNode.tagName !== "HAX-BODY"
               ) {
-                this.setAttribute("contenteditable", true);
-              } else {
-                this.removeAttribute("contenteditable");
+                if (
+                  window.HaxStore.instance.isTextElement(
+                    rng.commonAncestorContainer.parentNode
+                  )
+                ) {
+                  this.setAttribute("contenteditable", true);
+                } else {
+                  this.removeAttribute("contenteditable");
+                }
+                setTimeout(() => {
+                  rng.commonAncestorContainer.parentNode.focus();
+                  this.__focusLogic(rng.commonAncestorContainer.parentNode);
+                }, 900);
               }
-              setTimeout(() => {
-                rng.commonAncestorContainer.nextElementSibling.focus();
-                this.__focusLogic(
-                  rng.commonAncestorContainer.nextElementSibling
-                );
-              }, 1000);
             }
-          }
-          // need to check on the parent too if this was a text node
-          else if (
-            rng.commonAncestorContainer &&
-            rng.commonAncestorContainer.parentNode &&
-            rng.commonAncestorContainer.parentNode.nextElementSibling &&
-            this.activeNode !==
-              rng.commonAncestorContainer.parentNode.nextElementSibling &&
-            typeof rng.commonAncestorContainer.parentNode.nextElementSibling
-              .focus === "function"
-          ) {
-            if (
-              rng.commonAncestorContainer.parentNode.nextElementSibling
-                .tagName !== "HAX-BODY"
-            ) {
-              if (
-                window.HaxStore.instance.isTextElement(
-                  rng.commonAncestorContainer.parentNode.nextElementSibling
-                )
-              ) {
-                this.setAttribute("contenteditable", true);
-              } else {
-                this.removeAttribute("contenteditable");
-              }
-              setTimeout(() => {
-                rng.commonAncestorContainer.parentNode.nextElementSibling.focus();
-                this.__focusLogic(
-                  rng.commonAncestorContainer.parentNode.nextElementSibling
-                );
-              }, 1000);
-            }
-          }
-          break;
-        case "ArrowUp":
-          if (
-            rng.commonAncestorContainer &&
-            rng.commonAncestorContainer.previousElementSibling &&
-            this.activeNode !==
-              rng.commonAncestorContainer.previousElementSibling &&
-            typeof rng.commonAncestorContainer.previousElementSibling.focus ===
-              "function"
-          ) {
-            if (
-              rng.commonAncestorContainer.previousElementSibling.tagName !==
-              "HAX-BODY"
-            ) {
-              if (
-                window.HaxStore.instance.isTextElement(
-                  rng.commonAncestorContainer.previousElementSibling
-                )
-              ) {
-                this.setAttribute("contenteditable", true);
-              } else {
-                this.removeAttribute("contenteditable");
-              }
-              setTimeout(() => {
-                rng.commonAncestorContainer.previousElementSibling.focus();
-                this.__focusLogic(
-                  rng.commonAncestorContainer.previousElementSibling
-                );
-              }, 210);
-            }
-          } else if (
-            rng.commonAncestorContainer &&
-            rng.commonAncestorContainer.parentNode &&
-            rng.commonAncestorContainer.parentNode.previousElementSibling &&
-            this.activeNode !==
-              rng.commonAncestorContainer.parentNode.previousElementSibling &&
-            typeof rng.commonAncestorContainer.parentNode.previousElementSibling
-              .focus === "function"
-          ) {
-            if (
-              rng.commonAncestorContainer.parentNode.previousElementSibling
-                .tagName !== "HAX-BODY"
-            ) {
-              if (
-                window.HaxStore.instance.isTextElement(
-                  rng.commonAncestorContainer.parentNode.previousElementSibling
-                )
-              ) {
-                this.setAttribute("contenteditable", true);
-              } else {
-                this.removeAttribute("contenteditable");
-              }
-              setTimeout(() => {
-                rng.commonAncestorContainer.parentNode.previousElementSibling.focus();
-                this.__focusLogic(
-                  rng.commonAncestorContainer.parentNode.previousElementSibling
-                );
-              }, 210);
-            }
-          }
-      }
-      this.$.cecontextmenu.classList.remove("hax-active-hover");
-      this.$.textcontextmenu.classList.remove("hax-active-hover");
-      this.$.platecontextmenu.classList.remove("hax-active-hover");
+            break;
+        }
+      }, 100);
+      this.__dropActiveHover();
     }
   },
   _onKeyPress: function(e) {
     if (this.editMode) {
-      this.$.cecontextmenu.classList.remove("hax-active-hover");
-      this.$.textcontextmenu.classList.remove("hax-active-hover");
-      this.$.platecontextmenu.classList.remove("hax-active-hover");
+      this.__dropActiveHover();
     }
   },
   /**
@@ -662,17 +603,29 @@ let HaxBody = Polymer({
           local.parentNode.parentNode === this.activeContainerNode ||
           local.parentNode.parentNode.parentNode === this.activeContainerNode
         ) {
-          this.$.cecontextmenu.classList.add("hax-active-hover");
-          this.$.textcontextmenu.classList.add("hax-active-hover");
-          this.$.platecontextmenu.classList.add("hax-active-hover");
+          this.__addActiveHover();
           this.__typeLock = false;
         } else {
-          this.$.cecontextmenu.classList.remove("hax-active-hover");
-          this.$.textcontextmenu.classList.remove("hax-active-hover");
-          this.$.platecontextmenu.classList.remove("hax-active-hover");
+          this.__dropActiveHover();
         }
       }
     }
+  },
+  __addActiveHover: function() {
+    this.$.cecontextmenu.style.marginLeft = "";
+    this.$.textcontextmenu.style.marginLeft = "";
+    this.$.platecontextmenu.style.marginLeft = "";
+    this.$.cecontextmenu.classList.add("hax-active-hover");
+    this.$.textcontextmenu.classList.add("hax-active-hover");
+    this.$.platecontextmenu.classList.add("hax-active-hover");
+  },
+  __dropActiveHover: function() {
+    this.$.cecontextmenu.style.marginLeft = "-500px";
+    this.$.textcontextmenu.style.marginLeft = "-500px";
+    this.$.platecontextmenu.style.marginLeft = "-500px";
+    this.$.cecontextmenu.classList.remove("hax-active-hover");
+    this.$.textcontextmenu.classList.remove("hax-active-hover");
+    this.$.platecontextmenu.classList.remove("hax-active-hover");
   },
   /**
    * Check if part of the passed element is int he viewport
@@ -1698,6 +1651,7 @@ let HaxBody = Polymer({
     } else {
       this.__tabTrap = false;
     }
+
     return stopProp;
   },
   /**
@@ -1907,9 +1861,12 @@ let HaxBody = Polymer({
     // text we want to operate this way
     if (this.__activeHover) {
       menu.classList.add("hax-active-hover");
+      menu.style.marginLeft = "";
       this.__typeLock = false;
     }
-    async.microTask.run(this._keepContextVisible());
+    setTimeout(() => {
+      async.microTask.run(this._keepContextVisible());
+    }, 100);
   },
   /**
    * Simple hide / reset of whatever menu it's handed.
@@ -1920,103 +1877,83 @@ let HaxBody = Polymer({
       "hax-context-pin-top",
       "hax-context-pin-bottom"
     );
+    menu.style.left = "-100px";
   },
   /**
    * Find the next thing to tab forward to.
    */
-  _tabKeyPressed: function(e) {
-    if (this.editMode) {
-      if (e.detail.keyboardEvent) {
-        e.detail.keyboardEvent.preventDefault();
-        e.detail.keyboardEvent.stopPropagation();
-        e.detail.keyboardEvent.stopImmediatePropagation();
+  _tabKeyPressed: function() {
+    let focus = false;
+    let node = this.activeContainerNode;
+    const activeNodeTagName = this.activeContainerNode.tagName;
+    // try selection / tab block since range can cause issues
+    try {
+      let range = window.HaxStore.getRange().cloneRange();
+      var tagTest = range.commonAncestorContainer.tagName;
+      if (typeof tagTest === typeof undefined) {
+        tagTest = range.commonAncestorContainer.parentNode.tagName;
       }
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
-      let focus = false;
-      let node = this.activeContainerNode;
-      const activeNodeTagName = this.activeContainerNode.tagName;
-      // try selection / tab block since range can cause issues
-      try {
-        let range = window.HaxStore.getRange().cloneRange();
-        var tagTest = range.commonAncestorContainer.tagName;
-        if (typeof tagTest === typeof undefined) {
-          tagTest = range.commonAncestorContainer.parentNode.tagName;
+      if (
+        ["UL", "OL", "LI"].includes(activeNodeTagName) ||
+        ["UL", "OL", "LI"].includes(tagTest)
+      ) {
+        if (this.polyfillSafe) {
+          document.execCommand("indent");
+          this.__tabTrap = true;
         }
-        if (
-          ["UL", "OL", "LI"].includes(activeNodeTagName) ||
-          ["UL", "OL", "LI"].includes(tagTest)
-        ) {
-          if (this.polyfillSafe) {
-            document.execCommand("indent");
-            if (e.detail.keyboardEvent) {
-              e.detail.keyboardEvent.preventDefault();
-              e.detail.keyboardEvent.stopPropagation();
-              e.detail.keyboardEvent.stopImmediatePropagation();
-            }
-            this.__tabTrap = true;
-          }
-        } else {
-          while (!focus) {
-            // do nothing
-            if (dom(node).nextSibling == null) {
-              focus = true;
-            } else if (dom(node).nextSibling.focus === "function") {
-              dom(node).nextSibling.focus();
-              focus = true;
-            } else {
-              node = dom(node).nextSibling;
-            }
+      } else {
+        while (!focus) {
+          // do nothing
+          if (dom(node).nextSibling == null) {
+            focus = true;
+          } else if (dom(node).nextSibling.focus === "function") {
+            dom(node).nextSibling.focus();
+            focus = true;
+          } else {
+            node = dom(node).nextSibling;
           }
         }
-      } catch (e) {}
+      }
+    } catch (e) {
+      console.log(e);
     }
   },
   /**
    * Move back through things when tab back pressed
    */
-  _tabBackKeyPressed: function(e) {
-    if (this.editMode) {
-      if (e.detail.keyboardEvent) {
-        e.detail.keyboardEvent.preventDefault();
-        e.detail.keyboardEvent.stopPropagation();
-        e.detail.keyboardEvent.stopImmediatePropagation();
+  _tabBackKeyPressed: function() {
+    let node = this.activeContainerNode;
+    const activeNodeTagName = this.activeContainerNode.tagName;
+    // try selection / tab block since range can cause issues
+    try {
+      let range = window.HaxStore.getRange().cloneRange();
+      var tagTest = range.commonAncestorContainer.tagName;
+      if (typeof tagTest === typeof undefined) {
+        tagTest = range.commonAncestorContainer.parentNode.tagName;
       }
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
-      let node = this.activeContainerNode;
-      const activeNodeTagName = this.activeContainerNode.tagName;
-      // try selection / tab block since range can cause issues
-      try {
-        let range = window.HaxStore.getRange().cloneRange();
-        var tagTest = range.commonAncestorContainer.tagName;
-        if (typeof tagTest === typeof undefined) {
-          tagTest = range.commonAncestorContainer.parentNode.tagName;
+      if (
+        ["UL", "OL", "LI"].includes(activeNodeTagName) ||
+        ["UL", "OL", "LI"].includes(tagTest)
+      ) {
+        if (this.polyfillSafe) {
+          document.execCommand("outdent");
+          this.__tabTrap = true;
         }
-        if (
-          ["UL", "OL", "LI"].includes(activeNodeTagName) ||
-          ["UL", "OL", "LI"].includes(tagTest)
-        ) {
-          if (this.polyfillSafe) {
-            document.execCommand("outdent");
-            this.__tabTrap = true;
-          }
-        } else {
-          if (node != null) {
-            // step back ignoring hax- prefixed elements
-            while (node != null && !this._haxElementTest(node)) {
-              node = dom(node).previousSibling;
-            }
-          }
-          if (node != null) {
-            setTimeout(() => {
-              node.focus();
-            }, 50);
+      } else {
+        if (node != null) {
+          // step back ignoring hax- prefixed elements
+          while (node != null && !this._haxElementTest(node)) {
+            node = dom(node).previousSibling;
           }
         }
-      } catch (e) {}
+        if (node != null) {
+          setTimeout(() => {
+            node.focus();
+          }, 50);
+        }
+      }
+    } catch (e) {
+      console.log(e);
     }
   }
 });
