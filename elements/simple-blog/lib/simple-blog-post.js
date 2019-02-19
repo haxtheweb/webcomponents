@@ -19,9 +19,9 @@ Polymer({
         min-height: 80vh;
       }
       main {
-        transition: opacity 1s linear, visibility 0.6s linear;
+        transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
         width: 100%;
-        max-width: 640px;
+        max-width: 900px;
         margin: 0 auto;
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -29,7 +29,7 @@ Polymer({
         opacity: 1;
         visibility: visible;
       }
-      @media only screen and (max-width: 800px) {
+      @media only screen and (max-width: 900px) {
         main {
           padding: 0 32px;
         }
