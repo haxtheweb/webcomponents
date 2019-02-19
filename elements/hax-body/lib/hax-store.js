@@ -471,7 +471,7 @@ Polymer({
           // correctly include the tag without filtering it out incorrectly
           this.push("validTagList", appDataResponse.autoloader[i]);
           let CEname = appDataResponse.autoloader[i];
-          const basePath = pathFromUrl(import.meta.url);
+          const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
           import(`${basePath}../../${CEname}/${CEname}.js`)
             .then(response => {
               // get the custom element definition we used to add that file

@@ -51,7 +51,7 @@ Polymer({
    */
   getContext: function() {
     var context = "";
-    const basePath = pathFromUrl(import.meta.url);
+    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     // figure out the context we need to apply for where the editing creds
     // and API might come from
     if (typeof DatArchive !== typeof undefined) {

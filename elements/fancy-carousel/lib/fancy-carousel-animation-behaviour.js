@@ -10,22 +10,22 @@ window.FancyCarouselAnimationBehaviourImpl = {
   observers: [],
 
   _getNatureSpriteUrl: function() {
-    let basePath = pathFromUrl(import.meta.url);
+    let basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     return "url('" + `${basePath}images/nature-sprite.png` + "')";
   },
 
   _getUrbanSpriteUrl: function() {
-    let basePath = pathFromUrl(import.meta.url);
+    let basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     return "url('" + `${basePath}images/urban-sprite.png` + "')";
   },
 
   _getShiftSpriteUrl: function() {
-    let basePath = pathFromUrl(import.meta.url);
+    let basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     return "url('" + `${basePath}images/building-sprite.png` + "')";
   },
 
   _getCollaspeSpriteUrl: function() {
-    let basePath = pathFromUrl(import.meta.url);
+    let basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     return "url('" + `${basePath}images/building-sprite-2.png` + "')";
   },
 

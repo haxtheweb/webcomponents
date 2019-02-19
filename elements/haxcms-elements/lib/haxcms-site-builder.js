@@ -279,7 +279,7 @@ let HAXCMSSiteBuilder = Polymer({
         // if there are, dynamically import them
         if (this.manifest.metadata.dynamicElementLoader) {
           let tagsFound = this.findTagsInHTML(html);
-          const basePath = pathFromUrl(import.meta.url);
+          const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
           for (var i in tagsFound) {
             const tagName = tagsFound[i];
             if (
@@ -476,14 +476,13 @@ let HAXCMSSiteBuilder = Polymer({
       } else {
         // import the reference to the item dynamically, if we can
         try {
-          import(pathFromUrl(import.meta.url) + this.themeData[themeName]).then(
-            e => {
-              // add it into ourselves so it unpacks and we kick this off!
-              dom(this).appendChild(this.themeElement);
-              this.__imported[themeName] = themeName;
-              this.themeLoaded = true;
-            }
-          );
+          import(pathFromUrl(decodeURIComponent(import.meta.url)) +
+            this.themeData[themeName]).then(e => {
+            // add it into ourselves so it unpacks and we kick this off!
+            dom(this).appendChild(this.themeElement);
+            this.__imported[themeName] = themeName;
+            this.themeLoaded = true;
+          });
         } catch (err) {
           // error in the event this is a double registration
           // also strange to be able to reach this but technically possible

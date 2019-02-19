@@ -209,7 +209,7 @@ class QRCodeElement extends HTMLElement {
     // Define Properties
     Object.keys(QRCodeElement.defaultAttributes).map(this._defineProperty);
     const name = "qr";
-    const basePath = pathFromUrl(import.meta.url);
+    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     const location = `${basePath}lib/qr.js`;
     window.addEventListener(
       `es-bridge-${name}-loaded`,

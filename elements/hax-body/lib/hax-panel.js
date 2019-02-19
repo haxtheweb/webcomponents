@@ -458,7 +458,7 @@ Polymer({
         detail.content = "";
         detail.properties = {
           src:
-            pathFromUrl(import.meta.url) +
+            pathFromUrl(decodeURIComponent(import.meta.url)) +
             window.HaxStore.instance.defaults.image.src,
           alt: window.HaxStore.instance.defaults.image.alt,
           style: "width:100%;"

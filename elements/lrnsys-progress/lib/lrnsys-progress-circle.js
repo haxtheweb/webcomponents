@@ -436,7 +436,9 @@ Polymer({
      */
     completeSound: {
       type: String,
-      value: pathFromUrl(import.meta.url) + "assets/complete.mp3",
+      value:
+        pathFromUrl(decodeURIComponent(import.meta.url)) +
+        "assets/complete.mp3",
       reflectToAttribute: true
     },
     /**
@@ -444,7 +446,9 @@ Polymer({
      */
     finishedSound: {
       type: String,
-      value: pathFromUrl(import.meta.url) + "assets/finished.mp3",
+      value:
+        pathFromUrl(decodeURIComponent(import.meta.url)) +
+        "assets/finished.mp3",
       reflectToAttribute: true
     },
     /**

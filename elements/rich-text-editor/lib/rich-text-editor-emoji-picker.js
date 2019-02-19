@@ -56,7 +56,7 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
   connectedCallback() {
     super.connectedCallback();
     const name = "data";
-    const basePath = pathFromUrl(import.meta.url);
+    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
     const src = this.optionsSrc;
     const location = `${basePath}${src}`;
     window.addEventListener(
