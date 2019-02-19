@@ -1,0 +1,409 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "",
+      "summary": "",
+      "path": "moment-element.js",
+      "properties": [
+        {
+          "name": "datetime",
+          "type": "string | null | undefined",
+          "description": "The input datetime. If don't set the datetime, the datetime will be now.\nFor consistent results, parsing anything other than ISO 8601 strings\nwith the `inputFormat` property. More information in [moment String](http://momentjs.com/docs/#/parsing/string/).",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 31,
+              "column": 4
+            },
+            "end": {
+              "line": 36,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "inputFormat",
+          "type": "string | null | undefined",
+          "description": "The datetime input format. An string using the\n[moment String + Format](http://momentjs.com/docs/#/parsing/string-format/).",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 42,
+              "column": 4
+            },
+            "end": {
+              "line": 45,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "outputFormat",
+          "type": "string | null | undefined",
+          "description": "The datetime output format. Options are 'now' or datetime using the\n[moment Format](http://momentjs.com/docs/#/displaying/format/).",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 51,
+              "column": 4
+            },
+            "end": {
+              "line": 54,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "from",
+          "type": "string | null | undefined",
+          "description": "Relative time using [momen time from now](http://momentjs.com/docs/#/displaying/fromnow/)\nor [momen Time from datetime](http://momentjs.com/docs/#/displaying/from/).",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 60,
+              "column": 4
+            },
+            "end": {
+              "line": 63,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "to",
+          "type": "string | null | undefined",
+          "description": "Relative time using [momen Time to now](http://momentjs.com/docs/#/displaying/tonow/)\nor [momen Time to datetime](http://momentjs.com/docs/#/displaying/to/).",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 69,
+              "column": 4
+            },
+            "end": {
+              "line": 72,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "output",
+          "type": "string | null | undefined",
+          "description": "The output datetime.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 77,
+              "column": 4
+            },
+            "end": {
+              "line": 80,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "libraryLoaded",
+          "type": "boolean | null | undefined",
+          "description": "library loaded",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 84,
+              "column": 4
+            },
+            "end": {
+              "line": 86,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "created",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 92,
+              "column": 2
+            },
+            "end": {
+              "line": 102,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_momentLoaded",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 103,
+              "column": 2
+            },
+            "end": {
+              "line": 105,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "update",
+          "description": "Recomputes the output",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 109,
+              "column": 2
+            },
+            "end": {
+              "line": 118,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_computeOutput",
+          "description": "",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 120,
+              "column": 2
+            },
+            "end": {
+              "line": 141,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "datetime"
+            },
+            {
+              "name": "inputFormat"
+            },
+            {
+              "name": "outputFormat"
+            },
+            {
+              "name": "from"
+            },
+            {
+              "name": "to"
+            },
+            {
+              "name": "libraryLoaded"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 18,
+          "column": 28
+        },
+        "end": {
+          "line": 142,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "MomentElement",
+      "attributes": [
+        {
+          "name": "datetime",
+          "description": "The input datetime. If don't set the datetime, the datetime will be now.\nFor consistent results, parsing anything other than ISO 8601 strings\nwith the `inputFormat` property. More information in [moment String](http://momentjs.com/docs/#/parsing/string/).",
+          "sourceRange": {
+            "start": {
+              "line": 31,
+              "column": 4
+            },
+            "end": {
+              "line": 36,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "input-format",
+          "description": "The datetime input format. An string using the\n[moment String + Format](http://momentjs.com/docs/#/parsing/string-format/).",
+          "sourceRange": {
+            "start": {
+              "line": 42,
+              "column": 4
+            },
+            "end": {
+              "line": 45,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "output-format",
+          "description": "The datetime output format. Options are 'now' or datetime using the\n[moment Format](http://momentjs.com/docs/#/displaying/format/).",
+          "sourceRange": {
+            "start": {
+              "line": 51,
+              "column": 4
+            },
+            "end": {
+              "line": 54,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "from",
+          "description": "Relative time using [momen time from now](http://momentjs.com/docs/#/displaying/fromnow/)\nor [momen Time from datetime](http://momentjs.com/docs/#/displaying/from/).",
+          "sourceRange": {
+            "start": {
+              "line": 60,
+              "column": 4
+            },
+            "end": {
+              "line": 63,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "to",
+          "description": "Relative time using [momen Time to now](http://momentjs.com/docs/#/displaying/tonow/)\nor [momen Time to datetime](http://momentjs.com/docs/#/displaying/to/).",
+          "sourceRange": {
+            "start": {
+              "line": 69,
+              "column": 4
+            },
+            "end": {
+              "line": 72,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "output",
+          "description": "The output datetime.",
+          "sourceRange": {
+            "start": {
+              "line": 77,
+              "column": 4
+            },
+            "end": {
+              "line": 80,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "library-loaded",
+          "description": "library loaded",
+          "sourceRange": {
+            "start": {
+              "line": 84,
+              "column": 4
+            },
+            "end": {
+              "line": 86,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "output-changed",
+          "description": "Fired when the `output` property changes.",
+          "metadata": {}
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "moment-element"
+    }
+  ]
+}

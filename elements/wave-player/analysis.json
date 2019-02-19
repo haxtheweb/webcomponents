@@ -1,0 +1,799 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "`wave-player`\n`A player for visualizing a sound file`",
+      "summary": "",
+      "path": "wave-player.js",
+      "properties": [],
+      "methods": [],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 23,
+          "column": 17
+        },
+        "end": {
+          "line": 558,
+          "column": 2
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "WavePlayer",
+      "attributes": [],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": []
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "wave-player.js",
+      "properties": [
+        {
+          "name": "schemaResourceID",
+          "type": "string | null | undefined",
+          "description": "Unique Resource ID, generated when schemaMap processes.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 26,
+              "column": 4
+            },
+            "end": {
+              "line": 29,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\"",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "schemaMap",
+          "type": "Object | null | undefined",
+          "description": "Schema Map for this element.",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 33,
+              "column": 4
+            },
+            "end": {
+              "line": 46,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_schemaMapChanged\"",
+              "attributeType": "Object"
+            }
+          },
+          "defaultValue": "{\"prefix\":{\"oer\":\"http://oerschema.org/\",\"schema\":\"http://schema.org/\",\"dc\":\"http://purl.org/dc/terms/\",\"foaf\":\"http://xmlns.com/foaf/0.1/\",\"cc\":\"http://creativecommons.org/ns#\",\"bib\":\"http://bib.schema.org\"}}",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "src",
+          "type": "string | null | undefined",
+          "description": "The source of the audio file to be played",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 223,
+              "column": 4
+            },
+            "end": {
+              "line": 227,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "observer": "\"_srcChanged\"",
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "title",
+          "type": "string | null | undefined",
+          "description": "The main (bold) title",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 235,
+              "column": 4
+            },
+            "end": {
+              "line": 239,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "subtitle",
+          "type": "string | null | undefined",
+          "description": "The smaller subtitle, for chapter heading or composer.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 247,
+              "column": 4
+            },
+            "end": {
+              "line": 251,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "coverart",
+          "type": "string | null | undefined",
+          "description": "The sourse for cover art",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 259,
+              "column": 4
+            },
+            "end": {
+              "line": 263,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "wavesurfer",
+          "type": "Object | null | undefined",
+          "description": "container for the wave object",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 270,
+              "column": 4
+            },
+            "end": {
+              "line": 272,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          }
+        },
+        {
+          "name": "lean",
+          "type": "string | null | undefined",
+          "description": "Determines if the FOB is on the left or the right",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 280,
+              "column": 4
+            },
+            "end": {
+              "line": 284,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"left\""
+        },
+        {
+          "name": "wavecolor",
+          "type": "string | null | undefined",
+          "description": "Color of the Wave",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 292,
+              "column": 4
+            },
+            "end": {
+              "line": 296,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"#ffffff\""
+        },
+        {
+          "name": "progresscolor",
+          "type": "string | null | undefined",
+          "description": "Color of the completed section of the wave",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 304,
+              "column": 4
+            },
+            "end": {
+              "line": 308,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "notify": true,
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"#CFD8DC\""
+        }
+      ],
+      "methods": [
+        {
+          "name": "generateResourceID",
+          "description": "Generate a uinque ID",
+          "privacy": "public",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 51,
+              "column": 2
+            },
+            "end": {
+              "line": 68,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "_schemaMapChanged",
+          "description": "Notice the schema map has changed, reprocess attributes.",
+          "privacy": "protected",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 72,
+              "column": 2
+            },
+            "end": {
+              "line": 94,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          },
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "_srcChanged",
+          "description": "Source changed, let's test if we should update wavesurfer",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 314,
+              "column": 2
+            },
+            "end": {
+              "line": 319,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "created",
+          "description": "created life cycle",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 323,
+              "column": 2
+            },
+            "end": {
+              "line": 333,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "attached",
+          "description": "Attached life cycle",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 337,
+              "column": 2
+            },
+            "end": {
+              "line": 397,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "ready",
+          "description": "Ready life cycle",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 402,
+              "column": 2
+            },
+            "end": {
+              "line": 418,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_wavesurferLoaded",
+          "description": "invoke wavesurfer once we know it's globally scoped",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 422,
+              "column": 2
+            },
+            "end": {
+              "line": 425,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "activateAnimation",
+          "description": "Function to update classes (for activate)",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 430,
+              "column": 2
+            },
+            "end": {
+              "line": 462,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "deactivateAnimation",
+          "description": "Function to update classes (for deactivate)",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 467,
+              "column": 2
+            },
+            "end": {
+              "line": 499,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "initWaveSurfer",
+          "description": "Initializing wave object",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 504,
+              "column": 2
+            },
+            "end": {
+              "line": 522,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "togglePlay",
+          "description": "Toggle play and pause",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 527,
+              "column": 2
+            },
+            "end": {
+              "line": 536,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "toggleMute",
+          "description": "Toggle mute on and off",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 541,
+              "column": 2
+            },
+            "end": {
+              "line": 550,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "throwBack",
+          "description": "Jumps back 30 seconds",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 555,
+              "column": 2
+            },
+            "end": {
+              "line": 557,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 23,
+          "column": 25
+        },
+        "end": {
+          "line": 558,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "WavePlayer",
+      "attributes": [
+        {
+          "name": "schema-resource-i-d",
+          "description": "Unique Resource ID, generated when schemaMap processes.",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 26,
+              "column": 4
+            },
+            "end": {
+              "line": 29,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "schema-map",
+          "description": "Schema Map for this element.",
+          "sourceRange": {
+            "file": "../@lrnwebcomponents/schema-behaviors/schema-behaviors.js",
+            "start": {
+              "line": 33,
+              "column": 4
+            },
+            "end": {
+              "line": 46,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined",
+          "inheritedFrom": "SchemaBehaviors.Schema"
+        },
+        {
+          "name": "src",
+          "description": "The source of the audio file to be played",
+          "sourceRange": {
+            "start": {
+              "line": 223,
+              "column": 4
+            },
+            "end": {
+              "line": 227,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "title",
+          "description": "The main (bold) title",
+          "sourceRange": {
+            "start": {
+              "line": 235,
+              "column": 4
+            },
+            "end": {
+              "line": 239,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "subtitle",
+          "description": "The smaller subtitle, for chapter heading or composer.",
+          "sourceRange": {
+            "start": {
+              "line": 247,
+              "column": 4
+            },
+            "end": {
+              "line": 251,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "coverart",
+          "description": "The sourse for cover art",
+          "sourceRange": {
+            "start": {
+              "line": 259,
+              "column": 4
+            },
+            "end": {
+              "line": 263,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "wavesurfer",
+          "description": "container for the wave object",
+          "sourceRange": {
+            "start": {
+              "line": 270,
+              "column": 4
+            },
+            "end": {
+              "line": 272,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "lean",
+          "description": "Determines if the FOB is on the left or the right",
+          "sourceRange": {
+            "start": {
+              "line": 280,
+              "column": 4
+            },
+            "end": {
+              "line": 284,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "wavecolor",
+          "description": "Color of the Wave",
+          "sourceRange": {
+            "start": {
+              "line": 292,
+              "column": 4
+            },
+            "end": {
+              "line": 296,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "progresscolor",
+          "description": "Color of the completed section of the wave",
+          "sourceRange": {
+            "start": {
+              "line": 304,
+              "column": 4
+            },
+            "end": {
+              "line": 308,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        }
+      ],
+      "events": [
+        {
+          "type": "CustomEvent",
+          "name": "src-changed",
+          "description": "Fired when the `src` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "title-changed",
+          "description": "Fired when the `title` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "subtitle-changed",
+          "description": "Fired when the `subtitle` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "coverart-changed",
+          "description": "Fired when the `coverart` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "lean-changed",
+          "description": "Fired when the `lean` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "wavecolor-changed",
+          "description": "Fired when the `wavecolor` property changes.",
+          "metadata": {}
+        },
+        {
+          "type": "CustomEvent",
+          "name": "progresscolor-changed",
+          "description": "Fired when the `progresscolor` property changes.",
+          "metadata": {}
+        }
+      ],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "wave-player"
+    }
+  ]
+}

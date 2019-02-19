@@ -1571,6 +1571,8 @@ let HaxBody = Polymer({
   _focusIn: function(e) {
     // only worry about these when we are in edit mode
     if (this.editMode && !this.__tabTrap) {
+      this.hideContextMenus();
+
       var normalizedEvent = dom(e);
       var local = normalizedEvent.localTarget;
       var tags = window.HaxStore.instance.validTagList;
@@ -1624,6 +1626,7 @@ let HaxBody = Polymer({
           tags.includes(containerNode.tagName.toLowerCase()) &&
           !containerNode.classList.contains("ignore-activation")
         ) {
+          this.activeContainerNode = containerNode;
           window.HaxStore.write("activeContainerNode", containerNode, this);
           e.stopPropagation();
         } else if (containerNode.classList.contains("ignore-activation")) {
@@ -1635,6 +1638,7 @@ let HaxBody = Polymer({
           tags.includes(containerNode.tagName.toLowerCase()) &&
           !activeNode.classList.contains("ignore-activation")
         ) {
+          this.activeNode = activeNode;
           window.HaxStore.write("activeNode", activeNode, this);
           this.positionContextMenus(activeNode, containerNode);
           e.stopPropagation();

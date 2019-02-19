@@ -1,0 +1,1301 @@
+{
+  "schema_version": "1.0.0",
+  "elements": [
+    {
+      "description": "`lrn-calendar-date`\n`A LRN element`",
+      "summary": "",
+      "path": "lib/lrn-calendar-date.js",
+      "properties": [
+        {
+          "name": "title",
+          "type": "string | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 79,
+              "column": 4
+            },
+            "end": {
+              "line": 82,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"lrn-calendar-date\""
+        },
+        {
+          "name": "name",
+          "type": "string | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 83,
+              "column": 4
+            },
+            "end": {
+              "line": 85,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "date",
+          "type": "Date | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 86,
+              "column": 4
+            },
+            "end": {
+              "line": 88,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Date"
+            }
+          }
+        },
+        {
+          "name": "loadeddate",
+          "type": "boolean | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 89,
+              "column": 4
+            },
+            "end": {
+              "line": 91,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          }
+        },
+        {
+          "name": "firstWeek",
+          "type": "boolean | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 92,
+              "column": 4
+            },
+            "end": {
+              "line": 94,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          }
+        },
+        {
+          "name": "view",
+          "type": "string | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 95,
+              "column": 4
+            },
+            "end": {
+              "line": 97,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "valid",
+          "type": "boolean | null | undefined",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 98,
+              "column": 4
+            },
+            "end": {
+              "line": 101,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          },
+          "defaultValue": "false"
+        }
+      ],
+      "methods": [
+        {
+          "name": "getMonth",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 108,
+              "column": 2
+            },
+            "end": {
+              "line": 132,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "date"
+            }
+          ]
+        },
+        {
+          "name": "getWeek",
+          "description": "Displays the weekday for in the column for the first week",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 137,
+              "column": 2
+            },
+            "end": {
+              "line": 141,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "date"
+            }
+          ]
+        },
+        {
+          "name": "timeString",
+          "description": "Creates the string that displays the time of the event",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 146,
+              "column": 2
+            },
+            "end": {
+              "line": 166,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "startHour"
+            },
+            {
+              "name": "startMinute"
+            },
+            {
+              "name": "endHour"
+            },
+            {
+              "name": "endMinute"
+            }
+          ]
+        },
+        {
+          "name": "computeStyle",
+          "description": "If an event occurs the whole day the background color is yellow",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 171,
+              "column": 2
+            },
+            "end": {
+              "line": 176,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "item"
+            }
+          ]
+        },
+        {
+          "name": "getDateString",
+          "description": "When click for more info, this gives the full date of the event",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 181,
+              "column": 2
+            },
+            "end": {
+              "line": 202,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "date"
+            }
+          ]
+        },
+        {
+          "name": "displayActivity",
+          "description": "Displayes the name of the activity in the more info slideout",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 207,
+              "column": 2
+            },
+            "end": {
+              "line": 210,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "name": "displayStart",
+          "description": "Displays the start time in the more info slideout",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 215,
+              "column": 2
+            },
+            "end": {
+              "line": 228,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "name": "displayEnd",
+          "description": "Displays the end time in the more info slideout",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 233,
+              "column": 2
+            },
+            "end": {
+              "line": 239,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "name": "displayDuration",
+          "description": "Displays the duration in the more info slideout",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 244,
+              "column": 2
+            },
+            "end": {
+              "line": 276,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "name": "displayDescription",
+          "description": "Displays the description in the more info slideout",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 281,
+              "column": 2
+            },
+            "end": {
+              "line": 287,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "name": "displayLocation",
+          "description": "Displays the location in the more info slideout",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 292,
+              "column": 2
+            },
+            "end": {
+              "line": 299,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "e"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [
+        {
+          "url": "demo/index.html",
+          "description": ""
+        }
+      ],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 14,
+          "column": 8
+        },
+        "end": {
+          "line": 300,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "attributes": [
+        {
+          "name": "title",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 79,
+              "column": 4
+            },
+            "end": {
+              "line": 82,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "name",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 83,
+              "column": 4
+            },
+            "end": {
+              "line": 85,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "date",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 86,
+              "column": 4
+            },
+            "end": {
+              "line": 88,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Date | null | undefined"
+        },
+        {
+          "name": "loadeddate",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 89,
+              "column": 4
+            },
+            "end": {
+              "line": 91,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "first-week",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 92,
+              "column": 4
+            },
+            "end": {
+              "line": 94,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "view",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 95,
+              "column": 4
+            },
+            "end": {
+              "line": 97,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "valid",
+          "description": "",
+          "sourceRange": {
+            "start": {
+              "line": 98,
+              "column": 4
+            },
+            "end": {
+              "line": 101,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "lrn-calendar-date"
+    },
+    {
+      "description": "",
+      "summary": "",
+      "path": "lrn-calendar.js",
+      "properties": [
+        {
+          "name": "listOfEvents",
+          "type": "Array | null | undefined",
+          "description": "An array of events for display",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 88,
+              "column": 4
+            },
+            "end": {
+              "line": 91,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Array"
+            }
+          },
+          "defaultValue": "[]"
+        },
+        {
+          "name": "dateString",
+          "type": "string | null | undefined",
+          "description": "Date to start from",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 95,
+              "column": 4
+            },
+            "end": {
+              "line": 98,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_dateStringChanged\"",
+              "attributeType": "String"
+            }
+          }
+        },
+        {
+          "name": "date",
+          "type": "Date | null | undefined",
+          "description": "Date to start from",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 102,
+              "column": 4
+            },
+            "end": {
+              "line": 106,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_dateChanged\"",
+              "attributeType": "Date"
+            }
+          }
+        },
+        {
+          "name": "view",
+          "type": "string | null | undefined",
+          "description": "Type of display, possible values, month, day, week",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 110,
+              "column": 4
+            },
+            "end": {
+              "line": 114,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_viewTypeChanged\"",
+              "attributeType": "String"
+            }
+          },
+          "defaultValue": "\"month\""
+        },
+        {
+          "name": "file",
+          "type": "string | null | undefined",
+          "description": "ical file to reference to pull in dates.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 118,
+              "column": 4
+            },
+            "end": {
+              "line": 122,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "observer": "\"_fileChanged\"",
+              "attributeType": "String"
+            }
+          }
+        }
+      ],
+      "methods": [
+        {
+          "name": "_fileChanged",
+          "description": "Notice the file has changed and attempt to rebind.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 128,
+              "column": 2
+            },
+            "end": {
+              "line": 134,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_viewTypeChanged",
+          "description": "Notice the file has changed and attempt to rebind.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 139,
+              "column": 2
+            },
+            "end": {
+              "line": 148,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_dateChanged",
+          "description": "Notice the file has changed and attempt to rebind.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 153,
+              "column": 2
+            },
+            "end": {
+              "line": 162,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_dateStringChanged",
+          "description": "Notice the String of the date has changed and reset the actual date to it",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 167,
+              "column": 2
+            },
+            "end": {
+              "line": 175,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "newValue"
+            },
+            {
+              "name": "oldValue"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "created",
+          "description": "created life cycle",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 179,
+              "column": 2
+            },
+            "end": {
+              "line": 189,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "_icalLoaded",
+          "description": "ical loaded",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 193,
+              "column": 2
+            },
+            "end": {
+              "line": 198,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "attached",
+          "description": "Attached lifecycle.",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 202,
+              "column": 2
+            },
+            "end": {
+              "line": 268,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "loadFile",
+          "description": "Load the ical file.",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 273,
+              "column": 2
+            },
+            "end": {
+              "line": 278,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "showPrev",
+          "description": "Is called to show the previous month/week depending on option selected",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 283,
+              "column": 2
+            },
+            "end": {
+              "line": 322,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "showNext",
+          "description": "Is called to show the next month/week",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 327,
+              "column": 2
+            },
+            "end": {
+              "line": 365,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "showDate",
+          "description": "Is called to show the next month/week",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 370,
+              "column": 2
+            },
+            "end": {
+              "line": 375,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "monthView",
+          "description": "Set the view to month",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 378,
+              "column": 2
+            },
+            "end": {
+              "line": 382,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "weekView",
+          "description": "Set the view to weekly",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 385,
+              "column": 2
+            },
+            "end": {
+              "line": 389,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "readTextFile",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 391,
+              "column": 2
+            },
+            "end": {
+              "line": 409,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "file"
+            }
+          ]
+        },
+        {
+          "name": "createCalendar",
+          "description": "Determines the view and then calls lrn-calendar-date to\ncreate the individual date blocks\nDoes the math required to get all the days correct. Ex: Oct 31 -> Nov 1",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 416,
+              "column": 2
+            },
+            "end": {
+              "line": 712,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "getEvents",
+          "description": "Get events gets the events that are within the calendar corresponding to the specific event",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 718,
+              "column": 2
+            },
+            "end": {
+              "line": 742,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "date"
+            },
+            {
+              "name": "text"
+            }
+          ]
+        },
+        {
+          "name": "createRecurrence",
+          "description": "Determines what type of recurrence is occuring and calls createRepeatedEvent\nThe int in the function call is the max number of recurrences",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 748,
+              "column": 2
+            },
+            "end": {
+              "line": 758,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "events"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "createRepeatedEvent",
+          "description": "Iterates through the recurring event.  Each time it creates a new event.\nCurrently it sets the summary and description the same since that will not change\nThat will need to be adjusted, only info in new Event is start time, end time, summary, and description\nThe new event is loaded into the array of all the events",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 766,
+              "column": 2
+            },
+            "end": {
+              "line": 789,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "events"
+            },
+            {
+              "name": "maxRepeat"
+            }
+          ],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "createDate",
+          "description": "Called from eventCheck, gets the start time of an event and returns it",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 794,
+              "column": 2
+            },
+            "end": {
+              "line": 800,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "name": "eventCheck",
+          "description": "Check if the event occurs on this date and then includes it in the event array that is returned\nthis.startIndex determines the index of the event array that it should start looking for the events that occur\non that day.  This is to increase efficiency to not keep scrolling through the list\nOnce an event is found after the date, it exits the for loop\nThis is all because the event array is sorted by date",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 809,
+              "column": 2
+            },
+            "end": {
+              "line": 825,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "events"
+            },
+            {
+              "name": "date"
+            }
+          ]
+        },
+        {
+          "name": "sortByTime",
+          "description": "Organizes the events on a certain day in order based on start time",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 830,
+              "column": 2
+            },
+            "end": {
+              "line": 844,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "eventList"
+            }
+          ]
+        },
+        {
+          "name": "getDateInfo",
+          "description": "",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 846,
+              "column": 2
+            },
+            "end": {
+              "line": 856,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "createReturn",
+          "description": "Creates an event array that gets all of the events for that certain day",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 861,
+              "column": 2
+            },
+            "end": {
+              "line": 868,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "event"
+            }
+          ]
+        },
+        {
+          "name": "getDisplayDate",
+          "description": "Gets the date to display on the header, currently the month and year. Returns it as a String",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 873,
+              "column": 2
+            },
+            "end": {
+              "line": 894,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [
+            {
+              "name": "date"
+            }
+          ]
+        }
+      ],
+      "staticMethods": [],
+      "demos": [],
+      "metadata": {},
+      "sourceRange": {
+        "start": {
+          "line": 25,
+          "column": 26
+        },
+        "end": {
+          "line": 895,
+          "column": 1
+        }
+      },
+      "privacy": "public",
+      "superclass": "HTMLElement",
+      "name": "LrnCalendar",
+      "attributes": [
+        {
+          "name": "list-of-events",
+          "description": "An array of events for display",
+          "sourceRange": {
+            "start": {
+              "line": 88,
+              "column": 4
+            },
+            "end": {
+              "line": 91,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Array | null | undefined"
+        },
+        {
+          "name": "date-string",
+          "description": "Date to start from",
+          "sourceRange": {
+            "start": {
+              "line": 95,
+              "column": 4
+            },
+            "end": {
+              "line": 98,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "date",
+          "description": "Date to start from",
+          "sourceRange": {
+            "start": {
+              "line": 102,
+              "column": 4
+            },
+            "end": {
+              "line": 106,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Date | null | undefined"
+        },
+        {
+          "name": "view",
+          "description": "Type of display, possible values, month, day, week",
+          "sourceRange": {
+            "start": {
+              "line": 110,
+              "column": 4
+            },
+            "end": {
+              "line": 114,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        },
+        {
+          "name": "file",
+          "description": "ical file to reference to pull in dates.",
+          "sourceRange": {
+            "start": {
+              "line": 118,
+              "column": 4
+            },
+            "end": {
+              "line": 122,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "string | null | undefined"
+        }
+      ],
+      "events": [],
+      "styling": {
+        "cssVariables": [],
+        "selectors": []
+      },
+      "slots": [],
+      "tagname": "lrn-calendar"
+    }
+  ]
+}
