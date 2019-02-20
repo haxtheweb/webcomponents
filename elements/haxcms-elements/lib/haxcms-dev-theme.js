@@ -10,7 +10,10 @@ import "@polymer/iron-icons/iron-icons.js";
 import "@polymer/iron-list/iron-list.js";
 import "@lrnwebcomponents/schema-behaviors/schema-behaviors.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "./haxcms-theme-behavior.js";
+import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
+import { HAXCMSThemeWiring } from "./HAXCMSThemeWiring.js";
+import { store } from "./haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 /**
  * `haxcms-dev-theme`
  * `A theme intended as the starting point to fork from and build new themes for HAXCMS
@@ -22,7 +25,7 @@ import "./haxcms-theme-behavior.js";
 Polymer({
   is: "haxcms-dev-theme",
   _template: html`
-    <style is="custom-style" include="simple-colors">
+    <style include="simple-colors hax-shared-styles">
       :host {
         display: block;
         /* theme color which is dictated by the manifest */
@@ -73,8 +76,10 @@ Polymer({
               <div>changed: [[item.metadata.updated]]</div>
             </div>
             <div class="card-actions">
-              <paper-button data-id$="[[item.id]]"
-                >Click to set activeItem</paper-button
+              <a tabindex="-1" href$="[[item.location]]"
+                ><paper-button data-id$="[[item.id]]"
+                  >Click to set activeItem</paper-button
+                ></a
               >
             </div>
           </paper-card>
@@ -99,28 +104,56 @@ Polymer({
       </div>
     </div>
   `,
-  behaviors: [SchemaBehaviors.Schema, HAXCMSBehaviors.Theme],
+  behaviors: [SchemaBehaviors.Schema],
   properties: {
-    // The behavior gives you editMode, activeItem and manifest
-    // You can add whatever else you need here
+    /**
+     * editting state for the page
+     */
+    editMode: {
+      type: Boolean,
+      reflectToAttribute: true
+    },
+    /**
+     * Active item which is in JSON Outline Schema
+     */
+    activeItem: {
+      type: Object
+    },
+    /**
+     * a manifest json file decoded, in JSON Outline Schema format
+     */
+    manifest: {
+      type: Object
+    }
   },
   /**
-   * Ready life cycle
+   * created life cycle
+   */
+  created: function() {
+    this.HAXCMSThemeWiring = new HAXCMSThemeWiring(this);
+  },
+  /**
+   * ready life cycle
    */
   ready: function() {
-    // required so that HAX is injected when available
-    this.setupHAXTheme();
-  },
-  attached: function() {
+    this.HAXCMSThemeWiring.connect(this, this.$.contentcontainer);
     this.$.list.addEventListener("tap", this._itemTapped.bind(this));
     this.$.unset.addEventListener("tap", this._unsetTapped.bind(this));
   },
   /**
-   * Detatched life cycle
+   * attached life cycle
+   */
+  attached: function() {
+    this.__disposer = autorun(() => {
+      this.manifest = toJS(store.routerManifest);
+    });
+  },
+  /**
+   * detatched life cycle
    */
   detached: function() {
-    // this helps with cleaning things up if the theme is changed
-    this.setupHAXTheme(false);
+    this.HAXCMSThemeWiring.disconnect(this);
+    this.__disposer();
     this.$.list.removeEventListener("tap", this._itemTapped.bind(this));
     this.$.unset.removeEventListener("tap", this._unsetTapped.bind(this));
   },
@@ -144,7 +177,6 @@ Polymer({
           }
         })
         .pop();
-      this.fire("json-outline-schema-active-item-changed", item);
       // console log these so you can debug easily as you build out
       console.log(this.manifest);
       console.log(item);
@@ -155,6 +187,8 @@ Polymer({
    * and then other options appear
    */
   _unsetTapped: function(e) {
+    window.history.pushState(null, null, store.location.baseUrl);
+    window.dispatchEvent(new PopStateEvent("popstate"));
     this.fire("json-outline-schema-active-item-changed", {});
   }
 });

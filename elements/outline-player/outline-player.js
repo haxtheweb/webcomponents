@@ -8,9 +8,9 @@ import "@polymer/app-layout/app-drawer/app-drawer.js";
 import "@polymer/app-layout/app-drawer-layout/app-drawer-layout.js";
 import "@polymer/app-layout/app-header-layout/app-header-layout.js";
 import "@lrnwebcomponents/simple-colors/simple-colors.js";
-import "@lrnwebcomponents/haxcms-elements/lib/haxcms-theme-behavior.js";
 import "@lrnwebcomponents/hax-body/lib/hax-shared-styles.js";
 import "@lrnwebcomponents/map-menu/map-menu.js";
+import { HAXCMSThemeWiring } from "@lrnwebcomponents/haxcms-elements/lib/HAXCMSThemeWiring.js";
 import { store } from "@lrnwebcomponents/haxcms-elements/lib/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "./lib/outline-player-arrow.js";
@@ -273,16 +273,7 @@ let OutlinePlayer = Polymer({
   `,
 
   is: "outline-player",
-
-  behaviors: [HAXCMSBehaviors.Theme],
-
   properties: {
-    /**
-     * Manifest from haxcms-site-builder
-     */
-    manifest: {
-      type: Object
-    },
     /**
      * Auto call json files
      */
@@ -339,11 +330,24 @@ let OutlinePlayer = Polymer({
       observer: "_outlineChanged"
     },
     /**
+     * editting state for the page
+     */
+    editMode: {
+      type: Boolean,
+      reflectToAttribute: true,
+      observer: "_editModeChanged"
+    },
+    /**
      * Active item which is in JSON Outline Schema
      */
     activeItem: {
-      type: Object,
-      notify: true
+      type: Object
+    },
+    /**
+     * Manifest from haxcms-site-builder
+     */
+    manifest: {
+      type: Object
     },
     /**
      * Set min height of outline player to fill remaining
@@ -365,11 +369,6 @@ let OutlinePlayer = Polymer({
     _location: {
       type: Object,
       observer: "_locationChanged"
-    },
-    editMode: {
-      type: Boolean,
-      reflectToAttribute: true,
-      observer: "_editModeChanged"
     }
   },
   _editModeChanged: function(newValue) {
@@ -382,22 +381,37 @@ let OutlinePlayer = Polymer({
       });
     }
   },
+  /**
+   * created life cycle
+   */
+  created: function() {
+    this.HAXCMSThemeWiring = new HAXCMSThemeWiring(this);
+  },
+  /**
+   * ready life cycle
+   */
   ready: function() {
-    this.setupHAXTheme(true, this.$.contentcontainer);
-    autorun(() => {
+    this.HAXCMSThemeWiring.connect(this, this.$.contentcontainer);
+  },
+  /**
+   * attached life cycle
+   */
+  attached: function() {
+    this.__disposer = autorun(() => {
       this._routerManifest = toJS(store.routerManifest);
-    });
-    autorun(() => {
       this._location = store.location;
-    });
-    autorun(() => {
       if (store.activeItem && typeof store.activeItem !== "undefined") {
         this.selected = store.activeItem;
       }
     });
   },
-
-  attached: function() {},
+  /**
+   * detatched life cycle
+   */
+  detached: function() {
+    this.HAXCMSThemeWiring.disconnect(this);
+    this.__disposer();
+  },
 
   _locationChanged: function(newValue) {
     if (!newValue || typeof newValue.route === "undefined") return;

@@ -4,21 +4,19 @@ import "@polymer/paper-tooltip/paper-tooltip.js";
 import "./paper-chip.js";
 let ElmsmediaDashboardToolbarFilter = Polymer({
   _template: html`
-    <custom-style>
-      <style is="custom-style">
-        :host {
-          display: flex;
-          font-size: 0.8em;
+    <style>
+      :host {
+        display: flex;
+        font-size: 0.8em;
+      }
+      paper-icon-button {
+        --paper-icon-button: {
+          height: 30px;
+          width: 30px;
+          margin-right: -12px;
         }
-        paper-icon-button {
-          --paper-icon-button: {
-            height: 30px;
-            width: 30px;
-            margin-right: -12px;
-          }
-        }
-      </style>
-    </custom-style>
+      }
+    </style>
     <paper-chip>
       [[title]]
       <paper-icon-button

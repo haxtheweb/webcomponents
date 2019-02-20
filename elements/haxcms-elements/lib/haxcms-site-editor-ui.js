@@ -15,7 +15,7 @@ import "./haxcms-manifest-editor-dialog.js";
  */
 Polymer({
   _template: html`
-    <style is="custom-style">
+    <style>
       :host {
         display: block;
         position: fixed;

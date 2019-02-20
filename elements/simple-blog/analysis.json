@@ -1085,6 +1085,69 @@
             }
           },
           "defaultValue": "0"
+        },
+        {
+          "name": "editMode",
+          "type": "boolean | null | undefined",
+          "description": "editting state for the page",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 141,
+              "column": 4
+            },
+            "end": {
+              "line": 144,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Boolean"
+            }
+          }
+        },
+        {
+          "name": "activeItem",
+          "type": "Object | null | undefined",
+          "description": "Active item which is in JSON Outline Schema",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 148,
+              "column": 4
+            },
+            "end": {
+              "line": 150,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          }
+        },
+        {
+          "name": "manifest",
+          "type": "Object | null | undefined",
+          "description": "a manifest json file decoded, in JSON Outline Schema format",
+          "privacy": "public",
+          "sourceRange": {
+            "start": {
+              "line": 154,
+              "column": 4
+            },
+            "end": {
+              "line": 156,
+              "column": 5
+            }
+          },
+          "metadata": {
+            "polymer": {
+              "attributeType": "Object"
+            }
+          }
         }
       ],
       "methods": [
@@ -1137,16 +1200,56 @@
           "inheritedFrom": "SchemaBehaviors.Schema"
         },
         {
-          "name": "ready",
-          "description": "Ready life cycle",
+          "name": "created",
+          "description": "created life cycle",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 143,
+              "line": 161,
               "column": 2
             },
             "end": {
-              "line": 156,
+              "line": 163,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "ready",
+          "description": "ready life cycle",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 167,
+              "column": 2
+            },
+            "end": {
+              "line": 169,
+              "column": 3
+            }
+          },
+          "metadata": {},
+          "params": [],
+          "return": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "attached",
+          "description": "attached life cycle",
+          "privacy": "protected",
+          "sourceRange": {
+            "start": {
+              "line": 173,
+              "column": 2
+            },
+            "end": {
+              "line": 179,
               "column": 3
             }
           },
@@ -1158,15 +1261,15 @@
         },
         {
           "name": "detached",
-          "description": "Detatched life cycle",
+          "description": "detatched life cycle",
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 161,
+              "line": 183,
               "column": 2
             },
             "end": {
-              "line": 167,
+              "line": 186,
               "column": 3
             }
           },
@@ -1182,11 +1285,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 173,
+              "line": 191,
               "column": 2
             },
             "end": {
-              "line": 182,
+              "line": 200,
               "column": 3
             }
           },
@@ -1206,35 +1309,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 187,
+              "line": 204,
               "column": 2
             },
             "end": {
-              "line": 190,
-              "column": 3
-            }
-          },
-          "metadata": {},
-          "params": [
-            {
-              "name": "e"
-            }
-          ],
-          "return": {
-            "type": "void"
-          }
-        },
-        {
-          "name": "_dataRefreshed",
-          "description": "refreshed data call",
-          "privacy": "protected",
-          "sourceRange": {
-            "start": {
-              "line": 195,
-              "column": 2
-            },
-            "end": {
-              "line": 197,
+              "line": 207,
               "column": 3
             }
           },
@@ -1258,7 +1337,7 @@
           "column": 25
         },
         "end": {
-          "line": 198,
+          "line": 208,
           "column": 1
         }
       },
@@ -1317,6 +1396,54 @@
           },
           "metadata": {},
           "type": "number | null | undefined"
+        },
+        {
+          "name": "edit-mode",
+          "description": "editting state for the page",
+          "sourceRange": {
+            "start": {
+              "line": 141,
+              "column": 4
+            },
+            "end": {
+              "line": 144,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "boolean | null | undefined"
+        },
+        {
+          "name": "active-item",
+          "description": "Active item which is in JSON Outline Schema",
+          "sourceRange": {
+            "start": {
+              "line": 148,
+              "column": 4
+            },
+            "end": {
+              "line": 150,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
+        },
+        {
+          "name": "manifest",
+          "description": "a manifest json file decoded, in JSON Outline Schema format",
+          "sourceRange": {
+            "start": {
+              "line": 154,
+              "column": 4
+            },
+            "end": {
+              "line": 156,
+              "column": 5
+            }
+          },
+          "metadata": {},
+          "type": "Object | null | undefined"
         }
       ],
       "events": [],
