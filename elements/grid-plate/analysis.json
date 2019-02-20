@@ -774,7 +774,7 @@
               "column": 2
             },
             "end": {
-              "line": 1022,
+              "line": 1025,
               "column": 3
             }
           },
@@ -794,11 +794,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 1027,
+              "line": 1030,
               "column": 2
             },
             "end": {
-              "line": 1038,
+              "line": 1041,
               "column": 3
             }
           },
@@ -822,7 +822,7 @@
           "column": 24
         },
         "end": {
-          "line": 1039,
+          "line": 1042,
           "column": 1
         }
       },
