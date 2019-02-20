@@ -10,127 +10,116 @@ window.HAXCMSBehaviors = window.HAXCMSBehaviors || {};
  *
  * @polymerBehavior HAXCMSBehaviors.Schema
  **/
-window.HAXCMSBehaviors.Theme = {
-  properties: {
+export class HAXCMSWiring {
+  constructor() {
+    this.element = null;
     /**
      * editting state for the page
      */
-    editMode: {
+    this.editMode = {
       type: Boolean,
       reflectToAttribute: true,
       value: false,
       notify: true
-    },
+    };
     /**
      * Active item which is in JSON Outline Schema
      */
-    activeItem: {
+    this.activeItem = {
       type: Object,
       notify: true,
       observer: "_activeItemChanged"
-    },
+    };
     /**
      * a manifest json file decoded, in JSON Outline Schema format
      */
-    manifest: {
+    this.manifest = {
       type: Object,
       notify: true,
       observer: "_manifestChanged"
+    };
+  }
+
+  _globalEditChanged(e) {
+    if (this.element) {
+      this.element.editMode = e.detail;
     }
-  },
-  /**
-   * Toggle edit mode
-   */
-  _globalEditChanged: function(e) {
-    this.editMode = e.detail;
-  },
-  /**
-   * Notice that active item has changed.
-   */
-  _activeItemChanged: function(newValue, oldValue) {
+  }
+
+  _activeItemChanged(newValue, oldValue) {
     if (newValue && typeof newValue.id !== typeof undefined) {
-      this.fire("json-outline-schema-active-item-changed", newValue);
+      this.element.fire("json-outline-schema-active-item-changed", newValue);
       if (typeof newValue.title !== typeof undefined) {
-        document.title = this.manifest.title + " - " + newValue.title;
+        document.title = this.element.manifest.title + " - " + newValue.title;
       } else {
         document.title =
-          this.manifest.title + " - " + this.manifest.description;
+          this.element.manifest.title +
+          " - " +
+          this.element.manifest.description;
       }
     } else {
-      document.title = this.manifest.title + " - " + this.manifest.description;
+      document.title =
+        this.element.manifest.title + " - " + this.element.manifest.description;
     }
-  },
-  /**
-   * See if we need to update to match state if something external
-   * to the theme makes a change in the active item globally
-   */
-  _activeItemUpdate: function(e) {
-    this.set("activeItem", e.detail);
-    this.notifyPath("activeItem.*");
-  },
-  /**
-   * Setup HAX theme common design needs at a data layer
-   */
-  setupHAXTheme: function(load = true, injector = this.$.contentcontainer) {
+  }
+  _activeItemUpdate(e) {
+    this.element.set("activeItem", e.detail);
+    this.element.notifyPath("activeItem.*");
+  }
+  setupHAXTheme(element, load, injector) {
+    this.element = element;
+    this.load = load;
     if (load) {
       document.body.addEventListener(
         "haxcms-edit-mode-changed",
-        this._globalEditChanged.bind(this)
+        this._globalEditChanged.bind(element)
       );
       document.body.addEventListener(
         "json-outline-schema-changed",
-        this._manifestUpdate.bind(this)
+        this._manifestUpdate.bind(element)
       );
       document.body.addEventListener(
         "haxcms-active-item-changed",
-        this._activeItemUpdate.bind(this)
+        this._activeItemUpdate.bind(element)
       );
       document.body.addEventListener(
         "haxcms-trigger-update",
-        this._triggerUpdate.bind(this)
+        this._triggerUpdate.bind(element)
       );
       // this implies there's the possibility of an authoring experience
       if (typeof window.cmsSiteEditor !== typeof undefined) {
-        window.cmsSiteEditor.requestAvailability(this, injector);
+        window.cmsSiteEditor.requestAvailability(element, injector);
       }
     } else {
       document.body.removeEventListener(
         "haxcms-active-item-changed",
-        this._activeItemUpdate.bind(this)
+        this._activeItemUpdate.bind(element)
       );
       document.body.removeEventListener(
         "json-outline-schema-changed",
-        this._manifestUpdate.bind(this)
+        this._manifestUpdate.bind(element)
       );
       document.body.removeEventListener(
         "haxcms-edit-mode-changed",
-        this._globalEditChanged.bind(this)
+        this._globalEditChanged.bind(element)
       );
       document.body.removeEventListener(
         "haxcms-trigger-update",
-        this._triggerUpdate.bind(this)
+        this._triggerUpdate.bind(element)
       );
     }
-  },
-  /**
-   * refreshed data call
-   */
-  _triggerUpdate: function(e) {
-    this.fire("json-outline-schema-active-item-changed", {});
-  },
-  /**
-   * react to manifest being changed
-   */
-  _manifestUpdate: function(e) {
-    this.set("manifest", e.detail);
-    this.notifyPath("manifest.*");
-  },
-  /**
-   * Manifest has changed
-   */
-  _manifestChanged: function(newValue, oldValue) {
+  }
+  _triggerUpdate(e) {
+    this.element.fire("json-outline-schema-active-item-changed", {});
+  }
+  _manifestUpdate(e) {
+    this.element.set("manifest", e.detail);
+    this.element.notifyPath("manifest.*");
+  }
+  _manifestChanged(newValue, oldValue) {
     if (typeof newValue.title !== typeof undefined) {
-      document.title = this.manifest.title + " - " + this.manifest.description;
+      document.title =
+        this.element.manifest.title + " - " + this.element.manifest.description;
     }
     if (
       typeof newValue.metadata !== typeof undefined &&
@@ -138,32 +127,70 @@ window.HAXCMSBehaviors.Theme = {
     ) {
       // json outline schema changed, allow other things to react
       // fake way of forcing an update of these items
-      let color = this.manifest.metadata.cssVariable.replace(
-        "--simple-colors-",
-        ""
-      );
-      let ary = color.split("-");
-      if (ary.length == 2) {
-        color = ary[0];
-        this.accentColor = color;
-      } else if (ary.length == 3) {
-        color = ary[0] + " " + ary[1];
-        this.accentColor = color;
-      }
+      let ary = newValue.metadata.cssVariable
+        .replace("--simple-colors-default-theme-", "")
+        .split("-");
+      ary.pop();
+      this.element.accentColor = ary.join("-");
       // set this directly instead of messing w/ accentColor
-      let haxcmscolor = "";
-      if (window.ShadyCSS) {
-        haxcmscolor = ShadyCSS.getComputedStyleValue(
-          this,
-          this.manifest.metadata.cssVariable
-        );
-      } else {
-        haxcmscolor = getComputedStyle(this).getPropertyValue(
-          this.manifest.metadata.cssVariable
-        );
-      }
-      document.body.style.setProperty("--haxcms-color", haxcmscolor);
-      this.updateStyles({ "--haxcms-color": haxcmscolor });
+      document.body.style.setProperty(
+        "--haxcms-color",
+        newValue.metadata.hexCode
+      );
+    }
+  }
+}
+const HAXCMS = new HAXCMSWiring();
+window.HAXCMSBehaviors = window.HAXCMSBehaviors || {};
+window.HAXCMSBehaviors.Theme = {
+  properties: {
+    editMode: HAXCMS.editMode,
+    activeItem: HAXCMS.activeItem,
+    manifest: HAXCMS.manifest
+  },
+  /**
+   * Toggle edit mode
+   */
+  _globalEditChanged: function(e) {
+    HAXCMS._globalEditChanged(e);
+  },
+  /**
+   * Notice that active item has changed.
+   */
+  _activeItemChanged: function(newValue, oldValue) {
+    HAXCMS._activeItemChanged(newValue, oldValue);
+  },
+  /**
+   * See if we need to update to match state if something external
+   * to the theme makes a change in the active item globally
+   */
+  _activeItemUpdate: function(e) {
+    HAXCMS._activeItemUpdate(e);
+  },
+  /**
+   * Setup HAX theme common design needs at a data layer
+   */
+  setupHAXTheme: function(load = true, injector = this.$.contentcontainer) {
+    HAXCMS.setupHAXTheme(this, load, injector);
+  },
+  /**
+   * refreshed data call
+   */
+  _triggerUpdate: function(e) {
+    HAXCMS._triggerUpdate();
+  },
+  /**
+   * react to manifest being changed
+   */
+  _manifestUpdate: function(e) {
+    HAXCMS._manifestUpdate(e);
+  },
+  /**
+   * Manifest has changed
+   */
+  _manifestChanged: function(newValue, oldValue) {
+    if (HAXCMS.load) {
+      HAXCMS._manifestChanged(newValue, oldValue);
     }
   }
 };
