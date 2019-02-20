@@ -36,6 +36,7 @@ class RichTextEditor extends PolymerElement {
           width: 100%;
           margin: 0;
           padding: 0;
+          z-index: 9999;
           --rich-text-editor-bg: #fafafa;
           --rich-text-editor-button-color: #444;
           --rich-text-editor-border: 1px solid #ddd;

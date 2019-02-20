@@ -1,9 +1,8 @@
 /**
- * from https://raw.githubusercontent.com/paragbhadoria/emoji.json/master/emoji.js
+ * From https://www.freeformatter.com/html-entities.html
  */
 const symbols = {
   symbols: [
-    "&nbsp;",
     "&iexcl;",
     "&cent;",
     "&pound;",

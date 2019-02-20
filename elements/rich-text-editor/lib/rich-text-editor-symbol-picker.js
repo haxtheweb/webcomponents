@@ -83,7 +83,7 @@ class RichTextEditorSymbolPicker extends RichTextEditorPicker {
    */
   connectedCallback() {
     super.connectedCallback();
-    const name = "data";
+    const name = "symbols";
     const basePath = pathFromUrl(import.meta.url);
     const src = this.optionsSrc;
     const location = `${basePath}${src}`;

@@ -21,10 +21,7 @@ class RichTextEditorPicker extends RichTextEditorButton {
   // render function
   static get template() {
     return html`
-      <style include="rich-text-editor-styles">
-        :host {
-        }
-      </style>
+      <style include="rich-text-editor-styles"></style>
       <simple-picker id="button"
         disabled$="[[disabled]]" 
         controls="[[controls]]"
@@ -198,22 +195,24 @@ class RichTextEditorPicker extends RichTextEditorButton {
   _getPickerOptions(options = [], allowNull = false, icon = null) {
     let items =
         allowNull === false && icon === null
-          ? []
-          : [[{ alt: null, icon: icon, value: null }]],
-      h = items.length,
+          ? [{ alt: "null", icon: icon, value: null }]
+          : [],
       cols =
-        Math.sqrt(options.length + h) < 16
-          ? Math.ceil(Math.sqrt(options.length + h))
-          : 15;
-    console.log(options);
+        Math.sqrt(options.length) < 11
+          ? Math.ceil(Math.sqrt(options.length))
+          : 10;
     for (let i = 0; i < options.length; i++) {
-      let j = h + i,
-        row = Math.floor(j / cols),
-        col = j - row * cols,
+      let row = Math.floor(i / cols),
+        col = i - row * cols,
         data = this._getOptionData(options[i]);
       if (items[row] === undefined || items[row] === null) items[row] = [];
+      if (row === 0 && allowNull === false && icon !== null) {
+        items[0][0] = { alt: "null", icon: icon, value: null };
+        col++;
+      }
       items[row][col] = data;
     }
+    console.log("items", items);
     return items;
   }
 }

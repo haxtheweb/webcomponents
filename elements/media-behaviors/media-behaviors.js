@@ -31,17 +31,20 @@ window.MediaBehaviors.Video = {
    * Check source of the video, potentially correcting bad links.
    */
   cleanVideoSource: function(input, type) {
+    console.log("cleanVideoSource", input, type);
     if (type != "local") {
       // strip off the ? modifier for youtube/vimeo so we can build ourselves
-      var tmp = input.split("?");
+      var tmp = input.replace("?", "&").split("&");
       var v = "";
       input = tmp[0];
-      if (tmp.length == 2) {
-        let args = tmp[1].split("=");
-        if (args[0] == "v") {
-          v = args[1];
-        }
+      console.log("tmp", tmp, "input", input);
+      if (tmp.length > 1) {
+        tmp.forEach(function(param) {
+          let args = param.split("=");
+          if (args[0] == "v") v = args[1];
+        });
       }
+      console.log("v", v);
       // link to the vimeo video instead of the embed player address
       if (
         input.indexOf("player.vimeo.com") == -1 &&

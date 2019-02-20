@@ -76,6 +76,14 @@ class VideoPlayer extends PolymerElement {
    */
   _computeYoutubeId(source, sourceType) {
     if (source !== undefined && sourceType === "youtube") {
+      console.log(
+        "_computeYoutubeId",
+        source,
+        this._computeSRC(source).replace(
+          /(https?:\/\/)?(www.)?youtube(-nocookie)?.com\/embed\//,
+          ""
+        )
+      );
       return this._computeSRC(source).replace(
         /(https?:\/\/)?(www.)?youtube(-nocookie)?.com\/embed\//,
         ""
@@ -229,6 +237,7 @@ class VideoPlayer extends PolymerElement {
           : window.MediaBehaviors.Video.getVideoType(source);
       // ensure that this is a valid url / cleaned up a bit
       source = window.MediaBehaviors.Video.cleanVideoSource(source, type);
+      console.log("_computeSRC", source);
       if (type == "vimeo") {
         if (this.vimeoTitle) {
           source += "?title=1";

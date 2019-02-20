@@ -22,6 +22,24 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
   static get properties() {
     return {
       /**
+       * Emoji types types to include
+       */
+      emojiTypes: {
+        name: "emojiTypes",
+        type: "Array",
+        value: [
+          "emotions",
+          "people",
+          "nature",
+          "food",
+          "travel",
+          "activities",
+          "objects",
+          "symbols",
+          "flags"
+        ]
+      },
+      /**
        * Optional icon for null value
        */
       icon: {
@@ -74,7 +92,7 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
    */
   connectedCallback() {
     super.connectedCallback();
-    const name = "data";
+    const name = "emoji";
     const basePath = pathFromUrl(import.meta.url);
     const src = this.optionsSrc;
     const location = `${basePath}${src}`;
@@ -90,9 +108,13 @@ class RichTextEditorEmojiPicker extends RichTextEditorPicker {
    * Handles default options loaded from an external js file
    */
   _setOptions() {
+    let optData = [];
+    this.emojiTypes.forEach(function(type) {
+      optData = optData.concat(Object.keys(emojis[type]));
+    });
     this.set(
       "options",
-      this._getPickerOptions(Object.keys(emojis), this.allowNull, this.icon)
+      this._getPickerOptions(optData, this.allowNull, this.icon)
     );
   }
 

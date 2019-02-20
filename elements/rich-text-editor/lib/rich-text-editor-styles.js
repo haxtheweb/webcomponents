@@ -21,6 +21,13 @@ const css = html`
     :host([hidden]) {
       display: none;
     }
+    :host(rich-text-editor-emoji-picker),
+    :host(rich-text-editor-symbol-picker) {
+      --simple-picker-option: {
+        width: 24px;
+        max-width: 24px;
+      }
+    }
     :host #button {
       text-transform: unset;
       padding: 0;
@@ -38,7 +45,7 @@ const css = html`
         display: none;
       }
       --simple-picker-collapse: {
-        top: 16px;
+        top: 26px;
       }
       --simple-picker-sample-null-label: {
         display: none;
