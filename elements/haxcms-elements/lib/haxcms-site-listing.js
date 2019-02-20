@@ -31,7 +31,7 @@ import "@lrnwebcomponents/map-menu/map-menu.js";
 import "@lrnwebcomponents/jwt-login/jwt-login.js";
 import "@lrnwebcomponents/eco-json-schema-form/eco-json-schema-form.js";
 import "@lrnwebcomponents/eco-json-schema-form/lib/eco-json-schema-object.js";
-import "@lrnwebcomponents/simple-colors/simple-colors.js";
+import { SimpleColors } from "@lrnwebcomponents/simple-colors/simple-colors.js";
 import "@lrnwebcomponents/simple-colors/lib/simple-colors-picker.js";
 import "@lrnwebcomponents/magazine-cover/magazine-cover.js";
 import "@lrnwebcomponents/dropdown-select/dropdown-select.js";
@@ -575,9 +575,16 @@ Polymer({
    * Use events for real value in color area.
    */
   _colorChanged: function(e) {
-    this.set("activeItem.metadata.cssVariable", e.detail.cssVariable);
+    this.set("activeItem.metadata.cssVariable", e.detail.value);
     this.notifyPath("activeItem.metadata.cssVariable");
-    this.set("activeItem.metadata.hexCode", e.detail.hexCode);
+    this.set(
+      "activeItem.metadata.hexCode",
+      SimpleColors.colors[
+        e.detail.value
+          .replace("--simple-colors-default-theme-", "")
+          .replace("-7", "")
+      ][6]
+    );
     this.notifyPath("activeItem.metadata.hexCode");
   },
   /**

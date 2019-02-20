@@ -23,7 +23,7 @@ Polymer({
         bottom: 0;
         opacity: 0.6;
         transition: 0.3s all linear;
-        background-color: rgba(255, 0, 116, 1);
+        background-color: var(--haxcms-color, rgba(255, 0, 116, 1));
         padding: 0px 10px;
         border-top-left-radius: 10px;
         border-left: 2px solid black;
@@ -48,7 +48,7 @@ Polymer({
         vertical-align: middle;
         line-height: 40px;
         background-color: black;
-        color: rgba(255, 0, 116, 1);
+        color: var(--haxcms-color, rgba(255, 0, 116, 1));
         transition: all 0.3s linear;
         padding: 8px;
         margin: 0;
@@ -407,13 +407,17 @@ Polymer({
    * toggle state on button tap
    */
   _manifestButtonTap: function(e) {
-    let c = document.createElement("haxcms-manifest-editor-dialog");
+    if (!this.__manifestEditor) {
+      this.__manifestEditor = document.createElement(
+        "haxcms-manifest-editor-dialog"
+      );
+    }
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       cancelable: false,
       detail: {
         title: "Edit site settings",
-        elements: { content: c },
+        elements: { content: this.__manifestEditor },
         invokedBy: this.$.manifestbutton,
         clone: false
       }
