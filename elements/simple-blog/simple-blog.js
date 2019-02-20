@@ -205,6 +205,10 @@ let SimpleBlog = Polymer({
   _goBack: function(e) {
     window.history.pushState(null, null, store.location.baseUrl);
     window.dispatchEvent(new PopStateEvent("popstate"));
+    // should help account for starting on a page where popstate isn't set
+    // and also generate data model mirroring
+    this.fire("json-outline-schema-active-item-changed", {});
+    this.selectedPage = 0;
   }
 });
 export { SimpleBlog };
