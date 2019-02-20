@@ -93,11 +93,36 @@ class A11yMediaYoutube extends PolymerElement {
     temp += this.counter;
     document.body.appendChild(div);
     div.setAttribute("id", temp);
-
+    let vdata = options.videoId.split(/[\?&]/),
+      vid = vdata[0],
+      start = null,
+      end = null;
+    for (let i = 1; i < vdata.length; i++) {
+      let param = vdata[i].split("=");
+      if (param[0] === "t") {
+        let hh = param[1].match(/(\d)+h/),
+          mm = param[1].match(/(\d)+m/),
+          ss = param[1]
+            .replace(/\d+h/, "")
+            .replace(/\d+m/, "")
+            .replace(/s/, "")
+            .match(/(\d)+/),
+          h = hh !== null && hh.length > 1 ? parseInt(hh[1]) * 360 : 0,
+          m = mm !== null && mm.length > 1 ? parseInt(mm[1]) * 60 : 0,
+          s = ss !== null && ss.length > 1 ? parseInt(ss[1]) : 0;
+        start = h + m + s;
+      } else if (param[0] === "start") {
+        start = parseInt(param[1]);
+      } else if (param[0] === "end") {
+        end = parseInt(param[1]);
+      }
+    }
     let iframe = new YT.Player(temp, {
       width: options.width,
       height: options.height,
-      videoId: options.videoId,
+      videoId: vid,
+      startSeconds: start,
+      endSeconds: end,
       playerVars: {
         color: "white",
         controls: 0,
@@ -106,6 +131,8 @@ class A11yMediaYoutube extends PolymerElement {
         enablejsapi: 1,
         iv_load_policy: 3,
         modestbranding: 1,
+        start: start,
+        end: end,
         showinfo: 0,
         rel: 0
       }

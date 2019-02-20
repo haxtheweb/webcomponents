@@ -41,7 +41,8 @@
     <div class="vertical-section-container centered">
       <h1>a11y-media-player Demo</h1>
       <demo-snippet>
-        <a11y-media-player accent-color="pink">
+        <template>
+          <a11y-media-player accent-color="pink" start-seconds="2" stop-seconds="11">
             <source src="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4" type="video/mp4">
             <source src="https://iandevlin.github.io/mdn/video-player-with-captions/sintel-short.webm" type="video/webm">
             <track label="English" kind="subtitles" srclang="en" src="samples/sintel-en.vtt" default="">
@@ -58,7 +59,6 @@
             disable-interactive="" disable-search="" hide-timestamps="">
             <source src="https://personal.psu.edu/lnm105/stclair.mp4" type="video/mp4">
             <track label="English" kind="subtitles" srclang="en" src="samples/stclair.vtt" default="">
-    
           </a11y-media-player>
         </template>
       </demo-snippet>

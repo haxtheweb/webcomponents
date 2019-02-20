@@ -294,9 +294,11 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
         :host #slider,
         :host #controls,
         :host #outertranscript,
-        :host #innertranscript,
-        :host #innertranscript > * {
+        :host #innertranscript {
           width: 100%;
+        }
+        :host #innertranscript > * {
+          width: calc(100% - 1px);
         }
         :host > *,
         :host #innerplayer,
@@ -320,7 +322,6 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
           top: 0;
           left: 0;
           height: 100%;
-          max-height: calc(100vh - 100px);
         }
         :host #playbutton,
         :host #slider,
@@ -382,6 +383,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
         }
         :host #transcript {
           flex: 1 0 150px;
+          overflow-y: scroll;
         }
         :host .sr-only {
           position: absolute;
@@ -788,21 +790,17 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   /**
    * plays the media
    */
-  play(e) {
+  play(controls = false) {
     let root = this;
     root.__playing = true;
-    if (e === undefined || e.detail === root.$.playbutton) {
+    if (controls) {
       // while playing, update the slider and length
       root.__playProgress = setInterval(() => {
         root.__elapsed =
           root.media.getCurrentTime() > 0 ? root.media.getCurrentTime() : 0;
         root.__duration = root.media.duration > 0 ? root.media.duration : 0;
         root._updateCustomTracks();
-        root.__status =
-          root._getHHMMSS(root.media.getCurrentTime(), root.__duration) +
-          "/" +
-          root._getHHMMSS(root.__duration);
-        root.$.controls.setStatus(root.__status);
+        root._setElapedTime(root.media.getCurrentTime(), root.__duration);
         // if the video reaches the end and is not set to loop, stop
         if (root.__elapsed === root.__duration && !root.loop) {
           root.__playing = false;
@@ -884,11 +882,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     ) {
       this.media.seek(time);
       this.__elapsed = time;
-      this.__status =
-        this._getHHMMSS(this.media.getCurrentTime(), this.__duration) +
-        "/" +
-        this._getHHMMSS(this.__duration);
-      this.$.controls.setStatus(this.__status);
+      this._setElapedTime(this.media.getCurrentTime(), this.__duration);
       this._updateCustomTracks();
       if (this.__resumePlaying) this.play();
     }
@@ -991,9 +985,9 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    * (needed for media-player)
    */
   _appendToPlayer(data, type) {
-    let root = this,
-      arr = typeof data === Array ? data : JSON.parse(data);
-    if (arr !== undefined && arr !== null) {
+    if (data !== undefined && data !== null && data !== []) {
+      let root = this,
+        arr = Array.isArray(data) ? data : JSON.parse(data);
       for (let i = 0; i < arr.length; i++) {
         let el = document.createElement(type);
         for (let key in arr[i]) {
@@ -1181,11 +1175,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
 
     // gets and converts video duration
     root.__duration = root.media.duration > 0 ? root.media.duration : 0;
-    root.__status =
-      root._getHHMMSS(0, root.media.duration) +
-      "/" +
-      root._getHHMMSS(root.media.duration);
-    root.$.controls.setStatus(root.__status);
+    root._setElapedTime(0, root.__duration);
     root._getTrackData(root.$.html5.media);
   }
 
@@ -1233,6 +1223,19 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   }
 
   /**
+   * determines if there
+   *
+   * @param {string} the url for the thumbnail image
+   * @returns {string} the string for the style attribute
+   */
+  _hidePlayButton(thumbnailSrc, isYoutube, __elapsed) {
+    return (
+      (isYoutube && thumbnailSrc === null) ||
+      !(__elapsed === undefined || __elapsed === 0)
+    );
+  }
+
+  /**
    * determine which button was clicked and act accordingly
    */
   _onControlsChanged(e) {
@@ -1263,10 +1266,10 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     } else if (action === "pause") {
       root.pause();
     } else if (action === "play") {
-      root.play();
+      root.play(true);
     } else if (action === "restart") {
       root.seek(0);
-      root.play();
+      root.play(e);
     } else if (action === "speed") {
       root.setPlaybackRate(e.detail.value);
     } else if (action === "volume") {
@@ -1275,16 +1278,16 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   }
 
   /**
-   * determines if there
+   * sets duration, taking into consideration start and stop times
    *
-   * @param {string} the url for the thumbnail image
-   * @returns {string} the string for the style attribute
+   * @param {integer} elapsed time in seconds
+   * @param {integer} duration in seconds
+   * @returns {string} status
    */
-  _hidePlayButton(thumbnailSrc, isYoutube, __elapsed) {
-    return (
-      (isYoutube && thumbnailSrc === null) ||
-      !(__elapsed === undefined || __elapsed === 0)
-    );
+  _setElapedTime(elapsed, duration) {
+    this.__status =
+      this._getHHMMSS(elapsed, duration) + "/" + this._getHHMMSS(duration);
+    this.$.controls.setStatus(this.__status);
   }
 
   /**
@@ -1354,11 +1357,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
             if (root.media.getDuration !== undefined) {
               clearInterval(int);
               root.__duration = root.media.duration = root.media.getDuration();
-              root.__status =
-                root._getHHMMSS(0, root.media.duration) +
-                "/" +
-                root._getHHMMSS(root.media.duration);
-              root.$.controls.setStatus(root.__status);
+              root._setElapedTime(0, root.__duration);
               root.disableInteractive = !root.__interactive;
               root._addSourcesAndTracks();
             }
