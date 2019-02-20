@@ -16,7 +16,7 @@
       "hax": "src/micro-copy-heading-hax.json"
     }
   },
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "small call to action / attention that acts as a heading too",
   "repository": {
     "type": "git",

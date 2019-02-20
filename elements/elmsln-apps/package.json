@@ -16,7 +16,7 @@
       "hax": "src/elmsln-apps-hax.json"
     }
   },
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "The applications of ELMSLN in one place to make it easier to work on",
   "repository": {
     "type": "git",
@@ -40,8 +40,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/elmsln-loading": "^2.0.6",
-    "@lrnwebcomponents/materializecss-styles": "^2.0.6",
+    "@lrnwebcomponents/elmsln-loading": "^2.0.7",
+    "@lrnwebcomponents/materializecss-styles": "^2.0.7",
     "@polymer/polymer": "^3.0.5",
     "@vaadin/vaadin-grid": "^5.2.5",
     "@vaadin/vaadin-upload": "^4.2.1"

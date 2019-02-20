@@ -16,7 +16,7 @@
       "hax": "src/scary-gallery-hax.json"
     }
   },
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Start of scary-gallery",
   "repository": {
     "type": "git",

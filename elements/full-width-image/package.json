@@ -16,7 +16,7 @@
       "hax": "src/full-width-image-hax.json"
     }
   },
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "full width image that flows beyond boundaries",
   "repository": {
     "type": "git",

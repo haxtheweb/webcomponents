@@ -16,7 +16,7 @@
       "hax": "src/editable-table-hax.json"
     }
   },
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "A table that's editable",
   "repository": {
     "type": "git",
@@ -40,10 +40,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@lrnwebcomponents/a11y-collapse": "^2.0.6",
-    "@lrnwebcomponents/dropdown-select": "^2.0.6",
-    "@lrnwebcomponents/responsive-utility": "^2.0.6",
-    "@lrnwebcomponents/simple-colors": "^2.0.6",
+    "@lrnwebcomponents/a11y-collapse": "^2.0.7",
+    "@lrnwebcomponents/dropdown-select": "^2.0.7",
+    "@lrnwebcomponents/responsive-utility": "^2.0.7",
+    "@lrnwebcomponents/simple-colors": "^2.0.7",
     "@polymer/iron-a11y-keys": "^3.0.0",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/iron-autogrow-textarea": "^3.0.0",

@@ -16,7 +16,7 @@
       "hax": "src/app-editor-hax-hax.json"
     }
   },
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "HAX but for mobile / desktop application development",
   "repository": {
     "type": "git",
