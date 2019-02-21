@@ -139,17 +139,20 @@ Polymer({
       id="menubutton"
       icon="icons:menu"
       on-tap="_menuButtonTap"
+      aria-label="Expand menu"
     ></paper-fab>
     <paper-fab
       id="cancelbutton"
       icon="icons:cancel"
       on-tap="_cancelButtonTap"
       hidden$="[[!editMode]]"
+      aria-label="Cancel editing"
     ></paper-fab>
     <paper-fab
       id="editbutton"
       icon="[[__editIcon]]"
       on-tap="_editButtonTap"
+      aria-label$="[[__editText]]"
     ></paper-fab>
     <div class="wrapper">
       <div class="main-title">[[activeItem.title]]</div>
@@ -157,21 +160,25 @@ Polymer({
         id="deletebutton"
         icon="icons:delete"
         on-tap="_deleteButtonTap"
+        aria-label="Delete current page"
       ></paper-icon-button>
       <paper-icon-button
         id="addbutton"
         icon="icons:add"
         on-tap="_addButtonTap"
+        aria-label="Add new page"
       ></paper-icon-button>
       <paper-icon-button
         id="outlinebutton"
         icon="icons:list"
         on-tap="_outlineButtonTap"
+        aria-label="Edit site outline"
       ></paper-icon-button>
       <paper-icon-button
         id="manifestbutton"
         icon="icons:settings"
         on-tap="_manifestButtonTap"
+        aria-label="Edit site settings"
       ></paper-icon-button>
     </div>
     <paper-tooltip for="menubutton" position="top" offset="14"

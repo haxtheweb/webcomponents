@@ -570,7 +570,7 @@ Polymer({
       cancelable: true,
       detail: {
         text: data.response,
-        duration: 0,
+        duration: 5000,
         slot: content.cloneNode(true)
       }
     });
