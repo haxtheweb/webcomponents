@@ -57,14 +57,14 @@ let HAXCMSSiteBuilder = Polymer({
     ></paper-progress>
     <iron-ajax
       id="manifest"
-      url="[[outlineLocation]][[file]]"
+      url="[[outlineLocation]][[file]][[__timeStamp]]"
       handle-as="json"
       debounce-duration="250"
       last-response="{{manifest}}"
     ></iron-ajax>
     <iron-ajax
       id="activecontent"
-      url="[[outlineLocation]][[activeItem.location]]"
+      url="[[outlineLocation]][[activeItem.location]][[__timeStamp]]"
       handle-as="text"
       loading="{{loading}}"
       debounce-duration="250"
@@ -339,6 +339,7 @@ let HAXCMSSiteBuilder = Polymer({
    */
   _activeItemChanged: function(newValue, oldValue) {
     if (typeof newValue.id !== typeof undefined) {
+      this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
       this.$.activecontent.generateRequest();
     }
     // we had something, now we don't. wipe out the content area of the theme
@@ -356,6 +357,7 @@ let HAXCMSSiteBuilder = Polymer({
    */
   _triggerUpdatedData: function(e) {
     // append a value so we know we get fresher data
+    this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
     this.$.manifest.generateRequest();
   },
 
@@ -364,6 +366,7 @@ let HAXCMSSiteBuilder = Polymer({
    */
   _triggerUpdatedPage: function(e) {
     // append a value so we know we get fresher data
+    this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
     this.$.activecontent.generateRequest();
   },
 
