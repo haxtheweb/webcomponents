@@ -50,12 +50,13 @@ Polymer({
    * Try to get context of what backend is powering this
    */
   getContext: function() {
-    var context = "";
-    const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+    let context = "";
     // figure out the context we need to apply for where the editing creds
     // and API might come from
     if (typeof DatArchive !== typeof undefined) {
       context = "beaker";
+    } else if (window.__haxCMSContextPublished === true) {
+      context = "published";
     } else if (window.__haxCMSContextNode === true) {
       // @todo add support for node js based back end
       context = "nodejs";
@@ -69,14 +70,18 @@ Polymer({
       script.src = `/haxcms-jwt.php`;
       document.documentElement.appendChild(script);
     }
-    // import and set the tag based on the context
-    window.cmsSiteEditor.tag = `haxcms-backend-${context}`;
-    // delay import slightly to ensure global scope is there
-    async.microTask.run(() => {
-      setTimeout(() => {
-        import(`${basePath}${window.cmsSiteEditor.tag}.js`);
-      }, 50);
-    });
+    // dynamic import if this isn't published / static
+    if (context != "published") {
+      const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
+      // import and set the tag based on the context
+      window.cmsSiteEditor.tag = `haxcms-backend-${context}`;
+      // delay import slightly to ensure global scope is there
+      async.microTask.run(() => {
+        setTimeout(() => {
+          import(`${basePath}${window.cmsSiteEditor.tag}.js`);
+        }, 50);
+      });
+    }
     return context;
   }
 });
