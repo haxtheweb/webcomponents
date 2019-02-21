@@ -22,10 +22,10 @@ window.cmsSiteEditor.instance = null;
 Polymer({
   is: "haxcms-editor-builder",
   /**
-   * created life cycle
+   * ready life cycle
    */
   ready: function() {
-    this.getContext();
+    this.applyContext();
   },
   attached: function() {
     window.addEventListener("hax-store-ready", this.storeReady.bind(this));
@@ -64,14 +64,20 @@ Polymer({
       context = "demo";
     } else {
       context = "php";
+    }
+    return context;
+  },
+  applyContext: function() {
+    let context = this.getContext();
+    if (context === "php") {
       // append the php for global scope to show up via window
       // this is a unique case since it's server side generated in HAXCMS/PHP
       let script = document.createElement("script");
       script.src = `/haxcms-jwt.php`;
       document.documentElement.appendChild(script);
     }
-    // dynamic import if this isn't published / static
-    if (context != "published") {
+    // dynamic import if this isn't published
+    if (context !== "published") {
       const basePath = pathFromUrl(decodeURIComponent(import.meta.url));
       // import and set the tag based on the context
       window.cmsSiteEditor.tag = `haxcms-backend-${context}`;
@@ -82,7 +88,6 @@ Polymer({
         }, 50);
       });
     }
-    return context;
   }
 });
 

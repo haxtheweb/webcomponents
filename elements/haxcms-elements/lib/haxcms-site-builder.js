@@ -184,6 +184,7 @@ let HAXCMSSiteBuilder = Polymer({
    * ready life cycle
    */
   created: function() {
+    this.__timeStamp = "";
     // attempt to set polymer passive gestures globally
     // this decreases logging and improves performance on scrolling
     setPassiveTouchGestures(true);
@@ -204,12 +205,17 @@ let HAXCMSSiteBuilder = Polymer({
     );
   },
   attached: function() {
+    this.editorBuilder = document.createElement("haxcms-editor-builder");
     // attach editor builder after we've appended to the screen
-    document.body.appendChild(document.createElement("haxcms-editor-builder"));
+    document.body.appendChild(this.editorBuilder);
     // prep simple toast notification
     async.microTask.run(() => {
       if (window.cmsSiteEditor && this.manifest) {
         window.cmsSiteEditor.jsonOutlineSchema = this.manifest;
+      }
+      // get fresh data if not published
+      if (this.editorBuilder.getContext() !== "published") {
+        this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
       }
     });
   },
@@ -339,7 +345,10 @@ let HAXCMSSiteBuilder = Polymer({
    */
   _activeItemChanged: function(newValue, oldValue) {
     if (typeof newValue.id !== typeof undefined) {
-      this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+      // get fresh data if not published
+      if (this.editorBuilder.getContext() !== "published") {
+        this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+      }
       this.$.activecontent.generateRequest();
     }
     // we had something, now we don't. wipe out the content area of the theme
@@ -356,8 +365,10 @@ let HAXCMSSiteBuilder = Polymer({
    * got a message that we need to update our json manifest data
    */
   _triggerUpdatedData: function(e) {
-    // append a value so we know we get fresher data
-    this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+    // get fresh data if not published
+    if (this.editorBuilder.getContext() !== "published") {
+      this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+    }
     this.$.manifest.generateRequest();
   },
 
@@ -365,8 +376,10 @@ let HAXCMSSiteBuilder = Polymer({
    * got a message that we need to update our page content
    */
   _triggerUpdatedPage: function(e) {
-    // append a value so we know we get fresher data
-    this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+    // get fresh data if not published
+    if (this.editorBuilder.getContext() !== "published") {
+      this.__timeStamp = "?" + Math.floor(Date.now() / 1000);
+    }
     this.$.activecontent.generateRequest();
   },
 
