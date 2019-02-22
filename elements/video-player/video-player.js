@@ -756,7 +756,6 @@ class VideoPlayer extends PolymerElement {
           : window.MediaBehaviors.Video.getVideoType(source);
       // ensure that this is a valid url / cleaned up a bit
       source = window.MediaBehaviors.Video.cleanVideoSource(source, type);
-      console.log("_computeSRC", source);
       if (type == "vimeo") {
         if (this.vimeoTitle) {
           source += "?title=1";

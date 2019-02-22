@@ -557,6 +557,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
               muted$="[[muted]]"
               manifest$="[[manifest]]"
               on-media-loaded="_handleMediaLoaded"
+              ontimeupdate="_handleTimeUpdate"
               playing$="[[__playing]]"
               playback-rate$="[[playbackRate]]"
               thumbnail-src$="[[thumbnailSrc]]"
@@ -584,8 +585,6 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
           id="slider"
           class="screen-only"
           max$="[[__duration]]"
-          on-dragging-changed="_handleSliderDragging"
-          on-focused-changed="_handleSliderKeyboard"
           secondary-progress$="[[__buffered]]"
           value$="[[__elapsed]]"
         >
@@ -773,8 +772,14 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     root._setPlayerHeight(aspect);
     if (root.isYoutube) {
       root._youTubeRequest();
+      document.addEventListener("timeupdate", e => {
+        if (e.detail === root.media) root._handleTimeUpdate(e);
+      });
     } else {
       root.media = root.$.html5;
+      root.media.media.addEventListener("timeupdate", e => {
+        root._handleTimeUpdate(e);
+      });
       root._addSourcesAndTracks();
     }
     root.$.transcript.setMedia(root.$.innerplayer);
@@ -785,8 +790,20 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
         this.fullscreen = screenfull.isFullscreen;
       });
     }
-    document.addEventListener("timeupdate", e => {
-      if (e.detail === root.media) root._handleTimeUpdate(e);
+    root.$.slider.addEventListener("mousedown", e => {
+      root._handleSliderStart();
+    });
+    root.$.slider.addEventListener("mouseup", e => {
+      root._handleSliderStop();
+    });
+    root.$.slider.addEventListener("keydown", e => {
+      root._handleSliderStart();
+    });
+    root.$.slider.addEventListener("keyup", e => {
+      root._handleSliderStop();
+    });
+    root.$.slider.addEventListener("blur", e => {
+      root._handleSliderStop();
     });
   }
 
@@ -810,9 +827,6 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     let root = this;
     root.__playing = false;
     root.media.pause();
-
-    //stop updating the slider and length
-    clearInterval(root.__playProgress);
   }
 
   /**
@@ -873,8 +887,6 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
       time <= seekable.end(0)
     ) {
       this.media.seek(time);
-      this._setElapsedTime(time);
-      this._updateCustomTracks();
     }
   }
 
@@ -1169,6 +1181,19 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   }
 
   /**
+   * determines if there
+   *
+   * @param {string} the url for the thumbnail image
+   * @returns {string} the string for the style attribute
+   */
+  _hidePlayButton(thumbnailSrc, isYoutube, __elapsed) {
+    return (
+      (isYoutube && thumbnailSrc === null) ||
+      !(__elapsed === undefined || __elapsed === 0)
+    );
+  }
+
+  /**
    * handles transcript printing
    */
   _handlePrinting(e) {
@@ -1185,23 +1210,26 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   _handleSearchAdded(e) {
     this.search = e.detail;
   }
+
   /**
    * handles duration slider dragging with a mouse
    */
-  _handleSliderDragging(e) {
-    let root = this;
-    root._toggleSliderSeek(
-      root.$.slider.dragging,
-      root.$.slider.immediateValue
-    );
+  _handleSliderStart(e) {
+    this.__resumePlaying = !this.paused;
+    this.pause();
+    this.__seeking = true;
   }
 
   /**
-   * handles duration slider dragging with a keyboard
+   * handles duration slider dragging with a mouse
    */
-  _handleSliderKeyboard(e) {
-    let root = this;
-    root._toggleSliderSeek(root.$.slider.focused, root.$.slider.value);
+  _handleSliderStop(e) {
+    this.seek(this.$.slider.immediateValue);
+    this.__seeking = false;
+    if (this.__resumePlaying) {
+      this.play();
+      this.__resumePlaying = null;
+    }
   }
 
   /**
@@ -1213,11 +1241,12 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     if (
       root.media.seekable !== undefined &&
       root.media.seekable.length > 0 &&
-      root.media.seekable.end(0) <= this.media.getCurrentTime()
+      root.media.seekable.end(0) <= root.media.getCurrentTime()
     ) {
       root.stop();
       root.__playing = false;
     }
+    //prevent slider and cue updates until finished seeking
     root._updateCustomTracks();
     root._setElapsedTime();
   }
@@ -1227,19 +1256,6 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    */
   _handleTranscriptScrollToggle(e) {
     this.disableScroll = !this.disableScroll;
-  }
-
-  /**
-   * determines if there
-   *
-   * @param {string} the url for the thumbnail image
-   * @returns {string} the string for the style attribute
-   */
-  _hidePlayButton(thumbnailSrc, isYoutube, __elapsed) {
-    return (
-      (isYoutube && thumbnailSrc === null) ||
-      !(__elapsed === undefined || __elapsed === 0)
-    );
   }
 
   /**
@@ -1290,16 +1306,15 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    * @param {integer} seek time in seconds, optional
    * @returns {string} status
    */
-  _setElapsedTime(time = null) {
+  _setElapsedTime() {
     let elapsed =
-        time !== null
-          ? time
+        this.__seeking === true
+          ? this.$.slider.immediateValue
           : this.media.getCurrentTime() > 0
           ? this.media.getCurrentTime()
           : 0,
       duration = this.media.duration > 0 ? this.media.duration : 0;
-    console.log("_setElapsedTime e,d", elapsed, duration);
-    if (time === null) this.__elapsed = elapsed;
+    this.__elapsed = elapsed;
     this.__duration = duration;
     if (this.media.seekable !== undefined && this.media.seekable.length > 0) {
       if (this.media.seekable.start(0) !== undefined)
@@ -1327,23 +1342,6 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    */
   _showCustomCaptions(isYoutube, audioOnly, hasCaptions, cc) {
     return (isYoutube || audioOnly) && hasCaptions && cc;
-  }
-
-  /**
-   * handles slider seeking via mouse or keyboard
-   *
-   * @param {boolean} Is the slider currently being used to seek?
-   * @param {number} the value of the slider
-   */
-  _toggleSliderSeek(seeking, value) {
-    if (seeking) {
-      if (this.__playing) this.__resumePlaying = true;
-      this.pause();
-    } else {
-      this.seek(value);
-      if (this.__resumePlaying) this.play();
-      this.__resumePlaying = false;
-    }
   }
 
   /**

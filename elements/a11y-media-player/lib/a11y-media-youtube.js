@@ -19,10 +19,6 @@ window.A11yMediaYoutube.requestAvailability = () => {
   }
   return window.A11yMediaYoutube.instance;
 };
-window.A11yMediaYoutubeMetadataLoaded = json => {
-  console.log(json);
-  console.log("Duration: " + json["data"]["duration"] + "<br>");
-};
 /**
  * `a11y-media-youtube`
  * `A utility that manages multiple instances of a11y-media-player on a single page.`
@@ -75,7 +71,7 @@ class A11yMediaYoutube extends PolymerElement {
     api.setAttribute("src", "https://www.youtube.com/iframe_api");
     api.setAttribute("type", "text/javascript");
     document.body.appendChild(api);
-    window.onYouTubeIframeAPIReady = function() {
+    window.onYouTubeIframeAPIReady = () => {
       var event = new CustomEvent("youtube-api-ready");
       root.apiReady = true;
       document.dispatchEvent(event);
@@ -102,7 +98,7 @@ class A11yMediaYoutube extends PolymerElement {
     temp += this.counter;
     document.body.appendChild(div);
     div.setAttribute("id", temp);
-    let loadVideo = function(e) {
+    let loadVideo = e => {
         for (let i = 1; i < vdata.length; i++) {
           let param = vdata[i].split("=");
           if (param[0] === "t") {
@@ -156,37 +152,34 @@ class A11yMediaYoutube extends PolymerElement {
     iframe.duration = 0;
     iframe.paused = true;
     iframe.timeupdate;
-    iframe.play = function() {
-      console.log("play");
-      iframe.playVideo();
+    iframe.play = () => {
+      if (iframe.playVideo !== undefined) iframe.playVideo();
     };
-    iframe.addEventListener("onStateChange", function() {
+    iframe.addEventListener("onStateChange", () => {
       iframe.paused = iframe.getPlayerState() !== 1;
       if (iframe.paused) {
         clearInterval(iframe.timeupdate);
       } else {
         iframe.timeupdate = setInterval(() => {
-          console.log("iframe.paused", iframe.paused);
           document.dispatchEvent(
             new CustomEvent("timeupdate", { detail: iframe })
           );
         }, 1);
       }
     });
-    iframe.pause = function() {
+    iframe.pause = () => {
       if (iframe.pauseVideo !== undefined) iframe.pauseVideo();
     };
-    iframe.seek = function(time = 0) {
-      console.log("seek", time);
+    iframe.seek = (time = 0) => {
       if (iframe.seekTo !== undefined) {
-        iframe.seekTo(time);
         iframe.pause();
+        iframe.seekTo(time);
         document.dispatchEvent(
           new CustomEvent("timeupdate", { detail: iframe })
         );
       }
     };
-    iframe.setMute = function(mode) {
+    iframe.setMute = mode => {
       if (iframe.mute !== undefined) mode ? iframe.mute() : iframe.unMute();
     };
     //keep playing the video until the duration is loaded
@@ -206,13 +199,12 @@ class A11yMediaYoutube extends PolymerElement {
           end = end !== null ? Math.min(end, iframe.duration) : iframe.duration;
           //add markers to the slider; could be used in future for interactive as well
           iframe.seekable.length = 1;
-          iframe.seekable.start = function(index) {
+          iframe.seekable.start = index => {
             return start;
           };
-          iframe.seekable.end = function(index) {
+          iframe.seekable.end = index => {
             return end;
           };
-          console.log(iframe.seekable.start(0));
           iframe.seekTo(start);
           document.dispatchEvent(
             new CustomEvent("youtube-video-metadata-loaded", { detail: iframe })
