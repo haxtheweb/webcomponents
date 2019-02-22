@@ -1,5 +1,4 @@
 import { html, Polymer } from "@polymer/polymer/polymer-legacy.js";
-import * as async from "@polymer/polymer/lib/utils/async.js";
 import { Router } from "@vaadin/router";
 import { autorun } from "mobx";
 import { store } from "./haxcms-site-store";
@@ -20,19 +19,12 @@ Polymer({
         display: block;
       }
     </style>
+    <slot></slot>
   `,
 
   is: "haxcms-site-router",
 
   properties: {
-    /**
-     * Manifest from file
-     */
-    manifest: {
-      type: Object,
-      notify: true,
-      observer: "_manifestChanged"
-    },
     baseURI: {
       type: String
     }
@@ -42,11 +34,17 @@ Polymer({
    * ready life cycle
    */
   created: function() {
+    // create router
+    let options = {};
+    if (this.baseURI) {
+      options.baseUrl = this.baseURI;
+    }
+    this.router = new Router(this, options);
     /**
      * Subscribe to changes in the manifest
      */
     autorun(() => {
-      this._manifestChanged(store.routerManifest);
+      this._updateRouter(store.routerManifest);
     });
     window.addEventListener(
       "vaadin-router-location-changed",
@@ -65,17 +63,6 @@ Polymer({
   },
 
   /**
-   * notice changes to the maifest and publish a new verion of the
-   * router manifest on the event bus.
-   */
-  _manifestChanged: function(routerManifest) {
-    if (routerManifest) {
-      // rebuild the router
-      this._updateRouter(routerManifest);
-    }
-  },
-
-  /**
    * Update the router based on a manifest.
    * This should not be called directly. Use the
    * 'haxcms-router-manifest-changed' event
@@ -84,22 +71,17 @@ Polymer({
    */
   _updateRouter: function(manifest) {
     if (!manifest || typeof manifest.items === "undefined") return;
-    let options = {};
-    if (this.baseURI) {
-      options.baseUrl = this.baseURI;
-    }
-    const router = new Router(this, options);
     const routerItems = manifest.items.map(i => {
       return {
         path: i.location,
         name: i.id,
-        component: "haxcms-site-router-location"
+        component: `fake-${i.id}-e`
       };
     });
-    router.setRoutes([
+    this.router.setRoutes([
       ...routerItems,
-      { path: "/", component: "haxcms-site-router-location", name: "home" },
-      { path: "/(.*)", component: "haxcms-site-router-location", name: "404" }
+      { path: "/", component: "fake-home-e", name: "home" },
+      { path: "/(.*)", component: "fake-404-e", name: "404" }
     ]);
   },
 
