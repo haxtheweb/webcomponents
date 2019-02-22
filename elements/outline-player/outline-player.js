@@ -401,7 +401,13 @@ let OutlinePlayer = Polymer({
       this._routerManifest = toJS(store.routerManifest);
       this._location = store.location;
       if (store.activeItem && typeof store.activeItem !== "undefined") {
-        this.selected = store.activeItem;
+        if (!this.selected) {
+          setTimeout(() => {
+            this.selected = store.activeItem;
+          }, 250);
+        } else {
+          this.selected = store.activeItem;
+        }
       }
     });
   },
@@ -429,7 +435,7 @@ let OutlinePlayer = Polymer({
         // map menu.
         setTimeout(() => {
           this.selected = firstItem.id;
-        }, 500);
+        }, 250);
         window.dispatchEvent(
           new CustomEvent("json-outline-schema-active-item-changed", {
             detail: firstItem
