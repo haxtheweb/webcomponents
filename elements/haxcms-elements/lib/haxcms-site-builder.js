@@ -189,8 +189,6 @@ let HAXCMSSiteBuilder = Polymer({
     // this decreases logging and improves performance on scrolling
     setPassiveTouchGestures(true);
     window.JSONOutlineSchema.requestAvailability();
-    window.SimpleModal.requestAvailability();
-    window.SimpleToast.requestAvailability();
     window.addEventListener(
       "haxcms-trigger-update",
       this._triggerUpdatedData.bind(this)
@@ -205,6 +203,8 @@ let HAXCMSSiteBuilder = Polymer({
     );
   },
   attached: function() {
+    window.SimpleModal.requestAvailability();
+    window.SimpleToast.requestAvailability();
     this.editorBuilder = document.createElement("haxcms-editor-builder");
     // attach editor builder after we've appended to the screen
     document.body.appendChild(this.editorBuilder);
