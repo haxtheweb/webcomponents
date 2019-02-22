@@ -315,10 +315,6 @@ Polymer({
       }
     });
     this.dispatchEvent(evt);
-    // get around initial setup state management
-    if (typeof this.__body !== typeof undefined) {
-      window.HaxStore.instance.activeHaxBody.importContent(this.__body);
-    }
     async.microTask.run(() => {
       // allow for initial setting since this editor gets injected basically
       if (typeof window.cmsSiteEditor.jsonOutlineSchema !== typeof undefined) {

@@ -22,7 +22,7 @@ Polymer({
         right: 0;
         bottom: 0;
         opacity: 0.6;
-        transition: 0.3s all linear;
+        transition: 0.6s all ease-in-out;
         background-color: var(--haxcms-color, rgba(255, 0, 116, 1));
         padding: 0px 10px;
         border-top-left-radius: 10px;
@@ -49,7 +49,7 @@ Polymer({
         line-height: 40px;
         background-color: black;
         color: var(--haxcms-color, rgba(255, 0, 116, 1));
-        transition: all 0.3s linear;
+        transition: 0.3s all ease-in-out;
         padding: 8px;
         margin: 0;
         position: relative;
@@ -67,7 +67,7 @@ Polymer({
         border-radius: 50%;
         margin: 5px 2px 0 2px;
         background-color: rgba(0, 0, 0, 0.2);
-        transition: 0.3s all linear;
+        transition: 0.3s all ease-in-out;
       }
       paper-icon-button:hover,
       paper-icon-button:focus,
@@ -218,7 +218,6 @@ Polymer({
      */
     activeItem: {
       type: Object,
-      value: {},
       observer: "_activeItemChanged"
     },
     /**

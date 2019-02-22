@@ -43,7 +43,7 @@ Polymer({
       // forces a nice fade in transition
       setTimeout(() => {
         window.cmsSiteEditor.haxCmsSiteEditorUIElement.painting = false;
-      }, 50);
+      }, 5);
     }
   },
   /**

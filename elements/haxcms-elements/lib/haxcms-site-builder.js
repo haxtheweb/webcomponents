@@ -247,7 +247,7 @@ let HAXCMSSiteBuilder = Polymer({
     this.notifyPath("queryParams.page");
     // check for authoring xp by just asking for the object
     // timeout helps w/ some initial setup work
-    var time = 500;
+    var time = 2000;
     if (window.HaxStore && window.HaxStore.ready) {
       time = 10;
     }
@@ -280,6 +280,16 @@ let HAXCMSSiteBuilder = Polymer({
             let frag = document.createRange().createContextualFragment(html);
             dom(this.themeElement).appendChild(frag);
             this.fire("json-outline-schema-active-body-changed", html);
+            if (!window.HaxStore || !window.HaxStore.ready) {
+              setTimeout(() => {
+                if (
+                  window.cmsSiteEditor.instance &&
+                  window.cmsSiteEditor.haxCmsSiteEditorUIElement
+                ) {
+                  window.HaxStore.instance.activeHaxBody.importContent(html);
+                }
+              }, 2000);
+            }
           }, 50);
         });
         // if there are, dynamically import them
@@ -353,9 +363,6 @@ let HAXCMSSiteBuilder = Polymer({
     }
     // we had something, now we don't. wipe out the content area of the theme
     else if (typeof newValue.id === typeof undefined) {
-      async.microTask.run(() => {
-        this.wipeSlot(this.themeElement, "*");
-      });
       // fire event w/ nothing, this is because there is no content
       this.fire("json-outline-schema-active-body-changed", null);
     }
