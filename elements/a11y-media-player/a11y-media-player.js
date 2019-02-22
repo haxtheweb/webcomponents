@@ -790,22 +790,30 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   /**
    * plays the media
    */
-  play(controls = false) {
-    let root = this;
+  play() {
+    let root = this,
+      stopped = !(root.__playing === true);
     root.__playing = true;
-    if (controls) {
+    //only set a new interval if the playing stopped
+    if (stopped) {
       // while playing, update the slider and length
       root.__playProgress = setInterval(() => {
-        root.__elapsed =
-          root.media.getCurrentTime() > 0 ? root.media.getCurrentTime() : 0;
-        root.__duration = root.media.duration > 0 ? root.media.duration : 0;
-        root._updateCustomTracks();
-        root._setElapedTime(root.media.getCurrentTime(), root.__duration);
-        // if the video reaches the end and is not set to loop, stop
-        if (root.__elapsed === root.__duration && !root.loop) {
-          root.__playing = false;
-          clearInterval(root.__playProgress);
+        if (
+          root.media.seekable !== undefined &&
+          root.media.seekable.length > 0 &&
+          root.media.seekable.end(0) <= this.media.getCurrentTime()
+        ) {
+          root.stop();
+          root.seek(0);
         }
+        root._updateCustomTracks();
+        root._setElapsedTime();
+        // if the video reaches the end and is not set to loop, stop
+        if (root.__elapsed === root.__duration && !root.loop)
+          root.__playing = false;
+
+        // if the video stops, clear the interval
+        if (root.__playing === false) clearInterval(root.__playProgress);
 
         //updated buffered section of the slider
         root.__buffered = root.media.getBufferedTime;
@@ -881,10 +889,8 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
       time <= seekable.end(0)
     ) {
       this.media.seek(time);
-      this.__elapsed = time;
-      this._setElapedTime(this.media.getCurrentTime(), this.__duration);
+      this._setElapsedTime(time);
       this._updateCustomTracks();
-      if (this.__resumePlaying) this.play();
     }
   }
 
@@ -1159,7 +1165,15 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
       root.$.transcript !== undefined &&
       root.$.transcript !== null
     ) {
+      console.log("_handleCueSeek check if playing ", root.__playing);
       root.__resumePlaying = root.__playing;
+      console.log("_handleCueSeek set resume ", root.__resumePlaying);
+      console.log(
+        "_handleCueSeek set playing is ",
+        root.__playing,
+        " and resume is ",
+        root.__resumePlaying
+      );
       root.seek(e.detail);
     }
   }
@@ -1174,8 +1188,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     root.$.playbutton.removeAttribute("disabled");
 
     // gets and converts video duration
-    root.__duration = root.media.duration > 0 ? root.media.duration : 0;
-    root._setElapedTime(0, root.__duration);
+    root._setElapsedTime();
     root._getTrackData(root.$.html5.media);
   }
 
@@ -1280,11 +1293,29 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   /**
    * sets duration, taking into consideration start and stop times
    *
-   * @param {integer} elapsed time in seconds
-   * @param {integer} duration in seconds
+   * @param {integer} seek time in seconds, optional
    * @returns {string} status
    */
-  _setElapedTime(elapsed, duration) {
+  _setElapsedTime(time = null) {
+    let elapsed =
+        time !== null
+          ? time
+          : this.media.getCurrentTime() > 0
+          ? this.media.getCurrentTime()
+          : 0,
+      duration = this.media.duration > 0 ? this.media.duration : 0;
+    if (time === null) this.__elapsed = elapsed;
+    this.__duration = duration;
+    if (this.media.seekable !== undefined && this.media.seekable.length > 0) {
+      if (this.media.seekable.start(0) !== undefined)
+        elapsed -= this.media.seekable.start(0);
+      if (this.media.seekable.end(0) !== undefined)
+        duration =
+          this.media.seekable.end(0) -
+          (this.media.seekable.start(0) !== undefined
+            ? this.media.seekable.start(0)
+            : 0);
+    }
     this.__status =
       this._getHHMMSS(elapsed, duration) + "/" + this._getHHMMSS(duration);
     this.$.controls.setStatus(this.__status);
@@ -1311,11 +1342,31 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    */
   _toggleSliderSeek(seeking, value) {
     if (seeking) {
+      console.log("While seeking, check if this is playing?", this.__playing);
       if (this.__playing) this.__resumePlaying = true;
+      console.log("While seeking, set resume?", this.__resumePlaying);
       this.pause();
+      console.log(
+        "While seeking, playing is",
+        this.__playing,
+        " and resume is ",
+        this.__resumePlaying
+      );
     } else {
       this.seek(value);
+      console.log("When seek is finished, check resume", this.__resumePlaying);
+      if (this.__resumePlaying) this.play();
+      console.log(
+        "When seek is finished, video playing is",
+        this.__resumePlaying
+      );
       this.__resumePlaying = false;
+      console.log(
+        "While seek is finished, playing is",
+        this.__playing,
+        " and resume is ",
+        this.__resumePlaying
+      );
     }
   }
 
@@ -1342,6 +1393,18 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     root.disableInteractive = true;
     if (root.__playerAttached && root.__playerReady) {
       let ytInit = function() {
+          // once metadata is ready on video set it on the media player
+          let setMetadata = function() {
+            root.__duration = root.media.duration;
+            root._setElapsedTime();
+            if (
+              root.media.seekable !== undefined &&
+              root.media.seekable.length > 0
+            ) {
+              root.$.slider.min = root.media.seekable.start(0);
+            }
+            root._addSourcesAndTracks();
+          };
           // initialize the YouTube player
           root.media = ytUtil.initYoutubePlayer({
             width: "100%",
@@ -1352,16 +1415,17 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
           root.$.youtube.appendChild(root.media.a);
           root.__ytAppended = true;
           root._updateCustomTracks();
+
           // youtube API doesn't immediately give length of a video
-          let int = setInterval(() => {
-            if (root.media.getDuration !== undefined) {
-              clearInterval(int);
-              root.__duration = root.media.duration = root.media.getDuration();
-              root._setElapedTime(0, root.__duration);
-              root.disableInteractive = !root.__interactive;
-              root._addSourcesAndTracks();
-            }
-          }, 100);
+          if (root.media.duration > 0) {
+            setMetadata();
+          } else {
+            document.addEventListener("youtube-video-metadata-loaded", e => {
+              if (e.detail === root.media) {
+                setMetadata();
+              }
+            });
+          }
         },
         checkApi = function(e) {
           if (ytUtil.apiReady) {
