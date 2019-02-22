@@ -1782,16 +1782,32 @@ window.HaxStore.haxElementToNode = (tag, content, properties) => {
         newNode.removeAttribute(attributeName);
       } else if (
         properties[property] != null &&
-        properties[property].constructor === Array &&
-        !frag.properties[property].readOnly
+        properties[property].constructor === Array
       ) {
-        newNode.set(attributeName, properties[property]);
+        // do nothing if we have additional data to suggest this is actually readOnly
+        // polymer / typed specific thing
+        if (
+          frag.properties &&
+          frag.properties[property] &&
+          frag.properties[property].readOnly
+        ) {
+        } else {
+          newNode.set(attributeName, properties[property]);
+        }
       } else if (
         properties[property] != null &&
-        properties[property].constructor === Object &&
-        !frag.properties[property].readOnly
+        properties[property].constructor === Object
       ) {
-        newNode.set(attributeName, properties[property]);
+        // do nothing if we have additional data to suggest this is actually readOnly
+        // polymer / typed specific thing
+        if (
+          frag.properties &&
+          frag.properties[property] &&
+          frag.properties[property].readOnly
+        ) {
+        } else {
+          newNode.set(attributeName, properties[property]);
+        }
       } else {
         newNode.setAttribute(attributeName, properties[property]);
       }
