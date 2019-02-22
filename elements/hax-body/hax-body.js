@@ -35,7 +35,7 @@ let HaxBody = Polymer({
       }
       .hax-context-menu {
         padding: 0;
-        margin: 0;
+        margin-left: -5000px;
         position: absolute;
         visibility: hidden;
         opacity: 0;
@@ -43,7 +43,7 @@ let HaxBody = Polymer({
         float: left;
         display: block;
         pointer-events: none;
-        transition: 0.2s all ease-in-out;
+        transition: 0.8s opacity ease-in-out, 0.8s visibility ease-in-out;
       }
       #haxinputmixer {
         z-index: 10000000;
@@ -52,6 +52,7 @@ let HaxBody = Polymer({
         visibility: visible;
         opacity: 1;
         pointer-events: all;
+        margin-left: unset;
       }
       :host #bodycontainer ::slotted(*) {
         font-family: "Noto Serif", serif;
@@ -557,11 +558,16 @@ let HaxBody = Polymer({
             break;
         }
       }, 100);
-      this.__dropActiveHover();
+      if (this.$.platecontextmenu.classList.contains("hax-active-hover")) {
+        this.__dropActiveHover();
+      }
     }
   },
   _onKeyPress: function(e) {
-    if (this.editMode) {
+    if (
+      this.editMode &&
+      this.$.platecontextmenu.classList.contains("hax-active-hover")
+    ) {
       this.__dropActiveHover();
     }
   },
@@ -587,7 +593,7 @@ let HaxBody = Polymer({
           e.target.parentNode.getAttribute("data-hax-ray")
         );
       }
-      if (!this.$.cecontextmenu.classList.contains("hax-active-hover")) {
+      if (!this.$.platecontextmenu.classList.contains("hax-active-hover")) {
         let normalizedEvent = dom(e);
         let local = normalizedEvent.localTarget;
         // see if the target is relevent when showing the edit menu operations
@@ -612,17 +618,11 @@ let HaxBody = Polymer({
     }
   },
   __addActiveHover: function() {
-    this.$.cecontextmenu.style.marginLeft = "";
-    this.$.textcontextmenu.style.marginLeft = "";
-    this.$.platecontextmenu.style.marginLeft = "";
     this.$.cecontextmenu.classList.add("hax-active-hover");
     this.$.textcontextmenu.classList.add("hax-active-hover");
     this.$.platecontextmenu.classList.add("hax-active-hover");
   },
   __dropActiveHover: function() {
-    this.$.cecontextmenu.style.marginLeft = "-500px";
-    this.$.textcontextmenu.style.marginLeft = "-500px";
-    this.$.platecontextmenu.style.marginLeft = "-500px";
     this.$.cecontextmenu.classList.remove("hax-active-hover");
     this.$.textcontextmenu.classList.remove("hax-active-hover");
     this.$.platecontextmenu.classList.remove("hax-active-hover");
