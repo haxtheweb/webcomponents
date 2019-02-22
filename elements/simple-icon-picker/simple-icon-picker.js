@@ -209,7 +209,6 @@ class SimpleIconPicker extends SimplePicker {
    */
   _handleChange(e) {
     this.value = e.detail.value;
-    console.log("_handleChange", e.detail.value, this.value);
     this.dispatchEvent(
       new CustomEvent("change", { bubbles: true, detail: this })
     );
