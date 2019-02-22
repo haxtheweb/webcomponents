@@ -411,6 +411,7 @@ Polymer({
       }
     });
     window.dispatchEvent(evt);
+    this.fire("haxcms-trigger-update", true);
   },
   /**
    * delete the page we just got
@@ -469,7 +470,7 @@ Polymer({
           duration: 0
         }
       });
-      this.dispatchEvent(evt);
+      window.dispatchEvent(evt);
     } else if (!newValue && oldValue) {
       const evt = new CustomEvent("simple-toast-show", {
         bubbles: true,
@@ -479,6 +480,7 @@ Polymer({
           duration: 3000
         }
       });
+      window.dispatchEvent(evt);
     }
   },
   /**
@@ -526,7 +528,7 @@ Polymer({
         duration: 3000
       }
     });
-    this.dispatchEvent(evt);
+    window.dispatchEvent(evt);
     this.fire("haxcms-trigger-update", true);
   },
   _handleOutlineResponse: function(e) {
@@ -539,7 +541,7 @@ Polymer({
         duration: 3000
       }
     });
-    this.dispatchEvent(evt);
+    window.dispatchEvent(evt);
     this.fire("haxcms-trigger-update", true);
   },
   _handleManifestResponse: function(e) {
@@ -574,7 +576,7 @@ Polymer({
         slot: content.cloneNode(true)
       }
     });
-    this.dispatchEvent(evt);
+    window.dispatchEvent(evt);
   },
   /**
    * Save page event
