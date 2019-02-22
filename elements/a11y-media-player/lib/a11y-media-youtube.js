@@ -154,9 +154,25 @@ class A11yMediaYoutube extends PolymerElement {
     iframe.tracks = [];
     iframe.seekable = { length: 0 };
     iframe.duration = 0;
+    iframe.paused = true;
+    iframe.timeupdate;
     iframe.play = function() {
-      if (iframe.playVideo !== undefined) iframe.playVideo();
+      console.log("play");
+      iframe.playVideo();
     };
+    iframe.addEventListener("onStateChange", function() {
+      iframe.paused = iframe.getPlayerState() !== 1;
+      if (iframe.paused) {
+        clearInterval(iframe.timeupdate);
+      } else {
+        iframe.timeupdate = setInterval(() => {
+          console.log("iframe.paused", iframe.paused);
+          document.dispatchEvent(
+            new CustomEvent("timeupdate", { detail: iframe })
+          );
+        }, 1);
+      }
+    });
     iframe.pause = function() {
       if (iframe.pauseVideo !== undefined) iframe.pauseVideo();
     };
@@ -165,6 +181,9 @@ class A11yMediaYoutube extends PolymerElement {
       if (iframe.seekTo !== undefined) {
         iframe.seekTo(time);
         iframe.pause();
+        document.dispatchEvent(
+          new CustomEvent("timeupdate", { detail: iframe })
+        );
       }
     };
     iframe.setMute = function(mode) {

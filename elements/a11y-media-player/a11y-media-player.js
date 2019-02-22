@@ -785,6 +785,9 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
         this.fullscreen = screenfull.isFullscreen;
       });
     }
+    document.addEventListener("timeupdate", e => {
+      if (e.detail === root.media) root._handleTimeUpdate(e);
+    });
   }
 
   /**
@@ -794,35 +797,10 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     let root = this,
       stopped = !(root.__playing === true);
     root.__playing = true;
-    //only set a new interval if the playing stopped
-    if (stopped) {
-      // while playing, update the slider and length
-      root.__playProgress = setInterval(() => {
-        if (
-          root.media.seekable !== undefined &&
-          root.media.seekable.length > 0 &&
-          root.media.seekable.end(0) <= this.media.getCurrentTime()
-        ) {
-          root.stop();
-          root.seek(0);
-        }
-        root._updateCustomTracks();
-        root._setElapsedTime();
-        // if the video reaches the end and is not set to loop, stop
-        if (root.__elapsed === root.__duration && !root.loop)
-          root.__playing = false;
-
-        // if the video stops, clear the interval
-        if (root.__playing === false) clearInterval(root.__playProgress);
-
-        //updated buffered section of the slider
-        root.__buffered = root.media.getBufferedTime;
-      }, 1);
-      window.dispatchEvent(
-        new CustomEvent("a11y-player-playing", { detail: root })
-      );
-      root.media.play();
-    }
+    root.media.play();
+    window.dispatchEvent(
+      new CustomEvent("a11y-player-playing", { detail: root })
+    );
   }
 
   /**
@@ -859,8 +837,11 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    * @param {float} the elepsed time, in seconds
    */
   rewind(amt) {
-    amt = amt !== undefined ? amt : 1;
-    this.seek(Math.max(this.media.getCurrentTime() - amt, 0));
+    amt = amt !== undefined ? amt : this.media.duration / 20;
+    this.__resumePlaying = this.__playing;
+    this.seek(this.media.getCurrentTime() - amt, 0);
+    if (this.__resumePlaying) this.play();
+    this.__resumePlaying = false;
   }
 
   /**
@@ -869,8 +850,11 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    * @param {float} the elepsed time, in seconds
    */
   forward(amt) {
-    amt = amt !== undefined ? amt : 1;
-    this.seek(Math.min(this.media.getCurrentTime() + amt, this.__duration));
+    amt = amt !== undefined ? amt : this.media.duration / 20;
+    this.__resumePlaying = this.__playing;
+    this.seek(this.media.getCurrentTime() + amt);
+    if (this.__resumePlaying) this.play();
+    this.__resumePlaying = false;
   }
 
   /**
@@ -1087,12 +1071,12 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   _addSourcesAndTracks() {
     let root = this,
       counter = 0;
-    root.querySelectorAll("source,track").forEach(function(node) {
+    root.querySelectorAll("source,track").forEach(node => {
       root.$.html5.media.appendChild(node);
     });
     root._appendToPlayer(root.tracks, "track");
     root._appendToPlayer(root.sources, "source");
-    root.$.html5.media.textTracks.onaddtrack = function(e) {
+    root.$.html5.media.textTracks.onaddtrack = e => {
       root.hasCaptions = true;
       root.hasTranscript = !root.standAlone;
       root._getTrackData(e.track, counter++);
@@ -1115,7 +1099,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
         track.cues.length > 0
       ) {
         clearInterval(loadCueData);
-        let cues = Object.keys(track.cues).map(function(key) {
+        let cues = Object.keys(track.cues).map(key => {
           return {
             order: track.cues[key].id !== "" ? track.cues[key].id : key,
             seek: track.cues[key].startTime,
@@ -1144,9 +1128,9 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
         root.$.controls.setTracks(root.__tracks);
         root.$.transcript.setTracks(root.__tracks);
         root.push("__tracks");
-        track.oncuechange = function(e) {
+        track.oncuechange = e => {
           root.$.transcript.setActiveCues(
-            Object.keys(e.currentTarget.activeCues).map(function(key) {
+            Object.keys(e.currentTarget.activeCues).map(key => {
               return e.currentTarget.activeCues[key].id;
             })
           );
@@ -1165,15 +1149,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
       root.$.transcript !== undefined &&
       root.$.transcript !== null
     ) {
-      console.log("_handleCueSeek check if playing ", root.__playing);
       root.__resumePlaying = root.__playing;
-      console.log("_handleCueSeek set resume ", root.__resumePlaying);
-      console.log(
-        "_handleCueSeek set playing is ",
-        root.__playing,
-        " and resume is ",
-        root.__resumePlaying
-      );
       root.seek(e.detail);
     }
   }
@@ -1229,6 +1205,24 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   }
 
   /**
+   * handles time updates
+   */
+  _handleTimeUpdate(e) {
+    let root = this;
+    //if play exceeds clip length, stop
+    if (
+      root.media.seekable !== undefined &&
+      root.media.seekable.length > 0 &&
+      root.media.seekable.end(0) <= this.media.getCurrentTime()
+    ) {
+      root.stop();
+      root.__playing = false;
+    }
+    root._updateCustomTracks();
+    root._setElapsedTime();
+  }
+
+  /**
    * handles transcript scroll toggle
    */
   _handleTranscriptScrollToggle(e) {
@@ -1254,8 +1248,8 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
   _onControlsChanged(e) {
     let root = this,
       action = e.detail.action !== undefined ? e.detail.action : e.detail.id;
-    if (action === "backward") {
-      root.rewind(root.__duration / 20);
+    if (action === "backward" || action === "rewind") {
+      root.rewind();
     } else if (action === "captions") {
       root.toggleCC();
     } else if (action === "transcript" || action === "transcript-toggle") {
@@ -1268,7 +1262,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
         root.selectTrack(e.detail.value);
       }
     } else if (action === "forward") {
-      root.forward(root.__duration / 20);
+      root.forward();
     } else if (action === "fullscreen") {
       this.toggleTranscript(this.fullscreen);
       screenfull.toggle(root.$.outerplayer);
@@ -1279,10 +1273,10 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
     } else if (action === "pause") {
       root.pause();
     } else if (action === "play") {
-      root.play(true);
+      root.play();
     } else if (action === "restart") {
       root.seek(0);
-      root.play(e);
+      root.play();
     } else if (action === "speed") {
       root.setPlaybackRate(e.detail.value);
     } else if (action === "volume") {
@@ -1304,6 +1298,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
           ? this.media.getCurrentTime()
           : 0,
       duration = this.media.duration > 0 ? this.media.duration : 0;
+    console.log("_setElapsedTime e,d", elapsed, duration);
     if (time === null) this.__elapsed = elapsed;
     this.__duration = duration;
     if (this.media.seekable !== undefined && this.media.seekable.length > 0) {
@@ -1342,31 +1337,12 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
    */
   _toggleSliderSeek(seeking, value) {
     if (seeking) {
-      console.log("While seeking, check if this is playing?", this.__playing);
       if (this.__playing) this.__resumePlaying = true;
-      console.log("While seeking, set resume?", this.__resumePlaying);
       this.pause();
-      console.log(
-        "While seeking, playing is",
-        this.__playing,
-        " and resume is ",
-        this.__resumePlaying
-      );
     } else {
       this.seek(value);
-      console.log("When seek is finished, check resume", this.__resumePlaying);
       if (this.__resumePlaying) this.play();
-      console.log(
-        "When seek is finished, video playing is",
-        this.__resumePlaying
-      );
       this.__resumePlaying = false;
-      console.log(
-        "While seek is finished, playing is",
-        this.__playing,
-        " and resume is ",
-        this.__resumePlaying
-      );
     }
   }
 
@@ -1392,9 +1368,9 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
       ytUtil = window.A11yMediaYoutube.instance;
     root.disableInteractive = true;
     if (root.__playerAttached && root.__playerReady) {
-      let ytInit = function() {
+      let ytInit = () => {
           // once metadata is ready on video set it on the media player
-          let setMetadata = function() {
+          let setMetadata = () => {
             root.__duration = root.media.duration;
             root._setElapsedTime();
             if (
@@ -1427,7 +1403,7 @@ class A11yMediaPlayer extends A11yMediaPlayerBehaviors {
             });
           }
         },
-        checkApi = function(e) {
+        checkApi = e => {
           if (ytUtil.apiReady) {
             document.removeEventListener("youtube-api-ready", checkApi);
             if (!root.__ytAppended) {
