@@ -101,7 +101,6 @@ Polymer({
   is: "simple-blog-overview",
 
   listeners: {
-    tap: "_itemTap",
     mousedown: "tapEventOn",
     mouseover: "tapEventOn",
     mouseout: "tapEventOff",
@@ -114,7 +113,8 @@ Polymer({
      * ID of this item
      */
     itemId: {
-      type: String
+      type: String,
+      reflectToAttribute: true
     },
     /**
      * Title
@@ -162,11 +162,5 @@ Polymer({
    */
   tapEventOff: function(e) {
     this.elevation = 0;
-  },
-  /**
-   * Fire an event because we got tapped.
-   */
-  _itemTap: function(e) {
-    this.fire("active-item-selected", this.itemId);
   }
 });

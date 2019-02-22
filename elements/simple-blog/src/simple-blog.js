@@ -106,8 +106,7 @@ let SimpleBlog = Polymer({
           position="right"
           offset="14"
           animation-delay="100"
-        >
-          Back to main site
+          >Back to listing
         </paper-tooltip>
         <simple-blog-post
           id="post"
@@ -149,6 +148,9 @@ let SimpleBlog = Polymer({
     activeItem: {
       type: Object
     },
+    activeItemId: {
+      type: String
+    },
     /**
      * a manifest json file decoded, in JSON Outline Schema format
      */
@@ -175,6 +177,7 @@ let SimpleBlog = Polymer({
     // subscribe to manifest changes
     this.__disposer = autorun(() => {
       this.manifest = toJS(store.routerManifest);
+      this.activeItemId = toJS(store.activeItem);
       this._locationChanged(store.location);
     });
   },
@@ -196,17 +199,36 @@ let SimpleBlog = Polymer({
       this.selectedPage = 0;
     } else {
       this.selectedPage = 1;
-      window.scrollTo(0, 0);
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth"
+      });
     }
   },
   /**
    * Reset the active item to reset state
    */
   _goBack: function(e) {
+    const prevActiveItemId = this.activeItemId;
     window.history.pushState(null, null, store.location.baseUrl);
     window.dispatchEvent(new PopStateEvent("popstate"));
     // should help account for starting on a page where popstate isn't set
     // and also generate data model mirroring
+    if (prevActiveItemId) {
+      setTimeout(() => {
+        let active = this.$.listing.shadowRoot.querySelector(
+          'simple-blog-overview[item-id="' + prevActiveItemId + '"]'
+        );
+        active.scrollIntoView(true);
+        active.focus();
+      }, 100);
+    } else {
+      window.scrollTo({
+        top: 0,
+        left: 0
+      });
+    }
     this.fire("json-outline-schema-active-item-changed", {});
     this.selectedPage = 0;
   }

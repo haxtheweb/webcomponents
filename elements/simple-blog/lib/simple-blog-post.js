@@ -13,7 +13,7 @@ A simple blog and associated elements
 */
 Polymer({
   _template: html`
-    <style is="custom-style">
+    <style>
       :host {
         display: block;
         min-height: 80vh;
